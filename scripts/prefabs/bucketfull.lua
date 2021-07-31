@@ -1,3 +1,18 @@
+local assets =
+{
+	Asset("ANIM", "anim/buckets.zip"),
+	Asset("IMAGE", "images/inventoryimages/bucketfull.tex"),
+	Asset("ATLAS", "images/inventoryimages/bucketfull.xml"),
+	Asset("IMAGE", "images/inventoryimages/bucketdirt.tex"),
+	Asset("ATLAS", "images/inventoryimages/bucketdirt.xml"),
+	Asset("IMAGE", "images/inventoryimages/bucketrain.tex"),
+	Asset("ATLAS", "images/inventoryimages/bucketrain.xml"),
+}
+
+local prefabs =
+{
+
+}
 
 local function check(inst)
     local owner = inst.components.inventoryitem.owner
@@ -54,24 +69,7 @@ local function OnLoad(inst, data)
 end
 
 
-local function MakeBucketFull(name, filler)
-	local assets =
-	{
-	Asset("ANIM", "anim/buckets.zip"),
-	Asset("IMAGE", "images/inventoryimages/bucketfull.tex"),
-	Asset("ATLAS", "images/inventoryimages/bucketfull.xml"),
-	Asset("IMAGE", "images/inventoryimages/bucketdirt.tex"),
-	Asset("ATLAS", "images/inventoryimages/bucketdirt.xml"),
-	Asset("IMAGE", "images/inventoryimages/bucketrain.tex"),
-	Asset("ATLAS", "images/inventoryimages/bucketrain.xml"),
-	}
-	
-	local prefabs =
-	{
-
-	}
-	
-	local function fn()
+local function commonfn()
     local inst = CreateEntity()
 
     inst.entity:AddTransform()
@@ -108,34 +106,64 @@ local function MakeBucketFull(name, filler)
 	inst:AddComponent("temperature")
 	
 	inst:AddComponent("fili_cupdrink")
-    inst.cup_hp = 0
-    inst.cup_hun = 0
-    inst.cup_san = -10
+--	inst.cup_hp = 0
+	inst.cup_hun = 0
+--	inst.cup_san = 10
 	inst.thirst = TUNING.DRINKCUP_WATER
 	inst.cold_bonus = 5
-	inst.need_talk = "Agh.. it was raw water."
+--	inst.need_talk = "Agh.. it was raw water."
 	inst.cup_backitem = "bucket"
-	
-	inst:AddComponent("named")
-	
-	inst:AddComponent("waterstate")
 	
 	inst.components.temperature.current = 30
 	
-	inst:DoPeriodicTask(1, check)
-	inst:DoPeriodicTask(0, SetName)
+--	inst:DoPeriodicTask(1, check)
+--	inst:DoPeriodicTask(0, SetName)
 	
     inst:AddComponent("inventoryitem")
 
-    inst.replica.inventoryitem:SetImage("bucketfull")
-    inst.components.inventoryitem.atlasname = "images/inventoryimages/bucketfull.xml"
+	inst.replica.inventoryitem:SetImage("bucketfull")
+	inst.components.inventoryitem.atlasname = "images/inventoryimages/bucketfull.xml"
 
     MakeHauntableLaunchAndSmash(inst)
-	
-    inst.OnSave = OnSave
-    inst.OnLoad = OnLoad
 
     return inst
 end
 
-return MakeBucketFull("bucketfull", full), MakeBucketFull("bucketdirt", dirt), MakeBucketFull("bucketrain", rain), 
+local function bucketdirt()
+	local inst = commonfn()
+	
+	if not TheWorld.ismastersim then
+		return inst
+	end
+	
+	inst.AnimState:PlayAnimation("dirty")
+	inst.components.inventoryitem:ChangeImageName("bucketdirt")
+    inst.components.inventoryitem.atlasname = "images/inventoryimages/bucketdirt.xml"
+	
+	inst.cup_hp = -5
+	inst.cup_san = -10
+	inst.need_talk = "I might get ill, but I have no choice."
+end
+	
+local function bucketfull()
+	local inst = commonfn()
+	
+	if not TheWorld.ismastersim then
+		return inst
+	end
+	
+	inst.AnimState:PlayAnimation("full")
+	inst.components.inventoryitem:ChangeImageName("bucketfull")
+	inst.components.inventoryitem.atlasname = "images/inventoryimages/bucketfull.xml"
+	
+	inst.cup_hp = 0
+	inst.cup_san = -10
+	inst.need_talk = "Agh... it was raw water."
+end
+
+local function bucketsalt()
+	local inst = commonfn("salt")
+end
+
+return Prefab("bucketdirt", bucketdirt, assets),
+	Prefab("bucketfull", bucketfull, assets)
