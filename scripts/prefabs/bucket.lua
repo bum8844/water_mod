@@ -5,6 +5,13 @@ local assets =
 	Asset("ATLAS", "images/inventoryimages/bucket.xml")
 }
 
+local assets =
+{
+	Asset("ANIM", "anim/buckets.zip"),
+	Asset("IMAGE", "images/inventoryimages/bucket.tex"),
+	Asset("ATLAS", "images/inventoryimages/bucket.xml")
+}
+
 local prefabs =
 {
 	"bucketfull",
@@ -13,17 +20,21 @@ local prefabs =
 
 -- 컴포넌트를 바닐라의 것으로 교체하면서, 기존에 component에서 자체적으로 처리하던 태그 부분을 overrideonfillfn으로 가져왔습니다.
 local function OnFill(inst, from_object)
-	local filleditem = nil
+	local filleditem
 	if from_object ~= nil then
-		if from_object == "pond" or from_object == "pond_mos" or from_object == "pond_cave" then
+		if from_object.prefab == "pond" or from_object.prefab == "pond_mos" or from_object.prefab == "pond_cave" then
 			filleditem = SpawnPrefab("bucketdirt")
-		elseif from_object == "oasislake" or from_object == "hotspring" then
+		elseif from_object.prefab == "oasislake" or from_object.prefab == "hotspring" then
 			filleditem = SpawnPrefab("bucketfull")
 		end
 	end
 	
 	inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/small")
 	
+	if filleditem == nil then
+		return false
+	end
+
 	local owner = inst.components.inventoryitem ~= nil and inst.components.inventoryitem:GetGrandOwner() or nil
     if owner ~= nil then
         local container = owner.components.inventory or owner.components.container
@@ -31,7 +42,7 @@ local function OnFill(inst, from_object)
         item:Remove()
         container:GiveItem(filleditem, nil, owner:GetPosition())
     else
-        from_object.Transform:SetPosition(inst.Transform:GetWorldPosition())
+        source.Transform:SetPosition(inst.Transform:GetWorldPosition())
         local item =
             inst.components.stackable ~= nil and
             inst.components.stackable:IsStack() and

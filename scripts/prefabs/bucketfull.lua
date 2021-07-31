@@ -132,10 +132,6 @@ end
 local function bucketdirt()
 	local inst = commonfn()
 	
-	if not TheWorld.ismastersim then
-		return inst
-	end
-	
 	inst.AnimState:PlayAnimation("dirty")
 	inst.components.inventoryitem:ChangeImageName("bucketdirt")
     inst.components.inventoryitem.atlasname = "images/inventoryimages/bucketdirt.xml"
@@ -143,14 +139,11 @@ local function bucketdirt()
 	inst.cup_hp = -5
 	inst.cup_san = -10
 	inst.need_talk = "I might get ill, but I have no choice."
+	return inst
 end
 	
 local function bucketfull()
 	local inst = commonfn()
-	
-	if not TheWorld.ismastersim then
-		return inst
-	end
 	
 	inst.AnimState:PlayAnimation("full")
 	inst.components.inventoryitem:ChangeImageName("bucketfull")
@@ -159,6 +152,7 @@ local function bucketfull()
 	inst.cup_hp = 0
 	inst.cup_san = -10
 	inst.need_talk = "Agh... it was raw water."
+	return inst
 end
 
 local function bucketsalt()
