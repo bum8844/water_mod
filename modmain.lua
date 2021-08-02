@@ -201,6 +201,6 @@ local function CleanWater(inst)
 	inst:AddTag("cleanwater")
 end
 
-for _, v in cleansource do
+for _, v in pairs(cleansource) do
 	AddPrefabPostInit(v, CleanWater)
 end
