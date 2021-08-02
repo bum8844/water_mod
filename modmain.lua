@@ -70,33 +70,33 @@ if not GLOBAL.KnownModIndex:IsModEnabled("workshop-1113732066") and not GLOBAL.K
     table.insert(PrefabFiles, "beer_barrle")
 end
 
-Assets = {
-    Asset("ATLAS", "images/inventoryimages/waterwell.xml"),--Тут типо изображения,в переменной АТLАS, нам нужен файл .xml
-    Asset("IMAGE", "images/inventoryimages/waterwell.tex"),-- А в переменной IMAGE - .tex
+-- Assets = {
+    -- Asset("ATLAS", "images/inventoryimages/waterwell.xml"),--Тут типо изображения,в переменной АТLАS, нам нужен файл .xml
+    -- Asset("IMAGE", "images/inventoryimages/waterwell.tex"),-- А в переменной IMAGE - .tex
 	
-	Asset("ATLAS", "images/inventoryimages/tee.xml"),
-    Asset("IMAGE", "images/inventoryimages/tee.tex"),
+	-- Asset("ATLAS", "images/inventoryimages/tee.xml"),
+    -- Asset("IMAGE", "images/inventoryimages/tee.tex"),
 	
-	Asset("ATLAS", "images/inventoryimages/water_mahine.xml"),
-    Asset("IMAGE", "images/inventoryimages/water_mahine.tex"),
+	-- Asset("ATLAS", "images/inventoryimages/water_mahine.xml"),
+    -- Asset("IMAGE", "images/inventoryimages/water_mahine.tex"),
 	
-	Asset("ATLAS", "images/inventoryimages/ice_mahine.xml"),
-    Asset("IMAGE", "images/inventoryimages/ice_mahine.tex"),
+	-- Asset("ATLAS", "images/inventoryimages/ice_mahine.xml"),
+    -- Asset("IMAGE", "images/inventoryimages/ice_mahine.tex"),
 	
-	Asset("ATLAS", "images/inventoryimages/beer_barrle.xml"),
-    Asset("IMAGE", "images/inventoryimages/beer_barrle.tex"),
+	-- Asset("ATLAS", "images/inventoryimages/beer_barrle.xml"),
+    -- Asset("IMAGE", "images/inventoryimages/beer_barrle.tex"),
 	
-	Asset("ATLAS", "images/inventoryimages/campkettle.xml"),
-    Asset("IMAGE", "images/inventoryimages/campkettle.tex"),
+	-- Asset("ATLAS", "images/inventoryimages/campkettle.xml"),
+    -- Asset("IMAGE", "images/inventoryimages/campkettle.tex"),
 	
-	Asset("ATLAS", "images/water_images.xml"),
-    Asset("IMAGE", "images/water_images.tex"),
+	-- Asset("ATLAS", "images/water_images.xml"),
+    -- Asset("IMAGE", "images/water_images.tex"),
 	
-	Asset("SOUNDPACKAGE", "sound/fil_drink.fev"),	
-    Asset("SOUND", "sound/fil_drink.fsb"),
-	Asset("ANIM", "anim/swap_cup.zip" ),
-	Asset("ANIM", "anim/fili_thirst_bage.zip" ),
-}
+	-- Asset("SOUNDPACKAGE", "sound/fil_drink.fev"),	
+    -- Asset("SOUND", "sound/fil_drink.fsb"),
+	-- Asset("ANIM", "anim/swap_cup.zip" ),
+	-- Asset("ANIM", "anim/fili_thirst_bage.zip" ),
+-- }
 
 --local drinkstab = AddRecipeTab("Water", 979, "images/watertab.xml", "watertab.tex", nil)
 STRINGS.NAMES.DRINKS_TAB = "WATER"
@@ -191,3 +191,16 @@ AddPrefabPostInit("fertilizer", function(inst)
 	end)
 end)
 
+local cleansource =
+{
+	"oasislake",
+	"hotspring"
+}
+
+local function CleanWater(inst)
+	inst:AddTag("cleanwater")
+end
+
+for _, v in cleansource do
+	AddPrefabPostInit(v, CleanWater)
+end

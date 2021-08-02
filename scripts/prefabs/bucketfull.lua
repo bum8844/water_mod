@@ -26,29 +26,29 @@ local function check(inst)
 	end
 end
 
-local function SetName(inst)
-    if inst:HasTag("FilledByRain") then
-	    inst.components.named:SetName(STRINGS.BUCKETRAIN)
-		inst.AnimState:PlayAnimation("rain")
-		inst.components.inventoryitem:ChangeImageName("bucketrain")
-        inst.components.inventoryitem.atlasname = "images/inventoryimages/bucketrain.xml"
-	elseif inst:HasTag("FilledByDirty") then
-	    inst.components.named:SetName(STRINGS.BUCKETDIRTY)
-		inst.AnimState:PlayAnimation("dirty")
-		inst.components.inventoryitem:ChangeImageName("bucketdirt")
-        inst.components.inventoryitem.atlasname = "images/inventoryimages/bucketdirt.xml"
-	elseif inst:HasTag("FilledByOasis") then
-	    inst.components.named:SetName(STRINGS.BUCKETOASIS)
-		inst.AnimState:PlayAnimation("full")
-		inst.components.inventoryitem:ChangeImageName("bucketfull")
-        inst.components.inventoryitem.atlasname = "images/inventoryimages/bucketfull.xml"
-	else
-	    inst.components.named:SetName(STRINGS.NAMES.BUCKETFULL)
-		inst.AnimState:PlayAnimation("full")
-		inst.components.inventoryitem:ChangeImageName("bucketfull")
-        inst.components.inventoryitem.atlasname = "images/inventoryimages/bucketfull.xml"
-	end
-end
+-- local function SetName(inst)
+    -- if inst:HasTag("FilledByRain") then
+	    -- inst.components.named:SetName(STRINGS.BUCKETRAIN)
+		-- inst.AnimState:PlayAnimation("rain")
+		-- inst.components.inventoryitem:ChangeImageName("bucketrain")
+        -- inst.components.inventoryitem.atlasname = "images/inventoryimages/bucketrain.xml"
+	-- elseif inst:HasTag("FilledByDirty") then
+	    -- inst.components.named:SetName(STRINGS.BUCKETDIRTY)
+		-- inst.AnimState:PlayAnimation("dirty")
+		-- inst.components.inventoryitem:ChangeImageName("bucketdirt")
+        -- inst.components.inventoryitem.atlasname = "images/inventoryimages/bucketdirt.xml"
+	-- elseif inst:HasTag("FilledByOasis") then
+	    -- inst.components.named:SetName(STRINGS.BUCKETOASIS)
+		-- inst.AnimState:PlayAnimation("full")
+		-- inst.components.inventoryitem:ChangeImageName("bucketfull")
+        -- inst.components.inventoryitem.atlasname = "images/inventoryimages/bucketfull.xml"
+	-- else
+	    -- inst.components.named:SetName(STRINGS.NAMES.BUCKETFULL)
+		-- inst.AnimState:PlayAnimation("full")
+		-- inst.components.inventoryitem:ChangeImageName("bucketfull")
+        -- inst.components.inventoryitem.atlasname = "images/inventoryimages/bucketfull.xml"
+	-- end
+-- end
 
 local function OnSave(inst, data)
     if data ~= nil then
@@ -99,6 +99,7 @@ local function commonfn()
 	inst:AddTag("icebox_valid")
 	
 	inst:AddTag("bucket")
+	inst:AddTag("watercan")
 	
 	inst:AddTag("frozen")
 	
@@ -116,7 +117,7 @@ local function commonfn()
 	
 	inst.components.temperature.current = 30
 	
---	inst:DoPeriodicTask(1, check)
+	inst:DoPeriodicTask(1, check)
 --	inst:DoPeriodicTask(0, SetName)
 	
     inst:AddComponent("inventoryitem")
@@ -153,10 +154,6 @@ local function bucketfull()
 	inst.cup_san = -10
 	inst.need_talk = "Agh... it was raw water."
 	return inst
-end
-
-local function bucketsalt()
-	local inst = commonfn("salt")
 end
 
 return Prefab("bucketdirt", bucketdirt, assets),

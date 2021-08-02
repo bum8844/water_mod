@@ -22,11 +22,13 @@ local prefabs =
 local function OnFill(inst, from_object)
 	local filleditem
 	if from_object ~= nil then
-		if from_object.prefab == "pond" or from_object.prefab == "pond_mos" or from_object.prefab == "pond_cave" then
-			filleditem = SpawnPrefab("bucketdirt")
-		elseif from_object.prefab == "oasislake" or from_object.prefab == "hotspring" then
+		if from_object:HasTag("cleanwater") then
 			filleditem = SpawnPrefab("bucketfull")
+		else
+			filleditem = SpawnPrefab("bucketdirt")
 		end
+	else
+		filleditem = SpawnPrefab("bucketdirt")
 	end
 	
 	inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/small")

@@ -55,7 +55,7 @@ local function onhit(inst, worker)
 end
 
 local function ShouldAcceptItem(inst, item, giver)
-	if item.prefab == ("bucketfull") then
+	if item:HasTag("watercan") then
 	    if inst.kettlewater ~= true then
 		    if inst.kettlecook ~= true then
 		        return true
@@ -124,17 +124,18 @@ end
 local function OnGetItemFromPlayer(inst, giver, item)
 	if item.prefab == ("bucketfull") then
 	   if inst.kettlewater ~= true and inst.kettlecook ~= true then
-	        if not item:HasTag("FilledByRain") and not item:HasTag("FilledByDirty") and not item:HasTag("FilledByOasis") then
-			    inst.kettlecooktime = TUNING.KETTLE_WATER
-			elseif item:HasTag("FilledByRain") then
-			    inst.kettlecooktime = TUNING.KETTLE_WATER+23
-			elseif item:HasTag("FilledByDirty") then
-			    inst.kettlecooktime = TUNING.KETTLE_WATER+20
-			elseif item:HasTag("FilledByOasis") then
-			    inst.kettlecooktime = TUNING.KETTLE_WATER+10
-			end
+			inst.kettlecooktime = TUNING.KETTLE_WATER
 	        giver.components.inventory:GiveItem(SpawnPrefab("bucket"))
 	        inst.kettledrinkanim = "water"
+			inst.kettledrink = "cup_water"
+			cook(inst)
+		end
+	end
+	if item.prefab == ("bucketdirt") then
+		if inst.kettlewater ~= true and inst.kettlecook ~= true then
+			inst.kettlecooktime = TUNING.KETTLE_WATER + 20
+			giver.components.inventory:GiveItem(SpawnPrefab("bucket"))
+			inst.kettledrinkanim = "water"
 			inst.kettledrink = "cup_water"
 			cook(inst)
 		end
