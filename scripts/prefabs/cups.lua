@@ -73,6 +73,8 @@ local function cup_water()
 
     inst:AddComponent("inspectable")
 	
+	inst:AddComponent("tradable")
+	
 	inst:AddComponent("fili_cupdrink")
     inst.cup_hp = 2
     inst.cup_hun = 3
@@ -893,6 +895,8 @@ local function cup_dirty()
 
     inst:AddComponent("inspectable")
 	
+	inst:AddComponent("tradable")
+	
 	inst:AddComponent("named")
 	
 	inst:AddComponent("fili_cupdrink")
@@ -947,8 +951,6 @@ local function cup()
 	inst:AddComponent("tradable")
 
     inst:AddTag("show_spoilage")
-	
-	inst:AddComponent("tradable")
 	
 	inst:AddComponent("stackable")
     inst.components.stackable.maxsize = TUNING.STACK_SIZE_SMALLITEM
