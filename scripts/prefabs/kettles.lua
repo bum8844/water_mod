@@ -83,6 +83,15 @@ local function ShouldAcceptItem(inst, item, giver)
 	        end
 	    end
 	end
+		if item.prefab == ("bucket") then
+	    if inst.kettledrink == "cup_water" then
+		    if inst.kettlecook ~= true then
+		        return true
+	        else
+		        return false
+	        end
+	    end
+	end
 	
 	if inst.kettlecook ~= true then
 	    if inst.kettlewater ~= true then
@@ -252,6 +261,17 @@ local function OnGetItemFromPlayer(inst, giver, item)
 	if item.prefab == ("cup") then
 	   if inst.kettlecook ~= true and inst.kettledrink ~= nil then
 		    giver.components.inventory:GiveItem(SpawnPrefab(inst.kettledrink))
+		    inst.AnimState:PlayAnimation("closet",true)
+			inst.SoundEmitter:PlaySound("dontstarve/creatures/pengull/splash")
+		    inst.kettledrink = nil
+		    inst.kettledrinkanim = "closet"
+			inst.savebrew = nil
+		    inst.kettlewater = false
+		end
+	end
+	if item.prefab == ("bucket") then
+		if inst.kettlecook ~= true and inst.kettledrink == "cup_water" then
+	        giver.components.inventory:GiveItem(SpawnPrefab("bucketfull"))
 		    inst.AnimState:PlayAnimation("closet",true)
 			inst.SoundEmitter:PlaySound("dontstarve/creatures/pengull/splash")
 		    inst.kettledrink = nil
