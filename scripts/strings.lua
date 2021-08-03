@@ -37,11 +37,14 @@ STRINGS.RECIPE_DESC.KETTLE_PORT = "Pocket kettle!."
 STRINGS.CHARACTERS.GENERIC.DESCRIBE.KETTLE_PORT = "I can take it inside my backpack!"
 
 STRINGS.NAMES.BUCKETFULL = "Bucket with water"
-STRINGS.BUCKETRAIN = "Bucket with rainwater"
-STRINGS.BUCKETDIRTY = "Bucket with dirty water"
-STRINGS.BUCKETOASIS = "Bucket with oasis water"
+STRINGS.NAMES.BUCKETRAIN = "Bucket with rainwater"
+STRINGS.NAMES.BUCKETDIRT = "Bucket with dirty water"
+STRINGS.NAMES.BUCKETOASIS = "Bucket with oasis water"
 
 STRINGS.CHARACTERS.GENERIC.DESCRIBE.BUCKETFULL = "It's filled with water."
+STRINGS.CHARACTERS.GENERIC.DESCRIBE.BUCKETRAIN = "It's filled with water."
+STRINGS.CHARACTERS.GENERIC.DESCRIBE.BUCKETDIRT = "It's filled with water, but is dirty"
+STRINGS.CHARACTERS.GENERIC.DESCRIBE.BUCKETOASIS = "It's filled with water."
 
 STRINGS.NAMES.BUCKETICE	= "Ice Bucket"
 STRINGS.CHARACTERS.GENERIC.DESCRIBE.BUCKETICE = "Now it's useless."
