@@ -7,11 +7,15 @@ local function OnEatWithThirst(food,inst) -- Хук етера для воста
 	local short = food.components.edible
 	
 	if inst:HasTag("player") then
-		if food.prefab == "icecream" or food.prefab == "berryshake" then
+		if food.prefab == "fishyogurt" then
+			inst.fili_thirst = inst.fili_thirst + 120
+		elseif food.prefab == "icecream" or food.prefab == "berryshake" then
 			inst.fili_thirst = inst.fili_thirst + 100
+		elseif food.prefab == "goatmilk" or food.prefab == "beefalo_milk" or food.prefab == "cookedmilk" then
+			inst.fili_thirst = inst.fili_thirst + 80
 		elseif food.prefab == "ice" then
 			inst.fili_thirst = inst.fili_thirst + 20
-		elseif food.prefab == "lightbulb" or food.prefab == "berries_juicy" then
+		elseif food.prefab == "lightbulb" or food.prefab == "berries_juicy" or food.prefab == "rawmilk" then
 			inst.fili_thirst = inst.fili_thirst + 15
 		elseif short.foodtype == "VEGGIE" then
 			inst.fili_thirst = inst.fili_thirst + short.healthvalue*0.7+short.hungervalue*0.38
