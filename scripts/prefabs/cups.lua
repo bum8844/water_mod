@@ -40,6 +40,43 @@ local assets =
     Asset("SOUND", "sound/fil_drink.fsb"),
 }
 
+local function OnFill(inst, from_object)
+	local filleditem
+	if from_object ~= nil then
+		if from_object:HasTag("cleanwater") then
+			filleditem = SpawnPrefab("cup_water")
+		else
+			filleditem = SpawnPrefab("cup_dirty")
+		end
+	else
+		filleditem = SpawnPrefab("cup_dirty")
+	end
+	
+	inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/small")
+	
+	if filleditem == nil then
+		return false
+	end
+
+	local owner = inst.components.inventoryitem ~= nil and inst.components.inventoryitem:GetGrandOwner() or nil
+    if owner ~= nil then
+        local container = owner.components.inventory or owner.components.container
+        local item = container:RemoveItem(inst, false) or inst
+        item:Remove()
+        container:GiveItem(filleditem, nil, owner:GetPosition())
+    else
+        source.Transform:SetPosition(inst.Transform:GetWorldPosition())
+        local item =
+            inst.components.stackable ~= nil and
+            inst.components.stackable:IsStack() and
+            inst.components.stackable:Get() or
+            inst
+        item:Remove()
+    end
+	
+	return true
+end
+
 local function OnSeason(inst, season)
     if inst ~= nil then
 	    inst.season = season
@@ -960,8 +997,10 @@ local function cup()
     inst.replica.inventoryitem:SetImage("cup_empety")
     inst.components.inventoryitem.atlasname = "images/inventoryimages/cup_empety.xml"
 	
-    inst:AddComponent("fillable")
-    inst.components.fillable.filledprefab = "cup_dirty"
+	inst:AddComponent("fillable")
+	inst.components.fillable.overrideonfillfn = OnFill
+	inst.components.fillable.showoceanaction = true
+	inst.components.fillable.acceptsoceanwater = true
 
     MakeHauntableLaunchAndSmash(inst)
 

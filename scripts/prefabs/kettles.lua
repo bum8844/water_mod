@@ -74,6 +74,15 @@ local function ShouldAcceptItem(inst, item, giver)
 	        end
 	    end
 	end
+	if item.prefab == ("ice") then
+	    if inst.kettledrink == nil then
+		    if inst.kettlecook ~= true then
+		        return true
+	        else
+		        return false
+	        end
+	    end
+	end
 	if item.prefab == ("cup") then
 	    if inst.kettledrink ~= nil then
 		    if inst.kettlecook ~= true then
@@ -178,8 +187,16 @@ local function OnGetItemFromPlayer(inst, giver, item)
 	end
 	if item.prefab == ("cup_water") then
 		if inst.kettlewater ~= true and inst.kettlecook ~= true then
-			inst.kettlecooktime = TUNING.KETTLE_WATER + 20
+			inst.kettlecooktime = TUNING.KETTLE_WATER
 			giver.components.inventory:GiveItem(SpawnPrefab("cup"))
+			inst.kettledrinkanim = "water"
+			inst.kettledrink = "cup_water"
+			cook(inst)
+		end
+	end
+	if item.prefab == ("ice") then
+		if inst.kettlewater ~= true and inst.kettlecook ~= true then
+			inst.kettlecooktime = TUNING.KETTLE_WATER + 20
 			inst.kettledrinkanim = "water"
 			inst.kettledrink = "cup_water"
 			cook(inst)
