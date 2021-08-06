@@ -123,6 +123,12 @@ local function CheckRecipes(inst)
     if inst.components.container:HasWithTag("barrel_berries_group", 6) then
 		StartingCooking(inst, "Wine", 10)
 	end
+	    if inst.components.container:Has("barrel_berries_group", 6) then
+		StartingCooking(inst, "Mead", 10)
+	end
+		    if inst.components.container:HasWithTag("barrel_berries_group", 6) then
+		StartingCooking(inst, "Soda", 10)
+	end
 end
 
 local function OnLoadComplite(inst)
