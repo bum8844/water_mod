@@ -153,8 +153,8 @@ local function AddToBerryGroup(inst)
     inst:AddTag("barrel_berries_group")
 end
 
-AddPrefabPostInit("berries", AddToBerryGroup)
-AddPrefabPostInit("berries_juicy", AddToBerryGroup)
+--AddPrefabPostInit("berries", AddToBerryGroup)
+--AddPrefabPostInit("berries_juicy", AddToBerryGroup)
 
 local Container = GLOBAL.require "components/container"
 
