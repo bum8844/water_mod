@@ -676,8 +676,8 @@ local function cup_wine()
 
     inst:AddComponent("inventoryitem")
 
-    inst.replica.inventoryitem:SetImage("cup_cup_berry")
-    inst.components.inventoryitem.atlasname = "images/inventoryimages/cup_cup_berry.xml"
+    inst.replica.inventoryitem:SetImage("cup_berry")
+    inst.components.inventoryitem.atlasname = "images/inventoryimages/cup_berry.xml"
 
     MakeHauntableLaunchAndSmash(inst)
 
