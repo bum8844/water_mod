@@ -581,6 +581,108 @@ local function cup_beer()
 
     return inst
 end
+-- 벌꿀술
+local function cup_mead()
+    local inst = CreateEntity()
+
+    inst.entity:AddTransform()
+    inst.entity:AddAnimState()
+    inst.entity:AddSoundEmitter()
+    inst.entity:AddNetwork()
+
+    MakeInventoryPhysics(inst)	
+
+    inst.AnimState:SetBuild("cups")
+    inst.AnimState:SetBank("cups")
+    inst.AnimState:PlayAnimation("beer")
+	
+	inst:AddTag("fili_drink")
+
+    inst.entity:SetPristine()
+
+    if not TheWorld.ismastersim then
+        return inst
+    end
+
+    inst:AddComponent("inspectable")
+	
+	inst:AddComponent("stackable")
+    inst.components.stackable.maxsize = TUNING.STACK_SIZE_SMALLITEM
+	
+	inst:AddComponent("fili_cupdrink")
+    inst.cup_hp = -10
+    inst.cup_hun = 10
+    inst.cup_san = 55
+	inst.thirst = TUNING.DRINKCUP_BEER
+	inst.spacial_bonus = "alcahol"
+	inst.cold_bonus = 20
+	inst.warm_bonus = 23
+
+    inst:AddTag("show_spoilage")
+	
+	inst:WatchWorldState("season", OnSeason)
+	OnSeason(inst, TheWorld.state.season)
+
+    inst:AddComponent("inventoryitem")
+
+    inst.replica.inventoryitem:SetImage("cup_beer")
+    inst.components.inventoryitem.atlasname = "images/inventoryimages/cup_beer.xml"
+
+    MakeHauntableLaunchAndSmash(inst)
+
+    return inst
+end
+-- 와인
+local function cup_wine()
+    local inst = CreateEntity()
+
+    inst.entity:AddTransform()
+    inst.entity:AddAnimState()
+    inst.entity:AddSoundEmitter()
+    inst.entity:AddNetwork()
+
+    MakeInventoryPhysics(inst)	
+
+    inst.AnimState:SetBuild("cups")
+    inst.AnimState:SetBank("cups")
+    inst.AnimState:PlayAnimation("beer")
+	
+	inst:AddTag("fili_drink")
+
+    inst.entity:SetPristine()
+
+    if not TheWorld.ismastersim then
+        return inst
+    end
+
+    inst:AddComponent("inspectable")
+	
+	inst:AddComponent("stackable")
+    inst.components.stackable.maxsize = TUNING.STACK_SIZE_SMALLITEM
+	
+	inst:AddComponent("fili_cupdrink")
+    inst.cup_hp = -10
+    inst.cup_hun = 10
+    inst.cup_san = 55
+	inst.thirst = TUNING.DRINKCUP_BEER
+	inst.spacial_bonus = "alcahol"
+	inst.cold_bonus = 20
+	inst.warm_bonus = 23
+
+    inst:AddTag("show_spoilage")
+	
+	inst:WatchWorldState("season", OnSeason)
+	OnSeason(inst, TheWorld.state.season)
+
+    inst:AddComponent("inventoryitem")
+
+    inst.replica.inventoryitem:SetImage("cup_cup_berry")
+    inst.components.inventoryitem.atlasname = "images/inventoryimages/cup_cup_berry.xml"
+
+    MakeHauntableLaunchAndSmash(inst)
+
+    return inst
+end
 
 local function cup_abi()
     local inst = CreateEntity()
@@ -1182,6 +1284,8 @@ end
 return Prefab("cup", cup, assets),
 Prefab("cup_abi", cup_abi, assets),
 Prefab("cup_beer", cup_beer, assets),
+Prefab("cup_wine", cup_wine, assets),
+Prefab("cup_mead", cup_mead, assets),
 Prefab("cup_coffe", cup_coffe, assets),
 Prefab("cup_monster", cup_monster, assets),
 Prefab("cup_spider", cup_spider, assets),
