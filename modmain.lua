@@ -204,3 +204,11 @@ end
 for _, v in pairs(cleansource) do
 	AddPrefabPostInit(v, CleanWater)
 end
+
+for k, v in pairs(require("preparedrink")) do
+	AddCookerRecipe("kettle", v)
+end
+
+for k, v in pairs(require("prepareagedrink")) do
+	AddCookerRecipe("beer_barrle", v)
+end
