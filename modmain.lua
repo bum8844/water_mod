@@ -214,7 +214,7 @@ for k, v in pairs(require("prepareagedrink")) do
 end
 
 AddIngredientValues("foliage", {decoration=1, inedible=1})
-AddIngredientValues("petals", {decoration=1})
-AddIngredientValues("petals_evil", {decoration=1})
-AddIngredientValues("succulent_picked", {decoration=1})
-AddIngredientValues("tealeaves", {decoration=1})
+AddIngredientValues("petals", {decoration=1, inedible=1})
+AddIngredientValues("petals_evil", {decoration=1, inedible=1})
+AddIngredientValues("succulent_picked", {decoration=1, inedible=1})
+AddIngredientValues("tealeaves", {decoration=1, inedible=1})
