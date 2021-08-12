@@ -212,3 +212,8 @@ end
 for k, v in pairs(require("prepareagedrink")) do
 	AddCookerRecipe("beer_barrle", v)
 end
+
+AddIngredientValues("foliage", {veggie=.5, inedible=1})
+AddIngredientValues("petals", {veggie=.5, hibis=1,})
+AddIngredientValues("petals_evil", {veggie=.5, bitter=1})
+AddIngredientValues("foliage", {veggie=.5, inedible=1})
