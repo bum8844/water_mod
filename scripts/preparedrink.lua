@@ -70,7 +70,7 @@ local drink =
 	
 	cup_berry_cold
 	{
-		test = function(boilier, name, tags) return (( names.berries or 0 ) + ( names.berries_juicy or 0 ) >= 2) and tags.frozen and tags.frozen >= 1 and not tags.meat and not tags.egg end,
+		test = function(boilier, names, tags) return (( names.berries or 0 ) + ( names.berries_juicy or 0 ) >= 2) and tags.frozen and tags.frozen >= 1 and not tags.meat and not tags.egg end,
 		priority = 1,
 		health = 8,
 		hunger = 18,
@@ -83,7 +83,7 @@ local drink =
 	
 	cup_pomegranate_hot
 	{
-		test = function(boilier, name, tags) return names.pomegranate and names.pomegranate >= 2 and not tags.frozen and not tags.meat and not tags.egg end,
+		test = function(boilier, names, tags) return names.pomegranate and names.pomegranate >= 2 and not tags.frozen and not tags.meat and not tags.egg end,
 		priority = 1,
 		health = 26,
 		hunger = 19,
@@ -96,7 +96,7 @@ local drink =
 	
 	cup_pomegranate_cold
 	{
-		test = function(boilier, name, tags) return names.pomegranate and names.pomegranate >= 2 and tags.frozen and tags.frozen >= 1 and not tags.meat and not tags.egg end,
+		test = function(boilier, names, tags) return names.pomegranate and names.pomegranate >= 2 and tags.frozen and tags.frozen >= 1 and not tags.meat and not tags.egg end,
 		priority = 1,
 		health = 26,
 		hunger = 19,
@@ -109,7 +109,7 @@ local drink =
 	
 	cup_watermelon_hot
 	{
-		test = function(boilier, name, tags) return names.watermelon and names.watermelon >= 2 and not tags.frozen and not tags.meat and not tags.egg end,
+		test = function(boilier, names, tags) return names.watermelon and names.watermelon >= 2 and not tags.frozen and not tags.meat and not tags.egg end,
 		priority = 1,
 		health = 10,
 		hunger = 20,
@@ -122,7 +122,7 @@ local drink =
 	
 	cup_watermelon_cold
 	{
-		test = function(boilier, name, tags) return names.watermelon and names.watermelon >= 2 and tags.frozen and tags.frozen >= 1 and not tags.meat and not tags.egg end,
+		test = function(boilier, names, tags) return names.watermelon and names.watermelon >= 2 and tags.frozen and tags.frozen >= 1 and not tags.meat and not tags.egg end,
 		priority = 1,
 		health = 10,
 		hunger = 20,
@@ -135,7 +135,7 @@ local drink =
 	
 	cup_banana_hot
 	{
-		test = function(boilier, name, tags) return names.cave_banana and names.cave_banana >= 2 and not tags.frozen and not tags.meat and not tags.egg end,
+		test = function(boilier, names, tags) return names.cave_banana and names.cave_banana >= 2 and not tags.frozen and not tags.meat and not tags.egg end,
 		priority = 1,
 		health = 7,
 		hunger = 18,
@@ -148,7 +148,7 @@ local drink =
 	
 	cup_banana_cold
 	{
-		test = function(boilier, name, tags) return names.cave_banana and names.cave_banana >= 2 and tags.frozen and tags.frozen >= 1 and not tags.meat and not tags.egg end,
+		test = function(boilier, names, tags) return names.cave_banana and names.cave_banana >= 2 and tags.frozen and tags.frozen >= 1 and not tags.meat and not tags.egg end,
 		priority = 1,
 		health = 7,
 		hunger = 18,
@@ -162,7 +162,7 @@ local drink =
 	-- 잠드는 효과
 	cup_dragonfruit_hot
 	{
-		test = function(boilier, name, tags) return names.dragonfruit and names.dragonfruit >= 2 and not tags.frozen and not tags.meat and not tags.egg end,
+		test = function(boilier, names, tags) return names.dragonfruit and names.dragonfruit >= 2 and not tags.frozen and not tags.meat and not tags.egg end,
 		priority = 1,
 		health = 15,
 		hunger = 10,
@@ -175,7 +175,7 @@ local drink =
 	
 	cup_dragonfruit_cold
 	{
-		test = function(boilier, name, tags) return names.dragonfruit and names.dragonfruit >= 2 and tags.frozen and tags.frozen >= 1 and not tags.meat and not tags.egg end,
+		test = function(boilier, names, tags) return names.dragonfruit and names.dragonfruit >= 2 and tags.frozen and tags.frozen >= 1 and not tags.meat and not tags.egg end,
 		priority = 1,
 		health = 15,
 		hunger = 10,
@@ -188,7 +188,7 @@ local drink =
 	
 	cup_fig_hot
 	{
-		test = function(boilier, name, tags) return names.fig and names.fig >= 2 and not tags.frozen and not tags.meat and not tags.egg end,
+		test = function(boilier, names, tags) return names.fig and names.fig >= 2 and not tags.frozen and not tags.meat and not tags.egg end,
 		priority = 1,
 		health = 15,
 		hunger = 10,
@@ -201,7 +201,7 @@ local drink =
 	
 	cup_fig_cold
 	{
-		test = function(boilier, name, tags) return names.fig and names.fig >= 2 and tags.frozen and tags.frozen >= 1 and not tags.meat and not tags.egg end,
+		test = function(boilier, names, tags) return names.fig and names.fig >= 2 and tags.frozen and tags.frozen >= 1 and not tags.meat and not tags.egg end,
 		priority = 1,
 		health = 15,
 		hunger = 10,
@@ -215,7 +215,7 @@ local drink =
 	-- 일시적 빛나는 효과
 	cup_wormlight_hot
 	{
-		test = function(boilier, name, tags) return (( names.wormlight or 0 ) + ( names.wormlight_lesser or 0) >= 2) and not tags.frozen and not tags.meat and not tags.egg end,
+		test = function(boilier, names, tags) return (( names.wormlight or 0 ) + ( names.wormlight_lesser or 0) >= 2) and not tags.frozen and not tags.meat and not tags.egg end,
 		priority = 1,
 		health = 18,
 		hunger = 31,
@@ -252,7 +252,7 @@ local drink =
 	
 	cup_wormlight_cold
 	{
-		test = function(boilier, name, tags) return (( names.wormlight or 0 ) + ( names.wormlight_lesser or 0) >= 2) and tags.frozen and tags.frozen >= 1 and not tags.meat and not tags.egg end,
+		test = function(boilier, names, tags) return (( names.wormlight or 0 ) + ( names.wormlight_lesser or 0) >= 2) and tags.frozen and tags.frozen >= 1 and not tags.meat and not tags.egg end,
 		priority = 1,
 		health = 18,
 		hunger = 31,
@@ -290,7 +290,7 @@ local drink =
 	-- 일시적 겉는 속도 증가[추가해야함]
 	cup_coffee_hot
 	{
-		test = function(boilier, name, tags) return (( names.caffeinberry_bean_cooked or 0 ) + ( names.kyno_coffeebeans_cooked or 0 ) >= 2) and not tags.frozen and not tags.meat and not tags.egg end,
+		test = function(boilier, names, tags) return (( names.caffeinberry_bean_cooked or 0 ) + ( names.kyno_coffeebeans_cooked or 0 ) >= 2) and not tags.frozen and not tags.meat and not tags.egg end,
 		priority = 1,
 		health = 5,
 		hunger = 5,
@@ -303,7 +303,7 @@ local drink =
 	
 	cup_coffee_cold
 	{
-		test = function(boilier, name, tags) return (( names.caffeinberry_bean_cooked or 0 ) + ( names.kyno_coffeebeans_cooked or 0 ) >= 2) and tags.frozen and tags.frozen >= 1 and not tags.meat and not tags.egg end,
+		test = function(boilier, names, tags) return (( names.caffeinberry_bean_cooked or 0 ) + ( names.kyno_coffeebeans_cooked or 0 ) >= 2) and tags.frozen and tags.frozen >= 1 and not tags.meat and not tags.egg end,
 		priority = 1,
 		health = 5,
 		hunger = 5,
@@ -318,7 +318,7 @@ local drink =
 	
 	cup_veggie_hot
 	{
-		test = function(boilier, name, tags) return tags.veggie and tags.veggie >= 1.5 and not tags.frozen and not tags.meat and not tags.egg end,
+		test = function(boilier, names, tags) return tags.veggie and tags.veggie >= 1.5 and not tags.frozen and not tags.meat and not tags.egg end,
 		priority = 0,
 		health = 2,
 		hunger = 16,
@@ -331,7 +331,7 @@ local drink =
 	
 	cup_veggie_cold
 	{
-		test = function(boilier, name, tags) return tags.veggie and tags.veggie >= 1.5 and tags.frozen and tags.frozen >= 1 and not tags.meat and not tags.egg end,
+		test = function(boilier, names, tags) return tags.veggie and tags.veggie >= 1.5 and tags.frozen and tags.frozen >= 1 and not tags.meat and not tags.egg end,
 		priority = 0,
 		health = 2,
 		hunger = 16,
@@ -344,7 +344,7 @@ local drink =
 	
 	cup_carrot_hot
 	{
-		test = function(boilier, name, tags) return names.carrot and names.carrot >= 2 and not tags.frozen and not tags.meat and not tags.egg end,
+		test = function(boilier, names, tags) return names.carrot and names.carrot >= 2 and not tags.frozen and not tags.meat and not tags.egg end,
 		priority = 0,
 		health = 4,
 		hunger = 23,
@@ -357,7 +357,7 @@ local drink =
 	
 	cup_carrot_cold
 	{
-		test = function(boilier, name, tags) return names.carrot and names.carrot >= 2 and tags.frozen and tags.frozen >= 1 and not tags.meat and not tags.egg end,
+		test = function(boilier, names, tags) return names.carrot and names.carrot >= 2 and tags.frozen and tags.frozen >= 1 and not tags.meat and not tags.egg end,
 		priority = 0,
 		health = 4,
 		hunger = 23,
@@ -370,7 +370,7 @@ local drink =
 	
 	cup_radish_hot
 	{
-		test = function(boilier, name, tags) return (( names.radish or 0 ) + ( names.kyno_radish or 0 ) >= 2 ) and not tags.frozen and not tags.meat and not tags.egg end,
+		test = function(boilier, names, tags) return (( names.radish or 0 ) + ( names.kyno_radish or 0 ) >= 2 ) and not tags.frozen and not tags.meat and not tags.egg end,
 		priority = 0,
 		health = 4,
 		hunger = 23,
@@ -383,7 +383,7 @@ local drink =
 	
 	cup_radish_cold
 	{
-		test = function(boilier, name, tags) return (( names.radish or 0 ) + ( names.kyno_radish or 0 ) >= 2 ) and tags.frozen and tags.frozen >= 1 and not tags.meat and not tags.egg end,
+		test = function(boilier, names, tags) return (( names.radish or 0 ) + ( names.kyno_radish or 0 ) >= 2 ) and tags.frozen and tags.frozen >= 1 and not tags.meat and not tags.egg end,
 		priority = 0,
 		health = 4,
 		hunger = 23,
@@ -396,7 +396,7 @@ local drink =
 	
 	cup_corn_hot
 	{
-		test = function(boilier, name, tags) return names.corn and names.corn >= 2 and not tags.frozen and not tags.meat and not tags.egg end,
+		test = function(boilier, names, tags) return names.corn and names.corn >= 2 and not tags.frozen and not tags.meat and not tags.egg end,
 		priority = 0,
 		health = 4,
 		hunger = 37,
@@ -409,7 +409,7 @@ local drink =
 	
 	cup_corn_cold
 	{
-		test = function(boilier, name, tags) return names.corn and names.corn >= 2 and tags.frozen and tags.frozen >= 1 and not tags.meat and not tags.egg end,
+		test = function(boilier, names, tags) return names.corn and names.corn >= 2 and tags.frozen and tags.frozen >= 1 and not tags.meat and not tags.egg end,
 		priority = 0,
 		health = 4,
 		hunger = 37,
@@ -422,7 +422,7 @@ local drink =
 	
 	cup_pumpkin_hot
 	{
-		test = function(boilier, name, tags) return names.pumpkin and names.pumpkin >= 2 and not tags.frozen and not tags.meat and not tags.egg end,
+		test = function(boilier, names, tags) return names.pumpkin and names.pumpkin >= 2 and not tags.frozen and not tags.meat and not tags.egg end,
 		priority = 0,
 		health = 9,
 		hunger = 70,
@@ -435,7 +435,7 @@ local drink =
 	
 	cup_pumpkin_cold
 	{
-		test = function(boilier, name, tags) return names.pumpkin and names.pumpkin >= 2 and tags.frozen and tags.frozen >= 1 and not tags.meat and not tags.egg end,
+		test = function(boilier, names, tags) return names.pumpkin and names.pumpkin >= 2 and tags.frozen and tags.frozen >= 1 and not tags.meat and not tags.egg end,
 		priority = 0,
 		health = 9,
 		hunger = 70,
@@ -448,7 +448,7 @@ local drink =
 	
 	cup_eggplant_hot
 	{
-		test = function(boilier, name, tags) return names.eggplant and names.eggplant >= 2 and not tags.frozen and not tags.meat and not tags.egg end,
+		test = function(boilier, names, tags) return names.eggplant and names.eggplant >= 2 and not tags.frozen and not tags.meat and not tags.egg end,
 		priority = 0,
 		health = 21,
 		hunger = 50,
@@ -461,7 +461,7 @@ local drink =
 	
 	cup_eggplant_cold
 	{
-		test = function(boilier, name, tags) return names.eggplant and names.eggplant >= 2 and tags.frozen and tags.frozen >= 1 and not tags.meat and not tags.egg end,
+		test = function(boilier, names, tags) return names.eggplant and names.eggplant >= 2 and tags.frozen and tags.frozen >= 1 and not tags.meat and not tags.egg end,
 		priority = 0,
 		health = 21,
 		hunger = 50,
@@ -475,7 +475,7 @@ local drink =
 	-- 선인장, 다육, 알로에는 무조건 이걸로 만들어지게
 	cup_cactus_hot
 	{
-		test = function(boilier, name, tags) return (( names.cactus_meat or 0 ) + ( names.aloe or 0 ) + ( names.kyno_aloe or 0 ) + ( names.succulent_picked or 0 ) >= 2) and not tags.frozen and not tags.meat and not tags.egg end,
+		test = function(boilier, names, tags) return (( names.cactus_meat or 0 ) + ( names.aloe or 0 ) + ( names.kyno_aloe or 0 ) + ( names.succulent_picked or 0 ) >= 2) and not tags.frozen and not tags.meat and not tags.egg end,
 		priority = 0,
 		health = 2,
 		hunger = 25,
@@ -488,7 +488,7 @@ local drink =
 	
 	cup_cactus_cold
 	{
-		test = function(boilier, name, tags) return (( names.cactus_meat or 0 ) + ( names.aloe or 0 ) + ( names.kyno_aloe or 0 ) + ( names.succulent_picked or 0 ) >= 2)  and tags.frozen and tags.frozen >= 1 end,
+		test = function(boilier, names, tags) return (( names.cactus_meat or 0 ) + ( names.aloe or 0 ) + ( names.kyno_aloe or 0 ) + ( names.succulent_picked or 0 ) >= 2)  and tags.frozen and tags.frozen >= 1 end,
 		priority = 0,
 		health = 2,
 		hunger = 25,
@@ -501,7 +501,7 @@ local drink =
 	
 	cup_asparagus_hot
 	{
-		test = function(boilier, name, tags) return names.asparagus and names.asparagus >= 2 and not tags.frozen and not tags.meat and not tags.egg end,
+		test = function(boilier, names, tags) return names.asparagus and names.asparagus >= 2 and not tags.frozen and not tags.meat and not tags.egg end,
 		priority = 0,
 		health = 4,
 		hunger = 50,
@@ -514,7 +514,7 @@ local drink =
 	
 	cup_asparagus_cold
 	{
-		test = function(boilier, name, tags) return names.asparagus and names.asparagus >= 2 and tags.frozen and tags.frozen >= 1 and not tags.meat and not tags.egg end,
+		test = function(boilier, names, tags) return names.asparagus and names.asparagus >= 2 and tags.frozen and tags.frozen >= 1 and not tags.meat and not tags.egg end,
 		priority = 0,
 		health = 4,
 		hunger = 50,
@@ -527,7 +527,7 @@ local drink =
 	
 	cup_kelp_hot
 	{
-		test = function(boilier, name, tags) return names.kelp and names.kelp >= 2 and not tags.frozen and not tags.meat and not tags.egg end,
+		test = function(boilier, names, tags) return names.kelp and names.kelp >= 2 and not tags.frozen and not tags.meat and not tags.egg end,
 		priority = 0,
 		health = 2,
 		hunger = 12,
@@ -540,7 +540,7 @@ local drink =
 	
 	cup_kelp_cold
 	{
-		test = function(boilier, name, tags) return names.kelp and names.kelp >= 2 and tags.frozen and tags.frozen >= 1 and not tags.meat and not tags.egg end,
+		test = function(boilier, names, tags) return names.kelp and names.kelp >= 2 and tags.frozen and tags.frozen >= 1 and not tags.meat and not tags.egg end,
 		priority = 0,
 		health = 2,
 		hunger = 12,
@@ -553,7 +553,7 @@ local drink =
 	
 	cup_avocado_hot
 	{
-		test = function(boilier, name, tags) return names.rock_avocado_fruit_ripe and names.rock_avocado_fruit_ripe >= 2 and not tags.frozen and not tags.meat and not tags.egg  end,
+		test = function(boilier, names, tags) return names.rock_avocado_fruit_ripe and names.rock_avocado_fruit_ripe >= 2 and not tags.frozen and not tags.meat and not tags.egg  end,
 		priority = 0,
 		health = 4,
 		hunger = 23,
@@ -566,7 +566,7 @@ local drink =
 	
 	cup_avocado_cold
 	{
-		test = function(boilier, name, tags) return names.rock_avocado_fruit_ripe and names.rock_avocado_fruit_ripe >= 2 and tags.frozen and tags.frozen >= 1 and not tags.meat and not tags.egg end,
+		test = function(boilier, names, tags) return names.rock_avocado_fruit_ripe and names.rock_avocado_fruit_ripe >= 2 and tags.frozen and tags.frozen >= 1 and not tags.meat and not tags.egg end,
 		priority = 0,
 		health = 4,
 		hunger = 23,
@@ -579,7 +579,7 @@ local drink =
 	
 	cup_garlic_hot
 	{
-		test = function(boilier, name, tags) return names.garlic and names.garlic >= 2 and not tags.frozen and not tags.meat and not tags.egg end,
+		test = function(boilier, names, tags) return names.garlic and names.garlic >= 2 and not tags.frozen and not tags.meat and not tags.egg end,
 		priority = 0,
 		health = 2,
 		hunger = 12,
@@ -592,7 +592,7 @@ local drink =
 	
 	cup_garlic_cold
 	{
-		test = function(boilier, name, tags) return names.garlic and names.garlic >= 2 and tags.frozen and tags.frozen >= 1 and not tags.meat and not tags.egg end,
+		test = function(boilier, names, tags) return names.garlic and names.garlic >= 2 and tags.frozen and tags.frozen >= 1 and not tags.meat and not tags.egg end,
 		priority = 0,
 		health = 2,
 		hunger = 12,
@@ -605,7 +605,7 @@ local drink =
 	
 	cup_onion_hot
 	{
-		test = function(boilier, name, tags) return names.onion and names.onion >= 2 and not tags.frozen and not tags.meat and not tags.egg end,
+		test = function(boilier, names, tags) return names.onion and names.onion >= 2 and not tags.frozen and not tags.meat and not tags.egg end,
 		priority = 0,
 		health = 2,
 		hunger = 12,
@@ -618,7 +618,7 @@ local drink =
 	
 	cup_onion_cold
 	{
-		test = function(boilier, name, tags) return names.onion and names.onion >= 2 and tags.frozen and tags.frozen >= 1 and not tags.meat and not tags.egg end,
+		test = function(boilier, names, tags) return names.onion and names.onion >= 2 and tags.frozen and tags.frozen >= 1 and not tags.meat and not tags.egg end,
 		priority = 0,
 		health = 2,
 		hunger = 12,
@@ -631,7 +631,7 @@ local drink =
 	
 	cup_tomato_hot
 	{
-		test = function(boilier, name, tags) return names.tomato and names.tomato >= 2 and not tags.frozen and not tags.meat and not tags.egg end,
+		test = function(boilier, names, tags) return names.tomato and names.tomato >= 2 and not tags.frozen and not tags.meat and not tags.egg end,
 		priority = 0,
 		health = 21,
 		hunger = 23,
@@ -644,7 +644,7 @@ local drink =
 	
 	cup_tomato_cold
 	{
-		test = function(boilier, name, tags) return names.tomato and names.tomato >= 2 and tags.frozen and tags.frozen >= 1 and not tags.meat and not tags.egg end,
+		test = function(boilier, names, tags) return names.tomato and names.tomato >= 2 and tags.frozen and tags.frozen >= 1 and not tags.meat and not tags.egg end,
 		priority = 0,
 		health = 21,
 		hunger = 23,
@@ -658,7 +658,7 @@ local drink =
 	
 	cup_pepper_hot
 	{
-		test = function(boilier, name, tags) return names.pepper and names.pepper >= 2 and not tags.frozen and not tags.meat and not tags.egg end,
+		test = function(boilier, names, tags) return names.pepper and names.pepper >= 2 and not tags.frozen and not tags.meat and not tags.egg end,
 		priority = 0,
 		health = -2,
 		hunger = 12,
@@ -671,7 +671,7 @@ local drink =
 	
 	cup_pepper_cold
 	{
-		test = function(boilier, name, tags) return names.pepper and names.pepper >= 2 and tags.frozen and tags.frozen >= 1 and not tags.meat and not tags.egg end,
+		test = function(boilier, names, tags) return names.pepper and names.pepper >= 2 and tags.frozen and tags.frozen >= 1 and not tags.meat and not tags.egg end,
 		priority = 0,
 		health = -2,
 		hunger = 12,
@@ -685,7 +685,7 @@ local drink =
 	-- 만드레이크 차
 	cup_ginseng_hot
 	{
-		test = function(boilier, name, tags) return names.mandrake and not tags.frozen and not tags.meat and not tags.egg end,
+		test = function(boilier, names, tags) return names.mandrake and not tags.frozen and not tags.meat and not tags.egg end,
 		priority = 4,
 		health = 100,
 		hunger = 150,
@@ -698,7 +698,7 @@ local drink =
 	
 	cup_ginseng_cold
 	{
-		test = function(boilier, name, tags) return names.mandrake and tags.frozen and tags.frozen >= 1 and not tags.meat and not tags.egg end,
+		test = function(boilier, names, tags) return names.mandrake and tags.frozen and tags.frozen >= 1 and not tags.meat and not tags.egg end,
 		priority = 4,
 		health = 100,
 		hunger = 150,
@@ -714,7 +714,7 @@ local drink =
 	-- 정신력 증가 버프(젤리빈 채력버프와 똑같이)
 	cup_greencap_hot
 	{
-		test = function(boilier, name, tags) return names.green_cap and names.green_cap >= 2 and not tags.frozen and not tags.meat and not tags.egg end,
+		test = function(boilier, names, tags) return names.green_cap and names.green_cap >= 2 and not tags.frozen and not tags.meat and not tags.egg end,
 		priority = 0,
 		health = 0,
 		hunger = 12.5,
@@ -728,7 +728,7 @@ local drink =
 	-- 정신력 증가 버프(젤리빈 채력버프와 똑같이)
 	cup_greencap_cold
 	{
-		test = function(boilier, name, tags) return names.green_cap and names.green_cap >= 2 and tags.frozen and tags.frozen >= 1 and not tags.meat and not tags.egg end,
+		test = function(boilier, names, tags) return names.green_cap and names.green_cap >= 2 and tags.frozen and tags.frozen >= 1 and not tags.meat and not tags.egg end,
 		priority = 0,
 		health = 0,
 		hunger = 12.5,
@@ -741,7 +741,7 @@ local drink =
 	
 	cup_redcap_hot
 	{
-		test = function(boilier, name, tags) return names.red_cap and names.red_cap >= 2 and not tags.frozen and not tags.meat and not tags.egg end,
+		test = function(boilier, names, tags) return names.red_cap and names.red_cap >= 2 and not tags.frozen and not tags.meat and not tags.egg end,
 		priority = 0,
 		health = 1,
 		hunger = 12.5,
@@ -763,7 +763,7 @@ local drink =
 	
 	cup_redcap_cold
 	{
-		test = function(boilier, name, tags) return names.red_cap and names.red_cap >= 2 and tags.frozen and tags.frozen >= 1 and not tags.meat and not tags.egg end,
+		test = function(boilier, names, tags) return names.red_cap and names.red_cap >= 2 and tags.frozen and tags.frozen >= 1 and not tags.meat and not tags.egg end,
 		priority = 0,
 		health = 1,
 		hunger = 12.5,
@@ -786,7 +786,7 @@ local drink =
 	-- 정신력 반전 버프(제한시간)
 	cup_bluecap_hot
 	{
-		test = function(boilier, name, tags) return names.blue_cap and names.blue_cap >= 2 and not tags.frozen and not tags.meat and not tags.egg end,
+		test = function(boilier, names, tags) return names.blue_cap and names.blue_cap >= 2 and not tags.frozen and not tags.meat and not tags.egg end,
 		priority = 0,
 		health = 20,
 		hunger = 12.5,
@@ -800,7 +800,7 @@ local drink =
 	-- 정신력 반전 버프(제한시간)
 	cup_bluecap_cold
 	{
-		test = function(boilier, name, tags) return names.blue_cap and names.blue_cap >= 2 and tags.frozen and tags.frozen >= 1 and not tags.meat and not tags.egg end,
+		test = function(boilier, names, tags) return names.blue_cap and names.blue_cap >= 2 and tags.frozen and tags.frozen >= 1 and not tags.meat and not tags.egg end,
 		priority = 0,
 		health = 20,
 		hunger = 12.5,
@@ -813,7 +813,7 @@ local drink =
 	
 	cup_mooncap_hot
 	{
-		test = function(boilier, name, tags) return names.moon_cap and names.moon_cap >= 2 and not tags.frozen and not tags.meat and not tags.egg end,
+		test = function(boilier, names, tags) return names.moon_cap and names.moon_cap >= 2 and not tags.frozen and not tags.meat and not tags.egg end,
 		priority = 0,
 		health = 0,
 		hunger = 12.5,
@@ -844,7 +844,7 @@ local drink =
 	
 	cup_mooncap_cold
 	{
-		test = function(boilier, name, tags) return names.moon_cap and names.moon_cap >= 2 and tags.frozen and tags.frozen >= 1 and not tags.meat and not tags.egg end,
+		test = function(boilier, names, tags) return names.moon_cap and names.moon_cap >= 2 and tags.frozen and tags.frozen >= 1 and not tags.meat and not tags.egg end,
 		priority = 0,
 		health = 0,
 		hunger = 12.5,
@@ -877,7 +877,7 @@ local drink =
 	
 	cup_greentea_hot
 	{
-		test = function(boilier, name, tags) return names.tealeaves and names.tealeaves >= 2 and not tags.frozen and not tags.meat and not tags.egg end,
+		test = function(boilier, names, tags) return names.tealeaves and names.tealeaves >= 2 and not tags.frozen and not tags.meat and not tags.egg end,
 		priority = 1,
 		health = 7,
 		hunger = 5,
@@ -890,7 +890,7 @@ local drink =
 	
 	cup_honeygreentea_hot
 	{
-		test = function(boilier, name, tags) return names.tealeaves and names.tealeaves >= 2 and tags.sweetener and not tags.frozen and not tags.meat and not tags.egg end,
+		test = function(boilier, names, tags) return names.tealeaves and names.tealeaves >= 2 and tags.sweetener and not tags.frozen and not tags.meat and not tags.egg end,
 		priority = 2,
 		health = 12,
 		hunger = 12,
@@ -903,7 +903,7 @@ local drink =
 	
 	cup_milkgreentea_hot
 	{
-		test = function(boilier, name, tags) return names.tealeaves and names.tealeaves >= 2 and tags.sweetener and tags.dairy and not tags.frozen and not tags.meat and not tags.egg end,
+		test = function(boilier, names, tags) return names.tealeaves and names.tealeaves >= 2 and tags.sweetener and tags.dairy and not tags.frozen and not tags.meat and not tags.egg end,
 		priority = 3,
 		health = 21,
 		hunger = 19,
@@ -916,7 +916,7 @@ local drink =
 	
 	cup_greentea_cold
 	{
-		test = function(boilier, name, tags) return names.tealeaves and names.tealeaves >= 2 and tags.frozen and tags.frozen >= 1 and not tags.meat and not tags.egg end,
+		test = function(boilier, names, tags) return names.tealeaves and names.tealeaves >= 2 and tags.frozen and tags.frozen >= 1 and not tags.meat and not tags.egg end,
 		priority = 1,
 		health = 7,
 		hunger = 5,
@@ -929,7 +929,7 @@ local drink =
 	
 	cup_honeygreentea_cold
 	{
-		test = function(boilier, name, tags) return names.tealeaves and names.tealeaves >= 2 and tags.sweetener and tags.frozen and tags.frozen >= 1 and not tags.meat and not tags.egg end,
+		test = function(boilier, names, tags) return names.tealeaves and names.tealeaves >= 2 and tags.sweetener and tags.frozen and tags.frozen >= 1 and not tags.meat and not tags.egg end,
 		priority = 2,
 		health = 12,
 		hunger = 12,
@@ -942,7 +942,7 @@ local drink =
 	
 	cup_milkgreentea_cold
 	{
-		test = function(boilier, name, tags) return names.tealeaves and names.tealeaves >= 2 and tags.sweetener and tags.dairy and tags.frozen and tags.frozen >= 1 and not tags.meat and not tags.egg end,
+		test = function(boilier, names, tags) return names.tealeaves and names.tealeaves >= 2 and tags.sweetener and tags.dairy and tags.frozen and tags.frozen >= 1 and not tags.meat and not tags.egg end,
 		priority = 3,
 		health = 21,
 		hunger = 19,
@@ -956,7 +956,7 @@ local drink =
 	-- 녹차 건조대 말린것
 	cup_blacktea_hot
 	{
-		test = function(boilier, name, tags) return names.tealeaves_dried and names.tealeaves_dried >= 2 and not tags.frozen and not tags.meat and not tags.egg end,
+		test = function(boilier, names, tags) return names.tealeaves_dried and names.tealeaves_dried >= 2 and not tags.frozen and not tags.meat and not tags.egg end,
 		priority = 1,
 		health = 12,
 		hunger = 12,
@@ -969,7 +969,7 @@ local drink =
 	
 	cup_honeyblacktea_hot
 	{
-		test = function(boilier, name, tags) return names.tealeaves_dried and names.tealeaves_dried >= 2 and tags.sweetener and not tags.frozen and not tags.meat and not tags.egg end,
+		test = function(boilier, names, tags) return names.tealeaves_dried and names.tealeaves_dried >= 2 and tags.sweetener and not tags.frozen and not tags.meat and not tags.egg end,
 		priority = 2,
 		health = 21,
 		hunger = 19,
@@ -982,7 +982,7 @@ local drink =
 	
 	cup_milkblacktea_hot
 	{
-		test = function(boilier, name, tags) return names.tealeaves_dried and names.tealeaves_dried >= 2 and tags.sweetener and tags.dairy and not tags.frozen and not tags.meat and not tags.egg end,
+		test = function(boilier, names, tags) return names.tealeaves_dried and names.tealeaves_dried >= 2 and tags.sweetener and tags.dairy and not tags.frozen and not tags.meat and not tags.egg end,
 		priority = 3,
 		health = 35,
 		hunger = 26,
@@ -995,7 +995,7 @@ local drink =
 	
 	cup_blacktea_cold
 	{
-		test = function(boilier, name, tags) return names.tealeaves_dried and names.tealeaves_dried >= 2 and tags.frozen and tags.frozen >= 1 and not tags.meat and not tags.egg end,
+		test = function(boilier, names, tags) return names.tealeaves_dried and names.tealeaves_dried >= 2 and tags.frozen and tags.frozen >= 1 and not tags.meat and not tags.egg end,
 		priority = 1,
 		health = 12,
 		hunger = 12,
@@ -1008,7 +1008,7 @@ local drink =
 	
 	cup_honeyblacktea_cold
 	{
-		test = function(boilier, name, tags) return names.tealeaves_dried and names.tealeaves_dried >= 2 and tags.sweetener and tags.frozen and tags.frozen >= 1 and not tags.meat and not tags.egg end,
+		test = function(boilier, names, tags) return names.tealeaves_dried and names.tealeaves_dried >= 2 and tags.sweetener and tags.frozen and tags.frozen >= 1 and not tags.meat and not tags.egg end,
 		priority = 2,
 		health = 21,
 		hunger = 19,
@@ -1021,7 +1021,7 @@ local drink =
 	
 	cup_milkblacktea_cold
 	{
-		test = function(boilier, name, tags) return names.tealeaves_dried and names.tealeaves_dried >= 2 and tags.sweetener and tags.dairy and tags.frozen and tags.frozen >= 1 and not tags.meat and not tags.egg end,
+		test = function(boilier, names, tags) return names.tealeaves_dried and names.tealeaves_dried >= 2 and tags.sweetener and tags.dairy and tags.frozen and tags.frozen >= 1 and not tags.meat and not tags.egg end,
 		priority = 3,
 		health = 35,
 		hunger = 26,
@@ -1035,7 +1035,7 @@ local drink =
 	-- 동굴 고사리
 	cup_fuer_hot
 	{
-		test = function(boilier, name, tags) return names.foliage and names.foliage >= 2 and not tags.frozen and not tags.meat and not tags.egg end,
+		test = function(boilier, names, tags) return names.foliage and names.foliage >= 2 and not tags.frozen and not tags.meat and not tags.egg end,
 		priority = 1,
 		health = 27,
 		hunger = 24,
@@ -1048,7 +1048,7 @@ local drink =
 	
 	cup_fuer_cold
 	{
-		test = function(boilier, name, tags) return names.foliage and names.foliage >= 2 and tags.frozen and tags.frozen >= 1 and not tags.meat and not tags.egg end,
+		test = function(boilier, names, tags) return names.foliage and names.foliage >= 2 and tags.frozen and tags.frozen >= 1 and not tags.meat and not tags.egg end,
 		priority = 1,
 		health = 27,
 		hunger = 24,
@@ -1062,7 +1062,7 @@ local drink =
 	-- 꽃을 섞으면 나오는 결과물
 	cup_mixflower_hot
 	{
-		test = function(boilier, name, tags) return tags.decoration and tags.decoration >= 2 and not tags.frozen and not tags.meat and not tags.egg end,
+		test = function(boilier, names, tags) return tags.decoration and tags.decoration >= 2 and not tags.frozen and not tags.meat and not tags.egg end,
 		priority = 0,
 		health = 7,
 		hunger = 5,
@@ -1075,7 +1075,7 @@ local drink =
 	
 	cup_mixflower_cold
 	{
-		test = function(boilier, name, tags) return tags.decoration and tags.decoration >= 2 and tags.frozen and tags.frozen >= 1 and not tags.meat and not tags.egg end,
+		test = function(boilier, names, tags) return tags.decoration and tags.decoration >= 2 and tags.frozen and tags.frozen >= 1 and not tags.meat and not tags.egg end,
 		priority = 0,
 		health = 7,
 		hunger = 5,
@@ -1089,7 +1089,7 @@ local drink =
 	-- 일반 꽃잎
 	cup_hibiscus_hot
 	{
-		test = function(boilier, name, tags) return (( names.petals or 0 ) + ( names.moon_tree_blossom or 0 ) >= 2) and not tags.frozen and not tags.meat and not tags.egg end,
+		test = function(boilier, names, tags) return (( names.petals or 0 ) + ( names.moon_tree_blossom or 0 ) >= 2) and not tags.frozen and not tags.meat and not tags.egg end,
 		priority = 1,
 		health = 15,
 		hunger = 10,
@@ -1102,7 +1102,7 @@ local drink =
 	
 	cup_hibiscus_cold
 	{
-		test = function(boilier, name, tags) return (( names.petals or 0 ) + ( names.moon_tree_blossom or 0 ) >= 2) and tags.frozen and tags.frozen >= 1 and not tags.meat and not tags.egg end,
+		test = function(boilier, names, tags) return (( names.petals or 0 ) + ( names.moon_tree_blossom or 0 ) >= 2) and tags.frozen and tags.frozen >= 1 and not tags.meat and not tags.egg end,
 		priority = 1,
 		health = 15,
 		hunger = 10,
@@ -1116,7 +1116,7 @@ local drink =
 	-- 악마 꽃잎(몬스터태그 확인해서 효과주기)
 	cup_bitter_hot
 	{
-		test = function(boilier, name, tags) return tags.monster and tags.monster >= 1.5 and not tags.frozen end,
+		test = function(boilier, names, tags) return tags.monster and tags.monster >= 1.5 and not tags.frozen end,
 		priority = 2,
             --if eater:HasTag("monster") and eater:HasTag("player") then
 		       --eater.components.health:DoDelta(37)
@@ -1135,7 +1135,7 @@ local drink =
 	
 	cup_bitter_cold
 	{
-		test = function(boilier, name, tags) return tags.monster and tags.monster >= 1.5 and tags.frozen and tags.frozen >= 1 end,
+		test = function(boilier, names, tags) return tags.monster and tags.monster >= 1.5 and tags.frozen and tags.frozen >= 1 end,
 		priority = 2,
             --if eater:HasTag("monster") and eater:HasTag("player") then
 		       --eater.components.health:DoDelta(37)
@@ -1155,7 +1155,7 @@ local drink =
 	-- 선인장 꽃잎
 	cup_cactusflower_hot
 	{
-		test = function(boilier, name, tags) return names.cactus_flower and names.cactus_flower >= 2 and not tags.frozen and not tags.meat and not tags.egg end,
+		test = function(boilier, names, tags) return names.cactus_flower and names.cactus_flower >= 2 and not tags.frozen and not tags.meat and not tags.egg end,
 		priority = 1,
 		health = 10,
 		hunger = 10,
@@ -1168,7 +1168,7 @@ local drink =
 	
 	cup_cactusflower_hot
 	{
-		test = function(boilier, name, tags) return tags.cactus_flower and tags.cactus_flower >= 2 and tags.frozen and tags.frozen >= 1 and not tags.meat and not tags.egg end,
+		test = function(boilier, names, tags) return tags.cactus_flower and tags.cactus_flower >= 2 and tags.frozen and tags.frozen >= 1 and not tags.meat and not tags.egg end,
 		priority = 1,
 		health = 10,
 		hunger = 10,
@@ -1181,7 +1181,7 @@ local drink =
 	
 	cup_lotusflower_hot
 	{
-		test = function(boilier, name, tags) return (( names.lotus_flower or 0 ) + ( names.kyno_lotus or 0 ) >= 2) and not tags.frozen and not tags.meat and not tags.egg end,
+		test = function(boilier, names, tags) return (( names.lotus_flower or 0 ) + ( names.kyno_lotus or 0 ) >= 2) and not tags.frozen and not tags.meat and not tags.egg end,
 		priority = 1,
 		health = 2,
 		hunger = 25,
@@ -1194,7 +1194,7 @@ local drink =
 	
 	cup_lotus_flower_cold
 	{
-		test = function(boilier, name, tags) return (( names.lotus_flower or 0 ) + ( names.kyno_lotus or 0 ) >= 2) and tags.frozen and tags.frozen >= 1 and not tags.meat and not tags.egg end,
+		test = function(boilier, names, tags) return (( names.lotus_flower or 0 ) + ( names.kyno_lotus or 0 ) >= 2) and tags.frozen and tags.frozen >= 1 and not tags.meat and not tags.egg end,
 		priority = 1,
 		health = 2,
 		hunger = 25,
@@ -1208,7 +1208,7 @@ local drink =
 	--일시적으로 유령으로 만드는 차(hot, cold 없음)[추가해야함]
 	cup_suspicious_hibiscus
 	{
-		test = function(boilier, name, tags) return names.forgetmelots and names.firenettles and names.tillweeds end,
+		test = function(boilier, names, tags) return names.forgetmelots and names.firenettles and names.tillweeds end,
 		priority = 2,
 		health = 0,
 		hunger = 0,
