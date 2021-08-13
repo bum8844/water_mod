@@ -105,6 +105,8 @@ GLOBAL.RECIPETABS['DRINKS_TAB'] = {str = "DRINKS_TAB", sort=3, icon = "watertab.
 
 modimport("scripts/recipes.lua")
 modimport("scripts/strings.lua") -- Подгружаем англиский текст в любом случаии
+modimport("scripts/preparedrink.lua")
+modimport("scripts/prepareagedrink.lua")
 
 -- Принудительный выбор языка, тут всё просто
 -- Если 1 т.е Русский задём Русский язык
