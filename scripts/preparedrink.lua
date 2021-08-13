@@ -17,29 +17,14 @@ local drink =
 	
 	-- 기본 물(이 외에 음료에는 얼음을 넣으면 찬음료 변경)
 	-- 다른 차를 만들 경우 같은 아이템을 2개 넣어야함
-	cup_water_hot =
+	cup_water =
 	{
 		priority = 0,
 		health = 2,
 		hunger = 3,
 		sanity = 0,
 		thirst = 17,
-		temperature = 5,
-		temperatureduration = TUNING.FOOD_TEMP_BRIEF,
 		cooktime = 17,
-	},
-	
-	cup_water_cold =
-	{
-		test = function(boilier, name, tags) return tags.frozen and tags.frozen >= 1 and not tags.meat and not tags.egg end,
-		priority = 0,
-		health = 2,
-		hunger = 3,
-		sanity = 0,
-		thirst = 17,
-		temperature = -5,
-		temperatureduration = TUNING.FOOD_TEMP_BRIEF,
-		cooktime = 8,
 	},
 	
 	-- 과일차 종류
