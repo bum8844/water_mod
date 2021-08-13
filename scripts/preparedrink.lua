@@ -4,7 +4,7 @@ local drink =
 	
 	cup_garbage = 
 	{
-		test = function(boilier, name, tags) return true end,
+		test = function(boilier, names, tags) return true end,
 		priority = -2,
 		health = 0,
 		hunger = 0,
@@ -31,7 +31,7 @@ local drink =
 	
 	cup_fruit_hot
 	{
-		test = function(boilier, name, tags) return tags.fruit and tags.fruit >= 1.5 and not tags.frozen and not tags.meat and not tags.egg end,
+		test = function(boilier, names, tags) return tags.fruit and tags.fruit >= 1.5 and not tags.frozen and not tags.meat and not tags.egg end,
 		priority = 0,
 		health = 4,
 		hunger = 9,
@@ -44,7 +44,7 @@ local drink =
 	
 	cup_fruit_cold
 	{
-		test = function(boilier, name, tags) return tags.fruit and tags.fruit >= 1.5 and tags.frozen and tags.frozen >= 1 and not tags.meat and not tags.egg end,
+		test = function(boilier, names, tags) return tags.fruit and tags.fruit >= 1.5 and tags.frozen and tags.frozen >= 1 and not tags.meat and not tags.egg end,
 		priority = 0,
 		health = 4,
 		hunger = 9,
@@ -57,7 +57,7 @@ local drink =
 	
 	cup_berry_hot
 	{
-		test = function(boilier, name, tags) return (( names.berries or 0 ) + ( names.berries_juicy or 0 ) >= 2) and not tags.frozen and not tags.meat and not tags.egg end,
+		test = function(boilier, names, tags) return (( names.berries or 0 ) + ( names.berries_juicy or 0 ) >= 2) and not tags.frozen and not tags.meat and not tags.egg end,
 		priority = 1,
 		health = 8,
 		hunger = 18,
