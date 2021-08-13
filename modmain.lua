@@ -215,7 +215,7 @@ end
 
 AddIngredientValues("foliage", {decoration=1, inedible=1})
 AddIngredientValues("petals", {decoration=1, inedible=1})
-AddIngredientValues("petals_evil", {decoration=1, inedible=1})
+AddIngredientValues("petals_evil", {decoration=1, inedible=1, monster=.5})
 AddIngredientValues("succulent_picked", {decoration=1, inedible=1})
 AddIngredientValues("tealeaves", {decoration=1, inedible=1})
 AddIngredientValues("beefalo_milk", {milk=1, dairy=1})
