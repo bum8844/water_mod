@@ -1,4 +1,5 @@
-
+--AFS: Most codes were scrapped from "hunger" component.
+---------------------------------------------------------------------
 local SourceModifierList = require("util/sourcemodifierlist")
 
 local function onmax(self, max)
