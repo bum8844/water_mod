@@ -1,5 +1,4 @@
 --Local'ы. Чтоб было меньше писанины
-local _G = GLOBAL
 local RECIPETABS = _G.RECIPETABS
 local TECH = _G.TECH
 local Ingredient = _G.Ingredient
@@ -7,41 +6,6 @@ local STRINGS = _G.STRINGS
 local TUNING = _G.TUNING
 local CUSTOM_RECIPETABS = _G.CUSTOM_RECIPETABS
 --Ставить tuning надо перед префабами.
-
-TUNING.TEASLEEP_RANGE = 00.1 --Растояние усыпления
-TUNING.TEASLEEP_TIME = 15 --Время "спячки"
-TUNING.BRED_PERISH = 8 --Незадействованый тюнинг
-TUNING.BEER_WAIT = GetModConfigData("beer_wait") -- Время брожения пива
-TUNING.WELL_COOLDOWN = GetModConfigData("waterwell_wait") -- Откат колодца
-TUNING.KETTLE_WATER = 17 -- Время кепяченя воды
-TUNING.KETTLE_TEA = 20 -- Время готовки чая
-TUNING.KETTLE_COFFE = 25 -- Время готовки кофе
-TUNING.KETTLE_DRAGON = 30 -- Время готовки напитка из питая
-TUNING.KETTLE_MONSTER = 23 -- Время готовки напитка монстра и сиропа паука
-TUNING.KETTLE_ABI = 45 -- Время готовки призрачного напитка
-
-TUNING.DRINKCUP_ABI = 0
-TUNING.DRINKCUP_WATER = 40
-TUNING.DRINK_BERRY = 55
-TUNING.DRINK_CARROT = 55
-TUNING.DRINKCUP_TEA = 67
-TUNING.DRINKCUP_HIBISCUS = 73
-TUNING.DRINK_HONEY = 78
-TUNING.DRINKCUP_MONSTER = 80
-TUNING.DRINKCUP_BEER = 82
-TUNING.DRINK_CACTUS = 84
-TUNING.DRINKCUP_COFFE = 84
-TUNING.DRINKCUP_DRAGON = 90
-TUNING.DRINK_BANANA = 90
-TUNING.DRINK_SODA = 120
-
-TUNING.COFFEE_TIME = GetModConfigData("coffee_time") 
-TUNING.COFFEE_POWR = GetModConfigData("coffee_power") 
-
-TUNING.KETTLE_SAVECFG = GetModConfigData("kettle_save")
-
-local language_cfg = GetModConfigData("language_cfg") -- Создаём локальную переменую и задём ей значение которые выбрано в конфиге
-TUNING.AW_THIRST = GetModConfigData("aw_thirst")
 
 PrefabFiles = --Здесь у нас префабы
 {
@@ -107,6 +71,7 @@ modimport("scripts/recipes.lua")
 modimport("scripts/strings.lua") -- Подгружаем англиский текст в любом случаии
 modimport("scripts/preparedrink.lua")
 modimport("scripts/prepareagedrink.lua")
+modimport("scripts/watertuning.lua")
 
 -- Принудительный выбор языка, тут всё просто
 -- Если 1 т.е Русский задём Русский язык
