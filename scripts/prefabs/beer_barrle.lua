@@ -8,6 +8,20 @@ local assets=
 	Asset("ATLAS", "images/inventoryimages/beer_barrle.xml"),
 }
 
+local function onhammered(inst, worker)
+    if inst.components.burnable ~= nil and inst.components.burnable:IsBurning() then
+        inst.components.burnable:Extinguish()
+    end
+    if inst.components.container ~= nil then
+        inst.components.container:DropEverything()
+    end
+    inst.components.lootdropper:DropLoot()
+    local fx = SpawnPrefab("collapse_big")
+    fx.Transform:SetPosition(inst.Transform:GetWorldPosition())
+    fx:SetMaterial("wood")
+    inst:Remove()
+end
+
 local function SetMode(inst, mode)
     if mode == "container" then
 	    inst.components.container.canbeopened = true
@@ -16,17 +30,6 @@ local function SetMode(inst, mode)
 	    inst.components.container.canbeopened = false
 		inst.components.trader.enabled = true
 	end
-end
-
-local function onhammered(inst, worker)
-	inst.components.lootdropper:DropLoot()
-	if inst.components.container ~= nil then
-		inst.components.container:DropEverything()
-	end
-	local fx = SpawnPrefab("collapse_big")
-	fx.Transform:SetPosition(inst.Transform:GetWorldPosition())
-	fx:SetMaterial("wood")
-	inst:Remove()
 end
 
 local function onbuilt(inst)

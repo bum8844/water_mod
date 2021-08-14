@@ -15,6 +15,20 @@ local assets=
 	Asset("ATLAS", "images/inventoryimages/campkettle.xml"),
 }
 
+local function onhammered(inst, worker)
+    if inst.components.burnable ~= nil and inst.components.burnable:IsBurning() then
+        inst.components.burnable:Extinguish()
+    end
+    if inst.components.container ~= nil then
+        inst.components.container:DropEverything()
+    end
+    inst.components.lootdropper:DropLoot()
+    local fx = SpawnPrefab("collapse_big")
+    fx.Transform:SetPosition(inst.Transform:GetWorldPosition())
+    fx:SetMaterial("wood")
+    inst:Remove()
+end
+
 local function cook_done(inst)
     if inst.components.inventoryitem then
 	    inst.components.inventoryitem.canbepickedup = true
@@ -41,17 +55,6 @@ local function cook(inst)
 	inst:DoTaskInTime(inst.kettlecooktime, cook_done) -- Вызываем функцию конца готовки через время которое мы указали
     inst.AnimState:PlayAnimation("cooking", true) -- Играем анимацию готовки
 	inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_rattle", "snd") -- Играем звук готовки
-end
-
-local function onhammered(inst, worker)
-	inst.components.lootdropper:DropLoot()
-	if inst.components.container ~= nil then
-		inst.components.container:DropEverything()
-	end
-	local fx = SpawnPrefab("collapse_big")
-	fx.Transform:SetPosition(inst.Transform:GetWorldPosition())
-	fx:SetMaterial("wood")
-	inst:Remove()
 end
 
 local function onhit(inst, worker)
