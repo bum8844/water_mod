@@ -23,8 +23,9 @@ TUNING.HYDRATION_SUPERHUGE = hydration_per_day*2 -- 콜라(퀀텀은 OP)
 TUNING.DRINK_CALORIES_POISOE = -3
 TUNING.DRINK_CALORIES = 5
 
--- 잘못 양주된 음료의 독
-TUNING.HEALING_POISOE = -2
+-- 잘못 양주된 음료의 독, 술독
+TUNING.STRANG_POISOE = -2
+TUNING.ALCAHOL_POISOE = -5
 TUNING.SANITY_POISOE = -5
 
 -- 만드는 시간(온도 조절은 특수 효과가 아님)

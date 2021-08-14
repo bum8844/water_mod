@@ -7,7 +7,7 @@ local agedrink =
 	{
 		test = function(boilier, names, tags) return true end
 		priority = -2,
-		health = TUNING.HEALING_POISOE,
+		health = TUNING.STRANG_POISOE,
 		hunger = TUNING.DRINK_CALORIES_POISOE,
 		sanity = TUNING.SANITY_POISOE
 		thirst = TUNING.HYDRATION_POISOE,
@@ -129,7 +129,7 @@ local agedrink =
 	{
 		test = function(boilier, names, tags) return namess.corn and namess.corn == 4 end
 		priority = 1,
-		health = TUNING.HEALING_POISOE,
+		health = TUNING.ALCAHOL_POISOE,
 		hunger = TUNING.DRINK_CALORIES,
 		sanity = TUNING.SANITY_LARGE,
 		thirst = TUNING.HYDRATION_SMALL,
@@ -141,7 +141,7 @@ local agedrink =
 	{
 		test = function(boilier, names, tags) return (( namess.cactus_meat or 0 ) + ( namess.aloe or 0 ) + ( namess.kyno_aloe or 0 ) + ( namess.succulent_picked or 0 ) + ( namess.dragonfruit or 0 ) == 4 ) end
 		priority = 2,
-		health = TUNING.HEALING_POISOE,
+		health = TUNING.ALCAHOL_POISOE,
 		hunger = TUNING.DRINK_CALORIES,
 		sanity = TUNING.SANITY_LARGE,
 		thirst = TUNING.HYDRATION_SMALL,
@@ -153,7 +153,7 @@ local agedrink =
 	{
 		test = function(boilier, names, tags) return tags.sweetener and tags.sweetener == 4 end
 		priority = 2,
-		health = TUNING.HEALING_POISOE,
+		health = TUNING.ALCAHOL_POISOE,
 		hunger = TUNING.DRINK_CALORIES,
 		sanity = TUNING.SANITY_LARGE,
 		thirst = TUNING.HYDRATION_SMALL,
@@ -166,7 +166,7 @@ local agedrink =
 	{
 		test = function(boilier, names, tags) return tags.fruit and tags.fruit == 4 end
 		priority = 1,
-		health = TUNING.HEALING_POISOE,
+		health = TUNING.ALCAHOL_POISOE,
 		hunger = TUNING.DRINK_CALORIES,
 		sanity = TUNING.SANITY_LARGE,
 		thirst = TUNING.HYDRATION_SMALL,
@@ -178,7 +178,7 @@ local agedrink =
 	{
 		test = function(boilier, names, tags) return (( namess.berries or 0 ) + ( names.berries_juicy or 0 ) == 4) end
 		priority = 2,
-		health = TUNING.HEALING_POISOE,
+		health = TUNING.ALCAHOL_POISOE,
 		hunger = TUNING.DRINK_CALORIES,
 		sanity = TUNING.SANITY_HUGE,
 		thirst = TUNING.HYDRATION_MEDSMALL,
@@ -189,7 +189,7 @@ local agedrink =
 	{
 		test = function(boilier, names, tags) return (( namess.wormlight or 0 ) + ( names.wormlight_lesser or 0 ) == 4) end
 		priority = 3,
-		health = TUNING.HEALING_POISOE,
+		health = TUNING.ALCAHOL_POISOE,
 		hunger = TUNING.DRINK_CALORIES,
 		sanity = TUNING.SANITY_HUGE,
 		thirst = TUNING.HYDRATION_MEDSMALL,
