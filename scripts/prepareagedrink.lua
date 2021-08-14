@@ -7,10 +7,10 @@ local agedrink =
 	{
 		test = function(boilier, names, tags) return true end
 		priority = -2,
-		health = TUNING.CUP_STRANG_HEALTH,
-		hunger = TUNING.CUP_STRANG_HUNGER,
-		sanity = TUNING.CUP_STRANG_SANITY,
-		thirst = TUNING.CUP_STRANG_THIRST,
+		health = TUNING.HEALING_POISOE,
+		hunger = TUNING.DRINK_CALORIES_POISOE,
+		sanity = TUNING.SANITY_POISOE
+		thirst = TUNING.HYDRATION_POISOE,
 		cooktime = TUNING.INCORRECT_BOIL,
 	},
 	
@@ -20,10 +20,10 @@ local agedrink =
 	{
 		test = function(boilier, names, tags) return namess.refined_dust and namess.refined_dust == 1 and not tags.meat and not tags.egg end
 		priority = 0,
-		health = 5,
-		hunger = 12,
-		sanity = 10,
-		thirst = 100,
+		health = HEALING_MEDSMALL,
+		hunger = TUNING.CALORIES_TINY,
+		sanity = TUNING.SANITY_SMALL,
+		thirst = TUNING.HYDRATION_LARGE,
 		cooktime = TUNING.SODA_WAIT,
 	},
 	
@@ -32,10 +32,10 @@ local agedrink =
 	{
 		test = function(boilier, names, tags) return namess.refined_dust and namess.refined_dust == 1 and tags.fruit and not tags.meat and not tags.egg end
 		priority = 1,
-		health = 10,
-		hunger = 24,
-		sanity = 20,
-		thirst = 100,
+		health = HEALING_MEDSMALL,
+		hunger = TUNING.CALORIES_SMALL*2,
+		sanity = TUNING.SANITY_MEDLARGE,
+		thirst = TUNING.HYDRATION_LARGE,
 		cooktime = TUNING.SODA_WAIT,
 	},
 	
@@ -44,21 +44,30 @@ local agedrink =
 	{
 		test = function(boilier, names, tags) return namess.refined_dust and namess.refined_dust == 1 and namess.royal_jelly and not tags.meat and not tags.egg end
 		priority = 1,
-		health = 20,
-		hunger = 40,
-		sanity = 80,
-		thirst = 120,
+		health = HEALING_MED,
+		hunger = TUNING.CALORIES_HUGE,
+		sanity = SANITY_MEDLARGE*4,
+		thirst = TUNING.HYDRATION_HUGE,
 		cooktime = TUNING.SODA_WAIT,
+		prefabs = { "healthregenbuff" },
+		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_HEALTH_REGEN,
+        oneatenfn = function(inst, eater)
+            if eater.components.debuffable ~= nil and eater.components.debuffable:IsEnabled() and
+                not (eater.components.health ~= nil and eater.components.health:IsDead()) and
+                not eater:HasTag("playerghost") then
+                eater.components.debuffable:AddDebuff("healthregenbuff", "healthregenbuff")
+            end
+        end,
 	},
 	-- 로얄젤리 + 볶은커피(스피드 버프[추가해야함], 채력 버프)
 	cup_cola
 	{
 		test = function(boilier, names, tags) return (( namess.caffeinberry_bean_cooked or 0 ) + ( namess.kyno_coffeebeans_cooked or 0 ) >= 1) and namess.refined_dust and namess.refined_dust == 1 and namess.royal_jelly and not tags.meat and not tags.egg end
 		priority = 2,
-		health = 40,
-		hunger = 80,
-		sanity = 100,
-		thirst = 150,
+		health = TUNING.HEALING_LARGE,
+		hunger = TUNING.CALORIES_TUNING.CALORIES_HUGE,
+		sanity = SANITY_HUGE*2,
+		thirst = TUNING.HYDRATION_SUPERHUGE,
 		cooktime = TUNING.BEER_WAIT,
 		prefabs = { "healthregenbuff" },
 		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_HEALTH_REGEN,
@@ -75,10 +84,10 @@ local agedrink =
 	{
 		test = function(boilier, names, tags) return (( namess.wormlight or 0 ) + ( namess.wormlight_lesser or 0 ) >= 1) and (( namess.caffeinberry_bean_cooked or 0 ) + ( namess.kyno_coffeebeans_cooked or 0 ) >= 1) and namess.refined_dust and namess.refined_dust == 1 and namess.royal_jelly and not tags.meat and not tags.egg end
 		priority = 3,
-		health = 400,
-		hunger = 400,
-		sanity = 400,
-		thirst = 300,
+		health = TUNING.HEALING_SUPERHUGE*4,
+		hunger = TUNING.CALORIES_HUGE*4,
+		sanity = TUNING.SANITY_HUGE*8,
+		thirst = TUNING.HYDRATION_HUGE*4,
 		cooktime = TUNING.BEER_WAIT,
 		prefabs = { "healthregenbuff" },
 		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_HEALTH_REGEN,
@@ -120,10 +129,10 @@ local agedrink =
 	{
 		test = function(boilier, names, tags) return namess.corn and namess.corn == 4 end
 		priority = 1,
-		health = -10,
-		hunger = 10,
-		sanity = 55,
-		thirst = -5,
+		health = TUNING.HEALING_POISOE,
+		hunger = TUNING.DRINK_CALORIES,
+		sanity = TUNING.SANITY_LARGE,
+		thirst = TUNING.HYDRATION_SMALL,
 		cooktime = TUNING.BEER_WAIT,
 	},
 		
@@ -132,10 +141,10 @@ local agedrink =
 	{
 		test = function(boilier, names, tags) return (( namess.cactus_meat or 0 ) + ( namess.aloe or 0 ) + ( namess.kyno_aloe or 0 ) + ( namess.succulent_picked or 0 ) + ( namess.dragonfruit or 0 ) == 4 ) end
 		priority = 2,
-		health = -10,
-		hunger = 10,
-		sanity = 55,
-		thirst = -5,
+		health = TUNING.HEALING_POISOE,
+		hunger = TUNING.DRINK_CALORIES,
+		sanity = TUNING.SANITY_LARGE,
+		thirst = TUNING.HYDRATION_SMALL,
 		cooktime = TUNING.BEER_WAIT,
 	},
 	
@@ -144,10 +153,10 @@ local agedrink =
 	{
 		test = function(boilier, names, tags) return tags.sweetener and tags.sweetener == 4 end
 		priority = 2,
-		health = -10,
-		hunger = 10,
-		sanity = 60,
-		thirst = -5,
+		health = TUNING.HEALING_POISOE,
+		hunger = TUNING.DRINK_CALORIES,
+		sanity = TUNING.SANITY_LARGE,
+		thirst = TUNING.HYDRATION_SMALL,
 		cooktime = TUNING.BEER_WAIT,
 	},
 	
@@ -157,10 +166,10 @@ local agedrink =
 	{
 		test = function(boilier, names, tags) return tags.fruit and tags.fruit == 4 end
 		priority = 1,
-		health = -5,
-		hunger = 17,
-		sanity = 60,
-		thirst = -5,
+		health = TUNING.HEALING_POISOE,
+		hunger = TUNING.DRINK_CALORIES,
+		sanity = TUNING.SANITY_LARGE,
+		thirst = TUNING.HYDRATION_SMALL,
 		cooktime = TUNING.BEER_WAIT,
 	},
 	
@@ -169,10 +178,10 @@ local agedrink =
 	{
 		test = function(boilier, names, tags) return (( namess.berries or 0 ) + ( names.berries_juicy or 0 ) == 4) end
 		priority = 2,
-		health = -5,
-		hunger = 17,
-		sanity = 65,
-		thirst = 6,
+		health = TUNING.HEALING_POISOE,
+		hunger = TUNING.DRINK_CALORIES,
+		sanity = TUNING.SANITY_HUGE,
+		thirst = TUNING.HYDRATION_MEDSMALL,
 		cooktime = TUNING.BEER_WAIT,
 	},
 	-- 발광 베리류
@@ -180,10 +189,10 @@ local agedrink =
 	{
 		test = function(boilier, names, tags) return (( namess.wormlight or 0 ) + ( names.wormlight_lesser or 0 ) == 4) end
 		priority = 3,
-		health = -5,
-		hunger = 20,
-		sanity = 65,
-		thirst = 6,
+		health = TUNING.HEALING_POISOE,
+		hunger = TUNING.DRINK_CALORIES,
+		sanity = TUNING.SANITY_HUGE,
+		thirst = TUNING.HYDRATION_MEDSMALL,
 		cooktime = TUNING.BEER_WAIT,
 		prefabs = { "wormlight_light_greater" },
 		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_GLOW,
