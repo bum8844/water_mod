@@ -29,7 +29,7 @@ local drink =
 	
 	-- 과일차 종류
 	
-	cup_fruit_hot =
+	cup_fruit =
 	{
 		test = function(boilier, name, tags) return tags.fruit and tags.fruit >= 1.5 and not tags.frozen and not tags.meat and not tags.egg end,
 		priority = 0,
@@ -37,25 +37,10 @@ local drink =
 		hunger = TUNING.CUP_FRUIT_HUNGER,
 		sanity = TUNING.CUP_FRUIT_SANITY,
 		thirst = TUNING.CUP_FRUIT_HEALTH,
-		temperature = TUNING.CUP_FRUIT_HIGH,
-		temperatureduration = TUNING.FOOD_TEMP_BRIEF,
 		cooktime = TUNING.KETTLE_FRUIT,
 	},
 	
-	cup_fruit_cold =
-	{
-		test = function(boilier, name, tags) return tags.fruit and tags.fruit >= 1.5 and tags.frozen and tags.frozen >= 1 and not tags.meat and not tags.egg end,
-		priority = 0,
-		health = TUNING.CUP_FRUIT_HEALTH,
-		hunger = TUNING.CUP_FRUIT_HUNGER,
-		sanity = TUNING.CUP_FRUIT_SANITY,
-		thirst = TUNING.CUP_FRUIT_HEALTH,
-		temperature = TUNING.CUP_FRUIT_LOW,
-		temperatureduration = TUNING.FOOD_TEMP_BRIEF,
-		cooktime = TUNING.KETTLE_FRUIT,
-	},
-	
-	cup_berry_hot =
+	cup_berry =
 	{
 		test = function(boilier, name, tags) return (( names.berries or 0 ) + ( names.berries_juicy or 0 ) >= 2) and not tags.frozen and not tags.meat and not tags.egg end,
 		priority = 1,
@@ -63,90 +48,21 @@ local drink =
 		hunger = TUNING.CUP_BERRY_HUNGER,
 		sanity = TUNING.CUP_BERRY_SANITY,
 		thirst = TUNING.CUP_BERRY_HEALTH,
-		temperature = TUNING.CUP_SPECIFIED_FRUIT_HIGH,
-		temperatureduration = TUNING.FOOD_TEMP_AVERAGE,
 		cooktime = TUNING.KETTLE_FRUIT,
 	},
-	
-	cup_berry_cold =
-	{
-		test = function(boilier, name, tags) return (( names.berries or 0 ) + ( names.berries_juicy or 0 ) >= 2) and tags.frozen and tags.frozen >= 1 and not tags.meat and not tags.egg end,
-		priority = 1,
-		health = TUNING.CUP_BERRY_HEALTH,
-		hunger = TUNING.CUP_BERRY_HUNGER,
-		sanity = TUNING.CUP_BERRY_SANITY,
-		thirst = TUNING.CUP_BERRY_HEALTH,
-		temperature = TUNING.CUP_SPECIFIED_FRUIT_LOW,
-		temperatureduration = TUNING.FOOD_TEMP_AVERAGE,
-		cooktime = TUNING.KETTLE_FRUIT,
-	},
-	
-	cup_pomegranate_hot =
+
+	cup_pomegranate =
 	{
 		test = function(boilier, name, tags) return names.pomegranate and names.pomegranate >= 2 and not tags.frozen and not tags.meat and not tags.egg end,
 		priority = 1,
-		health = 26,
+		health = 30,
 		hunger = 19,
 		sanity = 15,
 		thirst = 60,
-		temperature = TUNING.CUP_SPECIFIED_FRUIT_HIGH,
-		temperatureduration = TUNING.FOOD_TEMP_AVERAGE,
 		cooktime = TUNING.KETTLE_FRUIT,
 	},
 	
-	cup_pomegranate_cold =
-	{
-		test = function(boilier, name, tags) return names.pomegranate and names.pomegranate >= 2 and tags.frozen and tags.frozen >= 1 and not tags.meat and not tags.egg end,
-		priority = 1,
-		health = 26,
-		hunger = 19,
-		sanity = 15,
-		thirst = 60,
-		temperature = TUNING.CUP_SPECIFIED_FRUIT_LOW,
-		temperatureduration = TUNING.FOOD_TEMP_AVERAGE,
-		cooktime = TUNING.KETTLE_FRUIT,
-	},
-	
-	cup_watermelon_hot =
-	{
-		test = function(boilier, name, tags) return names.watermelon and names.watermelon >= 2 and not tags.frozen and not tags.meat and not tags.egg end,
-		priority = 1,
-		health = 10,
-		hunger = 20,
-		sanity = 18,
-		thirst = 80,
-		temperature = 15,
-		temperatureduration = TUNING.FOOD_TEMP_AVERAGE,
-		cooktime = TUNING.KETTLE_FRUIT,
-	},
-	
-	cup_watermelon_cold =
-	{
-		test = function(boilier, name, tags) return names.watermelon and names.watermelon >= 2 and tags.frozen and tags.frozen >= 1 and not tags.meat and not tags.egg end,
-		priority = 1,
-		health = 10,
-		hunger = 20,
-		sanity = 18,
-		thirst = 80,
-		temperature = -15,
-		temperatureduration = TUNING.FOOD_TEMP_AVERAGE,
-		cooktime = TUNING.KETTLE_FRUIT,
-	},
-	
-	cup_banana_hot =
-	{
-		test = function(boilier, name, tags) return names.cave_banana and names.cave_banana >= 2 and not tags.frozen and not tags.meat and not tags.egg end,
-		priority = 1,
-		health = 7,
-		hunger = 18,
-		sanity = 21,
-		thirst = 90,
-		temperature = 15,
-		temperatureduration = TUNING.FOOD_TEMP_AVERAGE,
-		cooktime = TUNING.KETTLE_FRUIT,
-	},
-	
-	cup_banana_cold =
+	cup_banana =
 	{
 		test = function(boilier, name, tags) return names.cave_banana and names.cave_banana >= 2 and tags.frozen and tags.frozen >= 1 and not tags.meat and not tags.egg end,
 		priority = 1,
@@ -154,39 +70,10 @@ local drink =
 		hunger = 18,
 		sanity = 21,
 		thirst = 90,
-		temperature = -15,
-		temperatureduration = TUNING.FOOD_TEMP_AVERAGE,
 		cooktime = TUNING.KETTLE_FRUIT,
 	},
 	
-	-- 잠드는 효과
-	cup_dragonfruit_hot =
-	{
-		test = function(boilier, name, tags) return names.dragonfruit and names.dragonfruit >= 2 and not tags.frozen and not tags.meat and not tags.egg end,
-		priority = 1,
-		health = 15,
-		hunger = 10,
-		sanity = 35,
-		thirst = 90,
-		temperature = 15,
-		temperatureduration = TUNING.FOOD_TEMP_LONG,
-		cooktime = TUNING.KETTLE_LUXURY_GOODS,
-	},
-	
-	cup_dragonfruit_cold =
-	{
-		test = function(boilier, name, tags) return names.dragonfruit and names.dragonfruit >= 2 and tags.frozen and tags.frozen >= 1 and not tags.meat and not tags.egg end,
-		priority = 1,
-		health = 15,
-		hunger = 10,
-		sanity = 35,
-		thirst = 90,
-		temperature = -15,
-		temperatureduration = TUNING.FOOD_TEMP_LONG,
-		cooktime = 30,
-	},
-	
-	cup_fig_hot =
+	cup_fig =
 	{
 		test = function(boilier, name, tags) return names.fig and names.fig >= 2 and not tags.frozen and not tags.meat and not tags.egg end,
 		priority = 1,
@@ -194,63 +81,23 @@ local drink =
 		hunger = 10,
 		sanity = 35,
 		thirst = 90,
-		temperature = 15,
-		temperatureduration = TUNING.FOOD_TEMP_LONG,
-		cooktime = 30,
+		cooktime = TUNING.KETTLE_FRUIT,
 	},
 	
-	cup_fig_cold =
+	-- 잠드는 효과
+	cup_dragonfruit =
 	{
-		test = function(boilier, name, tags) return names.fig and names.fig >= 2 and tags.frozen and tags.frozen >= 1 and not tags.meat and not tags.egg end,
+		test = function(boilier, name, tags) return names.dragonfruit and names.dragonfruit >= 2 and not tags.frozen and not tags.meat and not tags.egg end,
 		priority = 1,
 		health = 15,
 		hunger = 10,
 		sanity = 35,
 		thirst = 90,
-		temperature = -15,
-		temperatureduration = TUNING.FOOD_TEMP_LONG,
-		cooktime = 30,
+		cooktime = TUNING.KETTLE_LUXURY_GOODS,
 	},
 	
 	-- 일시적 빛나는 효과
-	cup_wormlight_hot =
-	{
-		test = function(boilier, name, tags) return (( names.wormlight or 0 ) + ( names.wormlight_lesser or 0) >= 2) and not tags.frozen and not tags.meat and not tags.egg end,
-		priority = 1,
-		health = 18,
-		hunger = 31,
-		sanity = 5,
-		thirst = 90,
-		temperature = 15,
-		temperatureduration = TUNING.FOOD_TEMP_LONG,
-		cooktime = 25,
-		prefabs = { "wormlight_light_greater" },
-		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_GLOW,
-        oneatenfn = function(inst, eater)
-            --see wormlight.lua for original code
-            if eater.wormlight ~= nil then
-                if eater.wormlight.prefab == "wormlight_light_greater" then
-                    eater.wormlight.components.spell.lifetime = 0
-                    eater.wormlight.components.spell:ResumeSpell()
-                    return
-                else
-                    eater.wormlight.components.spell:OnFinish()
-                end
-            end
-
-            local light = SpawnPrefab("wormlight_light_greater")
-            light.components.spell:SetTarget(eater)
-            if light:IsValid() then
-                if light.components.spell.target == nil then
-                    light:Remove()
-                else
-                    light.components.spell:StartSpell()
-                end
-            end
-        end,
-	},
-	
-	cup_wormlight_cold =
+	cup_wormlight =
 	{
 		test = function(boilier, name, tags) return (( names.wormlight or 0 ) + ( names.wormlight_lesser or 0) >= 2) and tags.frozen and tags.frozen >= 1 and not tags.meat and not tags.egg end,
 		priority = 1,
@@ -258,8 +105,6 @@ local drink =
 		hunger = 31,
 		sanity = 5,
 		thirst = 90,
-		temperature = -15,
-		temperatureduration = TUNING.FOOD_TEMP_LONG,
 		cooktime = 25,
         prefabs = { "wormlight_light_greater" },
 		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_GLOW,
@@ -288,65 +133,19 @@ local drink =
 	},
 	
 	-- 일시적 겉는 속도 증가[추가해야함]
-	cup_coffee_hot =
+	cup_coffee =
 	{
-		test = function(boilier, name, tags) return (( names.caffeinberry_bean_cooked or 0 ) + ( names.kyno_coffeebeans_cooked or 0 ) >= 2) and not tags.frozen and not tags.meat and not tags.egg end,
+		test = function(boilier, name, tags) return (( names.caffeinberry_bean_cooked or 0 ) + ( names.kyno_coffeebeans_cooked or 0 ) >= 2) and not tags.meat and not tags.egg end,
 		priority = 1,
 		health = 5,
 		hunger = 5,
 		sanity = 19,
 		thirst = 25,
-		temperature = 15,
-		temperatureduration = TUNING.FOOD_TEMP_LONG,
 		cooktime = 25,
-		ondrinkfn = function(inst, eater)
-			if eater.components.grogginess ~= nil and
-                    (eater.components.debuffable ~= nil and eater.components.debuffable:IsEnabled()) and
-                    not (eater.components.health ~= nil and eater.components.health:IsDead()) and
-                    not eater:HasTag("playerghost") then
-				
-				if eater.components.grogginess ~= nil then
-					eater.components.grogginess:ResetGrogginess()
-				end
-				
-				if eater.components.debuffable ~= nil and eater.components.debuffable:IsEnabled() then
-					eater.components.debuffable:AddDebuff("coffeeboost", "buff_caffein")
-				end
-			end
-		end,
-	},
-	
-	cup_coffee_cold =
-	{
-		test = function(boilier, name, tags) return (( names.caffeinberry_bean_cooked or 0 ) + ( names.kyno_coffeebeans_cooked or 0 ) >= 2) and tags.frozen and tags.frozen >= 1 and not tags.meat and not tags.egg end,
-		priority = 1,
-		health = 5,
-		hunger = 5,
-		sanity = 19,
-		thirst = 25,
-		temperature = -15,
-		temperatureduration = TUNING.FOOD_TEMP_LONG,
-		cooktime = 25,
-		ondrinkfn = function(inst, eater)
-			if eater.components.grogginess ~= nil and
-                    (eater.components.debuffable ~= nil and eater.components.debuffable:IsEnabled()) and
-                    not (eater.components.health ~= nil and eater.components.health:IsDead()) and
-                    not eater:HasTag("playerghost") then
-				
-				if eater.components.grogginess ~= nil then
-					eater.components.grogginess:ResetGrogginess()
-				end
-				
-				if eater.components.debuffable ~= nil and eater.components.debuffable:IsEnabled() then
-					eater.components.debuffable:AddDebuff("coffeeboost", "buff_caffein")
-				end
-			end
-		end,
 	},
 	
 	-- 야채차 종류
-	
-	cup_veggie_hot =
+	cup_veggie =
 	{
 		test = function(boilier, name, tags) return tags.veggie and tags.veggie >= 1.5 and not tags.frozen and not tags.meat and not tags.egg end,
 		priority = 0,
@@ -354,25 +153,10 @@ local drink =
 		hunger = 16,
 		sanity = 4,
 		thirst = 22,
-		temperature = 10,
-		temperatureduration = TUNING.FOOD_TEMP_BRIEF,
 		cooktime = 20,
 	},
 	
-	cup_veggie_cold =
-	{
-		test = function(boilier, name, tags) return tags.veggie and tags.veggie >= 1.5 and tags.frozen and tags.frozen >= 1 and not tags.meat and not tags.egg end,
-		priority = 0,
-		health = 2,
-		hunger = 16,
-		sanity = 4,
-		thirst = 22,
-		temperature = -10,
-		temperatureduration = TUNING.FOOD_TEMP_BRIEF,
-		cooktime = 20,
-	},
-	
-	cup_carrot_hot =
+	cup_carrot =
 	{
 		test = function(boilier, name, tags) return names.carrot and names.carrot >= 2 and not tags.frozen and not tags.meat and not tags.egg end,
 		priority = 0,
@@ -380,143 +164,11 @@ local drink =
 		hunger = 23,
 		sanity = 7,
 		thirst = 55,
-		temperature = 15,
-		temperatureduration = TUNING.FOOD_TEMP_AVERAGE,
-		cooktime = 20,
-	},
-	
-	cup_carrot_cold =
-	{
-		test = function(boilier, name, tags) return names.carrot and names.carrot >= 2 and tags.frozen and tags.frozen >= 1 and not tags.meat and not tags.egg end,
-		priority = 0,
-		health = 4,
-		hunger = 23,
-		sanity = 7,
-		thirst = 55,
-		temperature = -15,
-		temperatureduration = TUNING.FOOD_TEMP_AVERAGE,
-		cooktime = 20,
-	},
-	
-	cup_radish_hot =
-	{
-		test = function(boilier, name, tags) return (( names.radish or 0 ) + ( names.kyno_radish or 0 ) >= 2 ) and not tags.frozen and not tags.meat and not tags.egg end,
-		priority = 0,
-		health = 4,
-		hunger = 23,
-		sanity = 7,
-		thirst = 55,
-		temperature = 15,
-		temperatureduration = TUNING.FOOD_TEMP_AVERAGE,
-		cooktime = 20,
-	},
-	
-	cup_radish_cold =
-	{
-		test = function(boilier, name, tags) return (( names.radish or 0 ) + ( names.kyno_radish or 0 ) >= 2 ) and tags.frozen and tags.frozen >= 1 and not tags.meat and not tags.egg end,
-		priority = 0,
-		health = 4,
-		hunger = 23,
-		sanity = 7,
-		thirst = 55,
-		temperature = -15,
-		temperatureduration = TUNING.FOOD_TEMP_AVERAGE,
-		cooktime = 20,
-	},
-	
-	cup_corn_hot =
-	{
-		test = function(boilier, name, tags) return names.corn and names.corn >= 2 and not tags.frozen and not tags.meat and not tags.egg end,
-		priority = 0,
-		health = 4,
-		hunger = 37,
-		sanity = 7,
-		thirst = 55,
-		temperature = 15,
-		temperatureduration = TUNING.FOOD_TEMP_AVERAGE,
-		cooktime = 20,
-	},
-	
-	cup_corn_cold =
-	{
-		test = function(boilier, name, tags) return names.corn and names.corn >= 2 and tags.frozen and tags.frozen >= 1 and not tags.meat and not tags.egg end,
-		priority = 0,
-		health = 4,
-		hunger = 37,
-		sanity = 7,
-		thirst = 55,
-		temperature = -15,
-		temperatureduration = TUNING.FOOD_TEMP_AVERAGE,
-		cooktime = 20,
-	},
-	
-	cup_pumpkin_hot =
-	{
-		test = function(boilier, name, tags) return names.pumpkin and names.pumpkin >= 2 and not tags.frozen and not tags.meat and not tags.egg end,
-		priority = 0,
-		health = 9,
-		hunger = 70,
-		sanity = 7,
-		thirst = 55,
-		temperature = 15,
-		temperatureduration = TUNING.FOOD_TEMP_AVERAGE,
-		cooktime = 20,
-	},
-	
-	cup_pumpkin_cold =
-	{
-		test = function(boilier, name, tags) return names.pumpkin and names.pumpkin >= 2 and tags.frozen and tags.frozen >= 1 and not tags.meat and not tags.egg end,
-		priority = 0,
-		health = 9,
-		hunger = 70,
-		sanity = 7,
-		thirst = 55,
-		temperature = -15,
-		temperatureduration = TUNING.FOOD_TEMP_AVERAGE,
-		cooktime = 20,
-	},
-	
-	cup_eggplant_hot =
-	{
-		test = function(boilier, name, tags) return names.eggplant and names.eggplant >= 2 and not tags.frozen and not tags.meat and not tags.egg end,
-		priority = 0,
-		health = 21,
-		hunger = 50,
-		sanity = 7,
-		thirst = 55,
-		temperature = 15,
-		temperatureduration = TUNING.FOOD_TEMP_AVERAGE,
-		cooktime = 20,
-	},
-	
-	cup_eggplant_cold =
-	{
-		test = function(boilier, name, tags) return names.eggplant and names.eggplant >= 2 and tags.frozen and tags.frozen >= 1 and not tags.meat and not tags.egg end,
-		priority = 0,
-		health = 21,
-		hunger = 50,
-		sanity = 7,
-		thirst = 55,
-		temperature = -15,
-		temperatureduration = TUNING.FOOD_TEMP_AVERAGE,
 		cooktime = 20,
 	},
 	
 	-- 선인장, 다육, 알로에는 무조건 이걸로 만들어지게
-	cup_cactus_hot =
-	{
-		test = function(boilier, name, tags) return (( names.cactus_meat or 0 ) + ( names.aloe or 0 ) + ( names.kyno_aloe or 0 ) + ( names.succulent_picked or 0 ) >= 2) and not tags.frozen and not tags.meat and not tags.egg end,
-		priority = 0,
-		health = 2,
-		hunger = 25,
-		sanity = 22,
-		thirst = 55,
-		temperature = 15,
-		temperatureduration = TUNING.FOOD_TEMP_AVERAGE,
-		cooktime = 20,
-	},
-	
-	cup_cactus_cold =
+	cup_cactus =
 	{
 		test = function(boilier, name, tags) return (( names.cactus_meat or 0 ) + ( names.aloe or 0 ) + ( names.kyno_aloe or 0 ) + ( names.succulent_picked or 0 ) >= 2)  and tags.frozen and tags.frozen >= 1 end,
 		priority = 0,
@@ -529,191 +181,21 @@ local drink =
 		cooktime = 20,
 	},
 	
-	cup_asparagus_hot =
+	cup_spicy =
 	{
-		test = function(boilier, name, tags) return names.asparagus and names.asparagus >= 2 and not tags.frozen and not tags.meat and not tags.egg end,
+		test = function(boilier, name, tags) return (( names.pepper or 0 ) + ( names.onion or 0 ) + ( names.garlic or 0 ) >= 2) and not tags.frozen and not tags.meat and not tags.egg end,
 		priority = 0,
 		health = 4,
-		hunger = 50,
-		sanity = 7,
-		thirst = 55,
-		temperature = 15,
-		temperatureduration = TUNING.FOOD_TEMP_AVERAGE,
-		cooktime = 20,
-	},
-	
-	cup_asparagus_cold =
-	{
-		test = function(boilier, name, tags) return names.asparagus and names.asparagus >= 2 and tags.frozen and tags.frozen >= 1 and not tags.meat and not tags.egg end,
-		priority = 0,
-		health = 4,
-		hunger = 50,
-		sanity = 7,
-		thirst = 55,
-		temperature = -15,
-		temperatureduration = TUNING.FOOD_TEMP_AVERAGE,
-		cooktime = 20,
-	},
-	
-	cup_kelp_hot =
-	{
-		test = function(boilier, name, tags) return names.kelp and names.kelp >= 2 and not tags.frozen and not tags.meat and not tags.egg end,
-		priority = 0,
-		health = 2,
-		hunger = 12,
-		sanity = 17,
-		thirst = 65,
-		temperature = 15,
-		temperatureduration = TUNING.FOOD_TEMP_AVERAGE,
-		cooktime = 20,
-	},
-	
-	cup_kelp_cold =
-	{
-		test = function(boilier, name, tags) return names.kelp and names.kelp >= 2 and tags.frozen and tags.frozen >= 1 and not tags.meat and not tags.egg end,
-		priority = 0,
-		health = 2,
-		hunger = 12,
-		sanity = 17,
-		thirst = 65,
-		temperature = -15,
-		temperatureduration = TUNING.FOOD_TEMP_AVERAGE,
-		cooktime = 20,
-	},
-	
-	cup_avocado_hot =
-	{
-		test = function(boilier, name, tags) return names.rock_avocado_fruit_ripe and names.rock_avocado_fruit_ripe >= 2 and not tags.frozen and not tags.meat and not tags.egg  end,
-		priority = 0,
-		health = 4,
-		hunger = 23,
-		sanity = 7,
-		thirst = 65,
-		temperature = 15,
-		temperatureduration = TUNING.FOOD_TEMP_AVERAGE,
-		cooktime = 20,
-	},
-	
-	cup_avocado_cold =
-	{
-		test = function(boilier, name, tags) return names.rock_avocado_fruit_ripe and names.rock_avocado_fruit_ripe >= 2 and tags.frozen and tags.frozen >= 1 and not tags.meat and not tags.egg end,
-		priority = 0,
-		health = 4,
-		hunger = 23,
-		sanity = 7,
-		thirst = 65,
-		temperature = -15,
-		temperatureduration = TUNING.FOOD_TEMP_AVERAGE,
-		cooktime = 20,
-	},
-	
-		
-	cup_tomato_hot =
-	{
-		test = function(boilier, name, tags) return names.tomato and names.tomato >= 2 and not tags.frozen and not tags.meat and not tags.egg end,
-		priority = 0,
-		health = 21,
-		hunger = 23,
-		sanity = 7,
-		thirst = 55,
-		temperature = 15,
-		temperatureduration = TUNING.FOOD_TEMP_AVERAGE,
-		cooktime = 20,
-	},
-	
-	cup_tomato_cold =
-	{
-		test = function(boilier, name, tags) return names.tomato and names.tomato >= 2 and tags.frozen and tags.frozen >= 1 and not tags.meat and not tags.egg end,
-		priority = 0,
-		health = 21,
-		hunger = 23,
-		sanity = 7,
-		thirst = 55,
-		temperature = -15,
-		temperatureduration = TUNING.FOOD_TEMP_AVERAGE,
-		cooktime = 20,
-	},
-	
-	cup_garlic_hot =
-	{
-		test = function(boilier, name, tags) return names.garlic and names.garlic >= 2 and not tags.frozen and not tags.meat and not tags.egg end,
-		priority = 0,
-		health = 2,
-		hunger = 12,
-		sanity = 2,
-		thirst = 65,
-		temperature = 20,
-		temperatureduration = TUNING.FOOD_TEMP_AVERAGE,
-		cooktime = 20,
-	},
-	
-	cup_garlic_cold =
-	{
-		test = function(boilier, name, tags) return names.garlic and names.garlic >= 2 and tags.frozen and tags.frozen >= 1 and not tags.meat and not tags.egg end,
-		priority = 0,
-		health = 2,
-		hunger = 12,
-		sanity = 2,
-		thirst = 65,
-		temperature = -20,
-		temperatureduration = TUNING.FOOD_TEMP_AVERAGE,
-		cooktime = 20,
-	},
-	
-	cup_onion_hot =
-	{
-		test = function(boilier, name, tags) return names.onion and names.onion >= 2 and not tags.frozen and not tags.meat and not tags.egg end,
-		priority = 0,
-		health = 2,
-		hunger = 12,
-		sanity = 2,
-		thirst = 65,
-		temperature = 20,
-		temperatureduration = TUNING.FOOD_TEMP_AVERAGE,
-		cooktime = 20,
-	},
-	
-	cup_onion_cold =
-	{
-		test = function(boilier, name, tags) return names.onion and names.onion >= 2 and tags.frozen and tags.frozen >= 1 and not tags.meat and not tags.egg end,
-		priority = 0,
-		health = 2,
-		hunger = 12,
-		sanity = 2,
-		thirst = 65,
-		temperature = -20,
-		temperatureduration = TUNING.FOOD_TEMP_AVERAGE,
-		cooktime = 20,
-	},
-	
-	cup_pepper_hot =
-	{
-		test = function(boilier, name, tags) return names.pepper and names.pepper >= 2 and not tags.frozen and not tags.meat and not tags.egg end,
-		priority = 0,
-		health = -2,
-		hunger = 12,
-		sanity = -3,
-		thirst = 70,
+		hunger = 16,
+		sanity = 4,
+		thirst = 73,
 		temperature = 25,
-		temperatureduration = TUNING.FOOD_TEMP_LONG,
-		cooktime = 20,
-	},
-	
-	cup_pepper_cold =
-	{
-		test = function(boilier, name, tags) return names.pepper and names.pepper >= 2 and tags.frozen and tags.frozen >= 1 and not tags.meat and not tags.egg end,
-		priority = 0,
-		health = -2,
-		hunger = 12,
-		sanity = -3,
-		thirst = 70,
-		temperature = -25,
-		temperatureduration = TUNING.FOOD_TEMP_LONG,
+		temperatureduration = TUNING.FOOD_TEMP_AVERAGE,
 		cooktime = 20,
 	},
 	
 	-- 만드레이크 차
-	cup_ginseng_hot =
+	cup_ginseng =
 	{
 		test = function(boilier, name, tags) return names.mandrake and not tags.frozen and not tags.meat and not tags.egg end,
 		priority = 4,
@@ -721,28 +203,11 @@ local drink =
 		hunger = 150,
 		sanity = 12,
 		thirst = 120,
-		temperature = 25,
-		temperatureduration = TUNING.FOOD_TEMP_LONG,
-		cooktime = 30,
-	},
-	
-	cup_ginseng_cold =
-	{
-		test = function(boilier, name, tags) return names.mandrake and tags.frozen and tags.frozen >= 1 and not tags.meat and not tags.egg end,
-		priority = 4,
-		health = 100,
-		hunger = 150,
-		sanity = 12,
-		thirst = 120,
-		temperature = -25,
-		temperatureduration = TUNING.FOOD_TEMP_LONG,
 		cooktime = 30,
 	},
 	
 	-- 버섯차 종류
-	
-	-- 정신력 증가 버프(젤리빈 채력버프와 똑같이)
-	cup_greencap_hot =
+	cup_greencap =
 	{
 		test = function(boilier, name, tags) return names.green_cap and names.green_cap >= 2 and not tags.frozen and not tags.meat and not tags.egg end,
 		priority = 0,
@@ -750,10 +215,8 @@ local drink =
 		hunger = 12.5,
 		sanity = 15,
 		thirst = 25,
-		temperature = 15,
-		temperatureduration = TUNING.FOOD_TEMP_LONG,
 		cooktime = 30,
-	    oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_HOT_SANITY_REGEN,
+	    oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_hot =_SANITY_REGEN,
         oneatenfn = function(inst, eater)
             if eater.components.debuffable ~= nil and eater.components.debuffable:IsEnabled() then
                 eater.components.debuffable:AddDebuff("sweettea_buff", "sweettea_buff")
@@ -761,27 +224,7 @@ local drink =
         end,
 	},
 	
-	-- 정신력 증가 버프(젤리빈 채력버프와 똑같이)
-	cup_greencap_cold =
-	{
-		test = function(boilier, name, tags) return names.green_cap and names.green_cap >= 2 and tags.frozen and tags.frozen >= 1 and not tags.meat and not tags.egg end,
-		priority = 0,
-		health = 0,
-		hunger = 12.5,
-		sanity = 15,
-		thirst = 25,
-		temperature = -15,
-		temperatureduration = TUNING.FOOD_TEMP_LONG,
-		cooktime = 30,
-		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_HOT_SANITY_REGEN,
-        oneatenfn = function(inst, eater)
-            if eater.components.debuffable ~= nil and eater.components.debuffable:IsEnabled() then
-                eater.components.debuffable:AddDebuff("sweettea_buff", "sweettea_buff")
-            end
-        end,
-	},
-	
-	cup_redcap_hot =
+	cup_redcap =
 	{
 		test = function(boilier, name, tags) return names.red_cap and names.red_cap >= 2 and not tags.frozen and not tags.meat and not tags.egg end,
 		priority = 0,
@@ -789,30 +232,6 @@ local drink =
 		hunger = 12.5,
 		sanity = 0,
 		thirst = 25,
-		temperature = 15,
-		temperatureduration = TUNING.FOOD_TEMP_LONG,
-		cooktime = 30,
-        prefabs = { "healthregenbuff" },
-		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_HEALTH_REGEN,
-        oneatenfn = function(inst, eater)
-            if eater.components.debuffable ~= nil and eater.components.debuffable:IsEnabled() and
-                not (eater.components.health ~= nil and eater.components.health:IsDead()) and
-                not eater:HasTag("playerghost") then
-                eater.components.debuffable:AddDebuff("healthregenbuff", "healthregenbuff")
-            end
-        end,
-	},
-	
-	cup_redcap_cold =
-	{
-		test = function(boilier, name, tags) return names.red_cap and names.red_cap >= 2 and tags.frozen and tags.frozen >= 1 and not tags.meat and not tags.egg end,
-		priority = 0,
-		health = 1,
-		hunger = 12.5,
-		sanity = 0,
-		thirst = 25,
-		temperature = -15,
-		temperatureduration = TUNING.FOOD_TEMP_LONG,
 		cooktime = 30,
         prefabs = { "healthregenbuff" },
 		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_HEALTH_REGEN,
@@ -826,7 +245,7 @@ local drink =
 	},
 	
 	-- 정신력 반전 버프(제한시간)
-	cup_bluecap_hot =
+	cup_bluecap =
 	{
 		test = function(boilier, name, tags) return names.blue_cap and names.blue_cap >= 2 and not tags.frozen and not tags.meat and not tags.egg end,
 		priority = 0,
@@ -834,26 +253,10 @@ local drink =
 		hunger = 12.5,
 		sanity = 10,
 		thirst = 25,
-		temperature = 15,
-		temperatureduration = TUNING.FOOD_TEMP_LONG,
 		cooktime = 30,
 	},
 	
-	-- 정신력 반전 버프(제한시간)
-	cup_bluecap_cold =
-	{
-		test = function(boilier, name, tags) return names.blue_cap and names.blue_cap >= 2 and tags.frozen and tags.frozen >= 1 and not tags.meat and not tags.egg end,
-		priority = 0,
-		health = 20,
-		hunger = 12.5,
-		sanity = 10,
-		thirst = 25,
-		temperature = -15,
-		temperatureduration = TUNING.FOOD_TEMP_LONG,
-		cooktime = 30,
-	},
-	
-	cup_mooncap_hot =
+	cup_mooncap =
 	{
 		test = function(boilier, name, tags) return names.moon_cap and names.moon_cap >= 2 and not tags.frozen and not tags.meat and not tags.egg end,
 		priority = 0,
@@ -884,40 +287,9 @@ local drink =
         end,
 	},
 	
-	cup_mooncap_cold =
-	{
-		test = function(boilier, name, tags) return names.moon_cap and names.moon_cap >= 2 and tags.frozen and tags.frozen >= 1 and not tags.meat and not tags.egg end,
-		priority = 0,
-		health = 0,
-		hunger = 12.5,
-		sanity = 10,
-		thirst = 25,
-		temperature = -15,
-		temperatureduration = TUNING.FOOD_TEMP_LONG,
-		cooktime = 30,
-		
-		prefabs = { "buff_sleepresistance" },
-        oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_SLEEP_RESISTANCE,
-        oneatenfn = function(inst, eater)
-            if eater.components.grogginess ~= nil and
-                    (eater.components.debuffable ~= nil and eater.components.debuffable:IsEnabled()) and
-                    not (eater.components.health ~= nil and eater.components.health:IsDead()) and
-                    not eater:HasTag("playerghost") then
-
-                if eater.components.grogginess ~= nil then
-                    eater.components.grogginess:ResetGrogginess()
-                end
-
-                if eater.components.debuffable ~= nil and eater.components.debuffable:IsEnabled() then
-                    eater.components.debuffable:AddDebuff("shroomsleepresist", "buff_sleepresistance")
-                end
-            end
-        end,
-	},
-	
 	-- 잎&꽃차 종류
 	
-	cup_greentea_hot =
+	cup_greentea =
 	{
 		test = function(boilier, name, tags) return names.tealeaves and names.tealeaves >= 2 and not tags.frozen and not tags.meat and not tags.egg end,
 		priority = 1,
@@ -925,78 +297,11 @@ local drink =
 		hunger = 5,
 		sanity = 20,
 		thirst = 67,
-		temperature = 15,
-		temperatureduration = TUNING.FOOD_TEMP_AVERAGE,
 		cooktime = 20,
-	},
-	
-	cup_honeygreentea_hot =
-	{
-		test = function(boilier, name, tags) return names.tealeaves and names.tealeaves >= 2 and tags.sweetener and not tags.frozen and not tags.meat and not tags.egg end,
-		priority = 2,
-		health = 12,
-		hunger = 12,
-		sanity = 25,
-		thirst = 78,
-		temperature = 20,
-		temperatureduration = TUNING.FOOD_TEMP_AVERAGE,
-		cooktime = 20,
-	},
-	
-	cup_milkgreentea_hot =
-	{
-		test = function(boilier, name, tags) return names.tealeaves and names.tealeaves >= 2 and tags.sweetener and tags.dairy and not tags.frozen and not tags.meat and not tags.egg end,
-		priority = 3,
-		health = 21,
-		hunger = 19,
-		sanity = 30,
-		thirst = 89,
-		temperature = 25,
-		temperatureduration = TUNING.FOOD_TEMP_AVERAGE,
-		cooktime = 25,
-	},
-	
-	cup_greentea_cold =
-	{
-		test = function(boilier, name, tags) return names.tealeaves and names.tealeaves >= 2 and tags.frozen and tags.frozen >= 1 and not tags.meat and not tags.egg end,
-		priority = 1,
-		health = 7,
-		hunger = 5,
-		sanity = 20,
-		thirst = 67,
-		temperature = -15,
-		temperatureduration = TUNING.FOOD_TEMP_AVERAGE,
-		cooktime = 20,
-	},
-	
-	cup_honeygreentea_cold =
-	{
-		test = function(boilier, name, tags) return names.tealeaves and names.tealeaves >= 2 and tags.sweetener and tags.frozen and tags.frozen >= 1 and not tags.meat and not tags.egg end,
-		priority = 2,
-		health = 12,
-		hunger = 12,
-		sanity = 25,
-		thirst = 78,
-		temperature = -20,
-		temperatureduration = TUNING.FOOD_TEMP_AVERAGE,
-		cooktime = 20,
-	},
-	
-	cup_milkgreentea_cold =
-	{
-		test = function(boilier, name, tags) return names.tealeaves and names.tealeaves >= 2 and tags.sweetener and tags.dairy and tags.frozen and tags.frozen >= 1 and not tags.meat and not tags.egg end,
-		priority = 3,
-		health = 21,
-		hunger = 19,
-		sanity = 30,
-		thirst = 89,
-		temperature = -25,
-		temperatureduration = TUNING.FOOD_TEMP_AVERAGE,
-		cooktime = 25,
 	},
 	
 	-- 녹차 건조대 말린것
-	cup_blacktea_hot =
+	cup_blacktea =
 	{
 		test = function(boilier, name, tags) return names.tealeaves_dried and names.tealeaves_dried >= 2 and not tags.frozen and not tags.meat and not tags.egg end,
 		priority = 1,
@@ -1005,37 +310,11 @@ local drink =
 		sanity = 20,
 		thirst = 78,
 		temperature = 15,
-		temperatureduration = TUNING.FOOD_TEMP_AVERAGE,
+		temperatureduration = TUNING.FOOD_TEMP_LONG,
 		cooktime = 20,
 	},
 	
-	cup_honeyblacktea_hot =
-	{
-		test = function(boilier, name, tags) return names.tealeaves_dried and names.tealeaves_dried >= 2 and tags.sweetener and not tags.frozen and not tags.meat and not tags.egg end,
-		priority = 2,
-		health = 21,
-		hunger = 19,
-		sanity = 30,
-		thirst = 89,
-		temperature = 20,
-		temperatureduration = TUNING.FOOD_TEMP_AVERAGE,
-		cooktime = 20,
-	},
-	
-	cup_milkblacktea_hot =
-	{
-		test = function(boilier, name, tags) return names.tealeaves_dried and names.tealeaves_dried >= 2 and tags.sweetener and tags.dairy and not tags.frozen and not tags.meat and not tags.egg end,
-		priority = 3,
-		health = 35,
-		hunger = 26,
-		sanity = 40,
-		thirst = 100,
-		temperature = 25,
-		temperatureduration = TUNING.FOOD_TEMP_AVERAGE,
-		cooktime = 25,
-	},
-	
-	cup_blacktea_cold =
+	cup_blacktea_iced =
 	{
 		test = function(boilier, name, tags) return names.tealeaves_dried and names.tealeaves_dried >= 2 and tags.frozen and tags.frozen >= 1 and not tags.meat and not tags.egg end,
 		priority = 1,
@@ -1044,38 +323,12 @@ local drink =
 		sanity = 20,
 		thirst = 78,
 		temperature = -15,
-		temperatureduration = TUNING.FOOD_TEMP_AVERAGE,
+		temperatureduration = TUNING.FOOD_TEMP_LONG,
 		cooktime = 20,
-	},
-	
-	cup_honeyblacktea_cold =
-	{
-		test = function(boilier, name, tags) return names.tealeaves_dried and names.tealeaves_dried >= 2 and tags.sweetener and tags.frozen and tags.frozen >= 1 and not tags.meat and not tags.egg end,
-		priority = 2,
-		health = 21,
-		hunger = 19,
-		sanity = 30,
-		thirst = 89,
-		temperature = -20,
-		temperatureduration = TUNING.FOOD_TEMP_AVERAGE,
-		cooktime = 20,
-	},
-	
-	cup_milkblacktea_cold =
-	{
-		test = function(boilier, name, tags) return names.tealeaves_dried and names.tealeaves_dried >= 2 and tags.sweetener and tags.dairy and tags.frozen and tags.frozen >= 1 and not tags.meat and not tags.egg end,
-		priority = 3,
-		health = 35,
-		hunger = 26,
-		sanity = 40,
-		thirst = 100,
-		temperature = -25,
-		temperatureduration = TUNING.FOOD_TEMP_AVERAGE,
-		cooktime = 25,
 	},
 	
 	-- 동굴 고사리
-	cup_fuer_hot =
+	cup_fuer =
 	{
 		test = function(boilier, name, tags) return names.foliage and names.foliage >= 2 and not tags.frozen and not tags.meat and not tags.egg end,
 		priority = 1,
@@ -1083,26 +336,11 @@ local drink =
 		hunger = 24,
 		sanity = 30,
 		thirst = 89,
-		temperature = 15,
-		temperatureduration = TUNING.FOOD_TEMP_AVERAGE,
-		cooktime = 20,
-	},
-	
-	cup_fuer_cold =
-	{
-		test = function(boilier, name, tags) return names.foliage and names.foliage >= 2 and tags.frozen and tags.frozen >= 1 and not tags.meat and not tags.egg end,
-		priority = 1,
-		health = 27,
-		hunger = 24,
-		sanity = 30,
-		thirst = 89,
-		temperature = -15,
-		temperatureduration = TUNING.FOOD_TEMP_AVERAGE,
 		cooktime = 20,
 	},
 	
 	-- 꽃을 섞으면 나오는 결과물
-	cup_mixflower_hot =
+	cup_mixflower =
 	{
 		test = function(boilier, name, tags) return tags.decoration and tags.decoration >= 2 and not tags.frozen and not tags.meat and not tags.egg end,
 		priority = 0,
@@ -1110,26 +348,11 @@ local drink =
 		hunger = 5,
 		sanity = 11,
 		thirst = 36,
-		temperature = 10,
-		temperatureduration = TUNING.FOOD_TEMP_BRIEF,
-		cooktime = 20,
-	},
-	
-	cup_mixflower_cold =
-	{
-		test = function(boilier, name, tags) return tags.decoration and tags.decoration >= 2 and tags.frozen and tags.frozen >= 1 and not tags.meat and not tags.egg end,
-		priority = 0,
-		health = 7,
-		hunger = 5,
-		sanity = 11,
-		thirst = 36,
-		temperature = -10,
-		temperatureduration = TUNING.FOOD_TEMP_BRIEF,
 		cooktime = 20,
 	},
 	
 	-- 일반 꽃잎
-	cup_hibiscus_hot =
+	cup_hibiscus =
 	{
 		test = function(boilier, name, tags) return (( names.petals or 0 ) + ( names.moon_tree_blossom or 0 ) >= 2) and not tags.frozen and not tags.meat and not tags.egg end,
 		priority = 1,
@@ -1142,21 +365,8 @@ local drink =
 		cooktime = 20,
 	},
 	
-	cup_hibiscus_cold =
-	{
-		test = function(boilier, name, tags) return (( names.petals or 0 ) + ( names.moon_tree_blossom or 0 ) >= 2) and tags.frozen and tags.frozen >= 1 and not tags.meat and not tags.egg end,
-		priority = 1,
-		health = 15,
-		hunger = 10,
-		sanity = 22,
-		thirst = 73,
-		temperature = -17,
-		temperatureduration = TUNING.FOOD_TEMP_AVERAGE,
-		cooktime = 20,
-	},
-	
 	-- 악마 꽃잎(몬스터태그 확인해서 효과주기)
-	cup_bitter_hot =
+	cup_bitter =
 	{
 		test = function(boilier, name, tags) return tags.monster and tags.monster >= 1.5 and not tags.frozen end,
 		priority = 2,
@@ -1170,47 +380,13 @@ local drink =
 		        --eater.components.hunger:DoDelta(-10)
             --end,
 		thirst = 80,
-		temperature = 5,
-		temperatureduration = TUNING.FOOD_TEMP_AVERAGE,
 		cooktime = 23,
 	},
-	
-	cup_bitter_cold =
-	{
-		test = function(boilier, name, tags) return tags.monster and tags.monster >= 1.5 and tags.frozen and tags.frozen >= 1 end,
-		priority = 2,
-            --if eater:HasTag("monster") and eater:HasTag("player") then
-		       --eater.components.health:DoDelta(37)
-		       --eater.components.sanity:DoDelta(25)
-            --end,
-	        --if not eater:HasTag("monster") and eater:HasTag("player") then
-		        --eater.components.health:DoDelta(-10)
-		        --eater.components.sanity:DoDelta(-20)
-		        --eater.components.hunger:DoDelta(-10)
-            --end,
-		thirst = 80,
-		temperature = -5,
-		temperatureduration = TUNING.FOOD_TEMP_AVERAGE,
-		cooktime = 23,
-	},
-	
+
 	-- 선인장 꽃잎
-	cup_cactusflower_hot =
+	cup_cactusflower =
 	{
 		test = function(boilier, name, tags) return names.cactus_flower and names.cactus_flower >= 2 and not tags.frozen and not tags.meat and not tags.egg end,
-		priority = 1,
-		health = 10,
-		hunger = 10,
-		sanity = 40,
-		thirst = 84,
-		temperature = 17,
-		temperatureduration = TUNING.FOOD_TEMP_AVERAGE,
-		cooktime = 20,
-	},
-	
-	cup_cactusflower_hot =
-	{
-		test = function(boilier, name, tags) return tags.cactus_flower and tags.cactus_flower >= 2 and tags.frozen and tags.frozen >= 1 and not tags.meat and not tags.egg end,
 		priority = 1,
 		health = 10,
 		hunger = 10,
@@ -1221,7 +397,7 @@ local drink =
 		cooktime = 20,
 	},
 	
-	cup_lotusflower_hot =
+	cup_lotusflower =
 	{
 		test = function(boilier, name, tags) return (( names.lotus_flower or 0 ) + ( names.kyno_lotus or 0 ) >= 2) and not tags.frozen and not tags.meat and not tags.egg end,
 		priority = 1,
@@ -1234,20 +410,7 @@ local drink =
 		cooktime = 20,
 	},
 	
-	cup_lotus_flower_cold =
-	{
-		test = function(boilier, name, tags) return (( names.lotus_flower or 0 ) + ( names.kyno_lotus or 0 ) >= 2) and tags.frozen and tags.frozen >= 1 and not tags.meat and not tags.egg end,
-		priority = 1,
-		health = 2,
-		hunger = 25,
-		sanity = 30,
-		thirst = 84,
-		temperature = -17,
-		temperatureduration = TUNING.FOOD_TEMP_AVERAGE,
-		cooktime = 20,
-	},
-	
-	--일시적으로 유령으로 만드는 차(hot, cold 없음)[추가해야함]
+	--일시적으로 유령으로 만드는 차[추가해야함]
 	cup_suspicious_hibiscus =
 	{
 		test = function(boilier, name, tags) return names.forgetmelots and names.firenettles and names.tillweeds end,
