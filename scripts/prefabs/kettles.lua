@@ -1,3 +1,7 @@
+require "prefabutil"
+
+local boiling = require("cooking")
+
 local assets=
 {
     Asset("ANIM", "anim/kettle.zip"),-- В папке anim должен быть архив с чем то, с чем - узнаю потом --foxy Ты делаешь анимации в спрайтере, суёшь их в exported А потом прописываешь анимацию сюда, стоб игра её загружала. Exported можно удалить, он тебе не нуженю Только место занимает
