@@ -77,6 +77,25 @@ local function donecookfn(inst)
     end
 end
 
+local function onopen(inst)
+    if not inst:HasTag("burnt") then
+        inst.AnimState:PlayAnimation("cooking_pre_loop")
+        inst.SoundEmitter:KillSound("snd")
+        inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_open")
+        inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot", "snd")
+    end
+end
+
+local function onclose(inst)
+    if not inst:HasTag("burnt") then
+        if not inst.components.stewer:IsCooking() then
+            inst.AnimState:PlayAnimation("idle_empty")
+            inst.SoundEmitter:KillSound("snd")
+        end
+        inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_close")
+    end
+end
+
 local function ShouldAcceptItem(inst, item, giver)
 	if item.prefab == ("ice") then
 	    if inst.kettledrink == nil then
@@ -122,41 +141,6 @@ local function ShouldAcceptItem(inst, item, giver)
 		        return false
 	        end
 	    end
-	end
-	
-	if inst.kettlecook ~= true then
-	    if inst.kettlewater ~= true then
-		    if (item:HasTag("des_bucket") or item:HasTag("bottle")) then
-			    if item.components.cwater.current >= 50 and item.components.cwater:GetRealSaltPercent() < 0.25 and item.components.cwater:GetRealBadPercent() < 0.25 then
-                    item.components.cwater:DoDelta(-50)
-	                inst.kettlecooktime = TUNING.KETTLE_WATER
-	                inst.kettledrinkanim = "water"
-			        inst.kettledrink = "cup_water"
-			        cook(inst)	
-		        elseif item.components.cwater.current < 50 then
-		            giver.components.talker:Say("I can`t, need more water!")
-		        elseif item.components.cwater:GetRealSaltPercent() > 0.25 then
-		            giver.components.talker:Say("I can`t, water salt!")
-		        elseif item.components.cwater:GetRealBadPercent() > 0.25 then
-		            giver.components.talker:Say("Water is too stale.")
-		        end
-			end
-		elseif inst.kettlewater == true then
-		    if item:HasTag("bottle") then
-		        if inst.savebrew then
-				    item.components.cwater.current = 50
-		            item.components.cwater.special_drink = inst.savebrew
-		        else
-		            item.components.cwater:DoDelta(50)
-		        end
-		        inst.AnimState:PlayAnimation("closet",true)
-	            inst.SoundEmitter:PlaySound("dontstarve/creatures/pengull/splash")
-		        inst.kettledrink = nil
-		        inst.kettledrinkanim = "closet"
-	            inst.savebrew = nil
-		        inst.kettlewater = false
-		    end
-		end
 	end
 end
 
@@ -186,109 +170,6 @@ end
 	--inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_rattle", "snd") -- Играем звук готовки
 --end
 
-
-
-local function ShouldAcceptItem(inst, item, giver)
-	if item:HasTag("watercan") then
-	    if inst.kettlewater ~= true then
-		    if inst.kettlecook ~= true then
-		        return true
-	        else
-		        return false
-	        end
-	    end
-	end
-	-- Тут вписываем всё что можно дать в качестве заварки
-	if item.prefab == ("tee_s") or item.prefab == ("kyno_coffeebeans_cooked") or item.prefab == ("tee_r") or item.prefab == ("tee_r2") or item.prefab == ("tee_m") or item.prefab == ("tee_g") or item.prefab == ("spidergland") or item:HasTag("kettlebrew") then
-		if inst.kettlewater == true then
-		    if inst.kettlecook ~= true then
-		        return true
-	        else
-		        return false
-	        end
-	    end
-	end
-	if item.prefab == ("ice") then
-	    if inst.kettledrink == nil then
-		    if inst.kettlecook ~= true then
-		        return true
-	        else
-		        return false
-	        end
-	    end
-	end
-	if item.prefab == ("cup") then
-	    if inst.kettledrink ~= nil then
-		    if inst.kettlecook ~= true then
-		        return true
-	        else
-		        return false
-	        end
-	    end
-	end
-	if item.prefab == ("cup_dirty") then
-	    if inst.kettledrink == nil then
-		    if inst.kettlecook ~= true then
-		        return true
-	        else
-		        return false
-	        end
-	    end
-	end
-	if item.prefab == ("cup_water") then
-	    if inst.kettledrink == nil then
-		    if inst.kettlecook ~= true then
-		        return true
-	        else
-		        return false
-	        end
-	    end
-	end
-		if item.prefab == ("bucket") then
-	    if inst.kettledrink == "cup_water" then
-		    if inst.kettlecook ~= true then
-		        return true
-	        else
-		        return false
-	        end
-	    end
-	end
-	
-	if inst.kettlecook ~= true then
-	    if inst.kettlewater ~= true then
-		    if (item:HasTag("des_bucket") or item:HasTag("bottle")) then
-			    if item.components.cwater.current >= 50 and item.components.cwater:GetRealSaltPercent() < 0.25 and item.components.cwater:GetRealBadPercent() < 0.25 then
-                    item.components.cwater:DoDelta(-50)
-	                inst.kettlecooktime = TUNING.KETTLE_WATER
-	                inst.kettledrinkanim = "water"
-			        inst.kettledrink = "cup_water"
-			        cook(inst)	
-		        elseif item.components.cwater.current < 50 then
-		            giver.components.talker:Say("I can`t, need more water!")
-		        elseif item.components.cwater:GetRealSaltPercent() > 0.25 then
-		            giver.components.talker:Say("I can`t, water salt!")
-		        elseif item.components.cwater:GetRealBadPercent() > 0.25 then
-		            giver.components.talker:Say("Water is too stale.")
-		        end
-			end
-		elseif inst.kettlewater == true then
-		    if item:HasTag("bottle") then
-		        if inst.savebrew then
-				    item.components.cwater.current = 50
-		            item.components.cwater.special_drink = inst.savebrew
-		        else
-		            item.components.cwater:DoDelta(50)
-		        end
-		        inst.AnimState:PlayAnimation("closet",true)
-	            inst.SoundEmitter:PlaySound("dontstarve/creatures/pengull/splash")
-		        inst.kettledrink = nil
-		        inst.kettledrinkanim = "closet"
-	            inst.savebrew = nil
-		        inst.kettlewater = false
-		    end
-		end
-	end
-end
 -- inst.kettlewater = true/fasle есть ли в чайнике вода для заварок
 -- inst.kettlecook = true/false Если чайник сейчас готовит напиток
 local function OnGetItemFromPlayer(inst, giver, item)
@@ -336,115 +217,6 @@ local function OnGetItemFromPlayer(inst, giver, item)
 			cook(inst)
 		end
 	end
-	-- Пример как добовлять напитки:
-	if item.prefab == ("tee_s") then -- Что мы дожны дать в качестве заварки
-	   if inst.kettlewater == true and inst.kettlecook ~= true then -- Проверем еслить ли вода и готовит ли сейчас чайник
-	        inst.kettlecooktime = TUNING.KETTLE_TEA -- Задаём время готовки напитка
-	        inst.kettledrinkanim = "tea" -- Анимация на которую смениться чайник после конца готовки
-			inst.kettledrink = "cup_tee" -- Напиток который можно будет налить в чашку после конца готовки
-			inst.savebrew = item.prefab
-			cook(inst) -- Вызываем готовку
-		end
-    end
-	if item.prefab == ("kyno_coffeebeans_cooked") then
-	   if inst.kettlewater == true and inst.kettlecook ~= true then
-	        inst.kettlecooktime = TUNING.KETTLE_COFFE
-	        inst.kettledrinkanim = "coffe"
-			inst.kettledrink = "cup_coffe"
-			inst.savebrew = item.prefab
-			cook(inst)
-		end
-    end
-	if item.prefab == ("tee_r") then
-	   if inst.kettlewater == true and inst.kettlecook ~= true then
-	        inst.kettlecooktime = TUNING.KETTLE_DRAGON
-	        inst.kettledrinkanim = "red"
-			inst.kettledrink = "cup_red"
-			inst.savebrew = item.prefab
-			cook(inst)
-		end
-    end
-	if item.prefab == ("tee_r2") then
-	   if inst.kettlewater == true and inst.kettlecook ~= true then
-	        inst.kettlecooktime = TUNING.KETTLE_MONSTER
-	        inst.kettledrinkanim = "red"
-			inst.kettledrink = "cup_hibiscus"
-			inst.savebrew = item.prefab
-			cook(inst)
-		end
-    end
-	if item.prefab == ("tee_m") then
-	   if inst.kettlewater == true and inst.kettlecook ~= true then
-	        inst.kettlecooktime = TUNING.KETTLE_MONSTER
-	        inst.kettledrinkanim = "dead"
-			inst.kettledrink = "cup_monster"
-			inst.savebrew = item.prefab
-			cook(inst)
-		end
-    end
-	if item.prefab == ("spidergland") then
-	   if inst.kettlewater == true and inst.kettlecook ~= true then
-	        inst.kettlecooktime = TUNING.KETTLE_MONSTER
-	        inst.kettledrinkanim = "dead"
-			inst.kettledrink = "cup_spider"
-			inst.savebrew = item.prefab
-			cook(inst)
-		end
-	end
-	if item.prefab == ("tea_berry") then
-	   if inst.kettlewater == true and inst.kettlecook ~= true then
-	        inst.kettlecooktime = TUNING.KETTLE_TEA
-	        inst.kettledrinkanim = "red"
-			inst.kettledrink = "cup_berry"
-			inst.savebrew = item.prefab
-			cook(inst)
-		end
-	end
-	if item.prefab == ("tea_carrot") then
-	   if inst.kettlewater == true and inst.kettlecook ~= true then
-	        inst.kettlecooktime = TUNING.KETTLE_TEA
-	        inst.kettledrinkanim = "yellow"
-			inst.kettledrink = "cup_carrot"
-			inst.savebrew = item.prefab
-			cook(inst)
-		end
-	end
-	if item.prefab == ("tea_cactus") then
-	   if inst.kettlewater == true and inst.kettlecook ~= true then
-	        inst.kettlecooktime = TUNING.KETTLE_TEA
-	        inst.kettledrinkanim = "tea"
-			inst.kettledrink = "cup_cactus"
-			inst.savebrew = item.prefab
-			cook(inst)
-		end
-	end
-	if item.prefab == ("tea_honey") then
-	   if inst.kettlewater == true and inst.kettlecook ~= true then
-	        inst.kettlecooktime = TUNING.KETTLE_TEA
-	        inst.kettledrinkanim = "yellow"
-			inst.kettledrink = "cup_honey"
-			inst.savebrew = item.prefab
-			cook(inst)
-		end
-	end
-	if item.prefab == ("tea_banana") then
-	   if inst.kettlewater == true and inst.kettlecook ~= true then
-	        inst.kettlecooktime = TUNING.KETTLE_TEA
-	        inst.kettledrinkanim = "dead"
-			inst.kettledrink = "cup_banana"
-			inst.savebrew = item.prefab
-			cook(inst)
-		end
-	end
-	if item.prefab == ("tee_g") then
-	   if inst.kettlewater == true and inst.kettlecook ~= true then
-	        inst.kettlecooktime = TUNING.KETTLE_ABI
-	        inst.kettledrinkanim = "red"
-			inst.kettledrink = "cup_abi"
-			inst.savebrew = item.prefab
-			cook(inst)
-		end
-    end
 	if item.prefab == ("cup") then
 	   if inst.kettlecook ~= true and inst.kettledrink ~= nil then
 		    giver.components.inventory:GiveItem(SpawnPrefab(inst.kettledrink))
@@ -454,6 +226,9 @@ local function OnGetItemFromPlayer(inst, giver, item)
 		    inst.kettledrinkanim = "closet"
 			inst.savebrew = nil
 		    inst.kettlewater = false
+			if inst.components.container ~= nil then
+				inst.components.container.canbeopened = false
+			end
 		end
 	end
 	if item.prefab == ("bucket") then
@@ -465,6 +240,9 @@ local function OnGetItemFromPlayer(inst, giver, item)
 		    inst.kettledrinkanim = "closet"
 			inst.savebrew = nil
 		    inst.kettlewater = false
+			if inst.components.container ~= nil then
+				inst.components.container.canbeopened = true
+			end
 		end
 	end
 end
@@ -542,6 +320,13 @@ local function kettle()
     if not TheWorld.ismastersim then
         return inst
     end
+	
+	inst:AddComponent("container")
+    inst.components.container.onopenfn = onopen
+    inst.components.container.onclosefn = onclose
+    inst.components.container.skipclosesnd = true
+    inst.components.container.skipopensnd = true
+	inst.components.container.canbeopened = false
 
     inst:AddComponent("inspectable")
 	inst:ListenForEvent("onbuilt", onbuilt)
