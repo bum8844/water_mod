@@ -29,37 +29,164 @@ local function onhammered(inst, worker)
     inst:Remove()
 end
 
-local function cook_done(inst)
-    if inst.components.inventoryitem then
-	    inst.components.inventoryitem.canbepickedup = true
+local function onhit(inst, worker)
+    if not inst:HasTag("burnt") then
+        if inst.components.stewer:IsCooking() then
+            inst.AnimState:PlayAnimation("closet")
+            inst.AnimState:PushAnimation("cooking", true)
+            inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_close")
+        elseif inst.components.stewer:IsDone() then
+            inst.AnimState:PlayAnimation("open")
+            inst.AnimState:PushAnimation("open", false)
+        else
+            if inst.components.container ~= nil and inst.components.container:IsOpen() then
+                inst.components.container:Close()
+                --onclose will trigger sfx already
+            else
+                inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_close")
+            end
+            inst.AnimState:PlayAnimation("open")
+            inst.AnimState:PushAnimation("open", false)
+        end
+    end
+end
+
+local function startcookfn(inst)
+    if not inst:HasTag("burnt") then
+		if inst.components.inventoryitem then
+			inst.components.inventoryitem.canbepickedup = false
+		end
+        inst.AnimState:PlayAnimation("cooking", true)
+        inst.SoundEmitter:KillSound("snd")
+        inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_rattle", "snd")
+        inst.Light:Enable(true)
+    end
+end
+
+local function donecookfn(inst)
+    if not inst:HasTag("burnt") then
+	    if inst.components.inventoryitem then
+			inst.components.inventoryitem.canbepickedup = true
+		end
+        inst.AnimState:PlayAnimation("cooking")
+        inst.AnimState:PushAnimation(inst.kettledrinkanim,true)
+        ShowProduct(inst)
+        inst.SoundEmitter:KillSound("snd")
+        inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_finish")
+        inst.Light:Enable(false)
+    end
+end
+
+local function ShouldAcceptItem(inst, item, giver)
+	if item.prefab == ("ice") then
+	    if inst.kettledrink == nil then
+		    if inst.kettlecook ~= true then
+		        return true
+	        else
+		        return false
+	        end
+	    end
 	end
-	inst.Light:Enable(false)
+	if item.prefab == ("cup") then
+	    if inst.kettledrink ~= nil then
+		    if inst.kettlecook ~= true then
+		        return true
+	        else
+		        return false
+	        end
+	    end
+	end
+	if item.prefab == ("cup_dirty") then
+	    if inst.kettledrink == nil then
+		    if inst.kettlecook ~= true then
+		        return true
+	        else
+		        return false
+	        end
+	    end
+	end
+	if item.prefab == ("cup_water") then
+	    if inst.kettledrink == nil then
+		    if inst.kettlecook ~= true then
+		        return true
+	        else
+		        return false
+	        end
+	    end
+	end
+		if item.prefab == ("bucket") then
+	    if inst.kettledrink == "cup_water" then
+		    if inst.kettlecook ~= true then
+		        return true
+	        else
+		        return false
+	        end
+	    end
+	end
+	
+	if inst.kettlecook ~= true then
+	    if inst.kettlewater ~= true then
+		    if (item:HasTag("des_bucket") or item:HasTag("bottle")) then
+			    if item.components.cwater.current >= 50 and item.components.cwater:GetRealSaltPercent() < 0.25 and item.components.cwater:GetRealBadPercent() < 0.25 then
+                    item.components.cwater:DoDelta(-50)
+	                inst.kettlecooktime = TUNING.KETTLE_WATER
+	                inst.kettledrinkanim = "water"
+			        inst.kettledrink = "cup_water"
+			        cook(inst)	
+		        elseif item.components.cwater.current < 50 then
+		            giver.components.talker:Say("I can`t, need more water!")
+		        elseif item.components.cwater:GetRealSaltPercent() > 0.25 then
+		            giver.components.talker:Say("I can`t, water salt!")
+		        elseif item.components.cwater:GetRealBadPercent() > 0.25 then
+		            giver.components.talker:Say("Water is too stale.")
+		        end
+			end
+		elseif inst.kettlewater == true then
+		    if item:HasTag("bottle") then
+		        if inst.savebrew then
+				    item.components.cwater.current = 50
+		            item.components.cwater.special_drink = inst.savebrew
+		        else
+		            item.components.cwater:DoDelta(50)
+		        end
+		        inst.AnimState:PlayAnimation("closet",true)
+	            inst.SoundEmitter:PlaySound("dontstarve/creatures/pengull/splash")
+		        inst.kettledrink = nil
+		        inst.kettledrinkanim = "closet"
+	            inst.savebrew = nil
+		        inst.kettlewater = false
+		    end
+		end
+	end
+end
+
+--local function cook_done(inst)
+
+	--inst.Light:Enable(false)
     --if inst.kettledrinkanim ~= "water" then
 	--    inst.kettlewater = false
 	--end
-	if inst.kettledrinkanim == "water" then
-	    inst.kettlewater = true
-	end
-    inst.kettlecook = false -- Чайник теперь не готовит
-	inst.AnimState:PlayAnimation(inst.kettledrinkanim,true) -- Задаём анимацию для чайника которую мы указали
-	inst.SoundEmitter:KillSound("snd") -- Убиваем звук готовки
-	inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_finish") -- Играем звук конца готовки
-end
+	--if inst.kettledrinkanim == "water" then
+	    --inst.kettlewater = true
+	--end
+    --inst.kettlecook = false -- Чайник теперь не готовит
+	--inst.AnimState:PlayAnimation(inst.kettledrinkanim,true) -- Задаём анимацию для чайника которую мы указали
+	--inst.SoundEmitter:KillSound("snd") -- Убиваем звук готовки
+	--inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_finish") -- Играем звук конца готовки
+--end
 
-local function cook(inst)
-    if inst.components.inventoryitem then
-	    inst.components.inventoryitem.canbepickedup = false
-	end
-	inst.Light:Enable(true)
-    inst.kettlecook = true -- Чайник теперь в режиме готовки
-	inst:DoTaskInTime(inst.kettlecooktime, cook_done) -- Вызываем функцию конца готовки через время которое мы указали
-    inst.AnimState:PlayAnimation("cooking", true) -- Играем анимацию готовки
-	inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_rattle", "snd") -- Играем звук готовки
-end
+--local function cook(inst)
+    --if inst.components.inventoryitem then
+	    --inst.components.inventoryitem.canbepickedup = false
+	--end
+	--inst.Light:Enable(true)
+    --inst.kettlecook = true -- Чайник теперь в режиме готовки
+	--inst:DoTaskInTime(inst.kettlecooktime, cook_done) -- Вызываем функцию конца готовки через время которое мы указали
+    --inst.AnimState:PlayAnimation("cooking", true) -- Играем анимацию готовки
+	--inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_rattle", "snd") -- Играем звук готовки
+--end
 
-local function onhit(inst, worker)
-    inst.AnimState:PlayAnimation("open",true)
-end
+
 
 local function ShouldAcceptItem(inst, item, giver)
 	if item:HasTag("watercan") then
