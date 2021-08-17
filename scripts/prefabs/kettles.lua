@@ -60,9 +60,6 @@ local function startcookfn(inst)
         inst.SoundEmitter:KillSound("snd")
         inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_rattle", "snd")
         inst.Light:Enable(true)			
-		if inst.components.container ~= nil and  then-- 가지고 있는 아이템 확인해주는 코드 넣어주세요
-			inst.components.container.canbeopened = true
-		end
     end
 end
 
@@ -77,7 +74,9 @@ local function donecookfn(inst)
         inst.SoundEmitter:KillSound("snd")
         inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_finish")
         inst.Light:Enable(false)
-		
+		if inst.components.container ~= nil and then-- 가지고 있는 아이템 확인해주는 코드 넣어주세요( == cup_water)
+			inst.components.container.canbeopened = true
+		end
     end
 end
 
