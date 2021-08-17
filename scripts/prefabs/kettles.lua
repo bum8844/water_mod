@@ -59,7 +59,10 @@ local function startcookfn(inst)
         inst.AnimState:PlayAnimation("cooking", true)
         inst.SoundEmitter:KillSound("snd")
         inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_rattle", "snd")
-        inst.Light:Enable(true)
+        inst.Light:Enable(true)			
+		if inst.components.container ~= nil and  then-- 가지고 있는 아이템 확인해주는 코드 넣어주세요
+			inst.components.container.canbeopened = true
+		end
     end
 end
 
@@ -74,6 +77,7 @@ local function donecookfn(inst)
         inst.SoundEmitter:KillSound("snd")
         inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_finish")
         inst.Light:Enable(false)
+		
     end
 end
 
@@ -241,7 +245,7 @@ local function OnGetItemFromPlayer(inst, giver, item)
 			inst.savebrew = nil
 		    inst.kettlewater = false
 			if inst.components.container ~= nil then
-				inst.components.container.canbeopened = true
+				inst.components.container.canbeopened = false
 			end
 		end
 	end
