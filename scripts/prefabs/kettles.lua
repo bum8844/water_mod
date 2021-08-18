@@ -113,6 +113,7 @@ end
 local function harvestfn(inst)
     if not inst:HasTag("burnt") and item.prefab == ("cup" or "bucket") then
         inst.AnimState:PlayAnimation("idle_empty")
+	inst.SoundEmitter:PlaySound("dontstarve/creatures/pengull/splash")
         inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_close")
     end
 end
