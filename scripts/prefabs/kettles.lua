@@ -32,12 +32,12 @@ end
 local function onhit(inst, worker)
     if not inst:HasTag("burnt") then
         if inst.components.stewer:IsCooking() then
-            inst.AnimState:PlayAnimation("closet")
-            inst.AnimState:PushAnimation("cooking", true)
+            inst.AnimState:PlayAnimation("hit_cooking")
+            inst.AnimState:PushAnimation("cooking_loop", true)
             inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_close")
         elseif inst.components.stewer:IsDone() then
-            inst.AnimState:PlayAnimation("open")
-            inst.AnimState:PushAnimation("open", false)
+            inst.AnimState:PlayAnimation("hit_full")
+            inst.AnimState:PushAnimation("idle_full", false)
         else
             if inst.components.container ~= nil and inst.components.container:IsOpen() then
                 inst.components.container:Close()
@@ -45,8 +45,8 @@ local function onhit(inst, worker)
             else
                 inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_close")
             end
-            inst.AnimState:PlayAnimation("open")
-            inst.AnimState:PushAnimation("open", false)
+            inst.AnimState:PlayAnimation("hit_empty")
+            inst.AnimState:PushAnimation("idle_empty", false)
         end
     end
 end
@@ -56,10 +56,21 @@ local function startcookfn(inst)
 		if inst.components.inventoryitem then
 			inst.components.inventoryitem.canbepickedup = false
 		end
-        inst.AnimState:PlayAnimation("cooking", true)
+        inst.AnimState:PlayAnimation("cooking_loop", true)
         inst.SoundEmitter:KillSound("snd")
         inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_rattle", "snd")
         inst.Light:Enable(true)			
+    end
+end
+
+local function continuedonefn(inst) 
+    if not inst:HasTag("burnt") then
+		if then -- 가지고 있는 아이템 확인해주는 코드 넣어주세요( == cup_water)
+			inst.AnimState:PlayAnimation("idle_full_water")
+		else
+			inst.AnimState:PlayAnimation("idle_full")
+			ShowProduct(inst)
+		end
     end
 end
 
@@ -68,13 +79,13 @@ local function donecookfn(inst)
 	    if inst.components.inventoryitem then
 			inst.components.inventoryitem.canbepickedup = true
 		end
-        inst.AnimState:PlayAnimation("cooking")
-        inst.AnimState:PushAnimation(inst.kettledrinkanim,true)
+        inst.AnimState:PlayAnimation("cooking_pst")
+        inst.AnimState:PushAnimation("idle_full", false)
         ShowProduct(inst)
         inst.SoundEmitter:KillSound("snd")
         inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_finish")
         inst.Light:Enable(false)
-		if inst.components.container ~= nil and then-- 가지고 있는 아이템 확인해주는 코드 넣어주세요( == cup_water)
+		if inst.components.container ~= nil and then -- 가지고 있는 아이템 확인해주는 코드 넣어주세요( == cup_water)
 			inst.components.container.canbeopened = true
 		end
     end
@@ -82,7 +93,7 @@ end
 
 local function onopen(inst)
     if not inst:HasTag("burnt") then
-        inst.AnimState:PlayAnimation("cooking_pre_loop")
+        inst.AnimState:PlayAnimation("idle_full_water")
         inst.SoundEmitter:KillSound("snd")
         inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_open")
         inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot", "snd")
@@ -92,11 +103,32 @@ end
 local function onclose(inst)
     if not inst:HasTag("burnt") then
         if not inst.components.stewer:IsCooking() then
-            inst.AnimState:PlayAnimation("idle_empty")
+            inst.AnimState:PlayAnimation("idle_full_water")
             inst.SoundEmitter:KillSound("snd")
         end
         inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_close")
     end
+end
+
+local function harvestfn(inst)
+    if not inst:HasTag("burnt") and item.prefab == ("cup" or "bucket") then
+        inst.AnimState:PlayAnimation("idle_empty")
+        inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_close")
+    end
+end
+
+local function getstatus(inst)
+    return (inst:HasTag("burnt") and "BURNT")
+        or (inst.components.stewer:IsDone() and "DONE")
+        or (not inst.components.stewer:IsCooking() and "EMPTY")
+        or (inst.components.stewer:GetTimeToCook() > 15 and "COOKING_LONG")
+        or "COOKING_SHORT"
+end
+
+local function onbuilt(inst)
+    inst.AnimState:PlayAnimation("place")
+    inst.AnimState:PushAnimation("idle_empty", false)
+    inst.SoundEmitter:PlaySound("dontstarve/common/cook_pot_craft")
 end
 
 local function ShouldAcceptItem(inst, item, giver)
@@ -147,34 +179,6 @@ local function ShouldAcceptItem(inst, item, giver)
 	end
 end
 
---local function cook_done(inst)
-
-	--inst.Light:Enable(false)
-    --if inst.kettledrinkanim ~= "water" then
-	--    inst.kettlewater = false
-	--end
-	--if inst.kettledrinkanim == "water" then
-	    --inst.kettlewater = true
-	--end
-    --inst.kettlecook = false -- Чайник теперь не готовит
-	--inst.AnimState:PlayAnimation(inst.kettledrinkanim,true) -- Задаём анимацию для чайника которую мы указали
-	--inst.SoundEmitter:KillSound("snd") -- Убиваем звук готовки
-	--inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_finish") -- Играем звук конца готовки
---end
-
---local function cook(inst)
-    --if inst.components.inventoryitem then
-	    --inst.components.inventoryitem.canbepickedup = false
-	--end
-	--inst.Light:Enable(true)
-    --inst.kettlecook = true -- Чайник теперь в режиме готовки
-	--inst:DoTaskInTime(inst.kettlecooktime, cook_done) -- Вызываем функцию конца готовки через время которое мы указали
-    --inst.AnimState:PlayAnimation("cooking", true) -- Играем анимацию готовки
-	--inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_rattle", "snd") -- Играем звук готовки
---end
-
--- inst.kettlewater = true/fasle есть ли в чайнике вода для заварок
--- inst.kettlecook = true/false Если чайник сейчас готовит напиток
 local function OnGetItemFromPlayer(inst, giver, item)
 	if item.prefab == ("bucketfull") then
 	   if inst.kettlewater ~= true and inst.kettlecook ~= true then
@@ -287,12 +291,6 @@ if data ~= nil then -- Подолнительная проверка даты, �
 end
 end
 
-local function onbuilt(inst)
-    inst.AnimState:PlayAnimation("onbuild")
-    inst.AnimState:PushAnimation("closet", true)
-    inst.SoundEmitter:PlaySound("dontstarve/common/craftable/cook_pot")
-end
-
 local function kettle()
     local inst = CreateEntity()
     inst.entity:AddTransform()
@@ -315,6 +313,16 @@ local function kettle()
     inst:AddTag("structure")
 	
 	inst:AddTag("trader")
+	
+	inst:AddTag("stewer")
+	
+	if common_postinit ~= nil then
+    common_postinit(inst)
+    end
+
+    MakeSnowCoveredPristine(inst)
+
+	inst.entity:SetPristine()
 
     inst.AnimState:SetBank("kettle")
     inst.AnimState:SetBuild("kettle")
@@ -323,6 +331,12 @@ local function kettle()
     if not TheWorld.ismastersim then
         return inst
     end
+	
+	inst:AddComponent("stewer")
+	inst.components.stewer.onstartcooking = startcookfn
+    inst.components.stewer.oncontinuecooking = continuecookfn
+    inst.components.stewer.oncontinuedone = continuedonefn
+    inst.components.stewer.ondonecooking = donecookfn
 	
 	inst:AddComponent("container")
     inst.components.container.onopenfn = onopen
