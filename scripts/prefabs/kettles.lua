@@ -113,7 +113,7 @@ end
 local function harvestfn(inst)
     if not inst:HasTag("burnt") and item.prefab == ("cup" or "bucket") then
         inst.AnimState:PlayAnimation("idle_empty")
-	inst.SoundEmitter:PlaySound("dontstarve/creatures/pengull/splash")
+		inst.SoundEmitter:PlaySound("dontstarve/creatures/pengull/splash")
         inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_close")
     end
 end
@@ -234,6 +234,7 @@ local function OnGetItemFromPlayer(inst, giver, item)
 		    inst.kettledrinkanim = "closet"
 			inst.savebrew = nil
 		    inst.kettlewater = false
+			inst.components.stewer.onharvest = harvestfn
 			if inst.components.container ~= nil then
 				inst.components.container.canbeopened = false
 			end
@@ -248,6 +249,7 @@ local function OnGetItemFromPlayer(inst, giver, item)
 		    inst.kettledrinkanim = "closet"
 			inst.savebrew = nil
 		    inst.kettlewater = false
+			inst.components.stewer.onharvest = harvestfn
 			if inst.components.container ~= nil then
 				inst.components.container.canbeopened = false
 			end
@@ -327,7 +329,7 @@ local function kettle()
 
     inst.AnimState:SetBank("kettle")
     inst.AnimState:SetBuild("kettle")
-    inst.AnimState:PlayAnimation("closet",true)
+    inst.AnimState:PlayAnimation("idle_empty",true)
 
     if not TheWorld.ismastersim then
         return inst
@@ -338,6 +340,7 @@ local function kettle()
     inst.components.stewer.oncontinuecooking = continuecookfn
     inst.components.stewer.oncontinuedone = continuedonefn
     inst.components.stewer.ondonecooking = donecookfn
+	inst.components.stewer.onharvest = harvestfn
 	
 	inst:AddComponent("container")
     inst.components.container.onopenfn = onopen
@@ -400,14 +403,34 @@ local function kettle_port()
     inst:AddTag("structure")
 	
 	inst:AddTag("trader")
+	
+	inst:AddTag("stewer")
+	
+	if common_postinit ~= nil then
+    common_postinit(inst)
+    end
 
     inst.AnimState:SetBank("kettle_port")
     inst.AnimState:SetBuild("kettle_port")
-    inst.AnimState:PlayAnimation("closet",true)
+    inst.AnimState:PlayAnimation("idle_empty",true)
 
     if not TheWorld.ismastersim then
         return inst
     end
+
+	inst:AddComponent("stewer")
+	inst.components.stewer.onstartcooking = startcookfn
+    inst.components.stewer.oncontinuecooking = continuecookfn
+    inst.components.stewer.oncontinuedone = continuedonefn
+    inst.components.stewer.ondonecooking = donecookfn
+    inst.components.stewer.onharvest = harvestfn
+	
+	inst:AddComponent("container")
+    inst.components.container.onopenfn = onopen
+    inst.components.container.onclosefn = onclose
+    inst.components.container.skipclosesnd = true
+    inst.components.container.skipopensnd = true
+	inst.components.container.canbeopened = false
 
     inst:AddComponent("inspectable")
 	inst:ListenForEvent("onbuilt", onbuilt)
@@ -502,17 +525,38 @@ local function campkettle()
     inst:AddTag("structure")
 	
 	inst:AddTag("trader")
+	
+	inst:AddTag("stewer")
+	
+	if common_postinit ~= nil then
+    common_postinit(inst)
+    end
+	
 	inst:AddTag("cooker")
 	
     inst.AnimState:SetBank("campkettle")
     inst.AnimState:SetBuild("campkettle")
-    inst.AnimState:PlayAnimation("closet",true)
+    inst.AnimState:PlayAnimation("idle_empty",true)
 
     if not TheWorld.ismastersim then
         return inst
     end
 
+	inst:AddComponent("stewer")
+	inst.components.stewer.onstartcooking = startcookfn
+    inst.components.stewer.oncontinuecooking = continuecookfn
+    inst.components.stewer.oncontinuedone = continuedonefn
+    inst.components.stewer.ondonecooking = donecookfn
+	
+	inst:AddComponent("container")
+    inst.components.container.onopenfn = onopen
+    inst.components.container.onclosefn = onclose
+    inst.components.container.skipclosesnd = true
+    inst.components.container.skipopensnd = true
+	inst.components.container.canbeopened = false
+
     inst:AddComponent("inspectable")
+	inst:ListenForEvent("onbuilt", onbuilt)
     inst:AddComponent("workable")
 	inst:AddComponent("lootdropper")
 	inst.components.workable:SetWorkAction(ACTIONS.HAMMER)
@@ -548,8 +592,8 @@ local function campkettle()
 end
 
 return Prefab( "common/kettle", kettle, assets, prefabs),
-       MakePlacer( "common/kettle_placer", "kettle", "kettle", "closet" ), -- заканчиваем файл, возращением нашего префаба с использованием пред функции
+       MakePlacer( "common/kettle_placer", "kettle", "kettle", "idle_empty" ), -- заканчиваем файл, возращением нашего префаба с использованием пред функции
        Prefab( "common/kettle_port", kettle_port, assets, prefabs),
-       MakePlacer( "common/kettle_port_placer", "kettle_port", "kettle_port", "closet" ),
+       MakePlacer( "common/kettle_port_placer", "kettle_port", "kettle_port", "idle_empty" ),
        Prefab( "common/campkettle", campkettle, assets, prefabs),
-       MakePlacer( "common/campkettle_placer", "campkettle", "campkettle", "closet" )
+       MakePlacer( "common/campkettle_placer", "campkettle", "campkettle", "idle_empty" )
