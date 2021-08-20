@@ -1,4 +1,4 @@
-local agedrink =
+local agedrinks =
 {
 
 	-- 공통적으로 hot, cold 없음
@@ -222,7 +222,7 @@ local agedrink =
 	
 }
 
-for k, v in pairs(agedrink) do
+for k, v in pairs(agedrinks) do
     v.names = k
     v.weight = v.weight or 1
     v.priority = v.priority or 0
@@ -230,4 +230,4 @@ for k, v in pairs(agedrink) do
 	v.cupsjournal_category = "beer_barrle"
 end
 
-return agedrink
+return agedrinks
