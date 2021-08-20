@@ -14,6 +14,7 @@ local TheNet = GLOBAL.TheNet
 ----------------------------------------------------------------------
 AddClassPostConstruct("components/edible", function(self)
     self.thirstvalue = 0
+    self.returnitem = nil
 end)
 
 local function getthirst(self, eater)
@@ -38,8 +39,13 @@ local function getthirst(self, eater)
     return multiplier * self.thirstvalue
 end
 
+local function isdrink(self, eater)
+    return self.inst:HasTag("drink")
+end
+
 AddComponentPostInit("edible", function(self)
     self.GetThirst = getthirst
+    self.IsDrink = isdrink
 end)
 
 ----------------------------------------------------
@@ -49,7 +55,7 @@ end)
 
 local function NewEat(self, food, feeder)
     Eat_old = self.Eat
-    local ate = Eat_old(food, feeder)
+    local ate = Eat_old(self, food, feeder)
     if ate and self.inst.components.thirst ~= nil then
         local stack_mult = self.eatwholestack and food.components.stackable ~= nil and food.components.stackable:StackSize() or 1
         local base_mlt = self.inst.components.foodmemory ~= nil and self.inst.components.foodmemory:GetFoodMultiplier(food.prefab) or 1
@@ -64,7 +70,11 @@ AddComponentPostInit("eater", function(self)
     self.Eat = NewEat
 end)
 
-------------------------------------------------------
+-------------------------------------------------------
+--Adding state "drink"
+--Action-handler for 'ACTIONS.EAT' is modified to enter
+--state "drink" when the food is considered as "drink"
+-------------------------------------------------------
 
 local State = GLOBAL.State
 local TimeEvent = GLOBAL.TimeEvent
@@ -72,9 +82,9 @@ local EventHandler = GLOBAL.EventHandler
 local FRAMES = GLOBAL.FRAMES
 local SpawnPrefab = GLOBAL.SpawnPrefab
 
-local fili_cupdrink_state = GLOBAL.State{
+local drink_state = State{
         name = "drink",
-        tags = { "busy" },
+        tags = { "busy", "nodangle" },
 
         onenter = function(inst, foodinfo)
             inst.components.locomotor:Stop()
@@ -120,9 +130,9 @@ local fili_cupdrink_state = GLOBAL.State{
         end,
 }
 
-local fili_cupdrink_state_client = GLOBAL.State{
-        name = "fili_cupdrink_action",
-        tags = { "busy" },
+local drink_state_client = GLOBAL.State{
+        name = "drink",
+        tags = { "busy", "nodangle" },
 
         onenter = function(inst)
             inst.components.locomotor:Stop()
@@ -161,10 +171,21 @@ local fili_cupdrink_state_client = GLOBAL.State{
         end,
 }
 
-AddStategraphState("wilson", fili_cupdrink_state)
-AddStategraphState("wilson_client", fili_cupdrink_state_client)
+AddStategraphState("wilson", drink_state)
+AddStategraphState("wilson_client", drink_state_client)
 
+local function newEAThandler(inst, action)
+    local old_EAThandle = self.actionhandlers[ACTIONS.EAT].deststate
+    self.actionhandlers[ACTIONS.EAT].deststate = function(inst, action)
+        local oldstate = old_EAThandle(inst, action)
+        local obj = action.target or action.invobject
+        if oldstate ~= nil and obj:HasTag("drink") then
+            return "drink"
+        else
+            return oldstate
+        end
+    end
+end
 
-local fili_cupdrink_ah = GLOBAL.ActionHandler( GLOBAL.ACTIONS.FILI_CUPDRINK, "fili_cupdrink_action" )
-AddStategraphActionHandler("wilson", fili_cupdrink_ah)
-AddStategraphActionHandler("wilson_client", fili_cupdrink_ah)
+AddStategraphPostInit("wilson", newEAThandler)
+AddStategraphPostInit("wilson_client", newEAThandler)
