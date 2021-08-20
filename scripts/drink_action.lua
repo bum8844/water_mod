@@ -175,9 +175,9 @@ AddStategraphState("wilson", drink_state)
 AddStategraphState("wilson_client", drink_state_client)
 
 local function newEAThandler(inst, action)
-    local old_EAThandle = self.actionhandlers[ACTIONS.EAT].deststate
+    local oldEAThandler = self.actionhandlers[ACTIONS.EAT].deststate
     self.actionhandlers[ACTIONS.EAT].deststate = function(inst, action)
-        local oldstate = old_EAThandle(inst, action)
+        local oldstate = oldEAThandler(inst, action)
         local obj = action.target or action.invobject
         if oldstate ~= nil and obj:HasTag("drink") then
             return "drink"
