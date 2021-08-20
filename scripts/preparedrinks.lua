@@ -1,4 +1,4 @@
-local drink =
+local drinks =
 {
 	-- 조합법이 잘못되면 나오는 결과물
 	
@@ -415,7 +415,7 @@ local drink =
 	
 }
 
-for k, v in pairs(drink) do
+for k, v in pairs(drinks) do
     v.name = k
     v.weight = v.weight or 1
     v.priority = v.priority or 0
@@ -424,6 +424,6 @@ for k, v in pairs(drink) do
 	--v.cookbook_category = "cookpot"
 end
 
-return drink
+return drinks
 
 -- caffeinberry caffeinberry_bean caffeinberry_bean_cooked
