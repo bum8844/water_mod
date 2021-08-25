@@ -1,160 +1,98 @@
-local assets =
+local bucketstates =
 {
-	Asset("ANIM", "anim/buckets.zip"),
-	Asset("IMAGE", "images/inventoryimages/bucketfull.tex"),
-	Asset("ATLAS", "images/inventoryimages/bucketfull.xml"),
-	Asset("IMAGE", "images/inventoryimages/bucketdirt.tex"),
-	Asset("ATLAS", "images/inventoryimages/bucketdirt.xml"),
-	Asset("IMAGE", "images/inventoryimages/bucketrain.tex"),
-	Asset("ATLAS", "images/inventoryimages/bucketrain.xml"),
+	{ name = "full", health = 0, sanity = -10, hunger = 0, thirst = 15 },
+	{ name = "dirt", health = -1, sanity = -10, hunger = 0, thirst = 15 },
+	{ name = "salt", health = -3, sanity = -10, hunger = 0, thirst = 15 },
 }
 
-local prefabs =
-{
-
-}
-
-local function check(inst)
-    local owner = inst.components.inventoryitem.owner
-    if owner and owner:HasTag("fridge") and inst.components.temperature.current<=0 then
-	    if owner.components.container then
-			local bucketice = SpawnPrefab("bucketice")
-			bucketice.save_owner = owner
-		    inst:Remove()
-		    bucketice.save_owner.components.container:GiveItem(SpawnPrefab("bucketice"))
-        end		   
+local function returnbucket(inst, eater)
+	local x, y, z = inst.Transform:GetWorldPosition()
+	local refund = SpawnPrefab("bucket")
+	if eater ~= nil and eater.components.inventory ~= nil then
+		eater.components.inventory:GiveItem(refund, nil, Vector3(x, y, z))
+	else
+		refund.Transform:SetPosition(x,y,z)
 	end
 end
 
--- local function SetName(inst)
-    -- if inst:HasTag("FilledByRain") then
-	    -- inst.components.named:SetName(STRINGS.BUCKETRAIN)
-		-- inst.AnimState:PlayAnimation("rain")
-		-- inst.components.inventoryitem:ChangeImageName("bucketrain")
-        -- inst.components.inventoryitem.atlasname = "images/inventoryimages/bucketrain.xml"
-	-- elseif inst:HasTag("FilledByDirty") then
-	    -- inst.components.named:SetName(STRINGS.BUCKETDIRTY)
-		-- inst.AnimState:PlayAnimation("dirty")
-		-- inst.components.inventoryitem:ChangeImageName("bucketdirt")
-        -- inst.components.inventoryitem.atlasname = "images/inventoryimages/bucketdirt.xml"
-	-- elseif inst:HasTag("FilledByOasis") then
-	    -- inst.components.named:SetName(STRINGS.BUCKETOASIS)
-		-- inst.AnimState:PlayAnimation("full")
-		-- inst.components.inventoryitem:ChangeImageName("bucketfull")
-        -- inst.components.inventoryitem.atlasname = "images/inventoryimages/bucketfull.xml"
-	-- else
-	    -- inst.components.named:SetName(STRINGS.NAMES.BUCKETFULL)
-		-- inst.AnimState:PlayAnimation("full")
-		-- inst.components.inventoryitem:ChangeImageName("bucketfull")
-        -- inst.components.inventoryitem.atlasname = "images/inventoryimages/bucketfull.xml"
-	-- end
--- end
-
-local function OnSave(inst, data)
-    if data ~= nil then
-        if inst:HasTag("FilledByRain") then
-	        data.watertag = "FilledByRain"
-	    elseif inst:HasTag("FilledByDirty") then
-	        data.watertag = "FilledByDirty"
-	    elseif inst:HasTag("FilledByOasis") then
-	        data.watertag = "FilledByOasis"
-	    end
+local function MakeBucket(data)
+	local assets =
+		{
+			Asset("ANIM", "anim/buckets.zip"),
+		}
+	if data.name ~= nil then
+		table.insert(assets, Asset("IMAGE", "images/inventoryimages/bucket"..data.name..".tex"))
+		table.insert(assets, Asset("ATLAS", "images/inventoryimages/bucket"..data.name..".xml"))
 	end
-end
+	
+	local anim = (data.name == "dirt" and "dirty") or (data.name == "salt" and "rain") or data.name
+	
+    local function fn()
+		local inst = CreateEntity()
 
-local function OnLoad(inst, data)
-    if data ~= nil and data.watertag then
-	    inst:AddTag(data.watertag)
+		inst.entity:AddTransform()
+		inst.entity:AddAnimState()
+		inst.entity:AddSoundEmitter()
+		inst.entity:AddNetwork()
+
+		MakeInventoryPhysics(inst)
+
+		
+		inst.AnimState:SetBuild("buckets")
+		inst.AnimState:SetBank("buckets")
+		inst.AnimState:PlayAnimation(anim)
+			
+
+		inst:AddTag("drink")
+		
+		inst.entity:SetPristine()
+
+		if not TheWorld.ismastersim then
+			return inst
+		end
+
+		inst:AddComponent("inspectable")
+
+		inst:AddTag("show_spoilage")
+
+		inst:AddTag("icebox_valid")
+
+		inst:AddTag("bucket")
+		inst:AddTag("watercan")
+
+		inst:AddTag("frozen")
+
+		inst:AddComponent("tradable")
+		inst:AddComponent("temperature")
+
+		inst:AddComponent("inventoryitem")
+		inst.components.inventoryitem.atlasname = "images/inventoryimages/bucket"..data.name..".xml"
+		inst.components.inventoryitem.imagename = "bucket"..data.name
+		
+		inst:AddComponent("edible")
+		inst.components.edible.thirst = data.thirst
+		inst.components.edible.health = data.health
+		inst.components.edible.sanity = data.sanity 
+		inst.components.edible.hunger = data.hunger
+		inst.components.edible:SetOnEatenFn(returnbucket)
+
+		inst.components.temperature.current = 30
+
+		--inst:DoPeriodicTask(1, check)
+		--	inst:DoPeriodicTask(0, SetName)
+
+		MakeHauntableLaunchAndSmash(inst)
+		
+		return inst
 	end
+	
+	return Prefab("bucket"..data.name, fn, assets)
 end
 
+local buckets = {}
 
-local function commonfn()
-    local inst = CreateEntity()
-
-    inst.entity:AddTransform()
-    inst.entity:AddAnimState()
-    inst.entity:AddSoundEmitter()
-    inst.entity:AddNetwork()
-
-    MakeInventoryPhysics(inst)
-	
-
-    inst.AnimState:SetBuild("buckets")
-    inst.AnimState:SetBank("buckets")
-    inst.AnimState:PlayAnimation("full")
-	
-	inst:AddTag("fili_drink")
-
-    inst.entity:SetPristine()
-
-    if not TheWorld.ismastersim then
-        return inst
-    end
-
-    inst:AddComponent("inspectable")
-
-    inst:AddTag("show_spoilage")
-	
-	inst:AddTag("icebox_valid")
-	
-	inst:AddTag("bucket")
-	inst:AddTag("watercan")
-	
-	inst:AddTag("frozen")
-	
-	inst:AddComponent("tradable")
-	inst:AddComponent("temperature")
-	
-	inst:AddComponent("fili_cupdrink")
---	inst.cup_hp = 0
-	inst.cup_hun = 0
---	inst.cup_san = 10
-	inst.thirst = TUNING.DRINKCUP_WATER
-	inst.cold_bonus = 5
---	inst.need_talk = "Agh.. it was raw water."
-	inst.cup_backitem = "bucket"
-	
-	inst.components.temperature.current = 30
-	
-	inst:DoPeriodicTask(1, check)
---	inst:DoPeriodicTask(0, SetName)
-	
-    inst:AddComponent("inventoryitem")
-
-	inst.replica.inventoryitem:SetImage("bucketfull")
-	inst.components.inventoryitem.atlasname = "images/inventoryimages/bucketfull.xml"
-
-    MakeHauntableLaunchAndSmash(inst)
-
-    return inst
+for k, v in pairs(bucketstates) do
+	table.insert(buckets, MakeBucket(v))
 end
 
-local function bucketdirt()
-	local inst = commonfn()
-	
-	inst.AnimState:PlayAnimation("dirty")
-	inst.components.inventoryitem:ChangeImageName("bucketdirt")
-    inst.components.inventoryitem.atlasname = "images/inventoryimages/bucketdirt.xml"
-	
-	inst.cup_hp = -5
-	inst.cup_san = -10
-	inst.need_talk = "I might get ill, but I have no choice."
-	return inst
-end
-	
-local function bucketfull()
-	local inst = commonfn()
-	
-	inst.AnimState:PlayAnimation("full")
-	inst.components.inventoryitem:ChangeImageName("bucketfull")
-	inst.components.inventoryitem.atlasname = "images/inventoryimages/bucketfull.xml"
-	
-	inst.cup_hp = 0
-	inst.cup_san = -10
-	inst.need_talk = "Agh... it was raw water."
-	return inst
-end
-
-return Prefab("bucketdirt", bucketdirt, assets),
-	Prefab("bucketfull", bucketfull, assets)
+return unpack(buckets)
