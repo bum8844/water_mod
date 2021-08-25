@@ -19,10 +19,10 @@ end)
 
 local function getthirst(self, eater)
     local multiplier = 1
-    local ignore_spoilage = not self.degrades_with_spoilage or self.thirstvalue <0 or (eater ~= nil and eater.components.eater.ignoresspoilage
+    local ignore_spoilage = not self.degrades_with_spoilage or self.thirstvalue <0 or (eater ~= nil and eater.components.eater.ignoresspoilage)
 
     if not ignore_spoilage and self.inst.components.perishable ~= nil then
-        if self. inst.components.perishable:IsStale() TheNet
+        if self. inst.components.perishable:IsStale() then
             multiplier = eater ~= nil and eater.components.eater ~= nil and eater.components.eater.stale_hunger or self.stale_hunger
         elseif self.inst.components.perishable:IsSpoiled() then
             multiplier = eater ~= nil and eater.components.eater ~= nil and eater.components.eater.spoiled_hunger or self.spoiled_hunger
@@ -53,22 +53,22 @@ end)
 --Thirst absorption obeys hungerabsorption.
 ----------------------------------------------------
 
-local function NewEat(self, food, feeder)
-    Eat_old = self.Eat
-    local ate = Eat_old(self, food, feeder)
-    if ate and self.inst.components.thirst ~= nil then
-        local stack_mult = self.eatwholestack and food.components.stackable ~= nil and food.components.stackable:StackSize() or 1
-        local base_mlt = self.inst.components.foodmemory ~= nil and self.inst.components.foodmemory:GetFoodMultiplier(food.prefab) or 1
-        local delta = food.components.edible:GetThirst(self.inst) * base_mult * self.hungerabsorption
-        if delta ~= 0 then
-            self.inst.components.thirst:DoDelta(delta * stack_mult)
+local function NewEat(self)
+    Eat_old = self.Eat or function() end
+    function self:Eat(food, feeder)
+        local ate = Eat_old(self, food, feeder)
+        if ate and self.inst.components.thirst ~= nil then
+            local stack_mult = self.eatwholestack and food.components.stackable ~= nil and food.components.stackable:StackSize() or 1
+            local base_mlt = self.inst.components.foodmemory ~= nil and self.inst.components.foodmemory:GetFoodMultiplier(food.prefab) or 1
+            local delta = food.components.edible:GetThirst(self.inst) * base_mult * self.hungerabsorption
+            if delta ~= 0 then
+                self.inst.components.thirst:DoDelta(delta * stack_mult)
+            end
         end
     end
 end
 
-AddComponentPostInit("eater", function(self)
-    self.Eat = NewEat
-end)
+AddComponentPostInit("eater", NewEat)
 
 -------------------------------------------------------
 --Adding state "drink"
@@ -82,25 +82,21 @@ local EventHandler = GLOBAL.EventHandler
 local FRAMES = GLOBAL.FRAMES
 local SpawnPrefab = GLOBAL.SpawnPrefab
 
-local drink_state = State{
+local drink_state = GLOBAL.State{
         name = "drink",
-        tags = { "busy", "nodangle" },
+        tags = { "busy" },
 
-        onenter = function(inst, foodinfo)
+        onenter = function(inst)
             inst.components.locomotor:Stop()
 
-            local feed = foodinfo and foodinfo.feed
-            if feed ~= nil then
-                inst.components.locomotor:Clear()
-                inst:ClearBufferedAction()
-                inst.sg.statemem.feed = foodinfo.fueled
-                                not inst.components.rider:IsRiding() then
+            if inst.components.inventory:IsHeavyLifting() and
+                not inst.components.rider:IsRiding() then
                 inst.AnimState:PlayAnimation("heavy_quick_eat")
             else
                 inst.AnimState:PlayAnimation("action_uniqueitem_pre")
                 inst.AnimState:PushAnimation("horn", false)
-				inst.AnimState:OverrideSymbol("horn01", "swap_cup", "drink_override")
-				inst.AnimState:Show("ARM_normal")
+                inst.AnimState:OverrideSymbol("horn01", "swap_cup", "drink_override")
+                inst.AnimState:Show("ARM_normal")
             end
         end,
 
@@ -130,17 +126,18 @@ local drink_state = State{
         end,
 }
 
+
 local drink_state_client = GLOBAL.State{
         name = "drink",
-        tags = { "busy", "nodangle" },
+        tags = { "busy" },
 
         onenter = function(inst)
             inst.components.locomotor:Stop()
-		
+        
             inst.AnimState:PlayAnimation("action_uniqueitem_pre")
             inst.AnimState:PushAnimation("horn", false)
-			inst.AnimState:OverrideSymbol("horn01", "swap_cup", "drink_override")
-			inst.AnimState:Show("ARM_normal")
+            inst.AnimState:OverrideSymbol("horn01", "swap_cup", "drink_override")
+            inst.AnimState:Show("ARM_normal")
             inst:PerformPreviewBufferedAction()
             inst.sg:SetTimeout(2)
         end,
@@ -163,7 +160,7 @@ local drink_state_client = GLOBAL.State{
         },
 
         onexit = function(inst)
-		    local equip = inst.replica.inventory:GetEquippedItem(GLOBAL.EQUIPSLOTS.HANDS)
+            local equip = inst.replica.inventory:GetEquippedItem(GLOBAL.EQUIPSLOTS.HANDS)
             if equip then
                 inst.AnimState:Show("ARM_carry")
                 inst.AnimState:Hide("ARM_normal")
@@ -174,7 +171,7 @@ local drink_state_client = GLOBAL.State{
 AddStategraphState("wilson", drink_state)
 AddStategraphState("wilson_client", drink_state_client)
 
-local function newEAThandler(inst, action)
+local function newEAThandler(self)
     local oldEAThandler = self.actionhandlers[ACTIONS.EAT].deststate
     self.actionhandlers[ACTIONS.EAT].deststate = function(inst, action)
         local oldstate = oldEAThandler(inst, action)
