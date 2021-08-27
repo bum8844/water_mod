@@ -129,7 +129,7 @@ local agedrinks =
 	{
 		test = function(boilier, names, tags) return namess.corn and namess.corn == 4 end
 		priority = 1,
-		health = TUNING.ALCAHOL_POISOE,
+		health = HEALING_SMALL + TUNING.ALCAHOL_POISOE,
 		hunger = TUNING.DRINK_CALORIES,
 		sanity = TUNING.SANITY_LARGE,
 		thirst = TUNING.HYDRATION_SMALL,
@@ -153,7 +153,7 @@ local agedrinks =
 	{
 		test = function(boilier, names, tags) return tags.sweetener and tags.sweetener == 4 end
 		priority = 2,
-		health = TUNING.ALCAHOL_POISOE,
+		health = HEALING_TINY + TUNING.ALCAHOL_POISOE,
 		hunger = TUNING.DRINK_CALORIES,
 		sanity = TUNING.SANITY_LARGE,
 		thirst = TUNING.HYDRATION_SMALL,
@@ -166,7 +166,7 @@ local agedrinks =
 	{
 		test = function(boilier, names, tags) return tags.fruit and tags.fruit == 4 end
 		priority = 1,
-		health = TUNING.ALCAHOL_POISOE,
+		health = HEALING_MEDSMALL + TUNING.ALCAHOL_POISOE,
 		hunger = TUNING.DRINK_CALORIES,
 		sanity = TUNING.SANITY_LARGE,
 		thirst = TUNING.HYDRATION_SMALL,
@@ -178,7 +178,7 @@ local agedrinks =
 	{
 		test = function(boilier, names, tags) return (( namess.berries or 0 ) + ( names.berries_juicy or 0 ) == 4) end
 		priority = 2,
-		health = TUNING.ALCAHOL_POISOE,
+		health = HEALING_MEDSMALL + TUNING.ALCAHOL_POISOE,
 		hunger = TUNING.DRINK_CALORIES,
 		sanity = TUNING.SANITY_HUGE,
 		thirst = TUNING.HYDRATION_MEDSMALL,
@@ -190,7 +190,7 @@ local agedrinks =
 	{
 		test = function(boilier, names, tags) return (( namess.wormlight or 0 ) + ( names.wormlight_lesser or 0 ) == 4) end
 		priority = 3,
-		health = TUNING.ALCAHOL_POISOE,
+		health = HEALING_MEDSMALL + TUNING.ALCAHOL_POISOE,
 		hunger = TUNING.DRINK_CALORIES,
 		sanity = TUNING.SANITY_HUGE,
 		thirst = TUNING.HYDRATION_MEDSMALL,
@@ -226,9 +226,9 @@ local agedrinks =
 	{
 		test = function(boilier, name, tags) return names.mandrake and not tags.meat and not tags.egg end,
 		priority = 4,
-		health = TUNING.HEALING_HUGE,
+		health = TUNING.HEALING_HUGE + TUNING.ALCAHOL_POISOE,
 		hunger = TUNING.DRINK_CALORIES_GINSENG,
-		sanity = TUNING.SANITY_SMALL,
+		sanity = TUNING.SANITY_HUGE,
 		thirst = TUNING.HYDRATION_HUGE,
 		cooktime = TUNING.BEER_WAIT,
 	},
