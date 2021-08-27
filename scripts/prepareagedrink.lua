@@ -222,7 +222,7 @@ local agedrinks =
 	},
 	
 	-- 인삼술
-	cup_ginseng =
+	cup_ginseng_wine =
 	{
 		test = function(boilier, name, tags) return names.mandrake and not tags.meat and not tags.egg end,
 		priority = 4,
