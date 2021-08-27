@@ -40,7 +40,7 @@ local agedrinks =
 	},
 	
 	-- 로얄젤리만 넣을경우
-	cup_cider
+	cup_llsoda
 	{
 		test = function(boilier, names, tags) return namess.refined_dust and namess.refined_dust == 1 and namess.royal_jelly and not tags.meat and not tags.egg end
 		priority = 1,
