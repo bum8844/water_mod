@@ -347,24 +347,6 @@ local drinks =
 		thirst = TUNING.HYDRATION_MED,
 		cooktime = TUNING.KETTLE_DECORATION,
 	},
-	
-	-- 악마 꽃잎(몬스터태그 확인해서 효과주기)
-	cup_bitter =
-	{
-		test = function(boilier, name, tags) return (( tags.monster or 0 ) + ( names.petals_evil or 0 )) >= 1.5) end,
-		priority = 2,
-            --if eater:HasTag("monster") and eater:HasTag("player") then
-		       --eater.components.health:DoDelta(37)
-		       --eater.components.sanity:DoDelta(25)
-            --end,
-	        --if not eater:HasTag("monster") and eater:HasTag("player") then
-		        --eater.components.health:DoDelta(-10)
-		        --eater.components.sanity:DoDelta(-20)
-		        --eater.components.hunger:DoDelta(-10)
-            --end,
-		thirst = TUNING.HYDRATION_HUGE,
-		cooktime = TUNING.KETTLE_MONSTER,
-	},
 
 	-- 선인장 꽃잎
 	cup_cactusflower =
