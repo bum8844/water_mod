@@ -193,18 +193,6 @@ local drinks =
 		cooktime = TUNING.KETTLE_VEGGIE,
 	},
 	
-	-- 만드레이크 차
-	cup_ginseng =
-	{
-		test = function(boilier, name, tags) return names.mandrake and not tags.meat and not tags.egg end,
-		priority = 4,
-		health = TUNING.HEALING_HUGE,
-		hunger = TUNING.DRINK_CALORIES_GINSENG,
-		sanity = TUNING.SANITY_SMALL,
-		thirst = TUNING.HYDRATION_HUGE,
-		cooktime = TUNING.KETTLE_LUXURY_GOODS,
-	},
-	
 	-- 버섯차 종류
 	cup_greencap =
 	{
