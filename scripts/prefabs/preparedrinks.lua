@@ -4,6 +4,8 @@ local function MakePreparedDrink(data)
 	{
 		Asset("ANIM", "anim/kettle_drink.zip"),
 		Asset("INV_IMAGE", data.name),
+		Asset("ANIM", "anim/beer_barrle_drink.zip"),
+		Asset("INV_IMAGE", data.name),
 	}
 
 	if data.overridebuild then
