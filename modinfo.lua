@@ -1,5 +1,5 @@
 name 						= "a water mod - Heap of Foods Expansion"
-version 					= "0.61"
+version 					= "0.70"
 
 russian = name.utf8len and (russian or language == "ru")
 description = (
