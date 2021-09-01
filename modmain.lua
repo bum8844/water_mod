@@ -1,4 +1,5 @@
 --Local'ы. Чтоб было меньше писанины
+local _G = GLOBAL
 local RECIPETABS = _G.RECIPETABS
 local TECH = _G.TECH
 local Ingredient = _G.Ingredient
