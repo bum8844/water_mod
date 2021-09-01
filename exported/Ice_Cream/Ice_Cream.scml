@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<spriter_data scml_version="1.0" generator="BrashMonkey Spriter" generator_version="b5">
+    <folder id="0">
+        <file id="0" name="Ice_Cream.png" width="64" height="64" pivot_x="0" pivot_y="1"/>
+        <file id="1" name="Ice_Cream_Banana.png" width="64" height="64" pivot_x="0" pivot_y="1"/>
+    </folder>
+    <folder id="1">
+        <file id="0" name="/Ice_Cream_Berry.png" width="64" height="64" pivot_x="0" pivot_y="1"/>
+        <file id="1" name="/Ice_Cream_Coffe.png" width="64" height="64" pivot_x="0" pivot_y="1"/>
+        <file id="2" name="/Ice_Cream.png" width="64" height="64" pivot_x="0" pivot_y="1"/>
+        <file id="3" name="/Ice_Cream_Banana.png" width="64" height="64" pivot_x="0" pivot_y="1"/>
+        <file id="4" name="/Ice_Cream_Red.png" width="64" height="64" pivot_x="0" pivot_y="1"/>
+        <file id="5" name="/Ice_Cream_Tee.png" width="64" height="64" pivot_x="0" pivot_y="1"/>
+    </folder>
+    <entity id="0" name="Ice_Cream">
+        <animation id="0" name="Ice_Cream_Original" length="1000">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" name="Ice_Cream" folder="0" file="0" abs_x="-31.5" abs_y="31.5" abs_pivot_x="0" abs_pivot_y="1" abs_angle="360" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="0" key="0" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="Ice_Cream">
+                <key id="0" spin="0">
+                    <object folder="0" file="0" x="-31.5" y="31.5"/>
+                </key>
+            </timeline>
+        </animation>
+        <animation id="1" name="Ice_Cream_Banana" length="1000">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" name="Ice_Cream_Banana" folder="0" file="1" abs_x="-31.5" abs_y="31.5" abs_pivot_x="0" abs_pivot_y="1" abs_angle="360" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="0" key="0" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="Ice_Cream_Banana">
+                <key id="0" spin="0">
+                    <object folder="0" file="1" x="-31.5" y="31.5"/>
+                </key>
+            </timeline>
+        </animation>
+        <animation id="2" name="Ice_Cream_Berry" length="1000">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" name="Ice_Cream_Berry" folder="1" file="0" abs_x="-31.5" abs_y="31.5" abs_pivot_x="0" abs_pivot_y="1" abs_angle="360" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="0" key="0" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="Ice_Cream_Berry">
+                <key id="0" spin="0">
+                    <object folder="1" file="0" x="-31.5" y="31.5"/>
+                </key>
+            </timeline>
+        </animation>
+        <animation id="3" name="Ice_Cream__Coffe" length="1000">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" name="Ice_Cream_Coffe" folder="1" file="1" abs_x="-31.5" abs_y="31.5" abs_pivot_x="0" abs_pivot_y="1" abs_angle="360" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="0" key="0" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="Ice_Cream_Coffe">
+                <key id="0" spin="0">
+                    <object folder="1" file="1" x="-31.5" y="31.5"/>
+                </key>
+            </timeline>
+        </animation>
+        <animation id="4" name="Ice_Cream_Red" length="1000">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" name="Ice_Cream_Red" folder="1" file="4" abs_x="-31.5" abs_y="31.5" abs_pivot_x="0" abs_pivot_y="1" abs_angle="360" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="0" key="0" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="Ice_Cream_Red">
+                <key id="0" spin="0">
+                    <object folder="1" file="4" x="-31.5" y="31.5"/>
+                </key>
+            </timeline>
+        </animation>
+        <animation id="5" name="Ice_Cream_Tee" length="1000">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" name="Ice_Cream_Tee" folder="1" file="5" abs_x="-31.5" abs_y="31.5" abs_pivot_x="0" abs_pivot_y="1" abs_angle="360" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="0" key="0" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="Ice_Cream_Tee">
+                <key id="0" spin="0">
+                    <object folder="1" file="5" x="-31.5" y="31.5"/>
+                </key>
+            </timeline>
+        </animation>
+    </entity>
+</spriter_data>
