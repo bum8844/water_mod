@@ -19,11 +19,9 @@ local function MakeBucket(data)
 	local assets =
 		{
 			Asset("ANIM", "anim/buckets.zip"),
+			Asset("IMAGE", "images/inventoryimages/buckets.tex"),
+			 Asset("ATLAS", "images/inventoryimages/buckets.xml"),
 		}
-	if data.name ~= nil then
-		table.insert(assets, Asset("IMAGE", "images/inventoryimages/bucket"..data.name..".tex"))
-		table.insert(assets, Asset("ATLAS", "images/inventoryimages/bucket"..data.name..".xml"))
-	end
 	
 	local anim = (data.name == "dirt" and "dirty") or (data.name == "salt" and "rain") or data.name
 	
@@ -66,8 +64,8 @@ local function MakeBucket(data)
 		inst:AddComponent("temperature")
 
 		inst:AddComponent("inventoryitem")
-		inst.components.inventoryitem.atlasname = "images/inventoryimages/bucket"..data.name..".xml"
-		inst.components.inventoryitem.imagename = "bucket"..data.name
+		inst.components.inventoryitem.atlasname = "images/inventoryimages/buckets.xml"
+		inst.components.inventoryitem.imagename = "buckets-"..data.name
 		
 		inst:AddComponent("edible")
 		inst.components.edible.thirst = data.thirst
