@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Atlas>
+	<Texture filename="bottle.tex" />
+	<Elements>
+		<Element name="bottle-banana.tex" u1="0.001" u2="0.067359375" v2="0.5224375" v1="0.28615625" variant="" />
+		<Element name="bottle-beer.tex" u1="0.29396875" u2="0.37009375" v2="0.2724375" v1="0.0244375" variant="" />
+		<Element name="bottle-berries.tex" u1="0.069359375" u2="0.13571875" v2="0.5224375" v1="0.28615625" variant="" />
+		<Element name="bottle-blacktea.tex" u1="0.001" u2="0.067359375" v2="0.28415625" v1="0.047875" variant="" />
+		<Element name="bottle-cactus.tex" u1="0.13771875" u2="0.204078125" v2="0.5224375" v1="0.28615625" variant="" />
+		<Element name="bottle-cactusflower.tex" u1="0.069359375" u2="0.13571875" v2="0.28415625" v1="0.047875" variant="" />
+		<Element name="bottle-carrot.tex" u1="0.206078125" u2="0.2724375" v2="0.5224375" v1="0.28615625" variant="" />
+		<Element name="bottle-coffee.tex" u1="0.001" u2="0.067359375" v2="0.999" v1="0.76271875" variant="" />
+		<Element name="bottle-cola.tex" u1="0.624046875" u2="0.688453125" v2="0.999" v1="0.7900625" variant="" />
+		<Element name="bottle-colaquantum.tex" u1="0.557640625" u2="0.622046875" v2="0.7880625" v1="0.579125" variant="" />
+		<Element name="bottle-dragonfruit.tex" u1="0.069359375" u2="0.13571875" v2="0.999" v1="0.76271875" variant="" />
+		<Element name="bottle-fig.tex" u1="0.13771875" u2="0.204078125" v2="0.999" v1="0.76271875" variant="" />
+		<Element name="bottle-fruit.tex" u1="0.001" u2="0.067359375" v2="0.76071875" v1="0.5244375" variant="" />
+		<Element name="bottle-fruitsoda.tex" u1="0.4306875" u2="0.49509375" v2="0.5224375" v1="0.3135" variant="" />
+		<Element name="bottle-fruitwine.tex" u1="0.37209375" u2="0.44821875" v2="0.2724375" v1="0.0244375" variant="" />
+		<Element name="bottle-fuer.tex" u1="0.069359375" u2="0.13571875" v2="0.76071875" v1="0.5244375" variant="" />
+		<Element name="bottle-ginseng.tex" u1="0.479515625" u2="0.555640625" v2="0.999" v1="0.751" variant="" />
+		<Element name="bottle-glowberry.tex" u1="0.13771875" u2="0.204078125" v2="0.76071875" v1="0.5244375" variant="" />
+		<Element name="bottle-glowwine.tex" u1="0.13771875" u2="0.21384375" v2="0.28415625" v1="0.03615625" variant="" />
+		<Element name="bottle-greentea.tex" u1="0.206078125" u2="0.2724375" v2="0.999" v1="0.76271875" variant="" />
+		<Element name="bottle-hibiscus.tex" u1="0.2744375" u2="0.340796875" v2="0.999" v1="0.76271875" variant="" />
+		<Element name="bottle-llsoda.tex" u1="0.557640625" u2="0.622046875" v2="0.999" v1="0.7900625" variant="" />
+		<Element name="bottle-lotusflower.tex" u1="0.206078125" u2="0.2724375" v2="0.76071875" v1="0.5244375" variant="" />
+		<Element name="bottle-mead.tex" u1="0.2744375" u2="0.3505625" v2="0.5224375" v1="0.2744375" variant="" />
+		<Element name="bottle-mixflower.tex" u1="0.342796875" u2="0.40915625" v2="0.999" v1="0.76271875" variant="" />
+		<Element name="bottle-mulled.tex" u1="0.2744375" u2="0.340796875" v2="0.76071875" v1="0.5244375" variant="" />
+		<Element name="bottle-pomegranate.tex" u1="0.41115625" u2="0.477515625" v2="0.999" v1="0.76271875" variant="" />
+		<Element name="bottle-pulqu.tex" u1="0.3525625" u2="0.4286875" v2="0.5224375" v1="0.2744375" variant="" />
+		<Element name="bottle-soda.tex" u1="0.479515625" u2="0.543921875" v2="0.749" v1="0.5400625" variant="" />
+		<Element name="bottle-sus-hibiscus.tex" u1="0.342796875" u2="0.40915625" v2="0.76071875" v1="0.5244375" variant="" />
+		<Element name="bottle-vagge.tex" u1="0.41115625" u2="0.477515625" v2="0.76071875" v1="0.5244375" variant="" />
+		<Element name="bottle-wine.tex" u1="0.21584375" u2="0.29196875" v2="0.2724375" v1="0.0244375" variant="" />
+	</Elements>
+</Atlas>
