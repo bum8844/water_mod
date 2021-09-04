@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Atlas>
+	<Texture filename="buckets.tex" />
+	<Elements>
+		<Element name="bucket_dirty.tex" u1="0.001" u2="0.24509375" v2="0.5068125" v1="0.016625" variant="" />
+		<Element name="bucket_empty.tex" u1="0.001" u2="0.24509375" v2="0.999" v1="0.5088125" variant="" />
+		<Element name="bucket_full.tex" u1="0.24709375" u2="0.4911875" v2="0.999" v1="0.5088125" variant="" />
+		<Element name="bucket_ice.tex" u1="0.4931875" u2="0.73728125" v2="0.999" v1="0.501" variant="" />
+		<Element name="bucket_salt.tex" u1="0.24709375" u2="0.4911875" v2="0.5068125" v1="0.016625" variant="" />
+	</Elements>
+</Atlas>
