@@ -1,21 +1,15 @@
 local assets =
 {
 	Asset("ANIM", "anim/buckets.zip"),
-	Asset("IMAGE", "images/inventoryimages/bucket.tex"),
-	Asset("ATLAS", "images/inventoryimages/bucket.xml")
-}
-
-local assets =
-{
-	Asset("ANIM", "anim/buckets.zip"),
-	Asset("IMAGE", "images/inventoryimages/bucket.tex"),
-	Asset("ATLAS", "images/inventoryimages/bucket.xml")
+	Asset("IMAGE", "images/inventoryimages/buckets.tex"),
+	Asset("ATLAS", "images/inventoryimages/buckets.xml"),
 }
 
 local prefabs =
 {
-	"bucketfull",
-	"bucketdirt",
+	"bucket_full",
+	"bucket_dirt",
+	"bucket_salt",
 }
 
 -- 컴포넌트를 바닐라의 것으로 교체하면서, 기존에 component에서 자체적으로 처리하던 태그 부분을 overrideonfillfn으로 가져왔습니다.
