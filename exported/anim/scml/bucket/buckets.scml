@@ -62,7 +62,7 @@
                 </key>
             </timeline>
         </animation>
-        <animation id="3" name="sait" length="300" interval="100">
+        <animation id="3" name="salt" length="300" interval="100">
             <mainline>
                 <key id="0">
                     <object_ref id="0" timeline="0" key="0" z_index="0"/>
