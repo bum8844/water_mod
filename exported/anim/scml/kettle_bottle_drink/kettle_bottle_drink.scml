@@ -96,6 +96,21 @@
     <folder id="31" name="bottle_sus_hibiscus">
         <file id="0" name="bottle_sus_hibiscus/bottle_sus_hibiscus.png" width="64" height="64" pivot_x="0.5" pivot_y="0.109375"/>
     </folder>
+    <folder id="32" name="bottle_water">
+        <file id="0" name="bottle_water/bottle_water.png" width="64" height="64" pivot_x="0.5" pivot_y="0.109375"/>
+    </folder>
+    <folder id="33" name="bottle_salt">
+        <file id="0" name="bottle_salt/bottle_salt.png" width="64" height="64" pivot_x="0.5" pivot_y="0.109375"/>
+    </folder>
+    <folder id="34" name="bottle_drity">
+        <file id="0" name="bottle_drity/bottle_drity.png" width="64" height="64" pivot_x="0.5" pivot_y="0.109375"/>
+    </folder>
+    <folder id="35" name="bottle_strang">
+        <file id="0" name="bottle_strang/bottle_strang.png" width="64" height="64" pivot_x="0.5" pivot_y="0.109375"/>
+    </folder>
+    <folder id="36" name="bottle_garbage">
+        <file id="0" name="bottle_garbage/bottle_garbage.png" width="64" height="64" pivot_x="0.5" pivot_y="0.109375"/>
+    </folder>
     <entity id="0" name="tea_bottle">
         <animation id="0" name="idle" length="34" interval="100">
             <mainline>
@@ -422,7 +437,7 @@
             </mainline>
             <timeline id="0" name="bottle_sus_hibiscus">
                 <key id="0" spin="0">
-                    <object folder="31" file="0"/>
+                    <object folder="31" file="0" angle="0"/>
                 </key>
             </timeline>
         </animation>
@@ -439,7 +454,7 @@
             </mainline>
             <timeline id="0" name="bottle_vagge">
                 <key id="0" spin="0">
-                    <object folder="4" file="0"/>
+                    <object folder="4" file="0" angle="0"/>
                 </key>
             </timeline>
         </animation>
@@ -659,7 +674,107 @@
             </mainline>
             <timeline id="0" name="bottle_wine">
                 <key id="0" spin="0">
-                    <object folder="23" file="0"/>
+                    <object folder="23" file="0" angle="0"/>
+                </key>
+            </timeline>
+        </animation>
+    </entity>
+    <entity id="35" name="bottle_water">
+        <animation id="0" name="idle" length="34" interval="100">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+                <key id="1" time="34">
+                    <object_ref id="0" timeline="0" key="1" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="bottle_water">
+                <key id="0" spin="0">
+                    <object folder="32" file="0" angle="0"/>
+                </key>
+                <key id="1" time="34" spin="0">
+                    <object folder="32" file="0" angle="0"/>
+                </key>
+            </timeline>
+        </animation>
+    </entity>
+    <entity id="36" name="bottle_strang">
+        <animation id="0" name="idle" length="34" interval="100">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+                <key id="1" time="34">
+                    <object_ref id="0" timeline="0" key="1" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="bottle_strang">
+                <key id="0" spin="0">
+                    <object folder="35" file="0" angle="0"/>
+                </key>
+                <key id="1" time="34" spin="0">
+                    <object folder="35" file="0" angle="0"/>
+                </key>
+            </timeline>
+        </animation>
+    </entity>
+    <entity id="37" name="bottle_salt">
+        <animation id="0" name="idle" length="34" interval="100">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+                <key id="1" time="34">
+                    <object_ref id="0" timeline="0" key="1" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="bottle_salt">
+                <key id="0" spin="0">
+                    <object folder="33" file="0" angle="0"/>
+                </key>
+                <key id="1" time="34" spin="0">
+                    <object folder="33" file="0" angle="0"/>
+                </key>
+            </timeline>
+        </animation>
+    </entity>
+    <entity id="38" name="bottle_garbage">
+        <animation id="0" name="idle" length="34" interval="100">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+                <key id="1" time="34">
+                    <object_ref id="0" timeline="0" key="1" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="bottle_garbage">
+                <key id="0" spin="0">
+                    <object folder="36" file="0" angle="0"/>
+                </key>
+                <key id="1" time="34" spin="0">
+                    <object folder="36" file="0" angle="0"/>
+                </key>
+            </timeline>
+        </animation>
+    </entity>
+    <entity id="39" name="bottle_drity">
+        <animation id="0" name="idle" length="34" interval="100">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+                <key id="1" time="34">
+                    <object_ref id="0" timeline="0" key="1" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="bottle_drity">
+                <key id="0" spin="0">
+                    <object folder="34" file="0" angle="0"/>
+                </key>
+                <key id="1" time="34" spin="0">
+                    <object folder="34" file="0" angle="0"/>
                 </key>
             </timeline>
         </animation>
