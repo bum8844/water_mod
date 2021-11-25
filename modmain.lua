@@ -12,6 +12,7 @@ PrefabFiles =
  "bucket",
  "bucketfull",
  "bucketice",
+ "cup",
 }
 
 Assets = {

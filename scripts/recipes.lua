@@ -12,7 +12,7 @@ for k, v in pairs(GLOBAL.AllRecipes) do
 	end
 end
 
---AddRecipe("cup",{Ingredient("flint",3)},RECIPETABS.DRINKS_TAB,TECH.NONE,nil,nil,nil,nil,nil,"images/tea_inventoryitem.xml","cup_empety.tex")
+AddRecipe("cup",{Ingredient("flint",3)},RECIPETABS.DRINKS_TAB,TECH.NONE,nil,nil,nil,nil,nil,"images/tea_inventoryitem.xml","cup_empty.tex")
 
 AddRecipe("bucket",{Ingredient("log",4)},RECIPETABS.DRINKS_TAB,TECH.NONE,nil,nil,nil,nil,nil,"images/tea_inventoryitem.xml","bucket_empty.tex")
 

@@ -1,7 +1,7 @@
 local bucketstates =
 {
 	{ name = "full", health = 0, sanity = -10, hunger = 0, thirst = 15 },
-	{ name = "dirt", health = -1, sanity = -10, hunger = 0, thirst = 15 },
+	{ name = "dirty", health = -1, sanity = -10, hunger = 0, thirst = 15 },
 	{ name = "salt", health = -3, sanity = -10, hunger = 0, thirst = -15 },
 }
 
