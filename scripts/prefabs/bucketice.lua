@@ -10,9 +10,9 @@ local prefabs =
 
 }
 
-local function onhammered(inst, worker)
+local function on_mine(inst, miner, workleft, workdone)
 	SpawnPrefab("bucket").Transform:SetPosition(inst.Transform:GetWorldPosition())
-	SpawnPrefab("ice").Transform:SetPosition(inst.Transform:GetWorldPosition())
+	LaunchAt(SpawnPrefab("ice"), inst, miner, TUNING.ROCK_FRUIT_LOOT.SPEED, TUNING.ROCK_FRUIT_LOOT.HEIGHT, nil, TUNING.ROCK_FRUIT_LOOT.ANGLE)
 	inst.SoundEmitter:PlaySound("dontstarve_DLC001/common/iceboulder_smash")
 	inst:Remove()
 end
@@ -50,11 +50,12 @@ local function fn()
 	
 	inst:AddComponent("tradable")
 	inst.components.tradable.goldvalue = 1
+	
 	inst:AddComponent("workable")
-	inst.components.workable:SetWorkAction(ACTIONS.CHOP)--DIG
-	inst.components.workable:SetWorkLeft(1)
-	inst.components.workable:SetOnFinishCallback(onhammered)
-	inst.components.workable:SetOnWorkCallback(onhit)
+    inst.components.workable:SetWorkAction(ACTIONS.MINE)
+    inst.components.workable:SetWorkLeft(1)
+    --inst.components.workable:SetOnFinishCallback(on_mine)
+    inst.components.workable:SetOnWorkCallback(on_mine)
 
     inst:AddComponent("inventoryitem")
 
