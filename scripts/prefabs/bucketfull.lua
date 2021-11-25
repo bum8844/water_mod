@@ -2,7 +2,7 @@ local bucketstates =
 {
 	{ name = "full", health = 0, sanity = -10, hunger = 0, thirst = 15 },
 	{ name = "dirt", health = -1, sanity = -10, hunger = 0, thirst = 15 },
-	{ name = "salt", health = -3, sanity = -10, hunger = 0, thirst = 15 },
+	{ name = "salt", health = -3, sanity = -10, hunger = 0, thirst = -15 },
 }
 
 local function returnbucket(inst, eater)
@@ -19,13 +19,12 @@ local function MakeBucket(data)
 	local assets =
 		{
 			Asset("ANIM", "anim/buckets.zip"),
-			Asset("IMAGE", "images/bucket_full.tex"),
-			Asset("IMAGE", "images/bucket_dirty.tex"),
-			Asset("IMAGE", "images/bucket_salt.tex"),
+			Asset("IMAGE", "images/tea_inventoryitem.tex"),
 			Asset("ATLAS", "images/tea_inventoryitem.xml"),
+			Asset("ATLAS_BUILD", "images/tea_inventoryitem.xml", 256),
 		}
 	
-	local anim = (data.name == "dirt" and "dirty") or (data.name == "salt" and "rain") or data.name
+	local anim = (data.name == "dirt" and "dirty") or (data.name == "full" and "rain") or data.name
 	
     local function fn()
 		local inst = CreateEntity()
@@ -37,11 +36,9 @@ local function MakeBucket(data)
 
 		MakeInventoryPhysics(inst)
 
-		
 		inst.AnimState:SetBuild("buckets")
 		inst.AnimState:SetBank("buckets")
 		inst.AnimState:PlayAnimation(anim)
-			
 
 		inst:AddTag("drink")
 		
@@ -67,7 +64,7 @@ local function MakeBucket(data)
 
 		inst:AddComponent("inventoryitem")
 		inst.components.inventoryitem.atlasname = "images/tea_inventoryitem.xml"
-		inst.components.inventoryitem.imagename = "buckets-"..data.name
+		inst.components.inventoryitem.imagename = "bucket_"..data.name
 		
 		inst:AddComponent("edible")
 		inst.components.edible.thirst = data.thirst

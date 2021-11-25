@@ -1,8 +1,9 @@
 local assets =
 {
 	Asset("ANIM", "anim/buckets.zip"),
-	Asset("IMAGE", "images/bucket_empty.tex"),
+	Asset("IMAGE", "images/tea_inventoryitem.tex"),
 	Asset("ATLAS", "images/tea_inventoryitem.xml"),
+	Asset("ATLAS_BUILD", "images/tea_inventoryitem.xml", 256),
 }
 
 local prefabs =
@@ -22,7 +23,7 @@ local function OnFill(inst, from_object)
 			filleditem = SpawnPrefab("bucketdirt")
 		end
 	else
-		filleditem = SpawnPrefab("bucketdirt")
+		filleditem = SpawnPrefab("bucketsalt")
 	end
 	
 	inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/small")
@@ -52,8 +53,6 @@ end
 
 
 local function FillByRain(inst)
-
-
     inst.rainfilling = 0
 	inst.SoundEmitter:PlaySound("dontstarve/creatures/pengull/splash")
 	if inst.components.stackable.stacksize > 1 then
@@ -83,7 +82,6 @@ local function fn()
 
     inst.entity:SetPristine()
 	
-	inst:AddTag("hat")
 	inst:AddTag("fil_bucket")
 
     if not TheWorld.ismastersim then
@@ -118,7 +116,8 @@ local function fn()
 
     inst:AddComponent("inventoryitem")
     inst.replica.inventoryitem:SetImage("bucket")
-    inst.components.inventoryitem.imagename= "images/bucket_empty.tex"
+	inst.components.inventoryitem.atlasname= "images/tea_inventoryitem.xml"
+    inst.components.inventoryitem.imagename= "bucket_empty"
 
     MakeHauntableLaunchAndSmash(inst)
 
