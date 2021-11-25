@@ -5,6 +5,11 @@ local bucketstates =
 	{ name = "salt", health = -3, sanity = -10, hunger = 0, thirst = -15 },
 }
 
+local prefabs =
+{
+	"bucket_ice",
+}
+
 local function returnbucket(inst, eater)
 	local x, y, z = inst.Transform:GetWorldPosition()
 	local refund = SpawnPrefab("bucket")
@@ -52,7 +57,9 @@ local function MakeBucket(data)
 
 		inst:AddTag("show_spoilage")
 
-		inst:AddTag("icebox_valid")
+		if name ~= "salt" then
+			inst:AddTag("icebox_valid")
+		end
 
 		inst:AddTag("bucket")
 		inst:AddTag("watercan")
@@ -83,7 +90,7 @@ local function MakeBucket(data)
 		return inst
 	end
 	
-	return Prefab("bucket"..data.name, fn, assets)
+	return Prefab("bucket_"..data.name, fn, assets)
 end
 
 local buckets = {}

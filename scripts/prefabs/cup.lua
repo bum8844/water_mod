@@ -51,15 +51,16 @@ end
 
 
 local function FillByRain(inst)
+	local filleditem
     inst.rainfilling = 0
 	inst.SoundEmitter:PlaySound("dontstarve/creatures/pengull/splash")
 	if inst.components.stackable.stacksize > 1 then
-	    local newbucket = SpawnPrefab("bucketfull")
-		newbucket.Transform:SetPosition(inst.Transform:GetWorldPosition())
+	    filleditem = SpawnPrefab("cup_water")
+		filleditem.Transform:SetPosition(inst.Transform:GetWorldPosition())
 		inst.components.stackable:Get():Remove()
 	else
-	    local newbucket = SpawnPrefab("bucketfull")
-		newbucket.Transform:SetPosition(inst.Transform:GetWorldPosition())
+	    filleditem = SpawnPrefab("cup_water")
+		filleditem.Transform:SetPosition(inst.Transform:GetWorldPosition())
 		inst:Remove()
 	end
 end
@@ -74,7 +75,7 @@ local function fn()
 
     MakeInventoryPhysics(inst)	
 
-    inst.AnimState:SetBuild("cup_empty")
+    inst.AnimState:SetBuild("kettle_drink")
     inst.AnimState:SetBank("cup_empty")
     inst.AnimState:PlayAnimation("idle")
 

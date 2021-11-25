@@ -9,7 +9,7 @@ local assets =
 local prefabs =
 {
 	"bucket_full",
-	"bucket_dirt",
+	"bucket_dirty",
 	"bucket_salt",
 }
 
@@ -18,12 +18,12 @@ local function OnFill(inst, from_object)
 	local filleditem
 	if from_object ~= nil then
 		if from_object:HasTag("cleanwater") then
-			filleditem = SpawnPrefab("bucketfull")
+			filleditem = SpawnPrefab("bucket_full")
 		else
-			filleditem = SpawnPrefab("bucketdirt")
+			filleditem = SpawnPrefab("bucket_dirty")
 		end
 	else
-		filleditem = SpawnPrefab("bucketsalt")
+		filleditem = SpawnPrefab("bucket_salt")
 	end
 	
 	inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/small")
@@ -51,17 +51,17 @@ local function OnFill(inst, from_object)
 	return true
 end
 
-
 local function FillByRain(inst)
+	local filleditem
     inst.rainfilling = 0
 	inst.SoundEmitter:PlaySound("dontstarve/creatures/pengull/splash")
 	if inst.components.stackable.stacksize > 1 then
-	    local newbucket = SpawnPrefab("bucketfull")
-		newbucket.Transform:SetPosition(inst.Transform:GetWorldPosition())
+	    filleditem = SpawnPrefab("bucket_full")
+		filleditem.Transform:SetPosition(inst.Transform:GetWorldPosition())
 		inst.components.stackable:Get():Remove()
 	else
-	    local newbucket = SpawnPrefab("bucketfull")
-		newbucket.Transform:SetPosition(inst.Transform:GetWorldPosition())
+	    filleditem = SpawnPrefab("bucket_full")
+		filleditem.Transform:SetPosition(inst.Transform:GetWorldPosition())
 		inst:Remove()
 	end
 end

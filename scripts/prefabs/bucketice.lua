@@ -67,4 +67,4 @@ local function fn()
     return inst
 end
 
-return Prefab("bucketice", fn, assets)
+return Prefab("bucket_ice", fn, assets)
