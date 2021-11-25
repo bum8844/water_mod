@@ -24,7 +24,7 @@ local function MakeBucket(data)
 			Asset("ATLAS_BUILD", "images/tea_inventoryitem.xml", 256),
 		}
 	
-	local anim = (data.name == "dirt" and "dirty") or (data.name == "full" and "rain") or data.name
+	local name = data.name
 	
     local function fn()
 		local inst = CreateEntity()
@@ -38,7 +38,7 @@ local function MakeBucket(data)
 
 		inst.AnimState:SetBuild("buckets")
 		inst.AnimState:SetBank("buckets")
-		inst.AnimState:PlayAnimation(anim)
+		inst.AnimState:PlayAnimation(name)
 
 		inst:AddTag("drink")
 		
@@ -64,7 +64,7 @@ local function MakeBucket(data)
 
 		inst:AddComponent("inventoryitem")
 		inst.components.inventoryitem.atlasname = "images/tea_inventoryitem.xml"
-		inst.components.inventoryitem.imagename = "bucket_"..data.name
+		inst.components.inventoryitem.imagename = "bucket_"..name
 		
 		inst:AddComponent("edible")
 		inst.components.edible.thirst = data.thirst
