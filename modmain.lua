@@ -13,15 +13,23 @@ PrefabFiles =
  "bucketfull",
  "bucketice",
  "cup",
+ "preparedrink",
+ "barrle",
+ "brewery",
+ "campkettle",
+ "kettle",
+ "portable_kettle",
+ "desalinator",
+ "well_drilling",
 }
 
 Assets = {
     Asset("ATLAS", "images/tea_inventoryitem.xml"),--Тут типо изображения,в переменной АТLАS, нам нужен файл .xml
     Asset("IMAGE", "images/tea_inventoryitem.tex"),-- А в переменной IMAGE - .tex
-	
 	Asset("ATLAS", "images/tea_minimap.xml"),
     Asset("IMAGE", "images/tea_minimap.tex"),
-	
+	Asset("ATLAS", "images/watertab.xml"),
+    Asset("IMAGE", "images/watertab.tex"),
 	Asset("SOUNDPACKAGE", "sound/fil_drink.fev"),	
     Asset("SOUND", "sound/fil_drink.fsb"),
 	Asset("ANIM", "anim/swap_cup.zip" ),
@@ -30,7 +38,7 @@ Assets = {
 
 STRINGS.NAMES.DRINKS_TAB = "WATER"
 STRINGS.TABS.DRINKS_TAB = "Water"
-GLOBAL.RECIPETABS['DRINKS_TAB'] = {str = "DRINKS_TAB", sort=3, icon = "images/watertab.tex", icon_atlas = "images/watertab.xml"}
+GLOBAL.RECIPETABS['DRINKS_TAB'] = {str = "DRINKS_TAB", sort=3, icon_atlas = "images/watertab.xml", icon = "watertab.tex"}
 
 modimport("scripts/recipes.lua")
 modimport("scripts/strings.lua")

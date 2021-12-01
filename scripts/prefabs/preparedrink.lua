@@ -7,7 +7,7 @@ local prefabs =
 }
 
 local function MakePrepareddrink(data)
-	local foodassets =
+	local drinkassets =
 	{
 		Asset("ANIM", "anim/kettle_drink.zip"),
 		Asset("INV_IMAGE", data.name),
@@ -19,18 +19,18 @@ local function MakePrepareddrink(data)
         table.insert(drinkassets, Asset("ANIM", "anim/"..data.overridebuild..".zip"))
 	end
 
-    local foodprefabs = prefabs
+    local drinkprefabs = prefabs
     if data.prefabs ~= nil then
-        foodprefabs = shallowcopy(prefabs)
+        drinkprefabs = shallowcopy(prefabs)
         for i, v in ipairs(data.prefabs) do
-            if not table.contains(foodprefabs, v) then
-                table.insert(foodprefabs, v)
+            if not table.contains(drinkprefabs, v) then
+                table.insert(drinkprefabs, v)
             end
         end
     end
 
     local function DisplayNameFn(inst)
-        return subfmt(STRINGS.NAMES[data.spice.."_FOOD"], { food = STRINGS.NAMES[string.upper(data.basename)] })
+        return subfmt(STRINGS.NAMES[string.upper(data.basename)])
     end
 
     local function fn()
@@ -42,24 +42,13 @@ local function MakePrepareddrink(data)
 
         MakeInventoryPhysics(inst)
 
-		local food_symbol_build = nil
-        if spicename ~= nil then
-            inst.AnimState:SetBuild("plate_food")
-            inst.AnimState:SetBank("plate_food")
-
-            inst.inv_image_bg = { image = (data.basename or data.name)..".tex" }
-            inst.inv_image_bg.atlas = GetInventoryItemAtlas(inst.inv_image_bg.image)
-
-			food_symbol_build = data.overridebuild or "cook_pot_food"
-        else
-			inst.AnimState:SetBuild(data.overridebuild or "cook_pot_food")
-			inst.AnimState:SetBank("cook_pot_food")
-        end
-
+		local drink_symbol_build = nil
+		inst.AnimState:SetBuild(data.overridebuild or "kettle_drink")
+		inst.AnimState:SetBank("kettle_drink")
+			
         inst.AnimState:PlayAnimation("idle")
-        inst.AnimState:OverrideSymbol("swap_food", data.overridebuild or "cook_pot_food", data.basename or data.name)
-
-        inst:AddTag("preparedfood")
+        
+        inst:AddTag("prepareddrink")
         if data.tags ~= nil then
             for i,v in pairs(data.tags) do
                 inst:AddTag(v)
@@ -68,9 +57,6 @@ local function MakePrepareddrink(data)
 
         if data.basename ~= nil then
             inst:SetPrefabNameOverride(data.basename)
-            if data.spice ~= nil then
-                inst.displaynamefn = DisplayNameFn
-            end
         end
 
         if data.floater ~= nil then
@@ -85,13 +71,13 @@ local function MakePrepareddrink(data)
             return inst
         end
 
-		inst.food_symbol_build = food_symbol_build or data.overridebuild
+		inst.drink_symbol_build = drink_symbol_build or data.overridebuild
 
         inst:AddComponent("edible")
         inst.components.edible.healthvalue = data.health
         inst.components.edible.hungervalue = data.hunger
-        inst.components.edible.foodtype = data.foodtype or FOODTYPE.GENERIC
-        inst.components.edible.secondaryfoodtype = data.secondaryfoodtype or nil
+        inst.components.edible.drinktype = data.drinktype or drinkTYPE.GENERIC
+        inst.components.edible.secondarydrinktype = data.secondarydrinktype or nil
         inst.components.edible.sanityvalue = data.sanity or 0
 		inst.components.
         inst.components.edible.temperaturedelta = data.temperature or 0
@@ -117,7 +103,7 @@ local function MakePrepareddrink(data)
             inst:AddComponent("perishable")
             inst.components.perishable:SetPerishTime(data.perishtime)
             inst.components.perishable:StartPerishing()
-            inst.components.perishable.onperishreplacement = "spoiled_food"
+            inst.components.perishable.onperishreplacement = "spoiled_drink"
         end
 
         MakeSmallBurnable(inst)
@@ -135,13 +121,13 @@ local function MakePrepareddrink(data)
         return inst
     end
 
-    return Prefab(data.name, fn, foodassets, foodprefabs)
+    return Prefab(data.name, fn, drinkassets, drinkprefabs)
 end
 
-local prefs = {}
+--local prefs = {}
 
-for k, v in pairs(require("preparedfoods")) do
-    table.insert(prefs, MakePrepareddrink(v))
-end
+--for k, v in pairs(require("preparedrinks")) do
+    --table.insert(prefs, MakePrepareddrink(v))
+--end
 
-return unpack(prefs)
+--return unpack(prefs)

@@ -3,7 +3,7 @@ local assets =
 	Asset("ANIM", "anim/kettle_drink.zip"),
 	Asset("IMAGE", "images/tea_inventoryitem.tex"),
 	Asset("ATLAS", "images/tea_inventoryitem.xml"),
-	Asset("ATLAS_BUILD", "images/tea_inventoryitem.xml", 256),
+	--Asset("ATLAS_BUILD", "images/tea_inventoryitem.xml", 256),
 }
 
 local prefabs =
