@@ -131,7 +131,7 @@
             </mainline>
             <timeline id="0" name="bottle_banana">
                 <key id="0" spin="0">
-                    <object folder="0" file="0" angle="0"/>
+                    <object folder="0" file="0" angle="0" scale_x="5" scale_y="5"/>
                 </key>
             </timeline>
         </animation>
@@ -148,7 +148,7 @@
             </mainline>
             <timeline id="0" name="bottle_berries">
                 <key id="0" spin="0">
-                    <object folder="1" file="0" angle="0"/>
+                    <object folder="1" file="0" angle="0" scale_x="5" scale_y="5"/>
                 </key>
             </timeline>
         </animation>
@@ -165,7 +165,7 @@
             </mainline>
             <timeline id="0" name="bottle_blacktea">
                 <key id="0" spin="0">
-                    <object folder="3" file="0" angle="0"/>
+                    <object folder="3" file="0" angle="0" scale_x="5" scale_y="5"/>
                 </key>
             </timeline>
         </animation>
@@ -182,7 +182,7 @@
             </mainline>
             <timeline id="0" name="bottle_cactus">
                 <key id="0" spin="0">
-                    <object folder="18" file="0" angle="0"/>
+                    <object folder="18" file="0" angle="0" scale_x="5" scale_y="5"/>
                 </key>
             </timeline>
         </animation>
@@ -199,7 +199,7 @@
             </mainline>
             <timeline id="0" name="bottle_cactusflower">
                 <key id="0" spin="0">
-                    <object folder="17" file="0" angle="0"/>
+                    <object folder="17" file="0" angle="0" scale_x="5" scale_y="5"/>
                 </key>
             </timeline>
         </animation>
@@ -216,7 +216,7 @@
             </mainline>
             <timeline id="0" name="bottle_carrot">
                 <key id="0" spin="0">
-                    <object folder="16" file="0" angle="0"/>
+                    <object folder="16" file="0" angle="0" scale_x="5" scale_y="5"/>
                 </key>
             </timeline>
         </animation>
@@ -233,7 +233,7 @@
             </mainline>
             <timeline id="0" name="bottle_coffee">
                 <key id="0" spin="0">
-                    <object folder="15" file="0" angle="0"/>
+                    <object folder="15" file="0" angle="0" scale_x="5" scale_y="5"/>
                 </key>
             </timeline>
         </animation>
@@ -250,7 +250,7 @@
             </mainline>
             <timeline id="0" name="bottle_dragonfruit">
                 <key id="0" spin="0">
-                    <object folder="14" file="0" angle="0"/>
+                    <object folder="14" file="0" angle="0" scale_x="5" scale_y="5"/>
                 </key>
             </timeline>
         </animation>
@@ -267,7 +267,7 @@
             </mainline>
             <timeline id="0" name="bottle_fig">
                 <key id="0" spin="0">
-                    <object folder="13" file="0" angle="0"/>
+                    <object folder="13" file="0" angle="0" scale_x="5" scale_y="5"/>
                 </key>
             </timeline>
         </animation>
@@ -284,7 +284,7 @@
             </mainline>
             <timeline id="0" name="bottle_fruit">
                 <key id="0" spin="0">
-                    <object folder="12" file="0" angle="0"/>
+                    <object folder="12" file="0" angle="0" scale_x="5" scale_y="5"/>
                 </key>
             </timeline>
         </animation>
@@ -301,7 +301,7 @@
             </mainline>
             <timeline id="0" name="bottle_fuer">
                 <key id="0" spin="0">
-                    <object folder="11" file="0" angle="0"/>
+                    <object folder="11" file="0" angle="0" scale_x="5" scale_y="5"/>
                 </key>
             </timeline>
         </animation>
@@ -318,7 +318,7 @@
             </mainline>
             <timeline id="0" name="bottle_glowberry">
                 <key id="0" spin="0">
-                    <object folder="10" file="0" angle="0"/>
+                    <object folder="10" file="0" angle="0" scale_x="5" scale_y="5"/>
                 </key>
             </timeline>
         </animation>
@@ -335,7 +335,7 @@
             </mainline>
             <timeline id="0" name="bottle_greentea">
                 <key id="0" spin="0">
-                    <object folder="30" file="0" angle="0"/>
+                    <object folder="30" file="0" angle="0" scale_x="5" scale_y="5"/>
                 </key>
             </timeline>
         </animation>
@@ -352,7 +352,7 @@
             </mainline>
             <timeline id="0" name="bottle_hibiscus">
                 <key id="0" spin="0">
-                    <object folder="9" file="0" angle="0"/>
+                    <object folder="9" file="0" angle="0" scale_x="5" scale_y="5"/>
                 </key>
             </timeline>
         </animation>
@@ -369,7 +369,7 @@
             </mainline>
             <timeline id="0" name="bottle_lotusflower">
                 <key id="0" spin="0">
-                    <object folder="8" file="0" angle="0"/>
+                    <object folder="8" file="0" angle="0" scale_x="5" scale_y="5"/>
                 </key>
             </timeline>
         </animation>
@@ -386,7 +386,7 @@
             </mainline>
             <timeline id="0" name="bottle_mixflower">
                 <key id="0" spin="0">
-                    <object folder="7" file="0" angle="0"/>
+                    <object folder="7" file="0" angle="0" scale_x="5" scale_y="5"/>
                 </key>
             </timeline>
         </animation>
@@ -403,7 +403,7 @@
             </mainline>
             <timeline id="0" name="bottle_mulled">
                 <key id="0" spin="0">
-                    <object folder="6" file="0" angle="0"/>
+                    <object folder="6" file="0" angle="0" scale_x="5" scale_y="5"/>
                 </key>
             </timeline>
         </animation>
@@ -420,7 +420,7 @@
             </mainline>
             <timeline id="0" name="bottle_pomegranate">
                 <key id="0" spin="0">
-                    <object folder="5" file="0" angle="0"/>
+                    <object folder="5" file="0" angle="0" scale_x="5" scale_y="5"/>
                 </key>
             </timeline>
         </animation>
@@ -437,7 +437,7 @@
             </mainline>
             <timeline id="0" name="bottle_sus_hibiscus">
                 <key id="0" spin="0">
-                    <object folder="31" file="0" angle="0"/>
+                    <object folder="31" file="0" angle="0" scale_x="5" scale_y="5"/>
                 </key>
             </timeline>
         </animation>
@@ -454,7 +454,7 @@
             </mainline>
             <timeline id="0" name="bottle_vagge">
                 <key id="0" spin="0">
-                    <object folder="4" file="0" angle="0"/>
+                    <object folder="4" file="0" angle="0" scale_x="5" scale_y="5"/>
                 </key>
             </timeline>
         </animation>
@@ -479,7 +479,7 @@
             </mainline>
             <timeline id="0" name="bottle_cola">
                 <key id="0" spin="0">
-                    <object folder="28" file="0" angle="0"/>
+                    <object folder="28" file="0" angle="0" scale_x="5" scale_y="5"/>
                 </key>
             </timeline>
         </animation>
@@ -496,7 +496,7 @@
             </mainline>
             <timeline id="0" name="bottle_colaquantum">
                 <key id="0" spin="0">
-                    <object folder="27" file="0" angle="0"/>
+                    <object folder="27" file="0" angle="0" scale_x="5" scale_y="5"/>
                 </key>
             </timeline>
         </animation>
@@ -513,7 +513,7 @@
             </mainline>
             <timeline id="0" name="bottle_fruitsoda">
                 <key id="0" spin="0">
-                    <object folder="26" file="0" angle="0"/>
+                    <object folder="26" file="0" angle="0" scale_x="5" scale_y="5"/>
                 </key>
             </timeline>
         </animation>
@@ -530,7 +530,7 @@
             </mainline>
             <timeline id="0" name="bottle_llsoda">
                 <key id="0" spin="0">
-                    <object folder="25" file="0" angle="0"/>
+                    <object folder="25" file="0" angle="0" scale_x="5" scale_y="5"/>
                 </key>
             </timeline>
         </animation>
@@ -547,7 +547,7 @@
             </mainline>
             <timeline id="0" name="bottle_soda">
                 <key id="0" spin="0">
-                    <object folder="24" file="0" angle="0"/>
+                    <object folder="24" file="0" angle="0" scale_x="5" scale_y="5"/>
                 </key>
             </timeline>
         </animation>
@@ -572,7 +572,7 @@
             </mainline>
             <timeline id="0" name="bottle_beer">
                 <key id="0" spin="0">
-                    <object folder="2" file="0" angle="0"/>
+                    <object folder="2" file="0" angle="0" scale_x="5" scale_y="5"/>
                 </key>
             </timeline>
         </animation>
@@ -589,7 +589,7 @@
             </mainline>
             <timeline id="0" name="bottle_fruitwine">
                 <key id="0" spin="0">
-                    <object folder="19" file="0" angle="0"/>
+                    <object folder="19" file="0" angle="0" scale_x="5" scale_y="5"/>
                 </key>
             </timeline>
         </animation>
@@ -606,7 +606,7 @@
             </mainline>
             <timeline id="0" name="bottle_ginsengwine">
                 <key id="0" spin="0">
-                    <object folder="29" file="0" angle="0"/>
+                    <object folder="29" file="0" angle="0" scale_x="5" scale_y="5"/>
                 </key>
             </timeline>
         </animation>
@@ -623,7 +623,7 @@
             </mainline>
             <timeline id="0" name="bottle_glowwine">
                 <key id="0" spin="0">
-                    <object folder="20" file="0" angle="0"/>
+                    <object folder="20" file="0" angle="0" scale_x="5" scale_y="5"/>
                 </key>
             </timeline>
         </animation>
@@ -640,7 +640,7 @@
             </mainline>
             <timeline id="0" name="bottle_mead">
                 <key id="0" spin="0">
-                    <object folder="21" file="0" angle="0"/>
+                    <object folder="21" file="0" angle="0" scale_x="5" scale_y="5"/>
                 </key>
             </timeline>
         </animation>
@@ -657,7 +657,7 @@
             </mainline>
             <timeline id="0" name="bottle_pulqu">
                 <key id="0" spin="0">
-                    <object folder="22" file="0" angle="0"/>
+                    <object folder="22" file="0" angle="0" scale_x="5" scale_y="5"/>
                 </key>
             </timeline>
         </animation>
@@ -674,7 +674,7 @@
             </mainline>
             <timeline id="0" name="bottle_wine">
                 <key id="0" spin="0">
-                    <object folder="23" file="0" angle="0"/>
+                    <object folder="23" file="0" angle="0" scale_x="5" scale_y="5"/>
                 </key>
             </timeline>
         </animation>
@@ -691,7 +691,7 @@
             </mainline>
             <timeline id="0" name="bottle_water">
                 <key id="0" spin="0">
-                    <object folder="32" file="0" angle="0"/>
+                    <object folder="32" file="0" angle="0" scale_x="5" scale_y="5"/>
                 </key>
                 <key id="1" time="34" spin="0">
                     <object folder="32" file="0" angle="0"/>
@@ -711,7 +711,7 @@
             </mainline>
             <timeline id="0" name="bottle_strang">
                 <key id="0" spin="0">
-                    <object folder="35" file="0" angle="0"/>
+                    <object folder="35" file="0" angle="0" scale_x="5" scale_y="5"/>
                 </key>
                 <key id="1" time="34" spin="0">
                     <object folder="35" file="0" angle="0"/>
@@ -731,7 +731,7 @@
             </mainline>
             <timeline id="0" name="bottle_salt">
                 <key id="0" spin="0">
-                    <object folder="33" file="0" angle="0"/>
+                    <object folder="33" file="0" angle="0" scale_x="5" scale_y="5"/>
                 </key>
                 <key id="1" time="34" spin="0">
                     <object folder="33" file="0" angle="0"/>
@@ -751,7 +751,7 @@
             </mainline>
             <timeline id="0" name="bottle_garbage">
                 <key id="0" spin="0">
-                    <object folder="36" file="0" angle="0"/>
+                    <object folder="36" file="0" angle="0" scale_x="5" scale_y="5"/>
                 </key>
                 <key id="1" time="34" spin="0">
                     <object folder="36" file="0" angle="0"/>
@@ -771,7 +771,7 @@
             </mainline>
             <timeline id="0" name="bottle_drity">
                 <key id="0" spin="0">
-                    <object folder="34" file="0" angle="0"/>
+                    <object folder="34" file="0" angle="0" scale_x="5" scale_y="5"/>
                 </key>
                 <key id="1" time="34" spin="0">
                     <object folder="34" file="0" angle="0"/>

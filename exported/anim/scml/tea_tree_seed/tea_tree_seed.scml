@@ -60,12 +60,12 @@
             </mainline>
             <timeline id="0" name="tea_seed-0">
                 <key id="0" spin="0">
-                    <object folder="1" file="1" x="-2.65" y="23.45" angle="0" scale_x="0.999998" scale_y="0.999998"/>
+                    <object folder="1" file="1" x="-2.65" y="56.45" angle="0" scale_x="0.999998" scale_y="0.999998"/>
                 </key>
             </timeline>
             <timeline id="1" name="tea_seed_ground">
                 <key id="0" spin="0">
-                    <object folder="4" file="0" x="0.55" y="-41.7" angle="0" scale_x="0.817431" scale_y="0.817431"/>
+                    <object folder="4" file="0" x="0.55" y="-5.7" angle="0" scale_x="1.588073" scale_y="1.436364"/>
                 </key>
             </timeline>
         </animation>
@@ -80,7 +80,7 @@
             </mainline>
             <timeline id="0" name="tea_seed-0">
                 <key id="0" spin="0">
-                    <object folder="1" file="3" x="4.607638" y="-2.574405" angle="0" scale_x="0.451551" scale_y="0.48769"/>
+                    <object folder="1" file="3" x="4.607638" y="-2.574405" angle="0"/>
                 </key>
             </timeline>
         </animation>

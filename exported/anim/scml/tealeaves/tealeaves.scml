@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <spriter_data scml_version="1.0" generator="BrashMonkey Spriter" generator_version="r11">
     <folder id="0" name="tealeaves">
-        <file id="0" name="tealeaves/tealeaves.png" width="64" height="64" pivot_x="0.5" pivot_y="0.5"/>
-        <file id="1" name="tealeaves/tealeaves_dried.png" width="64" height="64" pivot_x="0.5" pivot_y="0.5"/>
+        <file id="0" name="tealeaves/tealeaves.png" width="128" height="128" pivot_x="0.5" pivot_y="0.5"/>
+        <file id="1" name="tealeaves/tealeaves_dried.png" width="128" height="128" pivot_x="0.5" pivot_y="0.5"/>
     </folder>
     <folder id="1" name="shadow">
         <file id="0" name="shadow/shadow-0.png" width="250" height="78" pivot_x="0.5" pivot_y="0.5"/>
@@ -36,7 +36,7 @@
             </timeline>
             <timeline id="1" name="tealeaves_dried">
                 <key id="0" spin="0">
-                    <object folder="0" file="0" x="-2.696595" y="8.869757" angle="358.910834" scale_x="1.399545" scale_y="0.715885"/>
+                    <object folder="0" file="0" x="-2.696595" y="8.869757" angle="358.910834" scale_x="0.739481" scale_y="0.378254"/>
                 </key>
                 <key id="1" time="25" spin="0">
                     <object folder="0" file="0" x="-2.696595" y="8.869757" angle="358.910834" scale_x="1.399545" scale_y="0.715885"/>
@@ -74,7 +74,7 @@
             </timeline>
             <timeline id="1" name="tealeaves_dried">
                 <key id="0" spin="0">
-                    <object folder="0" file="1" x="-2.696595" y="8.869757" angle="358.910834" scale_x="1.399545" scale_y="0.715885"/>
+                    <object folder="0" file="1" x="-2.696595" y="8.869757" angle="358.910834" scale_x="0.73948" scale_y="0.37825"/>
                 </key>
                 <key id="1" time="25" spin="0">
                     <object folder="0" file="1" x="-2.696595" y="8.869757" angle="358.910834" scale_x="1.399545" scale_y="0.715885"/>

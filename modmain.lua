@@ -21,6 +21,8 @@ PrefabFiles =
  "portable_kettle",
  "desalinator",
  "well_drilling",
+ "tea_tree",
+ "tea_seed",
 }
 
 Assets = {
