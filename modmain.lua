@@ -23,6 +23,8 @@ PrefabFiles =
  "well_drilling",
  "tea_tree",
  "tea_seed",
+ "caffeinberry_bean",
+ "caffeinberry",
 }
 
 Assets = {

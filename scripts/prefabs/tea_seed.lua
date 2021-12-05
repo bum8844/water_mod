@@ -7,6 +7,7 @@ local assets =
 }
 
 local prefabs = {
+	"twigs",
     "tea_seed_cooked",
 	"tealeaves_",
 	"tealeaves_dried"
@@ -155,7 +156,8 @@ local function tea_seed_cooked()
 end
 
 local function dig_sprout(inst, digger)
-    inst.components.lootdropper:DropLoot()
+    inst.components.lootdropper:SpawnLootPrefab("twigs")
+	inst.components.lootdropper:SpawnLootPrefab("twigs")
     inst:Remove()
 end
 

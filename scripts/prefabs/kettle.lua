@@ -12,20 +12,55 @@ local prefabs =
 	"collapse_small",
 }
 
+
 local function onhammered(inst, worker)
-	inst.components.lootdropper:DropLoot()
-	SpawnPrefab("collapse_small").Transform:SetPosition(inst.Transform:GetWorldPosition())
-	inst.SoundEmitter:PlaySound("dontstarve/common/destroy_stone")
-	inst:Remove()
+    if inst.components.burnable ~= nil and inst.components.burnable:IsBurning() then
+        inst.components.burnable:Extinguish()
+    end
+    --if not inst:HasTag("burnt") and inst.components.stewer.product ~= nil and inst.components.stewer:IsDone() then
+        --inst.components.stewer:Harvest()
+    --end
+    --if inst.components.container ~= nil then
+        --inst.components.container:DropEverything()
+    --end
+    inst.components.lootdropper:DropLoot()
+    local fx = SpawnPrefab("collapse_small")
+    fx.Transform:SetPosition(inst.Transform:GetWorldPosition())
+    fx:SetMaterial("metal")
+    inst:Remove()
 end
 
 local function onhit(inst, worker)
-    inst.AnimState:PlayAnimation("hit_empty")
-    inst.AnimState:PushAnimation("idle_empty",false)
+	if not inst:HasTag("burnt") then
+		inst.AnimState:PlayAnimation("hit_empty")
+		inst.AnimState:PushAnimation("idle_empty",false)
+	end
 end
 
 local function onbuilt(inst)
     inst.AnimState:PlayAnimation("place")
+end
+
+local function onsave(inst, data)
+    if inst:HasTag("burnt") or (inst.components.burnable ~= nil and inst.components.burnable:IsBurning()) then
+        data.burnt = true
+    end
+end
+
+local function onload(inst, data)
+    if data ~= nil and data.burnt then
+        inst.components.burnable.onburnt(inst)
+        --inst.Light:Enable(false)
+    end
+end
+
+local function onloadpostpass(inst, newents, data)
+    if data and data.additems and inst.components.container then
+        for i, itemname in ipairs(data.additems)do
+            local ent = SpawnPrefab(itemname)
+            inst.components.container:GiveItem( ent )
+        end
+    end
 end
 
 local function fn()
@@ -67,6 +102,13 @@ local function fn()
 	inst:ListenForEvent("onbuilt", onbuilt)
 	
 	MakeHauntableWork(inst)
+	
+	MakeMediumBurnable(inst, nil, nil, true)
+    MakeSmallPropagator(inst)
+
+    inst.OnSave = onsave
+    inst.OnLoad = onload
+    inst.OnLoadPostPass = onloadpostpass
 	
     return inst
 end
