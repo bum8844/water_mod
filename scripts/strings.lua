@@ -13,46 +13,94 @@ TUNING.RED_TEA_SPEEP = ""
 TUNING.BARRLE_ENERGY = "Energy - "
 TUNING.BARRLE_WATERLEVEL = "%. Water Level "]]--
 
-STRINGS.NAMES.WATERWELL	  = "Water well"
-STRINGS.RECIPE_DESC.WATERWELL = "Brings deep groundwater."
+STRINGS.AW_DRINK = "Drink"
 
-STRINGS.NAMES.HOLE	  = "Strange Dirt"
-STRINGS.RECIPE_DESC.HOLE = "That seems odd."
+-- well drilling
+STRINGS.NAMES.WELL_DRILLING ="Well drill"
+STRINGS.NAMES.WELL_DRILLING_ITEM = "Well drill"
+STRINGS.RECIPE_DESC.WELL_DRILLING_ITEM = "Make a hole in the ground."
+STRINGS.CHARACTERS.GENERIC.DESCRIBE.WELL_DRILLING = "It's digging a hole."
+STRINGS.CHARACTERS.GENERIC.DESCRIBE.WELL_DRILLING_ITEM = "To get groundwater, I have to dig a hole first."
 
-STRINGS.NAMES.HOLE2	  = "A Hole"
-STRINGS.RECIPE_DESC.HOLE2 = "Seems like I can build a water well right there."
+-- wells & hole
+STRINGS.NAMES.HOLE	  = "Hole"
+STRINGS.CHARACTERS.GENERIC.DESCRIBE.HOLE = "I cannot see the bottom."
+STRINGS.NAMES.WELL_ITEM = "Well parts"
+STRINGS.RECIPE_DESC.WELL_ITEM = "Brings deep groundwater."
+STRINGS.CHARACTERS.GENERIC.DESCRIBE.WELL_ITEM = "Let's install this in the hole."
+STRINGS.NAMES.WELL = "Well"
+STRINGS.CHARACTERS.GENERIC.DESCRIBE.WELL = "It's easier to get clean water."
 
+-- desalinator
+STRINGS.NAMES.DESALINATOR = "Desalinator"
+STRINGS.RECIPE_DESC.DESALINATOR = "Remove salt from the sea water. Salt is a bonus!"
+STRINGS.CHARACTERS.GENERIC.DESCRIBE.DESALINATOR = "Now I can get clean water using seawater."
+
+-- barrle
+STRINGS.NAMES.BARRLE = "Barrle"
+STRINGS.RECIPE_DESC.BARRLE = "A container for storing water."
+STRINGS.CHARACTERS.GENERIC.DESCRIBE.BARRLE = "I can contain my water here."
+
+-- brewery
+STRINGS.NAMES.BREWERY = "Brewery"
+STRINGS.RECIPE_DESC.BREWERY = "This can make delicious drinks. maybe?"
+STRINGS.CHARACTERS.GENERIC.DESCRIBE.BREWERY = "It is one of the ways to store water for a long time."
+
+-- buckets
 STRINGS.NAMES.BUCKET	= "Bucket"
 STRINGS.RECIPE_DESC.BUCKET = "An empty bucket"
 STRINGS.CHARACTERS.GENERIC.DESCRIBE.BUCKET = "I can fill it with water, or something else."
+STRINGS.NAMES.BUCKET_FULL = "Bucket with water"
+STRINGS.CHARACTERS.GENERIC.DESCRIBE.BUCKET_FULL = "It's filled with water."
+STRINGS.NAMES.BUCKET_DIRTY = "Bucket with dirty water"
+STRINGS.CHARACTERS.GENERIC.DESCRIBE.BUCKET_DIRTY = "It's filled with water, but is dirty"
+STRINGS.NAMES.BUCKET_SALT = "Bucket with sea water"
+STRINGS.CHARACTERS.GENERIC.DESCRIBE.BUCKET_SALT = "It's filled with water, but is salty"
+STRINGS.NAMES.BUCKET_ICE = "Ice Bucket"
+STRINGS.CHARACTERS.GENERIC.DESCRIBE.BUCKET_ICE = "Now it's useful, but I think I can take it out."
 
+-- campkettle
+STRINGS.NAMES.CAMPKETTLE = "Camp kettle"
+STRINGS.CHARACTERS.GENERIC.DESCRIBE.CAMPKETTLE = "It always need fuel."
+STRINGS.RECIPE_DESC.CAMPKETTLE = "Your kettle for first times."
+
+-- kettle
 STRINGS.NAMES.KETTLE	= "Kettle"
 STRINGS.RECIPE_DESC.KETTLE = "The last thing of your past life."
 STRINGS.CHARACTERS.GENERIC.DESCRIBE.KETTLE = "Finally, I can make tea now!"
 
-STRINGS.NAMES.KETTLE_PORT	= "Portable Kettle"
-STRINGS.RECIPE_DESC.KETTLE_PORT = "Pocket kettle!."
-STRINGS.CHARACTERS.GENERIC.DESCRIBE.KETTLE_PORT = "I can take it inside my backpack!"
+-- portable_kettle
+STRINGS.NAMES.PORTABLE_KETTLE_ITEM	= "Portable Kettle"
+STRINGS.NAMES.PORTABLE_KETTLE = "Portable Kettle"
+STRINGS.RECIPE_DESC.PORTABLE_KETTLE_ITEM = "It's easy to carry around."
+STRINGS.CHARACTERS.GENERIC.DESCRIBE.PORTABLE_KETTLE_ITEM = "I can take it inside my backpack!"
+STRINGS.CHARACTERS.GENERIC.DESCRIBE.PORTABLE_KETTLE = "I can take it inside my backpack!"
 
-STRINGS.NAMES.BUCKET_FULL = "Bucket with water"
-STRINGS.NAMES.BUCKET_DIRTY = "Bucket with dirty water"
-STRINGS.NAMES.BUCKET_SALT = "Bucket with sea water"
+-- tea_trees
+STRINGS.NAMES.TEA_TREE = "Tea tree"
+STRINGS.CHARACTERS.GENERIC.DESCRIBE.TEA_TREE = "It's a tree of tea!"
+STRINGS.NAMES.DUG_TEA_TREE = "Tea tree" 
+STRINGS.CHARACTERS.GENERIC.DESCRIBE.DUG_TEA_TREE = "The leaves smell amazing."
+STRINGS.NAMES.TEA_SEED = "Tea seed"
+STRINGS.CHARACTERS.GENERIC.DESCRIBE.TEA_SEED = "It's a seed of tree tea!"
+STRINGS.NAMES.TEA_SEED_COOKED = "Roast tea seed"
+STRINGS.CHARACTERS.GENERIC.DESCRIBE.TEA_SEED_COOKED = "I regret doing this."
+STRINGS.NAMES.TEALEAVES = "Tea leaves"
+STRINGS.CHARACTERS.GENERIC.DESCRIBE.TEALEAVES = "That smell is amazing!"
+STRINGS.NAMES.TEALEAVES_DRIED = "Dried tea leaves."
+STRINGS.CHARACTERS.GENERIC.DESCRIBE.TEALEAVES_DRIED = "The tea scent seems to have become stronger."
 
-STRINGS.CHARACTERS.GENERIC.DESCRIBE.BUCKET_FULL = "It's filled with water."
-STRINGS.CHARACTERS.GENERIC.DESCRIBE.BUCKET_DIRTY = "It's filled with water, but is dirty"
-STRINGS.CHARACTERS.GENERIC.DESCRIBE.BUCKET_SALT = "It's filled with water, but is salty"
+-- caffeinberry
+STRINGS.NAMES.DUG_CAFFEINBERRY = "Coffee Bush" 
+STRINGS.CHARACTERS.GENERIC.DESCRIBE.DUG_CAFFEINBERRY = "Seems odd, reminds me of fire."
+STRINGS.NAMES.CAFFEINBERRY = "Coffee Bush" 
+STRINGS.CHARACTERS.GENERIC.DESCRIBE.CAFFEINBERRY = "Seems odd, reminds me of fire."
+STRINGS.NAMES.CAFFEINBERRY_BEAN = "Coffee beans"
+STRINGS.CHARACTERS.GENERIC.DESCRIBE.CAFFEINBERRY_BEAN = "I should try and cook it."
+STRINGS.NAMES.CAFFEINBERRY_BEAN_COOKED = "Roast coffee beans" 
+STRINGS.CHARACTERS.GENERIC.DESCRIBE.CAFFEINBERRY_BEAN_COOKED = "I can make coffee, yes!"
 
-STRINGS.NAMES.BUCKET_ICE	= "Ice Bucket"
-STRINGS.CHARACTERS.GENERIC.DESCRIBE.BUCKET_ICE = "Now it's useless."
-
-STRINGS.NAMES.WATERWELL_ITEM = "Water well parts"
-STRINGS.CHARACTERS.GENERIC.DESCRIBE.WATERWELL_ITEM = "Parts for a water well."
-
-STRINGS.NAMES.WATERBARRLE = "Barrel"
-STRINGS.CHARACTERS.GENERIC.DESCRIBE.WATERBARRLE = "I can contain my water here."
-
-STRINGS.NAMES.BEER_BARRLE = "Beer Barrel"
-STRINGS.CHARACTERS.GENERIC.DESCRIBE.BEER_BARRLE = "I can make beer here."
+-- preparedrink
 
 STRINGS.NAMES.CUP = "Empty cup"
 STRINGS.CHARACTERS.GENERIC.DESCRIBE.CUP = "For drinking tea!"
@@ -61,11 +109,23 @@ STRINGS.RECIPE_DESC.CUP = "Container for drinks."
 STRINGS.NAMES.CUP_WATER = "Cup of water"
 STRINGS.CHARACTERS.GENERIC.DESCRIBE.CUP_WATER = "I can drink it"
 
-STRINGS.NAMES.CUP_COFFE = "Cup of coffee"
-STRINGS.CHARACTERS.GENERIC.DESCRIBE.CUP_COFFE = "Delicious!"
+STRINGS.NAMES.CUP_COFFEE = "Cup of coffee"
+STRINGS.CHARACTERS.GENERIC.DESCRIBE.CUP_COFFEE = "Delicious!"
 
-STRINGS.NAMES.CUP_TEE = "Cup of tea"
-STRINGS.CHARACTERS.GENERIC.DESCRIBE.CUP_TEE = "I need milk."
+STRINGS.NAMES.CUP_TEA = "Cup of tea"
+STRINGS.CHARACTERS.GENERIC.DESCRIBE.CUP_TEA = "I need milk."
+
+
+
+
+
+
+
+
+
+
+
+
 
 STRINGS.NAMES.CUP_RED = "Dragon Drink"
 STRINGS.CHARACTERS.GENERIC.DESCRIBE.CUP_RED = "Smells really good!"
@@ -88,8 +148,7 @@ STRINGS.CHARACTERS.GENERIC.DESCRIBE.CUP_MEAD = "It looks sweet, but it's alcohol
 STRINGS.NAMES.TEE_PLANT = "Tea plant"
 STRINGS.CHARACTERS.GENERIC.DESCRIBE.TEE_PLANT = "I can make tea with it, right?"
 
-STRINGS.NAMES.TEE = "Tea leaves"
-STRINGS.CHARACTERS.GENERIC.DESCRIBE.TEE = "That smell is amazing!"
+
 
 STRINGS.NAMES.TEE_S = "Herbal tea"
 STRINGS.CHARACTERS.GENERIC.DESCRIBE.TEE_S = "Smells like real tea!"
@@ -114,82 +173,18 @@ STRINGS.NAMES.CUP_ABI = "Ghostly Drink"
 STRINGS.CHARACTERS.GENERIC.DESCRIBE.CUP_ABI = "Wendy loves it!"
 STRINGS.CHARACTERS.WENDY.DESCRIBE.CUP_ABI = "Abigail I'm coming!"
 
-STRINGS.NAMES.TEE_TREE = "Tea tree"
-STRINGS.CHARACTERS.GENERIC.DESCRIBE.TEE_TREE = "It's a tree of tea!"
-
-STRINGS.NAMES.COFFE_BEANS = "Coffee beans"
-STRINGS.CHARACTERS.GENERIC.DESCRIBE.COFFE_BEANS = "I can make coffee, yes!"
-
-STRINGS.NAMES.MR_BEEFALO = "Mr beefalo"
-STRINGS.CHARACTERS.GENERIC.DESCRIBE.MR_BEEFALO = "Are you really a beefalo?"
-
-STRINGS.NAMES.SHADOWWILSON = "Shadow statue"
-STRINGS.CHARACTERS.GENERIC.DESCRIBE.SHADOWWILSON = "Spooky and scary."
-
-STRINGS.NAMES.CUPSJOURNAL = "Recipe Book"
-STRINGS.RECIPE_DESC.CUPSJOURNAL = "This book contains a lot of drinks recipes"
-STRINGS.CHARACTERS.GENERIC.DESCRIBE.CUPSJOURNAL = "I can find recipes here."
-
-STRINGS.NAMES.WHEAT = "Wheat"
-STRINGS.CHARACTERS.GENERIC.DESCRIBE.WHEAT = "Looks like grain."
-
-STRINGS.NAMES.CUTWHEAT = "Cut wheat"
-STRINGS.CHARACTERS.GENERIC.DESCRIBE.CUTWHEAT = "Useful for baking bread."
-
-STRINGS.NAMES.DUG_WHEAT = "Wheat"
-STRINGS.CHARACTERS.GENERIC.DESCRIBE.DUG_WHEAT = "Straight from the ground."
-
-STRINGS.NAMES.FLOUR = "Flour"
-STRINGS.CHARACTERS.GENERIC.DESCRIBE.FLOUR = "Now I can bake bread!"
-
-STRINGS.NAMES.BREAD = "Bread" 
-STRINGS.CHARACTERS.GENERIC.DESCRIBE.BREAD = "Mmm, bread, finally!"
-
-STRINGS.NAMES.BUN = "Sweet Bun" 
-STRINGS.CHARACTERS.GENERIC.DESCRIBE.BUN = "Straight from the oven."
-
 STRINGS.NAMES.CUP_STRANG = "Strange drink" 
 STRINGS.CHARACTERS.GENERIC.DESCRIBE.CUP_STRANG = "Tastes awful..."
 STRINGS.RECIPE_DESC.CUP_STRANG = "Even the name isn't appealing."
 
-STRINGS.NAMES.DUG_COFFEBUSH = "Coffee Bush" 
-STRINGS.CHARACTERS.GENERIC.DESCRIBE.DUG_COFFEBUSH = "Can't make coffee without coffee beans. "
 
-STRINGS.NAMES.DUG_TEE_TREE = "Tea tree" 
-STRINGS.CHARACTERS.GENERIC.DESCRIBE.DUG_TEE_TREE = "The leaves smell amazing."
 
-STRINGS.CHARACTERS.GENERIC.DESCRIBE.HOLE2 = "I've made a hole in the ground, for what?"
-STRINGS.CHARACTERS.GENERIC.DESCRIBE.WATERWELL = "Water from here seem clean."
-STRINGS.CHARACTERS.GENERIC.DESCRIBE.HOLE = "I cannot see the bottom."
-
-STRINGS.NAMES.WATER_MAHINE = "Mini Hydro station"
-STRINGS.RECIPE_DESC.WATER_MAHINE = "Get water from hot tempatures."
-STRINGS.CHARACTERS.GENERIC.DESCRIBE.WATER_MAHINE = "I should fuel it up."
-
-STRINGS.NAMES.ICE_MAHINE = "Defroster "
-STRINGS.RECIPE_DESC.ICE_MAHINE = "Turns ice into water!"
-STRINGS.CHARACTERS.GENERIC.DESCRIBE.ICE_MAHINE = "Turns ice into water!"
 
 STRINGS.NAMES.GRASS_BAG = "Bag of herbs"
 STRINGS.RECIPE_DESC.GRASS_BAG = "A magical bag with plants inside."
 STRINGS.CHARACTERS.GENERIC.DESCRIBE.GRASS_BAG = "I should open it."
 
-STRINGS.RECIPE_DESC.FLOUR = "Bake some delicious bread"
-STRINGS.RECIPE_DESC.COFFE_BEANS = "Used to make coffee."
-STRINGS.RECIPE_DESC.TEE_S = "Ceylon tea."
-STRINGS.RECIPE_DESC.TEE_M = "Seems like this is a treat for monsters only."
-STRINGS.RECIPE_DESC.TEE_G = "Wendy would love this."
-STRINGS.RECIPE_DESC.TEE_R = "A brew made of dragon fruit."
-STRINGS.RECIPE_DESC.TEE_R2 = "Red Indian drink."
-STRINGS.RECIPE_DESC.BEER_BARRLE = "Refresh your mind!"
-STRINGS.RECIPE_DESC.WATERBARRLE = "The best container for water."
-STRINGS.RECIPE_DESC.WATERWELL_ITEM = "Find a hole and build your water well."
 
-STRINGS.NAMES.COFFEBUSH = "Coffee Bush" 
-STRINGS.CHARACTERS.GENERIC.DESCRIBE.COFFEBUSH = "Seems odd, reminds me of fire. "
-
-STRINGS.NAMES.COFFE_BEANS_RAW = "Raw coffee beans" 
-STRINGS.CHARACTERS.GENERIC.DESCRIBE.COFFE_BEANS_RAW = "I should try and cook it."
 
 STRINGS.NAMES.TEA_BERRY = "Berry tea"
 STRINGS.CHARACTERS.GENERIC.DESCRIBE.TEA_BERRY = "That smell is tasty."
@@ -226,13 +221,11 @@ STRINGS.CHARACTERS.GENERIC.DESCRIBE.CUP_BANANA = "I think it need drink when hot
 STRINGS.NAMES.CUP_HONEY = "Cup of tea with honey"
 STRINGS.CHARACTERS.GENERIC.DESCRIBE.CUP_HONEY = "Sweet very sweet."
 
-STRINGS.AW_DRINK = "Drink"
+
 
 STRINGS.CUP_WATERDIRTY = "Cup of dirty water"
 STRINGS.CUP_WATERRAW = "Cup of raw water"
 
-STRINGS.NAMES.CAMPKETTLE = "Camp kettle"
-STRINGS.CHARACTERS.GENERIC.DESCRIBE.CAMPKETTLE = "It always need fuel."
-STRINGS.RECIPE_DESC.CAMPKETTLE = "Your kettle for first times."
+
 
 
