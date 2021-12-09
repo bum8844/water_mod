@@ -1,0 +1,1049 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<spriter_data scml_version="1.0" generator="BrashMonkey Spriter" generator_version="r11">
+    <folder id="0" name="shadows">
+        <file id="0" name="shadows/shadows-0.png" width="275" height="96" pivot_x="0.5" pivot_y="0.5"/>
+    </folder>
+    <folder id="1" name="barrle">
+        <file id="0" name="barrle/barrle-0.png" width="324" height="400" pivot_x="0.5" pivot_y="0.5"/>
+        <file id="1" name="barrle/barrle-1.png" width="324" height="400" pivot_x="0.5" pivot_y="0.5"/>
+    </folder>
+    <folder id="2" name="brewery_part">
+        <file id="0" name="brewery_part/brewery_part-0.png" width="168" height="168" pivot_x="0.5" pivot_y="0.5"/>
+        <file id="1" name="brewery_part/brewery_part-1.png" width="393" height="184" pivot_x="0.5" pivot_y="0.5"/>
+        <file id="2" name="brewery_part/brewery_part-2.png" width="107" height="222" pivot_x="0.5" pivot_y="0.5"/>
+        <file id="3" name="brewery_part/brewery_part-3.png" width="163" height="92" pivot_x="0.5" pivot_y="0.5"/>
+        <file id="4" name="brewery_part/brewery_part-4.png" width="85" height="64" pivot_x="0.5" pivot_y="0.5"/>
+        <file id="5" name="brewery_part/brewery_part-5.png" width="67" height="52" pivot_x="0.5" pivot_y="0.5"/>
+        <file id="6" name="brewery_part/brewery_part-6.png" width="129" height="68" pivot_x="0.465116" pivot_y="0.588235"/>
+        <file id="7" name="brewery_part/brewery_part-7.png" width="168" height="168" pivot_x="0.5" pivot_y="0.5"/>
+        <file id="8" name="brewery_part/brewery_part-8.png" width="393" height="184" pivot_x="0.5" pivot_y="0.5"/>
+        <file id="9" name="brewery_part/brewery_part-9.png" width="107" height="222" pivot_x="0.5" pivot_y="0.5"/>
+        <file id="10" name="brewery_part/brewery_part-10.png" width="163" height="92" pivot_x="0.5" pivot_y="0.5"/>
+        <file id="11" name="brewery_part/brewery_part-11.png" width="85" height="64" pivot_x="0.5" pivot_y="0.5"/>
+        <file id="12" name="brewery_part/brewery_part-12.png" width="67" height="52" pivot_x="0.5" pivot_y="0.5"/>
+        <file id="13" name="brewery_part/brewery_part-13.png" width="129" height="68" pivot_x="0.457364" pivot_y="0.602941"/>
+    </folder>
+    <folder id="3" name="swap">
+        <file id="0" name="swap/brewery_swap.png" width="200" height="46" pivot_x="0.5" pivot_y="0.5"/>
+    </folder>
+    <entity id="0" name="brewery">
+        <animation id="0" name="burnt" length="100" interval="100">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                    <object_ref id="1" timeline="2" key="0" z_index="1"/>
+                    <object_ref id="2" timeline="5" key="0" z_index="2"/>
+                    <object_ref id="3" timeline="1" key="0" z_index="3"/>
+                    <object_ref id="4" timeline="3" key="0" z_index="4"/>
+                    <object_ref id="5" timeline="4" key="0" z_index="5"/>
+                    <object_ref id="6" timeline="7" key="0" z_index="6"/>
+                    <object_ref id="7" timeline="6" key="0" z_index="7"/>
+                    <object_ref id="8" timeline="8" key="0" z_index="8"/>
+                </key>
+                <key id="1" time="100">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                    <object_ref id="1" timeline="2" key="0" z_index="1"/>
+                    <object_ref id="2" timeline="5" key="0" z_index="2"/>
+                    <object_ref id="3" timeline="1" key="0" z_index="3"/>
+                    <object_ref id="4" timeline="3" key="0" z_index="4"/>
+                    <object_ref id="5" timeline="4" key="0" z_index="5"/>
+                    <object_ref id="6" timeline="7" key="0" z_index="6"/>
+                    <object_ref id="7" timeline="6" key="0" z_index="7"/>
+                    <object_ref id="8" timeline="8" key="0" z_index="8"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="shadows-0">
+                <key id="0" spin="0">
+                    <object folder="0" file="0" x="-2.469136" y="-13.345679" angle="0" scale_x="1.637144" scale_y="1.492745"/>
+                </key>
+            </timeline>
+            <timeline id="1" name="brewery_part-1">
+                <key id="0" spin="0">
+                    <object folder="2" file="8" x="-27.738123" y="18.799823" angle="0" scale_x="0.75" scale_y="0.75"/>
+                </key>
+            </timeline>
+            <timeline id="2" name="brewery_part-0">
+                <key id="0" spin="0">
+                    <object folder="2" file="7" x="136.072908" y="17.952174" angle="0" scale_x="0.75" scale_y="0.75"/>
+                </key>
+            </timeline>
+            <timeline id="3" name="brewery_part-2">
+                <key id="0" spin="0">
+                    <object folder="2" file="9" x="137.191804" y="138.261849" angle="0" scale_x="0.75" scale_y="0.75"/>
+                </key>
+            </timeline>
+            <timeline id="4" name="brewery_part-3">
+                <key id="0" spin="0">
+                    <object folder="2" file="10" x="82.784029" y="248.026767" angle="0" scale_x="0.75" scale_y="0.75"/>
+                </key>
+            </timeline>
+            <timeline id="5" name="barrle-0">
+                <key id="0" spin="0">
+                    <object folder="1" file="1" x="-32.466423" y="151.530384" angle="92.5253" scale_x="0.75" scale_y="0.75"/>
+                </key>
+            </timeline>
+            <timeline id="6" name="brewery_part-6">
+                <key id="0" spin="0">
+                    <object folder="2" file="13" x="-194.938523" y="25.304926" angle="343.835066" scale_x="0.383707" scale_y="0.370244"/>
+                </key>
+            </timeline>
+            <timeline id="7" name="brewery_part-5">
+                <key id="0" spin="0">
+                    <object folder="2" file="12" x="-183.000822" y="0.735914" angle="347.212169" scale_x="0.75" scale_y="0.75"/>
+                </key>
+            </timeline>
+            <timeline id="8" name="brewery_part-4">
+                <key id="0" spin="0">
+                    <object folder="2" file="11" x="-101.291133" y="250.951308" angle="2.5253" scale_x="0.75" scale_y="0.75"/>
+                </key>
+            </timeline>
+        </animation>
+        <animation id="1" name="idle" length="100" interval="100">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                    <object_ref id="1" timeline="2" key="0" z_index="1"/>
+                    <object_ref id="2" timeline="5" key="0" z_index="2"/>
+                    <object_ref id="3" timeline="1" key="0" z_index="3"/>
+                    <object_ref id="4" timeline="3" key="0" z_index="4"/>
+                    <object_ref id="5" timeline="4" key="0" z_index="5"/>
+                    <object_ref id="6" timeline="7" key="0" z_index="6"/>
+                    <object_ref id="7" timeline="6" key="0" z_index="7"/>
+                    <object_ref id="8" timeline="8" key="0" z_index="8"/>
+                    <object_ref id="9" timeline="9" key="0" z_index="9"/>
+                </key>
+                <key id="1" time="100">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                    <object_ref id="1" timeline="2" key="0" z_index="1"/>
+                    <object_ref id="2" timeline="5" key="0" z_index="2"/>
+                    <object_ref id="3" timeline="1" key="0" z_index="3"/>
+                    <object_ref id="4" timeline="3" key="0" z_index="4"/>
+                    <object_ref id="5" timeline="4" key="0" z_index="5"/>
+                    <object_ref id="6" timeline="7" key="0" z_index="6"/>
+                    <object_ref id="7" timeline="6" key="0" z_index="7"/>
+                    <object_ref id="8" timeline="8" key="0" z_index="8"/>
+                    <object_ref id="9" timeline="9" key="0" z_index="9"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="shadows-0">
+                <key id="0" spin="0">
+                    <object folder="0" file="0" x="-2.469136" y="-13.345679" angle="0" scale_x="1.637144" scale_y="1.492745"/>
+                </key>
+            </timeline>
+            <timeline id="1" name="brewery_part-1">
+                <key id="0" spin="0">
+                    <object folder="2" file="1" x="-27.738123" y="18.799823" angle="0" scale_x="0.75" scale_y="0.75"/>
+                </key>
+            </timeline>
+            <timeline id="2" name="brewery_part-0">
+                <key id="0" spin="0">
+                    <object folder="2" file="0" x="136.072908" y="17.952174" angle="0" scale_x="0.75" scale_y="0.75"/>
+                </key>
+            </timeline>
+            <timeline id="3" name="brewery_part-2">
+                <key id="0" spin="0">
+                    <object folder="2" file="2" x="137.191804" y="138.261849" angle="0" scale_x="0.75" scale_y="0.75"/>
+                </key>
+            </timeline>
+            <timeline id="4" name="brewery_part-3">
+                <key id="0" spin="0">
+                    <object folder="2" file="3" x="82.784029" y="248.026767" angle="0" scale_x="0.75" scale_y="0.75"/>
+                </key>
+            </timeline>
+            <timeline id="5" name="barrle-0">
+                <key id="0" spin="0">
+                    <object folder="1" file="0" x="-31.716423" y="151.530384" angle="90" scale_x="0.75" scale_y="0.75"/>
+                </key>
+            </timeline>
+            <timeline id="6" name="brewery_part-6">
+                <key id="0" spin="0">
+                    <object folder="2" file="6" x="-185.75485" y="123.264109" angle="0" scale_x="0.383707" scale_y="0.370244"/>
+                </key>
+            </timeline>
+            <timeline id="7" name="brewery_part-5">
+                <key id="0" spin="0">
+                    <object folder="2" file="5" x="-167.6947" y="107.878771" angle="0" scale_x="0.75" scale_y="0.75"/>
+                </key>
+            </timeline>
+            <timeline id="8" name="brewery_part-4">
+                <key id="0" spin="0">
+                    <object folder="2" file="4" x="-96.093756" y="253.887209" angle="0" scale_x="0.75" scale_y="0.75"/>
+                </key>
+            </timeline>
+            <timeline id="9" name="brewery_swap">
+                <key id="0" spin="0">
+                    <object folder="3" file="0" x="-24.55769" y="215.03846" angle="0" scale_x="0.74589"/>
+                </key>
+            </timeline>
+        </animation>
+        <animation id="2" name="cooking" length="360" interval="100">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                    <object_ref id="1" timeline="2" key="0" z_index="1"/>
+                    <object_ref id="2" timeline="5" key="0" z_index="2"/>
+                    <object_ref id="3" timeline="1" key="0" z_index="3"/>
+                    <object_ref id="4" timeline="3" key="0" z_index="4"/>
+                    <object_ref id="5" timeline="4" key="0" z_index="5"/>
+                    <object_ref id="6" timeline="7" key="0" z_index="6"/>
+                    <object_ref id="7" timeline="6" key="0" z_index="7"/>
+                    <object_ref id="8" timeline="8" key="0" z_index="8"/>
+                    <object_ref id="9" timeline="9" key="0" z_index="9"/>
+                </key>
+                <key id="1" time="100">
+                    <object_ref id="0" timeline="0" key="1" z_index="0"/>
+                    <object_ref id="1" timeline="2" key="1" z_index="1"/>
+                    <object_ref id="2" timeline="5" key="1" z_index="2"/>
+                    <object_ref id="3" timeline="1" key="1" z_index="3"/>
+                    <object_ref id="4" timeline="3" key="1" z_index="4"/>
+                    <object_ref id="5" timeline="4" key="2" z_index="5"/>
+                    <object_ref id="6" timeline="7" key="1" z_index="6"/>
+                    <object_ref id="7" timeline="6" key="1" z_index="7"/>
+                    <object_ref id="8" timeline="8" key="1" z_index="8"/>
+                    <object_ref id="9" timeline="9" key="1" z_index="9"/>
+                </key>
+                <key id="2" time="250">
+                    <object_ref id="0" timeline="0" key="2" z_index="0"/>
+                    <object_ref id="1" timeline="2" key="2" z_index="1"/>
+                    <object_ref id="2" timeline="5" key="2" z_index="2"/>
+                    <object_ref id="3" timeline="1" key="2" z_index="3"/>
+                    <object_ref id="4" timeline="3" key="2" z_index="4"/>
+                    <object_ref id="5" timeline="4" key="4" z_index="5"/>
+                    <object_ref id="6" timeline="7" key="2" z_index="6"/>
+                    <object_ref id="7" timeline="6" key="2" z_index="7"/>
+                    <object_ref id="8" timeline="8" key="2" z_index="8"/>
+                    <object_ref id="9" timeline="9" key="2" z_index="9"/>
+                </key>
+                <key id="3" time="360">
+                    <object_ref id="0" timeline="0" key="2" z_index="0"/>
+                    <object_ref id="1" timeline="2" key="2" z_index="1"/>
+                    <object_ref id="2" timeline="5" key="2" z_index="2"/>
+                    <object_ref id="3" timeline="1" key="2" z_index="3"/>
+                    <object_ref id="4" timeline="3" key="2" z_index="4"/>
+                    <object_ref id="5" timeline="4" key="4" z_index="5"/>
+                    <object_ref id="6" timeline="7" key="2" z_index="6"/>
+                    <object_ref id="7" timeline="6" key="2" z_index="7"/>
+                    <object_ref id="8" timeline="8" key="2" z_index="8"/>
+                    <object_ref id="9" timeline="9" key="2" z_index="9"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="shadows-0">
+                <key id="0" spin="0">
+                    <object folder="0" file="0" x="-2.469136" y="-13.345679" angle="0" scale_x="1.637144" scale_y="1.492745"/>
+                </key>
+                <key id="1" time="100" spin="0">
+                    <object folder="0" file="0" x="-2.469136" y="-13.345679" angle="0" scale_x="1.637144" scale_y="1.492745"/>
+                </key>
+                <key id="2" time="250" spin="0">
+                    <object folder="0" file="0" x="-2.469136" y="-13.345679" angle="0" scale_x="1.637144" scale_y="1.492745"/>
+                </key>
+            </timeline>
+            <timeline id="1" name="brewery_part-1">
+                <key id="0" spin="0">
+                    <object folder="2" file="1" x="-27.738123" y="18.799823" angle="0" scale_x="0.75" scale_y="0.75"/>
+                </key>
+                <key id="1" time="100" spin="0">
+                    <object folder="2" file="1" x="-27.738123" y="18.799823" angle="0" scale_x="0.75" scale_y="0.75"/>
+                </key>
+                <key id="2" time="250" spin="0">
+                    <object folder="2" file="1" x="-27.738123" y="18.799823" angle="0" scale_x="0.75" scale_y="0.75"/>
+                </key>
+            </timeline>
+            <timeline id="2" name="brewery_part-0">
+                <key id="0" spin="0">
+                    <object folder="2" file="0" x="136.072908" y="17.952174" angle="0" scale_x="0.75" scale_y="0.75"/>
+                </key>
+                <key id="1" time="100" spin="0">
+                    <object folder="2" file="0" x="136.072908" y="17.952174" angle="0" scale_x="0.75" scale_y="0.75"/>
+                </key>
+                <key id="2" time="250" spin="0">
+                    <object folder="2" file="0" x="136.072908" y="17.952174" angle="0" scale_x="0.75" scale_y="0.75"/>
+                </key>
+            </timeline>
+            <timeline id="3" name="brewery_part-2">
+                <key id="0" spin="-1">
+                    <object folder="2" file="2" x="137.191804" y="138.261849" angle="0" scale_x="0.75" scale_y="0.75"/>
+                </key>
+                <key id="1" time="100">
+                    <object folder="2" file="2" x="137.191804" y="138.261849" angle="358.01116" scale_x="0.75" scale_y="0.75"/>
+                </key>
+                <key id="2" time="250" spin="-1">
+                    <object folder="2" file="2" x="137.191804" y="138.261849" angle="1.750532" scale_x="0.75" scale_y="0.75"/>
+                </key>
+            </timeline>
+            <timeline id="4" name="brewery_part-3">
+                <key id="0">
+                    <object folder="2" file="3" x="144.835317" y="247.708677" pivot_x="1.007577" pivot_y="0.49539" angle="0" scale_x="0.75" scale_y="0.75"/>
+                </key>
+                <key id="1" time="100">
+                    <object folder="2" file="3" x="144.613983" y="248.004398" pivot_x="1.007577" pivot_y="0.49539" angle="4.358046" scale_x="0.697749" scale_y="0.75"/>
+                </key>
+                <key id="2" time="100" spin="-1">
+                    <object folder="2" file="3" x="140.694106" y="248.73917" pivot_x="0.973702" pivot_y="0.510325" angle="4.358046" scale_x="0.697749" scale_y="0.75"/>
+                </key>
+                <key id="3" time="250" spin="-1">
+                    <object folder="2" file="3" x="139.856688" y="248.888685" pivot_x="0.973702" pivot_y="0.510325" angle="357.984318" scale_x="0.772882" scale_y="0.75"/>
+                </key>
+                <key id="4" time="250">
+                    <object folder="2" file="3" x="144.085366" y="247.708704" pivot_x="1.007577" pivot_y="0.49539" angle="357.984318" scale_x="0.772882" scale_y="0.75"/>
+                </key>
+            </timeline>
+            <timeline id="5" name="barrle-0">
+                <key id="0" spin="-1">
+                    <object folder="1" file="0" x="-31.716423" y="151.530384" angle="90" scale_x="0.75" scale_y="0.75"/>
+                </key>
+                <key id="1" time="100">
+                    <object folder="1" file="0" x="-31.716423" y="151.530384" angle="84.478506" scale_x="0.75" scale_y="0.75"/>
+                </key>
+                <key id="2" time="250" spin="-1">
+                    <object folder="1" file="0" x="-31.716423" y="151.530384" angle="93.444242" scale_x="0.75" scale_y="0.75"/>
+                </key>
+            </timeline>
+            <timeline id="6" name="brewery_part-6">
+                <key id="0" spin="-1">
+                    <object folder="2" file="6" x="-185.75485" y="123.264109" angle="0" scale_x="0.383707" scale_y="0.370244"/>
+                </key>
+                <key id="1" time="100">
+                    <object folder="2" file="6" x="-187.759895" y="138.216709" angle="354.478506" scale_x="0.383707" scale_y="0.370244"/>
+                </key>
+                <key id="2" time="250" spin="-1">
+                    <object folder="2" file="6" x="-183.778458" y="114.060974" angle="3.444242" scale_x="0.383707" scale_y="0.370244"/>
+                </key>
+            </timeline>
+            <timeline id="7" name="brewery_part-5">
+                <key id="0" spin="-1">
+                    <object folder="2" file="5" x="-167.6947" y="107.878771" angle="0" scale_x="0.75" scale_y="0.75"/>
+                </key>
+                <key id="1" time="100">
+                    <object folder="2" file="5" x="-171.263906" y="121.165023" angle="354.478506" scale_x="0.75" scale_y="0.75"/>
+                </key>
+                <key id="2" time="250" spin="-1">
+                    <object folder="2" file="5" x="-164.826622" y="99.788428" angle="3.444242" scale_x="0.75" scale_y="0.75"/>
+                </key>
+            </timeline>
+            <timeline id="8" name="brewery_part-4">
+                <key id="0" spin="-1">
+                    <object folder="2" file="4" x="-96.093756" y="253.887209" angle="0" scale_x="0.75" scale_y="0.75"/>
+                </key>
+                <key id="1" time="100">
+                    <object folder="2" file="4" x="-85.946367" y="259.606625" angle="354.478506" scale_x="0.75" scale_y="0.75"/>
+                </key>
+                <key id="2" time="250" spin="-1">
+                    <object folder="2" file="4" x="-102.126781" y="249.834719" angle="3.444242" scale_x="0.75" scale_y="0.75"/>
+                </key>
+            </timeline>
+            <timeline id="9" name="brewery_swap">
+                <key id="0" spin="-1">
+                    <object folder="3" file="0" x="-24.55769" y="215.03846" angle="0" scale_x="0.74589"/>
+                </key>
+                <key id="1" time="100">
+                    <object folder="3" file="0" x="-18.55769" y="215.03846" angle="354.896332" scale_x="0.74589"/>
+                </key>
+                <key id="2" time="250" spin="-1">
+                    <object folder="3" file="0" x="-28.019228" y="215.03846" angle="2.544805" scale_x="0.74589"/>
+                </key>
+            </timeline>
+        </animation>
+        <animation id="3" name="hit" length="240" interval="100">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                    <object_ref id="1" timeline="2" key="0" z_index="1"/>
+                    <object_ref id="2" timeline="5" key="0" z_index="2"/>
+                    <object_ref id="3" timeline="1" key="0" z_index="3"/>
+                    <object_ref id="4" timeline="3" key="0" z_index="4"/>
+                    <object_ref id="5" timeline="4" key="0" z_index="5"/>
+                    <object_ref id="6" timeline="7" key="0" z_index="6"/>
+                    <object_ref id="7" timeline="6" key="0" z_index="7"/>
+                    <object_ref id="8" timeline="8" key="0" z_index="8"/>
+                    <object_ref id="9" timeline="9" key="0" z_index="9"/>
+                </key>
+                <key id="1" time="60">
+                    <object_ref id="0" timeline="0" key="1" z_index="0"/>
+                    <object_ref id="1" timeline="2" key="1" z_index="1"/>
+                    <object_ref id="2" timeline="5" key="1" z_index="2"/>
+                    <object_ref id="3" timeline="1" key="1" z_index="3"/>
+                    <object_ref id="4" timeline="3" key="1" z_index="4"/>
+                    <object_ref id="5" timeline="4" key="1" z_index="5"/>
+                    <object_ref id="6" timeline="7" key="1" z_index="6"/>
+                    <object_ref id="7" timeline="6" key="1" z_index="7"/>
+                    <object_ref id="8" timeline="8" key="1" z_index="8"/>
+                    <object_ref id="9" timeline="9" key="1" z_index="9"/>
+                </key>
+                <key id="2" time="120">
+                    <object_ref id="0" timeline="0" key="2" z_index="0"/>
+                    <object_ref id="1" timeline="2" key="2" z_index="1"/>
+                    <object_ref id="2" timeline="5" key="2" z_index="2"/>
+                    <object_ref id="3" timeline="1" key="2" z_index="3"/>
+                    <object_ref id="4" timeline="3" key="2" z_index="4"/>
+                    <object_ref id="5" timeline="4" key="2" z_index="5"/>
+                    <object_ref id="6" timeline="7" key="2" z_index="6"/>
+                    <object_ref id="7" timeline="6" key="2" z_index="7"/>
+                    <object_ref id="8" timeline="8" key="2" z_index="8"/>
+                    <object_ref id="9" timeline="9" key="2" z_index="9"/>
+                </key>
+                <key id="3" time="180">
+                    <object_ref id="0" timeline="0" key="3" z_index="0"/>
+                    <object_ref id="1" timeline="2" key="3" z_index="1"/>
+                    <object_ref id="2" timeline="5" key="3" z_index="2"/>
+                    <object_ref id="3" timeline="1" key="3" z_index="3"/>
+                    <object_ref id="4" timeline="3" key="3" z_index="4"/>
+                    <object_ref id="5" timeline="4" key="3" z_index="5"/>
+                    <object_ref id="6" timeline="7" key="3" z_index="6"/>
+                    <object_ref id="7" timeline="6" key="3" z_index="7"/>
+                    <object_ref id="8" timeline="8" key="3" z_index="8"/>
+                    <object_ref id="9" timeline="9" key="3" z_index="9"/>
+                </key>
+                <key id="4" time="240">
+                    <object_ref id="0" timeline="0" key="4" z_index="0"/>
+                    <object_ref id="1" timeline="2" key="4" z_index="1"/>
+                    <object_ref id="2" timeline="5" key="4" z_index="2"/>
+                    <object_ref id="3" timeline="1" key="4" z_index="3"/>
+                    <object_ref id="4" timeline="3" key="4" z_index="4"/>
+                    <object_ref id="5" timeline="4" key="4" z_index="5"/>
+                    <object_ref id="6" timeline="7" key="4" z_index="6"/>
+                    <object_ref id="7" timeline="6" key="4" z_index="7"/>
+                    <object_ref id="8" timeline="8" key="4" z_index="8"/>
+                    <object_ref id="9" timeline="9" key="3" z_index="9"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="shadows-0">
+                <key id="0" spin="0">
+                    <object folder="0" file="0" x="-2.469136" y="-13.345679" angle="0" scale_x="1.637144" scale_y="1.492745"/>
+                </key>
+                <key id="1" time="60" spin="0">
+                    <object folder="0" file="0" x="-2.469136" y="-13.345679" angle="0" scale_x="1.637144" scale_y="1.492745"/>
+                </key>
+                <key id="2" time="120" spin="0">
+                    <object folder="0" file="0" x="-2.469136" y="-13.345679" angle="0" scale_x="1.637144" scale_y="1.492745"/>
+                </key>
+                <key id="3" time="180" spin="0">
+                    <object folder="0" file="0" x="-2.469136" y="-13.345679" angle="0" scale_x="1.637144" scale_y="1.492745"/>
+                </key>
+                <key id="4" time="240" spin="0">
+                    <object folder="0" file="0" x="-2.469136" y="-13.345679" angle="0" scale_x="1.637144" scale_y="1.492745"/>
+                </key>
+            </timeline>
+            <timeline id="1" name="brewery_part-1">
+                <key id="0" spin="0">
+                    <object folder="2" file="1" x="-28.365687" y="-43.497846" pivot_x="0.497871" pivot_y="0.048568" angle="0" scale_x="0.75" scale_y="0.75"/>
+                </key>
+                <key id="1" time="60" spin="0">
+                    <object folder="2" file="1" x="-28.365687" y="-43.497846" pivot_x="0.497871" pivot_y="0.048568" angle="0" scale_x="0.75" scale_y="0.75"/>
+                </key>
+                <key id="2" time="120" spin="0">
+                    <object folder="2" file="1" x="-28.365687" y="-43.497846" pivot_x="0.497871" pivot_y="0.048568" angle="0" scale_x="0.75" scale_y="0.75"/>
+                </key>
+                <key id="3" time="180" spin="0">
+                    <object folder="2" file="1" x="-28.365687" y="-43.497846" pivot_x="0.497871" pivot_y="0.048568" angle="0" scale_x="0.75" scale_y="0.56758"/>
+                </key>
+                <key id="4" time="240" spin="0">
+                    <object folder="2" file="1" x="-28.365687" y="-43.497846" pivot_x="0.497871" pivot_y="0.048568" angle="0" scale_x="0.75" scale_y="0.75"/>
+                </key>
+            </timeline>
+            <timeline id="2" name="brewery_part-0">
+                <key id="0" spin="0">
+                    <object folder="2" file="0" x="135.138279" y="-44.216369" pivot_x="0.492582" pivot_y="0.006599" angle="0" scale_x="0.75" scale_y="0.75"/>
+                </key>
+                <key id="1" time="60" spin="0">
+                    <object folder="2" file="0" x="135.138279" y="-44.216369" pivot_x="0.492582" pivot_y="0.006599" angle="0" scale_x="0.75" scale_y="0.75"/>
+                </key>
+                <key id="2" time="120" spin="0">
+                    <object folder="2" file="0" x="135.138279" y="-44.216369" pivot_x="0.492582" pivot_y="0.006599" angle="0" scale_x="0.75" scale_y="0.75"/>
+                </key>
+                <key id="3" time="180" spin="0">
+                    <object folder="2" file="0" x="135.138279" y="-44.216369" pivot_x="0.492582" pivot_y="0.006599" angle="0" scale_x="0.75" scale_y="0.75"/>
+                </key>
+                <key id="4" time="240" spin="0">
+                    <object folder="2" file="0" x="135.138279" y="-44.216369" pivot_x="0.492582" pivot_y="0.006599" angle="0" scale_x="0.75" scale_y="0.75"/>
+                </key>
+            </timeline>
+            <timeline id="3" name="brewery_part-2">
+                <key id="0" spin="0">
+                    <object folder="2" file="2" x="137.191804" y="138.261849" angle="0" scale_x="0.75" scale_y="0.75"/>
+                </key>
+                <key id="1" time="60" spin="0">
+                    <object folder="2" file="2" x="137.191804" y="151.898213" angle="0" scale_x="0.75" scale_y="0.75"/>
+                </key>
+                <key id="2" time="120">
+                    <object folder="2" file="2" x="137.191804" y="138.261849" angle="0" scale_x="0.75" scale_y="0.75"/>
+                </key>
+                <key id="3" time="180" spin="-1">
+                    <object folder="2" file="2" x="137.191804" y="161.638473" angle="13.55509" scale_x="0.75" scale_y="0.75"/>
+                </key>
+                <key id="4" time="240" spin="0">
+                    <object folder="2" file="2" x="137.191804" y="138.261849" angle="0" scale_x="0.75" scale_y="0.75"/>
+                </key>
+            </timeline>
+            <timeline id="4" name="brewery_part-3">
+                <key id="0" spin="-1">
+                    <object folder="2" file="3" x="82.784029" y="248.026767" angle="0" scale_x="0.75" scale_y="0.75"/>
+                </key>
+                <key id="1" time="60">
+                    <object folder="2" file="3" x="93.498314" y="274.325469" angle="344.828067" scale_x="0.75" scale_y="0.75"/>
+                </key>
+                <key id="2" time="120">
+                    <object folder="2" file="3" x="82.784029" y="248.026767" angle="0" scale_x="0.75" scale_y="0.75"/>
+                </key>
+                <key id="3" time="180" spin="-1">
+                    <object folder="2" file="3" x="57.459353" y="261.663131" angle="10.947568" scale_x="0.75" scale_y="0.75"/>
+                </key>
+                <key id="4" time="240" spin="0">
+                    <object folder="2" file="3" x="82.784029" y="248.026767" angle="0" scale_x="0.75" scale_y="0.75"/>
+                </key>
+            </timeline>
+            <timeline id="5" name="barrle-0">
+                <key id="0" spin="-1">
+                    <object folder="1" file="0" x="-31.716423" y="151.530384" angle="90" scale_x="0.75" scale_y="0.75"/>
+                </key>
+                <key id="1" time="60">
+                    <object folder="1" file="0" x="-30.161772" y="151.297317" angle="80.949208" scale_x="0.75" scale_y="0.75"/>
+                </key>
+                <key id="2" time="120">
+                    <object folder="1" file="0" x="-31.716423" y="151.530384" angle="90" scale_x="0.75" scale_y="0.75"/>
+                </key>
+                <key id="3" time="180" spin="-1">
+                    <object folder="1" file="0" x="-32.302874" y="137.181729" angle="101.184726" scale_x="0.75" scale_y="0.75"/>
+                </key>
+                <key id="4" time="240" spin="0">
+                    <object folder="1" file="0" x="-31.716423" y="151.530384" angle="90" scale_x="0.75" scale_y="0.75"/>
+                </key>
+            </timeline>
+            <timeline id="6" name="brewery_part-6">
+                <key id="0" spin="-1">
+                    <object folder="2" file="6" x="-185.75485" y="123.264109" angle="0" scale_x="0.383707" scale_y="0.370244"/>
+                </key>
+                <key id="1" time="60">
+                    <object folder="2" file="6" x="-186.728876" y="147.614758" angle="350.949208" scale_x="0.383707" scale_y="0.370244"/>
+                </key>
+                <key id="2" time="120">
+                    <object folder="2" file="6" x="-185.75485" y="123.264109" angle="0" scale_x="0.383707" scale_y="0.370244"/>
+                </key>
+                <key id="3" time="180" spin="-1">
+                    <object folder="2" file="6" x="-177.818045" y="79.610327" angle="11.184726" scale_x="0.383707" scale_y="0.370244"/>
+                </key>
+                <key id="4" time="240" spin="0">
+                    <object folder="2" file="6" x="-185.75485" y="123.264109" angle="0" scale_x="0.383707" scale_y="0.370244"/>
+                </key>
+            </timeline>
+            <timeline id="7" name="brewery_part-5">
+                <key id="0" spin="-1">
+                    <object folder="2" file="5" x="-167.6947" y="107.878771" angle="0" scale_x="0.75" scale_y="0.75"/>
+                </key>
+                <key id="1" time="60">
+                    <object folder="2" file="5" x="-171.313855" y="129.579937" angle="350.949208" scale_x="0.75" scale_y="0.75"/>
+                </key>
+                <key id="2" time="120">
+                    <object folder="2" file="5" x="-167.6947" y="107.878771" angle="0" scale_x="0.75" scale_y="0.75"/>
+                </key>
+                <key id="3" time="180" spin="-1">
+                    <object folder="2" file="5" x="-157.13193" y="68.030286" angle="11.184726" scale_x="0.75" scale_y="0.75"/>
+                </key>
+                <key id="4" time="240" spin="0">
+                    <object folder="2" file="5" x="-167.6947" y="107.878771" angle="0" scale_x="0.75" scale_y="0.75"/>
+                </key>
+            </timeline>
+            <timeline id="8" name="brewery_part-4">
+                <key id="0" spin="-1">
+                    <object folder="2" file="4" x="-96.093756" y="253.887209" angle="0" scale_x="0.75" scale_y="0.75"/>
+                </key>
+                <key id="1" time="60">
+                    <object folder="2" file="4" x="-77.635811" y="262.506922" angle="350.949208" scale_x="0.75" scale_y="0.75"/>
+                </key>
+                <key id="2" time="120">
+                    <object folder="2" file="4" x="-96.093756" y="253.887209" angle="0" scale_x="0.75" scale_y="0.75"/>
+                </key>
+                <key id="3" time="180" spin="-1">
+                    <object folder="2" file="4" x="-115.25235" y="225.035459" angle="11.184726" scale_x="0.75" scale_y="0.75"/>
+                </key>
+                <key id="4" time="240" spin="0">
+                    <object folder="2" file="4" x="-96.093756" y="253.887209" angle="0" scale_x="0.75" scale_y="0.75"/>
+                </key>
+            </timeline>
+            <timeline id="9" name="brewery_swap">
+                <key id="0" spin="-1">
+                    <object folder="3" file="0" x="-24.55769" y="215.03846" angle="0" scale_x="0.74589"/>
+                </key>
+                <key id="1" time="60">
+                    <object folder="3" file="0" x="-13.55769" y="210.03846" angle="351.279034" scale_x="0.74589"/>
+                </key>
+                <key id="2" time="120">
+                    <object folder="3" file="0" x="-24.224357" y="213.03846" angle="359.044275" scale_x="0.74589"/>
+                </key>
+                <key id="3" time="180" spin="-1">
+                    <object folder="3" file="0" x="-37.391023" y="199.03846" angle="11.704322" scale_x="0.74589"/>
+                </key>
+            </timeline>
+        </animation>
+        <animation id="4" name="place" length="1250" interval="100">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+                <key id="1" time="100">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="1" z_index="1"/>
+                </key>
+                <key id="2" time="196">
+                    <object_ref id="0" timeline="0" key="1" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="3" z_index="1"/>
+                </key>
+                <key id="3" time="272">
+                    <object_ref id="0" timeline="0" key="2" z_index="0"/>
+                    <object_ref id="1" timeline="2" key="1" z_index="1"/>
+                    <object_ref id="2" timeline="1" key="5" z_index="2"/>
+                </key>
+                <key id="4" time="339">
+                    <object_ref id="0" timeline="0" key="2" z_index="0"/>
+                    <object_ref id="1" timeline="2" key="1" z_index="1"/>
+                    <object_ref id="2" timeline="5" key="1" z_index="2"/>
+                    <object_ref id="3" timeline="1" key="5" z_index="3"/>
+                    <object_ref id="4" timeline="9" key="0" z_index="4"/>
+                </key>
+                <key id="5" time="366">
+                    <object_ref id="0" timeline="0" key="3" z_index="0"/>
+                    <object_ref id="1" timeline="2" key="2" z_index="1"/>
+                    <object_ref id="2" timeline="5" key="2" z_index="2"/>
+                    <object_ref id="3" timeline="1" key="6" z_index="3"/>
+                    <object_ref id="4" timeline="9" key="1" z_index="4"/>
+                </key>
+                <key id="6" time="436">
+                    <object_ref id="0" timeline="0" key="4" z_index="0"/>
+                    <object_ref id="1" timeline="2" key="4" z_index="1"/>
+                    <object_ref id="2" timeline="5" key="4" z_index="2"/>
+                    <object_ref id="3" timeline="1" key="7" z_index="3"/>
+                    <object_ref id="4" timeline="9" key="2" z_index="4"/>
+                </key>
+                <key id="7" time="546">
+                    <object_ref id="0" timeline="0" key="4" z_index="0"/>
+                    <object_ref id="1" timeline="2" key="4" z_index="1"/>
+                    <object_ref id="2" timeline="5" key="5" z_index="2"/>
+                    <object_ref id="3" timeline="1" key="7" z_index="3"/>
+                    <object_ref id="4" timeline="3" key="0" z_index="4"/>
+                    <object_ref id="5" timeline="9" key="3" z_index="5"/>
+                </key>
+                <key id="8" time="652">
+                    <object_ref id="0" timeline="0" key="5" z_index="0"/>
+                    <object_ref id="1" timeline="2" key="5" z_index="1"/>
+                    <object_ref id="2" timeline="5" key="6" z_index="2"/>
+                    <object_ref id="3" timeline="1" key="8" z_index="3"/>
+                    <object_ref id="4" timeline="3" key="1" z_index="4"/>
+                    <object_ref id="5" timeline="9" key="3" z_index="5"/>
+                    <object_ref id="6" timeline="4" key="1" z_index="6"/>
+                </key>
+                <key id="9" time="836">
+                    <object_ref id="0" timeline="0" key="6" z_index="0"/>
+                    <object_ref id="1" timeline="2" key="6" z_index="1"/>
+                    <object_ref id="2" timeline="5" key="7" z_index="2"/>
+                    <object_ref id="3" timeline="1" key="9" z_index="3"/>
+                    <object_ref id="4" timeline="3" key="3" z_index="4"/>
+                    <object_ref id="5" timeline="9" key="3" z_index="5"/>
+                    <object_ref id="6" timeline="4" key="3" z_index="6"/>
+                </key>
+                <key id="10" time="909">
+                    <object_ref id="0" timeline="0" key="7" z_index="0"/>
+                    <object_ref id="1" timeline="2" key="7" z_index="1"/>
+                    <object_ref id="2" timeline="5" key="8" z_index="2"/>
+                    <object_ref id="3" timeline="1" key="10" z_index="3"/>
+                    <object_ref id="4" timeline="3" key="5" z_index="4"/>
+                    <object_ref id="5" timeline="9" key="3" z_index="5"/>
+                    <object_ref id="6" timeline="4" key="5" z_index="6"/>
+                    <object_ref id="7" timeline="8" key="0" z_index="7"/>
+                </key>
+                <key id="11" time="957">
+                    <object_ref id="0" timeline="0" key="8" z_index="0"/>
+                    <object_ref id="1" timeline="2" key="8" z_index="1"/>
+                    <object_ref id="2" timeline="5" key="9" z_index="2"/>
+                    <object_ref id="3" timeline="1" key="11" z_index="3"/>
+                    <object_ref id="4" timeline="3" key="6" z_index="4"/>
+                    <object_ref id="5" timeline="9" key="3" z_index="5"/>
+                    <object_ref id="6" timeline="4" key="6" z_index="6"/>
+                    <object_ref id="7" timeline="7" key="1" z_index="7"/>
+                    <object_ref id="8" timeline="8" key="1" z_index="8"/>
+                </key>
+                <key id="12" time="1002">
+                    <object_ref id="0" timeline="0" key="8" z_index="0"/>
+                    <object_ref id="1" timeline="2" key="8" z_index="1"/>
+                    <object_ref id="2" timeline="5" key="9" z_index="2"/>
+                    <object_ref id="3" timeline="1" key="11" z_index="3"/>
+                    <object_ref id="4" timeline="3" key="6" z_index="4"/>
+                    <object_ref id="5" timeline="9" key="3" z_index="5"/>
+                    <object_ref id="6" timeline="4" key="6" z_index="6"/>
+                    <object_ref id="7" timeline="7" key="1" z_index="7"/>
+                    <object_ref id="8" timeline="8" key="2" z_index="8"/>
+                </key>
+                <key id="13" time="1045">
+                    <object_ref id="0" timeline="0" key="9" z_index="0"/>
+                    <object_ref id="1" timeline="2" key="9" z_index="1"/>
+                    <object_ref id="2" timeline="5" key="10" z_index="2"/>
+                    <object_ref id="3" timeline="1" key="12" z_index="3"/>
+                    <object_ref id="4" timeline="3" key="7" z_index="4"/>
+                    <object_ref id="5" timeline="9" key="3" z_index="5"/>
+                    <object_ref id="6" timeline="4" key="7" z_index="6"/>
+                    <object_ref id="7" timeline="7" key="3" z_index="7"/>
+                    <object_ref id="8" timeline="6" key="0" z_index="8"/>
+                    <object_ref id="9" timeline="8" key="3" z_index="9"/>
+                </key>
+                <key id="14" time="1083">
+                    <object_ref id="0" timeline="0" key="10" z_index="0"/>
+                    <object_ref id="1" timeline="2" key="10" z_index="1"/>
+                    <object_ref id="2" timeline="5" key="11" z_index="2"/>
+                    <object_ref id="3" timeline="1" key="13" z_index="3"/>
+                    <object_ref id="4" timeline="3" key="8" z_index="4"/>
+                    <object_ref id="5" timeline="9" key="3" z_index="5"/>
+                    <object_ref id="6" timeline="4" key="8" z_index="6"/>
+                    <object_ref id="7" timeline="7" key="4" z_index="7"/>
+                    <object_ref id="8" timeline="6" key="1" z_index="8"/>
+                    <object_ref id="9" timeline="8" key="4" z_index="9"/>
+                </key>
+                <key id="15" time="1136">
+                    <object_ref id="0" timeline="0" key="11" z_index="0"/>
+                    <object_ref id="1" timeline="2" key="11" z_index="1"/>
+                    <object_ref id="2" timeline="5" key="12" z_index="2"/>
+                    <object_ref id="3" timeline="1" key="14" z_index="3"/>
+                    <object_ref id="4" timeline="3" key="9" z_index="4"/>
+                    <object_ref id="5" timeline="9" key="3" z_index="5"/>
+                    <object_ref id="6" timeline="4" key="9" z_index="6"/>
+                    <object_ref id="7" timeline="7" key="5" z_index="7"/>
+                    <object_ref id="8" timeline="6" key="2" z_index="8"/>
+                    <object_ref id="9" timeline="8" key="5" z_index="9"/>
+                </key>
+                <key id="16" time="1250">
+                    <object_ref id="0" timeline="0" key="12" z_index="0"/>
+                    <object_ref id="1" timeline="2" key="12" z_index="1"/>
+                    <object_ref id="2" timeline="5" key="13" z_index="2"/>
+                    <object_ref id="3" timeline="1" key="15" z_index="3"/>
+                    <object_ref id="4" timeline="3" key="10" z_index="4"/>
+                    <object_ref id="5" timeline="9" key="4" z_index="5"/>
+                    <object_ref id="6" timeline="4" key="10" z_index="6"/>
+                    <object_ref id="7" timeline="7" key="6" z_index="7"/>
+                    <object_ref id="8" timeline="6" key="3" z_index="8"/>
+                    <object_ref id="9" timeline="8" key="6" z_index="9"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="shadows-0">
+                <key id="0" spin="0">
+                    <object folder="0" file="0" x="-2.469136" y="-13.345679" angle="0" scale_x="0.75" scale_y="0.75"/>
+                </key>
+                <key id="1" time="196" spin="0">
+                    <object folder="0" file="0" x="-2.469136" y="-13.345679" angle="0" scale_x="1.637144" scale_y="1.492745"/>
+                </key>
+                <key id="2" time="272" spin="0">
+                    <object folder="0" file="0" x="-2.469136" y="-13.345679" angle="0" scale_x="1.637144" scale_y="1.492745"/>
+                </key>
+                <key id="3" time="366" spin="0">
+                    <object folder="0" file="0" x="-2.469136" y="-13.345679" angle="0" scale_x="1.637144" scale_y="1.492745"/>
+                </key>
+                <key id="4" time="436" spin="0">
+                    <object folder="0" file="0" x="-2.469136" y="-13.345679" angle="0" scale_x="1.637144" scale_y="1.492745"/>
+                </key>
+                <key id="5" time="652" spin="0">
+                    <object folder="0" file="0" x="-2.469136" y="-13.345679" angle="0" scale_x="1.637144" scale_y="1.492745"/>
+                </key>
+                <key id="6" time="836" spin="0">
+                    <object folder="0" file="0" x="-2.469136" y="-13.345679" angle="0" scale_x="1.637144" scale_y="1.492745"/>
+                </key>
+                <key id="7" time="909" spin="0">
+                    <object folder="0" file="0" x="-2.469136" y="-13.345679" angle="0" scale_x="1.637144" scale_y="1.492745"/>
+                </key>
+                <key id="8" time="957" spin="0">
+                    <object folder="0" file="0" x="-2.469136" y="-13.345679" angle="0" scale_x="1.637144" scale_y="1.492745"/>
+                </key>
+                <key id="9" time="1045" spin="0">
+                    <object folder="0" file="0" x="-2.469136" y="-13.345679" angle="0" scale_x="1.637144" scale_y="1.492745"/>
+                </key>
+                <key id="10" time="1083" spin="0">
+                    <object folder="0" file="0" x="-2.469136" y="-13.345679" angle="0" scale_x="1.637144" scale_y="1.492745"/>
+                </key>
+                <key id="11" time="1136" spin="0">
+                    <object folder="0" file="0" x="-2.469136" y="-13.345679" angle="0" scale_x="1.637144" scale_y="1.492745"/>
+                </key>
+                <key id="12" time="1250" spin="0">
+                    <object folder="0" file="0" x="-2.469136" y="-13.345679" angle="0" scale_x="1.637144" scale_y="1.492745"/>
+                </key>
+            </timeline>
+            <timeline id="1" name="brewery_part-1">
+                <key id="0" time="100">
+                    <object folder="2" file="1" x="66.402938" y="278.232945" pivot_x="0.5" pivot_y="0.5" angle="337.858743" scale_x="0.634637" scale_y="0.634637"/>
+                </key>
+                <key id="1" time="100">
+                    <object folder="2" file="1" x="158.803112" y="177.336772" pivot_x="0.995618" pivot_y="-0.002093" angle="337.858743" scale_x="0.634637" scale_y="0.634637"/>
+                </key>
+                <key id="2" time="196">
+                    <object folder="2" file="1" x="134.075001" y="-50.047145" pivot_x="0.995618" pivot_y="-0.002093" angle="0" scale_x="0.830866" scale_y="0.507737"/>
+                </key>
+                <key id="3" time="196" spin="0">
+                    <object folder="2" file="1" x="-27.540863" y="-49.12113" pivot_x="0.500669" pivot_y="0.007819" angle="0" scale_x="0.830866" scale_y="0.507737"/>
+                </key>
+                <key id="4" time="272" spin="0">
+                    <object folder="2" file="1" x="-27.540935" y="-49.121155" angle="0" scale_x="0.75" scale_y="0.75"/>
+                </key>
+                <key id="5" time="272" spin="0">
+                    <object folder="2" file="1" x="-27.738123" y="18.799823" angle="0" scale_x="0.75" scale_y="0.75"/>
+                </key>
+                <key id="6" time="366" spin="0">
+                    <object folder="2" file="1" x="-27.738123" y="18.799823" angle="0" scale_x="0.75" scale_y="0.75"/>
+                </key>
+                <key id="7" time="436" spin="0">
+                    <object folder="2" file="1" x="-27.738123" y="18.799823" angle="0" scale_x="0.75" scale_y="0.75"/>
+                </key>
+                <key id="8" time="652" spin="0">
+                    <object folder="2" file="1" x="-27.738123" y="18.799823" angle="0" scale_x="0.75" scale_y="0.75"/>
+                </key>
+                <key id="9" time="836" spin="0">
+                    <object folder="2" file="1" x="-27.738123" y="18.799823" angle="0" scale_x="0.75" scale_y="0.75"/>
+                </key>
+                <key id="10" time="909" spin="0">
+                    <object folder="2" file="1" x="-27.738123" y="18.799823" angle="0" scale_x="0.75" scale_y="0.75"/>
+                </key>
+                <key id="11" time="957" spin="0">
+                    <object folder="2" file="1" x="-27.738123" y="18.799823" angle="0" scale_x="0.75" scale_y="0.75"/>
+                </key>
+                <key id="12" time="1045" spin="0">
+                    <object folder="2" file="1" x="-27.738123" y="18.799823" angle="0" scale_x="0.75" scale_y="0.75"/>
+                </key>
+                <key id="13" time="1083" spin="0">
+                    <object folder="2" file="1" x="-27.738123" y="18.799823" angle="0" scale_x="0.75" scale_y="0.75"/>
+                </key>
+                <key id="14" time="1136" spin="0">
+                    <object folder="2" file="1" x="-27.738123" y="18.799823" angle="0" scale_x="0.75" scale_y="0.75"/>
+                </key>
+                <key id="15" time="1250" spin="-1">
+                    <object folder="2" file="1" x="-27.738123" y="18.799823" angle="0" scale_x="0.75" scale_y="0.75"/>
+                </key>
+            </timeline>
+            <timeline id="2" name="brewery_part-0">
+                <key id="0" time="272" spin="0">
+                    <object folder="2" file="0" x="136.072897" y="-43.356105" pivot_x="0.5" pivot_y="0.5" angle="0" scale_x="0.75" scale_y="0"/>
+                </key>
+                <key id="1" time="272" spin="0">
+                    <object folder="2" file="0" x="135.922075" y="-43.356105" pivot_x="0.498803" pivot_y="0.013426" angle="0" scale_x="0.75" scale_y="0"/>
+                </key>
+                <key id="2" time="366" spin="0">
+                    <object folder="2" file="0" x="135.92208" y="-43.356123" pivot_x="0.498803" pivot_y="0.013426" angle="0" scale_x="0.75" scale_y="0.306402"/>
+                </key>
+                <key id="3" time="436" spin="0">
+                    <object folder="2" file="0" x="135.922086" y="-43.35615" angle="0" scale_x="0.75" scale_y="0.75"/>
+                </key>
+                <key id="4" time="436" spin="0">
+                    <object folder="2" file="0" x="136.072908" y="17.952174" angle="0" scale_x="0.75" scale_y="0.75"/>
+                </key>
+                <key id="5" time="652" spin="0">
+                    <object folder="2" file="0" x="136.072908" y="17.952174" angle="0" scale_x="0.75" scale_y="0.75"/>
+                </key>
+                <key id="6" time="836" spin="0">
+                    <object folder="2" file="0" x="136.072908" y="17.952174" angle="0" scale_x="0.75" scale_y="0.75"/>
+                </key>
+                <key id="7" time="909" spin="0">
+                    <object folder="2" file="0" x="136.072908" y="17.952174" angle="0" scale_x="0.75" scale_y="0.75"/>
+                </key>
+                <key id="8" time="957" spin="0">
+                    <object folder="2" file="0" x="136.072908" y="17.952174" angle="0" scale_x="0.75" scale_y="0.75"/>
+                </key>
+                <key id="9" time="1045" spin="0">
+                    <object folder="2" file="0" x="136.072908" y="17.952174" angle="0" scale_x="0.75" scale_y="0.75"/>
+                </key>
+                <key id="10" time="1083" spin="0">
+                    <object folder="2" file="0" x="136.072908" y="17.952174" angle="0" scale_x="0.75" scale_y="0.75"/>
+                </key>
+                <key id="11" time="1136" spin="0">
+                    <object folder="2" file="0" x="136.072908" y="17.952174" angle="0" scale_x="0.75" scale_y="0.75"/>
+                </key>
+                <key id="12" time="1250" spin="0">
+                    <object folder="2" file="0" x="136.072908" y="17.952174" angle="0" scale_x="0.75" scale_y="0.75"/>
+                </key>
+            </timeline>
+            <timeline id="3" name="brewery_part-2">
+                <key id="0" time="546" spin="0">
+                    <object folder="2" file="2" x="186.309554" y="24.695128" angle="0" scale_x="0.650352" scale_y="0.649739"/>
+                </key>
+                <key id="1" time="652" spin="0">
+                    <object folder="2" file="2" x="137.191804" y="211.761849" angle="0" scale_x="0.75" scale_y="0.75"/>
+                </key>
+                <key id="2" time="836" spin="0">
+                    <object folder="2" file="2" x="137.339577" y="131.339349" pivot_x="0.5" pivot_y="0.5" angle="0" scale_x="0.843061" scale_y="0.68792"/>
+                </key>
+                <key id="3" time="836" spin="0">
+                    <object folder="2" file="2" x="136.000988" y="54.629588" pivot_x="0.485161" pivot_y="-0.002296" angle="0" scale_x="0.843061" scale_y="0.68792"/>
+                </key>
+                <key id="4" time="909" spin="0">
+                    <object folder="2" file="2" x="136.000974" y="54.629565" angle="0" scale_x="0.75" scale_y="0.75"/>
+                </key>
+                <key id="5" time="909" spin="0">
+                    <object folder="2" file="2" x="137.191804" y="138.261849" angle="0" scale_x="0.75" scale_y="0.75"/>
+                </key>
+                <key id="6" time="957" spin="0">
+                    <object folder="2" file="2" x="137.191804" y="138.261849" angle="0" scale_x="0.75" scale_y="0.75"/>
+                </key>
+                <key id="7" time="1045" spin="0">
+                    <object folder="2" file="2" x="137.191804" y="138.261849" angle="0" scale_x="0.75" scale_y="0.75"/>
+                </key>
+                <key id="8" time="1083" spin="0">
+                    <object folder="2" file="2" x="137.191804" y="138.261849" angle="0" scale_x="0.75" scale_y="0.75"/>
+                </key>
+                <key id="9" time="1136" spin="0">
+                    <object folder="2" file="2" x="137.191804" y="138.261849" angle="0" scale_x="0.75" scale_y="0.75"/>
+                </key>
+                <key id="10" time="1250" spin="0">
+                    <object folder="2" file="2" x="137.191804" y="138.261849" angle="0" scale_x="0.75" scale_y="0.75"/>
+                </key>
+            </timeline>
+            <timeline id="4" name="brewery_part-3">
+                <key id="0" time="652">
+                    <object folder="2" file="3" x="138.306744" y="290.621729" pivot_x="0.5" pivot_y="0.5" angle="265.674837" scale_x="0.016069" scale_y="0.043423"/>
+                </key>
+                <key id="1" time="652">
+                    <object folder="2" file="3" x="136.377863" y="289.61607" pivot_x="0.938395" pivot_y="0.037526" angle="265.674837" scale_x="0.016069" scale_y="0.043423"/>
+                </key>
+                <key id="2" time="836">
+                    <object folder="2" file="3" x="133.107382" y="204.00412" pivot_x="0.938395" pivot_y="0.037526" angle="353.264011" scale_x="0.75" scale_y="0.75"/>
+                </key>
+                <key id="3" time="836">
+                    <object folder="2" file="3" x="31.838125" y="237.845673" pivot_x="0.083265" pivot_y="0.352448" angle="353.264011" scale_x="0.75" scale_y="0.75"/>
+                </key>
+                <key id="4" time="909">
+                    <object folder="2" file="3" x="31.838175" y="237.845679" angle="0" scale_x="0.75" scale_y="0.75"/>
+                </key>
+                <key id="5" time="909" spin="0">
+                    <object folder="2" file="3" x="82.784029" y="248.026767" angle="0" scale_x="0.75" scale_y="0.75"/>
+                </key>
+                <key id="6" time="957" spin="0">
+                    <object folder="2" file="3" x="82.784029" y="248.026767" angle="0" scale_x="0.75" scale_y="0.75"/>
+                </key>
+                <key id="7" time="1045" spin="0">
+                    <object folder="2" file="3" x="82.784029" y="248.026767" angle="0" scale_x="0.75" scale_y="0.75"/>
+                </key>
+                <key id="8" time="1083" spin="0">
+                    <object folder="2" file="3" x="82.784029" y="248.026767" angle="0" scale_x="0.75" scale_y="0.75"/>
+                </key>
+                <key id="9" time="1136" spin="0">
+                    <object folder="2" file="3" x="82.784029" y="248.026767" angle="0" scale_x="0.75" scale_y="0.75"/>
+                </key>
+                <key id="10" time="1250" spin="-1">
+                    <object folder="2" file="3" x="82.784029" y="248.026767" angle="0" scale_x="0.75" scale_y="0.75"/>
+                </key>
+            </timeline>
+            <timeline id="5" name="barrle-0">
+                <key id="0" time="339" spin="0">
+                    <object folder="1" file="0" x="-401.348557" y="135.516071" pivot_x="0.5" pivot_y="0.5" angle="0" scale_x="0.701761" scale_y="0.730849"/>
+                </key>
+                <key id="1" time="339" spin="0">
+                    <object folder="1" file="0" x="-558.489356" y="-50.81622" pivot_x="-0.191122" pivot_y="-0.137383" angle="0" scale_x="0.701761" scale_y="0.730849"/>
+                </key>
+                <key id="2" time="366">
+                    <object folder="1" file="0" x="-558.489356" y="-50.81622" pivot_x="-0.191122" pivot_y="-0.137383" angle="0" scale_x="0.701761" scale_y="0.730849"/>
+                </key>
+                <key id="3" time="436">
+                    <object folder="1" file="0" x="184.022881" y="16.767248" angle="95.829656" scale_x="0.696573" scale_y="0.788127"/>
+                </key>
+                <key id="4" time="436" spin="-1">
+                    <object folder="1" file="0" x="-31.716423" y="151.530384" angle="95.829656" scale_x="0.696573" scale_y="0.788127"/>
+                </key>
+                <key id="5" time="546" spin="0">
+                    <object folder="1" file="0" x="-31.716423" y="151.530384" angle="90" scale_x="0.75" scale_y="0.75"/>
+                </key>
+                <key id="6" time="652" spin="0">
+                    <object folder="1" file="0" x="-31.716423" y="151.530384" angle="90" scale_x="0.75" scale_y="0.75"/>
+                </key>
+                <key id="7" time="836" spin="0">
+                    <object folder="1" file="0" x="-31.716423" y="151.530384" angle="90" scale_x="0.75" scale_y="0.75"/>
+                </key>
+                <key id="8" time="909" spin="0">
+                    <object folder="1" file="0" x="-31.716423" y="151.530384" angle="90" scale_x="0.75" scale_y="0.75"/>
+                </key>
+                <key id="9" time="957" spin="0">
+                    <object folder="1" file="0" x="-31.716423" y="151.530384" angle="90" scale_x="0.75" scale_y="0.75"/>
+                </key>
+                <key id="10" time="1045" spin="0">
+                    <object folder="1" file="0" x="-31.716423" y="151.530384" angle="90" scale_x="0.75" scale_y="0.75"/>
+                </key>
+                <key id="11" time="1083" spin="0">
+                    <object folder="1" file="0" x="-31.716423" y="151.530384" angle="90" scale_x="0.75" scale_y="0.75"/>
+                </key>
+                <key id="12" time="1136" spin="0">
+                    <object folder="1" file="0" x="-31.716423" y="151.530384" angle="90" scale_x="0.75" scale_y="0.75"/>
+                </key>
+                <key id="13" time="1250" spin="-1">
+                    <object folder="1" file="0" x="-31.716423" y="151.530384" angle="90" scale_x="0.75" scale_y="0.75"/>
+                </key>
+            </timeline>
+            <timeline id="6" name="brewery_part-6">
+                <key id="0" time="1045" spin="0">
+                    <object folder="2" file="6" x="-185.75485" y="121.014109" angle="0" scale_x="0.075" scale_y="0.075"/>
+                </key>
+                <key id="1" time="1083" spin="0">
+                    <object folder="2" file="6" x="-185.75485" y="149.514109" angle="0" scale_x="0.495154" scale_y="0.477779"/>
+                </key>
+                <key id="2" time="1136" spin="0">
+                    <object folder="2" file="6" x="-185.75485" y="123.264109" angle="0" scale_x="0.383707" scale_y="0.370244"/>
+                </key>
+                <key id="3" time="1250" spin="0">
+                    <object folder="2" file="6" x="-185.75485" y="123.264109" angle="0" scale_x="0.383707" scale_y="0.370244"/>
+                </key>
+            </timeline>
+            <timeline id="7" name="brewery_part-5">
+                <key id="0" time="957" spin="0">
+                    <object folder="2" file="5" x="-142.502717" y="107.878778" pivot_x="0.5" pivot_y="0.5" angle="0" scale_x="0" scale_y="0.75"/>
+                </key>
+                <key id="1" time="957" spin="0">
+                    <object folder="2" file="5" x="-142.502717" y="109.833536" pivot_x="1.001333" pivot_y="0.550122" angle="0" scale_x="0" scale_y="0.75"/>
+                </key>
+                <key id="2" time="1045" spin="0">
+                    <object folder="2" file="5" x="-142.502717" y="109.833529" angle="0" scale_x="0.75" scale_y="0.75"/>
+                </key>
+                <key id="3" time="1045" spin="0">
+                    <object folder="2" file="5" x="-167.6947" y="107.878771" angle="0" scale_x="0.75" scale_y="0.75"/>
+                </key>
+                <key id="4" time="1083" spin="0">
+                    <object folder="2" file="5" x="-167.6947" y="107.878771" angle="0" scale_x="0.75" scale_y="0.75"/>
+                </key>
+                <key id="5" time="1136" spin="0">
+                    <object folder="2" file="5" x="-167.6947" y="107.878771" angle="0" scale_x="0.75" scale_y="0.75"/>
+                </key>
+                <key id="6" time="1250" spin="0">
+                    <object folder="2" file="5" x="-167.6947" y="107.878771" angle="0" scale_x="0.75" scale_y="0.75"/>
+                </key>
+            </timeline>
+            <timeline id="8" name="brewery_part-4">
+                <key id="0" time="909" spin="0">
+                    <object folder="2" file="4" x="-96.093756" y="365.637209" angle="0" scale_x="0.146726" scale_y="1.298089"/>
+                </key>
+                <key id="1" time="957" spin="0">
+                    <object folder="2" file="4" x="-96.093756" y="264.387209" angle="0" scale_x="0.146726" scale_y="1.298089"/>
+                </key>
+                <key id="2" time="1002" spin="0">
+                    <object folder="2" file="4" x="-124.225039" y="330.810993" angle="0" scale_x="1.49564" scale_y="0.43079"/>
+                </key>
+                <key id="3" time="1045" spin="0">
+                    <object folder="2" file="4" x="-96.093756" y="253.887209" angle="0" scale_x="0.75" scale_y="0.75"/>
+                </key>
+                <key id="4" time="1083" spin="0">
+                    <object folder="2" file="4" x="-96.093756" y="253.887209" angle="0" scale_x="0.75" scale_y="0.75"/>
+                </key>
+                <key id="5" time="1136" spin="0">
+                    <object folder="2" file="4" x="-96.093756" y="253.887209" angle="0" scale_x="0.75" scale_y="0.75"/>
+                </key>
+                <key id="6" time="1250" spin="0">
+                    <object folder="2" file="4" x="-96.093756" y="253.887209" angle="0" scale_x="0.75" scale_y="0.75"/>
+                </key>
+            </timeline>
+            <timeline id="9" name="brewery_swap">
+                <key id="0" time="339" spin="0">
+                    <object folder="3" file="0" x="-343.591516" y="128.016018" angle="270" scale_x="0.74589"/>
+                </key>
+                <key id="1" time="366">
+                    <object folder="3" file="0" x="-343.591516" y="128.016018" angle="270" scale_x="0.74589"/>
+                </key>
+                <key id="2" time="436" spin="-1">
+                    <object folder="3" file="0" x="-31.700547" y="213.699174" angle="7.5322" scale_x="0.763417"/>
+                </key>
+                <key id="3" time="546" spin="0">
+                    <object folder="3" file="0" x="-24.55769" y="215.03846" angle="0" scale_x="0.74589"/>
+                </key>
+                <key id="4" time="1250" spin="-1">
+                    <object folder="3" file="0" x="-24.55769" y="215.03846" angle="0" scale_x="0.74589"/>
+                </key>
+            </timeline>
+        </animation>
+    </entity>
+</spriter_data>
