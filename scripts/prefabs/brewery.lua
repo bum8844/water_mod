@@ -2,8 +2,10 @@ require "prefabutil"
 
 local assets =
 {
-    Asset("ANIM", "anim/barrles.zip"),
-    Asset("ANIM", "anim/brewery_meter.zip"),
+    Asset("ANIM", "anim/brewery.zip"),
+	Asset("ANIM", "anim/brewery_meter_dirty.zip"),
+	Asset("ANIM", "anim/brewery_meter_water.zip"),
+    Asset("ANIM", "anim/ui_cookpot_1x4.zip"),
 }
 
 local prefabs =
@@ -76,9 +78,10 @@ local function fn()
 	
     MakeObstaclePhysics(inst, .4)
 	
-    inst.AnimState:SetBuild("barrles")
+    inst.AnimState:SetBuild("brewery")
     inst.AnimState:SetBank("brewery")
     inst.AnimState:PlayAnimation("idle")
+	inst.AnimState:OverrideSymbol("swap","brewery_meter_dirty", "0")
     
 	inst:AddTag("structure")
 	inst:AddTag("brewery")
@@ -113,4 +116,4 @@ local function fn()
 end
 
 return Prefab("brewery", fn, assets),
-MakePlacer("brewery_placer", "brewery", "barrles", "idle")
+MakePlacer("brewery_placer", "brewery", "brewery", "idle")

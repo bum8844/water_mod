@@ -3,7 +3,8 @@ require "prefabutil"
 local assets =
 {
     Asset("ANIM", "anim/desalinator.zip"),
-    Asset("ANIM", "anim/desalinator_meter.zip"),
+	Asset("ANIM", "anim/desalinator_meter_dirty.zip"),
+	Asset("ANIM", "anim/desalinator_meter_water.zip"),
 }
 
 local function onhammered(inst, worker)
@@ -67,6 +68,7 @@ local function fn()
     inst.AnimState:SetBuild("desalinator")
     inst.AnimState:SetBank("desalinator")
     inst.AnimState:PlayAnimation("idle")
+	inst.AnimState:OverrideSymbol("swap", "desalinator_meter_water", "0")
     
 	inst:AddTag("structure")
 	inst:AddTag("desalinator")

@@ -320,4 +320,4 @@ end
 
 return Prefab("caffeinberry", caffeinberry, assets, prefabs),
 Prefab("dug_caffeinberry",dug_caffeinberry, assets, prefabs_item),
-MakePlacer("caffeinberry_placer","caffeinberry","caffeinberry","berries")
+MakePlacer("dug_caffeinberry_placer","caffeinberry","caffeinberry","berriesmost")

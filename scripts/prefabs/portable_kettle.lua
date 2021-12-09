@@ -3,7 +3,8 @@ require "prefabutil"
 local assets =
 {
     Asset("ANIM", "anim/portable_kettle.zip"),
-    Asset("ANIM", "anim/portable_kettle_meter.zip"),
+	Asset("ANIM", "anim/portable_kettle_meter_dirty.zip"),
+	Asset("ANIM", "anim/portable_kettle_meter_water.zip"),
     Asset("ANIM", "anim/ui_cookpot_1x4.zip"),
 }
 
@@ -152,6 +153,7 @@ local function fn()
     inst.AnimState:SetBank("portable_kettle")
     inst.AnimState:SetBuild("portable_kettle")
     inst.AnimState:PlayAnimation("idle_empty")
+	inst.AnimState:OverrideSymbol("swap", "portable_kettle_meter_dirty", "0")
 
     inst:SetPrefabNameOverride("portable_kettle_item")
 

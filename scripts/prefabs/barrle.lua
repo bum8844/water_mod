@@ -2,8 +2,9 @@ require "prefabutil"
 
 local assets =
 {
-    Asset("ANIM", "anim/barrles.zip"),
-    Asset("ANIM", "anim/barrle_meter.zip"),
+    Asset("ANIM", "anim/barrle.zip"),
+	Asset("ANIM", "anim/barrle_meter_dirty.zip"),
+	Asset("ANIM", "anim/barrle_meter_water.zip"),
 }
 
 local prefabs =
@@ -66,9 +67,10 @@ local function fn()
 	
     MakeObstaclePhysics(inst, .1)
 	
-    inst.AnimState:SetBuild("barrles")
+    inst.AnimState:SetBuild("barrle")
     inst.AnimState:SetBank("barrle")
     inst.AnimState:PlayAnimation("idle")
+	inst.AnimState:OverrideSymbol("swap","barrle_meter_water", "0")
     
 	inst:AddTag("structure")
 	inst:AddTag("barrle")
@@ -103,4 +105,4 @@ local function fn()
 end
 
 return Prefab("barrle", fn, assets),
-MakePlacer("barrle_placer", "barrle", "barrles", "idle")
+MakePlacer("barrle_placer", "barrle", "barrle", "idle")

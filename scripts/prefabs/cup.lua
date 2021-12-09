@@ -3,7 +3,6 @@ local assets =
 	Asset("ANIM", "anim/kettle_drink.zip"),
 	Asset("IMAGE", "images/tea_inventoryitem.tex"),
 	Asset("ATLAS", "images/tea_inventoryitem.xml"),
-	--Asset("ATLAS_BUILD", "images/tea_inventoryitem.xml", 256),
 }
 
 local prefabs =
@@ -76,8 +75,9 @@ local function fn()
     MakeInventoryPhysics(inst)	
 
     inst.AnimState:SetBuild("kettle_drink")
-    inst.AnimState:SetBank("cup_empty")
+    inst.AnimState:SetBank("kettle_drink")
     inst.AnimState:PlayAnimation("idle")
+	inst.AnimState:OverrideSymbol("swap","kettle_drink","cup_empty")
 
     inst.entity:SetPristine()
 	

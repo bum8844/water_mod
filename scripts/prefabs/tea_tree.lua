@@ -158,12 +158,15 @@ local function on_dug_up(inst, digger)
         if inst.components.growable.stage == 2 then
 			inst.components.lootdropper:SpawnLootPrefab("tealeaves")
             inst.components.lootdropper:SpawnLootPrefab("tealeaves")
-		elseif inst.components.growable.stage == 3 then
             inst.components.lootdropper:SpawnLootPrefab("tealeaves")
+		elseif inst.components.growable.stage == 3 then
+            inst.components.lootdropper:SpawnLootPrefab("petals")
+            inst.components.lootdropper:SpawnLootPrefab("petals")
             inst.components.lootdropper:SpawnLootPrefab("petals")
         elseif inst.components.growable.stage == 4 then
-            inst.components.lootdropper:SpawnLootPrefab("tealeaves")
-            inst.components.lootdropper:SpawnLootPrefab("tealeaves")
+            inst.components.lootdropper:SpawnLootPrefab("tea_seed")
+            inst.components.lootdropper:SpawnLootPrefab("tea_seed")
+            inst.components.lootdropper:SpawnLootPrefab("tea_seed")
         end
 
         inst.components.lootdropper:SpawnLootPrefab("dug_tea_tree")
@@ -391,4 +394,4 @@ end
 
 return Prefab("tea_tree", tea_tree, assets, prefabs),
 Prefab("dug_tea_tree",dug_tea_tree, assets, prefabs_item),
-MakePlacer("tea_tree_placer","tea_tree_build","tea_tree_build","idle1")
+MakePlacer("dug_tea_tree_placer","tea_tree_build","tea_tree_build","idle2")
