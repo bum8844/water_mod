@@ -45,12 +45,13 @@ local function Finished(inst, force_fx)
 		item:ListenForEvent("animover", item_foldup_finished)
 
 	    item.SoundEmitter:PlaySound("farming/common/farm/plow/collapse")
-
-		SpawnPrefab("pond").Transform:SetPosition(x, y, z)
+		
+		SpawnPrefab("collapse_small").Transform:SetPosition(x, y, z)
+		SpawnPrefab("hole").Transform:SetPosition(x, y, z)
 	    item.SoundEmitter:PlaySound("farming/common/farm/plow/dirt_puff")
 	else
 		SpawnPrefab("collapse_small").Transform:SetPosition(x, y, z)
-		SpawnPrefab("pond").Transform:SetPosition(x, y, z)
+		SpawnPrefab("hole").Transform:SetPosition(x, y, z)
 	end
 
     inst:Remove()

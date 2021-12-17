@@ -46,12 +46,17 @@ local function onsave(inst, data)
     if inst:HasTag("burnt") or (inst.components.burnable ~= nil and inst.components.burnable:IsBurning()) then
         data.burnt = true
     end
+	-- data.Waterlevel_B = inst.Waterlevel_B
 end
 
 local function onload(inst, data)
-    if data ~= nil and data.burnt then
+    if data ~= nil then
+		if data.burnt then
         inst.components.burnable.onburnt(inst)
-        --inst.Light:Enable(false)
+		end
+		--[[if data.Waterlevel ~= nil then
+			inst.Waterlevel = data.Waterlevel
+		end]]--
     end
 end
 
@@ -107,6 +112,8 @@ local function fn()
 	
 	MakeMediumBurnable(inst, nil, nil, true)
     MakeSmallPropagator(inst)
+	
+	--inst.Waterlevel_B = 0
 
     inst.OnSave = onsave
     inst.OnLoad = onload

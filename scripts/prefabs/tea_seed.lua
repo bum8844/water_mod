@@ -38,9 +38,9 @@ local function tealeaves()
 	
 	inst:AddComponent("dryable")
     inst.components.dryable:SetProduct("tealeaves_dried")
-    inst.components.dryable:SetDryTime(inst, TUNING.DRY_MED)
+    inst.components.dryable:SetDryTime(TUNING.DRY_SUPERFAST)
 	inst.components.dryable:SetBuildFile("tealeaves")
-    inst.components.dryable:SetDriedBuildFile("tealeaves_dried")
+    inst.components.dryable:SetDriedBuildFile("tealeaves")
 
     inst:AddComponent("stackable")
     inst.components.stackable.maxsize = TUNING.STACK_SIZE_SMALLITEM
@@ -53,6 +53,9 @@ local function tealeaves()
     inst.components.inventoryitem.imagename= "tealeaves"
 
     inst:AddComponent("tradable")
+	
+	inst:AddComponent("fuel")
+	inst.components.fuel.fuelvalue = TUNING.SMALL_FUEL
 
     MakeSmallBurnable(inst, TUNING.SMALL_BURNTIME)
     MakeSmallPropagator(inst)
@@ -94,6 +97,9 @@ local function tealeaves_dried()
     inst.components.inventoryitem.imagename= "tealeaves_dried"
 
     inst:AddComponent("tradable")
+
+	inst:AddComponent("fuel")
+	inst.components.fuel.fuelvalue = TUNING.SMALL_FUEL
 
     MakeSmallBurnable(inst, TUNING.SMALL_BURNTIME)
     MakeSmallPropagator(inst)
@@ -146,6 +152,9 @@ local function tea_seed_cooked()
     inst.components.inventoryitem.imagename= "tea_seed_cooked"
 
     inst:AddComponent("tradable")
+
+	inst:AddComponent("fuel")
+	inst.components.fuel.fuelvalue = TUNING.SMALL_FUEL
 
     MakeSmallBurnable(inst, TUNING.SMALL_BURNTIME)
     MakeSmallPropagator(inst)

@@ -26,7 +26,7 @@ local function OnFill(inst, from_object)
 		filleditem = SpawnPrefab("bucket_salt")
 	end
 	
-	inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/small")
+	inst.SoundEmitter:PlaySound("dontstarve/creatures/pengull/splash")
 	
 	if filleditem == nil then
 		return false
@@ -113,7 +113,13 @@ local function fn()
     inst:AddComponent("inspectable")
 	
 	inst:AddComponent("tradable")
-
+	
+    inst:AddComponent("fuel")
+    inst.components.fuel.fuelvalue = TUNING.LARGE_FUEL
+	
+    MakeSmallBurnable(inst, TUNING.MED_BURNTIME)
+    MakeSmallPropagator(inst)
+	
     inst:AddComponent("inventoryitem")
     inst.replica.inventoryitem:SetImage("bucket")
 	inst.components.inventoryitem.atlasname= "images/tea_inventoryitem.xml"

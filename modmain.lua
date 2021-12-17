@@ -25,6 +25,7 @@ PrefabFiles =
  "tea_seed",
  "caffeinberry_bean",
  "caffeinberry",
+ "well",
 }
 
 Assets = {
@@ -46,6 +47,13 @@ GLOBAL.RECIPETABS['DRINKS_TAB'] = {str = "DRINKS_TAB", sort=3, icon_atlas = "ima
 
 modimport("scripts/recipes.lua")
 modimport("scripts/strings.lua")
+modimport("scripts/watertuning.lua")
+modimport("scripts/prepareagedrink_cup.lua")
+modimport("scripts/preparedrink_cup.lua")
+modimport("scripts/prepareagedrink_bottle.lua")
+modimport("scripts/preparedrink_bottle.lua")
+modimport("scripts/prepareagedrink.lua")
+modimport("scripts/preparedrink.lua")
 
 AddMinimapAtlas("images/tea_minimap.xml")
 
@@ -56,15 +64,6 @@ local function BackBucket(inst)
 	end
     inst:Remove()
 end
-
-AddPrefabPostInit("fertilizer", function(inst)
-    if not GLOBAL.TheWorld.ismastersim then
-        return inst
-    end
-	inst:DoTaskInTime(0, function()	
-        inst.components.finiteuses:SetOnFinished(BackBucket)
-	end)
-end)
 
 local cleansource =
 {
@@ -96,3 +95,74 @@ AddIngredientValues("beefalo_milk", {milk=1, dairy=1})
 AddIngredientValues("moon_tree_blossom", {decoration=1, inedible=1})
 AddIngredientValues("firenettles", {decoration=1, inedible=1})
 AddIngredientValues("tillweeds", {decoration=1, inedible=1})]]--
+
+
+
+
+AddPrefabPostInit("fertilizer", function(inst)
+    if not GLOBAL.TheWorld.ismastersim then
+        return inst
+    end
+	inst:DoTaskInTime(0, function()	
+        inst.components.finiteuses:SetOnFinished(BackBucket)
+	end)
+end)
+
+local function bottleadd(inst)
+	local function OnFill(inst, from_object)
+		local filleditem
+		if from_object ~= nil then
+			if from_object:HasTag("cleanwater") then
+				filleditem = GLOBAL.SpawnPrefab("bottle_water")
+			else
+				filleditem = GLOBAL.SpawnPrefab("bottle_dirty")
+			end
+		else
+			filleditem = GLOBAL.SpawnPrefab("bottle_salt")
+		end
+		
+		--inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/small")
+		
+		if filleditem == nil then
+			return false
+		end
+	
+		local owner = inst.components.inventoryitem ~= nil and inst.components.inventoryitem:GetGrandOwner() or nil
+		if owner ~= nil then
+			local container = owner.components.inventory or owner.components.container
+			local item = container:RemoveItem(inst, false) or inst
+			item:Remove()
+			container:GiveItem(filleditem, nil, owner:GetPosition())
+		else
+			source.Transform:SetPosition(inst.Transform:GetWorldPosition())
+			local item =
+				inst.components.stackable ~= nil and
+				inst.components.stackable:IsStack() and
+				inst.components.stackable:Get() or
+				inst
+			item:Remove()
+		end
+		
+		return true
+	end
+	inst:AddComponent("tradable")
+
+    inst:AddComponent("fillable")
+	inst.components.fillable.overrideonfillfn = OnFill
+	inst.components.fillable.showoceanaction = true
+	inst.components.fillable.acceptsoceanwater = true
+end
+
+AddPrefabPostInit("messagebottleempty",bottleadd)
+-- 이 코드가 말리기 위해 추가한 코드임
+AddComponentPostInit("dryer", function(self)
+    local _StartDrying = self.StartDrying
+    
+    function self:StartDrying(dryable, ...)
+        if dryable.components.dryable ~= nil and dryable.components.perishable == nil then
+            dryable:AddComponent("perishable")
+        end
+        
+        return _StartDrying(self, dryable, ...)
+    end
+end)

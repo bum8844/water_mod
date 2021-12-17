@@ -28,6 +28,6 @@ AddRecipe("portable_kettle_item",{Ingredient("transistor",2),Ingredient("cutston
 
 AddRecipe("desalinator",{Ingredient("boards",12),Ingredient("rope",6),Ingredient("rocks",6),Ingredient("nitre",6),Ingredient("charcoal",6)},RECIPETABS.DRINKS_TAB,TECH.SCIENCE_TWO,"desalinator_placer",nil,nil,nil,nil,"images/tea_inventoryitem.xml","desalinator.tex")
 
---AddRecipe("well_item",{Ingredient("boards",2),Ingredient("cutstone",6),Ingredient("hammer",1)},RECIPETABS.DRINKS_TAB,TECH.SCIENCE_TWO,nil,nil,nil,nil,nil,"images/tea_inventoryitem.xml","well_item.tex")
-
 AddRecipe("well_drilling_item",{Ingredient("boards",2),Ingredient("cutstone",3),Ingredient("flint",4)},RECIPETABS.DRINKS_TAB,TECH.SCIENCE_TWO,nil,nil,nil,nil,nil,"images/tea_inventoryitem.xml","well_drilling_item.tex")
+
+GLOBAL.CONSTRUCTION_PLANS["hole"] = {Ingredient("boards",2),Ingredient("cutstone",6),Ingredient("hammer",1)}

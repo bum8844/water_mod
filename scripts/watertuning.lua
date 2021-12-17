@@ -5,7 +5,7 @@ local seg_time = 30
 local total_day_time = seg_time*16
 
 -- 기초 목마름
-TUNING.WILSON_THIRST = wilson_thirst, --수분량
+TUNING.WILSON_THIRST = wilson_thirst --수분량
 TUNING.WILSON_HUNGER_RATE = hydration_per_day/total_day_time
 
 -- 목마름 채워주는 양
@@ -48,7 +48,7 @@ TUNING.SODA_WAIT = GetModConfigData("soda_wait")
 TUNING.COFFEE_TIME = GetModConfigData("coffee_time") 
 TUNING.COFFEE_POWR = GetModConfigData("coffee_power") 
 
-TUNING.KETTLE_SAVECFG = GetModConfigData("kettle_save")
+--[[TUNING.KETTLE_SAVECFG = GetModConfigData("kettle_save")
 
-local language_cfg = GetModConfigData("language_cfg"
-TUNING.AW_THIRST = GetModConfigData("aw_thirst")
+local language_cfg = GetModConfigData("language_cfg")
+TUNING.AW_THIRST = GetModConfigData("aw_thirst")]]--

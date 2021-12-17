@@ -17,7 +17,7 @@ local prefabs =
 
 local prefabs_item =
 {
-	"tea_tree_placer"
+	"dug_tea_tree_placer"
 }
 
 local BUSH_ANIMS =

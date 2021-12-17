@@ -15,7 +15,7 @@ local prefabs =
 
 local prefabs_item =
 {
-	"caffeinberry_placer"
+	"dug_caffeinberry_placer"
 }
 
 local function setberries(inst, pct)

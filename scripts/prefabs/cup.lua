@@ -17,7 +17,7 @@ local function OnFill(inst, from_object)
 		if from_object:HasTag("cleanwater") then
 			filleditem = SpawnPrefab("cup_water")
 		else
-			filleditem = SpawnPrefab("cup_dirt")
+			filleditem = SpawnPrefab("cup_dirty")
 		end
 	else
 		filleditem = SpawnPrefab("cup_salt")
@@ -49,10 +49,10 @@ local function OnFill(inst, from_object)
 end
 
 
---[[local function FillByRain(inst)
+local function FillByRain(inst)
 	local filleditem
     inst.rainfilling = 0
-	inst.SoundEmitter:PlaySound("dontstarve/creatures/pengull/splash")
+	inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/small")
 	if inst.components.stackable.stacksize > 1 then
 	    filleditem = SpawnPrefab("cup_water")
 		filleditem.Transform:SetPosition(inst.Transform:GetWorldPosition())
@@ -62,7 +62,7 @@ end
 		filleditem.Transform:SetPosition(inst.Transform:GetWorldPosition())
 		inst:Remove()
 	end
-end]]--
+end
 
 local function fn()
     local inst = CreateEntity()
@@ -87,16 +87,16 @@ local function fn()
         return inst
     end
 	
-	--inst.rainfilling = 0
-	--inst:DoPeriodicTask(1, function()
-	    --local owner = inst.components.inventoryitem.owner
-		--if TheWorld.state.israining and owner == nil then
-		    --inst.rainfilling = inst.rainfilling + 1
-		--end
-		--if inst.rainfilling >= 45 then
-		    --FillByRain(inst)
-		--end
-	--end)
+	inst.rainfilling = 0
+	inst:DoPeriodicTask(1, function()
+	    local owner = inst.components.inventoryitem.owner
+		if TheWorld.state.israining and owner == nil then
+		    inst.rainfilling = inst.rainfilling + 1
+		end
+		if inst.rainfilling >= 45 then
+		    FillByRain(inst)
+		end
+	end)
 	
     inst:AddComponent("fillable")
 	inst.components.fillable.overrideonfillfn = OnFill

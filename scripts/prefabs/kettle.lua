@@ -40,6 +40,8 @@ end
 
 local function onbuilt(inst)
     inst.AnimState:PlayAnimation("place")
+	inst.AnimState:PushAnimation("idle_empty", false)
+	inst.SoundEmitter:PlaySound("dontstarve/common/cook_pot_craft")
 end
 
 local function onsave(inst, data)

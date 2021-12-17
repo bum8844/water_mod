@@ -56,9 +56,16 @@ local function MakeBucket(data)
 		inst:AddComponent("inspectable")
 
 		inst:AddTag("show_spoilage")
-
+		
 		if name ~= "salt" then
+			if name == "dirty" then
+				inst:AddTag("dirty")
+			else
+				inst:AddTag("clean")
+			end
 			inst:AddTag("icebox_valid")
+		else
+			inst:AddTag("salt")
 		end
 
 		inst:AddTag("bucket")
