@@ -3,7 +3,6 @@ require "prefabutil"
 local assets =
 {
     Asset("ANIM", "anim/desalinator.zip"),
-	Asset("ANIM", "anim/desalinator_meter_dirty.zip"),
 	Asset("ANIM", "anim/desalinator_meter_water.zip"),
 }
 

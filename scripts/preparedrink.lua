@@ -1,3 +1,23 @@
+local function returnbottle(inst, eater)
+	local x, y, z = inst.Transform:GetWorldPosition()
+	local refund = SpawnPrefab("messagebottleempty")
+	if eater ~= nil and eater.components.inventory ~= nil then
+		eater.components.inventory:GiveItem(refund, nil, Vector3(x, y, z))
+	else
+		refund.Transform:SetPosition(x,y,z)
+	end
+end
+
+local function returncup(inst, eater)
+	local x, y, z = inst.Transform:GetWorldPosition()
+	local refund = SpawnPrefab("cup")
+	if eater ~= nil and eater.components.inventory ~= nil then
+		eater.components.inventory:GiveItem(refund, nil, Vector3(x, y, z))
+	else
+		refund.Transform:SetPosition(x,y,z)
+	end
+end
+
 local drinks =
 {
 	
@@ -11,6 +31,13 @@ local drinks =
 		sanity = 0,
 		thirst = TUNING.HYDRATION_TINY,
 		cooktime = TUNING.KETTLE_WATER,
+		oneatenfn = function(inst, eater)
+			if inst:HasTag("preparedrink_cup") then
+				returncup(inst, eater)
+			else
+				returnbottle(inst, eater)
+			end
+		end,
 	},
 	
 	dirty =
@@ -19,7 +46,14 @@ local drinks =
 		health = TUNING.HEALING_SMALL,
 		hunger = TUNING.DRINK_CALORIES,
 		sanity = 0,
-		thirst = TUNING.HYDRATION_TINY
+		thirst = TUNING.HYDRATION_TINY,
+		oneatenfn = function(inst, eater)
+			if inst:HasTag("preparedrink_cup") then
+				returncup(inst, eater)
+			else
+				returnbottle(inst, eater)
+			end
+		end,
 	},
 	salt =
 	{
@@ -27,7 +61,14 @@ local drinks =
 		health = TUNING.HEALING_SMALL,
 		hunger = TUNING.DRINK_CALORIES,
 		sanity = 0,
-		thirst = TUNING.HYDRATION_TINY
+		thirst = TUNING.HYDRATION_TINY,
+		oneatenfn = function(inst, eater)
+			if inst:HasTag("preparedrink_cup") then
+				returncup(inst, eater)
+			else
+				returnbottle(inst, eater)
+			end
+		end,
 	},
 	-- 조합법이 잘못되면 나오는 결과물
 	garbage = 
@@ -38,7 +79,14 @@ local drinks =
 		hunger = 0,
 		sanity = 0,
 		thirst = TUNING.HYDRATION_TINY,
-		cooktime = TUNING.INCORRECT_BOIL
+		cooktime = TUNING.INCORRECT_BOIL,
+		oneatenfn = function(inst, eater)
+			if inst:HasTag("preparedrink_cup") then
+				returncup(inst, eater)
+			else
+				returnbottle(inst, eater)
+			end
+		end,
 	},
 	-- 과일차 종류
 	
@@ -50,7 +98,14 @@ local drinks =
 		hunger = TUNING.DRINK_CALORIES ,
 		sanity = TUNING.SANITY_TINY,
 		thirst = TUNING.HYDRATION_MEDSMALL,
-		cooktime = TUNING.KETTLE_FRUIT
+		cooktime = TUNING.KETTLE_FRUIT,
+		oneatenfn = function(inst, eater)
+			if inst:HasTag("preparedrink_cup") then
+				returncup(inst, eater)
+			else
+				returnbottle(inst, eater)
+			end
+		end,
 	},
 	
 	berry =
@@ -61,7 +116,14 @@ local drinks =
 		hunger = TUNING.DRINK_CALORIES,
 		sanity = TUNING.SANITY_MED,
 		thirst = TUNING.HYDRATION_LARGE,
-		cooktime = TUNING.KETTLE_FRUIT
+		cooktime = TUNING.KETTLE_FRUIT,
+		oneatenfn = function(inst, eater)
+			if inst:HasTag("preparedrink_cup") then
+				returncup(inst, eater)
+			else
+				returnbottle(inst, eater)
+			end
+		end,
 	},
 
 	pomegranate =
@@ -72,7 +134,14 @@ local drinks =
 		hunger = TUNING.DRINK_CALORIES,
 		sanity = TUNING.SANITY_MED,
 		thirst = TUNING.HYDRATION_LARGE,
-		cooktime = TUNING.KETTLE_FRUIT
+		cooktime = TUNING.KETTLE_FRUIT,
+		oneatenfn = function(inst, eater)
+			if inst:HasTag("preparedrink_cup") then
+				returncup(inst, eater)
+			else
+				returnbottle(inst, eater)
+			end
+		end,
 	},
 	
 	banana =
@@ -83,18 +152,31 @@ local drinks =
 		hunger = TUNING.DRINK_CALORIES,
 		sanity = TUNING.SANITY_MEDLARGE,
 		thirst = TUNING.HYDRATION_LARGE,
-		cooktime = TUNING.KETTLE_FRUIT
+		cooktime = TUNING.KETTLE_FRUIT,
+		oneatenfn = function(inst, eater)
+			if inst:HasTag("preparedrink_cup") then
+				returncup(inst, eater)
+			else
+				returnbottle(inst, eater)
+			end
+		end,
 	},
 	
 	fig =
 	{
-		test = function(boilier, name, tags) return names.fig and names.fig >= 2 and not tags.meat and not tags.egg end,
 		priority = 1,
 		health = TUNING.HEALING_MED,
 		hunger = TUNING.DRINK_CALORIES,
 		sanity = TUNING.SANITY_LARGE,
 		thirst = TUNING.HYDRATION_LARGE,
-		cooktime = TUNING.KETTLE_FRUIT
+		cooktime = TUNING.KETTLE_FRUIT,
+		oneatenfn = function(inst, eater)
+			if inst:HasTag("preparedrink_cup") then
+				returncup(inst, eater)
+			else
+				returnbottle(inst, eater)
+			end
+		end,
 	},
 	
 	dragonfruit =
@@ -105,11 +187,18 @@ local drinks =
 		hunger = TUNING.DRINK_CALORIES,
 		sanity = TUNING.SANITY_MED ,
 		thirst = TUNING.HYDRATION_HUGE,
-		cooktime = TUNING.KETTLE_FRUIT
+		cooktime = TUNING.KETTLE_FRUIT,
+		oneatenfn = function(inst, eater)
+			if inst:HasTag("preparedrink_cup") then
+				returncup(inst, eater)
+			else
+				returnbottle(inst, eater)
+			end
+		end,
 	},
 	
 	-- 일시적 빛나는 효과[추가해야함]
-	growberry =
+	glowberry =
 	{
 		test = function(boilier, name, tags) return (( names.wormlight or 0 ) + ( names.wormlight_lesser or 0) >= 2) and tags.frozen and tags.frozen >= 1 and not tags.meat and not tags.egg end,
 		priority = 1,
@@ -117,7 +206,33 @@ local drinks =
 		hunger = TUNING.DRINK_CALORIES,
 		sanity = TUNING.SANITY_TINY,
 		thirst = TUNING.HYDRATION_HUGE,
-		cooktime = TUNING.KETTLE_LUXURY_GOODS
+		cooktime = TUNING.KETTLE_LUXURY_GOODS,
+		oneatenfn = function(inst, eater)
+			if inst:HasTag("preparedrink_cup") then
+				returncup(inst, eater)
+			else
+				returnbottle(inst, eater)
+			end
+            if eater.wormlight ~= nil then
+                if eater.wormlight.prefab == "wormlight_light_greater" then
+                    eater.wormlight.components.spell.lifetime = 0
+                    eater.wormlight.components.spell:ResumeSpell()
+                    return
+                else
+                    eater.wormlight.components.spell:OnFinish()
+                end
+            end
+
+            local light = SpawnPrefab("wormlight_light_greater")
+            light.components.spell:SetTarget(eater)
+            if light:IsValid() then
+                if light.components.spell.target == nil then
+                    light:Remove()
+                else
+                    light.components.spell:StartSpell()
+                end
+            end
+		end,
 	},
 	
 	-- 일시적 겉는 속도 증가[추가해야함]
@@ -129,7 +244,11 @@ local drinks =
 		hunger = TUNING.DRINK_CALORIES,
 		sanity = TUNING.SANITY_MED,
 		thirst = TUNING.HYDRATION_SMALL,
-		cooktime = 25
+		cooktime = 25,
+		oneatenfn = function(inst, eater)
+			returncup(inst, eater)
+			
+		end,
 	},
 	
 	-- 야채차 종류
@@ -141,7 +260,14 @@ local drinks =
 		hunger = TUNING.DRINK_CALORIES,
 		sanity = TUNING.SANITY_TINY,
 		thirst = TUNING.HYDRATION_MEDSMALL,
-		cooktime = TUNING.KETTLE_VEGGIE
+		cooktime = TUNING.KETTLE_VEGGIE,
+		oneatenfn = function(inst, eater)
+			if inst:HasTag("preparedrink_cup") then
+				returncup(inst, eater)
+			else
+				returnbottle(inst, eater)
+			end
+		end,
 	},
 	
 	carrot =
@@ -152,7 +278,14 @@ local drinks =
 		hunger = TUNING.DRINK_CALORIES,
 		sanity = TUNING.SANITY_SMALL,
 		thirst = TUNING.HYDRATION_LARGE,
-		cooktime = TUNING.KETTLE_VEGGIE
+		cooktime = TUNING.KETTLE_VEGGIE,
+		oneatenfn = function(inst, eater)
+			if inst:HasTag("preparedrink_cup") then
+				returncup(inst, eater)
+			else
+				returnbottle(inst, eater)
+			end
+		end,
 	},
 	
 	-- 선인장, 다육, 알로에는 무조건 이걸로 만들어지게
@@ -166,7 +299,14 @@ local drinks =
 		thirst = TUNING.HYDRATION_LARGE,
 		temperature = TUNING.COLD_FOOD_BONUS_TEMP,
 		temperatureduration = TUNING.FOOD_TEMP_AVERAGE,
-		cooktime = TUNING.KETTLE_VEGGIE
+		cooktime = TUNING.KETTLE_VEGGIE,
+		oneatenfn = function(inst, eater)
+			if inst:HasTag("preparedrink_cup") then
+				returncup(inst, eater)
+			else
+				returnbottle(inst, eater)
+			end
+		end,
 	},
 	
 	mulled =
@@ -179,7 +319,14 @@ local drinks =
 		thirst = TUNING.HYDRATION_LARGE,
 		temperature = TUNING.HOT_FOOD_WARMING_THRESHOLD,
 		temperatureduration = TUNING.FOOD_TEMP_AVERAGE,
-		cooktime = TUNING.KETTLE_VEGGIE
+		cooktime = TUNING.KETTLE_VEGGIE,
+		oneatenfn = function(inst, eater)
+			if inst:HasTag("preparedrink_cup") then
+				returncup(inst, eater)
+			else
+				returnbottle(inst, eater)
+			end
+		end,
 	},
 	
 	-- 잎&꽃차 종류
@@ -192,7 +339,14 @@ local drinks =
 		hunger = TUNING.DRINK_CALORIES,
 		sanity = TUNING.SANITY_MEDLARGE,
 		thirst = TUNING.HYDRATION_MED,
-		cooktime = TUNING.KETTLE_TEA
+		cooktime = TUNING.KETTLE_TEA,
+		oneatenfn = function(inst, eater)
+			if inst:HasTag("preparedrink_cup") then
+				returncup(inst, eater)
+			else
+				returnbottle(inst, eater)
+			end
+		end,
 	},
 	
 	-- 녹차 건조대 말린것
@@ -206,7 +360,14 @@ local drinks =
 		thirst = TUNING.HYDRATION_MED,
 		temperature = TUNING.HOT_FOOD_BONUS_TEMP,
 		temperatureduration = TUNING.FOOD_TEMP_LONG,
-		cooktime = TUNING.KETTLE_TEA
+		cooktime = TUNING.KETTLE_TEA,
+		oneatenfn = function(inst, eater)
+			if inst:HasTag("preparedrink_cup") then
+				returncup(inst, eater)
+			else
+				returnbottle(inst, eater)
+			end
+		end,
 	},
 	
 	blacktea_iced =
@@ -219,7 +380,14 @@ local drinks =
 		thirst = TUNING.HYDRATION_MED,
 		temperature = TUNING.COLD_FOOD_BONUS_TEMP,
 		temperatureduration = TUNING.FOOD_TEMP_LONG,
-		cooktime = TUNING.KETTLE_TEA
+		cooktime = TUNING.KETTLE_TEA,
+		oneatenfn = function(inst, eater)
+			if inst:HasTag("preparedrink_cup") then
+				returncup(inst, eater)
+			else
+				returnbottle(inst, eater)
+			end
+		end,
 	},
 	
 	-- 동굴 고사리
@@ -231,7 +399,14 @@ local drinks =
 		hunger = TUNING.DRINK_CALORIES,
 		sanity = TUNING.SANITY_LARGE,
 		thirst = TUNING.HYDRATION_MED,
-		cooktime = TUNING.KETTLE_TEA
+		cooktime = TUNING.KETTLE_TEA,
+		oneatenfn = function(inst, eater)
+			if inst:HasTag("preparedrink_cup") then
+				returncup(inst, eater)
+			else
+				returnbottle(inst, eater)
+			end
+		end,
 	},
 	
 	-- 꽃을 섞으면 나오는 결과물
@@ -243,7 +418,14 @@ local drinks =
 		hunger = TUNING.DRINK_CALORIES,
 		sanity = TUNING.SANITY_SMALL,
 		thirst = TUNING.HYDRATION_MEDSMALL,
-		cooktime = TUNING.KETTLE_DECORATION
+		cooktime = TUNING.KETTLE_DECORATION,
+		oneatenfn = function(inst, eater)
+			if inst:HasTag("preparedrink_cup") then
+				returncup(inst, eater)
+			else
+				returnbottle(inst, eater)
+			end
+		end,
 	},
 	
 	-- 일반 꽃잎
@@ -256,6 +438,13 @@ local drinks =
 		sanity = TUNING.SANITY_MEDLARGE,
 		thirst = TUNING.HYDRATION_MED,
 		cooktime = TUNING.KETTLE_DECORATION,
+		oneatenfn = function(inst, eater)
+			if inst:HasTag("preparedrink_cup") then
+				returncup(inst, eater)
+			else
+				returnbottle(inst, eater)
+			end
+		end,
 	},
 
 	-- 선인장 꽃잎
@@ -267,7 +456,14 @@ local drinks =
 		hunger = TUNING.DRINK_CALORIES,
 		sanity = TUNING.SANITY_LARGE,
 		thirst = TUNING.HYDRATION_LARGE,
-		cooktime = TUNING.KETTLE_DECORATION
+		cooktime = TUNING.KETTLE_DECORATION,
+		oneatenfn = function(inst, eater)
+			if inst:HasTag("preparedrink_cup") then
+				returncup(inst, eater)
+			else
+				returnbottle(inst, eater)
+			end
+		end,
 	},
 	
 	lotusflower =
@@ -278,7 +474,14 @@ local drinks =
 		hunger = TUNING.DRINK_CALORIES,
 		sanity = TUNING.SANITY_LARGE,
 		thirst = TUNING.HYDRATION_LARGE,
-		cooktime = TUNING.KETTLE_DECORATION
+		cooktime = TUNING.KETTLE_DECORATION,
+		oneatenfn = function(inst, eater)
+			if inst:HasTag("preparedrink_cup") then
+				returncup(inst, eater)
+			else
+				returnbottle(inst, eater)
+			end
+		end,
 	},
 	
 	--일시적으로 유령으로 만드는 차[추가해야함]
@@ -290,7 +493,15 @@ local drinks =
 		hunger = 0,
 		sanity = 0,
 		thirst = 0,
-		cooktime = TUNING.KETTLE_ABI
+		cooktime = TUNING.KETTLE_ABI,
+		oneatenfn = function(inst, eater)
+			if inst:HasTag("preparedrink_cup") then
+				returncup(inst, eater)
+			else
+				returnbottle(inst, eater)
+			end
+			
+		end,
 	},
 	
 }
@@ -299,8 +510,6 @@ for k, v in pairs(drinks) do
     v.name = k
     v.weight = v.weight or 1
     v.priority = v.priority or 0
-
-	--v.cupsjournal_category = "kettles"
 end
 
 return drinks

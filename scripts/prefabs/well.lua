@@ -49,7 +49,7 @@ local function hole()
 	inst:AddTag("antlion_sinkhole_blocker")
     inst:AddTag("constructionsite")
 	
-	MakeObstaclePhysics(inst, .5)
+	MakeObstaclePhysics(inst, .7)
 	
 	inst:AddComponent("inspectable")
 	
@@ -68,11 +68,20 @@ local function hole()
 	return inst
 end
 
+
+local function updatewellstate(inst)
+    local num = inst.components.pickable.numtoharvest
+	if num == 1 then
+		inst.AnimState:PlayAnimation("idle_watering")
+	else
+		inst.AnimState:PlayAnimation("idle_empty")
+	end
+end
+
 local function onhammered(inst)
 	if inst.AnimState:IsCurrentAnimation("watering") or inst.AnimState:IsCurrentAnimation("idle_watering") then
 		inst.components.lootdropper:SpawnLootPrefab("bucket_full")
 	end
-	inst.components.lootdropper:SpawnLootPrefab("boards")
 	inst.components.lootdropper:SpawnLootPrefab("boards")
 	inst.components.lootdropper:SpawnLootPrefab("cutstone")
 	inst.components.lootdropper:SpawnLootPrefab("cutstone")
@@ -84,14 +93,21 @@ local function onhammered(inst)
 end
 
 local function onhit(inst)
-	if not inst.AnimState:IsCurrentAnimation("watering") or inst.AnimState:IsCurrentAnimation("idle_watering") then
-		inst.AnimState:PlayAnimation("hit_empty")
-		inst.AnimState:PushAnimation("idle_empty")
+	if not inst.AnimState:IsCurrentAnimation("watering") then
+		if inst.AnimState:IsCurrentAnimation("idle_watering") then
+			inst.AnimState:PlayAnimation("shack_watering")
+			inst.AnimState:PushAnimation("idle_watering")
+		else
+			inst.AnimState:PlayAnimation("hit_empty")
+			inst.AnimState:PushAnimation("idle_empty")
+		end
 	end
 end
 
 local function OnRefuseItem(inst, giver, item)
-	if inst.AnimState:IsCurrentAnimation("watering") or inst.AnimState:IsCurrentAnimation("idle_watering") or inst.AnimState:IsCurrentAnimation("shack_watering") then
+	if inst.components.pickable.caninteractwith then
+		giver.components.talker:Say("I need to take out the bucket first.")
+	elseif inst.AnimState:IsCurrentAnimation("watering") or inst.AnimState:IsCurrentAnimation("idle_watering") or inst.AnimState:IsCurrentAnimation("shack_watering") then
 		giver.components.talker:Say("I'm getting water right now.")
 	else
 		giver.components.talker:Say("Can't get water with this.")
@@ -99,44 +115,29 @@ local function OnRefuseItem(inst, giver, item)
 end
 
 local function ShouldAcceptItem(inst, item, giver)
-	if item.prefab == ("bucket") then 
+	if item:HasTag("fil_bucket") then 
 		return true
     end
 end
 
-local function launchitem(item, angle)
-    local speed = math.random() * 4 + 2
-    angle = (angle + math.random() * 60 - 30) * DEGREES
-    item.Physics:SetVel(speed * math.cos(angle), math.random() * 2 + 8, speed * math.sin(angle))
+local function SetPickable(inst, pickable, num)
+    inst.components.pickable.canbepicked = pickable
+    inst.components.pickable.caninteractwith = pickable
+    inst.components.pickable.numtoharvest = num
 end
 
-local function givewater(inst, item, giver)
-	--giver.components.inventory:GiveItem(SpawnPrefab("bucket_full"))
+local function givewater(inst, picker)
 	inst.AnimState:PlayAnimation("shack_watering")
-	local x, y, z = inst.Transform:GetWorldPosition()
-	
-    y = 2
-
-    local angle
-    if giver ~= nil and giver:IsValid() then
-        angle = 180 - giver:GetAngleToPoint(x, 0, z)
-    else
-        local down = TheCamera:GetDownVec()
-        angle = math.atan2(down.z, down.x) / DEGREES
-        giver = nil
-    end
-	
-	local bucket = SpawnPrefab("bucket_full")
-	bucket.Transform:SetPosition(x, y, z)
-	launchitem(bucket, angle)
-		
 	inst.AnimState:PushAnimation("idle_empty")
-	giver.SoundEmitter:PlaySound("dontstarve/creatures/pengull/splash")
+	picker.SoundEmitter:PlaySound("dontstarve/creatures/pengull/splash")
+	inst.components.pickable.numtoharvest = inst.components.pickable.numtoharvest - 1
+	SetPickable(inst, false, inst.components.pickable.numtoharvest)
 end
 
 local function upwater(inst, item, giver)
-		inst.AnimState:PushAnimation("idle_watering")
-		inst:DoTaskInTime(1.1,givewater, item, giver)
+	inst.AnimState:PushAnimation("idle_watering")
+	inst.components.pickable.numtoharvest = inst.components.pickable.numtoharvest + 1
+	SetPickable(inst, true, inst.components.pickable.numtoharvest)
 end
 
 local function getwater(inst, item, giver)
@@ -145,11 +146,16 @@ local function getwater(inst, item, giver)
 end
 
 local function OnGetItemFromPlayer(inst, giver, item)
-	if item.prefab == ("bucket") then
+	if item:HasTag("fil_bucket") then
 		if not inst.AnimState:IsCurrentAnimation("watering") or inst.AnimState:IsCurrentAnimation("idle_watering") or inst.AnimState:IsCurrentAnimation("shack_watering") then
-			inst.SoundEmitter:PlaySound("turnoftides/common/together/boat/anchor/tether_land")
-			inst.AnimState:PlayAnimation("watering")
-			inst:DoTaskInTime(1.1,getwater, item, giver)
+			if not inst.components.pickable.caninteractwith then
+				inst.SoundEmitter:PlaySound("turnoftides/common/together/boat/anchor/tether_land")
+				inst.AnimState:PlayAnimation("watering")
+				inst:DoTaskInTime(1.1,getwater, item, giver)
+			else
+				giver.components.inventory:GiveItem(SpawnPrefab("bucket"))
+				OnRefuseItem(inst, giver, item)
+			end
 		else
 			giver.components.inventory:GiveItem(SpawnPrefab("bucket"))
 			OnRefuseItem(inst, giver, item)
@@ -157,6 +163,21 @@ local function OnGetItemFromPlayer(inst, giver, item)
 	end
 end
 
+local function onsave(inst, data)
+    if inst.components.pickable.numtoharvest > 0 then
+        -- This isn't saved on the pickable component
+        data.numtoharvest = inst.components.pickable.numtoharvest
+    end
+end
+
+local function onload(inst, data)
+	if data ~= nil then
+		if data.numtoharvest ~= nil and data.numtoharvest > 0 then
+			inst.components.pickable.numtoharvest = data.numtoharvest
+			updatewellstate(inst)
+		end
+	end
+end
 
 local function well()
 	local inst = CreateEntity()
@@ -185,6 +206,13 @@ local function well()
 	inst.components.trader.onrefuse = OnRefuseItem
 	
 	inst:AddComponent("inspectable")
+	inst.IsGetWater = false
+	
+    inst:AddComponent("pickable")
+    inst.components.pickable.caninteractwith = false
+    inst.components.pickable.onpickedfn = givewater
+    inst.components.pickable.product = "bucket_full"
+    inst.components.pickable.numtoharvest = 0
 	
 	inst:AddComponent("lootdropper")
 	inst:AddComponent("workable")
@@ -192,6 +220,9 @@ local function well()
     inst.components.workable:SetWorkLeft(4)
 	inst.components.workable:SetOnFinishCallback(onhammered)
 	inst.components.workable:SetOnWorkCallback(onhit)
+	
+	inst.OnSave = onsave
+    inst.OnLoad = onload
 	
 	return inst
 end

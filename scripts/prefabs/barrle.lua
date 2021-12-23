@@ -3,7 +3,6 @@ require "prefabutil"
 local assets =
 {
     Asset("ANIM", "anim/barrle.zip"),
-	Asset("ANIM", "anim/barrle_meter_dirty.zip"),
 	Asset("ANIM", "anim/barrle_meter_water.zip"),
 }
 
@@ -13,30 +12,29 @@ local prefabs =
 }
 
 local function ShouldAcceptItem(inst, item, giver)
-	local i = item.prefab
-	if i == ("bucket") or i == ("cup") or i == ("bucket_full") or i == ("cup_water") or i == ("messagebottleempty") or i == ("bottle_water") then
+	if item:HasTag("clean") or item:HasTag("fil_bucket") or item:HasTag("fil_bottle") or item:HasTag("fil_cup") then
 		return true
 	end
 end
 
 local function OnRefuseItem(inst, giver, item)
-	local i = item.prefab
-	if i == ("bucket_dirty") or i == ("cup_dirty") then -- or i == (bottle_dirty) then
+	if item:HasTag("dirty") then
 		giver.components.talker:Say("I can't put it in because the water is dirty.")
-	elseif i == ("bucket_salt") or i == ("cup_salt") then -- or i == (bottle_salt) then
+	elseif item:HasTag("salt") then
 		giver.components.talker:Say("I can't put it in because the water is salty.")
+	elseif inst._barrle_waterlevel == 0 then
+		giver.components.talker:Say("It's empty.")
 	else
 		giver.components.talker:Say("Can't get water with this.")
 	end
 end
 
 local function OnBackEmptyitem(inst, giver, item)
-	local i = item.prefab
-	if i == ("bucket") then
+	if item:HasTag("fil_bucket") then
 		giver.components.inventory:GiveItem(SpawnPrefab("bucket"))
-	elseif i == ("cup") then
+	elseif item:HasTag("fil_cup") then
 		giver.components.inventory:GiveItem(SpawnPrefab("cup"))
-	elseif i == ("messagebottleempty") then
+	else
 		giver.components.inventory:GiveItem(SpawnPrefab("messagebottleempty"))
 	end
 	if inst._barrle_waterlevel == 0 then
@@ -47,74 +45,61 @@ local function OnBackEmptyitem(inst, giver, item)
 end
 
 local function OnBackFullitem(inst, giver, item)
-	local i = item.prefab
-	if i == ("bucket_full") then
+	if item:HasTag("bucket") then
 		giver.components.inventory:GiveItem(SpawnPrefab("bucket_full"))
-	elseif i == ("cup_water") then
+	elseif item:HasTag("preparedrink_cup") then
 		giver.components.inventory:GiveItem(SpawnPrefab("cup_water"))
-	elseif i == ("bottle_water") then
+	else
 		giver.components.inventory:GiveItem(SpawnPrefab("bottle_water"))
 	end
 	giver.components.talker:Say("There's too much water...")
 end
 
-local function OnGetItemFromPlayer(inst, giver, item)
-	local sum = 0
-	local i = item.prefab
-	if inst._barrle_waterlevel >= 10 and i == ("bucket") then
-		sum = inst._barrle_waterlevel - 10
-		inst._barrle_waterlevel = sum
-		giver.components.inventory:GiveItem(SpawnPrefab("bucket_full"))
+local function WaterLevelChange(inst, giver, item)
+	if item:HasTag("fil_bucket") or item:HasTag("bucket") then
 		inst.SoundEmitter:PlaySound("dontstarve/creatures/pengull/splash")
-		inst.AnimState:OverrideSymbol("swap","barrle_meter_water", tostring(sum))
-	elseif inst._barrle_waterlevel >= 5 and i == ("messagebottleempty") then
-		sum = inst._barrle_waterlevel - 5
-		inst._barrle_waterlevel = sum
-		giver.components.inventory:GiveItem(SpawnPrefab("bottle_water"))
-		inst.SoundEmitter:PlaySound("dontstarve/creatures/pengull/splash")
-		inst.AnimState:OverrideSymbol("swap","barrle_meter_water", tostring(sum))
-	elseif inst._barrle_waterlevel >= 1 and i == ("cup") then
-		sum = inst._barrle_waterlevel - 1
-		inst._barrle_waterlevel = sum
-		giver.components.inventory:GiveItem(SpawnPrefab("cup_water"))
+	elseif item:HasTag("fil_bottle") or item:HasTag("preparedrink_bottle") then
+		inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/medium")
+	else
 		inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/small")
-		inst.AnimState:OverrideSymbol("swap","barrle_meter_water", tostring(sum))
-	elseif i == ("bucket_full") then
-		sum = inst._barrle_waterlevel + 10
-		inst._barrle_waterlevel = sum
-		if inst._barrle_waterlevel > inst._barrle_waterlevel_max then
-			sum = inst._barrle_waterlevel - 10
-			inst._barrle_waterlevel = sum
+	end
+	local sum = inst._barrle_waterlevel
+	inst.AnimState:OverrideSymbol("swap","barrle_meter_water", tostring(sum))
+end
+
+local function OnGetItemFromPlayer(inst, giver, item)
+	local sum = inst._barrle_waterlevel
+	if sum >= 10 and item:HasTag("fil_bucket") then
+		inst._barrle_waterlevel = sum - 10
+		giver.components.inventory:GiveItem(SpawnPrefab("bucket_full"))
+	elseif sum >= 5 and item:HasTag("fil_bottle") then
+		inst._barrle_waterlevel = sum - 5
+		giver.components.inventory:GiveItem(SpawnPrefab("bottle_water"))
+	elseif sum >= 1 and item:HasTag("fil_cup") then
+		inst._barrle_waterlevel = sum - 1
+		giver.components.inventory:GiveItem(SpawnPrefab("cup_water"))
+	elseif item:HasTag("bucket") then
+		if sum + 10 > inst._barrle_waterlevel_max then
 			OnBackFullitem(inst, giver, item)
 		else
+			inst._barrle_waterlevel = sum + 10
 			giver.components.inventory:GiveItem(SpawnPrefab("bucket"))
-			inst.SoundEmitter:PlaySound("dontstarve/creatures/pengull/splash")
-			inst.AnimState:OverrideSymbol("swap","barrle_meter_water", tostring(sum))
 		end
-	elseif item.prefab == ("bottle_water") then
-		sum = inst._barrle_waterlevel + 5
-		inst._barrle_waterlevel = sum
-		if inst._barrle_waterlevel > inst._barrle_waterlevel_max then
-			sum = inst._barrle_waterlevel - 5
-			inst._barrle_waterlevel = sum
+	elseif item:HasTag("preparedrink_bottle") then
+		if sum + 5 > inst._barrle_waterlevel_max then
 			OnBackFullitem(inst, giver, item)
 		else
+			inst._barrle_waterlevel = sum + 5
 			giver.components.inventory:GiveItem(SpawnPrefab("messagebottleempty"))
-			inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/small")
-			inst.AnimState:OverrideSymbol("swap","barrle_meter_water", tostring(sum))
 		end
-	elseif i == ("cup_water") then
-		sum = inst._barrle_waterlevel + 1
-		inst._barrle_waterlevel = sum
-		if inst._barrle_waterlevel > inst._barrle_waterlevel_max then
-			sum = inst._barrle_waterlevel - 1
-			inst._barrle_waterlevel = sum
+	elseif item:HasTag("preparedrink_cup") then
+		if sum + 1 > inst._barrle_waterlevel_max then
 			OnBackFullitem(inst, giver, item)
 		else
+			inst._barrle_waterlevel = sum + 1
 			giver.components.inventory:GiveItem(SpawnPrefab("cup"))
-			inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/small")
-			inst.AnimState:OverrideSymbol("swap","barrle_meter_water", tostring(sum))
 		end
+		WaterLevelChange(inst, giver, item)
 	else
 		OnBackEmptyitem(inst, giver, item)
 	end

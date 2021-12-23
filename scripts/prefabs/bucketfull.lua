@@ -71,8 +71,6 @@ local function MakeBucket(data)
 		inst:AddTag("bucket")
 		inst:AddTag("watercan")
 
-		inst:AddTag("frozen")
-
 		inst:AddComponent("tradable")
 		inst:AddComponent("temperature")
 

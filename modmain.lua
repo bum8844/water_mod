@@ -33,8 +33,6 @@ Assets = {
     Asset("IMAGE", "images/tea_inventoryitem.tex"),-- А в переменной IMAGE - .tex
 	Asset("ATLAS", "images/tea_minimap.xml"),
     Asset("IMAGE", "images/tea_minimap.tex"),
-	Asset("ATLAS", "images/watertab.xml"),
-    Asset("IMAGE", "images/watertab.tex"),
 	Asset("SOUNDPACKAGE", "sound/fil_drink.fev"),	
     Asset("SOUND", "sound/fil_drink.fsb"),
 	Asset("ANIM", "anim/swap_cup.zip" ),
@@ -43,15 +41,11 @@ Assets = {
 
 STRINGS.NAMES.DRINKS_TAB = "WATER"
 STRINGS.TABS.DRINKS_TAB = "Water"
-GLOBAL.RECIPETABS['DRINKS_TAB'] = {str = "DRINKS_TAB", sort=3, icon_atlas = "images/watertab.xml", icon = "watertab.tex"}
+GLOBAL.RECIPETABS['DRINKS_TAB'] = {str = "DRINKS_TAB", sort=3, icon_atlas = "images/tea_inventoryitem.xml", icon = "watertab.tex"}
 
 modimport("scripts/recipes.lua")
 modimport("scripts/strings.lua")
 modimport("scripts/watertuning.lua")
-modimport("scripts/prepareagedrink_cup.lua")
-modimport("scripts/preparedrink_cup.lua")
-modimport("scripts/prepareagedrink_bottle.lua")
-modimport("scripts/preparedrink_bottle.lua")
 modimport("scripts/prepareagedrink.lua")
 modimport("scripts/preparedrink.lua")
 
@@ -96,9 +90,6 @@ AddIngredientValues("moon_tree_blossom", {decoration=1, inedible=1})
 AddIngredientValues("firenettles", {decoration=1, inedible=1})
 AddIngredientValues("tillweeds", {decoration=1, inedible=1})]]--
 
-
-
-
 AddPrefabPostInit("fertilizer", function(inst)
     if not GLOBAL.TheWorld.ismastersim then
         return inst
@@ -109,6 +100,9 @@ AddPrefabPostInit("fertilizer", function(inst)
 end)
 
 local function bottleadd(inst)
+
+	inst.entity:AddSoundEmitter()
+	
 	local function OnFill(inst, from_object)
 		local filleditem
 		if from_object ~= nil then
@@ -121,7 +115,7 @@ local function bottleadd(inst)
 			filleditem = GLOBAL.SpawnPrefab("bottle_salt")
 		end
 		
-		--inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/small")
+		inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/medium")
 		
 		if filleditem == nil then
 			return false
@@ -145,6 +139,8 @@ local function bottleadd(inst)
 		
 		return true
 	end
+	inst:AddTag("fil_bottle")
+	
 	inst:AddComponent("tradable")
 
     inst:AddComponent("fillable")
