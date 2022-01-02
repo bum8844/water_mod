@@ -4,6 +4,14 @@ local wilson_thirst = 150
 local seg_time = 30
 local total_day_time = seg_time*16
 
+-- 물을 담을수 있는 최대치
+TUNING.CUP_MAX_LEVEL = 1
+TUNING.BOTTLE_MAX_LEVEL = 5
+TUNING.BUCKET_MAX_LEVEL = 10
+TUNING.BERRLE_MAX_LEVEL = 20
+TUNING.BREWERY_MAX_LEVEL = 20
+TUNING.DESALINATOR_MAX_LEVEL = 20
+
 -- 기초 목마름
 TUNING.WILSON_THIRST = wilson_thirst --수분량
 TUNING.WILSON_HUNGER_RATE = hydration_per_day/total_day_time

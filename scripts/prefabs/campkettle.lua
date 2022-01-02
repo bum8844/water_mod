@@ -120,6 +120,7 @@ local function fn()
     --inst.AnimState:SetRayTestOnBB(true)
 
     inst:AddTag("campfire")
+    inst.AddTag("campkettle")
     inst:AddTag("NPC_workable")
 
     --cooker (from cooker component) added to pristine state for optimization

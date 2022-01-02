@@ -6,6 +6,21 @@ local prefabs =
 	"messagebottleempty",
 }
 
+local function onsave(inst, data)
+    if inst.components.pickable.numtoharvest > 0 then
+        -- This isn't saved on the pickable component
+        data.numtoharvest = inst.components.pickable.numtoharvest
+    end
+end
+
+local function onload(inst, data)
+	if data ~= nil then
+		if data.numtoharvest ~= nil and data.numtoharvest > 0 then
+			inst.components.pickable.numtoharvest = data.numtoharvest
+			updatewellstate(inst)
+		end
+	end
+end
 
 local function MakePreparedCupDrink(data)
 	local drinkassets =
@@ -52,10 +67,11 @@ local function MakePreparedCupDrink(data)
 			inst:AddTag("dirty")
 		elseif _name == "salt" then
 			inst:AddTag("salt")
-		else
+		elseif _name == "water" then
 			inst:AddTag("clean")
 		end
 		
+		inst:AddTag(_name)
 		inst:AddTag("icebox_valid")
         inst:AddTag("preparedrink_cup")
 
@@ -96,6 +112,9 @@ local function MakePreparedCupDrink(data)
 
         inst:AddComponent("inspectable")
         inst.wet_prefix = data.wet_prefix
+		
+		inst:AddComponent("drinkvalue")
+		inst.components.drinkvalue:SetVelue(1)
 
 		inst:AddComponent("inventoryitem")
 		inst.replica.inventoryitem:SetImage("cup_".._name)
@@ -177,10 +196,11 @@ local function MakePreparedBottleDrink(data)
 			inst:AddTag("dirty")
 		elseif _name == "salt" then
 			inst:AddTag("salt")
-		else
+		elseif _name == "water" then
 			inst:AddTag("clean")
 		end
 		
+		inst:AddTag(_name)
 		inst:AddTag("icebox_valid")
         inst:AddTag("preparedrink_bottle")
         if data.tags ~= nil then
@@ -206,6 +226,8 @@ local function MakePreparedBottleDrink(data)
         end
 
 		inst.food_symbol_build = food_symbol_build or _overridebuild
+		inst._max_drink_level = 5
+		inst._drink_level = 5
 
         inst:AddComponent("edible")
         inst.components.edible.healthvalue = data.health
@@ -220,13 +242,15 @@ local function MakePreparedBottleDrink(data)
 
         inst:AddComponent("inspectable")
         inst.wet_prefix = data.wet_prefix
+		
+		inst:AddComponent("drinkvalue")
+		inst.components.drinkvalue:SetVelue(5)
 
 		inst:AddComponent("inventoryitem")
 		inst.replica.inventoryitem:SetImage("bottle_".._name)
 		inst.components.inventoryitem.atlasname = "images/tea_inventoryitem.xml"
 		inst.components.inventoryitem.imagename = "bottle_".._name
 		
-
 		if data.basename ~= nil then
             inst.components.inventoryitem:ChangeImageName(data.basename)
         end

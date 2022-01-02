@@ -73,6 +73,9 @@ local function MakeBucket(data)
 
 		inst:AddComponent("tradable")
 		inst:AddComponent("temperature")
+		
+		inst:AddComponent("drinkvalue")
+		inst.components.drinkvalue:SetVelue(10)
 
 		inst:AddComponent("inventoryitem")
 		inst.components.inventoryitem.atlasname = "images/tea_inventoryitem.xml"

@@ -82,6 +82,7 @@ local function fn()
     inst.entity:SetPristine()
 	
 	inst:AddTag("fil_cup")
+	inst:AddTag("emptiy")
 
     if not TheWorld.ismastersim then
         return inst

@@ -146,6 +146,7 @@ local function fn()
     inst.DynamicShadow:SetSize(2, 1)
 
     inst:AddTag("structure")
+	inst:AddTag("kettle")
 
     --stewer (from stewer component) added to pristine state for optimization
     --inst:AddTag("stewer")

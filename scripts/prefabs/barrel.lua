@@ -11,7 +11,7 @@ local prefabs =
 	"collapse_small",
 }
 
-local function ShouldAcceptItem(inst, item, giver)
+--[[local function ShouldAcceptItem(inst, item, giver)
 	if item:HasTag("clean") or item:HasTag("fil_bucket") or item:HasTag("fil_bottle") or item:HasTag("fil_cup") then
 		return true
 	end
@@ -55,18 +55,6 @@ local function OnBackFullitem(inst, giver, item)
 	giver.components.talker:Say("There's too much water...")
 end
 
-local function WaterLevelChange(inst, giver, item)
-	if item:HasTag("fil_bucket") or item:HasTag("bucket") then
-		inst.SoundEmitter:PlaySound("dontstarve/creatures/pengull/splash")
-	elseif item:HasTag("fil_bottle") or item:HasTag("preparedrink_bottle") then
-		inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/medium")
-	else
-		inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/small")
-	end
-	local sum = inst._barrle_waterlevel
-	inst.AnimState:OverrideSymbol("swap","barrle_meter_water", tostring(sum))
-end
-
 local function OnGetItemFromPlayer(inst, giver, item)
 	local sum = inst._barrle_waterlevel
 	if sum >= 10 and item:HasTag("fil_bucket") then
@@ -104,6 +92,19 @@ local function OnGetItemFromPlayer(inst, giver, item)
 		OnBackEmptyitem(inst, giver, item)
 	end
 end
+]]--
+
+local function WaterLevelChange(inst, giver, item)
+	if item:HasTag("fil_bucket") or item:HasTag("bucket") then
+		inst.SoundEmitter:PlaySound("dontstarve/creatures/pengull/splash")
+	elseif item:HasTag("fil_bottle") or item:HasTag("preparedrink_bottle") then
+		inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/medium")
+	else
+		inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/small")
+	end
+	local sum = inst._barrle_waterlevel
+	inst.AnimState:OverrideSymbol("swap","barrle_meter_water", tostring(sum))
+end
 
 local function onhammered(inst, worker)
 	inst.components.lootdropper:DropLoot()
@@ -128,21 +129,17 @@ local function onsave(inst, data)
     if inst:HasTag("burnt") or (inst.components.burnable ~= nil and inst.components.burnable:IsBurning()) then
         data.burnt = true
     end
-	data._barrle_waterlevel = inst._barrle_waterlevel
 end
 
 local function onload(inst, data)
     if data ~= nil and data.burnt then
         inst.components.burnable.onburnt(inst)
     end
-	if data._barrle_waterlevel ~= 0 then
-		inst._barrle_waterlevel = data._barrle_waterlevel
-	end
 end
 
 local function onloadpostpass(inst, newents, data)
-	if data._barrle_waterlevel ~= 0 then
-	local sum = data._barrle_waterlevel
+	if data.waterlevel ~= 0 then
+	local sum = data.waterlevel
 	inst.AnimState:OverrideSymbol("swap","barrle_meter_water", tostring(sum))
 	end
 end
@@ -175,8 +172,8 @@ local function fn()
         return inst
     end
 	
-	inst._barrle_waterlevel = 0
-	inst._barrle_waterlevel_max = 20
+	--inst._barrle_waterlevel = 0
+	--inst._barrle_waterlevel_max = 20
 	
 	inst:AddComponent("lootdropper")
     inst:AddComponent("inspectable")
@@ -194,10 +191,14 @@ local function fn()
 	MakeMediumBurnable(inst, nil, nil, true)
     MakeSmallPropagator(inst)
 	
-	inst:AddComponent("trader")
+	inst:AddComponent("waterlevel")
+	inst.components.waterlevel:SetLevel(0)
+	inst.components.waterlevel:SetMaxLevel(20)
+	inst.components.waterlevel:SetLevelCallback(WaterLevelChange)
+	--[[inst:AddComponent("trader")
 	inst.components.trader:SetAcceptTest(ShouldAcceptItem)
 	inst.components.trader.onaccept = OnGetItemFromPlayer
-	inst.components.trader.onrefuse = OnRefuseItem
+	inst.components.trader.onrefuse = OnRefuseItem]]--
 
     inst.OnSave = onsave
     inst.OnLoad = onload

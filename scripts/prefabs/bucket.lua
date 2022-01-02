@@ -83,6 +83,7 @@ local function fn()
     inst.entity:SetPristine()
 	
 	inst:AddTag("fil_bucket")
+	inst:AddTag("emptiy")
 
     if not TheWorld.ismastersim then
         return inst

@@ -95,7 +95,7 @@ end
 local function onhit(inst)
 	if not inst.AnimState:IsCurrentAnimation("watering") then
 		if inst.AnimState:IsCurrentAnimation("idle_watering") then
-			inst.AnimState:PlayAnimation("shack_watering")
+			inst.AnimState:PlayAnimation("hit_watering")
 			inst.AnimState:PushAnimation("idle_watering")
 		else
 			inst.AnimState:PlayAnimation("hit_empty")

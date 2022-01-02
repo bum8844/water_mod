@@ -140,6 +140,7 @@ local function bottleadd(inst)
 		return true
 	end
 	inst:AddTag("fil_bottle")
+	inst:AddTag("emptiy")
 	
 	inst:AddComponent("tradable")
 
