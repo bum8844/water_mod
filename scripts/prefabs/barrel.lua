@@ -2,8 +2,8 @@ require "prefabutil"
 
 local assets =
 {
-    Asset("ANIM", "anim/barrle.zip"),
-	Asset("ANIM", "anim/barrle_meter_water.zip"),
+    Asset("ANIM", "anim/barrel.zip"),
+	Asset("ANIM", "anim/barrel_meter_water.zip"),
 }
 
 local prefabs =
@@ -22,7 +22,7 @@ local function OnRefuseItem(inst, giver, item)
 		giver.components.talker:Say("I can't put it in because the water is dirty.")
 	elseif item:HasTag("salt") then
 		giver.components.talker:Say("I can't put it in because the water is salty.")
-	elseif inst._barrle_waterlevel == 0 then
+	elseif inst._barrel_waterlevel == 0 then
 		giver.components.talker:Say("It's empty.")
 	else
 		giver.components.talker:Say("Can't get water with this.")
@@ -37,7 +37,7 @@ local function OnBackEmptyitem(inst, giver, item)
 	else
 		giver.components.inventory:GiveItem(SpawnPrefab("messagebottleempty"))
 	end
-	if inst._barrle_waterlevel == 0 then
+	if inst._barrel_waterlevel == 0 then
 		giver.components.talker:Say("It's empty.")
 	else
 		giver.components.talker:Say("It's too little to get it!")
@@ -56,35 +56,35 @@ local function OnBackFullitem(inst, giver, item)
 end
 
 local function OnGetItemFromPlayer(inst, giver, item)
-	local sum = inst._barrle_waterlevel
+	local sum = inst._barrel_waterlevel
 	if sum >= 10 and item:HasTag("fil_bucket") then
-		inst._barrle_waterlevel = sum - 10
+		inst._barrel_waterlevel = sum - 10
 		giver.components.inventory:GiveItem(SpawnPrefab("bucket_full"))
 	elseif sum >= 5 and item:HasTag("fil_bottle") then
-		inst._barrle_waterlevel = sum - 5
+		inst._barrel_waterlevel = sum - 5
 		giver.components.inventory:GiveItem(SpawnPrefab("bottle_water"))
 	elseif sum >= 1 and item:HasTag("fil_cup") then
-		inst._barrle_waterlevel = sum - 1
+		inst._barrel_waterlevel = sum - 1
 		giver.components.inventory:GiveItem(SpawnPrefab("cup_water"))
 	elseif item:HasTag("bucket") then
-		if sum + 10 > inst._barrle_waterlevel_max then
+		if sum + 10 > inst._barrel_waterlevel_max then
 			OnBackFullitem(inst, giver, item)
 		else
-			inst._barrle_waterlevel = sum + 10
+			inst._barrel_waterlevel = sum + 10
 			giver.components.inventory:GiveItem(SpawnPrefab("bucket"))
 		end
 	elseif item:HasTag("preparedrink_bottle") then
-		if sum + 5 > inst._barrle_waterlevel_max then
+		if sum + 5 > inst._barrel_waterlevel_max then
 			OnBackFullitem(inst, giver, item)
 		else
-			inst._barrle_waterlevel = sum + 5
+			inst._barrel_waterlevel = sum + 5
 			giver.components.inventory:GiveItem(SpawnPrefab("messagebottleempty"))
 		end
 	elseif item:HasTag("preparedrink_cup") then
-		if sum + 1 > inst._barrle_waterlevel_max then
+		if sum + 1 > inst._barrel_waterlevel_max then
 			OnBackFullitem(inst, giver, item)
 		else
-			inst._barrle_waterlevel = sum + 1
+			inst._barrel_waterlevel = sum + 1
 			giver.components.inventory:GiveItem(SpawnPrefab("cup"))
 		end
 		WaterLevelChange(inst, giver, item)
@@ -102,8 +102,8 @@ local function WaterLevelChange(inst, giver, item)
 	else
 		inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/small")
 	end
-	local sum = inst._barrle_waterlevel
-	inst.AnimState:OverrideSymbol("swap","barrle_meter_water", tostring(sum))
+	local sum = inst._barrel_waterlevel
+	inst.AnimState:OverrideSymbol("swap","barrel_meter_water", tostring(sum))
 end
 
 local function onhammered(inst, worker)
@@ -140,7 +140,7 @@ end
 local function onloadpostpass(inst, newents, data)
 	if data.waterlevel ~= 0 then
 	local sum = data.waterlevel
-	inst.AnimState:OverrideSymbol("swap","barrle_meter_water", tostring(sum))
+	inst.AnimState:OverrideSymbol("swap","barrel_meter_water", tostring(sum))
 	end
 end
 
@@ -154,17 +154,17 @@ local function fn()
     inst.entity:AddNetwork()
 	
 	local minimap = inst.entity:AddMiniMapEntity()
-	minimap:SetIcon("barrle.tex")
+	minimap:SetIcon("barrel.tex")
 	
     MakeObstaclePhysics(inst, .1)
 	
-    inst.AnimState:SetBuild("barrle")
-    inst.AnimState:SetBank("barrle")
+    inst.AnimState:SetBuild("barrel")
+    inst.AnimState:SetBank("barrel")
     inst.AnimState:PlayAnimation("idle")
-	inst.AnimState:OverrideSymbol("swap","barrle_meter_water", "0")
+	inst.AnimState:OverrideSymbol("swap","barrel_meter_water", "0")
 	
 	inst:AddTag("structure")
-	inst:AddTag("barrle")
+	inst:AddTag("barrel")
 	
 	inst.entity:SetPristine()
 	
@@ -172,8 +172,8 @@ local function fn()
         return inst
     end
 	
-	--inst._barrle_waterlevel = 0
-	--inst._barrle_waterlevel_max = 20
+	--inst._barrel_waterlevel = 0
+	--inst._barrel_waterlevel_max = 20
 	
 	inst:AddComponent("lootdropper")
     inst:AddComponent("inspectable")
@@ -207,5 +207,5 @@ local function fn()
     return inst
 end
 
-return Prefab("barrle", fn, assets),
-MakePlacer("barrle_placer", "barrle", "barrle", "idle")
+return Prefab("barrel", fn, assets),
+MakePlacer("barrel_placer", "barrel", "barrel", "idle")
