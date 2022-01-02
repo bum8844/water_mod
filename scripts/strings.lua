@@ -37,9 +37,9 @@ STRINGS.RECIPE_DESC.DESALINATOR = "Remove salt from the sea water."
 STRINGS.CHARACTERS.GENERIC.DESCRIBE.DESALINATOR = "Now I can get clean water using seawater."
 
 -- barrel
-STRINGS.NAMES.barrel = "barrel"
-STRINGS.RECIPE_DESC.barrel = "A container for storing water."
-STRINGS.CHARACTERS.GENERIC.DESCRIBE.barrel = "I can contain my water here."
+STRINGS.NAMES.BARREL = "barrel"
+STRINGS.RECIPE_DESC.BARREL = "A container for storing water."
+STRINGS.CHARACTERS.GENERIC.DESCRIBE.BARREL = "I can contain my water here."
 
 -- brewery
 STRINGS.NAMES.BREWERY = "Brewery"
@@ -70,11 +70,11 @@ STRINGS.RECIPE_DESC.KETTLE = "The last thing of your past life."
 STRINGS.CHARACTERS.GENERIC.DESCRIBE.KETTLE = "Finally, I can make tea now!"
 
 -- portablekettle
-STRINGS.NAMES.portablekettle_ITEM	= "Portable Kettle"
-STRINGS.NAMES.portablekettle = "Portable Kettle"
-STRINGS.RECIPE_DESC.portablekettle_ITEM = "It's easy to carry around."
-STRINGS.CHARACTERS.GENERIC.DESCRIBE.portablekettle_ITEM = "I can take it inside my backpack!"
-STRINGS.CHARACTERS.GENERIC.DESCRIBE.portablekettle = "I can take it inside my backpack!"
+STRINGS.NAMES.PORTABLEKETTLE = "Portable Kettle"
+STRINGS.NAMES.PORTABLEKETTLE_ITEM = "Portable Kettle"
+STRINGS.RECIPE_DESC.PORTABLEKETTLE_ITEM = "It's easy to carry around."
+STRINGS.CHARACTERS.GENERIC.DESCRIBE.PORTABLEKETTLE_ITEM = "I can take it inside my backpack!"
+STRINGS.CHARACTERS.GENERIC.DESCRIBE.PORTABLEKETTLE = "I can take it inside my backpack!"
 
 -- tea_trees
 STRINGS.NAMES.TEA_TREE = "Tea Tree"
