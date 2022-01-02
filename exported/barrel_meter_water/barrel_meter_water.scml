@@ -63,7 +63,7 @@
     <folder id="20" name="20">
         <file id="0" name="20/20.png" width="54" height="234" pivot_x="0.5" pivot_y="0.5"/>
     </folder>
-    <entity id="0" name="barrle_meter_water">
+    <entity id="0" name="barrel_meter_water">
         <animation id="0" name="idle" length="34" interval="100">
             <mainline>
                 <key id="0">
@@ -72,7 +72,7 @@
             </mainline>
             <timeline id="0" name="0">
                 <key id="0" spin="0">
-                    <object folder="0" file="0"/>
+                    <object folder="0" file="0" angle="0"/>
                 </key>
             </timeline>
         </animation>

@@ -10,7 +10,7 @@
     <folder id="2" name="swap">
         <file id="0" name="swap/barrle_swap.png" width="54" height="234" pivot_x="0.5" pivot_y="0.5"/>
     </folder>
-    <entity id="0" name="barrle">
+    <entity id="0" name="barrel">
         <animation id="0" name="burnt" length="100" interval="100">
             <mainline>
                 <key id="0">

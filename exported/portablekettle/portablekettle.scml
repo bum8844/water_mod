@@ -26,7 +26,7 @@
     <folder id="4" name="swap">
         <file id="0" name="swap/portable_kettle_swap.png" width="34" height="124" pivot_x="0.5" pivot_y="0.5"/>
     </folder>
-    <entity id="0" name="portable_kettle">
+    <entity id="0" name="portablekettle">
         <animation id="0" name="burnt" length="34" interval="100">
             <mainline>
                 <key id="0">
@@ -1195,7 +1195,7 @@
             </timeline>
             <timeline id="9" name="portable_kettle_swap">
                 <key id="0" spin="-1">
-                    <object folder="4" file="0" y="285"/>
+                    <object folder="4" file="0" y="285" angle="0"/>
                 </key>
                 <key id="1" time="34">
                     <object folder="4" file="0" x="21.31052" y="352.42782" angle="351.918"/>
@@ -1210,16 +1210,16 @@
                     <object folder="4" file="0" x="13.48269" y="334.84029" angle="355.91518"/>
                 </key>
                 <key id="5" time="334" spin="0">
-                    <object folder="4" file="0" y="213" angle="0" scale_y="1"/>
+                    <object folder="4" file="0" y="213" angle="0"/>
                 </key>
-                <key id="6" time="367">
+                <key id="6" time="367" spin="0">
                     <object folder="4" file="0" x="3" y="174.39474" angle="0" scale_x="1.22449" scale_y="0.91581"/>
                 </key>
                 <key id="7" time="400" spin="0">
-                    <object folder="4" file="0" x="3" y="174.39474" scale_x="1.22449" scale_y="0.91581"/>
+                    <object folder="4" file="0" x="3" y="174.39474" angle="0" scale_x="1.22449" scale_y="0.91581"/>
                 </key>
                 <key id="8" time="600" spin="0">
-                    <object folder="4" file="0" y="192"/>
+                    <object folder="4" file="0" y="192" angle="0"/>
                 </key>
             </timeline>
         </animation>
@@ -1899,7 +1899,7 @@
             </timeline>
             <timeline id="8" name="portable_kettle_swap">
                 <key id="0" spin="0">
-                    <object folder="4" file="0" y="285"/>
+                    <object folder="4" file="0" y="285" angle="0"/>
                 </key>
             </timeline>
         </animation>
@@ -1992,7 +1992,7 @@
             </timeline>
             <timeline id="9" name="portable_kettle_swap">
                 <key id="0" spin="0">
-                    <object folder="4" file="0" y="285"/>
+                    <object folder="4" file="0" y="285" angle="0"/>
                 </key>
             </timeline>
         </animation>
@@ -2433,7 +2433,7 @@
             </timeline>
             <timeline id="9" name="portable_kettle_swap">
                 <key id="0" spin="-1">
-                    <object folder="4" file="0" y="285"/>
+                    <object folder="4" file="0" y="285" angle="0"/>
                 </key>
                 <key id="1" time="100">
                     <object folder="4" file="0" x="23.75883" y="318.41812" angle="349.327"/>
@@ -2880,7 +2880,7 @@
             </timeline>
             <timeline id="9" name="portable_kettle_swap">
                 <key id="0" spin="-1">
-                    <object folder="4" file="0" y="285"/>
+                    <object folder="4" file="0" y="285" angle="0"/>
                 </key>
                 <key id="1" time="100">
                     <object folder="4" file="0" x="23.75883" y="318.41812" angle="349.327"/>
@@ -3327,7 +3327,7 @@
             </timeline>
             <timeline id="9" name="portable_kettle_swap">
                 <key id="0" spin="-1">
-                    <object folder="4" file="0" y="285"/>
+                    <object folder="4" file="0" y="285" angle="0"/>
                 </key>
                 <key id="1" time="100">
                     <object folder="4" file="0" x="23.75883" y="318.41812" angle="349.327"/>
@@ -3434,7 +3434,7 @@
             </timeline>
             <timeline id="9" name="portable_kettle_swap">
                 <key id="0" spin="0">
-                    <object folder="4" file="0" y="285"/>
+                    <object folder="4" file="0" y="285" angle="0"/>
                 </key>
             </timeline>
         </animation>
@@ -3527,7 +3527,7 @@
             </timeline>
             <timeline id="9" name="portable_kettle_swap">
                 <key id="0" spin="0">
-                    <object folder="4" file="0" y="285"/>
+                    <object folder="4" file="0" y="285" angle="0"/>
                 </key>
             </timeline>
         </animation>
@@ -3584,7 +3584,7 @@
             </timeline>
             <timeline id="6" name="portable_kettle_swap">
                 <key id="0" spin="0">
-                    <object folder="4" file="0" y="192"/>
+                    <object folder="4" file="0" y="192" angle="0"/>
                 </key>
             </timeline>
         </animation>
@@ -4149,22 +4149,22 @@
             </timeline>
             <timeline id="9" name="portable_kettle_swap">
                 <key id="0" time="100" spin="0">
-                    <object folder="4" file="0" x="10.43159" y="137.51724" scale_x="0.42989" scale_y="0.42989"/>
+                    <object folder="4" file="0" x="10.43159" y="137.51724" angle="0" scale_x="0.42989" scale_y="0.42989"/>
                 </key>
                 <key id="1" time="200" spin="0">
-                    <object folder="4" file="0" y="285"/>
+                    <object folder="4" file="0" y="285" angle="0"/>
                 </key>
                 <key id="2" time="400" spin="0">
-                    <object folder="4" file="0" y="285"/>
+                    <object folder="4" file="0" y="285" angle="0"/>
                 </key>
                 <key id="3" time="467" spin="0">
-                    <object folder="4" file="0" y="258"/>
+                    <object folder="4" file="0" y="258" angle="0"/>
                 </key>
                 <key id="4" time="534" spin="0">
-                    <object folder="4" file="0" y="285"/>
+                    <object folder="4" file="0" y="285" angle="0"/>
                 </key>
                 <key id="5" time="600" spin="0">
-                    <object folder="4" file="0" y="285"/>
+                    <object folder="4" file="0" y="285" angle="0"/>
                 </key>
             </timeline>
         </animation>
