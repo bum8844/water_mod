@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<spriter_data scml_version="1.0" generator="BrashMonkey Spriter" generator_version="r11">
+    <folder id="0" name="bottle_banana">
+        <file id="0" name="bottle_banana/bottle_banana.png" width="128" height="128" pivot_x="0.5" pivot_y="0.109375"/>
+    </folder>
+    <folder id="1" name="bottle_berries">
+        <file id="0" name="bottle_berries/bottle_berries.png" width="128" height="128" pivot_x="0.5" pivot_y="0.109375"/>
+    </folder>
+    <folder id="2" name="bottle_beer">
+        <file id="0" name="bottle_beer/bottle_beer.png" width="128" height="128" pivot_x="0.5" pivot_y="0.078125"/>
+    </folder>
+    <folder id="3" name="bottle_blacktea">
+        <file id="0" name="bottle_blacktea/bottle_blacktea.png" width="128" height="128" pivot_x="0.5" pivot_y="0.119375"/>
+    </folder>
+    <folder id="4" name="bottle_pomegranate">
+        <file id="0" name="bottle_pomegranate/bottle_pomegranate.png" width="128" height="128" pivot_x="0.5" pivot_y="0.109375"/>
+    </folder>
+    <folder id="5" name="bottle_mulled">
+        <file id="0" name="bottle_mulled/bottle_mulled.png" width="128" height="128" pivot_x="0.5" pivot_y="0.109375"/>
+    </folder>
+    <folder id="6" name="bottle_mixflower">
+        <file id="0" name="bottle_mixflower/bottle_mixflower.png" width="128" height="128" pivot_x="0.5" pivot_y="0.109375"/>
+    </folder>
+    <folder id="7" name="bottle_lotusflower">
+        <file id="0" name="bottle_lotusflower/bottle_lotusflower.png" width="128" height="128" pivot_x="0.5" pivot_y="0.109375"/>
+    </folder>
+    <folder id="8" name="bottle_hibiscus">
+        <file id="0" name="bottle_hibiscus/bottle_hibiscus.png" width="128" height="128" pivot_x="0.5" pivot_y="0.109375"/>
+    </folder>
+    <folder id="9" name="bottle_glowberry">
+        <file id="0" name="bottle_glowberry/bottle_glowberry.png" width="128" height="128" pivot_x="0.5" pivot_y="0.109375"/>
+    </folder>
+    <folder id="10" name="bottle_fuer">
+        <file id="0" name="bottle_fuer/bottle_fuer.png" width="128" height="128" pivot_x="0.5" pivot_y="0.109375"/>
+    </folder>
+    <folder id="11" name="bottle_fruit">
+        <file id="0" name="bottle_fruit/bottle_fruit.png" width="128" height="128" pivot_x="0.5" pivot_y="0.109375"/>
+    </folder>
+    <folder id="12" name="bottle_fig">
+        <file id="0" name="bottle_fig/bottle_fig.png" width="128" height="128" pivot_x="0.5" pivot_y="0.109375"/>
+    </folder>
+    <folder id="13" name="bottle_dragonfruit">
+        <file id="0" name="bottle_dragonfruit/bottle_dragonfruit.png" width="128" height="128" pivot_x="0.5" pivot_y="0.109375"/>
+    </folder>
+    <folder id="14" name="bottle_coffee">
+        <file id="0" name="bottle_coffee/bottle_coffee.png" width="128" height="128" pivot_x="0.5" pivot_y="0.109375"/>
+    </folder>
+    <folder id="15" name="bottle_carrot">
+        <file id="0" name="bottle_carrot/bottle_carrot.png" width="128" height="128" pivot_x="0.5" pivot_y="0.109375"/>
+    </folder>
+    <folder id="16" name="bottle_cactusflower">
+        <file id="0" name="bottle_cactusflower/bottle_cactusflower.png" width="128" height="128" pivot_x="0.5" pivot_y="0.109375"/>
+    </folder>
+    <folder id="17" name="bottle_cactus">
+        <file id="0" name="bottle_cactus/bottle_cactus.png" width="128" height="128" pivot_x="0.5" pivot_y="0.109375"/>
+    </folder>
+    <folder id="18" name="bottle_fruitwine">
+        <file id="0" name="bottle_fruitwine/bottle_fruitwine.png" width="128" height="128" pivot_x="0.5" pivot_y="0.078125"/>
+    </folder>
+    <folder id="19" name="bottle_mead">
+        <file id="0" name="bottle_mead/bottle_mead.png" width="128" height="128" pivot_x="0.5" pivot_y="0.078125"/>
+    </folder>
+    <folder id="20" name="bottle_wine">
+        <file id="0" name="bottle_wine/bottle_wine.png" width="128" height="128" pivot_x="0.5" pivot_y="0.078125"/>
+    </folder>
+    <folder id="21" name="bottle_soda">
+        <file id="0" name="bottle_soda/bottle_soda.png" width="128" height="128" pivot_x="0.46875" pivot_y="0.125"/>
+    </folder>
+    <folder id="22" name="bottle_llsoda">
+        <file id="0" name="bottle_llsoda/bottle_llsoda.png" width="128" height="128" pivot_x="0.46875" pivot_y="0.125"/>
+    </folder>
+    <folder id="23" name="bottle_fruitsoda">
+        <file id="0" name="bottle_fruitsoda/bottle_fruitsoda.png" width="128" height="128" pivot_x="0.46875" pivot_y="0.125"/>
+    </folder>
+    <folder id="24" name="bottle_colaquantum">
+        <file id="0" name="bottle_colaquantum/bottle_colaquantum.png" width="128" height="128" pivot_x="0.46875" pivot_y="0.125"/>
+    </folder>
+    <folder id="25" name="bottle_cola">
+        <file id="0" name="bottle_cola/bottle_cola.png" width="128" height="128" pivot_x="0.46875" pivot_y="0.125"/>
+    </folder>
+    <folder id="26" name="bottle_greentea">
+        <file id="0" name="bottle_greentea/bottle_greentea.png" width="128" height="128" pivot_x="0.5" pivot_y="0.109375"/>
+    </folder>
+    <folder id="27" name="bottle_water">
+        <file id="0" name="bottle_water/bottle_water.png" width="128" height="128" pivot_x="0.5" pivot_y="0.109375"/>
+    </folder>
+    <folder id="28" name="bottle_salt">
+        <file id="0" name="bottle_salt/bottle_salt.png" width="128" height="128" pivot_x="0.5" pivot_y="0.109375"/>
+    </folder>
+    <folder id="29" name="bottle_drity">
+        <file id="0" name="bottle_drity/bottle_drity.png" width="128" height="128" pivot_x="0.5" pivot_y="0.109375"/>
+    </folder>
+    <folder id="30" name="bottle_strang">
+        <file id="0" name="bottle_strang/bottle_strang.png" width="128" height="128" pivot_x="0.5" pivot_y="0.109375"/>
+    </folder>
+    <folder id="31" name="bottle_garbage">
+        <file id="0" name="bottle_garbage/bottle_garbage.png" width="128" height="128" pivot_x="0.5" pivot_y="0.109375"/>
+    </folder>
+    <folder id="32" name="swap">
+        <file id="0" name="swap/swap.png" width="128" height="128" pivot_x="0.5" pivot_y="0"/>
+    </folder>
+    <folder id="33" name="bottle_blacktea_iced">
+        <file id="0" name="bottle_blacktea_iced/bottle_blacktea_iced.png" width="128" height="128" pivot_x="0.5" pivot_y="0.119375"/>
+    </folder>
+    <folder id="34" name="bottle_veggie">
+        <file id="0" name="bottle_veggie/bottle_veggie.png" width="128" height="128" pivot_x="0.5" pivot_y="0.109375"/>
+    </folder>
+    <folder id="35" name="bottle_sushibiscus">
+        <file id="0" name="bottle_sushibiscus/bottle_sushibiscus.png" width="128" height="128" pivot_x="0.5" pivot_y="0.109375"/>
+    </folder>
+    <folder id="36" name="bottle_pulque">
+        <file id="0" name="bottle_pulque/bottle_pulque.png" width="128" height="128" pivot_x="0.5" pivot_y="0.078125"/>
+    </folder>
+    <folder id="37" name="bottle_glowberrywine">
+        <file id="0" name="bottle_glowberrywine/bottle_glowwine.png" width="128" height="128" pivot_x="0.5" pivot_y="0.078125"/>
+    </folder>
+    <folder id="38" name="bottle_ginseng_liquor">
+        <file id="0" name="bottle_ginseng_liquor/bottle_ginseng_liquor.png" width="128" height="128" pivot_x="0.5" pivot_y="0.078125"/>
+    </folder>
+    <entity id="0" name="kettle_bottle_drink">
+        <animation id="0" name="idle" length="1000" interval="100">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="swap">
+                <key id="0" spin="0">
+                    <object folder="32" file="0" angle="0"/>
+                </key>
+            </timeline>
+        </animation>
+    </entity>
+</spriter_data>
