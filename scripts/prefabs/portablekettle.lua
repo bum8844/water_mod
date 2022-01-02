@@ -2,27 +2,27 @@ require "prefabutil"
 
 local assets =
 {
-    Asset("ANIM", "anim/portable_kettle.zip"),
-	Asset("ANIM", "anim/portable_kettle_meter_dirty.zip"),
-	Asset("ANIM", "anim/portable_kettle_meter_water.zip"),
+    Asset("ANIM", "anim/portablekettle.zip"),
+	Asset("ANIM", "anim/portablekettle_meter_dirty.zip"),
+	Asset("ANIM", "anim/portablekettle_meter_water.zip"),
     Asset("ANIM", "anim/ui_cookpot_1x4.zip"),
 }
 
 local assets_item =
 {
-    Asset("ANIM", "anim/portable_kettle.zip"),
+    Asset("ANIM", "anim/portablekettle.zip"),
 }
 
-local prefabs_portable_kettle =
+local prefabs_portablekettle =
 {
     "collapse_small",
     "ash",
-	"portable_kettle_item",
+	"portablekettle_item",
 }
 
 local prefabs_item =
 {
-    "portable_kettle",
+    "portablekettle",
 }
 
 local function ChangeToItem(inst)
@@ -33,7 +33,7 @@ local function ChangeToItem(inst)
         --inst.components.container:DropEverything()
     --end
 
-    local item = SpawnPrefab("portable_kettle_item")
+    local item = SpawnPrefab("portablekettle_item")
     item.Transform:SetPosition(inst.Transform:GetWorldPosition())
     item.AnimState:PlayAnimation("collapse")
     item.SoundEmitter:PlaySound("dontstarve/common/together/portable/cookpot/collapse")
@@ -135,7 +135,7 @@ local function fn()
     MakeObstaclePhysics(inst, inst.physicsradiusoverride)
 
 	local minimap = inst.entity:AddMiniMapEntity()
-	minimap:SetIcon("portable_kettle.tex")
+	minimap:SetIcon("portablekettle.tex")
 
     inst.Light:Enable(false)
     inst.Light:SetRadius(.6)
@@ -151,12 +151,12 @@ local function fn()
     --stewer (from stewer component) added to pristine state for optimization
     --inst:AddTag("stewer")
 
-    inst.AnimState:SetBank("portable_kettle")
-    inst.AnimState:SetBuild("portable_kettle")
+    inst.AnimState:SetBank("portablekettle")
+    inst.AnimState:SetBuild("portablekettle")
     inst.AnimState:PlayAnimation("idle_empty")
-	inst.AnimState:OverrideSymbol("swap", "portable_kettle_meter_dirty", "0")
+	inst.AnimState:OverrideSymbol("swap", "portablekettle_meter_dirty", "0")
 
-    inst:SetPrefabNameOverride("portable_kettle_item")
+    inst:SetPrefabNameOverride("portablekettle_item")
 
     inst.entity:SetPristine()
 
@@ -213,7 +213,7 @@ end
 ---------------------------------------------------------------
 
 local function ondeploy(inst, pt, deployer)
-    local pot = SpawnPrefab("portable_kettle")
+    local pot = SpawnPrefab("portablekettle")
     if pot ~= nil then
         pot.Physics:SetCollides(false)
         pot.Physics:Teleport(pt.x, 0, pt.z)
@@ -236,8 +236,8 @@ local function itemfn()
 
     MakeInventoryPhysics(inst)
 
-    inst.AnimState:SetBank("portable_kettle")
-    inst.AnimState:SetBuild("portable_kettle")
+    inst.AnimState:SetBank("portablekettle")
+    inst.AnimState:SetBuild("portablekettle")
     inst.AnimState:PlayAnimation("idle_ground")
 
     inst:AddTag("portableitem")
@@ -253,9 +253,9 @@ local function itemfn()
     inst:AddComponent("inspectable")
 
     inst:AddComponent("inventoryitem")
-	inst.replica.inventoryitem:SetImage("portable_kettle_item")
+	inst.replica.inventoryitem:SetImage("portablekettle_item")
 	inst.components.inventoryitem.atlasname= "images/tea_inventoryitem.xml"
-    inst.components.inventoryitem.imagename= "portable_kettle_item"
+    inst.components.inventoryitem.imagename= "portablekettle_item"
 
     inst:AddComponent("deployable")
     inst.components.deployable.ondeploy = ondeploy
@@ -271,6 +271,6 @@ local function itemfn()
     return inst
 end
 
-return Prefab("portable_kettle", fn, assets, prefabs),
-    MakePlacer("portable_kettle_item_placer", "portable_kettle", "portable_kettle", "idle_empty"),
-    Prefab("portable_kettle_item", itemfn, assets_item, prefabs_item)
+return Prefab("portablekettle", fn, assets, prefabs),
+    MakePlacer("portablekettle_item_placer", "portablekettle", "portablekettle", "idle_empty"),
+    Prefab("portablekettle_item", itemfn, assets_item, prefabs_item)

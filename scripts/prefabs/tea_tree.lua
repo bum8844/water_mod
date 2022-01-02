@@ -38,8 +38,6 @@ local function play_grow(inst, stage)
 end
 
 local function set_stage1(inst)
-    inst.components.pickable:ChangeProduct(nil)
-
     inst.components.pickable.canbepicked = false
 
     play_idle(inst, 1)
@@ -50,11 +48,7 @@ local function grow_to_stage1(inst)
 end
 
 local function set_stage2(inst)
-    inst.components.pickable:ChangeProduct("tealeaves")
-	
-	inst.components.pickable.canbepicked = true
-
-    inst.components.pickable:Regen()
+    inst.components.pickable.canbepicked = false
 
     play_idle(inst, 2)
 end
@@ -64,8 +58,6 @@ local function grow_to_stage2(inst)
 end
 
 local function set_stage3(inst)
-    inst.components.pickable:ChangeProduct("petals")
-
     inst.components.pickable:Regen()
 
     play_idle(inst, 3)
@@ -76,8 +68,6 @@ local function grow_to_stage3(inst)
 end
 
 local function set_stage4(inst)
-    inst.components.pickable:ChangeProduct("tea_seed")
-
 	inst.components.pickable:Regen()
 
     play_idle(inst, 4)
@@ -124,6 +114,17 @@ local function onregenfn(inst)
     -- If we got here via debug and we're not at pickable yet, just skip us ahead to the first pickable stage.
     if inst.components.growable.stage < 3 then
         inst.components.growable:SetStage(3)
+    end
+end
+
+local function SetupLoot(inst)
+    if inst.components.growable ~= nil then
+        if inst.components.growable.stage == 3 then
+            inst.components.lootdropper:SetLoot({"tealeaves", "tealeaves"})
+        elseif inst.compoenents.growable.stage == 4 then
+            inst.components.lootdropper:SetLoot({"tealeaves"})
+            inst.components.lootdropper:AddChanceLoot("tea_seed", 0.05)
+        end
     end
 end
 
@@ -302,7 +303,8 @@ local function tea_tree()
 
     -- We will have 3 rock fruit, but we only have real product for one stage, and it's not our initial stage.
     -- We use ChangeProduct to set this up elsewhere.
-    inst.components.pickable.numtoharvest = 3
+    --inst.components.pickable.numtoharvest = 3
+    inst.components.pickable.use_lootdropper_for_product = true
     inst.components.pickable.onpickedfn = onpickedfn
     inst.components.pickable.makeemptyfn = makeemptyfn
     inst.components.pickable.makebarrenfn = makebarrenfn

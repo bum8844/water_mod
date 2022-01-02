@@ -16,7 +16,7 @@ AddRecipe("cup",{Ingredient("flint",3)},RECIPETABS.DRINKS_TAB,TECH.NONE,nil,nil,
 
 AddRecipe("bucket",{Ingredient("log",4)},RECIPETABS.DRINKS_TAB,TECH.NONE,nil,nil,nil,nil,nil,"images/tea_inventoryitem.xml","bucket_empty.tex")
 
-AddRecipe("barrle",{Ingredient("boards",2),Ingredient("rope",3)},RECIPETABS.DRINKS_TAB,TECH.SCIENCE_ONE,"barrle_placer",nil,nil,nil,nil,"images/tea_inventoryitem.xml","barrle.tex")
+AddRecipe("barrel",{Ingredient("boards",2),Ingredient("rope",3)},RECIPETABS.DRINKS_TAB,TECH.SCIENCE_ONE,"barrel_placer",nil,nil,nil,nil,"images/tea_inventoryitem.xml","barrel.tex")
 
 AddRecipe("brewery",{Ingredient("boards",3),Ingredient("rope",3),Ingredient("cutstone",12),Ingredient("goldnugget",4)},RECIPETABS.DRINKS_TAB,TECH.SCIENCE_TWO,"brewery_placer",nil,nil,nil,nil,"images/tea_inventoryitem.xml","brewery.tex")
 
@@ -24,7 +24,7 @@ AddRecipe("campkettle",{Ingredient("twigs",2),Ingredient("log",2),Ingredient("cu
 
 AddRecipe("kettle",{Ingredient("twigs",6),Ingredient("rope",2),Ingredient("charcoal",2)},RECIPETABS.DRINKS_TAB,TECH.SCIENCE_ONE,"kettle_placer",nil,nil,nil,nil,"images/tea_inventoryitem.xml","kettle.tex")
 
-AddRecipe("portable_kettle_item",{Ingredient("transistor",2),Ingredient("cutstone",4),Ingredient("charcoal",3)},RECIPETABS.DRINKS_TAB,TECH.SCIENCE_TWO,nil,nil,nil,nil,nil,"images/tea_inventoryitem.xml","portable_kettle_item.tex")
+AddRecipe("portablekettle_item",{Ingredient("transistor",2),Ingredient("cutstone",4),Ingredient("charcoal",3)},RECIPETABS.DRINKS_TAB,TECH.SCIENCE_TWO,nil,nil,nil,nil,nil,"images/tea_inventoryitem.xml","portablekettle_item.tex")
 
 AddRecipe("desalinator",{Ingredient("boards",12),Ingredient("rope",6),Ingredient("rocks",6),Ingredient("nitre",6),Ingredient("charcoal",6)},RECIPETABS.DRINKS_TAB,TECH.SCIENCE_TWO,"desalinator_placer",nil,nil,nil,nil,"images/tea_inventoryitem.xml","desalinator.tex")
 
