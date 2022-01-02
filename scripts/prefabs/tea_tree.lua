@@ -112,8 +112,8 @@ local growth_stages =
 
 local function onregenfn(inst)
     -- If we got here via debug and we're not at pickable yet, just skip us ahead to the first pickable stage.
-    if inst.components.growable.stage < 2 then
-        inst.components.growable:SetStage(2)
+    if inst.components.growable.stage < 3 then
+        inst.components.growable:SetStage(3)
     end
 end
 

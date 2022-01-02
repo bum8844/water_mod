@@ -10,8 +10,8 @@ TUNING.POHMEL = "That's disgusting, but I feel better now."
 TUNING.STAR_BAKS = "Not Starbaks, but it's okay"
 TUNING.TEA_YAWN = ""
 TUNING.RED_TEA_SPEEP = ""
-TUNING.BARRLE_ENERGY = "Energy - "
-TUNING.BARRLE_WATERLEVEL = "%. Water Level "]]--
+TUNING.barrel_ENERGY = "Energy - "
+TUNING.barrel_WATERLEVEL = "%. Water Level "]]--
 
 STRINGS.AW_DRINK = "Drink"
 
@@ -36,10 +36,10 @@ STRINGS.NAMES.DESALINATOR = "Desalinator"
 STRINGS.RECIPE_DESC.DESALINATOR = "Remove salt from the sea water."
 STRINGS.CHARACTERS.GENERIC.DESCRIBE.DESALINATOR = "Now I can get clean water using seawater."
 
--- barrle
-STRINGS.NAMES.BARRLE = "Barrle"
-STRINGS.RECIPE_DESC.BARRLE = "A container for storing water."
-STRINGS.CHARACTERS.GENERIC.DESCRIBE.BARRLE = "I can contain my water here."
+-- barrel
+STRINGS.NAMES.barrel = "barrel"
+STRINGS.RECIPE_DESC.barrel = "A container for storing water."
+STRINGS.CHARACTERS.GENERIC.DESCRIBE.barrel = "I can contain my water here."
 
 -- brewery
 STRINGS.NAMES.BREWERY = "Brewery"
@@ -69,12 +69,12 @@ STRINGS.NAMES.KETTLE	= "Kettle"
 STRINGS.RECIPE_DESC.KETTLE = "The last thing of your past life."
 STRINGS.CHARACTERS.GENERIC.DESCRIBE.KETTLE = "Finally, I can make tea now!"
 
--- portable_kettle
-STRINGS.NAMES.PORTABLE_KETTLE_ITEM	= "Portable Kettle"
-STRINGS.NAMES.PORTABLE_KETTLE = "Portable Kettle"
-STRINGS.RECIPE_DESC.PORTABLE_KETTLE_ITEM = "It's easy to carry around."
-STRINGS.CHARACTERS.GENERIC.DESCRIBE.PORTABLE_KETTLE_ITEM = "I can take it inside my backpack!"
-STRINGS.CHARACTERS.GENERIC.DESCRIBE.PORTABLE_KETTLE = "I can take it inside my backpack!"
+-- portablekettle
+STRINGS.NAMES.portablekettle_ITEM	= "Portable Kettle"
+STRINGS.NAMES.portablekettle = "Portable Kettle"
+STRINGS.RECIPE_DESC.portablekettle_ITEM = "It's easy to carry around."
+STRINGS.CHARACTERS.GENERIC.DESCRIBE.portablekettle_ITEM = "I can take it inside my backpack!"
+STRINGS.CHARACTERS.GENERIC.DESCRIBE.portablekettle = "I can take it inside my backpack!"
 
 -- tea_trees
 STRINGS.NAMES.TEA_TREE = "Tea Tree"
