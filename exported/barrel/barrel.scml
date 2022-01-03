@@ -3,12 +3,12 @@
     <folder id="0" name="shadows">
         <file id="0" name="shadows/shadows-0.png" width="275" height="96" pivot_x="0.5" pivot_y="0.5"/>
     </folder>
-    <folder id="1" name="barrle">
-        <file id="0" name="barrle/barrle-0.png" width="324" height="400" pivot_x="0.5" pivot_y="0.5"/>
-        <file id="1" name="barrle/barrle-1.png" width="324" height="400" pivot_x="0.5" pivot_y="0.5"/>
+    <folder id="1" name="barrel">
+        <file id="0" name="barrel/barrel-0.png" width="324" height="400" pivot_x="0.5" pivot_y="0.5"/>
+        <file id="1" name="barrel/barrel-1.png" width="324" height="400" pivot_x="0.5" pivot_y="0.5"/>
     </folder>
     <folder id="2" name="swap">
-        <file id="0" name="swap/barrle_swap.png" width="54" height="234" pivot_x="0.5" pivot_y="0.5"/>
+        <file id="0" name="swap/barrel_swap.png" width="54" height="234" pivot_x="0.5" pivot_y="0.5"/>
     </folder>
     <entity id="0" name="barrel">
         <animation id="0" name="burnt" length="100" interval="100">
@@ -27,7 +27,7 @@
                     <object folder="0" file="0" x="-18.917245" y="-34.720121" angle="0" scale_x="1.115899" scale_y="1.103203"/>
                 </key>
             </timeline>
-            <timeline id="1" name="barrle">
+            <timeline id="1" name="barrel">
                 <key id="0" spin="0">
                     <object folder="1" file="1" x="-4.55294" y="120.36424" angle="0" scale_x="0.89484" scale_y="0.89484"/>
                 </key>
@@ -51,12 +51,12 @@
                     <object folder="0" file="0" x="-18.917112" y="-34.720148" angle="0" scale_x="1.115899" scale_y="1.103203"/>
                 </key>
             </timeline>
-            <timeline id="1" name="barrle">
+            <timeline id="1" name="barrel">
                 <key id="0" spin="0">
                     <object folder="1" file="0" x="-3.129393" y="-57.368169" pivot_x="0.50491" pivot_y="0.003452" angle="0" scale_x="0.89484" scale_y="0.89484"/>
                 </key>
             </timeline>
-            <timeline id="2" name="barrle_swap">
+            <timeline id="2" name="barrel_swap">
                 <key id="0" spin="0">
                     <object folder="2" file="0" x="71.25523" y="113.96954" angle="0" scale_y="0.74053"/>
                 </key>
@@ -114,7 +114,7 @@
                     <object folder="0" file="0" x="-18.917112" y="-34.720148" angle="0" scale_x="1.115899" scale_y="1.103203"/>
                 </key>
             </timeline>
-            <timeline id="1" name="barrle">
+            <timeline id="1" name="barrel">
                 <key id="0">
                     <object folder="1" file="0" x="-3.129393" y="-57.368169" pivot_x="0.50491" pivot_y="0.003452" angle="0" scale_x="0.89484" scale_y="0.89484"/>
                 </key>
@@ -134,7 +134,7 @@
                     <object folder="1" file="0" x="-3.129393" y="-57.368169" pivot_x="0.50491" pivot_y="0.003452" angle="3.988405" scale_x="0.89484" scale_y="0.89484"/>
                 </key>
             </timeline>
-            <timeline id="2" name="barrle_swap">
+            <timeline id="2" name="barrel_swap">
                 <key id="0">
                     <object folder="2" file="0" x="71.25523" y="113.96954" angle="0" scale_y="0.74053"/>
                 </key>
@@ -265,7 +265,7 @@
                     <object_ref id="2" timeline="2" key="22" z_index="2"/>
                 </key>
             </mainline>
-            <timeline id="0" name="barrle">
+            <timeline id="0" name="barrel">
                 <key id="0" time="50" spin="0">
                     <object folder="1" file="0" x="-4.370989" y="845.638" angle="0" scale_x="0.89484" scale_y="0.89484"/>
                 </key>
@@ -377,7 +377,7 @@
                     <object folder="0" file="0" x="-18.18984" y="-34.72015" angle="0" scale_x="1.115895" scale_y="1.103205"/>
                 </key>
             </timeline>
-            <timeline id="2" name="barrle_swap">
+            <timeline id="2" name="barrel_swap">
                 <key id="0" time="50" spin="0">
                     <object folder="2" file="0" x="71.057662" y="837.571364" angle="0" scale_y="0.74053"/>
                 </key>
