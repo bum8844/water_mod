@@ -1,0 +1,1597 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<spriter_data scml_version="1.0" generator="BrashMonkey Spriter" generator_version="r11">
+    <folder id="0" name="tea_tree_trunk">
+        <file id="0" name="tea_tree_trunk/tea_tree_trunk-0.png" width="112" height="192" pivot_x="0.48058" pivot_y="0.403385"/>
+        <file id="1" name="tea_tree_trunk/tea_tree_trunk-1.png" width="124" height="232" pivot_x="0.481696" pivot_y="0.345175"/>
+        <file id="2" name="tea_tree_trunk/tea_tree_trunk-3.png" width="148" height="296" pivot_x="0.560135" pivot_y="0.265411"/>
+        <file id="3" name="tea_tree_trunk/tea_tree_trunk-4.png" width="136" height="220" pivot_x="0.552539" pivot_y="0.373585"/>
+        <file id="4" name="tea_tree_trunk/tea_tree_trunk-2.png" width="96" height="92" pivot_x="0.507813" pivot_y="0.551902"/>
+    </folder>
+    <folder id="1" name="tea_tree_bush">
+        <file id="0" name="tea_tree_bush/tea_tree_bush-0.png" width="160" height="164" pivot_x="0.500156" pivot_y="0.5"/>
+        <file id="1" name="tea_tree_bush/tea_tree_bush-1.png" width="188" height="212" pivot_x="0.45625" pivot_y="0.493514"/>
+        <file id="2" name="tea_tree_bush/tea_tree_bush-2.png" width="236" height="228" pivot_x="0.526483" pivot_y="0.572259"/>
+        <file id="3" name="tea_tree_bush/tea_tree_bush-3.png" width="288" height="216" pivot_x="0.490625" pivot_y="0.590625"/>
+        <file id="4" name="tea_tree_bush/tea_tree_bush-4.png" width="52" height="84" pivot_x="0.575962" pivot_y="0.45119"/>
+        <file id="5" name="tea_tree_bush/tea_tree_bush-5.png" width="44" height="76" pivot_x="0.926136" pivot_y="0.998355"/>
+        <file id="6" name="tea_tree_bush/tea_tree_bush-9.png" width="200" height="180" pivot_x="0.532125" pivot_y="0.496111"/>
+        <file id="7" name="tea_tree_bush/tea_tree_bush-10.png" width="232" height="232" pivot_x="0.49375" pivot_y="0.591595"/>
+        <file id="8" name="tea_tree_bush/tea_tree_bush-11.png" width="220" height="196" pivot_x="0.550568" pivot_y="0.578189"/>
+        <file id="9" name="tea_tree_bush/tea_tree_bush-12.png" width="264" height="252" pivot_x="0.475568" pivot_y="0.587897"/>
+        <file id="10" name="tea_tree_bush/tea_tree_bush-13.png" width="56" height="80" pivot_x="0.659821" pivot_y="0.43875"/>
+        <file id="11" name="tea_tree_bush/tea_tree_bush-15.png" width="48" height="76" pivot_x="0.848438" pivot_y="0.885197"/>
+        <file id="12" name="tea_tree_bush/tea_tree_bush-6.png" width="72" height="88" pivot_x="0.405208" pivot_y="0.540909"/>
+        <file id="13" name="tea_tree_bush/tea_tree_bush-7.png" width="164" height="176" pivot_x="0.477439" pivot_y="0.43196"/>
+        <file id="14" name="tea_tree_bush/tea_tree_bush-8.png" width="116" height="148" pivot_x="0.577371" pivot_y="0.574493"/>
+        <file id="15" name="tea_tree_bush/tea_tree_bush-14.png" width="72" height="104" pivot_x="0.418403" pivot_y="0.546154"/>
+    </folder>
+    <folder id="2" name="tea_tree_leaves">
+        <file id="0" name="tea_tree_leaves/tea_tree_leaves-0.png" width="76" height="92" pivot_x="0.190461" pivot_y="-0.660326"/>
+        <file id="1" name="tea_tree_leaves/tea_tree_leaves-1.png" width="76" height="104" pivot_x="-0.282895" pivot_y="0.502163"/>
+        <file id="2" name="tea_tree_leaves/tea_tree_leaves-2.png" width="108" height="112" pivot_x="0.887963" pivot_y="0.483259"/>
+        <file id="3" name="tea_tree_leaves/tea_tree_leaves-3.png" width="192" height="208" pivot_x="0.496875" pivot_y="0.261779"/>
+        <file id="4" name="tea_tree_leaves/tea_tree_leaves-4.png" width="44" height="68" pivot_x="-0.00795455" pivot_y="-1.19191"/>
+        <file id="5" name="tea_tree_leaves/tea_tree_leaves-5.png" width="76" height="104" pivot_x="-0.282895" pivot_y="0.502163"/>
+        <file id="6" name="tea_tree_leaves/tea_tree_leaves-6.png" width="56" height="60" pivot_x="1.07054" pivot_y="0.107917"/>
+        <file id="7" name="tea_tree_leaves/tea_tree_leaves-7.png" width="36" height="44" pivot_x="-0.8625" pivot_y="-0.120455"/>
+        <file id="8" name="tea_tree_leaves/tea_tree_leaves-8.png" width="92" height="92" pivot_x="0.261413" pivot_y="-0.633152"/>
+        <file id="9" name="tea_tree_leaves/tea_tree_leaves-23.png" width="128" height="156" pivot_x="0.477734" pivot_y="0.0483975"/>
+        <file id="10" name="tea_tree_leaves/tea_tree_leaves-24.png" width="216" height="196" pivot_x="0.475926" pivot_y="0.237883"/>
+    </folder>
+    <folder id="3" name="tea_tree_ground">
+        <file id="0" name="tea_tree_ground/tea_tree_ground-0.png" width="176" height="48" pivot_x="0.484961" pivot_y="0.355469"/>
+        <file id="1" name="tea_tree_ground/tea_tree_ground-1.png" width="120" height="128" pivot_x="0.559583" pivot_y="0.455078"/>
+        <file id="2" name="tea_tree_ground/tea_tree_ground-2.png" width="296" height="56" pivot_x="0.501605" pivot_y="0.444643"/>
+        <file id="3" name="tea_tree_ground/tea_tree_ground-3.png" width="200" height="132" pivot_x="0.499875" pivot_y="0.499811"/>
+    </folder>
+    <entity id="0" name="tea_tree_build">
+        <animation id="0" name="burnt" length="34" interval="100">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="0" z_index="1"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="tea_tree_trunk-3">
+                <key id="0" spin="0">
+                    <object folder="0" file="2" x="3.4" y="60" angle="0"/>
+                </key>
+            </timeline>
+            <timeline id="1" name="tea_tree_ground-0">
+                <key id="0" spin="0">
+                    <object folder="3" file="0" x="2.2" y="-14.65" angle="0"/>
+                </key>
+            </timeline>
+        </animation>
+        <animation id="1" name="dropped" length="134" interval="100">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="2" key="0" z_index="0"/>
+                    <object_ref id="1" timeline="0" key="0" z_index="1"/>
+                    <object_ref id="2" timeline="1" key="0" z_index="2"/>
+                    <object_ref id="3" timeline="3" key="0" z_index="3"/>
+                    <object_ref id="4" timeline="4" key="0" z_index="4"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="tea_tree_trunk-2">
+                <key id="0" spin="0">
+                    <object folder="0" file="4" x="-25.45" y="28.85" angle="0"/>
+                </key>
+            </timeline>
+            <timeline id="1" name="tea_tree_ground-1">
+                <key id="0" spin="0">
+                    <object folder="3" file="1" x="-75" y="5.75" angle="0"/>
+                </key>
+            </timeline>
+            <timeline id="2" name="tea_tree_ground-2">
+                <key id="0" spin="0">
+                    <object folder="3" file="2" x="8.2" y="-31.85" angle="0"/>
+                </key>
+            </timeline>
+            <timeline id="3" name="tea_tree_bush-7">
+                <key id="0" spin="0">
+                    <object folder="1" file="13" x="23.15" y="31.1" angle="0"/>
+                </key>
+            </timeline>
+            <timeline id="4" name="tea_tree_bush-8">
+                <key id="0" spin="0">
+                    <object folder="1" file="14" x="111.05" y="57.85" angle="0"/>
+                </key>
+            </timeline>
+        </animation>
+        <animation id="2" name="idle1" length="34" interval="100">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="1" key="0" z_index="0"/>
+                    <object_ref id="1" timeline="0" key="0" z_index="1"/>
+                    <object_ref id="2" timeline="3" key="0" z_index="2"/>
+                    <object_ref id="3" timeline="2" key="0" z_index="3"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="tea_tree_ground-0_006">
+                <key id="0" spin="0">
+                    <object folder="3" file="0" x="2.2" y="-14.65" angle="0"/>
+                </key>
+            </timeline>
+            <timeline id="1" name="tea_tree_trunk-0_000">
+                <key id="0" spin="0">
+                    <object folder="0" file="0" x="3.4" y="60" angle="0"/>
+                </key>
+            </timeline>
+            <timeline id="2" name="tea_tree_bush-0_000">
+                <key id="0" spin="0">
+                    <object folder="1" file="0" x="-11.75" y="277.15" angle="0"/>
+                </key>
+            </timeline>
+            <timeline id="3" name="tea_tree_bush-1_000">
+                <key id="0" spin="0">
+                    <object folder="1" file="1" x="-11.15" y="179" angle="0"/>
+                </key>
+            </timeline>
+        </animation>
+        <animation id="3" name="dead1" length="34" interval="100">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="1" key="0" z_index="0"/>
+                    <object_ref id="1" timeline="0" key="0" z_index="1"/>
+                    <object_ref id="2" timeline="3" key="0" z_index="2"/>
+                    <object_ref id="3" timeline="2" key="0" z_index="3"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="tea_tree_ground-0">
+                <key id="0" spin="0">
+                    <object folder="3" file="0" x="2.2" y="-14.65" angle="0"/>
+                </key>
+            </timeline>
+            <timeline id="1" name="tea_tree_trunk-4">
+                <key id="0" spin="0">
+                    <object folder="0" file="3" x="3.4" y="50.2" angle="0" scale_y="0.87869"/>
+                </key>
+            </timeline>
+            <timeline id="2" name="tea_tree_bush-9">
+                <key id="0" spin="0">
+                    <object folder="1" file="6" x="-11.75" y="243.55" angle="0"/>
+                </key>
+            </timeline>
+            <timeline id="3" name="tea_tree_bush-10">
+                <key id="0" spin="0">
+                    <object folder="1" file="7" x="-11.15" y="154" angle="0"/>
+                </key>
+            </timeline>
+        </animation>
+        <animation id="4" name="dead1_to_idle1" length="700" interval="100">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="1" key="0" z_index="0"/>
+                    <object_ref id="1" timeline="0" key="0" z_index="1"/>
+                    <object_ref id="2" timeline="3" key="0" z_index="2"/>
+                    <object_ref id="3" timeline="2" key="0" z_index="3"/>
+                </key>
+                <key id="1" time="151">
+                    <object_ref id="0" timeline="1" key="1" z_index="0"/>
+                    <object_ref id="1" timeline="0" key="0" z_index="1"/>
+                    <object_ref id="2" timeline="3" key="1" z_index="2"/>
+                    <object_ref id="3" timeline="2" key="1" z_index="3"/>
+                </key>
+                <key id="2" time="250">
+                    <object_ref id="0" timeline="1" key="2" z_index="0"/>
+                    <object_ref id="1" timeline="0" key="0" z_index="1"/>
+                    <object_ref id="2" timeline="3" key="2" z_index="2"/>
+                    <object_ref id="3" timeline="2" key="2" z_index="3"/>
+                </key>
+                <key id="3" time="349">
+                    <object_ref id="0" timeline="1" key="3" z_index="0"/>
+                    <object_ref id="1" timeline="0" key="0" z_index="1"/>
+                    <object_ref id="2" timeline="3" key="3" z_index="2"/>
+                    <object_ref id="3" timeline="2" key="3" z_index="3"/>
+                </key>
+                <key id="4" time="449">
+                    <object_ref id="0" timeline="1" key="4" z_index="0"/>
+                    <object_ref id="1" timeline="0" key="1" z_index="1"/>
+                    <object_ref id="2" timeline="3" key="4" z_index="2"/>
+                    <object_ref id="3" timeline="2" key="4" z_index="3"/>
+                </key>
+                <key id="5" time="550">
+                    <object_ref id="0" timeline="1" key="5" z_index="0"/>
+                    <object_ref id="1" timeline="0" key="2" z_index="1"/>
+                    <object_ref id="2" timeline="3" key="5" z_index="2"/>
+                    <object_ref id="3" timeline="2" key="5" z_index="3"/>
+                </key>
+                <key id="6" time="700">
+                    <object_ref id="0" timeline="1" key="6" z_index="0"/>
+                    <object_ref id="1" timeline="0" key="2" z_index="1"/>
+                    <object_ref id="2" timeline="3" key="6" z_index="2"/>
+                    <object_ref id="3" timeline="2" key="6" z_index="3"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="tea_tree_ground-0">
+                <key id="0" spin="0">
+                    <object folder="3" file="0" x="2.2" y="-14.65" angle="0"/>
+                </key>
+                <key id="1" time="449" spin="0">
+                    <object folder="3" file="0" x="2.2" y="-14.65" angle="0"/>
+                </key>
+                <key id="2" time="550" spin="0">
+                    <object folder="3" file="0" x="2.2" y="-14.65" angle="0"/>
+                </key>
+            </timeline>
+            <timeline id="1" name="tea_tree_trunk-4">
+                <key id="0" spin="0">
+                    <object folder="0" file="3" x="3.4" y="50.2" angle="0" scale_y="0.87869"/>
+                </key>
+                <key id="1" time="151" spin="0">
+                    <object folder="0" file="3" x="3.4" y="50.2" angle="0" scale_y="0.87869"/>
+                </key>
+                <key id="2" time="250" spin="0">
+                    <object folder="0" file="3" x="3.4" y="50.2" angle="0" scale_y="0.87869"/>
+                </key>
+                <key id="3" time="349" spin="0">
+                    <object folder="0" file="3" x="3.4" y="50.2" angle="0" scale_y="0.87869"/>
+                </key>
+                <key id="4" time="449" spin="0">
+                    <object folder="0" file="0" x="1.211033" y="62.152627" angle="0" scale_x="0.855514" scale_y="0.969684"/>
+                </key>
+                <key id="5" time="550" spin="0">
+                    <object folder="0" file="0" x="3.4" y="50.2" angle="0" scale_y="0.87869"/>
+                </key>
+                <key id="6" time="700" spin="0">
+                    <object folder="0" file="0" x="3.4" y="50.2" angle="0" scale_y="0.87869"/>
+                </key>
+            </timeline>
+            <timeline id="2" name="tea_tree_bush-9">
+                <key id="0" spin="0">
+                    <object folder="1" file="6" x="-11.75" y="243.55" angle="0"/>
+                </key>
+                <key id="1" time="151" spin="0">
+                    <object folder="1" file="6" x="-11.75" y="227.55" angle="0" scale_y="0.901935"/>
+                </key>
+                <key id="2" time="250" spin="0">
+                    <object folder="1" file="6" x="-11.75" y="243.55" angle="0"/>
+                </key>
+                <key id="3" time="349" spin="0">
+                    <object folder="1" file="6" x="-11.75" y="211.55" angle="0" scale_y="0.901935"/>
+                </key>
+                <key id="4" time="449" spin="0">
+                    <object folder="1" file="0" x="-11.75" y="265.132707" angle="0" scale_x="0.855514" scale_y="1.035613"/>
+                </key>
+                <key id="5" time="550" spin="0">
+                    <object folder="1" file="0" x="-11.75" y="243.55" angle="0"/>
+                </key>
+                <key id="6" time="700" spin="0">
+                    <object folder="1" file="0" x="-11.75" y="243.55" angle="0"/>
+                </key>
+            </timeline>
+            <timeline id="3" name="tea_tree_bush-10">
+                <key id="0" spin="0">
+                    <object folder="1" file="7" x="-11.15" y="154" angle="0"/>
+                </key>
+                <key id="1" time="151" spin="0">
+                    <object folder="1" file="7" x="-11.15" y="147.781758" angle="0" scale_y="0.901935"/>
+                </key>
+                <key id="2" time="250" spin="0">
+                    <object folder="1" file="7" x="-11.15" y="154" angle="0"/>
+                </key>
+                <key id="3" time="349" spin="0">
+                    <object folder="1" file="7" x="-11.15" y="147.781758" angle="0" scale_y="0.901935"/>
+                </key>
+                <key id="4" time="449" spin="0">
+                    <object folder="1" file="1" x="-11.236692" y="172.393551" angle="0" scale_x="0.855514" scale_y="1.035613"/>
+                </key>
+                <key id="5" time="550" spin="0">
+                    <object folder="1" file="1" x="-11.15" y="154" angle="0"/>
+                </key>
+                <key id="6" time="700" spin="0">
+                    <object folder="1" file="1" x="-11.15" y="154" angle="0"/>
+                </key>
+            </timeline>
+        </animation>
+        <animation id="5" name="grow1" length="1034" interval="100">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="1" key="0" z_index="0"/>
+                    <object_ref id="1" timeline="0" key="0" z_index="1"/>
+                    <object_ref id="2" timeline="3" key="0" z_index="2"/>
+                    <object_ref id="3" timeline="2" key="0" z_index="3"/>
+                </key>
+                <key id="1" time="134">
+                    <object_ref id="0" timeline="1" key="1" z_index="0"/>
+                    <object_ref id="1" timeline="0" key="1" z_index="1"/>
+                    <object_ref id="2" timeline="3" key="1" z_index="2"/>
+                    <object_ref id="3" timeline="2" key="1" z_index="3"/>
+                </key>
+                <key id="2" time="343">
+                    <object_ref id="0" timeline="1" key="2" z_index="0"/>
+                    <object_ref id="1" timeline="0" key="2" z_index="1"/>
+                    <object_ref id="2" timeline="3" key="2" z_index="2"/>
+                    <object_ref id="3" timeline="2" key="2" z_index="3"/>
+                </key>
+                <key id="3" time="434">
+                    <object_ref id="0" timeline="1" key="3" z_index="0"/>
+                    <object_ref id="1" timeline="0" key="3" z_index="1"/>
+                    <object_ref id="2" timeline="3" key="3" z_index="2"/>
+                    <object_ref id="3" timeline="2" key="3" z_index="3"/>
+                </key>
+                <key id="4" time="634">
+                    <object_ref id="0" timeline="1" key="4" z_index="0"/>
+                    <object_ref id="1" timeline="0" key="4" z_index="1"/>
+                    <object_ref id="2" timeline="3" key="4" z_index="2"/>
+                    <object_ref id="3" timeline="2" key="4" z_index="3"/>
+                </key>
+                <key id="5" time="734">
+                    <object_ref id="0" timeline="1" key="5" z_index="0"/>
+                    <object_ref id="1" timeline="0" key="5" z_index="1"/>
+                    <object_ref id="2" timeline="3" key="5" z_index="2"/>
+                    <object_ref id="3" timeline="2" key="5" z_index="3"/>
+                    <object_ref id="4" timeline="4" key="0" z_index="4"/>
+                    <object_ref id="5" timeline="5" key="0" z_index="5"/>
+                </key>
+                <key id="6" time="834">
+                    <object_ref id="0" timeline="1" key="6" z_index="0"/>
+                    <object_ref id="1" timeline="0" key="6" z_index="1"/>
+                    <object_ref id="2" timeline="3" key="6" z_index="2"/>
+                    <object_ref id="3" timeline="2" key="6" z_index="3"/>
+                    <object_ref id="4" timeline="4" key="1" z_index="4"/>
+                    <object_ref id="5" timeline="5" key="1" z_index="5"/>
+                </key>
+                <key id="7" time="934">
+                    <object_ref id="0" timeline="1" key="7" z_index="0"/>
+                    <object_ref id="1" timeline="0" key="7" z_index="1"/>
+                    <object_ref id="2" timeline="3" key="7" z_index="2"/>
+                    <object_ref id="3" timeline="2" key="7" z_index="3"/>
+                    <object_ref id="4" timeline="4" key="2" z_index="4"/>
+                    <object_ref id="5" timeline="5" key="2" z_index="5"/>
+                </key>
+                <key id="8" time="984">
+                    <object_ref id="0" timeline="1" key="8" z_index="0"/>
+                    <object_ref id="1" timeline="0" key="8" z_index="1"/>
+                    <object_ref id="2" timeline="3" key="8" z_index="2"/>
+                    <object_ref id="3" timeline="2" key="8" z_index="3"/>
+                    <object_ref id="4" timeline="4" key="3" z_index="4"/>
+                    <object_ref id="5" timeline="5" key="3" z_index="5"/>
+                </key>
+                <key id="9" time="1034">
+                    <object_ref id="0" timeline="1" key="9" z_index="0"/>
+                    <object_ref id="1" timeline="0" key="9" z_index="1"/>
+                    <object_ref id="2" timeline="3" key="9" z_index="2"/>
+                    <object_ref id="3" timeline="2" key="9" z_index="3"/>
+                    <object_ref id="4" timeline="4" key="4" z_index="4"/>
+                    <object_ref id="5" timeline="5" key="4" z_index="5"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="tea_tree_ground-0_003">
+                <key id="0" spin="0">
+                    <object folder="3" file="0" x="2.2" y="-14.65" angle="0"/>
+                </key>
+                <key id="1" time="134" spin="0">
+                    <object folder="3" file="0" x="2.2" y="-14.65" angle="0"/>
+                </key>
+                <key id="2" time="343" spin="0">
+                    <object folder="3" file="0" x="2.2" y="-14.65" angle="0"/>
+                </key>
+                <key id="3" time="434" spin="0">
+                    <object folder="3" file="0" x="2.2" y="-14.65" angle="0"/>
+                </key>
+                <key id="4" time="634" spin="0">
+                    <object folder="3" file="0" x="2.2" y="-14.65" angle="0"/>
+                </key>
+                <key id="5" time="734" spin="0">
+                    <object folder="3" file="0" x="2.2" y="-14.65" angle="0"/>
+                </key>
+                <key id="6" time="834" spin="0">
+                    <object folder="3" file="0" x="2.2" y="-14.65" angle="0"/>
+                </key>
+                <key id="7" time="934" spin="0">
+                    <object folder="3" file="0" x="2.2" y="-14.65" angle="0"/>
+                </key>
+                <key id="8" time="984" spin="0">
+                    <object folder="3" file="0" x="2.2" y="-14.65" angle="0"/>
+                </key>
+                <key id="9" time="1034" spin="0">
+                    <object folder="3" file="0" x="2.2" y="-14.65" angle="0"/>
+                </key>
+            </timeline>
+            <timeline id="1" name="tea_tree_trunk-0">
+                <key id="0" spin="0">
+                    <object folder="0" file="0" x="3.4" y="60" angle="0"/>
+                </key>
+                <key id="1" time="134" spin="0">
+                    <object folder="0" file="0" x="3.4" y="50" angle="0" scale_x="1.111828" scale_y="0.79096"/>
+                </key>
+                <key id="2" time="343" spin="0">
+                    <object folder="0" file="0" x="3.4" y="60" angle="0"/>
+                </key>
+                <key id="3" time="434" spin="0">
+                    <object folder="0" file="0" x="5.052627" y="43.00828" angle="0" scale_x="1.235895" scale_y="0.649567"/>
+                </key>
+                <key id="4" time="634" spin="0">
+                    <object folder="0" file="0" x="3.4" y="60" angle="0"/>
+                </key>
+                <key id="5" time="734" spin="0">
+                    <object folder="0" file="1" x="3.4" y="73" angle="0" scale_y="1.173402"/>
+                </key>
+                <key id="6" time="834" spin="0">
+                    <object folder="0" file="1" x="3.4" y="60" angle="0"/>
+                </key>
+                <key id="7" time="934" spin="0">
+                    <object folder="0" file="1" x="3.427282" y="55.687029" angle="0" scale_x="1.090938" scale_y="0.829647"/>
+                </key>
+                <key id="8" time="984" spin="0">
+                    <object folder="0" file="1" x="3.4" y="60" angle="0"/>
+                </key>
+                <key id="9" time="1034" spin="0">
+                    <object folder="0" file="1" x="3.4" y="60" angle="0"/>
+                </key>
+            </timeline>
+            <timeline id="2" name="tea_tree_bush-0">
+                <key id="0" spin="0">
+                    <object folder="1" file="0" x="-11.75" y="277.15" angle="0"/>
+                </key>
+                <key id="1" time="134" spin="0">
+                    <object folder="1" file="0" x="-8.025749" y="207.669912" angle="0" scale_x="1.080091" scale_y="0.790736"/>
+                </key>
+                <key id="2" time="343" spin="0">
+                    <object folder="1" file="0" x="-11.75" y="277.15" angle="0"/>
+                </key>
+                <key id="3" time="434" spin="0">
+                    <object folder="1" file="0" x="-7.648101" y="172.493028" angle="0" scale_x="1.200616" scale_y="0.649384"/>
+                </key>
+                <key id="4" time="634" spin="0">
+                    <object folder="1" file="0" x="-11.75" y="277.15" angle="0"/>
+                </key>
+                <key id="5" time="734" spin="0">
+                    <object folder="1" file="2" x="5.298911" y="406.935" angle="0" scale_x="0.926397" scale_y="1.337058"/>
+                </key>
+                <key id="6" time="834" spin="0">
+                    <object folder="1" file="2" x="3.1" y="345.8" angle="0" scale_x="1.00004" scale_y="0.99845"/>
+                </key>
+                <key id="7" time="934" spin="0">
+                    <object folder="1" file="2" x="3.1" y="292.8" angle="0" scale_x="1.090982" scale_y="0.828361"/>
+                </key>
+                <key id="8" time="984" spin="0">
+                    <object folder="1" file="2" x="3.1" y="345.8" angle="0" scale_x="1.00004" scale_y="0.99845"/>
+                </key>
+                <key id="9" time="1034" spin="0">
+                    <object folder="1" file="2" x="3.1" y="345.8" angle="0" scale_x="1.00004" scale_y="0.99845"/>
+                </key>
+            </timeline>
+            <timeline id="3" name="tea_tree_bush-1">
+                <key id="0" spin="0">
+                    <object folder="1" file="1" x="-11.15" y="178" angle="0"/>
+                </key>
+                <key id="1" time="134" spin="0">
+                    <object folder="1" file="1" x="-11.410057" y="133.95744" angle="0" scale_x="1.080162" scale_y="0.790626"/>
+                </key>
+                <key id="2" time="343" spin="0">
+                    <object folder="1" file="1" x="-11.15" y="178" angle="0"/>
+                </key>
+                <key id="3" time="434" spin="0">
+                    <object folder="1" file="1" x="-11.410057" y="111.95744" angle="0" scale_x="1.200695" scale_y="0.649294"/>
+                </key>
+                <key id="4" time="634" spin="0">
+                    <object folder="1" file="1" x="-11.15" y="178" angle="0"/>
+                </key>
+                <key id="5" time="734" spin="0">
+                    <object folder="1" file="3" x="-11.195" y="271.770483" angle="0" scale_x="0.926697" scale_y="1.336142"/>
+                </key>
+                <key id="6" time="834" spin="0">
+                    <object folder="1" file="3" x="-11.2" y="244.65" angle="0" scale_x="1.0004" scale_y="0.99769"/>
+                </key>
+                <key id="7" time="934" spin="0">
+                    <object folder="1" file="3" x="-12.50042" y="208.881256" angle="0" scale_x="1.091375" scale_y="0.82773"/>
+                </key>
+                <key id="8" time="984" spin="0">
+                    <object folder="1" file="3" x="-11.2" y="244.65" angle="0" scale_x="1.0004" scale_y="0.99769"/>
+                </key>
+                <key id="9" time="1034" spin="0">
+                    <object folder="1" file="3" x="-11.2" y="244.65" angle="0" scale_x="1.0004" scale_y="0.99769"/>
+                </key>
+            </timeline>
+            <timeline id="4" name="tea_tree_bush-4_001">
+                <key id="0" time="734" spin="0">
+                    <object folder="1" file="4" x="4.85" y="411.071598" angle="0" scale_x="0.999" scale_y="1.207002"/>
+                </key>
+                <key id="1" time="834" spin="0">
+                    <object folder="1" file="4" x="4.85" y="342.35" angle="0" scale_x="0.999" scale_y="0.99645"/>
+                </key>
+                <key id="2" time="934" spin="0">
+                    <object folder="1" file="4" x="5.009142" y="289.93772" angle="0" scale_x="1.089847" scale_y="0.826701"/>
+                </key>
+                <key id="3" time="984" spin="0">
+                    <object folder="1" file="4" x="4.85" y="342.35" angle="0" scale_x="0.999" scale_y="0.99645"/>
+                </key>
+                <key id="4" time="1034" spin="0">
+                    <object folder="1" file="4" x="4.85" y="342.35" angle="0" scale_x="0.999" scale_y="0.99645"/>
+                </key>
+            </timeline>
+            <timeline id="5" name="tea_tree_leaves-23_000">
+                <key id="0" time="734" spin="0">
+                    <object folder="2" file="9" x="3.1" y="272.680302" angle="0" scale_y="1.211302"/>
+                </key>
+                <key id="1" time="834" spin="0">
+                    <object folder="2" file="9" x="3.1" y="228.1" angle="0"/>
+                </key>
+                <key id="2" time="934" spin="0">
+                    <object folder="2" file="9" x="3.1" y="195.150607" angle="0" scale_x="1.090938" scale_y="0.829647"/>
+                </key>
+                <key id="3" time="984" spin="0">
+                    <object folder="2" file="9" x="3.1" y="228.1" angle="0"/>
+                </key>
+                <key id="4" time="1034" spin="0">
+                    <object folder="2" file="9" x="3.1" y="228.1" angle="0"/>
+                </key>
+            </timeline>
+        </animation>
+        <animation id="6" name="idle2" length="34" interval="100">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="3" key="0" z_index="0"/>
+                    <object_ref id="1" timeline="4" key="0" z_index="1"/>
+                    <object_ref id="2" timeline="1" key="0" z_index="2"/>
+                    <object_ref id="3" timeline="0" key="0" z_index="3"/>
+                    <object_ref id="4" timeline="2" key="0" z_index="4"/>
+                    <object_ref id="5" timeline="5" key="0" z_index="5"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="tea_tree_bush-2_001">
+                <key id="0" spin="0">
+                    <object folder="1" file="2" x="8.75" y="345.7" angle="0"/>
+                </key>
+            </timeline>
+            <timeline id="1" name="tea_tree_bush-3_001">
+                <key id="0" spin="0">
+                    <object folder="1" file="3" x="-11.2" y="244.55" angle="0"/>
+                </key>
+            </timeline>
+            <timeline id="2" name="tea_tree_bush-4_002">
+                <key id="0" spin="0">
+                    <object folder="1" file="4" x="4.55" y="342.6" angle="0"/>
+                </key>
+            </timeline>
+            <timeline id="3" name="tea_tree_trunk-1_001">
+                <key id="0" spin="0">
+                    <object folder="0" file="1" x="3.4" y="60" angle="0"/>
+                </key>
+            </timeline>
+            <timeline id="4" name="tea_tree_ground-0_007">
+                <key id="0" spin="0">
+                    <object folder="3" file="0" x="2.2" y="-14.65" angle="0"/>
+                </key>
+            </timeline>
+            <timeline id="5" name="tea_tree_leaves-23_002">
+                <key id="0" spin="0">
+                    <object folder="2" file="9" x="3.1" y="228.1" angle="0"/>
+                </key>
+            </timeline>
+        </animation>
+        <animation id="7" name="picked2" length="567" interval="100">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="4" key="0" z_index="0"/>
+                    <object_ref id="1" timeline="0" key="0" z_index="1"/>
+                    <object_ref id="2" timeline="1" key="0" z_index="2"/>
+                    <object_ref id="3" timeline="2" key="0" z_index="3"/>
+                    <object_ref id="4" timeline="3" key="0" z_index="4"/>
+                </key>
+                <key id="1" time="167">
+                    <object_ref id="0" timeline="4" key="1" z_index="0"/>
+                    <object_ref id="1" timeline="0" key="1" z_index="1"/>
+                    <object_ref id="2" timeline="1" key="1" z_index="2"/>
+                    <object_ref id="3" timeline="2" key="1" z_index="3"/>
+                    <object_ref id="4" timeline="3" key="1" z_index="4"/>
+                </key>
+                <key id="2" time="267">
+                    <object_ref id="0" timeline="4" key="2" z_index="0"/>
+                    <object_ref id="1" timeline="0" key="2" z_index="1"/>
+                    <object_ref id="2" timeline="1" key="2" z_index="2"/>
+                    <object_ref id="3" timeline="2" key="2" z_index="3"/>
+                    <object_ref id="4" timeline="3" key="2" z_index="4"/>
+                </key>
+                <key id="3" time="367">
+                    <object_ref id="0" timeline="4" key="3" z_index="0"/>
+                    <object_ref id="1" timeline="0" key="3" z_index="1"/>
+                    <object_ref id="2" timeline="1" key="3" z_index="2"/>
+                    <object_ref id="3" timeline="2" key="3" z_index="3"/>
+                    <object_ref id="4" timeline="3" key="3" z_index="4"/>
+                </key>
+                <key id="4" time="467">
+                    <object_ref id="0" timeline="4" key="4" z_index="0"/>
+                    <object_ref id="1" timeline="0" key="4" z_index="1"/>
+                    <object_ref id="2" timeline="1" key="4" z_index="2"/>
+                    <object_ref id="3" timeline="2" key="4" z_index="3"/>
+                    <object_ref id="4" timeline="3" key="4" z_index="4"/>
+                </key>
+                <key id="5" time="567">
+                    <object_ref id="0" timeline="4" key="5" z_index="0"/>
+                    <object_ref id="1" timeline="0" key="5" z_index="1"/>
+                    <object_ref id="2" timeline="1" key="5" z_index="2"/>
+                    <object_ref id="3" timeline="2" key="5" z_index="3"/>
+                    <object_ref id="4" timeline="3" key="5" z_index="4"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="tea_tree_ground-0_002">
+                <key id="0" spin="0">
+                    <object folder="3" file="0" x="2.2" y="-14.65" angle="0"/>
+                </key>
+                <key id="1" time="167" spin="0">
+                    <object folder="3" file="0" x="2.2" y="-14.65" angle="0"/>
+                </key>
+                <key id="2" time="267" spin="0">
+                    <object folder="3" file="0" x="2.2" y="-14.65" angle="0"/>
+                </key>
+                <key id="3" time="367" spin="0">
+                    <object folder="3" file="0" x="2.2" y="-14.65" angle="0"/>
+                </key>
+                <key id="4" time="467" spin="0">
+                    <object folder="3" file="0" x="2.2" y="-14.65" angle="0"/>
+                </key>
+                <key id="5" time="567" spin="0">
+                    <object folder="3" file="0" x="2.2" y="-14.65" angle="0"/>
+                </key>
+            </timeline>
+            <timeline id="1" name="tea_tree_bush-3_004">
+                <key id="0" spin="0">
+                    <object folder="1" file="3" x="-11.2" y="244.55" angle="0"/>
+                </key>
+                <key id="1" time="167" spin="0">
+                    <object folder="1" file="3" x="-11.2" y="235.915497" angle="0" scale_y="1.115022"/>
+                </key>
+                <key id="2" time="267" spin="0">
+                    <object folder="1" file="3" x="-11.2" y="244.55" angle="0"/>
+                </key>
+                <key id="3" time="367" spin="0">
+                    <object folder="1" file="1" x="-11.15" y="179" angle="0"/>
+                </key>
+                <key id="4" time="467" spin="0">
+                    <object folder="1" file="1" x="-11.15" y="179" angle="0"/>
+                </key>
+                <key id="5" time="567" spin="0">
+                    <object folder="1" file="1" x="-11.15" y="179" angle="0"/>
+                </key>
+            </timeline>
+            <timeline id="2" name="tea_tree_bush-2_004">
+                <key id="0" spin="0">
+                    <object folder="1" file="2" x="8.75" y="345.7" angle="0"/>
+                </key>
+                <key id="1" time="167" spin="0">
+                    <object folder="1" file="2" x="8.75" y="348.7" angle="0" scale_y="1.115022"/>
+                </key>
+                <key id="2" time="267" spin="0">
+                    <object folder="1" file="2" x="8.75" y="345.7" angle="0"/>
+                </key>
+                <key id="3" time="367" spin="0">
+                    <object folder="1" file="0" x="-11.75" y="277.15" angle="0"/>
+                </key>
+                <key id="4" time="467" spin="0">
+                    <object folder="1" file="0" x="-11.75" y="277.15" angle="0"/>
+                </key>
+                <key id="5" time="567" spin="0">
+                    <object folder="1" file="0" x="-11.75" y="277.15" angle="0"/>
+                </key>
+            </timeline>
+            <timeline id="3" name="tea_tree_leaves-23">
+                <key id="0" spin="0">
+                    <object folder="2" file="9" x="3.1" y="228.1" angle="0"/>
+                </key>
+                <key id="1" time="167" spin="0">
+                    <object folder="2" file="9" x="3.1" y="217.573381" angle="0" scale_y="1.115022"/>
+                </key>
+                <key id="2" time="267" spin="0">
+                    <object folder="2" file="9" x="3.1" y="228.1" angle="0"/>
+                </key>
+                <key id="3" time="367" spin="0">
+                    <object folder="2" file="9" x="nan" y="nan" angle="0" scale_x="0" scale_y="0"/>
+                </key>
+                <key id="4" time="467" spin="0">
+                    <object folder="2" file="9" x="nan" y="nan" angle="0" scale_x="0" scale_y="0"/>
+                </key>
+                <key id="5" time="567" spin="0">
+                    <object folder="2" file="9" x="nan" y="nan" angle="0" scale_x="0" scale_y="0"/>
+                </key>
+            </timeline>
+            <timeline id="4" name="tea_tree_trunk-1_006">
+                <key id="0" spin="0">
+                    <object folder="0" file="1" x="3.4" y="60" angle="0"/>
+                </key>
+                <key id="1" time="167" spin="0">
+                    <object folder="0" file="1" x="3.4" y="68" angle="0" scale_y="1.115344"/>
+                </key>
+                <key id="2" time="267" spin="0">
+                    <object folder="0" file="1" x="3.4" y="60" angle="0"/>
+                </key>
+                <key id="3" time="367" spin="0">
+                    <object folder="0" file="0" x="3.4" y="60" angle="0"/>
+                </key>
+                <key id="4" time="467" spin="0">
+                    <object folder="0" file="0" x="3.4" y="60" angle="0"/>
+                </key>
+                <key id="5" time="567" spin="0">
+                    <object folder="0" file="0" x="3.4" y="60" angle="0"/>
+                </key>
+            </timeline>
+        </animation>
+        <animation id="8" name="grow2" length="834" interval="100">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="1" key="0" z_index="0"/>
+                    <object_ref id="1" timeline="0" key="0" z_index="1"/>
+                    <object_ref id="2" timeline="3" key="0" z_index="2"/>
+                    <object_ref id="3" timeline="2" key="0" z_index="3"/>
+                    <object_ref id="4" timeline="4" key="0" z_index="4"/>
+                    <object_ref id="5" timeline="6" key="0" z_index="5"/>
+                </key>
+                <key id="1" time="134">
+                    <object_ref id="0" timeline="1" key="1" z_index="0"/>
+                    <object_ref id="1" timeline="0" key="1" z_index="1"/>
+                    <object_ref id="2" timeline="3" key="1" z_index="2"/>
+                    <object_ref id="3" timeline="2" key="1" z_index="3"/>
+                    <object_ref id="4" timeline="4" key="1" z_index="4"/>
+                    <object_ref id="5" timeline="6" key="1" z_index="5"/>
+                </key>
+                <key id="2" time="234">
+                    <object_ref id="0" timeline="1" key="2" z_index="0"/>
+                    <object_ref id="1" timeline="0" key="2" z_index="1"/>
+                    <object_ref id="2" timeline="3" key="2" z_index="2"/>
+                    <object_ref id="3" timeline="2" key="2" z_index="3"/>
+                    <object_ref id="4" timeline="4" key="2" z_index="4"/>
+                    <object_ref id="5" timeline="6" key="2" z_index="5"/>
+                </key>
+                <key id="3" time="334">
+                    <object_ref id="0" timeline="1" key="3" z_index="0"/>
+                    <object_ref id="1" timeline="0" key="3" z_index="1"/>
+                    <object_ref id="2" timeline="3" key="3" z_index="2"/>
+                    <object_ref id="3" timeline="2" key="3" z_index="3"/>
+                    <object_ref id="4" timeline="4" key="3" z_index="4"/>
+                    <object_ref id="5" timeline="6" key="3" z_index="5"/>
+                </key>
+                <key id="4" time="434">
+                    <object_ref id="0" timeline="1" key="4" z_index="0"/>
+                    <object_ref id="1" timeline="0" key="4" z_index="1"/>
+                    <object_ref id="2" timeline="3" key="4" z_index="2"/>
+                    <object_ref id="3" timeline="2" key="4" z_index="3"/>
+                    <object_ref id="4" timeline="4" key="4" z_index="4"/>
+                    <object_ref id="5" timeline="6" key="4" z_index="5"/>
+                </key>
+                <key id="5" time="534">
+                    <object_ref id="0" timeline="1" key="5" z_index="0"/>
+                    <object_ref id="1" timeline="0" key="5" z_index="1"/>
+                    <object_ref id="2" timeline="3" key="5" z_index="2"/>
+                    <object_ref id="3" timeline="2" key="5" z_index="3"/>
+                    <object_ref id="4" timeline="4" key="5" z_index="4"/>
+                    <object_ref id="5" timeline="5" key="0" z_index="5"/>
+                    <object_ref id="6" timeline="6" key="5" z_index="6"/>
+                </key>
+                <key id="6" time="634">
+                    <object_ref id="0" timeline="1" key="6" z_index="0"/>
+                    <object_ref id="1" timeline="0" key="6" z_index="1"/>
+                    <object_ref id="2" timeline="3" key="6" z_index="2"/>
+                    <object_ref id="3" timeline="2" key="6" z_index="3"/>
+                    <object_ref id="4" timeline="4" key="6" z_index="4"/>
+                    <object_ref id="5" timeline="5" key="1" z_index="5"/>
+                    <object_ref id="6" timeline="6" key="6" z_index="6"/>
+                </key>
+                <key id="7" time="734">
+                    <object_ref id="0" timeline="1" key="7" z_index="0"/>
+                    <object_ref id="1" timeline="0" key="7" z_index="1"/>
+                    <object_ref id="2" timeline="3" key="7" z_index="2"/>
+                    <object_ref id="3" timeline="2" key="7" z_index="3"/>
+                    <object_ref id="4" timeline="4" key="7" z_index="4"/>
+                    <object_ref id="5" timeline="5" key="2" z_index="5"/>
+                    <object_ref id="6" timeline="6" key="7" z_index="6"/>
+                </key>
+                <key id="8" time="834">
+                    <object_ref id="0" timeline="1" key="8" z_index="0"/>
+                    <object_ref id="1" timeline="0" key="8" z_index="1"/>
+                    <object_ref id="2" timeline="3" key="8" z_index="2"/>
+                    <object_ref id="3" timeline="2" key="8" z_index="3"/>
+                    <object_ref id="4" timeline="4" key="8" z_index="4"/>
+                    <object_ref id="5" timeline="5" key="3" z_index="5"/>
+                    <object_ref id="6" timeline="6" key="8" z_index="6"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="tea_tree_ground-0_004">
+                <key id="0" spin="0">
+                    <object folder="3" file="0" x="2.2" y="-14.65" angle="0"/>
+                </key>
+                <key id="1" time="134" spin="0">
+                    <object folder="3" file="0" x="2.2" y="-14.65" angle="0"/>
+                </key>
+                <key id="2" time="234" spin="0">
+                    <object folder="3" file="0" x="2.2" y="-14.65" angle="0"/>
+                </key>
+                <key id="3" time="334" spin="0">
+                    <object folder="3" file="0" x="2.2" y="-14.65" angle="0"/>
+                </key>
+                <key id="4" time="434" spin="0">
+                    <object folder="3" file="0" x="2.2" y="-14.65" angle="0"/>
+                </key>
+                <key id="5" time="534" spin="0">
+                    <object folder="3" file="0" x="2.2" y="-14.65" angle="0"/>
+                </key>
+                <key id="6" time="634" spin="0">
+                    <object folder="3" file="0" x="2.2" y="-14.65" angle="0"/>
+                </key>
+                <key id="7" time="734" spin="0">
+                    <object folder="3" file="0" x="2.2" y="-14.65" angle="0"/>
+                </key>
+                <key id="8" time="834" spin="0">
+                    <object folder="3" file="0" x="2.2" y="-14.65" angle="0"/>
+                </key>
+            </timeline>
+            <timeline id="1" name="tea_tree_trunk-1">
+                <key id="0" spin="0">
+                    <object folder="0" file="1" x="3.4" y="60" angle="0"/>
+                </key>
+                <key id="1" time="134" spin="0">
+                    <object folder="0" file="1" x="2.782228" y="55.513199" angle="0" scale_y="0.91594"/>
+                </key>
+                <key id="2" time="234" spin="0">
+                    <object folder="0" file="1" x="3.4" y="60" angle="0"/>
+                </key>
+                <key id="3" time="334" spin="0">
+                    <object folder="0" file="1" x="2.782228" y="56.513199" angle="0" scale_y="0.91594"/>
+                </key>
+                <key id="4" time="434" spin="0">
+                    <object folder="0" file="1" x="3.4" y="60" angle="0"/>
+                </key>
+                <key id="5" time="534" spin="0">
+                    <object folder="0" file="1" x="2.782228" y="56.513199" angle="0" scale_y="0.91594"/>
+                </key>
+                <key id="6" time="634" spin="0">
+                    <object folder="0" file="1" x="3.4" y="67" angle="0" scale_y="1.075979"/>
+                </key>
+                <key id="7" time="734" spin="0">
+                    <object folder="0" file="1" x="3.4" y="60" angle="0"/>
+                </key>
+                <key id="8" time="834" spin="0">
+                    <object folder="0" file="1" x="3.4" y="60" angle="0"/>
+                </key>
+            </timeline>
+            <timeline id="2" name="tea_tree_bush-2">
+                <key id="0" spin="0">
+                    <object folder="1" file="2" x="8.65" y="345.85" angle="0"/>
+                </key>
+                <key id="1" time="134" spin="0">
+                    <object folder="1" file="2" x="8.371951" y="297.040486" angle="0" scale_x="1.012277" scale_y="0.825907"/>
+                </key>
+                <key id="2" time="234" spin="0">
+                    <object folder="1" file="2" x="8.65" y="345.85" angle="0"/>
+                </key>
+                <key id="3" time="334" spin="0">
+                    <object folder="1" file="2" x="8.371951" y="253.040486" angle="0" scale_x="1.165306" scale_y="0.754497"/>
+                </key>
+                <key id="4" time="434" spin="0">
+                    <object folder="1" file="2" x="8.65" y="345.85" angle="0"/>
+                </key>
+                <key id="5" time="534" spin="0">
+                    <object folder="1" file="2" x="8.371951" y="297.040486" angle="0" scale_x="1.125226" scale_y="0.713691"/>
+                </key>
+                <key id="6" time="634" spin="0">
+                    <object folder="1" file="2" x="10.75" y="387.7" angle="0" scale_x="1.280561" scale_y="1.16603"/>
+                </key>
+                <key id="7" time="734" spin="0">
+                    <object folder="1" file="2" x="10.75" y="344.7" angle="0"/>
+                </key>
+                <key id="8" time="834" spin="0">
+                    <object folder="1" file="2" x="10.75" y="344.7" angle="0"/>
+                </key>
+            </timeline>
+            <timeline id="3" name="tea_tree_bush-3">
+                <key id="0" spin="0">
+                    <object folder="1" file="3" x="-11.2" y="244.55" angle="0"/>
+                </key>
+                <key id="1" time="134" spin="0">
+                    <object folder="1" file="3" x="-12.315631" y="213.641434" angle="0" scale_x="1.012277" scale_y="0.825907"/>
+                </key>
+                <key id="2" time="234" spin="0">
+                    <object folder="1" file="3" x="-11.2" y="244.55" angle="0"/>
+                </key>
+                <key id="3" time="334" spin="0">
+                    <object folder="1" file="3" x="-15.443054" y="176.852363" angle="0" scale_x="1.165306" scale_y="0.754497"/>
+                </key>
+                <key id="4" time="434" spin="0">
+                    <object folder="1" file="3" x="-11.2" y="244.55" angle="0"/>
+                </key>
+                <key id="5" time="534" spin="0">
+                    <object folder="1" file="3" x="-14.623948" y="224.972895" angle="0" scale_x="1.125226" scale_y="0.713691"/>
+                </key>
+                <key id="6" time="634" spin="0">
+                    <object folder="1" file="3" x="-17.358319" y="270.922126" angle="0" scale_x="1.280561" scale_y="1.16603"/>
+                </key>
+                <key id="7" time="734" spin="0">
+                    <object folder="1" file="3" x="-11.2" y="244.55" angle="0"/>
+                </key>
+                <key id="8" time="834" spin="0">
+                    <object folder="1" file="3" x="-11.2" y="244.55" angle="0"/>
+                </key>
+            </timeline>
+            <timeline id="4" name="tea_tree_bush-4">
+                <key id="0" spin="0">
+                    <object folder="1" file="4" x="4.55" y="342.6" angle="0"/>
+                </key>
+                <key id="1" time="134" spin="0">
+                    <object folder="1" file="4" x="3.627724" y="294.621638" angle="0" scale_x="1.012277" scale_y="0.825907"/>
+                </key>
+                <key id="2" time="234" spin="0">
+                    <object folder="1" file="4" x="4.55" y="342.6" angle="0"/>
+                </key>
+                <key id="3" time="334" spin="0">
+                    <object folder="1" file="4" x="2.91052" y="250.830779" angle="0" scale_x="1.165306" scale_y="0.754497"/>
+                </key>
+                <key id="4" time="434" spin="0">
+                    <object folder="1" file="4" x="4.55" y="342.6" angle="0"/>
+                </key>
+                <key id="5" time="534" spin="0">
+                    <object folder="1" file="4" x="3.098364" y="294.950288" angle="0" scale_x="1.125226" scale_y="0.713691"/>
+                </key>
+                <key id="6" time="634" spin="0">
+                    <object folder="1" file="4" x="2.81052" y="385.251338" angle="0" scale_x="1.280561" scale_y="1.16603"/>
+                </key>
+                <key id="7" time="734" spin="0">
+                    <object folder="1" file="4" x="4.55" y="342.6" angle="0"/>
+                </key>
+                <key id="8" time="834" spin="0">
+                    <object folder="1" file="4" x="4.55" y="342.6" angle="0"/>
+                </key>
+            </timeline>
+            <timeline id="5" name="tea_tree_bush-5_000">
+                <key id="0" time="534" spin="0">
+                    <object folder="1" file="5" x="52.9" y="245.4" angle="0" scale_x="0.99848" scale_y="0.99702"/>
+                </key>
+                <key id="1" time="634" spin="0">
+                    <object folder="1" file="5" x="64.725656" y="271.913252" angle="0" scale_x="1.278615" scale_y="1.162555"/>
+                </key>
+                <key id="2" time="734" spin="0">
+                    <object folder="1" file="5" x="52.9" y="245.4" angle="0" scale_x="0.99848" scale_y="0.99702"/>
+                </key>
+                <key id="3" time="834" spin="0">
+                    <object folder="1" file="5" x="52.9" y="245.4" angle="0" scale_x="0.99848" scale_y="0.99702"/>
+                </key>
+            </timeline>
+            <timeline id="6" name="tea_tree_leaves-23_001">
+                <key id="0" spin="0">
+                    <object folder="2" file="9" x="3.1" y="228.1" angle="0"/>
+                </key>
+                <key id="1" time="134" spin="0">
+                    <object folder="2" file="9" x="2.159923" y="200.05526" angle="0" scale_x="1.012277" scale_y="0.825907"/>
+                </key>
+                <key id="2" time="234" spin="0">
+                    <object folder="2" file="9" x="3.1" y="228.1" angle="0"/>
+                </key>
+                <key id="3" time="334" spin="0">
+                    <object folder="2" file="9" x="1.220826" y="164.44089" angle="0" scale_x="1.165306" scale_y="0.754497"/>
+                </key>
+                <key id="4" time="434" spin="0">
+                    <object folder="2" file="9" x="3.1" y="228.1" angle="0"/>
+                </key>
+                <key id="5" time="534" spin="0">
+                    <object folder="2" file="3" x="1.466786" y="223.232679" angle="0" scale_x="0.745222" scale_y="0.537276"/>
+                </key>
+                <key id="6" time="634" spin="0">
+                    <object folder="2" file="3" x="0.953706" y="251.740938" angle="0" scale_x="1.280561" scale_y="1.16603"/>
+                </key>
+                <key id="7" time="734" spin="0">
+                    <object folder="2" file="3" x="3.1" y="228.1" angle="0"/>
+                </key>
+                <key id="8" time="834" spin="0">
+                    <object folder="2" file="3" x="3.1" y="228.1" angle="0"/>
+                </key>
+            </timeline>
+        </animation>
+        <animation id="9" name="idle3" length="34" interval="100">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="6" key="0" z_index="0"/>
+                    <object_ref id="1" timeline="0" key="0" z_index="1"/>
+                    <object_ref id="2" timeline="1" key="0" z_index="2"/>
+                    <object_ref id="3" timeline="2" key="0" z_index="3"/>
+                    <object_ref id="4" timeline="3" key="0" z_index="4"/>
+                    <object_ref id="5" timeline="4" key="0" z_index="5"/>
+                    <object_ref id="6" timeline="5" key="0" z_index="6"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="tea_tree_ground-0_008">
+                <key id="0" spin="0">
+                    <object folder="3" file="0" x="2.2" y="-14.65" angle="0"/>
+                </key>
+            </timeline>
+            <timeline id="1" name="tea_tree_bush-3_002">
+                <key id="0" spin="0">
+                    <object folder="1" file="3" x="-11.2" y="244.55" angle="0"/>
+                </key>
+            </timeline>
+            <timeline id="2" name="tea_tree_bush-2_002">
+                <key id="0" spin="0">
+                    <object folder="1" file="2" x="8.75" y="345.7" angle="0"/>
+                </key>
+            </timeline>
+            <timeline id="3" name="tea_tree_bush-4_003">
+                <key id="0" spin="0">
+                    <object folder="1" file="4" x="4.55" y="342.6" angle="0"/>
+                </key>
+            </timeline>
+            <timeline id="4" name="tea_tree_bush-5_001">
+                <key id="0" spin="0">
+                    <object folder="1" file="5" x="53.1" y="245.2" angle="0"/>
+                </key>
+            </timeline>
+            <timeline id="5" name="tea_tree_leaves-3_001">
+                <key id="0" spin="0">
+                    <object folder="2" file="3" x="3.1" y="228.1" angle="0"/>
+                </key>
+            </timeline>
+            <timeline id="6" name="tea_tree_trunk-1_003">
+                <key id="0" spin="0">
+                    <object folder="0" file="1" x="3.4" y="60" angle="0"/>
+                </key>
+            </timeline>
+        </animation>
+        <animation id="10" name="picked3" length="567" interval="100">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="0" z_index="1"/>
+                    <object_ref id="2" timeline="2" key="0" z_index="2"/>
+                    <object_ref id="3" timeline="3" key="0" z_index="3"/>
+                    <object_ref id="4" timeline="4" key="0" z_index="4"/>
+                </key>
+                <key id="1" time="167">
+                    <object_ref id="0" timeline="0" key="1" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="1" z_index="1"/>
+                    <object_ref id="2" timeline="2" key="1" z_index="2"/>
+                    <object_ref id="3" timeline="3" key="1" z_index="3"/>
+                    <object_ref id="4" timeline="4" key="1" z_index="4"/>
+                </key>
+                <key id="2" time="267">
+                    <object_ref id="0" timeline="0" key="2" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="2" z_index="1"/>
+                    <object_ref id="2" timeline="2" key="2" z_index="2"/>
+                    <object_ref id="3" timeline="3" key="2" z_index="3"/>
+                    <object_ref id="4" timeline="4" key="2" z_index="4"/>
+                </key>
+                <key id="3" time="367">
+                    <object_ref id="0" timeline="0" key="3" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="3" z_index="1"/>
+                    <object_ref id="2" timeline="2" key="3" z_index="2"/>
+                    <object_ref id="3" timeline="3" key="3" z_index="3"/>
+                    <object_ref id="4" timeline="4" key="3" z_index="4"/>
+                </key>
+                <key id="4" time="467">
+                    <object_ref id="0" timeline="0" key="4" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="4" z_index="1"/>
+                    <object_ref id="2" timeline="2" key="4" z_index="2"/>
+                    <object_ref id="3" timeline="3" key="4" z_index="3"/>
+                    <object_ref id="4" timeline="4" key="4" z_index="4"/>
+                </key>
+                <key id="5" time="567">
+                    <object_ref id="0" timeline="0" key="5" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="5" z_index="1"/>
+                    <object_ref id="2" timeline="2" key="5" z_index="2"/>
+                    <object_ref id="3" timeline="3" key="5" z_index="3"/>
+                    <object_ref id="4" timeline="4" key="5" z_index="4"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="tea_tree_trunk-1_004">
+                <key id="0" spin="0">
+                    <object folder="0" file="1" x="3.4" y="60" angle="0"/>
+                </key>
+                <key id="1" time="167" spin="0">
+                    <object folder="0" file="1" x="3.4" y="68" angle="0" scale_y="1.11534"/>
+                </key>
+                <key id="2" time="267" spin="0">
+                    <object folder="0" file="1" x="3.4" y="60" angle="0"/>
+                </key>
+                <key id="3" time="367" spin="0">
+                    <object folder="0" file="0" x="3.4" y="60" angle="0"/>
+                </key>
+                <key id="4" time="467" spin="0">
+                    <object folder="0" file="0" x="3.4" y="60" angle="0"/>
+                </key>
+                <key id="5" time="567" spin="0">
+                    <object folder="0" file="0" x="3.4" y="60" angle="0"/>
+                </key>
+            </timeline>
+            <timeline id="1" name="tea_tree_ground-0_001">
+                <key id="0" spin="0">
+                    <object folder="3" file="0" x="2.2" y="-14.65" angle="0"/>
+                </key>
+                <key id="1" time="167" spin="0">
+                    <object folder="3" file="0" x="2.2" y="-14.65" angle="0"/>
+                </key>
+                <key id="2" time="267" spin="0">
+                    <object folder="3" file="0" x="2.2" y="-14.65" angle="0"/>
+                </key>
+                <key id="3" time="367" spin="0">
+                    <object folder="3" file="0" x="2.2" y="-14.65" angle="0"/>
+                </key>
+                <key id="4" time="467" spin="0">
+                    <object folder="3" file="0" x="2.2" y="-14.65" angle="0"/>
+                </key>
+                <key id="5" time="567" spin="0">
+                    <object folder="3" file="0" x="2.2" y="-14.65" angle="0"/>
+                </key>
+            </timeline>
+            <timeline id="2" name="tea_tree_bush-3_005">
+                <key id="0" spin="0">
+                    <object folder="1" file="3" x="-11.2" y="244.55" angle="0"/>
+                </key>
+                <key id="1" time="167" spin="0">
+                    <object folder="1" file="3" x="-11.2" y="235.9155" angle="0" scale_y="1.11502"/>
+                </key>
+                <key id="2" time="267" spin="0">
+                    <object folder="1" file="3" x="-11.2" y="244.55" angle="0"/>
+                </key>
+                <key id="3" time="367" spin="0">
+                    <object folder="1" file="1" x="-11.15" y="179" angle="0"/>
+                </key>
+                <key id="4" time="467" spin="0">
+                    <object folder="1" file="1" x="-11.15" y="179" angle="0"/>
+                </key>
+                <key id="5" time="567" spin="0">
+                    <object folder="1" file="1" x="-11.15" y="179" angle="0"/>
+                </key>
+            </timeline>
+            <timeline id="3" name="tea_tree_bush-2_005">
+                <key id="0" spin="0">
+                    <object folder="1" file="2" x="8.75" y="345.7" angle="0"/>
+                </key>
+                <key id="1" time="167" spin="0">
+                    <object folder="1" file="2" x="8.75" y="348.7" angle="0" scale_y="1.11502"/>
+                </key>
+                <key id="2" time="267" spin="0">
+                    <object folder="1" file="2" x="8.75" y="345.7" angle="0"/>
+                </key>
+                <key id="3" time="367" spin="0">
+                    <object folder="1" file="0" x="-11.75" y="277.15" angle="0"/>
+                </key>
+                <key id="4" time="467" spin="0">
+                    <object folder="1" file="0" x="-11.75" y="277.15" angle="0"/>
+                </key>
+                <key id="5" time="567" spin="0">
+                    <object folder="1" file="0" x="-11.75" y="277.15" angle="0"/>
+                </key>
+            </timeline>
+            <timeline id="4" name="tea_tree_leaves-3">
+                <key id="0" spin="0">
+                    <object folder="2" file="3" x="3.1" y="228.1" angle="0"/>
+                </key>
+                <key id="1" time="167" spin="0">
+                    <object folder="2" file="3" x="3.1" y="217.57338" angle="0" scale_y="1.11502"/>
+                </key>
+                <key id="2" time="267" spin="0">
+                    <object folder="2" file="3" x="3.1" y="228.1" angle="0"/>
+                </key>
+                <key id="3" time="367" spin="0">
+                    <object folder="2" file="3" x="nan" y="nan" angle="0" scale_x="0" scale_y="0"/>
+                </key>
+                <key id="4" time="467" spin="0">
+                    <object folder="2" file="3" x="nan" y="nan" angle="0" scale_x="0" scale_y="0"/>
+                </key>
+                <key id="5" time="567" spin="0">
+                    <object folder="2" file="3" x="nan" y="nan" angle="0" scale_x="0" scale_y="0"/>
+                </key>
+            </timeline>
+        </animation>
+        <animation id="11" name="grow3" length="667" interval="100">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="1" key="0" z_index="0"/>
+                    <object_ref id="1" timeline="0" key="0" z_index="1"/>
+                    <object_ref id="2" timeline="2" key="0" z_index="2"/>
+                    <object_ref id="3" timeline="3" key="0" z_index="3"/>
+                    <object_ref id="4" timeline="5" key="0" z_index="4"/>
+                    <object_ref id="5" timeline="4" key="0" z_index="5"/>
+                    <object_ref id="6" timeline="6" key="0" z_index="6"/>
+                </key>
+                <key id="1" time="167">
+                    <object_ref id="0" timeline="1" key="1" z_index="0"/>
+                    <object_ref id="1" timeline="0" key="1" z_index="1"/>
+                    <object_ref id="2" timeline="2" key="1" z_index="2"/>
+                    <object_ref id="3" timeline="3" key="1" z_index="3"/>
+                    <object_ref id="4" timeline="5" key="1" z_index="4"/>
+                    <object_ref id="5" timeline="4" key="1" z_index="5"/>
+                    <object_ref id="6" timeline="6" key="1" z_index="6"/>
+                </key>
+                <key id="2" time="267">
+                    <object_ref id="0" timeline="1" key="2" z_index="0"/>
+                    <object_ref id="1" timeline="0" key="2" z_index="1"/>
+                    <object_ref id="2" timeline="2" key="2" z_index="2"/>
+                    <object_ref id="3" timeline="3" key="2" z_index="3"/>
+                    <object_ref id="4" timeline="5" key="2" z_index="4"/>
+                    <object_ref id="5" timeline="4" key="2" z_index="5"/>
+                    <object_ref id="6" timeline="6" key="2" z_index="6"/>
+                </key>
+                <key id="3" time="367">
+                    <object_ref id="0" timeline="1" key="3" z_index="0"/>
+                    <object_ref id="1" timeline="0" key="3" z_index="1"/>
+                    <object_ref id="2" timeline="2" key="3" z_index="2"/>
+                    <object_ref id="3" timeline="3" key="3" z_index="3"/>
+                    <object_ref id="4" timeline="5" key="3" z_index="4"/>
+                    <object_ref id="5" timeline="4" key="3" z_index="5"/>
+                    <object_ref id="6" timeline="6" key="3" z_index="6"/>
+                </key>
+                <key id="4" time="467">
+                    <object_ref id="0" timeline="1" key="4" z_index="0"/>
+                    <object_ref id="1" timeline="0" key="4" z_index="1"/>
+                    <object_ref id="2" timeline="2" key="4" z_index="2"/>
+                    <object_ref id="3" timeline="3" key="4" z_index="3"/>
+                    <object_ref id="4" timeline="5" key="4" z_index="4"/>
+                    <object_ref id="5" timeline="4" key="4" z_index="5"/>
+                    <object_ref id="6" timeline="6" key="4" z_index="6"/>
+                </key>
+                <key id="5" time="567">
+                    <object_ref id="0" timeline="1" key="5" z_index="0"/>
+                    <object_ref id="1" timeline="0" key="5" z_index="1"/>
+                    <object_ref id="2" timeline="2" key="5" z_index="2"/>
+                    <object_ref id="3" timeline="3" key="5" z_index="3"/>
+                    <object_ref id="4" timeline="5" key="5" z_index="4"/>
+                    <object_ref id="5" timeline="4" key="5" z_index="5"/>
+                    <object_ref id="6" timeline="6" key="5" z_index="6"/>
+                </key>
+                <key id="6" time="667">
+                    <object_ref id="0" timeline="1" key="6" z_index="0"/>
+                    <object_ref id="1" timeline="0" key="6" z_index="1"/>
+                    <object_ref id="2" timeline="2" key="6" z_index="2"/>
+                    <object_ref id="3" timeline="3" key="6" z_index="3"/>
+                    <object_ref id="4" timeline="5" key="6" z_index="4"/>
+                    <object_ref id="5" timeline="4" key="6" z_index="5"/>
+                    <object_ref id="6" timeline="6" key="6" z_index="6"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="tea_tree_ground-0_005">
+                <key id="0" spin="0">
+                    <object folder="3" file="0" x="2.2" y="-14.65" angle="0"/>
+                </key>
+                <key id="1" time="167" spin="0">
+                    <object folder="3" file="0" x="2.2" y="-14.65" angle="0"/>
+                </key>
+                <key id="2" time="267" spin="0">
+                    <object folder="3" file="0" x="2.2" y="-14.65" angle="0"/>
+                </key>
+                <key id="3" time="367" spin="0">
+                    <object folder="3" file="0" x="2.2" y="-14.65" angle="0"/>
+                </key>
+                <key id="4" time="467" spin="0">
+                    <object folder="3" file="0" x="2.2" y="-14.65" angle="0"/>
+                </key>
+                <key id="5" time="567" spin="0">
+                    <object folder="3" file="0" x="2.2" y="-14.65" angle="0"/>
+                </key>
+                <key id="6" time="667" spin="0">
+                    <object folder="3" file="0" x="2.2" y="-14.65" angle="0"/>
+                </key>
+            </timeline>
+            <timeline id="1" name="tea_tree_trunk-1_000">
+                <key id="0" spin="0">
+                    <object folder="0" file="1" x="3.4" y="60" angle="0"/>
+                </key>
+                <key id="1" time="167" spin="0">
+                    <object folder="0" file="1" x="3.4" y="60" angle="0"/>
+                </key>
+                <key id="2" time="267" spin="0">
+                    <object folder="0" file="1" x="3.4" y="60" angle="0"/>
+                </key>
+                <key id="3" time="367" spin="0">
+                    <object folder="0" file="1" x="3.4" y="60" angle="0"/>
+                </key>
+                <key id="4" time="467" spin="0">
+                    <object folder="0" file="1" x="3.4" y="60" angle="0"/>
+                </key>
+                <key id="5" time="567" spin="0">
+                    <object folder="0" file="1" x="3.4" y="60" angle="0"/>
+                </key>
+                <key id="6" time="667" spin="0">
+                    <object folder="0" file="1" x="3.4" y="60" angle="0"/>
+                </key>
+            </timeline>
+            <timeline id="2" name="tea_tree_bush-3_000">
+                <key id="0" spin="0">
+                    <object folder="1" file="3" x="-11.2" y="244.55" angle="0"/>
+                </key>
+                <key id="1" time="167" spin="0">
+                    <object folder="1" file="3" x="-14.385978" y="185.204824" angle="0" scale_x="1.159999" scale_y="0.716885"/>
+                </key>
+                <key id="2" time="267" spin="0">
+                    <object folder="1" file="3" x="-11.2" y="244.55" angle="0"/>
+                </key>
+                <key id="3" time="367" spin="0">
+                    <object folder="1" file="3" x="-8.797311" y="266.883125" angle="0" scale_x="0.879064" scale_y="1.125059"/>
+                </key>
+                <key id="4" time="467" spin="0">
+                    <object folder="1" file="3" x="-13.079286" y="208.722366" angle="0" scale_x="1.094913" scale_y="0.889819"/>
+                </key>
+                <key id="5" time="567" spin="0">
+                    <object folder="1" file="3" x="-11.2" y="244.55" angle="0"/>
+                </key>
+                <key id="6" time="667" spin="0">
+                    <object folder="1" file="3" x="-11.2" y="244.55" angle="0"/>
+                </key>
+            </timeline>
+            <timeline id="3" name="tea_tree_bush-2_000">
+                <key id="0" spin="0">
+                    <object folder="1" file="2" x="8.75" y="345.7" angle="0"/>
+                </key>
+                <key id="1" time="167" spin="0">
+                    <object folder="1" file="2" x="8.712444" y="257.762594" angle="0" scale_x="1.16002" scale_y="0.716526"/>
+                </key>
+                <key id="2" time="267" spin="0">
+                    <object folder="1" file="2" x="8.689955" y="345.800075" angle="0" scale_x="1.000028" scale_y="0.999199"/>
+                </key>
+                <key id="3" time="367" spin="0">
+                    <object folder="1" file="2" x="8.667466" y="380.837556" angle="0" scale_x="0.879098" scale_y="1.12382"/>
+                </key>
+                <key id="4" time="467" spin="0">
+                    <object folder="1" file="2" x="8.6" y="298.95" angle="0" scale_x="1.09499" scale_y="0.888039"/>
+                </key>
+                <key id="5" time="567" spin="0">
+                    <object folder="1" file="2" x="8.6" y="345.95" angle="0" scale_x="1.00007" scale_y="0.998"/>
+                </key>
+                <key id="6" time="667" spin="0">
+                    <object folder="1" file="2" x="8.6" y="345.95" angle="0" scale_x="1.00007" scale_y="0.998"/>
+                </key>
+            </timeline>
+            <timeline id="4" name="tea_tree_bush-4_000">
+                <key id="0" spin="0">
+                    <object folder="1" file="4" x="4.55" y="342.6" angle="0"/>
+                </key>
+                <key id="1" time="167" spin="0">
+                    <object folder="1" file="4" x="3.985664" y="255.495378" angle="0" scale_x="1.159625" scale_y="0.716054"/>
+                </key>
+                <key id="2" time="267" spin="0">
+                    <object folder="1" file="4" x="4.690105" y="342.6" angle="0" scale_x="0.999484" scale_y="0.998147"/>
+                </key>
+                <key id="3" time="367" spin="0">
+                    <object folder="1" file="4" x="5.217238" y="377.195116" angle="0" scale_x="0.87844" scale_y="1.122192"/>
+                </key>
+                <key id="4" time="467" spin="0">
+                    <object folder="1" file="4" x="4.54882" y="295.969107" angle="0" scale_x="1.093501" scale_y="0.885699"/>
+                </key>
+                <key id="5" time="567" spin="0">
+                    <object folder="1" file="4" x="4.9" y="342.6" angle="0" scale_x="0.99871" scale_y="0.99537"/>
+                </key>
+                <key id="6" time="667" spin="0">
+                    <object folder="1" file="4" x="4.9" y="342.6" angle="0" scale_x="0.99871" scale_y="0.99537"/>
+                </key>
+            </timeline>
+            <timeline id="5" name="tea_tree_bush-5">
+                <key id="0" spin="0">
+                    <object folder="1" file="5" x="53.1" y="245.2" angle="0"/>
+                </key>
+                <key id="1" time="167" spin="0">
+                    <object folder="1" file="5" x="58.067287" y="185.509258" angle="0" scale_x="1.159994" scale_y="0.717499"/>
+                </key>
+                <key id="2" time="267" spin="0">
+                    <object folder="1" file="5" x="50.157796" y="244.83973" angle="0" scale_x="0.999992" scale_y="1.001369"/>
+                </key>
+                <key id="3" time="367" spin="0">
+                    <object folder="1" file="5" x="44.171444" y="267.057282" angle="0" scale_x="0.879054" scale_y="1.127176"/>
+                </key>
+                <key id="4" time="467" spin="0">
+                    <object folder="1" file="5" x="49.276034" y="208.499911" angle="0" scale_x="1.094892" scale_y="0.892862"/>
+                </key>
+                <key id="5" time="567" spin="0">
+                    <object folder="1" file="5" x="45.75" y="244.3" angle="0" scale_x="0.99998" scale_y="1.00342"/>
+                </key>
+                <key id="6" time="667" spin="0">
+                    <object folder="1" file="5" x="45.75" y="244.3" angle="0" scale_x="0.99998" scale_y="1.00342"/>
+                </key>
+            </timeline>
+            <timeline id="6" name="tea_tree_leaves-3_000">
+                <key id="0" spin="0">
+                    <object folder="2" file="3" x="3.1" y="228.1" angle="0"/>
+                </key>
+                <key id="1" time="167" spin="0">
+                    <object folder="2" file="3" x="2.202013" y="173.412069" angle="0" scale_x="1.159999" scale_y="0.716885"/>
+                </key>
+                <key id="2" time="267" spin="0">
+                    <object folder="2" file="3" x="3.1" y="228.1" angle="0"/>
+                </key>
+                <key id="3" time="367" spin="0">
+                    <object folder="2" file="10" x="3.773306" y="248.375912" angle="0" scale_x="0.762568" scale_y="0.975963"/>
+                </key>
+                <key id="4" time="467" spin="0">
+                    <object folder="2" file="10" x="2.577976" y="194.084846" angle="0" scale_x="1.094913" scale_y="0.889819"/>
+                </key>
+                <key id="5" time="567" spin="0">
+                    <object folder="2" file="10" x="3.1" y="228.1" angle="0"/>
+                </key>
+                <key id="6" time="667" spin="0">
+                    <object folder="2" file="10" x="3.1" y="228.1" angle="0"/>
+                </key>
+            </timeline>
+        </animation>
+        <animation id="12" name="idle4" length="34" interval="100">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="6" key="0" z_index="0"/>
+                    <object_ref id="1" timeline="0" key="0" z_index="1"/>
+                    <object_ref id="2" timeline="1" key="0" z_index="2"/>
+                    <object_ref id="3" timeline="2" key="0" z_index="3"/>
+                    <object_ref id="4" timeline="3" key="0" z_index="4"/>
+                    <object_ref id="5" timeline="4" key="0" z_index="5"/>
+                    <object_ref id="6" timeline="5" key="0" z_index="6"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="tea_tree_ground-0_009">
+                <key id="0" spin="0">
+                    <object folder="3" file="0" x="2.2" y="-14.65" angle="0"/>
+                </key>
+            </timeline>
+            <timeline id="1" name="tea_tree_bush-3_003">
+                <key id="0" spin="0">
+                    <object folder="1" file="3" x="-11.2" y="244.55" angle="0"/>
+                </key>
+            </timeline>
+            <timeline id="2" name="tea_tree_bush-2_003">
+                <key id="0" spin="0">
+                    <object folder="1" file="2" x="8.75" y="345.7" angle="0"/>
+                </key>
+            </timeline>
+            <timeline id="3" name="tea_tree_bush-4_004">
+                <key id="0" spin="0">
+                    <object folder="1" file="4" x="4.55" y="342.6" angle="0"/>
+                </key>
+            </timeline>
+            <timeline id="4" name="tea_tree_bush-5_002">
+                <key id="0" spin="0">
+                    <object folder="1" file="5" x="53.1" y="245.2" angle="0"/>
+                </key>
+            </timeline>
+            <timeline id="5" name="tea_tree_leaves-24_000">
+                <key id="0" spin="0">
+                    <object folder="2" file="10" x="3.1" y="228.1" angle="0"/>
+                </key>
+            </timeline>
+            <timeline id="6" name="tea_tree_trunk-1_002">
+                <key id="0" spin="0">
+                    <object folder="0" file="1" x="3.4" y="60" angle="0"/>
+                </key>
+            </timeline>
+        </animation>
+        <animation id="13" name="picked4" length="567" interval="100">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="0" z_index="1"/>
+                    <object_ref id="2" timeline="2" key="0" z_index="2"/>
+                    <object_ref id="3" timeline="3" key="0" z_index="3"/>
+                    <object_ref id="4" timeline="4" key="0" z_index="4"/>
+                </key>
+                <key id="1" time="167">
+                    <object_ref id="0" timeline="0" key="1" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="1" z_index="1"/>
+                    <object_ref id="2" timeline="2" key="1" z_index="2"/>
+                    <object_ref id="3" timeline="3" key="1" z_index="3"/>
+                    <object_ref id="4" timeline="4" key="1" z_index="4"/>
+                </key>
+                <key id="2" time="267">
+                    <object_ref id="0" timeline="0" key="2" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="2" z_index="1"/>
+                    <object_ref id="2" timeline="2" key="2" z_index="2"/>
+                    <object_ref id="3" timeline="3" key="2" z_index="3"/>
+                    <object_ref id="4" timeline="4" key="2" z_index="4"/>
+                </key>
+                <key id="3" time="367">
+                    <object_ref id="0" timeline="0" key="3" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="3" z_index="1"/>
+                    <object_ref id="2" timeline="2" key="3" z_index="2"/>
+                    <object_ref id="3" timeline="3" key="3" z_index="3"/>
+                    <object_ref id="4" timeline="4" key="3" z_index="4"/>
+                </key>
+                <key id="4" time="467">
+                    <object_ref id="0" timeline="0" key="4" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="4" z_index="1"/>
+                    <object_ref id="2" timeline="2" key="4" z_index="2"/>
+                    <object_ref id="3" timeline="3" key="4" z_index="3"/>
+                    <object_ref id="4" timeline="4" key="4" z_index="4"/>
+                </key>
+                <key id="5" time="567">
+                    <object_ref id="0" timeline="0" key="5" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="5" z_index="1"/>
+                    <object_ref id="2" timeline="2" key="5" z_index="2"/>
+                    <object_ref id="3" timeline="3" key="5" z_index="3"/>
+                    <object_ref id="4" timeline="4" key="5" z_index="4"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="tea_tree_trunk-1_005">
+                <key id="0" spin="0">
+                    <object folder="0" file="1" x="3.4" y="60" angle="0"/>
+                </key>
+                <key id="1" time="167" spin="0">
+                    <object folder="0" file="1" x="3.4" y="68" angle="0" scale_y="1.11534"/>
+                </key>
+                <key id="2" time="267" spin="0">
+                    <object folder="0" file="1" x="3.4" y="60" angle="0"/>
+                </key>
+                <key id="3" time="367" spin="0">
+                    <object folder="0" file="0" x="3.4" y="60" angle="0"/>
+                </key>
+                <key id="4" time="467" spin="0">
+                    <object folder="0" file="0" x="3.4" y="60" angle="0"/>
+                </key>
+                <key id="5" time="567" spin="0">
+                    <object folder="0" file="0" x="3.4" y="60" angle="0"/>
+                </key>
+            </timeline>
+            <timeline id="1" name="tea_tree_ground-0_000">
+                <key id="0" spin="0">
+                    <object folder="3" file="0" x="2.2" y="-14.65" angle="0"/>
+                </key>
+                <key id="1" time="167" spin="0">
+                    <object folder="3" file="0" x="2.2" y="-14.65" angle="0"/>
+                </key>
+                <key id="2" time="267" spin="0">
+                    <object folder="3" file="0" x="2.2" y="-14.65" angle="0"/>
+                </key>
+                <key id="3" time="367" spin="0">
+                    <object folder="3" file="0" x="2.2" y="-14.65" angle="0"/>
+                </key>
+                <key id="4" time="467" spin="0">
+                    <object folder="3" file="0" x="2.2" y="-14.65" angle="0"/>
+                </key>
+                <key id="5" time="567" spin="0">
+                    <object folder="3" file="0" x="2.2" y="-14.65" angle="0"/>
+                </key>
+            </timeline>
+            <timeline id="2" name="tea_tree_bush-3_006">
+                <key id="0" spin="0">
+                    <object folder="1" file="3" x="-11.2" y="244.55" angle="0"/>
+                </key>
+                <key id="1" time="167" spin="0">
+                    <object folder="1" file="3" x="-11.2" y="235.9155" angle="0" scale_y="1.11502"/>
+                </key>
+                <key id="2" time="267" spin="0">
+                    <object folder="1" file="3" x="-11.2" y="244.55" angle="0"/>
+                </key>
+                <key id="3" time="367" spin="0">
+                    <object folder="1" file="1" x="-11.15" y="179" angle="0"/>
+                </key>
+                <key id="4" time="467" spin="0">
+                    <object folder="1" file="1" x="-11.15" y="179" angle="0"/>
+                </key>
+                <key id="5" time="567" spin="0">
+                    <object folder="1" file="1" x="-11.15" y="179" angle="0"/>
+                </key>
+            </timeline>
+            <timeline id="3" name="tea_tree_bush-2_006">
+                <key id="0" spin="0">
+                    <object folder="1" file="2" x="8.75" y="345.7" angle="0"/>
+                </key>
+                <key id="1" time="167" spin="0">
+                    <object folder="1" file="2" x="8.75" y="348.7" angle="0" scale_y="1.11502"/>
+                </key>
+                <key id="2" time="267" spin="0">
+                    <object folder="1" file="2" x="8.75" y="345.7" angle="0"/>
+                </key>
+                <key id="3" time="367" spin="0">
+                    <object folder="1" file="0" x="-11.75" y="277.15" angle="0"/>
+                </key>
+                <key id="4" time="467" spin="0">
+                    <object folder="1" file="0" x="-11.75" y="277.15" angle="0"/>
+                </key>
+                <key id="5" time="567" spin="0">
+                    <object folder="1" file="0" x="-11.75" y="277.15" angle="0"/>
+                </key>
+            </timeline>
+            <timeline id="4" name="tea_tree_leaves-24">
+                <key id="0" spin="0">
+                    <object folder="2" file="10" x="3.1" y="228.1" angle="0"/>
+                </key>
+                <key id="1" time="167" spin="0">
+                    <object folder="2" file="10" x="3.1" y="217.57338" angle="0" scale_y="1.11502"/>
+                </key>
+                <key id="2" time="267" spin="0">
+                    <object folder="2" file="10" x="3.1" y="228.1" angle="0"/>
+                </key>
+                <key id="3" time="367" spin="0">
+                    <object folder="2" file="10" x="nan" y="nan" angle="0" scale_x="0" scale_y="0"/>
+                </key>
+                <key id="4" time="467" spin="0">
+                    <object folder="2" file="10" x="nan" y="nan" angle="0" scale_x="0" scale_y="0"/>
+                </key>
+                <key id="5" time="567" spin="0">
+                    <object folder="2" file="10" x="nan" y="nan" angle="0" scale_x="0" scale_y="0"/>
+                </key>
+            </timeline>
+        </animation>
+    </entity>
+</spriter_data>

@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<spriter_data scml_version="1.0" generator="BrashMonkey Spriter" generator_version="r11">
+    <folder id="0" name="cup_llsoda">
+        <file id="0" name="cup_llsoda/cup_llsoda-0.png" width="128" height="128" pivot_x="0.515625" pivot_y="0.09375"/>
+    </folder>
+    <folder id="1" name="cup_cola">
+        <file id="0" name="cup_cola/cup_cola-0.png" width="128" height="128" pivot_x="0.515625" pivot_y="0.09375"/>
+    </folder>
+    <folder id="2" name="cup_fruitwine">
+        <file id="0" name="cup_fruitwine/cup_fruitwine-0.png" width="128" height="128" pivot_x="0.515625" pivot_y="0.09375"/>
+    </folder>
+    <folder id="3" name="cup_fruit">
+        <file id="0" name="cup_fruit/cup_fruit-0.png" width="128" height="128" pivot_x="0.5" pivot_y="0.171875"/>
+    </folder>
+    <folder id="4" name="cup_carrot">
+        <file id="0" name="cup_carrot/cup_carrot-0.png" width="128" height="128" pivot_x="0.484375" pivot_y="0.109375"/>
+    </folder>
+    <folder id="5" name="cup_fig">
+        <file id="0" name="cup_fig/cup_fig-0.png" width="128" height="128" pivot_x="0.5" pivot_y="0.109375"/>
+    </folder>
+    <folder id="6" name="cup_mulled">
+        <file id="0" name="cup_mulled/cup_mulled-0.png" width="128" height="128" pivot_x="0.46875" pivot_y="0.21875"/>
+    </folder>
+    <folder id="7" name="cup_banana">
+        <file id="0" name="cup_banana/cup_banana-0.png" width="128" height="128" pivot_x="0.5" pivot_y="0.109375"/>
+    </folder>
+    <folder id="8" name="cup_lotusflower">
+        <file id="0" name="cup_lotusflower/cup_lotusflower-0.png" width="128" height="128" pivot_x="0.484375" pivot_y="0.265625"/>
+    </folder>
+    <folder id="9" name="cup_fruitsoda">
+        <file id="0" name="cup_fruitsoda/cup_fruitsoda-0.png" width="128" height="128" pivot_x="0.515625" pivot_y="0.09375"/>
+    </folder>
+    <folder id="10" name="cup_cactus">
+        <file id="0" name="cup_cactus/cup_cactus-0.png" width="128" height="128" pivot_x="0.484375" pivot_y="0.109375"/>
+    </folder>
+    <folder id="11" name="cup_hibiscus">
+        <file id="0" name="cup_hibiscus/cup_hibiscus-0.png" width="128" height="128" pivot_x="0.484375" pivot_y="0.265625"/>
+    </folder>
+    <folder id="12" name="cup_garbage">
+        <file id="0" name="cup_garbage/cup_garbage-0.png" width="128" height="128" pivot_x="0.46875" pivot_y="0.21875"/>
+    </folder>
+    <folder id="13" name="cup_sushibiscus">
+        <file id="0" name="cup_sushibiscus/cup_sushibiscus-0.png" width="128" height="128" pivot_x="0.484375" pivot_y="0.265625"/>
+    </folder>
+    <folder id="14" name="cup_cactusflower">
+        <file id="0" name="cup_cactusflower/cup_cactusflower-0.png" width="128" height="128" pivot_x="0.484375" pivot_y="0.265625"/>
+    </folder>
+    <folder id="15" name="cup_berries">
+        <file id="0" name="cup_berries/cup_berries-0.png" width="128" height="128" pivot_x="0.5" pivot_y="0.109375"/>
+    </folder>
+    <folder id="16" name="cup_water">
+        <file id="0" name="cup_water/cup_water-0.png" width="128" height="128" pivot_x="0.46875" pivot_y="0.21875"/>
+    </folder>
+    <folder id="17" name="cup_strang">
+        <file id="0" name="cup_strang/cup_strang-0.png" width="128" height="128" pivot_x="0.46875" pivot_y="0.21875"/>
+    </folder>
+    <folder id="18" name="cup_drity">
+        <file id="0" name="cup_drity/cup_drity-0.png" width="128" height="128" pivot_x="0.46875" pivot_y="0.21875"/>
+    </folder>
+    <folder id="19" name="cup_fuer">
+        <file id="0" name="cup_fuer/cup_fuer-0.png" width="128" height="128" pivot_x="0.515625" pivot_y="0.15625"/>
+    </folder>
+    <folder id="20" name="cup_greentea">
+        <file id="0" name="cup_greentea/cup_greentea-0.png" width="128" height="128" pivot_x="0.59375" pivot_y="0.203125"/>
+    </folder>
+    <folder id="21" name="cup_coffee">
+        <file id="0" name="cup_coffee/cup_coffee-0.png" width="128" height="128" pivot_x="0.46875" pivot_y="0.21875"/>
+    </folder>
+    <folder id="22" name="cup_wine">
+        <file id="0" name="cup_wine/cup_wine-0.png" width="128" height="128" pivot_x="0.515625" pivot_y="0.09375"/>
+    </folder>
+    <folder id="23" name="cup_mixflower">
+        <file id="0" name="cup_mixflower/cup_mixflower-0.png" width="128" height="128" pivot_x="0.5" pivot_y="0.171875"/>
+    </folder>
+    <folder id="24" name="cup_mead">
+        <file id="0" name="cup_mead/cup_mead-0.png" width="128" height="128" pivot_x="0.5" pivot_y="0.140625"/>
+    </folder>
+    <folder id="25" name="cup_beer">
+        <file id="0" name="cup_beer/cup_beer-0.png" width="128" height="128" pivot_x="0.46875" pivot_y="0.21875"/>
+    </folder>
+    <folder id="26" name="cup_pomegranate">
+        <file id="0" name="cup_pomegranate/cup_pomegranate-0.png" width="128" height="128" pivot_x="0.5" pivot_y="0.109375"/>
+    </folder>
+    <folder id="27" name="cup_empty">
+        <file id="0" name="cup_empty/cup_empty-0.png" width="128" height="128" pivot_x="0.46875" pivot_y="0.21875"/>
+    </folder>
+    <folder id="28" name="cup_salt">
+        <file id="0" name="cup_salt/cup_salt-0.png" width="128" height="128" pivot_x="0.46875" pivot_y="0.21875"/>
+    </folder>
+    <folder id="29" name="cup_colaquantum">
+        <file id="0" name="cup_colaquantum/cup_colaquantum-0.png" width="128" height="128" pivot_x="0.515625" pivot_y="0.09375"/>
+    </folder>
+    <folder id="30" name="cup_dragonfruit">
+        <file id="0" name="cup_dragonfruit/cup_dragonfruit-0.png" width="128" height="128" pivot_x="0.5" pivot_y="0.109375"/>
+    </folder>
+    <folder id="31" name="cup_soda">
+        <file id="0" name="cup_soda/cup_soda-0.png" width="128" height="128" pivot_x="0.515625" pivot_y="0.09375"/>
+    </folder>
+    <folder id="32" name="cup_blacktea_iced">
+        <file id="0" name="cup_blacktea_iced/cup_blacktea_iced-0.png" width="128" height="128" pivot_x="0.515625" pivot_y="0.09375"/>
+    </folder>
+    <folder id="33" name="cup_blacktea">
+        <file id="0" name="cup_blacktea/cup_blacktea-0.png" width="128" height="128" pivot_x="0.515625" pivot_y="0.28125"/>
+    </folder>
+    <folder id="34" name="swap">
+        <file id="0" name="swap/swap.png" width="128" height="128" pivot_x="0.5" pivot_y="0"/>
+    </folder>
+    <folder id="35" name="cup_ginseng_liquor">
+        <file id="0" name="cup_ginseng_liquor/cup_ginseng_liquor-0.png" width="128" height="128" pivot_x="0.5" pivot_y="0.140625"/>
+    </folder>
+    <folder id="36" name="cup_veggie">
+        <file id="0" name="cup_veggie/cup_veggie-0.png" width="128" height="128" pivot_x="0.5" pivot_y="0.171875"/>
+    </folder>
+    <folder id="37" name="cup_pulque">
+        <file id="0" name="cup_pulque/cup_pulque-0.png" width="128" height="128" pivot_x="0.5" pivot_y="0.140625"/>
+    </folder>
+    <folder id="38" name="cup_glowberrywine">
+        <file id="0" name="cup_glowberrywine/cup_lightwine-0.png" width="128" height="128" pivot_x="0.515625" pivot_y="0.09375"/>
+    </folder>
+    <folder id="39" name="cup_glowberry">
+        <file id="0" name="cup_glowberry/cup_glowberry-0.png" width="128" height="128" pivot_x="0.5" pivot_y="0.109375"/>
+    </folder>
+    <entity id="0" name="kettle_drink">
+        <animation id="0" name="idle" length="1000" interval="100">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="swap">
+                <key id="0" spin="0">
+                    <object folder="34" file="0" angle="0"/>
+                </key>
+            </timeline>
+        </animation>
+    </entity>
+</spriter_data>

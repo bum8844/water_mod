@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<spriter_data scml_version="1.0" generator="BrashMonkey Spriter" generator_version="r11">
+    <folder id="0" name="tealeaves">
+        <file id="0" name="tealeaves/tealeaves.png" width="128" height="128" pivot_x="0.5" pivot_y="0.5"/>
+        <file id="1" name="tealeaves/tealeaves_dried.png" width="128" height="128" pivot_x="0.5" pivot_y="0.5"/>
+        <file id="2" name="tealeaves/foliage_01-0.png" width="220" height="156" pivot_x="0.494205" pivot_y="0.350801"/>
+        <file id="3" name="tealeaves/foliage_01-1.png" width="212" height="112" pivot_x="0.496698" pivot_y="0.467411"/>
+    </folder>
+    <folder id="1" name="shadow">
+        <file id="0" name="shadow/shadow-0.png" width="250" height="78" pivot_x="0.5" pivot_y="0.5"/>
+    </folder>
+    <entity id="0" name="tealeaves">
+        <animation id="0" name="idle_tealeaves" length="50" interval="100">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+                <key id="1" time="25">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+                <key id="2" time="50">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="foliage_01-0">
+                <key id="0" spin="0">
+                    <object folder="0" file="2" x="-0.1" y="0.05" angle="0" scale_x="-1"/>
+                </key>
+            </timeline>
+        </animation>
+        <animation id="1" name="idle_tealeaves_dried" length="50" interval="100">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+                <key id="1" time="25">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+                <key id="2" time="50">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="foliage_01-1">
+                <key id="0" spin="0">
+                    <object folder="0" file="3" x="-0.1" y="0.05" angle="0" scale_x="-1"/>
+                </key>
+            </timeline>
+        </animation>
+        <animation id="2" name="tealeaves" length="50" interval="100">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+                <key id="1" time="25">
+                    <object_ref id="0" timeline="0" key="1" z_index="0"/>
+                </key>
+                <key id="2" time="50">
+                    <object_ref id="0" timeline="0" key="1" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="tealeaves">
+                <key id="0" spin="0">
+                    <object folder="0" file="0" x="6.616541" y="189.022557" angle="250.223923" scale_x="2.661923" scale_y="2.661923"/>
+                </key>
+                <key id="1" time="25" spin="0">
+                    <object folder="0" file="0" x="6.616541" y="189.022557" angle="250.223923" scale_x="2.661923" scale_y="2.661923"/>
+                </key>
+            </timeline>
+        </animation>
+        <animation id="3" name="tealeaves_dried" length="50" interval="100">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+                <key id="1" time="25">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+                <key id="2" time="50">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="tealeaves">
+                <key id="0" spin="0">
+                    <object folder="0" file="1" x="6.616541" y="189.022557" angle="250.223923" scale_x="2.661923" scale_y="2.661923"/>
+                </key>
+            </timeline>
+        </animation>
+    </entity>
+</spriter_data>
