@@ -20,26 +20,26 @@ STRINGS.NAMES.WELL_DRILLING ="Well Drill"
 STRINGS.NAMES.WELL_DRILLING_ITEM = "Well Drill"
 STRINGS.RECIPE_DESC.WELL_DRILLING_ITEM = "Make a hole in the ground."
 STRINGS.CHARACTERS.GENERIC.DESCRIBE.WELL_DRILLING = "It's digging a hole."
-STRINGS.CHARACTERS.GENERIC.DESCRIBE.WELL_DRILLING_ITEM = "To get groundwater, I have to dig a hole first."
+STRINGS.CHARACTERS.GENERIC.DESCRIBE.WELL_DRILLING_ITEM = "I should keep drilling on my buisiness."
 
 -- wells & hole
 STRINGS.NAMES.HOLE	  = "Hole"
 STRINGS.CHARACTERS.GENERIC.DESCRIBE.HOLE = "I cannot see the bottom."
 STRINGS.NAMES.WELL_ITEM = "Well Parts"
-STRINGS.RECIPE_DESC.WELL_ITEM = "Brings deep groundwater."
+STRINGS.RECIPE_DESC.WELL_ITEM = "All's well there's well."
 STRINGS.CHARACTERS.GENERIC.DESCRIBE.WELL_ITEM = "Let's install this in the hole."
 STRINGS.NAMES.WELL = "Well"
 STRINGS.CHARACTERS.GENERIC.DESCRIBE.WELL = "It's easier to get clean water."
 
 -- desalinator
 STRINGS.NAMES.DESALINATOR = "Desalinator"
-STRINGS.RECIPE_DESC.DESALINATOR = "Remove salt from the sea water."
-STRINGS.CHARACTERS.GENERIC.DESCRIBE.DESALINATOR = "Now I can get clean water using seawater."
+STRINGS.RECIPE_DESC.DESALINATOR = "Yes, the water is made of water."
+STRINGS.CHARACTERS.GENERIC.DESCRIBE.DESALINATOR = "Now I can get fresh water out of sea!"
 
 -- barrel
-STRINGS.NAMES.barrel = "barrel"
-STRINGS.RECIPE_DESC.barrel = "A container for storing water."
-STRINGS.CHARACTERS.GENERIC.DESCRIBE.barrel = "I can contain my water here."
+STRINGS.NAMES.BARREL = "barrel"
+STRINGS.RECIPE_DESC.BARREL = "A barrel of water is funnier than a barrel of monkeys."
+STRINGS.CHARACTERS.GENERIC.DESCRIBE.BARREL = "I can contain my water here."
 
 -- brewery
 STRINGS.NAMES.BREWERY = "Brewery"
@@ -121,18 +121,6 @@ STRINGS.CHARACTERS.GENERIC.DESCRIBE.CUP_COFFEE = "Delicious!"
 
 STRINGS.NAMES.CUP_TEA = "Cup of Tea"
 STRINGS.CHARACTERS.GENERIC.DESCRIBE.CUP_TEA = "I need milk."
-
-
-
-
-
-
-
-
-
-
-
-
 
 STRINGS.NAMES.CUP_RED = "Dragon Drink"
 STRINGS.CHARACTERS.GENERIC.DESCRIBE.CUP_RED = "Smells really good!"
