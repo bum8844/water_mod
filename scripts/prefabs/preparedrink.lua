@@ -113,8 +113,16 @@ local function MakePreparedCupDrink(data)
         inst:AddComponent("inspectable")
         inst.wet_prefix = data.wet_prefix
 		
-		inst:AddComponent("drinkvalue")
-		inst.components.drinkvalue:SetVelue(1)
+		inst:AddComponent("fuel")
+		if _name == "dirty" then
+			inst.components.fuel.fueltype = "DIRTY"
+		elseif _name == "salt" then
+			inst.components.fuel.fueltype = "SALT"
+		elseif _name == "water" then
+			inst.components.fuel.fueltype = "WATER"
+		end
+		print(inst.components.fuel.fueltype)
+		inst.components.fuel.fuelvalue = TUNING.CUP_MAX_LEVEL
 
 		inst:AddComponent("inventoryitem")
 		inst.replica.inventoryitem:SetImage("cup_".._name)
@@ -243,8 +251,15 @@ local function MakePreparedBottleDrink(data)
         inst:AddComponent("inspectable")
         inst.wet_prefix = data.wet_prefix
 		
-		inst:AddComponent("drinkvalue")
-		inst.components.drinkvalue:SetVelue(5)
+		inst:AddComponent("fuel")
+		if inst:HasTag("dirty") then
+			inst.components.fuel.fueltype = FUELTYPE.DIRTY
+		elseif inst:HasTag("salt") then
+			inst.components.fuel.fueltype = FUELTYPE.SALT
+		elseif inst:HasTag("clean") then
+			inst.components.fuel.fueltype = FUELTYPE.WATER
+		end
+		inst.components.fuel.fuelvalue = TUNING.BOTTLE_MAX_LEVEL
 
 		inst:AddComponent("inventoryitem")
 		inst.replica.inventoryitem:SetImage("bottle_".._name)
