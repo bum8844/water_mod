@@ -114,14 +114,13 @@ local function MakePreparedCupDrink(data)
         inst.wet_prefix = data.wet_prefix
 		
 		inst:AddComponent("fuel")
-		if _name == "dirty" then
-			inst.components.fuel.fueltype = "DIRTY"
-		elseif _name == "salt" then
-			inst.components.fuel.fueltype = "SALT"
-		elseif _name == "water" then
-			inst.components.fuel.fueltype = "WATER"
+		if inst:HasTag("dirty") then
+			inst.components.fuel.fueltype = FUELTYPE.DIRTY
+		elseif inst:HasTag("salt") then
+			inst.components.fuel.fueltype = FUELTYPE.SALT
+		elseif inst:HasTag("clean") then
+			inst.components.fuel.fueltype = FUELTYPE.WATER
 		end
-		print(inst.components.fuel.fueltype)
 		inst.components.fuel.fuelvalue = TUNING.CUP_MAX_LEVEL
 
 		inst:AddComponent("inventoryitem")

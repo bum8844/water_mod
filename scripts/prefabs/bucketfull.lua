@@ -74,8 +74,16 @@ local function MakeBucket(data)
 		inst:AddComponent("tradable")
 		inst:AddComponent("temperature")
 		
-		inst:AddComponent("drinkvalue")
-		inst.components.drinkvalue:SetVelue(10)
+		inst:AddComponent("fuel")
+		if inst:HasTag("dirty") then
+			inst.components.fuel.fueltype = FUELTYPE.DIRTY
+		elseif inst:HasTag("salt") then
+			inst.components.fuel.fueltype = FUELTYPE.SALT
+		elseif inst:HasTag("clean") then
+			inst.components.fuel.fueltype = FUELTYPE.WATER
+		end
+		print(inst.components.fuel.fueltype)
+		inst.components.fuel.fuelvalue = TUNING.BUCKET_MAX_LEVEL
 
 		inst:AddComponent("inventoryitem")
 		inst.components.inventoryitem.atlasname = "images/tea_inventoryitem.xml"

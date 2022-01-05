@@ -39,7 +39,7 @@ Assets = {
 
 STRINGS.NAMES.DRINKS_TAB = "WATER"
 STRINGS.TABS.DRINKS_TAB = "Water"
-GLOBAL.RECIPETABS['DRINKS_TAB'] = {str = "DRINKS_TAB", sort=3, icon_atlas = "images/tea_inventoryitem.xml", icon = "watertab.tex"}
+_G.RECIPETABS['DRINKS_TAB'] = {str = "DRINKS_TAB", sort=3, icon_atlas = "images/tea_inventoryitem.xml", icon = "watertab.tex"}
 
 modimport("scripts/recipes.lua")
 modimport("scripts/strings.lua")
@@ -48,6 +48,9 @@ modimport("scripts/prepareagedrink.lua")
 modimport("scripts/preparedrink.lua")
 
 AddMinimapAtlas("images/tea_minimap.xml")
+_G.FUELTYPE.WATER = "WATER"
+_G.FUELTYPE.DIRTY = "DIRTY"
+_G.FUELTYPE.SALT = "SALT"
 
 local function BackBucket(inst)
     local owner = inst.components.inventoryitem.owner
@@ -161,3 +164,13 @@ AddComponentPostInit("dryer", function(self)
         return _StartDrying(self, dryable, ...)
     end
 end)
+
+--[[AddComponentPostInit("fueled", function(self)
+	local _TakeFuelItem = self.TakeFuelItem
+	
+	function self:TakeFuelItem(item, doer, ...)
+		if item:HasTag("") then
+		return _TakeFuelItem(item, doer, ...)
+	end
+	
+end)]]
