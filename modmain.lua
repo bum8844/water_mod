@@ -27,8 +27,8 @@ PrefabFiles =
 }
 
 Assets = {
-    Asset("ATLAS", "images/tea_inventoryitem.xml"),--Тут типо изображения,в переменной АТLАS, нам нужен файл .xml
-    Asset("IMAGE", "images/tea_inventoryitem.tex"),-- А в переменной IMAGE - .tex
+    Asset("ATLAS", "images/tea_inventoryitem.xml"),
+    Asset("IMAGE", "images/tea_inventoryitem.tex"),
 	Asset("ATLAS", "images/tea_minimap.xml"),
     Asset("IMAGE", "images/tea_minimap.tex"),
 	Asset("SOUNDPACKAGE", "sound/fil_drink.fev"),	
@@ -48,9 +48,15 @@ modimport("scripts/prepareagedrink.lua")
 modimport("scripts/preparedrink.lua")
 
 AddMinimapAtlas("images/tea_minimap.xml")
-_G.FUELTYPE.WATER = "WATER"
-_G.FUELTYPE.DIRTY = "DIRTY"
-_G.FUELTYPE.SALT = "SALT"
+
+_G.WATERTYPE = 
+{
+	CLEAN = "CLEAN",
+	DIRTY = "DIRTY",
+	SALT = "SALT",
+	USAGE = "USAGE",
+	WATERCONTAINER = "WATERCONTAINER",
+}
 
 local function BackBucket(inst)
     local owner = inst.components.inventoryitem.owner
@@ -169,8 +175,11 @@ end)
 	local _TakeFuelItem = self.TakeFuelItem
 	
 	function self:TakeFuelItem(item, doer, ...)
-		if item:HasTag("") then
-		return _TakeFuelItem(item, doer, ...)
+		if self.ontakefuelfn ~= nil then
+			self.ontakefuelfn(self.inst, fuelvalue, item, doer)
+		end
+		
+		return _TakeFuelItem(self ,item, doer)
 	end
 	
 end)]]

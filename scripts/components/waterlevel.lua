@@ -1,39 +1,39 @@
---Sewing should be redone without using the fueled component... it's kind of weird.
+--Sewing should be redone without using the waterlevel component... it's kind of weird.
 
 local SourceModifierList = require("util/sourcemodifierlist")
 
-local function onwatertype(self, fueltype, old_fueltype)
-    if old_fueltype ~= nil and old_fueltype ~= self.secondaryfueltype then
-        self.inst:RemoveTag(old_fueltype == FUELTYPE.USAGE and "needssewing" or (old_fueltype.."_fueled"))
+local function onwatertype(self, watertype, old_watertype)
+    if old_watertype ~= nil and old_watertype ~= self.secondarywatertype then
+        self.inst:RemoveTag(old_watertype == WATERTYPE.USAGE and "needssewing" or (old_watertype.."waterlevel"))
     end
-    if fueltype == self.secondaryfueltype then
+    if watertype == self.secondarywatertype then
         return
-    elseif fueltype == FUELTYPE.USAGE then
-        if self.currentfuel < self.maxfuel and not self.no_sewing then
+    elseif watertype == WATERTYPE.USAGE then
+        if self.currentwater < self.maxwater and not self.no_sewing then
             self.inst:AddTag("needssewing")
         end
-    elseif fueltype ~= nil and self.accepting then
-        self.inst:AddTag(fueltype.."_fueled")
+    elseif watertype ~= nil and self.accepting then
+        self.inst:AddTag(watertype.."_waterlevel")
     end
 end
 
-local function onsecondaryfueltype(self, fueltype, old_fueltype)
-    if old_fueltype ~= nil and old_fueltype ~= self.fueltype then
-        self.inst:RemoveTag(old_fueltype == FUELTYPE.USAGE and "needssewing" or (old_fueltype.."_fueled"))
+local function onsecondarywatertype(self, watertype, old_watertype)
+    if old_watertype ~= nil and old_watertype ~= self.watertype then
+        self.inst:RemoveTag(old_watertype == WATERTYPE.USAGE and "needssewing" or (old_watertype.."_waterlevel"))
     end
-    if fueltype == self.fueltype then
+    if watertype == self.watertype then
         return
-    elseif fueltype == FUELTYPE.USAGE then
-        if self.currentfuel < self.maxfuel and not self.no_sewing then
+    elseif watertype == WATERTYPE.USAGE then
+        if self.currentwater < self.maxwater and not self.no_sewing then
             self.inst:AddTag("needssewing")
         end
-    elseif fueltype ~= nil and self.accepting then
-        self.inst:AddTag(fueltype.."_fueled")
+    elseif watertype ~= nil and self.accepting then
+        self.inst:AddTag(watertype.."_waterlevel")
     end
 end
 
 local function onno_sewing(self, no_sewing)
-    if (self.fueltype == FUELTYPE.USAGE or self.secondaryfueltype == FUELTYPE.USAGE) and self.currentfuel < self.maxfuel then
+    if (self.watertype == WATERTYPE.USAGE or self.secondarywatertype == WATERTYPE.USAGE) and self.currentwater < self.maxwater then
         if no_sewing then
             self.inst:RemoveTag("needssewing")
         else
@@ -43,25 +43,25 @@ local function onno_sewing(self, no_sewing)
 end
 
 local function onaccepting(self, accepting)
-    if self.fueltype ~= nil and self.fueltype ~= FUELTYPE.USAGE then
+    if self.watertype ~= nil and self.watertype ~= WATERTYPE.USAGE then
         if accepting then
-            self.inst:AddTag(self.fueltype.."_fueled")
+            self.inst:AddTag(self.watertype.."_waterlevel")
         else
-            self.inst:RemoveTag(self.fueltype.."_fueled")
+            self.inst:RemoveTag(self.watertype.."_waterlevel")
         end
     end
-    if self.secondaryfueltype ~= nil and self.secondaryfueltype ~= self.fueltype and self.secondaryfueltype ~= FUELTYPE.USAGE then
+    if self.secondarywatertype ~= nil and self.secondarywatertype ~= self.watertype and self.secondarywatertype ~= WATERTYPE.USAGE then
         if accepting then
-            self.inst:AddTag(self.secondaryfueltype.."_fueled")
+            self.inst:AddTag(self.secondarywatertype.."_waterlevel")
         else
-            self.inst:RemoveTag(self.secondaryfueltype.."_fueled")
+            self.inst:RemoveTag(self.secondarywatertype.."_waterlevel")
         end
     end
 end
 
-local function onmaxfuel(self, maxfuel)
-    if (self.fueltype == FUELTYPE.USAGE or self.secondaryfueltype == FUELTYPE.USAGE) and not self.no_sewing then
-        if self.currentfuel < maxfuel then
+local function onmaxwater(self, maxwater)
+    if (self.watertype == WATERTYPE.USAGE or self.secondarywatertype == WATERTYPE.USAGE) and not self.no_sewing then
+        if self.currentwater < maxwater then
             self.inst:AddTag("needssewing")
         else
             self.inst:RemoveTag("needssewing")
@@ -69,210 +69,174 @@ local function onmaxfuel(self, maxfuel)
     end
 end
 
-local function oncurrentfuel(self, currentfuel)
-    if currentfuel <= 0 then
-        self.inst:AddTag("fueldepleted")
+local function oncurrentwater(self, currentwater)
+    if currentwater <= 0 then
+        self.inst:AddTag("waterdepleted")
     else
-        self.inst:RemoveTag("fueldepleted")
+        self.inst:RemoveTag("waterdepleted")
     end
-    onmaxfuel(self, self.maxfuel)
+    onmaxwater(self, self.maxwater)
 end
 
-local Fueled = Class(function(self, inst)
+local Waterlevel = Class(function(self, inst)
     self.inst = inst
     self.consuming = false
 
-    self.maxfuel = 0
-    self.currentfuel = 0
+    self.maxwater = 0
+    self.currentwater = 0
     self.rate = 1
 	self.rate_modifiers = SourceModifierList(self.inst)
 
     self.no_sewing = nil --V2C: HACK COLON RIGHT PARANTHESIS, I mean, what choice do I have if I don't want to break mods -_ -
     self.accepting = false
-    self.fueltype = FUELTYPE.BURNABLE
-    self.secondaryfueltype = nil
+    self.watertype = WATERTYPE.CLEAN
+    self.secondarywatertype = nil
     self.sections = 1
     self.sectionfn = nil
-    self.period = 1
-    --self.firstperiod = nil
-    --self.firstperiodfull = nil
-    --self.firstperioddt = nil
-    self.bonusmult = 1
     self.depleted = nil
 end,
 nil,
 {
-    fueltype = onfueltype,
-    secondaryfueltype = onsecondaryfueltype,
+    watertype = onwatertype,
+    secondarywatertype = onsecondarywatertype,
     accepting = onaccepting,
     no_sewing = onno_sewing,
-    maxfuel = onmaxfuel,
-    currentfuel = oncurrentfuel,
+    maxwater = onmaxwater,
+    currentwater = oncurrentwater,
 })
 
-function Fueled:OnRemoveFromEntity()
+function Waterlevel:SetWaterValue(name)
+	self.watertype = name
+end
+
+function Waterlevel:OnRemoveFromEntity()
     self:StopConsuming()
-    if self.fueltype ~= nil then
-        self.inst:RemoveTag(self.fueltype == FUELTYPE.USAGE and "needssewing" or (self.fueltype.."_fueled"))
+    if self.watertype ~= nil then
+        self.inst:RemoveTag(self.watertype == WATERTYPE.USAGE and "needssewing" or (self.watertype.."_waterlevel"))
     end
-    if self.secondaryfueltype ~= nil and self.secondaryfueltype ~= self.fueltype then
-        self.inst:RemoveTag(self.secondaryfueltype == FUELTYPE.USAGE and "needssewing" or (self.secondaryfueltype.."_fueled"))
+    if self.secondarywatertype ~= nil and self.secondarywatertype ~= self.watertype then
+        self.inst:RemoveTag(self.secondarywatertype == WATERTYPE.USAGE and "needssewing" or (self.secondarywatertype.."_waterlevel"))
     end
-    self.inst:RemoveTag("fueldepleted")
+    self.inst:RemoveTag("waterdepleted")
 end
 
-function Fueled:MakeEmpty()
-    if self.currentfuel > 0 then
-        self:DoDelta(-self.currentfuel)
-    end
-end
-
-function Fueled:OnSave()
-    if self.currentfuel ~= self.maxfuel then
-        return {fuel = self.currentfuel}
+function Waterlevel:MakeEmpty()
+    if self.currentwater > 0 then
+        self:DoDelta(-self.currentwater)
     end
 end
 
-function Fueled:OnLoad(data)
-    if data.fuel then
-        self:InitializeFuelLevel(math.max(0, data.fuel))
+function Waterlevel:OnSave()
+    if self.currentwater ~= self.maxwater then
+        return {waterlevel = self.currentwater}
     end
 end
 
-function Fueled:SetSectionCallback(fn)
+function Waterlevel:OnLoad(data)
+    if data.waterlevel then
+        self:InitializeWaterLevel(math.max(0, data.waterlevel))
+    end
+end
+
+function Waterlevel:SetSectionCallback(fn)
     self.sectionfn = fn
 end
 
-function Fueled:SetDepletedFn(fn)
+function Waterlevel:SetDepletedFn(fn)
     self.depleted = fn
 end
 
-function Fueled:IsEmpty()
-    return self.currentfuel <= 0
+function Waterlevel:IsEmpty()
+    return self.currentwater <= 0
 end
 
-function Fueled:SetSections(num)
+function Waterlevel:SetSections(num)
     self.sections = num
 end
 
-function Fueled:CanAcceptFuelItem(item)
-    return self.accepting and item and item.components.fuel and (item.components.fuel.fueltype == self.fueltype or item.components.fuel.fueltype == self.secondaryfueltype)
+function Waterlevel:CanAcceptWaterItem(item)
+    return self.accepting and item and item.components.drinkvalue and (item.components.drinkvalue.watertype == self.watertype or item.components.drinkvalue.watertype == self.secondarywatertype)
 end
 
-function Fueled:GetCurrentSection()
+function Waterlevel:GetCurrentSection()
     return self:IsEmpty() and 0 or math.min( math.floor(self:GetPercent()* self.sections)+1, self.sections)
 end
 
-function Fueled:ChangeSection(amount)
-    self:DoDelta(amount * self.maxfuel / self.sections - 1)
+function Waterlevel:ChangeSection(amount)
+    self:DoDelta(amount * self.maxwater / self.sections - 1)
 end
 
-function Fueled:SetTakeFuelFn(fn)
-    self.ontakefuelfn = fn
+function Waterlevel:SetTakeWaterFn(fn)
+    self.ontakewaterfn = fn
 end
 
-function Fueled:TakeFuelItem(item, doer)
-    if self:CanAcceptFuelItem(item) then
+function Waterlevel:TakeWaterItem(item, doer)
+    if self:CanAcceptWaterItem(item) then
         local oldsection = self:GetCurrentSection()
 
-        local wetmult = item:GetIsWet() and TUNING.WET_FUEL_PENALTY or 1
-        local masterymult = doer ~= nil and doer.components.fuelmaster ~= nil and doer.components.fuelmaster:GetBonusMult(item, self.inst) or 1
-        self:DoDelta(item.components.fuel.fuelvalue * self.bonusmult * wetmult * masterymult, doer)
+        self:DoDelta(item.components.waterlevel.watervalue, doer)
 
-        local fuelvalue = 0
-        if item.components.fuel ~= nil then
-            fuelvalue = item.components.fuel.fuelvalue
-            item.components.fuel:Taken(self.inst)
+        if self.ontakewaterfn ~= nil then
+            self.ontakewaterfn(self.inst, watervalue, item, doer)
+        end
+        self.inst:PushEvent("takewater", { watervalue = watervalue }, { item = item }, { doer = doer })
+		
+		local watervalue = 0
+        if item.components.drinkvalue ~= nil then
+            watervalue = item.components.drinkvalue.watervalue
+            item.components.drinkvalue:Taken(self.inst)
         end
         item:Remove()
-
-        if self.ontakefuelfn ~= nil then
-            self.ontakefuelfn(self.inst, fuelvalue)
-        end
-        self.inst:PushEvent("takefuel", { fuelvalue = fuelvalue })
 
         return true
     end
 end
 
-function Fueled:SetUpdateFn(fn)
-    self.updatefn = fn
-end
-
-function Fueled:GetDebugString()
+function Waterlevel:GetDebugString()
     local section = self:GetCurrentSection()
 
-    return string.format("%s %2.2f/%2.2f (-%2.2f) : section %d/%d %2.2f", self.consuming and "ON" or "OFF", self.currentfuel, self.maxfuel, self.rate * self.rate_modifiers:Get(), section, self.sections, self:GetSectionPercent())
+    return string.format("%s %2.2f/%2.2f (-%2.2f) : section %d/%d %2.2f", self.consuming and "ON" or "OFF", self.currentwater, self.maxwater, self.rate * self.rate_modifiers:Get(), section, self.sections, self:GetSectionPercent())
 end
 
-function Fueled:AddThreshold(percent, fn)
+function Waterlevel:AddThreshold(percent, fn)
     table.insert(self.thresholds, {percent=percent, fn=fn})
     --table.sort(self.thresholds, function(l,r) return l.percent < r.percent)
 end
 
-function Fueled:GetSectionPercent()
+function Waterlevel:GetSectionPercent()
     local section = self:GetCurrentSection()
     return (self:GetPercent() - (section - 1)/self.sections) / (1/self.sections)
 end
 
-function Fueled:GetPercent()
-    return self.maxfuel > 0 and math.max(0, math.min(1, self.currentfuel / self.maxfuel)) or 0
+function Waterlevel:GetPercent()
+    return self.maxwater > 0 and math.max(0, math.min(1, self.currentwater / self.maxwater)) or 0
 end
 
-function Fueled:SetPercent(amount)
-    local target = (self.maxfuel * amount)
-    self:DoDelta(target - self.currentfuel)
+function Waterlevel:SetPercent(amount)
+    local target = (self.maxwater * amount)
+    self:DoDelta(target - self.currentwater)
 end
 
-function Fueled:SetFirstPeriod(firstperiod, firstperiodfull)
-    self.firstperiod = firstperiod
-    self.firstperiodfull = firstperiodfull --optional
-end
-
-local function OnDoUpdate(inst, self, period)
-    self:DoUpdate(period)
-end
-
-function Fueled:StartConsuming()
-    self.consuming = true
-    if self.task == nil then
-        self.task = self.inst:DoPeriodicTask(self.period, OnDoUpdate, nil, self, self.period)
-        if self.firstperiod ~= nil then
-            self.firstperioddt = self.currentfuel >= self.maxfuel and self.firstperiodfull or self.firstperiod
-            self.inst:StartWallUpdatingComponent(self)
-        end
-    end
-end
-
-function Fueled:OnWallUpdate(dt)
-    if TheNet:IsServerPaused() then return end
-
-    dt = self.firstperioddt
-    self.firstperioddt = nil
-    self.inst:StopWallUpdatingComponent(self)
-    self:DoUpdate(dt)
-end
-
-function Fueled:InitializeFuelLevel(fuel)
+function Waterlevel:InitializeWaterLevel(waterlevel)
     local oldsection = self:GetCurrentSection()
-    if self.maxfuel < fuel then
-        self.maxfuel = fuel
+    if self.maxwater < waterlevel then
+        self.maxwater = waterlevel
     end
-    self.currentfuel = fuel
+    self.currentwater = waterlevel
 
     local newsection = self:GetCurrentSection()
     if oldsection ~= newsection then
         if self.sectionfn then
 	        self.sectionfn(newsection, oldsection, self.inst)
 		end
-        self.inst:PushEvent("onfueldsectionchanged", { newsection = newsection, oldsection = oldsection })
+        self.inst:PushEvent("onwaterlevelsectionchanged", { newsection = newsection, oldsection = oldsection })
     end
 end
 
-function Fueled:DoDelta(amount, doer)
+function Waterlevel:DoDelta(amount, doer)
     local oldsection = self:GetCurrentSection()
 
-    self.currentfuel = math.max(0, math.min(self.maxfuel, self.currentfuel + amount))
+    self.currentwater = math.max(0, math.min(self.maxwater, self.currentwater + amount))
 
     local newsection = self:GetCurrentSection()
 
@@ -280,41 +244,13 @@ function Fueled:DoDelta(amount, doer)
         if self.sectionfn then
             self.sectionfn(newsection, oldsection, self.inst, doer)
         end
-        self.inst:PushEvent("onfueldsectionchanged", { newsection = newsection, oldsection = oldsection, doer = doer })
-        if self.currentfuel <= 0 and self.depleted then
+        self.inst:PushEvent("onwaterdsectionchanged", { newsection = newsection, oldsection = oldsection, doer = doer })
+        if self.currentwater <= 0 and self.depleted then
             self.depleted(self.inst)
         end
     end
 
     self.inst:PushEvent("percentusedchange", { percent = self:GetPercent() })
 end
-
-function Fueled:DoUpdate(dt)
-    if self.consuming then
-        self:DoDelta(-dt * self.rate * self.rate_modifiers:Get())
-    end
-
-    if self:IsEmpty() then
-        self:StopConsuming()
-    end
-
-    if self.updatefn ~= nil then
-        self.updatefn(self.inst)
-    end
-end
-
-function Fueled:StopConsuming()
-    self.consuming = false
-    if self.task ~= nil then
-        self.task:Cancel()
-        self.task = nil
-    end
-    if self.firstperioddt ~= nil then
-        self.firstperioddt = nil
-        self.inst:StopWallUpdatingComponent(self)
-    end
-end
-
-Fueled.LongUpdate = Fueled.DoUpdate
 
 return Waterlevel

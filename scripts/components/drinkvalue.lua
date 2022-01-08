@@ -15,15 +15,15 @@ local DrinkValue = Class(function(self, inst)
 end,
 nil,
 {
-    drinkvalue = ondrinkvalue,
+    watertype = onwatertype,
 })
+
+function DrinkValue:SetDrinkValue(num)
+    self.drinkvalue = num
+end
 
 function DrinkValue:SetWaterType(types)
 	self.watertype = types
-end
-
-function DrinkValue:SetDrinkValue(num)
-	self.drinkvalue = num
 end
 
 function DrinkValue:OnRemoveFromEntity()

@@ -118,6 +118,10 @@ local function fn()
     inst:AddComponent("fuel")
     inst.components.fuel.fuelvalue = TUNING.LARGE_FUEL
 	
+	inst:AddComponent("drinkvalue")
+	inst.components.drinkvalue:SetWaterType(WATERTYPE.WATERCONTAINER)
+	inst.components.drinkvalue:SetDrinkValue(TUNING.BUCKET_MAX_LEVEL)
+	
     MakeSmallBurnable(inst, TUNING.MED_BURNTIME)
     MakeSmallPropagator(inst)
 	
