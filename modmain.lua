@@ -46,6 +46,7 @@ modimport("scripts/strings.lua")
 modimport("scripts/watertuning.lua")
 modimport("scripts/prepareagedrink.lua")
 modimport("scripts/preparedrink.lua")
+modimport("scripts/wateractions.lua")
 
 AddMinimapAtlas("images/tea_minimap.xml")
 
@@ -170,16 +171,3 @@ AddComponentPostInit("dryer", function(self)
         return _StartDrying(self, dryable, ...)
     end
 end)
-
---[[AddComponentPostInit("fueled", function(self)
-	local _TakeFuelItem = self.TakeFuelItem
-	
-	function self:TakeFuelItem(item, doer, ...)
-		if self.ontakefuelfn ~= nil then
-			self.ontakefuelfn(self.inst, fuelvalue, item, doer)
-		end
-		
-		return _TakeFuelItem(self ,item, doer)
-	end
-	
-end)]]
