@@ -117,22 +117,23 @@ local function onregenfn(inst)
     end
 end
 
-local function SetupLoot(inst)
+local function SetupLoot(lootdropper)
+    local inst = lootdropper.inst
+    local withered = inst.components.witherable ~= nil and inst.components.witherable:IsWithered()
+
     if inst.components.growable ~= nil then
         if inst.components.growable.stage == 3 then
-            inst.components.lootdropper:SetLoot({"tealeaves", "tealeaves"})
-        elseif inst.compoenents.growable.stage == 4 then
-            inst.components.lootdropper:SetLoot({"tealeaves"})
+            inst.components.lootdropper:SetLoot({"tealeaves", "tealeaves", "tealeaves"})
+        elseif inst.components.growable.stage == 4 then
+            inst.components.lootdropper:SetLoot({})
             inst.components.lootdropper:AddChanceLoot("tea_seed", 0.05)
         end
     end
 end
 
 local function on_bush_burnt(inst)
-    -- Since the rock avocados themselves are rock hard, they don't burn up, but the bush does!
+    -- Just like birchnut tree drops cooked birchnut when burnt
     if inst.components.growable.stage == 4 then
-        inst.components.lootdropper:SpawnLootPrefab("tea_seed_cooked")
-        inst.components.lootdropper:SpawnLootPrefab("tea_seed_cooked")
         inst.components.lootdropper:SpawnLootPrefab("tea_seed_cooked")
     end
 
@@ -149,27 +150,12 @@ end
 local function on_dug_up(inst, digger)
     local withered = inst.components.witherable ~= nil and inst.components.witherable:IsWithered()
 
+    -- including the barren/withered state into SetLoot resulted picking the tree at the state
     if withered or inst.components.pickable:IsBarren() then
-        -- If we're withered, digging us up just drops twigs
         inst.components.lootdropper:SpawnLootPrefab("twigs")
         inst.components.lootdropper:SpawnLootPrefab("twigs")
-    else
-        -- Even though we have a digger, we don't want the produce to go directly
-        -- to their inventory, so we still just harvest without a harvester.
-        if inst.components.growable.stage == 2 then
-			inst.components.lootdropper:SpawnLootPrefab("tealeaves")
-            inst.components.lootdropper:SpawnLootPrefab("tealeaves")
-            inst.components.lootdropper:SpawnLootPrefab("tealeaves")
-		elseif inst.components.growable.stage == 3 then
-            inst.components.lootdropper:SpawnLootPrefab("petals")
-            inst.components.lootdropper:SpawnLootPrefab("petals")
-            inst.components.lootdropper:SpawnLootPrefab("petals")
-        elseif inst.components.growable.stage == 4 then
-            inst.components.lootdropper:SpawnLootPrefab("tea_seed")
-            inst.components.lootdropper:SpawnLootPrefab("tea_seed")
-            inst.components.lootdropper:SpawnLootPrefab("tea_seed")
-        end
-
+    elseif inst.components.lootdropper ~= nil then
+        inst.components.lootdropper:DropLoot()
         inst.components.lootdropper:SpawnLootPrefab("dug_tea_tree")
     end
 
@@ -178,7 +164,7 @@ local function on_dug_up(inst, digger)
 end
 
 local function onpickedfn(inst, picker)
-    local picked_anim = (inst.components.growable.stage == 2 and "picked2") or (inst.components.growable.stage == 3 and "picked3") or (inst.components.growable.stage == 4 and "picked4")
+    local picked_anim = (inst.components.growable.stage == 3 and "picked3") or (inst.components.growable.stage == 4 and "picked4")
 
     inst.components.growable:SetStage(1)
 
@@ -204,6 +190,7 @@ local function makeemptyfn(inst)
         inst.components.growable:SetStage(1)
         inst.components.growable:StartGrowing()
         inst.components.growable.magicgrowable = true
+        inst.components.pickable.canbepicked = false
 
         if not (inst:HasTag("withered") or emptying_dead) then
             inst.AnimState:PlayAnimation("idle1", false)
@@ -220,7 +207,7 @@ local function makebarrenfn(inst, wasempty)
     inst.components.growable.magicgrowable = false
 
     if not POPULATING and inst:HasTag("withered") then
-        inst.AnimState:PlayAnimation("idle1_to_dead1")
+        inst.AnimState:PlayAnimation("idle1_to_dead1") --temporary motion, should be replaced to "idle1_to_dead1"
         inst.AnimState:PushAnimation("dead1", false)
     else
         inst.AnimState:PlayAnimation("dead1")
@@ -290,6 +277,7 @@ local function tea_tree()
     MakeHauntableIgnite(inst)
 
     inst:AddComponent("lootdropper")
+    inst.components.lootdropper.lootsetupfn = SetupLoot
 
     if not GetGameModeProperty("disable_transplanting") then
         inst:AddComponent("workable")
