@@ -1,12 +1,21 @@
 local function returnbottle(inst, eater)
 	local x, y, z = inst.Transform:GetWorldPosition()
 	local refund = SpawnPrefab("messagebottleempty")
-	if eater ~= nil and eater.components.inventory ~= nil then
+	local drink_refund = SpawnPrefab(inst.prefab)
+	if inst._drink_level ~= 1 then
+		if eater ~= nil and eater.components.inventory ~= nil then
+			inst._drink_level = inst._drink_level - 1
+			eater.components.inventory:GiveItem(drink_refund, nil, Vector3(x, y, z))
+		else
+			drink_refund.Transform:SetPosition(x,y,z)
+		end
+	elseif eater ~= nil and eater.components.inventory ~= nil then
 		eater.components.inventory:GiveItem(refund, nil, Vector3(x, y, z))
 	else
 		refund.Transform:SetPosition(x,y,z)
 	end
 end
+
 
 local function returncup(inst, eater)
 	local x, y, z = inst.Transform:GetWorldPosition()
