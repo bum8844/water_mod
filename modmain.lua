@@ -42,11 +42,12 @@ STRINGS.TABS.DRINKS_TAB = "Water"
 _G.RECIPETABS['DRINKS_TAB'] = {str = "DRINKS_TAB", sort=3, icon_atlas = "images/tea_inventoryitem.xml", icon = "watertab.tex"}
 
 modimport("scripts/recipes.lua")
-modimport("scripts/strings.lua")
+modimport("scripts/strings/strings.lua")
+modimport("scripts/strings/speech.lua")
 modimport("scripts/watertuning.lua")
 modimport("scripts/prepareagedrink.lua")
 modimport("scripts/preparedrink.lua")
-modimport("scripts/wateractions.lua")
+--modimport("scripts/wateractions.lua")
 
 AddMinimapAtlas("images/tea_minimap.xml")
 
