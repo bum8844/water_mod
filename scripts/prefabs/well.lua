@@ -103,7 +103,7 @@ local function onhit(inst)
 		end
 	end
 end
-
+--say수정해야함
 local function OnRefuseItem(inst, giver, item)
 	if inst.components.pickable.caninteractwith then
 		giver.components.talker:Say("I need to take out the bucket first.")
