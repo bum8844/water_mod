@@ -80,7 +80,7 @@ end
 
 local function onhammered(inst)
 	if inst.AnimState:IsCurrentAnimation("watering") or inst.AnimState:IsCurrentAnimation("idle_watering") then
-		inst.components.lootdropper:SpawnLootPrefab("bucket_full")
+		inst.components.lootdropper:SpawnLootPrefab("bucket_clean")
 	end
 	inst.components.lootdropper:SpawnLootPrefab("boards")
 	inst.components.lootdropper:SpawnLootPrefab("cutstone")

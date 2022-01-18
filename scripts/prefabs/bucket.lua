@@ -8,26 +8,24 @@ local assets =
 
 local prefabs =
 {
-	"bucket_full",
+	"bucket_clean",
 	"bucket_dirty",
-	"bucket_salt",
+	"bucket_salty",
 }
 
 -- 컴포넌트를 바닐라의 것으로 교체하면서, 기존에 component에서 자체적으로 처리하던 태그 부분을 overrideonfillfn으로 가져왔습니다.
 local function OnFill(inst, from_object)
-	local filleditem = nil
+	local filleditem, watertype = nil, nil
 	if from_object ~= nil then
-		if from_object:HasTag("CLEAN_waterlevel") or from_object:HasTag("cleansource") then
-			filleditem = SpawnPrefab("bucket_full")
-		elseif from_object:HasTag("SALTY_waterlevel") then
-			filleditem = SpawnPrefab("bucket_salt")
-		else
-			filleditem = SpawnPrefab("bucket_dirty")
+		if from_object.components.waterlevel ~= nil then
+			watertype = from_object.components.waterlevel.watertype
+		elseif from_object.components.water ~= nil then
+			watertype = from_objcet.components.water.watertype
 		end
+		filleditem = SpawnPrefab("bucket_"..string.lower(watertype))
 	else
-		filleditem = SpawnPrefab("bucket_salt")
-	end
-	
+		filleditem = SpawnPrefab("bucket_salty")
+
 	inst.SoundEmitter:PlaySound("dontstarve/creatures/pengull/splash")
 	
 	if filleditem == nil then

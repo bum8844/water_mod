@@ -1,8 +1,8 @@
 local bucketstates =
 {
-	{ name = "full", health = 0, sanity = -10, hunger = 0, thirst = 15 },
-	{ name = "dirty", health = -1, sanity = -10, hunger = 0, thirst = 15 },
-	{ name = "salt", health = -3, sanity = -10, hunger = 0, thirst = -15 },
+	{ name = "clean", anim = "full", health = 0, sanity = -10, hunger = 0, thirst = 15 },
+	{ name = "dirty", anim = "dirty", health = -1, sanity = -10, hunger = 0, thirst = 15 },
+	{ name = "salty", anim = "salt", health = -3, sanity = -10, hunger = 0, thirst = -15 },
 }
 
 local prefabs =
@@ -53,6 +53,7 @@ local function MakeBucket(data)
 		}
 	
 	local name = data.name
+	local anim = data.anim
 	
     local function fn()
 		local inst = CreateEntity()
@@ -66,7 +67,7 @@ local function MakeBucket(data)
 
 		inst.AnimState:SetBuild("buckets")
 		inst.AnimState:SetBank("buckets")
-		inst.AnimState:PlayAnimation(name)
+		inst.AnimState:PlayAnimation(anim)
 
 		inst:AddTag("drink")
 		
@@ -81,14 +82,7 @@ local function MakeBucket(data)
 		inst:AddTag("show_spoilage")
 		
 		if name ~= "salt" then
-			if name == "dirty" then
-				inst:AddTag("dirty")
-			else
-				inst:AddTag("clean")
-			end
 			inst:AddTag("icebox_valid")
-		else
-			inst:AddTag("salt")
 		end
 
 		inst:AddTag("bucket")
@@ -97,23 +91,13 @@ local function MakeBucket(data)
 		inst:AddComponent("tradable")
 		inst:AddComponent("temperature")
 		
-		--[[inst:AddComponent("drinkvalue")
-		if inst:HasTag("dirty") then
-			inst.components.drinkvalue:SetWaterType(WATERTYPE.DIRTY)
-		elseif inst:HasTag("salt") then
-			inst.components.drinkvalue:SetWaterType(WATERTYPE.SALT)
-		elseif inst:HasTag("clean") then
-			inst.components.drinkvalue:SetWaterType(WATERTYPE.CLEAN)
-		end
-		inst.components.drinkvalue:SetDrinkValue(TUNING.BUCKET_MAX_LEVEL)]]
-
 		inst:AddComponent("inventoryitem")
 		inst.components.inventoryitem.atlasname = "images/tea_inventoryitem.xml"
-		inst.components.inventoryitem.imagename = "bucket_"..name
+		inst.components.inventoryitem.imagename = "bucket_"..anim
 		
 		inst:AddComponent("water")
 		inst.components.water.watervalue = 20
-		inst.components.water.watertype = WATERTYPE.CLEAN
+		inst.components.water.watertype = WATERTYPE[string.upper(name)]
 		inst.components.water:SetOnTakenFn(onuse)
 
 		inst:AddComponent("watersource")
@@ -137,7 +121,7 @@ local function MakeBucket(data)
 		return inst
 	end
 	
-	return Prefab("bucket_"..data.name, fn, assets)
+	return Prefab("bucket_"..name, fn, assets)
 end
 
 local buckets = {}

@@ -77,6 +77,7 @@ local function OnTakeWater(inst, watervalue)
 		inst.components.waterlevel.accepting = true
 	end
 
+	inst.components.watersource.available = true
 	inst.components.propagator.acceptsheat = false
 end
 
