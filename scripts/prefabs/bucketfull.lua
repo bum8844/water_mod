@@ -111,10 +111,10 @@ local function MakeBucket(data)
 		inst.components.inventoryitem.atlasname = "images/tea_inventoryitem.xml"
 		inst.components.inventoryitem.imagename = "bucket_"..name
 		
-		--[[inst:AddComponent("fuel")
-		inst.components.fuel.fuelvalue = 10
-		inst.components.fuel.fueltype = FUELTYPE.WATER
-		inst.components.fuel.ontaken = returnbucket_fuel]]
+		inst:AddComponent("water")
+		inst.components.water.watervalue = 20
+		inst.components.water.watertype = WATERTYPE.CLEAN
+		inst.components.water:SetOnTakenFn(onuse)
 
 		inst:AddComponent("watersource")
 		inst.components.watersource.onusefn = onuse

@@ -17,21 +17,25 @@ local prefabs =
 local function OnFill(inst, from_object)
 	local filleditem = nil
 	if from_object ~= nil then
-		if from_object:HasTag("CLEAN_waterlevel") then
-			inst.components.fillable.filledprefab = "bucket_full"
-		elseif from_object:HasTag("SALTY_waterlevel")
-			inst.components.fillable.filledprefab = "bucket_salt"
+		if from_object:HasTag("CLEAN_waterlevel") or from_object:HasTag("cleansource") then
+			filleditem = SpawnPrefab("bucket_full")
+		elseif from_object:HasTag("SALTY_waterlevel") then
+			filleditem = SpawnPrefab("bucket_salt")
 		else
-			inst.components.fillable.filledprefab = "bucket_dirty"
+			filleditem = SpawnPrefab("bucket_dirty")
 		end
 	else
-		inst.components.fillable.filledprefab = "bucket_salt"
+		filleditem = SpawnPrefab("bucket_salt")
 	end
 	
 	inst.SoundEmitter:PlaySound("dontstarve/creatures/pengull/splash")
 	
 	if filleditem == nil then
 		return false
+	end
+
+	if from_object.components.waterlevel ~= nil then
+		from_object.components.waterlevel:DoDelta(-20)
 	end
 
 	local owner = inst.components.inventoryitem ~= nil and inst.components.inventoryitem:GetGrandOwner() or nil
@@ -58,7 +62,7 @@ local function FillByRain(inst)
     inst.rainfilling = 0
 
 	inst.SoundEmitter:PlaySound("dontstarve/creatures/pengull/splash")
-	
+
 	if inst.components.stackable.stacksize > 1 then
 		filleditem.Transform:SetPosition(inst.Transform:GetWorldPosition())
 		inst.components.stackable:Get():Remove()

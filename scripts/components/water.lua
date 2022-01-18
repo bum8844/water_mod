@@ -1,15 +1,15 @@
 local function onwatertype(self, watertype, old_watertype)
     if old_watertype ~= nil then
-        self.inst:RemoveTag(old_watertype.."_Water")
+        self.inst:RemoveTag(old_watertype.."_water")
     end
     if watertype ~= nil then
-        self.inst:AddTag(watertype.."_Water")
+        self.inst:AddTag(watertype.."_water")
     end
 end
 
 local Water = Class(function(self, inst)
     self.inst = inst
-    self.Water = 1
+    self.watervalue = 1
     self.watertype = nil
     self.ontaken = nil
     --self.returnprefab = nil

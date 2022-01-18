@@ -11,18 +11,6 @@ local prefabs =
 	"collapse_small",
 }
 
---[[local function WaterLevelChange(inst, giver, item)
-	if item:HasTag("bucket") then
-		inst.SoundEmitter:PlaySound("dontstarve/creatures/pengull/splash")
-	elseif item:HasTag("preparedrink_bottle") then
-		inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/medium")
-	else
-		inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/small")
-	end
-	local sum = 
-	inst.AnimState:OverrideSymbol("swap","barrel_meter_water", tostring(sum))
-end]]
-
 local function onhammered(inst, worker)
 	inst.components.lootdropper:DropLoot()
 	SpawnPrefab("collapse_small").Transform:SetPosition(inst.Transform:GetWorldPosition())
@@ -40,6 +28,14 @@ end
 local function onbuilt(inst)
     inst.AnimState:PlayAnimation("place",false)
 	inst.SoundEmitter:PlaySound("dontstarve/common/rain_meter_craft")
+end
+
+local function onburnt(inst)
+	local amount = math.ceil(inst.components.waterlevel:GetPercent() * inst.components.wateryprotection.addwetness * MOISTURE_ON_BURNT_MULTIPLIER)
+	if amount > 0 then
+		local x, y, z = inst.Transform:GetWorldPosition()
+		TheWorld.components.farming_manager:AddSoilMoistureAtPoint(x, 0, z, amount)
+	end
 end
 
 local function onsave(inst, data)
@@ -63,22 +59,28 @@ end]]
 
 local function OnDepleted(inst)
 	inst.components.watersource.available = false
+	inst.components.propagator.acceptsheat = true
 end
 
-local function OnTakeWater(inst, from_object)
-	if from_object:HasTag("bucket") then
+local function OnTakeWater(inst, watervalue)
+	if watervalue >= 20 then
 		inst.SoundEmitter:PlaySound("dontstarve/creatures/pengull/splash")
-	elseif item:HasTag("preparedrink_bottle") then
+	elseif watervalue >= 10 then
 		inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/medium")
 	else
 		inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/small")
 	end
-	inst.components.watersource.available = true
 
-	return true
+	if inst.components.waterlevel.currentwater == inst.components.waterlevel.maxwater then
+		inst.components.waterlevel.accepting = false
+	else
+		inst.components.waterlevel.accepting = true
+	end
+
+	inst.components.propagator.acceptsheat = false
 end
 
-local function OnSectionChange(old, new, inst)
+local function OnSectionChange(new, old, inst)
 	if inst._waterlevel ~= new then
 		inst._waterlevel = new
 		inst.AnimState:OverrideSymbol("swap", "barrel_meter_water", tostring(new))
@@ -106,8 +108,6 @@ local function fn()
 	
 	inst:AddTag("structure")
 	inst:AddTag("barrel")
-	inst:AddTag("waterlevel") --added on pristine state to process the action
-	inst:AddTag("cleanwater")
 	
 	inst.entity:SetPristine()
 	
@@ -127,37 +127,22 @@ local function fn()
 	inst.components.workable:SetOnWorkCallback(onhit)
 	
 	inst:AddComponent("waterlevel")
-	inst.components.waterlevel.watertype = WATERTYPE.CLEAN
-	inst.components.waterlevel.consuming = false
-	inst.components.waterlevel.maxwater = 100
-	inst.components.waterlevel:SetSections(20)
-	inst.components.waterlevel:InitializeWaterLevel(0)
 	inst.components.waterlevel:SetDepletedFn(OnDepleted)
 	inst.components.waterlevel:SetTakeWaterFn(OnTakeWater)
+	inst.components.waterlevel.maxwater = 100
 	inst.components.waterlevel.accepting = true
-
-    --[[inst:AddComponent("fueled")
-    inst.components.fueled.fueltype = FUELTYPE.MAGIC --"fueled" is only used for managing the water meter.
-    inst.components.fueled.consuming = false
-    inst.components.fueled.maxfuel = 100
-    inst.components.fueled:SetSections(20)
-    inst.components.fueled:InitializeFuelLevel(0)
-    inst.components.fueled:SetDepletedFn(OnDepleted)
-    --inst.components.fueled:SetTakeFuelFn(ontakefuel)
-    inst.components.fueled:SetSectionCallback(OnSectionChange)
-    inst.components.fueled.accepting = true
-
-    inst:AddComponent("fillable")
-    inst.components.fillable.overrideonfillfn = OnFill]]
+	inst.components.waterlevel:SetSections(20)
+	inst.components.waterlevel:SetSectionCallback(OnSectionChange)
+	inst.components.waterlevel:InitializeWaterLevel(0)
 
 	inst:AddComponent("watersource")
 	
-	inst:ListenForEvent("onbuilt", onbuilt)
-	
-	MakeHauntableWork(inst)
-	
 	MakeMediumBurnable(inst, nil, nil, true)
     MakeSmallPropagator(inst)
+	MakeHauntableWork(inst)
+
+	inst:ListenForEvent("onbuilt", onbuilt)
+	inst:ListenForEvent("onburnt", onburnt)
 
     inst.OnSave = onsave
     inst.OnLoad = onload

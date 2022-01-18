@@ -25,7 +25,7 @@ local function onsecondarywatertype(self, watertype, old_watertype)
 end
 
 local function onaccepting(self, accepting)
-    if self.watertype ~= nil and self.watertype ~= WATERTYPE.USAGE then
+    if self.watertype ~= nil then
         if accepting then
             self.inst:AddTag(self.watertype.."_waterlevel")
         else
@@ -148,19 +148,19 @@ function Waterlevel:TakeWaterItem(item, doer)
     if self:CanAcceptWaterItem(item) then
         local oldsection = self:GetCurrentSection()
 
-        self:DoDelta(item.components.waterlevel.watervalue, doer)
+        self:DoDelta(item.components.water.watervalue, doer)
 
-        if self.ontakewaterfn ~= nil then
-            self.ontakewaterfn(self.inst, watervalue)
-        end
-        self.inst:PushEvent("takewater", { watervalue = watervalue }, { item = item }, { doer = doer })
-		
-		local watervalue = 0
+        local watervalue = 0
         if item.components.water ~= nil then
             watervalue = item.components.water.watervalue
             item.components.water:Taken(self.inst)
         end
         item:Remove()
+
+        if self.ontakewaterfn ~= nil then
+            self.ontakewaterfn(self.inst, watervalue)
+        end
+        self.inst:PushEvent("takewater", { watervalue = watervalue }, { item = item }, { doer = doer })
 
         return true
     end

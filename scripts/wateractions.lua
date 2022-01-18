@@ -1,29 +1,13 @@
-local require = GLOBAL.require
-local STRINGS = GLOBAL.STRINGS
-local RECIPETABS = GLOBAL.RECIPETABS
-local Ingredient = GLOBAL.Ingredient
-local FOODTYPE = GLOBAL.FOODTYPE
-local TECH = GLOBAL.TECH
-local TUNING = GLOBAL.TUNING
-local TheSim = GLOBAL.TheSim
-local Vector3 = GLOBAL.Vector3
-local Action = GLOBAL.Action
-local ACTIONS = GLOBAL.ACTIONS
-local ActionHandler = GLOBAL.ActionHandler
-local TheNet = GLOBAL.TheNet
-
---[[AddAction("DRINK", STRINGS.ACTIONS.DRINK, function(act)
-	if act.invobject and act.invobject.components.fili_cupdrink then
-        return act.invobject.components.drinkvalue:Drink(act.doer, act.invobject)
-    end
-end)]]
+local ACTIONS = _G.ACTIONS
+local Action = _G.Action
+local ActionHandler = _G.ActionHandler
+local WATERTYPE = _G.WATERTYPE
 
 local FILL_BARREL = Action({priority=3})
 FILL_BARREL.id = "FILL_BARREL"
 FILL_BARREL.str = STRINGS.ACTIONS.FILL
 FILL_BARREL.fn = function(act)
     if act.target.components.waterlevel:TakeWaterItem(act.invobject, act.doer) then
-        act.doer.components.inventory:RemoveItem(act.invobject)
         return true
     end
 end
@@ -31,13 +15,18 @@ end
 AddAction(FILL_BARREL)
 
 local function waterlevel(inst, doer, target, actions)
-    if target:HasTag("waterlevel") then
-        table.insert(actions, ACTIONS.FILL_BARREL)
+    for k, v in pairs(WATERTYPE) do
+        if inst:HasTag(v.."_water") then
+            if target:HasTag(v.."_waterlevel") then
+                table.insert(actions, ACTIONS.FILL_BARREL)
+            end
+            return
+        end
     end
 end
 
-AddComponentAction("USEITEM", "fillable", waterlevel)
-AddComponentAction("USEITEM", "watersource", waterlevel)
+--AddComponentAction("USEITEM", "waterlevel", waterlevel)
+AddComponentAction("USEITEM", "water", waterlevel)
 
 AddStategraphActionHandler("wilson", ActionHandler(ACTIONS.FILL_BARREL, "dolongaction"))
 AddStategraphActionHandler("wilson_client", ActionHandler(ACTIONS.FILL_BARREL, "dolongaction"))

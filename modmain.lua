@@ -1,11 +1,6 @@
-local _G = GLOBAL
-local RECIPETABS = _G.RECIPETABS
-local TECH = _G.TECH
-local Ingredient = _G.Ingredient
-local STRINGS = _G.STRINGS
-local TUNING = _G.TUNING
-local CUSTOM_RECIPETABS = _G.CUSTOM_RECIPETABS
-
+env._G = GLOBAL
+env.require = _G.require
+env.STRINGS = _G.STRINGS
 
 PrefabFiles =
 {
@@ -26,7 +21,8 @@ PrefabFiles =
 	"well_drilling",
 }
 
-Assets = {
+Assets =
+{
     Asset("ATLAS", "images/tea_inventoryitem.xml"),
     Asset("IMAGE", "images/tea_inventoryitem.tex"),
 	Asset("ATLAS", "images/tea_minimap.xml"),
@@ -41,6 +37,15 @@ STRINGS.NAMES.DRINKS_TAB = "WATER"
 STRINGS.TABS.DRINKS_TAB = "Water"
 _G.RECIPETABS['DRINKS_TAB'] = {str = "DRINKS_TAB", sort=3, icon_atlas = "images/tea_inventoryitem.xml", icon = "watertab.tex"}
 
+_G.FUELTYPE.WATER = "WATER"
+
+_G.WATERTYPE = 
+{
+	CLEAN = "CLEAN",
+	DIRTY = "DIRTY",
+	SALTY = "SALTY",
+}
+
 modimport("scripts/recipes.lua")
 --modimport("scripts/strings/strings.lua")
 --modimport("scripts/strings/speech.lua")
@@ -51,14 +56,7 @@ modimport("scripts/wateractions.lua")
 
 AddMinimapAtlas("images/tea_minimap.xml")
 
-_G.FUELTYPE.WATER = "WATER"
 
-_G.WATERTYPE = 
-{
-	CLEAN = "CLEAN",
-	DIRTY = "DIRTY",
-	SALTY = "SALTY",
-}
 
 local function BackBucket(inst)
     local owner = inst.components.inventoryitem.owner
