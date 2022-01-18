@@ -11,17 +11,17 @@ local prefabs =
 	"collapse_small",
 }
 
-local function WaterLevelChange(inst, giver, item)
-	if item:HasTag("fil_bucket") or item:HasTag("bucket") then
+--[[local function WaterLevelChange(inst, giver, item)
+	if item:HasTag("bucket") then
 		inst.SoundEmitter:PlaySound("dontstarve/creatures/pengull/splash")
-	elseif item:HasTag("fil_bottle") or item:HasTag("preparedrink_bottle") then
+	elseif item:HasTag("preparedrink_bottle") then
 		inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/medium")
 	else
 		inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/small")
 	end
 	local sum = 
 	inst.AnimState:OverrideSymbol("swap","barrel_meter_water", tostring(sum))
-end
+end]]
 
 local function onhammered(inst, worker)
 	inst.components.lootdropper:DropLoot()
@@ -61,30 +61,28 @@ end
 	end
 end]]
 
-local function OnChargedFn(inst)
-    --[[if inst.task ~= nil then
-        inst.task:Cancel()
-        inst.task = nil
-        inst.components.resistance:SetOnResistDamageFn(OnResistDamage)
-    end
-    for i, v in ipairs(RESISTANCES) do
-        inst.components.resistance:AddResistance(v)
-    end]]
+local function OnDepleted(inst)
+	inst.components.watersource.available = false
 end
 
-local function nofuel(inst)
-    --[[inst.components.cooldown.onchargedfn = nil
-    inst.components.cooldown:FinishCharging()]]
+local function OnTakeWater(inst, from_object)
+	if from_object:HasTag("bucket") then
+		inst.SoundEmitter:PlaySound("dontstarve/creatures/pengull/splash")
+	elseif item:HasTag("preparedrink_bottle") then
+		inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/medium")
+	else
+		inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/small")
+	end
+	inst.components.watersource.available = true
+
+	return true
 end
 
-local function ontakefuel(inst)
-    --[[if inst.components.equippable:IsEquipped() and
-        not inst.components.fueled:IsEmpty() and
-        inst.components.cooldown.onchargedfn == nil then
-        inst.components.cooldown.onchargedfn = OnChargedFn
-        inst.components.cooldown:StartCharging(TUNING.ARMOR_SKELETON_FIRST_COOLDOWN)
-    end]]
-    inst.SoundEmitter:PlaySound("dontstarve/common/nightmareAddFuel")
+local function OnSectionChange(old, new, inst)
+	if inst._waterlevel ~= new then
+		inst._waterlevel = new
+		inst.AnimState:OverrideSymbol("swap", "barrel_meter_water", tostring(new))
+	end
 end
 
 local function fn()
@@ -108,12 +106,16 @@ local function fn()
 	
 	inst:AddTag("structure")
 	inst:AddTag("barrel")
+	inst:AddTag("waterlevel") --added on pristine state to process the action
+	inst:AddTag("cleanwater")
 	
 	inst.entity:SetPristine()
 	
     if not TheWorld.ismastersim then
         return inst
     end
+
+    inst._waterlevel = 0
 	
 	inst:AddComponent("lootdropper")
     inst:AddComponent("inspectable")
@@ -124,13 +126,31 @@ local function fn()
 	inst.components.workable:SetOnFinishCallback(onhammered)
 	inst.components.workable:SetOnWorkCallback(onhit)
 	
-    inst:AddComponent("fueled")
-    inst.components.fueled.fueltype = "WATER"
+	inst:AddComponent("waterlevel")
+	inst.components.waterlevel.watertype = WATERTYPE.CLEAN
+	inst.components.waterlevel.consuming = false
+	inst.components.waterlevel.maxwater = 100
+	inst.components.waterlevel:SetSections(20)
+	inst.components.waterlevel:InitializeWaterLevel(0)
+	inst.components.waterlevel:SetDepletedFn(OnDepleted)
+	inst.components.waterlevel:SetTakeWaterFn(OnTakeWater)
+	inst.components.waterlevel.accepting = true
+
+    --[[inst:AddComponent("fueled")
+    inst.components.fueled.fueltype = FUELTYPE.MAGIC --"fueled" is only used for managing the water meter.
+    inst.components.fueled.consuming = false
+    inst.components.fueled.maxfuel = 100
+    inst.components.fueled:SetSections(20)
     inst.components.fueled:InitializeFuelLevel(0)
-    inst.components.fueled:SetDepletedFn(nofuel)
-    inst.components.fueled:SetTakeFuelFn(ontakefuel)
+    inst.components.fueled:SetDepletedFn(OnDepleted)
+    --inst.components.fueled:SetTakeFuelFn(ontakefuel)
+    inst.components.fueled:SetSectionCallback(OnSectionChange)
     inst.components.fueled.accepting = true
-	print(inst.components.fueled.fueltype)
+
+    inst:AddComponent("fillable")
+    inst.components.fillable.overrideonfillfn = OnFill]]
+
+	inst:AddComponent("watersource")
 	
 	inst:ListenForEvent("onbuilt", onbuilt)
 	

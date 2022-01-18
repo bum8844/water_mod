@@ -42,22 +42,22 @@ STRINGS.TABS.DRINKS_TAB = "Water"
 _G.RECIPETABS['DRINKS_TAB'] = {str = "DRINKS_TAB", sort=3, icon_atlas = "images/tea_inventoryitem.xml", icon = "watertab.tex"}
 
 modimport("scripts/recipes.lua")
-modimport("scripts/strings/strings.lua")
-modimport("scripts/strings/speech.lua")
+--modimport("scripts/strings/strings.lua")
+--modimport("scripts/strings/speech.lua")
 modimport("scripts/watertuning.lua")
 modimport("scripts/prepareagedrink.lua")
 modimport("scripts/preparedrink.lua")
---modimport("scripts/wateractions.lua")
+modimport("scripts/wateractions.lua")
 
 AddMinimapAtlas("images/tea_minimap.xml")
+
+_G.FUELTYPE.WATER = "WATER"
 
 _G.WATERTYPE = 
 {
 	CLEAN = "CLEAN",
 	DIRTY = "DIRTY",
-	SALT = "SALT",
-	USAGE = "USAGE",
-	WATERCONTAINER = "WATERCONTAINER",
+	SALTY = "SALTY",
 }
 
 local function BackBucket(inst)
@@ -68,7 +68,7 @@ local function BackBucket(inst)
     inst:Remove()
 end
 
-local cleansource =
+TUNING.CLEANSOURCE =
 {
 	"oasislake",
 	"hotspring"
@@ -78,8 +78,8 @@ local function CleanWater(inst)
 	inst:AddTag("cleanwater")
 end
 
-for _, v in pairs(cleansource) do
-	AddPrefabPostInit(v, CleanWater)
+for _, v in pairs(TUNING.CLEANSOURCE) do
+	AddPrefabPostInit(v, function(inst) inst:AddTag("cleanwater") end)
 end
 
 --[[for k, v in pairs(require("preparedrink")) do
@@ -160,7 +160,10 @@ local function bottleadd(inst)
 end
 
 AddPrefabPostInit("messagebottleempty",bottleadd)
--- 이 코드가 말리기 위해 추가한 코드임
+
+-- bum: 이 코드가 말리기 위해 추가한 코드임
+-- AFS: dryer:StartDrying calls dryable.components.perishable:GetPercent(), so we need to add such hack to
+-- make tea leaves dryable on the rack.
 AddComponentPostInit("dryer", function(self)
     local _StartDrying = self.StartDrying
     

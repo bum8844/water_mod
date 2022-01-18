@@ -1,3 +1,6 @@
+--TODO: campkettle is going to be disposible, not able to 
+--cook prepared drinks, and only boils dirty water into clean water. 
+
 require "prefabutil"
 
 local assets =

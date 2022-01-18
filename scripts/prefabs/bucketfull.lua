@@ -10,7 +10,7 @@ local prefabs =
 	"bucket_ice",
 }
 
-local function returnbucket(inst, eater)
+local function oneaten(inst, eater)
 	local x, y, z = inst.Transform:GetWorldPosition()
 	local refund = SpawnPrefab("bucket")
 	if eater ~= nil and eater.components.inventory ~= nil then
@@ -19,6 +19,29 @@ local function returnbucket(inst, eater)
 		refund.Transform:SetPosition(x,y,z)
 	end
 end
+
+local function onuse(inst)
+	local refund = SpawnPrefab("bucket")
+	local owner = inst.components.inventoryitem ~= nil and inst.components.inventoryitem:GetGrandOwner() or nil
+
+	if owner ~= nil then
+		local container = owner.components.inventory or owner.components.container
+		local item = container:RemoveItem(inst, false) or inst
+		item:Remove()
+		container:GiveItem(refund, nil, owner:GetPosition())
+	else
+		refund.Transform:SetPosition(inst.Transform:GetWorldPosition())
+		local item =
+			inst.components.stackable ~= nil and
+			inst.components.stackable:IsStack() and
+			inst.components.stackable:Get() or
+			inst
+		item:Remove()
+	end
+	
+	return true
+end
+
 
 local function MakeBucket(data)
 	local assets =
@@ -74,7 +97,7 @@ local function MakeBucket(data)
 		inst:AddComponent("tradable")
 		inst:AddComponent("temperature")
 		
-		inst:AddComponent("drinkvalue")
+		--[[inst:AddComponent("drinkvalue")
 		if inst:HasTag("dirty") then
 			inst.components.drinkvalue:SetWaterType(WATERTYPE.DIRTY)
 		elseif inst:HasTag("salt") then
@@ -82,18 +105,27 @@ local function MakeBucket(data)
 		elseif inst:HasTag("clean") then
 			inst.components.drinkvalue:SetWaterType(WATERTYPE.CLEAN)
 		end
-		inst.components.drinkvalue:SetDrinkValue(TUNING.BUCKET_MAX_LEVEL)
+		inst.components.drinkvalue:SetDrinkValue(TUNING.BUCKET_MAX_LEVEL)]]
 
 		inst:AddComponent("inventoryitem")
 		inst.components.inventoryitem.atlasname = "images/tea_inventoryitem.xml"
 		inst.components.inventoryitem.imagename = "bucket_"..name
 		
+		--[[inst:AddComponent("fuel")
+		inst.components.fuel.fuelvalue = 10
+		inst.components.fuel.fueltype = FUELTYPE.WATER
+		inst.components.fuel.ontaken = returnbucket_fuel]]
+
+		inst:AddComponent("watersource")
+		inst.components.watersource.onusefn = onuse
+		inst.components.watersource.override_fill_uses = 20
+
 		inst:AddComponent("edible")
 		inst.components.edible.thirst = data.thirst
 		inst.components.edible.health = data.health
 		inst.components.edible.sanity = data.sanity 
 		inst.components.edible.hunger = data.hunger
-		inst.components.edible:SetOnEatenFn(returnbucket)
+		inst.components.edible:SetOnEatenFn(oneaten)
 
 		inst.components.temperature.current = 30
 

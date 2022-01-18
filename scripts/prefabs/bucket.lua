@@ -15,15 +15,17 @@ local prefabs =
 
 -- 컴포넌트를 바닐라의 것으로 교체하면서, 기존에 component에서 자체적으로 처리하던 태그 부분을 overrideonfillfn으로 가져왔습니다.
 local function OnFill(inst, from_object)
-	local filleditem
+	local filleditem = nil
 	if from_object ~= nil then
-		if from_object:HasTag("cleanwater") then
-			filleditem = SpawnPrefab("bucket_full")
+		if from_object:HasTag("CLEAN_waterlevel") then
+			inst.components.fillable.filledprefab = "bucket_full"
+		elseif from_object:HasTag("SALTY_waterlevel")
+			inst.components.fillable.filledprefab = "bucket_salt"
 		else
-			filleditem = SpawnPrefab("bucket_dirty")
+			inst.components.fillable.filledprefab = "bucket_dirty"
 		end
 	else
-		filleditem = SpawnPrefab("bucket_salt")
+		inst.components.fillable.filledprefab = "bucket_salt"
 	end
 	
 	inst.SoundEmitter:PlaySound("dontstarve/creatures/pengull/splash")
@@ -52,15 +54,15 @@ local function OnFill(inst, from_object)
 end
 
 local function FillByRain(inst)
-	local filleditem
+	local filleditem = SpawnPrefab("bucket_full")
     inst.rainfilling = 0
+
 	inst.SoundEmitter:PlaySound("dontstarve/creatures/pengull/splash")
+	
 	if inst.components.stackable.stacksize > 1 then
-	    filleditem = SpawnPrefab("bucket_full")
 		filleditem.Transform:SetPosition(inst.Transform:GetWorldPosition())
 		inst.components.stackable:Get():Remove()
 	else
-	    filleditem = SpawnPrefab("bucket_full")
 		filleditem.Transform:SetPosition(inst.Transform:GetWorldPosition())
 		inst:Remove()
 	end
@@ -81,9 +83,6 @@ local function fn()
     inst.AnimState:PlayAnimation("empty")
 
     inst.entity:SetPristine()
-	
-	inst:AddTag("fil_bucket")
-	inst:AddTag("emptiy")
 
     if not TheWorld.ismastersim then
         return inst
@@ -113,22 +112,16 @@ local function fn()
 
     inst:AddComponent("inspectable")
 	
-	inst:AddComponent("tradable")
-	
     inst:AddComponent("fuel")
     inst.components.fuel.fuelvalue = TUNING.LARGE_FUEL
-	
-	inst:AddComponent("drinkvalue")
-	inst.components.drinkvalue:SetWaterType(WATERTYPE.WATERCONTAINER)
-	inst.components.drinkvalue:SetDrinkValue(TUNING.BUCKET_MAX_LEVEL)
 	
     MakeSmallBurnable(inst, TUNING.MED_BURNTIME)
     MakeSmallPropagator(inst)
 	
     inst:AddComponent("inventoryitem")
     inst.replica.inventoryitem:SetImage("bucket")
-	inst.components.inventoryitem.atlasname= "images/tea_inventoryitem.xml"
-    inst.components.inventoryitem.imagename= "bucket_empty"
+	inst.components.inventoryitem.atlasname = "images/tea_inventoryitem.xml"
+    inst.components.inventoryitem.imagename = "bucket_empty"
 
     MakeHauntableLaunchAndSmash(inst)
 

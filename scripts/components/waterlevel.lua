@@ -1,17 +1,13 @@
---Sewing should be redone without using the waterlevel component... it's kind of weird.
+--'waterlevel' is basically a modified version of 'fueled.'
 
 local SourceModifierList = require("util/sourcemodifierlist")
 
 local function onwatertype(self, watertype, old_watertype)
     if old_watertype ~= nil and old_watertype ~= self.secondarywatertype then
-        self.inst:RemoveTag(old_watertype == WATERTYPE.USAGE and "needssewing" or (old_watertype.."waterlevel"))
+        self.inst:RemoveTag(old_watertype.."waterlevel")
     end
     if watertype == self.secondarywatertype then
         return
-    elseif watertype == WATERTYPE.USAGE then
-        if self.currentwater < self.maxwater and not self.no_sewing then
-            self.inst:AddTag("needssewing")
-        end
     elseif watertype ~= nil and self.accepting then
         self.inst:AddTag(watertype.."_waterlevel")
     end
@@ -19,26 +15,12 @@ end
 
 local function onsecondarywatertype(self, watertype, old_watertype)
     if old_watertype ~= nil and old_watertype ~= self.watertype then
-        self.inst:RemoveTag(old_watertype == WATERTYPE.USAGE and "needssewing" or (old_watertype.."_waterlevel"))
+        self.inst:RemoveTag(old_watertype.."_waterlevel")
     end
     if watertype == self.watertype then
         return
-    elseif watertype == WATERTYPE.USAGE then
-        if self.currentwater < self.maxwater and not self.no_sewing then
-            self.inst:AddTag("needssewing")
-        end
     elseif watertype ~= nil and self.accepting then
         self.inst:AddTag(watertype.."_waterlevel")
-    end
-end
-
-local function onno_sewing(self, no_sewing)
-    if (self.watertype == WATERTYPE.USAGE or self.secondarywatertype == WATERTYPE.USAGE) and self.currentwater < self.maxwater then
-        if no_sewing then
-            self.inst:RemoveTag("needssewing")
-        else
-            self.inst:AddTag("needssewing")
-        end
     end
 end
 
@@ -59,15 +41,13 @@ local function onaccepting(self, accepting)
     end
 end
 
-local function onmaxwater(self, maxwater)
-    if (self.watertype == WATERTYPE.USAGE or self.secondarywatertype == WATERTYPE.USAGE) and not self.no_sewing then
-        if self.currentwater < maxwater then
-            self.inst:AddTag("needssewing")
-        else
-            self.inst:RemoveTag("needssewing")
-        end
+--[[local function onmaxwater(self, maxwater)
+    if self.watertype ~= nil and self.currentwater < maxwater then
+        self.inst:AddTag(self.watertype.."_waterlevel")
+    else
+        self.inst:AddTag(self.watertype.."_waterlevel")
     end
-end
+end]]
 
 local function oncurrentwater(self, currentwater)
     if currentwater <= 0 then
@@ -75,7 +55,6 @@ local function oncurrentwater(self, currentwater)
     else
         self.inst:RemoveTag("waterdepleted")
     end
-    onmaxwater(self, self.maxwater)
 end
 
 local Waterlevel = Class(function(self, inst)
@@ -84,10 +63,10 @@ local Waterlevel = Class(function(self, inst)
 
     self.maxwater = 0
     self.currentwater = 0
-    self.rate = 1
+    self.rate = 1 --positive rate = consume, negative = product
 	self.rate_modifiers = SourceModifierList(self.inst)
+    self.priority = {}
 
-    self.no_sewing = nil --V2C: HACK COLON RIGHT PARANTHESIS, I mean, what choice do I have if I don't want to break mods -_ -
     self.accepting = false
     self.watertype = WATERTYPE.CLEAN
     self.secondarywatertype = nil
@@ -100,22 +79,17 @@ nil,
     watertype = onwatertype,
     secondarywatertype = onsecondarywatertype,
     accepting = onaccepting,
-    no_sewing = onno_sewing,
-    maxwater = onmaxwater,
+    --maxwater = onmaxwater,
     currentwater = oncurrentwater,
 })
-
-function Waterlevel:SetWaterValue(name)
-	self.watertype = name
-end
 
 function Waterlevel:OnRemoveFromEntity()
     self:StopConsuming()
     if self.watertype ~= nil then
-        self.inst:RemoveTag(self.watertype == WATERTYPE.USAGE and "needssewing" or (self.watertype.."_waterlevel"))
+        self.inst:RemoveTag(self.watertype.."_waterlevel")
     end
     if self.secondarywatertype ~= nil and self.secondarywatertype ~= self.watertype then
-        self.inst:RemoveTag(self.secondarywatertype == WATERTYPE.USAGE and "needssewing" or (self.secondarywatertype.."_waterlevel"))
+        self.inst:RemoveTag(self.secondarywatertype.."_waterlevel")
     end
     self.inst:RemoveTag("waterdepleted")
 end
@@ -155,7 +129,7 @@ function Waterlevel:SetSections(num)
 end
 
 function Waterlevel:CanAcceptWaterItem(item)
-    return self.accepting and item and item.components.drinkvalue and (item.components.drinkvalue.watertype == self.watertype or item.components.drinkvalue.watertype == self.secondarywatertype)
+    return self.accepting and item and item.components.water and (item.components.water.watertype == self.watertype or item.components.water.watertype == self.secondarywatertype)
 end
 
 function Waterlevel:GetCurrentSection()
@@ -177,14 +151,14 @@ function Waterlevel:TakeWaterItem(item, doer)
         self:DoDelta(item.components.waterlevel.watervalue, doer)
 
         if self.ontakewaterfn ~= nil then
-            self.ontakewaterfn(self.inst, watervalue, item, doer)
+            self.ontakewaterfn(self.inst, watervalue)
         end
         self.inst:PushEvent("takewater", { watervalue = watervalue }, { item = item }, { doer = doer })
 		
 		local watervalue = 0
-        if item.components.drinkvalue ~= nil then
-            watervalue = item.components.drinkvalue.watervalue
-            item.components.drinkvalue:Taken(self.inst)
+        if item.components.water ~= nil then
+            watervalue = item.components.water.watervalue
+            item.components.water:Taken(self.inst)
         end
         item:Remove()
 
@@ -215,6 +189,35 @@ end
 function Waterlevel:SetPercent(amount)
     local target = (self.maxwater * amount)
     self:DoDelta(target - self.currentwater)
+end
+
+function Waterlevel:SetFirstPeriod(firstperiod, firstperiodfull)
+    self.firstperiod = firstperiod
+    self.firstperiodfull = firstperiodfull --optional
+end
+
+local function OnDoUpdate(inst, self, period)
+    self:DoUpdate(period)
+end
+
+function Waterlevel:StartConsuming()
+    self.consuming = true
+    if self.task == nil then
+        self.task = self.inst:DoPeriodicTask(self.period, OnDoUpdate, nil, self, self.period)
+        if self.firstperiod ~= nil then
+            self.firstperioddt = self.currentwater >= self.maxwater and self.firstperiodfull or self.firstperiod
+            self.inst:StartWallUpdatingComponent(self)
+        end
+    end
+end
+
+function Waterlevel:OnWallUpdate(dt)
+    if TheNet:IsServerPaused() then return end
+
+    dt = self.firstperioddt
+    self.firstperioddt = nil
+    self.inst:StopWallUpdatingComponent(self)
+    self:DoUpdate(dt)
 end
 
 function Waterlevel:InitializeWaterLevel(waterlevel)
@@ -252,5 +255,33 @@ function Waterlevel:DoDelta(amount, doer)
 
     self.inst:PushEvent("percentusedchange", { percent = self:GetPercent() })
 end
+
+function Waterlevel:DoUpdate(dt)
+    if self.consuming ~= nil then
+        self:DoDelta(-dt * self.rate * self.rate_modifiers:Get())
+    end
+
+    if self:IsEmpty() then
+        self:StopConsuing()
+    end
+
+    if self.updatefn ~= nil then
+        self.updatefn(self.inst)
+    end
+end
+
+function Waterlevel:StopConsuming()
+    self.consuming = false
+    if self.task ~= nil then
+        self.task:Cancel()
+        self.task = nil
+    end
+    if self.firstperioddt ~= nil then
+        self.firstperioddt = nil
+        self.inst:StopWallUpdatingComponent(self)
+    end
+end
+
+Waterlevel.LongUpdate = Waterlevel.DoUpdate
 
 return Waterlevel

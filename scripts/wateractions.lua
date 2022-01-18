@@ -7,26 +7,46 @@ local TECH = GLOBAL.TECH
 local TUNING = GLOBAL.TUNING
 local TheSim = GLOBAL.TheSim
 local Vector3 = GLOBAL.Vector3
+local Action = GLOBAL.Action
 local ACTIONS = GLOBAL.ACTIONS
+local ActionHandler = GLOBAL.ActionHandler
 local TheNet = GLOBAL.TheNet
 
-
-
-
-
-AddAction("FILI_CUPDRINK", STRINGS.AW_DRINK, function(act)
+--[[AddAction("DRINK", STRINGS.ACTIONS.DRINK, function(act)
 	if act.invobject and act.invobject.components.fili_cupdrink then
-        return act.invobject.components.fili_cupdrink:Drink(act.doer, act.invobject)
+        return act.invobject.components.drinkvalue:Drink(act.doer, act.invobject)
     end
-end)
-	
+end)]]
+
+local FILL_BARREL = Action({priority=3})
+FILL_BARREL.id = "FILL_BARREL"
+FILL_BARREL.str = STRINGS.ACTIONS.FILL
+FILL_BARREL.fn = function(act)
+    if act.target.components.waterlevel:TakeWaterItem(act.invobject, act.doer) then
+        act.doer.components.inventory:RemoveItem(act.invobject)
+        return true
+    end
+end
+
+AddAction(FILL_BARREL)
+
+local function waterlevel(inst, doer, target, actions)
+    if target:HasTag("waterlevel") then
+        table.insert(actions, ACTIONS.FILL_BARREL)
+    end
+end
+
+AddComponentAction("USEITEM", "fillable", waterlevel)
+AddComponentAction("USEITEM", "watersource", waterlevel)
+
+AddStategraphActionHandler("wilson", ActionHandler(ACTIONS.FILL_BARREL, "dolongaction"))
+AddStategraphActionHandler("wilson_client", ActionHandler(ACTIONS.FILL_BARREL, "dolongaction"))
+--[[
 function SetupBottleDrinkActions(inst, doer, actions)
 	table.insert(actions, GLOBAL.ACTIONS.FILI_CUPDRINK)
 end
+
 AddComponentAction("INVENTORY", "fili_cupdrink", SetupBottleDrinkActions)
-
-
-
 
 local State = GLOBAL.State
 local TimeEvent = GLOBAL.TimeEvent
@@ -125,4 +145,4 @@ AddStategraphState("wilson_client", fili_cupdrink_state_client)
 
 local fili_cupdrink_ah = GLOBAL.ActionHandler( GLOBAL.ACTIONS.FILI_CUPDRINK, "fili_cupdrink_action" )
 AddStategraphActionHandler("wilson", fili_cupdrink_ah)
-AddStategraphActionHandler("wilson_client", fili_cupdrink_ah)
+AddStategraphActionHandler("wilson_client", fili_cupdrink_ah)]]
