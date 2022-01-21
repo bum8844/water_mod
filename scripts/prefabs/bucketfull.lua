@@ -12,9 +12,11 @@ local prefabs =
 
 local function oneaten(inst, eater)
 	local x, y, z = inst.Transform:GetWorldPosition()
-	local refund = SpawnPrefab("bucket")
+	local item = nil
+	inst.components.finiteuses:Use(1)
+
 	if eater ~= nil and eater.components.inventory ~= nil then
-		eater.components.inventory:GiveItem(refund, nil, Vector3(x, y, z))
+		eater.components.inventory:GiveItem(inst, nil, Vector3(x, y, z))
 	else
 		refund.Transform:SetPosition(x,y,z)
 	end
@@ -104,10 +106,14 @@ local function MakeBucket(data)
 		inst.components.watersource.onusefn = onuse
 		inst.components.watersource.override_fill_uses = 20
 
+		inst:AddComponent("finiteuses")
+		inst.components.finiteuses:SetMaxUses(5)
+		inst.components.finiteuses:SetOnFinished(onuse)
+
 		inst:AddComponent("edible")
 		inst.components.edible.thirst = data.thirst
 		inst.components.edible.health = data.health
-		inst.components.edible.sanity = data.sanity 
+		inst.components.edible.sanity = data.sanity
 		inst.components.edible.hunger = data.hunger
 		inst.components.edible:SetOnEatenFn(oneaten)
 

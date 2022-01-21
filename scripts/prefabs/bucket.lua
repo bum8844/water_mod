@@ -25,6 +25,7 @@ local function OnFill(inst, from_object)
 		filleditem = SpawnPrefab("bucket_"..string.lower(watertype))
 	else
 		filleditem = SpawnPrefab("bucket_salty")
+	end
 
 	inst.SoundEmitter:PlaySound("dontstarve/creatures/pengull/splash")
 	
@@ -121,7 +122,6 @@ local function fn()
     MakeSmallPropagator(inst)
 	
     inst:AddComponent("inventoryitem")
-    inst.replica.inventoryitem:SetImage("bucket")
 	inst.components.inventoryitem.atlasname = "images/tea_inventoryitem.xml"
     inst.components.inventoryitem.imagename = "bucket_empty"
 
