@@ -20,7 +20,7 @@ local function OnFill(inst, from_object)
 		if from_object.components.waterlevel ~= nil then
 			watertype = from_object.components.waterlevel.watertype
 		elseif from_object.components.water ~= nil then
-			watertype = from_objcet.components.water.watertype
+			watertype = from_object.components.water.watertype
 		end
 		filleditem = SpawnPrefab("bucket_"..string.lower(watertype))
 	else
@@ -112,6 +112,8 @@ local function fn()
 	
 	inst:AddComponent("stackable")
     inst.components.stackable.maxsize = TUNING.STACK_SIZE_SMALLITEM
+
+    inst:AddComponent("tradable") --to work with water well
 
     inst:AddComponent("inspectable")
 	

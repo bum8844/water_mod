@@ -12,13 +12,23 @@ local prefabs =
 
 local function oneaten(inst, eater)
 	local x, y, z = inst.Transform:GetWorldPosition()
+	local uses = inst.components.finiteuses:GetUses()
+	uses = uses - 1
+
 	local item = nil
-	inst.components.finiteuses:Use(1)
+	if uses > 0 then
+		item = SpawnPrefab(inst.prefab)
+		item.components.finiteuses:SetUses(uses)
+	else
+		item = SpawnPrefab("bucket")
+	end
+
+	inst:Remove()
 
 	if eater ~= nil and eater.components.inventory ~= nil then
-		eater.components.inventory:GiveItem(inst, nil, Vector3(x, y, z))
+		eater.components.inventory:GiveItem(item)
 	else
-		refund.Transform:SetPosition(x,y,z)
+		item.Transform:SetPosition(x,y,z)
 	end
 end
 
@@ -106,15 +116,17 @@ local function MakeBucket(data)
 		inst.components.watersource.onusefn = onuse
 		inst.components.watersource.override_fill_uses = 20
 
+		--finiteuses for managing how many times bucket can be drank.
 		inst:AddComponent("finiteuses")
 		inst.components.finiteuses:SetMaxUses(5)
+		inst.components.finiteuses:SetUses(5)
 		inst.components.finiteuses:SetOnFinished(onuse)
 
 		inst:AddComponent("edible")
-		inst.components.edible.thirst = data.thirst
-		inst.components.edible.health = data.health
-		inst.components.edible.sanity = data.sanity
-		inst.components.edible.hunger = data.hunger
+		inst.components.edible.thirstvalue = data.thirst
+		inst.components.edible.healthvalue = data.health
+		inst.components.edible.sanityvalue = data.sanity
+		inst.components.edible.hungervalue = data.hunger
 		inst.components.edible:SetOnEatenFn(oneaten)
 
 		inst.components.temperature.current = 30
