@@ -37,7 +37,7 @@ local drinks =
 	-- 다른 차를 만들 경우 같은 아이템을 2개 넣어야함
 	water =
 	{
-		test = dummy
+		test = dummy,
 		priority = 0,
 		health = TUNING.HEALING_SMALL,
 		hunger = TUNING.DRINK_CALORIES,
@@ -55,7 +55,7 @@ local drinks =
 	
 	dirty =
 	{
-		test = dummmy
+		test = dummy,
 		priority = 0,
 		health = TUNING.HEALING_SMALL,
 		hunger = TUNING.DRINK_CALORIES,
@@ -71,7 +71,7 @@ local drinks =
 	},
 	salt =
 	{
-		test = dummy
+		test = dummy,
 		priority = 0,
 		health = TUNING.HEALING_SMALL,
 		hunger = TUNING.DRINK_CALORIES,
