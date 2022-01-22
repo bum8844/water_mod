@@ -78,6 +78,25 @@ local function onhit(inst)--, worker)
     end
 end
 
+local function onopen(inst)
+    if not inst:HasTag("burnt") then
+        inst.AnimState:PlayAnimation("cooking_pre_loop")
+        inst.SoundEmitter:KillSound("snd")
+        inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_open")
+        inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot", "snd")
+    end
+end
+
+local function onclose(inst)
+    if not inst:HasTag("burnt") then
+        if not inst.components.stewer:IsCooking() then
+            inst.AnimState:PlayAnimation("idle_empty")
+            inst.SoundEmitter:KillSound("snd")
+        end
+        inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_close")
+    end
+end
+
 local function getstatus(inst)
     return (inst:HasTag("burnt") and "BURNT")
         --or (inst.components.stewer:IsDone() and "DONE")
@@ -167,21 +186,21 @@ local function fn()
     inst:AddComponent("portablestructure")
     inst.components.portablestructure:SetOnDismantleFn(OnDismantle)
 
-    --inst:AddComponent("stewer")
-    --inst.components.stewer.cooktimemult = TUNING.PORTABLE_COOK_POT_TIME_MULTIPLIER
-    --inst.components.stewer.onstartcooking = startcookfn
-    --inst.components.stewer.oncontinuecooking = continuecookfn
-    --inst.components.stewer.oncontinuedone = continuedonefn
-    --inst.components.stewer.ondonecooking = donecookfn
-    --inst.components.stewer.onharvest = harvestfn
-    --inst.components.stewer.onspoil = spoilfn
+    inst:AddComponent("stewer")
+    --[[inst.components.stewer.cooktimemult = TUNING.PORTABLE_COOK_POT_TIME_MULTIPLIER
+    inst.components.stewer.onstartcooking = startcookfn
+    inst.components.stewer.oncontinuecooking = continuecookfn
+    inst.components.stewer.oncontinuedone = continuedonefn
+    inst.components.stewer.ondonecooking = donecookfn
+    inst.components.stewer.onharvest = harvestfn
+    inst.components.stewer.onspoil = spoilfn]]--
 
-    --inst:AddComponent("container")
-    --inst.components.container:WidgetSetup("portablecookpot")
-    --inst.components.container.onopenfn = onopen
-    --inst.components.container.onclosefn = onclose
-    --inst.components.container.skipclosesnd = true
-    --inst.components.container.skipopensnd = true
+    inst:AddComponent("container")
+    inst.components.container:WidgetSetup("portablecookpot")
+    inst.components.container.onopenfn = onopen
+    inst.components.container.onclosefn = onclose
+    inst.components.container.skipclosesnd = true
+    inst.components.container.skipopensnd = true
 
     inst:AddComponent("inspectable")
     inst.components.inspectable.getstatus = getstatus

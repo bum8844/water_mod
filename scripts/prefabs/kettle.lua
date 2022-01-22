@@ -44,6 +44,25 @@ local function onbuilt(inst)
 	inst.SoundEmitter:PlaySound("dontstarve/common/cook_pot_craft")
 end
 
+local function onopen(inst)
+    if not inst:HasTag("burnt") then
+        inst.AnimState:PlayAnimation("cooking_pre_loop")
+        inst.SoundEmitter:KillSound("snd")
+        inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_open")
+        inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot", "snd")
+    end
+end
+
+local function onclose(inst)
+    if not inst:HasTag("burnt") then
+        if not inst.components.stewer:IsCooking() then
+            inst.AnimState:PlayAnimation("idle_empty")
+            inst.SoundEmitter:KillSound("snd")
+        end
+        inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_close")
+    end
+end
+
 local function onsave(inst, data)
     if inst:HasTag("burnt") or (inst.components.burnable ~= nil and inst.components.burnable:IsBurning()) then
         data.burnt = true
@@ -93,6 +112,21 @@ local function fn()
     if not TheWorld.ismastersim then
         return inst
     end
+
+    inst:AddComponent("stewer")
+	--[[inst.components.stewer.onstartcooking = startcookfn
+	inst.components.stewer.oncontinuecooking = continuecookfn
+	inst.components.stewer.oncontinuedone = continuedonefn
+	inst.components.stewer.ondonecooking = donecookfn
+	inst.components.stewer.onharvest = harvestfn
+	inst.components.stewer.onspoil = spoilfn]]--
+
+	inst:AddComponent("container")
+	inst.components.container:WidgetSetup("cookpot")
+	inst.components.container.onopenfn = onopen
+	inst.components.container.onclosefn = onclose
+	inst.components.container.skipclosesnd = true
+	inst.components.container.skipopensnd = true
 	
 	inst:AddComponent("lootdropper")
     inst:AddComponent("inspectable")
