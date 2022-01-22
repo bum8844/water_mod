@@ -46,9 +46,9 @@ STRINGS.CHARACTERS.GENERIC.DESCRIBE.BREWERY = "It is one of the ways to store wa
 -- buckets
 STRINGS.NAMES.BUCKET	= "Bucket"
 STRINGS.RECIPE_DESC.BUCKET = "An empty bucket"
-STRINGS.NAMES.BUCKET_FULL = "Bucket with Water"
+STRINGS.NAMES.BUCKET_CLEAN = "Bucket with Water"
 STRINGS.NAMES.BUCKET_DIRTY = "Bucket with Dirty Water"
-STRINGS.NAMES.BUCKET_SALT = "Bucket with Sea Water"
+STRINGS.NAMES.BUCKET_SALTY = "Bucket with Sea Water"
 STRINGS.NAMES.BUCKET_ICE = "Ice Bucket"
 
 -- campkettle
