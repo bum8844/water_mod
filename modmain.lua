@@ -31,15 +31,17 @@ AddMinimapAtlas("images/tea_minimap.xml")
 
 modimport("scripts/water_main.lua")
 
+local drinks = require("preparedrink")
+local drinks_fermented = require("prepareagedrink")
 
-
---[[for k, v in pairs(require("preparedrink")) do
+for k, v in pairs(drinks) do
 	AddCookerRecipe("kettle", v)
-end]]--
+	AddCookerRecipe("portablekettle", v)
+end
 
---[[for k, v in pairs(require("prepareagedrink")) do
+for k, v in pairs(drinks_fermented) do
 	AddCookerRecipe("brewery", v)
-end]]--
+end
 
 --[[AddIngredientValues("foliage", {decoration=1, inedible=1})
 AddIngredientValues("petals", {decoration=1, inedible=1})
