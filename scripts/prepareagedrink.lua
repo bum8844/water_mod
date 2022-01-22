@@ -331,7 +331,7 @@ local drinks =
 }
 
 for k, v in pairs(drinks) do
-    v.names = k
+    v.name = k
     v.weight = v.weight or 1
     v.priority = v.priority or 0
 end
