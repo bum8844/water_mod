@@ -10,8 +10,6 @@ STRINGS.NAMES.DRINKS_TAB = "WATER"
 STRINGS.TABS.DRINKS_TAB = "Water"
 _G.RECIPETABS['DRINKS_TAB'] = {str = "DRINKS_TAB", sort=3, icon_atlas = "images/tea_inventoryitem.xml", icon = "watertab.tex"}
 
-_G.FUELTYPE.WATER = "WATER"
-
 _G.WATERTYPE = 
 {
 	CLEAN = "CLEAN",
@@ -43,11 +41,15 @@ for k, v in pairs(drinks_fermented) do
 	AddCookerRecipe("brewery", v)
 end
 
---[[AddIngredientValues("foliage", {decoration=1, inedible=1})
-AddIngredientValues("petals", {decoration=1, inedible=1})
-AddIngredientValues("succulent_picked", {decoration=1, inedible=1})
-AddIngredientValues("tealeaves", {decoration=1, inedible=1})
-AddIngredientValues("beefalo_milk", {milk=1, dairy=1})
-AddIngredientValues("moon_tree_blossom", {decoration=1, inedible=1})
-AddIngredientValues("firenettles", {decoration=1, inedible=1})
-AddIngredientValues("tillweeds", {decoration=1, inedible=1})]]--
+local teaingredients = {
+	"foliage",
+	"petals",
+	"succulent_picked",
+	"tealeaves",
+	"firenettles",
+	"tillweeds",
+	"moon_tree_blossom",
+}
+
+AddIngredientValues(teaingredients, {decoration=1, inedible=1})
+AddIngredientValues({"beefalo_milk"}, {milk=1, dairy=1})
