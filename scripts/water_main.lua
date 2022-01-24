@@ -96,3 +96,9 @@ AddComponentPostInit("dryer", function(self)
         return _StartDrying(self, dryable, ...)
     end
 end)
+
+local containers = _G.require "containers"
+local cookpot = containers.params.cookpot
+
+containers.params.kettle = cookpot
+containers.params.portablekettle = cookpot
