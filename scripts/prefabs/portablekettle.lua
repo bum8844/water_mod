@@ -196,7 +196,7 @@ local function fn()
     inst.components.stewer.onspoil = spoilfn]]--
 
     inst:AddComponent("container")
-    inst.components.container:WidgetSetup("portablecookpot")
+    inst.components.container:WidgetSetup("portablekettle")
     inst.components.container.onopenfn = onopen
     inst.components.container.onclosefn = onclose
     inst.components.container.skipclosesnd = true
