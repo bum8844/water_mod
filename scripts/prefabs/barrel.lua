@@ -137,6 +137,7 @@ local function fn()
 	inst.components.waterlevel:InitializeWaterLevel(0)
 
 	inst:AddComponent("watersource")
+	inst.components.watersource.available = false
 	
 	MakeMediumBurnable(inst, nil, nil, true)
     MakeSmallPropagator(inst)
