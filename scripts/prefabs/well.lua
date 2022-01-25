@@ -146,7 +146,7 @@ local function getwater(inst, item, giver)
 end
 
 local function OnGetItemFromPlayer(inst, giver, item)
-	if item:HasTag("fil_bucket") then
+	if item:HasTag("bucket_empty") then
 		if not inst.AnimState:IsCurrentAnimation("watering") or inst.AnimState:IsCurrentAnimation("idle_watering") or inst.AnimState:IsCurrentAnimation("shack_watering") then
 			if not inst.components.pickable.caninteractwith then
 				inst.SoundEmitter:PlaySound("turnoftides/common/together/boat/anchor/tether_land")
@@ -211,7 +211,7 @@ local function well()
     inst:AddComponent("pickable")
     inst.components.pickable.caninteractwith = false
     inst.components.pickable.onpickedfn = givewater
-    inst.components.pickable.product = "bucket_full"
+    inst.components.pickable.product = "bucket_clean"
     inst.components.pickable.numtoharvest = 0
 	
 	inst:AddComponent("lootdropper")
