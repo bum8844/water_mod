@@ -76,12 +76,6 @@ for _, v in pairs(TUNING.CLEANSOURCE) do
 	AddPrefabPostInit(v, function(inst) inst:AddTag("cleanwater") end)
 end
 
-local container = _G.require "containers"
-local cookpot = containers.params.cookpot
-
-containers.params.kettle = cookpot
-containers.params.portablekettle = cookpot
-
 -- bum: 이 코드가 말리기 위해 추가한 코드임
 -- AFS: dryer:StartDrying calls dryable.components.perishable:GetPercent(), so we need to add such hack to
 -- make tea leaves dryable on the rack.
