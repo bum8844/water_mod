@@ -101,6 +101,8 @@ local function fn()
 		    FillByRain(inst)
 		end
 	end)
+	-- 우물 상호 작용을 위한 태그
+	inst:AddTag("bucket_empty")
 	
     inst:AddComponent("fillable")
 	inst.components.fillable.overrideonfillfn = OnFill

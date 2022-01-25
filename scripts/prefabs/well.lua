@@ -115,7 +115,7 @@ local function OnRefuseItem(inst, giver, item)
 end
 
 local function ShouldAcceptItem(inst, item, giver)
-	if item:HasTag("fil_bucket") then 
+	if item:HasTag("bucket_empty") then 
 		return true
     end
 end
