@@ -1,5 +1,7 @@
 require "prefabutil"
 
+local cooking = require("cooking")
+
 local assets =
 {
     Asset("ANIM", "anim/kettle.zip"),
@@ -18,12 +20,12 @@ local function onhammered(inst, worker)
     if inst.components.burnable ~= nil and inst.components.burnable:IsBurning() then
         inst.components.burnable:Extinguish()
     end
-    --if not inst:HasTag("burnt") and inst.components.stewer.product ~= nil and inst.components.stewer:IsDone() then
-        --inst.components.stewer:Harvest()
-    --end
-    --if inst.components.container ~= nil then
-        --inst.components.container:DropEverything()
-    --end
+    --[[if not inst:HasTag("burnt") and inst.components.stewer.product ~= nil and inst.components.stewer:IsDone() then
+        inst.components.stewer:Harvest()
+    end]]
+    if inst.components.container ~= nil then
+        inst.components.container:DropEverything()
+    end
     inst.components.lootdropper:DropLoot()
     local fx = SpawnPrefab("collapse_small")
     fx.Transform:SetPosition(inst.Transform:GetWorldPosition())
@@ -32,16 +34,40 @@ local function onhammered(inst, worker)
 end
 
 local function onhit(inst, worker)
-	if not inst:HasTag("burnt") then
-		inst.AnimState:PlayAnimation("hit_empty")
-		inst.AnimState:PushAnimation("idle_empty",false)
-	end
+    if not inst:HasTag("burnt") then
+        if inst.components.stewer:IsCooking() then
+            inst.AnimState:PlayAnimation("hit_cooking")
+            inst.AnimState:PushAnimation("cooking_loop", true)
+            inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_close")
+        elseif inst.components.stewer:IsDone() then
+            inst.AnimState:PlayAnimation("hit_full")
+            inst.AnimState:PushAnimation("idle_full", false)
+        else
+            if inst.components.container ~= nil and inst.components.container:IsOpen() then
+                inst.components.container:Close()
+                --onclose will trigger sfx already
+            else
+                inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_close")
+            end
+            inst.AnimState:PlayAnimation("hit_empty")
+            inst.AnimState:PushAnimation("idle_empty", false)
+        end
+    end
 end
 
 local function onbuilt(inst)
     inst.AnimState:PlayAnimation("place")
 	inst.AnimState:PushAnimation("idle_empty", false)
 	inst.SoundEmitter:PlaySound("dontstarve/common/cook_pot_craft")
+end
+
+local function startcookfn(inst)
+    if not inst:HasTag("burnt") then
+        inst.AnimState:PlayAnimation("cooking_loop", true)
+        inst.SoundEmitter:KillSound("snd")
+        inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_rattle", "snd")
+        inst.Light:Enable(true)
+    end
 end
 
 local function onopen(inst)
@@ -63,6 +89,48 @@ local function onclose(inst)
     end
 end
 
+local function donecookfn(inst)
+    if not inst:HasTag("burnt") then
+        inst.AnimState:PlayAnimation("cooking_pst")
+        inst.AnimState:PushAnimation("idle_full", false)
+        --ShowProduct(inst)
+        inst.SoundEmitter:KillSound("snd")
+        inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_finish")
+        inst.Light:Enable(false)
+    end
+end
+
+local function continuedonefn(inst)
+    if not inst:HasTag("burnt") then
+        inst.AnimState:PlayAnimation("idle_full")
+        --ShowProduct(inst)
+    end
+end
+
+local function continuecookfn(inst)
+    if not inst:HasTag("burnt") then
+        inst.AnimState:PlayAnimation("cooking_loop", true)
+        inst.Light:Enable(true)
+        inst.SoundEmitter:KillSound("snd")
+        inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_rattle", "snd")
+    end
+end
+
+local function harvestfn(inst)
+    if not inst:HasTag("burnt") then
+        inst.AnimState:PlayAnimation("idle_empty")
+        inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_close")
+    end
+end
+
+local function getstatus(inst)
+    return (inst:HasTag("burnt") and "BURNT")
+        or (inst.components.stewer:IsDone() and "DONE")
+        or (not inst.components.stewer:IsCooking() and "EMPTY")
+        or (inst.components.stewer:GetTimeToCook() > 15 and "BOILING_LONG")
+        or "BOILING_SHORT"
+end
+
 local function onsave(inst, data)
     if inst:HasTag("burnt") or (inst.components.burnable ~= nil and inst.components.burnable:IsBurning()) then
         data.burnt = true
@@ -72,7 +140,7 @@ end
 local function onload(inst, data)
     if data ~= nil and data.burnt then
         inst.components.burnable.onburnt(inst)
-        --inst.Light:Enable(false)
+        inst.Light:Enable(false)
     end
 end
 
@@ -92,6 +160,7 @@ local function fn()
 	inst.entity:AddAnimState()
 	inst.entity:AddMiniMapEntity()
 	inst.entity:AddSoundEmitter()
+    inst.entity:AddLight()
     inst.entity:AddNetwork()
 	
 	local minimap = inst.entity:AddMiniMapEntity()
@@ -106,6 +175,7 @@ local function fn()
     
 	inst:AddTag("structure")
 	inst:AddTag("kettle")
+    inst:AddTag("stewer")
 	
 	inst.entity:SetPristine()
 	
@@ -114,12 +184,12 @@ local function fn()
     end
 
     inst:AddComponent("stewer")
-	--[[inst.components.stewer.onstartcooking = startcookfn
+	inst.components.stewer.onstartcooking = startcookfn
 	inst.components.stewer.oncontinuecooking = continuecookfn
 	inst.components.stewer.oncontinuedone = continuedonefn
 	inst.components.stewer.ondonecooking = donecookfn
 	inst.components.stewer.onharvest = harvestfn
-	inst.components.stewer.onspoil = spoilfn]]--
+	--inst.components.stewer.onspoil = spoilfn
 
 	inst:AddComponent("container")
 	inst.components.container:WidgetSetup("kettle")

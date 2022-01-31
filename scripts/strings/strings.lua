@@ -24,7 +24,7 @@ STRINGS.NAMES.WELL_DRILLING_ITEM = "Well Drill"
 STRINGS.RECIPE_DESC.WELL_DRILLING_ITEM = "Make a hole in the ground."
 
 -- wells & hole
-STRINGS.NAMES.HOLE	  = "Hole"
+STRINGS.NAMES.HOLE = "Hole"
 STRINGS.NAMES.WELL = "Well"
 STRINGS.NAMES.WELL_ITEM = "Well Parts"
 STRINGS.RECIPE_DESC.WELL_ITEM = "All's well there's well."
@@ -34,17 +34,15 @@ STRINGS.NAMES.DESALINATOR = "Desalinator"
 STRINGS.RECIPE_DESC.DESALINATOR = "Yes, the water is made of water."
 
 -- barrel
-STRINGS.NAMES.BARREL = "barrel"
+STRINGS.NAMES.BARREL = "Barrel"
 STRINGS.RECIPE_DESC.BARREL = "A barrel of water is funnier than a barrel of monkeys."
-STRINGS.CHARACTERS.GENERIC.DESCRIBE.BARREL = "I can contain my water here."
 
 -- brewery
 STRINGS.NAMES.BREWERY = "Brewery"
 STRINGS.RECIPE_DESC.BREWERY = "Can make delicious drinks. maybe?"
-STRINGS.CHARACTERS.GENERIC.DESCRIBE.BREWERY = "It is one of the ways to store water for a long time."
 
 -- buckets
-STRINGS.NAMES.BUCKET	= "Bucket"
+STRINGS.NAMES.BUCKET = "Bucket"
 STRINGS.RECIPE_DESC.BUCKET = "An empty bucket"
 STRINGS.NAMES.BUCKET_CLEAN = "Bucket with Water"
 STRINGS.NAMES.BUCKET_DIRTY = "Bucket with Dirty Water"
@@ -60,9 +58,9 @@ STRINGS.NAMES.KETTLE	= "Kettle"
 STRINGS.RECIPE_DESC.KETTLE = "The last thing of your past life."
 
 -- portablekettle
-STRINGS.NAMES.portablekettle_ITEM	= "Portable Kettle"
-STRINGS.NAMES.portablekettle = "Portable Kettle"
-STRINGS.RECIPE_DESC.portablekettle_ITEM = "It's easy to carry around."
+STRINGS.NAMES.PORTABLEKETTLE_ITEM	= "Portable Kettle"
+STRINGS.NAMES.PORTABLEKETTLE = "Portable Kettle"
+STRINGS.RECIPE_DESC.PORTABLEKETTLE_ITEM = "It's easy to carry around."
 
 -- tea_trees
 STRINGS.NAMES.TEA_TREE = "Tea Tree"
