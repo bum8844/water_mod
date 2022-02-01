@@ -195,6 +195,8 @@ local function well()
     inst:AddTag("structure")
 	
 	MakeObstaclePhysics(inst, .5)
+
+	inst.entity:SetPristine()
 	
     inst.AnimState:SetBank("well")
     inst.AnimState:SetBuild("well")

@@ -1,4 +1,12 @@
 local SpanwPrefab = _G.SpawnPrefab
+-- 비료 다쓰면 양동이 돌려주는 코드(아이템 스택 모드랑 쓰면 아이템이 제대로 반환 안되요)
+local function BackBucket(inst)
+    local owner = inst.components.inventoryitem.owner
+	if owner and owner.components.inventory then
+		owner.components.inventory:GiveItem(GLOBAL.SpawnPrefab("bucket"))
+	end
+    inst:Remove()
+end
 
 AddPrefabPostInit("fertilizer", function(inst)
     if not GLOBAL.TheWorld.ismastersim then
@@ -62,11 +70,37 @@ end
 
 AddPrefabPostInit("messagebottleempty",bottleadd)
 
-TUNING.CLEANSOURCE =
-{
-	"oasislake",
-	"hotspring"
-}
+--오류 걸리는 부분
+local function OnGivenItemWater(inst, giver, item)
+    if item.prefab == "bucket_ice" then
+        local trigger = "freeze" or nil
+        if trigger ~= nil then
+			inst:PushEvent("onacceptfighttribute", { tributer = giver, trigger = trigger })
+			return
+		end
+	else
+		--OnGivenItem(inst, giver, item)
+	end
+end
+
+-- 얼음 양동이를 활용하여 개미사자랑 싸울 수 있도록 수정(이 부분에서 함수 저장시켜줘야 해요)
+local function addtradalbe(inst)
+    if not GLOBAL.TheWorld.ismastersim then
+        inst:ListenForEvent("isfightingdirty", OnIsFightingDirty)
+
+        return inst
+    end
+    if inst.components.trader.onaccept ~= nil then
+    	if inst.components.trader.onaccept_old == nil then
+    		inst.components.trader.onaccept_old = inst.components.trader.onaccept
+    	end
+    end
+	inst:DoTaskInTime(0, function()	
+    	inst.components.trader.onaccept = OnGivenItemWater
+	end)
+end
+
+AddPrefabPostInit("antlion",addtradalbe)
 
 local function CleanWater(inst)
 	inst:AddTag("cleanwater")
@@ -96,3 +130,4 @@ local cookpot = containers.params.cookpot
 
 containers.params.kettle = cookpot
 containers.params.portablekettle = cookpot
+containers.params.brewery = cookpot

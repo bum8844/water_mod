@@ -108,6 +108,45 @@ local function onclose(inst)
     end
 end
 
+-- 음료 표시하는거 수정해야하는부분
+local function SetProductSymbol(inst, product, overridebuild)
+    local recipe = cooking.GetRecipe(inst.prefab, product)
+    local potlevel = recipe ~= nil and recipe.potlevel or nil
+    local build = (recipe ~= nil and recipe.overridebuild) or overridebuild or "cook_pot_food"
+    local overridesymbol = (recipe ~= nil and recipe.overridesymbolname) or product
+
+    if potlevel == "high" then
+        inst.AnimState:Show("swap_high")
+        inst.AnimState:Hide("swap_mid")
+        inst.AnimState:Hide("swap_low")
+    elseif potlevel == "low" then
+        inst.AnimState:Hide("swap_high")
+        inst.AnimState:Hide("swap_mid")
+        inst.AnimState:Show("swap_low")
+    else
+        inst.AnimState:Hide("swap_high")
+        inst.AnimState:Show("swap_mid")
+        inst.AnimState:Hide("swap_low")
+    end
+
+    inst.AnimState:OverrideSymbol("swap_cooked", build, overridesymbol)
+end
+
+local function spoilfn(inst)
+    if not inst:HasTag("burnt") then
+        inst.components.stewer.product = inst.components.stewer.spoiledproduct
+        SetProductSymbol(inst, inst.components.stewer.product)
+    end
+end
+
+local function ShowProduct(inst)
+    if not inst:HasTag("burnt") then
+        local product = inst.components.stewer.product
+        SetProductSymbol(inst, product, IsModCookingProduct(inst.prefab, product) and product or nil)
+    end
+end
+
+-- 여기까지(테스트시ShowProduct주석화 풀세요)
 local function donecookfn(inst)
     if not inst:HasTag("burnt") then
         inst.AnimState:PlayAnimation("cooking_pst")
@@ -135,6 +174,7 @@ local function continuecookfn(inst)
     end
 end
 
+-- 컵이나 유리병에 담을수 있도록 수정해야함
 local function harvestfn(inst)
     if not inst:HasTag("burnt") then
         inst.AnimState:PlayAnimation("idle_empty")

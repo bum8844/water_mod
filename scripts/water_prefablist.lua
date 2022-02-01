@@ -2,6 +2,7 @@ return {
 	--items
 	"bucket",
 	"bucketfull",
+	"bucketice",
 	"cup",
 
 	--structures

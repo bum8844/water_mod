@@ -7,6 +7,12 @@ local total_day_time = seg_time*16
 -- 물을 담을수 있는 최대치
 local tuning =
 {
+	CLEANSOURCE =
+	{
+		"oasislake",
+		"hotspring",
+	},
+
 	CUP_MAX_LEVEL = 1,
 	BOTTLE_MAX_LEVEL = 5,
 	BUCKET_MAX_LEVEL = 10,
