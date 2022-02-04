@@ -1,6 +1,6 @@
 require "prefabutil"
 
-local cooking = require("cooking")
+local prepareagedrink = require("prepareagedrink")
 
 local assets =
 {
@@ -86,28 +86,10 @@ local function onclose(inst)
     end
 end
 
--- 음료 표시하는거 수정해야하는부분
 local function SetProductSymbol(inst, product, overridebuild)
-    local recipe = cooking.GetRecipe(inst.prefab, product)
-    local potlevel = recipe ~= nil and recipe.potlevel or nil
-    local build = (recipe ~= nil and recipe.overridebuild) or overridebuild or "cook_pot_food"
-    local overridesymbol = (recipe ~= nil and recipe.overridesymbolname) or product
-
-    if potlevel == "high" then
-        inst.AnimState:Show("swap_high")
-        inst.AnimState:Hide("swap_mid")
-        inst.AnimState:Hide("swap_low")
-    elseif potlevel == "low" then
-        inst.AnimState:Hide("swap_high")
-        inst.AnimState:Hide("swap_mid")
-        inst.AnimState:Show("swap_low")
-    else
-        inst.AnimState:Hide("swap_high")
-        inst.AnimState:Show("swap_mid")
-        inst.AnimState:Hide("swap_low")
-    end
-
-    inst.AnimState:OverrideSymbol("swap_cooked", build, overridesymbol)
+    local build = overridebuild or "kettle_drink"
+    local overridesymbol = product
+    inst.AnimState:OverrideSymbol("swap_food", build, "cup_"..overridesymbol)
 end
 
 local function spoilfn(inst)
@@ -120,16 +102,15 @@ end
 local function ShowProduct(inst)
     if not inst:HasTag("burnt") then
         local product = inst.components.stewer.product
-        SetProductSymbol(inst, product, IsModCookingProduct(inst.prefab, product) and product or nil)
+        SetProductSymbol(inst, product, IsModCookingProduct(inst.prefab, product) and prepareagedrink[product] == nil and product or nil)
     end
 end
 
--- 여기까지(테스트시ShowProduct주석화 풀세요)
 local function donecookfn(inst)
     if not inst:HasTag("burnt") then
         inst.AnimState:PlayAnimation("cooking_pst")
         inst.AnimState:PushAnimation("idle_full", false)
-        --ShowProduct(inst)
+        ShowProduct(inst)
         inst.SoundEmitter:KillSound("snd")
         inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_finish")
     end
@@ -138,7 +119,7 @@ end
 local function continuedonefn(inst)
     if not inst:HasTag("burnt") then
         inst.AnimState:PlayAnimation("idle_full")
-        --ShowProduct(inst)
+        ShowProduct(inst)
     end
 end
 

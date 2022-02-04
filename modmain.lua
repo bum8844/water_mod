@@ -32,13 +32,13 @@ modimport("scripts/water_main.lua")
 local drinks = require("preparedrink")
 local drinks_fermented = require("prepareagedrink")
 
-for k, v in pairs(drinks) do
-	AddCookerRecipe("kettle", v)
-	AddCookerRecipe("portablekettle", v)
+for k, recipe in pairs(drinks) do
+	AddCookerRecipe("kettle", recipe)
+	AddCookerRecipe("portablekettle", recipe)
 end
 
-for k, v in pairs(drinks_fermented) do
-	AddCookerRecipe("brewery", v)
+for k, recipe in pairs(drinks_fermented) do
+	AddCookerRecipe("brewery", recipe)
 end
 
 local teaingredients = {
