@@ -1,8 +1,8 @@
 local bucketstates =
 {
-	{ name = "clean", anim = "full", health = 0, sanity = -10, hunger = 0, thirst = 15 },
-	{ name = "dirty", anim = "dirty", health = -1, sanity = -10, hunger = 0, thirst = 15 },
-	{ name = "salty", anim = "salt", health = -3, sanity = -10, hunger = 0, thirst = -15 },
+	{ name = "clean", anim = "full", health = 0, sanity = -10, hunger = 0, thirst = TUNING.HYDRATION_TINY },
+	{ name = "dirty", anim = "dirty", health = -1, sanity = -10, hunger = 0, thirst = TUNING.HYDRATION_TINY },
+	{ name = "salty", anim = "salt", health = -3, sanity = -10, hunger = 0, thirst = TUNING.HYDRATION_SALT },
 }
 
 local prefabs =

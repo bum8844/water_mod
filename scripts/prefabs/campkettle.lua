@@ -153,6 +153,14 @@ local function fn()
     inst.components.workable:SetWorkLeft(2)
     inst.components.workable:SetOnFinishCallback(onhammered)
 	inst.components.workable:SetOnWorkCallback(onhit)
+    --------------------------
+
+    inst:AddComponent("waterlevel")
+    inst.components.waterlevel:SetDepletedFn(OnDepleted)
+    inst.components.waterlevel:SetTakeWaterFn(OnTakeWater)
+    inst.components.waterlevel.maxwater = 1
+    inst.components.waterlevel.accepting = true
+    inst.components.waterlevel:InitializeWaterLevel(0)
 
     -------------------------
     inst:AddComponent("cooker")
