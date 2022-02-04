@@ -183,6 +183,37 @@ local function onload(inst, data)
     end
 end
 
+local function OnDepleted(inst)
+    inst.components.watersource.available = false
+    inst.components.propagator.acceptsheat = true
+end
+
+local function OnTakeWater(inst, watervalue)
+    if watervalue >= 20 then
+        inst.SoundEmitter:PlaySound("dontstarve/creatures/pengull/splash")
+    elseif watervalue >= 5 then
+        inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/medium")
+    else
+        inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/small")
+    end
+
+    if inst.components.waterlevel.currentwater == inst.components.waterlevel.maxwater then
+        inst.components.waterlevel.accepting = false
+    else
+        inst.components.waterlevel.accepting = true
+    end
+
+    inst.components.watersource.available = true
+    inst.components.propagator.acceptsheat = false
+end
+
+local function OnSectionChange(new, old, inst)
+    if inst._waterlevel ~= new then
+        inst._waterlevel = new
+        inst.AnimState:OverrideSymbol("swap", "kettle_meter_dirty", tostring(new))
+    end
+end
+
 local function OnDismantle(inst)--, doer)
     ChangeToItem(inst)
     inst:Remove()
@@ -277,6 +308,15 @@ local function fn()
     inst.components.workable:SetWorkLeft(2)
     inst.components.workable:SetOnFinishCallback(onhammered)
     inst.components.workable:SetOnWorkCallback(onhit)
+
+    inst:AddComponent("waterlevel")
+    inst.components.waterlevel:SetDepletedFn(OnDepleted)
+    inst.components.waterlevel:SetTakeWaterFn(OnTakeWater)
+    inst.components.waterlevel.maxwater = 5
+    inst.components.waterlevel.accepting = true
+    inst.components.waterlevel:SetSections(5)
+    inst.components.waterlevel:SetSectionCallback(OnSectionChange)
+    inst.components.waterlevel:InitializeWaterLevel(0)
 
     inst:AddComponent("hauntable")
     inst.components.hauntable:SetHauntValue(TUNING.HAUNT_TINY)

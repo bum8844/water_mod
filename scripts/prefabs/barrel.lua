@@ -65,7 +65,7 @@ end
 local function OnTakeWater(inst, watervalue)
 	if watervalue >= 20 then
 		inst.SoundEmitter:PlaySound("dontstarve/creatures/pengull/splash")
-	elseif watervalue >= 10 then
+	elseif watervalue >= 5 then
 		inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/medium")
 	else
 		inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/small")
