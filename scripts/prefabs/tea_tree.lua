@@ -125,7 +125,7 @@ local function SetupLoot(lootdropper)
         if inst.components.growable.stage == 3 then
             inst.components.lootdropper:SetLoot({"tealeaves", "tealeaves", "tealeaves"})
         elseif inst.components.growable.stage == 4 then
-            inst.components.lootdropper:SetLoot({})
+            inst.components.lootdropper:SetLoot({"tealeaves", "tealeaves", "tealeaves"})
             inst.components.lootdropper:AddChanceLoot("tea_seed", 0.05)
         end
     end
