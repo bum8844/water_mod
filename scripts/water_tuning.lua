@@ -25,7 +25,7 @@ local tuning =
 	WILSON_HUNGER_RATE = hydration_per_day/total_day_time,
 
 -- 목마름 채워주는 양
-	HYDRATION_SALT = hydration_per_day-90 -- 소금물
+	HYDRATION_SALT = hydration_per_day-90, -- 소금물
 	HYDRATION_POISOE = hydration_per_day-80, -- 잘못 양조된 음료
 	HYDRATION_NONE = 0, -- 수상한 히비스커스
 	HYDRATION_TINY = hydration_per_day/8, -- 물, 잘못된 조리법(주전자) 

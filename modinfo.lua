@@ -39,10 +39,10 @@ local SEPARATOR = Title("")
 
 configuration_options =
 {
-	--[[SEPARATOR,
+	SEPARATOR,
 	Title("Generation options"),
 	{
-		name = "gen_tea",
+		name = "gen_tea_tree",
 		label = "Generate tea trees?",
 		options =
 		{
@@ -65,7 +65,7 @@ configuration_options =
 			{description = "More", data = 1.7},
 		},
 		default = 1.2,
-	},]]--
+	},
 	--[[SEPARATOR,
 	Title(russian and "Настройки рецептов" or "Recipes options"),
 	{
