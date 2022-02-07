@@ -125,11 +125,19 @@ local function SetupLoot(lootdropper)
         if inst.components.growable.stage == 2 then
             inst.components.lootdropper:SetLoot({"tealeaves", "tealeaves", "tealeaves"})
         elseif inst.components.growable.stage == 3 then
-            inst.components.lootdropper:SetLoot({"tealeaves", "tealeaves"})
-            inst.components.lootdropper:AddChanceLoot("petal", 0.02)
+            inst.components.lootdropper:SetLoot({"tealeaves", "tealeaves", "petal"})
+            inst.components.lootdropper:AddChanceLoot("petal", 0.25)
+            inst.components.lootdropper:AddChanceLoot("petal", 0.01)
+            if picker ~= nil then
+                if picker.components.sanity ~= nil and not picker:HasTag("plantkin") then
+                    picker.components.sanity:DoDelta(TUNING.SANITY_TINY)
+                end
+            end
         elseif inst.components.growable.stage == 4 then
             inst.components.lootdropper:SetLoot({"tealeaves"})
+            inst.components.lootdropper:AddChanceLoot("tea_seed", 0.25)
             inst.components.lootdropper:AddChanceLoot("tea_seed", 0.05)
+            inst.components.lootdropper:AddChanceLoot("tea_seed", 0.01)
         end
     end
 end

@@ -58,7 +58,7 @@ end
 local gen_tea_tree=GetModConfigData("gen_tea_tree")
 local gen_caffeinberry=GetModConfigData("gen_caffeinberry")
 
-AddThingtoWorldGeneration("tea_tree",{BGForest=gen_tea_tree,BGCrappyFores=gen_tea_tree})
+AddThingtoWorldGeneration("tea_tree",{BGForest=gen_tea_tree,BGCrappyFores=gen_tea_tree,BGDeepForest=gen_tea_tree,CrappyDeepForest=gen_tea_tree,DeepForest=gen_tea_tree,Forest=gen_tea_tree,CrappyForest=gen_tea_tree,SpiderForest=gen_tea_tree})
 
 AddThingtoWorldGeneration("caffeinberry",{BGBadlands=gen_caffeinberry,Badlands=gen_caffeinberry,Lightning=gen_caffeinberry,HoundyBadlands=gen_caffeinberry,BuzzardyBadlands=gen_caffeinberry,BGLightningBluff=gen_caffeinberry,LightningBluffLightning=gen_caffeinberry,LightningBluffAntlion=gen_caffeinberry})
 
