@@ -48,7 +48,7 @@ local function grow_to_stage1(inst)
 end
 
 local function set_stage2(inst)
-    inst.components.pickable.canbepicked = false
+    inst.components.pickable:Regen()
 
     play_idle(inst, 2)
 end
@@ -112,8 +112,8 @@ local growth_stages =
 
 local function onregenfn(inst)
     -- If we got here via debug and we're not at pickable yet, just skip us ahead to the first pickable stage.
-    if inst.components.growable.stage < 3 then
-        inst.components.growable:SetStage(3)
+    if inst.components.growable.stage < 2 then
+        inst.components.growable:SetStage(2)
     end
 end
 
@@ -122,10 +122,13 @@ local function SetupLoot(lootdropper)
     local withered = inst.components.witherable ~= nil and inst.components.witherable:IsWithered()
 
     if inst.components.growable ~= nil then
-        if inst.components.growable.stage == 3 then
+        if inst.components.growable.stage == 2 then
             inst.components.lootdropper:SetLoot({"tealeaves", "tealeaves", "tealeaves"})
+        elseif inst.components.growable.stage == 3 then
+            inst.components.lootdropper:SetLoot({"tealeaves", "tealeaves"})
+            inst.components.lootdropper:AddChanceLoot("petal", 0.02)
         elseif inst.components.growable.stage == 4 then
-            inst.components.lootdropper:SetLoot({"tealeaves", "tealeaves", "tealeaves"})
+            inst.components.lootdropper:SetLoot({"tealeaves"})
             inst.components.lootdropper:AddChanceLoot("tea_seed", 0.05)
         end
     end
@@ -139,6 +142,10 @@ local function on_bush_burnt(inst)
 
     -- The bush, of course, stops growing once it's been burnt.
     inst.components.growable:StopGrowing()
+    -- regen code
+    if TheNet:GetDefaultGameMode() ~= "survival" and not inst.planted then
+        TheWorld:PushEvent("beginregrowth", inst)
+    end
 
     DefaultBurntFn(inst)
 end
@@ -159,14 +166,20 @@ local function on_dug_up(inst, digger)
         inst.components.lootdropper:SpawnLootPrefab("dug_tea_tree")
     end
 
+        -- regen cord
+    if TheNet:GetDefaultGameMode() ~= "survival" and not inst.planted then
+        TheWorld:PushEvent("beginregrowth", inst)
+    end
+
     -- This actual bush is now no longer needed.
     inst:Remove()
 end
 
 local function onpickedfn(inst, picker)
-    local picked_anim = (inst.components.growable.stage == 3 and "picked3") or (inst.components.growable.stage == 4 and "picked4")
+    local picked_anim = (inst.components.growable.stage == 2 and "picked2") or (inst.components.growable.stage == 3 and "picked3") or (inst.components.growable.stage == 4 and "picked4")
 
     inst.components.growable:SetStage(1)
+    inst.components.lootdropper:SetLoot(nil)
 
     -- Play the proper picked animation.
     inst.AnimState:PlayAnimation(picked_anim)
@@ -222,13 +235,14 @@ local function on_save(inst, data)
     if inst.components.burnable ~= nil and inst.components.burnable:IsBurning() then
         data.burning = true
     end
+    data.planted = inst.planted
 end
 
 local function on_load(inst, data)
     if data == nil then
         return
     end
-
+    inst.planted = data ~= nil and data.planted or nil
     if data.burning then
         on_bush_burnt(inst)
     elseif inst.components.witherable:IsWithered() then
@@ -331,6 +345,7 @@ local function on_deploy_fn(inst, position, deployer)
 		if deployer ~= nil and deployer.SoundEmitter ~= nil then
 			deployer.SoundEmitter:PlaySound("dontstarve/common/plant")
 		end
+        inst.planted = true
 	end
 end
 
@@ -375,6 +390,7 @@ local function dug_tea_tree()
     inst.components.deployable.ondeploy = on_deploy_fn
 
     MakeSmallBurnable(inst, TUNING.MED_BURNTIME)
+
     MakeSmallPropagator(inst)
 
     MakeHauntableLaunchAndIgnite(inst)

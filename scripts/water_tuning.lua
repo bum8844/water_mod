@@ -58,6 +58,9 @@ local tuning =
 	BEER_WAIT = GetModConfigData("beer_wait"),
 	SODA_WAIT = GetModConfigData("soda_wait"),
 
+	TEA_TREE_REGROWTH_TIME_MULT = 1,
+	CAFFEINBERRY_REGROWTH_TIME_MULT = 1,
+
 	--TEASLEEP_RANGE = 00.1,
 	--TEASLEEP_TIME = 15,
 	--WELL_COOLDOWN = GetModConfigData("waterwell_wait"),

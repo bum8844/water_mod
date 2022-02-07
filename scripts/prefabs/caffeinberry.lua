@@ -163,6 +163,11 @@ local function dig_up_common(inst, worker, numberries)
             inst.components.lootdropper:SpawnLootPrefab("dug_caffeinberry")
         end
     end
+
+    if TheNet:GetDefaultGameMode() ~= "survival" and not inst.planted then
+        TheWorld:PushEvent("beginregrowth", inst)
+    end
+
     inst:Remove()
 end
 
@@ -183,6 +188,14 @@ local function OnHaunt(inst)
         return true
     end
     return false
+end
+
+--regrowth code
+local function OnBurnt(inst)
+    if TheNet:GetDefaultGameMode() ~= "survival" and not inst.planted then
+        TheWorld:PushEvent("beginregrowth", inst)
+    end
+    DefaultBurntFn(inst)
 end
 
 local function caffeinberry()
@@ -231,6 +244,7 @@ local function caffeinberry()
 
 	MakeLargeBurnable(inst)
 	MakeMediumPropagator(inst)
+    inst.components.burnable:SetOnBurntFn(OnBurnt)
 
 	MakeHauntableIgnite(inst)
 	AddHauntableCustomReaction(inst, OnHaunt, false, false, true)
@@ -268,6 +282,7 @@ local function on_deploy_fn(inst, position, deployer)
 		if deployer ~= nil and deployer.SoundEmitter ~= nil then
 			deployer.SoundEmitter:PlaySound("dontstarve/common/plant")
 		end
+        inst.planted = true
 	end
 end
 

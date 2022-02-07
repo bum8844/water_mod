@@ -25,12 +25,12 @@ local function bottleadd(inst)
 		local filleditem
 		if from_object ~= nil then
 			if from_object:HasTag("cleanwater") then
-				filleditem = GLOBAL.SpawnPrefab("bottle_water")
+				filleditem = SpanwPrefab("bottle_water")
 			else
-				filleditem = GLOBAL.SpawnPrefab("bottle_dirty")
+				filleditem = SpanwPrefab("bottle_dirty")
 			end
 		else
-			filleditem = GLOBAL.SpawnPrefab("bottle_salt")
+			filleditem = SpanwPrefab("bottle_salt")
 		end
 		
 		inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/medium")
@@ -123,6 +123,16 @@ AddComponentPostInit("dryer", function(self)
         
         return _StartDrying(self, dryable, ...)
     end
+end)
+
+--regrowth code
+AddComponentPostInit("regrowthmanager", function(self)
+	self:SetRegrowthForType("tea_tree", TUNING.EVERGREEN_REGROWTH.DESOLATION_RESPAWN_TIME, "tea_tree", function()
+        return TUNING.TEA_TREE_REGROWTH_TIME_MULT
+    end)
+    self:SetRegrowthForType("caffeinberry", TUNING.EVERGREEN_REGROWTH.DESOLATION_RESPAWN_TIME, "caffeinberry", function()
+        return TUNING.CAFFEINBERRY_REGROWTH_TIME_MULT
+    end)
 end)
 
 local containers = _G.require "containers"

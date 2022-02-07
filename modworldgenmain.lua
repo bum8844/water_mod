@@ -1,6 +1,5 @@
 GLOBAL.require("map/terrain")
 
---Upper text is not used
 local function mymathclamp(num, min, max)
     return num <= min and min or (num >= max and max or num)
 end
