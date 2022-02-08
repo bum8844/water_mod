@@ -71,36 +71,31 @@ end
 AddPrefabPostInit("messagebottleempty",bottleadd)
 
 --오류 걸리는 부분
-local function OnGivenItemWater(inst, giver, item)
+local function OnGivenItemWater(inst, giver, item, ...)
     if item.prefab == "bucket_ice" then
-        local trigger = "freeze" or nil
-        if trigger ~= nil then
-			inst:PushEvent("onacceptfighttribute", { tributer = giver, trigger = trigger })
-			return
-		end
-	else
-		--OnGivenItem(inst, giver, item)
-	end
+        inst:PushEvent("onacceptfighttribute", { tributer = giver, trigger = "freeze" })
+    elseif inst.components.trader.onaccept_old ~= nil then
+        return inst.components.trader.onaccept_old(inst, giver, item, ...)
+    end
 end
 
--- 얼음 양동이를 활용하여 개미사자랑 싸울 수 있도록 수정(이 부분에서 함수 저장시켜줘야 해요)
-local function addtradalbe(inst)
+local function addtradable(inst)
     if not GLOBAL.TheWorld.ismastersim then
         inst:ListenForEvent("isfightingdirty", OnIsFightingDirty)
 
         return inst
     end
-    if inst.components.trader.onaccept ~= nil then
-    	if inst.components.trader.onaccept_old == nil then
-    		inst.components.trader.onaccept_old = inst.components.trader.onaccept
-    	end
+    if inst.components.trader ~= nil then
+        if inst.components.trader.onaccept ~= nil and inst.components.trader.onaccept_old == nil then
+            inst.components.trader.onaccept_old = inst.components.trader.onaccept
+        end
+        inst:DoTaskInTime(0, function()    
+            inst.components.trader.onaccept = OnGivenItemWater
+        end)
     end
-	inst:DoTaskInTime(0, function()	
-    	inst.components.trader.onaccept = OnGivenItemWater
-	end)
 end
 
-AddPrefabPostInit("antlion",addtradalbe)
+AddPrefabPostInit("antlion",addtradable)
 
 local function CleanWater(inst)
 	inst:AddTag("cleanwater")
