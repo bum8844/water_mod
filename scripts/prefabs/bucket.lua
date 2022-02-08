@@ -23,6 +23,10 @@ local function OnFill(inst, from_object)
 			watertype = from_object.components.water.watertype
 		end
 		filleditem = SpawnPrefab("bucket_"..string.lower(watertype))
+
+		if from_object.components.waterlevel ~= nil then
+			from_object.components.waterlevel:DoDelta(-20)
+		end
 	else
 		filleditem = SpawnPrefab("bucket_salty")
 	end
@@ -31,10 +35,6 @@ local function OnFill(inst, from_object)
 	
 	if filleditem == nil then
 		return false
-	end
-
-	if from_object.components.waterlevel ~= nil then
-		from_object.components.waterlevel:DoDelta(-20)
 	end
 
 	local owner = inst.components.inventoryitem ~= nil and inst.components.inventoryitem:GetGrandOwner() or nil
