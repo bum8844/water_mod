@@ -107,6 +107,22 @@ local function OnHaunt(inst)
     return false
 end
 
+local function OnDepleted(inst)
+    inst.components.propagator.acceptsheat = true
+end
+
+local function OnTakeWater(inst, watervalue)
+    inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/small")
+
+    if inst.components.waterlevel.currentwater == inst.components.waterlevel.maxwater then
+        inst.components.waterlevel.accepting = false
+    else
+        inst.components.waterlevel.accepting = true
+    end
+
+    inst.components.propagator.acceptsheat = false
+end
+
 local function fn()
     local inst = CreateEntity()
 

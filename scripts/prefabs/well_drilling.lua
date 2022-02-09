@@ -157,7 +157,7 @@ local function main_fn()
     return inst
 end
 
-local function item_ondeploy(inst, pt, deployer)
+--[[local function item_ondeploy(inst, pt, deployer)
     local cx, cy, cz = TheWorld.Map:GetTileCenterPoint(pt:Get())
 
     local obj = SpawnPrefab("well_drilling")
@@ -168,9 +168,22 @@ local function item_ondeploy(inst, pt, deployer)
 		obj.deploy_item_save_record = inst:GetSaveRecord()
 		inst:Remove()
 	end
+end]]
+
+local function ondeploy(inst, pt, deployer)
+    local obj = SpawnPrefab("well_drilling")
+	obj.Physics:SetCollides(false)
+    obj.Physics:Teleport(pt.x, 0, pt.z)
+    obj.Physics:SetCollides(true)
+
+	inst.components.finiteuses:Use(1)
+	if inst:IsValid() then
+		obj.deploy_item_save_record = inst:GetSaveRecord()
+		inst:Remove()
+	end
 end
 
-local function can_plow_tile(inst, pt, mouseover, deployer)
+--[[local function can_plow_tile(inst, pt, mouseover, deployer)
 	local x, z = pt.x, pt.z
 	if not TheWorld.Map:CanPlantAtPoint(x, 0, z) or TheWorld.Map:GetTileAtPoint(x, 0, z) == GROUND.FARMING_SOIL then
 		return false
@@ -184,7 +197,7 @@ local function can_plow_tile(inst, pt, mouseover, deployer)
 	end
 
 	return true
-end
+end]]
 
 local function item_fn()
     local inst = CreateEntity()
@@ -205,7 +218,7 @@ local function item_fn()
 
 	MakeInventoryFloatable(inst, "small", 0.1, 0.8)
 
-	inst._custom_candeploy_fn = can_plow_tile -- for DEPLOYMODE.CUSTOM
+	--inst._custom_candeploy_fn = can_plow_tile -- for DEPLOYMODE.CUSTOM
 
 	inst.entity:SetPristine()
 
@@ -220,8 +233,9 @@ local function item_fn()
     inst.components.inventoryitem.imagename= "well_drilling_item"
 
     inst:AddComponent("deployable")
-	inst.components.deployable:SetDeployMode(DEPLOYMODE.CUSTOM)
-    inst.components.deployable.ondeploy = item_ondeploy
+    inst.components.deployable.ondeploy = ondeploy
+	--[[inst.components.deployable:SetDeployMode(DEPLOYMODE.CUSTOM)
+    inst.components.deployable.ondeploy = item_ondeploy]]
 
 	inst:AddComponent("finiteuses")
     inst.components.finiteuses:SetOnFinished(inst.Remove)
@@ -235,7 +249,7 @@ local function item_fn()
     return inst
 end
 
-local function placer_invalid_fn(player, placer)
+--[[local function placer_invalid_fn(player, placer)
     if player and player.components.talker then
         player.components.talker:Say(GetString(player, "ANNOUNCE_CANTBUILDHERE_THRONE"))
     end
@@ -247,7 +261,7 @@ local function placer_fn()
     inst:AddTag("CLASSIFIED")
     inst:AddTag("NOCLICK")
     inst:AddTag("placer")
-    --[[Non-networked entity]]
+    
     inst.entity:SetCanSleep(false)
     inst.persists = false
 
@@ -268,8 +282,9 @@ local function placer_fn()
 	inst.components.placer:LinkEntity(inst.outline)
 
     return inst
-end
+end]]
 
 return  Prefab("well_drilling", main_fn, assets),
 		Prefab("well_drilling_item", item_fn, assets, prefabs),
-		Prefab("well_drilling_item_placer", placer_fn)
+		MakePlacer("well_drilling_item_placer", "well_drilling", "well_drilling", "idle_place")
+		--Prefab("well_drilling_item_placer", placer_fn)

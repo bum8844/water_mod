@@ -50,13 +50,6 @@ local function onload(inst, data)
     end
 end
 
---[[local function onloadpostpass(inst, newents, data)
-	if data.waterlevel ~= nil or 0 then
-	local sum = 
-	inst.AnimState:OverrideSymbol("swap","barrel_meter_water", tostring(sum))
-	end
-end]]
-
 local function OnDepleted(inst)
 	inst.components.watersource.available = false
 	inst.components.propagator.acceptsheat = true

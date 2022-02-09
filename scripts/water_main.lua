@@ -3,7 +3,7 @@ local SpanwPrefab = _G.SpawnPrefab
 local function BackBucket(inst)
     local owner = inst.components.inventoryitem.owner
 	if owner and owner.components.inventory then
-		owner.components.inventory:GiveItem(GLOBAL.SpawnPrefab("bucket"))
+		owner.components.inventory:GiveItem(SpawnPrefab("bucket"))
 	end
     inst:Remove()
 end
@@ -70,7 +70,6 @@ end
 
 AddPrefabPostInit("messagebottleempty",bottleadd)
 
---오류 걸리는 부분
 local function OnGivenItemWater(inst, giver, item, ...)
     if item.prefab == "bucket_ice" then
         inst:PushEvent("onacceptfighttribute", { tributer = giver, trigger = "freeze" })

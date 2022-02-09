@@ -176,14 +176,11 @@ local function onloadpostpass(inst, newents, data)
 end
 
 local function OnDepleted(inst)
-    inst.components.watersource.available = false
     inst.components.propagator.acceptsheat = true
 end
 
 local function OnTakeWater(inst, watervalue)
-    if watervalue >= 20 then
-        inst.SoundEmitter:PlaySound("dontstarve/creatures/pengull/splash")
-    elseif watervalue >= 5 then
+    if watervalue >= 5 then
         inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/medium")
     else
         inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/small")
@@ -195,14 +192,23 @@ local function OnTakeWater(inst, watervalue)
         inst.components.waterlevel.accepting = true
     end
 
-    inst.components.watersource.available = true
     inst.components.propagator.acceptsheat = false
 end
 
 local function OnSectionChange(new, old, inst)
     if inst._waterlevel ~= new then
         inst._waterlevel = new
-        inst.AnimState:OverrideSymbol("swap", "kettle_meter_dirty", tostring(new))
+
+        --[[local name = nil
+        local mater = "water"
+        if watertype == WATERTYPE.DIRTY then
+            name = "dirty"
+        end]]
+        inst.AnimState:OverrideSymbol("swap", "kettle_meter_", tostring(new))
+        --[[inst.AnimState:OverrideSymbol("swap", "kettle_meter_"..watertype or mater, tostring(new))
+        if name ~= nil then
+            print("opper")
+        end]]
     end
 end
 
@@ -261,6 +267,7 @@ local function fn()
 	inst.components.workable:SetOnWorkCallback(onhit)
 
     inst:AddComponent("waterlevel")
+    inst.components.waterlevel.secondarywatertype = WATERTYPE.DIRTY
     inst.components.waterlevel:SetDepletedFn(OnDepleted)
     inst.components.waterlevel:SetTakeWaterFn(OnTakeWater)
     inst.components.waterlevel.maxwater = 5
