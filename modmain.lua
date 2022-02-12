@@ -1,6 +1,7 @@
 env._G = GLOBAL
 env.require = _G.require
 env.STRINGS = _G.STRINGS
+env.SpawnPrefab = _G.SpawnPrefab
 
 PrefabFiles = require("water_prefablist")
 

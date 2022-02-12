@@ -17,21 +17,21 @@ local function OnFill(inst, from_object)
 		if from_object.components.waterlevel ~= nil then
 			watertype = from_object.components.waterlevel.watertype
 		elseif from_object.components.water ~= nil then
-			watertype = from_objcet.components.water.watertype
+			watertype = from_object.components.water.watertype
 		end
-		filleditem = SpawnPrefab("bucket_"..string.lower(watertype))
+		filleditem = SpawnPrefab("cup_"..string.lower(watertype == "CLEAN" and "WATER" or watertype))
+
+		if from_object.components.waterlevel ~= nil then
+			from_object.components.waterlevel:DoDelta(-1)
+		end
 	else
-		filleditem = SpawnPrefab("bucket_salty")
+		filleditem = SpawnPrefab("cup_salt")
 	end
 
 	inst.SoundEmitter:PlaySound("dontstarve/creatures/pengull/splash")
 	
 	if filleditem == nil then
 		return false
-	end
-
-	if from_object.components.waterlevel ~= nil then
-		from_object.components.waterlevel:DoDelta(2)
 	end
 
 	local owner = inst.components.inventoryitem ~= nil and inst.components.inventoryitem:GetGrandOwner() or nil

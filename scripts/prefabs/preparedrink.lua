@@ -22,6 +22,55 @@ local function onload(inst, data)
 	end
 end
 
+local function onuseafter(inst, taker, refund)
+    local owner = inst.components.inventoryitem ~= nil and inst.components.inventoryitem:GetGrandOwner() or nil
+    if owner ~= nil then
+        local container = owner.components.inventory or owner.components.container
+        local item = container:RemoveItem(inst, false) or inst
+        item:Remove()
+        container:GiveItem(refund, nil, owner:GetPosition())
+    else
+        refund.Transform:SetPosition(inst.Transform:GetWorldPosition())
+        local item =
+            inst.components.stackable ~= nil and
+            inst.components.stackable:IsStack() and
+            inst.components.stackable:Get() or
+            inst
+        item:Remove()
+    end
+end
+
+local function onusecup(inst, taker)
+
+    local refund = nil
+    refund = SpawnPrefab("cup")
+    onuseafter(inst, taker, refund)
+    
+    return true
+end
+
+local function onusebottle(inst, taker)
+    local max = taker.components.waterlevel.maxwater
+    local current = taker.components.waterlevel.oldcurrentwater
+    if max ~= current then
+        max = max - current
+    end
+    local uses = inst.components.finiteuses:GetUses()
+    uses = uses - max
+
+    local refund = nil
+    if uses > 0 then
+        refund = SpawnPrefab(inst.prefab)
+        refund.components.finiteuses:SetUses(uses)
+        onuseafter(inst, taker, refund)
+    else
+        refund = SpawnPrefab("messagebottleempty")
+        onuseafter(inst, taker, refund)
+    end
+    
+    return true
+end
+
 local function MakePreparedCupDrink(data)
 	local drinkassets =
 	{
@@ -62,16 +111,12 @@ local function MakePreparedCupDrink(data)
 
         inst.AnimState:PlayAnimation("idle")
         inst.AnimState:OverrideSymbol("swap", _overridebuild or "kettle_drink", _basename or "cup_".._name)
-
-		if _name == "dirty" then
-			inst:AddTag("dirty")
-		elseif _name == "salt" then
-			inst:AddTag("salt")
-		elseif _name == "water" then
-			inst:AddTag("clean")
-		end
 		
-		inst:AddTag(_name)
+        if _name == "water" then
+            inst:AddTag("clean")
+        else
+            inst:AddTag(_name)
+        end
 		inst:AddTag("icebox_valid")
         inst:AddTag("preparedrink_cup")
 
@@ -112,16 +157,15 @@ local function MakePreparedCupDrink(data)
 
         inst:AddComponent("inspectable")
         inst.wet_prefix = data.wet_prefix
-		
-		inst:AddComponent("fuel")
-		if inst:HasTag("dirty") then
-			inst.components.fuel.fueltype = FUELTYPE.DIRTY
-		elseif inst:HasTag("salt") then
-			inst.components.fuel.fueltype = FUELTYPE.SALT
-		elseif inst:HasTag("clean") then
-			inst.components.fuel.fueltype = FUELTYPE.WATER
-		end
-		inst.components.fuel.fuelvalue = TUNING.CUP_MAX_LEVEL
+
+        if inst:HasTag("dirty") or inst:HasTag("salt") or inst:HasTag("clean") then
+            inst:AddTag("watercan")
+
+            inst:AddComponent("water")
+            inst.components.water.watervalue = 1
+            inst.components.water.watertype = WATERTYPE[string.upper( _name == "water" and "clean" or _name == "salt" and "salty" or _name )]
+            inst.components.water:SetOnTakenFn(onusecup)
+        end
 
 		inst:AddComponent("inventoryitem")
 		inst.replica.inventoryitem:SetImage("cup_".._name)
@@ -199,15 +243,11 @@ local function MakePreparedBottleDrink(data)
         inst.AnimState:PlayAnimation("idle")
         inst.AnimState:OverrideSymbol("swap", _overridebuild or "kettle_bottle_drink", _basename or "bottle_".._name)
 		
-		if _name == "dirty" then
-			inst:AddTag("dirty")
-		elseif _name == "salt" then
-			inst:AddTag("salt")
-		elseif _name == "water" then
-			inst:AddTag("clean")
-		end
-		
-		inst:AddTag(_name)
+        if _name == "water" then
+            inst:AddTag("clean")
+        else
+            inst:AddTag(_name)
+        end
 		inst:AddTag("icebox_valid")
         inst:AddTag("preparedrink_bottle")
         if data.tags ~= nil then
@@ -249,16 +289,20 @@ local function MakePreparedBottleDrink(data)
 
         inst:AddComponent("inspectable")
         inst.wet_prefix = data.wet_prefix
-		
-		inst:AddComponent("fuel")
-		if inst:HasTag("dirty") then
-			inst.components.fuel.fueltype = FUELTYPE.DIRTY
-		elseif inst:HasTag("salt") then
-			inst.components.fuel.fueltype = FUELTYPE.SALT
-		elseif inst:HasTag("clean") then
-			inst.components.fuel.fueltype = FUELTYPE.WATER
-		end
-		inst.components.fuel.fuelvalue = TUNING.BOTTLE_MAX_LEVEL
+
+        inst:AddComponent("finiteuses")
+        inst.components.finiteuses:SetMaxUses(5)
+        inst.components.finiteuses:SetUses(5)
+        inst.components.finiteuses:SetOnFinished(onusebottle)
+
+        if inst:HasTag("dirty") or inst:HasTag("salt") or inst:HasTag("clean") then
+            inst:AddTag("watercan")
+
+            inst:AddComponent("water")
+            inst.components.water.watervalue = 5
+            inst.components.water.watertype = WATERTYPE[string.upper( _name == "water" and "clean" or _name == "salt" and "salty" or _name )]
+            inst.components.water:SetOnTakenFn(onusebottle)
+        end
 
 		inst:AddComponent("inventoryitem")
 		inst.replica.inventoryitem:SetImage("bottle_".._name)

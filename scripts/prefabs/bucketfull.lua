@@ -32,7 +32,7 @@ local function oneaten(inst, eater)
 	end
 end
 
-local function onuse(inst)
+--[[local function onuse(inst)
 	local refund = SpawnPrefab("bucket")
 	local owner = inst.components.inventoryitem ~= nil and inst.components.inventoryitem:GetGrandOwner() or nil
 
@@ -52,8 +52,47 @@ local function onuse(inst)
 	end
 	
 	return true
+end]]
+
+local function onreturnitem(inst, taker, refund)
+	local owner = inst.components.inventoryitem ~= nil and inst.components.inventoryitem:GetGrandOwner() or nil
+	if owner ~= nil then
+		local container = owner.components.inventory or owner.components.container
+		local item = container:RemoveItem(inst, false) or inst
+		item:Remove()
+		container:GiveItem(refund, nil, owner:GetPosition())
+	else
+		refund.Transform:SetPosition(inst.Transform:GetWorldPosition())
+		local item =
+			inst.components.stackable ~= nil and
+			inst.components.stackable:IsStack() and
+			inst.components.stackable:Get() or
+			inst
+		item:Remove()
+	end
 end
 
+local function onuse(inst, taker)
+	local max = taker.components.waterlevel.maxwater
+	local current = taker.components.waterlevel.oldcurrentwater
+	if max ~= current then
+	 	max = max - current
+	end
+	local uses = inst.components.finiteuses:GetUses()
+	uses = uses - max
+
+	local refund = nil
+	if uses > 0 then
+		refund = SpawnPrefab(inst.prefab)
+		refund.components.finiteuses:SetUses(uses)
+		onreturnitem(inst, taker, refund)
+	else
+		refund = SpawnPrefab("bucket")
+		onreturnitem(inst, taker, refund)
+	end
+	
+	return true
+end
 
 local function MakeBucket(data)
 	local assets =
@@ -118,8 +157,8 @@ local function MakeBucket(data)
 
 		--finiteuses for managing how many times bucket can be drank.
 		inst:AddComponent("finiteuses")
-		inst.components.finiteuses:SetMaxUses(5)
-		inst.components.finiteuses:SetUses(5)
+		inst.components.finiteuses:SetMaxUses(20)
+		inst.components.finiteuses:SetUses(20)
 		inst.components.finiteuses:SetOnFinished(onuse)
 
 		inst:AddComponent("edible")

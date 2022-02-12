@@ -1,4 +1,4 @@
-local SpanwPrefab = _G.SpawnPrefab
+
 -- 비료 다쓰면 양동이 돌려주는 코드(아이템 스택 모드랑 쓰면 아이템이 제대로 반환 안되요)
 local function BackBucket(inst)
     local owner = inst.components.inventoryitem.owner
@@ -22,38 +22,46 @@ local function bottleadd(inst)
 	inst.entity:AddSoundEmitter()
 	
 	local function OnFill(inst, from_object)
-		local filleditem
+		local filleditem, watertype = nil, nil
 		if from_object ~= nil then
-			if from_object:HasTag("cleanwater") then
-				filleditem = SpanwPrefab("bottle_water")
-			else
-				filleditem = SpanwPrefab("bottle_dirty")
+			if from_object.components.waterlevel ~= nil then
+				watertype = from_object.components.waterlevel.watertype
+			elseif from_object.components.water ~= nil then
+				watertype = from_object.components.water.watertype
+			end
+			filleditem = SpawnPrefab("bottle_"..string.lower(watertype == "CLEAN" and "WATER" or watertype))
+
+			if from_object.components.waterlevel ~= nil then
+				local dodelta = from_object.components.waterlevel.currentwater < 5 and from_object.components.waterlevel.currentwater or 5
+				from_object.components.waterlevel:DoDelta(-dodelta)
+				filleditem.components.finiteuses:SetUses(dodelta)
+				print(from_object.components.waterlevel.currentwater)
 			end
 		else
-			filleditem = SpanwPrefab("bottle_salt")
+			filleditem = SpawnPrefab("bottle_salt")
 		end
-		
-		inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/medium")
+
+		inst.SoundEmitter:PlaySound("dontstarve/creatures/pengull/splash")
 		
 		if filleditem == nil then
 			return false
 		end
-	
+
 		local owner = inst.components.inventoryitem ~= nil and inst.components.inventoryitem:GetGrandOwner() or nil
-		if owner ~= nil then
-			local container = owner.components.inventory or owner.components.container
-			local item = container:RemoveItem(inst, false) or inst
-			item:Remove()
-			container:GiveItem(filleditem, nil, owner:GetPosition())
-		else
-			source.Transform:SetPosition(inst.Transform:GetWorldPosition())
-			local item =
-				inst.components.stackable ~= nil and
-				inst.components.stackable:IsStack() and
-				inst.components.stackable:Get() or
-				inst
-			item:Remove()
-		end
+	    if owner ~= nil then
+	        local container = owner.components.inventory or owner.components.container
+	        local item = container:RemoveItem(inst, false) or inst
+	        item:Remove()
+	        container:GiveItem(filleditem, nil, owner:GetPosition())
+	    else
+	        source.Transform:SetPosition(inst.Transform:GetWorldPosition())
+	        local item =
+	            inst.components.stackable ~= nil and
+	            inst.components.stackable:IsStack() and
+	            inst.components.stackable:Get() or
+	            inst
+	        item:Remove()
+	    end
 		
 		return true
 	end
@@ -129,7 +137,7 @@ AddComponentPostInit("regrowthmanager", function(self)
     end)
 end)
 
-local containers = _G.require "containers"
+local containers = require "containers"
 local cookpot = containers.params.cookpot
 
 containers.params.kettle = cookpot

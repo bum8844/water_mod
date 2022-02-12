@@ -63,6 +63,7 @@ local Waterlevel = Class(function(self, inst)
 
     self.maxwater = 0
     self.currentwater = 0
+    self.oldcurrentwater = 0
     self.rate = 1 --positive rate = consume, negative = product
 	self.rate_modifiers = SourceModifierList(self.inst)
     self.priority = {}
@@ -147,8 +148,9 @@ end
 function Waterlevel:TakeWaterItem(item, doer)
     if self:CanAcceptWaterItem(item) then
         local oldsection = self:GetCurrentSection()
-
-        self:DoDelta(item.components.water.watervalue, doer)
+        self.oldcurrentwater = self.currentwater
+        local finiteuses_water = not item:HasTag("preparedrink_cup") and item.components.water.watervalue ~= item.components.finiteuses:GetUses() and item.components.finiteuses:GetUses() or item.components.water.watervalue
+        self:DoDelta(finiteuses_water, doer)
 
         local watervalue = 0
         if item.components.water ~= nil then

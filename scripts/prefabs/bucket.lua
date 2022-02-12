@@ -23,9 +23,11 @@ local function OnFill(inst, from_object)
 			watertype = from_object.components.water.watertype
 		end
 		filleditem = SpawnPrefab("bucket_"..string.lower(watertype))
-
 		if from_object.components.waterlevel ~= nil then
-			from_object.components.waterlevel:DoDelta(-20)
+			local dodelta = from_object.components.waterlevel.currentwater < 20 and from_object.components.waterlevel.currentwater or 20
+			from_object.components.waterlevel:DoDelta(-dodelta)
+			filleditem.components.finiteuses:SetUses(dodelta)
+			print(from_object.components.waterlevel.currentwater)
 		end
 	else
 		filleditem = SpawnPrefab("bucket_salty")
