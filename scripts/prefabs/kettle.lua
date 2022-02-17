@@ -64,6 +64,8 @@ end
 
 local function startcookfn(inst)
     if not inst:HasTag("burnt") then
+        inst.components.watersource.available = false
+        inst.components.waterlevel.accepting = false
         inst.AnimState:PlayAnimation("cooking_loop", true)
         inst.SoundEmitter:KillSound("snd")
         inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_rattle", "snd")
@@ -112,6 +114,7 @@ end
 
 local function donecookfn(inst)
     if not inst:HasTag("burnt") then
+        inst.components.watersource.available = true
         inst.AnimState:PlayAnimation("cooking_pst")
         inst.AnimState:PushAnimation("idle_full", false)
         ShowProduct(inst)
@@ -137,9 +140,10 @@ local function continuecookfn(inst)
     end
 end
 
--- 컵이나 유리병에 담을수 있도록 수정해야함
 local function harvestfn(inst)
     if not inst:HasTag("burnt") then
+        inst.components.waterlevel:DoDelta(-5)
+        inst.components.waterlevel.accepting = true
         inst.AnimState:PlayAnimation("idle_empty")
         inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_close")
     end
@@ -176,39 +180,19 @@ local function onloadpostpass(inst, newents, data)
 end
 
 local function OnDepleted(inst)
+    inst.components.watersource.available = false
     inst.components.propagator.acceptsheat = true
 end
 
 local function OnTakeWater(inst, watervalue)
-    if watervalue >= 5 then
-        inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/medium")
-    else
-        inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/small")
-    end
-
-    if inst.components.waterlevel.currentwater == inst.components.waterlevel.maxwater then
-        inst.components.waterlevel.accepting = false
-    else
-        inst.components.waterlevel.accepting = true
-    end
-
-    inst.components.propagator.acceptsheat = false
+    inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/small")
 end
 
 local function OnSectionChange(new, old, inst)
     if inst._waterlevel ~= new then
         inst._waterlevel = new
 
-        --[[local name = nil
-        local mater = "water"
-        if watertype == WATERTYPE.DIRTY then
-            name = "dirty"
-        end]]
-        inst.AnimState:OverrideSymbol("swap", "kettle_meter_", tostring(new))
-        --[[inst.AnimState:OverrideSymbol("swap", "kettle_meter_"..watertype or mater, tostring(new))
-        if name ~= nil then
-            print("opper")
-        end]]
+        inst.AnimState:OverrideSymbol("swap", "kettle_meter_water", tostring(new))
     end
 end
 
@@ -230,7 +214,7 @@ local function fn()
     inst.AnimState:SetBuild("kettle")
     inst.AnimState:SetBank("kettle")
     inst.AnimState:PlayAnimation("idle_empty")
-	inst.AnimState:OverrideSymbol("swap", "kettle_meter_dirty", "0")
+	inst.AnimState:OverrideSymbol("swap", "kettle_meter_water", "0")
     
 	inst:AddTag("structure")
 	inst:AddTag("kettle")
@@ -242,6 +226,19 @@ local function fn()
         return inst
     end
 
+    inst:AddComponent("waterlevel")
+    inst.components.waterlevel.secondarywatertype = WATERTYPE.DIRTY
+    inst.components.waterlevel:SetDepletedFn(OnDepleted)
+    inst.components.waterlevel:SetTakeWaterFn(OnTakeWater)
+    inst.components.waterlevel.maxwater = 5
+    inst.components.waterlevel.accepting = true
+    inst.components.waterlevel:SetSections(5)
+    inst.components.waterlevel:SetSectionCallback(OnSectionChange)
+    inst.components.waterlevel:InitializeWaterLevel(0)
+
+    inst:AddComponent("watersource")
+    inst.components.watersource.available = false
+
     inst:AddComponent("stewer")
 	inst.components.stewer.onstartcooking = startcookfn
 	inst.components.stewer.oncontinuecooking = continuecookfn
@@ -252,6 +249,7 @@ local function fn()
 
 	inst:AddComponent("container")
 	inst.components.container:WidgetSetup("kettle")
+    inst.components.container.canbeopened = false
 	inst.components.container.onopenfn = onopen
 	inst.components.container.onclosefn = onclose
 	inst.components.container.skipclosesnd = true
@@ -265,16 +263,6 @@ local function fn()
     inst.components.workable:SetWorkLeft(4)
 	inst.components.workable:SetOnFinishCallback(onhammered)
 	inst.components.workable:SetOnWorkCallback(onhit)
-
-    inst:AddComponent("waterlevel")
-    inst.components.waterlevel.secondarywatertype = WATERTYPE.DIRTY
-    inst.components.waterlevel:SetDepletedFn(OnDepleted)
-    inst.components.waterlevel:SetTakeWaterFn(OnTakeWater)
-    inst.components.waterlevel.maxwater = 5
-    inst.components.waterlevel.accepting = true
-    inst.components.waterlevel:SetSections(5)
-    inst.components.waterlevel:SetSectionCallback(OnSectionChange)
-    inst.components.waterlevel:InitializeWaterLevel(0)
 	
 	inst:ListenForEvent("onbuilt", onbuilt)
 	
@@ -287,6 +275,9 @@ local function fn()
     inst.OnLoad = onload
     inst.OnLoadPostPass = onloadpostpass
 	
+    print(inst.components.waterlevel.accepting)
+    print(inst.components.watersource.available)
+
     return inst
 end
 

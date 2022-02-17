@@ -22,55 +22,6 @@ local function onload(inst, data)
 	end
 end
 
-local function onuseafter(inst, taker, refund)
-    local owner = inst.components.inventoryitem ~= nil and inst.components.inventoryitem:GetGrandOwner() or nil
-    if owner ~= nil then
-        local container = owner.components.inventory or owner.components.container
-        local item = container:RemoveItem(inst, false) or inst
-        item:Remove()
-        container:GiveItem(refund, nil, owner:GetPosition())
-    else
-        refund.Transform:SetPosition(inst.Transform:GetWorldPosition())
-        local item =
-            inst.components.stackable ~= nil and
-            inst.components.stackable:IsStack() and
-            inst.components.stackable:Get() or
-            inst
-        item:Remove()
-    end
-end
-
-local function onusecup(inst, taker)
-
-    local refund = nil
-    refund = SpawnPrefab("cup")
-    onuseafter(inst, taker, refund)
-    
-    return true
-end
-
-local function onusebottle(inst, taker)
-    local max = taker.components.waterlevel.maxwater
-    local current = taker.components.waterlevel.oldcurrentwater
-    if max ~= current then
-        max = max - current
-    end
-    local uses = inst.components.finiteuses:GetUses()
-    uses = uses - max
-
-    local refund = nil
-    if uses > 0 then
-        refund = SpawnPrefab(inst.prefab)
-        refund.components.finiteuses:SetUses(uses)
-        onuseafter(inst, taker, refund)
-    else
-        refund = SpawnPrefab("messagebottleempty")
-        onuseafter(inst, taker, refund)
-    end
-    
-    return true
-end
-
 local function MakePreparedCupDrink(data)
 	local drinkassets =
 	{
@@ -101,6 +52,7 @@ local function MakePreparedCupDrink(data)
 
         inst.entity:AddTransform()
         inst.entity:AddAnimState()
+        inst.entity:AddSoundEmitter()
         inst.entity:AddNetwork()
 
         MakeInventoryPhysics(inst)
@@ -114,6 +66,8 @@ local function MakePreparedCupDrink(data)
 		
         if _name == "water" then
             inst:AddTag("clean")
+        elseif _name == "salt" then
+            inst:AddTag("salty")
         else
             inst:AddTag(_name)
         end
@@ -158,13 +112,12 @@ local function MakePreparedCupDrink(data)
         inst:AddComponent("inspectable")
         inst.wet_prefix = data.wet_prefix
 
-        if inst:HasTag("dirty") or inst:HasTag("salt") or inst:HasTag("clean") then
+        if inst:HasTag("dirty") or inst:HasTag("salty") or inst:HasTag("clean") then
             inst:AddTag("watercan")
 
             inst:AddComponent("water")
-            inst.components.water.watervalue = 1
+            inst.components.water.watervalue = TUNING.CUP_MAX_LEVEL
             inst.components.water.watertype = WATERTYPE[string.upper( _name == "water" and "clean" or _name == "salt" and "salty" or _name )]
-            inst.components.water:SetOnTakenFn(onusecup)
         end
 
 		inst:AddComponent("inventoryitem")
@@ -182,7 +135,7 @@ local function MakePreparedCupDrink(data)
 
         if data.perishtime ~= nil and data.perishtime > 0 then
             inst:AddComponent("perishable")
-            inst.components.perishable:SetPerishTime(data.perishtime)
+            inst.components.perishable:SetPerishTime(data.perishtime ~= nil and data.perishtime or nil)
             inst.components.perishable:StartPerishing()
             inst.components.perishable.onperishreplacement = "spoiled_food"
         end
@@ -200,8 +153,66 @@ local function MakePreparedCupDrink(data)
     end
 
     return Prefab("cup_"..data.name, fn, drinkassets, drinkprefabs)	
-	end
-	
+end
+
+local function OnFill(inst, from_object)
+    local watering = false
+    local waterlevel = from_object.components.waterlevel ~= nil and from_object.components.waterlevel.watertype
+    local water = from_object.components.water ~= nil and from_object.components.water.watertype
+    local check = from_object.components.stewer ~= nil and from_object.components.stewer.product 
+                  or from_object.components.waterlevel ~= nil and (waterlevel == "CLEAN" and string.lower(waterlevel) or waterlevel == "SALTY" and string.lower(waterlevel) or waterlevel == "DIRTY" and string.lower(waterlevel))
+                  or from_object.components.water ~= nil and (water == "CLEAN" and string.lower(water) or water == "SALTY" and string.lower(water) or water == "DIRTY" and string.lower(waterlevel))
+                  or nil
+    if check ~= nil and inst:HasTag(check) then
+        if from_object.components.waterlevel ~= nil and inst.components.finiteuses:GetUses() ~= inst.components.finiteuses.total then
+            local currentwater = inst.components.finiteuses:GetUses()
+            local currentwater_old = inst.components.finiteuses:GetUses()
+            local maxwater = inst.components.finiteuses.total
+            local currentwaterlevel = from_object.components.waterlevel.currentwater
+            currentwater = currentwater + currentwaterlevel
+            if currentwater > maxwater then
+                currentwaterlevel = TUNING.BOTTLE_MAX_LEVEL - currentwater_old
+                currentwater = TUNING.BOTTLE_MAX_LEVEL
+            end
+
+            from_object.components.waterlevel:DoDelta(-currentwaterlevel)
+            inst.components.finiteuses:SetUses(currentwater)
+            watering = true
+            print(from_object.components.waterlevel.currentwater)
+            print(inst.components.finiteuses:GetUses())
+        end
+        if from_object.components.finiteuses ~= nil and inst.components.finiteuses:GetUses() ~= inst.components.finiteuses.total then
+            local currentwater = inst.components.finiteuses:GetUses()
+            local maxwater = inst.components.finiteuses.total
+            if currentwater ~= maxwater then
+                local uses = from_object.components.finiteuses:GetUses()
+                currentwater = currentwater + uses
+                if currentwater > maxwater then
+                    uses = currentwater - maxwater
+                    currentwater = inst.components.water.watervalue
+                else
+                    uses = 0
+                end
+                from_object.components.finiteuses:SetUses(uses)
+                inst.components.finiteuses:SetUses(currentwater)
+                watering = true
+            end
+        end
+        if from_object.components.stewer ~= nil then
+            if from_object.components.waterlevel.currentwater == 0 then
+                from_object.components.stewer:Harvest()
+                watering = true
+            end
+        end
+    end
+    if watering then
+        from_object.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/medium")
+        return true
+    else
+        return false
+    end
+end
+
 local function MakePreparedBottleDrink(data)
 	local drinkassets =
 	{
@@ -232,6 +243,7 @@ local function MakePreparedBottleDrink(data)
 
         inst.entity:AddTransform()
         inst.entity:AddAnimState()
+        inst.entity:AddSoundEmitter()
         inst.entity:AddNetwork()
 
         MakeInventoryPhysics(inst)
@@ -245,6 +257,8 @@ local function MakePreparedBottleDrink(data)
 		
         if _name == "water" then
             inst:AddTag("clean")
+        elseif _name == "salt" then
+            inst:AddTag("salty")
         else
             inst:AddTag(_name)
         end
@@ -273,8 +287,11 @@ local function MakePreparedBottleDrink(data)
         end
 
 		inst.food_symbol_build = food_symbol_build or _overridebuild
-		inst._max_drink_level = 5
-		inst._drink_level = 5
+
+        inst:AddComponent("fillable")
+        inst.components.fillable.overrideonfillfn = OnFill
+        inst.components.fillable.showoceanaction = true
+        inst.components.fillable.acceptsoceanwater = true
 
         inst:AddComponent("edible")
         inst.components.edible.healthvalue = data.health
@@ -291,17 +308,15 @@ local function MakePreparedBottleDrink(data)
         inst.wet_prefix = data.wet_prefix
 
         inst:AddComponent("finiteuses")
-        inst.components.finiteuses:SetMaxUses(5)
-        inst.components.finiteuses:SetUses(5)
-        inst.components.finiteuses:SetOnFinished(onusebottle)
+        inst.components.finiteuses:SetMaxUses(TUNING.BOTTLE_MAX_LEVEL)
+        inst.components.finiteuses:SetUses(TUNING.BOTTLE_MAX_LEVEL)
 
-        if inst:HasTag("dirty") or inst:HasTag("salt") or inst:HasTag("clean") then
+        if inst:HasTag("dirty") or inst:HasTag("salty") or inst:HasTag("clean") then
             inst:AddTag("watercan")
 
             inst:AddComponent("water")
-            inst.components.water.watervalue = 5
+            inst.components.water.watervalue = TUNING.BOTTLE_MAX_LEVEL
             inst.components.water.watertype = WATERTYPE[string.upper( _name == "water" and "clean" or _name == "salt" and "salty" or _name )]
-            inst.components.water:SetOnTakenFn(onusebottle)
         end
 
 		inst:AddComponent("inventoryitem")
@@ -313,12 +328,9 @@ local function MakePreparedBottleDrink(data)
             inst.components.inventoryitem:ChangeImageName(data.basename)
         end
 
-        inst:AddComponent("stackable")
-        inst.components.stackable.maxsize = TUNING.STACK_SIZE_SMALLITEM
-
         if data.perishtime ~= nil and data.perishtime > 0 then
             inst:AddComponent("perishable")
-            inst.components.perishable:SetPerishTime(data.perishtime)
+            inst.components.perishable:SetPerishTime(data.perishtime ~= nil and data.perishtime+TUNING.PERISH_SUPERSLOW or nil)
             inst.components.perishable:StartPerishing()
             inst.components.perishable.onperishreplacement = "spoiled_food"
         end

@@ -54,44 +54,36 @@ end
 	return true
 end]]
 
-local function onreturnitem(inst, taker, refund)
-	local owner = inst.components.inventoryitem ~= nil and inst.components.inventoryitem:GetGrandOwner() or nil
-	if owner ~= nil then
-		local container = owner.components.inventory or owner.components.container
-		local item = container:RemoveItem(inst, false) or inst
-		item:Remove()
-		container:GiveItem(refund, nil, owner:GetPosition())
-	else
-		refund.Transform:SetPosition(inst.Transform:GetWorldPosition())
-		local item =
-			inst.components.stackable ~= nil and
-			inst.components.stackable:IsStack() and
-			inst.components.stackable:Get() or
-			inst
-		item:Remove()
-	end
-end
-
-local function onuse(inst, taker)
-	local max = taker.components.waterlevel.maxwater
-	local current = taker.components.waterlevel.oldcurrentwater
-	if max ~= current then
-	 	max = max - current
-	end
-	local uses = inst.components.finiteuses:GetUses()
-	uses = uses - max
-
-	local refund = nil
-	if uses > 0 then
-		refund = SpawnPrefab(inst.prefab)
-		refund.components.finiteuses:SetUses(uses)
-		onreturnitem(inst, taker, refund)
-	else
-		refund = SpawnPrefab("bucket")
-		onreturnitem(inst, taker, refund)
-	end
+local function onuse(inst)
 	
-	return true
+	if inst:HasTag("wateringcan") then
+		local refund = nil
+		local uses = inst.components.finiteuses:GetUses()
+		local watervalue = TUNING.CUP_MAX_LEVEL*2
+		uses = uses - watervalue
+		if uses > 0 then
+			refund = SpawnPrefab(inst.prefab)
+			refund.components.finiteuses:SetUses(uses)
+		else
+			refund = SpawnPrefab("bucket")
+		end
+		
+		local owner = inst.components.inventoryitem ~= nil and inst.components.inventoryitem:GetGrandOwner() or nil
+		if owner ~= nil then
+			local container = owner.components.inventory or owner.components.container
+			local item = container:RemoveItem(inst, false) or inst
+			item:Remove()
+			container:GiveItem(refund, nil, owner:GetPosition())
+		else
+			refund.Transform:SetPosition(inst.Transform:GetWorldPosition())
+			local item =
+				inst.components.stackable ~= nil and
+				inst.components.stackable:IsStack() and
+				inst.components.stackable:Get() or
+				inst
+			item:Remove()
+		end
+	end
 end
 
 local function MakeBucket(data)
@@ -132,10 +124,6 @@ local function MakeBucket(data)
 
 		inst:AddTag("show_spoilage")
 		
-		if name ~= "salt" then
-			inst:AddTag("icebox_valid")
-		end
-
 		inst:AddTag("bucket")
 		inst:AddTag("watercan")
 
@@ -147,19 +135,20 @@ local function MakeBucket(data)
 		inst.components.inventoryitem.imagename = "bucket_"..anim
 		
 		inst:AddComponent("water")
-		inst.components.water.watervalue = 20
+		inst.components.water.watervalue = TUNING.BUCKET_MAX_LEVEL
 		inst.components.water.watertype = WATERTYPE[string.upper(name)]
-		inst.components.water:SetOnTakenFn(onuse)
 
-		inst:AddComponent("watersource")
-		inst.components.watersource.onusefn = onuse
-		inst.components.watersource.override_fill_uses = 20
+		if name ~= "salty" then
+			inst:AddTag("icebox_valid")
+
+			inst:AddComponent("watersource")
+			inst.components.watersource.onusefn = onuse
+		end
 
 		--finiteuses for managing how many times bucket can be drank.
 		inst:AddComponent("finiteuses")
-		inst.components.finiteuses:SetMaxUses(20)
-		inst.components.finiteuses:SetUses(20)
-		inst.components.finiteuses:SetOnFinished(onuse)
+		inst.components.finiteuses:SetMaxUses(TUNING.BUCKET_MAX_LEVEL)
+		inst.components.finiteuses:SetUses(TUNING.BUCKET_MAX_LEVEL)
 
 		inst:AddComponent("edible")
 		inst.components.edible.thirstvalue = data.thirst
@@ -171,7 +160,7 @@ local function MakeBucket(data)
 		inst.components.temperature.current = 30
 
 		--inst:DoPeriodicTask(1, check)
-		--	inst:DoPeriodicTask(0, SetName)
+		--inst:DoPeriodicTask(0, SetName)
 
 		MakeHauntableLaunchAndSmash(inst)
 		

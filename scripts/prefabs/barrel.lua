@@ -56,22 +56,13 @@ local function OnDepleted(inst)
 end
 
 local function OnTakeWater(inst, watervalue)
-	if watervalue >= 20 then
+	if watervalue >= TUNING.BUCKET_MAX_LEVEL then
 		inst.SoundEmitter:PlaySound("dontstarve/creatures/pengull/splash")
-	elseif watervalue >= 5 then
+	elseif watervalue >= TUNING.BOTTLE_MAX_LEVEL then
 		inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/medium")
 	else
 		inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/small")
 	end
-
-	if inst.components.waterlevel.currentwater == inst.components.waterlevel.maxwater then
-		inst.components.waterlevel.accepting = false
-	else
-		inst.components.waterlevel.accepting = true
-	end
-
-	inst.components.watersource.available = true
-	inst.components.propagator.acceptsheat = false
 end
 
 local function OnSectionChange(new, old, inst)

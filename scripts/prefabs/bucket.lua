@@ -13,6 +13,37 @@ local prefabs =
 	"bucket_salty",
 }
 
+local function OnCalculation(inst, from_object, filleditem)
+	if from_object.components.waterlevel ~= nil then
+		local dodelta = from_object.components.waterlevel.currentwater < TUNING.BUCKET_MAX_LEVEL and from_object.components.waterlevel.currentwater or TUNING.BUCKET_MAX_LEVEL
+		from_object.components.waterlevel:DoDelta(-dodelta)
+		filleditem.components.finiteuses:SetUses(dodelta)
+	end
+    if from_object.components.finiteuses ~= nil then
+    	local uses = from_object.components.finiteuses:GetUses()
+		filleditem.components.finiteuses:SetUses(uses)
+		local refund = SpawnPrefab("bucket")
+
+		filleditem.SoundEmitter:PlaySound("dontstarve/creatures/pengull/splash")
+
+		local owner = from_object.components.inventoryitem ~= nil and from_object.components.inventoryitem:GetGrandOwner() or nil
+		if owner ~= nil then
+			local container = owner.components.inventory or owner.components.container
+			local item = container:RemoveItem(from_object, false) or from_object
+			item:Remove()
+			container:GiveItem(refund, nil, owner:GetPosition())
+		else
+			refund.Transform:SetPosition(from_object.Transform:GetWorldPosition())
+			local item =
+				from_object.components.stackable ~= nil and
+				from_object.components.stackable:IsStack() and
+				from_object.components.stackable:Get() or
+				from_object
+			item:Remove()
+		end
+	end
+end
+
 -- 컴포넌트를 바닐라의 것으로 교체하면서, 기존에 component에서 자체적으로 처리하던 태그 부분을 overrideonfillfn으로 가져왔습니다.
 local function OnFill(inst, from_object)
 	local filleditem, watertype = nil, nil
@@ -23,21 +54,27 @@ local function OnFill(inst, from_object)
 			watertype = from_object.components.water.watertype
 		end
 		filleditem = SpawnPrefab("bucket_"..string.lower(watertype))
-		if from_object.components.waterlevel ~= nil then
-			local dodelta = from_object.components.waterlevel.currentwater < 20 and from_object.components.waterlevel.currentwater or 20
-			from_object.components.waterlevel:DoDelta(-dodelta)
-			filleditem.components.finiteuses:SetUses(dodelta)
-			print(from_object.components.waterlevel.currentwater)
+		if from_object.components.stewer ~= nil then
+			if from_object.components.stewer.product == nil then
+				if from_object.components.waterlevel.currentwater == 0 then
+					from_object.components.stewer.canbeopened = false
+				end
+				OnCalculation(inst, from_object, filleditem)
+			else
+				filleditem = nil
+			end
+		else
+			OnCalculation(inst, from_object, filleditem)
 		end
 	else
 		filleditem = SpawnPrefab("bucket_salty")
 	end
-
-	inst.SoundEmitter:PlaySound("dontstarve/creatures/pengull/splash")
 	
 	if filleditem == nil then
 		return false
 	end
+
+	from_object.SoundEmitter:PlaySound("dontstarve/creatures/pengull/splash")
 
 	local owner = inst.components.inventoryitem ~= nil and inst.components.inventoryitem:GetGrandOwner() or nil
     if owner ~= nil then

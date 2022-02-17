@@ -125,14 +125,9 @@ local function SetupLoot(lootdropper)
         if inst.components.growable.stage == 2 then
             inst.components.lootdropper:SetLoot({"tealeaves", "tealeaves", "tealeaves"})
         elseif inst.components.growable.stage == 3 then
-            inst.components.lootdropper:SetLoot({"tealeaves", "tealeaves", "petal"})
-            inst.components.lootdropper:AddChanceLoot("petal", 0.25)
-            inst.components.lootdropper:AddChanceLoot("petal", 0.01)
-            if picker ~= nil then
-                if picker.components.sanity ~= nil and not picker:HasTag("plantkin") then
-                    picker.components.sanity:DoDelta(TUNING.SANITY_TINY)
-                end
-            end
+            inst.components.lootdropper:SetLoot({"tealeaves", "tealeaves", "petals"})
+            inst.components.lootdropper:AddChanceLoot("petals", 0.25)
+            inst.components.lootdropper:AddChanceLoot("petals", 0.01)
         elseif inst.components.growable.stage == 4 then
             inst.components.lootdropper:SetLoot({"tealeaves"})
             inst.components.lootdropper:AddChanceLoot("tea_seed", 0.25)
@@ -185,6 +180,12 @@ end
 
 local function onpickedfn(inst, picker)
     local picked_anim = (inst.components.growable.stage == 2 and "picked2") or (inst.components.growable.stage == 3 and "picked3") or (inst.components.growable.stage == 4 and "picked4")
+
+    if picker ~= nil and picked_anim == "picked3" then
+        if picker.components.sanity ~= nil and not picker:HasTag("plantkin") then
+            picker.components.sanity:DoDelta(TUNING.SANITY_TINY)
+        end
+    end
 
     inst.components.growable:SetStage(1)
     inst.components.lootdropper:SetLoot(nil)

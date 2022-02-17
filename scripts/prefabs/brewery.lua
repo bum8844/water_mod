@@ -61,9 +61,12 @@ end
 
 local function startcookfn(inst)
     if not inst:HasTag("burnt") then
+        inst.components.watersource.available = false
+        inst.components.waterlevel.accepting = false
         inst.AnimState:PlayAnimation("cooking_loop", true)
         inst.SoundEmitter:KillSound("snd")
         inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_rattle", "snd")
+        inst.Light:Enable(true)
     end
 end
 
@@ -131,13 +134,15 @@ local function continuecookfn(inst)
     end
 end
 
--- 컵이나 유리병에 담을수 있도록 수정해야함
 local function harvestfn(inst)
     if not inst:HasTag("burnt") then
+        inst.components.waterlevel:DoDelta(-20)
+        inst.components.waterlevel.accepting = true
         inst.AnimState:PlayAnimation("idle_empty")
         inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_close")
     end
 end
+
 
 local function getstatus(inst)
     return (inst:HasTag("burnt") and "BURNT")
@@ -176,28 +181,19 @@ local function OnDepleted(inst)
 end
 
 local function OnTakeWater(inst, watervalue)
-    if watervalue >= 20 then
+    if watervalue >= TUNING.BUCKET_MAX_LEVEL then
         inst.SoundEmitter:PlaySound("dontstarve/creatures/pengull/splash")
-    elseif watervalue >= 5 then
+    elseif watervalue >= TUNING.BOTTLE_MAX_LEVEL then
         inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/medium")
     else
         inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/small")
     end
-
-    if inst.components.waterlevel.currentwater == inst.components.waterlevel.maxwater then
-        inst.components.waterlevel.accepting = false
-    else
-        inst.components.waterlevel.accepting = true
-    end
-
-    inst.components.watersource.available = true
-    inst.components.propagator.acceptsheat = false
 end
 
 local function OnSectionChange(new, old, inst)
     if inst._waterlevel ~= new then
         inst._waterlevel = new
-        inst.AnimState:OverrideSymbol("swap", "kettle_meter_dirty", tostring(new))
+        inst.AnimState:OverrideSymbol("swap", "brewery_meter_water", tostring(new))
     end
 end
 
@@ -218,7 +214,7 @@ local function fn()
     inst.AnimState:SetBuild("brewery")
     inst.AnimState:SetBank("brewery")
     inst.AnimState:PlayAnimation("idle_empty")
-	inst.AnimState:OverrideSymbol("swap","brewery_meter_dirty", "0")
+	inst.AnimState:OverrideSymbol("swap","brewery_meter_water", "0")
     
 	inst:AddTag("structure")
 	inst:AddTag("brewery")
@@ -228,6 +224,18 @@ local function fn()
     if not TheWorld.ismastersim then
         return inst
     end
+
+    inst:AddComponent("waterlevel")
+    inst.components.waterlevel:SetDepletedFn(OnDepleted)
+    inst.components.waterlevel:SetTakeWaterFn(OnTakeWater)
+    inst.components.waterlevel.maxwater = 20
+    inst.components.waterlevel.accepting = true
+    inst.components.waterlevel:SetSections(20)
+    inst.components.waterlevel:SetSectionCallback(OnSectionChange)
+    inst.components.waterlevel:InitializeWaterLevel(0)
+
+    inst:AddComponent("watersource")
+    inst.components.watersource.available = false
 
     inst:AddComponent("stewer")
 	inst.components.stewer.onstartcooking = startcookfn
@@ -252,15 +260,6 @@ local function fn()
     inst.components.workable:SetWorkLeft(4)
 	inst.components.workable:SetOnFinishCallback(onhammered)
 	inst.components.workable:SetOnWorkCallback(onhit)
-
-    inst:AddComponent("waterlevel")
-    inst.components.waterlevel:SetDepletedFn(OnDepleted)
-    inst.components.waterlevel:SetTakeWaterFn(OnTakeWater)
-    inst.components.waterlevel.maxwater = 20
-    inst.components.waterlevel.accepting = true
-    inst.components.waterlevel:SetSections(20)
-    inst.components.waterlevel:SetSectionCallback(OnSectionChange)
-    inst.components.waterlevel:InitializeWaterLevel(0)
 	
 	inst:ListenForEvent("onbuilt", onbuilt)
 	

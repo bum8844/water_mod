@@ -1,11 +1,22 @@
 
 -- 비료 다쓰면 양동이 돌려주는 코드(아이템 스택 모드랑 쓰면 아이템이 제대로 반환 안되요)
 local function BackBucket(inst)
-    local owner = inst.components.inventoryitem.owner
-	if owner and owner.components.inventory then
-		owner.components.inventory:GiveItem(SpawnPrefab("bucket"))
+	local refund = SpawnPrefab("bucket")
+	local owner = inst.components.inventoryitem ~= nil and inst.components.inventoryitem:GetGrandOwner() or nil
+	if owner ~= nil then
+		local container = owner.components.inventory or owner.components.container
+		local item = container:RemoveItem(inst, false) or inst
+		item:Remove()
+		container:GiveItem(refund, nil, owner:GetPosition())
+	else
+		refund.Transform:SetPosition(inst.Transform:GetWorldPosition())
+		local item =
+			inst.components.stackable ~= nil and
+			inst.components.stackable:IsStack() and
+			inst.components.stackable:Get() or
+			inst
+		item:Remove()
 	end
-    inst:Remove()
 end
 
 AddPrefabPostInit("fertilizer", function(inst)
@@ -29,19 +40,65 @@ local function bottleadd(inst)
 			elseif from_object.components.water ~= nil then
 				watertype = from_object.components.water.watertype
 			end
-			filleditem = SpawnPrefab("bottle_"..string.lower(watertype == "CLEAN" and "WATER" or watertype))
+
+			if from_object.components.stewer ~= nil and from_object.components.stewer.product ~= nil then
+				watertype = from_object.components.stewer.product
+			end
+
+			filleditem = SpawnPrefab("bottle_"..string.lower(watertype == "CLEAN" and "water" or watertype))
 
 			if from_object.components.waterlevel ~= nil then
-				local dodelta = from_object.components.waterlevel.currentwater < 5 and from_object.components.waterlevel.currentwater or 5
+				local dodelta = from_object.components.waterlevel.currentwater < TUNING.BOTTLE_MAX_LEVEL and from_object.components.waterlevel.currentwater or TUNING.BOTTLE_MAX_LEVEL
 				from_object.components.waterlevel:DoDelta(-dodelta)
 				filleditem.components.finiteuses:SetUses(dodelta)
-				print(from_object.components.waterlevel.currentwater)
+			end
+			if from_object.components.finiteuses ~= nil then
+				local uses = from_object.components.finiteuses:GetUses()
+
+				if uses > TUNING.BOTTLE_MAX_LEVEL then
+					uses = uses - TUNING.BOTTLE_MAX_LEVEL
+					filleditem.components.finiteuses:SetUses(TUNING.BOTTLE_MAX_LEVEL)
+				else
+					filleditem.components.finiteuses:SetUses(uses)
+					uses = 0
+				end
+
+				local refund = nil
+				if uses > 0 then
+					refund = SpawnPrefab(from_object.prefab)
+					refund.components.finiteuses:SetUses(uses)
+				else
+					refund = SpawnPrefab("bucket")
+				end
+
+				filleditem.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/medium")
+
+				local owner = from_object.components.inventoryitem ~= nil and from_object.components.inventoryitem:GetGrandOwner() or nil
+				if owner ~= nil then
+					local container = owner.components.inventory or owner.components.container
+					local item = container:RemoveItem(from_object, false) or from_object
+					item:Remove()
+					container:GiveItem(refund, nil, owner:GetPosition())
+				else
+					refund.Transform:SetPosition(from_object.Transform:GetWorldPosition())
+					local item =
+						from_object.components.stackable ~= nil and
+						from_object.components.stackable:IsStack() and
+						from_object.components.stackable:Get() or
+						from_object
+					item:Remove()
+				end
+			end
+			if from_object.components.stewer ~= nil then
+				if from_object.components.waterlevel.currentwater == 0 then
+					from_object.components.stewer:Harvest()
+				end
 			end
 		else
 			filleditem = SpawnPrefab("bottle_salt")
 		end
 
-		inst.SoundEmitter:PlaySound("dontstarve/creatures/pengull/splash")
+		from_object.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/medium")
 		
 		if filleditem == nil then
 			return false
@@ -124,6 +181,23 @@ AddComponentPostInit("dryer", function(self)
         end
         
         return _StartDrying(self, dryable, ...)
+    end
+end)
+
+AddComponentPostInit("stewer",function(self)
+    local _Harvest = self.Harvest
+
+    function self:Harvest(harvester, ...)
+        local result = _Harvest(self, harvester, ...)
+        if self.inst.components.container ~= nil then
+            if self.inst.components.waterlevel ~= nil then
+                self.inst.components.container.canbeopened = false
+            else
+                self.inst.components.container.canbeopened = true
+            end
+        end
+        
+        return result
     end
 end)
 

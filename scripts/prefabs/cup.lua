@@ -19,16 +19,56 @@ local function OnFill(inst, from_object)
 		elseif from_object.components.water ~= nil then
 			watertype = from_object.components.water.watertype
 		end
-		filleditem = SpawnPrefab("cup_"..string.lower(watertype == "CLEAN" and "WATER" or watertype))
+
+		if from_object.components.stewer ~= nil and from_object.components.stewer.product ~= nil then
+			watertype = from_object.components.stewer.product
+		end
+
+		filleditem = SpawnPrefab("cup_"..string.lower(watertype == "CLEAN" and "water" or watertype))
 
 		if from_object.components.waterlevel ~= nil then
-			from_object.components.waterlevel:DoDelta(-1)
+			from_object.components.waterlevel:DoDelta(-TUNING.CUP_MAX_LEVEL)
+		end
+		if from_object.components.finiteuses ~= nil then
+			local uses = from_object.components.finiteuses:GetUses()
+			uses = uses - TUNING.CUP_MAX_LEVEL
+
+			local refund = nil
+			if uses > 0 then
+				refund = SpawnPrefab(from_object.prefab)
+				refund.components.finiteuses:SetUses(uses)
+			else
+				refund = SpawnPrefab("bucket")
+			end
+
+			refund.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/small")
+
+			local owner = from_object.components.inventoryitem ~= nil and from_object.components.inventoryitem:GetGrandOwner() or nil
+			if owner ~= nil then
+				local container = owner.components.inventory or owner.components.container
+				local item = container:RemoveItem(from_object, false) or from_object
+				item:Remove()
+				container:GiveItem(refund, nil, owner:GetPosition())
+			else
+				refund.Transform:SetPosition(from_object.Transform:GetWorldPosition())
+				local item =
+					from_object.components.stackable ~= nil and
+					from_object.components.stackable:IsStack() and
+					from_object.components.stackable:Get() or
+					from_object
+				item:Remove()
+			end
+		end
+		if from_object.components.stewer ~= nil then
+			if from_object.components.waterlevel.currentwater == 0 then
+				from_object.components.stewer:Harvest()
+			end
 		end
 	else
 		filleditem = SpawnPrefab("cup_salt")
 	end
 
-	inst.SoundEmitter:PlaySound("dontstarve/creatures/pengull/splash")
+	from_object.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/small")
 	
 	if filleditem == nil then
 		return false

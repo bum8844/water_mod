@@ -14,8 +14,11 @@ local tuning =
 	},
 
 	CUP_MAX_LEVEL = 1,
-	BOTTLE_MAX_LEVEL = 5,
-	BUCKET_MAX_LEVEL = 10,
+	BOTTLE_MAX_LEVEL = 10,
+	BUCKET_MAX_LEVEL = 20,
+
+	CAMP_KETTLE_MAX_LEVEL = 1,
+	KETTLE_MAX_LEVEL = 5,
 	BERRLE_MAX_LEVEL = 20,
 	BREWERY_MAX_LEVEL = 20,
 	DESALINATOR_MAX_LEVEL = 20,
@@ -45,7 +48,19 @@ local tuning =
 	ALCAHOL_POISOE = -5,
 	SANITY_POISOE = -5,
 
-	-- 만드는 시간(온도 조절은 특수 효과가 아님)
+	INCORRECT_BOIL = 1,
+	KETTLE_WATER = 1, -- 물
+	KETTLE_TEA = 1, -- 녹차, 홍차, 보이
+	KETTLE_FRUIT = 1, -- 모든 과일 종류
+	KETTLE_VEGGIE = 1, -- 모든 야채 종류
+	KETTLE_DECORATION = 1, -- 꽃 종류
+	KETTLE_LUXURY_GOODS = 1, -- 특수 효과주는 차들
+	--KETTLE_MONSTER = 23, -- 쓴 차
+	KETTLE_ABI = 45, -- 수상한 히비스커스
+	BEER_WAIT = GetModConfigData("beer_wait"),
+	SODA_WAIT = GetModConfigData("soda_wait"),
+
+	--[[만드는 시간(온도 조절은 특수 효과가 아님)
 	INCORRECT_BOIL = 4,
 	KETTLE_WATER = 17, -- 물
 	KETTLE_TEA = 20, -- 녹차, 홍차, 보이
@@ -56,7 +71,7 @@ local tuning =
 	--KETTLE_MONSTER = 23, -- 쓴 차
 	KETTLE_ABI = 45, -- 수상한 히비스커스
 	BEER_WAIT = GetModConfigData("beer_wait"),
-	SODA_WAIT = GetModConfigData("soda_wait"),
+	SODA_WAIT = GetModConfigData("soda_wait"),]]
 
 	TEA_TREE_REGROWTH_TIME_MULT = 1,
 	CAFFEINBERRY_REGROWTH_TIME_MULT = 1,

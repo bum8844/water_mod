@@ -3,20 +3,20 @@ local function returnbottle(inst, eater)
 	local uses = inst.components.finiteuses:GetUses()
 	uses = uses - 1
 
-	local item = nil
+	local refund = nil
 	if uses > 0 then
-		item = SpawnPrefab(inst.prefab)
-		item.components.finiteuses:SetUses(uses)
+		refund = SpawnPrefab(inst.prefab)
+		refund.components.finiteuses:SetUses(uses)
 	else
-		item = SpawnPrefab("messagebottleempty")
+		refund = SpawnPrefab("messagebottleempty")
 	end
 
 	inst:Remove()
 
 	if eater ~= nil and eater.components.inventory ~= nil then
-		eater.components.inventory:GiveItem(item)
+		eater.components.inventory:GiveItem(refund, nil, Vector3(x, y, z))
 	else
-		item.Transform:SetPosition(x,y,z)
+		refund.Transform:SetPosition(x,y,z)
 	end
 end
 
@@ -29,10 +29,6 @@ local function returncup(inst, eater)
 	else
 		refund.Transform:SetPosition(x,y,z)
 	end
-end
-
-function notmeat(tags)
-	return not (tags.meat or tags.egg)
 end
 
 local function dummy(boiler, name, tags)
@@ -226,7 +222,6 @@ local drinks =
 		end,
 	},
 	
-	-- 일시적 빛나는 효과[추가해야함]
 	glowberry =
 	{
 		test = function(boilier, names, tags) return (( names.wormlight or 0 ) + ( names.wormlight_lesser or 0) >= 2) and notmeat(tags) end,
@@ -275,8 +270,11 @@ local drinks =
 		thirst = TUNING.HYDRATION_SMALL,
 		cooktime = 25,
 		oneatenfn = function(inst, eater)
-			returncup(inst, eater)
-			
+			if inst:HasTag("preparedrink_cup") then
+				returncup(inst, eater)
+			else
+				returnbottle(inst, eater)
+			end
 		end,
 	},
 	

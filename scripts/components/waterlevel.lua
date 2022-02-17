@@ -102,7 +102,7 @@ function Waterlevel:MakeEmpty()
 end
 
 function Waterlevel:OnSave()
-    if self.currentwater ~= self.maxwater then
+    if self.currentwater ~= 0 then
         return {waterlevel = self.currentwater}
     end
 end
@@ -151,13 +151,45 @@ function Waterlevel:TakeWaterItem(item, doer)
         self.oldcurrentwater = self.currentwater
         local finiteuses_water = not item:HasTag("preparedrink_cup") and item.components.water.watervalue ~= item.components.finiteuses:GetUses() and item.components.finiteuses:GetUses() or item.components.water.watervalue
         self:DoDelta(finiteuses_water, doer)
-
+        
         local watervalue = 0
         if item.components.water ~= nil then
             watervalue = item.components.water.watervalue
             item.components.water:Taken(self.inst)
         end
-        item:Remove()
+
+        local refund = item:HasTag("preparedrink_cup") and SpawnPrefab("cup") or item:HasTag("preparedrink_bottle") and SpawnPrefab("messagebottleempty") or item:HasTag("bucket") and SpawnPrefab("bucket")
+
+        if item.components.finiteuses ~= nil then
+            local max = self.maxwater
+            local current = self.oldcurrentwater
+            if max ~= current then
+                max = max - current
+            end
+            local uses = item.components.finiteuses:GetUses()
+            uses = uses - max
+
+            if uses > 0 then
+                refund = SpawnPrefab(item.prefab)
+                refund.components.finiteuses:SetUses(uses)
+            end
+        end
+
+        local owner = item.components.inventoryitem ~= nil and item.components.inventoryitem:GetGrandOwner() or nil
+        if owner ~= nil then
+            local container = owner.components.inventory or owner.components.container
+            local item_prefab = container:RemoveItem(item, false) or item
+            item_prefab:Remove()
+            container:GiveItem(refund, nil, owner:GetPosition())
+        else
+            refund.Transform:SetPosition(inst.Transform:GetWorldPosition())
+            local item_prefab =
+                inst.components.stackable ~= nil and
+                inst.components.stackable:IsStack() and
+                inst.components.stackable:Get() or
+                inst
+            item_prefab:Remove()
+        end
 
         if self.ontakewaterfn ~= nil then
             self.ontakewaterfn(self.inst, watervalue)
@@ -229,6 +261,25 @@ function Waterlevel:InitializeWaterLevel(waterlevel)
     end
     self.currentwater = waterlevel
 
+    if self.currentwater ~= 0 then
+        self.inst.components.propagator.acceptsheat = false
+        if self.inst.components.watersource ~= nil then
+            if self.inst.components.stewer ~= nil and self.inst.components.stewer:IsCooking() then
+                self.inst.components.watersource.available = false
+            else
+                self.inst.components.watersource.available = true
+            end
+        end
+    end
+
+    if self.currentwater == self.maxwater then
+        self.accepting = false
+    elseif self.inst.components.stewer ~= nil and (self.inst.components.stewer.product ~= nil or self.inst.components.stewer:IsCooking()) then
+        self.accepting = false
+    else
+        self.accepting = true
+    end
+
     local newsection = self:GetCurrentSection()
     if oldsection ~= newsection then
         if self.sectionfn then
@@ -242,6 +293,35 @@ function Waterlevel:DoDelta(amount, doer)
     local oldsection = self:GetCurrentSection()
 
     self.currentwater = math.max(0, math.min(self.maxwater, self.currentwater + amount))
+
+    if self.currentwater == self.maxwater then
+        self.accepting = false
+    else
+        if self.inst.components.stewer ~= nil and self.inst.components.stewer.product ~= nil then
+            self.accepting = false
+        else
+            self.accepting = true
+        end
+    end
+
+    if self.currentwater > 0 then
+        self.inst.components.propagator.acceptsheat = false
+        if self.inst.components.watersource ~= nil then
+            self.inst.components.watersource.available = true
+        else
+            self.inst.components.watersource.available = false
+        end
+        if self.inst.components.stewer ~= nil and self.inst.components.container ~= nil then
+            if self.inst.components.stewer.product == nil then
+                self.inst.components.container.canbeopened = true
+            else
+                self.inst.components.container.canbeopened = false
+            end
+        end
+
+    else
+        self.inst.components.propagator.acceptsheat = true
+    end
 
     local newsection = self:GetCurrentSection()
 
