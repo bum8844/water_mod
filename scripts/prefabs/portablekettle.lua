@@ -159,8 +159,9 @@ end
 
 local function harvestfn(inst)
     if not inst:HasTag("burnt") then
-        inst.components.waterlevel:DoDelta(-5)
+        inst.components.waterlevel:DoDelta(-TUNING.KETTLE_MAX_LEVEL)
         inst.components.waterlevel.accepting = true
+        inst.components.stewer.product = nil
         inst.AnimState:PlayAnimation("idle_empty")
         inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_close")
     end
@@ -275,9 +276,9 @@ local function fn()
     inst.components.waterlevel.secondarywatertype = WATERTYPE.DIRTY
     inst.components.waterlevel:SetDepletedFn(OnDepleted)
     inst.components.waterlevel:SetTakeWaterFn(OnTakeWater)
-    inst.components.waterlevel.maxwater = 5
+    inst.components.waterlevel.maxwater = TUNING.KETTLE_MAX_LEVEL
     inst.components.waterlevel.accepting = true
-    inst.components.waterlevel:SetSections(5)
+    inst.components.waterlevel:SetSections(TUNING.KETTLE_MAX_LEVEL)
     inst.components.waterlevel:SetSectionCallback(OnSectionChange)
     inst.components.waterlevel:InitializeWaterLevel(0)
 
@@ -295,6 +296,7 @@ local function fn()
 
     inst:AddComponent("container")
     inst.components.container:WidgetSetup("portablekettle")
+    inst.components.container.canbeopened = false
     inst.components.container.onopenfn = onopen
     inst.components.container.onclosefn = onclose
     inst.components.container.skipclosesnd = true

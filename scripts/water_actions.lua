@@ -2,6 +2,14 @@ local ACTIONS = _G.ACTIONS
 local Action = _G.Action
 local ActionHandler = _G.ActionHandler
 local WATERTYPE = _G.WATERTYPE
+local State = _G.State
+local TimeEvent = _G.TimeEvent
+local EventHandler = _G.EventHandler
+local FRAMES = _G.FRAMES
+local SpawnPrefab = _G.SpawnPrefab
+local EQUIPSLOTS = _G.EQUIPSLOTS
+
+ACTIONS.FILL.priority = 4
 
 local FILL_BARREL = Action({priority=3})
 FILL_BARREL.id = "FILL_BARREL"
@@ -16,6 +24,7 @@ AddAction(FILL_BARREL)
 
 local function waterlevel(inst, doer, target, actions)
     for k, v in pairs(WATERTYPE) do
+        --print("For " .. tostring(v) .. ": " .. tostring(inst:HasTag(v.."_water")) .. ", " .. tostring(target:HasTag(v.."_waterlevel")))
         if inst:HasTag(v.."_water") then
             if target:HasTag(v.."_waterlevel") then
                 table.insert(actions, ACTIONS.FILL_BARREL)
@@ -25,25 +34,22 @@ local function waterlevel(inst, doer, target, actions)
     end
 end
 
---AddComponentAction("USEITEM", "waterlevel", waterlevel)
 AddComponentAction("USEITEM", "water", waterlevel)
 
 AddStategraphActionHandler("wilson", ActionHandler(ACTIONS.FILL_BARREL, "dolongaction"))
 AddStategraphActionHandler("wilson_client", ActionHandler(ACTIONS.FILL_BARREL, "dolongaction"))
+
+
 --[[
 function SetupBottleDrinkActions(inst, doer, actions)
-	table.insert(actions, GLOBAL.ACTIONS.FILI_CUPDRINK)
+	table.insert(actions, ACTIONS.FILI_CUPDRINK)
 end
 
 AddComponentAction("INVENTORY", "fili_cupdrink", SetupBottleDrinkActions)
 
-local State = GLOBAL.State
-local TimeEvent = GLOBAL.TimeEvent
-local EventHandler = GLOBAL.EventHandler
-local FRAMES = GLOBAL.FRAMES
-local SpawnPrefab = GLOBAL.SpawnPrefab
 
-local fili_cupdrink_state = GLOBAL.State{
+
+local fili_cupdrink_state = State{
         name = "fili_cupdrink_action",
         tags = { "busy" },
 
@@ -80,14 +86,14 @@ local fili_cupdrink_state = GLOBAL.State{
         },
 
         onexit = function(inst)
-            if inst.components.inventory:GetEquippedItem(GLOBAL.EQUIPSLOTS.HANDS) then
+            if inst.components.inventory:GetEquippedItem(EQUIPSLOTS.HANDS) then
                 inst.AnimState:Show("ARM_carry")
                 inst.AnimState:Hide("ARM_normal")
             end
         end,
 }
 
-local fili_cupdrink_state_client = GLOBAL.State{
+local fili_cupdrink_state_client = .State{
         name = "fili_cupdrink_action",
         tags = { "busy" },
 
@@ -120,7 +126,7 @@ local fili_cupdrink_state_client = GLOBAL.State{
         },
 
         onexit = function(inst)
-		    local equip = inst.replica.inventory:GetEquippedItem(GLOBAL.EQUIPSLOTS.HANDS)
+		    local equip = inst.replica.inventory:GetEquippedItem(EQUIPSLOTS.HANDS)
             if equip then
                 inst.AnimState:Show("ARM_carry")
                 inst.AnimState:Hide("ARM_normal")
@@ -132,6 +138,6 @@ AddStategraphState("wilson", fili_cupdrink_state)
 AddStategraphState("wilson_client", fili_cupdrink_state_client)
 
 
-local fili_cupdrink_ah = GLOBAL.ActionHandler( GLOBAL.ACTIONS.FILI_CUPDRINK, "fili_cupdrink_action" )
+local fili_cupdrink_ah = ActionHandler( ACTIONS.FILI_CUPDRINK, "fili_cupdrink_action" )
 AddStategraphActionHandler("wilson", fili_cupdrink_ah)
 AddStategraphActionHandler("wilson_client", fili_cupdrink_ah)]]

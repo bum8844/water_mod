@@ -132,7 +132,7 @@ local drinks =
 		end,
 	},
 	
-	berry =
+	berries =
 	{
 		test = function(boilier, names, tags) return (( names.berries or 0 ) + ( names.berries_cooked or 0 ) + ( names.berries_juicy or 0 ) + ( names.berries_juicy_cooked or 0 ) >= 2) and notmeat(tags) end,
 		priority = 1,

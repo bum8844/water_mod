@@ -270,6 +270,13 @@ function Waterlevel:InitializeWaterLevel(waterlevel)
                 self.inst.components.watersource.available = true
             end
         end
+        if self.inst.components.stewer ~= nil and self.inst.components.container ~= nil then
+            if self.inst.components.stewer.product == nil then
+                self.inst.components.container.canbeopened = true
+            else
+                self.inst.components.container.canbeopened = false
+            end
+        end
     end
 
     if self.currentwater == self.maxwater then
@@ -318,7 +325,6 @@ function Waterlevel:DoDelta(amount, doer)
                 self.inst.components.container.canbeopened = false
             end
         end
-
     else
         self.inst.components.propagator.acceptsheat = true
     end

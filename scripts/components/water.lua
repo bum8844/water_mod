@@ -29,7 +29,7 @@ end
 
 function Water:OnRemoveFromEntity()
     if self.watertype ~= nil then
-        self.inst:RemoveTag(self.watertype.."_Water")
+        self.inst:RemoveTag(self.watertype.."_water")
     end
 end
 

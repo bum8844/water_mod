@@ -91,6 +91,7 @@ local function bottleadd(inst)
 			end
 			if from_object.components.stewer ~= nil then
 				if from_object.components.waterlevel.currentwater == 0 then
+					from_object.components.stewer.product = nil
 					from_object.components.stewer:Harvest()
 				end
 			end
