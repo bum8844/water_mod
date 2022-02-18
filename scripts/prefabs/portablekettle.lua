@@ -28,9 +28,10 @@ local prefabs_item =
 }
 
 local function ChangeToItem(inst)
-    --[[if inst.components.stewer.product ~= nil and inst.components.stewer:IsDone() then
+    if inst.components.stewer.product ~= nil and inst.components.stewer:IsDone() then
+        inst.components.stewer.product = nil
         inst.components.stewer:Harvest()
-    end]]
+    end
     if inst.components.container ~= nil then
         inst.components.container:DropEverything()
     end
@@ -204,9 +205,13 @@ local function OnSectionChange(new, old, inst)
     end
 end
 
-local function OnDismantle(inst)--, doer)
-    ChangeToItem(inst)
-    inst:Remove()
+local function OnDismantle(inst, doer)
+    if inst.components.waterlevel.currentwater == 0 then
+        ChangeToItem(inst)
+        inst:Remove()
+    else
+        doer.components.talker:Say(GetString(doer, "ACTIONFAIL_GENERIC"))
+    end
 end
 
 local function OnBurnt(inst)
@@ -269,6 +274,8 @@ local function fn()
     if not TheWorld.ismastersim then
         return inst
     end
+
+    inst._waterlevel = 0
 
     inst:AddComponent("portablestructure")
     inst.components.portablestructure:SetOnDismantleFn(OnDismantle)
