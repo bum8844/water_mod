@@ -66,7 +66,6 @@ local function startcookfn(inst)
         inst.AnimState:PlayAnimation("cooking_loop", true)
         inst.SoundEmitter:KillSound("snd")
         inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_rattle", "snd")
-        inst.Light:Enable(true)
     end
 end
 
@@ -111,6 +110,7 @@ end
 
 local function donecookfn(inst)
     if not inst:HasTag("burnt") then
+        inst.components.watersource.available = true
         inst.AnimState:PlayAnimation("cooking_pst")
         inst.AnimState:PushAnimation("idle_full", false)
         ShowProduct(inst)

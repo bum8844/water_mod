@@ -132,6 +132,7 @@ end
 
 local function donecookfn(inst)
     if not inst:HasTag("burnt") then
+        inst.components.watersource.available = true
         inst.AnimState:PlayAnimation("cooking_pst")
         inst.AnimState:PushAnimation("idle_full", false)
         ShowProduct(inst)
