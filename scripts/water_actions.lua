@@ -2,12 +2,17 @@ local ACTIONS = _G.ACTIONS
 local Action = _G.Action
 local ActionHandler = _G.ActionHandler
 local WATERTYPE = _G.WATERTYPE
-local State = _G.State
-local TimeEvent = _G.TimeEvent
-local EventHandler = _G.EventHandler
-local FRAMES = _G.FRAMES
+--local State = _G.State
+--local EventHandler = _G.EventHandler
+--local FRAMES = _G.FRAMES
 local SpawnPrefab = _G.SpawnPrefab
-local EQUIPSLOTS = _G.EQUIPSLOTS
+--local EQUIPSLOTS = _G.EQUIPSLOTS
+
+ACTIONS.HARVEST.stroverridefn = function(act)
+    if act.target:HasTag("kettle") then
+        return STRINGS.ACTIONS.DRAIN
+    end
+end
 
 ACTIONS.FILL.priority = 4
 
