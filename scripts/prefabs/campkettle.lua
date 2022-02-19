@@ -62,7 +62,8 @@ local function onfuelchange(newsection, oldsection, inst)
         inst:RemoveComponent("cooker")
         inst:RemoveComponent("propagator")
         inst:RemoveComponent("workable")
-		--inst:RemoveComponent("")
+		inst:RemoveComponent("waterlevel")
+        inst:RemoveComponent("watersource")
         inst.persists = false
         inst:AddTag("NOCLICK")
         inst:DoTaskInTime(1, ErodeAway)
@@ -70,7 +71,13 @@ local function onfuelchange(newsection, oldsection, inst)
         if not inst.components.burnable:IsBurning() then
             updatefuelrate(inst)
         end
-        inst.AnimState:PlayAnimation("idle_empty")
+        if inst._timer == 0 then
+            if inst.components.waterlevel.currentwater == 0 then
+                inst.AnimState:PlayAnimation("idle_empty")
+            else
+                inst.AnimState:PlayAnimation("idle_full_water")
+            end
+        end
         inst.components.burnable:SetFXLevel(newsection, inst.components.fueled:GetSectionPercent())
 
         inst.components.propagator.propagaterange = PROPAGATE_RANGES[newsection]
@@ -110,7 +117,7 @@ end
 local function BoildDone(inst)
     inst.components.watersource.available = true       
     inst.AnimState:PlayAnimation("cooking_pst")
-    inst.AnimState:PlayAnimation("idle_empty")
+    inst.AnimState:PlayAnimation("idle_full_water")
     inst.SoundEmitter:KillSound("snd") 
     inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_close")
     inst._timer = 0
@@ -118,10 +125,10 @@ end
 
 local function Boild(inst)
     inst.components.waterlevel.accepting = false
+    inst.components.watersource.available = false
     inst.AnimState:PlayAnimation("cooking_loop", true)
     inst.SoundEmitter:KillSound("snd")
     inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_rattle", "snd")
-    inst.Light:Enable(true)
     inst:DoTaskInTime(inst._timer, BoildDone, inst)
 end
 
@@ -132,23 +139,28 @@ local function onsave(inst, data)
 end
 
 local function onload(inst, data)
-    if data ~= nil and data.timer ~= nil then
-        inst._timer = data.timer
-        Boild(inst)
+    if data ~= nil then 
+        if data.timer ~= nil then
+            inst._timer = data.timer
+            Boild(inst)
+        end
+        if inst._timer == 0 and inst.components.waterlevel.currentwater > 0 then
+            inst.AnimState:PlayAnimation("idle_full_water")
+        end
     end
 end
 
 local function OnDepleted(inst)
     inst.components.watersource.available = false
     inst.components.waterlevel.accepting = true
+    inst.AnimState:PlayAnimation("idle_empty")
+    inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_close")
 end
 
 local function OnTakeWater(inst, watervalue, watertype)
-    if not inst:HasTag("burnt") then
-        inst._timer = TUNING.KETTLE_WATER*watervalue
-        Boild(inst)
-        inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/small")
-    end
+    inst._timer = TUNING.KETTLE_WATER*watervalue
+    Boild(inst)
+    inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/small")
 end
 
 local function fn()
@@ -164,10 +176,9 @@ local function fn()
     inst.AnimState:SetBank("campkettle")
     inst.AnimState:SetBuild("campkettle")
     inst.AnimState:PlayAnimation("idle_empty", false)
-    --inst.AnimState:SetRayTestOnBB(true)
 
     inst:AddTag("campfire")
-    inst.AddTag("campkettle")
+    inst:AddTag("kettle")
     inst:AddTag("NPC_workable")
 
     --cooker (from cooker component) added to pristine state for optimization
@@ -176,7 +187,7 @@ local function fn()
 	-- for storytellingprop component
 	inst:AddTag("storytellingprop")
 
-    inst.AddTag("cleanwater")
+    inst:AddTag("cleanwater")
 
     inst.entity:SetPristine()
 
@@ -211,7 +222,7 @@ local function fn()
     inst.components.waterlevel.accepting = true
     inst.components.waterlevel:InitializeWaterLevel(0)
 
-    inst.AddComponent("watersource")
+    inst:AddComponent("watersource")
     inst.components.watersource.available = false
 
     -------------------------
@@ -245,6 +256,9 @@ local function fn()
     inst.components.hauntable:SetHauntValue(TUNING.HAUNT_SMALL)
     inst.components.hauntable.cooldown = TUNING.HAUNT_COOLDOWN_HUGE
     inst.components.hauntable:SetOnHauntFn(OnHaunt)
+
+    inst.OnSave = onsave
+    inst.OnLoad = onload
 
     return inst
 end
