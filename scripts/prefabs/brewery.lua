@@ -195,6 +195,9 @@ local function OnSectionChange(new, old, inst)
     if inst._waterlevel ~= new then
         inst._waterlevel = new
         inst.AnimState:OverrideSymbol("swap", "brewery_meter_water", tostring(new))
+        if inst.components.waterlevel.currentwater > 0 then
+            inst.components.container:Close()
+        end
     end
 end
 

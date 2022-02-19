@@ -14,12 +14,17 @@ local prefabs =
 local function OnFill(inst, from_object)
 	local filleditem, watertype = nil, nil
 	if from_object ~= nil then
-		if from_object.components.waterlevel ~= nil then
-			watertype = from_object.components.waterlevel.watertype
-		elseif from_object.components.water ~= nil then
-			watertype = from_object.components.water.watertype
+		if not from_object:HasTag("cleanwater") then
+			if from_object.components.waterlevel ~= nil then
+				watertype = from_object.components.waterlevel.watertype
+			elseif from_object.components.water ~= nil then
+				watertype = from_object.components.water.watertype
+			else
+				watertype = "DIRTY"
+			end
+		else
+			watertype = "CLEAN"
 		end
-
 		if from_object.components.stewer ~= nil and from_object.components.stewer.product ~= nil then
 			watertype = from_object.components.stewer.product
 		end
@@ -41,7 +46,11 @@ local function OnFill(inst, from_object)
 				refund = SpawnPrefab("bucket")
 			end
 
-			refund.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/small")
+			if from_object ~= nil then
+				from_object.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/small")
+			else
+				inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/small")
+			end
 
 			local owner = from_object.components.inventoryitem ~= nil and from_object.components.inventoryitem:GetGrandOwner() or nil
 			if owner ~= nil then

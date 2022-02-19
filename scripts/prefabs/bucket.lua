@@ -48,10 +48,16 @@ end
 local function OnFill(inst, from_object)
 	local filleditem, watertype = nil, nil
 	if from_object ~= nil then
-		if from_object.components.waterlevel ~= nil then
-			watertype = from_object.components.waterlevel.watertype
-		elseif from_object.components.water ~= nil then
-			watertype = from_object.components.water.watertype
+		if not from_object:HasTag("cleanwater") then
+			if from_object.components.waterlevel ~= nil then
+				watertype = from_object.components.waterlevel.watertype
+			elseif from_object.components.water ~= nil then
+				watertype = from_object.components.water.watertype
+			else
+				watertype = WATERTYPE.DIRTY
+			end
+		else
+			watertype = WATERTYPE.CLEAN
 		end
 		filleditem = SpawnPrefab("bucket_"..string.lower(watertype))
 		if from_object.components.stewer ~= nil then
@@ -74,7 +80,11 @@ local function OnFill(inst, from_object)
 		return false
 	end
 
-	from_object.SoundEmitter:PlaySound("dontstarve/creatures/pengull/splash")
+	if from_object ~= nil then
+		from_object.SoundEmitter:PlaySound("dontstarve/creatures/pengull/splash")
+	else
+		inst.SoundEmitter:PlaySound("dontstarve/creatures/pengull/splash")
+	end
 
 	local owner = inst.components.inventoryitem ~= nil and inst.components.inventoryitem:GetGrandOwner() or nil
     if owner ~= nil then

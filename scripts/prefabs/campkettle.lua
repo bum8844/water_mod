@@ -107,20 +107,48 @@ local function OnHaunt(inst)
     return false
 end
 
-local function OnDepleted(inst)
-    inst.components.propagator.acceptsheat = true
+local function BoildDone(inst)
+    inst.components.watersource.available = true       
+    inst.AnimState:PlayAnimation("cooking_pst")
+    inst.AnimState:PlayAnimation("idle_empty")
+    inst.SoundEmitter:KillSound("snd") 
+    inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_close")
+    inst._timer = 0
 end
 
-local function OnTakeWater(inst, watervalue)
-    inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/small")
+local function Boild(inst)
+    inst.components.waterlevel.accepting = false
+    inst.AnimState:PlayAnimation("cooking_loop", true)
+    inst.SoundEmitter:KillSound("snd")
+    inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_rattle", "snd")
+    inst.Light:Enable(true)
+    inst:DoTaskInTime(inst._timer, BoildDone, inst)
+end
 
-    if inst.components.waterlevel.currentwater == inst.components.waterlevel.maxwater then
-        inst.components.waterlevel.accepting = false
-    else
-        inst.components.waterlevel.accepting = true
+local function onsave(inst, data)
+    if inst._timer ~= 0 then
+        data.timer = inst._timer
     end
+end
 
-    inst.components.propagator.acceptsheat = false
+local function onload(inst, data)
+    if data ~= nil and data.timer ~= nil then
+        inst._timer = data.timer
+        Boild(inst)
+    end
+end
+
+local function OnDepleted(inst)
+    inst.components.watersource.available = false
+    inst.components.waterlevel.accepting = true
+end
+
+local function OnTakeWater(inst, watervalue, watertype)
+    if not inst:HasTag("burnt") then
+        inst._timer = TUNING.KETTLE_WATER*watervalue
+        Boild(inst)
+        inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/small")
+    end
 end
 
 local function fn()
@@ -148,11 +176,15 @@ local function fn()
 	-- for storytellingprop component
 	inst:AddTag("storytellingprop")
 
+    inst.AddTag("cleanwater")
+
     inst.entity:SetPristine()
 
     if not TheWorld.ismastersim then
         return inst
     end
+
+    inst._timer = 0
 
     -----------------------
     inst:AddComponent("propagator")
@@ -174,9 +206,13 @@ local function fn()
     inst:AddComponent("waterlevel")
     inst.components.waterlevel:SetDepletedFn(OnDepleted)
     inst.components.waterlevel:SetTakeWaterFn(OnTakeWater)
-    inst.components.waterlevel.maxwater = 1
+    inst.components.waterlevel.watertype = WATERTYPE.DIRTY
+    inst.components.waterlevel.maxwater = TUNING.CAMP_KETTLE_MAX_LEVEL
     inst.components.waterlevel.accepting = true
     inst.components.waterlevel:InitializeWaterLevel(0)
+
+    inst.AddComponent("watersource")
+    inst.components.watersource.available = false
 
     -------------------------
     inst:AddComponent("cooker")

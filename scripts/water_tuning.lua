@@ -49,27 +49,27 @@ local tuning =
 	SANITY_POISOE = -5,
 
 	INCORRECT_BOIL = 1,
-	KETTLE_WATER = 1, -- 물
+	KETTLE_WATER = 4, -- 물
 	KETTLE_TEA = 1, -- 녹차, 홍차, 보이
 	KETTLE_FRUIT = 1, -- 모든 과일 종류
 	KETTLE_VEGGIE = 1, -- 모든 야채 종류
 	KETTLE_DECORATION = 1, -- 꽃 종류
 	KETTLE_LUXURY_GOODS = 1, -- 특수 효과주는 차들
 	--KETTLE_MONSTER = 23, -- 쓴 차
-	KETTLE_ABI = 45, -- 수상한 히비스커스
+	KETTLE_ABI = 1, -- 수상한 히비스커스
 	BEER_WAIT = GetModConfigData("beer_wait"),
 	SODA_WAIT = GetModConfigData("soda_wait"),
 
 	--[[만드는 시간(온도 조절은 특수 효과가 아님)
 	INCORRECT_BOIL = 4,
-	KETTLE_WATER = 17, -- 물
-	KETTLE_TEA = 20, -- 녹차, 홍차, 보이
-	KETTLE_FRUIT = 22, -- 모든 과일 종류
-	KETTLE_VEGGIE = 24, -- 모든 야채 종류
-	KETTLE_DECORATION = 26, -- 꽃 종류
-	KETTLE_LUXURY_GOODS = 30, -- 특수 효과주는 차들
+	KETTLE_WATER = 4, -- 물
+	KETTLE_TEA = 10, -- 녹차, 홍차, 보이
+	KETTLE_FRUIT = 11, -- 모든 과일 종류
+	KETTLE_VEGGIE = 12, -- 모든 야채 종류
+	KETTLE_DECORATION = 13, -- 꽃 종류
+	KETTLE_LUXURY_GOODS = 15, -- 특수 효과주는 차들
 	--KETTLE_MONSTER = 23, -- 쓴 차
-	KETTLE_ABI = 45, -- 수상한 히비스커스
+	KETTLE_ABI = 23, -- 수상한 히비스커스
 	BEER_WAIT = GetModConfigData("beer_wait"),
 	SODA_WAIT = GetModConfigData("soda_wait"),]]
 

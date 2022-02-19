@@ -32,28 +32,6 @@ local function oneaten(inst, eater)
 	end
 end
 
---[[local function onuse(inst)
-	local refund = SpawnPrefab("bucket")
-	local owner = inst.components.inventoryitem ~= nil and inst.components.inventoryitem:GetGrandOwner() or nil
-
-	if owner ~= nil then
-		local container = owner.components.inventory or owner.components.container
-		local item = container:RemoveItem(inst, false) or inst
-		item:Remove()
-		container:GiveItem(refund, nil, owner:GetPosition())
-	else
-		refund.Transform:SetPosition(inst.Transform:GetWorldPosition())
-		local item =
-			inst.components.stackable ~= nil and
-			inst.components.stackable:IsStack() and
-			inst.components.stackable:Get() or
-			inst
-		item:Remove()
-	end
-	
-	return true
-end]]
-
 local function onuse(inst)
 	
 	if inst:HasTag("wateringcan") then

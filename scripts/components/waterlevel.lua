@@ -147,6 +147,7 @@ end
 
 function Waterlevel:TakeWaterItem(item, doer)
     if self:CanAcceptWaterItem(item) then
+        local watertype = item.components.water.watertype
         local oldsection = self:GetCurrentSection()
         self.oldcurrentwater = self.currentwater
         local finiteuses_water = not item:HasTag("preparedrink_cup") and item.components.water.watervalue ~= item.components.finiteuses:GetUses() and item.components.finiteuses:GetUses() or item.components.water.watervalue
@@ -155,6 +156,9 @@ function Waterlevel:TakeWaterItem(item, doer)
         local watervalue = 0
         if item.components.water ~= nil then
             watervalue = item.components.water.watervalue
+            if item.components.finiteuses ~= nil and item.components.finiteuses:GetUses() < self.maxwater then
+                watervalue = item.components.finiteuses:GetUses()
+            end
             item.components.water:Taken(self.inst)
         end
 
@@ -192,9 +196,9 @@ function Waterlevel:TakeWaterItem(item, doer)
         end
 
         if self.ontakewaterfn ~= nil then
-            self.ontakewaterfn(self.inst, watervalue)
+            self.ontakewaterfn(self.inst, watervalue, watertype)
         end
-        self.inst:PushEvent("takewater", { watervalue = watervalue }, { item = item }, { doer = doer })
+        self.inst:PushEvent("takewater", { watervalue = watervalue }, { watertype = watertype }, { doer = doer })
 
         return true
     end

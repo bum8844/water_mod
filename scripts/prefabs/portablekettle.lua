@@ -172,20 +172,52 @@ end
 local function getstatus(inst)
     return (inst:HasTag("burnt") and "BURNT")
         or (inst.components.stewer:IsDone() and "DONE")
-        or (not inst.components.stewer:IsCooking() and "EMPTY")
-        or (inst.components.stewer:GetTimeToCook() > 15 and "BOILING_LONG")
+        or ((not inst.components.stewer:IsCooking() or not inst._timer > 0) and "EMPTY")
+        or ((inst.components.stewer:GetTimeToCook() > 15 or inst._timer > 12) and "BOILING_LONG")
         or "BOILING_SHORT"
+end
+
+local function BoildDone(inst)
+    inst.components.container.canbeopened = true
+    inst.components.watersource.available = true
+    inst.components.waterlevel.accepting = true        
+    inst.AnimState:PlayAnimation("cooking_pst")
+    inst.AnimState:PlayAnimation("idle_empty")
+    inst.SoundEmitter:KillSound("snd") 
+    inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_close")
+    inst._timer = 0
+end
+
+local function Boild(inst)
+    inst.components.container:Close()
+    inst.components.container.canbeopened = false
+    inst.components.watersource.available = false
+    inst.components.waterlevel.accepting = false
+    inst.AnimState:PlayAnimation("cooking_loop", true)
+    inst.SoundEmitter:KillSound("snd")
+    inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_rattle", "snd")
+    inst.Light:Enable(true)
+    inst:DoTaskInTime(inst._timer, BoildDone, inst)
 end
 
 local function onsave(inst, data)
     if inst:HasTag("burnt") or (inst.components.burnable ~= nil and inst.components.burnable:IsBurning()) then
         data.burnt = true
     end
+    if inst._timer ~= 0 then
+        data.timer = inst._timer
+    end
 end
 
 local function onload(inst, data)
-    if data ~= nil and data.burnt then
-        inst.components.burnable.onburnt(inst)
+    if data ~= nil then 
+        if data.burnt then
+            inst.components.burnable.onburnt(inst)
+        end
+        if data.timer ~= nil then
+            inst._timer = data.timer
+            Boild(inst)
+        end
     end
 end
 
@@ -194,14 +226,23 @@ local function OnDepleted(inst)
     inst.components.propagator.acceptsheat = true
 end
 
-local function OnTakeWater(inst, watervalue)
-    inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/small")
+local function OnTakeWater(inst, watervalue, watertype)
+    if not inst:HasTag("burnt") then
+        if watertype ~= WATERTYPE.CLEAN then
+            inst._timer = TUNING.KETTLE_WATER*watervalue
+            Boild(inst)
+        end
+        inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/small")
+    end
 end
 
 local function OnSectionChange(new, old, inst)
     if inst._waterlevel ~= new then
         inst._waterlevel = new
         inst.AnimState:OverrideSymbol("swap", "portablekettle_meter_water", tostring(new))
+        if inst.components.waterlevel.currentwater > 0 then
+            inst.components.container:Close()
+        end
     end
 end
 
@@ -275,6 +316,7 @@ local function fn()
         return inst
     end
 
+    inst._timer = 0
     inst._waterlevel = 0
 
     inst:AddComponent("portablestructure")

@@ -22,8 +22,6 @@ modimport("scripts/water_recipes.lua")
 modimport("scripts/strings/strings.lua")
 --modimport("scripts/strings/speech.lua")
 modimport("scripts/water_tuning.lua")
---modimport("scripts/prepareagedrink.lua")
---modimport("scripts/preparedrink.lua")
 modimport("scripts/water_actions.lua")
 
 AddMinimapAtlas("images/tea_minimap.xml")

@@ -14,6 +14,12 @@ ACTIONS.HARVEST.stroverridefn = function(act)
     end
 end
 
+ACTIONS.EAT.stroverridefn = function(act)
+    if act.invobject:HasTag("drink") then
+        return STRINGS.DRINKING
+    end
+end
+
 ACTIONS.FILL.priority = 4
 
 local FILL_BARREL = Action({priority=3})
@@ -39,11 +45,11 @@ local function waterlevel(inst, doer, target, actions)
     end
 end
 
+
 AddComponentAction("USEITEM", "water", waterlevel)
 
 AddStategraphActionHandler("wilson", ActionHandler(ACTIONS.FILL_BARREL, "dolongaction"))
 AddStategraphActionHandler("wilson_client", ActionHandler(ACTIONS.FILL_BARREL, "dolongaction"))
-
 
 --[[
 function SetupBottleDrinkActions(inst, doer, actions)

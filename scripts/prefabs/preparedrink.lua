@@ -64,6 +64,18 @@ local function MakePreparedCupDrink(data)
         inst.AnimState:PlayAnimation("idle")
         inst.AnimState:OverrideSymbol("swap", _overridebuild or "kettle_drink", _basename or "cup_".._name)
 		
+        if _name == "glowberrywine" or _name == "colaquantum" then
+            inst.AnimState:SetBloomEffectHandle("shaders/anim.ksh")
+
+            inst.entity:AddLight()
+
+            inst.Light:SetFalloff(0.7)
+            inst.Light:SetIntensity(.5)
+            inst.Light:SetRadius(0.5)
+            inst.Light:SetColour(169/255, 231/255, 245/255)
+            inst.Light:Enable(true)
+        end
+
         if _name == "water" then
             inst:AddTag("clean")
         elseif _name == "salt" then
@@ -73,6 +85,7 @@ local function MakePreparedCupDrink(data)
         end
 		inst:AddTag("icebox_valid")
         inst:AddTag("preparedrink_cup")
+        inst:AddTag("drink")
 
         if data.tags ~= nil then
             for i,v in pairs(data.tags) do
@@ -159,7 +172,10 @@ local function OnFill(inst, from_object)
     local watering = false
     local waterlevel = from_object.components.waterlevel ~= nil and from_object.components.waterlevel.watertype
     local water = from_object.components.water ~= nil and from_object.components.water.watertype
-    local check = from_object.components.stewer ~= nil and from_object.components.stewer.product 
+    local check = not from_object:HasTag("cleanwater") and "dirty"
+                  or from_object:HasTag("cleanwater") and "clean"
+                  or from_object == nil and "salty"
+                  or from_object.components.stewer ~= nil and from_object.components.stewer.product 
                   or from_object.components.waterlevel ~= nil and (waterlevel == "CLEAN" and string.lower(waterlevel) or waterlevel == "SALTY" and string.lower(waterlevel) or waterlevel == "DIRTY" and string.lower(waterlevel))
                   or from_object.components.water ~= nil and (water == "CLEAN" and string.lower(water) or water == "SALTY" and string.lower(water) or water == "DIRTY" and string.lower(waterlevel))
                   or nil
@@ -207,7 +223,11 @@ local function OnFill(inst, from_object)
         end
     end
     if watering then
-        from_object.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/medium")
+        if from_object ~= nil then
+            from_object.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/medium")
+        else
+            inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/medium")
+        end
         return true
     else
         return false
@@ -256,6 +276,19 @@ local function MakePreparedBottleDrink(data)
         inst.AnimState:PlayAnimation("idle")
         inst.AnimState:OverrideSymbol("swap", _overridebuild or "kettle_bottle_drink", _basename or "bottle_".._name)
 		
+        if _name == "glowberrywine" then
+            inst.AnimState:SetBloomEffectHandle("shaders/anim.ksh")
+
+            inst.entity:AddLight()
+
+            inst.Light:SetFalloff(0.7)
+            inst.Light:SetIntensity(.5)
+            inst.Light:SetRadius(0.5)
+            inst.Light:SetColour(169/255, 231/255, 245/255)
+            inst.Light:Enable(true)
+
+        end
+
         if _name == "water" then
             inst:AddTag("clean")
         elseif _name == "salt" then
@@ -265,6 +298,7 @@ local function MakePreparedBottleDrink(data)
         end
 		inst:AddTag("icebox_valid")
         inst:AddTag("preparedrink_bottle")
+        inst:AddTag("drink")
         if data.tags ~= nil then
             for i,v in pairs(data.tags) do
                 inst:AddTag(v)
