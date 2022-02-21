@@ -129,7 +129,7 @@ local function bottleadd(inst)
 	            inst
 	        item:Remove()
 	    end
-		
+		inst:PushEvent("givewater",{inst = inst, from_object = from_object})
 		return true
 	end
 	inst:AddTag("fil_bottle")
@@ -190,8 +190,9 @@ AddComponentPostInit("dryer", function(self)
     end
 end)
 
-AddComponentPostInit("stewer",function(self)
-    local _Harvest = self.Harvest
+--[[AddComponentPostInit("stewer",function(self)
+    _Harvest = self.Harvest
+    local _oncheckready = self.oncheckready
 
     function self:Harvest(harvester, ...)
         local result = _Harvest(self, harvester, ...)
@@ -205,6 +206,43 @@ AddComponentPostInit("stewer",function(self)
         
         return result
     end
+    function self:oncheckready(inst, ...)
+    	local result = _oncheckready(self, inst, ...)
+    	if not self.inst:HasTag("kettle") then
+    		if self.inst.components.container ~= nil and not self.inst.components.container:IsOpen() and self.inst.components.container:IsFull() then
+        	self.inst:AddTag("readytocook")
+    		end
+    	elseif inst.components.container ~= nil and not self.inst.components.container:IsOpen() and self.inst.components.container:IsFull() and self.inst.components.waterlevel ~= nil and self.inst.components.waterlevel.currentwater ~= 0 then
+        	self.inst:AddTag("readytocook")
+    	end
+
+    	return result
+    end
+
+end)]]
+
+local function oncheckready_water(inst, from_object)
+    if inst:HasTag("kettle") then
+        if inst.components.container ~= nil and
+            inst.components.waterlevel ~= nil and
+            not inst.components.container:IsOpen() and
+            inst.components.container:IsFull() and
+            inst.components.waterlevel.currentwater ~= 0 and 
+            inst._timer == 0 then
+                inst:AddTag("readytocook")
+            else
+            	inst:RemoveTag("readytocook")
+        end
+    elseif inst.components.container ~= nil and
+        not inst.components.container:IsOpen() and
+        inst.components.container:IsFull() then
+        inst:AddTag("readytocook")
+    end
+end
+
+AddComponentPostInit("stewer", function(self)
+    self.inst:ListenForEvent("itemget", oncheckready_water)
+    self.inst:ListenForEvent("onclose", oncheckready_water)
 end)
 
 --regrowth code
@@ -216,10 +254,3 @@ AddComponentPostInit("regrowthmanager", function(self)
         return TUNING.CAFFEINBERRY_REGROWTH_TIME_MULT
     end)
 end)
-
-local containers = require "containers"
-local cookpot = containers.params.cookpot
-
-containers.params.kettle = cookpot
-containers.params.portablekettle = cookpot
-containers.params.brewery = cookpot

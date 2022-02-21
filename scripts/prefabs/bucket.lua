@@ -101,12 +101,12 @@ local function OnFill(inst, from_object)
             inst
         item:Remove()
     end
-	
+    inst:PushEvent("givewater",{from_object = from_object})
 	return true
 end
 
 local function FillByRain(inst)
-	local filleditem = SpawnPrefab("bucket_full")
+	local filleditem = SpawnPrefab("bucket_clean")
     inst.rainfilling = 0
 
 	inst.SoundEmitter:PlaySound("dontstarve/creatures/pengull/splash")

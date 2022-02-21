@@ -8,6 +8,14 @@ local WATERTYPE = _G.WATERTYPE
 local SpawnPrefab = _G.SpawnPrefab
 --local EQUIPSLOTS = _G.EQUIPSLOTS
 
+ACTIONS.COOK.stroverridefn = function(act)
+    if act.target:HasTag("kettle") then
+        return STRINGS.ACTIONS.BOIL
+    else
+        return act.target ~= nil and act.target:HasTag("spicer") and STRINGS.ACTIONS.SPICE or nil
+    end
+end
+
 ACTIONS.HARVEST.stroverridefn = function(act)
     if act.target:HasTag("kettle") then
         return STRINGS.ACTIONS.DRAIN
@@ -16,11 +24,11 @@ end
 
 ACTIONS.EAT.stroverridefn = function(act)
     if act.invobject:HasTag("drink") then
-        return STRINGS.DRINKING
+        return STRINGS.ACTIONS.DRINKING
     end
 end
 
-ACTIONS.FILL.priority = 4
+ACTIONS.FILL.priority = 2
 
 local FILL_BARREL = Action({priority=3})
 FILL_BARREL.id = "FILL_BARREL"
@@ -45,8 +53,18 @@ local function waterlevel(inst, doer, target, actions)
     end
 end
 
+local function kettle(inst, doer, actions, right)
+    if not inst:HasTag("burnt") and not (doer.replica.rider ~= nil and doer.replica.rider:IsRiding()) then
+        if inst:HasTag("donecooking") then
+            table.insert(actions, ACTIONS.HARVEST)
+        elseif right and ((inst:HasTag("readytocook"))or(inst.replica.container ~= nil and inst.components.waterlevel ~= nil and inst.replica.container:IsFull() and inst.replica.container:IsOpenedBy(doer) and inst.components.waterlevel.currentwater ~= 0)) then
+            table.insert(actions, ACTIONS.COOK)
+        end
+    end
+end
 
 AddComponentAction("USEITEM", "water", waterlevel)
+AddComponentAction("SCENE", "stewer", kettle, test)
 
 AddStategraphActionHandler("wilson", ActionHandler(ACTIONS.FILL_BARREL, "dolongaction"))
 AddStategraphActionHandler("wilson_client", ActionHandler(ACTIONS.FILL_BARREL, "dolongaction"))

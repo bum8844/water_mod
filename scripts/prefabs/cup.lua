@@ -99,7 +99,7 @@ local function OnFill(inst, from_object)
             inst
         item:Remove()
     end
-	
+    inst:PushEvent("givewater",{inst = inst, from_object = from_object})
 	return true
 end
 

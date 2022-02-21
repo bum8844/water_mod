@@ -251,7 +251,6 @@ local function fn()
 
 	inst:AddComponent("container")
 	inst.components.container:WidgetSetup("kettle")
-    inst.components.container.canbeopened = false
 	inst.components.container.onopenfn = onopen
 	inst.components.container.onclosefn = onclose
 	inst.components.container.skipclosesnd = true

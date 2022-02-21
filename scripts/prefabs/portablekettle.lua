@@ -251,7 +251,7 @@ local function OnDismantle(inst, doer)
         ChangeToItem(inst)
         inst:Remove()
     else
-        doer.components.talker:Say(GetString(doer, "ACTIONFAIL_GENERIC"))
+        doer.components.talker:Say(GetString(doer,"ACTIONFAIL",{"DISMANTLE","NOTEMPTY"}))
     end
 end
 
@@ -346,7 +346,6 @@ local function fn()
 
     inst:AddComponent("container")
     inst.components.container:WidgetSetup("portablekettle")
-    inst.components.container.canbeopened = false
     inst.components.container.onopenfn = onopen
     inst.components.container.onclosefn = onclose
     inst.components.container.skipclosesnd = true

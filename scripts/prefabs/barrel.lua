@@ -69,7 +69,6 @@ local function OnSectionChange(new, old, inst)
 	if inst._waterlevel ~= new then
 		inst._waterlevel = new
 		inst.AnimState:OverrideSymbol("swap", "barrel_meter_water", tostring(new))
-		print(new)
 	end
 end
 

@@ -13,7 +13,8 @@ TUNING.barrel_WATERLEVEL = "%. Water Level "]]--
 STRINGS.RECIPE_DESC.GRASS_BAG = "A magical bag with plants inside."
 STRINGS.CHARACTERS.GENERIC.DESCRIBE.GRASS_BAG = "I should open it."]]--
 
-STRINGS.DRINKING = "Drink"
+STRINGS.ACTIONS.BOIL = "Boil"
+STRINGS.ACTIONS.DRINKING = "Drink"
 STRINGS.TAKEWATER = "Take Water"
 STRINGS.GITWATER = "Get Water"
 STRINGS.GITDRINK = "Get Drink"

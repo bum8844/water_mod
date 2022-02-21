@@ -172,12 +172,12 @@ local function OnFill(inst, from_object)
     local watering = false
     local waterlevel = from_object.components.waterlevel ~= nil and from_object.components.waterlevel.watertype
     local water = from_object.components.water ~= nil and from_object.components.water.watertype
-    local check = not from_object:HasTag("cleanwater") and "dirty"
-                  or from_object:HasTag("cleanwater") and "clean"
-                  or from_object == nil and "salty"
-                  or from_object.components.stewer ~= nil and from_object.components.stewer.product 
+    local check =  from_object.components.stewer ~= nil and from_object.components.stewer.product 
                   or from_object.components.waterlevel ~= nil and (waterlevel == "CLEAN" and string.lower(waterlevel) or waterlevel == "SALTY" and string.lower(waterlevel) or waterlevel == "DIRTY" and string.lower(waterlevel))
                   or from_object.components.water ~= nil and (water == "CLEAN" and string.lower(water) or water == "SALTY" and string.lower(water) or water == "DIRTY" and string.lower(waterlevel))
+                  or not from_object:HasTag("cleanwater") and "dirty"
+                  or from_object:HasTag("cleanwater") and "clean"
+                  or from_object == nil and "salty"
                   or nil
     if check ~= nil and inst:HasTag(check) then
         if from_object.components.waterlevel ~= nil and inst.components.finiteuses:GetUses() ~= inst.components.finiteuses.total then
@@ -228,6 +228,7 @@ local function OnFill(inst, from_object)
         else
             inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/medium")
         end
+        inst:PushEvent("givewater",{inst = inst, from_object = from_object})
         return true
     else
         return false

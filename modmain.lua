@@ -23,6 +23,7 @@ modimport("scripts/strings/strings.lua")
 --modimport("scripts/strings/speech.lua")
 modimport("scripts/water_tuning.lua")
 modimport("scripts/water_actions.lua")
+modimport("scripts/water_containers.lua")
 
 AddMinimapAtlas("images/tea_minimap.xml")
 

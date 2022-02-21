@@ -41,19 +41,32 @@ local function onaccepting(self, accepting)
     end
 end
 
---[[local function onmaxwater(self, maxwater)
-    if self.watertype ~= nil and self.currentwater < maxwater then
-        self.inst:AddTag(self.watertype.."_waterlevel")
-    else
-        self.inst:AddTag(self.watertype.."_waterlevel")
-    end
-end]]
-
 local function oncurrentwater(self, currentwater)
     if currentwater <= 0 then
         self.inst:AddTag("waterdepleted")
     else
         self.inst:RemoveTag("waterdepleted")
+    end
+end
+
+local function oncheckready(inst)
+    if inst:HasTag("kettle") then
+        if inst.components.container ~= nil and
+            inst.components.waterlevel ~= nil and
+            not inst.components.container:IsOpen() and
+            inst.components.container:IsFull() and
+            inst.components.waterlevel.currentwater ~= 0 and 
+            inst._timer == 0 then
+            inst:AddTag("readytocook")
+        else
+            inst:RemoveTag("readytocook")
+        end
+    end
+end
+
+local function onnotready(inst)
+    if inst.components.stewer ~= nil then
+        inst:RemoveTag("readytocook")
     end
 end
 
@@ -74,6 +87,9 @@ local Waterlevel = Class(function(self, inst)
     self.sections = 1
     self.sectionfn = nil
     self.depleted = nil
+
+    inst:ListenForEvent("takewater", oncheckready)
+    inst:ListenForEvent("depleted", onnotready)
 end,
 nil,
 {
@@ -134,7 +150,7 @@ function Waterlevel:CanAcceptWaterItem(item)
 end
 
 function Waterlevel:GetCurrentSection()
-    return self:IsEmpty() and 0 or math.min( math.floor(self:GetPercent()* self.sections)+1, self.sections)
+    return self:IsEmpty() and 0 or math.min( math.floor(self:GetPercent()* self.sections), self.sections)
 end
 
 function Waterlevel:ChangeSection(amount)
@@ -162,7 +178,9 @@ function Waterlevel:TakeWaterItem(item, doer)
             item.components.water:Taken(self.inst)
         end
 
-        local refund = item:HasTag("preparedrink_cup") and SpawnPrefab("cup") or item:HasTag("preparedrink_bottle") and SpawnPrefab("messagebottleempty") or item:HasTag("bucket") and SpawnPrefab("bucket")
+        local item_watervalue = item.components.water ~= nil and item.components.water.watervalue
+        --water 컴포넌트 쪽에 반환하도록 처리해야함
+        local refund = item_watervalue == TUNING.CUP_MAX_LEVEL and SpawnPrefab("cup") or item_watervalue == TUNING.BOTTLE_MAX_LEVEL and SpawnPrefab("messagebottleempty") or item_watervalue == TUNING.BUCKET_MAX_LEVEL and SpawnPrefab("bucket")
 
         if item.components.finiteuses ~= nil then
             local max = self.maxwater
@@ -274,13 +292,13 @@ function Waterlevel:InitializeWaterLevel(waterlevel)
                 self.inst.components.watersource.available = true
             end
         end
-        if self.inst.components.stewer ~= nil and self.inst.components.container ~= nil then
+        --[[if self.inst.components.stewer ~= nil and self.inst.components.container ~= nil then
             if self.inst.components.stewer.product == nil then
                 self.inst.components.container.canbeopened = true
             else
                 self.inst.components.container.canbeopened = false
             end
-        end
+        end]]
     end
 
     if self.currentwater == self.maxwater then
@@ -322,13 +340,13 @@ function Waterlevel:DoDelta(amount, doer)
         else
             self.inst.components.watersource.available = false
         end
-        if self.inst.components.stewer ~= nil and self.inst.components.container ~= nil then
+        --[[if self.inst.components.stewer ~= nil and self.inst.components.container ~= nil then
             if self.inst.components.stewer.product == nil then
                 self.inst.components.container.canbeopened = true
             else
                 self.inst.components.container.canbeopened = false
             end
-        end
+        end]]
     else
         self.inst.components.propagator.acceptsheat = true
     end
@@ -339,9 +357,10 @@ function Waterlevel:DoDelta(amount, doer)
         if self.sectionfn then
             self.sectionfn(newsection, oldsection, self.inst, doer)
         end
-        self.inst:PushEvent("onwaterdsectionchanged", { newsection = newsection, oldsection = oldsection, doer = doer })
+        self.inst:PushEvent("onwaterlevelsectionchanged", { newsection = newsection, oldsection = oldsection, doer = doer })
         if self.currentwater <= 0 and self.depleted then
             self.depleted(self.inst)
+            self.inst:PushEvent("depleted", { doer = doer })
         end
     end
 

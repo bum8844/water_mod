@@ -75,6 +75,9 @@ local function startcookfn(inst)
 end
 
 local function onopen(inst)
+    if inst.components.waterlevel == 0 then
+        inst:RemoveTag("readytocook")
+    end
     if not inst:HasTag("burnt") then
         inst.AnimState:PlayAnimation("cooking_pre_loop")
         inst.SoundEmitter:KillSound("snd")
@@ -222,6 +225,7 @@ local function OnTakeWater(inst, watervalue, watertype)
     if not inst:HasTag("burnt") then
         if watertype ~= WATERTYPE.CLEAN then
             inst._timer = TUNING.KETTLE_WATER*watervalue
+            inst.components.container:DropEverything()
             Boild(inst)
         end
         inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/small")
@@ -232,9 +236,6 @@ local function OnSectionChange(new, old, inst)
     if inst._waterlevel ~= new then
         inst._waterlevel = new
         inst.AnimState:OverrideSymbol("swap", "kettle_meter_water", tostring(new))
-        if inst.components.waterlevel.currentwater > 0 then
-            inst.components.container:Close()
-        end
     end
 end
 
@@ -294,7 +295,7 @@ local function fn()
 
 	inst:AddComponent("container")
 	inst.components.container:WidgetSetup("kettle")
-    inst.components.container.canbeopened = false
+    --inst.components.container.canbeopened = false
 	inst.components.container.onopenfn = onopen
 	inst.components.container.onclosefn = onclose
 	inst.components.container.skipclosesnd = true
@@ -308,8 +309,8 @@ local function fn()
     inst.components.workable:SetWorkLeft(4)
 	inst.components.workable:SetOnFinishCallback(onhammered)
 	inst.components.workable:SetOnWorkCallback(onhit)
-	
-	inst:ListenForEvent("onbuilt", onbuilt)
+
+    inst:ListenForEvent("onbuilt", onbuilt)
 	
 	MakeHauntableWork(inst)
 	
