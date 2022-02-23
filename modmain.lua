@@ -1,6 +1,10 @@
 env._G = GLOBAL
 env.require = _G.require
 env.STRINGS = _G.STRINGS
+env.ACTIONS = _G.ACTIONS
+env.RPC = _G.RPC
+env.SendRPCToServer = _G.SendRPCToServer
+env.BufferedAction = _G.BufferedAction
 env.SpawnPrefab = _G.SpawnPrefab
 
 PrefabFiles = require("water_prefablist")

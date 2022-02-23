@@ -41,8 +41,8 @@ function params.kettle.widget.buttoninfo.fn(inst, doer)
     end
 end
  
-function params.kettle.widget.buttoninfo.validfn(container , inst)
-    return container.components.waterlevel ~= nil and container.components.waterlevel.currentwater ~= 0 and inst.replica.container ~= nil and inst.replica.container:IsFull()
+function params.kettle.widget.buttoninfo.validfn(inst)
+    return not inst:HasTag("waterdepleted") and inst.replica.container ~= nil and inst.replica.container:IsFull()
 end
  
 containers.params.portablekettle = params.kettle
