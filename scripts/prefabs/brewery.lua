@@ -270,6 +270,8 @@ local function fn()
         return inst
     end
 
+    inst._waterlevel = 0
+
     inst:AddComponent("waterlevel")
     inst.components.waterlevel:SetDepletedFn(OnDepleted)
     inst.components.waterlevel:SetTakeWaterFn(OnTakeWater)

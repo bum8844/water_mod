@@ -209,10 +209,6 @@ local function Add_Componet(inst)
 end
 
 local function onopen(inst)
-    if not inst:HasTag("stewer") then
-        inst:AddComponent("stewer")
-        Add_Componet(inst)
-    end
     if not inst:HasTag("burnt") then
         inst.AnimState:PlayAnimation("cooking_pre_loop")
         inst.SoundEmitter:KillSound("snd")
@@ -222,6 +218,10 @@ local function onopen(inst)
 end
 
 local function onclose(inst)
+    if not inst:HasTag("stewer") then
+        inst:AddComponent("stewer")
+        Add_Componet(inst)
+    end
     if not inst:HasTag("burnt") then
         if not inst.components.stewer:IsCooking() then
             inst.AnimState:PlayAnimation("idle_empty")
