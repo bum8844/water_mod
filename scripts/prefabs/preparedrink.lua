@@ -194,8 +194,6 @@ local function OnFill(inst, from_object)
             from_object.components.waterlevel:DoDelta(-currentwaterlevel)
             inst.components.finiteuses:SetUses(currentwater)
             watering = true
-            print(from_object.components.waterlevel.currentwater)
-            print(inst.components.finiteuses:GetUses())
         end
         if from_object.components.finiteuses ~= nil and inst.components.finiteuses:GetUses() ~= inst.components.finiteuses.total then
             local currentwater = inst.components.finiteuses:GetUses()

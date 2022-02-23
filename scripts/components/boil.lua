@@ -1,13 +1,9 @@
 local function onready_check(inst)
     if inst.components.container ~= nil and
-        inst.components.waterlevel ~= nil and
-        inst.components.container:IsFull() and
-        inst.components.waterlevel.currentwater ~= 0 and 
-        inst._timer == 0 then
-        if not inst:HasTag("stewer") then
-            inst:AddComponent("stewer")
-        end
-    else
+       inst.components.waterlevel ~= nil and
+       not inst.components.container:IsFull() and
+       not inst.components.waterlevel.currentwater ~= 0 and 
+       not inst._timer == 0 then
         inst:RemoveTag("stewer")
         inst:RemoveComponent("stewer")
     end
