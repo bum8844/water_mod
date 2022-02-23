@@ -69,25 +69,6 @@ local function startcookfn(inst)
     end
 end
 
-local function onopen(inst)
-    if not inst:HasTag("burnt") then
-        inst.AnimState:PlayAnimation("cooking_pre_loop")
-        inst.SoundEmitter:KillSound("snd")
-        inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_open")
-        inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot", "snd")
-    end
-end
-
-local function onclose(inst)
-    if not inst:HasTag("burnt") then
-        if not inst.components.stewer:IsCooking() then
-            inst.AnimState:PlayAnimation("idle_empty")
-            inst.SoundEmitter:KillSound("snd")
-        end
-        inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_close")
-    end
-end
-
 local function SetProductSymbol(inst, product, overridebuild)
     local build = overridebuild or "kettle_drink"
     local overridesymbol = product
@@ -153,20 +134,6 @@ local function getstatus(inst)
         or "FARMENT_SHORT"
 end
 
-local function onsave(inst, data)
-    if inst:HasTag("burnt") or (inst.components.burnable ~= nil and inst.components.burnable:IsBurning()) then
-        data.burnt = true
-    end
-end
-
-local function onload(inst, data)
-    if data ~= nil then
-		if data.burnt then
-        inst.components.burnable.onburnt(inst)
-		end
-    end
-end
-
 local function onloadpostpass(inst, newents, data)
     if data and data.additems and inst.components.container then
         for i, itemname in ipairs(data.additems)do
@@ -195,8 +162,78 @@ local function OnSectionChange(new, old, inst)
     if inst._waterlevel ~= new then
         inst._waterlevel = new
         inst.AnimState:OverrideSymbol("swap", "brewery_meter_water", tostring(new))
-        if inst.components.waterlevel.currentwater > 0 then
-            inst.components.container:Close()
+    end
+end
+
+local function Add_Componet(inst)
+    inst.components.stewer.onstartcooking = startcookfn
+    inst.components.stewer.oncontinuecooking = continuecookfn
+    inst.components.stewer.oncontinuedone = continuedonefn
+    inst.components.stewer.ondonecooking = donecookfn
+    inst.components.stewer.onharvest = harvestfn
+    --inst.components.stewer.onspoil = spoilfn
+end
+
+local function onopen(inst)
+    if not inst:HasTag("burnt") then
+        inst.AnimState:PlayAnimation("cooking_pre_loop")
+        inst.SoundEmitter:KillSound("snd")
+        inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_open")
+        inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot", "snd")
+    end
+end
+
+local function onclose(inst)
+    if not inst:HasTag("burnt") then
+        if not inst.components.stewer:IsCooking() then
+            inst.AnimState:PlayAnimation("idle_empty")
+            inst.SoundEmitter:KillSound("snd")
+        end
+        inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_close")
+    end
+end
+
+local function oncheckready_water(inst, from_object)
+    if not inst:HasTag("stewer")then
+        inst:AddComponent("stewer")
+        Add_Componet(inst)
+    end
+    if inst.components.container ~= nil and inst.components.waterlevel ~= nil then
+        if not inst.components.container:IsOpen() and inst.components.container:IsFull() and inst.components.waterlevel.currentwater ~= 0 then
+            inst:AddTag("readytocook")
+        elseif inst.components.container:IsOpen() and (inst.components.waterlevel.currentwater < 0 or inst.components.waterlevel.currentwater == 0) then
+            inst:RemoveTag("stewer")
+            inst:RemoveComponent("stewer")
+        else
+            inst:RemoveTag("readytocook")
+        end
+    end
+end
+
+local function oncheckready(inst)
+    if not inst:HasTag("stewer")then
+        inst:AddComponent("stewer")
+        Add_Componet(inst)
+    end
+    if inst.components.container ~= nil and
+        inst.components.waterlevel ~= nil and
+        not inst.components.container:IsOpen() and
+        inst.components.container:IsFull() and
+        inst.components.waterlevel.currentwater ~= 0 then
+        inst:AddTag("readytocook")
+    end
+end
+
+local function onsave(inst, data)
+    if inst:HasTag("burnt") or (inst.components.burnable ~= nil and inst.components.burnable:IsBurning()) then
+        data.burnt = true
+    end
+end
+
+local function onload(inst, data)
+    if data ~= nil then
+        if data.burnt then
+        inst.components.burnable.onburnt(inst)
         end
     end
 end

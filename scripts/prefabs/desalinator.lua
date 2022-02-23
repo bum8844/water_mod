@@ -86,6 +86,16 @@ local function OnDepleted(inst)
     inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_close")
 end
 
+local function OnSectionChange(new, old, inst, item_watertype)
+    local watertype = item_watertype ~= WATERTYPE.CLEAN and "salt" or "water"
+    if new ~= nil then
+        if inst._waterlevel ~= new then
+            inst._waterlevel = new
+        end
+    end
+    inst.AnimState:OverrideSymbol("swap", "kettle_meter_"..watertype, tostring(inst._waterlevel))
+end
+
 local function OnTakeWater(inst, watervalue, watertype)
     inst._timer = TUNING.KETTLE_WATER*watervalue
     Boild(inst)
