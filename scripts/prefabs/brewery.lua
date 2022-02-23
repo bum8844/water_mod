@@ -282,6 +282,8 @@ local function fn()
     inst:AddComponent("watersource")
     inst.components.watersource.available = false
 
+    inst:AddComponent("boil")
+
     inst:AddComponent("stewer")
 	inst.components.stewer.onstartcooking = startcookfn
 	inst.components.stewer.oncontinuecooking = continuecookfn
@@ -307,6 +309,9 @@ local function fn()
 	inst.components.workable:SetOnWorkCallback(onhit)
 	
 	inst:ListenForEvent("onbuilt", onbuilt)
+    inst:ListenForEvent("itemget", oncheckready_water)
+    inst:ListenForEvent("onclose", oncheckready)
+    inst:ListenForEvent("takewater", oncheckready)
 	
 	MakeHauntableWork(inst)
 	

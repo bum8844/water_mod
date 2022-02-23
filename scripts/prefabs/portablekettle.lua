@@ -386,6 +386,8 @@ local function fn()
     inst:AddComponent("watersource")
     inst.components.watersource.available = false
 
+    inst:AddComponent("boil")
+
     inst:AddComponent("stewer")
     inst.components.stewer.cooktimemult = TUNING.PORTABLE_COOK_POT_TIME_MULTIPLIER
     inst.components.stewer.onstartcooking = startcookfn
