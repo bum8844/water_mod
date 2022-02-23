@@ -118,7 +118,7 @@ end
 function Waterlevel:OnLoad(data)
     if data.waterlevel then
         if data.item_watertype ~= nil then
-            print("save is : "data.item_watertype)
+            print("save is : ", data.item_watertype)
             self:InitializeWaterLevel(math.max(0, data.waterlevel), data.item_watertype) 
         else
             self:InitializeWaterLevel(math.max(0, data.waterlevel), WATERTYPE.CLEAN)

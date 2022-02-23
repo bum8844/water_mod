@@ -172,8 +172,8 @@ end
 local function getstatus(inst)
     return (inst:HasTag("burnt") and "BURNT")
         or (inst.components.stewer:IsDone() and "DONE")
-        or ((not inst.components.stewer:IsCooking() or not inst._timer > 0) and "EMPTY")
-        or ((inst.components.stewer:GetTimeToCook() > 15 or inst._timer > 12) and "BOILING_LONG")
+        or (not inst.components.stewer:IsCooking() or not (inst._timer > 0) and "EMPTY")
+        or (inst.components.stewer:GetTimeToCook() > 15 or (inst._timer > 12) and "BOILING_LONG")
         or "BOILING_SHORT"
 end
 
