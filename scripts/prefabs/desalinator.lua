@@ -28,28 +28,75 @@ local function onbuilt(inst)
 	inst.AnimState:PushAnimation("idle")
 end
 
+local function harvestfn(inst)
+    if not inst:HasTag("burnt") then
+        inst.components.stewer.product = "saltrock"
+        inst.components.stewer.product.stacksize = inst._saltvalue
+        inst.AnimState:PlayAnimation("idle_empty")
+        inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_close")
+    end
+end
+
+local function BoildDone(inst)
+    local old_saltvalue = inst._saltvalue
+    inst.components.watersource.available = true       
+    inst.AnimState:PlayAnimation("cooking_pst")
+    inst.AnimState:PlayAnimation("idle_full_water")
+    inst.SoundEmitter:KillSound("snd") 
+    inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_close")
+    inst._timer = 0
+    inst._saltvalue = old_saltvalue + 1
+    if not inst:HasTag("donecooking") then
+        inst.components.stewer.done = true
+        inst:AddTag("donecooking")
+    end
+end
+
+local function Boild(inst)
+    inst.components.waterlevel.accepting = false
+    inst.components.watersource.available = false
+    inst.AnimState:PlayAnimation("cooking_loop", true)
+    inst.SoundEmitter:KillSound("snd")
+    inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_rattle", "snd")
+    inst:DoTaskInTime(inst._timer, BoildDone, inst)
+end
+
 local function onsave(inst, data)
     if inst:HasTag("burnt") or (inst.components.burnable ~= nil and inst.components.burnable:IsBurning()) then
         data.burnt = true
+    end
+    if inst._timer ~= 0 then
+        data.timer = inst._timer
+    end
+    if inst._saltvalue ~= 0 then
+        data.saltvalue = inst._saltvalue
     end
 end
 
 local function onload(inst, data)
     if data ~= nil and data.burnt then
         inst.components.burnable.onburnt(inst)
-        --inst.Light:Enable(false)
     end
 end
 
-local function onloadpostpass(inst, newents, data)
-    if data and data.additems and inst.components.container then
-        for i, itemname in ipairs(data.additems)do
-            local ent = SpawnPrefab(itemname)
-            inst.components.container:GiveItem( ent )
-        end
-    end
+local function OnDepleted(inst)
+    inst.components.watersource.available = false
+    inst.components.waterlevel.accepting = true
+    inst.AnimState:PlayAnimation("idle_empty")
+    inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_close")
 end
 
+local function OnTakeWater(inst, watervalue, watertype)
+    inst._timer = TUNING.KETTLE_WATER*watervalue
+    Boild(inst)
+    if watervalue >= 15 then
+    	inst.SoundEmitter:PlaySound("dontstarve/creatures/pengull/splash")
+    elseif watervalue >= 5 then
+    	inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/medium")
+	else
+    	inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/small")
+	end
+end
 local function fn()
 	local inst = CreateEntity()
 	
@@ -77,9 +124,29 @@ local function fn()
     if not TheWorld.ismastersim then
         return inst
     end
+
+    inst._waterlevel = 0
+    inst._timer = 0
+    inst._saltvalue = 0
 	
 	inst:AddComponent("lootdropper")
     inst:AddComponent("inspectable")
+
+    inst:AddComponent("stewer")
+    inst.components.stewer.onharvest = harvestfn
+
+    inst:AddComponent("waterlevel")
+    inst.components.waterlevel.watertype = WATERTYPE.SALTY
+    inst.components.waterlevel:SetDepletedFn(OnDepleted)
+    inst.components.waterlevel:SetTakeWaterFn(OnTakeWater)
+    inst.components.waterlevel.maxwater = TUNING.DESALINATOR_MAX_LEVEL
+    inst.components.waterlevel.accepting = true
+    inst.components.waterlevel:SetSections(TUNING.DESALINATOR_MAX_LEVEL)
+    inst.components.waterlevel:SetSectionCallback(OnSectionChange)
+    inst.components.waterlevel:InitializeWaterLevel(0)
+
+    inst:AddComponent("watersource")
+    inst.components.watersource.available = false
 	
 	inst:AddComponent("workable")
     inst.components.workable:SetWorkAction(ACTIONS.HAMMER)

@@ -226,13 +226,18 @@ local function OnDepleted(inst)
     inst.components.propagator.acceptsheat = true
 end
 
-local function OnTakeWater(inst, watervalue, watertype)
+local function OnTakeWater(inst, watervalue, item_watertype)
     if not inst:HasTag("burnt") then
-        if watertype ~= WATERTYPE.CLEAN then
+        if item_watertype ~= WATERTYPE.CLEAN then
             inst._timer = TUNING.KETTLE_WATER*watervalue
+            inst.components.container:DropEverything()
             Boild(inst)
         end
-        inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/small")
+        if watervalue >= 5 then
+            inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/medium")
+        else
+            inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/small")
+        end
     end
 end
 
@@ -240,9 +245,6 @@ local function OnSectionChange(new, old, inst)
     if inst._waterlevel ~= new then
         inst._waterlevel = new
         inst.AnimState:OverrideSymbol("swap", "portablekettle_meter_water", tostring(new))
-        if inst.components.waterlevel.currentwater > 0 then
-            inst.components.container:Close()
-        end
     end
 end
 

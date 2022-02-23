@@ -53,18 +53,7 @@ local function waterlevel(inst, doer, target, actions)
     end
 end
 
-local function kettle(inst, doer, actions, right)
-    if not inst:HasTag("burnt") and not (doer.replica.rider ~= nil and doer.replica.rider:IsRiding()) then
-        if inst:HasTag("donecooking") then
-            table.insert(actions, ACTIONS.HARVEST)
-        elseif right and ((inst:HasTag("readytocook"))or(inst.replica.container ~= nil and inst.components.waterlevel ~= nil and inst.replica.container:IsFull() and inst.replica.container:IsOpenedBy(doer) and inst.components.waterlevel.currentwater ~= 0)) then
-            table.insert(actions, ACTIONS.COOK)
-        end
-    end
-end
-
 AddComponentAction("USEITEM", "water", waterlevel)
-AddComponentAction("SCENE", "stewer", kettle, test)
 
 AddStategraphActionHandler("wilson", ActionHandler(ACTIONS.FILL_BARREL, "dolongaction"))
 AddStategraphActionHandler("wilson_client", ActionHandler(ACTIONS.FILL_BARREL, "dolongaction"))

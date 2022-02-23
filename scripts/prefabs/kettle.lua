@@ -87,6 +87,9 @@ local function onopen(inst)
 end
 
 local function onclose(inst)
+    if not inst:HasTag("stewer") then
+        inst:AddComponent("stewer")
+    end
     if not inst:HasTag("burnt") then
         if not inst.components.stewer:IsCooking() then
             inst.AnimState:PlayAnimation("idle_empty")
@@ -166,6 +169,8 @@ local function BoildDone(inst)
     inst.components.container.canbeopened = true
     inst.components.watersource.available = true
     inst.components.waterlevel.accepting = true        
+    inst.components.waterlevel.item_watertype = WATERTYPE.CLEAN
+    OnSectionChange(inst)
     inst.AnimState:PlayAnimation("cooking_pst")
     inst.AnimState:PlayAnimation("idle_empty")
     inst.SoundEmitter:KillSound("snd") 
@@ -221,22 +226,27 @@ local function OnDepleted(inst)
     inst.components.propagator.acceptsheat = true
 end
 
-local function OnTakeWater(inst, watervalue, watertype)
+local function OnTakeWater(inst, watervalue)
     if not inst:HasTag("burnt") then
-        if watertype ~= WATERTYPE.CLEAN then
+        if inst.components.waterlevel.item_watertype ~= WATERTYPE.CLEAN then
             inst._timer = TUNING.KETTLE_WATER*watervalue
             inst.components.container:DropEverything()
             Boild(inst)
         end
-        inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/small")
+        if watervalue >= 5 then
+            inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/medium")
+        else
+            inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/small")
+        end
     end
 end
 
-local function OnSectionChange(new, old, inst)
+local function OnSectionChange(new, old, inst, item_watertype)
+    local watertype = item_watertype == "CLEAN" and "water" or "dirty"
     if inst._waterlevel ~= new then
         inst._waterlevel = new
-        inst.AnimState:OverrideSymbol("swap", "kettle_meter_water", tostring(new))
     end
+    inst.AnimState:OverrideSymbol("swap", "kettle_meter_"..watertype, tostring(new))
 end
 
 local function fn()
@@ -284,6 +294,8 @@ local function fn()
 
     inst:AddComponent("watersource")
     inst.components.watersource.available = false
+
+    inst:AddComponent("boil")
 
     inst:AddComponent("stewer")
 	inst.components.stewer.onstartcooking = startcookfn

@@ -50,6 +50,9 @@ local function oncurrentwater(self, currentwater)
 end
 
 local function oncheckready(inst)
+    if not inst:HasTag("stewer")then
+        inst:AddComponent("stewer")
+    end
     if inst:HasTag("kettle") then
         if inst.components.container ~= nil and
             inst.components.waterlevel ~= nil and
@@ -58,8 +61,6 @@ local function oncheckready(inst)
             inst.components.waterlevel.currentwater ~= 0 and 
             inst._timer == 0 then
             inst:AddTag("readytocook")
-        else
-            inst:RemoveTag("readytocook")
         end
     end
 end
@@ -67,6 +68,10 @@ end
 local function onnotready(inst)
     if inst.components.stewer ~= nil then
         inst:RemoveTag("readytocook")
+        if inst.components.container:IsOpen() then
+            inst:RemoveTag("stewer")
+            inst:RemoveComponent("stewer")
+        end
     end
 end
 
@@ -83,6 +88,7 @@ local Waterlevel = Class(function(self, inst)
 
     self.accepting = false
     self.watertype = WATERTYPE.CLEAN
+    self.item_watertype = WATERTYPE.CLEAN
     self.secondarywatertype = nil
     self.sections = 1
     self.sectionfn = nil
@@ -121,11 +127,17 @@ function Waterlevel:OnSave()
     if self.currentwater ~= 0 then
         return {waterlevel = self.currentwater}
     end
+    if self.item_watertype ~= nil then
+        return {item_watertype = self.item_watertype}
+    end
 end
 
 function Waterlevel:OnLoad(data)
     if data.waterlevel then
         self:InitializeWaterLevel(math.max(0, data.waterlevel))
+    end
+    if data.item_watertype ~= WATERTYPE.CLEAN then
+        self.item_watertype = data.item_watertype
     end
 end
 
@@ -163,7 +175,7 @@ end
 
 function Waterlevel:TakeWaterItem(item, doer)
     if self:CanAcceptWaterItem(item) then
-        local watertype = item.components.water.watertype
+        self.item_watertype = item.components.water.watertype
         local oldsection = self:GetCurrentSection()
         self.oldcurrentwater = self.currentwater
         local finiteuses_water = not item:HasTag("preparedrink_cup") and item.components.water.watervalue ~= item.components.finiteuses:GetUses() and item.components.finiteuses:GetUses() or item.components.water.watervalue
@@ -214,9 +226,9 @@ function Waterlevel:TakeWaterItem(item, doer)
         end
 
         if self.ontakewaterfn ~= nil then
-            self.ontakewaterfn(self.inst, watervalue, watertype)
+            self.ontakewaterfn(self.inst, watervalue)
         end
-        self.inst:PushEvent("takewater", { watervalue = watervalue }, { watertype = watertype }, { doer = doer })
+        self.inst:PushEvent("takewater", { watervalue = watervalue }, { doer = doer })
 
         return true
     end
@@ -314,7 +326,7 @@ function Waterlevel:InitializeWaterLevel(waterlevel)
         if self.sectionfn then
 	        self.sectionfn(newsection, oldsection, self.inst)
 		end
-        self.inst:PushEvent("onwaterlevelsectionchanged", { newsection = newsection, oldsection = oldsection })
+        self.inst:PushEvent("onwaterlevelsectionchanged", { newsection = newsection, oldsection = oldsection})
     end
 end
 
@@ -355,9 +367,9 @@ function Waterlevel:DoDelta(amount, doer)
 
     if oldsection ~= newsection then
         if self.sectionfn then
-            self.sectionfn(newsection, oldsection, self.inst, doer)
+            self.sectionfn(newsection, oldsection, self.inst)
         end
-        self.inst:PushEvent("onwaterlevelsectionchanged", { newsection = newsection, oldsection = oldsection, doer = doer })
+        self.inst:PushEvent("onwaterlevelsectionchanged", { newsection = newsection, oldsection = oldsection})
         if self.currentwater <= 0 and self.depleted then
             self.depleted(self.inst)
             self.inst:PushEvent("depleted", { doer = doer })

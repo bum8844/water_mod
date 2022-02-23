@@ -56,9 +56,9 @@ local function OnDepleted(inst)
 end
 
 local function OnTakeWater(inst, watervalue)
-	if watervalue >= TUNING.BUCKET_MAX_LEVEL then
+	if watervalue >= 15 then
 		inst.SoundEmitter:PlaySound("dontstarve/creatures/pengull/splash")
-	elseif watervalue >= TUNING.BOTTLE_MAX_LEVEL then
+	elseif watervalue >= 5 then
 		inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/medium")
 	else
 		inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/small")
