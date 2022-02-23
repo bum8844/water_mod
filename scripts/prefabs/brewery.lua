@@ -184,6 +184,10 @@ local function onopen(inst)
 end
 
 local function onclose(inst)
+    if not inst:HasTag("stewer") then
+        inst:AddComponent("stewer")
+        Add_Componet(inst)
+    end
     if not inst:HasTag("burnt") then
         if not inst.components.stewer:IsCooking() then
             inst.AnimState:PlayAnimation("idle_empty")
