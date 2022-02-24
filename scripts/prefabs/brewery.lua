@@ -130,8 +130,8 @@ local function getstatus(inst)
     return (inst:HasTag("burnt") and "BURNT")
         or (inst.components.stewer:IsDone() and "DONE")
         or (not inst.components.stewer:IsCooking() and "EMPTY")
-        or (inst.components.stewer:GetTimeToCook() > 15 and "FARMENT_LONG")
-        or "FARMENT_SHORT"
+        or (inst.components.stewer:GetTimeToCook() > 15 and "FERMENTING_LONG")
+        or "FERMENTING_SHORT"
 end
 
 local function onloadpostpass(inst, newents, data)

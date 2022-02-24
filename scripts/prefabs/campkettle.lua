@@ -114,7 +114,7 @@ local function OnHaunt(inst)
     return false
 end
 
-local function BoildDone(inst)
+local function BoiledDone(inst)
     inst.components.watersource.available = true       
     inst.AnimState:PlayAnimation("cooking_pst")
     inst.AnimState:PlayAnimation("idle_full_water")
@@ -123,13 +123,13 @@ local function BoildDone(inst)
     inst._timer = 0
 end
 
-local function Boild(inst)
+local function Boiled(inst)
     inst.components.waterlevel.accepting = false
     inst.components.watersource.available = false
     inst.AnimState:PlayAnimation("cooking_loop", true)
     inst.SoundEmitter:KillSound("snd")
     inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_rattle", "snd")
-    inst:DoTaskInTime(inst._timer, BoildDone, inst)
+    inst:DoTaskInTime(inst._timer, BoiledDone, inst)
 end
 
 local function onsave(inst, data)
@@ -142,7 +142,7 @@ local function onload(inst, data)
     if data ~= nil then 
         if data.timer ~= nil then
             inst._timer = data.timer
-            Boild(inst)
+            Boiled(inst)
         end
         if inst._timer == 0 and inst.components.waterlevel.currentwater > 0 then
             inst.AnimState:PlayAnimation("idle_full_water")
@@ -159,7 +159,7 @@ end
 
 local function OnTakeWater(inst, watervalue, watertype)
     inst._timer = TUNING.KETTLE_WATER*watervalue
-    Boild(inst)
+    Boiled(inst)
     inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/small")
 end
 
