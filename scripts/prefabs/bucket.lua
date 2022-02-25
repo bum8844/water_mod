@@ -61,10 +61,7 @@ local function OnFill(inst, from_object)
 		end
 		filleditem = SpawnPrefab("bucket_"..string.lower(watertype))
 		if from_object.components.stewer ~= nil then
-			if from_object.components.stewer.product == nil then
-				if from_object.components.waterlevel.currentwater == 0 then
-					from_object.components.stewer.canbeopened = false
-				end
+			if from_object.components.stewer.product == nil or from_object.components.stewer.product == "saltrock" then
 				OnCalculation(inst, from_object, filleditem)
 			else
 				filleditem = nil
@@ -83,7 +80,7 @@ local function OnFill(inst, from_object)
 	if from_object ~= nil then
 		from_object.SoundEmitter:PlaySound("dontstarve/creatures/pengull/splash")
 	else
-		inst.SoundEmitter:PlaySound("dontstarve/creatures/pengull/splash")
+		filleditem.SoundEmitter:PlaySound("dontstarve/creatures/pengull/splash")
 	end
 
 	local owner = inst.components.inventoryitem ~= nil and inst.components.inventoryitem:GetGrandOwner() or nil

@@ -25,7 +25,7 @@ local function OnFill(inst, from_object)
 		else
 			watertype = "CLEAN"
 		end
-		if from_object.components.stewer ~= nil and from_object.components.stewer.product ~= nil then
+		if from_object.components.stewer ~= nil and from_object.components.stewer.product ~= nil and not from_object.components.stewer.product == "saltrock" then
 			watertype = from_object.components.stewer.product
 		end
 
@@ -78,7 +78,11 @@ local function OnFill(inst, from_object)
 		filleditem = SpawnPrefab("cup_salt")
 	end
 
-	from_object.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/small")
+	if from_object ~= nil then
+		from_object.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/small")
+	else
+		filleditem.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/small")
+	end
 	
 	if filleditem == nil then
 		return false

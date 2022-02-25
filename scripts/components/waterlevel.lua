@@ -52,7 +52,7 @@ end
 local function onnotready(inst)
     if inst.components.stewer ~= nil then
         inst:RemoveTag("readytocook")
-        if inst.components.container:IsOpen() then
+        if inst.components.container ~= nil and inst.components.container:IsOpen() then
             inst:RemoveTag("stewer")
             inst:RemoveComponent("stewer")
         end
@@ -314,6 +314,7 @@ function Waterlevel:InitializeWaterLevel(waterlevel, item_watertype)
 	        self.sectionfn(newsection, oldsection, self.inst, self.item_watertype)
 		end
         self.inst:PushEvent("onwaterlevelsectionchanged", { newsection = newsection, oldsection = oldsection , item_watertype = self.item_watertype})
+        self.inst:PushEvent("refresh")
     end
 end
 
@@ -357,6 +358,7 @@ function Waterlevel:DoDelta(amount, doer)
             self.sectionfn(newsection, oldsection, self.inst, self.item_watertype)
         end
         self.inst:PushEvent("onwaterlevelsectionchanged", { newsection = newsection, oldsection = oldsection, item_watertype = self.item_watertype})
+        self.inst:PushEvent("refresh")
         if self.currentwater <= 0 and self.depleted then
             self.depleted(self.inst)
             self.inst:PushEvent("depleted", { doer = doer })

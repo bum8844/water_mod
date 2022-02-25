@@ -205,7 +205,7 @@ local function oncheckready_water(inst, from_object)
     if inst.components.container ~= nil and inst.components.waterlevel ~= nil then
         if not inst.components.container:IsOpen() and inst.components.container:IsFull() and inst.components.waterlevel.currentwater ~= 0 and inst._timer == 0 then
             inst:AddTag("readytocook")
-        elseif inst.components.container:IsOpen() and (inst.components.waterlevel.currentwater <= 0) then
+        elseif inst.components.container:IsOpen() and inst.components.waterlevel.currentwater <= 0 then
             inst:RemoveTag("stewer")
             inst:RemoveComponent("stewer")
         else

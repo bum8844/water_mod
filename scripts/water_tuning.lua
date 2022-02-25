@@ -49,6 +49,7 @@ local tuning =
 	SANITY_POISOE = -5,
 
 	INCORRECT_BOIL = 1,
+	DESALINATION_TIEM = 8,
 	KETTLE_WATER = 4, -- 물
 	KETTLE_TEA = 1, -- 녹차, 홍차, 보이
 	KETTLE_FRUIT = 1, -- 모든 과일 종류

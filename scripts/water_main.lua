@@ -46,7 +46,7 @@ local function bottleadd(inst)
 			else
 				watertype = "CLEAN"
 			end
-			if from_object.components.stewer ~= nil and from_object.components.stewer.product ~= nil then
+			if from_object.components.stewer ~= nil and from_object.components.stewer.product ~= nil or from_object.components.stewer.product == "saltrock" then
 				watertype = from_object.components.stewer.product
 			end
 
@@ -107,7 +107,7 @@ local function bottleadd(inst)
 		if from_object ~= nil then
 			from_object.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/medium")
 		else
-			inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/medium")
+			filleditem.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/medium")
 		end
 		
 		if filleditem == nil then
@@ -190,38 +190,18 @@ AddComponentPostInit("dryer", function(self)
     end
 end)
 
---[[AddComponentPostInit("stewer",function(self)
+AddComponentPostInit("stewer",function(self)
     _Harvest = self.Harvest
-    local _oncheckready = self.oncheckready
 
     function self:Harvest(harvester, ...)
         local result = _Harvest(self, harvester, ...)
-        if self.inst.components.container ~= nil then
-            if self.inst.components.waterlevel ~= nil then
-                self.inst.components.container.canbeopened = false
-            else
-                self.inst.components.container.canbeopened = true
-            end
-        end
+		self.inst:PushEvent("harvestsalt", {inst = self.inst})
         
         return result
     end
-    function self:oncheckready(inst, ...)
-    	local result = _oncheckready(self, inst, ...)
-    	if not self.inst:HasTag("kettle") then
-    		if self.inst.components.container ~= nil and not self.inst.components.container:IsOpen() and self.inst.components.container:IsFull() then
-        	self.inst:AddTag("readytocook")
-    		end
-    	elseif inst.components.container ~= nil and not self.inst.components.container:IsOpen() and self.inst.components.container:IsFull() and self.inst.components.waterlevel ~= nil and self.inst.components.waterlevel.currentwater ~= 0 then
-        	self.inst:AddTag("readytocook")
-    	end
+end)
 
-    	return result
-    end
-
-end)]]
-
-local function oncheckready_water(inst, from_object)
+--[[local function oncheckready_water(inst, from_object)
 	if not inst:HasTag("stewer")then
 		inst:AddComponent("stewer")
 	end
@@ -246,7 +226,7 @@ end
 AddComponentPostInit("stewer", function(self)
     self.inst:ListenForEvent("itemget", oncheckready_water)
     self.inst:ListenForEvent("onclose", oncheckready_water)
-end)
+end)]]
 
 --regrowth code
 AddComponentPostInit("regrowthmanager", function(self)

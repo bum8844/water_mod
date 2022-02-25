@@ -240,7 +240,7 @@ local function oncheckready_water(inst, from_object)
     if inst.components.container ~= nil and inst.components.waterlevel ~= nil then
         if not inst.components.container:IsOpen() and inst.components.container:IsFull() and inst.components.waterlevel.currentwater ~= 0 and inst._timer == 0 then
             inst:AddTag("readytocook")
-        elseif inst.components.container:IsOpen() and (inst.components.waterlevel.currentwater < 0 or inst.components.waterlevel.currentwater == 0) then
+        elseif inst.components.container:IsOpen() and inst.components.waterlevel.currentwater <= 0 then
             inst:RemoveTag("stewer")
             inst:RemoveComponent("stewer")
         else
@@ -264,7 +264,7 @@ local function oncheckready(inst)
     end
 end
 
-local function BoildDone(inst)
+local function BoiledDone(inst)
     inst.components.container.canbeopened = true
     inst.components.watersource.available = true
     inst.components.waterlevel.accepting = true        
@@ -275,7 +275,7 @@ local function BoildDone(inst)
     inst._timer = 0
 end
 
-local function Boild(inst)
+local function Boiled(inst)
     inst.components.container:Close()
     inst.components.container.canbeopened = false
     inst.components.watersource.available = false
@@ -284,7 +284,7 @@ local function Boild(inst)
     inst.SoundEmitter:KillSound("snd")
     inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_rattle", "snd")
     inst.Light:Enable(true)
-    inst:DoTaskInTime(inst._timer, BoildDone, inst)
+    inst:DoTaskInTime(inst._timer, BoiledDone, inst)
 end
 
 local function OnTakeWater(inst, watervalue, item_watertype)
@@ -292,7 +292,7 @@ local function OnTakeWater(inst, watervalue, item_watertype)
         if item_watertype ~= WATERTYPE.CLEAN then
             inst._timer = TUNING.KETTLE_WATER*watervalue
             inst.components.container:DropEverything()
-            Boild(inst)
+            Boiled(inst)
         end
         if watervalue >= 5 then
             inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/medium")
@@ -318,7 +318,7 @@ local function onload(inst, data)
         end
         if data.timer ~= nil then
             inst._timer = data.timer
-            Boild(inst)
+            Boiled(inst)
         end
     end
 end
