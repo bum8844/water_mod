@@ -172,42 +172,7 @@ function Waterlevel:TakeWaterItem(item, doer)
             if item.components.finiteuses ~= nil and item.components.finiteuses:GetUses() < self.maxwater then
                 watervalue = item.components.finiteuses:GetUses()
             end
-            item.components.water:Taken(self.inst)
-        end
-
-        local item_watervalue = item.components.water ~= nil and item.components.water.watervalue
-        --water 컴포넌트 쪽에 반환하도록 처리해야함
-        local refund = item_watervalue == TUNING.CUP_MAX_LEVEL and SpawnPrefab("cup") or item_watervalue == TUNING.BOTTLE_MAX_LEVEL and SpawnPrefab("messagebottleempty") or item_watervalue == TUNING.BUCKET_MAX_LEVEL and SpawnPrefab("bucket")
-
-        if item.components.finiteuses ~= nil then
-            local max = self.maxwater
-            local current = self.oldcurrentwater
-            if max ~= current then
-                max = max - current
-            end
-            local uses = item.components.finiteuses:GetUses()
-            uses = uses - max
-
-            if uses > 0 then
-                refund = SpawnPrefab(item.prefab)
-                refund.components.finiteuses:SetUses(uses)
-            end
-        end
-
-        local owner = item.components.inventoryitem ~= nil and item.components.inventoryitem:GetGrandOwner() or nil
-        if owner ~= nil then
-            local container = owner.components.inventory or owner.components.container
-            local item_prefab = container:RemoveItem(item, false) or item
-            item_prefab:Remove()
-            container:GiveItem(refund, nil, owner:GetPosition())
-        else
-            refund.Transform:SetPosition(inst.Transform:GetWorldPosition())
-            local item_prefab =
-                inst.components.stackable ~= nil and
-                inst.components.stackable:IsStack() and
-                inst.components.stackable:Get() or
-                inst
-            item_prefab:Remove()
+            item.components.water:Taken(self.inst, item)
         end
 
         if self.ontakewaterfn ~= nil then
