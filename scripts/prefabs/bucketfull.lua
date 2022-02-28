@@ -13,7 +13,7 @@ local prefabs =
 local function oneaten(inst, eater)
 	local x, y, z = inst.Transform:GetWorldPosition()
 	local uses = inst.components.finiteuses:GetUses()
-	uses = uses - 1
+	uses = uses - 2
 
 	local item = nil
 	if uses > 0 then

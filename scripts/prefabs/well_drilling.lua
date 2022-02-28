@@ -172,9 +172,9 @@ end]]
 
 local function ondeploy(inst, pt, deployer)
     local obj = SpawnPrefab("well_drilling")
-	obj.Physics:SetCollides(false)
+	--obj.Physics:SetCollides(false)
     obj.Physics:Teleport(pt.x, 0, pt.z)
-    obj.Physics:SetCollides(true)
+    --obj.Physics:SetCollides(true)
 
 	inst.components.finiteuses:Use(1)
 	if inst:IsValid() then

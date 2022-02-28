@@ -19,8 +19,14 @@ end
 
 local function onhit(inst, worker)
 	if not inst:HasTag("burnt") then
-		inst.AnimState:PlayAnimation("hit_idle")
-		inst.AnimState:PushAnimation("idle")
+        if inst:HasTag("boilling") then
+            inst.AnimState:PlayAnimation("hit_cook")
+            inst.AnimState:PushAnimation("cook", true)
+            inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_close")
+        else
+    		inst.AnimState:PlayAnimation("hit_idle")
+    		inst.AnimState:PushAnimation("idle")
+        end
 	end
 end
 
@@ -30,16 +36,17 @@ local function onbuilt(inst)
 end
 
 local function harvestsalt(inst)
-    if inst._saltvalue >= 20 then
-        inst.components.stewer.done = true
+    if inst._saltvalue >= 10 then
         inst.components.stewer.product = "saltrock"
-        inst:AddTag("donecooking")
+        if not inst:HasTag("boilling") then
+            inst.components.stewer.done = true
+        end
     end
 end
 
 local function harvestfn(inst)
     if not inst:HasTag("burnt") then
-        inst._saltvalue = inst._saltvalue - 20
+        inst._saltvalue = inst._saltvalue - 10
         if not inst:HasTag("boilling") then
             inst.AnimState:PlayAnimation("idle")
         end
@@ -48,7 +55,7 @@ local function harvestfn(inst)
 end
 
 local function BoiledDone(inst)
-    if inst.components.waterlevel.currentwater ~= 0 then
+    if inst.components.waterlevel.currentwater < inst.components.waterlevel.maxwater then
         inst.components.waterlevel.accepting = true
     end
     inst.components.watersource.available = true
@@ -57,33 +64,34 @@ local function BoiledDone(inst)
     inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_close")
     inst._timer = 0
     inst:RemoveTag("boilling")
-    if not inst:HasTag("donecooking") and inst._saltvalue >= 20 then
+    if inst._saltvalue >= 10 then
         inst.components.stewer.done = true
         inst.components.stewer.product = "saltrock"
-        inst:AddTag("donecooking")
     end
 end
 
-local function Boiled(inst, watervalue)
-    if inst._timer ~= 0 then
+local function Boiled(inst)
+    if inst._timer > 0 then
         inst:AddTag("boilling")
+    end
+    if inst.components.stewer.done then
+        inst.components.stewer.done = false
     end
     inst.components.waterlevel.accepting = false
     inst.components.watersource.available = false
     inst.AnimState:PlayAnimation("cook", true)
     inst.SoundEmitter:KillSound("snd")
     inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_rattle", "snd")
-    inst:DoTaskInTime(inst._timer, BoiledDone(inst, watervalue))
+    inst:DoTaskInTime(inst._timer, BoiledDone, inst)
 end
 
 local function onsave(inst, data)
     if inst:HasTag("burnt") or (inst.components.burnable ~= nil and inst.components.burnable:IsBurning()) then
         data.burnt = true
-    end
-    if inst._timer ~= 0 then
+    else
         data.timer = inst._timer
+        data.saltvalue = inst._saltvalue
     end
-    data.saltvalue = inst._saltvalue
 end
 
 local function onload(inst, data)
@@ -91,13 +99,8 @@ local function onload(inst, data)
         if data.burnt then
             inst.components.burnable.onburnt(inst)
         end
-        if data.saltvalue ~= 0 then
+        if data.saltvalue ~= nil or data.saltvalue ~= 0 then
             inst._saltvalue = data.saltvalue
-            if data.saltvalue >= 20 then 
-                inst.components.stewer.done = true
-                inst.components.stewer.product = "saltrock"
-                inst:AddTag("donecooking")
-            end
         end
         if data.timer ~= nil then
             inst._timer = data.timer
@@ -126,7 +129,7 @@ end
 local function OnTakeWater(inst, watervalue, watertype)
     inst._saltvalue = inst._saltvalue + watervalue
     inst._timer = TUNING.DESALINATION_TIEM * watervalue
-    Boiled(inst, watervalue)
+    Boiled(inst)
     if watervalue >= 15 then
     	inst.SoundEmitter:PlaySound("dontstarve/creatures/pengull/splash")
     elseif watervalue >= 5 then

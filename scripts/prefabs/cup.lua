@@ -25,7 +25,7 @@ local function OnFill(inst, from_object)
 		else
 			watertype = "CLEAN"
 		end
-		if from_object.components.stewer ~= nil and from_object.components.stewer.product ~= nil and not from_object.components.stewer.product == "saltrock" then
+		if from_object.components.stewer ~= nil and from_object.components.stewer.product ~= nil and from_object.components.stewer.product ~= "saltrock" then
 			watertype = from_object.components.stewer.product
 		end
 
