@@ -154,8 +154,8 @@ local function OnDepleted(inst)
     inst.components.propagator.acceptsheat = true
 end
 
-local function OnSectionChange(new, old, inst, item_watertype)
-    print("resuit : "..item_watertype)
+local function OnSectionChange(new, old, inst)
+    local item_watertype = inst.components.waterlevel.item_watertype
     local watertype = item_watertype ~= WATERTYPE.CLEAN and "dirty" or "water"
     if new ~= nil then
         if inst._waterlevel ~= new then

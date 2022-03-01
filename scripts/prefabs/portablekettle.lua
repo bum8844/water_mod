@@ -163,7 +163,8 @@ local function OnDepleted(inst)
     inst.components.propagator.acceptsheat = true
 end
 
-local function OnSectionChange(new, old, inst, item_watertype)
+local function OnSectionChange(new, old, inst)
+    local item_watertype = inst.components.waterlevel.item_watertype
     local watertype = item_watertype ~= WATERTYPE.CLEAN and "dirty" or "water"
     if new ~= nil then
         if inst._waterlevel ~= new then
@@ -267,7 +268,9 @@ end
 local function BoiledDone(inst)
     inst.components.container.canbeopened = true
     inst.components.watersource.available = true
-    inst.components.waterlevel.accepting = true        
+    inst.components.waterlevel.accepting = true
+    inst.components.waterlevel.item_watertype = "CLEAN"
+    inst.AnimState:OverrideSymbol("swap", "portablekettle_meter_water", tostring(inst._waterlevel))       
     inst.AnimState:PlayAnimation("cooking_pst")
     inst.AnimState:PlayAnimation("idle_empty")
     inst.SoundEmitter:KillSound("snd") 

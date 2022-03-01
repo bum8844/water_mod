@@ -108,21 +108,16 @@ end
 
 function Waterlevel:OnSave()
     if self.currentwater ~= 0 then
-        return {waterlevel = self.currentwater}
-    end
-    if self.item_watertype ~= nil then
-        return {item_watertype = self.item_watertype}
+        return {waterlevel = self.currentwater, item_watertype = self.item_watertype}
     end
 end
 
 function Waterlevel:OnLoad(data)
+    if data.item_watertype ~= nil then
+        self.item_watertype = data.item_watertype
+    end
     if data.waterlevel then
-        if data.item_watertype ~= nil then
-            print("save is : ", data.item_watertype)
-            self:InitializeWaterLevel(math.max(0, data.waterlevel), data.item_watertype) 
-        else
-            self:InitializeWaterLevel(math.max(0, data.waterlevel), WATERTYPE.CLEAN)
-        end
+        self:InitializeWaterLevel(math.max(0, data.waterlevel)) 
     end
 end
 
@@ -238,14 +233,12 @@ function Waterlevel:OnWallUpdate(dt)
     self:DoUpdate(dt)
 end
 
-function Waterlevel:InitializeWaterLevel(waterlevel, item_watertype)
+function Waterlevel:InitializeWaterLevel(waterlevel)
     local oldsection = self:GetCurrentSection()
     if self.maxwater < waterlevel then
         self.maxwater = waterlevel
     end
     self.currentwater = waterlevel
-    print(item_watertype)
-    self.item_watertype = item_watertype
 
     if self.currentwater ~= 0 then
         self.inst.components.propagator.acceptsheat = false
@@ -256,18 +249,11 @@ function Waterlevel:InitializeWaterLevel(waterlevel, item_watertype)
                 self.inst.components.watersource.available = true
             end
         end
-        --[[if self.inst.components.stewer ~= nil and self.inst.components.container ~= nil then
-            if self.inst.components.stewer.product == nil then
-                self.inst.components.container.canbeopened = true
-            else
-                self.inst.components.container.canbeopened = false
-            end
-        end]]
     end
 
     if self.currentwater == self.maxwater then
         self.accepting = false
-    elseif self.inst.components.stewer ~= nil and (self.inst.components.stewer.product ~= nil or self.inst.components.stewer:IsCooking()) then
+    elseif self.inst.components.stewer ~= nil and self.inst.components.stewer.product ~= nil and self.inst.components.stewer.product ~= "saltrock" and self.inst.components.stewer:IsCooking() then
         self.accepting = false
     else
         self.accepting = true
@@ -276,10 +262,10 @@ function Waterlevel:InitializeWaterLevel(waterlevel, item_watertype)
     local newsection = self:GetCurrentSection()
     if oldsection ~= newsection then
         if self.sectionfn then
-	        self.sectionfn(newsection, oldsection, self.inst, self.item_watertype)
+	        self.sectionfn(newsection, oldsection, self.inst)
 		end
-        self.inst:PushEvent("onwaterlevelsectionchanged", { newsection = newsection, oldsection = oldsection , item_watertype = self.item_watertype})
-        self.inst:PushEvent("refresh")
+        self.inst:PushEvent("onwaterlevelsectionchanged", { newsection = newsection, oldsection = oldsection})
+        --self.inst:PushEvent("refresh")
     end
 end
 
@@ -291,7 +277,7 @@ function Waterlevel:DoDelta(amount, doer)
     if self.currentwater == self.maxwater then
         self.accepting = false
     else
-        if self.inst.components.stewer ~= nil and self.inst.components.stewer.product ~= nil then
+        if self.inst.components.stewer ~= nil and self.inst.components.stewer.product ~= nil and self.inst.components.stewer.product ~= "saltrock" then
             self.accepting = false
         else
             self.accepting = true
@@ -305,13 +291,6 @@ function Waterlevel:DoDelta(amount, doer)
         else
             self.inst.components.watersource.available = false
         end
-        --[[if self.inst.components.stewer ~= nil and self.inst.components.container ~= nil then
-            if self.inst.components.stewer.product == nil then
-                self.inst.components.container.canbeopened = true
-            else
-                self.inst.components.container.canbeopened = false
-            end
-        end]]
     else
         self.inst.components.propagator.acceptsheat = true
     end
@@ -320,10 +299,10 @@ function Waterlevel:DoDelta(amount, doer)
 
     if oldsection ~= newsection then
         if self.sectionfn then
-            self.sectionfn(newsection, oldsection, self.inst, self.item_watertype)
+            self.sectionfn(newsection, oldsection, self.inst)
         end
-        self.inst:PushEvent("onwaterlevelsectionchanged", { newsection = newsection, oldsection = oldsection, item_watertype = self.item_watertype})
-        self.inst:PushEvent("refresh")
+        self.inst:PushEvent("onwaterlevelsectionchanged", { newsection = newsection, oldsection = oldsection})
+        --self.inst:PushEvent("refresh")
         if self.currentwater <= 0 and self.depleted then
             self.depleted(self.inst)
             self.inst:PushEvent("depleted", { doer = doer })

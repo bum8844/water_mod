@@ -50,8 +50,6 @@ local function bottleadd(inst)
 				watertype = from_object.components.stewer.product
 			end
 
-			print(watertype)
-
 			filleditem = SpawnPrefab("bottle_"..string.lower(watertype == "CLEAN" and "water" or watertype))
 
 			if from_object.components.waterlevel ~= nil then

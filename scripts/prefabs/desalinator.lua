@@ -59,6 +59,8 @@ local function BoiledDone(inst)
         inst.components.waterlevel.accepting = true
     end
     inst.components.watersource.available = true
+    inst.components.waterlevel.item_watertype = WATERTYPE.CLEAN
+    inst.AnimState:OverrideSymbol("swap", "desalinator_meter_water", tostring(inst._waterlevel))
     inst.AnimState:PlayAnimation("idle")
     inst.SoundEmitter:KillSound("snd") 
     inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_close")
@@ -116,7 +118,8 @@ local function OnDepleted(inst)
     inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_close")
 end
 
-local function OnSectionChange(new, old, inst, item_watertype)
+local function OnSectionChange(new, old, inst)
+    local item_watertype = inst.components.waterlevel.item_watertype
     local watertype = item_watertype ~= WATERTYPE.CLEAN and "salt" or "water"
     if new ~= nil then
         if inst._waterlevel ~= new then

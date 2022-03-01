@@ -172,7 +172,7 @@ local function OnFill(inst, from_object)
     local watering = false
     local waterlevel = from_object.components.waterlevel ~= nil and from_object.components.waterlevel.watertype
     local water = from_object.components.water ~= nil and from_object.components.water.watertype
-    local check =  from_object.components.stewer ~= nil and from_object.components.stewer.product ~= nil and not from_object.components.stewer.product == "saltrock" and from_object.components.stewer.product
+    local check =  from_object.components.stewer ~= nil and (from_object.components.stewer.product ~= nil or from_object.components.stewer.product == "saltrock") and from_object.components.stewer.product
                   or not from_object:HasTag("desalinator") and from_object.components.waterlevel ~= nil and (waterlevel == "CLEAN" and string.lower(waterlevel) or waterlevel == "SALTY" and string.lower(waterlevel) or waterlevel == "DIRTY" and string.lower(waterlevel))
                   or from_object.components.water ~= nil and (water == "CLEAN" and string.lower(water) or water == "SALTY" and string.lower(water) or water == "DIRTY" and string.lower(waterlevel))
                   or not from_object:HasTag("cleanwater") and "dirty"
