@@ -49,16 +49,6 @@ local function oncurrentwater(self, currentwater)
     end
 end
 
-local function onnotready(inst)
-    if inst.components.stewer ~= nil then
-        inst:RemoveTag("readytocook")
-        if inst.components.container ~= nil and inst.components.container:IsOpen() then
-            inst:RemoveTag("stewer")
-            inst:RemoveComponent("stewer")
-        end
-    end
-end
-
 local Waterlevel = Class(function(self, inst)
     self.inst = inst
     self.consuming = false
@@ -77,8 +67,6 @@ local Waterlevel = Class(function(self, inst)
     self.sections = 1
     self.sectionfn = nil
     self.depleted = nil
-
-    inst:ListenForEvent("depleted", onnotready)
 end,
 nil,
 {
@@ -240,6 +228,20 @@ function Waterlevel:InitializeWaterLevel(waterlevel)
     end
     self.currentwater = waterlevel
 
+    if self.currentwater < self.maxwater then
+        if self.inst.components.stewer ~= nil then
+            if self.inst.components.stewer.product ~= nil and self.inst.components.stewer.product ~= "saltrock" then
+                self.accepting = false
+            else
+                self.accepting = true
+            end
+        else
+            self.accepting = true
+        end
+    else
+        self.accepting = false
+    end
+
     if self.currentwater ~= 0 then
         self.inst.components.propagator.acceptsheat = false
         if self.inst.components.watersource ~= nil then
@@ -249,14 +251,6 @@ function Waterlevel:InitializeWaterLevel(waterlevel)
                 self.inst.components.watersource.available = true
             end
         end
-    end
-
-    if self.currentwater == self.maxwater then
-        self.accepting = false
-    elseif self.inst.components.stewer ~= nil and self.inst.components.stewer.product ~= nil and self.inst.components.stewer.product ~= "saltrock" and self.inst.components.stewer:IsCooking() then
-        self.accepting = false
-    else
-        self.accepting = true
     end
 
     local newsection = self:GetCurrentSection()
@@ -274,14 +268,18 @@ function Waterlevel:DoDelta(amount, doer)
 
     self.currentwater = math.max(0, math.min(self.maxwater, self.currentwater + amount))
 
-    if self.currentwater == self.maxwater then
-        self.accepting = false
-    else
-        if self.inst.components.stewer ~= nil and self.inst.components.stewer.product ~= nil and self.inst.components.stewer.product ~= "saltrock" then
-            self.accepting = false
+    if self.currentwater < self.maxwater then
+        if self.inst.components.stewer ~= nil then
+            if self.inst.components.stewer.product ~= nil and self.inst.components.stewer.product ~= "saltrock" then
+                self.accepting = false
+            else
+                self.accepting = true
+            end
         else
             self.accepting = true
         end
+    else
+        self.accepting = false
     end
 
     if self.currentwater > 0 then

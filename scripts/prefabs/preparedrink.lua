@@ -85,6 +85,7 @@ local function MakePreparedCupDrink(data)
         end
 		inst:AddTag("icebox_valid")
         inst:AddTag("preparedrink_cup")
+        inst:AddTag("pre-preparedfood")
         inst:AddTag("drink")
 
         if data.tags ~= nil then
@@ -297,6 +298,7 @@ local function MakePreparedBottleDrink(data)
         end
 		inst:AddTag("icebox_valid")
         inst:AddTag("preparedrink_bottle")
+        inst:AddTag("pre-preparedfood")
         inst:AddTag("drink")
         if data.tags ~= nil then
             for i,v in pairs(data.tags) do

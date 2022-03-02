@@ -165,7 +165,7 @@ local function OnSectionChange(new, old, inst)
     end
 end
 
-local function Add_Componet(inst)
+local function Install_components(inst)
     inst.components.stewer.onstartcooking = startcookfn
     inst.components.stewer.oncontinuecooking = continuecookfn
     inst.components.stewer.oncontinuedone = continuedonefn
@@ -184,11 +184,11 @@ local function onopen(inst)
 end
 
 local function onclose(inst)
-    if not inst:HasTag("stewer") then
-        inst:AddComponent("stewer")
-        Add_Componet(inst)
-    end
     if not inst:HasTag("burnt") then
+        if not inst:HasTag("stewer") then
+             inst:AddComponent("stewer")
+             Install_components(inst)
+        end
         if not inst.components.stewer:IsCooking() then
             inst.AnimState:PlayAnimation("idle_empty")
             inst.SoundEmitter:KillSound("snd")
@@ -197,34 +197,31 @@ local function onclose(inst)
     end
 end
 
-local function oncheckready_water(inst, from_object)
-    if not inst:HasTag("stewer")then
-        inst:AddComponent("stewer")
-        Add_Componet(inst)
-    end
-    if inst.components.container ~= nil and inst.components.waterlevel ~= nil then
-        if not inst.components.container:IsOpen() and inst.components.container:IsFull() and inst.components.waterlevel.currentwater ~= 0 then
-            inst:AddTag("readytocook")
-        elseif inst.components.container:IsOpen() and (inst.components.waterlevel.currentwater < 0 or inst.components.waterlevel.currentwater == 0) then
-            inst:RemoveTag("stewer")
-            inst:RemoveComponent("stewer")
-        else
-            inst:RemoveTag("readytocook")
-        end
-    end
-end
-
 local function oncheckready(inst)
-    if not inst:HasTag("stewer")then
-        inst:AddComponent("stewer")
-        Add_Componet(inst)
+    if not inst:HasTag("stewer") then
+         inst:AddComponent("stewer")
+         Install_components(inst)
     end
-    if inst.components.container ~= nil and
-        inst.components.waterlevel ~= nil and
-        not inst.components.container:IsOpen() and
-        inst.components.container:IsFull() and
-        inst.components.waterlevel.currentwater ~= 0 then
+    if inst.components.container:IsOpen() then
+        if inst.components.waterlevel.currentwater <= 0 then
+            if inst.components.container:IsFull() then
+                inst:RemoveTag("readytocook")
+                inst:RemoveTag("stewer")
+                inst:RemoveComponent("stewer")
+            else
+                inst:RemoveTag("readytocook")
+            end
+        elseif inst.components.container:IsFull() then
+            inst:AddTag("readytocook")
+        end
+    elseif inst.components.waterlevel.currentwater > 0 and inst.components.container:IsFull() then
         inst:AddTag("readytocook")
+    elseif inst.components.container:IsFull() then
+        inst:RemoveTag("stewer")
+        inst:RemoveComponent("stewer")
+        inst:RemoveTag("readytocook")
+    else
+        inst:RemoveTag("readytocook")
     end
 end
 
@@ -311,9 +308,11 @@ local function fn()
 	inst.components.workable:SetOnWorkCallback(onhit)
 	
 	inst:ListenForEvent("onbuilt", onbuilt)
-    inst:ListenForEvent("itemget", oncheckready_water)
-    inst:ListenForEvent("onclose", oncheckready)
+    inst:ListenForEvent("itemget", oncheckready)
     inst:ListenForEvent("takewater", oncheckready)
+    inst:ListenForEvent("onopen", oncheckready)
+    inst:ListenForEvent("onclose", oncheckready)
+    inst:ListenForEvent("depleted", oncheckready)
 	
 	MakeHauntableWork(inst)
 	

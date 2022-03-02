@@ -73,9 +73,7 @@ local function BoiledDone(inst)
 end
 
 local function Boiled(inst)
-    if inst._timer > 0 then
-        inst:AddTag("boilling")
-    end
+    inst:AddTag("boilling")
     if inst.components.stewer.done then
         inst.components.stewer.done = false
     end

@@ -200,7 +200,7 @@ local function OnBurnt(inst)
     inst.AnimState:PlayAnimation("burnt_collapse")
 end
 
-local function Add_Componet(inst)
+local function Install_components(inst)
     inst.components.stewer.onstartcooking = startcookfn
     inst.components.stewer.oncontinuecooking = continuecookfn
     inst.components.stewer.oncontinuedone = continuedonefn
@@ -219,11 +219,11 @@ local function onopen(inst)
 end
 
 local function onclose(inst)
-    if not inst:HasTag("stewer") then
-        inst:AddComponent("stewer")
-        Add_Componet(inst)
-    end
     if not inst:HasTag("burnt") then
+        if not inst:HasTag("stewer") then
+             inst:AddComponent("stewer")
+             Install_components(inst)
+        end
         if not inst.components.stewer:IsCooking() then
             inst.AnimState:PlayAnimation("idle_empty")
             inst.SoundEmitter:KillSound("snd")
@@ -232,45 +232,41 @@ local function onclose(inst)
     end
 end
 
-
-local function oncheckready_water(inst, from_object)
-    if not inst:HasTag("stewer")then
-        inst:AddComponent("stewer")
-        Add_Componet(inst)
-    end
-    if inst.components.container ~= nil and inst.components.waterlevel ~= nil then
-        if not inst.components.container:IsOpen() and inst.components.container:IsFull() and inst.components.waterlevel.currentwater ~= 0 and inst._timer == 0 then
-            inst:AddTag("readytocook")
-        elseif inst.components.container:IsOpen() and inst.components.waterlevel.currentwater <= 0 then
-            inst:RemoveTag("stewer")
-            inst:RemoveComponent("stewer")
-        else
-            inst:RemoveTag("readytocook")
-        end
-    end
-end
-
 local function oncheckready(inst)
-    if not inst:HasTag("stewer")then
-        inst:AddComponent("stewer")
-        Add_Componet(inst)
+    if not inst:HasTag("stewer") then
+         inst:AddComponent("stewer")
+         Install_components(inst)
     end
-    if inst.components.container ~= nil and
-        inst.components.waterlevel ~= nil and
-        not inst.components.container:IsOpen() and
-        inst.components.container:IsFull() and
-        inst.components.waterlevel.currentwater ~= 0 and 
-        inst._timer == 0 then
+    if inst.components.container:IsOpen() then
+        if inst.components.waterlevel.currentwater <= 0 then
+            if inst.components.container:IsFull() then
+                inst:RemoveTag("readytocook")
+                inst:RemoveTag("stewer")
+                inst:RemoveComponent("stewer")
+            else
+                inst:RemoveTag("readytocook")
+            end
+        elseif inst.components.container:IsFull() then
+            inst:AddTag("readytocook")
+        end
+    elseif inst.components.waterlevel.currentwater > 0 and inst.components.container:IsFull() then
         inst:AddTag("readytocook")
+    elseif inst.components.container:IsFull() then
+        inst:RemoveTag("stewer")
+        inst:RemoveComponent("stewer")
+        inst:RemoveTag("readytocook")
+    else
+        inst:RemoveTag("readytocook")
     end
 end
 
 local function BoiledDone(inst)
+    inst:RemoveTag("boilling")
     inst.components.container.canbeopened = true
     inst.components.watersource.available = true
-    inst.components.waterlevel.accepting = true
-    inst.components.waterlevel.item_watertype = "CLEAN"
-    inst.AnimState:OverrideSymbol("swap", "portablekettle_meter_water", tostring(inst._waterlevel))       
+    inst.components.waterlevel.accepting = true        
+    inst.components.waterlevel.item_watertype = WATERTYPE.CLEAN
+    inst.AnimState:OverrideSymbol("swap", "portablekettle_meter_water", tostring(inst._waterlevel))
     inst.AnimState:PlayAnimation("cooking_pst")
     inst.AnimState:PlayAnimation("idle_empty")
     inst.SoundEmitter:KillSound("snd") 
@@ -279,7 +275,7 @@ local function BoiledDone(inst)
 end
 
 local function Boiled(inst)
-    inst.components.container:Close()
+    inst:AddTag("boilling")
     inst.components.container.canbeopened = false
     inst.components.watersource.available = false
     inst.components.waterlevel.accepting = false
@@ -290,10 +286,11 @@ local function Boiled(inst)
     inst:DoTaskInTime(inst._timer, BoiledDone, inst)
 end
 
-local function OnTakeWater(inst, watervalue, item_watertype)
+local function OnTakeWater(inst, watervalue)
     if not inst:HasTag("burnt") then
-        if item_watertype ~= WATERTYPE.CLEAN then
+        if inst.components.waterlevel.item_watertype ~= WATERTYPE.CLEAN then
             inst._timer = TUNING.KETTLE_WATER*watervalue
+            inst.components.container:Close()
             inst.components.container:DropEverything()
             Boiled(inst)
         end
@@ -318,6 +315,7 @@ local function onload(inst, data)
     if data ~= nil then 
         if data.burnt then
             inst.components.burnable.onburnt(inst)
+            inst.Light:Enable(false)
         end
         if data.timer ~= nil then
             inst._timer = data.timer
@@ -353,9 +351,7 @@ local function fn()
 
     inst:AddTag("structure")
 	inst:AddTag("kettle")
-
-    --stewer (from stewer component) added to pristine state for optimization
-    --inst:AddTag("stewer")
+    inst:AddTag("stewer")
 
     inst.AnimState:SetBank("portablekettle")
     inst.AnimState:SetBuild("portablekettle")
@@ -389,8 +385,6 @@ local function fn()
     inst:AddComponent("watersource")
     inst.components.watersource.available = false
 
-    inst:AddComponent("boil")
-
     inst:AddComponent("stewer")
     inst.components.stewer.cooktimemult = TUNING.PORTABLE_COOK_POT_TIME_MULTIPLIER
     inst.components.stewer.onstartcooking = startcookfn
@@ -420,9 +414,11 @@ local function fn()
     inst:AddComponent("hauntable")
     inst.components.hauntable:SetHauntValue(TUNING.HAUNT_TINY)
 
-    inst:ListenForEvent("itemget", oncheckready_water)
-    inst:ListenForEvent("onclose", oncheckready)
+    inst:ListenForEvent("itemget", oncheckready)
     inst:ListenForEvent("takewater", oncheckready)
+    inst:ListenForEvent("onopen", oncheckready)
+    inst:ListenForEvent("onclose", oncheckready)
+    inst:ListenForEvent("depleted", oncheckready)
 
     MakeMediumBurnable(inst, nil, nil, true)
     MakeSmallPropagator(inst)
