@@ -247,6 +247,7 @@ local drinks =
 		sanity = TUNING.SANITY_LARGE,
 		thirst = TUNING.HYDRATION_SMALL,
 		cooktime = TUNING.BEER_WAIT,
+		potlevel = "small",
 		oneatenfn = function(inst, eater)
 			if inst:HasTag("preparedrink_cup") then
 				returncup(inst, eater)
@@ -267,6 +268,7 @@ local drinks =
 		sanity = TUNING.SANITY_HUGE,
 		thirst = TUNING.HYDRATION_MEDSMALL,
 		cooktime = TUNING.BEER_WAIT,
+		potlevel = "small",
 		oneatenfn = function(inst, eater)
 			if inst:HasTag("preparedrink_cup") then
 				returncup(inst, eater)
@@ -287,6 +289,7 @@ local drinks =
 		sanity = TUNING.SANITY_HUGE,
 		thirst = TUNING.HYDRATION_MEDSMALL,
 		cooktime = TUNING.BEER_WAIT,
+		potlevel = "small",
 		oneatenfn = function(inst, eater)
 			if inst:HasTag("preparedrink_cup") then
 				returncup(inst, eater)

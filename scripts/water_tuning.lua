@@ -16,6 +16,7 @@ local tuning =
 	CUP_MAX_LEVEL = 1,
 	BOTTLE_MAX_LEVEL = 10,
 	BUCKET_MAX_LEVEL = 20,
+	BUcKET_DRINK_WAT = 10,
 
 	CAMP_KETTLE_MAX_LEVEL = 1,
 	KETTLE_MAX_LEVEL = 5,
@@ -23,11 +24,11 @@ local tuning =
 	BREWERY_MAX_LEVEL = 20,
 	DESALINATOR_MAX_LEVEL = 20,
 
--- 기초 목마름
+	-- 기초 목마름
 	WILSON_THIRST = wilson_thirst, --수분량
 	WILSON_HUNGER_RATE = hydration_per_day/total_day_time,
 
--- 목마름 채워주는 양
+	-- 목마름 채워주는 양
 	HYDRATION_SALT = hydration_per_day-90, -- 소금물
 	HYDRATION_POISOE = hydration_per_day-80, -- 잘못 양조된 음료
 	HYDRATION_NONE = 0, -- 수상한 히비스커스
@@ -56,21 +57,20 @@ local tuning =
 	KETTLE_VEGGIE = 1, -- 모든 야채 종류
 	KETTLE_DECORATION = 1, -- 꽃 종류
 	KETTLE_LUXURY_GOODS = 1, -- 특수 효과주는 차들
-	--KETTLE_MONSTER = 23, -- 쓴 차
 	KETTLE_ABI = 1, -- 수상한 히비스커스
-	BEER_WAIT = GetModConfigData("beer_wait"),
-	SODA_WAIT = GetModConfigData("soda_wait"),
+	BEER_WAIT = 1,
+	SODA_WAIT = 1,
 
 	--[[만드는 시간(온도 조절은 특수 효과가 아님)
 	INCORRECT_BOIL = 4,
+	DESALINATION_TIEM = 8,
 	KETTLE_WATER = 4, -- 물
 	KETTLE_TEA = 10, -- 녹차, 홍차, 보이
 	KETTLE_FRUIT = 11, -- 모든 과일 종류
 	KETTLE_VEGGIE = 12, -- 모든 야채 종류
 	KETTLE_DECORATION = 13, -- 꽃 종류
-	KETTLE_LUXURY_GOODS = 15, -- 특수 효과주는 차들
-	--KETTLE_MONSTER = 23, -- 쓴 차
-	KETTLE_ABI = 23, -- 수상한 히비스커스
+	KETTLE_LUXURY_GOODS = 25, -- 특수 효과주는 차들
+	KETTLE_ABI = 27, -- 수상한 히비스커스
 	BEER_WAIT = GetModConfigData("beer_wait"),
 	SODA_WAIT = GetModConfigData("soda_wait"),]]
 

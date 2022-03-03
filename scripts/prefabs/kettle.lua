@@ -2,6 +2,8 @@ require "prefabutil"
 
 local preparedrink = require("preparedrink")
 
+local cooking = require("cooking")
+
 local assets =
 {
     Asset("ANIM", "anim/kettle.zip"),
@@ -75,9 +77,27 @@ local function startcookfn(inst)
 end
 
 local function SetProductSymbol(inst, product, overridebuild)
-    local build = overridebuild or "kettle_drink"
-    local overridesymbol = product
-    inst.AnimState:OverrideSymbol("swap_food", build, "cup_"..overridesymbol)
+    local recipe = cooking.GetRecipe(inst.prefab, product)
+    local potlevel = recipe ~= nil and recipe.potlevel or nil
+    local build = (recipe ~= nil and recipe.overridebuild) or overridebuild or "kettle_drink"
+    local overridesymbol = (recipe ~= nil and recipe.overridesymbolname) or product
+    local potlevels = potlevel == "high" and "swap_high" or potlevel == "small" and "swap_small" or "swap_mid"
+
+    if potlevel == "high" then
+        inst.AnimState:Show("swap_high")
+        inst.AnimState:Hide("swap_mid")
+        inst.AnimState:Hide("swap_small")
+    elseif potlevel == "small" then
+        inst.AnimState:Hide("swap_high")
+        inst.AnimState:Hide("swap_mid")
+        inst.AnimState:Show("swap_small")
+    else
+        inst.AnimState:Hide("swap_high")
+        inst.AnimState:Show("swap_mid")
+        inst.AnimState:Hide("swap_small")
+    end
+
+    inst.AnimState:OverrideSymbol(potlevels, build, "cup_"..overridesymbol)
 end
 
 local function spoilfn(inst)
@@ -97,6 +117,7 @@ end
 local function donecookfn(inst)
     if not inst:HasTag("burnt") then
         inst.components.watersource.available = true
+        inst.components.waterlevel.accepting = false
         inst.AnimState:PlayAnimation("cooking_pst")
         inst.AnimState:PushAnimation("idle_full", false)
         ShowProduct(inst)
@@ -108,6 +129,8 @@ end
 
 local function continuedonefn(inst)
     if not inst:HasTag("burnt") then
+        inst.components.watersource.available = true
+        inst.components.waterlevel.accepting = false
         inst.AnimState:PlayAnimation("idle_full")
         ShowProduct(inst)
     end
@@ -115,6 +138,8 @@ end
 
 local function continuecookfn(inst)
     if not inst:HasTag("burnt") then
+        inst.components.watersource.available = false
+        inst.components.waterlevel.accepting = false
         inst.AnimState:PlayAnimation("cooking_loop", true)
         inst.Light:Enable(true)
         inst.SoundEmitter:KillSound("snd")
@@ -227,9 +252,11 @@ end
 
 local function BoiledDone(inst)
     inst:RemoveTag("boilling")
+    if inst.components.waterlevel.currentwater < inst.components.waterlevel.maxwater then
+        inst.components.waterlevel.accepting = true  
+    end
     inst.components.container.canbeopened = true
-    inst.components.watersource.available = true
-    inst.components.waterlevel.accepting = true        
+    inst.components.watersource.available = true       
     inst.components.waterlevel.item_watertype = WATERTYPE.CLEAN
     inst.AnimState:OverrideSymbol("swap", "kettle_meter_water", tostring(inst._waterlevel))
     inst.AnimState:PlayAnimation("cooking_pst")
@@ -347,7 +374,6 @@ local function fn()
 
 	inst:AddComponent("container")
 	inst.components.container:WidgetSetup("kettle")
-    --inst.components.container.canbeopened = false
 	inst.components.container.onopenfn = onopen
 	inst.components.container.onclosefn = onclose
 	inst.components.container.skipclosesnd = true

@@ -272,14 +272,18 @@ function Waterlevel:DoDelta(amount, doer)
         if self.inst.components.stewer ~= nil then
             if self.inst.components.stewer.product ~= nil and self.inst.components.stewer.product ~= "saltrock" then
                 self.accepting = false
+                print("A")
             else
                 self.accepting = true
+                print("B")
             end
         else
             self.accepting = true
+            print("C")
         end
     else
         self.accepting = false
+        print("D")
     end
 
     if self.currentwater > 0 then

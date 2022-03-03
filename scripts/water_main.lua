@@ -191,6 +191,7 @@ AddComponentPostInit("dryer", function(self)
 end)
 
 AddComponentPostInit("stewer",function(self)
+	self.spoiledproduct = self.inst:HasTag("preparedrink_cup") or self.inst:HasTag("preparedrink_bottle") and "strang" or "spoiled_food"
     _Harvest = self.Harvest
 
     function self:Harvest(harvester, ...)
@@ -201,6 +202,37 @@ AddComponentPostInit("stewer",function(self)
     end
 end)
 
+AddComponentPostInit("compostingbin",function(self)
+	_AddCompostable = self.AddCompostable
+
+	function self:AddCompostable(item, ...)
+
+		if item:HasTag("clean") or item:HasTag("salty") or item:HasTag("dirty") or item:HasTag("bucket") then
+			return false
+		end
+		
+		local refund = nil
+		if item.components.stackable ~= nil then
+			if item:HasTag("preparedrink_cup") then
+        		refund = SpawnPrefab("cup")
+        	end
+	    elseif item:HasTag("preparedrink_bottle") then
+        	refund = SpawnPrefab("messagebottleempty")
+	    end
+	    if refund ~= nil then
+			local owner = item.components.inventoryitem ~= nil and item.components.inventoryitem:GetGrandOwner() or nil
+		    if owner ~= nil then
+		        local container = owner.components.inventory or owner.components.container
+		        container:GiveItem(refund, nil, owner:GetPosition())
+		    else
+		        source.Transform:SetPosition(item.Transform:GetWorldPosition())
+		    end
+		end
+
+		local result = _AddCompostable(self, item, ...)
+		return result
+	end
+end)
 --[[local function oncheckready_water(inst, from_object)
 	if not inst:HasTag("stewer")then
 		inst:AddComponent("stewer")

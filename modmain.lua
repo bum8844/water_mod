@@ -50,10 +50,13 @@ local teaingredients = {
 	"petals",
 	"succulent_picked",
 	"tealeaves",
+	"tealeaves_dried",
 	"firenettles",
-	"tillweeds",
+	"tillweed",
 	"moon_tree_blossom",
 }
 
 AddIngredientValues(teaingredients, {decoration=1, inedible=1})
 AddIngredientValues({"beefalo_milk"}, {milk=1, dairy=1})
+AddIngredientValues({"caffeinberry_bean"}, {fruit=.5})
+AddIngredientValues({"caffeinberry_bean_cooked"}, {fruit=1})

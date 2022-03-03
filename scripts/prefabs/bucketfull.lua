@@ -13,6 +13,7 @@ local prefabs =
 local function oneaten(inst, eater)
 	local x, y, z = inst.Transform:GetWorldPosition()
 	local uses = inst.components.finiteuses:GetUses()
+	local old_moisture = eater.components.moisture.moisture
 	uses = uses - 2
 
 	local item = nil
@@ -30,6 +31,9 @@ local function oneaten(inst, eater)
 	else
 		item.Transform:SetPosition(x,y,z)
 	end
+
+	eater.components.moisture.moisture = old_moisture + TUNING.BUcKET_DRINK_WAT
+
 end
 
 local function onuse(inst)

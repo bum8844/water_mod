@@ -123,6 +123,7 @@ local drinks =
 		sanity = TUNING.SANITY_TINY,
 		thirst = TUNING.HYDRATION_MEDSMALL,
 		cooktime = TUNING.KETTLE_FRUIT,
+		potlevel = "small",
 		oneatenfn = function(inst, eater)
 			if inst:HasTag("preparedrink_cup") then
 				returncup(inst, eater)
@@ -141,6 +142,7 @@ local drinks =
 		sanity = TUNING.SANITY_MED,
 		thirst = TUNING.HYDRATION_LARGE,
 		cooktime = TUNING.KETTLE_FRUIT,
+		potlevel = "small",
 		oneatenfn = function(inst, eater)
 			if inst:HasTag("preparedrink_cup") then
 				returncup(inst, eater)
@@ -159,6 +161,7 @@ local drinks =
 		sanity = TUNING.SANITY_MED,
 		thirst = TUNING.HYDRATION_LARGE,
 		cooktime = TUNING.KETTLE_FRUIT,
+		potlevel = "small",
 		oneatenfn = function(inst, eater)
 			if inst:HasTag("preparedrink_cup") then
 				returncup(inst, eater)
@@ -177,6 +180,7 @@ local drinks =
 		sanity = TUNING.SANITY_MEDLARGE,
 		thirst = TUNING.HYDRATION_LARGE,
 		cooktime = TUNING.KETTLE_FRUIT,
+		potlevel = "small",
 		oneatenfn = function(inst, eater)
 			if inst:HasTag("preparedrink_cup") then
 				returncup(inst, eater)
@@ -195,6 +199,7 @@ local drinks =
 		sanity = TUNING.SANITY_LARGE,
 		thirst = TUNING.HYDRATION_LARGE,
 		cooktime = TUNING.KETTLE_FRUIT,
+		potlevel = "small",
 		oneatenfn = function(inst, eater)
 			if inst:HasTag("preparedrink_cup") then
 				returncup(inst, eater)
@@ -213,6 +218,7 @@ local drinks =
 		sanity = TUNING.SANITY_MED ,
 		thirst = TUNING.HYDRATION_HUGE,
 		cooktime = TUNING.KETTLE_FRUIT,
+		potlevel = "small",
 		oneatenfn = function(inst, eater)
 			if inst:HasTag("preparedrink_cup") then
 				returncup(inst, eater)
@@ -231,6 +237,7 @@ local drinks =
 		sanity = TUNING.SANITY_TINY,
 		thirst = TUNING.HYDRATION_HUGE,
 		cooktime = TUNING.KETTLE_LUXURY_GOODS,
+		potlevel = "small",
 		oneatenfn = function(inst, eater)
 			if inst:HasTag("preparedrink_cup") then
 				returncup(inst, eater)
@@ -268,7 +275,7 @@ local drinks =
 		hunger = TUNING.DRINK_CALORIES,
 		sanity = TUNING.SANITY_MED,
 		thirst = TUNING.HYDRATION_SMALL,
-		cooktime = 25,
+		cooktime = TUNING.KETTLE_LUXURY_GOODS,
 		oneatenfn = function(inst, eater)
 			if inst:HasTag("preparedrink_cup") then
 				returncup(inst, eater)
@@ -288,6 +295,7 @@ local drinks =
 		sanity = TUNING.SANITY_TINY,
 		thirst = TUNING.HYDRATION_MEDSMALL,
 		cooktime = TUNING.KETTLE_VEGGIE,
+		potlevel = "small",
 		oneatenfn = function(inst, eater)
 			if inst:HasTag("preparedrink_cup") then
 				returncup(inst, eater)
@@ -347,6 +355,7 @@ local drinks =
 		temperature = TUNING.HOT_FOOD_WARMING_THRESHOLD,
 		temperatureduration = TUNING.FOOD_TEMP_AVERAGE,
 		cooktime = TUNING.KETTLE_VEGGIE,
+		potlevel = "small",
 		oneatenfn = function(inst, eater)
 			if inst:HasTag("preparedrink_cup") then
 				returncup(inst, eater)
@@ -388,6 +397,7 @@ local drinks =
 		temperature = TUNING.HOT_FOOD_BONUS_TEMP,
 		temperatureduration = TUNING.FOOD_TEMP_LONG,
 		cooktime = TUNING.KETTLE_TEA,
+		potlevel = "high",
 		oneatenfn = function(inst, eater)
 			if inst:HasTag("preparedrink_cup") then
 				returncup(inst, eater)
@@ -408,6 +418,7 @@ local drinks =
 		temperature = TUNING.COLD_FOOD_BONUS_TEMP,
 		temperatureduration = TUNING.FOOD_TEMP_LONG,
 		cooktime = TUNING.KETTLE_TEA,
+		potlevel = "small",
 		oneatenfn = function(inst, eater)
 			if inst:HasTag("preparedrink_cup") then
 				returncup(inst, eater)
@@ -439,13 +450,14 @@ local drinks =
 	-- 꽃을 섞으면 나오는 결과물
 	mixflower =
 	{
-		test = function(boilier, names, tags) return tags.decoration and tags.decoration >= 2 and tags.meat and not tags.egg end,
+		test = function(boilier, names, tags) return tags.decoration and tags.decoration >= 2 and notmeat(tags) end,
 		priority = 0,
 		health = TUNING.HEALING_MEDSMALL,
 		hunger = TUNING.DRINK_CALORIES,
 		sanity = TUNING.SANITY_SMALL,
 		thirst = TUNING.HYDRATION_MEDSMALL,
 		cooktime = TUNING.KETTLE_DECORATION,
+		potlevel = "small",
 		oneatenfn = function(inst, eater)
 			if inst:HasTag("preparedrink_cup") then
 				returncup(inst, eater)
@@ -465,6 +477,7 @@ local drinks =
 		sanity = TUNING.SANITY_MEDLARGE,
 		thirst = TUNING.HYDRATION_MED,
 		cooktime = TUNING.KETTLE_DECORATION,
+		potlevel = "high",
 		oneatenfn = function(inst, eater)
 			if inst:HasTag("preparedrink_cup") then
 				returncup(inst, eater)
@@ -484,6 +497,7 @@ local drinks =
 		sanity = TUNING.SANITY_LARGE,
 		thirst = TUNING.HYDRATION_LARGE,
 		cooktime = TUNING.KETTLE_DECORATION,
+		potlevel = "high",
 		oneatenfn = function(inst, eater)
 			if inst:HasTag("preparedrink_cup") then
 				returncup(inst, eater)
@@ -502,6 +516,7 @@ local drinks =
 		sanity = TUNING.SANITY_LARGE,
 		thirst = TUNING.HYDRATION_LARGE,
 		cooktime = TUNING.KETTLE_DECORATION,
+		potlevel = "high",
 		oneatenfn = function(inst, eater)
 			if inst:HasTag("preparedrink_cup") then
 				returncup(inst, eater)
@@ -514,13 +529,14 @@ local drinks =
 	--일시적으로 유령으로 만드는 차[추가해야함]
 	sushibiscus =
 	{
-		test = function(boilier, names, tags) return names.forgetmelots and names.firenettles and names.tillweeds end,
+		test = function(boilier, names, tags) return names.forgetmelots and names.firenettles and names.tillweed end,
 		priority = 2,
 		health = 0,
 		hunger = 0,
 		sanity = 0,
 		thirst = 0,
 		cooktime = TUNING.KETTLE_ABI,
+		potlevel = "high",
 		oneatenfn = function(inst, eater)
 			if inst:HasTag("preparedrink_cup") then
 				returncup(inst, eater)
