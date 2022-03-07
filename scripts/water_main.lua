@@ -19,6 +19,102 @@ local function BackBucket(inst)
 	end
 end
 
+local function thirst_classified (inst)
+	local function OnThirstDelta(parent, data)
+	    if data.overtime then
+	        --V2C: Don't clear: it's redundant as player_classified shouldn't
+	        --     get constructed remotely more than once, and this would've
+	        --     also resulted in lost pulses if network hasn't ticked yet.
+	        --parent.player_classified.isthirstpulseup:set_local(false)
+	        --parent.player_classified.isthirstpulsedown:set_local(false)
+	    elseif data.newpercent > data.oldpercent then
+	        --Force dirty, we just want to trigger an event on the client
+	        SetDirty(parent.player_classified.isthirstpulseup, true)
+	    elseif data.newpercent < data.oldpercent then
+	        --Force dirty, we just want to trigger an event on the client
+	        SetDirty(parent.player_classified.isthirstpulsedown, true)
+	    end
+	end
+
+	local function OnThirstDirty(inst)
+	    if inst._parent ~= nil then
+	        local oldpercent = inst._oldthirstpercent
+	        local percent = inst.currentthirst:value() / inst.maxthirst:value()
+	        local data =
+	        {
+	            oldpercent = oldpercent,
+	            newpercent = percent,
+	            overtime =
+	                not (inst.isthirstpulseup:value() and percent > oldpercent) and
+	                not (inst.isthirstpulsedown:value() and percent < oldpercent),
+	        }
+	        inst._oldthirstpercent = percent
+	        inst.isthirstpulseup:set_local(false)
+	        inst.isthirstpulsedown:set_local(false)
+	        inst._parent:PushEvent("thirstdelta", data)
+	        if oldpercent > 0 then
+	            if percent <= 0 then
+	                inst._parent:PushEvent("startstarving")
+	            end
+	        elseif percent > 0 then
+	            inst._parent:PushEvent("stopstarving")
+	        end
+	    else
+	        inst._oldthirstpercent = 1
+	        inst.isthirstpulseup:set_local(false)
+	        inst.isthirstpulsedown:set_local(false)
+	    end
+	end
+
+	local function RegisterNetListeners_Water(inst)
+		inst:ListenForEvent("thirstdelta", OnThirstDelta, inst._parent)
+		inst:ListenForEvent("thirstdelta", OnThirstDirty, inst._parent)
+		if inst._parent ~= nil then
+			inst._oldthirstpercent = inst.maxthirst:value() > 0 and inst.currentthirst:value() / inst.maxthirst:value() or 0
+		end
+	end
+
+	inst:DoTaskInTime(0,function()
+		local setting = GetModConfigData("thirst_max")
+
+		inst._oldthirstpercent = 1
+	    inst.currentthirst = _G.net_ushortint(inst.GUID, "thirst.current", "thirstdirty")
+	    inst.maxthirst = _G.net_ushortint(inst.GUID, "thirst.max", "thirstdirty")
+	    inst.isthirstpulseup = _G.net_bool(inst.GUID, "thirst.dodeltaovertime(up)", "thirstdirty")
+	    inst.isthirstpulsedown = _G.net_bool(inst.GUID, "thirst.dodeltaovertime(down)", "thirstdirty")
+	    inst.currentthirst:set(setting)
+	    inst.maxthirst:set(setting)
+
+	    inst:DoStaticTaskInTime(0, RegisterNetListeners_Water)
+	end)
+end 
+
+local function thirst_common(inst)
+	inst:DoTaskInTime(0, function()
+		inst:AddTag("_thirst")
+
+        inst.entity:SetPristine()
+        if not TheWorld.ismastersim then
+            return inst
+        end
+
+        inst.persists = false
+
+        inst:RemoveTag("_thirst")
+
+        inst:AddComponent("thirst")
+        inst.components.thirst:SetMax(TUNING.WILSON_THIRST)
+        inst.components.thirst:SetRate(TUNING.WILSON_HUNGER_RATE)
+        inst.components.thirst:SetKillRate(TUNING.WILSON_HEALTH / TUNING.STARVE_KILL_TIME)
+        if GetGameModeProperty("no_thirst") then
+            inst.components.thirst:Pause()
+        end
+	end)
+end
+
+AddPrefabPostInit("player_classified", thirst_classified)
+AddPrefabPostInit("player_common", thirst_common)
+
 AddPrefabPostInit("fertilizer", function(inst)
     if not GLOBAL.TheWorld.ismastersim then
         return inst
@@ -28,7 +124,7 @@ AddPrefabPostInit("fertilizer", function(inst)
 	end)
 end)
 
-local function bottleadd(inst)
+local function MakeBottle(inst)
 
 	inst.entity:AddSoundEmitter()
 	
@@ -143,7 +239,7 @@ local function bottleadd(inst)
 	inst.components.fillable.acceptsoceanwater = true
 end
 
-AddPrefabPostInit("messagebottleempty",bottleadd)
+AddPrefabPostInit("messagebottleempty",MakeBottle)
 
 local function OnGivenItemWater(inst, giver, item, ...)
     if item.prefab == "bucket_ice" then
@@ -249,32 +345,42 @@ AddComponentPostInit("compostingbin",function(self)
 		return result
 	end
 end)
---[[local function oncheckready_water(inst, from_object)
-	if not inst:HasTag("stewer")then
-		inst:AddComponent("stewer")
-	end
-    if inst:HasTag("kettle") then
-        if inst.components.container ~= nil and inst.components.waterlevel ~= nil then
-        	if not inst.components.container:IsOpen() and inst.components.container:IsFull() and inst.components.waterlevel.currentwater ~= 0 and inst._timer == 0 then
-        		inst:AddTag("readytocook")
-            elseif inst.components.container:IsOpen() and inst.components.waterlevel.currentwater == 0 then
-            	inst:RemoveTag("stewer")
-            	inst:RemoveComponent("stewer")
-        	else
-            	inst:RemoveTag("readytocook")
-        	end
-        end
-    elseif inst.components.container ~= nil and
-        not inst.components.container:IsOpen() and
-        inst.components.container:IsFull() then
-        inst:AddTag("readytocook")
-    end
-end
 
-AddComponentPostInit("stewer", function(self)
-    self.inst:ListenForEvent("itemget", oncheckready_water)
-    self.inst:ListenForEvent("onclose", oncheckready_water)
-end)]]
+
+
+AddComponentPostInit("eater", function(self)
+	self.thirstabsorption = 1
+	_SetAbsorptionModifiers = self.SetAbsorptionModifiers
+	_Eat = self.Eat
+
+	function self:SetAbsorptionModifiers(health, thirst, sanity, thirst, ...)
+		local result = _SetAbsorptionModifiers(self, health, thirst, sanity, ...)
+		if thirst ~= nil then
+			self.thirstabsorption = thirst
+		end
+		return result
+	end
+
+	function self:Eat(food, feeder, ...)
+		local result = _Eat(food, feeder, ...)
+		local thirst_delta = 0
+
+	    if self.inst.components.thirst ~= nil then
+	        thirst_delta = food.components.edible:GetThirst(self.inst) * base_mult * self.thirstabsorption
+            --local delta = food.components.edible:GetThirst(self.inst) * base_mult
+			--delta = delta * FunctionOrValue(self.thirstabsorption, self.inst, delta, food, feeder)
+            --if delta ~= 0 then
+            --    self.inst.components.thirst:DoDelta(delta * stack_mult)
+            --end
+	    end
+
+	    if thirst_delta ~= 0 then
+            self.inst.components.thirst:DoDelta(thirst_delta * stack_mult)
+	    end
+
+		return result
+	end
+end)
 
 --regrowth code
 AddComponentPostInit("regrowthmanager", function(self)

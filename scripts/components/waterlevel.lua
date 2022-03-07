@@ -47,6 +47,7 @@ local function oncurrentwater(self, currentwater)
     else
         self.inst:RemoveTag("waterdepleted")
     end
+    self.inst:PushEvent("refresh")
 end
 
 local Waterlevel = Class(function(self, inst)
