@@ -395,6 +395,20 @@ local function caffeinberry_bean()
     return inst
 end
 
+local function OnEatBeans(inst, eater)
+    if not eater.components.health or eater.components.health:IsDead() or eater:HasTag("playerghost") then
+        return
+    elseif eater.components.debuffable and eater.components.debuffable:IsEnabled() then
+        eater.caffeinbuff_duration = 30
+        eater.components.debuffable:AddDebuff("caffeinbuff", "caffeinbuff")
+    else
+        eater.components.locomotor:SetExternalSpeedMultiplier(eater, "caffeinbuff", TUNING.CAFFEIN_SPEED)
+        eater:DoTaskInTime(30, function()
+            eater.components.locomotor:RemoveExternalSpeedMultiplier(eater, "caffeinbuff")
+        end)
+    end
+end
+
 local function caffeinberry_bean_cooked()
         local inst = CreateEntity()
 
@@ -421,6 +435,7 @@ local function caffeinberry_bean_cooked()
     inst.components.edible.hungervalue = TUNING.CALORIES_TINY
     inst.components.edible.sanityvalue = -TUNING.SANITY_TINY
     inst.components.edible.foodtype = FOODTYPE.VEGGIE
+    inst.components.edible:SetOnEatenFn(OnEatBeans)
 
     inst:AddComponent("perishable")
     inst.components.perishable:SetPerishTime(TUNING.PERISH_SLOW)

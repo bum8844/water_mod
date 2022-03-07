@@ -2,11 +2,22 @@ local ACTIONS = _G.ACTIONS
 local Action = _G.Action
 local ActionHandler = _G.ActionHandler
 local WATERTYPE = _G.WATERTYPE
---local State = _G.State
---local EventHandler = _G.EventHandler
---local FRAMES = _G.FRAMES
+local State = _G.State
+local TimeEvent = _G.TimeEvent
+local EventHandler = _G.EventHandler
+local FRAMES = _G.FRAMES
 local SpawnPrefab = _G.SpawnPrefab
---local EQUIPSLOTS = _G.EQUIPSLOTS
+local EQUIPSLOTS = _G.EQUIPSLOTS
+
+local function ForceStopHeavyLifting(inst)
+    if inst.components.inventory:IsHeavyLifting() then
+        inst.components.inventory:DropItem(
+            inst.components.inventory:Unequip(EQUIPSLOTS.BODY),
+            true,
+            true
+        )
+    end
+end
 
 ACTIONS.COOK.stroverridefn = function(act)
     if act.target:HasTag("kettle") then
@@ -53,10 +64,92 @@ local function waterlevel(inst, doer, target, actions)
     end
 end
 
+local drunk = State{
+    name = "drunk",
+    tags = { "busy", "pausepredict", "nomorph" },
+
+    onenter = function(inst)
+        ForceStopHeavyLifting(inst)
+        inst.Physics:Stop()
+        inst.AnimState:PlayAnimation("powerdown")
+
+        if inst.components.playercontroller ~= nil then
+            inst.components.playercontroller:RemotePausePrediction()
+        end
+    end,
+
+    timeline =
+    {
+        TimeEvent(29 * FRAMES, function(inst)
+            inst.sg:RemoveStateTag("nointerrupt")
+        end),
+    },
+
+    events =
+    {
+        EventHandler("animover", function(inst)
+            if inst.AnimState:AnimDone() then
+                inst.sg:GoToState("idle")
+            end
+        end),
+    },
+}
+
+local refresh_drunk = State{
+    name = "refreshdrunk",
+    tags = { "busy", "pausepredict", "nomorph" },
+
+    onenter = function(inst)
+        ForceStopHeavyLifting(inst)
+        inst.Physics:Stop()
+        inst.AnimState:PlayAnimation("powerup")
+
+        if inst.components.playercontroller ~= nil then
+            inst.components.playercontroller:RemotePausePrediction()
+        end
+    end,
+
+    timeline =
+    {
+        TimeEvent(29 * FRAMES, function(inst)
+            inst.sg:RemoveStateTag("nointerrupt")
+        end),
+    },
+
+    events =
+    {
+        EventHandler("animover", function(inst)
+            if inst.AnimState:AnimDone() then
+                inst.sg:GoToState("idle")
+            end
+        end),
+    },
+}
+
+AddStategraphState("wilson", refresh_drunk)
+AddStategraphState("wilson", drunk)
+
+local refresh_drunk_event = EventHandler("refreshdrunk",function(inst)
+            if not inst.sg:HasStateTag("dead") then
+                inst.sg:GoToState("refreshdrunk")
+            end
+        end)
+
+local drunk_event = EventHandler("drunk",function(inst)
+            if not inst.sg:HasStateTag("dead") then
+                inst.sg:GoToState("drunk")
+            end
+        end)
+
+AddStategraphEvent("wilson",refresh_drunk_event)
+AddStategraphEvent("wilson",drunk_event)
+
 AddComponentAction("USEITEM", "water", waterlevel)
 
 AddStategraphActionHandler("wilson", ActionHandler(ACTIONS.FILL_BARREL, "dolongaction"))
 AddStategraphActionHandler("wilson_client", ActionHandler(ACTIONS.FILL_BARREL, "dolongaction"))
+
+
 
 --[[
 function SetupBottleDrinkActions(inst, doer, actions)

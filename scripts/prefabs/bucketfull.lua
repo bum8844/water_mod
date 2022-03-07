@@ -13,7 +13,6 @@ local prefabs =
 local function oneaten(inst, eater)
 	local x, y, z = inst.Transform:GetWorldPosition()
 	local uses = inst.components.finiteuses:GetUses()
-	local old_moisture = eater.components.moisture.moisture
 	uses = uses - 2
 
 	local item = nil
@@ -26,13 +25,16 @@ local function oneaten(inst, eater)
 
 	inst:Remove()
 
-	if eater ~= nil and eater.components.inventory ~= nil then
+	if eater ~= nil and eater.components.inventory ~= nil and eater:HasTag("player") then
 		eater.components.inventory:GiveItem(item)
 	else
 		item.Transform:SetPosition(x,y,z)
 	end
 
-	eater.components.moisture.moisture = old_moisture + TUNING.BUcKET_DRINK_WAT
+	if eater:HasTag("player") then
+		local old_moisture = eater.components.moisture.moisture
+		eater.components.moisture.moisture = old_moisture + TUNING.BUcKET_DRINK_WAT
+	end
 
 end
 

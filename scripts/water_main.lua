@@ -153,7 +153,7 @@ local function OnGivenItemWater(inst, giver, item, ...)
     end
 end
 
-local function addtradable(inst)
+AddPrefabPostInit("antlion", function(inst)
     if not GLOBAL.TheWorld.ismastersim then
         inst:ListenForEvent("isfightingdirty", OnIsFightingDirty)
 
@@ -167,9 +167,25 @@ local function addtradable(inst)
             inst.components.trader.onaccept = OnGivenItemWater
         end)
     end
+end)
+
+--[[local function OnDrink(inst, food)
+	if then
+	elseif inst.components.eater.oneatfn_old then
+		return inst.components.eater.oneatfn_old(inst, food, ...)
+	end
 end
 
-AddPrefabPostInit("antlion",addtradable)
+AddPrefabPostInit("pigman", function(inst)
+	if inst.components.eater ~= nil then
+		if inst.components.eater.oneatfn ~= nil and inst.components.oneatfn_old == nil then
+			inst.components.eater.oneatfn_old = inst.components.eater.oneatfn
+		end
+		inst:DoTaskInTime(0, function()
+			inst.components.eater:SetOnEatFn(OnDrink)
+		end)
+	end
+end)]]
 
 for _, v in pairs(TUNING.CLEANSOURCE) do
 	AddPrefabPostInit(v, function(inst) inst:AddTag("cleanwater") end)

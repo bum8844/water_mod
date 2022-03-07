@@ -13,7 +13,7 @@ local function returnbottle(inst, eater)
 
 	inst:Remove()
 
-	if eater ~= nil and eater.components.inventory ~= nil then
+	if eater ~= nil and eater.components.inventory ~= nil and eater:HasTag("player") then
 		eater.components.inventory:GiveItem(refund, nil, Vector3(x, y, z))
 	else
 		refund.Transform:SetPosition(x,y,z)
@@ -24,7 +24,7 @@ end
 local function returncup(inst, eater)
 	local x, y, z = inst.Transform:GetWorldPosition()
 	local refund = SpawnPrefab("cup")
-	if eater ~= nil and eater.components.inventory ~= nil then
+	if eater ~= nil and eater.components.inventory ~= nil and eater:HasTag("player") then
 		eater.components.inventory:GiveItem(refund, nil, Vector3(x, y, z))
 	else
 		refund.Transform:SetPosition(x,y,z)
@@ -103,6 +103,7 @@ local drinks =
 		hunger = 0,
 		sanity = 0,
 		thirst = TUNING.HYDRATION_TINY,
+		--perishtime = 5,
 		cooktime = TUNING.INCORRECT_BOIL,
 		oneatenfn = function(inst, eater)
 			if inst:HasTag("preparedrink_cup") then
@@ -220,10 +221,27 @@ local drinks =
 		cooktime = TUNING.KETTLE_FRUIT,
 		potlevel = "small",
 		oneatenfn = function(inst, eater)
+			local knockouttime = TUNING.TEASLEEP_TIME + math.random()
 			if inst:HasTag("preparedrink_cup") then
 				returncup(inst, eater)
 			else
 				returnbottle(inst, eater)
+			end
+
+			if not eater.components.health or eater.components.health:IsDead() or eater:HasTag("playerghost") then
+				return
+			elseif eater.components.debuffable and eater.components.debuffable:IsEnabled() then
+				eater:AddTag("drinksleep")
+				eater:PushEvent("yawn", { grogginess = 4, knockoutduration = knockouttime })
+				eater:DoTaskInTime(knockouttime, function()
+					eater.components.debuffable:RemoveDebuff("alcoholdebuff")
+					eater:DoTaskInTime(4.1, eater.components.locomotor:RemoveExternalSpeedMultiplier(eater, "alcoholdebuff"))
+				end)
+			else
+				eater.components.sleeper:AddSleepiness(7, knockouttime)
+				eater:DoTaskInTime(knockouttime, function()
+					eater.components.locomotor:RemoveExternalSpeedMultiplier(eater, "alcoholdebuff")
+				end)
 			end
 		end,
 	},
@@ -244,32 +262,37 @@ local drinks =
 			else
 				returnbottle(inst, eater)
 			end
-            if eater.wormlight ~= nil then
-                if eater.wormlight.prefab == "wormlight_light_greater" then
-                    eater.wormlight.components.spell.lifetime = 0
-                    eater.wormlight.components.spell:ResumeSpell()
-                    return
-                else
-                    eater.wormlight.components.spell:OnFinish()
-                end
-            end
 
-            local light = SpawnPrefab("wormlight_light_greater")
-            light.components.spell:SetTarget(eater)
-            if light:IsValid() then
-                if light.components.spell.target == nil then
-                    light:Remove()
-                else
-                    light.components.spell:StartSpell()
-                end
-            end
-		end,
+			if not eater.components.health or eater.components.health:IsDead() or eater:HasTag("playerghost") then
+				return
+            else
+            	if eater.wormlight ~= nil then
+	                if eater.wormlight.prefab == "wormlight_light_greater" then
+	                    eater.wormlight.components.spell.lifetime = 0
+	                    eater.wormlight.components.spell:ResumeSpell()
+	                    return
+	                else
+	                    eater.wormlight.components.spell:OnFinish()
+	                end
+	            end
+
+	            local light = SpawnPrefab("wormlight_light_greater")
+	            light.components.spell:SetTarget(eater)
+	            if light:IsValid() then
+	                if light.components.spell.target == nil then
+	                    light:Remove()
+	                else
+	                    light.components.spell:StartSpell()
+	                end
+	            end
+	        end
+	    end,
 	},
 	
 	-- 일시적 겉는 속도 증가[추가해야함]
 	coffee =
 	{
-		test = function(boilier, names, tags) return (( names.caffeinberry_bean_cooked or 0 ) + ( names.kyno_coffeebeans_cooked or 0 ) >= 2) and notmeat(tags) end,
+		test = function(boilier, names, tags) return (( names.caffeinberry_bean_cooked or 0 ) + ( names.caffeinbeans_cooked or 0 ) >= 2) and notmeat(tags) end,
 		priority = 1,
 		health = TUNING.HEALING_SMALL,
 		hunger = TUNING.DRINK_CALORIES,
@@ -281,6 +304,18 @@ local drinks =
 				returncup(inst, eater)
 			else
 				returnbottle(inst, eater)
+			end
+
+			if not eater.components.health or eater.components.health:IsDead() or eater:HasTag("playerghost") then
+				return
+			elseif eater.components.debuffable and eater.components.debuffable:IsEnabled() then
+				eater.caffeinbuff_duration = TUNING.CAFFEIN_TIME
+				eater.components.debuffable:AddDebuff("caffeinbuff", "caffeinbuff")
+			else
+				eater.components.locomotor:SetExternalSpeedMultiplier(eater, "caffeinbuff", TUNING.CAFFEIN_SPEED)
+				eater:DoTaskInTime(TUNING.CAFFEIN_TIME, function()
+					eater.components.locomotor:RemoveExternalSpeedMultiplier(eater, "caffeinbuff")
+				end)
 			end
 		end,
 	},
@@ -357,10 +392,28 @@ local drinks =
 		cooktime = TUNING.KETTLE_VEGGIE,
 		potlevel = "small",
 		oneatenfn = function(inst, eater)
+			local knockouttime = TUNING.TEASLEEP_TIME + math.random()
 			if inst:HasTag("preparedrink_cup") then
 				returncup(inst, eater)
 			else
 				returnbottle(inst, eater)
+			end
+			if not eater.components.health or eater.components.health:IsDead() or eater:HasTag("playerghost") then
+				return
+			elseif eater.components.debuffable and eater.components.debuffable:IsEnabled() then
+				eater:AddTag("drinksleep")
+				eater:PushEvent("yawn", { grogginess = 4, knockoutduration = knockouttime })
+				eater:DoTaskInTime(knockouttime, function()
+					eater.components.debuffable:RemoveDebuff("alcoholdebuff")
+					eater:DoTaskInTime(4.1, eater.components.locomotor:RemoveExternalSpeedMultiplier(eater, "alcoholdebuff"))
+					eater:AddDebuff("healthregenbuff", "healthregenbuff")
+				end)
+			else
+				eater.components.sleeper:AddSleepiness(7, knockouttime)
+				eater:DoTaskInTime(knockouttime, function()
+					eater:AddDebuff("healthregenbuff", "healthregenbuff")
+					eater.components.locomotor:RemoveExternalSpeedMultiplier(eater, "alcoholdebuff")
+				end)
 			end
 		end,
 	},
@@ -470,7 +523,7 @@ local drinks =
 	-- 일반 꽃잎
 	hibiscus =
 	{
-		test = function(boilier, names, tags) return (( names.petals or 0 ) + ( names.moon_tree_blossom or 0 ) >= 2 ) and notmeat(tags) end,
+		test = function(boilier, names, tags) return (( names.petals or 0 ) + ( names.forgetmelots or 0 ) + ( names.moon_tree_blossom or 0 ) >= 2 ) and notmeat(tags) end,
 		priority = 1,
 		health = TUNING.HEALING_MEDSMALL,
 		hunger = TUNING.DRINK_CALORIES,
@@ -529,7 +582,7 @@ local drinks =
 	--일시적으로 유령으로 만드는 차[추가해야함]
 	sushibiscus =
 	{
-		test = function(boilier, names, tags) return names.forgetmelots and names.firenettles and names.tillweed end,
+		test = function(boilier, names, tags) return (( names.petals_evil or 0 ) + ( names.firenettles or 0 ) + ( names.tillweed  or 0 ) >= 2) and notmeat(tags) end,
 		priority = 2,
 		health = 0,
 		hunger = 0,
@@ -543,7 +596,28 @@ local drinks =
 			else
 				returnbottle(inst, eater)
 			end
-			
+
+			if not eater.components.health or eater.components.health:IsDead() or eater:HasTag("playerghost") then
+				return
+			elseif eater.components.debuffable and eater.components.debuffable:IsEnabled() then
+				local drink_name = inst:HasTag("preparedrink_bottle") and STRINGS.NAMES.BOTTLE_GHOSTLY_TEA or STRINGS.NAMES.CUP_GHOSTLY_TEA
+				local currenthealth = eater.components.health.currenthealth
+				local currenthunger = eater.components.hunger.current
+				local currentsanity = eater.components.sanity.current
+				TheNet:Announce(""..eater:GetDisplayName().." drank ".. drink_name ..", and became a ghost for "..TUNING.GHOST_TIME.." seconds!")
+				eater.components.health:DoDelta(-10000, nil, "death_by_tea")
+				eater:DoTaskInTime(TUNING.GHOST_TIME, function()
+			        TheNet:Announce(""..eater:GetDisplayName().."'s ghost effect ended. Respawning!")
+			        eater:PushEvent("respawnfromghost", { source = eater })
+			        eater:DoTaskInTime(1,function()
+						eater.components.health.currenthealth = currenthealth
+						eater.components.hunger.current = currenthunger
+						eater.components.sanity.current = currentsanity
+			    	end)
+			    end)
+			else
+				eater.components.health:DoDelta(-10000)
+			end
 		end,
 	},
 	

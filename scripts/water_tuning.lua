@@ -1,6 +1,6 @@
 local TUNING = _G.TUNING
 local hydration_per_day = 75
-local wilson_thirst = 150
+local wilson_thirst = GetModConfigData("thirst_max")
 local seg_time = 30
 local total_day_time = seg_time*16
 
@@ -41,10 +41,10 @@ local tuning =
 	HYDRATION_SUPERHUGE = hydration_per_day*2, -- 콜라(퀀텀은 OP)
 
 	-- 목마름이 채워주는 배고픔 양
-	DRINK_CALORIES_POISOE = -3,
+	DRINK_CALORIES_POISOE = 3,
 	DRINK_CALORIES = 5,
 
-	-- 잘못 양주된 음료의 독, 술독
+	--알콜 부작용
 	STRANG_POISOE = -2,
 	ALCAHOL_POISOE = -5,
 	SANITY_POISOE = -5,
@@ -78,11 +78,14 @@ local tuning =
 	CAFFEINBERRY_REGROWTH_TIME_MULT = 1,
 
 	--TEASLEEP_RANGE = 00.1,
-	--TEASLEEP_TIME = 15,
 	--WELL_COOLDOWN = GetModConfigData("waterwell_wait"),
 
-	COFFEE_TIME = GetModConfigData("coffee_time"),
-	COFFEE_POWER = GetModConfigData("coffee_power"),
+	CAFFEIN_TIME = GetModConfigData("caffein_time"),
+	CAFFEIN_SPEED = GetModConfigData("caffein_speed"),
+	TEASLEEP_TIME = GetModConfigData("sleeping_time"),
+	INTOXICATION_TIME = GetModConfigData("alcohol_time"),
+	IMMUNE_TIME = GetModConfigData("immune_time"),
+	GHOST_TIME = GetModConfigData("ghost_time"),
 }
 
 for i,v in pairs(tuning) do

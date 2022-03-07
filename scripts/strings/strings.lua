@@ -157,8 +157,13 @@ STRINGS.NAMES.BOTTLE_CACTUSFLOWER = "Bottle of Cactus Flower Tea"
 STRINGS.NAMES.CUP_LOTUSFLOWER = "Cup of Lotus Flower Tea"
 STRINGS.NAMES.BOTTLE_LOTUSFLOWER = "Bottle of Lotus Flower Tea"
 
-STRINGS.NAMES.CUP_SUSHIBISCUS = "Cup of Ghostly Tea"
-STRINGS.NAMES.BOTTLE_SUSHIBISCUS = "Bottle of Ghostly Tea"
+STRINGS.NAMES.CUP_SUSHIBISCUS = "Cup of Hibiscus Tea"
+STRINGS.NAMES.BOTTLE_SUSHIBISCUS = "Bottle of Hibiscus Tea"
+
+-- 유령차 유채이탈 관련 코드
+STRINGS.NAMES.CUP_GHOSTLY_TEA = "Cup of Ghostly Tea"
+STRINGS.NAMES.BOTTLE_GHOSTLY_TEA = "Bottle of Ghostly Tea"
+STRINGS.NAMES.DEATH_BY_TEA = "Ghostly Tea"
 
 -- prepareagedrink
 

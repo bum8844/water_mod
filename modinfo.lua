@@ -10,10 +10,10 @@ description = (
 	or "Mod adds lots of new items, structures, and also new changes in world generation!".."\nVercion "..version
 	)
 forumthread = ""
-author 						= "Filigrani, Cunning fox(patch by bum0303)"
+author 						= ""
 forumthread 				= ""
 api_version 				= 10
-priority 					= 0.807363154 --id мода. Чтоб не повторяться
+priority 					= 0.807363154 
 dont_starve_compatible 		= false
 reign_of_giants_compatible 	= false
 shipwrecked_compatible 		= false
@@ -46,7 +46,7 @@ configuration_options =
 		label = "Generate tea trees?",
 		options =
 		{
-			{description = "none", data = 0},
+			{description = "None", data = 0},
 			{description = "Less", data = 0.7},
 			{description = "Medium", data = 1.2},
 			{description = "More", data = 1.7},
@@ -59,25 +59,129 @@ configuration_options =
 		label = "Generate Caffeinberry?",
 		options =
 		{
-			{description = "none", data = 0},
+			{description = "None", data = 0},
 			{description = "Less", data = 0.7},
 			{description = "Medium", data = 1.2},
 			{description = "More", data = 1.7},
 		},
 		default = 1.2,
 	},
-	--[[SEPARATOR,
-	Title(russian and "Настройки рецептов" or "Recipes options"),
+	SEPARATOR,
+	Title("Thirst options"),
 	{
-		name = "craft_bag",
-		label = russian and "Можно крафтить мешок?" or "Can craft Bag with herbs?",
+		name = "thirst_max",
+		label = "Max Thirst",
 		options =
 		{
-			{description = russian and "Не-а" or "Nope", data = 0},
-			{description = russian and "Ага" or "Yep", data = 1},
+		    {description = "70", data = 70},
+		    {description = "100", data = 100},
+			{description = "150", data = 150},
+			{description = "200", data = 200},
+			{description = "250", data = 250},
 		},
-		default = 1,
-	},]]--
+		default = 150,
+	},
+	SEPARATOR,
+	Title("Effect options"),
+	SEPARATOR,
+	Title("Coffee Effect"),
+	{
+		name = "caffein_speed",
+		label = "Speed",
+		options = 
+		{
+			{description = "VerySlow", data = 1.21},
+			{description = "Slow", data = 1.42},
+			{description = "Normal", data = 1.83},
+			{description = "Fast", data = 2.04},
+			{description = "VeryFast", data = 2.25},
+		},
+		default = 1.83
+	},
+	{
+		name = "caffein_time",
+		label = "Time",
+		options = 
+		{
+			{description = "VeryShort", data = 120},
+			{description = "Short", data = 240},
+			{description = "Normal", data = 480},
+			{description = "Long", data = 600},
+			{description = "VeryLong", data = 720},
+		},
+		default = 480
+	},
+	SEPARATOR,
+	Title("Drink Sleep Effect"),
+	SEPARATOR,
+	{
+		name = "sleeping_time",
+		label = "Time",
+		options =
+		{
+			{description = "VeryShort", data = 3.75},
+			{description = "Short", data = 7.5},
+			{description = "Normal", data = 15},
+			{description = "Long", data = 18.75},
+			{description = "VeryLong", data = 22.5},
+		},
+		default = 15
+	},
+	SEPARATOR,
+	Title("Drink Alcohol Effect"),
+	SEPARATOR,
+	{
+		name = "child_safety",
+		label = "Child Protection",
+		options =
+		{
+			{description = "yes", data = 0},
+			{description = "no", data = 1},
+		},
+		default = 0
+	},
+	{
+		name = "alcohol_time",
+		label = "Intoxication Time",
+		options =
+		{
+			{description = "VeryShort", data = 60},
+			{description = "Short", data = 120},
+			{description = "Normal", data = 240},
+			{description = "Long", data = 300},
+			{description = "VeryLong", data = 360},
+		},
+		default = 240
+	},
+	{
+		name = "immune_time",
+		label = "Less Pain Time",
+		options =
+		{
+			{description = "VeryShort", data = 60},
+			{description = "Short", data = 120},
+			{description = "Normal", data = 240},
+			{description = "Long", data = 300},
+			{description = "VeryLong", data = 360},
+		},
+		default = 240
+	},
+	SEPARATOR,
+	Title("Drink O.B.E. Effect"),
+	SEPARATOR,
+	{
+		name = "ghost_time",
+		label = "Time",
+		options =
+		{
+			{description = "VeryShort", data = 10},
+			{description = "Short", data = 20},
+			{description = "Normal", data = 40},
+			{description = "Long", data = 50},
+			{description = "VeryLong", data = 60},
+		},
+		default = 40
+	},
 	--[[SEPARATOR,
 	Title(russian and "Настройки жажды" or "Thirst options"),
 	{
@@ -89,20 +193,6 @@ configuration_options =
 			{description = russian and "Ага" or "Yep", data = 1},
 		},
 		default = 1,
-	},]]--
-	
-	--[[{
-		name = "aw_thirst_max",
-		label = russian and "Макс.Жажды" or "Max Thirst",
-		options =
-		{
-		    {description = "70", data = 70},
-		    {description = "100", data = 100},
-			{description = "150", data = 150},
-			{description = "200", data = 200},
-			{description = "250", data = 250},
-		},
-		default = 150,
 	},]]--
 	--[[{
 		name = "beer_wait",

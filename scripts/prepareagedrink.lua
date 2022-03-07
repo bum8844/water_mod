@@ -13,7 +13,7 @@ local function returnbottle(inst, eater)
 
 	inst:Remove()
 
-	if eater ~= nil and eater.components.inventory ~= nil then
+	if eater ~= nil and eater.components.inventory ~= nil and eater:HasTag("player") then
 		eater.components.inventory:GiveItem(item)
 	else
 		item.Transform:SetPosition(x,y,z)
@@ -24,10 +24,35 @@ end
 local function returncup(inst, eater)
 	local x, y, z = inst.Transform:GetWorldPosition()
 	local refund = SpawnPrefab("cup")
-	if eater ~= nil and eater.components.inventory ~= nil then
+	if eater ~= nil and eater.components.inventory ~= nil and eater:HasTag("player") then
 		eater.components.inventory:GiveItem(refund, nil, Vector3(x, y, z))
 	else
 		refund.Transform:SetPosition(x,y,z)
+	end
+end
+
+local function alcahol(inst, eater)
+	if not eater.components.health or eater.components.health:IsDead() or eater:HasTag("playerghost") then
+		return
+	elseif eater.components.debuffable and eater.components.debuffable:IsEnabled() then
+		if not eater:HasTag("valkyrie") then
+			eater.components.health:DoDelta(TUNING.ALCAHOL_POISOE)
+			eater.alcoholdebuff_duration = TUNING.INTOXICATION_TIME
+			eater.components.debuffable:AddDebuff("alcoholdebuff", "alcoholdebuff")
+		else
+			eater.components.talker:Say("This can't make me drunk!")
+		end
+			eater.immunebuff_duration = TUNING.IMMUNE_TIME
+			eater.components.debuffable:AddDebuff("immunebuff", "immunebuff")
+	else
+		eater.components.health.externalabsorbmodifiers:SetModifier(eater, TUNING.BUFF_PLAYERABSORPTION_MODIFIER)
+		eater.components.locomotor:SetExternalSpeedMultiplier(eater, "alcoholdebuff", 0.5)
+		eater:DoTaskInTime(TUNING.INTOXICATION_TIME, function()
+			eater.components.locomotor:RemoveExternalSpeedMultiplier(eater, "alcoholdebuff")
+		end)
+   		eater:DoTaskInTime(TUNING.IMMUNE_TIME, function()
+   			eater.components.health.externalabsorbmodifiers:RemoveModifier(eater)
+   		end)
 	end
 end
 
@@ -44,8 +69,8 @@ local drinks =
 	{
 		test = function(boilier, names, tags) return true end,
 		priority = -2,
-		health = TUNING.STRANG_POISOE,
-		hunger = TUNING.DRINK_CALORIES_POISOE,
+		health = TUNING.SPOILED_HEALTH,
+		hunger = TUNING.SPOILED_HUNGER,
 		sanity = TUNING.SANITY_POISOE,
 		thirst = TUNING.HYDRATION_POISOE,
 		cooktime = TUNING.INCORRECT_BOIL,
@@ -87,7 +112,7 @@ local drinks =
 		hunger = TUNING.CALORIES_SMALL*2,
 		sanity = TUNING.SANITY_MEDLARGE,
 		thirst = TUNING.HYDRATION_LARGE,
-		cooktime = TUNING.SODA_WAIT,
+		cooktime = TUNING.KETTLE_LUXURY_GOODS + TUNING.SODA_WAIT,
 		oneatenfn = function(inst, eater)
 			if inst:HasTag("preparedrink_cup") then
 				returncup(inst, eater)
@@ -106,14 +131,18 @@ local drinks =
 		hunger = TUNING.CALORIES_HUGE,
 		sanity = TUNING.SANITY_MEDLARGE *4,
 		thirst = TUNING.HYDRATION_HUGE,
-		cooktime = TUNING.SODA_WAIT,
+		cooktime = TUNING.KETTLE_LUXURY_GOODS + TUNING.SODA_WAIT,
 		oneatenfn = function(inst, eater)
 			if inst:HasTag("preparedrink_cup") then
 				returncup(inst, eater)
 			else
 				returnbottle(inst, eater)
 			end
-			eater:AddDebuff("healthregenbuff", "healthregenbuff")
+			if not eater.components.health or eater.components.health:IsDead() or eater:HasTag("playerghost") then
+				return
+            else
+				eater:AddDebuff("healthregenbuff", "healthregenbuff")
+			end
 		end,
 	},
 	-- 로얄젤리 + 볶은커피(스피드 버프[추가해야함], 채력 버프[추가해야함])
@@ -125,16 +154,29 @@ local drinks =
 		hunger = TUNING.CALORIES_HUGE,
 		sanity = TUNING.SANITY_HUGE*2,
 		thirst = TUNING.HYDRATION_SUPERHUGE,
-		cooktime = TUNING.BEER_WAIT,
+		cooktime = TUNING.KETTLE_LUXURY_GOODS + TUNING.SODA_WAIT,
 		oneatenfn = function(inst, eater)
 			if inst:HasTag("preparedrink_cup") then
 				returncup(inst, eater)
 			else
 				returnbottle(inst, eater)
 			end
-			eater:AddDebuff("healthregenbuff", "healthregenbuff")
 			
-		end
+			if not eater.components.health or eater.components.health:IsDead() or eater:HasTag("playerghost") then
+				return
+			else
+				eater:AddDebuff("healthregenbuff", "healthregenbuff")
+				if eater.components.debuffable and eater.components.debuffable:IsEnabled() then
+					eater.caffeinbuff_duration = TUNING.CAFFEIN_TIME
+					eater.components.debuffable:AddDebuff("caffeinbuff", "caffeinbuff")
+				else
+					eater.components.locomotor:SetExternalSpeedMultiplier(eater, "caffeinbuff", TUNING.CAFFEIN_SPEED)
+					eater:DoTaskInTime(TUNING.CAFFEIN_TIME, function()
+						eater.components.locomotor:RemoveExternalSpeedMultiplier(eater, "caffeinbuff")
+					end)
+				end
+			end
+		end,
 	},
 	-- 로얄젤리 + 볶은커피 + 발광베리 (스피드 버프[추가해야함], 채력 버프[추가해야함], 빛이남[추가해야함])
 	colaquantum =
@@ -145,35 +187,48 @@ local drinks =
 		hunger = TUNING.CALORIES_HUGE*4,
 		sanity = TUNING.SANITY_HUGE*8,
 		thirst = TUNING.HYDRATION_HUGE*4,
-		cooktime = TUNING.BEER_WAIT,
+		cooktime = TUNING.KETTLE_LUXURY_GOODS + TUNING.SODA_WAIT,
 		oneatenfn = function(inst, eater)
 			if inst:HasTag("preparedrink_cup") then
 				returncup(inst, eater)
 			else
 				returnbottle(inst, eater)
 			end
-			eater:AddDebuff("healthregenbuff", "healthregenbuff")
 			
-            if eater.wormlight ~= nil then
-                if eater.wormlight.prefab == "wormlight_light_greater" then
-                    eater.wormlight.components.spell.lifetime = 0
-                    eater.wormlight.components.spell:ResumeSpell()
-                    return
-                else
-                    eater.wormlight.components.spell:OnFinish()
-                end
-            end
+			if not eater.components.health or eater.components.health:IsDead() or eater:HasTag("playerghost") then
+				return
+            else
+            	eater:AddDebuff("healthregenbuff", "healthregenbuff")
+				if eater.components.debuffable and eater.components.debuffable:IsEnabled() then
+					eater.caffeinbuff_duration = TUNING.CAFFEIN_TIME
+					eater.components.debuffable:AddDebuff("caffeinbuff", "caffeinbuff")
+				else
+					eater.components.locomotor:SetExternalSpeedMultiplier(eater, "caffeinbuff", TUNING.CAFFEIN_SPEED)
+					eater:DoTaskInTime(TUNING.CAFFEIN_TIME, function()
+						eater.components.locomotor:RemoveExternalSpeedMultiplier(eater, "caffeinbuff")
+					end)
+				end
+            	if eater.wormlight ~= nil then
+	                if eater.wormlight.prefab == "wormlight_light_greater" then
+	                    eater.wormlight.components.spell.lifetime = 0
+	                    eater.wormlight.components.spell:ResumeSpell()
+	                    return
+	                else
+	                    eater.wormlight.components.spell:OnFinish()
+	                end
+	            end
 
-            local light = SpawnPrefab("wormlight_light_greater")
-            light.components.spell:SetTarget(eater)
-            if light:IsValid() then
-                if light.components.spell.target == nil then
-                    light:Remove()
-                else
-                    light.components.spell:StartSpell()
-                end
-            end
-		end
+	            local light = SpawnPrefab("wormlight_light_greater")
+	            light.components.spell:SetTarget(eater)
+	            if light:IsValid() then
+	                if light.components.spell.target == nil then
+	                    light:Remove()
+	                else
+	                    light.components.spell:StartSpell()
+	                end
+	            end
+	        end
+	    end,
 	},
 	
 	-- 술[알콜 효과 추가해야함]
@@ -181,19 +236,20 @@ local drinks =
 	{
 		test = function(boilier, names, tags) return (( names.corn or 0 ) + ( names.corn_cooked or 0 ) == 4) and notmeat(tags) end,
 		priority = 1,
-		health = TUNING.HEALING_SMALL + TUNING.ALCAHOL_POISOE,
-		hunger = TUNING.DRINK_CALORIES,
+		health = TUNING.HEALING_SMALL,
+		hunger = TUNING.DRINK_CALORIES - TUNING.DRINK_CALORIES_POISOE,
 		sanity = TUNING.SANITY_LARGE,
 		thirst = TUNING.HYDRATION_SMALL,
-		cooktime = TUNING.BEER_WAIT,
+		cooktime = TUNING.KETTLE_VEGGIE + TUNING.BEER_WAIT,
 		oneatenfn = function(inst, eater)
 			if inst:HasTag("preparedrink_cup") then
 				returncup(inst, eater)
 			else
 				returnbottle(inst, eater)
 			end
-			
-		end
+
+			alcahol(inst, eater)
+		end,
 	},
 		
 	-- 선인장, 다육, 알로에, 드래곤 후르츠 사용
@@ -201,11 +257,11 @@ local drinks =
 	{
 		test = function(boilier, names, tags) return (( names.cactus_meat or 0 ) + ( names.cactus_meat_cooked or 0 ) + ( names.aloe or 0 ) + ( names.aloe_cooked or 0 ) + ( names.kyno_aloe or 0 ) + ( names.kyno_aloe_cooked or 0 ) + ( names.succulent_picked or 0 ) + ( names.dragonfruit or 0 ) + ( names.dragonfruit_cooked or 0 ) == 4 ) and notmeat(tags) end,
 		priority = 2,
-		health = TUNING.ALCAHOL_POISOE,
-		hunger = TUNING.DRINK_CALORIES,
+		health = TUNING.HEALING_SMALL,
+		hunger = TUNING.DRINK_CALORIES - TUNING.DRINK_CALORIES_POISOE,
 		sanity = TUNING.SANITY_LARGE,
 		thirst = TUNING.HYDRATION_SMALL,
-		cooktime = TUNING.BEER_WAIT,
+		cooktime = TUNING.KETTLE_VEGGIE + TUNING.BEER_WAIT,
 		oneatenfn = function(inst, eater)
 			if inst:HasTag("preparedrink_cup") then
 				returncup(inst, eater)
@@ -213,7 +269,8 @@ local drinks =
 				returnbottle(inst, eater)
 			end
 			
-		end
+			alcahol(inst, eater)
+		end,
 	},
 	
 	--꿀술
@@ -221,11 +278,11 @@ local drinks =
 	{
 		test = function(boilier, names, tags) return tags.sweetener and tags.sweetener == 4 and notmeat(tags) end,
 		priority = 2,
-		health = TUNING.HEALING_TINY + TUNING.ALCAHOL_POISOE,
-		hunger = TUNING.DRINK_CALORIES,
+		health = TUNING.HEALING_TINY,
+		hunger = TUNING.DRINK_CALORIES - TUNING.DRINK_CALORIES_POISOE,
 		sanity = TUNING.SANITY_LARGE,
 		thirst = TUNING.HYDRATION_SMALL,
-		cooktime = TUNING.BEER_WAIT,
+		cooktime = TUNING.KETTLE_VEGGIE + TUNING.BEER_WAIT,
 		oneatenfn = function(inst, eater)
 			if inst:HasTag("preparedrink_cup") then
 				returncup(inst, eater)
@@ -233,7 +290,8 @@ local drinks =
 				returnbottle(inst, eater)
 			end
 			
-		end
+			alcahol(inst, eater)
+		end,
 	},
 	
 	
@@ -242,11 +300,11 @@ local drinks =
 	{
 		test = function(boilier, names, tags) return tags.fruit and tags.fruit == 4 and notmeat(tags) end,
 		priority = 1,
-		health = TUNING.HEALING_MEDSMALL + TUNING.ALCAHOL_POISOE,
-		hunger = TUNING.DRINK_CALORIES,
+		health = TUNING.HEALING_MEDSMALL,
+		hunger = TUNING.DRINK_CALORIES - TUNING.DRINK_CALORIES_POISOE,
 		sanity = TUNING.SANITY_LARGE,
 		thirst = TUNING.HYDRATION_SMALL,
-		cooktime = TUNING.BEER_WAIT,
+		cooktime = TUNING.KETTLE_VEGGIE + TUNING.BEER_WAIT,
 		potlevel = "small",
 		oneatenfn = function(inst, eater)
 			if inst:HasTag("preparedrink_cup") then
@@ -255,7 +313,8 @@ local drinks =
 				returnbottle(inst, eater)
 			end
 			
-		end
+			alcahol(inst, eater)
+		end,
 	},
 	
 	-- 베리류
@@ -263,11 +322,11 @@ local drinks =
 	{
 		test = function(boilier, names, tags) return (( names.berries or 0 ) + ( names.berries_cooked or 0 ) + ( names.berries_juicy or 0 ) + ( names.berries_juicy_cooked or 0 ) == 4) and notmeat(tags) end,
 		priority = 2,
-		health = TUNING.HEALING_MEDSMALL + TUNING.ALCAHOL_POISOE,
-		hunger = TUNING.DRINK_CALORIES,
+		health = TUNING.HEALING_MEDSMALL,
+		hunger = TUNING.DRINK_CALORIES - TUNING.DRINK_CALORIES_POISOE,
 		sanity = TUNING.SANITY_HUGE,
 		thirst = TUNING.HYDRATION_MEDSMALL,
-		cooktime = TUNING.BEER_WAIT,
+		cooktime = TUNING.KETTLE_VEGGIE + TUNING.BEER_WAIT,
 		potlevel = "small",
 		oneatenfn = function(inst, eater)
 			if inst:HasTag("preparedrink_cup") then
@@ -276,7 +335,8 @@ local drinks =
 				returnbottle(inst, eater)
 			end
 			
-		end
+			alcahol(inst, eater)
+		end,
 	},
 	
 	-- 발광 베리류
@@ -284,11 +344,11 @@ local drinks =
 	{
 		test = function(boilier, names, tags) return (( names.wormlight or 0 ) + ( names.wormlight_lesser or 0 ) == 4) and notmeat(tags) end,
 		priority = 3,
-		health = TUNING.HEALING_MEDSMALL + TUNING.ALCAHOL_POISOE,
-		hunger = TUNING.DRINK_CALORIES,
+		health = TUNING.HEALING_MEDSMALL,
+		hunger = TUNING.DRINK_CALORIES - TUNING.DRINK_CALORIES_POISOE,
 		sanity = TUNING.SANITY_HUGE,
 		thirst = TUNING.HYDRATION_MEDSMALL,
-		cooktime = TUNING.BEER_WAIT,
+		cooktime = TUNING.KETTLE_VEGGIE + TUNING.BEER_WAIT,
 		potlevel = "small",
 		oneatenfn = function(inst, eater)
 			if inst:HasTag("preparedrink_cup") then
@@ -296,27 +356,9 @@ local drinks =
 			else
 				returnbottle(inst, eater)
 			end
-			
-            if eater.wormlight ~= nil then
-                if eater.wormlight.prefab == "wormlight_light_greater" then
-                    eater.wormlight.components.spell.lifetime = 0
-                    eater.wormlight.components.spell:ResumeSpell()
-                    return
-                else
-                    eater.wormlight.components.spell:OnFinish()
-                end
-            end
 
-            local light = SpawnPrefab("wormlight_light_greater")
-            light.components.spell:SetTarget(eater)
-            if light:IsValid() then
-                if light.components.spell.target == nil then
-                    light:Remove()
-                else
-                    light.components.spell:StartSpell()
-                end
-            end
-		end,
+			alcahol(inst, eater)
+	    end,
 	},
 	
 	-- 인삼술
@@ -324,11 +366,11 @@ local drinks =
 	{
 		test = function(boilier, names, tags) return names.mandrake and notmeat(tags) end,
 		priority = 4,
-		health = TUNING.HEALING_HUGE + TUNING.ALCAHOL_POISOE,
-		hunger = TUNING.DRINK_CALORIES_GINSENG,
+		health = TUNING.HEALING_HUGE,
+		hunger = TUNING.DRINK_CALORIES - TUNING.DRINK_CALORIES_POISOE,
 		sanity = TUNING.SANITY_HUGE,
 		thirst = TUNING.HYDRATION_HUGE,
-		cooktime = TUNING.BEER_WAIT,
+		cooktime = TUNING.KETTLE_VEGGIE + TUNING.BEER_WAIT,
 		oneatenfn = function(inst, eater)
 			if inst:HasTag("preparedrink_cup") then
 				returncup(inst, eater)
@@ -336,7 +378,8 @@ local drinks =
 				returnbottle(inst, eater)
 			end
 			
-		end
+			alcahol(inst, eater)
+		end,
 	},
 	
 }

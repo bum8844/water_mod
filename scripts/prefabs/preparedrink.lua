@@ -82,6 +82,7 @@ local function MakePreparedCupDrink(data)
             inst:AddTag("salty")
         else
             inst:AddTag(_name)
+            inst:AddTag("show_spoiled")
         end
 		inst:AddTag("icebox_valid")
         inst:AddTag("preparedrink_cup")
@@ -115,7 +116,7 @@ local function MakePreparedCupDrink(data)
         inst:AddComponent("edible")
         inst.components.edible.healthvalue = data.health
         inst.components.edible.hungervalue = data.hunger
-        inst.components.edible.foodtype = data.foodtype or FOODTYPE.GENERIC
+        inst.components.edible.foodtype = data.foodtype or FOODTYPE.GOODIES
         inst.components.edible.secondaryfoodtype = data.secondaryfoodtype or nil
         inst.components.edible.sanityvalue = data.sanity or 0
         inst.components.edible.temperaturedelta = data.temperature or 0
@@ -147,11 +148,11 @@ local function MakePreparedCupDrink(data)
         inst:AddComponent("stackable")
         inst.components.stackable.maxsize = TUNING.STACK_SIZE_SMALLITEM
 
-        if data.perishtime ~= nil and data.perishtime > 0 then
+        if data.perishtime ~= nil and data.perishtime > 0 and data._name ~= "strang" then
             inst:AddComponent("perishable")
             inst.components.perishable:SetPerishTime(data.perishtime ~= nil and data.perishtime or nil)
             inst.components.perishable:StartPerishing()
-            inst.components.perishable.onperishreplacement = "spoiled_food"
+            inst.components.perishable.onperishreplacement = "cup_strang"
         end
 
         MakeSmallBurnable(inst)
@@ -173,7 +174,7 @@ local function OnFill(inst, from_object)
     local watering = false
     local waterlevel = from_object.components.waterlevel ~= nil and from_object.components.waterlevel.watertype
     local water = from_object.components.water ~= nil and from_object.components.water.watertype
-    local check =  from_object.components.stewer ~= nil and (from_object.components.stewer.product ~= nil or from_object.components.stewer.product == "saltrock") and from_object.components.stewer.product
+    local check =  from_object.components.stewer ~= nil and from_object.components.stewer.product ~= nil and from_object.components.stewer.product ~= "saltrock" and from_object.components.stewer.product
                   or not from_object:HasTag("desalinator") and from_object.components.waterlevel ~= nil and (waterlevel == "CLEAN" and string.lower(waterlevel) or waterlevel == "SALTY" and string.lower(waterlevel) or waterlevel == "DIRTY" and string.lower(waterlevel))
                   or from_object.components.water ~= nil and (water == "CLEAN" and string.lower(water) or water == "SALTY" and string.lower(water) or water == "DIRTY" and string.lower(waterlevel))
                   or not from_object:HasTag("cleanwater") and "dirty"
@@ -295,6 +296,7 @@ local function MakePreparedBottleDrink(data)
             inst:AddTag("salty")
         else
             inst:AddTag(_name)
+            inst:AddTag("show_spoiled")
         end
 		inst:AddTag("icebox_valid")
         inst:AddTag("preparedrink_bottle")
@@ -332,7 +334,7 @@ local function MakePreparedBottleDrink(data)
         inst:AddComponent("edible")
         inst.components.edible.healthvalue = data.health
         inst.components.edible.hungervalue = data.hunger
-        inst.components.edible.foodtype = data.foodtype or FOODTYPE.GENERIC
+        inst.components.edible.foodtype = data.foodtype or FOODTYPE.GOODIES
         inst.components.edible.secondaryfoodtype = data.secondaryfoodtype or nil
         inst.components.edible.sanityvalue = data.sanity or 0
         inst.components.edible.temperaturedelta = data.temperature or 0
@@ -364,11 +366,11 @@ local function MakePreparedBottleDrink(data)
             inst.components.inventoryitem:ChangeImageName(data.basename)
         end
 
-        if data.perishtime ~= nil and data.perishtime > 0 then
+        if data.perishtime ~= nil and data.perishtime > 0 and data._name ~= "strang" then
             inst:AddComponent("perishable")
             inst.components.perishable:SetPerishTime(data.perishtime ~= nil and data.perishtime+TUNING.PERISH_SUPERSLOW or nil)
             inst.components.perishable:StartPerishing()
-            inst.components.perishable.onperishreplacement = "spoiled_food"
+            inst.components.perishable.onperishreplacement = "bottle_strang"
         end
 
         MakeSmallBurnable(inst)

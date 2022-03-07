@@ -103,6 +103,8 @@ end
 local function spoilfn(inst)
     if not inst:HasTag("burnt") then
         inst.components.stewer.product = inst.components.stewer.spoiledproduct
+        inst.components.waterlevel.item_watertype = WATERTYPE.DIRTY
+        inst.AnimState:OverrideSymbol("swap", "kettle_meter_dirty", tostring(inst._waterlevel))
         SetProductSymbol(inst, inst.components.stewer.product)
     end
 end
@@ -196,7 +198,7 @@ local function Install_components(inst)
     inst.components.stewer.oncontinuedone = continuedonefn
     inst.components.stewer.ondonecooking = donecookfn
     inst.components.stewer.onharvest = harvestfn
-    --inst.components.stewer.onspoil = spoilfn
+    inst.components.stewer.onspoil = spoilfn
 end
 
 local function onopen(inst)
@@ -292,7 +294,6 @@ local function OnTakeWater(inst, watervalue)
         else
             inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/small")
         end
-        inst:PushEvent("refresh")
     end
 end
 
@@ -370,7 +371,7 @@ local function fn()
 	inst.components.stewer.oncontinuedone = continuedonefn
 	inst.components.stewer.ondonecooking = donecookfn
 	inst.components.stewer.onharvest = harvestfn
-	--inst.components.stewer.onspoil = spoilfn
+	inst.components.stewer.onspoil = spoilfn
 
 	inst:AddComponent("container")
 	inst.components.container:WidgetSetup("kettle")

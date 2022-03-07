@@ -20,4 +20,7 @@ return {
 	"preparedrink",
 	"tea_tree",
 	"tea_seed",
+
+	--buuf
+	"drinkbuff",
 }

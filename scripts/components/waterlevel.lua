@@ -242,7 +242,7 @@ function Waterlevel:InitializeWaterLevel(waterlevel)
         self.accepting = false
     end
 
-    if self.currentwater ~= 0 then
+    if self.currentwater > 0 then
         self.inst.components.propagator.acceptsheat = false
         if self.inst.components.watersource ~= nil then
             if self.inst.components.stewer ~= nil and self.inst.components.stewer:IsCooking() then
@@ -272,29 +272,27 @@ function Waterlevel:DoDelta(amount, doer)
         if self.inst.components.stewer ~= nil then
             if self.inst.components.stewer.product ~= nil and self.inst.components.stewer.product ~= "saltrock" then
                 self.accepting = false
-                print("A")
             else
                 self.accepting = true
-                print("B")
             end
         else
             self.accepting = true
-            print("C")
         end
     else
         self.accepting = false
-        print("D")
     end
 
     if self.currentwater > 0 then
         self.inst.components.propagator.acceptsheat = false
         if self.inst.components.watersource ~= nil then
-            self.inst.components.watersource.available = true
-        else
-            self.inst.components.watersource.available = false
+            if self.inst.components.stewer ~= nil and self.inst.components.stewer:IsCooking() then
+                self.inst.components.watersource.available = false
+            else
+                self.inst.components.watersource.available = true
+            end
         end
     else
-        self.inst.components.propagator.acceptsheat = true
+        self.inst.components.watersource.available = false
     end
 
     local newsection = self:GetCurrentSection()
