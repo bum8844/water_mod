@@ -47,6 +47,7 @@ for k, recipe in pairs(drinks_fermented) do
 	AddCookerRecipe("brewery", recipe)
 end
 
+-- 바닐라 코드명이 tillweed임(wiki코드가 틀림)
 local teaingredients = {
 	"foliage",
 	"petals",
@@ -60,8 +61,9 @@ local teaingredients = {
 
 AddIngredientValues(teaingredients, {decoration=1, inedible=1})
 AddIngredientValues({"beefalo_milk"}, {milk=1, dairy=1})
+
 AddIngredientValues({"caffeinberry_bean"}, {fruit=.5})
 AddIngredientValues({"caffeinberry_bean_cooked"}, {fruit=1})
 
-AddReplicableComponent("waterlevel_replica")
-AddReplicableComponent("thirst_replica")
+AddReplicableComponent("waterlevel")
+AddReplicableComponent("thirst")
