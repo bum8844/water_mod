@@ -384,10 +384,8 @@ end)
 
 AddComponentPostInit("edible", function(self)
 	self.thirstvalue = 0
-	_SetAbsorptionModifiers = self.SetAbsorptionModifiers
-	_Eat = self.Eat
 
-	function Edible:GetThirst(eater)
+	function self:GetThirst(eater)
 	    local multiplier = 1
 	    local ignore_spoilage = not self.degrades_with_spoilage or self.thirstvalue < 0 or (eater ~= nil and eater.components.eater ~= nil and eater.components.eater.ignoresspoilage)
 
