@@ -19,6 +19,7 @@ local function BackBucket(inst)
 	end
 end
 
+-- 플레이어에 목마름을 추가하기 위한 코드 23부터 117까지
 local function thirst_classified (inst)
 	local function OnThirstDelta(parent, data)
 	    if data.overtime then
@@ -315,7 +316,7 @@ AddComponentPostInit("stewer",function(self)
 end)
 
 AddComponentPostInit("compostingbin",function(self)
-	_AddCompostable = self.AddCompostable
+	local _AddCompostable = self.AddCompostable
 
 	function self:AddCompostable(item, ...)
 
@@ -347,11 +348,12 @@ AddComponentPostInit("compostingbin",function(self)
 end)
 
 
-
+-- 목마름을 채우기 위해 추가한 코드 352부터 413까지
 AddComponentPostInit("eater", function(self)
 	self.thirstabsorption = 1
-	_SetAbsorptionModifiers = self.SetAbsorptionModifiers
-	_Eat = self.Eat
+	local _SetAbsorptionModifiers = self.SetAbsorptionModifiers
+	local _Eat = self.Eat
+	local _PrefersToEat = self.PrefersToEat
 
 	function self:SetAbsorptionModifiers(health, thirst, sanity, thirst, ...)
 		local result = _SetAbsorptionModifiers(self, health, thirst, sanity, ...)
@@ -362,22 +364,24 @@ AddComponentPostInit("eater", function(self)
 	end
 
 	function self:Eat(food, feeder, ...)
-		local result = _Eat(food, feeder, ...)
-		local thirst_delta = 0
+		local result = _Eat(self, food, feeder, ...)
 
-	    if self.inst.components.thirst ~= nil then
-	        thirst_delta = food.components.edible:GetThirst(self.inst) * base_mult * self.thirstabsorption
-            --local delta = food.components.edible:GetThirst(self.inst) * base_mult
-			--delta = delta * FunctionOrValue(self.thirstabsorption, self.inst, delta, food, feeder)
-            --if delta ~= 0 then
-            --    self.inst.components.thirst:DoDelta(delta * stack_mult)
-            --end
-	    end
+		if self:PrefersToEat(food) then
+			local thirst_delta = 0
 
-	    if thirst_delta ~= 0 then
-            self.inst.components.thirst:DoDelta(thirst_delta * stack_mult)
-	    end
+		    if self.inst.components.thirst ~= nil then
+		        thirst_delta = food.components.edible:GetThirst(self.inst) * base_mult * self.thirstabsorption
+	            --local delta = food.components.edible:GetThirst(self.inst) * base_mult
+				--delta = delta * FunctionOrValue(self.thirstabsorption, self.inst, delta, food, feeder)
+	            --if delta ~= 0 then
+	            --    self.inst.components.thirst:DoDelta(delta * stack_mult)
+	            --end
+		    end
 
+		    if thirst_delta ~= 0 then
+	            self.inst.components.thirst:DoDelta(thirst_delta * stack_mult)
+		    end
+		end
 		return result
 	end
 end)

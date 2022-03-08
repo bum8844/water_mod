@@ -28,6 +28,8 @@ modimport("scripts/strings/strings.lua")
 modimport("scripts/water_tuning.lua")
 modimport("scripts/water_actions.lua")
 modimport("scripts/water_containers.lua")
+-- 위잿추가를 위한 코드임
+modimport("scripts/widgets/thirstbadge_statusdisplays.lua")
 
 AddMinimapAtlas("images/tea_minimap.xml")
 
