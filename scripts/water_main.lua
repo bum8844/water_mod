@@ -382,6 +382,34 @@ AddComponentPostInit("eater", function(self)
 	end
 end)
 
+AddComponentPostInit("edible", function(self)
+	self.thirstvalue = 0
+	_SetAbsorptionModifiers = self.SetAbsorptionModifiers
+	_Eat = self.Eat
+
+	function Edible:GetThirst(eater)
+	    local multiplier = 1
+	    local ignore_spoilage = not self.degrades_with_spoilage or self.thirstvalue < 0 or (eater ~= nil and eater.components.eater ~= nil and eater.components.eater.ignoresspoilage)
+
+	    if not ignore_spoilage and self.inst.components.perishable ~= nil then
+	        if self.inst.components.perishable:IsStale() then
+	            multiplier = eater ~= nil and eater.components.eater ~= nil and eater.components.eater.stale_thirst or self.stale_thirst
+	        elseif self.inst.components.perishable:IsSpoiled() then
+	            multiplier = eater ~= nil and eater.components.eater ~= nil and eater.components.eater.spoiled_thirst or self.spoiled_thirst
+	        end
+	    end
+
+	    if eater ~= nil and eater.components.foodaffinity ~= nil then
+	        local affinity_bonus = eater.components.foodaffinity:GetAffinity(self.inst)
+	        if affinity_bonus ~= nil then
+	            multiplier = multiplier * affinity_bonus
+	        end
+	    end
+
+	    return multiplier * self.thirstvalue
+	end
+end)
+
 --regrowth code
 AddComponentPostInit("regrowthmanager", function(self)
 	self:SetRegrowthForType("tea_tree", TUNING.EVERGREEN_REGROWTH.DESOLATION_RESPAWN_TIME, "tea_tree", function()
