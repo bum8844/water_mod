@@ -1,4 +1,3 @@
-
 local SourceModifierList = require("util/sourcemodifierlist")
 
 local function onmax(self, max)
