@@ -98,6 +98,8 @@ end
 local function spoilfn(inst)
     if not inst:HasTag("burnt") then
         inst.components.stewer.product = inst.components.stewer.spoiledproduct
+        inst.components.waterlevel.item_watertype = WATERTYPE.DIRTY
+        inst.AnimState:OverrideSymbol("swap", "brewery_meter_dirty", tostring(inst._waterlevel))
         SetProductSymbol(inst, inst.components.stewer.product)
     end
 end

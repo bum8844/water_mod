@@ -93,6 +93,7 @@ local drinks =
 		hunger = TUNING.CALORIES_TINY,
 		sanity = TUNING.SANITY_SMALL,
 		thirst = TUNING.HYDRATION_LARGE,
+		perishtime = TUNING.PERISH_PRESERVED,
 		cooktime = TUNING.SODA_WAIT,
 		oneatenfn = function(inst, eater)
 			if inst:HasTag("preparedrink_cup") then
@@ -112,6 +113,7 @@ local drinks =
 		hunger = TUNING.CALORIES_SMALL*2,
 		sanity = TUNING.SANITY_MEDLARGE,
 		thirst = TUNING.HYDRATION_LARGE,
+		perishtime = TUNING.PERISH_PRESERVED,
 		cooktime = TUNING.KETTLE_LUXURY_GOODS + TUNING.SODA_WAIT,
 		oneatenfn = function(inst, eater)
 			if inst:HasTag("preparedrink_cup") then
@@ -131,6 +133,7 @@ local drinks =
 		hunger = TUNING.CALORIES_HUGE,
 		sanity = TUNING.SANITY_MEDLARGE *4,
 		thirst = TUNING.HYDRATION_HUGE,
+		perishtime = TUNING.PERISH_PRESERVED,
 		cooktime = TUNING.KETTLE_LUXURY_GOODS + TUNING.SODA_WAIT,
 		oneatenfn = function(inst, eater)
 			if inst:HasTag("preparedrink_cup") then
@@ -154,6 +157,7 @@ local drinks =
 		hunger = TUNING.CALORIES_HUGE,
 		sanity = TUNING.SANITY_HUGE*2,
 		thirst = TUNING.HYDRATION_SUPERHUGE,
+		perishtime = TUNING.PERISH_PRESERVED,
 		cooktime = TUNING.KETTLE_LUXURY_GOODS + TUNING.SODA_WAIT,
 		oneatenfn = function(inst, eater)
 			if inst:HasTag("preparedrink_cup") then
@@ -187,6 +191,7 @@ local drinks =
 		hunger = TUNING.CALORIES_HUGE*4,
 		sanity = TUNING.SANITY_HUGE*8,
 		thirst = TUNING.HYDRATION_HUGE*4,
+		perishtime = TUNING.PERISH_PRESERVED,
 		cooktime = TUNING.KETTLE_LUXURY_GOODS + TUNING.SODA_WAIT,
 		oneatenfn = function(inst, eater)
 			if inst:HasTag("preparedrink_cup") then
@@ -240,6 +245,7 @@ local drinks =
 		hunger = TUNING.DRINK_CALORIES - TUNING.DRINK_CALORIES_POISOE,
 		sanity = TUNING.SANITY_LARGE,
 		thirst = TUNING.HYDRATION_SMALL,
+		perishtime = TUNING.PERISH_SUPERSLOW,
 		cooktime = TUNING.KETTLE_VEGGIE + TUNING.BEER_WAIT,
 		oneatenfn = function(inst, eater)
 			if inst:HasTag("preparedrink_cup") then
@@ -261,6 +267,7 @@ local drinks =
 		hunger = TUNING.DRINK_CALORIES - TUNING.DRINK_CALORIES_POISOE,
 		sanity = TUNING.SANITY_LARGE,
 		thirst = TUNING.HYDRATION_SMALL,
+		perishtime = TUNING.PERISH_SUPERSLOW,
 		cooktime = TUNING.KETTLE_VEGGIE + TUNING.BEER_WAIT,
 		oneatenfn = function(inst, eater)
 			if inst:HasTag("preparedrink_cup") then
@@ -282,6 +289,7 @@ local drinks =
 		hunger = TUNING.DRINK_CALORIES - TUNING.DRINK_CALORIES_POISOE,
 		sanity = TUNING.SANITY_LARGE,
 		thirst = TUNING.HYDRATION_SMALL,
+		perishtime = TUNING.PERISH_SUPERSLOW,
 		cooktime = TUNING.KETTLE_VEGGIE + TUNING.BEER_WAIT,
 		oneatenfn = function(inst, eater)
 			if inst:HasTag("preparedrink_cup") then
@@ -304,6 +312,7 @@ local drinks =
 		hunger = TUNING.DRINK_CALORIES - TUNING.DRINK_CALORIES_POISOE,
 		sanity = TUNING.SANITY_LARGE,
 		thirst = TUNING.HYDRATION_SMALL,
+		perishtime = TUNING.PERISH_SUPERSLOW,
 		cooktime = TUNING.KETTLE_VEGGIE + TUNING.BEER_WAIT,
 		potlevel = "small",
 		oneatenfn = function(inst, eater)
@@ -326,6 +335,7 @@ local drinks =
 		hunger = TUNING.DRINK_CALORIES - TUNING.DRINK_CALORIES_POISOE,
 		sanity = TUNING.SANITY_HUGE,
 		thirst = TUNING.HYDRATION_MEDSMALL,
+		perishtime = TUNING.PERISH_SUPERSLOW,
 		cooktime = TUNING.KETTLE_VEGGIE + TUNING.BEER_WAIT,
 		potlevel = "small",
 		oneatenfn = function(inst, eater)
@@ -348,6 +358,7 @@ local drinks =
 		hunger = TUNING.DRINK_CALORIES - TUNING.DRINK_CALORIES_POISOE,
 		sanity = TUNING.SANITY_HUGE,
 		thirst = TUNING.HYDRATION_MEDSMALL,
+		perishtime = TUNING.PERISH_SUPERSLOW,
 		cooktime = TUNING.KETTLE_VEGGIE + TUNING.BEER_WAIT,
 		potlevel = "small",
 		oneatenfn = function(inst, eater)
@@ -370,6 +381,7 @@ local drinks =
 		hunger = TUNING.DRINK_CALORIES - TUNING.DRINK_CALORIES_POISOE,
 		sanity = TUNING.SANITY_HUGE,
 		thirst = TUNING.HYDRATION_HUGE,
+		perishtime = TUNING.PERISH_SUPERSLOW,
 		cooktime = TUNING.KETTLE_VEGGIE + TUNING.BEER_WAIT,
 		oneatenfn = function(inst, eater)
 			if inst:HasTag("preparedrink_cup") then

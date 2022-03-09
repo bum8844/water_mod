@@ -22,57 +22,29 @@ end
 -- 플레이어에 목마름을 추가하기 위한 코드 23부터 117까지
 local function thirst_common(inst)
 
-	local function SetGhostMode_Water(inst, isghost)
-	    inst.HUD.controls.status:SetGhostMode_Water(isghost)
-	end
+	inst:AddTag("_thirst")
 
-	local function SetInstanceFunctions_Water(inst)
-        inst.SetGhostMode_Water = SetGhostMode_Water
-	end
+    inst.entity:SetPristine()
+    if not TheWorld.ismastersim then
+        return inst
+    end
 
-	inst:DoTaskInTime(0, function()
+    inst.persists = false
 
-		SetInstanceFunctions_Water(inst)
+    inst:RemoveTag("_thirst")
 
-		inst:AddTag("_thirst")
-
-        inst.entity:SetPristine()
-        if not TheWorld.ismastersim then
-            return inst
-        end
-
-        inst.persists = false
-
-        inst:RemoveTag("_thirst")
-
-        inst:AddComponent("thirst")
-        inst.components.thirst:SetMax(TUNING.WILSON_THIRST)
-        inst.components.thirst:SetRate(TUNING.WILSON_HUNGER_RATE)
-        inst.components.thirst:SetKillRate(TUNING.WILSON_HEALTH / TUNING.STARVE_KILL_TIME)
-        if GetGameModeProperty("no_thirst") then
-            inst.components.thirst:Pause()
-        end
-	end)
+    inst:AddComponent("thirst")
+    inst.components.thirst:SetMax(TUNING.WILSON_THIRST)
+    inst.components.thirst:SetRate(TUNING.WILSON_HUNGER_RATE)
+    inst.components.thirst:SetKillRate(TUNING.WILSON_HEALTH / TUNING.STARVE_KILL_TIME)
+    if GetGameModeProperty("no_thirst") then
+        inst.components.thirst:Pause()
+    end
 end
 
 AddPrefabPostInit("player_common", thirst_common)
 
 local function thirst_classified (inst)
-	local fns = {}
-
-	local function OnGhostModeDirty_Water(inst)
-	    if inst._parent ~= nil then
-	        inst._parent.components.playervision:SetGhostVision(inst.isghostmode:value())
-	        if inst._parent.HUD ~= nil then
-	            inst._parent:SetGhostMode_Water(inst.isghostmode:value())-- got nil
-	        end
-	    end
-	end
-
-	fns.SetGhostMode_Water = function(inst, isghostmode)
-	    inst.isghostmode:set(isghostmode)
-	    OnGhostModeDirty_Water(inst)
-	end
 
 	local function OnThirstDelta(parent, data)
 	    if data.overtime then
@@ -119,15 +91,14 @@ local function thirst_classified (inst)
 			inst:ListenForEvent("thirstdelta", OnThirstDelta, inst._parent)
 		else
 			inst:ListenForEvent("thirstdelta", OnThirstDirty, inst._parent)
-			inst:ListenForEvent("isghostmodedirty", OnGhostModeDirty_Water)
 			if inst._parent ~= nil then
 				inst._oldthirstpercent = inst.maxthirst:value() > 0 and inst.currentthirst:value() / inst.maxthirst:value() or 0
 			end
 		end
-		OnGhostModeDirty_Water(inst)
 	end
 
 	inst:DoTaskInTime(0,function()
+
 		local setting = GetModConfigData("thirst_max")
 
 		inst._oldthirstpercent = 1
@@ -140,7 +111,6 @@ local function thirst_classified (inst)
 
 	    inst:DoStaticTaskInTime(0, RegisterNetListeners_Water)
 
-	    inst.SetGhostMode_Water = fns.SetGhostMode_Water
 	end)
 end 
 

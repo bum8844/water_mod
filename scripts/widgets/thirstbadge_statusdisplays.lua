@@ -66,24 +66,6 @@ local function thirstbadge_statusdisplays(self)
 	    return result
 	end
 
-	function self:SetGhostMode_Water(ghostmode)
-		self.modetask_water = nil
-
-		if ghostmode then
-	        self.waterstomach:Hide()
-	        print("A")
-	    else
-	        self.waterstomach:Show()
-	        print("B")
-	    end
-
-	    if self.modetask_water ~= nil then
-	        self.modetask_water:Cancel()
-	    end
-
-	    self.modetask_water = self.inst:DoStaticTaskInTime(0, ghostmode and OnSetGhostMode_Water or OnSetPlayerMode_Water, self)
-	end
-
 	function self:SetThirstPercent(pct)
 	    self.waterstomach:SetPercent(pct, self.owner.replica.thirst:Max())
 
