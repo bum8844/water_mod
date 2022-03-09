@@ -1,6 +1,6 @@
 local function thirstbadge_statusdisplays(self)
 
-	_SetGhostMode = self.SetGhostMode
+	--_SetGhostMode = self.SetGhostMode
 	_ShowStatusNumbers = self.ShowStatusNumbers
 	_HideStatusNumbers = self.HideStatusNumbers
 	_AddWereness = self.AddWereness
@@ -9,7 +9,7 @@ local function thirstbadge_statusdisplays(self)
 	local ThirstBadge = require "widgets/thirstbadge"
 	
     self.waterstomach = self:AddChild(self.owner.CreateThirstBadge ~= nil and self.owner.CreateThirstBadge(self.owner) or ThirstBadge(self.owner))
-    self.waterstomach:SetPosition(-60, 20, 0)
+    self.waterstomach:SetPosition(-80, -40, 0)
     self.onthirstdelta = nil
 
 	local function OnSetPlayerMode_Water(inst, self)
@@ -66,18 +66,15 @@ local function thirstbadge_statusdisplays(self)
 	    return result
 	end
 
-	function self.SetGhostMode(ghostmode, ...)
-		local old_isghostmode = self.isghostmode
+	function self:SetGhostMode_Water(ghostmode)
 		self.modetask_water = nil
 
-	    if not self.isghostmode == not ghostmode then
-	        return
-	    elseif ghostmode then
-        	self.isghostmode = true
+		if ghostmode then
 	        self.waterstomach:Hide()
+	        print("A")
 	    else
-        	self.isghostmode = nil
 	        self.waterstomach:Show()
+	        print("B")
 	    end
 
 	    if self.modetask_water ~= nil then
@@ -85,11 +82,6 @@ local function thirstbadge_statusdisplays(self)
 	    end
 
 	    self.modetask_water = self.inst:DoStaticTaskInTime(0, ghostmode and OnSetGhostMode_Water or OnSetPlayerMode_Water, self)
-
-	    self.isghostmode = old_isghostmode
-
-	    local result = _SetGhostMode(self, ghostmode, ...)
-	    return result
 	end
 
 	function self:SetThirstPercent(pct)

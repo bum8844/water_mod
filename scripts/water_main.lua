@@ -20,19 +20,65 @@ local function BackBucket(inst)
 end
 
 -- 플레이어에 목마름을 추가하기 위한 코드 23부터 117까지
+local function thirst_common(inst)
+
+	local function SetGhostMode_Water(inst, isghost)
+	    inst.HUD.controls.status:SetGhostMode_Water(isghost)
+	end
+
+	local function SetInstanceFunctions_Water(inst)
+        inst.SetGhostMode_Water = SetGhostMode_Water
+	end
+
+	inst:DoTaskInTime(0, function()
+
+		SetInstanceFunctions_Water(inst)
+
+		inst:AddTag("_thirst")
+
+        inst.entity:SetPristine()
+        if not TheWorld.ismastersim then
+            return inst
+        end
+
+        inst.persists = false
+
+        inst:RemoveTag("_thirst")
+
+        inst:AddComponent("thirst")
+        inst.components.thirst:SetMax(TUNING.WILSON_THIRST)
+        inst.components.thirst:SetRate(TUNING.WILSON_HUNGER_RATE)
+        inst.components.thirst:SetKillRate(TUNING.WILSON_HEALTH / TUNING.STARVE_KILL_TIME)
+        if GetGameModeProperty("no_thirst") then
+            inst.components.thirst:Pause()
+        end
+	end)
+end
+
+AddPrefabPostInit("player_common", thirst_common)
+
 local function thirst_classified (inst)
+	local fns = {}
+
+	local function OnGhostModeDirty_Water(inst)
+	    if inst._parent ~= nil then
+	        inst._parent.components.playervision:SetGhostVision(inst.isghostmode:value())
+	        if inst._parent.HUD ~= nil then
+	            inst._parent:SetGhostMode_Water(inst.isghostmode:value())-- got nil
+	        end
+	    end
+	end
+
+	fns.SetGhostMode_Water = function(inst, isghostmode)
+	    inst.isghostmode:set(isghostmode)
+	    OnGhostModeDirty_Water(inst)
+	end
+
 	local function OnThirstDelta(parent, data)
 	    if data.overtime then
-	        --V2C: Don't clear: it's redundant as player_classified shouldn't
-	        --     get constructed remotely more than once, and this would've
-	        --     also resulted in lost pulses if network hasn't ticked yet.
-	        --parent.player_classified.isthirstpulseup:set_local(false)
-	        --parent.player_classified.isthirstpulsedown:set_local(false)
 	    elseif data.newpercent > data.oldpercent then
-	        --Force dirty, we just want to trigger an event on the client
 	        SetDirty(parent.player_classified.isthirstpulseup, true)
 	    elseif data.newpercent < data.oldpercent then
-	        --Force dirty, we just want to trigger an event on the client
 	        SetDirty(parent.player_classified.isthirstpulsedown, true)
 	    end
 	end
@@ -68,11 +114,17 @@ local function thirst_classified (inst)
 	end
 
 	local function RegisterNetListeners_Water(inst)
-		inst:ListenForEvent("thirstdelta", OnThirstDelta, inst._parent)
-		inst:ListenForEvent("thirstdelta", OnThirstDirty, inst._parent)
-		if inst._parent ~= nil then
-			inst._oldthirstpercent = inst.maxthirst:value() > 0 and inst.currentthirst:value() / inst.maxthirst:value() or 0
+	    if _G.TheWorld.ismastersim then
+	        inst._parent = inst.entity:GetParent()
+			inst:ListenForEvent("thirstdelta", OnThirstDelta, inst._parent)
+		else
+			inst:ListenForEvent("thirstdelta", OnThirstDirty, inst._parent)
+			inst:ListenForEvent("isghostmodedirty", OnGhostModeDirty_Water)
+			if inst._parent ~= nil then
+				inst._oldthirstpercent = inst.maxthirst:value() > 0 and inst.currentthirst:value() / inst.maxthirst:value() or 0
+			end
 		end
+		OnGhostModeDirty_Water(inst)
 	end
 
 	inst:DoTaskInTime(0,function()
@@ -87,34 +139,12 @@ local function thirst_classified (inst)
 	    inst.maxthirst:set(setting)
 
 	    inst:DoStaticTaskInTime(0, RegisterNetListeners_Water)
+
+	    inst.SetGhostMode_Water = fns.SetGhostMode_Water
 	end)
 end 
 
-local function thirst_common(inst)
-	inst:DoTaskInTime(0, function()
-		inst:AddTag("_thirst")
-
-        inst.entity:SetPristine()
-        if not TheWorld.ismastersim then
-            return inst
-        end
-
-        inst.persists = false
-
-        inst:RemoveTag("_thirst")
-
-        inst:AddComponent("thirst")
-        inst.components.thirst:SetMax(TUNING.WILSON_THIRST)
-        inst.components.thirst:SetRate(TUNING.WILSON_HUNGER_RATE)
-        inst.components.thirst:SetKillRate(TUNING.WILSON_HEALTH / TUNING.STARVE_KILL_TIME)
-        if GetGameModeProperty("no_thirst") then
-            inst.components.thirst:Pause()
-        end
-	end)
-end
-
 AddPrefabPostInit("player_classified", thirst_classified)
-AddPrefabPostInit("player_common", thirst_common)
 
 AddPrefabPostInit("fertilizer", function(inst)
     if not GLOBAL.TheWorld.ismastersim then
