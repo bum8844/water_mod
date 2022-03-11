@@ -1,18 +1,27 @@
 local function thirstbadge_statusdisplays(self)
-
-	--_SetGhostMode = self.SetGhostMode
-	_ShowStatusNumbers = self.ShowStatusNumbers
-	_HideStatusNumbers = self.HideStatusNumbers
-	_AddWereness = self.AddWereness
-	_SetWereMode = self.SetWereMode
+	_SetGhostMode = self.SetGhostMode
 
 	local ThirstBadge = require "widgets/thirstbadge"
 	
-    self.waterstomach = self:AddChild(self.owner.CreateThirstBadge ~= nil and self.owner.CreateThirstBadge(self.owner) or ThirstBadge(self.owner))
+    self.waterstomach = self:AddChild(ThirstBadge(self.owner))
     self.waterstomach:SetPosition(-80, -40, 0)
     self.onthirstdelta = nil
 
-	local function OnSetPlayerMode_Water(inst, self)
+    function self:SetGhostMode(ghostmode, ... )
+    	local result = _SetGhostMode(self, ghostmode, ...)
+    	return result
+    end
+
+end
+
+	
+	--[[
+	_ShowStatusNumbers = self.ShowStatusNumbers
+	_HideStatusNumbers = self.HideStatusNumbers
+	_AddWereness = self.AddWereness
+	_SetWereMode = self.SetWereMode]]
+
+	--[[local function OnSetPlayerMode_Water(inst, self)
 		if self.onthirstdelta == nil then
 	        self.onthirstdelta = function(owner, data) self:thirstDelta(data) end
 	        self.inst:ListenForEvent("thirstdelta", self.onthirstdelta, self.owner)
@@ -92,6 +101,6 @@ local function thirstbadge_statusdisplays(self)
 	        end
 	    end
 	end
-end
+end]]
 
 AddClassPostConstruct("widgets/statusdisplays", thirstbadge_statusdisplays)
