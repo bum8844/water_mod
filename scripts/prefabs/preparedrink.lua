@@ -149,7 +149,7 @@ local function MakePreparedCupDrink(data)
         inst:AddComponent("inspectable")
         inst.wet_prefix = data.wet_prefix
 
-        if inst:HasTag("dirty") or inst:HasTag("salty") or inst:HasTag("clean") then
+        if inst:HasTag("common") then
             inst:AddTag("watercan")
 
             inst:AddComponent("water")
@@ -170,14 +170,14 @@ local function MakePreparedCupDrink(data)
         inst:AddComponent("stackable")
         inst.components.stackable.maxsize = TUNING.STACK_SIZE_SMALLITEM
 
-        if data.perishtime ~= nil and data.perishtime > 0 and _name ~= "strang" then
+        if data.perishtime ~= nil and data.perishtime > 0 and not inst:HasTag("strang") then
             inst:AddComponent("perishable")
             inst.components.perishable:SetPerishTime(data.perishtime ~= nil and data.perishtime or nil)
             inst.components.perishable:StartPerishing()
             inst.components.perishable.onperishreplacement = "cup_strang"
         end
 
-        if _name == "strang" then
+        if inst:HasTag("strang") then
             inst:AddComponent("fertilizer")
             inst.components.fertilizer.fertilizervalue = TUNING.SPOILEDFOOD_FERTILIZE
             inst.components.fertilizer.soil_cycles = TUNING.SPOILEDFOOD_SOILCYCLES
@@ -323,23 +323,22 @@ local function MakePreparedBottleDrink(data)
 
         end
 
-        if _name == "water" then
-            inst:AddTag("clean")
-        elseif _name == "salt" then
-            inst:AddTag("salty")
-        else
-            inst:AddTag(_name)
-            inst:AddTag("show_spoiled")
-        end
-		inst:AddTag("icebox_valid")
         inst:AddTag("preparedrink_bottle")
         inst:AddTag("pre-preparedfood")
         inst:AddTag("drink")
+
         if data.tags ~= nil then
             for i,v in pairs(data.tags) do
                 inst:AddTag(v)
             end
         end
+
+        if not inst:HasTag("common") then
+            inst:AddTag(_name)
+            inst:AddTag("show_spoiled")
+            inst:AddTag("icebox_valid")
+        end
+
 
         if _basename ~= nil then
             inst:SetPrefabNameOverride("bottle_".._basename)
@@ -386,7 +385,7 @@ local function MakePreparedBottleDrink(data)
         inst.components.finiteuses:SetMaxUses(TUNING.BOTTLE_MAX_LEVEL)
         inst.components.finiteuses:SetUses(TUNING.BOTTLE_MAX_LEVEL)
 
-        if inst:HasTag("dirty") or inst:HasTag("salty") or inst:HasTag("clean") then
+        if inst:HasTag("common") then
             inst:AddTag("watercan")
 
             inst:AddComponent("water")
@@ -403,14 +402,14 @@ local function MakePreparedBottleDrink(data)
             inst.components.inventoryitem:ChangeImageName(data.basename)
         end
 
-        if data.perishtime ~= nil and data.perishtime > 0 and _name ~= "strang" then
+        if data.perishtime ~= nil and data.perishtime > 0 and not inst:HasTag("strang") then
             inst:AddComponent("perishable")
             inst.components.perishable:SetPerishTime(data.perishtime ~= nil and data.perishtime+TUNING.PERISH_SUPERSLOW or nil)
             inst.components.perishable:StartPerishing()
             inst.components.perishable.onperishreplacement = "bottle_strang"
         end
 
-        if _name == "strang" then
+        if inst:HasTag("strang") then
             inst:AddComponent("fertilizer")
             inst.components.fertilizer.fertilizervalue = TUNING.SPOILEDFOOD_FERTILIZE
             inst.components.fertilizer.soil_cycles = TUNING.SPOILEDFOOD_SOILCYCLES
