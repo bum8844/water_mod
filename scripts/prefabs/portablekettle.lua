@@ -228,12 +228,13 @@ local function OnBurnt(inst)
 end
 
 local function Install_components(inst)
+    inst.components.stewer.spoiledproduct = "strang"
     inst.components.stewer.onstartcooking = startcookfn
     inst.components.stewer.oncontinuecooking = continuecookfn
     inst.components.stewer.oncontinuedone = continuedonefn
     inst.components.stewer.ondonecooking = donecookfn
     inst.components.stewer.onharvest = harvestfn
-    --inst.components.stewer.onspoil = spoilfn
+    inst.components.stewer.onspoil = spoilfn
 end
 
 local function onopen(inst)
@@ -415,13 +416,14 @@ local function fn()
     inst.components.watersource.available = false
 
     inst:AddComponent("stewer")
+    inst.components.stewer.spoiledproduct = "strang"
     inst.components.stewer.cooktimemult = TUNING.PORTABLE_COOK_POT_TIME_MULTIPLIER
     inst.components.stewer.onstartcooking = startcookfn
     inst.components.stewer.oncontinuecooking = continuecookfn
     inst.components.stewer.oncontinuedone = continuedonefn
     inst.components.stewer.ondonecooking = donecookfn
     inst.components.stewer.onharvest = harvestfn
-    --inst.components.stewer.onspoil = spoilfn
+    inst.components.stewer.onspoil = spoilfn
 
     inst:AddComponent("container")
     inst.components.container:WidgetSetup("portablekettle")

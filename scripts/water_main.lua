@@ -304,7 +304,6 @@ AddComponentPostInit("dryer", function(self)
 end)
 
 AddComponentPostInit("stewer",function(self)
-	self.spoiledproduct = self.inst:HasTag("preparedrink_cup") or self.inst:HasTag("preparedrink_bottle") and "strang" or "spoiled_food"
     _Harvest = self.Harvest
 
     function self:Harvest(harvester, ...)
@@ -364,9 +363,7 @@ AddComponentPostInit("eater", function(self)
 	end
 
 	function self:Eat(food, feeder, ...)
-		local result = _Eat(self, food, feeder, ...)
-
-		if self:PrefersToEat(food) then
+		if _PrefersToEat(self, food, ...) then
 			local thirst_delta = 0
 
 		    if self.inst.components.thirst ~= nil then
@@ -381,7 +378,18 @@ AddComponentPostInit("eater", function(self)
 		    if thirst_delta ~= 0 then
 	            self.inst.components.thirst:DoDelta(thirst_delta * stack_mult)
 		    end
+		    local result = _Eat(self, food, feeder, ...)
+		    return result
 		end
+	end
+
+	function self:PrefersToEat(food, ...)
+		print(food:HasTag("alcohol"))
+		print(self.inst:HasTag("childplayer"))
+		if food:HasTag("alcohol") and self.inst:HasTag("childplayer") then
+			return false
+		end
+		local result = _PrefersToEat(self, food, ...)
 		return result
 	end
 end)
@@ -421,3 +429,9 @@ AddComponentPostInit("regrowthmanager", function(self)
         return TUNING.CAFFEINBERRY_REGROWTH_TIME_MULT
     end)
 end)
+
+if GetModConfigData("child_safety") ~= 1 then
+	for _, v in pairs(TUNING.CHILDPLAYEY) do
+		AddPrefabPostInit(v, function(inst) inst:AddTag("childplayer") end)
+	end
+end

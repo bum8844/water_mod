@@ -35,6 +35,7 @@ local function Title(title,hover)
 		default=0,
 	}
 end
+
 local SEPARATOR = Title("")
 
 configuration_options =
@@ -48,8 +49,9 @@ configuration_options =
 		{
 			{description = "None", data = 0},
 			{description = "Less", data = 0.7},
-			{description = "Medium", data = 1.2},
+			{description = "Default", data = 1.2},
 			{description = "More", data = 1.7},
+			{description = "Lots", data = 1.9},
 		},
 		default = 1.2,
 	},
@@ -61,8 +63,9 @@ configuration_options =
 		{
 			{description = "None", data = 0},
 			{description = "Less", data = 0.7},
-			{description = "Medium", data = 1.2},
+			{description = "Default", data = 1.2},
 			{description = "More", data = 1.7},
+			{description = "Lots", data = 1.9},
 		},
 		default = 1.2,
 	},
@@ -75,11 +78,48 @@ configuration_options =
 		{
 		    {description = "70", data = 70},
 		    {description = "100", data = 100},
-			{description = "150", data = 150},
+			{description = "150(Default)", data = 150},
 			{description = "200", data = 200},
 			{description = "250", data = 250},
 		},
 		default = 150,
+	},
+	SEPARATOR,
+	Title("Brewery options"),
+	SEPARATOR,
+	Title("Beer Ferment options"),
+	{
+		name = "beer_wait",
+		label = "Extra Time",
+		options = 
+		{
+			{description = "None", data = 0},
+			{description = "VeryShort", data = 15},
+			{description = "Short", data = 30},
+			{description = "Default", data = 60},
+			{description = "Long", data = 75},
+			{description = "VeryLong", data = 90},
+			--{description = "Random", data = _G.math.random(0, 90)},
+		},
+		default = 60
+	},
+	SEPARATOR,
+	Title("Soda Ferment options"),
+	SEPARATOR,
+	{
+		name = "soda_wait",
+		label = "Extra Time",
+		options = 
+		{
+			{description = "None", data = 0},
+			{description = "VeryShort", data = 15},
+			{description = "Short", data = 30},
+			{description = "Default", data = 60},
+			{description = "Long", data = 75},
+			{description = "VeryLong", data = 90},
+			--{description = "Random", data = "random"},
+		},
+		default = 60
 	},
 	SEPARATOR,
 	Title("Effect options"),
@@ -92,7 +132,7 @@ configuration_options =
 		{
 			{description = "VerySlow", data = 1.21},
 			{description = "Slow", data = 1.42},
-			{description = "Normal", data = 1.83},
+			{description = "Default", data = 1.83},
 			{description = "Fast", data = 2.04},
 			{description = "VeryFast", data = 2.25},
 		},
@@ -105,7 +145,7 @@ configuration_options =
 		{
 			{description = "VeryShort", data = 120},
 			{description = "Short", data = 240},
-			{description = "Normal", data = 480},
+			{description = "Default", data = 480},
 			{description = "Long", data = 600},
 			{description = "VeryLong", data = 720},
 		},
@@ -121,7 +161,7 @@ configuration_options =
 		{
 			{description = "VeryShort", data = 3.75},
 			{description = "Short", data = 7.5},
-			{description = "Normal", data = 15},
+			{description = "Default", data = 15},
 			{description = "Long", data = 18.75},
 			{description = "VeryLong", data = 22.5},
 		},
@@ -147,7 +187,7 @@ configuration_options =
 		{
 			{description = "VeryShort", data = 60},
 			{description = "Short", data = 120},
-			{description = "Normal", data = 240},
+			{description = "Default", data = 240},
 			{description = "Long", data = 300},
 			{description = "VeryLong", data = 360},
 		},
@@ -160,7 +200,7 @@ configuration_options =
 		{
 			{description = "VeryShort", data = 60},
 			{description = "Short", data = 120},
-			{description = "Normal", data = 240},
+			{description = "Default", data = 240},
 			{description = "Long", data = 300},
 			{description = "VeryLong", data = 360},
 		},
@@ -176,7 +216,7 @@ configuration_options =
 		{
 			{description = "VeryShort", data = 10},
 			{description = "Short", data = 20},
-			{description = "Normal", data = 40},
+			{description = "Default", data = 40},
 			{description = "Long", data = 50},
 			{description = "VeryLong", data = 60},
 		},

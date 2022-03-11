@@ -13,6 +13,14 @@ local tuning =
 		"hotspring",
 	},
 
+	CHILDPLAYEY =
+	{
+		"wendy",
+		"walter",
+		"wurt",
+		"webber",
+	},
+
 	CUP_MAX_LEVEL = 1,
 	BOTTLE_MAX_LEVEL = 10,
 	BUCKET_MAX_LEVEL = 20,
