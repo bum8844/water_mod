@@ -28,6 +28,7 @@ modimport("scripts/strings/strings.lua")
 modimport("scripts/water_tuning.lua")
 modimport("scripts/water_actions.lua")
 modimport("scripts/water_containers.lua")
+modimport("scripts/widgets/thirstbadge_statusdisplays.lua")
 
 AddMinimapAtlas("images/tea_minimap.xml")
 
@@ -50,6 +51,7 @@ local teaingredients = {
 	"petals",
 	"succulent_picked",
 	"tealeaves",
+	"tealeaves_dried",
 	"firenettles",
 	"tillweed",
 	"moon_tree_blossom",
