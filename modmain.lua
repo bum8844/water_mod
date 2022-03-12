@@ -28,8 +28,6 @@ modimport("scripts/strings/strings.lua")
 modimport("scripts/water_tuning.lua")
 modimport("scripts/water_actions.lua")
 modimport("scripts/water_containers.lua")
--- 위잿추가를 위한 코드임
-modimport("scripts/widgets/thirstbadge_statusdisplays.lua")
 
 AddMinimapAtlas("images/tea_minimap.xml")
 
@@ -47,13 +45,11 @@ for k, recipe in pairs(drinks_fermented) do
 	AddCookerRecipe("brewery", recipe)
 end
 
--- 바닐라 코드명이 tillweed임(wiki코드가 틀림)
 local teaingredients = {
 	"foliage",
 	"petals",
 	"succulent_picked",
 	"tealeaves",
-	"tealeaves_dried",
 	"firenettles",
 	"tillweed",
 	"moon_tree_blossom",
@@ -65,5 +61,6 @@ AddIngredientValues({"beefalo_milk"}, {milk=1, dairy=1})
 AddIngredientValues({"caffeinberry_bean"}, {fruit=.5})
 AddIngredientValues({"caffeinberry_bean_cooked"}, {fruit=1})
 
---AddReplicableComponent("waterlevel")
+AddReplicableComponent("waterlevel")
 AddReplicableComponent("thirst")
+
