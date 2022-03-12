@@ -1,9 +1,9 @@
 
 local prefabs =
 {
-    "spoiled_food",
 	"cup",
 	"messagebottleempty",
+    "gridplacer_farmablesoil",
 }
 
 local function onsave(inst, data)
@@ -20,6 +20,27 @@ local function onload(inst, data)
 			updatewellstate(inst)
 		end
 	end
+end
+
+local function OnApplied(inst, final_use, doer, target)
+    local x, y, z = inst.Transform:GetWorldPosition()
+    local refund = nil
+
+    if inst.components.finiteuses ~= nil then 
+        if final_use then
+            refund = SpawnPrefab("messagebottleempty")
+        end
+    else
+        refund = SpawnPrefab("cup")
+    end
+
+    if refund ~= nil then
+        if doer ~= nil and doer.components.inventory ~= nil then
+            doer.components.inventory:GiveItem(refund, nil, Vector3(x, y, z))
+        else
+            refund.Transform:SetPosition(x,y,z)
+        end
+    end
 end
 
 local function MakePreparedCupDrink(data)
@@ -76,15 +97,6 @@ local function MakePreparedCupDrink(data)
             inst.Light:Enable(true)
         end
 
-        if _name == "water" then
-            inst:AddTag("clean")
-        elseif _name == "salt" then
-            inst:AddTag("salty")
-        else
-            inst:AddTag(_name)
-            inst:AddTag("show_spoiled")
-        end
-		inst:AddTag("icebox_valid")
         inst:AddTag("preparedrink_cup")
         inst:AddTag("pre-preparedfood")
         inst:AddTag("drink")
@@ -95,6 +107,12 @@ local function MakePreparedCupDrink(data)
             end
         end
 
+        if not inst:HasTag("common") then
+            inst:AddTag(_name)
+            inst:AddTag("show_spoiled")
+            inst:AddTag("icebox_valid")
+        end
+
         if _basename ~= nil then
             inst:SetPrefabNameOverride("cup_".._basename)
         end
@@ -103,6 +121,10 @@ local function MakePreparedCupDrink(data)
             MakeInventoryFloatable(inst, data.floater[1], data.floater[2], data.floater[3])
         else
             MakeInventoryFloatable(inst)
+        end
+
+        if _name == "strang" then
+            MakeDeployableFertilizerPristine(inst)
         end
 
         inst.entity:SetPristine()
@@ -127,7 +149,7 @@ local function MakePreparedCupDrink(data)
         inst:AddComponent("inspectable")
         inst.wet_prefix = data.wet_prefix
 
-        if inst:HasTag("dirty") or inst:HasTag("salty") or inst:HasTag("clean") then
+        if inst:HasTag("common") then
             inst:AddTag("watercan")
 
             inst:AddComponent("water")
@@ -148,11 +170,22 @@ local function MakePreparedCupDrink(data)
         inst:AddComponent("stackable")
         inst.components.stackable.maxsize = TUNING.STACK_SIZE_SMALLITEM
 
-        if data.perishtime ~= nil and data.perishtime > 0 and data._name ~= "strang" then
+        if data.perishtime ~= nil and data.perishtime > 0 and not inst:HasTag("strang") then
             inst:AddComponent("perishable")
             inst.components.perishable:SetPerishTime(data.perishtime ~= nil and data.perishtime or nil)
             inst.components.perishable:StartPerishing()
             inst.components.perishable.onperishreplacement = "cup_strang"
+        end
+
+        if inst:HasTag("strang") then
+            inst:AddComponent("fertilizer")
+            inst.components.fertilizer.fertilizervalue = TUNING.SPOILEDFOOD_FERTILIZE
+            inst.components.fertilizer.soil_cycles = TUNING.SPOILEDFOOD_SOILCYCLES
+            inst.components.fertilizer.withered_cycles = TUNING.SPOILEDFOOD_WITHEREDCYCLES
+            inst.components.fertilizer:SetNutrients(TUNING.SPOILED_FOOD_NUTRIENTS)
+            inst.components.fertilizer.onappliedfn = OnApplied
+
+            MakeDeployableFertilizer(inst)
         end
 
         MakeSmallBurnable(inst)
@@ -290,23 +323,22 @@ local function MakePreparedBottleDrink(data)
 
         end
 
-        if _name == "water" then
-            inst:AddTag("clean")
-        elseif _name == "salt" then
-            inst:AddTag("salty")
-        else
-            inst:AddTag(_name)
-            inst:AddTag("show_spoiled")
-        end
-		inst:AddTag("icebox_valid")
         inst:AddTag("preparedrink_bottle")
         inst:AddTag("pre-preparedfood")
         inst:AddTag("drink")
+
         if data.tags ~= nil then
             for i,v in pairs(data.tags) do
                 inst:AddTag(v)
             end
         end
+
+        if not inst:HasTag("common") then
+            inst:AddTag(_name)
+            inst:AddTag("show_spoiled")
+            inst:AddTag("icebox_valid")
+        end
+
 
         if _basename ~= nil then
             inst:SetPrefabNameOverride("bottle_".._basename)
@@ -316,6 +348,10 @@ local function MakePreparedBottleDrink(data)
             MakeInventoryFloatable(inst, data.floater[1], data.floater[2], data.floater[3])
         else
             MakeInventoryFloatable(inst)
+        end
+
+        if _name == "strang" then
+            MakeDeployableFertilizerPristine(inst)
         end
 
         inst.entity:SetPristine()
@@ -349,7 +385,7 @@ local function MakePreparedBottleDrink(data)
         inst.components.finiteuses:SetMaxUses(TUNING.BOTTLE_MAX_LEVEL)
         inst.components.finiteuses:SetUses(TUNING.BOTTLE_MAX_LEVEL)
 
-        if inst:HasTag("dirty") or inst:HasTag("salty") or inst:HasTag("clean") then
+        if inst:HasTag("common") then
             inst:AddTag("watercan")
 
             inst:AddComponent("water")
@@ -366,11 +402,22 @@ local function MakePreparedBottleDrink(data)
             inst.components.inventoryitem:ChangeImageName(data.basename)
         end
 
-        if data.perishtime ~= nil and data.perishtime > 0 and data._name ~= "strang" then
+        if data.perishtime ~= nil and data.perishtime > 0 and not inst:HasTag("strang") then
             inst:AddComponent("perishable")
             inst.components.perishable:SetPerishTime(data.perishtime ~= nil and data.perishtime+TUNING.PERISH_SUPERSLOW or nil)
             inst.components.perishable:StartPerishing()
             inst.components.perishable.onperishreplacement = "bottle_strang"
+        end
+
+        if inst:HasTag("strang") then
+            inst:AddComponent("fertilizer")
+            inst.components.fertilizer.fertilizervalue = TUNING.SPOILEDFOOD_FERTILIZE
+            inst.components.fertilizer.soil_cycles = TUNING.SPOILEDFOOD_SOILCYCLES
+            inst.components.fertilizer.withered_cycles = TUNING.SPOILEDFOOD_WITHEREDCYCLES
+            inst.components.fertilizer:SetNutrients(TUNING.SPOILED_FOOD_NUTRIENTS)
+            inst.components.fertilizer.onappliedfn = OnApplied
+
+            MakeDeployableFertilizer(inst)
         end
 
         MakeSmallBurnable(inst)

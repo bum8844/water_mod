@@ -1,22 +1,21 @@
 local function returnbottle(inst, eater)
 	local x, y, z = inst.Transform:GetWorldPosition()
-	local uses = inst.components.finiteuses:GetUses()
-	uses = uses - 1
+	local uses = inst.components.finiteuses:Use()
 
-	local item = nil
+	local refund = nil
 	if uses > 0 then
-		item = SpawnPrefab(inst.prefab)
-		item.components.finiteuses:SetUses(uses)
+		refund = SpawnPrefab(inst.prefab)
+		refund.components.finiteuses:SetUses(uses)
 	else
-		item = SpawnPrefab("messagebottleempty")
+		refund = SpawnPrefab("messagebottleempty")
 	end
 
 	inst:Remove()
 
 	if eater ~= nil and eater.components.inventory ~= nil and eater:HasTag("player") then
-		eater.components.inventory:GiveItem(item)
+		eater.components.inventory:GiveItem(refund, nil, Vector3(x, y, z))
 	else
-		item.Transform:SetPosition(x,y,z)
+		refund.Transform:SetPosition(x,y,z)
 	end
 end
 
@@ -236,7 +235,7 @@ local drinks =
 	    end,
 	},
 	
-	-- 술[알콜 효과 추가해야함]
+	-- 술
 	beer =
 	{
 		test = function(boilier, names, tags) return (( names.corn or 0 ) + ( names.corn_cooked or 0 ) == 4) and notmeat(tags) end,
@@ -245,6 +244,7 @@ local drinks =
 		hunger = TUNING.DRINK_CALORIES - TUNING.DRINK_CALORIES_POISOE,
 		sanity = TUNING.SANITY_LARGE,
 		thirst = TUNING.HYDRATION_SMALL,
+		tags = {"alcohol"},
 		perishtime = TUNING.PERISH_SUPERSLOW,
 		cooktime = TUNING.KETTLE_VEGGIE + TUNING.BEER_WAIT,
 		oneatenfn = function(inst, eater)
@@ -267,6 +267,7 @@ local drinks =
 		hunger = TUNING.DRINK_CALORIES - TUNING.DRINK_CALORIES_POISOE,
 		sanity = TUNING.SANITY_LARGE,
 		thirst = TUNING.HYDRATION_SMALL,
+		tags = {"alcohol"},
 		perishtime = TUNING.PERISH_SUPERSLOW,
 		cooktime = TUNING.KETTLE_VEGGIE + TUNING.BEER_WAIT,
 		oneatenfn = function(inst, eater)
@@ -289,6 +290,7 @@ local drinks =
 		hunger = TUNING.DRINK_CALORIES - TUNING.DRINK_CALORIES_POISOE,
 		sanity = TUNING.SANITY_LARGE,
 		thirst = TUNING.HYDRATION_SMALL,
+		tags = {"alcohol"},
 		perishtime = TUNING.PERISH_SUPERSLOW,
 		cooktime = TUNING.KETTLE_VEGGIE + TUNING.BEER_WAIT,
 		oneatenfn = function(inst, eater)
@@ -312,6 +314,7 @@ local drinks =
 		hunger = TUNING.DRINK_CALORIES - TUNING.DRINK_CALORIES_POISOE,
 		sanity = TUNING.SANITY_LARGE,
 		thirst = TUNING.HYDRATION_SMALL,
+		tags = {"alcohol"},
 		perishtime = TUNING.PERISH_SUPERSLOW,
 		cooktime = TUNING.KETTLE_VEGGIE + TUNING.BEER_WAIT,
 		potlevel = "small",
@@ -335,6 +338,7 @@ local drinks =
 		hunger = TUNING.DRINK_CALORIES - TUNING.DRINK_CALORIES_POISOE,
 		sanity = TUNING.SANITY_HUGE,
 		thirst = TUNING.HYDRATION_MEDSMALL,
+		tags = {"alcohol"},
 		perishtime = TUNING.PERISH_SUPERSLOW,
 		cooktime = TUNING.KETTLE_VEGGIE + TUNING.BEER_WAIT,
 		potlevel = "small",
@@ -358,6 +362,7 @@ local drinks =
 		hunger = TUNING.DRINK_CALORIES - TUNING.DRINK_CALORIES_POISOE,
 		sanity = TUNING.SANITY_HUGE,
 		thirst = TUNING.HYDRATION_MEDSMALL,
+		tags = {"alcohol"},
 		perishtime = TUNING.PERISH_SUPERSLOW,
 		cooktime = TUNING.KETTLE_VEGGIE + TUNING.BEER_WAIT,
 		potlevel = "small",
@@ -381,6 +386,7 @@ local drinks =
 		hunger = TUNING.DRINK_CALORIES - TUNING.DRINK_CALORIES_POISOE,
 		sanity = TUNING.SANITY_HUGE,
 		thirst = TUNING.HYDRATION_HUGE,
+		tags = {"alcohol"},
 		perishtime = TUNING.PERISH_SUPERSLOW,
 		cooktime = TUNING.KETTLE_VEGGIE + TUNING.BEER_WAIT,
 		oneatenfn = function(inst, eater)

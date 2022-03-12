@@ -193,6 +193,7 @@ local function OnSectionChange(new, old, inst)
 end
 
 local function Install_components(inst)
+    inst.components.stewer.spoiledproduct = "strang"
     inst.components.stewer.onstartcooking = startcookfn
     inst.components.stewer.oncontinuecooking = continuecookfn
     inst.components.stewer.oncontinuedone = continuedonefn
@@ -366,6 +367,7 @@ local function fn()
     inst.components.watersource.available = false
 
     inst:AddComponent("stewer")
+    inst.components.stewer.spoiledproduct = "strang"
 	inst.components.stewer.onstartcooking = startcookfn
 	inst.components.stewer.oncontinuecooking = continuecookfn
 	inst.components.stewer.oncontinuedone = continuedonefn

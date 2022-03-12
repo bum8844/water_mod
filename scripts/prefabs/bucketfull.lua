@@ -12,8 +12,7 @@ local prefabs =
 
 local function oneaten(inst, eater)
 	local x, y, z = inst.Transform:GetWorldPosition()
-	local uses = inst.components.finiteuses:GetUses()
-	uses = uses - 2
+	local uses = inst.components.finiteuses:Use(2)
 
 	local item = nil
 	if uses > 0 then
@@ -42,9 +41,8 @@ local function onuse(inst)
 	
 	if inst:HasTag("wateringcan") then
 		local refund = nil
-		local uses = inst.components.finiteuses:GetUses()
-		local watervalue = TUNING.CUP_MAX_LEVEL*2
-		uses = uses - watervalue
+		local uses = inst.components.finiteuses:Use(5)
+
 		if uses > 0 then
 			refund = SpawnPrefab(inst.prefab)
 			refund.components.finiteuses:SetUses(uses)

@@ -117,6 +117,10 @@ local function donecookfn(inst)
         inst.components.waterlevel.accepting = false
         inst.AnimState:PlayAnimation("cooking_pst")
         inst.AnimState:PushAnimation("idle_full", false)
+        if inst.components.stewer.product == "strang" then
+            inst.components.waterlevel.item_watertype = WATERTYPE.DIRTY
+            inst.AnimState:OverrideSymbol("swap", "brewery_meter_dirty", tostring(inst._waterlevel))
+        end
         ShowProduct(inst)
         inst.SoundEmitter:KillSound("snd")
         inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_finish")
@@ -193,12 +197,13 @@ local function OnSectionChange(new, old, inst)
 end
 
 local function Install_components(inst)
+    inst.components.stewer.spoiledproduct = "strang"
     inst.components.stewer.onstartcooking = startcookfn
     inst.components.stewer.oncontinuecooking = continuecookfn
     inst.components.stewer.oncontinuedone = continuedonefn
     inst.components.stewer.ondonecooking = donecookfn
     inst.components.stewer.onharvest = harvestfn
-    --inst.components.stewer.onspoil = spoilfn
+    inst.components.stewer.onspoil = spoilfn
 end
 
 local function onopen(inst)
@@ -309,12 +314,13 @@ local function fn()
     inst.components.watersource.available = false
 
     inst:AddComponent("stewer")
+    inst.components.stewer.spoiledproduct = "strang"
 	inst.components.stewer.onstartcooking = startcookfn
 	inst.components.stewer.oncontinuecooking = continuecookfn
 	inst.components.stewer.oncontinuedone = continuedonefn
 	inst.components.stewer.ondonecooking = donecookfn
 	inst.components.stewer.onharvest = harvestfn
-	--inst.components.stewer.onspoil = spoilfn
+	inst.components.stewer.onspoil = spoilfn
 
 	inst:AddComponent("container")
 	inst.components.container:WidgetSetup("kettle")
