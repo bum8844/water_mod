@@ -44,10 +44,11 @@ end
 local function oncurrentwater(self, currentwater)
     if currentwater <= 0 then
         self.inst:AddTag("waterdepleted")
+        self.inst.replica.waterlevel:SetIsDepleted(true)
     else
         self.inst:RemoveTag("waterdepleted")
+        self.inst.replica.waterlevel:SetIsDepleted(false)
     end
-    self.inst:PushEvent("refresh")
 end
 
 local Waterlevel = Class(function(self, inst)
