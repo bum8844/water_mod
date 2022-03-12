@@ -25,7 +25,7 @@ local function thirst_common(inst)
 	inst:AddTag("_thirst")
 
     inst.entity:SetPristine()
-    if not TheWorld.ismastersim then
+    if not GLOBAL.TheWorld.ismastersim then
         return inst
     end
 
@@ -42,7 +42,7 @@ local function thirst_common(inst)
     end
 end
 
-AddPrefabPostInit("player_common", thirst_common)
+AddPlayerPostInit(thirst_common)
 
 local function thirst_classified (inst)
 
@@ -97,24 +97,21 @@ local function thirst_classified (inst)
 		end
 	end
 
-	inst:DoTaskInTime(0,function()
+	local setting = GetModConfigData("thirst_max")
 
-		local setting = GetModConfigData("thirst_max")
+	inst._oldthirstpercent = 1
+    inst.currentthirst = _G.net_ushortint(inst.GUID, "thirst.current", "thirstdirty")
+    inst.maxthirst = _G.net_ushortint(inst.GUID, "thirst.max", "thirstdirty")
+    inst.isthirstpulseup = _G.net_bool(inst.GUID, "thirst.dodeltaovertime(up)", "thirstdirty")
+    inst.isthirstpulsedown = _G.net_bool(inst.GUID, "thirst.dodeltaovertime(down)", "thirstdirty")
+    inst.currentthirst:set(setting)
+    inst.maxthirst:set(setting)
 
-		inst._oldthirstpercent = 1
-	    inst.currentthirst = _G.net_ushortint(inst.GUID, "thirst.current", "thirstdirty")
-	    inst.maxthirst = _G.net_ushortint(inst.GUID, "thirst.max", "thirstdirty")
-	    inst.isthirstpulseup = _G.net_bool(inst.GUID, "thirst.dodeltaovertime(up)", "thirstdirty")
-	    inst.isthirstpulsedown = _G.net_bool(inst.GUID, "thirst.dodeltaovertime(down)", "thirstdirty")
-	    inst.currentthirst:set(setting)
-	    inst.maxthirst:set(setting)
+    inst:DoStaticTaskInTime(0, RegisterNetListeners_Water)
 
-	    inst:DoStaticTaskInTime(0, RegisterNetListeners_Water)
-
-	end)
 end 
 
-AddPrefabPostInit("player_classified", thirst_classified)
+AddPlayerPostInit(thirst_classified)
 
 AddPrefabPostInit("fertilizer", function(inst)
     if not GLOBAL.TheWorld.ismastersim then
@@ -266,24 +263,6 @@ AddPrefabPostInit("antlion", function(inst)
     end
 end)
 
---[[local function OnDrink(inst, food)
-	if then
-	elseif inst.components.eater.oneatfn_old then
-		return inst.components.eater.oneatfn_old(inst, food, ...)
-	end
-end
-
-AddPrefabPostInit("pigman", function(inst)
-	if inst.components.eater ~= nil then
-		if inst.components.eater.oneatfn ~= nil and inst.components.oneatfn_old == nil then
-			inst.components.eater.oneatfn_old = inst.components.eater.oneatfn
-		end
-		inst:DoTaskInTime(0, function()
-			inst.components.eater:SetOnEatFn(OnDrink)
-		end)
-	end
-end)]]
-
 for _, v in pairs(TUNING.CLEANSOURCE) do
 	AddPrefabPostInit(v, function(inst) inst:AddTag("cleanwater") end)
 end
@@ -368,11 +347,6 @@ AddComponentPostInit("eater", function(self)
 
 		    if self.inst.components.thirst ~= nil then
 		        thirst_delta = food.components.edible:GetThirst(self.inst) * base_mult * self.thirstabsorption
-	            --local delta = food.components.edible:GetThirst(self.inst) * base_mult
-				--delta = delta * FunctionOrValue(self.thirstabsorption, self.inst, delta, food, feeder)
-	            --if delta ~= 0 then
-	            --    self.inst.components.thirst:DoDelta(delta * stack_mult)
-	            --end
 		    end
 
 		    if thirst_delta ~= 0 then
