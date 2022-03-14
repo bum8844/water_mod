@@ -20,7 +20,7 @@ local function BackBucket(inst)
 end
 
 -- 플레이어에 목마름을 추가하기 위한 코드 23부터 117까지
-local function thirst_common(inst)
+--[[local function thirst_common(inst)
 
 	inst:AddTag("_thirst")
 
@@ -37,7 +37,7 @@ local function thirst_common(inst)
     inst.components.thirst:SetMax(TUNING.WILSON_THIRST)
     inst.components.thirst:SetRate(TUNING.WILSON_HUNGER_RATE)
     inst.components.thirst:SetKillRate(TUNING.WILSON_HEALTH / TUNING.STARVE_KILL_TIME)
-    if GetGameModeProperty("no_thirst") then
+    if _G.GetGameModeProperty("no_hunger") then
         inst.components.thirst:Pause()
     end
 end
@@ -111,7 +111,7 @@ local function thirst_classified (inst)
 
 end 
 
-AddPlayerPostInit(thirst_classified)
+AddPrefabPostInit("player_classified",thirst_classified)]]
 
 AddPrefabPostInit("fertilizer", function(inst)
     if not GLOBAL.TheWorld.ismastersim then
@@ -283,7 +283,7 @@ AddComponentPostInit("dryer", function(self)
 end)
 
 AddComponentPostInit("stewer",function(self)
-    _Harvest = self.Harvest
+    local _Harvest = self.Harvest
 
     function self:Harvest(harvester, ...)
         local result = _Harvest(self, harvester, ...)
@@ -358,8 +358,6 @@ AddComponentPostInit("eater", function(self)
 	end
 
 	function self:PrefersToEat(food, ...)
-		print(food:HasTag("alcohol"))
-		print(self.inst:HasTag("childplayer"))
 		if food:HasTag("alcohol") and self.inst:HasTag("childplayer") then
 			return false
 		end

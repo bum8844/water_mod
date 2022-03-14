@@ -1,4 +1,7 @@
 local function thirstbadge_statusdisplays(self)
+
+	local _SetGhostMode = self.SetGhostMode
+
 	local ThirstBadge = require "widgets/thirstbadge"
 	self.waterstomach = self:AddChild(ThirstBadge(self.owner))
 	self.owner.waterstomach = self.waterstomach
@@ -13,6 +16,12 @@ local function thirstbadge_statusdisplays(self)
 	end
 
 	if AlwaysOnStatus then
+		if self.owner:HasTag("bearded") then
+			self.waterstomach:SetPosition(-80, -40, 0)
+		else
+			self.waterstomach:SetPosition(-80, -40, 0)
+		end
+	elseif self.owner:HasTag("bearded") then
 		self.waterstomach:SetPosition(-80, -40, 0)
 	else
 		self.waterstomach:SetPosition(-80, -40, 0)
@@ -25,18 +34,41 @@ local function thirstbadge_statusdisplays(self)
 		self.fatigue_sleep:SetPosition(-165,19,0)
 	end
 		
-	if not AlwaysOnStatus and not self.owner:HasTag("bearded") then	
+	if not AlwaysOnStatus and not  then	
     	self.waterstomach:SetPosition(-80, -40, 0)
 	end]]
 
 	local function OnSetPlayerMode(self)
+		self.modetask = nil
 		if self.onthirstdelta == nil then
-	        self.onthirstdelta = function(owner, data) self:ThirstDelta(data) end
+	        --[[self.onthirstdelta = function(owner, data) self:ThirstDelta(data) end
 	        self.inst:ListenForEvent("thirstdelta", self.onthirstdelta, self.owner)
 	        if self.owner.replica.thirst ~=nil then
 	        	self:SetThirstPercent(self.owner.replica.thirst:GetPercent())
-	        end
+	        end]]
 	    end
+	end
+
+	local function OnSetGhostMode(self)
+		self.modetask = nil
+	    if self.onthirstdelta ~= nil then
+	        --[[self.inst:RemoveEventCallback("thirstdelta", self.onthirstdelta, self.owner)
+	        self.onthirstdelta = nil]]
+		end
+	end
+
+	function self:SetGhostMode(ghostmode, ...)
+		if ghostmode then
+	        self.waterstomach:Hide()
+	    else
+	        self.waterstomach:Show()
+	    end
+	    if self.modetask ~= nil then
+	        self.modetask:Cancel()
+	    end
+	    self.modetask = self.inst:DoStaticTaskInTime(0, ghostmode and OnSetGhostMode or OnSetPlayerMode, self)
+	    local result = _SetGhostMode(self, ghostmode, ...)
+	    return result
 	end
 
 	function self:SetThirstPercent(pct)
@@ -68,7 +100,6 @@ local function thirstbadge_statusdisplays(self)
 	    end
 	end
 
-	OnSetPlayerMode(self)
 end
 AddClassPostConstruct("widgets/statusdisplays", thirstbadge_statusdisplays)
 
@@ -81,17 +112,6 @@ AddClassPostConstruct("widgets/statusdisplays", thirstbadge_statusdisplays)
 
 	--[[
 
-	local function OnSetGhostMode_Water(inst, self)
-	    if not self.isghostmode == not ghostmode then --force boolean
-	        return
-	    elseif ghostmode then
-	        self.isghostmode = true
-		    if self.onthirstdelta ~= nil then
-		        self.inst:RemoveEventCallback("thirstdelta", self.onthirstdelta, self.owner)
-		        self.onthirstdelta = nil
-		    end
-		end
-	end
 
 	function self.ShowStatusNumbers()
 	    self.waterstomach.num:Show()
