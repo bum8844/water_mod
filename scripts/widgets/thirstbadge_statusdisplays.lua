@@ -6,7 +6,8 @@ local function thirstbadge_statusdisplays(self)
 	self.waterstomach = self:AddChild(ThirstBadge(self.owner))
 	self.owner.waterstomach = self.waterstomach
 	self._custombadge = self.waterstomach 
-		
+	self.watermodetask = nil
+
 	local AlwaysOnStatus = false
 	for k,v in ipairs(GLOBAL.KnownModIndex:GetModsToLoad()) do 
 		local Mod = GLOBAL.KnownModIndex:GetModInfo(v).name
@@ -21,7 +22,7 @@ local function thirstbadge_statusdisplays(self)
 		self.waterstomach:SetPosition(-80, -40, 0)
 	end
 
-	local function OnSetPlayerWaterMode(self)
+	local function OnSetPlayerWaterMode(inst, self)
 		self.watermodetask = nil
 	    if self.onthirstdelta == nil then
 	        self.onthirstdelta = function(owner, data) self:ThirstDelta(data) end
@@ -30,7 +31,7 @@ local function thirstbadge_statusdisplays(self)
 	    end
 	end
 
-	local function OnSetGhostWaterMode(self)
+	local function OnSetGhostWaterMode(inst, self)
 		self.watermodetask = nil
 	    if self.onthirstdelta ~= nil then
 	        self.inst:RemoveEventCallback("thirstdelta", self.onthirstdelta, self.owner)
