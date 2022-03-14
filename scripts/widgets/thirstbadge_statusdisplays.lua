@@ -16,30 +16,13 @@ local function thirstbadge_statusdisplays(self)
 	end
 
 	if AlwaysOnStatus then
-		if self.owner:HasTag("bearded") then
-			self.waterstomach:SetPosition(-80, -40, 0)
-		else
-			self.waterstomach:SetPosition(-80, -40, 0)
-		end
-	elseif self.owner:HasTag("bearded") then
-		self.waterstomach:SetPosition(-80, -40, 0)
+		self.waterstomach:SetPosition(62, -115)
 	else
 		self.waterstomach:SetPosition(-80, -40, 0)
 	end
-	--[[if AlwaysOnStatus and not self.owner:HasTag("bearded") then
-		self.fatigue_sleep:SetPosition(-115, -15, 0)
-	elseif AlwaysOnStatus and self.owner:HasTag("bearded") then
-		self.fatigue_sleep:SetPosition(-165, 19, 0)	
-	elseif not AlwaysOnStatus and self.owner:HasTag("bearded") then	
-		self.fatigue_sleep:SetPosition(-165,19,0)
-	end
-		
-	if not AlwaysOnStatus and not  then	
-    	self.waterstomach:SetPosition(-80, -40, 0)
-	end]]
 
-	local function OnSetPlayerMode(self)
-		self.modetask = nil
+	local function OnSetPlayerWaterMode(self)
+		self.watermodetask = nil
 		if self.onthirstdelta == nil then
 	        --[[self.onthirstdelta = function(owner, data) self:ThirstDelta(data) end
 	        self.inst:ListenForEvent("thirstdelta", self.onthirstdelta, self.owner)
@@ -49,8 +32,8 @@ local function thirstbadge_statusdisplays(self)
 	    end
 	end
 
-	local function OnSetGhostMode(self)
-		self.modetask = nil
+	local function OnSetGhostWaterMode(self)
+		self.watermodetask = nil
 	    if self.onthirstdelta ~= nil then
 	        --[[self.inst:RemoveEventCallback("thirstdelta", self.onthirstdelta, self.owner)
 	        self.onthirstdelta = nil]]
@@ -63,10 +46,10 @@ local function thirstbadge_statusdisplays(self)
 	    else
 	        self.waterstomach:Show()
 	    end
-	    if self.modetask ~= nil then
-	        self.modetask:Cancel()
+	    if self.watermodetask ~= nil then
+	        self.watermodetask:Cancel()
 	    end
-	    self.modetask = self.inst:DoStaticTaskInTime(0, ghostmode and OnSetGhostMode or OnSetPlayerMode, self)
+	    self.watermodetask = self.inst:DoStaticTaskInTime(0, ghostmode and OnSetGhostWaterMode or OnSetPlayerWaterMode, self)
 	    local result = _SetGhostMode(self, ghostmode, ...)
 	    return result
 	end
