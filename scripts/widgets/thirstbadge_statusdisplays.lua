@@ -23,21 +23,19 @@ local function thirstbadge_statusdisplays(self)
 
 	local function OnSetPlayerWaterMode(self)
 		self.watermodetask = nil
-		if self.onthirstdelta == nil then
-	        --[[self.onthirstdelta = function(owner, data) self:ThirstDelta(data) end
+	    if self.onthirstdelta == nil then
+	        self.onthirstdelta = function(owner, data) self:ThirstDelta(data) end
 	        self.inst:ListenForEvent("thirstdelta", self.onthirstdelta, self.owner)
-	        if self.owner.replica.thirst ~=nil then
-	        	self:SetThirstPercent(self.owner.replica.thirst:GetPercent())
-	        end]]
+	        self:SetThirstPercent(self.owner.replica.thirst:GetPercent())
 	    end
 	end
 
 	local function OnSetGhostWaterMode(self)
 		self.watermodetask = nil
 	    if self.onthirstdelta ~= nil then
-	        --[[self.inst:RemoveEventCallback("thirstdelta", self.onthirstdelta, self.owner)
-	        self.onthirstdelta = nil]]
-		end
+	        self.inst:RemoveEventCallback("thirstdelta", self.onthirstdelta, self.owner)
+	        self.onthirstdelta = nil
+	    end
 	end
 
 	function self:SetGhostMode(ghostmode, ...)

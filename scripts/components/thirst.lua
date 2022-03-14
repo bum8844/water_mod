@@ -14,7 +14,7 @@ end
 
 local Thirst = Class(function(self, inst)
     self.inst = inst
-    self.max = 1 --GetModConfigData("thirst_max")
+    self.max = 150
     self.current = self.max
 
     self.thirstrate = 1

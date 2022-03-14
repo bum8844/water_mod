@@ -20,7 +20,7 @@ local function BackBucket(inst)
 end
 
 -- 플레이어에 목마름을 추가하기 위한 코드 23부터 117까지
---[[local function thirst_common(inst)
+local function thirst_common(inst)
 
 	inst:AddTag("_thirst")
 
@@ -111,7 +111,7 @@ local function thirst_classified (inst)
 
 end 
 
-AddPrefabPostInit("player_classified",thirst_classified)]]
+AddPrefabPostInit("player_classified",thirst_classified)
 
 AddPrefabPostInit("fertilizer", function(inst)
     if not GLOBAL.TheWorld.ismastersim then
