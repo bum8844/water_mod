@@ -44,7 +44,7 @@ end
 
 AddPlayerPostInit(thirst_common)
 
-local function thirst_classified (inst)
+local function thirst_classified(inst)
 
 	local function OnThirstDelta(parent, data)
 	    if data.overtime then
