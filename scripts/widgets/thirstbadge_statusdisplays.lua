@@ -49,7 +49,7 @@ local function thirstbadge_statusdisplays(self)
 	    if self.watermodetask ~= nil then
 	        self.watermodetask:Cancel()
 	    end
-	    self.watermodetask = self.inst:DoStaticTaskInTime(0, ghostmode and OnSetGhostWaterMode or OnSetPlayerWaterMode, self)
+	    --self.watermodetask = self.inst:DoStaticTaskInTime(0, ghostmode and OnSetGhostWaterMode or OnSetPlayerWaterMode, self)
 	    return result
 	end
 

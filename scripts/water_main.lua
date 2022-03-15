@@ -19,8 +19,9 @@ local function BackBucket(inst)
 	end
 end
 
--- 플레이어에 목마름을 추가하기 위한 코드 23부터 117까지
-local function thirst_common(inst)
+-- 플레이어에 목마름을 추가하기 위한 코드 23부터 117까지 
+-- 밑의 주석화 부분에서 오류가 발생함
+--[[local function thirst_common(inst)
 
 	inst:AddTag("_thirst")
 
@@ -44,7 +45,7 @@ end
 
 AddPlayerPostInit(thirst_common)
 
-local function thirst_classified(inst)
+local function thirst_classified (inst)
 
 	local function OnThirstDelta(parent, data)
 	    if data.overtime then
@@ -111,7 +112,7 @@ local function thirst_classified(inst)
 
 end 
 
-AddPrefabPostInit("player_classified",thirst_classified)
+AddPrefabPostInit("player_classified",thirst_classified)]]
 
 AddPrefabPostInit("fertilizer", function(inst)
     if not GLOBAL.TheWorld.ismastersim then
