@@ -1,13 +1,10 @@
-name 						= "a water mod - Heap of Foods Expansion"
-version 					= "0.70"
+name 						= "T&W"
+version 					= "1.00"
 
-russian = name.utf8len and (russian or language == "ru")
+--russian = name.utf8len and (russian or language == "ru")
 description = (
 	russian
-	
-	and "Мод добавляет множество новых вещей и структур, а так же изменения в генерации мира!".."\nВерсия "..version
-	
-	or "Mod adds lots of new items, structures, and also new changes in world generation!".."\nVercion "..version
+	"TODO"
 	)
 forumthread = ""
 author 						= ""
@@ -24,7 +21,7 @@ all_clients_require_mod 	= true
 icon_atlas 					= "preview.xml"
 icon 						= "preview.tex"
 
-server_filter_tags = {"a_water"}
+server_filter_tags = {""}
 
 local opt_Empty = {{description = "", data = 0}}
 local function Title(title,hover)
