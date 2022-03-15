@@ -3,7 +3,6 @@ version 					= "1.00"
 
 --russian = name.utf8len and (russian or language == "ru")
 description = (
-	russian
 	"TODO"
 	)
 forumthread = ""
