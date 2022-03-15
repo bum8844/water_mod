@@ -54,7 +54,7 @@ function Thirst:Max()
     elseif self.classified ~= nil then
         return self.classified.maxthirst:value()
     else
-        return 100
+        return 150
     end
 end
 
@@ -74,7 +74,7 @@ function Thirst:GetCurrent()
     elseif self.classified ~= nil then
         return self.classified.currentthirst:value()
     else
-        return 100
+        return 150
     end
 end
 

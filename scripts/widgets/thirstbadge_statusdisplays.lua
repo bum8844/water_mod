@@ -40,6 +40,7 @@ local function thirstbadge_statusdisplays(self)
 	end
 
 	function self:SetGhostMode(ghostmode, ...)
+	    local result = _SetGhostMode(self, ghostmode, ...)
 		if ghostmode then
 	        self.waterstomach:Hide()
 	    else
@@ -49,7 +50,6 @@ local function thirstbadge_statusdisplays(self)
 	        self.watermodetask:Cancel()
 	    end
 	    self.watermodetask = self.inst:DoStaticTaskInTime(0, ghostmode and OnSetGhostWaterMode or OnSetPlayerWaterMode, self)
-	    local result = _SetGhostMode(self, ghostmode, ...)
 	    return result
 	end
 

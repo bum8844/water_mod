@@ -343,6 +343,7 @@ AddComponentPostInit("eater", function(self)
 
 	function self:Eat(food, feeder, ...)
 		if _PrefersToEat(self, food, ...) then
+			local base_mult = self.inst.components.foodmemory ~= nil and self.inst.components.foodmemory:GetFoodMultiplier(food.prefab) or 1
 			local thirst_delta = 0
 
 		    if self.inst.components.thirst ~= nil then
