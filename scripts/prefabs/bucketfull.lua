@@ -1,6 +1,6 @@
 local bucketstates =
 {
-	{ name = "clean", anim = "full", health = 0, sanity = -TUNING.SANITY_SMALL, hunger = 0, thirst = TUNING.HYDRATION_TINY },
+	{ name = "clean", anim = "full", health = TUNING.HEALING_TINY, sanity = -TUNING.SANITY_SMALL, hunger = 0, thirst = TUNING.HYDRATION_TINY },
 	{ name = "dirty", anim = "dirty", health = -TUNING.HEALING_TINY, sanity = -TUNING.SANITY_SMALL, hunger = 0, thirst = TUNING.HYDRATION_TINY },
 	{ name = "salty", anim = "salt", health = -TUNING.HEALING_SMALL, sanity = -TUNING.SANITY_SMALL, hunger = 0, thirst = TUNING.HYDRATION_SALT },
 }
@@ -12,7 +12,8 @@ local prefabs =
 
 local function oneaten(inst, eater)
 	local x, y, z = inst.Transform:GetWorldPosition()
-	local uses = inst.components.finiteuses:Use(2)
+	inst.components.finiteuses:Use(2)
+	local uses = inst.components.finiteuses:GetUses()
 
 	local item = nil
 	if uses > 0 then

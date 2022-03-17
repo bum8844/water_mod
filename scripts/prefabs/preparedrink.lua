@@ -138,6 +138,7 @@ local function MakePreparedCupDrink(data)
         inst:AddComponent("edible")
         inst.components.edible.healthvalue = data.health
         inst.components.edible.hungervalue = data.hunger
+        inst.components.edible.thirstvalue = data.thirst
         inst.components.edible.foodtype = data.foodtype or FOODTYPE.GOODIES
         inst.components.edible.secondaryfoodtype = data.secondaryfoodtype or nil
         inst.components.edible.sanityvalue = data.sanity or 0
@@ -370,6 +371,7 @@ local function MakePreparedBottleDrink(data)
         inst:AddComponent("edible")
         inst.components.edible.healthvalue = data.health
         inst.components.edible.hungervalue = data.hunger
+        inst.components.edible.thirstvalue = data.thirst
         inst.components.edible.foodtype = data.foodtype or FOODTYPE.GOODIES
         inst.components.edible.secondaryfoodtype = data.secondaryfoodtype or nil
         inst.components.edible.sanityvalue = data.sanity or 0

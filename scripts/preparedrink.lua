@@ -1,6 +1,7 @@
 local function returnbottle(inst, eater)
 	local x, y, z = inst.Transform:GetWorldPosition()
-	local uses = inst.components.finiteuses:Use()
+	inst.components.finiteuses:Use()
+	local uses = inst.components.finiteuses:GetUses()
 
 	local refund = nil
 	if uses > 0 then
@@ -47,7 +48,7 @@ local drinks =
 	{
 		test = dummy,
 		priority = 0,
-		health = TUNING.HEALING_SMALL,
+		health = TUNING.HEALING_TINY,
 		hunger = TUNING.DRINK_CALORIES,
 		sanity = 0,
 		thirst = TUNING.HYDRATION_TINY,
@@ -65,7 +66,7 @@ local drinks =
 	{
 		test = dummy,
 		priority = 0,
-		health = TUNING.HEALING_SMALL,
+		health = -TUNING.HEALING_TINY,
 		hunger = TUNING.DRINK_CALORIES,
 		sanity = 0,
 		thirst = TUNING.HYDRATION_TINY,
@@ -82,10 +83,10 @@ local drinks =
 	{
 		test = dummy,
 		priority = 0,
-		health = TUNING.HEALING_SMALL,
-		hunger = TUNING.DRINK_CALORIES,
+		health = -TUNING.HEALING_SMALL,
+		hunger = -TUNING.DRINK_CALORIES,
 		sanity = 0,
-		thirst = TUNING.HYDRATION_TINY,
+		thirst = TUNING.HYDRATION_SALT,
 		tags = {"common","salty"},
 		oneatenfn = function(inst, eater)
 			if inst:HasTag("preparedrink_cup") then

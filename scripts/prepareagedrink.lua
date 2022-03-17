@@ -1,6 +1,7 @@
 local function returnbottle(inst, eater)
 	local x, y, z = inst.Transform:GetWorldPosition()
-	local uses = inst.components.finiteuses:Use()
+	inst.components.finiteuses:Use()
+	local uses = inst.components.finiteuses:GetUses()
 
 	local refund = nil
 	if uses > 0 then

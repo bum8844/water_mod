@@ -21,7 +21,7 @@ end
 
 -- 플레이어에 목마름을 추가하기 위한 코드 23부터 117까지 
 -- 밑의 주석화 부분에서 오류가 발생함
---[[local function thirst_common(inst)
+local function thirst_common(inst)
 
 	inst:AddTag("_thirst")
 
@@ -47,14 +47,28 @@ AddPlayerPostInit(thirst_common)
 
 local function thirst_classified (inst)
 
+--------------------------------------------------------------------------
+--Server interface
+--------------------------------------------------------------------------
+
+	local function SetDirty_Water(netvar, val)
+	    --Forces a netvar to be dirty regardless of value
+	    netvar:set_local(val)
+	    netvar:set(val)
+	end
+
 	local function OnThirstDelta(parent, data)
 	    if data.overtime then
 	    elseif data.newpercent > data.oldpercent then
-	        SetDirty(parent.player_classified.isthirstpulseup, true)
+	        SetDirty_Water(parent.player_classified.isthirstpulseup, true)
 	    elseif data.newpercent < data.oldpercent then
-	        SetDirty(parent.player_classified.isthirstpulsedown, true)
+	        SetDirty_Water(parent.player_classified.isthirstpulsedown, true)
 	    end
 	end
+
+--------------------------------------------------------------------------
+--Client interface
+--------------------------------------------------------------------------
 
 	local function OnThirstDirty(inst)
 	    if inst._parent ~= nil then
@@ -91,7 +105,7 @@ local function thirst_classified (inst)
 	        inst._parent = inst.entity:GetParent()
 			inst:ListenForEvent("thirstdelta", OnThirstDelta, inst._parent)
 		else
-			inst:ListenForEvent("thirstdelta", OnThirstDirty, inst._parent)
+			inst:ListenForEvent("thirstdirty", OnThirstDirty, inst._parent)
 			if inst._parent ~= nil then
 				inst._oldthirstpercent = inst.maxthirst:value() > 0 and inst.currentthirst:value() / inst.maxthirst:value() or 0
 			end
@@ -112,7 +126,7 @@ local function thirst_classified (inst)
 
 end 
 
-AddPrefabPostInit("player_classified",thirst_classified)]]
+AddPrefabPostInit("player_classified",thirst_classified)
 
 AddPrefabPostInit("fertilizer", function(inst)
     if not GLOBAL.TheWorld.ismastersim then
@@ -344,6 +358,7 @@ AddComponentPostInit("eater", function(self)
 
 	function self:Eat(food, feeder, ...)
 		if _PrefersToEat(self, food, ...) then
+			local stack_mult = self.eatwholestack and food.components.stackable ~= nil and food.components.stackable:StackSize() or 1
 			local base_mult = self.inst.components.foodmemory ~= nil and self.inst.components.foodmemory:GetFoodMultiplier(food.prefab) or 1
 			local thirst_delta = 0
 

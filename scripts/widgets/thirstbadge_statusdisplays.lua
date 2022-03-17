@@ -5,7 +5,6 @@ local function thirstbadge_statusdisplays(self)
 	local ThirstBadge = require "widgets/thirstbadge"
 	self.waterstomach = self:AddChild(ThirstBadge(self.owner))
 	self.owner.waterstomach = self.waterstomach
-	self._custombadge = self.waterstomach 
 	self.watermodetask = nil
 
 	local AlwaysOnStatus = false
@@ -21,6 +20,8 @@ local function thirstbadge_statusdisplays(self)
 	else
 		self.waterstomach:SetPosition(-80, -40, 0)
 	end
+
+	self.onthirstdelta = nil
 
 	local function OnSetPlayerWaterMode(inst, self)
 		self.watermodetask = nil
@@ -49,7 +50,7 @@ local function thirstbadge_statusdisplays(self)
 	    if self.watermodetask ~= nil then
 	        self.watermodetask:Cancel()
 	    end
-	    --self.watermodetask = self.inst:DoStaticTaskInTime(0, ghostmode and OnSetGhostWaterMode or OnSetPlayerWaterMode, self)
+	    self.watermodetask = self.inst:DoStaticTaskInTime(0, ghostmode and OnSetGhostWaterMode or OnSetPlayerWaterMode, self)
 	    return result
 	end
 
@@ -73,9 +74,9 @@ local function thirstbadge_statusdisplays(self)
 	        if not data.overtime then
 	            if data.newpercent > data.oldpercent then
 	                self.waterstomach:PulseGreen()
-	                TheFrontEnd:GetSound():PlaySound("dontstarve/HUD/thirst_up")
+	                TheFrontEnd:GetSound():PlaySound("dontstarve/HUD/hunger_up")
 	            elseif data.newpercent < data.oldpercent then
-	                TheFrontEnd:GetSound():PlaySound("dontstarve/HUD/thirst_down")
+	                TheFrontEnd:GetSound():PlaySound("dontstarve/HUD/hunger_down")
 	                self.waterstomach:PulseRed()
 	            end
 	        end
