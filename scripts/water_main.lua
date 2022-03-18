@@ -105,6 +105,8 @@ local function thirst_classified (inst)
 	        inst._parent = inst.entity:GetParent()
 			inst:ListenForEvent("thirstdelta", OnThirstDelta, inst._parent)
 		else
+			inst.isthirstpulseup:set_local(false)
+       		inst.isthirstpulsedown:set_local(false)
 			inst:ListenForEvent("thirstdirty", OnThirstDirty, inst._parent)
 			if inst._parent ~= nil then
 				inst._oldthirstpercent = inst.maxthirst:value() > 0 and inst.currentthirst:value() / inst.maxthirst:value() or 0

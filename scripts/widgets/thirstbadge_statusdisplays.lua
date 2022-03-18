@@ -3,20 +3,25 @@ local function thirstbadge_statusdisplays(self)
 	local _SetGhostMode = self.SetGhostMode
 
 	local ThirstBadge = require "widgets/thirstbadge"
-	self.waterstomach = self:AddChild(ThirstBadge(self.owner))
-	self.owner.waterstomach = self.waterstomach
+	self.waterstomach = self:AddChild(self.owner.CreateThirstBadge ~= nil and self.owner.CreateThirstBadge(self.owner) or ThirstBadge(self.owner))
 	self.watermodetask = nil
 
 	local AlwaysOnStatus = false
+	local Musha_Mod = false
 	for k,v in ipairs(GLOBAL.KnownModIndex:GetModsToLoad()) do 
 		local Mod = GLOBAL.KnownModIndex:GetModInfo(v).name
 		if Mod == "Combined Status" then 
 			AlwaysOnStatus = true
 		end
+		if Mod == "[DST]Musha" then
+			Musha_Mod = true
+		end
 	end
 
 	if AlwaysOnStatus then
 		self.waterstomach:SetPosition(62, -115)
+	elseif Musha_Mod and self.owner:HasTag("musha") then
+		self.waterstomach:SetPosition(0, -105, 0)
 	else
 		self.waterstomach:SetPosition(-80, -40, 0)
 	end
@@ -86,52 +91,39 @@ local function thirstbadge_statusdisplays(self)
 end
 AddClassPostConstruct("widgets/statusdisplays", thirstbadge_statusdisplays)
 
-	
-	--[[
-	_ShowStatusNumbers = self.ShowStatusNumbers
-	_HideStatusNumbers = self.HideStatusNumbers
-	_AddWereness = self.AddWereness
-	_SetWereMode = self.SetWereMode]]
 
-	--[[
+local function Addupdate(self)
 
+	local _OnUpdate = self.OnUpdate
 
-	function self.ShowStatusNumbers()
-	    self.waterstomach.num:Show()
-		local result = ShowStatusNumbers()
-	    return result
-	end
-
-	function self.HideStatusNumbers()
-		self.waterstomach.num:Hide()
-		local result = _HideStatusNumbers()
-	    return result
-	end
-
-	function self.AddWereness()
-		if self.wereness == nil then
-			self.wereness:SetPosition(self.waterstomach:GetPosition())
+	function self:OnUpdate(dt)
+		if (self.owner.replica.thirst ~= nil and self.owner.replica.thirst:IsStarving()) then
+			if _G.TheNet:IsServerPaused() then return end
+			local anim = "arrow_loop_decrease_most"
+		    if self.arrowdir ~= anim then
+		        self.arrowdir = anim
+		        self.sanityarrow:GetAnimState():PlayAnimation(anim, true)
+		    end
+		else
+			local result = _OnUpdate(self, dt)
+			return result
 		end
-		local result = _AddWereness()
-
-		return result
 	end
+end
+AddClassPostConstruct("widgets/healthbadge", Addupdate)
 
-	function self.SetWereMode(weremode, nofx, ...)
-	    if self.isghostmode or self.wereness == nil then
-	        return
-	    elseif weremode then
-	        self.waterstomach:Hide()
-	        self.wereness:SetPosition(self.waterstomach:GetPosition())
-	    else
-	        self.waterstomach:Show()
-	    end
-	    local result = _SetWereMode(self, weremode, nofx, ...)
-	    return result
+local function AddUpdateState(self)
+	local _UpdateState = self.UpdateState
+
+	function self:UpdateState()
+		if (self.owner.replica.thirst ~= nil and self.owner.replica.thirst:IsStarving()) then
+			if _G.TheNet:IsServerPaused() then return end
+			self:TurnOn()
+		else
+			local result = _UpdateState(self)
+			return result
+		end
 	end
+end
 
-
-
-
-end]]
-
+AddClassPostConstruct("widgets/bloodover", AddUpdateState)
