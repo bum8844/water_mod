@@ -78,6 +78,7 @@ local function OnDetached_alcohol(inst, target)
         target:PushEvent("refreshdrunk")
         target:RemoveTag("groggy")
         target.components.locomotor:RemoveExternalSpeedMultiplier(target, "alcoholdebuff")
+        target.components.talker:Say("I'm not drunk anymore. Good")
     else
         target:RemoveTag("drinksleep")      
     end

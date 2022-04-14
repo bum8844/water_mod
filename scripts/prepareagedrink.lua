@@ -39,6 +39,7 @@ local function alcahol(inst, eater)
 			eater.components.health:DoDelta(TUNING.ALCAHOL_POISOE)
 			eater.alcoholdebuff_duration = TUNING.INTOXICATION_TIME
 			eater.components.debuffable:AddDebuff("alcoholdebuff", "alcoholdebuff")
+			eater.components.talker:Say("Oh... I feel drunk")
 		else
 			eater.components.talker:Say("This can't make me drunk!")
 		end
