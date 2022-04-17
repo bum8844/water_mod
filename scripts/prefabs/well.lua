@@ -106,11 +106,11 @@ end
 --say수정해야함
 local function OnRefuseItem(inst, giver, item)
 	if inst.components.pickable.caninteractwith then
-		giver.components.talker:Say("I need to take out the bucket first.")
+		giver.components.talker:Say(GetString(giver,"DESCRIBE",{"WELL","WELLSTATUS","NOTEMPTY"}))
 	elseif inst.AnimState:IsCurrentAnimation("watering") or inst.AnimState:IsCurrentAnimation("idle_watering") or inst.AnimState:IsCurrentAnimation("shack_watering") then
-		giver.components.talker:Say("I'm getting water right now.")
+		giver.components.talker:Say(GetString(giver,"DESCRIBE",{"WELL","WELLSTATUS","BUSY"}))
 	else
-		giver.components.talker:Say("Can't get water with this.")
+		giver.components.talker:Say(GetString(giver,"DESCRIBE",{"WELL","WELLSTATUS","WRONG_TIEM"}))
 	end
 end
 
