@@ -66,6 +66,7 @@ local function OnAttached_alcohol(inst, target)
     inst.entity:SetParent(target.entity)
     inst.Transform:SetPosition(0, 0, 0)
     target:PushEvent("drunk")
+    target:AddTag("drunk")
     target:AddTag("groggy")
     target.components.locomotor:SetExternalSpeedMultiplier(target, "alcoholdebuff", 0.5)
     inst:ListenForEvent("death", function()
@@ -76,9 +77,10 @@ end
 local function OnDetached_alcohol(inst, target)
     if not target:HasTag("drinksleep") then
         target:PushEvent("refreshdrunk")
+        target:RemoveTag("drunk")
         target:RemoveTag("groggy")
         target.components.locomotor:RemoveExternalSpeedMultiplier(target, "alcoholdebuff")
-        target.components.talker:Say("I'm not drunk anymore. Good")
+        target.components.talker:Say(target, "ANNOUNCE_DRUNK_END")
     else
         target:RemoveTag("drinksleep")      
     end

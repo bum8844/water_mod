@@ -244,7 +244,10 @@ local drinks =
 				eater:DoTaskInTime(knockouttime, function()
 					eater.components.debuffable:RemoveDebuff("alcoholdebuff")
 					eater:DoTaskInTime(4.1, eater.components.locomotor:RemoveExternalSpeedMultiplier(eater, "alcoholdebuff"))
-					eater.components.talker:Say("I'm not drunk anymore. Good")
+					if eater:HasTag("drunk") then
+						eater.components.talker:Say(GetString(eater,"ANNOUNCE_SLEEP_DRUNK_END"))
+						eater:RemoveTag("drunk")
+					end
 				end)
 			else
 				eater.components.sleeper:AddSleepiness(7, knockouttime)
@@ -421,7 +424,10 @@ local drinks =
 				eater:DoTaskInTime(knockouttime, function()
 					eater.components.debuffable:RemoveDebuff("alcoholdebuff")
 					eater:DoTaskInTime(4.1, eater.components.locomotor:RemoveExternalSpeedMultiplier(eater, "alcoholdebuff"))
-					eater.components.talker:Say("I'm not drunk anymore. Good")
+					if eater:HasTag("drunk") then
+						eater.components.talker:Say(GetString(eater,"ANNOUNCE_SLEEP_DRUNK_END"))
+						eater:RemoveTag("drunk")
+					end
 					eater:AddDebuff("healthregenbuff", "healthregenbuff")
 				end)
 			else
