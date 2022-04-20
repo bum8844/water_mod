@@ -32,6 +32,7 @@ modimport("scripts/strings/speech.lua")
 modimport("scripts/water_tuning.lua")
 modimport("scripts/water_actions.lua")
 modimport("scripts/water_containers.lua")
+modimport("init/postinit/postinit_player")
 modimport("scripts/widgets/thirstbadge_statusdisplays.lua")
 
 AddMinimapAtlas("images/tea_minimap.xml")
