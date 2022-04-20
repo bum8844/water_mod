@@ -2,7 +2,7 @@ local Badge = require "widgets/badge"
 local UIAnim = require "widgets/uianim"
 
 local ThirstBadge = Class(Badge, function(self, owner)
-    Badge._ctor(self, "fili_thirst_bage", owner, nil, "fili_thirst_bage", nil, nil, true)
+    Badge._ctor(self, nil, owner, { 100 / 255, 100 / 255, 1, 1 }, "fili_thirst_bage", nil, nil, true)
 
     self.thirstarrow = self.underNumber:AddChild(UIAnim())
     self.thirstarrow:GetAnimState():SetBank("sanity_arrow")

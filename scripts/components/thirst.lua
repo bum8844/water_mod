@@ -1,3 +1,4 @@
+
 local SourceModifierList = require("util/sourcemodifierlist")
 
 local function onmax(self, max)
@@ -14,7 +15,7 @@ end
 
 local Thirst = Class(function(self, inst)
     self.inst = inst
-    self.max = 150
+    self.max = 100
     self.current = self.max
 
     self.thirstrate = 1

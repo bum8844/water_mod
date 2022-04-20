@@ -1,3 +1,4 @@
+
 local Thirst = Class(function(self, inst)
     self.inst = inst
 
@@ -54,7 +55,7 @@ function Thirst:Max()
     elseif self.classified ~= nil then
         return self.classified.maxthirst:value()
     else
-        return 150
+        return 100
     end
 end
 
@@ -74,7 +75,7 @@ function Thirst:GetCurrent()
     elseif self.classified ~= nil then
         return self.classified.currentthirst:value()
     else
-        return 150
+        return 100
     end
 end
 
