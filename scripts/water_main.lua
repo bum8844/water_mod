@@ -47,6 +47,10 @@ AddPlayerPostInit(thirst_common)
 
 local function thirst_classified (inst)
 
+	env.TheWorld = _G.TheWorld
+	env.net_ushortint = _G.net_ushortint
+	env.net_bool = _G.net_bool
+
 --------------------------------------------------------------------------
 --Server interface
 --------------------------------------------------------------------------
@@ -59,6 +63,8 @@ local function thirst_classified (inst)
 
 	local function OnThirstDelta(parent, data)
 	    if data.overtime then
+	        --parent.player_classified.isthirstpulseup:set_local(false)
+	        --parent.player_classified.isthirstpulsedown:set_local(false)
 	    elseif data.newpercent > data.oldpercent then
 	        SetDirty_Water(parent.player_classified.isthirstpulseup, true)
 	    elseif data.newpercent < data.oldpercent then
@@ -100,8 +106,27 @@ local function thirst_classified (inst)
 	    end
 	end
 
+	--[[local function OnEntityReplicated(inst)
+	    inst._parent = inst.entity:GetParent()
+	    if inst._parent == nil then
+	        print("Unable to initialize classified data for player")
+	    else
+	        inst._parent:AttachClassified(inst)
+	        for i, v in ipairs({ "builder", "combat", "health", "hunger", "rider", "sanity", "thirst" }) do
+	            if inst._parent.replica[v] ~= nil then
+	                inst._parent.replica[v]:AttachClassified(inst)
+	            end
+	        end
+	        for i, v in ipairs({ "playercontroller", "playervoter" }) do
+	            if inst._parent.components[v] ~= nil then
+	                inst._parent.components[v]:AttachClassified(inst)
+	            end
+	        end
+	    end
+	end]]
+
 	local function RegisterNetListeners_Water(inst)
-	    if _G.TheWorld.ismastersim then
+	    if TheWorld.ismastersim then
 	        inst._parent = inst.entity:GetParent()
 			inst:ListenForEvent("thirstdelta", OnThirstDelta, inst._parent)
 		else
@@ -117,17 +142,29 @@ local function thirst_classified (inst)
 	local setting = GetModConfigData("thirst_max")
 
 	inst._oldthirstpercent = 1
-    inst.currentthirst = _G.net_ushortint(inst.GUID, "thirst.current", "thirstdirty")
-    inst.maxthirst = _G.net_ushortint(inst.GUID, "thirst.max", "thirstdirty")
-    inst.isthirstpulseup = _G.net_bool(inst.GUID, "thirst.dodeltaovertime(up)", "thirstdirty")
-    inst.isthirstpulsedown = _G.net_bool(inst.GUID, "thirst.dodeltaovertime(down)", "thirstdirty")
+    inst.currentthirst = net_ushortint(inst.GUID, "thirst.current", "thirstdirty")
+    inst.maxthirst = net_ushortint(inst.GUID, "thirst.max", "thirstdirty")
+    inst.isthirstpulseup = net_bool(inst.GUID, "thirst.dodeltaovertime(up)", "thirstdirty")
+    inst.isthirstpulsedown = net_bool(inst.GUID, "thirst.dodeltaovertime(down)", "thirstdirty")
     inst.currentthirst:set(setting)
     inst.maxthirst:set(setting)
 
     inst:DoStaticTaskInTime(0, RegisterNetListeners_Water)
 
+    inst.entity:SetPristine()
+
+    --[[if not TheWorld.ismastersim then
+
+
+        --Client interface
+        inst.OnEntityReplicated = OnEntityReplicated
+
+        return inst
+    end]]
+
 end 
 
+--AddPlayerPostInit(thirst_classified)
 AddPrefabPostInit("player_classified",thirst_classified)
 
 AddPrefabPostInit("fertilizer", function(inst)
@@ -421,8 +458,17 @@ AddComponentPostInit("regrowthmanager", function(self)
     end)
 end)
 
+
+-- 어린이 보호(알콜음료 먹는거 방지 코드)
 if GetModConfigData("child_safety") ~= 1 then
 	for _, v in pairs(TUNING.CHILDPLAYEY) do
 		AddPrefabPostInit(v, function(inst) inst:AddTag("childplayer") end)
 	end
 end
+
+AddComponentPostInit("wisecracker",function(self, inst)
+    inst:ListenForEvent("sleep_end", function(inst, data)
+        inst.components.talker:Say(_G.GetString(inst, "ANNOUNCE_SLEEP_END"))
+    end)
+end)
+

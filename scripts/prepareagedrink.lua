@@ -39,12 +39,11 @@ local function alcahol(inst, eater)
 			eater.components.health:DoDelta(TUNING.ALCAHOL_POISOE)
 			eater.alcoholdebuff_duration = TUNING.INTOXICATION_TIME
 			eater.components.debuffable:AddDebuff("alcoholdebuff", "alcoholdebuff")
-			eater.components.talker:Say(GetString(eater,"ANNOUNCE_DRUNK"))
 		else
 			eater.components.talker:Say(GetString(eater,"ANNOUNCE_DRUNK_IMMUNITY"))
 		end
-			eater.immunebuff_duration = TUNING.IMMUNE_TIME
-			eater.components.debuffable:AddDebuff("immunebuff", "immunebuff")
+		eater.immunebuff_duration = TUNING.IMMUNE_TIME
+		eater.components.debuffable:AddDebuff("immunebuff", "immunebuff")
 	else
 		eater.components.health.externalabsorbmodifiers:SetModifier(eater, TUNING.BUFF_PLAYERABSORPTION_MODIFIER)
 		eater.components.locomotor:SetExternalSpeedMultiplier(eater, "alcoholdebuff", 0.5)

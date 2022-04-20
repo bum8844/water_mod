@@ -6,6 +6,10 @@ env.RPC = _G.RPC
 env.SendRPCToServer = _G.SendRPCToServer
 env.BufferedAction = _G.BufferedAction
 env.SpawnPrefab = _G.SpawnPrefab
+env.ThePlayer = _G.ThePlayer
+env.TheWorld = _G.TheWorld
+env.net_ushortint = _G.net_ushortint
+env.net_bool = _G.net_bool
 
 PrefabFiles = require("water_prefablist")
 
@@ -24,7 +28,7 @@ _G.WATERTYPE =
 
 modimport("scripts/water_recipes.lua")
 modimport("scripts/strings/strings.lua")
---modimport("scripts/strings/speech.lua")
+modimport("scripts/strings/speech.lua")
 modimport("scripts/water_tuning.lua")
 modimport("scripts/water_actions.lua")
 modimport("scripts/water_containers.lua")
