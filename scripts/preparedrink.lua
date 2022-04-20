@@ -243,11 +243,15 @@ local drinks =
 				eater:PushEvent("yawn", { grogginess = 4, knockoutduration = knockouttime })
 				eater:DoTaskInTime(knockouttime, function()
 					eater.components.debuffable:RemoveDebuff("alcoholdebuff")
-					eater:DoTaskInTime(4.1, eater.components.locomotor:RemoveExternalSpeedMultiplier(eater, "alcoholdebuff"))
-					if eater:HasTag("drunk") then
-						eater.components.talker:Say(GetString(eater,"ANNOUNCE_SLEEP_DRUNK_END"))
-						eater:RemoveTag("drunk")
-					end
+					eater:DoTaskInTime(4.1, function()
+						eater.components.locomotor:RemoveExternalSpeedMultiplier(eater, "alcoholdebuff")
+						if eater:HasTag("drunk") then
+							eater:DoTaskInTime(9, function()
+								eater:PushEvent("sleep_end")
+								eater:RemoveTag("drunk")
+							end)
+						end
+					end)
 				end)
 			else
 				eater.components.sleeper:AddSleepiness(7, knockouttime)
@@ -422,12 +426,17 @@ local drinks =
 				eater:AddTag("drinksleep")
 				eater:PushEvent("yawn", { grogginess = 4, knockoutduration = knockouttime })
 				eater:DoTaskInTime(knockouttime, function()
+					eater.components.talker:Say(GetString(eater,"ANNOUNCE_SLEEP_DRUNK_END"))
 					eater.components.debuffable:RemoveDebuff("alcoholdebuff")
-					eater:DoTaskInTime(4.1, eater.components.locomotor:RemoveExternalSpeedMultiplier(eater, "alcoholdebuff"))
-					if eater:HasTag("drunk") then
-						eater.components.talker:Say(GetString(eater,"ANNOUNCE_SLEEP_DRUNK_END"))
-						eater:RemoveTag("drunk")
-					end
+					eater:DoTaskInTime(4.1, function()
+						eater.components.locomotor:RemoveExternalSpeedMultiplier(eater, "alcoholdebuff")
+						if eater:HasTag("drunk") then
+							eater:DoTaskInTime(9, function()
+								eater:PushEvent("sleep_end")
+								eater:RemoveTag("drunk")
+							end)
+						end
+					end)
 					eater:AddDebuff("healthregenbuff", "healthregenbuff")
 				end)
 			else
