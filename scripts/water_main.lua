@@ -173,6 +173,31 @@ for _, v in pairs(TUNING.CLEANSOURCE) do
 	AddPrefabPostInit(v, function(inst) inst:AddTag("cleanwater") end)
 end
 
+for _, v in pairs(TUNING.HYDRATIONTYPE.SUPERTINY) do
+	AddPrefabPostInit(v, function(inst) inst.components.edible.thirstvalue = HYDRATION_SUPERTINY end)
+end
+
+for _, v in pairs(TUNING.HYDRATIONTYPE.TINY) do
+	AddPrefabPostInit(v, function(inst) inst.components.edible.thirstvalue = HYDRATION_SMALLTINY end)
+end
+
+for _, v in pairs(TUNING.HYDRATIONTYPE.SMALL) do
+	AddPrefabPostInit(v, function(inst) inst.components.edible.thirstvalue = HYDRATION_TINY end)
+end
+
+for _, v in pairs(TUNING.HYDRATIONTYPE.MEDSMALL) do
+	AddPrefabPostInit(v, function(inst) inst.components.edible.thirstvalue = HYDRATION_SMALL end)
+end
+
+for _, v in pairs(TUNING.HYDRATIONTYPE.MED) do
+	AddPrefabPostInit(v, function(inst) inst.components.edible.thirstvalue = HYDRATION_MEDSMALL end)
+end
+
+for _, v in pairs(TUNING.HYDRATIONTYPE.LARGE) do
+	AddPrefabPostInit(v, function(inst) inst.components.edible.thirstvalue = HYDRATION_MED end)
+end
+
+
 -- bum: 이 코드가 말리기 위해 추가한 코드임
 -- AFS: dryer:StartDrying calls dryable.components.perishable:GetPercent(), so we need to add such hack to
 -- make tea leaves dryable on the rack.
@@ -274,6 +299,8 @@ AddComponentPostInit("eater", function(self)
 	end
 end)
 
+
+
 AddComponentPostInit("edible", function(self)
 	self.thirstvalue = 0
 
@@ -323,4 +350,3 @@ AddComponentPostInit("wisecracker",function(self, inst)
         inst.components.talker:Say(_G.GetString(inst, "ANNOUNCE_SLEEP_END"))
     end)
 end)
-
