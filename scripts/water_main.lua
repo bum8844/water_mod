@@ -21,7 +21,7 @@ end
 
 AddPrefabPostInit("fertilizer", function(inst)
     if not GLOBAL.TheWorld.ismastersim then
-        return
+        return inst
     end
 	inst:DoTaskInTime(0, function()	
         inst.components.finiteuses:SetOnFinished(BackBucket)
@@ -156,7 +156,8 @@ end
 AddPrefabPostInit("antlion", function(inst)
     if not GLOBAL.TheWorld.ismastersim then
         inst:ListenForEvent("isfightingdirty", OnIsFightingDirty)
-        return
+
+        return inst
     end
     if inst.components.trader ~= nil then
         if inst.components.trader.onaccept ~= nil and inst.components.trader.onaccept_old == nil then
@@ -170,6 +171,10 @@ end)
 
 for _, v in pairs(TUNING.CLEANSOURCE) do
 	AddPrefabPostInit(v, function(inst) inst:AddTag("cleanwater") end)
+end
+
+for _, v in pairs(TUNING.HYDRATIONTYPE.ROT) do
+	AddPrefabPostInit(v, function(inst) inst.components.edible.thirstvalue = TUNING.HYDRATION_ROT end)
 end
 
 for _, v in pairs(TUNING.HYDRATIONTYPE.SUPERTINY) do
@@ -290,8 +295,6 @@ AddComponentPostInit("eater", function(self)
 		return _PrefersToEat(self, food, ...) and not (food:HasTag("alcohol") and self.inst:HasTag("childplayer"))
 	end
 end)
-
-
 
 AddComponentPostInit("edible", function(self)
 	self.thirstvalue = 0

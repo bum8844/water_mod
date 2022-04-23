@@ -15,10 +15,6 @@ PrefabFiles = require("water_prefablist")
 
 Assets = require("water_assets")
 
-STRINGS.NAMES.DRINKS_TAB = "WATER"
-STRINGS.TABS.DRINKS_TAB = "Water"
-_G.RECIPETABS['DRINKS_TAB'] = {str = "DRINKS_TAB", sort=3, icon_atlas = "images/tea_inventoryitem.xml", icon = "watertab.tex"}
-
 _G.WATERTYPE = 
 {
 	CLEAN = "CLEAN",
@@ -32,8 +28,11 @@ modimport("scripts/strings/speech.lua")
 modimport("scripts/water_tuning.lua")
 modimport("scripts/water_actions.lua")
 modimport("scripts/water_containers.lua")
-modimport("init/postinit/postinit_player")
-modimport("scripts/widgets/thirstbadge_statusdisplays.lua")
+
+if GetModConfigData("enable_thirst") ~= 1 then
+	modimport("init/postinit/postinit_player")
+	modimport("scripts/widgets/thirstbadge_statusdisplays.lua")
+end
 
 AddMinimapAtlas("images/tea_minimap.xml")
 
@@ -69,5 +68,8 @@ AddIngredientValues({"caffeinberry_bean"}, {fruit=.5})
 AddIngredientValues({"caffeinberry_bean_cooked"}, {fruit=1})
 
 AddReplicableComponent("waterlevel")
-AddReplicableComponent("thirst")
+
+if GetModConfigData("enable_thirst") ~= 1 then
+	AddReplicableComponent("thirst")
+end
 
