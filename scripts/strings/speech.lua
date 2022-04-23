@@ -1,18 +1,6 @@
 _G=GLOBAL
 local STRINGS = _G.STRINGS
 
---[[TUNING.BEER_ONDRINK = "Oh... I feel drunk"
-TUNING.BEER_OFFDRINK = "So refreshing! I feel amazing"
-TUNING.POHMEL = "That's disgusting, but I feel better now."
-TUNING.STAR_BAKS = "Not Starbaks, but it's okay"
-TUNING.TEA_YAWN = ""
-TUNING.RED_TEA_SPEEP = ""
-TUNING.barrel_ENERGY = "Energy - "
-TUNING.barrel_WATERLEVEL = "%. Water Level "]]--
---[[STRINGS.CHARACTERS.GENERIC.DESCRIBE.GRASS_BAG = "Bag of herbs"
-STRINGS.RECIPE_DESC.GRASS_BAG = "A magical bag with plants inside."
-STRINGS.CHARACTERS.GENERIC.DESCRIBE.GRASS_BAG = "I should open it."]]--
-
 -- DRUNK SPEECH
 
 STRINGS.CHARACTERS.GENERIC.ANNOUNCE_DRUNK = "Oh... I feel drunk."
@@ -247,10 +235,14 @@ STRINGS.CHARACTERS.GENERIC.DESCRIBE.BREWERY = {
 }
 
 STRINGS.CHARACTERS.GENERIC.DESCRIBE.CAMPKETTLE = {
-	GENERIC = "It always need fuel.",
-	BOILING_LONG = "This is going to take a while.",
-	BOILING_SHORT = "It's almost done!",
-	DONE = "Mmmmm! It's ready to drink! Then I'll bring a cup.",
+	EMBERS = "That fire needs more fuel or it's going to go out.",
+	GENERIC = "Sure beats darkness.",
+	HIGH = "That fire is getting out of hand!",
+	LOW = "The fire's getting a bit low.",
+	NORMAL = "Nice and comfy.",
+	OUT = "Well, that's over.",
+	BOILING = "This is going to take a while.",
+	DONE = "Finally! I got clean water",
 }
 
 STRINGS.CHARACTERS.GENERIC.DESCRIBE.KETTLE = {
@@ -438,9 +430,13 @@ STRINGS.CHARACTERS.WALTER.DESCRIBE.BREWERY = {
 }
 
 STRINGS.CHARACTERS.WALTER.DESCRIBE.CAMPKETTLE = {
+	EMBERS = "We need more fuel for the fire!",
 	GENERIC = "안에 음료가 있었으면 정말 좋겠어.",
-	BOILING_LONG = "This might take a while. Wanna see this cool bug I found in the meantime?",
-	BOILING_SHORT = "음료 마실 시간이 거의 다 됐어!",
+	HIGH = "Woah! I don't think that's safe...",
+	LOW = "It might need some more fuel.",
+	NORMAL = "It's the perfect temperature for roasting marshmallows!",
+	OUT = "Over already?",
+	BOILING= "This might take a while. Wanna see this cool bug I found in the meantime?",
 	DONE = "Come and get it!",
 }
 
@@ -630,9 +626,13 @@ STRINGS.CHARACTERS.WANDA.DESCRIBE.BREWERY = {
 }
 
 STRINGS.CHARACTERS.WANDA.DESCRIBE.CAMPKETTLE = {
-	GENERIC = "차라리 그냥... 배리나 당근을 채칩해서 먹든지 해야겠다.",
-	BOILING_LONG = "내가 이래서 이 짓를 싫어해. 끝날 기미가 안보이잖아!",
-	BOILING_SHORT = "It has to be almost done by now, right?",
+	EMBERS = "I need to give it something to burn, quickly!",
+	GENERIC = "It keeps the shadows at bay.",
+	HIGH = "Oh botheration, I got carried away with the kindling!",
+	LOW = "It needs more to burn if I want it to last.",
+	NORMAL = "That feels better.",
+	OUT = "That was nice while it lasted.",
+	BOILING = "내가 이래서 이 짓를 싫어해. 끝날 기미가 안보이잖아!",
 	DONE = "마침내 음료가 다 됐군!",
 }
 
@@ -822,9 +822,13 @@ STRINGS.CHARACTERS.WARLY.DESCRIBE.BREWERY = {
 }
 
 STRINGS.CHARACTERS.WARLY.DESCRIBE.CAMPKETTLE = {
-	GENERIC = "주전자도 비고, 내 맘도 비었네.",
-	BOILING_LONG = "A masterpiece takes time.",
-	BOILING_SHORT = "Nearly there...",
+	EMBERS = "I should stoke the fire.",
+	GENERIC = "To keep the dark at bay.",
+	HIGH = "Rivals a grease fire!",
+	LOW = "It is getting low.",
+	NORMAL = "I should like to sit by you for a moment.",
+	OUT = "I will have to light you again.",
+	BOILING= "A masterpiece takes time.",
 	DONE = "Ahh, fini!",
 }
 
@@ -1013,9 +1017,13 @@ STRINGS.CHARACTERS.WATHGRITHR.DESCRIBE.BREWERY = {
 }
 
 STRINGS.CHARACTERS.WATHGRITHR.DESCRIBE.CAMPKETTLE = {
-	GENERIC = "Nothing in there.",
-	BOILING_LONG = "Might as well do something whilst I wait.",
-	BOILING_SHORT = "Shouldn't be long now!",
+	EMBERS = "That fire's nearly dead.",
+	GENERIC = "Warm fire, warm Wigfrid.",
+	HIGH = "The fire roars!",
+	LOW = "Fire's slowly dying.",
+	NORMAL = "Warm fire, warm Wigfrid.",
+	OUT = "And the light flickers out.",
+	BOILING = "Might as well do something whilst I wait.",
 	DONE = "What have we here?",
 }
 
@@ -1204,9 +1212,13 @@ STRINGS.CHARACTERS.WAXWELL.DESCRIBE.BREWERY = {
 }
 
 STRINGS.CHARACTERS.WAXWELL.DESCRIBE.CAMPKETTLE = {
-	GENERIC = "생각만 해도 속이 따뜻해지는군.",
-	BOILING_LONG = "Wait for it..",
-	BOILING_SHORT = "Here it comes!",
+	EMBERS = "I'm going to lose it.",
+	GENERIC = "How comforting.",
+	HIGH = "That will keep Charlie away for now.",
+	LOW = "It needs fuel.",
+	NORMAL = "Fiery.",
+	OUT = "That's not coming back.",
+	BOILING = "Wait for it..",
 	DONE = "Finally, some quality drink",
 }
 
@@ -1396,9 +1408,13 @@ STRINGS.CHARACTERS.WEBBER.DESCRIBE.BREWERY = {
 }
 
 STRINGS.CHARACTERS.WEBBER.DESCRIBE.CAMPKETTLE = {
-	GENERIC = "재료를 넣으면 다른 음료가 나와.",
-	BOILING_LONG = "It won't be done for a while.",
-	BOILING_SHORT = "Almost ready!",
+	EMBERS = "We should put something on the fire before it goes out.",
+	GENERIC = "Sure beats the cold. And darkness.",
+	HIGH = "That fire is huge!",
+	LOW = "The fire's getting a touch low.",
+	NORMAL = "Nice and warm.",
+	OUT = "Well, that's done.",
+	BOILING = "It won't be done for a while.",
 	DONE = "물을 마실 시간이야",
 }
 
@@ -1587,10 +1603,13 @@ STRINGS.CHARACTERS.WENDY.DESCRIBE.BREWERY = {
 }
 
 STRINGS.CHARACTERS.WENDY.DESCRIBE.CAMPKETTLE = {
-	GENERIC = "As empty as my soul.",
-	BURNT = "Burnt to a crisp.",
-	BOILING_LONG = "Whatever's in there isn't dead yet.",
-	BOILING_SHORT = "It needs to boil.",
+	EMBERS = "Darkness is looming.",
+	GENERIC = "I might survive this night!",
+	HIGH = "A vision of Hell!",
+	LOW = "The gloom encroaches.",
+	NORMAL = "It's a fire.",
+	OUT = "That is not a good sign.",
+	BOILING = "Whatever's in there isn't dead yet.",
 	DONE = "Finally, drink",
 }
 
@@ -1788,10 +1807,13 @@ STRINGS.CHARACTERS.WICKERBOTTOM.DESCRIBE.CAMPKETTLE = {
 }
 
 STRINGS.CHARACTERS.WICKERBOTTOM.DESCRIBE.KETTLE = {
-	GENERIC = "이건 음료를 안 만들고 있는 때는 황량해 보여.",
-	BURNT = "Now it's truly derelict.",
-	BOILING_LONG = "It's got a bit to go before it's ready.",
-	BOILING_SHORT = "Almost done!",
+	EMBERS = "The fire has almost self-extinguished.",
+	GENERIC = "A camp fire.",
+	HIGH = "That fire is burning at an alarming rate.",
+	LOW = "The fire could use some more fuel.",
+	NORMAL = "A perfectly average fire.",
+	OUT = "It can be re-lit.",
+	BOILING = "It's got a bit to go before it's ready.",
 	DONE = "Tea time!",
 }
 
@@ -1972,10 +1994,13 @@ STRINGS.CHARACTERS.WILLOW.DESCRIBE.BREWERY = {
 }
 
 STRINGS.CHARACTERS.WILLOW.DESCRIBE.CAMPKETTLE = {
-	GENERIC = "모든 음료은 불로 살균해야 해.",
-	BURNT = "At least it went out in a blaze of glory.",
-	BOILING_LONG = "The fire still has quite a bit of work to do.",
-	BOILING_SHORT = "The fire is doing its thing!",
+	EMBERS = "Uh oh. It's almost gone!",
+	GENERIC = "I like fire.",
+	HIGH = "BURN! BURN FASTER!",
+	LOW = "This fire is small and boring.",
+	NORMAL = "Burn!",
+	OUT = "Awww. It's all over.",
+	BOILING = "The fire still has quite a bit of work to do.",
 	DONE = "Fire makes everything better. Mmm!",
 }
 
@@ -2164,10 +2189,13 @@ STRINGS.CHARACTERS.WINONA.DESCRIBE.BREWERY = {
 }
 
 STRINGS.CHARACTERS.WINONA.DESCRIBE.CAMPKETTLE = {
-	GENERIC = "내가 커피를 잘 타는데 말이야.",
-	BURNT = "You guys like gristle, right?",
-	BOILING_LONG = "Still got a bit of a wait.",
-	BOILING_SHORT = "Almost!",
+	EMBERS = "On its last legs.",
+	GENERIC = "It'll last me the night, hopefully.",
+	HIGH = "A good healthy blaze.",
+	LOW = "Gonna go out soon.",
+	NORMAL = "About as cozy as it gets out here.",
+	OUT = "My sister was afraid of the dark.",
+	BOILING = "Still got a bit of a wait.",
 	DONE = "음료를 마십시다!",
 }
 
@@ -2356,10 +2384,13 @@ STRINGS.CHARACTERS.WOLFGANG.DESCRIBE.BREWERY = {
 }
 
 STRINGS.CHARACTERS.WOLFGANG.DESCRIBE.CAMPKETTLE = {
-	GENERIC = "TODO",
-	BURNT = "TODO",
-	BOILING_LONG = "TODO",
-	BOILING_SHORT = "TODO",
+	EMBERS = "The darkness is coming!",
+	GENERIC = "Goodbye dark times!",
+	HIGH = "Is too much fire!",
+	LOW = "The fire is not hot enough.",
+	NORMAL = "Is good fire!",
+	OUT = "Uh oh. It turned off.",
+	BOILING = "TODO",
 	DONE = "TODO",
 }
 
@@ -2548,10 +2579,13 @@ STRINGS.CHARACTERS.WOODIE.DESCRIBE.BREWERY = {
 }
 
 STRINGS.CHARACTERS.WOODIE.DESCRIBE.CAMPKETTLE = {
-	GENERIC = "TODO",
-	BURNT = "TODO",
-	BOILING_LONG = "TODO",
-	BOILING_SHORT = "TODO",
+	EMBERS = "It's almost gone.",
+	GENERIC = "Where's my guitar?",
+	HIGH = "Uh oh! It's bit high!",
+	LOW = "I should probably do something aboot that, eh?",
+	NORMAL = "I love a fire in the evening.",
+	OUT = "It was good while it lasted.",
+	BOILING = "TODO",
 	DONE = "TODO",
 }
 
@@ -2740,10 +2774,13 @@ STRINGS.CHARACTERS.WORMWOOD.DESCRIBE.BREWERY = {
 }
 
 STRINGS.CHARACTERS.WORMWOOD.DESCRIBE.CAMPKETTLE = {
-	GENERIC = "TODO",
-	BURNT = "TODO",
-	BOILING_LONG = "TODO",
-	BOILING_SHORT = "TODO",
+	EMBERS = "Dying",
+	GENERIC = "Not too close",
+	HIGH = "Too high!",
+	LOW = "Stay back",
+	NORMAL = "Not too close",
+	OUT = "Whew!",
+	BOILING = "TODO",
 	DONE = "TODO",
 }
 
@@ -2932,10 +2969,13 @@ STRINGS.CHARACTERS.WORTOX.DESCRIBE.BREWERY = {
 }
 
 STRINGS.CHARACTERS.WORTOX.DESCRIBE.CAMPKETTLE = {
-	GENERIC = "TODO",
-	BURNT = "TODO",
-	BOILING_LONG = "TODO",
-	BOILING_SHORT = "TODO",
+	EMBERS = "Soon to extinguish.",
+	GENERIC = "This fire will slake my thirst for warmth.",
+	HIGH = "Those are some spicy flames.",
+	LOW = "It burns so low, so low!",
+	NORMAL = "When I roam, camp feels like home.",
+	OUT = "And out it goes.",
+	BOILING = "TODO",
 	DONE = "TODO",
 }
 
@@ -3124,10 +3164,13 @@ STRINGS.CHARACTERS.WURT.DESCRIBE.BREWERY = {
 }
 
 STRINGS.CHARACTERS.WURT.DESCRIBE.CAMPKETTLE = {
-	GENERIC = "TODO",
-	BURNT = "TODO",
-	BOILING_LONG = "TODO",
-	BOILING_SHORT = "TODO",
+	EMBERS = "It dying.",
+	GENERIC = "Time for story-tell around fire, florp!",
+	HIGH = "Big fire!",
+	LOW = "Fire getting small.",
+	NORMAL = "Warm and toasty.",
+	OUT = "Bye-bye.",
+	BOILING = "TODO",
 	DONE = "TODO",
 }
 
@@ -3317,10 +3360,13 @@ STRINGS.CHARACTERS.WX78.DESCRIBE.BREWERY = {
 }
 
 STRINGS.CHARACTERS.WX78.DESCRIBE.CAMPKETTLE = {
-	GENERIC = "TODO",
-	BURNT = "TODO",
-	BOILING_LONG = "TODO",
-	BOILING_SHORT = "TODO",
+	EMBERS = "WARNING: FIRE LEVELS CRITICAL",
+	GENERIC = "A TEMPORARY ENCAMPMENT",
+	HIGH = "WARNING: FIRE IS RAMBUNCTIOUS",
+	LOW = "WARNING: FIRE LEVELS LOW",
+	NORMAL = "IT REMINDS ME OF SOMETHING",
+	OUT = "NO FIRE DETECTED",
+	BOILING = "TODO",
 	DONE = "TODO",
 }
 

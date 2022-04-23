@@ -100,7 +100,9 @@ local SECTION_STATUS =
     [4] = "HIGH",
 }
 local function getstatus(inst)
-    return SECTION_STATUS[inst.components.fueled:GetCurrentSection()]
+    return (inst.components.watersource.available and "DONE")
+    or (inst._timer ~= 0 and "BOILING")
+    or SECTION_STATUS[inst.components.fueled:GetCurrentSection()]
 end
 
 local function OnHaunt(inst)
@@ -158,7 +160,7 @@ local function OnDepleted(inst)
 end
 
 local function OnTakeWater(inst, watervalue, watertype)
-    inst._timer = TUNING.KETTLE_WATER*watervalue
+    inst._timer = TUNING.KETTLE_WATER
     Boiled(inst)
     inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/small")
 end

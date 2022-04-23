@@ -80,6 +80,16 @@ configuration_options =
 		},
 		default = 150,
 	},
+	{
+		name = "enable_thirst",
+		label = "Thirst Status",
+		options =
+		{
+			{description = "Enable", data = 0},
+			{description = "Disable", data = 1},
+		},
+		default = 0
+	},
 	SEPARATOR,
 	Title("Brewery options"),
 	SEPARATOR,
@@ -230,30 +240,4 @@ configuration_options =
 		},
 		default = 1,
 	},]]--
-	--[[{
-		name = "beer_wait",
-		label = russian and "Время готовки пива" or "Beer cooking time",
-		options =
-		{
-			{description = russian and "15 минут" or "15 minuts", data = 15},
-			{description = russian and "30 минут" or "30 minuts", data = 30},
-			{description = russian and "40 минут" or "40 minuts", data = 40},
-			{description = russian and "50 минут" or "50 minuts", data = 50},
-		},
-		default = 30,
-    },]]--
-	
-	--[[{
-		name = "waterwell_wait",
-		label = russian and "Откат колодца" or "Well cooldown",
-		options =
-		{
-			{description = russian and "30 секунд" or "30 second", data = 30},
-			{description = russian and "1 минута" or "1 minute", data = 60},
-			{description = russian and "2 минуты" or "2 minute", data = 120},
-			{description = russian and "3 минуты" or "3 minuts", data = 180},
-		    {description = russian and "4 минуты" or "4 minuts", data = 240},
-		},
-		default = 120,
-    },]]--
 }
