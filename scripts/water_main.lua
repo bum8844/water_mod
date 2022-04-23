@@ -265,11 +265,8 @@ AddComponentPostInit("eater", function(self)
 	local _PrefersToEat = self.PrefersToEat
 
 	function self:SetAbsorptionModifiers(health, thirst, sanity, thirst, ...)
-		local result = _SetAbsorptionModifiers(self, health, thirst, sanity, ...)
-		if thirst ~= nil then
-			self.thirstabsorption = thirst
-		end
-		return result
+		_SetAbsorptionModifiers(self, health, thirst, sanity, ...)
+		self.thirstabsorption = thirst
 	end
 
 	function self:Eat(food, feeder, ...)
@@ -291,11 +288,7 @@ AddComponentPostInit("eater", function(self)
 	end
 
 	function self:PrefersToEat(food, ...)
-		if food:HasTag("alcohol") and self.inst:HasTag("childplayer") then
-			return false
-		end
-		local result = _PrefersToEat(self, food, ...)
-		return result
+		return _PrefersToEat(self, food, ...) and not (food:HasTag("alcohol") and self.inst:HasTag("childplayer"))
 	end
 end)
 
