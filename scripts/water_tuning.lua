@@ -99,7 +99,7 @@ local tuning =
 				"butter",
 			},
 			--HYDRATION_SMALLTINY
-			TINY = {
+			SMALLTINY = {
 				"pondeel",
 				"pondfish",
 				"trunk_summer",
@@ -143,7 +143,7 @@ local tuning =
 				"royal_jelly",
 			},
 			--HYDRATION_TINY
-			SMALL = {
+			TINY = {
 				"deerclops_eyeball",
 				"dragoonheart",
 				"tigereye",
@@ -180,7 +180,7 @@ local tuning =
 				"cheesecake",
 			},
 			--HYDRATION_SMALL
-			MEDSMALL = {
+			SMALL = {
 				"cave_banana",
 				"cave_banana_cooked",
 				"dragonfruit",
@@ -200,7 +200,7 @@ local tuning =
 				"ice",
 			},
 			--HYDRATION_MEDSMALL
-			MED = {
+			MEDSMALL = {
 				"coconut_halved",
 				"lightbulb",
 				"succulent_picked",
@@ -210,7 +210,7 @@ local tuning =
 				"milkywhites",
 			},
 			--HYDRATION_MED
-			LARGE = {
+			MED = {
 				"icecream",
 				"fishyogurt",
 				"berryshake",

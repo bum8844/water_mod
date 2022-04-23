@@ -173,38 +173,21 @@ for _, v in pairs(TUNING.CLEANSOURCE) do
 	AddPrefabPostInit(v, function(inst) inst:AddTag("cleanwater") end)
 end
 
-for _, v in pairs(TUNING.HYDRATIONTYPE.ROT) do
-	AddPrefabPostInit(v, function(inst) inst.components.edible.thirstvalue = TUNING.HYDRATION_ROT end)
-end
-
-for _, v in pairs(TUNING.HYDRATIONTYPE.SUPERTINY) do
-	AddPrefabPostInit(v, function(inst) inst.components.edible.thirstvalue = TUNING.HYDRATION_SUPERTINY end)
-end
-
-for _, v in pairs(TUNING.HYDRATIONTYPE.TINY) do
-	AddPrefabPostInit(v, function(inst) inst.components.edible.thirstvalue = TUNING.HYDRATION_SMALLTINY end)
-end
-
-for _, v in pairs(TUNING.HYDRATIONTYPE.SMALL) do
-	AddPrefabPostInit(v, function(inst) inst.components.edible.thirstvalue = TUNING.HYDRATION_TINY end)
-end
-
-for _, v in pairs(TUNING.HYDRATIONTYPE.MEDSMALL) do
-	AddPrefabPostInit(v, function(inst) inst.components.edible.thirstvalue = TUNING.HYDRATION_SMALL end)
-end
-
-for _, v in pairs(TUNING.HYDRATIONTYPE.MED) do
-	AddPrefabPostInit(v, function(inst) inst.components.edible.thirstvalue = TUNING.HYDRATION_MEDSMALL end)
-end
-
-for _, v in pairs(TUNING.HYDRATIONTYPE.LARGE) do
-	AddPrefabPostInit(v, function(inst) inst.components.edible.thirstvalue = TUNING.HYDRATION_MED end)
+for k, v in pairs(TUNING.HYDRATIONTYPE) do
+	for _, r in pairs(v) do
+		AddPrefabPostInit(r, function(inst)
+			if not _G.TheWorld.ismastersim then
+				return
+			end
+			inst.components.edible.thirstvalue = TUNING["HYDRATION_"..k]
+		end)
+	end
 end
 
 
 -- bum: 이 코드가 말리기 위해 추가한 코드임
 -- AFS: dryer:StartDrying calls dryable.components.perishable:GetPercent(), so we need to add such hack to
--- make tea leaves dryable on the rack.
+-- make the objects without dryable on the rack (tea leaves, in this case).
 AddComponentPostInit("dryer", function(self)
     local _StartDrying = self.StartDrying
     
