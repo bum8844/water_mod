@@ -8,6 +8,12 @@ local total_day_time = seg_time*16
 local tuning =
 {
 	HYDRATIONTYPE = {
+			ROT = {
+				"spoiled_food",
+				"rottenegg",
+				"spoiled_fish",
+				"spoiled_fish_small",
+			},
 			--HYDRATION_SUPERTINY
 			SUPERTINY = {
 				"seaweed",
@@ -28,15 +34,15 @@ local tuning =
 				"plantmeat",
 				"plantmeat_cooked",
 				"meat",
-				"meat_cooked",
+				"cookedmeat",
 				"monstermeat",
-				"monstermeat_cooked",
+				"cookedmonstermeat",
 				"kyno_humanmeat",
 				"kyno_humanmeat_cooked",
 				"humanmeat",
 				"humanmeat_cooked",
 				"smallmeat",
-				"smallmeat_cooked",
+				"cookedsmallmeat",
 				"batnose",
 				"batnose_cooked",
 				"fishmeat_small",
@@ -244,6 +250,7 @@ local tuning =
 	-- 목마름 채워주는 양
 	HYDRATION_SALT = hydration_per_day-90, -- 소금물
 	HYDRATION_POISOE = hydration_per_day-80, -- 잘못 양조된 음료
+	HYDRATION_ROT = hydration_per_day-85, -- 썩은 음식물
 	HYDRATION_NONE = 0, -- 수상한 히비스커스
 	HYDRATION_SUPERTINY = hydration_per_day/15,
 	HYDRATION_SMALLTINY = hydration_per_day/12,
