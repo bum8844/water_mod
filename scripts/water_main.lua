@@ -21,7 +21,7 @@ end
 
 AddPrefabPostInit("fertilizer", function(inst)
     if not GLOBAL.TheWorld.ismastersim then
-        return inst
+        return
     end
 	inst:DoTaskInTime(0, function()	
         inst.components.finiteuses:SetOnFinished(BackBucket)
@@ -156,8 +156,7 @@ end
 AddPrefabPostInit("antlion", function(inst)
     if not GLOBAL.TheWorld.ismastersim then
         inst:ListenForEvent("isfightingdirty", OnIsFightingDirty)
-
-        return inst
+        return
     end
     if inst.components.trader ~= nil then
         if inst.components.trader.onaccept ~= nil and inst.components.trader.onaccept_old == nil then
@@ -174,27 +173,27 @@ for _, v in pairs(TUNING.CLEANSOURCE) do
 end
 
 for _, v in pairs(TUNING.HYDRATIONTYPE.SUPERTINY) do
-	AddPrefabPostInit(v, function(inst) inst.components.edible.thirstvalue = HYDRATION_SUPERTINY end)
+	AddPrefabPostInit(v, function(inst) inst.components.edible.thirstvalue = TUNING.HYDRATION_SUPERTINY end)
 end
 
 for _, v in pairs(TUNING.HYDRATIONTYPE.TINY) do
-	AddPrefabPostInit(v, function(inst) inst.components.edible.thirstvalue = HYDRATION_SMALLTINY end)
+	AddPrefabPostInit(v, function(inst) inst.components.edible.thirstvalue = TUNING.HYDRATION_SMALLTINY end)
 end
 
 for _, v in pairs(TUNING.HYDRATIONTYPE.SMALL) do
-	AddPrefabPostInit(v, function(inst) inst.components.edible.thirstvalue = HYDRATION_TINY end)
+	AddPrefabPostInit(v, function(inst) inst.components.edible.thirstvalue = TUNING.HYDRATION_TINY end)
 end
 
 for _, v in pairs(TUNING.HYDRATIONTYPE.MEDSMALL) do
-	AddPrefabPostInit(v, function(inst) inst.components.edible.thirstvalue = HYDRATION_SMALL end)
+	AddPrefabPostInit(v, function(inst) inst.components.edible.thirstvalue = TUNING.HYDRATION_SMALL end)
 end
 
 for _, v in pairs(TUNING.HYDRATIONTYPE.MED) do
-	AddPrefabPostInit(v, function(inst) inst.components.edible.thirstvalue = HYDRATION_MEDSMALL end)
+	AddPrefabPostInit(v, function(inst) inst.components.edible.thirstvalue = TUNING.HYDRATION_MEDSMALL end)
 end
 
 for _, v in pairs(TUNING.HYDRATIONTYPE.LARGE) do
-	AddPrefabPostInit(v, function(inst) inst.components.edible.thirstvalue = HYDRATION_MED end)
+	AddPrefabPostInit(v, function(inst) inst.components.edible.thirstvalue = TUNING.HYDRATION_MED end)
 end
 
 
