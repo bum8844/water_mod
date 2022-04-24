@@ -159,14 +159,6 @@ local function harvestfn(inst)
     end
 end
 
-local function getstatus(inst)
-    return (inst:HasTag("burnt") and "BURNT")
-        or (inst.components.stewer:IsDone() and "DONE")
-        or ((not inst.components.stewer:IsCooking() or not inst._timer > 0) and "EMPTY")
-        or ((inst.components.stewer:GetTimeToCook() > 15 or inst._timer > 12) and "BOILING_LONG")
-        or "BOILING_SHORT"
-end
-
 local function onloadpostpass(inst, newents, data)
     if data and data.additems and inst.components.container then
         for i, itemname in ipairs(data.additems)do
@@ -298,6 +290,16 @@ local function OnTakeWater(inst, watervalue)
     end
 end
 
+local function getstatus(inst)
+    return (inst:HasTag("burnt") and "BURNT")
+        or (inst.components.stewer:IsDone() and "DONE")
+        or (inst:HasTag("boilling") and "PURIFY")
+        or (inst.components.watersource.available and "HASWATER")
+        or (not inst.components.stewer:IsCooking() and "EMPTY")
+        or (inst.components.stewer:GetTimeToCook() > 15 and "BOILING_LONG")
+        or "BOILING_SHORT"
+end
+
 local function onsave(inst, data)
     if inst:HasTag("burnt") or (inst.components.burnable ~= nil and inst.components.burnable:IsBurning()) then
         data.burnt = true
@@ -384,6 +386,7 @@ local function fn()
 	
 	inst:AddComponent("lootdropper")
     inst:AddComponent("inspectable")
+    inst.components.inspectable.getstatus = getstatus
 	
 	inst:AddComponent("workable")
     inst.components.workable:SetWorkAction(ACTIONS.HAMMER)
