@@ -139,6 +139,14 @@ local function OnTakeWater(inst, watervalue, watertype)
     	inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/small")
 	end
 end
+
+local function getstatus(inst)
+    return (inst:HasTag("burnt") and "BURNT")
+        or (inst:HasTag("boilling") and "PURIFY")
+        or (inst.components.watersource.available and "HASWATER")
+        or "EMPTY"
+end
+GetTime()
 local function fn()
 	local inst = CreateEntity()
 	
@@ -174,6 +182,7 @@ local function fn()
 	
 	inst:AddComponent("lootdropper")
     inst:AddComponent("inspectable")
+    inst.components.inspectable.getstatus = getstatus
 
     inst:AddComponent("stewer")
     inst.components.stewer.onharvest = harvestfn
