@@ -1,7 +1,6 @@
-name 						= "T&W"
+name 						= "Don't Starve: Dehydrated"
 version 					= "1.00"
 
---russian = name.utf8len and (russian or language == "ru")
 description = (
 	"TODO"
 	)
