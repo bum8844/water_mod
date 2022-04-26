@@ -54,7 +54,7 @@ local AddNetvars = function(inst)
 
     inst:DoStaticTaskInTime(0, function(inst)
         if _G.TheWorld.ismastersim then
-            inst:ListenForEvent("thirstdelta", OnThirstDelta)
+            inst:ListenForEvent("thirstdelta", OnThirstDelta, inst._parent)
         else
             inst.isthirstpulseup:set_local(false)
             inst.isthirstpulseup:set_local(false)
@@ -72,6 +72,7 @@ local AddNetvars = function(inst)
             if inst._parent.replica.thirst ~= nil then
                 inst._parent.replica.thirst:AttachClassified(inst)
             end
+            return
         end
     end
 end

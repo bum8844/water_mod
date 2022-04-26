@@ -25,46 +25,15 @@ local function thirstbadge_statusdisplays(self)
 	self._HideStatusNumbers = self.HideStatusNumbers
 
 	self.waterstomach = self:AddChild(self.owner.CreateThirstBadge ~= nil and self.owner.CreateThirstBadge(self.owner) or ThirstBadge(self.owner))
-
-	local AlwaysOnStatus = false
-	local Musha_Mod = false
-	for k,v in ipairs(GLOBAL.KnownModIndex:GetModsToLoad()) do 
-		local Mod = GLOBAL.KnownModIndex:GetModInfo(v).name
-		if Mod == "Combined Status" then 
-			AlwaysOnStatus = true
-		end
-		if Mod == "[DST]Musha" then
-			Musha_Mod = true
-		end
-	end
-
-	if AlwaysOnStatus then
-		self.waterstomach:SetPosition(62, -115)
-	elseif Musha_Mod and self.owner:HasTag("musha") then
-		self.waterstomach:SetPosition(0, -105, 0)
-	else
-		self.waterstomach:SetPosition(-80, -40, 0)
-	end
-	
+	self.waterstomach:SetPosition(-80, -40, 0)
 	self.onthirstdelta = nil
 
+	--force update at init
 	self.watertask = nil
-
-	--force update
-	self.inst:DoStaticTaskInTime(0, function(inst)
-		if self.isghostmode then
-			OnSetGhostMode(self.inst, self)
-		else
-			OnSetPlayerMode(self.inst, self)
-		end
-	end,
-	self)
 
 	function self:SetGhostMode(ghostmode)
 	    self:_SetGhostMode(ghostmode)
-	    if not self.isghostmode == not ghostmode then
-	    	return
-	  	elseif ghostmode then
+	  	if self.isghostmode then
 	        self.waterstomach:Hide()
 
 	        self.waterstomach:StopWarning()
@@ -75,7 +44,7 @@ local function thirstbadge_statusdisplays(self)
 	  	if self.watertask ~= nil then
 	  		self.watertask:Cancel()
 	  	end
-	  	self.watertask = self.inst:DoStaticTaskInTime(0, ghostmode and OnSetGhostMode or OnSetPlayerMode)
+	  	self.watertask = self.inst:DoStaticTaskInTime(0, ghostmode and OnSetGhostMode or OnSetPlayerMode, self)
 	end
 
 	function self:SetThirstPercent(pct)
