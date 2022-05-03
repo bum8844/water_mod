@@ -177,6 +177,7 @@ local function harvestfn(inst)
     end
 end
 
+
 local function getstatus(inst)
     return (inst:HasTag("burnt") and "BURNT")
         or (inst.components.stewer:IsDone() and "DONE")
@@ -330,6 +331,16 @@ local function OnTakeWater(inst, watervalue)
             inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/small")
         end
     end
+end
+
+local function getstatus(inst)
+    return (inst:HasTag("burnt") and "BURNT")
+        or (inst.components.stewer:IsDone() and "DONE")
+        or (inst:HasTag("boilling") and "PURIFY")
+        or (inst.components.watersource.available and "HASWATER")
+        or (not inst.components.stewer:IsCooking() and "EMPTY")
+        or (inst.components.stewer:GetTimeToCook() > 15 and "BOILING_LONG")
+        or "BOILING_SHORT"
 end
 
 local function onsave(inst, data)

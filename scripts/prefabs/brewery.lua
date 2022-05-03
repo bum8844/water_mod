@@ -331,6 +331,7 @@ local function fn()
 	
 	inst:AddComponent("lootdropper")
     inst:AddComponent("inspectable")
+    inst.components.inspectable.getstatus = getstatus
 	
 	inst:AddComponent("workable")
     inst.components.workable:SetWorkAction(ACTIONS.HAMMER)

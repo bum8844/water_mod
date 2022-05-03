@@ -217,7 +217,9 @@ STRINGS.CHARACTERS.GENERIC.WELLSTATUS = {
 }
 
 STRINGS.CHARACTERS.GENERIC.DESCRIBE.DESALINATOR = {
-	GENERIC = "Now I can get fresh water out of sea!",
+	EMPTY = "Now I can get fresh water out of sea!",
+	PURIFY = "TODO",
+	HASWATER = "TODO",
 	BURNT = "Fire has beaten water. Strange.",
 }
 
@@ -227,10 +229,10 @@ STRINGS.CHARACTERS.GENERIC.DESCRIBE.BARREL = {
 }
 
 STRINGS.CHARACTERS.GENERIC.DESCRIBE.BREWERY = {
-	GENERIC = "It's one of the ways to store water for a long time.",
+	EMPTY = "It's one of the ways to store water for a long time.",
 	BURNT = "Fire has beaten water. Strange.",
-	FARMENT_LONG = "This is going to take a while.",
-	FARMENT_SHORT = "It's almost done!",
+	FERMENTING_LONG = "This is going to take a while.",
+	FERMENTING_SHORT = "It's almost done!",
 	DONE = "Mmmmm! It's ready to drink! Then I'll bring a cup.",
 }
 
@@ -246,20 +248,23 @@ STRINGS.CHARACTERS.GENERIC.DESCRIBE.CAMPKETTLE = {
 }
 
 STRINGS.CHARACTERS.GENERIC.DESCRIBE.KETTLE = {
-	GENERIC = "It makes me thirsty. just to look at it.",
+	EMPTY = "It makes me thirsty. just to look at it.",
 	BURNT = "Fire has beaten water. Strange.",
 	BOILING_LONG = "This is going to take a while.",
 	BOILING_SHORT = "It's almost done!",
 	DONE = "Mmmmm! It's ready to drink! Then I'll bring a cup.",
+	PURIFY = "TODO",
+	HASWATER = "TODO",
 }
 
-STRINGS.CHARACTERS.GENERIC.DESCRIBE.PORTABLEKETTLE_ITEM = "I can take it inside my backpack!"
-STRINGS.CHARACTERS.GENERIC.DESCRIBE.PORTABLEKETTLE = {
-	GENERIC = "이제 어디서든지 음료를 마실수 있겠네!",
+STRINGS.CHARACTERS.GENERIC.DESCRIBE.PORTABLEKETTLE_ITEM = {
+	GENERIC = "I can take it inside my backpack!",
 	EMPTY = "I bet there's nothing in there.",
 	BOILING_LONG = "만드는 데에 시간이 좀 걸리겠어.",
 	BOILING_SHORT = "It'll be ready in no-time!",
 	DONE = "다 됐다!",
+	PURIFY = "TODO",
+	HASWATER = "TODO",
 }
 
 -- WALTER -- 호기심 많은 보이스카우트 소년
@@ -412,7 +417,9 @@ STRINGS.CHARACTERS.WALTER.WELLSTATUS = {
 }
 
 STRINGS.CHARACTERS.WALTER.DESCRIBE.DESALINATOR = {
-	GENERIC = "TODO",
+	EMPTY = "TODO",
+	PURIFY = "TODO",
+	HASWATER = "TODO",
 	BURNT = "불을 끌 수 있을정도의 물이 없었나봐",
 }
 
@@ -424,8 +431,8 @@ STRINGS.CHARACTERS.WALTER.DESCRIBE.BARREL = {
 STRINGS.CHARACTERS.WALTER.DESCRIBE.BREWERY = {
 	GENERIC = "안에 음료가 있었으면 정말 좋겠어.",
 	BURNT = "불을 끌 수 있을정도의 물이 없었나봐",
-	FARMENT_LONG = "This might take a while. Wanna see this cool bug I found in the meantime?",
-	FARMENT_SHORT = "음료 마실 시간이 거의 다 됐어!",
+	FERMENTING_LONG = "This might take a while. Wanna see this cool bug I found in the meantime?",
+	FERMENTING_SHORT = "음료 마실 시간이 거의 다 됐어!",
 	DONE = "Come and get it!",
 }
 
@@ -447,15 +454,18 @@ STRINGS.CHARACTERS.WALTER.DESCRIBE.KETTLE = {
 	BOILING_LONG = "This might take a while. Wanna see this cool bug I found in the meantime?",
 	BOILING_SHORT = "음료 마실 시간이 거의 다 됐어!",
 	DONE = "Come and get it!",
+	PURIFY = "TODO",
+	HASWATER = "TODO",
 }
 
-STRINGS.CHARACTERS.WALTER.DESCRIBE.PORTABLEKETTLE_ITEM = "어디서든 음료를 만드는데 매우 유용한 도구야!"
-STRINGS.CHARACTERS.WALTER.DESCRIBE.PORTABLEKETTLE = {
+STRINGS.CHARACTERS.WALTER.DESCRIBE.PORTABLEKETTLE_ITEM = {
 	GENERIC = "그래도 모닥불 주전자보다는 못해.",
 	EMPTY = "음료를 준비하려면 재료를 좀 채집해야 할 거야.",
 	BOILING_LONG = "Maybe I'll organize my bug collection while I'm waiting.",
 	BOILING_SHORT = "It's almost done!",
 	DONE = "으음, 음료를 마실시간이다!",
+	PURIFY = "TODO",
+	HASWATER = "TODO",
 }
 
 -- WANDA
@@ -608,7 +618,9 @@ STRINGS.CHARACTERS.WANDA.WELLSTATUS = {
 }
 
 STRINGS.CHARACTERS.WANDA.DESCRIBE.DESALINATOR = {
-	GENERIC = "TODO",
+	EMPTY = "TODO",
+	PURIFY = "TODO",
+	HASWATER = "TODO",
 	BURNT = "Well that's a setback.",
 }
 
@@ -620,8 +632,8 @@ STRINGS.CHARACTERS.WANDA.DESCRIBE.BARREL = {
 STRINGS.CHARACTERS.WANDA.DESCRIBE.BREWERY = {
 	GENERIC = "차라리 그냥... 배리나 당근을 채칩해서 먹든지 해야겠다.",
 	BURNT = "Well that's a setback.",
-	FARMENT_LONG = "내가 이래서 이 짓를 싫어해. 끝날 기미가 안보이잖아!",
-	FARMENT_SHORT = "It has to be almost done by now, right?",
+	FERMENTING_LONG = "내가 이래서 이 짓를 싫어해. 끝날 기미가 안보이잖아!",
+	FERMENTING_SHORT = "It has to be almost done by now, right?",
 	DONE = "마침내 음료가 다 됐군!",
 }
 
@@ -642,15 +654,18 @@ STRINGS.CHARACTERS.WANDA.DESCRIBE.KETTLE = {
 	BOILING_LONG = "내가 이래서 이 짓를 싫어해. 끝날 기미가 안보이잖아!",
 	BOILING_SHORT = "It has to be almost done by now, right?",
 	DONE = "마침내 음료가 다 됐군!",
+	PURIFY = "TODO",
+	HASWATER = "TODO",
 }
 
-STRINGS.CHARACTERS.WANDA.DESCRIBE.PORTABLEKETTLE_ITEM = "이걸 설치 할 시간도 아까워."
-STRINGS.CHARACTERS.WANDA.DESCRIBE.PORTABLEKETTLE = {
+STRINGS.CHARACTERS.WANDA.DESCRIBE.PORTABLEKETTLE_ITEM = {
 	GENERIC = "난 고급 음료니 뭐니 귀찮아서 싫어.",
 	EMPTY = "우리는 냄새는 전혀 안 나는데.",
 	BOILING_LONG = "Ohhh I wish it would just hurry up!",
 	BOILING_SHORT = "Surely it won't take too much longer?",
 	DONE = "마침내 음료가 다 됐군!",
+	PURIFY = "TODO",
+	HASWATER = "TODO",
 }
 
 -- WARLY
@@ -804,7 +819,9 @@ STRINGS.CHARACTERS.WARLY.WELLSTATUS = {
 
 
 STRINGS.CHARACTERS.WARLY.DESCRIBE.DESALINATOR = {
-	GENERIC = "TODO",
+	EMPTY = "TODO",
+	PURIFY = "TODO",
+	HASWATER = "TODO",
 	BURNT ="Tragique.",
 }
 
@@ -816,8 +833,8 @@ STRINGS.CHARACTERS.WARLY.DESCRIBE.BARREL = {
 STRINGS.CHARACTERS.WARLY.DESCRIBE.BREWERY = {
 	GENERIC = "양조기도 비고, 내 맘도 비었네.",
 	BURNT = "Tragique.",
-	FARMENT_LONG = "A masterpiece takes time.",
-	FARMENT_SHORT = "Nearly there...",
+	FERMENTING_LONG = "A masterpiece takes time.",
+	FERMENTING_SHORT = "Nearly there...",
 	DONE = "Ahh, fini!",
 }
 
@@ -838,15 +855,18 @@ STRINGS.CHARACTERS.WARLY.DESCRIBE.KETTLE = {
 	BOILING_LONG = "A masterpiece takes time.",
 	BOILING_SHORT = "Nearly there...",
 	DONE = "Ahh, fini!",
+	PURIFY = "TODO",
+	HASWATER = "TODO",
 }
 
-STRINGS.CHARACTERS.WARLY.DESCRIBE.PORTABLEKETTLE_ITEM = "What new culinary adventures shall we undertake, old friend?"
-STRINGS.CHARACTERS.WARLY.DESCRIBE.PORTABLEKETTLE = {
-	GENERIC = "여행 하면서 만드는 음료는 매우 기분이 좋지.",
+STRINGS.CHARACTERS.WARLY.DESCRIBE.PORTABLEKETTLE_ITEM = {
+	GENERIC = "What new culinary adventures shall we undertake, old friend?",
 	EMPTY = "I would never leave home without it!",
 	BOILING_LONG = "The flavors need time to meld.",
 	BOILING_SHORT = "빨리 음료를 내가야 한다고!",
 	DONE = "Pickup! Oh, old habits...",
+	PURIFY = "TODO",
+	HASWATER = "TODO",
 }
 
 -- WATHGRITHR
@@ -999,7 +1019,9 @@ STRINGS.CHARACTERS.WATHGRITHR.WELLSTATUS = {
 }
 
 STRINGS.CHARACTERS.WATHGRITHR.DESCRIBE.DESALINATOR = {
-	GENERIC = "TODO",
+	EMPTY = "TODO",
+	PURIFY = "TODO",
+	HASWATER = "TODO",
 	BURNT = "The fire reigned supreme.",
 }
 
@@ -1011,8 +1033,8 @@ STRINGS.CHARACTERS.WATHGRITHR.DESCRIBE.BARREL = {
 STRINGS.CHARACTERS.WATHGRITHR.DESCRIBE.BREWERY = {
 	GENERIC = "Nothing in there.",
 	BURNT = "The fire reigned supreme.",
-	FARMENT_LONG = "Might as well do something whilst I wait.",
-	FARMENT_SHORT = "Shouldn't be long now!",
+	FERMENTING_LONG = "Might as well do something whilst I wait.",
+	FERMENTING_SHORT = "Shouldn't be long now!",
 	DONE = "What have we here?",
 }
 
@@ -1028,20 +1050,23 @@ STRINGS.CHARACTERS.WATHGRITHR.DESCRIBE.CAMPKETTLE = {
 }
 
 STRINGS.CHARACTERS.WATHGRITHR.DESCRIBE.KETTLE = {
-	GENERIC = "Nothing in there.",
+	EMPTY = "Nothing in there.",
 	BURNT = "The fire reigned supreme.",
 	BOILING_LONG = "Might as well do something whilst I wait.",
 	BOILING_SHORT = "Shouldn't be long now!",
 	DONE = "What have we here?",
+	PURIFY = "TODO",
+	HASWATER = "TODO",
 }
 
-STRINGS.CHARACTERS.WATHGRITHR.DESCRIBE.PORTABLEKETTLE_ITEM = "음료와 전투를 벌이는 물건이로군."
-STRINGS.CHARACTERS.WATHGRITHR.DESCRIBE.PORTABLEKETTLE = {
+STRINGS.CHARACTERS.WATHGRITHR.DESCRIBE.PORTABLEKETTLE_ITEM = {
 	GENERIC = "생명수를 만드는 주전자로군.",
 	EMPTY = "물 한 방울도 없군...",
 	BOILING_LONG = "The thirst parches mine throat... make haste, kettle!",
 	BOILING_SHORT = "This will be done swiftly!",
 	DONE = "먹을 음료가 있나?",
+	PURIFY = "TODO",
+	HASWATER = "TODO",
 }
 
 -- WAXWELL
@@ -1194,7 +1219,9 @@ STRINGS.CHARACTERS.WAXWELL.WELLSTATUS = {
 }
 
 STRINGS.CHARACTERS.WAXWELL.DESCRIBE.DESALINATOR = {
-	GENERIC = "TODO",
+	EMPTY = "TODO",
+	PURIFY = "TODO",
+	HASWATER = "TODO",
 	BURNT = "마르다 못해 타버렸군.",
 }
 
@@ -1206,8 +1233,8 @@ STRINGS.CHARACTERS.WAXWELL.DESCRIBE.BARREL = {
 STRINGS.CHARACTERS.WAXWELL.DESCRIBE.BREWERY = {
 	GENERIC = "생각만 해도 속이 시원해지는군",
 	BURNT = "마르다 못해 타버렸군.",
-	FARMENT_LONG = "Wait for it..",
-	FARMENT_SHORT = "Here it comes!",
+	FERMENTING_LONG = "Wait for it..",
+	FERMENTING_SHORT = "Here it comes!",
 	DONE = "Finally, some quality drink",
 }
 
@@ -1228,15 +1255,18 @@ STRINGS.CHARACTERS.WAXWELL.DESCRIBE.KETTLE = {
 	BOILING_LONG = "Wait for it..",
 	BOILING_SHORT = "Here it comes!",
 	DONE = "Finally, some quality drink",
+	PURIFY = "TODO",
+	HASWATER = "TODO",
 }
 
-STRINGS.CHARACTERS.WAXWELL.DESCRIBE.PORTABLEKETTLE_ITEM = "이 격식 있는 도구를 어디든지 들고 다닐수 있지."
-STRINGS.CHARACTERS.WAXWELL.DESCRIBE.PORTABLEKETTLE = {
+STRINGS.CHARACTERS.WAXWELL.DESCRIBE.PORTABLEKETTLE_ITEM = {
 	GENERIC = "격식 있는 음료 도구야.",
 	EMPTY = "쓸쓸하게도 음료가 하나도 없어.",
 	BOILING_LONG = "I must exercise patience...",
 	BOILING_SHORT = "It will be finished shortly.",
 	DONE = "마실만한 게 나온 건지나 빌어야지.",
+	PURIFY = "TODO",
+	HASWATER = "TODO",
 }
 
 -- WEBBER
@@ -1390,7 +1420,9 @@ STRINGS.CHARACTERS.WEBBER.WELLSTATUS = {
 
 
 STRINGS.CHARACTERS.WEBBER.DESCRIBE.DESALINATOR = {
-	GENERIC = "TODO",
+	EMPTY = "TODO",
+	PURIFY = "TODO",
+	HASWATER = "TODO",
 	BURNT = "Someone must have left the fire going.",
 }
 
@@ -1402,8 +1434,8 @@ STRINGS.CHARACTERS.WEBBER.DESCRIBE.BARREL = {
 STRINGS.CHARACTERS.WEBBER.DESCRIBE.BREWERY = {
 	GENERIC = "재료를 넣으면 다른 음료가 나와.",
 	BURNT = "Someone must have left the fire going.",
-	FARMENT_LONG = "It won't be done for a while.",
-	FARMENT_SHORT = "Almost ready!",
+	FERMENTING_LONG = "It won't be done for a while.",
+	FERMENTING_SHORT = "Almost ready!",
 	DONE = "물을 마실 시간이야",
 }
 
@@ -1424,15 +1456,18 @@ STRINGS.CHARACTERS.WEBBER.DESCRIBE.KETTLE = {
 	BOILING_LONG = "It won't be done for a while.",
 	BOILING_SHORT = "Almost ready!",
 	DONE = "물을 마실 시간이야",
+	PURIFY = "TODO",
+	HASWATER = "TODO",
 }
 
-STRINGS.CHARACTERS.WEBBER.DESCRIBE.PORTABLEKETTLE_ITEM = "마싯는 음료를 어디서든지!"
-STRINGS.CHARACTERS.WEBBER.DESCRIBE.PORTABLEKETTLE = {
+STRINGS.CHARACTERS.WEBBER.DESCRIBE.PORTABLEKETTLE_ITEM = {
 	GENERIC = "Makes yummies!",
 	EMPTY = "Aw, there's nothing in there.",
 	BOILING_LONG = "This is taking so loooong!",
 	BOILING_SHORT = "곧 있으면 음료가 준비될 거야!",
 	DONE = "으으음! 어서 마시자!",
+	PURIFY = "TODO",
+	HASWATER = "TODO",
 }
 
 -- WENDY
@@ -1585,7 +1620,9 @@ STRINGS.CHARACTERS.WENDY.WELLSTATUS = {
 }
 
 STRINGS.CHARACTERS.WENDY.DESCRIBE.DESALINATOR = {
-	GENERIC = "TODO",
+	EMPTY = "TODO",
+	PURIFY = "TODO",
+	HASWATER = "TODO",
 	BURNT = "Burnt to a crisp.",
 }
 
@@ -1597,8 +1634,8 @@ STRINGS.CHARACTERS.WENDY.DESCRIBE.BARREL = {
 STRINGS.CHARACTERS.WENDY.DESCRIBE.BREWERY = {
 	GENERIC = "As empty as my soul.",
 	BURNT = "Burnt to a crisp.",
-	FARMENT_LONG = "Whatever's in there isn't dead yet.",
-	FARMENT_SHORT = "좀 더 발효 해야 해.",
+	FERMENTING_LONG = "Whatever's in there isn't dead yet.",
+	FERMENTING_SHORT = "좀 더 발효 해야 해.",
 	DONE = "Finally, drink",
 }
 
@@ -1619,15 +1656,18 @@ STRINGS.CHARACTERS.WENDY.DESCRIBE.KETTLE = {
 	BOILING_LONG = "Whatever's in there isn't dead yet.",
 	BOILING_SHORT = "It needs to boil.",
 	DONE = "Finally, drink",
+	PURIFY = "TODO",
+	HASWATER = "TODO",
 }
 
-STRINGS.CHARACTERS.WENDY.DESCRIBE.PORTABLEKETTLE_ITEM = "TODO"
-STRINGS.CHARACTERS.WENDY.DESCRIBE.PORTABLEKETTLE = {
+STRINGS.CHARACTERS.WENDY.DESCRIBE.PORTABLEKETTLE_ITEM = {
 	GENERIC = "목마름이 내 작은 목를 물어뜯을 때를 위해...",
 	EMPTY = "A drinkless void.",
 	BOILING_LONG = "어쩌면 다 되기도 전에 탈수로 죽을지도.",
 	BOILING_SHORT = "It will all be over soon.",
 	DONE = "Another menial task has been completed.",
+	PURIFY = "TODO",
+	HASWATER = "TODO",
 }
 
 -- WICKERBOTTOM
@@ -1781,7 +1821,9 @@ STRINGS.CHARACTERS.WICKERBOTTOM.WELLSTATUS = {
 
 
 STRINGS.CHARACTERS.WICKERBOTTOM.DESCRIBE.DESALINATOR = {
-	GENERIC = "TODO",
+	EMPTY = "TODO",
+	PURIFY = "TODO",
+	HASWATER = "TODO",
 	BURNT = "Now it's truly derelict.",
 }
 
@@ -1793,16 +1835,19 @@ STRINGS.CHARACTERS.WICKERBOTTOM.DESCRIBE.BARREL = {
 STRINGS.CHARACTERS.WICKERBOTTOM.DESCRIBE.BREWERY = {
 	GENERIC = "이건 음료를 안 만들고 있는 때는 황량해 보여.",
 	BURNT = "Now it's truly derelict.",
-	FARMENT_LONG = "It's got a bit to go before it's ready.",
-	FARMENT_SHORT = "Almost done!",
+	FERMENTING_LONG = "It's got a bit to go before it's ready.",
+	FERMENTING_SHORT = "Almost done!",
 	DONE = "Drink time!",
 }
 
 STRINGS.CHARACTERS.WICKERBOTTOM.DESCRIBE.CAMPKETTLE = {
-	GENERIC = "이건 음료를 안 만들고 있는 때는 황량해 보여.",
-	BURNT = "Now it's truly derelict.",
-	BOILING_LONG = "It's got a bit to go before it's ready.",
-	BOILING_SHORT = "Almost done!",
+	EMBERS = "The fire has almost self-extinguished.",
+	GENERIC = "A camp fire.",
+	HIGH = "That fire is burning at an alarming rate.",
+	LOW = "The fire could use some more fuel.",
+	NORMAL = "A perfectly average fire.",
+	OUT = "It can be re-lit.",
+	BOILING = "It's got a bit to go before it's ready.",
 	DONE = "Tea time!",
 }
 
@@ -1814,16 +1859,23 @@ STRINGS.CHARACTERS.WICKERBOTTOM.DESCRIBE.KETTLE = {
 	NORMAL = "A perfectly average fire.",
 	OUT = "It can be re-lit.",
 	BOILING = "It's got a bit to go before it's ready.",
+	EMPTY = "이건 음료를 안 만들고 있는 때는 황량해 보여.",
+	BURNT = "Now it's truly derelict.",
+	BOILING_LONG = "It's got a bit to go before it's ready.",
+	BOILING_SHORT = "Almost done!",
 	DONE = "Tea time!",
+	PURIFY = "TODO",
+	HASWATER = "TODO",
 }
 
-STRINGS.CHARACTERS.WICKERBOTTOM.DESCRIBE.PORTABLEKETTLE_ITEM = "어디서든 들고 다닐수 있겠구나."
-STRINGS.CHARACTERS.WICKERBOTTOM.DESCRIBE.PORTABLEKETTLE = {
-	GENERIC = "제대로 만든 음료을 먹는다니 참 좋겠구나.",
+STRINGS.CHARACTERS.WICKERBOTTOM.DESCRIBE.PORTABLEKETTLE_ITEM = {
+	GENERIC = "어디서든 들고 다닐수 있겠구나.",
 	EMPTY = "Hm, perhaps I'll whip something up.",
 	BOILING_LONG = "Patience is a virtue!",
 	BOILING_SHORT = "This will be finished in no time at all.",
 	DONE = "Smells nourishing.",
+	PURIFY = "TODO",
+	HASWATER = "TODO",
 }
 
 -- WILLOW
@@ -1976,7 +2028,9 @@ STRINGS.CHARACTERS.WILLOW.WELLSTATUS = {
 }
 
 STRINGS.CHARACTERS.WILLOW.DESCRIBE.DESALINATOR = {
-	GENERIC = "TODO",
+	EMPTY = "TODO",
+	PURIFY = "TODO",
+	HASWATER = "TODO",
 	BURNT = "At least it went out in a blaze of glory.",
 }
 
@@ -1988,8 +2042,8 @@ STRINGS.CHARACTERS.WILLOW.DESCRIBE.BARREL = {
 STRINGS.CHARACTERS.WILLOW.DESCRIBE.BREWERY = {
 	GENERIC = "이거에는 불을 안 쓰는거는 참 슬퍼",
 	BURNT = "At least it went out in a blaze of glory.",
-	FARMENT_LONG = "불을 쓰면 더 빠르게 발효되지 않을까?",
-	FARMENT_SHORT = "슬프게도 불 없이도 완성이 거의 다 됬네.",
+	FERMENTING_LONG = "불을 쓰면 더 빠르게 발효되지 않을까?",
+	FERMENTING_SHORT = "슬프게도 불 없이도 완성이 거의 다 됬네.",
 	DONE = "불 없이 만든음료는 좀 미덥단 말이지",
 }
 
@@ -2005,20 +2059,23 @@ STRINGS.CHARACTERS.WILLOW.DESCRIBE.CAMPKETTLE = {
 }
 
 STRINGS.CHARACTERS.WILLOW.DESCRIBE.KETTLE = {
-	GENERIC = "모든 음료은 불로 살균해야 해.",
+	EMPTY = "모든 음료은 불로 살균해야 해.",
 	BURNT = "At least it went out in a blaze of glory.",
 	BOILING_LONG = "The fire still has quite a bit of work to do.",
 	BOILING_SHORT = "The fire is doing its thing!",
 	DONE = "Fire makes everything better. Mmm!",
+	PURIFY = "TODO",
+	HASWATER = "TODO",
 }
 
-STRINGS.CHARACTERS.WILLOW.DESCRIBE.PORTABLEKETTLE_ITEM = "이 멍청한걸 들고 다녀야해?"
-STRINGS.CHARACTERS.WILLOW.DESCRIBE.PORTABLEKETTLE = {
-	GENERIC = "그냥 바보 같은 주전자야.",
+STRINGS.CHARACTERS.WILLOW.DESCRIBE.PORTABLEKETTLE_ITEM = {
+	GENERIC = "이 멍청한걸 들고 다녀야해?",
 	EMPTY = "멍청한 속 빈 주전자 같은이.",
 	BOILING_LONG = "Ughhh, this is taking forever!",
 	BOILING_SHORT = "Come on fire, do your thing!",
 	DONE = "좋았어. 이제 마시자!",
+	PURIFY = "TODO",
+	HASWATER = "TODO",
 }
 
 -- WINONA
@@ -2171,7 +2228,9 @@ STRINGS.CHARACTERS.WINONA.WELLSTATUS = {
 }
 
 STRINGS.CHARACTERS.WINONA.DESCRIBE.DESALINATOR = {
-	GENERIC = "TODO",
+	EMPTY = "TODO",
+	PURIFY = "TODO",
+	HASWATER = "TODO",
 	BURNT = "You guys like gristle, right?",
 }
 
@@ -2183,8 +2242,8 @@ STRINGS.CHARACTERS.WINONA.DESCRIBE.BARREL = {
 STRINGS.CHARACTERS.WINONA.DESCRIBE.BREWERY = {
 	GENERIC = "내가 탄산음료를 잘 만드는데 말이야.",
 	BURNT = "You guys like gristle, right?",
-	FARMENT_LONG = "Still got a bit of a wait.",
-	FARMENT_SHORT = "Almost!",
+	FERMENTING_LONG = "Still got a bit of a wait.",
+	FERMENTING_SHORT = "Almost!",
 	DONE = "음료를 마십시다!",
 }
 
@@ -2200,20 +2259,23 @@ STRINGS.CHARACTERS.WINONA.DESCRIBE.CAMPKETTLE = {
 }
 
 STRINGS.CHARACTERS.WINONA.DESCRIBE.KETTLE = {
-	GENERIC = "내가 커피를 잘 타는데 말이야.",
+	EMPTY = "내가 커피를 잘 타는데 말이야.",
 	BURNT = "You guys like gristle, right?",
 	BOILING_LONG = "Still got a bit of a wait.",
 	BOILING_SHORT = "Almost!",
 	DONE = "음료를 마십시다!",
+	PURIFY = "TODO",
+	HASWATER = "TODO",
 }
 
-STRINGS.CHARACTERS.WINONA.DESCRIBE.PORTABLEKETTLE_ITEM = "이 고급진 주전자를 어디든지 들고 다닐수 있지."
-STRINGS.CHARACTERS.WINONA.DESCRIBE.PORTABLEKETTLE = {
-	GENERIC = "고급진 음료를 만드는 고급진 주전자야.",
+STRINGS.CHARACTERS.WINONA.DESCRIBE.PORTABLEKETTLE_ITEM = {
+	GENERIC = "이 고급진 주전자를 어디든지 들고 다닐수 있지.",
 	EMPTY = "Could use some ingredients in there.",
 	BOILING_LONG = "All good things take time.",
 	BOILING_SHORT = "This'll be done lickety-split!",
 	DONE = "Let's see if all that fuss was worth it",
+	PURIFY = "TODO",
+	HASWATER = "TODO",
 }
 
 -- WOLFGANG
@@ -2366,7 +2428,9 @@ STRINGS.CHARACTERS.WOLFGANG.WELLSTATUS = {
 }
 
 STRINGS.CHARACTERS.WOLFGANG.DESCRIBE.DESALINATOR = {
-	GENERIC = "TODO",
+	EMPTY = "TODO",
+	PURIFY = "TODO",
+	HASWATER = "TODO",
 	BURNT = "TODO",
 }
 
@@ -2378,8 +2442,8 @@ STRINGS.CHARACTERS.WOLFGANG.DESCRIBE.BARREL = {
 STRINGS.CHARACTERS.WOLFGANG.DESCRIBE.BREWERY = {
 	GENERIC = "TODO",
 	BURNT = "TODO",
-	FARMENT_LONG = "TODO",
-	FARMENT_SHORT = "TODO",
+	FERMENTING_LONG = "TODO",
+	FERMENTING_SHORT = "TODO",
 	DONE = "TODO",
 }
 
@@ -2395,20 +2459,23 @@ STRINGS.CHARACTERS.WOLFGANG.DESCRIBE.CAMPKETTLE = {
 }
 
 STRINGS.CHARACTERS.WOLFGANG.DESCRIBE.KETTLE = {
-	GENERIC = "TODO",
+	EMPTY = "TODO",
 	BURNT = "TODO",
 	BOILING_LONG = "TODO",
 	BOILING_SHORT = "TODO",
 	DONE = "TODO",
+	PURIFY = "TODO",
+	HASWATER = "TODO",
 }
 
-STRINGS.CHARACTERS.WOLFGANG.DESCRIBE.PORTABLEKETTLE_ITEM = "TODO"
-STRINGS.CHARACTERS.WOLFGANG.DESCRIBE.PORTABLEKETTLE = {
+STRINGS.CHARACTERS.WOLFGANG.DESCRIBE.PORTABLEKETTLE_ITEM = {
 	GENERIC = "TODO",
 	EMPTY = "TODO",
 	BOILING_LONG = "TODO",
 	BOILING_SHORT = "TODO",
 	DONE = "TODO",
+	PURIFY = "TODO",
+	HASWATER = "TODO",
 }
 
 -- WOODIE
@@ -2561,7 +2628,9 @@ STRINGS.CHARACTERS.WOODIE.WELLSTATUS = {
 }
 
 STRINGS.CHARACTERS.WOODIE.DESCRIBE.DESALINATOR = {
-	GENERIC = "TODO",
+	EMPTY = "TODO",
+	PURIFY = "TODO",
+	HASWATER = "TODO",
 	BURNT = "TODO",
 }
 
@@ -2573,8 +2642,8 @@ STRINGS.CHARACTERS.WOODIE.DESCRIBE.BARREL = {
 STRINGS.CHARACTERS.WOODIE.DESCRIBE.BREWERY = {
 	GENERIC = "TODO",
 	BURNT = "TODO",
-	FARMENT_LONG = "TODO",
-	FARMENT_SHORT = "TODO",
+	FERMENTING_LONG = "TODO",
+	FERMENTING_SHORT = "TODO",
 	DONE = "TODO",
 }
 
@@ -2590,20 +2659,23 @@ STRINGS.CHARACTERS.WOODIE.DESCRIBE.CAMPKETTLE = {
 }
 
 STRINGS.CHARACTERS.WOODIE.DESCRIBE.KETTLE = {
-	GENERIC = "TODO",
+	EMPTY = "TODO",
 	BURNT = "TODO",
 	BOILING_LONG = "TODO",
 	BOILING_SHORT = "TODO",
 	DONE = "TODO",
+	PURIFY = "TODO",
+	HASWATER = "TODO",
 }
 
-STRINGS.CHARACTERS.WOODIE.DESCRIBE.PORTABLEKETTLE_ITEM = "TODO"
-STRINGS.CHARACTERS.WOODIE.DESCRIBE.PORTABLEKETTLE = {
+STRINGS.CHARACTERS.WOODIE.DESCRIBE.PORTABLEKETTLE_ITEM = {
 	GENERIC = "TODO",
 	EMPTY = "TODO",
 	BOILING_LONG = "TODO",
 	BOILING_SHORT = "TODO",
 	DONE = "TODO",
+	PURIFY = "TODO",
+	HASWATER = "TODO",
 }
 
 -- WORMWOOD
@@ -2756,7 +2828,9 @@ STRINGS.CHARACTERS.WORMWOOD.WELLSTATUS = {
 }
 
 STRINGS.CHARACTERS.WORMWOOD.DESCRIBE.DESALINATOR = {
-	GENERIC = "TODO",
+	EMPTY = "TODO",
+	PURIFY = "TODO",
+	HASWATER = "TODO",
 	BURNT = "TODO",
 }
 
@@ -2768,8 +2842,8 @@ STRINGS.CHARACTERS.WORMWOOD.DESCRIBE.BARREL = {
 STRINGS.CHARACTERS.WORMWOOD.DESCRIBE.BREWERY = {
 	GENERIC = "TODO",
 	BURNT = "TODO",
-	FARMENT_LONG = "TODO",
-	FARMENT_SHORT = "TODO",
+	FERMENTING_LONG = "TODO",
+	FERMENTING_SHORT = "TODO",
 	DONE = "TODO",
 }
 
@@ -2785,20 +2859,23 @@ STRINGS.CHARACTERS.WORMWOOD.DESCRIBE.CAMPKETTLE = {
 }
 
 STRINGS.CHARACTERS.WORMWOOD.DESCRIBE.KETTLE = {
-	GENERIC = "TODO",
+	EMPTY = "TODO",
 	BURNT = "TODO",
 	BOILING_LONG = "TODO",
 	BOILING_SHORT = "TODO",
 	DONE = "TODO",
+	PURIFY = "TODO",
+	HASWATER = "TODO",
 }
 
-STRINGS.CHARACTERS.WORMWOOD.DESCRIBE.PORTABLEKETTLE_ITEM = "TODO"
-STRINGS.CHARACTERS.WORMWOOD.DESCRIBE.PORTABLEKETTLE = {
+STRINGS.CHARACTERS.WORMWOOD.DESCRIBE.PORTABLEKETTLE_ITEM = {
 	GENERIC = "TODO",
 	EMPTY = "TODO",
 	BOILING_LONG = "TODO",
 	BOILING_SHORT = "TODO",
 	DONE = "TODO",
+	PURIFY = "TODO",
+	HASWATER = "TODO",
 }
 
 -- WORTOX
@@ -2951,7 +3028,9 @@ STRINGS.CHARACTERS.WORTOX.WELLSTATUS = {
 }
 
 STRINGS.CHARACTERS.WORTOX.DESCRIBE.DESALINATOR = {
-	GENERIC = "TODO",
+	EMPTY = "TODO",
+	PURIFY = "TODO",
+	HASWATER = "TODO",
 	BURNT = "TODO",
 }
 
@@ -2963,8 +3042,8 @@ STRINGS.CHARACTERS.WORTOX.DESCRIBE.BARREL = {
 STRINGS.CHARACTERS.WORTOX.DESCRIBE.BREWERY = {
 	GENERIC = "TODO",
 	BURNT = "TODO",
-	FARMENT_LONG = "TODO",
-	FARMENT_SHORT = "TODO",
+	FERMENTING_LONG = "TODO",
+	FERMENTING_SHORT = "TODO",
 	DONE = "TODO",
 }
 
@@ -2980,20 +3059,23 @@ STRINGS.CHARACTERS.WORTOX.DESCRIBE.CAMPKETTLE = {
 }
 
 STRINGS.CHARACTERS.WORTOX.DESCRIBE.KETTLE = {
-	GENERIC = "TODO",
+	EMPTY = "TODO",
 	BURNT = "TODO",
 	BOILING_LONG = "TODO",
 	BOILING_SHORT = "TODO",
 	DONE = "TODO",
+	PURIFY = "TODO",
+	HASWATER = "TODO",
 }
 
-STRINGS.CHARACTERS.WORTOX.DESCRIBE.PORTABLEKETTLE_ITEM = "TODO"
-STRINGS.CHARACTERS.WORTOX.DESCRIBE.PORTABLEKETTLE = {
+STRINGS.CHARACTERS.WORTOX.DESCRIBE.PORTABLEKETTLE_ITEM = {
 	GENERIC = "TODO",
 	EMPTY = "TODO",
 	BOILING_LONG = "TODO",
 	BOILING_SHORT = "TODO",
 	DONE = "TODO",
+	PURIFY = "TODO",
+	HASWATER = "TODO",
 }
 
 -- WURT
@@ -3146,7 +3228,9 @@ STRINGS.CHARACTERS.WURT.WELLSTATUS = {
 }
 
 STRINGS.CHARACTERS.WURT.DESCRIBE.DESALINATOR = {
-	GENERIC = "TODO",
+	EMPTY = "TODO",
+	PURIFY = "TODO",
+	HASWATER = "TODO",
 	BURNT = "TODO",
 }
 
@@ -3158,8 +3242,8 @@ STRINGS.CHARACTERS.WURT.DESCRIBE.BARREL = {
 STRINGS.CHARACTERS.WURT.DESCRIBE.BREWERY = {
 	GENERIC = "TODO",
 	BURNT = "TODO",
-	FARMENT_LONG = "TODO",
-	FARMENT_SHORT = "TODO",
+	FERMENTING_LONG = "TODO",
+	FERMENTING_SHORT = "TODO",
 	DONE = "TODO",
 }
 
@@ -3180,15 +3264,18 @@ STRINGS.CHARACTERS.WURT.DESCRIBE.KETTLE = {
 	BOILING_LONG = "TODO",
 	BOILING_SHORT = "TODO",
 	DONE = "TODO",
+	PURIFY = "TODO",
+	HASWATER = "TODO",
 }
 
-STRINGS.CHARACTERS.WURT.DESCRIBE.PORTABLEKETTLE_ITEM = "TODO"
-STRINGS.CHARACTERS.WURT.DESCRIBE.PORTABLEKETTLE = {
+STRINGS.CHARACTERS.WURT.DESCRIBE.PORTABLEKETTLE_ITEM = {
 	GENERIC = "TODO",
 	EMPTY = "TODO",
 	BOILING_LONG = "TODO",
 	BOILING_SHORT = "TODO",
 	DONE = "TODO",
+	PURIFY = "TODO",
+	HASWATER = "TODO",
 }
 
 -- WX78
@@ -3342,7 +3429,9 @@ STRINGS.CHARACTERS.WX78.WELLSTATUS = {
 
 
 STRINGS.CHARACTERS.WX78.DESCRIBE.DESALINATOR = {
-	GENERIC = "TODO",
+	EMPTY = "TODO",
+	PURIFY = "TODO",
+	HASWATER = "TODO",
 	BURNT = "TODO",
 }
 
@@ -3354,8 +3443,8 @@ STRINGS.CHARACTERS.WX78.DESCRIBE.BARREL = {
 STRINGS.CHARACTERS.WX78.DESCRIBE.BREWERY = {
 	GENERIC = "TODO",
 	BURNT = "TODO",
-	FARMENT_LONG = "TODO",
-	FARMENT_SHORT = "TODO",
+	FERMENTING_LONG = "TODO",
+	FERMENTING_SHORT = "TODO",
 	DONE = "TODO",
 }
 
@@ -3376,13 +3465,16 @@ STRINGS.CHARACTERS.WX78.DESCRIBE.KETTLE = {
 	BOILING_LONG = "TODO",
 	BOILING_SHORT = "TODO",
 	DONE = "TODO",
+	PURIFY = "TODO",
+	HASWATER = "TODO",
 }
 
-STRINGS.CHARACTERS.WX78.DESCRIBE.PORTABLEKETTLE_ITEM = "TODO"
-STRINGS.CHARACTERS.WX78.DESCRIBE.PORTABLEKETTLE = {
+STRINGS.CHARACTERS.WX78.DESCRIBE.PORTABLEKETTLE_ITEM = {
 	GENERIC = "TODO",
 	EMPTY = "TODO",
 	BOILING_LONG = "TODO",
 	BOILING_SHORT = "TODO",
 	DONE = "TODO",
+	PURIFY = "TODO",
+	HASWATER = "TODO",
 }
