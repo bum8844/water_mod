@@ -50,7 +50,7 @@ local function thirstbadge_statusdisplays(self)
 
 	self.watertask = nil
 
-	--force update
+	--force update at init
 	self.inst:DoStaticTaskInTime(0, function(inst)
 		if self.isghostmode then
 			OnSetGhostMode(self.inst, self)
