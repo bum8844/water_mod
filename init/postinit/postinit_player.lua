@@ -54,7 +54,7 @@ local AddNetvars = function(inst)
 
     inst:DoStaticTaskInTime(0, function(inst)
         if _G.TheWorld.ismastersim then
-            inst:ListenForEvent("thirstdelta", OnThirstDelta)
+            inst:ListenForEvent("thirstdelta", OnThirstDelta, inst._parent)
         else
             inst.isthirstpulseup:set_local(false)
             inst.isthirstpulseup:set_local(false)
@@ -73,6 +73,7 @@ local AddNetvars = function(inst)
                 inst._parent.replica.thirst:AttachClassified(inst)
             end
         end
+        return
     end
 end
 
@@ -86,14 +87,12 @@ local AddComponentToPlayer = function(inst)
     end
 
     inst:AddComponent("thirst")
---inst:DoTaskInTime(0, function(inst)
     inst.components.thirst:SetMax(TUNING.WILSON_THIRST)
     inst.components.thirst:SetRate(TUNING.WILSON_HUNGER_RATE)
     inst.components.thirst:SetKillRate(TUNING.WILSON_HEALTH / TUNING.STARVE_KILL_TIME)
     if _G.GetGameModeProperty("no_hunger") then
         inst.components.thirst:Pause()
     end
---end)
 end
 
 --------------------------------------------------
