@@ -21,9 +21,6 @@ local function onhammered(inst, worker)
     if inst.components.burnable ~= nil and inst.components.burnable:IsBurning() then
         inst.components.burnable:Extinguish()
     end
-    --[[if not inst:HasTag("burnt") and inst.components.stewer.product ~= nil and inst.components.stewer:IsDone() then
-        --inst.components.stewer:Harvest()
-    --end]]
 	if inst.components.container ~= nil then
         inst.components.container:DropEverything()
     end
@@ -39,16 +36,12 @@ local function onhit(inst, worker)
         if inst.components.stewer:IsCooking() then
             inst.AnimState:PlayAnimation("hit_cooking")
             inst.AnimState:PushAnimation("cooking_loop", true)
-            inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_close")
         elseif inst.components.stewer:IsDone() then
             inst.AnimState:PlayAnimation("hit_full")
             inst.AnimState:PushAnimation("idle_full", false)
         else
             if inst.components.container ~= nil and inst.components.container:IsOpen() then
                 inst.components.container:Close()
-                --onclose will trigger sfx already
-            else
-                inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_close")
             end
             inst.AnimState:PlayAnimation("hit_empty")
             inst.AnimState:PushAnimation("idle_empty", false)
@@ -59,6 +52,7 @@ end
 local function onbuilt(inst)
     inst.AnimState:PlayAnimation("place")
 	inst.AnimState:PushAnimation("idle_empty", false)
+    inst.SoundEmitter:PlaySound("dontstarve/common/lean_to_craft")
 end
 
 local function startcookfn(inst)
@@ -67,7 +61,7 @@ local function startcookfn(inst)
         inst.components.waterlevel.accepting = false
         inst.AnimState:PlayAnimation("cooking_loop", true)
         inst.SoundEmitter:KillSound("snd")
-        inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_rattle", "snd")
+        inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot", "snd")
     end
 end
 
@@ -123,7 +117,7 @@ local function donecookfn(inst)
         end
         ShowProduct(inst)
         inst.SoundEmitter:KillSound("snd")
-        inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_finish")
+        inst.SoundEmitter:PlaySound("turnoftides/common/together/boat/anchor/ocean_hit")
     end
 end
 
@@ -142,7 +136,7 @@ local function continuecookfn(inst)
         inst.components.waterlevel.accepting = false
         inst.AnimState:PlayAnimation("cooking_loop", true)
         inst.SoundEmitter:KillSound("snd")
-        inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_rattle", "snd")
+        inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot", "snd")
     end
 end
 
@@ -152,7 +146,7 @@ local function harvestfn(inst)
         inst.components.waterlevel.accepting = true
         inst.components.stewer.product = nil
         inst.AnimState:PlayAnimation("idle_empty")
-        inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_close")
+        inst.SoundEmitter:PlaySound("hookline/common/trophyscale_fish/place_fish")
     end
 end
 
@@ -210,8 +204,7 @@ local function onopen(inst)
     if not inst:HasTag("burnt") then
         inst.AnimState:PlayAnimation("cooking_pre_loop")
         inst.SoundEmitter:KillSound("snd")
-        inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_open")
-        inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot", "snd")
+        inst.SoundEmitter:PlaySound("dontstarve/common/wardrobe_open")
     end
 end
 
@@ -225,7 +218,7 @@ local function onclose(inst)
             inst.AnimState:PlayAnimation("idle_empty")
             inst.SoundEmitter:KillSound("snd")
         end
-        inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_close")
+        inst.SoundEmitter:PlaySound("dontstarve/common/wardrobe_close")
     end
 end
 

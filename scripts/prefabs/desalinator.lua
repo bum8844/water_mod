@@ -22,7 +22,6 @@ local function onhit(inst, worker)
         if inst:HasTag("boilling") then
             inst.AnimState:PlayAnimation("hit_cook")
             inst.AnimState:PushAnimation("cook", true)
-            inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_close")
         else
     		inst.AnimState:PlayAnimation("hit_idle")
     		inst.AnimState:PushAnimation("idle")
@@ -32,6 +31,10 @@ end
 
 local function onbuilt(inst)
     inst.AnimState:PlayAnimation("place")
+    inst.SoundEmitter:PlaySound("saltydog/common/saltbox/place")
+    inst:DoTaskInTime(1, function(inst) inst.SoundEmitter:PlaySound("dontstarve/common/meat_rack_craft")
+        inst:DoTaskInTime(.8, function(inst) inst.SoundEmitter:PlaySound("dontstarve/creatures/together/stagehand/hit")end)
+    end) 
 	inst.AnimState:PushAnimation("idle")
 end
 
@@ -47,10 +50,7 @@ end
 local function harvestfn(inst)
     if not inst:HasTag("burnt") then
         inst._saltvalue = inst._saltvalue - 10
-        if not inst:HasTag("boilling") then
-            inst.AnimState:PlayAnimation("idle")
-        end
-        inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_close")
+        inst.SoundEmitter:PlaySound("saltydog/common/saltbox/close")
     end
 end
 
@@ -62,11 +62,14 @@ local function BoiledDone(inst)
     inst.components.waterlevel.item_watertype = WATERTYPE.CLEAN
     inst.AnimState:OverrideSymbol("swap", "desalinator_meter_water", tostring(inst._waterlevel))
     inst.AnimState:PlayAnimation("idle")
-    inst.SoundEmitter:KillSound("snd") 
-    inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_close")
+    inst.SoundEmitter:KillSound("desalinator_sound")
+    inst.SoundEmitter:PlaySound("hookline/common/trophyscale_fish/place_fish","purify")
     inst._timer = 0
     inst:RemoveTag("boilling")
     if inst._saltvalue >= 10 then
+        inst.SoundEmitter:KillSound("purify")
+        inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/medium")
+        inst.SoundEmitter:PlaySound("saltydog/common/saltbox/open")
         inst.components.stewer.done = true
         inst.components.stewer.product = "saltrock"
     end
@@ -80,8 +83,7 @@ local function Boiled(inst)
     inst.components.waterlevel.accepting = false
     inst.components.watersource.available = false
     inst.AnimState:PlayAnimation("cook", true)
-    inst.SoundEmitter:KillSound("snd")
-    inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_rattle", "snd")
+    inst.SoundEmitter:PlaySound("dontstarve/halloween_2018/madscience_machine/cooking_LP", "desalinator_sound", 0.3)
     inst:DoTaskInTime(inst._timer, BoiledDone, inst)
 end
 
@@ -113,7 +115,6 @@ local function OnDepleted(inst)
     inst.components.watersource.available = false
     inst.components.waterlevel.accepting = true
     inst.AnimState:PlayAnimation("idle")
-    inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_close")
 end
 
 local function OnSectionChange(new, old, inst)
