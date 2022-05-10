@@ -39,6 +39,12 @@ ACTIONS.EAT.stroverridefn = function(act)
     end
 end
 
+ACTIONS.STORE.stroverridefn = function(act)
+    if act.target:HasTag("kettle") then
+        return STRINGS.ACTIONS.BOIL
+    end
+end
+
 ACTIONS.FILL.priority = 2
 
 local FILL_BARREL = Action({priority=3})
