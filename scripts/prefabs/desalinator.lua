@@ -11,6 +11,14 @@ local function onhammered(inst, worker)
 	if inst.components.burnable ~= nil and inst.components.burnable:IsBurning() then
         inst.components.burnable:Extinguish()
     end
+
+    while inst._saltvalue >= 10 do
+        local old_saltvalue = inst._saltvalue
+        inst._saltvalue = old_saltvalue - 10
+        if inst._saltvalue >= 10 then
+            inst.components.lootdropper:SpawnLootPrefab("saltrock")
+        end
+    end
 	inst.components.lootdropper:DropLoot()
 	SpawnPrefab("collapse_small").Transform:SetPosition(inst.Transform:GetWorldPosition())
 	inst.SoundEmitter:PlaySound("dontstarve/common/destroy_stone")
