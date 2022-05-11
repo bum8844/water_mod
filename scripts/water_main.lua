@@ -173,7 +173,7 @@ for _, v in pairs(TUNING.CLEANSOURCE) do
 	AddPrefabPostInit(v, function(inst) inst:AddTag("cleanwater") end)
 end
 
-for k, v in pairs(TUNING.HYDRATIONTYPE) do
+--[[for k, v in pairs(TUNING.HYDRATIONTYPE) do
 	for _, r in pairs(v) do
 		AddPrefabPostInit(r, function(inst)
 			if not _G.TheWorld.ismastersim then
@@ -182,7 +182,7 @@ for k, v in pairs(TUNING.HYDRATIONTYPE) do
 			inst.components.edible.thirstvalue = TUNING["HYDRATION_"..k]
 		end)
 	end
-end
+end]]
 
 
 -- bum: 이 코드가 말리기 위해 추가한 코드임
@@ -205,7 +205,7 @@ AddComponentPostInit("stewer",function(self)
 
     function self:Harvest(harvester, ...)
         local result = _Harvest(self, harvester, ...)
-		self.inst:PushEvent("harvestsalt", {inst = self.inst})
+        self.inst:PushEvent("harvestsalt", {inst = self.inst})
         
         return result
     end
@@ -327,7 +327,7 @@ end)
 
 -- 어린이 보호(알콜음료 먹는거 방지 코드)
 if GetModConfigData("child_safety") ~= 1 then
-	for _, v in pairs(TUNING.CHILDPLAYEY) do
+	for _, v in pairs(TUNING.CHILDS) do
 		AddPrefabPostInit(v, function(inst) inst:AddTag("childplayer") end)
 	end
 end
