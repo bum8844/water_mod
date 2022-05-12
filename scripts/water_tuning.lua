@@ -25,7 +25,7 @@ local tuning =
 	BOTTLE_MAX_LEVEL = 10,
 	BUCKET_MAX_LEVEL = 20,
 	-- 모이스쳐관련 값들
-	BUCKET_DRINK_WAT = 10,
+	BUCKET_DRINK_WET = 10,
     WATER_BARREL_EXTINGUISH_HEAT_PERCENT = -1,
     WATER_BARREL_TEMP_REDUCTION = 5,
     WATER_BARREL_PROTECTION_TIME = 30,
@@ -67,7 +67,7 @@ local tuning =
 
 	--만드는 시간(온도 조절은 특수 효과가 아님)
 	INCORRECT_BOIL = 4,
-	DESALINATION_TIEM = 8,
+	DESALINATION_TIME = 8,
 	KETTLE_WATER = 4, -- 물
 	KETTLE_TEA = 10, -- 녹차, 홍차, 보이
 	KETTLE_FRUIT = 11, -- 모든 과일 종류

@@ -15,7 +15,6 @@ local function onhammered(inst, worker)
         local saltvalue = math.floor(inst._saltvalue / 10)
         for i=1, saltvalue do
             inst.components.lootdropper:AddChanceLoot("saltrock", 1.00)
-            print("saltrock")
         end
         inst.components.lootdropper:SetChanceLootTable("desalinator")
     end
