@@ -33,7 +33,7 @@ local function oneaten(inst, eater)
 
 	if eater:HasTag("player") then
 		local old_moisture = eater.components.moisture.moisture
-		eater.components.moisture.moisture = old_moisture + TUNING.BUcKET_DRINK_WAT
+		eater.components.moisture.moisture = old_moisture + TUNING.BUCKET_DRINK_WAT
 	end
 
 end
