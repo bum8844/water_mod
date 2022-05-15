@@ -4,6 +4,7 @@ return {
 	"bucketfull",
 	"bucketice",
 	"cup",
+	"purification_tablets",
 
 	--structures
 	"barrel",

@@ -22,6 +22,22 @@ local function onload(inst, data)
 	end
 end
 
+local function OnUnwrapped(inst, pos, doer)
+    local item = SpawnPrefab((inst:HasTag("strang") and "spoiled_food")or"wetgoop")
+    local bowl = SpawnPrefab((inst:HasTag("preparedrink_bottle") and "messagebottleempty")or"cup")
+    if inst:HasTag("preparedrink_bottle") then
+        local value = inst.components.finiteuses:GetUses()
+        for i=1, value do
+            SpawnPrefab((inst:HasTag("strang") and "spoiled_food")or"wetgoop").Transform:SetPosition(pos:Get())
+        end
+        bowl.Transform:SetPosition(pos:Get())
+    else
+        item.Transform:SetPosition(pos:Get())
+        bowl.Transform:SetPosition(pos:Get())
+    end
+    inst:Remove()
+end
+
 local function OnApplied(inst, final_use, doer, target)
     local x, y, z = inst.Transform:GetWorldPosition()
     local refund = nil
@@ -127,6 +143,10 @@ local function MakePreparedCupDrink(data)
             MakeDeployableFertilizerPristine(inst)
         end
 
+        if _name == "strang" or _name == "garbage" then
+            inst:AddTag("unwrappable")
+        end
+
         inst.entity:SetPristine()
 
         if not TheWorld.ismastersim then
@@ -135,17 +155,22 @@ local function MakePreparedCupDrink(data)
 
 		inst.food_symbol_build = food_symbol_build or _overridebuild
 
-        inst:AddComponent("edible")
-        inst.components.edible.healthvalue = data.health
-        inst.components.edible.hungervalue = data.hunger
-        inst.components.edible.thirstvalue = data.thirst
-        inst.components.edible.foodtype = data.foodtype or FOODTYPE.GOODIES
-        inst.components.edible.secondaryfoodtype = data.secondaryfoodtype or nil
-        inst.components.edible.sanityvalue = data.sanity or 0
-        inst.components.edible.temperaturedelta = data.temperature or 0
-        inst.components.edible.temperatureduration = data.temperatureduration or 0
-        inst.components.edible.nochill = data.nochill or nil
-        inst.components.edible:SetOnEatenFn(data.oneatenfn)
+        if not inst:HasTag("strang") and not inst:HasTag("garbage") then
+            inst:AddComponent("edible")
+            inst.components.edible.healthvalue = data.health
+            inst.components.edible.hungervalue = data.hunger
+            inst.components.edible.thirstvalue = data.thirst
+            inst.components.edible.foodtype = data.foodtype or FOODTYPE.GOODIES
+            inst.components.edible.secondaryfoodtype = data.secondaryfoodtype or nil
+            inst.components.edible.sanityvalue = data.sanity or 0
+            inst.components.edible.temperaturedelta = data.temperature or 0
+            inst.components.edible.temperatureduration = data.temperatureduration or 0
+            inst.components.edible.nochill = data.nochill or nil
+            inst.components.edible:SetOnEatenFn(data.oneatenfn)
+        else
+            inst:AddComponent("unwrappable")
+            inst.components.unwrappable:SetOnUnwrappedFn(OnUnwrapped)
+        end
 
         inst:AddComponent("inspectable")
         inst.wet_prefix = data.wet_prefix
@@ -162,7 +187,6 @@ local function MakePreparedCupDrink(data)
 		inst.replica.inventoryitem:SetImage("cup_".._name)
 		inst.components.inventoryitem.atlasname = "images/tea_inventoryitem.xml"
 		inst.components.inventoryitem.imagename = "cup_".._name
-		
 
 		if data.basename ~= nil then
             inst.components.inventoryitem:ChangeImageName("cup_".._basename)
@@ -355,6 +379,10 @@ local function MakePreparedBottleDrink(data)
             MakeDeployableFertilizerPristine(inst)
         end
 
+        if _name == "strang" or _name == "garbage" then
+            inst:AddTag("unwrappable")
+        end
+
         inst.entity:SetPristine()
 
         if not TheWorld.ismastersim then
@@ -368,17 +396,22 @@ local function MakePreparedBottleDrink(data)
         inst.components.fillable.showoceanaction = true
         inst.components.fillable.acceptsoceanwater = true
 
-        inst:AddComponent("edible")
-        inst.components.edible.healthvalue = data.health
-        inst.components.edible.hungervalue = data.hunger
-        inst.components.edible.thirstvalue = data.thirst
-        inst.components.edible.foodtype = data.foodtype or FOODTYPE.GOODIES
-        inst.components.edible.secondaryfoodtype = data.secondaryfoodtype or nil
-        inst.components.edible.sanityvalue = data.sanity or 0
-        inst.components.edible.temperaturedelta = data.temperature or 0
-        inst.components.edible.temperatureduration = data.temperatureduration or 0
-        inst.components.edible.nochill = data.nochill or nil
-        inst.components.edible:SetOnEatenFn(data.oneatenfn)
+        if not inst:HasTag("strang") and not inst:HasTag("garbage") then
+            inst:AddComponent("edible")
+            inst.components.edible.healthvalue = data.health
+            inst.components.edible.hungervalue = data.hunger
+            inst.components.edible.thirstvalue = data.thirst
+            inst.components.edible.foodtype = data.foodtype or FOODTYPE.GOODIES
+            inst.components.edible.secondaryfoodtype = data.secondaryfoodtype or nil
+            inst.components.edible.sanityvalue = data.sanity or 0
+            inst.components.edible.temperaturedelta = data.temperature or 0
+            inst.components.edible.temperatureduration = data.temperatureduration or 0
+            inst.components.edible.nochill = data.nochill or nil
+            inst.components.edible:SetOnEatenFn(data.oneatenfn)
+        else
+            inst:AddComponent("unwrappable")
+            inst.components.unwrappable:SetOnUnwrappedFn(OnUnwrapped)
+        end
 
         inst:AddComponent("inspectable")
         inst.wet_prefix = data.wet_prefix
