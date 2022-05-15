@@ -37,15 +37,15 @@ STRINGS.RECIPE_DESC.DESALINATOR = "Yes, the water is made of water."
 
 -- barrel
 STRINGS.NAMES.BARREL = "Barrel"
-STRINGS.RECIPE_DESC.BARREL = "A barrel of water is funnier than a barrel of monkeys."
+STRINGS.RECIPE_DESC.BARREL = "Glad that it has no monkey."
 
 -- brewery
 STRINGS.NAMES.BREWERY = "Brewery"
-STRINGS.RECIPE_DESC.BREWERY = "Can make delicious drinks. maybe?"
+STRINGS.RECIPE_DESC.BREWERY = "Drinks age like an old wine."
 
 -- buckets
 STRINGS.NAMES.BUCKET = "Bucket"
-STRINGS.RECIPE_DESC.BUCKET = "An empty bucket"
+STRINGS.RECIPE_DESC.BUCKET = "Don't trip over it."
 STRINGS.NAMES.BUCKET_CLEAN = "Bucket with Water"
 STRINGS.NAMES.BUCKET_DIRTY = "Bucket with Dirty Water"
 STRINGS.NAMES.BUCKET_SALTY = "Bucket with Sea Water"
@@ -62,7 +62,7 @@ STRINGS.RECIPE_DESC.KETTLE = "The last thing of your past life."
 -- portablekettle
 STRINGS.NAMES.PORTABLEKETTLE_ITEM	= "Portable Kettle"
 STRINGS.NAMES.PORTABLEKETTLE = "Portable Kettle"
-STRINGS.RECIPE_DESC.PORTABLEKETTLE_ITEM = "It's easy to carry around."
+STRINGS.RECIPE_DESC.PORTABLEKETTLE_ITEM = "It's tea time, doctor."
 
 -- tea_trees
 STRINGS.NAMES.TEA_TREE = "Tea Tree"
@@ -71,17 +71,17 @@ STRINGS.NAMES.TEA_SEED = "Tea Seed"
 STRINGS.NAMES.TEA_SEED_COOKED = "Roast Tea Seed"
 STRINGS.NAMES.TEA_SEED_SAPLING = "Tea Tree Sapling"
 STRINGS.NAMES.TEALEAVES = "Tea Leaves"
-STRINGS.NAMES.TEALEAVES_DRIED = "Dried Tea Leaves."
+STRINGS.NAMES.TEALEAVES_DRIED = "Dried Tea Leaves"
 
 -- caffeinberry
 STRINGS.NAMES.DUG_CAFFEINBERRY = "Coffee Plant" 
 STRINGS.NAMES.CAFFEINBERRY = "Coffee Plant" 
 STRINGS.NAMES.CAFFEINBERRY_BEAN = "Coffee Beans"
-STRINGS.NAMES.CAFFEINBERRY_BEAN_COOKED = "Roast Coffee Beans"
+STRINGS.NAMES.CAFFEINBERRY_BEAN_COOKED = "Roasted Coffee Beans"
 
 -- empty_cup
 STRINGS.NAMES.CUP = "Empty Cup"
-STRINGS.RECIPE_DESC.CUP = "Container for drinks."
+STRINGS.RECIPE_DESC.CUP = "It can't beat a potato cup, though."
 
 -- preparedrink
 
@@ -167,8 +167,8 @@ STRINGS.NAMES.DEATH_BY_TEA = "Ghostly Tea"
 
 -- prepareagedrink
 
-STRINGS.NAMES.CUP_STRANG = "Cup of Rotten"
-STRINGS.NAMES.BOTTLE_STRANG = "Bottle of Rotten"
+STRINGS.NAMES.CUP_STRANG = "Cup of Rot"
+STRINGS.NAMES.BOTTLE_STRANG = "Bottle of Rot"
 
 STRINGS.NAMES.CUP_SODA = "Cup of Sparkling Water"
 STRINGS.NAMES.BOTTLE_SODA = "Can of Sparkling Water"
@@ -205,3 +205,7 @@ STRINGS.NAMES.BOTTLE_GLOWBERRYWINE = "Bottle of Glowberry Wine"
 
 STRINGS.NAMES.CUP_KUMIS = "Cup of Kumis"
 STRINGS.NAMES.BOTTLE_KUMIS = "Bottle of Kumis"
+
+STRINGS.NAMES.CUP_GINSENG_LIQUOR = "Cup of Ginseng Infusion"
+STRINGS.NAMES.BOTTLE_GINSENG_LIQUOR = "Bottle of Ginseng Infusion"
+
