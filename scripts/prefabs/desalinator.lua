@@ -45,6 +45,15 @@ local function onbuilt(inst)
 	inst.AnimState:PushAnimation("idle")
 end
 
+local function SetSaltLoot(lootdropper)
+    local salts = math.floor(lootdropper.inst._saltvalue/10)
+    if salts > 0 then
+        for i=1,salts do
+            lootdropper:AddChanceLoot("saltrock", 1.00)
+        end
+    end
+end
+
 local function harvestsalt(inst)
     if inst._saltvalue >= 10 then
         inst.components.stewer.product = "saltrock"
@@ -147,7 +156,7 @@ end
 
 local function OnTakeWater(inst, watervalue, watertype)
     inst._saltvalue = inst._saltvalue + watervalue
-    inst._timer = TUNING.DESALINATION_TIEM * watervalue
+    inst._timer = TUNING.DESALINATION_TIME * watervalue
     Boiled(inst)
     if watervalue >= 15 then
     	inst.SoundEmitter:PlaySound("dontstarve/creatures/pengull/splash")
@@ -199,12 +208,18 @@ local function fn()
     inst._saltvalue = 0
 	
 	inst:AddComponent("lootdropper")
+    inst.components.lootdropper:SetLootSetupFn(SetSaltLoot)
+
 
     inst:AddComponent("inspectable")
     inst.components.inspectable.getstatus = getstatus
 
-    inst:AddComponent("stewer")
-    inst.components.stewer.onharvest = harvestfn
+    inst:AddComponent("timer")
+    inst:AddComponent("pickable")
+    inst.components.pickable.caninteractwith = false
+    inst.components.picakble.onpickedfn = OnPicked
+    inst.components.pickable.product = "saltrock"
+    inst.components.pickable.numtoharvest = 0
 
     inst:AddComponent("waterlevel")
     inst.components.waterlevel.watertype = WATERTYPE.SALTY

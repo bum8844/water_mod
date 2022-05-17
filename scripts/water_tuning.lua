@@ -30,6 +30,7 @@ local tuning =
     WATER_BARREL_TEMP_REDUCTION = 5,
     WATER_BARREL_PROTECTION_TIME = 30,
 	WATER_BARREL_DIST = 15,
+	BUCKET_DRINK_WAT = 10,
 
 	CAMP_KETTLE_MAX_LEVEL = 1,
 	KETTLE_MAX_LEVEL = 5,
@@ -61,7 +62,7 @@ local tuning =
 	DRINK_CALORIES = 5,
 
 	--알콜 부작용
-	STRANG_POISON = -2,
+	STRANGE_POISON = -2,
 	ALCOHOL_POISON = -5,
 	SANITY_POISON = -5,
 
@@ -92,9 +93,3 @@ local tuning =
 for i,v in pairs(tuning) do
 	TUNING[i] = v
 end
-
-
---[[KETTLE_SAVECFG = GetModConfigData("kettle_save")
-
-local language_cfg = GetModConfigData("language_cfg")
-AW_THIRST = GetModConfigData("aw_thirst")]]--
