@@ -24,7 +24,12 @@ local tuning =
 	CUP_MAX_LEVEL = 1,
 	BOTTLE_MAX_LEVEL = 10,
 	BUCKET_MAX_LEVEL = 20,
-	BUcKET_DRINK_WAT = 10,
+	-- 모이스쳐관련 값들
+	BUCKET_DRINK_WET = 10,
+    WATER_BARREL_EXTINGUISH_HEAT_PERCENT = -1,
+    WATER_BARREL_TEMP_REDUCTION = 5,
+    WATER_BARREL_PROTECTION_TIME = 30,
+	WATER_BARREL_DIST = 15,
 
 	CAMP_KETTLE_MAX_LEVEL = 1,
 	KETTLE_MAX_LEVEL = 5,
@@ -56,13 +61,12 @@ local tuning =
 	DRINK_CALORIES = 5,
 
 	--알콜 부작용
-	STRANG_POISON = -2,
 	ALCOHOL_POISON = -5,
 	SANITY_POISON = -5,
 
 	--만드는 시간(온도 조절은 특수 효과가 아님)
 	INCORRECT_BOIL = 4,
-	DESALINATION_TIEM = 8,
+	DESALINATION_TIME = 8,
 	KETTLE_WATER = 4, -- 물
 	KETTLE_TEA = 10, -- 녹차, 홍차, 보이
 	KETTLE_FRUIT = 11, -- 모든 과일 종류
@@ -87,9 +91,3 @@ local tuning =
 for i,v in pairs(tuning) do
 	TUNING[i] = v
 end
-
-
---[[KETTLE_SAVECFG = GetModConfigData("kettle_save")
-
-local language_cfg = GetModConfigData("language_cfg")
-AW_THIRST = GetModConfigData("aw_thirst")]]--

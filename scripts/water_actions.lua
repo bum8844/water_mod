@@ -56,7 +56,25 @@ FILL_BARREL.fn = function(act)
     end
 end
 
+local PURIFY = Action({priority=2, rmb=true})
+    PURIFY.id = "PURIFY"
+    PURIFY.str = STRINGS.ACTIONS.PURIFY
+    PURIFY.fn = function(act)
+    if act.invobject.components.purify:CanPurify(act.target) then
+        return act.invobject.components.purify:DoPurify(act.target, act.doer)
+    end
+end
+
 AddAction(FILL_BARREL)
+AddAction(PURIFY)
+
+local function purify(inst, doer, target, actions)
+    if inst:HasTag("purify_pile") or inst:HasTag("purify") then
+        if target:HasTag("purify_pile") or target:HasTag("purify") then
+            table.insert(actions, ACTIONS.PURIFY)
+        end
+    end
+end
 
 local function waterlevel(inst, doer, target, actions)
     for k, v in pairs(WATERTYPE) do
@@ -151,10 +169,13 @@ AddStategraphEvent("wilson",refresh_drunk_event)
 AddStategraphEvent("wilson",drunk_event)
 
 AddComponentAction("USEITEM", "water", waterlevel)
+AddComponentAction("USEITEM", "purify", purify)
+
 
 AddStategraphActionHandler("wilson", ActionHandler(ACTIONS.FILL_BARREL, "dolongaction"))
 AddStategraphActionHandler("wilson_client", ActionHandler(ACTIONS.FILL_BARREL, "dolongaction"))
-
+AddStategraphActionHandler("wilson", ActionHandler(ACTIONS.PURIFY, "dolongaction"))
+AddStategraphActionHandler("wilson_client", ActionHandler(ACTIONS.PURIFY, "dolongaction"))
 
 
 --[[

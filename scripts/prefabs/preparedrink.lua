@@ -22,6 +22,22 @@ local function onload(inst, data)
 	end
 end
 
+local function OnUnwrapped(inst, pos, doer)
+    local item = SpawnPrefab((inst:HasTag("strang") and "spoiled_food")or"wetgoop")
+    local bowl = SpawnPrefab((inst:HasTag("preparedrink_bottle") and "messagebottleempty")or"cup")
+    if inst:HasTag("preparedrink_bottle") then
+        local value = inst.components.finiteuses:GetUses()
+        for i=1, value do
+            SpawnPrefab((inst:HasTag("strang") and "spoiled_food")or"wetgoop").Transform:SetPosition(pos:Get())
+        end
+        bowl.Transform:SetPosition(pos:Get())
+    else
+        item.Transform:SetPosition(pos:Get())
+        bowl.Transform:SetPosition(pos:Get())
+    end
+    inst:Remove()
+end
+
 local function OnApplied(inst, final_use, doer, target)
     local x, y, z = inst.Transform:GetWorldPosition()
     local refund = nil
@@ -44,24 +60,34 @@ local function OnApplied(inst, final_use, doer, target)
 end
 
 local function MakePreparedCupDrink(data)
+
+    local name = data.name
+    local prefabs = data.prefabs
+    local overridebuild = data.overridebuild
+    local basename = data.basename ~= nil and data.basename or data.name
+    local spice = nil
+
 	local drinkassets =
 	{
 		Asset("ANIM", "anim/kettle_drink.zip"),
 	}
-	
-	local _name = data.name
-	local _prefabs = data.prefabs
-	local _overridebuild = data.overridebuild
-	local _basename = data.basename
 
-	if _overridebuild then
-        table.insert(drinkassets, Asset("ANIM", "anim/".._overridebuild..".zip"))
+	if overridebuild then
+        table.insert(drinkassets, Asset("ANIM", "anim/"..overridebuild..".zip"))
 	end
 
+    local function DisplayNameFn(inst)
+        return subfmt( STRINGS.NAMES["CUP_ITEM"],{drink=STRINGS.NAMES[string.upper(basename)]})
+    end 
+
+    local function DisplaySpiceNameFn(inst)
+        return subfmt( STRINGS.NAMES["SPICE_CUP_ITEM"],{drink=STRINGS.NAMES[string.upper(basename)]})
+    end
+
     local drinkprefabs = prefabs
-    if _prefabs ~= nil then
+    if prefabs ~= nil then
         drinkprefabs = shallowcopy(prefabs)
-        for i, v in ipairs(_prefabs) do
+        for i, v in ipairs(prefabs) do
             if not table.contains(drinkprefabs, v) then
                 table.insert(drinkprefabs, v)
             end
@@ -79,13 +105,13 @@ local function MakePreparedCupDrink(data)
         MakeInventoryPhysics(inst)
 
 		local food_symbol_build = nil
-		inst.AnimState:SetBuild(_overridebuild or "kettle_drink")
+		inst.AnimState:SetBuild(overridebuild or "kettle_drink")
 		inst.AnimState:SetBank("kettle_drink")
 
         inst.AnimState:PlayAnimation("idle")
-        inst.AnimState:OverrideSymbol("swap", _overridebuild or "kettle_drink", _basename or "cup_".._name)
+        inst.AnimState:OverrideSymbol("swap", overridebuild or "kettle_drink", "cup_"..basename or "cup_"..name)
 		
-        if _name == "glowberrywine" or _name == "colaquantum" then
+        if name == "glowberrywine" or name == "colaquantum" then
             inst.AnimState:SetBloomEffectHandle("shaders/anim.ksh")
 
             inst.entity:AddLight()
@@ -98,6 +124,7 @@ local function MakePreparedCupDrink(data)
         end
 
         inst:AddTag("preparedrink_cup")
+        inst:AddTag("preparedrink")
         inst:AddTag("pre-preparedfood")
         inst:AddTag("drink")
 
@@ -108,13 +135,18 @@ local function MakePreparedCupDrink(data)
         end
 
         if not inst:HasTag("common") then
-            inst:AddTag(_name)
+            inst:AddTag(name)
             inst:AddTag("show_spoiled")
             inst:AddTag("icebox_valid")
         end
 
-        if _basename ~= nil then
-            inst:SetPrefabNameOverride("cup_".._basename)
+        if basename ~= nil then
+            inst:SetPrefabNameOverride(basename)
+            if spice ~= nil then
+                inst.displaynamefn = DisplaySpiceNameFn
+            else
+                inst.displaynamefn = DisplayNameFn
+            end
         end
 
         if data.floater ~= nil then
@@ -123,8 +155,12 @@ local function MakePreparedCupDrink(data)
             MakeInventoryFloatable(inst)
         end
 
-        if _name == "strang" then
+        if name == "strang" then
             MakeDeployableFertilizerPristine(inst)
+        end
+
+        if name == "strang" or name == "garbage" then
+            inst:AddTag("unwrappable")
         end
 
         inst.entity:SetPristine()
@@ -133,40 +169,43 @@ local function MakePreparedCupDrink(data)
             return inst
         end
 
-		inst.food_symbol_build = food_symbol_build or _overridebuild
+		inst.food_symbol_build = food_symbol_build or overridebuild
 
-        inst:AddComponent("edible")
-        inst.components.edible.healthvalue = data.health
-        inst.components.edible.hungervalue = data.hunger
-        inst.components.edible.thirstvalue = data.thirst
-        inst.components.edible.foodtype = data.foodtype or FOODTYPE.GOODIES
-        inst.components.edible.secondaryfoodtype = data.secondaryfoodtype or nil
-        inst.components.edible.sanityvalue = data.sanity or 0
-        inst.components.edible.temperaturedelta = data.temperature or 0
-        inst.components.edible.temperatureduration = data.temperatureduration or 0
-        inst.components.edible.nochill = data.nochill or nil
-        inst.components.edible:SetOnEatenFn(data.oneatenfn)
+        if not inst:HasTag("strang") and not inst:HasTag("garbage") then
+            inst:AddComponent("edible")
+            inst.components.edible.healthvalue = data.health
+            inst.components.edible.hungervalue = data.hunger
+            inst.components.edible.thirstvalue = data.thirst
+            inst.components.edible.foodtype = data.foodtype or FOODTYPE.GOODIES
+            inst.components.edible.secondaryfoodtype = data.secondaryfoodtype or nil
+            inst.components.edible.sanityvalue = data.sanity or 0
+            inst.components.edible.temperaturedelta = data.temperature or 0
+            inst.components.edible.temperatureduration = data.temperatureduration or 0
+            inst.components.edible.nochill = data.nochill or nil
+            inst.components.edible:SetOnEatenFn(data.oneatenfn)
+        else
+            inst:AddComponent("unwrappable")
+            inst.components.unwrappable:SetOnUnwrappedFn(OnUnwrapped)
+        end
 
         inst:AddComponent("inspectable")
         inst.wet_prefix = data.wet_prefix
 
         if inst:HasTag("common") then
+            if inst:HasTag("purify") then
+                inst:AddComponent("purify")
+            end
             inst:AddTag("watercan")
 
             inst:AddComponent("water")
             inst.components.water.watervalue = TUNING.CUP_MAX_LEVEL
-            inst.components.water.watertype = WATERTYPE[string.upper( _name == "water" and "clean" or _name == "salt" and "salty" or _name )]
+            inst.components.water.watertype = WATERTYPE[string.upper( name == "water" and "clean" or name == "salt" and "salty" or name )]
         end
 
 		inst:AddComponent("inventoryitem")
-		inst.replica.inventoryitem:SetImage("cup_".._name)
+		inst.replica.inventoryitem:SetImage("cup_"..name)
 		inst.components.inventoryitem.atlasname = "images/tea_inventoryitem.xml"
-		inst.components.inventoryitem.imagename = "cup_".._name
-		
-
-		if data.basename ~= nil then
-            inst.components.inventoryitem:ChangeImageName("cup_".._basename)
-        end
+		inst.components.inventoryitem.imagename = "cup_"..name
 
         inst:AddComponent("stackable")
         inst.components.stackable.maxsize = TUNING.STACK_SIZE_SMALLITEM
@@ -270,24 +309,34 @@ local function OnFill(inst, from_object)
 end
 
 local function MakePreparedBottleDrink(data)
+
+    local name = data.name
+    local prefabs = data.prefabs
+    local overridebuild = data.overridebuild
+    local basename = data.basename ~= nil and data.basename or data.name
+    local spice = nil
+
 	local drinkassets =
 	{
 		Asset("ANIM", "anim/kettle_bottle_drink.zip"),
 	}
-	
-	local _name = data.name
-	local _prefabs = data.prefabs
-	local _overridebuild = data.overridebuild
-	local _basename = data.basename
 
-	if _overridebuild then
-        table.insert(drinkassets, Asset("ANIM", "anim/".._overridebuild..".zip"))
+	if overridebuild then
+        table.insert(drinkassets, Asset("ANIM", "anim/"..overridebuild..".zip"))
 	end
 
+    local function DisplayNameFn(inst)
+        return subfmt( STRINGS.NAMES["BOTTLE_ITEM"],{drink=STRINGS.NAMES[string.upper(basename)]})
+    end 
+
+    local function DisplaySpiceNameFn(inst)
+        return subfmt( STRINGS.NAMES["SPICE_BOTTLE_ITEM"],{drink=STRINGS.NAMES[string.upper(basename)]})
+    end
+
     local drinkprefabs = prefabs
-    if _prefabs ~= nil then
+    if prefabs ~= nil then
         drinkprefabs = shallowcopy(prefabs)
-        for i, v in ipairs(_prefabs) do
+        for i, v in ipairs(prefabs) do
             if not table.contains(drinkprefabs, v) then
                 table.insert(drinkprefabs, v)
             end
@@ -305,13 +354,13 @@ local function MakePreparedBottleDrink(data)
         MakeInventoryPhysics(inst)
 
 		local food_symbol_build = nil
-		inst.AnimState:SetBuild(_overridebuild or "kettle_bottle_drink")
+		inst.AnimState:SetBuild(overridebuild or "kettle_bottle_drink")
 		inst.AnimState:SetBank("kettle_bottle_drink")
 
         inst.AnimState:PlayAnimation("idle")
-        inst.AnimState:OverrideSymbol("swap", _overridebuild or "kettle_bottle_drink", _basename or "bottle_".._name)
+        inst.AnimState:OverrideSymbol("swap", overridebuild or "kettle_bottle_drink", "bottle_"..basename or "bottle_"..name)
 		
-        if _name == "glowberrywine" then
+        if name == "glowberrywine" then
             inst.AnimState:SetBloomEffectHandle("shaders/anim.ksh")
 
             inst.entity:AddLight()
@@ -325,6 +374,7 @@ local function MakePreparedBottleDrink(data)
         end
 
         inst:AddTag("preparedrink_bottle")
+        inst:AddTag("preparedrink")
         inst:AddTag("pre-preparedfood")
         inst:AddTag("drink")
 
@@ -335,14 +385,18 @@ local function MakePreparedBottleDrink(data)
         end
 
         if not inst:HasTag("common") then
-            inst:AddTag(_name)
+            inst:AddTag(name)
             inst:AddTag("show_spoiled")
             inst:AddTag("icebox_valid")
         end
 
-
-        if _basename ~= nil then
-            inst:SetPrefabNameOverride("bottle_".._basename)
+        if basename ~= nil then
+            inst:SetPrefabNameOverride(basename)
+            if spice ~= nil then
+                inst.displaynamefn = DisplaySpiceNameFn
+            else
+                inst.displaynamefn = DisplayNameFn
+            end
         end
 
         if data.floater ~= nil then
@@ -351,8 +405,12 @@ local function MakePreparedBottleDrink(data)
             MakeInventoryFloatable(inst)
         end
 
-        if _name == "strang" then
+        if name == "strang" then
             MakeDeployableFertilizerPristine(inst)
+        end
+
+        if name == "strang" or name == "garbage" then
+            inst:AddTag("unwrappable")
         end
 
         inst.entity:SetPristine()
@@ -361,24 +419,29 @@ local function MakePreparedBottleDrink(data)
             return inst
         end
 
-		inst.food_symbol_build = food_symbol_build or _overridebuild
+		inst.food_symbol_build = food_symbol_build or overridebuild
 
         inst:AddComponent("fillable")
         inst.components.fillable.overrideonfillfn = OnFill
         inst.components.fillable.showoceanaction = true
         inst.components.fillable.acceptsoceanwater = true
 
-        inst:AddComponent("edible")
-        inst.components.edible.healthvalue = data.health
-        inst.components.edible.hungervalue = data.hunger
-        inst.components.edible.thirstvalue = data.thirst
-        inst.components.edible.foodtype = data.foodtype or FOODTYPE.GOODIES
-        inst.components.edible.secondaryfoodtype = data.secondaryfoodtype or nil
-        inst.components.edible.sanityvalue = data.sanity or 0
-        inst.components.edible.temperaturedelta = data.temperature or 0
-        inst.components.edible.temperatureduration = data.temperatureduration or 0
-        inst.components.edible.nochill = data.nochill or nil
-        inst.components.edible:SetOnEatenFn(data.oneatenfn)
+        if not inst:HasTag("strang") and not inst:HasTag("garbage") then
+            inst:AddComponent("edible")
+            inst.components.edible.healthvalue = data.health
+            inst.components.edible.hungervalue = data.hunger
+            inst.components.edible.thirstvalue = data.thirst
+            inst.components.edible.foodtype = data.foodtype or FOODTYPE.GOODIES
+            inst.components.edible.secondaryfoodtype = data.secondaryfoodtype or nil
+            inst.components.edible.sanityvalue = data.sanity or 0
+            inst.components.edible.temperaturedelta = data.temperature or 0
+            inst.components.edible.temperatureduration = data.temperatureduration or 0
+            inst.components.edible.nochill = data.nochill or nil
+            inst.components.edible:SetOnEatenFn(data.oneatenfn)
+        else
+            inst:AddComponent("unwrappable")
+            inst.components.unwrappable:SetOnUnwrappedFn(OnUnwrapped)
+        end
 
         inst:AddComponent("inspectable")
         inst.wet_prefix = data.wet_prefix
@@ -388,21 +451,20 @@ local function MakePreparedBottleDrink(data)
         inst.components.finiteuses:SetUses(TUNING.BOTTLE_MAX_LEVEL)
 
         if inst:HasTag("common") then
+            if inst:HasTag("purify") then
+                inst:AddComponent("purify")
+            end
             inst:AddTag("watercan")
 
             inst:AddComponent("water")
             inst.components.water.watervalue = TUNING.BOTTLE_MAX_LEVEL
-            inst.components.water.watertype = WATERTYPE[string.upper( _name == "water" and "clean" or _name == "salt" and "salty" or _name )]
+            inst.components.water.watertype = WATERTYPE[string.upper( name == "water" and "clean" or name == "salt" and "salty" or name )]
         end
 
 		inst:AddComponent("inventoryitem")
-		inst.replica.inventoryitem:SetImage("bottle_".._name)
+		inst.replica.inventoryitem:SetImage("bottle_"..name)
 		inst.components.inventoryitem.atlasname = "images/tea_inventoryitem.xml"
-		inst.components.inventoryitem.imagename = "bottle_".._name
-		
-		if data.basename ~= nil then
-            inst.components.inventoryitem:ChangeImageName(data.basename)
-        end
+		inst.components.inventoryitem.imagename = "bottle_"..name
 
         if data.perishtime ~= nil and data.perishtime > 0 and not inst:HasTag("strang") then
             inst:AddComponent("perishable")

@@ -138,7 +138,7 @@ end
 
 local function OnTakeWater(inst, watervalue, watertype)
     inst._saltvalue = inst._saltvalue + watervalue
-    inst._timer = TUNING.DESALINATION_TIEM * watervalue
+    inst._timer = TUNING.DESALINATION_TIME * watervalue
     Boiled(inst)
     if watervalue >= 15 then
     	inst.SoundEmitter:PlaySound("dontstarve/creatures/pengull/splash")

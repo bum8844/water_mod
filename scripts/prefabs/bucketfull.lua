@@ -33,7 +33,7 @@ local function oneaten(inst, eater)
 
 	if eater:HasTag("player") then
 		local old_moisture = eater.components.moisture.moisture
-		eater.components.moisture.moisture = old_moisture + TUNING.BUcKET_DRINK_WAT
+		eater.components.moisture.moisture = old_moisture + TUNING.BUCKET_DRINK_WAT
 	end
 
 end
@@ -80,6 +80,10 @@ local function MakeBucket(data)
 	
 	local name = data.name
 	local anim = data.anim
+
+	local function DisplayNameFn(inst)
+		return subfmt( STRINGS.NAMES["BUCKET_FULL"],{drink=STRINGS.NAMES[string.upper(name)]})
+	end
 	
     local function fn()
 		local inst = CreateEntity()
@@ -96,7 +100,9 @@ local function MakeBucket(data)
 		inst.AnimState:PlayAnimation(anim)
 
 		inst:AddTag("drink")
-		
+
+		inst.displaynamefn = DisplayNameFn
+
 		inst.entity:SetPristine()
 
 		if not TheWorld.ismastersim then
@@ -114,6 +120,7 @@ local function MakeBucket(data)
 		inst:AddComponent("temperature")
 		
 		inst:AddComponent("inventoryitem")
+		inst.replica.inventoryitem:SetImage("bucket_"..name)
 		inst.components.inventoryitem.atlasname = "images/tea_inventoryitem.xml"
 		inst.components.inventoryitem.imagename = "bucket_"..anim
 		

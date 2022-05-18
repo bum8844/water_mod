@@ -1,5 +1,7 @@
 require "prefabutil"
 
+local MOISTURE_ON_BURNT_MULTIPLIER = 0.1
+
 local assets =
 {
     Asset("ANIM", "anim/barrel.zip"),
@@ -11,10 +13,21 @@ local prefabs =
 	"collapse_small",
 }
 
+local function GetWet(inst)
+	if inst.components.waterlevel.currentwater > 0 and not inst:HasTag("burnt") then
+	    inst.components.wateryprotection.addwetness = inst.components.waterlevel.currentwater * TUNING.BUCKET_DRINK_WAT
+		SpawnPrefab("waterballoon_splash").Transform:SetPosition(inst.Transform:GetWorldPosition())
+		inst.SoundEmitter:KillSound("destroy")
+		inst.SoundEmitter:PlaySound("dontstarve/creatures/pengull/splash")
+		inst.components.wateryprotection:SpreadProtection(inst)
+	end
+end
+
 local function onhammered(inst, worker)
 	inst.components.lootdropper:DropLoot()
 	SpawnPrefab("collapse_small").Transform:SetPosition(inst.Transform:GetWorldPosition())
-	inst.SoundEmitter:PlaySound("dontstarve/common/destroy_stone")
+	inst.SoundEmitter:PlaySound("dontstarve/common/destroy_stone", "destroy")
+	GetWet(inst)
 	inst:Remove()
 end
 
@@ -31,7 +44,7 @@ local function onbuilt(inst)
 end
 
 local function onburnt(inst)
-	local amount = math.ceil(inst.components.waterlevel:GetPercent() * inst.components.wateryprotection.addwetness * MOISTURE_ON_BURNT_MULTIPLIER)
+	local amount = math.ceil(inst.components.waterlevel.currentwater * inst.components.wateryprotection.addwetness * MOISTURE_ON_BURNT_MULTIPLIER)
 	if amount > 0 then
 		local x, y, z = inst.Transform:GetWorldPosition()
 		TheWorld.components.farming_manager:AddSoilMoistureAtPoint(x, 0, z, amount)
@@ -122,6 +135,13 @@ local function fn()
 
 	inst:AddComponent("watersource")
 	inst.components.watersource.available = false
+
+	inst:AddComponent("wateryprotection")
+    inst.components.wateryprotection.extinguishheatpercent = TUNING.WATER_BARREL_EXTINGUISH_HEAT_PERCENT
+    inst.components.wateryprotection.temperaturereduction = TUNING.WATER_BARREL_TEMP_REDUCTION
+    inst.components.wateryprotection.witherprotectiontime = TUNING.WATER_BARREL_PROTECTION_TIME
+    inst.components.wateryprotection.addwetness = 0 -- 물의 양에따라 변형
+    inst.components.wateryprotection.protection_dist = TUNING.WATER_BARREL_DIST
 	
 	MakeMediumBurnable(inst, nil, nil, true)
     MakeSmallPropagator(inst)

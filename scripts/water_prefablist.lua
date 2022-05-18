@@ -4,6 +4,7 @@ return {
 	"bucketfull",
 	"bucketice",
 	"cup",
+	"purification_tablets",
 
 	--structures
 	"barrel",
@@ -21,6 +22,9 @@ return {
 	"tea_tree",
 	"tea_seed",
 
-	--buuf
+	--buff
 	"drinkbuff",
+
+	--fx
+	"campkettlefire",
 }
