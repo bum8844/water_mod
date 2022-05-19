@@ -102,11 +102,15 @@ local function waterlevel(inst, doer, target, actions)
     end
 end
 
+
 local function drinking(inst, doer, target, actions)
     if inst:HasTag("drink") or target:HasTag("drink") then
         table.insert(actions, ACTIONS.DRINKING)
     end
 end
+
+
+AddComponentAction("USEITEM", "water", waterlevel)
 
 
 local drunk = State{
@@ -281,6 +285,7 @@ AddStategraphEvent("wilson",drink_event)
 AddComponentAction("USEITEM", "water", waterlevel)
 AddComponentAction("USEITEM", "purify", purify)
 AddComponentAction("DRINKING", "eater", drinking)
+
 
 AddStategraphActionHandler("wilson", ActionHandler(ACTIONS.FILL_BARREL, "dolongaction"))
 AddStategraphActionHandler("wilson_client", ActionHandler(ACTIONS.FILL_BARREL, "dolongaction"))
