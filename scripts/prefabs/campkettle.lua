@@ -89,6 +89,10 @@ local function onbuilt(inst)
     inst.AnimState:PlayAnimation("place")
     inst.AnimState:PushAnimation("idle_empty", false)
     inst.SoundEmitter:PlaySound("dontstarve/common/fireAddFuel")
+    inst:DoTaskInTime(.2,function(inst)
+    inst.SoundEmitter:PlaySound("dontstarve/common/meat_rack_craft")
+        inst:DoTaskInTime(.5,function(inst)inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_close")end)
+    end)
 end
 
 local SECTION_STATUS =

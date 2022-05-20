@@ -23,12 +23,12 @@ local function onload(inst, data)
 end
 
 local function OnUnwrapped(inst, pos, doer)
-    local item = SpawnPrefab((inst:HasTag("strang") and "spoiled_food")or"wetgoop")
+    local item = SpawnPrefab((inst:HasTag("spoiled") and "spoiled_food")or"wetgoop")
     local bowl = SpawnPrefab((inst:HasTag("preparedrink_bottle") and "messagebottleempty")or"cup")
     if inst:HasTag("preparedrink_bottle") then
         local value = inst.components.finiteuses:GetUses()
         for i=1, value do
-            SpawnPrefab((inst:HasTag("strang") and "spoiled_food")or"wetgoop").Transform:SetPosition(pos:Get())
+            SpawnPrefab((inst:HasTag("spoiled") and "spoiled_food")or"wetgoop").Transform:SetPosition(pos:Get())
         end
         bowl.Transform:SetPosition(pos:Get())
     else
@@ -155,11 +155,11 @@ local function MakePreparedCupDrink(data)
             MakeInventoryFloatable(inst)
         end
 
-        if name == "strang" then
+        if name == "spoiled" then
             MakeDeployableFertilizerPristine(inst)
         end
 
-        if name == "strang" or name == "garbage" then
+        if name == "spoiled" or name == "garbage" then
             inst:AddTag("unwrappable")
         end
 
@@ -171,8 +171,9 @@ local function MakePreparedCupDrink(data)
 
 		inst.food_symbol_build = food_symbol_build or overridebuild
 
-        if not inst:HasTag("strang") and not inst:HasTag("garbage") then
+        if not inst:HasTag("spoiled") and not inst:HasTag("garbage") then
             inst:AddComponent("edible")
+            inst.components.edible.isdrink = true
             inst.components.edible.healthvalue = data.health
             inst.components.edible.hungervalue = data.hunger
             inst.components.edible.thirstvalue = data.thirst
@@ -210,14 +211,14 @@ local function MakePreparedCupDrink(data)
         inst:AddComponent("stackable")
         inst.components.stackable.maxsize = TUNING.STACK_SIZE_SMALLITEM
 
-        if data.perishtime ~= nil and data.perishtime > 0 and not inst:HasTag("strang") then
+        if data.perishtime ~= nil and data.perishtime > 0 and not inst:HasTag("spoiled") then
             inst:AddComponent("perishable")
             inst.components.perishable:SetPerishTime(data.perishtime ~= nil and data.perishtime or nil)
             inst.components.perishable:StartPerishing()
-            inst.components.perishable.onperishreplacement = "cup_strang"
+            inst.components.perishable.onperishreplacement = "cup_spoiled"
         end
 
-        if inst:HasTag("strang") then
+        if inst:HasTag("spoiled") then
             inst:AddComponent("fertilizer")
             inst.components.fertilizer.fertilizervalue = TUNING.SPOILEDFOOD_FERTILIZE
             inst.components.fertilizer.soil_cycles = TUNING.SPOILEDFOOD_SOILCYCLES
@@ -405,11 +406,11 @@ local function MakePreparedBottleDrink(data)
             MakeInventoryFloatable(inst)
         end
 
-        if name == "strang" then
+        if name == "spoiled" then
             MakeDeployableFertilizerPristine(inst)
         end
 
-        if name == "strang" or name == "garbage" then
+        if name == "spoiled" or name == "garbage" then
             inst:AddTag("unwrappable")
         end
 
@@ -426,8 +427,9 @@ local function MakePreparedBottleDrink(data)
         inst.components.fillable.showoceanaction = true
         inst.components.fillable.acceptsoceanwater = true
 
-        if not inst:HasTag("strang") and not inst:HasTag("garbage") then
+        if not inst:HasTag("spoiled") and not inst:HasTag("garbage") then
             inst:AddComponent("edible")
+            inst.components.edible.isdrink = true
             inst.components.edible.healthvalue = data.health
             inst.components.edible.hungervalue = data.hunger
             inst.components.edible.thirstvalue = data.thirst
@@ -466,14 +468,14 @@ local function MakePreparedBottleDrink(data)
 		inst.components.inventoryitem.atlasname = "images/tea_inventoryitem.xml"
 		inst.components.inventoryitem.imagename = "bottle_"..name
 
-        if data.perishtime ~= nil and data.perishtime > 0 and not inst:HasTag("strang") then
+        if data.perishtime ~= nil and data.perishtime > 0 and not inst:HasTag("spoiled") then
             inst:AddComponent("perishable")
             inst.components.perishable:SetPerishTime(data.perishtime ~= nil and data.perishtime+TUNING.PERISH_SUPERSLOW or nil)
             inst.components.perishable:StartPerishing()
-            inst.components.perishable.onperishreplacement = "bottle_strang"
+            inst.components.perishable.onperishreplacement = "bottle_spoiled"
         end
 
-        if inst:HasTag("strang") then
+        if inst:HasTag("spoiled") then
             inst:AddComponent("fertilizer")
             inst.components.fertilizer.fertilizervalue = TUNING.SPOILEDFOOD_FERTILIZE
             inst.components.fertilizer.soil_cycles = TUNING.SPOILEDFOOD_SOILCYCLES

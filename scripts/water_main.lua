@@ -289,6 +289,7 @@ end)
 
 
 AddComponentPostInit("edible", function(self)
+	self.isdrink = false
 	self.thirstvalue = 0
 
 	function self:GetThirst(eater)
