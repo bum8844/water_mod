@@ -22,6 +22,9 @@ return {
 	"tea_tree",
 	"tea_seed",
 
-	--buuf
+	--buff
 	"drinkbuff",
+
+	--fx
+	"campkettlefire",
 }

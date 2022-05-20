@@ -70,7 +70,7 @@ local drinks =
 		hunger = TUNING.DRINK_CALORIES,
 		sanity = 0,
 		thirst = TUNING.HYDRATION_TINY,
-		tags = {"common","dirty"},
+		tags = {"common","dirty","purify"},
 		oneatenfn = function(inst, eater)
 			if inst:HasTag("preparedrink_cup") then
 				returncup(inst, eater)

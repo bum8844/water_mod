@@ -1,6 +1,6 @@
 local assets =
 {
-	Asset("ANIM", "anim/tea_tree_seed.zip"),
+	Asset("ANIM", "anim/purification_tablets.zip"),
 	Asset("IMAGE", "images/tea_inventoryitem.tex"),
 	Asset("ATLAS", "images/tea_inventoryitem.xml"),
 }
@@ -14,11 +14,15 @@ local function fn()
     inst.entity:AddSoundEmitter()
     inst.entity:AddNetwork()
 
+    inst:AddTag("tradable")
+
     MakeInventoryPhysics(inst)	
 
-    inst.AnimState:SetBuild("tea_seed")
-    inst.AnimState:SetBank("tea_tree_seed")
+    inst.AnimState:SetBuild("purification_tablets")
+    inst.AnimState:SetBank("purification_tablets")
     inst.AnimState:PlayAnimation("idle")
+
+    inst:AddTag("purify_pill")
 
     inst.entity:SetPristine()
 
@@ -35,9 +39,11 @@ local function fn()
     inst:AddComponent("stackable")
     inst.components.stackable.maxsize = TUNING.STACK_SIZE_SMALLITEM
 
+    inst:AddComponent("purify")
+
     inst:AddComponent("inventoryitem")
 	inst.components.inventoryitem.atlasname = "images/tea_inventoryitem.xml"
-    inst.components.inventoryitem.imagename = "tea_seed"
+    inst.components.inventoryitem.imagename = "purification_tablets"
 
     MakeHauntableLaunchAndSmash(inst)
 

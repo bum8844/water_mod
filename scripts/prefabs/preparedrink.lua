@@ -109,7 +109,7 @@ local function MakePreparedCupDrink(data)
 		inst.AnimState:SetBank("kettle_drink")
 
         inst.AnimState:PlayAnimation("idle")
-        inst.AnimState:OverrideSymbol("swap", overridebuild or "kettle_drink", basename or "cup_"..name)
+        inst.AnimState:OverrideSymbol("swap", overridebuild or "kettle_drink", "cup_"..basename or "cup_"..name)
 		
         if name == "glowberrywine" or name == "colaquantum" then
             inst.AnimState:SetBloomEffectHandle("shaders/anim.ksh")
@@ -124,6 +124,7 @@ local function MakePreparedCupDrink(data)
         end
 
         inst:AddTag("preparedrink_cup")
+        inst:AddTag("preparedrink")
         inst:AddTag("pre-preparedfood")
         inst:AddTag("drink")
 
@@ -191,6 +192,9 @@ local function MakePreparedCupDrink(data)
         inst.wet_prefix = data.wet_prefix
 
         if inst:HasTag("common") then
+            if inst:HasTag("purify") then
+                inst:AddComponent("purify")
+            end
             inst:AddTag("watercan")
 
             inst:AddComponent("water")
@@ -358,7 +362,7 @@ local function MakePreparedBottleDrink(data)
 		inst.AnimState:SetBank("kettle_bottle_drink")
 
         inst.AnimState:PlayAnimation("idle")
-        inst.AnimState:OverrideSymbol("swap", overridebuild or "kettle_bottle_drink", basename or "bottle_"..name)
+        inst.AnimState:OverrideSymbol("swap", overridebuild or "kettle_bottle_drink", "bottle_"..basename or "bottle_"..name)
 		
         if name == "glowberrywine" then
             inst.AnimState:SetBloomEffectHandle("shaders/anim.ksh")
@@ -374,6 +378,7 @@ local function MakePreparedBottleDrink(data)
         end
 
         inst:AddTag("preparedrink_bottle")
+        inst:AddTag("preparedrink")
         inst:AddTag("pre-preparedfood")
         inst:AddTag("drink")
 
@@ -450,6 +455,9 @@ local function MakePreparedBottleDrink(data)
         inst.components.finiteuses:SetUses(TUNING.BOTTLE_MAX_LEVEL)
 
         if inst:HasTag("common") then
+            if inst:HasTag("purify") then
+                inst:AddComponent("purify")
+            end
             inst:AddTag("watercan")
 
             inst:AddComponent("water")
@@ -465,7 +473,6 @@ local function MakePreparedBottleDrink(data)
         --[[if data.basename ~= nil then
             inst.components.inventoryitem:ChangeImageName(data.basename)
         end]]
-
 
         if data.perishtime ~= nil and data.perishtime > 0 and not inst:HasTag("strang") then
             inst:AddComponent("perishable")

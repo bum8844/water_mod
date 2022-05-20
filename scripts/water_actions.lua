@@ -82,6 +82,7 @@ AddAction(FILL_BARREL)
 AddAction(PURIFY)
 AddAction(DRINKING)
 
+
 local function purify(inst, doer, target, actions)
     if inst:HasTag("purify_pile") or inst:HasTag("purify") then
         if target:HasTag("purify_pile") or target:HasTag("purify") then
@@ -285,6 +286,7 @@ AddStategraphEvent("wilson",drink_event)
 AddComponentAction("USEITEM", "water", waterlevel)
 AddComponentAction("USEITEM", "purify", purify)
 AddComponentAction("DRINKING", "eater", drinking)
+
 
 
 AddStategraphActionHandler("wilson", ActionHandler(ACTIONS.FILL_BARREL, "dolongaction"))

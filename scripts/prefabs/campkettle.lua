@@ -205,7 +205,7 @@ local function fn()
 
     inst:AddComponent("burnable")
     --inst.components.burnable:SetFXLevel(2)
-    inst.components.burnable:AddBurnFX("campfirefire", Vector3())
+    inst.components.burnable:AddBurnFX("campkettlefire", Vector3())
     inst:ListenForEvent("onextinguish", onextinguish)
 
     -------------------------

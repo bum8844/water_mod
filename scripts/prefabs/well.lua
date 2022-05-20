@@ -110,7 +110,7 @@ local function OnRefuseItem(inst, giver, item)
 	elseif inst.AnimState:IsCurrentAnimation("watering") or inst.AnimState:IsCurrentAnimation("idle_watering") or inst.AnimState:IsCurrentAnimation("shack_watering") then
 		giver.components.talker:Say(GetString(giver,"WELLSTATUS",{"BUSY"}))
 	else
-		giver.components.talker:Say(GetString(giver,"WELLSTATUS",{"WRONG_TIEM"}))
+		giver.components.talker:Say(GetString(giver,"WELLSTATUS",{"WRONG_TIME"}))
 	end
 end
 
