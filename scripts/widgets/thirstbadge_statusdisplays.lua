@@ -93,9 +93,9 @@ local function thirstbadge_statusdisplays(self)
 	        if not data.overtime then
 	            if data.newpercent > data.oldpercent then
 	                self.waterstomach:PulseGreen()
-	                TheFrontEnd:GetSound():PlaySound("dontstarve/HUD/hunger_up")
+	                TheFrontEnd:GetSound():PlaySound("drink_fx/HUD/thirst_up","thirst_up",0.7)
 	            elseif data.newpercent < data.oldpercent then
-	                TheFrontEnd:GetSound():PlaySound("dontstarve/HUD/hunger_down")
+	                TheFrontEnd:GetSound():PlaySound("drink_fx/HUD/thirst_down","thirst_down",0.7)
 	                self.waterstomach:PulseRed()
 	            end
 	        end

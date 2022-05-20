@@ -17,6 +17,16 @@ local prefabs =
 	"collapse_small",
 }
 
+local function GetWet(inst)
+    if inst.components.waterlevel.currentwater > 0 and not inst:HasTag("burnt") then
+        inst.components.wateryprotection.addwetness = inst.components.waterlevel.currentwater * TUNING.BUCKET_DRINK_WAT
+        SpawnPrefab("waterballoon_splash").Transform:SetPosition(inst.Transform:GetWorldPosition())
+        inst.SoundEmitter:KillSound("destroy")
+        inst.SoundEmitter:PlaySound("dontstarve/creatures/pengull/splash")
+        inst.components.wateryprotection:SpreadProtection(inst)
+    end
+end
+
 local function onhammered(inst, worker)
     if inst.components.burnable ~= nil and inst.components.burnable:IsBurning() then
         inst.components.burnable:Extinguish()
@@ -28,6 +38,7 @@ local function onhammered(inst, worker)
     local fx = SpawnPrefab("collapse_small")
     fx.Transform:SetPosition(inst.Transform:GetWorldPosition())
     fx:SetMaterial("wood")
+    GetWet(inst)
     inst:Remove()
 end
 
@@ -53,6 +64,7 @@ local function onbuilt(inst)
     inst.AnimState:PlayAnimation("place")
 	inst.AnimState:PushAnimation("idle_empty", false)
     inst.SoundEmitter:PlaySound("dontstarve/common/lean_to_craft")
+    inst:DoTaskInTime(1.2, function(inst) inst.SoundEmitter:PlaySound("dontstarve/creatures/together/stagehand/hit")end)
 end
 
 local function startcookfn(inst)
@@ -111,7 +123,7 @@ local function donecookfn(inst)
         inst.components.waterlevel.accepting = false
         inst.AnimState:PlayAnimation("cooking_pst")
         inst.AnimState:PushAnimation("idle_full", false)
-        if inst.components.stewer.product == "strang" then
+        if inst.components.stewer.product == "spoiled" then
             inst.components.waterlevel.item_watertype = WATERTYPE.DIRTY
             inst.AnimState:OverrideSymbol("swap", "brewery_meter_dirty", tostring(inst._waterlevel))
         end
@@ -191,7 +203,7 @@ local function OnSectionChange(new, old, inst)
 end
 
 local function Install_components(inst)
-    inst.components.stewer.spoiledproduct = "strang"
+    inst.components.stewer.spoiledproduct = "spoiled"
     inst.components.stewer.onstartcooking = startcookfn
     inst.components.stewer.oncontinuecooking = continuecookfn
     inst.components.stewer.oncontinuedone = continuedonefn
@@ -307,7 +319,7 @@ local function fn()
     inst.components.watersource.available = false
 
     inst:AddComponent("stewer")
-    inst.components.stewer.spoiledproduct = "strang"
+    inst.components.stewer.spoiledproduct = "spoiled"
 	inst.components.stewer.onstartcooking = startcookfn
 	inst.components.stewer.oncontinuecooking = continuecookfn
 	inst.components.stewer.oncontinuedone = continuedonefn

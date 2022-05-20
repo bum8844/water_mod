@@ -122,7 +122,7 @@ STRINGS.NAMES.DEATH_BY_TEA = "Ghostly Tea"
 
 -- prepareagedrink
 
-STRINGS.NAMES.STRANG = "Rotten"
+STRINGS.NAMES.SPOILED = "Rotten"
 STRINGS.NAMES.SODA = "Sparkling Water"
 STRINGS.NAMES.FRUITSODA = "Fruit Soda"
 STRINGS.NAMES.LLSODA = "Sweet Soda"
