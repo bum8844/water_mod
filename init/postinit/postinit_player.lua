@@ -72,6 +72,7 @@ local AddNetvars = function(inst)
             if inst._parent.replica.thirst ~= nil then
                 inst._parent.replica.thirst:AttachClassified(inst)
             end
+            return
         end
         return
     end
