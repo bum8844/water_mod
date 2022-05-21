@@ -36,7 +36,7 @@ local function alcahol(inst, eater)
 		return
 	elseif eater.components.debuffable and eater.components.debuffable:IsEnabled() then
 		if not eater:HasTag("valkyrie") then
-			eater.components.health:DoDelta(TUNING.ALCAHOL_POISOE)
+			eater.components.health:DoDelta(TUNING.ALCOHOL_POISON)
 			eater.alcoholdebuff_duration = TUNING.INTOXICATION_TIME
 			eater.components.debuffable:AddDebuff("alcoholdebuff", "alcoholdebuff")
 		else
@@ -71,8 +71,8 @@ local drinks =
 		priority = -2,
 		health = TUNING.SPOILED_HEALTH,
 		hunger = TUNING.SPOILED_HUNGER,
-		sanity = TUNING.SANITY_POISOE,
-		thirst = TUNING.HYDRATION_POISOE,
+		sanity = TUNING.SANITY_POISON,
+		thirst = TUNING.HYDRATION_POISON,
 		cooktime = TUNING.INCORRECT_BOIL,
 		oneatenfn = function(inst, eater)
 			if inst:HasTag("preparedrink_cup") then

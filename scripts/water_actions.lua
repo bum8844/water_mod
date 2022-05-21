@@ -375,9 +375,39 @@ local drinking_act = State{
     end,
 }
 
+local drinking_client_act = State{
+    name = "drinking",
+    tags = {"busy"},
+                
+    onenter = function(inst)
+        inst.components.locomotor:Stop()
+        inst.AnimState:PlayAnimation("quick_eat_pre")
+        inst.AnimState:PushAnimation("quick_eat_lag", false)
+
+        inst:PerformPreviewBufferedAction()
+        inst.sg:SetTimeout(TIMEOUT)
+    end,
+
+    onupdate = function(inst)
+        if inst:HasTag("busy") then
+            if inst.entity:FlattenMovementPrediction() then
+                inst.sg:GoToState("idle", "noanim")
+            end
+        elseif inst.bufferedaction == nil then
+            inst.sg:GoToState("idle")
+        end
+    end,
+
+    ontimeout = function(inst)
+        inst:ClearBufferedAction()
+        inst.sg:GoToState("idle")
+    end,
+}
+
 AddStategraphState("wilson", refresh_drunk)
 AddStategraphState("wilson", drunk)
 AddStategraphState("wilson", drinking_act)
+AddStategraphState("wilson_client", drinking_client_act)
 
 -- 만들어진 애니메이션을 연결해 주는 코드 구간
 
@@ -390,6 +420,21 @@ local refresh_drunk_event = EventHandler("refreshdrunk",function(inst)
 local drunk_event = EventHandler("drunk",function(inst)
         if not inst.sg:HasStateTag("dead") then
             inst.sg:GoToState("drunk")
+        end
+    end)
+
+local drinking_client_event = EventHandler("drinking_client",function(inst, action)
+        if inst.sg:HasStateTag("busy") or inst:HasTag("busy") then
+            return
+        end
+        local obj = action.target or action.invobject
+        if obj == nil then
+            return
+        end
+        for k, v in pairs(FOODTYPE) do
+            if obj:HasTag("edible_"..v) and obj:HasTag("drink") then
+                return v == "drinking"
+            end
         end
     end)
 
@@ -414,6 +459,7 @@ local drinking_event = EventHandler("drinking",function(inst, action)
 AddStategraphEvent("wilson",refresh_drunk_event)
 AddStategraphEvent("wilson",drunk_event)
 AddStategraphEvent("wilson",drink_event)
+AddStategraphEvent("wilson_client",drinking_client_event)
 
 -- 액션테이블, 컴포넌트, 작업한 함수 합치는 코드 구간
 
