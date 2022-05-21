@@ -57,7 +57,7 @@ local AddNetvars = function(inst)
             inst:ListenForEvent("thirstdelta", OnThirstDelta, inst._parent)
         else
             inst.isthirstpulseup:set_local(false)
-            inst.isthirstpulseup:set_local(false)
+            inst.isthirstpulsedown:set_local(false)
             inst:ListenForEvent("thirstdirty", OnThirstDirty)
             if inst._parent ~= nil then
                 inst._oldthirstpercent = inst.maxthirst:value() > 0 and inst.currentthirst:value() / inst.maxthirst:value() or 0
