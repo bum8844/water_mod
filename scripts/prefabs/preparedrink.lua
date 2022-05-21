@@ -208,6 +208,10 @@ local function MakePreparedCupDrink(data)
 		inst.components.inventoryitem.atlasname = "images/tea_inventoryitem.xml"
 		inst.components.inventoryitem.imagename = "cup_"..name
 
+        if data.basename ~= nil then
+            inst.components.inventoryitem:ChangeImageName("cup_"..data.basename)
+        end
+
         inst:AddComponent("stackable")
         inst.components.stackable.maxsize = TUNING.STACK_SIZE_SMALLITEM
 
@@ -463,10 +467,14 @@ local function MakePreparedBottleDrink(data)
             inst.components.water.watertype = WATERTYPE[string.upper( name == "water" and "clean" or name == "salt" and "salty" or name )]
         end
 
-		inst:AddComponent("inventoryitem")
-		inst.replica.inventoryitem:SetImage("bottle_"..name)
-		inst.components.inventoryitem.atlasname = "images/tea_inventoryitem.xml"
-		inst.components.inventoryitem.imagename = "bottle_"..name
+        inst:AddComponent("inventoryitem")
+        inst.replica.inventoryitem:SetImage("bottle_"..name)
+        inst.components.inventoryitem.atlasname = "images/tea_inventoryitem.xml"
+        inst.components.inventoryitem.imagename = "bottle_"..name
+
+        if data.basename ~= nil then
+            inst.components.inventoryitem:ChangeImageName("bottle_"..data.basename)
+        end
 
         if data.perishtime ~= nil and data.perishtime > 0 and not inst:HasTag("spoiled") then
             inst:AddComponent("perishable")

@@ -22,7 +22,7 @@ local function fn()
     inst.AnimState:SetBank("purification_tablets")
     inst.AnimState:PlayAnimation("idle")
 
-    inst:AddTag("purify_pile")
+    inst:AddTag("purify_pill")
 
     inst.entity:SetPristine()
 

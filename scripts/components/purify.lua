@@ -3,7 +3,7 @@ local Purify = Class(function(self, inst)
 end)
 
 function Purify:CanPurify(target)
-    return target:HasTag("purify_pile") or target:HasTag("purify")
+    return target:HasTag("purify_pill") or target:HasTag("purify")
 end
 
 function Purify:DoPurify(target, doer)

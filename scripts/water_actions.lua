@@ -127,8 +127,8 @@ AddAction(DRINKPLAYER)
 -- 만들어진 액션을 상호작용할 prefab에 넣어주는 구간
 
 local function purify(inst, doer, target, actions)
-    if inst:HasTag("purify_pile") or inst:HasTag("purify") then
-        if target:HasTag("purify_pile") or target:HasTag("purify") then
+    if inst:HasTag("purify_pill") or inst:HasTag("purify") then
+        if target:HasTag("purify_pill") or target:HasTag("purify") then
             table.insert(actions, ACTIONS.PURIFY)
         end
     end

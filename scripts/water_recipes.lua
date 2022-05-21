@@ -7,7 +7,7 @@ local ModAtlas = "images/tea_inventoryitem.xml"
 
 for k, v in pairs(GLOBAL.AllRecipes) do
 	if v.name == "fertilizer" then
-		v.ingredients = {GLOBAL.Ingredient("poop", 3), GLOBAL.Ingredient("boneshard", 2), GLOBAL.Ingredient("bucket", 1, ModAtlas,"bucket_empty.tex")}
+		v.ingredients = {Ingredient("poop", 3), Ingredient("boneshard", 2), Ingredient("bucket", 1, "images/tea_inventoryitem.xml")}
 	end
 end
 

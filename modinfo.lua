@@ -1,7 +1,6 @@
-name 						= "T&W"
+name 						= "Don't Starve: Dehydrated"
 version 					= "1.00"
 
---russian = name.utf8len and (russian or language == "ru")
 description = (
 	"TODO"
 	)
@@ -228,16 +227,4 @@ configuration_options =
 		},
 		default = 40
 	},
-	--[[SEPARATOR,
-	Title(russian and "Настройки жажды" or "Thirst options"),
-	{
-		name = "aw_thirst",
-		label = russian and "Жажда" or "Thirst",
-		options =
-		{
-			{description = russian and "Не-а" or "Nope", data = 0},
-			{description = russian and "Ага" or "Yep", data = 1},
-		},
-		default = 1,
-	},]]--
 }
