@@ -47,7 +47,6 @@ local function thirstbadge_statusdisplays(self)
 	end
 	
 	self.onthirstdelta = nil
-
 	self.watertask = nil
 
 	--force update at init
@@ -62,9 +61,7 @@ local function thirstbadge_statusdisplays(self)
 
 	function self:SetGhostMode(ghostmode)
 	    self:_SetGhostMode(ghostmode)
-	    if not self.isghostmode == not ghostmode then
-	    	return
-	  	elseif ghostmode then
+	  	if self.isghostmode then
 	        self.waterstomach:Hide()
 
 	        self.waterstomach:StopWarning()
@@ -75,7 +72,7 @@ local function thirstbadge_statusdisplays(self)
 	  	if self.watertask ~= nil then
 	  		self.watertask:Cancel()
 	  	end
-	  	self.watertask = self.inst:DoStaticTaskInTime(0, ghostmode and OnSetGhostMode or OnSetPlayerMode)
+	  	self.watertask = self.inst:DoStaticTaskInTime(0, ghostmode and OnSetGhostMode or OnSetPlayerMode, self)
 	end
 
 	function self:SetThirstPercent(pct)
