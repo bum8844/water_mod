@@ -127,7 +127,7 @@ local drinks =
 		thirst = TUNING.HYDRATION_MEDSMALL,
 		perishtime = TUNING.PERISH_FASTISH,
 		cooktime = TUNING.KETTLE_FRUIT,
-		potlevel = "small",
+		--potlevel = "small",
 		oneatenfn = function(inst, eater)
 			if inst:HasTag("preparedrink_cup") then
 				returncup(inst, eater)
@@ -147,7 +147,7 @@ local drinks =
 		thirst = TUNING.HYDRATION_LARGE,
 		perishtime = TUNING.PERISH_MED,
 		cooktime = TUNING.KETTLE_FRUIT,
-		potlevel = "small",
+		--potlevel = "small",
 		basename = "berries_tea",
 		oneatenfn = function(inst, eater)
 			if inst:HasTag("preparedrink_cup") then
@@ -168,7 +168,7 @@ local drinks =
 		thirst = TUNING.HYDRATION_LARGE,
 		perishtime = TUNING.PERISH_MED,
 		cooktime = TUNING.KETTLE_FRUIT,
-		potlevel = "small",
+		--potlevel = "small",
 		basename = "pomegranate_tea",
 		oneatenfn = function(inst, eater)
 			if inst:HasTag("preparedrink_cup") then
@@ -189,7 +189,7 @@ local drinks =
 		thirst = TUNING.HYDRATION_LARGE,
 		perishtime = TUNING.PERISH_MED,
 		cooktime = TUNING.KETTLE_FRUIT,
-		potlevel = "small",
+		--potlevel = "small",
 		basename = "banana_tea",
 		oneatenfn = function(inst, eater)
 			if inst:HasTag("preparedrink_cup") then
@@ -210,7 +210,7 @@ local drinks =
 		thirst = TUNING.HYDRATION_LARGE,
 		perishtime = TUNING.PERISH_MED,
 		cooktime = TUNING.KETTLE_FRUIT,
-		potlevel = "small",
+		--potlevel = "small",
 		basename = "fig_tea",
 		oneatenfn = function(inst, eater)
 			if inst:HasTag("preparedrink_cup") then
@@ -231,7 +231,7 @@ local drinks =
 		thirst = TUNING.HYDRATION_HUGE,
 		perishtime = TUNING.PERISH_SLOW,
 		cooktime = TUNING.KETTLE_FRUIT,
-		potlevel = "small",
+		--potlevel = "small",
 		basename = "dragonfruit_tea",
 		oneatenfn = function(inst, eater)
 			local knockouttime = TUNING.TEASLEEP_TIME + math.random()
@@ -277,7 +277,7 @@ local drinks =
 		thirst = TUNING.HYDRATION_HUGE,
 		perishtime = TUNING.PERISH_SLOW,
 		cooktime = TUNING.KETTLE_LUXURY_GOODS,
-		potlevel = "small",
+		--potlevel = "small",
 		oneatenfn = function(inst, eater)
 			if inst:HasTag("preparedrink_cup") then
 				returncup(inst, eater)
@@ -355,7 +355,7 @@ local drinks =
 		thirst = TUNING.HYDRATION_MEDSMALL,
 		perishtime = TUNING.PERISH_FASTISH,
 		cooktime = TUNING.KETTLE_VEGGIE,
-		potlevel = "small",
+		--potlevel = "small",
 		oneatenfn = function(inst, eater)
 			if inst:HasTag("preparedrink_cup") then
 				returncup(inst, eater)
@@ -410,7 +410,7 @@ local drinks =
 	
 	mulled =
 	{
-		test = function(boilier, names, tags) return (( names.onion or 0 ) + ( names.onion_cooked or 0 ) + ( names.garlic or 0 ) + ( names.garlic_cooked or 0 ) >= 1) and tags.sweetener and not tags.frozen and notmeat(tags) end,
+		test = function(boilier, names, tags) return (( names.onion or 0 ) + ( names.onion_cooked or 0 ) + ( names.garlic or 0 ) + ( names.garlic_cooked or 0 ) >= 2) and tags.sweetener and tags.sweetener >= 1 and not tags.frozen and notmeat(tags) end,
 		priority = 1,
 		health = TUNING.HEALING_MEDSMALL,
 		hunger = TUNING.DRINK_CALORIES,
@@ -420,7 +420,7 @@ local drinks =
 		temperature = TUNING.HOT_FOOD_WARMING_THRESHOLD,
 		temperatureduration = TUNING.FOOD_TEMP_AVERAGE,
 		cooktime = TUNING.KETTLE_VEGGIE,
-		potlevel = "small",
+		--potlevel = "small",
 		oneatenfn = function(inst, eater)
 			local knockouttime = TUNING.TEASLEEP_TIME + math.random()
 			if inst:HasTag("preparedrink_cup") then
@@ -491,7 +491,7 @@ local drinks =
 		temperature = TUNING.HOT_FOOD_BONUS_TEMP,
 		temperatureduration = TUNING.FOOD_TEMP_LONG,
 		cooktime = TUNING.KETTLE_TEA,
-		potlevel = "high",
+		--potlevel = "high",
 		oneatenfn = function(inst, eater)
 			if inst:HasTag("preparedrink_cup") then
 				returncup(inst, eater)
@@ -513,7 +513,7 @@ local drinks =
 		temperature = TUNING.COLD_FOOD_BONUS_TEMP,
 		temperatureduration = TUNING.FOOD_TEMP_LONG,
 		cooktime = TUNING.KETTLE_TEA,
-		potlevel = "small",
+		--potlevel = "small",
 		oneatenfn = function(inst, eater)
 			if inst:HasTag("preparedrink_cup") then
 				returncup(inst, eater)
@@ -554,7 +554,7 @@ local drinks =
 		thirst = TUNING.HYDRATION_MEDSMALL,
 		perishtime = TUNING.PERISH_FASTISH,
 		cooktime = TUNING.KETTLE_DECORATION,
-		potlevel = "small",
+		--potlevel = "small",
 		oneatenfn = function(inst, eater)
 			if inst:HasTag("preparedrink_cup") then
 				returncup(inst, eater)
@@ -575,7 +575,7 @@ local drinks =
 		thirst = TUNING.HYDRATION_MED,
 		perishtime = TUNING.PERISH_MED,
 		cooktime = TUNING.KETTLE_DECORATION,
-		potlevel = "high",
+		--potlevel = "high",
 		oneatenfn = function(inst, eater)
 			if inst:HasTag("preparedrink_cup") then
 				returncup(inst, eater)
@@ -596,7 +596,7 @@ local drinks =
 		thirst = TUNING.HYDRATION_LARGE,
 		perishtime = TUNING.PERISH_MED,
 		cooktime = TUNING.KETTLE_DECORATION,
-		potlevel = "high",
+		--potlevel = "high",
 		oneatenfn = function(inst, eater)
 			if inst:HasTag("preparedrink_cup") then
 				returncup(inst, eater)
@@ -616,7 +616,7 @@ local drinks =
 		thirst = TUNING.HYDRATION_LARGE,
 		perishtime = TUNING.PERISH_MED,
 		cooktime = TUNING.KETTLE_DECORATION,
-		potlevel = "high",
+		--potlevel = "high",
 		oneatenfn = function(inst, eater)
 			if inst:HasTag("preparedrink_cup") then
 				returncup(inst, eater)
@@ -637,7 +637,7 @@ local drinks =
 		thirst = 0,
 		perishtime = TUNING.PERISH_MED,
 		cooktime = TUNING.KETTLE_ABI,
-		potlevel = "high",
+		--potlevel = "high",
 		oneatenfn = function(inst, eater)
 			if inst:HasTag("preparedrink_cup") then
 				returncup(inst, eater)

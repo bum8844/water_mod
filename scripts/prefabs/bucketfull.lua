@@ -99,6 +99,7 @@ local function MakeBucket(data)
 		inst.AnimState:SetBank("buckets")
 		inst.AnimState:PlayAnimation(anim)
 
+		inst:AddTag("pre-preparedfood")
 		inst:AddTag("drink")
 
 		inst.displaynamefn = DisplayNameFn

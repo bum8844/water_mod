@@ -15,7 +15,7 @@ local prefabs =
 
 local function GetWet(inst)
 	if inst.components.waterlevel.currentwater > 0 and not inst:HasTag("burnt") then
-	    inst.components.wateryprotection.addwetness = inst.components.waterlevel.currentwater * TUNING.BUCKET_DRINK_WAT
+	    inst.components.wateryprotection.addwetness = inst.components.waterlevel.currentwater * TUNING.BUCKET_DRINK_WET
 		SpawnPrefab("waterballoon_splash").Transform:SetPosition(inst.Transform:GetWorldPosition())
 		inst.SoundEmitter:KillSound("destroy")
 		inst.SoundEmitter:PlaySound("dontstarve/creatures/pengull/splash")
