@@ -15,7 +15,6 @@ local TheNet = _G.TheNet
 
 -- 액션실행시 연결된 컴포넌트 작동 시키는 코드 구간
 
---Modify & Add Actions
 local function ForceStopHeavyLifting(inst)
     if inst.components.inventory:IsHeavyLifting() then
         inst.components.inventory:DropItem(
@@ -53,6 +52,7 @@ ACTIONS.STORE.stroverridefn = function(act)
     end
 end
 
+
 local DRINKING = Action({ mount_valid=true, priority=1})
 DRINKING.id = "DRINKING"
 DRINKING.str = STRINGS.ACTIONS.DRINKING
@@ -65,10 +65,10 @@ DRINKING.fn = function(act)
     end
 end
 
---ACTIONS.EAT.priority = 0
-ACTIONS.FILL.priority = 1
+--ACTIONS.EAT.priority = 1
+ACTIONS.FILL.priority = 2
 
-local FILL_BARREL = Action({priority=2})
+local FILL_BARREL = Action({priority=3})
 FILL_BARREL.id = "FILL_BARREL"
 FILL_BARREL.str = STRINGS.ACTIONS.FILL
 FILL_BARREL.fn = function(act)
@@ -78,9 +78,9 @@ FILL_BARREL.fn = function(act)
 end
 
 local PURIFY = Action({priority=2, rmb=true})
-PURIFY.id = "PURIFY"
-PURIFY.str = STRINGS.ACTIONS.PURIFY
-PURIFY.fn = function(act)
+    PURIFY.id = "PURIFY"
+    PURIFY.str = STRINGS.ACTIONS.PURIFY
+    PURIFY.fn = function(act)
     if act.invobject.components.purify:CanPurify(act.target) then
         return act.invobject.components.purify:DoPurify(act.target, act.doer)
     end
@@ -141,10 +141,12 @@ end
 
 AddAction(FILL_BARREL)
 AddAction(PURIFY)
+AddAction(DRINKING)
 AddAction(DRINKPLAYER)
 
 -- 만들어진 액션을 상호작용할 prefab에 넣어주는 구간
-local function purify_componentaction(inst, doer, target, actions)
+
+local function purify(inst, doer, target, actions)
     if inst:HasTag("purify_pill") or inst:HasTag("purify") then
         if target:HasTag("purify_pill") or target:HasTag("purify") then
             table.insert(actions, ACTIONS.PURIFY)
@@ -152,19 +154,14 @@ local function purify_componentaction(inst, doer, target, actions)
     end
 end
 
-local function waterlevel_componentaction(inst, doer, target, actions)
-    for k, v in pairs(WATERGROUP) do
-        if target:HasTag(v.name.."waterlevel") then
-            for i, v2 in ipairs(v.types) do
-                if inst:HasTag("water_"..v2) then
-                    table.insert(actions, ACTIONS.FILL_BARREL)
-                end
-            end
-        end
-    end
+local function waterlevel(inst, doer, target, actions)
     for k, v in pairs(WATERTYPE) do
-        if inst:HasTag("water_"..v) and target:HasTag(v.."waterlevel") then
-            table.insert(actions, ACTIONS.FILL_BARREL)
+        --print("For " .. tostring(v) .. ": " .. tostring(inst:HasTag(v.."_water")) .. ", " .. tostring(target:HasTag(v.."_waterlevel")))
+        if inst:HasTag(v.."_water") then
+            if target:HasTag(v.."_waterlevel") then
+                table.insert(actions, ACTIONS.FILL_BARREL)
+            end
+            return
         end
     end
 end
@@ -177,6 +174,7 @@ end
 
 AddComponentAction("USEITEM", "water", waterlevel_componentaction)
 AddComponentAction("USEITEM", "purify", purify_componentaction)
+
 
 local function drinking_use(inst, doer, target, actions, right)
 
@@ -493,12 +491,6 @@ AddStategraphEvent("wilson_client",drinking_client_event)
 
 AddComponentAction("USEITEM", "water", waterlevel)
 AddComponentAction("USEITEM", "purify", purify)
-AddComponentAction("DRINKING", "eater", drinking)
-
--- 액션테이블, 컴포넌트, 작업한 함수 합치는 코드 구간
-
-AddComponentAction("USEITEM", "water", waterlevel)
-AddComponentAction("USEITEM", "purify", purify)
 AddComponentAction("USEITEM", "edible", drinking_use)
 AddComponentAction("INVENTORY", "edible", drinking_inv)
 
@@ -508,8 +500,6 @@ AddStategraphActionHandler("wilson", ActionHandler(ACTIONS.FILL_BARREL, "dolonga
 AddStategraphActionHandler("wilson_client", ActionHandler(ACTIONS.FILL_BARREL, "dolongaction"))
 AddStategraphActionHandler("wilson", ActionHandler(ACTIONS.PURIFY, "dolongaction"))
 AddStategraphActionHandler("wilson_client", ActionHandler(ACTIONS.PURIFY, "dolongaction"))
-
-
 
 --[[
 function SetupBottleDrinkActions(inst, doer, actions)

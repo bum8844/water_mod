@@ -11,12 +11,13 @@ local function onhammered(inst, worker)
 	if inst.components.burnable ~= nil and inst.components.burnable:IsBurning() then
         inst.components.burnable:Extinguish()
     end
-    if inst._saltvalue >= 10 then
-        local saltvalue = math.floor(inst._saltvalue / 10)
-        for i=1, saltvalue do
-            inst.components.lootdropper:AddChanceLoot("saltrock", 1.00)
+
+    while inst._saltvalue >= 10 do
+        local old_saltvalue = inst._saltvalue
+        inst._saltvalue = old_saltvalue - 10
+        if inst._saltvalue >= 10 then
+            inst.components.lootdropper:SpawnLootPrefab("saltrock")
         end
-        inst.components.lootdropper:SetChanceLootTable("desalinator")
     end
 	inst.components.lootdropper:DropLoot()
 	SpawnPrefab("collapse_small").Transform:SetPosition(inst.Transform:GetWorldPosition())
@@ -45,41 +46,20 @@ local function onbuilt(inst)
 	inst.AnimState:PushAnimation("idle")
 end
 
-local function SetSaltLoot(lootdropper)
-    local salts = math.floor(lootdropper.inst._saltvalue/10)
-    if salts > 0 then
-        for i=1,salts do
-            lootdropper:AddChanceLoot("saltrock", 1.00)
-        end
-    end
-end
-
 local function harvestsalt(inst)
     if inst._saltvalue >= 10 then
         inst.components.stewer.product = "saltrock"
-        inst.components.stewer.done = true
+        if not inst:HasTag("boilling") then
+            inst.components.stewer.done = true
+        end
     end
 end
 
 local function harvestfn(inst)
     if not inst:HasTag("burnt") then
         inst._saltvalue = inst._saltvalue - 10
-
         inst.SoundEmitter:PlaySound("saltydog/common/saltbox/close")
     end
-end
-
-local function BoiledDoneAction1(inst)
-    inst.AnimState:OverrideSymbol("swap", "desalinator_meter_water", tostring(inst._waterlevel))
-    inst.AnimState:PlayAnimation("idle")
-    inst.SoundEmitter:KillSound("snd")
-    inst.SoundEmitter:PlaySound("hookline/common/trophyscale_fish/place_fish","purify")
-end
-
-local function BoiledDoneAction2(inst)
-    inst.SoundEmitter:KillSound("purify")
-    inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/medium")
-    inst.SoundEmitter:PlaySound("saltydog/common/saltbox/open")
 end
 
 local function BoiledDone(inst)
@@ -88,18 +68,19 @@ local function BoiledDone(inst)
     end
     inst.components.watersource.available = true
     inst.components.waterlevel.item_watertype = WATERTYPE.CLEAN
-    BoiledDoneAction1(inst)
+    inst.AnimState:OverrideSymbol("swap", "desalinator_meter_water", tostring(inst._waterlevel))
+    inst.AnimState:PlayAnimation("idle")
+    inst.SoundEmitter:KillSound("desalinator_sound")
+    inst.SoundEmitter:PlaySound("hookline/common/trophyscale_fish/place_fish","purify")
     inst._timer = 0
     inst:RemoveTag("boilling")
     if inst._saltvalue >= 10 then
-        BoiledDoneAction2(inst)
+        inst.SoundEmitter:KillSound("purify")
+        inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/medium")
+        inst.SoundEmitter:PlaySound("saltydog/common/saltbox/open")
+        inst.components.stewer.done = true
+        inst.components.stewer.product = "saltrock"
     end
-    harvestsalt(inst)
-end
-
-local function BoiledAction(inst)
-    inst.AnimState:PlayAnimation("cook", true)
-    inst.SoundEmitter:PlaySound("dontstarve/halloween_2018/madscience_machine/cooking_LP", "snd", 0.3)
 end
 
 local function Boiled(inst)
@@ -109,7 +90,8 @@ local function Boiled(inst)
     end
     inst.components.waterlevel.accepting = false
     inst.components.watersource.available = false
-    BoiledAction(inst)
+    inst.AnimState:PlayAnimation("cook", true)
+    inst.SoundEmitter:PlaySound("dontstarve/halloween_2018/madscience_machine/cooking_LP", "desalinator_sound", 0.3)
     inst:DoTaskInTime(inst._timer, BoiledDone, inst)
 end
 
@@ -208,18 +190,11 @@ local function fn()
     inst._saltvalue = 0
 	
 	inst:AddComponent("lootdropper")
-    inst.components.lootdropper:SetLootSetupFn(SetSaltLoot)
-
-
     inst:AddComponent("inspectable")
     inst.components.inspectable.getstatus = getstatus
 
-    inst:AddComponent("timer")
-    inst:AddComponent("pickable")
-    inst.components.pickable.caninteractwith = false
-    inst.components.picakble.onpickedfn = OnPicked
-    inst.components.pickable.product = "saltrock"
-    inst.components.pickable.numtoharvest = 0
+    inst:AddComponent("stewer")
+    inst.components.stewer.onharvest = harvestfn
 
     inst:AddComponent("waterlevel")
     inst.components.waterlevel.watertype = WATERTYPE.SALTY

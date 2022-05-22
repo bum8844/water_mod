@@ -53,6 +53,7 @@ end
 local teaingredients = {
 	"foliage",
 	"petals",
+	"petals_evil",
 	"succulent_picked",
 	"tealeaves",
 	"tealeaves_dried",

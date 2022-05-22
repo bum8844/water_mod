@@ -46,7 +46,7 @@ end
 
 local function GetWet(inst)
     if inst.components.waterlevel.currentwater > 0 and not inst:HasTag("burnt") then
-        inst.components.wateryprotection.addwetness = inst.components.waterlevel.currentwater * TUNING.BUCKET_DRINK_WAT
+        inst.components.wateryprotection.addwetness = (inst.components.waterlevel.currentwater * WATER_BARREL_WETNESS)
         SpawnPrefab("waterballoon_splash").Transform:SetPosition(inst.Transform:GetWorldPosition())
         inst.SoundEmitter:KillSound("destroy")
         inst.SoundEmitter:PlaySound("dontstarve/creatures/pengull/splash")
@@ -109,8 +109,8 @@ local function SetProductSymbol(inst, product, overridebuild)
     local recipe = cooking.GetRecipe(inst.prefab, product)
     local potlevel = recipe ~= nil and recipe.potlevel or nil
     local build = (recipe ~= nil and recipe.overridebuild) or overridebuild or "kettle_drink"
-    local overridesymbol = (recipe ~= nil and recipe.overridesymbolname) or product
-    local potlevels = potlevel == "high" and "swap_high" or potlevel == "small" and "swap_small" or "swap_mid"
+    local overridesymbol = (recipe ~= nil and recipe.overridesymbolname) or (recipe.basename ~= nil and recipe.basename) or product
+    local potlevels = potlevel ~= nil and "swap_"..potlevel or "swap_mid"
 
     if potlevel == "high" then
         inst.AnimState:Show("swap_high")
@@ -186,15 +186,6 @@ local function harvestfn(inst)
         inst.AnimState:PlayAnimation("idle_empty")
         inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_close")
     end
-end
-
-
-local function getstatus(inst)
-    return (inst:HasTag("burnt") and "BURNT")
-        or (inst.components.stewer:IsDone() and "DONE")
-        or ((not inst.components.stewer:IsCooking() or not inst._timer > 0) and "EMPTY")
-        or ((inst.components.stewer:GetTimeToCook() > 15 or inst._timer > 12) and "BOILING_LONG")
-        or "BOILING_SHORT"
 end
 
 local function OnDepleted(inst)

@@ -292,7 +292,7 @@ local drinks =
 		tags = {"alcohol"},
 		perishtime = TUNING.PERISH_SUPERSLOW,
 		cooktime = TUNING.KETTLE_VEGGIE + TUNING.BEER_WAIT,
-		potlevel = "small",
+		--potlevel = "small",
 		oneatenfn = function(inst, eater)
 			if inst:HasTag("preparedrink_cup") then
 				returncup(inst, eater)
@@ -315,7 +315,7 @@ local drinks =
 		tags = {"alcohol"},
 		perishtime = TUNING.PERISH_SUPERSLOW,
 		cooktime = TUNING.KETTLE_VEGGIE + TUNING.BEER_WAIT,
-		potlevel = "small",
+		--potlevel = "small",
 		oneatenfn = function(inst, eater)
 			if inst:HasTag("preparedrink_cup") then
 				returncup(inst, eater)
@@ -338,7 +338,7 @@ local drinks =
 		tags = {"alcohol"},
 		perishtime = TUNING.PERISH_SUPERSLOW,
 		cooktime = TUNING.KETTLE_VEGGIE + TUNING.BEER_WAIT,
-		potlevel = "small",
+		--potlevel = "small",
 		oneatenfn = function(inst, eater)
 			if inst:HasTag("preparedrink_cup") then
 				returncup(inst, eater)
@@ -361,7 +361,7 @@ local drinks =
 		tags = {"alcohol"},
 		perishtime = TUNING.PERISH_SUPERSLOW,
 		cooktime = TUNING.KETTLE_VEGGIE + TUNING.BEER_WAIT,
-		potlevel = "small",
+		--potlevel = "small",
 		oneatenfn = function(inst, eater)
 			if inst:HasTag("preparedrink_cup") then
 				returncup(inst, eater)
@@ -383,7 +383,7 @@ local drinks =
 		tags = {"alcohol"},
 		perishtime = TUNING.PERISH_SUPERSLOW,
 		cooktime = TUNING.KETTLE_VEGGIE + TUNING.BEER_WAIT,
-		potlevel = "small",
+		--potlevel = "small",
 		oneatenfn = function(inst, eater)
 			if inst:HasTag("preparedrink_cup") then
 				returncup(inst, eater)

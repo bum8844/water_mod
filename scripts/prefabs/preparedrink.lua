@@ -125,7 +125,7 @@ local function MakePreparedCupDrink(data)
 
         inst:AddTag("preparedrink_cup")
         inst:AddTag("preparedrink")
-        inst:AddTag("pre-preparedfood")
+        inst:AddTag("preparedfood")
         inst:AddTag("drink")
 
         if data.tags ~= nil then
@@ -171,23 +171,23 @@ local function MakePreparedCupDrink(data)
 
 		inst.food_symbol_build = food_symbol_build or overridebuild
 
-        if not inst:HasTag("spoiled") and not inst:HasTag("garbage") then
-            inst:AddComponent("edible")
-            inst.components.edible.isdrink = true
-            inst.components.edible.healthvalue = data.health
-            inst.components.edible.hungervalue = data.hunger
-            inst.components.edible.thirstvalue = data.thirst
-            inst.components.edible.foodtype = data.foodtype or FOODTYPE.GOODIES
-            inst.components.edible.secondaryfoodtype = data.secondaryfoodtype or nil
-            inst.components.edible.sanityvalue = data.sanity or 0
-            inst.components.edible.temperaturedelta = data.temperature or 0
-            inst.components.edible.temperatureduration = data.temperatureduration or 0
-            inst.components.edible.nochill = data.nochill or nil
-            inst.components.edible:SetOnEatenFn(data.oneatenfn)
-        else
+        if inst:HasTag("spoiled") or inst:HasTag("garbage") then
             inst:AddComponent("unwrappable")
             inst.components.unwrappable:SetOnUnwrappedFn(OnUnwrapped)
         end
+
+        inst:AddComponent("edible")
+        inst.components.edible.isdrink = true
+        inst.components.edible.healthvalue = data.health
+        inst.components.edible.hungervalue = data.hunger
+        inst.components.edible.thirstvalue = data.thirst
+        inst.components.edible.foodtype = data.foodtype or FOODTYPE.GOODIES
+        inst.components.edible.secondaryfoodtype = data.secondaryfoodtype or nil
+        inst.components.edible.sanityvalue = data.sanity or 0
+        inst.components.edible.temperaturedelta = data.temperature or 0
+        inst.components.edible.temperatureduration = data.temperatureduration or 0
+        inst.components.edible.nochill = data.nochill or nil
+        inst.components.edible:SetOnEatenFn(data.oneatenfn)
 
         inst:AddComponent("inspectable")
         inst.wet_prefix = data.wet_prefix
@@ -208,9 +208,9 @@ local function MakePreparedCupDrink(data)
 		inst.components.inventoryitem.atlasname = "images/tea_inventoryitem.xml"
 		inst.components.inventoryitem.imagename = "cup_"..name
 
-		--[[if data.basename ~= nil then
-            inst.components.inventoryitem:ChangeImageName(data.basename)
-        end]]
+        if data.basename ~= nil then
+            inst.components.inventoryitem:ChangeImageName("cup_"..data.basename)
+        end
 
         inst:AddComponent("stackable")
         inst.components.stackable.maxsize = TUNING.STACK_SIZE_SMALLITEM
@@ -380,7 +380,7 @@ local function MakePreparedBottleDrink(data)
 
         inst:AddTag("preparedrink_bottle")
         inst:AddTag("preparedrink")
-        inst:AddTag("pre-preparedfood")
+        inst:AddTag("preparedfood")
         inst:AddTag("drink")
 
         if data.tags ~= nil then
@@ -431,23 +431,23 @@ local function MakePreparedBottleDrink(data)
         inst.components.fillable.showoceanaction = true
         inst.components.fillable.acceptsoceanwater = true
 
-        if not inst:HasTag("spoiled") and not inst:HasTag("garbage") then
-            inst:AddComponent("edible")
-            inst.components.edible.isdrink = true
-            inst.components.edible.healthvalue = data.health
-            inst.components.edible.hungervalue = data.hunger
-            inst.components.edible.thirstvalue = data.thirst
-            inst.components.edible.foodtype = data.foodtype or FOODTYPE.GOODIES
-            inst.components.edible.secondaryfoodtype = data.secondaryfoodtype or nil
-            inst.components.edible.sanityvalue = data.sanity or 0
-            inst.components.edible.temperaturedelta = data.temperature or 0
-            inst.components.edible.temperatureduration = data.temperatureduration or 0
-            inst.components.edible.nochill = data.nochill or nil
-            inst.components.edible:SetOnEatenFn(data.oneatenfn)
-        else
+        if inst:HasTag("spoiled") or inst:HasTag("garbage") then
             inst:AddComponent("unwrappable")
             inst.components.unwrappable:SetOnUnwrappedFn(OnUnwrapped)
         end
+
+        inst:AddComponent("edible")
+        inst.components.edible.isdrink = true
+        inst.components.edible.healthvalue = data.health
+        inst.components.edible.hungervalue = data.hunger
+        inst.components.edible.thirstvalue = data.thirst
+        inst.components.edible.foodtype = data.foodtype or FOODTYPE.GOODIES
+        inst.components.edible.secondaryfoodtype = data.secondaryfoodtype or nil
+        inst.components.edible.sanityvalue = data.sanity or 0
+        inst.components.edible.temperaturedelta = data.temperature or 0
+        inst.components.edible.temperatureduration = data.temperatureduration or 0
+        inst.components.edible.nochill = data.nochill or nil
+        inst.components.edible:SetOnEatenFn(data.oneatenfn)
 
         inst:AddComponent("inspectable")
         inst.wet_prefix = data.wet_prefix
@@ -467,14 +467,14 @@ local function MakePreparedBottleDrink(data)
             inst.components.water.watertype = WATERTYPE[string.upper( name == "water" and "clean" or name == "salt" and "salty" or name )]
         end
 
-		inst:AddComponent("inventoryitem")
-		inst.replica.inventoryitem:SetImage("bottle_"..name)
-		inst.components.inventoryitem.atlasname = "images/tea_inventoryitem.xml"
-		inst.components.inventoryitem.imagename = "bottle_"..name
-		
-        --[[if data.basename ~= nil then
-            inst.components.inventoryitem:ChangeImageName(data.basename)
-        end]]
+        inst:AddComponent("inventoryitem")
+        inst.replica.inventoryitem:SetImage("bottle_"..name)
+        inst.components.inventoryitem.atlasname = "images/tea_inventoryitem.xml"
+        inst.components.inventoryitem.imagename = "bottle_"..name
+
+        if data.basename ~= nil then
+            inst.components.inventoryitem:ChangeImageName("bottle_"..data.basename)
+        end
 
         if data.perishtime ~= nil and data.perishtime > 0 and not inst:HasTag("spoiled") then
             inst:AddComponent("perishable")
