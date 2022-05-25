@@ -2026,26 +2026,26 @@
             </timeline>
             <timeline id="11" name="swap_mid">
                 <key id="0" spin="0">
-                    <object folder="6" file="0" x="-4.668731" y="326.308978" angle="0"/>
+                    <object folder="6" file="0" x="-4.668731" y="326.308978" angle="0" scale_x="0.35" scale_y="0.35"/>
                 </key>
                 <key id="1" time="300" spin="0">
-                    <object folder="6" file="0" x="-4.668731" y="440.308978" angle="0"/>
+                    <object folder="6" file="0" x="-4.668731" y="440.308978" angle="0" scale_x="0.35" scale_y="0.35"/>
                 </key>
             </timeline>
             <timeline id="12" name="swap_high">
                 <key id="0" spin="0">
-                    <object folder="7" file="0" x="-4.66873" y="339.10898" angle="0"/>
+                    <object folder="7" file="0" x="-4.66873" y="339.10898" angle="0" scale_x="0.35" scale_y="0.35"/>
                 </key>
                 <key id="1" time="300" spin="0">
-                    <object folder="7" file="0" x="-4.66873" y="453.10898" angle="0"/>
+                    <object folder="7" file="0" x="-4.66873" y="453.10898" angle="0" scale_x="0.35" scale_y="0.35"/>
                 </key>
             </timeline>
             <timeline id="13" name="swap_small">
                 <key id="0" spin="0">
-                    <object folder="8" file="0" x="-4.66873" y="326.30898" angle="0" scale_x="0.8" scale_y="0.8"/>
+                    <object folder="8" file="0" x="-4.66873" y="326.30898" angle="0" scale_x="0.3" scale_y="0.3"/>
                 </key>
                 <key id="1" time="300" spin="0">
-                    <object folder="8" file="0" x="-4.66873" y="440.30898" angle="0" scale_x="0.8" scale_y="0.8"/>
+                    <object folder="8" file="0" x="-4.66873" y="440.30898" angle="0" scale_x="0.3" scale_y="0.3"/>
                 </key>
             </timeline>
         </animation>
@@ -3458,35 +3458,35 @@
             </timeline>
             <timeline id="11" name="swap_mid">
                 <key id="0" spin="-1">
-                    <object folder="6" file="0" x="-4.668731" y="436.308978" angle="0"/>
+                    <object folder="6" file="0" x="-4.668731" y="436.308978" angle="0" scale_x="0.35" scale_y="0.35"/>
                 </key>
                 <key id="1" time="100">
-                    <object folder="6" file="0" x="46.590933" y="481.064807" angle="349.327" scale_y="1.034917"/>
+                    <object folder="6" file="0" x="46.590933" y="481.064807" angle="349.327" scale_x="0.35" scale_y="0.35"/>
                 </key>
                 <key id="2" time="234">
-                    <object folder="6" file="0" x="1.841376" y="409.211155" angle="358.471" scale_y="1.020909"/>
+                    <object folder="6" file="0" x="1.841376" y="409.211155" angle="358.471" scale_x="0.35" scale_y="0.35"/>
                 </key>
             </timeline>
             <timeline id="12" name="swap_small">
                 <key id="0" spin="-1">
-                    <object folder="8" file="0" x="-4.66873" y="436.30898" angle="0" scale_x="0.8" scale_y="0.8"/>
+                    <object folder="8" file="0" x="-4.66873" y="436.30898" angle="0" scale_x="0.3" scale_y="0.3"/>
                 </key>
                 <key id="1" time="100">
-                    <object folder="8" file="0" x="46.59093" y="481.06481" angle="349.327" scale_x="0.8" scale_y="0.8"/>
+                    <object folder="8" file="0" x="46.59093" y="481.06481" angle="349.327" scale_x="0.3" scale_y="0.3"/>
                 </key>
                 <key id="2" time="234">
-                    <object folder="8" file="0" x="1.84138" y="409.21116" angle="358.471" scale_x="0.8" scale_y="0.8"/>
+                    <object folder="8" file="0" x="1.84138" y="409.21116" angle="358.471" scale_x="0.3" scale_y="0.3"/>
                 </key>
             </timeline>
             <timeline id="13" name="swap_high">
                 <key id="0" spin="-1">
-                    <object folder="7" file="0" x="-4.66873" y="449.10898" angle="0"/>
+                    <object folder="7" file="0" x="-4.66873" y="449.10898" angle="0" scale_x="0.35" scale_y="0.35"/>
                 </key>
                 <key id="1" time="100">
-                    <object folder="7" file="0" x="48.961535" y="493.643372" angle="349.327"/>
+                    <object folder="7" file="0" x="48.961535" y="493.643372" angle="349.327" scale_x="0.35" scale_y="0.35"/>
                 </key>
                 <key id="2" time="234">
-                    <object folder="7" file="0" x="2.182921" y="422.006603" angle="358.471"/>
+                    <object folder="7" file="0" x="2.182921" y="422.006603" angle="358.471" scale_x="0.35" scale_y="0.35"/>
                 </key>
             </timeline>
         </animation>
@@ -3699,17 +3699,17 @@
             </timeline>
             <timeline id="11" name="swap_mid">
                 <key id="0" spin="0">
-                    <object folder="6" file="0" x="-4.668731" y="440.308978" angle="0"/>
+                    <object folder="6" file="0" x="-4.668731" y="440.308978" angle="0" scale_x="0.35" scale_y="0.35"/>
                 </key>
             </timeline>
             <timeline id="12" name="swap_small">
                 <key id="0" spin="0">
-                    <object folder="8" file="0" x="-4.66873" y="440.30898" angle="0" scale_x="0.8" scale_y="0.8"/>
+                    <object folder="8" file="0" x="-4.66873" y="440.30898" angle="0" scale_x="0.3" scale_y="0.3"/>
                 </key>
             </timeline>
             <timeline id="13" name="swap_high">
                 <key id="0" spin="0">
-                    <object folder="7" file="0" x="-4.66873" y="453.10898" angle="0"/>
+                    <object folder="7" file="0" x="-4.66873" y="453.10898" angle="0" scale_x="0.35" scale_y="0.35"/>
                 </key>
             </timeline>
         </animation>
