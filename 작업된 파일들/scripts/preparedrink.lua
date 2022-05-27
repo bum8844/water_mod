@@ -314,7 +314,7 @@ local drinks =
 	-- 일시적 겉는 속도 증가[추가해야함]
 	coffee =
 	{
-		test = function(boilier, names, tags) return (( names.caffeinberry_bean_cooked or 0 ) + ( names.caffeinbeans_cooked or 0 ) >= 2) and notmeat(tags) end,
+		test = function(boilier, names, tags) return (( names.caffeinberry_bean_cooked or 0 ) + ( names.coffeebeans_cooked or 0 ) >= 2) and notmeat(tags) end,
 		priority = 1,
 		health = TUNING.HEALING_SMALL,
 		hunger = TUNING.DRINK_CALORIES,
