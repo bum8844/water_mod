@@ -348,7 +348,7 @@ local drinking_act = State{
         if feed == nil or
             feed.components.edible == nil or
             feed.components.edible.foodtype ~= FOODTYPE.GEARS then
-            inst.SoundEmitter:PlaySound("drink_fx/player/drinking","drinking",.5)
+            inst.SoundEmitter:PlaySound("drink_fx/player/drinking","drinking",.25)
         end
 
         if inst.components.inventory:IsHeavyLifting() and
