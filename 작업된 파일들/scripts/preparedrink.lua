@@ -51,7 +51,7 @@ local drinks =
 		health = TUNING.HEALING_TINY,
 		hunger = TUNING.DRINK_CALORIES,
 		sanity = 0,
-		thirst = TUNING.HYDRATION_TINY,
+		thirst = TUNING.HYDRATION_SMALLTINY,
 		tags = {"common","clean"},
 		oneatenfn = function(inst, eater)
 			if inst:HasTag("preparedrink_cup") then
@@ -69,7 +69,7 @@ local drinks =
 		health = -TUNING.HEALING_TINY,
 		hunger = TUNING.DRINK_CALORIES,
 		sanity = 0,
-		thirst = TUNING.HYDRATION_TINY,
+		thirst = TUNING.HYDRATION_SMALLTINY,
 		tags = {"common","dirty","purify"},
 		oneatenfn = function(inst, eater)
 			if inst:HasTag("preparedrink_cup") then
@@ -104,7 +104,7 @@ local drinks =
 		health = 0,
 		hunger = 0,
 		sanity = 0,
-		thirst = TUNING.HYDRATION_TINY,
+		thirst = TUNING.HYDRATION_SMALLTINY,
 		perishtime = TUNING.PERISH_FAST,
 		cooktime = TUNING.INCORRECT_BOIL,
 		oneatenfn = function(inst, eater)
