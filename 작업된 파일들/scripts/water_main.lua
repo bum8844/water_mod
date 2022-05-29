@@ -235,16 +235,11 @@ end)
 -- 목마름을 채우기 위해 추가한 코드 352부터 413까지
 AddComponentPostInit("eater", function(self)
 	self.thirstabsorption = 1
-	local _SetAbsorptionModifiers = self.SetAbsorptionModifiers
 	local _Eat = self.Eat
 	local _PrefersToEat = self.PrefersToEat
 
-	function self:SetAbsorptionModifiers(health, thirst, sanity, thirst, ...)
-		local result = _SetAbsorptionModifiers(self, health, thirst, sanity, ...)
-		if thirst ~= nil then
-			self.thirstabsorption = thirst
-		end
-		return result
+	function self:SetThristAbsorption(thirst)
+		self.thirstabsorption = thirst
 	end
 
 	function self:Eat(food, feeder, ...)
@@ -269,8 +264,7 @@ AddComponentPostInit("eater", function(self)
 		if food:HasTag("alcohol") and self.inst:HasTag("childplayer") then
 			return false
 		end
-		local result = _PrefersToEat(self, food, ...)
-		return result
+		return _PrefersToEat(self, food, ...)
 	end
 end)
 
@@ -347,4 +341,11 @@ AddComponentPostInit("wisecracker",function(self, inst)
     inst:ListenForEvent("sleep_end", function(inst, data)
         inst.components.talker:Say(_G.GetString(inst, "ANNOUNCE_SLEEP_END"))
     end)
+end)
+
+-- 워톡스 계수
+AddPrefabPostInit("wortox",function(inst)
+	if inst.components.eater ~= nil then
+		inst.components.eater:SetThristAbsorption(.5)
+	end
 end)
