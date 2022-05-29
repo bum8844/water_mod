@@ -99,14 +99,14 @@ configuration_options =
 		options = 
 		{
 			{description = "None", data = 0},
-			{description = "VeryShort", data = 15},
-			{description = "Short", data = 30},
-			{description = "Default", data = 60},
-			{description = "Long", data = 75},
-			{description = "VeryLong", data = 90},
+			{description = "VeryShort", data = .1875},
+			{description = "Short", data = .375},
+			{description = "Default", data = .75},
+			{description = "Long", data = 1.5},
+			{description = "VeryLong", data = 3},
 			--{description = "Random", data = _G.math.random(0, 90)},
 		},
-		default = 60
+		default = .75
 	},
 	SEPARATOR,
 	Title("Soda Ferment options"),
@@ -117,14 +117,14 @@ configuration_options =
 		options = 
 		{
 			{description = "None", data = 0},
-			{description = "VeryShort", data = 15},
-			{description = "Short", data = 30},
-			{description = "Default", data = 60},
-			{description = "Long", data = 75},
-			{description = "VeryLong", data = 90},
+			{description = "VeryShort", data = .1875},
+			{description = "Short", data = .375},
+			{description = "Default", data = .75},
+			{description = "Long", data = 1.5},
+			{description = "VeryLong", data = 3},
 			--{description = "Random", data = "random"},
 		},
-		default = 60
+		default = .75
 	},
 	SEPARATOR,
 	Title("Effect options"),

@@ -338,3 +338,96 @@ AddComponentPostInit("wisecracker",function(self, inst)
         inst.components.talker:Say(_G.GetString(inst, "ANNOUNCE_SLEEP_END"))
     end)
 end)
+
+--[[
+AddComponentPostInit("eater", function(self)
+	self.thirstabsorption = 1
+	local _Eat = self.Eat
+	local _PrefersToEat = self.PrefersToEat
+
+	function self:SetThristAbsorption(thirst)
+		self.thirstabsorption = thirst
+	end
+
+	function self:Eat(food, feeder, ...)
+		if _PrefersToEat(self, food, ...) then
+			local stack_mult = self.eatwholestack and food.components.stackable ~= nil and food.components.stackable:StackSize() or 1
+			local base_mult = self.inst.components.foodmemory ~= nil and self.inst.components.foodmemory:GetFoodMultiplier(food.prefab) or 1
+			local thirst_delta = 0
+
+		    if self.inst.components.thirst ~= nil then
+		        thirst_delta = food.components.edible:GetThirst(self.inst) * base_mult * self.thirstabsorption
+		    end
+
+		    if thirst_delta ~= 0 then
+	            self.inst.components.thirst:DoDelta(thirst_delta * stack_mult)
+		    end
+		    local result = _Eat(self, food, feeder, ...)
+		    return result
+		end
+	end
+
+	function self:PrefersToEat(food, ...)
+		if food:HasTag("alcohol") and self.inst:HasTag("childplayer") then
+			return false
+		end
+		return _PrefersToEat(self, food, ...)
+	end
+end)
+
+
+
+AddComponentPostInit("edible", function(self)
+    self.isdrink = false
+    --self.thirstvalue = 0
+
+    function self:GetThirstFromHunger()
+        return math.floor((self.hungervalue / 2 * math.exp( math.abs(self.hungervalue) / 150 )) * 1000) / 1000
+    end
+
+    function self:CheckClameThirstValue(eater)
+    	return 0 > (eater.components.hunger.max - (eater.components.hunger.current + self.hungervalue))
+    end
+
+    function self:ClameThirstValue(eater)
+    	return eater.components.hunger.max - (eater.components.hunger.current + self.hungervalue)
+    end
+
+    function self:CalculateValue(eater)
+    	local check = self.thirstvalue or self:GetThirstFromHunger()
+    	local clame = (self:CheckClameThirstValue(eater) and not self.inst:HasTag("drink")) and self:ClameThirstValue(eater) or 0
+    	local sum = check + clame
+    	local result = ( 0 < sum or self.inst.components.fertilizer or self.inst:HasTag("drink") or self.inst:HasTag("etcthing")) and sum or 0
+    	return result
+    end
+
+    function self:GetThirst(eater)
+        local thirst = self:CalculateValue(eater)
+
+        local multiplier = 1
+        local ignore_spoilage = not self.degrades_with_spoilage or thirst < 0 or (eater ~= nil and eater.components.eater ~= nil and eater.components.eater.ignoresspoilage)
+
+        if not ignore_spoilage and self.inst.components.perishable ~= nil then
+            if self.inst.components.perishable:IsStale() then
+                multiplier = eater ~= nil and eater.components.eater ~= nil and eater.components.eater.stale_thirst or self.stale_thirst
+            elseif self.inst.components.perishable:IsSpoiled() then
+                multiplier = eater ~= nil and eater.components.eater ~= nil and eater.components.eater.spoiled_thirst or self.spoiled_thirst
+            end
+        end
+
+        if eater ~= nil and eater.components.foodaffinity ~= nil then
+            local affinity_bonus = eater.components.foodaffinity:GetAffinity(self.inst)
+            if affinity_bonus ~= nil then
+                multiplier = multiplier * affinity_bonus
+            end
+        end
+
+        return multiplier * thirst
+    end
+end)
+AddPrefabPostInit("wortox",function(inst)
+	if inst.components.eater ~= nil then
+		inst.components.eater:SetThristAbsorption(.5)
+	end
+end)
+]]
