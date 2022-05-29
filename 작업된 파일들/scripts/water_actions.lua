@@ -477,6 +477,8 @@ local drinking_event = EventHandler("drinking",function(inst, action)
 AddStategraphEvent("wilson",refresh_drunk_event)
 AddStategraphEvent("wilson",drunk_event)
 AddStategraphEvent("wilson",drink_event)
+AddStategraphEvent("wilson_client",refresh_drunk_event)
+AddStategraphEvent("wilson_client",drunk_event)
 AddStategraphEvent("wilson_client",drinking_client_event)
 
 -- 액션테이블, 컴포넌트, 작업한 함수 합치는 코드 구간
