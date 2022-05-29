@@ -44,6 +44,23 @@ local drinks =
 	
 	-- 기본 물
 	-- 다른 차를 만들 경우 같은 아이템을 2개 넣어야함
+	spoiled =
+	{
+		test = dummy,
+		priority = -2,
+		health = TUNING.SPOILED_HEALTH,
+		hunger = TUNING.SPOILED_HUNGER,
+		sanity = TUNING.SANITY_POISON,
+		thirst = TUNING.HYDRATION_POISON,
+		cooktime = TUNING.INCORRECT_BOIL,
+		oneatenfn = function(inst, eater)
+			if inst:HasTag("preparedrink_cup") then
+				returncup(inst, eater)
+			else
+				returnbottle(inst, eater)
+			end
+		end,
+	},
 	water =
 	{
 		test = dummy,

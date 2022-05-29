@@ -318,14 +318,19 @@ for _, v in pairs(DRINKITEM_ACION_ALCOHOL) do
 	AddPrefabPostInit(v, function(inst) 
 		inst:AddTag("drink")
 		inst:AddTag("alcohol")
-		inst:DoTaskInTime(.5,function(inst) inst.components.edible:SetOnEatenFn(oneatenfn) end)
+
+		if inst.components.edible ~= nil then
+			inst.components.edible:SetOnEatenFn(oneatenfn)
+		end
 	end)
 end
 
 for k, v in pairs(HYDRATIONTYPE) do
 	for _, u in pairs(v) do
 		AddPrefabPostInit(u, function(inst)
-			inst.components.edible.thirstvalue = TUNING["HYDRATION_"..k]
+			if inst.components.edible ~= nil then
+				inst.components.edible.thirstvalue = TUNING["HYDRATION_"..k]
+			end
 		end)
 	end
 end
