@@ -8,6 +8,8 @@ AddRecipePostInit("fertilizer",function(v) v.ingredients = {Ingredient("poop", 3
 
 AddRecipeFilter({name = "HYDRATION", atlas = ModAtlas, image = "hydration.tex", custom_pos=nil, recipes=nil,},nil)
 
+AddRecipeToFilter("refined_dust","HYDRATION")
+
 AddRecipe2("purification_tablets",{Ingredient("ash",2),Ingredient("nitre",1),Ingredient("charcoal",1),Ingredient("saltrock",1)},TECH.SCIENCE_TWO,{atlas = ModAtlas, numtogive = 10 , image = "purification_tablets.tex"},{"COOKING","HYDRATION"})
 
 AddRecipe2("cup",{Ingredient("flint",3)},TECH.NONE,{atlas = ModAtlas, image = "cup_empty.tex"},{"REFINE","HYDRATION"})
