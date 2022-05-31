@@ -23,7 +23,10 @@ local function OnConstructed(inst, doer)
 
     if concluded then
         local new_well = ReplacePrefab(inst, "well")
-		new_well.SoundEmitter:PlaySound("turnoftides/common/together/boat/anchor/place")
+        new_well.SoundEmitter:PlaySound("dontstarve/common/together/town_portal/craft")
+		new_well:DoTaskInTime(.6, function(new_well)
+			new_well.SoundEmitter:PlaySound("saltydog/common/saltbox/place")
+		end)
 		new_well.AnimState:PlayAnimation("place")
 		new_well.AnimState:PushAnimation("idle_empty")
     end
@@ -48,8 +51,9 @@ local function hole()
 	
 	inst:AddTag("antlion_sinkhole_blocker")
     inst:AddTag("constructionsite")
+    inst:AddTag("birdblocker")
 	
-	MakeObstaclePhysics(inst, .7)
+	MakeObstaclePhysics(inst, .6)
 	
 	inst:AddComponent("inspectable")
 	
@@ -79,7 +83,7 @@ local function updatewellstate(inst)
 end
 
 local function onhammered(inst)
-	if inst.AnimState:IsCurrentAnimation("watering") or inst.AnimState:IsCurrentAnimation("idle_watering") then
+	if inst.AnimState:IsCurrentAnimation("watering") or inst.AnimState:IsCurrentAnimation("hit_watering") or inst.AnimState:IsCurrentAnimation("idle_watering") then
 		inst.components.lootdropper:SpawnLootPrefab("bucket_clean")
 	end
 	inst.components.lootdropper:SpawnLootPrefab("boards")

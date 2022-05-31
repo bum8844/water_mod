@@ -44,6 +44,23 @@ local drinks =
 	
 	-- 기본 물
 	-- 다른 차를 만들 경우 같은 아이템을 2개 넣어야함
+	spoiled =
+	{
+		test = dummy,
+		priority = -2,
+		health = TUNING.SPOILED_HEALTH,
+		hunger = TUNING.SPOILED_HUNGER,
+		sanity = TUNING.SANITY_POISON,
+		thirst = TUNING.HYDRATION_POISON,
+		cooktime = TUNING.INCORRECT_BOIL,
+		oneatenfn = function(inst, eater)
+			if inst:HasTag("preparedrink_cup") then
+				returncup(inst, eater)
+			else
+				returnbottle(inst, eater)
+			end
+		end,
+	},
 	water =
 	{
 		test = dummy,
@@ -51,7 +68,7 @@ local drinks =
 		health = TUNING.HEALING_TINY,
 		hunger = TUNING.DRINK_CALORIES,
 		sanity = 0,
-		thirst = TUNING.HYDRATION_TINY,
+		thirst = TUNING.HYDRATION_SMALLTINY,
 		tags = {"common","clean"},
 		oneatenfn = function(inst, eater)
 			if inst:HasTag("preparedrink_cup") then
@@ -69,7 +86,7 @@ local drinks =
 		health = -TUNING.HEALING_TINY,
 		hunger = TUNING.DRINK_CALORIES,
 		sanity = 0,
-		thirst = TUNING.HYDRATION_TINY,
+		thirst = TUNING.HYDRATION_SMALLTINY,
 		tags = {"common","dirty","purify"},
 		oneatenfn = function(inst, eater)
 			if inst:HasTag("preparedrink_cup") then
@@ -104,7 +121,7 @@ local drinks =
 		health = 0,
 		hunger = 0,
 		sanity = 0,
-		thirst = TUNING.HYDRATION_TINY,
+		thirst = TUNING.HYDRATION_SMALLTINY,
 		perishtime = TUNING.PERISH_FAST,
 		cooktime = TUNING.INCORRECT_BOIL,
 		oneatenfn = function(inst, eater)
@@ -314,7 +331,7 @@ local drinks =
 	-- 일시적 겉는 속도 증가[추가해야함]
 	coffee =
 	{
-		test = function(boilier, names, tags) return (( names.caffeinberry_bean_cooked or 0 ) + ( names.caffeinbeans_cooked or 0 ) >= 2) and notmeat(tags) end,
+		test = function(boilier, names, tags) return (( names.caffeinberry_bean_cooked or 0 ) + ( names.coffeebeans_cooked or 0 ) >= 2) and notmeat(tags) end,
 		priority = 1,
 		health = TUNING.HEALING_SMALL,
 		hunger = TUNING.DRINK_CALORIES,
@@ -505,7 +522,7 @@ local drinks =
 	
 	blacktea_iced =
 	{
-		test = function(boilier, names, tags) return names.tealeaves_dried and names.tealeaves_dried >= 2 and notmeat(tags) end,
+		test = function(boilier, names, tags) return names.tealeaves_dried and names.tealeaves_dried >= 2 and tags.frozen and tags.frozen >= 1 and notmeat(tags) end,
 		priority = 1,
 		health = TUNING.HEALING_MEDSMALL,
 		hunger = TUNING.DRINK_CALORIES,

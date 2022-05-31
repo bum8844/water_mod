@@ -149,7 +149,7 @@ local function fn()
 	end)
 	-- 우물 상호 작용을 위한 태그
 	inst:AddTag("bucket_empty")
-	
+
     inst:AddComponent("fillable")
 	inst.components.fillable.overrideonfillfn = OnFill
 	inst.components.fillable.showoceanaction = true
@@ -164,6 +164,8 @@ local function fn()
     inst:AddComponent("tradable") --to work with water well
 
     inst:AddComponent("inspectable")
+
+    inst:AddComponent("milkingtool")
 	
     inst:AddComponent("fuel")
     inst.components.fuel.fuelvalue = TUNING.LARGE_FUEL

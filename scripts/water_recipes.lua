@@ -2,33 +2,30 @@ local _G = GLOBAL
 local TECH = _G.TECH
 local Ingredient = _G.Ingredient
 local ModAtlas = "images/tea_inventoryitem.xml"
+local CONSTRUCTION_PLANS =_G.CONSTRUCTION_PLANS
 
---local craft_bag=GetModConfigData("craft_bag")
+AddRecipePostInit("fertilizer",function(v) v.ingredients = {Ingredient("poop", 3), Ingredient("boneshard", 2), Ingredient("bucket", 1, ModAtlas, nil,"bucket_empty.tex")} end)
 
-for k, v in pairs(GLOBAL.AllRecipes) do
-	if v.name == "fertilizer" then
-		v.ingredients = {Ingredient("poop", 3), Ingredient("boneshard", 2), Ingredient("bucket", 1, "images/tea_inventoryitem.xml")}
-	end
-end
+AddRecipeFilter({name = "HYDRATION", atlas = ModAtlas, image = "hydration.tex", custom_pos=nil, recipes=nil,},nil)
 
-AddRecipe2("purification_tablets",{Ingredient("ash",2),Ingredient("nitre",1),Ingredient("charcoal",1),Ingredient("saltrock",1)},TECH.SCIENCE_TWO,{atlas = ModAtlas, numtogive = 10 , image = "purification_tablets.tex"},{"COOKING"})
+AddRecipe2("purification_tablets",{Ingredient("ash",2),Ingredient("nitre",1),Ingredient("charcoal",1),Ingredient("saltrock",1)},TECH.SCIENCE_TWO,{atlas = ModAtlas, numtogive = 10 , image = "purification_tablets.tex"},{"COOKING","HYDRATION"})
 
-AddRecipe2("cup",{Ingredient("flint",3)},TECH.NONE,{atlas = ModAtlas, image = "cup_empty.tex"},{"REFINE"})
+AddRecipe2("cup",{Ingredient("flint",3)},TECH.NONE,{atlas = ModAtlas, image = "cup_empty.tex"},{"REFINE","HYDRATION"})
 
-AddRecipe2("bucket",{Ingredient("log",4)},TECH.NONE,{atlas = ModAtlas, image = "bucket_empty.tex"},{"REFINE","RAIN"})
+AddRecipe2("bucket",{Ingredient("log",4)},TECH.NONE,{atlas = ModAtlas, image = "bucket_empty.tex"},{"REFINE","RAIN","HYDRATION"})
 
-AddRecipe2("barrel",{Ingredient("boards",2),Ingredient("rope",3)},TECH.SCIENCE_ONE,{placer = "barrel_placer", atlas = ModAtlas, image = "barrel.tex"},{"CONTAINERS"})
+AddRecipe2("barrel",{Ingredient("boards",2),Ingredient("rope",3)},TECH.SCIENCE_ONE,{placer = "barrel_placer", atlas = ModAtlas, image = "barrel.tex"},{"CONTAINERS","HYDRATION"})
 
-AddRecipe2("brewery",{Ingredient("boards",3),Ingredient("rope",3),Ingredient("cutstone",12),Ingredient("goldnugget",4)},TECH.SCIENCE_TWO,{placer = "brewery_placer", atlas = ModAtlas, image = "brewery.tex"},{"COOKING"})
+AddRecipe2("brewery",{Ingredient("boards",3),Ingredient("rope",3),Ingredient("cutstone",12),Ingredient("goldnugget",4)},TECH.SCIENCE_TWO,{placer = "brewery_placer", atlas = ModAtlas, image = "brewery.tex"},{"COOKING","HYDRATION"})
 
-AddRecipe2("campkettle",{Ingredient("twigs",2),Ingredient("log",2),Ingredient("cutgrass",2)},TECH.NONE,{placer = "campkettle_placer", atlas = ModAtlas, image = "campkettle.tex"},{"COOKING","LIGHT"})
+AddRecipe2("campkettle",{Ingredient("twigs",2),Ingredient("log",2),Ingredient("cutgrass",2)},TECH.NONE,{placer = "campkettle_placer", atlas = ModAtlas, image = "campkettle.tex"},{"COOKING","LIGHT","HYDRATION"})
 
-AddRecipe2("kettle",{Ingredient("twigs",6),Ingredient("rope",2),Ingredient("charcoal",2)},TECH.SCIENCE_ONE,{placer = "kettle_placer", atlas = ModAtlas, image = "kettle.tex"},{"COOKING"})
+AddRecipe2("kettle",{Ingredient("twigs",6),Ingredient("rope",2),Ingredient("charcoal",2)},TECH.SCIENCE_ONE,{placer = "kettle_placer", atlas = ModAtlas, image = "kettle.tex"},{"COOKING","HYDRATION"})
 
-AddRecipe2("portablekettle_item",{Ingredient("transistor",2),Ingredient("cutstone",4),Ingredient("charcoal",3)},TECH.SCIENCE_TWO,{atlas = ModAtlas, image = "portablekettle_item.tex"},{"COOKING"})
+AddRecipe2("portablekettle_item",{Ingredient("transistor",2),Ingredient("cutstone",4),Ingredient("charcoal",3)},TECH.SCIENCE_TWO,{atlas = ModAtlas, image = "portablekettle_item.tex"},{"COOKING","HYDRATION"})
 
-AddRecipe2("desalinator",{Ingredient("boards",12),Ingredient("rope",6),Ingredient("rocks",6),Ingredient("nitre",6),Ingredient("charcoal",6)},TECH.SCIENCE_TWO,{placer = "desalinator_placer", atlas = ModAtlas, image = "desalinator.tex"},{"CONTAINERS","GARDENING"})
+AddRecipe2("desalinator",{Ingredient("boards",12),Ingredient("rope",6),Ingredient("rocks",6),Ingredient("nitre",6),Ingredient("charcoal",6)},TECH.SCIENCE_TWO,{placer = "desalinator_placer", atlas = ModAtlas, image = "desalinator.tex", size = 32},{"CONTAINERS","GARDENING","HYDRATION"})
 
-AddRecipe2("well_drilling_item",{Ingredient("boards",2),Ingredient("cutstone",3),Ingredient("flint",4)},TECH.SCIENCE_TWO,{atlas = ModAtlas, image = "well_drilling_item.tex"},{"GARDENING"})
+AddRecipe2("well_drilling_item",{Ingredient("boards",2),Ingredient("cutstone",3),Ingredient("flint",4)},TECH.SCIENCE_TWO,{atlas = ModAtlas, image = "well_drilling_item.tex"},{"GARDENING","HYDRATION"})
 
-GLOBAL.CONSTRUCTION_PLANS["hole"] = {Ingredient("boards",2),Ingredient("cutstone",6),Ingredient("hammer",1)}
+CONSTRUCTION_PLANS["hole"] = {Ingredient("boards",2),Ingredient("cutstone",6),Ingredient("hammer",1)}

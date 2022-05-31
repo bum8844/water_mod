@@ -42,7 +42,7 @@ local tuning =
 	WILSON_THIRST = wilson_thirst, --수분량
 	WILSON_HUNGER_RATE = hydration_per_day/total_day_time,
 
-	-- 목마름 채워주는 양
+	-- 목마름 채워주는 양 -- 수정됨 맨 밑에 확인바랍니다
 	HYDRATION_SALT = hydration_per_day-90, -- 소금물
 	HYDRATION_POISON = hydration_per_day-80, -- 잘못 양조된 음료
 	HYDRATION_ROT = hydration_per_day-85, -- 썩은 음식물
@@ -92,3 +92,20 @@ local tuning =
 for i,v in pairs(tuning) do
 	TUNING[i] = v
 end
+
+--[[
+	HYDRATION_SALT = hydration_per_day-90, -- 소금물
+	HYDRATION_POISON = hydration_per_day-80, -- 잘못 양조된 음료
+	HYDRATION_ROT = hydration_per_day-85, -- 썩은 음식물
+	HYDRATION_NONE = 0, -- 수상한 히비스커스
+	HYDRATION_TINYMICROSCOPIC = hydration_per_day/24,
+	HYDRATION_SUPERTINY = hydration_per_day/16,
+	HYDRATION_TINY = hydration_per_day/12,
+	HYDRATION_SMALLTINY = hydration_per_day/8, -- 물, 잘못된 조리법(주전자)
+	HYDRATION_SMALL = hydration_per_day/6, -- 술, 커피
+	HYDRATION_MEDSMALL = hydration_per_day/4, -- 과일차(섞인것), 채소차(섞인것), 꽃차(섞인것)
+	HYDRATION_MED = hydration_per_day/3, -- 찾잎이나 이름이 지정된 꽃차
+	HYDRATION_LARGE = hydration_per_day/2, -- 이름이 따로 지정된 과일, 채소차, 소다, 과일 소다
+	HYDRATION_HUGE = hydration_per_day, -- 특수효과 주는 차, 사이다
+	HYDRATION_SUPERHUGE = hydration_per_day*2, -- 콜라(퀀텀은 OP)
+]]
