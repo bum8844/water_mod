@@ -1,9 +1,9 @@
 local function onwatertype(self, watertype, old_watertype)
     if old_watertype ~= nil then
-        self.inst:RemoveTag(old_watertype.."_water")
+        self.inst:RemoveTag("water_"..old_watertype)
     end
     if watertype ~= nil then
-        self.inst:AddTag(watertype.."_water")
+        self.inst:AddTag("water_"..watertype)
     end
 end
 
@@ -13,18 +13,19 @@ local Water = Class(function(self, inst)
     self.watertype = nil
     self.ontaken = nil
     --self.returnprefab = nil
+    --self.drinktype = nil --Used for drinks. for probable use
 end,
 nil,
 {
     watertype = onwatertype,
 })
 
-function Water:SetWater(num)
-    self.Water = num
+function Water:SetWatervalue(num)
+    self.watervalue = num
 end
 
-function Water:SetWaterType(types)
-	self.watertype = types
+function Water:SetWaterType(type)
+	self.watertype = type
 end
 
 function Water:OnRemoveFromEntity()
@@ -37,45 +38,25 @@ function Water:SetOnTakenFn(fn)
     self.ontaken = fn
 end
 
-function Water:Taken(taker, item)
+function Water:Taken(taker, amount)
+    local refund = nil
+    local uses = 0
+    local delta = 0
+    local shouldreturn = true
 
-    local item_watervalue = self.watervalue
-    local refund = item_watervalue == TUNING.CUP_MAX_LEVEL and SpawnPrefab("cup") or item_watervalue == TUNING.BOTTLE_MAX_LEVEL and SpawnPrefab("messagebottleempty") or item_watervalue == TUNING.BUCKET_MAX_LEVEL and SpawnPrefab("bucket")
-
-    if item.components.finiteuses ~= nil then
-        local max = taker.components.waterlevel.maxwater
-        local current = taker.components.waterlevel.oldcurrentwater
-        if max ~= current then
-            max = max - current
-        end
-        local uses = item.components.finiteuses:GetUses()
-        uses = uses - max
-
-        if uses > 0 then
-            refund = SpawnPrefab(item.prefab)
-            refund.components.finiteuses:SetUses(uses)
-        end
-    end
-
-    local owner = item.components.inventoryitem ~= nil and item.components.inventoryitem:GetGrandOwner() or nil
-    if owner ~= nil then
-        local container = owner.components.inventory or owner.components.container
-        local item_prefab = container:RemoveItem(item, false) or item
-        item_prefab:Remove()
-        container:GiveItem(refund, nil, owner:GetPosition())
-    else
-        refund.Transform:SetPosition(inst.Transform:GetWorldPosition())
-        local item_prefab =
-            inst.components.stackable ~= nil and
-            inst.components.stackable:IsStack() and
-            inst.components.stackable:Get() or
-            inst
-        item_prefab:Remove()
-    end
-
-    self.inst:PushEvent("Watertaken", {taker = taker})
+    self.inst:PushEvent("watertaken", {taker = taker})
     if self.ontaken then
         self.ontaken(self.inst, taker)
+    end
+
+    if self.inst.components.waterlevel ~= nil then
+        self.inst.components.waterlevel:DoDelta(amount)
+        shouldreturn = self.inst.components.waterlevel:IsEmpty()
+    end
+    
+    if shouldreturn then
+        refund = SpawnPrefab(self.returnprefab)
+        RefundItem(self.inst, refund)
     end
 end
 

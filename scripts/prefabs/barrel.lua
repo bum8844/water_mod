@@ -65,17 +65,10 @@ end
 
 local function OnDepleted(inst)
 	inst.components.watersource.available = false
-	inst.components.propagator.acceptsheat = true
 end
 
-local function OnTakeWater(inst, watervalue)
-	if watervalue >= 15 then
-		inst.SoundEmitter:PlaySound("dontstarve/creatures/pengull/splash")
-	elseif watervalue >= 5 then
-		inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/medium")
-	else
-		inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/small")
-	end
+local function OnTakeWater(inst)
+	inst.component.watersource.available = true
 end
 
 local function OnSectionChange(new, old, inst)

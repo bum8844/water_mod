@@ -23,7 +23,7 @@ AddPrefabPostInit("fertilizer", function(inst)
     if not GLOBAL.TheWorld.ismastersim then
         return inst
     end
-	inst:DoTaskInTime(0, function()	
+	inst:DoTaskInTime(0, function()
         inst.components.finiteuses:SetOnFinished(BackBucket)
 	end)
 end)
@@ -252,11 +252,8 @@ AddComponentPostInit("eater", function(self)
 	local _PrefersToEat = self.PrefersToEat
 
 	function self:SetAbsorptionModifiers(health, thirst, sanity, thirst, ...)
-		local result = _SetAbsorptionModifiers(self, health, thirst, sanity, ...)
-		if thirst ~= nil then
-			self.thirstabsorption = thirst
-		end
-		return result
+		_SetAbsorptionModifiers(self, health, thirst, sanity, ...)
+		self.thirstabsorption = thirst
 	end
 
 	function self:Eat(food, feeder, ...)
@@ -272,8 +269,8 @@ AddComponentPostInit("eater", function(self)
 		    if thirst_delta ~= 0 then
 	            self.inst.components.thirst:DoDelta(thirst_delta * stack_mult)
 		    end
-		    local result = _Eat(self, food, feeder, ...)
-		    return result
+		    _Eat(self, food, feeder, ...)
+		    return true
 		end
 	end
 
@@ -290,11 +287,16 @@ end)
 
 AddComponentPostInit("edible", function(self)
 	self.isdrink = false
-	self.thirstvalue = 0
+	--self.thirstvalue = 0
+
+	function self:GetThirstFromHunger()
+		return self.hungervalue / 2 * math.exp( math.abs(self.hungervalue) / 150 )
+	end
 
 	function self:GetThirst(eater)
+		local thirst = self.thirstvalue or self:GetThirstFromHunger()
 	    local multiplier = 1
-	    local ignore_spoilage = not self.degrades_with_spoilage or self.thirstvalue < 0 or (eater ~= nil and eater.components.eater ~= nil and eater.components.eater.ignoresspoilage)
+	    local ignore_spoilage = not self.degrades_with_spoilage or thirst < 0 or (eater ~= nil and eater.components.eater ~= nil and eater.components.eater.ignoresspoilage)
 
 	    if not ignore_spoilage and self.inst.components.perishable ~= nil then
 	        if self.inst.components.perishable:IsStale() then
@@ -311,7 +313,7 @@ AddComponentPostInit("edible", function(self)
 	        end
 	    end
 
-	    return multiplier * self.thirstvalue
+	    return multiplier * thirst
 	end
 end)
 
@@ -431,3 +433,12 @@ AddPrefabPostInit("wortox",function(inst)
 	end
 end)
 ]]
+
+-- waterlevel displays percent on inventory
+AddClassPostConstruct("components/inventoryitem_replica", function(self)
+	local _SerializeUsage = self.SerializeUsage
+	function self:SerializeUsage()
+		self.classified:SerializePercentUsed(self.inst.components.waterlevel ~= nil and percentusedcomponent:GetPercent() or nil)
+		_SerializeUsage()
+	end
+end)

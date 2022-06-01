@@ -65,10 +65,10 @@ DRINKING.fn = function(act)
     end
 end
 
---ACTIONS.EAT.priority = 1
-ACTIONS.FILL.priority = 2
+--ACTIONS.EAT.priority = 0
+ACTIONS.FILL.priority = 1
 
-local FILL_BARREL = Action({priority=3})
+local FILL_BARREL = Action({priority=2})
 FILL_BARREL.id = "FILL_BARREL"
 FILL_BARREL.str = STRINGS.ACTIONS.FILL
 FILL_BARREL.fn = function(act)
@@ -155,13 +155,19 @@ local function purify(inst, doer, target, actions)
 end
 
 local function waterlevel(inst, doer, target, actions)
-    for k, v in pairs(WATERTYPE) do
+    for k, v in pairs(WATERGROUP) do
         --print("For " .. tostring(v) .. ": " .. tostring(inst:HasTag(v.."_water")) .. ", " .. tostring(target:HasTag(v.."_waterlevel")))
-        if inst:HasTag(v.."_water") then
-            if target:HasTag(v.."_waterlevel") then
-                table.insert(actions, ACTIONS.FILL_BARREL)
+        if target:HasTag(v.name.."waterlevel") then
+            for i, v2 in ipairs(v.types) do
+                if inst:HasTag("water_"..v2) then
+                    table.insert(actions, ACTIONS.FILL_BARREL)
+                end
             end
-            return
+        end
+    end
+    for k, v in pairs(FOODTYPE) do
+        if inst:HasTag("water_"..v) and target:(v.."_waterlevel") then
+            table.insert(actions, ACTION.FILL_BARREL)
         end
     end
 end
