@@ -10,9 +10,9 @@ env.ThePlayer = _G.ThePlayer
 env.TheWorld = _G.TheWorld
 env.net_ushortint = _G.net_ushortint
 env.net_bool = _G.net_bool
+require("utils/inventoryutil")
 
 PrefabFiles = require("water_prefablist")
-
 Assets = require("water_assets")
 
 _G.WATERTYPE = 

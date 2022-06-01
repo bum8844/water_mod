@@ -2,51 +2,35 @@
 
 local SourceModifierList = require("util/sourcemodifierlist")
 
-local function onwatertype(self, watertype, old_watertype)
-    if old_watertype ~= nil and old_watertype ~= self.secondarywatertype then
-        self.inst:RemoveTag(old_watertype.."waterlevel")
-    end
-    if watertype == self.secondarywatertype then
-        return
-    elseif watertype ~= nil and self.accepting then
-        self.inst:AddTag(watertype.."_waterlevel")
+local function clearcanaccepts(self, canaccepts)
+    for i, v in ipairs(accepts) do
+        self.inst:RemoveTag((type(v) == "table" and v.name or v).."_waterlevel")
     end
 end
 
-local function onsecondarywatertype(self, watertype, old_watertype)
-    if old_watertype ~= nil and old_watertype ~= self.watertype then
-        self.inst:RemoveTag(old_watertype.."_waterlevel")
+local function oncanaccepts(self, canaccepts, old_canaccepts)
+    if old_canaccepts ~= nil then
+        clearcanaccepts(self, old_canaccepts)
     end
-    if watertype == self.watertype then
-        return
-    elseif watertype ~= nil and self.accepting then
-        self.inst:AddTag(watertype.."_waterlevel")
+    if canaccepts ~= nil then
+        for i, v in ipairs(canaccepts) do
+            self.inst:AddTag((type(v) == "table" and v.name or v).."_waterlevel")
+        end
     end
 end
 
 local function onaccepting(self, accepting)
-    if self.watertype ~= nil then
-        if accepting then
-            self.inst:AddTag(self.watertype.."_waterlevel")
-        else
-            self.inst:RemoveTag(self.watertype.."_waterlevel")
-        end
-    end
-    if self.secondarywatertype ~= nil and self.secondarywatertype ~= self.watertype and self.secondarywatertype ~= WATERTYPE.USAGE then
-        if accepting then
-            self.inst:AddTag(self.secondarywatertype.."_waterlevel")
-        else
-            self.inst:RemoveTag(self.secondarywatertype.."_waterlevel")
-        end
+    if accepting then
+        self.inst:AddTag("accepting_water")
+    else
+        self.inst:RemoveTag("accepting_water")
     end
 end
 
 local function oncurrentwater(self, currentwater)
     if currentwater <= 0 then
-        self.inst:AddTag("waterdepleted")
         self.inst.replica.waterlevel:SetIsDepleted(true)
     else
-        self.inst:RemoveTag("waterdepleted")
         self.inst.replica.waterlevel:SetIsDepleted(false)
     end
 end
@@ -60,45 +44,36 @@ local Waterlevel = Class(function(self, inst)
     self.oldcurrentwater = 0
     self.rate = 1 --positive rate = consume, negative = product
 	self.rate_modifiers = SourceModifierList(self.inst)
-    self.priority = {}
 
     self.accepting = false
-    self.watertype = WATERTYPE.CLEAN
-    self.item_watertype = nil
-    self.secondarywatertype = nil
+    self.canaccepts = { WATERGROUP.OMNI }
+    --self.watertype = nil
     self.sections = 1
     self.sectionfn = nil
+    self.period = 1
+    --self.firstperiod = nil
+    --self.firstperiodfull = nil
+    --self.firstperioddt = nil
+    self.bonusmult = 1
     self.depleted = nil
 end,
 nil,
 {
-    watertype = onwatertype,
-    secondarywatertype = onsecondarywatertype,
+    canaccepts = oncanaccepts
     accepting = onaccepting,
-    --maxwater = onmaxwater,
     currentwater = oncurrentwater,
 })
 
 function Waterlevel:OnRemoveFromEntity()
     self:StopConsuming()
-    if self.watertype ~= nil then
-        self.inst:RemoveTag(self.watertype.."_waterlevel")
-    end
-    if self.secondarywatertype ~= nil and self.secondarywatertype ~= self.watertype then
-        self.inst:RemoveTag(self.secondarywatertype.."_waterlevel")
-    end
+    clearcanaccepts(self, self.canaccepts)
     self.inst:RemoveTag("waterdepleted")
-end
-
-function Waterlevel:MakeEmpty()
-    if self.currentwater > 0 then
-        self:DoDelta(-self.currentwater)
-    end
+    self.inst:RemoveTag("accepting_waterlevel")
 end
 
 function Waterlevel:OnSave()
-    if self.currentwater ~= 0 then
-        return {waterlevel = self.currentwater, item_watertype = self.item_watertype}
+    if self.currentwater > 0 then
+        return {waterlevel = self.currentwater, watertype = self.watertype}
     end
 end
 
@@ -109,6 +84,20 @@ function Waterlevel:OnLoad(data)
     if data.waterlevel then
         self:InitializeWaterLevel(math.max(0, data.waterlevel)) 
     end
+end
+
+function Waterlevel:MakeEmpty()
+    if self.currentwater > 0 then
+        self:DoDelta(-self.currentwater)
+    end
+end
+
+function Waterlevel:SetCanAccepts(canaccepts)
+    self.canaccepts = canaccepts
+end
+
+function Waterlevel:SetWaterType(type)
+    self.watertype = type
 end
 
 function Waterlevel:SetSectionCallback(fn)
@@ -127,12 +116,8 @@ function Waterlevel:SetSections(num)
     self.sections = num
 end
 
-function Waterlevel:CanAcceptWaterItem(item)
-    return self.accepting and item and item.components.water and (item.components.water.watertype == self.watertype or item.components.water.watertype == self.secondarywatertype)
-end
-
 function Waterlevel:GetCurrentSection()
-    return self:IsEmpty() and 0 or math.min( math.floor(self:GetPercent()* self.sections), self.sections)
+    return self:IsEmpty() and 0 or math.min( math.floor(self:GetPercent()* self.sections)+1, self.sections)
 end
 
 function Waterlevel:ChangeSection(amount)
@@ -144,26 +129,26 @@ function Waterlevel:SetTakeWaterFn(fn)
 end
 
 function Waterlevel:TakeWaterItem(item, doer)
-    if self:CanAcceptWaterItem(item) then
-        self.item_watertype = item.components.water.watertype
+    if self:CanAccept(item) then
+        local watervalue = item.components.water ~= nil and item.components.waterlevel.watervalue or item.components.waterlevel.currentwater
+        self.watertype = item.components.water.watertype
+
         local oldsection = self:GetCurrentSection()
-        self.oldcurrentwater = self.currentwater
-        local finiteuses_water = not item:HasTag("preparedrink_cup") and item.components.water.watervalue ~= item.components.finiteuses:GetUses() and item.components.finiteuses:GetUses() or item.components.water.watervalue
-        self:DoDelta(finiteuses_water, doer)
-        
-        local watervalue = 0
+        self.oldcurrenwater = self.currentwater
+
+        local water_amount = math.min(item.components.waterlevel.currentwater, item.components.water.watervalue)
+        self:DoDelta(watervalue, doer)
+
+        local delta = self.currentwater - self.oldcurrentwater
+
         if item.components.water ~= nil then
-            watervalue = item.components.water.watervalue
-            if item.components.finiteuses ~= nil and item.components.finiteuses:GetUses() < self.maxwater then
-                watervalue = item.components.finiteuses:GetUses()
-            end
-            item.components.water:Taken(self.inst, item)
+            item.components.water:Taken(self.inst, delta)
         end
 
         if self.ontakewaterfn ~= nil then
-            self.ontakewaterfn(self.inst, watervalue)
+            self.ontakewaterfn(self.inst, water_amount)
         end
-        self.inst:PushEvent("takewater", { watervalue = watervalue }, { doer = doer })
+        self.inst:PushEvent("takewater", { watervalue = watervalue })
 
         return true
     end
@@ -173,11 +158,6 @@ function Waterlevel:GetDebugString()
     local section = self:GetCurrentSection()
 
     return string.format("%s %2.2f/%2.2f (-%2.2f) : section %d/%d %2.2f", self.consuming and "ON" or "OFF", self.currentwater, self.maxwater, self.rate * self.rate_modifiers:Get(), section, self.sections, self:GetSectionPercent())
-end
-
-function Waterlevel:AddThreshold(percent, fn)
-    table.insert(self.thresholds, {percent=percent, fn=fn})
-    --table.sort(self.thresholds, function(l,r) return l.percent < r.percent)
 end
 
 function Waterlevel:GetSectionPercent()
@@ -230,72 +210,19 @@ function Waterlevel:InitializeWaterLevel(waterlevel)
     end
     self.currentwater = waterlevel
 
-    if self.currentwater < self.maxwater then
-        if self.inst.components.stewer ~= nil then
-            if self.inst.components.stewer.product ~= nil and self.inst.components.stewer.product ~= "saltrock" then
-                self.accepting = false
-            else
-                self.accepting = true
-            end
-        else
-            self.accepting = true
-        end
-    else
-        self.accepting = false
-    end
-
-    if self.currentwater > 0 then
-        self.inst.components.propagator.acceptsheat = false
-        if self.inst.components.watersource ~= nil then
-            if self.inst.components.stewer ~= nil and self.inst.components.stewer:IsCooking() then
-                self.inst.components.watersource.available = false
-            else
-                self.inst.components.watersource.available = true
-            end
-        end
-    end
-
     local newsection = self:GetCurrentSection()
     if oldsection ~= newsection then
         if self.sectionfn then
 	        self.sectionfn(newsection, oldsection, self.inst)
 		end
         self.inst:PushEvent("onwaterlevelsectionchanged", { newsection = newsection, oldsection = oldsection})
-        --self.inst:PushEvent("refresh")
     end
 end
 
 function Waterlevel:DoDelta(amount, doer)
     local oldsection = self:GetCurrentSection()
 
-    self.currentwater = math.max(0, math.min(self.maxwater, self.currentwater + amount))
-
-    if self.currentwater < self.maxwater then
-        if self.inst.components.stewer ~= nil then
-            if self.inst.components.stewer.product ~= nil and self.inst.components.stewer.product ~= "saltrock" then
-                self.accepting = false
-            else
-                self.accepting = true
-            end
-        else
-            self.accepting = true
-        end
-    else
-        self.accepting = false
-    end
-
-    if self.currentwater > 0 then
-        self.inst.components.propagator.acceptsheat = false
-        if self.inst.components.watersource ~= nil then
-            if self.inst.components.stewer ~= nil and self.inst.components.stewer:IsCooking() then
-                self.inst.components.watersource.available = false
-            else
-                self.inst.components.watersource.available = true
-            end
-        end
-    else
-        self.inst.components.watersource.available = false
-    end
+    self.currentwater = math.clamp(self.currentwater + amount, 0, self.maxwater)
 
     local newsection = self:GetCurrentSection()
 
@@ -307,7 +234,6 @@ function Waterlevel:DoDelta(amount, doer)
         --self.inst:PushEvent("refresh")
         if self.currentwater <= 0 and self.depleted then
             self.depleted(self.inst)
-            self.inst:PushEvent("depleted", { doer = doer })
         end
     end
 
@@ -320,7 +246,7 @@ function Waterlevel:DoUpdate(dt)
     end
 
     if self:IsEmpty() then
-        self:StopConsuing()
+        self:StopConsuming()
     end
 
     if self.updatefn ~= nil then
@@ -341,5 +267,28 @@ function Waterlevel:StopConsuming()
 end
 
 Waterlevel.LongUpdate = Waterlevel.DoUpdate
+
+function Waterlevel:TestType(item, testvalues)
+    if item ~= nil and item.components.water ~= nil then
+        for i, v in ipairs(testvalues) do
+            if type(v) == "table" then
+                for i2, v2 in ipairs(v.types) do
+                    if item:HasTag("water_"..v2) then
+                        return true
+                    end
+                end
+            elseif item:HasTag("water_"..v) then
+                return true
+            end
+        end
+    end
+end
+
+function Waterlevel:CanAccept(item)
+    if self.watertype ~= nil and self.watertype ~= item.components.water.watertype then
+        return false
+    end
+    return self.accepting and item ~= nil and self:TestType(item, self.canaccepts))
+end
 
 return Waterlevel

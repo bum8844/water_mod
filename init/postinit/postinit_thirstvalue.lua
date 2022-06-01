@@ -8,7 +8,7 @@ local HYDRATIONTYPE = {
 		--HYDRATION_SUPERTINY
 		SUPERTINY = {
 			"seaweed",
-			"seaweed _cooked",
+			"seaweed_cooked",
 			"kelp",
 			"kelp_cooked",
 			"batwing",
@@ -210,17 +210,84 @@ local HYDRATIONTYPE = {
 },
 
 local SetThirstValue = function(self)
-	local thirst = 0
-	local rate = 1
+	local foodtype = self.foodtype
+	local thirst = self.hungervalue or 0
+	local spice_multiplier = self.spice ~= nil and TUNING[self.spice.."_THIRST_MULTIPLIER"] or 1
+	local iscooked_multiplier = 1
+	local rate = TUNING[foodtype.."_THIRST_RATE"] or 0
+
+	if self.inst:HasTag("preparedfood") then
+		iscooked_multiplier = TUNING.PREPAREDFOOD_MULTIPLIER
+	elseif self.inst.components.cookable ~= nil then
+		iscooked_multiplier = TUNING.COOKEDFOOD_ MULTIPLIER
+	end
+
+	return thirst * rate * spice_multiplier * iscooked_multiplier
+end
 	
 AddComponentPostInit("edible", function(self)
-	self.thirstvalue = )
-
-
---[[for k, v in pairs(HYDRATIONTYPE) do
-	for _, u in pairs(v) do
-		AddPrefabPostInit(u, function(inst)
-			inst.components.edible.thirstvalue = TUNING["HYDRATION_"..k]
-		end)
+	if self.thirstvalue == nil then
+		self.thirstvalue = SetThirstValue(self)
 	end
-end]]
+
+	function self:GetThirst(eater)
+	    local thirstvalue = self.thirstvalue or 0
+	    local multiplier = 1
+	    local ignore_spoilage = not self.degrades_with_spoilage or self.thirstvalue < 0 or (eater ~= nil and eater.components.eater ~= nil and eater.components.eater.ignoresspoilage)
+
+	    if not ignore_spoilage and self.inst.components.perishable ~= nil then
+	        if self.inst.components.perishable:IsStale() then
+	            multiplier = eater ~= nil and eater.components.eater ~= nil and eater.components.eater.stale_thirst or self.stale_thirst
+	        elseif self.inst.components.perishable:IsSpoiled() then
+	            multiplier = eater ~= nil and eater.components.eater ~= nil and eater.components.eater.spoiled_thirst or self.spoiled_thirst
+	        end
+	    end
+
+	    if eater ~= nil and eater.components.foodaffinity ~= nil then
+	        local affinity_bonus = eater.components.foodaffinity:GetAffinity(self.inst)
+	        if affinity_bonus ~= nil then
+	            multiplier = multiplier * affinity_bonus
+	        end
+	    end
+
+	    return multiplier * thirstvalue
+	end
+end)
+
+AddComponentPostInit("eater", function(self)
+	self.thirstabsorption = 1
+	local _SetAbsorptionModifiers = self.SetAbsorptionModifiers
+	local _Eat = self.Eat
+	local _PrefersToEat = self.PrefersToEat
+
+	function self:SetAbsorptionModifiers(health, thirst, sanity, thirst, ...)
+		_SetAbsorptionModifiers(self, health, thirst, sanity, ...)
+		self.thirstabsorption = thirst
+	end
+
+	function self:Eat(food, feeder, ...)
+		if _PrefersToEat(self, food, ...) then
+			local stack_mult = self.eatwholestack and food.components.stackable ~= nil and food.components.stackable:StackSize() or 1
+			local base_mult = self.inst.components.foodmemory ~= nil and self.inst.components.foodmemory:GetFoodMultiplier(food.prefab) or 1
+			local thirst_delta = 0
+
+		    if self.inst.components.thirst ~= nil then
+		        thirst_delta = food.components.edible:GetThirst(self.inst) * base_mult * self.thirstabsorption
+		    end
+
+		    if thirst_delta ~= 0 then
+	            self.inst.components.thirst:DoDelta(thirst_delta * stack_mult)
+		    end
+		    local result = _Eat(self, food, feeder, ...)
+		    return result
+		end
+	end
+
+	function self:PrefersToEat(food, ...)
+		if food:HasTag("alcohol") and self.inst:HasTag("childplayer") then
+			return false
+		end
+		local result = _PrefersToEat(self, food, ...)
+		return result
+	end
+end)
