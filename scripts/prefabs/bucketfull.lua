@@ -69,6 +69,31 @@ local function onuse(inst)
 	end
 end
 
+local function Changeitem(inst)
+	if inst.components.temperature.current <= 0 then
+		local refund = SpawnPrefab("bucket_ice")
+		inst.AnimState:PlayAnimation("turn_to_ice")
+		inst.AnimState:PushAnimation("ice")
+		inst:DoTaskInTime(2,function(inst)
+			local owner = inst.components.inventoryitem ~= nil and inst.components.inventoryitem:GetGrandOwner() or nil
+			if owner ~= nil then
+				local container = owner.components.inventory or owner.components.container
+				local item = container:RemoveItem(inst, false) or inst
+				item:Remove()
+				container:GiveItem(refund, nil, owner:GetPosition())
+			else
+				refund.Transform:SetPosition(inst.Transform:GetWorldPosition())
+				local item =
+					inst.components.stackable ~= nil and
+					inst.components.stackable:IsStack() and
+					inst.components.stackable:Get() or
+					inst
+				item:Remove()
+			end
+		end)
+	end
+end
+
 local function MakeBucket(data)
 	local assets =
 		{
@@ -148,10 +173,13 @@ local function MakeBucket(data)
 		inst.components.edible.hungervalue = data.hunger
 		inst.components.edible:SetOnEatenFn(oneaten)
 
-		inst.components.temperature.current = 30
-
-		--inst:DoPeriodicTask(1, check)
-		--inst:DoPeriodicTask(0, SetName)
+		if name == "clean" then
+			inst:AddComponent("temperature")
+		    inst.components.temperature.mintemp = TUNING.BUCKET_FULL_MINETEMP
+		    inst.components.temperature.maxtemp = TUNING.BUCKET_FULL_MAXTEMP
+		    inst.components.temperature.current = TUNING.WATER_STARTING_TEMP
+			inst:DoPeriodicTask(1, Changeitem)
+		end
 
 		MakeHauntableLaunchAndSmash(inst)
 		
