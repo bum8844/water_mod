@@ -10,9 +10,9 @@ env.ThePlayer = _G.ThePlayer
 env.TheWorld = _G.TheWorld
 env.net_ushortint = _G.net_ushortint
 env.net_bool = _G.net_bool
-require("utils/inventoryutil")
 
 PrefabFiles = require("water_prefablist")
+
 Assets = require("water_assets")
 
 _G.WATERTYPE = 
@@ -30,7 +30,8 @@ modimport("scripts/water_actions.lua")
 modimport("scripts/water_containers.lua")
 
 if GetModConfigData("enable_thirst") ~= 1 then
-	modimport("init/postinit/postinit_player")
+	modimport("init/postinit/postinit_player.lua")
+	modimport("init/postinit/postinit_thirstvalue.lua")
 	modimport("scripts/widgets/thirstbadge_statusdisplays.lua")
 end
 

@@ -5,8 +5,8 @@ local HYDRATIONTYPE = {
 			"spoiled_fish",
 			"spoiled_fish_small",
 		},
-		--HYDRATION_SUPERTINY
-		SUPERTINY = {
+		--HYDRATION_TINYMICROSCOPIC
+		TINYMICROSCOPIC = {
 			"seaweed",
 			"seaweed_cooked",
 			"kelp",
@@ -89,8 +89,8 @@ local HYDRATIONTYPE = {
 			"barnacle_cooked",
 			"butter",
 		},
-		--HYDRATION_SMALLTINY
-		SMALLTINY = {
+		--HYDRATION_SUPERTINY
+		SUPERTINY = {
 			"pondeel",
 			"pondfish",
 			"trunk_summer",
@@ -125,7 +125,6 @@ local HYDRATIONTYPE = {
 			"cactus_flower",
 			"kyno_lotus_flower",
 			"kyno_lotus_flower_cooked",
-			"lotus_flower",
 			"lotus_flower_cooked",
 			"foliage",
 			"cutlichen",
@@ -167,11 +166,9 @@ local HYDRATIONTYPE = {
 			"rock_avocado_fruit_ripe",
 			"rock_avocado_fruit_ripe_cooked",
 			"rawmilk",
-			"fishyogurt",
-			"cheesecake",
 		},
-		--HYDRATION_SMALL
-		SMALL = {
+		--HYDRATION_SMALLTINY 
+		SMALLTINY = {
 			"cave_banana",
 			"cave_banana_cooked",
 			"dragonfruit",
@@ -189,105 +186,153 @@ local HYDRATIONTYPE = {
 			"aloe_cooked",
 			"wormlight_lesser",
 			"ice",
-		},
-		--HYDRATION_MEDSMALL
-		MEDSMALL = {
 			"coconut_halved",
+		},
+		--HYDRATION_SMALL
+		SMALL = {
+			"coconut_milk",
 			"lightbulb",
 			"succulent_picked",
 			"wormlight",
 			"goatmilk",
 			"beefalo_milk",
 			"milkywhites",
+			"coffee",
+			"kyno_coffee",
+			"liquor",
+			"margarita",
+			"daiquiri",
+			"vino",
+			"spiced_rum",
 		},
 		--HYDRATION_MED
 		MED = {
+			"fishyogurt",
+			"tentacicle",
+			"coldcuts",
+			"soup_broth",
+			"watermelonicle",
+			"bananapop",
+			"lobsterbisque",
+			"ceviche",
+			"bunnystew",
+		},
+		--HYDRATION_LARGE
+		LARGE = {
+			"tea",
+			"icedtea",
+			"kyno_tea",
+			"kyno_icedtea",
+			"cold_gazpacho",
+			"limonade",
+			"tea_floral",
+			"asparagussoup",
+			"juice_waterberry",
+			"frozenbananadaiquiri",
+			"spicyvegstinger",
+			"vegstinger",
+			"gazpacho",
 			"icecream",
 			"fishyogurt",
 			"berryshake",
+			"sweettea",
 		},
 
-},
+}
 
-local SetThirstValue = function(self)
-	local foodtype = self.foodtype
-	local thirst = self.hungervalue or 0
-	local spice_multiplier = self.spice ~= nil and TUNING[self.spice.."_THIRST_MULTIPLIER"] or 1
-	local iscooked_multiplier = 1
-	local rate = TUNING[foodtype.."_THIRST_RATE"] or 0
+local DRINKITEM = {
+	"asparagussoup",
+	"lightbulb",
+	"succulent_picked",
+	"wormlight",
+	"ice",
+	"icecream",
+}
 
-	if self.inst:HasTag("preparedfood") then
-		iscooked_multiplier = TUNING.PREPAREDFOOD_MULTIPLIER
-	elseif self.inst.components.cookable ~= nil then
-		iscooked_multiplier = TUNING.COOKEDFOOD_ MULTIPLIER
+local DRINKITEM_ACION = {
+	"coconut_milk",
+	"cold_gazpacho",
+	"coffee",
+	"kyno_coffee",
+	"pina_colada",
+	"limonade",
+	"tea_floral",
+	"juice_waterberry",
+	"batnosehat",
+	"spicyvegstinger",
+	"vegstinger",
+	"gazpacho",
+	"sweettea",
+	"rawmilk",
+	"goatmilk",
+	"beefalo_milk",
+	"berryshake",
+	"tea",
+	"icedtea",
+	"kyno_tea",
+	"kyno_icedtea",
+}
+
+local DRINKITEM_ACION_ALCOHOL = {
+	"liquor",
+	"margarita",
+	"daiquiri",
+	"vino",
+	"spiced_rum",
+}
+
+local function oneatenfn(inst, eater)
+	if not eater.components.health or eater.components.health:IsDead() or eater:HasTag("playerghost") then
+		return
+	elseif eater.components.debuffable and eater.components.debuffable:IsEnabled() then
+		if not eater:HasTag("valkyrie") then
+			eater.components.health:DoDelta(TUNING.ALCOHOL_POISON)
+			eater.alcoholdebuff_duration = TUNING.INTOXICATION_TIME
+			eater.components.debuffable:AddDebuff("alcoholdebuff", "alcoholdebuff")
+		else
+			eater.components.talker:Say(GetString(eater,"ANNOUNCE_DRUNK_IMMUNITY"))
+		end
+		eater.immunebuff_duration = TUNING.IMMUNE_TIME
+		eater.components.debuffable:AddDebuff("immunebuff", "immunebuff")
+	else
+		eater.components.health.externalabsorbmodifiers:SetModifier(eater, TUNING.BUFF_PLAYERABSORPTION_MODIFIER)
+		eater.components.locomotor:SetExternalSpeedMultiplier(eater, "alcoholdebuff", 0.5)
+		eater:DoTaskInTime(TUNING.INTOXICATION_TIME, function()
+			eater.components.locomotor:RemoveExternalSpeedMultiplier(eater, "alcoholdebuff")
+		end)
+   		eater:DoTaskInTime(TUNING.IMMUNE_TIME, function()
+   			eater.components.health.externalabsorbmodifiers:RemoveModifier(eater)
+   		end)
 	end
+end 
 
-	return thirst * rate * spice_multiplier * iscooked_multiplier
+for _, v in pairs(DRINKITEM) do 
+	AddPrefabPostInit(v, function(inst) inst:AddTag("etcthing") end)
 end
-	
-AddComponentPostInit("edible", function(self)
-	if self.thirstvalue == nil then
-		self.thirstvalue = SetThirstValue(self)
-	end
 
-	function self:GetThirst(eater)
-	    local thirstvalue = self.thirstvalue or 0
-	    local multiplier = 1
-	    local ignore_spoilage = not self.degrades_with_spoilage or self.thirstvalue < 0 or (eater ~= nil and eater.components.eater ~= nil and eater.components.eater.ignoresspoilage)
+for _, v in pairs(DRINKITEM_ACION) do 
+	AddPrefabPostInit(v, function(inst) inst:AddTag("drink") end)
+end
 
-	    if not ignore_spoilage and self.inst.components.perishable ~= nil then
-	        if self.inst.components.perishable:IsStale() then
-	            multiplier = eater ~= nil and eater.components.eater ~= nil and eater.components.eater.stale_thirst or self.stale_thirst
-	        elseif self.inst.components.perishable:IsSpoiled() then
-	            multiplier = eater ~= nil and eater.components.eater ~= nil and eater.components.eater.spoiled_thirst or self.spoiled_thirst
-	        end
-	    end
+for _, v in pairs(DRINKITEM_ACION_ALCOHOL) do 
+	AddPrefabPostInit(v, function(inst) 
+		inst:AddTag("drink")
+		inst:AddTag("alcohol")
 
-	    if eater ~= nil and eater.components.foodaffinity ~= nil then
-	        local affinity_bonus = eater.components.foodaffinity:GetAffinity(self.inst)
-	        if affinity_bonus ~= nil then
-	            multiplier = multiplier * affinity_bonus
-	        end
-	    end
-
-	    return multiplier * thirstvalue
-	end
-end)
-
-AddComponentPostInit("eater", function(self)
-	self.thirstabsorption = 1
-	local _SetAbsorptionModifiers = self.SetAbsorptionModifiers
-	local _Eat = self.Eat
-	local _PrefersToEat = self.PrefersToEat
-
-	function self:SetAbsorptionModifiers(health, thirst, sanity, thirst, ...)
-		_SetAbsorptionModifiers(self, health, thirst, sanity, ...)
-		self.thirstabsorption = thirst
-	end
-
-	function self:Eat(food, feeder, ...)
-		if _PrefersToEat(self, food, ...) then
-			local stack_mult = self.eatwholestack and food.components.stackable ~= nil and food.components.stackable:StackSize() or 1
-			local base_mult = self.inst.components.foodmemory ~= nil and self.inst.components.foodmemory:GetFoodMultiplier(food.prefab) or 1
-			local thirst_delta = 0
-
-		    if self.inst.components.thirst ~= nil then
-		        thirst_delta = food.components.edible:GetThirst(self.inst) * base_mult * self.thirstabsorption
-		    end
-
-		    if thirst_delta ~= 0 then
-	            self.inst.components.thirst:DoDelta(thirst_delta * stack_mult)
-		    end
-		    local result = _Eat(self, food, feeder, ...)
-		    return result
+		if inst.components.edible ~= nil then
+			inst.components.edible:SetOnEatenFn(oneatenfn)
 		end
-	end
+	end)
+end
 
-	function self:PrefersToEat(food, ...)
-		if food:HasTag("alcohol") and self.inst:HasTag("childplayer") then
-			return false
-		end
-		local result = _PrefersToEat(self, food, ...)
-		return result
+for k, v in pairs(HYDRATIONTYPE) do
+	for _, u in pairs(v) do
+		AddPrefabPostInit(u, function(inst)
+			if inst.components.edible ~= nil then
+				inst.components.edible.thirstvalue = TUNING["HYDRATION_"..k]
+			end
+		end)
 	end
-end)
+end
+
+--우유모자 목마름 채워주는 작업 해야함

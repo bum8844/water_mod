@@ -8,6 +8,8 @@ AddRecipePostInit("fertilizer",function(v) v.ingredients = {Ingredient("poop", 3
 
 AddRecipeFilter({name = "HYDRATION", atlas = ModAtlas, image = "hydration.tex", custom_pos=nil, recipes=nil,},nil)
 
+AddRecipeToFilter("refined_dust","HYDRATION")
+
 AddRecipe2("purification_tablets",{Ingredient("ash",2),Ingredient("nitre",1),Ingredient("charcoal",1),Ingredient("saltrock",1)},TECH.SCIENCE_TWO,{atlas = ModAtlas, numtogive = 10 , image = "purification_tablets.tex"},{"COOKING","HYDRATION"})
 
 AddRecipe2("cup",{Ingredient("flint",3)},TECH.NONE,{atlas = ModAtlas, image = "cup_empty.tex"},{"REFINE","HYDRATION"})
@@ -18,7 +20,7 @@ AddRecipe2("barrel",{Ingredient("boards",2),Ingredient("rope",3)},TECH.SCIENCE_O
 
 AddRecipe2("brewery",{Ingredient("boards",3),Ingredient("rope",3),Ingredient("cutstone",12),Ingredient("goldnugget",4)},TECH.SCIENCE_TWO,{placer = "brewery_placer", atlas = ModAtlas, image = "brewery.tex"},{"COOKING","HYDRATION"})
 
-AddRecipe2("campkettle",{Ingredient("twigs",2),Ingredient("log",2),Ingredient("cutgrass",2)},TECH.NONE,{placer = "campkettle_placer", atlas = ModAtlas, image = "campkettle.tex"},{"COOKING","LIGHT","HYDRATION"})
+AddRecipe2("campkettle_item",{Ingredient("twigs",2),Ingredient("log",2),Ingredient("cutgrass",2)},TECH.NONE,{atlas = ModAtlas, image = "campkettle.tex"},{"COOKING","LIGHT","HYDRATION"})
 
 AddRecipe2("kettle",{Ingredient("twigs",6),Ingredient("rope",2),Ingredient("charcoal",2)},TECH.SCIENCE_ONE,{placer = "kettle_placer", atlas = ModAtlas, image = "kettle.tex"},{"COOKING","HYDRATION"})
 

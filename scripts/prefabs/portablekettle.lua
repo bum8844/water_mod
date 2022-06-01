@@ -7,6 +7,7 @@ local cooking = require("cooking")
 local assets =
 {
     Asset("ANIM", "anim/portablekettle.zip"),
+    Asset("ANIM", "anim/kettle_drink.zip"),
 	Asset("ANIM", "anim/portablekettle_meter_dirty.zip"),
 	Asset("ANIM", "anim/portablekettle_meter_water.zip"),
     Asset("ANIM", "anim/ui_cookpot_1x4.zip"),

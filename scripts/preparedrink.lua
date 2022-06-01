@@ -627,7 +627,7 @@ local drinks =
 	
 	lotusflower =
 	{
-		test = function(boilier, names, tags) return (( names.lotus_flower or 0 ) + ( names.lotus_flower_cooked or 0 ) + ( names.kyno_lotus or 0 ) + ( names.kyno_lotus_cooked or 0 ) >= 2) and notmeat(tags) end,
+		test = function(boilier, names, tags) return (( names.lotus_flower or 0 ) + ( names.lotus_flower_cooked or 0 ) + ( names.kyno_lotus_flower or 0 ) + ( names.kyno_lotus_flower_cooked or 0 ) >= 2) and notmeat(tags) end,
 		priority = 1,
 		health = TUNING.HEALING_SMALL,
 		hunger = TUNING.DRINK_CALORIES,

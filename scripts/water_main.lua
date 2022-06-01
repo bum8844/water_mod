@@ -23,7 +23,7 @@ AddPrefabPostInit("fertilizer", function(inst)
     if not GLOBAL.TheWorld.ismastersim then
         return inst
     end
-	inst:DoTaskInTime(0, function()
+	inst:DoTaskInTime(0, function()	
         inst.components.finiteuses:SetOnFinished(BackBucket)
 	end)
 end)
@@ -173,18 +173,6 @@ for _, v in pairs(TUNING.CLEANSOURCE) do
 	AddPrefabPostInit(v, function(inst) inst:AddTag("cleanwater") end)
 end
 
---[[for k, v in pairs(TUNING.HYDRATIONTYPE) do
-	for _, r in pairs(v) do
-		AddPrefabPostInit(r, function(inst)
-			if not _G.TheWorld.ismastersim then
-				return
-			end
-			inst.components.edible.thirstvalue = TUNING["HYDRATION_"..k]
-		end)
-	end
-end]]
-
-
 -- bum: 이 코드가 말리기 위해 추가한 코드임
 -- AFS: dryer:StartDrying calls dryable.components.perishable:GetPercent(), so we need to add such hack to
 -- make the objects without dryable on the rack (tea leaves, in this case).
@@ -245,103 +233,6 @@ end)
 
 
 -- 목마름을 채우기 위해 추가한 코드 352부터 413까지
-AddComponentPostInit("eater", function(self)
-	self.thirstabsorption = 1
-	local _SetAbsorptionModifiers = self.SetAbsorptionModifiers
-	local _Eat = self.Eat
-	local _PrefersToEat = self.PrefersToEat
-
-	function self:SetAbsorptionModifiers(health, thirst, sanity, thirst, ...)
-		_SetAbsorptionModifiers(self, health, thirst, sanity, ...)
-		self.thirstabsorption = thirst
-	end
-
-	function self:Eat(food, feeder, ...)
-		if _PrefersToEat(self, food, ...) then
-			local stack_mult = self.eatwholestack and food.components.stackable ~= nil and food.components.stackable:StackSize() or 1
-			local base_mult = self.inst.components.foodmemory ~= nil and self.inst.components.foodmemory:GetFoodMultiplier(food.prefab) or 1
-			local thirst_delta = 0
-
-		    if self.inst.components.thirst ~= nil then
-		        thirst_delta = food.components.edible:GetThirst(self.inst) * base_mult * self.thirstabsorption
-		    end
-
-		    if thirst_delta ~= 0 then
-	            self.inst.components.thirst:DoDelta(thirst_delta * stack_mult)
-		    end
-		    _Eat(self, food, feeder, ...)
-		    return true
-		end
-	end
-
-	function self:PrefersToEat(food, ...)
-		if food:HasTag("alcohol") and self.inst:HasTag("childplayer") then
-			return false
-		end
-		local result = _PrefersToEat(self, food, ...)
-		return result
-	end
-end)
-
-
-
-AddComponentPostInit("edible", function(self)
-	self.isdrink = false
-	--self.thirstvalue = 0
-
-	function self:GetThirstFromHunger()
-		return self.hungervalue / 2 * math.exp( math.abs(self.hungervalue) / 150 )
-	end
-
-	function self:GetThirst(eater)
-		local thirst = self.thirstvalue or self:GetThirstFromHunger()
-	    local multiplier = 1
-	    local ignore_spoilage = not self.degrades_with_spoilage or thirst < 0 or (eater ~= nil and eater.components.eater ~= nil and eater.components.eater.ignoresspoilage)
-
-	    if not ignore_spoilage and self.inst.components.perishable ~= nil then
-	        if self.inst.components.perishable:IsStale() then
-	            multiplier = eater ~= nil and eater.components.eater ~= nil and eater.components.eater.stale_thirst or self.stale_thirst
-	        elseif self.inst.components.perishable:IsSpoiled() then
-	            multiplier = eater ~= nil and eater.components.eater ~= nil and eater.components.eater.spoiled_thirst or self.spoiled_thirst
-	        end
-	    end
-
-	    if eater ~= nil and eater.components.foodaffinity ~= nil then
-	        local affinity_bonus = eater.components.foodaffinity:GetAffinity(self.inst)
-	        if affinity_bonus ~= nil then
-	            multiplier = multiplier * affinity_bonus
-	        end
-	    end
-
-	    return multiplier * thirst
-	end
-end)
-
---regrowth code
-AddComponentPostInit("regrowthmanager", function(self)
-	self:SetRegrowthForType("tea_tree", TUNING.EVERGREEN_REGROWTH.DESOLATION_RESPAWN_TIME, "tea_tree", function()
-        return TUNING.TEA_TREE_REGROWTH_TIME_MULT
-    end)
-    self:SetRegrowthForType("caffeinberry", TUNING.EVERGREEN_REGROWTH.DESOLATION_RESPAWN_TIME, "caffeinberry", function()
-        return TUNING.CAFFEINBERRY_REGROWTH_TIME_MULT
-    end)
-end)
-
-
--- 어린이 보호(알콜음료 먹는거 방지 코드)
-if GetModConfigData("child_safety") ~= 1 then
-	for _, v in pairs(TUNING.CHILDS) do
-		AddPrefabPostInit(v, function(inst) inst:AddTag("childplayer") end)
-	end
-end
-
-AddComponentPostInit("wisecracker",function(self, inst)
-    inst:ListenForEvent("sleep_end", function(inst, data)
-        inst.components.talker:Say(_G.GetString(inst, "ANNOUNCE_SLEEP_END"))
-    end)
-end)
-
---[[
 AddComponentPostInit("eater", function(self)
 	self.thirstabsorption = 1
 	local _Eat = self.Eat
@@ -427,18 +318,105 @@ AddComponentPostInit("edible", function(self)
         return multiplier * thirst
     end
 end)
+
+--regrowth code
+AddComponentPostInit("regrowthmanager", function(self)
+	self:SetRegrowthForType("tea_tree", TUNING.EVERGREEN_REGROWTH.DESOLATION_RESPAWN_TIME, "tea_tree", function()
+        return TUNING.TEA_TREE_REGROWTH_TIME_MULT
+    end)
+    self:SetRegrowthForType("caffeinberry", TUNING.EVERGREEN_REGROWTH.DESOLATION_RESPAWN_TIME, "caffeinberry", function()
+        return TUNING.CAFFEINBERRY_REGROWTH_TIME_MULT
+    end)
+end)
+
+
+-- 어린이 보호(알콜음료 먹는거 방지 코드)
+if GetModConfigData("child_safety") ~= 1 then
+	for _, v in pairs(TUNING.CHILDS) do
+		AddPrefabPostInit(v, function(inst) inst:AddTag("childplayer") end)
+	end
+end
+
+AddComponentPostInit("wisecracker",function(self, inst)
+    inst:ListenForEvent("sleep_end", function(inst, data)
+        inst.components.talker:Say(_G.GetString(inst, "ANNOUNCE_SLEEP_END"))
+    end)
+end)
+
+-- 워톡스 계수
 AddPrefabPostInit("wortox",function(inst)
 	if inst.components.eater ~= nil then
 		inst.components.eater:SetThristAbsorption(.5)
 	end
 end)
-]]
 
--- waterlevel displays percent on inventory
-AddClassPostConstruct("components/inventoryitem_replica", function(self)
-	local _SerializeUsage = self.SerializeUsage
-	function self:SerializeUsage()
-		self.classified:SerializePercentUsed(self.inst.components.waterlevel ~= nil and percentusedcomponent:GetPercent() or nil)
-		_SerializeUsage()
+local function ItemTradeTest(inst, item)
+    if item == nil then
+        return false
+    elseif not item:HasTag("campkettle") then
+        return false, "NOTCAMPKETTLE"
+    end
+    return true
+end
+
+local function OnKettleGiven(inst, giver, item)
+    inst.components.pickable:ChangeProduct(item)
+	inst.components.trader:Disable()
+	inst.components.pickable.caninteractwith = true
+	inst._kettle = item:HasTag("campkettle") and "campkettle" or nil
+	inst._name = item
+	inst:AddChild(SpawnPrefab(inst._kettle))
+    item.Transform:SetPosition(0, 0, 0)
+    item:RemoveFromScene()
+end
+
+local function OnKettleTaken(inst, picker, loot)
+    inst.components.pickable.caninteractwith = false
+
+    if inst._kettle ~= nil then
+        if loot ~= nil then
+            --Shouldn't happen
+            loot:Remove()
+        end
+        inst:RemoveChild(inst._kettle)
+        inst._name:ReturnToScene()
+        inst._name.components.inventoryitem:InheritMoisture(TheWorld.state.wetness, TheWorld.state.iswet)
+        picker:PushEvent("picksomething", { object = inst, loot = inst._name })
+        picker.components.inventory:GiveItem(inst._name, nil, inst:GetPosition())
+        inst._name = nil
+        inst.components.trader:Enable()
+    end
+end
+
+local function onsavekettle(inst, data)
+	if inst.components.pickable.caninteractwith then
+        data.name = inst.components.pickable.product
 	end
+end
+
+local function onloadkettle(inst, data)
+	if inst.components.pickable.caninteractwith and data.name ~= nil then
+		OnKettleGiven(inst, nil, data.name) 
+	end
+end
+
+AddPrefabPostInit("campfire",function(inst)
+    if not GLOBAL.TheWorld.ismastersim then
+        return inst
+    end
+
+    inst._kettle = nil
+    inst._name = nil
+
+    inst:AddComponent("pickable")
+    inst.components.pickable.caninteractwith = false
+    inst.components.pickable.onpickedfn = OnKettleTaken
+
+	inst:AddComponent("trader")
+    inst.components.trader:SetAbleToAcceptTest(ItemTradeTest)
+    inst.components.trader.deleteitemonaccept = false
+    inst.components.trader.onaccept = OnKettleGiven
+
+    inst.OnSave = onsavekettle
+    inst.OnLoad = onloadkettle
 end)

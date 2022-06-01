@@ -39,41 +39,32 @@ ACTIONS.HARVEST.stroverridefn = function(act)
     end
 end
 
---[[ACTIONS.EAT.stroverridefn = function(act)
-    if act.invobject:HasTag("drink") then
-        return STRINGS.ACTIONS.DRINKING
-    end
-end]]
-
-
 ACTIONS.STORE.stroverridefn = function(act)
     if act.target:HasTag("kettle") then
         return STRINGS.ACTIONS.BOIL
     end
 end
 
+ACTIONS.EAT.priority = 1
+ACTIONS.FILL.priority = 2
 
-local DRINKING = Action({ mount_valid=true, priority=1})
-DRINKING.id = "DRINKING"
-DRINKING.str = STRINGS.ACTIONS.DRINKING
-DRINKING.fn = function(act)
-    local obj = act.target or act.invobject
-    if obj ~= nil then
-        if obj.components.edible ~= nil and obj.components.edible.isdrink and act.doer.components.eater ~= nil then
-            return act.doer.components.eater:Eat(obj, act.doer)
-        end
-    end
-end
-
---ACTIONS.EAT.priority = 0
-ACTIONS.FILL.priority = 1
-
-local FILL_BARREL = Action({priority=2})
+local FILL_BARREL = Action({priority=3})
 FILL_BARREL.id = "FILL_BARREL"
 FILL_BARREL.str = STRINGS.ACTIONS.FILL
 FILL_BARREL.fn = function(act)
     if act.target.components.waterlevel:TakeWaterItem(act.invobject, act.doer) then
         return true
+    end
+end
+
+local MILKINGTOOL = Action({priority=2})
+MILKINGTOOL.id = "MILKINGTOOL"
+MILKINGTOOL.str = STRINGS.ACTIONS.DOMILKING
+MILKINGTOOL.fn = function(act)
+    if act.invobject.components.milkingtool:IsCharged(act.target) then
+        return act.invobject.components.milkingtool:DoMilking(act.target, act.doer)
+    else
+        return act.invobject.components.milkingtool:NotReady(act.doer)
     end
 end
 
@@ -143,8 +134,15 @@ AddAction(FILL_BARREL)
 AddAction(PURIFY)
 AddAction(DRINKING)
 AddAction(DRINKPLAYER)
+AddAction(MILKINGTOOL)
 
 -- 만들어진 액션을 상호작용할 prefab에 넣어주는 구간
+
+local function milkingtool(inst, doer, target, actions)
+    if target:HasTag("lightninggoat") then
+        table.insert(actions, ACTIONS.MILKINGTOOL)
+    end
+end
 
 local function purify(inst, doer, target, actions)
     if inst:HasTag("purify_pill") or inst:HasTag("purify") then
@@ -155,32 +153,16 @@ local function purify(inst, doer, target, actions)
 end
 
 local function waterlevel(inst, doer, target, actions)
-    for k, v in pairs(WATERGROUP) do
+    for k, v in pairs(WATERTYPE) do
         --print("For " .. tostring(v) .. ": " .. tostring(inst:HasTag(v.."_water")) .. ", " .. tostring(target:HasTag(v.."_waterlevel")))
-        if target:HasTag(v.name.."waterlevel") then
-            for i, v2 in ipairs(v.types) do
-                if inst:HasTag("water_"..v2) then
-                    table.insert(actions, ACTIONS.FILL_BARREL)
-                end
+        if inst:HasTag(v.."_water") then
+            if target:HasTag(v.."_waterlevel") then
+                table.insert(actions, ACTIONS.FILL_BARREL)
             end
-        end
-    end
-    for k, v in pairs(FOODTYPE) do
-        if inst:HasTag("water_"..v) and target:(v.."_waterlevel") then
-            table.insert(actions, ACTION.FILL_BARREL)
+            return
         end
     end
 end
-
-local function drinking_componentaction(inst, doer, target, actions)
-    if inst:HasTag("drink") or target:HasTag("drink") then
-        table.insert(actions, ACTIONS.DRINKING)
-    end
-end
-
-AddComponentAction("USEITEM", "water", waterlevel_componentaction)
-AddComponentAction("USEITEM", "purify", purify_componentaction)
-
 
 local function drinking_use(inst, doer, target, actions, right)
 
@@ -279,6 +261,7 @@ local function drinking_inv(inst, doer, actions, right)
 end
 
 -- 프롭들의 애니메이션 실행 코드 구간
+
 local drunk = State{
     name = "drunk",
     tags = { "busy", "pausepredict", "nomorph" },
@@ -365,7 +348,7 @@ local drinking_act = State{
         if feed == nil or
             feed.components.edible == nil or
             feed.components.edible.foodtype ~= FOODTYPE.GEARS then
-            inst.SoundEmitter:PlaySound("drink_fx/player/drinking","drinking",.5)
+            inst.SoundEmitter:PlaySound("drink_fx/player/drinking","drinking",.25)
         end
 
         if inst.components.inventory:IsHeavyLifting() and
@@ -445,6 +428,7 @@ AddStategraphState("wilson", drinking_act)
 AddStategraphState("wilson_client", drinking_client_act)
 
 -- 만들어진 애니메이션을 연결해 주는 코드 구간
+
 local refresh_drunk_event = EventHandler("refreshdrunk",function(inst)
         if not inst.sg:HasStateTag("dead") then
             inst.sg:GoToState("refreshdrunk")
@@ -473,7 +457,7 @@ local drinking_client_event = EventHandler("drinking_client",function(inst, acti
     end)
 
 local drinking_event = EventHandler("drinking",function(inst, action)
-        if inst.sg:HasStateTag("busy") then
+            if inst.sg:HasStateTag("busy") then
             return
         end
         local obj = action.target or action.invobject
@@ -493,11 +477,16 @@ local drinking_event = EventHandler("drinking",function(inst, action)
 AddStategraphEvent("wilson",refresh_drunk_event)
 AddStategraphEvent("wilson",drunk_event)
 AddStategraphEvent("wilson",drink_event)
+AddStategraphEvent("wilson_client",refresh_drunk_event)
+AddStategraphEvent("wilson_client",drunk_event)
 AddStategraphEvent("wilson_client",drinking_client_event)
+
+-- 액션테이블, 컴포넌트, 작업한 함수 합치는 코드 구간
 
 AddComponentAction("USEITEM", "water", waterlevel)
 AddComponentAction("USEITEM", "purify", purify)
 AddComponentAction("USEITEM", "edible", drinking_use)
+AddComponentAction("USEITEM", "milkingtool", milkingtool)
 AddComponentAction("INVENTORY", "edible", drinking_inv)
 
 -- 만들어진 컴포넌트 액션을 케릭터에 연결시키는 코드 구간
@@ -506,109 +495,9 @@ AddStategraphActionHandler("wilson", ActionHandler(ACTIONS.FILL_BARREL, "dolonga
 AddStategraphActionHandler("wilson_client", ActionHandler(ACTIONS.FILL_BARREL, "dolongaction"))
 AddStategraphActionHandler("wilson", ActionHandler(ACTIONS.PURIFY, "dolongaction"))
 AddStategraphActionHandler("wilson_client", ActionHandler(ACTIONS.PURIFY, "dolongaction"))
-
---[[
-function SetupBottleDrinkActions(inst, doer, actions)
-	table.insert(actions, ACTIONS.FILI_CUPDRINK)
-end
-
-AddComponentAction("INVENTORY", "fili_cupdrink", SetupBottleDrinkActions)
-
-
-
-local fili_cupdrink_state = State{
-        name = "fili_cupdrink_action",
-        tags = { "busy" },
-
-        onenter = function(inst)
-            inst.components.locomotor:Stop()
-
-            if inst.components.inventory:IsHeavyLifting() and
-                not inst.components.rider:IsRiding() then
-                inst.AnimState:PlayAnimation("heavy_quick_eat")
-            else
-                inst.AnimState:PlayAnimation("action_uniqueitem_pre")
-                inst.AnimState:PushAnimation("horn", false)
-				inst.AnimState:OverrideSymbol("horn01", "swap_cup", "drink_override")
-				inst.AnimState:Show("ARM_normal")
-            end
-        end,
-
-        timeline =
-        {
-            TimeEvent(42 * FRAMES, function(inst)
-                inst:PerformBufferedAction()
-                inst.sg:RemoveStateTag("busy")
-                inst.sg:RemoveStateTag("pausepredict")
-            end),
-        },
-
-        events =
-        {
-            EventHandler("animqueueover", function(inst)
-                if inst.AnimState:AnimDone() then
-                    inst.sg:GoToState("idle")
-                end
-            end),
-        },
-
-        onexit = function(inst)
-            if inst.components.inventory:GetEquippedItem(EQUIPSLOTS.HANDS) then
-                inst.AnimState:Show("ARM_carry")
-                inst.AnimState:Hide("ARM_normal")
-            end
-        end,
-}
-
-local fili_cupdrink_state_client = .State{
-        name = "fili_cupdrink_action",
-        tags = { "busy" },
-
-        onenter = function(inst)
-            inst.components.locomotor:Stop()
-		
-            inst.AnimState:PlayAnimation("action_uniqueitem_pre")
-            inst.AnimState:PushAnimation("horn", false)
-			inst.AnimState:OverrideSymbol("horn01", "swap_cup", "drink_override")
-			inst.AnimState:Show("ARM_normal")
-            inst:PerformPreviewBufferedAction()
-            inst.sg:SetTimeout(2)
-        end,
-
-        timeline =
-        {
-            TimeEvent(42 * FRAMES, function(inst)
-                inst.sg:RemoveStateTag("busy")
-                inst.sg:RemoveStateTag("pausepredict")
-            end),
-        },
-
-        events =
-        {
-            EventHandler("animqueueover", function(inst)
-                if inst.AnimState:AnimDone() then
-                    inst.sg:GoToState("idle")
-                end
-            end),
-        },
-
-        onexit = function(inst)
-		    local equip = inst.replica.inventory:GetEquippedItem(EQUIPSLOTS.HANDS)
-            if equip then
-                inst.AnimState:Show("ARM_carry")
-                inst.AnimState:Hide("ARM_normal")
-            end
-        end,
-}
-
-AddStategraphState("wilson", fili_cupdrink_state)
-AddStategraphState("wilson_client", fili_cupdrink_state_client)
-
-
-local fili_cupdrink_ah = ActionHandler( ACTIONS.FILI_CUPDRINK, "fili_cupdrink_action" )
-AddStategraphActionHandler("wilson", fili_cupdrink_ah)
-AddStategraphActionHandler("wilson_client", fili_cupdrink_ah)]]
 AddStategraphActionHandler("wilson", ActionHandler(ACTIONS.DRINKING, "drinking"))
 AddStategraphActionHandler("wilson_client", ActionHandler(ACTIONS.DRINKING, "drinking"))
 AddStategraphActionHandler("wilson", ActionHandler(ACTIONS.DRINKPLAYER, "give"))
 AddStategraphActionHandler("wilson_client", ActionHandler(ACTIONS.DRINKPLAYER, "give"))
+AddStategraphActionHandler("wilson", ActionHandler(ACTIONS.MILKINGTOOL, "dolongaction"))
+AddStategraphActionHandler("wilson_client", ActionHandler(ACTIONS.MILKINGTOOL, "dolongaction"))
