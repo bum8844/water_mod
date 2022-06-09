@@ -21,6 +21,7 @@ return {
 	"preparedrink",
 	"tea_tree",
 	"tea_seed",
+	"water_spicedfoods",
 
 	--buff
 	"drinkbuff",

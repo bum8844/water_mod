@@ -59,6 +59,16 @@ local function OnApplied(inst, final_use, doer, target)
     end
 end
 
+local function OnTake(inst, taker)
+    if inst.components.water.watervalue >= 15 then
+        taker.SoundEmitter:PlaySound("dontstarve/creatures/pengull/splash")
+    elseif inst.components.water.watervalue >= 5 then
+        taker.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/medium")
+    else
+        taker.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/small")
+    end
+end
+
 local function MakePreparedCupDrink(data)
 
     local name = data.name
@@ -197,11 +207,15 @@ local function MakePreparedCupDrink(data)
                 inst:AddComponent("purify")
             end
             inst:AddTag("watercan")
-
-            inst:AddComponent("water")
-            inst.components.water.watervalue = TUNING.CUP_MAX_LEVEL
-            inst.components.water.watertype = WATERTYPE[string.upper( name == "water" and "clean" or name == "salt" and "salty" or name )]
         end
+
+        inst:AddComponent("water")
+        inst.components.water:SetWaterType(data.watertype or WATERTYPE.GENERIC)
+        inst.components.water:SetOnTakenFn(OnTake)
+
+        inst:AddComponent("waterlevel")
+        inst.components.water:SetWaterType(data.watertype or WATERTYPE.GENERIC)
+        inst.components.water:SetOnTakenFn(OnTake)
 
 		inst:AddComponent("inventoryitem")
 		inst.replica.inventoryitem:SetImage("cup_"..name)
@@ -461,11 +475,12 @@ local function MakePreparedBottleDrink(data)
                 inst:AddComponent("purify")
             end
             inst:AddTag("watercan")
-
-            inst:AddComponent("water")
-            inst.components.water.watervalue = TUNING.BOTTLE_MAX_LEVEL
-            inst.components.water.watertype = WATERTYPE[string.upper( name == "water" and "clean" or name == "salt" and "salty" or name )]
         end
+
+        inst:AddComponent("water")
+        inst.components.water:SetWaterMax(TUNING.BOTTLE_MAX_LEVEL)
+        inst.components.water:SetWaterType(data.watertype or WATERTYPE.GENERIC)
+        inst.components.water:SetOnTakenFn(OnTake)
 
         inst:AddComponent("inventoryitem")
         inst.replica.inventoryitem:SetImage("bottle_"..name)

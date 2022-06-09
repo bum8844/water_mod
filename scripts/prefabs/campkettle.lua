@@ -1,6 +1,7 @@
 local assets =
 {
     Asset("ANIM", "anim/campkettle.zip"),
+    Asset("ANIM", "anim/campkettle_meter_water.zip"),
     Asset("IMAGE", "images/tea_inventoryitem.tex"),
     Asset("ATLAS", "images/tea_inventoryitem.xml"),
     Asset("ATLAS_BUILD", "images/tea_inventoryitem.xml", 256),
@@ -26,9 +27,9 @@ local function fn_item()
 
     MakeInventoryPhysics(inst)  
 
-    --[[inst.AnimState:SetBuild("campkettle")
-    inst.AnimState:SetBank("campkettle")--"campkettle_item"
-    inst.AnimState:PlayAnimation("idle_empty")]]
+    inst.AnimState:SetBuild("campkettle")
+    inst.AnimState:SetBank("item")
+    inst.AnimState:PlayAnimation("idle_ground")
 
     inst.entity:SetPristine()
 
@@ -52,24 +53,82 @@ local function fn_item()
 end
 
 local function OnSpawnIn(inst)
-    inst:Show()
-    inst.AnimState:PlayAnimation("place", false)
-    inst.AnimState:PushAnimation("idle_empty")
+    if not inst.parent then
+        print("must build on campfire or firepit! -- removing")
+        inst:Remove()
+    else
+        inst._type = inst.parent.prefab == "firepit" and "B" or "A"
+        inst.AnimState:SetBank("type_"..inst._type)
+
+        inst:DoTaskInTime(0,function(inst)
+            inst:Show()
+            inst.AnimState:PlayAnimation("place", false)
+            inst.AnimState:PushAnimation("idle_empty")
+        end)
+    end
+end
+
+local function ChangeToItem(inst)
+    local item = SpawnPrefab("campkettle_item")
+    local type = inst._type
+    if inst.parent then
+        inst.parent.components.burnable:OverrideBurnFXBuild("campfire_fire")
+        inst.parent.components.trader:Enable()
+        inst.parent._kettleinst = nil
+        inst.parent._setkettle = false
+    end
+    item.Transform:SetPosition(inst.Transform:GetWorldPosition())
+    item.AnimState:PlayAnimation("collapse_"..type)
+    item.SoundEmitter:PlaySound("dontstarve/common/together/portable/cookpot/collapse")
+end
+
+local function OnDismantle(inst, doer)
+    ChangeToItem(inst)
+    inst:Remove()
+    --[[if inst.components.waterlevel.currentwater == 0 then
+        ChangeToItem(inst)
+        inst:Remove()
+    else
+        doer.components.talker:Say(GetString(doer,"ACTIONFAIL",{"DISMANTLE","NOTEMPTY"}))
+    end]]
+end
+
+local function onsave(inst, data)
+    data.pittype = inst._type
+    if inst._donebuild then
+        data.donebuild = inst._donebuild
+    end
+end
+
+local function onload(inst, data)
+    if data.pittype ~= nil then
+        inst._type = data.pittype
+        local type = data.pittype
+        inst.AnimState:SetBank("type_"..type)
+        inst:Show()
+    end
+    if data.donebuild then
+        inst._donebuild = data.donebuild
+    end
 end
 
 local function fn()
     local inst = CreateEntity()
+    inst:Hide()
+    inst._type = "A"
+    inst._donebuild = nil
 
     inst.entity:AddTransform()
     inst.entity:AddAnimState()
     inst.entity:AddSoundEmitter()
     inst.entity:AddNetwork()
 
-    MakeInventoryPhysics(inst)  
+    MakeInventoryPhysics(inst)
 
     inst.AnimState:SetBuild("campkettle")
-    inst.AnimState:SetBank("campkettle")
+    inst.AnimState:SetBank("type_"..inst._type)
     inst.AnimState:PlayAnimation("idle_empty")
+    inst.AnimState:OverrideSymbol("swap_meter", "campkettle_meter_water", "0")
 
     inst.entity:SetPristine()
 
@@ -79,19 +138,19 @@ local function fn()
         return inst
     end
 
+    inst:AddComponent("portablestructure")
+    inst.components.portablestructure:SetOnDismantleFn(OnDismantle)
+
     inst:AddComponent("inspectable")
-
-    inst:ListenForEvent("onbuilt", onbuilt)
-
-    inst:AddComponent("hauntable")
-    inst.components.hauntable:SetHauntValue(TUNING.HAUNT_SMALL)
-    inst.components.hauntable.cooldown = TUNING.HAUNT_COOLDOWN_HUGE
-    inst.components.hauntable:SetOnHauntFn(OnHaunt)
 
     MakeHauntableLaunchAndSmash(inst)
 
-    inst:DoTaskInTime(0, OnSpawnIn)
+    inst.OnSave = onsave
+    inst.OnLoad = onload
 
+    if not inst._donebuild then
+        inst:DoTaskInTime(0, OnSpawnIn)
+    end
 
     return inst
 end

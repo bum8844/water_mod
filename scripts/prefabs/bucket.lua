@@ -161,14 +161,14 @@ local function fn()
 	inst:AddComponent("stackable")
     inst.components.stackable.maxsize = TUNING.STACK_SIZE_SMALLITEM
 
+    inst:AddComponent("fuel")
+    inst.components.fuel.fuelvalue = TUNING.LARGE_FUEL
+    
     inst:AddComponent("tradable") --to work with water well
 
     inst:AddComponent("inspectable")
 
     inst:AddComponent("milkingtool")
-	
-    inst:AddComponent("fuel")
-    inst.components.fuel.fuelvalue = TUNING.LARGE_FUEL
 	
     MakeSmallBurnable(inst, TUNING.MED_BURNTIME)
     MakeSmallPropagator(inst)

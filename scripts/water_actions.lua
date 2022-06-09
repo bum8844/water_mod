@@ -153,13 +153,15 @@ local function purify(inst, doer, target, actions)
 end
 
 local function waterlevel(inst, doer, target, actions)
-    for k, v in pairs(WATERTYPE) do
-        --print("For " .. tostring(v) .. ": " .. tostring(inst:HasTag(v.."_water")) .. ", " .. tostring(target:HasTag(v.."_waterlevel")))
-        if inst:HasTag(v.."_water") then
-            if target:HasTag(v.."_waterlevel") then
-                table.insert(actions, ACTIONS.FILL_BARREL)
+    for k, v in pairs(_G.WATERGROUP) do
+        print("For " .. tostring(v.name) .. " in " .. tostring(target) .. " : " .. tostring(target:HasTag(v.name.."_waterlevel")))
+        if target:HasTag(v.name.."_waterlevel") then
+            for l, w in ipairs(v.types) do
+                print("For " .. tostring(w) .. "in" .. tostring(inst) .. " : " .. tostring(inst:HasTag("water_"..w)))
+                if inst:HasTag("water_"..w) then
+                    table.insert(actions, ACTIONS.FILL_BARREL)
+                end
             end
-            return
         end
     end
 end

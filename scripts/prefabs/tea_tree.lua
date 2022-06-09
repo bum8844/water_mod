@@ -121,18 +121,18 @@ local function SetupLoot(lootdropper)
     local inst = lootdropper.inst
     local withered = inst.components.witherable ~= nil and inst.components.witherable:IsWithered()
 
-    if inst.components.growable ~= nil then
+    if not withered and inst.components.growable ~= nil then
         if inst.components.growable.stage == 2 then
-            inst.components.lootdropper:SetLoot({"tealeaves", "tealeaves", "tealeaves"})
+            lootdropper:SetLoot({"tealeaves", "tealeaves", "tealeaves"})
         elseif inst.components.growable.stage == 3 then
-            inst.components.lootdropper:SetLoot({"tealeaves", "tealeaves", "petals"})
-            inst.components.lootdropper:AddChanceLoot("petals", 0.25)
-            inst.components.lootdropper:AddChanceLoot("petals", 0.01)
+            lootdropper:SetLoot({"tealeaves", "tealeaves", "petals"})
+            lootdropper:AddChanceLoot("petals", 0.25)
+            lootdropper:AddChanceLoot("petals", 0.01)
         elseif inst.components.growable.stage == 4 then
-            inst.components.lootdropper:SetLoot({"tealeaves"})
-            inst.components.lootdropper:AddChanceLoot("tea_seed", 0.25)
-            inst.components.lootdropper:AddChanceLoot("tea_seed", 0.05)
-            inst.components.lootdropper:AddChanceLoot("tea_seed", 0.01)
+            lootdropper:SetLoot({"tealeaves"})
+            lootdropper:AddChanceLoot("tea_seed", 0.25)
+            lootdropper:AddChanceLoot("tea_seed", 0.05)
+            lootdropper:AddChanceLoot("tea_seed", 0.01)
         end
     end
 end

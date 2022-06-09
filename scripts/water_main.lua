@@ -1,5 +1,5 @@
-
 -- 비료 다쓰면 양동이 돌려주는 코드(아이템 스택 모드랑 쓰면 아이템이 제대로 반환 안되요)
+
 local function BackBucket(inst)
 	local refund = SpawnPrefab("bucket")
 	local owner = inst.components.inventoryitem ~= nil and inst.components.inventoryitem:GetGrandOwner() or nil
@@ -20,11 +20,11 @@ local function BackBucket(inst)
 end
 
 AddPrefabPostInit("fertilizer", function(inst)
-    if not GLOBAL.TheWorld.ismastersim then
-        return inst
-    end
+	if not GLOBAL.TheWorld.ismastersim then
+		return inst
+	end
 	inst:DoTaskInTime(0, function()	
-        inst.components.finiteuses:SetOnFinished(BackBucket)
+		inst.components.finiteuses:SetOnFinished(BackBucket)
 	end)
 end)
 
@@ -115,20 +115,20 @@ local function MakeBottle(inst)
 		end
 
 		local owner = inst.components.inventoryitem ~= nil and inst.components.inventoryitem:GetGrandOwner() or nil
-	    if owner ~= nil then
-	        local container = owner.components.inventory or owner.components.container
-	        local item = container:RemoveItem(inst, false) or inst
-	        item:Remove()
-	        container:GiveItem(filleditem, nil, owner:GetPosition())
-	    else
-	        source.Transform:SetPosition(inst.Transform:GetWorldPosition())
-	        local item =
-	            inst.components.stackable ~= nil and
-	            inst.components.stackable:IsStack() and
-	            inst.components.stackable:Get() or
-	            inst
-	        item:Remove()
-	    end
+		if owner ~= nil then
+			local container = owner.components.inventory or owner.components.container
+			local item = container:RemoveItem(inst, false) or inst
+			item:Remove()
+			container:GiveItem(filleditem, nil, owner:GetPosition())
+		else
+			source.Transform:SetPosition(inst.Transform:GetWorldPosition())
+			local item =
+				inst.components.stackable ~= nil and
+				inst.components.stackable:IsStack() and
+				inst.components.stackable:Get() or
+				inst
+			item:Remove()
+		end
 		inst:PushEvent("givewater",{inst = inst, from_object = from_object})
 		return true
 	end
@@ -137,7 +137,7 @@ local function MakeBottle(inst)
 	
 	inst:AddComponent("tradable")
 
-    inst:AddComponent("fillable")
+	inst:AddComponent("fillable")
 	inst.components.fillable.overrideonfillfn = OnFill
 	inst.components.fillable.showoceanaction = true
 	inst.components.fillable.acceptsoceanwater = true
@@ -146,27 +146,27 @@ end
 AddPrefabPostInit("messagebottleempty",MakeBottle)
 
 local function OnGivenItemWater(inst, giver, item, ...)
-    if item.prefab == "bucket_ice" then
-        inst:PushEvent("onacceptfighttribute", { tributer = giver, trigger = "freeze" })
-    elseif inst.components.trader.onaccept_old ~= nil then
-        return inst.components.trader.onaccept_old(inst, giver, item, ...)
-    end
+	if item.prefab == "bucket_ice" then
+		inst:PushEvent("onacceptfighttribute", { tributer = giver, trigger = "freeze" })
+	elseif inst.components.trader.onaccept_old ~= nil then
+		return inst.components.trader.onaccept_old(inst, giver, item, ...)
+	end
 end
 
 AddPrefabPostInit("antlion", function(inst)
-    if not GLOBAL.TheWorld.ismastersim then
-        inst:ListenForEvent("isfightingdirty", OnIsFightingDirty)
+	if not GLOBAL.TheWorld.ismastersim then
+		inst:ListenForEvent("isfightingdirty", OnIsFightingDirty)
 
-        return inst
-    end
-    if inst.components.trader ~= nil then
-        if inst.components.trader.onaccept ~= nil and inst.components.trader.onaccept_old == nil then
-            inst.components.trader.onaccept_old = inst.components.trader.onaccept
-        end
-        inst:DoTaskInTime(0, function()    
-            inst.components.trader.onaccept = OnGivenItemWater
-        end)
-    end
+		return inst
+	end
+	if inst.components.trader ~= nil then
+		if inst.components.trader.onaccept ~= nil and inst.components.trader.onaccept_old == nil then
+			inst.components.trader.onaccept_old = inst.components.trader.onaccept
+		end
+		inst:DoTaskInTime(0, function()	
+			inst.components.trader.onaccept = OnGivenItemWater
+		end)
+	end
 end)
 
 for _, v in pairs(TUNING.CLEANSOURCE) do
@@ -177,26 +177,26 @@ end
 -- AFS: dryer:StartDrying calls dryable.components.perishable:GetPercent(), so we need to add such hack to
 -- make the objects without dryable on the rack (tea leaves, in this case).
 AddComponentPostInit("dryer", function(self)
-    local _StartDrying = self.StartDrying
-    
-    function self:StartDrying(dryable, ...)
-        if dryable.components.dryable ~= nil and dryable.components.perishable == nil then
-            dryable:AddComponent("perishable")
-        end
-        
-        return _StartDrying(self, dryable, ...)
-    end
+	local _StartDrying = self.StartDrying
+	
+	function self:StartDrying(dryable, ...)
+		if dryable.components.dryable ~= nil and dryable.components.perishable == nil then
+			dryable:AddComponent("perishable")
+		end
+		
+		return _StartDrying(self, dryable, ...)
+	end
 end)
 
 AddComponentPostInit("stewer",function(self)
-    local _Harvest = self.Harvest
+	local _Harvest = self.Harvest
 
-    function self:Harvest(harvester, ...)
-        local result = _Harvest(self, harvester, ...)
-        self.inst:PushEvent("harvestsalt", {inst = self.inst})
-        
-        return result
-    end
+	function self:Harvest(harvester, ...)
+		local result = _Harvest(self, harvester, ...)
+		self.inst:PushEvent("harvestsalt", {inst = self.inst})
+		
+		return result
+	end
 end)
 
 AddComponentPostInit("compostingbin",function(self)
@@ -211,19 +211,19 @@ AddComponentPostInit("compostingbin",function(self)
 		local refund = nil
 		if item.components.stackable ~= nil then
 			if item:HasTag("preparedrink_cup") then
-        		refund = SpawnPrefab("cup")
-        	end
-	    elseif item:HasTag("preparedrink_bottle") then
-        	refund = SpawnPrefab("messagebottleempty")
-	    end
-	    if refund ~= nil then
+				refund = SpawnPrefab("cup")
+			end
+		elseif item:HasTag("preparedrink_bottle") then
+			refund = SpawnPrefab("messagebottleempty")
+		end
+		if refund ~= nil then
 			local owner = item.components.inventoryitem ~= nil and item.components.inventoryitem:GetGrandOwner() or nil
-		    if owner ~= nil then
-		        local container = owner.components.inventory or owner.components.container
-		        container:GiveItem(refund, nil, owner:GetPosition())
-		    else
-		        source.Transform:SetPosition(item.Transform:GetWorldPosition())
-		    end
+			if owner ~= nil then
+				local container = owner.components.inventory or owner.components.container
+				container:GiveItem(refund, nil, owner:GetPosition())
+			else
+				source.Transform:SetPosition(item.Transform:GetWorldPosition())
+			end
 		end
 
 		local result = _AddCompostable(self, item, ...)
@@ -248,15 +248,15 @@ AddComponentPostInit("eater", function(self)
 			local base_mult = self.inst.components.foodmemory ~= nil and self.inst.components.foodmemory:GetFoodMultiplier(food.prefab) or 1
 			local thirst_delta = 0
 
-		    if self.inst.components.thirst ~= nil then
-		        thirst_delta = food.components.edible:GetThirst(self.inst) * base_mult * self.thirstabsorption
-		    end
+			if self.inst.components.thirst ~= nil then
+				thirst_delta = food.components.edible:GetThirst(self.inst) * base_mult * self.thirstabsorption
+			end
 
-		    if thirst_delta ~= 0 then
-	            self.inst.components.thirst:DoDelta(thirst_delta * stack_mult)
-		    end
-		    local result = _Eat(self, food, feeder, ...)
-		    return result
+			if thirst_delta ~= 0 then
+				self.inst.components.thirst:DoDelta(thirst_delta * stack_mult)
+			end
+			_Eat(self, food, feeder, ...)
+			return true
 		end
 	end
 
@@ -268,36 +268,17 @@ AddComponentPostInit("eater", function(self)
 	end
 end)
 
-
-
 AddComponentPostInit("edible", function(self)
     self.isdrink = false
-    --self.thirstvalue = 0
 
-    function self:GetThirstFromHunger()
-        return math.floor((self.hungervalue / 2 * math.exp( math.abs(self.hungervalue) / 150 )) * 1000) / 1000
-    end
-
-    function self:CheckClameThirstValue(eater)
-    	return 0 > (eater.components.hunger.max - (eater.components.hunger.current + self.hungervalue))
-    end
-
-    function self:ClameThirstValue(eater)
-    	return eater.components.hunger.max - (eater.components.hunger.current + self.hungervalue)
-    end
-
-    function self:CalculateValue(eater)
-    	local check = self.thirstvalue or self:GetThirstFromHunger()
-    	local clame = (self:CheckClameThirstValue(eater) and not self.inst:HasTag("drink")) and self:ClameThirstValue(eater) or 0
-    	local sum = check + clame
-    	local result = ( 0 < sum or self.inst.components.fertilizer or self.inst:HasTag("drink") or self.inst:HasTag("etcthing")) and sum or 0
-    	return result
+    function self:GetThirstFromHungerValue()
+        local mult = self.inst:HasTag("preparedfood") and 0.5 or 1
+        return GLOBAL.RoundBiasedUp(self.hungervalue * 2 ^ (math.abs(self.hungervalue / 300) - 1), 4) * mult
     end
 
     function self:GetThirst(eater)
-        local thirst = self:CalculateValue(eater)
-
-        local multiplier = 1
+    	local multiplier = 1
+        local thirst = self.thirstvalue or self:GetThirstFromHungerValue()
         local ignore_spoilage = not self.degrades_with_spoilage or thirst < 0 or (eater ~= nil and eater.components.eater ~= nil and eater.components.eater.ignoresspoilage)
 
         if not ignore_spoilage and self.inst.components.perishable ~= nil then
@@ -319,16 +300,57 @@ AddComponentPostInit("edible", function(self)
     end
 end)
 
+-- 바닐라 코드쪽에서 일부 서순이 틀려서 패치했습니다 -_-
+local function fixfuelsmall(inst)
+	inst:RemoveComponent("tradable")
+	inst:RemoveComponent("fuel")
+
+	inst:AddComponent("fuel")
+	inst.components.fuel.fuelvalue = TUNING.SMALL_FUEL
+	inst:AddComponent("tradable")
+end
+
+local function fixfueltiny(inst)
+	inst:RemoveComponent("tradable")
+	inst:RemoveComponent("fuel")
+
+	inst:AddComponent("fuel")
+	inst.components.fuel.fuelvalue = TUNING.TINY_FUEL
+	inst:AddComponent("tradable")
+end
+
+function fixfuelyotb(inst) 
+	inst:RemoveComponent("tradable")
+	inst:RemoveComponent("fuel")
+
+	inst:AddComponent("fuel")
+	inst.components.fuel.fuelvalue = TUNING.SMALL_FUEL
+
+	inst:AddComponent("tradable")
+	inst.components.tradable.goldvalue = TUNING.GOLD_VALUES.YOTB_BEEFALO_DOLL
+end
+
+for _, v in pairs(TUNING.FIXFUELSMALL) do
+	AddPrefabPostInit(v, fixfuelsmall)
+end
+
+for _, v in pairs(TUNING.FIXFUELTINY) do
+	AddPrefabPostInit(v, fixfueltiny)
+end
+
+for _, v in pairs(TUNING.FIXYOTB) do
+	AddPrefabPostInit(v, fixfuelyotb)
+end
+
 --regrowth code
 AddComponentPostInit("regrowthmanager", function(self)
 	self:SetRegrowthForType("tea_tree", TUNING.EVERGREEN_REGROWTH.DESOLATION_RESPAWN_TIME, "tea_tree", function()
-        return TUNING.TEA_TREE_REGROWTH_TIME_MULT
-    end)
-    self:SetRegrowthForType("caffeinberry", TUNING.EVERGREEN_REGROWTH.DESOLATION_RESPAWN_TIME, "caffeinberry", function()
-        return TUNING.CAFFEINBERRY_REGROWTH_TIME_MULT
-    end)
+		return TUNING.TEA_TREE_REGROWTH_TIME_MULT
+	end)
+	self:SetRegrowthForType("caffeinberry", TUNING.EVERGREEN_REGROWTH.DESOLATION_RESPAWN_TIME, "caffeinberry", function()
+		return TUNING.CAFFEINBERRY_REGROWTH_TIME_MULT
+	end)
 end)
-
 
 -- 어린이 보호(알콜음료 먹는거 방지 코드)
 if GetModConfigData("child_safety") ~= 1 then
@@ -338,9 +360,9 @@ if GetModConfigData("child_safety") ~= 1 then
 end
 
 AddComponentPostInit("wisecracker",function(self, inst)
-    inst:ListenForEvent("sleep_end", function(inst, data)
-        inst.components.talker:Say(_G.GetString(inst, "ANNOUNCE_SLEEP_END"))
-    end)
+	inst:ListenForEvent("sleep_end", function(inst, data)
+		inst.components.talker:Say(_G.GetString(inst, "ANNOUNCE_SLEEP_END"))
+	end)
 end)
 
 -- 워톡스 계수
@@ -351,72 +373,111 @@ AddPrefabPostInit("wortox",function(inst)
 end)
 
 local function ItemTradeTest(inst, item)
-    if item == nil then
-        return false
-    elseif not item:HasTag("campkettle") then
-        return false, "NOTCAMPKETTLE"
-    end
-    return true
+	if item == nil then
+		return false
+	elseif not item:HasTag("campkettle") then
+		return false, "NOTCAMPKETTLE"
+	end
+	return true
 end
 
-local function OnKettleGiven(inst, giver, item)
-    inst.components.pickable:ChangeProduct(item)
+local function OnSetKettle(inst, giver, item)
+	local kettle
+	kettle = item:HasTag("campkettle") and SpawnPrefab("campkettle") or SpawnPrefab(item.prefab)
 	inst.components.trader:Disable()
-	inst.components.pickable.caninteractwith = true
-	inst._kettle = item:HasTag("campkettle") and "campkettle" or nil
-	inst._name = item
-	inst:AddChild(SpawnPrefab(inst._kettle))
-    item.Transform:SetPosition(0, 0, 0)
-    item:RemoveFromScene()
+	inst._kettleinst = item:HasTag("campkettle") and kettle or item
+	if inst._kettleinst == item then
+		inst._remove = kettle
+	end
+	inst:AddChild(kettle)
+	if inst.components.burnable then
+		inst.components.burnable:OverrideBurnFXBuild("quagmire_pot_fire")
+	end
+	if not inst._setkettle then
+		inst._setkettle = true
+	end
+	item:Remove()
 end
 
-local function OnKettleTaken(inst, picker, loot)
-    inst.components.pickable.caninteractwith = false
-
-    if inst._kettle ~= nil then
-        if loot ~= nil then
-            --Shouldn't happen
-            loot:Remove()
-        end
-        inst:RemoveChild(inst._kettle)
-        inst._name:ReturnToScene()
-        inst._name.components.inventoryitem:InheritMoisture(TheWorld.state.wetness, TheWorld.state.iswet)
-        picker:PushEvent("picksomething", { object = inst, loot = inst._name })
-        picker.components.inventory:GiveItem(inst._name, nil, inst:GetPosition())
-        inst._name = nil
-        inst.components.trader:Enable()
-    end
-end
-
-local function onsavekettle(inst, data)
-	if inst.components.pickable.caninteractwith then
-        data.name = inst.components.pickable.product
+local function OnSave(inst, data)
+	if inst._setkettle then
+		data.kettle = inst._kettleinst:GetSaveRecord()
+		data.setkettle = inst._setkettle
+	else
+		data.kettle = nil
+		data.setkettle = false
 	end
 end
 
-local function onloadkettle(inst, data)
-	if inst.components.pickable.caninteractwith and data.name ~= nil then
-		OnKettleGiven(inst, nil, data.name) 
+local function OnLoad(inst, data)
+	if data.kettle ~= nil then
+		local kettle = GLOBAL.SpawnSaveRecord(data.kettle)
+		if kettle ~= nil then
+			inst._setkettle = data.setkettle
+			OnSetKettle(inst, nil, kettle)
+		end
+	end
+end
+
+local function ChangeToItem(inst)
+    local item = SpawnPrefab("campkettle_item")
+    local type = inst._kettleinst._type
+    inst._kettleinst = nil
+    inst._setkettle = false
+    item.Transform:SetPosition(inst.Transform:GetWorldPosition())
+    item.AnimState:PlayAnimation("collapse_"..type)
+    item.SoundEmitter:PlaySound("dontstarve/common/together/portable/cookpot/collapse")
+end
+
+local function DoDismantle(inst)
+	if inst._kettleinst then
+		local remove = SpawnPrefab(inst._kettleinst.prefab)
+		if inst._remove then
+			inst._remove:Hide()
+		else
+			inst._kettleinst:Hide()
+		end
+	    ChangeToItem(inst)
+	    inst:RemoveChild(remove)
 	end
 end
 
 AddPrefabPostInit("campfire",function(inst)
-    if not GLOBAL.TheWorld.ismastersim then
-        return inst
-    end
 
-    inst._kettle = nil
-    inst._name = nil
+	inst:AddTag("trader")
 
-    inst:AddComponent("pickable")
-    inst.components.pickable.caninteractwith = false
-    inst.components.pickable.onpickedfn = OnKettleTaken
+	if not GLOBAL.TheWorld.ismastersim then
+		return inst
+	end
+
+	inst._kettleinst = nil
+	inst._setkettle = false
+	inst._remove = nil
 
 	inst:AddComponent("trader")
-    inst.components.trader:SetAbleToAcceptTest(ItemTradeTest)
-    inst.components.trader.deleteitemonaccept = false
-    inst.components.trader.onaccept = OnKettleGiven
+	inst.components.trader:SetAcceptTest(ItemTradeTest)
+	inst.components.trader.onaccept = OnSetKettle
 
-    inst.OnSave = onsavekettle
-    inst.OnLoad = onloadkettle
+	inst.OnLoad = OnLoad
+	inst.OnSave = OnSave
+
+	inst:ListenForEvent("onbuilt", onbuilt)
+	inst:ListenForEvent("onextinguish", DoDismantle)
+
+end)
+
+AddPrefabPostInit("firepit",function(inst)
+
+	inst:AddTag("trader")
+
+	if not GLOBAL.TheWorld.ismastersim then
+		return inst
+	end
+
+	inst:AddComponent("trader")
+	inst.components.trader:SetAcceptTest(ItemTradeTest)
+	inst.components.trader.onaccept = OnSetKettle
+
+	inst.OnLoad = OnLoad
+	inst.OnSave = OnSave
 end)

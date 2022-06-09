@@ -10,17 +10,11 @@ env.ThePlayer = _G.ThePlayer
 env.TheWorld = _G.TheWorld
 env.net_ushortint = _G.net_ushortint
 env.net_bool = _G.net_bool
+require("utils/inventoryutil")
 
 PrefabFiles = require("water_prefablist")
 
 Assets = require("water_assets")
-
-_G.WATERTYPE = 
-{
-	CLEAN = "CLEAN",
-	DIRTY = "DIRTY",
-	SALTY = "SALTY",
-}
 
 modimport("scripts/water_recipes.lua")
 modimport("scripts/strings/strings.lua")
@@ -41,6 +35,7 @@ modimport("scripts/water_main.lua")
 
 local drinks = require("preparedrink")
 local drinks_fermented = require("prepareagedrink")
+local new_spices = require("water_spicedfoods")
 
 for k, recipe in pairs(drinks) do
 	AddCookerRecipe("kettle", recipe)
@@ -49,6 +44,10 @@ end
 
 for k, recipe in pairs(drinks_fermented) do
 	AddCookerRecipe("brewery", recipe)
+end
+
+for k, recipe in pairs(new_spices) do
+    AddCookerRecipe("portablespicer", recipe)
 end
 
 local teaingredients = {

@@ -52,7 +52,7 @@ local drinks =
 		hunger = TUNING.SPOILED_HUNGER,
 		sanity = TUNING.SANITY_POISON,
 		thirst = TUNING.HYDRATION_POISON,
-		cooktime = TUNING.INCORRECT_BOIL,
+		watertype = WATERTYPE.ROTTEN,
 		oneatenfn = function(inst, eater)
 			if inst:HasTag("preparedrink_cup") then
 				returncup(inst, eater)
@@ -70,6 +70,7 @@ local drinks =
 		sanity = 0,
 		thirst = TUNING.HYDRATION_SMALLTINY,
 		tags = {"common","clean"},
+		watertype = WATERTYPE.CLEAN,
 		oneatenfn = function(inst, eater)
 			if inst:HasTag("preparedrink_cup") then
 				returncup(inst, eater)
@@ -88,6 +89,7 @@ local drinks =
 		sanity = 0,
 		thirst = TUNING.HYDRATION_SMALLTINY,
 		tags = {"common","dirty","purify"},
+		watertype = WATERTYPE.DIRTY,
 		oneatenfn = function(inst, eater)
 			if inst:HasTag("preparedrink_cup") then
 				returncup(inst, eater)
@@ -105,6 +107,7 @@ local drinks =
 		sanity = 0,
 		thirst = TUNING.HYDRATION_SALT,
 		tags = {"common","salty"},
+		watertype = WATERTYPE.SALTY,
 		oneatenfn = function(inst, eater)
 			if inst:HasTag("preparedrink_cup") then
 				returncup(inst, eater)

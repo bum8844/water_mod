@@ -292,11 +292,6 @@ local function OnTakeWater(inst, watervalue)
             inst.components.container:DropEverything()
             Boiled(inst)
         end
-        if watervalue >= 5 then
-            inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/medium")
-        else
-            inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/small")
-        end
     end
 end
 
@@ -366,7 +361,7 @@ local function fn()
     inst._waterlevel = 0
 
     inst:AddComponent("waterlevel")
-    inst.components.waterlevel.secondarywatertype = WATERTYPE.DIRTY
+    inst.components.waterlevel.SetCanAccepts(WATERGROUP.BOILABLE)
     inst.components.waterlevel:SetDepletedFn(OnDepleted)
     inst.components.waterlevel:SetTakeWaterFn(OnTakeWater)
     inst.components.waterlevel.maxwater = TUNING.KETTLE_MAX_LEVEL

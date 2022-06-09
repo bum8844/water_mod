@@ -136,17 +136,10 @@ local function OnSectionChange(new, old, inst)
     inst.AnimState:OverrideSymbol("swap", "desalinator_meter_"..watertype, tostring(inst._waterlevel))
 end
 
-local function OnTakeWater(inst, watervalue, watertype)
-    inst._saltvalue = inst._saltvalue + watervalue
-    inst._timer = TUNING.DESALINATION_TIME * watervalue
+local function OnTakeWater(inst)
+    inst._saltvalue = inst._saltvalue + inst.components.waterlevel.currentwater
+    inst._timer = TUNING.DESALINATION_TIME * inst.components.waterlevel.currentwater
     Boiled(inst)
-    if watervalue >= 15 then
-    	inst.SoundEmitter:PlaySound("dontstarve/creatures/pengull/splash")
-    elseif watervalue >= 5 then
-    	inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/medium")
-	else
-    	inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/small")
-	end
 end
 
 local function getstatus(inst)
@@ -197,7 +190,7 @@ local function fn()
     inst.components.stewer.onharvest = harvestfn
 
     inst:AddComponent("waterlevel")
-    inst.components.waterlevel.watertype = WATERTYPE.SALTY
+    inst.components.waterlevel:SetWaterType(WATERTYPE.SALTY)
     inst.components.waterlevel:SetDepletedFn(OnDepleted)
     inst.components.waterlevel:SetTakeWaterFn(OnTakeWater)
     inst.components.waterlevel.maxwater = TUNING.DESALINATOR_MAX_LEVEL

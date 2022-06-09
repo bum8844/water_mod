@@ -74,6 +74,7 @@ local drinks =
 		sanity = TUNING.SANITY_POISON,
 		thirst = TUNING.HYDRATION_POISON,
 		cooktime = TUNING.INCORRECT_BOIL,
+		watertype = WATERTYPE.ROTTEN,
 		oneatenfn = function(inst, eater)
 			if inst:HasTag("preparedrink_cup") then
 				returncup(inst, eater)

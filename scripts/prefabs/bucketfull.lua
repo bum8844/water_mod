@@ -94,6 +94,16 @@ local function Changeitem(inst)
 	end
 end
 
+local function OnTake(inst, taker)
+    if inst.components.water.watervalue >= 15 then
+    	taker.SoundEmitter:PlaySound("dontstarve/creatures/pengull/splash")
+    elseif inst.components.water.watervalue >= 5 then
+    	taker.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/medium")
+	else
+    	taker.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/small")
+	end
+end
+
 local function MakeBucket(data)
 	local assets =
 		{
@@ -151,8 +161,8 @@ local function MakeBucket(data)
 		inst.components.inventoryitem.imagename = "bucket_"..anim
 		
 		inst:AddComponent("water")
-		inst.components.water.watervalue = TUNING.BUCKET_MAX_LEVEL
-		inst.components.water.watertype = WATERTYPE[string.upper(name)]
+		inst.components.water:SetWaterType(WATERTYPE[string.upper(name)])
+		inst.components.water:SetOnTakenFn(OnTake)
 
 		if name ~= "salty" then
 			inst:AddTag("icebox_valid")

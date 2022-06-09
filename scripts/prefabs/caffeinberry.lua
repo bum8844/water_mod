@@ -299,7 +299,7 @@ local function dug_caffeinberry()
 
     MakeInventoryPhysics(inst)
 
-    MakeInventoryFloatable(inst, "small", nil, 0.4)
+    MakeInventoryFloatable(inst)
 
     inst:AddTag("deployedplant")
 
@@ -347,7 +347,7 @@ local function caffeinberry_bean()
 
     MakeInventoryPhysics(inst)
 
-    MakeInventoryFloatable(inst, "small", nil, 0.4)
+    MakeInventoryFloatable(inst)
 
     inst:AddTag("deployedplant")
 
@@ -465,8 +465,46 @@ local function caffeinberry_bean_cooked()
     return inst
 end
 
+local function fn_spice()
+    local inst = CreateEntity()
+
+    inst.entity:AddTransform()
+    inst.entity:AddAnimState()
+    inst.entity:AddNetwork()
+
+    MakeInventoryPhysics(inst)
+
+    inst.AnimState:SetBank("caffeinberry_bean")
+    inst.AnimState:SetBuild("caffeinberry_bean")
+    inst.AnimState:PlayAnimation("idle_spice")
+
+    inst:AddTag("spice")
+
+    MakeInventoryFloatable(inst, "med", nil, 0.85)
+
+    inst.entity:SetPristine()
+
+    if not TheWorld.ismastersim then
+        return inst
+    end
+
+    inst:AddComponent("stackable")
+    inst.components.stackable.maxsize = TUNING.STACK_SIZE_SMALLITEM
+
+    inst:AddComponent("inspectable")
+    inst:AddComponent("inventoryitem")
+    inst.replica.inventoryitem:SetImage("spice_caffeinpepper")
+    inst.components.inventoryitem.atlasname= "images/tea_inventoryitem.xml"
+    inst.components.inventoryitem.imagename= "spice_caffeinpepper"
+
+    MakeHauntableLaunch(inst)
+
+    return inst
+end
+
 return Prefab("caffeinberry_bean_cooked", caffeinberry_bean_cooked, assets),
 Prefab("caffeinberry_bean", caffeinberry_bean, assets, {"caffeinberry_bean_cooked"}),
 Prefab("caffeinberry", caffeinberry, assets, prefabs),
 Prefab("dug_caffeinberry",dug_caffeinberry, assets, prefabs_item),
-MakePlacer("dug_caffeinberry_placer","caffeinberry","caffeinberry","berriesmost")
+MakePlacer("dug_caffeinberry_placer","caffeinberry","caffeinberry","berriesmost"),
+Prefab("spice_caffeinpepper",fn_spice, assets)
