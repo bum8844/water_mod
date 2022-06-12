@@ -7,7 +7,6 @@ local Assets =
     Asset("SOUNDPACKAGE", "sound/drink_fx.fev"),    
     Asset("SOUND", "sound/drink_fx.fsb"),
     Asset("ANIM", "anim/status_thirst.zip"),
-    Asset("ANIM", "anim/water_plate_food.zip"),
     Asset("ANIM", "anim/water_spice.zip"),
 }
 
