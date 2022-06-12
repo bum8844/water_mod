@@ -59,7 +59,7 @@ local Waterlevel = Class(function(self, inst)
 end,
 nil,
 {
-    canaccepts = oncanaccepts
+    canaccepts = oncanaccepts,
     accepting = onaccepting,
     currentwater = oncurrentwater,
 })
@@ -130,7 +130,7 @@ end
 
 function Waterlevel:TakeWaterItem(item, doer)
     if self:CanAccept(item) then
-        local watervalue = item.components.water ~= nil and item.components.waterlevel.watervalue or item.components.waterlevel.currentwater
+        local watervalue = item.components.water ~= nil and item.components.water.watervalue or item.components.waterlevel.currentwater
         self.watertype = item.components.water.watertype
 
         local oldsection = self:GetCurrentSection()
@@ -288,7 +288,7 @@ function Waterlevel:CanAccept(item)
     if self.watertype ~= nil and self.watertype ~= item.components.water.watertype then
         return false
     end
-    return self.accepting and item ~= nil and self:TestType(item, self.canaccepts))
+    return self.accepting and item ~= nil and self:TestType(item, self.canaccepts)
 end
 
 return Waterlevel

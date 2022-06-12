@@ -5,6 +5,7 @@ local assets =
 	Asset("ANIM", "anim/caffeinberry.zip"),
 	Asset("ANIM", "anim/caffeinberry_diseased.zip"),
     Asset("ANIM", "anim/caffeinberry_bean.zip"),
+    Asset("ANIM", "anim/water_spice.zip")
 }
 
 local prefabs =
@@ -474,11 +475,12 @@ local function fn_spice()
 
     MakeInventoryPhysics(inst)
 
-    inst.AnimState:SetBank("caffeinberry_bean")
-    inst.AnimState:SetBuild("caffeinberry_bean")
-    inst.AnimState:PlayAnimation("idle_spice")
+    inst.AnimState:SetBank("water_spice")
+    inst.AnimState:SetBuild("water_spice")
+    inst.AnimState:PlayAnimation("idle")
 
     inst:AddTag("spice")
+    inst:AddTag("watermod")
 
     MakeInventoryFloatable(inst, "med", nil, 0.85)
 

@@ -3,7 +3,17 @@ require("tuning")
 local water_spicedfoods = {}
 
 local function oneaten_caffeinpepper(inst, eater)
-    eater:AddDebuff("caffeinbuff", "caffeinbuff")
+    if not eater.components.health or eater.components.health:IsDead() or eater:HasTag("playerghost") then
+        return
+    elseif eater.components.debuffable and eater.components.debuffable:IsEnabled() then
+        eater.caffeinbuff_duration = TUNING.CAFFEIN_TIME
+        eater.components.debuffable:AddDebuff("caffeinbuff", "caffeinbuff")
+    else
+        eater.components.locomotor:SetExternalSpeedMultiplier(eater, "caffeinbuff", TUNING.CAFFEIN_SPEED)
+        eater:DoTaskInTime(TUNING.CAFFEIN_TIME, function()
+            eater.components.locomotor:RemoveExternalSpeedMultiplier(eater, "caffeinbuff")
+        end)
+    end
 end
 
 local SPICES =
@@ -11,7 +21,7 @@ local SPICES =
     SPICE_CAFFEINPEPPER = { oneatenfn = oneaten_caffeinpepper, prefabs = { "caffeinbuff" } },
 }
 
-function GenerateSpicedFoods(foods)
+local function GenerateSpicedFoods_Water(foods)
     for foodname, fooddata in pairs(foods) do
         for spicenameupper, spicedata in pairs(SPICES) do
             local newdata = shallowcopy(fooddata)
@@ -27,10 +37,10 @@ function GenerateSpicedFoods(foods)
             newdata.stacksize = nil
             newdata.spice = spicenameupper
             newdata.basename = foodname
-            newdata.name = foodname.."_"..spicename
+            newdata.name = foodname.."_spice_caffeinpepper"
             newdata.floater = {"med", nil, {0.85, 0.7, 0.85}}
-			newdata.official = true
-			--newdata.cookbook_category = fooddata.cookbook_category ~= nil and ("spiced_"..fooddata.cookbook_category) or nil
+            newdata.official = true
+            newdata.cookbook_category = fooddata.cookbook_category ~= nil and ("spiced_"..fooddata.cookbook_category) or nil
             water_spicedfoods[newdata.name] = newdata
 
             if newdata.temperature == nil then
@@ -64,7 +74,8 @@ function GenerateSpicedFoods(foods)
     end
 end
 
-GenerateSpicedFoods(require("preparedfoods"))
-GenerateSpicedFoods(require("preparedfoods_warly"))
+GenerateSpicedFoods_Water(require("preparedfoods"))
+GenerateSpicedFoods_Water(require("preparedfoods_warly"))
 
 return water_spicedfoods
+
