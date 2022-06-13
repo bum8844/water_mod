@@ -487,8 +487,8 @@ local cooking = require("cooking")
 local function ShowProduct(inst)
     if not inst:HasTag("burnt") then
         local product = inst.components.stewer.product
-        local chktag = SpawnPrefab(product):Hide()
         local recipe = cooking.GetRecipe(inst.prefab, product)
+        local chktag = SpawnPrefab(inst.components.stewer.product)
         if recipe ~= nil then
             product = recipe.basename or product
             if recipe.spice ~= nil then
@@ -502,7 +502,7 @@ local function ShowProduct(inst)
             inst.AnimState:ClearOverrideSymbol("swap_plate")
             inst.AnimState:ClearOverrideSymbol("swap_garnish")
         end
-        if GLOBAL.IsModCookingProduct(inst.prefab, inst.components.stewer.product) and not chktag:HasTag("watermod") then
+        if chktag:HasTag("watermod") then
             inst.AnimState:OverrideSymbol("swap_cooked", product, product)
         else
             local symbol_override_build = (recipe ~= nil and recipe.overridebuild) or "cook_pot_food"
@@ -512,8 +512,28 @@ local function ShowProduct(inst)
     end
 end
 
-local function changeanim(inst)
-	local test = inst.components.stewer.ingredient_prefabs[2] == "spice_caffeinpepper" and true or false
+local function checkitem(inst)
+	return inst.components.stewer.ingredient_prefabs[2] == "spice_caffeinpepper" and true or false
+end
+
+local function checkname(inst)
+	return string.find(inst.components.stewer.product,"_spice_caffeinpepper") ~= nil and true or false
+end
+
+local function continuedonefn(inst)
+	local result = checkname(inst)
+    if not inst:HasTag("burnt") then
+		if result then
+	        inst.AnimState:PlayAnimation("idle_full")
+	        ShowProduct(inst)
+		elseif inst.components.stewer.ondonecooking_old ~= nil then
+			return inst.components.stewer.oncontinuedone_old(inst)
+		end
+	end
+end
+
+local function ondonecookingfn(inst)
+	local test = checkitem(inst)
     if not inst:HasTag("burnt") then
 		if test then
 	        inst.AnimState:PlayAnimation("cooking_pst")
@@ -534,11 +554,9 @@ AddPrefabPostInit("portablespicer", function(inst)
     end
 
 	if inst.components.stewer ~= nil then
-		if inst.components.stewer.ondonecooking ~= nil and inst.components.stewer.ondonecooking_old == nil then
-			inst.components.stewer.ondonecooking_old = inst.components.stewer.ondonecooking
-		end
-		inst:DoTaskInTime(0, function()	
-			inst.components.stewer.ondonecooking = changeanim
-		end)
+		inst.components.stewer.oncontinuedone_old = inst.components.stewer.oncontinuedone
+		inst.components.stewer.ondonecooking_old = inst.components.stewer.ondonecooking
 	end
+	inst.components.stewer.oncontinuedone = continuedonefn
+	inst.components.stewer.ondonecooking = ondonecookingfn
 end)

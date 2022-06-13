@@ -1,0 +1,110 @@
+require("tuning")
+
+local KnownModIndex = _G.KnownModIndex
+
+local water_spicedfoods_mod = {}
+
+local function oneaten_caffeinpepper(inst, eater)
+    if not eater.components.health or eater.components.health:IsDead() or eater:HasTag("playerghost") then
+        return
+    elseif eater.components.debuffable and eater.components.debuffable:IsEnabled() then
+        eater.caffeinbuff_duration = TUNING.CAFFEIN_TIME
+        eater.components.debuffable:AddDebuff("caffeinbuff", "caffeinbuff")
+    else
+        eater.components.locomotor:SetExternalSpeedMultiplier(eater, "caffeinbuff", TUNING.CAFFEIN_SPEED)
+        eater:DoTaskInTime(TUNING.CAFFEIN_TIME, function()
+            eater.components.locomotor:RemoveExternalSpeedMultiplier(eater, "caffeinbuff")
+        end)
+    end
+end
+
+local SPICES =
+{
+    SPICE_CAFFEINPEPPER = { oneatenfn = oneaten_caffeinpepper, prefabs = { "caffeinbuff" } },
+}
+
+local function GenerateSpicedFoods_Water(foods)
+    for foodname, fooddata in pairs(foods) do
+        for spicenameupper, spicedata in pairs(SPICES) do
+            local newdata = shallowcopy(fooddata)
+            local spicename = string.lower(spicenameupper)
+            if foodname == "wetgoop" then
+                newdata.test = function(cooker, names, tags) return names[spicename] end
+                newdata.priority = -10
+            else
+                newdata.test = function(cooker, names, tags) return names[foodname] and names[spicename] end
+                newdata.priority = 100
+            end
+            newdata.cooktime = .12
+            newdata.stacksize = nil
+            newdata.spice = spicenameupper
+            newdata.basename = foodname
+            newdata.name = foodname.."_spice_caffeinpepper"
+            newdata.floater = {"med", nil, {0.85, 0.7, 0.85}}
+            newdata.official = true
+            newdata.cookbook_category = fooddata.cookbook_category ~= nil and ("spiced_"..fooddata.cookbook_category) or nil
+            water_spicedfoods_mod[newdata.name] = newdata
+
+            if newdata.temperature == nil then
+                --Add permanent "heat" to regular food
+                newdata.temperature = TUNING.HOT_FOOD_BONUS_TEMP
+                newdata.temperatureduration = TUNING.FOOD_TEMP_LONG
+                newdata.nochill = true
+            elseif newdata.temperature > 0 then
+                --Upgarde "hot" food to permanent heat
+                newdata.temperatureduration = math.max(newdata.temperatureduration, TUNING.FOOD_TEMP_LONG)
+                newdata.nochill = true
+            end
+
+            if spicedata.prefabs ~= nil then
+                --make a copy (via ArrayUnion) if there are dependencies from the original food
+                newdata.prefabs = newdata.prefabs ~= nil and ArrayUnion(newdata.prefabs, spicedata.prefabs) or spicedata.prefabs
+            end
+
+            if spicedata.oneatenfn ~= nil then
+                if newdata.oneatenfn ~= nil then
+                    local oneatenfn_old = newdata.oneatenfn
+                    newdata.oneatenfn = function(inst, eater)
+                        spicedata.oneatenfn(inst, eater)
+                        oneatenfn_old(inst, eater)
+                    end
+                else
+                    newdata.oneatenfn = spicedata.oneatenfn
+                end
+            end
+        end
+    end
+end
+
+
+for k, mod_id in ipairs(KnownModIndex:GetModsToLoad()) do
+    if mod_id == "workshop-2431867642" then
+        GenerateSpicedFoods_Water(require("bm_foodrecipes"))
+    end
+    if mod_id == "workshop-2748801553" then
+        GenerateSpicedFoods_Water(require("gyul_foodrecipes"))
+    end
+    if mod_id == "workshop-381565292" then
+        GenerateSpicedFoods_Water(require("W101_menu"))
+        GenerateSpicedFoods_Water(require("W101_shunted"))
+        GenerateSpicedFoods_Water(require("W101_frozen"))
+        GenerateSpicedFoods_Water(require("W101_mushrooms"))
+    end
+    if mod_id == "workshop-2334209327" then
+        GenerateSpicedFoods_Water(require("hof_foodrecipes"))
+        GenerateSpicedFoods_Water(require("hof_foodrecipes_optional"))
+    end
+    if mod_id == "workshop-1392778117" then
+        GenerateSpicedFoods_Water(require("preparedfoods_legion"))
+    end
+    -- 미지원 (사유 : 음식조리법이 테이블 모음집이 아님)
+    --[[if mod_id == "workshop-1505270912" then
+        GenerateSpicedFoods_Water(require("gorge_foods"))
+    end
+    if mod_ids == "workshop-1467214795" then
+        GenerateSpicedFoods_Water(require("?"))
+    end]]
+end
+
+return water_spicedfoods_mod
+
