@@ -94,9 +94,6 @@ for k, mod_id in ipairs(KnownModIndex:GetModsToLoad()) do
         GenerateSpicedFoods_Water(require("hof_foodrecipes"))
         GenerateSpicedFoods_Water(require("hof_foodrecipes_optional"))
     end
-    if mod_id == "workshop-1392778117" then
-        GenerateSpicedFoods_Water(require("preparedfoods_legion"))
-    end
     -- 미지원 (사유 : 음식조리법이 테이블 모음집이 아님)
     --[[if mod_id == "workshop-1505270912" then
         GenerateSpicedFoods_Water(require("gorge_foods"))

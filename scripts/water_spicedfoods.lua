@@ -39,8 +39,6 @@ local function GenerateSpicedFoods_Water(foods)
             newdata.basename = foodname
             newdata.name = foodname.."_spice_caffeinpepper"
             newdata.floater = {"med", nil, {0.85, 0.7, 0.85}}
-            newdata.official = true
-            newdata.cookbook_category = fooddata.cookbook_category ~= nil and ("spiced_"..fooddata.cookbook_category) or nil
             water_spicedfoods[newdata.name] = newdata
 
             if newdata.temperature == nil then
@@ -71,6 +69,12 @@ local function GenerateSpicedFoods_Water(foods)
                 end
             end
         end
+    end
+end
+
+for k, mod_id in ipairs(KnownModIndex:GetModsToLoad()) do
+    if mod_id == "workshop-1392778117" then
+        GenerateSpicedFoods_Water(require("preparedfoods_legion"))
     end
 end
 

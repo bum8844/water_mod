@@ -1,3 +1,19 @@
+local KnownModIndex = _G.KnownModIndex
+
+local function OnIgniteFn(inst)
+    inst.SoundEmitter:PlaySound("dontstarve/common/blackpowder_fuse_LP", "hiss")
+    DefaultBurnFn(inst)
+end
+
+local function OnExtinguishFn(inst)
+    inst.SoundEmitter:KillSound("hiss")
+    DefaultExtinguishFn(inst)
+end
+
+local function OnExplodeFn(inst)
+    inst.SoundEmitter:KillSound("hiss")
+    SpawnPrefab("explode_small").Transform:SetPosition(inst.Transform:GetWorldPosition())
+end
 
 local prefabs =
 {
@@ -5,6 +21,7 @@ local prefabs =
 }
 
 local function MakePreparedFood(data)
+
     local foodassets =
     {
         Asset("ANIM", "anim/cook_pot_food.zip"),
@@ -32,12 +49,27 @@ local function MakePreparedFood(data)
         return subfmt(STRINGS.NAMES["SPICE_CAFFEINPEPPER_FOOD"], { food = STRINGS.NAMES[string.upper(data.basename)] })
     end
 
+    local function changeimage(inst)
+        local bgname = GetInventoryItemAtlas(inst.inv_image_bg.image)
+        if string.find(bgname,"cookbookimages") ~= nil then
+            inst.inv_image_bg = nil
+            inst.inv_image_bg = { atlas = "images/inventoryimages/"..(data.basename or data.name)..".xml", image = (data.basename or data.name)..".tex" }
+        else
+            inst.inv_image_bg.atlas = GetInventoryItemAtlas(inst.inv_image_bg.image)
+        end
+    end
+
     local function fn()
+
         local inst = CreateEntity()
 
         inst.entity:AddTransform()
         inst.entity:AddAnimState()
         inst.entity:AddNetwork()
+
+        if data.basename  == "dish_frenchsnailsbaked" or data.name == "dish_frenchsnailsbaked" then
+            inst.entity:AddSoundEmitter()
+        end
 
         MakeInventoryPhysics(inst)
 
@@ -50,7 +82,7 @@ local function MakePreparedFood(data)
         inst:AddTag("spicedfood")
 
         inst.inv_image_bg = { image = (data.basename or data.name)..".tex" }
-        inst.inv_image_bg.atlas = GetInventoryItemAtlas(inst.inv_image_bg.image)
+        changeimage(inst)
 
         food_symbol_build = data.overridebuild or "cook_pot_food"
 
@@ -114,7 +146,21 @@ local function MakePreparedFood(data)
             inst.components.perishable.onperishreplacement = "spoiled_food"
         end
 
-        MakeSmallBurnable(inst)
+        if data.basename  == "dish_frenchsnailsbaked" or data.name == "dish_frenchsnailsbaked" then
+            MakeSmallBurnable(inst, 3 + math.random() * 3)
+            inst.components.burnable:SetOnBurntFn(nil)
+            inst.components.burnable:SetOnIgniteFn(OnIgniteFn)
+            inst.components.burnable:SetOnExtinguishFn(OnExtinguishFn)
+
+            inst:AddComponent("explosive")
+            inst.components.explosive:SetOnExplodeFn(OnExplodeFn)
+            inst.components.explosive.explosivedamage = TUNING.SLURTLESLIME_EXPLODE_DAMAGE
+            inst.components.explosive.buildingdamage = 1
+            inst.components.explosive.lightonexplode = false
+        else
+            MakeSmallBurnable(inst)
+        end
+
         MakeSmallPropagator(inst)
         MakeHauntableLaunchAndPerish(inst)
         ---------------------
@@ -136,6 +182,7 @@ local prefs = {}
 
 for k, v in pairs(require("water_spicedfoods")) do
     table.insert(prefs, MakePreparedFood(v))
+    AddCookerRecipe("portablespicer", v)
 end
 
 return unpack(prefs)

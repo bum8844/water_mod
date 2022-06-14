@@ -1,6 +1,5 @@
 local KnownModIndex = _G.KnownModIndex
 
-
 local prefabs =
 {
     "spoiled_food",

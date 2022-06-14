@@ -204,6 +204,7 @@ local HYDRATIONTYPE = {
 			"daiquiri",
 			"vino",
 			"spiced_rum",
+			"dish_medicinalliquor",
 		},
 		--HYDRATION_MED
 		MED = {
@@ -216,6 +217,7 @@ local HYDRATIONTYPE = {
 			"lobsterbisque",
 			"ceviche",
 			"bunnystew",
+			"dish_sosweetjarkfruit",
 		},
 		--HYDRATION_LARGE
 		LARGE = {
@@ -236,6 +238,7 @@ local HYDRATIONTYPE = {
 			"fishyogurt",
 			"berryshake",
 			"sweettea",
+			"dish_chilledrosejuice",
 		},
 
 }
@@ -247,6 +250,7 @@ local DRINKITEM = {
 	"wormlight",
 	"ice",
 	"icecream",
+	"dish_sosweetjarkfruit",
 }
 
 local DRINKITEM_ACION = {
@@ -271,6 +275,8 @@ local DRINKITEM_ACION = {
 	"icedtea",
 	"kyno_tea",
 	"kyno_icedtea",
+	"dish_chilledrosejuice",
+	"dish_medicinalliquor",
 }
 
 local DRINKITEM_ACION_ALCOHOL = {
@@ -307,11 +313,28 @@ local function oneatenfn(inst, eater)
 end 
 
 for _, v in pairs(DRINKITEM) do 
-	AddPrefabPostInit(v, function(inst) inst:AddTag("etcthing") end)
+	AddPrefabPostInit(v, function(inst) 
+		inst:AddTag("etcthing")
+
+        if not TheWorld.ismastersim then
+            return inst
+        end
+	end)
 end
 
 for _, v in pairs(DRINKITEM_ACION) do 
-	AddPrefabPostInit(v, function(inst) inst:AddTag("drink") end)
+	AddPrefabPostInit(v, function(inst)
+		inst:AddTag("drink")
+
+
+        if not TheWorld.ismastersim then
+            return inst
+        end
+        
+        if inst.components.edible ~= nil then
+        	inst.components.edible.foodtype = FOODTYPE.GOODIES
+        end
+	end)
 end
 
 for _, v in pairs(DRINKITEM_ACION_ALCOHOL) do 
@@ -320,6 +343,7 @@ for _, v in pairs(DRINKITEM_ACION_ALCOHOL) do
 		inst:AddTag("alcohol")
 
 		if inst.components.edible ~= nil then
+			inst.components.edible.foodtype = FOODTYPE.GOODIES
 			inst.components.edible:SetOnEatenFn(oneatenfn)
 		end
 	end)
