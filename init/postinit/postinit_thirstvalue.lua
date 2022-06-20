@@ -252,7 +252,7 @@ HYDRATIONTYPE = {
 			"bubbletea",
 			"figjuice",
 			"coconutwater",
-			"kyno_cansoda",
+			"kyno_sodacan",
 		},
 
 }
@@ -303,7 +303,7 @@ DRINKITEM_ACION = {
 	"coconutwater",
 	"figjuice",
 	"bubbletea",
-	"kyno_cansoda",
+	"kyno_sodacan",
 }
 
 DRINKITEM_ACION_ALCOHOL = {
