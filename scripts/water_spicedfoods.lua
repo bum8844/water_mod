@@ -79,6 +79,9 @@ for k, mod_id in ipairs(KnownModIndex:GetModsToLoad()) do
     if mod_id == "workshop-2748801553" then
         GenerateSpicedFoods_Water(require("gyul_foodrecipes"))
     end
+    if mod_id == "workshop-2762334054" then
+        GenerateSpicedFoods_Water(require("mfp_foodrecipes"))
+    end
 end
 
 GenerateSpicedFoods_Water(require("preparedfoods"))

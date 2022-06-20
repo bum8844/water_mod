@@ -88,6 +88,7 @@ HYDRATIONTYPE = {
 			"barnacle",
 			"barnacle_cooked",
 			"butter",
+			"oleo",
 		},
 		--HYDRATION_SUPERTINY
 		SUPERTINY = {
@@ -129,6 +130,8 @@ HYDRATIONTYPE = {
 			"foliage",
 			"cutlichen",
 			"kyno_syrup",
+			"fruit_syrup",
+			"molasses",
 			"honey",
 			"royal_jelly",
 		},
@@ -218,6 +221,8 @@ HYDRATIONTYPE = {
 			"ceviche",
 			"bunnystew",
 			"dish_sosweetjarkfruit",
+			"bisque",
+			"jellyopop",
 		},
 		--HYDRATION_LARGE
 		LARGE = {
@@ -241,6 +246,12 @@ HYDRATIONTYPE = {
 			"dish_chilledrosejuice",
 			"icetea",
 			"gyultea",
+			"winter_food7",
+			"winter_food8",
+			"winter_food9",
+			"bubbletea",
+			"figjuice",
+			"coconutwater",
 		},
 
 }
@@ -255,8 +266,15 @@ DRINKITEM = {
 	"dish_sosweetjarkfruit",
 }
 
-DRINKITEM_ACION = {
+INGREDIENT_DRINKITEM_ACION = {
 	"coconut_milk",
+	"rawmilk",
+	"beefalo_milk",
+	"goatmilk",
+}
+
+DRINKITEM_ACION = {
+	"bubbletea",
 	"cold_gazpacho",
 	"coffee",
 	"kyno_coffee",
@@ -269,9 +287,6 @@ DRINKITEM_ACION = {
 	"vegstinger",
 	"gazpacho",
 	"sweettea",
-	"rawmilk",
-	"goatmilk",
-	"beefalo_milk",
 	"berryshake",
 	"tea",
 	"icedtea",
@@ -281,6 +296,12 @@ DRINKITEM_ACION = {
 	"dish_medicinalliquor",
 	"icetea",
 	"gyultea",
+	"winter_food7",
+	"winter_food8",
+	"winter_food9",
+	"coconutwater",
+	"figjuice",
+	"bubbletea",
 }
 
 DRINKITEM_ACION_ALCOHOL = {
@@ -319,6 +340,22 @@ end
 for _, v in pairs(DRINKITEM) do 
 	AddPrefabPostInit(v, function(inst) 
 		inst:AddTag("etcthing")
+	end)
+end
+
+for _, v in pairs(INGREDIENT_DRINKITEM_ACION) do 
+	AddPrefabPostInit(v, function(inst)
+		inst:AddTag("drink")
+		inst:RemoveTag("preparedfood")
+		inst:AddTag("pre-preparedfood")
+
+        if not GLOBAL.TheWorld.ismastersim then
+            return inst
+        end
+        
+        if inst.components.edible ~= nil then
+        	inst.components.edible.foodtype = GLOBAL.FOODTYPE.GOODIES
+        end
 	end)
 end
 

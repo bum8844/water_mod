@@ -477,10 +477,18 @@ local function MakePreparedBottleDrink(data)
             inst:AddTag("watercan")
         end
 
-        inst:AddComponent("water")
+        if inst:HasTag("common") then
+            inst:AddTag("watercan")
+
+            inst:AddComponent("water")
+            inst.components.water.watervalue = TUNING.BOTTLE_MAX_LEVEL
+           --inst.components.water.watertype = WATERTYPE[string.upper( _name == "water" and "clean" or _name == "salt" and "salty" or _name )]
+        end
+
+        --[[inst:AddComponent("water")
         inst.components.water:SetWaterMax(TUNING.BOTTLE_MAX_LEVEL)
         inst.components.water:SetWaterType(data.watertype or WATERTYPE.GENERIC)
-        inst.components.water:SetOnTakenFn(OnTake)
+        inst.components.water:SetOnTakenFn(OnTake)]]--
 
         inst:AddComponent("inventoryitem")
         inst.replica.inventoryitem:SetImage("bottle_"..name)
