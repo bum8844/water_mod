@@ -120,18 +120,6 @@ local function MakePreparedCupDrink(data)
 
         inst.AnimState:PlayAnimation("idle")
         inst.AnimState:OverrideSymbol("swap", overridebuild or "kettle_drink", "cup_"..basename or "cup_"..name)
-		
-        if name == "glowberrywine" or name == "colaquantum" then
-            inst.AnimState:SetBloomEffectHandle("shaders/anim.ksh")
-
-            inst.entity:AddLight()
-
-            inst.Light:SetFalloff(0.7)
-            inst.Light:SetIntensity(.5)
-            inst.Light:SetRadius(0.5)
-            inst.Light:SetColour(169/255, 231/255, 245/255)
-            inst.Light:Enable(true)
-        end
 
         inst:AddTag("preparedrink_cup")
         inst:AddTag("preparedrink")
@@ -148,6 +136,18 @@ local function MakePreparedCupDrink(data)
             inst:AddTag(name)
             inst:AddTag("show_spoiled")
             inst:AddTag("icebox_valid")
+        end
+
+        if inst:HasTag("lightdrink") then
+            if name == "colaquantum" then
+                inst.AnimState:SetBloomEffectHandle("shaders/anim.ksh")
+            end
+            inst.entity:AddLight()
+            inst.Light:SetFalloff(0.7)
+            inst.Light:SetIntensity(.5)
+            inst.Light:SetRadius(0.5)
+            inst.Light:SetColour(169/255, 231/255, 245/255)
+            inst.Light:Enable(true)
         end
 
         if basename ~= nil then
@@ -378,19 +378,6 @@ local function MakePreparedBottleDrink(data)
 
         inst.AnimState:PlayAnimation("idle")
         inst.AnimState:OverrideSymbol("swap", overridebuild or "kettle_bottle_drink", "bottle_"..basename or "bottle_"..name)
-		
-        if name == "glowberrywine" then
-            inst.AnimState:SetBloomEffectHandle("shaders/anim.ksh")
-
-            inst.entity:AddLight()
-
-            inst.Light:SetFalloff(0.7)
-            inst.Light:SetIntensity(.5)
-            inst.Light:SetRadius(0.5)
-            inst.Light:SetColour(169/255, 231/255, 245/255)
-            inst.Light:Enable(true)
-
-        end
 
         inst:AddTag("preparedrink_bottle")
         inst:AddTag("preparedrink")
@@ -401,6 +388,18 @@ local function MakePreparedBottleDrink(data)
             for i,v in pairs(data.tags) do
                 inst:AddTag(v)
             end
+        end
+
+        if inst:HasTag("lightdrink") then
+            if name == "colaquantum" then
+                inst.AnimState:SetBloomEffectHandle("shaders/anim.ksh")
+            end
+            inst.entity:AddLight()
+            inst.Light:SetFalloff(0.7)
+            inst.Light:SetIntensity(.5)
+            inst.Light:SetRadius(0.5)
+            inst.Light:SetColour(169/255, 231/255, 245/255)
+            inst.Light:Enable(true)
         end
 
         if not inst:HasTag("common") then
