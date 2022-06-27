@@ -70,55 +70,58 @@
         <file id="0" name="cup_salt/cup_salt-0.png" width="300" height="300" pivot_x="0.5" pivot_y="0.1"/>
     </folder>
     <folder id="23" name="cup_cola">
-        <file id="0" name="cup_cola/cup_cola-0.png" width="500" height="500" pivot_x="0.5" pivot_y="0.1"/>
+        <file id="0" name="cup_cola/cup_cola-0.png" width="300" height="300" pivot_x="0.5" pivot_y="0.15"/>
     </folder>
     <folder id="24" name="cup_colaquantum">
-        <file id="0" name="cup_colaquantum/cup_colaquantum-0.png" width="500" height="500" pivot_x="0.5" pivot_y="0.1"/>
+        <file id="0" name="cup_colaquantum/cup_colaquantum-0.png" width="300" height="300" pivot_x="0.5" pivot_y="0.15"/>
     </folder>
     <folder id="25" name="cup_dd_coffee">
-        <file id="0" name="cup_dd_coffee/cup_dd_coffee-0.png" width="500" height="500" pivot_x="0.5" pivot_y="0.1"/>
+        <file id="0" name="cup_dd_coffee/cup_dd_coffee-0.png" width="300" height="300" pivot_x="0.5" pivot_y="0.1"/>
     </folder>
     <folder id="26" name="cup_fruitsoda">
-        <file id="0" name="cup_fruitsoda/cup_fruitsoda-0.png" width="500" height="500" pivot_x="0.5" pivot_y="0.1"/>
+        <file id="0" name="cup_fruitsoda/cup_fruitsoda-0.png" width="300" height="300" pivot_x="0.5" pivot_y="0.14"/>
     </folder>
     <folder id="27" name="cup_fruitwine">
         <file id="0" name="cup_fruitwine/cup_fruitwine-0.png" width="500" height="500" pivot_x="0.5" pivot_y="0.1"/>
     </folder>
     <folder id="28" name="cup_fuer">
-        <file id="0" name="cup_fuer/cup_fuer-0.png" width="500" height="500" pivot_x="0.5" pivot_y="0.1"/>
+        <file id="0" name="cup_fuer/cup_fuer-0.png" width="300" height="300" pivot_x="0.5" pivot_y="0.1"/>
     </folder>
     <folder id="29" name="cup_glowberry">
-        <file id="0" name="cup_glowberry/cup_glowberry-0.png" width="500" height="500" pivot_x="0.5" pivot_y="0.1"/>
+        <file id="0" name="cup_glowberry/cup_glowberry-0.png" width="300" height="300" pivot_x="0.5" pivot_y="0.1"/>
     </folder>
-    <folder id="30" name="cup_glowberrywine">
-        <file id="0" name="cup_glowberrywine/cup_glowberrywine.png" width="500" height="500" pivot_x="0.5" pivot_y="0.1"/>
+    <folder id="30" name="cup_kumis">
+        <file id="0" name="cup_kumis/cup_kumis-0.png" width="300" height="300" pivot_x="0.5" pivot_y="0.1375"/>
     </folder>
-    <folder id="31" name="cup_kumis">
-        <file id="0" name="cup_kumis/cup_kumis-0.png" width="500" height="500" pivot_x="0.5" pivot_y="0.1"/>
+    <folder id="31" name="cup_mead">
+        <file id="0" name="cup_mead/cup_mead-0.png" width="300" height="300" pivot_x="0.5" pivot_y="0.075"/>
     </folder>
-    <folder id="32" name="cup_llsoda">
-        <file id="0" name="cup_llsoda/cup_llsoda-0.png" width="500" height="500" pivot_x="0.5" pivot_y="0.1"/>
+    <folder id="32" name="cup_sparklingwine">
+        <file id="0" name="cup_sparklingwine/cup_sparklingwine-0.png" width="300" height="300" pivot_x="0.5" pivot_y="0.065"/>
     </folder>
-    <folder id="33" name="cup_mead">
-        <file id="0" name="cup_mead/cup_mead-0.png" width="500" height="500" pivot_x="0.5" pivot_y="0.1"/>
+    <folder id="33" name="cup_wine">
+        <file id="0" name="cup_wine/cup_wine-0.png" width="300" height="300" pivot_x="0.5" pivot_y="0.05"/>
     </folder>
-    <folder id="34" name="cup_noblewine">
-        <file id="0" name="cup_noblewine/cup_noblewine.png" width="500" height="500" pivot_x="0.5" pivot_y="0.1"/>
-    </folder>
-    <folder id="35" name="cup_sparklingwine">
-        <file id="0" name="cup_sparklingwine/cup_sparklingwine-0.png" width="500" height="500" pivot_x="0.5" pivot_y="0.1"/>
-    </folder>
-    <folder id="36" name="cup_wine">
-        <file id="0" name="cup_wine/cup_wine-0.png" width="500" height="500" pivot_x="0.5" pivot_y="0.1"/>
-    </folder>
-    <folder id="37" name="cup_cactus_tea">
+    <folder id="34" name="cup_cactus_tea">
         <file id="0" name="cup_cactus_tea/cup_cactus_tea-0.png" width="300" height="300" pivot_x="0.5" pivot_y="0.1"/>
     </folder>
-    <folder id="38" name="cup_pomegranate_tea">
+    <folder id="35" name="cup_pomegranate_tea">
         <file id="0" name="cup_pomegranate_tea/cup_pomegranate_tea-0.png" width="300" height="300" pivot_x="0.5" pivot_y="0.1"/>
     </folder>
-    <folder id="39" name="cup_spoiled">
+    <folder id="36" name="cup_spoiled">
         <file id="0" name="cup_spoiled/cup_spoiled-0.png" width="300" height="300" pivot_x="0.5" pivot_y="0.1"/>
+    </folder>
+    <folder id="37" name="cup_noblewine">
+        <file id="0" name="cup_noblewine/cup_noblewine-0.png" width="300" height="300" pivot_x="0.5" pivot_y="0.05"/>
+    </folder>
+    <folder id="38" name="cup_glowberrywine">
+        <file id="0" name="cup_glowberrywine/cup_glowberrywine-0.png" width="300" height="300" pivot_x="0.5" pivot_y="0.05"/>
+    </folder>
+    <folder id="39" name="cup_soda">
+        <file id="0" name="cup_soda/cup_soda-0.png" width="300" height="300" pivot_x="0.5" pivot_y="0.14"/>
+    </folder>
+    <folder id="40" name="cup_lemonlimesoda">
+        <file id="0" name="cup_lemonlimesoda/cup_lemonlimesoda-0.png" width="300" height="300" pivot_x="0.5" pivot_y="0.14"/>
     </folder>
     <entity id="0" name="kettle_drink">
         <animation id="0" name="idle" length="150" interval="100">

@@ -75,50 +75,50 @@
     <folder id="24" name="bottle_kumis">
         <file id="0" name="bottle_kumis/bottle_kumis-0.png" width="300" height="300" pivot_x="0.5" pivot_y="0.075"/>
     </folder>
-    <folder id="25" name="bottle_llsoda">
-        <file id="0" name="bottle_llsoda/bottle_llsoda-0.png" width="300" height="300" pivot_x="0.5" pivot_y="0.075"/>
-    </folder>
-    <folder id="26" name="bottle_lotusflower">
+    <folder id="25" name="bottle_lotusflower">
         <file id="0" name="bottle_lotusflower/bottle_lotusflower-0.png" width="300" height="300" pivot_x="0.5" pivot_y="0.23"/>
     </folder>
-    <folder id="27" name="bottle_mead">
+    <folder id="26" name="bottle_mead">
         <file id="0" name="bottle_mead/bottle_mead-0.png" width="300" height="300" pivot_x="0.5" pivot_y="0.075"/>
     </folder>
-    <folder id="28" name="bottle_mixflower">
+    <folder id="27" name="bottle_mixflower">
         <file id="0" name="bottle_mixflower/bottle_mixflower-0.png" width="300" height="300" pivot_x="0.5" pivot_y="0.1"/>
     </folder>
-    <folder id="29" name="bottle_mulled">
+    <folder id="28" name="bottle_mulled">
         <file id="0" name="bottle_mulled/bottle_mulled-0.png" width="300" height="300" pivot_x="0.5" pivot_y="0.1"/>
     </folder>
-    <folder id="30" name="bottle_noblewine">
+    <folder id="29" name="bottle_noblewine">
         <file id="0" name="bottle_noblewine/bottle_noblewine-0.png" width="300" height="300" pivot_x="0.5" pivot_y="0.05"/>
     </folder>
-    <folder id="31" name="bottle_pomegranate_tea">
+    <folder id="30" name="bottle_pomegranate_tea">
         <file id="0" name="bottle_pomegranate_tea/bottle_pomegranate_tea-0.png" width="300" height="300" pivot_x="0.5" pivot_y="0.1"/>
     </folder>
-    <folder id="32" name="bottle_salt">
+    <folder id="31" name="bottle_salt">
         <file id="0" name="bottle_salt/bottle_salt-0.png" width="300" height="300" pivot_x="0.5" pivot_y="0.1"/>
     </folder>
-    <folder id="33" name="bottle_soda">
+    <folder id="32" name="bottle_soda">
         <file id="0" name="bottle_soda/bottle_soda-0.png" width="300" height="300" pivot_x="0.5" pivot_y="0.075"/>
     </folder>
-    <folder id="34" name="bottle_sparklingwine">
+    <folder id="33" name="bottle_sparklingwine">
         <file id="0" name="bottle_sparklingwine/bottle_sparklingwine-0.png" width="300" height="300" pivot_x="0.5" pivot_y="0.05"/>
     </folder>
-    <folder id="35" name="bottle_spoiled">
+    <folder id="34" name="bottle_spoiled">
         <file id="0" name="bottle_spoiled/bottle_spoiled-0.png" width="300" height="300" pivot_x="0.5" pivot_y="0.1"/>
     </folder>
-    <folder id="36" name="bottle_sushibiscus">
+    <folder id="35" name="bottle_sushibiscus">
         <file id="0" name="bottle_sushibiscus/bottle_sushibiscu-0.png" width="300" height="300" pivot_x="0.5" pivot_y="0.23"/>
     </folder>
-    <folder id="37" name="bottle_veggie">
+    <folder id="36" name="bottle_veggie">
         <file id="0" name="bottle_veggie/bottle_veggie-0.png" width="300" height="300" pivot_x="0.5" pivot_y="0.1"/>
     </folder>
-    <folder id="38" name="bottle_water">
+    <folder id="37" name="bottle_water">
         <file id="0" name="bottle_water/bottle_water-0.png" width="300" height="300" pivot_x="0.5" pivot_y="0.1"/>
     </folder>
-    <folder id="39" name="bottle_wine">
+    <folder id="38" name="bottle_wine">
         <file id="0" name="bottle_wine/bottle_wine-0.png" width="300" height="300" pivot_x="0.5" pivot_y="0.05"/>
+    </folder>
+    <folder id="39" name="bottle_lemonlimesoda">
+        <file id="0" name="bottle_lemonlimesoda/bottle_lemonlimesoda-0.png" width="300" height="300" pivot_x="0.5" pivot_y="0.075"/>
     </folder>
     <entity id="0" name="kettle_bottle_drink">
         <animation id="0" name="idle" length="150" interval="100">
