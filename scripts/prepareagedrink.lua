@@ -126,7 +126,7 @@ local drinks =
 	},
 	
 	-- 로얄젤리만 넣을경우(치유효과)
-	llsoda =
+	lemonlimesoda =
 	{
 		test = function(boilier, names, tags) return names.refined_dust and names.refined_dust >= 1 and names.royal_jelly and names.royal_jelly >=1 and notmeat(tags) end,
 		priority = 1,
