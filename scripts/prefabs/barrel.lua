@@ -67,11 +67,27 @@ local function OnDepleted(inst)
 	inst.components.watersource.available = false
 end
 
+
 local function OnTakeWater(inst)
 	inst.component.watersource.available = true
 end
 
+--[[local function OnTakeWater(inst, watervalue)
+	if watervalue >= 15 then
+		inst.SoundEmitter:PlaySound("dontstarve/creatures/pengull/splash")
+	elseif watervalue >= 5 then
+		inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/medium")
+	else
+		inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/small")
+	end
+end]]
+
 local function OnSectionChange(new, old, inst)
+	if new == inst.components.waterlevel.sections then
+		inst.components.waterlevel.accepting = false
+	else
+		inst.components.waterlevel.accepting = true
+	end
 	if inst._waterlevel ~= new then
 		inst._waterlevel = new
 		inst.AnimState:OverrideSymbol("swap", "barrel_meter_water", tostring(new))
@@ -120,7 +136,8 @@ local function fn()
 	inst:AddComponent("waterlevel")
 	inst.components.waterlevel:SetDepletedFn(OnDepleted)
 	inst.components.waterlevel:SetTakeWaterFn(OnTakeWater)
-	--inst.components.waterlevel:SetWaterType(WATERTYPE.CLEAN)
+	inst.components.waterlevel:SetWaterType(WATERTYPE.CLEAN)
+
 	inst.components.waterlevel.maxwater = TUNING.BARREL_MAX_LEVEL
 	inst.components.waterlevel.accepting = true
 	inst.components.waterlevel:SetSections(TUNING.BREWERY_MAX_LEVEL)
@@ -134,7 +151,7 @@ local function fn()
     inst.components.wateryprotection.extinguishheatpercent = TUNING.WATER_BARREL_EXTINGUISH_HEAT_PERCENT
     inst.components.wateryprotection.temperaturereduction = TUNING.WATER_BARREL_TEMP_REDUCTION
     inst.components.wateryprotection.witherprotectiontime = TUNING.WATER_BARREL_PROTECTION_TIME
-    inst.components.wateryprotection.addwetness = 0 -- 물의 양에따라 변형
+    inst.components.wateryprotection.addwetness = 0 -- 물의 양에 따라 변형
     inst.components.wateryprotection.protection_dist = TUNING.WATER_BARREL_DIST
 	
 	MakeMediumBurnable(inst, nil, nil, true)

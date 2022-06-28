@@ -55,16 +55,16 @@ local tuning =
 		"webber",
 	},
 
-	CUP_MAX_LEVEL = 1,
-	BOTTLE_MAX_LEVEL = 10,
-	BUCKET_MAX_LEVEL = 20,
+	CUP_MAX_LEVEL = 10,
+	BOTTLE_MAX_LEVEL = 100,
+	BUCKET_MAX_LEVEL = 200,
 	CAMP_KETTLE_MAX_LEVEL = 1,
-	KETTLE_MAX_LEVEL = 5,
-	BARREL_MAX_LEVEL = 360,
-	BREWERY_MAX_LEVEL = 20,
-	DESALINATOR_MAX_LEVEL = 20,
+	KETTLE_MAX_LEVEL = 50,
+	BARREL_MAX_LEVEL = 3600,
+	BREWERY_MAX_LEVEL = 200,
+	DESALINATOR_MAX_LEVEL = 200,
 
-	-- 얼음양동이, 깨끗한 물 양동이 관련 값
+	-- Ice Bucket
 	BUCKET_ICE_MINETEMP = -40,
 	BUCKET_ICE_MAXTEMP = 5,
 	ICE_STARTING_TEMP = 0,
@@ -73,7 +73,7 @@ local tuning =
 	BUCKET_FULL_MAXTEMP = 40,
 	WATER_STARTING_TEMP = 25,
 	
-	-- 모이스쳐관련 값들
+	-- Moistures and getting wet
 	BUCKET_DRINK_WET = 10,
 	WATER_BARREL_WETNESS = 0.25,
 	WATER_BARREL_EXTINGUISH_HEAT_PERCENT = -1,
@@ -81,46 +81,49 @@ local tuning =
 	WATER_BARREL_PROTECTION_TIME = 30,
 	WATER_BARREL_DIST = 15,
 
-	-- 기초 목마름
-	WILSON_THIRST = wilson_thirst, --수분량
+	-- Waterlevel
+	WATERLEVEL_PER_SIP = 10,
+
+	-- Basic Thirst Rate
+	WILSON_THIRST = wilson_thirst, --Max Thirst
 	WILSON_HUNGER_RATE = hydration_per_day/total_day_time,
 
-	-- 목마름 채워주는 양
-	HYDRATION_SALT = hydration_per_day-90, -- 소금물
-	HYDRATION_POISON = hydration_per_day-80, -- 잘못 양조된 음료
-	HYDRATION_ROT = hydration_per_day-85, -- 썩은 음식물
-	HYDRATION_NONE = 0, -- 수상한 히비스커스
+	-- Hydration
+	HYDRATION_SALT = hydration_per_day-90, -- Saltwater
+	HYDRATION_POISON = hydration_per_day-80, -- Failed Fermentation
+	HYDRATION_ROT = hydration_per_day-85, -- Rotten
+	HYDRATION_NONE = 0, -- Suspicious Hibiscus
 	HYDRATION_TINYMICROSCOPIC = hydration_per_day/24,
 	HYDRATION_SUPERTINY = hydration_per_day/16,
 	HYDRATION_TINY = hydration_per_day/12,
-	HYDRATION_SMALLTINY = hydration_per_day/8, -- 물, 잘못된 조리법(주전자)
-	HYDRATION_SMALL = hydration_per_day/6, -- 술, 커피
-	HYDRATION_MEDSMALL = hydration_per_day/4, -- 과일차(섞인것), 채소차(섞인것), 꽃차(섞인것)
-	HYDRATION_MED = hydration_per_day/3, -- 찾잎이나 이름이 지정된 꽃차
-	HYDRATION_LARGE = hydration_per_day/2, -- 이름이 따로 지정된 과일, 채소차, 소다, 과일 소다
-	HYDRATION_HUGE = hydration_per_day, -- 특수효과 주는 차, 사이다
-	HYDRATION_SUPERHUGE = hydration_per_day*2, -- 콜라(퀀텀은 OP)
+	HYDRATION_SMALLTINY = hydration_per_day/8, -- Normal Water, Failed Cooking
+	HYDRATION_SMALL = hydration_per_day/6, -- Alcohols and Coffee
+	HYDRATION_MEDSMALL = hydration_per_day/4, -- Mixed Beverage
+	HYDRATION_MED = hydration_per_day/3, -- Tea and Florals
+	HYDRATION_LARGE = hydration_per_day/2, -- Drinks made of specific ingredient(i.e. Dragonfruit Juice)
+	HYDRATION_HUGE = hydration_per_day, -- Drinks with Special Effect, Lemon & Lime Soda
+	HYDRATION_SUPERHUGE = hydration_per_day*2, -- Cola
 
-	-- 목마름이 채워주는 배고픔 양
+	-- Hunger from Drinks
 	DRINK_CALORIES_POISON = 3,
 	DRINK_CALORIES = 5,
 
-	--알콜 부작용
+	-- Alcohol side-effects
 	ALCOHOL_POISON = -5,
 	SANITY_POISON = -5,
 
-	--만드는 시간(온도 조절은 특수 효과가 아님)
+	--Cooking Time
 	INCORRECT_BOIL = .25,
 	DESALINATION_TIME = 1,
-	KETTLE_WATER = .3, -- 물
-	KETTLE_TEA = .5, -- 녹차, 홍차, 보이
-	KETTLE_FRUIT = .8, -- 모든 과일 종류
-	KETTLE_VEGGIE = .8, -- 모든 야채 종류
-	KETTLE_DECORATION = .85, -- 꽃 종류
-	KETTLE_LUXURY_GOODS = 1, -- 특수 효과주는 차들
-	KETTLE_ABI = .85, -- 수상한 히비스커스
-	BEER_WAIT = GetModConfigData("beer_wait"),
-	SODA_WAIT = GetModConfigData("soda_wait"),
+	KETTLE_WATER = .3, -- Boiling Water
+	KETTLE_TEA = .5, -- Teas
+	KETTLE_FRUIT = .8, -- Fruit Beverage
+	KETTLE_VEGGIE = .8, -- Veggie Beverage
+	KETTLE_DECORATION = .85, -- Floral Infusions
+	KETTLE_LUXURY_GOODS = 1, -- Drinks with special effects (except temperature)
+	KETTLE_ABI = .85, -- Suspicious Hibiscus
+	BEER_WAIT = GetModConfigData("beer_wait"), --Alcoholic Ferments
+	SODA_WAIT = GetModConfigData("soda_wait"), --Non-Alcoholic Ferments
 
 	TEA_TREE_REGROWTH_TIME_MULT = 1,
 	CAFFEINBERRY_REGROWTH_TIME_MULT = 1,
@@ -147,9 +150,7 @@ local WATERTYPE =
 	ROTTEN = "ROTTEN",
 }
 
-_G.WATERTYPE = WATERTYPE
-
-_G.WATERGROUP =
+local WATERGROUP =
 {
 	OMNI =
 	{
@@ -196,3 +197,6 @@ _G.WATERGROUP =
 		},
 	},
 }
+
+_G.WATERTYPE = WATERTYPE
+_G.WATERGROUP = WATERGROUP

@@ -1,32 +1,22 @@
-env._G = GLOBAL
-env.require = _G.require
-env.STRINGS = _G.STRINGS
-env.ACTIONS = _G.ACTIONS
-env.RPC = _G.RPC
-env.SendRPCToServer = _G.SendRPCToServer
-env.BufferedAction = _G.BufferedAction
-env.SpawnPrefab = _G.SpawnPrefab
-env.ThePlayer = _G.ThePlayer
-env.TheWorld = _G.TheWorld
-env.net_ushortint = _G.net_ushortint
-env.net_bool = _G.net_bool
 require("utils/inventoryutil")
+require("mathutil")
+modimport("init/set_env")
 
 PrefabFiles = require("water_prefablist")
 
 Assets = require("water_assets")
 
-modimport("scripts/water_recipes.lua")
-modimport("scripts/strings/strings.lua")
-modimport("scripts/strings/speech.lua")
-modimport("scripts/water_tuning.lua")
-modimport("scripts/water_actions.lua")
-modimport("scripts/water_containers.lua")
+modimport("scripts/water_recipes")
+modimport("scripts/strings/strings")
+modimport("scripts/strings/speech")
+modimport("scripts/water_tuning")
+modimport("scripts/water_actions")
+modimport("scripts/water_containers")
 
 if GetModConfigData("enable_thirst") ~= 1 then
-	modimport("init/postinit/postinit_player.lua")
-	modimport("init/postinit/postinit_thirstvalue.lua")
-	modimport("scripts/widgets/thirstbadge_statusdisplays.lua")
+	modimport("init/postinit/postinit_player")
+	modimport("init/postinit/postinit_thirstvalue")
+	modimport("scripts/widgets/thirstbadge_statusdisplays")
 end
 
 AddMinimapAtlas("images/tea_minimap.xml")
@@ -73,4 +63,3 @@ AddReplicableComponent("waterlevel")
 if GetModConfigData("enable_thirst") ~= 1 then
 	AddReplicableComponent("thirst")
 end
-
