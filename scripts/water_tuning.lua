@@ -55,6 +55,7 @@ local tuning =
 		"webber",
 	},
 
+	-- Maximum Amount of Water
 	CUP_MAX_LEVEL = 10,
 	BOTTLE_MAX_LEVEL = 100,
 	BUCKET_MAX_LEVEL = 200,
@@ -63,6 +64,9 @@ local tuning =
 	BARREL_MAX_LEVEL = 3600,
 	BREWERY_MAX_LEVEL = 200,
 	DESALINATOR_MAX_LEVEL = 200,
+
+	-- Sections
+	BREWERY_SECTIONS = 20,
 
 	-- Ice Bucket
 	BUCKET_ICE_MINETEMP = -40,

@@ -83,7 +83,7 @@ end
 end]]
 
 local function OnSectionChange(new, old, inst)
-	if new == inst.components.waterlevel.sections then
+	if new >= inst.components.waterlevel.sections then
 		inst.components.waterlevel.accepting = false
 	else
 		inst.components.waterlevel.accepting = true
@@ -140,7 +140,7 @@ local function fn()
 
 	inst.components.waterlevel.maxwater = TUNING.BARREL_MAX_LEVEL
 	inst.components.waterlevel.accepting = true
-	inst.components.waterlevel:SetSections(TUNING.BREWERY_MAX_LEVEL)
+	inst.components.waterlevel:SetSections(TUNING.BREWERY_SECTIONS)
 	inst.components.waterlevel:SetSectionCallback(OnSectionChange)
 	inst.components.waterlevel:InitializeWaterLevel(0)
 
