@@ -236,6 +236,7 @@ HYDRATIONTYPE = {
 			"asparagussoup",
 			"juice_waterberry",
 			"frozenbananadaiquiri",
+			"bananajuice",
 			"spicyvegstinger",
 			"vegstinger",
 			"gazpacho",
