@@ -526,4 +526,3 @@ AddClassPostConstruct("widgets/itemtile", function(self)
 		end
 	end
 end)
-
