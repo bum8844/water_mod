@@ -110,11 +110,11 @@ end
 
 local function OnRefuseItem(inst, giver, item)
 	if inst.components.pickable.caninteractwith then
-		giver.components.talker:Say(GetString(giver,"WELLSTATUS",{"NOTEMPTY"}))
+		giver.components.talker:Say(GetActionFailString(giver, "GIVE", "WELL_NOTEMPTY"))
 	elseif inst.AnimState:IsCurrentAnimation("watering") or inst.AnimState:IsCurrentAnimation("idle_watering") or inst.AnimState:IsCurrentAnimation("shack_watering") then
-		giver.components.talker:Say(GetString(giver,"WELLSTATUS",{"BUSY"}))
+		giver.components.talker:Say(GetActionFailString(giver, "GIVE", "WELL_BUSY"))
 	else
-		giver.components.talker:Say(GetString(giver,"WELLSTATUS",{"WRONG_TIME"}))
+		giver.components.talker:Say(GetActionFailString(giver, "GIVE", "WELL_WRONG_TIME"))
 	end
 end
 
