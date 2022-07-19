@@ -1,4 +1,4 @@
-local HYDRATIONTYPE = {
+HYDRATIONTYPE = {
 		ROT = {
 			"spoiled_food",
 			"rottenegg",
@@ -88,6 +88,7 @@ local HYDRATIONTYPE = {
 			"barnacle",
 			"barnacle_cooked",
 			"butter",
+			"oleo",
 		},
 		--HYDRATION_SUPERTINY
 		SUPERTINY = {
@@ -129,6 +130,8 @@ local HYDRATIONTYPE = {
 			"foliage",
 			"cutlichen",
 			"kyno_syrup",
+			"fruit_syrup",
+			"molasses",
 			"honey",
 			"royal_jelly",
 		},
@@ -204,6 +207,7 @@ local HYDRATIONTYPE = {
 			"daiquiri",
 			"vino",
 			"spiced_rum",
+			"dish_medicinalliquor",
 		},
 		--HYDRATION_MED
 		MED = {
@@ -216,6 +220,9 @@ local HYDRATIONTYPE = {
 			"lobsterbisque",
 			"ceviche",
 			"bunnystew",
+			"dish_sosweetjarkfruit",
+			"bisque",
+			"jellyopop",
 		},
 		--HYDRATION_LARGE
 		LARGE = {
@@ -229,6 +236,7 @@ local HYDRATIONTYPE = {
 			"asparagussoup",
 			"juice_waterberry",
 			"frozenbananadaiquiri",
+			"bananajuice",
 			"spicyvegstinger",
 			"vegstinger",
 			"gazpacho",
@@ -236,21 +244,39 @@ local HYDRATIONTYPE = {
 			"fishyogurt",
 			"berryshake",
 			"sweettea",
+			"dish_chilledrosejuice",
+			"icetea",
+			"gyultea",
+			"winter_food7",
+			"winter_food8",
+			"winter_food9",
+			"bubbletea",
+			"figjuice",
+			"coconutwater",
+			"kyno_sodacan",
 		},
 
 }
 
-local DRINKITEM = {
+DRINKITEM = {
 	"asparagussoup",
 	"lightbulb",
 	"succulent_picked",
 	"wormlight",
 	"ice",
 	"icecream",
+	"dish_sosweetjarkfruit",
 }
 
-local DRINKITEM_ACION = {
+INGREDIENT_DRINKITEM_ACION = {
 	"coconut_milk",
+	"rawmilk",
+	"beefalo_milk",
+	"goatmilk",
+}
+
+DRINKITEM_ACION = {
+	"bubbletea",
 	"cold_gazpacho",
 	"coffee",
 	"kyno_coffee",
@@ -263,17 +289,25 @@ local DRINKITEM_ACION = {
 	"vegstinger",
 	"gazpacho",
 	"sweettea",
-	"rawmilk",
-	"goatmilk",
-	"beefalo_milk",
 	"berryshake",
 	"tea",
 	"icedtea",
 	"kyno_tea",
 	"kyno_icedtea",
+	"dish_chilledrosejuice",
+	"dish_medicinalliquor",
+	"icetea",
+	"gyultea",
+	"winter_food7",
+	"winter_food8",
+	"winter_food9",
+	"coconutwater",
+	"figjuice",
+	"bubbletea",
+	"kyno_sodacan",
 }
 
-local DRINKITEM_ACION_ALCOHOL = {
+DRINKITEM_ACION_ALCOHOL = {
 	"liquor",
 	"margarita",
 	"daiquiri",
@@ -307,11 +341,39 @@ local function oneatenfn(inst, eater)
 end 
 
 for _, v in pairs(DRINKITEM) do 
-	AddPrefabPostInit(v, function(inst) inst:AddTag("etcthing") end)
+	AddPrefabPostInit(v, function(inst) 
+		inst:AddTag("etcthing")
+	end)
+end
+
+for _, v in pairs(INGREDIENT_DRINKITEM_ACION) do 
+	AddPrefabPostInit(v, function(inst)
+		inst:AddTag("drink")
+		inst:RemoveTag("preparedfood")
+		inst:AddTag("pre-preparedfood")
+
+        if not GLOBAL.TheWorld.ismastersim then
+            return inst
+        end
+        
+        if inst.components.edible ~= nil then
+        	inst.components.edible.foodtype = GLOBAL.FOODTYPE.GOODIES
+        end
+	end)
 end
 
 for _, v in pairs(DRINKITEM_ACION) do 
-	AddPrefabPostInit(v, function(inst) inst:AddTag("drink") end)
+	AddPrefabPostInit(v, function(inst)
+		inst:AddTag("drink")
+
+        if not GLOBAL.TheWorld.ismastersim then
+            return inst
+        end
+        
+        if inst.components.edible ~= nil then
+        	inst.components.edible.foodtype = GLOBAL.FOODTYPE.GOODIES
+        end
+	end)
 end
 
 for _, v in pairs(DRINKITEM_ACION_ALCOHOL) do 
@@ -319,7 +381,12 @@ for _, v in pairs(DRINKITEM_ACION_ALCOHOL) do
 		inst:AddTag("drink")
 		inst:AddTag("alcohol")
 
+        if not GLOBAL.TheWorld.ismastersim then
+            return inst
+        end
+
 		if inst.components.edible ~= nil then
+			inst.components.edible.foodtype = GLOBAL.FOODTYPE.GOODIES
 			inst.components.edible:SetOnEatenFn(oneatenfn)
 		end
 	end)

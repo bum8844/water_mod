@@ -295,6 +295,7 @@ local drinks =
 		hunger = TUNING.DRINK_CALORIES,
 		sanity = TUNING.SANITY_TINY,
 		thirst = TUNING.HYDRATION_HUGE,
+		tags = {"lightdrink"},
 		perishtime = TUNING.PERISH_SLOW,
 		cooktime = TUNING.KETTLE_LUXURY_GOODS,
 		--potlevel = "small",

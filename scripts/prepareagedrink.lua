@@ -126,7 +126,7 @@ local drinks =
 	},
 	
 	-- 로얄젤리만 넣을경우(치유효과)
-	llsoda =
+	lemonlimesoda =
 	{
 		test = function(boilier, names, tags) return names.refined_dust and names.refined_dust >= 1 and names.royal_jelly and names.royal_jelly >=1 and notmeat(tags) end,
 		priority = 1,
@@ -192,7 +192,7 @@ local drinks =
 		hunger = TUNING.CALORIES_HUGE*4,
 		sanity = TUNING.SANITY_HUGE*8,
 		thirst = TUNING.HYDRATION_HUGE*4,
-		tags = {"masterfood"},
+		tags = {"masterfood","lightdrink"},
 		perishtime = TUNING.PERISH_PRESERVED,
 		cooktime = (TUNING.KETTLE_LUXURY_GOODS + TUNING.SODA_WAIT),
 		oneatenfn = function(inst, eater)
@@ -360,7 +360,7 @@ local drinks =
 		hunger = TUNING.DRINK_CALORIES - TUNING.DRINK_CALORIES_POISON,
 		sanity = TUNING.SANITY_HUGE,
 		thirst = TUNING.HYDRATION_MEDSMALL,
-		tags = {"alcohol"},
+		tags = {"alcohol","lightdrink"},
 		perishtime = TUNING.PERISH_SUPERSLOW,
 		cooktime = (TUNING.KETTLE_FRUIT + TUNING.BEER_WAIT),
 		--potlevel = "small",

@@ -1,6 +1,8 @@
 require("tuning")
 
-local water_spicedfoods = {}
+local KnownModIndex = _G.KnownModIndex
+
+local water_spicedfoods_mod = {}
 
 local function oneaten_caffeinpepper(inst, eater)
     if not eater.components.health or eater.components.health:IsDead() or eater:HasTag("playerghost") then
@@ -39,7 +41,9 @@ local function GenerateSpicedFoods_Water(foods)
             newdata.basename = foodname
             newdata.name = foodname.."_spice_caffeinpepper"
             newdata.floater = {"med", nil, {0.85, 0.7, 0.85}}
-            water_spicedfoods[newdata.name] = newdata
+            newdata.official = true
+            newdata.cookbook_category = fooddata.cookbook_category ~= nil and ("spiced_"..fooddata.cookbook_category) or nil
+            water_spicedfoods_mod[newdata.name] = newdata
 
             if newdata.temperature == nil then
                 --Add permanent "heat" to regular food
@@ -72,20 +76,29 @@ local function GenerateSpicedFoods_Water(foods)
     end
 end
 
+
 for k, mod_id in ipairs(KnownModIndex:GetModsToLoad()) do
-    if mod_id == "workshop-1392778117" then
-        GenerateSpicedFoods_Water(require("preparedfoods_legion"))
+    if mod_id == "workshop-2431867642" then
+        GenerateSpicedFoods_Water(require("bm_foodrecipes"))
     end
-    if mod_id == "workshop-2748801553" then
-        GenerateSpicedFoods_Water(require("gyul_foodrecipes"))
+    if mod_id == "workshop-381565292" then
+        GenerateSpicedFoods_Water(require("W101_menu"))
+        GenerateSpicedFoods_Water(require("W101_shunted"))
+        GenerateSpicedFoods_Water(require("W101_frozen"))
+        GenerateSpicedFoods_Water(require("W101_mushrooms"))
     end
-    if mod_id == "workshop-2762334054" then
-        GenerateSpicedFoods_Water(require("mfp_foodrecipes"))
+    if mod_id == "workshop-2334209327" then
+        GenerateSpicedFoods_Water(require("hof_foodrecipes"))
+        GenerateSpicedFoods_Water(require("hof_foodrecipes_optional"))
     end
+    -- 미지원 (사유 : 음식조리법이 테이블 모음집이 아님)
+    --[[if mod_id == "workshop-1505270912" then
+        GenerateSpicedFoods_Water(require("gorge_foods"))
+    end
+    if mod_ids == "workshop-1467214795" then
+        GenerateSpicedFoods_Water(require("?"))
+    end]]
 end
 
-GenerateSpicedFoods_Water(require("preparedfoods"))
-GenerateSpicedFoods_Water(require("preparedfoods_warly"))
-
-return water_spicedfoods
+return water_spicedfoods_mod
 

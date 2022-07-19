@@ -1,20 +1,5 @@
 local KnownModIndex = _G.KnownModIndex
 
-local function OnIgniteFn(inst)
-    inst.SoundEmitter:PlaySound("dontstarve/common/blackpowder_fuse_LP", "hiss")
-    DefaultBurnFn(inst)
-end
-
-local function OnExtinguishFn(inst)
-    inst.SoundEmitter:KillSound("hiss")
-    DefaultExtinguishFn(inst)
-end
-
-local function OnExplodeFn(inst)
-    inst.SoundEmitter:KillSound("hiss")
-    SpawnPrefab("explode_small").Transform:SetPosition(inst.Transform:GetWorldPosition())
-end
-
 local prefabs =
 {
     "spoiled_food",
@@ -22,13 +7,15 @@ local prefabs =
 
 local function MakePreparedFood(data)
 
+    local bnamse = {}
+
     local foodassets =
     {
         Asset("ANIM", "anim/cook_pot_food.zip"),
         Asset("ANIM", "anim/water_spice.zip"),
         Asset("ANIM", "anim/plate_food.zip"),
         Asset("INV_IMAGE", "spice_caffeinpepper_over"),
-        Asset("INV_IMAGE", data.name),
+        Asset("INV_IMAGE", data.basename),
     }
 
     if data.overridebuild then
@@ -49,27 +36,12 @@ local function MakePreparedFood(data)
         return subfmt(STRINGS.NAMES["SPICE_CAFFEINPEPPER_FOOD"], { food = STRINGS.NAMES[string.upper(data.basename)] })
     end
 
-    local function changeimage(inst)
-        local bgname = GetInventoryItemAtlas(inst.inv_image_bg.image)
-        if string.find(bgname,"cookbookimages") ~= nil then
-            inst.inv_image_bg = nil
-            inst.inv_image_bg = { atlas = "images/inventoryimages/"..(data.basename or data.name)..".xml", image = (data.basename or data.name)..".tex" }
-        else
-            inst.inv_image_bg.atlas = GetInventoryItemAtlas(inst.inv_image_bg.image)
-        end
-    end
-
     local function fn()
-
         local inst = CreateEntity()
 
         inst.entity:AddTransform()
         inst.entity:AddAnimState()
         inst.entity:AddNetwork()
-
-        if data.basename  == "dish_frenchsnailsbaked" or data.name == "dish_frenchsnailsbaked" then
-            inst.entity:AddSoundEmitter()
-        end
 
         MakeInventoryPhysics(inst)
 
@@ -80,14 +52,19 @@ local function MakePreparedFood(data)
         inst.AnimState:OverrideSymbol("swap_garnish", "water_spice", "spice_caffeinpepper")
 
         inst:AddTag("spicedfood")
-
+        inst:AddTag("watermod")
+        
         inst.inv_image_bg = { image = (data.basename or data.name)..".tex" }
-        changeimage(inst)
+        inst.inv_image_bg.atlas = GetInventoryItemAtlas(inst.inv_image_bg.image)
+        if inst.inv_image_bg.atlas == "images/inventoryimages2.xml" then
+            inst.inv_image_bg = { image = (data.basename or data.name)..".tex",
+            atlas = "images/inventoryimages/"..(data.basename or data.name)..".xml"}
+        end
 
         food_symbol_build = data.overridebuild or "cook_pot_food"
 
         inst.AnimState:PlayAnimation("idle")
-        inst.AnimState:OverrideSymbol("swap_food", data.overridebuild or "cook_pot_food", data.basename or data.name)
+        inst.AnimState:OverrideSymbol("swap_food", data.overridebuild or data.basename or data.name, data.basename or data.name)
 
         inst:AddTag("preparedfood")
         if data.tags ~= nil then
@@ -102,8 +79,15 @@ local function MakePreparedFood(data)
 
         inst.displaynamefn = DisplayNameFn
 
-        if data.floater ~= nil then
-            MakeInventoryFloatable(inst, data.floater[1], data.floater[2], data.floater[3])
+        if data.float ~= nil then
+            MakeInventoryFloatable(inst, data.float[2], data.float[3], data.float[4])
+            if data.float[1] ~= nil then
+                local OnLandedClient_old = inst.components.floater.OnLandedClient
+                inst.components.floater.OnLandedClient = function(self)
+                    OnLandedClient_old(self)
+                    self.inst.AnimState:SetFloatParams(data.float[1], 1, self.bob_percent)
+                end
+            end
         else
             MakeInventoryFloatable(inst)
         end
@@ -135,6 +119,9 @@ local function MakePreparedFood(data)
         inst.replica.inventoryitem:SetImage("spice_caffeinpepper_over")
         inst.components.inventoryitem.atlasname = "images/tea_inventoryitem.xml"
         inst.components.inventoryitem.imagename = "spice_caffeinpepper_over"
+        if data.float == nil then
+            inst.components.inventoryitem:SetSinks(true)
+        end
 
         inst:AddComponent("stackable")
         inst.components.stackable.maxsize = TUNING.STACK_SIZE_SMALLITEM
@@ -146,21 +133,7 @@ local function MakePreparedFood(data)
             inst.components.perishable.onperishreplacement = "spoiled_food"
         end
 
-        if data.basename  == "dish_frenchsnailsbaked" or data.name == "dish_frenchsnailsbaked" then
-            MakeSmallBurnable(inst, 3 + math.random() * 3)
-            inst.components.burnable:SetOnBurntFn(nil)
-            inst.components.burnable:SetOnIgniteFn(OnIgniteFn)
-            inst.components.burnable:SetOnExtinguishFn(OnExtinguishFn)
-
-            inst:AddComponent("explosive")
-            inst.components.explosive:SetOnExplodeFn(OnExplodeFn)
-            inst.components.explosive.explosivedamage = TUNING.SLURTLESLIME_EXPLODE_DAMAGE
-            inst.components.explosive.buildingdamage = 1
-            inst.components.explosive.lightonexplode = false
-        else
-            MakeSmallBurnable(inst)
-        end
-
+        MakeSmallBurnable(inst)
         MakeSmallPropagator(inst)
         MakeHauntableLaunchAndPerish(inst)
         ---------------------
@@ -180,7 +153,7 @@ end
 
 local prefs = {}
 
-for k, v in pairs(require("water_spicedfoods")) do
+for k, v in pairs(require("water_spicedfoods_mod")) do
     table.insert(prefs, MakePreparedFood(v))
     AddCookerRecipe("portablespicer", v)
 end
