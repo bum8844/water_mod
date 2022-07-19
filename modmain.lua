@@ -1,15 +1,15 @@
 require("utils/inventoryutil")
-require("mathutil")
+require("water_constants")
 modimport("init/set_env")
 
 PrefabFiles = require("water_prefablist")
 
 Assets = require("water_assets")
 
+modimport("scripts/water_tuning")
 modimport("scripts/water_recipes")
 modimport("scripts/strings/strings")
 modimport("scripts/strings/speech")
-modimport("scripts/water_tuning")
 modimport("scripts/water_actions")
 modimport("scripts/water_containers")
 

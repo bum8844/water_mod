@@ -13,40 +13,6 @@ local tuning =
 		"hotspring",
 	},
 
-	FIXFUELSMALL = {
-		"cutgrass",
-		"twigs",
-		"pinecone",
-		"firenettles",
-	},
-
-	FIXFUELTINY = {
-		"foliage",
-		"forgetmelots",
-		"petals",
-		"petals_evil",
-		"moon_cap_cooked",
-		"green_cap_cooked",
-		"red_cap_cooked",
-		"blue_cap_cooked",
-		"tillweed",
-	},
-
-	FIXYOTB = {
-		"yotb_beefalo_doll_war",
-		"yotb_beefalo_doll_doll",
-		"yotb_beefalo_doll_festive",
-		"yotb_beefalo_doll_nature",
-		"yotb_beefalo_doll_robot",
-		"yotb_beefalo_doll_ice",
-		"yotb_beefalo_doll_formal",
-		"yotb_beefalo_doll_victorian",
-		"yotb_beefalo_doll_beast",
-		"yotb_pattern_fragment_1",
-		"yotb_pattern_fragment_2",
-		"yotb_pattern_fragment_3",
-	},
-
 	CHILDS =
 	{
 		"wendy",
@@ -143,64 +109,3 @@ local tuning =
 for i,v in pairs(tuning) do
 	TUNING[i] = v
 end
-
-local WATERTYPE =
-{
-	GENERIC = "GENERIC",
-	CLEAN = "CLEAN",
-	DIRTY = "DIRTY",
-	SALTY = "SALTY",
-	DRINK = "DRINK",
-	ROTTEN = "ROTTEN",
-}
-
-local WATERGROUP =
-{
-	OMNI =
-	{
-		name = "OMNI",
-		types =
-		{
-			WATERTYPE.GENERIC,
-			WATERTYPE.CLEAN,
-			WATERTYPE.DIRTY,
-			WATERTYPE.SALTY,
-			WATERTYPE.DRINK,
-			WATERTYPE.ROTTEN,
-		}
-	},
-
-	RAW =
-	{
-		name = "RAW",
-		types =
-		{
-			WATERTYPE.DIRTY,
-			WATERTYPE.SALTY,
-			WATERTYPE.ROTTEN,
-		},
-	},
-
-	DRINKABLE =
-	{
-		name = "DRINKABLE",
-		types =
-		{
-			WATERTYPE.GENERIC,
-			WATERTYPE.CLEAN,
-			WATERTYPE.DRINK,
-		},
-	},
-
-	BOILABLE = 
-	{
-		name = "BOILABLE",
-		types = {
-			WATERTYPE.CLEAN,
-			WATERTYPE.DIRTY,
-		},
-	},
-}
-
-_G.WATERTYPE = WATERTYPE
-_G.WATERGROUP = WATERGROUP

@@ -248,16 +248,20 @@ AddComponentPostInit("eater", function(self)
 	end
 end)
 
+local function GetThirstFromHungerValue(self)
+	local mult = (self.inst:HasTag("preparedfood") and 0.25) or 1
+	local thirstvalue = RoundBiasedUp(self.hungervalue * 2 ^ (math.abs(self.hungervalue / 300) - 1), 4) * mult
+	print("Thirstvalue: "..tostring(thirstvalue))
+    return thirstvalue
+end
+
 AddComponentPostInit("edible", function(self)
     self.isdrink = false
     --self.waterpersip = 10
     --self.thirstvalue = 0
     --AFS: If thirstvalue is not assigned, it will be automatically calculated.
 
-    function self:GetThirstFromHungerValue()
-    	local mult = self.inst:HasTag("preparedfood") and 0.5 or 1
-        return RoundBiasedUp(self.hungervalue * 2 ^ (math.abs(self.hungervalue / 300) - 1), 4) * mult
-    end
+    self.GetThirstFromHungerValue = GetThirstFromHungerValue
 
     function self:GetThirst(eater)
         local thirst = self.thirstvalue or self:GetThirstFromHungerValue()
@@ -282,48 +286,6 @@ AddComponentPostInit("edible", function(self)
         return multiplier * thirst
     end
 end)
-
--- 바닐라 코드쪽에서 일부 서순이 틀려서 패치했습니다 -_-
-local function fixfuelsmall(inst)
-	inst:RemoveComponent("tradable")
-	inst:RemoveComponent("fuel")
-
-	inst:AddComponent("fuel")
-	inst.components.fuel.fuelvalue = TUNING.SMALL_FUEL
-	inst:AddComponent("tradable")
-end
-
-local function fixfueltiny(inst)
-	inst:RemoveComponent("tradable")
-	inst:RemoveComponent("fuel")
-
-	inst:AddComponent("fuel")
-	inst.components.fuel.fuelvalue = TUNING.TINY_FUEL
-	inst:AddComponent("tradable")
-end
-
-function fixfuelyotb(inst) 
-	inst:RemoveComponent("tradable")
-	inst:RemoveComponent("fuel")
-
-	inst:AddComponent("fuel")
-	inst.components.fuel.fuelvalue = TUNING.SMALL_FUEL
-
-	inst:AddComponent("tradable")
-	inst.components.tradable.goldvalue = TUNING.GOLD_VALUES.YOTB_BEEFALO_DOLL
-end
-
-for _, v in pairs(TUNING.FIXFUELSMALL) do
-	AddPrefabPostInit(v, fixfuelsmall)
-end
-
-for _, v in pairs(TUNING.FIXFUELTINY) do
-	AddPrefabPostInit(v, fixfueltiny)
-end
-
-for _, v in pairs(TUNING.FIXYOTB) do
-	AddPrefabPostInit(v, fixfuelyotb)
-end
 
 --regrowth code
 AddComponentPostInit("regrowthmanager", function(self)
@@ -496,11 +458,11 @@ local function ShowProduct(inst)
 end
 
 local function checkitem(inst)
-	return inst.components.stewer.ingredient_prefabs[2] == "spice_caffeinpepper" and true or false
+	return inst.components.stewer.ingredient_prefabs[2] == "spice_caffeinpepper"
 end
 
 local function checkname(inst)
-	return string.find(inst.components.stewer.product,"_spice_caffeinpepper") ~= nil and true or false
+	return string.find(inst.components.stewer.product,"_spice_caffeinpepper")
 end
 
 local function continuedonefn(inst)
@@ -543,3 +505,25 @@ AddPrefabPostInit("portablespicer", function(inst)
 	inst.components.stewer.oncontinuedone = continuedonefn
 	inst.components.stewer.ondonecooking = ondonecookingfn
 end)
+
+--Addding Percentage on items with the 'waterlevel' component
+AddClassPostConstruct("components/inventoryitem_replica", function(self)
+	local _SerializeUsage = self.SerializeUsage
+	function self:SerializeUsage()
+		_SerializeUsage(self)
+		self.classified:SerializePercentUsed(self.inst.components.waterlevel ~= nil and self.inst.components.waterlevel:GetPercent() or nil)
+	end
+end)
+
+AddClassPostConstruct("widgets/itemtile", function(self)
+	local _Refresh = self.Refresh
+	function self:Refresh()
+		_Refresh(self)
+		if self.ismastersim then
+			if self.item.components.waterlevel ~= nil then
+				self:SetPercent(self.item.components.waterlevel:GetPercent())
+			end
+		end
+	end
+end)
+

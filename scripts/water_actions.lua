@@ -56,7 +56,7 @@ end
 
 local MILKINGTOOL = Action({priority=2})
 MILKINGTOOL.id = "MILKINGTOOL"
-MILKINGTOOL.str = STRINGS.ACTIONS.DOMILKING
+MILKINGTOOL.str = STRINGS.ACTIONS.MILK
 MILKINGTOOL.fn = function(act)
     if act.invobject.components.milkingtool:IsCharged(act.target) then
         return act.invobject.components.milkingtool:DoMilking(act.target, act.doer)
@@ -74,10 +74,10 @@ local PURIFY = Action({priority=2, rmb=true})
     end
 end
 
-local DRINKING = Action({ mount_valid=true, priority=2})
-DRINKING.id = "DRINKING"
-DRINKING.str = STRINGS.ACTIONS.DRINKING
-DRINKING.fn = function(act)
+local DRINK = Action({ mount_valid=true, priority=2})
+DRINK.id = "DRINK"
+DRINK.str = STRINGS.ACTIONS.DRINK
+DRINK.fn = function(act)
     local obj = act.target or act.invobject
     if obj ~= nil then
         if obj.components.edible ~= nil and act.doer.components.eater ~= nil then
@@ -129,7 +129,7 @@ end
 
 AddAction(FILL_BARREL)
 AddAction(PURIFY)
-AddAction(DRINKING)
+AddAction(DRINK)
 AddAction(DRINKPLAYER)
 AddAction(MILKINGTOOL)
 
@@ -254,7 +254,7 @@ local function drinking_inv(inst, doer, actions, right)
             if doer:HasTag(v.name.."_eater") then
                 for i, v2 in ipairs(v.types) do
                     if inst:HasTag("edible_"..v2) and inst:HasTag("drink") then
-                        table.insert(actions, ACTIONS.DRINKING)
+                        table.insert(actions, ACTIONS.DRINK)
                         return
                     end
                 end
@@ -263,7 +263,7 @@ local function drinking_inv(inst, doer, actions, right)
     end
     for k, v in pairs(FOODTYPE) do
         if inst:HasTag("edible_"..v) and inst:HasTag("drink") and doer:HasTag(v.."_eater") then
-            table.insert(actions, ACTIONS.DRINKING)
+            table.insert(actions, ACTIONS.DRINK)
             return
         end
     end
@@ -504,8 +504,8 @@ AddStategraphActionHandler("wilson", ActionHandler(ACTIONS.FILL_BARREL, "dolonga
 AddStategraphActionHandler("wilson_client", ActionHandler(ACTIONS.FILL_BARREL, "dolongaction"))
 AddStategraphActionHandler("wilson", ActionHandler(ACTIONS.PURIFY, "dolongaction"))
 AddStategraphActionHandler("wilson_client", ActionHandler(ACTIONS.PURIFY, "dolongaction"))
-AddStategraphActionHandler("wilson", ActionHandler(ACTIONS.DRINKING, "drinking"))
-AddStategraphActionHandler("wilson_client", ActionHandler(ACTIONS.DRINKING, "drinking"))
+AddStategraphActionHandler("wilson", ActionHandler(ACTIONS.DRINK, "drinking"))
+AddStategraphActionHandler("wilson_client", ActionHandler(ACTIONS.DRINK, "drinking"))
 AddStategraphActionHandler("wilson", ActionHandler(ACTIONS.DRINKPLAYER, "give"))
 AddStategraphActionHandler("wilson_client", ActionHandler(ACTIONS.DRINKPLAYER, "give"))
 AddStategraphActionHandler("wilson", ActionHandler(ACTIONS.MILKINGTOOL, "dolongaction"))
