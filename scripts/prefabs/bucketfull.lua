@@ -1,8 +1,8 @@
 local bucketstates =
 {
-	{ name = "clean", anim = "full", health = TUNING.HEALING_TINY, sanity = -TUNING.SANITY_SMALL, hunger = 0, thirst = TUNING.HYDRATION_TINY },
-	{ name = "dirty", anim = "dirty", health = -TUNING.HEALING_TINY, sanity = -TUNING.SANITY_SMALL, hunger = 0, thirst = TUNING.HYDRATION_TINY },
-	{ name = "salty", anim = "salt", health = -TUNING.HEALING_SMALL, sanity = -TUNING.SANITY_SMALL, hunger = 0, thirst = TUNING.HYDRATION_SALT },
+	{ name = "CLEAN", anim = "full", health = TUNING.HEALING_TINY, sanity = -TUNING.SANITY_SMALL, hunger = 0, thirst = TUNING.HYDRATION_TINY },
+	{ name = "DIRTY", anim = "dirty", health = -TUNING.HEALING_TINY, sanity = -TUNING.SANITY_SMALL, hunger = 0, thirst = TUNING.HYDRATION_TINY },
+	{ name = "SALTY", anim = "salt", health = -TUNING.HEALING_SMALL, sanity = -TUNING.SANITY_SMALL, hunger = 0, thirst = TUNING.HYDRATION_SALT },
 }
 
 local prefabs =
@@ -10,7 +10,7 @@ local prefabs =
 	"bucket_ice",
 }
 
-local function oneaten(inst)
+local function oneaten(inst, eater)
 	local x, y, z = inst.Transform:GetWorldPosition()
 	inst.components.waterlevel:DoDelta(-TUNING.WATERLEVEL_PER_SIP)
 
@@ -106,7 +106,7 @@ local function MakeBucket(data)
 			Asset("ATLAS_BUILD", "images/tea_inventoryitem.xml", 256),
 		}
 	
-	local name = data.name
+	local name = string.lower(data.name)
 	local anim = data.anim
 
 	local function DisplayNameFn(inst)
@@ -155,10 +155,12 @@ local function MakeBucket(data)
 
 		inst:AddComponent("waterlevel")
 		inst.components.waterlevel:InitializeWaterLevel(TUNING.BUCKET_MAX_LEVEL)
+		inst.components.waterlevel.watertype = WATERTYPE[data.name]
 		
 		inst:AddComponent("water")
 		inst.components.water:SetWaterType(WATERTYPE[string.upper(name)])
 		inst.components.water:SetOnTakenFn(OnTake)
+		inst.components.water.returnprefab = "bucket"
 
 		if name ~= "salty" then
 			inst:AddTag("icebox_valid")

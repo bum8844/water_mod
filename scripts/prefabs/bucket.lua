@@ -15,9 +15,8 @@ local prefabs =
 
 local function OnCalculation(inst, from_object, filleditem)
 	if from_object.components.waterlevel ~= nil then
-		local dodelta = from_object.components.waterlevel.currentwater < TUNING.BUCKET_MAX_LEVEL and from_object.components.waterlevel.currentwater or TUNING.BUCKET_MAX_LEVEL
-		from_object.components.waterlevel:DoDelta(-dodelta)
-		filleditem.components.finiteuses:SetUses(dodelta)
+		local delta = math.clamp(from_object.components.waterlevel.currentwater, 0, inst.components.waterlevel.maxwater)
+		inst.components.waterlevel:DoDelta(delta)
 	end
     if from_object.components.finiteuses ~= nil then
     	local uses = from_object.components.finiteuses:GetUses()
@@ -60,15 +59,6 @@ local function OnFill(inst, from_object)
 			watertype = WATERTYPE.CLEAN
 		end
 		filleditem = SpawnPrefab("bucket_"..string.lower(watertype))
-		if from_object.components.stewer ~= nil then
-			if from_object.components.stewer.product == nil or from_object.components.stewer.product == "saltrock" then
-				OnCalculation(inst, from_object, filleditem)
-			else
-				filleditem = nil
-			end
-		else
-			OnCalculation(inst, from_object, filleditem)
-		end
 	else
 		filleditem = SpawnPrefab("bucket_salty")
 	end
@@ -98,7 +88,7 @@ local function OnFill(inst, from_object)
             inst
         item:Remove()
     end
-    inst:PushEvent("givewater",{from_object = from_object})
+    inst:PushEvent("givewater", {from_object = from_object})
 	return true
 end
 

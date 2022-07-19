@@ -29,7 +29,7 @@ local function OnFill(inst, from_object)
 			watertype = from_object.components.stewer.product
 		end
 
-		filleditem = SpawnPrefab("cup_"..string.lower(watertype == "CLEAN" and "water" or watertype))
+		filleditem = SpawnPrefab("cup_"..string.lower(watertype))
 
 		if from_object.components.waterlevel ~= nil then
 			from_object.components.waterlevel:DoDelta(-TUNING.CUP_MAX_LEVEL)
