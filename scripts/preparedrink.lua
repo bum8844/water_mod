@@ -53,13 +53,6 @@ local drinks =
 		sanity = TUNING.SANITY_POISON,
 		thirst = TUNING.HYDRATION_POISON,
 		watertype = WATERTYPE.ROTTEN,
-		oneatenfn = function(inst, eater)
-			if inst:HasTag("preparedrink_cup") then
-				returncup(inst, eater)
-			else
-				returnbottle(inst, eater)
-			end
-		end,
 	},
 	water =
 	{
@@ -71,13 +64,6 @@ local drinks =
 		thirst = TUNING.HYDRATION_SMALLTINY,
 		tags = {"common","clean"},
 		watertype = WATERTYPE.CLEAN,
-		oneatenfn = function(inst, eater)
-			if inst:HasTag("preparedrink_cup") then
-				returncup(inst, eater)
-			else
-				returnbottle(inst, eater)
-			end
-		end,
 	},
 	
 	dirty =
@@ -90,13 +76,6 @@ local drinks =
 		thirst = TUNING.HYDRATION_SMALLTINY,
 		tags = {"common","dirty","purify"},
 		watertype = WATERTYPE.DIRTY,
-		oneatenfn = function(inst, eater)
-			if inst:HasTag("preparedrink_cup") then
-				returncup(inst, eater)
-			else
-				returnbottle(inst, eater)
-			end
-		end,
 	},
 	salt =
 	{
@@ -108,13 +87,6 @@ local drinks =
 		thirst = TUNING.HYDRATION_SALT,
 		tags = {"common","salty"},
 		watertype = WATERTYPE.SALTY,
-		oneatenfn = function(inst, eater)
-			if inst:HasTag("preparedrink_cup") then
-				returncup(inst, eater)
-			else
-				returnbottle(inst, eater)
-			end
-		end,
 	},
 	-- 조합법이 잘못되면 나오는 결과물
 	garbage = 
@@ -127,13 +99,6 @@ local drinks =
 		thirst = TUNING.HYDRATION_SMALLTINY,
 		perishtime = TUNING.PERISH_FAST,
 		cooktime = TUNING.INCORRECT_BOIL,
-		oneatenfn = function(inst, eater)
-			if inst:HasTag("preparedrink_cup") then
-				returncup(inst, eater)
-			else
-				returnbottle(inst, eater)
-			end
-		end,
 	},
 	-- 과일차 종류
 	
@@ -148,13 +113,6 @@ local drinks =
 		perishtime = TUNING.PERISH_FASTISH,
 		cooktime = TUNING.KETTLE_FRUIT,
 		potlevel = "small",
-		oneatenfn = function(inst, eater)
-			if inst:HasTag("preparedrink_cup") then
-				returncup(inst, eater)
-			else
-				returnbottle(inst, eater)
-			end
-		end,
 	},
 	
 	berries =
@@ -169,13 +127,6 @@ local drinks =
 		cooktime = TUNING.KETTLE_FRUIT,
 		potlevel = "small",
 		basename = "berries_tea",
-		oneatenfn = function(inst, eater)
-			if inst:HasTag("preparedrink_cup") then
-				returncup(inst, eater)
-			else
-				returnbottle(inst, eater)
-			end
-		end,
 	},
 
 	pomegranate =
@@ -190,13 +141,6 @@ local drinks =
 		cooktime = TUNING.KETTLE_FRUIT,
 		potlevel = "small",
 		basename = "pomegranate_tea",
-		oneatenfn = function(inst, eater)
-			if inst:HasTag("preparedrink_cup") then
-				returncup(inst, eater)
-			else
-				returnbottle(inst, eater)
-			end
-		end,
 	},
 	
 	banana =
@@ -211,13 +155,6 @@ local drinks =
 		cooktime = TUNING.KETTLE_FRUIT,
 		potlevel = "small",
 		basename = "banana_tea",
-		oneatenfn = function(inst, eater)
-			if inst:HasTag("preparedrink_cup") then
-				returncup(inst, eater)
-			else
-				returnbottle(inst, eater)
-			end
-		end,
 	},
 	
 	fig =
@@ -232,13 +169,6 @@ local drinks =
 		cooktime = TUNING.KETTLE_FRUIT,
 		potlevel = "small",
 		basename = "fig_tea",
-		oneatenfn = function(inst, eater)
-			if inst:HasTag("preparedrink_cup") then
-				returncup(inst, eater)
-			else
-				returnbottle(inst, eater)
-			end
-		end,
 	},
 	
 	dragonfruit =
@@ -255,11 +185,6 @@ local drinks =
 		basename = "dragonfruit_tea",
 		oneatenfn = function(inst, eater)
 			local knockouttime = TUNING.TEASLEEP_TIME + math.random()
-			if inst:HasTag("preparedrink_cup") then
-				returncup(inst, eater)
-			else
-				returnbottle(inst, eater)
-			end
 
 			if not eater.components.health or eater.components.health:IsDead() or eater:HasTag("playerghost") then
 				return
@@ -300,12 +225,6 @@ local drinks =
 		cooktime = TUNING.KETTLE_LUXURY_GOODS,
 		--potlevel = "small",
 		oneatenfn = function(inst, eater)
-			if inst:HasTag("preparedrink_cup") then
-				returncup(inst, eater)
-			else
-				returnbottle(inst, eater)
-			end
-
 			if not eater.components.health or eater.components.health:IsDead() or eater:HasTag("playerghost") then
 				return
             else
@@ -345,12 +264,6 @@ local drinks =
 		cooktime = TUNING.KETTLE_LUXURY_GOODS,
 		basename = "dd_coffee",
 		oneatenfn = function(inst, eater)
-			if inst:HasTag("preparedrink_cup") then
-				returncup(inst, eater)
-			else
-				returnbottle(inst, eater)
-			end
-
 			if not eater.components.health or eater.components.health:IsDead() or eater:HasTag("playerghost") then
 				return
 			elseif eater.components.debuffable and eater.components.debuffable:IsEnabled() then
@@ -377,13 +290,6 @@ local drinks =
 		perishtime = TUNING.PERISH_FASTISH,
 		cooktime = TUNING.KETTLE_VEGGIE,
 		potlevel = "small",
-		oneatenfn = function(inst, eater)
-			if inst:HasTag("preparedrink_cup") then
-				returncup(inst, eater)
-			else
-				returnbottle(inst, eater)
-			end
-		end,
 	},
 	
 	carrot =
@@ -398,13 +304,6 @@ local drinks =
 		cooktime = TUNING.KETTLE_VEGGIE,
 		potlevel = "small",
 		basename = "carrot_tea",
-		oneatenfn = function(inst, eater)
-			if inst:HasTag("preparedrink_cup") then
-				returncup(inst, eater)
-			else
-				returnbottle(inst, eater)
-			end
-		end,
 	},
 	
 	-- 선인장, 다육, 알로에는 무조건 이걸로 만들어지게
@@ -422,13 +321,6 @@ local drinks =
 		cooktime = TUNING.KETTLE_VEGGIE,
 		potlevel = "small",
 		basename = "cactus_tea",
-		oneatenfn = function(inst, eater)
-			if inst:HasTag("preparedrink_cup") then
-				returncup(inst, eater)
-			else
-				returnbottle(inst, eater)
-			end
-		end,
 	},
 	
 	mulled =
@@ -492,13 +384,6 @@ local drinks =
 		thirst = TUNING.HYDRATION_MED,
 		perishtime = TUNING.PERISH_MED,
 		cooktime = TUNING.KETTLE_TEA,
-		oneatenfn = function(inst, eater)
-			if inst:HasTag("preparedrink_cup") then
-				returncup(inst, eater)
-			else
-				returnbottle(inst, eater)
-			end
-		end,
 	},
 	
 	-- 녹차 건조대 말린것
@@ -515,13 +400,6 @@ local drinks =
 		temperatureduration = TUNING.FOOD_TEMP_LONG,
 		cooktime = TUNING.KETTLE_TEA,
 		--potlevel = "high",
-		oneatenfn = function(inst, eater)
-			if inst:HasTag("preparedrink_cup") then
-				returncup(inst, eater)
-			else
-				returnbottle(inst, eater)
-			end
-		end,
 	},
 	
 	blacktea_iced =
@@ -537,13 +415,6 @@ local drinks =
 		temperatureduration = TUNING.FOOD_TEMP_LONG,
 		cooktime = TUNING.KETTLE_TEA,
 		--potlevel = "small",
-		oneatenfn = function(inst, eater)
-			if inst:HasTag("preparedrink_cup") then
-				returncup(inst, eater)
-			else
-				returnbottle(inst, eater)
-			end
-		end,
 	},
 	
 	-- 동굴 고사리
@@ -557,13 +428,6 @@ local drinks =
 		thirst = TUNING.HYDRATION_MED,
 		perishtime = TUNING.PERISH_MED,
 		cooktime = TUNING.KETTLE_TEA,
-		oneatenfn = function(inst, eater)
-			if inst:HasTag("preparedrink_cup") then
-				returncup(inst, eater)
-			else
-				returnbottle(inst, eater)
-			end
-		end,
 	},
 	
 	-- 꽃을 섞으면 나오는 결과물
@@ -578,13 +442,6 @@ local drinks =
 		perishtime = TUNING.PERISH_FASTISH,
 		cooktime = TUNING.KETTLE_DECORATION,
 		--potlevel = "small",
-		oneatenfn = function(inst, eater)
-			if inst:HasTag("preparedrink_cup") then
-				returncup(inst, eater)
-			else
-				returnbottle(inst, eater)
-			end
-		end,
 	},
 	
 	-- 일반 꽃잎
@@ -599,13 +456,6 @@ local drinks =
 		perishtime = TUNING.PERISH_MED,
 		cooktime = TUNING.KETTLE_DECORATION,
 		--potlevel = "high",
-		oneatenfn = function(inst, eater)
-			if inst:HasTag("preparedrink_cup") then
-				returncup(inst, eater)
-			else
-				returnbottle(inst, eater)
-			end
-		end,
 	},
 
 	-- 선인장 꽃잎
@@ -620,13 +470,6 @@ local drinks =
 		perishtime = TUNING.PERISH_MED,
 		cooktime = TUNING.KETTLE_DECORATION,
 		--potlevel = "high",
-		oneatenfn = function(inst, eater)
-			if inst:HasTag("preparedrink_cup") then
-				returncup(inst, eater)
-			else
-				returnbottle(inst, eater)
-			end
-		end,
 	},
 	
 	lotusflower =
@@ -640,13 +483,6 @@ local drinks =
 		perishtime = TUNING.PERISH_MED,
 		cooktime = TUNING.KETTLE_DECORATION,
 		--potlevel = "high",
-		oneatenfn = function(inst, eater)
-			if inst:HasTag("preparedrink_cup") then
-				returncup(inst, eater)
-			else
-				returnbottle(inst, eater)
-			end
-		end,
 	},
 	
 	--일시적으로 유령으로 만드는 차[추가해야함]
@@ -662,12 +498,6 @@ local drinks =
 		cooktime = TUNING.KETTLE_ABI,
 		--potlevel = "high",
 		oneatenfn = function(inst, eater)
-			if inst:HasTag("preparedrink_cup") then
-				returncup(inst, eater)
-			else
-				returnbottle(inst, eater)
-			end
-
 			if not eater.components.health or eater.components.health:IsDead() or eater:HasTag("playerghost") then
 				return
 			elseif eater.components.debuffable and eater.components.debuffable:IsEnabled() then

@@ -87,7 +87,8 @@ local function MakePreparedCupDrink(data)
 	end
 
     local function DisplayNameFn(inst)
-        return subfmt( STRINGS.NAMES["CUP_ITEM"],{drink=STRINGS.NAMES[string.upper(basename)]})
+        local displayname = basename == "water" and "cleanwater" or basename
+        return subfmt( STRINGS.NAMES["CUP_ITEM"],{drink=STRINGS.NAMES[string.upper(displayname)]})
     end 
 
     local function DisplaySpiceNameFn(inst)
@@ -197,7 +198,10 @@ local function MakePreparedCupDrink(data)
         inst.components.edible.temperaturedelta = data.temperature or 0
         inst.components.edible.temperatureduration = data.temperatureduration or 0
         inst.components.edible.nochill = data.nochill or nil
-        inst.components.edible:SetOnEatenFn(data.oneatenfn)
+        inst.components.edible:SetOnEatenFn(function(inst, eater)
+            data.oneatenfn(inst, eater)
+            RefundItem(eater, "cup")
+        end)
 
         inst:AddComponent("inspectable")
         inst.wet_prefix = data.wet_prefix
@@ -212,10 +216,7 @@ local function MakePreparedCupDrink(data)
         inst:AddComponent("water")
         inst.components.water:SetWaterType(data.watertype or WATERTYPE.GENERIC)
         inst.components.water:SetOnTakenFn(OnTake)
-
-        inst:AddComponent("waterlevel")
-        inst.components.water:SetWaterType(data.watertype or WATERTYPE.GENERIC)
-        inst.components.water:SetOnTakenFn(OnTake)
+        inst.components.water.returnprefab = "cup"
 
 		inst:AddComponent("inventoryitem")
 		inst.replica.inventoryitem:SetImage("cup_"..name)
@@ -460,7 +461,10 @@ local function MakePreparedBottleDrink(data)
         inst.components.edible.temperaturedelta = data.temperature or 0
         inst.components.edible.temperatureduration = data.temperatureduration or 0
         inst.components.edible.nochill = data.nochill or nil
-        inst.components.edible:SetOnEatenFn(data.oneatenfn)
+        inst.components.edible:SetOnEatenFn(function(inst, eater)
+            data.oneatenfn(inst, eater)
+            RefundItem(eater, "messagebottleempty")
+        end)
 
         inst:AddComponent("inspectable")
         inst.wet_prefix = data.wet_prefix
@@ -476,18 +480,11 @@ local function MakePreparedBottleDrink(data)
             inst:AddTag("watercan")
         end
 
-        if inst:HasTag("common") then
-            inst:AddTag("watercan")
-
-            inst:AddComponent("water")
-            inst.components.water.watervalue = TUNING.BOTTLE_MAX_LEVEL
-           --inst.components.water.watertype = WATERTYPE[string.upper( _name == "water" and "clean" or _name == "salt" and "salty" or _name )]
-        end
-
-        --[[inst:AddComponent("water")
-        inst.components.water:SetWaterMax(TUNING.BOTTLE_MAX_LEVEL)
-        inst.components.water:SetWaterType(data.watertype or WATERTYPE.GENERIC)
-        inst.components.water:SetOnTakenFn(OnTake)]]--
+        inst:AddComponent("water")
+        inst.components.water.watervalue = TUNING.BOTTLE_MAX_LEVEL
+        --inst.components.water.watertype = WATERTYPE[string.upper( _name == "water" and "clean" or _name == "salt" and "salty" or _name )]
+        inst.components.water:SetOnTakenFn(OnTake)
+        inst.components.water.returnprefab = "messagebottleempty"
 
         inst:AddComponent("inventoryitem")
         inst.replica.inventoryitem:SetImage("bottle_"..name)

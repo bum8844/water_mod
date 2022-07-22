@@ -1,30 +1,10 @@
--- 비료 다쓰면 양동이 돌려주는 코드(아이템 스택 모드랑 쓰면 아이템이 제대로 반환 안되요)
-
-local function BackBucket(inst)
-	local refund = SpawnPrefab("bucket")
-	local owner = inst.components.inventoryitem ~= nil and inst.components.inventoryitem:GetGrandOwner() or nil
-	if owner ~= nil then
-		local container = owner.components.inventory or owner.components.container
-		local item = container:RemoveItem(inst, false) or inst
-		item:Remove()
-		container:GiveItem(refund, nil, owner:GetPosition())
-	else
-		refund.Transform:SetPosition(inst.Transform:GetWorldPosition())
-		local item =
-			inst.components.stackable ~= nil and
-			inst.components.stackable:IsStack() and
-			inst.components.stackable:Get() or
-			inst
-		item:Remove()
-	end
-end
-
+-- bum: Bucket-O-Poop now returns an Empty Bucket when depleted(uncompatible with those mods that makes everything stackable)
 AddPrefabPostInit("fertilizer", function(inst)
 	if not GLOBAL.TheWorld.ismastersim then
 		return inst
 	end
 	inst:DoTaskInTime(0, function()	
-		inst.components.finiteuses:SetOnFinished(BackBucket)
+        inst.components.finiteuses:SetOnFinished(function(inst) RefundItem(inst, "bucket") end)
 	end)
 end)
 
@@ -143,7 +123,7 @@ local function MakeBottle(inst)
 	inst.components.fillable.acceptsoceanwater = true
 end
 
-AddPrefabPostInit("messagebottleempty",MakeBottle)
+AddPrefabPostInit("messagebottleempty", MakeBottle)
 
 local function OnGivenItemWater(inst, giver, item, ...)
 	if item.prefab == "bucket_ice" then
@@ -173,7 +153,7 @@ for _, v in pairs(TUNING.CLEANSOURCE) do
 	AddPrefabPostInit(v, function(inst) inst:AddTag("cleanwater") end)
 end
 
--- bum: 이 코드가 말리기 위해 추가한 코드임
+-- bum: This makes tea leaves dryable.
 -- AFS: dryer:StartDrying calls dryable.components.perishable:GetPercent(), so we need to add such hack to
 -- make the objects without dryable on the rack (tea leaves, in this case).
 AddComponentPostInit("dryer", function(self)
@@ -232,7 +212,7 @@ AddComponentPostInit("compostingbin",function(self)
 end)
 
 
--- 목마름을 채우기 위해 추가한 코드 352부터 413까지
+-- bum: when you eat foods, you can restore thirst.
 AddComponentPostInit("eater", function(self)
 	self.thirstabsorption = 1
 	local _Eat = self.Eat
@@ -268,17 +248,24 @@ AddComponentPostInit("eater", function(self)
 	end
 end)
 
+local function GetThirstFromHungerValue(self)
+	local mult = (self.inst:HasTag("preparedfood") and 0.25) or 1
+	local thirstvalue = RoundBiasedUp(self.hungervalue * 2 ^ (math.abs(self.hungervalue / 300) - 1), 4) * mult
+	print("Thirstvalue: "..tostring(thirstvalue))
+    return thirstvalue
+end
+
 AddComponentPostInit("edible", function(self)
     self.isdrink = false
+    --self.waterpersip = 10
+    --self.thirstvalue = 0
+    --AFS: If thirstvalue is not assigned, it will be automatically calculated.
 
-    function self:GetThirstFromHungerValue()
-        local mult = self.inst:HasTag("preparedfood") and 0.5 or 1
-        return GLOBAL.RoundBiasedUp(self.hungervalue * 2 ^ (math.abs(self.hungervalue / 300) - 1), 4) * mult
-    end
+    self.GetThirstFromHungerValue = GetThirstFromHungerValue
 
     function self:GetThirst(eater)
-    	local multiplier = 1
         local thirst = self.thirstvalue or self:GetThirstFromHungerValue()
+        local multiplier = 1
         local ignore_spoilage = not self.degrades_with_spoilage or thirst < 0 or (eater ~= nil and eater.components.eater ~= nil and eater.components.eater.ignoresspoilage)
 
         if not ignore_spoilage and self.inst.components.perishable ~= nil then
@@ -300,48 +287,6 @@ AddComponentPostInit("edible", function(self)
     end
 end)
 
--- 바닐라 코드쪽에서 일부 서순이 틀려서 패치했습니다 -_-
-local function fixfuelsmall(inst)
-	inst:RemoveComponent("tradable")
-	inst:RemoveComponent("fuel")
-
-	inst:AddComponent("fuel")
-	inst.components.fuel.fuelvalue = TUNING.SMALL_FUEL
-	inst:AddComponent("tradable")
-end
-
-local function fixfueltiny(inst)
-	inst:RemoveComponent("tradable")
-	inst:RemoveComponent("fuel")
-
-	inst:AddComponent("fuel")
-	inst.components.fuel.fuelvalue = TUNING.TINY_FUEL
-	inst:AddComponent("tradable")
-end
-
-function fixfuelyotb(inst) 
-	inst:RemoveComponent("tradable")
-	inst:RemoveComponent("fuel")
-
-	inst:AddComponent("fuel")
-	inst.components.fuel.fuelvalue = TUNING.SMALL_FUEL
-
-	inst:AddComponent("tradable")
-	inst.components.tradable.goldvalue = TUNING.GOLD_VALUES.YOTB_BEEFALO_DOLL
-end
-
-for _, v in pairs(TUNING.FIXFUELSMALL) do
-	AddPrefabPostInit(v, fixfuelsmall)
-end
-
-for _, v in pairs(TUNING.FIXFUELTINY) do
-	AddPrefabPostInit(v, fixfueltiny)
-end
-
-for _, v in pairs(TUNING.FIXYOTB) do
-	AddPrefabPostInit(v, fixfuelyotb)
-end
-
 --regrowth code
 AddComponentPostInit("regrowthmanager", function(self)
 	self:SetRegrowthForType("tea_tree", TUNING.EVERGREEN_REGROWTH.DESOLATION_RESPAWN_TIME, "tea_tree", function()
@@ -352,7 +297,7 @@ AddComponentPostInit("regrowthmanager", function(self)
 	end)
 end)
 
--- 어린이 보호(알콜음료 먹는거 방지 코드)
+-- bum: Child Safety: the "child" survivors can't drink alcohols.
 if GetModConfigData("child_safety") ~= 1 then
 	for _, v in pairs(TUNING.CHILDS) do
 		AddPrefabPostInit(v, function(inst) inst:AddTag("childplayer") end)
@@ -365,13 +310,13 @@ AddComponentPostInit("wisecracker",function(self, inst)
 	end)
 end)
 
--- 워톡스 계수
+-- Applying Absorption of Wortox
 AddPrefabPostInit("wortox",function(inst)
 	if inst.components.eater ~= nil then
 		inst.components.eater:SetThristAbsorption(.5)
 	end
 end)
-
+-- (WIP) Upgrade a Firepit with a Campfire Kettle!
 local function ItemTradeTest(inst, item)
 	if item == nil then
 		return false
@@ -513,11 +458,11 @@ local function ShowProduct(inst)
 end
 
 local function checkitem(inst)
-	return inst.components.stewer.ingredient_prefabs[2] == "spice_caffeinpepper" and true or false
+	return inst.components.stewer.ingredient_prefabs[2] == "spice_caffeinpepper"
 end
 
 local function checkname(inst)
-	return string.find(inst.components.stewer.product,"_spice_caffeinpepper") ~= nil and true or false
+	return string.find(inst.components.stewer.product,"_spice_caffeinpepper")
 end
 
 local function continuedonefn(inst)
@@ -559,4 +504,25 @@ AddPrefabPostInit("portablespicer", function(inst)
 	end
 	inst.components.stewer.oncontinuedone = continuedonefn
 	inst.components.stewer.ondonecooking = ondonecookingfn
+end)
+
+--Addding Percentage on items with the 'waterlevel' component
+AddClassPostConstruct("components/inventoryitem_replica", function(self)
+	local _SerializeUsage = self.SerializeUsage
+	function self:SerializeUsage()
+		_SerializeUsage(self)
+		self.classified:SerializePercentUsed(self.inst.components.waterlevel ~= nil and self.inst.components.waterlevel:GetPercent() or nil)
+	end
+end)
+
+AddClassPostConstruct("widgets/itemtile", function(self)
+	local _Refresh = self.Refresh
+	function self:Refresh()
+		_Refresh(self)
+		if self.ismastersim then
+			if self.item.components.waterlevel ~= nil then
+				self:SetPercent(self.item.components.waterlevel:GetPercent())
+			end
+		end
+	end
 end)

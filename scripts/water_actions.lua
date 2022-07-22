@@ -10,6 +10,8 @@ local SpawnPrefab = _G.SpawnPrefab
 local EQUIPSLOTS = _G.EQUIPSLOTS
 local FOODGROUP = _G.FOODGROUP
 local FOODTYPE = _G.FOODTYPE
+local WATERTYPE = _G.WATERTYPE
+local WATERGROUP = _G.WATERGROUP
 local GetGameModeProperty = _G.GetGameModeProperty
 local TheNet = _G.TheNet
 
@@ -25,30 +27,25 @@ local function ForceStopHeavyLifting(inst)
     end
 end
 
+local cook_stroverride = ACTIONS.COOK.stroverridefn or function(act) return end
 ACTIONS.COOK.stroverridefn = function(act)
-    if act.target:HasTag("kettle") then
-        return STRINGS.ACTIONS.BOIL
-    else
-        return act.target ~= nil and act.target:HasTag("spicer") and STRINGS.ACTIONS.SPICE or nil
-    end
+    return act.target:HasTag("kettle") and STRINGS.ACTIONS.BOIL or cook_stroverride(act)
 end
 
+local harvest_stroverride = ACTIONS.HARVEST.stroverridefn or function(act) return end
 ACTIONS.HARVEST.stroverridefn = function(act)
-    if act.target:HasTag("kettle") then
-        return STRINGS.ACTIONS.DRAIN
-    end
+    return act.target:HasTag("kettle") and STRINGS.ACTIONS.DRAIN or nil
 end
 
+local store_stroverride = ACTIONS.STORE.stroverridefn or function(act) return end
 ACTIONS.STORE.stroverridefn = function(act)
-    if act.target:HasTag("kettle") then
-        return STRINGS.ACTIONS.BOIL
-    end
+    return act.target:HasTag("kettle") and STRINGS.ACTIONS.BOIL or nil
 end
 
-ACTIONS.EAT.priority = 1
-ACTIONS.FILL.priority = 2
+--ACTIONS.EAT.priority = 1 기본적으로 priority가 명시되어 있지 않은 Action은 모두 priority = 0입니다. -AFS
+ACTIONS.FILL.priority = 1
 
-local FILL_BARREL = Action({priority=3})
+local FILL_BARREL = Action({priority=2})
 FILL_BARREL.id = "FILL_BARREL"
 FILL_BARREL.str = STRINGS.ACTIONS.FILL
 FILL_BARREL.fn = function(act)
@@ -59,7 +56,7 @@ end
 
 local MILKINGTOOL = Action({priority=2})
 MILKINGTOOL.id = "MILKINGTOOL"
-MILKINGTOOL.str = STRINGS.ACTIONS.DOMILKING
+MILKINGTOOL.str = STRINGS.ACTIONS.MILK
 MILKINGTOOL.fn = function(act)
     if act.invobject.components.milkingtool:IsCharged(act.target) then
         return act.invobject.components.milkingtool:DoMilking(act.target, act.doer)
@@ -77,10 +74,10 @@ local PURIFY = Action({priority=2, rmb=true})
     end
 end
 
-local DRINKING = Action({ mount_valid=true, priority=2})
-DRINKING.id = "DRINKING"
-DRINKING.str = STRINGS.ACTIONS.DRINKING
-DRINKING.fn = function(act)
+local DRINK = Action({ mount_valid=true, priority=2})
+DRINK.id = "DRINK"
+DRINK.str = STRINGS.ACTIONS.DRINK
+DRINK.fn = function(act)
     local obj = act.target or act.invobject
     if obj ~= nil then
         if obj.components.edible ~= nil and act.doer.components.eater ~= nil then
@@ -132,7 +129,7 @@ end
 
 AddAction(FILL_BARREL)
 AddAction(PURIFY)
-AddAction(DRINKING)
+AddAction(DRINK)
 AddAction(DRINKPLAYER)
 AddAction(MILKINGTOOL)
 
@@ -153,14 +150,24 @@ local function purify(inst, doer, target, actions)
 end
 
 local function waterlevel(inst, doer, target, actions)
-    for k, v in pairs(_G.WATERGROUP) do
-        print("For " .. tostring(v.name) .. " in " .. tostring(target) .. " : " .. tostring(target:HasTag(v.name.."_waterlevel")))
-        if target:HasTag(v.name.."_waterlevel") then
-            for l, w in ipairs(v.types) do
-                print("For " .. tostring(w) .. "in" .. tostring(inst) .. " : " .. tostring(inst:HasTag("water_"..w)))
-                if inst:HasTag("water_"..w) then
+    if target:HasTag("accepting_water") then
+        for k, v in pairs(WATERGROUP) do
+            if target:HasTag(v.name.."_waterlevel") then
+                for i, v2 in ipairs(v.types) do
+                    if inst:HasTag("water_"..v2) then
+                        table.insert(actions, ACTIONS.FILL_BARREL)
+                        return
+                    end
+                end
+            end
+        end
+        for k, v in pairs(WATERTYPE) do
+            --print("For " .. tostring(v) .. ": " .. tostring(inst:HasTag(v.."_water")) .. ", " .. tostring(target:HasTag(v.."_waterlevel")))
+            if inst:HasTag(v.."_water") then
+                if target:HasTag(v.."_waterlevel") then
                     table.insert(actions, ACTIONS.FILL_BARREL)
                 end
+                return
             end
         end
     end
@@ -247,7 +254,7 @@ local function drinking_inv(inst, doer, actions, right)
             if doer:HasTag(v.name.."_eater") then
                 for i, v2 in ipairs(v.types) do
                     if inst:HasTag("edible_"..v2) and inst:HasTag("drink") then
-                        table.insert(actions, ACTIONS.DRINKING)
+                        table.insert(actions, ACTIONS.DRINK)
                         return
                     end
                 end
@@ -256,7 +263,7 @@ local function drinking_inv(inst, doer, actions, right)
     end
     for k, v in pairs(FOODTYPE) do
         if inst:HasTag("edible_"..v) and inst:HasTag("drink") and doer:HasTag(v.."_eater") then
-            table.insert(actions, ACTIONS.DRINKING)
+            table.insert(actions, ACTIONS.DRINK)
             return
         end
     end
@@ -497,8 +504,8 @@ AddStategraphActionHandler("wilson", ActionHandler(ACTIONS.FILL_BARREL, "dolonga
 AddStategraphActionHandler("wilson_client", ActionHandler(ACTIONS.FILL_BARREL, "dolongaction"))
 AddStategraphActionHandler("wilson", ActionHandler(ACTIONS.PURIFY, "dolongaction"))
 AddStategraphActionHandler("wilson_client", ActionHandler(ACTIONS.PURIFY, "dolongaction"))
-AddStategraphActionHandler("wilson", ActionHandler(ACTIONS.DRINKING, "drinking"))
-AddStategraphActionHandler("wilson_client", ActionHandler(ACTIONS.DRINKING, "drinking"))
+AddStategraphActionHandler("wilson", ActionHandler(ACTIONS.DRINK, "drinking"))
+AddStategraphActionHandler("wilson_client", ActionHandler(ACTIONS.DRINK, "drinking"))
 AddStategraphActionHandler("wilson", ActionHandler(ACTIONS.DRINKPLAYER, "give"))
 AddStategraphActionHandler("wilson_client", ActionHandler(ACTIONS.DRINKPLAYER, "give"))
 AddStategraphActionHandler("wilson", ActionHandler(ACTIONS.MILKINGTOOL, "dolongaction"))

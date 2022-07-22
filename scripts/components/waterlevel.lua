@@ -1,4 +1,5 @@
---'waterlevel' is basically a modified version of 'fueled.'
+--'waterlevel' is basically a modified version of 'fueled'.
+--We couldn't use fuel directly because ACTIONS.ADDFUEL removes the fuel item from the owner during the work.
 
 local SourceModifierList = require("util/sourcemodifierlist")
 
@@ -47,7 +48,7 @@ local Waterlevel = Class(function(self, inst)
 
     self.accepting = false
     self.canaccepts = { WATERGROUP.OMNI }
-    --self.watertype = nil
+    self.watertype = nil
     self.sections = 1
     self.sectionfn = nil
     self.period = 1
@@ -78,9 +79,7 @@ function Waterlevel:OnSave()
 end
 
 function Waterlevel:OnLoad(data)
-    if data.item_watertype ~= nil then
-        self.item_watertype = data.item_watertype
-    end
+    self.watertype = data.watertype
     if data.waterlevel then
         self:InitializeWaterLevel(math.max(0, data.waterlevel)) 
     end
@@ -130,23 +129,22 @@ end
 
 function Waterlevel:TakeWaterItem(item, doer)
     if self:CanAccept(item) then
-        local watervalue = item.components.water ~= nil and item.components.water.watervalue or item.components.waterlevel.currentwater
+        local watervalue = item.components.waterlevel ~= nil and item.components.waterlevel.currentwater or item.components.water.watervalue
         self.watertype = item.components.water.watertype
 
         local oldsection = self:GetCurrentSection()
         self.oldcurrenwater = self.currentwater
 
-        local water_amount = math.min(item.components.waterlevel.currentwater, item.components.water.watervalue)
         self:DoDelta(watervalue, doer)
 
         local delta = self.currentwater - self.oldcurrentwater
 
         if item.components.water ~= nil then
-            item.components.water:Taken(self.inst, delta)
+            item.components.water:Taken(self.inst, -delta)
         end
 
         if self.ontakewaterfn ~= nil then
-            self.ontakewaterfn(self.inst, water_amount)
+            self.ontakewaterfn(self.inst)
         end
         self.inst:PushEvent("takewater", { watervalue = watervalue })
 
@@ -209,6 +207,7 @@ function Waterlevel:InitializeWaterLevel(waterlevel)
         self.maxwater = waterlevel
     end
     self.currentwater = waterlevel
+    self:DoDelta(0) --forcing percentusedchange event callback
 
     local newsection = self:GetCurrentSection()
     if oldsection ~= newsection then

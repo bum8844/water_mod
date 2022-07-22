@@ -42,11 +42,11 @@ function Water:Taken(taker, amount)
     local refund = nil
     local uses = 0
     local delta = 0
-    local shouldreturn = true
+    local shouldrefund = true
 
     self.inst:PushEvent("watertaken", {taker = taker})
     if self.ontaken then
-        self.ontaken(self.inst, taker)
+        self.ontaken(self.inst, taker) --the entity might get removed in the 
     end
 
     if self.inst.components.waterlevel ~= nil then
@@ -54,8 +54,7 @@ function Water:Taken(taker, amount)
         shouldreturn = self.inst.components.waterlevel:IsEmpty()
     end
     
-    if shouldreturn then
-        refund = SpawnPrefab(self.returnprefab)
+    if self.returnprefab ~= nil and shouldrefund then
         RefundItem(self.inst, refund)
     end
 end

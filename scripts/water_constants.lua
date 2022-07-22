@@ -1,0 +1,57 @@
+WATERTYPE =
+{
+	GENERIC = "GENERIC",
+	CLEAN = "CLEAN",
+	DIRTY = "DIRTY",
+	SALTY = "SALTY",
+	DRINK = "DRINK",
+	ROTTEN = "ROTTEN",
+}
+
+WATERGROUP =
+{
+	OMNI =
+	{
+		name = "OMNI",
+		types =
+		{
+			WATERTYPE.GENERIC,
+			WATERTYPE.CLEAN,
+			WATERTYPE.DIRTY,
+			WATERTYPE.SALTY,
+			WATERTYPE.DRINK,
+			WATERTYPE.ROTTEN,
+		}
+	},
+
+	RAW =
+	{
+		name = "RAW",
+		types =
+		{
+			WATERTYPE.DIRTY,
+			WATERTYPE.SALTY,
+			WATERTYPE.ROTTEN,
+		},
+	},
+
+	DRINKABLE =
+	{
+		name = "DRINKABLE",
+		types =
+		{
+			WATERTYPE.GENERIC,
+			WATERTYPE.CLEAN,
+			WATERTYPE.DRINK,
+		},
+	},
+
+	BOILABLE = 
+	{
+		name = "BOILABLE",
+		types = {
+			WATERTYPE.CLEAN,
+			WATERTYPE.DIRTY,
+		},
+	},
+}

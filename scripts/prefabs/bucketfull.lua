@@ -1,8 +1,8 @@
 local bucketstates =
 {
-	{ name = "clean", anim = "full", health = TUNING.HEALING_TINY, sanity = -TUNING.SANITY_SMALL, hunger = 0, thirst = TUNING.HYDRATION_TINY },
-	{ name = "dirty", anim = "dirty", health = -TUNING.HEALING_TINY, sanity = -TUNING.SANITY_SMALL, hunger = 0, thirst = TUNING.HYDRATION_TINY },
-	{ name = "salty", anim = "salt", health = -TUNING.HEALING_SMALL, sanity = -TUNING.SANITY_SMALL, hunger = 0, thirst = TUNING.HYDRATION_SALT },
+	{ name = "CLEAN", anim = "full", health = TUNING.HEALING_TINY, sanity = -TUNING.SANITY_SMALL, hunger = 0, thirst = TUNING.HYDRATION_TINY },
+	{ name = "DIRTY", anim = "dirty", health = -TUNING.HEALING_TINY, sanity = -TUNING.SANITY_SMALL, hunger = 0, thirst = TUNING.HYDRATION_TINY },
+	{ name = "SALTY", anim = "salt", health = -TUNING.HEALING_SMALL, sanity = -TUNING.SANITY_SMALL, hunger = 0, thirst = TUNING.HYDRATION_SALT },
 }
 
 local prefabs =
@@ -12,16 +12,11 @@ local prefabs =
 
 local function oneaten(inst, eater)
 	local x, y, z = inst.Transform:GetWorldPosition()
-	inst.components.finiteuses:Use(2)
-	local uses = inst.components.finiteuses:GetUses()
+	inst.components.waterlevel:DoDelta(-TUNING.WATERLEVEL_PER_SIP)
 
-	local item = nil
-	if uses > 0 then
-		item = SpawnPrefab(inst.prefab)
-		item.components.finiteuses:SetUses(uses)
-	else
-		item = SpawnPrefab("bucket")
-	end
+	local percent = inst.components.waterlevel:GetPercent()
+	local item = SpawnPrefab(inst.prefab)
+	item.components.waterlevel:SetPercent(percent)
 
 	inst:Remove()
 
@@ -31,11 +26,9 @@ local function oneaten(inst, eater)
 		item.Transform:SetPosition(x,y,z)
 	end
 
-	if eater:HasTag("player") then
-		local old_moisture = eater.components.moisture.moisture
-		eater.components.moisture.moisture = old_moisture + TUNING.BUCKET_DRINK_WET
+	if eater.components.moisture ~= nil then
+		eater.components.moisture:DoDelta(TUNING.BUCKET_DRINK_WET)
 	end
-
 end
 
 local function onuse(inst)
@@ -113,7 +106,7 @@ local function MakeBucket(data)
 			Asset("ATLAS_BUILD", "images/tea_inventoryitem.xml", 256),
 		}
 	
-	local name = data.name
+	local name = string.lower(data.name)
 	local anim = data.anim
 
 	local function DisplayNameFn(inst)
@@ -159,10 +152,15 @@ local function MakeBucket(data)
 		inst.replica.inventoryitem:SetImage("bucket_"..name)
 		inst.components.inventoryitem.atlasname = "images/tea_inventoryitem.xml"
 		inst.components.inventoryitem.imagename = "bucket_"..anim
+
+		inst:AddComponent("waterlevel")
+		inst.components.waterlevel:InitializeWaterLevel(TUNING.BUCKET_MAX_LEVEL)
+		inst.components.waterlevel.watertype = WATERTYPE[data.name]
 		
 		inst:AddComponent("water")
 		inst.components.water:SetWaterType(WATERTYPE[string.upper(name)])
 		inst.components.water:SetOnTakenFn(OnTake)
+		inst.components.water.returnprefab = "bucket"
 
 		if name ~= "salty" then
 			inst:AddTag("icebox_valid")
@@ -170,11 +168,6 @@ local function MakeBucket(data)
 			inst:AddComponent("watersource")
 			inst.components.watersource.onusefn = onuse
 		end
-
-		--finiteuses for managing how many times bucket can be drank.
-		inst:AddComponent("finiteuses")
-		inst.components.finiteuses:SetMaxUses(TUNING.BUCKET_MAX_LEVEL)
-		inst.components.finiteuses:SetUses(TUNING.BUCKET_MAX_LEVEL)
 
 		inst:AddComponent("edible")
 		inst.components.edible.thirstvalue = data.thirst
