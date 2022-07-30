@@ -23,7 +23,7 @@ local function OnFill(inst, from_object)
 				watertype = "DIRTY"
 			end
 		else
-			watertype = "CLEAN"
+			watertype = "WATER"
 		end
 		if from_object.components.stewer ~= nil and from_object.components.stewer.product ~= nil and from_object.components.stewer.product ~= "saltrock" then
 			watertype = from_object.components.stewer.product
@@ -112,7 +112,7 @@ local function FillByRain(inst)
 	local filleditem
     inst.rainfilling = 0
 	inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/small")
-	if inst.components.stackable.stacksize > 1 then
+	if inst.components.stackable:StackSize() > 1 then
 	    filleditem = SpawnPrefab("cup_water")
 		filleditem.Transform:SetPosition(inst.Transform:GetWorldPosition())
 		inst.components.stackable:Get():Remove()
@@ -136,12 +136,12 @@ local function fn()
     inst.AnimState:SetBuild("kettle_drink")
     inst.AnimState:SetBank("kettle_drink")
     inst.AnimState:PlayAnimation("idle")
-	inst.AnimState:OverrideSymbol("swap","kettle_drink","cup_empty")
+	inst.AnimState:OverrideSymbol("swap","kettle_drink","cup")
 
     inst.entity:SetPristine()
 	
-	inst:AddTag("fil_cup")
-	inst:AddTag("emptiy")
+	--inst:AddTag("fil_cup")
+	--inst:AddTag("emptiy")
 
     if not TheWorld.ismastersim then
         return inst
@@ -174,9 +174,6 @@ local function fn()
 	inst:AddComponent("tradable")
 
     inst:AddComponent("inventoryitem")
-    inst.replica.inventoryitem:SetImage("cup")
-	inst.components.inventoryitem.atlasname= "images/tea_inventoryitem.xml"
-    inst.components.inventoryitem.imagename= "cup_empty"
 
     MakeHauntableLaunchAndSmash(inst)
 

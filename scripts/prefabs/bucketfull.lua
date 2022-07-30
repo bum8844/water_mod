@@ -5,31 +5,15 @@ local bucketstates =
 	{ name = "SALTY", anim = "salt", health = -TUNING.HEALING_SMALL, sanity = -TUNING.SANITY_SMALL, hunger = 0, thirst = TUNING.HYDRATION_SALT },
 }
 
+local assets =
+{
+	Asset("ANIM", "anim/buckets.zip"),
+}
+
 local prefabs =
 {
 	"bucket_ice",
 }
-
-local function oneaten(inst, eater)
-	local x, y, z = inst.Transform:GetWorldPosition()
-	inst.components.waterlevel:DoDelta(-TUNING.WATERLEVEL_PER_SIP)
-
-	local percent = inst.components.waterlevel:GetPercent()
-	local item = SpawnPrefab(inst.prefab)
-	item.components.waterlevel:SetPercent(percent)
-
-	inst:Remove()
-
-	if eater ~= nil and eater.components.inventory ~= nil and eater:HasTag("player") then
-		eater.components.inventory:GiveItem(item)
-	else
-		item.Transform:SetPosition(x,y,z)
-	end
-
-	if eater.components.moisture ~= nil then
-		eater.components.moisture:DoDelta(TUNING.BUCKET_DRINK_WET)
-	end
-end
 
 local function onuse(inst)
 	
@@ -97,70 +81,61 @@ local function OnTake(inst, taker)
 	end
 end
 
+local function commonfn(name, anim)
+	local inst = CreateEntity()
+
+	inst.entity:AddTransform()
+	inst.entity:AddAnimState()
+	inst.entity:AddSoundEmitter()
+	inst.entity:AddNetwork()
+
+	MakeInventoryPhysics(inst)
+
+	inst.AnimState:SetBuild("buckets")
+	inst.AnimState:SetBank("buckets")
+	inst.AnimState:PlayAnimation(anim)
+
+	inst:AddTag("pre-preparedfood")
+	inst:AddTag("drink")
+
+	inst.entity:SetPristine()
+
+	if not TheWorld.ismastersim then
+		return inst
+	end
+
+	inst:AddComponent("inspectable")
+
+	inst:AddComponent("tradable")
+
+	inst:AddComponent("inventoryitem")
+
+	inst:AddComponent("waterlevel")
+	inst.components.waterlevel:InitializeWaterLevel(TUNING.BUCKET_MAX_LEVEL)
+
+	inst:AddComponent("water")
+	inst.components.water.returnprefab = "bucket"
+
 local function MakeBucket(data)
-	local assets =
-		{
-			Asset("ANIM", "anim/buckets.zip"),
-			Asset("IMAGE", "images/tea_inventoryitem.tex"),
-			Asset("ATLAS", "images/tea_inventoryitem.xml"),
-			Asset("ATLAS_BUILD", "images/tea_inventoryitem.xml", 256),
-		}
-	
-	local name = string.lower(data.name)
+	local name = "bucket_"..string.lower(data.name)
 	local anim = data.anim
 
-	local function DisplayNameFn(inst)
-		return subfmt( STRINGS.NAMES["BUCKET_FULL"],{drink=STRINGS.NAMES[string.upper(name)]})
-	end
-	
     local function fn()
-		local inst = CreateEntity()
+    	inst:AddTag("watercan")
 
-		inst.entity:AddTransform()
-		inst.entity:AddAnimState()
-		inst.entity:AddSoundEmitter()
-		inst.entity:AddNetwork()
 
-		MakeInventoryPhysics(inst)
-
-		inst.AnimState:SetBuild("buckets")
-		inst.AnimState:SetBank("buckets")
-		inst.AnimState:PlayAnimation(anim)
-
-		inst:AddTag("pre-preparedfood")
-		inst:AddTag("drink")
-
-		inst.displaynamefn = DisplayNameFn
-
-		inst.entity:SetPristine()
-
-		if not TheWorld.ismastersim then
-			return inst
-		end
-
-		inst:AddComponent("inspectable")
-
-		inst:AddTag("show_spoilage")
 		
-		inst:AddTag("bucket")
-		inst:AddTag("watercan")
 
-		inst:AddComponent("tradable")
-		inst:AddComponent("temperature")
-		
-		inst:AddComponent("inventoryitem")
 		inst.replica.inventoryitem:SetImage("bucket_"..name)
 		inst.components.inventoryitem.atlasname = "images/tea_inventoryitem.xml"
 		inst.components.inventoryitem.imagename = "bucket_"..anim
 
-		inst:AddComponent("waterlevel")
-		inst.components.waterlevel:InitializeWaterLevel(TUNING.BUCKET_MAX_LEVEL)
+
 		inst.components.waterlevel.watertype = WATERTYPE[data.name]
 		
 		inst:AddComponent("water")
-		inst.components.water:SetWaterType(WATERTYPE[string.upper(name)])
 		inst.components.water:SetOnTakenFn(OnTake)
-		inst.components.water.returnprefab = "bucket"
+		
 
 		if name ~= "salty" then
 			inst:AddTag("icebox_valid")

@@ -70,12 +70,12 @@ local function OnTake(inst, taker)
 end
 
 local function MakePreparedCupDrink(data)
-
     local name = data.name
     local prefabs = data.prefabs
     local overridebuild = data.overridebuild
     local basename = data.basename ~= nil and data.basename or data.name
     local spice = nil
+    local oneaten = data.oneaten or function(inst, eater) end
 
 	local drinkassets =
 	{
@@ -199,7 +199,7 @@ local function MakePreparedCupDrink(data)
         inst.components.edible.temperatureduration = data.temperatureduration or 0
         inst.components.edible.nochill = data.nochill or nil
         inst.components.edible:SetOnEatenFn(function(inst, eater)
-            data.oneatenfn(inst, eater)
+            oneaten(inst, eater)
             RefundItem(eater, "cup")
         end)
 
@@ -335,6 +335,7 @@ local function MakePreparedBottleDrink(data)
     local overridebuild = data.overridebuild
     local basename = data.basename ~= nil and data.basename or data.name
     local spice = nil
+    local oneaten = data.oneaten or function(inst, eater) end
 
 	local drinkassets =
 	{
@@ -462,7 +463,7 @@ local function MakePreparedBottleDrink(data)
         inst.components.edible.temperatureduration = data.temperatureduration or 0
         inst.components.edible.nochill = data.nochill or nil
         inst.components.edible:SetOnEatenFn(function(inst, eater)
-            data.oneatenfn(inst, eater)
+            oneaten(inst, eater)
             RefundItem(eater, "messagebottleempty")
         end)
 

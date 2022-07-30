@@ -1,36 +1,3 @@
-local function returnbottle(inst, eater)
-	local x, y, z = inst.Transform:GetWorldPosition()
-	inst.components.finiteuses:Use()
-	local uses = inst.components.finiteuses:GetUses()
-
-	local refund = nil
-	if uses > 0 then
-		refund = SpawnPrefab(inst.prefab)
-		refund.components.finiteuses:SetUses(uses)
-	else
-		refund = SpawnPrefab("messagebottleempty")
-	end
-
-	inst:Remove()
-
-	if eater ~= nil and eater.components.inventory ~= nil and eater:HasTag("player") then
-		eater.components.inventory:GiveItem(refund, nil, Vector3(x, y, z))
-	else
-		refund.Transform:SetPosition(x,y,z)
-	end
-end
-
-
-local function returncup(inst, eater)
-	local x, y, z = inst.Transform:GetWorldPosition()
-	local refund = SpawnPrefab("cup")
-	if eater ~= nil and eater.components.inventory ~= nil and eater:HasTag("player") then
-		eater.components.inventory:GiveItem(refund, nil, Vector3(x, y, z))
-	else
-		refund.Transform:SetPosition(x,y,z)
-	end
-end
-
 local function dummy(boiler, name, tags)
 	return false
 end
@@ -41,53 +8,6 @@ end
 
 local drinks =
 {
-	
-	-- 기본 물
-	-- 다른 차를 만들 경우 같은 아이템을 2개 넣어야함
-	spoiled =
-	{
-		test = dummy,
-		priority = -2,
-		health = TUNING.SPOILED_HEALTH,
-		hunger = TUNING.SPOILED_HUNGER,
-		sanity = TUNING.SANITY_POISON,
-		thirst = TUNING.HYDRATION_POISON,
-		watertype = WATERTYPE.ROTTEN,
-	},
-	water =
-	{
-		test = dummy,
-		priority = 0,
-		health = TUNING.HEALING_TINY,
-		hunger = TUNING.DRINK_CALORIES,
-		sanity = 0,
-		thirst = TUNING.HYDRATION_SMALLTINY,
-		tags = {"common","clean"},
-		watertype = WATERTYPE.CLEAN,
-	},
-	
-	dirty =
-	{
-		test = dummy,
-		priority = 0,
-		health = -TUNING.HEALING_TINY,
-		hunger = TUNING.DRINK_CALORIES,
-		sanity = 0,
-		thirst = TUNING.HYDRATION_SMALLTINY,
-		tags = {"common","dirty","purify"},
-		watertype = WATERTYPE.DIRTY,
-	},
-	salt =
-	{
-		test = dummy,
-		priority = 0,
-		health = -TUNING.HEALING_SMALL,
-		hunger = -TUNING.DRINK_CALORIES,
-		sanity = 0,
-		thirst = TUNING.HYDRATION_SALT,
-		tags = {"common","salty"},
-		watertype = WATERTYPE.SALTY,
-	},
 	-- 조합법이 잘못되면 나오는 결과물
 	garbage = 
 	{
@@ -431,7 +351,7 @@ local drinks =
 	},
 	
 	-- 꽃을 섞으면 나오는 결과물
-	mixflower =
+	MIXFLOWERTEA =
 	{
 		test = function(boilier, names, tags) return tags.decoration and tags.decoration >= 2 and notmeat(tags) end,
 		priority = 0,
@@ -508,7 +428,7 @@ local drinks =
 				TheNet:Announce(""..eater:GetDisplayName().." drank ".. drink_name ..", and became a ghost for "..TUNING.GHOST_TIME.." seconds!")
 				eater.components.health:DoDelta(-10000, nil, "death_by_tea")
 				eater:DoTaskInTime(TUNING.GHOST_TIME, function()
-			        TheNet:Announce(""..eater:GetDisplayName().."'s ghost effect ended. Respawning!")
+			        TheNet:Announce(eater:GetDisplayName().."'s ghost effect ended. Respawning!")
 			        eater:PushEvent("respawnfromghost", { source = eater })
 			        eater:DoTaskInTime(1,function()
 						eater.components.health.currenthealth = currenthealth

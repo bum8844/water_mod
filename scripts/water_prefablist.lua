@@ -1,24 +1,26 @@
 return {
 	--items
 	"bucket",
-	"bucketfull",
+	--"bucketfull",
 	"bucketice",
 	"cup",
+	"cupfull",
 	"purification_tablets",
 
 	--structures
 	"barrel",
-	"brewery",
+	--"brewery",
 	"campkettle",
 	"desalinator",
-	"kettle",
-	"portablekettle",
+	--"kettle",
+	--"portablekettle",
 	"well",
 	"well_drilling",
 
 	--food & plants
 	"caffeinberry",
-	"preparedrink",
+	--"prepareddrink",
+	"spoiled_drink",
 	"tea_tree",
 	"tea_seed",
 	"water_spicedfoods",

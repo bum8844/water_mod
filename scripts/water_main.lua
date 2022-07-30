@@ -8,123 +8,6 @@ AddPrefabPostInit("fertilizer", function(inst)
 	end)
 end)
 
-local function MakeBottle(inst)
-
-	inst.entity:AddSoundEmitter()
-	
-	local function OnFill(inst, from_object)
-		local filleditem, watertype = nil, nil
-		if from_object ~= nil then
-			if not from_object:HasTag("cleanwater") then
-				if from_object.components.waterlevel ~= nil then
-					watertype = from_object.components.waterlevel.watertype
-				elseif from_object.components.water ~= nil then
-					watertype = from_object.components.water.watertype
-				else
-					watertype = "DIRTY"
-				end
-			else
-				watertype = "CLEAN"
-			end
-			if from_object.components.stewer ~= nil and from_object.components.stewer.product ~= nil and from_object.components.stewer.product ~= "saltrock" then
-				watertype = from_object.components.stewer.product
-			end
-
-			filleditem = SpawnPrefab("bottle_"..string.lower(watertype == "CLEAN" and "water" or watertype))
-
-			if from_object.components.waterlevel ~= nil then
-				local dodelta = from_object.components.waterlevel.currentwater < TUNING.BOTTLE_MAX_LEVEL and from_object.components.waterlevel.currentwater or TUNING.BOTTLE_MAX_LEVEL
-				from_object.components.waterlevel:DoDelta(-dodelta)
-				filleditem.components.finiteuses:SetUses(dodelta)
-			end
-			if from_object.components.finiteuses ~= nil then
-				local uses = from_object.components.finiteuses:GetUses()
-
-				if uses > TUNING.BOTTLE_MAX_LEVEL then
-					uses = uses - TUNING.BOTTLE_MAX_LEVEL
-					filleditem.components.finiteuses:SetUses(TUNING.BOTTLE_MAX_LEVEL)
-				else
-					filleditem.components.finiteuses:SetUses(uses)
-					uses = 0
-				end
-
-				local refund = nil
-				if uses > 0 then
-					refund = SpawnPrefab(from_object.prefab)
-					refund.components.finiteuses:SetUses(uses)
-				else
-					refund = SpawnPrefab("bucket")
-				end
-
-				filleditem.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/medium")
-
-				local owner = from_object.components.inventoryitem ~= nil and from_object.components.inventoryitem:GetGrandOwner() or nil
-				if owner ~= nil then
-					local container = owner.components.inventory or owner.components.container
-					local item = container:RemoveItem(from_object, false) or from_object
-					item:Remove()
-					container:GiveItem(refund, nil, owner:GetPosition())
-				else
-					refund.Transform:SetPosition(from_object.Transform:GetWorldPosition())
-					local item =
-						from_object.components.stackable ~= nil and
-						from_object.components.stackable:IsStack() and
-						from_object.components.stackable:Get() or
-						from_object
-					item:Remove()
-				end
-			end
-			if from_object.components.stewer ~= nil then
-				if from_object.components.waterlevel.currentwater == 0 then
-					from_object.components.stewer.product = nil
-					from_object.components.stewer:Harvest()
-				end
-			end
-		else
-			filleditem = SpawnPrefab("bottle_salt")
-		end
-
-		if from_object ~= nil then
-			from_object.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/medium")
-		else
-			filleditem.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/medium")
-		end
-		
-		if filleditem == nil then
-			return false
-		end
-
-		local owner = inst.components.inventoryitem ~= nil and inst.components.inventoryitem:GetGrandOwner() or nil
-		if owner ~= nil then
-			local container = owner.components.inventory or owner.components.container
-			local item = container:RemoveItem(inst, false) or inst
-			item:Remove()
-			container:GiveItem(filleditem, nil, owner:GetPosition())
-		else
-			source.Transform:SetPosition(inst.Transform:GetWorldPosition())
-			local item =
-				inst.components.stackable ~= nil and
-				inst.components.stackable:IsStack() and
-				inst.components.stackable:Get() or
-				inst
-			item:Remove()
-		end
-		inst:PushEvent("givewater",{inst = inst, from_object = from_object})
-		return true
-	end
-	inst:AddTag("fil_bottle")
-	inst:AddTag("emptiy")
-	
-	inst:AddComponent("tradable")
-
-	inst:AddComponent("fillable")
-	inst.components.fillable.overrideonfillfn = OnFill
-	inst.components.fillable.showoceanaction = true
-	inst.components.fillable.acceptsoceanwater = true
-end
-
-AddPrefabPostInit("messagebottleempty", MakeBottle)
-
 local function OnGivenItemWater(inst, giver, item, ...)
 	if item.prefab == "bucket_ice" then
 		inst:PushEvent("onacceptfighttribute", { tributer = giver, trigger = "freeze" })
@@ -179,7 +62,7 @@ AddComponentPostInit("stewer",function(self)
 	end
 end)
 
-AddComponentPostInit("compostingbin",function(self)
+--[[AddComponentPostInit("compostingbin",function(self)
 	local _AddCompostable = self.AddCompostable
 
 	function self:AddCompostable(item, ...)
@@ -209,7 +92,7 @@ AddComponentPostInit("compostingbin",function(self)
 		local result = _AddCompostable(self, item, ...)
 		return result
 	end
-end)
+end)]]
 
 
 -- bum: when you eat foods, you can restore thirst.
@@ -298,7 +181,7 @@ AddComponentPostInit("regrowthmanager", function(self)
 end)
 
 -- bum: Child Safety: the "child" survivors can't drink alcohols.
-if GetModConfigData("child_safety") ~= 1 then
+if GetModConfigData("child_safety") then
 	for _, v in pairs(TUNING.CHILDS) do
 		AddPrefabPostInit(v, function(inst) inst:AddTag("childplayer") end)
 	end

@@ -1,36 +1,3 @@
-local function returnbottle(inst, eater)
-	local x, y, z = inst.Transform:GetWorldPosition()
-	inst.components.finiteuses:Use()
-	local uses = inst.components.finiteuses:GetUses()
-
-	local refund = nil
-	if uses > 0 then
-		refund = SpawnPrefab(inst.prefab)
-		refund.components.finiteuses:SetUses(uses)
-	else
-		refund = SpawnPrefab("messagebottleempty")
-	end
-
-	inst:Remove()
-
-	if eater ~= nil and eater.components.inventory ~= nil and eater:HasTag("player") then
-		eater.components.inventory:GiveItem(refund, nil, Vector3(x, y, z))
-	else
-		refund.Transform:SetPosition(x,y,z)
-	end
-end
-
-
-local function returncup(inst, eater)
-	local x, y, z = inst.Transform:GetWorldPosition()
-	local refund = SpawnPrefab("cup")
-	if eater ~= nil and eater.components.inventory ~= nil and eater:HasTag("player") then
-		eater.components.inventory:GiveItem(refund, nil, Vector3(x, y, z))
-	else
-		refund.Transform:SetPosition(x,y,z)
-	end
-end
-
 local function alcahol(inst, eater)
 	if not eater.components.health or eater.components.health:IsDead() or eater:HasTag("playerghost") then
 		return
@@ -75,13 +42,6 @@ local drinks =
 		thirst = TUNING.HYDRATION_POISON,
 		cooktime = TUNING.INCORRECT_BOIL,
 		watertype = WATERTYPE.ROTTEN,
-		oneatenfn = function(inst, eater)
-			if inst:HasTag("preparedrink_cup") then
-				returncup(inst, eater)
-			else
-				returnbottle(inst, eater)
-			end
-		end,
 	},
 	
 	-- 탄산수 만들때 필수적으로 refined_dust 첨가
@@ -96,13 +56,6 @@ local drinks =
 		thirst = TUNING.HYDRATION_LARGE,
 		perishtime = TUNING.PERISH_PRESERVED,
 		cooktime = (TUNING.KETTLE_DECORATION + TUNING.SODA_WAIT),
-		oneatenfn = function(inst, eater)
-			if inst:HasTag("preparedrink_cup") then
-				returncup(inst, eater)
-			else
-				returnbottle(inst, eater)
-			end
-		end,
 	},
 	
 	-- 과일 탄산수
@@ -116,13 +69,6 @@ local drinks =
 		thirst = TUNING.HYDRATION_LARGE,
 		perishtime = TUNING.PERISH_PRESERVED,
 		cooktime = (TUNING.KETTLE_DECORATION + TUNING.SODA_WAIT),
-		oneatenfn = function(inst, eater)
-			if inst:HasTag("preparedrink_cup") then
-				returncup(inst, eater)
-			else
-				returnbottle(inst, eater)
-			end
-		end,
 	},
 	
 	-- 로얄젤리만 넣을경우(치유효과)
@@ -137,11 +83,6 @@ local drinks =
 		perishtime = TUNING.PERISH_PRESERVED,
 		cooktime = (TUNING.KETTLE_LUXURY_GOODS + TUNING.SODA_WAIT),
 		oneatenfn = function(inst, eater)
-			if inst:HasTag("preparedrink_cup") then
-				returncup(inst, eater)
-			else
-				returnbottle(inst, eater)
-			end
 			if not eater.components.health or eater.components.health:IsDead() or eater:HasTag("playerghost") then
 				return
             else
@@ -161,12 +102,6 @@ local drinks =
 		perishtime = TUNING.PERISH_PRESERVED,
 		cooktime = (TUNING.KETTLE_LUXURY_GOODS + TUNING.SODA_WAIT),
 		oneatenfn = function(inst, eater)
-			if inst:HasTag("preparedrink_cup") then
-				returncup(inst, eater)
-			else
-				returnbottle(inst, eater)
-			end
-			
 			if not eater.components.health or eater.components.health:IsDead() or eater:HasTag("playerghost") then
 				return
 			else
@@ -196,12 +131,6 @@ local drinks =
 		perishtime = TUNING.PERISH_PRESERVED,
 		cooktime = (TUNING.KETTLE_LUXURY_GOODS + TUNING.SODA_WAIT),
 		oneatenfn = function(inst, eater)
-			if inst:HasTag("preparedrink_cup") then
-				returncup(inst, eater)
-			else
-				returnbottle(inst, eater)
-			end
-			
 			if not eater.components.health or eater.components.health:IsDead() or eater:HasTag("playerghost") then
 				return
             else
@@ -251,12 +180,6 @@ local drinks =
 		perishtime = TUNING.PERISH_SUPERSLOW,
 		cooktime = (TUNING.KETTLE_VEGGIE + TUNING.BEER_WAIT),
 		oneatenfn = function(inst, eater)
-			if inst:HasTag("preparedrink_cup") then
-				returncup(inst, eater)
-			else
-				returnbottle(inst, eater)
-			end
-
 			alcahol(inst, eater)
 		end,
 	},
@@ -273,12 +196,6 @@ local drinks =
 		perishtime = TUNING.PERISH_SUPERSLOW,
 		cooktime = (TUNING.KETTLE_VEGGIE + TUNING.BEER_WAIT),
 		oneatenfn = function(inst, eater)
-			if inst:HasTag("preparedrink_cup") then
-				returncup(inst, eater)
-			else
-				returnbottle(inst, eater)
-			end
-			
 			alcahol(inst, eater)
 		end,
 	},	
@@ -296,12 +213,6 @@ local drinks =
 		cooktime = (TUNING.KETTLE_FRUIT + TUNING.BEER_WAIT),
 		--potlevel = "small",
 		oneatenfn = function(inst, eater)
-			if inst:HasTag("preparedrink_cup") then
-				returncup(inst, eater)
-			else
-				returnbottle(inst, eater)
-			end
-			
 			alcahol(inst, eater)
 		end,
 	},
@@ -319,12 +230,6 @@ local drinks =
 		cooktime = (TUNING.KETTLE_FRUIT + TUNING.BEER_WAIT),
 		--potlevel = "small",
 		oneatenfn = function(inst, eater)
-			if inst:HasTag("preparedrink_cup") then
-				returncup(inst, eater)
-			else
-				returnbottle(inst, eater)
-			end
-			
 			alcahol(inst, eater)
 		end,
 	},
@@ -342,12 +247,6 @@ local drinks =
 		cooktime = (TUNING.KETTLE_FRUIT + TUNING.BEER_WAIT),
 		--potlevel = "small",
 		oneatenfn = function(inst, eater)
-			if inst:HasTag("preparedrink_cup") then
-				returncup(inst, eater)
-			else
-				returnbottle(inst, eater)
-			end
-			
 			alcahol(inst, eater)
 		end,
 	},
@@ -365,12 +264,6 @@ local drinks =
 		cooktime = (TUNING.KETTLE_FRUIT + TUNING.BEER_WAIT),
 		--potlevel = "small",
 		oneatenfn = function(inst, eater)
-			if inst:HasTag("preparedrink_cup") then
-				returncup(inst, eater)
-			else
-				returnbottle(inst, eater)
-			end
-
 			alcahol(inst, eater)
 	    end,
 	},
@@ -387,12 +280,6 @@ local drinks =
 		cooktime = (TUNING.KETTLE_VEGGIE + TUNING.BEER_WAIT),
 		--potlevel = "small",
 		oneatenfn = function(inst, eater)
-			if inst:HasTag("preparedrink_cup") then
-				returncup(inst, eater)
-			else
-				returnbottle(inst, eater)
-			end
-			
 			alcahol(inst, eater)
 		end,
 	}

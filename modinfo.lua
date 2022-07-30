@@ -84,8 +84,8 @@ configuration_options =
 		label = "Thirst Status",
 		options =
 		{
-			{description = "Enable", data = 0},
-			{description = "Disable", data = 1},
+			{description = "Enable", data = true},
+			{description = "Disable", data = false},
 		},
 		default = 0
 	},
@@ -180,8 +180,8 @@ configuration_options =
 		label = "Child Protection",
 		options =
 		{
-			{description = "yes", data = 0},
-			{description = "no", data = 1},
+			{description = "yes", data = true},
+			{description = "no", data = false},
 		},
 		default = 0
 	},
