@@ -4,7 +4,7 @@
 local SourceModifierList = require("util/sourcemodifierlist")
 
 local function clearcanaccepts(self, canaccepts)
-    for i, v in ipairs(accepts) do
+    for i, v in ipairs(canaccepts) do
         self.inst:RemoveTag((type(v) == "table" and v.name or v).."_waterlevel")
     end
 end
@@ -128,28 +128,31 @@ function Waterlevel:SetTakeWaterFn(fn)
 end
 
 function Waterlevel:TakeWaterItem(item, doer)
-    if self:CanAccept(item) then
-        local watervalue = item.components.waterlevel ~= nil and item.components.waterlevel.currentwater or item.components.water.watervalue
+    if not item:HasTag("water_empty") then
         self.watertype = item.components.water.watertype
-
-        local oldsection = self:GetCurrentSection()
-        self.oldcurrenwater = self.currentwater
-
-        self:DoDelta(watervalue, doer)
-
-        local delta = self.currentwater - self.oldcurrentwater
-
-        if item.components.water ~= nil then
-            item.components.water:Taken(self.inst, -delta)
-        end
-
-        if self.ontakewaterfn ~= nil then
-            self.ontakewaterfn(self.inst)
-        end
-        self.inst:PushEvent("takewater", { watervalue = watervalue })
-
-        return true
     end
+
+    local oldsection = self:GetCurrentSection()
+    self.oldcurrenwater = self.currentwater
+
+    local water = item.components.water:Watervalue()
+    if water ~= nil then
+        self:DoDelta(water, doer)
+    else
+        self:SetPercent(1)
+    end
+
+    local delta = self.currentwater - self.oldcurrentwater
+
+    item.components.water:Taken(self.inst, delta)
+
+    if self.ontakewaterfn ~= nil then
+        self.ontakewaterfn(self.inst)
+    end
+
+    self.inst:PushEvent("takewater", { watervalue = delta, watertype = self.watertype })
+
+    return true
 end
 
 function Waterlevel:GetDebugString()
@@ -284,6 +287,7 @@ function Waterlevel:TestType(item, testvalues)
 end
 
 function Waterlevel:CanAccept(item)
+    local canaccept, reason
     if self.watertype ~= nil and self.watertype ~= item.components.water.watertype then
         return false
     end

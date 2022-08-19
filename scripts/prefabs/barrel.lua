@@ -15,7 +15,7 @@ local prefabs =
 
 local function GetWet(inst)
 	if inst.components.waterlevel.currentwater > 0 and not inst:HasTag("burnt") then
-	    inst.components.wateryprotection.addwetness = (inst.components.waterlevel.currentwater * TUNING.WATER_BARREL_WETNESS)
+	    inst.components.wateryprotection.addwetness = (inst.components.waterlevel:GetPercent() * TUNING.WATER_BARREL_WETNESS)
 		SpawnPrefab("waterballoon_splash").Transform:SetPosition(inst.Transform:GetWorldPosition())
 		inst.SoundEmitter:KillSound("destroy")
 		inst.SoundEmitter:PlaySound("dontstarve/creatures/pengull/splash")
@@ -83,11 +83,6 @@ end
 end]]
 
 local function OnSectionChange(new, old, inst)
-	if new >= inst.components.waterlevel.sections then
-		inst.components.waterlevel.accepting = false
-	else
-		inst.components.waterlevel.accepting = true
-	end
 	if inst._waterlevel ~= new then
 		inst._waterlevel = new
 		inst.AnimState:OverrideSymbol("swap", "barrel_meter_water", tostring(new))
@@ -136,8 +131,7 @@ local function fn()
 	inst:AddComponent("waterlevel")
 	inst.components.waterlevel:SetDepletedFn(OnDepleted)
 	inst.components.waterlevel:SetTakeWaterFn(OnTakeWater)
-	inst.components.waterlevel:SetWaterType(WATERTYPE.CLEAN)
-
+	inst.components.waterlevel:SetCanAccepts({WATERTYPE.CLEAN, WATERTYPE.EMPTY})
 	inst.components.waterlevel.maxwater = TUNING.BARREL_MAX_LEVEL
 	inst.components.waterlevel.accepting = true
 	inst.components.waterlevel:SetSections(TUNING.BREWERY_SECTIONS)
@@ -145,7 +139,6 @@ local function fn()
 	inst.components.waterlevel:InitializeWaterLevel(0)
 
 	inst:AddComponent("watersource")
-	inst.components.watersource.available = false
 
 	inst:AddComponent("wateryprotection")
     inst.components.wateryprotection.extinguishheatpercent = TUNING.WATER_BARREL_EXTINGUISH_HEAT_PERCENT

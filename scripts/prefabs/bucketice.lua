@@ -18,29 +18,14 @@ local function OnWorked(inst, miner)
 end
 
 local function Changeitem(inst)
-    if inst.components.temperature.current >= 5 then
-        local refund = SpawnPrefab("bucket_clean")
-        refund.components.temperature.current = 5
-        inst.AnimState:PlayAnimation("turn_to_full")
-        inst.AnimState:PushAnimation("full")
-        inst:DoTaskInTime(2,function(inst)
-            local owner = inst.components.inventoryitem ~= nil and inst.components.inventoryitem:GetGrandOwner() or nil
-            if owner ~= nil then
-                local container = owner.components.inventory or owner.components.container
-                local item = container:RemoveItem(inst, false) or inst
-                item:Remove()
-                container:GiveItem(refund, nil, owner:GetPosition())
-            else
-                refund.Transform:SetPosition(inst.Transform:GetWorldPosition())
-                local item =
-                    inst.components.stackable ~= nil and
-                    inst.components.stackable:IsStack() and
-                    inst.components.stackable:Get() or
-                    inst
-                item:Remove()
-            end
-        end)
-    end
+    local water = SpawnPrefab("bucket_clean")
+    inst.AnimState:PlayAnimation("turn_to_full")
+    inst.AnimState:PushAnimation("full")
+    inst:DoTaskInTime(2, function(inst) RefundItem(inst, water) end)
+end
+
+local function SetInitialTemperature()
+    return TheWorld.state.temperature > TUNING.BUCKET_ICE_INITTEMP and TUNING.BUCKET_ICE_INITTEMP or TheWorld.state.temperature
 end
 
 local function fn()
@@ -76,13 +61,11 @@ local function fn()
 	inst.components.workable:SetOnFinishCallback(OnWorked)
 
     inst:AddComponent("inventoryitem")
-	inst.components.inventoryitem.atlasname = "images/tea_inventoryitem.xml"
-    inst.components.inventoryitem.imagename = "bucket_ice"
 
     inst:AddComponent("temperature")
-    inst.components.temperature.mintemp = TUNING.BUCKET_ICE_MINETEMP
+    inst.components.temperature.mintemp = TUNING.BUCKET_ICE_MINTEMP
     inst.components.temperature.maxtemp = TUNING.BUCKET_ICE_MAXTEMP
-    inst.components.temperature.current = TUNING.ICE_STARTING_TEMP
+    inst.components.temperature.current = SetInitialTemperature()
     inst:DoPeriodicTask(1, Changeitem)
 
 

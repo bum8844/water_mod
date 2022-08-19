@@ -1,5 +1,11 @@
 local function OnEaten(inst, eater)
-    RefundItem(inst, "cup", eater, true)
+    RefundItem(inst, "cup", true)
+end
+
+local function OnTake(inst, taker, delta)
+    for i=1,math.floor(delta/TUNING.CUP_MAX_LEVEL)+1 do
+        RefundItem(inst, cup)
+    end
 end
 
 local function MakeCup(name, masterfn, tags)
@@ -8,6 +14,7 @@ local function MakeCup(name, masterfn, tags)
         Asset("ANIM", "anim/kettle_drink.zip"),
         Asset("ANIM", "anim/kettle_drink_bottle.zip"),
     }
+
     local prefabs =
     {
         "cup",
@@ -45,23 +52,24 @@ local function MakeCup(name, masterfn, tags)
         end
 
         inst:AddComponent("edible")
-        inst.components.edible.foodtype = FOODTYPE.GOODIES
+        --inst.components.edible.foodtype = FOODTYPE.GOODIES
         inst.components.edible:SetOnEatenFn(OnEaten)
 
         inst:AddComponent("inspectable")
 
         inst:AddComponent("water")
         inst.components.water:SetWatervalue(TUNING.CUP_MAX_LEVEL)
-        --inst.components.water:SetOnTakenFn(OnTake)
-        inst.components.water.returnprefab = "cup"
+        inst.components.water:SetOnTakenFn(OnTake)
+        inst.components.returnprefab = "cup"
 
     	inst:AddComponent("inventoryitem")
 
         inst:AddComponent("stackable")
         inst.components.stackable.maxsize = TUNING.STACK_SIZE_SMALLITEM
 
-        MakeSmallBurnable(inst)
-        MakeSmallPropagator(inst)
+        --It's weird for a cup/bottle of water to burn, isn't it?
+        --MakeSmallBurnable(inst)
+        --MakeSmallPropagator(inst)
         MakeHauntableLaunchAndPerish(inst)
         MakeDynamicCupImage(inst, "swap", "kettle_drink")
 

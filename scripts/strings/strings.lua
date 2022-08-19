@@ -36,10 +36,10 @@ STRINGS.NAMES.BREWERY = "Brewery"
 STRINGS.RECIPE_DESC.BREWERY = "Can make delicious drinks. maybe?"
 
 -- buckets
-STRINGS.NAMES.BUCKET = "Bucket"
-STRINGS.RECIPE_DESC.BUCKET = "An empty bucket."
+STRINGS.NAMES.BUCKET_EMPTY = "Bucket"
+STRINGS.RECIPE_DESC.BUCKET_EMPTY = "An empty bucket."
 STRINGS.NAMES.BUCKET_CLEAN = "Bucket o' Water"
-STRINGS.NAMES.DIRTY = "Bucket o' Dirty Water"
+STRINGS.NAMES.BUCKET_DIRTY = "Bucket o' Dirty Water"
 STRINGS.NAMES.BUCKET_SALTY = "Bucket o' Salty Water"
 STRINGS.NAMES.BUCKET_ICE = "Ice Bucket"
 

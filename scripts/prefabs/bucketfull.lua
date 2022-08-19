@@ -12,76 +12,41 @@ local assets =
 
 local prefabs =
 {
+	"bucket",
 	"bucket_ice",
 }
 
-local function onuse(inst)
-	
-	if inst:HasTag("wateringcan") then
-		local refund = nil
-		local uses = inst.components.finiteuses:Use(5)
+local function ondepleted(inst)
+	RefundItem(inst, "bucket_empty")
+end
 
-		if uses > 0 then
-			refund = SpawnPrefab(inst.prefab)
-			refund.components.finiteuses:SetUses(uses)
-		else
-			refund = SpawnPrefab("bucket")
-		end
-		
-		local owner = inst.components.inventoryitem ~= nil and inst.components.inventoryitem:GetGrandOwner() or nil
-		if owner ~= nil then
-			local container = owner.components.inventory or owner.components.container
-			local item = container:RemoveItem(inst, false) or inst
-			item:Remove()
-			container:GiveItem(refund, nil, owner:GetPosition())
-		else
-			refund.Transform:SetPosition(inst.Transform:GetWorldPosition())
-			local item =
-				inst.components.stackable ~= nil and
-				inst.components.stackable:IsStack() and
-				inst.components.stackable:Get() or
-				inst
-			item:Remove()
-		end
+local function onwatering(inst)
+	inst.components.waterlevel:SetPercent(0)
+end
+
+local function FreezeBucket(inst)
+	inst.AnimState:PlayAnimation("turn_to_ice")
+	inst.AnimState:PushAnimation("ice")
+	local icebucket = SpawnPrefab("bucket_ice")
+	inst:DoTaskInTime(2, function(inst) RefundItem(inst, icebucket) end)
+end
+
+local function onpercentusedchange(inst, data)
+	if data ~= nil then
+		inst.components.watersource.override_fill_uses = math.ceil(data.percent * TUNING.PREMIUMWATERINGCAN_USES)
 	end
 end
 
-local function Changeitem(inst)
-	if inst.components.temperature.current <= 0 then
-		local refund = SpawnPrefab("bucket_ice")
-		inst.AnimState:PlayAnimation("turn_to_ice")
-		inst.AnimState:PushAnimation("ice")
-		inst:DoTaskInTime(2,function(inst)
-			local owner = inst.components.inventoryitem ~= nil and inst.components.inventoryitem:GetGrandOwner() or nil
-			if owner ~= nil then
-				local container = owner.components.inventory or owner.components.container
-				local item = container:RemoveItem(inst, false) or inst
-				item:Remove()
-				container:GiveItem(refund, nil, owner:GetPosition())
-			else
-				refund.Transform:SetPosition(inst.Transform:GetWorldPosition())
-				local item =
-					inst.components.stackable ~= nil and
-					inst.components.stackable:IsStack() and
-					inst.components.stackable:Get() or
-					inst
-				item:Remove()
-			end
-		end)
-	end
+local function ontake(inst)
+	inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/medium")
 end
 
-local function OnTake(inst, taker)
-    if inst.components.water.watervalue >= 15 then
-    	taker.SoundEmitter:PlaySound("dontstarve/creatures/pengull/splash")
-    elseif inst.components.water.watervalue >= 5 then
-    	taker.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/medium")
-	else
-    	taker.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/small")
-	end
+local function OnTaken(inst, taker, delta)
+	ontake(inst)
+	inst.components.waterlevel:DoDelta(-delta)
 end
 
-local function commonfn(name, anim)
+local function commonfn(anim, tags)
 	local inst = CreateEntity()
 
 	inst.entity:AddTransform()
@@ -96,7 +61,11 @@ local function commonfn(name, anim)
 	inst.AnimState:PlayAnimation(anim)
 
 	inst:AddTag("pre-preparedfood")
-	inst:AddTag("drink")
+	if tags ~= nil then
+		for k, v in ipairs(tags) do
+			inst:AddTag(v)
+		end
+	end
 
 	inst.entity:SetPristine()
 
@@ -112,65 +81,89 @@ local function commonfn(name, anim)
 
 	inst:AddComponent("waterlevel")
 	inst.components.waterlevel:InitializeWaterLevel(TUNING.BUCKET_MAX_LEVEL)
+	inst.components.waterlevel:SetDepletedFn(ondepleted)
+	inst.components.waterlevel:SetTakeWaterFn(ontake)
+
+	--[[inst:AddComponent("finiteuses")
+	inst.components.finiteuses:SetMaxUses(TUNING.BUCKET_MAX_LEVEL)
+	inst.components.finiteuses:SetUses(TUNING.BUCKET_MAX_LEVEL)
+	inst.components.finiteuses:SetOnFinished(ondepleted)]]
 
 	inst:AddComponent("water")
-	inst.components.water.returnprefab = "bucket"
+	inst.components.water:SetWatervalue(TUNING.BUCKET_MAX_LEVEL)
+	inst.components.water:SetOnTakenFn(OnTaken)
+	inst.components.water.returnprefab = "bucket_empty"
 
-local function MakeBucket(data)
-	local name = "bucket_"..string.lower(data.name)
-	local anim = data.anim
+	inst:AddComponent("wateryprotection")
+	inst.components.wateryprotection.extinguishheatpercent = TUNING.BUCKET_EXTINGUISH_HEAT_PERCENT
+	inst.components.wateryprotection.temperaturereduction = TUNING.BUCKET_TEMP_REDUCTION
+	inst.components.wateryprotection.witherprotectiontime = TUNING.BUCKET_PROTECTION_TIME
+	inst.components.wateryprotection.addwetness = TUNING.BUCKET_WATER_AMOUNT
+	inst.components.wateryprotection.protection_dist = TUNING.BUCKET_PROTECTION_DIST
+	inst.components.wateryprotection.onspreadprotectionfn = onwatering
 
-    local function fn()
-    	inst:AddTag("watercan")
+	MakeHauntableLaunchAndSmash(inst)
 
+	inst:AddComponent("watersource")
+	inst.components.watersource.onusefn = ondepleted
 
-		
+	inst:ListenForEvent("percentusedchange", onpercentusedchange)
 
-		inst.replica.inventoryitem:SetImage("bucket_"..name)
-		inst.components.inventoryitem.atlasname = "images/tea_inventoryitem.xml"
-		inst.components.inventoryitem.imagename = "bucket_"..anim
+	return inst
+end
 
+local function SetInitialTemperature(inst)
+	inst.components.temperature.current = TheWorld.state.temperature > TUNING.BUCKET_FULL_INITTEMP and TUNING.BUCKET_FULL_INITTEMP or TheWorld.state.temperature
+end
 
-		inst.components.waterlevel.watertype = WATERTYPE[data.name]
-		
-		inst:AddComponent("water")
-		inst.components.water:SetOnTakenFn(OnTake)
-		
+local function clean()
+	local inst = commonfn("full")
 
-		if name ~= "salty" then
-			inst:AddTag("icebox_valid")
-
-			inst:AddComponent("watersource")
-			inst.components.watersource.onusefn = onuse
-		end
-
-		inst:AddComponent("edible")
-		inst.components.edible.thirstvalue = data.thirst
-		inst.components.edible.healthvalue = data.health
-		inst.components.edible.sanityvalue = data.sanity
-		inst.components.edible.hungervalue = data.hunger
-		inst.components.edible:SetOnEatenFn(oneaten)
-
-		if name == "clean" then
-			inst:AddComponent("temperature")
-		    inst.components.temperature.mintemp = TUNING.BUCKET_FULL_MINETEMP
-		    inst.components.temperature.maxtemp = TUNING.BUCKET_FULL_MAXTEMP
-		    inst.components.temperature.current = TUNING.WATER_STARTING_TEMP
-			inst:DoPeriodicTask(1, Changeitem)
-		end
-
-		MakeHauntableLaunchAndSmash(inst)
-		
+	if not TheWorld.ismastersim then
 		return inst
 	end
-	
-	return Prefab("bucket_"..name, fn, assets)
+
+	inst:AddComponent("temperature")
+    inst.components.temperature.mintemp = TUNING.BUCKET_FULL_MINTEMP
+    inst.components.temperature.maxtemp = TUNING.BUCKET_FULL_MAXTEMP
+    inst.components.temperature.inherentinsulation = TUNING.INSULATION_MED
+    inst.components.temperature.inherentsummerinsulation = TUNING.INSULATION_MED
+    inst:DoTaskInTime(0, SetInitialTemperature)
+
+	inst.components.water:SetWaterType(WATERTYPE.CLEAN)
+	inst.components.waterlevel:SetWaterType(WATERTYPE.CLEAN)
+
+	inst:ListenForEvent("startfreezing", FreezeBucket)
+
+	return inst
 end
 
-local buckets = {}
+local function dirty()
+	local inst = commonfn("dirty")
 
-for k, v in pairs(bucketstates) do
-	table.insert(buckets, MakeBucket(v))
+	if not TheWorld.ismastersim then
+		return inst
+	end
+
+	inst.components.water:SetWaterType(WATERTYPE.DIRTY)
+	inst.components.waterlevel:SetWaterType(WATERTYPE.DIRTY)
+
+	return inst
 end
 
-return unpack(buckets)
+local function salty()
+	local inst = commonfn("salty")
+
+	if not TheWorld.ismastersim then
+		return inst
+	end
+
+	inst.components.water:SetWaterType(WATERTYPE.SALTY)
+	inst.components.waterlevel:SetWaterType(WATERTYPE.SALTY)
+
+	return inst
+end
+
+return Prefab("bucket_clean", clean, assets, prefabs),
+	Prefab("bucket_dirty", dirty, assets, prefabs),
+	Prefab("bucket_salty", salty, assets, prefabs)

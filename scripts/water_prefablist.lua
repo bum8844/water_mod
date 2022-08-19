@@ -1,7 +1,7 @@
 return {
 	--items
 	"bucket",
-	--"bucketfull",
+	"bucketfull",
 	"bucketice",
 	"cup",
 	"cupfull",

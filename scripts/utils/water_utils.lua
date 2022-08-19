@@ -1,9 +1,9 @@
 --when an item 'inst' is used, the 'refund' will be given. (similar mechanism with fillable:Fill)
-function RefundItem(inst, refund, _owner, dontremove)
+function RefundItem(inst, refund, dontremove)
     if type(refund) == "string" then
         refund = SpawnPrefab(refund)
     end
-    local owner = (_owner ~= nil and _owner) or (inst.components.inventoryitem ~= nil and inst.components.inventoryitem:GetGrandOwner()) or nil
+    local owner = inst.components.inventoryitem ~= nil and inst.components.inventoryitem:GetGrandOwner() or nil
     if owner ~= nil then
         local container = owner.components.inventory or owner.components.container
         if not dontremove then

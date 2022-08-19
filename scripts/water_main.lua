@@ -1,3 +1,5 @@
+local WATERTYPE = GLOBAL.WATERTYPE
+
 -- bum: Bucket-O-Poop now returns an Empty Bucket when depleted(uncompatible with those mods that makes everything stackable)
 AddPrefabPostInit("fertilizer", function(inst)
 	if not GLOBAL.TheWorld.ismastersim then
@@ -31,10 +33,6 @@ AddPrefabPostInit("antlion", function(inst)
 		end)
 	end
 end)
-
-for _, v in pairs(TUNING.CLEANSOURCE) do
-	AddPrefabPostInit(v, function(inst) inst:AddTag("cleanwater") end)
-end
 
 -- bum: This makes tea leaves dryable.
 -- AFS: dryer:StartDrying calls dryable.components.perishable:GetPercent(), so we need to add such hack to
@@ -389,12 +387,19 @@ AddPrefabPostInit("portablespicer", function(inst)
 	inst.components.stewer.ondonecooking = ondonecookingfn
 end)
 
+AddPrefabPostInit("pond", function(inst)
+	inst:AddComponent("water")
+	inst.components.water.watertype = WATERTYPE.DIRTY
+end)
+
 --Addding Percentage on items with the 'waterlevel' component
 AddClassPostConstruct("components/inventoryitem_replica", function(self)
 	local _SerializeUsage = self.SerializeUsage
 	function self:SerializeUsage()
 		_SerializeUsage(self)
-		self.classified:SerializePercentUsed(self.inst.components.waterlevel ~= nil and self.inst.components.waterlevel:GetPercent() or nil)
+		if self.classified ~= nil and self.inst.components.waterlevel ~= nil then
+			self.classified:SerializePercentUsed(self.inst.components.waterlevel:GetPercent())
+		end
 	end
 end)
 
@@ -402,10 +407,11 @@ AddClassPostConstruct("widgets/itemtile", function(self)
 	local _Refresh = self.Refresh
 	function self:Refresh()
 		_Refresh(self)
-		if self.ismastersim then
-			if self.item.components.waterlevel ~= nil then
-				self:SetPercent(self.item.components.waterlevel:GetPercent())
-			end
+		if not self.ismastersim then
+			return
+		end
+		if self.item.components.waterlevel ~= nil then
+			self:SetPercent(self.item.components.waterlevel:GetPercent())
 		end
 	end
 end)

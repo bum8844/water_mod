@@ -9,10 +9,10 @@ end
 
 local Water = Class(function(self, inst)
     self.inst = inst
-    self.watervalue = 1
-    self.watertype = nil
+    self.watervalue = nil --assume filling full-up if watervalue == nil
+    self.watertype = WATERTYPE.GENERIC
     self.ontaken = nil
-    --self.returnprefab = nil
+    --self.returnprefab = nil --Used for item check
     --self.drinktype = nil --Used for drinks. for probable use
 end,
 nil,
@@ -38,24 +38,11 @@ function Water:SetOnTakenFn(fn)
     self.ontaken = fn
 end
 
-function Water:Taken(taker, amount)
-    local refund = nil
-    local uses = 0
-    local delta = 0
-    local shouldrefund = true
-
+--Use taker.waterlevel.oldcurrentwater and currentwater
+function Water:Taken(taker, delta)
     self.inst:PushEvent("watertaken", {taker = taker})
     if self.ontaken then
-        self.ontaken(self.inst, taker) --the entity might get removed in the 
-    end
-
-    if self.inst.components.waterlevel ~= nil then
-        self.inst.components.waterlevel:DoDelta(amount)
-        shouldreturn = self.inst.components.waterlevel:IsEmpty()
-    end
-    
-    if self.returnprefab ~= nil and shouldrefund then
-        RefundItem(self.inst, refund)
+        self.ontaken(self.inst, taker, delta)
     end
 end
 

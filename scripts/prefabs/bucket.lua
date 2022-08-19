@@ -1,9 +1,6 @@
 local assets =
 {
 	Asset("ANIM", "anim/buckets.zip"),
-	Asset("IMAGE", "images/tea_inventoryitem.tex"),
-	Asset("ATLAS", "images/tea_inventoryitem.xml"),
-	Asset("ATLAS_BUILD", "images/tea_inventoryitem.xml", 256),
 }
 
 local prefabs =
@@ -45,20 +42,17 @@ end
 
 -- 컴포넌트를 바닐라의 것으로 교체하면서, 기존에 component에서 자체적으로 처리하던 태그 부분을 overrideonfillfn으로 가져왔습니다.
 local function OnFill(inst, from_object)
-	local filleditem, watertype = nil, nil
+	local filleditem, watertype, uses
 	if from_object ~= nil then
-		if not from_object:HasTag("cleanwater") then
-			if from_object.components.waterlevel ~= nil then
-				watertype = from_object.components.waterlevel.watertype
-			elseif from_object.components.water ~= nil then
-				watertype = from_object.components.water.watertype
-			else
-				watertype = WATERTYPE.DIRTY
-			end
-		else
-			watertype = WATERTYPE.CLEAN
-		end
+		watertype = from_object:HasTag("cleanwater") and "clean"
+			or from_object.components.waterlevel ~= nil and from_object.components.waterlevel.watertype
+			or from_object.components.water ~= nil and from_object.components.water.watertype
+			or "dirty"
+
 		filleditem = SpawnPrefab("bucket_"..string.lower(watertype))
+		if uses ~= nil then
+			filleditem.components.finiteuses:SetPercent(uses/TUNING.BUCKET_MAX_LEVEL)
+		end
 	else
 		filleditem = SpawnPrefab("bucket_salty")
 	end
@@ -67,29 +61,30 @@ local function OnFill(inst, from_object)
 		return false
 	end
 
-	if from_object ~= nil then
-		from_object.SoundEmitter:PlaySound("dontstarve/creatures/pengull/splash")
-	else
-		filleditem.SoundEmitter:PlaySound("dontstarve/creatures/pengull/splash")
+	if from_object.components.waterlevel ~= nil then
+		from_object.components.waterlevel:DoDelta(-TUNING.BUCKET_MAX_LEVEL)
+		uses = from_object.components.waterlevel.oldcurrentwater - from_object.components.waterlevel.currentwater
+	elseif from_object.components.finiteuses ~= nil then
+		uses = math.max(from_object.components.finiteuses:GetUses(), TUNING.BUCKET_MAX_LEVEL)
+		from_object.components.finiteuses:Use()
 	end
 
-	local owner = inst.components.inventoryitem ~= nil and inst.components.inventoryitem:GetGrandOwner() or nil
-    if owner ~= nil then
-        local container = owner.components.inventory or owner.components.container
-        local item = container:RemoveItem(inst, false) or inst
-        item:Remove()
-        container:GiveItem(filleditem, nil, owner:GetPosition())
-    else
-        source.Transform:SetPosition(inst.Transform:GetWorldPosition())
-        local item =
-            inst.components.stackable ~= nil and
-            inst.components.stackable:IsStack() and
-            inst.components.stackable:Get() or
-            inst
-        item:Remove()
-    end
-    inst:PushEvent("givewater", {from_object = from_object})
+	inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/small")
+
+	RefundItem(inst, filleditem)
+    inst:PushEvent("givewater",{inst = inst, from_object = from_object})
+
 	return true
+end
+
+local function TestWaterType(inst, from_object)
+	if from_object ~= nil then
+		local watertype = from_object:HasTag("cleanwater") and "clean"
+			or from_object.components.waterlevel ~= nil and from_object.components.waterlevel.watertype
+			or from_object.components.water ~= nil and from_object.components.water.watertype
+			or "dirty"
+		return "bucket_"..watertype
+	end
 end
 
 local function FillByRain(inst)
@@ -140,10 +135,14 @@ local function fn()
 	-- 우물 상호 작용을 위한 태그
 	inst:AddTag("bucket_empty")
 
-    inst:AddComponent("fillable")
+    --[[inst:AddComponent("fillable")
 	inst.components.fillable.overrideonfillfn = OnFill
 	inst.components.fillable.showoceanaction = true
-	inst.components.fillable.acceptsoceanwater = true
+	inst.components.fillable.acceptsoceanwater = true]]
+	inst:AddComponent("watertaker")
+	inst.components.watertaker.capacity = TUNING.BUCKET_MAX_LEVEL
+	inst.components.watertaker.prefabtest = TestWaterType
+
 	
 	inst:AddComponent("waterproofer")
     inst.components.waterproofer:SetEffectiveness(TUNING.WATERPROOFNESS_SMALL*2)
@@ -164,12 +163,10 @@ local function fn()
     MakeSmallPropagator(inst)
 	
     inst:AddComponent("inventoryitem")
-	inst.components.inventoryitem.atlasname = "images/tea_inventoryitem.xml"
-    inst.components.inventoryitem.imagename = "bucket_empty"
 
     MakeHauntableLaunchAndSmash(inst)
 
     return inst
 end
 
-return Prefab("bucket", fn, assets)
+return Prefab("bucket_empty", fn, assets)

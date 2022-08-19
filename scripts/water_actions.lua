@@ -1,7 +1,6 @@
 local ACTIONS = _G.ACTIONS
 local Action = _G.Action
 local ActionHandler = _G.ActionHandler
-local WATERTYPE = _G.WATERTYPE
 local State = _G.State
 local TimeEvent = _G.TimeEvent
 local EventHandler = _G.EventHandler
@@ -54,6 +53,46 @@ FILL_BARREL.fn = function(act)
     end
 end
 
+local FILL_BUCKET = Action({priority=2})
+FILL_BUCKET.id = "FILL_BUCKET"
+FILL_BUCKET.str = STRINGS.ACTIONS.FILL
+FILL_BUCKET.fn = function(act)
+    local source, filled = nil, nil
+
+    if act.target == nil then
+        filled = act.invobject
+    else
+        if act.invobject:HasTag("watertaker") then
+            filled = act.invobject
+            source = act.target
+        elseif act.target:HasTag("watertaker") then
+            filled = act.target
+            source = act.invobject
+        end
+    end
+
+    if filled == nil then
+        return false
+    elseif source ~= nil
+        and source.components.water ~= nil
+        and filled.prefab == source.components.water.returnprefab then
+
+        return false
+    end
+
+    local groundpt = act:GetActionPoint()
+    if groundpt ~= nil then
+        local success = TheWorld.Map:IsOceanAtPoint(groundpt.x, 0, groundpt.z)
+        if success then
+            return filled.components.watertaker:Fill()
+        end
+    end
+
+    return source ~= nil
+        and filled:HasTag("watertaker")
+        and filled.components.watertaker:Fill(source)
+end
+
 local MILKINGTOOL = Action({priority=2})
 MILKINGTOOL.id = "MILKINGTOOL"
 MILKINGTOOL.str = STRINGS.ACTIONS.MILK
@@ -66,10 +105,10 @@ MILKINGTOOL.fn = function(act)
 end
 
 local PURIFY = Action({priority=2, rmb=true})
-    PURIFY.id = "PURIFY"
-    PURIFY.str = STRINGS.ACTIONS.PURIFY
-    PURIFY.fn = function(act)
-    if act.invobject.components.purify:CanPurify(act.target) then
+PURIFY.id = "PURIFY"
+PURIFY.str = STRINGS.ACTIONS.PURIFY
+PURIFY.fn = function(act)
+if act.invobject.components.purify:CanPurify(act.target) then
         return act.invobject.components.purify:DoPurify(act.target, act.doer)
     end
 end
@@ -128,6 +167,7 @@ DRINKPLAYER.fn = function(act)
 end
 
 AddAction(FILL_BARREL)
+AddAction(FILL_BUCKET)
 AddAction(PURIFY)
 AddAction(DRINK)
 AddAction(DRINKPLAYER)
@@ -163,12 +203,30 @@ local function waterlevel(inst, doer, target, actions)
         end
         for k, v in pairs(WATERTYPE) do
             --print("For " .. tostring(v) .. ": " .. tostring(inst:HasTag(v.."_water")) .. ", " .. tostring(target:HasTag(v.."_waterlevel")))
-            if inst:HasTag(v.."_water") then
+            if inst:HasTag("water_"..v) then
                 if target:HasTag(v.."_waterlevel") then
                     table.insert(actions, ACTIONS.FILL_BARREL)
                 end
                 return
             end
+        end
+    end
+    if target:HasTag("watertaker") then
+        table.insert(actions, ACTIONS.FILL_BUCKET)
+    end
+end
+
+local function watertaker(inst, doer, target, actions)
+    for k, v in pairs(WATERGROUP) do
+        if target:HasTag(v.name.."_waterlevel") then
+            table.insert(actions, ACTIONS.FILL_BUCKET)
+            return
+        end
+    end
+    for k, v in pairs(WATERTYPE) do
+        if target:HasTag("water_"..v) or target:HasTag(v.."_waterlevel") then
+            table.insert(actions, ACTIONS.FILL_BUCKET)
+            return
         end
     end
 end
@@ -497,10 +555,13 @@ AddComponentAction("USEITEM", "purify", purify)
 AddComponentAction("USEITEM", "edible", drinking_use)
 AddComponentAction("USEITEM", "milkingtool", milkingtool)
 AddComponentAction("INVENTORY", "edible", drinking_inv)
+AddComponentAction("USEITEM", "watertaker", watertaker)
 
 -- 만들어진 컴포넌트 액션을 케릭터에 연결시키는 코드 구간
 
 AddStategraphActionHandler("wilson", ActionHandler(ACTIONS.FILL_BARREL, "dolongaction"))
+AddStategraphActionHandler("wilson_client", ActionHandler(ACTIONS.FILL_BARREL, "dolongaction"))
+AddStategraphActionHandler("wilson", ActionHandler(ACTIONS.FILL_BUCKET, "dolongaction"))
 AddStategraphActionHandler("wilson_client", ActionHandler(ACTIONS.FILL_BARREL, "dolongaction"))
 AddStategraphActionHandler("wilson", ActionHandler(ACTIONS.PURIFY, "dolongaction"))
 AddStategraphActionHandler("wilson_client", ActionHandler(ACTIONS.PURIFY, "dolongaction"))

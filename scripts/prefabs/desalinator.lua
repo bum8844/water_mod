@@ -190,7 +190,7 @@ local function fn()
     inst.components.stewer.onharvest = harvestfn
 
     inst:AddComponent("waterlevel")
-    inst.components.waterlevel:SetCanAccpets({WATERTYPE.SALTY})
+    inst.components.waterlevel:SetCanAccepts({WATERTYPE.SALTY})
     inst.components.waterlevel:SetDepletedFn(OnDepleted)
     inst.components.waterlevel:SetTakeWaterFn(OnTakeWater)
     inst.components.waterlevel.maxwater = TUNING.DESALINATOR_MAX_LEVEL
