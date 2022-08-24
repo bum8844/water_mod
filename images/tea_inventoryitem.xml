@@ -22,7 +22,7 @@
 		<Element name="fruitjuice_bottle.tex" u1="0.251" u2="0.3115" v2="0.749" v1="0.626" variant="" />
 		<Element name="fruitsoda_bottle.tex" u1="0.3135" u2="0.374" v2="0.749" v1="0.626" variant="" />
 		<Element name="fuer_bottle.tex" u1="0.376" u2="0.4365" v2="0.749" v1="0.626" variant="" />
-		<Element name="garbage_bottle.tex" u1="0.4385" u2="0.499" v2="0.749" v1="0.626" variant="" />
+		<Element name="goopydrink_bottle.tex" u1="0.4385" u2="0.499" v2="0.749" v1="0.626" variant="" />
 		<Element name="glowberryjuice_bottle.tex" u1="0.251" u2="0.3115" v2="0.624" v1="0.501" variant="" />
 		<Element name="glowberrywine_bottle.tex" u1="0.3135" u2="0.374" v2="0.624" v1="0.501" variant="" />
 		<Element name="greentea_bottle.tex" u1="0.376" u2="0.4365" v2="0.624" v1="0.501" variant="" />

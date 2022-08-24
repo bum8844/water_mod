@@ -14,8 +14,7 @@ local prefabs =
 }
 
 local function GetWet(inst)
-	if inst.components.waterlevel.currentwater > 0 and not inst:HasTag("burnt") then
-	    inst.components.wateryprotection.addwetness = (inst.components.waterlevel:GetPercent() * TUNING.WATER_BARREL_WETNESS)
+	if inst.components.waterlevel:Watervalue() > 0 and not inst:HasTag("burnt") then
 		SpawnPrefab("waterballoon_splash").Transform:SetPosition(inst.Transform:GetWorldPosition())
 		inst.SoundEmitter:KillSound("destroy")
 		inst.SoundEmitter:PlaySound("dontstarve/creatures/pengull/splash")
@@ -44,7 +43,9 @@ local function onbuilt(inst)
 end
 
 local function onburnt(inst)
-	local amount = math.ceil(inst.components.waterlevel.currentwater * inst.components.wateryprotection.addwetness * MOISTURE_ON_BURNT_MULTIPLIER)
+	inst.components.waterlevel.accepting = false
+	inst.components.waterlevel:SetPercent(0)
+	local amount = math.ceil(inst.components.wateryprotection.addwetness * MOISTURE_ON_BURNT_MULTIPLIER)
 	if amount > 0 then
 		local x, y, z = inst.Transform:GetWorldPosition()
 		TheWorld.components.farming_manager:AddSoilMoistureAtPoint(x, 0, z, amount)
@@ -63,30 +64,24 @@ local function onload(inst, data)
     end
 end
 
-local function OnDepleted(inst)
-	inst.components.watersource.available = false
-end
-
-
 local function OnTakeWater(inst)
-	inst.components.watersource.available = true
+	inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/medium")
 end
 
---[[local function OnTakeWater(inst, watervalue)
-	if watervalue >= 15 then
-		inst.SoundEmitter:PlaySound("dontstarve/creatures/pengull/splash")
-	elseif watervalue >= 5 then
-		inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/medium")
-	else
-		inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/small")
-	end
-end]]
+local function OnTaken(inst, taker, water_amount)
+	OnTakeWater(inst)
+	inst.components.waterlevel:DoDelta(-water_amount)
+end
 
 local function OnSectionChange(new, old, inst)
 	if inst._waterlevel ~= new then
 		inst._waterlevel = new
 		inst.AnimState:OverrideSymbol("swap", "barrel_meter_water", tostring(new))
 	end
+end
+
+local function onpercentusedchange(inst, data)
+	inst.components.wateryprotection.addwetness = data.percent * TUNING.WATER_BARREL_WETNESS
 end
 
 local function fn()
@@ -129,7 +124,6 @@ local function fn()
 	inst.components.workable:SetOnWorkCallback(onhit)
 	
 	inst:AddComponent("waterlevel")
-	inst.components.waterlevel:SetDepletedFn(OnDepleted)
 	inst.components.waterlevel:SetTakeWaterFn(OnTakeWater)
 	inst.components.waterlevel:SetCanAccepts({WATERTYPE.CLEAN, WATERTYPE.EMPTY})
 	inst.components.waterlevel.maxwater = TUNING.BARREL_MAX_LEVEL
@@ -138,7 +132,9 @@ local function fn()
 	inst.components.waterlevel:SetSectionCallback(OnSectionChange)
 	inst.components.waterlevel:InitializeWaterLevel(0)
 
-	inst:AddComponent("watersource")
+	inst:AddComponent("water")
+	inst.components.water:SetWaterType(nil)
+	inst.components.water:SetOnTakenFn(OnTaken)
 
 	inst:AddComponent("wateryprotection")
     inst.components.wateryprotection.extinguishheatpercent = TUNING.WATER_BARREL_EXTINGUISH_HEAT_PERCENT
@@ -153,10 +149,10 @@ local function fn()
 
 	inst:ListenForEvent("onbuilt", onbuilt)
 	inst:ListenForEvent("onburnt", onburnt)
+	inst:ListenForEvent("percentusedchange", onpercentusedchange)
 
     inst.OnSave = onsave
     inst.OnLoad = onload
-	--inst.OnLoadPostPass = onloadpostpass
 	
     return inst
 end

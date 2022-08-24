@@ -9,7 +9,7 @@ end
 local drinks =
 {
 	-- 조합법이 잘못되면 나오는 결과물
-	garbage = 
+	goopydrink = 
 	{
 		test = function(boilier, names, tags) return true end,
 		priority = -2,
@@ -22,7 +22,7 @@ local drinks =
 	},
 	-- 과일차 종류
 	
-	fruit =
+	fruitjuice =
 	{
 		test = function(boilier, names, tags) return tags.fruit and tags.fruit >= 1.5 and notmeat(tags) end,
 		priority = 0,
@@ -35,7 +35,7 @@ local drinks =
 		potlevel = "small",
 	},
 	
-	berries =
+	berries_tea =
 	{
 		test = function(boilier, names, tags) return (( names.berries or 0 ) + ( names.berries_cooked or 0 ) + ( names.berries_juicy or 0 ) + ( names.berries_juicy_cooked or 0 ) >= 2) and notmeat(tags) end,
 		priority = 1,
@@ -46,10 +46,9 @@ local drinks =
 		perishtime = TUNING.PERISH_MED,
 		cooktime = TUNING.KETTLE_FRUIT,
 		potlevel = "small",
-		basename = "berries_tea",
 	},
 
-	pomegranate =
+	pomegranate_juice =
 	{
 		test = function(boilier, names, tags) return (( names.pomegranate or 0 ) + ( names.pomegranate_cooked or 0 ) >= 2 ) and notmeat(tags) end,
 		priority = 1,
@@ -60,10 +59,9 @@ local drinks =
 		perishtime = TUNING.PERISH_MED,
 		cooktime = TUNING.KETTLE_FRUIT,
 		potlevel = "small",
-		basename = "pomegranate_tea",
 	},
 	
-	banana =
+	banana_tea =
 	{
 		test = function(boilier, names, tags) return (( names.cave_banana or 0 ) + ( names.cave_banana_cooked or 0 ) >= 2 ) and notmeat(tags) end,
 		priority = 1,
@@ -74,10 +72,9 @@ local drinks =
 		perishtime = TUNING.PERISH_MED,
 		cooktime = TUNING.KETTLE_FRUIT,
 		potlevel = "small",
-		basename = "banana_tea",
 	},
 	
-	fig =
+	fig_juice =
 	{
 		test = function(boilier, names, tags) return (( names.fig or 0) + ( names.fig_cooked or 0 ) >= 2 ) and notmeat(tags) end,
 		priority = 1,
@@ -88,10 +85,9 @@ local drinks =
 		perishtime = TUNING.PERISH_MED,
 		cooktime = TUNING.KETTLE_FRUIT,
 		potlevel = "small",
-		basename = "fig_tea",
 	},
 	
-	dragonfruit =
+	dragonjuice =
 	{
 		test = function(boilier, names, tags) return (( names.dragonfruit or 0 ) + ( names.dragonfruit_cooked or 0 ) >= 2 ) and notmeat(tags) end,
 		priority = 1,
@@ -102,7 +98,6 @@ local drinks =
 		perishtime = TUNING.PERISH_SLOW,
 		cooktime = TUNING.KETTLE_FRUIT,
 		potlevel = "small",
-		basename = "dragonfruit_tea",
 		oneatenfn = function(inst, eater)
 			local knockouttime = TUNING.TEASLEEP_TIME + math.random()
 
@@ -132,7 +127,7 @@ local drinks =
 		end,
 	},
 	
-	glowberry =
+	glowberryjuice =
 	{
 		test = function(boilier, names, tags) return (( names.wormlight or 0 ) + ( names.wormlight_lesser or 0) >= 2) and notmeat(tags) end,
 		priority = 1,
@@ -172,7 +167,7 @@ local drinks =
 	},
 	
 	-- 일시적 겉는 속도 증가[추가해야함]
-	coffee =
+	dd_coffee =
 	{
 		test = function(boilier, names, tags) return (( names.caffeinberry_bean_cooked or 0 ) + ( names.coffeebeans_cooked or 0 ) >= 2) and notmeat(tags) end,
 		priority = 1,
@@ -199,7 +194,7 @@ local drinks =
 	},
 	
 	-- 야채차 종류
-	veggie =
+	veggie_tea =
 	{
 		test = function(boilier, names, tags) return tags.veggie and tags.veggie >= 1.5 and notmeat(tags) end,
 		priority = 0,
@@ -212,7 +207,7 @@ local drinks =
 		potlevel = "small",
 	},
 	
-	carrot =
+	carrot_tea =
 	{
 		test = function(boilier, names, tags) return (( names.carrot or 0 ) + ( names.carrot_cooked or 0 ) >= 2 )and notmeat(tags) end,
 		priority = 1,
@@ -227,7 +222,7 @@ local drinks =
 	},
 	
 	-- 선인장, 다육, 알로에는 무조건 이걸로 만들어지게
-	cactus =
+	cactus_tea =
 	{
 		test = function(boilier, names, tags) return (( names.cactus_meat or 0 ) + ( names.cactus_meat_cooked or 0 ) + ( names.aloe or 0 ) + ( names.aloe_cooked or 0 ) + ( names.kyno_aloe or 0 ) + ( names.kyno_aloe_cooked or 0 ) + ( names.succulent_picked or 0 ) >= 2)  end,
 		priority = 1,
@@ -351,7 +346,7 @@ local drinks =
 	},
 	
 	-- 꽃을 섞으면 나오는 결과물
-	MIXFLOWERTEA =
+	mixflower =
 	{
 		test = function(boilier, names, tags) return tags.decoration and tags.decoration >= 2 and notmeat(tags) end,
 		priority = 0,
@@ -365,7 +360,7 @@ local drinks =
 	},
 	
 	-- 일반 꽃잎
-	hibiscus =
+	hibiscustea =
 	{
 		test = function(boilier, names, tags) return (( names.petals or 0 ) + ( names.forgetmelots or 0 ) + ( names.moon_tree_blossom or 0 ) >= 2 ) and notmeat(tags) end,
 		priority = 1,
@@ -379,7 +374,7 @@ local drinks =
 	},
 
 	-- 선인장 꽃잎
-	cactusflower =
+	cactusflower_tea =
 	{
 		test = function(boilier, names, tags) return names.cactus_flower and names.cactus_flower >= 2 and notmeat(tags) end,
 		priority = 1,
@@ -392,7 +387,7 @@ local drinks =
 		--potlevel = "high",
 	},
 	
-	lotusflower =
+	lotustea =
 	{
 		test = function(boilier, names, tags) return (( names.lotus_flower or 0 ) + ( names.lotus_flower_cooked or 0 ) + ( names.kyno_lotus_flower or 0 ) + ( names.kyno_lotus_flower_cooked or 0 ) >= 2) and notmeat(tags) end,
 		priority = 1,

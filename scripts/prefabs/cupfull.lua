@@ -1,10 +1,13 @@
 local function OnEaten(inst, eater)
+    local item = SpawnPrefab("cup")
+    local stacksize = eater.components.eater.eatwholestack and inst.components.stackable:StackSize() or 1
+    item.components.stackable:SetStackSize(stacksize)
     RefundItem(inst, "cup", true)
 end
 
 local function OnTake(inst, taker, delta)
-    for i=1,math.floor(delta/TUNING.CUP_MAX_LEVEL)+1 do
-        RefundItem(inst, cup)
+    for i=1,math.clamp(math.floor(delta/TUNING.CUP_MAX_LEVEL), 1, inst.components.stackable:StackSize()) do
+        RefundItem(inst, "cup")
     end
 end
 

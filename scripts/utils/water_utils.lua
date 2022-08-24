@@ -1,36 +1,29 @@
---when an item 'inst' is used, the 'refund' will be given. (similar mechanism with fillable:Fill)
+--when an item 'inst' is used, the 'refund' will be given.
 function RefundItem(inst, refund, dontremove)
     if type(refund) == "string" then
         refund = SpawnPrefab(refund)
     end
     local owner = inst.components.inventoryitem ~= nil and inst.components.inventoryitem:GetGrandOwner() or nil
-    if owner ~= nil then
-        local container = owner.components.inventory or owner.components.container
-        if not dontremove then
-            local item_prefab = container:RemoveItem(inst, false) or inst
-            item_prefab:Remove()
-        end
-        if refund ~= nil then
-        	container:GiveItem(refund, nil, owner:GetPosition())
-        end
-    else
-    	if refund ~= nil then
-        	refund.Transform:SetPosition(inst.Transform:GetWorldPosition())
-        end
-        if not dontremove then
-            local item_prefab =
-                inst.components.stackable ~= nil and
-                inst.components.stackable:IsStack() and
-                inst.components.stackable:Get() or
-                inst
-            item_prefab:Remove()
+    local container = owner ~= nil and (owner.components.inventory or owner.components.container) or nil
+    local x, y, z = inst.Transform:GetWorldPosition()
+
+    refund.Transform:SetPosition(x, y, z)
+
+    if container ~= nil then
+        container:GiveItem(refund)
+    end
+
+    if not dontremove then
+        if inst.components.stackable ~= nil and inst.components.stackable:IsStack() then
+            inst.components.stackable:Get():Remove()
+        else
+            inst:Remove()
         end
     end
 end
 
 local function GetItemState(count)
-        return count >= 20 and "_bottle" or
-                ""
+    return count >= 20 and "_bottle" or ""
 end
 
 function MakeDynamicCupImage(inst, symbol, build, use_bg)

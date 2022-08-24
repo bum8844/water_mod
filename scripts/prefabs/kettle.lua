@@ -1,7 +1,5 @@
 require "prefabutil"
 
-local preparedrink = require("preparedrink")
-
 local cooking = require("cooking")
 
 local assets =
@@ -19,8 +17,7 @@ local prefabs =
 }
 
 local function GetWet(inst)
-    if inst.components.waterlevel.currentwater > 0 and not inst:HasTag("burnt") then
-        inst.components.wateryprotection.addwetness = (inst.components.waterlevel.currentwater * WATER_BARREL_WETNESS)
+    if inst.components.waterlevel:Watervalue() > 0 and not inst:HasTag("burnt") then
         SpawnPrefab("waterballoon_splash").Transform:SetPosition(inst.Transform:GetWorldPosition())
         inst.SoundEmitter:KillSound("destroy")
         inst.SoundEmitter:PlaySound("dontstarve/creatures/pengull/splash")
@@ -77,8 +74,9 @@ end
 
 local function startcookfn(inst)
     if not inst:HasTag("burnt") then
-        inst.components.watersource.available = false
+        inst.components.water.available = false
         inst.components.waterlevel.accepting = false
+        inst.components.waterlevel.watertype = nil
         inst.AnimState:PlayAnimation("cooking_loop", true)
         inst.SoundEmitter:KillSound("snd")
         inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_rattle", "snd")
@@ -107,7 +105,7 @@ local function SetProductSymbol(inst, product, overridebuild)
         inst.AnimState:Hide("swap_small")
     end
 
-    inst.AnimState:OverrideSymbol(potlevels, build, "cup_"..overridesymbol)
+    inst.AnimState:OverrideSymbol(potlevels, build, overridesymbol)
 end
 
 local function spoilfn(inst)
@@ -122,14 +120,14 @@ end
 local function ShowProduct(inst)
     if not inst:HasTag("burnt") then
         local product = inst.components.stewer.product
-        SetProductSymbol(inst, product, IsModCookingProduct(inst.prefab, product) and preparedrink[product] == nil and product or nil)
+        SetProductSymbol(inst, inst.components.stewer.product)
     end
 end
 
 local function donecookfn(inst)
     if not inst:HasTag("burnt") then
-        inst.components.watersource.available = true
-        inst.components.waterlevel.accepting = false
+        inst.components.water.available = true
+        inst.components.waterlevel.accepting = true
         inst.AnimState:PlayAnimation("cooking_pst")
         inst.AnimState:PushAnimation("idle_full", false)
         ShowProduct(inst)
@@ -141,8 +139,8 @@ end
 
 local function continuedonefn(inst)
     if not inst:HasTag("burnt") then
-        inst.components.watersource.available = true
-        inst.components.waterlevel.accepting = false
+        inst.components.water.available = true
+        inst.components.waterlevel.accepting = true
         inst.AnimState:PlayAnimation("idle_full")
         ShowProduct(inst)
     end
@@ -150,8 +148,8 @@ end
 
 local function continuecookfn(inst)
     if not inst:HasTag("burnt") then
-        inst.components.watersource.available = false
-        inst.components.waterlevel.accepting = false
+        inst.components.water.available = true
+        inst.components.waterlevel.accepting = true
         inst.AnimState:PlayAnimation("cooking_loop", true)
         inst.Light:Enable(true)
         inst.SoundEmitter:KillSound("snd")
@@ -161,7 +159,7 @@ end
 
 local function harvestfn(inst)
     if not inst:HasTag("burnt") then
-        inst.components.waterlevel:DoDelta(-TUNING.KETTLE_MAX_LEVEL)
+        inst.components.waterlevel:SetPercent(0)
         inst.components.waterlevel.accepting = true
         inst.components.stewer.product = nil
         inst.AnimState:PlayAnimation("idle_empty")
@@ -178,13 +176,8 @@ local function onloadpostpass(inst, newents, data)
     end
 end
 
-local function OnDepleted(inst)
-    inst.components.watersource.available = false
-    inst.components.propagator.acceptsheat = true
-end
-
 local function OnSectionChange(new, old, inst)
-    local item_watertype = inst.components.waterlevel.item_watertype
+    local item_watertype = inst.components.waterlevel.watertype
     local watertype = item_watertype ~= WATERTYPE.CLEAN and "dirty" or "water"
     if new ~= nil then
         if inst._waterlevel ~= new then
@@ -192,16 +185,6 @@ local function OnSectionChange(new, old, inst)
         end
     end
     inst.AnimState:OverrideSymbol("swap", "kettle_meter_"..watertype, tostring(inst._waterlevel))
-end
-
-local function Install_components(inst)
-    inst.components.stewer.spoiledproduct = "spoiled"
-    inst.components.stewer.onstartcooking = startcookfn
-    inst.components.stewer.oncontinuecooking = continuecookfn
-    inst.components.stewer.oncontinuedone = continuedonefn
-    inst.components.stewer.ondonecooking = donecookfn
-    inst.components.stewer.onharvest = harvestfn
-    inst.components.stewer.onspoil = spoilfn
 end
 
 local function onopen(inst)
@@ -215,10 +198,6 @@ end
 
 local function onclose(inst)
     if not inst:HasTag("burnt") then
-        if not inst:HasTag("stewer") then
-             inst:AddComponent("stewer")
-             Install_components(inst)
-        end
         if not inst.components.stewer:IsCooking() then
             inst.AnimState:PlayAnimation("idle_empty")
             inst.SoundEmitter:KillSound("snd")
@@ -228,41 +207,18 @@ local function onclose(inst)
 end
 
 local function oncheckready(inst)
-    if not inst:HasTag("stewer") then
-         inst:AddComponent("stewer")
-         Install_components(inst)
-    end
-    if inst.components.container:IsOpen() then
-        if inst.components.waterlevel.currentwater <= 0 then
-            if inst.components.container:IsFull() then
-                inst:RemoveTag("readytocook")
-                inst:RemoveTag("stewer")
-                inst:RemoveComponent("stewer")
-            else
-                inst:RemoveTag("readytocook")
-            end
-        elseif inst.components.container:IsFull() then
-            inst:AddTag("readytocook")
-        end
-    elseif inst.components.waterlevel.currentwater > 0 and inst.components.container:IsFull() then
-        inst:AddTag("readytocook")
-    elseif inst.components.container:IsFull() then
-        inst:RemoveTag("stewer")
-        inst:RemoveComponent("stewer")
-        inst:RemoveTag("readytocook")
-    else
+    print("kettle: oncheckready")
+    if inst:HasTag("readytocook") and inst.components.waterlevel:GetPercent() <= 0 then
         inst:RemoveTag("readytocook")
     end
+    print("readytocook:", inst:HasTag("readytocook"))
 end
 
-local function BoiledDone(inst)
+local function ondoneboil(inst)
     inst:RemoveTag("boilling")
-    if inst.components.waterlevel.currentwater < inst.components.waterlevel.maxwater then
-        inst.components.waterlevel.accepting = true  
-    end
+    inst.components.waterlevel.accepting = true  
     inst.components.container.canbeopened = true
-    inst.components.watersource.available = true       
-    inst.components.waterlevel.item_watertype = WATERTYPE.CLEAN
+    inst.components.waterlevel.watertype = WATERTYPE.CLEAN
     inst.AnimState:OverrideSymbol("swap", "kettle_meter_water", tostring(inst._waterlevel))
     inst.AnimState:PlayAnimation("cooking_pst")
     inst.AnimState:PlayAnimation("idle_empty")
@@ -271,35 +227,38 @@ local function BoiledDone(inst)
     inst._timer = 0
 end
 
-local function Boiled(inst)
+local function boil(inst)
     inst:AddTag("boilling")
     inst.components.container.canbeopened = false
-    inst.components.watersource.available = false
     inst.components.waterlevel.accepting = false
+    inst.components.water.available = false
     inst.AnimState:PlayAnimation("cooking_loop", true)
     inst.SoundEmitter:KillSound("snd")
     inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_rattle", "snd")
     inst.Light:Enable(true)
-    inst:DoTaskInTime(inst._timer, BoiledDone, inst)
+    inst:DoTaskInTime(inst._timer, ondoneboil, inst)
 end
 
-
-local function OnTakeWater(inst, watervalue)
+local function OnTakeWater(inst)
     if not inst:HasTag("burnt") then
-        if inst.components.waterlevel.item_watertype ~= WATERTYPE.CLEAN then
-            inst._timer = TUNING.KETTLE_WATER*watervalue
+        if inst.components.waterlevel.watertype ~= WATERTYPE.CLEAN then
+            inst._timer = TUNING.KETTLE_WATER * inst.components.waterlevel:Watervalue()
             inst.components.container:Close()
             inst.components.container:DropEverything()
-            Boiled(inst)
+            boil(inst)
         end
     end
+end
+
+local function OnTaken(inst, source, delta)
+    inst.components.waterlevel:DoDelta(-delta)
 end
 
 local function getstatus(inst)
     return (inst:HasTag("burnt") and "BURNT")
         or (inst.components.stewer:IsDone() and "DONE")
         or (inst:HasTag("boilling") and "PURIFY")
-        or (inst.components.watersource.available and "HASWATER")
+        or (inst.components.water.available and "HASWATER")
         or (not inst.components.stewer:IsCooking() and "EMPTY")
         or (inst.components.stewer:GetTimeToCook() > 15 and "BOILING_LONG")
         or "BOILING_SHORT"
@@ -322,7 +281,7 @@ local function onload(inst, data)
         end
         if data.timer ~= nil then
             inst._timer = data.timer
-            Boiled(inst)
+            boil(inst)
         end
     end
 end
@@ -348,7 +307,6 @@ local function fn()
 	inst.AnimState:OverrideSymbol("swap", "kettle_meter_water", "0")
     
 	inst:AddTag("structure")
-	inst:AddTag("kettle")
     inst:AddTag("stewer")
 	
 	inst.entity:SetPristine()
@@ -362,7 +320,7 @@ local function fn()
 
     inst:AddComponent("waterlevel")
     inst.components.waterlevel.SetCanAccepts(WATERGROUP.BOILABLE)
-    inst.components.waterlevel:SetDepletedFn(OnDepleted)
+    --inst.components.waterlevel:SetDepletedFn(OnDepleted)
     inst.components.waterlevel:SetTakeWaterFn(OnTakeWater)
     inst.components.waterlevel.maxwater = TUNING.KETTLE_MAX_LEVEL
     inst.components.waterlevel.accepting = true
@@ -370,8 +328,8 @@ local function fn()
     inst.components.waterlevel:SetSectionCallback(OnSectionChange)
     inst.components.waterlevel:InitializeWaterLevel(0)
 
-    inst:AddComponent("watersource")
-    inst.components.watersource.available = false
+    inst:AddComponent("water")
+    inst.components.water:SetOnTakenFn(OnTaken)
 
     inst:AddComponent("stewer")
     inst.components.stewer.spoiledproduct = "spoiled"
@@ -400,11 +358,9 @@ local function fn()
 	inst.components.workable:SetOnWorkCallback(onhit)
 
     inst:ListenForEvent("onbuilt", onbuilt)
-    inst:ListenForEvent("itemget", oncheckready)
-    inst:ListenForEvent("takewater", oncheckready)
-    inst:ListenForEvent("onopen", oncheckready)
-    inst:ListenForEvent("onclose", oncheckready)
-    inst:ListenForEvent("depleted", oncheckready)
+
+    --inst:ListenForEvent("itemget", oncheckready)
+    --inst:ListenForEvent("onclose", oncheckready)
 	
 	MakeHauntableWork(inst)
 	

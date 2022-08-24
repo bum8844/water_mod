@@ -10,73 +10,6 @@ local prefabs =
 	"bucket_salty",
 }
 
-local function OnCalculation(inst, from_object, filleditem)
-	if from_object.components.waterlevel ~= nil then
-		local delta = math.clamp(from_object.components.waterlevel.currentwater, 0, inst.components.waterlevel.maxwater)
-		inst.components.waterlevel:DoDelta(delta)
-	end
-    if from_object.components.finiteuses ~= nil then
-    	local uses = from_object.components.finiteuses:GetUses()
-		filleditem.components.finiteuses:SetUses(uses)
-		local refund = SpawnPrefab("bucket")
-
-		filleditem.SoundEmitter:PlaySound("dontstarve/creatures/pengull/splash")
-
-		local owner = from_object.components.inventoryitem ~= nil and from_object.components.inventoryitem:GetGrandOwner() or nil
-		if owner ~= nil then
-			local container = owner.components.inventory or owner.components.container
-			local item = container:RemoveItem(from_object, false) or from_object
-			item:Remove()
-			container:GiveItem(refund, nil, owner:GetPosition())
-		else
-			refund.Transform:SetPosition(from_object.Transform:GetWorldPosition())
-			local item =
-				from_object.components.stackable ~= nil and
-				from_object.components.stackable:IsStack() and
-				from_object.components.stackable:Get() or
-				from_object
-			item:Remove()
-		end
-	end
-end
-
--- 컴포넌트를 바닐라의 것으로 교체하면서, 기존에 component에서 자체적으로 처리하던 태그 부분을 overrideonfillfn으로 가져왔습니다.
-local function OnFill(inst, from_object)
-	local filleditem, watertype, uses
-	if from_object ~= nil then
-		watertype = from_object:HasTag("cleanwater") and "clean"
-			or from_object.components.waterlevel ~= nil and from_object.components.waterlevel.watertype
-			or from_object.components.water ~= nil and from_object.components.water.watertype
-			or "dirty"
-
-		filleditem = SpawnPrefab("bucket_"..string.lower(watertype))
-		if uses ~= nil then
-			filleditem.components.finiteuses:SetPercent(uses/TUNING.BUCKET_MAX_LEVEL)
-		end
-	else
-		filleditem = SpawnPrefab("bucket_salty")
-	end
-	
-	if filleditem == nil then
-		return false
-	end
-
-	if from_object.components.waterlevel ~= nil then
-		from_object.components.waterlevel:DoDelta(-TUNING.BUCKET_MAX_LEVEL)
-		uses = from_object.components.waterlevel.oldcurrentwater - from_object.components.waterlevel.currentwater
-	elseif from_object.components.finiteuses ~= nil then
-		uses = math.max(from_object.components.finiteuses:GetUses(), TUNING.BUCKET_MAX_LEVEL)
-		from_object.components.finiteuses:Use()
-	end
-
-	inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/small")
-
-	RefundItem(inst, filleditem)
-    inst:PushEvent("givewater",{inst = inst, from_object = from_object})
-
-	return true
-end
-
 local function TestWaterType(inst, from_object)
 	if from_object ~= nil then
 		local watertype = from_object:HasTag("cleanwater") and "clean"
@@ -85,6 +18,10 @@ local function TestWaterType(inst, from_object)
 			or "dirty"
 		return "bucket_"..watertype
 	end
+end
+
+local function OnTakeWater(inst, source)
+	inst.SoundEmitter:PlaySound("dontstarve/creatures/pengull/splash")
 end
 
 local function FillByRain(inst)
@@ -116,6 +53,8 @@ local function fn()
     inst.AnimState:SetBank("buckets")
     inst.AnimState:PlayAnimation("empty")
 
+    inst:AddTag("watertaker")
+
     inst.entity:SetPristine()
 
     if not TheWorld.ismastersim then
@@ -135,14 +74,10 @@ local function fn()
 	-- 우물 상호 작용을 위한 태그
 	inst:AddTag("bucket_empty")
 
-    --[[inst:AddComponent("fillable")
-	inst.components.fillable.overrideonfillfn = OnFill
-	inst.components.fillable.showoceanaction = true
-	inst.components.fillable.acceptsoceanwater = true]]
 	inst:AddComponent("watertaker")
 	inst.components.watertaker.capacity = TUNING.BUCKET_MAX_LEVEL
 	inst.components.watertaker.prefabtest = TestWaterType
-
+	inst.components.watertaker.onfillfn = OnTakeWater
 	
 	inst:AddComponent("waterproofer")
     inst.components.waterproofer:SetEffectiveness(TUNING.WATERPROOFNESS_SMALL*2)

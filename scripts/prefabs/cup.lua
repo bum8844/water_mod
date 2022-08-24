@@ -12,80 +12,31 @@ local prefabs =
 	"water_salty",
 }
 
--- 컴포넌트를 바닐라의 것으로 교체하면서, 기존에 component에서 자체적으로 처리하던 태그 부분을 overrideonfillfn으로 가져왔습니다.
-local function OnFill(inst, from_object)
-	local filleditem, watertype
-	if from_object ~= nil then
-		watertype = from_object:HasTag("cleanwater") and "clean"
-			or from_object.components.waterlevel ~= nil and from_object.components.waterlevel.watertype
-			or from_object.components.water ~= nil and from_object.components.water.watertype
-			or "dirty"
-
-		filleditem = SpawnPrefab("water_"..string.lower(watertype))
-
-		if from_object.components.waterlevel ~= nil then
-			if from_object.components.waterlevel.currentwater < TUNING.CUP_MAX_LEVEL then
-				return false, "NOTENOUGHWATER"
-			end
-			from_object.components.waterlevel:DoDelta(-TUNING.CUP_MAX_LEVEL)
-		elseif from_object.components.finiteuses ~= nil then
-			if from_object.components.finiteuses:GetUses() < TUNING.CUP_MAX_LEVEL then
-				return false, "NOTENOUGHWATER"
-			end
-			from_object.components.finiteuses:Use(TUNING.CUP_MAX_LEVEL)
-		end
-
-		if from_object.components.stewer ~= nil then
-			if from_object.components.waterlevel.currentwater == 0 then
-				from_object.components.stewer.product = nil
-				from_object.components.stewer:Harvest()
-			end
-		end
-	else
-		filleditem = SpawnPrefab("water_salty")
-	end
-	
-	if filleditem == nil then
-		return false
-	end
-
-	inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/small")
-
-	RefundItem(inst, filleditem)
-    inst:PushEvent("givewater",{inst = inst, from_object = from_object})
-
-	return true
-end
-
-local function OnTakeWater(inst, source, delta)
+local function OnTakeWater(inst, source)
 	inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/small")
 end
 
 local function TestWatertype(inst, from_object)
 	local prefab = nil
+	local water = from_object.components.waterlevel or from_object.components.water
 	if from_object ~= nil then
-		prefab = from_object:HasTag("cleanwater") and "clean"
-			or from_object.components.waterlevel ~= nil and from_object.components.waterlevel.watertype
-			or from_object.components.water ~= nil and from_object.components.water.watertype
-			or "dirty"
+		prefab = from_object.components.stewer ~= nil and from_object.components.stewer.product
+			or (water ~= nil and water.watertype ~= nil) and "water_"..water.watertype
 	else
-		prefab = "salty"
+		prefab = "water_salty"
 	end
 
-	return "water_"..prefab
+	return prefab
 end
 
 local function FillByRain(inst)
-	local filleditem
     inst.rainfilling = 0
 	inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/small")
-	if inst.components.stackable:StackSize() > 1 then
-	    filleditem = SpawnPrefab("cup_water")
-		filleditem.Transform:SetPosition(inst.Transform:GetWorldPosition())
+    local filleditem = SpawnPrefab("cup_water")
+	filleditem.Transform:SetPosition(inst.Transform:GetWorldPosition())
+	if inst.components.stackable:IsStack() then
 		inst.components.stackable:Get():Remove()
 	else
-	    filleditem = SpawnPrefab("cup_water")
-		filleditem.Transform:SetPosition(inst.Transform:GetWorldPosition())
 		inst:Remove()
 	end
 end
@@ -103,35 +54,20 @@ local function fn()
     inst.AnimState:SetBuild("kettle_drink")
     inst.AnimState:SetBank("kettle_drink")
     inst.AnimState:PlayAnimation("idle")
-	inst.AnimState:OverrideSymbol("swap","kettle_drink","cup_empty")
+	inst.AnimState:OverrideSymbol("swap","kettle_drink","empty")
+
+	inst:AddTag("watertaker")
 
     inst.entity:SetPristine()
-	
-	--inst:AddTag("fil_cup")
-	--inst:AddTag("emptiy")
 
     if not TheWorld.ismastersim then
         return inst
     end
 	
-	--[[inst.rainfilling = 0
-	inst:DoPeriodicTask(1, function()
-	    local owner = inst.components.inventoryitem.owner
-		if TheWorld.state.israining and owner == nil then
-		    inst.rainfilling = inst.rainfilling + 1
-		end
-		if inst.rainfilling >= 45 then
-		    FillByRain(inst)
-		end
-	end)]]
-	
-    --[[inst:AddComponent("fillable")
-	inst.components.fillable.overrideonfillfn = OnFill
-	inst.components.fillable.showoceanaction = true
-	inst.components.fillable.acceptsoceanwater = true]]
 	inst:AddComponent("watertaker")
 	inst.components.watertaker.capacity = TUNING.CUP_MAX_LEVEL
 	inst.components.watertaker.prefabtest = TestWatertype
+	inst.components.watertaker.onfillfn = OnTakeWater
 	
 	inst:AddComponent("waterproofer")
     inst.components.waterproofer:SetEffectiveness(TUNING.WATERPROOFNESS_SMALL*2)

@@ -22,9 +22,13 @@ end
 
 local function onaccepting(self, accepting)
     if accepting then
-        self.inst:AddTag("accepting_water")
+        if not self.inst:HasTag("accepting_water") then
+            self.inst:AddTag("accepting_water")
+        end
     else
-        self.inst:RemoveTag("accepting_water")
+        if self.inst:HasTag("accepting_water") then
+            self.inst:RemoveTag("accepting_water")
+        end
     end
 end
 
@@ -46,7 +50,7 @@ local Waterlevel = Class(function(self, inst)
     self.rate = 1 --positive rate = consume, negative = product
 	self.rate_modifiers = SourceModifierList(self.inst)
 
-    self.accepting = false
+    self.accepting = true
     self.canaccepts = { WATERGROUP.OMNI }
     self.watertype = nil
     self.sections = 1
@@ -68,8 +72,7 @@ nil,
 function Waterlevel:OnRemoveFromEntity()
     self:StopConsuming()
     clearcanaccepts(self, self.canaccepts)
-    self.inst:RemoveTag("waterdepleted")
-    self.inst:RemoveTag("accepting_waterlevel")
+    self.inst:RemoveTag("accepting_water")
 end
 
 function Waterlevel:OnSave()
@@ -115,8 +118,12 @@ function Waterlevel:SetSections(num)
     self.sections = num
 end
 
+function Waterlevel:Watervalue()
+    return self.currentwater
+end
+
 function Waterlevel:GetCurrentSection()
-    return self:IsEmpty() and 0 or math.min( math.floor(self:GetPercent()* self.sections)+1, self.sections)
+    return self:IsEmpty() and 0 or math.min( math.ceil(self:GetPercent()* self.sections), self.sections)
 end
 
 function Waterlevel:ChangeSection(amount)
@@ -128,29 +135,29 @@ function Waterlevel:SetTakeWaterFn(fn)
 end
 
 function Waterlevel:TakeWaterItem(item, doer)
-    if not item:HasTag("water_empty") then
-        self.watertype = item.components.water.watertype
-    end
+    local watertype = item.components.waterlevel ~= nil and item.components.waterlevel.watertype
+        or item.components.water ~= nil and item.components.water.watertype
+
+    self:SetWaterType(watertype)
 
     local oldsection = self:GetCurrentSection()
     self.oldcurrenwater = self.currentwater
 
-    local water = item.components.water:Watervalue()
-    if water ~= nil then
-        self:DoDelta(water, doer)
-    else
-        self:SetPercent(1)
-    end
+    local water = item.components.waterlevel ~= nil and item.components.waterlevel:Watervalue()
+        or item.components.water ~= nil and item.components.water:Watervalue()
+        or nil
 
-    local delta = self.currentwater - self.oldcurrentwater
+    water = water ~= nil and math.min(water, self.maxwater - self.currentwater) or self.maxwater - self.currentwater
 
-    item.components.water:Taken(self.inst, delta)
+    self:DoDelta(water, doer)
+
+    item.components.water:Taken(self.inst, water)
 
     if self.ontakewaterfn ~= nil then
         self.ontakewaterfn(self.inst)
     end
 
-    self.inst:PushEvent("takewater", { watervalue = delta, watertype = self.watertype })
+    self.inst:PushEvent("takewater", { watervalue = water, watertype = self.watertype })
 
     return true
 end
@@ -235,6 +242,7 @@ function Waterlevel:DoDelta(amount, doer)
         self.inst:PushEvent("onwaterlevelsectionchanged", { newsection = newsection, oldsection = oldsection})
         --self.inst:PushEvent("refresh")
         if self.currentwater <= 0 and self.depleted then
+            self.watertype = nil
             self.depleted(self.inst)
         end
     end

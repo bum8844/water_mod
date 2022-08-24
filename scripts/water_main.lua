@@ -49,7 +49,7 @@ AddComponentPostInit("dryer", function(self)
 	end
 end)
 
-AddComponentPostInit("stewer",function(self)
+--[[AddComponentPostInit("stewer",function(self)
 	local _Harvest = self.Harvest
 
 	function self:Harvest(harvester, ...)
@@ -58,7 +58,7 @@ AddComponentPostInit("stewer",function(self)
 		
 		return result
 	end
-end)
+end)]]
 
 --[[AddComponentPostInit("compostingbin",function(self)
 	local _AddCompostable = self.AddCompostable

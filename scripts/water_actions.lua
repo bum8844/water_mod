@@ -189,44 +189,48 @@ local function purify(inst, doer, target, actions)
     end
 end
 
-local function waterlevel(inst, doer, target, actions)
-    if target:HasTag("accepting_water") then
-        for k, v in pairs(WATERGROUP) do
-            if target:HasTag(v.name.."_waterlevel") then
-                for i, v2 in ipairs(v.types) do
-                    if inst:HasTag("water_"..v2) then
-                        table.insert(actions, ACTIONS.FILL_BARREL)
-                        return
+local function water(inst, doer, target, actions)
+    if inst:HasTag("water") then
+        if target:HasTag("accepting_water") then
+            for k, v in pairs(WATERGROUP) do
+                if target:HasTag(v.name.."_waterlevel") then
+                    for i, v2 in ipairs(v.types) do
+                        if inst:HasTag("water_"..v2) then
+                            table.insert(actions, ACTIONS.FILL_BARREL)
+                            return
+                        end
                     end
                 end
             end
-        end
-        for k, v in pairs(WATERTYPE) do
-            --print("For " .. tostring(v) .. ": " .. tostring(inst:HasTag(v.."_water")) .. ", " .. tostring(target:HasTag(v.."_waterlevel")))
-            if inst:HasTag("water_"..v) then
-                if target:HasTag(v.."_waterlevel") then
-                    table.insert(actions, ACTIONS.FILL_BARREL)
+            for k, v in pairs(WATERTYPE) do
+                --print("For " .. tostring(v) .. ": " .. tostring(inst:HasTag(v.."_water")) .. ", " .. tostring(target:HasTag(v.."_waterlevel")))
+                if inst:HasTag("water_"..v) then
+                    if target:HasTag(v.."_waterlevel") then
+                        table.insert(actions, ACTIONS.FILL_BARREL)
+                    end
+                    return
                 end
-                return
             end
         end
-    end
-    if target:HasTag("watertaker") then
-        table.insert(actions, ACTIONS.FILL_BUCKET)
+        if target:HasTag("watertaker") then
+            table.insert(actions, ACTIONS.FILL_BUCKET)
+        end
     end
 end
 
 local function watertaker(inst, doer, target, actions)
-    for k, v in pairs(WATERGROUP) do
-        if target:HasTag(v.name.."_waterlevel") then
-            table.insert(actions, ACTIONS.FILL_BUCKET)
-            return
+    if not target:HasTag("waterdepleted") then
+        for k, v in pairs(WATERGROUP) do
+            if target:HasTag(v.name.."_waterlevel") then
+                table.insert(actions, ACTIONS.FILL_BUCKET)
+                return
+            end
         end
-    end
-    for k, v in pairs(WATERTYPE) do
-        if target:HasTag("water_"..v) or target:HasTag(v.."_waterlevel") then
-            table.insert(actions, ACTIONS.FILL_BUCKET)
-            return
+        for k, v in pairs(WATERTYPE) do
+            if target:HasTag("water_"..v) or target:HasTag(v.."_waterlevel") then
+                table.insert(actions, ACTIONS.FILL_BUCKET)
+                return
+            end
         end
     end
 end
@@ -323,6 +327,16 @@ local function drinking_inv(inst, doer, actions, right)
         if inst:HasTag("edible_"..v) and inst:HasTag("drink") and doer:HasTag(v.."_eater") then
             table.insert(actions, ACTIONS.DRINK)
             return
+        end
+    end
+end
+
+local function boil_kettle(inst, doer, actions, right)
+    for i, v in ipairs(actions) do
+        if v == ACTIONS.COOK
+            and inst.replica.waterlevel ~= nil
+            and inst.replica.waterlevel:IsDepleted() then
+            table.remove(actions, i)
         end
     end
 end
@@ -550,12 +564,13 @@ AddStategraphEvent("wilson_client",drinking_client_event)
 
 -- 액션테이블, 컴포넌트, 작업한 함수 합치는 코드 구간
 
-AddComponentAction("USEITEM", "water", waterlevel)
+AddComponentAction("USEITEM", "water", water)
 AddComponentAction("USEITEM", "purify", purify)
 AddComponentAction("USEITEM", "edible", drinking_use)
 AddComponentAction("USEITEM", "milkingtool", milkingtool)
 AddComponentAction("INVENTORY", "edible", drinking_inv)
 AddComponentAction("USEITEM", "watertaker", watertaker)
+AddComponentAction("SCENE", "stewer", boil_kettle)
 
 -- 만들어진 컴포넌트 액션을 케릭터에 연결시키는 코드 구간
 

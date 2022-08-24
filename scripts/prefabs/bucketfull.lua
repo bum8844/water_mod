@@ -31,12 +31,6 @@ local function FreezeBucket(inst)
 	inst:DoTaskInTime(2, function(inst) RefundItem(inst, icebucket) end)
 end
 
-local function onpercentusedchange(inst, data)
-	if data ~= nil then
-		inst.components.watersource.override_fill_uses = math.ceil(data.percent * TUNING.PREMIUMWATERINGCAN_USES)
-	end
-end
-
 local function ontake(inst)
 	inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/medium")
 end
@@ -106,8 +100,6 @@ local function commonfn(anim, tags)
 
 	inst:AddComponent("watersource")
 	inst.components.watersource.onusefn = ondepleted
-
-	inst:ListenForEvent("percentusedchange", onpercentusedchange)
 
 	return inst
 end

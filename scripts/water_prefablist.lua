@@ -12,14 +12,14 @@ return {
 	--"brewery",
 	"campkettle",
 	"desalinator",
-	--"kettle",
+	"kettle",
 	--"portablekettle",
 	"well",
 	"well_drilling",
 
 	--food & plants
 	"caffeinberry",
-	--"prepareddrink",
+	"prepareddrink",
 	"spoiled_drink",
 	"tea_tree",
 	"tea_seed",

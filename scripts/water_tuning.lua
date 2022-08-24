@@ -3,6 +3,7 @@ local hydration_per_day = 75
 local wilson_thirst = GetModConfigData("thirst_max")
 local seg_time = 30
 local total_day_time = seg_time*16
+local bucket_max_level = 20
 
 -- 물을 담을수 있는 최대치
 local tuning =
@@ -24,7 +25,7 @@ local tuning =
 	-- Maximum Amount of Water
 	CUP_MAX_LEVEL = 1,
 	--BOTTLE_MAX_LEVEL = 10,
-	BUCKET_MAX_LEVEL = 20,
+	BUCKET_MAX_LEVEL = bucket_max_level,
 	CAMP_KETTLE_MAX_LEVEL = 1,
 	KETTLE_MAX_LEVEL = 5,
 	BARREL_MAX_LEVEL = 360,
@@ -32,8 +33,7 @@ local tuning =
 	DESALINATOR_MAX_LEVEL = 20,
 
 	-- Waterlevel Amount Per Use
-	CUP_LEVEL_PER_USE = 1,
-	BUCKET_LEVEL_PER_USE = 1,
+	WATERINGCAN_USES_PER_WATERLEVEL = TUNING.PREMIUMWATERINGCAN_USES / bucket_max_level,
 
 	-- Wateryprotection
 	BUCKET_EXTINGUISH_HEAT_PERCENT = -1,

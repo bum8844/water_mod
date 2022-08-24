@@ -1,37 +1,38 @@
-local function MakePreparedDrink(data)
-	local name = data.name
-	local basename = data.basename or data.name
-    local symbolname = basename == "cleanwater" and "water" or basename
-	local oneatenfn = data.oneatenfn or function(inst, eater) end
-    local build = data.overridebuild or "kettle_drink"
+local prefabs =
+{
+    "spoiled_drink",
+    "cup",
+}
 
-	local assets =
+local function MakePreparedDrink(data)
+	local oneatenfn = data.oneatenfn or function(inst, eater) end
+
+	local drinkassets =
 	{
 		Asset("ANIM", "anim/kettle_drink.zip"),
 	}
 
-	local prefabs = data.prefabs or {}
+	local drinkprefabs = prefabs
+    if data.prefabs ~= nil then
+        drinkprefabs = shallowcopy(prefabs)
+        for k, v in ipairs(data.prefabs) do
+            if not table.contains(drinkprefabs, v) then
+                table.insert(drinkprefabs, v)
+            end
+        end
+    end
 
 	if data.overridebuild then
 		table.insert(drinkassets, Asset("ANIM", "anim/"..data.overridebuild))
 	end
 
     local function OnStackSizeChanged(inst, data)
-    if data ~= nil then
-        local stackpercent = data.stacksize / inst.components.stackable.maxsize
-        local new_state = stackpercent >= 0.5 and "bottle" or "cup"
-        if data.stacksize > 1 then
-            inst.AnimState:OverrideSymbol("swap", build, new_state..symbolname)
-        end
-
-        if inst.components.inventoryitem.imagename ~= new_state..basename then
-            inst.components.inventoryitem:ChangeImageName(new_state..symbolname)
-        end
-
-        if inst.components.perishable ~= nil and stackpercent >= 0.5 then
-            inst.components.perishable:SetLocalMultiplier(0.5)
-        else
-            inst.components.perishable:SetLocalMultiplier(1)
+        if data ~= nil then
+            if inst.components.perishable ~= nil and data.stacksize >= 20 then
+                inst.components.perishable:SetLocalMultiplier(0.5)
+            else
+                inst.components.perishable:SetLocalMultiplier(1)
+            end
         end
     end
 
@@ -46,11 +47,11 @@ local function MakePreparedDrink(data)
         MakeInventoryPhysics(inst)
 
 		local food_symbol_build = nil
-		inst.AnimState:SetBuild(overridebuild or "kettle_drink")
+		inst.AnimState:SetBuild(build)
 		inst.AnimState:SetBank("kettle_drink")
 
         inst.AnimState:PlayAnimation("idle")
-        inst.AnimState:OverrideSymbol("swap", build, "cup_"..symbolname)
+        inst.AnimState:OverrideSymbol("swap", data.overridebuild or "kettle_drink", data.basename or data.name)
 
         inst:AddTag("prepareddrink")
         inst:AddTag("preparedfood")
@@ -105,21 +106,21 @@ local function MakePreparedDrink(data)
         inst.components.edible.nochill = data.nochill or nil
         inst.components.edible:SetOnEatenFn(function(inst, eater)
             oneatenfn(inst, eater)
-            RefundItem(inst, "cup")
+            RefundItem(inst, "cup", true)
         end)
 
         inst:AddComponent("inspectable")
         inst.wet_prefix = data.wet_prefix
 
-        inst:AddComponent("water")
+        --[[inst:AddComponent("water")
         inst.components.water:SetWaterType(data.watertype or WATERTYPE.GENERIC)
         inst.components.water:SetOnTakenFn(OnTake)
-        inst.components.water.returnprefab = "cup"
+        inst.components.water.returnprefab = "cup"]]
 
 		inst:AddComponent("inventoryitem")
 
         if data.basename ~= nil then
-            inst.components.inventoryitem:ChangeImageName("cup_"..data.basename)
+            inst.components.inventoryitem:ChangeImageName(data.basename)
         end
 
         inst:AddComponent("stackable")
@@ -149,6 +150,13 @@ local function MakePreparedDrink(data)
         return inst
     end
 
-    return Prefab("cup_"..data.name, fn, drinkassets, drinkprefabs)	
+    return Prefab(data.name, fn, drinkassets, drinkprefabs)	
 end
 
+local prefs = {}
+
+for k, v in pairs(require("prepareddrinks")) do
+table.insert(prefs, MakePreparedDrink(v))
+end
+
+return unpack(prefs)

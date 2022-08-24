@@ -24,8 +24,8 @@ AddMinimapAtlas("images/tea_minimap.xml")
 
 modimport("scripts/water_main.lua")
 
-local drinks = require("prepareddrink")
-local drinks_fermented = require("preparedageddrink")
+local drinks = require("prepareddrinks")
+local drinks_fermented = require("preparedageddrinks")
 
 for k, recipe in pairs(drinks) do
 	AddCookerRecipe("kettle", recipe)
