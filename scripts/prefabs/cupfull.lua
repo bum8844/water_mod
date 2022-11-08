@@ -6,8 +6,15 @@ local function OnEaten(inst, eater)
 end
 
 local function OnTake(inst, taker, delta)
-    for i=1,math.clamp(math.floor(delta/TUNING.CUP_MAX_LEVEL), 1, inst.components.stackable:StackSize()) do
-        RefundItem(inst, "cup")
+    local cup = SpawnPrefab("cup")
+    local stacksize = math.clamp(math.floor(delta/TUNING.CUP_MAX_LEVEL), 1, inst.components.stackable:StackSize())
+    cup.components.stackable:SetStackSize(stacksize)
+
+    RefundItem(inst, cup, true)
+    if inst.components.stackable:IsStack() then
+        inst.components.stackable:Get(stacksize):Remove()
+    else
+        inst:Remove()
     end
 end
 
@@ -45,6 +52,7 @@ local function MakeCup(name, masterfn, tags)
         end
 
         inst:AddTag("pre-preparedfood")
+        inst:AddTag("drink")
 
         MakeInventoryFloatable(inst)
         
@@ -61,7 +69,7 @@ local function MakeCup(name, masterfn, tags)
         inst:AddComponent("inspectable")
 
         inst:AddComponent("water")
-        inst.components.water:SetWatervalue(TUNING.CUP_MAX_LEVEL)
+        inst.components.water.watervalue = TUNING.CUP_MAX_LEVEL
         inst.components.water:SetOnTakenFn(OnTake)
         inst.components.returnprefab = "cup"
 
@@ -94,29 +102,29 @@ end
 
 local function cleanwater(inst)
     inst.components.edible.healthvalue = TUNING.HEALING_TINY
-    inst.components.edible.hungervalue = TUNING.DRINK_CALORIES
+    inst.components.edible.hungervalue = 0
     inst.components.edible.sanityvalue = 0
     inst.components.edible.thirstvalue = TUNING.HYDRATION_SMALLTINY
 
-    inst.components.water.watertype = WATERTYPE.CLEAN
+    inst.components.water:SetWaterType(WATERTYPE.CLEAN)
 end
 
 local function dirtywater(inst)
     inst.components.edible.healthvalue = -TUNING.HEALING_TINY
-    inst.components.edible.hungervalue = TUNING.DRINK_CALORIES
+    inst.components.edible.hungervalue = 0
     inst.components.edible.sanityvalue = 0
     inst.components.edible.thirstvalue = TUNING.HYDRATION_SMALLTINY
 
-    inst.components.water.watertype = WATERTYPE.DIRTY
+    inst.components.water:SetWaterType(WATERTYPE.DIRTY)
 end
 
 local function saltwater(inst)
-    inst.components.edible.healthvalue = TUNING.HEALING_SMALL
-    inst.components.edible.hungervalue = TUNING.DRINK_CALORIES
+    inst.components.edible.healthvalue = -TUNING.HEALING_SMALL
+    inst.components.edible.hungervalue = -TUNING.DRINK_CALORIES
     inst.components.edible.sanityvalue = 0
     inst.components.edible.thirstvalue = TUNING.HYDRATION_SALT
 
-    inst.components.water.watertype = WATERTYPE.SALTY
+    inst.components.water:SetWaterType(WATERTYPE.SALTY)
 end
 
 return MakeCup("water_clean", cleanwater),

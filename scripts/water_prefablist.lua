@@ -1,11 +1,11 @@
 return {
 	--items
 	"bucket",
-	"bucketfull",
-	"bucketice",
-	"cup",
+	--"bucketfull",
+	--"bucketice",
+	--"cup",
 	"cupfull",
-	"purification_tablets",
+	--"purification_tablets",
 
 	--structures
 	"barrel",
@@ -13,7 +13,7 @@ return {
 	"campkettle",
 	"desalinator",
 	"kettle",
-	--"portablekettle",
+	"portablekettle",
 	"well",
 	"well_drilling",
 
@@ -23,8 +23,8 @@ return {
 	"spoiled_drink",
 	"tea_tree",
 	"tea_seed",
-	"water_spicedfoods",
-	"water_spicedfoods_mod",
+	--"water_spicedfoods",
+	--"water_spicedfoods_mod",
 
 	--buff
 	"drinkbuff",

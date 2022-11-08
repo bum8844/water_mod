@@ -13,7 +13,7 @@ local function ontimerdone(inst, data)
 	end
 end
 
-local Refiner = Class(function(self, inst)
+local Distiller = Class(function(self, inst)
 	self.inst = inst
 
 	self.water_per_process = 10
@@ -37,6 +37,4 @@ function Refiner:Refresh()
 	end
 end
 
-return Refiner
-
-		
+return Distiller

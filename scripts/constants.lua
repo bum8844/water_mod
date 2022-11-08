@@ -1,11 +1,11 @@
 WATERTYPE =
 {
-	GENERIC = "GENERIC",
-	CLEAN = "CLEAN",
-	DIRTY = "DIRTY",
-	SALTY = "SALTY",
-	DRINK = "DRINK",
-	EMPTY = "EMPTY",
+	GENERIC = "generic",
+	CLEAN = "water_clean",
+	DIRTY = "water_dirty",
+	SALTY = "water_salty",
+	DRINK = "drink",
+	EMPTY = "empty",
 }
 
 WATERGROUP =
@@ -50,10 +50,18 @@ WATERGROUP =
 	BOILABLE = 
 	{
 		name = "BOILABLE",
-		types = {
+		types =
+		{
 			WATERTYPE.CLEAN,
 			WATERTYPE.DIRTY,
 			WATERTYPE.EMPTY,
 		},
 	},
 }
+
+env.WATERTYPE = WATERTYPE
+env.WATERGROUP = WATERGROUP
+_G.WATERTYPE = WATERTYPE
+_G.WATERGROUP = WATERGROUP
+
+UPGRADETYPES["CAMPFIRE"] = "campfire"

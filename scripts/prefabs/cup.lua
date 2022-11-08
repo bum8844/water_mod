@@ -18,10 +18,10 @@ end
 
 local function TestWatertype(inst, from_object)
 	local prefab = nil
-	local water = from_object.components.waterlevel or from_object.components.water
 	if from_object ~= nil then
+		local watertype = from_object.components.water and from_object.components.water:GetWatertype()
 		prefab = from_object.components.stewer ~= nil and from_object.components.stewer.product
-			or (water ~= nil and water.watertype ~= nil) and "water_"..water.watertype
+			or watertype and "water_"..watertype
 	else
 		prefab = "water_salty"
 	end
@@ -32,7 +32,7 @@ end
 local function FillByRain(inst)
     inst.rainfilling = 0
 	inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/small")
-    local filleditem = SpawnPrefab("cup_water")
+    local filleditem = SpawnPrefab("water_clean")
 	filleditem.Transform:SetPosition(inst.Transform:GetWorldPosition())
 	if inst.components.stackable:IsStack() then
 		inst.components.stackable:Get():Remove()

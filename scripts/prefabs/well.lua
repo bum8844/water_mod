@@ -1,8 +1,10 @@
-local assets = {
+local assets =
+{
 	Asset("ANIM", "anim/well.zip"),
 }
 
-local prefabs = {
+local prefabs =
+{
 	"hole",
 }
 
@@ -86,10 +88,6 @@ local function onhammered(inst)
 	if inst.AnimState:IsCurrentAnimation("watering") or inst.AnimState:IsCurrentAnimation("hit_watering") or inst.AnimState:IsCurrentAnimation("idle_watering") then
 		inst.components.lootdropper:SpawnLootPrefab("bucket_clean")
 	end
-	inst.components.lootdropper:SpawnLootPrefab("boards")
-	inst.components.lootdropper:SpawnLootPrefab("cutstone")
-	inst.components.lootdropper:SpawnLootPrefab("cutstone")
-	inst.components.lootdropper:SpawnLootPrefab("cutstone")
 	SpawnPrefab("collapse_big").Transform:SetPosition(inst.Transform:GetWorldPosition())
 	SpawnPrefab("hole").Transform:SetPosition(inst.Transform:GetWorldPosition())
 	inst.SoundEmitter:PlaySound("dontstarve/common/destroy_stone")
@@ -119,9 +117,10 @@ local function OnRefuseItem(inst, giver, item)
 end
 
 local function ShouldAcceptItem(inst, item, giver)
-	if item:HasTag("bucket_empty") then 
+	if item.prefab == "bucket_empty" and inst:HasTag("ready") then
 		return true
-    end
+	end
+	return false
 end
 
 local function SetPickable(inst, pickable, num)
@@ -145,26 +144,14 @@ local function upwater(inst, item, giver)
 end
 
 local function getwater(inst, item, giver)
-		inst.SoundEmitter:PlaySound("turnoftides/common/together/boat/anchor/ocean_hit")
-		inst:DoTaskInTime(1.1,upwater, item, giver)
+	inst.SoundEmitter:PlaySound("turnoftides/common/together/boat/anchor/ocean_hit")
+	inst:DoTaskInTime(1.1,upwater, item, giver)
 end
 
 local function OnGetItemFromPlayer(inst, giver, item)
-	if item:HasTag("bucket_empty") then
-		if not inst.AnimState:IsCurrentAnimation("watering") or inst.AnimState:IsCurrentAnimation("idle_watering") or inst.AnimState:IsCurrentAnimation("shack_watering") then
-			if not inst.components.pickable.caninteractwith then
-				inst.SoundEmitter:PlaySound("turnoftides/common/together/boat/anchor/tether_land")
-				inst.AnimState:PlayAnimation("watering")
-				inst:DoTaskInTime(1.1,getwater, item, giver)
-			else
-				giver.components.inventory:GiveItem(SpawnPrefab("bucket"))
-				OnRefuseItem(inst, giver, item)
-			end
-		else
-			giver.components.inventory:GiveItem(SpawnPrefab("bucket"))
-			OnRefuseItem(inst, giver, item)
-		end
-	end
+	inst.SoundEmitter:PlaySound("turnoftides/common/together/boat/anchor/tether_land")
+	inst.AnimState:PlayAnimation("watering")
+	inst:DoTaskInTime(1.1,getwater, item, giver)
 end
 
 local function onsave(inst, data)
@@ -217,7 +204,7 @@ local function well()
     inst:AddComponent("pickable")
     inst.components.pickable.caninteractwith = false
     inst.components.pickable.onpickedfn = givewater
-    inst.components.pickable.product = "bucket_clean"
+    inst.components.pickable.product = "bucket_water"
     inst.components.pickable.numtoharvest = 0
 	
 	inst:AddComponent("lootdropper")
@@ -233,5 +220,5 @@ local function well()
 	return inst
 end
 
-return Prefab("hole",hole,assets),
-Prefab("well",well,assets,prefabs)
+return Prefab("hole", hole, assets),
+	Prefab("well", well, assets, prefabs)

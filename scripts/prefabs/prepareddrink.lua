@@ -4,6 +4,13 @@ local prefabs =
     "cup",
 }
 
+local function OnEaten(inst, eater)
+    local item = SpawnPrefab("cup")
+    local stacksize = eater.components.eater.eatwholestack and inst.components.stackable:StackSize() or 1
+    item.components.stackable:SetStackSize(stacksize)
+    RefundItem(inst, "cup", true)
+end
+
 local function MakePreparedDrink(data)
 	local oneatenfn = data.oneatenfn or function(inst, eater) end
 
@@ -47,13 +54,13 @@ local function MakePreparedDrink(data)
         MakeInventoryPhysics(inst)
 
 		local food_symbol_build = nil
-		inst.AnimState:SetBuild(build)
+		inst.AnimState:SetBuild("kettle_drink")
 		inst.AnimState:SetBank("kettle_drink")
 
         inst.AnimState:PlayAnimation("idle")
         inst.AnimState:OverrideSymbol("swap", data.overridebuild or "kettle_drink", data.basename or data.name)
 
-        inst:AddTag("prepareddrink")
+        inst:AddTag("drink")
         inst:AddTag("preparedfood")
 
         if data.tags ~=nil then
@@ -91,7 +98,7 @@ local function MakePreparedDrink(data)
             return inst
         end
 
-		inst.food_symbol_build = food_symbol_build or overridebuild
+		--inst.food_symbol_build = food_symbol_build or overridebuild
 
         inst:AddComponent("edible")
         inst.components.edible.isdrink = true
@@ -106,7 +113,7 @@ local function MakePreparedDrink(data)
         inst.components.edible.nochill = data.nochill or nil
         inst.components.edible:SetOnEatenFn(function(inst, eater)
             oneatenfn(inst, eater)
-            RefundItem(inst, "cup", true)
+            OnEaten(inst, eater)
         end)
 
         inst:AddComponent("inspectable")
@@ -156,7 +163,7 @@ end
 local prefs = {}
 
 for k, v in pairs(require("prepareddrinks")) do
-table.insert(prefs, MakePreparedDrink(v))
+    table.insert(prefs, MakePreparedDrink(v))
 end
 
 return unpack(prefs)

@@ -16,7 +16,7 @@ AddRecipe2("purification_tablets",{Ingredient("ash",2),Ingredient("nitre",1),Ing
 
 AddRecipe2("cup",{Ingredient("flint",3)},TECH.NONE,{atlas = ModAtlas, image = "cup.tex"},{"REFINE","HYDRATION"})
 
-AddRecipe2("bucket_empty",{Ingredient("log",4)},TECH.NONE,--[[{atlas = ModAtlas, image = "bucket_empty.tex"},]]{"REFINE","RAIN","HYDRATION"})
+AddRecipe2("bucket_empty",{Ingredient("log",4)},TECH.NONE,{atlas = ModAtlas, image = "bucket_empty.tex"},{"REFINE","RAIN","HYDRATION"})
 
 AddRecipe2("barrel",{Ingredient("boards",2),Ingredient("rope",3)},TECH.SCIENCE_ONE,{placer = "barrel_placer", atlas = ModAtlas, image = "barrel.tex"},{"CONTAINERS","HYDRATION"})
 
@@ -33,3 +33,5 @@ AddRecipe2("desalinator",{Ingredient("boards",12),Ingredient("rope",6),Ingredien
 AddRecipe2("well_drilling_item",{Ingredient("boards",2),Ingredient("cutstone",3),Ingredient("flint",4)},TECH.SCIENCE_TWO,{atlas = ModAtlas, image = "well_drilling_item.tex"},{"GARDENING","HYDRATION"})
 
 CONSTRUCTION_PLANS["hole"] = {Ingredient("boards",2),Ingredient("cutstone",6),Ingredient("hammer",1)}
+
+AddDeconstructRecipe("well", {Ingredient("boards",2),Ingredient("cutstone",6)})

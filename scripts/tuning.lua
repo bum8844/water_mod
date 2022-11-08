@@ -25,8 +25,10 @@ local tuning =
 	-- Maximum Amount of Water
 	CUP_MAX_LEVEL = 1,
 	--BOTTLE_MAX_LEVEL = 10,
-	BUCKET_MAX_LEVEL = bucket_max_level,
-	CAMP_KETTLE_MAX_LEVEL = 1,
+	BUCKET_MAX_LEVEL = 5*bucket_max_level,
+	BUCKET_LEVEL_PER_USE = bucket_max_level,
+
+	CAMPKETTLE_MAX_LEVEL = 3,
 	KETTLE_MAX_LEVEL = 5,
 	BARREL_MAX_LEVEL = 360,
 	BREWERY_MAX_LEVEL = 20,

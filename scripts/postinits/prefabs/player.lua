@@ -78,11 +78,14 @@ local AddNetvars = function(inst)
     end
 end
 
----------------------------------------------------------
----------------------------------------------------------
+AddPrefabPostInit("player_classified", AddNetvars)
+
+-----------------------------------------------------------
 
 local AddComponentToPlayer = function(inst)
     --Adding Component
+    inst:AddTag("campfire_upgradeuser")
+    
     if not _G.TheWorld.ismastersim then
         return
     end
@@ -96,8 +99,4 @@ local AddComponentToPlayer = function(inst)
     end
 end
 
---------------------------------------------------
---------------------------------------------------
-
 AddPlayerPostInit(AddComponentToPlayer)
-AddPrefabPostInit("player_classified", AddNetvars)

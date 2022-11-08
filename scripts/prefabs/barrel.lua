@@ -14,11 +14,13 @@ local prefabs =
 }
 
 local function GetWet(inst)
-	if inst.components.waterlevel:Watervalue() > 0 and not inst:HasTag("burnt") then
-		SpawnPrefab("waterballoon_splash").Transform:SetPosition(inst.Transform:GetWorldPosition())
-		inst.SoundEmitter:KillSound("destroy")
-		inst.SoundEmitter:PlaySound("dontstarve/creatures/pengull/splash")
-		inst.components.wateryprotection:SpreadProtection(inst)
+	if not inst:HasTag("burnt") then
+		if inst.components.waterlevel:GetPercent() > 0 then 
+			SpawnPrefab("waterballoon_splash").Transform:SetPosition(inst.Transform:GetWorldPosition())
+			inst.SoundEmitter:KillSound("destroy")
+			inst.SoundEmitter:PlaySound("dontstarve/creatures/pengull/splash")
+			inst.components.wateryprotection:SpreadProtection(inst)
+		end
 	end
 end
 
@@ -44,6 +46,7 @@ end
 
 local function onburnt(inst)
 	inst.components.waterlevel.accepting = false
+	inst.components.water.available = false
 	inst.components.waterlevel:SetPercent(0)
 	local amount = math.ceil(inst.components.wateryprotection.addwetness * MOISTURE_ON_BURNT_MULTIPLIER)
 	if amount > 0 then
@@ -79,6 +82,10 @@ local function OnSectionChange(new, old, inst)
 		inst.AnimState:OverrideSymbol("swap", "barrel_meter_water", tostring(new))
 	end
 end
+
+--[[local function changewatertype(inst)
+	inst.components.water:SetWaterType(inst.components.waterlevel.watertype)
+end]]
 
 local function onpercentusedchange(inst, data)
 	inst.components.wateryprotection.addwetness = data.percent * TUNING.WATER_BARREL_WETNESS
@@ -127,13 +134,12 @@ local function fn()
 	inst.components.waterlevel:SetTakeWaterFn(OnTakeWater)
 	inst.components.waterlevel:SetCanAccepts({WATERTYPE.CLEAN, WATERTYPE.EMPTY})
 	inst.components.waterlevel.maxwater = TUNING.BARREL_MAX_LEVEL
-	inst.components.waterlevel.accepting = true
 	inst.components.waterlevel:SetSections(TUNING.BREWERY_SECTIONS)
 	inst.components.waterlevel:SetSectionCallback(OnSectionChange)
 	inst.components.waterlevel:InitializeWaterLevel(0)
 
 	inst:AddComponent("water")
-	inst.components.water:SetWaterType(nil)
+	--inst.components.water:SetWaterType(nil)
 	inst.components.water:SetOnTakenFn(OnTaken)
 
 	inst:AddComponent("wateryprotection")
@@ -149,6 +155,7 @@ local function fn()
 
 	inst:ListenForEvent("onbuilt", onbuilt)
 	inst:ListenForEvent("onburnt", onburnt)
+	--inst:ListenForEvent("watertypechange", )
 	inst:ListenForEvent("percentusedchange", onpercentusedchange)
 
     inst.OnSave = onsave

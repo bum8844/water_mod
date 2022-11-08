@@ -42,3 +42,29 @@ function MakeDynamicCupImage(inst, symbol, build, use_bg)
 
     inst:ListenForEvent("stacksizechange", ChangeCupImage)
 end
+
+function Water_BurntStructureFn(inst)
+    DefaultBurntStructureFn(inst)
+    if inst.components.waterlevel ~= nil then
+        inst:RemoveComponent("waterlevel")
+    end
+    if inst.components.water ~= nil then
+        inst:RemoveComponent("water")
+    end
+end
+
+--Useful if you packed your images into one single atlas file by Atlas Image Packer
+function RegisterInvItemAtlas(atlasname, imagename)
+    RegisterInventoryItemAtlas(atlasname, imagename)
+    RegisterInventoryItemAtlas(_G.resolvefilepath(atlasname), _G.hash(imagename))
+end
+
+function RegisterItemAtlasFile(fname)
+    local atlas = _G.io.lines(_G.resolvefilepath(fname))
+    for line in atlas do
+        local _, _, image = line:find("<Element name=\"(.+)\" u1")
+        if image ~= nil then
+            RegisterInvItemAtlas(fname, image)
+        end
+    end
+end

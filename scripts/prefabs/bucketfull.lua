@@ -1,9 +1,9 @@
-local bucketstates =
+--[[local bucketstates =
 {
 	{ name = "CLEAN", anim = "full", health = TUNING.HEALING_TINY, sanity = -TUNING.SANITY_SMALL, hunger = 0, thirst = TUNING.HYDRATION_TINY },
 	{ name = "DIRTY", anim = "dirty", health = -TUNING.HEALING_TINY, sanity = -TUNING.SANITY_SMALL, hunger = 0, thirst = TUNING.HYDRATION_TINY },
 	{ name = "SALTY", anim = "salt", health = -TUNING.HEALING_SMALL, sanity = -TUNING.SANITY_SMALL, hunger = 0, thirst = TUNING.HYDRATION_SALT },
-}
+}]]
 
 local assets =
 {
@@ -12,7 +12,7 @@ local assets =
 
 local prefabs =
 {
-	"bucket",
+	"bucket_empty",
 	"bucket_ice",
 }
 
@@ -55,6 +55,7 @@ local function commonfn(anim, tags)
 	inst.AnimState:PlayAnimation(anim)
 
 	inst:AddTag("pre-preparedfood")
+	inst:AddTag("waterlevel")
 	if tags ~= nil then
 		for k, v in ipairs(tags) do
 			inst:AddTag(v)
@@ -84,7 +85,7 @@ local function commonfn(anim, tags)
 	inst.components.finiteuses:SetOnFinished(ondepleted)]]
 
 	inst:AddComponent("water")
-	inst.components.water:SetWatervalue(TUNING.BUCKET_MAX_LEVEL)
+	inst.components.water.watervalue = TUNING.BUCKET_MAX_LEVEL
 	inst.components.water:SetOnTakenFn(OnTaken)
 	inst.components.water.returnprefab = "bucket_empty"
 
@@ -98,8 +99,8 @@ local function commonfn(anim, tags)
 
 	MakeHauntableLaunchAndSmash(inst)
 
-	inst:AddComponent("watersource")
-	inst.components.watersource.onusefn = ondepleted
+	--[[inst:AddComponent("watersource")
+	inst.components.watersource.onusefn = ondepleted]]
 
 	return inst
 end
@@ -109,7 +110,7 @@ local function SetInitialTemperature(inst)
 end
 
 local function clean()
-	local inst = commonfn("full")
+	local inst = commonfn("full", {"bucket"})
 
 	if not TheWorld.ismastersim then
 		return inst
@@ -123,7 +124,8 @@ local function clean()
     inst:DoTaskInTime(0, SetInitialTemperature)
 
 	inst.components.water:SetWaterType(WATERTYPE.CLEAN)
-	inst.components.waterlevel:SetWaterType(WATERTYPE.CLEAN)
+
+	inst.components.waterlevel:SetCanAccepts({WATERTYPE.CLEAN})
 
 	inst:ListenForEvent("startfreezing", FreezeBucket)
 
@@ -131,27 +133,29 @@ local function clean()
 end
 
 local function dirty()
-	local inst = commonfn("dirty")
+	local inst = commonfn("dirty", {"bucket"})
 
 	if not TheWorld.ismastersim then
 		return inst
 	end
 
 	inst.components.water:SetWaterType(WATERTYPE.DIRTY)
-	inst.components.waterlevel:SetWaterType(WATERTYPE.DIRTY)
+
+	inst.components.waterlevel:SetCanAccepts({WATERTYPE.DIRTY})
 
 	return inst
 end
 
 local function salty()
-	local inst = commonfn("salty")
+	local inst = commonfn("salt",  {"bucket"})
 
 	if not TheWorld.ismastersim then
 		return inst
 	end
 
 	inst.components.water:SetWaterType(WATERTYPE.SALTY)
-	inst.components.waterlevel:SetWaterType(WATERTYPE.SALTY)
+	
+	inst.components.waterlevel:SetCanAccepts({WATERTYPE.SALTY})
 
 	return inst
 end

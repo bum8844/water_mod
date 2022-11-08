@@ -2,6 +2,7 @@ local assets =
 {
     Asset("ANIM", "anim/campkettle.zip"),
     Asset("ANIM", "anim/campkettle_meter_water.zip"),
+    Asset("ANIM", "anim/campkettle_meter_dirty.zip"),
     Asset("IMAGE", "images/tea_inventoryitem.tex"),
     Asset("ATLAS", "images/tea_inventoryitem.xml"),
     Asset("ATLAS_BUILD", "images/tea_inventoryitem.xml", 256),
@@ -44,16 +45,19 @@ local function fn_item()
     inst:AddComponent("inspectable")
     
     inst:AddComponent("inventoryitem")
-    inst.components.inventoryitem.atlasname = "images/tea_inventoryitem.xml"
-    inst.components.inventoryitem.imagename = "campkettle"
+    inst.components.inventoryitem:ChangeImageName("campkettle")
+
+    inst:AddComponent("upgrader")
+    inst.components.upgrader.upgradetype = UPGRADETYPES.CAMPFIRE
+    inst.components.upgrader.upgradevalue = 1
 
     MakeHauntableLaunchAndSmash(inst)
 
     return inst
 end
 
-local function OnSpawnIn(inst)
-    if not inst.parent then
+local function onbuilt(inst)
+    if not inst._fire then
         print("must build on campfire or firepit! -- removing")
         inst:Remove()
     else
@@ -64,57 +68,113 @@ local function OnSpawnIn(inst)
             inst:Show()
             inst.AnimState:PlayAnimation("place", false)
             inst.AnimState:PushAnimation("idle_empty")
+            inst.SoundEmitter:PlaySound("dontstarve/common/cook_pot_craft")
         end)
     end
 end
 
 local function ChangeToItem(inst)
     local item = SpawnPrefab("campkettle_item")
-    local type = inst._type
-    if inst.parent then
-        inst.parent.components.burnable:OverrideBurnFXBuild("campfire_fire")
-        inst.parent.components.trader:Enable()
-        inst.parent._kettleinst = nil
-        inst.parent._setkettle = false
+    if inst._fire then
+        inst._fire.components.burnable:OverrideBurnFXBuild("campfire_fire")
+        if inst._fire.components.trader ~= nil then
+            inst._fire.components.trader:Enable()
+        end
+        inst._fire.components.upgradeable.upgradetype = UPGRADETYPES.CAMPFIRE
+        inst._fire.components.upgradeable.numupgrades = 0
     end
-    item.Transform:SetPosition(inst.Transform:GetWorldPosition())
-    item.AnimState:PlayAnimation("collapse_"..type)
+    
+    item.AnimState:PlayAnimation("collapse_"..inst._type)
     item.SoundEmitter:PlaySound("dontstarve/common/together/portable/cookpot/collapse")
+    item.Transform:SetPosition(inst.Transform:GetWorldPosition())
+    inst._fire:RemoveChild(inst)
+end
+
+local function stopboil(inst)
+    inst:RemoveTag("boiling")
+    inst.components.waterlevel.accepting = true
+    inst.components.water.available = true
+    inst.AnimState:PlayAnimation("idle_empty")
+    inst.SoundEmitter:KillSound("snd")
+    if inst._timer == 0 then
+        inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_finish", "snd")
+    else
+        inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_close", "snd")
+    end
+    if inst.boilingtask ~= nil then
+        inst.boilingtask:Cancel()
+        inst.boilingtask = nil
+    end
+end
+
+local function ondoneboil(inst)
+    inst._timer = 0
+    stopboil(inst)
+    inst.components.waterlevel.watertype = WATERTYPE.CLEAN
+    inst.AnimState:OverrideSymbol("swap", "campkettle_meter_water", tostring(inst._waterlevel))
+end
+
+local function doboil(inst)
+    if inst._fire ~= nil and inst._fire.components.fueled:GetCurrentSection() > 0
+        and inst.components.waterlevel:GetPercent() > 0 and inst.components.waterlevel.watertype == WATERTYPE.DIRTY then
+        inst:AddTag("boiling")
+        inst.components.waterlevel.accepting = false
+        inst.components.water.available = false
+        inst.AnimState:PlayAnimation("cooking_loop", true)
+        inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_rattle", "snd")
+        inst.boilingtask = inst:DoTaskInTime(inst._timer, ondoneboil, inst)
+    end
+end
+    
+local function OnTakeWater(inst)
+    if not inst:HasTag("burnt") then
+        inst._timer = TUNING.BASE_COOK_TIME * TUNING.KETTLE_WATER * inst.components.waterlevel:GetPercent()
+        doboil(inst)
+    end
+end
+
+local function OnSectionChange(new, old, inst)
+    if inst._waterlevel ~= new then
+        inst._waterlevel = new
+        local watertype = inst.components.waterlevel.watertype == WATERTYPE.CLEAN and "water" or "dirty"
+        inst.AnimState:OverrideSymbol("swap", "campkettle_meter_"..watertype, tostring(inst._waterlevel))
+    end
 end
 
 local function OnDismantle(inst, doer)
     ChangeToItem(inst)
     inst:Remove()
-    --[[if inst.components.waterlevel.currentwater == 0 then
-        ChangeToItem(inst)
-        inst:Remove()
-    else
-        doer.components.talker:Say(GetString(doer,"ACTIONFAIL",{"DISMANTLE","NOTEMPTY"}))
-    end]]
+end
+
+local function OnTaken(inst, source, delta)
+    inst.components.waterlevel:DoDelta(-delta)
+    if inst.components.waterlevel:GetPercent() <= 0 then
+        inst.components.waterlevel:SetWaterType(nil)
+    end
 end
 
 local function onsave(inst, data)
     data.pittype = inst._type
-    if inst._donebuild then
-        data.donebuild = inst._donebuild
+    if inst._timer ~= nil then
+        data.timer = inst._timer
     end
 end
 
 local function onload(inst, data)
-    if data.pittype ~= nil then
-        inst._type = data.pittype
-        local type = data.pittype
-        inst.AnimState:SetBank("type_"..type)
-        inst:Show()
-    end
-    if data.donebuild then
-        inst._donebuild = data.donebuild
+    if data ~= nil then
+        if data.pittype ~= nil then
+            inst._type = data.pittype
+            inst.AnimState:SetBank("type_"..inst._type)
+        end
+        if data.timer ~= nil then
+            inst._timer = data.timer
+            doboil(inst)
+        end
     end
 end
 
 local function fn()
     local inst = CreateEntity()
-    inst:Hide()
     inst._type = "A"
     inst._donebuild = nil
 
@@ -143,17 +203,29 @@ local function fn()
 
     inst:AddComponent("inspectable")
 
+    inst:AddComponent("waterlevel")
+    inst.components.waterlevel:SetCanAccepts({WATERTYPE.DIRTY})
+    inst.components.waterlevel:SetTakeWaterFn(OnTakeWater)
+    inst.components.waterlevel:SetSections(3)
+    inst.components.waterlevel:SetSectionCallback(OnSectionChange)
+    inst.components.waterlevel.maxwater = TUNING.CAMPKETTLE_MAX_LEVEL
+    inst.components.waterlevel:InitializeWaterLevel(0)
+
+    inst:AddComponent("water")
+    inst.components.water:SetOnTakenFn(OnTaken)
+    inst.components.water:SetWaterType(nil)
+
     MakeHauntableLaunchAndSmash(inst)
 
     inst.OnSave = onsave
     inst.OnLoad = onload
+    inst.doboil = doboil
+    inst.stopboil = stopboil
 
-    if not inst._donebuild then
-        inst:DoTaskInTime(0, OnSpawnIn)
-    end
+    inst:ListenForEvent("onbuilt", onbuilt)
 
     return inst
 end
 
 return Prefab("campkettle", fn, assets, prefabs),
-Prefab("campkettle_item", fn_item, assets, prefabs_item)
+    Prefab("campkettle_item", fn_item, assets, prefabs_item)

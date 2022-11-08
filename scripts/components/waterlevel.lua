@@ -1,5 +1,5 @@
 --'waterlevel' is basically a modified version of 'fueled'.
---We couldn't use fuel directly because ACTIONS.ADDFUEL removes the fuel item from the owner during the work.
+-- also, the waterelevel is like dynamic 'water'.
 
 local SourceModifierList = require("util/sourcemodifierlist")
 
@@ -21,24 +21,16 @@ local function oncanaccepts(self, canaccepts, old_canaccepts)
 end
 
 local function onaccepting(self, accepting)
-    if accepting then
-        if not self.inst:HasTag("accepting_water") then
-            self.inst:AddTag("accepting_water")
-        end
-    else
-        if self.inst:HasTag("accepting_water") then
-            self.inst:RemoveTag("accepting_water")
-        end
-    end
+    self.inst.replica.waterlevel:SetAccepting(accepting)
 end
 
 local function oncurrentwater(self, currentwater)
-    if currentwater <= 0 then
-        self.inst.replica.waterlevel:SetIsDepleted(true)
-    else
-        self.inst.replica.waterlevel:SetIsDepleted(false)
-    end
+    self.inst.replica.waterlevel:SetIsDepleted(self:IsEmpty())
 end
+
+--[[local function onwatertype(self, watertype)
+    self.inst.replica.waterlevel:SetWaterType(watertype or "")
+end]]
 
 local Waterlevel = Class(function(self, inst)
     self.inst = inst
@@ -59,14 +51,16 @@ local Waterlevel = Class(function(self, inst)
     --self.firstperiod = nil
     --self.firstperiodfull = nil
     --self.firstperioddt = nil
-    self.bonusmult = 1
+    --self.bonusmult = 1
     self.depleted = nil
+    self.onfullfn = nil
 end,
 nil,
 {
     canaccepts = oncanaccepts,
     accepting = onaccepting,
     currentwater = oncurrentwater,
+    --watertype = onwatertype,
 })
 
 function Waterlevel:OnRemoveFromEntity()
@@ -82,7 +76,7 @@ function Waterlevel:OnSave()
 end
 
 function Waterlevel:OnLoad(data)
-    self.watertype = data.watertype
+    self:SetWaterType(data.watertype)
     if data.waterlevel then
         self:InitializeWaterLevel(math.max(0, data.waterlevel)) 
     end
@@ -94,12 +88,19 @@ function Waterlevel:MakeEmpty()
     end
 end
 
+function Waterlevel:GetWater()
+    return self.currentwater
+end
+
 function Waterlevel:SetCanAccepts(canaccepts)
     self.canaccepts = canaccepts
 end
 
 function Waterlevel:SetWaterType(type)
-    self.watertype = type
+    if type ~= self.watertype then
+        self.watertype = type
+        self.inst:PushEvent("watertypechange", {watertype = self.watertype})
+    end
 end
 
 function Waterlevel:SetSectionCallback(fn)
@@ -110,20 +111,24 @@ function Waterlevel:SetDepletedFn(fn)
     self.depleted = fn
 end
 
+function Waterlevel:SetOnFullFn(fn)
+    self.onfullfn = fn
+end
+
 function Waterlevel:IsEmpty()
     return self.currentwater <= 0
+end
+
+function Waterlevel:IsFull()
+    return self.currentwater >= self.maxwater
 end
 
 function Waterlevel:SetSections(num)
     self.sections = num
 end
 
-function Waterlevel:Watervalue()
-    return self.currentwater
-end
-
 function Waterlevel:GetCurrentSection()
-    return self:IsEmpty() and 0 or math.min( math.ceil(self:GetPercent()* self.sections), self.sections)
+    return self:IsEmpty() and 0 or math.min( math.floor(self:GetPercent()* self.sections)+1, self.sections)
 end
 
 function Waterlevel:ChangeSection(amount)
@@ -135,29 +140,26 @@ function Waterlevel:SetTakeWaterFn(fn)
 end
 
 function Waterlevel:TakeWaterItem(item, doer)
-    local watertype = item.components.waterlevel ~= nil and item.components.waterlevel.watertype
-        or item.components.water ~= nil and item.components.water.watertype
+    local watervalue = item.components.water:GetWater()
+    self:SetWaterType(item.components.water:GetWatertype())
 
-    self:SetWaterType(watertype)
-
-    local oldsection = self:GetCurrentSection()
     self.oldcurrenwater = self.currentwater
 
-    local water = item.components.waterlevel ~= nil and item.components.waterlevel:Watervalue()
-        or item.components.water ~= nil and item.components.water:Watervalue()
-        or nil
+    if watervalue ~= nil then
+        self:DoDelta(watervalue, doer)
+    else
+        self:SetPercent(1)
+    end
 
-    water = water ~= nil and math.min(water, self.maxwater - self.currentwater) or self.maxwater - self.currentwater
+    local delta = self.currentwater - self.oldcurrenwater
 
-    self:DoDelta(water, doer)
-
-    item.components.water:Taken(self.inst, water)
+    item.components.water:Taken(self.inst, delta)
 
     if self.ontakewaterfn ~= nil then
         self.ontakewaterfn(self.inst)
     end
 
-    self.inst:PushEvent("takewater", { watervalue = water, watertype = self.watertype })
+    self.inst:PushEvent("takewater", { watervalue = delta, watertype = self.watertype })
 
     return true
 end
@@ -240,11 +242,6 @@ function Waterlevel:DoDelta(amount, doer)
             self.sectionfn(newsection, oldsection, self.inst)
         end
         self.inst:PushEvent("onwaterlevelsectionchanged", { newsection = newsection, oldsection = oldsection})
-        --self.inst:PushEvent("refresh")
-        if self.currentwater <= 0 and self.depleted then
-            self.watertype = nil
-            self.depleted(self.inst)
-        end
     end
 
     self.inst:PushEvent("percentusedchange", { percent = self:GetPercent() })
@@ -279,7 +276,8 @@ end
 Waterlevel.LongUpdate = Waterlevel.DoUpdate
 
 function Waterlevel:TestType(item, testvalues)
-    if item ~= nil and item.components.water ~= nil then
+    local water = item ~= nil and item.components.waterlevel or item.components.water
+    if water then
         for i, v in ipairs(testvalues) do
             if type(v) == "table" then
                 for i2, v2 in ipairs(v.types) do
@@ -295,8 +293,10 @@ function Waterlevel:TestType(item, testvalues)
 end
 
 function Waterlevel:CanAccept(item)
-    local canaccept, reason
-    if self.watertype ~= nil and self.watertype ~= item.components.water.watertype then
+    local item_watertype = item.components.waterlevel.watertype or item.components.water.watertype
+    local self_watertype = self.watertype-- or self.inst.components.water.watertype
+
+    if item_watertype == nil or item_watertype ~= self_watertype then
         return false
     end
     return self.accepting and item ~= nil and self:TestType(item, self.canaccepts)

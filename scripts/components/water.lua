@@ -21,12 +21,11 @@ end
 
 local Water = Class(function(self, inst)
     self.inst = inst
-    self.watervalue = nil --assume filling full-up if watervalue == nil
-    self.watertype = WATERTYPE.GENERIC
+    self.watervalue = nil --overriding amount of water.
+    self.watertype = nil --WATERTYPE.GENERIC
     self.ontaken = nil
     self.available = true
     --self.returnprefab = nil --Used for item check
-    --self.drinktype = nil --Used for drinks. for probable use
 end,
 nil,
 {
@@ -34,23 +33,27 @@ nil,
     available = onavailable,
 })
 
-function Water:SetWatervalue(num)
-    self.watervalue = num
+function Water:OnRemoveFromEntity()
+    if self.watertype ~= nil then
+        self.inst:RemoveTag("water_"..self.watertype)
+    end
 end
 
-function Water:Watervalue()
+function Water:GetWater()
+    if self.inst.components.waterlevel ~= nil then
+        return self.inst.components.waterlevel.currentwater
+    end
     local stacksize = self.inst.components.stackable ~= nil and self.inst.components.stackable:StackSize() or 1
     return self.watervalue ~= nil and self.watervalue * stacksize or nil
 end
 
-function Water:SetWaterType(type)
-	self.watertype = type
+function Water:GetWatertype()
+    return self.inst.components.waterlevel ~= nil and self.inst.components.waterlevel.watertype
+        or self.watertype
 end
 
-function Water:OnRemoveFromEntity()
-    if self.watertype ~= nil then
-        self.inst:RemoveTag(self.watertype.."_water")
-    end
+function Water:SetWaterType(watertype)
+    self.watertype = watertype
 end
 
 function Water:SetOnTakenFn(fn)
