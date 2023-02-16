@@ -319,6 +319,8 @@ local function fn()
     inst._timer = 0
     inst._waterlevel = 0
 
+    inst:AddComponent("wateryprotection")
+
     inst:AddComponent("waterlevel")
     inst.components.waterlevel.SetCanAccepts(WATERGROUP.BOILABLE)
     inst.components.waterlevel:SetTakeWaterFn(OnTakeWater)

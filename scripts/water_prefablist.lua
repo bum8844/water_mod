@@ -5,7 +5,7 @@ return {
 	--"bucketice",
 	--"cup",
 	"cupfull",
-	--"purification_tablets",
+	"purification_tablets",
 
 	--structures
 	"barrel",

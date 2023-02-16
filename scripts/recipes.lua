@@ -14,7 +14,7 @@ AddRecipe2("spice_caffeinpepper",{Ingredient("caffeinberry_bean_cooked", 3, ModA
 
 AddRecipe2("purification_tablets",{Ingredient("ash",2),Ingredient("nitre",1),Ingredient("charcoal",1),Ingredient("saltrock",1)},TECH.SCIENCE_TWO,{atlas = ModAtlas, numtogive = 10 , image = "purification_tablets.tex"},{"COOKING","HYDRATION"})
 
-AddRecipe2("cup",{Ingredient("flint",3)},TECH.NONE,{atlas = ModAtlas, image = "cup.tex"},{"REFINE","HYDRATION"})
+--AddRecipe2("cup",{Ingredient("flint",3)},TECH.NONE,{atlas = ModAtlas, image = "cup.tex"},{"REFINE","HYDRATION"})
 
 AddRecipe2("bucket_empty",{Ingredient("log",4)},TECH.NONE,{atlas = ModAtlas, image = "bucket_empty.tex"},{"REFINE","RAIN","HYDRATION"})
 
