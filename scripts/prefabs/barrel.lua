@@ -67,13 +67,22 @@ local function onload(inst, data)
     end
 end
 
-local function OnTakeWater(inst)
+local function waterlevelchk(inst)
+	if inst.components.waterlevel:IsFull() then
+		inst.components.waterlevel.accepting = false
+	else
+		inst.components.waterlevel.accepting = true
+	end
 	inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/medium")
 end
 
+local function OnTakeWater(inst)
+	waterlevelchk(inst)
+end
+
 local function OnTaken(inst, taker, water_amount)
-	OnTakeWater(inst)
 	inst.components.waterlevel:DoDelta(-water_amount)
+	waterlevelchk(inst)
 end
 
 local function OnSectionChange(new, old, inst)
