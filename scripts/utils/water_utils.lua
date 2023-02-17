@@ -3,6 +3,7 @@ function RefundItem(inst, refund, dontremove)
     if type(refund) == "string" then
         refund = SpawnPrefab(refund)
     end
+
     local owner = inst.components.inventoryitem ~= nil and inst.components.inventoryitem:GetGrandOwner() or nil
     local container = owner ~= nil and (owner.components.inventory or owner.components.container) or nil
     local x, y, z = inst.Transform:GetWorldPosition()

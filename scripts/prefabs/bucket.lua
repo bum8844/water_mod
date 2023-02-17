@@ -6,6 +6,9 @@ local assets =
 local function OnTakeWater(inst)
 	inst.SoundEmitter:PlaySound("dontstarve/creatures/pengull/splash")
 	inst.components.finiteuses:Use(inst.components.watertaker._laststack)
+    if inst.components.finiteuses.current == 0 then
+        inst:Remove()
+    end
 end
 
 local function fn()
