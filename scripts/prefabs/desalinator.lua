@@ -58,6 +58,7 @@ end
 local function harvestfn(inst)
     if not inst:HasTag("burnt") then
         inst._saltvalue = inst._saltvalue - 10
+        inst.components.pickable.numtoharvest = inst.components.pickable.numtoharvest - 1
         inst.SoundEmitter:PlaySound("saltydog/common/saltbox/close")
     end
 end
@@ -67,7 +68,7 @@ local function BoiledDone(inst)
         inst.components.waterlevel.accepting = true
     end
     inst.components.watersource.available = true
-    inst.components.waterlevel.item_watertype = WATERTYPE.CLEAN
+    inst.components.waterlevel.watertype = WATERTYPE.CLEAN
     inst.AnimState:OverrideSymbol("swap", "desalinator_meter_water", tostring(inst._waterlevel))
     inst.AnimState:PlayAnimation("idle")
     inst.SoundEmitter:KillSound("desalinator_sound")
@@ -78,8 +79,7 @@ local function BoiledDone(inst)
         inst.SoundEmitter:KillSound("purify")
         inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/medium")
         inst.SoundEmitter:PlaySound("saltydog/common/saltbox/open")
-        inst.components.stewer.done = true
-        inst.components.stewer.product = "saltrock"
+        inst.components.pickable.numtoharvest = inst.components.pickable.numtoharvest + 1
     end
 end
 
@@ -142,13 +142,32 @@ local function OnTakeWater(inst)
     Boiled(inst)
 end
 
+local function waterlevelchk(inst)
+    if inst.components.waterlevel:IsFull() then
+        inst.components.waterlevel.accepting = false
+    else
+        inst.components.waterlevel.accepting = true
+    end
+    if not inst.components.waterlevel:IsEmpty() then
+        inst.components.watersource.available = true
+    else
+        inst.components.watersource.available = false
+    end
+end
+
+local function OnTaken(inst, taker, water_amount)
+    inst.components.waterlevel:DoDelta(-water_amount)
+    waterlevelchk(inst)
+    inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/medium")
+end
+
 local function getstatus(inst)
     return (inst:HasTag("burnt") and "BURNT")
         or (inst:HasTag("boilling") and "PURIFY")
         or (inst.components.watersource.available and "HASWATER")
         or "EMPTY"
 end
-GetTime()
+
 local function fn()
 	local inst = CreateEntity()
 	
@@ -186,8 +205,9 @@ local function fn()
     inst:AddComponent("inspectable")
     inst.components.inspectable.getstatus = getstatus
 
-    inst:AddComponent("stewer")
-    inst.components.stewer.onharvest = harvestfn
+    inst:AddComponent("pickable")
+    inst.components.pickable.product = "saltrock"
+    inst.components.pickable.numtoharvest = 0
 
     inst:AddComponent("waterlevel")
     inst.components.waterlevel:SetCanAccepts({WATERTYPE.SALTY})
@@ -198,6 +218,9 @@ local function fn()
     inst.components.waterlevel:SetSections(TUNING.DESALINATOR_MAX_LEVEL)
     inst.components.waterlevel:SetSectionCallback(OnSectionChange)
     inst.components.waterlevel:InitializeWaterLevel(0)
+
+    inst:AddComponent("water")
+    inst.components.water:SetOnTakenFn(OnTaken)
 
     inst:AddComponent("watersource")
     inst.components.watersource.available = false
@@ -210,6 +233,7 @@ local function fn()
 	
 	inst:ListenForEvent("onbuilt", onbuilt)
     inst:ListenForEvent("harvestsalt", harvestsalt)
+    inst:ListenForEvent("onwaterlevelsectionchanged", waterlevelchk)
 	
 	MakeHauntableWork(inst)
 	

@@ -30,7 +30,7 @@ local Distiller = Class(function(self, inst)
 	self.inst:ListenForEvent("timerdone", ontimerdone)
 end, nil, nil)
 
-function Refiner:Refresh()
+function Distiller:Refresh()
 	local waterlevel = self.inst.components.waterlevel.currentwater
 
 	if self.inst.components.timer:TimerExists("refining") then

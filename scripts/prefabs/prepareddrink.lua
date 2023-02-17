@@ -164,5 +164,8 @@ local prefs = {}
 for k, v in pairs(require("prepareddrinks")) do
     table.insert(prefs, MakePreparedDrink(v))
 end
+for k, v in pairs(require("prepareagedrink")) do
+    table.insert(prefs, MakePreparedDrink(v))
+end
 
 return unpack(prefs)
