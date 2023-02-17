@@ -74,6 +74,10 @@ local function hole()
 	return inst
 end
 
+local function SetupLoot(lootdropper)
+	lootdropper:SetLoot({"water_clean","water_clean","water_clean","water_clean","water_clean","water_clean","water_clean","water_clean","water_clean","water_clean","water_clean","water_clean","water_clean","water_clean","water_clean","water_clean","water_clean","water_clean","water_clean","water_clean"})
+end
+
 
 local function updatewellstate(inst)
     local num = inst.components.pickable.numtoharvest
@@ -86,11 +90,12 @@ end
 
 local function onhammered(inst)
 	if inst.AnimState:IsCurrentAnimation("watering") or inst.AnimState:IsCurrentAnimation("hit_watering") or inst.AnimState:IsCurrentAnimation("idle_watering") then
-		inst.components.lootdropper:SpawnLootPrefab("bucket_clean")
+		inst.components.lootdropper.lootsetupfn = SetupLoot
 	end
 	SpawnPrefab("collapse_big").Transform:SetPosition(inst.Transform:GetWorldPosition())
 	SpawnPrefab("hole").Transform:SetPosition(inst.Transform:GetWorldPosition())
 	inst.SoundEmitter:PlaySound("dontstarve/common/destroy_stone")
+	inst.components.lootdropper:DropLoot()
 	inst:Remove()
 end
 
@@ -130,16 +135,17 @@ local function SetPickable(inst, pickable, num)
 end
 
 local function givewater(inst, picker)
+	inst:AddTag("ready")
 	inst.AnimState:PlayAnimation("shack_watering")
 	inst.AnimState:PushAnimation("idle_empty")
 	picker.SoundEmitter:PlaySound("dontstarve/creatures/pengull/splash")
-	inst.components.pickable.numtoharvest = inst.components.pickable.numtoharvest - 1
+	inst.components.pickable.numtoharvest = inst.components.pickable.numtoharvest - 20
 	SetPickable(inst, false, inst.components.pickable.numtoharvest)
 end
 
 local function upwater(inst, item, giver)
 	inst.AnimState:PushAnimation("idle_watering")
-	inst.components.pickable.numtoharvest = inst.components.pickable.numtoharvest + 1
+	inst.components.pickable.numtoharvest = inst.components.pickable.numtoharvest + 20
 	SetPickable(inst, true, inst.components.pickable.numtoharvest)
 end
 
@@ -149,6 +155,7 @@ local function getwater(inst, item, giver)
 end
 
 local function OnGetItemFromPlayer(inst, giver, item)
+	inst:RemoveTag("ready")
 	inst.SoundEmitter:PlaySound("turnoftides/common/together/boat/anchor/tether_land")
 	inst.AnimState:PlayAnimation("watering")
 	inst:DoTaskInTime(1.1,getwater, item, giver)
@@ -184,6 +191,7 @@ local function well()
 
     inst:AddTag("well")
     inst:AddTag("structure")
+    inst:AddTag("ready")
 	
 	MakeObstaclePhysics(inst, .5)
 
@@ -200,14 +208,15 @@ local function well()
 	
 	inst:AddComponent("inspectable")
 	inst.IsGetWater = false
+
+	inst:AddComponent("lootdropper")
 	
     inst:AddComponent("pickable")
     inst.components.pickable.caninteractwith = false
     inst.components.pickable.onpickedfn = givewater
-    inst.components.pickable.product = "bucket_water"
+    inst.components.pickable.product = "water_clean"
     inst.components.pickable.numtoharvest = 0
 	
-	inst:AddComponent("lootdropper")
 	inst:AddComponent("workable")
     inst.components.workable:SetWorkAction(ACTIONS.HAMMER)
     inst.components.workable:SetWorkLeft(4)
