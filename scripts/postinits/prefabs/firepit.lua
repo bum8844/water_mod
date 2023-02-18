@@ -4,6 +4,7 @@ local function install_kettle(inst, no_built_callback)
 
 	inst:AddChild(inst._kettle)
 	inst._kettle.entity:SetParent(inst.entity)
+	--inst.components.burnable:OverrideBurnFXBuild("campkettlefire")
 	inst.components.burnable:OverrideBurnFXBuild("quagmire_pot_fire")
 
 	inst._kettle._fire = inst
@@ -34,6 +35,8 @@ local function OnSave(inst, data)
 			watertype = kettle.components.waterlevel.watertype,
 			boil_timer = kettle._timer,
 		}
+	else
+		data.kettle = nil
 	end
 end
 

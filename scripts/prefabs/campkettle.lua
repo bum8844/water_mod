@@ -144,8 +144,12 @@ local function OnSectionChange(new, old, inst)
 end
 
 local function OnDismantle(inst, doer)
-    ChangeToItem(inst)
-    inst:Remove()
+    if inst.components.waterlevel.currentwater == nil then
+        ChangeToItem(inst)
+        inst:Remove()
+    else
+        return false
+    end
 end
 
 local function OnTaken(inst, source, delta)
