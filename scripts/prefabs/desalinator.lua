@@ -55,6 +55,11 @@ local function onpickedfn(inst, picker)
     end
 end
 
+local function CalculationForSalt(inst)
+    inst.components.pickable.numtoharvest = math.floor(inst._saltvalue*.1)
+    inst.components.pickable.canbepicked = true
+end
+
 local function BoiledDone(inst)
     if inst.components.waterlevel.currentwater < inst.components.waterlevel.maxwater then
         inst.components.waterlevel.accepting = true
@@ -71,7 +76,7 @@ local function BoiledDone(inst)
         inst.SoundEmitter:KillSound("purify")
         inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/medium")
         inst.SoundEmitter:PlaySound("saltydog/common/saltbox/open")
-        inst.components.pickable.numtoharvest = inst.components.pickable.numtoharvest + 1
+        CalculationForSalt(inst)
     end
 end
 
@@ -79,6 +84,7 @@ local function Boiled(inst)
     inst:AddTag("boilling")
     inst.components.waterlevel.accepting = false
     inst.components.watersource.available = false
+    inst.components.pickable.canbepicked = false
     inst.AnimState:PlayAnimation("cook", true)
     inst.SoundEmitter:PlaySound("dontstarve/halloween_2018/madscience_machine/cooking_LP", "desalinator_sound", 0.3)
     inst:DoTaskInTime(inst._timer, BoiledDone, inst)
@@ -123,10 +129,17 @@ local function OnSectionChange(new, old, inst)
         end
     end
     inst.AnimState:OverrideSymbol("swap", "desalinator_meter_"..watertype, tostring(inst._waterlevel))
+    if inst._saltvalue >= 10 then
+        CalculationForSalt(inst)
+    end
 end
 
 local function OnTakeWater(inst)
-    inst._saltvalue = inst._saltvalue + inst.components.waterlevel.currentwater
+    if inst._saltvalue >= 20 then
+        inst._saltvalue = inst._saltvalue + (inst.components.waterlevel.currentwater - inst.components.waterlevel.oldcurrenwater)
+    else
+        inst._saltvalue = inst.components.waterlevel.currentwater
+    end
     inst._timer = TUNING.DESALINATION_TIME * inst.components.waterlevel.currentwater
     Boiled(inst)
 end

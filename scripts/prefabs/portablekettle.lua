@@ -181,7 +181,7 @@ local function harvestfn(inst)
 end
 
 local function OnSectionChange(new, old, inst)
-    local watertype = inst.components.waterlevel.watertype or "water"
+    local watertype = inst.components.waterlevel.watertype ~= WATERTYPE.CLEAN and "dirty" or "water"
     if new ~= nil then
         if inst._waterlevel ~= new then
             inst._waterlevel = new
@@ -274,9 +274,8 @@ end
 local function OnTakeWater(inst)
     if not inst:HasTag("burnt") then
         inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/medium")
-
         if inst.components.waterlevel.watertype ~= WATERTYPE.CLEAN then
-            inst._timer = TUNING.KETTLE_WATER * inst.components.waterlevel:Watervalue()
+            inst._timer = TUNING.BASE_COOK_TIME * TUNING.KETTLE_WATER * inst.components.waterlevel:GetPercent()
             inst.components.container:Close()
             inst.components.container:DropEverything()
             boil(inst)
