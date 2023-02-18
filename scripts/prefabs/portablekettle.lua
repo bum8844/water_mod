@@ -127,7 +127,7 @@ local function SetProductSymbol(inst, product, overridebuild)
         inst.AnimState:Hide("swap_small")
     end
 
-    inst.AnimState:OverrideSymbol(potlevels, build, "cup_"..overridesymbol)
+    inst.AnimState:OverrideSymbol(potlevels, build, overridesymbol)
 end
 
 local function spoilfn(inst)
@@ -288,22 +288,6 @@ local function OnTaken(inst, source, delta)
     local spoiltime = inst.components.stewer.spoiltime
     local product_spoilage = inst.components.stewer.product_spoilage
     inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/small")
-    inst.components.waterlevel:DoDelta(-delta)
-    if product ~= nil then
-        inst.components.stewer:Harvest(source.components.inventoryitem.owner)
-        if inst.components.waterlevel:GetPercent() > 0 then
-            inst.components.stewer.done = true
-            inst.components.stewer.product = product
-            inst.components.stewer.spoiltime = spoiltime
-            inst.components.stewer.product_spoilage = product_spoilage
-            inst.components.stewer.task = inst:DoTaskInTime(spoiltime, dospoil, inst.components.stewer)
-            inst.components.container.canbeopened = false
-        else
-            inst.components.waterlevel.accepting = true
-            inst.components.container.canbeopened = true
-            inst.AnimState:PlayAnimation("idle_empty")
-        end
-    end
 end
 
 

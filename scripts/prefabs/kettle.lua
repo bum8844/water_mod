@@ -308,6 +308,7 @@ local function fn()
 	inst.AnimState:OverrideSymbol("swap", "kettle_meter_water", "0")
     
 	inst:AddTag("structure")
+    inst:AddTag("kettle")
     inst:AddTag("stewer")
 	
 	inst.entity:SetPristine()

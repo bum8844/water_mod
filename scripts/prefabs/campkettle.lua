@@ -134,11 +134,13 @@ local function OnTakeWater(inst)
 end
 
 local function OnSectionChange(new, old, inst)
-    if inst._waterlevel ~= new then
-        inst._waterlevel = new
-        local watertype = inst.components.waterlevel.watertype == WATERTYPE.CLEAN and "water" or "dirty"
-        inst.AnimState:OverrideSymbol("swap", "campkettle_meter_"..watertype, tostring(inst._waterlevel))
+    local watertype = inst.components.waterlevel.watertype ~= WATERTYPE.CLEAN and "dirty" or "water"
+    if new ~= nil then
+        if inst._waterlevel ~= new then
+            inst._waterlevel = new
+        end
     end
+    inst.AnimState:OverrideSymbol("swap", "campkettle_meter_"..watertype, tostring(inst._waterlevel))
 end
 
 local function OnDismantle(inst, doer)
