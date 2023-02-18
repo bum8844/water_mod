@@ -46,19 +46,11 @@ local function onbuilt(inst)
 	inst.AnimState:PushAnimation("idle")
 end
 
-local function harvestsalt(inst)
-    if inst._saltvalue >= 10 then
-        inst.components.stewer.product = "saltrock"
-        if not inst:HasTag("boilling") then
-            inst.components.stewer.done = true
-        end
-    end
-end
-
-local function harvestfn(inst)
+local function onpickedfn(inst, picker)
     if not inst:HasTag("burnt") then
-        inst._saltvalue = inst._saltvalue - 10
-        inst.components.pickable.numtoharvest = inst.components.pickable.numtoharvest - 1
+        local value = inst._saltvalue
+        inst._saltvalue = inst._saltvalue - math.floor((value*.1)*10)
+        inst.components.pickable.numtoharvest = inst.components.pickable.numtoharvest - inst.components.pickable.numtoharvest
         inst.SoundEmitter:PlaySound("saltydog/common/saltbox/close")
     end
 end
@@ -85,9 +77,6 @@ end
 
 local function Boiled(inst)
     inst:AddTag("boilling")
-    if inst.components.stewer.done then
-        inst.components.stewer.done = false
-    end
     inst.components.waterlevel.accepting = false
     inst.components.watersource.available = false
     inst.AnimState:PlayAnimation("cook", true)
@@ -206,6 +195,7 @@ local function fn()
     inst.components.inspectable.getstatus = getstatus
 
     inst:AddComponent("pickable")
+    inst.components.pickable.onpickedfn = onpickedfn
     inst.components.pickable.product = "saltrock"
     inst.components.pickable.numtoharvest = 0
 
@@ -232,7 +222,6 @@ local function fn()
 	inst.components.workable:SetOnWorkCallback(onhit)
 	
 	inst:ListenForEvent("onbuilt", onbuilt)
-    inst:ListenForEvent("harvestsalt", harvestsalt)
     inst:ListenForEvent("onwaterlevelsectionchanged", waterlevelchk)
 	
 	MakeHauntableWork(inst)

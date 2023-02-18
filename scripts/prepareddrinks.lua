@@ -177,7 +177,6 @@ local drinks =
 		thirst = TUNING.HYDRATION_SMALL,
 		perishtime = TUNING.PERISH_SLOW,
 		cooktime = TUNING.KETTLE_LUXURY_GOODS,
-		basename = "dd_coffee",
 		oneatenfn = function(inst, eater)
 			if not eater.components.health or eater.components.health:IsDead() or eater:HasTag("playerghost") then
 				return
