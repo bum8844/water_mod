@@ -170,6 +170,12 @@ local function getstatus(inst)
         or "EMPTY"
 end
 
+
+
+local function onpercentusedchange(inst, data)
+    inst.components.wateryprotection.addwetness = data.percent * TUNING.WATER_BARREL_WETNESS
+end
+
 local function fn()
 	local inst = CreateEntity()
 	
@@ -227,6 +233,13 @@ local function fn()
 
     inst:AddComponent("watersource")
     inst.components.watersource.available = false
+
+    inst:AddComponent("wateryprotection")
+    inst.components.wateryprotection.extinguishheatpercent = TUNING.WATER_BARREL_EXTINGUISH_HEAT_PERCENT
+    inst.components.wateryprotection.temperaturereduction = TUNING.WATER_BARREL_TEMP_REDUCTION
+    inst.components.wateryprotection.witherprotectiontime = TUNING.WATER_BARREL_PROTECTION_TIME
+    inst.components.wateryprotection.addwetness = 0 -- 물의 양에 따라 변형
+    inst.components.wateryprotection.protection_dist = TUNING.WATER_BARREL_DIST
 	
 	inst:AddComponent("workable")
     inst.components.workable:SetWorkAction(ACTIONS.HAMMER)

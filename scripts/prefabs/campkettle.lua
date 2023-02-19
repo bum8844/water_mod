@@ -144,11 +144,12 @@ local function OnSectionChange(new, old, inst)
 end
 
 local function OnDismantle(inst, doer)
-    if inst.components.waterlevel.currentwater == nil then
+    print(doer)
+    if inst.components.waterlevel.currentwater == 0 or doer == nil then
         ChangeToItem(inst)
         inst:Remove()
     else
-        return false
+        doer.components.talker:Say(GetString(doer,"ACTIONFAIL",{"DISMANTLE","NOTEMPTY"}))
     end
 end
 

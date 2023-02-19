@@ -51,10 +51,17 @@ local function OnLoad(inst, data)
 end
 
 local function DoDismantle(inst)
-	if inst._kettle and inst._kettle:IsValid() then
+	if inst._kettle and inst._kettle:IsValid() and inst._kettle.components.waterlevel:GetWater() ~= 0 then
 		inst._kettle.components.portablestructure:Dismantle()
 	    inst:RemoveChild(inst._kettle)
 	    inst.components.burnable:OverrideBurnFXBuild("campfire_fire")
+	end
+end
+
+local function AutoDismantle(inst)
+	if inst._kettle and inst._kettle:IsValid() then
+		inst._kettle.components.portablestructure:Dismantle()
+	    inst:RemoveChild(inst._kettle)
 	end
 end
 
@@ -70,7 +77,7 @@ AddPrefabPostInit("campfire",function(inst)
 	inst.OnLoad = OnLoad
 	inst.OnSave = OnSave
 
-	inst:ListenForEvent("onextinguish", DoDismantle)
+	inst:ListenForEvent("onextinguish", AutoDismantle)
 end)
 
 local function startboil(inst)
