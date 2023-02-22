@@ -1,7 +1,6 @@
 -- Upgrade Firepit or Campfire with Camp Kettle
 local function install_kettle(inst, no_built_callback)
 	inst._kettle = SpawnPrefab("campkettle")
-
 	inst:AddChild(inst._kettle)
 	inst._kettle.entity:SetParent(inst.entity)
 	--inst.components.burnable:OverrideBurnFXBuild("campkettlefire")
@@ -92,10 +91,25 @@ local function stopboil(inst)
 	end
 end
 
+local function onhammered(inst, worker, ...)
+	if inst._kettle and inst._kettle:IsValid() then
+		inst._kettle.components.portablestructure:Dismantle()
+	    inst:RemoveChild(inst._kettle)
+	end
+	return inst.components.workable.old_onfinish(inst, worker, ...)
+end
+
 AddPrefabPostInit("firepit",function(inst)
 	if not GLOBAL.TheWorld.ismastersim then
 		return inst
 	end
+
+    if inst.components.workable.onfinish ~= nil and inst.components.workable.old_onfinish == nil then
+       	inst.components.workable.old_onfinish = inst.components.workable.onfinish
+       	inst:DoTaskInTime(0,function()
+    	inst.components.workable:SetOnFinishCallback(onhammered)
+       	end)
+    end
 
 	inst:AddComponent("upgradeable")
 	inst.components.upgradeable.upgradetype = UPGRADETYPES.CAMPFIRE

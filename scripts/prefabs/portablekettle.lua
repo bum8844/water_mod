@@ -383,6 +383,13 @@ local function fn()
     inst:AddComponent("water")
     inst.components.water:SetOnTakenFn(OnTaken)
 
+    inst:AddComponent("wateryprotection")
+    inst.components.wateryprotection.extinguishheatpercent = TUNING.WATER_BARREL_EXTINGUISH_HEAT_PERCENT
+    inst.components.wateryprotection.temperaturereduction = TUNING.WATER_BARREL_TEMP_REDUCTION
+    inst.components.wateryprotection.witherprotectiontime = TUNING.WATER_BARREL_PROTECTION_TIME
+    inst.components.wateryprotection.addwetness = 0 -- 물의 양에 따라 변형
+    inst.components.wateryprotection.protection_dist = TUNING.WATER_BARREL_DIST
+
     inst:AddComponent("stewer")
     inst.components.stewer.spoiledproduct = "spoiled_drink"
     inst.components.stewer.cooktimemult = TUNING.PORTABLE_COOK_POT_TIME_MULTIPLIER

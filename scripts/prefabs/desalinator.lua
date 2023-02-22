@@ -7,6 +7,17 @@ local assets =
     Asset("ANIM", "anim/desalinator_meter_salt.zip")
 }
 
+local function GetWet(inst)
+    if not inst:HasTag("burnt") then
+        if inst.components.waterlevel:GetPercent() > 0 then 
+            SpawnPrefab("waterballoon_splash").Transform:SetPosition(inst.Transform:GetWorldPosition())
+            inst.SoundEmitter:KillSound("destroy")
+            inst.SoundEmitter:PlaySound("dontstarve/creatures/pengull/splash")
+            inst.components.wateryprotection:SpreadProtection(inst)
+        end
+    end
+end
+
 local function onhammered(inst, worker)
 	if inst.components.burnable ~= nil and inst.components.burnable:IsBurning() then
         inst.components.burnable:Extinguish()
@@ -22,6 +33,7 @@ local function onhammered(inst, worker)
 	inst.components.lootdropper:DropLoot()
 	SpawnPrefab("collapse_small").Transform:SetPosition(inst.Transform:GetWorldPosition())
 	inst.SoundEmitter:PlaySound("dontstarve/common/destroy_stone")
+    GetWet(inst)
 	inst:Remove()
 end
 
@@ -90,6 +102,17 @@ local function Boiled(inst)
     inst:DoTaskInTime(inst._timer, BoiledDone, inst)
 end
 
+local function onburnt(inst)
+    inst.components.waterlevel.accepting = false
+    inst.components.water.available = false
+    inst.components.waterlevel:SetPercent(0)
+    local amount = math.ceil(inst.components.wateryprotection.addwetness * MOISTURE_ON_BURNT_MULTIPLIER)
+    if amount > 0 then
+        local x, y, z = inst.Transform:GetWorldPosition()
+        TheWorld.components.farming_manager:AddSoilMoistureAtPoint(x, 0, z, amount)
+    end
+end
+
 local function onsave(inst, data)
     if inst:HasTag("burnt") or (inst.components.burnable ~= nil and inst.components.burnable:IsBurning()) then
         data.burnt = true
@@ -121,8 +144,7 @@ local function OnDepleted(inst)
 end
 
 local function OnSectionChange(new, old, inst)
-    local item_watertype = inst.components.waterlevel.item_watertype
-    local watertype = item_watertype ~= WATERTYPE.CLEAN and "salt" or "water"
+    local watertype = inst.components.waterlevel.watertype ~= WATERTYPE.CLEAN and "salt" or "water"
     if new ~= nil then
         if inst._waterlevel ~= new then
             inst._waterlevel = new

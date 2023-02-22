@@ -110,23 +110,41 @@ local function SetProductSymbol(inst, product, overridebuild)
     inst.AnimState:OverrideSymbol(potlevels, build, overridesymbol)
 end
 
+local function waterlevelchk(inst)
+    if inst.components.waterlevel:IsFull() then
+        inst.components.waterlevel.accepting = false
+    else
+        inst.components.waterlevel.accepting = true
+    end
+    if inst.components.waterlevel:GetWater() ~= 0 then
+        if inst.components.stewer.product == nil then
+            inst.components.pickable.product = "water_clean"
+        else
+            inst.components.pickable.product = inst.components.stewer.product
+        end
+        inst.components.pickable.numtoharvest = inst.components.waterlevel:GetWater()
+        inst.components.pickable.canbepicked = true
+    end
+end
+
 local function spoilfn(inst)
     if not inst:HasTag("burnt") then
         inst.components.stewer.product = inst.components.stewer.spoiledproduct
         inst.AnimState:OverrideSymbol("swap", "kettle_meter_dirty", tostring(inst._waterlevel))
         SetProductSymbol(inst, inst.components.stewer.product)
+        waterlevelchk(inst)
     end
 end
 
 local function ShowProduct(inst)
     if not inst:HasTag("burnt") then
         SetProductSymbol(inst, inst.components.stewer.product)
+        waterlevelchk(inst)
     end
 end
 
 local function donecookfn(inst)
     if not inst:HasTag("burnt") then
-        inst.components.water.available = true
         inst.AnimState:PlayAnimation("cooking_pst")
         inst.AnimState:PushAnimation("idle_full", false)
         ShowProduct(inst)
@@ -155,10 +173,13 @@ local function continuecookfn(inst)
     end
 end
 
-local function harvestfn(inst)
+local function harvestfn(inst,picker,loot)
     if not inst:HasTag("burnt") then
-        inst.components.waterlevel:DoDelta(-1)
+        inst.components.stewer.product = nil
+        inst.components.stewer:Harvest()
+        inst.components.waterlevel:DoDelta(-inst.components.waterlevel:GetWater())
         inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_close")
+        waterlevelchk(inst)
     end
 end
 
@@ -202,8 +223,7 @@ end
 
 local function ondoneboil(inst)
     inst:RemoveTag("boiling")
-    inst.components.waterlevel.accepting = true
-    inst.components.water.available = true
+    waterlevelchk(inst)
     inst.components.container.canbeopened = true
     inst.components.waterlevel.watertype = WATERTYPE.CLEAN
     inst.AnimState:OverrideSymbol("swap", "kettle_meter_water", tostring(inst._waterlevel))
@@ -218,7 +238,6 @@ local function boil(inst)
     inst:AddTag("boiling")
     inst.components.container.canbeopened = false
     inst.components.waterlevel.accepting = false
-    inst.components.water.available = false
     inst.AnimState:PlayAnimation("cooking_loop", true)
     inst.SoundEmitter:KillSound("snd")
     inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_rattle", "snd")
@@ -234,6 +253,8 @@ local function OnTakeWater(inst)
             inst.components.container:Close()
             inst.components.container:DropEverything()
             boil(inst)
+        else
+            waterlevelchk(inst)
         end
     end
 end
@@ -252,6 +273,7 @@ local function OnTaken(inst, source, delta)
     local product = inst.components.stewer.product
     local spoiltime = inst.components.stewer.spoiltime
     local product_spoilage = inst.components.stewer.product_spoilage
+    waterlevelchk(inst)
     inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/small")
 end
 
@@ -320,8 +342,6 @@ local function fn()
     inst._timer = 0
     inst._waterlevel = 0
 
-    inst:AddComponent("wateryprotection")
-
     inst:AddComponent("waterlevel")
     inst.components.waterlevel.SetCanAccepts(WATERGROUP.BOILABLE)
     inst.components.waterlevel:SetTakeWaterFn(OnTakeWater)
@@ -334,14 +354,27 @@ local function fn()
     inst:AddComponent("water")
     inst.components.water:SetOnTakenFn(OnTaken)
 
+    inst:AddComponent("wateryprotection")
+    inst.components.wateryprotection.extinguishheatpercent = TUNING.WATER_BARREL_EXTINGUISH_HEAT_PERCENT
+    inst.components.wateryprotection.temperaturereduction = TUNING.WATER_BARREL_TEMP_REDUCTION
+    inst.components.wateryprotection.witherprotectiontime = TUNING.WATER_BARREL_PROTECTION_TIME
+    inst.components.wateryprotection.addwetness = 0 -- 물의 양에 따라 변형
+    inst.components.wateryprotection.protection_dist = TUNING.WATER_BARREL_DIST
+
     inst:AddComponent("stewer")
     inst.components.stewer.spoiledproduct = "spoiled_drink"
 	inst.components.stewer.onstartcooking = startcookfn
 	inst.components.stewer.oncontinuecooking = continuecookfn
 	inst.components.stewer.oncontinuedone = continuedonefn
 	inst.components.stewer.ondonecooking = donecookfn
-	inst.components.stewer.onharvest = harvestfn
+	--inst.components.stewer.onharvest = harvestfn
 	inst.components.stewer.onspoil = spoilfn
+
+    inst:AddComponent("pickable")
+    inst.components.pickable.canbepicked = false
+    inst.components.pickable.product = (inst.components.stewer.product ~= nil and inst.components.stewer.product) or (inst.components.waterlevel:GetWater() ~= 0 and "water_clean") or nil
+    inst.components.pickable.numtoharvest = inst.components.waterlevel:GetWater()
+    inst.components.pickable:SetOnPickedFn(harvestfn)
 
 	inst:AddComponent("container")
 	inst.components.container:WidgetSetup("kettle")
@@ -361,6 +394,7 @@ local function fn()
 	inst.components.workable:SetOnWorkCallback(onhit)
 
     inst:ListenForEvent("onbuilt", onbuilt)
+    inst:ListenForEvent("onwaterlevelsectionchanged", waterlevelchk)
 	
 	MakeHauntableWork(inst)
 	

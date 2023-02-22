@@ -90,10 +90,23 @@ local function ChangeToItem(inst)
     inst._fire:RemoveChild(inst)
 end
 
+local function waterlevelchk(inst)
+    if inst.components.waterlevel:IsFull() then
+        inst.components.waterlevel.accepting = false
+    else
+        inst.components.waterlevel.accepting = true
+    end
+    if inst.components.waterlevel:GetWater() ~= 0 then
+        inst.components.pickable.numtoharvest = inst.components.waterlevel:GetWater()
+        inst.components.pickable.canbepicked = true
+    else
+        inst.components.pickable.canbepicked = false
+    end
+end
+
 local function stopboil(inst)
     inst:RemoveTag("boiling")
-    inst.components.waterlevel.accepting = true
-    inst.components.water.available = true
+    waterlevelchk(inst)
     inst.AnimState:PlayAnimation("idle_empty")
     inst.SoundEmitter:KillSound("snd")
     if inst._timer == 0 then
@@ -119,7 +132,6 @@ local function doboil(inst)
         and inst.components.waterlevel:GetPercent() > 0 and inst.components.waterlevel.watertype == WATERTYPE.DIRTY then
         inst:AddTag("boiling")
         inst.components.waterlevel.accepting = false
-        inst.components.water.available = false
         inst.AnimState:PlayAnimation("cooking_loop", true)
         inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_rattle", "snd")
         inst.boilingtask = inst:DoTaskInTime(inst._timer, ondoneboil, inst)
@@ -153,13 +165,6 @@ local function OnDismantle(inst, doer)
     end
 end
 
-local function OnTaken(inst, source, delta)
-    inst.components.waterlevel:DoDelta(-delta)
-    if inst.components.waterlevel:GetPercent() <= 0 then
-        inst.components.waterlevel:SetWaterType(nil)
-    end
-end
-
 local function onsave(inst, data)
     data.pittype = inst._type
     if inst._timer ~= nil then
@@ -179,6 +184,11 @@ local function onload(inst, data)
         end
     end
 end
+
+local function OnPickedFn(inst,picker,loot)
+    inst.components.waterlevel:DoDelta(-inst.components.waterlevel:GetWater())
+    waterlevelchk(inst)
+end 
 
 local function fn()
     local inst = CreateEntity()
@@ -218,9 +228,11 @@ local function fn()
     inst.components.waterlevel.maxwater = TUNING.CAMPKETTLE_MAX_LEVEL
     inst.components.waterlevel:InitializeWaterLevel(0)
 
-    inst:AddComponent("water")
-    inst.components.water:SetOnTakenFn(OnTaken)
-    inst.components.water:SetWaterType(nil)
+    inst:AddComponent("pickable")
+    inst.components.pickable.canbepicked = false
+    inst.components.pickable.product = "water_clean"
+    inst.components.pickable.numtoharvest = inst.components.waterlevel:GetWater()
+    inst.components.pickable:SetOnPickedFn(OnPickedFn)
 
     MakeHauntableLaunchAndSmash(inst)
 
@@ -230,6 +242,7 @@ local function fn()
     inst.stopboil = stopboil
 
     inst:ListenForEvent("onbuilt", onbuilt)
+    inst:ListenForEvent("onwaterlevelsectionchanged", waterlevelchk)
 
     return inst
 end
