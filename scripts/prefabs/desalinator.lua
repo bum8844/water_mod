@@ -251,6 +251,7 @@ local function fn()
     inst.components.waterlevel:InitializeWaterLevel(0)
 
     inst:AddComponent("water")
+    inst.components.water.available = false
     inst.components.water:SetOnTakenFn(OnTaken)
 
     inst:AddComponent("watersource")
