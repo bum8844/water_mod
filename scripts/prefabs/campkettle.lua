@@ -124,7 +124,7 @@ local function ondoneboil(inst)
     inst._timer = 0
     stopboil(inst)
     inst.components.waterlevel.watertype = WATERTYPE.CLEAN
-    inst.AnimState:OverrideSymbol("swap", "campkettle_meter_water", tostring(inst._waterlevel))
+    inst.AnimState:OverrideSymbol("swap_meter", "campkettle_meter_water", tostring(inst._waterlevel))
 end
 
 local function doboil(inst)
