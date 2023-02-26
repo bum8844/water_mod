@@ -141,6 +141,7 @@ end
 local function OnTakeWater(inst)
     if not inst:HasTag("burnt") then
         inst._timer = TUNING.BASE_COOK_TIME * TUNING.KETTLE_WATER * inst.components.waterlevel:GetPercent()
+        inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/small")
         doboil(inst)
     end
 end
@@ -152,7 +153,7 @@ local function OnSectionChange(new, old, inst)
             inst._waterlevel = new
         end
     end
-    inst.AnimState:OverrideSymbol("swap", "campkettle_meter_"..watertype, tostring(inst._waterlevel))
+    inst.AnimState:OverrideSymbol("swap_meter", "campkettle_meter_"..watertype, tostring(new))
 end
 
 local function OnDismantle(inst, doer)
@@ -186,7 +187,8 @@ local function onload(inst, data)
 end
 
 local function OnPickedFn(inst,picker,loot)
-    inst.components.waterlevel:DoDelta(-inst.components.waterlevel:GetWater())
+    inst.components.waterlevel:DoDelta(-inst.components.waterlevel.currentwater)
+    inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/small")
     waterlevelchk(inst)
 end 
 

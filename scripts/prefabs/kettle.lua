@@ -125,10 +125,12 @@ local function waterlevelchk(inst)
         else
             inst.components.waterlevel.accepting = true
         end
-        if inst.components.waterlevel:IsEmpty() then
+        if inst.components.waterlevel:IsEmpty() == 0 then
             inst.components.water.available = false
+            print("실패")
         else
             inst.components.water.available = true
+            print("성공")
         end
     else
         HaveProduct(inst)
