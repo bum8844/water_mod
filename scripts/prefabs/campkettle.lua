@@ -187,7 +187,7 @@ local function onload(inst, data)
 end
 
 local function OnPickedFn(inst,picker,loot)
-    inst.components.waterlevel:DoDelta(-inst.components.waterlevel.currentwater)
+    inst.components.waterlevel:DoDelta(-inst.components.waterlevel:GetWater())
     inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/small")
     waterlevelchk(inst)
 end 

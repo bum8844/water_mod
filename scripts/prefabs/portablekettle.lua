@@ -317,6 +317,7 @@ local function OnTakeWater(inst)
 end
 
 local function OnTaken(inst, source, delta)
+    inst.components.waterlevel:DoDelta(-inst.components.waterlevel:GetWater())
     waterlevelchk(inst)
     inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/small")
 end

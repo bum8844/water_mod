@@ -82,7 +82,7 @@ local TAKEWATER = AddAction("TAKEWATER", STRINGS.ACTIONS.FILL, function(act)
 
     return false
 end)
---TAKEWATER.priority = 2
+TAKEWATER.priority = 2
 
 local TAKEWATER_OCEAN = AddAction("TAKEWATER_OCEAN", STRINGS.ACTIONS.FILL, TAKEWATER.fn)
 TAKEWATER_OCEAN.is_relative_to_platform = true

@@ -204,7 +204,8 @@ local function onloadpostpass(inst, newents, data)
 end
 
 local function OnSectionChange(new, old, inst)
-    local watertype = inst.components.waterlevel.watertype ~= WATERTYPE.CLEAN and "dirty" or "water"
+    local inst.components.stewer
+    local watertype = (inst.components.waterlevel.watertype ~= WATERTYPE.CLEAN and "dirty") or "water"
     if new ~= nil then
         if inst._waterlevel ~= new then
             inst._waterlevel = new
@@ -281,6 +282,7 @@ local function dospoil(inst, self)
 end
 
 local function OnTaken(inst, source, delta)
+    inst.components.waterlevel:DoDelta(-inst.components.waterlevel:GetWater())
     waterlevelchk(inst)
     inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/small")
 end
