@@ -139,6 +139,30 @@ function Waterlevel:SetTakeWaterFn(fn)
     self.ontakewaterfn = fn
 end
 
+function Waterlevel:UtilityCheck(boilier)
+    if self:GetWater() ~= 0 then
+        if self:IsFull() then
+            self.accepting = false
+        else
+            self.accepting = true
+        end
+        if self.inst.components.water ~= nil then
+            self.inst.components.water.available = true
+        end
+        if self.inst.components.watersource ~= nil then
+            self.inst.components.watersource.available = true
+        end
+    else
+        self.accepting = true
+        if self.inst.components.water ~= nil then
+            self.inst.components.water.available = false
+        end
+        if self.inst.components.watersource ~= nil then
+            self.inst.components.watersource.available = false
+        end
+    end
+end
+
 function Waterlevel:TakeWaterItem(item, doer)
     local watervalue = item.components.water:GetWater()
     self:SetWaterType(item.components.water:GetWatertype())
@@ -149,6 +173,13 @@ function Waterlevel:TakeWaterItem(item, doer)
         self:DoDelta(watervalue, doer)
     else
         self:SetPercent(1)
+    end
+
+    if self.inst.components.distiller and self.watertype ~= WATERTYPE.CLEAN then
+        self.inst.components.distiller.done = false
+        self.inst.components.distiller:startBoiling(self:GetPercent())
+    else
+        self:UtilityCheck(self.inst)
     end
 
     local delta = self.currentwater - self.oldcurrenwater
@@ -243,6 +274,7 @@ function Waterlevel:DoDelta(amount, doer)
         end
         self.inst:PushEvent("onwaterlevelsectionchanged", { newsection = newsection, oldsection = oldsection})
     end
+    self:UtilityCheck(self.inst)
 
     self.inst:PushEvent("percentusedchange", { percent = self:GetPercent() })
 end

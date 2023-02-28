@@ -74,7 +74,7 @@ local function MakePreparedDrink(data)
         end
 
         if inst:HasTag("lightdrink") then
-            if name == "colaquantum" then
+            if data.name == "colaquantum" then
                 inst.AnimState:SetBloomEffectHandle("shaders/anim.ksh")
             end
             inst.entity:AddLight()
@@ -130,7 +130,7 @@ local function MakePreparedDrink(data)
         end
 
         inst:AddComponent("stackable")
-        inst.components.stackable.maxsize = TUNING.STACK_SIZE_SMALLITEM
+        inst.components.stackable.maxsize = TUNING.STACK_SIZE_TINYITEM
 
         if data.perishtime ~= nil and data.perishtime > 0 and not inst:HasTag("spoiled") then
             inst:AddComponent("perishable")
@@ -142,8 +142,9 @@ local function MakePreparedDrink(data)
         if inst:HasTag("spoiled") then
         end
 
-        MakeSmallBurnable(inst)
-        MakeSmallPropagator(inst)
+        --MakeSmallBurnable(inst)
+        --MakeSmallPropagator(inst)
+        MakeDynamicCupImage(inst, "swap", "kettle_drink")
         MakeHauntableLaunchAndPerish(inst)
 
         ------------------------------------------------

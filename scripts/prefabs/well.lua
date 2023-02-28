@@ -74,10 +74,6 @@ local function hole()
 	return inst
 end
 
-local function SetupLoot(lootdropper)
-	lootdropper:SetLoot({"water_clean","water_clean","water_clean","water_clean","water_clean","water_clean","water_clean","water_clean","water_clean","water_clean","water_clean","water_clean","water_clean","water_clean","water_clean","water_clean","water_clean","water_clean","water_clean","water_clean"})
-end
-
 
 local function updatewellstate(inst)
     local num = inst.components.pickable.numtoharvest
@@ -90,7 +86,13 @@ end
 
 local function onhammered(inst)
 	if inst.AnimState:IsCurrentAnimation("watering") or inst.AnimState:IsCurrentAnimation("hit_watering") or inst.AnimState:IsCurrentAnimation("idle_watering") then
-		inst.components.lootdropper.lootsetupfn = SetupLoot
+		local bucket_fit = inst.components.pickable.numtoharvest
+		while bucket_fit > 0 do
+        	if bucket_fit > 0 then
+            	inst.components.lootdropper:SpawnLootPrefab("water_clean")
+        	end
+        	bucket_fit = bucket_fit - 1
+    	end
 		if inst._bucket_fit > 0 then
 			local x, y, z = inst.Transform:GetWorldPosition()
 	   		local refund = nil
@@ -179,8 +181,12 @@ end
 
 local function OnGetItemFromPlayer(inst, giver, item)
 	inst:RemoveTag("ready")
-	item.components.finiteuses:Use(TUNING.BUCKET_LEVEL_PER_USE)
-	inst.components.pickable.numtoharvest = inst.components.pickable.numtoharvest + 20
+	local old_fit = item.components.finiteuses:GetUses()
+	if old_fit > TUNING.BUCKET_LEVEL_PER_USE then
+		old_fit = TUNING.BUCKET_LEVEL_PER_USE
+	end
+	item.components.finiteuses:Use(old_fit)
+	inst.components.pickable.numtoharvest = inst.components.pickable.numtoharvest + old_fit
 	inst._bucket_fit = item.components.finiteuses.current
 	inst.SoundEmitter:PlaySound("turnoftides/common/together/boat/anchor/tether_land")
 	inst.AnimState:PlayAnimation("watering")

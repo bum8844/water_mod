@@ -4,8 +4,8 @@ local assets =
 }
 
 local function OnTakeWater(inst, source, doer)
+    inst.components.finiteuses:Use(inst.components.watertaker._laststack)
 	inst.SoundEmitter:PlaySound("dontstarve/creatures/pengull/splash")
-	inst.components.finiteuses:Use(inst.components.watertaker._laststack)
     if source ~= nil and source.components.waterlevel ~= nil then
         source.components.water:Taken(inst, TUNING.BUCKET_LEVEL_PER_USE)
     end

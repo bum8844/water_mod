@@ -72,18 +72,11 @@ local function CalculationForSalt(inst)
     inst.components.pickable.canbepicked = true
 end
 
-local function BoiledDone(inst)
-    if inst.components.waterlevel.currentwater < inst.components.waterlevel.maxwater then
-        inst.components.waterlevel.accepting = true
-    end
-    inst.components.watersource.available = true
-    inst.components.waterlevel.watertype = WATERTYPE.CLEAN
+local function ondoneboilingfn(inst)
     inst.AnimState:OverrideSymbol("swap", "desalinator_meter_water", tostring(inst._waterlevel))
     inst.AnimState:PlayAnimation("idle")
     inst.SoundEmitter:KillSound("desalinator_sound")
     inst.SoundEmitter:PlaySound("hookline/common/trophyscale_fish/place_fish","purify")
-    inst._timer = 0
-    inst:RemoveTag("boilling")
     if inst._saltvalue >= 10 then
         inst.SoundEmitter:KillSound("purify")
         inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/medium")
@@ -92,14 +85,10 @@ local function BoiledDone(inst)
     end
 end
 
-local function Boiled(inst)
-    inst:AddTag("boilling")
-    inst.components.waterlevel.accepting = false
-    inst.components.watersource.available = false
+local function onstartboilingfn(inst)
     inst.components.pickable.canbepicked = false
     inst.AnimState:PlayAnimation("cook", true)
     inst.SoundEmitter:PlaySound("dontstarve/halloween_2018/madscience_machine/cooking_LP", "desalinator_sound", 0.3)
-    inst:DoTaskInTime(inst._timer, BoiledDone, inst)
 end
 
 local function onburnt(inst)
@@ -117,7 +106,6 @@ local function onsave(inst, data)
     if inst:HasTag("burnt") or (inst.components.burnable ~= nil and inst.components.burnable:IsBurning()) then
         data.burnt = true
     else
-        data.timer = inst._timer
         data.saltvalue = inst._saltvalue
     end
 end
@@ -129,10 +117,7 @@ local function onload(inst, data)
         end
         if data.saltvalue ~= nil or data.saltvalue ~= 0 then
             inst._saltvalue = data.saltvalue
-        end
-        if data.timer ~= nil then
-            inst._timer = data.timer
-            Boiled(inst)
+            CalculationForSalt(inst)
         end
     end
 end
@@ -157,31 +142,18 @@ local function OnSectionChange(new, old, inst)
 end
 
 local function OnTakeWater(inst)
-    if inst._saltvalue >= 20 then
-        inst._saltvalue = inst._saltvalue + (inst.components.waterlevel.currentwater - inst.components.waterlevel.oldcurrenwater)
-    else
-        inst._saltvalue = inst.components.waterlevel.currentwater
-    end
-    inst._timer = TUNING.DESALINATION_TIME * inst.components.waterlevel.currentwater
-    Boiled(inst)
-end
-
-local function waterlevelchk(inst)
-    if inst.components.waterlevel:IsFull() then
-        inst.components.waterlevel.accepting = false
-    else
-        inst.components.waterlevel.accepting = true
-    end
-    if not inst.components.waterlevel:IsEmpty() then
-        inst.components.watersource.available = true
-    else
-        inst.components.watersource.available = false
+    if not inst:HasTag("burnt") then
+        if inst._saltvalue >= 20 then
+            inst._saltvalue = inst._saltvalue + (inst.components.waterlevel.currentwater - inst.components.waterlevel.oldcurrenwater)
+        else
+            inst._saltvalue = inst.components.waterlevel.currentwater
+        end
+        inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/medium")
     end
 end
 
 local function OnTaken(inst, taker, water_amount)
     inst.components.waterlevel:DoDelta(-water_amount)
-    waterlevelchk(inst)
     inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/medium")
 end
 
@@ -263,6 +235,10 @@ local function fn()
     inst.components.wateryprotection.witherprotectiontime = TUNING.WATER_BARREL_PROTECTION_TIME
     inst.components.wateryprotection.addwetness = 0 -- 물의 양에 따라 변형
     inst.components.wateryprotection.protection_dist = TUNING.WATER_BARREL_DIST
+
+    inst:AddComponent("distiller")
+    inst.components.distiller.onstartboiling = onstartboilingfn
+    inst.components.distiller.ondoneboiling = ondoneboilingfn
 	
 	inst:AddComponent("workable")
     inst.components.workable:SetWorkAction(ACTIONS.HAMMER)
@@ -271,7 +247,6 @@ local function fn()
 	inst.components.workable:SetOnWorkCallback(onhit)
 	
 	inst:ListenForEvent("onbuilt", onbuilt)
-    inst:ListenForEvent("onwaterlevelsectionchanged", waterlevelchk)
 	
 	MakeHauntableWork(inst)
 	

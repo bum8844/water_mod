@@ -130,31 +130,6 @@ local function SetProductSymbol(inst, product, overridebuild)
     inst.AnimState:OverrideSymbol(potlevels, build, overridesymbol)
 end
 
-local function HaveProduct(inst)
-    inst.components.waterlevel.accepting = false
-    inst.components.water.available = false
-    inst.components.pickable.product = inst.components.stewer.product
-    inst.components.pickable.numtoharvest = inst.components.waterlevel:GetWater()
-    inst.components.pickable.canbepicked = true
-end
-
-local function waterlevelchk(inst)
-    if inst.components.stewer.product == nil then
-        if inst.components.waterlevel:IsFull() then
-            inst.components.waterlevel.accepting = false
-        else
-            inst.components.waterlevel.accepting = true
-        end
-        if inst.components.waterlevel:IsEmpty() then
-            inst.components.water.available = false
-        else
-            inst.components.water.available = true
-        end
-    else
-        HaveProduct(inst)
-    end
-end
-
 local function spoilfn(inst)
     if not inst:HasTag("burnt") then
         inst.components.stewer.product = inst.components.stewer.spoiledproduct
@@ -167,13 +142,16 @@ end
 local function ShowProduct(inst)
     if not inst:HasTag("burnt") then
         SetProductSymbol(inst, inst.components.stewer.product)
-        waterlevelchk(inst)
+        inst.components.waterlevel.accepting = false
+        inst.components.water.available = false
+        inst.components.pickable.product = inst.components.stewer.product
+        inst.components.pickable.numtoharvest = inst.components.waterlevel:GetWater()
+        inst.components.pickable.canbepicked = true
     end
 end
 
 local function donecookfn(inst)
     if not inst:HasTag("burnt") then
-        inst.components.water.available = true
         inst.AnimState:PlayAnimation("cooking_pst")
         inst.AnimState:PushAnimation("idle_full", false)
         ShowProduct(inst)
@@ -193,7 +171,8 @@ end
 
 local function continuecookfn(inst)
     if not inst:HasTag("burnt") then
-        inst.components.water.available = true
+        inst.components.water.available = false
+        inst.components.waterlevel.accepting = false
         inst.AnimState:PlayAnimation("cooking_loop", true)
         inst.Light:Enable(true)
         inst.SoundEmitter:KillSound("snd")
@@ -207,7 +186,6 @@ local function harvestfn(inst,picker,loot)
         inst.components.waterlevel:DoDelta(-inst.components.waterlevel:GetWater())
         inst.AnimState:PlayAnimation("idle_empty")
         inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_close")
-        waterlevelchk(inst)
         inst.components.stewer:Harvest()
     end
 end
@@ -267,58 +245,29 @@ local function onclose(inst)
     end
 end
 
-local function ondoneboil(inst)
-    inst:RemoveTag("boilling")
-    waterlevelchk(inst)
-    inst.components.container.canbeopened = true
-    inst.components.waterlevel.watertype = WATERTYPE.CLEAN
+local function ondoneboilingfn(inst)
     inst.AnimState:OverrideSymbol("swap", "portablekettle_meter_water", tostring(inst._waterlevel))
     inst.AnimState:PlayAnimation("cooking_pst")
     inst.AnimState:PlayAnimation("idle_empty")
     inst.SoundEmitter:KillSound("snd") 
     inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_finish")
-    inst._timer = 0
 end
 
-local function boil(inst)
-    inst:AddTag("boilling")
-    inst.components.container.canbeopened = false
-    inst.components.water.available = false
-    inst.components.waterlevel.accepting = false
+local function onstartboilingfn(inst)
     inst.AnimState:PlayAnimation("cooking_loop", true)
     inst.SoundEmitter:KillSound("snd")
     inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_rattle", "snd")
     inst.Light:Enable(true)
-    inst:DoTaskInTime(inst._timer, ondoneboil, inst)
-end
-
-local function dospoil(inst, self)
-    self.task = nil
-    self.targettime = nil
-    self.spoiltime = nil
-
-    if self.onspoil ~= nil then
-        self.onspoil(inst)
-    end
 end
 
 local function OnTakeWater(inst)
     if not inst:HasTag("burnt") then
         inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/medium")
-        if inst.components.waterlevel.watertype ~= WATERTYPE.CLEAN then
-            inst._timer = TUNING.BASE_COOK_TIME * TUNING.KETTLE_WATER * inst.components.waterlevel:GetPercent()
-            inst.components.container:Close()
-            inst.components.container:DropEverything()
-            boil(inst)
-        else
-            waterlevelchk(inst)
-        end
     end
 end
 
 local function OnTaken(inst, source, delta)
     inst.components.waterlevel:DoDelta(-inst.components.waterlevel:GetWater())
-    waterlevelchk(inst)
     inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/small")
 end
 
@@ -337,9 +286,6 @@ local function onsave(inst, data)
     if inst:HasTag("burnt") or (inst.components.burnable ~= nil and inst.components.burnable:IsBurning()) then
         data.burnt = true
     end
-    if inst._timer ~= 0 then
-        data.timer = inst._timer
-    end
 end
 
 local function onload(inst, data)
@@ -347,10 +293,6 @@ local function onload(inst, data)
         if data.burnt then
             inst.components.burnable.onburnt(inst)
             inst.Light:Enable(false)
-        end
-        if data.timer ~= nil then
-            inst._timer = data.timer
-            boil(inst)
         end
     end
 end
@@ -433,6 +375,10 @@ local function fn()
     --inst.components.stewer.onharvest = harvestfn
     inst.components.stewer.onspoil = spoilfn
 
+    inst:AddComponent("distiller")
+    inst.components.distiller.onstartboiling = onstartboilingfn
+    inst.components.distiller.ondoneboiling = ondoneboilingfn
+
     inst:AddComponent("pickable")
     inst.components.pickable.canbepicked = false
     inst.components.pickable.product = (inst.components.stewer.product ~= nil and inst.components.stewer.product) or (inst.components.waterlevel:GetWater() ~= 0 and "water_clean") or nil
@@ -466,8 +412,6 @@ local function fn()
 
     inst.OnSave = onsave
     inst.OnLoad = onload
-
-    inst:ListenForEvent("onwaterlevelsectionchanged", waterlevelchk)
 
     return inst
 end

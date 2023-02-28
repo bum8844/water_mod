@@ -67,21 +67,7 @@ local function onload(inst, data)
     end
 end
 
-local function waterlevelchk(inst)
-	if inst.components.waterlevel:IsFull() then
-		inst.components.waterlevel.accepting = false
-	else
-		inst.components.waterlevel.accepting = true
-	end
-	if not inst.components.waterlevel:IsEmpty() then
-		inst.components.watersource.available = true
-	else
-		inst.components.watersource.available = false
-	end
-end
-
 local function OnTakeWater(inst)
-	waterlevelchk(inst)
 	inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/medium")
 end
 
@@ -172,7 +158,6 @@ local function fn()
 
 	inst:ListenForEvent("onbuilt", onbuilt)
 	inst:ListenForEvent("onburnt", onburnt)
-	inst:ListenForEvent("onwaterlevelsectionchanged", waterlevelchk)
 	inst:ListenForEvent("percentusedchange", onpercentusedchange)
 
     inst.OnSave = onsave

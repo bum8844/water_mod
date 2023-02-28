@@ -32,7 +32,7 @@ local drinks =
 
 	-- 공통적으로 hot, cold 없음
 	-- 잘못된 발효음료 조합법(재료중 찻잎, 꽃류, 채소 제외)
-	--[[spoiled =
+	spoiled =
 	{
 		test = function(boilier, names, tags) return true end,
 		priority = -2,
@@ -42,7 +42,7 @@ local drinks =
 		thirst = TUNING.HYDRATION_POISON,
 		cooktime = TUNING.INCORRECT_BOIL,
 		watertype = WATERTYPE.ROTTEN,
-	},]]
+	},
 	
 	-- 탄산수 만들때 필수적으로 refined_dust 첨가
 	-- 일반 탄산수
@@ -289,6 +289,8 @@ for k, v in pairs(drinks) do
     v.name = k
     v.weight = v.weight or 1
     v.priority = v.priority or 0
+
+    v.cookbook_category = "cookpot"
 end
 
 return drinks

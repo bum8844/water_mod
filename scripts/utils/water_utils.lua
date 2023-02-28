@@ -24,7 +24,7 @@ function RefundItem(inst, refund, dontremove)
 end
 
 local function GetItemState(count)
-    return count >= 20 and "_bottle" or ""
+    return count >= 5 and "_bottle" or ""
 end
 
 function MakeDynamicCupImage(inst, symbol, build, use_bg)

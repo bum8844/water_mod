@@ -1,40 +1,135 @@
 --MEMO:
 --put water -> timer is done -> the water is purified
 
-local function ontimerdone(inst, data)
-	if data ~= nil then
-		if data.name == "refining" then
-			local refiner = inst.components.refiner
+local function ondone(self, done)
+    if done then
+        self.inst:AddTag("boiling")
+    else
+        self.inst:RemoveTag("boiling")
+    end
+end
 
-			if refiner.onprocessdonefn ~= nil then
-				refiner.onprocessdonefn(inst)
+local Distiller = Class(function(self,inst)
+	self.inst = inst
+
+	self.done = false
+	self.task = nil
+	self.boiling_timer = nil
+	end,
+	nil,
+	{done = ondone,}
+)
+
+function Distiller:Boildone(boilier)
+	if self.ondoneboiling ~= nil then
+		self.ondoneboiling(self.inst)
+	end
+		if self.inst.components.container ~= nil then
+			self.inst.components.container.canbeopened = true
+		end
+		if self.inst.components.water ~= nil then
+			self.inst.components.water.available = true
+		end
+		if self.inst.components.watersource ~= nil then
+			self.inst.components.watersource.available = true
+		end
+		if self.inst.components.waterlevel ~= nil then
+			self.inst.components.waterlevel.accepting = true
+			self.inst.components.waterlevel.watertype = WATERTYPE.CLEAN
+		end
+	self.done = true
+end
+
+function Distiller:startBoiling(watertimer)
+    local timer = TUNING.BASE_COOK_TIME * TUNING.KETTLE_WATER * watertimer
+    if self.inst.components.container ~= nil then
+    	self.inst.components.container:Close()
+    	self.inst.components.container:DropEverything()
+    	self.inst.components.container.canbeopened = false
+    end
+    if self.inst.components.water ~= nil then
+    	self.inst.components.water.available = false
+    end
+	if self.inst.components.watersource ~= nil then
+		self.inst.components.watersource.available = false
+	end
+	self.inst.components.waterlevel.accepting = false
+
+	self.boiling_timer = GetTime() + timer
+	if self.task ~= nil then
+    	self.task:Cancel()
+	end
+	if self.onstartboiling ~= nil then
+		self.onstartboiling(self.inst)
+	end
+    self.task = self.inst:DoTaskInTime(self.boiling_timer,function() self.inst.components.distiller:Boildone(self.inst) end)
+end
+
+function Distiller:OnSave()
+    local remainingtime = self.boiling_timer ~= nil and self.boiling_timer - GetTime() or 0
+	return{
+        boilingdone = self.done,
+        boilingtime = remainingtime > 0 and remainingtime or nil,
+	}
+end
+
+function Distiller:OnLoad(data)
+    if data.waterlevel ~= 0 then
+    	self.done = data.boilingdone or false
+    	self.boiling_timer = nil
+        if self.task ~= nil then
+            self.task:Cancel()
+            self.task = nil
+        end
+        if data.boilingtime ~= nil then
+			self.boiling_timer = GetTime() + math.max(0, data.boilingtime)
+			if not self.done then
+				print(self.boiling_timer)
+    			self.task = self.inst:DoTaskInTime(self.boiling_timer,function() self.inst.components.distiller:Boildone(self.inst) end)
+				if self.onstartboiling ~= nil then
+					self.onstartboiling(self.inst)
+				end
+				if self.inst.components.container ~= nil then
+					self.inst.components.container.canbeopened = false
+				end
+				if self.inst.components.water ~= nil then
+					self.inst.components.water.available = false
+				end
+				if self.inst.components.watersource ~= nil then
+					self.inst.components.watersource.available = false
+				end
+				if self.inst.components.waterlevel ~= nil then
+					self.inst.components.waterlevel.accepting = false
+				end
+			else
+				self:Boildone(self.inst)
 			end
 		end
 	end
 end
 
-local Distiller = Class(function(self, inst)
-	self.inst = inst
+function Distiller:isDone()
+	return self.done
+end
 
-	self.water_per_process = 10
+function Distiller:isBoiling()
+	return self.done and self.boiling_timer ~= nil
+end
 
-	self.byproduct_per_process = 1
-
-	self.max_byproduct = 6
-
-	self.time_per_unit = 5
-	self.current_refining_time = nil
-
-	--self.onprocessdonefn = nil
-
-	self.inst:ListenForEvent("timerdone", ontimerdone)
-end, nil, nil)
-
-function Distiller:Refresh()
-	local waterlevel = self.inst.components.waterlevel.currentwater
-
-	if self.inst.components.timer:TimerExists("refining") then
-	end
+function Distiller:LongUpdate(dt)
+    if self:isBoiling() then
+        if self.task ~= nil then
+            self.task:Cancel()
+        end
+        if self.boiling_timer - dt > GetTime() then
+            self.boiling_timer = self.boiling_timer - dt
+            self.task = self.inst:DoTaskInTime(self.boiling_timer - GetTime(),function() self.inst.components.distiller:Boildone(self.inst) end)
+            dt = 0
+        else
+            dt = dt - self.boiling_timer + GetTime()
+            self:Boildone(self.inst)
+        end
+    end
 end
 
 return Distiller

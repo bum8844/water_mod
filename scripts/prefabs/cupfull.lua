@@ -73,7 +73,7 @@ local function MakeCup(name, masterfn, tags)
     	inst:AddComponent("inventoryitem")
 
         inst:AddComponent("stackable")
-        inst.components.stackable.maxsize = TUNING.STACK_SIZE_SMALLITEM
+        inst.components.stackable.maxsize = TUNING.STACK_SIZE_TINYITEM
 
         --It's weird for a cup/bottle of water to burn, isn't it?
         --MakeSmallBurnable(inst)
