@@ -415,11 +415,10 @@ local drinks =
 			if not eater.components.health or eater.components.health:IsDead() or eater:HasTag("playerghost") then
 				return
 			elseif eater.components.debuffable and eater.components.debuffable:IsEnabled() then
-				local drink_name = inst:HasTag("preparedrink_bottle") and STRINGS.NAMES.BOTTLE_GHOSTLY_TEA or STRINGS.NAMES.CUP_GHOSTLY_TEA
 				local currenthealth = eater.components.health.currenthealth
 				local currenthunger = eater.components.hunger.current
 				local currentsanity = eater.components.sanity.current
-				TheNet:Announce(""..eater:GetDisplayName().." drank ".. drink_name ..", and became a ghost for "..TUNING.GHOST_TIME.." seconds!")
+				TheNet:Announce(""..eater:GetDisplayName().." drank ".. STRINGS.NAMES.GHOSTLY_TEA ..", and became a ghost for "..TUNING.GHOST_TIME.." seconds!")
 				eater.components.health:DoDelta(-10000, nil, "death_by_tea")
 				eater:DoTaskInTime(TUNING.GHOST_TIME, function()
 			        TheNet:Announce(eater:GetDisplayName().."'s ghost effect ended. Respawning!")

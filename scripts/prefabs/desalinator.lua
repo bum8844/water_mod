@@ -200,7 +200,6 @@ local function fn()
     end
 
     inst._waterlevel = 0
-    inst._timer = 0
     inst._saltvalue = 0
 	
 	inst:AddComponent("lootdropper")
