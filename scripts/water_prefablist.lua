@@ -9,7 +9,7 @@ return {
 
 	--structures
 	"barrel",
-	--"brewery",
+	"brewery",
 	"campkettle",
 	"desalinator",
 	"kettle",

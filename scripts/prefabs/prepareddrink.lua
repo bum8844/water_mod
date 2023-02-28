@@ -1,15 +1,14 @@
 local prefabs =
 {
     "spoiled_drink",
-    "cup",
 }
 
-local function OnEaten(inst, eater)
+--[[local function OnEaten(inst, eater)
     local item = SpawnPrefab("cup")
     local stacksize = eater.components.eater.eatwholestack and inst.components.stackable:StackSize() or 1
     item.components.stackable:SetStackSize(stacksize)
     RefundItem(inst, "cup", true)
-end
+end]]
 
 local function MakePreparedDrink(data)
 	local oneatenfn = data.oneatenfn or function(inst, eater) end
@@ -113,7 +112,7 @@ local function MakePreparedDrink(data)
         inst.components.edible.nochill = data.nochill or nil
         inst.components.edible:SetOnEatenFn(function(inst, eater)
             oneatenfn(inst, eater)
-            OnEaten(inst, eater)
+            --OnEaten(inst, eater)
         end)
 
         inst:AddComponent("inspectable")
@@ -163,6 +162,10 @@ end
 local prefs = {}
 
 for k, v in pairs(require("prepareddrinks")) do
+    table.insert(prefs, MakePreparedDrink(v))
+end
+
+for k, v in pairs(require("preparedageddrinks")) do
     table.insert(prefs, MakePreparedDrink(v))
 end
 

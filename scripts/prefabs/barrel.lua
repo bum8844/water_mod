@@ -67,13 +67,27 @@ local function onload(inst, data)
     end
 end
 
+local function waterlevelchk(inst)
+	if inst.components.waterlevel:IsFull() then
+		inst.components.waterlevel.accepting = false
+	else
+		inst.components.waterlevel.accepting = true
+	end
+	if not inst.components.waterlevel:IsEmpty() then
+		inst.components.watersource.available = true
+	else
+		inst.components.watersource.available = false
+	end
+end
+
 local function OnTakeWater(inst)
+	waterlevelchk(inst)
 	inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/medium")
 end
 
 local function OnTaken(inst, taker, water_amount)
-	OnTakeWater(inst)
 	inst.components.waterlevel:DoDelta(-water_amount)
+	OnTakeWater(inst)
 end
 
 local function OnSectionChange(new, old, inst)
@@ -139,8 +153,11 @@ local function fn()
 	inst.components.waterlevel:InitializeWaterLevel(0)
 
 	inst:AddComponent("water")
-	--inst.components.water:SetWaterType(nil)
+	inst.components.water.available = false
 	inst.components.water:SetOnTakenFn(OnTaken)
+
+	inst:AddComponent("watersource")
+	inst.components.watersource.available = false
 
 	inst:AddComponent("wateryprotection")
     inst.components.wateryprotection.extinguishheatpercent = TUNING.WATER_BARREL_EXTINGUISH_HEAT_PERCENT
@@ -155,7 +172,7 @@ local function fn()
 
 	inst:ListenForEvent("onbuilt", onbuilt)
 	inst:ListenForEvent("onburnt", onburnt)
-	--inst:ListenForEvent("watertypechange", )
+	inst:ListenForEvent("onwaterlevelsectionchanged", waterlevelchk)
 	inst:ListenForEvent("percentusedchange", onpercentusedchange)
 
     inst.OnSave = onsave

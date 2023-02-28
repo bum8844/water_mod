@@ -1,16 +1,13 @@
-local function OnEaten(inst, eater)
+--[[local function OnEaten(inst, eater)
     local item = SpawnPrefab("cup")
     local stacksize = eater.components.eater.eatwholestack and inst.components.stackable:StackSize() or 1
     item.components.stackable:SetStackSize(stacksize)
     RefundItem(inst, "cup", true)
-end
+end]]
 
 local function OnTake(inst, taker, delta)
-    local cup = SpawnPrefab("cup")
     local stacksize = math.clamp(math.floor(delta/TUNING.CUP_MAX_LEVEL), 1, inst.components.stackable:StackSize())
-    cup.components.stackable:SetStackSize(stacksize)
 
-    RefundItem(inst, cup, true)
     if inst.components.stackable:IsStack() then
         inst.components.stackable:Get(stacksize):Remove()
     else
@@ -64,14 +61,14 @@ local function MakeCup(name, masterfn, tags)
 
         inst:AddComponent("edible")
         --inst.components.edible.foodtype = FOODTYPE.GOODIES
-        inst.components.edible:SetOnEatenFn(OnEaten)
+        --inst.components.edible:SetOnEatenFn(OnEaten)
 
         inst:AddComponent("inspectable")
 
         inst:AddComponent("water")
         inst.components.water.watervalue = TUNING.CUP_MAX_LEVEL
         inst.components.water:SetOnTakenFn(OnTake)
-        inst.components.returnprefab = "cup"
+        --inst.components.returnprefab = "cup"
 
     	inst:AddComponent("inventoryitem")
 

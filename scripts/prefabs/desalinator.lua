@@ -7,6 +7,17 @@ local assets =
     Asset("ANIM", "anim/desalinator_meter_salt.zip")
 }
 
+local function GetWet(inst)
+    if not inst:HasTag("burnt") then
+        if inst.components.waterlevel:GetPercent() > 0 then 
+            SpawnPrefab("waterballoon_splash").Transform:SetPosition(inst.Transform:GetWorldPosition())
+            inst.SoundEmitter:KillSound("destroy")
+            inst.SoundEmitter:PlaySound("dontstarve/creatures/pengull/splash")
+            inst.components.wateryprotection:SpreadProtection(inst)
+        end
+    end
+end
+
 local function onhammered(inst, worker)
 	if inst.components.burnable ~= nil and inst.components.burnable:IsBurning() then
         inst.components.burnable:Extinguish()
@@ -22,6 +33,7 @@ local function onhammered(inst, worker)
 	inst.components.lootdropper:DropLoot()
 	SpawnPrefab("collapse_small").Transform:SetPosition(inst.Transform:GetWorldPosition())
 	inst.SoundEmitter:PlaySound("dontstarve/common/destroy_stone")
+    GetWet(inst)
 	inst:Remove()
 end
 
@@ -46,20 +58,18 @@ local function onbuilt(inst)
 	inst.AnimState:PushAnimation("idle")
 end
 
-local function harvestsalt(inst)
-    if inst._saltvalue >= 10 then
-        inst.components.stewer.product = "saltrock"
-        if not inst:HasTag("boilling") then
-            inst.components.stewer.done = true
-        end
+local function onpickedfn(inst, picker)
+    if not inst:HasTag("burnt") then
+        local value = inst._saltvalue
+        inst._saltvalue = inst._saltvalue - math.floor((value*.1)*10)
+        inst.components.pickable.numtoharvest = inst.components.pickable.numtoharvest - inst.components.pickable.numtoharvest
+        inst.SoundEmitter:PlaySound("saltydog/common/saltbox/close")
     end
 end
 
-local function harvestfn(inst)
-    if not inst:HasTag("burnt") then
-        inst._saltvalue = inst._saltvalue - 10
-        inst.SoundEmitter:PlaySound("saltydog/common/saltbox/close")
-    end
+local function CalculationForSalt(inst)
+    inst.components.pickable.numtoharvest = math.floor(inst._saltvalue*.1)
+    inst.components.pickable.canbepicked = true
 end
 
 local function BoiledDone(inst)
@@ -67,7 +77,7 @@ local function BoiledDone(inst)
         inst.components.waterlevel.accepting = true
     end
     inst.components.watersource.available = true
-    inst.components.waterlevel.item_watertype = WATERTYPE.CLEAN
+    inst.components.waterlevel.watertype = WATERTYPE.CLEAN
     inst.AnimState:OverrideSymbol("swap", "desalinator_meter_water", tostring(inst._waterlevel))
     inst.AnimState:PlayAnimation("idle")
     inst.SoundEmitter:KillSound("desalinator_sound")
@@ -78,21 +88,29 @@ local function BoiledDone(inst)
         inst.SoundEmitter:KillSound("purify")
         inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/medium")
         inst.SoundEmitter:PlaySound("saltydog/common/saltbox/open")
-        inst.components.stewer.done = true
-        inst.components.stewer.product = "saltrock"
+        CalculationForSalt(inst)
     end
 end
 
 local function Boiled(inst)
     inst:AddTag("boilling")
-    if inst.components.stewer.done then
-        inst.components.stewer.done = false
-    end
     inst.components.waterlevel.accepting = false
     inst.components.watersource.available = false
+    inst.components.pickable.canbepicked = false
     inst.AnimState:PlayAnimation("cook", true)
     inst.SoundEmitter:PlaySound("dontstarve/halloween_2018/madscience_machine/cooking_LP", "desalinator_sound", 0.3)
     inst:DoTaskInTime(inst._timer, BoiledDone, inst)
+end
+
+local function onburnt(inst)
+    inst.components.waterlevel.accepting = false
+    inst.components.water.available = false
+    inst.components.waterlevel:SetPercent(0)
+    local amount = math.ceil(inst.components.wateryprotection.addwetness * MOISTURE_ON_BURNT_MULTIPLIER)
+    if amount > 0 then
+        local x, y, z = inst.Transform:GetWorldPosition()
+        TheWorld.components.farming_manager:AddSoilMoistureAtPoint(x, 0, z, amount)
+    end
 end
 
 local function onsave(inst, data)
@@ -126,20 +144,45 @@ local function OnDepleted(inst)
 end
 
 local function OnSectionChange(new, old, inst)
-    local item_watertype = inst.components.waterlevel.item_watertype
-    local watertype = item_watertype ~= WATERTYPE.CLEAN and "salt" or "water"
+    local watertype = inst.components.waterlevel.watertype ~= WATERTYPE.CLEAN and "salt" or "water"
     if new ~= nil then
         if inst._waterlevel ~= new then
             inst._waterlevel = new
         end
     end
     inst.AnimState:OverrideSymbol("swap", "desalinator_meter_"..watertype, tostring(inst._waterlevel))
+    if inst._saltvalue >= 10 then
+        CalculationForSalt(inst)
+    end
 end
 
 local function OnTakeWater(inst)
-    inst._saltvalue = inst._saltvalue + inst.components.waterlevel.currentwater
+    if inst._saltvalue >= 20 then
+        inst._saltvalue = inst._saltvalue + (inst.components.waterlevel.currentwater - inst.components.waterlevel.oldcurrenwater)
+    else
+        inst._saltvalue = inst.components.waterlevel.currentwater
+    end
     inst._timer = TUNING.DESALINATION_TIME * inst.components.waterlevel.currentwater
     Boiled(inst)
+end
+
+local function waterlevelchk(inst)
+    if inst.components.waterlevel:IsFull() then
+        inst.components.waterlevel.accepting = false
+    else
+        inst.components.waterlevel.accepting = true
+    end
+    if not inst.components.waterlevel:IsEmpty() then
+        inst.components.watersource.available = true
+    else
+        inst.components.watersource.available = false
+    end
+end
+
+local function OnTaken(inst, taker, water_amount)
+    inst.components.waterlevel:DoDelta(-water_amount)
+    waterlevelchk(inst)
+    inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/medium")
 end
 
 local function getstatus(inst)
@@ -148,7 +191,13 @@ local function getstatus(inst)
         or (inst.components.watersource.available and "HASWATER")
         or "EMPTY"
 end
-GetTime()
+
+
+
+local function onpercentusedchange(inst, data)
+    inst.components.wateryprotection.addwetness = data.percent * TUNING.WATER_BARREL_WETNESS
+end
+
 local function fn()
 	local inst = CreateEntity()
 	
@@ -186,8 +235,10 @@ local function fn()
     inst:AddComponent("inspectable")
     inst.components.inspectable.getstatus = getstatus
 
-    inst:AddComponent("stewer")
-    inst.components.stewer.onharvest = harvestfn
+    inst:AddComponent("pickable")
+    inst.components.pickable.onpickedfn = onpickedfn
+    inst.components.pickable.product = "saltrock"
+    inst.components.pickable.numtoharvest = 0
 
     inst:AddComponent("waterlevel")
     inst.components.waterlevel:SetCanAccepts({WATERTYPE.SALTY})
@@ -199,8 +250,19 @@ local function fn()
     inst.components.waterlevel:SetSectionCallback(OnSectionChange)
     inst.components.waterlevel:InitializeWaterLevel(0)
 
+    inst:AddComponent("water")
+    inst.components.water.available = false
+    inst.components.water:SetOnTakenFn(OnTaken)
+
     inst:AddComponent("watersource")
     inst.components.watersource.available = false
+
+    inst:AddComponent("wateryprotection")
+    inst.components.wateryprotection.extinguishheatpercent = TUNING.WATER_BARREL_EXTINGUISH_HEAT_PERCENT
+    inst.components.wateryprotection.temperaturereduction = TUNING.WATER_BARREL_TEMP_REDUCTION
+    inst.components.wateryprotection.witherprotectiontime = TUNING.WATER_BARREL_PROTECTION_TIME
+    inst.components.wateryprotection.addwetness = 0 -- 물의 양에 따라 변형
+    inst.components.wateryprotection.protection_dist = TUNING.WATER_BARREL_DIST
 	
 	inst:AddComponent("workable")
     inst.components.workable:SetWorkAction(ACTIONS.HAMMER)
@@ -209,7 +271,7 @@ local function fn()
 	inst.components.workable:SetOnWorkCallback(onhit)
 	
 	inst:ListenForEvent("onbuilt", onbuilt)
-    inst:ListenForEvent("harvestsalt", harvestsalt)
+    inst:ListenForEvent("onwaterlevelsectionchanged", waterlevelchk)
 	
 	MakeHauntableWork(inst)
 	

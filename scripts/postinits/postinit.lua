@@ -12,6 +12,7 @@ local postinits =
 
 	prefabs =
 	{
+		"wateringcan",
 		"antlion",
 		"fertilizer",
 		"firepit",

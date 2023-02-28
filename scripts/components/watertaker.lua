@@ -37,7 +37,7 @@ function Watertaker:Fill(source, doer)
 			end
 
 			if self.onfillfn ~= nil then
-				self.onfillfn(self.inst)
+				self.onfillfn(self.inst, source, doer)
 			end
 
 			self._laststack = 0

@@ -128,7 +128,7 @@ function Waterlevel:SetSections(num)
 end
 
 function Waterlevel:GetCurrentSection()
-    return self:IsEmpty() and 0 or math.min( math.floor(self:GetPercent()* self.sections)+1, self.sections)
+    return self:IsEmpty() and 0 or math.min( math.ceil(self:GetPercent()* self.sections), self.sections)
 end
 
 function Waterlevel:ChangeSection(amount)

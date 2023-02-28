@@ -167,7 +167,7 @@ local drinks =
 	},
 	
 	-- 일시적 겉는 속도 증가[추가해야함]
-	dd_coffee =
+	caffeinberry_juice =
 	{
 		test = function(boilier, names, tags) return (( names.caffeinberry_bean_cooked or 0 ) + ( names.coffeebeans_cooked or 0 ) >= 2) and notmeat(tags) end,
 		priority = 1,
@@ -177,7 +177,6 @@ local drinks =
 		thirst = TUNING.HYDRATION_SMALL,
 		perishtime = TUNING.PERISH_SLOW,
 		cooktime = TUNING.KETTLE_LUXURY_GOODS,
-		basename = "dd_coffee",
 		oneatenfn = function(inst, eater)
 			if not eater.components.health or eater.components.health:IsDead() or eater:HasTag("playerghost") then
 				return
