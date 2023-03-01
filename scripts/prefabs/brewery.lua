@@ -207,9 +207,6 @@ local function OnSectionChange(new, old, inst)
     if inst._waterlevel ~= new then
         inst._waterlevel = new
     end
-    print("new : "..new)
-    print("old : "..old)
-    print("inst water : "..inst._waterlevel)
     inst.AnimState:OverrideSymbol("swap", "brewery_meter_"..product, tostring(new))
 end
 
@@ -274,10 +271,9 @@ local function fn()
     end
 
     inst:AddComponent("waterlevel")
-    inst.components.waterlevel.SetCanAccepts({WATERTYPE.CLEAN, WATERTYPE.EMPTY})
+    inst.components.waterlevel:SetCanAccepts({WATERTYPE.CLEAN, WATERTYPE.EMPTY})
     inst.components.waterlevel:SetTakeWaterFn(OnTakeWater)
     inst.components.waterlevel.maxwater = TUNING.BREWERY_MAX_LEVEL
-    inst.components.waterlevel.accepting = true
     inst.components.waterlevel:SetSections(TUNING.BREWERY_SECTIONS)
     inst.components.waterlevel:SetSectionCallback(OnSectionChange)
     inst.components.waterlevel:InitializeWaterLevel(0)

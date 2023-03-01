@@ -345,31 +345,16 @@ local function fn()
         return inst
     end
 
-    inst._timer = 0
-    inst._waterlevel = 0
-
     inst:AddComponent("portablestructure")
     inst.components.portablestructure:SetOnDismantleFn(OnDismantle)
 
     inst:AddComponent("waterlevel")
-    inst.components.waterlevel.SetCanAccepts(WATERGROUP.BOILABLE)
+    inst.components.waterlevel:SetCanAccepts({WATERGROUP.BOILABLE}))
     inst.components.waterlevel:SetTakeWaterFn(OnTakeWater)
     inst.components.waterlevel.maxwater = TUNING.KETTLE_MAX_LEVEL
-    inst.components.waterlevel.accepting = true
     inst.components.waterlevel:SetSections(TUNING.KETTLE_MAX_LEVEL)
     inst.components.waterlevel:SetSectionCallback(OnSectionChange)
     inst.components.waterlevel:InitializeWaterLevel(0)
-
-    inst:AddComponent("water")
-    inst.components.water.available = false
-    inst.components.water:SetOnTakenFn(OnTaken)
-
-    inst:AddComponent("wateryprotection")
-    inst.components.wateryprotection.extinguishheatpercent = TUNING.WATER_BARREL_EXTINGUISH_HEAT_PERCENT
-    inst.components.wateryprotection.temperaturereduction = TUNING.WATER_BARREL_TEMP_REDUCTION
-    inst.components.wateryprotection.witherprotectiontime = TUNING.WATER_BARREL_PROTECTION_TIME
-    inst.components.wateryprotection.addwetness = 0 -- 물의 양에 따라 변형
-    inst.components.wateryprotection.protection_dist = TUNING.WATER_BARREL_DIST
 
     inst:AddComponent("stewer")
     inst.components.stewer.spoiledproduct = "spoiled_drink"
@@ -390,6 +375,17 @@ local function fn()
     inst.components.pickable.product = (inst.components.stewer.product ~= nil and inst.components.stewer.product) or (inst.components.waterlevel:GetWater() ~= 0 and "water_clean") or nil
     inst.components.pickable.numtoharvest = inst.components.waterlevel:GetWater()
     inst.components.pickable:SetOnPickedFn(harvestfn)
+
+    inst:AddComponent("water")
+    inst.components.water.available = false
+    inst.components.water:SetOnTakenFn(OnTaken)
+
+    inst:AddComponent("wateryprotection")
+    inst.components.wateryprotection.extinguishheatpercent = TUNING.WATER_BARREL_EXTINGUISH_HEAT_PERCENT
+    inst.components.wateryprotection.temperaturereduction = TUNING.WATER_BARREL_TEMP_REDUCTION
+    inst.components.wateryprotection.witherprotectiontime = TUNING.WATER_BARREL_PROTECTION_TIME
+    inst.components.wateryprotection.addwetness = 0 -- 물의 양에 따라 변형
+    inst.components.wateryprotection.protection_dist = TUNING.WATER_BARREL_DIST
 
     inst:AddComponent("container")
     inst.components.container:WidgetSetup("portablekettle")

@@ -211,10 +211,8 @@ local function fn()
 
     inst:AddComponent("waterlevel")
     inst.components.waterlevel:SetCanAccepts({WATERTYPE.SALTY})
-    inst.components.waterlevel:SetDepletedFn(OnDepleted)
     inst.components.waterlevel:SetTakeWaterFn(OnTakeWater)
     inst.components.waterlevel.maxwater = TUNING.DESALINATOR_MAX_LEVEL
-    inst.components.waterlevel.accepting = true
     inst.components.waterlevel:SetSections(TUNING.DESALINATOR_MAX_LEVEL)
     inst.components.waterlevel:SetSectionCallback(OnSectionChange)
     inst.components.waterlevel:InitializeWaterLevel(0)

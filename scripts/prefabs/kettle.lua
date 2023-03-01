@@ -294,13 +294,31 @@ local function fn()
     end
 
     inst:AddComponent("waterlevel")
-    inst.components.waterlevel.SetCanAccepts(WATERGROUP.BOILABLE)
+    inst.components.waterlevel:SetCanAccepts({WATERGROUP.BOILABLE})
     inst.components.waterlevel:SetTakeWaterFn(OnTakeWater)
     inst.components.waterlevel.maxwater = TUNING.KETTLE_MAX_LEVEL
-    inst.components.waterlevel.accepting = true
     inst.components.waterlevel:SetSections(TUNING.KETTLE_MAX_LEVEL)
     inst.components.waterlevel:SetSectionCallback(OnSectionChange)
     inst.components.waterlevel:InitializeWaterLevel(0)
+
+    inst:AddComponent("stewer")
+    inst.components.stewer.spoiledproduct = "spoiled_drink"
+    inst.components.stewer.onstartcooking = startcookfn
+    inst.components.stewer.oncontinuecooking = continuecookfn
+    inst.components.stewer.oncontinuedone = continuedonefn
+    inst.components.stewer.ondonecooking = donecookfn
+    --inst.components.stewer.onharvest = harvestfn
+    inst.components.stewer.onspoil = spoilfn
+
+    inst:AddComponent("distiller")
+    inst.components.distiller.onstartboiling = onstartboilingfn
+    inst.components.distiller.ondoneboiling = ondoneboilingfn
+
+    inst:AddComponent("pickable")
+    inst.components.pickable.canbepicked = false
+    inst.components.pickable.product = (inst.components.stewer.product ~= nil and inst.components.stewer.product) or (inst.components.waterlevel:GetWater() ~= 0 and "water_clean") or nil
+    inst.components.pickable.numtoharvest = inst.components.waterlevel:GetWater()
+    inst.components.pickable:SetOnPickedFn(harvestfn)
 
     inst:AddComponent("water")
     inst.components.water.available = false
@@ -312,25 +330,6 @@ local function fn()
     inst.components.wateryprotection.witherprotectiontime = TUNING.WATER_BARREL_PROTECTION_TIME
     inst.components.wateryprotection.addwetness = 0 -- 물의 양에 따라 변형
     inst.components.wateryprotection.protection_dist = TUNING.WATER_BARREL_DIST
-
-    inst:AddComponent("stewer")
-    inst.components.stewer.spoiledproduct = "spoiled_drink"
-	inst.components.stewer.onstartcooking = startcookfn
-	inst.components.stewer.oncontinuecooking = continuecookfn
-	inst.components.stewer.oncontinuedone = continuedonefn
-	inst.components.stewer.ondonecooking = donecookfn
-	--inst.components.stewer.onharvest = harvestfn
-	inst.components.stewer.onspoil = spoilfn
-
-    inst:AddComponent("distiller")
-    inst.components.distiller.onstartboiling = onstartboilingfn
-    inst.components.distiller.ondoneboiling = ondoneboilingfn
-
-    inst:AddComponent("pickable")
-    inst.components.pickable.canbepicked = false
-    inst.components.pickable.product = (inst.components.stewer.product ~= nil and inst.components.stewer.product) or (inst.components.waterlevel:GetWater() ~= 0 and "water_clean") or nil
-    inst.components.pickable.numtoharvest = inst.components.waterlevel:GetWater()
-    inst.components.pickable:SetOnPickedFn(harvestfn)
 
 	inst:AddComponent("container")
 	inst.components.container:WidgetSetup("kettle")
