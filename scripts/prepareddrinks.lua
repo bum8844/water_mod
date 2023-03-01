@@ -252,11 +252,6 @@ local drinks =
 		potlevel = "small",
 		oneatenfn = function(inst, eater)
 			local knockouttime = TUNING.TEASLEEP_TIME + math.random()
-			if inst:HasTag("preparedrink_cup") then
-				returncup(inst, eater)
-			else
-				returnbottle(inst, eater)
-			end
 			if not eater.components.health or eater.components.health:IsDead() or eater:HasTag("playerghost") then
 				return
 			elseif eater.components.debuffable and eater.components.debuffable:IsEnabled() then
@@ -399,7 +394,7 @@ local drinks =
 		--potlevel = "high",
 	},
 	
-	--일시적으로 유령으로 만드는 차[추가해야함]
+	--일시적으로 유령으로 만드는 차[서버에서 나갔다 들어왓을때 다시 적용되개해야함]
 	sushibiscus =
 	{
 		test = function(boilier, names, tags) return (( names.petals_evil or 0 ) + ( names.firenettles or 0 ) + ( names.tillweed  or 0 ) >= 2) and notmeat(tags) end,

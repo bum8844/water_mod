@@ -22,6 +22,12 @@ local tuning =
 		"webber",
 	},
 
+	SPOILED_DRINK_NUTRIENTS = {  4,  4,  4 },
+
+	SPOILEDFOOD_FERTILIZE = 4,
+	SPOILEDFOOD_SOILCYCLES = 4,
+ 	SPOILEDFOOD_WITHEREDCYCLES = 4,
+
 	-- Maximum Amount of Water
 	CUP_MAX_LEVEL = 1,
 	--BOTTLE_MAX_LEVEL = 10,

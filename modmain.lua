@@ -1,4 +1,5 @@
 require "utils/water_utils"
+require("water_debugcommands")
 modimport("scripts/set_env")
 
 PrefabFiles = require("water_prefablist")
