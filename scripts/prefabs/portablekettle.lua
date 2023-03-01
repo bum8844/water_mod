@@ -349,7 +349,7 @@ local function fn()
     inst.components.portablestructure:SetOnDismantleFn(OnDismantle)
 
     inst:AddComponent("waterlevel")
-    inst.components.waterlevel:SetCanAccepts({WATERGROUP.BOILABLE}))
+    inst.components.waterlevel:SetCanAccepts({WATERGROUP.BOILABLE})
     inst.components.waterlevel:SetTakeWaterFn(OnTakeWater)
     inst.components.waterlevel.maxwater = TUNING.KETTLE_MAX_LEVEL
     inst.components.waterlevel:SetSections(TUNING.KETTLE_MAX_LEVEL)
