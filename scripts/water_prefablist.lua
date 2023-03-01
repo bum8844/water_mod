@@ -20,7 +20,7 @@ return {
 	--food & plants
 	"caffeinberry",
 	"prepareddrink",
-	"spoiled_drink",
+	--"spoiled_drink",
 	"tea_tree",
 	"tea_seed",
 	--"water_spicedfoods",

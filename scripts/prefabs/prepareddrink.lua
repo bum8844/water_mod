@@ -1,6 +1,7 @@
 local prefabs =
 {
     "spoiled_drink",
+    "gridplacer_farmablesoil",
 }
 
 --[[local function OnEaten(inst, eater)
@@ -10,12 +11,15 @@ local prefabs =
     RefundItem(inst, "cup", true)
 end]]
 
+local FERTILIZER_DEFS = require("prefabs/fertilizer_nutrient_defs").FERTILIZER_DEFS
+
 local function MakePreparedDrink(data)
 	local oneatenfn = data.oneatenfn or function(inst, eater) end
 
 	local drinkassets =
 	{
 		Asset("ANIM", "anim/kettle_drink.zip"),
+        Asset("SCRIPT", "scripts/prefabs/fertilizer_nutrient_defs.lua"),
 	}
 
 	local drinkprefabs = prefabs
@@ -91,7 +95,7 @@ local function MakePreparedDrink(data)
             MakeInventoryFloatable(inst)
         end
 
-        if data.name == "spoiled" then
+        if data.name == "spoiled_drink" then
             inst:AddTag("fertilizerresearchable")
 
             inst.GetFertilizerKey = function(inst) return inst.prefab end
@@ -145,7 +149,7 @@ local function MakePreparedDrink(data)
             inst.components.perishable.onperishreplacement = "spoiled"
         end
 
-        if inst:HasTag("spoiled") then
+        if inst:HasTag("spoiled") or data.name == "spoiled_drink" then
             inst:AddComponent("fertilizer")
             inst.components.fertilizer.fertilizervalue = TUNING.SPOILEDFOOD_FERTILIZE
             inst.components.fertilizer.soil_cycles = TUNING.SPOILEDFOOD_SOILCYCLES

@@ -113,7 +113,7 @@ end
 
 local function ShowProduct(inst)
     if not inst:HasTag("burnt") then
-        if inst.components.stewer.product == "spoiled" then
+        if inst.components.stewer.product == "spoiled_drink" then
             inst.components.waterlevel.item_watertype = WATERTYPE.DIRTY
             inst.AnimState:OverrideSymbol("swap", "brewery_meter_dirty", tostring(inst._waterlevel))
         end
@@ -203,7 +203,7 @@ local function OnTaken(inst, taker, water_amount)
 end
 
 local function OnSectionChange(new, old, inst)
-    local product = inst.components.stewer.product ~= "spoiled" and "water" or "dirty"
+    local product = inst.components.stewer.product ~= "spoiled_drink" and "water" or "dirty"
     if inst._waterlevel ~= new then
         inst._waterlevel = new
     end

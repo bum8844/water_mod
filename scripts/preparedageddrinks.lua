@@ -32,7 +32,7 @@ local drinks =
 
 	-- 공통적으로 hot, cold 없음
 	-- 잘못된 발효음료 조합법(재료중 찻잎, 꽃류, 채소 제외)
-	spoiled =
+	spoiled_drink =
 	{
 		test = function(boilier, names, tags) return true end,
 		priority = -2,
