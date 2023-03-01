@@ -23,7 +23,7 @@ end
 --Overriding existing actions
 local cook_stroverride = ACTIONS.COOK.stroverridefn or function(act) return end
 ACTIONS.COOK.stroverridefn = function(act)
-    return act.target:HasTag("kettle") and STRINGS.ACTIONS.BOIL or cook_stroverride(act)
+    return act.target:HasTag("kettle") and STRINGS.ACTIONS.BOIL or act.target:HasTag("brewery") and STRINGS.ACTIONS.FERMENT or cook_stroverride(act)
 end
 
 local harvest_stroverride = ACTIONS.HARVEST.stroverridefn or function(act) return end
@@ -33,7 +33,7 @@ end
 
 local store_stroverride = ACTIONS.STORE.stroverridefn or function(act) return end
 ACTIONS.STORE.stroverridefn = function(act)
-    return act.target:HasTag("kettle") and STRINGS.ACTIONS.BOIL or nil
+    return act.target:HasTag("kettle") and STRINGS.ACTIONS.BOIL or act.target:HasTag("brewery") and STRINGS.ACTIONS.FERMENT or nil
 end
 
 --Adding new actions

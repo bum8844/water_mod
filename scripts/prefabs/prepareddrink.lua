@@ -90,6 +90,12 @@ local function MakePreparedDrink(data)
         else
             MakeInventoryFloatable(inst)
         end
+
+        if data.name == "spoiled" then
+            inst:AddTag("fertilizerresearchable")
+
+            inst.GetFertilizerKey = function(inst) return inst.prefab end
+        end
         
         inst.entity:SetPristine()
 
@@ -136,14 +142,24 @@ local function MakePreparedDrink(data)
             inst:AddComponent("perishable")
             inst.components.perishable:SetPerishTime(data.perishtime ~= nil and data.perishtime or nil)
             inst.components.perishable:StartPerishing()
-            inst.components.perishable.onperishreplacement = "spoiled_drink"
+            inst.components.perishable.onperishreplacement = "spoiled"
         end
 
         if inst:HasTag("spoiled") then
+            inst:AddComponent("fertilizer")
+            inst.components.fertilizer.fertilizervalue = TUNING.SPOILEDFOOD_FERTILIZE
+            inst.components.fertilizer.soil_cycles = TUNING.SPOILEDFOOD_SOILCYCLES
+            inst.components.fertilizer.withered_cycles = TUNING.SPOILEDFOOD_WITHEREDCYCLES
+            inst.components.fertilizer:SetNutrients(FERTILIZER_DEFS.spoiled_drink.nutrients)
+            inst.components.fertilizer.onappliedfn = OnApplied
+            MakeDeployableFertilizer(inst)
+
+            inst:AddComponent("fertilizerresearchable")
+            inst.components.fertilizerresearchable:SetResearchFn(fertilizerresearchfn)
+
+            inst:AddComponent("selfstacker")
         end
 
-        --MakeSmallBurnable(inst)
-        --MakeSmallPropagator(inst)
         MakeDynamicCupImage(inst, "swap", "kettle_drink")
         MakeHauntableLaunchAndPerish(inst)
 

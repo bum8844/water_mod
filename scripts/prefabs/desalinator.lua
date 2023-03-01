@@ -68,11 +68,16 @@ local function onpickedfn(inst, picker)
 end
 
 local function CalculationForSalt(inst)
-    if inst._saltvalue > inst._saltvaluemax then
-        inst._saltvalue = inst._saltvaluemax
+    if inst._saltvalue >= 10 then
+        if inst._saltvalue > inst._saltvaluemax then
+            inst._saltvalue = inst._saltvaluemax
+        end
+        inst.SoundEmitter:KillSound("purify")
+        inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/medium")
+        inst.SoundEmitter:PlaySound("saltydog/common/saltbox/open")
+        inst.components.pickable.numtoharvest = math.floor(inst._saltvalue*.1)
+        inst.components.pickable.canbepicked = true
     end
-    inst.components.pickable.numtoharvest = math.floor(inst._saltvalue*.1)
-    inst.components.pickable.canbepicked = true
 end
 
 local function ondoneboilingfn(inst)
@@ -80,12 +85,7 @@ local function ondoneboilingfn(inst)
     inst.AnimState:PlayAnimation("idle")
     inst.SoundEmitter:KillSound("desalinator_sound")
     inst.SoundEmitter:PlaySound("hookline/common/trophyscale_fish/place_fish","purify")
-    if inst._saltvalue >= 10 then
-        inst.SoundEmitter:KillSound("purify")
-        inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/medium")
-        inst.SoundEmitter:PlaySound("saltydog/common/saltbox/open")
-        CalculationForSalt(inst)
-    end
+    CalculationForSalt(inst)
 end
 
 local function onstartboilingfn(inst)
@@ -118,7 +118,7 @@ local function onload(inst, data)
         if data.burnt then
             inst.components.burnable.onburnt(inst)
         end
-        if data.saltvalue ~= nil or data.saltvalue ~= 0 then
+        if data.saltvalue ~= nil then
             inst._saltvalue = data.saltvalue
             CalculationForSalt(inst)
         end
@@ -133,9 +133,7 @@ local function OnSectionChange(new, old, inst)
         end
     end
     inst.AnimState:OverrideSymbol("swap", "desalinator_meter_"..watertype, tostring(inst._waterlevel))
-    if inst._saltvalue >= 10 then
-        CalculationForSalt(inst)
-    end
+    CalculationForSalt(inst)
 end
 
 local function OnTakeWater(inst)

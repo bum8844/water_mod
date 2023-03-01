@@ -113,6 +113,10 @@ end
 
 local function ShowProduct(inst)
     if not inst:HasTag("burnt") then
+        if inst.components.stewer.product == "spoiled" then
+            inst.components.waterlevel.item_watertype = WATERTYPE.DIRTY
+            inst.AnimState:OverrideSymbol("swap", "brewery_meter_dirty", tostring(inst._waterlevel))
+        end
         SetProductSymbol(inst, inst.components.stewer.product)
         inst.components.waterlevel.accepting = false
         inst.components.water.available = false
@@ -128,10 +132,6 @@ local function donecookfn(inst)
         inst.components.waterlevel.accepting = false
         inst.AnimState:PlayAnimation("cooking_pst")
         inst.AnimState:PushAnimation("idle_full", false)
-        if inst.components.stewer.product == "spoiled" then
-            inst.components.waterlevel.item_watertype = WATERTYPE.DIRTY
-            inst.AnimState:OverrideSymbol("swap", "brewery_meter_dirty", tostring(inst._waterlevel))
-        end
         ShowProduct(inst)
         inst.SoundEmitter:KillSound("snd")
         inst.SoundEmitter:PlaySound("turnoftides/common/together/boat/anchor/ocean_hit")
@@ -262,7 +262,7 @@ local function fn()
 	inst.AnimState:OverrideSymbol("swap","brewery_meter_water", "0")
     
 	inst:AddTag("structure")
-	inst:AddTag("kettle")
+	inst:AddTag("brewery")
 	
 	inst.entity:SetPristine()
 	
