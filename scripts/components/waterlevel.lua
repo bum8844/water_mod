@@ -123,12 +123,16 @@ function Waterlevel:IsFull()
     return self.currentwater >= self.maxwater
 end
 
+function Waterlevel:IsSame()
+    return self.maxwater == self.sections
+end
+
 function Waterlevel:SetSections(num)
     self.sections = num
 end
 
 function Waterlevel:GetCurrentSection()
-    return self:IsEmpty() and 0 or math.min( math.ceil(self:GetPercent()* self.sections), self.sections)
+    return self:IsEmpty() and 0 or self:IsSame() and math.min( math.ceil(self:GetPercent()* self.sections), self.sections) or math.min( math.ceil(self:GetPercent()* self.sections)+1, self.sections)
 end
 
 function Waterlevel:ChangeSection(amount)

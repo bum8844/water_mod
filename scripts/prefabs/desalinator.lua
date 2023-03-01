@@ -68,6 +68,9 @@ local function onpickedfn(inst, picker)
 end
 
 local function CalculationForSalt(inst)
+    if inst._saltvalue > inst._saltvaluemax then
+        inst._saltvalue = inst._saltvaluemax
+    end
     inst.components.pickable.numtoharvest = math.floor(inst._saltvalue*.1)
     inst.components.pickable.canbepicked = true
 end
@@ -120,12 +123,6 @@ local function onload(inst, data)
             CalculationForSalt(inst)
         end
     end
-end
-
-local function OnDepleted(inst)
-    inst.components.watersource.available = false
-    inst.components.waterlevel.accepting = true
-    inst.AnimState:PlayAnimation("idle")
 end
 
 local function OnSectionChange(new, old, inst)
@@ -201,6 +198,7 @@ local function fn()
 
     inst._waterlevel = 0
     inst._saltvalue = 0
+    inst._saltvaluemax = 400
 	
 	inst:AddComponent("lootdropper")
     inst:AddComponent("inspectable")

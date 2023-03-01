@@ -117,7 +117,7 @@ local function ShowProduct(inst)
         inst.components.waterlevel.accepting = false
         inst.components.water.available = false
         inst.components.pickable.product = inst.components.stewer.product
-        inst.components.pickable.numtoharvest = 1--inst.components.waterlevel:GetWater()
+        inst.components.pickable.numtoharvest = inst.components.waterlevel:GetWater()
         inst.components.pickable.canbepicked = true
     end
 end
@@ -157,12 +157,17 @@ end
 
 local function harvestfn(inst,picker,loot)
     if not inst:HasTag("burnt") then
-        loot.components.stackable:SetStackSize(inst.components.waterlevel:GetWater())
+        if inst.components.stewer.spoiltime ~= nil and loot.components.perishable ~= nil then
+            local spoilpercent = inst.components.stewer:GetTimeToSpoil() / inst.components.stewer.spoiltime
+            loot.components.perishable:SetPercent(inst.components.stewer.product_spoilage * spoilpercent)
+            loot.components.perishable:StartPerishing()
+        end
+        picker:PushEvent("learncookbookrecipe", {product = inst.components.stewer.product, ingredients = inst.components.stewer.ingredient_prefabs})
         inst.components.stewer.product = nil
         inst.components.waterlevel:DoDelta(-inst.components.waterlevel:GetWater())
         inst.AnimState:PlayAnimation("idle_empty")
         inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_close")
-        inst.components.stewer:Harvest()
+        inst.components.stewer:Harvest(picker)
     end
 end
 
@@ -198,11 +203,14 @@ local function OnTaken(inst, taker, water_amount)
 end
 
 local function OnSectionChange(new, old, inst)
-    local product = inst.components.stewer.product == "spoiled" and "dirty" or "water"
+    local product = inst.components.stewer.product ~= "spoiled" and "water" or "dirty"
     if inst._waterlevel ~= new then
         inst._waterlevel = new
-        inst.AnimState:OverrideSymbol("swap", "brewery_meter_"..product, tostring(new))
     end
+    print("new : "..new)
+    print("old : "..old)
+    print("inst water : "..inst._waterlevel)
+    inst.AnimState:OverrideSymbol("swap", "brewery_meter_"..product, tostring(new))
 end
 
 local function onopen(inst)

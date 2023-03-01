@@ -160,11 +160,17 @@ end
 
 local function harvestfn(inst,picker,loot)
     if not inst:HasTag("burnt") then
+        if inst.components.stewer.spoiltime ~= nil and loot.components.perishable ~= nil then
+            local spoilpercent = inst.components.stewer:GetTimeToSpoil() / inst.components.stewer.spoiltime
+            loot.components.perishable:SetPercent(inst.components.stewer.product_spoilage * spoilpercent)
+            loot.components.perishable:StartPerishing()
+        end
+        picker:PushEvent("learncookbookrecipe", {product = inst.components.stewer.product, ingredients = inst.components.stewer.ingredient_prefabs})
         inst.components.stewer.product = nil
         inst.components.waterlevel:DoDelta(-inst.components.waterlevel:GetWater())
         inst.AnimState:PlayAnimation("idle_empty")
         inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_close")
-        inst.components.stewer:Harvest()
+        inst.components.stewer:Harvest(picker)
     end
 end
 

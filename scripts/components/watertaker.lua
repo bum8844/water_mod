@@ -12,7 +12,7 @@ function Watertaker:Fill(source, doer)
 	local watertype = source ~= nil and source.components.water:GetWatertype() or WATERTYPE.SALTY
 	local wateramount = source ~= nil and source.components.water:GetWater() or self.capacity
 	if self.inst.components.finiteuses ~= nil then
-    	if self.inst.components.finiteuses:GetUses() < TUNING.BUCKET_LEVEL_PER_USE then
+    	if self.inst.components.finiteuses:GetUses() < wateramount then
         	wateramount = self.inst.components.finiteuses:GetUses()
     	end
     end
