@@ -37,7 +37,7 @@ local drinks =
 		potlevel = "small",
 	},
 	
-	berries_tea =
+	berries_juice =
 	{
 		test = function(boilier, names, tags) return (( names.berries or 0 ) + ( names.berries_cooked or 0 ) + ( names.berries_juicy or 0 ) + ( names.berries_juicy_cooked or 0 ) >= 2) and notmeat(tags) end,
 		priority = 1,
@@ -63,7 +63,7 @@ local drinks =
 		potlevel = "small",
 	},
 	
-	banana_tea =
+	banana_juice =
 	{
 		test = function(boilier, names, tags) return (( names.cave_banana or 0 ) + ( names.cave_banana_cooked or 0 ) >= 2 ) and notmeat(tags) end,
 		priority = 1,
