@@ -86,7 +86,7 @@ local tuning =
 	HYDRATION_SMALL = hydration_per_day/6, -- Alcohols and Coffee
 	HYDRATION_MEDSMALL = hydration_per_day/4, -- Mixed Beverage
 	HYDRATION_MED = hydration_per_day/3, -- Tea and Florals
-	HYDRATION_LARGE = hydration_per_day/2, -- Drinks made of specific ingredient(i.e. Dragonfruit Juice)
+	HYDRATION_LARGE = hydration_per_day/2, -- Drinks made of specific ingredient(i.e. Banana Juice)
 	HYDRATION_HUGE = hydration_per_day, -- Drinks with Special Effect, Lemon & Lime Soda
 	HYDRATION_SUPERHUGE = hydration_per_day*2, -- Cola
 
