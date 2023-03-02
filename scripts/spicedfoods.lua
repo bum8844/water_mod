@@ -1,5 +1,7 @@
 require("tuning")
 
+local KnownModIndex = _G.KnownModIndex
+
 local water_spicedfoods = {}
 
 local function oneaten_caffeinpepper(inst, eater)
@@ -24,7 +26,7 @@ local SPICES =
 local function GenerateSpicedFoods_Water(foods)
     for foodname, fooddata in pairs(foods) do
         for spicenameupper, spicedata in pairs(SPICES) do
-            local newdata = shallowcopy(fooddata)
+            local newdata = _G.shallowcopy(fooddata)
             local spicename = string.lower(spicenameupper)
             if foodname == "wetgoop" then
                 newdata.test = function(cooker, names, tags) return names[spicename] end
@@ -56,7 +58,7 @@ local function GenerateSpicedFoods_Water(foods)
 
             if spicedata.prefabs ~= nil then
                 --make a copy (via ArrayUnion) if there are dependencies from the original food
-                newdata.prefabs = newdata.prefabs ~= nil and ArrayUnion(newdata.prefabs, spicedata.prefabs) or spicedata.prefabs
+                newdata.prefabs = newdata.prefabs ~= nil and _G.ArrayUnion(newdata.prefabs, spicedata.prefabs) or spicedata.prefabs
             end
 
             if spicedata.oneatenfn ~= nil then

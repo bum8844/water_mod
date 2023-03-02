@@ -26,7 +26,7 @@ local SPICES =
 local function GenerateSpicedFoods_Water(foods)
     for foodname, fooddata in pairs(foods) do
         for spicenameupper, spicedata in pairs(SPICES) do
-            local newdata = shallowcopy(fooddata)
+            local newdata = _G.shallowcopy(fooddata)
             local spicename = string.lower(spicenameupper)
             if foodname == "wetgoop" then
                 newdata.test = function(cooker, names, tags) return names[spicename] end
@@ -58,7 +58,7 @@ local function GenerateSpicedFoods_Water(foods)
 
             if spicedata.prefabs ~= nil then
                 --make a copy (via ArrayUnion) if there are dependencies from the original food
-                newdata.prefabs = newdata.prefabs ~= nil and ArrayUnion(newdata.prefabs, spicedata.prefabs) or spicedata.prefabs
+                newdata.prefabs = newdata.prefabs ~= nil and _G.ArrayUnion(newdata.prefabs, spicedata.prefabs) or spicedata.prefabs
             end
 
             if spicedata.oneatenfn ~= nil then
@@ -89,7 +89,7 @@ for k, mod_id in ipairs(KnownModIndex:GetModsToLoad()) do
     end
     if mod_id == "workshop-2334209327" then
         GenerateSpicedFoods_Water(require("hof_foodrecipes"))
-        GenerateSpicedFoods_Water(require("hof_foodrecipes_optional"))
+        GenerateSpicedFoods_Water(require("hof_foodrecipes_warly"))
     end
     -- 미지원 (사유 : 음식조리법이 테이블 모음집이 아님)
     --[[if mod_id == "workshop-1505270912" then

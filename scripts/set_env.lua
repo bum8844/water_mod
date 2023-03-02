@@ -54,19 +54,21 @@ env.TimeEvent = _G.TimeEvent
 env.ActionHandler = _G.ActionHandler
 env.EventHandler = _G.EventHandler
 
-require("water_debugcommands")
+if GetModConfigData("enable_thirst") then
+    require("water_debugcommands")
 
--- Commands for testing.
-AddClassPostConstruct("screens/consolescreen", function(self)
-    if self.console_edit then
-        local water_commands = 
-        {
-            "supergodmodewater", 
-            "setthirst",
-        }
-        local dictionary = self.console_edit.prediction_widget.word_predictor.dictionaries[3]
-        for k, word in pairs(water_commands) do
-            table.insert(dictionary.words, word)
+    -- Commands for testing.
+    AddClassPostConstruct("screens/consolescreen", function(self)
+        if self.console_edit then
+            local water_commands = 
+            {
+                "supergodmodewater", 
+                "setthirst",
+            }
+            local dictionary = self.console_edit.prediction_widget.word_predictor.dictionaries[3]
+            for k, word in pairs(water_commands) do
+                table.insert(dictionary.words, word)
+            end
         end
-    end
-end)
+    end)
+end

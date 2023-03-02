@@ -31,4 +31,7 @@ return {
 
 	--fx
 	"campkettlefire",
+
+	--new fertilizer_nutrient_defs
+	"water_fertilizer_nutrient_defs",
 }

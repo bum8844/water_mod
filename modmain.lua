@@ -1,6 +1,12 @@
 require "utils/water_utils"
-require("water_debugcommands")
+
+if GetModConfigData("enable_thirst") then
+	require("water_debugcommands")
+end
+
 modimport("scripts/set_env")
+modimport("scripts/spicedfoods")
+modimport("scripts/spicedfoods_mod")
 
 PrefabFiles = require("water_prefablist")
 
