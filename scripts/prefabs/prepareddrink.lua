@@ -173,16 +173,19 @@ local function MakePreparedDrink(data)
 
         if data.name == "spoiled_drink" then
             inst:AddTag("spoiled_drink")
+
+            inst:AddComponent("fertilizerresearchable")
+            inst.components.fertilizerresearchable:SetResearchFn(fertilizerresearchfn)
+
             inst:AddComponent("fertilizer")
             inst.components.fertilizer.fertilizervalue = TUNING.SPOILEDFOOD_FERTILIZE
             inst.components.fertilizer.soil_cycles = TUNING.SPOILEDFOOD_SOILCYCLES
             inst.components.fertilizer.withered_cycles = TUNING.SPOILEDFOOD_WITHEREDCYCLES
             inst.components.fertilizer:SetNutrients(FERTILIZER_DEFS.spoiled_drink.nutrients)
 
+            inst:AddComponent("smotherer")
+            
             MakeDeployableFertilizer(inst)
-
-            inst:AddComponent("fertilizerresearchable")
-            inst.components.fertilizerresearchable:SetResearchFn(fertilizerresearchfn)
 
             inst:AddComponent("selfstacker")
         end

@@ -168,7 +168,7 @@ local drinks =
 	},
 	
 	-- 술(물 장기 보관용도)
-	beer =
+	corn_beer =
 	{
 		test = function(boilier, names, tags) return (( names.corn or 0 ) + ( names.corn_cooked or 0 ) >= 3) and notmeat(tags) end,
 		priority = 1,
@@ -184,7 +184,7 @@ local drinks =
 		end,
 	},
 	--꿀술
-	mead =
+	madhu =
 	{
 		test = function(boilier, names, tags) return tags.sweetener and tags.sweetener >= 3 and notmeat(tags) end,
 		priority = 1,

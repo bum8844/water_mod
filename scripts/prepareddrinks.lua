@@ -1,3 +1,5 @@
+local KnownModIndex = _G.KnownModIndex
+
 local function dummy(boiler, name, tags)
 	return false
 end
@@ -110,7 +112,13 @@ local drinks =
 					eater.components.debuffable:RemoveDebuff("alcoholdebuff")
 					eater:DoTaskInTime(4.1, function()
 						eater.components.locomotor:RemoveExternalSpeedMultiplier(eater, "alcoholdebuff")
-						if eater:HasTag("drunk") then
+						if KnownModIndex:IsModEnabled("workshop-2334209327") or KnownModIndex:IsModForceEnabled("workshop-2334209327") then
+							eater.components.locomotor:RemoveExternalSpeedMultiplier(eater, "kyno_strengthbuff_med")
+							eater:DoTaskInTime(9, function()
+								eater:PushEvent("sleep_end")
+								eater:RemoveTag("drunk")
+							end)
+						elseif eater:HasTag("drunk") then
 							eater:DoTaskInTime(9, function()
 								eater:PushEvent("sleep_end")
 								eater:RemoveTag("drunk")
@@ -262,7 +270,13 @@ local drinks =
 					eater.components.debuffable:RemoveDebuff("alcoholdebuff")
 					eater:DoTaskInTime(4.1, function()
 						eater.components.locomotor:RemoveExternalSpeedMultiplier(eater, "alcoholdebuff")
-						if eater:HasTag("drunk") then
+						if KnownModIndex:IsModEnabled("workshop-2334209327") or KnownModIndex:IsModForceEnabled("workshop-2334209327") then
+							eater.components.locomotor:RemoveExternalSpeedMultiplier(eater, "kyno_strengthbuff_med")
+							eater:DoTaskInTime(9, function()
+								eater:PushEvent("sleep_end")
+								eater:RemoveTag("drunk")
+							end)
+						elseif eater:HasTag("drunk") then
 							eater:DoTaskInTime(9, function()
 								eater:PushEvent("sleep_end")
 								eater:RemoveTag("drunk")

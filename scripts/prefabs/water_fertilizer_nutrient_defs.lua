@@ -7,7 +7,7 @@ WATER_FERTILIZER_DEFS.spoiled_drink = {nutrients = TUNING.SPOILED_DRINK_NUTRIENT
 
 local water_sort_order =
 {
-	spoiled_drink = "spoiled_drink",
+    spoiled_drink = "glommerfuel",
 }
 
 for fertilizer, data in pairs(WATER_FERTILIZER_DEFS) do
