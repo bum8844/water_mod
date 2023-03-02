@@ -23,8 +23,8 @@ return {
 	--"spoiled_drink",
 	"tea_tree",
 	"tea_seed",
-	--"water_spicedfoods",
-	--"water_spicedfoods_mod",
+	"water_spicedfoods",
+	"water_spicedfoods_mod",
 
 	--buff
 	"drinkbuff",
