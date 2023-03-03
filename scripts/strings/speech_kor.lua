@@ -254,8 +254,8 @@ STRINGS.CHARACTERS.GENERIC.DESCRIBE.KETTLE = {
 	BOILING_LONG = "충분히 기다려야 할거야.",
 	BOILING_SHORT = "거의 다 된것 같아!",
 	DONE = "음! 이제 마실 준비가 됐어! 그럼 이제 컵을 가져와야 겠어.",
-	PURIFY = "TODO",
-	HASWATER = "TODO",
+	PURIFY = "이 주전자 일 잘하네!",
+	HASWATER = "이제 음료를 만들 수 있어.",
 }
 
 STRINGS.CHARACTERS.GENERIC.DESCRIBE.PORTABLEKETTLE_ITEM = {
@@ -264,8 +264,8 @@ STRINGS.CHARACTERS.GENERIC.DESCRIBE.PORTABLEKETTLE_ITEM = {
 	BOILING_LONG = "만드는 데에 시간이 좀 걸리겠어.",
 	BOILING_SHORT = "거의 다 된것 같아!",
 	DONE = "다 됐다!",
-	PURIFY = "TODO",
-	HASWATER = "TODO",
+	PURIFY = "이 주전자 일 잘하네!",
+	HASWATER = "이제 음료를 만들 수 있어.",
 }
 
 
@@ -612,18 +612,18 @@ STRINGS.CHARACTERS.WARLY.DESCRIBE.KETTLE = {
 	BOILING_LONG = "걸작은 시간이 걸리는 편이지.",
 	BOILING_SHORT = "거의 다 됬어...",
 	DONE = "으흐흐, 완성!",
-	PURIFY = "TODO",
-	HASWATER = "TODO",
+	PURIFY = "시간이 조금 걸릴거야",
+	HASWATER = "이제 부재료를 넣어볼까?",
 }
 
 STRINGS.CHARACTERS.WARLY.DESCRIBE.PORTABLEKETTLE_ITEM = {
-	GENERIC = "아, 나의 훌룡한 조수양, 오늘은 어디로 데이트하러 갈까?",
+	GENERIC = "아, 나의 훌륭한 조수양, 오늘은 어디로 데이트하러 갈까?",
 	EMPTY = "이것과 함께하는 길은 어디든 즐겁지!",
 	BOILING_LONG = "향을 충분히 우려내는데에는 시간이 걸려.",
 	BOILING_SHORT = "빨리 음료를 내가야 한다고!",
 	DONE = "건져내! 아, 오래된 습관이야...",
-	PURIFY = "TODO",
-	HASWATER = "TODO",
+	PURIFY = "시간이 조금 걸릴거야",
+	HASWATER = "이제 부재료를 넣어볼까?",
 }
 
 -- WATHGRITHR
@@ -731,7 +731,7 @@ STRINGS.CHARACTERS.WATHGRITHR.DESCRIBE.KETTLE = {
 	BOILING_LONG = "기다리는동안 내가 다른일을 할수 있겠지.",
 	BOILING_SHORT = "오래걸리지 않을거야!",
 	DONE = "무엇이 나왔지?",
-	PURIFY = "TODO",
+	PURIFY = "오래걸리지 않을거야!",
 	HASWATER = "TODO",
 }
 
@@ -741,7 +741,7 @@ STRINGS.CHARACTERS.WATHGRITHR.DESCRIBE.PORTABLEKETTLE_ITEM = {
 	BOILING_LONG = "갈증으로 내 목이 가렵도다...서둘러라, 주전자!",
 	BOILING_SHORT = "이는 신속히 처리될것이다.",
 	DONE = "무엇이 나왔지?",
-	PURIFY = "TODO",
+	PURIFY = "오래걸리지 않을거야!",
 	HASWATER = "TODO",
 }
 
@@ -850,8 +850,8 @@ STRINGS.CHARACTERS.WAXWELL.DESCRIBE.KETTLE = {
 	BOILING_LONG = "기다리자..",
 	BOILING_SHORT = "거의 다 됬어!",
 	DONE = "마침내, 마실만한게 나왔군.",
-	PURIFY = "TODO",
-	HASWATER = "TODO",
+	PURIFY = "나는 인내심을 길러야 해...",
+	HASWATER = "마침내, 뭔가를 준비 할수 있군",
 }
 
 STRINGS.CHARACTERS.WAXWELL.DESCRIBE.PORTABLEKETTLE_ITEM = {
@@ -860,8 +860,8 @@ STRINGS.CHARACTERS.WAXWELL.DESCRIBE.PORTABLEKETTLE_ITEM = {
 	BOILING_LONG = "나는 인내심을 길러야 해...",
 	BOILING_SHORT = "곧 끝날거야.",
 	DONE = "마실만한 게 나온 건지나 빌어야지.",
-	PURIFY = "TODO",
-	HASWATER = "TODO",
+	PURIFY = "나는 인내심을 길러야 해...",
+	HASWATER = "마침내, 뭔가를 준비 할수 있군",
 }
 
 -- WEBBER
@@ -965,22 +965,22 @@ STRINGS.CHARACTERS.WEBBER.DESCRIBE.CAMPKETTLE = {
 
 STRINGS.CHARACTERS.WEBBER.DESCRIBE.KETTLE = {
 	GENERIC = "재료를 넣으면 다른 음료가 나와.",
-	BURNT = "S누군가 불을 끄지 않고 놔둔게 틀림없어.",
+	BURNT = "누군가 불을 끄지 않고 놔둔게 틀림없어.",
 	BOILING_LONG = "그렇게 빨리 완성되진 않을거야.",
 	BOILING_SHORT = "거의 다 됬어!",
 	DONE = "음료를 마실 시간이야!",
-	PURIFY = "TODO",
-	HASWATER = "TODO",
+	PURIFY = "으으음,뜨끈뜨끈해",
+	HASWATER = "이제 뭔가를 넣어야 되나봐.",
 }
 
 STRINGS.CHARACTERS.WEBBER.DESCRIBE.PORTABLEKETTLE_ITEM = {
 	GENERIC = "맛난걸 만들어!",
 	EMPTY = "에이,안에 아무것도 없네.",
-	BOILING_LONG = "This is taking so loooong!",
+	BOILING_LONG = "이거 너무 오~래 걸려!",
 	BOILING_SHORT = "곧 있으면 음료가 준비될 거야!",
 	DONE = "으으음! 어서 마시자!",
-	PURIFY = "TODO",
-	HASWATER = "TODO",
+	PURIFY = "으으음,뜨끈뜨끈해",
+	HASWATER = "이제 뭔가를 넣어야 되나봐.",
 }
 
 -- WENDY
@@ -1088,8 +1088,8 @@ STRINGS.CHARACTERS.WENDY.DESCRIBE.KETTLE = {
 	BOILING_LONG = "무엇이 들어있던간에 아직 완벽하게 죽지 않았어.",
 	BOILING_SHORT = "좀 더 끓여야 해.",
 	DONE = "이제 마실수 있어.",
-	PURIFY = "TODO",
-	HASWATER = "TODO",
+	PURIFY = "좀 더 끓여야 해.",
+	HASWATER = "본격적으로 ",
 }
 
 STRINGS.CHARACTERS.WENDY.DESCRIBE.PORTABLEKETTLE_ITEM = {
@@ -1098,7 +1098,7 @@ STRINGS.CHARACTERS.WENDY.DESCRIBE.PORTABLEKETTLE_ITEM = {
 	BOILING_LONG = "어쩌면 다 되기도 전에 탈수로 죽을지도.",
 	BOILING_SHORT = "곧 완성될거야.",
 	DONE = "또 다른 사소한 일이 끝났어..",
-	PURIFY = "TODO",
+	PURIFY = "좀 더 끓여야 해.",
 	HASWATER = "TODO",
 }
 
@@ -1207,8 +1207,8 @@ STRINGS.CHARACTERS.WICKERBOTTOM.DESCRIBE.KETTLE = {
 	BOILING_LONG = "음료가 준비 되려면 아직 멀었어.",
 	BOILING_SHORT = "거의 다 됬어!",
 	DONE = "티 타임!",
-	PURIFY = "TODO",
-	HASWATER = "TODO",
+	PURIFY = "충분히 가열해야해.",
+	HASWATER = "이제 음료를 만들어도 된단다.",
 }
 
 STRINGS.CHARACTERS.WICKERBOTTOM.DESCRIBE.PORTABLEKETTLE_ITEM = {
@@ -1217,8 +1217,8 @@ STRINGS.CHARACTERS.WICKERBOTTOM.DESCRIBE.PORTABLEKETTLE_ITEM = {
 	BOILING_LONG = "인내는 미덕이라네.",
 	BOILING_SHORT = "곧 끝날거야.",
 	DONE = "풍부한 향이 나는군.",
-	PURIFY = "TODO",
-	HASWATER = "TODO",
+	PURIFY = "충분히 가열해야해.",
+	HASWATER = "이제 음료를 만들어도 된단다.",
 }
 
 -- WILLOW
@@ -1326,8 +1326,8 @@ STRINGS.CHARACTERS.WILLOW.DESCRIBE.KETTLE = {
 	BOILING_LONG = "그 불은 아직 할 일이 많이 남았어.",
 	BOILING_SHORT = "불이 열심히 일하는 중 이야!",
 	DONE = "불은 뭐든 낫게 만들지.음!",
-	PURIFY = "TODO",
-	HASWATER = "TODO",
+	PURIFY = "불이 열심히 일하는 중 이야!",
+	HASWATER = "이제 재료를 넣고 불고 살균하자.",
 }
 
 STRINGS.CHARACTERS.WILLOW.DESCRIBE.PORTABLEKETTLE_ITEM = {
@@ -1336,8 +1336,8 @@ STRINGS.CHARACTERS.WILLOW.DESCRIBE.PORTABLEKETTLE_ITEM = {
 	BOILING_LONG = "으으으,영원히 끝나지 않을것 같아!",
 	BOILING_SHORT = "제발 불아,너가 할 일을 !",
 	DONE = "좋았어. 이제 마시자!",
-	PURIFY = "TODO",
-	HASWATER = "TODO",
+	PURIFY = "불이 열심히 일하는 중 이야!",
+	HASWATER = "이제 재료를 넣고 불고 살균하자.",
 }
 
 -- WINONA
@@ -1445,8 +1445,8 @@ STRINGS.CHARACTERS.WINONA.DESCRIBE.KETTLE = {
 	BOILING_LONG = "좀 만 기다리자.",
 	BOILING_SHORT = "거의!",
 	DONE = "음료를 마십시다!",
-	PURIFY = "TODO",
-	HASWATER = "TODO",
+	PURIFY = "잘 작동하고 있어.",
+	HASWATER = "이제 준비해 볼까?",
 }
 
 STRINGS.CHARACTERS.WINONA.DESCRIBE.PORTABLEKETTLE_ITEM = {
@@ -1455,8 +1455,8 @@ STRINGS.CHARACTERS.WINONA.DESCRIBE.PORTABLEKETTLE_ITEM = {
 	BOILING_LONG = "좋은 작품은 시간이 오래 걸리는 법.",
 	BOILING_SHORT = "이 작업은 깔끔하게 완료될거야!",
 	DONE = "그렇게 호들갑 떨 만한 가치가 있는지 보자.",
-	PURIFY = "TODO",
-	HASWATER = "TODO",
+	PURIFY = "잘 작동하고 있어.",
+	HASWATER = "이제 준비해 볼까?",
 }
 
 -- WOLFGANG
@@ -1564,8 +1564,8 @@ STRINGS.CHARACTERS.WOLFGANG.DESCRIBE.KETTLE = {
 	BOILING_LONG = "주전자가 음료를 만드는 동안 볼프강은 운동 할 수 있다.",
 	BOILING_SHORT = "거의 다 됬어.",
 	DONE = "마실 시간이다!",
-	PURIFY = "TODO",
-	HASWATER = "TODO",
+	PURIFY = "주전자 운동하고 있어.",
+	HASWATER = "우릴 시간이다!",
 }
 
 STRINGS.CHARACTERS.WOLFGANG.DESCRIBE.PORTABLEKETTLE_ITEM = {
@@ -1574,8 +1574,8 @@ STRINGS.CHARACTERS.WOLFGANG.DESCRIBE.PORTABLEKETTLE_ITEM = {
 	BOILING_LONG = "주전자가 음료를 만드는 동안 볼프강은 운동 할 수 있다.",
 	BOILING_SHORT = "벌써 좋은 냄새가 난다!",
 	DONE = "마실 시간이다!",
-	PURIFY = "TODO",
-	HASWATER = "TODO",
+	PURIFY = "주전자 운동하고 있어.",
+	HASWATER = "우릴 시간이다!",
 }
 
 -- WOODIE
@@ -1683,8 +1683,8 @@ STRINGS.CHARACTERS.WOODIE.DESCRIBE.KETTLE = {
 	BOILING_LONG = "오래 걸릴거야.",
 	BOILING_SHORT = "얼마 안남았어,루시.",
 	DONE = "뭐가 나왔을까!",
-	PURIFY = "TODO",
-	HASWATER = "TODO",
+	PURIFY = "열심히 일하는군!",
+	HASWATER = "이제 뭘 좀 넣을까?",
 }
 
 STRINGS.CHARACTERS.WOODIE.DESCRIBE.PORTABLEKETTLE_ITEM = {
@@ -1693,8 +1693,8 @@ STRINGS.CHARACTERS.WOODIE.DESCRIBE.PORTABLEKETTLE_ITEM = {
 	BOILING_LONG = "나무나 하고 와야겠군.",
 	BOILING_SHORT = "벌써부터 좋은 냄새가 나네.",
 	DONE = "뭐가 나왔을까!",
-	PURIFY = "TODO",
-	HASWATER = "TODO",
+	PURIFY = "열심히 일하는군!",
+	HASWATER = "이제 뭘 좀 넣을까?",
 }
 
 -- WORMWOOD
@@ -1802,8 +1802,8 @@ STRINGS.CHARACTERS.WORMWOOD.DESCRIBE.KETTLE = {
 	BOILING_LONG = "오래 걸려",
 	BOILING_SHORT = "곧 끝나",
 	DONE = "끝!",
-	PURIFY = "곧 끝나",
-	HASWATER = "TODO",
+	PURIFY = "물 달래고 있다",
+	HASWATER = "준비됬어",
 }
 
 STRINGS.CHARACTERS.WORMWOOD.DESCRIBE.PORTABLEKETTLE_ITEM = {
@@ -1812,8 +1812,8 @@ STRINGS.CHARACTERS.WORMWOOD.DESCRIBE.PORTABLEKETTLE_ITEM = {
 	BOILING_LONG = "오래 걸려",
 	BOILING_SHORT = "곧 끝나",
 	DONE = "끝!",
-	PURIFY = "곧 끝나",
-	HASWATER = "TODO",
+	PURIFY = "물 달래고 있다",
+	HASWATER = "준비됬어",
 }
 
 -- WORTOX
