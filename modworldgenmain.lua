@@ -60,7 +60,9 @@ local gen_caffeinberry=GetModConfigData("gen_caffeinberry")
 
 AddThingtoWorldGeneration("tea_tree",{BGForest=gen_tea_tree,BGDeepForest=gen_tea_tree,DeepForest=gen_tea_tree,Forest=gen_tea_tree,BGCrappyForest=gen_tea_tree,CrappyDeepForest=gen_tea_tree,CrappyForest=gen_tea_tree,SpiderForest=gen_tea_tree})
 
-AddThingtoWorldGeneration("caffeinberry",{BGBadlands=gen_caffeinberry,Badlands=gen_caffeinberry,Lightning=gen_caffeinberry,HoundyBadlands=gen_caffeinberry,BuzzardyBadlands=gen_caffeinberry,BGLightningBluff=gen_caffeinberry,LightningBluffLightning=gen_caffeinberry,LightningBluffAntlion=gen_caffeinberry})
+--AddThingtoWorldGeneration("caffeinberry",{BGBadlands=gen_caffeinberry,Badlands=gen_caffeinberry,Lightning=gen_caffeinberry,HoundyBadlands=gen_caffeinberry,BuzzardyBadlands=gen_caffeinberry,BGLightningBluff=gen_caffeinberry,LightningBluffLightning=gen_caffeinberry,LightningBluffAntlion=gen_caffeinberry})
+
+AddThingtoWorldGeneration("caffeinberry",{MoonIsland_Forest=gen_caffeinberry,MoonIsland_IslandShard=gen_caffeinberry,MoonIsland_Mine=gen_caffeinberry,MoonIsland_Baths=gen_caffeinberry,MoonIsland_Meadows=gen_caffeinberry})
 
 GLOBAL.terrain.filter.caffeinberry = {GLOBAL.GROUND.ROAD, GLOBAL.GROUND.WOODFLOOR, GLOBAL.GROUND.CARPET, GLOBAL.GROUND.CHECKER}
 GLOBAL.terrain.filter.tea_tree = {GLOBAL.GROUND.ROAD, GLOBAL.GROUND.WOODFLOOR, GLOBAL.GROUND.CARPET, GLOBAL.GROUND.CHECKER}

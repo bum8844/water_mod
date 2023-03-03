@@ -87,64 +87,34 @@ local function ChangeToItem(inst)
     item.AnimState:PlayAnimation("collapse_"..inst._type)
     item.SoundEmitter:PlaySound("dontstarve/common/together/portable/cookpot/collapse")
     item.Transform:SetPosition(inst.Transform:GetWorldPosition())
-    inst._fire:RemoveChild(inst)
-end
-
-local function waterlevelchk(inst)
-    if inst.components.waterlevel:IsFull() then
-        inst.components.waterlevel.accepting = false
-    else
-        inst.components.waterlevel.accepting = true
-    end
-    if inst.components.waterlevel:GetWater() ~= 0 and inst.components.waterlevel.watertype == WATERTYPE.CLEAN then
-        inst.components.pickable.numtoharvest = inst.components.waterlevel:GetWater()
-        inst.components.pickable.canbepicked = true
-    else
-        inst.components.pickable.canbepicked = false
+    if inst._fire then
+        inst._fire:RemoveChild(inst)
     end
 end
 
-local function stopboil(inst)
-    inst:RemoveTag("boiling")
+local function onstopboilingfn(inst)
     inst.AnimState:PlayAnimation("idle_empty")
     inst.SoundEmitter:KillSound("snd")
-    if inst._timer == 0 then
-        inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_finish", "snd")
-    else
-        inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_close", "snd")
-        waterlevelchk(inst)
-    end
-    if inst.boilingtask ~= nil then
-        inst.boilingtask:Cancel()
-        inst.boilingtask = nil
-    end
+    inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_close", "snd")
 end
 
-local function ondoneboil(inst)
-    inst._timer = 0
-    stopboil(inst)
-    inst.components.waterlevel.watertype = WATERTYPE.CLEAN
+local function ondoneboilingfn(inst)
+    inst.components.pickable.numtoharvest = inst.components.waterlevel:GetWater()
+    inst.components.pickable.canbepicked = true
+    inst.AnimState:PlayAnimation("idle_empty")
+    inst.SoundEmitter:KillSound("snd")
+    inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_finish", "snd")
     inst.AnimState:OverrideSymbol("swap_meter", "campkettle_meter_water", tostring(inst._waterlevel))
-    waterlevelchk(inst)
 end
 
-local function doboil(inst)
-    if inst._fire ~= nil and inst._fire.components.fueled:GetCurrentSection() > 0
-        and inst.components.waterlevel:GetPercent() > 0 and inst.components.waterlevel.watertype == WATERTYPE.DIRTY then
-        inst:AddTag("boiling")
-        inst.components.waterlevel.accepting = false
-        inst.components.pickable.canbepicked = false
-        inst.AnimState:PlayAnimation("cooking_loop", true)
-        inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_rattle", "snd")
-        inst.boilingtask = inst:DoTaskInTime(inst._timer, ondoneboil, inst)
-    end
+local function onstartboilingfn(inst)
+    inst.AnimState:PlayAnimation("cooking_loop", true)
+    inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_rattle", "snd")
 end
     
 local function OnTakeWater(inst)
     if not inst:HasTag("burnt") then
-        inst._timer = TUNING.BASE_COOK_TIME * TUNING.KETTLE_WATER * inst.components.waterlevel:GetPercent()
         inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/small")
-        doboil(inst)
     end
 end
 
@@ -180,17 +150,14 @@ local function onload(inst, data)
             inst._type = data.pittype
             inst.AnimState:SetBank("type_"..inst._type)
         end
-        if data.timer ~= nil then
-            inst._timer = data.timer
-            doboil(inst)
-        end
     end
 end
 
 local function OnPickedFn(inst,picker,loot)
     inst.components.waterlevel:DoDelta(-inst.components.waterlevel:GetWater())
     inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/small")
-    waterlevelchk(inst)
+    inst.components.pickable.canbepicked = false
+    inst.components.waterlevel.accepting = true
 end 
 
 local function fn()
@@ -231,6 +198,11 @@ local function fn()
     inst.components.waterlevel.maxwater = TUNING.CAMPKETTLE_MAX_LEVEL
     inst.components.waterlevel:InitializeWaterLevel(0)
 
+    inst:AddComponent("distiller")
+    inst.components.distiller.onstartboiling = onstartboilingfn
+    inst.components.distiller.ondoneboiling = ondoneboilingfn
+    inst.components.distiller.onstopboiling = onstopboilingfn
+
     inst:AddComponent("pickable")
     inst.components.pickable.canbepicked = false
     inst.components.pickable.product = "water_clean"
@@ -241,11 +213,8 @@ local function fn()
 
     inst.OnSave = onsave
     inst.OnLoad = onload
-    inst.doboil = doboil
-    inst.stopboil = stopboil
 
     inst:ListenForEvent("onbuilt", onbuilt)
-    inst:ListenForEvent("onwaterlevelsectionchanged", waterlevelchk)
 
     return inst
 end

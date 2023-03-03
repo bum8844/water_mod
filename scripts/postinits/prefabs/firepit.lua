@@ -15,6 +15,13 @@ local function install_kettle(inst, no_built_callback)
 
 	if not no_built_callback then
 		inst._kettle:PushEvent("onbuilt")
+	else
+		if inst.prefab == "firepit" then
+			inst._kettle._type = "B"
+		else
+			inst._kettle._type = "A"
+		end
+		inst._kettle.AnimState:SetBank("type_"..inst._kettle._type)
 	end
 end
 
@@ -32,7 +39,6 @@ local function OnSave(inst, data)
 		{
 			waterlevel = kettle.components.waterlevel.currentwater,
 			watertype = kettle.components.waterlevel.watertype,
-			boil_timer = kettle._timer,
 		}
 	else
 		data.kettle = nil
@@ -41,11 +47,16 @@ end
 
 local function OnLoad(inst, data)
 	if data.kettle ~= nil then
-		install_kettle(inst)
+		install_kettle(inst, true)
 		inst._kettle.components.waterlevel:InitializeWaterLevel(math.max(0, data.kettle.waterlevel))
 		inst._kettle.components.waterlevel:SetWaterType(data.kettle.watertype)
-		inst._kettle._timer = data.kettle.boil_timer
-		inst._kettle:doboil()
+		if inst._kettle.components.waterlevel:GetWater() ~= 0 and inst._kettle.components.waterlevel.watertype ~= WATERTYPE.CLEAN then
+			if inst.components.fueled:GetCurrentSection() > 0 then
+				inst._kettle.components.distiller:startBoiling(inst._kettle.components.waterlevel:GetWater())
+			else
+				inst._kettle.components.distiller:stopBoiling(0)
+			end
+		end
 	end
 end
 
@@ -79,24 +90,24 @@ AddPrefabPostInit("campfire",function(inst)
 	inst:ListenForEvent("onextinguish", AutoDismantle)
 end)
 
-local function startboil(inst)
-	if inst._kettle ~= nil and inst._kettle:IsValid() then
-		inst._kettle:doboil()
-	end
-end
-
-local function stopboil(inst)
-	if inst._kettle ~= nil and inst._kettle:IsValid() then
-		inst._kettle:stopboil()
-	end
-end
-
 local function onhammered(inst, worker, ...)
 	if inst._kettle and inst._kettle:IsValid() then
 		inst._kettle.components.portablestructure:Dismantle()
 	    inst:RemoveChild(inst._kettle)
 	end
 	return inst.components.workable.old_onfinish(inst, worker, ...)
+end
+
+local function startboil(inst)
+	if inst._kettle ~= nil and inst._kettle:IsValid() and inst._kettle.components.waterlevel:GetWater() ~= 0 and inst._kettle.components.waterlevel.watertype == WATERTYPE.DIRTY then
+		inst._kettle.components.distiller:startBoiling(inst._kettle.components.waterlevel:GetWater())
+	end
+end
+
+local function stopboil(inst)
+	if inst._kettle ~= nil and inst._kettle:IsValid() then
+		inst._kettle.components.distiller:stopBoiling(0)
+	end
 end
 
 AddPrefabPostInit("firepit",function(inst)

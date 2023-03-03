@@ -60,7 +60,7 @@ local function MakeCup(name, masterfn, tags)
         end
 
         inst:AddComponent("edible")
-        --inst.components.edible.foodtype = FOODTYPE.GOODIES
+        inst.components.edible.foodtype = FOODTYPE.GOODIES
         --inst.components.edible:SetOnEatenFn(OnEaten)
 
         inst:AddComponent("inspectable")
