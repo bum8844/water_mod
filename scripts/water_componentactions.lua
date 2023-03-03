@@ -1,3 +1,9 @@
+local KnownModIndex = _G.KnownModIndex
+
+if KnownModIndex:IsModEnabled("workshop-2334209327") or KnownModIndex:IsModForceEnabled("workshop-2334209327") then
+    ACTIONS.UPGRADE.priority = 2
+end
+
 local function evaluate_watertype(giver, taker)
     for k, v in pairs(WATERGROUP) do
         if taker:HasTag(v.name.."_waterlevel") then
@@ -36,7 +42,7 @@ local USEITEM =
 
     water = function(inst, doer, target, actions, right)
         if inst:HasTag("water") then
-            if target:HasTag("watertaker") then
+            if target:HasTag("watertaker") and not inst:HasTag("drink") then
                 table.insert(actions, ACTIONS.TAKEWATER)
             elseif target.replica.waterlevel ~= nil
                 and target.replica.waterlevel:IsAccepting()
@@ -61,7 +67,13 @@ local USEITEM =
 
     watertaker = function(inst, doer, target, actions)
         if target:HasTag("water") and (target.replica.waterlevel == nil or target.replica.waterlevel:HasWater()) then
-            table.insert(actions, ACTIONS.TAKEWATER)
+            if inst:HasTag("bucket_empty") then
+                if not target:HasTag("drink") then
+                    table.insert(actions, ACTIONS.TAKEWATER)
+                end
+            else
+                table.insert(actions, ACTIONS.TAKEWATER)
+            end
         end
     end,
 

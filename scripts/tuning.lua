@@ -74,6 +74,12 @@ local tuning =
 	WILSON_THIRST = wilson_thirst, --Max Thirst
 	WILSON_HUNGER_RATE = hydration_per_day/total_day_time,
 
+	STALE_FOOD_THIRST = .5,
+	SPOILED_FOOD_THIRST = .25,
+
+	WICKERBOTTOM_STALE_FOOD_THIRST = .25,
+	WICKERBOTTOM_SPOILED_FOOD_THIRST = 0,
+
 	-- Hydration
 	HYDRATION_SALT = hydration_per_day-90, -- Saltwater
 	HYDRATION_POISON = hydration_per_day-80, -- Failed Fermentation

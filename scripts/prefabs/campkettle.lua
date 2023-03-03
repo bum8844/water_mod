@@ -132,6 +132,7 @@ local function doboil(inst)
         and inst.components.waterlevel:GetPercent() > 0 and inst.components.waterlevel.watertype == WATERTYPE.DIRTY then
         inst:AddTag("boiling")
         inst.components.waterlevel.accepting = false
+        inst.components.pickable.canbepicked = false
         inst.AnimState:PlayAnimation("cooking_loop", true)
         inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_rattle", "snd")
         inst.boilingtask = inst:DoTaskInTime(inst._timer, ondoneboil, inst)

@@ -6,6 +6,8 @@ local function GetThirstFromHungerValue(self)
 end
 
 AddComponentPostInit("edible", function(self)
+    self.stale_thirst = TUNING.STALE_FOOD_THIRST
+    self.spoiled_thirst = TUNING.SPOILED_FOOD_THIRST
     self.isdrink = false
     --self.waterpersip = 10
     --self.thirstvalue = 0
