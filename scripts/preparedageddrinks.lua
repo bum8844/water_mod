@@ -82,6 +82,7 @@ local drinks =
 		thirst = TUNING.HYDRATION_HUGE,
 		perishtime = TUNING.PERISH_PRESERVED,
 		cooktime = (TUNING.KETTLE_LUXURY_GOODS + TUNING.SODA_WAIT),
+		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_HEALTH_REGEN,
 		oneatenfn = function(inst, eater)
 			if not eater.components.health or eater.components.health:IsDead() or eater:HasTag("playerghost") then
 				return
@@ -101,6 +102,7 @@ local drinks =
 		thirst = TUNING.HYDRATION_SUPERHUGE,
 		perishtime = TUNING.PERISH_PRESERVED,
 		cooktime = (TUNING.KETTLE_LUXURY_GOODS + TUNING.SODA_WAIT),
+		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_COLA,
 		oneatenfn = function(inst, eater)
 			if not eater.components.health or eater.components.health:IsDead() or eater:HasTag("playerghost") then
 				return
@@ -130,6 +132,7 @@ local drinks =
 		tags = {"masterfood","lightdrink"},
 		perishtime = TUNING.PERISH_PRESERVED,
 		cooktime = (TUNING.KETTLE_LUXURY_GOODS + TUNING.SODA_WAIT),
+		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_COLAQUANTUM,
 		oneatenfn = function(inst, eater)
 			if not eater.components.health or eater.components.health:IsDead() or eater:HasTag("playerghost") then
 				return
@@ -179,6 +182,7 @@ local drinks =
 		tags = {"alcohol"},
 		perishtime = TUNING.PERISH_SUPERSLOW,
 		cooktime = (TUNING.KETTLE_VEGGIE + TUNING.BEER_WAIT),
+		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_INTOXICATION,
 		oneatenfn = function(inst, eater)
 			alcahol(inst, eater)
 		end,
@@ -195,6 +199,7 @@ local drinks =
 		tags = {"alcohol"},
 		perishtime = TUNING.PERISH_SUPERSLOW,
 		cooktime = (TUNING.KETTLE_VEGGIE + TUNING.BEER_WAIT),
+		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_INTOXICATION,
 		oneatenfn = function(inst, eater)
 			alcahol(inst, eater)
 		end,
@@ -211,6 +216,7 @@ local drinks =
 		tags = {"alcohol"},
 		perishtime = TUNING.PERISH_SUPERSLOW,
 		cooktime = (TUNING.KETTLE_FRUIT + TUNING.BEER_WAIT),
+		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_INTOXICATION,
 		--potlevel = "small",
 		oneatenfn = function(inst, eater)
 			alcahol(inst, eater)
@@ -228,6 +234,7 @@ local drinks =
 		tags = {"alcohol"},
 		perishtime = TUNING.PERISH_SUPERSLOW,
 		cooktime = (TUNING.KETTLE_FRUIT + TUNING.BEER_WAIT),
+		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_INTOXICATION,
 		--potlevel = "small",
 		oneatenfn = function(inst, eater)
 			alcahol(inst, eater)
@@ -245,6 +252,7 @@ local drinks =
 		tags = {"alcohol"},
 		perishtime = TUNING.PERISH_SUPERSLOW,
 		cooktime = (TUNING.KETTLE_FRUIT + TUNING.BEER_WAIT),
+		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_INTOXICATION,
 		--potlevel = "small",
 		oneatenfn = function(inst, eater)
 			alcahol(inst, eater)
@@ -262,6 +270,7 @@ local drinks =
 		tags = {"alcohol","lightdrink"},
 		perishtime = TUNING.PERISH_SUPERSLOW,
 		cooktime = (TUNING.KETTLE_FRUIT + TUNING.BEER_WAIT),
+		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_INTOXICATION_GLOW,
 		--potlevel = "small",
 		oneatenfn = function(inst, eater)
 			alcahol(inst, eater)
@@ -278,6 +287,7 @@ local drinks =
 		tags = {"alcohol"},
 		perishtime = TUNING.PERISH_SUPERSLOW,
 		cooktime = (TUNING.KETTLE_VEGGIE + TUNING.BEER_WAIT),
+		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_INTOXICATION,
 		--potlevel = "small",
 		oneatenfn = function(inst, eater)
 			alcahol(inst, eater)

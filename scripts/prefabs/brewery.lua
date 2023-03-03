@@ -1,11 +1,10 @@
 require "prefabutil"
 
-local prepareagedrink = require("preparedageddrinks")
-
 local cooking = require("cooking")
 
 local assets =
 {
+    Asset("ANIM", "anim/kettle_drink_bottle.zip"),
     Asset("ANIM", "anim/brewery.zip"),
 	Asset("ANIM", "anim/brewery_meter_dirty.zip"),
 	Asset("ANIM", "anim/brewery_meter_water.zip"),
@@ -72,6 +71,7 @@ local function startcookfn(inst)
     if not inst:HasTag("burnt") then
         inst.components.watersource.available = false
         inst.components.waterlevel.accepting = false
+        inst.components.water.available = false
         inst.AnimState:PlayAnimation("cooking_loop", true)
         inst.SoundEmitter:KillSound("snd")
         inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot", "snd")
@@ -81,7 +81,7 @@ end
 local function SetProductSymbol(inst, product, overridebuild)
     local recipe = cooking.GetRecipe(inst.prefab, product)
     local potlevel = recipe ~= nil and recipe.potlevel or nil
-    local build = (recipe ~= nil and recipe.overridebuild) or overridebuild or "kettle_drink"
+    local build = (recipe ~= nil and recipe.overridebuild) or overridebuild or inst.components.waterlevel:GetWater() >= 5 and "kettle_drink_bottle" or "kettle_drink"
     local overridesymbol = (recipe ~= nil and recipe.overridesymbolname) or (recipe.basename ~= nil and recipe.basename) or product
     local potlevels = potlevel ~= nil and "swap_"..potlevel or "swap_mid"
 
@@ -107,7 +107,9 @@ local function spoilfn(inst)
         inst.components.stewer.product = inst.components.stewer.spoiledproduct
         inst.components.waterlevel.item_watertype = WATERTYPE.DIRTY
         inst.AnimState:OverrideSymbol("swap", "brewery_meter_dirty", tostring(inst._waterlevel))
-        SetProductSymbol(inst, inst.components.stewer.product)
+        inst:DoTaskInTime(0,function(inst)
+            SetProductSymbol(inst, inst.components.stewer.product)
+        end)
     end
 end
 
@@ -117,19 +119,20 @@ local function ShowProduct(inst)
             inst.components.waterlevel.item_watertype = WATERTYPE.DIRTY
             inst.AnimState:OverrideSymbol("swap", "brewery_meter_dirty", tostring(inst._waterlevel))
         end
-        SetProductSymbol(inst, inst.components.stewer.product)
+        inst.components.watersource.available = false
         inst.components.waterlevel.accepting = false
         inst.components.water.available = false
-        inst.components.pickable.product = inst.components.stewer.product
-        inst.components.pickable.numtoharvest = inst.components.waterlevel:GetWater()
-        inst.components.pickable.canbepicked = true
+        inst:DoTaskInTime(0,function(inst)
+            SetProductSymbol(inst, inst.components.stewer.product)
+            inst.components.pickable.product = inst.components.stewer.product
+            inst.components.pickable.numtoharvest = inst.components.waterlevel:GetWater()
+            inst.components.pickable.canbepicked = true
+        end)
     end
 end
 
 local function donecookfn(inst)
     if not inst:HasTag("burnt") then
-        inst.components.watersource.available = true
-        inst.components.waterlevel.accepting = false
         inst.AnimState:PlayAnimation("cooking_pst")
         inst.AnimState:PushAnimation("idle_full", false)
         ShowProduct(inst)
@@ -149,6 +152,7 @@ local function continuecookfn(inst)
     if not inst:HasTag("burnt") then
         inst.components.watersource.available = false
         inst.components.waterlevel.accepting = false
+        inst.components.water.available = false
         inst.AnimState:PlayAnimation("cooking_loop", true)
         inst.SoundEmitter:KillSound("snd")
         inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot", "snd")
@@ -162,6 +166,7 @@ local function harvestfn(inst,picker,loot)
             loot.components.perishable:SetPercent(inst.components.stewer.product_spoilage * spoilpercent)
             loot.components.perishable:StartPerishing()
         end
+        local recipe = cooking.GetRecipe(inst.prefab, inst.components.stewer.product)
         picker:PushEvent("learncookbookrecipe", {product = inst.components.stewer.product, ingredients = inst.components.stewer.ingredient_prefabs})
         inst.components.stewer.product = nil
         inst.components.waterlevel:DoDelta(-inst.components.waterlevel:GetWater())

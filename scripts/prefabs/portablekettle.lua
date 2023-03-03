@@ -96,9 +96,8 @@ end
 
 local function startcookfn(inst)
     if not inst:HasTag("burnt") then
-        inst.components.water.available = false
         inst.components.waterlevel.accepting = false
-        inst.components.waterlevel.watertype = nil
+        inst.components.water.available = false
         inst.AnimState:PlayAnimation("cooking_loop", true)
         inst.SoundEmitter:KillSound("snd")
         inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_rattle", "snd")
@@ -109,7 +108,7 @@ end
 local function SetProductSymbol(inst, product, overridebuild)
     local recipe = cooking.GetRecipe(inst.prefab, product)
     local potlevel = recipe ~= nil and recipe.potlevel or nil
-    local build = (recipe ~= nil and recipe.overridebuild) or overridebuild or "kettle_drink"
+    local build = (recipe ~= nil and recipe.overridebuild) or overridebuild or inst.components.waterlevel:GetWater() >= 5 and "kettle_drink_bottle" or "kettle_drink"
     local overridesymbol = (recipe ~= nil and recipe.overridesymbolname) or (recipe.basename ~= nil and recipe.basename) or product
     local potlevels = potlevel ~= nil and "swap_"..potlevel or "swap_mid"
 
@@ -134,19 +133,22 @@ local function spoilfn(inst)
     if not inst:HasTag("burnt") then
         inst.components.stewer.product = inst.components.stewer.spoiledproduct
         inst.AnimState:OverrideSymbol("swap", "portablekettle_meter_dirty", tostring(inst._waterlevel))
-        SetProductSymbol(inst, inst.components.stewer.product)
-        waterlevelchk(inst)
+        inst:DoTaskInTime(0,function(inst)
+            SetProductSymbol(inst, inst.components.stewer.product)
+        end)
     end
 end
 
 local function ShowProduct(inst)
     if not inst:HasTag("burnt") then
-        SetProductSymbol(inst, inst.components.stewer.product)
         inst.components.waterlevel.accepting = false
         inst.components.water.available = false
-        inst.components.pickable.product = inst.components.stewer.product
-        inst.components.pickable.numtoharvest = inst.components.waterlevel:GetWater()
-        inst.components.pickable.canbepicked = true
+        inst:DoTaskInTime(0,function(inst)
+            SetProductSymbol(inst, inst.components.stewer.product)
+            inst.components.pickable.product = inst.components.stewer.product
+            inst.components.pickable.numtoharvest = inst.components.waterlevel:GetWater()-1
+            inst.components.pickable.canbepicked = true
+        end)
     end
 end
 
@@ -163,7 +165,6 @@ end
 
 local function continuedonefn(inst)
     if not inst:HasTag("burnt") then
-        inst.components.water.available = true
         inst.AnimState:PlayAnimation("idle_full")
         ShowProduct(inst)
     end

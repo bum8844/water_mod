@@ -99,6 +99,7 @@ local drinks =
 		thirst = TUNING.HYDRATION_HUGE,
 		perishtime = TUNING.PERISH_SLOW,
 		cooktime = TUNING.KETTLE_FRUIT,
+		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_SLEEP_AND_DETOX,
 		potlevel = "small",
 		oneatenfn = function(inst, eater)
 			local knockouttime = TUNING.TEASLEEP_TIME + math.random()
@@ -148,6 +149,7 @@ local drinks =
 		tags = {"lightdrink"},
 		perishtime = TUNING.PERISH_SLOW,
 		cooktime = TUNING.KETTLE_LUXURY_GOODS,
+		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_GLOW,
 		--potlevel = "small",
 		oneatenfn = function(inst, eater)
 			if not eater.components.health or eater.components.health:IsDead() or eater:HasTag("playerghost") then
@@ -187,6 +189,7 @@ local drinks =
 		thirst = TUNING.HYDRATION_SMALL,
 		perishtime = TUNING.PERISH_SLOW,
 		cooktime = TUNING.KETTLE_LUXURY_GOODS,
+		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_CAFFINE,
 		oneatenfn = function(inst, eater)
 			if not eater.components.health or eater.components.health:IsDead() or eater:HasTag("playerghost") then
 				return
@@ -259,6 +262,7 @@ local drinks =
 		temperature = TUNING.HOT_FOOD_WARMING_THRESHOLD,
 		temperatureduration = TUNING.FOOD_TEMP_AVERAGE,
 		cooktime = TUNING.KETTLE_VEGGIE,
+		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_MULLED,
 		potlevel = "small",
 		oneatenfn = function(inst, eater)
 			local knockouttime = TUNING.TEASLEEP_TIME + math.random()
@@ -341,6 +345,7 @@ local drinks =
 		temperature = TUNING.COLD_FOOD_BONUS_TEMP,
 		temperatureduration = TUNING.FOOD_TEMP_LONG,
 		cooktime = TUNING.KETTLE_TEA,
+		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_COLD_FOOD,
 		--potlevel = "small",
 	},
 	
@@ -423,6 +428,7 @@ local drinks =
 		thirst = 0,
 		perishtime = TUNING.PERISH_MED,
 		cooktime = TUNING.KETTLE_ABI,
+		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_SUS,
 		--potlevel = "high",
 		oneatenfn = function(inst, eater)
 			if not eater.components.health or eater.components.health:IsDead() or eater:HasTag("playerghost") then

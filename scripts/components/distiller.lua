@@ -3,9 +3,9 @@
 
 local function ondone(self, done)
     if done then
-        self.inst:AddTag("boiling")
-    else
         self.inst:RemoveTag("boiling")
+    else
+        self.inst:AddTag("boiling")
     end
 end
 
