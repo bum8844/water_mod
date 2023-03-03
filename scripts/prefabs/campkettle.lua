@@ -96,7 +96,7 @@ local function waterlevelchk(inst)
     else
         inst.components.waterlevel.accepting = true
     end
-    if inst.components.waterlevel:GetWater() ~= 0 then
+    if inst.components.waterlevel:GetWater() ~= 0 and inst.components.waterlevel.watertype == WATERTYPE.CLEAN then
         inst.components.pickable.numtoharvest = inst.components.waterlevel:GetWater()
         inst.components.pickable.canbepicked = true
     else
@@ -106,13 +106,13 @@ end
 
 local function stopboil(inst)
     inst:RemoveTag("boiling")
-    waterlevelchk(inst)
     inst.AnimState:PlayAnimation("idle_empty")
     inst.SoundEmitter:KillSound("snd")
     if inst._timer == 0 then
         inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_finish", "snd")
     else
         inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_close", "snd")
+        waterlevelchk(inst)
     end
     if inst.boilingtask ~= nil then
         inst.boilingtask:Cancel()
@@ -125,6 +125,7 @@ local function ondoneboil(inst)
     stopboil(inst)
     inst.components.waterlevel.watertype = WATERTYPE.CLEAN
     inst.AnimState:OverrideSymbol("swap_meter", "campkettle_meter_water", tostring(inst._waterlevel))
+    waterlevelchk(inst)
 end
 
 local function doboil(inst)
