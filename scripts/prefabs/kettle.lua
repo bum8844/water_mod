@@ -188,7 +188,7 @@ local function onloadpostpass(inst, newents, data)
 end
 
 local function OnSectionChange(new, old, inst)
-    local watertype = inst.components.waterlevel.watertype ~= WATERTYPE.CLEAN and "dirty" or "water"
+    local watertype = (inst.components.waterlevel.watertype ~= WATERTYPE.CLEAN or inst.components.stewer.product == "spoiled_drink") and "dirty" or "water"
     if new ~= nil then
         if inst._waterlevel ~= new then
             inst._waterlevel = new
@@ -246,7 +246,7 @@ local function getstatus(inst)
     return (inst:HasTag("burnt") and "BURNT")
         or (inst.components.stewer:IsDone() and "DONE")
         or (inst:HasTag("boiling") and "PURIFY")
-        or (inst.components.water.available and "HASWATER")
+        or (inst.components.waterlevel:GetWater() > 0 and "HASWATER")
         or (not inst.components.stewer:IsCooking() and "EMPTY")
         or (inst.components.stewer:GetTimeToCook() > 15 and "BOILING_LONG")
         or "BOILING_SHORT"
@@ -265,6 +265,7 @@ local function onload(inst, data)
             inst.Light:Enable(false)
         end
     end
+    inst.components.waterlevel:DoDiistiller(inst)
 end
 
 local function fn()

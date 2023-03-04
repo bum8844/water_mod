@@ -167,6 +167,33 @@ function Waterlevel:UtilityCheck(boilier)
     end
 end
 
+function Waterlevel:DiistillerResult(doer)
+    if self.inst.components.distiller and self.watertype ~= WATERTYPE.CLEAN then
+        self.inst.components.distiller.done = false
+        local watervalue = self:GetWater()
+        if not self.inst:HasTag("portablekettle") then
+            watervalue = watervalue * 2
+        end
+        self.inst.components.distiller:startBoiling(watervalue)
+    else
+        self:UtilityCheck(doer)
+    end
+end
+function Waterlevel:DoDiistiller(doer)
+    if self.inst._fire == nil then
+        self:DiistillerResult(doer)
+    elseif self.inst._fire.components.fueled:GetCurrentSection() > 0 then
+        self:DiistillerResult(doer)
+    else
+        self:UtilityCheck(doer)
+    end
+    local sections = self:GetCurrentSection()
+    if self.sectionfn then
+        self.sectionfn(sections, sections, self.inst)
+    end
+    self.inst:PushEvent("onwaterlevelsectionchanged", { newsection = sections, oldsection = sections})
+end
+
 function Waterlevel:TakeWaterItem(item, doer)
     local watervalue = item.components.water:GetWater()
     self:SetWaterType(item.components.water:GetWatertype())
@@ -179,16 +206,7 @@ function Waterlevel:TakeWaterItem(item, doer)
         self:SetPercent(1)
     end
 
-    if self.inst.components.distiller and self.watertype ~= WATERTYPE.CLEAN then
-        self.inst.components.distiller.done = false
-        local watervalue = self:GetWater()
-        if self.inst:HasTag("campkettle") then
-            watervalue = watervalue * 2
-        end
-        self.inst.components.distiller:startBoiling(watervalue)
-    else
-        self:UtilityCheck(self.inst)
-    end
+    self:DoDiistiller(doer)
 
     local delta = self.currentwater - self.oldcurrenwater
 

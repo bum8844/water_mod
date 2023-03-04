@@ -20,10 +20,10 @@ local Distiller = Class(function(self,inst)
 	{done = ondone,}
 )
 
-local function doboil(inst, self)
-	self.task = nil
-	self.boiling_timer = nil
-
+local function control(inst, self)
+	if self.inst.components.waterlevel ~= nil then
+		self.inst.components.waterlevel.accepting = true
+	end
 	if self.inst.components.container ~= nil then
 		self.inst.components.container.canbeopened = true
 	end
@@ -33,13 +33,26 @@ local function doboil(inst, self)
 	if self.inst.components.watersource ~= nil then
 		self.inst.components.watersource.available = true
 	end
-	if self.inst.components.waterlevel ~= nil then
-		self.inst.components.waterlevel.accepting = true
-		self.inst.components.waterlevel.watertype = WATERTYPE.CLEAN
-	end
 
 	if self.ondoneboiling ~= nil then
 		self.ondoneboiling(inst)
+	end
+end
+
+local function doboil(inst, self)
+	self.task = nil
+	self.boiling_timer = nil
+
+	if self.inst.components.waterlevel ~= nil then
+		self.inst.components.waterlevel.watertype = WATERTYPE.CLEAN
+	end
+
+	if self.inst.components.stewer == nil then
+		control(inst, self)
+	else
+		if self.inst.components.stewer.product == nil then
+			control(inst, self)
+		end
 	end
 
 	self.done = true
@@ -49,18 +62,12 @@ function Distiller:isDone()
 	return self.done
 end
 
-function Distiller:isBoiling()
-	return self.done and self.boiling_timer ~= nil
+function Stewer:GetTimeToBoil()
+    return not self.done and self.boiling_timer ~= nil and self.boiling_timer - GetTime() or 0
 end
 
-local function startboil(inst, self)
-	if self.task ~= nil then
-   		self.task:Cancel()
-	end
-	if self.onstartboiling ~= nil then
-		self.onstartboiling(inst)
-	end
-    self.task = self.inst:DoTaskInTime(self.boiling_timer,doboil,self)
+function Distiller:isBoiling()
+	return self.done and self.boiling_timer ~= nil
 end
 
 function Distiller:startBoiling(watertimer)
@@ -77,22 +84,16 @@ function Distiller:startBoiling(watertimer)
 	end
 	self.inst.components.waterlevel.accepting = false
 
-	print(TUNING.BASE_COOK_TIME)
-	print(watertimer)
-
 	local timer = TUNING.BASE_COOK_TIME * TUNING.KETTLE_WATER * watertimer
 	self.boiling_timer = timer
-	print(timer)
 
-	if not self.inst._fire ~= nil then
-		startboil(self.inst, self)
-    else
-    	if self.inst._fire.components.fueled:GetCurrentSection() > 0 then
-			startboil(self.inst, self)
-    	else
-    		self:stopBoiling(0)
-    	end
-    end
+	if self.task ~= nil then
+   		self.task:Cancel()
+	end
+	if self.onstartboiling ~= nil then
+		self.onstartboiling(self.inst)
+	end
+    self.task = self.inst:DoTaskInTime(self.boiling_timer,doboil,self)
 end
 
 function Distiller:stopBoiling(dt)
@@ -154,7 +155,7 @@ function Distiller:OnLoad(data)
         
 		self.boiling_timer = GetTime() + math.max(0, data.boilingtime)
 		if self.done then
-			doboil(self)
+			self.task = self.inst:DoTaskInTime(0,doboil,self)
 		elseif self.inst._fire ~= nil then
 			if self.inst._fire.components.fueled:GetCurrentSection() > 0 then
 				loadpass(self.inst, data, self)

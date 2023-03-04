@@ -176,7 +176,6 @@ local function harvestfn(inst,picker,loot)
     end
 end
 
-
 local function getstatus(inst)
     return (inst:HasTag("burnt") and "BURNT")
         or (inst.components.stewer:IsDone() and "DONE")

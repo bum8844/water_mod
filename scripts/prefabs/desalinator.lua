@@ -155,7 +155,7 @@ end
 local function getstatus(inst)
     return (inst:HasTag("burnt") and "BURNT")
         or (inst:HasTag("boilling") and "PURIFY")
-        or (inst.components.watersource.available and "HASWATER")
+        or (inst.components.distiller:isDone() and "HASWATER")
         or "EMPTY"
 end
 

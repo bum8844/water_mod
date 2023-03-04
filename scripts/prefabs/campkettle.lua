@@ -137,6 +137,13 @@ local function OnDismantle(inst, doer)
     end
 end
 
+local function getstatus(inst)
+    return (inst.components.waterlevel:GetWater() == 0 and "GENERIC")
+        or (inst.components.distiller:isDone() and "DONE")
+        or (inst.components.distiller:GetTimeToBoil() > 15 and "BOILING_LONG")
+        or "BOILING_SHORT"
+end
+
 local function onsave(inst, data)
     data.pittype = inst._type
     if inst._timer ~= nil then
@@ -180,7 +187,6 @@ local function fn()
     inst.entity:SetPristine()
 
     inst:AddTag("kettle")
-    inst:AddTag("campkettle")
 
     if not TheWorld.ismastersim then
         return inst
@@ -190,6 +196,7 @@ local function fn()
     inst.components.portablestructure:SetOnDismantleFn(OnDismantle)
 
     inst:AddComponent("inspectable")
+    inst.components.inspectable.getstatus = getstatus
 
     inst:AddComponent("waterlevel")
     inst.components.waterlevel:SetCanAccepts({WATERTYPE.DIRTY})
