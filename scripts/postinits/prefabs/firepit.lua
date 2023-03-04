@@ -25,10 +25,32 @@ local function install_kettle(inst, no_built_callback)
 	end
 end
 
+local function FailUpgrade(inst, performer, upgraded_from_item)
+	local refund = SpawnPrefab("campkettle_item")
+    if performer ~= nil and performer.components.inventory ~= nil then
+		performer.components.inventory:GiveItem(refund, nil, _G.Vector3(x, y, z))
+	else
+    	refund.Transform:SetPosition(x,y,z)
+	end
+	inst.components.upgradeable.upgradetype = UPGRADETYPES.CAMPFIRE
+	inst.components.upgradeable.numupgrades = 0
+	performer.components.talker:Say(_G.GetActionFailString(performer,"CONSTRUCT","NOTALLOWED"))
+end
+
 local function OnUpgrade(inst, performer, upgraded_from_item)
 	local numupgrades = inst.components.upgradeable.numupgrades
-	if numupgrades == 1 then
-		install_kettle(inst)
+	if _G.KnownModIndex:IsModEnabled("workshop-2334209327") or _G.KnownModIndex:IsModForceEnabled("workshop-2334209327") then
+		if inst.components.trader ~= nil and inst.components.trader.enabled and numupgrades == 1 then
+			install_kettle(inst)
+		else
+			FailUpgrade(inst, performer, upgraded_from_item)
+		end
+	else
+		if numupgrades == 1 then
+			install_kettle(inst)
+		else
+			FailUpgrade(inst, performer, upgraded_from_item)
+		end
 	end
 end
 
