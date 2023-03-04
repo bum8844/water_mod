@@ -181,7 +181,11 @@ function Waterlevel:TakeWaterItem(item, doer)
 
     if self.inst.components.distiller and self.watertype ~= WATERTYPE.CLEAN then
         self.inst.components.distiller.done = false
-        self.inst.components.distiller:startBoiling(self:GetPercent())
+        local watervalue = self:GetWater()
+        if self.inst:HasTag("campkettle") then
+            watervalue = watervalue * 2
+        end
+        self.inst.components.distiller:startBoiling(watervalue)
     else
         self:UtilityCheck(self.inst)
     end

@@ -180,6 +180,7 @@ local function fn()
     inst.entity:SetPristine()
 
     inst:AddTag("kettle")
+    inst:AddTag("campkettle")
 
     if not TheWorld.ismastersim then
         return inst

@@ -74,7 +74,7 @@ local function OnLoad(inst, data)
 		inst._kettle.components.waterlevel:SetWaterType(data.kettle.watertype)
 		if inst._kettle.components.waterlevel:GetWater() ~= 0 and inst._kettle.components.waterlevel.watertype ~= WATERTYPE.CLEAN then
 			if inst.components.fueled:GetCurrentSection() > 0 then
-				inst._kettle.components.distiller:startBoiling(inst._kettle.components.waterlevel:GetWater())
+				inst._kettle.components.distiller:startBoiling(inst._kettle.components.waterlevel:GetWater()*2)
 			else
 				inst._kettle.components.distiller:stopBoiling(0)
 			end
