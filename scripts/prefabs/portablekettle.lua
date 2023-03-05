@@ -330,7 +330,6 @@ local function fn()
     inst.DynamicShadow:SetSize(2, 1)
 
     inst:AddTag("structure")
-    inst:AddTag("portablekettle")
 	inst:AddTag("kettle")
     inst:AddTag("stewer")
 

@@ -171,7 +171,7 @@ function Waterlevel:DiistillerResult(doer)
     if self.inst.components.distiller and self.watertype ~= WATERTYPE.CLEAN then
         self.inst.components.distiller.done = false
         local watervalue = self:GetWater()
-        if not self.inst:HasTag("portablekettle") then
+        if self.inst:HasTag("campkettle") then
             watervalue = watervalue * 2
         end
         self.inst.components.distiller:startBoiling(watervalue)
