@@ -48,6 +48,7 @@ local drinks =
 		perishtime = TUNING.PERISH_MED,
 		cooktime = TUNING.KETTLE_FRUIT,
 		potlevel = "small",
+		card_def={ingredients={{"berries",2},{"berries_juicy",2}}}
 	},
 
 	pomegranate_juice =
@@ -150,6 +151,7 @@ local drinks =
 		perishtime = TUNING.PERISH_SLOW,
 		cooktime = TUNING.KETTLE_LUXURY_GOODS,
 		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_GLOW,
+		card_def = {ingredients={{"wormlight_lesser",2},{"twigs",2}}}
 		--potlevel = "small",
 		oneatenfn = function(inst, eater)
 			if not eater.components.health or eater.components.health:IsDead() or eater:HasTag("playerghost") then
@@ -190,6 +192,7 @@ local drinks =
 		perishtime = TUNING.PERISH_SLOW,
 		cooktime = TUNING.KETTLE_LUXURY_GOODS,
 		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_CAFFINE,
+		card_def={ingredients={{"caffeinberry_bean_cooked",2},{"honey",2}}}
 		oneatenfn = function(inst, eater)
 			if not eater.components.health or eater.components.health:IsDead() or eater:HasTag("playerghost") then
 				return
@@ -231,6 +234,7 @@ local drinks =
 		cooktime = TUNING.KETTLE_VEGGIE,
 		potlevel = "small",
 		basename = "carrot_tea",
+		card_def={ingredients={{"carrot",2},{"twigs",2}}}
 	},
 	
 	-- 선인장, 다육, 알로에는 무조건 이걸로 만들어지게
@@ -330,6 +334,7 @@ local drinks =
 		temperature = TUNING.HOT_FOOD_BONUS_TEMP,
 		temperatureduration = TUNING.FOOD_TEMP_LONG,
 		cooktime = TUNING.KETTLE_TEA,
+		card_def={ingredients={{"tealeaves_dried",4}}}
 		--potlevel = "high",
 	},
 	
@@ -429,6 +434,7 @@ local drinks =
 		perishtime = TUNING.PERISH_MED,
 		cooktime = TUNING.KETTLE_ABI,
 		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_SUS,
+		card_def={ingredients={{"petals_evil",1},{"firenettles",1},{"tillweed",1},{"twigs",1}}}
 		--potlevel = "high",
 		oneatenfn = function(inst, eater)
 			if not eater.components.health or eater.components.health:IsDead() or eater:HasTag("playerghost") then

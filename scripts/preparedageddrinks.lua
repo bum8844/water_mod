@@ -56,6 +56,7 @@ local drinks =
 		thirst = TUNING.HYDRATION_LARGE,
 		perishtime = TUNING.PERISH_PRESERVED,
 		cooktime = (TUNING.KETTLE_DECORATION + TUNING.SODA_WAIT),
+		card_def = {ingredients = {{"refined_dust", 1}, {"twigs", 3}}},
 	},
 	
 	-- 과일 탄산수
@@ -183,6 +184,7 @@ local drinks =
 		perishtime = TUNING.PERISH_SUPERSLOW,
 		cooktime = (TUNING.KETTLE_VEGGIE + TUNING.BEER_WAIT),
 		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_INTOXICATION,
+		card_def = {ingredients = {{"corn", 4}}},
 		oneatenfn = function(inst, eater)
 			alcahol(inst, eater)
 		end,
@@ -253,6 +255,7 @@ local drinks =
 		perishtime = TUNING.PERISH_SUPERSLOW,
 		cooktime = (TUNING.KETTLE_FRUIT + TUNING.BEER_WAIT),
 		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_INTOXICATION,
+		card_def = {ingredients = {{"refined_dust",1},{"berries",1},{"berries_juicy",1},{"twigs",1}},
 		--potlevel = "small",
 		oneatenfn = function(inst, eater)
 			alcahol(inst, eater)
@@ -289,6 +292,7 @@ local drinks =
 		cooktime = (TUNING.KETTLE_VEGGIE + TUNING.BEER_WAIT),
 		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_INTOXICATION,
 		--potlevel = "small",
+		card_def = {ingredients = {{"goatmilk",4}},
 		oneatenfn = function(inst, eater)
 			alcahol(inst, eater)
 		end,
