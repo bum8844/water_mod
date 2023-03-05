@@ -255,7 +255,7 @@ local drinks =
 		perishtime = TUNING.PERISH_SUPERSLOW,
 		cooktime = (TUNING.KETTLE_FRUIT + TUNING.BEER_WAIT),
 		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_INTOXICATION,
-		card_def = {ingredients = {{"refined_dust",1},{"berries",1},{"berries_juicy",1},{"twigs",1}},
+		card_def = {ingredients = {{"refined_dust",1},{"berries",1},{"berries_juicy",1},{"twigs",1}}},
 		--potlevel = "small",
 		oneatenfn = function(inst, eater)
 			alcahol(inst, eater)
@@ -292,7 +292,7 @@ local drinks =
 		cooktime = (TUNING.KETTLE_VEGGIE + TUNING.BEER_WAIT),
 		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_INTOXICATION,
 		--potlevel = "small",
-		card_def = {ingredients = {{"goatmilk",4}},
+		card_def = {ingredients = {{"goatmilk",4}}},
 		oneatenfn = function(inst, eater)
 			alcahol(inst, eater)
 		end,
@@ -305,6 +305,10 @@ for k, v in pairs(drinks) do
     v.priority = v.priority or 0
 
     v.cookbook_category = "cookpot"
+
+	if v.card_def then
+		AddRecipeCard("brewery",v)
+	end
 end
 
 return drinks
