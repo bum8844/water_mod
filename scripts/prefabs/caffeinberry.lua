@@ -443,5 +443,5 @@ return Prefab("caffeinberry_bean_cooked", caffeinberry_bean_cooked, assets),
 Prefab("caffeinberry_bean", caffeinberry_bean, assets, {"caffeinberry_bean_cooked"}),
 Prefab("caffeinberry", caffeinberry, assets, prefabs),
 Prefab("dug_caffeinberry",dug_caffeinberry, assets, prefabs_item),
-MakePlacer("dug_caffeinberry_placer","caffeinberry","caffeinberry","berriesmost"),
+MakePlacer("dug_caffeinberry_placer","caffeinberry","caffeinberry","caffeinberriesmost"),
 Prefab("spice_caffeinpepper",fn_spice, assets)
