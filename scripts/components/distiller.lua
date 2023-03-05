@@ -22,7 +22,9 @@ local Distiller = Class(function(self,inst)
 
 local function control(inst, self)
 	if self.inst.components.waterlevel ~= nil then
-		self.inst.components.waterlevel.accepting = true
+		if not self.inst.components.waterlevel:IsFull() then
+			self.inst.components.waterlevel.accepting = true
+		end
 	end
 	if self.inst.components.container ~= nil then
 		self.inst.components.container.canbeopened = true
@@ -82,7 +84,12 @@ function Distiller:startBoiling(watertimer)
 	if self.inst.components.watersource ~= nil then
 		self.inst.components.watersource.available = false
 	end
-	self.inst.components.waterlevel.accepting = false
+	if self.inst.components.pickable ~= nil then
+		self.inst.components.pickable.canbepicked = false
+	end
+	if self.inst.components.waterlevel ~= nil then
+		self.inst.components.waterlevel.accepting = false
+	end
 
 	local timer = TUNING.BASE_COOK_TIME * TUNING.KETTLE_WATER * watertimer
 	self.boiling_timer = timer
