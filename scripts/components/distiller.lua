@@ -62,7 +62,7 @@ function Distiller:isDone()
 	return self.done
 end
 
-function Stewer:GetTimeToBoil()
+function Distiller:GetTimeToBoil()
     return not self.done and self.boiling_timer ~= nil and self.boiling_timer - GetTime() or 0
 end
 
