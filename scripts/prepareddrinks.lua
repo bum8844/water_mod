@@ -365,7 +365,7 @@ local drinks =
 	-- 꽃을 섞으면 나오는 결과물
 	mixflower =
 	{
-		test = function(boilier, names, tags) return tags.decoration and tags.decoration >= 2 and notmeat(tags) end,
+		test = function(boilier, names, tags) return tags.decoration and tags.decoration >= 2 and not names.refined_dust and notmeat(tags) end,
 		priority = 0,
 		health = TUNING.HEALING_MEDSMALL,
 		hunger = TUNING.DRINK_CALORIES,
