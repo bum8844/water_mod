@@ -1,7 +1,5 @@
 require("tuning")
 
-local KnownModIndex = _G.KnownModIndex
-
 local water_spicedfoods_mod = {}
 
 local function oneaten_caffeinpepper(inst, eater)
@@ -23,7 +21,7 @@ local SPICES =
     SPICE_CAFFEINPEPPER = { oneatenfn = oneaten_caffeinpepper, prefabs = { "caffeinbuff" } },
 }
 
-local function GenerateSpicedFoods_Water(foods)
+function GenerateSpicedFoods_Water_mod(foods)
     for foodname, fooddata in pairs(foods) do
         for spicenameupper, spicedata in pairs(SPICES) do
             local newdata = _G.shallowcopy(fooddata)
@@ -79,25 +77,18 @@ end
 
 for k, mod_id in ipairs(KnownModIndex:GetModsToLoad()) do
     if mod_id == "workshop-2431867642" then
-        GenerateSpicedFoods_Water(require("bm_foodrecipes"))
+        GenerateSpicedFoods_Water_mod(require("bm_foodrecipes"))
     end
     if mod_id == "workshop-381565292" then
-        GenerateSpicedFoods_Water(require("W101_menu"))
-        GenerateSpicedFoods_Water(require("W101_shunted"))
-        GenerateSpicedFoods_Water(require("W101_frozen"))
-        GenerateSpicedFoods_Water(require("W101_mushrooms"))
+        GenerateSpicedFoods_Water_mod(require("W101_menu"))
+        GenerateSpicedFoods_Water_mod(require("W101_shunted"))
+        GenerateSpicedFoods_Water_mod(require("W101_frozen"))
+        GenerateSpicedFoods_Water_mod(require("W101_mushrooms"))
     end
     if mod_id == "workshop-2334209327" then
-        GenerateSpicedFoods_Water(require("hof_foodrecipes"))
-        GenerateSpicedFoods_Water(require("hof_foodrecipes_warly"))
+        GenerateSpicedFoods_Water_mod(require("hof_foodrecipes"))
+        GenerateSpicedFoods_Water_mod(require("hof_foodrecipes_warly"))
     end
-    -- 미지원 (사유 : 음식조리법이 테이블 모음집이 아님)
-    --[[if mod_id == "workshop-1505270912" then
-        GenerateSpicedFoods_Water(require("gorge_foods"))
-    end
-    if mod_ids == "workshop-1467214795" then
-        GenerateSpicedFoods_Water(require("?"))
-    end]]
 end
 
 return water_spicedfoods_mod

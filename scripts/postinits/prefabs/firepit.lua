@@ -68,7 +68,7 @@ local function OnSave(inst, data)
 end
 
 local function OnLoad(inst, data)
-	if data.kettle ~= nil then
+	if data ~= nil and data.kettle ~= nil then
 		install_kettle(inst, true)
 		inst._kettle.components.waterlevel:InitializeWaterLevel(math.max(0, data.kettle.waterlevel))
 		inst._kettle.components.waterlevel:SetWaterType(data.kettle.watertype)

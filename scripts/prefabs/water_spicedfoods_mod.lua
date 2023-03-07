@@ -53,18 +53,40 @@ local function MakePreparedFood(data)
 
         inst:AddTag("spicedfood")
         inst:AddTag("watermod")
+
+        if data.tags ~= nil then
+            for i,v in pairs(data.tags) do
+                inst:AddTag(v)
+            end
+        end
         
         inst.inv_image_bg = { image = (data.basename or data.name)..".tex" }
         inst.inv_image_bg.atlas = GetInventoryItemAtlas(inst.inv_image_bg.image)
         if inst.inv_image_bg.atlas == "images/inventoryimages2.xml" then
             inst.inv_image_bg = { image = (data.basename or data.name)..".tex",
             atlas = "images/inventoryimages/"..(data.basename or data.name)..".xml"}
+        elseif KnownModIndex:IsModEnabled("workshop-1505270912") or KnownModIndex:IsModForceEnabled("workshop-1505270912") then
+            if inst:HasTag("volcanoinventory") then
+                inst.inv_image_bg = { image = (data.basename or data.name)..".tex",
+                atlas = "images/inventoryimages/volcanoinventory.xml"}
+            elseif inst:HasTag("hamletinventory") then
+                inst.inv_image_bg = { image = (data.basename or data.name)..".tex",
+                atlas = "images/inventoryimages/hamletinventory.xml"}
+            else
+                inst.inv_image_bg = { image = (data.basename or data.name)..".tex",
+                atlas = "images/inventoryimages/quagmirefoods.xml"}
+                data.overridebuild = "preparedfood_gorge"
+                table.insert(foodassets, Asset("ANIM", "anim/"..data.overridebuild..".zip"))
+            end
         end
 
         food_symbol_build = data.overridebuild or "cook_pot_food"
 
         inst.AnimState:PlayAnimation("idle")
         inst.AnimState:OverrideSymbol("swap_food", data.overridebuild or data.basename or data.name, data.basename or data.name)
+        --[[if data.overridebuild == "preparedfood_gorge" then
+            inst.AnimState:SetScale(2,2,2)
+        end]]
 
         inst:AddTag("preparedfood")
         if data.tags ~= nil then

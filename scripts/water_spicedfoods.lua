@@ -1,7 +1,5 @@
 require("tuning")
 
-local KnownModIndex = _G.KnownModIndex
-
 local water_spicedfoods = {}
 
 local function oneaten_caffeinpepper(inst, eater)
@@ -23,7 +21,7 @@ local SPICES =
     SPICE_CAFFEINPEPPER = { oneatenfn = oneaten_caffeinpepper, prefabs = { "caffeinbuff" } },
 }
 
-local function GenerateSpicedFoods_Water(foods)
+function GenerateSpicedFoods_Water(foods)
     for foodname, fooddata in pairs(foods) do
         for spicenameupper, spicedata in pairs(SPICES) do
             local newdata = _G.shallowcopy(fooddata)
