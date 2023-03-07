@@ -11,7 +11,7 @@ PrefabFiles = require("water_prefablist")
 Assets = require("water_assets")
 
 if GLOBAL.KnownModIndex:IsModEnabled("workshop-1467214795") or GLOBAL.KnownModIndex:IsModForceEnabled("workshop-1467214795") then
-	modimport("scripts/water_spicedfoods_mod_ai")
+	modimport("scripts/water_spicedfoods_mod_ia")
 end
 
 if GLOBAL.KnownModIndex:IsModEnabled("workshop-1505270912") or GLOBAL.KnownModIndex:IsModForceEnabled("workshop-1505270912") then
