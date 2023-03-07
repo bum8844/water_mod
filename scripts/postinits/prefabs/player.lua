@@ -25,6 +25,10 @@ local function OnThirstDirty(inst)
                 not (inst.isthirstpulseup:value() and percent > oldpercent) and
                 not (inst.isthirstpulsedown:value() and percent < oldpercent),
         }
+        --[[print("inst.isthirstpulseup:", inst.isthirstpulseup:value())
+        print("inst.isthirstpulsedown:", inst.isthirstpulsedown:value())
+        print("percent:", percent)
+        print("oldpercent:", oldpercent)]]
         inst._oldthirstpercent = percent
         inst.isthirstpulseup:set_local(false)
         inst.isthirstpulsedown:set_local(false)
@@ -44,6 +48,7 @@ local function OnThirstDirty(inst)
 end
 
 local AddNetvars = function(inst)
+    --print("inst._parent:", inst._parent)
     inst._oldthirstpercent = 1
     inst.currentthirst = _G.net_ushortint(inst.GUID, "thirst.current", "thirstdirty")
     inst.maxthirst = _G.net_ushortint(inst.GUID, "thirst.max", "thirstdirty")
@@ -54,6 +59,7 @@ local AddNetvars = function(inst)
 
     inst:DoStaticTaskInTime(0, function(inst)
         if _G.TheWorld.ismastersim then
+            inst._parent = inst.entity:GetParent()
             inst:ListenForEvent("thirstdelta", OnThirstDelta, inst._parent)
         else
             inst.isthirstpulseup:set_local(false)
