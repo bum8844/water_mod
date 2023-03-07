@@ -58,11 +58,16 @@ end
 local gen_tea_tree=GetModConfigData("gen_tea_tree")
 local gen_caffeinberry=GetModConfigData("gen_caffeinberry")
 
-AddThingtoWorldGeneration("tea_tree",{BGForest=gen_tea_tree,BGDeepForest=gen_tea_tree,DeepForest=gen_tea_tree,Forest=gen_tea_tree,BGCrappyForest=gen_tea_tree,CrappyDeepForest=gen_tea_tree,CrappyForest=gen_tea_tree,SpiderForest=gen_tea_tree})
-
---AddThingtoWorldGeneration("caffeinberry",{BGBadlands=gen_caffeinberry,Badlands=gen_caffeinberry,Lightning=gen_caffeinberry,HoundyBadlands=gen_caffeinberry,BuzzardyBadlands=gen_caffeinberry,BGLightningBluff=gen_caffeinberry,LightningBluffLightning=gen_caffeinberry,LightningBluffAntlion=gen_caffeinberry})
-
-AddThingtoWorldGeneration("caffeinberry",{MoonIsland_Forest=gen_caffeinberry,MoonIsland_IslandShard=gen_caffeinberry,MoonIsland_Mine=gen_caffeinberry,MoonIsland_Baths=gen_caffeinberry,MoonIsland_Meadows=gen_caffeinberry})
+if GLOBAL.KnownModIndex:IsModEnabled("workshop-1467214795") or GLOBAL.KnownModIndex:IsModForceEnabled("workshop-1467214795") then
+    AddThingtoWorldGeneration("tea_tree",{BGForest=gen_tea_tree,BGDeepForest=gen_tea_tree,DeepForest=gen_tea_tree,Forest=gen_tea_tree,BGCrappyForest=gen_tea_tree,CrappyDeepForest=gen_tea_tree,CrappyForest=gen_tea_tree,SpiderForest=gen_tea_tree,JungleClearing=gen_tea_tree,JungleDenseVery=gen_tea_tree,JungleFrogSanctuary=gen_tea_tree,JungleSappy=gen_tea_tree,JungleSkeleton=gen_tea_tree,JungleSparse=gen_tea_tree,JungleDenseMed=gen_tea_tree,JungleDenseMedHome=gen_tea_tree,JungleFlower=gen_tea_tree,JungleMonkeyHell=gen_tea_tree,JungleEyeplant=gen_tea_tree,JungleGrassy=gen_tea_tree,JungleEvilFlowers=gen_tea_tree})
+    AddThingtoWorldGeneration("caffeinberry",{MoonIsland_Forest=gen_caffeinberry,MoonIsland_IslandShard=gen_caffeinberry,MoonIsland_Mine=gen_caffeinberry,MoonIsland_Baths=gen_caffeinberry,MoonIsland_Meadows=gen_caffeinberry,NoOxMeadow=gen_caffeinberry,MeadowOxBoon=gen_caffeinberry,MeadowCarroty=gen_caffeinberry,MeadowSpider=gen_caffeinberry,MeadowMandrake=gen_caffeinberry,MeadowRocky=gen_caffeinberry})
+elseif GLOBAL.KnownModIndex:IsModEnabled("workshop-1505270912") or GLOBAL.KnownModIndex:IsModForceEnabled("workshop-1505270912") then
+    AddThingtoWorldGeneration("tea_tree",{BGForest=gen_tea_tree,BGDeepForest=gen_tea_tree,DeepForest=gen_tea_tree,Forest=gen_tea_tree,BGCrappyForest=gen_tea_tree,CrappyDeepForest=gen_tea_tree,CrappyForest=gen_tea_tree,SpiderForest=gen_tea_tree,BG_deeprainforest_base=gen_tea_tree,deeprainforest_fireflygrove=gen_tea_tree,deeprainforest_flytrap_grove=gen_tea_tree,deeprainforest_mandrakeman=gen_tea_tree,JungleClearing=gen_tea_tree,JungleDenseVery=gen_tea_tree,JungleFrogSanctuary=gen_tea_tree,JungleSappy=gen_tea_tree,JungleSkeleton=gen_tea_tree,JungleSparse=gen_tea_tree,JungleDenseMed=gen_tea_tree,JungleDenseMedHome=gen_tea_tree,JungleFlower=gen_tea_tree,JungleMonkeyHell=gen_tea_tree,JungleEyeplant=gen_tea_tree,JungleGrassy=gen_tea_tree,JungleEvilFlowers=gen_tea_tree})
+    AddThingtoWorldGeneration("caffeinberry",{MoonIsland_Forest=gen_caffeinberry,MoonIsland_IslandShard=gen_caffeinberry,MoonIsland_Mine=gen_caffeinberry,MoonIsland_Baths=gen_caffeinberry,MoonIsland_Meadows=gen_caffeinberry,deeprainforest_gas=gen_caffeinberry,deeprainforest_gas_set=gen_caffeinberry,deeprainforest_gas_flytrap_grove=gen_caffeinberry,deeprainforest_gas_flytrap_grove_set=gen_caffeinberry,NoOxMeadow=gen_caffeinberry,MeadowOxBoon=gen_caffeinberry,MeadowCarroty=gen_caffeinberry,MeadowSpider=gen_caffeinberry,MeadowMandrake=gen_caffeinberry,MeadowRocky=gen_caffeinberry})
+else
+    AddThingtoWorldGeneration("tea_tree",{BGForest=gen_tea_tree,BGDeepForest=gen_tea_tree,DeepForest=gen_tea_tree,Forest=gen_tea_tree,BGCrappyForest=gen_tea_tree,CrappyDeepForest=gen_tea_tree,CrappyForest=gen_tea_tree,SpiderForest=gen_tea_tree})
+    AddThingtoWorldGeneration("caffeinberry",{MoonIsland_Forest=gen_caffeinberry,MoonIsland_IslandShard=gen_caffeinberry,MoonIsland_Mine=gen_caffeinberry,MoonIsland_Baths=gen_caffeinberry,MoonIsland_Meadows=gen_caffeinberry})
+end 
 
 GLOBAL.terrain.filter.caffeinberry = {GLOBAL.GROUND.ROAD, GLOBAL.GROUND.WOODFLOOR, GLOBAL.GROUND.CARPET, GLOBAL.GROUND.CHECKER}
 GLOBAL.terrain.filter.tea_tree = {GLOBAL.GROUND.ROAD, GLOBAL.GROUND.WOODFLOOR, GLOBAL.GROUND.CARPET, GLOBAL.GROUND.CHECKER}
