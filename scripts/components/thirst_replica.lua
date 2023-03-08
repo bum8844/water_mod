@@ -80,9 +80,9 @@ function Thirst:GetCurrent()
 end
 
 
-function Thirst:IsStarving()
+function Thirst:IsThirst()
     if self.inst.components.thirst ~= nil then
-        return self.inst.components.thirst:IsStarving()
+        return self.inst.components.thirst:IsThirst()
     else
         return self.classified ~= nil and self.classified.currentthirst:value() <= 0
     end

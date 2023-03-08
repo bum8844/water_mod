@@ -76,7 +76,7 @@ function Thirst:SetMax(amount)
     self.current = amount
 end
 
-function Thirst:IsStarving()
+function Thirst:IsThirst()
     return self.current <= 0
 end
 

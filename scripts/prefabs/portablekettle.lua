@@ -146,7 +146,7 @@ local function ShowProduct(inst)
         inst:DoTaskInTime(0,function(inst)
             SetProductSymbol(inst, inst.components.stewer.product)
             inst.components.pickable.product = inst.components.stewer.product
-            inst.components.pickable.numtoharvest = inst.components.waterlevel:GetWater()-1
+            inst.components.pickable.numtoharvest = inst.components.waterlevel:GetWater()
             inst.components.pickable.canbepicked = true
         end)
     end

@@ -1,4 +1,6 @@
 local ThirstBadge = require "widgets/thirstbadge"
+local Widget = require "widgets/widget"
+local UIAnim = require "widgets/uianim"
 
 local function OnSetPlayerMode(inst, self)
 	self.watertask = nil
@@ -72,7 +74,7 @@ local function thirstbadge_statusdisplays(self)
 	  	if self.watertask ~= nil then
 	  		self.watertask:Cancel()
 	  	end
-	  	self.watertask = self.inst:DoStaticTaskInTime(0, ghostmode and OnSetGhostMode or OnSetPlayerMode, self)
+	  	self.watertask = self.inst:DoStaticTaskInTime(0, ghostmode and OnSetGhostMode or OnSetPlayerMode_water, self)
 	end
 
 	function self:SetThirstPercent(pct)
@@ -85,6 +87,18 @@ local function thirstbadge_statusdisplays(self)
 	    end
 	end
 	
+	local function playactiong(data)
+	    if not data.overtime then
+	        if data.newpercent > data.oldpercent then
+	            self.waterstomach:PulseGreen()
+	    	    GLOBAL.TheFrontEnd:GetSound():PlaySound("drink_fx/HUD/thirst_up","thirstup",.6)
+	        elseif data.newpercent < data.oldpercent then
+	            self.waterstomach:PulseRed()
+	            GLOBAL.TheFrontEnd:GetSound():PlaySound("drink_fx/HUD/thirst_down","thirstdown",.6)
+	        end
+	    end
+	end
+
 	function self:ThirstDelta(data)
 	    self:SetThirstPercent(data.newpercent)
 	    if self.waterstomach ~= nil and self.waterstomach.ThirstDelta then
@@ -95,9 +109,11 @@ local function thirstbadge_statusdisplays(self)
 	                self.waterstomach:PulseGreen()
 	                GLOBAL.TheFrontEnd:GetSound():PlaySound("drink_fx/HUD/thirst_up","thirstup",.6)
 	            elseif data.newpercent < data.oldpercent then
-	                GLOBAL.TheFrontEnd:GetSound():PlaySound("drink_fx/HUD/thirst_down","thirstdown",.6)
 	                self.waterstomach:PulseRed()
+	                GLOBAL.TheFrontEnd:GetSound():PlaySound("drink_fx/HUD/thirst_down","thirstdown",.6)
 	            end
+	        else
+	        	--self.data:DoTaskInTime(0,playactiong,data)
 	        end
 	    end
 	end

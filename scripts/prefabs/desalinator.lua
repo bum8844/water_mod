@@ -76,7 +76,11 @@ local function CalculationForSalt(inst)
         inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/medium")
         inst.SoundEmitter:PlaySound("saltydog/common/saltbox/open")
         inst.components.pickable.numtoharvest = math.floor(inst._saltvalue*.1)
-        inst.components.pickable.canbepicked = true
+        if not inst.components.distiller:isBoiling() then
+            inst.components.pickable.canbepicked = true
+        else
+            inst.components.pickable.canbepicked = false
+        end
     end
 end
 

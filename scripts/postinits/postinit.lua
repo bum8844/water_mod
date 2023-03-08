@@ -44,6 +44,8 @@ local postinits =
 if GetModConfigData("enable_thirst") then
 	table.insert(postinits.prefabs, "player")
 	table.insert(postinits.widgets, "statusdisplays")
+	table.insert(postinits.widgets, "bloodover_water")
+	table.insert(postinits.widgets, "healthbadge_water")
 	table.insert(postinits.utils, "thirstvalue")
 end
 
