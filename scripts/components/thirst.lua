@@ -107,8 +107,12 @@ function Thirst:DoDelta(delta, overtime, ignore_invincible)
 
     if self:GetPercent() < TUNING.THIRST_THRESH and not self.inst:HasTag("groggy") then
         self.inst:AddTag("groggy")
-    elseif self:GetPercent() > TUNING.THIRST_THRESH and self.inst:HasTag("groggy") and not self.inst:HasTag("drunk") then
+        self.inst:AddTag("dehydration")
+    elseif not self.inst:HasTag("dehydration") then
+        self.inst:AddTag("dehydration")
+    elseif self:GetPercent() > TUNING.THIRST_THRESH and self.inst:HasTag("groggy") and self.inst:HasTag("dehydration") then
         self.inst:RemoveTag("groggy")
+        self.inst:RemoveTag("dehydration")
     end
 end
 
