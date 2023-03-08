@@ -81,6 +81,7 @@ function Thirst:IsThirst()
 end
 
 function Thirst:DoDelta(delta, overtime, ignore_invincible)
+
     if self.redirect ~= nil then
         self.redirect(self.inst, delta, overtime)
         return
@@ -103,18 +104,6 @@ function Thirst:DoDelta(delta, overtime, ignore_invincible)
     elseif self.current > 0 then
         self.inst:PushEvent("stopstarving")
         ProfileStatsSet("stopped_starving", true)
-    end
-
-    if self:GetPercent() < TUNING.THIRST_THRESH and not self.inst:HasTag("groggy") then
-        self.inst:AddTag("groggy")
-        if not self.inst:HasTag("dehydration") then 
-            self.inst:AddTag("dehydration")
-        end
-    elseif not self.inst:HasTag("dehydration") then
-        self.inst:AddTag("dehydration")
-    elseif self:GetPercent() > TUNING.THIRST_THRESH and self.inst:HasTag("groggy") and self.inst:HasTag("dehydration") then
-        self.inst:RemoveTag("groggy")
-        self.inst:RemoveTag("dehydration")
     end
 end
 
