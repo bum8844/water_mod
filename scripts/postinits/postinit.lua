@@ -42,6 +42,8 @@ local postinits =
 }
 
 if GetModConfigData("enable_thirst") then
+	table.insert(postinits.components, "sleepingbag")
+	table.insert(postinits.components, "sleepingbaguser")
 	table.insert(postinits.prefabs, "player")
 	table.insert(postinits.widgets, "statusdisplays")
 	table.insert(postinits.widgets, "bloodover_water")

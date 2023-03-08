@@ -85,11 +85,19 @@ local function startcookfn(inst)
         inst.Light:Enable(true)
     end
 end
+local function IsModDrint(inst, product, overridebuild)
+    local recipe = cooking.GetRecipe(inst.prefab, product)
+    local potlevel = recipe ~= nil and recipe.potlevel or nil
+    return recipe ~= nil and recipe.overridebuild
+end
 
 local function SetProductSymbol(inst, product, overridebuild)
     local recipe = cooking.GetRecipe(inst.prefab, product)
     local potlevel = recipe ~= nil and recipe.potlevel or nil
-    local build = (recipe ~= nil and recipe.overridebuild) or overridebuild or inst.components.waterlevel:GetWater() >= 5 and "kettle_drink_bottle" or "kettle_drink"
+    local build = (IsModDrint(inst, product, overridebuild) and overridebuild 
+    or IsModDrint(inst, product, overridebuild) and inst.components.waterlevel:GetWater() >= 5 and overridebuild.."_bottle" 
+    or inst.components.waterlevel:GetWater() >= 5 and "kettle_drink_bottle" 
+    or "kettle_drink")
     local overridesymbol = (recipe ~= nil and recipe.overridesymbolname) or (recipe.basename ~= nil and recipe.basename) or product
     local potlevels = potlevel ~= nil and "swap_"..potlevel or "swap_mid"
 

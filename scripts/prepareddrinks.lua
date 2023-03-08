@@ -1,5 +1,13 @@
 local KnownModIndex = _G.KnownModIndex
 
+local function sleepend(inst, eater)
+	eater:PushEvent("sleep_end")
+	eater:RemoveTag("drunk")
+	--[[if eater.components.thirst ~= nil and eater.components.thirst:GetPercent() < TUNING.THIRST_THRESH then
+		eater:AddTag("groggy")
+	end]]
+end
+
 local function dummy(boiler, name, tags)
 	return false
 end
@@ -119,13 +127,11 @@ local drinks =
 							eater.components.debuffable:RemoveDebuff("kyno_strengthbuff_med")
 							eater.components.debuffable:RemoveDebuff("kyno_dmgreductionbuff")
 							eater:DoTaskInTime(9, function()
-								eater:PushEvent("sleep_end")
-								eater:RemoveTag("drunk")
+								sleepend(inst, eater)
 							end)
 						elseif eater:HasTag("drunk") then
 							eater:DoTaskInTime(9, function()
-								eater:PushEvent("sleep_end")
-								eater:RemoveTag("drunk")
+								sleepend(inst, eater)
 							end)
 						end
 					end)
@@ -285,13 +291,11 @@ local drinks =
 							eater.components.debuffable:RemoveDebuff("kyno_strengthbuff_med")
 							eater.components.debuffable:RemoveDebuff("kyno_dmgreductionbuff")
 							eater:DoTaskInTime(9, function()
-								eater:PushEvent("sleep_end")
-								eater:RemoveTag("drunk")
+								sleepend(inst, eater)
 							end)
 						elseif eater:HasTag("drunk") then
 							eater:DoTaskInTime(9, function()
-								eater:PushEvent("sleep_end")
-								eater:RemoveTag("drunk")
+								sleepend(inst, eater)
 							end)
 						end
 					end)

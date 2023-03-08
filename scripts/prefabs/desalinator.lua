@@ -72,11 +72,11 @@ local function CalculationForSalt(inst)
         if inst._saltvalue > inst._saltvaluemax then
             inst._saltvalue = inst._saltvaluemax
         end
-        inst.SoundEmitter:KillSound("purify")
-        inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/medium")
-        inst.SoundEmitter:PlaySound("saltydog/common/saltbox/open")
         inst.components.pickable.numtoharvest = math.floor(inst._saltvalue*.1)
         if not inst.components.distiller:isBoiling() then
+            inst.SoundEmitter:KillSound("purify")
+            inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/medium")
+            inst.SoundEmitter:PlaySound("saltydog/common/saltbox/open")
             inst.components.pickable.canbepicked = true
         else
             inst.components.pickable.canbepicked = false
@@ -124,7 +124,6 @@ local function onload(inst, data)
         end
         if data.saltvalue ~= nil then
             inst._saltvalue = data.saltvalue
-            CalculationForSalt(inst)
         end
     end
 end
@@ -137,7 +136,7 @@ local function OnSectionChange(new, old, inst)
         end
     end
     inst.AnimState:OverrideSymbol("swap", "desalinator_meter_"..watertype, tostring(inst._waterlevel))
-    CalculationForSalt(inst)
+    --CalculationForSalt(inst)
 end
 
 local function OnTakeWater(inst)

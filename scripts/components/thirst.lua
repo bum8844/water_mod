@@ -104,6 +104,12 @@ function Thirst:DoDelta(delta, overtime, ignore_invincible)
         self.inst:PushEvent("stopstarving")
         ProfileStatsSet("stopped_starving", true)
     end
+
+    if self:GetPercent() < TUNING.THIRST_THRESH and not self.inst:HasTag("groggy") then
+        self.inst:AddTag("groggy")
+    elseif self:GetPercent() > TUNING.THIRST_THRESH and self.inst:HasTag("groggy") and not self.inst:HasTag("drunk") then
+        self.inst:RemoveTag("groggy")
+    end
 end
 
 function Thirst:GetPercent()

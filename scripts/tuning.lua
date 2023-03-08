@@ -104,6 +104,12 @@ local tuning =
 	ALCOHOL_POISON = -5,
 	SANITY_POISON = -5,
 
+	-- sleep dodlet tick
+	SLEEP_THIRST_PER_TICK = -1,
+
+	-- alet
+	THIRST_THRESH = .333,
+
 	--Cooking Time
 	INCORRECT_BOIL = .25,
 	DESALINATION_TIME = 1,

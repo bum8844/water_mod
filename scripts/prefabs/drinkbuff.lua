@@ -79,7 +79,9 @@ local function OnDetached_alcohol(inst, target)
     if not target:HasTag("drinksleep") then
         target:PushEvent("refreshdrunk")
         target:RemoveTag("drunk")
-        target:RemoveTag("groggy")
+        if target.components.thirst == nil and target.components.thirst:GetPercent() > TUNING.THIRST_THRESH then
+            target:RemoveTag("groggy")
+        end
         target.components.locomotor:RemoveExternalSpeedMultiplier(target, "alcoholdebuff")
         target:PushEvent("foodbuffdetached", { buff = "ANNOUNCE_DRUNK_END", priority = 1 })
     else

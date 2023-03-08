@@ -77,11 +77,17 @@ local function startcookfn(inst)
         inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot", "snd")
     end
 end
+local function IsModDrink(inst, product, overridebuild)
+    local recipe = cooking.GetRecipe(inst.prefab, product)
+    local potlevel = recipe ~= nil and recipe.potlevel or nil
+    return recipe ~= nil and recipe.overridebuild
+end
 
 local function SetProductSymbol(inst, product, overridebuild)
     local recipe = cooking.GetRecipe(inst.prefab, product)
     local potlevel = recipe ~= nil and recipe.potlevel or nil
-    local build = (recipe ~= nil and recipe.overridebuild) or overridebuild or inst.components.waterlevel:GetWater() >= 5 and "kettle_drink_bottle" or "kettle_drink"
+    local build = IsModDrink(inst, product, overridebuild) and overridebuild or IsModDrink(inst, product, overridebuild) and inst.components.waterlevel:GetWater() >= 5 and overridebuild.."_bottle"
+    or inst.components.waterlevel:GetWater() >= 5 and "kettle_drink_bottle" or "kettle_drink"
     local overridesymbol = (recipe ~= nil and recipe.overridesymbolname) or (recipe.basename ~= nil and recipe.basename) or product
     local potlevels = potlevel ~= nil and "swap_"..potlevel or "swap_mid"
 
@@ -241,9 +247,10 @@ end
 local function onload(inst, data)
     if data ~= nil then
         if data.burnt then
-        inst.components.burnable.onburnt(inst)
+            inst.components.burnable.onburnt(inst)
         end
     end
+    inst.components.waterlevel:DoDiistiller(inst)
 end
 
 local function fn()
