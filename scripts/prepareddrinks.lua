@@ -1,11 +1,11 @@
+-- 워커 스피치 버그 있음
+
 local KnownModIndex = _G.KnownModIndex
 
 local function sleepend(inst, eater)
 	eater:PushEvent("sleep_end")
 	eater:RemoveTag("drunk")
-	--[[if eater.components.thirst ~= nil and eater.components.thirst:GetPercent() < TUNING.THIRST_THRESH then
-		eater:AddTag("groggy")
-	end]]
+	eater:PushEvent("refreshdrunk")
 end
 
 local function dummy(boiler, name, tags)

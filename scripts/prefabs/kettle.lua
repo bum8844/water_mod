@@ -78,7 +78,6 @@ local function startcookfn(inst)
     if not inst:HasTag("burnt") then
         inst.components.water.available = false
         inst.components.waterlevel.accepting = false
-        inst.components.waterlevel.watertype = nil
         inst.AnimState:PlayAnimation("cooking_loop", true)
         inst.SoundEmitter:KillSound("snd")
         inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_rattle", "snd")
