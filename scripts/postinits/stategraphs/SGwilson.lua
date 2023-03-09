@@ -204,7 +204,7 @@ if GetModConfigData("enable_thirst") then
                     inst:ClearBufferedAction()
                     inst.sg:GoToState("idle")
                     if inst.components.talker ~= nil then
-                        inst.components.talker:Say(GLOBAL.GetString(inst, "ANNOUNCE_NOHUNGERSLEEP"))--"ANNOUNCE_NOTHIRSTSLEEP"로 바꿀것
+                        inst.components.talker:Say(GLOBAL.GetString(inst, "ANNOUNCE_NOTHIRSTSLEEP"))
                     end
                     return
                 else
@@ -218,7 +218,7 @@ if GetModConfigData("enable_thirst") then
                     inst:ClearBufferedAction()
                     inst.sg:GoToState("idle")
                     if inst.components.talker ~= nil then
-                        inst.components.talker:Say(GLOBAL.GetString(inst, "ANNOUNCE_NOHUNGERSLEEP"))--"ANNOUNCE_NOTHIRSTSLEEP"로 바꿀것
+                        inst.components.talker:Say(GLOBAL.GetString(inst, "ANNOUNCE_NOTHIRSTSLEEP"))
                     end
                     return
                 else
