@@ -214,6 +214,7 @@ local drinks =
 		cooktime = TUNING.KETTLE_LUXURY_GOODS,
 		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_CAFFINE,
 		card_def={ingredients={{"caffeinberry_bean_cooked",2},{"honey",2}}},
+		potlevel_bottle = "high",
 		oneatenfn = function(inst, eater)
 			if not eater.components.health or eater.components.health:IsDead() or eater:HasTag("playerghost") then
 				return
@@ -241,7 +242,7 @@ local drinks =
 		perishtime = TUNING.PERISH_FASTISH,
 		cooktime = TUNING.KETTLE_VEGGIE,
 		potlevel = "small",
-		potlevels_bottle = "small",
+		potlevel_bottle = "high",
 	},
 	
 	carrot_tea =
@@ -255,7 +256,6 @@ local drinks =
 		perishtime = TUNING.PERISH_MED,
 		cooktime = TUNING.KETTLE_VEGGIE,
 		potlevel = "small",
-		basename = "carrot_tea",
 		card_def={ingredients={{"carrot",2},{"twigs",2}}},
 	},
 	
@@ -343,7 +343,7 @@ local drinks =
 		thirst = TUNING.HYDRATION_MED,
 		perishtime = TUNING.PERISH_MED,
 		cooktime = TUNING.KETTLE_TEA,
-		potlevels_bottle = "small",
+		potlevel_bottle = "high",
 	},
 	
 	-- 녹차 건조대 말린것
@@ -360,7 +360,7 @@ local drinks =
 		temperatureduration = TUNING.FOOD_TEMP_LONG,
 		cooktime = TUNING.KETTLE_TEA,
 		card_def={ingredients={{"tealeaves_dried",4}}},
-		--potlevels_bottle = "small",
+		--potlevel_bottle = "small",
 	},
 	
 	blacktea_iced =
@@ -376,7 +376,7 @@ local drinks =
 		temperatureduration = TUNING.FOOD_TEMP_LONG,
 		cooktime = TUNING.KETTLE_TEA,
 		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_COLD_FOOD,
-		--potlevels_bottle = "small",
+		--potlevel_bottle = "small",
 	},
 	
 	-- 동굴 고사리
@@ -390,7 +390,7 @@ local drinks =
 		thirst = TUNING.HYDRATION_MED,
 		perishtime = TUNING.PERISH_MED,
 		cooktime = TUNING.KETTLE_TEA,
-		potlevels_bottle = "small",
+		potlevel_bottle = "high",
 	},
 	
 	-- 꽃을 섞으면 나오는 결과물
