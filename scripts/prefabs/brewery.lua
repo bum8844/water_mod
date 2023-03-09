@@ -91,7 +91,7 @@ local function SetProductSymbol(inst, product, overridebuild)
     or inst.components.waterlevel:GetWater() >= 5 and "kettle_drink_bottle" or "kettle_drink"
     local overridesymbol = (recipe ~= nil and recipe.overridesymbolname) or (recipe.basename ~= nil and recipe.basename) or product
     local potlevels = potlevel ~= nil and "swap_"..potlevel or "swap_mid"
-    local potlevels_bottle = potlevel_bottle ~= nil and "swap_"..potlevel or "swap_mid_bottle"
+    local potlevels_bottle = potlevel_bottle ~= nil and "swap_"..potlevel_bottle.."_bottle" or "swap_mid_bottle"
     local result_potlevels = nil
     
     if inst.components.waterlevel:GetWater() >= 5 then
