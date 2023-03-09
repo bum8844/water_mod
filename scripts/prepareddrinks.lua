@@ -241,6 +241,7 @@ local drinks =
 		perishtime = TUNING.PERISH_FASTISH,
 		cooktime = TUNING.KETTLE_VEGGIE,
 		potlevel = "small",
+		potlevels_bottle = "small",
 	},
 	
 	carrot_tea =
@@ -342,6 +343,7 @@ local drinks =
 		thirst = TUNING.HYDRATION_MED,
 		perishtime = TUNING.PERISH_MED,
 		cooktime = TUNING.KETTLE_TEA,
+		potlevels_bottle = "small",
 	},
 	
 	-- 녹차 건조대 말린것
@@ -358,7 +360,7 @@ local drinks =
 		temperatureduration = TUNING.FOOD_TEMP_LONG,
 		cooktime = TUNING.KETTLE_TEA,
 		card_def={ingredients={{"tealeaves_dried",4}}},
-		--potlevel = "high",
+		--potlevels_bottle = "small",
 	},
 	
 	blacktea_iced =
@@ -374,7 +376,7 @@ local drinks =
 		temperatureduration = TUNING.FOOD_TEMP_LONG,
 		cooktime = TUNING.KETTLE_TEA,
 		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_COLD_FOOD,
-		--potlevel = "small",
+		--potlevels_bottle = "small",
 	},
 	
 	-- 동굴 고사리
@@ -388,6 +390,7 @@ local drinks =
 		thirst = TUNING.HYDRATION_MED,
 		perishtime = TUNING.PERISH_MED,
 		cooktime = TUNING.KETTLE_TEA,
+		potlevels_bottle = "small",
 	},
 	
 	-- 꽃을 섞으면 나오는 결과물
@@ -424,19 +427,6 @@ local drinks =
 		test = function(boilier, names, tags) return names.cactus_flower and names.cactus_flower >= 2 and notmeat(tags) end,
 		priority = 1,
 		health = TUNING.HEALING_MEDSMALL,
-		hunger = TUNING.DRINK_CALORIES,
-		sanity = TUNING.SANITY_LARGE,
-		thirst = TUNING.HYDRATION_LARGE,
-		perishtime = TUNING.PERISH_MED,
-		cooktime = TUNING.KETTLE_DECORATION,
-		--potlevel = "high",
-	},
-	
-	lotustea =
-	{
-		test = function(boilier, names, tags) return (( names.lotus_flower or 0 ) + ( names.lotus_flower_cooked or 0 ) + ( names.kyno_lotus_flower or 0 ) + ( names.kyno_lotus_flower_cooked or 0 ) >= 2) and notmeat(tags) end,
-		priority = 1,
-		health = TUNING.HEALING_SMALL,
 		hunger = TUNING.DRINK_CALORIES,
 		sanity = TUNING.SANITY_LARGE,
 		thirst = TUNING.HYDRATION_LARGE,
@@ -483,6 +473,21 @@ local drinks =
 		end,
 	},
 	
+}
+
+local drinks_mod = {
+	lotustea =
+	{
+		test = function(boilier, names, tags) return (( names.lotus_flower or 0 ) + ( names.lotus_flower_cooked or 0 ) + ( names.kyno_lotus_flower or 0 ) + ( names.kyno_lotus_flower_cooked or 0 ) >= 2) and notmeat(tags) end,
+		priority = 1,
+		health = TUNING.HEALING_SMALL,
+		hunger = TUNING.DRINK_CALORIES,
+		sanity = TUNING.SANITY_LARGE,
+		thirst = TUNING.HYDRATION_LARGE,
+		perishtime = TUNING.PERISH_MED,
+		cooktime = TUNING.KETTLE_DECORATION,
+		--potlevel = "high",
+	},
 }
 
 for k, v in pairs(drinks) do
