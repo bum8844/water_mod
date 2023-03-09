@@ -14,5 +14,6 @@ AddComponentPostInit("wisecracker",function(self, inst)
                 inst.components.talker:Say(GLOBAL.GetString(inst, "ANNOUNCE_THIRST"))
             end
         end)
-end)
+    end)
 end
+
