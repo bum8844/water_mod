@@ -2,6 +2,15 @@
 
 local KnownModIndex = _G.KnownModIndex
 
+local function sleepfunction(inst, eater)
+	eater.components.debuffable:RemoveDebuff("alcoholdebuff")
+	if KnownModIndex:IsModEnabled("workshop-2334209327") or KnownModIndex:IsModForceEnabled("workshop-2334209327") then
+		eater.components.debuffable:RemoveDebuff("kyno_strengthbuff")
+		eater.components.debuffable:RemoveDebuff("kyno_strengthbuff_med")
+		eater.components.debuffable:RemoveDebuff("kyno_dmgreductionbuff")
+	end
+end
+
 local function sleepend(inst, eater)
 	eater:PushEvent("sleep_end")
 	eater:RemoveTag("drunk")
@@ -118,24 +127,23 @@ local drinks =
 			elseif eater.components.debuffable and eater.components.debuffable:IsEnabled() then
 				eater:AddTag("drinksleep")
 				eater:PushEvent("yawn", { grogginess = 4, knockoutduration = knockouttime })
-				eater:DoTaskInTime(knockouttime, function()
-					eater.components.debuffable:RemoveDebuff("alcoholdebuff")
-					eater:DoTaskInTime(4.1, function()
-						eater.components.locomotor:RemoveExternalSpeedMultiplier(eater, "alcoholdebuff")
-						if KnownModIndex:IsModEnabled("workshop-2334209327") or KnownModIndex:IsModForceEnabled("workshop-2334209327") then
-							eater.components.debuffable:RemoveDebuff("kyno_strengthbuff")
-							eater.components.debuffable:RemoveDebuff("kyno_strengthbuff_med")
-							eater.components.debuffable:RemoveDebuff("kyno_dmgreductionbuff")
-							eater:DoTaskInTime(9, function()
-								sleepend(inst, eater)
-							end)
-						elseif eater:HasTag("drunk") then
-							eater:DoTaskInTime(9, function()
-								sleepend(inst, eater)
-							end)
-						end
+				if eater:HasTag("insomniac") or eater.components.grogginess.speedmod == nil then
+					eater.components.locomotor:RemoveExternalSpeedMultiplier(eater, "alcoholdebuff")
+					eater:DoTaskInTime(knockouttime, function()
+						sleepfunction(inst, eater)
+						sleepend(inst, eater)
 					end)
-				end)
+				else
+					eater:DoTaskInTime(knockouttime, function()
+						eater.components.locomotor:RemoveExternalSpeedMultiplier(eater, "alcoholdebuff")
+						eater:DoTaskInTime(4.1, function()
+							sleepfunction(inst, eater)
+							eater:DoTaskInTime(9, function()
+								sleepend(inst, eater)
+							end)
+						end)
+					end)
+				end
 			else
 				eater.components.sleeper:AddSleepiness(7, knockouttime)
 				eater:DoTaskInTime(knockouttime, function()
@@ -281,26 +289,24 @@ local drinks =
 			elseif eater.components.debuffable and eater.components.debuffable:IsEnabled() then
 				eater:AddTag("drinksleep")
 				eater:PushEvent("yawn", { grogginess = 4, knockoutduration = knockouttime })
-				eater:DoTaskInTime(knockouttime, function()
-					eater.components.talker:Say(GetString(eater,"ANNOUNCE_SLEEP_DRUNK_END"))
-					eater.components.debuffable:RemoveDebuff("alcoholdebuff")
-					eater:DoTaskInTime(4.1, function()
-						eater.components.locomotor:RemoveExternalSpeedMultiplier(eater, "alcoholdebuff")
-						if KnownModIndex:IsModEnabled("workshop-2334209327") or KnownModIndex:IsModForceEnabled("workshop-2334209327") then
-							eater.components.debuffable:RemoveDebuff("kyno_strengthbuff")
-							eater.components.debuffable:RemoveDebuff("kyno_strengthbuff_med")
-							eater.components.debuffable:RemoveDebuff("kyno_dmgreductionbuff")
-							eater:DoTaskInTime(9, function()
-								sleepend(inst, eater)
-							end)
-						elseif eater:HasTag("drunk") then
-							eater:DoTaskInTime(9, function()
-								sleepend(inst, eater)
-							end)
-						end
+				if eater:HasTag("insomniac") or eater.components.grogginess.speedmod == nil then
+					eater.components.locomotor:RemoveExternalSpeedMultiplier(eater, "alcoholdebuff")
+					eater:DoTaskInTime(knockouttime, function()
+						sleepfunction(inst, eater)
+						sleepend(inst, eater)
 					end)
-					eater:AddDebuff("healthregenbuff", "healthregenbuff")
-				end)
+				else
+					eater:DoTaskInTime(knockouttime, function()
+						eater.components.locomotor:RemoveExternalSpeedMultiplier(eater, "alcoholdebuff")
+						eater:DoTaskInTime(4.1, function()
+							sleepfunction(inst, eater)
+							eater:DoTaskInTime(9, function()
+								sleepend(inst, eater)
+							end)
+						end)
+						eater:AddDebuff("healthregenbuff", "healthregenbuff")
+					end)
+				end
 			else
 				eater.components.sleeper:AddSleepiness(7, knockouttime)
 				eater:DoTaskInTime(knockouttime, function()
