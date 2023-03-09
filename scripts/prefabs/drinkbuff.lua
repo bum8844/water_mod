@@ -85,7 +85,7 @@ local function OnDetached_alcohol(inst, target)
         target.components.locomotor:RemoveExternalSpeedMultiplier(target, "alcoholdebuff")
         target:PushEvent("foodbuffdetached", { buff = "ANNOUNCE_DRUNK_END", priority = 1 })
     else
-        target:RemoveTag("drinksleep")      
+        target:RemoveTag("drinksleep") 
     end
     inst:Remove()
 end
