@@ -226,9 +226,13 @@ local function harvestfn(inst,picker,loot)
         picker:PushEvent("learncookbookrecipe", {product = inst.components.stewer.product, ingredients = inst.components.stewer.ingredient_prefabs})
         inst.components.stewer.product = nil
         inst.components.waterlevel:DoDelta(-inst.components.waterlevel:GetWater())
-        inst.AnimState:PlayAnimation("idle_empty")
-        --inst.AnimState:PushAnimation("idle_empty")
-        inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_close")
+        inst.AnimState:PlayAnimation("getdrink")
+        inst.SoundEmitter:PlaySound("dontstarve/creatures/pengull/splash")
+        inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/medium")
+        inst.AnimState:PushAnimation("idle_empty",false)
+        inst:DoTaskInTime(.75,function (inst)
+            inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_close")
+        end)
         inst.components.stewer:Harvest(picker)
     end
 end
@@ -311,7 +315,9 @@ end
 
 local function OnTaken(inst, source, delta)
     inst.components.waterlevel:DoDelta(-inst.components.waterlevel:GetWater())
-    inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/small")
+    inst.AnimState:PlayAnimation("getdrink_empty")
+    inst.AnimState:PushAnimation("idle_empty", false)
+    inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/medium")
 end
 
 
