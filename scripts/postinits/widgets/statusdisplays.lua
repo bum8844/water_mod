@@ -74,7 +74,7 @@ local function thirstbadge_statusdisplays(self)
 	  	if self.watertask ~= nil then
 	  		self.watertask:Cancel()
 	  	end
-	  	self.watertask = self.inst:DoStaticTaskInTime(0, ghostmode and OnSetGhostMode or OnSetPlayerMode_water, self)
+	  	self.watertask = self.inst:DoStaticTaskInTime(0, ghostmode and OnSetGhostMode or OnSetPlayerMode, self)
 	end
 
 	function self:SetThirstPercent(pct)

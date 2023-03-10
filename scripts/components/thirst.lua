@@ -81,7 +81,6 @@ function Thirst:IsThirst()
 end
 
 function Thirst:DoDelta(delta, overtime, ignore_invincible)
-
     if self.redirect ~= nil then
         self.redirect(self.inst, delta, overtime)
         return
