@@ -1,5 +1,3 @@
-local KnownModIndex = _G.KnownModIndex
-
 local function sleepfunction(inst, eater)
 	eater.components.debuffable:RemoveDebuff("alcoholdebuff")
 	if KnownModIndex:IsModEnabled("workshop-2334209327") or KnownModIndex:IsModForceEnabled("workshop-2334209327") then
@@ -109,6 +107,7 @@ local drinks =
 		potlevel = "small",
 	},
 	
+	--버프 분리작업해볼까?
 	dragonjuice =
 	{
 		test = function(boilier, names, tags) return (( names.dragonfruit or 0 ) + ( names.dragonfruit_cooked or 0 ) >= 2 ) and notmeat(tags) end,
@@ -201,7 +200,7 @@ local drinks =
 	    end,
 	},
 	
-	-- 일시적 겉는 속도 증가[추가해야함]
+	-- 일시적 겉는 속도 증가
 	caffeinberry_juice =
 	{
 		test = function(boilier, names, tags) return (( names.caffeinberry_bean_cooked or 0 ) + ( names.coffeebeans_cooked or 0 ) >= 2) and notmeat(tags) end,
@@ -275,7 +274,7 @@ local drinks =
 		potlevel = "small",
 		basename = "cactus_tea",
 	},
-	
+	--버프 분리작업해볼까?
 	mulled =
 	{
 		test = function(boilier, names, tags) return (( names.onion or 0 ) + ( names.onion_cooked or 0 ) + ( names.garlic or 0 ) + ( names.garlic_cooked or 0 ) >= 2) and tags.sweetener and tags.sweetener >= 1 and not tags.frozen and notmeat(tags) end,
@@ -435,7 +434,7 @@ local drinks =
 		--potlevel = "high",
 	},
 	
-	--일시적으로 유령으로 만드는 차[서버에서 나갔다 들어왓을때 다시 적용되개해야함]
+	--일시적으로 유령으로 만드는 차
 	sushibiscus =
 	{
 		test = function(boilier, names, tags) return (( names.petals_evil or 0 ) + ( names.firenettles or 0 ) + ( names.tillweed  or 0 ) >= 2) and notmeat(tags) end,
@@ -453,20 +452,7 @@ local drinks =
 			if not eater.components.health or eater.components.health:IsDead() or eater:HasTag("playerghost") then
 				return
 			elseif eater.components.debuffable and eater.components.debuffable:IsEnabled() then
-				local currenthealth = eater.components.health.currenthealth
-				local currenthunger = eater.components.hunger.current
-				local currentsanity = eater.components.sanity.current
-				TheNet:Announce(""..eater:GetDisplayName().." drank ".. STRINGS.NAMES.GHOSTLY_TEA ..", and became a ghost for "..TUNING.GHOST_TIME.." seconds!")
-				eater.components.health:DoDelta(-10000, nil, "death_by_tea")
-				eater:DoTaskInTime(TUNING.GHOST_TIME, function()
-			        TheNet:Announce(eater:GetDisplayName().."'s ghost effect ended. Respawning!")
-			        eater:PushEvent("respawnfromghost", { source = eater })
-			        eater:DoTaskInTime(1,function()
-						eater.components.health.currenthealth = currenthealth
-						eater.components.hunger.current = currenthunger
-						eater.components.sanity.current = currentsanity
-			    	end)
-			    end)
+				eater.components.debuffable:AddDebuff("obebuff", "obebuff")
 			else
 				eater.components.health:DoDelta(-10000)
 			end
@@ -475,10 +461,8 @@ local drinks =
 	
 }
 
-local drinks_mod = {
-	lotustea =
-	{
-		test = function(boilier, names, tags) return (( names.lotus_flower or 0 ) + ( names.lotus_flower_cooked or 0 ) + ( names.kyno_lotus_flower or 0 ) + ( names.kyno_lotus_flower_cooked or 0 ) >= 2) and notmeat(tags) end,
+local lotustea = {
+		test = function(boilier, names, tags) return (( names.lotus_flower or 0 ) + ( names.lotus_flower_cooked or 0 ) + ( names.kyno_lotus_flower or 0 ) + ( names.kyno_lotus_flower_cooked or 0 ) + ( names.mfp_lotus_flower or 0 ) + ( names.mfp_lotus_flower_cooked or 0 ) >= 2) and notmeat(tags) end,
 		priority = 1,
 		health = TUNING.HEALING_SMALL,
 		hunger = TUNING.DRINK_CALORIES,
@@ -487,8 +471,13 @@ local drinks_mod = {
 		perishtime = TUNING.PERISH_MED,
 		cooktime = TUNING.KETTLE_DECORATION,
 		--potlevel = "high",
-	},
 }
+
+for k, mod_id in ipairs(KnownModIndex:GetModsToLoad()) do
+    if mod_id == "workshop-2334209327" or mod_id == "workshop-1467214795" or mod_id == "workshop-1505270912" or mod_id == "workshop-2762334054" then
+    	drinks.lotustea = lotustea
+	end
+end
 
 for k, v in pairs(drinks) do
     v.name = k

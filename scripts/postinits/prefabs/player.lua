@@ -89,20 +89,32 @@ AddPrefabPostInit("player_classified", AddNetvars)
 -----------------------------------------------------------
 
 local AddComponentToPlayer = function(inst)
-    --Adding Component
     inst:AddTag("campfire_upgradeuser")
-    
+
     if not _G.TheWorld.ismastersim then
         return
     end
 
-    inst:AddComponent("thirst")
-    inst.components.thirst:SetMax(TUNING.WILSON_THIRST)
-    inst.components.thirst:SetRate(TUNING.WILSON_HUNGER_RATE)
-    inst.components.thirst:SetKillRate(TUNING.WILSON_HEALTH / TUNING.STARVE_KILL_TIME)
-    if _G.GetGameModeProperty("no_hunger") then
-        inst.components.thirst:Pause()
-    end
+    inst:AddComponent("obe")
 end
 
 AddPlayerPostInit(AddComponentToPlayer)
+
+if GetModConfigData("enable_thirst") then
+    local AddThirstToPlayer = function(inst)
+    --Adding Component
+        if not _G.TheWorld.ismastersim then
+            return
+        end
+
+        inst:AddComponent("thirst")
+        inst.components.thirst:SetMax(TUNING.WILSON_THIRST)
+        inst.components.thirst:SetRate(TUNING.WILSON_HUNGER_RATE)
+        inst.components.thirst:SetKillRate(TUNING.WILSON_HEALTH / TUNING.STARVE_KILL_TIME)
+        if _G.GetGameModeProperty("no_hunger") then
+            inst.components.thirst:Pause()
+        end
+    end
+
+    AddPlayerPostInit(AddThirstToPlayer)
+end

@@ -1,3 +1,40 @@
+local function OnAttached_obe(inst, target)
+    inst.entity:SetParent(target.entity)
+    target.components.obe:SetHealth(target.components.health.currenthealth)
+    target.components.obe:SetHunger(target.components.hunger.current)
+    target.components.obe:SetSanity(target.components.sanity.current)
+    if target.components.thirst ~= nil then
+        target.components.obe:SetThirst(target.components.thirst.current)
+    end
+    TheNet:Announce(""..target:GetDisplayName().." drank ".. STRINGS.NAMES.GHOSTLY_TEA ..", and became a ghost for "..TUNING.GHOST_TIME.." seconds!")
+    target.components.obe:DrinktoDeath()
+end
+
+local function OnDetached_obe(inst, target)
+    inst:Remove()
+end
+
+local function fn_obe()
+    if not TheWorld.ismastersim then 
+        return 
+    end
+
+    local inst = CreateEntity()
+    inst.entity:AddTransform()
+    inst.entity:Hide()
+  
+    inst.persists = false
+
+    inst:AddTag("CLASSIFIED")
+
+    inst:AddComponent("debuff")
+    inst.components.debuff:SetAttachedFn(OnAttached_obe)
+    inst.components.debuff:SetDetachedFn(OnDetached_obe)
+    inst.components.debuff.keepondespawn = true
+
+    return inst
+end
+
 local function OnAttached_caffein(inst, target)
     if target.caffeinbuff_duration then
         inst.components.timer:StartTimer("caffeinbuff_done", target.caffeinbuff_duration)
@@ -188,4 +225,5 @@ end
 
 return Prefab("caffeinbuff", fn_caffein),
 Prefab("alcoholdebuff", fn_alcohol),
-Prefab("immunebuff",fn_immune)
+Prefab("immunebuff",fn_immune),
+Prefab("obebuff",fn_obe)

@@ -13,13 +13,12 @@ local postinits =
 	prefabs =
 	{
 		"wateringcan",
-		"antlion",
+		--"antlion",
 		"fertilizer",
 		"firepit",
-		--"player",
+		"player",
 		"ponds",
 		"portablespicer",
-		"wortox",
 	},
 
 	stategraphs =
@@ -44,7 +43,8 @@ local postinits =
 if GetModConfigData("enable_thirst") then
 	table.insert(postinits.components, "sleepingbag")
 	table.insert(postinits.components, "sleepingbaguser")
-	table.insert(postinits.prefabs, "player")
+	table.insert(postinits.prefabs, "wortox")
+	table.insert(postinits.prefabs, "wickerbottom")
 	table.insert(postinits.widgets, "statusdisplays")
 	table.insert(postinits.widgets, "bloodover_water")
 	table.insert(postinits.widgets, "healthbadge_water")

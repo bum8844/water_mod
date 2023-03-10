@@ -131,7 +131,7 @@ local tuning =
 	TEASLEEP_TIME = GetModConfigData("sleeping_time"),
 	INTOXICATION_TIME = GetModConfigData("alcohol_time"),
 	IMMUNE_TIME = GetModConfigData("immune_time"),
-	GHOST_TIME = GetModConfigData("ghost_time"),
+	GHOST_TIME = 10,--GetModConfigData("ghost_time"),
 }
 
 for i,v in pairs(tuning) do
