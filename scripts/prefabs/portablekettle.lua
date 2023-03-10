@@ -120,8 +120,6 @@ local function SetProductSymbol(inst, product, overridebuild)
     local potlevels = potlevel ~= nil and "swap_"..potlevel or "swap_mid"
     local potlevels_bottle = potlevel_bottle ~= nil and "swap_"..potlevel_bottle.."_bottle" or "swap_mid_bottle"
     local result_potlevels = nil
-
-    print("오버라이트 심볼 : "..overridesymbol)
     
     if inst.components.waterlevel:GetWater() >= 5 then
         result_potlevels = potlevels_bottle

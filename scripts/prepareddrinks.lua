@@ -107,7 +107,6 @@ local drinks =
 		potlevel = "small",
 	},
 	
-	--버프 분리작업해볼까?
 	dragonjuice =
 	{
 		test = function(boilier, names, tags) return (( names.dragonfruit or 0 ) + ( names.dragonfruit_cooked or 0 ) >= 2 ) and notmeat(tags) end,
@@ -121,36 +120,12 @@ local drinks =
 		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_SLEEP_AND_DETOX,
 		potlevel = "small",
 		oneatenfn = function(inst, eater)
-			local knockouttime = TUNING.TEASLEEP_TIME + math.random()
-
 			if not eater.components.health or eater.components.health:IsDead() or eater:HasTag("playerghost") then
 				return
 			elseif eater.components.debuffable and eater.components.debuffable:IsEnabled() then
-				eater:PushEvent("yawn", { grogginess = 4, knockoutduration = knockouttime })
-				if eater:HasTag("insomniac") or chkResistance(eater) then
-					eater.components.locomotor:RemoveExternalSpeedMultiplier(eater, "alcoholdebuff")
-					eater:DoTaskInTime(knockouttime, function()
-						if eater:HasTag("drunk") then
-							eater:AddTag("drinksleep")
-							sleepfunction(inst, eater)
-							eater.components.talker:Say(GetString(eater,"ANNOUNCE_DRUNK_END"))
-							eater:PushEvent("refreshdrunk")
-						end
-					end)
-				else
-					if eater:HasTag("drunk") then
-						eater:AddTag("drinksleep")
-						eater:DoTaskInTime(knockouttime, function()
-							eater.components.locomotor:RemoveExternalSpeedMultiplier(eater, "alcoholdebuff")
-							eater:DoTaskInTime(4.1, function()
-								sleepfunction(inst, eater)
-								eater:DoTaskInTime(9, function()
-									sleepend(inst, eater)
-								end)
-							end)
-						end)
-					end
-				end
+				eater.sleepdrinkbuff_duration = TUNING.TEASLEEP_TIME + math.random()
+				eater.components.debuffable:AddDebuff("sleepdrinkbuff", "sleepdrinkbuff")
+			else
 				eater.components.sleeper:AddSleepiness(7, knockouttime)
 				eater:DoTaskInTime(knockouttime, function()
 					eater.components.locomotor:RemoveExternalSpeedMultiplier(eater, "alcoholdebuff")
@@ -294,32 +269,8 @@ local drinks =
 			if not eater.components.health or eater.components.health:IsDead() or eater:HasTag("playerghost") then
 				return
 			elseif eater.components.debuffable and eater.components.debuffable:IsEnabled() then
-				eater:PushEvent("yawn", { grogginess = 4, knockoutduration = knockouttime })
-				if eater:HasTag("insomniac") or chkResistance(eater) then
-					eater.components.locomotor:RemoveExternalSpeedMultiplier(eater, "alcoholdebuff")
-					eater:DoTaskInTime(knockouttime, function()
-						if eater:HasTag("drunk") then
-							eater:AddTag("drinksleep")
-							sleepfunction(inst, eater)
-							eater.components.talker:Say(GetString(eater,"ANNOUNCE_DRUNK_END"))
-							eater:PushEvent("refreshdrunk")
-						end
-					end)
-				else
-					if eater:HasTag("drunk") then
-						eater:AddTag("drinksleep")
-						eater:DoTaskInTime(knockouttime, function()
-							eater.components.locomotor:RemoveExternalSpeedMultiplier(eater, "alcoholdebuff")
-							eater:DoTaskInTime(4.1, function()
-								sleepfunction(inst, eater)
-								eater:DoTaskInTime(9, function()
-									sleepend(inst, eater)
-								end)
-							end)
-						end)
-					end
-					eater:AddDebuff("healthregenbuff", "healthregenbuff")
-				end
+				eater.sleepdrinkbuff_ex_duration = TUNING.TEASLEEP_TIME + math.random()
+				eater.components.debuffable:AddDebuff("sleepdrinkbuff_ex", "sleepdrinkbuff_ex")
 			else
 				eater.components.sleeper:AddSleepiness(7, knockouttime)
 				eater:DoTaskInTime(knockouttime, function()
