@@ -106,11 +106,11 @@ local function SetProductSymbol(inst, product, overridebuild)
         inst.AnimState:Hide("swap_high")
         inst.AnimState:Hide("swap_mid")
         inst.AnimState:Hide("swap_small")
-        if potlevels_bottle == "high" then
+        if potlevel_bottle == "high" then
             inst.AnimState:Show("swap_high_bottle")
             inst.AnimState:Hide("swap_mid_bottle")
             inst.AnimState:Hide("swap_small_bottle")
-        elseif potlevels_bottle == "small" then
+        elseif potlevel_bottle == "small" then
             inst.AnimState:Hide("swap_high_bottle")
             inst.AnimState:Hide("swap_mid_bottle")
             inst.AnimState:Show("swap_small_bottle")
