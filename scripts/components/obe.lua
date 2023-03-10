@@ -54,7 +54,14 @@ function Obe:DrinktoDeath()
 
 	self.inst.components.health:DoDelta(-10000, nil, "death_by_tea")
 
-	self.inst.components.timer:StartTimer("obebuff_done", self.deathtimer)
+	if not self.inst.components.timer:TimerExists("obebuff_done") then
+		self.inst.components.timer:StartTimer("obebuff_done", self.deathtimer)
+	else
+		local current_duration = self.inst.components.timer:GetTimeLeft("obebuff_done")
+		local new_duration = math.max(current_duration, self.deathtimer)
+		self.inst.components.timer:StopTimer("obebuff_done")
+		self.inst.components.timer:StartTimer("obebuff_done", self.deathtimer)
+	end
 end
 
 function Obe:OnSave()
