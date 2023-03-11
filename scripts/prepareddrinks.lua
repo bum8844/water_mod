@@ -51,7 +51,6 @@ local drinks =
 		thirst = TUNING.HYDRATION_MEDSMALL,
 		perishtime = TUNING.PERISH_FASTISH,
 		cooktime = TUNING.KETTLE_FRUIT,
-		potlevel = "small",
 	},
 	
 	berries_juice =
@@ -64,7 +63,6 @@ local drinks =
 		thirst = TUNING.HYDRATION_LARGE,
 		perishtime = TUNING.PERISH_MED,
 		cooktime = TUNING.KETTLE_FRUIT,
-		potlevel = "small",
 		card_def={ingredients={{"berries",2},{"berries_juicy",2}}},
 	},
 
@@ -78,7 +76,6 @@ local drinks =
 		thirst = TUNING.HYDRATION_LARGE,
 		perishtime = TUNING.PERISH_MED,
 		cooktime = TUNING.KETTLE_FRUIT,
-		potlevel = "small",
 	},
 	
 	banana_juice =
@@ -91,7 +88,6 @@ local drinks =
 		thirst = TUNING.HYDRATION_LARGE,
 		perishtime = TUNING.PERISH_MED,
 		cooktime = TUNING.KETTLE_FRUIT,
-		potlevel = "small",
 	},
 	
 	fig_juice =
@@ -104,7 +100,6 @@ local drinks =
 		thirst = TUNING.HYDRATION_LARGE,
 		perishtime = TUNING.PERISH_MED,
 		cooktime = TUNING.KETTLE_FRUIT,
-		potlevel = "small",
 	},
 	
 	dragonjuice =
@@ -118,7 +113,6 @@ local drinks =
 		perishtime = TUNING.PERISH_SLOW,
 		cooktime = TUNING.KETTLE_FRUIT,
 		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_SLEEP_AND_DETOX,
-		potlevel = "small",
 		oneatenfn = function(inst, eater)
 			if not eater.components.health or eater.components.health:IsDead() or eater:HasTag("playerghost") then
 				return
@@ -147,7 +141,6 @@ local drinks =
 		cooktime = TUNING.KETTLE_LUXURY_GOODS,
 		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_GLOW,
 		card_def = {ingredients={{"wormlight_lesser",2},{"twigs",2}}},
-		--potlevel = "small",
 		oneatenfn = function(inst, eater)
 			if not eater.components.health or eater.components.health:IsDead() or eater:HasTag("playerghost") then
 				return
@@ -175,7 +168,6 @@ local drinks =
 	    end,
 	},
 	
-	-- 일시적 겉는 속도 증가
 	caffeinberry_juice =
 	{
 		test = function(boilier, names, tags) return (( names.caffeinberry_bean_cooked or 0 ) + ( names.coffeebeans_cooked or 0 ) >= 2) and notmeat(tags) end,
@@ -204,7 +196,6 @@ local drinks =
 		end,
 	},
 	
-	-- 야채차 종류
 	veggie_tea =
 	{
 		test = function(boilier, names, tags) return tags.veggie and tags.veggie >= 1.5 and notmeat(tags) end,
@@ -233,7 +224,6 @@ local drinks =
 		card_def={ingredients={{"carrot",2},{"twigs",2}}},
 	},
 	
-	-- 선인장, 다육, 알로에는 무조건 이걸로 만들어지게
 	cactus_tea =
 	{
 		test = function(boilier, names, tags) return (( names.cactus_meat or 0 ) + ( names.cactus_meat_cooked or 0 ) + ( names.aloe or 0 ) + ( names.aloe_cooked or 0 ) + ( names.kyno_aloe or 0 ) + ( names.kyno_aloe_cooked or 0 ) + ( names.succulent_picked or 0 ) >= 2)  end,
@@ -246,10 +236,9 @@ local drinks =
 		temperature = TUNING.COLD_FOOD_BONUS_TEMP,
 		temperatureduration = TUNING.FOOD_TEMP_AVERAGE,
 		cooktime = TUNING.KETTLE_VEGGIE,
-		potlevel = "small",
 		basename = "cactus_tea",
 	},
-	--버프 분리작업해볼까?
+
 	mulled =
 	{
 		test = function(boilier, names, tags) return (( names.onion or 0 ) + ( names.onion_cooked or 0 ) + ( names.garlic or 0 ) + ( names.garlic_cooked or 0 ) >= 2) and tags.sweetener and tags.sweetener >= 1 and not tags.frozen and notmeat(tags) end,
@@ -263,7 +252,6 @@ local drinks =
 		temperatureduration = TUNING.FOOD_TEMP_AVERAGE,
 		cooktime = TUNING.KETTLE_VEGGIE,
 		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_MULLED,
-		potlevel = "small",
 		oneatenfn = function(inst, eater)
 			local knockouttime = TUNING.TEASLEEP_TIME + math.random()
 			if not eater.components.health or eater.components.health:IsDead() or eater:HasTag("playerghost") then
@@ -293,7 +281,6 @@ local drinks =
 		thirst = TUNING.HYDRATION_MED,
 		perishtime = TUNING.PERISH_MED,
 		cooktime = TUNING.KETTLE_TEA,
-		potlevel_bottle = "high",
 	},
 	
 	-- 녹차 건조대 말린것
@@ -310,7 +297,6 @@ local drinks =
 		temperatureduration = TUNING.FOOD_TEMP_LONG,
 		cooktime = TUNING.KETTLE_TEA,
 		card_def={ingredients={{"tealeaves_dried",4}}},
-		--potlevel_bottle = "small",
 	},
 	
 	blacktea_iced =
@@ -326,7 +312,6 @@ local drinks =
 		temperatureduration = TUNING.FOOD_TEMP_LONG,
 		cooktime = TUNING.KETTLE_TEA,
 		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_COLD_FOOD,
-		--potlevel_bottle = "small",
 	},
 	
 	-- 동굴 고사리
@@ -340,7 +325,6 @@ local drinks =
 		thirst = TUNING.HYDRATION_MED,
 		perishtime = TUNING.PERISH_MED,
 		cooktime = TUNING.KETTLE_TEA,
-		potlevel_bottle = "high",
 	},
 	
 	-- 꽃을 섞으면 나오는 결과물
@@ -354,7 +338,6 @@ local drinks =
 		thirst = TUNING.HYDRATION_MEDSMALL,
 		perishtime = TUNING.PERISH_FASTISH,
 		cooktime = TUNING.KETTLE_DECORATION,
-		--potlevel = "small",
 	},
 	
 	-- 일반 꽃잎
@@ -368,7 +351,6 @@ local drinks =
 		thirst = TUNING.HYDRATION_MED,
 		perishtime = TUNING.PERISH_MED,
 		cooktime = TUNING.KETTLE_DECORATION,
-		--potlevel = "high",
 	},
 
 	-- 선인장 꽃잎
@@ -382,7 +364,6 @@ local drinks =
 		thirst = TUNING.HYDRATION_LARGE,
 		perishtime = TUNING.PERISH_MED,
 		cooktime = TUNING.KETTLE_DECORATION,
-		--potlevel = "high",
 	},
 	
 	--일시적으로 유령으로 만드는 차
@@ -398,7 +379,6 @@ local drinks =
 		cooktime = TUNING.KETTLE_ABI,
 		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_SUS,
 		card_def={ingredients={{"petals_evil",1},{"firenettles",1},{"tillweed",1},{"twigs",1}}},
-		--potlevel = "high",
 		oneatenfn = function(inst, eater)
 			if not eater.components.health or eater.components.health:IsDead() or eater:HasTag("playerghost") then
 				return
@@ -421,7 +401,6 @@ local lotustea = {
 		thirst = TUNING.HYDRATION_LARGE,
 		perishtime = TUNING.PERISH_MED,
 		cooktime = TUNING.KETTLE_DECORATION,
-		--potlevel = "high",
 }
 
 for k, mod_id in ipairs(KnownModIndex:GetModsToLoad()) do

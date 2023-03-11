@@ -76,7 +76,7 @@ local drinks =
 	lemonlimesoda =
 	{
 		test = function(boilier, names, tags) return names.refined_dust and names.refined_dust >= 1 and names.royal_jelly and names.royal_jelly >=1 and notmeat(tags) end,
-		priority = 1,
+		priority = 2,
 		health = TUNING.HEALING_MED,
 		hunger = TUNING.CALORIES_HUGE,
 		sanity = TUNING.SANITY_MEDLARGE *4,
@@ -157,7 +157,6 @@ local drinks =
 	                    eater.wormlight.components.spell:OnFinish()
 	                end
 	            end
-
 	            local light = SpawnPrefab("wormlight_light_greater")
 	            light.components.spell:SetTarget(eater)
 	            if light:IsValid() then
@@ -219,7 +218,6 @@ local drinks =
 		perishtime = TUNING.PERISH_SUPERSLOW,
 		cooktime = (TUNING.KETTLE_FRUIT + TUNING.BEER_WAIT),
 		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_INTOXICATION,
-		--potlevel = "small",
 		oneatenfn = function(inst, eater)
 			alcahol(inst, eater)
 		end,
@@ -237,7 +235,6 @@ local drinks =
 		perishtime = TUNING.PERISH_SUPERSLOW,
 		cooktime = (TUNING.KETTLE_FRUIT + TUNING.BEER_WAIT),
 		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_INTOXICATION,
-		--potlevel = "small",
 		oneatenfn = function(inst, eater)
 			alcahol(inst, eater)
 		end,
@@ -256,7 +253,6 @@ local drinks =
 		cooktime = (TUNING.KETTLE_FRUIT + TUNING.BEER_WAIT),
 		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_INTOXICATION,
 		card_def = {ingredients = {{"refined_dust",1},{"berries",1},{"berries_juicy",1},{"twigs",1}}},
-		--potlevel = "small",
 		oneatenfn = function(inst, eater)
 			alcahol(inst, eater)
 		end,
@@ -274,14 +270,13 @@ local drinks =
 		perishtime = TUNING.PERISH_SUPERSLOW,
 		cooktime = (TUNING.KETTLE_FRUIT + TUNING.BEER_WAIT),
 		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_INTOXICATION_GLOW,
-		--potlevel = "small",
 		oneatenfn = function(inst, eater)
 			alcahol(inst, eater)
 	    end,
 	},
 	-- 우유
 	kumis = {
-		test = function(boilier, names, tags) return (( names.goatmilk or 0 ) + ( names.beefalo_milk or 0 ) + ( names.rawmilk or 0 ) >= 3) and notmeat(tags) end,
+		test = function(boilier, names, tags) return (( names.goatmilk or 0 ) + ( names.kyno_milk_beefalo or 0 ) + ( names.kyno_milk_koalefant or 0 ) + ( names.milk_box or 0 ) + ( names.beefalo_milk or 0 ) + ( names.rawmilk or 0 ) >= 3) and notmeat(tags) end,
 		priority = 1,
 		health = TUNING.HEALING_MEDSMALL,
 		hunger = TUNING.DRINK_CALORIES - TUNING.DRINK_CALORIES_POISON,
@@ -291,7 +286,6 @@ local drinks =
 		perishtime = TUNING.PERISH_SUPERSLOW,
 		cooktime = (TUNING.KETTLE_VEGGIE + TUNING.BEER_WAIT),
 		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_INTOXICATION,
-		--potlevel = "small",
 		card_def = {ingredients = {{"goatmilk",4}}},
 		oneatenfn = function(inst, eater)
 			alcahol(inst, eater)

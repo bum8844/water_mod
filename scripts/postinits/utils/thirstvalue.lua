@@ -172,6 +172,7 @@ HYDRATIONTYPE = {
 		},
 		--HYDRATION_SMALLTINY 
 		SMALLTINY = {
+			"watercup",
 			"cave_banana",
 			"cave_banana_cooked",
 			"kyno_banana",
@@ -235,6 +236,8 @@ HYDRATIONTYPE = {
 			"wormlight",
 			"goatmilk",
 			"beefalo_milk",
+			"kyno_milk_beefalo",
+			"kyno_milk_koalefant",
 			"milkywhites",
 			"coffee",
 			"kyno_coffee",
@@ -243,6 +246,7 @@ HYDRATIONTYPE = {
 			"daiquiri",
 			"vino",
 			"spiced_rum",
+			"twistedtequile",
 			"dish_medicinalliquor",
 			"jelly_berries",
 			"jelly_berries_juicy",
@@ -261,6 +265,7 @@ HYDRATIONTYPE = {
 		},
 		--HYDRATION_MED
 		MED = {
+			"milk_box",
 			"fishyogurt",
 			"tentacicle",
 			"coldcuts",
@@ -365,6 +370,8 @@ DRINKITEM = {
 }
 
 INGREDIENT_DRINKITEM_ACION = {
+	"kyno_syrup",
+	"milk_box",
 	"coconut_milk",
 	"rawmilk",
 	"beefalo_milk",
@@ -372,6 +379,7 @@ INGREDIENT_DRINKITEM_ACION = {
 }
 
 DRINKITEM_ACION = {
+	"watercup",
 	"bubbletea",
 	"cold_gazpacho",
 	"coffee",
@@ -447,6 +455,7 @@ DRINKITEM_ACION_ALCOHOL = {
 	"beer",
 	"paleale",
 	"mead",	
+	"twistedtequile",
 }
 
 local function oneatenfn(inst, eater)

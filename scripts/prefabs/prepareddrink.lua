@@ -116,6 +116,8 @@ local function MakePreparedDrink(data)
         end
 
         if data.name == "spoiled_drink" then
+            inst:AddTag("heal_fertilize")
+
             MakeDeployableFertilizerPristine(inst)
 
             inst:AddTag("fertilizerresearchable")
