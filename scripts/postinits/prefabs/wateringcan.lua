@@ -1,17 +1,31 @@
-
 local function OnFill_Waterlevel(inst, from_object ,...)
-    if from_object ~= nil and from_object.components.waterlevel ~= nil then
-    	local maxfin = inst.components.finiteuses.total
-    	local using = inst.components.finiteuses:GetUses()
-    	using = math.ceil((maxfin-using)/TUNING.BUCKET_LEVEL_PER_USE)
-    	if using > 0 then
-    		inst.components.finiteuses:SetPercent(1)
-    		from_object.components.waterlevel:DoDelta(-using)
+
+    local maxfin = inst.components.finiteuses.total
+    local using = inst.components.finiteuses:GetUses()
+    local result = math.ceil((maxfin-using)/TUNING.BUCKET_LEVEL_PER_USE)
+    if from_object.components.waterlevel ~= nil then
+    	if result > 0 then
+    		inst.components.finiteuses:SetUses(math.min(maxfin,using+(result*20)))
+    		from_object.components.waterlevel:DoDelta(-result)
     		inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/small")
     		return true
     	else
     		return false
     	end
+    elseif from_object:HasTag("drink") then
+        if using ~= maxfin then
+            local stacksize = from_object.components.stackable:StackSize()
+            result = math.min(stacksize,math.ceil((maxfin-using)/TUNING.BUCKET_LEVEL_PER_USE))
+            inst.components.finiteuses:SetUses(math.min(maxfin,using+(result*20)))
+            if from_object.components.stackable:IsStack() then
+                from_object.components.stackable:Get(result):Remove()
+            else
+                from_object:Remove()
+            end
+            return true
+        else
+            return false
+        end
     else
     	return inst.components.fillable._overrideonfillfn(inst, from_object ,...)
     end

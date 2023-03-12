@@ -184,8 +184,6 @@ local function MakePreparedDrink(data)
             inst.components.fertilizer.soil_cycles = TUNING.SPOILEDFOOD_SOILCYCLES
             inst.components.fertilizer.withered_cycles = TUNING.SPOILEDFOOD_WITHEREDCYCLES
             inst.components.fertilizer:SetNutrients(FERTILIZER_DEFS.spoiled_drink.nutrients)
-
-            inst:AddComponent("smotherer")
             
             MakeDeployableFertilizer(inst)
 

@@ -3,6 +3,8 @@ WATERTYPE =
 	GENERIC = "generic",
 	CLEAN = "water_clean",
 	DIRTY = "water_dirty",
+	CLEAN_ICE = "water_clean_ice",
+	DIRTY_ICE = "water_dirty_ice",
 	SALTY = "water_salty",
 	DRINK = "drink",
 	EMPTY = "empty",
@@ -55,6 +57,8 @@ WATERGROUP =
 			WATERTYPE.CLEAN,
 			WATERTYPE.DIRTY,
 			WATERTYPE.EMPTY,
+			WATERTYPE.CLEAN_ICE,
+			WATERTYPE.DIRTY_ICE,
 		},
 	},
 }

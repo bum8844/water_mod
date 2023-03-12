@@ -27,6 +27,10 @@ local function MakeCup(name, masterfn, tags)
         "cup",
     }
 
+    local function Isice(name)
+        return name == "water_clean_ice" or name == "water_dirty_ice"
+    end
+
     local function fn()
         local inst = CreateEntity()
 
@@ -48,8 +52,10 @@ local function MakeCup(name, masterfn, tags)
             end
         end
 
-        inst:AddTag("pre-preparedfood")
-        inst:AddTag("drink")
+        if not Isice(name) then
+            inst:AddTag("pre-preparedfood")
+            inst:AddTag("drink")
+        end
 
         MakeInventoryFloatable(inst)
         
@@ -59,8 +65,12 @@ local function MakeCup(name, masterfn, tags)
             return inst
         end
 
-        inst:AddComponent("edible")
-        inst.components.edible.foodtype = FOODTYPE.GOODIES
+        if not Isice(name) then
+            inst:AddComponent("edible")
+            inst.components.edible.foodtype = FOODTYPE.GOODIES
+        --[[else
+            inst:AddComponent("workable")]]
+        end
         --inst.components.edible:SetOnEatenFn(OnEaten)
 
         inst:AddComponent("inspectable")
@@ -69,6 +79,9 @@ local function MakeCup(name, masterfn, tags)
         inst.components.water.watervalue = TUNING.CUP_MAX_LEVEL
         inst.components.water:SetOnTakenFn(OnTake)
         --inst.components.returnprefab = "cup"
+
+        inst:AddComponent("watersource")
+        inst.components.watersource.available = false
 
     	inst:AddComponent("inventoryitem")
 
@@ -103,7 +116,11 @@ local function cleanwater(inst)
     inst.components.edible.sanityvalue = 0
     inst.components.edible.thirstvalue = TUNING.HYDRATION_SMALLTINY
 
+    inst:AddTag("icebox_valid")
+
     inst.components.water:SetWaterType(WATERTYPE.CLEAN)
+
+    inst.components.watersource.available = true
 end
 
 local function dirtywater(inst)
@@ -112,7 +129,37 @@ local function dirtywater(inst)
     inst.components.edible.sanityvalue = 0
     inst.components.edible.thirstvalue = TUNING.HYDRATION_SMALLTINY
 
+    inst:AddTag("icebox_valid")
+
     inst.components.water:SetWaterType(WATERTYPE.DIRTY)
+
+    inst.components.watersource.available = true
+end
+
+local function cleanwater_ice(inst)
+    inst.components.edible.healthvalue = 0
+    inst.components.edible.hungervalue = 0
+    inst.components.edible.sanityvalue = 0
+    inst.components.edible.thirstvalue = 0
+
+    inst:AddTag("icebox_valid")
+
+    inst.components.water:SetWaterType(WATERTYPE.CLEAN_ICE)
+
+    inst.components.watersource.available = true
+end
+
+local function dirtywater_ice(inst)
+    inst.components.edible.healthvalue = 0
+    inst.components.edible.hungervalue = 0
+    inst.components.edible.sanityvalue = 0
+    inst.components.edible.thirstvalue = 0
+
+    inst:AddTag("icebox_valid")
+
+    inst.components.water:SetWaterType(WATERTYPE.DIRTY_ICE)
+
+    inst.components.watersource.available = true
 end
 
 local function saltwater(inst)
