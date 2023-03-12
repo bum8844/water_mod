@@ -183,13 +183,19 @@ AddStategraphPostInit("wilson", function(sg)
     end
 end)
 
+
 if GetModConfigData("enable_thirst") then
 -- 스피치 추가해야함
     AddStategraphPostInit("wilson", function(sg)
         do
             local _funnyidle_onenter = sg.states["funnyidle"].onenter
+            local function test(inst, ...)
+                return inst.components.temperature:GetCurrent() < 5 or inst.components.temperature:GetCurrent() > TUNING.OVERHEAT_TEMP - 10
+            end
             sg.states["funnyidle"].onenter = function(inst, ...)
-                if inst.components.thirst:GetPercent() < TUNING.THIRST_THRESH then
+                if test(inst, ...) then
+                    _funnyidle_onenter(inst, ...)
+                elseif inst.components.thirst:GetPercent() < TUNING.THIRST_THRESH then
                     inst.AnimState:PlayAnimation("idle_groggy01_pre")
                     inst.AnimState:PushAnimation("idle_groggy01_loop")
                     inst.AnimState:PushAnimation("idle_groggy01_pst", false)

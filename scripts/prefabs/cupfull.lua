@@ -31,6 +31,14 @@ local function MakeCup(name, masterfn, tags)
         return name == "water_clean_ice" or name == "water_dirty_ice"
     end
 
+    local function onfiremelt(inst)
+    inst.components.perishable.frozenfiremult = true
+    end
+
+    local function onstopfiremelt(inst)
+        inst.components.perishable.frozenfiremult = false
+    end
+
     local function fn()
         local inst = CreateEntity()
 
@@ -68,8 +76,18 @@ local function MakeCup(name, masterfn, tags)
         if not Isice(name) then
             inst:AddComponent("edible")
             inst.components.edible.foodtype = FOODTYPE.GOODIES
-        --[[else
-            inst:AddComponent("workable")]]
+        else
+            inst:AddTag("frozen")
+
+            inst:AddComponent("smotherer")
+
+            inst:ListenForEvent("firemelt", onfiremelt)
+            inst:ListenForEvent("stopfiremelt", onstopfiremelt)
+
+            inst:AddComponent("perishable")
+            inst.components.perishable:SetPerishTime(TUNING.PERISH_SUPERFAST)
+            inst.components.perishable:StartPerishing()
+            --inst.components.perishable:SetOnPerishFn(onperish)
         end
         --inst.components.edible:SetOnEatenFn(OnEaten)
 
@@ -84,6 +102,9 @@ local function MakeCup(name, masterfn, tags)
         inst.components.watersource.available = false
 
     	inst:AddComponent("inventoryitem")
+        if Isice(name) then
+            inst.components.inventoryitem:SetOnPickupFn(onstopfiremelt)
+        end
 
         inst:AddComponent("stackable")
         inst.components.stackable.maxsize = TUNING.STACK_SIZE_TINYITEM
@@ -147,6 +168,8 @@ local function cleanwater_ice(inst)
     inst.components.water:SetWaterType(WATERTYPE.CLEAN_ICE)
 
     inst.components.watersource.available = true
+
+    inst.components.perishable.onperishreplacement = "cleanwater"
 end
 
 local function dirtywater_ice(inst)
@@ -160,6 +183,8 @@ local function dirtywater_ice(inst)
     inst.components.water:SetWaterType(WATERTYPE.DIRTY_ICE)
 
     inst.components.watersource.available = true
+
+    inst.components.perishable.onperishreplacement = "dirtywater"
 end
 
 local function saltwater(inst)
