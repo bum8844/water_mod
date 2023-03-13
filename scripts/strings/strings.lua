@@ -25,11 +25,15 @@ STRINGS.NAMES.WELL_DRILLING ="Well Drill"
 STRINGS.NAMES.WELL_DRILLING_ITEM = "Well Drill"
 STRINGS.RECIPE_DESC.WELL_DRILLING_ITEM = "Make a hole in the ground."
 
--- wells & hole
+-- wells & hole & sprinker
 STRINGS.NAMES.HOLE = "Hole"
 STRINGS.NAMES.WELL = "Well"
-STRINGS.NAMES.WELL_ITEM = "Well Parts"
-STRINGS.RECIPE_DESC.WELL_ITEM = "All's well there's well."
+STRINGS.NAMES.WELL_SPRINKLER = "sprinkler"
+
+STRINGS.NAMES.WELL_KIT = "Well Parts Kit"
+STRINGS.RECIPE_DESC.WELL_KIT = "All's well there's well."
+STRINGS.NAMES.WELL_SPRINKLER_KIT = "Sprinkler Parts Kit"
+STRINGS.RECIPE_DESC.WELL_SPRINKLER_KIT = "todo."
 
 -- desalinator
 STRINGS.NAMES.DESALINATOR = "Desalinator"
@@ -46,10 +50,10 @@ STRINGS.RECIPE_DESC.BREWERY = "Can make delicious drinks. maybe?"
 -- buckets
 STRINGS.NAMES.BUCKET_EMPTY = "Bucket"
 STRINGS.RECIPE_DESC.BUCKET_EMPTY = "An empty bucket."
-STRINGS.NAMES.BUCKET_CLEAN = "Bucket o' Water"
-STRINGS.NAMES.BUCKET_DIRTY = "Bucket o' Dirty Water"
-STRINGS.NAMES.BUCKET_SALTY = "Bucket o' Salty Water"
-STRINGS.NAMES.BUCKET_ICE = "Ice Bucket"
+--STRINGS.NAMES.BUCKET_CLEAN = "Bucket o' Water"
+--STRINGS.NAMES.BUCKET_DIRTY = "Bucket o' Dirty Water"
+--STRINGS.NAMES.BUCKET_SALTY = "Bucket o' Salty Water"
+--STRINGS.NAMES.BUCKET_ICE = "Ice Bucket"
 
 -- campkettle
 STRINGS.NAMES.CAMPKETTLE_ITEM = "Camp Kettle Kit"
@@ -99,8 +103,10 @@ STRINGS.RECIPE_DESC.BOTTLE_WATER = "TODO"
 
 -- preparedrink
 
-STRINGS.NAMES.CUP_ITEM = "Cup of {drink}"
-STRINGS.NAMES.BOTTLE_ITEM = "Bottle of {drink}"
+--[[STRINGS.NAMES.CUP_ITEM = "Cup of {drink}"
+STRINGS.NAMES.BOTTLE_ITEM = "Bottle of {drink}"]]
+STRINGS.NAMES.WATER_CLEAN_ICE = "TODO"
+STRINGS.NAMES.WATER_DIRTY_ICE = "TODO"
 STRINGS.NAMES.WATER_CLEAN = "Water"
 STRINGS.NAMES.WATER_DIRTY = "Dirty Water"
 STRINGS.NAMES.WATER_SALTY = "Salty Water"
