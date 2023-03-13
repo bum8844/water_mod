@@ -69,6 +69,7 @@ _G.WATERTYPE = WATERTYPE
 _G.WATERGROUP = WATERGROUP
 
 UPGRADETYPES["CAMPFIRE"] = "campfire"
+UPGRADETYPES["HOLE"] = "hole"
 
 local FERTILIZERS = require("prefabs/fertilizer_nutrient_defs")
 FERTILIZERS.FERTILIZER_DEFS.spoiled_drink = {nutrients = TUNING.SPOILED_DRINK_NUTRIENTS}

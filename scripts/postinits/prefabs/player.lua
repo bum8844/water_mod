@@ -90,6 +90,7 @@ AddPrefabPostInit("player_classified", AddNetvars)
 
 local AddComponentToPlayer = function(inst)
     inst:AddTag("campfire_upgradeuser")
+    inst:AddTag("hole_upgradeuser")
 
     if not _G.TheWorld.ismastersim then
         return

@@ -5,6 +5,7 @@ return {
 	--"bucketice",
 	--"cup",
 	"cupfull",
+	--"upgrade_kit",
 	--"purification_tablets",
 
 	--structures
@@ -15,6 +16,7 @@ return {
 	"kettle",
 	"portablekettle",
 	"well",
+	--"well_sprinkler",
 	"well_drilling",
 
 	--food & plants

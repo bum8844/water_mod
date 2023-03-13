@@ -15,6 +15,23 @@ local function OnTake(inst, taker, delta)
     end
 end
 
+local function FreezeWater(inst)
+    local water = inst:HasTag("clean") and "clean" or "dirty"
+    inst.AnimState:PlayAnimation("turn_to_water_"..water.."_ice")
+    inst.AnimState:PushAnimation("water_"..water.."_ice")
+    local result = SpawnPrefab(inst:HasTag("clean") and "water_clean_ice" or "water_dirty_ice")
+    inst:DoTaskInTime(2, function(inst) RefundItem(inst, result) end)
+end
+
+local function onperish(inst)
+    local owner = inst.components.inventoryitem.owner
+    if owner == nil then
+        local water = inst:HasTag("clean") and "clean" or "dirty"
+        inst.AnimState:PlayAnimation("turn_to_water_"..water)
+        inst.AnimState:PushAnimation("water_"..water)
+    end
+end
+
 local function MakeCup(name, masterfn, tags)
     local assets =
     {
@@ -27,8 +44,8 @@ local function MakeCup(name, masterfn, tags)
         "cup",
     }
 
-    local function Isice(name)
-        return name == "water_clean_ice" or name == "water_dirty_ice"
+    local function SetInitialTemperature(inst)
+        inst.components.temperature.current = TheWorld.state.temperature > TUNING.BUCKET_FULL_INITTEMP and TUNING.BUCKET_FULL_INITTEMP or TheWorld.state.temperature
     end
 
     local function onfiremelt(inst)
@@ -60,7 +77,7 @@ local function MakeCup(name, masterfn, tags)
             end
         end
 
-        if not Isice(name) then
+        if not inst:HasTag("frozen") then
             inst:AddTag("pre-preparedfood")
             inst:AddTag("drink")
         end
@@ -73,12 +90,10 @@ local function MakeCup(name, masterfn, tags)
             return inst
         end
 
-        if not Isice(name) then
+        if not inst:HasTag("frozen") then
             inst:AddComponent("edible")
             inst.components.edible.foodtype = FOODTYPE.GOODIES
         else
-            inst:AddTag("frozen")
-
             inst:AddComponent("smotherer")
 
             inst:ListenForEvent("firemelt", onfiremelt)
@@ -87,9 +102,19 @@ local function MakeCup(name, masterfn, tags)
             inst:AddComponent("perishable")
             inst.components.perishable:SetPerishTime(TUNING.PERISH_SUPERFAST)
             inst.components.perishable:StartPerishing()
-            --inst.components.perishable:SetOnPerishFn(onperish)
+            inst.components.perishable:SetOnPerishFn(onperish)
         end
         --inst.components.edible:SetOnEatenFn(OnEaten)
+        --[[if not inst:HasTag("frozen") and not inst:HasTag("salty") then
+            inst:AddComponent("temperature")
+            inst.components.temperature.mintemp = TUNING.BUCKET_FULL_MINTEMP
+            inst.components.temperature.maxtemp = TUNING.BUCKET_FULL_MAXTEMP
+            inst.components.temperature.inherentinsulation = TUNING.INSULATION_MED
+            inst.components.temperature.inherentsummerinsulation = TUNING.INSULATION_MED
+            inst:DoTaskInTime(0, SetInitialTemperature)
+
+            inst:ListenForEvent("startfreezing", FreezeWater)
+        end]]
 
         inst:AddComponent("inspectable")
 
@@ -102,7 +127,7 @@ local function MakeCup(name, masterfn, tags)
         inst.components.watersource.available = false
 
     	inst:AddComponent("inventoryitem")
-        if Isice(name) then
+        if inst:HasTag("frozen") then
             inst.components.inventoryitem:SetOnPickupFn(onstopfiremelt)
         end
 
@@ -137,8 +162,6 @@ local function cleanwater(inst)
     inst.components.edible.sanityvalue = 0
     inst.components.edible.thirstvalue = TUNING.HYDRATION_SMALLTINY
 
-    inst:AddTag("icebox_valid")
-
     inst.components.water:SetWaterType(WATERTYPE.CLEAN)
 
     inst.components.watersource.available = true
@@ -150,8 +173,6 @@ local function dirtywater(inst)
     inst.components.edible.sanityvalue = 0
     inst.components.edible.thirstvalue = TUNING.HYDRATION_SMALLTINY
 
-    inst:AddTag("icebox_valid")
-
     inst.components.water:SetWaterType(WATERTYPE.DIRTY)
 
     inst.components.watersource.available = true
@@ -162,8 +183,6 @@ local function cleanwater_ice(inst)
     inst.components.edible.hungervalue = 0
     inst.components.edible.sanityvalue = 0
     inst.components.edible.thirstvalue = 0
-
-    inst:AddTag("icebox_valid")
 
     inst.components.water:SetWaterType(WATERTYPE.CLEAN_ICE)
 
@@ -177,8 +196,6 @@ local function dirtywater_ice(inst)
     inst.components.edible.hungervalue = 0
     inst.components.edible.sanityvalue = 0
     inst.components.edible.thirstvalue = 0
-
-    inst:AddTag("icebox_valid")
 
     inst.components.water:SetWaterType(WATERTYPE.DIRTY_ICE)
 
@@ -196,6 +213,8 @@ local function saltwater(inst)
     inst.components.water:SetWaterType(WATERTYPE.SALTY)
 end
 
-return MakeCup("water_clean", cleanwater),
-    MakeCup("water_dirty", dirtywater),
-    MakeCup("water_salty", saltwater)
+return MakeCup("water_clean", cleanwater, {"icebox_valid","clean"}),
+    MakeCup("water_dirty", dirtywater, {"icebox_valid","dirty"}),
+    --MakeCup("water_clean_ice", saltwater, {"icebox_valid","clean","frozen"}),
+    --MakeCup("water_dirty_ice", saltwater,{"icebox_valid","dirty","frozen"}}),
+    MakeCup("water_salty", saltwater,{"salty"})

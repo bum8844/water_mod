@@ -14,7 +14,42 @@ local function OnSpawnIn(inst)
     inst.AnimState:PushAnimation("idle")
 end
 
-local function OnConstructed(inst, doer)
+local function FailUpgrade(inst, performer, upgraded_from_item)
+	local refund = SpawnPrefab(upgraded_from_item)
+    if performer ~= nil and performer.components.inventory ~= nil then
+		performer.components.inventory:GiveItem(refund, nil, _G.Vector3(x, y, z))
+	else
+    	refund.Transform:SetPosition(x,y,z)
+	end
+	inst.components.upgradeable.upgradetype = UPGRADETYPES.CAMPFIRE
+	inst.components.upgradeable.numupgrades = 0
+	performer.components.talker:Say(_G.GetActionFailString(performer,"CONSTRUCT","NOTALLOWED"))
+end
+
+local function OnUpgrade(inst, performer, upgraded_from_item)
+	local numupgrades = inst.components.upgradeable.numupgrades
+	if upgraded_from_item.prefabs == "well_kit" then
+        local new_well = ReplacePrefab(inst, "well")
+        new_well.SoundEmitter:PlaySound("dontstarve/common/together/town_portal/craft")
+		new_well:DoTaskInTime(.6, function(new_well)
+			new_well.SoundEmitter:PlaySound("saltydog/common/saltbox/place")
+		end)
+		new_well.AnimState:PlayAnimation("place")
+		new_well.AnimState:PushAnimation("idle_empty")
+	--[[elseif upgraded_from_item.prefabs == "well_sprinkler_kit" then
+		local new_sprinkler = ReplacePrefab(inst, "well_sprinkler")
+        new_sprinkler.SoundEmitter:PlaySound("dontstarve/common/together/town_portal/craft")
+		new_sprinkler:DoTaskInTime(.6, function(new_well)
+			new_well.SoundEmitter:PlaySound("saltydog/common/saltbox/place")
+		end)
+		new_sprinkler.AnimState:PlayAnimation("place")
+		new_sprinkler.AnimState:PushAnimation("idle_empty")]]
+	else
+		FailUpgrade(inst, performer, upgraded_from_item)
+	end
+end
+
+--[[local function OnConstructed(inst, doer)
     local concluded = true
     for i, v in ipairs(CONSTRUCTION_PLANS[inst.prefab] or {}) do
         if inst.components.constructionsite:GetMaterialCount(v.type) < v.amount then
@@ -24,15 +59,9 @@ local function OnConstructed(inst, doer)
     end
 
     if concluded then
-        local new_well = ReplacePrefab(inst, "well")
-        new_well.SoundEmitter:PlaySound("dontstarve/common/together/town_portal/craft")
-		new_well:DoTaskInTime(.6, function(new_well)
-			new_well.SoundEmitter:PlaySound("saltydog/common/saltbox/place")
-		end)
-		new_well.AnimState:PlayAnimation("place")
-		new_well.AnimState:PushAnimation("idle_empty")
+
     end
-end
+end]]
 
 local function dig_up(inst)
 	local x, y, z = inst.Transform:GetWorldPosition()
@@ -59,9 +88,13 @@ local function hole()
 	
 	inst:AddComponent("inspectable")
 	
-	inst:AddComponent("constructionsite")
+	--[[inst:AddComponent("constructionsite")
     inst.components.constructionsite:SetConstructionPrefab("construction_container")
-    inst.components.constructionsite:SetOnConstructedFn(OnConstructed)
+    inst.components.constructionsite:SetOnConstructedFn(OnConstructed)]]
+
+	inst:AddComponent("upgradeable")
+	inst.components.upgradeable.upgradetype = UPGRADETYPES.HOLE
+	inst.components.upgradeable.onupgradefn = OnUpgrade
 	
 	inst:AddComponent("workable")
     inst.components.workable:SetWorkAction(ACTIONS.DIG)
