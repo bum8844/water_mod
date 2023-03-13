@@ -22,6 +22,7 @@ local function OnFill_Waterlevel(inst, from_object ,...)
             else
                 from_object:Remove()
             end
+            inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/small")
             return true
         else
             return false

@@ -4,7 +4,7 @@ local assets =
 }
 
 local function OnTakeWater(inst, source, doer)
-	inst.SoundEmitter:PlaySound("dontstarve/creatures/pengull/splash")
+    inst.rainfilling = 0
     if source ~= nil and source.components.waterlevel ~= nil then
         local watervalue = TUNING.BUCKET_LEVEL_PER_USE
         if TUNING.BUCKET_LEVEL_PER_USE > inst.components.finiteuses:GetUses() then
@@ -15,6 +15,43 @@ local function OnTakeWater(inst, source, doer)
     inst.components.finiteuses:Use(inst.components.watertaker._laststack)
     if inst.components.finiteuses.current == 0 then
         inst:Remove()
+        doer.SoundEmitter:PlaySound("dontstarve/creatures/pengull/splash")
+    else
+        inst.SoundEmitter:PlaySound("dontstarve/creatures/pengull/splash")
+    end
+end
+
+local function FillByRain(inst)
+    local current_fin = inst.components.finiteuses:GetUses()
+    local water = SpawnPrefab("water_clean")
+    inst.rainfilling = 0
+    if current_fin > TUNING.BUCKET_LEVEL_PER_USE then
+        inst.components.finiteuses:Use(TUNING.BUCKET_LEVEL_PER_USE)
+        water.components.stackable:SetStackSize(TUNING.BUCKET_LEVEL_PER_USE)
+        water.Transform:SetPosition(inst.Transform:GetWorldPosition())
+        inst.SoundEmitter:PlaySound("dontstarve/creatures/pengull/splash")
+    else
+        water.components.stackable:SetStackSize(current_fin)
+        water.Transform:SetPosition(inst.Transform:GetWorldPosition())
+        inst.SoundEmitter:PlaySound("dontstarve/creatures/pengull/splash")
+        inst:Remove()
+    end
+end
+
+local function onremovewater(inst)
+    if not TheWorld.state.israining and inst.rainfilling ~= 0 then
+        inst.SoundEmitter:PlaySound("dontstarve/creatures/pengull/splash")
+        inst.rainfilling = 0
+    end
+end
+
+local function onsave(inst, data)
+    return { rainfilling = inst.rainfilling }
+end
+
+local function onload(inst, data)
+    if data.rainfilling ~= nil then
+        inst.rainfilling = data.rainfilling
     end
 end
 
@@ -39,6 +76,19 @@ local function fn()
     if not TheWorld.ismastersim then
         return inst
     end
+
+    inst.rainfilling = 0
+    inst:DoPeriodicTask(1, function()
+        local owner = inst.components.inventoryitem.owner
+        if TheWorld.state.israining and owner == nil then
+            inst.rainfilling = inst.rainfilling + TUNING.RAIN_GIVE_WATER
+        elseif not TheWorld.state.israining and inst.rainfilling > 0 then
+            inst.rainfilling = inst.rainfilling - TUNING.LOST_WATER
+        end
+        if inst.rainfilling >= TUNING.BUCKET_LEVEL_PER_USE then
+            FillByRain(inst)
+        end
+    end)
 	
 	-- 우물 상호 작용을 위한 태그
 	inst:AddTag("bucket_empty")
@@ -66,8 +116,12 @@ local function fn()
     MakeSmallPropagator(inst)
 	
     inst:AddComponent("inventoryitem")
+    inst.components.inventoryitem:SetOnPickupFn(onremovewater)
 
     MakeHauntableLaunchAndSmash(inst)
+
+    inst.OnSave = onsave
+    inst.OnLoad = onload
 
     return inst
 end

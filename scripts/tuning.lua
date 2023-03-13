@@ -30,7 +30,8 @@ local tuning =
 
 	-- Maximum Amount of Water
 	CUP_MAX_LEVEL = 1,
-	--BOTTLE_MAX_LEVEL = 10,
+	RAIN_GIVE_WATER = .5,
+	LOST_WATER = -.1,
 	BUCKET_MAX_LEVEL = 5*bucket_max_level,
 	BUCKET_LEVEL_PER_USE = bucket_max_level,
 

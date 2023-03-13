@@ -1,5 +1,5 @@
 local function OnGivenItemWater(inst, giver, item, ...)
-	if item.prefab == "bucket_ice" then
+	if item.prefab == "water_clean_ice" or item.prefab == "water_dirty_ice" then
 		inst:PushEvent("onacceptfighttribute", { tributer = giver, trigger = "freeze" })
 	elseif inst.components.trader.onaccept_old ~= nil then
 		return inst.components.trader.onaccept_old(inst, giver, item, ...)

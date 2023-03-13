@@ -49,7 +49,7 @@ local function MakeCup(name, masterfn, tags)
     end
 
     local function onfiremelt(inst)
-    inst.components.perishable.frozenfiremult = true
+        inst.components.perishable.frozenfiremult = true
     end
 
     local function onstopfiremelt(inst)
@@ -114,6 +114,7 @@ local function MakeCup(name, masterfn, tags)
             inst:DoTaskInTime(0, SetInitialTemperature)
 
             inst:ListenForEvent("startfreezing", FreezeWater)
+
         end]]
 
         inst:AddComponent("inspectable")
@@ -147,6 +148,10 @@ local function MakeCup(name, masterfn, tags)
         ------------------------------------------------
 
         inst:AddComponent("tradable")
+        if inst:HasTag("frozen") then
+            inst.components.tradable.goldvalue = TUNING.GOLD_VALUES.ANTLION
+            inst.components.tradable.rocktribute = 1
+        end
 
         ------------------------------------------------
 
@@ -179,10 +184,7 @@ local function dirtywater(inst)
 end
 
 local function cleanwater_ice(inst)
-    inst.components.edible.healthvalue = 0
-    inst.components.edible.hungervalue = 0
-    inst.components.edible.sanityvalue = 0
-    inst.components.edible.thirstvalue = 0
+    inst:AddComponent("workable")
 
     inst.components.water:SetWaterType(WATERTYPE.CLEAN_ICE)
 
@@ -192,10 +194,7 @@ local function cleanwater_ice(inst)
 end
 
 local function dirtywater_ice(inst)
-    inst.components.edible.healthvalue = 0
-    inst.components.edible.hungervalue = 0
-    inst.components.edible.sanityvalue = 0
-    inst.components.edible.thirstvalue = 0
+    inst:AddComponent("workable")
 
     inst.components.water:SetWaterType(WATERTYPE.DIRTY_ICE)
 
