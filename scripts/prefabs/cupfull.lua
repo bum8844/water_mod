@@ -62,6 +62,10 @@ local function MakeCup(name, masterfn, tags)
         inst.components.perishable.frozenfiremult = false
     end
 
+    local function displayadjectivefn(inst)
+        return nil
+    end
+
     local function fn()
         local inst = CreateEntity()
 
@@ -100,6 +104,9 @@ local function MakeCup(name, masterfn, tags)
             inst:AddComponent("edible")
             inst.components.edible.foodtype = FOODTYPE.GOODIES
         else
+            inst.displayadjectivefn = displayadjectivefn
+            inst:AddTag("show_spoilage")
+
             inst:AddComponent("smotherer")
 
             inst:ListenForEvent("firemelt", onfiremelt)
