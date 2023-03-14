@@ -16,12 +16,15 @@ local function OnTake(inst, taker, delta)
 end
 
 local function FreezeWater(inst)
-    local water = inst:HasTag("dirty") and "_dirty" or ""
-    if inst.components.stackable:StackSize() >= 5 then
-        inst.AnimState:SetBuild("kettle_drink_bottle")
-    end
-    inst.AnimState:PlayAnimation("turn_to_ice"..water)
     local result = SpawnPrefab(inst:HasTag("clean") and "water_clean_ice" or "water_dirty_ice")
+    local owner = inst.components.inventoryitem.owner
+    if owner == nil then
+        local water = inst:HasTag("dirty") and "_dirty" or ""
+        if inst.components.stackable:StackSize() >= 5 then
+            inst.AnimState:SetBuild("kettle_drink_bottle")
+        end
+        inst.AnimState:PlayAnimation("turn_to_ice"..water)
+    end
     inst:DoTaskInTime(2, function(inst) RefundItem(inst, result, nil, true) end)
 end
 
@@ -50,10 +53,6 @@ local function MakeCup(name, masterfn, tags)
         "cup",
     }
 
-    local function SetInitialTemperature(inst)
-        inst.components.temperature.current = TheWorld.state.temperature > TUNING.BUCKET_FULL_INITTEMP and TUNING.BUCKET_FULL_INITTEMP or TheWorld.state.temperature
-    end
-
     local function onfiremelt(inst)
         inst.components.perishable.frozenfiremult = true
     end
@@ -64,6 +63,56 @@ local function MakeCup(name, masterfn, tags)
 
     local function displayadjectivefn(inst)
         return nil
+    end
+
+    local function MakeDone(new_item, container, pos, owner)
+        if container ~= nil then
+            container:GiveItem(new_item,nil,owner:GetPosition())
+        else
+            new_item.Physics:Teleport(pos:Get())
+            new_item.components.inventoryitem:OnDropped(true, .5)
+        end
+    end
+
+    local function MakeItem(inst, pos, item, num, doer)
+        local moisture = inst.components.inventoryitem:GetMoisture()
+        local iswet = inst.components.inventoryitem:IsWet()
+        local owner = inst.components.inventoryitem ~= nil and inst.components.inventoryitem:GetGrandOwner() or nil
+        local container = owner ~= nil and (owner.components.inventory or owner.components.container) or nil
+
+        while num > 0 do
+            if num > item.stacksize then
+                local new_item = SpawnPrefab(item.name)
+                num = num - item.stacksize
+
+                new_item.components.perishable:SetPercent(item.perishable)
+                new_item.components.stackable:SetStackSize(item.stacksize)
+                new_item.components.inventoryitem:InheritMoisture(moisture, iswet)
+
+                MakeDone(new_item, container, pos, owner)
+            else
+                local new_item = SpawnPrefab(item.name)
+
+                new_item.components.perishable:SetPercent(item.perishable)
+                new_item.components.stackable:SetStackSize(num)
+                new_item.components.inventoryitem:InheritMoisture(moisture, iswet)
+                num = 0
+
+                MakeDone(new_item, container, pos, owner)
+            end
+        end
+    end 
+
+    local function OnUnwrapped(inst, pos, doer)
+        local ice = { name = "ice", perishable = inst.components.perishable:GetPercent(), stacksize = TUNING.STACK_SIZE_SMALLITEM  }
+        local wetgoop = { name = "wetgoop", perishable = inst.components.perishable:GetPercent(), stacksize = TUNING.STACK_SIZE_SMALLITEM  }
+        local num = (inst.components.stackable:StackSize()*20)
+        local goopnum = math.floor(num/2)
+        MakeItem(inst, pos, ice, num, doer)
+        if inst:HasTag("dirty") and goopnum > 0 then
+            MakeItem(inst, pos, wetgoop, goopnum, doer)
+        end
+        inst:Remove()
     end
 
     local function fn()
@@ -116,17 +165,24 @@ local function MakeCup(name, masterfn, tags)
             inst.components.perishable:SetPerishTime(TUNING.PERISH_SUPERFAST)
             inst.components.perishable:StartPerishing()
             inst.components.perishable:SetOnPerishFn(onperish)
+
+            inst:AddComponent("unwrappable")
+            inst.components.unwrappable:SetOnUnwrappedFn(OnUnwrapped)
         end
         --inst.components.edible:SetOnEatenFn(OnEaten)
         if not inst:HasTag("frozen") and not inst:HasTag("salty") then
             inst:AddComponent("temperature")
-            inst.components.temperature.mintemp = TUNING.BUCKET_FULL_MINTEMP
-            inst.components.temperature.maxtemp = TUNING.BUCKET_FULL_MAXTEMP
-            inst.components.temperature.inherentinsulation = TUNING.INSULATION_MED
-            inst.components.temperature.inherentsummerinsulation = TUNING.INSULATION_MED
-            inst:DoTaskInTime(0, SetInitialTemperature)
+            inst.components.temperature.mintemp = TUNING.WATER_MINTEMP
+            inst.components.temperature.maxtemp = TUNING.WATER_MAXTEMP
+            inst.components.temperature.current = TUNING.WATER_INITTEMP
 
-            inst:ListenForEvent("startfreezing", FreezeWater)
+            inst:DoPeriodicTask(1, function()
+                if inst:HasTag("clean") and inst.components.temperature.current <= TUNING.WATER_CLEAN_MINTEMP then
+                    FreezeWater(inst)
+                elseif inst:HasTag("dirty") and inst.components.temperature.current == TUNING.BUCKET_FULL_MINTEMP then
+                    FreezeWater(inst)
+                end
+            end)
         end
 
         inst:AddComponent("inspectable")
@@ -222,6 +278,6 @@ end
 
 return MakeCup("water_clean", cleanwater, {"icebox_valid","clean"}),
     MakeCup("water_dirty", dirtywater, {"icebox_valid","dirty"}),
-    MakeCup("water_clean_ice", cleanwater_ice,{"icebox_valid","clean","frozen"}),
-    MakeCup("water_dirty_ice", dirtywater_ice,{"icebox_valid","dirty","frozen"}),
+    MakeCup("water_clean_ice", cleanwater_ice,{"icebox_valid","clean","frozen","unwrappable"}),
+    MakeCup("water_dirty_ice", dirtywater_ice,{"icebox_valid","dirty","frozen","unwrappable"}),
     MakeCup("water_salty", saltwater,{"salty"})
