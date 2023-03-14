@@ -65,13 +65,14 @@ local function MakeCup(name, masterfn, tags)
         return nil
     end
 
-    local function MakeDone(new_item, container, pos, owner)
+    local function MakeDone(new_item, container, pos, owner, doer)
         if container ~= nil then
             container:GiveItem(new_item,nil,owner:GetPosition())
         else
             new_item.Physics:Teleport(pos:Get())
             new_item.components.inventoryitem:OnDropped(true, .5)
         end
+        doer.SoundEmitter:PlaySound("dontstarve/common/bush_fertilize")
     end
 
     local function MakeItem(inst, pos, item, num, doer)
@@ -89,7 +90,7 @@ local function MakeCup(name, masterfn, tags)
                 new_item.components.stackable:SetStackSize(item.stacksize)
                 new_item.components.inventoryitem:InheritMoisture(moisture, iswet)
 
-                MakeDone(new_item, container, pos, owner)
+                MakeDone(new_item, container, pos, owner, doer)
             else
                 local new_item = SpawnPrefab(item.name)
 
@@ -98,7 +99,7 @@ local function MakeCup(name, masterfn, tags)
                 new_item.components.inventoryitem:InheritMoisture(moisture, iswet)
                 num = 0
 
-                MakeDone(new_item, container, pos, owner)
+                MakeDone(new_item, container, pos, owner, doer)
             end
         end
     end 
@@ -106,8 +107,8 @@ local function MakeCup(name, masterfn, tags)
     local function OnUnwrapped(inst, pos, doer)
         local ice = { name = "ice", perishable = inst.components.perishable:GetPercent(), stacksize = TUNING.STACK_SIZE_SMALLITEM  }
         local wetgoop = { name = "wetgoop", perishable = inst.components.perishable:GetPercent(), stacksize = TUNING.STACK_SIZE_SMALLITEM  }
-        local num = (inst.components.stackable:StackSize()*20)
-        local goopnum = math.floor(num/2)
+        local num = (inst.components.stackable:StackSize()*TUNING.BUCKET_LEVEL_PER_USE)
+        local goopnum = math.floor(num/(TUNING.BUCKET_LEVEL_PER_USE*2))
         MakeItem(inst, pos, ice, num, doer)
         if inst:HasTag("dirty") and goopnum > 0 then
             MakeItem(inst, pos, wetgoop, goopnum, doer)
