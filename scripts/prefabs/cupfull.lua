@@ -16,20 +16,26 @@ local function OnTake(inst, taker, delta)
 end
 
 local function FreezeWater(inst)
-    local water = inst:HasTag("clean") and "clean" or "dirty"
-    inst.AnimState:PlayAnimation("turn_to_water_"..water.."_ice")
-    inst.AnimState:PushAnimation("water_"..water.."_ice")
+    local water = inst:HasTag("dirty") and "_dirty" or ""
+    if inst.components.stackable:StackSize() >= 5 then
+        inst.AnimState:SetBuild("kettle_drink_bottle")
+    end
+    inst.AnimState:PlayAnimation("turn_to_ice"..water)
     local result = SpawnPrefab(inst:HasTag("clean") and "water_clean_ice" or "water_dirty_ice")
-    inst:DoTaskInTime(2, function(inst) RefundItem(inst, result) end)
+    inst:DoTaskInTime(2, function(inst) RefundItem(inst, result, nil, true) end)
 end
 
 local function onperish(inst)
+    local result = SpawnPrefab(inst:HasTag("clean") and "water_clean" or "water_dirty")
     local owner = inst.components.inventoryitem.owner
     if owner == nil then
-        local water = inst:HasTag("clean") and "clean" or "dirty"
-        inst.AnimState:PlayAnimation("turn_to_water_"..water)
-        inst.AnimState:PushAnimation("water_"..water)
+        local water = inst:HasTag("dirty") and "_dirty" or ""
+        if inst.components.stackable:StackSize() >= 5 then
+            inst.AnimState:SetBuild("kettle_drink_bottle")
+        end
+        inst.AnimState:PlayAnimation("turn_to_full"..water)
     end
+    inst:DoTaskInTime(2, function(inst) RefundItem(inst, result, nil, true) end)
 end
 
 local function MakeCup(name, masterfn, tags)
@@ -105,7 +111,7 @@ local function MakeCup(name, masterfn, tags)
             inst.components.perishable:SetOnPerishFn(onperish)
         end
         --inst.components.edible:SetOnEatenFn(OnEaten)
-        --[[if not inst:HasTag("frozen") and not inst:HasTag("salty") then
+        if not inst:HasTag("frozen") and not inst:HasTag("salty") then
             inst:AddComponent("temperature")
             inst.components.temperature.mintemp = TUNING.BUCKET_FULL_MINTEMP
             inst.components.temperature.maxtemp = TUNING.BUCKET_FULL_MAXTEMP
@@ -114,8 +120,7 @@ local function MakeCup(name, masterfn, tags)
             inst:DoTaskInTime(0, SetInitialTemperature)
 
             inst:ListenForEvent("startfreezing", FreezeWater)
-
-        end]]
+        end
 
         inst:AddComponent("inspectable")
 
@@ -183,26 +188,6 @@ local function dirtywater(inst)
     inst.components.watersource.available = true
 end
 
-local function cleanwater_ice(inst)
-    inst:AddComponent("workable")
-
-    inst.components.water:SetWaterType(WATERTYPE.CLEAN_ICE)
-
-    inst.components.watersource.available = true
-
-    inst.components.perishable.onperishreplacement = "cleanwater"
-end
-
-local function dirtywater_ice(inst)
-    inst:AddComponent("workable")
-
-    inst.components.water:SetWaterType(WATERTYPE.DIRTY_ICE)
-
-    inst.components.watersource.available = true
-
-    inst.components.perishable.onperishreplacement = "dirtywater"
-end
-
 local function saltwater(inst)
     inst.components.edible.healthvalue = -TUNING.HEALING_SMALL
     inst.components.edible.hungervalue = -TUNING.DRINK_CALORIES
@@ -212,8 +197,24 @@ local function saltwater(inst)
     inst.components.water:SetWaterType(WATERTYPE.SALTY)
 end
 
+local function cleanwater_ice(inst)
+    --inst:AddComponent("workable")
+
+    inst.components.water:SetWaterType(WATERTYPE.CLEAN_ICE)
+
+    --inst.components.watersource.available = true
+end
+
+local function dirtywater_ice(inst)
+    --inst:AddComponent("workable")
+
+    inst.components.water:SetWaterType(WATERTYPE.DIRTY_ICE)
+
+    --inst.components.watersource.available = true
+end
+
 return MakeCup("water_clean", cleanwater, {"icebox_valid","clean"}),
     MakeCup("water_dirty", dirtywater, {"icebox_valid","dirty"}),
-    --MakeCup("water_clean_ice", saltwater, {"icebox_valid","clean","frozen"}),
-    --MakeCup("water_dirty_ice", saltwater,{"icebox_valid","dirty","frozen"}}),
+    MakeCup("water_clean_ice", cleanwater_ice,{"icebox_valid","clean","frozen"}),
+    MakeCup("water_dirty_ice", dirtywater_ice,{"icebox_valid","dirty","frozen"}),
     MakeCup("water_salty", saltwater,{"salty"})

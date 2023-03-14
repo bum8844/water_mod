@@ -1,13 +1,5 @@
 --when an item 'inst' is used, the 'refund' will be given.
-function RefundItem(inst, refund, dontremove)
-    if type(refund) == "string" then
-        refund = SpawnPrefab(refund)
-    end
-
-    local owner = inst.components.inventoryitem ~= nil and inst.components.inventoryitem:GetGrandOwner() or nil
-    local container = owner ~= nil and (owner.components.inventory or owner.components.container) or nil
-    local x, y, z = inst.Transform:GetWorldPosition()
-
+local function result(inst, refund, container, x, y, z, dontremove)
     refund.Transform:SetPosition(x, y, z)
 
     if container ~= nil then
@@ -20,6 +12,26 @@ function RefundItem(inst, refund, dontremove)
         else
             inst:Remove()
         end
+    end
+end
+
+function RefundItem(inst, refund, dontremove, isforzen)
+    if type(refund) == "string" then
+        refund = SpawnPrefab(refund)
+    end
+
+    local owner = inst.components.inventoryitem ~= nil and inst.components.inventoryitem:GetGrandOwner() or nil
+    local container = owner ~= nil and (owner.components.inventory or owner.components.container) or nil
+    local x, y, z = inst.Transform:GetWorldPosition()
+
+    if not isforzen then
+        result(inst, refund, container, x, y, z, dontremove)
+    else
+        if inst.components.stackable ~= nil and inst.components.stackable:IsStack() then
+            refund.components.stackable:SetStackSize(inst.components.stackable:StackSize())
+        end
+        result(inst, refund, container, x, y, z, true)
+        inst:Remove()
     end
 end
 
