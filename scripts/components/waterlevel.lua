@@ -178,7 +178,13 @@ function Waterlevel:DiistillerResult(doer)
     else
         self:UtilityCheck(doer)
     end
+    local sections = self:GetCurrentSection()
+    if self.sectionfn then
+        self.sectionfn(sections, sections, self.inst)
+    end
+    self.inst:PushEvent("onwaterlevelsectionchanged", { newsection = sections, oldsection = sections})
 end
+
 function Waterlevel:DoDiistiller(doer)
     if self.inst._fire == nil then
         self:DiistillerResult(doer)

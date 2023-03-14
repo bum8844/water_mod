@@ -234,9 +234,12 @@ local function harvestfn(inst,picker,loot)
         inst.components.stewer:Harvest(picker)
     end
 end
+local function isgoodwater(inst)
+    return inst.components.waterlevel.watertype ~= WATERTYPE.CLEAN and inst.components.waterlevel.watertype ~= WATERTYPE.CLEAN_ICE
+end
 
 local function OnSectionChange(new, old, inst)
-    local watertype = (inst.components.waterlevel.watertype ~= WATERTYPE.CLEAN or inst.components.stewer.product == "spoiled_drink") and "dirty" or "water"
+    local watertype = (isgoodwater(inst) or inst.components.stewer.product == "spoiled_drink") and "dirty" or "water"
     if new ~= nil then
         if inst._waterlevel ~= new then
             inst._waterlevel = new
