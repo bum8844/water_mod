@@ -29,6 +29,7 @@ local Thirst = Class(function(self, inst)
 
     local period = 1
     self.inst:DoPeriodicTask(period, OnTaskTick, nil, self, period)
+
 end,
 nil,
 {

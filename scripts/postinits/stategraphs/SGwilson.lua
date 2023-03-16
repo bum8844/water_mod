@@ -103,6 +103,9 @@ local drink = State{
         end
 
         inst.components.hunger:Pause()
+        if inst.components.thirst ~= nil then
+            inst.components.thirst:Pause()
+        end
     end,
 
     timeline = {
@@ -129,6 +132,9 @@ local drink = State{
         inst.SoundEmitter:KillSound("drinking")
         if not GetGameModeProperty("no_hunger") then
             inst.components.hunger:Resume()
+            if inst.components.thirst ~= nil then
+                inst.components.thirst:Resume()
+            end
         end
         if inst.sg.statemem.feed ~= nil and inst.sg.statemem.feed:IsValid() then
             inst.sg.statemem.feed:Remove()

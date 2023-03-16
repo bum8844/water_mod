@@ -62,7 +62,7 @@ if GetModConfigData("enable_thirst") then
         if self.console_edit then
             local water_commands = 
             {
-                "supergodmodewater", 
+                "supergodmodewater",
                 "setthirst",
             }
             local dictionary = self.console_edit.prediction_widget.word_predictor.dictionaries[3]

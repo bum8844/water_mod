@@ -1,13 +1,10 @@
+require("debugcommands")
+
 local function ListingOrConsolePlayer(input)
     if type(input) == "string" or type(input) == "number" then
         return UserToPlayer(input)
     end
     return input or ConsoleCommandPlayer()
-end
-
-local function Spawn(prefab)
-    --TheSim:LoadPrefabs({prefab})
-    return SpawnPrefab(prefab)
 end
 
 function c_supergodmodewater(player)

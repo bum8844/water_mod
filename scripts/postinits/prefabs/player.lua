@@ -102,7 +102,18 @@ end
 AddPlayerPostInit(AddComponentToPlayer)
 
 if GetModConfigData("enable_thirst") then
-    local AddThirstToPlayer = function(inst)
+
+    local function SetToDeath(inst)
+        inst.components.thirst:SetPercent(2 / 3, true)
+        inst.components.thirst:Pause()
+    end
+
+    local function SetToRevive(inst)
+        inst.components.thirst:Resume()
+    end
+
+    --
+    local function AddThirstToPlayer(inst)
     --Adding Component
         if not _G.TheWorld.ismastersim then
             return
@@ -112,6 +123,10 @@ if GetModConfigData("enable_thirst") then
         inst.components.thirst:SetMax(TUNING.WILSON_THIRST)
         inst.components.thirst:SetRate(TUNING.WILSON_HUNGER_RATE)
         inst.components.thirst:SetKillRate(TUNING.WILSON_HEALTH / TUNING.STARVE_KILL_TIME)
+
+        inst:ListenForEvent("ms_becameghost",SetToDeath)
+        inst:ListenForEvent("respawnfromghost",SetToRevive)
+
         if _G.GetGameModeProperty("no_hunger") then
             inst.components.thirst:Pause()
         end
