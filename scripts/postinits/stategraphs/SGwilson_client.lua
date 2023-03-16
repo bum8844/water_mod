@@ -43,8 +43,24 @@ local drunk_event = EventHandler("drunk", function(inst)
         end
     end)
 
+local drink_event = EventHandler("drink",function(inst, action)
+        if inst.sg:HasStateTag("busy") or inst:HasTag("busy") then
+            return
+        end
+        local obj = action.target or action.invobject
+        if obj == nil then
+            return
+        end
+        for k, v in pairs(FOODTYPE) do
+            if obj:HasTag("edible_"..v) and obj:HasTag("drink") then
+                return v == "drink"
+            end
+        end
+    end)
+
 AddStategraphEvent("wilson_client", refresh_drunk_event)
 AddStategraphEvent("wilson_client", drunk_event)
+AddStategraphEvent("wilson_client", drink_event)
 
 ------------------------------------------------------------------------
 

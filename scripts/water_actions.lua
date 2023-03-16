@@ -16,7 +16,7 @@ local function DefaultRangeCheck(doer, target)
     end
     local target_x, target_y, target_z = target.Transform:GetWorldPosition()
     local doer_x, doer_y, doer_z = doer.Transform:GetWorldPosition()
-    local dst = distsq(target_x, target_z, doer_x, doer_z)
+    local dst = _G.distsq(target_x, target_z, doer_x, doer_z)
     return dst <= 16
 end
 
@@ -131,7 +131,7 @@ local DRINKPLAYER = AddAction("DRINKPLAYER", STRINGS.ACTIONS.FEEDPLAYER, functio
                 food:RemoveFromScene()
                 food.components.inventoryitem:HibernateLivingItem()
                 food.persists = false
-                act.target.sg:GoToState("drinking", { feed = food, feeder = act.doer })
+                act.target.sg:GoToState("drink", { feed = food, feeder = act.doer })
                 return true
             end
         else
@@ -140,6 +140,7 @@ local DRINKPLAYER = AddAction("DRINKPLAYER", STRINGS.ACTIONS.FEEDPLAYER, functio
         end
     end
 end)
+DRINKPLAYER.priority = 4
 DRINKPLAYER.rmb = true
 DRINKPLAYER.canforce = true
 DRINKPLAYER.rangecheckfn = DefaultRangeCheck

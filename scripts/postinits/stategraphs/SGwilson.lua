@@ -154,8 +154,27 @@ local drunk_event = EventHandler("drunk", function(inst)
         end
     end)
 
+local drink_event = EventHandler("drink",function(inst, action)
+            if inst.sg:HasStateTag("busy") then
+            return
+        end
+        local obj = action.target or action.invobject
+        if obj == nil then
+            return
+        elseif obj.components.edible ~= nil then
+            if not inst.components.eater:PrefersToEat(obj) then
+                inst:PushEvent("wonteatfood", { food = obj })
+                return
+            end
+        else
+            return
+        end
+        return "drink"
+    end)
+
 AddStategraphEvent("wilson", refresh_drunk_event)
 AddStategraphEvent("wilson", drunk_event)
+AddStategraphEvent("wilson", drink_event)
 
 ------------------------------------------------------------------------
 
