@@ -304,7 +304,7 @@ local drinks =
 		perishtime = TUNING.PERISH_MED,
 		cooktime = TUNING.KETTLE_TEA,
 		potlevel = "small",
-		potlevel_bottle = "mid",
+		potlevel_bottle = "high",
 	},
 	
 	-- 녹차 건조대 말린것
@@ -321,7 +321,7 @@ local drinks =
 		temperatureduration = TUNING.FOOD_TEMP_LONG,
 		cooktime = TUNING.KETTLE_TEA,
 		potlevel = "small",
-		potlevel_bottle = "mid",
+		potlevel_bottle = "high",
 		card_def={ingredients={{"tealeaves_dried",4}}},
 	},
 	
@@ -338,7 +338,7 @@ local drinks =
 		temperatureduration = TUNING.FOOD_TEMP_LONG,
 		cooktime = TUNING.KETTLE_TEA,
 		potlevel = "small",
-		potlevel_bottle = "mid",
+		potlevel_bottle = "high",
 		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_COLD_FOOD,
 	},
 	

@@ -5,7 +5,7 @@ return {
 	--"bucketice",
 	--"cup",
 	"cupfull",
-	--"upgrade_kit",
+	"upgrade_kit",
 	--"purification_tablets",
 
 	--structures

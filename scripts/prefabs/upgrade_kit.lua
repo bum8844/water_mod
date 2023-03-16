@@ -1,14 +1,12 @@
-local function MakeUpGrade_Kit(name, masterfn, tags)
-    local assets =
-    {
-        Asset("ANIM", "anim/"..name..".zip"),
-    }
+local well_kit_assets = {
+    Asset("ANIM", "anim/well.zip"),
+}
 
-    local prefabs =
-    {
-        "well_kit",
-        "well_sprinkler_kit",
-    }
+local well_kit_prefabs = {
+    "well",
+}
+
+local function MakeUpGrade_Kit(name, animname, assets, prefabs, tags)
 
     local function fn()
         local inst = CreateEntity()
@@ -20,9 +18,9 @@ local function MakeUpGrade_Kit(name, masterfn, tags)
 
         MakeInventoryPhysics(inst)
 
-        inst.AnimState:SetBank(name)
-    	inst.AnimState:SetBuild(name)
-        inst.AnimState:PlayAnimation("idle")
+        inst.AnimState:SetBank("item")
+    	inst.AnimState:SetBuild(animname)
+        inst.AnimState:PlayAnimation("idle_ground")
 
         if tags ~= nil then
             for k, v in ipairs(tags) do
@@ -48,15 +46,11 @@ local function MakeUpGrade_Kit(name, masterfn, tags)
 
         MakeHauntableLaunchAndPerish(inst)
 
-        if masterfn ~= nil then
-            masterfn(inst)
-        end
-
         return inst
     end
 
     return Prefab(name, fn, assets, prefabs)
 end
 
-return MakeUpGrade_Kit("well_kit"),
-MakeUpGrade_Kit("well_sprinkler_kit")
+return MakeUpGrade_Kit("well_kit","well",well_kit_assets,well_kit_prefabs)--,
+--MakeUpGrade_Kit("well_sprinkler_kit")

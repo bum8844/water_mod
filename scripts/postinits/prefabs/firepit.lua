@@ -28,7 +28,7 @@ end
 local function FailUpgrade(inst, performer, upgraded_from_item)
 	local refund = SpawnPrefab("campkettle_item")
     if performer ~= nil and performer.components.inventory ~= nil then
-		performer.components.inventory:GiveItem(refund, nil, _G.Vector3(x, y, z))
+		performer.components.inventory:GiveItem(refund, nil)
 	else
     	refund.Transform:SetPosition(x,y,z)
 	end

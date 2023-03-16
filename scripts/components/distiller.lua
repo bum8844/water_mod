@@ -69,7 +69,7 @@ function Distiller:GetTimeToBoil()
 end
 
 function Distiller:isBoiling()
-	return self.done and self.boiling_timer ~= nil
+	return not self.done and self.boiling_timer ~= nil
 end
 
 function Distiller:startBoiling(watertimer)
@@ -92,10 +92,10 @@ function Distiller:startBoiling(watertimer)
 	end
 
 	local timer = TUNING.BASE_COOK_TIME * TUNING.KETTLE_WATER * watertimer
-	self.boiling_timer = timer
+	self.boiling_timer = GetTime() + timer
 
 	if self.task ~= nil then
-   		self.task:Cancel()
+		self.task:Cancel()
 	end
 	if self.onstartboiling ~= nil then
 		self.onstartboiling(self.inst)

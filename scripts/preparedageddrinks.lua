@@ -234,7 +234,7 @@ local drinks =
 		perishtime = TUNING.PERISH_SUPERSLOW,
 		cooktime = (TUNING.KETTLE_FRUIT + TUNING.BEER_WAIT),
 		potlevel = "small",
-		potlevel_bottle = "small",
+		potlevel_bottle = "mid",
 		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_INTOXICATION,
 		oneatenfn = function(inst, eater)
 			alcahol(inst, eater)
@@ -309,7 +309,7 @@ local drinks =
 		tags = {"alcohol"},
 		perishtime = TUNING.PERISH_SUPERSLOW,
 		cooktime = (TUNING.KETTLE_VEGGIE + TUNING.BEER_WAIT),
-		potlevel = "high",
+		potlevel = "mid",
 		potlevel_bottle = "mid",
 		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_INTOXICATION,
 		card_def = {ingredients = {{"goatmilk",4}}},

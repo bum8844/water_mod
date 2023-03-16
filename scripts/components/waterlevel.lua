@@ -171,7 +171,7 @@ function Waterlevel:DiistillerResult(doer)
     if self.inst.components.distiller and self.watertype ~= WATERTYPE.CLEAN then
         self.inst.components.distiller.done = false
         local watervalue = self:GetWater()
-        if self.inst:HasTag("campkettle") then
+        if self.inst:HasTag("campkettle") or self.watertype == WATERTYPE.DIRTY_ICE then
             watervalue = watervalue * 2
         end
         self.inst.components.distiller:startBoiling(watervalue)
@@ -311,7 +311,7 @@ function Waterlevel:DoDelta(amount, doer)
     self.inst:PushEvent("percentusedchange", { percent = self:GetPercent() })
 end
 
-function Waterlevel:DoUpdate(dt)
+--[[function Waterlevel:DoUpdate(dt)
     if self.consuming ~= nil then
         self:DoDelta(-dt * self.rate * self.rate_modifiers:Get())
     end
@@ -337,7 +337,7 @@ function Waterlevel:StopConsuming()
     end
 end
 
-Waterlevel.LongUpdate = Waterlevel.DoUpdate
+Waterlevel.LongUpdate = Waterlevel.DoUpdate]]
 
 function Waterlevel:TestType(item, testvalues)
     local water = item ~= nil and item.components.waterlevel or item.components.water
