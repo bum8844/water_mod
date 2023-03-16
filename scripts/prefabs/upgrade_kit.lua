@@ -2,6 +2,14 @@ local well_kit_assets = {
     Asset("ANIM", "anim/well.zip"),
 }
 
+local well_sprinkler_kit assets = {
+    Asset("ANIM", "anim/well_sprinkler.zip"),
+}
+
+local well_kit_prefabs = {
+    "well_sprinkler",
+}
+
 local well_kit_prefabs = {
     "well",
 }

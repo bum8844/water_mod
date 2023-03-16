@@ -287,12 +287,12 @@ end
 
 local function getstatus(inst)
     return (inst:HasTag("burnt") and "BURNT")
+        or (inst.components.distiller:GetTimeToBoil() > 0 and "PURIFY")
         or (inst.components.stewer:IsDone() and "DONE")
-        or (inst:HasTag("boiling") and "PURIFY")
-        or (inst.components.waterlevel:GetWater() > 0 and "HASWATER")
-        or (not inst.components.stewer:IsCooking() and "EMPTY")
         or (inst.components.stewer:GetTimeToCook() > 15 and "BOILING_LONG")
-        or "BOILING_SHORT"
+        or (inst.components.stewer:IsCooking() and inst.components.stewer:GetTimeToCook() < 15 and "BOILING_SHORT")
+        or (inst.components.waterlevel:GetWater() > 0 and "HASWATER")
+        or "EMPTY"
 end
 
 local function onsave(inst, data)

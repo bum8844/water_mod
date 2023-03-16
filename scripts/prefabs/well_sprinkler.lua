@@ -14,16 +14,14 @@ local projectile_assets =
 
 local prefabs =
 {
-	"water_spray",
+	"well_water_spray",
 }
-
-RANGE = 8
 
 local function spawndrop(inst)
 	local drop = SpawnPrefab("raindrop")
 	local pt = Vector3(inst.Transform:GetWorldPosition())
-	local angle = math.random()*2*PI
-	local dist = math.random()*RANGE
+	local angle = math.random()*2*math.pi
+	local dist = math.random()*TUNING.SPRINKLER_RANGE
 	local offset = Vector3(dist * math.cos( angle ), 0, -dist * math.sin( angle ))
 	drop.Transform:SetPosition(pt.x+offset.x,0,pt.z+offset.z)
 end
@@ -87,17 +85,19 @@ local function OnFuelEmpty(inst)
 	inst.components.machine:TurnOff()
 end
 
-local function OnFuelSectionChange(old, new, inst)
-	local fuelAnim = inst.components.fueled:GetCurrentSection()
-	inst.AnimState:OverrideSymbol("swap_meter", "sprinkler_meter", fuelAnim)
+local function OnFuelSectionChange(new, old, inst)
+    if inst._fuellevel ~= new then
+        inst._fuellevel = new
+        inst.AnimState:OverrideSymbol("swap_meter", "sprinkler_meter", tostring(new))
+    end
 end
 
 local function GetStatus(inst, viewer)
-	if inst.on then
-		return "ON"
-	else
-		return "OFF"
-	end
+	return inst.components.fueled ~= nil
+            and inst.components.fueled.currentfuel / inst.components.fueled.maxfuel <= .25
+            and "LOWFUEL"
+            or inst.on and "ON"
+            or "OFF"
 end
 
 local function OnEntitySleep(inst)
@@ -130,31 +130,15 @@ local function OnLoad(inst, data)
 end
 
 local function OnLoadPostPass(inst, newents, data)
-	inst.pipes = {}
-	inst.loadedPipesFromFile = false
-
 	if data and data.waterSpray then
 		inst.waterSpray = newents[data.waterSpray].entity
 	end
-
-    if data and data.pipes then
-        for i, pipe in ipairs(data.pipes) do
-        	local newpipe = newents[pipe].entity
-
-        	if newpipe then
-				newpipe.pipelineOwner = inst
-        		table.insert(inst.pipes, newpipe)
-        		inst.pipes[i].Transform:SetRotation(data.pipeAngles[i])
-        		inst.loadedPipesFromFile = true
-        	end
-        end
-    end
 end
 
-local function OnBuilt(inst)
+local function onbuilt(inst)
 	inst.AnimState:PlayAnimation("place")
 	inst.AnimState:PushAnimation("idle_off")
-	inst.SoundEmitter:PlaySound("dontstarve_DLC003/common/crafted/sprinkler/place")
+	inst.SoundEmitter:PlaySound("dontstarve_DLC001/common/firesupressor_craft")
 end
 
 local function UpdateSpray(inst)
@@ -180,16 +164,7 @@ local function UpdateSpray(inst)
 		end
 
 		if v.components.moisturelistener and not (v.components.inventoryitem and v.components.inventoryitem.owner) then
-
-			v.components.moisturelistener:AddMoisture(TUNING.MOISTURE_SPRINKLER_PERCENT_INCREASE_PER_SPRAY)
---[[
-			local moisture = v.components.moisturelistener:GetMoisture() --/ TUNING.MOISTURE_MAX_WETNESS
-			print("moisture",moisture)
-			--print(v.components.moisturelistener:GetMoisture(),TUNING.MOISTURE_MAX_WETNESS,"moisture_percent",moisture_percent)
-			moisture = math.min(100,moisture + (TUNING.MOISTURE_SPRINKLER_PERCENT_INCREASE_PER_SPRAY / 100))
-			print("moisture_percent",moisture/100)
-			v.components.moisturelistener:Soak(moisture/100)
-	]]		
+			v.components.moisturelistener:AddMoisture(TUNING.MOISTURE_SPRINKLER_PERCENT_INCREASE_PER_SPRAY)		
 		end
 
 
@@ -220,7 +195,6 @@ local function UpdateSpray(inst)
 			if v.components.moisture then
 				v.components.moisture.moisture_sources[inst.GUID] = nil
 			end
-			--dumptable(v.components.moisture.moisture_sources,1,1,1)
 
 			if v.growwithsprinkler then
 				v:RemoveTag("sprinkled")
@@ -230,7 +204,7 @@ local function UpdateSpray(inst)
 	end
 end
 
-local function OnHit(inst, worker)
+local function onhit(inst, worker)
 	if not inst:HasTag("burnt") then
 		if not inst.sg:HasStateTag("busy") then
 			inst.sg:GoToState("hit")
@@ -238,21 +212,17 @@ local function OnHit(inst, worker)
 	end
 end
 
-local function OnHammered(inst, worker)
-	if inst:HasTag("fire") and inst.components.burnable then
-		inst.components.burnable:Extinguish()
-	end
-
+local function onhammered(inst, worker)
+    if inst.components.burnable ~= nil and inst.components.burnable:IsBurning() then
+        inst.components.burnable:Extinguish()
+    end
 	inst.SoundEmitter:KillSound("idleloop")
-	inst.components.lootdropper:DropLoot()
-	SpawnPrefab("collapse_small").Transform:SetPosition(inst.Transform:GetWorldPosition())
-	inst.SoundEmitter:PlaySound("dontstarve/common/destroy_wood")
-	TurnOff(inst, true)
-	inst:Remove()
+    inst.components.lootdropper:DropLoot()
+    local fx = SpawnPrefab("collapse_small")
+    fx.Transform:SetPosition(inst.Transform:GetWorldPosition())
+    fx:SetMaterial("metal")
+    inst:Remove()
 end
-
-
---require "prefabutil"
 
 
 local function fn()
@@ -296,8 +266,8 @@ local function fn()
 	inst:AddComponent("workable")
 	inst.components.workable:SetWorkAction(ACTIONS.HAMMER)
 	inst.components.workable:SetWorkLeft(4)
-	inst.components.workable:SetOnFinishCallback(OnHammered)
-	inst.components.workable:SetOnWorkCallback(OnHit)
+	inst.components.workable:SetOnFinishCallback(onhammered)
+	inst.components.workable:SetOnWorkCallback(onhit)
 
 	inst:SetStateGraph("SGsprinkler")
 
@@ -309,7 +279,7 @@ local function fn()
     inst.OnLoadPostPass = OnLoadPostPass
     inst.OnEntitySleep = OnEntitySleep
 
-	inst:ListenForEvent("onbuilt", OnBuilt)
+	inst:ListenForEvent("onbuilt", onbuilt)
 
 	MakeSnowCovered(inst, .01)
 

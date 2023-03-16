@@ -14,8 +14,8 @@ local function OnSpawnIn(inst)
     inst.AnimState:PushAnimation("idle")
 end
 
-local function FailUpgrade(inst, performer, upgraded_from_item)
-	local refund = SpawnPrefab(upgraded_from_item.prefab)
+local function FailUpgrade(inst, performer, prefabs)
+	local refund = SpawnPrefab(prefabs)
     if performer ~= nil and performer.components.inventory ~= nil then
 		performer.components.inventory:GiveItem(refund, nil)
 	else
@@ -27,24 +27,25 @@ local function FailUpgrade(inst, performer, upgraded_from_item)
 end
 
 local function OnUpgrade(inst, performer, upgraded_from_item)
-	if upgraded_from_item.prefab == "well_kit" then
-        local new_well = ReplacePrefab(inst, "well")
-        new_well.SoundEmitter:PlaySound("dontstarve/common/together/town_portal/craft")
-		new_well:DoTaskInTime(.6, function(new_well)
+	local prefabs = upgraded_from_item.prefab
+	if prefabs == "well_kit" then
+        local hole = ReplacePrefab(inst, "well")
+        hole.SoundEmitter:PlaySound("dontstarve/common/together/town_portal/craft")
+		hole:DoTaskInTime(.6, function(new_well)
+			hole.SoundEmitter:PlaySound("saltydog/common/saltbox/place")
+		end)
+		hole.AnimState:PlayAnimation("place")
+		hole.AnimState:PushAnimation("idle_empty")
+	--[[elseif prefabs == "well_sprinkler" then
+		local hole = ReplacePrefab(inst, "well_sprinkler")
+        hole.SoundEmitter:PlaySound("dontstarve/common/together/town_portal/craft")
+		hole:DoTaskInTime(.6, function(new_well)
 			new_well.SoundEmitter:PlaySound("saltydog/common/saltbox/place")
 		end)
-		new_well.AnimState:PlayAnimation("place")
-		new_well.AnimState:PushAnimation("idle_empty")
-	--[[elseif upgraded_from_item.prefabs == "well_sprinkler_kit" then
-		local new_sprinkler = ReplacePrefab(inst, "well_sprinkler")
-        new_sprinkler.SoundEmitter:PlaySound("dontstarve/common/together/town_portal/craft")
-		new_sprinkler:DoTaskInTime(.6, function(new_well)
-			new_well.SoundEmitter:PlaySound("saltydog/common/saltbox/place")
-		end)
-		new_sprinkler.AnimState:PlayAnimation("place")
-		new_sprinkler.AnimState:PushAnimation("idle_empty")]]
+		hole.AnimState:PlayAnimation("place")
+		hole.AnimState:PushAnimation("idle_empty")]]
 	else
-		FailUpgrade(inst, performer, upgraded_from_item)
+		FailUpgrade(inst, performer, prefabs)
 	end
 end
 

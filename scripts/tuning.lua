@@ -130,6 +130,11 @@ local tuning =
 	INTOXICATION_TIME = GetModConfigData("alcohol_time"),
 	IMMUNE_TIME = GetModConfigData("immune_time"),
 	GHOST_TIME = GetModConfigData("ghost_time"),
+
+	--well sprinkler
+	SPRINKLER_MAX_FUEL_TIME = total_day_time,
+	MOISTURE_SPRINKLER_PERCENT_INCREASE_PER_SPRAY = 0.5,
+	SPRINKLER_RANGE = 8,
 }
 
 for i,v in pairs(tuning) do
