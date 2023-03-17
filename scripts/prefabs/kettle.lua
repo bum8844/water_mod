@@ -279,10 +279,12 @@ local function OnTakeWater(inst)
 end
 
 local function OnTaken(inst, source, delta)
-    inst.components.waterlevel:DoDelta(-inst.components.waterlevel:GetWater())
-    inst.AnimState:PlayAnimation("getdrink_empty")
-    inst.AnimState:PushAnimation("idle_empty", false)
-    inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/medium")
+    if not inst:HasTag("burnt") then
+        inst.components.waterlevel:DoDelta(-inst.components.waterlevel:GetWater())
+        inst.AnimState:PlayAnimation("getdrink_empty")
+        inst.AnimState:PushAnimation("idle_empty", false)
+        OnTakeWater(inst)
+    end
 end
 
 local function getstatus(inst)

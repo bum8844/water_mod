@@ -199,12 +199,16 @@ local function harvestfn(inst,picker,loot)
             loot.components.perishable:SetPercent(inst.components.stewer.product_spoilage * spoilpercent)
             loot.components.perishable:StartPerishing()
         end
-        local recipe = cooking.GetRecipe(inst.prefab, inst.components.stewer.product)
         picker:PushEvent("learncookbookrecipe", {product = inst.components.stewer.product, ingredients = inst.components.stewer.ingredient_prefabs})
         inst.components.stewer.product = nil
         inst.components.waterlevel:DoDelta(-inst.components.waterlevel:GetWater())
-        inst.AnimState:PlayAnimation("idle_empty")
-        inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_close")
+        inst.AnimState:PlayAnimation("getdrink")
+        inst.SoundEmitter:PlaySound("dontstarve/creatures/pengull/splash")
+        inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/medium")
+        inst.AnimState:PushAnimation("idle_empty",false)
+        inst:DoTaskInTime(.35,function (inst)
+            inst.SoundEmitter:PlaySound("saltydog/common/saltbox/close")
+        end)
         inst.components.stewer:Harvest(picker)
     end
 end
@@ -235,6 +239,8 @@ end
 local function OnTaken(inst, taker, water_amount)
     if not inst:HasTag("burnt") then
         inst.components.waterlevel:DoDelta(-water_amount)
+        inst.AnimState:PlayAnimation("getdrink_empty")
+        inst.AnimState:PushAnimation("idle_empty", false)
         OnTakeWater(inst)
     end
 end
