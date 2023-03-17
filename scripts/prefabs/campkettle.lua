@@ -140,6 +140,7 @@ end
 local function getstatus(inst)
     return (inst.components.waterlevel:GetWater() == 0 and "GENERIC")
         or (inst.components.distiller:isDone() and "DONE")
+        or (inst._fire.components.fueled ~= nil and inst._fire.components.fueled.currentfuel / inst._fire.components.fueled.maxfuel <= 0 and "STOP")
         or (inst.components.distiller:GetTimeToBoil() > 15 and "BOILING_LONG")
         or "BOILING_SHORT"
 end

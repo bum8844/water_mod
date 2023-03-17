@@ -75,7 +75,7 @@ local function OnLoad(inst, data)
 		if inst.components.fueled:GetCurrentSection() > 0 then
 			inst._kettle.components.waterlevel:DoDiistiller(inst._kettle)
 		end
-		if data.kettle.watertype == WATERTYPE.CLEAN then
+		if data.kettle.watertype == WATERTYPE.CLEAN and data.kettle.waterlevel > 0 then
 			inst._kettle.components.pickable.canbepicked = true
 		end
 	end
