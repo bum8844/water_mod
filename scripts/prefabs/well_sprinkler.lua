@@ -1,11 +1,25 @@
-local assets =
+require("constants")
+local NEED_TAGS = { "pond" }
+local range = TUNING.FIND_WATER_RANGE
+
+--[[local assets =
 {
 	Asset("ANIM", "anim/well_sprinkler.zip"),
 
 	Asset("ANIM", "anim/well_sprinkler_placement.zip"),
 	Asset("ANIM", "anim/well_sprinkler_meter.zip"),
 	Asset("MINIMAP_IMAGE", "firesuppressor"),
+}]]
+
+local assets =
+{
+	Asset("ANIM", "anim/sprinkler.zip"),
+
+	--Asset("ANIM", "anim/sprinkler_placement.zip"),
+	Asset("ANIM", "anim/sprinkler_meter.zip"),
+	Asset("MINIMAP_IMAGE", "firesuppressor"),
 }
+
 
 local projectile_assets =
 {
@@ -14,16 +28,28 @@ local projectile_assets =
 
 local prefabs =
 {
+	"well_water_pipe",
 	"well_water_spray",
 }
 
 local function spawndrop(inst)
-	local drop = SpawnPrefab("raindrop")
-	local pt = Vector3(inst.Transform:GetWorldPosition())
-	local angle = math.random()*2*math.pi
+
+	local pt = inst:GetPosition()
+	local angle = math.random()*2*PI
 	local dist = math.random()*TUNING.SPRINKLER_RANGE
 	local offset = Vector3(dist * math.cos( angle ), 0, -dist * math.sin( angle ))
-	drop.Transform:SetPosition(pt.x+offset.x,0,pt.z+offset.z)
+
+	local drops = {}
+	for i = 1, 3 do
+    	local drop = SpawnPrefab("raindrop")
+    	drop.Transform:SetPosition(pt.x + offset.x, 0, pt.z + offset.z)
+    	drops[i] = drop
+	end
+
+	for i = 1, 3 do
+    	local x, y, z = drops[i].Transform:GetWorldPosition()
+    	TheWorld.components.farming_manager:AddSoilMoistureAtPoint(x, y, z, TUNING.ICE_MELT_GROUND_MOISTURE_AMOUNT / 2)
+	end
 end
 
 local function TurnOn(inst)
@@ -34,6 +60,7 @@ local function TurnOn(inst)
 		local follower = inst.waterSpray.entity:AddFollower()
 		follower:FollowSymbol(inst.GUID, "top", 0, -100, 0)
 	end
+
 	inst.droptask = inst:DoPeriodicTask(0.2,function() spawndrop(inst) spawndrop(inst) end)
 
 	inst.spraytask = inst:DoPeriodicTask(0.2,function()
@@ -64,20 +91,6 @@ local function TurnOff(inst)
 		inst.spraytask = nil
 	end
 
-
-	if inst.moisture_targets then
-		for GUID, i in pairs(inst.moisture_targets)do
-			print("TURN OFF",i.prefab)
-			if i.components.moisture then
-				i.components.moisture.moisture_sources[inst.GUID] = nil
-			end
-			if i.growwithsprinkler then
-				i:RemoveTag("sprinkled")
-				i.testForGrowth(i)
-			end
-		end
-	end
-
 	inst.sg:GoToState("turn_off")
 end
 
@@ -85,11 +98,20 @@ local function OnFuelEmpty(inst)
 	inst.components.machine:TurnOff()
 end
 
+local function OnAddFuel(inst)
+	inst.SoundEmitter:PlaySound("dontstarve_DLC001/common/machine_fuel")
+end
+
 local function OnFuelSectionChange(new, old, inst)
     if inst._fuellevel ~= new then
         inst._fuellevel = new
         inst.AnimState:OverrideSymbol("swap_meter", "sprinkler_meter", tostring(new))
     end
+end
+
+local function CanInteract(inst)
+	local nopipes = not inst.pipes or #inst.pipes == 0 or not inst.onhole
+	return not inst.components.fueled:IsEmpty() and not nopipes
 end
 
 local function GetStatus(inst, viewer)
@@ -109,9 +131,22 @@ local function OnSave(inst, data)
         data.burnt = true
     end
 
+    data.onhole = inst.onhole
     data.on = inst.on
 
     local refs = {}
+
+    if inst.onhole == nil then
+
+    	data.pipes = {}
+    	data.pipeAngles = {}
+
+	    for i, pipe in ipairs(inst.pipes) do
+	    	table.insert(refs, pipe.GUID)
+	    	table.insert(data.pipes, pipe.GUID)
+	    	table.insert(data.pipeAngles, pipe.Transform:GetRotation())
+	    end
+	end
 
     if inst.waterSpray then
 	    data.waterSpray = inst.waterSpray.GUID
@@ -126,12 +161,32 @@ local function OnLoad(inst, data)
         inst.components.burnable.onburnt(inst)
     end
 
+    inst.onhole = data.onhole and data.onhole or nil
     inst.on = data.on and data.on or false
+
 end
 
 local function OnLoadPostPass(inst, newents, data)
-	if data and data.waterSpray then
-		inst.waterSpray = newents[data.waterSpray].entity
+	if not data.onhole ~= nil then
+		inst.pipes = {}
+		inst.loadedPipesFromFile = false
+
+		if data and data.waterSpray then
+			inst.waterSpray = newents[data.waterSpray].entity
+		end
+
+    	if data and data.pipes then
+        	for i, pipe in ipairs(data.pipes) do
+        		local newpipe = newents[pipe].entity
+
+        		if newpipe then
+					newpipe.pipelineOwner = inst
+        			table.insert(inst.pipes, newpipe)
+        			inst.pipes[i].Transform:SetRotation(data.pipeAngles[i])
+        			inst.loadedPipesFromFile = true
+        		end
+        	end
+    	end
 	end
 end
 
@@ -143,65 +198,133 @@ end
 
 local function UpdateSpray(inst)
     local x, y, z = inst.Transform:GetWorldPosition()
-    local ents = TheSim:FindEntities(x, y, z, RANGE)
-
-	if not inst.moisture_targets then
-		inst.moisture_targets = {}
-	end
-	inst.moisture_targets_old = {}
-	for GUID,v in pairs(inst.moisture_targets) do
-    	inst.moisture_targets_old[GUID] = v
-	end
-    inst.moisture_targets = {} 
+    local ents = TheSim:FindEntities(x, y, z, TUNING.SPRINKLER_RANGE)
 
     for k,v in pairs(ents) do
-    	inst.moisture_targets[v.GUID] = v
-		if v.components.moisture then
-			if not v.components.moisture.moisture_sources then
-				v.components.moisture.moisture_sources = {}
-			end
-			v.components.moisture.moisture_sources[inst.GUID] = inst.moisturizing			
+    	local moisture_comp = v.components.moisture
+    	local burnable_comp = v.components.burnable
+    	local crop_comp = v.components.crop
+    	local growable_comp = v.components.growable
+    	local witherable_comp = v.components.witherable
+    	local x, y, z = v.Transform:GetWorldPosition()
+    	local wateryprotection_comp = inst.components.wateryprotection
+
+		if moisture_comp then
+			local equipamentos = v.components.inventory:GetWaterproofness()
+			local coberturas = moisture_comp.inherentWaterproofness	
+			local variante = equipamentos + coberturas
+			local quantidadefinal = 1 - math.min(variante, 1)
+			moisture_comp:DoDelta(0.05*quantidadefinal)
 		end
-
-		if v.components.moisturelistener and not (v.components.inventoryitem and v.components.inventoryitem.owner) then
-			v.components.moisturelistener:AddMoisture(TUNING.MOISTURE_SPRINKLER_PERCENT_INCREASE_PER_SPRAY)		
-		end
-
-
-		if v.components.crop and v.components.crop.task then
-
-			v.components.crop.growthpercent = v.components.crop.growthpercent + (0.001)
-		end
-
-		if v.components.burnable and not (v.components.inventoryitem and v.components.inventoryitem.owner) then
+		
+		if burnable_comp and not (v.components.inventoryitem and v.components.inventoryitem.owner) then
 			v.components.burnable:Extinguish()
-		end
-
-		if v.growwithsprinkler then
-			v:AddTag("sprinkled")
-			v.testForGrowth(v)
 		end		
-	end
+		
+		if crop_comp and crop_comp.task then
+			crop_comp.growthpercent = crop_comp.growthpercent + (0.001)
+		end		
 
-	for GUID,v in pairs(inst.moisture_targets_old)do
-		local still_affected = false
-		for iGUID, i in pairs(inst.moisture_targets)do
-			if GUID == iGUID then
-				still_affected = true
-				break
-			end
-		end
-		if not still_affected then	
-			if v.components.moisture then
-				v.components.moisture.moisture_sources[inst.GUID] = nil
-			end
+    	if growable_comp ~= nil then
+			growable_comp:ExtendGrowTime(-0.2)
+    	end
 
-			if v.growwithsprinkler then
-				v:RemoveTag("sprinkled")
-				v.testForGrowth(v)
-			end			
+    	if witherable_comp and witherable_comp:IsWithered() then
+			witherable_comp:ForceRejuvenate()
+		end	
+
+    	if wateryprotection_comp then
+        	wateryprotection_comp:SpreadProtectionAtPoint(x, y, z, 1)
+    	end
+	end
+end
+
+local function GetValidWaterPointNearby(pt)
+    local best_point = nil
+    local min_sq_dist = 999999999999
+    local ents = TheSim:FindEntities(pt.x, pt.y, pt.z, range, NEED_TAGS)
+    for i, v in ipairs(ents) do
+        local ex, ey, ez = v.Transform:GetWorldPosition()
+        if TheWorld.Map:IsAboveGroundAtPoint(pt.x, pt.y, pt.z, false) then
+            local cur_point = Vector3(ex, 0, ez)
+            local cur_sq_dist = cur_point:DistSq(pt)
+            if cur_sq_dist < min_sq_dist then
+                min_sq_dist = cur_sq_dist
+                best_point = cur_point
+            end
+        end
+    end
+
+    return best_point
+end
+
+local function RotateToTarget(inst, dest)
+    local px, py, pz = inst.Transform:GetWorldPosition()
+    local dz = pz - dest.z
+    local dx = dest.x - px
+    local angle = math.atan2(dz, dx) / DEGREES
+
+    -- Offset angle to account for pipe orientation in file.sa
+    local OFFSET_ANGLE = 90
+	inst.Transform:SetRotation(angle - OFFSET_ANGLE)
+end
+
+local function CreatePipes(inst)
+	
+	local P0 = Vector3(inst.Transform:GetWorldPosition())
+	local P1 = GetValidWaterPointNearby(P0)
+
+	inst.pipes = {}
+
+	if P1 then
+		local totalDist = P1:Dist(P0)
+		local pipeLength = 2
+		local metricPipeLength = pipeLength / totalDist
+	
+		for t = 0.0, 1.0, metricPipeLength do
+			local Pt = (P1 - P0)*t + P0
+			local pipe = SpawnPrefab("well_water_pipe")
+			pipe.Transform:SetPosition(Pt.x, 0.0, Pt.z)
+			pipe.pipelineOwner = inst
+
+			RotateToTarget(pipe, P1)
+
+			table.insert(inst.pipes, pipe)
 		end
 	end
+end
+
+local function DestroyPipes(inst)
+	for i, pipe in ipairs(inst.pipes) do
+		pipe:Remove()
+	end
+end
+
+local function ConnectPipes(inst)
+	local numPipes = #inst.pipes
+
+	if numPipes > 2 then
+		for i = 2, numPipes, 1 do
+			inst.pipes[i - 1].nextPipe = inst.pipes[i]
+			inst.pipes[i].prevPipe = inst.pipes[i - 1]
+		end
+	end
+end
+
+local function ExtendPipes(inst)
+	if inst.loadedPipesFromFile then
+		for i, pipe in ipairs(inst.pipes) do
+			pipe.sg:GoToState("idle")
+		end
+	else
+		if #inst.pipes > 0 then
+			inst.pipes[1].sg:GoToState("extend",1)
+		end
+	end
+end
+
+local function RetractPipes(inst)	
+	inst.pipes[#inst.pipes].sg:GoToState("retract",#inst.pipes)
 end
 
 local function onhit(inst, worker)
@@ -216,31 +339,53 @@ local function onhammered(inst, worker)
     if inst.components.burnable ~= nil and inst.components.burnable:IsBurning() then
         inst.components.burnable:Extinguish()
     end
+    inst.components.machine.turnofffn(inst)
 	inst.SoundEmitter:KillSound("idleloop")
-    inst.components.lootdropper:DropLoot()
     local fx = SpawnPrefab("collapse_small")
+    if inst.onhole ~= nil then
+    	local hole = SpawnPrefab("hole")
+    	hole.Transform:SetPosition(inst.Transform:GetWorldPosition())
+    else
+    	DestroyPipes(inst)
+    end
     fx.Transform:SetPosition(inst.Transform:GetWorldPosition())
     fx:SetMaterial("metal")
-    inst:Remove()
+	inst.components.lootdropper:DropLoot()
+	inst:Remove()
 end
 
 
 local function fn()
-	local inst = CreateEntity()
-	local trans = inst.entity:AddTransform()
-	local anim = inst.entity:AddAnimState()
-	local sound = inst.entity:AddSoundEmitter()
+    local inst = CreateEntity()
 
-	local minimap = inst.entity:AddMiniMapEntity()	
-	minimap:SetPriority(5)
-	minimap:SetIcon("sprinkler.png")
+    inst.entity:AddTransform()
+    inst.entity:AddAnimState()
+    inst.entity:AddSoundEmitter()
+    inst.entity:AddMiniMapEntity()
+    inst.entity:AddLight()
+    inst.entity:AddNetwork()
+
+    inst.MiniMapEntity:SetPriority(5)
+    inst.MiniMapEntity:SetIcon("firesuppressor.png")
 
 	MakeObstaclePhysics(inst, 1)
 
-	anim:SetBank("sprinkler")
-	anim:SetBuild("sprinkler")
-	anim:PlayAnimation("idle_off")
-	inst.on = false
+	inst.AnimState:SetBank("sprinkler")
+	inst.AnimState:SetBuild("sprinkler")
+	inst.AnimState:PlayAnimation("idle_off")
+	inst.AnimState:OverrideSymbol("swap_meter", "sprinkler_meter", "10")
+
+	inst:AddTag("structure")
+
+    inst.entity:SetPristine()
+
+    if not TheWorld.ismastersim then
+        return inst
+    end
+
+    inst.onhole = nil
+    inst.on = false
+    inst.waterSpray = nil
 
 	inst:AddComponent("inspectable")
 	inst.components.inspectable.getstatus = GetStatus
@@ -253,14 +398,13 @@ local function fn()
 
 	inst:AddComponent("fueled")
 	inst.components.fueled:SetDepletedFn(OnFuelEmpty)
+	inst.components.fueled:SetTakeFuelFn(OnAddFuel)
 	inst.components.fueled.accepting = true
 	inst.components.fueled:SetSections(10)
 	inst.components.fueled:SetSectionCallback(OnFuelSectionChange)
 	inst.components.fueled:InitializeFuelLevel(TUNING.SPRINKLER_MAX_FUEL_TIME)
 	inst.components.fueled.bonusmult = 5
 	inst.components.fueled.secondaryfueltype = "CHEMICAL"
-
-	inst.AnimState:OverrideSymbol("swap_meter", "sprinkler_meter", 10)
 
 	inst:AddComponent("lootdropper")
 	inst:AddComponent("workable")
@@ -269,21 +413,29 @@ local function fn()
 	inst.components.workable:SetOnFinishCallback(onhammered)
 	inst.components.workable:SetOnWorkCallback(onhit)
 
-	inst:SetStateGraph("SGsprinkler")
+	inst:SetStateGraph("SGwell_sprinkler")
 
 	inst.moisturizing = 2
 	inst.UpdateSpray = UpdateSpray
 
 	inst.OnSave = OnSave 
     inst.OnLoad = OnLoad
-    inst.OnLoadPostPass = OnLoadPostPass
+    OnLoadPostPass = OnLoadPostPass
     inst.OnEntitySleep = OnEntitySleep
 
 	inst:ListenForEvent("onbuilt", onbuilt)
 
 	MakeSnowCovered(inst, .01)
 
-	inst.waterSpray = nil
+	inst:DoTaskInTime(0.1,function(inst)
+		if inst.onhole == nil then
+			if not inst.pipes or (#inst.pipes < 1) then
+				CreatePipes(inst)
+			end
+			ConnectPipes(inst)
+			ExtendPipes(inst)
+		end
+	end)
 
 	return inst
 end

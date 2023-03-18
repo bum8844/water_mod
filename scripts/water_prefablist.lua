@@ -16,7 +16,7 @@ return {
 	"kettle",
 	"portablekettle",
 	"well",
-	--"well_sprinkler",
+	"well_sprinkler",
 	"well_drilling",
 
 	--food & plants
@@ -33,6 +33,8 @@ return {
 
 	--fx
 	"campkettlefire",
+	"well_water_spray",
+	"well_water_pipe",
 
 	--new fertilizer_nutrient_defs
 	"water_fertilizer_nutrient_defs",

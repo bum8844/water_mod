@@ -72,11 +72,11 @@ local function OnLoad(inst, data)
 		install_kettle(inst, true)
 		inst._kettle.components.waterlevel:InitializeWaterLevel(math.max(0, data.kettle.waterlevel))
 		inst._kettle.components.waterlevel:SetWaterType(data.kettle.watertype)
-		if inst.components.fueled:GetCurrentSection() > 0 then
-			inst._kettle.components.waterlevel:DoDiistiller(inst._kettle)
-		end
 		if data.kettle.watertype == WATERTYPE.CLEAN and data.kettle.waterlevel > 0 then
 			inst._kettle.components.pickable.canbepicked = true
+		end
+		if inst.components.fueled:GetCurrentSection() > 0 or data.kettle.watertype == WATERTYPE.CLEAN then
+			inst._kettle.components.waterlevel:DoDiistiller(inst._kettle)
 		end
 	end
 end

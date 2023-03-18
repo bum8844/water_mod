@@ -36,14 +36,15 @@ local function OnUpgrade(inst, performer, upgraded_from_item)
 		end)
 		hole.AnimState:PlayAnimation("place")
 		hole.AnimState:PushAnimation("idle_empty")
-	--[[elseif prefabs == "well_sprinkler" then
+	elseif prefabs == "well_sprinkler_kit" then
 		local hole = ReplacePrefab(inst, "well_sprinkler")
         hole.SoundEmitter:PlaySound("dontstarve/common/together/town_portal/craft")
 		hole:DoTaskInTime(.6, function(new_well)
 			new_well.SoundEmitter:PlaySound("saltydog/common/saltbox/place")
 		end)
+		hole.onhole = "hole"
 		hole.AnimState:PlayAnimation("place")
-		hole.AnimState:PushAnimation("idle_empty")]]
+		hole.AnimState:PushAnimation("idle_off")
 	else
 		FailUpgrade(inst, performer, prefabs)
 	end

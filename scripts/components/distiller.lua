@@ -177,27 +177,17 @@ function Distiller:OnLoad(data)
 	end
 end
 
-local function updating(inst, dt, self)
-    self.boiling_timer = self.boiling_timer - dt
-    self.task = self.inst:DoTaskInTime(self.boiling_timer - GetTime(),doboil,self)
-    dt = 0
-end
-
 function Distiller:LongUpdate(dt)
     if self:isBoiling() then
         if self.task ~= nil then
             self.task:Cancel()
         end
-        if self.boiling_timer - dt > GetTime() then
-        	if self.inst._fire ~= nil then
-    			if self.inst._fire.components.fueled:GetCurrentSection() > 0 then
-    				updating(self.inst, dt, self)
-    			else
-    				self:stopBoiling(dt)
-    			end
-        	else
-            	updating(self.inst, dt, self)
-        	end
+        if self.inst._fire ~= nil and self.inst._fire.components.fueled:GetCurrentSection() > 0 then
+        	self:stopBoiling(dt)
+        elseif self.boiling_timer - dt > GetTime() then
+            self.boiling_timer = self.boiling_timer - dt
+            self.task = self.inst:DoTaskInTime(self.targettime - GetTime(), doboil, self)
+            dt = 0
         else
             dt = dt - self.boiling_timer + GetTime()
             doboil(self.inst, self)

@@ -134,7 +134,9 @@ local tuning =
 	--well sprinkler
 	SPRINKLER_MAX_FUEL_TIME = total_day_time,
 	MOISTURE_SPRINKLER_PERCENT_INCREASE_PER_SPRAY = 0.5,
-	SPRINKLER_RANGE = 8,
+	FIND_WATER_RANGE = 20,
+	SPRINKLER_RANGE = 15,
+	SPRINKLER_PLACER_SCALE = 1.55,
 }
 
 for i,v in pairs(tuning) do
