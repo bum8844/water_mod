@@ -75,7 +75,7 @@ local drinks =
 	pomegranate_juice =
 	{
 		test = function(boilier, names, tags) return (( names.pomegranate or 0 ) + ( names.pomegranate_cooked or 0 ) >= 2 ) and notmeat(tags) end,
-		priority = 1,
+		priority = 2,
 		health = TUNING.HEALING_MEDLARGE,
 		hunger = TUNING.DRINK_CALORIES,
 		sanity = TUNING.SANITY_MED,
@@ -89,7 +89,7 @@ local drinks =
 	banana_juice =
 	{
 		test = function(boilier, names, tags) return (( names.cave_banana or 0 ) + ( names.cave_banana_cooked or 0 ) >= 2 ) and notmeat(tags) end,
-		priority = 1,
+		priority = 2,
 		health = TUNING.HEALING_MEDSMALL,
 		hunger = TUNING.DRINK_CALORIES,
 		sanity = TUNING.SANITY_MEDLARGE,
@@ -103,7 +103,7 @@ local drinks =
 	fig_juice =
 	{
 		test = function(boilier, names, tags) return (( names.fig or 0) + ( names.fig_cooked or 0 ) >= 2 ) and notmeat(tags) end,
-		priority = 1,
+		priority = 2,
 		health = TUNING.HEALING_MED,
 		hunger = TUNING.DRINK_CALORIES,
 		sanity = TUNING.SANITY_LARGE,
@@ -117,7 +117,7 @@ local drinks =
 	dragonjuice =
 	{
 		test = function(boilier, names, tags) return (( names.dragonfruit or 0 ) + ( names.dragonfruit_cooked or 0 ) >= 2 ) and notmeat(tags) end,
-		priority = 1,
+		priority = 3,
 		health = TUNING.HEALING_HUGE,
 		hunger = TUNING.DRINK_CALORIES,
 		sanity = TUNING.SANITY_MED ,
@@ -145,7 +145,7 @@ local drinks =
 	glowberryjuice =
 	{
 		test = function(boilier, names, tags) return (( names.wormlight or 0 ) + ( names.wormlight_lesser or 0) >= 2) and notmeat(tags) end,
-		priority = 1,
+		priority = 4,
 		health = TUNING.HEALING_MED,
 		hunger = TUNING.DRINK_CALORIES,
 		sanity = TUNING.SANITY_TINY,
@@ -186,8 +186,8 @@ local drinks =
 	
 	caffeinberry_juice =
 	{
-		test = function(boilier, names, tags) return (( names.caffeinberry_bean_cooked or 0 ) + ( names.coffeebeans_cooked or 0 ) >= 2) and notmeat(tags) end,
-		priority = 1,
+		test = function(boilier, names, tags) return (( names.caffeinberry_bean_cooked or 0 ) + ( names.coffeebeans_cooked or 0 ) + ( names.mfp_coffeecherry_cooked ) >= 2) and notmeat(tags) end,
+		priority = 4,
 		health = TUNING.HEALING_SMALL,
 		hunger = TUNING.DRINK_CALORIES,
 		sanity = TUNING.SANITY_MED,
