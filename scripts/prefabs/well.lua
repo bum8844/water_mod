@@ -199,7 +199,7 @@ local function givewater(inst, picker)
     	end
 	end
 
-	inst.components.pickable.numtoharvest = inst.components.pickable.numtoharvest - 20
+	inst.components.pickable.numtoharvest = 0
 	SetPickable(inst, false, inst.components.pickable.numtoharvest)
 end
 
@@ -220,8 +220,8 @@ local function OnGetItemFromPlayer(inst, giver, item)
 		old_fit = TUNING.BUCKET_LEVEL_PER_USE
 	end
 	item.components.finiteuses:Use(old_fit)
-	inst.components.pickable.numtoharvest = inst.components.pickable.numtoharvest + old_fit
-	inst._bucket_fit = item.components.finiteuses.current
+	inst.components.pickable.numtoharvest = old_fit
+	inst._bucket_fit = item.components.finiteuses:GetUses()
 	inst.SoundEmitter:PlaySound("turnoftides/common/together/boat/anchor/tether_land")
 	inst.AnimState:PlayAnimation("watering")
 	inst:DoTaskInTime(1.1,getwater, item, giver)
