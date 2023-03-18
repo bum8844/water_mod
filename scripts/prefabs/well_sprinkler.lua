@@ -2,28 +2,11 @@ require("constants")
 local NEED_TAGS = { "pond" }
 local range = TUNING.FIND_WATER_RANGE
 
---[[local assets =
-{
-	Asset("ANIM", "anim/well_sprinkler.zip"),
-
-	Asset("ANIM", "anim/well_sprinkler_placement.zip"),
-	Asset("ANIM", "anim/well_sprinkler_meter.zip"),
-	Asset("MINIMAP_IMAGE", "firesuppressor"),
-}]]
-
 local assets =
 {
-	Asset("ANIM", "anim/sprinkler.zip"),
-
-	--Asset("ANIM", "anim/sprinkler_placement.zip"),
-	Asset("ANIM", "anim/sprinkler_meter.zip"),
-	Asset("MINIMAP_IMAGE", "firesuppressor"),
-}
-
-
-local projectile_assets =
-{
-	Asset("ANIM", "anim/firefighter_projectile.zip")
+	Asset("ANIM", "anim/well_sprinkler.zip"),
+	Asset("ANIM", "anim/well_sprinkler_meter.zip"),
+	--Asset("MINIMAP_IMAGE", "firesuppressor"),
 }
 
 local prefabs =
@@ -365,8 +348,8 @@ local function fn()
     inst.entity:AddLight()
     inst.entity:AddNetwork()
 
-    inst.MiniMapEntity:SetPriority(5)
-    inst.MiniMapEntity:SetIcon("firesuppressor.png")
+    --inst.MiniMapEntity:SetPriority(5)
+    --inst.MiniMapEntity:SetIcon("firesuppressor.png")
 
 	MakeObstaclePhysics(inst, 1)
 
