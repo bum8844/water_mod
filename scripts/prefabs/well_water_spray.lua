@@ -1,6 +1,7 @@
 local assets =
 {
-	Asset("ANIM", "anim/well_sprinkler_fx.zip")
+	--Asset("ANIM", "anim/well_sprinkler_fx.zip")
+	Asset("ANIM", "anim/sprinkler_fx.zip")
 }
 
 local prefabs =

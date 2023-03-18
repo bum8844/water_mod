@@ -4,9 +4,12 @@ local range = TUNING.FIND_WATER_RANGE
 
 local assets =
 {
-	Asset("ANIM", "anim/well_sprinkler.zip"),
-	Asset("ANIM", "anim/well_sprinkler_meter.zip"),
+	--Asset("ANIM", "anim/well_sprinkler.zip"),
+	--Asset("ANIM", "anim/well_sprinkler_meter.zip"),
 	--Asset("MINIMAP_IMAGE", "firesuppressor"),
+
+	Asset("ANIM", "anim/sprinkler.zip"),
+	Asset("ANIM", "anim/sprinkler_meter.zip"),
 }
 
 local prefabs =
