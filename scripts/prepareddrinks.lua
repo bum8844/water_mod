@@ -186,7 +186,7 @@ local drinks =
 	
 	caffeinberry_juice =
 	{
-		test = function(boilier, names, tags) return (( names.caffeinberry_bean_cooked or 0 ) + ( names.coffeebeans_cooked or 0 ) + ( names.mfp_coffeecherry_cooked ) >= 2) and notmeat(tags) end,
+		test = function(boilier, names, tags) return (( names.caffeinberry_bean_cooked or 0 ) + ( names.coffeebeans_cooked or 0 ) + ( names.mfp_coffeecherry_cooked or 0 ) >= 2) and notmeat(tags) end,
 		priority = 4,
 		health = TUNING.HEALING_SMALL,
 		hunger = TUNING.DRINK_CALORIES,
@@ -240,7 +240,7 @@ local drinks =
 		cooktime = TUNING.KETTLE_VEGGIE,
 		potlevel = "small",
 		potlevel_bottle = "mid",
-		card_def={ingredients={{"carrot",2},{"twigs",2}}},
+		card_def={ingredients={{"carrot",2},{"twigs",2}},},
 	},
 	
 	cactus_tea =
