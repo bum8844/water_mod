@@ -6,8 +6,10 @@ local well_kit_assets = {
 }
 
 local well_sprinkler_kit_assets = {
-    Asset("ANIM", "anim/well_sprinkler.zip"),
-    Asset("ANIM", "anim/well_sprinkler_placement.zip"),
+    --Asset("ANIM", "anim/well_sprinkler.zip"),
+    --Asset("ANIM", "anim/well_sprinkler_placement.zip"),
+    Asset("ANIM", "anim/sprinkler.zip"),
+    Asset("ANIM", "anim/firefiht_placement.zip"),
 }
 
 local well_sprinkler_kit_prefabs = {
@@ -174,10 +176,15 @@ local function placer_postinit_fn(inst)
     local s = 1 / TUNING.SPRINKLER_PLACER_SCALE
     placer2.Transform:SetScale(s, s, s)
 
-    placer2.AnimState:SetBank("well_sprinkler")
-    placer2.AnimState:SetBuild("well_sprinkler")
+    placer2.AnimState:SetBank("firefighter")
+    placer2.AnimState:SetBuild("firefighter")
     placer2.AnimState:PlayAnimation("idle_off")
     placer2.AnimState:SetLightOverride(1)
+
+    --[[placer2.AnimState:SetBank("well_sprinkler")
+    placer2.AnimState:SetBuild("well_sprinkler")
+    placer2.AnimState:PlayAnimation("idle_off")
+    placer2.AnimState:SetLightOverride(1)]]
 
     placer2.entity:SetParent(inst.entity)
 
@@ -186,4 +193,5 @@ end
 
 return MakeUpGrade_Kit("well_kit", "well", nil, well_kit_assets, well_kit_prefabs),
 MakeUpGrade_Kit("well_sprinkler_kit", "well", well_sprinkler_kit_fn, well_sprinkler_kit_assets, well_sprinkler_kit_prefabs,{"well_sprinkler_kit"}),
-MakePlacer("well_sprinkler_kit_placer", "well_sprinkler_placement", "well_sprinkler_placement", "idle", true, nil, nil, TUNING.SPRINKLER_PLACER_SCALE, nil, nil, placer_postinit_fn)
+MakePlacer("well_sprinkler_kit_placer", "firefighter_placement", "firefighter_placement", "idle", true, nil, nil, TUNING.SPRINKLER_PLACER_SCALE, nil, nil, placer_postinit_fn)
+--MakePlacer("well_sprinkler_kit_placer", "well_sprinkler_placement", "well_sprinkler_placement", "idle", true, nil, nil, TUNING.SPRINKLER_PLACER_SCALE, nil, nil, placer_postinit_fn)
