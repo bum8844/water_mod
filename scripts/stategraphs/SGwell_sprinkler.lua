@@ -25,7 +25,6 @@ local states =
         tags = {"idle"},
 
         onenter = function(inst)
-            inst.SoundEmitter:PlaySound("dontstarve_DLC001/common/firesupressor_on")
             inst.AnimState:PlayAnimation("turn_on")
         end,
 

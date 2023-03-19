@@ -118,6 +118,23 @@ local SCENE =
             end
         end
     end,
+
+    machine = function(inst, doer, actions, right)
+            if right and not inst:HasTag("cooldown") and
+                not inst:HasTag("fueldepleted") and
+                not (inst.replica.equippable ~= nil and
+                not inst.replica.equippable:IsEquipped() and
+                inst.replica.inventoryitem ~= nil and
+                inst.replica.inventoryitem:IsHeld()) then
+            if inst:HasTag("turnedon") then
+                table.insert(actions, ACTIONS.TURNOFF)
+            elseif inst:HasTag("forfarm") then
+                table.insert(actions, ACTIONS.TURNON_TILEARRIVE)
+            else
+                table.insert(actions, ACTIONS.TURNON)
+            end
+        end
+    end,
 }
 
 for k, v in pairs(USEITEM) do

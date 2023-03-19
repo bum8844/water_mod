@@ -71,6 +71,7 @@ AddStategraphActionHandler("wilson_client", ActionHandler(ACTIONS.MILKINGTOOL, "
 AddStategraphActionHandler("wilson_client", ActionHandler(ACTIONS.PURIFY, "dolongaction"))
 AddStategraphActionHandler("wilson_client", ActionHandler(ACTIONS.DRINK, "drink"))
 AddStategraphActionHandler("wilson_client", ActionHandler(ACTIONS.DRINKPLAYER, "give"))
+AddStategraphActionHandler("wilson_client", ActionHandler(ACTIONS.TURNON_TILEARRIVE, "give"))
 
 ------------------------------------------------------------------------
 

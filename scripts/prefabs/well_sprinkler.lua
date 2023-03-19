@@ -373,6 +373,7 @@ local function fn()
 	inst.AnimState:OverrideSymbol("swap_meter", "sprinkler_meter", "10")
 
 	inst:AddTag("structure")
+	inst:AddTag("forfarm")
 
     inst.entity:SetPristine()
 

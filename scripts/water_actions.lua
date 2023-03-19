@@ -148,3 +148,15 @@ DRINKPLAYER.rangecheckfn = DefaultRangeCheck
 local DRINK = AddAction("DRINK", STRINGS.ACTIONS.DRINK, ACTIONS.EAT.fn)
 DRINK.priority = 1
 DRINK.mount_valid = true
+
+local TURNON_TILEARRIVE = AddAction("TURNON_TILEARRIVE",STRINGS.ACTIONS.TURNON,function(act)
+    local tar = act.target or act.invobject
+    if tar and tar.components.machine and not tar.components.machine:IsOn() then
+        tar.components.machine:TurnOn(tar)
+        return true
+    end
+end)
+
+ACTIONS.TURNON.priority = 1
+TURNON_TILEARRIVE.priority = 4
+TURNON_TILEARRIVE.theme_music = "farming"
