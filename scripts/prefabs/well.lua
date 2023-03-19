@@ -23,30 +23,43 @@ local function FailUpgrade(inst, performer, prefabs)
 	end
 	inst.components.upgradeable.upgradetype = UPGRADETYPES.HOLE
 	inst.components.upgradeable.numupgrades = 0
-	performer.components.talker:Say(_G.GetActionFailString(performer,"CONSTRUCT","NOTALLOWED"))
+	performer.components.talker:Say(GetActionFailString(performer,"CONSTRUCT","NOTALLOWED"))
+end
+
+local function PlayPlacementSounds(inst)
+	inst.SoundEmitter:PlaySound("dontstarve/common/together/town_portal/craft")
+	inst:DoTaskInTime(.6, function()
+		inst.SoundEmitter:PlaySound("saltydog/common/saltbox/place")
+	end)
+end
+
+local function CreateWell(inst)
+	local well = ReplacePrefab(inst, "well")
+	well.Transform:SetPosition(inst.Transform:GetWorldPosition())
+	well.AnimState:PlayAnimation("place")
+	well.AnimState:PushAnimation("idle_empty")
+	PlayPlacementSounds(well)
+	return well
+end
+
+local function CreateWellSprinkler(inst)
+	local sprinkler = ReplacePrefab(inst, "well_sprinkler")
+	sprinkler.Transform:SetPosition(inst.Transform:GetWorldPosition())
+	sprinkler.AnimState:PlayAnimation("place")
+	sprinkler.AnimState:PushAnimation("idle_off")
+	sprinkler.onhole = "hole"
+	PlayPlacementSounds(sprinkler)
+	return sprinkler
 end
 
 local function OnUpgrade(inst, performer, upgraded_from_item)
-	local prefabs = upgraded_from_item.prefab
-	if prefabs == "well_kit" then
-        local hole = ReplacePrefab(inst, "well")
-        hole.SoundEmitter:PlaySound("dontstarve/common/together/town_portal/craft")
-		hole:DoTaskInTime(.6, function(new_well)
-			hole.SoundEmitter:PlaySound("saltydog/common/saltbox/place")
-		end)
-		hole.AnimState:PlayAnimation("place")
-		hole.AnimState:PushAnimation("idle_empty")
-	elseif prefabs == "well_sprinkler_kit" then
-		local hole = ReplacePrefab(inst, "well_sprinkler")
-        hole.SoundEmitter:PlaySound("dontstarve/common/together/town_portal/craft")
-		hole:DoTaskInTime(.6, function(new_well)
-			new_well.SoundEmitter:PlaySound("saltydog/common/saltbox/place")
-		end)
-		hole.onhole = "hole"
-		hole.AnimState:PlayAnimation("place")
-		hole.AnimState:PushAnimation("idle_off")
+	local prefab = upgraded_from_item.prefab
+	if prefab == "well_kit" then
+		local hole = CreateWell(inst)
+	elseif prefab == "well_sprinkler_kit" then
+		local hole = CreateWellSprinkler(inst)
 	else
-		FailUpgrade(inst, performer, prefabs)
+		FailUpgrade(inst, performer, prefab)
 	end
 end
 

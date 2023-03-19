@@ -112,67 +112,73 @@ local function OnEntitySleep(inst)
 end
 
 local function OnSave(inst, data)
-	if inst:HasTag("burnt") or inst:HasTag("fire") then
+    if inst:HasTag("burnt") or inst:HasTag("fire") then
         data.burnt = true
     end
 
     data.onhole = inst.onhole
     data.on = inst.on
-
-    local refs = {}
-
     if inst.onhole == nil then
+        data.pipes = {}
+        data.pipeAngles = {}
 
-    	data.pipes = {}
-    	data.pipeAngles = {}
+        for i, pipe in ipairs(inst.pipes) do
+            table.insert(data.pipes, pipe.GUID)
+            table.insert(data.pipeAngles, pipe.Transform:GetRotation())
+        end
+    end
+    if inst.waterSpray ~= nil then
+        data.waterSpray = inst.waterSpray.GUID
+    end
 
-	    for i, pipe in ipairs(inst.pipes) do
-	    	table.insert(refs, pipe.GUID)
-	    	table.insert(data.pipes, pipe.GUID)
-	    	table.insert(data.pipeAngles, pipe.Transform:GetRotation())
-	    end
-	end
+    if inst.pipes ~= nil then
+        local pipes = {}
+        local pipeAngles = {}
 
-    if inst.waterSpray then
-	    data.waterSpray = inst.waterSpray.GUID
-	    table.insert(refs, inst.waterSpray.GUID)
-	end
+        for i, pipe in ipairs(inst.pipes) do
+            table.insert(pipes, pipe.GUID)
+            table.insert(pipeAngles, pipe.Transform:GetRotation())
+        end
+        data.pipes = pipes
+        data.pipeAngles = pipeAngles
+    end
 
-    return refs
+    return {}
 end
 
 local function OnLoad(inst, data)
-	if data and data.burnt and inst.components.burnable and inst.components.burnable.onburnt then
-        inst.components.burnable.onburnt(inst)
-    end
+	if data ~= nil then
+    	if data.burnt ~= nil and inst.components.burnable ~= nil and inst.components.burnable.onburnt ~= nil then
+        	inst.components.burnable.onburnt(inst)
+    	end
 
-    inst.onhole = data.onhole and data.onhole or nil
-    inst.on = data.on and data.on or false
-
+    	inst.onhole = data.onhole or nil
+    	inst.on = data.on or false
+	end
 end
 
 local function OnLoadPostPass(inst, newents, data)
-	if not data.onhole ~= nil then
-		inst.pipes = {}
-		inst.loadedPipesFromFile = false
+    if not data.onhole then
+        inst.pipes = {}
+        inst.loadedPipesFromFile = false
 
-		if data and data.waterSpray then
-			inst.waterSpray = newents[data.waterSpray].entity
-		end
+        if data.waterSpray ~= nil then
+            inst.waterSpray = newents[data.waterSpray].entity
+        end
 
-    	if data and data.pipes then
-        	for i, pipe in ipairs(data.pipes) do
-        		local newpipe = newents[pipe].entity
+        if data.pipes ~= nil then
+            for i, pipeGUID in ipairs(data.pipes) do
+                local newpipe = newents[pipeGUID].entity
 
-        		if newpipe then
-					newpipe.pipelineOwner = inst
-        			table.insert(inst.pipes, newpipe)
-        			inst.pipes[i].Transform:SetRotation(data.pipeAngles[i])
-        			inst.loadedPipesFromFile = true
-        		end
-        	end
-    	end
-	end
+                if newpipe ~= nil then
+                    newpipe.pipelineOwner = inst
+                    table.insert(inst.pipes, newpipe)
+                    inst.pipes[i].Transform:SetRotation(data.pipeAngles[i])
+                    inst.loadedPipesFromFile = true
+                end
+            end
+        end
+    end
 end
 
 local function onbuilt(inst)
@@ -255,61 +261,67 @@ local function RotateToTarget(inst, dest)
 end
 
 local function CreatePipes(inst)
-	
-	local P0 = Vector3(inst.Transform:GetWorldPosition())
-	local P1 = GetValidWaterPointNearby(P0)
+    local P0 = inst:GetPosition()
+    local P1 = GetValidWaterPointNearby(P0)
 
-	inst.pipes = {}
+    inst.pipes = {}
 
-	if P1 then
-		local totalDist = P1:Dist(P0)
-		local pipeLength = 2
-		local metricPipeLength = pipeLength / totalDist
-	
-		for t = 0.0, 1.0, metricPipeLength do
-			local Pt = (P1 - P0)*t + P0
-			local pipe = SpawnPrefab("well_water_pipe")
-			pipe.Transform:SetPosition(Pt.x, 0.0, Pt.z)
-			pipe.pipelineOwner = inst
+    if P1 then
+        local pipeLength = 2
+        local totalDistSq = P1:DistSq(P0)
+        local totalDist = math.sqrt(totalDistSq)
+        local metricPipeLength = pipeLength / totalDist
 
-			RotateToTarget(pipe, P1)
+        for t = 0.0, 1.0, metricPipeLength do
+            local Pt = (P1 - P0) * t + P0
+            local pipe = SpawnPrefab("well_water_pipe")
+            pipe.Transform:SetPosition(Pt.x, 0.0, Pt.z)
+            pipe.pipelineOwner = inst
 
-			table.insert(inst.pipes, pipe)
-		end
-	end
+            RotateToTarget(pipe, P1)
+
+            table.insert(inst.pipes, pipe)
+        end
+    end
 end
 
 local function DestroyPipes(inst)
-	for i, pipe in ipairs(inst.pipes) do
+	for i, pipe in pairs(inst.pipes) do
 		pipe:Remove()
 	end
 end
 
 local function ConnectPipes(inst)
-	local numPipes = #inst.pipes
+    local numPipes = #inst.pipes
 
-	if numPipes > 2 then
-		for i = 2, numPipes, 1 do
-			inst.pipes[i - 1].nextPipe = inst.pipes[i]
-			inst.pipes[i].prevPipe = inst.pipes[i - 1]
-		end
-	end
+    if numPipes > 2 then
+        for i = 2, numPipes, 1 do
+            local prevPipe = inst.pipes[i - 1]
+            local currPipe = inst.pipes[i]
+            prevPipe.nextPipe, currPipe.prevPipe = currPipe, prevPipe
+        end
+    end
 end
 
 local function ExtendPipes(inst)
-	if inst.loadedPipesFromFile then
-		for i, pipe in ipairs(inst.pipes) do
-			pipe.sg:GoToState("idle")
-		end
-	else
-		if #inst.pipes > 0 then
-			inst.pipes[1].sg:GoToState("extend",1)
-		end
-	end
+    if inst.loadedPipesFromFile then
+        for i, pipe in ipairs(inst.pipes) do
+            pipe.sg:GoToState("idle")
+        end
+    else
+        local firstPipe = inst.pipes[1]
+        if firstPipe ~= nil then
+            firstPipe.sg:GoToState("extend", 1)
+        end
+    end
 end
 
-local function RetractPipes(inst)	
-	inst.pipes[#inst.pipes].sg:GoToState("retract",#inst.pipes)
+local function RetractPipes(inst)
+    local numPipes = #inst.pipes
+    if numPipes > 0 then
+        local lastPipe = inst.pipes[numPipes]
+        lastPipe.sg:GoToState("retract", numPipes)
+    end
 end
 
 local function onhit(inst, worker)
