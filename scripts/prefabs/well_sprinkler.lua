@@ -6,7 +6,6 @@ local assets =
 {
 	--Asset("ANIM", "anim/well_sprinkler.zip"),
 	--Asset("ANIM", "anim/well_sprinkler_meter.zip"),
-	--Asset("MINIMAP_IMAGE", "firesuppressor"),
 
 	Asset("ANIM", "anim/sprinkler.zip"),
 	Asset("ANIM", "anim/sprinkler_meter.zip"),
@@ -351,8 +350,8 @@ local function fn()
     inst.entity:AddLight()
     inst.entity:AddNetwork()
 
-    --inst.MiniMapEntity:SetPriority(5)
-    --inst.MiniMapEntity:SetIcon("firesuppressor.png")
+    --local minimap = inst.entity:AddMiniMapEntity()
+   -- minimap:SetIcon("well_sprinkler.tex")
 
 	MakeObstaclePhysics(inst, 1)
 
