@@ -160,3 +160,22 @@ end)
 ACTIONS.TURNON.priority = 1
 TURNON_TILEARRIVE.priority = 4
 TURNON_TILEARRIVE.theme_music = "farming"
+
+UPGRADE_TILEARRIVE = AddAction("UPGRADE_TILEARRIVE",STRINGS.ACTIONS.UPGRADE.GENERIC,function(act)
+    if act.invobject and act.target and
+        act.invobject.components.upgrader and
+        act.invobject.components.upgrader:CanUpgrade(act.target, act.doer) and
+        act.target.components.upgradeable then
+
+        local can_upgrade, reason = act.target.components.upgradeable:CanUpgrade()
+        if can_upgrade then
+            return act.target.components.upgradeable:Upgrade(act.invobject, act.doer)
+        end
+
+        return false, reason
+    end
+end)
+
+UPGRADE_TILEARRIVE.priority = 4
+UPGRADE_TILEARRIVE.rmb = true
+UPGRADE_TILEARRIVE.theme_music = "farming"

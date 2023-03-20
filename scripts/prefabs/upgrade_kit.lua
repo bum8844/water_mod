@@ -7,9 +7,7 @@ local well_kit_assets = {
 
 local well_sprinkler_kit_assets = {
     --Asset("ANIM", "anim/well_sprinkler.zip"),
-    --Asset("ANIM", "anim/well_sprinkler_placement.zip"),
     Asset("ANIM", "anim/sprinkler.zip"),
-    Asset("ANIM", "anim/firefighter_placement.zip"),
 }
 
 local well_sprinkler_kit_prefabs = {
@@ -19,41 +17,6 @@ local well_sprinkler_kit_prefabs = {
 local well_kit_prefabs = {
     "well",
 }
-
-local function OnEnableHelper(inst, enabled)
-    if enabled then
-        if inst.helper == nil then
-            inst.helper = CreateEntity()
-
-            --[[Non-networked entity]]
-            inst.helper.entity:SetCanSleep(false)
-            inst.helper.persists = false
-
-            inst.helper.entity:AddTransform()
-            inst.helper.entity:AddAnimState()
-
-            inst.helper:AddTag("CLASSIFIED")
-            inst.helper:AddTag("NOCLICK")
-            inst.helper:AddTag("placer")
-
-            inst.helper.Transform:SetScale(TUNING.SPRINKLER_PLACER_SCALE, TUNING.SPRINKLER_PLACER_SCALE, TUNING.SPRINKLER_PLACER_SCALE)
-
-            inst.helper.AnimState:SetBank("firefighter_placement")
-            inst.helper.AnimState:SetBuild("firefighter_placement")
-            inst.helper.AnimState:PlayAnimation("idle")
-            inst.helper.AnimState:SetLightOverride(1)
-            inst.helper.AnimState:SetOrientation(ANIM_ORIENTATION.OnGround)
-            inst.helper.AnimState:SetLayer(LAYER_BACKGROUND)
-            inst.helper.AnimState:SetSortOrder(1)
-            inst.helper.AnimState:SetAddColour(0, .2, .5, 0)
-
-            inst.helper.entity:SetParent(inst.entity)
-        end
-    elseif inst.helper ~= nil then
-        inst.helper:Remove()
-        inst.helper = nil
-    end
-end
 
 local function GetValidWaterPointNearby(inst, pt)
     local best_point = nil
@@ -101,11 +64,6 @@ local function MakeUpGrade_Kit(name, animname, masterfn, assets, prefabs, tags)
         end
 
         if inst:HasTag("well_sprinkler_kit") then
-            if not TheNet:IsDedicated() then
-                inst:AddComponent("deployhelper")
-                inst.components.deployhelper.onenablehelper = OnEnableHelper
-            end
-
             inst._custom_candeploy_fn = PlaceTestFn
         end
 
@@ -192,6 +150,6 @@ local function placer_postinit_fn(inst)
 end
 
 return MakeUpGrade_Kit("well_kit", "well", nil, well_kit_assets, well_kit_prefabs),
-MakeUpGrade_Kit("well_sprinkler_kit", "well", well_sprinkler_kit_fn, well_sprinkler_kit_assets, well_sprinkler_kit_prefabs,{"well_sprinkler_kit"}),
+MakeUpGrade_Kit("well_sprinkler_kit", "well", well_sprinkler_kit_fn, well_sprinkler_kit_assets, well_sprinkler_kit_prefabs,{"well_sprinkler_kit","tile_deploy"}),
 MakePlacer("well_sprinkler_kit_placer", "firefighter_placement", "firefighter_placement", "idle", true, nil, nil, TUNING.SPRINKLER_PLACER_SCALE, nil, nil, placer_postinit_fn)
 --MakePlacer("well_sprinkler_kit_placer", "well_sprinkler_placement", "well_sprinkler_placement", "idle", true, nil, nil, TUNING.SPRINKLER_PLACER_SCALE, nil, nil, placer_postinit_fn)

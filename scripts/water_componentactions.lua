@@ -58,13 +58,6 @@ local USEITEM =
         end
     end,
 
-    --[[waterlevel = function(inst, doer, target, actions, right)
-        if inst.compinst.replica.waterlevel:IsAccepting() and target:HasTag("water")
-            and (target.replica.waterlevel == nil or target.replica.waterlevel:HasWater()) then
-            table.insert(actions, ACTIONS.TAKEWATER)
-        end
-    end,]]
-
     watertaker = function(inst, doer, target, actions)
         if target:HasTag("water") and (target.replica.waterlevel == nil or target.replica.waterlevel:HasWater()) then
             if inst:HasTag("bucket_empty") then
@@ -87,6 +80,20 @@ local USEITEM =
             end
         end
     end,
+
+    upgrader = function(inst, doer, target, actions)
+        print("값들어옴")
+        if inst:HasTag("tile_deploy") then
+            print("넘어옴")
+            for k,v in pairs(UPGRADETYPES) do
+                if inst:HasTag(v.."_upgrader") and doer:HasTag(v.."_upgradeuser") and target:HasTag(v.."_upgradeable") then
+                    table.insert(actions, ACTIONS.UPGRADE_TILEARRIVE)
+                    return
+                end
+            end
+        end
+    end,
+
 }
 
 local POINT =
@@ -120,18 +127,17 @@ local SCENE =
     end,
 
     machine = function(inst, doer, actions, right)
-            if right and not inst:HasTag("cooldown") and
+        if right and not inst:HasTag("cooldown") and
                 not inst:HasTag("fueldepleted") and
                 not (inst.replica.equippable ~= nil and
                 not inst.replica.equippable:IsEquipped() and
                 inst.replica.inventoryitem ~= nil and
-                inst.replica.inventoryitem:IsHeld()) then
+                inst.replica.inventoryitem:IsHeld()) and
+                inst:HasTag("forfarm") then
             if inst:HasTag("turnedon") then
                 table.insert(actions, ACTIONS.TURNOFF)
-            elseif inst:HasTag("forfarm") then
-                table.insert(actions, ACTIONS.TURNON_TILEARRIVE)
             else
-                table.insert(actions, ACTIONS.TURNON)
+                table.insert(actions, ACTIONS.TURNON_TILEARRIVE)
             end
         end
     end,

@@ -9,6 +9,7 @@ local assets =
 
 	Asset("ANIM", "anim/sprinkler.zip"),
 	Asset("ANIM", "anim/sprinkler_meter.zip"),
+	Asset("ANIM", "anim/firefighter_placement.zip"),
 }
 
 local prefabs =
@@ -351,6 +352,41 @@ local function onhammered(inst, worker)
 	inst:Remove()
 end
 
+local function OnEnableHelper(inst, enabled)
+    if enabled then
+        if inst.helper == nil then
+            inst.helper = CreateEntity()
+
+            --[[Non-networked entity]]
+            inst.helper.entity:SetCanSleep(false)
+            inst.helper.persists = false
+
+            inst.helper.entity:AddTransform()
+            inst.helper.entity:AddAnimState()
+
+            inst.helper:AddTag("CLASSIFIED")
+            inst.helper:AddTag("NOCLICK")
+            inst.helper:AddTag("placer")
+
+            inst.helper.Transform:SetScale(TUNING.SPRINKLER_PLACER_SCALE, TUNING.SPRINKLER_PLACER_SCALE, TUNING.SPRINKLER_PLACER_SCALE)
+
+            inst.helper.AnimState:SetBank("firefighter_placement")
+            inst.helper.AnimState:SetBuild("firefighter_placement")
+            inst.helper.AnimState:PlayAnimation("idle")
+            inst.helper.AnimState:SetLightOverride(1)
+            inst.helper.AnimState:SetOrientation(ANIM_ORIENTATION.OnGround)
+            inst.helper.AnimState:SetLayer(LAYER_BACKGROUND)
+            inst.helper.AnimState:SetSortOrder(1)
+            inst.helper.AnimState:SetAddColour(0, .2, .5, 0)
+
+            inst.helper.entity:SetParent(inst.entity)
+        end
+    elseif inst.helper ~= nil then
+        inst.helper:Remove()
+        inst.helper = nil
+    end
+end
+
 
 local function fn()
     local inst = CreateEntity()
@@ -374,6 +410,11 @@ local function fn()
 
 	inst:AddTag("structure")
 	inst:AddTag("forfarm")
+
+	if not TheNet:IsDedicated() then
+		inst:AddComponent("deployhelper")
+		inst.components.deployhelper.onenablehelper = OnEnableHelper
+    end
 
     inst.entity:SetPristine()
 
