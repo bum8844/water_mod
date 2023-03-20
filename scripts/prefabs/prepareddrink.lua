@@ -139,7 +139,7 @@ local function MakePreparedDrink(data)
         inst.components.edible.hungervalue = data.hunger
         inst.components.edible.thirstvalue = data.thirst
         inst.components.edible.foodtype = data.foodtype or FOODTYPE.GOODIES
-        inst.components.edible.secondaryfoodtype = data.secondaryfoodtype or nil
+        inst.components.edible.secondaryfoodtype = data.secondaryfoodtype or FOODTYPE.GENERIC
         inst.components.edible.sanityvalue = data.sanity or 0
         inst.components.edible.temperaturedelta = data.temperature or 0
         inst.components.edible.temperatureduration = data.temperatureduration or 0
@@ -196,6 +196,9 @@ local function MakePreparedDrink(data)
         MakeHauntableLaunchAndPerish(inst)
 
         ------------------------------------------------
+
+        inst:AddComponent("bait")
+
         inst:AddComponent("tradable")
 
         ------------------------------------------------
