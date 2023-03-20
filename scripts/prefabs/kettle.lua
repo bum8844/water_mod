@@ -289,7 +289,8 @@ end
 
 local function getstatus(inst)
     return (inst:HasTag("burnt") and "BURNT")
-        or (inst.components.distiller:isBoiling() and "PURIFY")
+        or (inst.components.distiller:GetTimeToBoil() > 15 and "PURIFY_LONG")
+        or (inst.components.distiller:isBoiling() and inst.components.distiller:GetTimeToBoil() < 15 and "PURIFY_SHORT")
         or (inst.components.stewer:IsDone() and "DONE")
         or (inst.components.stewer:GetTimeToCook() > 15 and "BOILING_LONG")
         or (inst.components.stewer:IsCooking() and inst.components.stewer:GetTimeToCook() < 15 and "BOILING_SHORT")

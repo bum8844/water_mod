@@ -73,6 +73,9 @@ function Distiller:isBoiling()
 end
 
 function Distiller:startBoiling(watertimer)
+
+	local timer = 1
+
     if self.inst.components.container ~= nil then
     	self.inst.components.container:Close()
     	self.inst.components.container:DropEverything()
@@ -91,7 +94,7 @@ function Distiller:startBoiling(watertimer)
 		self.inst.components.waterlevel.accepting = false
 	end
 
-	local timer = TUNING.BASE_COOK_TIME * TUNING.KETTLE_WATER * watertimer
+	timer = TUNING.BASE_COOK_TIME * TUNING.KETTLE_WATER * watertimer
 	self.boiling_timer = GetTime() + timer
 
 	if self.task ~= nil then
@@ -100,7 +103,7 @@ function Distiller:startBoiling(watertimer)
 	if self.onstartboiling ~= nil then
 		self.onstartboiling(self.inst)
 	end
-    self.task = self.inst:DoTaskInTime(self.boiling_timer,doboil,self)
+    self.task = self.inst:DoTaskInTime(timer,doboil,self)
 end
 
 function Distiller:stopBoiling(dt)
@@ -178,6 +181,7 @@ function Distiller:OnLoad(data)
 end
 
 function Distiller:LongUpdate(dt)
+	print("작동중")
     if self:isBoiling() then
         if self.task ~= nil then
             self.task:Cancel()

@@ -186,14 +186,18 @@ end
 
 local function OnAttached_obe(inst, target)
     inst.entity:SetParent(target.entity)
-    target.components.obe:SetHealth(target.components.health.currenthealth)
-    target.components.obe:SetHunger(target.components.hunger.current)
-    target.components.obe:SetSanity(target.components.sanity.current)
-    if target.components.thirst ~= nil then
-        target.components.obe:SetThirst(target.components.thirst.current)
+    if target.components.obe ~= nil then
+        target.components.obe:SetHealth(target.components.health.currenthealth)
+        target.components.obe:SetHunger(target.components.hunger.current)
+        target.components.obe:SetSanity(target.components.sanity.current)
+        if target.components.thirst ~= nil then
+            target.components.obe:SetThirst(target.components.thirst.current)
+        end
+        TheNet:Announce(""..target:GetDisplayName().." drank ".. STRINGS.NAMES.GHOSTLY_TEA ..", and became a ghost for "..TUNING.GHOST_TIME.." seconds!")
+        target.components.obe:DrinktoDeath()
+    else
+        target.components.health:DoDelta(-1000000)
     end
-    TheNet:Announce(""..target:GetDisplayName().." drank ".. STRINGS.NAMES.GHOSTLY_TEA ..", and became a ghost for "..TUNING.GHOST_TIME.." seconds!")
-    target.components.obe:DrinktoDeath()
 end
 
 local function OnDetached_obe(inst, target)

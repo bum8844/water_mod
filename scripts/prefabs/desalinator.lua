@@ -157,12 +157,11 @@ end
 
 local function getstatus(inst)
     return (inst:HasTag("burnt") and "BURNT")
-        or (inst:HasTag("boilling") and "PURIFY")
+        or (inst.components.distiller:GetTimeToBoil() > 15 and "PURIFY_LONG")
+        or (inst.components.distiller:isBoiling() and inst.components.distiller:GetTimeToBoil() < 15 and "PURIFY_SHORT")
         or (inst.components.distiller:isDone() and "HASWATER")
         or "EMPTY"
 end
-
-
 
 local function onpercentusedchange(inst, data)
     inst.components.wateryprotection.addwetness = data.percent * TUNING.WATER_BARREL_WETNESS

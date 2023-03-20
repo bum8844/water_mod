@@ -138,7 +138,7 @@ local drinks =
 		oneatenfn = function(inst, eater)
 			if not eater.components.health or eater.components.health:IsDead() or eater:HasTag("playerghost") then
 				return
-			elseif eater.components.debuffable and eater.components.debuffable:IsEnabled() then
+			elseif eater.components.debuffable and eater.components.debuffable:IsEnabled() and eater:HasTag("player") then
 				eater.sleepdrinkbuff_duration = TUNING.TEASLEEP_TIME + math.random()
 				eater.components.debuffable:AddDebuff("sleepdrinkbuff", "sleepdrinkbuff")
 			else
@@ -210,7 +210,7 @@ local drinks =
 		oneatenfn = function(inst, eater)
 			if not eater.components.health or eater.components.health:IsDead() or eater:HasTag("playerghost") then
 				return
-			elseif eater.components.debuffable and eater.components.debuffable:IsEnabled() then
+			elseif eater.components.debuffable and eater.components.debuffable:IsEnabled() and eater:HasTag("player")then
 				eater.caffeinbuff_duration = TUNING.CAFFEIN_TIME
 				eater.components.debuffable:AddDebuff("caffeinbuff", "caffeinbuff")
 			else
@@ -286,7 +286,7 @@ local drinks =
 			local knockouttime = TUNING.TEASLEEP_TIME + math.random()
 			if not eater.components.health or eater.components.health:IsDead() or eater:HasTag("playerghost") then
 				return
-			elseif eater.components.debuffable and eater.components.debuffable:IsEnabled() then
+			elseif eater.components.debuffable and eater.components.debuffable:IsEnabled() and eater:HasTag("player") then
 				eater.sleepdrinkbuff_ex_duration = TUNING.TEASLEEP_TIME + math.random()
 				eater.components.debuffable:AddDebuff("sleepdrinkbuff_ex", "sleepdrinkbuff_ex")
 			else
@@ -429,10 +429,10 @@ local drinks =
 		oneatenfn = function(inst, eater)
 			if not eater.components.health or eater.components.health:IsDead() or eater:HasTag("playerghost") then
 				return
-			elseif eater.components.debuffable and eater.components.debuffable:IsEnabled() then
+			elseif eater.components.debuffable and eater.components.debuffable:IsEnabled() and eater:HasTag("player")then
 				eater.components.debuffable:AddDebuff("obebuff", "obebuff")
 			else
-				eater.components.health:DoDelta(-10000)
+				eater.components.health:DoDelta(-1000000)
 			end
 		end,
 	},

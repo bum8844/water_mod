@@ -1,7 +1,7 @@
 local function alcahol(inst, eater)
 	if not eater.components.health or eater.components.health:IsDead() or eater:HasTag("playerghost") then
 		return
-	elseif eater.components.debuffable and eater.components.debuffable:IsEnabled() then
+	elseif eater.components.debuffable and eater.components.debuffable:IsEnabled() and eater:HasTag("player") then
 		if not eater:HasTag("valkyrie") then
 			eater.components.health:DoDelta(TUNING.ALCOHOL_POISON)
 			eater.alcoholdebuff_duration = TUNING.INTOXICATION_TIME
@@ -127,7 +127,7 @@ local drinks =
 				return
 			else
 				eater:AddDebuff("healthregenbuff", "healthregenbuff")
-				if eater.components.debuffable and eater.components.debuffable:IsEnabled() then
+				if eater.components.debuffable and eater.components.debuffable:IsEnabled() and eater:HasTag("player") then
 					eater.caffeinbuff_duration = TUNING.CAFFEIN_TIME
 					eater.components.debuffable:AddDebuff("caffeinbuff", "caffeinbuff")
 				else
@@ -159,7 +159,7 @@ local drinks =
 				return
             else
             	eater:AddDebuff("healthregenbuff", "healthregenbuff")
-				if eater.components.debuffable and eater.components.debuffable:IsEnabled() then
+				if eater.components.debuffable and eater.components.debuffable:IsEnabled() and eater:HasTag("player") then
 					eater.caffeinbuff_duration = TUNING.CAFFEIN_TIME
 					eater.components.debuffable:AddDebuff("caffeinbuff", "caffeinbuff")
 				else

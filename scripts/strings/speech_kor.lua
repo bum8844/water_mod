@@ -414,7 +414,7 @@ STRINGS.CHARACTERS.GENERIC.DESCRIBE.BLACKTEA = "약간의 우유가 필요해."
 STRINGS.CHARACTERS.GENERIC.DESCRIBE.BLACKTEA_ICED = "정말 멋진데?"
 STRINGS.CHARACTERS.GENERIC.DESCRIBE.FUER = "이건 홍차도 녹차도 아니야, 이상하네."
 STRINGS.CHARACTERS.GENERIC.DESCRIBE.MIXFLOWER = "향이 정말로 강렬하군."
-STRINGS.CHARACTERS.GENERIC.DESCRIBE.HIBISCUS = "달콤한 동인도의 차야."
+STRINGS.CHARACTERS.GENERIC.DESCRIBE.HIBISCUSTEA = "달콤한 동인도의 차야."
 STRINGS.CHARACTERS.GENERIC.DESCRIBE.CACTUSFLOWER = "엄청나게 이국적인 차군."
 STRINGS.CHARACTERS.GENERIC.DESCRIBE.LOTUSFLOWER = "정말 예쁜 색을 띄고 있지만, 약간 진흙향이 나는군."
 STRINGS.CHARACTERS.GENERIC.DESCRIBE.SUSHIBISCUS = "과학으로는 설명할수 없겠어."
@@ -439,7 +439,8 @@ STRINGS.CHARACTERS.GENERIC.ACTIONFAIL.GIVE.WELL_BUSY = "지금 물을 긷고 있
 
 STRINGS.CHARACTERS.GENERIC.DESCRIBE.DESALINATOR = {
 	EMPTY = "이제 바다에서도 신선한 물을 얻을 수 있겠어!",
-	PURIFY = "이 기계 일 잘하네!",
+	PURIFY_LONG = "이 기계 일 잘하네!",
+	PURIFY_SHORT = "TODO",
 	HASWATER = "정수가 완료되었어.",
 	BURNT = "불이 물을 이기다니, 이상하군.",
 }
@@ -472,7 +473,8 @@ STRINGS.CHARACTERS.GENERIC.DESCRIBE.KETTLE = {
 	BOILING_LONG = "충분히 기다려야 할거야.",
 	BOILING_SHORT = "거의 다 된것 같아!",
 	DONE = "음! 이제 마실 준비가 됐어! 그럼 이제 컵을 가져와야 겠어.",
-	PURIFY = "더러운 물로는 만들 수 없지!",
+	PURIFY_LONG = "더러운 물로는 만들 수 없지!",
+	PURIFY_SHORT = "TODO",
 	HASWATER = "이제 음료를 만들 수 있어.",
 }
 
@@ -482,7 +484,8 @@ STRINGS.CHARACTERS.GENERIC.DESCRIBE.PORTABLEKETTLE_ITEM = {
 	BOILING_LONG = "만드는 데에 시간이 좀 걸리겠어.",
 	BOILING_SHORT = "거의 다 된것 같아!",
 	DONE = "다 됐다!",
-	PURIFY = "더러운 물로는 만들 수 없지!",
+	PURIFY_LONG = "더러운 물로는 만들 수 없지!",
+	PURIFY_SHORT = "TODO",
 	HASWATER = "이제 음료를 만들 수 있어.",
 }
 
@@ -535,7 +538,7 @@ STRINGS.CHARACTERS.WALTER.DESCRIBE.BLACKTEA = "차 마실 시간이야."
 STRINGS.CHARACTERS.WALTER.DESCRIBE.BLACKTEA_ICED = "향긋하고 시원해."
 STRINGS.CHARACTERS.WALTER.DESCRIBE.FUER = "정말 진하게 우려냈나봐."
 STRINGS.CHARACTERS.WALTER.DESCRIBE.MIXFLOWER = "꽃향기가 가득해."
-STRINGS.CHARACTERS.WALTER.DESCRIBE.HIBISCUS = "정말 달콤한 꽃향기가 나."
+STRINGS.CHARACTERS.WALTER.DESCRIBE.HIBISCUSTEA = "정말 달콤한 꽃향기가 나."
 STRINGS.CHARACTERS.WALTER.DESCRIBE.CACTUSFLOWER = "아름다운 꽃이 장식되어 있어."
 STRINGS.CHARACTERS.WALTER.DESCRIBE.LOTUSFLOWER = "정말 예쁜 색의 음료야.조금 흙냄새가 나는것 같지만."
 STRINGS.CHARACTERS.WALTER.DESCRIBE.SUSHIBISCUS = "정말 예쁜 꽃이 들어있어.뭔가 조금 불길한 느낌이 드는것 같지만."
@@ -560,7 +563,8 @@ STRINGS.CHARACTERS.WALTER.ACTIONFAIL.GIVE.WELL_BUSY = "양동이가 두개나 �
 
 STRINGS.CHARACTERS.WALTER.DESCRIBE.DESALINATOR = {
 	EMPTY = "이걸로 바닷물에서 소금기를 분리해낼수 있을거야.",
-	PURIFY = "물을 내리는중이야.",
+	PURIFY_LONG = "물을 내리는중이야.",
+	PURIFY_SHORT = "TODO",
 	HASWATER = "이제 깨끗한 물을 얻을수 있어.",
 	BURNT = "불을 끌 수 있을정도의 물이 없었나봐",
 }
@@ -593,7 +597,8 @@ STRINGS.CHARACTERS.WALTER.DESCRIBE.KETTLE = {
 	BOILING_LONG = "이 일은 시간이 좀 걸릴거야. 그 사이에 내가 발견한 멋진 벌레를 보지 않을래?",
 	BOILING_SHORT = "음료가 거의 다 완성되었어!",
 	DONE = "와서 음료를 가져가!",
-	PURIFY = "음료를 준비 할 수 있도록 끓이고 있어",
+	PURIFY_LONG = "음료를 준비 할 수 있도록 끓이고 있어",
+	PURIFY_SHORT = "TODO",
 	HASWATER = "좋아, 이제 재료를 넣어 볼까?",
 }
 
@@ -603,7 +608,8 @@ STRINGS.CHARACTERS.WALTER.DESCRIBE.PORTABLEKETTLE_ITEM = {
 	BOILING_LONG = "기다리는동안 잡아온 곤충컬렉션을 정리할수 있을거야.",
 	BOILING_SHORT = "음료가 거의 다 완성되었어!",
 	DONE = "으음, 음료를 마실시간이다!",
-	PURIFY = "음료를 준비 할 수 있도록 끓이고 있어",
+	PURIFY_LONG = "음료를 준비 할 수 있도록 끓이고 있어",
+	PURIFY_SHORT = "TODO",
 	HASWATER = "좋아, 이제 재료를 넣어 볼까?",
 }
 
@@ -655,7 +661,7 @@ STRINGS.CHARACTERS.WANDA.DESCRIBE.BLACKTEA = "티 타임을 가지기에는 내�
 STRINGS.CHARACTERS.WANDA.DESCRIBE.BLACKTEA_ICED = "급하게 마셔도 입천장이 데지 않는건 좋아."
 STRINGS.CHARACTERS.WANDA.DESCRIBE.FUER = "내가 지금 찻잎을 가릴 때가 아니야."
 STRINGS.CHARACTERS.WANDA.DESCRIBE.MIXFLOWER = "꽃잎이 마시는데 방해되."
-STRINGS.CHARACTERS.WANDA.DESCRIBE.HIBISCUS = "향은 대단하지만,꽃잎이 마시는데 방해되."
+STRINGS.CHARACTERS.WANDA.DESCRIBE.HIBISCUSTEA = "향은 대단하지만,꽃잎이 마시는데 방해되."
 STRINGS.CHARACTERS.WANDA.DESCRIBE.CACTUSFLOWER = "이것도 가시가 남아있나?"
 STRINGS.CHARACTERS.WANDA.DESCRIBE.LOTUSFLOWER = "아이고 이런,또 다른 꽃 차네."
 STRINGS.CHARACTERS.WANDA.DESCRIBE.SUSHIBISCUS = "향은 대단하지만,꽃잎이 마시는데 방해되."
@@ -680,7 +686,8 @@ STRINGS.CHARACTERS.WANDA.ACTIONFAIL.GIVE.WELL_BUSY = "빨리빨리!"
 
 STRINGS.CHARACTERS.WANDA.DESCRIBE.DESALINATOR = {
 	EMPTY = "급한대로 이거라도 써야겠어.",
-	PURIFY = "기다리다 사람 복장 터지겠구먼.",
+	PURIFY_LONG = "기다리다 사람 복장 터지겠구먼.",
+	PURIFY_SHORT = "TODO",
 	HASWATER = "드디어!",
 	BURNT = "아이고 이런, 다 끝이로구먼.",
 }
@@ -713,7 +720,8 @@ STRINGS.CHARACTERS.WANDA.DESCRIBE.KETTLE = {
 	BOILING_LONG = "내가 이래서 이 짓를 싫어해. 끝날 기미가 안보이잖아!",
 	BOILING_SHORT = "지금쯤 음료가 완성이 됬겠지?",
 	DONE = "마침내 음료가 다 됐군!",
-	PURIFY = "기다리다 사람 복장 터지겠구먼.",
+	PURIFY_LONG = "기다리다 사람 복장 터지겠구먼.",
+	PURIFY_SHORT = "TODO",
 	HASWATER = "이대로 꺼내서 마시면 안되냐?",
 }
 
@@ -723,7 +731,8 @@ STRINGS.CHARACTERS.WANDA.DESCRIBE.PORTABLEKETTLE_ITEM = {
 	BOILING_LONG = "으어어 빨리빨리 했으면 좋겠어!",
 	BOILING_SHORT = "이제 더 오래 걸리지는 않겠지?",
 	DONE = "마침내 음료가 다 됐군!",
-	PURIFY = "기다리다 사람 복장 터지겠구먼.",
+	PURIFY_LONG = "기다리다 사람 복장 터지겠구먼.",
+	PURIFY_SHORT = "TODO",
 	HASWATER = "이대로 꺼내서 마시면 안되냐?",
 }
 
@@ -775,7 +784,7 @@ STRINGS.CHARACTERS.WARLY.DESCRIBE.BLACKTEA = "이제 한조각의 케이크만 �
 STRINGS.CHARACTERS.WARLY.DESCRIBE.BLACKTEA_ICED = "레몬주스가 없는게 조금 아쉽네."
 STRINGS.CHARACTERS.WARLY.DESCRIBE.FUER = "흠...어디 한번?"
 STRINGS.CHARACTERS.WARLY.DESCRIBE.MIXFLOWER = "꽃 역시 차의 재료로 손색이 없지."
-STRINGS.CHARACTERS.WARLY.DESCRIBE.HIBISCUS = "열대의 향취가 흠껏 느껴지는군!"
+STRINGS.CHARACTERS.WARLY.DESCRIBE.HIBISCUSTEA = "열대의 향취가 흠껏 느껴지는군!"
 STRINGS.CHARACTERS.WARLY.DESCRIBE.CACTUSFLOWER = "대부분의 선인장에는 독이 있지.여기는 그렇지 않아서 다행이야."
 STRINGS.CHARACTERS.WARLY.DESCRIBE.LOTUSFLOWER = "앙코르와트에 와 있는 기분이야."
 STRINGS.CHARACTERS.WARLY.DESCRIBE.SUSHIBISCUS = "음....?이건 히비스커스인가?."
@@ -800,7 +809,8 @@ STRINGS.CHARACTERS.WARLY.ACTIONFAIL.GIVE.WELL_BUSY = "먼저 내려간 양동이
 
 STRINGS.CHARACTERS.WARLY.DESCRIBE.DESALINATOR = {
 	EMPTY = "해수에서 소금과 물을 분리해줄거야",
-	PURIFY = "시간이 조금 걸릴거야",
+	PURIFY_LONG = "시간이 조금 걸릴거야",
+	PURIFY_SHORT = "TODO",
 	HASWATER = "마실 물이 있나 볼까?",
 	BURNT ="불이 정말로 목이 말랐나 보네.",
 }
@@ -833,7 +843,8 @@ STRINGS.CHARACTERS.WARLY.DESCRIBE.KETTLE = {
 	BOILING_LONG = "걸작은 시간이 걸리는 편이지.",
 	BOILING_SHORT = "거의 다 됬어...",
 	DONE = "으흐흐, 완성!",
-	PURIFY = "더러운 물로는 음료를 망치지",
+	PURIFY_LONG = "더러운 물로는 음료를 망치지",
+	PURIFY_SHORT = "TODO",
 	HASWATER = "이제 부재료를 넣어볼까?",
 }
 
@@ -843,7 +854,8 @@ STRINGS.CHARACTERS.WARLY.DESCRIBE.PORTABLEKETTLE_ITEM = {
 	BOILING_LONG = "향을 충분히 우려내는데에는 시간이 걸려.",
 	BOILING_SHORT = "빨리 음료를 내가야 한다고!",
 	DONE = "건져내! 아, 오래된 습관이야...",
-	PURIFY = "더러운 물로는 음료를 망치지",
+	PURIFY_LONG = "더러운 물로는 음료를 망치지",
+	PURIFY_SHORT = "TODO",
 	HASWATER = "이제 부재료를 넣어볼까?",
 }
 
@@ -895,7 +907,7 @@ STRINGS.CHARACTERS.WATHGRITHR.DESCRIBE.BLACKTEA = "향기로운 홍차 이로군
 STRINGS.CHARACTERS.WATHGRITHR.DESCRIBE.BLACKTEA_ICED = "차가운 홍차이니라."
 STRINGS.CHARACTERS.WATHGRITHR.DESCRIBE.FUER = "이파리 우린 검은 차로다."
 STRINGS.CHARACTERS.WATHGRITHR.DESCRIBE.MIXFLOWER = "프레야의 손길이 닿은 음료로다."
-STRINGS.CHARACTERS.WATHGRITHR.DESCRIBE.HIBISCUS = "정말 커다란 꽃 한송이가 들어있구나."
+STRINGS.CHARACTERS.WATHGRITHR.DESCRIBE.HIBISCUSTEA = "정말 커다란 꽃 한송이가 들어있구나."
 STRINGS.CHARACTERS.WATHGRITHR.DESCRIBE.CACTUSFLOWER = "남국의 꽃이 장식되어 있도다."
 STRINGS.CHARACTERS.WATHGRITHR.DESCRIBE.LOTUSFLOWER = "프레야의 미모와 같은 음료로구나."
 STRINGS.CHARACTERS.WATHGRITHR.DESCRIBE.SUSHIBISCUS = "헬라의 꽃이 장식되어 있구나."
@@ -920,7 +932,8 @@ STRINGS.CHARACTERS.WATHGRITHR.ACTIONFAIL.GIVE.WELL_BUSY = "그렇게 할 순 없
 
 STRINGS.CHARACTERS.WATHGRITHR.DESCRIBE.DESALINATOR = {
 	EMPTY = "해수로부터 소금기를 제거해 준다네.",
-	PURIFY = "기다리는동안 내가 다른일을 할수 있겠지.",
+	PURIFY_LONG = "기다리는동안 내가 다른일을 할수 있겠지.",
+	PURIFY_SHORT = "TODO",
 	HASWATER = "이제 마실수 있나?",
 	BURNT = "불이 먹이사슬의 정점에 섰도다.",
 }
@@ -953,7 +966,8 @@ STRINGS.CHARACTERS.WATHGRITHR.DESCRIBE.KETTLE = {
 	BOILING_LONG = "기다리는동안 내가 다른일을 할수 있겠지.",
 	BOILING_SHORT = "오래걸리지 않을거야!",
 	DONE = "무엇이 나왔지?",
-	PURIFY = "더러움과 싸우고 있다!",
+	PURIFY_LONG = "더러움과 싸우고 있다!",
+	PURIFY_SHORT = "TODO",
 	HASWATER = "또 다른 준비를 시작하라!",
 }
 
@@ -963,7 +977,8 @@ STRINGS.CHARACTERS.WATHGRITHR.DESCRIBE.PORTABLEKETTLE_ITEM = {
 	BOILING_LONG = "갈증으로 내 목이 가렵도다...서둘러라, 주전자!",
 	BOILING_SHORT = "이는 신속히 처리될것이다.",
 	DONE = "무엇이 나왔지?",
-	PURIFY = "더러움과 싸우고 있다!",
+	PURIFY_LONG = "더러움과 싸우고 있다!",
+	PURIFY_SHORT = "TODO",
 	HASWATER = "또 다른 준비를 시작하라!",
 }
 
@@ -1015,7 +1030,7 @@ STRINGS.CHARACTERS.WAXWELL.DESCRIBE.BLACKTEA = "나는 스트레이트가 취향
 STRINGS.CHARACTERS.WAXWELL.DESCRIBE.BLACKTEA_ICED = "얼음을 넣은건 내 입맛에는 안 맞아."
 STRINGS.CHARACTERS.WAXWELL.DESCRIBE.FUER = "이것도 차 인가?"
 STRINGS.CHARACTERS.WAXWELL.DESCRIBE.MIXFLOWER = "팽형도 나쁘지 않지."
-STRINGS.CHARACTERS.WAXWELL.DESCRIBE.HIBISCUS = "정말로 아름답기 짝이 없구먼."
+STRINGS.CHARACTERS.WAXWELL.DESCRIBE.HIBISCUSTEA = "정말로 아름답기 짝이 없구먼."
 STRINGS.CHARACTERS.WAXWELL.DESCRIBE.CACTUSFLOWER = "이러니 더 보기 좋네."
 STRINGS.CHARACTERS.WAXWELL.DESCRIBE.LOTUSFLOWER = "겉 모습은 고급스럽군."
 STRINGS.CHARACTERS.WAXWELL.DESCRIBE.SUSHIBISCUS = "어둠의 정수로군."
@@ -1040,7 +1055,8 @@ STRINGS.CHARACTERS.WAXWELL.ACTIONFAIL.GIVE.WELL_BUSY = "나는 인내심을 길�
 
 STRINGS.CHARACTERS.WAXWELL.DESCRIBE.DESALINATOR = {
 	EMPTY = "정수장치인가? 나는 이런거에 관심 없다만.",
-	PURIFY = "나는 인내심을 길러야 해...",
+	PURIFY_LONG = "나는 인내심을 길러야 해...",
+	PURIFY_SHORT = "TODO",
 	HASWATER = "다 걸려졌다네.",
 	BURNT = "마르다 못해 타버렸군.",
 }
@@ -1073,7 +1089,8 @@ STRINGS.CHARACTERS.WAXWELL.DESCRIBE.KETTLE = {
 	BOILING_LONG = "기다리자..",
 	BOILING_SHORT = "거의 다 됬어!",
 	DONE = "마침내, 마실만한게 나왔군.",
-	PURIFY = "나는 인내심을 길러야 해...",
+	PURIFY_LONG = "나는 인내심을 길러야 해...",
+	PURIFY_SHORT = "TODO",
 	HASWATER = "마침내, 뭔가를 준비 할수 있군",
 }
 
@@ -1083,7 +1100,8 @@ STRINGS.CHARACTERS.WAXWELL.DESCRIBE.PORTABLEKETTLE_ITEM = {
 	BOILING_LONG = "나는 인내심을 길러야 해...",
 	BOILING_SHORT = "곧 끝날거야.",
 	DONE = "마실만한 게 나온 건지나 빌어야지.",
-	PURIFY = "나는 인내심을 길러야 해...",
+	PURIFY_LONG = "나는 인내심을 길러야 해...",
+	PURIFY_SHORT = "TODO",
 	HASWATER = "마침내, 뭔가를 준비 할수 있군",
 }
 
@@ -1135,7 +1153,7 @@ STRINGS.CHARACTERS.WEBBER.DESCRIBE.BLACKTEA = "우유가 있었으면 좋겠어!
 STRINGS.CHARACTERS.WEBBER.DESCRIBE.BLACKTEA_ICED = "차가 시원해."
 STRINGS.CHARACTERS.WEBBER.DESCRIBE.FUER = "또 다른 허브차인가봐!"
 STRINGS.CHARACTERS.WEBBER.DESCRIBE.MIXFLOWER = "꽃잎들이 춤추고 있어!"
-STRINGS.CHARACTERS.WEBBER.DESCRIBE.HIBISCUS = "커다란 꽃이 그대로 보여."
+STRINGS.CHARACTERS.WEBBER.DESCRIBE.HIBISCUSTEA = "커다란 꽃이 그대로 보여."
 STRINGS.CHARACTERS.WEBBER.DESCRIBE.CACTUSFLOWER = "나쁘지 않네!."
 STRINGS.CHARACTERS.WEBBER.DESCRIBE.LOTUSFLOWER = "정말 예쁜 분홍색이야!"
 STRINGS.CHARACTERS.WEBBER.DESCRIBE.SUSHIBISCUS = "커다란 꽃이 그대로 보여."
@@ -1160,7 +1178,8 @@ STRINGS.CHARACTERS.WEBBER.ACTIONFAIL.GIVE.WELL_BUSY = "더이상 바구니를 �
 
 STRINGS.CHARACTERS.WEBBER.DESCRIBE.DESALINATOR = {
 	EMPTY = "위커 선생님,이건 어떻게 작동하나요?",
-	PURIFY = "물소리가 들려!",
+	PURIFY_LONG = "물소리가 들려!",
+	PURIFY_SHORT = "TODO",
 	HASWATER = "이제 마셔도 되나봐!",
 	BURNT = "누군가 불을 끄지 않고 놔둔게 틀림없어.",
 }
@@ -1193,7 +1212,8 @@ STRINGS.CHARACTERS.WEBBER.DESCRIBE.KETTLE = {
 	BOILING_LONG = "그렇게 빨리 완성되진 않을거야.",
 	BOILING_SHORT = "거의 다 됬어!",
 	DONE = "음료를 마실 시간이야!",
-	PURIFY = "으으음,뜨끈뜨끈해",
+	PURIFY_LONG = "으으음,뜨끈뜨끈해",
+	PURIFY_SHORT = "TODO",
 	HASWATER = "이제 뭔가를 넣어야 되나봐.",
 }
 
@@ -1203,7 +1223,8 @@ STRINGS.CHARACTERS.WEBBER.DESCRIBE.PORTABLEKETTLE_ITEM = {
 	BOILING_LONG = "이거 너무 오~래 걸려!",
 	BOILING_SHORT = "곧 있으면 음료가 준비될 거야!",
 	DONE = "으으음! 어서 마시자!",
-	PURIFY = "으으음,뜨끈뜨끈해",
+	PURIFY_LONG = "으으음,뜨끈뜨끈해",
+	PURIFY_SHORT = "TODO",
 	HASWATER = "이제 뭔가를 넣어야 되나봐.",
 }
 
@@ -1255,7 +1276,7 @@ STRINGS.CHARACTERS.WENDY.DESCRIBE.BLACKTEA = "홍챠야."
 STRINGS.CHARACTERS.WENDY.DESCRIBE.BLACKTEA_ICED = "얼음 넣은 홍차야."
 STRINGS.CHARACTERS.WENDY.DESCRIBE.FUER = "잎들을 삶아 죽였어."
 STRINGS.CHARACTERS.WENDY.DESCRIBE.MIXFLOWER = "그다지 의미부여 하고 싶지 않아."
-STRINGS.CHARACTERS.WENDY.DESCRIBE.HIBISCUS = "꽃의 삶을 비참하게 끝냈어."
+STRINGS.CHARACTERS.WENDY.DESCRIBE.HIBISCUSTEA = "꽃의 삶을 비참하게 끝냈어."
 STRINGS.CHARACTERS.WENDY.DESCRIBE.CACTUSFLOWER = "그 아름다운 꽃은 이렇게 끝나버렸네."
 STRINGS.CHARACTERS.WENDY.DESCRIBE.LOTUSFLOWER = "미녀는 일찍 죽는 법."
 STRINGS.CHARACTERS.WENDY.DESCRIBE.SUSHIBISCUS = "이걸 마시면 아비게일과 같은 세상을 볼 수 있을지도 몰라."
@@ -1280,7 +1301,8 @@ STRINGS.CHARACTERS.WENDY.ACTIONFAIL.GIVE.WELL_BUSY = "기다려야 해."
 
 STRINGS.CHARACTERS.WENDY.DESCRIBE.DESALINATOR = {
 	EMPTY = "죽음에서 삶으로.",
-	PURIFY = "정수중이야.",
+	PURIFY_LONG = "정수중이야.",
+	PURIFY_SHORT = "TODO",
 	HASWATER = "정수가 끝났어.",
 	BURNT = "바삭하게 태워졌어.",
 }
@@ -1313,7 +1335,8 @@ STRINGS.CHARACTERS.WENDY.DESCRIBE.KETTLE = {
 	BOILING_LONG = "무엇이 들어있던간에 아직 완벽하게 죽지 않았어.",
 	BOILING_SHORT = "좀 더 끓여야 해.",
 	DONE = "이제 마실수 있어.",
-	PURIFY = "물이 더러워서 끓이고 있어.",
+	PURIFY_LONG = "물이 더러워서 끓이고 있어.",
+	PURIFY_SHORT = "TODO",
 	HASWATER = "이제 차를 끓일수 있어.",
 }
 
@@ -1323,7 +1346,8 @@ STRINGS.CHARACTERS.WENDY.DESCRIBE.PORTABLEKETTLE_ITEM = {
 	BOILING_LONG = "어쩌면 다 되기도 전에 탈수로 죽을지도.",
 	BOILING_SHORT = "곧 완성될거야.",
 	DONE = "또 다른 사소한 일이 끝났어..",
-	PURIFY = "물이 더러워서 끓이고 있어.",
+	PURIFY_LONG = "물이 더러워서 끓이고 있어.",
+	PURIFY_SHORT = "TODO",
 	HASWATER = "이제 차를 끓일수 있어.",
 }
 
@@ -1375,7 +1399,7 @@ STRINGS.CHARACTERS.WICKERBOTTOM.DESCRIBE.BLACKTEA = "다도회를 열어야 겠�
 STRINGS.CHARACTERS.WICKERBOTTOM.DESCRIBE.BLACKTEA_ICED = "약간의 설탕과 레몬이 있으면 좋겠네."
 STRINGS.CHARACTERS.WICKERBOTTOM.DESCRIBE.FUER = "좋은 방법을 찾은것 같구나!"
 STRINGS.CHARACTERS.WICKERBOTTOM.DESCRIBE.MIXFLOWER = "향기롭고 은은한 단맛을 낸단다."
-STRINGS.CHARACTERS.WICKERBOTTOM.DESCRIBE.HIBISCUS = "무궁화속 꽃을 차로 만든것이란다."
+STRINGS.CHARACTERS.WICKERBOTTOM.DESCRIBE.HIBISCUSTEA = "무궁화속 꽃을 차로 만든것이란다."
 STRINGS.CHARACTERS.WICKERBOTTOM.DESCRIBE.CACTUSFLOWER = "백년초는 관절염에도 좋단다."
 STRINGS.CHARACTERS.WICKERBOTTOM.DESCRIBE.LOTUSFLOWER = "보고만 있어도 차분해지는것 같네."
 STRINGS.CHARACTERS.WICKERBOTTOM.DESCRIBE.SUSHIBISCUS = "무궁화속 꽃을 차로 만든것이란다."
@@ -1400,7 +1424,8 @@ STRINGS.CHARACTERS.WICKERBOTTOM.ACTIONFAIL.GIVE.WELL_BUSY = "기다리자꾸나.
 
 STRINGS.CHARACTERS.WICKERBOTTOM.DESCRIBE.DESALINATOR = {
 	EMPTY = "바닷물을 마실수 있게 염분을 제거해 준단다.",
-	PURIFY = "소금을 거르는중이야.",
+	PURIFY_LONG = "소금을 거르는중이야.",
+	PURIFY_SHORT = "TODO",
 	HASWATER = "이제 마셔도 되",
 	BURNT = "이제 정말로 황량해.",
 }
@@ -1433,7 +1458,8 @@ STRINGS.CHARACTERS.WICKERBOTTOM.DESCRIBE.KETTLE = {
 	BOILING_LONG = "음료가 준비 되려면 아직 멀었어.",
 	BOILING_SHORT = "거의 다 됬어!",
 	DONE = "티 타임!",
-	PURIFY = "음료를 만들려면 충분히 가열해야해.",
+	PURIFY_LONG = "음료를 만들려면 충분히 가열해야해.",
+	PURIFY_SHORT = "TODO",
 	HASWATER = "이제 음료를 만들어도 된단다.",
 }
 
@@ -1443,7 +1469,8 @@ STRINGS.CHARACTERS.WICKERBOTTOM.DESCRIBE.PORTABLEKETTLE_ITEM = {
 	BOILING_LONG = "인내는 미덕이라네.",
 	BOILING_SHORT = "곧 끝날거야.",
 	DONE = "풍부한 향이 나는군.",
-	PURIFY = "음료를 만들려면 충분히 가열해야해.",
+	PURIFY_LONG = "음료를 만들려면 충분히 가열해야해.",
+	PURIFY_SHORT = "TODO",
 	HASWATER = "이제 음료를 만들어도 된단다.",
 }
 
@@ -1495,7 +1522,7 @@ STRINGS.CHARACTERS.WILLOW.DESCRIBE.BLACKTEA = "물에 넣어도 불을 쓰면 �
 STRINGS.CHARACTERS.WILLOW.DESCRIBE.BLACKTEA_ICED = "윽, 차갑잖아?"
 STRINGS.CHARACTERS.WILLOW.DESCRIBE.FUER = "불쏘시개를 왜 물에 넣은거야?"
 STRINGS.CHARACTERS.WILLOW.DESCRIBE.MIXFLOWER = "이제 좀 쓰임새를 찾은것 같네."
-STRINGS.CHARACTERS.WILLOW.DESCRIBE.HIBISCUS = "마치 물속에 불꽃이 있는것 같네."
+STRINGS.CHARACTERS.WILLOW.DESCRIBE.HIBISCUSTEA = "마치 물속에 불꽃이 있는것 같네."
 STRINGS.CHARACTERS.WILLOW.DESCRIBE.CACTUSFLOWER = "그토록 원하는 물 속에서 죽었네."
 STRINGS.CHARACTERS.WILLOW.DESCRIBE.LOTUSFLOWER = "원래 물이랑 친한 꽃이잖아? 불로 삶았지만."
 STRINGS.CHARACTERS.WILLOW.DESCRIBE.SUSHIBISCUS = "마치 물속에 불꽃이 있는것 같네."
@@ -1520,7 +1547,8 @@ STRINGS.CHARACTERS.WILLOW.ACTIONFAIL.GIVE.WELL_BUSY = "이미 누가 쓰고있�
 
 STRINGS.CHARACTERS.WILLOW.DESCRIBE.DESALINATOR = {
 	EMPTY = "불을 쓰는 방법이 난 좋은데.",
-	PURIFY = "이 방법은 불도 안 쓰고 느리고...",
+	PURIFY_LONG = "이 방법은 불도 안 쓰고 느리고...",
+	PURIFY_SHORT = "TODO",
 	HASWATER = "어디 한번 확인해보자.",
 	BURNT = "적어도 그건 영광의 불길속에 있었어.",
 }
@@ -1553,7 +1581,8 @@ STRINGS.CHARACTERS.WILLOW.DESCRIBE.KETTLE = {
 	BOILING_LONG = "그 불은 아직 할 일이 많이 남았어.",
 	BOILING_SHORT = "불이 열심히 일하는 중 이야!",
 	DONE = "불은 뭐든 낫게 만들지.음!",
-	PURIFY = "불이 열심히 일하는 중 이야!",
+	PURIFY_LONG = "불이 열심히 일하는 중 이야!",
+	PURIFY_SHORT = "TODO",
 	HASWATER = "이제 재료를 넣고 불로 살균하자.",
 }
 
@@ -1563,7 +1592,8 @@ STRINGS.CHARACTERS.WILLOW.DESCRIBE.PORTABLEKETTLE_ITEM = {
 	BOILING_LONG = "으으으,영원히 끝나지 않을것 같아!",
 	BOILING_SHORT = "제발 불아,너가 할 일을 !",
 	DONE = "좋았어. 이제 마시자!",
-	PURIFY = "불이 열심히 일하는 중 이야!",
+	PURIFY_LONG = "불이 열심히 일하는 중 이야!",
+	PURIFY_SHORT = "TODO",
 	HASWATER = "이제 재료를 넣고 불로 살균하자.",
 }
 
@@ -1615,7 +1645,7 @@ STRINGS.CHARACTERS.WINONA.DESCRIBE.BLACKTEA = "설탕이 있었으면 좋겠군.
 STRINGS.CHARACTERS.WINONA.DESCRIBE.BLACKTEA_ICED = "일할때는 찬 음료가 마시고 싶은 법 이지."
 STRINGS.CHARACTERS.WINONA.DESCRIBE.FUER = "이것도 차라고 할수 있지."
 STRINGS.CHARACTERS.WINONA.DESCRIBE.MIXFLOWER = "정말 향기롭군."
-STRINGS.CHARACTERS.WINONA.DESCRIBE.HIBISCUS = "미관상으로도 훌룡해."
+STRINGS.CHARACTERS.WINONA.DESCRIBE.HIBISCUSTEA = "미관상으로도 훌룡해."
 STRINGS.CHARACTERS.WINONA.DESCRIBE.CACTUSFLOWER = "꽤 아름다운데?"
 STRINGS.CHARACTERS.WINONA.DESCRIBE.LOTUSFLOWER = "정말 아름다운 차군."
 STRINGS.CHARACTERS.WINONA.DESCRIBE.SUSHIBISCUS = "예쁜 꽃이 들어있기는 하는데,뭔가 이상하군."
@@ -1640,7 +1670,8 @@ STRINGS.CHARACTERS.WINONA.ACTIONFAIL.GIVE.WELL_BUSY = "두개까지 들어가지
 
 STRINGS.CHARACTERS.WINONA.DESCRIBE.DESALINATOR = {
 	EMPTY = "음...완벽해!",
-	PURIFY = "잘 작동하고 있어.",
+	PURIFY_LONG = "잘 작동하고 있어.",
+	PURIFY_SHORT = "TODO",
 	HASWATER = "잘 작동했는지 마셔보자.",
 	BURNT = "괜찮아,하나 더 조립하지 뭐.",
 }
@@ -1673,7 +1704,8 @@ STRINGS.CHARACTERS.WINONA.DESCRIBE.KETTLE = {
 	BOILING_LONG = "좀 만 기다리자.",
 	BOILING_SHORT = "거의!",
 	DONE = "음료를 마십시다!",
-	PURIFY = "준비를 위해 처리하고 있어.",
+	PURIFY_LONG = "준비를 위해 처리하고 있어.",
+	PURIFY_SHORT = "TODO",
 	HASWATER = "이제 준비해 볼까?",
 }
 
@@ -1683,7 +1715,8 @@ STRINGS.CHARACTERS.WINONA.DESCRIBE.PORTABLEKETTLE_ITEM = {
 	BOILING_LONG = "좋은 작품은 시간이 오래 걸리는 법.",
 	BOILING_SHORT = "이 작업은 깔끔하게 완료될거야!",
 	DONE = "그렇게 호들갑 떨 만한 가치가 있는지 보자.",
-	PURIFY = "준비를 위해 처리하고 있어.",
+	PURIFY_LONG = "준비를 위해 처리하고 있어.",
+	PURIFY_SHORT = "TODO",
 	HASWATER = "이제 준비해 볼까?",
 }
 
@@ -1735,7 +1768,7 @@ STRINGS.CHARACTERS.WOLFGANG.DESCRIBE.BLACKTEA = "원한있는 사람이 있지 �
 STRINGS.CHARACTERS.WOLFGANG.DESCRIBE.BLACKTEA_ICED = "차갑다!"
 STRINGS.CHARACTERS.WOLFGANG.DESCRIBE.FUER = "시금치 차다!"
 STRINGS.CHARACTERS.WOLFGANG.DESCRIBE.MIXFLOWER = "냄새도 좋고 예쁘고 물도 마실수 있다!"
-STRINGS.CHARACTERS.WOLFGANG.DESCRIBE.HIBISCUS = "붉고 예쁘다!"
+STRINGS.CHARACTERS.WOLFGANG.DESCRIBE.HIBISCUSTEA = "붉고 예쁘다!"
 STRINGS.CHARACTERS.WOLFGANG.DESCRIBE.CACTUSFLOWER = "녹색고기의 피와 심장이다!"
 STRINGS.CHARACTERS.WOLFGANG.DESCRIBE.LOTUSFLOWER = "연못의 꽃이 다시 물로 돌아갔다."
 STRINGS.CHARACTERS.WOLFGANG.DESCRIBE.SUSHIBISCUS = "붉고 예쁘다!"
@@ -1760,7 +1793,8 @@ STRINGS.CHARACTERS.WOLFGANG.ACTIONFAIL.GIVE.WELL_BUSY = "두 개 까진 안 들�
 
 STRINGS.CHARACTERS.WOLFGANG.DESCRIBE.DESALINATOR = {
 	EMPTY = "바닷물에서 소금 찢는다!",
-	PURIFY = "기계가 운동하고 있어.",
+	PURIFY_LONG = "기계가 운동하고 있어.",
+	PURIFY_SHORT = "TODO",
 	HASWATER = "소금 찢었다.",
 	BURNT = "물이 운동을 덜 했어.",
 }
@@ -1793,7 +1827,8 @@ STRINGS.CHARACTERS.WOLFGANG.DESCRIBE.KETTLE = {
 	BOILING_LONG = "주전자가 음료를 만드는 동안 볼프강은 운동 할 수 있다.",
 	BOILING_SHORT = "거의 다 됬어.",
 	DONE = "마실 시간이다!",
-	PURIFY = "주전자 운동하고 있어.",
+	PURIFY_LONG = "주전자 운동하고 있어.",
+	PURIFY_SHORT = "TODO",
 	HASWATER = "우릴 시간이다!",
 }
 
@@ -1803,7 +1838,8 @@ STRINGS.CHARACTERS.WOLFGANG.DESCRIBE.PORTABLEKETTLE_ITEM = {
 	BOILING_LONG = "주전자가 음료를 만드는 동안 볼프강은 운동 할 수 있다.",
 	BOILING_SHORT = "벌써 좋은 냄새가 난다!",
 	DONE = "마실 시간이다!",
-	PURIFY = "주전자 운동하고 있어.",
+	PURIFY_LONG = "주전자 운동하고 있어.",
+	PURIFY_SHORT = "TODO",
 	HASWATER = "우릴 시간이다!",
 }
 
@@ -1855,7 +1891,7 @@ STRINGS.CHARACTERS.WOODIE.DESCRIBE.BLACKTEA = "이거 홍차야?"
 STRINGS.CHARACTERS.WOODIE.DESCRIBE.BLACKTEA_ICED = "차가우니 좋구만."
 STRINGS.CHARACTERS.WOODIE.DESCRIBE.FUER = "삶은 시금치 냄새 비슷한것 같기도 하구먼."
 STRINGS.CHARACTERS.WOODIE.DESCRIBE.MIXFLOWER = "꽃이 있으니 시럽도 있으면 더 좋지 않을까?."
-STRINGS.CHARACTERS.WOODIE.DESCRIBE.HIBISCUS = "예쁘긴 하는데 배는 안 부르겠어."
+STRINGS.CHARACTERS.WOODIE.DESCRIBE.HIBISCUSTEA = "예쁘긴 하는데 배는 안 부르겠어."
 STRINGS.CHARACTERS.WOODIE.DESCRIBE.CACTUSFLOWER = "오유소스 지역의 명물 같구먼."
 STRINGS.CHARACTERS.WOODIE.DESCRIBE.LOTUSFLOWER = "정말 예쁜 분홍색이야."
 STRINGS.CHARACTERS.WOODIE.DESCRIBE.SUSHIBISCUS = "이 꽃차 정말 예쁘지 않니,루시?."
@@ -1880,7 +1916,8 @@ STRINGS.CHARACTERS.WOODIE.ACTIONFAIL.GIVE.WELL_BUSY = "빨리 빨리!"
 
 STRINGS.CHARACTERS.WOODIE.DESCRIBE.DESALINATOR = {
 	EMPTY = "좋아,바닷물을 넣어보자구.",
-	PURIFY = "열심히 일하는군!",
+	PURIFY_LONG = "열심히 일하는군!",
+	PURIFY_SHORT = "TODO",
 	HASWATER = "마셔도 되나?",
 	BURNT = "이게 어쩌다 탄거지?",
 }
@@ -1913,7 +1950,8 @@ STRINGS.CHARACTERS.WOODIE.DESCRIBE.KETTLE = {
 	BOILING_LONG = "오래 걸릴거야.",
 	BOILING_SHORT = "얼마 안남았어,루시.",
 	DONE = "뭐가 나왔을까!",
-	PURIFY = "열심히 일하는군!",
+	PURIFY_LONG = "열심히 일하는군!",
+	PURIFY_SHORT = "TODO",
 	HASWATER = "이제 뭘 좀 넣을까?",
 }
 
@@ -1923,7 +1961,8 @@ STRINGS.CHARACTERS.WOODIE.DESCRIBE.PORTABLEKETTLE_ITEM = {
 	BOILING_LONG = "나무나 하고 와야겠군.",
 	BOILING_SHORT = "벌써부터 좋은 냄새가 나네.",
 	DONE = "뭐가 나왔을까!",
-	PURIFY = "열심히 일하는군!",
+	PURIFY_LONG = "열심히 일하는군!",
+	PURIFY_SHORT = "TODO",
 	HASWATER = "이제 뭘 좀 넣을까?",
 }
 
@@ -1975,7 +2014,7 @@ STRINGS.CHARACTERS.WORMWOOD.DESCRIBE.BLACKTEA = "향나는 갈색 물"
 STRINGS.CHARACTERS.WORMWOOD.DESCRIBE.BLACKTEA_ICED = "차가워!"
 STRINGS.CHARACTERS.WORMWOOD.DESCRIBE.FUER = "지하 친구 물."
 STRINGS.CHARACTERS.WORMWOOD.DESCRIBE.MIXFLOWER = "냄새 좋아"
-STRINGS.CHARACTERS.WORMWOOD.DESCRIBE.HIBISCUS = "냄새 짱 좋아."
+STRINGS.CHARACTERS.WORMWOOD.DESCRIBE.HIBISCUSTEA = "냄새 짱 좋아."
 STRINGS.CHARACTERS.WORMWOOD.DESCRIBE.CACTUSFLOWER = "아야한 친구 예쁜 물."
 STRINGS.CHARACTERS.WORMWOOD.DESCRIBE.LOTUSFLOWER = "진흙 예쁜 친구 물."
 STRINGS.CHARACTERS.WORMWOOD.DESCRIBE.SUSHIBISCUS = "냄새 짱 좋아."
@@ -2000,7 +2039,8 @@ STRINGS.CHARACTERS.WORMWOOD.ACTIONFAIL.GIVE.WELL_BUSY = "물 푸고 있다"
 
 STRINGS.CHARACTERS.WORMWOOD.DESCRIBE.DESALINATOR = {
 	EMPTY = "물 달래는 곳",
-	PURIFY = "물 달래고 있다",
+	PURIFY_LONG = "물 달래고 있다",
+	PURIFY_SHORT = "TODO",
 	HASWATER = "물 순해졌다",
 	BURNT = "히잉",
 }
@@ -2033,7 +2073,8 @@ STRINGS.CHARACTERS.WORMWOOD.DESCRIBE.KETTLE = {
 	BOILING_LONG = "오래 걸려",
 	BOILING_SHORT = "곧 끝나",
 	DONE = "끝!",
-	PURIFY = "물 달래고 있다",
+	PURIFY_LONG = "물 달래고 있다",
+	PURIFY_SHORT = "TODO",
 	HASWATER = "준비됬어",
 }
 
@@ -2043,7 +2084,8 @@ STRINGS.CHARACTERS.WORMWOOD.DESCRIBE.PORTABLEKETTLE_ITEM = {
 	BOILING_LONG = "오래 걸려",
 	BOILING_SHORT = "곧 끝나",
 	DONE = "끝!",
-	PURIFY = "물 달래고 있다",
+	PURIFY_LONG = "물 달래고 있다",
+	PURIFY_SHORT = "TODO",
 	HASWATER = "준비됬어",
 }
 
@@ -2095,7 +2137,7 @@ STRINGS.CHARACTERS.WORTOX.DESCRIBE.BLACKTEA = "흐유유~참 향기롭네"
 STRINGS.CHARACTERS.WORTOX.DESCRIBE.BLACKTEA_ICED = "정말 참신한 생각이야."
 STRINGS.CHARACTERS.WORTOX.DESCRIBE.FUER = "그 보라빛 잎을 삶아 죽였지."
 STRINGS.CHARACTERS.WORTOX.DESCRIBE.MIXFLOWER = "꽃잎들의 물 속에서 휘날리는걸 봐봐,이미 죽었지만."
-STRINGS.CHARACTERS.WORTOX.DESCRIBE.HIBISCUS = "정말 아름답기도 해라!"
+STRINGS.CHARACTERS.WORTOX.DESCRIBE.HIBISCUSTEA = "정말 아름답기도 해라!"
 STRINGS.CHARACTERS.WORTOX.DESCRIBE.CACTUSFLOWER = "꽃으로 장식했네? 그래도 마시진 않을거지만."
 STRINGS.CHARACTERS.WORTOX.DESCRIBE.LOTUSFLOWER = "내 자신을 등불로 삼아라, 내 맘대로 하라는거지."
 STRINGS.CHARACTERS.WORTOX.DESCRIBE.SUSHIBISCUS = "정말 아름답...잠깐."
@@ -2120,7 +2162,8 @@ STRINGS.CHARACTERS.WORTOX.ACTIONFAIL.GIVE.WELL_BUSY = "일을 방해하는건 �
 
 STRINGS.CHARACTERS.WORTOX.DESCRIBE.DESALINATOR = {
 	EMPTY = "필멸자들도 쓸만한 생각을 하는군.",
-	PURIFY = "작은 폭포로구먼.",
+	PURIFY_LONG = "작은 폭포로구먼.",
+	PURIFY_SHORT = "TODO",
 	HASWATER = "내 물이 거기에 있나?",
 	BURNT = "뭐,재미는 있었어.",
 }
@@ -2153,7 +2196,8 @@ STRINGS.CHARACTERS.WORTOX.DESCRIBE.KETTLE = {
 	BOILING_LONG = "다른 장난 좀 치고 와 볼까.",
 	BOILING_SHORT = "오래 걸리지 않을거야.",
 	DONE = "뭐가 나왔을까? 흐음...",
-	PURIFY = "오래 걸리지 않을거야",
+	PURIFY_LONG = "오래 걸리지 않을거야",
+	PURIFY_SHORT = "TODO",
 	HASWATER = "이대로 마시면 안되나?",
 }
 
@@ -2163,7 +2207,8 @@ STRINGS.CHARACTERS.WORTOX.DESCRIBE.PORTABLEKETTLE_ITEM = {
 	BOILING_LONG = "다른 장난 좀 치고 와 볼까.",
 	BOILING_SHORT = "보글보글",
 	DONE = "우리 요리사 친구가 뭘 만들었는지 한번 볼까!",
-	PURIFY = "오래 걸리지 않을거야",
+	PURIFY_LONG = "오래 걸리지 않을거야",
+	PURIFY_SHORT = "TODO",
 	HASWATER = "이대로 마시면 안되나?",
 }
 
@@ -2216,7 +2261,7 @@ STRINGS.CHARACTERS.WURT.DESCRIBE.BLACKTEA = "이게 책에 적혀 있는 '차'�
 STRINGS.CHARACTERS.WURT.DESCRIBE.BLACKTEA_ICED = "책에 얼음을 넣은건 못봐써."
 STRINGS.CHARACTERS.WURT.DESCRIBE.FUER = "이것도 '치'인가봐!"
 STRINGS.CHARACTERS.WURT.DESCRIBE.MIXFLOWER = "매끈이들은 이 음료가 예쁜가봐."
-STRINGS.CHARACTERS.WURT.DESCRIBE.HIBISCUS = "정말 커다랗고 못생긴 꽃이 드러이써."
+STRINGS.CHARACTERS.WURT.DESCRIBE.HIBISCUSTEA = "정말 커다랗고 못생긴 꽃이 드러이써."
 STRINGS.CHARACTERS.WURT.DESCRIBE.CACTUSFLOWER = "별로 매력 업서."
 STRINGS.CHARACTERS.WURT.DESCRIBE.LOTUSFLOWER = "집 안에 온드한 향이 나."
 STRINGS.CHARACTERS.WURT.DESCRIBE.SUSHIBISCUS = "정말 커다랗고 못생긴 꽃이 드러이써."
@@ -2241,7 +2286,8 @@ STRINGS.CHARACTERS.WURT.ACTIONFAIL.GIVE.WELL_BUSY = "두개나 들어가지 않�
 
 STRINGS.CHARACTERS.WURT.DESCRIBE.DESALINATOR = {
 	EMPTY = "바닷물을 넣으래써.",
-	PURIFY = "워트는 기다릴 수 이써.",
+	PURIFY_LONG = "워트는 기다릴 수 이써.",
+	PURIFY_SHORT = "TODO",
 	HASWATER = "이제 마셔도 되?",
 	BURNT = "물 소게 있었으면 그럴 일도 업섰을거야.뻐끔",
 }
@@ -2274,7 +2320,8 @@ STRINGS.CHARACTERS.WURT.DESCRIBE.KETTLE = {
 	BOILING_LONG = "관찰도 워트의 일이야.",
 	BOILING_SHORT = "좋은 향이 나는것 가타.",
 	DONE = "맛있는거 마실 시간이야!",
-	PURIFY = "보글보글 꼬로로록",
+	PURIFY_LONG = "보글보글 꼬로로록",
+	PURIFY_SHORT = "TODO",
 	HASWATER = "재료를 넣을 수 있어",
 }
 
@@ -2284,7 +2331,8 @@ STRINGS.CHARACTERS.WURT.DESCRIBE.PORTABLEKETTLE_ITEM = {
 	BOILING_LONG = "관찰도 워트의 일이야.",
 	BOILING_SHORT = "좋은 향이 나는것 가타.",
 	DONE = "맛있는거 마실 시간이야!",
-	PURIFY = "보글보글 꼬로로록",
+	PURIFY_LONG = "보글보글 꼬로로록",
+	PURIFY_SHORT = "TODO",
 	HASWATER = "재료를 넣을 수 있어",
 }
 
@@ -2336,7 +2384,7 @@ STRINGS.CHARACTERS.WX78.DESCRIBE.BLACKTEA = "뜨거운 말린 이파리 우린 �
 STRINGS.CHARACTERS.WX78.DESCRIBE.BLACKTEA_ICED = "차가운 이파리 우린 물이다."
 STRINGS.CHARACTERS.WX78.DESCRIBE.FUER = "동굴 이파리를 우린 물."
 STRINGS.CHARACTERS.WX78.DESCRIBE.MIXFLOWER = "아름다운 삶은 유기체들의 죽음."
-STRINGS.CHARACTERS.WX78.DESCRIBE.HIBISCUS = "아름다운 삶은 유기체의 죽음."
+STRINGS.CHARACTERS.WX78.DESCRIBE.HIBISCUSTEA = "아름다운 삶은 유기체의 죽음."
 STRINGS.CHARACTERS.WX78.DESCRIBE.CACTUSFLOWER = "물이 부족하다고 해서 물속에 넣었다."
 STRINGS.CHARACTERS.WX78.DESCRIBE.LOTUSFLOWER = "이 식물은 고향으로 돌아갔다."
 STRINGS.CHARACTERS.WX78.DESCRIBE.SUSHIBISCUS = "오류: 해석 불가능."
@@ -2366,7 +2414,8 @@ STRINGS.CHARACTERS.WX78.WELLSTATUS = {
 
 STRINGS.CHARACTERS.WX78.DESCRIBE.DESALINATOR = {
 	EMPTY = "원시적인 염소이온 분리장치",
-	PURIFY = "염소이온을 분리중",
+	PURIFY_LONG = "염소이온을 분리중",
+	PURIFY_SHORT = "분리 완료 임박",
 	HASWATER = "분리, 완료",
 	BURNT = "잘가라,친구여",
 }
@@ -2399,7 +2448,8 @@ STRINGS.CHARACTERS.WX78.DESCRIBE.KETTLE = {
 	BOILING_LONG = "시간이 필요",
 	BOILING_SHORT = "거의 완료됨",
 	DONE = "추출 프로세스 종료",
-	PURIFY = "소독 프로세스 가동중",
+	PURIFY_LONG = "소독 프로세스 가동중",
+	PURIFY_SHORT = "소독 프로세스 종료 임박",
 	HASWATER = "소독 프로세스 종료, 추출 프로세스 가동 가능",
 }
 
@@ -2409,6 +2459,7 @@ STRINGS.CHARACTERS.WX78.DESCRIBE.PORTABLEKETTLE_ITEM = {
 	BOILING_LONG = "시간이 필요",
 	BOILING_SHORT = "거의 완료됨",
 	DONE = "추출 프로세스 종료",
-	PURIFY = "소독 프로세스 가동중",
+	PURIFY_LONG = "소독 프로세스 가동중",
+	PURIFY_SHORT = "소독 프로세스 종료 임박",
 	HASWATER = "소독 프로세스 종료, 추출 프로세스 가동 가능",
 }
