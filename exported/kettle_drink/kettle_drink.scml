@@ -1,130 +1,130 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <spriter_data scml_version="1.0" generator="BrashMonkey Spriter" generator_version="r11">
     <folder id="0" name="swap">
-        <file id="0" name="swap/swap.png" width="200" height="200" pivot_x="0.5" pivot_y="0.5"/>
+        <file id="0" name="swap/swap.png" width="120" height="120" pivot_x="0.5" pivot_y="0.5"/>
     </folder>
     <folder id="1" name="water_clean">
-        <file id="0" name="water_clean/water_clean-0.png" width="200" height="200" pivot_x="0.44" pivot_y="0.15"/>
+        <file id="0" name="water_clean/water_clean-0.png" width="120" height="120" pivot_x="0.44" pivot_y="0.15"/>
     </folder>
     <folder id="2" name="veggie_tea">
-        <file id="0" name="veggie_tea/veggie_tea-0.png" width="200" height="200" pivot_x="0.5" pivot_y="0.1"/>
+        <file id="0" name="veggie_tea/veggie_tea-0.png" width="120" height="120" pivot_x="0.5" pivot_y="0.1"/>
     </folder>
     <folder id="3" name="sushibiscus">
-        <file id="0" name="sushibiscus/sushibiscus-0.png" width="200" height="200" pivot_x="0.5" pivot_y="0.1"/>
+        <file id="0" name="sushibiscus/sushibiscus-0.png" width="120" height="120" pivot_x="0.5" pivot_y="0.1"/>
     </folder>
     <folder id="4" name="banana_juice">
-        <file id="0" name="banana_juice/banana_juice-0.png" width="200" height="200" pivot_x="0.5" pivot_y="0.1"/>
+        <file id="0" name="banana_juice/banana_juice-0.png" width="120" height="120" pivot_x="0.5" pivot_y="0.1"/>
     </folder>
     <folder id="5" name="corn_beer">
-        <file id="0" name="corn_beer/corn_beer-0.png" width="200" height="200" pivot_x="0.5" pivot_y="0.1"/>
+        <file id="0" name="corn_beer/corn_beer-0.png" width="120" height="120" pivot_x="0.5" pivot_y="0.1"/>
     </folder>
     <folder id="6" name="berries_juice">
-        <file id="0" name="berries_juice/berries_juice-0.png" width="200" height="200" pivot_x="0.5" pivot_y="0.1"/>
+        <file id="0" name="berries_juice/berries_juice-0.png" width="120" height="120" pivot_x="0.5" pivot_y="0.1"/>
     </folder>
     <folder id="7" name="blacktea">
-        <file id="0" name="blacktea/blacktea-0.png" width="200" height="200" pivot_x="0.5" pivot_y="0.1"/>
+        <file id="0" name="blacktea/blacktea-0.png" width="120" height="120" pivot_x="0.5" pivot_y="0.1"/>
     </folder>
     <folder id="8" name="blacktea_iced">
-        <file id="0" name="blacktea_iced/blacktea_iced-0.png" width="200" height="200" pivot_x="0.5" pivot_y="0.1"/>
+        <file id="0" name="blacktea_iced/blacktea_iced-0.png" width="120" height="120" pivot_x="0.5" pivot_y="0.1"/>
     </folder>
     <folder id="9" name="cactusflower_tea">
-        <file id="0" name="cactusflower_tea/cactusflower_tea-0.png" width="200" height="200" pivot_x="0.5" pivot_y="0.1"/>
+        <file id="0" name="cactusflower_tea/cactusflower_tea-0.png" width="120" height="120" pivot_x="0.5" pivot_y="0.1"/>
     </folder>
     <folder id="10" name="carrot_tea">
-        <file id="0" name="carrot_tea/carrot_tea-0.png" width="200" height="200" pivot_x="0.5" pivot_y="0.1"/>
+        <file id="0" name="carrot_tea/carrot_tea-0.png" width="120" height="120" pivot_x="0.5" pivot_y="0.1"/>
     </folder>
     <folder id="11" name="water_dirty">
-        <file id="0" name="water_dirty/water_dirty-0.png" width="200" height="200" pivot_x="0.45" pivot_y="0.16"/>
+        <file id="0" name="water_dirty/water_dirty-0.png" width="120" height="120" pivot_x="0.45" pivot_y="0.16"/>
     </folder>
     <folder id="12" name="dragonjuice">
-        <file id="0" name="dragonjuice/dragonjuice-0.png" width="200" height="200" pivot_x="0.5" pivot_y="0.1"/>
+        <file id="0" name="dragonjuice/dragonjuice-0.png" width="120" height="120" pivot_x="0.5" pivot_y="0.1"/>
     </folder>
     <folder id="13" name="empty">
-        <file id="0" name="empty/empty-0.png" width="200" height="200" pivot_x="0.5" pivot_y="0.1"/>
+        <file id="0" name="empty/empty-0.png" width="120" height="120" pivot_x="0.5" pivot_y="0.1"/>
     </folder>
     <folder id="14" name="fig_juice">
-        <file id="0" name="fig_juice/fig_juice-0.png" width="200" height="200" pivot_x="0.5" pivot_y="0.1"/>
+        <file id="0" name="fig_juice/fig_juice-0.png" width="120" height="120" pivot_x="0.5" pivot_y="0.1"/>
     </folder>
     <folder id="15" name="fruitjuice">
-        <file id="0" name="fruitjuice/fruitjuice-0.png" width="200" height="200" pivot_x="0.5" pivot_y="0.1"/>
+        <file id="0" name="fruitjuice/fruitjuice-0.png" width="120" height="120" pivot_x="0.5" pivot_y="0.1"/>
     </folder>
     <folder id="16" name="goopydrink">
-        <file id="0" name="goopydrink/goopydrink-0.png" width="200" height="200" pivot_x="0.5" pivot_y="0.1"/>
+        <file id="0" name="goopydrink/goopydrink-0.png" width="120" height="120" pivot_x="0.5" pivot_y="0.1"/>
     </folder>
     <folder id="17" name="greentea">
-        <file id="0" name="greentea/greentea-0.png" width="200" height="200" pivot_x="0.5" pivot_y="0.1"/>
+        <file id="0" name="greentea/greentea-0.png" width="120" height="120" pivot_x="0.5" pivot_y="0.1"/>
     </folder>
     <folder id="18" name="hibiscustea">
-        <file id="0" name="hibiscustea/hibiscustea-0.png" width="200" height="200" pivot_x="0.5" pivot_y="0.1"/>
+        <file id="0" name="hibiscustea/hibiscustea-0.png" width="120" height="120" pivot_x="0.5" pivot_y="0.1"/>
     </folder>
     <folder id="19" name="lotustea">
-        <file id="0" name="lotustea/lotustea-0.png" width="200" height="200" pivot_x="0.5" pivot_y="0.1"/>
+        <file id="0" name="lotustea/lotustea-0.png" width="120" height="120" pivot_x="0.5" pivot_y="0.1"/>
     </folder>
     <folder id="20" name="mixflower">
-        <file id="0" name="mixflower/mixflower-0.png" width="200" height="200" pivot_x="0.5" pivot_y="0.1"/>
+        <file id="0" name="mixflower/mixflower-0.png" width="120" height="120" pivot_x="0.5" pivot_y="0.1"/>
     </folder>
     <folder id="21" name="mulled">
-        <file id="0" name="mulled/mulled-0.png" width="200" height="200" pivot_x="0.5" pivot_y="0.1"/>
+        <file id="0" name="mulled/mulled-0.png" width="120" height="120" pivot_x="0.5" pivot_y="0.1"/>
     </folder>
     <folder id="22" name="water_salty">
-        <file id="0" name="water_salty/water_salty-0.png" width="200" height="200" pivot_x="0.45" pivot_y="0.16"/>
+        <file id="0" name="water_salty/water_salty-0.png" width="120" height="120" pivot_x="0.45" pivot_y="0.16"/>
     </folder>
     <folder id="23" name="cola">
-        <file id="0" name="cola/cola-0.png" width="200" height="200" pivot_x="0.5" pivot_y="0.1"/>
+        <file id="0" name="cola/cola-0.png" width="120" height="120" pivot_x="0.5" pivot_y="0.1"/>
     </folder>
     <folder id="24" name="colaquantum">
-        <file id="0" name="colaquantum/colaquantum-0.png" width="200" height="200" pivot_x="0.5" pivot_y="0.1"/>
+        <file id="0" name="colaquantum/colaquantum-0.png" width="120" height="120" pivot_x="0.5" pivot_y="0.1"/>
     </folder>
     <folder id="25" name="caffeinberry_juice">
-        <file id="0" name="caffeinberry_juice/caffeinberry_juice-0.png" width="200" height="200" pivot_x="0.5" pivot_y="0.1"/>
+        <file id="0" name="caffeinberry_juice/caffeinberry_juice-0.png" width="120" height="120" pivot_x="0.5" pivot_y="0.1"/>
     </folder>
     <folder id="26" name="fruitsoda">
-        <file id="0" name="fruitsoda/fruitsoda-0.png" width="200" height="200" pivot_x="0.5" pivot_y="0.15"/>
+        <file id="0" name="fruitsoda/fruitsoda-0.png" width="120" height="120" pivot_x="0.5" pivot_y="0.15"/>
     </folder>
     <folder id="27" name="fuer">
-        <file id="0" name="fuer/fuer-0.png" width="200" height="200" pivot_x="0.5" pivot_y="0.1"/>
+        <file id="0" name="fuer/fuer-0.png" width="120" height="120" pivot_x="0.5" pivot_y="0.1"/>
     </folder>
     <folder id="28" name="glowberryjuice">
-        <file id="0" name="glowberryjuice/glowberryjuice-0.png" width="200" height="200" pivot_x="0.5" pivot_y="0.1"/>
+        <file id="0" name="glowberryjuice/glowberryjuice-0.png" width="120" height="120" pivot_x="0.5" pivot_y="0.1"/>
     </folder>
     <folder id="29" name="kumis">
-        <file id="0" name="kumis/kumis-0.png" width="200" height="200" pivot_x="0.5" pivot_y="0.15"/>
+        <file id="0" name="kumis/kumis-0.png" width="120" height="120" pivot_x="0.5" pivot_y="0.15"/>
     </folder>
     <folder id="30" name="madhu">
-        <file id="0" name="madhu/madhu-0.png" width="200" height="200" pivot_x="0.5" pivot_y="0.1"/>
+        <file id="0" name="madhu/madhu-0.png" width="120" height="120" pivot_x="0.5" pivot_y="0.1"/>
     </folder>
     <folder id="31" name="sparklingwine">
-        <file id="0" name="sparklingwine/sparklingwine-0.png" width="200" height="200" pivot_x="0.5" pivot_y="0.1"/>
+        <file id="0" name="sparklingwine/sparklingwine-0.png" width="120" height="120" pivot_x="0.5" pivot_y="0.1"/>
     </folder>
     <folder id="32" name="wine">
-        <file id="0" name="wine/wine-0.png" width="200" height="200" pivot_x="0.5" pivot_y="0.05"/>
+        <file id="0" name="wine/wine-0.png" width="120" height="120" pivot_x="0.5" pivot_y="0.05"/>
     </folder>
     <folder id="33" name="cactus_tea">
-        <file id="0" name="cactus_tea/cactus_tea-0.png" width="200" height="200" pivot_x="0.5" pivot_y="0.1"/>
+        <file id="0" name="cactus_tea/cactus_tea-0.png" width="120" height="120" pivot_x="0.5" pivot_y="0.1"/>
     </folder>
     <folder id="34" name="pomegranate_juice">
-        <file id="0" name="pomegranate_juice/pomegranate_juice-0.png" width="200" height="200" pivot_x="0.5" pivot_y="0.1"/>
+        <file id="0" name="pomegranate_juice/pomegranate_juice-0.png" width="120" height="120" pivot_x="0.5" pivot_y="0.1"/>
     </folder>
     <folder id="35" name="spoiled_drink">
-        <file id="0" name="spoiled_drink/spoiled_drink-0.png" width="200" height="200" pivot_x="0.5" pivot_y="0.1"/>
+        <file id="0" name="spoiled_drink/spoiled_drink-0.png" width="120" height="120" pivot_x="0.5" pivot_y="0.1"/>
     </folder>
     <folder id="36" name="noblewine">
-        <file id="0" name="noblewine/noblewine-0.png" width="200" height="200" pivot_x="0.5" pivot_y="0.05"/>
+        <file id="0" name="noblewine/noblewine-0.png" width="120" height="120" pivot_x="0.5" pivot_y="0.05"/>
     </folder>
     <folder id="37" name="glowberrywine">
-        <file id="0" name="glowberrywine/glowberrywine-0.png" width="200" height="200" pivot_x="0.5" pivot_y="0.05"/>
+        <file id="0" name="glowberrywine/glowberrywine-0.png" width="120" height="120" pivot_x="0.5" pivot_y="0.05"/>
     </folder>
     <folder id="38" name="soda">
-        <file id="0" name="soda/soda-0.png" width="200" height="200" pivot_x="0.5" pivot_y="0.15"/>
+        <file id="0" name="soda/soda-0.png" width="120" height="120" pivot_x="0.5" pivot_y="0.15"/>
     </folder>
     <folder id="39" name="lemonlimesoda">
-        <file id="0" name="lemonlimesoda/lemonlimesoda-0.png" width="200" height="200" pivot_x="0.5" pivot_y="0.15"/>
+        <file id="0" name="lemonlimesoda/lemonlimesoda-0.png" width="120" height="120" pivot_x="0.5" pivot_y="0.15"/>
     </folder>
     <folder id="40" name="water_clean_ice">
-        <file id="0" name="water_clean_ice/water_clean_ice.png" width="200" height="200" pivot_x="0.44" pivot_y="0.16"/>
+        <file id="0" name="water_clean_ice/water_clean_ice.png" width="120" height="120" pivot_x="0.44" pivot_y="0.16"/>
     </folder>
     <folder id="41" name="water_dirty_ice">
-        <file id="0" name="water_dirty_ice/water_dirty_ice.png" width="200" height="200" pivot_x="0.44" pivot_y="0.16"/>
+        <file id="0" name="water_dirty_ice/water_dirty_ice.png" width="120" height="120" pivot_x="0.44" pivot_y="0.16"/>
     </folder>
     <entity id="0" name="kettle_drink">
         <animation id="0" name="turn_to_ice" length="700" interval="100">
@@ -201,43 +201,43 @@
                     <object folder="1" file="0" x="-3.999999" y="-1.999998" angle="0"/>
                 </key>
                 <key id="2" time="50" spin="0">
-                    <object folder="1" file="0" y="-1.999998" angle="0"/>
+                    <object folder="1" file="0" x="0" y="-1.999998" angle="0"/>
                 </key>
                 <key id="3" time="75" spin="0">
                     <object folder="1" file="0" x="-4" y="-1.999998" angle="0"/>
                 </key>
                 <key id="4" time="100" spin="0">
-                    <object folder="1" file="0" y="-1.999998" angle="0"/>
+                    <object folder="1" file="0" x="0" y="-1.999998" angle="0"/>
                 </key>
                 <key id="5" time="125" spin="0">
                     <object folder="1" file="0" x="-4" y="-1.999998" angle="0"/>
                 </key>
                 <key id="6" time="150" spin="0">
-                    <object folder="1" file="0" y="-1.999998" angle="0"/>
+                    <object folder="1" file="0" x="0" y="-1.999998" angle="0"/>
                 </key>
                 <key id="7" time="175" spin="0">
                     <object folder="1" file="0" x="-4" y="-1.999998" angle="0"/>
                 </key>
                 <key id="8" time="200" spin="0">
-                    <object folder="1" file="0" y="-1.999998" angle="0"/>
+                    <object folder="1" file="0" x="0" y="-1.999998" angle="0"/>
                 </key>
                 <key id="9" time="225" spin="0">
                     <object folder="1" file="0" x="-4" y="-1.999998" angle="0"/>
                 </key>
                 <key id="10" time="250" spin="0">
-                    <object folder="1" file="0" y="-1.999998" angle="0"/>
+                    <object folder="1" file="0" x="0" y="-1.999998" angle="0"/>
                 </key>
                 <key id="11" time="275" spin="0">
                     <object folder="1" file="0" x="-4" y="-1.999998" angle="0"/>
                 </key>
                 <key id="12" time="300" spin="0">
-                    <object folder="1" file="0" y="-1.999998" angle="0"/>
+                    <object folder="1" file="0" x="0" y="-1.999998" angle="0"/>
                 </key>
                 <key id="13" time="325" spin="0">
                     <object folder="1" file="0" x="-4" y="-1.999998" angle="0"/>
                 </key>
                 <key id="14" time="350" spin="0">
-                    <object folder="1" file="0" y="-1.999998" angle="0"/>
+                    <object folder="1" file="0" x="0" y="-1.999998" angle="0"/>
                 </key>
                 <key id="15" time="375" spin="0">
                     <object folder="1" file="0" x="-4" y="-1.999998" angle="0"/>
@@ -249,13 +249,13 @@
                     <object folder="1" file="0" x="-2" y="-1.999998" angle="0"/>
                 </key>
                 <key id="18" time="500" spin="0">
-                    <object folder="40" file="0" y="0.000002" angle="0" scale_x="0.5" scale_y="1.2"/>
+                    <object folder="40" file="0" x="0" y="0.000002" angle="0" scale_x="0.5" scale_y="1.2"/>
                 </key>
                 <key id="19" time="550" spin="0">
-                    <object folder="40" file="0" y="0.000002" angle="0" scale_x="1.285068" scale_y="0.397626"/>
+                    <object folder="40" file="0" x="0" y="0.000002" angle="0" scale_x="1.285068" scale_y="0.397626"/>
                 </key>
                 <key id="20" time="700" spin="0">
-                    <object folder="40" file="0" y="0.000002" angle="0"/>
+                    <object folder="40" file="0" x="0" y="0.000002" angle="0"/>
                 </key>
             </timeline>
         </animation>
@@ -375,19 +375,19 @@
                     <object folder="11" file="0" x="-2" y="0.000002" angle="0"/>
                 </key>
                 <key id="16" time="400" spin="0">
-                    <object folder="11" file="0" y="0.000002" angle="0"/>
+                    <object folder="11" file="0" x="0" y="0.000002" angle="0"/>
                 </key>
                 <key id="17" time="450" spin="0">
-                    <object folder="11" file="0" y="0.000002" angle="0"/>
+                    <object folder="11" file="0" x="0" y="0.000002" angle="0"/>
                 </key>
                 <key id="18" time="500" spin="0">
-                    <object folder="41" file="0" y="0.000002" angle="0" scale_x="0.5" scale_y="1.2"/>
+                    <object folder="41" file="0" x="0" y="0.000002" angle="0" scale_x="0.5" scale_y="1.2"/>
                 </key>
                 <key id="19" time="550" spin="0">
-                    <object folder="41" file="0" y="0.000002" angle="0" scale_x="1.2" scale_y="0.5"/>
+                    <object folder="41" file="0" x="0" y="0.000002" angle="0" scale_x="1.2" scale_y="0.5"/>
                 </key>
                 <key id="20" time="700" spin="0">
-                    <object folder="41" file="0" y="0.000002" angle="0"/>
+                    <object folder="41" file="0" x="0" y="0.000002" angle="0"/>
                 </key>
             </timeline>
         </animation>
@@ -432,25 +432,25 @@
             </mainline>
             <timeline id="0" name="water">
                 <key id="0">
-                    <object folder="40" file="0" y="0.000002" angle="0"/>
+                    <object folder="40" file="0" x="0" y="0.000002" angle="0"/>
                 </key>
                 <key id="1" time="100" spin="-1">
-                    <object folder="40" file="0" y="0.000002" angle="2"/>
+                    <object folder="40" file="0" x="0" y="0.000002" angle="2"/>
                 </key>
                 <key id="2" time="200">
-                    <object folder="40" file="0" y="0.000002" angle="358"/>
+                    <object folder="40" file="0" x="0" y="0.000002" angle="358"/>
                 </key>
                 <key id="3" time="300" spin="-1">
-                    <object folder="40" file="0" y="0.000002" angle="2"/>
+                    <object folder="40" file="0" x="0" y="0.000002" angle="2"/>
                 </key>
                 <key id="4" time="400">
-                    <object folder="40" file="0" y="0.000002" angle="358"/>
+                    <object folder="40" file="0" x="0" y="0.000002" angle="358"/>
                 </key>
                 <key id="5" time="450" spin="0">
-                    <object folder="40" file="0" y="0.000002" angle="0"/>
+                    <object folder="40" file="0" x="0" y="0.000002" angle="0"/>
                 </key>
                 <key id="6" time="500" spin="0">
-                    <object folder="40" file="0" y="0.000002" angle="0" scale_x="1.2" scale_y="0.5"/>
+                    <object folder="40" file="0" x="0" y="0.000002" angle="0" scale_x="1.2" scale_y="0.5"/>
                 </key>
                 <key id="7" time="550" spin="0">
                     <object folder="1" file="0" x="-1" y="-2.399998" angle="0" scale_x="0.5" scale_y="1.2"/>
@@ -530,31 +530,31 @@
             </mainline>
             <timeline id="0" name="water">
                 <key id="0">
-                    <object folder="41" file="0" y="0.000002" angle="0"/>
+                    <object folder="41" file="0" x="0" y="0.000002" angle="0"/>
                 </key>
                 <key id="1" time="100" spin="-1">
-                    <object folder="41" file="0" y="0.000002" angle="2"/>
+                    <object folder="41" file="0" x="0" y="0.000002" angle="2"/>
                 </key>
                 <key id="2" time="200">
-                    <object folder="41" file="0" y="0.000002" angle="358"/>
+                    <object folder="41" file="0" x="0" y="0.000002" angle="358"/>
                 </key>
                 <key id="3" time="300" spin="-1">
-                    <object folder="41" file="0" y="0.000002" angle="2"/>
+                    <object folder="41" file="0" x="0" y="0.000002" angle="2"/>
                 </key>
                 <key id="4" time="400">
-                    <object folder="41" file="0" y="0.000002" angle="358"/>
+                    <object folder="41" file="0" x="0" y="0.000002" angle="358"/>
                 </key>
                 <key id="5" time="450" spin="0">
-                    <object folder="41" file="0" y="0.000002" angle="0"/>
+                    <object folder="41" file="0" x="0" y="0.000002" angle="0"/>
                 </key>
                 <key id="6" time="500" spin="0">
-                    <object folder="41" file="0" y="0.000002" angle="0" scale_x="1.2" scale_y="0.5"/>
+                    <object folder="41" file="0" x="0" y="0.000002" angle="0" scale_x="1.2" scale_y="0.5"/>
                 </key>
                 <key id="7" time="550" spin="0">
-                    <object folder="11" file="0" y="0.000002" angle="0" scale_x="0.530387" scale_y="1.151335"/>
+                    <object folder="11" file="0" x="0" y="0.000002" angle="0" scale_x="0.530387" scale_y="1.151335"/>
                 </key>
                 <key id="8" time="700" spin="0">
-                    <object folder="11" file="0" y="0.000002" angle="0"/>
+                    <object folder="11" file="0" x="0" y="0.000002" angle="0"/>
                 </key>
             </timeline>
             <timeline id="1" name="water_UN">
@@ -598,7 +598,7 @@
             </mainline>
             <timeline id="0" name="swap">
                 <key id="0" spin="0">
-                    <object folder="0" file="0" angle="0" scale_x="0.4" scale_y="0.4"/>
+                    <object folder="0" file="0" angle="0"/>
                 </key>
             </timeline>
         </animation>
