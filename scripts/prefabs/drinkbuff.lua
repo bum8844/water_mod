@@ -419,9 +419,57 @@ local function fn_immune()
     return inst
 end
 
+local function OnTick(inst, target)
+    if target.components.health ~= nil and target.components.thirst ~= nil and
+            not target.components.health:IsDead() and
+            not target:HasTag("playerghost") then
+        local thirstabsorption = (target.components.eater ~= nil and target.components.eater.thirstabsorption)
+                or 1.0
+
+        local delta = TUNING.HUNGERREGEN_TICK_VALUE * thirstabsorption
+        target.components.thirst:DoDelta(delta, nil, inst.prefab)
+    else
+        inst.components.debuff:Stop()
+    end
+end
+
+local function OnAttached_thirstregen(inst, target)
+    inst.entity:SetParent(target.entity)
+    inst.Transform:SetPosition(0, 0, 0) --in case of loading
+
+    inst.task = inst:DoPeriodicTask(TUNING.HUNGERREGEN_TICK_RATE, OnTick, nil, target)
+    inst:ListenForEvent("death", function()
+        inst.components.debuff:Stop()
+    end, target)
+end
+
+local function fn_thirstregen()
+    local inst = CreateEntity()
+
+    if not TheWorld.ismastersim then
+        inst:DoTaskInTime(0, inst.Remove)
+
+        return inst
+    end
+
+    inst.entity:AddTransform()
+
+    inst.entity:Hide()
+    inst.persists = false
+
+    inst:AddTag("CLASSIFIED")
+
+    inst:AddComponent("debuff")
+    inst.components.debuff:SetAttachedFn(OnAttached_thirstregen)
+    inst.components.debuff:SetDetachedFn(inst.Remove)
+
+    return inst
+end
+
 return Prefab("caffeinbuff", fn_caffein),
 Prefab("alcoholdebuff", fn_alcohol),
 Prefab("immunebuff",fn_immune),
 Prefab("obebuff",fn_obe),
 Prefab("sleepdrinkbuff",fn_sleepdrink),
-Prefab("sleepdrinkbuff_ex",fn_sleepdrink_ex)
+Prefab("sleepdrinkbuff_ex",fn_sleepdrink_ex),
+Prefab("thirstregenbuff", fn_thirstregen)

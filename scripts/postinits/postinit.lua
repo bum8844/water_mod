@@ -14,7 +14,7 @@ local postinits =
 	{
 		"wateringcan",
 		"antlion",
-		--"fertilizer",
+		--"hats",
 		"firepit",
 		"player",
 		"ponds",
@@ -45,6 +45,7 @@ if GetModConfigData("enable_thirst") then
 	table.insert(postinits.components, "sleepingbaguser")
 	table.insert(postinits.prefabs, "wortox")
 	table.insert(postinits.prefabs, "wickerbottom")
+	table.insert(postinits.prefabs, "hats")
 	table.insert(postinits.widgets, "statusdisplays")
 	table.insert(postinits.widgets, "bloodover_water")
 	table.insert(postinits.widgets, "healthbadge_water")

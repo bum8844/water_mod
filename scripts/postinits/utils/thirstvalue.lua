@@ -277,7 +277,9 @@ HYDRATIONTYPE = {
 			"bunnystew",
 			"dish_sosweetjarkfruit",
 			"bisque",
+			"mfp_bisque",
 			"jellyopop",
+			"mfp_jellyopop",
 			"gyulmungsoup",
 			"gyul_juice",
 			"mandrakesoup",
@@ -287,6 +289,8 @@ HYDRATIONTYPE = {
 		LARGE = {
 			"tea",
 			"icedtea",
+			"mfp_icedtea",
+			"mfp_tea",
 			"kyno_tea",
 			"kyno_icedtea",
 			"cold_gazpacho",

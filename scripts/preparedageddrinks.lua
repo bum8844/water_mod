@@ -23,8 +23,16 @@ local function alcahol(inst, eater)
 	end
 end
 
-function notmeat(tags)
+local function notmeat(tags)
 	return not (tags.meat or tags.egg)
+end
+
+local function ressthing(names)
+	return ((names.twigs or 0) <= 1)
+end
+
+local function notname(names)
+	return not names.boneshard
 end
 
 local drinks =
@@ -66,7 +74,7 @@ local drinks =
 	-- 과일 탄산수
 	fruitsoda =
 	{
-		test = function(boilier, names, tags) return names.refined_dust and names.refined_dust >= 1 and tags.fruit and tags.fruit >= 1 and notmeat(tags) end,
+		test = function(boilier, names, tags) return names.refined_dust and names.refined_dust >= 1 and tags.fruit and tags.fruit >= 1 and notmeat(tags) and notname(names) and ressthing(names) end,
 		priority = 1,
 		health = TUNING.HEALING_MEDSMALL,
 		hunger = TUNING.CALORIES_SMALL*2,
@@ -81,7 +89,7 @@ local drinks =
 	-- 로얄젤리만 넣을경우(치유효과)
 	lemonlimesoda =
 	{
-		test = function(boilier, names, tags) return names.refined_dust and names.refined_dust >= 1 and names.royal_jelly and names.royal_jelly >=1 and notmeat(tags) end,
+		test = function(boilier, names, tags) return names.refined_dust and names.refined_dust >= 1 and names.royal_jelly and names.royal_jelly >=1 and notmeat(tags) and notname(names) and ressthing(names) end,
 		priority = 2,
 		health = TUNING.HEALING_MED,
 		hunger = TUNING.CALORIES_HUGE,
@@ -103,7 +111,7 @@ local drinks =
 	-- 로얄젤리 + 볶은커피(스피드 버프[추가해야함], 채력 버프[추가해야함])
 	cola =
 	{
-		test = function(boilier, names, tags) return (( names.caffeinberry_bean_cooked or 0 ) + ( names.kyno_coffeebeans_cooked or 0 ) >= 1) and names.refined_dust and names.refined_dust >= 1 and names.royal_jelly and names.royal_jelly >= 1 and notmeat(tags) end,
+		test = function(boilier, names, tags) return (( names.caffeinberry_bean_cooked or 0 ) + ( names.kyno_coffeebeans_cooked or 0 ) + ( names.mfp_coffeecherry_cooked or 0 ) >= 1) and names.refined_dust and names.refined_dust >= 1 and names.royal_jelly and names.royal_jelly >= 1 and notmeat(tags) and notname(names) end,
 		priority = 2,
 		health = TUNING.HEALING_LARGE,
 		hunger = TUNING.CALORIES_HUGE,
@@ -185,7 +193,7 @@ local drinks =
 	-- 술(물 장기 보관용도)
 	corn_beer =
 	{
-		test = function(boilier, names, tags) return (( names.corn or 0 ) + ( names.corn_cooked or 0 ) >= 3) and notmeat(tags) end,
+		test = function(boilier, names, tags) return (( names.corn or 0 ) + ( names.corn_cooked or 0 ) >= 3) and notmeat(tags) and notname(names) end,
 		priority = 1,
 		health = TUNING.HEALING_SMALL,
 		hunger = TUNING.DRINK_CALORIES - TUNING.DRINK_CALORIES_POISON,
@@ -205,7 +213,7 @@ local drinks =
 	--꿀술
 	madhu =
 	{
-		test = function(boilier, names, tags) return tags.sweetener and tags.sweetener >= 3 and notmeat(tags) end,
+		test = function(boilier, names, tags) return tags.sweetener and tags.sweetener >= 3 and notmeat(tags) and notname(names) end,
 		priority = 1,
 		health = TUNING.HEALING_TINY,
 		hunger = TUNING.DRINK_CALORIES - TUNING.DRINK_CALORIES_POISON,
@@ -224,7 +232,7 @@ local drinks =
 	-- 베리류
 	wine =
 	{
-		test = function(boilier, names, tags) return (( names.berries or 0 ) + ( names.berries_juicy or 0 ) >= 3) and notmeat(tags) end,
+		test = function(boilier, names, tags) return (( names.berries or 0 ) + ( names.berries_juicy or 0 ) >= 3) and notmeat(tags) and notname(names) end,
 		priority = 2,
 		health = TUNING.HEALING_MEDSMALL,
 		hunger = TUNING.DRINK_CALORIES - TUNING.DRINK_CALORIES_POISON,
@@ -243,7 +251,7 @@ local drinks =
 
 	noblewine = 
 	{
-		test = function(boilier, names, tags) return (( names.berries_cooked or 0 ) + ( names.berries_juicy_cooked or 0 ) >= 3) and notmeat(tags) end,
+		test = function(boilier, names, tags) return (( names.berries_cooked or 0 ) + ( names.berries_juicy_cooked or 0 ) >= 3) and notmeat(tags) and notname(names) end,
 		priority = 2,
 		health = TUNING.HEALING_MEDSMALL,
 		hunger = TUNING.DRINK_CALORIES - TUNING.DRINK_CALORIES_POISON,
@@ -262,7 +270,7 @@ local drinks =
 	
 	sparklingwine =
 	{
-		test = function(boilier, names, tags) return (( names.berries or 0 ) + ( names.berries_juicy or 0 ) >= 2) and names.refined_dust and names.refined_dust >= 1 and notmeat(tags) end,
+		test = function(boilier, names, tags) return (( names.berries or 0 ) + ( names.berries_juicy or 0 ) >= 2) and names.refined_dust and names.refined_dust >= 1 and notmeat(tags) and notname(names) end,
 		priority = 3,
 		health = TUNING.HEALING_MEDSMALL,
 		hunger = TUNING.DRINK_CALORIES - TUNING.DRINK_CALORIES_POISON,
@@ -282,7 +290,7 @@ local drinks =
 	-- 발광 베리류
 	glowberrywine =
 	{
-		test = function(boilier, names, tags) return (( names.wormlight or 0 ) + ( names.wormlight_lesser or 0 ) == 4) and notmeat(tags) end,
+		test = function(boilier, names, tags) return (( names.wormlight or 0 ) + ( names.wormlight_lesser or 0 ) >= 3) and notmeat(tags) and notname(names) end,
 		priority = 1,
 		health = TUNING.HEALING_MEDSMALL,
 		hunger = TUNING.DRINK_CALORIES - TUNING.DRINK_CALORIES_POISON,
@@ -300,7 +308,7 @@ local drinks =
 	},
 	-- 우유
 	kumis = {
-		test = function(boilier, names, tags) return ( ( tags.milk or 0 ) + ( tags.dairy or 0 ) + ( names.goatmilk or 0 ) + ( names.kyno_milk_beefalo or 0 ) + ( names.kyno_milk_koalefant or 0 ) + ( names.milk_box or 0 ) + ( names.beefalo_milk or 0 ) + ( names.rawmilk or 0 ) >= 3) and notmeat(tags) and not tags.fat end,
+		test = function(boilier, names, tags) return ( ( tags.milk or 0 ) + ( tags.dairy or 0 ) + ( names.goatmilk or 0 ) + ( names.kyno_milk_beefalo or 0 ) + ( names.kyno_milk_koalefant or 0 ) + ( names.milk_box or 0 ) + ( names.beefalo_milk or 0 ) + ( names.rawmilk or 0 ) >= 3) and notmeat(tags) and notname(names) and not tags.fat end,
 		priority = 1,
 		health = TUNING.HEALING_MEDSMALL,
 		hunger = TUNING.DRINK_CALORIES - TUNING.DRINK_CALORIES_POISON,

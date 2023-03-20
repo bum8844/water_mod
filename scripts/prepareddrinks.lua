@@ -21,8 +21,16 @@ local function dummy(boiler, name, tags)
 	return false
 end
 
-function notmeat(tags)
+local function notmeat(tags)
 	return not (tags.meat or tags.egg)
+end
+
+local function ressthing(names)
+	return ((names.twigs or 0) <= 1)
+end
+
+local function notname(names)
+	return not names.boneshard
 end
 
 local drinks =
@@ -45,7 +53,7 @@ local drinks =
 	
 	fruitjuice =
 	{
-		test = function(boilier, names, tags) return tags.fruit and tags.fruit >= 1.5 and notmeat(tags) end,
+		test = function(boilier, names, tags) return tags.fruit and tags.fruit >= 2 and notmeat(tags) and notname(names) and ressthing(names) end,
 		priority = 0,
 		health = TUNING.HEALING_MEDSMALL,
 		hunger = TUNING.DRINK_CALORIES ,
@@ -59,7 +67,7 @@ local drinks =
 	
 	berries_juice =
 	{
-		test = function(boilier, names, tags) return (( names.berries or 0 ) + ( names.berries_cooked or 0 ) + ( names.berries_juicy or 0 ) + ( names.berries_juicy_cooked or 0 ) >= 2) and notmeat(tags) end,
+		test = function(boilier, names, tags) return (( names.berries or 0 ) + ( names.berries_cooked or 0 ) + ( names.berries_juicy or 0 ) + ( names.berries_juicy_cooked or 0 ) >= 3) and notmeat(tags) and notname(names) end,
 		priority = 1,
 		health = TUNING.HEALING_MEDSMALL,
 		hunger = TUNING.DRINK_CALORIES,
@@ -74,8 +82,8 @@ local drinks =
 
 	pomegranate_juice =
 	{
-		test = function(boilier, names, tags) return (( names.pomegranate or 0 ) + ( names.pomegranate_cooked or 0 ) >= 2 ) and notmeat(tags) end,
-		priority = 2,
+		test = function(boilier, names, tags) return (( names.pomegranate or 0 ) + ( names.pomegranate_cooked or 0 ) >= 3 ) and notmeat(tags) and notname(names) end,
+		priority = 1,
 		health = TUNING.HEALING_MEDLARGE,
 		hunger = TUNING.DRINK_CALORIES,
 		sanity = TUNING.SANITY_MED,
@@ -88,8 +96,8 @@ local drinks =
 	
 	banana_juice =
 	{
-		test = function(boilier, names, tags) return (( names.cave_banana or 0 ) + ( names.cave_banana_cooked or 0 ) >= 2 ) and notmeat(tags) end,
-		priority = 2,
+		test = function(boilier, names, tags) return (( names.cave_banana or 0 ) + ( names.cave_banana_cooked or 0 ) >= 3 ) and notmeat(tags) and notname(names) end,
+		priority = 1,
 		health = TUNING.HEALING_MEDSMALL,
 		hunger = TUNING.DRINK_CALORIES,
 		sanity = TUNING.SANITY_MEDLARGE,
@@ -102,8 +110,8 @@ local drinks =
 	
 	fig_juice =
 	{
-		test = function(boilier, names, tags) return (( names.fig or 0) + ( names.fig_cooked or 0 ) >= 2 ) and notmeat(tags) end,
-		priority = 2,
+		test = function(boilier, names, tags) return (( names.fig or 0) + ( names.fig_cooked or 0 ) >= 3 ) and notmeat(tags) and notname(names) end,
+		priority = 1,
 		health = TUNING.HEALING_MED,
 		hunger = TUNING.DRINK_CALORIES,
 		sanity = TUNING.SANITY_LARGE,
@@ -116,7 +124,7 @@ local drinks =
 	
 	dragonjuice =
 	{
-		test = function(boilier, names, tags) return (( names.dragonfruit or 0 ) + ( names.dragonfruit_cooked or 0 ) >= 2 ) and notmeat(tags) end,
+		test = function(boilier, names, tags) return (( names.dragonfruit or 0 ) + ( names.dragonfruit_cooked or 0 ) >= 1 ) and notmeat(tags) and notname(names) end,
 		priority = 3,
 		health = TUNING.HEALING_HUGE,
 		hunger = TUNING.DRINK_CALORIES,
@@ -144,8 +152,8 @@ local drinks =
 	
 	glowberryjuice =
 	{
-		test = function(boilier, names, tags) return (( names.wormlight or 0 ) + ( names.wormlight_lesser or 0) >= 2) and notmeat(tags) end,
-		priority = 4,
+		test = function(boilier, names, tags) return (( names.wormlight or 0 ) + ( names.wormlight_lesser or 0) >= 3) and notmeat(tags) and notname(names) end,
+		priority = 1,
 		health = TUNING.HEALING_MED,
 		hunger = TUNING.DRINK_CALORIES,
 		sanity = TUNING.SANITY_TINY,
@@ -186,8 +194,8 @@ local drinks =
 	
 	caffeinberry_juice =
 	{
-		test = function(boilier, names, tags) return (( names.caffeinberry_bean_cooked or 0 ) + ( names.coffeebeans_cooked or 0 ) + ( names.mfp_coffeecherry_cooked or 0 ) >= 2) and notmeat(tags) end,
-		priority = 4,
+		test = function(boilier, names, tags) return (( names.caffeinberry_bean_cooked or 0 ) + ( names.coffeebeans_cooked or 0 ) + ( names.mfp_coffeecherry_cooked or 0 ) >= 3) and notmeat(tags) and notname(names) end,
+		priority = 1,
 		health = TUNING.HEALING_SMALL,
 		hunger = TUNING.DRINK_CALORIES,
 		sanity = TUNING.SANITY_MED,
@@ -216,7 +224,7 @@ local drinks =
 	
 	veggie_tea =
 	{
-		test = function(boilier, names, tags) return tags.veggie and tags.veggie >= 1.5 and notmeat(tags) end,
+		test = function(boilier, names, tags) return tags.veggie and tags.veggie >= 2 and notmeat(tags) and notname(names) and ressthing(names) end,
 		priority = 0,
 		health = TUNING.HEALING_SMALL,
 		hunger = TUNING.DRINK_CALORIES,
@@ -230,7 +238,7 @@ local drinks =
 	
 	carrot_tea =
 	{
-		test = function(boilier, names, tags) return (( names.carrot or 0 ) + ( names.carrot_cooked or 0 ) >= 2 )and notmeat(tags) end,
+		test = function(boilier, names, tags) return (( names.carrot or 0 ) + ( names.carrot_cooked or 0 ) >= 3 ) and notmeat(tags) and notname(names) end,
 		priority = 1,
 		health = TUNING.HEALING_MEDSMALL,
 		hunger = TUNING.DRINK_CALORIES,
@@ -245,7 +253,7 @@ local drinks =
 	
 	cactus_tea =
 	{
-		test = function(boilier, names, tags) return (( names.cactus_meat or 0 ) + ( names.cactus_meat_cooked or 0 ) + ( names.aloe or 0 ) + ( names.aloe_cooked or 0 ) + ( names.kyno_aloe or 0 ) + ( names.kyno_aloe_cooked or 0 ) + ( names.succulent_picked or 0 ) >= 2)  end,
+		test = function(boilier, names, tags) return (( names.cactus_meat or 0 ) + ( names.cactus_meat_cooked or 0 ) + ( names.aloe or 0 ) + ( names.aloe_cooked or 0 ) + ( names.kyno_aloe or 0 ) + ( names.kyno_aloe_cooked or 0 ) + ( names.succulent_picked or 0 ) + ( names.mfp_aloe or 0 ) + ( names.mfp_aloe_cooked or 0 ) >= 3) and notmeat(tags) and notname(names) end,
 		priority = 1,
 		health = TUNING.HEALING_SMALL,
 		hunger = TUNING.DRINK_CALORIES,
@@ -261,7 +269,7 @@ local drinks =
 
 	mulled =
 	{
-		test = function(boilier, names, tags) return (( names.onion or 0 ) + ( names.onion_cooked or 0 ) + ( names.garlic or 0 ) + ( names.garlic_cooked or 0 ) >= 2) and tags.sweetener and tags.sweetener >= 1 and not tags.frozen and notmeat(tags) end,
+		test = function(boilier, names, tags) return (( names.onion or 0 ) + ( names.onion_cooked or 0 ) + ( names.garlic or 0 ) + ( names.garlic_cooked or 0 ) >= 2) and tags.sweetener and tags.sweetener >= 1 and not tags.frozen and notmeat(tags) and notname(names) end,
 		priority = 1,
 		health = TUNING.HEALING_MEDSMALL,
 		hunger = TUNING.DRINK_CALORIES,
@@ -295,7 +303,7 @@ local drinks =
 	
 	greentea =
 	{
-		test = function(boilier, names, tags) return names.tealeaves and names.tealeaves >= 2 and notmeat(tags) end,
+		test = function(boilier, names, tags) return names.tealeaves and names.tealeaves >= 3 and notmeat(tags) and notname(names) end,
 		priority = 1,
 		health = TUNING.HEALING_MEDSMALL,
 		hunger = TUNING.DRINK_CALORIES,
@@ -310,7 +318,7 @@ local drinks =
 	-- 녹차 건조대 말린것
 	blacktea =
 	{
-		test = function(boilier, names, tags) return names.tealeaves_dried and names.tealeaves_dried >= 2 and not tags.frozen and notmeat(tags) end,
+		test = function(boilier, names, tags) return names.tealeaves_dried and names.tealeaves_dried >= 3 and not tags.frozen and notmeat(tags) and notname(names) end,
 		priority = 1,
 		health = TUNING.HEALING_MEDSMALL,
 		hunger = TUNING.DRINK_CALORIES,
@@ -327,7 +335,7 @@ local drinks =
 	
 	blacktea_iced =
 	{
-		test = function(boilier, names, tags) return names.tealeaves_dried and names.tealeaves_dried >= 2 and tags.frozen and tags.frozen >= 1 and notmeat(tags) end,
+		test = function(boilier, names, tags) return names.tealeaves_dried and names.tealeaves_dried >= 2 and tags.frozen and tags.frozen >= 1 and notmeat(tags) and notname(names) end,
 		priority = 1,
 		health = TUNING.HEALING_MEDSMALL,
 		hunger = TUNING.DRINK_CALORIES,
@@ -345,7 +353,7 @@ local drinks =
 	-- 동굴 고사리
 	fuer =
 	{
-		test = function(boilier, names, tags) return names.foliage and names.foliage >= 2 and notmeat(tags) end,
+		test = function(boilier, names, tags) return names.foliage and names.foliage >= 3 and notmeat(tags) and notname(names) end,
 		priority = 1,
 		health = TUNING.HEALING_MED,
 		hunger = TUNING.DRINK_CALORIES,
@@ -360,7 +368,7 @@ local drinks =
 	-- 꽃을 섞으면 나오는 결과물
 	mixflower =
 	{
-		test = function(boilier, names, tags) return tags.decoration and tags.decoration >= 2 and not names.refined_dust and notmeat(tags) end,
+		test = function(boilier, names, tags) return tags.decoration and tags.decoration >= 2 and not names.refined_dust and notmeat(tags) and notname(names) and ressthing(names) end,
 		priority = 0,
 		health = TUNING.HEALING_MEDSMALL,
 		hunger = TUNING.DRINK_CALORIES,
@@ -376,7 +384,7 @@ local drinks =
 	-- 일반 꽃잎
 	hibiscustea =
 	{
-		test = function(boilier, names, tags) return (( names.petals or 0 ) + ( names.forgetmelots or 0 ) + ( names.moon_tree_blossom or 0 ) >= 2 ) and notmeat(tags) end,
+		test = function(boilier, names, tags) return (( names.petals or 0 ) + ( names.forgetmelots or 0 ) + ( names.moon_tree_blossom or 0 ) >= 3 ) and notmeat(tags) and notname(names) end,
 		priority = 1,
 		health = TUNING.HEALING_MEDSMALL,
 		hunger = TUNING.DRINK_CALORIES,
@@ -391,7 +399,7 @@ local drinks =
 	-- 선인장 꽃잎
 	cactusflower_tea =
 	{
-		test = function(boilier, names, tags) return names.cactus_flower and names.cactus_flower >= 2 and notmeat(tags) end,
+		test = function(boilier, names, tags) return names.cactus_flower and names.cactus_flower >= 3 and notmeat(tags) and notname(names) end,
 		priority = 1,
 		health = TUNING.HEALING_MEDSMALL,
 		hunger = TUNING.DRINK_CALORIES,
@@ -406,7 +414,7 @@ local drinks =
 	--일시적으로 유령으로 만드는 차
 	sushibiscus =
 	{
-		test = function(boilier, names, tags) return (( names.petals_evil or 0 ) + ( names.firenettles or 0 ) + ( names.tillweed  or 0 ) >= 2) and notmeat(tags) end,
+		test = function(boilier, names, tags) return (( names.petals_evil or 0 ) + ( names.firenettles or 0 ) + ( names.tillweed  or 0 ) >= 3) and notmeat(tags) and notname(names) end,
 		priority = 2,
 		health = 0,
 		hunger = 0,
@@ -432,7 +440,7 @@ local drinks =
 }
 
 local lotustea = {
-		test = function(boilier, names, tags) return (( names.lotus_flower or 0 ) + ( names.lotus_flower_cooked or 0 ) + ( names.kyno_lotus_flower or 0 ) + ( names.kyno_lotus_flower_cooked or 0 ) + ( names.mfp_lotus_flower or 0 ) + ( names.mfp_lotus_flower_cooked or 0 ) >= 2) and notmeat(tags) end,
+		test = function(boilier, names, tags) return (( names.lotus_flower or 0 ) + ( names.lotus_flower_cooked or 0 ) + ( names.kyno_lotus_flower or 0 ) + ( names.kyno_lotus_flower_cooked or 0 ) + ( names.mfp_lotus_flower or 0 ) + ( names.mfp_lotus_flower_cooked or 0 ) >= 3) and notmeat(tags) and notname(names) end,
 		priority = 1,
 		health = TUNING.HEALING_SMALL,
 		hunger = TUNING.DRINK_CALORIES,
