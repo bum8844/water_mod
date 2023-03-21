@@ -82,9 +82,7 @@ local USEITEM =
     end,
 
     upgrader = function(inst, doer, target, actions)
-        print("값들어옴")
         if inst:HasTag("tile_deploy") then
-            print("넘어옴")
             for k,v in pairs(UPGRADETYPES) do
                 if inst:HasTag(v.."_upgrader") and doer:HasTag(v.."_upgradeuser") and target:HasTag(v.."_upgradeable") then
                     table.insert(actions, ACTIONS.UPGRADE_TILEARRIVE)

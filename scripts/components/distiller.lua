@@ -181,7 +181,6 @@ function Distiller:OnLoad(data)
 end
 
 function Distiller:LongUpdate(dt)
-	print("작동중")
     if self:isBoiling() then
         if self.task ~= nil then
             self.task:Cancel()

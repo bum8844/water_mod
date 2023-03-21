@@ -121,31 +121,21 @@ local function hole()
 	return inst
 end
 
-
-local function updatewellstate(inst)
-    local num = inst.components.pickable.numtoharvest
-	if num > 0 then
-		inst.AnimState:PlayAnimation("idle_watering")
-	else
-		inst.AnimState:PlayAnimation("idle_empty")
-	end
-end
-
 local function onhammered(inst)
 	if inst.AnimState:IsCurrentAnimation("watering") or inst.AnimState:IsCurrentAnimation("hit_watering") or inst.AnimState:IsCurrentAnimation("idle_watering") then
-		local bucket_fit = inst.components.pickable.numtoharvest
-		while bucket_fit > 0 do
-        	if bucket_fit > 0 then
+		local water_finiteuses = inst.components.pickable.numtoharvest
+		while water_finiteuses > 0 do
+        	if water_finiteuses > 0 then
             	inst.components.lootdropper:SpawnLootPrefab("water_clean")
         	end
-        	bucket_fit = bucket_fit - 1
+        	water_finiteuses = water_finiteuses - 1
     	end
-		if inst._bucket_fit > 0 then
+		if inst.bucket_finiteuses > 0 then
 			local x, y, z = inst.Transform:GetWorldPosition()
 	   		local refund = nil
 
 			refund = SpawnPrefab("bucket_empty")
-			refund.components.finiteuses:SetUses(inst._bucket_fit)
+			refund.components.finiteuses:SetUses(inst.bucket_finiteuses)
 
 			LaunchAt(refund,inst,inst,-1.8,0.5,nil,65)
 		end
@@ -201,9 +191,9 @@ local function givewater(inst, picker)
 	inst.AnimState:PushAnimation("idle_empty")
 	picker.SoundEmitter:PlaySound("dontstarve/creatures/pengull/splash")
 
-	if inst._bucket_fit > 0 then
+	if inst.bucket_finiteuses > 0 then
 		refund = SpawnPrefab("bucket_empty")
-		refund.components.finiteuses:SetUses(inst._bucket_fit)
+		refund.components.finiteuses:SetUses(inst.bucket_finiteuses)
 
     	if picker ~= nil and picker.components.inventory ~= nil then
         	picker.components.inventory:GiveItem(refund, nil, Vector3(x, y, z))
@@ -211,50 +201,64 @@ local function givewater(inst, picker)
         	refund.Transform:SetPosition(x,y,z)
     	end
 	end
-
-	inst.components.pickable.numtoharvest = 0
-	SetPickable(inst, false, inst.components.pickable.numtoharvest)
+	SetPickable(inst, false, 0)
 end
 
-local function upwater(inst, item, giver)
-	inst.AnimState:PushAnimation("idle_watering")
-	SetPickable(inst, true, inst.components.pickable.numtoharvest)
-end
-
-local function getwater(inst, item, giver)
-	inst.SoundEmitter:PlaySound("turnoftides/common/together/boat/anchor/ocean_hit")
-	inst:DoTaskInTime(1.1,upwater, item, giver)
+local function WellAct(inst, finiteuses)
+	inst.SoundEmitter:PlaySound("turnoftides/common/together/boat/anchor/tether_land")
+	inst.AnimState:PlayAnimation("watering")
+	inst:DoTaskInTime(1.1,function(inst)
+		inst.SoundEmitter:PlaySound("turnoftides/common/together/boat/anchor/ocean_hit")
+		inst:DoTaskInTime(1.1,function(inst)
+			inst.AnimState:PushAnimation("idle_watering")
+			SetPickable(inst, true, finiteuses)
+		end)
+	end)
 end
 
 local function OnGetItemFromPlayer(inst, giver, item)
 	inst:RemoveTag("ready")
-	local old_fit = item.components.finiteuses:GetUses()
-	if old_fit > TUNING.BUCKET_LEVEL_PER_USE then
-		old_fit = TUNING.BUCKET_LEVEL_PER_USE
+	local water_finiteuses = item.components.finiteuses:GetUses()
+	if water_finiteuses > TUNING.BUCKET_LEVEL_PER_USE then
+		water_finiteuses = TUNING.BUCKET_LEVEL_PER_USE
 	end
-	item.components.finiteuses:Use(old_fit)
-	inst.components.pickable.numtoharvest = old_fit
-	inst._bucket_fit = item.components.finiteuses:GetUses()
-	inst.SoundEmitter:PlaySound("turnoftides/common/together/boat/anchor/tether_land")
-	inst.AnimState:PlayAnimation("watering")
-	inst:DoTaskInTime(1.1,getwater, item, giver)
+	inst.water_finiteuses = water_finiteuses
+	item.components.finiteuses:Use(water_finiteuses)
+	inst.bucket_finiteuses = item.components.finiteuses:GetUses()
+	WellAct(inst, inst.water_finiteuses)
+end
+
+local function updatewellstate(inst, data)
+    local num = data.numtoharvest or 0
+	if num > 0 then
+		inst.AnimState:PlayAnimation("idle_watering")
+		SetPickable(inst, true, num)
+	else
+		inst.AnimState:PlayAnimation("idle_empty")
+		SetPickable(inst, false, num)
+	end
 end
 
 local function onsave(inst, data)
+	data.bucket_finiteuses = inst.bucket_finiteuses
+	if inst.water_finiteuses > 0 then
+		data.water_finiteuses = inst.water_finiteuses
+	end
     if inst.components.pickable.numtoharvest > 0 then
-        -- This isn't saved on the pickable component
         data.numtoharvest = inst.components.pickable.numtoharvest
-        data.bucket_fit = inst._bucket_fit
     end
 end
 
 local function onload(inst, data)
 	if data ~= nil then
-		if data.numtoharvest ~= nil and data.numtoharvest > 0 then
-			inst.components.pickable.numtoharvest = data.numtoharvest
-			inst._bucket_fit = data.bucket_fit
-			updatewellstate(inst)
+		inst.bucket_finiteuses = data.bucket_finiteuses
+		if data.numtoharvest ~= nil then
+			updatewellstate(inst, data)
+		elseif data.bucket_finiteuses ~= nil and data.bucket_finiteuses > 0 then
+			WellAct(inst, data.water_finiteuses)
 		end
+	else
+		updatewellstate(inst, data)
 	end
 end
 
@@ -277,7 +281,8 @@ local function well()
 	MakeObstaclePhysics(inst, .5)
 
 	inst.entity:SetPristine()
-	inst._bucket_fit = 0
+	inst.bucket_finiteuses = 0
+	inst.water_finiteuses = 0
 	
     inst.AnimState:SetBank("well")
     inst.AnimState:SetBuild("well")
