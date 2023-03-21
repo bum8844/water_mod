@@ -6,8 +6,7 @@ local well_kit_assets = {
 }
 
 local well_sprinkler_kit_assets = {
-    --Asset("ANIM", "anim/well_sprinkler.zip"),
-    Asset("ANIM", "anim/sprinkler.zip"),
+    Asset("ANIM", "anim/well_sprinkler.zip"),
 }
 
 local well_sprinkler_kit_prefabs = {

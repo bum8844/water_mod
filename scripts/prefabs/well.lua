@@ -45,7 +45,7 @@ end
 local function CreateWellSprinkler(inst)
 	local sprinkler = ReplacePrefab(inst, "well_sprinkler")
 	sprinkler.Transform:SetPosition(inst.Transform:GetWorldPosition())
-	sprinkler.AnimState:PlayAnimation("place")
+	sprinkler.AnimState:PlayAnimation("place_hole")
 	sprinkler.AnimState:PushAnimation("idle_off")
 	sprinkler.onhole = "hole"
 	PlayPlacementSounds(sprinkler)

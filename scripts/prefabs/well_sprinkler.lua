@@ -4,10 +4,8 @@ local range = TUNING.FIND_WATER_RANGE
 
 local assets =
 {
-	--Asset("ANIM", "anim/well_sprinkler.zip"),
+	Asset("ANIM", "anim/well_sprinkler.zip"),
 	--Asset("ANIM", "anim/well_sprinkler_meter.zip"),
-
-	Asset("ANIM", "anim/sprinkler.zip"),
 	Asset("ANIM", "anim/sprinkler_meter.zip"),
 	Asset("ANIM", "anim/firefighter_placement.zip"),
 }
@@ -403,8 +401,8 @@ local function fn()
 
 	MakeObstaclePhysics(inst, 1)
 
-	inst.AnimState:SetBank("sprinkler")
-	inst.AnimState:SetBuild("sprinkler")
+	inst.AnimState:SetBank("well_sprinkler")
+	inst.AnimState:SetBuild("well_sprinkler")
 	inst.AnimState:PlayAnimation("idle_off")
 	inst.AnimState:OverrideSymbol("swap_meter", "sprinkler_meter", "10")
 
