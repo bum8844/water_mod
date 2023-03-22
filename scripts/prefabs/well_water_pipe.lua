@@ -65,8 +65,7 @@ local function fn()
 
 	HideLayers(inst)
 	ShowRandomLayers(inst)
-
-    --inst.Transform:SetScale(1.5, 1.5, 1.5)
+	
 	inst:SetStateGraph("SGwell_sprinkler_pipes")
 
 	return inst

@@ -14,6 +14,8 @@ local function fn()
 	inst.entity:AddSoundEmitter()
     inst.entity:AddNetwork()
 
+    inst:AddTag("FX")
+
     inst.Transform:SetScale(3,3,3)
 	inst.AnimState:SetBank("well_sprinkler_fx")
 	inst.AnimState:SetBuild("well_sprinkler_fx")
