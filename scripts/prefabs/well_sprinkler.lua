@@ -395,8 +395,8 @@ local function fn()
     inst.entity:AddLight()
     inst.entity:AddNetwork()
 
-    --local minimap = inst.entity:AddMiniMapEntity()
-   -- minimap:SetIcon("well_sprinkler.tex")
+    local minimap = inst.entity:AddMiniMapEntity()
+    minimap:SetIcon("well_sprinkler.tex")
 
 	MakeObstaclePhysics(inst, 1)
 
