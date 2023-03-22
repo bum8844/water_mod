@@ -5,8 +5,7 @@ local range = TUNING.FIND_WATER_RANGE
 local assets =
 {
 	Asset("ANIM", "anim/well_sprinkler.zip"),
-	--Asset("ANIM", "anim/well_sprinkler_meter.zip"),
-	Asset("ANIM", "anim/sprinkler_meter.zip"),
+	Asset("ANIM", "anim/well_sprinkler_meter.zip"),
 	Asset("ANIM", "anim/firefighter_placement.zip"),
 }
 
@@ -89,7 +88,7 @@ end
 local function OnFuelSectionChange(new, old, inst)
     if inst._fuellevel ~= new then
         inst._fuellevel = new
-        inst.AnimState:OverrideSymbol("swap_meter", "sprinkler_meter", tostring(new))
+        inst.AnimState:OverrideSymbol("swap", "well_sprinkler_meter", tostring(new))
     end
 end
 
@@ -404,7 +403,7 @@ local function fn()
 	inst.AnimState:SetBank("well_sprinkler")
 	inst.AnimState:SetBuild("well_sprinkler")
 	inst.AnimState:PlayAnimation("idle_off")
-	inst.AnimState:OverrideSymbol("swap_meter", "sprinkler_meter", "10")
+	inst.AnimState:OverrideSymbol("swap", "well_sprinkler_meter", "10")
 
 	inst:AddTag("structure")
 	inst:AddTag("forfarm")
