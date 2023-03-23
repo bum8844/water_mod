@@ -45,8 +45,6 @@ local states =
             inst.sg.statemem.intensity = intensity
             local actualIntensity = math.min(intensity,10) / 10
             
-            --inst.SoundEmitter:PlaySound("dontstarve_DLC003/common/crafted/sprinkler/pipe_craft","pipesound_on")
-            --inst.SoundEmitter:SetParameter("pipesound_on", "intensity", actualIntensity) 
         end,
 
         events =
