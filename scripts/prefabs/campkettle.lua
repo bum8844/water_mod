@@ -15,46 +15,9 @@ local prefabs_item =
 
 local prefabs =
 {
+    "collapse_small",
     "campkettle_item",
 }
-
-local function fn_item()
-    local inst = CreateEntity()
-
-    inst.entity:AddTransform()
-    inst.entity:AddAnimState()
-    inst.entity:AddSoundEmitter()
-    inst.entity:AddNetwork()
-
-    MakeInventoryPhysics(inst)  
-
-    inst.AnimState:SetBuild("campkettle")
-    inst.AnimState:SetBank("item")
-    inst.AnimState:PlayAnimation("idle_ground")
-
-    inst.entity:SetPristine()
-
-    inst:AddTag("campkettle")
-
-    if not TheWorld.ismastersim then
-        return inst
-    end
-
-    inst:AddComponent("tradable")
-
-    inst:AddComponent("inspectable")
-    
-    inst:AddComponent("inventoryitem")
-    inst.components.inventoryitem:ChangeImageName("campkettle")
-
-    inst:AddComponent("upgrader")
-    inst.components.upgrader.upgradetype = UPGRADETYPES.CAMPFIRE
-    inst.components.upgrader.upgradevalue = 1
-
-    MakeHauntableLaunchAndSmash(inst)
-
-    return inst
-end
 
 local function onbuilt(inst)
     if not inst._fire then
@@ -85,6 +48,7 @@ local function ChangeToItem(inst)
     end
     
     item.AnimState:PlayAnimation("collapse_"..inst._type)
+    item.AnimState:PushAnimation("idle")
     item.SoundEmitter:PlaySound("dontstarve/common/together/portable/cookpot/collapse")
     item.Transform:SetPosition(inst.Transform:GetWorldPosition())
     if inst._fire then
@@ -225,6 +189,44 @@ local function fn()
     inst.OnLoad = onload
 
     inst:ListenForEvent("onbuilt", onbuilt)
+
+    return inst
+end
+
+local function fn_item()
+    local inst = CreateEntity()
+
+    inst.entity:AddTransform()
+    inst.entity:AddAnimState()
+    inst.entity:AddSoundEmitter()
+    inst.entity:AddNetwork()
+
+    MakeInventoryPhysics(inst)  
+
+    inst.AnimState:SetBuild("campkettle")
+    inst.AnimState:SetBank("item")
+    inst.AnimState:PlayAnimation("idle")
+
+    inst.entity:SetPristine()
+
+    inst:AddTag("campkettle_item")
+
+    if not TheWorld.ismastersim then
+        return inst
+    end
+
+    inst:AddComponent("tradable")
+
+    inst:AddComponent("inspectable")
+    
+    inst:AddComponent("inventoryitem")
+    inst.components.inventoryitem:ChangeImageName("campkettle")
+
+    inst:AddComponent("upgrader")
+    inst.components.upgrader.upgradetype = UPGRADETYPES.CAMPFIRE
+    inst.components.upgrader.upgradevalue = 1
+
+    MakeHauntableLaunchAndSmash(inst)
 
     return inst
 end
