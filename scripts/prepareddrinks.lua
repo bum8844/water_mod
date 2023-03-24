@@ -136,6 +136,7 @@ local drinks =
 		potlevel_bottle = "mid",
 		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_SLEEP_AND_DETOX,
 		oneatenfn = function(inst, eater)
+			local knockouttime = TUNING.TEASLEEP_TIME + math.random()
 			if not eater.components.health or eater.components.health:IsDead() or eater:HasTag("playerghost") then
 				return
 			elseif eater.components.debuffable and eater.components.debuffable:IsEnabled() and eater:HasTag("player") then
