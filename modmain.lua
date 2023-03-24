@@ -38,6 +38,7 @@ AddIngredientValues({"caffeinberry_bean"}, {fruit=.5}, true)
 AddIngredientValues({"caffeinberry_bean_cooked"}, {fruit=1})
 
 AddIngredientValues({"tealeaves"}, {decoration=1, inedible=1}, false, true)
+AddIngredientValues({"tea_seed_cooked"}, {seed=1}, false, true)
 
 AddReplicableComponent("thirst")
 AddReplicableComponent("waterlevel")
