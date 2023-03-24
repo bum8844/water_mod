@@ -17,7 +17,7 @@ local function sleepend(inst, eater)
 	eater:PushEvent("refreshdrunk")
 end
 
-local function dummy(boiler, name, tags)
+local function dummy(boilier, names, tags)
 	return false
 end
 
@@ -35,6 +35,19 @@ end
 
 local drinks =
 {
+	spoiled_drink =
+	{
+		test = function(boilier, names, tags) return dummy(boilier, names, tags) end,
+		priority = -2,
+		health = TUNING.SPOILED_HEALTH,
+		hunger = TUNING.SPOILED_HUNGER,
+		sanity = TUNING.SANITY_POISON,
+		thirst = TUNING.HYDRATION_POISON,
+		cooktime = TUNING.INCORRECT_BOIL,
+		potlevel = "small",
+		potlevel_bottle = "mid",
+		watertype = WATERTYPE.ROTTEN,
+	},
 	-- 조합법이 잘못되면 나오는 결과물
 	goopydrink = 
 	{

@@ -165,6 +165,7 @@ end
 local function spoilfn(inst)
     if not inst:HasTag("burnt") then
         inst.components.stewer.product = inst.components.stewer.spoiledproduct
+        inst.components.pickable.product = inst.components.stewer.product
         inst.AnimState:OverrideSymbol("swap", "portablekettle_meter_dirty", tostring(inst._waterlevel))
         inst:DoTaskInTime(0,function(inst)
             SetProductSymbol(inst, inst.components.stewer.product)
@@ -299,6 +300,7 @@ local function ondoneboilingfn(inst)
     inst.AnimState:PlayAnimation("idle_empty")
     inst.SoundEmitter:KillSound("snd") 
     inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_finish")
+    inst.Light:Enable(false)
 end
 
 local function onstartboilingfn(inst)
@@ -342,11 +344,8 @@ local function onsave(inst, data)
 end
 
 local function onload(inst, data)
-    if data ~= nil then 
-        if data.burnt then
-            inst.components.burnable.onburnt(inst)
-            inst.Light:Enable(false)
-        end
+    if data ~= nil and data.burnt then
+        inst.components.burnable.onburnt(inst)
     end
     inst.components.waterlevel:DoDiistiller(inst)
 end
