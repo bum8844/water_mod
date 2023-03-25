@@ -71,15 +71,18 @@ local function OnSave(inst, data)
 end
 
 local function OnLoad(inst, data)
-	if data ~= nil and data.kettle ~= nil then
-		install_kettle(inst, true)
-		inst._kettle.components.waterlevel:InitializeWaterLevel(math.max(0, data.kettle.waterlevel))
-		inst._kettle.components.waterlevel:SetWaterType(data.kettle.watertype)
-		if data.kettle.watertype == WATERTYPE.CLEAN and data.kettle.waterlevel > 0 then
-			inst._kettle.components.pickable.canbepicked = true
-		end
-		if inst.components.fueled:GetCurrentSection() > 0 or data.kettle.watertype == WATERTYPE.CLEAN then
-			inst._kettle.components.waterlevel:DoDiistiller(inst._kettle)
+	local numupgrades = inst.components.upgradeable.numupgrades
+	if numupgrades ~= 0 then
+		if data ~= nil and data.kettle ~= nil then
+			install_kettle(inst, true)
+			inst._kettle.components.waterlevel:InitializeWaterLevel(math.max(0, data.kettle.waterlevel))
+			inst._kettle.components.waterlevel:SetWaterType(data.kettle.watertype)
+			if data.kettle.watertype == WATERTYPE.CLEAN and data.kettle.waterlevel > 0 then
+				inst._kettle.components.pickable.canbepicked = true
+			end
+			if inst.components.fueled:GetCurrentSection() > 0 or data.kettle.watertype == WATERTYPE.CLEAN then
+				inst._kettle.components.waterlevel:DoDiistiller(inst._kettle)
+			end
 		end
 	end
 end

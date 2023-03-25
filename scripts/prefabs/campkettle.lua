@@ -24,6 +24,7 @@ local function onbuilt(inst)
         print("must build on campfire or firepit! -- removing")
         inst:Remove()
     else
+        inst:Hide()
         inst._type = inst.parent.prefab == "firepit" and "B" or "A"
         inst.AnimState:SetBank("type_"..inst._type)
 
