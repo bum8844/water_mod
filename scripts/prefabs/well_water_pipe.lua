@@ -60,6 +60,8 @@ local function fn()
 	inst.AnimState:SetBank("well_sprinkler_pipes")
 	inst.AnimState:SetBuild("well_sprinkler_pipes")
 
+	inst:AddTag("NOBLOCK")
+
 	inst.AnimState:PlayAnimation("place")
 	inst.AnimState:SetOrientation(ANIM_ORIENTATION.OnGround)
 	inst.AnimState:SetLayer(LAYER_BACKGROUND)

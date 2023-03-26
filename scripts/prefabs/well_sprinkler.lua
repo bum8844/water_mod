@@ -93,7 +93,7 @@ local function OnFuelSectionChange(new, old, inst)
 end
 
 local function CanInteract(inst)
-	local nopipes = not inst.pipes or #inst.pipes == 0 or not inst.onhole
+	local nopipes = not inst.pipes or #inst.pipes == 0 or inst.onhole ~= nil
 	return not inst.components.fueled:IsEmpty() and not nopipes
 end
 
@@ -116,7 +116,7 @@ local function OnSave(inst, data)
 
     data.onhole = inst.onhole
     data.on = inst.on
-    if inst.onhole == nil then
+    if inst.onhole == nil and inst.pipes ~= nil then
         data.pipes = {}
         data.pipeAngles = {}
 
@@ -127,18 +127,6 @@ local function OnSave(inst, data)
     end
     if inst.waterSpray ~= nil then
         data.waterSpray = inst.waterSpray.GUID
-    end
-
-    if inst.pipes ~= nil then
-        local pipes = {}
-        local pipeAngles = {}
-
-        for i, pipe in ipairs(inst.pipes) do
-            table.insert(pipes, pipe.GUID)
-            table.insert(pipeAngles, pipe.Transform:GetRotation())
-        end
-        data.pipes = pipes
-        data.pipeAngles = pipeAngles
     end
 
     return {}
@@ -340,7 +328,7 @@ local function onhammered(inst, worker)
     if inst.onhole ~= nil then
     	local hole = SpawnPrefab("hole")
     	hole.Transform:SetPosition(inst.Transform:GetWorldPosition())
-    else
+    elseif inst.pipes ~= nil then
     	DestroyPipes(inst)
     end
     fx.Transform:SetPosition(inst.Transform:GetWorldPosition())
@@ -407,6 +395,7 @@ local function fn()
 
 	inst:AddTag("structure")
 	inst:AddTag("forfarm")
+    inst:AddTag("alwayson")
 
 	if not TheNet:IsDedicated() then
 		inst:AddComponent("deployhelper")
@@ -464,13 +453,17 @@ local function fn()
 	MakeSnowCovered(inst, .01)
 
 	inst:DoTaskInTime(0.1,function(inst)
-		if inst.onhole == nil then
+        local pt = inst:GetPosition()
+		if inst.onhole == nil and GetValidWaterPointNearby(pt) then
 			if not inst.pipes or (#inst.pipes < 1) then
 				CreatePipes(inst)
 			end
 			ConnectPipes(inst)
 			ExtendPipes(inst)
-		end
+            inst:AddTag("haspipe")
+		elseif inst.onhole then
+            inst:AddTag("hashole")
+        end
 	end)
 
 	return inst

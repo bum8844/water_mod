@@ -40,7 +40,7 @@ local function PlaceTestFn(inst, pt, mouseover, deployer)
     return GetValidWaterPointNearby(inst, pt) ~= nil
 end
 
-local function MakeUpGrade_Kit(name, animname, masterfn, assets, prefabs, tags)
+local function MakeUpGrade_Kit(name, animname, playanim, masterfn, assets, prefabs, tags)
 
     local function fn()
         local inst = CreateEntity()
@@ -54,7 +54,7 @@ local function MakeUpGrade_Kit(name, animname, masterfn, assets, prefabs, tags)
 
     	inst.AnimState:SetBuild(animname)
         inst.AnimState:SetBank("item")
-        inst.AnimState:PlayAnimation("idle_ground")
+        inst.AnimState:PlayAnimation(playanim)
 
         if tags ~= nil then
             for k, v in ipairs(tags) do
@@ -102,9 +102,8 @@ local function ondeploy(inst, pt, deployer)
         sprinkler.Physics:SetCollides(true)
         sprinkler.AnimState:PlayAnimation("place")
         sprinkler.AnimState:PushAnimation("idle_off")
-        --sprinkler.SoundEmitter:PlaySound("dontstarve/common/together/portable/cookpot/place")
+        sprinkler.SoundEmitter:PlaySound("dontstarve/common/researchmachine_lvl2_place")
         inst:Remove()
-        --PreventCharacterCollisionsWithPlacedObjects(pot)
     end
 end
 
@@ -148,7 +147,7 @@ local function placer_postinit_fn(inst)
     inst.components.placer:LinkEntity(placer2)
 end
 
-return MakeUpGrade_Kit("well_kit", "well", nil, well_kit_assets, well_kit_prefabs),
-MakeUpGrade_Kit("well_sprinkler_kit", "well_sprinkler", well_sprinkler_kit_fn, well_sprinkler_kit_assets, well_sprinkler_kit_prefabs,{"well_sprinkler_kit","tile_deploy"}),
+return MakeUpGrade_Kit("well_kit", "well", "idle_ground", nil, well_kit_assets, well_kit_prefabs),
+MakeUpGrade_Kit("well_sprinkler_kit", "well_sprinkler", "idle", well_sprinkler_kit_fn, well_sprinkler_kit_assets, well_sprinkler_kit_prefabs,{"well_sprinkler_kit","tile_deploy"}),
 MakePlacer("well_sprinkler_kit_placer", "firefighter_placement", "firefighter_placement", "idle", true, nil, nil, TUNING.SPRINKLER_PLACER_SCALE, nil, nil, placer_postinit_fn)
 --MakePlacer("well_sprinkler_kit_placer", "well_sprinkler_placement", "well_sprinkler_placement", "idle", true, nil, nil, TUNING.SPRINKLER_PLACER_SCALE, nil, nil, placer_postinit_fn)

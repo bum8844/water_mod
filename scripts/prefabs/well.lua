@@ -26,20 +26,16 @@ local function FailUpgrade(inst, performer, prefabs)
 	performer.components.talker:Say(GetActionFailString(performer,"CONSTRUCT","NOTALLOWED"))
 end
 
-local function PlayPlacementSounds(inst)
-	inst.SoundEmitter:PlaySound("dontstarve/common/together/town_portal/craft")
-	inst:DoTaskInTime(.6, function()
-		inst.SoundEmitter:PlaySound("saltydog/common/saltbox/place")
-	end)
-end
 
 local function CreateWell(inst)
 	local well = ReplacePrefab(inst, "well")
 	well.Transform:SetPosition(inst.Transform:GetWorldPosition())
 	well.AnimState:PlayAnimation("place")
 	well.AnimState:PushAnimation("idle_empty")
-	PlayPlacementSounds(well)
-	return well
+	well.SoundEmitter:PlaySound("dontstarve/common/together/town_portal/craft")
+	well:DoTaskInTime(.6, function()
+		well.SoundEmitter:PlaySound("saltydog/common/saltbox/place")
+	end)
 end
 
 local function CreateWellSprinkler(inst)
@@ -48,8 +44,10 @@ local function CreateWellSprinkler(inst)
 	sprinkler.AnimState:PlayAnimation("place_hole")
 	sprinkler.AnimState:PushAnimation("idle_off")
 	sprinkler.onhole = "hole"
-	PlayPlacementSounds(sprinkler)
-	return sprinkler
+	sprinkler.SoundEmitter:PlaySound("dontstarve/common/together/catapult/hit")
+	sprinkler:DoTaskInTime(.6, function()
+		sprinkler.SoundEmitter:PlaySound("dontstarve/common/researchmachine_lvl2_place")
+	end)
 end
 
 local function OnUpgrade(inst, performer, upgraded_from_item)

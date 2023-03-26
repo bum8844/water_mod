@@ -44,6 +44,8 @@ local states =
 
             inst.sg.statemem.intensity = intensity
             local actualIntensity = math.min(intensity,10) / 10
+
+            inst.SoundEmitter:PlaySound("dontstarve/common/together/catapult/hit")
             
         end,
 

@@ -131,12 +131,9 @@ local SCENE =
                 not inst.replica.equippable:IsEquipped() and
                 inst.replica.inventoryitem ~= nil and
                 inst.replica.inventoryitem:IsHeld()) and
-                inst:HasTag("forfarm") then
-            if inst:HasTag("turnedon") then
-                table.insert(actions, ACTIONS.TURNOFF)
-            else
-                table.insert(actions, ACTIONS.TURNON_TILEARRIVE)
-            end
+                inst:HasTag("forfarm") and
+                (inst:HasTag("haspipe") or inst:HasTag("hashole")) then
+            table.insert(actions, inst:HasTag("turnedon") and ACTIONS.TURNOFF or ACTIONS.TURNON_TILEARRIVE)
         end
     end,
 }
