@@ -34,7 +34,7 @@ AddRecipe2("well_drilling_item",{Ingredient("boards",2),Ingredient("cutstone",3)
 
 AddRecipe2("well_kit",{Ingredient("boards",2),Ingredient("cutstone",6),Ingredient("hammer",1)},TECH.SCIENCE_TWO,{atlas = ModAtlas, image = "well_kit.tex"},{"GARDENING","HYDRATION"})
 
-AddRecipe2("well_sprinkler_kit",{Ingredient("marble",4),Ingredient("moonglass",1),Ingredient("townportaltalisman",2),Ingredient("gears",1)},TECH.SCIENCE_TWO,{atlas = ModAtlas, image = "well_kit.tex"},{"GARDENING","HYDRATION"})
+AddRecipe2("well_sprinkler_kit",{Ingredient("marble",4),Ingredient("moonglass",1),Ingredient("townportaltalisman",2),Ingredient("gears",1)},TECH.SCIENCE_TWO,{atlas = ModAtlas, image = "well_sprinkler_kit.tex"},{"GARDENING","HYDRATION"})
 
 --CONSTRUCTION_PLANS["hole"] = {Ingredient("boards",2),Ingredient("cutstone",6),Ingredient("hammer",1)}
 
