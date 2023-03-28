@@ -6,7 +6,7 @@ local assets =
 {
 	Asset("ANIM", "anim/well_sprinkler.zip"),
 	Asset("ANIM", "anim/well_sprinkler_meter.zip"),
-	Asset("ANIM", "anim/firefighter_placement.zip"),
+	Asset("ANIM", "anim/well_sprinkler_placement.zip"),
 }
 
 local prefabs =
@@ -92,11 +92,6 @@ local function OnFuelSectionChange(new, old, inst)
     end
 end
 
-local function CanInteract(inst)
-	local nopipes = not inst.pipes or #inst.pipes == 0 or inst.onhole ~= nil
-	return not inst.components.fueled:IsEmpty() and not nopipes
-end
-
 local function GetStatus(inst, viewer)
 	return inst.components.fueled ~= nil
             and inst.components.fueled.currentfuel / inst.components.fueled.maxfuel <= .25
@@ -107,64 +102,6 @@ end
 
 local function OnEntitySleep(inst)
     inst.SoundEmitter:KillSound("firesuppressor_idle")
-end
-
-local function OnSave(inst, data)
-    if inst:HasTag("burnt") or inst:HasTag("fire") then
-        data.burnt = true
-    end
-
-    data.onhole = inst.onhole
-    data.on = inst.on
-    if inst.onhole == nil and inst.pipes ~= nil then
-        data.pipes = {}
-        data.pipeAngles = {}
-
-        for i, pipe in ipairs(inst.pipes) do
-            table.insert(data.pipes, pipe.GUID)
-            table.insert(data.pipeAngles, pipe.Transform:GetRotation())
-        end
-    end
-    if inst.waterSpray ~= nil then
-        data.waterSpray = inst.waterSpray.GUID
-    end
-
-    return {}
-end
-
-local function OnLoad(inst, data)
-	if data ~= nil then
-    	if data.burnt ~= nil and inst.components.burnable ~= nil and inst.components.burnable.onburnt ~= nil then
-        	inst.components.burnable.onburnt(inst)
-    	end
-
-    	inst.onhole = data.onhole or nil
-    	inst.on = data.on or false
-	end
-end
-
-local function OnLoadPostPass(inst, newents, data)
-    if not data.onhole then
-        inst.pipes = {}
-        inst.loadedPipesFromFile = false
-
-        if data.waterSpray ~= nil then
-            inst.waterSpray = newents[data.waterSpray].entity
-        end
-
-        if data.pipes ~= nil then
-            for i, pipeGUID in ipairs(data.pipes) do
-                local newpipe = newents[pipeGUID].entity
-
-                if newpipe ~= nil then
-                    newpipe.pipelineOwner = inst
-                    table.insert(inst.pipes, newpipe)
-                    inst.pipes[i].Transform:SetRotation(data.pipeAngles[i])
-                    inst.loadedPipesFromFile = true
-                end
-            end
-        end
-    end
 end
 
 local function onbuilt(inst)
@@ -310,6 +247,99 @@ local function RetractPipes(inst)
     end
 end
 
+local function OnSave(inst, data)
+    if inst:HasTag("burnt") or inst:HasTag("fire") then
+        data.burnt = true
+    end
+
+    data.onhole = inst.onhole
+    data.on = inst.on
+    if inst.onhole == nil and inst.pipes ~= nil then
+        data.pipes = {}
+        data.pipeAngles = {}
+
+        for i, pipe in ipairs(inst.pipes) do
+            table.insert(data.pipes, pipe.GUID)
+            table.insert(data.pipeAngles, pipe.Transform:GetRotation())
+        end
+    end
+    if inst.waterSpray ~= nil then
+        data.waterSpray = inst.waterSpray.GUID
+    end
+
+    return {}
+end
+
+local function OnLoad(inst, data)
+    if data ~= nil then
+        if data.burnt ~= nil and inst.components.burnable ~= nil and inst.components.burnable.onburnt ~= nil then
+            inst.components.burnable.onburnt(inst)
+        end
+
+        inst.onhole = data.onhole or nil
+        inst.on = data.on or false
+    end
+end
+
+local function OnLoadPostPass(inst, newents, data)
+    if not data.onhole then
+        inst.pipes = {}
+        inst.loadedPipesFromFile = false
+
+        if data.waterSpray ~= nil then
+            inst.waterSpray = newents[data.waterSpray].entity
+        end
+
+        if data.pipes ~= nil then
+            for i, pipeGUID in ipairs(data.pipes) do
+                local newpipe = newents[pipeGUID].entity
+
+                if newpipe ~= nil then
+                    newpipe.pipelineOwner = inst
+                    table.insert(inst.pipes, newpipe)
+                    inst.pipes[i].Transform:SetRotation(data.pipeAngles[i])
+                    inst.loadedPipesFromFile = true
+                end
+            end
+        end
+    end
+end
+
+local function OnSnowLevel(inst, snowlevel)
+    if snowlevel > .02 then
+        if not inst.pondisfrozen then
+            inst.pondisfrozen = true
+            inst:RemoveTag("haspipe")
+        end
+    elseif inst.pondisfrozen == nil or inst.pondisfrozen then
+        inst.pondisfrozen = false
+        inst:AddTag("haspipe")
+    end
+end
+
+local function WeatherCheck(inst)
+    if not inst:HasTag("dummy") then
+        inst:WatchWorldState("snowlevel", OnSnowLevel)
+        OnSnowLevel(inst, TheWorld.state.snowlevel)
+    end
+end
+
+local function PipeCheck(inst)
+    local pt = inst:GetPosition()
+    if inst.onhole == nil and GetValidWaterPointNearby(pt) then
+        if not inst.pipes or (#inst.pipes < 1) then
+            CreatePipes(inst)
+        end
+        ConnectPipes(inst)
+        ExtendPipes(inst)
+        inst:AddTag("haspipe")
+    elseif inst.onhole then
+        inst:AddTag("hashole")
+    else
+        inst:AddTag("dummy")
+    end
+end
+
 local function onhit(inst, worker)
 	if not inst:HasTag("burnt") then
 		if not inst.sg:HasStateTag("busy") then
@@ -355,8 +385,8 @@ local function OnEnableHelper(inst, enabled)
 
             inst.helper.Transform:SetScale(TUNING.SPRINKLER_PLACER_SCALE, TUNING.SPRINKLER_PLACER_SCALE, TUNING.SPRINKLER_PLACER_SCALE)
 
-            inst.helper.AnimState:SetBank("firefighter_placement")
-            inst.helper.AnimState:SetBuild("firefighter_placement")
+            inst.helper.AnimState:SetBank("well_sprinkler_placement")
+            inst.helper.AnimState:SetBuild("well_sprinkler_placement")
             inst.helper.AnimState:PlayAnimation("idle")
             inst.helper.AnimState:SetLightOverride(1)
             inst.helper.AnimState:SetOrientation(ANIM_ORIENTATION.OnGround)
@@ -371,8 +401,6 @@ local function OnEnableHelper(inst, enabled)
         inst.helper = nil
     end
 end
-
-
 local function fn()
     local inst = CreateEntity()
 
@@ -418,7 +446,6 @@ local function fn()
 	inst:AddComponent("machine")
 	inst.components.machine.turnonfn = TurnOn
 	inst.components.machine.turnofffn = TurnOff
-	inst.components.machine.caninteractfn = CanInteract
 	inst.components.machine.cooldowntime = 0.5
 
 	inst:AddComponent("fueled")
@@ -452,19 +479,11 @@ local function fn()
 
 	MakeSnowCovered(inst, .01)
 
-	inst:DoTaskInTime(0.1,function(inst)
-        local pt = inst:GetPosition()
-		if inst.onhole == nil and GetValidWaterPointNearby(pt) then
-			if not inst.pipes or (#inst.pipes < 1) then
-				CreatePipes(inst)
-			end
-			ConnectPipes(inst)
-			ExtendPipes(inst)
-            inst:AddTag("haspipe")
-		elseif inst.onhole then
-            inst:AddTag("hashole")
-        end
-	end)
+	inst:DoTaskInTime(0,PipeCheck)
+
+    if not inst.onhole then
+        inst:DoPeriodicTask(1,WeatherCheck)
+    end
 
 	return inst
 end

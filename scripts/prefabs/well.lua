@@ -242,7 +242,7 @@ local function onsave(inst, data)
 	if inst.water_finiteuses > 0 then
 		data.water_finiteuses = inst.water_finiteuses
 	end
-    if inst.components.pickable.numtoharvest > 0 then
+    if inst.components.pickable.numtoharvest ~= nil and inst.components.pickable.numtoharvest > 0 then
         data.numtoharvest = inst.components.pickable.numtoharvest
     end
 end

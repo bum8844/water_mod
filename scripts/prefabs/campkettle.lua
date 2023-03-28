@@ -154,6 +154,7 @@ local function fn()
 
     inst:AddTag("kettle")
     inst:AddTag("campkettle")
+    inst:AddTag("drinkproduction")
 
     if not TheWorld.ismastersim then
         return inst

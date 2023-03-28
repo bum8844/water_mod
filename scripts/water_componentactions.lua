@@ -136,6 +136,12 @@ local SCENE =
             table.insert(actions, inst:HasTag("turnedon") and ACTIONS.TURNOFF or ACTIONS.TURNON_TILEARRIVE)
         end
     end,
+
+    pickable = function(inst, doer, actions)
+        if inst:HasTag("pickable") and inst:HasTag("drinkproduction") and not (inst:HasTag("fire") or inst:HasTag("intense")) then
+            table.insert(actions, ACTIONS.DRINK_HARVEST)
+        end
+    end,
 }
 
 for k, v in pairs(USEITEM) do

@@ -68,6 +68,8 @@ local function onload(inst, data)
 end
 
 local function OnTakeWater(inst)
+	inst.AnimState:PlayAnimation("")
+	inst.AnimState:PushAnimation("idle")
 	inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/medium")
 end
 

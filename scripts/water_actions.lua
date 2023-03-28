@@ -1,24 +1,4 @@
-local function ExtraDropDist(doer, dest, bufferedaction)
-    if dest ~= nil then
-        local target_x, target_y, target_z = dest:GetPoint()
-
-        local is_on_water = _G.TheWorld.Map:IsOceanTileAtPoint(target_x, 0, target_z) and not _G.TheWorld.Map:IsPassableAtPoint(target_x, 0, target_z)
-        if is_on_water then
-            return 1.75
-        end
-    end
-    return 0
-end
-
-local function DefaultRangeCheck(doer, target)
-    if target == nil then
-        return
-    end
-    local target_x, target_y, target_z = target.Transform:GetWorldPosition()
-    local doer_x, doer_y, doer_z = doer.Transform:GetWorldPosition()
-    local dst = _G.distsq(target_x, target_z, doer_x, doer_z)
-    return dst <= 16
-end
+require("actions")
 
 --Overriding existing actions
 local cook_stroverride = ACTIONS.COOK.stroverridefn or function(act) return end
@@ -179,3 +159,17 @@ end)
 UPGRADE_TILEARRIVE.priority = 4
 UPGRADE_TILEARRIVE.rmb = true
 UPGRADE_TILEARRIVE.theme_music = "farming"
+
+DRINK_HARVEST = AddAction("DRINK_HARVEST",STRINGS.ACTIONS.HARVEST,function(act)
+    if act.target ~= nil and act.target.components.pickable ~= nil then
+        act.target.components.pickable:Pick(act.doer)
+        return true
+    end
+end)
+
+ACTIONS.PICK.priority = 1
+DRINK_HARVEST.priority = 2
+DRINK_HARVEST.canforce = true 
+DRINK_HARVEST.rangecheckfn = DefaultRangeCheck
+DRINK_HARVEST.extra_arrive_dist = ExtraPickupRange
+DRINK_HARVEST.mount_valid = true 

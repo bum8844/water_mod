@@ -193,6 +193,7 @@ AddStategraphActionHandler("wilson", ActionHandler(ACTIONS.UPGRADE_TILEARRIVE, "
 AddStategraphActionHandler("wilson", ActionHandler(ACTIONS.DRINK, "drink"))
 AddStategraphActionHandler("wilson", ActionHandler(ACTIONS.DRINKPLAYER, "give"))
 AddStategraphActionHandler("wilson", ActionHandler(ACTIONS.TURNON_TILEARRIVE, "give"))
+AddStategraphActionHandler("wilson", ActionHandler(ACTIONS.DRINK_HARVEST, "dolongaction"))
 
 ------------------------------------------------------------------------
 
@@ -212,7 +213,6 @@ end)
 
 
 if GetModConfigData("enable_thirst") then
--- 스피치 추가해야함
     AddStategraphPostInit("wilson", function(sg)
         do
             local _funnyidle_onenter = sg.states["funnyidle"].onenter

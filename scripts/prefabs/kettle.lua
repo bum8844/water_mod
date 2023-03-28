@@ -339,6 +339,7 @@ local function fn()
 	inst:AddTag("structure")
     inst:AddTag("kettle")
     inst:AddTag("stewer")
+    inst:AddTag("drinkproduction")
 	
 	inst.entity:SetPristine()
 	
