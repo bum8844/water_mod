@@ -244,7 +244,7 @@ end
 local function dirtywater(inst)
     inst.components.edible.healthvalue = -TUNING.HEALING_TINY
     inst.components.edible.hungervalue = 0
-    inst.components.edible.sanityvalue = 0
+    inst.components.edible.sanityvalue = -TUNING.SANITY_TINY
     inst.components.edible.thirstvalue = TUNING.HYDRATION_SMALLTINY
 
     inst.components.water:SetWaterType(WATERTYPE.DIRTY)
@@ -262,19 +262,11 @@ local function saltwater(inst)
 end
 
 local function cleanwater_ice(inst)
-    --inst:AddComponent("workable")
-
     inst.components.water:SetWaterType(WATERTYPE.CLEAN_ICE)
-
-    --inst.components.watersource.available = true
 end
 
 local function dirtywater_ice(inst)
-    --inst:AddComponent("workable")
-
     inst.components.water:SetWaterType(WATERTYPE.DIRTY_ICE)
-
-    --inst.components.watersource.available = true
 end
 
 return MakeCup("water_clean", cleanwater, {"icebox_valid","clean"}),
