@@ -14,7 +14,7 @@ local postinits =
 	{
 		"wateringcan",
 		"antlion",
-		--"hats",
+		"oasislake",
 		"firepit",
 		"player",
 		"ponds",

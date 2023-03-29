@@ -1,4 +1,4 @@
-local NEED_TAGS = { "pond" }
+local NEED_TAGS = { "sprinkler_water" }
 local range = TUNING.FIND_WATER_RANGE
 
 local well_kit_assets = {
@@ -137,11 +137,6 @@ local function placer_postinit_fn(inst)
     placer2.AnimState:SetBuild("well_sprinkler")
     placer2.AnimState:PlayAnimation("idle_off")
     placer2.AnimState:SetLightOverride(1)
-
-    --[[placer2.AnimState:SetBank("well_sprinkler")
-    placer2.AnimState:SetBuild("well_sprinkler")
-    placer2.AnimState:PlayAnimation("idle_off")
-    placer2.AnimState:SetLightOverride(1)]]
 
     placer2.entity:SetParent(inst.entity)
 

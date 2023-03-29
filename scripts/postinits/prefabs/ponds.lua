@@ -1,5 +1,5 @@
 local NEED_TAGS = {"pipe"}
-local range = 3
+local range = 2.5
 
 local function Hiddenpipes(inst)
 	local pt = inst:GetPosition()
@@ -23,28 +23,49 @@ local function WeatherCheck(inst)
 end
 
 AddPrefabPostInit("pond", function(inst)
+
+	inst:AddTag("sprinkler_water")
+
+    if not GLOBAL.TheWorld.ismastersim then
+        return inst
+    end
+
 	inst:AddComponent("water")
 	inst.components.water.watertype = WATERTYPE.DIRTY
 
-	inst:DoPeriodicTask(1,Hiddenpipes)
+	inst:DoPeriodicTask(0.1,Hiddenpipes)
 
 	inst:DoPeriodicTask(1,WeatherCheck)
 end)
 
 AddPrefabPostInit("pond_mos", function(inst)
+
+	inst:AddTag("sprinkler_water")
+
+    if not GLOBAL.TheWorld.ismastersim then
+        return inst
+    end
+
 	inst:AddComponent("water")
 	inst.components.water.watertype = WATERTYPE.DIRTY
 
-	inst:DoPeriodicTask(1,Hiddenpipes)
+	inst:DoPeriodicTask(0.1,Hiddenpipes)
 
 	inst:DoPeriodicTask(1,WeatherCheck)
 end)
 
 AddPrefabPostInit("pond_cave", function(inst)
+
+	inst:AddTag("sprinkler_water")
+
+    if not GLOBAL.TheWorld.ismastersim then
+        return inst
+    end
+	
 	inst:AddComponent("water")
 	inst.components.water.watertype = WATERTYPE.DIRTY
 
-	inst:DoPeriodicTask(1,Hiddenpipes)
+	inst:DoPeriodicTask(0.1,Hiddenpipes)
 
 	--inst:DoPeriodicTask(1,WeatherCheck)
 end)

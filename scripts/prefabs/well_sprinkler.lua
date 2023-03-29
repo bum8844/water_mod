@@ -1,6 +1,8 @@
 require("constants")
-local NEED_TAGS = { "pond" }
+local BLOCKERS_TAGS = { "FX", "NOCLICK", "DECOR", "INLIMBO", "playerghost", "ghost", "flying", "structure" }
+local NEED_TAGS = { "sprinkler_water" }
 local range = TUNING.FIND_WATER_RANGE
+local WATER_RADIUS = 3.8
 
 local assets =
 {
@@ -153,7 +155,8 @@ local function UpdateSpray(inst)
 	end
 end
 
-local function GetValidWaterPointNearby(pt)
+local function GetValidWaterPointNearby(inst)
+    local pt = inst:GetPosition()
     local best_point = nil
     local min_sq_dist = 999999999999
     local ents = TheSim:FindEntities(pt.x, pt.y, pt.z, range, NEED_TAGS)
@@ -166,6 +169,9 @@ local function GetValidWaterPointNearby(pt)
                 min_sq_dist = cur_sq_dist
                 best_point = cur_point
             end
+        end
+        if v:HasTag("oasis_lake") then
+            inst:AddTag("stormchecker")
         end
     end
 
@@ -185,7 +191,7 @@ end
 
 local function CreatePipes(inst)
     local P0 = inst:GetPosition()
-    local P1 = GetValidWaterPointNearby(P0)
+    local P1 = GetValidWaterPointNearby(inst)
 
     inst.pipes = {}
 
@@ -305,20 +311,66 @@ local function OnLoadPostPass(inst, newents, data)
     end
 end
 
+local function HasPhysics(obj)
+    return obj.Physics ~= nil
+end
+
+local function TryAvailable(inst, OnSandstormChanged)
+    if FindEntity(inst, WATER_RADIUS, HasPhysics, nil, BLOCKERS_TAGS) ~= nil then
+        inst.availabletask = inst:DoTaskInTime(5, TryAvailable, OnSandstormChanged)
+        return
+    end
+    inst.availabletask = nil
+    inst.driedup_water = false
+    inst:AddTag("haspipe")
+end
+
+local function OnSandstormChanged(inst, active)
+    if inst.availabletask then
+        inst.availabletask:Cancel()
+        inst.availabletask = nil
+    end
+    if active then
+        if inst.driedup_water then
+            TryAvailable(inst, OnSandstormChanged)
+        end
+    elseif not inst.driedup_water then
+        inst.driedup_water = true
+        if inst.components.machine:IsOn() then
+            inst.on = false
+            inst.components.machine:TurnOff(inst)
+            TurnOff(inst)
+        end
+        inst:RemoveTag("haspipe")
+    end
+end
+
 local function OnSnowLevel(inst, snowlevel)
     if snowlevel > .02 then
         if not inst.pondisfrozen then
             inst.pondisfrozen = true
+            if inst.components.machine:IsOn() then
+                inst.on = false
+                inst.components.machine:TurnOff(inst)
+                TurnOff(inst)
+            end
             inst:RemoveTag("haspipe")
         end
-    elseif inst.pondisfrozen == nil or inst.pondisfrozen then
+    elseif inst.pondisfrozen or inst.pondisfrozen == nil then
         inst.pondisfrozen = false
         inst:AddTag("haspipe")
     end
 end
 
 local function WeatherCheck(inst)
-    if not inst:HasTag("dummy") then
+    if inst:HasTag("stormchecker") then
+        inst:ListenForEvent("ms_stormchanged", function(src, data)
+            if data.stormtype == STORM_TYPES.SANDSTORM then
+                OnSandstormChanged(inst, data.setting)
+            end
+        end, TheWorld)
+        OnSandstormChanged(inst, TheWorld.components.sandstorms ~= nil and TheWorld.components.sandstorms:IsSandstormActive())
+    elseif not inst:HasTag("dummy") then
         inst:WatchWorldState("snowlevel", OnSnowLevel)
         OnSnowLevel(inst, TheWorld.state.snowlevel)
     end
@@ -326,7 +378,7 @@ end
 
 local function PipeCheck(inst)
     local pt = inst:GetPosition()
-    if inst.onhole == nil and GetValidWaterPointNearby(pt) then
+    if inst.onhole == nil and GetValidWaterPointNearby(inst) then
         if not inst.pipes or (#inst.pipes < 1) then
             CreatePipes(inst)
         end
