@@ -57,6 +57,10 @@ local function onremovewater(inst)
     end
 end
 
+local function DoneMilkingfn(doer)
+    doer.SoundEmitter:PlaySound("dontstarve/creatures/pengull/splash")
+end
+
 local function onsave(inst, data)
     return { rainfilling = inst.rainfilling }
 end
@@ -113,6 +117,7 @@ local function fn()
     inst:AddComponent("inspectable")
 
     inst:AddComponent("milkingtool")
+    inst.components.milkingtool.donemilkingfn = DoneMilkingfn
 	
     MakeSmallBurnable(inst, TUNING.MED_BURNTIME)
     MakeSmallPropagator(inst)
