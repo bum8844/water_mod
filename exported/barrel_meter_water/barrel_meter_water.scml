@@ -55,7 +55,7 @@
         <file id="0" name="17/17.png" width="328" height="401" pivot_x="0.5" pivot_y="0.05"/>
     </folder>
     <folder id="18" name="18">
-        <file id="0" name="18/18.png" width="328" height="401" pivot_x="0.5" pivot_y="0.5"/>
+        <file id="0" name="18/18.png" width="328" height="401" pivot_x="0.5" pivot_y="0.05"/>
     </folder>
     <folder id="19" name="19">
         <file id="0" name="19/19.png" width="328" height="401" pivot_x="0.5" pivot_y="0.05"/>
@@ -72,7 +72,7 @@
             </mainline>
             <timeline id="0" name="0">
                 <key id="0" spin="0">
-                    <object folder="0" file="0" x="0" angle="0"/>
+                    <object folder="0" file="0" angle="0"/>
                 </key>
             </timeline>
         </animation>
