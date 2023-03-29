@@ -30,7 +30,6 @@ local postinits =
 	widgets =
 	{
 		"itemtile",
-		--"statusdisplays",
 	},
 
 	utils =

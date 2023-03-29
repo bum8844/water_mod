@@ -75,13 +75,8 @@ local MILKINGTOOL = AddAction("MILKINGTOOL", STRINGS.ACTIONS.MILKINGTOOL, functi
         return act.invobject.components.milkingtool:NotReady(act.doer)
     end
 end)
---MILKINGTOOL.priority = 2
 
-local PURIFY = AddAction("PURIFY", STRINGS.ACTIONS.PURIFY, function(act)
-    if act.invobject.components.purify:CanPurify(act.target) then
-        return act.invobject.components.purify:DoPurify(act.target, act.doer)
-    end
-end)
+MILKINGTOOL.priority = 2
 
 local DRINKPLAYER = AddAction("DRINKPLAYER", STRINGS.ACTIONS.FEEDPLAYER, function(act)
     if act.target ~= nil and

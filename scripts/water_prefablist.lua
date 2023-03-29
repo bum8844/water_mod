@@ -1,12 +1,8 @@
 return {
 	--items
 	"bucket",
-	--"bucketfull",
-	--"bucketice",
-	--"cup",
-	"cupfull",
+	"def_water",
 	"upgrade_kit",
-	--"purification_tablets",
 
 	--structures
 	"barrel",
