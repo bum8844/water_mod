@@ -59,6 +59,7 @@ local drinks =
 		thirst = TUNING.HYDRATION_SMALLTINY,
 		perishtime = TUNING.PERISH_FAST,
 		cooktime = TUNING.INCORRECT_BOIL,
+		wet_prefix = STRINGS.WET_PREFIX.WETGOOP,
 		potlevel = "small",
 		potlevel_bottle = "mid",
 	},

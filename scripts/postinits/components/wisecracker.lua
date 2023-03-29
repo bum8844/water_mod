@@ -3,6 +3,17 @@ AddComponentPostInit("wisecracker",function(self, inst)
 	inst:ListenForEvent("sleep_end", function(inst, data)
 		inst.components.talker:Say(_G.GetString(inst, "ANNOUNCE_SLEEP_END"))
 	end)
+
+    inst:ListenForEvent("oneat",function(inst, data)
+        if data.food.components.perishable ~= nil then
+            if data.food.components.perishable:IsFresh() then
+                local ismasterchef = inst:HasTag("masterchef")
+                if ismasterchef and data.food.prefab == "goopydrink" then
+                    inst.components.talker:Say(_G.GetString(inst, "ANNOUNCE_EAT", "PAINFUL"))
+                end
+            end
+        end
+    end)
 end)
 
 if GetModConfigData("enable_thirst") then
