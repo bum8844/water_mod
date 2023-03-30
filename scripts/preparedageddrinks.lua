@@ -55,7 +55,7 @@ local drinks =
 	},
 	
 	-- 탄산수 만들때 필수적으로 refined_dust 첨가
-	-- 일반 탄산수
+	
 	soda =
 	{
 		test = function(boilier, names, tags) return names.refined_dust and names.refined_dust >= 1 and notmeat(tags) end,
@@ -71,7 +71,7 @@ local drinks =
 		card_def = {ingredients = {{"refined_dust", 1}, {"twigs", 3}}},
 	},
 	
-	-- 과일 탄산수
+	
 	fruitsoda =
 	{
 		test = function(boilier, names, tags) return names.refined_dust and names.refined_dust >= 1 and tags.fruit and tags.fruit >= 1 and notmeat(tags) and notname(names) and ressthing(names) end,
@@ -86,7 +86,7 @@ local drinks =
 		potlevel_bottle = "mid",
 	},
 	
-	-- 로얄젤리만 넣을경우(치유효과)
+	
 	lemonlimesoda =
 	{
 		test = function(boilier, names, tags) return names.refined_dust and names.refined_dust >= 1 and names.royal_jelly and names.royal_jelly >=1 and notmeat(tags) and notname(names) and ressthing(names) end,
@@ -108,7 +108,7 @@ local drinks =
 			end
 		end,
 	},
-	-- 로얄젤리 + 볶은커피(스피드 버프[추가해야함], 채력 버프[추가해야함])
+	
 	cola =
 	{
 		test = function(boilier, names, tags) return (( names.caffeinberry_bean_cooked or 0 ) + ( names.kyno_coffeebeans_cooked or 0 ) + ( names.mfp_coffeecherry_cooked or 0 ) >= 1) and names.refined_dust and names.refined_dust >= 1 and names.royal_jelly and names.royal_jelly >= 1 and notmeat(tags) and notname(names) end,
@@ -139,7 +139,7 @@ local drinks =
 			end
 		end,
 	},
-	-- 로얄젤리 + 볶은커피 + 발광베리 (스피드 버프[추가해야함], 채력 버프[추가해야함], 빛이남[추가해야함])
+	
 	colaquantum =
 	{
 		test = function(boilier, names, tags) return (( names.wormlight or 0 ) + ( names.wormlight_lesser or 0 ) == 1) and (( names.caffeinberry_bean_cooked or 0 ) + ( names.kyno_coffeebeans_cooked or 0 ) == 1) and names.refined_dust and names.royal_jelly and notmeat(tags) end,
