@@ -1,10 +1,3 @@
---[[local function OnEaten(inst, eater)
-    local item = SpawnPrefab("cup")
-    local stacksize = eater.components.eater.eatwholestack and inst.components.stackable:StackSize() or 1
-    item.components.stackable:SetStackSize(stacksize)
-    RefundItem(inst, "cup", true)
-end]]
-
 local function OnTake(inst, taker, delta)
     local stacksize = math.clamp(math.floor(delta/TUNING.CUP_MAX_LEVEL), 1, inst.components.stackable:StackSize())
 
@@ -170,7 +163,7 @@ local function MakeCup(name, masterfn, tags)
             inst:AddComponent("unwrappable")
             inst.components.unwrappable:SetOnUnwrappedFn(OnUnwrapped)
         end
-        --inst.components.edible:SetOnEatenFn(OnEaten)
+
         if not inst:HasTag("frozen") and not inst:HasTag("salty") then
             inst:AddComponent("temperature")
             inst.components.temperature.mintemp = TUNING.WATER_MINTEMP
@@ -191,7 +184,6 @@ local function MakeCup(name, masterfn, tags)
         inst:AddComponent("water")
         inst.components.water.watervalue = TUNING.CUP_MAX_LEVEL
         inst.components.water:SetOnTakenFn(OnTake)
-        --inst.components.returnprefab = "cup"
 
         inst:AddComponent("watersource")
         inst.components.watersource.available = false
