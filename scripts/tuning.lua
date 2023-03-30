@@ -5,7 +5,7 @@ local seg_time = 30
 local total_day_time = seg_time*16
 local bucket_max_level = 20
 
-TUNING.GAMEMODE_STARTING_ITEMS.DEFAULT.WARLY = {"portablecookpot_item", "portablekettle_item", "potato", "potato", "garlic"}
+table.insert(TUNING.GAMEMODE_STARTING_ITEMS.DEFAULT.WARLY,"portablekettle_item")
 
 -- 물을 담을수 있는 최대치
 local tuning =
