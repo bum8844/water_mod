@@ -30,7 +30,6 @@ local postinits =
 
 	widgets =
 	{
-		--"moisturemeter_water",
 		"itemtile",
 	},
 

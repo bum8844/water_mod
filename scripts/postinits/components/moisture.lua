@@ -2,12 +2,13 @@ AddComponentPostInit("moisture", function(self)
 	local easing = require("easing")
 
 	local _OnUpdate = self.OnUpdate
-	local x, y, z = self.inst.Transform:GetWorldPosition()
 	
 	function self:GetMoistureRate_sping()
-		if TheSim:FindEntities(x, y, z, 1,{"waterspray"}) == nil then
+		if GLOBAL.FindEntity(self.inst, 1, nil, nil, {"waterspray"}) == nil then
+			print("없음")
 			return 0
 		end
+		print("있음")
     	local waterproofmult =
         (   self.inst.components.sheltered ~= nil and
             self.inst.components.sheltered.sheltered and
@@ -25,8 +26,8 @@ AddComponentPostInit("moisture", function(self)
         	return 0
     	end
 
-    	local rate = easing.inSine(GLOBAL.TheWorld.state.precipitationrate, self.minMoistureRate, self.maxMoistureRate, 1)
-    	return rate * (1 - waterproofmult)
+    	local rate = 1 - waterproofmult
+	    return rate
 	end
 
 	function self:OnUpdate(dt,...)
@@ -40,11 +41,9 @@ AddComponentPostInit("moisture", function(self)
 		        self.rate = -sleepingbagdryingrate
 		    else
 		        local moisturerate = self:GetMoistureRate()
-		        local moisturerate_sping = GetMoistureRate_sping()
+		        local moisturerate_sping = self:GetMoistureRate_sping()
 		        local dryingrate = self:GetDryingRate(moisturerate)
 		        local equippedmoisturerate = self:GetEquippedMoistureRate(dryingrate)
-
-		        print(moisturerate)
 
 		        self.rate = moisturerate + moisturerate_sping + equippedmoisturerate - dryingrate
 		    end

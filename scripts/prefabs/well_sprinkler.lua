@@ -131,7 +131,7 @@ local function UpdateSpray(inst)
 			local variante = equipamentos + coberturas
 			local quantidadefinal = 1 - math.min(variante, 1)
             
-			moisture_comp:DoDelta(quantidadefinal)
+			moisture_comp:DoDelta(quantidadefinal*0.05)
 		end
 		
 		if burnable_comp and not (v.components.inventoryitem and v.components.inventoryitem.owner) then
