@@ -4,7 +4,7 @@ local Ingredient = _G.Ingredient
 local ModAtlas = "images/tea_inventoryitem.xml"
 local CONSTRUCTION_PLANS =_G.CONSTRUCTION_PLANS
 
-AddRecipePostInit("fertilizer",function(v) v.ingredients = {Ingredient("poop", 3), Ingredient("boneshard", 2), Ingredient("bucket", 1, ModAtlas, nil,"bucket_empty.tex")} end)
+AddRecipePostInit("fertilizer",function(v) v.ingredients = {Ingredient("poop", 3), Ingredient("boneshard", 2), Ingredient("bucket_empty", 1, ModAtlas, nil,"bucket_empty.tex")} end)
 
 AddRecipeFilter({name = "HYDRATION", atlas = ModAtlas, image = "hydration.tex", custom_pos=nil, recipes=nil,},nil)
 
