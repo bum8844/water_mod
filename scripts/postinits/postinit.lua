@@ -8,6 +8,7 @@ local postinits =
 		"inventoryitem_replica",
 		"regrowthmanager",
 		"wisecracker",
+		--"moisture",
 	},
 
 	prefabs =
@@ -29,6 +30,7 @@ local postinits =
 
 	widgets =
 	{
+		--"moisturemeter_water",
 		"itemtile",
 	},
 

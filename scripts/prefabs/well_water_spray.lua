@@ -15,6 +15,7 @@ local function fn()
     inst.entity:AddNetwork()
 
     inst:AddTag("FX")
+    --inst:AddTag("waterspray")
 
     inst.Transform:SetScale(3,3,3)
 	inst.AnimState:SetBank("well_sprinkler_fx")

@@ -130,7 +130,8 @@ local function UpdateSpray(inst)
 			local coberturas = moisture_comp.inherentWaterproofness	
 			local variante = equipamentos + coberturas
 			local quantidadefinal = 1 - math.min(variante, 1)
-			moisture_comp:DoDelta(0.05*quantidadefinal)
+            
+			moisture_comp:DoDelta(quantidadefinal)
 		end
 		
 		if burnable_comp and not (v.components.inventoryitem and v.components.inventoryitem.owner) then
