@@ -2,14 +2,13 @@ AddComponentPostInit("moisture", function(self)
 	local easing = require("easing")
 
 	local _OnUpdate = self.OnUpdate
+	local x, y, z = self.inst.Transform:GetWorldPosition()
 	
 	function self:GetMoistureRate_sping()
-		if GLOBAL.FindEntity(self.inst, 1, nil, nil, {"waterspray"}) == nil then
-			print("없음")
+		if not GLOBAL.FindEntity(self.inst, 3.8, nil, nil,{"waterspray"}) then
 			return 0
 		end
-		print("있음")
-    	local waterproofmult =
+	    	local waterproofmult =
         (   self.inst.components.sheltered ~= nil and
             self.inst.components.sheltered.sheltered and
             self.inst.components.sheltered.waterproofness or 0

@@ -117,7 +117,7 @@ local function UpdateSpray(inst)
     local ents = TheSim:FindEntities(x, y, z, TUNING.SPRINKLER_RANGE)
 
     for k,v in pairs(ents) do
-    	local moisture_comp = v.components.moisture
+    	--local moisture_comp = v.components.moisture
     	local burnable_comp = v.components.burnable
     	local crop_comp = v.components.crop
     	local growable_comp = v.components.growable
