@@ -8,7 +8,8 @@ local postinits =
 		"inventoryitem_replica",
 		"regrowthmanager",
 		"wisecracker",
-		--"moisture",
+		"moisture",
+		"inventoryitemmoisture",
 	},
 
 	prefabs =
