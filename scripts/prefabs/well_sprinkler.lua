@@ -125,14 +125,14 @@ local function UpdateSpray(inst)
     	local x, y, z = v.Transform:GetWorldPosition()
     	local wateryprotection_comp = inst.components.wateryprotection
 
-		--[[if moisture_comp then
+		if moisture_comp then
 			local equipamentos = v.components.inventory:GetWaterproofness()
 			local coberturas = moisture_comp.inherentWaterproofness	
 			local variante = equipamentos + coberturas
 			local quantidadefinal = 1 - math.min(variante, 1)
             
 			moisture_comp:DoDelta(quantidadefinal*0.05)
-		end]]
+		end
 		
 		if burnable_comp and not (v.components.inventoryitem and v.components.inventoryitem.owner) then
 			v.components.burnable:Extinguish()
