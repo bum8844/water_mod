@@ -229,7 +229,7 @@ local drinks =
 	
 	caffeinberry_juice =
 	{
-		test = function(boilier, names, tags) return (( names.caffeinberry_bean_cooked or 0 ) + ( names.coffeebeans_cooked or 0 ) + ( names.mfp_coffeecherry_cooked or 0 ) >= 3) and not tags.veggie and notmeat(tags) and notname(names) and not ressthing(names) end,
+		test = function(boilier, names, tags) return (( names.caffeinberry_bean_cooked or 0 ) + ( names.coffeebeans_cooked or 0 ) + ( names.mfp_coffeecherry_cooked or 0 ) >= 3) and not tags.veggie and notmeat(tags) and notname(names) end,
 		priority = 4,
 		health = TUNING.HEALING_SMALL,
 		hunger = TUNING.DRINK_CALORIES,

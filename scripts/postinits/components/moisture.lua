@@ -3,9 +3,9 @@ AddComponentPostInit("moisture", function(self)
 
 	local _OnUpdate = self.OnUpdate
 	local x, y, z = self.inst.Transform:GetWorldPosition()
-	
+
 	function self:GetMoistureRate_sping()
-		if not GLOBAL.FindEntity(self.inst, 3.8, nil, nil,{"waterspray"}) then
+		if not GLOBAL.TheSim:FindEntities(x, y, z, 3.8, nil, nil, {"waterspray"}) then
 			return 0
 		end
 	    	local waterproofmult =
