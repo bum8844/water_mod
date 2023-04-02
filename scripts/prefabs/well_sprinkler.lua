@@ -25,13 +25,13 @@ local function spawndrop(inst)
 	local offset = Vector3(dist * math.cos( angle ), 0, -dist * math.sin( angle ))
 
 	local drops = {}
-	for i = 1, 3 do
-    	local drop = SpawnPrefab("raindrop")
+	for i = 1, 4 do
+    	local drop = SpawnPrefab("well_sprinkler_water_drop")
     	drop.Transform:SetPosition(pt.x + offset.x, 0, pt.z + offset.z)
     	drops[i] = drop
 	end
 
-	for i = 1, 3 do
+	for i = 1, 4 do
     	local x, y, z = drops[i].Transform:GetWorldPosition()
     	TheWorld.components.farming_manager:AddSoilMoistureAtPoint(x, y, z, TUNING.ICE_MELT_GROUND_MOISTURE_AMOUNT / 2)
 	end

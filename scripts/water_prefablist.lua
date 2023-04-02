@@ -31,6 +31,7 @@ return {
 	"campkettlefire",
 	"well_water_spray",
 	"well_water_pipe",
+	"well_sprinkler_water_drop",
 
 	--new fertilizer_nutrient_defs
 	"water_fertilizer_nutrient_defs",
