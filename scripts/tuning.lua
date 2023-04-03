@@ -1,14 +1,13 @@
+require("tuning")
 local TUNING = _G.TUNING
 local hydration_per_day = 75
 local wilson_thirst = GetModConfigData("thirst_max")
-local seg_time = 30
-local total_day_time = seg_time*16
 local bucket_max_level = 20
 
 table.insert(TUNING.GAMEMODE_STARTING_ITEMS.DEFAULT.WARLY,"portablekettle_item")
 
 -- 물을 담을수 있는 최대치
-local tuning =
+water_tuning =
 {
 	CLEANSOURCE =
 	{
@@ -72,7 +71,7 @@ local tuning =
 
 	-- Basic Thirst Rate
 	WILSON_THIRST = wilson_thirst, --Max Thirst
-	WILSON_HUNGER_RATE = hydration_per_day/total_day_time,
+	WILSON_HUNGER_RATE = hydration_per_day/TUNING.TOTAL_DAY_TIME,
 
 	STALE_FOOD_THIRST = .5,
 	SPOILED_FOOD_THIRST = .25,
@@ -134,13 +133,13 @@ local tuning =
 	GHOST_TIME = GetModConfigData("ghost_time"),
 
 	--well sprinkler
-	SPRINKLER_MAX_FUEL_TIME = total_day_time,
+	SPRINKLER_MAX_FUEL_TIME = TUNING.TOTAL_DAY_TIME,
 	MOISTURE_SPRINKLER_PERCENT_INCREASE_PER_SPRAY = 0.5,
 	FIND_WATER_RANGE = 20,
 	SPRINKLER_RANGE = 15,
 	SPRINKLER_PLACER_SCALE = 1.55,
 }
 
-for i,v in pairs(tuning) do
+for i,v in pairs(water_tuning) do
 	TUNING[i] = v
 end
