@@ -49,7 +49,7 @@ local function onhit(inst, worker)
             inst.AnimState:PushAnimation("cooking_loop", true)
         elseif inst.components.stewer:IsDone() then
             inst.AnimState:PlayAnimation("hit_full")
-            inst.AnimState:PushAnimation("idle_full", false)
+            inst.AnimState:PushAnimation("idle_full")
         else
             if inst.components.container ~= nil and inst.components.container:IsOpen() then
                 inst.components.container:Close()
@@ -167,7 +167,7 @@ end
 local function donecookfn(inst)
     if not inst:HasTag("burnt") then
         inst.AnimState:PlayAnimation("cooking_pst")
-        inst.AnimState:PushAnimation("idle_full", false)
+        inst.AnimState:PushAnimation("idle_full")
         ShowProduct(inst)
         inst.SoundEmitter:KillSound("snd")
         inst.SoundEmitter:PlaySound("turnoftides/common/together/boat/anchor/ocean_hit")
@@ -232,7 +232,10 @@ end
 
 local function OnTakeWater(inst)
     if not inst:HasTag("burnt") then
+        inst.AnimState:PlayAnimation("take_water")
+        inst.AnimState:PushAnimation("idle_empty", false)
         inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/medium")
+        inst:DoTaskInTime(1,function() inst.SoundEmitter:PlaySound("dontstarve/common/wardrobe_close") end)
     end
 end
 
@@ -241,7 +244,7 @@ local function OnTaken(inst, taker, water_amount)
         inst.components.waterlevel:DoDelta(-water_amount)
         inst.AnimState:PlayAnimation("getdrink_empty")
         inst.AnimState:PushAnimation("idle_empty", false)
-        OnTakeWater(inst)
+        inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/medium")
     end
 end
 
@@ -373,7 +376,7 @@ local function fn()
 	
 	MakeHauntableWork(inst)
 	
-	MakeMediumBurnable(inst, nil, nil, true)
+	MakeLargeBurnable(inst, nil, nil, true)
     MakeSmallPropagator(inst)
 
     inst.OnSave = onsave

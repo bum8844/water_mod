@@ -199,6 +199,8 @@ local function givewater(inst, picker)
         	refund.Transform:SetPosition(x,y,z)
     	end
 	end
+	inst.bucket_finiteuses = 0
+	inst.water_finiteuses = 0
 	SetPickable(inst, false, 0)
 end
 
