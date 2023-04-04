@@ -38,12 +38,11 @@ local states =
         name = "extend",
         tags = {"canrotate"},
 
-        onenter = function(inst, intensity)
+        onenter = function(inst, parents)
             inst:Show()
             inst.AnimState:PlayAnimation("place", false)
 
-            inst.sg.statemem.intensity = intensity
-            local actualIntensity = math.min(intensity,10) / 10
+            inst.sg.statemem.parents = parents
 
             inst.SoundEmitter:PlaySound("dontstarve/common/together/catapult/hit")
             
@@ -54,7 +53,9 @@ local states =
             EventHandler("animover",
                 function(inst)
                     if inst.nextPipe then
-                        inst.nextPipe.sg:GoToState("extend", inst.sg.statemem.intensity+1)
+                        inst.nextPipe.sg:GoToState("extend", inst.sg.statemem.parents)
+                    else
+                        inst.sg.statemem.parents:PushEvent("pipedone")
                     end
 
                     inst.sg:GoToState("idle")
@@ -71,10 +72,8 @@ local states =
 			inst.AnimState:PlayAnimation("retract", false)
 
 			inst.sg.statemem.intensity = intensity
-            local actualIntensity = math.min(intensity,10) / 10
 
-            --inst.SoundEmitter:PlaySound("dontstarve_DLC003/common/crafted/sprinkler/pipe_craft","pipesound_on")
-            --inst.SoundEmitter:SetParameter("pipesound_on", "intensity", actualIntensity) 
+            inst.SoundEmitter:PlaySound("dontstarve/common/together/catapult/hit")
 		end,
 
         events =

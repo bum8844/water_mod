@@ -227,11 +227,12 @@ local function ExtendPipes(inst)
     if inst.loadedPipesFromFile then
         for i, pipe in ipairs(inst.pipes) do
             pipe.sg:GoToState("idle")
+            inst:PushEvent("pipedone")
         end
     else
         local firstPipe = inst.pipes[1]
         if firstPipe ~= nil then
-            firstPipe.sg:GoToState("extend", 1)
+            firstPipe.sg:GoToState("extend", inst)
         end
     end
 end
@@ -353,17 +354,24 @@ local function OnSnowLevel(inst, snowlevel)
     end
 end
 
+local function addtags(inst)
+    inst:AddTag("connected")
+    inst:AddTag("haspipe") 
+end
+
 local function WeatherCheck(inst)
-    if inst:HasTag("stormchecker") then
-        inst:ListenForEvent("ms_stormchanged", function(src, data)
-            if data.stormtype == STORM_TYPES.SANDSTORM then
-                OnSandstormChanged(inst, data.setting)
-            end
-        end, TheWorld)
-        OnSandstormChanged(inst, TheWorld.components.sandstorms ~= nil and TheWorld.components.sandstorms:IsSandstormActive())
-    elseif not inst:HasTag("dummy") then
-        inst:WatchWorldState("snowlevel", OnSnowLevel)
-        OnSnowLevel(inst, TheWorld.state.snowlevel)
+    if inst:HasTag("connected") then
+        if inst:HasTag("stormchecker") then
+            inst:ListenForEvent("ms_stormchanged", function(src, data)
+                if data.stormtype == STORM_TYPES.SANDSTORM then
+                    OnSandstormChanged(inst, data.setting)
+                end
+            end, TheWorld)
+            OnSandstormChanged(inst, TheWorld.components.sandstorms ~= nil and TheWorld.components.sandstorms:IsSandstormActive())
+        elseif not inst:HasTag("dummy") then
+            inst:WatchWorldState("snowlevel", OnSnowLevel)
+            OnSnowLevel(inst, TheWorld.state.snowlevel)
+        end
     end
 end
 
@@ -375,7 +383,6 @@ local function PipeCheck(inst)
         end
         ConnectPipes(inst)
         ExtendPipes(inst)
-        inst:AddTag("haspipe")
     elseif inst.onhole then
         inst:AddTag("hashole")
     else
@@ -402,7 +409,7 @@ local function onhammered(inst, worker)
     	local hole = SpawnPrefab("hole")
     	hole.Transform:SetPosition(inst.Transform:GetWorldPosition())
     elseif inst.pipes ~= nil then
-    	DestroyPipes(inst)
+    	RetractPipes(inst)
     end
     fx.Transform:SetPosition(inst.Transform:GetWorldPosition())
     fx:SetMaterial("metal")
@@ -444,6 +451,7 @@ local function OnEnableHelper(inst, enabled)
         inst.helper = nil
     end
 end
+
 local function fn()
     local inst = CreateEntity()
 
@@ -519,6 +527,7 @@ local function fn()
     inst.OnEntitySleep = OnEntitySleep
 
 	inst:ListenForEvent("onbuilt", onbuilt)
+    inst:ListenForEvent("pipedone",addtags)
 
 	MakeSnowCovered(inst, .01)
 

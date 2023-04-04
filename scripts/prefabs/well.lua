@@ -93,7 +93,6 @@ local function hole()
     inst.AnimState:PlayAnimation("idle")
 	
 	inst:AddTag("antlion_sinkhole_blocker")
-    inst:AddTag("constructionsite")
     inst:AddTag("birdblocker")
 	
 	MakeObstaclePhysics(inst, .6)
@@ -121,7 +120,7 @@ end
 
 local function onhammered(inst)
 	if inst.AnimState:IsCurrentAnimation("watering") or inst.AnimState:IsCurrentAnimation("hit_watering") or inst.AnimState:IsCurrentAnimation("idle_watering") then
-		local water_finiteuses = inst.components.pickable.numtoharvest
+		local water_finiteuses = inst.components.pickable.numtoharvest or 0
 		while water_finiteuses > 0 do
         	if water_finiteuses > 0 then
             	inst.components.lootdropper:SpawnLootPrefab("water_clean")
@@ -241,9 +240,7 @@ end
 
 local function onsave(inst, data)
 	data.bucket_finiteuses = inst.bucket_finiteuses
-	if inst.water_finiteuses > 0 then
-		data.water_finiteuses = inst.water_finiteuses
-	end
+	data.water_finiteuses = inst.water_finiteuses
     if inst.components.pickable.numtoharvest ~= nil and inst.components.pickable.numtoharvest > 0 then
         data.numtoharvest = inst.components.pickable.numtoharvest
     end
@@ -255,9 +252,11 @@ local function onload(inst, data)
 		if data.numtoharvest ~= nil then
 			updatewellstate(inst, data)
 		elseif data.bucket_finiteuses ~= nil and data.bucket_finiteuses > 0 then
+			
 			WellAct(inst, data.water_finiteuses)
 		end
 	else
+		print("3")
 		updatewellstate(inst, data)
 	end
 end
