@@ -227,8 +227,8 @@ local function ExtendPipes(inst)
     if inst.loadedPipesFromFile then
         for i, pipe in ipairs(inst.pipes) do
             pipe.sg:GoToState("idle")
-            inst:PushEvent("pipedone")
         end
+        inst:PushEvent("pipedone")
     else
         local firstPipe = inst.pipes[1]
         if firstPipe ~= nil then
@@ -523,7 +523,7 @@ local function fn()
 
 	inst.OnSave = OnSave 
     inst.OnLoad = OnLoad
-    OnLoadPostPass = OnLoadPostPass
+    inst.OnLoadPostPass = OnLoadPostPass
     inst.OnEntitySleep = OnEntitySleep
 
 	inst:ListenForEvent("onbuilt", onbuilt)
