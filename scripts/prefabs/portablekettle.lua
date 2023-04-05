@@ -295,19 +295,23 @@ local function onclose(inst)
 end
 
 local function ondoneboilingfn(inst)
-    inst.AnimState:OverrideSymbol("swap", "portablekettle_meter_water", tostring(inst._waterlevel))
-    inst.AnimState:PlayAnimation("cooking_pst")
-    inst.AnimState:PlayAnimation("idle_empty")
-    inst.SoundEmitter:KillSound("snd") 
-    inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_finish")
-    inst.Light:Enable(false)
+    if not inst:HasTag("burnt") then
+        inst.AnimState:OverrideSymbol("swap", "portablekettle_meter_water", tostring(inst._waterlevel))
+        inst.AnimState:PlayAnimation("cooking_pst")
+        inst.AnimState:PlayAnimation("idle_empty")
+        inst.SoundEmitter:KillSound("snd") 
+        inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_finish")
+        inst.Light:Enable(false)
+    end
 end
 
 local function onstartboilingfn(inst)
-    inst.AnimState:PlayAnimation("cooking_loop", true)
-    inst.SoundEmitter:KillSound("snd")
-    inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_rattle", "snd")
-    inst.Light:Enable(true)
+    if not inst:HasTag("burnt") then
+        inst.AnimState:PlayAnimation("cooking_loop", true)
+        inst.SoundEmitter:KillSound("snd")
+        inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_rattle", "snd")
+        inst.Light:Enable(true)
+    end
 end
 
 local function OnTakeWater(inst)
@@ -315,7 +319,12 @@ local function OnTakeWater(inst)
         inst.AnimState:PlayAnimation("take_water")
         inst.AnimState:PushAnimation("idle_empty", false)
         inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/medium")
-        inst:DoTaskInTime(1,function() inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_close") end)
+        inst:DoTaskInTime(1,function(inst)
+            inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_close")
+            if inst:HasTag("boiling") then
+                onstartboilingfn(inst)
+            end
+        end)
     end
 end
 
@@ -418,7 +427,8 @@ local function fn()
     inst.components.stewer.onspoil = spoilfn
 
     inst:AddComponent("distiller")
-    inst.components.distiller.onstartboiling = onstartboilingfn
+    inst.components.distiller.onstartboiling = OnTakeWater
+    inst.components.distiller.oncontinueboiling = onstartboilingfn
     inst.components.distiller.ondoneboiling = ondoneboilingfn
 
     inst:AddComponent("pickable")

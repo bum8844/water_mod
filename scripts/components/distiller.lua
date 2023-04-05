@@ -148,8 +148,8 @@ end
 
 local function loadpass(inst, data, self)
 	self.task = self.inst:DoTaskInTime(data.boilingtime,doboil,self)
-	if self.onstartboiling ~= nil then
-		self.onstartboiling(self.inst)
+	if self.oncontinueboiling ~= nil then
+		self.oncontinueboiling(self.inst)
 	end
 	self.inst:DoTaskInTime(0,cont,self)
 end
