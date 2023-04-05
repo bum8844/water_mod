@@ -312,7 +312,10 @@ end
 
 local function OnTakeWater(inst)
     if not inst:HasTag("burnt") then
+        inst.AnimState:PlayAnimation("take_water")
+        inst.AnimState:PushAnimation("idle_empty", false)
         inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/medium")
+        inst:DoTaskInTime(1,function() inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_close") end)
     end
 end
 
@@ -321,7 +324,7 @@ local function OnTaken(inst, source, delta)
         inst.components.waterlevel:DoDelta(-inst.components.waterlevel:GetWater())
         inst.AnimState:PlayAnimation("getdrink_empty")
         inst.AnimState:PushAnimation("idle_empty", false)
-        OnTakeWater(inst)
+        inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/medium")
     end
 end
 
