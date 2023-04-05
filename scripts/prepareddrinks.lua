@@ -64,7 +64,7 @@ local drinks =
 		sanity = TUNING.SANITY_POISON,
 		thirst = TUNING.HYDRATION_POISON,
 		cooktime = TUNING.INCORRECT_BOIL,
-		potlevel = "small",
+		potlevel = "mid",
 		potlevel_bottle = "mid",
 		watertype = WATERTYPE.ROTTEN,
 	},
@@ -80,7 +80,7 @@ local drinks =
 		perishtime = TUNING.PERISH_FAST,
 		cooktime = TUNING.INCORRECT_BOIL,
 		wet_prefix = STRINGS.WET_PREFIX.WETGOOP,
-		potlevel = "small",
+		potlevel = "mid",
 		potlevel_bottle = "mid",
 	},
 	-- 과일차 종류
@@ -95,7 +95,7 @@ local drinks =
 		thirst = TUNING.HYDRATION_MEDSMALL,
 		perishtime = TUNING.PERISH_FASTISH,
 		cooktime = TUNING.KETTLE_FRUIT,
-		potlevel = "small",
+		potlevel = "mid",
 		potlevel_bottle = "mid",
 	},
 	
@@ -109,7 +109,7 @@ local drinks =
 		thirst = TUNING.HYDRATION_LARGE,
 		perishtime = TUNING.PERISH_MED,
 		cooktime = TUNING.KETTLE_FRUIT,
-		potlevel = "small",
+		potlevel = "mid",
 		potlevel_bottle = "mid",
 		card_def={ingredients={{"berries",2},{"berries_juicy",2}}},
 	},
@@ -124,7 +124,7 @@ local drinks =
 		thirst = TUNING.HYDRATION_LARGE,
 		perishtime = TUNING.PERISH_MED,
 		cooktime = TUNING.KETTLE_FRUIT,
-		potlevel = "small",
+		potlevel = "mid",
 		potlevel_bottle = "mid",
 	},
 	
@@ -138,7 +138,7 @@ local drinks =
 		thirst = TUNING.HYDRATION_LARGE,
 		perishtime = TUNING.PERISH_MED,
 		cooktime = TUNING.KETTLE_FRUIT,
-		potlevel = "small",
+		potlevel = "mid",
 		potlevel_bottle = "mid",
 	},
 	
@@ -152,7 +152,7 @@ local drinks =
 		thirst = TUNING.HYDRATION_LARGE,
 		perishtime = TUNING.PERISH_MED,
 		cooktime = TUNING.KETTLE_FRUIT,
-		potlevel = "small",
+		potlevel = "mid",
 		potlevel_bottle = "mid",
 	},
 	
@@ -166,7 +166,7 @@ local drinks =
 		thirst = TUNING.HYDRATION_HUGE,
 		perishtime = TUNING.PERISH_SLOW,
 		cooktime = TUNING.KETTLE_FRUIT,
-		potlevel = "small",
+		potlevel = "mid",
 		potlevel_bottle = "mid",
 		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_SLEEP_AND_DETOX,
 		oneatenfn = function(inst, eater)
@@ -196,7 +196,7 @@ local drinks =
 		tags = {"lightdrink"},
 		perishtime = TUNING.PERISH_SLOW,
 		cooktime = TUNING.KETTLE_LUXURY_GOODS,
-		potlevel = "small",
+		potlevel = "mid",
 		potlevel_bottle = "mid",
 		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_GLOW,
 		card_def = {ingredients={{"wormlight_lesser",2},{"berries",1},{"twigs",1}}},
@@ -237,10 +237,10 @@ local drinks =
 		thirst = TUNING.HYDRATION_SMALL,
 		perishtime = TUNING.PERISH_SLOW,
 		cooktime = TUNING.KETTLE_LUXURY_GOODS,
-		potlevel = "small",
+		potlevel = "mid",
 		potlevel_bottle = "high",
 		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_CAFFINE,
-		card_def={ingredients={{"caffeinberry_bean_cooked",2},{"honey",2}}},
+		card_def={ingredients={{"caffeinberry_bean_cooked",3},{"honey",1}}},
 		potlevel_bottle = "high",
 		oneatenfn = function(inst, eater)
 			if not eater.components.health or eater.components.health:IsDead() or eater:HasTag("playerghost") then
@@ -267,7 +267,7 @@ local drinks =
 		thirst = TUNING.HYDRATION_MEDSMALL,
 		perishtime = TUNING.PERISH_FASTISH,
 		cooktime = TUNING.KETTLE_VEGGIE,
-		potlevel = "small",
+		potlevel = "mid",
 		potlevel_bottle = "mid",
 	},
 	
@@ -281,9 +281,9 @@ local drinks =
 		thirst = TUNING.HYDRATION_LARGE,
 		perishtime = TUNING.PERISH_MED,
 		cooktime = TUNING.KETTLE_VEGGIE,
-		potlevel = "small",
+		potlevel = "mid",
 		potlevel_bottle = "mid",
-		card_def={ingredients={{"carrot",2},{"twigs",2}},},
+		card_def={ingredients={{"carrot",3},{"twigs",1}},},
 	},
 	
 	cactus_tea =
@@ -314,7 +314,7 @@ local drinks =
 		temperature = TUNING.HOT_FOOD_WARMING_THRESHOLD,
 		temperatureduration = TUNING.FOOD_TEMP_AVERAGE,
 		cooktime = TUNING.KETTLE_VEGGIE,
-		potlevel = "small",
+		potlevel = "mid",
 		potlevel_bottle = "mid",
 		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_MULLED,
 		oneatenfn = function(inst, eater)
@@ -347,7 +347,7 @@ local drinks =
 		thirst = TUNING.HYDRATION_MEDSMALL,
 		perishtime = TUNING.PERISH_FASTISH,
 		cooktime = TUNING.KETTLE_DECORATION,
-		potlevel = "small",
+		potlevel = "mid",
 		potlevel_bottle = "mid",
 
 	},
@@ -362,7 +362,7 @@ local drinks =
 		thirst = TUNING.HYDRATION_MED,
 		perishtime = TUNING.PERISH_MED,
 		cooktime = TUNING.KETTLE_TEA,
-		potlevel = "small",
+		potlevel = "mid",
 		potlevel_bottle = "high",
 	},
 	
@@ -379,7 +379,7 @@ local drinks =
 		temperature = TUNING.HOT_FOOD_BONUS_TEMP,
 		temperatureduration = TUNING.FOOD_TEMP_LONG,
 		cooktime = TUNING.KETTLE_TEA,
-		potlevel = "small",
+		potlevel = "mid",
 		potlevel_bottle = "high",
 		card_def={ingredients={{"tealeaves_dried",4}}},
 	},
@@ -396,7 +396,7 @@ local drinks =
 		temperature = TUNING.COLD_FOOD_BONUS_TEMP,
 		temperatureduration = TUNING.FOOD_TEMP_LONG,
 		cooktime = TUNING.KETTLE_TEA,
-		potlevel = "small",
+		potlevel = "mid",
 		potlevel_bottle = "high",
 		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_COLD_FOOD,
 	},
@@ -412,8 +412,8 @@ local drinks =
 		thirst = TUNING.HYDRATION_MED,
 		perishtime = TUNING.PERISH_MED,
 		cooktime = TUNING.KETTLE_TEA,
-		potlevel = "small",
-		potlevel_bottle = "mid",
+		potlevel = "mid",
+		potlevel_bottle = "high",
 	},
 	
 	-- 일반 꽃잎
@@ -427,8 +427,8 @@ local drinks =
 		thirst = TUNING.HYDRATION_MED,
 		perishtime = TUNING.PERISH_MED,
 		cooktime = TUNING.KETTLE_DECORATION,
-		potlevel = "small",
-		potlevel_bottle = "mid",
+		potlevel = "mid",
+		potlevel_bottle = "high",
 	},
 
 	-- 선인장 꽃잎
@@ -442,7 +442,7 @@ local drinks =
 		thirst = TUNING.HYDRATION_LARGE,
 		perishtime = TUNING.PERISH_MED,
 		cooktime = TUNING.KETTLE_DECORATION,
-		potlevel = "small",
+		potlevel = "mid",
 		potlevel_bottle = "high",
 	},
 	
@@ -457,8 +457,8 @@ local drinks =
 		thirst = 0,
 		perishtime = TUNING.PERISH_MED,
 		cooktime = TUNING.KETTLE_ABI,
-		potlevel = "small",
-		potlevel_bottle = "mid",
+		potlevel = "mid",
+		potlevel_bottle = "high",
 		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_SUS,
 		card_def={ingredients={{"petals_evil",1},{"firenettles",1},{"tillweed",1},{"twigs",1}}},
 		oneatenfn = function(inst, eater)
@@ -483,7 +483,7 @@ local lotustea = {
 		thirst = TUNING.HYDRATION_LARGE,
 		perishtime = TUNING.PERISH_MED,
 		cooktime = TUNING.KETTLE_DECORATION,
-		potlevel = "small",
+		potlevel = "mid",
 		potlevel_bottle = "high",
 }
 
