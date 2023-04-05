@@ -176,7 +176,7 @@ end
 
 local function continuedonefn(inst)
     if not inst:HasTag("burnt") then
-        inst.AnimState:PlayAnimation("idle_full")
+        inst.AnimState:PlayAnimation("idle_full",true)
         ShowProduct(inst)
     end
 end
@@ -249,7 +249,8 @@ local function OnTaken(inst, taker, water_amount)
 end
 
 local function OnSectionChange(new, old, inst)
-    local product = inst.components.stewer.product ~= "spoiled_drink" and "water" or "dirty"
+    local stewer = inst.components.stewer
+    local product = (stewer and stewer.product == "spoiled_drink") and "dirty" or "water"
     if inst._waterlevel ~= new then
         inst._waterlevel = new
     end
