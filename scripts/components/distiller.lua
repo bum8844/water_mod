@@ -72,7 +72,7 @@ function Distiller:isBoiling()
 	return not self.done and self.boiling_timer ~= nil
 end
 
-function Distiller:startBoiling(watertimer)
+function Distiller:startBoiling(watertimer, campkettle)
 
 	local timer = 1
 
@@ -94,25 +94,38 @@ function Distiller:startBoiling(watertimer)
 		self.inst.components.waterlevel.accepting = false
 	end
 
-	timer = TUNING.BASE_COOK_TIME * TUNING.KETTLE_WATER * watertimer
-	self.boiling_timer = GetTime() + timer
-
 	if self.task ~= nil then
 		self.task:Cancel()
 	end
-	if self.onstartboiling ~= nil then
-		self.onstartboiling(self.inst)
+
+	if campkettle and self.firetime ~= nil and self.firetime > 0 then
+		timer = self.firetime
+		self.firetime = nil
+		self.boiling_timer = GetTime() + timer
+		if self.oncontinueboiling ~= nil then
+			self.oncontinueboiling(self.inst)
+		end
+	else
+		timer = TUNING.BASE_COOK_TIME * TUNING.KETTLE_WATER * watertimer
+		self.boiling_timer = GetTime() + timer
+		if self.onstartboiling ~= nil then
+			self.onstartboiling(self.inst)
+		end
 	end
+
     self.task = self.inst:DoTaskInTime(timer,doboil,self)
 end
 
-function Distiller:stopBoiling(dt)
+function Distiller:stopBoiling(dt, campkettle)
 	if self.onstopboiling then
 		self.onstopboiling(self.inst)
 	end
-	if dt ~= 0 then
+	if dt > 0 then
 		self.boiling_timer = (self.boiling_timer - dt) - GetTime()
 		dt = 0
+	elseif campkettle and self.boiling_timer then
+		self.firetime = self.boiling_timer - GetTime()
+		self.boiling_timer = nil
 	else
 		self.boiling_timer = nil
 	end
@@ -170,7 +183,7 @@ function Distiller:OnLoad(data)
 			if self.inst._fire.components.fueled:GetCurrentSection() > 0 then
 				loadpass(self.inst, data, self)
 			else
-				self:stopBoiling(0)
+				self:stopBoiling(0, true)
 			end
 		else
     		loadpass(self.inst, data, self)

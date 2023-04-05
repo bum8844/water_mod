@@ -20,7 +20,7 @@ local prefabs =
 }
 
 local function onbuilt(inst)
-    if not inst._fire then
+    if not inst.parent then
         print("must build on campfire or firepit! -- removing")
         inst:Remove()
     else
@@ -74,12 +74,19 @@ end
 
 local function onstartboilingfn(inst)
     inst.AnimState:PlayAnimation("cooking_loop", true)
+    inst.SoundEmitter:KillSound("snd")
     inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_rattle", "snd")
 end
     
 local function OnTakeWater(inst)
     if not inst:HasTag("burnt") then
         inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/small")
+        inst:DoTaskInTime(1,function(inst)
+            inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_close")
+            if inst:HasTag("boiling") and inst._fire.components.fueled:GetCurrentSection() > 0 then
+                onstartboilingfn(inst)
+            end
+        end)
     end
 end
 
@@ -175,7 +182,8 @@ local function fn()
     inst.components.waterlevel:InitializeWaterLevel(0)
 
     inst:AddComponent("distiller")
-    inst.components.distiller.onstartboiling = onstartboilingfn
+    inst.components.distiller.onstartboiling = OnTakeWater
+    inst.components.distiller.oncontinueboiling = onstartboilingfn
     inst.components.distiller.ondoneboiling = ondoneboilingfn
     inst.components.distiller.onstopboiling = onstopboilingfn
 
