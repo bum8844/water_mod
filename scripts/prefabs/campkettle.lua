@@ -79,15 +79,13 @@ local function onstartboilingfn(inst)
 end
     
 local function OnTakeWater(inst)
-    if not inst:HasTag("burnt") then
-        inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/small")
-        inst:DoTaskInTime(1,function(inst)
-            inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_close")
-            if inst:HasTag("boiling") and inst._fire.components.fueled:GetCurrentSection() > 0 then
-                onstartboilingfn(inst)
-            end
-        end)
-    end
+    inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/small")
+    inst:DoTaskInTime(1,function(inst)
+    inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_close")
+        if inst._fire.components.fueled:GetCurrentSection() > 0 then
+            onstartboilingfn(inst)
+        end
+    end)
 end
 
 local function OnSectionChange(new, old, inst)
@@ -174,7 +172,7 @@ local function fn()
     inst.components.inspectable.getstatus = getstatus
 
     inst:AddComponent("waterlevel")
-    inst.components.waterlevel:SetCanAccepts({WATERTYPE.DIRTY})
+    inst.components.waterlevel:SetCanAccepts({WATERGROUP.BOILABLE})
     inst.components.waterlevel:SetTakeWaterFn(OnTakeWater)
     inst.components.waterlevel:SetSections(3)
     inst.components.waterlevel:SetSectionCallback(OnSectionChange)
