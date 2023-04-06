@@ -131,6 +131,7 @@ water_tuning =
 	INTOXICATION_TIME = GetModConfigData("alcohol_time"),
 	IMMUNE_TIME = GetModConfigData("immune_time"),
 	GHOST_TIME = GetModConfigData("ghost_time"),
+	DRUNKARD_DURATION = GetModConfigData("drunkard_time"),
 
 	--well sprinkler
 	SPRINKLER_MAX_FUEL_TIME = TUNING.TOTAL_DAY_TIME,
@@ -138,6 +139,9 @@ water_tuning =
 	FIND_WATER_RANGE = 20,
 	SPRINKLER_RANGE = 15,
 	SPRINKLER_PLACER_SCALE = 1.55,
+
+	DRUNKARD_SANITY_DELTA = -1,
+	DRUNKARD_TICK_RATE = 2,
 }
 
 for i,v in pairs(water_tuning) do

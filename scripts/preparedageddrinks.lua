@@ -3,9 +3,9 @@ local function alcahol(inst, eater)
 		return
 	elseif eater.components.debuffable and eater.components.debuffable:IsEnabled() and eater:HasTag("player") then
 		if not eater:HasTag("valkyrie") then
-			eater.components.health:DoDelta(TUNING.ALCOHOL_POISON)
 			eater.alcoholdebuff_duration = TUNING.INTOXICATION_TIME
 			eater.components.debuffable:AddDebuff("alcoholdebuff", "alcoholdebuff")
+			eater.components.debuffable:AddDebuff("drunkarddebuff", "drunkarddebuff")
 		else
 			eater.components.talker:Say(GetString(eater,"ANNOUNCE_DRUNK_IMMUNITY"))
 		end
@@ -62,7 +62,7 @@ local drinks =
 		priority = 0,
 		health = TUNING.HEALING_MEDSMALL,
 		hunger = TUNING.CALORIES_TINY,
-		sanity = TUNING.SANITY_SMALL,
+		sanity = TUNING.SANITY_MED,
 		thirst = TUNING.HYDRATION_LARGE,
 		perishtime = TUNING.PERISH_PRESERVED,
 		cooktime = (TUNING.KETTLE_DECORATION + TUNING.SODA_WAIT),
@@ -93,7 +93,7 @@ local drinks =
 		priority = 2,
 		health = TUNING.HEALING_MED,
 		hunger = TUNING.CALORIES_HUGE,
-		sanity = TUNING.SANITY_MEDLARGE *4,
+		sanity = TUNING.SANITY_LARGE,
 		thirst = TUNING.HYDRATION_HUGE,
 		perishtime = TUNING.PERISH_PRESERVED,
 		cooktime = (TUNING.KETTLE_LUXURY_GOODS + TUNING.SODA_WAIT),
@@ -115,7 +115,7 @@ local drinks =
 		priority = 2,
 		health = TUNING.HEALING_LARGE,
 		hunger = TUNING.CALORIES_HUGE,
-		sanity = TUNING.SANITY_HUGE*2,
+		sanity = TUNING.SANITY_HUGE,
 		thirst = TUNING.HYDRATION_SUPERHUGE,
 		perishtime = TUNING.PERISH_PRESERVED,
 		cooktime = (TUNING.KETTLE_LUXURY_GOODS + TUNING.SODA_WAIT),
@@ -195,9 +195,9 @@ local drinks =
 	{
 		test = function(boilier, names, tags) return (( names.corn or 0 ) + ( names.corn_cooked or 0 ) >= 3) and notmeat(tags) and notname(names) end,
 		priority = 1,
-		health = TUNING.HEALING_SMALL,
+		health = TUNING.HEALING_SMALL-TUNING.ALCOHOL_POISON,
 		hunger = TUNING.DRINK_CALORIES - TUNING.DRINK_CALORIES_POISON,
-		sanity = TUNING.SANITY_LARGE,
+		sanity = TUNING.SANITY_MEDLARGE,
 		thirst = TUNING.HYDRATION_SMALL,
 		tags = {"alcohol"},
 		perishtime = TUNING.PERISH_SUPERSLOW,
@@ -215,9 +215,9 @@ local drinks =
 	{
 		test = function(boilier, names, tags) return tags.sweetener and tags.sweetener >= 3 and notmeat(tags) and notname(names) end,
 		priority = 1,
-		health = TUNING.HEALING_TINY,
+		health = TUNING.HEALING_TINY-TUNING.ALCOHOL_POISON,
 		hunger = TUNING.DRINK_CALORIES - TUNING.DRINK_CALORIES_POISON,
-		sanity = TUNING.SANITY_LARGE,
+		sanity = TUNING.SANITY_MEDLARGE,
 		thirst = TUNING.HYDRATION_SMALL,
 		tags = {"alcohol"},
 		perishtime = TUNING.PERISH_SUPERSLOW,
@@ -234,10 +234,10 @@ local drinks =
 	{
 		test = function(boilier, names, tags) return (( names.berries or 0 ) + ( names.berries_juicy or 0 ) >= 3) and notmeat(tags) and notname(names) end,
 		priority = 2,
-		health = TUNING.HEALING_MEDSMALL,
+		health = TUNING.HEALING_MEDSMALL-TUNING.ALCOHOL_POISON,
 		hunger = TUNING.DRINK_CALORIES - TUNING.DRINK_CALORIES_POISON,
-		sanity = TUNING.SANITY_HUGE,
-		thirst = TUNING.HYDRATION_MEDSMALL,
+		sanity = TUNING.SANITY_LARGE,
+		thirst = TUNING.HYDRATION_SMALL,
 		tags = {"alcohol"},
 		perishtime = TUNING.PERISH_SUPERSLOW,
 		cooktime = (TUNING.KETTLE_FRUIT + TUNING.BEER_WAIT),
@@ -253,9 +253,9 @@ local drinks =
 	{
 		test = function(boilier, names, tags) return (( names.berries_cooked or 0 ) + ( names.berries_juicy_cooked or 0 ) >= 3) and notmeat(tags) and notname(names) end,
 		priority = 2,
-		health = TUNING.HEALING_MEDSMALL,
+		health = TUNING.HEALING_MEDSMALL-TUNING.ALCOHOL_POISON,
 		hunger = TUNING.DRINK_CALORIES - TUNING.DRINK_CALORIES_POISON,
-		sanity = TUNING.SANITY_HUGE,
+		sanity = TUNING.SANITY_LARGE,
 		thirst = TUNING.HYDRATION_MEDSMALL,
 		tags = {"alcohol"},
 		perishtime = TUNING.PERISH_SUPERSLOW,
@@ -272,9 +272,9 @@ local drinks =
 	{
 		test = function(boilier, names, tags) return (( names.berries or 0 ) + ( names.berries_juicy or 0 ) >= 2) and names.refined_dust and names.refined_dust >= 1 and notmeat(tags) and notname(names) end,
 		priority = 3,
-		health = TUNING.HEALING_MEDSMALL,
+		health = TUNING.HEALING_MEDSMALL-TUNING.ALCOHOL_POISON,
 		hunger = TUNING.DRINK_CALORIES - TUNING.DRINK_CALORIES_POISON,
-		sanity = TUNING.SANITY_HUGE,
+		sanity = TUNING.SANITY_LARGE,
 		thirst = TUNING.HYDRATION_MEDSMALL,
 		tags = {"alcohol"},
 		perishtime = TUNING.PERISH_SUPERSLOW,
@@ -292,9 +292,9 @@ local drinks =
 	{
 		test = function(boilier, names, tags) return (( names.wormlight or 0 ) + ( names.wormlight_lesser or 0 ) >= 3) and notmeat(tags) and notname(names) end,
 		priority = 1,
-		health = TUNING.HEALING_MEDSMALL,
+		health = TUNING.HEALING_MEDSMALL-TUNING.ALCOHOL_POISON,
 		hunger = TUNING.DRINK_CALORIES - TUNING.DRINK_CALORIES_POISON,
-		sanity = TUNING.SANITY_HUGE,
+		sanity = TUNING.SANITY_LARGE,
 		thirst = TUNING.HYDRATION_MEDSMALL,
 		tags = {"alcohol","lightdrink"},
 		perishtime = TUNING.PERISH_SUPERSLOW,
@@ -310,9 +310,9 @@ local drinks =
 	kumis = {
 		test = function(boilier, names, tags) return ( ( tags.milk or 0 ) + ( tags.dairy or 0 ) + ( names.goatmilk or 0 ) + ( names.kyno_milk_beefalo or 0 ) + ( names.kyno_milk_koalefant or 0 ) + ( names.milk_box or 0 ) + ( names.beefalo_milk or 0 ) + ( names.rawmilk or 0 ) >= 3) and notmeat(tags) and notname(names) and not tags.fat end,
 		priority = 1,
-		health = TUNING.HEALING_MEDSMALL,
+		health = TUNING.HEALING_MEDSMALL-TUNING.ALCOHOL_POISON,
 		hunger = TUNING.DRINK_CALORIES - TUNING.DRINK_CALORIES_POISON,
-		sanity = TUNING.SANITY_HUGE,
+		sanity = TUNING.SANITY_LARGE,
 		thirst = TUNING.HYDRATION_MEDSMALL,
 		tags = {"alcohol"},
 		perishtime = TUNING.PERISH_SUPERSLOW,

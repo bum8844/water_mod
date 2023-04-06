@@ -1,5 +1,6 @@
 local function sleepfunction(inst, target)
     target.components.debuffable:RemoveDebuff("alcoholdebuff")
+    target.components.debuffable:RemoveDebuff("drunkarddebuff")
     if KnownModIndex:IsModEnabled("workshop-2334209327") or KnownModIndex:IsModForceEnabled("workshop-2334209327") then
         target.components.debuffable:RemoveDebuff("kyno_strengthbuff")
         target.components.debuffable:RemoveDebuff("kyno_strengthbuff_med")
@@ -374,6 +375,7 @@ local function OnAttached_immune(inst, target)
     inst.entity:SetParent(target.entity)
     inst.Transform:SetPosition(0, 0, 0)
     target.components.health.externalabsorbmodifiers:SetModifier(target, TUNING.BUFF_PLAYERABSORPTION_MODIFIER)
+    target.components.sanity:SetFullAuraImmunity(true)
     target.components.sanity:SetNegativeAuraImmunity(true)
     target.components.sanity:SetPlayerGhostImmunity(true)
     target.components.sanity:SetLightDrainImmune(true)
@@ -423,7 +425,7 @@ local function fn_immune()
     return inst
 end
 
-local function OnTick(inst, target)
+local function OnTick_thirstregen(inst, target)
     if target.components.health ~= nil and target.components.thirst ~= nil and
             not target.components.health:IsDead() and
             not target:HasTag("playerghost") then
@@ -441,7 +443,7 @@ local function OnAttached_thirstregen(inst, target)
     inst.entity:SetParent(target.entity)
     inst.Transform:SetPosition(0, 0, 0) --in case of loading
 
-    inst.task = inst:DoPeriodicTask(TUNING.HUNGERREGEN_TICK_RATE, OnTick, nil, target)
+    inst.task = inst:DoPeriodicTask(TUNING.HUNGERREGEN_TICK_RATE, OnTick_thirstregen, nil, target)
     inst:ListenForEvent("death", function()
         inst.components.debuff:Stop()
     end, target)
@@ -470,10 +472,74 @@ local function fn_thirstregen()
     return inst
 end
 
+local function OnTick_drunkard(inst, target)
+    if target.components.health ~= nil
+        and not target.components.health:IsDead()
+        and target.components.sanity ~= nil
+        and not target:HasTag("playerghost") then
+        target.components.sanity:DoDelta(TUNING.DRUNKARD_SANITY_DELTA)
+    else
+        inst.components.debuff:Stop()
+    end
+end
+
+local function OnAttached_drunkard(inst, target)
+    inst.entity:SetParent(target.entity)
+    inst.Transform:SetPosition(0, 0, 0) --in case of loading
+    inst.task = inst:DoPeriodicTask(TUNING.DRUNKARD_TICK_RATE, OnTick_drunkard, nil, target)
+    inst:ListenForEvent("death", function()
+        inst.components.debuff:Stop()
+    end, target)
+end
+
+local function OnTimerDone_drunkard(inst, data)
+    if data.name == "drunkard" then
+        inst.components.debuff:Stop()
+    end
+end
+
+local function OnExtended_drunkard(inst, target)
+    inst.components.timer:StopTimer("drunkard")
+    inst.components.timer:StartTimer("drunkard", TUNING.DRUNKARD_DURATION)
+    inst.task:Cancel()
+    inst.task = inst:DoPeriodicTask(TUNING.DRUNKARD_TICK_RATE, OnTick_drunkard, nil, target)
+end
+
+local function fn_drunkard()
+    local inst = CreateEntity()
+
+    if not TheWorld.ismastersim then
+        --Not meant for client!
+        inst:DoTaskInTime(0, inst.Remove)
+
+        return inst
+    end
+
+    inst.entity:AddTransform()
+
+    inst.entity:Hide()
+    inst.persists = false
+
+    inst:AddTag("CLASSIFIED")
+
+    inst:AddComponent("debuff")
+    inst.components.debuff:SetAttachedFn(OnAttached_drunkard)
+    inst.components.debuff:SetDetachedFn(inst.Remove)
+    inst.components.debuff:SetExtendedFn(OnExtended_drunkard)
+    inst.components.debuff.keepondespawn = true
+
+    inst:AddComponent("timer")
+    inst.components.timer:StartTimer("drunkard", TUNING.SWEETTEA_DURATION)
+    inst:ListenForEvent("timerdone", OnTimerDone_drunkard)
+
+    return inst
+end
+
 return Prefab("caffeinbuff", fn_caffein),
 Prefab("alcoholdebuff", fn_alcohol),
 Prefab("immunebuff",fn_immune),
 Prefab("obebuff",fn_obe),
 Prefab("sleepdrinkbuff",fn_sleepdrink),
 Prefab("sleepdrinkbuff_ex",fn_sleepdrink_ex),
-Prefab("thirstregenbuff", fn_thirstregen)
+Prefab("thirstregenbuff", fn_thirstregen),
+Prefab("drunkarddebuff",fn_drunkard)
