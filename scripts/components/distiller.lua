@@ -60,6 +60,16 @@ local function doboil(inst, self)
 	self.done = true
 end
 
+local function setboiling_time(inst, self, watertimer)
+	local timer = 1
+	timer = TUNING.BASE_COOK_TIME * TUNING.KETTLE_WATER * watertimer
+	self.boiling_timer = GetTime() + timer
+	if self.onstartboiling ~= nil then
+		self.onstartboiling(self.inst)
+	end
+	return timer
+end
+
 function Distiller:isDone()
 	return self.done
 end
@@ -98,19 +108,24 @@ function Distiller:startBoiling(watertimer, campkettle)
 		self.task:Cancel()
 	end
 
-	if campkettle and self.firetime ~= nil and self.firetime > 0 then
-		timer = self.firetime
-		self.firetime = nil
-		self.boiling_timer = GetTime() + timer
-		if self.oncontinueboiling ~= nil then
-			self.oncontinueboiling(self.inst)
+	if campkettle then
+		if self.firetime ~= nil and self.firetime > 0 then
+			timer = self.firetime
+			self.firetime = nil
+			self.boiling_timer = GetTime() + timer
+			if self.oncontinueboiling ~= nil then
+				self.oncontinueboiling(self.inst)
+			end
+		elseif self.inst._fire.components.fueled:GetCurrentSection() > 0 then
+			timer = setboiling_time(self.inst, self, watertimer)
+		else
+			timer = setboiling_time(self.inst, self, watertimer)
+			self.firetime = timer
+			self.boiling_timer = nil
+			return
 		end
 	else
-		timer = TUNING.BASE_COOK_TIME * TUNING.KETTLE_WATER * watertimer
-		self.boiling_timer = GetTime() + timer
-		if self.onstartboiling ~= nil then
-			self.onstartboiling(self.inst)
-		end
+		setboiling_time(self.inst, self, watertimer)
 	end
 
     self.task = self.inst:DoTaskInTime(timer,doboil,self)

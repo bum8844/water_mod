@@ -165,42 +165,35 @@ function Waterlevel:UtilityCheck(boilier)
             self.inst.components.watersource.available = false
         end
     end
+    local sections = self:GetCurrentSection()
+    if self.sectionfn then
+        self.sectionfn(sections, sections, self.inst)
+    end
+    self.inst:PushEvent("onwaterlevelsectionchanged", { newsection = sections, oldsection = sections})
 end
 
-function Waterlevel:DiistillerResult(doer, campkettle)
+function Waterlevel:DoDiistiller(doer)
     if self.inst.components.distiller and self.watertype ~= WATERTYPE.CLEAN then
         self.inst.components.distiller.done = false
         local watervalue = self:GetWater()
-        if campkettle then
-            watervalue = watervalue * 2
-        end
         if self.watertype == WATERTYPE.DIRTY_ICE then
             watervalue = watervalue * 2
         end
-        self.inst.components.distiller:startBoiling(watervalue, campkettle)
-    else
-        self:UtilityCheck(doer)
-    end
-    local sections = self:GetCurrentSection()
-    if self.sectionfn then
-        self.sectionfn(sections, sections, self.inst)
-    end
-    self.inst:PushEvent("onwaterlevelsectionchanged", { newsection = sections, oldsection = sections})
-end
+        if self.inst._fire == nil then
+            self.inst.components.distiller:startBoiling(watervalue)
+        else
+            watervalue = watervalue * 2
+            self.inst.components.distiller:startBoiling(watervalue, true)
+        end
 
-function Waterlevel:DoDiistiller(doer, campkettle)
-    if self.inst._fire == nil then
-        self:DiistillerResult(doer)
-    elseif self.inst._fire.components.fueled:GetCurrentSection() > 0 then
-        self:DiistillerResult(doer, campkettle)
+        local sections = self:GetCurrentSection()
+        if self.sectionfn then
+            self.sectionfn(sections, sections, self.inst)
+        end
+        self.inst:PushEvent("onwaterlevelsectionchanged", { newsection = sections, oldsection = sections})
     else
         self:UtilityCheck(doer)
     end
-    local sections = self:GetCurrentSection()
-    if self.sectionfn then
-        self.sectionfn(sections, sections, self.inst)
-    end
-    self.inst:PushEvent("onwaterlevelsectionchanged", { newsection = sections, oldsection = sections})
 end
 
 function Waterlevel:TakeWaterItem(item, doer)
@@ -216,11 +209,7 @@ function Waterlevel:TakeWaterItem(item, doer)
         self:SetPercent(1)
     end
 
-    if self.inst:HasTag("campkettle") then
-       campkettle  = true
-    end
-
-    self:DoDiistiller(doer, campkettle)
+    self:DoDiistiller(doer)
 
     local delta = self.currentwater - self.oldcurrenwater
 

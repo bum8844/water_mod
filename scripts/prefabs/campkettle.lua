@@ -49,7 +49,6 @@ local function ChangeToItem(inst)
     end
     
     item.AnimState:PlayAnimation("collapse_"..inst._type)
-    item.AnimState:PushAnimation("idle")
     item.SoundEmitter:PlaySound("dontstarve/common/together/portable/cookpot/collapse")
     item.Transform:SetPosition(inst.Transform:GetWorldPosition())
     if inst._fire then
@@ -91,7 +90,7 @@ local function OnTakeWater(inst)
 end
 
 local function OnSectionChange(new, old, inst)
-    local watertype = inst.components.waterlevel.watertype ~= WATERTYPE.CLEAN and "dirty" or "water"
+    local watertype = (inst.components.waterlevel.watertype == WATERTYPE.DIRTY or inst.components.waterlevel.watertype == WATERTYPE.DIRTY_ICE) and "dirty" or "water"
     if new ~= nil then
         if inst._waterlevel ~= new then
             inst._waterlevel = new
@@ -111,7 +110,7 @@ end
 
 local function getstatus(inst)
     return (inst.components.waterlevel:GetWater() == 0 and "GENERIC")
-        or (inst.components.distiller:isDone() and "DONE")
+        or (inst.components.distiller:isDone() and inst.components.waterlevel.watertype == WATERTYPE.CLEAN and "DONE")
         or (inst._fire.components.fueled ~= nil and inst._fire.components.fueled.currentfuel / inst._fire.components.fueled.maxfuel <= 0 and "STOP")
         or (inst.components.distiller:GetTimeToBoil() > 15 and "BOILING_LONG")
         or "BOILING_SHORT"
@@ -176,7 +175,7 @@ local function fn()
     inst.components.inspectable.getstatus = getstatus
 
     inst:AddComponent("waterlevel")
-    inst.components.waterlevel:SetCanAccepts({WATERGROUP.BOILABLE})
+    inst.components.waterlevel:SetCanAccepts({WATERGROUP.CAMP_BOILABLE})
     inst.components.waterlevel:SetTakeWaterFn(OnTakeWater)
     inst.components.waterlevel:SetSections(3)
     inst.components.waterlevel:SetSectionCallback(OnSectionChange)

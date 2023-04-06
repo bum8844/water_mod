@@ -85,12 +85,11 @@ local function OnLoad(inst, data)
 				if inst.components.fueled:GetCurrentSection() > 0 then
 					inst._kettle.components.distiller:startBoiling(0,true)
 				end
-			end
-			if data.kettle.watertype == WATERTYPE.CLEAN and data.kettle.waterlevel > 0 then
+			elseif data.kettle.watertype == WATERTYPE.CLEAN and data.kettle.waterlevel > 0 then
 				inst._kettle.components.pickable.numtoharvest = inst._kettle.components.waterlevel:GetWater()
 				inst._kettle.components.pickable.canbepicked = true
-				inst._kettle.components.waterlevel:DoDiistiller(inst._kettle)
 			end
+			inst._kettle.components.waterlevel:UtilityCheck(inst._kettle)
 		end
 	end
 end
@@ -134,7 +133,7 @@ local function onhammered(inst, worker, ...)
 end
 
 local function startboil(inst)
-	if inst._kettle ~= nil and inst._kettle:IsValid() and inst._kettle.components.waterlevel:GetWater() ~= 0 and inst._kettle.components.waterlevel.watertype == WATERTYPE.DIRTY then
+	if inst._kettle ~= nil and inst._kettle:IsValid() and inst._kettle.components.waterlevel:GetWater() ~= 0 and inst._kettle.components.waterlevel.watertype ~= WATERTYPE.CLEAN then
 		inst._kettle.components.distiller:startBoiling(inst._kettle.components.waterlevel:GetWater()*2, true)
 	end
 end
