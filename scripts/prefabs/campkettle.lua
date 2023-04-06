@@ -79,6 +79,8 @@ local function onstartboilingfn(inst)
 end
     
 local function OnTakeWater(inst)
+    inst.AnimState:PlayAnimation("take_water")
+    inst.AnimState:PushAnimation("idle_empty", false)
     inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/small")
     inst:DoTaskInTime(1,function(inst)
     inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_close")
@@ -133,6 +135,8 @@ end
 
 local function OnPickedFn(inst,picker,loot)
     inst.components.waterlevel:DoDelta(-inst.components.waterlevel:GetWater())
+    inst.AnimState:PlayAnimation("get_water")
+    inst.AnimState:PushAnimation("idle_empty", false)
     inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/small")
     inst.components.pickable.canbepicked = false
     inst.components.waterlevel.accepting = true
