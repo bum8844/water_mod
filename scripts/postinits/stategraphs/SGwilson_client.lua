@@ -177,13 +177,10 @@ AddStategraphPostInit("wilson_client", function(sg)
                     return
                 end
 
-                --V2C: Only predict looped anims. For idles with a pre, stick with
-                --     "idle_loop" and wait for server to trigger the custom anims
                 local anim
                 if inst.replica.rider ~= nil and inst.replica.rider:IsRiding() then
                     anim = "idle_loop"
                 elseif inst:HasTag("wereplayer") then
-                    --V2C: groggy moose and goose go straight back to idle_groggy (don't play idle_groggy_pre everytime like others do)
                     if not inst:HasTag("groggy") or not inst:HasTag("drunk") or inst:HasTag("beaver") then
                         anim = "idle_loop"
                     elseif inst:HasTag("weremoose") then
