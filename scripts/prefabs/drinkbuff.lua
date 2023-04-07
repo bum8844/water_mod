@@ -49,8 +49,8 @@ local function OnDetached_sleepdrink_ex(inst, target)
                 end)
             end)  
         else
-            sleepfunction(inst, target)
             target:AddDebuff("healthregenbuff", "healthregenbuff")
+            sleepfunction(inst, target)
         end
     end
     inst:Remove()
