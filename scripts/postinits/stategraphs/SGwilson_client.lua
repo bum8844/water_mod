@@ -189,7 +189,7 @@ AddStategraphPostInit("wilson_client", function(sg)
                                 inst.AnimState:IsCurrentAnimation("idle_walk_pre")) and
                             "idle_groggy" or
                             "idle_loop"
-                    else--if inst:HasTag("weregoose") then
+                    else
                         anim = (inst.AnimState:IsCurrentAnimation("idle_walk_pst") or
                                 inst.AnimState:IsCurrentAnimation("idle_walk") or
                                 inst.AnimState:IsCurrentAnimation("idle_walk_pre")) and
