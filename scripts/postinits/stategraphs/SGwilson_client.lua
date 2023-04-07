@@ -77,6 +77,62 @@ AddStategraphActionHandler("wilson_client", ActionHandler(ACTIONS.DRINK_HARVEST,
 ------------------------------------------------------------------------
 
 AddStategraphPostInit("wilson_client", function(sg)
+    do
+        local _idle_onenter = sg.states["idle"].onenter
+        sg.states["idle"].onenter = function(inst, pushanim,...)
+            local anims = {}
+            _idle_onenter(inst, pushanim,...)
+            if inst:HasTag("drunk") then
+                table.insert(anims, "idle_groggy_pre")
+                table.insert(anims, "idle_groggy")
+            else
+                table.insert(anims, "idle_loop")
+            end
+            if pushanim then
+                for k, v in pairs(anims) do
+                    inst.AnimState:PushAnimation(v, k == #anims)
+                end
+            else
+                inst.AnimState:PlayAnimation(anims[1], #anims == 1)
+                for k, v in pairs(anims) do
+                    if k > 1 then
+                        inst.AnimState:PushAnimation(v, k == #anims)
+                    end
+                end
+            end
+        end
+        local _run_start_onenter = sg.states["run_start"].onenter
+        sg.states["run_start"].onenter = function(inst,...)
+            if inst:HasTag("drunk") then
+                inst.sg.statemem.groggy = true
+                inst.components.locomotor:RunForward()
+                inst.AnimState:PlayAnimation("idle_walk_pre")
+                inst.sg.mem.footsteps = 0
+            else
+                _run_start_onenter(inst,...)
+            end
+        end
+        local _run_onenter = sg.states["run"].onenter
+        sg.states["run"].onenter = function(inst,...)
+            if inst:HasTag("drunk") then
+                inst.sg.statemem.groggy = true
+                inst.AnimState:PlayAnimation("idle_walk", true)
+                inst.sg:SetTimeout(inst.AnimState:GetCurrentAnimationLength())
+            else
+                _run_onenter(inst,...)
+            end
+        end
+        local _run_stop_onenter = sg.states["run_stop"].onenter
+        sg.states["run_stop"].onenter = function(inst,...)
+            if inst:HasTag("drunk") then
+                inst.sg.statemem.groggy = true
+                inst.components.locomotor:Stop()
+                inst.AnimState:PlayAnimation("idle_walk_pst")
+            else
+                _run_stop_onenter(inst,...)
+            end
+        end
+    end
     local eater = sg.actionhandlers[ACTIONS.EAT].deststate
     sg.actionhandlers[ACTIONS.EAT].deststate = function(inst, action)
         local result = eater(inst, action)

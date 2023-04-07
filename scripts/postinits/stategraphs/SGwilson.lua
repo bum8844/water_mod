@@ -197,6 +197,92 @@ AddStategraphActionHandler("wilson", ActionHandler(ACTIONS.DRINK_HARVEST, "dolon
 ------------------------------------------------------------------------
 
 AddStategraphPostInit("wilson", function(sg)
+    do
+        local _idle_onenter = sg.states["idle"].onenter
+        sg.states["idle"].onenter = function(inst, pushanim,...)
+            local anims = {}
+            _idle_onenter(inst, pushanim,...)
+            if inst:HasTag("drunk") then
+                
+                table.insert(anims, "idle_groggy_pre")
+                table.insert(anims, "idle_groggy")
+
+                if pushanim then
+                    for k, v in pairs(anims) do
+                        inst.AnimState:PushAnimation(v, k == #anims)
+                    end
+                else
+                    inst.AnimState:PlayAnimation(anims[1], #anims == 1)
+                    for k, v in pairs(anims) do
+                        if k > 1 then
+                            inst.AnimState:PushAnimation(v, k == #anims)
+                        end
+                    end
+                end
+            end
+        end
+        local _run_timeline = sg.states["run"].timeline
+        local _run_start_onenter = sg.states["run_start"].onenter
+        sg.states["run_start"].onenter = function(inst,...)
+            if inst:HasTag("drunk") then
+                inst.sg.statemem.groggy = true
+                inst.components.locomotor:RunForward()
+                inst.AnimState:PlayAnimation("idle_walk_pre")
+                inst.sg.mem.footsteps = 0
+            else
+                _run_start_onenter(inst,...)
+            end
+        end
+        local _run_onenter = sg.states["run"].onenter
+        sg.states["run"].onenter = function(inst,...)
+            if inst:HasTag("drunk") then
+                inst.sg.statemem.groggy = true
+                inst.AnimState:PlayAnimation("idle_walk", true)
+                inst.sg:SetTimeout(inst.AnimState:GetCurrentAnimationLength())
+            else
+                _run_onenter(inst,...)
+            end
+        end
+        local _run_stop_onenter = sg.states["run_stop"].onenter
+        sg.states["run_stop"].onenter = function(inst,...)
+            if inst:HasTag("drunk") then
+                inst.sg.statemem.groggy = true
+                inst.components.locomotor:Stop()
+                inst.AnimState:PlayAnimation("idle_walk_pst")
+            else
+                _run_stop_onenter(inst,...)
+            end
+        end
+        local _acting_run_stop_onenter = sg.states["acting_run_stop"].onenter
+        sg.states["acting_run_stop"].onenter = function(inst,...)
+            if inst:HasTag("drunk") then
+                inst.sg.statemem.groggy = true
+                inst.components.locomotor:Stop()
+                inst.AnimState:PlayAnimation("idle_walk_pst")
+            else
+                _acting_run_stop_onenter(inst,...)
+            end
+        end
+        local _funnyidle_onenter = sg.states["funnyidle"].onenter
+        local function test(inst, ...)
+            return inst.components.temperature:GetCurrent() < 5 or inst.components.temperature:GetCurrent() > TUNING.OVERHEAT_TEMP - 10
+        end
+        sg.states["funnyidle"].onenter = function(inst, ...)
+            if test(inst, ...) then
+                _funnyidle_onenter(inst, ...)
+            elseif GetModConfigData("enable_thirst") and inst.components.thirst:GetPercent() < TUNING.THIRST_THRESH then
+                inst.AnimState:PlayAnimation("idle_groggy01_pre")
+                inst.AnimState:PushAnimation("idle_groggy01_loop")
+                inst.AnimState:PushAnimation("idle_groggy01_pst", false)
+            elseif inst:HasTag("drunk") then
+                inst.AnimState:PlayAnimation("idle_groggy01_pre")
+                inst.AnimState:PushAnimation("idle_groggy01_loop")
+                inst.AnimState:PushAnimation("idle_groggy01_pst", false)
+            else
+                _funnyidle_onenter(inst, ...)
+            end
+        end
+    end
     local eater = sg.actionhandlers[ACTIONS.EAT].deststate
     sg.actionhandlers[ACTIONS.EAT].deststate = function(inst, action)
         local result = eater(inst, action)
@@ -214,21 +300,6 @@ end)
 if GetModConfigData("enable_thirst") then
     AddStategraphPostInit("wilson", function(sg)
         do
-            local _funnyidle_onenter = sg.states["funnyidle"].onenter
-            local function test(inst, ...)
-                return inst.components.temperature:GetCurrent() < 5 or inst.components.temperature:GetCurrent() > TUNING.OVERHEAT_TEMP - 10
-            end
-            sg.states["funnyidle"].onenter = function(inst, ...)
-                if test(inst, ...) then
-                    _funnyidle_onenter(inst, ...)
-                elseif inst.components.thirst:GetPercent() < TUNING.THIRST_THRESH then
-                    inst.AnimState:PlayAnimation("idle_groggy01_pre")
-                    inst.AnimState:PushAnimation("idle_groggy01_loop")
-                    inst.AnimState:PushAnimation("idle_groggy01_pst", false)
-                else
-                    _funnyidle_onenter(inst, ...)
-                end
-            end
             local _bedroll_onenter = sg.states["bedroll"].onenter
             sg.states["bedroll"].onenter = function (inst, ...)
                 if inst.components.thirst.current < TUNING.HYDRATION_MED then
@@ -259,7 +330,6 @@ if GetModConfigData("enable_thirst") then
             end
         end
     end)
-
 end
 
 
