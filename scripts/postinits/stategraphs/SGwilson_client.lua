@@ -132,14 +132,14 @@ AddStategraphPostInit("wilson_client", function(sg)
                     else
                         inst.sg.statemem.goose = true
                     end
-                elseif inst:HasTag("groggy") then
+                elseif inst:HasTag("groggy") or inst:HasTag("drunk") then
                     inst.sg.statemem.groggy = true
                 else
                     inst.sg.statemem.normal = true
                 end
             elseif inst:GetStormLevel() >= TUNING.SANDSTORM_FULL_LEVEL and not inst.components.playervision:HasGoggleVision() then
                 inst.sg.statemem.sandstorm = true
-            elseif inst:HasTag("groggy") or inst:HasTag("drunk")then
+            elseif inst:HasTag("groggy") or inst:HasTag("drunk") then
                 inst.sg.statemem.groggy = true
             elseif inst:IsCarefulWalking() then
                 inst.sg.statemem.careful = true
