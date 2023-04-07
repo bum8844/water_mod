@@ -34,6 +34,9 @@ local function OnAttached_sleepdrink_ex(inst, target)
     target.drinksleeptask_ex = target:DoTaskInTime(target.knockout_ex_time, function()
         inst.components.debuff:Stop()
     end)
+    inst:ListenForEvent("death", function()
+        inst.components.debuff:Stop()
+    end, target)
 end
 
 local function OnDetached_sleepdrink_ex(inst, target)
@@ -127,6 +130,9 @@ local function OnAttached_sleepdrink(inst, target)
     target.drinksleeptask = target:DoTaskInTime(target.knockout_time, function()
         inst.components.debuff:Stop()
     end)
+    inst:ListenForEvent("death", function()
+        inst.components.debuff:Stop()
+    end, target)
 end
 
 local function OnDetached_sleepdrink(inst, target)
