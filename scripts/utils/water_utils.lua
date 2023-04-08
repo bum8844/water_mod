@@ -28,7 +28,8 @@ function RefundItem(inst, refund, dontremove, isforzen)
         result(inst, refund, container, x, y, z, dontremove)
     else
         if inst.components.stackable ~= nil and inst.components.stackable:IsStack() then
-            refund.components.stackable:SetStackSize(inst.components.stackable:StackSize())
+            local stacksize = inst.components.stackable:StackSize()
+            refund.components.stackable:SetStackSize(stacksize)
         end
         result(inst, refund, container, x, y, z, true)
         inst:Remove()
