@@ -1,5 +1,5 @@
 --when an item 'inst' is used, the 'refund' will be given.
-local function result(inst, refund, container, x, y, z, dontremove)
+--[[local function result(inst, refund, container, x, y, z, dontremove)
     refund.Transform:SetPosition(x, y, z)
 
     if container ~= nil then
@@ -28,13 +28,12 @@ function RefundItem(inst, refund, dontremove, isforzen)
         result(inst, refund, container, x, y, z, dontremove)
     else
         if inst.components.stackable ~= nil and inst.components.stackable:IsStack() then
-            local stacksize = inst.components.stackable:StackSize()
-            refund.components.stackable:SetStackSize(stacksize)
+            refund.components.stackable:SetStackSize(inst.components.stackable:StackSize())
         end
         result(inst, refund, container, x, y, z, true)
         inst:Remove()
     end
-end
+end]]
 
 local function GetItemState(count)
     return count >= 5 and "_bottle" or ""

@@ -8,30 +8,60 @@ local function OnTake(inst, taker, delta)
     end
 end
 
+local function Change_Normal_Item(inst) 
+    local item = ReplacePrefab(inst, inst:HasTag("clean") and "water_clean" or "water_dirty")
+    if inst.components.stackable ~= nil and inst.components.stackable:IsStack() then
+        item.components.stackable:SetStackSize(inst.components.stackable:StackSize())
+    end
+    return item
+end
+
+local function Change_Ice_Item(inst) 
+    local item = ReplacePrefab(inst, inst:HasTag("clean") and "water_clean_ice" or "water_dirty_ice")
+    if inst.components.stackable ~= nil and inst.components.stackable:IsStack() then
+        item.components.stackable:SetStackSize(inst.components.stackable:StackSize())
+    end
+    return item
+end
+
 local function FreezeWater(inst)
-    local result = SpawnPrefab(inst:HasTag("clean") and "water_clean_ice" or "water_dirty_ice")
     local owner = inst.components.inventoryitem.owner
-    if owner == nil then
+    local container = owner ~= nil and (owner.components.inventory or owner.components.container) or nil
+
+    if container ~= nil then
+        local result = Change_Ice_Item(inst)
+        container:GiveItem(result)
+    else
         local water = inst:HasTag("dirty") and "_dirty" or ""
         if inst.components.stackable:StackSize() >= 5 then
             inst.AnimState:SetBuild("kettle_drink_bottle")
         end
         inst.AnimState:PlayAnimation("turn_to_ice"..water)
+        inst:DoTaskInTime(1,function()
+            local result = Change_Ice_Item(inst)
+            result.Transform:SetPosition(inst.Transform:GetWorldPosition())
+        end)
     end
-    inst:DoTaskInTime(2, function(inst) RefundItem(inst, result, nil, true) end)
 end
 
 local function onperish(inst)
-    local result = SpawnPrefab(inst:HasTag("clean") and "water_clean" or "water_dirty")
     local owner = inst.components.inventoryitem.owner
-    if owner == nil then
+    local container = owner ~= nil and (owner.components.inventory or owner.components.container) or nil
+
+    if container ~= nil then
+        local result = Change_Normal_Item(inst)
+        container:GiveItem(inst)
+    else
         local water = inst:HasTag("dirty") and "_dirty" or ""
         if inst.components.stackable:StackSize() >= 5 then
             inst.AnimState:SetBuild("kettle_drink_bottle")
         end
         inst.AnimState:PlayAnimation("turn_to_full"..water)
+        inst:DoTaskInTime(1,function()
+            local result = Change_Normal_Item(inst)
+            result.Transform:SetPosition(inst.Transform:GetWorldPosition())
+        end)
     end
-    inst:DoTaskInTime(2, function(inst) RefundItem(inst, result, nil, true) end)
 end
 
 local function MakeCup(name, masterfn, tags)
