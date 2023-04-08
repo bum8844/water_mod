@@ -125,7 +125,7 @@ function Distiller:startBoiling(watertimer, campkettle)
 			return
 		end
 	else
-		setboiling_time(self.inst, self, watertimer)
+		timer = setboiling_time(self.inst, self, watertimer)
 	end
 
     self.task = self.inst:DoTaskInTime(timer,doboil,self)
