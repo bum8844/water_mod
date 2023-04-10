@@ -321,7 +321,7 @@ local function OnTakeWater(inst)
         inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/medium")
         inst:DoTaskInTime(1,function(inst)
             inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_close")
-            if inst:HasTag("boiling") then
+            if inst.components.waterlevel.watertype ~= WATERTYPE.CLEAN then
                 onstartboilingfn(inst)
             end
         end)
