@@ -239,11 +239,30 @@ local function OnTakeWater(inst)
     end
 end
 
-local function OnTaken(inst, taker, water_amount)
+local function OnTakeWater(inst)
+    if not inst:HasTag("burnt") then
+        inst.AnimState:PlayAnimation("take_water")
+        if inst.components.container ~= nil and inst.components.container:IsOpen() then
+            inst.AnimState:PushAnimation("cooking_pre_loop")
+        else
+            inst.AnimState:PushAnimation("idle_empty", false)
+            inst:DoTaskInTime(1,function(inst)
+                inst.SoundEmitter:PlaySound("dontstarve/common/wardrobe_close")
+            end)
+        end
+        inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/medium")
+    end
+end
+
+local function OnTaken(inst, source, water_amount)
     if not inst:HasTag("burnt") then
         inst.components.waterlevel:DoDelta(-water_amount)
-        inst.AnimState:PlayAnimation("getdrink_empty")
-        inst.AnimState:PushAnimation("idle_empty", false)
+        if inst.components.container ~= nil and inst.components.container:IsOpen() then
+            inst.AnimState:PushAnimation("cooking_pre_loop")
+        else
+            inst.AnimState:PlayAnimation("getdrink_empty")
+            inst.AnimState:PushAnimation("idle_empty", false)
+        end
         inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/medium")
     end
 end

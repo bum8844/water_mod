@@ -84,7 +84,6 @@ local function onhit(inst)--, worker)
         else
             if inst.components.container ~= nil and inst.components.container:IsOpen() then
                 inst.components.container:Close()
-                -- onclose will trigger sfx already
             else
                 inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_close")
             end
@@ -224,15 +223,15 @@ local function harvestfn(inst,picker,loot)
         end
         picker:PushEvent("learncookbookrecipe", {product = inst.components.stewer.product, ingredients = inst.components.stewer.ingredient_prefabs})
         inst.components.stewer.product = nil
-        inst.components.waterlevel:DoDelta(-inst.components.waterlevel:GetWater())
         inst.AnimState:PlayAnimation("getdrink")
         inst.SoundEmitter:PlaySound("dontstarve/creatures/pengull/splash")
         inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/medium")
         inst.AnimState:PushAnimation("idle_empty",false)
         inst:DoTaskInTime(.75,function (inst)
             inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_close")
+            inst.components.waterlevel:DoDelta(-inst.components.waterlevel:GetWater())
+            inst.components.stewer:Harvest(picker)
         end)
-        inst.components.stewer:Harvest(picker)
     end
 end
 local function isgoodwater(inst)
@@ -317,22 +316,30 @@ end
 local function OnTakeWater(inst)
     if not inst:HasTag("burnt") then
         inst.AnimState:PlayAnimation("take_water")
-        inst.AnimState:PushAnimation("idle_empty", false)
-        inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/medium")
-        inst:DoTaskInTime(1,function(inst)
+        if inst.components.container ~= nil and inst.components.container:IsOpen() then
+            inst.AnimState:PushAnimation("cooking_pre_loop")
+        else
+            inst.AnimState:PushAnimation("idle_empty", false)
+            inst:DoTaskInTime(1,function(inst)
             inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_close")
-            if inst.components.waterlevel.watertype ~= WATERTYPE.CLEAN then
-                onstartboilingfn(inst)
-            end
-        end)
+                if inst.components.waterlevel.watertype ~= WATERTYPE.CLEAN then
+                    onstartboilingfn(inst)
+                end
+            end)
+        end
+        inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/medium")
     end
 end
 
 local function OnTaken(inst, source, delta)
     if not inst:HasTag("burnt") then
         inst.components.waterlevel:DoDelta(-inst.components.waterlevel:GetWater())
-        inst.AnimState:PlayAnimation("getdrink_empty")
-        inst.AnimState:PushAnimation("idle_empty", false)
+        if inst.components.container ~= nil and inst.components.container:IsOpen() then
+            inst.AnimState:PushAnimation("cooking_pre_loop")
+        else
+            inst.AnimState:PlayAnimation("getdrink_empty")
+            inst.AnimState:PushAnimation("idle_empty", false)
+        end
         inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/medium")
     end
 end
