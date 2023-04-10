@@ -280,10 +280,21 @@ end
 
 local function OnTakeWater(inst)
     if not inst:HasTag("burnt") then
-        inst.AnimState:PlayAnimation("take_water")
         if inst.components.container ~= nil and inst.components.container:IsOpen() then
-            inst.AnimState:PushAnimation("cooking_pre_loop")
+            inst.AnimState:PlayAnimation("take_water_open")
+            if inst.components.waterlevel.watertype ~= WATERTYPE.CLEAN then
+                inst.AnimState:PushAnimation("idle_empty", false)
+                inst:DoTaskInTime(1,function(inst)
+                inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_close")
+                    if inst.components.waterlevel.watertype ~= WATERTYPE.CLEAN then
+                        onstartboilingfn(inst)
+                    end
+                end)
+            else
+                inst.AnimState:PushAnimation("cooking_pre_loop")
+            end
         else
+            inst.AnimState:PlayAnimation("take_water")
             inst.AnimState:PushAnimation("idle_empty", false)
             inst:DoTaskInTime(1,function(inst)
             inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_close")

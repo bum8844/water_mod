@@ -232,19 +232,11 @@ end
 
 local function OnTakeWater(inst)
     if not inst:HasTag("burnt") then
-        inst.AnimState:PlayAnimation("take_water")
-        inst.AnimState:PushAnimation("idle_empty", false)
-        inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/medium")
-        inst:DoTaskInTime(1,function() inst.SoundEmitter:PlaySound("dontstarve/common/wardrobe_close") end)
-    end
-end
-
-local function OnTakeWater(inst)
-    if not inst:HasTag("burnt") then
-        inst.AnimState:PlayAnimation("take_water")
         if inst.components.container ~= nil and inst.components.container:IsOpen() then
+            inst.AnimState:PlayAnimation("take_water_open")
             inst.AnimState:PushAnimation("cooking_pre_loop")
         else
+            inst.AnimState:PlayAnimation("take_water")
             inst.AnimState:PushAnimation("idle_empty", false)
             inst:DoTaskInTime(1,function(inst)
                 inst.SoundEmitter:PlaySound("dontstarve/common/wardrobe_close")
