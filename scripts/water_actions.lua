@@ -50,7 +50,7 @@ local TAKEWATER = AddAction("TAKEWATER", STRINGS.ACTIONS.FILL, function(act)
 
     local groundpt = act:GetActionPoint()
     if groundpt ~= nil then
-        local success = _G.TheWorld.Map:IsOceanAtPoint(groundpt.x, 0, groundpt.z)
+        local success = ( _G.TheWorld.Map:IsOceanAtPoint(groundpt.x-0.8, 0, groundpt.z-0.8) or _G.TheWorld.Map:IsOceanAtPoint(groundpt.x+0.8, 0, groundpt.z+0.8)) and ( not _G.TheWorld.Map:IsOceanAtPoint(groundpt.x-0.3, 0, groundpt.z-0.3) or not _G.TheWorld.Map:IsOceanAtPoint(groundpt.x+0.3, 0, groundpt.z+0.3))
         if success then
             return filled.components.watertaker:Fill(nil, act.doer)
         end

@@ -97,7 +97,9 @@ local USEITEM =
 local POINT =
 {
     watertaker = function(inst, doer, pos, actions, right, target)
-        if inst:HasTag("watertaker") and _G.TheWorld.Map:IsOceanAtPoint(pos.x, 0 , pos.z) then
+        if inst:HasTag("watertaker")  
+            and ( _G.TheWorld.Map:IsOceanAtPoint(pos.x-0.8, 0, pos.z-0.8) or _G.TheWorld.Map:IsOceanAtPoint(pos.x+0.8, 0, pos.z+0.8))
+            and ( not _G.TheWorld.Map:IsOceanAtPoint(pos.x-0.3, 0, pos.z-0.3) or not _G.TheWorld.Map:IsOceanAtPoint(pos.x+0.3, 0, pos.z+0.3)) then
             table.insert(actions, ACTIONS.TAKEWATER_OCEAN)
         end
     end,

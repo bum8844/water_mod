@@ -48,7 +48,7 @@ end
 
 local function onhit(inst, worker)
     if not inst:HasTag("burnt") then
-        if inst.components.stewer:IsCooking() then
+        if inst.components.stewer:IsCooking() or inst.components.distiller:isBoiling() then
             inst.AnimState:PlayAnimation("hit_cooking")
             inst.AnimState:PushAnimation("cooking_loop", true)
             inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_close")
