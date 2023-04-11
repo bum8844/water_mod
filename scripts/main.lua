@@ -1,5 +1,7 @@
 modrequire("constants")
 modrequire("tuning")
+modrequire("stategraphs/SGwell_sprinkler")
+modrequire("stategraphs/SGwell_sprinkler_pipes")
 
 --Set mod speeches & strings
 modrequire("strings/strings")

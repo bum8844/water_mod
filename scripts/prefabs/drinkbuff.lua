@@ -1,5 +1,6 @@
 local function sleepfunction(inst, target)
     target.components.debuffable:RemoveDebuff("alcoholdebuff")
+    target.components.debuffable:RemoveDebuff("drunkarddebuff")
     if KnownModIndex:IsModEnabled("workshop-2334209327") or KnownModIndex:IsModForceEnabled("workshop-2334209327") then
         target.components.debuffable:RemoveDebuff("kyno_strengthbuff")
         target.components.debuffable:RemoveDebuff("kyno_strengthbuff_med")
@@ -7,14 +8,8 @@ local function sleepfunction(inst, target)
     end
 end
 
-local function chkResistance(target)
+local function IsResistance(target)
     return target.components.grogginess:GetResistance() > 4
-end
-
-local function endbuff(inst, target)
-    target:DoTaskInTime(target.knockout_time, function()
-        inst.components.debuff:Stop()
-    end)
 end
 
 local function OnAttached_sleepdrink_ex(inst, target)
@@ -27,49 +22,61 @@ local function OnAttached_sleepdrink_ex(inst, target)
     end
     inst.entity:SetParent(target.entity)
     inst.Transform:SetPosition(0, 0, 0)
-    target:AddDebuff("healthregenbuff", "healthregenbuff")
-    target.knockout_time = inst.components.timer:GetTimeLeft("sleepdrinkbuff_ex_done")
-    target:PushEvent("yawn", { grogginess = 4, knockoutduration = target.knockout_time })
-    if target:HasTag("insomniac") or chkResistance(target) then
-        if target:HasTag("drunk") then
-            target:AddTag("drinksleep")
-            target:DoTaskInTime(target.knockout_time, function()
-                sleepfunction(inst, target)
-                target.components.talker:Say(GetString(target,"ANNOUNCE_DRUNK_END"))
-                target:PushEvent("refreshdrunk")
-                target:RemoveTag("drunk")
-                target.components.locomotor:RemoveExternalSpeedMultiplier(target, "alcoholdebuff")
-                inst.components.debuff:Stop()
-            end)
-        else
-            endbuff(inst, target)
-        end
-    else
-        endbuff(inst, target)
+    target.knockout_ex_time = inst.components.timer:GetTimeLeft("sleepdrinkbuff_ex_done")
+    target:PushEvent("yawn", { grogginess = 4, knockoutduration = target.knockout_ex_time })
+    if target:HasTag("drunk") and not target:HasTag("insomniac") and not IsResistance(target) then
+        target:AddTag("drinksleep")
     end
+    if target.drinksleeptask_ex ~= nil then
+        target.drinksleeptask_ex:Cancel()
+        target.drinksleeptask_ex = nil
+    end
+    target.drinksleeptask_ex = target:DoTaskInTime(target.knockout_ex_time, function()
+        inst.components.debuff:Stop()
+    end)
     inst:ListenForEvent("death", function()
+        inst.components.debuff:Stop()
     end, target)
 end
 
 local function OnDetached_sleepdrink_ex(inst, target)
     if target:HasTag("drunk") then
-        target:AddTag("drinksleep")
-        target.components.locomotor:RemoveExternalSpeedMultiplier(target, "alcoholdebuff")
-        target:DoTaskInTime(4.1, function()
+        if target:HasTag("drinksleep") then
+            target:DoTaskInTime(4.1, function()
+                target:AddDebuff("healthregenbuff", "healthregenbuff")
+                target:DoTaskInTime(9, function()
+                    sleepfunction(inst, target)
+                end)
+            end)  
+        else
+            target:AddDebuff("healthregenbuff", "healthregenbuff")
             sleepfunction(inst, target)
-            target:DoTaskInTime(9, function()
-                target:RemoveTag("drunk")
-                target:PushEvent("sleep_end")
-                target:PushEvent("refreshdrunk")
-            end)
-        end)
+        end
     end
     inst:Remove()
 end
 
 local function OnExtended_sleepdrink_ex(inst, target)
+    if target.drinksleeptask_ex ~= nil then
+        target.drinksleeptask_ex:Cancel()
+        target.drinksleeptask_ex = nil
+    end
+
+    local current_duration = inst.components.timer:GetTimeLeft("sleepdrinkbuff_ex_done")
+    local new_duration = math.max(current_duration, target.sleepdrinkbuff_ex_duration)
     inst.components.timer:StopTimer("sleepdrinkbuff_ex_done")
-    inst.components.timer:StartTimer("sleepdrinkbuff_ex_done", target.sleepdrinkbuff_ex_duration)
+    inst.components.timer:StartTimer("sleepdrinkbuff_ex_done", new_duration)
+
+
+    target.knockout_ex_time = inst.components.timer:GetTimeLeft("sleepdrinkbuff_ex_done")
+    target:PushEvent("yawn", { grogginess = 4, knockoutduration = target.knockout_ex_time })
+    if target:HasTag("drunk") and not target:HasTag("insomniac") and not IsResistance(target) then
+        target:AddTag("drinksleep")
+    end
+
+    target.drinksleeptask_ex = target:DoTaskInTime(target.knockout_ex_time, function()
+        inst.components.debuff:Stop()
+    end)
 end
 
 local function fn_sleepdrink_ex()
@@ -93,7 +100,7 @@ local function fn_sleepdrink_ex()
 
     inst:AddComponent("timer")
     inst:ListenForEvent("timerdone", function(inst, data)
-        if data.name == "sleepdrinkbuff_ex_done" then
+        if data.name == "sleepdrink_ex_done" then
             inst.components.debuff:Stop()
         end
     end)
@@ -113,46 +120,57 @@ local function OnAttached_sleepdrink(inst, target)
     inst.Transform:SetPosition(0, 0, 0)
     target.knockout_time = inst.components.timer:GetTimeLeft("sleepdrinkbuff_done")
     target:PushEvent("yawn", { grogginess = 4, knockoutduration = target.knockout_time })
-    if target:HasTag("insomniac") or chkResistance(target) then
-        if target:HasTag("drunk") then
-            target:AddTag("drinksleep")
-            target:DoTaskInTime(target.knockout_time, function()
-                sleepfunction(inst, target)
-                target.components.talker:Say(GetString(target,"ANNOUNCE_DRUNK_END"))
-                target:PushEvent("refreshdrunk")
-                target:RemoveTag("drunk")
-                target.components.locomotor:RemoveExternalSpeedMultiplier(target, "alcoholdebuff")
-                inst.components.debuff:Stop()
-            end)
-        else
-            endbuff(inst, target)
-        end
-    else
-        endbuff(inst, target)
+    if target:HasTag("drunk") and not target:HasTag("insomniac") and not IsResistance(target) then
+        target:AddTag("drinksleep")
     end
+    if target.drinksleeptask ~= nil then
+        target.drinksleeptask:Cancel()
+        target.drinksleeptask = nil
+    end
+    target.drinksleeptask = target:DoTaskInTime(target.knockout_time, function()
+        inst.components.debuff:Stop()
+    end)
     inst:ListenForEvent("death", function()
+        inst.components.debuff:Stop()
     end, target)
 end
 
 local function OnDetached_sleepdrink(inst, target)
     if target:HasTag("drunk") then
-        target:AddTag("drinksleep")
-        target.components.locomotor:RemoveExternalSpeedMultiplier(target, "alcoholdebuff")
-        target:DoTaskInTime(4.1, function()
+        if target:HasTag("drinksleep") then
+            target:DoTaskInTime(4.1, function()
+                target:DoTaskInTime(9, function()
+                    sleepfunction(inst, target)
+                end)
+            end)  
+        else
             sleepfunction(inst, target)
-            target:DoTaskInTime(9, function()
-                target:RemoveTag("drunk")
-                target:PushEvent("sleep_end")
-                target:PushEvent("refreshdrunk")
-            end)
-        end)
+        end
     end
     inst:Remove()
 end
 
 local function OnExtended_sleepdrink(inst, target)
+    if target.drinksleeptask ~= nil then
+        target.drinksleeptask:Cancel()
+        target.drinksleeptask = nil
+    end
+
+    local current_duration = inst.components.timer:GetTimeLeft("sleepdrinkbuff_done")
+    local new_duration = math.max(current_duration, target.sleepdrinkbuff_duration)
     inst.components.timer:StopTimer("sleepdrinkbuff_done")
-    inst.components.timer:StartTimer("sleepdrinkbuff_done", target.sleepdrinkbuff_duration)
+    inst.components.timer:StartTimer("sleepdrinkbuff_done", new_duration)
+
+
+    target.knockout_time = inst.components.timer:GetTimeLeft("sleepdrinkbuff_done")
+    target:PushEvent("yawn", { grogginess = 4, knockoutduration = target.knockout_time })
+    if target:HasTag("drunk") and not target:HasTag("insomniac") and not IsResistance(target) then
+        target:AddTag("drinksleep")
+    end
+
+    target.drinksleeptask = target:DoTaskInTime(target.knockout_time, function()
+        inst.components.debuff:Stop()
+    end)
 end
 
 local function fn_sleepdrink()
@@ -186,14 +204,18 @@ end
 
 local function OnAttached_obe(inst, target)
     inst.entity:SetParent(target.entity)
-    target.components.obe:SetHealth(target.components.health.currenthealth)
-    target.components.obe:SetHunger(target.components.hunger.current)
-    target.components.obe:SetSanity(target.components.sanity.current)
-    if target.components.thirst ~= nil then
-        target.components.obe:SetThirst(target.components.thirst.current)
+    if target.components.obe ~= nil then
+        target.components.obe:SetHealth(target.components.health.currenthealth)
+        target.components.obe:SetHunger(target.components.hunger.current)
+        target.components.obe:SetSanity(target.components.sanity.current)
+        if target.components.thirst ~= nil then
+            target.components.obe:SetThirst(target.components.thirst.current)
+        end
+        TheNet:Announce(""..target:GetDisplayName().." drank ".. STRINGS.NAMES.GHOSTLY_TEA ..", and became a ghost for "..TUNING.GHOST_TIME.." seconds!")
+        target.components.obe:DrinktoDeath()
+    else
+        target.components.health:DoDelta(-1000000)
     end
-    TheNet:Announce(""..target:GetDisplayName().." drank ".. STRINGS.NAMES.GHOSTLY_TEA ..", and became a ghost for "..TUNING.GHOST_TIME.." seconds!")
-    target.components.obe:DrinktoDeath()
 end
 
 local function OnDetached_obe(inst, target)
@@ -288,18 +310,10 @@ local function OnAttached_alcohol(inst, target)
     end
     inst.entity:SetParent(target.entity)
     inst.Transform:SetPosition(0, 0, 0)
-    if target:HasTag("groggy") then
-        local timer = target.components.grogginess.grog_amount * 10
-        target:DoTaskInTime(timer,function()
-            target:PushEvent("drunk")
-            target:AddTag("drunk")
-            target:AddTag("groggy")
-        end)
-    else
-        target:PushEvent("drunk")
-        target:AddTag("drunk")
-        target:AddTag("groggy")
-    end
+
+    target:PushEvent("drunk")
+    target:AddTag("drunk")
+
     target.components.locomotor:SetExternalSpeedMultiplier(target, "alcoholdebuff", 0.5)
     target:PushEvent("foodbuffattached", { buff = "ANNOUNCE_DRUNK", priority = 2 })
     inst:ListenForEvent("death", function()
@@ -308,22 +322,19 @@ local function OnAttached_alcohol(inst, target)
 end
 
 local function OnDetached_alcohol(inst, target)
+    target:PushEvent("refreshdrunk")
+    target:RemoveTag("drunk")
+    target.components.locomotor:RemoveExternalSpeedMultiplier(target, "alcoholdebuff")
     if not target:HasTag("drinksleep") then
-        target:PushEvent("refreshdrunk")
-        target:RemoveTag("drunk")
-        target:RemoveTag("groggy")
-        target.components.locomotor:RemoveExternalSpeedMultiplier(target, "alcoholdebuff")
         target:PushEvent("foodbuffdetached", { buff = "ANNOUNCE_DRUNK_END", priority = 1 })
     else
-        target:RemoveTag("drinksleep") 
+        target:RemoveTag("drinksleep")
+        target:PushEvent("foodbuffdetached", { buff = "ANNOUNCE_SLEEP_END", priority = 1 })
     end
     inst:Remove()
 end
 
 local function OnExtended_alcohol(inst, target)
-    if not target:HasTag("groggy") then
-        target:AddTag("groggy")
-    end
     local current_duration = inst.components.timer:GetTimeLeft("alcoholdebuff_done")
     local new_duration = math.max(current_duration, target.alcoholdebuff_duration)
     inst.components.timer:StopTimer("alcoholdebuff_done")
@@ -370,6 +381,7 @@ local function OnAttached_immune(inst, target)
     inst.entity:SetParent(target.entity)
     inst.Transform:SetPosition(0, 0, 0)
     target.components.health.externalabsorbmodifiers:SetModifier(target, TUNING.BUFF_PLAYERABSORPTION_MODIFIER)
+    target.components.sanity:SetFullAuraImmunity(true)
     target.components.sanity:SetNegativeAuraImmunity(true)
     target.components.sanity:SetPlayerGhostImmunity(true)
     target.components.sanity:SetLightDrainImmune(true)
@@ -419,9 +431,121 @@ local function fn_immune()
     return inst
 end
 
+local function OnTick_thirstregen(inst, target)
+    if target.components.health ~= nil and target.components.thirst ~= nil and
+            not target.components.health:IsDead() and
+            not target:HasTag("playerghost") then
+        local thirstabsorption = (target.components.eater ~= nil and target.components.eater.thirstabsorption)
+                or 1.0
+
+        local delta = TUNING.HUNGERREGEN_TICK_VALUE * thirstabsorption
+        target.components.thirst:DoDelta(delta, nil, inst.prefab)
+    else
+        inst.components.debuff:Stop()
+    end
+end
+
+local function OnAttached_thirstregen(inst, target)
+    inst.entity:SetParent(target.entity)
+    inst.Transform:SetPosition(0, 0, 0) --in case of loading
+
+    inst.task = inst:DoPeriodicTask(TUNING.HUNGERREGEN_TICK_RATE, OnTick_thirstregen, nil, target)
+    inst:ListenForEvent("death", function()
+        inst.components.debuff:Stop()
+    end, target)
+end
+
+local function fn_thirstregen()
+    local inst = CreateEntity()
+
+    if not TheWorld.ismastersim then
+        inst:DoTaskInTime(0, inst.Remove)
+
+        return inst
+    end
+
+    inst.entity:AddTransform()
+
+    inst.entity:Hide()
+    inst.persists = false
+
+    inst:AddTag("CLASSIFIED")
+
+    inst:AddComponent("debuff")
+    inst.components.debuff:SetAttachedFn(OnAttached_thirstregen)
+    inst.components.debuff:SetDetachedFn(inst.Remove)
+
+    return inst
+end
+
+local function OnTick_drunkard(inst, target)
+    if target.components.health ~= nil
+        and not target.components.health:IsDead()
+        and target.components.sanity ~= nil
+        and not target:HasTag("playerghost") then
+        target.components.sanity:DoDelta(TUNING.DRUNKARD_SANITY_DELTA)
+    else
+        inst.components.debuff:Stop()
+    end
+end
+
+local function OnAttached_drunkard(inst, target)
+    inst.entity:SetParent(target.entity)
+    inst.Transform:SetPosition(0, 0, 0) --in case of loading
+    inst.task = inst:DoPeriodicTask(TUNING.DRUNKARD_TICK_RATE, OnTick_drunkard, nil, target)
+    inst:ListenForEvent("death", function()
+        inst.components.debuff:Stop()
+    end, target)
+end
+
+local function OnTimerDone_drunkard(inst, data)
+    if data.name == "drunkard" then
+        inst.components.debuff:Stop()
+    end
+end
+
+local function OnExtended_drunkard(inst, target)
+    inst.components.timer:StopTimer("drunkard")
+    inst.components.timer:StartTimer("drunkard", TUNING.DRUNKARD_DURATION)
+    inst.task:Cancel()
+    inst.task = inst:DoPeriodicTask(TUNING.DRUNKARD_TICK_RATE, OnTick_drunkard, nil, target)
+end
+
+local function fn_drunkard()
+    local inst = CreateEntity()
+
+    if not TheWorld.ismastersim then
+        --Not meant for client!
+        inst:DoTaskInTime(0, inst.Remove)
+
+        return inst
+    end
+
+    inst.entity:AddTransform()
+
+    inst.entity:Hide()
+    inst.persists = false
+
+    inst:AddTag("CLASSIFIED")
+
+    inst:AddComponent("debuff")
+    inst.components.debuff:SetAttachedFn(OnAttached_drunkard)
+    inst.components.debuff:SetDetachedFn(inst.Remove)
+    inst.components.debuff:SetExtendedFn(OnExtended_drunkard)
+    inst.components.debuff.keepondespawn = true
+
+    inst:AddComponent("timer")
+    inst.components.timer:StartTimer("drunkard", TUNING.SWEETTEA_DURATION)
+    inst:ListenForEvent("timerdone", OnTimerDone_drunkard)
+
+    return inst
+end
+
 return Prefab("caffeinbuff", fn_caffein),
 Prefab("alcoholdebuff", fn_alcohol),
 Prefab("immunebuff",fn_immune),
 Prefab("obebuff",fn_obe),
 Prefab("sleepdrinkbuff",fn_sleepdrink),
-Prefab("sleepdrinkbuff_ex",fn_sleepdrink_ex)
+Prefab("sleepdrinkbuff_ex",fn_sleepdrink_ex),
+Prefab("thirstregenbuff", fn_thirstregen),
+Prefab("drunkarddebuff",fn_drunkard)

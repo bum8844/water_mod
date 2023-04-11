@@ -68,12 +68,18 @@ local function onload(inst, data)
 end
 
 local function OnTakeWater(inst)
+	inst.AnimState:PlayAnimation("take_water")
+	inst.AnimState:PushAnimation("idle")
 	inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/medium")
+	inst:DoTaskInTime(1,function() inst.SoundEmitter:PlaySound("dontstarve/common/wardrobe_close") end)
 end
 
 local function OnTaken(inst, taker, water_amount)
 	inst.components.waterlevel:DoDelta(-water_amount)
-	OnTakeWater(inst)
+	inst.AnimState:PlayAnimation("get_water")
+	inst.AnimState:PushAnimation("idle")
+	inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/medium")
+	inst:DoTaskInTime(1,function() inst.SoundEmitter:PlaySound("dontstarve/common/wardrobe_close") end)
 end
 
 local function OnSectionChange(new, old, inst)

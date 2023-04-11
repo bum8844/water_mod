@@ -49,7 +49,7 @@ local function onhit(inst, worker)
             inst.AnimState:PushAnimation("cooking_loop", true)
         elseif inst.components.stewer:IsDone() then
             inst.AnimState:PlayAnimation("hit_full")
-            inst.AnimState:PushAnimation("idle_full", false)
+            inst.AnimState:PushAnimation("idle_full")
         else
             if inst.components.container ~= nil and inst.components.container:IsOpen() then
                 inst.components.container:Close()
@@ -138,7 +138,7 @@ end
 local function spoilfn(inst)
     if not inst:HasTag("burnt") then
         inst.components.stewer.product = inst.components.stewer.spoiledproduct
-        inst.components.waterlevel.item_watertype = WATERTYPE.DIRTY
+        inst.components.pickable.product = inst.components.stewer.product
         inst.AnimState:OverrideSymbol("swap", "brewery_meter_dirty", tostring(inst._waterlevel))
         inst:DoTaskInTime(0,function(inst)
             SetProductSymbol(inst, inst.components.stewer.product)
@@ -167,7 +167,7 @@ end
 local function donecookfn(inst)
     if not inst:HasTag("burnt") then
         inst.AnimState:PlayAnimation("cooking_pst")
-        inst.AnimState:PushAnimation("idle_full", false)
+        inst.AnimState:PushAnimation("idle_full")
         ShowProduct(inst)
         inst.SoundEmitter:KillSound("snd")
         inst.SoundEmitter:PlaySound("turnoftides/common/together/boat/anchor/ocean_hit")
@@ -176,7 +176,7 @@ end
 
 local function continuedonefn(inst)
     if not inst:HasTag("burnt") then
-        inst.AnimState:PlayAnimation("idle_full")
+        inst.AnimState:PlayAnimation("idle_full",true)
         ShowProduct(inst)
     end
 end
@@ -232,21 +232,37 @@ end
 
 local function OnTakeWater(inst)
     if not inst:HasTag("burnt") then
+        if inst.components.container ~= nil and inst.components.container:IsOpen() then
+            inst.AnimState:PlayAnimation("take_water_open")
+            inst.AnimState:PushAnimation("cooking_pre_loop")
+        else
+            inst.AnimState:PlayAnimation("take_water")
+            inst.AnimState:PushAnimation("idle_empty", false)
+            inst:DoTaskInTime(1,function(inst)
+                inst.SoundEmitter:PlaySound("dontstarve/common/wardrobe_close")
+            end)
+        end
         inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/medium")
     end
 end
 
-local function OnTaken(inst, taker, water_amount)
+local function OnTaken(inst, source, water_amount)
     if not inst:HasTag("burnt") then
         inst.components.waterlevel:DoDelta(-water_amount)
-        inst.AnimState:PlayAnimation("getdrink_empty")
-        inst.AnimState:PushAnimation("idle_empty", false)
-        OnTakeWater(inst)
+        if inst.components.container ~= nil and inst.components.container:IsOpen() then
+            inst.AnimState:PlayAnimation("getdrink_open")
+            inst.AnimState:PushAnimation("cooking_pre_loop")
+        else
+            inst.AnimState:PlayAnimation("getdrink_empty")
+            inst.AnimState:PushAnimation("idle_empty", false)
+        end
+        inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/medium")
     end
 end
 
 local function OnSectionChange(new, old, inst)
-    local product = inst.components.stewer.product ~= "spoiled_drink" and "water" or "dirty"
+    local stewer = inst.components.stewer
+    local product = (stewer and stewer.product == "spoiled_drink") and "dirty" or "water"
     if inst._waterlevel ~= new then
         inst._waterlevel = new
     end
@@ -255,7 +271,8 @@ end
 
 local function onopen(inst)
     if not inst:HasTag("burnt") then
-        inst.AnimState:PlayAnimation("cooking_pre_loop")
+        inst.AnimState:PlayAnimation("cooking_pre_open")
+        inst.AnimState:PushAnimation("cooking_pre_loop",false)
         inst.SoundEmitter:KillSound("snd")
         inst.SoundEmitter:PlaySound("dontstarve/common/wardrobe_open")
     end
@@ -264,7 +281,8 @@ end
 local function onclose(inst)
     if not inst:HasTag("burnt") then
         if not inst.components.stewer:IsCooking() then
-            inst.AnimState:PlayAnimation("idle_empty")
+            inst.AnimState:PlayAnimation("cooking_pre_close")
+            inst.AnimState:PushAnimation("idle_empty",false)
             inst.SoundEmitter:KillSound("snd")
         end
         inst.SoundEmitter:PlaySound("dontstarve/common/wardrobe_close")
@@ -307,6 +325,7 @@ local function fn()
     
 	inst:AddTag("structure")
 	inst:AddTag("brewery")
+    inst:AddTag("drinkproduction")
 	
 	inst.entity:SetPristine()
 	
@@ -372,7 +391,7 @@ local function fn()
 	
 	MakeHauntableWork(inst)
 	
-	MakeMediumBurnable(inst, nil, nil, true)
+	MakeLargeBurnable(inst, nil, nil, true)
     MakeSmallPropagator(inst)
 
     inst.OnSave = onsave

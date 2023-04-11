@@ -1,10 +1,3 @@
---[[local function OnEaten(inst, eater)
-    local item = SpawnPrefab("cup")
-    local stacksize = eater.components.eater.eatwholestack and inst.components.stackable:StackSize() or 1
-    item.components.stackable:SetStackSize(stacksize)
-    RefundItem(inst, "cup", true)
-end]]
-
 local function OnTake(inst, taker, delta)
     local stacksize = math.clamp(math.floor(delta/TUNING.CUP_MAX_LEVEL), 1, inst.components.stackable:StackSize())
 
@@ -15,30 +8,60 @@ local function OnTake(inst, taker, delta)
     end
 end
 
+local function Change_Normal_Item(inst) 
+    local item = ReplacePrefab(inst, inst:HasTag("clean") and "water_clean" or "water_dirty")
+    if inst.components.stackable ~= nil and inst.components.stackable:IsStack() then
+        item.components.stackable:SetStackSize(inst.components.stackable:StackSize())
+    end
+    return item
+end
+
+local function Change_Ice_Item(inst) 
+    local item = ReplacePrefab(inst, inst:HasTag("clean") and "water_clean_ice" or "water_dirty_ice")
+    if inst.components.stackable ~= nil and inst.components.stackable:IsStack() then
+        item.components.stackable:SetStackSize(inst.components.stackable:StackSize())
+    end
+    return item
+end
+
 local function FreezeWater(inst)
-    local result = SpawnPrefab(inst:HasTag("clean") and "water_clean_ice" or "water_dirty_ice")
     local owner = inst.components.inventoryitem.owner
-    if owner == nil then
+    local container = owner ~= nil and (owner.components.inventory or owner.components.container) or nil
+
+    if container ~= nil then
+        local result = Change_Ice_Item(inst)
+        container:GiveItem(result)
+    else
         local water = inst:HasTag("dirty") and "_dirty" or ""
         if inst.components.stackable:StackSize() >= 5 then
             inst.AnimState:SetBuild("kettle_drink_bottle")
         end
         inst.AnimState:PlayAnimation("turn_to_ice"..water)
+        inst:DoTaskInTime(1,function()
+            local result = Change_Ice_Item(inst)
+            result.Transform:SetPosition(inst.Transform:GetWorldPosition())
+        end)
     end
-    inst:DoTaskInTime(2, function(inst) RefundItem(inst, result, nil, true) end)
 end
 
 local function onperish(inst)
-    local result = SpawnPrefab(inst:HasTag("clean") and "water_clean" or "water_dirty")
     local owner = inst.components.inventoryitem.owner
-    if owner == nil then
+    local container = owner ~= nil and (owner.components.inventory or owner.components.container) or nil
+
+    if container ~= nil then
+        local result = Change_Normal_Item(inst)
+        container:GiveItem(inst)
+    else
         local water = inst:HasTag("dirty") and "_dirty" or ""
         if inst.components.stackable:StackSize() >= 5 then
             inst.AnimState:SetBuild("kettle_drink_bottle")
         end
         inst.AnimState:PlayAnimation("turn_to_full"..water)
+        inst:DoTaskInTime(1,function()
+            local result = Change_Normal_Item(inst)
+            result.Transform:SetPosition(inst.Transform:GetWorldPosition())
+        end)
     end
-    inst:DoTaskInTime(2, function(inst) RefundItem(inst, result, nil, true) end)
 end
 
 local function MakeCup(name, masterfn, tags)
@@ -170,7 +193,7 @@ local function MakeCup(name, masterfn, tags)
             inst:AddComponent("unwrappable")
             inst.components.unwrappable:SetOnUnwrappedFn(OnUnwrapped)
         end
-        --inst.components.edible:SetOnEatenFn(OnEaten)
+
         if not inst:HasTag("frozen") and not inst:HasTag("salty") then
             inst:AddComponent("temperature")
             inst.components.temperature.mintemp = TUNING.WATER_MINTEMP
@@ -191,7 +214,6 @@ local function MakeCup(name, masterfn, tags)
         inst:AddComponent("water")
         inst.components.water.watervalue = TUNING.CUP_MAX_LEVEL
         inst.components.water:SetOnTakenFn(OnTake)
-        --inst.components.returnprefab = "cup"
 
         inst:AddComponent("watersource")
         inst.components.watersource.available = false
@@ -244,7 +266,7 @@ end
 local function dirtywater(inst)
     inst.components.edible.healthvalue = -TUNING.HEALING_TINY
     inst.components.edible.hungervalue = 0
-    inst.components.edible.sanityvalue = 0
+    inst.components.edible.sanityvalue = -TUNING.SANITY_TINY
     inst.components.edible.thirstvalue = TUNING.HYDRATION_SMALLTINY
 
     inst.components.water:SetWaterType(WATERTYPE.DIRTY)
@@ -262,19 +284,11 @@ local function saltwater(inst)
 end
 
 local function cleanwater_ice(inst)
-    --inst:AddComponent("workable")
-
     inst.components.water:SetWaterType(WATERTYPE.CLEAN_ICE)
-
-    --inst.components.watersource.available = true
 end
 
 local function dirtywater_ice(inst)
-    --inst:AddComponent("workable")
-
     inst.components.water:SetWaterType(WATERTYPE.DIRTY_ICE)
-
-    --inst.components.watersource.available = true
 end
 
 return MakeCup("water_clean", cleanwater, {"icebox_valid","clean"}),

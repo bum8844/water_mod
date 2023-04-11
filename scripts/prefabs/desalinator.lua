@@ -39,7 +39,7 @@ end
 
 local function onhit(inst, worker)
 	if not inst:HasTag("burnt") then
-        if inst:HasTag("boilling") then
+        if inst.components.distiller:isBoiling() then
             inst.AnimState:PlayAnimation("hit_cook")
             inst.AnimState:PushAnimation("cook", true)
         else
@@ -63,39 +63,47 @@ local function onpickedfn(inst, picker)
         local value = inst._saltvalue
         inst._saltvalue = inst._saltvalue - math.floor((value*.1)*10)
         inst.components.pickable.numtoharvest = inst.components.pickable.numtoharvest - inst.components.pickable.numtoharvest
-        inst.SoundEmitter:PlaySound("saltydog/common/saltbox/close")
+        inst.SoundEmitter:PlaySound("saltydog/common/saltbox/open")
+        inst:DoTaskInTime(0.13, function(inst) inst.AnimState:PlayAnimation("get_salt") end)
+        inst.AnimState:PushAnimation("idle")
+        inst:DoTaskInTime(1.1, function(inst) inst.SoundEmitter:PlaySound("saltydog/common/saltbox/close") end)
     end
 end
 
 local function CalculationForSalt(inst)
-    if inst._saltvalue >= 10 then
-        if inst._saltvalue > inst._saltvaluemax then
-            inst._saltvalue = inst._saltvaluemax
-        end
-        inst.components.pickable.numtoharvest = math.floor(inst._saltvalue*.1)
-        if not inst.components.distiller:isBoiling() then
-            inst.SoundEmitter:KillSound("purify")
-            inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/medium")
-            inst.SoundEmitter:PlaySound("saltydog/common/saltbox/open")
-            inst.components.pickable.canbepicked = true
-        else
-            inst.components.pickable.canbepicked = false
+    if not inst:HasTag("burnt") then
+        if inst._saltvalue >= 10 then
+            if inst._saltvalue > inst._saltvaluemax then
+                inst._saltvalue = inst._saltvaluemax
+            end
+            inst.components.pickable.numtoharvest = math.floor(inst._saltvalue*.1)
+            if not inst.components.distiller:isBoiling() then
+                inst.SoundEmitter:PlaySound("hookline/common/trophyscale_fish/place_fish")
+                inst.SoundEmitter:PlaySound("saltydog/common/saltbox/open")
+                inst.components.pickable.canbepicked = true
+            else
+                inst.components.pickable.canbepicked = false
+            end
         end
     end
 end
 
 local function ondoneboilingfn(inst)
-    inst.AnimState:OverrideSymbol("swap", "desalinator_meter_water", tostring(inst._waterlevel))
-    inst.AnimState:PlayAnimation("idle")
-    inst.SoundEmitter:KillSound("desalinator_sound")
-    inst.SoundEmitter:PlaySound("hookline/common/trophyscale_fish/place_fish","purify")
-    CalculationForSalt(inst)
+    if not inst:HasTag("burnt") then
+        inst.AnimState:OverrideSymbol("swap", "desalinator_meter_water", tostring(inst._waterlevel))
+        inst.AnimState:PlayAnimation("idle")
+        inst.SoundEmitter:KillSound("desalinator_sound")
+         inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/medium")
+        CalculationForSalt(inst)
+    end
 end
 
 local function onstartboilingfn(inst)
-    inst.components.pickable.canbepicked = false
-    inst.AnimState:PlayAnimation("cook", true)
-    inst.SoundEmitter:PlaySound("dontstarve/halloween_2018/madscience_machine/cooking_LP", "desalinator_sound", 0.3)
+    if not inst:HasTag("burnt") then
+        inst.components.pickable.canbepicked = false
+        inst.AnimState:PlayAnimation("cook", true)
+        inst.SoundEmitter:PlaySound("dontstarve/halloween_2018/madscience_machine/cooking_LP", "desalinator_sound", 0.3)
+    end
 end
 
 local function onburnt(inst)
@@ -136,36 +144,41 @@ local function OnSectionChange(new, old, inst)
         end
     end
     inst.AnimState:OverrideSymbol("swap", "desalinator_meter_"..watertype, tostring(inst._waterlevel))
-    --CalculationForSalt(inst)
 end
 
 local function OnTakeWater(inst)
     if not inst:HasTag("burnt") then
+        inst.AnimState:PlayAnimation("take_water")
+        inst.AnimState:PushAnimation("idle")
         if inst._saltvalue >= 20 then
             inst._saltvalue = inst._saltvalue + (inst.components.waterlevel.currentwater - inst.components.waterlevel.oldcurrenwater)
         else
             inst._saltvalue = inst.components.waterlevel.currentwater
         end
         inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/medium")
+        inst:DoTaskInTime(1,function(inst)
+            inst.SoundEmitter:PlaySound("dontstarve/common/wardrobe_close")
+            onstartboilingfn(inst)
+        end)
     end
 end
 
 local function OnTaken(inst, taker, water_amount)
-    inst.components.waterlevel:DoDelta(-water_amount)
-    inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/medium")
+    if not inst:HasTag("burnt") then
+        inst.components.waterlevel:DoDelta(-water_amount)
+        inst.AnimState:PlayAnimation("get_water")
+        inst.AnimState:PushAnimation("idle")
+        inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/medium")
+    end
 end
 
 local function getstatus(inst)
     return (inst:HasTag("burnt") and "BURNT")
-        or (inst:HasTag("boilling") and "PURIFY")
-        or (inst.components.distiller:isDone() and "HASWATER")
+        or (inst.components.distiller:GetTimeToBoil() > 15 and "PURIFY_LONG")
+        or (inst.components.distiller:isBoiling() and inst.components.distiller:GetTimeToBoil() < 15 and "PURIFY_SHORT")
+        or (inst.components.waterlevel:GetWater() > 0 and "HASWATER")
+        or (inst.components.pickable.numtoharvest > 0 and "HASSALT")
         or "EMPTY"
-end
-
-
-
-local function onpercentusedchange(inst, data)
-    inst.components.wateryprotection.addwetness = data.percent * TUNING.WATER_BARREL_WETNESS
 end
 
 local function fn()
@@ -233,7 +246,8 @@ local function fn()
     inst.components.wateryprotection.protection_dist = TUNING.WATER_BARREL_DIST
 
     inst:AddComponent("distiller")
-    inst.components.distiller.onstartboiling = onstartboilingfn
+    inst.components.distiller.onstartboiling = OnTakeWater
+    inst.components.distiller.oncontinueboiling = onstartboilingfn
     inst.components.distiller.ondoneboiling = ondoneboilingfn
 	
 	inst:AddComponent("workable")

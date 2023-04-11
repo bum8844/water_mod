@@ -199,6 +199,19 @@ configuration_options =
 		default = 240
 	},
 	{
+		name = "drunkard_time",
+		label = "Drunkard Time",
+		options =
+		{
+			{description = "VeryShort", data = 60},
+			{description = "Short", data = 120},
+			{description = "Default", data = 240},
+			{description = "Long", data = 300},
+			{description = "VeryLong", data = 360},
+		},
+		default = 240
+	},
+	{
 		name = "immune_time",
 		label = "Less Pain Time",
 		options =

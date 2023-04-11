@@ -1,24 +1,4 @@
-local function ExtraDropDist(doer, dest, bufferedaction)
-    if dest ~= nil then
-        local target_x, target_y, target_z = dest:GetPoint()
-
-        local is_on_water = _G.TheWorld.Map:IsOceanTileAtPoint(target_x, 0, target_z) and not _G.TheWorld.Map:IsPassableAtPoint(target_x, 0, target_z)
-        if is_on_water then
-            return 1.75
-        end
-    end
-    return 0
-end
-
-local function DefaultRangeCheck(doer, target)
-    if target == nil then
-        return
-    end
-    local target_x, target_y, target_z = target.Transform:GetWorldPosition()
-    local doer_x, doer_y, doer_z = doer.Transform:GetWorldPosition()
-    local dst = _G.distsq(target_x, target_z, doer_x, doer_z)
-    return dst <= 16
-end
+require("actions")
 
 --Overriding existing actions
 local cook_stroverride = ACTIONS.COOK.stroverridefn or function(act) return end
@@ -70,7 +50,7 @@ local TAKEWATER = AddAction("TAKEWATER", STRINGS.ACTIONS.FILL, function(act)
 
     local groundpt = act:GetActionPoint()
     if groundpt ~= nil then
-        local success = _G.TheWorld.Map:IsOceanAtPoint(groundpt.x, 0, groundpt.z)
+        local success = ( _G.TheWorld.Map:IsOceanAtPoint(groundpt.x-0.8, 0, groundpt.z-0.8) or _G.TheWorld.Map:IsOceanAtPoint(groundpt.x+0.8, 0, groundpt.z+0.8)) and ( not _G.TheWorld.Map:IsOceanAtPoint(groundpt.x-0.3, 0, groundpt.z-0.3) or not _G.TheWorld.Map:IsOceanAtPoint(groundpt.x+0.3, 0, groundpt.z+0.3))
         if success then
             return filled.components.watertaker:Fill(nil, act.doer)
         end
@@ -95,13 +75,8 @@ local MILKINGTOOL = AddAction("MILKINGTOOL", STRINGS.ACTIONS.MILKINGTOOL, functi
         return act.invobject.components.milkingtool:NotReady(act.doer)
     end
 end)
---MILKINGTOOL.priority = 2
 
-local PURIFY = AddAction("PURIFY", STRINGS.ACTIONS.PURIFY, function(act)
-    if act.invobject.components.purify:CanPurify(act.target) then
-        return act.invobject.components.purify:DoPurify(act.target, act.doer)
-    end
-end)
+MILKINGTOOL.priority = 2
 
 local DRINKPLAYER = AddAction("DRINKPLAYER", STRINGS.ACTIONS.FEEDPLAYER, function(act)
     if act.target ~= nil and
@@ -148,3 +123,48 @@ DRINKPLAYER.rangecheckfn = DefaultRangeCheck
 local DRINK = AddAction("DRINK", STRINGS.ACTIONS.DRINK, ACTIONS.EAT.fn)
 DRINK.priority = 1
 DRINK.mount_valid = true
+
+local TURNON_TILEARRIVE = AddAction("TURNON_TILEARRIVE",STRINGS.ACTIONS.TURNON,function(act)
+    local tar = act.target or act.invobject
+    if tar and tar.components.machine and not tar.components.machine:IsOn() then
+        tar.components.machine:TurnOn(tar)
+        return true
+    end
+end)
+
+ACTIONS.TURNON.priority = 1
+TURNON_TILEARRIVE.priority = 4
+TURNON_TILEARRIVE.theme_music = "farming"
+
+UPGRADE_TILEARRIVE = AddAction("UPGRADE_TILEARRIVE",STRINGS.ACTIONS.UPGRADE.GENERIC,function(act)
+    if act.invobject and act.target and
+        act.invobject.components.upgrader and
+        act.invobject.components.upgrader:CanUpgrade(act.target, act.doer) and
+        act.target.components.upgradeable then
+
+        local can_upgrade, reason = act.target.components.upgradeable:CanUpgrade()
+        if can_upgrade then
+            return act.target.components.upgradeable:Upgrade(act.invobject, act.doer)
+        end
+
+        return false, reason
+    end
+end)
+
+UPGRADE_TILEARRIVE.priority = 4
+UPGRADE_TILEARRIVE.rmb = true
+UPGRADE_TILEARRIVE.theme_music = "farming"
+
+DRINK_HARVEST = AddAction("DRINK_HARVEST",STRINGS.ACTIONS.HARVEST,function(act)
+    if act.target ~= nil and act.target.components.pickable ~= nil then
+        act.target.components.pickable:Pick(act.doer)
+        return true
+    end
+end)
+
+ACTIONS.PICK.priority = 1
+DRINK_HARVEST.priority = 2
+DRINK_HARVEST.canforce = true 
+DRINK_HARVEST.rangecheckfn = DefaultRangeCheck
+DRINK_HARVEST.extra_arrive_dist = ExtraPickupRange
+DRINK_HARVEST.mount_valid = true 

@@ -9,14 +9,20 @@ local prefabs =
 
 local function fn()
 	local inst = CreateEntity()
-	local trans = inst.entity:AddTransform()
-	local anim = inst.entity:AddAnimState()
-	local sound = inst.entity:AddSoundEmitter()
+	inst.entity:AddTransform()
+	inst.entity:AddAnimState()
+	inst.entity:AddSoundEmitter()
+    inst.entity:AddNetwork()
 
-	anim:SetBank("well_sprinkler_fx")
-	anim:SetBuild("well_sprinkler_fx")
-	anim:PlayAnimation("spray_loop", true)
+    inst:AddTag("NOCLICK")
+    inst:AddTag("waterspray")
 
+    inst.Transform:SetScale(3,3,3)
+	inst.AnimState:SetBank("well_sprinkler_fx")
+	inst.AnimState:SetBuild("well_sprinkler_fx")
+	inst.AnimState:PlayAnimation("spray_loop", true)
+	inst.persists = false
+	
 	return inst
 end
 

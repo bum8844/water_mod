@@ -60,6 +60,16 @@ local function doboil(inst, self)
 	self.done = true
 end
 
+local function setboiling_time(inst, self, watertimer)
+	local timer = 1
+	timer = TUNING.BASE_COOK_TIME * TUNING.KETTLE_WATER * watertimer
+	self.boiling_timer = GetTime() + timer
+	if self.onstartboiling ~= nil then
+		self.onstartboiling(self.inst)
+	end
+	return timer
+end
+
 function Distiller:isDone()
 	return self.done
 end
@@ -72,7 +82,10 @@ function Distiller:isBoiling()
 	return not self.done and self.boiling_timer ~= nil
 end
 
-function Distiller:startBoiling(watertimer)
+function Distiller:startBoiling(watertimer, campkettle)
+
+	local timer = 1
+
     if self.inst.components.container ~= nil then
     	self.inst.components.container:Close()
     	self.inst.components.container:DropEverything()
@@ -91,25 +104,43 @@ function Distiller:startBoiling(watertimer)
 		self.inst.components.waterlevel.accepting = false
 	end
 
-	local timer = TUNING.BASE_COOK_TIME * TUNING.KETTLE_WATER * watertimer
-	self.boiling_timer = GetTime() + timer
-
 	if self.task ~= nil then
 		self.task:Cancel()
 	end
-	if self.onstartboiling ~= nil then
-		self.onstartboiling(self.inst)
+
+	if campkettle then
+		if self.firetime ~= nil and self.firetime > 0 then
+			timer = self.firetime
+			self.firetime = nil
+			self.boiling_timer = GetTime() + timer
+			if self.oncontinueboiling ~= nil then
+				self.oncontinueboiling(self.inst)
+			end
+		elseif self.inst._fire.components.fueled:GetCurrentSection() > 0 then
+			timer = setboiling_time(self.inst, self, watertimer)
+		else
+			timer = setboiling_time(self.inst, self, watertimer)
+			self.firetime = timer
+			self.boiling_timer = nil
+			return
+		end
+	else
+		timer = setboiling_time(self.inst, self, watertimer)
 	end
-    self.task = self.inst:DoTaskInTime(self.boiling_timer,doboil,self)
+
+    self.task = self.inst:DoTaskInTime(timer,doboil,self)
 end
 
-function Distiller:stopBoiling(dt)
+function Distiller:stopBoiling(dt, campkettle)
 	if self.onstopboiling then
 		self.onstopboiling(self.inst)
 	end
-	if dt ~= 0 then
+	if dt > 0 then
 		self.boiling_timer = (self.boiling_timer - dt) - GetTime()
 		dt = 0
+	elseif campkettle and self.boiling_timer then
+		self.firetime = self.boiling_timer - GetTime()
+		self.boiling_timer = nil
 	else
 		self.boiling_timer = nil
 	end
@@ -145,8 +176,8 @@ end
 
 local function loadpass(inst, data, self)
 	self.task = self.inst:DoTaskInTime(data.boilingtime,doboil,self)
-	if self.onstartboiling ~= nil then
-		self.onstartboiling(self.inst)
+	if self.oncontinueboiling ~= nil then
+		self.oncontinueboiling(self.inst)
 	end
 	self.inst:DoTaskInTime(0,cont,self)
 end
@@ -167,7 +198,7 @@ function Distiller:OnLoad(data)
 			if self.inst._fire.components.fueled:GetCurrentSection() > 0 then
 				loadpass(self.inst, data, self)
 			else
-				self:stopBoiling(0)
+				self:stopBoiling(0, true)
 			end
 		else
     		loadpass(self.inst, data, self)
@@ -177,27 +208,17 @@ function Distiller:OnLoad(data)
 	end
 end
 
-local function updating(inst, dt, self)
-    self.boiling_timer = self.boiling_timer - dt
-    self.task = self.inst:DoTaskInTime(self.boiling_timer - GetTime(),doboil,self)
-    dt = 0
-end
-
 function Distiller:LongUpdate(dt)
     if self:isBoiling() then
         if self.task ~= nil then
             self.task:Cancel()
         end
-        if self.boiling_timer - dt > GetTime() then
-        	if self.inst._fire ~= nil then
-    			if self.inst._fire.components.fueled:GetCurrentSection() > 0 then
-    				updating(self.inst, dt, self)
-    			else
-    				self:stopBoiling(dt)
-    			end
-        	else
-            	updating(self.inst, dt, self)
-        	end
+        if self.inst._fire ~= nil and self.inst._fire.components.fueled:GetCurrentSection() > 0 then
+        	self:stopBoiling(dt)
+        elseif self.boiling_timer - dt > GetTime() then
+            self.boiling_timer = self.boiling_timer - dt
+            self.task = self.inst:DoTaskInTime(self.targettime - GetTime(), doboil, self)
+            dt = 0
         else
             dt = dt - self.boiling_timer + GetTime()
             doboil(self.inst, self)

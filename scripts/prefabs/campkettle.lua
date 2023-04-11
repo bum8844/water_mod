@@ -15,52 +15,16 @@ local prefabs_item =
 
 local prefabs =
 {
+    "collapse_small",
     "campkettle_item",
 }
 
-local function fn_item()
-    local inst = CreateEntity()
-
-    inst.entity:AddTransform()
-    inst.entity:AddAnimState()
-    inst.entity:AddSoundEmitter()
-    inst.entity:AddNetwork()
-
-    MakeInventoryPhysics(inst)  
-
-    inst.AnimState:SetBuild("campkettle")
-    inst.AnimState:SetBank("item")
-    inst.AnimState:PlayAnimation("idle_ground")
-
-    inst.entity:SetPristine()
-
-    inst:AddTag("campkettle")
-
-    if not TheWorld.ismastersim then
-        return inst
-    end
-
-    inst:AddComponent("tradable")
-
-    inst:AddComponent("inspectable")
-    
-    inst:AddComponent("inventoryitem")
-    inst.components.inventoryitem:ChangeImageName("campkettle")
-
-    inst:AddComponent("upgrader")
-    inst.components.upgrader.upgradetype = UPGRADETYPES.CAMPFIRE
-    inst.components.upgrader.upgradevalue = 1
-
-    MakeHauntableLaunchAndSmash(inst)
-
-    return inst
-end
-
 local function onbuilt(inst)
-    if not inst._fire then
+    if not inst.parent then
         print("must build on campfire or firepit! -- removing")
         inst:Remove()
     else
+        inst:Hide()
         inst._type = inst.parent.prefab == "firepit" and "B" or "A"
         inst.AnimState:SetBank("type_"..inst._type)
 
@@ -109,17 +73,24 @@ end
 
 local function onstartboilingfn(inst)
     inst.AnimState:PlayAnimation("cooking_loop", true)
+    inst.SoundEmitter:KillSound("snd")
     inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_rattle", "snd")
 end
     
 local function OnTakeWater(inst)
-    if not inst:HasTag("burnt") then
-        inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/small")
-    end
+    inst.AnimState:PlayAnimation("take_water")
+    inst.AnimState:PushAnimation("idle_empty", false)
+    inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/small")
+    inst:DoTaskInTime(1,function(inst)
+    inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_close")
+        if inst._fire.components.fueled:GetCurrentSection() > 0 then
+            onstartboilingfn(inst)
+        end
+    end)
 end
 
 local function OnSectionChange(new, old, inst)
-    local watertype = inst.components.waterlevel.watertype ~= WATERTYPE.CLEAN and "dirty" or "water"
+    local watertype = (inst.components.waterlevel.watertype == WATERTYPE.DIRTY or inst.components.waterlevel.watertype == WATERTYPE.DIRTY_ICE) and "dirty" or "water"
     if new ~= nil then
         if inst._waterlevel ~= new then
             inst._waterlevel = new
@@ -139,7 +110,7 @@ end
 
 local function getstatus(inst)
     return (inst.components.waterlevel:GetWater() == 0 and "GENERIC")
-        or (inst.components.distiller:isDone() and "DONE")
+        or (inst.components.distiller:isDone() and inst.components.waterlevel.watertype == WATERTYPE.CLEAN and "DONE")
         or (inst._fire.components.fueled ~= nil and inst._fire.components.fueled.currentfuel / inst._fire.components.fueled.maxfuel <= 0 and "STOP")
         or (inst.components.distiller:GetTimeToBoil() > 15 and "BOILING_LONG")
         or "BOILING_SHORT"
@@ -163,6 +134,8 @@ end
 
 local function OnPickedFn(inst,picker,loot)
     inst.components.waterlevel:DoDelta(-inst.components.waterlevel:GetWater())
+    inst.AnimState:PlayAnimation("get_water")
+    inst.AnimState:PushAnimation("idle_empty", false)
     inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/small")
     inst.components.pickable.canbepicked = false
     inst.components.waterlevel.accepting = true
@@ -189,6 +162,7 @@ local function fn()
 
     inst:AddTag("kettle")
     inst:AddTag("campkettle")
+    inst:AddTag("drinkproduction")
 
     if not TheWorld.ismastersim then
         return inst
@@ -201,7 +175,7 @@ local function fn()
     inst.components.inspectable.getstatus = getstatus
 
     inst:AddComponent("waterlevel")
-    inst.components.waterlevel:SetCanAccepts({WATERTYPE.DIRTY})
+    inst.components.waterlevel:SetCanAccepts({WATERGROUP.CAMP_BOILABLE})
     inst.components.waterlevel:SetTakeWaterFn(OnTakeWater)
     inst.components.waterlevel:SetSections(3)
     inst.components.waterlevel:SetSectionCallback(OnSectionChange)
@@ -209,7 +183,8 @@ local function fn()
     inst.components.waterlevel:InitializeWaterLevel(0)
 
     inst:AddComponent("distiller")
-    inst.components.distiller.onstartboiling = onstartboilingfn
+    inst.components.distiller.onstartboiling = OnTakeWater
+    inst.components.distiller.oncontinueboiling = onstartboilingfn
     inst.components.distiller.ondoneboiling = ondoneboilingfn
     inst.components.distiller.onstopboiling = onstopboilingfn
 
@@ -225,6 +200,44 @@ local function fn()
     inst.OnLoad = onload
 
     inst:ListenForEvent("onbuilt", onbuilt)
+
+    return inst
+end
+
+local function fn_item()
+    local inst = CreateEntity()
+
+    inst.entity:AddTransform()
+    inst.entity:AddAnimState()
+    inst.entity:AddSoundEmitter()
+    inst.entity:AddNetwork()
+
+    MakeInventoryPhysics(inst)  
+
+    inst.AnimState:SetBuild("campkettle")
+    inst.AnimState:SetBank("item")
+    inst.AnimState:PlayAnimation("idle")
+
+    inst.entity:SetPristine()
+
+    inst:AddTag("campkettle_item")
+
+    if not TheWorld.ismastersim then
+        return inst
+    end
+
+    inst:AddComponent("tradable")
+
+    inst:AddComponent("inspectable")
+    
+    inst:AddComponent("inventoryitem")
+    inst.components.inventoryitem:ChangeImageName("campkettle")
+
+    inst:AddComponent("upgrader")
+    inst.components.upgrader.upgradetype = UPGRADETYPES.CAMPFIRE
+    inst.components.upgrader.upgradevalue = 1
+
+    MakeHauntableLaunchAndSmash(inst)
 
     return inst
 end

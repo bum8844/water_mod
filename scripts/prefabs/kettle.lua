@@ -48,7 +48,7 @@ end
 
 local function onhit(inst, worker)
     if not inst:HasTag("burnt") then
-        if inst.components.stewer:IsCooking() then
+        if inst.components.stewer:IsCooking() or inst.components.distiller:isBoiling() then
             inst.AnimState:PlayAnimation("hit_cooking")
             inst.AnimState:PushAnimation("cooking_loop", true)
             inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_close")
@@ -145,6 +145,7 @@ end
 local function spoilfn(inst)
     if not inst:HasTag("burnt") then
         inst.components.stewer.product = inst.components.stewer.spoiledproduct
+        inst.components.pickable.product = inst.components.stewer.product
         inst.AnimState:OverrideSymbol("swap", "kettle_meter_dirty", tostring(inst._waterlevel))
         inst:DoTaskInTime(0,function(inst)
             SetProductSymbol(inst, inst.components.stewer.product)
@@ -203,15 +204,15 @@ local function harvestfn(inst,picker,loot)
         end
         picker:PushEvent("learncookbookrecipe", {product = inst.components.stewer.product, ingredients = inst.components.stewer.ingredient_prefabs})
         inst.components.stewer.product = nil
-        inst.components.waterlevel:DoDelta(-inst.components.waterlevel:GetWater())
         inst.AnimState:PlayAnimation("getdrink")
         inst.SoundEmitter:PlaySound("dontstarve/creatures/pengull/splash")
         inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/medium")
         inst.AnimState:PushAnimation("idle_empty",false)
         inst:DoTaskInTime(.75,function (inst)
             inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_close")
+            inst.components.waterlevel:DoDelta(-inst.components.waterlevel:GetWater())
+            inst.components.stewer:Harvest(picker)
         end)
-        inst.components.stewer:Harvest(picker)
     end
 end
 
@@ -258,22 +259,50 @@ local function onclose(inst)
 end
 
 local function ondoneboilingfn(inst)
-    inst.AnimState:OverrideSymbol("swap", "kettle_meter_water", tostring(inst._waterlevel))
-    inst.AnimState:PlayAnimation("cooking_pst")
-    inst.AnimState:PlayAnimation("idle_empty")
-    inst.SoundEmitter:KillSound("snd") 
-    inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_finish")
+    if not inst:HasTag("burnt") then
+        inst.AnimState:OverrideSymbol("swap", "kettle_meter_water", tostring(inst._waterlevel))
+        inst.AnimState:PlayAnimation("cooking_pst")
+        inst.AnimState:PlayAnimation("idle_empty")
+        inst.SoundEmitter:KillSound("snd") 
+        inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_finish")
+        inst.Light:Enable(false)
+    end
 end
 
 local function onstartboilingfn(inst)
-    inst.AnimState:PlayAnimation("cooking_loop", true)
-    inst.SoundEmitter:KillSound("snd")
-    inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_rattle", "snd")
-    inst.Light:Enable(true)
+    if not inst:HasTag("burnt") then
+        inst.AnimState:PlayAnimation("cooking_loop", true)
+        inst.SoundEmitter:KillSound("snd")
+        inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_rattle", "snd")
+        inst.Light:Enable(true)
+    end
 end
 
 local function OnTakeWater(inst)
     if not inst:HasTag("burnt") then
+        if inst.components.container ~= nil and inst.components.container:IsOpen() then
+            inst.AnimState:PlayAnimation("take_water_open")
+            if inst.components.waterlevel.watertype ~= WATERTYPE.CLEAN then
+                inst.AnimState:PushAnimation("idle_empty", false)
+                inst:DoTaskInTime(1,function(inst)
+                inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_close")
+                    if inst.components.waterlevel.watertype ~= WATERTYPE.CLEAN then
+                        onstartboilingfn(inst)
+                    end
+                end)
+            else
+                inst.AnimState:PushAnimation("cooking_pre_loop")
+            end
+        else
+            inst.AnimState:PlayAnimation("take_water")
+            inst.AnimState:PushAnimation("idle_empty", false)
+            inst:DoTaskInTime(1,function(inst)
+            inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_close")
+                if inst.components.waterlevel.watertype ~= WATERTYPE.CLEAN then
+                    onstartboilingfn(inst)
+                end
+            end)
+        end
         inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/medium")
     end
 end
@@ -281,15 +310,21 @@ end
 local function OnTaken(inst, source, delta)
     if not inst:HasTag("burnt") then
         inst.components.waterlevel:DoDelta(-inst.components.waterlevel:GetWater())
-        inst.AnimState:PlayAnimation("getdrink_empty")
-        inst.AnimState:PushAnimation("idle_empty", false)
-        OnTakeWater(inst)
+        if inst.components.container ~= nil and inst.components.container:IsOpen() then
+            inst.AnimState:PlayAnimation("getdrink_open")
+            inst.AnimState:PushAnimation("cooking_pre_loop")
+        else
+            inst.AnimState:PlayAnimation("getdrink_empty")
+            inst.AnimState:PushAnimation("idle_empty", false)
+        end
+        inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/medium")
     end
 end
 
 local function getstatus(inst)
     return (inst:HasTag("burnt") and "BURNT")
-        or (inst.components.distiller:GetTimeToBoil() > 0 and "PURIFY")
+        or (inst.components.distiller:GetTimeToBoil() > 15 and "PURIFY_LONG")
+        or (inst.components.distiller:isBoiling() and inst.components.distiller:GetTimeToBoil() < 15 and "PURIFY_SHORT")
         or (inst.components.stewer:IsDone() and "DONE")
         or (inst.components.stewer:GetTimeToCook() > 15 and "BOILING_LONG")
         or (inst.components.stewer:IsCooking() and inst.components.stewer:GetTimeToCook() < 15 and "BOILING_SHORT")
@@ -336,6 +371,7 @@ local function fn()
 	inst:AddTag("structure")
     inst:AddTag("kettle")
     inst:AddTag("stewer")
+    inst:AddTag("drinkproduction")
 	
 	inst.entity:SetPristine()
 	
@@ -361,7 +397,8 @@ local function fn()
     inst.components.stewer.onspoil = spoilfn
 
     inst:AddComponent("distiller")
-    inst.components.distiller.onstartboiling = onstartboilingfn
+    inst.components.distiller.onstartboiling = OnTakeWater
+    inst.components.distiller.oncontinueboiling = onstartboilingfn
     inst.components.distiller.ondoneboiling = ondoneboilingfn
 
     inst:AddComponent("pickable")

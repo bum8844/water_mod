@@ -58,13 +58,6 @@ local USEITEM =
         end
     end,
 
-    --[[waterlevel = function(inst, doer, target, actions, right)
-        if inst.compinst.replica.waterlevel:IsAccepting() and target:HasTag("water")
-            and (target.replica.waterlevel == nil or target.replica.waterlevel:HasWater()) then
-            table.insert(actions, ACTIONS.TAKEWATER)
-        end
-    end,]]
-
     watertaker = function(inst, doer, target, actions)
         if target:HasTag("water") and (target.replica.waterlevel == nil or target.replica.waterlevel:HasWater()) then
             if inst:HasTag("bucket_empty") then
@@ -87,12 +80,26 @@ local USEITEM =
             end
         end
     end,
+
+    upgrader = function(inst, doer, target, actions)
+        if inst:HasTag("tile_deploy") then
+            for k,v in pairs(UPGRADETYPES) do
+                if inst:HasTag(v.."_upgrader") and doer:HasTag(v.."_upgradeuser") and target:HasTag(v.."_upgradeable") then
+                    table.insert(actions, ACTIONS.UPGRADE_TILEARRIVE)
+                    return
+                end
+            end
+        end
+    end,
+
 }
 
 local POINT =
 {
     watertaker = function(inst, doer, pos, actions, right, target)
-        if inst:HasTag("watertaker") and _G.TheWorld.Map:IsOceanAtPoint(pos.x, 0 , pos.z) then
+        if inst:HasTag("watertaker")  
+            and ( _G.TheWorld.Map:IsOceanAtPoint(pos.x-0.8, 0, pos.z-0.8) or _G.TheWorld.Map:IsOceanAtPoint(pos.x+0.8, 0, pos.z+0.8))
+            and ( not _G.TheWorld.Map:IsOceanAtPoint(pos.x-0.3, 0, pos.z-0.3) or not _G.TheWorld.Map:IsOceanAtPoint(pos.x+0.3, 0, pos.z+0.3)) then
             table.insert(actions, ACTIONS.TAKEWATER_OCEAN)
         end
     end,
@@ -116,6 +123,25 @@ local SCENE =
                     return
                 end
             end
+        end
+    end,
+
+    machine = function(inst, doer, actions, right)
+        if right and not inst:HasTag("cooldown") and
+                not inst:HasTag("fueldepleted") and
+                not (inst.replica.equippable ~= nil and
+                not inst.replica.equippable:IsEquipped() and
+                inst.replica.inventoryitem ~= nil and
+                inst.replica.inventoryitem:IsHeld()) and
+                inst:HasTag("forfarm") and
+                (inst:HasTag("haspipe") or inst:HasTag("hashole")) then
+            table.insert(actions, inst:HasTag("turnedon") and ACTIONS.TURNOFF or ACTIONS.TURNON_TILEARRIVE)
+        end
+    end,
+
+    pickable = function(inst, doer, actions)
+        if inst:HasTag("pickable") and inst:HasTag("drinkproduction") and not (inst:HasTag("fire") or inst:HasTag("intense")) then
+            table.insert(actions, ACTIONS.DRINK_HARVEST)
         end
     end,
 }

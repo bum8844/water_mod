@@ -8,17 +8,20 @@ local postinits =
 		"inventoryitem_replica",
 		"regrowthmanager",
 		"wisecracker",
+		"moisture",
+		"inventoryitemmoisture",
 	},
 
 	prefabs =
 	{
 		"wateringcan",
 		"antlion",
-		--"fertilizer",
+		"oasislake",
 		"firepit",
 		"player",
 		"ponds",
 		"portablespicer",
+		"staff",
 	},
 
 	stategraphs =
@@ -30,7 +33,6 @@ local postinits =
 	widgets =
 	{
 		"itemtile",
-		--"statusdisplays",
 	},
 
 	utils =
@@ -45,6 +47,7 @@ if GetModConfigData("enable_thirst") then
 	table.insert(postinits.components, "sleepingbaguser")
 	table.insert(postinits.prefabs, "wortox")
 	table.insert(postinits.prefabs, "wickerbottom")
+	table.insert(postinits.prefabs, "hats")
 	table.insert(postinits.widgets, "statusdisplays")
 	table.insert(postinits.widgets, "bloodover_water")
 	table.insert(postinits.widgets, "healthbadge_water")
