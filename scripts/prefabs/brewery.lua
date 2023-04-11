@@ -271,7 +271,8 @@ end
 
 local function onopen(inst)
     if not inst:HasTag("burnt") then
-        inst.AnimState:PlayAnimation("cooking_pre_loop")
+        inst.AnimState:PlayAnimation("cooking_pre_open")
+        inst.AnimState:PushAnimation("cooking_pre_loop",false)
         inst.SoundEmitter:KillSound("snd")
         inst.SoundEmitter:PlaySound("dontstarve/common/wardrobe_open")
     end
@@ -280,7 +281,8 @@ end
 local function onclose(inst)
     if not inst:HasTag("burnt") then
         if not inst.components.stewer:IsCooking() then
-            inst.AnimState:PlayAnimation("idle_empty")
+            inst.AnimState:PlayAnimation("cooking_pre_close")
+            inst.AnimState:PushAnimation("idle_empty",false)
             inst.SoundEmitter:KillSound("snd")
         end
         inst.SoundEmitter:PlaySound("dontstarve/common/wardrobe_close")
