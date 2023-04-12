@@ -4,7 +4,6 @@ local function ShowProduct(inst)
     if not inst:HasTag("burnt") then
         local product = inst.components.stewer.product
         local recipe = cooking.GetRecipe(inst.prefab, product)
-        local chktag = SpawnPrefab(inst.components.stewer.product)
         print(product)
         if recipe ~= nil then
             product = recipe.basename or product
