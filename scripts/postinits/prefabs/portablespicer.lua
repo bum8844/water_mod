@@ -5,6 +5,7 @@ local function ShowProduct(inst)
         local product = inst.components.stewer.product
         local recipe = cooking.GetRecipe(inst.prefab, product)
         local chktag = SpawnPrefab(inst.components.stewer.product)
+        print(product)
         if recipe ~= nil then
             product = recipe.basename or product
             if recipe.spice ~= nil then
@@ -18,13 +19,13 @@ local function ShowProduct(inst)
             inst.AnimState:ClearOverrideSymbol("swap_plate")
             inst.AnimState:ClearOverrideSymbol("swap_garnish")
         end
-        if chktag:HasTag("watermod") then
-            inst.AnimState:OverrideSymbol("swap_cooked", product, product)
-        else
-            local symbol_override_build = (recipe ~= nil and recipe.overridebuild) or "cook_pot_food"
-            inst.AnimState:OverrideSymbol("swap_cooked", symbol_override_build, product)
-        end
-        chktag:Remove()
+
+        local build =
+	            (recipe ~= nil and recipe.overridebuild) or
+	            (GLOBAL.IsModCookingProduct(inst.prefab, product) and product) or
+	            "cook_pot_food"
+	    local overridesymbol = recipe ~= nil and recipe.overridesymbolname or product
+        inst.AnimState:OverrideSymbol("swap_cooked", build, overridesymbol)
     end
 end
 
@@ -69,10 +70,17 @@ AddPrefabPostInit("portablespicer", function(inst)
         return inst
     end
 
-	if inst.components.stewer ~= nil then
-		inst.components.stewer.oncontinuedone_old = inst.components.stewer.oncontinuedone
-		inst.components.stewer.ondonecooking_old = inst.components.stewer.ondonecooking
+    local stewer_comp = inst.components.stewer
+	if stewer_comp ~= nil then
+		if stewer_comp.oncontinuedone ~= nil and stewer_comp.oncontinuedone_old == nil then
+			stewer_comp.oncontinuedone_old = stewer_comp.oncontinuedone
+		end
+		if stewer_comp.oncontinuedone ~= nil and stewer_comp.oncontinuedone_old == nil then
+			stewer_comp.ondonecooking_old = stewer_comp.ondonecooking
+		end
 	end
-	inst.components.stewer.oncontinuedone = continuedonefn
-	inst.components.stewer.ondonecooking = ondonecookingfn
+	inst:DoTaskInTime(0, function()	
+		stewer_comp.oncontinuedone = continuedonefn
+		stewer_comp.ondonecooking = ondonecookingfn
+	end)
 end)
