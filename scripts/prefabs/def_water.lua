@@ -163,6 +163,7 @@ local function MakeCup(name, masterfn, tags)
         if not inst:HasTag("frozen") then
             inst:AddTag("pre-preparedfood")
             inst:AddTag("drink")
+            inst:AddTag("potion")
         end
 
         MakeInventoryFloatable(inst)
@@ -253,7 +254,7 @@ local function MakeCup(name, masterfn, tags)
 end
 
 local function cleanwater(inst)
-    inst.components.edible.healthvalue = TUNING.HEALING_TINY
+    inst.components.edible.healthvalue = 0
     inst.components.edible.hungervalue = 0
     inst.components.edible.sanityvalue = 0
     inst.components.edible.thirstvalue = TUNING.HYDRATION_SMALLTINY
@@ -266,8 +267,8 @@ end
 local function dirtywater(inst)
     inst.components.edible.healthvalue = -TUNING.HEALING_TINY
     inst.components.edible.hungervalue = 0
-    inst.components.edible.sanityvalue = -TUNING.SANITY_TINY
-    inst.components.edible.thirstvalue = TUNING.HYDRATION_SMALLTINY
+    inst.components.edible.sanityvalue = -TUNING.SANITY_MED
+    inst.components.edible.thirstvalue = TUNING.HYDRATION_SUPERTINY
 
     inst.components.water:SetWaterType(WATERTYPE.DIRTY)
 
@@ -275,9 +276,9 @@ local function dirtywater(inst)
 end
 
 local function saltwater(inst)
-    inst.components.edible.healthvalue = -TUNING.HEALING_SMALL
+    inst.components.edible.healthvalue = -TUNING.HEALING_TINY
     inst.components.edible.hungervalue = -TUNING.DRINK_CALORIES
-    inst.components.edible.sanityvalue = 0
+    inst.components.edible.sanityvalue = -TUNING.SANITY_MEDLARGE
     inst.components.edible.thirstvalue = TUNING.HYDRATION_SALT
 
     inst.components.water:SetWaterType(WATERTYPE.SALTY)
