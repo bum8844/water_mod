@@ -132,7 +132,7 @@ local drinks =
 	{
 		test = function(boilier, names, tags) return (names.cave_banana or names.cave_banana_cooked) and tags.fruit and not tags.veggie and notmeat(tags) and notname(names) and ressthing(names) end,
 		priority = 1,
-		health = TUNING.HEALING_TINY,
+		health = TUNING.HEALING_MED,
 		hunger = TUNING.CALORIES_TINY/2,
 		sanity = TUNING.SANITY_SUPERTINY/2,
 		thirst = TUNING.HYDRATION_SMALL,
@@ -146,7 +146,7 @@ local drinks =
 	{
 		test = function(boilier, names, tags) return (names.fig or names.fig_cooked) and tags.fruit and not tags.veggie and notmeat(tags) and notname(names) and ressthing(names) end,
 		priority = 1,
-		health = TUNING.HEALING_MED,
+		health = TUNING.HEALING_MEDLARGE,
 		hunger = TUNING.DRINK_CALORIES/2,
 		sanity = TUNING.SANITY_TINY/2,
 		thirst = TUNING.HYDRATION_SMALLTINY,
@@ -160,7 +160,7 @@ local drinks =
 	{
 		test = function(boilier, names, tags) return ((names.dragonfruit or 0) + (names.dragonfruit_cooked or 0) >= 2 ) and not tags.veggie and notmeat(tags) and notname(names) and ressthing(names) end,
 		priority = 2,
-		health = TUNING.HEALING_HUGE,
+		health = TUNING.HEALING_LARGE,
 		hunger = TUNING.DRINK_CALORIES,
 		sanity = TUNING.SANITY_MED/5 ,
 		thirst = TUNING.HYDRATION_SMALL,
