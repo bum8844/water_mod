@@ -1,5 +1,17 @@
 require("actions")
 
+local function ExtraDropDist(doer, dest, bufferedaction)
+    if dest ~= nil then
+        local target_x, target_y, target_z = dest:GetPoint()
+
+        local is_on_water = _G.TheWorld.Map:IsOceanTileAtPoint(target_x, 0, target_z) and not _G.TheWorld.Map:IsPassableAtPoint(target_x, 0, target_z)
+        if is_on_water then
+            return 1.75
+        end
+    end
+    return 0
+end
+
 --Overriding existing actions
 local cook_stroverride = ACTIONS.COOK.stroverridefn or function(act) return end
 ACTIONS.COOK.stroverridefn = function(act)
@@ -50,7 +62,7 @@ local TAKEWATER = AddAction("TAKEWATER", STRINGS.ACTIONS.FILL, function(act)
 
     local groundpt = act:GetActionPoint()
     if groundpt ~= nil then
-        local success = ( _G.TheWorld.Map:IsOceanAtPoint(groundpt.x-0.8, 0, groundpt.z-0.8) or _G.TheWorld.Map:IsOceanAtPoint(groundpt.x+0.8, 0, groundpt.z+0.8)) and ( not _G.TheWorld.Map:IsOceanAtPoint(groundpt.x-0.3, 0, groundpt.z-0.3) or not _G.TheWorld.Map:IsOceanAtPoint(groundpt.x+0.3, 0, groundpt.z+0.3))
+        local success = _G.TheWorld.Map:IsOceanAtPoint(groundpt.x, 0, groundpt.z)
         if success then
             return filled.components.watertaker:Fill(nil, act.doer)
         end
