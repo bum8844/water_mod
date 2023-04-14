@@ -232,13 +232,16 @@ configuration_options =
 		label = "Set Get Drunked",
 		options =
 		{
-			{description = "VeryShort", data = 1},
-			{description = "Short", data = 5},
-			{description = "Default", data = 10},
-			{description = "Long", data = 15},
-			{description = "VeryLong", data = 30},
+			{description = "Always Drunked", data = 0},
+			{description = "3 cup", data = 3},
+			{description = "1 bottle", data = 5},
+			{description = "2 bottle", data = 10},
+			{description = "3 bottle", data = 15},
+			{description = "4 bottle", data = 20},
+			{description = "5 bottle", data = 25},
+			{description = "6 bottle", data = 30},
 		},
-		default = 10
+		default = 5
 	},
 	{
 		name = "capacity_time",
