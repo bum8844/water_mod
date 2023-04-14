@@ -117,7 +117,7 @@ local drinks =
 	pomegranate_juice =
 	{
 		test = function(boilier, names, tags) return (names.pomegranate or names.pomegranate_cooked) and tags.fruit and not tags.veggie and notmeat(tags) and notname(names) and ressthing(names) end,
-		priority = 1,
+		priority = 2,
 		health = TUNING.HEALING_MEDLARGE,
 		hunger = TUNING.DRINK_CALORIES/4,
 		sanity = TUNING.SANITY_SUPERTINY/2,
@@ -131,7 +131,7 @@ local drinks =
 	banana_juice =
 	{
 		test = function(boilier, names, tags) return (names.cave_banana or names.cave_banana_cooked) and tags.fruit and not tags.veggie and notmeat(tags) and notname(names) and ressthing(names) end,
-		priority = 1,
+		priority = 2,
 		health = TUNING.HEALING_MED,
 		hunger = TUNING.CALORIES_TINY/2,
 		sanity = TUNING.SANITY_SUPERTINY/2,
@@ -145,7 +145,7 @@ local drinks =
 	fig_juice =
 	{
 		test = function(boilier, names, tags) return (names.fig or names.fig_cooked) and tags.fruit and not tags.veggie and notmeat(tags) and notname(names) and ressthing(names) end,
-		priority = 1,
+		priority = 2,
 		health = TUNING.HEALING_MEDLARGE,
 		hunger = TUNING.DRINK_CALORIES/2,
 		sanity = TUNING.SANITY_TINY/2,
@@ -159,7 +159,7 @@ local drinks =
 	dragonjuice =
 	{
 		test = function(boilier, names, tags) return ((names.dragonfruit or 0) + (names.dragonfruit_cooked or 0) >= 2 ) and not tags.veggie and notmeat(tags) and notname(names) and ressthing(names) end,
-		priority = 2,
+		priority = 3,
 		health = TUNING.HEALING_LARGE,
 		hunger = TUNING.DRINK_CALORIES,
 		sanity = TUNING.SANITY_MED/5 ,
@@ -188,7 +188,7 @@ local drinks =
 	glowberryjuice =
 	{
 		test = function(boilier, names, tags) return (names.wormlight or (names.wormlight_lesser and names.wormlight_lesser >= 2)) and not tags.veggie and notmeat(tags) and notname(names) and ressthing(names) end,
-		priority = 3,
+		priority = 4,
 		health = TUNING.HEALING_TINY,
 		hunger = TUNING.DRINK_CALORIES/5,
 		sanity = 0,
@@ -230,7 +230,7 @@ local drinks =
 	caffeinberry_juice =
 	{
 		test = function(boilier, names, tags) return (( names.caffeinberry_bean_cooked or 0 ) + ( names.coffeebeans_cooked or 0 ) + ( names.mfp_coffeecherry_cooked or 0 ) >= 3) and not tags.veggie and notmeat(tags) and notname(names) end,
-		priority = 4,
+		priority = 5,
 		health = TUNING.HEALING_TINY,
 		hunger = 0,
 		sanity = -TUNING.SANITY_SUPERTINY,
