@@ -217,13 +217,12 @@ function Distiller:LongUpdate(dt)
         	self:stopBoiling(dt)
         elseif self.boiling_timer - dt > GetTime() then
             self.boiling_timer = self.boiling_timer - dt
-            self.task = self.inst:DoTaskInTime(self.targettime - GetTime(), doboil, self)
-            dt = 0
+            self.task = self.inst:DoTaskInTime(self.boiling_timer - GetTime(), doboil, self)
         else
-            dt = dt - self.boiling_timer + GetTime()
             doboil(self.inst, self)
         end
     end
+    dt = 0
 end
 
 return Distiller

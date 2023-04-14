@@ -184,7 +184,7 @@ configuration_options =
 			{description = "no", data = false},
 		},
 		default = 0
-	},
+	},	
 	{
 		name = "alcohol_time",
 		label = "Intoxication Time",
@@ -214,6 +214,35 @@ configuration_options =
 	{
 		name = "immune_time",
 		label = "Less Pain Time",
+		options =
+		{
+			{description = "VeryShort", data = 60},
+			{description = "Short", data = 120},
+			{description = "Default", data = 240},
+			{description = "Long", data = 300},
+			{description = "VeryLong", data = 360},
+		},
+		default = 240
+	},
+	SEPARATOR,
+	Title("Drink Alcohol Capacity"),
+	SEPARATOR,
+	{
+		name = "max_capacity",
+		label = "Set Get Drunked",
+		options =
+		{
+			{description = "VeryShort", data = 1},
+			{description = "Short", data = 5},
+			{description = "Default", data = 10},
+			{description = "Long", data = 15},
+			{description = "VeryLong", data = 30},
+		},
+		default = 10
+	},
+	{
+		name = "capacity_time",
+		label = "Decrease Intoxication",
 		options =
 		{
 			{description = "VeryShort", data = 60},

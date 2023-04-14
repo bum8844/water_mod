@@ -2,12 +2,15 @@ local function alcahol(inst, eater)
 	if not eater.components.health or eater.components.health:IsDead() or eater:HasTag("playerghost") then
 		return
 	elseif eater.components.debuffable and eater.components.debuffable:IsEnabled() and eater:HasTag("player") then
-		if not eater:HasTag("valkyrie") then
-			eater.alcoholdebuff_duration = TUNING.INTOXICATION_TIME
-			eater.components.debuffable:AddDebuff("alcoholdebuff", "alcoholdebuff")
-			eater.components.debuffable:AddDebuff("drunkarddebuff", "drunkarddebuff")
-		else
-			eater.components.talker:Say(GetString(eater,"ANNOUNCE_DRUNK_IMMUNITY"))
+		eater.components.dcapacity:Start_Intoxication()
+		if eater.components.dcapacity:IsDrunk() then
+			if not eater:HasTag("valkyrie") then
+				eater.alcoholdebuff_duration = TUNING.INTOXICATION_TIME
+				eater.components.debuffable:AddDebuff("alcoholdebuff", "alcoholdebuff")
+				eater.components.debuffable:AddDebuff("drunkarddebuff", "drunkarddebuff")
+			else
+				eater.components.talker:Say(GetString(eater,"ANNOUNCE_DRUNK_IMMUNITY"))
+			end
 		end
 		eater.immunebuff_duration = TUNING.IMMUNE_TIME
 		eater.components.debuffable:AddDebuff("immunebuff", "immunebuff")
