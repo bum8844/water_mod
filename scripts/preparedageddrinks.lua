@@ -78,7 +78,7 @@ local drinks =
 	fruitsoda =
 	{
 		test = function(boilier, names, tags) return names.refined_dust and names.refined_dust >= 1 and tags.fruit and tags.fruit >= 1 and notmeat(tags) and notname(names) and ressthing(names) end,
-		priority = 1,
+		priority = 3,
 		health = TUNING.HEALING_MEDSMALL,
 		hunger = TUNING.CALORIES_SMALL,
 		sanity = TUNING.SANITY_SUPERTINY*3,
@@ -115,7 +115,7 @@ local drinks =
 	cola =
 	{
 		test = function(boilier, names, tags) return (( names.caffeinberry_bean_cooked or 0 ) + ( names.kyno_coffeebeans_cooked or 0 ) + ( names.mfp_coffeecherry_cooked or 0 ) >= 1) and names.refined_dust and names.refined_dust >= 1 and names.royal_jelly and names.royal_jelly >= 1 and notmeat(tags) and notname(names) end,
-		priority = 2,
+		priority = 4,
 		health = TUNING.HEALING_MED/2,
 		hunger = TUNING.CALORIES_MEDSMALL,
 		sanity = TUNING.SANITY_LARGE,
@@ -145,8 +145,8 @@ local drinks =
 	
 	colaquantum =
 	{
-		test = function(boilier, names, tags) return (( names.wormlight or 0 ) + ( names.wormlight_lesser or 0 ) == 1) and (( names.caffeinberry_bean_cooked or 0 ) + ( names.kyno_coffeebeans_cooked or 0 ) == 1) and names.refined_dust and names.royal_jelly and notmeat(tags) end,
-		priority = 3,
+		test = function(boilier, names, tags) return names.wormlight and (( names.caffeinberry_bean_cooked or 0 ) + ( names.kyno_coffeebeans_cooked or 0 ) == 1) and names.refined_dust and names.royal_jelly and notmeat(tags) end,
+		priority = 5,
 		health = TUNING.HEALING_SUPERHUGE*4,
 		hunger = TUNING.CALORIES_HUGE*4,
 		sanity = TUNING.SANITY_HUGE*8,
