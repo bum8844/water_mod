@@ -78,7 +78,7 @@ local drinks =
 	fruitsoda =
 	{
 		test = function(boilier, names, tags) return names.refined_dust and names.refined_dust >= 1 and tags.fruit and tags.fruit >= 1 and notmeat(tags) and notname(names) and ressthing(names) end,
-		priority = 3,
+		priority = 2,
 		health = TUNING.HEALING_MEDSMALL,
 		hunger = TUNING.CALORIES_SMALL,
 		sanity = TUNING.SANITY_SUPERTINY*3,
@@ -93,7 +93,7 @@ local drinks =
 	lemonlimesoda =
 	{
 		test = function(boilier, names, tags) return names.refined_dust and names.refined_dust >= 1 and names.royal_jelly and names.royal_jelly >=1 and notmeat(tags) and notname(names) and ressthing(names) end,
-		priority = 2,
+		priority = 3,
 		health = TUNING.HEALING_MED,
 		hunger = TUNING.CALORIES_MEDSMALL,
 		sanity = TUNING.SANITY_MED,
@@ -102,6 +102,7 @@ local drinks =
 		cooktime = (TUNING.KETTLE_LUXURY_GOODS + TUNING.SODA_WAIT),
 		potlevel = "mid",
 		potlevel_bottle = "mid",
+		prefabs = { "healthregenbuff" },
 		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_HEALTH_REGEN,
 		oneatenfn = function(inst, eater)
 			if not eater.components.health or eater.components.health:IsDead() or eater:HasTag("playerghost") then
@@ -124,6 +125,7 @@ local drinks =
 		cooktime = (TUNING.KETTLE_LUXURY_GOODS + TUNING.SODA_WAIT),
 		potlevel = "mid",
 		potlevel_bottle = "mid",
+		prefabs = { "healthregenbuff","caffeinbuff" },
 		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_COLA,
 		oneatenfn = function(inst, eater)
 			if not eater.components.health or eater.components.health:IsDead() or eater:HasTag("playerghost") then
@@ -156,6 +158,7 @@ local drinks =
 		cooktime = (TUNING.KETTLE_LUXURY_GOODS + TUNING.SODA_WAIT),
 		potlevel = "mid",
 		potlevel_bottle = "mid",
+		prefabs = { "healthregenbuff","drunkarddebuff","wormlight_light_greater" },
 		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_COLAQUANTUM,
 		oneatenfn = function(inst, eater)
 			if not eater.components.health or eater.components.health:IsDead() or eater:HasTag("playerghost") then
@@ -207,6 +210,7 @@ local drinks =
 		cooktime = (TUNING.KETTLE_VEGGIE + TUNING.BEER_WAIT),
 		potlevel = "mid",
 		potlevel_bottle = "mid",
+		prefabs = { "alcoholdebuff","caffeinbuff","immunebuff" },
 		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_INTOXICATION,
 		card_def = {ingredients = {{"corn", 4}}},
 		oneatenfn = function(inst, eater)
@@ -227,6 +231,7 @@ local drinks =
 		cooktime = (TUNING.KETTLE_VEGGIE + TUNING.BEER_WAIT),
 		potlevel = "mid",
 		potlevel_bottle = "high",
+		prefabs = { "alcoholdebuff","caffeinbuff","immunebuff" },
 		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_INTOXICATION,
 		oneatenfn = function(inst, eater)
 			alcahol(inst, eater)
@@ -246,6 +251,7 @@ local drinks =
 		cooktime = (TUNING.KETTLE_FRUIT + TUNING.BEER_WAIT),
 		potlevel = "mid",
 		potlevel_bottle = "mid",
+		prefabs = { "alcoholdebuff","caffeinbuff","immunebuff" },
 		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_INTOXICATION,
 		oneatenfn = function(inst, eater)
 			alcahol(inst, eater)
@@ -265,6 +271,7 @@ local drinks =
 		cooktime = (TUNING.KETTLE_FRUIT + TUNING.BEER_WAIT),
 		potlevel = "mid",
 		potlevel_bottle = "mid",
+		prefabs = { "alcoholdebuff","caffeinbuff","immunebuff" },
 		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_INTOXICATION,
 		oneatenfn = function(inst, eater)
 			alcahol(inst, eater)
@@ -285,6 +292,7 @@ local drinks =
 		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_INTOXICATION,
 		potlevel = "mid",
 		potlevel_bottle = "mid",
+		prefabs = { "alcoholdebuff","caffeinbuff","immunebuff" },
 		card_def = {ingredients = {{"refined_dust",1},{"berries",1},{"berries_juicy",1},{"twigs",1}}},
 		oneatenfn = function(inst, eater)
 			alcahol(inst, eater)
@@ -303,6 +311,7 @@ local drinks =
 		perishtime = TUNING.PERISH_SUPERSLOW,
 		potlevel = "mid",
 		potlevel_bottle = "mid",
+		prefabs = { "alcoholdebuff","caffeinbuff","immunebuff","wormlight_light" },
 		cooktime = (TUNING.KETTLE_FRUIT + TUNING.BEER_WAIT),
 		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_INTOXICATION_GLOW,
 		oneatenfn = function(inst, eater)
@@ -311,7 +320,7 @@ local drinks =
 				return
             else
             	if eater.wormlight ~= nil then
-	                if eater.wormlight.prefab == "wormlight_light_greater" then
+	                if eater.wormlight.prefab == "wormlight_light" then
 	                    eater.wormlight.components.spell.lifetime = 0
 	                    eater.wormlight.components.spell:ResumeSpell()
 	                    return
@@ -319,7 +328,7 @@ local drinks =
 	                    eater.wormlight.components.spell:OnFinish()
 	                end
 	            end
-	            local light = SpawnPrefab("wormlight_light_greater")
+	            local light = SpawnPrefab("wormlight_light")
 	            light.components.spell:SetTarget(eater)
 	            if light:IsValid() then
 	                if light.components.spell.target == nil then
@@ -344,6 +353,7 @@ local drinks =
 		cooktime = (TUNING.KETTLE_VEGGIE + TUNING.BEER_WAIT),
 		potlevel = "high",
 		potlevel_bottle = "mid",
+		prefabs = { "alcoholdebuff","caffeinbuff","immunebuff" },
 		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_INTOXICATION,
 		card_def = {ingredients = {{"goatmilk",4}}},
 		oneatenfn = function(inst, eater)
