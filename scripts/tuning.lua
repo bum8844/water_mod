@@ -1,7 +1,7 @@
 require("tuning")
 local TUNING = _G.TUNING
-local hydration_per_day = 75
 local wilson_thirst = GetModConfigData("thirst_max")
+local hydration_per_day = wilson_thirst*GetModConfigData("thirst_decrease_speed")
 local bucket_max_level = 20
 
 table.insert(TUNING.GAMEMODE_STARTING_ITEMS.DEFAULT.WARLY,"portablekettle_item")
@@ -71,7 +71,7 @@ water_tuning =
 
 	-- Basic Thirst Rate
 	WILSON_THIRST = wilson_thirst, --Max Thirst
-	WILSON_HUNGER_RATE = hydration_per_day/TUNING.TOTAL_DAY_TIME,
+	WILSON_THIRST_RATE = hydration_per_day/TUNING.TOTAL_DAY_TIME,
 
 	STALE_FOOD_THIRST = .5,
 	SPOILED_FOOD_THIRST = .25,

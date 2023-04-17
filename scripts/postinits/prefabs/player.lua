@@ -122,7 +122,7 @@ if GetModConfigData("enable_thirst") then
 
         inst:AddComponent("thirst")
         inst.components.thirst:SetMax(TUNING.WILSON_THIRST)
-        inst.components.thirst:SetRate(TUNING.WILSON_HUNGER_RATE)
+        inst.components.thirst:SetRate(TUNING.WILSON_THIRST_RATE)
         inst.components.thirst:SetKillRate(TUNING.WILSON_HEALTH / TUNING.STARVE_KILL_TIME)
 
         inst:ListenForEvent("ms_becameghost",SetToDeath)
