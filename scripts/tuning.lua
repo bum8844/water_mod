@@ -1,7 +1,7 @@
 require("tuning")
 local TUNING = _G.TUNING
-local hydration_per_day = 75
 local wilson_thirst = GetModConfigData("thirst_max")
+local hydration_per_day = wilson_thirst*GetModConfigData("thirst_decrease_speed")
 local bucket_max_level = 20
 
 table.insert(TUNING.GAMEMODE_STARTING_ITEMS.DEFAULT.WARLY,"portablekettle_item")
@@ -9,12 +9,6 @@ table.insert(TUNING.GAMEMODE_STARTING_ITEMS.DEFAULT.WARLY,"portablekettle_item")
 -- 물을 담을수 있는 최대치
 water_tuning =
 {
-	CLEANSOURCE =
-	{
-		"oasislake",
-		"hotspring",
-	},
-
 	CHILDS =
 	{
 		"wendy",
@@ -59,7 +53,6 @@ water_tuning =
 	WATER_DIRTY_INITTEMP = -5,
 	
 	-- Moistures and getting wet
-	-- BUCKET_DRINK_WET = 10,
 	WATER_BARREL_WETNESS = 25,
 	WATER_BARREL_EXTINGUISH_HEAT_PERCENT = -1,
 	WATER_BARREL_TEMP_REDUCTION = 5,
@@ -71,7 +64,7 @@ water_tuning =
 
 	-- Basic Thirst Rate
 	WILSON_THIRST = wilson_thirst, --Max Thirst
-	WILSON_HUNGER_RATE = hydration_per_day/TUNING.TOTAL_DAY_TIME,
+	WILSON_THIRST_RATE = hydration_per_day/TUNING.TOTAL_DAY_TIME,
 
 	STALE_FOOD_THIRST = .5,
 	SPOILED_FOOD_THIRST = .25,
@@ -85,18 +78,18 @@ water_tuning =
 	HYDRATION_ROT = hydration_per_day-85, -- Rotten
 	HYDRATION_NONE = 0, -- Suspicious Hibiscus
 	HYDRATION_TINYMICROSCOPIC = hydration_per_day/24,
-	HYDRATION_SUPERTINY = hydration_per_day/16,
-	HYDRATION_TINY = hydration_per_day/12,
-	HYDRATION_SMALLTINY = hydration_per_day/8, -- Normal Water, Failed Cooking
-	HYDRATION_SMALL = hydration_per_day/6, -- Alcohols and Coffee
-	HYDRATION_MEDSMALL = hydration_per_day/4, -- Mixed Beverage
-	HYDRATION_MED = hydration_per_day/3, -- Tea and Florals
-	HYDRATION_LARGE = hydration_per_day/2, -- Drinks made of specific ingredient(i.e. Banana Juice)
-	HYDRATION_HUGE = hydration_per_day, -- Drinks with Special Effect, Lemon & Lime Soda
-	HYDRATION_SUPERHUGE = hydration_per_day*2, -- Cola
+	HYDRATION_SUPERTINY = hydration_per_day/16, -- dirtywater
+	HYDRATION_TINY = hydration_per_day/12, -- Normal Water, Alcohols, Failed Cooking
+	HYDRATION_SMALLTINY = hydration_per_day/8, -- Coffee , fig , muld
+	HYDRATION_SMALL = hydration_per_day/6, -- Mixed Beverage , fruit , veggie
+	HYDRATION_MEDSMALL = hydration_per_day/4, -- Tea and Florals
+	HYDRATION_MED = hydration_per_day/3, -- fuer , blacktea_iced , lotustea , Lime Soda , sparklingwine
+	HYDRATION_LARGE = hydration_per_day/2, -- soda , fruitsoda
+	HYDRATION_HUGE = hydration_per_day, -- Cola
+	HYDRATION_SUPERHUGE = hydration_per_day*2, -- QuantumCola
 
 	-- Hunger from Drinks
-	DRINK_CALORIES_POISON = 3,
+	DRINK_CALORIES_POISON = 3, --제 개인적인 생각으로는 술은 칼로리가 높아서 안써도 된다고 생각...
 	DRINK_CALORIES = 5,
 
 	-- Alcohol side-effects
@@ -129,6 +122,8 @@ water_tuning =
 	CAFFEIN_SPEED = GetModConfigData("caffein_speed"),
 	TEASLEEP_TIME = GetModConfigData("sleeping_time"),
 	INTOXICATION_TIME = GetModConfigData("alcohol_time"),
+	MAX_CPACITY = GetModConfigData("max_capacity"),
+	CAPACITY_TIME = GetModConfigData("capacity_time"),
 	IMMUNE_TIME = GetModConfigData("immune_time"),
 	GHOST_TIME = GetModConfigData("ghost_time"),
 	DRUNKARD_DURATION = GetModConfigData("drunkard_time"),

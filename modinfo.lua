@@ -80,6 +80,20 @@ configuration_options =
 		default = 150,
 	},
 	{
+		name = "thirst_decrease_speed",
+		label = "Thirst Decrease Speed",
+		options =
+		{
+		    {description = "VerySlow", data = .2, hover = "20%"},
+		    {description = "Slow", data = .4, hover = "40%"},
+		    {description = "Same", data = .5, hover = "50%"},
+			{description = "Default", data = .7, hover = "70%"},
+			{description = "Fast", data = .8, hover = "80%"},
+			{description = "VeryFast", data = 1, hover = "100%"},
+		},
+		default = .7,
+	},
+	{
 		name = "enable_thirst",
 		label = "Thirst Status",
 		options =
@@ -184,7 +198,7 @@ configuration_options =
 			{description = "no", data = false},
 		},
 		default = 0
-	},
+	},	
 	{
 		name = "alcohol_time",
 		label = "Intoxication Time",
@@ -214,6 +228,38 @@ configuration_options =
 	{
 		name = "immune_time",
 		label = "Less Pain Time",
+		options =
+		{
+			{description = "VeryShort", data = 60},
+			{description = "Short", data = 120},
+			{description = "Default", data = 240},
+			{description = "Long", data = 300},
+			{description = "VeryLong", data = 360},
+		},
+		default = 240
+	},
+	SEPARATOR,
+	Title("Drink Alcohol Capacity"),
+	SEPARATOR,
+	{
+		name = "max_capacity",
+		label = "Set Get Drunked",
+		options =
+		{
+			{description = "Always Drunked", data = 0},
+			{description = "3 cup", data = 3},
+			{description = "1 bottle", data = 5},
+			{description = "2 bottle", data = 10},
+			{description = "3 bottle", data = 15},
+			{description = "4 bottle", data = 20},
+			{description = "5 bottle", data = 25},
+			{description = "6 bottle", data = 30},
+		},
+		default = 5
+	},
+	{
+		name = "capacity_time",
+		label = "Decrease Intoxication",
 		options =
 		{
 			{description = "VeryShort", data = 60},

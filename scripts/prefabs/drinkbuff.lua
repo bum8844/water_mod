@@ -389,6 +389,7 @@ end
 
 local function OnDetached_immune(inst, target)
     target.components.health.externalabsorbmodifiers:RemoveModifier(target)
+    target.components.sanity:SetFullAuraImmunity(false)
     target.components.sanity:SetNegativeAuraImmunity(false)
     target.components.sanity:SetPlayerGhostImmunity(false)
     target.components.sanity:SetLightDrainImmune(false)

@@ -4,7 +4,7 @@ local function ShowProduct(inst)
     if not inst:HasTag("burnt") then
         local product = inst.components.stewer.product
         local recipe = cooking.GetRecipe(inst.prefab, product)
-        local chktag = SpawnPrefab(inst.components.stewer.product)
+        print(product)
         if recipe ~= nil then
             product = recipe.basename or product
             if recipe.spice ~= nil then
@@ -18,13 +18,13 @@ local function ShowProduct(inst)
             inst.AnimState:ClearOverrideSymbol("swap_plate")
             inst.AnimState:ClearOverrideSymbol("swap_garnish")
         end
-        if chktag:HasTag("watermod") then
-            inst.AnimState:OverrideSymbol("swap_cooked", product, product)
-        else
-            local symbol_override_build = (recipe ~= nil and recipe.overridebuild) or "cook_pot_food"
-            inst.AnimState:OverrideSymbol("swap_cooked", symbol_override_build, product)
-        end
-        chktag:Remove()
+
+        local build =
+	            (recipe ~= nil and recipe.overridebuild) or
+	            (GLOBAL.IsModCookingProduct(inst.prefab, product) and product) or
+	            "cook_pot_food"
+	    local overridesymbol = recipe ~= nil and recipe.overridesymbolname or product
+        inst.AnimState:OverrideSymbol("swap_cooked", build, overridesymbol)
     end
 end
 
@@ -42,7 +42,7 @@ local function continuedonefn(inst)
 		if result then
 	        inst.AnimState:PlayAnimation("idle_full")
 	        ShowProduct(inst)
-		elseif inst.components.stewer.ondonecooking_old ~= nil then
+		else
 			return inst.components.stewer.oncontinuedone_old(inst)
 		end
 	end
@@ -57,7 +57,7 @@ local function ondonecookingfn(inst)
 	        ShowProduct(inst)
 	        inst.SoundEmitter:KillSound("snd")
 	        inst.SoundEmitter:PlaySound("dontstarve/common/together/portable/spicer/cooking_pst")
-		elseif inst.components.stewer.ondonecooking_old ~= nil then
+		else
 			return inst.components.stewer.ondonecooking_old(inst)
 		end
 	end
@@ -69,10 +69,11 @@ AddPrefabPostInit("portablespicer", function(inst)
         return inst
     end
 
-	if inst.components.stewer ~= nil then
+    if inst.components.stewer ~= nil then
 		inst.components.stewer.oncontinuedone_old = inst.components.stewer.oncontinuedone
 		inst.components.stewer.ondonecooking_old = inst.components.stewer.ondonecooking
 	end
+
 	inst.components.stewer.oncontinuedone = continuedonefn
 	inst.components.stewer.ondonecooking = ondonecookingfn
 end)

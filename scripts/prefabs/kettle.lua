@@ -202,6 +202,7 @@ local function harvestfn(inst,picker,loot)
             loot.components.perishable:SetPercent(inst.components.stewer.product_spoilage * spoilpercent)
             loot.components.perishable:StartPerishing()
         end
+        loot.components.inventoryitemmoisture:SetMoisture(0)
         picker:PushEvent("learncookbookrecipe", {product = inst.components.stewer.product, ingredients = inst.components.stewer.ingredient_prefabs})
         inst.components.stewer.product = nil
         inst.AnimState:PlayAnimation("getdrink")
