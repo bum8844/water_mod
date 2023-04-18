@@ -9,12 +9,6 @@ table.insert(TUNING.GAMEMODE_STARTING_ITEMS.DEFAULT.WARLY,"portablekettle_item")
 -- 물을 담을수 있는 최대치
 water_tuning =
 {
-	CLEANSOURCE =
-	{
-		"oasislake",
-		"hotspring",
-	},
-
 	CHILDS =
 	{
 		"wendy",
@@ -59,7 +53,6 @@ water_tuning =
 	WATER_DIRTY_INITTEMP = -5,
 	
 	-- Moistures and getting wet
-	-- BUCKET_DRINK_WET = 10,
 	WATER_BARREL_WETNESS = 25,
 	WATER_BARREL_EXTINGUISH_HEAT_PERCENT = -1,
 	WATER_BARREL_TEMP_REDUCTION = 5,
