@@ -145,7 +145,6 @@ end
 local function spoilfn(inst)
     if not inst:HasTag("burnt") then
         inst.components.stewer.product = inst.components.stewer.spoiledproduct
-        inst.components.pickable.product = inst.components.stewer.product
         inst.AnimState:OverrideSymbol("swap", "kettle_meter_dirty", tostring(inst._waterlevel))
         inst:DoTaskInTime(0,function(inst)
             SetProductSymbol(inst, inst.components.stewer.product)
@@ -159,9 +158,6 @@ local function ShowProduct(inst)
         inst.components.water.available = false
         inst:DoTaskInTime(0,function(inst)
             SetProductSymbol(inst, inst.components.stewer.product)
-            inst.components.pickable.product = inst.components.stewer.product
-            inst.components.pickable.numtoharvest = inst.components.waterlevel:GetWater()
-            inst.components.pickable.canbepicked = true
         end)
     end
 end
@@ -195,16 +191,8 @@ local function continuecookfn(inst)
     end
 end
 
-local function harvestfn(inst,picker,loot)
+local function harvestfn(inst)
     if not inst:HasTag("burnt") then
-        if inst.components.stewer.spoiltime ~= nil and loot.components.perishable ~= nil then
-            local spoilpercent = inst.components.stewer:GetTimeToSpoil() / inst.components.stewer.spoiltime
-            loot.components.perishable:SetPercent(inst.components.stewer.product_spoilage * spoilpercent)
-            loot.components.perishable:StartPerishing()
-        end
-        loot.components.inventoryitemmoisture:SetMoisture(0)
-        picker:PushEvent("learncookbookrecipe", {product = inst.components.stewer.product, ingredients = inst.components.stewer.ingredient_prefabs})
-        inst.components.stewer.product = nil
         inst.AnimState:PlayAnimation("getdrink")
         inst.SoundEmitter:PlaySound("dontstarve/creatures/pengull/splash")
         inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/medium")
@@ -212,7 +200,6 @@ local function harvestfn(inst,picker,loot)
         inst:DoTaskInTime(.75,function (inst)
             inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_close")
             inst.components.waterlevel:DoDelta(-inst.components.waterlevel:GetWater())
-            inst.components.stewer:Harvest(picker)
         end)
     end
 end
@@ -394,19 +381,13 @@ local function fn()
     inst.components.stewer.oncontinuecooking = continuecookfn
     inst.components.stewer.oncontinuedone = continuedonefn
     inst.components.stewer.ondonecooking = donecookfn
-    --inst.components.stewer.onharvest = harvestfn
+    inst.components.stewer.onharvest = harvestfn
     inst.components.stewer.onspoil = spoilfn
 
     inst:AddComponent("distiller")
     inst.components.distiller.onstartboiling = OnTakeWater
     inst.components.distiller.oncontinueboiling = onstartboilingfn
     inst.components.distiller.ondoneboiling = ondoneboilingfn
-
-    inst:AddComponent("pickable")
-    inst.components.pickable.canbepicked = false
-    inst.components.pickable.product = (inst.components.stewer.product ~= nil and inst.components.stewer.product) or (inst.components.waterlevel:GetWater() ~= 0 and "water_clean") or nil
-    inst.components.pickable.numtoharvest = inst.components.waterlevel:GetWater()
-    inst.components.pickable:SetOnPickedFn(harvestfn)
 
     inst:AddComponent("water")
     inst.components.water.available = false

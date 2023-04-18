@@ -18,11 +18,6 @@ ACTIONS.COOK.stroverridefn = function(act)
     return act.target:HasTag("kettle") and STRINGS.ACTIONS.BOIL or act.target:HasTag("brewery") and STRINGS.ACTIONS.FERMENT or cook_stroverride(act)
 end
 
-local harvest_stroverride = ACTIONS.HARVEST.stroverridefn or function(act) return end
-ACTIONS.HARVEST.stroverridefn = function(act)
-    return act.target:HasTag("kettle") and STRINGS.ACTIONS.DRAIN or nil
-end
-
 local store_stroverride = ACTIONS.STORE.stroverridefn or function(act) return end
 ACTIONS.STORE.stroverridefn = function(act)
     return act.target:HasTag("kettle") and STRINGS.ACTIONS.BOIL or act.target:HasTag("brewery") and STRINGS.ACTIONS.FERMENT or nil
@@ -179,4 +174,4 @@ DRINK_HARVEST.priority = 2
 DRINK_HARVEST.canforce = true 
 DRINK_HARVEST.rangecheckfn = DefaultRangeCheck
 DRINK_HARVEST.extra_arrive_dist = ExtraPickupRange
-DRINK_HARVEST.mount_valid = true 
+DRINK_HARVEST.mount_valid = true
