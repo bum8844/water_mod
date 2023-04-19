@@ -1,7 +1,7 @@
 AddComponentPostInit("stewer",function(self, inst)
 	local cooking = require("cooking")
-	
-	self._Harvest = self.Harvest
+	local _Harvest = self.Harvest
+
 	if self.inst:HasTag("drinkproduction") then
 		function self:Harvest(harvester)
 		    if self.done then
@@ -59,6 +59,6 @@ AddComponentPostInit("stewer",function(self, inst)
 		    end
 		end
 	else
-		self._Harvest(self)
+		return _Harvest(self)
 	end
 end)
