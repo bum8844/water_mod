@@ -4,6 +4,17 @@ if KnownModIndex:IsModEnabled("workshop-2334209327") or KnownModIndex:IsModForce
     ACTIONS.UPGRADE.priority = 2
 end
 
+local function IsWater(pos)
+    local test = _G.TheWorld.Map:GetTileAtPoint(pos.x, 0, pos.z) == _G.WORLD_TILES.OCEAN_SHALLOW_SHORE or 
+    _G.TheWorld.Map:GetTileAtPoint(pos.x, 0, pos.z) == _G.WORLD_TILES.OCEAN_SHALLOW or 
+    _G.TheWorld.Map:GetTileAtPoint(pos.x, 0, pos.z) == _G.WORLD_TILES.OCEAN_MEDIUM or 
+    _G.TheWorld.Map:GetTileAtPoint(pos.x, 0, pos.z) == _G.WORLD_TILES.OCEAN_DEEP or 
+    _G.TheWorld.Map:GetTileAtPoint(pos.x, 0, pos.z) == _G.WORLD_TILES.OCEAN_CORAL or
+    _G.TheWorld.Map:GetTileAtPoint(pos.x, 0, pos.z) == _G.WORLD_TILES.OCEAN_CORAL_SHORE or
+    _G.TheWorld.Map:GetTileAtPoint(pos.x, 0, pos.z) == _G.WORLD_TILES.OCEAN_SHIPGRAVEYARD
+    return test
+end
+
 local function evaluate_watertype(giver, taker)
     for k, v in pairs(WATERGROUP) do
         if taker:HasTag(v.name.."_waterlevel") then
@@ -97,7 +108,7 @@ local USEITEM =
 local POINT =
 {
     watertaker = function(inst, doer, pos, actions, right, target)
-        if inst:HasTag("watertaker") and _G.TheWorld.Map:IsOceanAtPoint(pos.x, 0, pos.z)then
+        if inst:HasTag("watertaker") and (_G.TheWorld.Map:IsOceanAtPoint(pos.x, 0, pos.z) or IsWater(pos)) then
             table.insert(actions, ACTIONS.TAKEWATER_OCEAN)
         end
     end,

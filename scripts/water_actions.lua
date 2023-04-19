@@ -12,6 +12,17 @@ local function ExtraDropDist(doer, dest, bufferedaction)
     return 0
 end
 
+local function IsWater(pos)
+    local test = _G.TheWorld.Map:GetTileAtPoint(pos.x, 0, pos.z) == _G.WORLD_TILES.OCEAN_SHALLOW_SHORE or 
+    _G.TheWorld.Map:GetTileAtPoint(pos.x, 0, pos.z) == _G.WORLD_TILES.OCEAN_SHALLOW or 
+    _G.TheWorld.Map:GetTileAtPoint(pos.x, 0, pos.z) == _G.WORLD_TILES.OCEAN_MEDIUM or 
+    _G.TheWorld.Map:GetTileAtPoint(pos.x, 0, pos.z) == _G.WORLD_TILES.OCEAN_DEEP or 
+    _G.TheWorld.Map:GetTileAtPoint(pos.x, 0, pos.z) == _G.WORLD_TILES.OCEAN_CORAL or
+    _G.TheWorld.Map:GetTileAtPoint(pos.x, 0, pos.z) == _G.WORLD_TILES.OCEAN_CORAL_SHORE or
+    _G.TheWorld.Map:GetTileAtPoint(pos.x, 0, pos.z) == _G.WORLD_TILES.OCEAN_SHIPGRAVEYARD
+    return test
+end
+
 --Overriding existing actions
 local cook_stroverride = ACTIONS.COOK.stroverridefn or function(act) return end
 ACTIONS.COOK.stroverridefn = function(act)
@@ -57,7 +68,7 @@ local TAKEWATER = AddAction("TAKEWATER", STRINGS.ACTIONS.FILL, function(act)
 
     local groundpt = act:GetActionPoint()
     if groundpt ~= nil then
-        local success = _G.TheWorld.Map:IsOceanAtPoint(groundpt.x, 0, groundpt.z)
+        local success = (_G.TheWorld.Map:IsOceanAtPoint(groundpt.x, 0, groundpt.z) or IsWater(groundpt))
         if success then
             return filled.components.watertaker:Fill(nil, act.doer)
         end
@@ -74,6 +85,7 @@ TAKEWATER.priority = 2
 local TAKEWATER_OCEAN = AddAction("TAKEWATER_OCEAN", STRINGS.ACTIONS.FILL, TAKEWATER.fn)
 TAKEWATER_OCEAN.is_relative_to_platform = true
 TAKEWATER_OCEAN.extra_arrive_dist = ExtraDropDist
+TAKEWATER_OCEAN.priority = 5
 
 local MILKINGTOOL = AddAction("MILKINGTOOL", STRINGS.ACTIONS.MILKINGTOOL, function(act)
     if act.invobject.components.milkingtool:IsCharged(act.target) then

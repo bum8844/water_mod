@@ -9,6 +9,23 @@ table.insert(TUNING.GAMEMODE_STARTING_ITEMS.DEFAULT.WARLY,"portablekettle_item")
 -- 물을 담을수 있는 최대치
 water_tuning =
 {
+	TYPES_CLEAN = {
+		--noting
+	},
+
+	TYPES_SALTY = {
+		"pond_cave",
+		"quagmire_pond_salt",
+		"kyno_pond_salt",
+	},
+
+	TYPES_DIRTY = {
+		"pond",
+		"pond_mos",
+		"tidalpool",
+		"tidalpoolnew",
+	},
+
 	CHILDS =
 	{
 		"wendy",

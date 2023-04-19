@@ -87,6 +87,8 @@ local function fn()
 
     inst:AddTag("watertaker")
 
+    MakeInventoryFloatable(inst)
+
     inst.entity:SetPristine()
 
     if not TheWorld.ismastersim then
