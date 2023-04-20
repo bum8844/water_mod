@@ -12,7 +12,7 @@ local function ExtraDropDist(doer, dest, bufferedaction)
     return 0
 end
 
-local function IsWater(pos)
+local function IsOceanWater(pos)
     local test = _G.TheWorld.Map:GetTileAtPoint(pos.x, 0, pos.z) == _G.WORLD_TILES.OCEAN_SHALLOW_SHORE or 
     _G.TheWorld.Map:GetTileAtPoint(pos.x, 0, pos.z) == _G.WORLD_TILES.OCEAN_SHALLOW or 
     _G.TheWorld.Map:GetTileAtPoint(pos.x, 0, pos.z) == _G.WORLD_TILES.OCEAN_MEDIUM or 
@@ -20,6 +20,54 @@ local function IsWater(pos)
     _G.TheWorld.Map:GetTileAtPoint(pos.x, 0, pos.z) == _G.WORLD_TILES.OCEAN_CORAL or
     _G.TheWorld.Map:GetTileAtPoint(pos.x, 0, pos.z) == _G.WORLD_TILES.OCEAN_CORAL_SHORE or
     _G.TheWorld.Map:GetTileAtPoint(pos.x, 0, pos.z) == _G.WORLD_TILES.OCEAN_SHIPGRAVEYARD
+    return test
+end
+
+local function IsMangroveWater(pos)
+    local test = _G.TheWorld.Map:GetTileAtPoint(pos.x, 0, pos.z) == _G.WORLD_TILES.MANGROVE_SHORE or 
+    _G.TheWorld.Map:GetTileAtPoint(pos.x, 0, pos.z) == _G.WORLD_TILES.MANGROVE 
+    return test
+end
+
+local function IsWater(pos)
+    local test = _G.TheWorld.Map:GetTileAtPoint(pos.x, 0, pos.z) == _G.WORLD_TILES.RIVER_SHORE or 
+    _G.TheWorld.Map:GetTileAtPoint(pos.x, 0, pos.z) == _G.WORLD_TILES.RIVER 
+    return test
+end
+
+local function IsNearOceanWater(pos)
+    local test = (_G.TheWorld.Map:GetTileAtPoint(pos.x-2.5, 0, pos.z) == _G.WORLD_TILES.OCEAN_SHALLOW_SHORE or
+         _G.TheWorld.Map:GetTileAtPoint(pos.x+2.5, 0, pos.z) == _G.WORLD_TILES.OCEAN_SHALLOW_SHORE or
+         _G.TheWorld.Map:GetTileAtPoint(pos.x, 0, pos.z-2.5) == _G.WORLD_TILES.OCEAN_SHALLOW_SHORE or
+         _G.TheWorld.Map:GetTileAtPoint(pos.x, 0, pos.z+2.5) == _G.WORLD_TILES.OCEAN_SHALLOW_SHORE) or
+        (_G.TheWorld.Map:GetTileAtPoint(pos.x-2.5, 0, pos.z) == _G.WORLD_TILES.OCEAN_SHALLOW or
+         _G.TheWorld.Map:GetTileAtPoint(pos.x+2.5, 0, pos.z) == _G.WORLD_TILES.OCEAN_SHALLOW or
+         _G.TheWorld.Map:GetTileAtPoint(pos.x, 0, pos.z-2.5) == _G.WORLD_TILES.OCEAN_SHALLOW or
+         _G.TheWorld.Map:GetTileAtPoint(pos.x, 0, pos.z+2.5) == _G.WORLD_TILES.OCEAN_SHALLOW)
+    return test
+end
+
+local function IsNearMangroveWater(pos)
+    local test = (_G.TheWorld.Map:GetTileAtPoint(pos.x-2.5, 0, pos.z) == _G.WORLD_TILES.MANGROVE_SHORE or
+         _G.TheWorld.Map:GetTileAtPoint(pos.x+2.5, 0, pos.z) == _G.WORLD_TILES.MANGROVE_SHORE or
+         _G.TheWorld.Map:GetTileAtPoint(pos.x, 0, pos.z-2.5) == _G.WORLD_TILES.MANGROVE_SHORE or
+         _G.TheWorld.Map:GetTileAtPoint(pos.x, 0, pos.z+2.5) == _G.WORLD_TILES.MANGROVE_SHORE) or
+        (_G.TheWorld.Map:GetTileAtPoint(pos.x-2.5, 0, pos.z) == _G.WORLD_TILES.MANGROVE or
+         _G.TheWorld.Map:GetTileAtPoint(pos.x+2.5, 0, pos.z) == _G.WORLD_TILES.MANGROVE or
+         _G.TheWorld.Map:GetTileAtPoint(pos.x, 0, pos.z-2.5) == _G.WORLD_TILES.MANGROVE or
+         _G.TheWorld.Map:GetTileAtPoint(pos.x, 0, pos.z+2.5) == _G.WORLD_TILES.MANGROVE)
+    return test
+end
+
+local function IsNearWater(pos)
+    local test = (_G.TheWorld.Map:GetTileAtPoint(pos.x-2.5, 0, pos.z) == _G.WORLD_TILES.RIVER_SHORE or
+         _G.TheWorld.Map:GetTileAtPoint(pos.x+2.5, 0, pos.z) == _G.WORLD_TILES.RIVER_SHORE or
+         _G.TheWorld.Map:GetTileAtPoint(pos.x, 0, pos.z-2.5) == _G.WORLD_TILES.RIVER_SHORE or
+         _G.TheWorld.Map:GetTileAtPoint(pos.x, 0, pos.z+2.5) == _G.WORLD_TILES.RIVER_SHORE) or
+        (_G.TheWorld.Map:GetTileAtPoint(pos.x-2.5, 0, pos.z) == _G.WORLD_TILES.RIVER or
+         _G.TheWorld.Map:GetTileAtPoint(pos.x+2.5, 0, pos.z) == _G.WORLD_TILES.RIVER or
+         _G.TheWorld.Map:GetTileAtPoint(pos.x, 0, pos.z-2.5) == _G.WORLD_TILES.RIVER or
+         _G.TheWorld.Map:GetTileAtPoint(pos.x, 0, pos.z+2.5) == _G.WORLD_TILES.RIVER)
     return test
 end
 
@@ -68,9 +116,22 @@ local TAKEWATER = AddAction("TAKEWATER", STRINGS.ACTIONS.FILL, function(act)
 
     local groundpt = act:GetActionPoint()
     if groundpt ~= nil then
-        local success = (_G.TheWorld.Map:IsOceanAtPoint(groundpt.x, 0, groundpt.z) or IsWater(groundpt))
-        if success then
-            return filled.components.watertaker:Fill(nil, act.doer)
+        if _G.KnownModIndex:IsModEnabled("workshop-1467214795") or _G.KnownModIndex:IsModForceEnabled("workshop-1467214795") then
+            local isOcean = (_G.TheWorld.Map:IsOceanAtPoint(groundpt.x, 0, groundpt.z) or IsOceanWater(groundpt) or IsNearOceanWater(groundpt))
+            local isMangrove = (IsMangroveWater(groundpt) or IsNearMangroveWater(groundpt))
+            local isRiver = (IsWater(groundpt) or IsNearWater(groundpt))
+            if isOcean then
+                return filled.components.watertaker:Fill(nil, act.doer)
+            elseif isMangrove then
+                return filled.components.watertaker:Fill(nil, act.doer, WATERTYPE.DIRTY)
+            elseif isRiver then
+                return filled.components.watertaker:Fill(nil, act.doer, WATERTYPE.CLEAN)
+            end
+        else
+            local success = (_G.TheWorld.Map:IsOceanAtPoint(groundpt.x, 0, groundpt.z))
+            if success then
+                return filled.components.watertaker:Fill(nil, act.doer)
+            end
         end
     end
 

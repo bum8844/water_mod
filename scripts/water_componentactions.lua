@@ -4,7 +4,7 @@ if KnownModIndex:IsModEnabled("workshop-2334209327") or KnownModIndex:IsModForce
     ACTIONS.UPGRADE.priority = 2
 end
 
-local function IsWater(pos)
+local function IsOceanWater(pos)
     local test = _G.TheWorld.Map:GetTileAtPoint(pos.x, 0, pos.z) == _G.WORLD_TILES.OCEAN_SHALLOW_SHORE or 
     _G.TheWorld.Map:GetTileAtPoint(pos.x, 0, pos.z) == _G.WORLD_TILES.OCEAN_SHALLOW or 
     _G.TheWorld.Map:GetTileAtPoint(pos.x, 0, pos.z) == _G.WORLD_TILES.OCEAN_MEDIUM or 
@@ -12,6 +12,54 @@ local function IsWater(pos)
     _G.TheWorld.Map:GetTileAtPoint(pos.x, 0, pos.z) == _G.WORLD_TILES.OCEAN_CORAL or
     _G.TheWorld.Map:GetTileAtPoint(pos.x, 0, pos.z) == _G.WORLD_TILES.OCEAN_CORAL_SHORE or
     _G.TheWorld.Map:GetTileAtPoint(pos.x, 0, pos.z) == _G.WORLD_TILES.OCEAN_SHIPGRAVEYARD
+    return test
+end
+
+local function IsMangroveWater(pos)
+    local test = _G.TheWorld.Map:GetTileAtPoint(pos.x, 0, pos.z) == _G.WORLD_TILES.MANGROVE_SHORE or 
+    _G.TheWorld.Map:GetTileAtPoint(pos.x, 0, pos.z) == _G.WORLD_TILES.MANGROVE 
+    return test
+end
+
+local function IsWater(pos)
+    local test = _G.TheWorld.Map:GetTileAtPoint(pos.x, 0, pos.z) == _G.WORLD_TILES.RIVER_SHORE or 
+    _G.TheWorld.Map:GetTileAtPoint(pos.x, 0, pos.z) == _G.WORLD_TILES.RIVER 
+    return test
+end
+
+local function IsNearOceanWater(pos)
+    local test = (_G.TheWorld.Map:GetTileAtPoint(pos.x-2.5, 0, pos.z) == _G.WORLD_TILES.OCEAN_SHALLOW_SHORE or
+         _G.TheWorld.Map:GetTileAtPoint(pos.x+2.5, 0, pos.z) == _G.WORLD_TILES.OCEAN_SHALLOW_SHORE or
+         _G.TheWorld.Map:GetTileAtPoint(pos.x, 0, pos.z-2.5) == _G.WORLD_TILES.OCEAN_SHALLOW_SHORE or
+         _G.TheWorld.Map:GetTileAtPoint(pos.x, 0, pos.z+2.5) == _G.WORLD_TILES.OCEAN_SHALLOW_SHORE) or
+        (_G.TheWorld.Map:GetTileAtPoint(pos.x-2.5, 0, pos.z) == _G.WORLD_TILES.OCEAN_SHALLOW or
+         _G.TheWorld.Map:GetTileAtPoint(pos.x+2.5, 0, pos.z) == _G.WORLD_TILES.OCEAN_SHALLOW or
+         _G.TheWorld.Map:GetTileAtPoint(pos.x, 0, pos.z-2.5) == _G.WORLD_TILES.OCEAN_SHALLOW or
+         _G.TheWorld.Map:GetTileAtPoint(pos.x, 0, pos.z+2.5) == _G.WORLD_TILES.OCEAN_SHALLOW)
+    return test
+end
+
+local function IsNearMangroveWater(pos)
+    local test = (_G.TheWorld.Map:GetTileAtPoint(pos.x-2.5, 0, pos.z) == _G.WORLD_TILES.MANGROVE_SHORE or
+         _G.TheWorld.Map:GetTileAtPoint(pos.x+2.5, 0, pos.z) == _G.WORLD_TILES.MANGROVE_SHORE or
+         _G.TheWorld.Map:GetTileAtPoint(pos.x, 0, pos.z-2.5) == _G.WORLD_TILES.MANGROVE_SHORE or
+         _G.TheWorld.Map:GetTileAtPoint(pos.x, 0, pos.z+2.5) == _G.WORLD_TILES.MANGROVE_SHORE) or
+        (_G.TheWorld.Map:GetTileAtPoint(pos.x-2.5, 0, pos.z) == _G.WORLD_TILES.MANGROVE or
+         _G.TheWorld.Map:GetTileAtPoint(pos.x+2.5, 0, pos.z) == _G.WORLD_TILES.MANGROVE or
+         _G.TheWorld.Map:GetTileAtPoint(pos.x, 0, pos.z-2.5) == _G.WORLD_TILES.MANGROVE or
+         _G.TheWorld.Map:GetTileAtPoint(pos.x, 0, pos.z+2.5) == _G.WORLD_TILES.MANGROVE)
+    return test
+end
+
+local function IsNearWater(pos)
+    local test = (_G.TheWorld.Map:GetTileAtPoint(pos.x-2.5, 0, pos.z) == _G.WORLD_TILES.RIVER_SHORE or
+         _G.TheWorld.Map:GetTileAtPoint(pos.x+2.5, 0, pos.z) == _G.WORLD_TILES.RIVER_SHORE or
+         _G.TheWorld.Map:GetTileAtPoint(pos.x, 0, pos.z-2.5) == _G.WORLD_TILES.RIVER_SHORE or
+         _G.TheWorld.Map:GetTileAtPoint(pos.x, 0, pos.z+2.5) == _G.WORLD_TILES.RIVER_SHORE) or
+        (_G.TheWorld.Map:GetTileAtPoint(pos.x-2.5, 0, pos.z) == _G.WORLD_TILES.RIVER or
+         _G.TheWorld.Map:GetTileAtPoint(pos.x+2.5, 0, pos.z) == _G.WORLD_TILES.RIVER or
+         _G.TheWorld.Map:GetTileAtPoint(pos.x, 0, pos.z-2.5) == _G.WORLD_TILES.RIVER or
+         _G.TheWorld.Map:GetTileAtPoint(pos.x, 0, pos.z+2.5) == _G.WORLD_TILES.RIVER)
     return test
 end
 
@@ -108,7 +156,16 @@ local USEITEM =
 local POINT =
 {
     watertaker = function(inst, doer, pos, actions, right, target)
-        if inst:HasTag("watertaker") and (_G.TheWorld.Map:IsOceanAtPoint(pos.x, 0, pos.z) or IsWater(pos)) then
+        if KnownModIndex:IsModEnabled("workshop-1467214795") or KnownModIndex:IsModForceEnabled("workshop-1467214795") then
+            local ispassable = _G.TheWorld.Map:IsPassableAtPoint(pos:Get())
+            if inst:HasTag("watertaker") then
+                if not ispassable and (_G.TheWorld.Map:IsOceanAtPoint(pos.x, 0, pos.z) or IsOceanWater(pos) or IsMangroveWater(pos) or IsWater(pos)) then
+                    table.insert(actions, ACTIONS.TAKEWATER_OCEAN)
+                elseif IsNearOceanWater(pos) or IsNearMangroveWater(pos) or IsNearWater(pos) then
+                    table.insert(actions, ACTIONS.TAKEWATER_OCEAN)
+                end
+            end
+        elseif inst:HasTag("watertaker") and _G.TheWorld.Map:IsOceanAtPoint(pos.x, 0, pos.z) then
             table.insert(actions, ACTIONS.TAKEWATER_OCEAN)
         end
     end,
