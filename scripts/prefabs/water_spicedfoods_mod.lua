@@ -52,7 +52,6 @@ local function MakePreparedFood(data)
         inst.AnimState:OverrideSymbol("swap_garnish", "water_spice", "spice_caffeinpepper")
 
         inst:AddTag("spicedfood")
-        inst:AddTag("watermod")
 
         if data.tags ~= nil then
             for i,v in pairs(data.tags) do

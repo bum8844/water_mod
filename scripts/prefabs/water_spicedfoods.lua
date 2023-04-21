@@ -79,7 +79,6 @@ local function MakePreparedFood(data)
         inst.AnimState:OverrideSymbol("swap_garnish", "water_spice", "spice_caffeinpepper")
 
         inst:AddTag("spicedfood")
-        inst:AddTag("watermod")
 
         inst.inv_image_bg = { image = (data.basename or data.name)..".tex" }
         changeimage(inst)

@@ -97,6 +97,7 @@ local AddComponentToPlayer = function(inst)
     end
 
     inst:AddComponent("obe")
+    inst:AddComponent("dcapacity")
 end
 
 AddPlayerPostInit(AddComponentToPlayer)
