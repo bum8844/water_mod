@@ -179,7 +179,7 @@ local function SetPickable(inst, pickable, num)
     inst.components.pickable.numtoharvest = num
 end
 
-local function givewater(inst, picker)
+local function givewater(inst, picker, loot)
 	local x, y, z = picker.Transform:GetWorldPosition()
     local refund = nil
 
@@ -198,6 +198,7 @@ local function givewater(inst, picker)
         	refund.Transform:SetPosition(x,y,z)
     	end
 	end
+	loot.components.inventoryitemmoisture:SetMoisture(0)
 	inst.bucket_finiteuses = 0
 	inst.water_finiteuses = 0
 	SetPickable(inst, false, 0)
@@ -275,6 +276,7 @@ local function well()
 
     inst:AddTag("well")
     inst:AddTag("structure")
+    inst:AddTag("cleanwaterproduction")
     inst:AddTag("ready")
 	
 	MakeObstaclePhysics(inst, .5)

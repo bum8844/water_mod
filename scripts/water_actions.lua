@@ -1,5 +1,17 @@
 require("actions")
 
+local function IsDirty(pos)
+    local test = _G.TheWorld.Map:GetTileAtPoint(pos.x, 0, pos.z) == _G.WORLD_TILES.MANGROVE_SHORE or
+     _G.TheWorld.Map:GetTileAtPoint(pos.x, 0, pos.z) == _G.WORLD_TILES.MANGROVE
+    return test
+end
+
+local function IsClean(pos)
+    local test = _G.TheWorld.Map:GetTileAtPoint(pos.x, 0, pos.z) == _G.WORLD_TILES.RIVER_SHORE or 
+     _G.TheWorld.Map:GetTileAtPoint(pos.x, 0, pos.z) == _G.WORLD_TILES.RIVER 
+    return test
+end
+
 local function ExtraDropDist(doer, dest, bufferedaction)
     if dest ~= nil then
         local target_x, target_y, target_z = dest:GetPoint()
@@ -16,11 +28,6 @@ end
 local cook_stroverride = ACTIONS.COOK.stroverridefn or function(act) return end
 ACTIONS.COOK.stroverridefn = function(act)
     return act.target:HasTag("kettle") and STRINGS.ACTIONS.BOIL or act.target:HasTag("brewery") and STRINGS.ACTIONS.FERMENT or cook_stroverride(act)
-end
-
-local harvest_stroverride = ACTIONS.HARVEST.stroverridefn or function(act) return end
-ACTIONS.HARVEST.stroverridefn = function(act)
-    return act.target:HasTag("kettle") and STRINGS.ACTIONS.DRAIN or nil
 end
 
 local store_stroverride = ACTIONS.STORE.stroverridefn or function(act) return end
@@ -62,15 +69,22 @@ local TAKEWATER = AddAction("TAKEWATER", STRINGS.ACTIONS.FILL, function(act)
 
     local groundpt = act:GetActionPoint()
     if groundpt ~= nil then
-        local success = _G.TheWorld.Map:IsOceanAtPoint(groundpt.x, 0, groundpt.z)
+        local success = (_G.TheWorld.Map:IsOceanAtPoint(groundpt.x, 0, groundpt.z))
         if success then
-            return filled.components.watertaker:Fill(nil, act.doer)
+            local watertype = nil
+            if IsDirty(groundpt) then
+                watertype = WATERTYPE.DIRTY
+            elseif IsClean(groundpt) then
+                watertype =  WATERTYPE.CLEAN
+            end
+            print(watertype)
+            return filled.components.watertaker:Fill(nil, act.doer, watertype)
         end
     end
 
-    if filled ~= nil and filled:HasTag("watertaker") and filled.components.watertaker ~= nil then
+    --[[if filled ~= nil and filled:HasTag("watertaker") and filled.components.watertaker ~= nil then
         return filled.components.watertaker:Fill(source, act.doer)
-    end
+    end]]
 
     return false
 end)
@@ -79,6 +93,7 @@ TAKEWATER.priority = 2
 local TAKEWATER_OCEAN = AddAction("TAKEWATER_OCEAN", STRINGS.ACTIONS.FILL, TAKEWATER.fn)
 TAKEWATER_OCEAN.is_relative_to_platform = true
 TAKEWATER_OCEAN.extra_arrive_dist = ExtraDropDist
+TAKEWATER_OCEAN.priority = 5
 
 local MILKINGTOOL = AddAction("MILKINGTOOL", STRINGS.ACTIONS.MILKINGTOOL, function(act)
     if act.invobject.components.milkingtool:IsCharged(act.target) then
@@ -179,4 +194,4 @@ DRINK_HARVEST.priority = 2
 DRINK_HARVEST.canforce = true 
 DRINK_HARVEST.rangecheckfn = DefaultRangeCheck
 DRINK_HARVEST.extra_arrive_dist = ExtraPickupRange
-DRINK_HARVEST.mount_valid = true 
+DRINK_HARVEST.mount_valid = true
