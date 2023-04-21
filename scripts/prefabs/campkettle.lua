@@ -133,6 +133,7 @@ local function onload(inst, data)
 end
 
 local function OnPickedFn(inst,picker,loot)
+    loot.components.inventoryitemmoisture:SetMoisture(0)
     inst.components.waterlevel:DoDelta(-inst.components.waterlevel:GetWater())
     inst.AnimState:PlayAnimation("get_water")
     inst.AnimState:PushAnimation("idle_empty", false)
@@ -162,7 +163,7 @@ local function fn()
 
     inst:AddTag("kettle")
     inst:AddTag("campkettle")
-    inst:AddTag("drinkproduction")
+    inst:AddTag("cleanwaterproduction")
 
     if not TheWorld.ismastersim then
         return inst

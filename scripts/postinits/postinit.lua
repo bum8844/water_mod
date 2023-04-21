@@ -2,6 +2,7 @@ local postinits =
 {
 	components =
 	{
+		"stewer",
 		"dryer",
 		"eater",
 		"edible",
@@ -19,7 +20,6 @@ local postinits =
 		"oasislake",
 		"firepit",
 		"player",
-		"ponds",
 		"portablespicer",
 		"staff",
 	},
@@ -39,6 +39,7 @@ local postinits =
 	{
 		"childplayer",
 		"thirstvalue",
+		"watertypes",
 	},
 }
 

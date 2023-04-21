@@ -97,7 +97,7 @@ local USEITEM =
 local POINT =
 {
     watertaker = function(inst, doer, pos, actions, right, target)
-        if inst:HasTag("watertaker") and _G.TheWorld.Map:IsOceanAtPoint(pos.x, 0, pos.z)then
+        if inst:HasTag("watertaker") and _G.TheWorld.Map:IsOceanAtPoint(pos.x, 0, pos.z) then
             table.insert(actions, ACTIONS.TAKEWATER_OCEAN)
         end
     end,
@@ -105,25 +105,6 @@ local POINT =
 
 local SCENE =
 {
-    stewer = function(inst, doer, actions, right)
-        if inst.replica.waterlevel ~= nil then
-            if not inst.replica.waterlevel:HasWater() then
-                for i, v in ipairs(actions) do
-                    if v == ACTIONS.COOK then
-                        table.remove(actions, i)
-                        return
-                    end
-                end
-            end
-            for i, v in ipairs(actions) do
-                if v == ACTIONS.HARVEST then
-                    table.remove(actions, i)
-                    return
-                end
-            end
-        end
-    end,
-
     machine = function(inst, doer, actions, right)
         if right and not inst:HasTag("cooldown") and
                 not inst:HasTag("fueldepleted") and
@@ -138,7 +119,7 @@ local SCENE =
     end,
 
     pickable = function(inst, doer, actions)
-        if inst:HasTag("pickable") and inst:HasTag("drinkproduction") and not (inst:HasTag("fire") or inst:HasTag("intense")) then
+        if inst:HasTag("pickable") and inst:HasTag("cleanwaterproduction") and not inst:HasTag("intense") then
             table.insert(actions, ACTIONS.DRINK_HARVEST)
         end
     end,

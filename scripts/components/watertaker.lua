@@ -7,9 +7,9 @@ local Watertaker = Class(function(self, inst)
 	--self.overridefn = nil --used for watercans
 end)
 
-function Watertaker:Fill(source, doer)
+function Watertaker:Fill(source, doer, watertype)
 	
-	local watertype = source ~= nil and source.components.water:GetWatertype() or WATERTYPE.SALTY
+	local watertype = source ~= nil and source.components.water:GetWatertype() or watertype or WATERTYPE.SALTY
 	local wateramount = source ~= nil and source.components.water:GetWater() or self.capacity
 	if self.inst.components.finiteuses ~= nil then
     	if self.inst.components.finiteuses:GetUses() < wateramount then

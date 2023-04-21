@@ -80,6 +80,20 @@ configuration_options =
 		default = 150,
 	},
 	{
+		name = "thirst_decrease_speed",
+		label = "Thirst Decrease Speed",
+		options =
+		{
+		    {description = "VerySlow", data = .2, hover = "20%"},
+		    {description = "Slow", data = .4, hover = "40%"},
+		    {description = "Same", data = .5, hover = "50%"},
+			{description = "Default", data = .7, hover = "70%"},
+			{description = "Fast", data = .8, hover = "80%"},
+			{description = "VeryFast", data = 1, hover = "100%"},
+		},
+		default = .7,
+	},
+	{
 		name = "enable_thirst",
 		label = "Thirst Status",
 		options =
