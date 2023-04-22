@@ -161,7 +161,7 @@ local function MakeCup(name, masterfn, tags)
         end
 
         if not inst:HasTag("frozen") then
-            inst:AddTag("pre-preparedfood")
+            inst:AddTag("pre-prepareddrink")
             inst:AddTag("drink")
             inst:AddTag("potion")
         end
