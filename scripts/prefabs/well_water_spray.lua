@@ -15,6 +15,7 @@ local function fn()
     inst.entity:AddNetwork()
 
     inst:AddTag("NOCLICK")
+    inst:AddTag("NOBLOCK")
     inst:AddTag("waterspray")
 
     inst.Transform:SetScale(3,3,3)
