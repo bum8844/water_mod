@@ -56,7 +56,7 @@ return {
 			WATER_SALTY = "",
 
 			GOOPYDRINK = "",
-			GARBAGE = "",
+			
 			FRUITJUICY = "",
 			BERRIES_JUICE = "",
 			POMEGRANATE_JUICE = "",

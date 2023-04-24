@@ -5,7 +5,7 @@ return {
 		{
 			GIVE =
 			{
-				WELL_NOTEMPTY = ".",
+				WELL_NOTEMPTY = "이미 있는 물동이를 내려야 해.",
 				WELL_BUSY = "아직 물동이가 다 올라오지 않았어.",
 			}
 		},
@@ -15,18 +15,18 @@ return {
 		ANNOUNCE_DRUNK_IMMUNITY = "이 정도로 날 취하게 할 수는 없어!",
 		ANNOUNCE_NOTCHARGE = "아직 젖이 나올 상태가 아니야.",
 		ANNOUNCE_NOTHIRSTSLEEP = "이대로 자면 말라죽을 거야!",
-		ANNOUNCE_NOTHIRSTSIESTA = "",
+		ANNOUNCE_NOTHIRSTSIESTA = "낮잠을 자기엔 너무 목말라!",
 		ANNOUNCE_SLEEP_END = "자고 나니까 좀 상쾌하네!",
 		ANNOUNCE_THIRST = "너무 목말라!",
 
 		DESCRIBE =
 		{
-			WATER_CLEAN_ICE = "",
-			WATER_DIRTY_ICE = "",
+			WATER_CLEAN_ICE = "만나서 많이 차가워.",
+			WATER_DIRTY_ICE = "만나서 더러워.",
 
 			SPICE_CAFFEINPEPPER = "갈았더니 후추 향이 나네. 흥미로워.",
 
-			WELL_KIT = "",
+			WELL_KIT = "땅 위에 설치할 수 있겠어.",
 			WELL_DRILLING = "구멍을 파고 있는 중이야.",
 			WELL_DRILLING_ITEM = "물을 긷기 위해 우물을 파는 장치야.",
 			HOLE = "바닥이 보이지 않을 정도로 깊어.",
@@ -52,8 +52,8 @@ return {
 			WATER_DIRTY = "그냥 마시기에는 좀 위험하겠는데.",
 			WATER_SALTY = "염분 때문에 마시기 좋지 않아.",
 
-			GOOPYDRINK = "",
-			GARBAGE = "",
+			GOOPYDRINK = "마셔도 괜찮은지 모르겠네.",
+			
 			FRUITJUICY = "과일 향이 향긋해.",
 			BERRIES_JUICE = "베리에서 과학을 추출해 냈어.",
 			POMEGRANATE_JUICE = "",
