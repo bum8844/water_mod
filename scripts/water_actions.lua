@@ -93,7 +93,7 @@ TAKEWATER.priority = 2
 local TAKEWATER_OCEAN = AddAction("TAKEWATER_OCEAN", STRINGS.ACTIONS.FILL, TAKEWATER.fn)
 TAKEWATER_OCEAN.is_relative_to_platform = true
 TAKEWATER_OCEAN.extra_arrive_dist = ExtraDropDist
-TAKEWATER_OCEAN.priority = 5
+TAKEWATER_OCEAN.priority = 1
 
 local MILKINGTOOL = AddAction("MILKINGTOOL", STRINGS.ACTIONS.MILKINGTOOL, function(act)
     if act.invobject.components.milkingtool:IsCharged(act.target) then

@@ -42,7 +42,7 @@ local USEITEM =
 
     water = function(inst, doer, target, actions, right)
         if inst:HasTag("water") then
-            if target:HasTag("watertaker") and not inst:HasTag("drink") then
+            if target:HasTag("watertaker") and not inst:HasTag("farm_water") then
                 table.insert(actions, ACTIONS.TAKEWATER)
             elseif target.replica.waterlevel ~= nil
                 and target.replica.waterlevel:IsAccepting()
@@ -61,7 +61,7 @@ local USEITEM =
     watertaker = function(inst, doer, target, actions)
         if target:HasTag("water") and (target.replica.waterlevel == nil or target.replica.waterlevel:HasWater()) then
             if inst:HasTag("bucket_empty") then
-                if not target:HasTag("drink") then
+                if not target:HasTag("farm_water") then
                     table.insert(actions, ACTIONS.TAKEWATER)
                 end
             else
@@ -71,7 +71,7 @@ local USEITEM =
     end,
 
     edible = function(inst, doer, target, actions, right)
-        if inst:HasTag("drink") then
+        if inst:HasTag("drink") or inst:HasTag("prepareddrink") then
             for i, v in ipairs(actions) do
                 if v == ACTIONS.FEEDPLAYER then
                     table.insert(actions, ACTIONS.DRINKPLAYER)

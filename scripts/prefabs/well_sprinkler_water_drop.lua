@@ -7,6 +7,7 @@ local function fn()
     local inst = CreateEntity()
 
     inst:AddTag("NOCLICK")
+    inst:AddTag("NOBLOCK")
 
     inst.entity:SetCanSleep(false)
     inst.entity:AddTransform()

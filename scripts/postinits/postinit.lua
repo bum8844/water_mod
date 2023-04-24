@@ -22,6 +22,7 @@ local postinits =
 		"player",
 		"portablespicer",
 		"staff",
+		"warly",
 	},
 
 	stategraphs =

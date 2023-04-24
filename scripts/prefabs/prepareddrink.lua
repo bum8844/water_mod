@@ -88,7 +88,7 @@ local function MakePreparedDrink(data)
         if data.name == "spoiled_drink" then
             inst:AddTag("spoiled_drink")
         else
-            inst:AddTag("preparedfood")
+            inst:AddTag("prepareddrink")
         end
 
         if data.tags ~=nil then
