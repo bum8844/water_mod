@@ -15,7 +15,7 @@ local function OnFill_Waterlevel(inst, from_object ,...)
     	else
     		return false
     	end
-    elseif from_object:HasTag("drink") then
+    elseif from_object:HasTag("farm_water") then
         if using ~= maxfin then
             local stacksize = from_object.components.stackable:StackSize()
             result = math.min(stacksize,math.ceil((maxfin-using)/TUNING.BUCKET_LEVEL_PER_USE))

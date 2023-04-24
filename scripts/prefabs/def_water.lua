@@ -161,9 +161,7 @@ local function MakeCup(name, masterfn, tags)
         end
 
         if not inst:HasTag("frozen") then
-            inst:AddTag("pre-prepareddrink")
             inst:AddTag("drink")
-            inst:AddTag("potion")
         end
 
         MakeInventoryFloatable(inst)
@@ -292,8 +290,8 @@ local function dirtywater_ice(inst)
     inst.components.water:SetWaterType(WATERTYPE.DIRTY_ICE)
 end
 
-return MakeCup("water_clean", cleanwater, {"icebox_valid","clean"}),
-    MakeCup("water_dirty", dirtywater, {"icebox_valid","dirty"}),
+return MakeCup("water_clean", cleanwater, {"icebox_valid","clean","farm_water","pre-prepareddrink","potion"}),
+    MakeCup("water_dirty", dirtywater, {"icebox_valid","dirty","farm_water"}),
     MakeCup("water_clean_ice", cleanwater_ice,{"icebox_valid","clean","frozen","unwrappable"}),
     MakeCup("water_dirty_ice", dirtywater_ice,{"icebox_valid","dirty","frozen","unwrappable"}),
     MakeCup("water_salty", saltwater,{"salty"})
