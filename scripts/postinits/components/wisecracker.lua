@@ -4,7 +4,7 @@ AddComponentPostInit("wisecracker",function(self, inst)
         if data.food.components.perishable ~= nil then
             if data.food.components.perishable:IsFresh() then
                 local ismasterchef = inst:HasTag("masterchef")
-                if ismasterchef and data.food.prefab == "goopydrink" then
+                if ismasterchef and (data.food.prefab == "goopydrink" or data.food.prefab == "wetgoop") then
                     inst.components.talker:Say(_G.GetString(inst, "ANNOUNCE_EAT", "PAINFUL"))
                 else
                     local count = inst.components.foodmemory ~= nil and inst.components.foodmemory:GetMemoryCount(data.food.prefab) or 0
