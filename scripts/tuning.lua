@@ -80,8 +80,8 @@ water_tuning =
 	WATERLEVEL_PER_SIP = 10,
 
 	-- Basic Thirst Rate
-	WILSON_THIRST = wilson_thirst, --Max Thirst
-	WILSON_THIRST_RATE = hydration_per_day/TUNING.TOTAL_DAY_TIME,
+	WILSON_THIRST = wilson_thirst,
+	WILSON_THIRST_RATE = hydration_per_day/TUNING.TOTAL_DAY_TIME, 
 
 	STALE_FOOD_THIRST = .5,
 	SPOILED_FOOD_THIRST = .25,
@@ -89,21 +89,21 @@ water_tuning =
 	WICKERBOTTOM_STALE_FOOD_THIRST = .25,
 	WICKERBOTTOM_SPOILED_FOOD_THIRST = 0,
 
-	-- Hydration
-	HYDRATION_SALT = hydration_per_day-90, -- Saltwater
-	HYDRATION_POISON = hydration_per_day-80, -- Failed Fermentation
-	HYDRATION_ROT = hydration_per_day-85, -- Rotten
-	HYDRATION_NONE = 0, -- Suspicious Hibiscus
-	HYDRATION_TINYMICROSCOPIC = hydration_per_day/24,
-	HYDRATION_SUPERTINY = hydration_per_day/16, -- dirtywater
-	HYDRATION_TINY = hydration_per_day/12, -- Normal Water, Alcohols, Failed Cooking
-	HYDRATION_SMALLTINY = hydration_per_day/8, -- Coffee , fig , muld
-	HYDRATION_SMALL = hydration_per_day/6, -- Mixed Beverage , fruit , veggie
-	HYDRATION_MEDSMALL = hydration_per_day/4, -- Tea and Florals
-	HYDRATION_MED = hydration_per_day/3, -- fuer , blacktea_iced , lotustea , Lime Soda , sparklingwine
-	HYDRATION_LARGE = hydration_per_day/2, -- soda , fruitsoda
-	HYDRATION_HUGE = hydration_per_day, -- Cola
-	HYDRATION_SUPERHUGE = hydration_per_day*2, -- QuantumCola
+	-- Hydration(기준값:105)
+	HYDRATION_SALT = -15,   
+	HYDRATION_POISON = -5,
+	HYDRATION_ROT = -10,
+	HYDRATION_NONE = 0,
+	HYDRATION_TINYMICROSCOPIC = hydration_per_day/24, -- 4.375
+	HYDRATION_SUPERTINY = hydration_per_day/16, -- 6.5625
+	HYDRATION_TINY = hydration_per_day/12, -- 8.75
+	HYDRATION_SMALLTINY = hydration_per_day/8, -- 13.125 -- 일반물
+	HYDRATION_SMALL = hydration_per_day/6, -- 17.5
+	HYDRATION_MEDSMALL = hydration_per_day/4, -- 26.25
+	HYDRATION_MED = hydration_per_day/3, -- 35
+	HYDRATION_LARGE = hydration_per_day/2, -- 52.5
+	HYDRATION_HUGE = hydration_per_day, -- 105
+	HYDRATION_SUPERHUGE = hydration_per_day*2, -- 210
 
 	-- Hunger from Drinks
 	DRINK_CALORIES_POISON = 3, --제 개인적인 생각으로는 술은 칼로리가 높아서 안써도 된다고 생각...
