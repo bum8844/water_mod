@@ -126,6 +126,7 @@ local function dig_up_common(inst, worker, numberries)
             if not inst.planted then
                 TheWorld:PushEvent("beginregrowth", inst)
             end
+            inst.components.lootdropper:SpawnLootPrefab("dug_caffeinberry")
         end
     end
     inst:Remove()
