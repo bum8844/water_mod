@@ -124,7 +124,7 @@ local function dig_up_common(inst, worker, numberries)
                 end
             end
             if not inst.planted then
-                inst.components.lootdropper:SpawnLootPrefab("dug_caffeinberry")
+                TheWorld:PushEvent("beginregrowth", inst)
             end
         end
     end
@@ -161,6 +161,7 @@ local function caffeinberry()
     inst:AddTag("bush")
     inst:AddTag("plant")
     inst:AddTag("renewable")
+    inst:AddTag("witherable")
         
     local minimap = inst.entity:AddMiniMapEntity()
     minimap:SetIcon("caffeinberrybush.tex")
