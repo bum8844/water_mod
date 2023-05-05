@@ -48,11 +48,11 @@ end
 
 local function onhit(inst, worker)
     if not inst:HasTag("burnt") then
-        if inst.components.stewer:IsCooking() or inst.components.distiller:isBoiling() then
+        if inst.components.brewing:IsCooking() or inst.components.distiller:isBoiling() then
             inst.AnimState:PlayAnimation("hit_cooking")
             inst.AnimState:PushAnimation("cooking_loop", true)
             inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_close")
-        elseif inst.components.stewer:IsDone() then
+        elseif inst.components.brewing:IsDone() then
             inst.AnimState:PlayAnimation("hit_full")
             inst.AnimState:PushAnimation("idle_full", false)
         else
@@ -144,10 +144,10 @@ end
 
 local function spoilfn(inst)
     if not inst:HasTag("burnt") then
-        inst.components.stewer.product = inst.components.stewer.spoiledproduct
+        inst.components.brewing.product = inst.components.brewing.spoiledproduct
         inst.AnimState:OverrideSymbol("swap", "kettle_meter_dirty", tostring(inst._waterlevel))
         inst:DoTaskInTime(0,function(inst)
-            SetProductSymbol(inst, inst.components.stewer.product)
+            SetProductSymbol(inst, inst.components.brewing.product)
         end)
     end
 end
@@ -157,7 +157,7 @@ local function ShowProduct(inst)
         inst.components.waterlevel.accepting = false
         inst.components.water.available = false
         inst:DoTaskInTime(0,function(inst)
-            SetProductSymbol(inst, inst.components.stewer.product)
+            SetProductSymbol(inst, inst.components.brewing.product)
         end)
     end
 end
@@ -218,7 +218,7 @@ local function isgoodwater(inst)
 end
 
 local function OnSectionChange(new, old, inst)
-    local watertype = (isgoodwater(inst) or inst.components.stewer.product == "spoiled_drink") and "dirty" or "water"
+    local watertype = (isgoodwater(inst) or inst.components.brewing.product == "spoiled_drink") and "dirty" or "water"
     if new ~= nil then
         if inst._waterlevel ~= new then
             inst._waterlevel = new
@@ -238,7 +238,7 @@ end
 
 local function onclose(inst)
     if not inst:HasTag("burnt") then
-        if not inst.components.stewer:IsCooking() then
+        if not inst.components.brewing:IsCooking() then
             inst.AnimState:PlayAnimation("idle_empty")
             inst.SoundEmitter:KillSound("snd")
         end
@@ -313,9 +313,9 @@ local function getstatus(inst)
     return (inst:HasTag("burnt") and "BURNT")
         or (inst.components.distiller:GetTimeToBoil() > 15 and "PURIFY_LONG")
         or (inst.components.distiller:isBoiling() and inst.components.distiller:GetTimeToBoil() < 15 and "PURIFY_SHORT")
-        or (inst.components.stewer:IsDone() and "DONE")
-        or (inst.components.stewer:GetTimeToCook() > 15 and "BOILING_LONG")
-        or (inst.components.stewer:IsCooking() and inst.components.stewer:GetTimeToCook() < 15 and "BOILING_SHORT")
+        or (inst.components.brewing:IsDone() and "DONE")
+        or (inst.components.brewing:GetTimeToCook() > 15 and "BOILING_LONG")
+        or (inst.components.brewing:IsCooking() and inst.components.brewing:GetTimeToCook() < 15 and "BOILING_SHORT")
         or (inst.components.waterlevel:GetWater() > 0 and "HASWATER")
         or "EMPTY"
 end
@@ -358,7 +358,7 @@ local function fn()
     
 	inst:AddTag("structure")
     inst:AddTag("kettle")
-    inst:AddTag("stewer")
+    inst:AddTag("brewing")
     inst:AddTag("drinkproduction")
 	
 	inst.entity:SetPristine()
@@ -375,14 +375,13 @@ local function fn()
     inst.components.waterlevel:SetSectionCallback(OnSectionChange)
     inst.components.waterlevel:InitializeWaterLevel(0)
 
-    inst:AddComponent("stewer")
-    inst.components.stewer.spoiledproduct = "spoiled_drink"
-    inst.components.stewer.onstartcooking = startcookfn
-    inst.components.stewer.oncontinuecooking = continuecookfn
-    inst.components.stewer.oncontinuedone = continuedonefn
-    inst.components.stewer.ondonecooking = donecookfn
-    inst.components.stewer.onharvest = harvestfn
-    inst.components.stewer.onspoil = spoilfn
+    inst:AddComponent("brewing")
+    inst.components.brewing.onstartbrewing = startcookfn
+    inst.components.brewing.oncontinuebrewing = continuecookfn
+    inst.components.brewing.oncontinuedone = continuedonefn
+    inst.components.brewing.ondonebrewing = donecookfn
+    inst.components.brewing.onharvest = harvestfn
+    inst.components.brewing.onspoil = spoilfn
 
     inst:AddComponent("distiller")
     inst.components.distiller.onstartboiling = OnTakeWater

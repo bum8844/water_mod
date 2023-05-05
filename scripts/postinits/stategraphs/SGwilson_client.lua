@@ -73,6 +73,11 @@ AddStategraphActionHandler("wilson_client", ActionHandler(ACTIONS.DRINK, "drink"
 AddStategraphActionHandler("wilson_client", ActionHandler(ACTIONS.DRINKPLAYER, "give"))
 AddStategraphActionHandler("wilson_client", ActionHandler(ACTIONS.TURNON_TILEARRIVE, "give"))
 AddStategraphActionHandler("wilson_client", ActionHandler(ACTIONS.DRINK_HARVEST, "dolongaction"))
+AddStategraphActionHandler("wilson_client", ActionHandler(ACTIONS.BREWING,
+        function(inst, action)
+            return inst:HasTag("expertchef") and "domediumaction" or "dolongaction"
+        end)
+)
 
 ------------------------------------------------------------------------
 

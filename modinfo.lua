@@ -118,7 +118,6 @@ configuration_options =
 			{description = "Default", data = .75},
 			{description = "Long", data = 1.5},
 			{description = "VeryLong", data = 3},
-			--{description = "Random", data = _G.math.random(0, 90)},
 		},
 		default = .75
 	},
@@ -136,7 +135,6 @@ configuration_options =
 			{description = "Default", data = .75},
 			{description = "Long", data = 1.5},
 			{description = "VeryLong", data = 3},
-			--{description = "Random", data = "random"},
 		},
 		default = .75
 	},

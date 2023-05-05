@@ -2,7 +2,6 @@ local postinits =
 {
 	components =
 	{
-		"stewer",
 		"dryer",
 		"eater",
 		"edible",

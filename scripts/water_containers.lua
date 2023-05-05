@@ -60,9 +60,9 @@ end
  
 function params.kettle.widget.buttoninfo.fn(inst, doer)
     if inst.components.container ~= nil then
-        BufferedAction(doer, inst, ACTIONS.COOK):Do()
+        BufferedAction(doer, inst, ACTIONS.BREWING):Do()
     elseif inst.replica.container ~= nil and not inst.replica.container:IsBusy() then
-        SendRPCToServer(RPC.DoWidgetButtonAction, ACTIONS.COOK.code, inst, ACTIONS.COOK.mod_name)
+        SendRPCToServer(RPC.DoWidgetButtonAction, ACTIONS.BREWING.code, inst, ACTIONS.BREWING.mod_name)
     end
 end
  
@@ -76,9 +76,9 @@ end
  
 function params.brewery.widget.buttoninfo.fn(inst, doer)
     if inst.components.container ~= nil then
-        BufferedAction(doer, inst, ACTIONS.COOK):Do()
+        BufferedAction(doer, inst, ACTIONS.BREWING):Do()
     elseif inst.replica.container ~= nil and not inst.replica.container:IsBusy() then
-        SendRPCToServer(RPC.DoWidgetButtonAction, ACTIONS.COOK.code, inst, ACTIONS.COOK.mod_name)
+        SendRPCToServer(RPC.DoWidgetButtonAction, ACTIONS.BREWING.code, inst, ACTIONS.BREWING.mod_name)
     end
 end
  
