@@ -103,6 +103,7 @@ water_tuning =
 	HYDRATION_MED = hydration_per_day/3, -- 35
 	HYDRATION_LARGE = hydration_per_day/2, -- 52.5
 	HYDRATION_HUGE = hydration_per_day, -- 105
+	HYDRATION_MOREHUGE = hydration_per_day*8/7, -- 120
 	HYDRATION_SUPERHUGE = hydration_per_day*2, -- 210
 
 	-- Hunger from Drinks
