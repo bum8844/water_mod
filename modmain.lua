@@ -29,17 +29,25 @@ local teaingredients =
 	"firenettles",
 	"tillweed",
 	"moon_tree_blossom",
-	"tealeaves",
-	"tealeaves_dried",
 }
 
-AddIngredientValues(teaingredients, {veggie = .5, decoration = 1})
-AddIngredientValues({"beefalo_milk"}, {milk=1, dairy=1})
+local mushrooms =
+{
+	"red_cap",
+	"green_cap",
+	"blue_cap",
+	"moon_cap",
+}
 
+AddIngredientValues(mushrooms, {veggie = .5, mushroom = 1},true)
+AddIngredientValues(teaingredients, {veggie = .5, decoration = 1})
+
+AddIngredientValues({"tealeaves"}, {decoration = 1}, true)
 AddIngredientValues({"caffeinberry_bean"}, {fruit=.5}, true)
 AddIngredientValues({"caffeinberry_bean_cooked"}, {fruit=1})
+AddIngredientValues({"tea_seed_cooked"}, {seed=1})
 
-AddIngredientValues({"tea_seed_cooked"}, {seed=1}, false, true)
+AddIngredientValues({"beefalo_milk"}, {milk=1, dairy=1})
 
 AddReplicableComponent("thirst")
 AddReplicableComponent("waterlevel")

@@ -280,7 +280,7 @@ local drinks =
 
 	veggie_tea =
 	{
-		test = function(boilier, names, tags) return tags.veggie and tags.veggie > 2 and not tags.lotus and not tags.fruit and notmeat(tags) and notname(names) and ressthing(names) end,
+		test = function(boilier, names, tags) return tags.veggie and not tags.lotus and not tags.fruit and notmeat(tags) and notname(names) and ressthing(names) end,
 		priority = 0,
 		health = TUNING.HEALING_SMALL*2,
 		hunger = TUNING.DRINK_CALORIES/4,
@@ -294,7 +294,7 @@ local drinks =
 	
 	cactus_tea =
 	{
-		test = function(boilier, names, tags) return (names.cactus_meat or names.cactus_meat_cooked or names.aloe or names.aloe_cooked or names.kyno_aloe or names.kyno_aloe_cooked or names.succulent_picked or names.mfp_aloe or names.mfp_aloe_cooked ) and tags.veggie and not tags.fruit and notmeat(tags) and notname(names) end,
+		test = function(boilier, names, tags) return (names.cactus_meat or names.cactus_meat_cooked or names.aloe or names.aloe_cooked or names.kyno_aloe or names.kyno_aloe_cooked or names.mfp_aloe or names.mfp_aloe_cooked ) and tags.veggie and not tags.fruit and notmeat(tags) and notname(names) end,
 		priority = 1,
 		health = TUNING.HEALING_SMALL*2,
 		hunger = TUNING.DRINK_CALORIES/2,
@@ -346,7 +346,7 @@ local drinks =
 	-- 꽃을 섞으면 나오는 결과물
 	mixflower =
 	{
-		test = function(boilier, names, tags) return (tags.decoration or 0) and ((tags.veggie or 0) <= 2) and not tags.fruit and not names.refined_dust and notmeat(tags) and notname(names) and ressthing(names) end,
+		test = function(boilier, names, tags) return (tags.decoration or 0) and ((tags.veggie or 0) <= 2) and ((tags.mushroom or 0) < 4) and not tags.fruit and not names.refined_dust and notmeat(tags) and notname(names) and ressthing(names) end,
 		priority = 0,
 		health = TUNING.HEALING_TINY,
 		hunger = 0,
@@ -523,7 +523,7 @@ for k, mod_id in ipairs(KnownModIndex:GetModsToLoad()) do
 end]]
 
 for k, v in pairs(drinks) do
-    v.names = k
+    v.name = k
     v.weight = v.weight or 1
     v.priority = v.priority or 0
 
