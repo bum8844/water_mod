@@ -441,7 +441,7 @@ local drinks =
 	-- 선인장 꽃잎
 	cactusflower_tea =
 	{
-		test = function(boilier, names, tags) return names.cactus_flower and ((tags.veggie or 0) <= 2) and not tags.fruit and notmeat(tags) and notname(names) and ressthing(names) end,
+		test = function(boilier, names, tags) return names.cactus_flower and ((tags.veggie or 0) + (tags.decoration or 0) <= 2) and not tags.fruit and notmeat(tags) and notname(names) and ressthing(names) end,
 		priority = 2,
 		health = TUNING.HEALING_MED/2,
 		hunger = TUNING.DRINK_CALORIES/2,
@@ -481,10 +481,29 @@ local drinks =
 			end
 		end,
 	},
-	
+	lotustea = {
+			test = function(boilier, names, tags) return ( names.lotus_flower or names.kyno_lotus_flower or names.mfp_lotus_flower or name.succulent_picked ) and ((tags.veggie or 0) + (tags.decoration or 0) <= 2) and not tags.fruit and notmeat(tags) and notname(names)and ressthing(names) end,
+			priority = 1,
+			health = TUNING.HEALING_MED,
+			hunger = 0,
+			sanity = TUNING.SANITY_LARGE,
+			thirst = TUNING.HYDRATION_SMALL,
+			perishtime = TUNING.PERISH_MED,
+			cooktime = TUNING.KETTLE_DECORATION,
+			temperature = TUNING.HOT_FOOD_BONUS_TEMP,
+			temperatureduration = TUNING.FOOD_TEMP_BRIEF,
+	        prefabs = { "sweettea_buff" },
+			tags = {"honeyed"},
+	        oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_HOT_SANITY_REGEN,
+	        oneatenfn = function(inst, eater)
+				eater:AddDebuff("sweettea_buff", "sweettea_buff")
+	        end,
+			potlevel = "mid",
+			potlevel_bottle = "high",
+	},
 }
 
-local lotustea = {
+--[[local lotustea = {
 		test = function(boilier, names, tags) return ( names.lotus_flower or names.kyno_lotus_flower or names.mfp_lotus_flower ) and ((tags.veggie or 0) <= 2) and not tags.fruit and notmeat(tags) and notname(names)and ressthing(names) end,
 		priority = 1,
 		health = TUNING.HEALING_MED,
@@ -501,7 +520,7 @@ for k, mod_id in ipairs(KnownModIndex:GetModsToLoad()) do
     if mod_id == "workshop-2334209327" or mod_id == "workshop-1467214795" or mod_id == "workshop-1505270912" or mod_id == "workshop-2762334054" then
     	drinks.lotustea = lotustea
 	end
-end
+end]]
 
 for k, v in pairs(drinks) do
     v.name = k
