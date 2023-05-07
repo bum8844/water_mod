@@ -22,23 +22,23 @@ local function dummy(boilier, names, tags)
 end
 
 local function onlytealeaves(names, tags)
-	return names.tealeaves and not names.tealeaves_dried and not names.petals and not names.forgetmelots and not names.foliage and not names.petals_evil and not names.succulent_picked and not names.firenettles and not names.moon_tree_blossom and not names.tillweed and not tags.veggie and not tags.fruit and not names.refined_dust
+	return names.tealeaves and (tags.decoration or 0) and ((tags.veggie or 0) <= 2) and not names.tealeaves_dried and not names.petals and not names.forgetmelots and not names.foliage and not names.petals_evil and not names.succulent_picked and not names.firenettles and not names.moon_tree_blossom and not names.tillweed and not tags.fruit and not names.refined_dust
 end
 
 local function onlytealeaves_dried(names, tags)
-	return names.tealeaves_dried and not names.tealeaves and not names.petals and not names.forgetmelots and not names.foliage and not names.petals_evil and not names.succulent_picked and not names.firenettles and not names.moon_tree_blossom and not names.tillweed and not tags.veggie and not tags.fruit and not names.refined_dust
+	return names.tealeaves_dried and (tags.decoration or 0) and ((tags.veggie or 0) <= 2) and not names.tealeaves and not names.petals and not names.forgetmelots and not names.foliage and not names.petals_evil and not names.succulent_picked and not names.firenettles and not names.moon_tree_blossom and not names.tillweed and not tags.fruit and not names.refined_dust
 end
 
 local function onlyfoliage(names, tags)
-	return names.foliage and not names.tealeaves and not names.petals and not names.forgetmelots and not names.tealeaves_dried and not names.petals_evil and not names.succulent_picked and not names.firenettles and not names.moon_tree_blossom and not names.tillweed and not tags.veggie and not tags.fruit and not names.refined_dust
+	return names.foliage and (tags.decoration or 0) and ((tags.veggie or 0) <= 2) and not names.tealeaves and not names.petals and not names.forgetmelots and not names.tealeaves_dried and not names.petals_evil and not names.succulent_picked and not names.firenettles and not names.moon_tree_blossom and not names.tillweed and not tags.fruit and not names.refined_dust
 end
 
 local function onlyflower(names, tags)
-	return (names.forgetmelots or names.petals or names.moon_tree_blossom) and not names.tealeaves and not names.foliage and not names.tealeaves_dried and not names.petals_evil and not names.succulent_picked and not names.firenettles and not names.tillweed and not tags.veggie and not tags.fruit and not names.refined_dust
+	return (names.forgetmelots or names.petals or names.moon_tree_blossom) and (tags.decoration or 0) and ((tags.veggie or 0) <= 2) and not names.tealeaves and not names.foliage and not names.tealeaves_dried and not names.petals_evil and not names.succulent_picked and not names.firenettles and not names.tillweed and not tags.fruit and not names.refined_dust
 end
 
 local function onlyflower_evil(names, tags)
-	return (names.petals_evil or names.firenettles or names.tillweed) and not names.tealeaves and not names.foliage and not names.tealeaves_dried and not names.forgetmelots and not names.succulent_picked and not names.petals and not names.moon_tree_blossom and not tags.veggie and not tags.fruit and not names.refined_dust
+	return (names.petals_evil or names.firenettles or names.tillweed) and (tags.decoration or 0) and ((tags.veggie or 0) <= 2) and not names.tealeaves and not names.foliage and not names.tealeaves_dried and not names.forgetmelots and not names.succulent_picked and not names.petals and not names.moon_tree_blossom and not tags.fruit and not names.refined_dust
 end
 
 local function notmeat(tags)
@@ -280,7 +280,7 @@ local drinks =
 
 	veggie_tea =
 	{
-		test = function(boilier, names, tags) return tags.veggie and not tags.fruit and notmeat(tags) and notname(names) and ressthing(names) end,
+		test = function(boilier, names, tags) return tags.veggie and tags.veggie > 2 ant not tags.lotus and not tags.fruit and notmeat(tags) and notname(names) and ressthing(names) end,
 		priority = 0,
 		health = TUNING.HEALING_SMALL*2,
 		hunger = TUNING.DRINK_CALORIES/4,
@@ -346,7 +346,7 @@ local drinks =
 	-- 꽃을 섞으면 나오는 결과물
 	mixflower =
 	{
-		test = function(boilier, names, tags) return tags.decoration and not tags.veggie and not tags.fruit and not names.refined_dust and not names.succulent_picked and notmeat(tags) and notname(names) and ressthing(names) end,
+		test = function(boilier, names, tags) return (tags.decoration or 0) and ( (tags.veggie or 0) =< 2 ) and not tags.fruit and not names.refined_dust and notmeat(tags) and notname(names) and ressthing(names) end,
 		priority = 0,
 		health = TUNING.HEALING_TINY,
 		hunger = 0,
@@ -361,7 +361,7 @@ local drinks =
 	
 	greentea =
 	{
-		test = function(boilier, names, tags) return onlytealeaves(names, tags) and not tags.veggie and not tags.fruit and notmeat(tags) and notname(names) and ressthing(names) end,
+		test = function(boilier, names, tags) return onlytealeaves(names, tags) and notmeat(tags) and notname(names) and ressthing(names) end,
 		priority = 1,
 		health = TUNING.HEALING_TINY,
 		hunger = 0,
@@ -441,7 +441,7 @@ local drinks =
 	-- 선인장 꽃잎
 	cactusflower_tea =
 	{
-		test = function(boilier, names, tags) return names.cactus_flower and ((tags.veggie or 0) + (tags.decoration or 0) <= 2) and not tags.fruit and notmeat(tags) and notname(names) and ressthing(names) end,
+		test = function(boilier, names, tags) return names.cactus_flower and (tags.decoration or 0) and ((tags.veggie or 0) <= 2) and not tags.fruit and notmeat(tags) and notname(names) and ressthing(names) end,
 		priority = 2,
 		health = TUNING.HEALING_MED/2,
 		hunger = TUNING.DRINK_CALORIES/2,
@@ -482,7 +482,7 @@ local drinks =
 		end,
 	},
 	lotustea = {
-			test = function(boilier, names, tags) return ( names.lotus_flower or names.kyno_lotus_flower or names.mfp_lotus_flower or name.succulent_picked ) and ((tags.veggie or 0) + (tags.decoration or 0) <= 2) and not tags.fruit and notmeat(tags) and notname(names)and ressthing(names) end,
+			test = function(boilier, names, tags) return ( names.lotus_flower or names.kyno_lotus_flower or tags.lotus or name.succulent_picked ) and ((tags.veggie or 0) + (tags.decoration or 0) <= 2) and not tags.fruit and notmeat(tags) and notname(names)and ressthing(names) end,
 			priority = 1,
 			health = TUNING.HEALING_MED,
 			hunger = 0,

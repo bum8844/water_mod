@@ -33,7 +33,7 @@ local teaingredients =
 	"tealeaves_dried",
 }
 
-AddIngredientValues(teaingredients, {decoration=1, inedible=1})
+AddIngredientValues(teaingredients, {veggie = .5, decoration = 1})
 AddIngredientValues({"beefalo_milk"}, {milk=1, dairy=1})
 
 AddIngredientValues({"caffeinberry_bean"}, {fruit=.5}, true)
