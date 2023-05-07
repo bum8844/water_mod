@@ -280,7 +280,7 @@ local drinks =
 
 	veggie_tea =
 	{
-		test = function(boilier, names, tags) return tags.veggie and tags.veggie > 2 ant not tags.lotus and not tags.fruit and notmeat(tags) and notname(names) and ressthing(names) end,
+		test = function(boilier, names, tags) return tags.veggie and tags.veggie > 2 and not tags.lotus and not tags.fruit and notmeat(tags) and notname(names) and ressthing(names) end,
 		priority = 0,
 		health = TUNING.HEALING_SMALL*2,
 		hunger = TUNING.DRINK_CALORIES/4,
@@ -346,7 +346,7 @@ local drinks =
 	-- 꽃을 섞으면 나오는 결과물
 	mixflower =
 	{
-		test = function(boilier, names, tags) return (tags.decoration or 0) and ( (tags.veggie or 0) =< 2 ) and not tags.fruit and not names.refined_dust and notmeat(tags) and notname(names) and ressthing(names) end,
+		test = function(boilier, names, tags) return (tags.decoration or 0) and ((tags.veggie or 0) <= 2) and not tags.fruit and not names.refined_dust and notmeat(tags) and notname(names) and ressthing(names) end,
 		priority = 0,
 		health = TUNING.HEALING_TINY,
 		hunger = 0,
@@ -482,7 +482,7 @@ local drinks =
 		end,
 	},
 	lotustea = {
-			test = function(boilier, names, tags) return ( names.lotus_flower or names.kyno_lotus_flower or tags.lotus or name.succulent_picked ) and ((tags.veggie or 0) + (tags.decoration or 0) <= 2) and not tags.fruit and notmeat(tags) and notname(names)and ressthing(names) end,
+			test = function(boilier, names, tags) return ( names.lotus_flower or names.kyno_lotus_flower or tags.lotus or names.succulent_picked ) and ((tags.veggie or 0) + (tags.decoration or 0) <= 2) and not tags.fruit and notmeat(tags) and notname(names)and ressthing(names) end,
 			priority = 1,
 			health = TUNING.HEALING_MED,
 			hunger = 0,
@@ -523,7 +523,7 @@ for k, mod_id in ipairs(KnownModIndex:GetModsToLoad()) do
 end]]
 
 for k, v in pairs(drinks) do
-    v.name = k
+    v.names = k
     v.weight = v.weight or 1
     v.priority = v.priority or 0
 
