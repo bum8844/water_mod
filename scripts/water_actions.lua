@@ -1,4 +1,10 @@
-require("actions")
+require "class"
+require "bufferedaction"
+require "debugtools"
+require 'util'
+require 'vecutil'
+require ("components/embarker")
+require ("actions")
 
 local function IsDirty(pos)
     local test = _G.TheWorld.Map:GetTileAtPoint(pos.x, 0, pos.z) == _G.WORLD_TILES.MANGROVE_SHORE or
@@ -219,7 +225,6 @@ BREWING = AddAction("BREWING",STRINGS.ACTIONS.BOIL,function(act)
             local cook_pos = act.target:GetPosition()
             local ingredient = act.doer.components.inventory:RemoveItem(act.invobject)
 
-            --V2C: position usually matters for listeners of "killed" event
             ingredient.Transform:SetPosition(cook_pos:Get())
 
             if not act.target.components.cooker:CanCook(ingredient, act.doer) then
@@ -244,7 +249,6 @@ BREWING = AddAction("BREWING",STRINGS.ACTIONS.BOIL,function(act)
             return false
         elseif act.target.components.brewing ~= nil then
             if act.target.components.brewing:IsCooking() then
-                --Already cooking
                 return true
             end
             local container = act.target.components.container
@@ -261,7 +265,6 @@ BREWING = AddAction("BREWING",STRINGS.ACTIONS.BOIL,function(act)
 
             local cook_pos = act.target:GetPosition()
 
-            --Intentional use of 3D dist check for birds.
             if act.doer:GetPosition():Dist(cook_pos) > 2 then
                 return false, "TOOFAR"
             end
@@ -272,7 +275,6 @@ BREWING = AddAction("BREWING",STRINGS.ACTIONS.BOIL,function(act)
             local ingredient = stacked and act.target.components.stackable:Get() or act.target
 
             if ingredient ~= act.target then
-                --V2C: position usually matters for listeners of "killed" event
                 ingredient.Transform:SetPosition(cook_pos:Get())
             end
 
