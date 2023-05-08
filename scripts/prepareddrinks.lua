@@ -437,23 +437,6 @@ local drinks =
 		potlevel = "mid",
 		potlevel_bottle = "high",
 	},
-
-	-- 선인장 꽃잎
-	cactusflower_tea =
-	{
-		test = function(boilier, names, tags) return names.cactus_flower and (tags.decoration or 0) and ((tags.veggie or 0) <= 2) and not tags.fruit and notmeat(tags) and notname(names) and ressthing(names) end,
-		priority = 2,
-		health = TUNING.HEALING_MED/2,
-		hunger = TUNING.DRINK_CALORIES/2,
-		sanity = TUNING.SANITY_HUGE,
-		thirst = TUNING.HYDRATION_MEDSMALL,
-		perishtime = TUNING.PERISH_MED,
-		temperature = TUNING.COLD_FOOD_BONUS_TEMP,
-		temperatureduration = TUNING.BUFF_FOOD_TEMP_DURATION,
-		cooktime = TUNING.KETTLE_DECORATION,
-		potlevel = "mid",
-		potlevel_bottle = "high",
-	},
 	
 	--일시적으로 유령으로 만드는 차
 	sushibiscus =
@@ -481,8 +464,26 @@ local drinks =
 			end
 		end,
 	},
+
+	-- 선인장 꽃잎
+	cactusflower_tea =
+	{
+		test = function(boilier, names, tags) return names.cactus_flower and (tags.decoration or 0) and ((tags.veggie or 0) <= 2) and not tags.fruit and notmeat(tags) and notname(names) and ressthing(names) end,
+		priority = 2,
+		health = TUNING.HEALING_MED/2,
+		hunger = TUNING.DRINK_CALORIES/2,
+		sanity = TUNING.SANITY_HUGE,
+		thirst = TUNING.HYDRATION_MEDSMALL,
+		perishtime = TUNING.PERISH_MED,
+		temperature = TUNING.COLD_FOOD_BONUS_TEMP,
+		temperatureduration = TUNING.BUFF_FOOD_TEMP_DURATION,
+		cooktime = TUNING.KETTLE_DECORATION,
+		potlevel = "mid",
+		potlevel_bottle = "high",
+	},
+	
 	lotustea = {
-			test = function(boilier, names, tags) return ( names.lotus_flower or names.kyno_lotus_flower or tags.lotus or names.succulent_picked ) and ((tags.veggie or 0) + (tags.decoration or 0) <= 2) and not tags.fruit and notmeat(tags) and notname(names)and ressthing(names) end,
+			test = function(boilier, names, tags) return ( names.lotus_flower or names.kyno_lotus_flower or tags.lotus or names.succulent_picked ) and (tags.decoration or 0) and ((tags.veggie or 0) <= 2) and not tags.fruit and notmeat(tags) and notname(names)and ressthing(names) end,
 			priority = 1,
 			health = TUNING.HEALING_MED,
 			hunger = 0,

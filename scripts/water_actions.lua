@@ -24,6 +24,28 @@ local function ExtraDropDist(doer, dest, bufferedaction)
     return 0
 end
 
+local function DefaultRangeCheck(doer, target)
+    if target == nil then
+        return
+    end
+    local target_x, target_y, target_z = target.Transform:GetWorldPosition()
+    local doer_x, doer_y, doer_z = doer.Transform:GetWorldPosition()
+    local dst = _G.distsq(target_x, target_z, doer_x, doer_z)
+    return dst <= 16
+end
+
+local function ExtraPickupRange(doer, dest)
+    if dest ~= nil then
+        local target_x, target_y, target_z = dest:GetPoint()
+
+        local is_on_water =  _G.TheWorld.Map:IsOceanTileAtPoint(target_x, 0, target_z) and not _G.TheWorld.Map:IsPassableAtPoint(target_x, 0, target_z)
+        if is_on_water then
+            return 0.75
+        end
+    end
+    return 0
+end
+
 local store_stroverride = ACTIONS.STORE.stroverridefn or function(act) return end
 ACTIONS.STORE.stroverridefn = function(act)
     return act.target:HasTag("kettle") and STRINGS.ACTIONS.BOIL or act.target:HasTag("brewery") and STRINGS.ACTIONS.FERMENT or nil
@@ -186,7 +208,7 @@ DRINK_HARVEST = AddAction("DRINK_HARVEST",STRINGS.ACTIONS.HARVEST,function(act)
 end)
 
 ACTIONS.PICK.priority = 1
-DRINK_HARVEST.priority = 2
+DRINK_HARVEST.priority = 3
 DRINK_HARVEST.canforce = true 
 DRINK_HARVEST.rangecheckfn = DefaultRangeCheck
 DRINK_HARVEST.extra_arrive_dist = ExtraPickupRange
