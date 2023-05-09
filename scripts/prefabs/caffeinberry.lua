@@ -20,7 +20,7 @@ local prefabs_item =
 	"dug_caffeinberry_placer"
 }
 
-local BERRY_TYPES = { "caffeinberries", "caffeinberriesmore", "caffeinberriesmost" }
+local BERRY_TYPES = { "caffeinberrienone","caffeinberries", "caffeinberriesmore", "caffeinberriesmost" }
 local function setberries(inst, pct)
     if inst._setberriesonanimover then
         inst._setberriesonanimover = nil
@@ -28,7 +28,7 @@ local function setberries(inst, pct)
     end
 
     local berries =
-        (not pct and "") or
+        (not pct and "caffeinberrienone") or
         (pct >= .9 and "caffeinberriesmost") or
         (pct >= .33 and "caffeinberriesmore") or
         "caffeinberries"
@@ -186,69 +186,68 @@ local function OnHaunt(inst)
 end
 
 local function caffeinberry()
-    local function fn()
-        local inst = CreateEntity()
+    local inst = CreateEntity()
 
-        inst.entity:AddTransform()
-        inst.entity:AddAnimState()
-        inst.entity:AddMiniMapEntity()
-        inst.entity:AddNetwork()
+    inst.entity:AddTransform()
+    inst.entity:AddAnimState()
+    inst.entity:AddMiniMapEntity()
+    inst.entity:AddNetwork()
 
-        MakeSmallObstaclePhysics(inst, .1)
+    MakeSmallObstaclePhysics(inst, .1)
 
-        inst:AddTag("bush")
-        inst:AddTag("plant")
-        inst:AddTag("renewable")
-        inst:AddTag("witherable")
+    inst:AddTag("bush")
+    inst:AddTag("plant")
+    inst:AddTag("renewable")
+    inst:AddTag("witherable")
 
-        local minimap = inst.entity:AddMiniMapEntity()
-        minimap:SetIcon("caffeinberrybush.tex")
+    local minimap = inst.entity:AddMiniMapEntity()
+    minimap:SetIcon("caffeinberrybush.tex")
 
-        inst.AnimState:SetBank("caffeinberry")
-        inst.AnimState:SetBuild("caffeinberry")
-        inst.AnimState:PlayAnimation("idle", true)
-        setberries(inst, 1)
+    inst.AnimState:SetBank("caffeinberry")
+    inst.AnimState:SetBuild("caffeinberry")
+    inst.AnimState:PlayAnimation("idle", true)
+    setberries(inst, 1)
 
-        MakeSnowCoveredPristine(inst)
+    MakeSnowCoveredPristine(inst)
 
-        inst.entity:SetPristine()
-        if not TheWorld.ismastersim then
-            return inst
-        end
-
-        inst.AnimState:SetFrame(math.random(inst.AnimState:GetCurrentAnimationNumFrames()) - 1)
-
-        inst:AddComponent("pickable")
-        inst.components.pickable.picksound = "dontstarve/wilson/harvest_berries"
-        inst.components.pickable.onpickedfn = onpickedfn
-        inst.components.pickable.makeemptyfn = makeemptyfn
-        inst.components.pickable.makebarrenfn = makebarrenfn
-        inst.components.pickable.makefullfn = makefullfn
-        inst.components.pickable.ontransplantfn = ontransplantfn
-        inst.components.pickable:SetUp("caffeinberry_bean", TUNING.BERRY_REGROW_TIME)
-        inst.components.pickable.getregentimefn = getregentimefn_normal
-        inst.components.pickable.max_cycles = TUNING.BERRYBUSH_CYCLES + math.random(2)
-        inst.components.pickable.cycles_left = inst.components.pickable.max_cycles
-
-        inst:AddComponent("witherable")
-
-        MakeHauntableIgnite(inst)
-        AddHauntableCustomReaction(inst, OnHaunt, false, false, true)
-
-        inst:AddComponent("lootdropper")
-
-        if not GetGameModeProperty("disable_transplanting") then
-            inst:AddComponent("workable")
-            inst.components.workable:SetWorkAction(ACTIONS.DIG)
-            inst.components.workable:SetWorkLeft(1)
-            inst.components.workable:SetOnFinishCallback(dig_up_normal)
-        end
-
-        inst:AddComponent("inspectable")
-
-        MakeSnowCovered(inst)
-        
+    inst.entity:SetPristine()
+    if not TheWorld.ismastersim then
+        return inst
     end
+
+    inst.AnimState:SetFrame(math.random(inst.AnimState:GetCurrentAnimationNumFrames()) - 1)
+    inst:AddComponent("pickable")
+    inst.components.pickable.picksound = "dontstarve/wilson/harvest_berries"
+    inst.components.pickable.onpickedfn = onpickedfn
+    inst.components.pickable.makeemptyfn = makeemptyfn
+    inst.components.pickable.makebarrenfn = makebarrenfn
+    inst.components.pickable.makefullfn = makefullfn
+    inst.components.pickable.ontransplantfn = ontransplantfn
+    inst.components.pickable:SetUp("caffeinberry_bean", TUNING.BERRY_REGROW_TIME)
+    inst.components.pickable.getregentimefn = getregentimefn_normal
+    inst.components.pickable.max_cycles = TUNING.BERRYBUSH_CYCLES + math.random(2)
+    inst.components.pickable.cycles_left = inst.components.pickable.max_cycles
+
+    inst:AddComponent("witherable")
+
+    MakeLargeBurnable(inst)
+    MakeMediumPropagator(inst)
+
+    MakeHauntableIgnite(inst)
+    AddHauntableCustomReaction(inst, OnHaunt, false, false, true)
+
+    inst:AddComponent("lootdropper")
+
+    if not GetGameModeProperty("disable_transplanting") then
+        inst:AddComponent("workable")
+        inst.components.workable:SetWorkAction(ACTIONS.DIG)
+        inst.components.workable:SetWorkLeft(1)
+        inst.components.workable:SetOnFinishCallback(dig_up_normal)
+    end
+
+    inst:AddComponent("inspectable")
+
+    MakeSnowCovered(inst)
 
     return inst
 end
@@ -256,9 +255,11 @@ end
 local function on_deploy_fn(inst, position, deployer)
 	local tree = SpawnPrefab("caffeinberry")
 	if tree ~= nil then
-		tree.Transform:SetPosition(position:Get())
-		inst.components.stackable:Get():Remove()
-		tree.components.pickable:OnTransplant()
+        tree.Transform:SetPosition(position:Get())
+        inst.components.stackable:Get():Remove()
+        if tree.components.pickable ~= nil then
+            tree.components.pickable:OnTransplant()
+        end
 		if deployer ~= nil and deployer.SoundEmitter ~= nil then
 			deployer.SoundEmitter:PlaySound("dontstarve/common/plant")
 		end
@@ -297,8 +298,8 @@ local function dug_caffeinberry()
 	
     inst:AddComponent("inventoryitem")
     inst.replica.inventoryitem:SetImage("dug_caffeinberry")
-	inst.components.inventoryitem.atlasname= "images/tea_inventoryitem.xml"
-    inst.components.inventoryitem.imagename= "caffeinberry_bush_dug"
+	inst.components.inventoryitem.atlasname = "images/tea_inventoryitem.xml"
+    inst.components.inventoryitem.imagename = "caffeinberry_bush_dug"
 
     inst:AddComponent("tradable")
 
