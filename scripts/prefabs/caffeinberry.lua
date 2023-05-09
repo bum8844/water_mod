@@ -105,6 +105,20 @@ local function onpickedfn(inst, picker)
     pickberries(inst)
 end
 
+local function getregentimefn_normal(inst)
+    if not inst.components.pickable then
+        return TUNING.BERRY_REGROW_TIME
+    end
+    --V2C: nil cycles_left means unlimited picks, so use max value for math
+    local max_cycles = inst.components.pickable.max_cycles
+    local cycles_left = inst.components.pickable.cycles_left or max_cycles
+    local num_cycles_passed = math.max(0, max_cycles - cycles_left)
+    return TUNING.BERRY_REGROW_TIME
+        + TUNING.BERRY_REGROW_INCREASE * num_cycles_passed
+        + TUNING.BERRY_REGROW_VARIANCE * math.random()
+end
+
+
 local function makefullfn(inst)
     inst.AnimState:PlayAnimation("shake_empty")
     inst.AnimState:PushAnimation(pickanim(inst))
@@ -189,7 +203,8 @@ local function caffeinberry()
     inst.components.pickable.makefullfn = makefullfn
     inst.components.pickable.ontransplantfn = ontransplantfn
     inst.components.pickable:SetUp("caffeinberry_bean", TUNING.BERRY_REGROW_TIME*0.5)
-    inst.components.pickable.max_cycles = TUNING.BERRYBUSH_CYCLES*2 + math.random(2)
+    inst.components.pickable.getregentimefn = getregentimefn_normal
+    inst.components.pickable.max_cycles = TUNING.BERRYBUSH_CYCLES + math.random(2)
     inst.components.pickable.cycles_left = inst.components.pickable.max_cycles
 
     inst:AddComponent("witherable")
