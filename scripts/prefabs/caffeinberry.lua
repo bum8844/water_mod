@@ -192,6 +192,8 @@ local function caffeinberry()
     inst.components.pickable.max_cycles = TUNING.BERRYBUSH_CYCLES*2 + math.random(2)
     inst.components.pickable.cycles_left = inst.components.pickable.max_cycles
 
+    inst:AddComponent("witherable")
+
     MakeHauntableIgnite(inst)
     AddHauntableCustomReaction(inst, OnHaunt, false, false, true)
 

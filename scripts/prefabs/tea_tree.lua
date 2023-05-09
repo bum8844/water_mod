@@ -291,6 +291,7 @@ local function tea_tree()
 
     inst:AddTag("plant")
     inst:AddTag("renewable")
+    inst:AddTag("witherable")
     inst:AddTag("lunarplant_target")
 
     MakeSnowCoveredPristine(inst)
