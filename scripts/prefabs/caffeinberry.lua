@@ -20,7 +20,8 @@ local prefabs_item =
 	"dug_caffeinberry_placer"
 }
 
-local BERRY_TYPES = { "caffeinberrienone","caffeinberries", "caffeinberriesmore", "caffeinberriesmost" }
+local BERRY_TYPES = { "beans_0","beans_1", "beans_2" }
+
 local function setberries(inst, pct)
     if inst._setberriesonanimover then
         inst._setberriesonanimover = nil
@@ -29,16 +30,14 @@ local function setberries(inst, pct)
 
     local berries =
         (not pct and "caffeinberrienone") or
-        (pct >= .9 and "caffeinberriesmost") or
-        (pct >= .33 and "caffeinberriesmore") or
-        "caffeinberries"
-
+        (pct >= .9 and "beans_2") or
+        (pct >= .33 and "beans_1") or
+        "beans_0"
     for i, berry_type in ipairs(BERRY_TYPES) do
-        if berry_type == berries then
-            inst.AnimState:Show(berry_type)
-        else
-            inst.AnimState:Hide(berry_type)
-        end
+        inst.AnimState:Hide(berry_type)
+    end
+    if not berries == "caffeinberrienone" then
+        inst.AnimState:Show(berries)
     end
 end
 
@@ -62,7 +61,6 @@ local function makeemptyfn(inst)
         inst.AnimState:PlayAnimation("idle", true)
         inst.AnimState:SetFrame(math.random(inst.AnimState:GetCurrentAnimationNumFrames()) - 1)
     elseif inst:HasTag("withered") or inst.AnimState:IsCurrentAnimation("dead") then
-        --inst.SoundEmitter:PlaySound("dontstarve/common/bush_fertilize")
         inst.AnimState:PlayAnimation("dead_to_idle")
         inst.AnimState:PushAnimation("idle")
     else
@@ -206,7 +204,6 @@ local function caffeinberry()
     inst.AnimState:SetBank("caffeinberry")
     inst.AnimState:SetBuild("caffeinberry")
     inst.AnimState:PlayAnimation("idle", true)
-    setberries(inst, 1)
 
     MakeSnowCoveredPristine(inst)
 
@@ -227,6 +224,12 @@ local function caffeinberry()
     inst.components.pickable.getregentimefn = getregentimefn_normal
     inst.components.pickable.max_cycles = TUNING.BERRYBUSH_CYCLES + math.random(2)
     inst.components.pickable.cycles_left = inst.components.pickable.max_cycles
+
+    local pct = nil
+    if inst.components.pickable.canbepicked then
+        pct = inst.components.pickable.cycles_left ~= nil and (inst.components.pickable.cycles_left + 1) / inst.components.pickable.max_cycles or 1
+    end
+    setberries(inst, pct)
 
     inst:AddComponent("witherable")
 
