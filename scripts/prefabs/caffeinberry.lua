@@ -20,6 +20,31 @@ local prefabs_item =
 	"dug_caffeinberry_placer"
 }
 
+local function pickanim(inst)
+    if inst.components.pickable then
+        if inst.components.pickable:CanBePicked() then
+            local percent = 0
+            if inst.components.pickable then
+                percent = inst.components.pickable.cycles_left / inst.components.pickable.max_cycles
+            end
+
+            if percent >= .9 then
+                return "caffeinberriesmost"
+            elseif percent >= .33 then
+                return "caffeinberriesmore"
+            else
+                return "caffeinberries"
+            end
+        else
+            if inst.components.pickable:IsBarren() then
+                return "idle_dead"
+            end
+        end
+    end
+
+    return "idle"
+end
+
 --regrowth code
 local function OnBurnt(inst)
     if not inst.planted then
@@ -44,31 +69,6 @@ local function makebarrenfn(inst)
     else
         inst.AnimState:PlayAnimation("idle_dead")
     end
-end
-
-local function pickanim(inst)
-    if inst.components.pickable then
-        if inst.components.pickable:CanBePicked() then
-            local percent = 0
-            if inst.components.pickable then
-                percent = inst.components.pickable.cycles_left / inst.components.pickable.max_cycles
-            end
-
-            if percent >= .9 then
-                return "caffeinberriesmost"
-            elseif percent >= .33 then
-                return "caffeinberriesmore"
-            else
-                return "caffeinberries"
-            end
-        else
-            if inst.components.pickable:IsBarren() then
-                return "idle_dead"
-            end
-        end
-    end
-
-    return "idle"
 end
 
 local function shake(inst)
