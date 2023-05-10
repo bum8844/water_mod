@@ -2,9 +2,9 @@ local cooking = require("cooking")
 
 local function ondone(self, done)
     if done then
-        self.inst:AddTag("donebrewing")
+        self.inst:AddTag("donecooking")
     else
-        self.inst:RemoveTag("donebrewing")
+        self.inst:RemoveTag("donecooking")
     end
 end
 
@@ -59,7 +59,7 @@ nil,
 
 function Brewing:OnRemoveFromEntity()
     self.inst:RemoveTag("brewing")
-    self.inst:RemoveTag("donebrewing")
+    self.inst:RemoveTag("donecooking")
     self.inst:RemoveTag("readybrewing")
 end
 

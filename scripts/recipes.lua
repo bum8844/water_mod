@@ -26,7 +26,7 @@ AddRecipe2("portablekettle_item",{Ingredient("transistor",2),Ingredient("cutston
 
 AddRecipe2("desalinator",{Ingredient("boards",12),Ingredient("rope",6),Ingredient("rocks",6),Ingredient("nitre",6),Ingredient("charcoal",6)},TECH.SCIENCE_TWO,{placer = "desalinator_placer", atlas = ModAtlas, image = "desalinator.tex", size = 32},{"CONTAINERS","GARDENING","HYDRATION"})
 
-AddRecipe2("well_drilling_item",{Ingredient("boards",2),Ingredient("cutstone",3),Ingredient("flint",4)},TECH.SCIENCE_TWO,{atlas = ModAtlas, image = "well_drilling_item.tex"},{"GARDENING","HYDRATION"})
+AddRecipe2("well_drilling_item",{Ingredient("trinket_6",4),Ingredient("transistor",2),Ingredient("goldnugget",4),Ingredient("flint",4),Ingredient("steelwool",2)},TECH.SCIENCE_TWO,{atlas = ModAtlas, image = "well_drilling_item.tex"},{"GARDENING","HYDRATION"})
 
 AddRecipe2("well_kit",{Ingredient("boards",2),Ingredient("cutstone",6),Ingredient("hammer",1)},TECH.SCIENCE_TWO,{atlas = ModAtlas, image = "well_kit.tex"},{"GARDENING","HYDRATION"})
 

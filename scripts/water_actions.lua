@@ -204,21 +204,15 @@ UPGRADE_TILEARRIVE.priority = 4
 UPGRADE_TILEARRIVE.rmb = true
 UPGRADE_TILEARRIVE.theme_music = "farming"
 
-DRINK_HARVEST = AddAction("DRINK_HARVEST",STRINGS.ACTIONS.HARVEST,function(act)
-    if act.target.components.brewing ~= nil then
-        return act.target.components.brewing:Harvest(act.doer)  
-    elseif act.target ~= nil and act.target.components.pickable ~= nil then
-        act.target.components.pickable:Pick(act.doer)
-        return true
-    end
-end)
+local HARVEST_ = ACTIONS.HARVEST.fn
 
-ACTIONS.PICK.priority = 1
-DRINK_HARVEST.priority = 3
-DRINK_HARVEST.canforce = true 
-DRINK_HARVEST.rangecheckfn = DefaultRangeCheck
-DRINK_HARVEST.extra_arrive_dist = ExtraPickupRange
-DRINK_HARVEST.mount_valid = true
+ACTIONS.HARVEST.fn = function(act)
+    if act.target.components.brewing ~= nil then
+        return act.target.components.brewing:Harvest(act.doer)
+    else
+        return HARVEST_(act)
+    end
+end
 
 BREWING = AddAction("BREWING",STRINGS.ACTIONS.BOIL,function(act)
         if act.target.components.cooker ~= nil then
