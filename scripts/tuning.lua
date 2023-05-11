@@ -136,15 +136,15 @@ water_tuning =
 	TEA_TREE_REGROWTH_TIME_MULT = 1,
 	CAFFEINBERRY_REGROWTH_TIME_MULT = 1,
 
-	CAFFEIN_TIME = GetModConfigData("caffein_time"),
+	CAFFEIN_TIME = TUNING.TOTAL_DAY_TIME*GetModConfigData("caffein_time"),
 	CAFFEIN_SPEED = GetModConfigData("caffein_speed"),
 	TEASLEEP_TIME = GetModConfigData("sleeping_time"),
-	INTOXICATION_TIME = GetModConfigData("alcohol_time"),
+	INTOXICATION_TIME = TUNING.TOTAL_DAY_TIME*GetModConfigData("alcohol_time"),
 	MAX_CPACITY = GetModConfigData("max_capacity"),
-	CAPACITY_TIME = GetModConfigData("capacity_time"),
-	IMMUNE_TIME = GetModConfigData("immune_time"),
-	GHOST_TIME = GetModConfigData("ghost_time"),
-	DRUNKARD_DURATION = GetModConfigData("drunkard_time"),
+	CAPACITY_TIME = TUNING.TOTAL_DAY_TIME*GetModConfigData("capacity_time"),
+	IMMUNE_TIME = TUNING.TOTAL_DAY_TIME*GetModConfigData("immune_time"),
+	GHOST_TIME = TUNING.TOTAL_DAY_TIME*GetModConfigData("ghost_time"),
+	DRUNKARD_DURATION = TUNING.TOTAL_DAY_TIME*GetModConfigData("drunkard_time"),
 
 	--well sprinkler
 	SPRINKLER_MAX_FUEL_TIME = TUNING.TOTAL_DAY_TIME,

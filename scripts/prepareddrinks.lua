@@ -290,6 +290,15 @@ local drinks =
 		cooktime = TUNING.KETTLE_VEGGIE,
 		potlevel = "mid",
 		potlevel_bottle = "mid",
+		oneatenfn = function(inst, eater)
+			if not eater:HasTag("playermerm") then
+				if eater:HasTag("masterchef") then
+					eater.components.talker:Say(GetString(eater,"ANNOUNCE_EAT","RAW"))
+				else
+					eater.components.talker:Say(GetString(eater,"ANNOUNCE_EAT","PAINFUL"))
+				end
+			end
+		end
 	},
 	
 	cactus_tea =
