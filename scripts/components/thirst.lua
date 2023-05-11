@@ -15,10 +15,11 @@ end
 
 local function tempcheck(self, inst)
     local tempcheck = self.inst.components.temperature:GetCurrent()
-    return (tempcheck > TUNING.OVERHEAT_TEMP - 15 and 4) or
-           (tempcheck > TUNING.OVERHEAT_TEMP - 30 and 2) or 
-           (tempcheck < 10 and 0.5) or  
-            1
+    local issummer = TheWorld.state.issummer
+    local iswinter = TheWorld.state.iswinter
+    return issummer and (( tempcheck > TUNING.OVERHEAT_TEMP - 15 and 4 ) or ( tempcheck > TUNING.OVERHEAT_TEMP - 30 and 2 )) or
+           iswinter and (( tempcheck < 5 and 0.25 ) or ( tempcheck < 15 and 0.5 )) or 
+           (tempcheck > TUNING.OVERHEAT_TEMP - 15 and 2) or (tempcheck < 5 and 0.5) or 1
 end
 
 local Thirst = Class(function(self, inst)
