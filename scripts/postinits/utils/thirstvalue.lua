@@ -41,7 +41,11 @@ end
 local function SetAnyoneCanDrink(inst)
     if inst.components.edible ~= nil then
     	if inst.components.edible.foodtype ~= GLOBAL.FOODTYPE.GOODIES then
-      		inst.components.edible.secondaryfoodtype = GLOBAL.FOODTYPE.GOODIES
+    		if inst.components.edible.foodtype == GLOBAL.FOODTYPE.GENERIC then
+    			inst.components.edible.foodtype = GLOBAL.FOODTYPE.GOODIES
+    		else
+      			inst.components.edible.secondaryfoodtype = GLOBAL.FOODTYPE.GOODIES
+      		end
       	end
     end
 end
@@ -49,7 +53,11 @@ end
 local function SetAnyoneCanDrink_Alcohl(inst)
     if inst.components.edible ~= nil then
     	if inst.components.edible.foodtype ~= GLOBAL.FOODTYPE.GOODIES then
-      		inst.components.edible.secondaryfoodtype = GLOBAL.FOODTYPE.GOODIES
+    		if inst.components.edible.foodtype == GLOBAL.FOODTYPE.GENERIC then
+    			inst.components.edible.foodtype = GLOBAL.FOODTYPE.GOODIES
+    		else
+      			inst.components.edible.secondaryfoodtype = GLOBAL.FOODTYPE.GOODIES
+      		end
       	end
       	inst.components.edible:SetOnEatenFn(oneatenfn)
     end
