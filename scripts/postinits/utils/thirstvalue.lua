@@ -21,7 +21,7 @@ local function oneatenfn(inst, eater)
 				eater.components.debuffable:AddDebuff("alcoholdebuff", "alcoholdebuff")
 				eater.components.debuffable:AddDebuff("drunkarddebuff", "drunkarddebuff")
 			else
-				eater.components.talker:Say(GetString(eater,"ANNOUNCE_DRUNK_IMMUNITY"))
+				eater.components.talker:Say(GLOBAL.GetString(eater,"ANNOUNCE_DRUNK_IMMUNITY"))
 			end
 		end
 		eater.immunebuff_duration = TUNING.IMMUNE_TIME
@@ -40,7 +40,7 @@ end
 
 local function SetAnyoneCanDrink(inst)
     if inst.components.edible ~= nil then
-    	if not inst.components.edible.foodtype == GLOBAL.FOODTYPE.GOODIES then
+    	if inst.components.edible.foodtype ~= GLOBAL.FOODTYPE.GOODIES then
       		inst.components.edible.secondaryfoodtype = GLOBAL.FOODTYPE.GOODIES
       	end
     end
@@ -48,7 +48,7 @@ end
 
 local function SetAnyoneCanDrink_Alcohl(inst)
     if inst.components.edible ~= nil then
-    	if not inst.components.edible.foodtype == GLOBAL.FOODTYPE.GOODIES then
+    	if inst.components.edible.foodtype ~= GLOBAL.FOODTYPE.GOODIES then
       		inst.components.edible.secondaryfoodtype = GLOBAL.FOODTYPE.GOODIES
       	end
       	inst.components.edible:SetOnEatenFn(oneatenfn)

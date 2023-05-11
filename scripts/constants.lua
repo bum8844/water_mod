@@ -277,14 +277,26 @@ FOODTYPEGROUP =
 
 	NONE_HUNGER_INGREDIENT = 
 	{
-		SUPERTINY = 
+		TINYMICROSCOPIC = 
 		{
 			"petals",
 			"petals_evil",
 			"foliage",
+			"butterflywings",
+			"kyno_sugarflywings",
+			"firenettles",
+			"tillweed",
+			"forgetmelots",
+			--mod_ingredients
+			"petals_rose",
+			"petals_lily",
+			"petals_orchid",
+			--hop
+			"kyno_foliage",
+			"kyno_sugartree_petals",
 		},
 
-		SMALL = 
+		SUPERTINY = 
 		{
 			"lightbulb",
 			"succulent_picked",
