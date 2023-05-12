@@ -252,7 +252,6 @@ local drinks =
 			elseif eater.components.debuffable and eater.components.debuffable:IsEnabled() and eater:HasTag("player")then
 				eater.caffeinbuff_duration = TUNING.CAFFEIN_TIME
 				eater.components.debuffable:AddDebuff("caffeinbuff", "caffeinbuff")
-				print(TUNING.TIME_TEST)
 			else
 				eater.components.locomotor:SetExternalSpeedMultiplier(eater, "caffeinbuff", TUNING.CAFFEIN_SPEED)
 				eater:DoTaskInTime(TUNING.CAFFEIN_TIME, function()
