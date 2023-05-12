@@ -3,6 +3,12 @@ local TUNING = _G.TUNING
 local wilson_thirst = GetModConfigData("thirst_max")
 local hydration_per_day = wilson_thirst*GetModConfigData("thirst_decrease_speed")
 local bucket_max_level = 20
+local caffein_time = GetModConfigData("caffein_time")
+local alcohol_time = GetModConfigData("alcohol_time")
+local capacity_time = GetModConfigData("capacity_time")
+local immune_time = GetModConfigData("immune_time")
+local ghost_time = GetModConfigData("ghost_time")
+local drunkard_time = GetModConfigData("drunkard_time")
 
 table.insert(TUNING.GAMEMODE_STARTING_ITEMS.DEFAULT.WARLY,"portablekettle_item")
 
@@ -136,15 +142,15 @@ water_tuning =
 	TEA_TREE_REGROWTH_TIME_MULT = 1,
 	CAFFEINBERRY_REGROWTH_TIME_MULT = 1,
 
-	CAFFEIN_TIME = TUNING.TOTAL_DAY_TIME*GetModConfigData("caffein_time"),
+	CAFFEIN_TIME = TUNING.TOTAL_DAY_TIME*caffein_time,
 	CAFFEIN_SPEED = GetModConfigData("caffein_speed"),
 	TEASLEEP_TIME = GetModConfigData("sleeping_time"),
-	INTOXICATION_TIME = TUNING.TOTAL_DAY_TIME*GetModConfigData("alcohol_time"),
+	INTOXICATION_TIME = TUNING.TOTAL_DAY_TIME*alcohol_time,
 	MAX_CPACITY = GetModConfigData("max_capacity"),
-	CAPACITY_TIME = TUNING.TOTAL_DAY_TIME*GetModConfigData("capacity_time"),
-	IMMUNE_TIME = TUNING.TOTAL_DAY_TIME*GetModConfigData("immune_time"),
-	GHOST_TIME = TUNING.TOTAL_DAY_TIME*GetModConfigData("ghost_time"),
-	DRUNKARD_DURATION = TUNING.TOTAL_DAY_TIME*GetModConfigData("drunkard_time"),
+	CAPACITY_TIME = TUNING.TOTAL_DAY_TIME*capacity_time,
+	IMMUNE_TIME = TUNING.TOTAL_DAY_TIME*immune_time,
+	GHOST_TIME = TUNING.TOTAL_DAY_TIME*ghost_time,
+	DRUNKARD_DURATION = TUNING.TOTAL_DAY_TIME*drunkard_time,
 
 	--well sprinkler
 	SPRINKLER_MAX_FUEL_TIME = TUNING.TOTAL_DAY_TIME,

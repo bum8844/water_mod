@@ -42,7 +42,7 @@ local mushrooms =
 AddIngredientValues(mushrooms, {veggie = .5, mushroom = 1},true)
 AddIngredientValues(teaingredients, {veggie = .5, decoration = 1})
 
-AddIngredientValues({"tealeaves"}, {decoration = 1}, true)
+AddIngredientValues({"tealeaves"}, {decoration = 1}, false, true)
 AddIngredientValues({"caffeinberry_bean"}, {fruit=.5}, true)
 AddIngredientValues({"caffeinberry_bean_cooked"}, {fruit=1})
 AddIngredientValues({"tea_seed_cooked"}, {seed=1})

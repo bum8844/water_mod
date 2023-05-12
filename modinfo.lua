@@ -160,8 +160,8 @@ configuration_options =
 		label = "Time",
 		options = 
 		{
-			{description = "VeryShort", data = 0.5},
-			{description = "Short", data = 0.7},
+			{description = "VeryShort", data = .5},
+			{description = "Short", data = .7},
 			{description = "Default", data = 1},
 			{description = "Long", data = 2},
 			{description = "VeryLong", data = 4},
@@ -202,39 +202,39 @@ configuration_options =
 		label = "Intoxication Time",
 		options =
 		{
-			{description = "VeryShort", data = 0.125},
-			{description = "Short", data = 0.25},
-			{description = "Default", data = 0.5},
-			{description = "Long", data = 0.625},
-			{description = "VeryLong", data = 0.75},
+			{description = "VeryShort", data = .125},
+			{description = "Short", data = .25},
+			{description = "Default", data = .5},
+			{description = "Long", data = .625},
+			{description = "VeryLong", data = .75},
 		},
-		default = 0.5
+		default = .5
 	},
 	{
 		name = "drunkard_time",
 		label = "Drunkard Time",
 		options =
 		{
-			{description = "VeryShort", data = 0.125},
-			{description = "Short", data = 0.25},
-			{description = "Default", data = 0.5},
-			{description = "Long", data = 0.625},
-			{description = "VeryLong", data = 0.75},
+			{description = "VeryShort", data = .125},
+			{description = "Short", data = .25},
+			{description = "Default", data = .5},
+			{description = "Long", data = .625},
+			{description = "VeryLong", data = .75},
 		},
-		default = 0.5
+		default = .5
 	},
 	{
 		name = "immune_time",
 		label = "Less Pain Time",
 		options =
 		{
-			{description = "VeryShort", data = 0.125},
-			{description = "Short", data = 0.25},
-			{description = "Default", data = 0.5},
-			{description = "Long", data = 0.625},
-			{description = "VeryLong", data = 0.75},
+			{description = "VeryShort", data = .125},
+			{description = "Short", data = .25},
+			{description = "Default", data = .5},
+			{description = "Long", data = .625},
+			{description = "VeryLong", data = .75},
 		},
-		default = 0.5
+		default = .5
 	},
 	SEPARATOR,
 	Title("Drink Alcohol Capacity"),
@@ -260,13 +260,13 @@ configuration_options =
 		label = "Decrease Intoxication",
 		options =
 		{
-			{description = "VeryShort", data = 0.125},
-			{description = "Short", data = 0.25},
-			{description = "Default", data = 0.5},
-			{description = "Long", data = 0.625},
-			{description = "VeryLong", data = 0.75},
+			{description = "VeryShort", data = .125},
+			{description = "Short", data = .25},
+			{description = "Default", data = .5},
+			{description = "Long", data = .625},
+			{description = "VeryLong", data = .75},
 		},
-		default = 0.5
+		default = .5
 	},
 	SEPARATOR,
 	Title("Drink O.B.E. Effect"),
@@ -276,12 +276,12 @@ configuration_options =
 		label = "Time",
 		options =
 		{
-			{description = "VeryShort", data = 0.0625},
-			{description = "Short", data = 0.125},
-			{description = "Default", data = 0.25},
-			{description = "Long", data = 0.5},
+			{description = "VeryShort", data = .0625},
+			{description = "Short", data = .125},
+			{description = "Default", data = .25},
+			{description = "Long", data = .5},
 			{description = "VeryLong", data = 1},
 		},
-		default = 0.25
+		default = .25
 	},
 }
