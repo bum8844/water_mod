@@ -50,7 +50,7 @@ function Dcapacity:Start_Intoxication()
 
 	self.left_timer = GetTime() + self.timer
 
-	self.intoxication_task = self.inst:DoTaskInTime(timer,Done_Intoxication,self)
+	self.intoxication_task = self.inst:DoTaskInTime(self.timer,Done_Intoxication,self)
 end
 
 function Dcapacity:Remove_Capacity(num)

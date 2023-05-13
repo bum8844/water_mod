@@ -54,6 +54,7 @@ local function OnDetached_sleepdrink(inst, target)
             Dodetox(inst, target)
         end
     end
+    target.drinksleeptask = nil
     inst:Remove()
 end
 
@@ -110,10 +111,14 @@ local function fn_sleepdrink()
 end
 
 local function OnAttached_detoxbuff(inst, target)
-    if target.detoxbuffbuff_duration then
-        inst.components.timer:StartTimer("detoxbuff_done", target.detoxbuffbuff_duration)
+    if target.detoxbuff_duration then
+        inst.components.timer:StartTimer("detoxbuff_done", target.detoxbuff_duration)
     end
     if not inst.components.timer:TimerExists("detoxbuff_done") then
+        inst.components.debuff:Stop()
+        return
+    end
+    if not target.components.dcapacity:IsDrunk() then
         inst.components.debuff:Stop()
         return
     end
@@ -127,20 +132,22 @@ end
 
 local function OnDetached_detoxbuff(inst, target)
     Dodetox(inst, target)
+    target.endtask = nil
     inst:Remove()
 end
 
 local function OnExtended_detoxbuff(inst, target)
     if target.components.dcapacity:IsDrunk() then
         local current_duration = inst.components.timer:GetTimeLeft("detoxbuff_done")
-        local new_duration = math.max(current_duration, target.sleepdrinkbuff_duration)
+        local new_duration = math.max(current_duration, target.detoxbuff_duration)
         inst.components.timer:StopTimer("detoxbuff_done")
         inst.components.timer:StartTimer("detoxbuff_done", new_duration)
     else
-        inst.components.debuff:Stop()
+        target.endtask = target:DoTaskInTime(0, function()
+            inst.components.debuff:Stop()
+        end)
     end
     target.components.dcapacity:Remove_Capacity(1)
-    print("잔여 주량:"..target.components.dcapacity:GetCapacity())
 end
 
 local function fn_detoxbuff()

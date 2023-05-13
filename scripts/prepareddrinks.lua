@@ -320,13 +320,12 @@ local drinks =
 					eater.components.debuffable:AddDebuff("detoxbuff", "detoxbuff")
 				elseif eater.components.dcapacity:GetCapacity() > 0 then
 					eater.components.dcapacity:Remove_Capacity(1)
-					print("잔여 주량:"..target.components.dcapacity:GetCapacity())
 				end
 			else
 				eater.components.locomotor:RemoveExternalSpeedMultiplier(eater, "alcoholdebuff")
 			end
 		end,
-	}
+	},
 
 	mulled =
 	{
