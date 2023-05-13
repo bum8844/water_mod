@@ -133,7 +133,7 @@ local drinks =
 	{
 		test = function(boilier, names, tags) return (names.pomegranate or names.pomegranate_cooked) and tags.fruit and not tags.veggie and notmeat(tags) and notname(names) and ressthing(names) end,
 		priority = 2,
-		health = TUNING.HEALING_LARGE,
+		health = TUNING.HEALING_HUGE,
 		hunger = TUNING.DRINK_CALORIES/4,
 		sanity = TUNING.SANITY_SUPERTINY/2,
 		thirst = TUNING.HYDRATION_SMALL,
@@ -146,8 +146,8 @@ local drinks =
 	fig_juice =
 	{
 		test = function(boilier, names, tags) return (names.fig or names.fig_cooked) and tags.fruit and not tags.veggie and notmeat(tags) and notname(names) and ressthing(names) end,
-		priority = 2,
-		health = TUNING.HEALING_HUGE,
+		priority = 3,
+		health = TUNING.HEALING_MOREHUGE,
 		hunger = TUNING.DRINK_CALORIES/2,
 		sanity = TUNING.SANITY_TINY/2,
 		thirst = TUNING.HYDRATION_SMALL,
@@ -160,8 +160,8 @@ local drinks =
 	dragonjuice =
 	{
 		test = function(boilier, names, tags) return ((names.dragonfruit or 0) + (names.dragonfruit_cooked or 0) >= 2 ) and not tags.veggie and notmeat(tags) and notname(names) and ressthing(names) end,
-		priority = 3,
-		health = TUNING.HEALING_MOREHUGE,
+		priority = 2,
+		health = TUNING.HEALING_LARGE,
 		hunger = TUNING.CALORIES_SMALL,
 		sanity = TUNING.SANITY_MED/3,
 		thirst = TUNING.HYDRATION_SMALL,
@@ -169,22 +169,6 @@ local drinks =
 		cooktime = TUNING.KETTLE_FRUIT,
 		potlevel = "mid",
 		potlevel_bottle = "mid",
-		prefabs = { "sleepdrinkbuff" },
-		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_SLEEP_AND_DETOX,
-		oneatenfn = function(inst, eater)
-			local knockouttime = TUNING.TEASLEEP_TIME + math.random()
-			if not eater.components.health or eater.components.health:IsDead() or eater:HasTag("playerghost") then
-				return
-			elseif eater.components.debuffable and eater.components.debuffable:IsEnabled() and eater:HasTag("player") then
-				eater.sleepdrinkbuff_duration = TUNING.TEASLEEP_TIME + math.random()
-				eater.components.debuffable:AddDebuff("sleepdrinkbuff", "sleepdrinkbuff")
-			else
-				eater.components.sleeper:AddSleepiness(7, knockouttime)
-				eater:DoTaskInTime(knockouttime, function()
-					eater.components.locomotor:RemoveExternalSpeedMultiplier(eater, "alcoholdebuff")
-				end)
-			end
-		end,
 	},
 	
 	glowberryjuice =
@@ -280,7 +264,7 @@ local drinks =
 
 	veggie_tea =
 	{
-		test = function(boilier, names, tags) return tags.veggie and not tags.lotus and not tags.fruit and notmeat(tags) and notname(names) and ressthing(names) end,
+		test = function(boilier, names, tags) return tags.veggie and not tags.lotus and notmeat(tags) and notname(names) and ressthing(names) end,
 		priority = 0,
 		health = TUNING.HEALING_SMALL*2,
 		hunger = TUNING.DRINK_CALORIES/4,
@@ -316,6 +300,33 @@ local drinks =
 		potlevel = "small",
 		potlevel_bottle = "mid",
 	},
+	--해장 코드 태스트해야함
+	tomato_juice = {
+		test = function(boilier, names, tags) return (names.tomato or names.tomato_cooked or names.tomato_dried) and tags.veggie and not tags.fruit and notmeat(tags) and notname(names) end,
+		priority = 1,
+		health = TUNING.HEALING_SMALL*2,
+		hunger = TUNING.DRINK_CALORIES/2,
+		sanity = TUNING.SANITY_TINY/2,
+		thirst = TUNING.HYDRATION_LARGE,
+		perishtime = TUNING.PERISH_MED,
+		prefabs = { "detoxbuff" },
+		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_DETOX,
+		oneatenfn = function(inst, eater)
+			if not eater.components.health or eater.components.health:IsDead() or eater:HasTag("playerghost") then
+				return
+			elseif eater.components.debuffable and eater.components.debuffable:IsEnabled() and eater:HasTag("player") then
+				if eater:HasTag("drunk") then
+					eater.detoxbuff_duration = TUNING.DRUNKARD_DURATION*.5
+					eater.components.debuffable:AddDebuff("detoxbuff", "detoxbuff")
+				elseif eater.components.dcapacity:GetCapacity() > 0 then
+					eater.components.dcapacity:Remove_Capacity(1)
+					print("잔여 주량:"..target.components.dcapacity:GetCapacity())
+				end
+			else
+				eater.components.locomotor:RemoveExternalSpeedMultiplier(eater, "alcoholdebuff")
+			end
+		end,
+	}
 
 	mulled =
 	{
@@ -331,15 +342,15 @@ local drinks =
 		cooktime = TUNING.KETTLE_VEGGIE,
 		potlevel = "mid",
 		potlevel_bottle = "mid",
-		prefabs = { "sleepdrinkbuff_ex", "healthregenbuff","honeyed" },
+		prefabs = { "sleepdrinkbuff", "healthregenbuff","honeyed" },
 		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_MULLED,
 		oneatenfn = function(inst, eater)
 			local knockouttime = TUNING.TEASLEEP_TIME + math.random()
 			if not eater.components.health or eater.components.health:IsDead() or eater:HasTag("playerghost") then
 				return
 			elseif eater.components.debuffable and eater.components.debuffable:IsEnabled() and eater:HasTag("player") then
-				eater.sleepdrinkbuff_ex_duration = TUNING.TEASLEEP_TIME + math.random()
-				eater.components.debuffable:AddDebuff("sleepdrinkbuff_ex", "sleepdrinkbuff_ex")
+				eater.sleepdrinkbuff_duration = TUNING.TEASLEEP_TIME + math.random()
+				eater.components.debuffable:AddDebuff("sleepdrinkbuff", "sleepdrinkbuff")
 			else
 				eater.components.sleeper:AddSleepiness(7, knockouttime)
 				eater:DoTaskInTime(knockouttime, function()

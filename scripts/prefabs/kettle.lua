@@ -311,8 +311,8 @@ end
 
 local function getstatus(inst)
     return (inst:HasTag("burnt") and "BURNT")
-        or (inst.components.distiller:GetTimeToBoil() > 15 and "PURIFY_LONG")
-        or (inst.components.distiller:isBoiling() and inst.components.distiller:GetTimeToBoil() < 15 and "PURIFY_SHORT")
+        or (inst.components.distiller:GetTimeToBoil() > 15 and ((inst.components.waterlevel.watertype == WATERTYPE.CLEAN_ICE and "MELT_LONG")) or "PURIFY_LONG")
+        or (inst.components.distiller:isBoiling() and inst.components.distiller:GetTimeToBoil() < 15 and ((inst.components.waterlevel.watertype == WATERTYPE.CLEAN_ICE and "MELT_SHORT")) or "PURIFY_SHORT")
         or (inst.components.brewing:IsDone() and "DONE")
         or (inst.components.brewing:GetTimeToCook() > 15 and "BOILING_LONG")
         or (inst.components.brewing:IsCooking() and inst.components.brewing:GetTimeToCook() < 15 and "BOILING_SHORT")
