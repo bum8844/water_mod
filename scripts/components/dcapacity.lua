@@ -3,6 +3,8 @@ local Dcapacity = Class(function(self,inst)
 
 	self.max_capacity = TUNING.MAX_CPACITY or 5
 	self.capacity = 0
+	self.capacity_half = math.ceil(self.max_capacity*.5)
+	self.capacity_critical = math.ceil(self.max_capacity*.8)
 	self.intoxication_task = nil
 	self.timer = TUNING.CAPACITY_TIME or TUNING.TOTAL_DAY_TIME*.5
 	self.left_timer = nil
@@ -30,6 +32,14 @@ end
 
 function Dcapacity:IsDrunk()
 	return self.capacity > self.max_capacity
+end
+
+function Dcapacity:IsHalf()
+	return self.capacity_half =< self.capacity
+end
+
+function Dcapacity:IsCritical()
+	return self.capacity_critical =< self.capacity
 end
 
 function Dcapacity:IsIntoxication()
