@@ -90,7 +90,7 @@ local drinks =
 	{
 		test = function(boilier, names, tags) return (names.berries or  names.berries_cooked or names.berries_juicy or names.berries_juicy_cooked) and tags.fruit and not tags.veggie and notmeat(tags) and notname(names) and ressthing(names) end,
 		priority = 0,
-		health = TUNING.HEALING_SMALL,
+		health = TUNING.HEALING_LARGE,
 		hunger = TUNING.DRINK_CALORIES/5, --1
 		sanity = 0,
 		thirst = TUNING.HYDRATION_SMALLTINY,
@@ -119,7 +119,7 @@ local drinks =
 	{
 		test = function(boilier, names, tags) return (names.cave_banana or names.cave_banana_cooked) and tags.fruit and not tags.veggie and notmeat(tags) and notname(names) and ressthing(names) end,
 		priority = 2,
-		health = TUNING.HEALING_MEDLARGE,
+		health = TUNING.HEALING_LARGE,
 		hunger = TUNING.CALORIES_TINY,
 		sanity = TUNING.SANITY_SUPERTINY/2,
 		thirst = TUNING.HYDRATION_SMALL,
@@ -161,8 +161,8 @@ local drinks =
 	{
 		test = function(boilier, names, tags) return ((names.dragonfruit or 0) + (names.dragonfruit_cooked or 0) >= 2 ) and not tags.veggie and notmeat(tags) and notname(names) and ressthing(names) end,
 		priority = 2,
-		health = TUNING.HEALING_LARGE,
-		hunger = TUNING.CALORIES_SMALL,
+		health = TUNING.HEALING_MEDLARGE,
+		hunger = TUNING.CALORIES_LARGE,
 		sanity = TUNING.SANITY_MED/3,
 		thirst = TUNING.HYDRATION_SMALL,
 		perishtime = TUNING.PERISH_SLOW,
@@ -216,7 +216,7 @@ local drinks =
 	
 	caffeinberry_juice =
 	{
-		test = function(boilier, names, tags) return (( names.caffeinberry_bean_cooked or 0 ) + ( names.coffeebeans_cooked or 0 ) + ( names.mfp_coffeecherry_cooked or 0 ) >= 3) and not tags.veggie and notmeat(tags) and notname(names) end,
+		test = function(boilier, names, tags) return (( names.caffeinberry_bean_cooked or 0 ) + ( names.kyno_coffeebeans_cooked or 0 ) + ( names.coffeebeans_cooked or 0 ) + ( names.mfp_coffeecherry_cooked or 0 ) >= 3) and not tags.veggie and notmeat(tags) and notname(names) end,
 		priority = 5,
 		health = TUNING.HEALING_TINY,
 		hunger = 0,
