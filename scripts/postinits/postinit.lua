@@ -2,7 +2,6 @@ local postinits =
 {
 	components =
 	{
-		"stewer",
 		"dryer",
 		"eater",
 		"edible",
@@ -23,6 +22,7 @@ local postinits =
 		"portablespicer",
 		"staff",
 		"warly",
+		"wurt",
 	},
 
 	stategraphs =
@@ -53,7 +53,6 @@ if GetModConfigData("enable_thirst") then
 	table.insert(postinits.widgets, "statusdisplays")
 	table.insert(postinits.widgets, "bloodover_water")
 	table.insert(postinits.widgets, "healthbadge_water")
-	table.insert(postinits.utils, "thirstvalue")
 end
 
 for dir, v in pairs(postinits) do

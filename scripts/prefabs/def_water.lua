@@ -25,7 +25,7 @@ local function Change_Ice_Item(inst)
 end
 
 local function FreezeWater(inst)
-    local owner = inst.components.inventoryitem.owner
+    local owner = inst.components.inventoryitem ~= nil and inst.components.inventoryitem:GetGrandOwner() or nil
     local container = owner ~= nil and (owner.components.inventory or owner.components.container) or nil
 
     if container ~= nil then
@@ -45,12 +45,12 @@ local function FreezeWater(inst)
 end
 
 local function onperish(inst)
-    local owner = inst.components.inventoryitem.owner
+    local owner = inst.components.inventoryitem ~= nil and inst.components.inventoryitem:GetGrandOwner() or nil
     local container = owner ~= nil and (owner.components.inventory or owner.components.container) or nil
 
     if container ~= nil then
         local result = Change_Normal_Item(inst)
-        container:GiveItem(inst)
+        container:GiveItem(result)
     else
         local water = inst:HasTag("dirty") and "_dirty" or ""
         if inst.components.stackable:StackSize() >= 5 then

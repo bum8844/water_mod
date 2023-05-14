@@ -118,9 +118,25 @@ local SCENE =
         end
     end,
 
-    pickable = function(inst, doer, actions)
-        if inst:HasTag("pickable") and inst:HasTag("cleanwaterproduction") and not inst:HasTag("intense") then
-            table.insert(actions, ACTIONS.DRINK_HARVEST)
+    brewing = function(inst, doer, actions, right)
+        if not inst:HasTag("burnt") and
+            not (doer.replica.rider ~= nil and doer.replica.rider:IsRiding()) then
+            if inst:HasTag("donecooking") then
+                table.insert(actions, ACTIONS.HARVEST)
+            elseif right and (
+                (   
+                    inst:HasTag("readybrewing") and
+                    --(not inst:HasTag("professionalcookware") or doer:HasTag("professionalchef")) and
+                    (not inst:HasTag("mastercookware") or doer:HasTag("masterchef"))
+                ) or
+                (   inst.replica.container ~= nil and
+                    inst.replica.container:IsOpenedBy(doer) and
+                    inst.replica.container:IsFull() and
+                    inst.replica.waterlevel:HasWater()
+                )
+            ) then
+                table.insert(actions, ACTIONS.BREWING)
+            end
         end
     end,
 }

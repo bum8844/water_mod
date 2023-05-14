@@ -1,4 +1,10 @@
-require("actions")
+require "class"
+require "bufferedaction"
+require "debugtools"
+require 'util'
+require 'vecutil'
+require ("components/embarker")
+require ("actions")
 
 local function IsDirty(pos)
     local test = _G.TheWorld.Map:GetTileAtPoint(pos.x, 0, pos.z) == _G.WORLD_TILES.MANGROVE_SHORE or
@@ -24,10 +30,26 @@ local function ExtraDropDist(doer, dest, bufferedaction)
     return 0
 end
 
---Overriding existing actions
-local cook_stroverride = ACTIONS.COOK.stroverridefn or function(act) return end
-ACTIONS.COOK.stroverridefn = function(act)
-    return act.target:HasTag("kettle") and STRINGS.ACTIONS.BOIL or act.target:HasTag("brewery") and STRINGS.ACTIONS.FERMENT or cook_stroverride(act)
+local function DefaultRangeCheck(doer, target)
+    if target == nil then
+        return
+    end
+    local target_x, target_y, target_z = target.Transform:GetWorldPosition()
+    local doer_x, doer_y, doer_z = doer.Transform:GetWorldPosition()
+    local dst = _G.distsq(target_x, target_z, doer_x, doer_z)
+    return dst <= 16
+end
+
+local function ExtraPickupRange(doer, dest)
+    if dest ~= nil then
+        local target_x, target_y, target_z = dest:GetPoint()
+
+        local is_on_water =  _G.TheWorld.Map:IsOceanTileAtPoint(target_x, 0, target_z) and not _G.TheWorld.Map:IsPassableAtPoint(target_x, 0, target_z)
+        if is_on_water then
+            return 0.75
+        end
+    end
+    return 0
 end
 
 local store_stroverride = ACTIONS.STORE.stroverridefn or function(act) return end
@@ -182,16 +204,115 @@ UPGRADE_TILEARRIVE.priority = 4
 UPGRADE_TILEARRIVE.rmb = true
 UPGRADE_TILEARRIVE.theme_music = "farming"
 
-DRINK_HARVEST = AddAction("DRINK_HARVEST",STRINGS.ACTIONS.HARVEST,function(act)
-    if act.target ~= nil and act.target.components.pickable ~= nil then
-        act.target.components.pickable:Pick(act.doer)
-        return true
-    end
-end)
+local HARVEST_ = ACTIONS.HARVEST.fn
 
-ACTIONS.PICK.priority = 1
-DRINK_HARVEST.priority = 2
-DRINK_HARVEST.canforce = true 
-DRINK_HARVEST.rangecheckfn = DefaultRangeCheck
-DRINK_HARVEST.extra_arrive_dist = ExtraPickupRange
-DRINK_HARVEST.mount_valid = true
+ACTIONS.HARVEST.fn = function(act)
+    if act.target.components.brewing ~= nil then
+        return act.target.components.brewing:Harvest(act.doer)
+    else
+        return HARVEST_(act)
+    end
+end
+
+BREWING = AddAction("BREWING",STRINGS.ACTIONS.BOIL,function(act)
+        if act.target.components.cooker ~= nil then
+            local cook_pos = act.target:GetPosition()
+            local ingredient = act.doer.components.inventory:RemoveItem(act.invobject)
+
+            ingredient.Transform:SetPosition(cook_pos:Get())
+
+            if not act.target.components.cooker:CanCook(ingredient, act.doer) then
+                act.doer.components.inventory:GiveItem(ingredient, nil, cook_pos)
+                return false
+            end
+
+            if ingredient.components.health ~= nil then
+                act.doer:PushEvent("murdered", { victim = ingredient, stackmult = 1 }) -- NOTES(JBK): Cooking something alive.
+                if ingredient.components.combat ~= nil then
+                    act.doer:PushEvent("killed", { victim = ingredient })
+                end
+            end
+
+            local product = act.target.components.cooker:CookItem(ingredient, act.doer)
+            if product ~= nil then
+                act.doer.components.inventory:GiveItem(product, nil, cook_pos)
+                return true
+            elseif ingredient:IsValid() then
+                act.doer.components.inventory:GiveItem(ingredient, nil, cook_pos)
+            end
+            return false
+        elseif act.target.components.brewing ~= nil then
+            if act.target.components.brewing:IsCooking() then
+                return true
+            end
+            local container = act.target.components.container
+            if container ~= nil and container:IsOpenedByOthers(act.doer) then
+                return false, "INUSE"
+            elseif not act.target.components.brewing:CanCook() then
+                return false
+            end
+            act.target.components.brewing:StartCooking(act.doer)
+            return true
+        elseif act.target.components.cookable ~= nil
+            and act.invobject ~= nil
+            and act.invobject.components.cooker ~= nil then
+
+            local cook_pos = act.target:GetPosition()
+
+            if act.doer:GetPosition():Dist(cook_pos) > 2 then
+                return false, "TOOFAR"
+            end
+
+            local owner = act.target.components.inventoryitem:GetGrandOwner()
+            local container = owner ~= nil and (owner.components.inventory or owner.components.container) or nil
+            local stacked = act.target.components.stackable ~= nil and act.target.components.stackable:IsStack()
+            local ingredient = stacked and act.target.components.stackable:Get() or act.target
+
+            if ingredient ~= act.target then
+                ingredient.Transform:SetPosition(cook_pos:Get())
+            end
+
+            if not act.invobject.components.cooker:CanCook(ingredient, act.doer) then
+                if container ~= nil then
+                    container:GiveItem(ingredient, nil, cook_pos)
+                elseif stacked and ingredient ~= act.target then
+                    act.target.components.stackable:SetStackSize(act.target.components.stackable:StackSize() + 1)
+                    ingredient:Remove()
+                end
+                return false
+            end
+
+            if ingredient.components.health ~= nil and ingredient.components.combat ~= nil then
+                act.doer:PushEvent("killed", { victim = ingredient })
+            end
+
+            local product = act.invobject.components.cooker:CookItem(ingredient, act.doer)
+            if product ~= nil then
+                if container ~= nil then
+                    container:GiveItem(product, nil, cook_pos)
+                else
+                    product.Transform:SetPosition(cook_pos:Get())
+                    if stacked and product.Physics ~= nil then
+                        local angle = math.random() * 2 * PI
+                        local speed = math.random() * 2
+                        product.Physics:SetVel(speed * math.cos(angle), GetRandomWithVariance(8, 4), speed * math.sin(angle))
+                    end
+                end
+                return true
+            elseif ingredient:IsValid() then
+                if container ~= nil then
+                    container:GiveItem(ingredient, nil, cook_pos)
+                elseif stacked and ingredient ~= act.target then
+                    act.target.components.stackable:SetStackSize(act.target.components.stackable:StackSize() + 1)
+                    ingredient:Remove()
+                end
+            end
+            return false
+        end
+    end)
+
+BREWING.stroverridefn = function(act)
+    return act.target ~= nil and act.target:HasTag("brewery") and STRINGS.ACTIONS.FERMENT or nil
+end
+BREWING.mount_valid = true
+BREWING.priority = 2

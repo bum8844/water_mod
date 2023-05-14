@@ -13,6 +13,15 @@ local function OnTaskTick(inst, self, period)
     self:DoDec(period)
 end
 
+local function tempcheck(self, inst)
+    local tempcheck = self.inst.components.temperature:GetCurrent()
+    local issummer = TheWorld.state.issummer
+    local iswinter = TheWorld.state.iswinter
+    return issummer and (( tempcheck > TUNING.OVERHEAT_TEMP - 15 and 4 ) or ( tempcheck > TUNING.OVERHEAT_TEMP - 30 and 2 )) or
+           iswinter and (( tempcheck < 5 and 0.25 ) or ( tempcheck < 15 and 0.5 )) or 
+           (tempcheck > TUNING.OVERHEAT_TEMP - 15 and 2) or (tempcheck < 5 and 0.5) or 1
+end
+
 local Thirst = Class(function(self, inst)
     self.inst = inst
     self.max = 100
@@ -129,10 +138,11 @@ end
 
 function Thirst:DoDec(dt, ignore_damage)
     local old = self.current
+    local tempmuit = tempcheck(self, self.inst)
 
     if self.burning then
         if self.current > 0 then
-            self:DoDelta(-self.thirstrate * dt * self.burnrate * self.burnratemodifiers:Get(), true)
+            self:DoDelta(-self.thirstrate * dt * self.burnrate * self.burnratemodifiers:Get() * tempmuit, true)
         elseif not ignore_damage then
             if self.overridestarvefn ~= nil then
                 self.overridestarvefn(self.inst, dt)

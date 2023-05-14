@@ -3,6 +3,13 @@ local function alcahol(inst, eater)
 		return
 	elseif eater.components.debuffable and eater.components.debuffable:IsEnabled() and eater:HasTag("player") then
 		eater.components.dcapacity:Start_Intoxication()
+		if not eater:HasTag("valkyrie") then
+			if eater.components.dcapacity:IsCritical() then
+				eater.components.talker:Say(GetString(eater,"ANNOUNCE_DCAPACITY_CRITICAL"))
+			elseif eater.components.dcapacity:IsHalf() then
+				eater.components.talker:Say(GetString(eater,"ANNOUNCE_DCAPACITY_HALF"))
+			end
+		end
 		if eater.components.dcapacity:IsDrunk() then
 			if not eater:HasTag("valkyrie") then
 				eater.alcoholdebuff_duration = TUNING.INTOXICATION_TIME
@@ -82,7 +89,7 @@ local drinks =
 		health = TUNING.HEALING_MEDSMALL,
 		hunger = TUNING.CALORIES_SMALL,
 		sanity = TUNING.SANITY_SUPERTINY*3,
-		thirst = TUNING.HYDRATION_LARGE,
+		thirst = TUNING.HYDRATION_HUGE,
 		perishtime = TUNING.PERISH_PRESERVED,
 		cooktime = (TUNING.KETTLE_DECORATION + TUNING.SODA_WAIT),
 		potlevel = "mid",
@@ -97,12 +104,12 @@ local drinks =
 		health = TUNING.HEALING_MED,
 		hunger = TUNING.CALORIES_MEDSMALL,
 		sanity = TUNING.SANITY_MED,
-		thirst = TUNING.HYDRATION_MED,
+		thirst = TUNING.HYDRATION_MOREHUGE,
 		perishtime = TUNING.PERISH_PRESERVED,
 		cooktime = (TUNING.KETTLE_LUXURY_GOODS + TUNING.SODA_WAIT),
 		potlevel = "mid",
 		potlevel_bottle = "mid",
-		prefabs = { "healthregenbuff" },
+		prefabs = { "healthregenbuff","honeyed" },
 		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_HEALTH_REGEN,
 		oneatenfn = function(inst, eater)
 			if not eater.components.health or eater.components.health:IsDead() or eater:HasTag("playerghost") then
@@ -120,12 +127,12 @@ local drinks =
 		health = TUNING.HEALING_MED/2,
 		hunger = TUNING.CALORIES_MEDSMALL,
 		sanity = TUNING.SANITY_LARGE,
-		thirst = TUNING.HYDRATION_LARGE,
+		thirst = TUNING.HYDRATION_MOREHUGE,
 		perishtime = TUNING.PERISH_PRESERVED,
 		cooktime = (TUNING.KETTLE_LUXURY_GOODS + TUNING.SODA_WAIT),
 		potlevel = "mid",
 		potlevel_bottle = "mid",
-		prefabs = { "healthregenbuff","caffeinbuff" },
+		prefabs = { "healthregenbuff","caffeinbuff","honeyed" },
 		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_COLA,
 		oneatenfn = function(inst, eater)
 			if not eater.components.health or eater.components.health:IsDead() or eater:HasTag("playerghost") then
@@ -152,8 +159,8 @@ local drinks =
 		health = TUNING.HEALING_SUPERHUGE*4,
 		hunger = TUNING.CALORIES_HUGE*4,
 		sanity = TUNING.SANITY_HUGE*8,
-		thirst = TUNING.HYDRATION_HUGE*4,
-		tags = {"masterfood","lightdrink"},
+		thirst = TUNING.HYDRATION_SUPERHUGE,
+		tags = { "masterfood","lightdrink","honeyed" },
 		perishtime = TUNING.PERISH_PRESERVED,
 		cooktime = (TUNING.KETTLE_LUXURY_GOODS + TUNING.SODA_WAIT),
 		potlevel = "mid",
@@ -226,7 +233,7 @@ local drinks =
 		hunger = TUNING.DRINK_CALORIES,
 		sanity = TUNING.SANITY_SMALL,
 		thirst = TUNING.HYDRATION_TINY,
-		tags = {"alcohol"},
+		tags = {"alcohol","honeyed"},
 		perishtime = TUNING.PERISH_SUPERSLOW,
 		cooktime = (TUNING.KETTLE_VEGGIE + TUNING.BEER_WAIT),
 		potlevel = "mid",

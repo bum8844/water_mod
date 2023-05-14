@@ -49,10 +49,10 @@ local function doboil(inst, self)
 		self.inst.components.waterlevel.watertype = WATERTYPE.CLEAN
 	end
 
-	if self.inst.components.stewer == nil then
+	if self.inst.components.brewing == nil then
 		control(inst, self)
 	else
-		if self.inst.components.stewer.product == nil then
+		if self.inst.components.brewing.product == nil then
 			control(inst, self)
 		end
 	end
