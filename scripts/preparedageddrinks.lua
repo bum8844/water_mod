@@ -3,13 +3,6 @@ local function alcahol(inst, eater)
 		return
 	elseif eater.components.debuffable and eater.components.debuffable:IsEnabled() and eater:HasTag("player") then
 		eater.components.dcapacity:Start_Intoxication()
-		if not eater:HasTag("valkyrie") then
-			if eater.components.dcapacity:IsCritical() then
-				eater.components.talker:Say(GetString(eater,"ANNOUNCE_DCAPACITY_CRITICAL"))
-			elseif eater.components.dcapacity:IsHalf() then
-				eater.components.talker:Say(GetString(eater,"ANNOUNCE_DCAPACITY_HALF"))
-			end
-		end
 		if eater.components.dcapacity:IsDrunk() then
 			if not eater:HasTag("valkyrie") then
 				eater.alcoholdebuff_duration = TUNING.INTOXICATION_TIME
@@ -17,6 +10,14 @@ local function alcahol(inst, eater)
 				eater.components.debuffable:AddDebuff("drunkarddebuff", "drunkarddebuff")
 			else
 				eater.components.talker:Say(GetString(eater,"ANNOUNCE_DRUNK_IMMUNITY"))
+			end
+		else
+			if not eater:HasTag("valkyrie") then
+				if eater.components.dcapacity:IsCritical() then
+					eater.components.talker:Say(GetString(eater,"ANNOUNCE_DCAPACITY_CRITICAL"))
+				elseif eater.components.dcapacity:IsHalf() then
+					eater.components.talker:Say(GetString(eater,"ANNOUNCE_DCAPACITY_HALF"))
+				end
 			end
 		end
 		eater.immunebuff_duration = TUNING.IMMUNE_TIME
