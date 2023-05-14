@@ -317,7 +317,6 @@ local function getstatus(inst)
                 inst.components.distiller:GetTimeToBoil() > 15 and ( inst.components.waterlevel.watertype == WATERTYPE.CLEAN_ICE and "MELT_LONG" or "PURIFY_LONG" )
                 or ( inst.components.waterlevel.watertype == WATERTYPE.CLEAN_ICE and "MELT_SHORT" or "PURIFY_SHORT" )
             ))
-        or (inst.components.distiller:GetTimeToBoil() > 15 and "MELT_SHORT" or "PURIFY_LONG")
         or (inst.components.waterlevel:GetWater() > 0 and "HASWATER")
         or "EMPTY"
 end

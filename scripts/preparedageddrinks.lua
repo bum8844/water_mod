@@ -5,9 +5,9 @@ local function alcahol(inst, eater)
 		eater.components.dcapacity:Start_Intoxication()
 		if not eater:HasTag("valkyrie") then
 			if eater.components.dcapacity:IsCritical() then
-				print("주량의 임계 값임")
+				eater.components.talker:Say(GetString(eater,"ANNOUNCE_DCAPACITY_CRITICAL"))
 			elseif eater.components.dcapacity:IsHalf() then
-				print("주량의 중간 값임")
+				eater.components.talker:Say(GetString(eater,"ANNOUNCE_DCAPACITY_HALF"))
 			end
 		end
 		if eater.components.dcapacity:IsDrunk() then
