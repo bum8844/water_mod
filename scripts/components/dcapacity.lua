@@ -35,11 +35,11 @@ function Dcapacity:IsDrunk()
 end
 
 function Dcapacity:IsHalf()
-	return self.capacity_half =< self.capacity
+	return self.capacity_half <= self.capacity
 end
 
 function Dcapacity:IsCritical()
-	return self.capacity_critical =< self.capacity
+	return self.capacity_critical <= self.capacity
 end
 
 function Dcapacity:IsIntoxication()

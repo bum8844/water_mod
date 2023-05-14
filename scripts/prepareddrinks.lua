@@ -21,28 +21,157 @@ local function dummy(boilier, names, tags)
 	return false
 end
 
-local function onlytealeaves(names, tags)
-	return names.tealeaves and (tags.decoration or 0) and ((tags.veggie or 0) <= 2) and not names.tealeaves_dried and not names.petals and not names.forgetmelots and not names.foliage and not names.petals_evil and not names.succulent_picked and not names.firenettles and not names.moon_tree_blossom and not names.tillweed and not tags.fruit and not names.refined_dust
+local function Tea_Def(names, tags)
+	return (tags.decoration or 0) and ((tags.veggie or 0) <= 2) and ((tags.mushroom or 0) < 4) and not tags.fruit
 end
 
-local function onlytealeaves_dried(names, tags)
-	return names.tealeaves_dried and (tags.decoration or 0) and ((tags.veggie or 0) <= 2) and not names.tealeaves and not names.petals and not names.forgetmelots and not names.foliage and not names.petals_evil and not names.succulent_picked and not names.firenettles and not names.moon_tree_blossom and not names.tillweed and not tags.fruit and not names.refined_dust
+local function IsTealeaves(names, tags)
+	return names.tealeaves and 
+	Tea_Def(names, tags) and not 
+	( 
+		names.tealeaves_dried or 
+		names.kyno_piko_orange or 
+		names.piko_orange or 
+		names.foliage or
+		names.forgetmelots or
+		names.petals or
+		names.moon_tree_blossom or
+		names.petals_evil or 
+		names.firenettles or 
+		names.tillweed or
+		names.cactus_flower or
+		names.lotus_flower or 
+		names.kyno_lotus_flower or 
+		names.succulent_picked or
+		tags.lotus
+	)
 end
 
-local function onlyfoliage(names, tags)
-	return names.foliage and (tags.decoration or 0) and ((tags.veggie or 0) <= 2) and not names.tealeaves and not names.petals and not names.forgetmelots and not names.tealeaves_dried and not names.petals_evil and not names.succulent_picked and not names.firenettles and not names.moon_tree_blossom and not names.tillweed and not tags.fruit and not names.refined_dust
+local function IsTealeaves_dried(names, tags)
+	return ( names.tealeaves_dried or names.kyno_piko_orange or names.piko_orange ) and 
+	Tea_Def(names, tags) and not  
+	( 
+		names.tealeaves or
+		names.foliage or
+		names.forgetmelots or
+		names.petals or
+		names.moon_tree_blossom or
+		names.petals_evil or 
+		names.firenettles or 
+		names.tillweed or
+		names.cactus_flower or
+		names.lotus_flower or 
+		names.kyno_lotus_flower or 
+		names.succulent_picked or
+		tags.lotus
+	)
 end
 
-local function onlyflower(names, tags)
-	return (names.forgetmelots or names.petals or names.moon_tree_blossom) and (tags.decoration or 0) and ((tags.veggie or 0) <= 2) and not names.tealeaves and not names.foliage and not names.tealeaves_dried and not names.petals_evil and not names.succulent_picked and not names.firenettles and not names.tillweed and not tags.fruit and not names.refined_dust
+local function IsFoliage(names, tags)
+	return names.foliage and 
+	Tea_Def(names, tags) and not 
+	( 
+		names.tealeaves or
+		names.tealeaves_dried or 
+		names.kyno_piko_orange or 
+		names.piko_orange or
+		names.forgetmelots or
+		names.petals or
+		names.moon_tree_blossom or
+		names.petals_evil or 
+		names.firenettles or 
+		names.tillweed or
+		names.cactus_flower or
+		names.lotus_flower or 
+		names.kyno_lotus_flower or 
+		names.succulent_picked or
+		tags.lotus 
+	)
 end
 
-local function onlyflower_evil(names, tags)
-	return (names.petals_evil or names.firenettles or names.tillweed) and (tags.decoration or 0) and ((tags.veggie or 0) <= 2) and not names.tealeaves and not names.foliage and not names.tealeaves_dried and not names.forgetmelots and not names.succulent_picked and not names.petals and not names.moon_tree_blossom and not tags.fruit and not names.refined_dust
+local function IsFlower(names, tags)
+	return ( names.forgetmelots or names.petals or names.moon_tree_blossom ) and 
+	Tea_Def(names, tags) and not 
+	( 
+		names.tealeaves or
+		names.tealeaves_dried or 
+		names.kyno_piko_orange or 
+		names.piko_orange or
+		names.foliage or
+		names.petals_evil or 
+		names.firenettles or 
+		names.tillweed or
+		names.cactus_flower or
+		names.lotus_flower or 
+		names.kyno_lotus_flower or 
+		names.succulent_picked or
+		tags.lotus 
+	)
+end
+
+local function IsFlower_Evil(names, tags)
+	return ( names.petals_evil or names.firenettles or names.tillweed ) and 
+	Tea_Def(names, tags) and not 
+	( 
+		names.tealeaves or
+		names.tealeaves_dried or 
+		names.kyno_piko_orange or 
+		names.piko_orange or
+		names.foliage or
+		names.forgetmelots or 
+		names.petals or 
+		names.moon_tree_blossom or
+		names.cactus_flower or
+		names.lotus_flower or 
+		names.kyno_lotus_flower or 
+		names.succulent_picked or
+		tags.lotus 
+	)
+end
+
+local function IsFlower_Cactus(names, tags)
+	return names.cactus_flower and 
+	Tea_Def(names, tags) and not 
+	( 
+		names.tealeaves or
+		names.tealeaves_dried or 
+		names.kyno_piko_orange or 
+		names.piko_orange or
+		names.foliage or
+		names.forgetmelots or 
+		names.petals or 
+		names.moon_tree_blossom or
+		names.petals_evil or 
+		names.firenettles or 
+		names.tillweed or
+		names.lotus_flower or 
+		names.kyno_lotus_flower or 
+		names.succulent_picked or
+		tags.lotus 
+	)
+end
+
+local function IsFlower_Lotus(names, tags)
+	return ( names.lotus_flower or names.kyno_lotus_flower or names.succulent_picked or tags.lotus ) and 
+	Tea_Def(names, tags) and not 
+	( 
+		names.tealeaves or
+		names.tealeaves_dried or 
+		names.kyno_piko_orange or 
+		names.piko_orange or
+		names.foliage or
+		names.forgetmelots or 
+		names.petals or 
+		names.moon_tree_blossom or
+		names.petals_evil or 
+		names.firenettles or 
+		names.tillweed or
+		names.cactus_flower
+	)
 end
 
 local function notmeat(tags)
-	return not (tags.meat or tags.egg)
+	return not (tags.fish or tags.meat or tags.egg or tags.boss or tags.poop or tags.elemental or tags.paper or tags.horn or tags.spotspice or tags.gears or tags.rabbit or tags.beanbug or tags.gummybug or tags.flour or tags.bread or tags.chocolate)
 end
 
 local function ressthing(names)
@@ -300,7 +429,7 @@ local drinks =
 		potlevel = "small",
 		potlevel_bottle = "mid",
 	},
-	--해장 코드 태스트해야함
+
 	tomato_juice = {
 		test = function(boilier, names, tags) return (names.tomato or names.tomato_cooked or names.tomato_dried) and tags.veggie and not tags.fruit and notmeat(tags) and notname(names) end,
 		priority = 1,
@@ -365,7 +494,7 @@ local drinks =
 	-- 꽃을 섞으면 나오는 결과물
 	mixflower =
 	{
-		test = function(boilier, names, tags) return (tags.decoration or 0) and ((tags.veggie or 0) <= 2) and ((tags.mushroom or 0) < 4) and not tags.fruit and not names.refined_dust and notmeat(tags) and notname(names) and ressthing(names) end,
+		test = function(boilier, names, tags) return Tea_Def(names, tags) and notmeat(tags) and notname(names) and ressthing(names) end,
 		priority = 0,
 		health = TUNING.HEALING_TINY,
 		hunger = 0,
@@ -380,7 +509,7 @@ local drinks =
 	
 	greentea =
 	{
-		test = function(boilier, names, tags) return onlytealeaves(names, tags) and notmeat(tags) and notname(names) and ressthing(names) end,
+		test = function(boilier, names, tags) return IsTealeaves(names, tags) and notmeat(tags) and notname(names) and ressthing(names) end,
 		priority = 1,
 		health = TUNING.HEALING_TINY,
 		hunger = 0,
@@ -395,7 +524,7 @@ local drinks =
 	-- 녹차 건조대 말린것
 	blacktea =
 	{
-		test = function(boilier, names, tags) return onlytealeaves_dried(names, tags) and not tags.frozen and notmeat(tags) and notname(names) and ressthing(names) end,
+		test = function(boilier, names, tags) return IsTealeaves_dried(names, tags) and not tags.frozen and notmeat(tags) and notname(names) and ressthing(names) end,
 		priority = 1,
 		health = TUNING.HEALING_SMALL,
 		hunger = 0,
@@ -412,7 +541,7 @@ local drinks =
 	
 	blacktea_iced =
 	{
-		test = function(boilier, names, tags) return onlytealeaves_dried(names, tags) and tags.frozen and tags.frozen >= 1 and notmeat(tags) and notname(names) and ressthing(names) end,
+		test = function(boilier, names, tags) return IsTealeaves_dried(names, tags) and tags.frozen and tags.frozen >= 1 and notmeat(tags) and notname(names) and ressthing(names) end,
 		priority = 1,
 		health = TUNING.HEALING_SMALL,
 		hunger = 0,
@@ -430,7 +559,7 @@ local drinks =
 	-- 동굴 고사리
 	fuer =
 	{
-		test = function(boilier, names, tags) return onlyfoliage(names, tags) and notmeat(tags) and notname(names) and ressthing(names) end,
+		test = function(boilier, names, tags) return IsFoliage(names, tags) and notmeat(tags) and notname(names) and ressthing(names) end,
 		priority = 1,
 		health = TUNING.HEALING_SMALL,
 		hunger = 0,
@@ -445,7 +574,7 @@ local drinks =
 	-- 일반 꽃잎
 	hibiscustea =
 	{
-		test = function(boilier, names, tags) return onlyflower(names, tags) and notmeat(tags) and notname(names) and ressthing(names) end,
+		test = function(boilier, names, tags) return IsFlower(names, tags) and notmeat(tags) and notname(names) and ressthing(names) end,
 		priority = 1,
 		health = TUNING.HEALING_MEDSMALL,
 		hunger = 0,
@@ -460,7 +589,7 @@ local drinks =
 	--일시적으로 유령으로 만드는 차
 	sushibiscus =
 	{
-		test = function(boilier, names, tags) return onlyflower_evil(names, tags) and notmeat(tags) and notname(names) and ressthing(names) end,
+		test = function(boilier, names, tags) return IsFlower_Evil(names, tags) and notmeat(tags) and notname(names) and ressthing(names) end,
 		priority = 2,
 		health = 0,
 		hunger = 0,
@@ -487,7 +616,7 @@ local drinks =
 	-- 선인장 꽃잎
 	cactusflower_tea =
 	{
-		test = function(boilier, names, tags) return names.cactus_flower and (tags.decoration or 0) and ((tags.veggie or 0) <= 2) and not tags.fruit and notmeat(tags) and notname(names) and ressthing(names) end,
+		test = function(boilier, names, tags) return IsFlower_Cactus(names, tags) and notmeat(tags) and notname(names) and ressthing(names) end,
 		priority = 2,
 		health = TUNING.HEALING_MED/2,
 		hunger = TUNING.DRINK_CALORIES/2,
@@ -502,7 +631,7 @@ local drinks =
 	},
 	
 	lotustea = {
-			test = function(boilier, names, tags) return ( names.lotus_flower or names.kyno_lotus_flower or tags.lotus or names.succulent_picked ) and (tags.decoration or 0) and ((tags.veggie or 0) <= 2) and not tags.fruit and notmeat(tags) and notname(names)and ressthing(names) end,
+			test = function(boilier, names, tags) return IsFlower_Lotus(names, tags) and notmeat(tags) and notname(names)and ressthing(names) end,
 			priority = 1,
 			health = TUNING.HEALING_MED,
 			hunger = 0,
