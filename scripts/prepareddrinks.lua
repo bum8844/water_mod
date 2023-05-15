@@ -355,17 +355,8 @@ local drinks =
 		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_CAFFINE,
 		card_def={ingredients={{"caffeinberry_bean_cooked",3},{"honey",1}}},
 		oneatenfn = function(inst, eater)
-			if not eater.components.health or eater.components.health:IsDead() or eater:HasTag("playerghost") then
-				return
-			elseif eater.components.debuffable and eater.components.debuffable:IsEnabled() and eater:HasTag("player")then
-				eater.caffeinbuff_duration = TUNING.CAFFEIN_TIME
-				eater.components.debuffable:AddDebuff("caffeinbuff", "caffeinbuff")
-			else
-				eater.components.locomotor:SetExternalSpeedMultiplier(eater, "caffeinbuff", TUNING.CAFFEIN_SPEED)
-				eater:DoTaskInTime(TUNING.CAFFEIN_TIME, function()
-					eater.components.locomotor:RemoveExternalSpeedMultiplier(eater, "caffeinbuff")
-				end)
-			end
+			eater.caffeinbuff_duration = TUNING.CAFFEIN_TIME
+			eater:AddDebuff("caffeinbuff", "caffeinbuff")
 		end,
 	},
 
@@ -399,7 +390,7 @@ local drinks =
 		potlevel = "mid",
 		potlevel_bottle = "mid",
 		oneatenfn = function(inst, eater)
-			if not eater:HasTag("playermerm") then
+			if eater:HasTag("player") and not eater:HasTag("playermerm") then
 				if eater:HasTag("masterchef") then
 					eater.components.talker:Say(GetString(eater,"ANNOUNCE_EAT","RAW"))
 				else
@@ -440,17 +431,11 @@ local drinks =
 		prefabs = { "detoxbuff" },
 		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_DETOX,
 		oneatenfn = function(inst, eater)
-			if not eater.components.health or eater.components.health:IsDead() or eater:HasTag("playerghost") then
-				return
-			elseif eater.components.debuffable and eater.components.debuffable:IsEnabled() and eater:HasTag("player") then
-				if eater:HasTag("drunk") then
-					eater.detoxbuff_duration = TUNING.DRUNKARD_DURATION*.5
-					eater.components.debuffable:AddDebuff("detoxbuff", "detoxbuff")
-				elseif eater.components.dcapacity:GetCapacity() > 0 then
-					eater.components.dcapacity:Remove_Capacity(1)
-				end
-			else
-				eater.components.locomotor:RemoveExternalSpeedMultiplier(eater, "alcoholdebuff")
+			if eater:HasTag("drunk") then
+				eater.detoxbuff_duration = TUNING.DRUNKARD_DURATION*.5
+				eater:AddDebuff("detoxbuff", "detoxbuff")
+			elseif eater.components.dcapacity ~= nil and eater.components.dcapacity:GetCapacity() > 0 then
+				eater.components.dcapacity:Remove_Capacity(1)
 			end
 		end,
 	},
@@ -472,19 +457,8 @@ local drinks =
 		prefabs = { "sleepdrinkbuff", "healthregenbuff","honeyed" },
 		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_MULLED,
 		oneatenfn = function(inst, eater)
-			local knockouttime = TUNING.TEASLEEP_TIME + math.random()
-			if not eater.components.health or eater.components.health:IsDead() or eater:HasTag("playerghost") then
-				return
-			elseif eater.components.debuffable and eater.components.debuffable:IsEnabled() and eater:HasTag("player") then
-				eater.sleepdrinkbuff_duration = TUNING.TEASLEEP_TIME + math.random()
-				eater.components.debuffable:AddDebuff("sleepdrinkbuff", "sleepdrinkbuff")
-			else
-				eater.components.sleeper:AddSleepiness(7, knockouttime)
-				eater:DoTaskInTime(knockouttime, function()
-					eater:AddDebuff("healthregenbuff", "healthregenbuff")
-					eater.components.locomotor:RemoveExternalSpeedMultiplier(eater, "alcoholdebuff")
-				end)
-			end
+			eater.sleepdrinkbuff_duration = TUNING.TEASLEEP_TIME + math.random()
+			eater:AddDebuff("sleepdrinkbuff", "sleepdrinkbuff")
 		end,
 	},
 	
@@ -602,13 +576,7 @@ local drinks =
 		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_SUS,
 		card_def={ingredients={{"petals_evil",1},{"firenettles",1},{"tillweed",1},{"twigs",1}}},
 		oneatenfn = function(inst, eater)
-			if not eater.components.health or eater.components.health:IsDead() or eater:HasTag("playerghost") then
-				return
-			elseif eater.components.debuffable and eater.components.debuffable:IsEnabled() and eater:HasTag("player")then
-				eater.components.debuffable:AddDebuff("obebuff", "obebuff")
-			else
-				eater.components.health:DoDelta(-1000000)
-			end
+				eater:AddDebuff("obebuff", "obebuff")
 		end,
 	},
 
