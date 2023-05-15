@@ -193,7 +193,7 @@ local drinks =
 		sanity = TUNING.SANITY_POISON,
 		thirst = TUNING.HYDRATION_POISON,
 		cooktime = TUNING.INCORRECT_BOIL,
-		potlevel = "mid",
+		potlevel = "high",
 		potlevel_bottle = "mid",
 		watertype = WATERTYPE.ROTTEN,
 	},
@@ -209,7 +209,7 @@ local drinks =
 		perishtime = TUNING.PERISH_FAST,
 		cooktime = TUNING.INCORRECT_BOIL,
 		wet_prefix = STRINGS.WET_PREFIX.WETGOOP,
-		potlevel = "mid",
+		potlevel = "high",
 		potlevel_bottle = "mid",
 	},
 
@@ -354,11 +354,11 @@ local drinks =
 		perishtime = TUNING.PERISH_SLOW,
 		cooktime = TUNING.KETTLE_LUXURY_GOODS,
 		potlevel = "mid",
-		potlevel_bottle = "high",
+		potlevel_bottle = "mid",
 		prefabs = { "caffeinbuff" },
 		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_CAFFINE,
 		card_def={ingredients={{"caffeinberry_bean_cooked",3},{"honey",1}}},
-		potlevel_bottle = "high",
+		--potlevel_bottle = "mid", (----------------------------------------------------------------------------------)
 		oneatenfn = function(inst, eater)
 			if not eater.components.health or eater.components.health:IsDead() or eater:HasTag("playerghost") then
 				return
@@ -386,7 +386,7 @@ local drinks =
 		thirst = TUNING.HYDRATION_MED,
 		perishtime = TUNING.PERISH_MED,
 		cooktime = TUNING.KETTLE_VEGGIE,
-		potlevel = "mid",
+		potlevel = "high",
 		potlevel_bottle = "mid",
 		card_def={ingredients={{"carrot",3},{"twigs",1}},},
 	},
@@ -426,7 +426,7 @@ local drinks =
 		temperature = TUNING.COLD_FOOD_BONUS_TEMP,
 		temperatureduration = TUNING.FOOD_TEMP_LONG,
 		cooktime = TUNING.KETTLE_VEGGIE,
-		potlevel = "small",
+		potlevel = "mid",
 		potlevel_bottle = "mid",
 	},
 
@@ -437,6 +437,10 @@ local drinks =
 		hunger = TUNING.DRINK_CALORIES/2,
 		sanity = TUNING.SANITY_TINY/2,
 		thirst = TUNING.HYDRATION_LARGE,
+		---------------------------------
+		potlevel = "high",
+		potlevel_bottle = "mid",
+        ---------------------------------
 		perishtime = TUNING.PERISH_MED,
 		prefabs = { "detoxbuff" },
 		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_DETOX,
@@ -469,7 +473,7 @@ local drinks =
 		temperatureduration = TUNING.BUFF_FOOD_TEMP_DURATION,
 		cooktime = TUNING.KETTLE_VEGGIE,
 		potlevel = "mid",
-		potlevel_bottle = "mid",
+		potlevel_bottle = "high",
 		prefabs = { "sleepdrinkbuff", "healthregenbuff","honeyed" },
 		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_MULLED,
 		oneatenfn = function(inst, eater)
@@ -518,7 +522,7 @@ local drinks =
 		perishtime = TUNING.PERISH_MED,
 		cooktime = TUNING.KETTLE_TEA,
 		potlevel = "mid",
-		potlevel_bottle = "high",
+		potlevel_bottle = "mid",
 	},
 	
 	-- 녹차 건조대 말린것
@@ -535,7 +539,7 @@ local drinks =
 		temperatureduration = TUNING.FOOD_TEMP_LONG,
 		cooktime = TUNING.KETTLE_TEA,
 		potlevel = "mid",
-		potlevel_bottle = "high",
+		potlevel_bottle = "mid",
 		card_def={ingredients={{"tealeaves_dried",4}}},
 	},
 	
@@ -552,7 +556,7 @@ local drinks =
 		temperatureduration = TUNING.FOOD_TEMP_LONG,
 		cooktime = TUNING.KETTLE_TEA,
 		potlevel = "mid",
-		potlevel_bottle = "high",
+		potlevel_bottle = "mid",
 		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_COLD_FOOD,
 	},
 	
@@ -568,7 +572,7 @@ local drinks =
 		perishtime = TUNING.PERISH_MED,
 		cooktime = TUNING.KETTLE_TEA,
 		potlevel = "mid",
-		potlevel_bottle = "high",
+		potlevel_bottle = "mid",
 	},
 	
 	-- 일반 꽃잎
@@ -583,7 +587,7 @@ local drinks =
 		perishtime = TUNING.PERISH_MED,
 		cooktime = TUNING.KETTLE_DECORATION,
 		potlevel = "mid",
-		potlevel_bottle = "high",
+		potlevel_bottle = "mid",
 	},
 	
 	--일시적으로 유령으로 만드는 차
@@ -598,7 +602,7 @@ local drinks =
 		perishtime = TUNING.PERISH_MED,
 		cooktime = TUNING.KETTLE_ABI,
 		potlevel = "mid",
-		potlevel_bottle = "high",
+		potlevel_bottle = "mid",
 		prefabs = { "obebuff" },
 		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_SUS,
 		card_def={ingredients={{"petals_evil",1},{"firenettles",1},{"tillweed",1},{"twigs",1}}},
@@ -626,8 +630,8 @@ local drinks =
 		temperature = TUNING.COLD_FOOD_BONUS_TEMP,
 		temperatureduration = TUNING.BUFF_FOOD_TEMP_DURATION,
 		cooktime = TUNING.KETTLE_DECORATION,
-		potlevel = "mid",
-		potlevel_bottle = "high",
+		potlevel = "high",
+		potlevel_bottle = "mid",
 	},
 	
 	lotustea = {
@@ -648,7 +652,7 @@ local drinks =
 				eater:AddDebuff("sweettea_buff", "sweettea_buff")
 	        end,
 			potlevel = "mid",
-			potlevel_bottle = "high",
+			potlevel_bottle = "mid",
 	},
 }
 
