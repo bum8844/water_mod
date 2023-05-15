@@ -324,28 +324,24 @@ local drinks =
 		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_INTOXICATION_GLOW,
 		oneatenfn = function(inst, eater)
 			alcahol(inst, eater)
-			if not eater.components.health or eater.components.health:IsDead() or eater:HasTag("playerghost") then
-				return
-            else
-            	if eater.wormlight ~= nil then
-	                if eater.wormlight.prefab == "wormlight_light" then
-	                    eater.wormlight.components.spell.lifetime = 0
-	                    eater.wormlight.components.spell:ResumeSpell()
-	                    return
-	                else
-	                    eater.wormlight.components.spell:OnFinish()
-	                end
+           	if eater.wormlight ~= nil then
+	            if eater.wormlight.prefab == "wormlight_light" then
+	                eater.wormlight.components.spell.lifetime = 0
+	                eater.wormlight.components.spell:ResumeSpell()
+	                return
+	            else
+	                eater.wormlight.components.spell:OnFinish()
 	            end
-	            local light = SpawnPrefab("wormlight_light")
-	            light.components.spell:SetTarget(eater)
-	            if light:IsValid() then
-	                if light.components.spell.target == nil then
-	                    light:Remove()
-	                else
-	                    light.components.spell:StartSpell()
-	                end
+	        end
+	        local light = SpawnPrefab("wormlight_light")
+	        light.components.spell:SetTarget(eater)
+	        if light:IsValid() then
+	            if light.components.spell.target == nil then
+	        		light:Remove()
+	            else
+	                light.components.spell:StartSpell()
 	            end
-            end
+	        end
 	    end,
 	},
 	-- 우유

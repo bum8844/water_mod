@@ -317,27 +317,23 @@ local drinks =
 		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_GLOW,
 		card_def = {ingredients={{"wormlight_lesser",2},{"berries",1},{"twigs",1}}},
 		oneatenfn = function(inst, eater)
-			if not eater.components.health or eater.components.health:IsDead() or eater:HasTag("playerghost") then
-				return
-            else
-            	if eater.wormlight ~= nil then
-	                if eater.wormlight.prefab == "wormlight_light_greater" then
-	                    eater.wormlight.components.spell.lifetime = 0
-	                    eater.wormlight.components.spell:ResumeSpell()
-	                    return
-	                else
-	                    eater.wormlight.components.spell:OnFinish()
-	                end
+           	if eater.wormlight ~= nil then
+	            if eater.wormlight.prefab == "wormlight_light_greater" then
+	                eater.wormlight.components.spell.lifetime = 0
+	                eater.wormlight.components.spell:ResumeSpell()
+	                return
+	            else
+	                eater.wormlight.components.spell:OnFinish()
 	            end
+	        end
 
-	            local light = SpawnPrefab("wormlight_light_greater")
-	            light.components.spell:SetTarget(eater)
-	            if light:IsValid() then
-	                if light.components.spell.target == nil then
-	                    light:Remove()
-	                else
-	                    light.components.spell:StartSpell()
-	                end
+	        local light = SpawnPrefab("wormlight_light_greater")
+	        light.components.spell:SetTarget(eater)
+	        if light:IsValid() then
+	            if light.components.spell.target == nil then
+	                light:Remove()
+	            else
+	    	        light.components.spell:StartSpell()
 	            end
 	        end
 	    end,
@@ -358,7 +354,6 @@ local drinks =
 		prefabs = { "caffeinbuff" },
 		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_CAFFINE,
 		card_def={ingredients={{"caffeinberry_bean_cooked",3},{"honey",1}}},
-		--potlevel_bottle = "mid", (----------------------------------------------------------------------------------)
 		oneatenfn = function(inst, eater)
 			if not eater.components.health or eater.components.health:IsDead() or eater:HasTag("playerghost") then
 				return
