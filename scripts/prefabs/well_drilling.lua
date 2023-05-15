@@ -72,7 +72,7 @@ local function DoDrilling(inst)
 	inst:RemoveEventCallback("animover", DoDrilling)
 
 	inst.AnimState:PlayAnimation("drill_loop", true)
-    inst.SoundEmitter:PlaySound("farming/common/farm/plow/LP", "loop")
+    inst.SoundEmitter:PlaySound("drink_fx/sfx/drilling_LP", "drilling_LP")
 	local fx_time = 0
 	if not inst.components.timer:TimerExists("drilling") then
 		inst.components.timer:StartTimer("drilling", TUNING.FARM_PLOW_DRILLING_DURATION)
@@ -90,7 +90,7 @@ end
 local function StartUp(inst)
     inst.AnimState:PlayAnimation("drill_pre")
 	inst:ListenForEvent("animover", DoDrilling)
-	inst.SoundEmitter:PlaySound("farming/common/farm/plow/drill_pre")
+	inst.SoundEmitter:PlaySound("drink_fx/sfx/drilling_pre", "drilling_pre")
 
 	inst.startup_task = nil
 end
