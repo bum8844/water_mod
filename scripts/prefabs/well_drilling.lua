@@ -23,6 +23,9 @@ local function onhammered(inst)
 	if inst.deploy_item_save_record ~= nil then
         local item = SpawnSaveRecord(inst.deploy_item_save_record)
 		item.Transform:SetPosition(x, y, z)
+		item.AnimState:PlayAnimation("collapse", false)
+		item.AnimState:PushAnimation("idle_packed")
+		item.SoundEmitter:PlaySound("drink_fx/sfx/drilling_pst", "drilling_pst")
 	end
 
     inst:Remove()
@@ -72,7 +75,7 @@ local function DoDrilling(inst)
 	inst:RemoveEventCallback("animover", DoDrilling)
 
 	inst.AnimState:PlayAnimation("drill_loop", true)
-    inst.SoundEmitter:PlaySound("drink_fx/sfx/drilling_LP", "drilling_LP")
+    inst.SoundEmitter:PlaySound("drink_fx/sfx/drilling_loop", "drilling_loop")
 	local fx_time = 0
 	if not inst.components.timer:TimerExists("drilling") then
 		inst.components.timer:StartTimer("drilling", TUNING.WELL_DRILLING_DURATION)
