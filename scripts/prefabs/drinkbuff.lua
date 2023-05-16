@@ -397,7 +397,7 @@ local function OnAttached_immune(inst, target)
     end
     inst.entity:SetParent(target.entity)
     inst.Transform:SetPosition(0, 0, 0)
-    if target.components.health ~= and not target.components.health:IsDead() then
+    if target.components.health ~= nil and not target.components.health:IsDead() then
         target.components.health.externalabsorbmodifiers:SetModifier(target, TUNING.BUFF_PLAYERABSORPTION_MODIFIER)
         if target.components.sanity ~= nil then
             target.components.sanity:SetFullAuraImmunity(true)
