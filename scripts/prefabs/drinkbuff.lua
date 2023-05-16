@@ -210,9 +210,6 @@ local function OnAttached_obe(inst, target)
         TheNet:Announce(""..target:GetDisplayName().." drank ".. STRINGS.NAMES.GHOSTLY_TEA ..", and became a ghost for "..TUNING.GHOST_TIME.." seconds!")
         target.components.obe:DrinktoDeath()
     elseif target.components.health ~= nil and not target.components.health:IsDead() then
-        inst.obebufftask = inst:DoTaskInTime(0, function()
-            inst.components.debuff:Stop()
-        end)
         target.components.health:DoDelta(-1000000)
     else
         inst.obebufftask = inst:DoTaskInTime(0, function()
@@ -400,22 +397,32 @@ local function OnAttached_immune(inst, target)
     end
     inst.entity:SetParent(target.entity)
     inst.Transform:SetPosition(0, 0, 0)
-    target.components.health.externalabsorbmodifiers:SetModifier(target, TUNING.BUFF_PLAYERABSORPTION_MODIFIER)
-    if target.components.sanity ~= nil then
-        target.components.sanity:SetFullAuraImmunity(true)
-        target.components.sanity:SetNegativeAuraImmunity(true)
-        target.components.sanity:SetPlayerGhostImmunity(true)
-        target.components.sanity:SetLightDrainImmune(true)
+    if target.components.health ~= and not target.components.health:IsDead() then
+        target.components.health.externalabsorbmodifiers:SetModifier(target, TUNING.BUFF_PLAYERABSORPTION_MODIFIER)
+        if target.components.sanity ~= nil then
+            target.components.sanity:SetFullAuraImmunity(true)
+            target.components.sanity:SetNegativeAuraImmunity(true)
+            target.components.sanity:SetPlayerGhostImmunity(true)
+            target.components.sanity:SetLightDrainImmune(true)
+        end
+    else
+        inst.immunebufftask = inst:DoTaskInTime(0, function()
+            inst.components.debuff:Stop()
+        end)
     end
 end
 
 local function OnDetached_immune(inst, target)
-    target.components.health.externalabsorbmodifiers:RemoveModifier(target)
-    if target.components.sanity ~= nil then
-        target.components.sanity:SetFullAuraImmunity(false)
-        target.components.sanity:SetNegativeAuraImmunity(false)
-        target.components.sanity:SetPlayerGhostImmunity(false)
-        target.components.sanity:SetLightDrainImmune(false)
+    if target.components.health ~= nil then
+        target.components.health.externalabsorbmodifiers:RemoveModifier(target)
+        if target.components.sanity ~= nil then
+            target.components.sanity:SetFullAuraImmunity(false)
+            target.components.sanity:SetNegativeAuraImmunity(false)
+            target.components.sanity:SetPlayerGhostImmunity(false)
+            target.components.sanity:SetLightDrainImmune(false)
+        end
+    else
+        inst.immunebufftask = nil
     end
     inst:Remove()
 end
