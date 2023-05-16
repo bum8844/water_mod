@@ -44,7 +44,7 @@ local function Finished(inst, force_fx)
 		item.AnimState:PlayAnimation("collapse", false)
 		item:ListenForEvent("animover", item_foldup_finished)
 
-	    item.SoundEmitter:PlaySound("farming/common/farm/plow/collapse")
+	    item.SoundEmitter:PlaySound("drink_fx/sfx/drilling_pst", "drilling_pst")
 		
 		SpawnPrefab("collapse_small").Transform:SetPosition(x, y, z)
 		SpawnPrefab("hole").Transform:SetPosition(x, y, z)
@@ -75,9 +75,9 @@ local function DoDrilling(inst)
     inst.SoundEmitter:PlaySound("drink_fx/sfx/drilling_LP", "drilling_LP")
 	local fx_time = 0
 	if not inst.components.timer:TimerExists("drilling") then
-		inst.components.timer:StartTimer("drilling", TUNING.FARM_PLOW_DRILLING_DURATION)
+		inst.components.timer:StartTimer("drilling", TUNING.WELL_DRILLING_DURATION)
 	else
-		fx_time = TUNING.FARM_PLOW_DRILLING_DURATION - inst.components.timer:GetTimeLeft("drilling")
+		fx_time = TUNING.WELL_DRILLING_DURATION - inst.components.timer:GetTimeLeft("drilling")
 	end
 end
 
