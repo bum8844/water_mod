@@ -22,7 +22,7 @@ local function dummy(boilier, names, tags)
 end
 
 local function Preference(names, tags)
-	return ( tags.sweetener or 0 ) and ( tags.dairy or 0 ) and ( tags.milk or 0 )
+	return ( tags.sweetener or 0 + tags.dairy or 0 + tags.milk or 0 )
 end
 
 local function Tea_Def(names, tags)
@@ -313,7 +313,7 @@ local drinks =
 	
 	glowberryjuice =
 	{
-		test = function(boilier, names, tags) return ((names.wormlight and names.wormlight >= 2) or (names.wormlight_lesser and names.wormlight_lesser >= 3)) and (Preference(names, tags) >= .5) and not tags.veggie and notmeat(tags) and notname(names) end,
+		test = function(boilier, names, tags) return ((names.wormlight and names.wormlight >= 2) or (names.wormlight_lesser and names.wormlight_lesser >= 3)) and (Preference(names, tags) >= 0.5) and not tags.veggie and notmeat(tags) and notname(names) end,
 		priority = 4,
 		health = TUNING.HEALING_MEDSMALL,
 		hunger = TUNING.DRINK_CALORIES/5,
