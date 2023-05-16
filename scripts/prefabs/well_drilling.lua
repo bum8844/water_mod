@@ -208,8 +208,8 @@ local function item_fn()
 
 	inst:AddComponent("finiteuses")
     inst.components.finiteuses:SetOnFinished(inst.Remove)
-    inst.components.finiteuses:SetMaxUses(TUNING.FARM_PLOW_USES)
-    inst.components.finiteuses:SetUses(TUNING.FARM_PLOW_USES)
+    inst.components.finiteuses:SetMaxUses(TUNING.WELL_DRILL_USES)
+    inst.components.finiteuses:SetUses(TUNING.WELL_DRILL_USES)
 
     MakeSmallBurnable(inst)
     MakeSmallPropagator(inst)
