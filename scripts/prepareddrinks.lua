@@ -22,7 +22,7 @@ local function dummy(boilier, names, tags)
 end
 
 local function Preference(names, tags)
-	return ( tags.sweetener or 0 + tags.dairy or 0 + tags.milk or 0 )
+	return ( (tags.sweetener or 0) + (tags.dairy or 0) + (tags.milk or 0) )
 end
 
 local function Tea_Def(names, tags)

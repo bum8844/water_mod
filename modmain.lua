@@ -48,7 +48,7 @@ AddIngredientValues({"caffeinberry_bean_cooked"}, {fruit=1})
 AddIngredientValues({"tea_seed_cooked"}, {seed=1})
 
 AddIngredientValues({"beefalo_milk"}, {milk=1, dairy=.5})
-AddIngredientValues({"goatmilk"}, {milk=1})
+AddIngredientValues({"goatmilk"}, {milk=1, dairy=1})
 
 AddReplicableComponent("thirst")
 AddReplicableComponent("waterlevel")
