@@ -35,12 +35,20 @@ local function OnAttached_sleepdrink(inst, target)
         if target:HasTag("drunk") and not target:HasTag("insomniac") and not IsResistance(target) then
             target:AddTag("drinksleep")
         end
+        inst.drinksleeptask = inst:DoTaskInTime(target.knockout_time, function()
+            inst.components.debuff:Stop()
+        end)
     elseif target.components.sleeper ~= nil then
         target.components.sleeper:AddSleepiness(7, target.knockout_time)
+        inst.drinksleeptask = inst:DoTaskInTime(target.knockout_time, function()
+            inst.components.debuff:Stop()
+        end)
+    else
+        inst.drinksleeptask = inst:DoTaskInTime(0, function()
+            inst.components.debuff:Stop()
+        end)
     end
-    inst.drinksleeptask = inst:DoTaskInTime(target.knockout_time, function()
-        inst.components.debuff:Stop()
-    end)
+
     inst:ListenForEvent("death", function()
         inst.components.debuff:Stop()
     end, target)
@@ -65,29 +73,37 @@ local function OnDetached_sleepdrink(inst, target)
 end
 
 local function OnExtended_sleepdrink(inst, target)
-    if target.drinksleeptask ~= nil then
-        target.drinksleeptask:Cancel()
-        target.drinksleeptask = nil
-    end
-
     local current_duration = inst.components.timer:GetTimeLeft("sleepdrinkbuff_done")
     local new_duration = math.max(current_duration, target.sleepdrinkbuff_duration)
     inst.components.timer:StopTimer("sleepdrinkbuff_done")
     inst.components.timer:StartTimer("sleepdrinkbuff_done", new_duration)
 
     target.knockout_time = inst.components.timer:GetTimeLeft("sleepdrinkbuff_done")
+    if target.drinksleeptask ~= nil then
+        target.drinksleeptask:Cancel()
+        target.drinksleeptask = nil
+    end
+
     if target.components.dcapacity ~= nil then
+        target.components.dcapacity:Remove_Intoxication()
         target:PushEvent("yawn", { grogginess = 4, knockoutduration = target.knockout_time })
         if target:HasTag("drunk") and not target:HasTag("insomniac") and not IsResistance(target) then
             target:AddTag("drinksleep")
         end
+        inst.drinksleeptask = inst:DoTaskInTime(target.knockout_time, function()
+            inst.components.debuff:Stop()
+        end)
     elseif target.components.sleeper ~= nil then
         target.components.sleeper:AddSleepiness(7, target.knockout_time)
+        inst.drinksleeptask = inst:DoTaskInTime(target.knockout_time, function()
+            inst.components.debuff:Stop()
+        end)
+    else
+        inst.drinksleeptask = inst:DoTaskInTime(0, function()
+            inst.components.debuff:Stop()
+        end)
     end
 
-    inst.drinksleeptask = inst:DoTaskInTime(target.knockout_time, function()
-        inst.components.debuff:Stop()
-    end)
 end
 
 local function fn_sleepdrink()
