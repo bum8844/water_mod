@@ -230,7 +230,7 @@ local drinks =
 	{
 		test = function(boilier, names, tags) return (names.berries or  names.berries_cooked or names.berries_juicy or names.berries_juicy_cooked) and tags.fruit and Preference(names, tags) and not tags.veggie and notmeat(tags) and notname(names) and ressthing(names) end,
 		priority = 0,
-		health = TUNING.HEALING_LARGE,
+		health = TUNING.HEALING_MEDSMALL,
 		hunger = TUNING.DRINK_CALORIES/5, --1
 		sanity = 0,
 		thirst = TUNING.HYDRATION_SMALLTINY,
