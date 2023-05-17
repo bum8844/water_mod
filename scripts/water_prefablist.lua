@@ -3,6 +3,8 @@ return {
 	"bucket",
 	"def_water",
 	"upgrade_kit",
+	"fermentingrecipcard",
+	"boillingrecipcard",
 
 	--structures
 	"barrel",

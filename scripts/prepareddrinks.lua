@@ -1,3 +1,5 @@
+require("kettle_recpie_cards")
+
 local function sleepfunction(inst, eater)
 	eater.components.debuffable:RemoveDebuff("alcoholdebuff")
 	if KnownModIndex:IsModEnabled("workshop-2334209327") or KnownModIndex:IsModForceEnabled("workshop-2334209327") then
@@ -657,8 +659,7 @@ for k, v in pairs(drinks) do
     v.cookbook_category = "cookpot"
 
 	if v.card_def then
-		AddRecipeCard("kettle",v)
-		AddRecipeCard("portablekettle",v)
+		AddRecipeCard_Kettle("kettle",v)
 	end
 end
 

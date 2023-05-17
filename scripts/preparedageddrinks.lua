@@ -1,3 +1,5 @@
+require("brewery_recpie_cards")
+
 local function alcahol(inst, eater)
 	if eater:HasTag("player") then
 		eater.components.dcapacity:Start_Intoxication()
@@ -347,7 +349,7 @@ for k, v in pairs(drinks) do
     v.cookbook_category = "cookpot"
 
 	if v.card_def then
-		AddRecipeCard("brewery",v)
+		AddRecipeCard_Brewery("brewery",v)
 	end
 end
 
