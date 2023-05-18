@@ -2,15 +2,15 @@
 <Atlas>
 	<Texture filename="tea_minimap.tex" />
 	<Elements>
-		<Element name="barrel.tex" u1="0.001" u2="0.19821875" v2="0.499" v1="0.251" variant="" />
-		<Element name="brewery.tex" u1="0.20021875" u2="0.44821875" v2="0.499" v1="0.251" variant="" />
-		<Element name="caffeinberrybush.tex" u1="0.001" u2="0.2411875" v2="0.999" v1="0.751" variant="" />
-		<Element name="desalinator.tex" u1="0.2431875" u2="0.4911875" v2="0.999" v1="0.751" variant="" />
-		<Element name="holes.tex" u1="0.001" u2="0.249" v2="0.749" v1="0.501" variant="" />
-		<Element name="kettle.tex" u1="0.751" u2="0.999" v2="0.75290625" v1="0.50490625" variant="" />
-		<Element name="portablekettle.tex" u1="0.501" u2="0.749" v2="0.749" v1="0.501" variant="" />
-		<Element name="tea_tree.tex" u1="0.251" u2="0.499" v2="0.749" v1="0.501" variant="" />
-		<Element name="well.tex" u1="0.4931875" u2="0.7411875" v2="0.999" v1="0.751" variant="" />
-		<Element name="well_sprinkler.tex" u1="0.7431875" u2="0.97165625" v2="0.999" v1="0.75490625" variant="" />
+		<Element name="barrel.tex" u1="0.23146875" u2="0.4286875" v2="0.499" v1="0.251" variant="" />
+		<Element name="brewery.tex" u1="0.001" u2="0.249" v2="0.999" v1="0.751" variant="" />
+		<Element name="caffeinberrybush.tex" u1="0.251" u2="0.4911875" v2="0.999" v1="0.751" variant="" />
+		<Element name="desalinator.tex" u1="0.001" u2="0.249" v2="0.749" v1="0.501" variant="" />
+		<Element name="holes.tex" u1="0.251" u2="0.499" v2="0.749" v1="0.501" variant="" />
+		<Element name="kettle.tex" u1="0.4931875" u2="0.7411875" v2="0.999" v1="0.751" variant="" />
+		<Element name="portablekettle.tex" u1="0.7431875" u2="0.9911875" v2="0.999" v1="0.751" variant="" />
+		<Element name="tea_tree.tex" u1="0.501" u2="0.749" v2="0.749" v1="0.501" variant="" />
+		<Element name="well.tex" u1="0.751" u2="0.999" v2="0.749" v1="0.501" variant="" />
+		<Element name="well_sprinkler.tex" u1="0.001" u2="0.22946875" v2="0.499" v1="0.25490625" variant="" />
 	</Elements>
 </Atlas>
