@@ -1,10 +1,10 @@
 local function TumbleweedPostinit(inst)
 	local function OnInitBoilligCard(inst)
-		if math.random() < TUNING.RECIPCARF_CHANCE then
+		if math.random() < TUNING.WATER_RECIPCARD_CHANCE then
 			table.insert(inst.loot, "boillingrecipcard")
 			table.insert(inst.lootaggro, false)
 		end
-		if math.random() < TUNING.RECIPCARF_CHANCE then
+		if math.random() < TUNING.WATER_RECIPCARD_CHANCE then
 			table.insert(inst.loot, "fermentingrecipcard")
 			table.insert(inst.lootaggro, false)
 		end

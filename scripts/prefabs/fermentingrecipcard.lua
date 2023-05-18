@@ -14,7 +14,7 @@ local function SetRecipe(inst, recipe_name, cooker_name)
 end
 
 local function PickRandomRecipe(inst)
-	local card = brewery.recipe_cards[math.random(#cooking.recipe_cards)]
+	local card = brewery.recipe_cards[math.random(#brewery.recipe_cards)]
 	SetRecipe(inst, card.recipe_name, card.cooker_name)
 end
 

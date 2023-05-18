@@ -163,6 +163,8 @@ water_tuning =
 
 	DRUNKARD_SANITY_DELTA = -1,
 	DRUNKARD_TICK_RATE = 2,
+
+	WATER_RECIPCARD_CHANCE = 0.25,
 }
 
 for i,v in pairs(water_tuning) do

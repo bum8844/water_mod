@@ -1,3 +1,11 @@
+local messagebottletreasures = require("messagebottletreasures")
+
+messagebottletreasures.treasure_templates.sunkenchest.presets.traveler.guaranteed_loot.fermentingrecipcard = 1
+messagebottletreasures.treasure_templates.sunkenchest.presets.traveler.guaranteed_loot.boillingrecipcard = 1
+
+messagebottletreasures.treasure_templates.sunkenchest.presets.fisher.guaranteed_loot.fermentingrecipcard = 1
+messagebottletreasures.treasure_templates.sunkenchest.presets.fisher.guaranteed_loot.boillingrecipcard = 1
+
 --when an item 'inst' is used, the 'refund' will be given.
 --[[local function result(inst, refund, container, x, y, z, dontremove)
     refund.Transform:SetPosition(x, y, z)
