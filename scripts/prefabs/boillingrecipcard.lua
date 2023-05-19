@@ -1,6 +1,6 @@
 local assets =
 {
-    Asset("ANIM", "anim/cookingrecipecard.zip"),
+    Asset("ANIM", "anim/boillingrecipcard.zip"),
 }
 
 local kettle = require("kettle_recpie_cards")
@@ -56,8 +56,8 @@ local function fn()
 
     MakeInventoryPhysics(inst)
 
-    inst.AnimState:SetBank("cookingrecipecard")
-    inst.AnimState:SetBuild("cookingrecipecard")
+    inst.AnimState:SetBank("boillingrecipcard")
+    inst.AnimState:SetBuild("boillingrecipcard")
     inst.AnimState:PlayAnimation("idle")
 
     MakeInventoryFloatable(inst, "med", nil, 0.75)
