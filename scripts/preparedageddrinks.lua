@@ -1,35 +1,33 @@
+require("brewery_recpie_cards")
+
 local function alcahol(inst, eater)
-	if not eater.components.health or eater.components.health:IsDead() or eater:HasTag("playerghost") then
-		return
-	elseif eater.components.debuffable and eater.components.debuffable:IsEnabled() and eater:HasTag("player") then
+	if eater:HasTag("player") then
 		eater.components.dcapacity:Start_Intoxication()
-		if not eater:HasTag("valkyrie") then
-			if eater.components.dcapacity:IsCritical() then
-				eater.components.talker:Say(GetString(eater,"ANNOUNCE_DCAPACITY_CRITICAL"))
-			elseif eater.components.dcapacity:IsHalf() then
-				eater.components.talker:Say(GetString(eater,"ANNOUNCE_DCAPACITY_HALF"))
-			end
-		end
 		if eater.components.dcapacity:IsDrunk() then
 			if not eater:HasTag("valkyrie") then
 				eater.alcoholdebuff_duration = TUNING.INTOXICATION_TIME
-				eater.components.debuffable:AddDebuff("alcoholdebuff", "alcoholdebuff")
-				eater.components.debuffable:AddDebuff("drunkarddebuff", "drunkarddebuff")
+				eater:AddDebuff("alcoholdebuff", "alcoholdebuff")
+				eater:AddDebuff("drunkarddebuff", "drunkarddebuff")
 			else
 				eater.components.talker:Say(GetString(eater,"ANNOUNCE_DRUNK_IMMUNITY"))
 			end
+		else
+			if not eater:HasTag("valkyrie") then
+				if eater.components.dcapacity:IsCritical() then
+					eater.components.talker:Say(GetString(eater,"ANNOUNCE_DCAPACITY_CRITICAL"))
+				elseif eater.components.dcapacity:IsHalf() then
+					eater.components.talker:Say(GetString(eater,"ANNOUNCE_DCAPACITY_HALF"))
+				end
+			end
 		end
 		eater.immunebuff_duration = TUNING.IMMUNE_TIME
-		eater.components.debuffable:AddDebuff("immunebuff", "immunebuff")
+		eater:AddDebuff("immunebuff", "immunebuff")
 	else
-		eater.components.health.externalabsorbmodifiers:SetModifier(eater, TUNING.BUFF_PLAYERABSORPTION_MODIFIER)
-		eater.components.locomotor:SetExternalSpeedMultiplier(eater, "alcoholdebuff", 0.5)
-		eater:DoTaskInTime(TUNING.INTOXICATION_TIME, function()
-			eater.components.locomotor:RemoveExternalSpeedMultiplier(eater, "alcoholdebuff")
-		end)
-   		eater:DoTaskInTime(TUNING.IMMUNE_TIME, function()
-   			eater.components.health.externalabsorbmodifiers:RemoveModifier(eater)
-   		end)
+		eater.alcoholdebuff_duration = TUNING.INTOXICATION_TIME
+		eater.immunebuff_duration = TUNING.IMMUNE_TIME
+		eater:AddDebuff("immunebuff", "immunebuff")
+		eater:AddDebuff("alcoholdebuff", "alcoholdebuff")
+		eater:AddDebuff("drunkarddebuff", "drunkarddebuff")
 	end
 end
 
@@ -59,7 +57,7 @@ local drinks =
 		sanity = TUNING.SANITY_POISON,
 		thirst = TUNING.HYDRATION_POISON,
 		cooktime = TUNING.INCORRECT_BOIL,
-		potlevel = "mid",
+		potlevel = "high",
 		potlevel_bottle = "mid",
 		watertype = WATERTYPE.ROTTEN,
 	},
@@ -135,20 +133,9 @@ local drinks =
 		prefabs = { "healthregenbuff","caffeinbuff","honeyed" },
 		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_COLA,
 		oneatenfn = function(inst, eater)
-			if not eater.components.health or eater.components.health:IsDead() or eater:HasTag("playerghost") then
-				return
-			else
-				eater:AddDebuff("healthregenbuff", "healthregenbuff")
-				if eater.components.debuffable and eater.components.debuffable:IsEnabled() and eater:HasTag("player") then
-					eater.caffeinbuff_duration = TUNING.CAFFEIN_TIME
-					eater.components.debuffable:AddDebuff("caffeinbuff", "caffeinbuff")
-				else
-					eater.components.locomotor:SetExternalSpeedMultiplier(eater, "caffeinbuff", TUNING.CAFFEIN_SPEED)
-					eater:DoTaskInTime(TUNING.CAFFEIN_TIME, function()
-						eater.components.locomotor:RemoveExternalSpeedMultiplier(eater, "caffeinbuff")
-					end)
-				end
-			end
+			eater.caffeinbuff_duration = TUNING.CAFFEIN_TIME
+			eater:AddDebuff("healthregenbuff", "healthregenbuff")
+			eater:AddDebuff("caffeinbuff", "caffeinbuff")
 		end,
 	},
 	
@@ -168,36 +155,25 @@ local drinks =
 		prefabs = { "healthregenbuff","drunkarddebuff","wormlight_light_greater" },
 		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_COLAQUANTUM,
 		oneatenfn = function(inst, eater)
-			if not eater.components.health or eater.components.health:IsDead() or eater:HasTag("playerghost") then
-				return
-            else
-            	eater:AddDebuff("healthregenbuff", "healthregenbuff")
-				if eater.components.debuffable and eater.components.debuffable:IsEnabled() and eater:HasTag("player") then
-					eater.caffeinbuff_duration = TUNING.CAFFEIN_TIME
-					eater.components.debuffable:AddDebuff("caffeinbuff", "caffeinbuff")
-				else
-					eater.components.locomotor:SetExternalSpeedMultiplier(eater, "caffeinbuff", TUNING.CAFFEIN_SPEED)
-					eater:DoTaskInTime(TUNING.CAFFEIN_TIME, function()
-						eater.components.locomotor:RemoveExternalSpeedMultiplier(eater, "caffeinbuff")
-					end)
-				end
-            	if eater.wormlight ~= nil then
-	                if eater.wormlight.prefab == "wormlight_light_greater" then
-	                    eater.wormlight.components.spell.lifetime = 0
-	                    eater.wormlight.components.spell:ResumeSpell()
-	                    return
-	                else
-	                    eater.wormlight.components.spell:OnFinish()
-	                end
+			eater.caffeinbuff_duration = TUNING.CAFFEIN_TIME
+            eater:AddDebuff("healthregenbuff", "healthregenbuff")
+			eater:AddDebuff("caffeinbuff", "caffeinbuff")
+            if eater.wormlight ~= nil then
+	            if eater.wormlight.prefab == "wormlight_light_greater" then
+	                eater.wormlight.components.spell.lifetime = 0
+	                eater.wormlight.components.spell:ResumeSpell()
+	                return
+	            else
+	                eater.wormlight.components.spell:OnFinish()
 	            end
-	            local light = SpawnPrefab("wormlight_light_greater")
-	            light.components.spell:SetTarget(eater)
-	            if light:IsValid() then
-	                if light.components.spell.target == nil then
-	                    light:Remove()
-	                else
-	                    light.components.spell:StartSpell()
-	                end
+	        end
+	        local light = SpawnPrefab("wormlight_light_greater")
+	        light.components.spell:SetTarget(eater)
+	        if light:IsValid() then
+	            if light.components.spell.target == nil then
+	                light:Remove()
+	            else
+	                light.components.spell:StartSpell()
 	            end
 	        end
 	    end,
@@ -256,7 +232,7 @@ local drinks =
 		tags = {"alcohol"},
 		perishtime = TUNING.PERISH_SUPERSLOW,
 		cooktime = (TUNING.KETTLE_FRUIT + TUNING.BEER_WAIT),
-		potlevel = "mid",
+		potlevel = "high",
 		potlevel_bottle = "mid",
 		prefabs = { "alcoholdebuff","caffeinbuff","immunebuff" },
 		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_INTOXICATION,
@@ -276,7 +252,7 @@ local drinks =
 		tags = {"alcohol"},
 		perishtime = TUNING.PERISH_SUPERSLOW,
 		cooktime = (TUNING.KETTLE_FRUIT + TUNING.BEER_WAIT),
-		potlevel = "mid",
+		potlevel = "high",
 		potlevel_bottle = "mid",
 		prefabs = { "alcoholdebuff","caffeinbuff","immunebuff" },
 		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_INTOXICATION,
@@ -297,7 +273,7 @@ local drinks =
 		perishtime = TUNING.PERISH_SUPERSLOW,
 		cooktime = (TUNING.KETTLE_FRUIT + TUNING.BEER_WAIT),
 		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_INTOXICATION,
-		potlevel = "mid",
+		potlevel = "high",
 		potlevel_bottle = "mid",
 		prefabs = { "alcoholdebuff","caffeinbuff","immunebuff" },
 		card_def = {ingredients = {{"refined_dust",1},{"berries",1},{"berries_juicy",1},{"twigs",1}}},
@@ -316,35 +292,31 @@ local drinks =
 		thirst = TUNING.HYDRATION_TINY,
 		tags = {"alcohol","lightdrink"},
 		perishtime = TUNING.PERISH_SUPERSLOW,
-		potlevel = "mid",
+		potlevel = "high",
 		potlevel_bottle = "mid",
 		prefabs = { "alcoholdebuff","caffeinbuff","immunebuff","wormlight_light" },
 		cooktime = (TUNING.KETTLE_FRUIT + TUNING.BEER_WAIT),
 		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_INTOXICATION_GLOW,
 		oneatenfn = function(inst, eater)
 			alcahol(inst, eater)
-			if not eater.components.health or eater.components.health:IsDead() or eater:HasTag("playerghost") then
-				return
-            else
-            	if eater.wormlight ~= nil then
-	                if eater.wormlight.prefab == "wormlight_light" then
-	                    eater.wormlight.components.spell.lifetime = 0
-	                    eater.wormlight.components.spell:ResumeSpell()
-	                    return
-	                else
-	                    eater.wormlight.components.spell:OnFinish()
-	                end
+           	if eater.wormlight ~= nil then
+	            if eater.wormlight.prefab == "wormlight_light" then
+	                eater.wormlight.components.spell.lifetime = 0
+	                eater.wormlight.components.spell:ResumeSpell()
+	                return
+	            else
+	                eater.wormlight.components.spell:OnFinish()
 	            end
-	            local light = SpawnPrefab("wormlight_light")
-	            light.components.spell:SetTarget(eater)
-	            if light:IsValid() then
-	                if light.components.spell.target == nil then
-	                    light:Remove()
-	                else
-	                    light.components.spell:StartSpell()
-	                end
+	        end
+	        local light = SpawnPrefab("wormlight_light")
+	        light.components.spell:SetTarget(eater)
+	        if light:IsValid() then
+	            if light.components.spell.target == nil then
+	        		light:Remove()
+	            else
+	                light.components.spell:StartSpell()
 	            end
-            end
+	        end
 	    end,
 	},
 	-- 우유
@@ -358,7 +330,7 @@ local drinks =
 		tags = {"alcohol"},
 		perishtime = TUNING.PERISH_SUPERSLOW,
 		cooktime = (TUNING.KETTLE_VEGGIE + TUNING.BEER_WAIT),
-		potlevel = "high",
+		potlevel = "mid",
 		potlevel_bottle = "mid",
 		prefabs = { "alcoholdebuff","caffeinbuff","immunebuff" },
 		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_INTOXICATION,
@@ -377,7 +349,7 @@ for k, v in pairs(drinks) do
     v.cookbook_category = "cookpot"
 
 	if v.card_def then
-		AddRecipeCard("brewery",v)
+		AddRecipeCard_Brewery("brewery",v)
 	end
 end
 

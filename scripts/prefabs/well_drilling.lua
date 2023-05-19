@@ -23,6 +23,9 @@ local function onhammered(inst)
 	if inst.deploy_item_save_record ~= nil then
         local item = SpawnSaveRecord(inst.deploy_item_save_record)
 		item.Transform:SetPosition(x, y, z)
+		item.AnimState:PlayAnimation("collapse", false)
+		item.AnimState:PushAnimation("idle_packed")
+		item.SoundEmitter:PlaySound("drink_fx/sfx/drilling_pst", "drilling_pst")
 	end
 
     inst:Remove()
@@ -44,7 +47,7 @@ local function Finished(inst, force_fx)
 		item.AnimState:PlayAnimation("collapse", false)
 		item:ListenForEvent("animover", item_foldup_finished)
 
-	    item.SoundEmitter:PlaySound("farming/common/farm/plow/collapse")
+	    item.SoundEmitter:PlaySound("drink_fx/sfx/drilling_pst", "drilling_pst")
 		
 		SpawnPrefab("collapse_small").Transform:SetPosition(x, y, z)
 		SpawnPrefab("hole").Transform:SetPosition(x, y, z)
@@ -72,12 +75,12 @@ local function DoDrilling(inst)
 	inst:RemoveEventCallback("animover", DoDrilling)
 
 	inst.AnimState:PlayAnimation("drill_loop", true)
-    inst.SoundEmitter:PlaySound("farming/common/farm/plow/LP", "loop")
+    inst.SoundEmitter:PlaySound("drink_fx/sfx/drilling_loop", "drilling_loop")
 	local fx_time = 0
 	if not inst.components.timer:TimerExists("drilling") then
-		inst.components.timer:StartTimer("drilling", TUNING.FARM_PLOW_DRILLING_DURATION)
+		inst.components.timer:StartTimer("drilling", TUNING.WELL_DRILLING_DURATION)
 	else
-		fx_time = TUNING.FARM_PLOW_DRILLING_DURATION - inst.components.timer:GetTimeLeft("drilling")
+		fx_time = TUNING.WELL_DRILLING_DURATION - inst.components.timer:GetTimeLeft("drilling")
 	end
 end
 
@@ -90,7 +93,7 @@ end
 local function StartUp(inst)
     inst.AnimState:PlayAnimation("drill_pre")
 	inst:ListenForEvent("animover", DoDrilling)
-	inst.SoundEmitter:PlaySound("farming/common/farm/plow/drill_pre")
+	inst.SoundEmitter:PlaySound("drink_fx/sfx/drilling_pre", "drilling_pre")
 
 	inst.startup_task = nil
 end
@@ -205,8 +208,8 @@ local function item_fn()
 
 	inst:AddComponent("finiteuses")
     inst.components.finiteuses:SetOnFinished(inst.Remove)
-    inst.components.finiteuses:SetMaxUses(TUNING.FARM_PLOW_USES)
-    inst.components.finiteuses:SetUses(TUNING.FARM_PLOW_USES)
+    inst.components.finiteuses:SetMaxUses(TUNING.WELL_DRILL_USES)
+    inst.components.finiteuses:SetUses(TUNING.WELL_DRILL_USES)
 
     MakeSmallBurnable(inst)
     MakeSmallPropagator(inst)

@@ -23,6 +23,8 @@ local postinits =
 		"staff",
 		"warly",
 		"wurt",
+		"tumbleweed",
+		"mound",
 	},
 
 	stategraphs =

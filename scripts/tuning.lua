@@ -151,6 +151,8 @@ water_tuning =
 	IMMUNE_TIME = TUNING.TOTAL_DAY_TIME*immune_time,
 	GHOST_TIME = TUNING.TOTAL_DAY_TIME*ghost_time,
 	DRUNKARD_DURATION = TUNING.TOTAL_DAY_TIME*drunkard_time,
+	WELL_DRILLING_DURATION = TUNING.SEG_TIME*2.5,
+	WELL_DRILL_USES = 20,
 
 	--well sprinkler
 	SPRINKLER_MAX_FUEL_TIME = TUNING.TOTAL_DAY_TIME,
@@ -161,6 +163,8 @@ water_tuning =
 
 	DRUNKARD_SANITY_DELTA = -1,
 	DRUNKARD_TICK_RATE = 2,
+
+	WATER_RECIPCARD_CHANCE = 0.25,
 }
 
 for i,v in pairs(water_tuning) do

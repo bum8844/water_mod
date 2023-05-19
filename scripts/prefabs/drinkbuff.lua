@@ -22,19 +22,33 @@ local function OnAttached_sleepdrink(inst, target)
     end
     inst.entity:SetParent(target.entity)
     inst.Transform:SetPosition(0, 0, 0)
-    target.components.dcapacity:Remove_Intoxication()
+
     target.knockout_time = inst.components.timer:GetTimeLeft("sleepdrinkbuff_done")
-    target:PushEvent("yawn", { grogginess = 4, knockoutduration = target.knockout_time })
-    if target:HasTag("drunk") and not target:HasTag("insomniac") and not IsResistance(target) then
-        target:AddTag("drinksleep")
-    end
     if target.drinksleeptask ~= nil then
         target.drinksleeptask:Cancel()
         target.drinksleeptask = nil
     end
-    target.drinksleeptask = target:DoTaskInTime(target.knockout_time, function()
-        inst.components.debuff:Stop()
-    end)
+
+    if target.components.dcapacity ~= nil then
+        target.components.dcapacity:Remove_Intoxication()
+        target:PushEvent("yawn", { grogginess = 4, knockoutduration = target.knockout_time })
+        if target:HasTag("drunk") and not target:HasTag("insomniac") and not IsResistance(target) then
+            target:AddTag("drinksleep")
+        end
+        inst.drinksleeptask = inst:DoTaskInTime(target.knockout_time, function()
+            inst.components.debuff:Stop()
+        end)
+    elseif target.components.sleeper ~= nil then
+        target.components.sleeper:AddSleepiness(7, target.knockout_time)
+        inst.drinksleeptask = inst:DoTaskInTime(target.knockout_time, function()
+            inst.components.debuff:Stop()
+        end)
+    else
+        inst.drinksleeptask = inst:DoTaskInTime(0, function()
+            inst.components.debuff:Stop()
+        end)
+    end
+
     inst:ListenForEvent("death", function()
         inst.components.debuff:Stop()
     end, target)
@@ -54,31 +68,42 @@ local function OnDetached_sleepdrink(inst, target)
             Dodetox(inst, target)
         end
     end
-    target.drinksleeptask = nil
+    inst.drinksleeptask = nil
     inst:Remove()
 end
 
 local function OnExtended_sleepdrink(inst, target)
-    if target.drinksleeptask ~= nil then
-        target.drinksleeptask:Cancel()
-        target.drinksleeptask = nil
-    end
-
     local current_duration = inst.components.timer:GetTimeLeft("sleepdrinkbuff_done")
     local new_duration = math.max(current_duration, target.sleepdrinkbuff_duration)
     inst.components.timer:StopTimer("sleepdrinkbuff_done")
     inst.components.timer:StartTimer("sleepdrinkbuff_done", new_duration)
 
-
     target.knockout_time = inst.components.timer:GetTimeLeft("sleepdrinkbuff_done")
-    target:PushEvent("yawn", { grogginess = 4, knockoutduration = target.knockout_time })
-    if target:HasTag("drunk") and not target:HasTag("insomniac") and not IsResistance(target) then
-        target:AddTag("drinksleep")
+    if target.drinksleeptask ~= nil then
+        target.drinksleeptask:Cancel()
+        target.drinksleeptask = nil
     end
 
-    target.drinksleeptask = target:DoTaskInTime(target.knockout_time, function()
-        inst.components.debuff:Stop()
-    end)
+    if target.components.dcapacity ~= nil then
+        target.components.dcapacity:Remove_Intoxication()
+        target:PushEvent("yawn", { grogginess = 4, knockoutduration = target.knockout_time })
+        if target:HasTag("drunk") and not target:HasTag("insomniac") and not IsResistance(target) then
+            target:AddTag("drinksleep")
+        end
+        inst.drinksleeptask = inst:DoTaskInTime(target.knockout_time, function()
+            inst.components.debuff:Stop()
+        end)
+    elseif target.components.sleeper ~= nil then
+        target.components.sleeper:AddSleepiness(7, target.knockout_time)
+        inst.drinksleeptask = inst:DoTaskInTime(target.knockout_time, function()
+            inst.components.debuff:Stop()
+        end)
+    else
+        inst.drinksleeptask = inst:DoTaskInTime(0, function()
+            inst.components.debuff:Stop()
+        end)
+    end
+
 end
 
 local function fn_sleepdrink()
@@ -118,13 +143,19 @@ local function OnAttached_detoxbuff(inst, target)
         inst.components.debuff:Stop()
         return
     end
-    if not target.components.dcapacity:IsDrunk() then
-        inst.components.debuff:Stop()
-        return
-    end
     inst.entity:SetParent(target.entity)
     inst.Transform:SetPosition(0, 0, 0)
-    target.components.dcapacity:Remove_Capacity(1)
+    if target.detoxbufftask ~= nil then
+        target.detoxbufftask:Cancel()
+        target.detoxbufftask = nil
+    end
+    if target.components.dcapacity ~= nil then
+        target.components.dcapacity:Remove_Capacity(1)
+    else
+        inst.detoxbufftask = inst:DoTaskInTime(0, function()
+            inst.components.debuff:Stop()
+        end)
+    end
     inst:ListenForEvent("death", function()
         inst.components.debuff:Stop()
     end, target)
@@ -132,18 +163,22 @@ end
 
 local function OnDetached_detoxbuff(inst, target)
     Dodetox(inst, target)
-    target.endtask = nil
+    inst.detoxbufftask = nil
     inst:Remove()
 end
 
 local function OnExtended_detoxbuff(inst, target)
+    if target.detoxbufftask ~= nil then
+        target.detoxbufftask:Cancel()
+        target.detoxbufftask = nil
+    end
     if target.components.dcapacity:IsDrunk() then
         local current_duration = inst.components.timer:GetTimeLeft("detoxbuff_done")
         local new_duration = math.max(current_duration, target.detoxbuff_duration)
         inst.components.timer:StopTimer("detoxbuff_done")
         inst.components.timer:StartTimer("detoxbuff_done", new_duration)
     else
-        target.endtask = target:DoTaskInTime(0, function()
+        inst.detoxbufftask = inst:DoTaskInTime(0, function()
             inst.components.debuff:Stop()
         end)
     end
@@ -190,12 +225,17 @@ local function OnAttached_obe(inst, target)
         end
         TheNet:Announce(""..target:GetDisplayName().." drank ".. STRINGS.NAMES.GHOSTLY_TEA ..", and became a ghost for "..TUNING.GHOST_TIME.." seconds!")
         target.components.obe:DrinktoDeath()
-    else
+    elseif target.components.health ~= nil and not target.components.health:IsDead() then
         target.components.health:DoDelta(-1000000)
+    else
+        inst.obebufftask = inst:DoTaskInTime(0, function()
+            inst.components.debuff:Stop()
+        end)
     end
 end
 
 local function OnDetached_obe(inst, target)
+    inst.obebufftask = nil
     inst:Remove()
 end
 
@@ -230,14 +270,18 @@ local function OnAttached_caffein(inst, target)
     end
     inst.entity:SetParent(target.entity)
     inst.Transform:SetPosition(0, 0, 0)
-    target.components.locomotor:SetExternalSpeedMultiplier(target, "caffeinbuff", TUNING.CAFFEIN_SPEED)
+    if target.components.locomotor ~= nil then
+        target.components.locomotor:SetExternalSpeedMultiplier(target, "caffeinbuff", TUNING.CAFFEIN_SPEED)
+    end
     inst:ListenForEvent("death", function()
         inst.components.debuff:Stop()
     end, target)
 end
 
 local function OnDetached_caffein(inst, target)
-    target.components.locomotor:RemoveExternalSpeedMultiplier(target, "caffeinbuff")
+    if target.components.locomotor ~= nil then
+        target.components.locomotor:RemoveExternalSpeedMultiplier(target, "caffeinbuff")
+    end
     inst:Remove()
 end
 
@@ -287,26 +331,38 @@ local function OnAttached_alcohol(inst, target)
     end
     inst.entity:SetParent(target.entity)
     inst.Transform:SetPosition(0, 0, 0)
-
-    target:PushEvent("drunk")
-    target:AddTag("drunk")
-
-    target.components.locomotor:SetExternalSpeedMultiplier(target, "alcoholdebuff", 0.5)
-    target:PushEvent("foodbuffattached", { buff = "ANNOUNCE_DRUNK", priority = 2 })
+    if target.components.dcapacity ~= nil then
+        target:PushEvent("drunk")
+        target:AddTag("drunk")
+        target.components.locomotor:SetExternalSpeedMultiplier(target, "alcoholdebuff", 0.5)
+        target:PushEvent("foodbuffattached", { buff = "ANNOUNCE_DRUNK", priority = 2 })
+    else
+        target:AddTag("drunk")
+        if target.components.locomotor ~= nil then
+            target.components.locomotor:SetExternalSpeedMultiplier(target, "alcoholdebuff", 0.5)
+        end
+    end
     inst:ListenForEvent("death", function()
         inst.components.debuff:Stop()
     end, target)
 end
 
 local function OnDetached_alcohol(inst, target)
-    target:PushEvent("refreshdrunk")
-    target:RemoveTag("drunk")
-    target.components.locomotor:RemoveExternalSpeedMultiplier(target, "alcoholdebuff")
-    if not target:HasTag("drinksleep") then
-        target:PushEvent("foodbuffdetached", { buff = "ANNOUNCE_DRUNK_END", priority = 1 })
+    if target.components.dcapacity ~= nil then
+        target:PushEvent("refreshdrunk")
+        target:RemoveTag("drunk")
+        target.components.locomotor:RemoveExternalSpeedMultiplier(target, "alcoholdebuff")
+        if not target:HasTag("drinksleep") then
+            target:PushEvent("foodbuffdetached", { buff = "ANNOUNCE_DRUNK_END", priority = 1 })
+        else
+            target:RemoveTag("drinksleep")
+            target:PushEvent("foodbuffdetached", { buff = "ANNOUNCE_SLEEP_END", priority = 1 })
+        end
     else
-        target:RemoveTag("drinksleep")
-        target:PushEvent("foodbuffdetached", { buff = "ANNOUNCE_SLEEP_END", priority = 1 })
+        target:RemoveTag("drunk")
+        if target.components.locomotor ~= nil then
+            target.components.locomotor:RemoveExternalSpeedMultiplier(target, "alcoholdebuff")
+        end
     end
     inst:Remove()
 end
@@ -357,19 +413,33 @@ local function OnAttached_immune(inst, target)
     end
     inst.entity:SetParent(target.entity)
     inst.Transform:SetPosition(0, 0, 0)
-    target.components.health.externalabsorbmodifiers:SetModifier(target, TUNING.BUFF_PLAYERABSORPTION_MODIFIER)
-    target.components.sanity:SetFullAuraImmunity(true)
-    target.components.sanity:SetNegativeAuraImmunity(true)
-    target.components.sanity:SetPlayerGhostImmunity(true)
-    target.components.sanity:SetLightDrainImmune(true)
+    if target.components.health ~= nil and not target.components.health:IsDead() then
+        target.components.health.externalabsorbmodifiers:SetModifier(target, TUNING.BUFF_PLAYERABSORPTION_MODIFIER)
+        if target.components.sanity ~= nil then
+            target.components.sanity:SetFullAuraImmunity(true)
+            target.components.sanity:SetNegativeAuraImmunity(true)
+            target.components.sanity:SetPlayerGhostImmunity(true)
+            target.components.sanity:SetLightDrainImmune(true)
+        end
+    else
+        inst.immunebufftask = inst:DoTaskInTime(0, function()
+            inst.components.debuff:Stop()
+        end)
+    end
 end
 
 local function OnDetached_immune(inst, target)
-    target.components.health.externalabsorbmodifiers:RemoveModifier(target)
-    target.components.sanity:SetFullAuraImmunity(false)
-    target.components.sanity:SetNegativeAuraImmunity(false)
-    target.components.sanity:SetPlayerGhostImmunity(false)
-    target.components.sanity:SetLightDrainImmune(false)
+    if target.components.health ~= nil then
+        target.components.health.externalabsorbmodifiers:RemoveModifier(target)
+        if target.components.sanity ~= nil then
+            target.components.sanity:SetFullAuraImmunity(false)
+            target.components.sanity:SetNegativeAuraImmunity(false)
+            target.components.sanity:SetPlayerGhostImmunity(false)
+            target.components.sanity:SetLightDrainImmune(false)
+        end
+    else
+        inst.immunebufftask = nil
+    end
     inst:Remove()
 end
 

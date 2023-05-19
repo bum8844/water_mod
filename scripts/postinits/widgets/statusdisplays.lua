@@ -105,12 +105,12 @@ local function thirstbadge_statusdisplays(self)
 	end
 
 	function self:ShowStatusNumbers()
-		_ShowStatusNumbers(self)
+		self._ShowStatusNumbers(self)
 		self.waterstomach.num:Show()
 	end
 
 	function self:HideStatusNumbers()
-		_HideStatusNumbers(self)
+		self._HideStatusNumbers(self)
 		self.waterstomach.num:Hide()
 	end
 
