@@ -1,3 +1,33 @@
+local drinkstew_client = State{
+    name = "drinkstew",
+    tags = { "busy" },
+    server_states = { "drinkstew" },
+
+    onenter = function(inst)
+        inst.components.locomotor:Stop()
+        inst.AnimState:PlayAnimation("eat_pre")
+        inst.AnimState:PushAnimation("eat_lag", false)
+
+        inst:PerformPreviewBufferedAction()
+        inst.sg:SetTimeout(TIMEOUT)
+    end,
+
+    onupdate = function(inst)
+        if inst.sg:ServerStateMatches() then
+            if inst.entity:FlattenMovementPrediction() then
+                inst.sg:GoToState("idle", "noanim")
+            end
+        elseif inst.bufferedaction == nil then
+            inst.sg:GoToState("idle")
+        end
+    end,
+
+    ontimeout = function(inst)
+        inst:ClearBufferedAction()
+        inst.sg:GoToState("idle")
+    end,
+}
+
 local drink_client = State{
     name = "drink",
     tags = {"busy"},
@@ -27,6 +57,7 @@ local drink_client = State{
     end,
 }
 
+AddStategraphState("wilson_client", drinkstew_client)
 AddStategraphState("wilson_client", drink_client)
 
 ------------------------------------------------------------------------
@@ -51,10 +82,14 @@ local drink_event = EventHandler("drink",function(inst, action)
         if obj == nil then
             return
         end
-        for k, v in pairs(FOODTYPE) do
-            if obj:HasTag("edible_"..v) and obj:HasTag("drink") then
-                return v == "drink"
+        if obj:HasTag("drink") then
+            for k, v in pairs(FOODTYPE) do
+                if obj:HasTag("edible_"..v) then
+                    return v == FOODTYPE.MEAT and "drinkstew" or "drink"
+                end
             end
+        else
+            return eater(inst, action)
         end
     end)
 
@@ -70,7 +105,6 @@ AddStategraphActionHandler("wilson_client", ActionHandler(ACTIONS.TAKEWATER_OCEA
 AddStategraphActionHandler("wilson_client", ActionHandler(ACTIONS.MILKINGTOOL, "dolongaction"))
 AddStategraphActionHandler("wilson_client", ActionHandler(ACTIONS.UPGRADE_TILEARRIVE, "dolongaction"))
 AddStategraphActionHandler("wilson_client", ActionHandler(ACTIONS.DRINK, "drink"))
-AddStategraphActionHandler("wilson_client", ActionHandler(ACTIONS.DRINKPLAYER, "give"))
 AddStategraphActionHandler("wilson_client", ActionHandler(ACTIONS.TURNON_TILEARRIVE, "give"))
 AddStategraphActionHandler("wilson_client", ActionHandler(ACTIONS.BREWING,
         function(inst, action)
@@ -280,13 +314,21 @@ AddStategraphPostInit("wilson_client", function(sg)
     end
     local eater = sg.actionhandlers[ACTIONS.EAT].deststate
     sg.actionhandlers[ACTIONS.EAT].deststate = function(inst, action)
-        local result = eater(inst, action)
-        if result ~= nil then
+            if inst.sg:HasStateTag("busy") or inst:HasTag("busy") then
+                return
+            end
             local obj = action.target or action.invobject
+            if obj == nil then
+                return
+            end
             if obj:HasTag("drink") then
-                return "drink"
+                for k, v in pairs(FOODTYPE) do
+                    if obj:HasTag("edible_"..v) then
+                        return v == FOODTYPE.MEAT and "drinkstew" or "drink"
+                    end
+                end
+            else
+                return eater(inst, action)
             end
         end
-        return result
-    end
-end)
+    end)

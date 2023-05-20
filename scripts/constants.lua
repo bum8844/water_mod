@@ -383,6 +383,7 @@ FOODTYPEGROUP =
 			"dish_chilledrosejuice",
 			"pina_colada",
 			"limonade",
+			"berryshake",
 			"juice_waterberry",
 			"fruit_truffle",
 			"tea_floral",

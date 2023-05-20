@@ -162,6 +162,7 @@ local function MakeCup(name, masterfn, tags)
 
         if not inst:HasTag("frozen") then
             inst:AddTag("drink")
+            inst:AddTag("def_water")
         end
 
         MakeInventoryFloatable(inst)
