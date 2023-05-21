@@ -31,6 +31,7 @@ local drinkstew_client = State{
 local drink_client = State{
     name = "drink",
     tags = {"busy"},
+    server_states = { "drink" },
                 
     onenter = function(inst)
         inst.components.locomotor:Stop()

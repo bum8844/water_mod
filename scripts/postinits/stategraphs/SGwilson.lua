@@ -92,7 +92,7 @@ local drink = State{
             feed = inst:GetBufferedAction().invobject
         end
 
-        inst.SoundEmitter:PlaySound("drink_fx/player/drinking","drinking",.25)
+        inst.SoundEmitter:PlaySound("drink_fx/player/drinking","drinking")
 
         if inst.components.inventory:IsHeavyLifting() and
             not inst.components.rider:IsRiding() then
@@ -167,7 +167,7 @@ local drinkstew = State{
             if feed == nil or
                 feed.components.edible == nil or
                 feed.components.edible.foodtype ~= FOODTYPE.GEARS then
-                inst.SoundEmitter:PlaySound("drink_fx/player/drinking", "drinkstew")
+                inst.SoundEmitter:PlaySound("drink_fx/player/drinking_stew", "drinkstew")
             end
 
             --[[if feed ~= nil and feed.components.soul ~= nil then
