@@ -131,7 +131,7 @@ local _FEEDPLAYER = ACTIONS.FEEDPLAYER.fn
 
 ACTIONS.FEEDPLAYER.fn = function(act)
     if act.invobject:HasTag("drink") or act.invobject:HasTag("prepareddrink") or act.invobject:HasTag("pre-prepareddrink") then
-        if act.target ~= nil and
+        if act.target ~= nil and 
             act.target:IsValid() and
             act.target.sg:HasStateTag("idle") and
             not (act.target.sg:HasStateTag("busy") or

@@ -71,9 +71,11 @@ local USEITEM =
     end,
 
     edible = function(inst, doer, target, actions, right)
-        if inst:HasTag("drink") or inst:HasTag("prepareddrink") or inst:HasTag("pre-prepareddrink") then
-            table.insert(actions, ACTIONS.FEEDPLAYER)
-            return
+        if target:HasTag("player") then
+            if inst:HasTag("drink") or inst:HasTag("prepareddrink") or inst:HasTag("pre-prepareddrink") then
+                table.insert(actions, ACTIONS.FEEDPLAYER)
+                return
+            end
         end
     end,
 
