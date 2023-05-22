@@ -32,11 +32,9 @@ local USEITEM =
         end
     end,
 
-    purify = function(inst, doer, target, actions)
-        if inst:HasTag("purify_pill") or inst:HasTag("purify") then
-            if target:HasTag("purify_pill") or target:HasTag("purify") then
-                table.insert(actions, ACTIONS.PURIFY)
-            end
+    wateringtool = function(inst, doer, target, actions)
+        if target:HasTag("well") and not (doer.replica.rider ~= nil and doer.replica.rider:IsRiding()) then
+            table.insert(actions, ACTIONS.GIVE)
         end
     end,
 

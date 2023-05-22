@@ -4,15 +4,18 @@ local Ingredient = _G.Ingredient
 local ModAtlas = "images/tea_inventoryitem.xml"
 local CONSTRUCTION_PLANS =_G.CONSTRUCTION_PLANS
 
-AddRecipePostInit("fertilizer",function(v) v.ingredients = {Ingredient("poop", 3), Ingredient("boneshard", 2), Ingredient("bucket_empty", 1, ModAtlas, nil,"bucket_empty.tex")} end)
-
 AddRecipeFilter({name = "HYDRATION", atlas = ModAtlas, image = "hydration.tex", custom_pos=nil, recipes=nil,},nil)
+
+if not (GLOBAL.KnownModIndex:IsModEnabled("workshop-2334209327") or GLOBAL.KnownModIndex:IsModForceEnabled("workshop-2334209327")) then
+	AddRecipePostInit("fertilizer",function(v) v.ingredients = {Ingredient("poop", 3), Ingredient("boneshard", 2), Ingredient("bucket_empty", 1, ModAtlas, nil,"bucket_empty.tex")} end)
+	AddRecipe2("bucket_empty",{Ingredient("log",4)},TECH.NONE,{atlas = ModAtlas, image = "bucket_empty.tex"},{"HYDRATION","TOOLS"})
+else
+	AddRecipeToFilter("kyno_bucket_empty","HYDRATION")	
+end
 
 AddRecipeToFilter("refined_dust","HYDRATION")
 
 AddRecipe2("spice_caffeinpepper",{Ingredient("caffeinberry_bean_cooked", 3, ModAtlas, nil, "caffeinberry_bean_cooked.tex")},TECH.FOODPROCESSING_ONE,{atlas = ModAtlas, builder_tag="professionalchef", numtogive=2, image = "spice_caffeinpepper.tex" ,nounlock=true},{"FOODPROCESSING"})
-
-AddRecipe2("bucket_empty",{Ingredient("log",4)},TECH.NONE,{atlas = ModAtlas, image = "bucket_empty.tex"},{"REFINE","RAIN","HYDRATION"})
 
 AddRecipe2("barrel",{Ingredient("boards",2),Ingredient("rope",3)},TECH.SCIENCE_ONE,{placer = "barrel_placer", atlas = ModAtlas, image = "barrel.tex"},{"CONTAINERS","HYDRATION"})
 

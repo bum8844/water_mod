@@ -1,8 +1,3 @@
-local assets =
-{
-	Asset("ANIM", "anim/buckets.zip"),
-}
-
 local function OnTakeWater(inst, source, doer)
     inst.rainfilling = 0
     if source ~= nil and source.components.waterlevel ~= nil then
@@ -40,9 +35,9 @@ end
 
 local function WeatherCheck(inst)
     local owner = inst.components.inventoryitem.owner
-    if TheWorld.state.israining and owner == nil then
+    if GLOBAL.TheWorld.state.israining and owner == nil then
         inst.rainfilling = inst.rainfilling + TUNING.RAIN_GIVE_WATER
-    elseif not TheWorld.state.israining and inst.rainfilling > 0 then
+    elseif not GLOBAL.TheWorld.state.israining and inst.rainfilling > 0 then
         inst.rainfilling = inst.rainfilling - TUNING.LOST_WATER
     end
     if inst.rainfilling >= TUNING.BUCKET_LEVEL_PER_USE then
@@ -51,14 +46,10 @@ local function WeatherCheck(inst)
 end
 
 local function onremovewater(inst)
-    if not TheWorld.state.israining and inst.rainfilling ~= 0 then
+    if not GLOBAL.TheWorld.state.israining and inst.rainfilling ~= 0 then
         inst.SoundEmitter:PlaySound("dontstarve/creatures/pengull/splash")
         inst.rainfilling = 0
     end
-end
-
-local function DoneMilkingfn(doer)
-    doer.SoundEmitter:PlaySound("dontstarve/creatures/pengull/splash")
 end
 
 local function onsave(inst, data)
@@ -71,35 +62,14 @@ local function onload(inst, data)
     end
 end
 
-local function fn()
-    local inst = CreateEntity()
+AddPrefabPostInit("kyno_bucket_empty", function(inst)
+	inst:AddTag("watertaker")
 
-    inst.entity:AddTransform()
-    inst.entity:AddAnimState()
-    inst.entity:AddSoundEmitter()
-    inst.entity:AddNetwork()
+	inst.entity:SetPristine()
 
-    MakeInventoryPhysics(inst)	
-
-    inst.AnimState:SetBuild("buckets")
-    inst.AnimState:SetBank("buckets")
-    inst.AnimState:PlayAnimation("empty")
-
-    inst:AddTag("watertaker")
-    inst:AddTag("bucket_empty")
-
-    MakeInventoryFloatable(inst)
-
-    inst.entity:SetPristine()
-
-    if not TheWorld.ismastersim then
-        return inst
-    end
-
-    inst.rainfilling = 0
-    inst:DoPeriodicTask(1,WeatherCheck)
-	
-	-- 우물 상호 작용을 위한 태그
+	if not GLOBAL.TheWorld.ismastersim then
+		return inst
+	end
 
 	inst:AddComponent("watertaker")
 	inst.components.watertaker.capacity = TUNING.BUCKET_LEVEL_PER_USE
@@ -108,31 +78,12 @@ local function fn()
 	inst:AddComponent("waterproofer")
     inst.components.waterproofer:SetEffectiveness(TUNING.WATERPROOFNESS_SMALL*2)
 
-    inst:AddComponent("finiteuses")
-    inst.components.finiteuses:SetMaxUses(TUNING.BUCKET_MAX_LEVEL)
+    inst:AddComponent("inspectable")
+    inst:AddComponent("milker")
 
-    inst:AddComponent("fuel")
-    inst.components.fuel.fuelvalue = TUNING.LARGE_FUEL
+    inst.components.finiteuses:SetMaxUses(TUNING.BUCKET_MAX_LEVEL)
+    inst.components.finiteuses:SetUses(TUNING.BUCKET_MAX_LEVEL)
+    inst.components.finiteuses:SetOnFinished(inst.Remove)
     
     inst:AddComponent("wateringtool")
-
-    inst:AddComponent("inspectable")
-
-    inst:AddComponent("milkingtool")
-    inst.components.milkingtool.donemilkingfn = DoneMilkingfn
-	
-    MakeSmallBurnable(inst, TUNING.MED_BURNTIME)
-    MakeSmallPropagator(inst)
-	
-    inst:AddComponent("inventoryitem")
-    inst.components.inventoryitem:SetOnPickupFn(onremovewater)
-
-    MakeHauntableLaunchAndSmash(inst)
-
-    inst.OnSave = onsave
-    inst.OnLoad = onload
-
-    return inst
-end
-
-return Prefab("bucket_empty", fn, assets)
+end)

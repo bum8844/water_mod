@@ -18,6 +18,10 @@ if GLOBAL.KnownModIndex:IsModEnabled("workshop-1505270912") or GLOBAL.KnownModIn
 	modimport("scripts/water_spicedfoods_mod_te")
 end
 
+if GLOBAL.KnownModIndex:IsModEnabled("workshop-2334209327") or GLOBAL.KnownModIndex:IsModForceEnabled("workshop-2334209327") then
+	modimport("scripts/buckets_patch")
+end
+
 AddMinimapAtlas("images/tea_minimap.xml")
 
 local teaingredients =
