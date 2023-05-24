@@ -96,6 +96,12 @@ local function hole()
     inst:AddTag("birdblocker")
 	
 	MakeObstaclePhysics(inst, .6)
+
+    inst.entity:SetPristine()
+
+    if not TheWorld.ismastersim then
+        return inst
+    end
 	
 	inst:AddComponent("inspectable")
 	
@@ -127,12 +133,12 @@ local function onhammered(inst)
         	end
         	water_finiteuses = water_finiteuses - 1
     	end
-		if inst.bucket_finiteuses > 0 then
+		if inst.wateringtool_finiteuses > 0 then
 			local x, y, z = inst.Transform:GetWorldPosition()
 	   		local refund = nil
 
-			refund = SpawnPrefab("bucket_empty")
-			refund.components.finiteuses:SetUses(inst.bucket_finiteuses)
+			refund = SpawnPrefab(tostring(inst.wateringtool))
+			refund.components.finiteuses:SetUses(inst.wateringtool_finiteuses)
 
 			LaunchAt(refund,inst,inst,-1.8,0.5,nil,65)
 		end
@@ -157,10 +163,10 @@ local function onhit(inst)
 end
 
 local function OnRefuseItem(inst, giver, item)
-	if inst.components.pickable.caninteractwith then
-		giver.components.talker:Say(GetActionFailString(giver, "GIVE", "WELL_NOTEMPTY"))
-	elseif inst.AnimState:IsCurrentAnimation("watering") or inst.AnimState:IsCurrentAnimation("idle_watering") or inst.AnimState:IsCurrentAnimation("shack_watering") then
+	if inst.AnimState:IsCurrentAnimation("watering") or inst.AnimState:IsCurrentAnimation("hit_watering") or inst.AnimState:IsCurrentAnimation("shack_watering") then
 		giver.components.talker:Say(GetActionFailString(giver, "GIVE", "WELL_BUSY"))
+	elseif inst.wateringtool then
+		giver.components.talker:Say(GetActionFailString(giver, "GIVE", "WELL_NOTEMPTY"))
 	else
 		giver.components.talker:Say(GetActionFailString(giver, "GIVE", "GENERIC"))
 	end
@@ -188,9 +194,9 @@ local function givewater(inst, picker, loot)
 	inst.AnimState:PushAnimation("idle_empty")
 	picker.SoundEmitter:PlaySound("dontstarve/creatures/pengull/splash")
 
-	if inst.bucket_finiteuses > 0 then
-		refund = SpawnPrefab("bucket_empty")
-		refund.components.finiteuses:SetUses(inst.bucket_finiteuses)
+	if inst.wateringtool_finiteuses > 0 then
+		refund = SpawnPrefab(tostring(inst.wateringtool))
+		refund.components.finiteuses:SetUses(inst.wateringtool_finiteuses)
 
     	if picker ~= nil and picker.components.inventory ~= nil then
         	picker.components.inventory:GiveItem(refund, nil, Vector3(x, y, z))
@@ -199,7 +205,7 @@ local function givewater(inst, picker, loot)
     	end
 	end
 	loot.components.inventoryitemmoisture:SetMoisture(0)
-	inst.bucket_finiteuses = 0
+	inst.wateringtool_finiteuses = 0
 	inst.water_finiteuses = 0
 	SetPickable(inst, false, 0)
 end
@@ -218,47 +224,44 @@ end
 
 local function OnGetItemFromPlayer(inst, giver, item)
 	inst:RemoveTag("ready")
+	inst.wateringtool = item.prefab
 	local water_finiteuses = item.components.finiteuses:GetUses()
 	if water_finiteuses > TUNING.BUCKET_LEVEL_PER_USE then
 		water_finiteuses = TUNING.BUCKET_LEVEL_PER_USE
 	end
 	inst.water_finiteuses = water_finiteuses
 	item.components.finiteuses:Use(water_finiteuses)
-	inst.bucket_finiteuses = item.components.finiteuses:GetUses()
+	inst.wateringtool_finiteuses = item.components.finiteuses:GetUses()
 	WellAct(inst, inst.water_finiteuses)
 end
 
-local function updatewellstate(inst, data)
-    local num = data.numtoharvest or 0
-	if num > 0 then
-		inst.AnimState:PlayAnimation("idle_watering")
-		SetPickable(inst, true, num)
-	else
-		inst.AnimState:PlayAnimation("idle_empty")
-		SetPickable(inst, false, num)
-	end
-end
-
 local function onsave(inst, data)
-	data.bucket_finiteuses = inst.bucket_finiteuses
-	data.water_finiteuses = inst.water_finiteuses
-    if inst.components.pickable.numtoharvest ~= nil and inst.components.pickable.numtoharvest > 0 then
-        data.numtoharvest = inst.components.pickable.numtoharvest
-    end
+	local pickable = inst.components.pickable.numtoharvest
+	local chk_numtoharvest = pickable ~= nil and pickable > 0 and pickable or 0
+	data.numtoharvest = chk_numtoharvest
+	data.wateringtool = inst.wateringtool
+	data.wateringtool_finiteuses = inst.wateringtool_finiteuses or 0
+	data.water_finiteuses = inst.water_finiteuses or 0
 end
 
 local function onload(inst, data)
-	if data ~= nil then
-		inst.bucket_finiteuses = data.bucket_finiteuses
-		if data.numtoharvest ~= nil then
-			updatewellstate(inst, data)
-		elseif data.bucket_finiteuses ~= nil and data.bucket_finiteuses > 0 then
-			
-			WellAct(inst, data.water_finiteuses)
+	if data.wateringtool ~= nil then
+		inst.wateringtool = data.wateringtool
+
+		inst:RemoveTag("ready")
+
+		local numtoharvest = data.numtoharvest
+		inst.wateringtool_finiteuses = data.wateringtool_finiteuses
+		local water_finiteuses = data.water_finiteuses
+
+		if numtoharvest > 0 then
+			inst.AnimState:PlayAnimation("idle_watering")
+			SetPickable(inst, true, numtoharvest)
+		elseif inst.wateringtool_finiteuses > 0 then
+			WellAct(inst, water_finiteuses)
+		else
+			OnGetItemFromPlayer(inst, nil, inst.wateringtool)
 		end
-	else
-		print("3")
-		updatewellstate(inst, data)
 	end
 end
 
@@ -281,8 +284,14 @@ local function well()
 	
 	MakeObstaclePhysics(inst, .5)
 
-	inst.entity:SetPristine()
-	inst.bucket_finiteuses = 0
+    inst.entity:SetPristine()
+
+    if not TheWorld.ismastersim then
+        return inst
+    end
+
+    inst.wateringtool = nil
+	inst.wateringtool_finiteuses = 0
 	inst.water_finiteuses = 0
 	
     inst.AnimState:SetBank("well")

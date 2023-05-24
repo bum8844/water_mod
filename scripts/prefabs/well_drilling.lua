@@ -160,6 +160,10 @@ local function main_fn()
     return inst
 end
 
+local function PlaceTestFn(inst, pt, mouseover, deployer)
+    return TheWorld.Map:IsAboveGroundAtPoint(pt.x, pt.y, pt.z, false) and not TheWorld.Map:IsDockAtPoint(pt.x, 0, pt.z)
+end
+
 local function ondeploy(inst, pt, deployer)
     local obj = SpawnPrefab("well_drilling")
 	--obj.Physics:SetCollides(false)
@@ -189,6 +193,8 @@ local function item_fn()
 
     inst:AddTag("usedeploystring")
 
+    inst._custom_candeploy_fn = PlaceTestFn
+
 	MakeInventoryFloatable(inst, "small", 0.1, 0.8)
 
 	inst.entity:SetPristine()
@@ -204,6 +210,7 @@ local function item_fn()
     inst.components.inventoryitem.imagename= "well_drilling_item"
 
     inst:AddComponent("deployable")
+    inst.components.deployable:SetDeployMode(DEPLOYMODE.CUSTOM)
     inst.components.deployable.ondeploy = ondeploy
 
 	inst:AddComponent("finiteuses")
