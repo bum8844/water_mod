@@ -205,6 +205,7 @@ local function givewater(inst, picker, loot)
     	end
 	end
 	loot.components.inventoryitemmoisture:SetMoisture(0)
+	inst.wateringtool = nil
 	inst.wateringtool_finiteuses = 0
 	inst.water_finiteuses = 0
 	SetPickable(inst, false, 0)
@@ -260,7 +261,7 @@ local function onload(inst, data)
 		elseif inst.wateringtool_finiteuses > 0 then
 			WellAct(inst, water_finiteuses)
 		else
-			OnGetItemFromPlayer(inst, nil, inst.wateringtool)
+			inst.wateringtool = nil -- 이럴일은 없갰죠
 		end
 	end
 end

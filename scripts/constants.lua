@@ -191,6 +191,7 @@ FOODTYPEGROUP =
 		"asparagussoup",
 		"bonesoup",
 		"lobsterbisque",
+		"moqueca",
 		--mod_foods
 		"musselbouillabaise",
 		"sharkfinsoup",
