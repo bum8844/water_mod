@@ -353,6 +353,7 @@ FOODTYPEGROUP =
 			"jellyopop",
 			"tentacicle",
 			"coldcuts",
+			"snowcone",
 		},
 
 		LARGE = 
@@ -390,6 +391,8 @@ FOODTYPEGROUP =
 			"tea_floral",
 			"icedtea",
 			"tea",
+			"zaspberryparfait",
+			"californiaking",
 			--hop
 			"bubletea",
 			"coconutwater",
@@ -498,6 +501,9 @@ FOODTYPEGROUP =
 
 env.WATERTYPE = WATERTYPE
 env.WATERGROUP = WATERGROUP
+env.FOODTYPEGROUP = FOODTYPEGROUP
+
+_G.FOODTYPEGROUP = FOODTYPEGROUP
 _G.WATERTYPE = WATERTYPE
 _G.WATERGROUP = WATERGROUP
 
