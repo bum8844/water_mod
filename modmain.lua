@@ -18,9 +18,12 @@ for k,v in ipairs(GLOBAL.KnownModIndex:GetModsToLoad()) do
 	if Mod == " Tropical Experience Return of Them" or Mod == " 他们的回归" then -- workshop-1505270912
 		modimport("scripts/water_spicedfoods_mod_te")
 	end
-	if Mod == "Island Adventures - Shipwrecked" or Mod == "岛屿冒险" then
+	if Mod == "Island Adventures - Shipwrecked" or Mod == "岛屿冒险" then -- workshop-1467214795
 		modimport("scripts/water_spicedfoods_mod_ia")
-	end -- workshop-1467214795
+	end 
+	if Mod == "󰀕 Uncompromising Mode" then -- workshop-2039181790
+		modimport("scripts/water_spicedfoods_mod_unc")
+	end
 end
 
 --[[if GLOBAL.KnownModIndex:IsModEnabled("") or GLOBAL.KnownModIndex:IsModForceEnabled("") then
