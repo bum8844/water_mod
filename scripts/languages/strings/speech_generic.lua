@@ -151,7 +151,15 @@ return {
 			PURIFY_LONG = "좀 더 끓여야 해.",
 			PURIFY_SHORT = "거의 다 끓었어!",
 			HASWATER = "물은 됐고, 뭘 넣어볼까?",
-		}
+			MELT_LONG = "",
+			MELT_SHORT = "",
+		},
+		
+		WELL_SPRINKLER = { 
+			LOWFUEL = "",
+			ON = "",
+			OFF = "",
+		},
 	}
 
 }

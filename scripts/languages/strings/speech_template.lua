@@ -161,6 +161,6 @@ return {
 			LOWFUEL = "",
 			ON = "",
 			OFF = "",
-		}
+		},
 	}
 }
