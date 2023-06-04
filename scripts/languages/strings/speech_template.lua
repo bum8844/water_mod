@@ -35,7 +35,6 @@ return {
 		WELL_DRILLING_ITEM = "",
 		HOLE = "",
 		WELL = "",
-		WELL_SPRINKLER = "",
 
 		BUCKET_EMPTY = "",
 
@@ -154,6 +153,14 @@ return {
 			PURIFY_LONG = "",
 			PURIFY_SHORT = "",
 			HASWATER = "",
+			MELT_LONG = "",
+			MELT_SHORT = "",
+		},
+
+		WELL_SPRINKLER = { 
+			LOWFUEL = "",
+			ON = "",
+			OFF = "",
 		}
 	}
 }
