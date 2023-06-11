@@ -73,7 +73,7 @@ water_tuning =
 	WATER_MAXTEMP = 40,
 	WATER_INITTEMP = 5,
 	WATER_CLEAN_MINTEMP = 0,
-	WATER_DIRTY_INITTEMP = -5,
+	WATER_DIRTY_MINTEMP = -5,
 	
 	-- Moistures and getting wet
 	WATER_BARREL_WETNESS = 25,
