@@ -78,7 +78,7 @@ return {
 		LOTUSTEA = "비스킷 몇 조각 있으면 어울리겠어.",
 		SUSHIBISCUS = "과학적으로 전혀 말이 안 돼.",
 
-		SPOILED_DRINK = "구정물이 되어버린 음료야.",
+		SPOILED_DRINK = "음료가 구정물이 됐잖아.",
 		SODA = "정말 상쾌해!",
 		FRUITSODA = "새콤달콤하면서도 상쾌해!",
 		LEMONLIMESODA = "치과의사들이 보면 아마 환장하겠지.",
@@ -151,14 +151,14 @@ return {
 			PURIFY_LONG = "좀 더 끓여야 해.",
 			PURIFY_SHORT = "거의 다 끓었어!",
 			HASWATER = "물은 됐고, 뭘 넣어볼까?",
-			MELT_LONG = "",
-			MELT_SHORT = "",
+			MELT_LONG = "좀 더 녹여야 해.",
+			MELT_SHORT = "거의 다 녹았어!",
 		},
 		
 		WELL_SPRINKLER = { 
-			LOWFUEL = "",
+			LOWFUEL = "연료를 보충해야 해.",
 			ON = "",
-			OFF = "",
+			OFF = "물을 뿌리",
 		},
 	}
 
