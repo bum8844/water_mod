@@ -1,6 +1,3 @@
---Merge this template to your speech table
---to add speech support for your own character mods.
-
 return {
 	ACTIONFAIL =
 	{
@@ -70,6 +67,8 @@ return {
 		CARROT_TEA = "",
 		CACTUS_TEA = "",
 		MULLED = "",
+		TOMATO_JUICE = "",
+
 		GREENTEA = "",
 		BLACKTEA = "",
 		BLACKTEA_ICED = "",

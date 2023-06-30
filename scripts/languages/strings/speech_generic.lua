@@ -68,6 +68,8 @@ return {
 		CARROT_TEA = "마실 만했으면 좋겠네.",
 		CACTUS_TEA = "다행히 가시는 없어.",
 		MULLED = "뇌를 쉬게 해야겠어.",
+		TOMATO_JUICE = "",
+		
 		GREENTEA = "이런 차도 있었어?",
 		BLACKTEA = "우유가 조금 있으면 좋겠는데.",
 		BLACKTEA_ICED = "아, 시원하고 좋다!",
