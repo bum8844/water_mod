@@ -3,7 +3,7 @@ return {
 	{
 		GIVE =
 		{
-			WELL_NOTEMPTY = "",
+			WELL_NOTEMPTY = "우선 물동이를 치워야 해.",
 			WELL_BUSY = "",
 		}
 	},
@@ -32,7 +32,8 @@ return {
 		WELL_DRILLING_ITEM = "",
 		HOLE = "",
 		WELL = "",
-
+		WELL_SPRINKLER = "",
+		
 		BUCKET_EMPTY = "",
 
 		TEA_TREE = "",
@@ -48,9 +49,9 @@ return {
 		CAFFEINBERRY_BEAN = "",
 		CAFFEINBERRY_BEAN_COOKED = "",
 
-		WATER_CLEAN = "",
-		WATER_DIRTY = "",
-		WATER_SALTY = "",
+		WATER_CLEAN = "식수 확보는 생존의 핵심이야!",
+		WATER_DIRTY = "한 번 끓여서 마셔야겠어.",
+		WATER_SALTY = "바닷물을 그대로 마시면 오히려 더 목말라져.",
 
 		GOOPYDRINK = "",
 		
