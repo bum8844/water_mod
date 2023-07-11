@@ -127,50 +127,55 @@ end)
 
 MILKINGTOOL.priority = 2
 
-local DRINKPLAYER = AddAction("DRINKPLAYER", STRINGS.ACTIONS.FEEDPLAYER, function(act)
-    if act.target ~= nil and
-        act.target:IsValid() and
-        act.target.sg:HasStateTag("idle") and
-        not (act.target.sg:HasStateTag("busy") or
-            act.target.sg:HasStateTag("attacking") or
-            act.target.sg:HasStateTag("sleeping") or
-            act.target:HasTag("playerghost") or
-            act.target:HasTag("wereplayer")) and
-        act.target.components.eater ~= nil and
-        act.invobject.components.edible ~= nil and
-        act.target.components.eater:CanEat(act.invobject) and
-        (TheNet:GetPVPEnabled() or
-        (act.target:HasTag("strongstomach") and 
-            act.invobject:HasTag("monstermeat")) or
-        (act.invobject:HasTag("spoiled") and act.target:HasTag("ignoresspoilage") and not 
-            (act.invobject:HasTag("badfood") or act.invobject:HasTag("unsafefood"))) or
-        not (act.invobject:HasTag("badfood") or
-            act.invobject:HasTag("unsafefood") or
-            act.invobject:HasTag("spoiled"))) then
+local _FEEDPLAYER = ACTIONS.FEEDPLAYER.fn
 
-        if act.target.components.eater:PrefersToEat(act.invobject) then
-            local food = act.invobject.components.inventoryitem:RemoveFromOwner()
-            if food ~= nil then
-                act.target:AddChild(food)
-                food:RemoveFromScene()
-                food.components.inventoryitem:HibernateLivingItem()
-                food.persists = false
-                act.target.sg:GoToState("drink", { feed = food, feeder = act.doer })
-                return true
+ACTIONS.FEEDPLAYER.fn = function(act)
+    if act.invobject:HasTag("drink") or act.invobject:HasTag("prepareddrink") or act.invobject:HasTag("pre-prepareddrink") then
+        if act.target ~= nil and 
+            act.target:IsValid() and
+            act.target.sg:HasStateTag("idle") and
+            not (act.target.sg:HasStateTag("busy") or
+                act.target.sg:HasStateTag("attacking") or
+                act.target.sg:HasStateTag("sleeping") or
+                act.target:HasTag("playerghost") or
+                act.target:HasTag("wereplayer")) and
+            act.target.components.eater ~= nil and
+            act.invobject.components.edible ~= nil and
+            act.target.components.eater:CanEat(act.invobject) and
+            (TheNet:GetPVPEnabled() or
+            (act.target:HasTag("strongstomach") and
+                act.invobject:HasTag("monstermeat")) or
+            (act.invobject:HasTag("spoiled") and act.target:HasTag("ignoresspoilage") and not
+                (act.invobject:HasTag("badfood") or act.invobject:HasTag("unsafefood"))) or
+            not (act.invobject:HasTag("badfood") or
+                act.invobject:HasTag("unsafefood") or
+                act.invobject:HasTag("spoiled"))) then
+
+            if act.target.components.eater:PrefersToEat(act.invobject) then
+                local food = act.invobject.components.inventoryitem:RemoveFromOwner()
+                if food ~= nil then
+                    act.target:AddChild(food)
+                    food:RemoveFromScene()
+                    food.components.inventoryitem:HibernateLivingItem()
+                    food.persists = false
+                    act.target.sg:GoToState(
+                        food.components.edible.foodtype == FOODTYPE.MEAT and "drinkstew" or "drink",
+                        { feed = food, feeder = act.doer }
+                    )
+                    return true
+                end
+            else
+                act.target:PushEvent("wonteatfood", { food = act.invobject })
+                return true -- the action still "succeeded", there's just no result on this end
             end
-        else
-            act.target:PushEvent("wonteatfood", { food = act.invobject })
-            return true -- the action still "succeeded", there's just no result on this end
         end
+    else
+        return _FEEDPLAYER(act)
     end
-end)
-DRINKPLAYER.priority = 4
-DRINKPLAYER.rmb = true
-DRINKPLAYER.canforce = true
-DRINKPLAYER.rangecheckfn = DefaultRangeCheck
+end
 
 local DRINK = AddAction("DRINK", STRINGS.ACTIONS.DRINK, ACTIONS.EAT.fn)
-DRINK.priority = 1
+DRINK.priority = 2
 DRINK.mount_valid = true
 
 local TURNON_TILEARRIVE = AddAction("TURNON_TILEARRIVE",STRINGS.ACTIONS.TURNON,function(act)

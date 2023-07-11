@@ -436,10 +436,8 @@ local drinks =
 		hunger = TUNING.DRINK_CALORIES/2,
 		sanity = TUNING.SANITY_TINY/2,
 		thirst = TUNING.HYDRATION_LARGE,
-		---------------------------------
 		potlevel = "high",
 		potlevel_bottle = "mid",
-        ---------------------------------
 		perishtime = TUNING.PERISH_MED,
 		prefabs = { "detoxbuff" },
 		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_DETOX,

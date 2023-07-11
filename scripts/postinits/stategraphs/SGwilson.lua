@@ -92,7 +92,7 @@ local drink = State{
             feed = inst:GetBufferedAction().invobject
         end
 
-        inst.SoundEmitter:PlaySound("drink_fx/player/drinking","drinking",.25)
+        inst.SoundEmitter:PlaySound("drink_fx/player/drinking","drinking")
 
         if inst.components.inventory:IsHeavyLifting() and
             not inst.components.rider:IsRiding() then
@@ -142,9 +142,102 @@ local drink = State{
     end,
 }
 
+local drinkstew = State{
+        name = "drinkstew",
+        tags = { "busy", "nodangle" },
+
+        onenter = function(inst, foodinfo)
+            inst.SoundEmitter:KillSound("eating")
+            inst.components.locomotor:Stop()
+
+            local feed = foodinfo and foodinfo.feed
+            if feed ~= nil then
+                inst.components.locomotor:Clear()
+                inst:ClearBufferedAction()
+                inst.sg.statemem.feed = foodinfo.feed
+                inst.sg.statemem.feeder = foodinfo.feeder
+                inst.sg:AddStateTag("pausepredict")
+                if inst.components.playercontroller ~= nil then
+                    inst.components.playercontroller:RemotePausePrediction()
+                end
+            elseif inst:GetBufferedAction() then
+                feed = inst:GetBufferedAction().invobject
+            end
+
+            if feed == nil or
+                feed.components.edible == nil or
+                feed.components.edible.foodtype ~= FOODTYPE.GEARS then
+                inst.SoundEmitter:PlaySound("drink_fx/player/drinking_stew", "drinkstew")
+            end
+
+            --[[if feed ~= nil and feed.components.soul ~= nil then
+                inst.sg.statemem.soulfx = SpawnPrefab("wortox_eat_soul_fx")
+                inst.sg.statemem.soulfx.entity:SetParent(inst.entity)
+                if inst.components.rider:IsRiding() then
+                    inst.sg.statemem.soulfx:MakeMounted()
+                end
+            end]]
+
+            if inst.components.inventory:IsHeavyLifting() and
+                not inst.components.rider:IsRiding() then
+                inst.AnimState:PlayAnimation("heavy_eat")
+            else
+                inst.AnimState:PlayAnimation("eat_pre")
+                inst.AnimState:PushAnimation("eat", false)
+            end
+
+            inst.components.hunger:Pause()
+        end,
+
+        timeline =
+        {
+            TimeEvent(28 * FRAMES, function(inst)
+                if inst.sg.statemem.feed == nil then
+                    inst:PerformBufferedAction()
+                --[[elseif inst.sg.statemem.feed.components.soul == nil then
+                    inst.components.eater:Eat(inst.sg.statemem.feed, inst.sg.statemem.feeder)
+                elseif inst.components.souleater ~= nil then
+                    inst.components.souleater:EatSoul(inst.sg.statemem.feed)]]
+                end
+            end),
+
+            TimeEvent(30 * FRAMES, function(inst)
+                inst.sg:RemoveStateTag("busy")
+                inst.sg:RemoveStateTag("pausepredict")
+            end),
+
+            TimeEvent(70 * FRAMES, function(inst)
+                inst.SoundEmitter:KillSound("drinkstew")
+            end),
+        },
+
+        events =
+        {
+            EventHandler("animqueueover", function(inst)
+                if inst.AnimState:AnimDone() then
+                    inst.sg:GoToState("idle")
+                end
+            end),
+        },
+
+        onexit = function(inst)
+            inst.SoundEmitter:KillSound("drinkstew")
+            if not GetGameModeProperty("no_hunger") then
+                inst.components.hunger:Resume()
+            end
+            if inst.sg.statemem.feed ~= nil and inst.sg.statemem.feed:IsValid() then
+                inst.sg.statemem.feed:Remove()
+            end
+            --[[if inst.sg.statemem.soulfx ~= nil then
+                inst.sg.statemem.soulfx:Remove()
+            end]]
+        end,
+    }
+    
 AddStategraphState("wilson", refresh_drunk)
 AddStategraphState("wilson", drunk)
 AddStategraphState("wilson", drink)
+AddStategraphState("wilson", drinkstew)
 
 ------------------------------------------------------------------------
 
@@ -161,21 +254,28 @@ local drunk_event = EventHandler("drunk", function(inst)
     end)
 
 local drink_event = EventHandler("drink",function(inst, action)
-            if inst.sg:HasStateTag("busy") then
+    if inst.sg:HasStateTag("busy") then
+        return
+    end
+    local obj = action.target or action.invobject
+    if obj == nil then
+        return
+    elseif obj.components.edible ~= nil then
+        if not inst.components.eater:PrefersToEat(obj) then
+            inst:PushEvent("wonteatfood", { food = obj })
             return
         end
-        local obj = action.target or action.invobject
-        if obj == nil then
+    --[[elseif obj.components.soul ~= nil then
+        if inst.components.souleater == nil then
+            inst:PushEvent("wonteatfood", { food = obj })
             return
-        elseif obj.components.edible ~= nil then
-            if not inst.components.eater:PrefersToEat(obj) then
-                inst:PushEvent("wonteatfood", { food = obj })
-                return
-            end
-        else
-            return
-        end
-        return "drink"
+        end]]
+    else
+        return
+    end
+    return --[[(obj.components.soul ~= nil and "drinkstew")
+        or]] (obj.components.edible.foodtype == FOODTYPE.MEAT and "drinkstew")
+        or "drink"
     end)
 
 AddStategraphEvent("wilson", refresh_drunk_event)
@@ -190,7 +290,6 @@ AddStategraphActionHandler("wilson", ActionHandler(ACTIONS.TAKEWATER_OCEAN, "dol
 AddStategraphActionHandler("wilson", ActionHandler(ACTIONS.MILKINGTOOL, "dolongaction"))
 AddStategraphActionHandler("wilson", ActionHandler(ACTIONS.UPGRADE_TILEARRIVE, "dolongaction"))
 AddStategraphActionHandler("wilson", ActionHandler(ACTIONS.DRINK, "drink"))
-AddStategraphActionHandler("wilson", ActionHandler(ACTIONS.DRINKPLAYER, "give"))
 AddStategraphActionHandler("wilson", ActionHandler(ACTIONS.TURNON_TILEARRIVE, "give"))
 AddStategraphActionHandler("wilson", ActionHandler(ACTIONS.BREWING,
         function(inst, action)
@@ -536,14 +635,33 @@ AddStategraphPostInit("wilson", function(sg)
     end
     local eater = sg.actionhandlers[ACTIONS.EAT].deststate
     sg.actionhandlers[ACTIONS.EAT].deststate = function(inst, action)
-        local result = eater(inst, action)
-        if result ~= nil then
-            local obj = action.target or action.invobject
-            if obj:HasTag("drink") then
-                return "drink"
-            end
+        if inst.sg:HasStateTag("busy") then
+            return
         end
-        return result
+        local obj = action.target or action.invobject
+        if obj == nil then
+            return
+        end
+        if obj:HasTag("drink") then
+            if obj.components.edible ~= nil then
+                if not inst.components.eater:PrefersToEat(obj) then
+                    inst:PushEvent("wonteatfood", { food = obj })
+                    return
+                end
+            --[[elseif obj.components.soul ~= nil then
+                if inst.components.souleater == nil then
+                    inst:PushEvent("wonteatfood", { food = obj })
+                    return
+                end]]
+            else
+                return
+            end
+            return --[[(obj.components.soul ~= nil and "drinkstew")
+                or]] (obj.components.edible.foodtype == FOODTYPE.MEAT and "drinkstew")
+                or "drink"
+        else
+            return eater(inst, action)
+        end
     end
 end)
 

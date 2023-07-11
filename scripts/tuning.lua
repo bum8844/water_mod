@@ -2,7 +2,7 @@ require("tuning")
 local TUNING = _G.TUNING
 local wilson_thirst = GetModConfigData("thirst_max")
 local hydration_per_day = wilson_thirst*GetModConfigData("thirst_decrease_speed")
-local bucket_max_level = 20
+local bucket_max_level = 10
 local caffein_time = GetModConfigData("caffein_time")
 local alcohol_time = GetModConfigData("alcohol_time")
 local capacity_time = GetModConfigData("capacity_time")
@@ -50,14 +50,14 @@ water_tuning =
 	CUP_MAX_LEVEL = 1,
 	RAIN_GIVE_WATER = .5,
 	LOST_WATER = -.1,
-	BUCKET_MAX_LEVEL = 5*bucket_max_level,
+	BUCKET_MAX_LEVEL = bucket_max_level*10,
 	BUCKET_LEVEL_PER_USE = bucket_max_level,
 
 	CAMPKETTLE_MAX_LEVEL = 3,
-	KETTLE_MAX_LEVEL = 5,
-	BARREL_MAX_LEVEL = 360,
-	BREWERY_MAX_LEVEL = 60,
-	DESALINATOR_MAX_LEVEL = 20,
+	KETTLE_MAX_LEVEL = bucket_max_level*.5,
+	BARREL_MAX_LEVEL = bucket_max_level*36,
+	BREWERY_MAX_LEVEL = bucket_max_level*6,
+	DESALINATOR_MAX_LEVEL = bucket_max_level*2,
 
 	-- Wateryprotection
 	BUCKET_EXTINGUISH_HEAT_PERCENT = -1,
@@ -73,7 +73,7 @@ water_tuning =
 	WATER_MAXTEMP = 40,
 	WATER_INITTEMP = 5,
 	WATER_CLEAN_MINTEMP = 0,
-	WATER_DIRTY_INITTEMP = -5,
+	WATER_DIRTY_MINTEMP = -5,
 	
 	-- Moistures and getting wet
 	WATER_BARREL_WETNESS = 25,

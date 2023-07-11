@@ -32,11 +32,9 @@ local USEITEM =
         end
     end,
 
-    purify = function(inst, doer, target, actions)
-        if inst:HasTag("purify_pill") or inst:HasTag("purify") then
-            if target:HasTag("purify_pill") or target:HasTag("purify") then
-                table.insert(actions, ACTIONS.PURIFY)
-            end
+    wateringtool = function(inst, doer, target, actions)
+        if target:HasTag("well") and not (doer.replica.rider ~= nil and doer.replica.rider:IsRiding()) then
+            table.insert(actions, ACTIONS.GIVE)
         end
     end,
 
@@ -71,12 +69,10 @@ local USEITEM =
     end,
 
     edible = function(inst, doer, target, actions, right)
-        if inst:HasTag("drink") or inst:HasTag("prepareddrink") then
-            for i, v in ipairs(actions) do
-                if v == ACTIONS.FEEDPLAYER then
-                    table.insert(actions, ACTIONS.DRINKPLAYER)
-                    return
-                end
+        if target:HasTag("player") then
+            if inst:HasTag("drink") or inst:HasTag("prepareddrink") or inst:HasTag("pre-prepareddrink") then
+                table.insert(actions, ACTIONS.FEEDPLAYER)
+                return
             end
         end
     end,
@@ -141,6 +137,34 @@ local SCENE =
     end,
 }
 
+local INVENTORY = {
+    edible = function(inst, doer, actions, right)
+        if inst:HasTag("prepareddrink") or inst:HasTag("pre-prepareddrink") or inst:HasTag("def_water") then
+            if (right or inst.replica.equippable == nil) and
+                not (doer.replica.inventory:GetActiveItem() == inst and
+                    doer.replica.rider ~= nil and
+                    doer.replica.rider:IsRiding()) then
+                for k, v in pairs(FOODGROUP) do
+                    if doer:HasTag(v.name.."_eater") then
+                        for i, v2 in ipairs(v.types) do
+                            if inst:HasTag("edible_"..v2) then
+                                table.insert(actions, ACTIONS.DRINK)
+                                return
+                            end
+                        end
+                    end
+                end
+                for k, v in pairs(FOODTYPE) do
+                    if inst:HasTag("edible_"..v) and doer:HasTag(v.."_eater") then
+                        table.insert(actions, ACTIONS.DRINK)
+                        return
+                    end
+                end
+            end
+        end
+    end,
+}
+
 for k, v in pairs(USEITEM) do
     AddComponentAction("USEITEM", k, v)
 end
@@ -151,4 +175,8 @@ end
 
 for k, v in pairs(SCENE) do
     AddComponentAction("SCENE", k, v)
+end
+
+for k, v in pairs(INVENTORY) do
+    AddComponentAction("INVENTORY", k, v)
 end

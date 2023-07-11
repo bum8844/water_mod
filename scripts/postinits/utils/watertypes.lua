@@ -1,7 +1,7 @@
 local NEED_TAGS = {"pipe"}
 local range = 2.5
 
-local function Hiddenpipes(inst)
+local function HiddenPipes(inst)
 	local pt = inst:GetPosition()
     local ents = TheSim:FindEntities(pt.x, pt.y, pt.z, range, NEED_TAGS)
     for i, v in ipairs(ents) do
@@ -22,6 +22,17 @@ local function WeatherCheck(inst)
     OnSnowLevel(inst, GLOBAL.TheWorld.state.snowlevel)
 end
 
+local function TestWater(inst)
+   	if inst:HasTag("watersource") and inst.components.watersource.available then
+   		inst.components.watersource.available = false
+   	end
+   	if inst.nitreformation_ents ~= nil then
+   		inst.components.water.available = false
+   	else
+   		inst.components.water.available = true
+   	end
+end
+
 for _, v in pairs(TUNING.TYPES_DIRTY) do
 	AddPrefabPostInit(v, function(inst)
 		inst:AddTag("sprinkler_water")
@@ -33,7 +44,7 @@ for _, v in pairs(TUNING.TYPES_DIRTY) do
 		inst:AddComponent("water")
 		inst.components.water.watertype = WATERTYPE.DIRTY
 
-		inst:DoPeriodicTask(0.1,Hiddenpipes)
+		inst:DoPeriodicTask(0.1,HiddenPipes)
 
 		inst:DoPeriodicTask(1,WeatherCheck)
 	end)
@@ -50,7 +61,7 @@ for _, v in pairs(TUNING.TYPES_CLEAN) do
 		inst:AddComponent("water")
 		inst.components.water.watertype = WATERTYPE.CLEAN
 
-		inst:DoPeriodicTask(0.1,Hiddenpipes)
+		inst:DoPeriodicTask(0.1,HiddenPipes)
 
 		inst:DoPeriodicTask(1,WeatherCheck)
 	end)
@@ -61,13 +72,10 @@ for _, v in pairs(TUNING.TYPES_SALTY) do
 	    if not GLOBAL.TheWorld.ismastersim then
 	        return inst
 	    end
-
-	    if inst:HasTag("watersource") then
-	    	inst:RemoveTag("watersource")
-	    	inst:RemoveComponent("watersource")
-	    end
 		
 		inst:AddComponent("water")
 		inst.components.water.watertype = WATERTYPE.SALTY
+
+	    inst:DoPeriodicTask(0.1,TestWater)
 	end)
 end

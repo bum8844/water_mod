@@ -8,10 +8,13 @@ end
 
 function Milkingtool:DoMilking(target, doer)
     local loot = nil
-    local current_fin = math.ceil(self.inst.components.finiteuses:GetUses()/4) or 1
+    local finiteuses = self.inst.components.finiteuses:GetUses()
+    local stacksize = ( finiteuses >= TUNING.BUCKET_LEVEL_PER_USE ) and TUNING.BUCKET_LEVEL_PER_USE*.5 or finiteuses *.5
+    print(stacksize)
     if doer ~= nil and doer.components.inventory ~= nil then
         loot = SpawnPrefab("goatmilk")
-        loot.components.stackable:SetStackSize(current_fin)
+        loot.components.stackable:SetStackSize(math.ceil(stacksize))
+
         doer:PushEvent("picksomething", { object = target, loot = loot })
         doer.components.inventory:GiveItem(loot, nil, target:GetPosition())
 
@@ -19,7 +22,12 @@ function Milkingtool:DoMilking(target, doer)
             self.donemilkingfn(doer)
         end
 
-        self.inst:Remove()
+        finiteuses = finiteuses - (stacksize*2)
+        if finiteuses > 0 then
+            self.inst.components.finiteuses:SetUses(finiteuses)
+        else
+            self.inst:Remove()
+        end
         return true
     end
 end

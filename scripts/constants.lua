@@ -191,6 +191,7 @@ FOODTYPEGROUP =
 		"asparagussoup",
 		"bonesoup",
 		"lobsterbisque",
+		"moqueca",
 		--mod_foods
 		"musselbouillabaise",
 		"sharkfinsoup",
@@ -352,6 +353,7 @@ FOODTYPEGROUP =
 			"jellyopop",
 			"tentacicle",
 			"coldcuts",
+			"snowcone",
 		},
 
 		LARGE = 
@@ -383,11 +385,14 @@ FOODTYPEGROUP =
 			"dish_chilledrosejuice",
 			"pina_colada",
 			"limonade",
+			"berryshake",
 			"juice_waterberry",
 			"fruit_truffle",
 			"tea_floral",
 			"icedtea",
 			"tea",
+			"zaspberryparfait",
+			"californiaking",
 			--hop
 			"bubletea",
 			"coconutwater",
@@ -496,6 +501,9 @@ FOODTYPEGROUP =
 
 env.WATERTYPE = WATERTYPE
 env.WATERGROUP = WATERGROUP
+env.FOODTYPEGROUP = FOODTYPEGROUP
+
+_G.FOODTYPEGROUP = FOODTYPEGROUP
 _G.WATERTYPE = WATERTYPE
 _G.WATERGROUP = WATERGROUP
 

@@ -162,6 +162,7 @@ local function MakeCup(name, masterfn, tags)
 
         if not inst:HasTag("frozen") then
             inst:AddTag("drink")
+            inst:AddTag("def_water")
         end
 
         MakeInventoryFloatable(inst)
@@ -202,7 +203,7 @@ local function MakeCup(name, masterfn, tags)
             inst:DoPeriodicTask(1, function()
                 if inst:HasTag("clean") and inst.components.temperature.current <= TUNING.WATER_CLEAN_MINTEMP then
                     FreezeWater(inst)
-                elseif inst:HasTag("dirty") and inst.components.temperature.current == TUNING.BUCKET_FULL_MINTEMP then
+                elseif inst:HasTag("dirty") and inst.components.temperature.current == TUNING.WATER_DIRTY_MINTEMP then
                     FreezeWater(inst)
                 end
             end)
