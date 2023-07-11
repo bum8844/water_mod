@@ -8,8 +8,8 @@ return {
 		}
 	},
 
-	ANNOUNCE_DRUNK = "",
-	ANNOUNCE_DRUNK_END = "",
+	ANNOUNCE_DRUNK = "아비게일? 너 어디쒀?",
+	ANNOUNCE_DRUNK_END = "웃지 마, 아비게일. 부끄럽단 말야.",
 	ANNOUNCE_DRUNK_IMMUNITY = "",
 	ANNOUNCE_NOTCHARGE = "",
 	ANNOUNCE_NOTHIRSTSLEEP = "",
@@ -31,7 +31,7 @@ return {
 		WELL_DRILLING = "",
 		WELL_DRILLING_ITEM = "",
 		HOLE = "",
-		WELL = "",
+		WELL = "동전을 던져넣으면 소원을 이뤄줄까?",
 		WELL_SPRINKLER = "",
 		
 		BUCKET_EMPTY = "",
@@ -55,7 +55,7 @@ return {
 
 		GOOPYDRINK = "",
 		
-		FRUITJUICY = "",
+		FRUITJUICE = "",
 		BERRIES_JUICE = "",
 		POMEGRANATE_JUICE = "",
 		BANANA_JUICE = "",

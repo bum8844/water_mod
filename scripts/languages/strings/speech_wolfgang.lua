@@ -9,7 +9,7 @@ return {
 	},
 
 	ANNOUNCE_DRUNK = "",
-	ANNOUNCE_DRUNK_END = "",
+	ANNOUNCE_DRUNK_END = "운동해서 술 기운 쫓아내야겠다.",
 	ANNOUNCE_DRUNK_IMMUNITY = "",
 	ANNOUNCE_NOTCHARGE = "",
 	ANNOUNCE_NOTHIRSTSLEEP = "",

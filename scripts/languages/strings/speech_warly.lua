@@ -32,8 +32,7 @@ return {
 		WELL_DRILLING_ITEM = "",
 		HOLE = "",
 		WELL = "",
-		WELL_SPRINKLER = "",
-		
+
 		BUCKET_EMPTY = "",
 
 		TEA_TREE = "",
@@ -68,8 +67,6 @@ return {
 		CARROT_TEA = "",
 		CACTUS_TEA = "",
 		MULLED = "",
-		TOMATO_JUICE = "",
-
 		GREENTEA = "",
 		BLACKTEA = "",
 		BLACKTEA_ICED = "",
