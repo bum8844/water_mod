@@ -28,6 +28,7 @@ return {
 		SPICE_CAFFEINPEPPER = "",
 
 		WELL_KIT = "",
+		WELL_SPRINKLER_KIT = "",
 		WELL_DRILLING = "",
 		WELL_DRILLING_ITEM = "",
 		HOLE = "",
@@ -67,8 +68,6 @@ return {
 		CARROT_TEA = "",
 		CACTUS_TEA = "",
 		MULLED = "",
-		TOMATO_JUICE = "",
-
 		GREENTEA = "",
 		BLACKTEA = "",
 		BLACKTEA_ICED = "",

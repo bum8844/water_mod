@@ -31,11 +31,12 @@ return {
 		SPICE_CAFFEINPEPPER = "",
 
 		WELL_KIT = "",
+		WELL_SPRINKLER_KIT = "",
 		WELL_DRILLING = "",
 		WELL_DRILLING_ITEM = "",
 		HOLE = "",
 		WELL = "",
-
+		
 		BUCKET_EMPTY = "",
 
 		TEA_TREE = "",
@@ -57,7 +58,7 @@ return {
 
 		GOOPYDRINK = "",
 		
-		FRUITJUICY = "",
+		FRUITJUICE = "",
 		BERRIES_JUICE = "",
 		POMEGRANATE_JUICE = "",
 		BANANA_JUICE = "",

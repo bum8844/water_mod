@@ -8,7 +8,7 @@ return {
 		}
 	},
 
-	ANNOUNCE_DRUNK = "",
+	ANNOUNCE_DRUNK = "과음하지 마렴. 과음은 간과 소화기에 악영향을 주고...",
 	ANNOUNCE_DRUNK_END = "",
 	ANNOUNCE_DRUNK_IMMUNITY = "",
 	ANNOUNCE_NOTCHARGE = "",
@@ -28,11 +28,13 @@ return {
 		SPICE_CAFFEINPEPPER = "",
 
 		WELL_KIT = "",
+		WELL_SPRINKLER_KIT = "",
 		WELL_DRILLING = "",
 		WELL_DRILLING_ITEM = "",
 		HOLE = "",
 		WELL = "",
-
+		WELL_SPRINKLER = "",
+		
 		BUCKET_EMPTY = "",
 
 		TEA_TREE = "",
@@ -86,7 +88,7 @@ return {
 		COLA = "",
 		COLAQUANTUM = "",
 		CORN_BEER = "",
-		MADHU = "",
+		MADHU = "봉밀주는 인류가 최초로 만든 술이라고 알려져 있지.",
 		WINE = "",
 		NOBLEWINE = "",
 		SPARKLINGWINE = "",

@@ -8,8 +8,8 @@ return {
 		}
 	},
 
-	ANNOUNCE_DRUNK = "",
-	ANNOUNCE_DRUNK_END = "",
+	ANNOUNCE_DRUNK = "아이고 이런, 몸을 못 가누겠네!",
+	ANNOUNCE_DRUNK_END = "더는 낭비할 시간이 없어!",
 	ANNOUNCE_DRUNK_IMMUNITY = "",
 	ANNOUNCE_NOTCHARGE = "",
 	ANNOUNCE_NOTHIRSTSLEEP = "",
@@ -28,11 +28,13 @@ return {
 		SPICE_CAFFEINPEPPER = "",
 
 		WELL_KIT = "",
+		WELL_SPRINKLER_KIT = "",
 		WELL_DRILLING = "",
 		WELL_DRILLING_ITEM = "",
 		HOLE = "",
 		WELL = "",
-
+		WELL_SPRINKLER = "",
+		
 		BUCKET_EMPTY = "",
 
 		TEA_TREE = "",
@@ -70,8 +72,8 @@ return {
 		TOMATO_JUICE = "",
 
 		GREENTEA = "",
-		BLACKTEA = "",
-		BLACKTEA_ICED = "",
+		BLACKTEA = "차 마실 시간 없어.",
+		BLACKTEA_ICED = "시원한 거 한 모금은 좋지.",
 		FUER = "",
 		MIXFLOWER = "",
 		HIBISCUSTEA = "",

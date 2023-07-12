@@ -28,11 +28,13 @@ return {
 		SPICE_CAFFEINPEPPER = "",
 
 		WELL_KIT = "",
+		WELL_SPRINKLER_KIT = "",
 		WELL_DRILLING = "",
 		WELL_DRILLING_ITEM = "",
 		HOLE = "",
 		WELL = "",
-
+		WELL_SPRINKLER = "",
+		
 		BUCKET_EMPTY = "",
 
 		TEA_TREE = "",
@@ -61,7 +63,7 @@ return {
 		FIG_JUICE = "",
 		DRAGONJUICE = "",
 		GLOWBERRYJUICE = "",
-		CAFFEINBERRY_JUICE = "",
+		CAFFEINBERRY_JUICE = "야근 뛸 때 자주 달고 살았지.",
 
 		VEGGIE_TEA = "",
 		CARROT_TEA = "",
@@ -85,7 +87,7 @@ return {
 		LEMONLIMESODA = "",
 		COLA = "",
 		COLAQUANTUM = "",
-		CORN_BEER = "",
+		CORN_BEER = "일과 마치고 한 잔 하면 딱이야!",
 		MADHU = "",
 		WINE = "",
 		NOBLEWINE = "",

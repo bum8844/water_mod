@@ -9,7 +9,7 @@ return {
 	},
 
 	ANNOUNCE_DRUNK = "",
-	ANNOUNCE_DRUNK_END = "",
+	ANNOUNCE_DRUNK_END = "운동해서 술 기운 쫓아내야겠다.",
 	ANNOUNCE_DRUNK_IMMUNITY = "",
 	ANNOUNCE_NOTCHARGE = "",
 	ANNOUNCE_NOTHIRSTSLEEP = "",
@@ -28,11 +28,13 @@ return {
 		SPICE_CAFFEINPEPPER = "",
 
 		WELL_KIT = "",
+		WELL_SPRINKLER_KIT = "",
 		WELL_DRILLING = "",
 		WELL_DRILLING_ITEM = "",
 		HOLE = "",
 		WELL = "",
-
+		WELL_SPRINKLER = "",
+		
 		BUCKET_EMPTY = "",
 
 		TEA_TREE = "",

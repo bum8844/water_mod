@@ -10,7 +10,7 @@ return {
 
 	ANNOUNCE_DRUNK = "",
 	ANNOUNCE_DRUNK_END = "",
-	ANNOUNCE_DRUNK_IMMUNITY = "",
+	ANNOUNCE_DRUNK_IMMUNITY = "크하하! 한 잔 더!",
 	ANNOUNCE_NOTCHARGE = "",
 	ANNOUNCE_NOTHIRSTSLEEP = "",
 	ANNOUNCE_NOTHIRSTSIESTA = "",
@@ -28,11 +28,12 @@ return {
 		SPICE_CAFFEINPEPPER = "",
 
 		WELL_KIT = "",
+		WELL_SPRINKLER_KIT = "",
 		WELL_DRILLING = "",
 		WELL_DRILLING_ITEM = "",
 		HOLE = "",
-		WELL = "",
-
+		WELL = "목마른 자가 우물을 파는 법.",
+		
 		BUCKET_EMPTY = "",
 
 		TEA_TREE = "",
@@ -79,14 +80,14 @@ return {
 		LOTUSTEA = "",
 		SUSHIBISCUS = "",
 
-		SPOILED_DRINK = "",
+		SPOILED_DRINK = "술이 시었구나.",
 		SODA = "",
 		FRUITSODA = "",
 		LEMONLIMESODA = "",
 		COLA = "",
 		COLAQUANTUM = "",
 		CORN_BEER = "",
-		MADHU = "",
+		MADHU = "시예의 봉밀주로다!",
 		WINE = "",
 		NOBLEWINE = "",
 		SPARKLINGWINE = "",

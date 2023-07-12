@@ -8,7 +8,7 @@ return {
 		}
 	},
 
-	ANNOUNCE_DRUNK = "",
+	ANNOUNCE_DRUNK = "흐헤헤... 아이 좋다...",
 	ANNOUNCE_DRUNK_END = "",
 	ANNOUNCE_DRUNK_IMMUNITY = "",
 	ANNOUNCE_NOTCHARGE = "",
@@ -28,11 +28,13 @@ return {
 		SPICE_CAFFEINPEPPER = "",
 
 		WELL_KIT = "",
+		WELL_SPRINKLER_KIT = "",
 		WELL_DRILLING = "",
 		WELL_DRILLING_ITEM = "",
 		HOLE = "",
 		WELL = "",
-
+		WELL_SPRINKLER = "",
+		
 		BUCKET_EMPTY = "",
 
 		TEA_TREE = "",
