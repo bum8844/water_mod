@@ -9,7 +9,7 @@ AddComponentPostInit("eater", function(self)
 	end
 
 	function self:Eat(food, feeder, ...)
-		if _PrefersToEat(self, food, ...) then
+		if self:PrefersToEat(food, ...) then
 			local stack_mult = self.eatwholestack and food.components.stackable ~= nil and food.components.stackable:StackSize() or 1
 			local base_mult = self.inst.components.foodmemory ~= nil and self.inst.components.foodmemory:GetFoodMultiplier(food.prefab) or 1
 			local thirst_delta = 0
@@ -26,10 +26,12 @@ AddComponentPostInit("eater", function(self)
 		end
 	end
 
-	function self:PrefersToEat(food, ...)
-		if food:HasTag("alcohol") and self.inst:HasTag("childplayer") then
-			return false
+	if GetModConfigData("child_safety") then
+		function self:PrefersToEat(food, ...)
+			if food:HasTag("alcohol") and self.inst:HasTag("childplayer") then
+				return false
+			end
+			return _PrefersToEat(self, food, ...)
 		end
-		return _PrefersToEat(self, food, ...)
 	end
 end)
