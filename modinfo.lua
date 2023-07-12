@@ -1,8 +1,8 @@
 name 						= "Don't Starve: Dehydrated"
-version 					= "1.00"
+version 					= "Alpha 1.0.0"
 
 description = (
-	"TODO"
+	"The test build of DSD"
 	)
 forumthread = ""
 author 						= ""

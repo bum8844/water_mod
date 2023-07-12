@@ -28,6 +28,7 @@ return {
 		SPICE_CAFFEINPEPPER = "훌륭한 재채기 유발제야.",
 
 		WELL_KIT = "땅 위에 설치할 수 있겠어.",
+		WELL_SPRINKLER_KIT = "",
 		WELL_DRILLING = "구멍을 파고 있는 중이야.",
 		WELL_DRILLING_ITEM = "물을 긷기 위해 우물을 파는 장치야.",
 		HOLE = "여기에 우물을 만들면 되겠어.",
@@ -60,7 +61,7 @@ return {
 		BANANA_JUICE = "바나나는 원래 하얗지 않나?",
 		FIG_JUICE = "뉴턴의 무화과로 만든 뉴턴 유체야.",
 		DRAGONJUICE = "용은 안 들어있는데.",
-		GLOWBERRYJUICE = "",
+		GLOWBERRYJUICE = "맛은 나쁘지 않아.",
 		CAFFEINBERRY_JUICE = "기운 나는 냄새가 나!",
 
 		VEGGIE_TEA = "채소 풋내가 나는데.",

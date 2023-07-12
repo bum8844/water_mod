@@ -27,25 +27,25 @@ return {
 
 		SPICE_CAFFEINPEPPER = "캠핑 음식에 넣으면 맛이 훨씬 좋아져.",
 
-		WELL_KIT = "",
+		WELL_KIT = "우물가에서 우물쭈물하면 안 돼. 헤.",
 		WELL_SPRINKLER_KIT = "",
-		WELL_DRILLING = "",
-		WELL_DRILLING_ITEM = "",
+		WELL_DRILLING = "한 우물만 파는구나!",
+		WELL_DRILLING_ITEM = "우리 우물 한 번 파 볼까, 워비?",
 		HOLE = "혹시 세상 반대편까지 이어져 있는 걸까?",
 		WELL = "왜 그래, 워비? 누가 거기 빠졌어?",
 		
-		BUCKET_EMPTY = "",
+		BUCKET_EMPTY = "물을 퍼담을 수는 있지만 ",
 
-		TEA_TREE = "차나무는 이렇게 생긴 거구나!",
+		TEA_TREE = "교범에 차나무 얘기는 없네.",
 		DUG_TEA_TREE = "이제 심을 곳을 찾아보자, 워비!",
-		TEA_SEED = "집에 가져가면 엄마가 좋아하시겠어.",
-		TEA_SEED_COOKED = "",
-		TEA_SEED_SAPLING = "",
-		TEALEAVES = "",
-		TEALEAVES_DRIED = "",
+		TEA_SEED = "심으면 새 나무로 자랄 거야.",
+		TEA_SEED_COOKED = "먹을 수도 있는 거였구나.",
+		TEA_SEED_SAPLING = "계속 자라고 있어.",
+		TEALEAVES = "뭔가 상쾌한 향기가 나.",
+		TEALEAVES_DRIED = "만지면 바스락바스락거려.",
 
-		CAFFEINBERRY = "커피 많이 마시면 안 좋다 그랬는데.",
-		DUG_CAFFEINBERRY = "",
+		CAFFEINBERRY = "커피는 나무에서 열리는 거랬는데.",
+		DUG_CAFFEINBERRY = "커피는 나무에서 열리는 거랬는데.",
 		CAFFEINBERRY_BEAN = "커피가 원래 이렇게 생겼던가?",
 		CAFFEINBERRY_BEAN_COOKED = "이제 좀 커피 같은 냄새가 나!",
 
@@ -53,25 +53,25 @@ return {
 		WATER_DIRTY = "한 번 끓여서 마셔야겠어.",
 		WATER_SALTY = "바닷물을 그대로 마시면 더 목말라져.",
 
-		GOOPYDRINK = "",
+		GOOPYDRINK = "어... 워비한테 주면 먹으려나.",
 		
-		FRUITJUICE = "",
-		BERRIES_JUICE = "",
-		POMEGRANATE_JUICE = "",
+		FRUITJUICE = "과일이니까 몸에 좋겠지!",
+		BERRIES_JUICE = "베리베리 굿이야! 뭔 말인지 알지? 베리로 만든 거잖아?",
+		POMEGRANATE_JUICE = "이러면 과일 속의 과일 속에 든 즙을 먹는 게 되는 건가?",
 		BANANA_JUICE = "",
-		FIG_JUICE = "",
-		DRAGONJUICE = "",
+		FIG_JUICE = "주스로 만들어도 별로야...",
+		DRAGONJUICE = "이거 혹시 용의 피는 아니겠지?",
 		GLOWBERRYJUICE = "",
-		CAFFEINBERRY_JUICE = "너무 많이 마시면 카'폐인'이 될 거야! 헤...",
+		CAFFEINBERRY_JUICE = "너무 많이 마시면 카-폐인이 될 거야! 헤...",
 
 		VEGGIE_TEA = "어, 되게... 건강해 보이네!",
-		CARROT_TEA = "",
-		CACTUS_TEA = "",
-		MULLED = "",
-		TOMATO_JUICE = "",
+		CARROT_TEA = "불쌍한 당근... 사실 별로 불쌍하진 않지만.",
+		CACTUS_TEA = "먹다가 입 안에 가시 박히는 건 아니겠지?",
+		MULLED = "감기 걸렸을 때 먹으면 좋아!",
+		TOMATO_JUICE = "뭔가 뱀파이어가 좋아할 것 같아.",
 
 		GREENTEA = "",
-		BLACKTEA = "",
+		BLACKTEA = ".",
 		BLACKTEA_ICED = "",
 		FUER = "",
 		MIXFLOWER = "",
@@ -85,7 +85,7 @@ return {
 		FRUITSODA = "",
 		LEMONLIMESODA = "",
 		COLA = "",
-		COLAQUANTUM = "",
+		COLAQUANTUM = "안에서 붕붕 소리가 나!",
 		CORN_BEER = "",
 		MADHU = "",
 		WINE = "",
@@ -157,10 +157,11 @@ return {
 			MELT_SHORT = "",
 		},
 
-		WELL_SPRINKLER = { 
-			LOWFUEL = "",
-			ON = "",
-			OFF = "",
+		WELL_SPRINKLER =
+		{ 
+			LOWFUEL = "땔감을 좀 더 넣어줘야겠어.",
+			ON = "워비가 이상하게 좋아해!",
+			OFF = "기계가 쉬고 있어.",
 		},
 	}
 }

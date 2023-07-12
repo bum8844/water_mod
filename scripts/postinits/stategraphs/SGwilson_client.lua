@@ -105,12 +105,29 @@ AddStategraphActionHandler("wilson_client", ActionHandler(ACTIONS.TAKEWATER, "do
 AddStategraphActionHandler("wilson_client", ActionHandler(ACTIONS.TAKEWATER_OCEAN, "dolongaction"))
 AddStategraphActionHandler("wilson_client", ActionHandler(ACTIONS.MILKINGTOOL, "dolongaction"))
 AddStategraphActionHandler("wilson_client", ActionHandler(ACTIONS.UPGRADE_TILEARRIVE, "dolongaction"))
-AddStategraphActionHandler("wilson_client", ActionHandler(ACTIONS.DRINK, "drink"))
+AddStategraphActionHandler("wilson_client", ActionHandler(ACTIONS.DRINK,
+        function(inst, action)
+            if inst.sg:HasStateTag("busy") or inst:HasTag("busy") then
+                return
+            end
+            local obj = action.target or action.invobject
+            if obj == nil then
+                return
+            end
+            for k, v in pairs(FOODTYPE) do
+                if obj:HasTag("edible_"..v) then
+                    return "drink"
+                end
+            end
+        end
+    )
+)
 AddStategraphActionHandler("wilson_client", ActionHandler(ACTIONS.TURNON_TILEARRIVE, "give"))
 AddStategraphActionHandler("wilson_client", ActionHandler(ACTIONS.BREWING,
         function(inst, action)
             return inst:HasTag("expertchef") and "domediumaction" or "dolongaction"
-        end)
+        end
+    )
 )
 
 ------------------------------------------------------------------------
