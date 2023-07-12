@@ -8,8 +8,8 @@ return {
 		}
 	},
 
-	ANNOUNCE_DRUNK = "아비게일? 너 어디쒀?",
-	ANNOUNCE_DRUNK_END = "웃지 마, 아비게일. 부끄럽단 말야.",
+	ANNOUNCE_DRUNK = "흐흑... 아비게일, 나 너무 외로워...",
+	ANNOUNCE_DRUNK_END = "웃지 마, 아비게일. 창피하단 말야.",
 	ANNOUNCE_DRUNK_IMMUNITY = "",
 	ANNOUNCE_NOTCHARGE = "",
 	ANNOUNCE_NOTHIRSTSLEEP = "",
@@ -17,8 +17,8 @@ return {
 	ANNOUNCE_SLEEP_END = "",
 	ANNOUNCE_THIRST = "",
 
-	ANNOUNCE_DCAPACITY_CRITICAL = "",
-	ANNOUNCE_DCAPACITY_HALF = "",
+	ANNOUNCE_DCAPACITY_CRITICAL = "창피한 건 잊어도 아비게일은 잊지 않을 거야.",
+	ANNOUNCE_DCAPACITY_HALF = "왜 그렇게 창피해했는지 알겠네.",
 
 	DESCRIBE =
 	{
