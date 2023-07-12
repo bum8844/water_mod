@@ -28,6 +28,7 @@ return {
 		SPICE_CAFFEINPEPPER = "캠핑 음식에 넣으면 맛이 훨씬 좋아져.",
 
 		WELL_KIT = "",
+		WELL_SPRINKLER_KIT = "",
 		WELL_DRILLING = "",
 		WELL_DRILLING_ITEM = "",
 		HOLE = "혹시 세상 반대편까지 이어져 있는 걸까?",

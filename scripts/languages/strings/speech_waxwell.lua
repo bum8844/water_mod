@@ -28,6 +28,7 @@ return {
 		SPICE_CAFFEINPEPPER = "",
 
 		WELL_KIT = "",
+		WELL_SPRINKLER_KIT = "",
 		WELL_DRILLING = "알아서 작동하는 건 편리하군.",
 		WELL_DRILLING_ITEM = "일종의 농기계인가? 아니, 조금 다르군.",
 		HOLE = "잘못 빠지면 뼈도 못 건지겠군.",
