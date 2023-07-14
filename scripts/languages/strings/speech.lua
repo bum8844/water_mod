@@ -1,3 +1,5 @@
+--DEPRECATED
+
 _G=GLOBAL
 local STRINGS = _G.STRINGS
 

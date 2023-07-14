@@ -3,8 +3,8 @@ return {
 	{
 		GIVE =
 		{
-			WELL_NOTEMPTY = "이미 있는 물동이를 내려야 해.",
-			WELL_BUSY = "아직 물동이가 다 올라오지 않았어.",
+			WELL_NOTEMPTY = "이미 있는 물동이부터 내려야 해.",
+			WELL_BUSY = "아직 물동이가 우물 안에 있어.",
 		}
 	},
 
@@ -12,23 +12,23 @@ return {
 	ANNOUNCE_DRUNK_END = "으, 좀 괜찮아진 것 같네.",
 	ANNOUNCE_DRUNK_IMMUNITY = "only_used_by_wathgrithr",
 	ANNOUNCE_NOTCHARGE = "아직 젖이 나올 상태가 아니야.",
-	ANNOUNCE_NOTHIRSTSLEEP = "이대로 자면 말라죽을 거야!",
+	ANNOUNCE_NOTHIRSTSLEEP = "목이 너무 말라서 자다가 육포가 되겠어!",
 	ANNOUNCE_NOTHIRSTSIESTA = "낮잠을 자기엔 너무 목말라!",
 	ANNOUNCE_SLEEP_END = "자고 나니까 좀 상쾌하네!",
 	ANNOUNCE_THIRST = "너무 목말라!",
 
-	ANNOUNCE_DCAPACITY_CRITICAL = "몸이 좀 축 쳐지는데...",
-	ANNOUNCE_DCAPACITY_HALF = "좀 화끈거리는데.",
+	ANNOUNCE_DCAPACITY_CRITICAL = "몸이 좀 축 쳐져...",
+	ANNOUNCE_DCAPACITY_HALF = "뭔가 더운데 기분 탓인가?",
 
 	DESCRIBE =
 	{
-		WATER_CLEAN_ICE = "만나서 많이 차가워.",
+		WATER_CLEAN_ICE = "만나서 정말 차가워.",
 		WATER_DIRTY_ICE = "만나서 더러워.",
 
-		SPICE_CAFFEINPEPPER = "훌륭한 재채기 유발제야.",
+		SPICE_CAFFEINPEPPER = "진정한 삶의 향신료야.",
 
-		WELL_KIT = "땅 위에 설치할 수 있겠어.",
-		WELL_SPRINKLER_KIT = "",
+		WELL_KIT = "물 구멍이 필요하겠어.",
+		WELL_SPRINKLER_KIT = "머리 젖는 건 조심해야겠지.",
 		WELL_DRILLING = "구멍을 파고 있는 중이야.",
 		WELL_DRILLING_ITEM = "물을 긷기 위해 우물을 파는 장치야.",
 		HOLE = "여기에 우물을 만들면 되겠어.",
@@ -36,10 +36,10 @@ return {
 		
 		BUCKET_EMPTY = "물을 채울 수 있어. 물 말고 다른 걸 채워도 되고.",
 
-		TEA_TREE = "찻잎을 채취할 수 있는 나무야.",
-		DUG_TEA_TREE = "잎에서 풍부한 향이 느껴져.",
+		TEA_TREE = "참 작고 멋진 나무야.",
+		DUG_TEA_TREE = "다른 곳에 옮겨심을 수 있겠어.",
 		TEA_SEED = "이 안에 씨앗이 들은 것 같아.",
-		TEA_SEED_COOKED = "그런 짓은 하지 말았어야 했는데.",
+		TEA_SEED_COOKED = "이거나 먹어라, 작은 덤불!",
 		TEA_SEED_SAPLING = "시간이 지나면 나무로 자랄 거야.",
 		TEALEAVES = "내가 마시던 차는 이렇게 안 생겼는데.",
 		TEALEAVES_DRIED = "이제 내가 아는 차의 모양이야.",
@@ -59,7 +59,7 @@ return {
 		BERRIES_JUICE = "베리에서 과학을 추출해 냈어.",
 		POMEGRANATE_JUICE = "절대 달콤한 석류 주스를 '당'연하게 여기지 말자.",
 		BANANA_JUICE = "바나나는 원래 하얗지 않나?",
-		FIG_JUICE = "뉴턴의 무화과로 만든 뉴턴 유체야.",
+		FIG_JUICE = "뉴턴의 무화과로 만든 비-뉴턴 유체야.",
 		DRAGONJUICE = "용은 안 들어있는데.",
 		GLOWBERRYJUICE = "맛은 나쁘지 않아.",
 		CAFFEINBERRY_JUICE = "기운 나는 냄새가 나!",
@@ -74,11 +74,11 @@ return {
 		BLACKTEA = "우유가 조금 있으면 좋겠는데.",
 		BLACKTEA_ICED = "아, 시원하고 좋다!",
 		FUER = "향은 생각보다 나쁘지 않아.",
-		MIXFLOWER = "아주 향긋해!",
+		MIXFLOWER = "꽃향기가 가득해.",
 		HIBISCUSTEA = "향도 향인데 엄청 시어!",
 		CACTUSFLOWER_TEA = "가시 돋친 식물로 향긋한 차를 만들었어.",
 		LOTUSTEA = "비스킷 몇 조각 있으면 어울리겠어.",
-		SUSHIBISCUS = "과학적으로 전혀 말이 안 돼.",
+		SUSHIBISCUS = "과학적으로 전혀 말이 안 되'잔'아.",
 
 		SPOILED_DRINK = "음료가 구정물이 됐잖아.",
 		SODA = "정말 상쾌해!",
@@ -88,25 +88,25 @@ return {
 		COLAQUANTUM = "짜릿한 과학이 들어 있어!",
 		CORN_BEER = "과학적으로 이건 맥주가 아니야.",
 		MADHU = "꿀이 발효되었어.",
-		WINE = "'주'책맞게 굴지 마!",
+		WINE = "'주'책맞게 굴지 마.",
 		NOBLEWINE = "와인을 뛰어넘는 맛이야!",
-		SPARKLINGWINE = "뭔가 흔들어보고 싶어.",
+		SPARKLINGWINE = "강렬하게 흔들어보고 싶어졌어.",
 		GLOWBERRYWINE = "음료가 과학으로 빛나고 있어.",
 		KUMIS = "우유로는 요구르트를 만드는 거 아니었어?",
 
 		DESALINATOR =
 		{
 			EMPTY = "바닷물에서 물을 분리하는 건 과학이지.",
-			PURIFY_LONG = "아직 염분이 많아.",
-			PURIFY_SHORT = "이제 거의 다 됐어!",
+			PURIFY_LONG = "아직도 염분이 많아.",
+			PURIFY_SHORT = "거의 다 됐어!",
 			HASWATER = "정수가 완료됐어.",
-			BURNT = "물을 다룰 때도 불은 조심해야 해.",
-			HASSALT = "소금을 제거해야 해.",
+			BURNT = "불이 물을 이겼네.",
+			HASSALT = "온통 짜.",
 		},
 
 		BARREL =
 		{
-			GENERIC = "여기에 물을 담을 수 있어.",
+			GENERIC = "물을 좀 비축하는 것도 통하겠지.",
 			BURNT = "물이 다 날아갔어.",
 		},
 
@@ -122,7 +122,7 @@ return {
 		CAMPKETTLE_ITEM = "이제 불만 있으면 돼.",
 		CAMPKETTLE =
 		{
-			GENERIC = "지금은 그저 장식일 뿐이야.",
+			GENERIC = "이것만으론 별 소용이 없어.",
 			BOILING_LONG = "좀 더 끓여야 해.",
 			BOILING_SHORT = "거의 다 끓었어!",
 			DONE = "물이 다 끓었어.",
@@ -132,12 +132,12 @@ return {
 		KETTLE =
 		{
 			EMPTY = "보기만 해도 목이 말라.",
-			BURNT = "주전자가 끓여져 버렸네.",
+			BURNT = "끓인 게 아니라 탔네.",
 			BOILING_LONG = "좀 걸릴 거야.",
 			BOILING_SHORT = "거의 다 됐어!",
 			DONE = "으음, 티타임이다!",
 			PURIFY_LONG = "좀 더 끓여야 해.",
-			PURIFY_SHORT = "거ㄹ의 다 끓었어!",
+			PURIFY_SHORT = "거의 다 끓었어!",
 			HASWATER = "물은 됐고, 뭘 넣어볼까?",
 			MELT_LONG = "좀 더 녹여야 해.",
 			MELT_SHORT = "거의 다 녹았어!",
