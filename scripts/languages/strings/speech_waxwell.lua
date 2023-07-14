@@ -72,7 +72,7 @@ return {
 		TOMATO_JUICE = "목넘김이 부드럽군.",
 
 		GREENTEA = "향긋하군.",
-		BLACKTEA = "난 다즐링 차를 선호한다네.",
+		BLACKTEA = "차 한 잔이 이렇게 반가울 줄이야.",
 		BLACKTEA_ICED = "상쾌하군.",
 		FUER = "이거 참 이국적이군.",
 		MIXFLOWER = "",

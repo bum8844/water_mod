@@ -35,11 +35,24 @@ local SEPARATOR = Title("")
 
 configuration_options =
 {
+	Title("Select Language"),
+	{
+		name = "locale",
+		label = "Language",
+		options =
+		{
+			{description = "Auto", data = false},
+			{description = "English", data = "en"},
+			{description = "한국어", data = "ko"},
+		},
+		default = false,
+	},
 	SEPARATOR,
-	Title("Generation options"),
+	Title("WorldGen options"),
 	{
 		name = "gen_tea_tree",
-		label = "Generate tea trees?",
+		label = "Tea Trees",
+		hover = "How many Tea Trees do you want to generate?",
 		options =
 		{
 			{description = "None", data = 0},
@@ -50,10 +63,10 @@ configuration_options =
 		},
 		default = 1.2,
 	},
-	SEPARATOR,
 	{
 		name = "gen_caffeinberry",
-		label = "Generate Caffeinberry?",
+		label = "Coffee Plants",
+		hover = "How many Coffee Plants do you want to generate?",
 		options =
 		{
 			{description = "None", data = 0},
@@ -66,6 +79,16 @@ configuration_options =
 	},
 	SEPARATOR,
 	Title("Thirst options"),
+	{
+		name = "enable_thirst",
+		label = "Enable Thirst?",
+		options =
+		{
+			{description = "Enabled", data = true},
+			{description = "Disabled", data = false},
+		},
+		default = true,
+	},
 	{
 		name = "thirst_max",
 		label = "Max Thirst",
@@ -81,36 +104,26 @@ configuration_options =
 	},
 	{
 		name = "thirst_decrease_speed",
-		label = "Thirst Decrease Speed",
+		label = "Decreasing Rate of Thirst",
 		options =
 		{
-		    {description = "VerySlow", data = .2, hover = "20%"},
-		    {description = "Slow", data = .4, hover = "40%"},
-		    {description = "Same", data = .5, hover = "50%"},
-			{description = "Default", data = .7, hover = "70%"},
-			{description = "Fast", data = .8, hover = "80%"},
-			{description = "VeryFast", data = 1, hover = "100%"},
+		    {description = "VerySlow", data = .2, hover = "30/day"},
+		    {description = "Slow", data = .4, hover = "60/day"},
+		    {description = "Same as Hunger", data = .5, hover = "75/day"},
+			{description = "Default", data = .7, hover = "105/day"},
+			{description = "Fast", data = .8, hover = "120/day"},
+			{description = "VeryFast", data = 1, hover = "150/day"},
 		},
 		default = .7,
 	},
-	{
-		name = "enable_thirst",
-		label = "Thirst Status",
-		options =
-		{
-			{description = "Enable", data = true},
-			{description = "Disable", data = false},
-		},
-		default = 0
-	},
 	SEPARATOR,
 	Title("Brewery options"),
-	SEPARATOR,
-	Title("Beer Ferment options"),
+	Title("Alcohol Drinks Brewing"),
 	{
 		name = "beer_wait",
 		label = "Extra Time",
-		options = 
+		hover = "How much longer do you want alcohols take to brew?",
+		options =
 		{
 			{description = "None", data = 0},
 			{description = "VeryShort", data = .1875},
@@ -121,12 +134,11 @@ configuration_options =
 		},
 		default = .75
 	},
-	SEPARATOR,
-	Title("Soda Ferment options"),
-	SEPARATOR,
+	Title("Soda Brewing"),
 	{
 		name = "soda_wait",
 		label = "Extra Time",
+		hover = "How much longer do you want sodas take to brew?",
 		options = 
 		{
 			{description = "None", data = 0},
@@ -140,11 +152,10 @@ configuration_options =
 	},
 	SEPARATOR,
 	Title("Effect options"),
-	SEPARATOR,
-	Title("Coffee Effect"),
+	Title("Coffee Speed Boost"),
 	{
 		name = "caffein_speed",
-		label = "Speed",
+		label = "Boost Rate",
 		options = 
 		{
 			{description = "VerySlow", data = 1.21},
@@ -157,7 +168,7 @@ configuration_options =
 	},
 	{
 		name = "caffein_time",
-		label = "Time",
+		label = "Duration",
 		options = 
 		{
 			{description = "VeryShort", data = .5},
@@ -170,10 +181,9 @@ configuration_options =
 	},
 	SEPARATOR,
 	Title("Drink Sleep Effect"),
-	SEPARATOR,
 	{
 		name = "sleeping_time",
-		label = "Time",
+		label = "Duration",
 		options =
 		{
 			{description = "VeryShort", data = 3.75},
@@ -186,20 +196,18 @@ configuration_options =
 	},
 	SEPARATOR,
 	Title("Drink Alcohol Effect"),
-	SEPARATOR,
 	{
 		name = "child_safety",
 		label = "Child Protection",
-		options =
 		{
-			{description = "yes", data = true},
-			{description = "no", data = false},
+			{description = "Enabled", data = true},
+			{description = "Disabled", data = false},
 		},
-		default = 0
+		default = true
 	},	
 	{
 		name = "alcohol_time",
-		label = "Intoxication Time",
+		label = "Intoxication Duration",
 		options =
 		{
 			{description = "VeryShort", data = .125},
@@ -212,7 +220,7 @@ configuration_options =
 	},
 	{
 		name = "drunkard_time",
-		label = "Drunkard Time",
+		label = "Tipsiness Duration",
 		options =
 		{
 			{description = "VeryShort", data = .125},
@@ -225,7 +233,7 @@ configuration_options =
 	},
 	{
 		name = "immune_time",
-		label = "Less Pain Time",
+		label = "Pain Relief Duration",
 		options =
 		{
 			{description = "VeryShort", data = .125},
@@ -238,42 +246,40 @@ configuration_options =
 	},
 	SEPARATOR,
 	Title("Drink Alcohol Capacity"),
-	SEPARATOR,
 	{
 		name = "max_capacity",
-		label = "Set Get Drunked",
+		label = "Threshold To Be Drunk",
 		options =
 		{
-			{description = "Always Drunked", data = 0},
-			{description = "3 cup", data = 3},
-			{description = "1 bottle", data = 5},
-			{description = "2 bottle", data = 10},
-			{description = "3 bottle", data = 15},
-			{description = "4 bottle", data = 20},
-			{description = "5 bottle", data = 25},
-			{description = "6 bottle", data = 30},
+			{description = "Just A Sip", data = 0},
+			{description = "3 Cups", data = 3},
+			{description = "1 Bottles", data = 5},
+			{description = "2 Bottles", data = 10},
+			{description = "3 Bottles", data = 15},
+			{description = "4 Bottles", data = 20},
+			{description = "5 Bottles", data = 25},
+			{description = "6 Bottles", data = 30},
 		},
 		default = 5
 	},
 	{
 		name = "capacity_time",
-		label = "Decrease Intoxication",
+		label = "Intoxication Decreasing Rate",
 		options =
 		{
-			{description = "VeryShort", data = .125},
-			{description = "Short", data = .25},
+			{description = "VerySlow", data = .75},
+			{description = "Slow", data = .625},
 			{description = "Default", data = .5},
-			{description = "Long", data = .625},
-			{description = "VeryLong", data = .75},
+			{description = "Fast", data = .25},
+			{description = "VeryFast", data = .125},
 		},
 		default = .5
 	},
 	SEPARATOR,
 	Title("Drink O.B.E. Effect"),
-	SEPARATOR,
 	{
 		name = "ghost_time",
-		label = "Time",
+		label = "Duration",
 		options =
 		{
 			{description = "VeryShort", data = .0625},
