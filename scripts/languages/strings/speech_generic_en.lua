@@ -10,6 +10,7 @@ return {
 
 	ANNOUNCE_DRUNK = "Hic... I think I'm drunk.",
 	ANNOUNCE_DRUNK_END = "Ow, I feel better.",
+	--ANNOUNCE_DRUNK_IMMUNITY = "only_used_by_wathgrithr",
 	ANNOUNCE_DRUNK_IMMUNITY = "only_used_by_wathgrithr",
 	ANNOUNCE_NOTCHARGE = "It's yet too early to milk.",
 	ANNOUNCE_NOTHIRSTSLEEP = "I'm too thirsty to sleep, I'll dry up like jerky!",

@@ -2,13 +2,13 @@
 LOC = require("languages/loc")
 
 local locale = GetModConfigData("locale") or LOC.GetLocaleCode()
-if type(locale)~="table" then
+--[[if type(locale)~="table" then
 	print(locale)
 else
 	for k, v in pairs(locale) do
 		print(k, v)
 	end
-end
+end]]
 
 local vanilla_characters = {
 	"generic",
