@@ -86,18 +86,6 @@ local function thirstbadge_statusdisplays(self)
 	        self.waterstomach:StopWarning()
 	    end
 	end
-	
-	local function playactiong(data)
-	    if not data.overtime then
-	        if data.newpercent > data.oldpercent then
-	            self.waterstomach:PulseGreen()
-	    	    GLOBAL.TheFrontEnd:GetSound():PlaySound("drink_fx/HUD/thirst_up","thirstup",.6)
-	        elseif data.newpercent < data.oldpercent then
-	            self.waterstomach:PulseRed()
-	            GLOBAL.TheFrontEnd:GetSound():PlaySound("drink_fx/HUD/thirst_down","thirstdown",.6)
-	        end
-	    end
-	end
 
 	function self:ThirstDelta(data)
 	    self:SetThirstPercent(data.newpercent)
@@ -107,24 +95,22 @@ local function thirstbadge_statusdisplays(self)
 	        if not data.overtime then
 	            if data.newpercent > data.oldpercent then
 	                self.waterstomach:PulseGreen()
-	                GLOBAL.TheFrontEnd:GetSound():PlaySound("drink_fx/HUD/thirst_up","thirstup",.6)
+	                GLOBAL.TheFrontEnd:GetSound():PlaySound("drink_fx/HUD/thirst_up","thirstup")
 	            elseif data.newpercent < data.oldpercent then
 	                self.waterstomach:PulseRed()
-	                GLOBAL.TheFrontEnd:GetSound():PlaySound("drink_fx/HUD/thirst_down","thirstdown",.6)
+	                GLOBAL.TheFrontEnd:GetSound():PlaySound("drink_fx/HUD/thirst_down","thirstdown")
 	            end
-	        else
-	        	--self.data:DoTaskInTime(0,playactiong,data)
 	        end
 	    end
 	end
 
 	function self:ShowStatusNumbers()
-		_ShowStatusNumbers(self)
+		self._ShowStatusNumbers(self)
 		self.waterstomach.num:Show()
 	end
 
 	function self:HideStatusNumbers()
-		_HideStatusNumbers(self)
+		self._HideStatusNumbers(self)
 		self.waterstomach.num:Hide()
 	end
 

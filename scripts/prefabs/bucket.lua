@@ -38,11 +38,27 @@ local function FillByRain(inst)
     end
 end
 
+local function WeatherCheck(inst)
+    local owner = inst.components.inventoryitem.owner
+    if TheWorld.state.israining and owner == nil then
+        inst.rainfilling = inst.rainfilling + TUNING.RAIN_GIVE_WATER
+    elseif not TheWorld.state.israining and inst.rainfilling > 0 then
+        inst.rainfilling = inst.rainfilling - TUNING.LOST_WATER
+    end
+    if inst.rainfilling >= TUNING.BUCKET_LEVEL_PER_USE then
+        FillByRain(inst)
+    end
+end
+
 local function onremovewater(inst)
     if not TheWorld.state.israining and inst.rainfilling ~= 0 then
         inst.SoundEmitter:PlaySound("dontstarve/creatures/pengull/splash")
         inst.rainfilling = 0
     end
+end
+
+local function DoneMilkingfn(doer)
+    doer.SoundEmitter:PlaySound("dontstarve/creatures/pengull/splash")
 end
 
 local function onsave(inst, data)
@@ -70,6 +86,9 @@ local function fn()
     inst.AnimState:PlayAnimation("empty")
 
     inst:AddTag("watertaker")
+    inst:AddTag("bucket_empty")
+
+    MakeInventoryFloatable(inst)
 
     inst.entity:SetPristine()
 
@@ -78,20 +97,9 @@ local function fn()
     end
 
     inst.rainfilling = 0
-    inst:DoPeriodicTask(1, function()
-        local owner = inst.components.inventoryitem.owner
-        if TheWorld.state.israining and owner == nil then
-            inst.rainfilling = inst.rainfilling + TUNING.RAIN_GIVE_WATER
-        elseif not TheWorld.state.israining and inst.rainfilling > 0 then
-            inst.rainfilling = inst.rainfilling - TUNING.LOST_WATER
-        end
-        if inst.rainfilling >= TUNING.BUCKET_LEVEL_PER_USE then
-            FillByRain(inst)
-        end
-    end)
+    inst:DoPeriodicTask(1,WeatherCheck)
 	
 	-- 우물 상호 작용을 위한 태그
-	inst:AddTag("bucket_empty")
 
 	inst:AddComponent("watertaker")
 	inst.components.watertaker.capacity = TUNING.BUCKET_LEVEL_PER_USE
@@ -106,11 +114,12 @@ local function fn()
     inst:AddComponent("fuel")
     inst.components.fuel.fuelvalue = TUNING.LARGE_FUEL
     
-    inst:AddComponent("tradable") --to work with water well
+    inst:AddComponent("wateringtool")
 
     inst:AddComponent("inspectable")
 
     inst:AddComponent("milkingtool")
+    inst.components.milkingtool.donemilkingfn = DoneMilkingfn
 	
     MakeSmallBurnable(inst, TUNING.MED_BURNTIME)
     MakeSmallPropagator(inst)

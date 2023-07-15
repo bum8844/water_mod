@@ -1,12 +1,10 @@
 return {
 	--items
 	"bucket",
-	--"bucketfull",
-	--"bucketice",
-	--"cup",
-	"cupfull",
+	"def_water",
 	"upgrade_kit",
-	--"purification_tablets",
+	"fermentingrecipcard",
+	"boillingrecipcard",
 
 	--structures
 	"barrel",
@@ -16,7 +14,7 @@ return {
 	"kettle",
 	"portablekettle",
 	"well",
-	--"well_sprinkler",
+	"well_sprinkler",
 	"well_drilling",
 
 	--food & plants
@@ -33,6 +31,9 @@ return {
 
 	--fx
 	"campkettlefire",
+	"well_water_spray",
+	"well_water_pipe",
+	"well_sprinkler_water_drop",
 
 	--new fertilizer_nutrient_defs
 	"water_fertilizer_nutrient_defs",

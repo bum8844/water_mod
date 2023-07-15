@@ -23,29 +23,41 @@ local function FailUpgrade(inst, performer, prefabs)
 	end
 	inst.components.upgradeable.upgradetype = UPGRADETYPES.HOLE
 	inst.components.upgradeable.numupgrades = 0
-	performer.components.talker:Say(_G.GetActionFailString(performer,"CONSTRUCT","NOTALLOWED"))
+	performer.components.talker:Say(GetActionFailString(performer,"CONSTRUCT","NOTALLOWED"))
+end
+
+
+local function CreateWell(inst)
+	local well = ReplacePrefab(inst, "well")
+	well.Transform:SetPosition(inst.Transform:GetWorldPosition())
+	well.AnimState:PlayAnimation("place")
+	well.AnimState:PushAnimation("idle_empty")
+	well.SoundEmitter:PlaySound("dontstarve/common/together/town_portal/craft")
+	well:DoTaskInTime(.6, function()
+		well.SoundEmitter:PlaySound("saltydog/common/saltbox/place")
+	end)
+end
+
+local function CreateWellSprinkler(inst)
+	local sprinkler = ReplacePrefab(inst, "well_sprinkler")
+	sprinkler.Transform:SetPosition(inst.Transform:GetWorldPosition())
+	sprinkler.AnimState:PlayAnimation("place_hole")
+	sprinkler.AnimState:PushAnimation("idle_off")
+	sprinkler.onhole = "hole"
+	sprinkler.SoundEmitter:PlaySound("dontstarve/common/together/catapult/hit")
+	sprinkler:DoTaskInTime(.6, function()
+		sprinkler.SoundEmitter:PlaySound("dontstarve/common/researchmachine_lvl2_place")
+	end)
 end
 
 local function OnUpgrade(inst, performer, upgraded_from_item)
-	local prefabs = upgraded_from_item.prefab
-	if prefabs == "well_kit" then
-        local hole = ReplacePrefab(inst, "well")
-        hole.SoundEmitter:PlaySound("dontstarve/common/together/town_portal/craft")
-		hole:DoTaskInTime(.6, function(new_well)
-			hole.SoundEmitter:PlaySound("saltydog/common/saltbox/place")
-		end)
-		hole.AnimState:PlayAnimation("place")
-		hole.AnimState:PushAnimation("idle_empty")
-	--[[elseif prefabs == "well_sprinkler" then
-		local hole = ReplacePrefab(inst, "well_sprinkler")
-        hole.SoundEmitter:PlaySound("dontstarve/common/together/town_portal/craft")
-		hole:DoTaskInTime(.6, function(new_well)
-			new_well.SoundEmitter:PlaySound("saltydog/common/saltbox/place")
-		end)
-		hole.AnimState:PlayAnimation("place")
-		hole.AnimState:PushAnimation("idle_empty")]]
+	local prefab = upgraded_from_item.prefab
+	if prefab == "well_kit" then
+		local hole = CreateWell(inst)
+	elseif prefab == "well_sprinkler_kit" then
+		local hole = CreateWellSprinkler(inst)
 	else
-		FailUpgrade(inst, performer, prefabs)
+		FailUpgrade(inst, performer, prefab)
 	end
 end
 
@@ -81,10 +93,15 @@ local function hole()
     inst.AnimState:PlayAnimation("idle")
 	
 	inst:AddTag("antlion_sinkhole_blocker")
-    inst:AddTag("constructionsite")
     inst:AddTag("birdblocker")
 	
 	MakeObstaclePhysics(inst, .6)
+
+    inst.entity:SetPristine()
+
+    if not TheWorld.ismastersim then
+        return inst
+    end
 	
 	inst:AddComponent("inspectable")
 	
@@ -107,31 +124,21 @@ local function hole()
 	return inst
 end
 
-
-local function updatewellstate(inst)
-    local num = inst.components.pickable.numtoharvest
-	if num > 0 then
-		inst.AnimState:PlayAnimation("idle_watering")
-	else
-		inst.AnimState:PlayAnimation("idle_empty")
-	end
-end
-
 local function onhammered(inst)
 	if inst.AnimState:IsCurrentAnimation("watering") or inst.AnimState:IsCurrentAnimation("hit_watering") or inst.AnimState:IsCurrentAnimation("idle_watering") then
-		local bucket_fit = inst.components.pickable.numtoharvest
-		while bucket_fit > 0 do
-        	if bucket_fit > 0 then
+		local water_finiteuses = inst.components.pickable.numtoharvest or 0
+		while water_finiteuses > 0 do
+        	if water_finiteuses > 0 then
             	inst.components.lootdropper:SpawnLootPrefab("water_clean")
         	end
-        	bucket_fit = bucket_fit - 1
+        	water_finiteuses = water_finiteuses - 1
     	end
-		if inst._bucket_fit > 0 then
+		if inst.wateringtool_finiteuses > 0 then
 			local x, y, z = inst.Transform:GetWorldPosition()
 	   		local refund = nil
 
-			refund = SpawnPrefab("bucket_empty")
-			refund.components.finiteuses:SetUses(inst._bucket_fit)
+			refund = SpawnPrefab(tostring(inst.wateringtool))
+			refund.components.finiteuses:SetUses(inst.wateringtool_finiteuses)
 
 			LaunchAt(refund,inst,inst,-1.8,0.5,nil,65)
 		end
@@ -156,10 +163,10 @@ local function onhit(inst)
 end
 
 local function OnRefuseItem(inst, giver, item)
-	if inst.components.pickable.caninteractwith then
-		giver.components.talker:Say(GetActionFailString(giver, "GIVE", "WELL_NOTEMPTY"))
-	elseif inst.AnimState:IsCurrentAnimation("watering") or inst.AnimState:IsCurrentAnimation("idle_watering") or inst.AnimState:IsCurrentAnimation("shack_watering") then
+	if inst.AnimState:IsCurrentAnimation("watering") or inst.AnimState:IsCurrentAnimation("hit_watering") or inst.AnimState:IsCurrentAnimation("shack_watering") then
 		giver.components.talker:Say(GetActionFailString(giver, "GIVE", "WELL_BUSY"))
+	elseif inst.wateringtool then
+		giver.components.talker:Say(GetActionFailString(giver, "GIVE", "WELL_NOTEMPTY"))
 	else
 		giver.components.talker:Say(GetActionFailString(giver, "GIVE", "GENERIC"))
 	end
@@ -178,7 +185,7 @@ local function SetPickable(inst, pickable, num)
     inst.components.pickable.numtoharvest = num
 end
 
-local function givewater(inst, picker)
+local function givewater(inst, picker, loot)
 	local x, y, z = picker.Transform:GetWorldPosition()
     local refund = nil
 
@@ -187,9 +194,9 @@ local function givewater(inst, picker)
 	inst.AnimState:PushAnimation("idle_empty")
 	picker.SoundEmitter:PlaySound("dontstarve/creatures/pengull/splash")
 
-	if inst._bucket_fit > 0 then
-		refund = SpawnPrefab("bucket_empty")
-		refund.components.finiteuses:SetUses(inst._bucket_fit)
+	if inst.wateringtool_finiteuses > 0 then
+		refund = SpawnPrefab(tostring(inst.wateringtool))
+		refund.components.finiteuses:SetUses(inst.wateringtool_finiteuses)
 
     	if picker ~= nil and picker.components.inventory ~= nil then
         	picker.components.inventory:GiveItem(refund, nil, Vector3(x, y, z))
@@ -197,49 +204,64 @@ local function givewater(inst, picker)
         	refund.Transform:SetPosition(x,y,z)
     	end
 	end
-
-	inst.components.pickable.numtoharvest = inst.components.pickable.numtoharvest - 20
-	SetPickable(inst, false, inst.components.pickable.numtoharvest)
+	loot.components.inventoryitemmoisture:SetMoisture(0)
+	inst.wateringtool = nil
+	inst.wateringtool_finiteuses = 0
+	inst.water_finiteuses = 0
+	SetPickable(inst, false, 0)
 end
 
-local function upwater(inst, item, giver)
-	inst.AnimState:PushAnimation("idle_watering")
-	SetPickable(inst, true, inst.components.pickable.numtoharvest)
-end
-
-local function getwater(inst, item, giver)
-	inst.SoundEmitter:PlaySound("turnoftides/common/together/boat/anchor/ocean_hit")
-	inst:DoTaskInTime(1.1,upwater, item, giver)
+local function WellAct(inst, finiteuses)
+	inst.SoundEmitter:PlaySound("turnoftides/common/together/boat/anchor/tether_land")
+	inst.AnimState:PlayAnimation("watering")
+	inst:DoTaskInTime(1.1,function(inst)
+		inst.SoundEmitter:PlaySound("turnoftides/common/together/boat/anchor/ocean_hit")
+		inst:DoTaskInTime(1.1,function(inst)
+			inst.AnimState:PushAnimation("idle_watering")
+			SetPickable(inst, true, finiteuses)
+		end)
+	end)
 end
 
 local function OnGetItemFromPlayer(inst, giver, item)
 	inst:RemoveTag("ready")
-	local old_fit = item.components.finiteuses:GetUses()
-	if old_fit > TUNING.BUCKET_LEVEL_PER_USE then
-		old_fit = TUNING.BUCKET_LEVEL_PER_USE
+	inst.wateringtool = item.prefab
+	local water_finiteuses = item.components.finiteuses:GetUses()
+	if water_finiteuses > TUNING.BUCKET_LEVEL_PER_USE then
+		water_finiteuses = TUNING.BUCKET_LEVEL_PER_USE
 	end
-	item.components.finiteuses:Use(old_fit)
-	inst.components.pickable.numtoharvest = inst.components.pickable.numtoharvest + old_fit
-	inst._bucket_fit = item.components.finiteuses.current
-	inst.SoundEmitter:PlaySound("turnoftides/common/together/boat/anchor/tether_land")
-	inst.AnimState:PlayAnimation("watering")
-	inst:DoTaskInTime(1.1,getwater, item, giver)
+	inst.water_finiteuses = water_finiteuses
+	item.components.finiteuses:Use(water_finiteuses)
+	inst.wateringtool_finiteuses = item.components.finiteuses:GetUses()
+	WellAct(inst, inst.water_finiteuses)
 end
 
 local function onsave(inst, data)
-    if inst.components.pickable.numtoharvest > 0 then
-        -- This isn't saved on the pickable component
-        data.numtoharvest = inst.components.pickable.numtoharvest
-        data.bucket_fit = inst._bucket_fit
-    end
+	local pickable = inst.components.pickable.numtoharvest
+	local chk_numtoharvest = pickable ~= nil and pickable > 0 and pickable or 0
+	data.numtoharvest = chk_numtoharvest
+	data.wateringtool = inst.wateringtool
+	data.wateringtool_finiteuses = inst.wateringtool_finiteuses or 0
+	data.water_finiteuses = inst.water_finiteuses or 0
 end
 
 local function onload(inst, data)
-	if data ~= nil then
-		if data.numtoharvest ~= nil and data.numtoharvest > 0 then
-			inst.components.pickable.numtoharvest = data.numtoharvest
-			inst._bucket_fit = data.bucket_fit
-			updatewellstate(inst)
+	if data.wateringtool ~= nil then
+		inst.wateringtool = data.wateringtool
+
+		inst:RemoveTag("ready")
+
+		local numtoharvest = data.numtoharvest
+		inst.wateringtool_finiteuses = data.wateringtool_finiteuses
+		local water_finiteuses = data.water_finiteuses
+
+		if numtoharvest > 0 then
+			inst.AnimState:PlayAnimation("idle_watering")
+			SetPickable(inst, true, numtoharvest)
+		elseif inst.wateringtool_finiteuses > 0 then
+			WellAct(inst, water_finiteuses)
+		else
+			inst.wateringtool = nil -- 이럴일은 없갰죠
 		end
 	end
 end
@@ -258,12 +280,20 @@ local function well()
 
     inst:AddTag("well")
     inst:AddTag("structure")
+    inst:AddTag("cleanwaterproduction")
     inst:AddTag("ready")
 	
 	MakeObstaclePhysics(inst, .5)
 
-	inst.entity:SetPristine()
-	inst._bucket_fit = 0
+    inst.entity:SetPristine()
+
+    if not TheWorld.ismastersim then
+        return inst
+    end
+
+    inst.wateringtool = nil
+	inst.wateringtool_finiteuses = 0
+	inst.water_finiteuses = 0
 	
     inst.AnimState:SetBank("well")
     inst.AnimState:SetBuild("well")

@@ -38,7 +38,7 @@ local function tealeaves()
 	
 	inst:AddComponent("dryable")
     inst.components.dryable:SetProduct("tealeaves_dried")
-    inst.components.dryable:SetDryTime(TUNING.DRY_SUPERFAST)
+    inst.components.dryable:SetDryTime(TUNING.DRY_MED)
 	inst.components.dryable:SetBuildFile("tealeaves")
     inst.components.dryable:SetDriedBuildFile("tealeaves")
 

@@ -52,7 +52,7 @@ function Obe:DrinktoDeath()
 	self.isdrinkdeath = true
 	self.deathtimer = TUNING.GHOST_TIME
 
-	self.inst.components.health:DoDelta(-10000, nil, "death_by_tea")
+	self.inst.components.health:DoDelta(-1000000, nil, "death_by_tea")
 
 	if not self.inst.components.timer:TimerExists("obebuff_done") then
 		self.inst.components.timer:StartTimer("obebuff_done", self.deathtimer)

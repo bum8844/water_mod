@@ -20,99 +20,135 @@ local prefabs_item =
 	"dug_caffeinberry_placer"
 }
 
---regrowth code
-local function OnBurnt(inst)
-    if not inst.planted then
-        TheWorld:PushEvent("beginregrowth", inst)
+local BERRY_TYPES = { "caffeinberrienone","caffeinberries", "caffeinberriesmore", "caffeinberriesmost" }
+local function setberries(inst, pct)
+    if inst._setberriesonanimover then
+        inst._setberriesonanimover = nil
+        inst:RemoveEventCallback("animover", setberries)
     end
-    DefaultBurntFn(inst)
+
+    local berries =
+        (not pct and "caffeinberrienone") or
+        (pct >= .9 and "caffeinberriesmost") or
+        (pct >= .33 and "caffeinberriesmore") or
+        "caffeinberries"
+
+    for i, berry_type in ipairs(BERRY_TYPES) do
+        if berry_type == berries then
+            inst.AnimState:Show(berry_type)
+        else
+            inst.AnimState:Hide(berry_type)
+        end
+    end
+end
+
+local function setberriesonanimover(inst)
+    if inst._setberriesonanimover then
+        setberries(inst, nil)
+    else
+        inst._setberriesonanimover = true
+        inst:ListenForEvent("animover", setberries)
+    end
+end
+
+local function cancelsetberriesonanimover(inst)
+    if inst._setberriesonanimover then
+        setberries(inst, nil)
+    end
 end
 
 local function makeemptyfn(inst)
-    if inst.components.pickable then
+    if POPULATING then
+        inst.AnimState:PlayAnimation("idle", true)
+        inst.AnimState:SetFrame(math.random(inst.AnimState:GetCurrentAnimationNumFrames()) - 1)
+    elseif inst:HasTag("withered") or inst.AnimState:IsCurrentAnimation("dead") then
+        --inst.SoundEmitter:PlaySound("dontstarve/common/bush_fertilize")
         inst.AnimState:PlayAnimation("dead_to_idle")
         inst.AnimState:PushAnimation("idle")
     else
-        inst.AnimState:PlayAnimation("idle")
+        inst.AnimState:PlayAnimation("idle", true)
     end
+    setberries(inst, nil)
 end
 
-local function makebarrenfn(inst)
-    if not POPULATING and inst.AnimState:IsCurrentAnimation("idle") then
-        inst.AnimState:PlayAnimation(pickanim(inst).."_to_dead")
-        inst.AnimState:PushAnimation("idle_dead")
+local function makebarrenfn(inst)--, wasempty)
+    if not POPULATING and (inst:HasTag("withered") or inst.AnimState:IsCurrentAnimation("idle")) then
+        inst.AnimState:PlayAnimation("idle_to_dead")
+        inst.AnimState:PushAnimation("dead", false)
     else
-        inst.AnimState:PlayAnimation("idle_dead")
+        inst.AnimState:PlayAnimation("dead")
     end
-end
-
-local function pickanim(inst)
-    if inst.components.pickable then
-        if inst.components.pickable:CanBePicked() then
-            local percent = 0
-            if inst.components.pickable then
-                percent = inst.components.pickable.cycles_left / inst.components.pickable.max_cycles
-            end
-
-            if percent >= .9 then
-                return "caffeinberriesmost"
-            elseif percent >= .33 then
-                return "caffeinberriesmore"
-            else
-                return "caffeinberries"
-            end
-        else
-            if inst.components.pickable:IsBarren() then
-                return "idle_dead"
-            end
-        end
-    end
-
-    return "idle"
+    cancelsetberriesonanimover(inst)
 end
 
 local function shake(inst)
-    if inst.components.pickable and inst.components.pickable:CanBePicked() then
-        inst.AnimState:PlayAnimation("shake_"..pickanim(inst))
+    if inst.components.pickable and
+            not inst.components.pickable:CanBePicked() and
+            inst.components.pickable:IsBarren() then
+        inst.AnimState:PlayAnimation("shake_dead")
+        inst.AnimState:PushAnimation("dead", false)
     else
-        inst.AnimState:PlayAnimation("shake_empty")
+        inst.AnimState:PlayAnimation("shake")
+        inst.AnimState:PushAnimation("idle")
     end
-    inst.AnimState:PushAnimation(pickanim(inst), false)
-end
-
-local function pickberries(inst)
-    if inst.components.pickable then
-        local old_percent = (inst.components.pickable.cycles_left+1) / inst.components.pickable.max_cycles
-
-        if old_percent >= .9 then
-            inst.AnimState:PushAnimation("caffeinberriesmost_picked")
-        elseif old_percent >= .33 then
-            inst.AnimState:PushAnimation("caffeinberriesmore_picked")
-        else
-            inst.AnimState:PushAnimation("caffeinberries_picked")
-        end
-
-        if inst.components.pickable:IsBarren() then
-            inst.AnimState:PlayAnimation("idle_to_dead")
-            inst.AnimState:PushAnimation("idle_dead")
-        else
-            inst.AnimState:PushAnimation("idle")
-        end
-    end 
+    cancelsetberriesonanimover(inst)
 end
 
 local function onpickedfn(inst, picker)
-    pickberries(inst)
+    if inst.components.pickable then
+        if inst.components.pickable:IsBarren() then
+            inst.AnimState:PlayAnimation("idle_to_dead")
+            inst.AnimState:PushAnimation("dead", false)
+            setberries(inst, nil)
+        else
+            inst.AnimState:PlayAnimation("picked")
+            inst.AnimState:PushAnimation("idle")
+            setberriesonanimover(inst)
+        end
+    end
+end
+
+local function getregentimefn_normal(inst)
+    if not inst.components.pickable then
+        return TUNING.BERRY_REGROW_TIME
+    end
+    --V2C: nil cycles_left means unlimited picks, so use max value for math
+    local max_cycles = inst.components.pickable.max_cycles
+    local cycles_left = inst.components.pickable.cycles_left or max_cycles
+    local num_cycles_passed = math.max(0, max_cycles - cycles_left)
+    return TUNING.BERRY_REGROW_TIME
+        + TUNING.BERRY_REGROW_INCREASE * num_cycles_passed
+        + TUNING.BERRY_REGROW_VARIANCE * math.random()
 end
 
 local function makefullfn(inst)
-    inst.AnimState:PlayAnimation("shake_empty")
-    inst.AnimState:PushAnimation(pickanim(inst))
+    local anim = "idle"
+    local berries = nil
+    if inst.components.pickable then
+        if inst.components.pickable:CanBePicked() then
+            berries = (inst.components.pickable.cycles_left and inst.components.pickable.cycles_left / inst.components.pickable.max_cycles) or 1
+        elseif inst.components.pickable:IsBarren() then
+            anim = "dead"
+        end
+    end
+    if anim ~= "idle" then
+        inst.AnimState:PlayAnimation(anim)
+    elseif POPULATING then
+        inst.AnimState:PlayAnimation("idle", true)
+        inst.AnimState:SetFrame(math.random(inst.AnimState:GetCurrentAnimationNumFrames()) - 1)
+    else
+        inst.AnimState:PlayAnimation("grow")
+        inst.AnimState:PushAnimation("idle", true)
+    end
+    setberries(inst, berries)
 end
 
 local function dig_up_common(inst, worker, numberries)
-    if inst.components.pickable ~= nil and inst.components.lootdropper ~= nil then
-        if inst.components.pickable:IsBarren() then
+    if inst.components.pickable and inst.components.lootdropper then
+        local withered = (inst.components.witherable ~= nil and inst.components.witherable:IsWithered())
+
+
+        if withered or inst.components.pickable:IsBarren() then
             inst.components.lootdropper:SpawnLootPrefab("twigs")
             inst.components.lootdropper:SpawnLootPrefab("twigs")
         else
@@ -123,9 +159,7 @@ local function dig_up_common(inst, worker, numberries)
                     inst.components.lootdropper:SpawnLootPrefab(inst.components.pickable.product, pt)
                 end
             end
-            if not inst.planted then
-                inst.components.lootdropper:SpawnLootPrefab("dug_caffeinberry")
-            end
+            inst.components.lootdropper:SpawnLootPrefab("dug_"..inst.prefab)
         end
     end
     inst:Remove()
@@ -136,7 +170,8 @@ local function dig_up_normal(inst, worker)
 end
 
 local function ontransplantfn(inst)
-    inst.AnimState:PlayAnimation("idle_dead")
+    inst.AnimState:PlayAnimation("dead")
+    setberries(inst, nil)
     inst.components.pickable:MakeBarren()
 end
 
@@ -145,8 +180,9 @@ local function OnHaunt(inst)
         shake(inst)
         inst.components.hauntable.hauntvalue = TUNING.HAUNT_COOLDOWN_TINY
         return true
+    else
+        return false
     end
-    return false
 end
 
 local function caffeinberry()
@@ -154,31 +190,32 @@ local function caffeinberry()
 
     inst.entity:AddTransform()
     inst.entity:AddAnimState()
+    inst.entity:AddMiniMapEntity()
     inst.entity:AddNetwork()
 
     MakeSmallObstaclePhysics(inst, .1)
-        
+
     inst:AddTag("bush")
     inst:AddTag("plant")
     inst:AddTag("renewable")
-        
+    inst:AddTag("witherable")
+
     local minimap = inst.entity:AddMiniMapEntity()
     minimap:SetIcon("caffeinberrybush.tex")
 
     inst.AnimState:SetBank("caffeinberry")
     inst.AnimState:SetBuild("caffeinberry")
-    inst.AnimState:PlayAnimation("caffeinberrysmost", false)
+    inst.AnimState:PlayAnimation("idle", true)
+    setberries(inst, 1)
 
     MakeSnowCoveredPristine(inst)
 
     inst.entity:SetPristine()
-
     if not TheWorld.ismastersim then
         return inst
     end
 
-    inst.AnimState:SetTime(math.random() * inst.AnimState:GetCurrentAnimationLength())
-
+    inst.AnimState:SetFrame(math.random(inst.AnimState:GetCurrentAnimationNumFrames()) - 1)
     inst:AddComponent("pickable")
     inst.components.pickable.picksound = "dontstarve/wilson/harvest_berries"
     inst.components.pickable.onpickedfn = onpickedfn
@@ -186,9 +223,15 @@ local function caffeinberry()
     inst.components.pickable.makebarrenfn = makebarrenfn
     inst.components.pickable.makefullfn = makefullfn
     inst.components.pickable.ontransplantfn = ontransplantfn
-    inst.components.pickable:SetUp("caffeinberry_bean", TUNING.BERRY_REGROW_TIME*0.5)
-    inst.components.pickable.max_cycles = TUNING.BERRYBUSH_CYCLES*2 + math.random(2)
+    inst.components.pickable:SetUp("caffeinberry_bean", TUNING.BERRY_REGROW_TIME)
+    inst.components.pickable.getregentimefn = getregentimefn_normal
+    inst.components.pickable.max_cycles = TUNING.BERRYBUSH_CYCLES + math.random(2)
     inst.components.pickable.cycles_left = inst.components.pickable.max_cycles
+
+    inst:AddComponent("witherable")
+
+    MakeLargeBurnable(inst)
+    MakeMediumPropagator(inst)
 
     MakeHauntableIgnite(inst)
     AddHauntableCustomReaction(inst, OnHaunt, false, false, true)
@@ -196,25 +239,27 @@ local function caffeinberry()
     inst:AddComponent("lootdropper")
 
     if not GetGameModeProperty("disable_transplanting") then
-    inst:AddComponent("workable")
+        inst:AddComponent("workable")
         inst.components.workable:SetWorkAction(ACTIONS.DIG)
         inst.components.workable:SetWorkLeft(1)
         inst.components.workable:SetOnFinishCallback(dig_up_normal)
-    end    
+    end
 
     inst:AddComponent("inspectable")
 
     MakeSnowCovered(inst)
-    
+
     return inst
 end
 
 local function on_deploy_fn(inst, position, deployer)
 	local tree = SpawnPrefab("caffeinberry")
 	if tree ~= nil then
-		tree.Transform:SetPosition(position:Get())
-		inst.components.stackable:Get():Remove()
-		tree.components.pickable:OnTransplant()
+        tree.Transform:SetPosition(position:Get())
+        inst.components.stackable:Get():Remove()
+        if tree.components.pickable ~= nil then
+            tree.components.pickable:OnTransplant()
+        end
 		if deployer ~= nil and deployer.SoundEmitter ~= nil then
 			deployer.SoundEmitter:PlaySound("dontstarve/common/plant")
 		end
@@ -253,8 +298,8 @@ local function dug_caffeinberry()
 	
     inst:AddComponent("inventoryitem")
     inst.replica.inventoryitem:SetImage("dug_caffeinberry")
-	inst.components.inventoryitem.atlasname= "images/tea_inventoryitem.xml"
-    inst.components.inventoryitem.imagename= "caffeinberry_bush_dug"
+	inst.components.inventoryitem.atlasname = "images/tea_inventoryitem.xml"
+    inst.components.inventoryitem.imagename = "caffeinberry_bush_dug"
 
     inst:AddComponent("tradable")
 

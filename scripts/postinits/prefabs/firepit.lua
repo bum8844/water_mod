@@ -39,28 +39,34 @@ end
 
 local function OnUpgrade(inst, performer, upgraded_from_item)
 	local numupgrades = inst.components.upgradeable.numupgrades
-	if _G.KnownModIndex:IsModEnabled("workshop-2334209327") or _G.KnownModIndex:IsModForceEnabled("workshop-2334209327") then
-		if inst.components.trader ~= nil and inst.components.trader.enabled and numupgrades == 1 then
+	local modEnabled = _G.KnownModIndex:IsModEnabled("workshop-2334209327") or _G.KnownModIndex:IsModForceEnabled("workshop-2334209327")
+	local traderEnabled = inst.components.trader ~= nil and inst.components.trader.enabled
+
+	if modEnabled then
+		if traderEnabled and numupgrades == 1 then
+			install_kettle(inst)
+		elseif inst.prefab == "campfire" and numupgrades == 1 then
 			install_kettle(inst)
 		else
 			FailUpgrade(inst, performer, upgraded_from_item)
 		end
+	elseif numupgrades == 1 then
+		install_kettle(inst)
 	else
-		if numupgrades == 1 then
-			install_kettle(inst)
-		else
-			FailUpgrade(inst, performer, upgraded_from_item)
-		end
+		FailUpgrade(inst, performer, upgraded_from_item)
 	end
 end
 
 local function OnSave(inst, data)
 	local kettle = inst._kettle
 	if kettle ~= nil then
+		local distiller = kettle.components.distiller
+		local boilingtime = distiller.boiling_timer ~= nil and distiller.boiling_timer - GLOBAL.GetTime() or distiller.firetime or 0
 		data.kettle =
 		{
 			waterlevel = kettle.components.waterlevel.currentwater,
 			watertype = kettle.components.waterlevel.watertype,
+			boilingtime = boilingtime > 0 and boilingtime or nil
 		}
 	else
 		data.kettle = nil
@@ -68,15 +74,22 @@ local function OnSave(inst, data)
 end
 
 local function OnLoad(inst, data)
-	if data ~= nil and data.kettle ~= nil then
-		install_kettle(inst, true)
-		inst._kettle.components.waterlevel:InitializeWaterLevel(math.max(0, data.kettle.waterlevel))
-		inst._kettle.components.waterlevel:SetWaterType(data.kettle.watertype)
-		if inst.components.fueled:GetCurrentSection() > 0 then
-			inst._kettle.components.waterlevel:DoDiistiller(inst._kettle)
-		end
-		if data.kettle.watertype == WATERTYPE.CLEAN and data.kettle.waterlevel > 0 then
-			inst._kettle.components.pickable.canbepicked = true
+	local numupgrades = inst.components.upgradeable.numupgrades
+	if numupgrades ~= 0 then
+		if data ~= nil and data.kettle ~= nil then
+			install_kettle(inst, true)
+			inst._kettle.components.waterlevel:InitializeWaterLevel(math.max(0, data.kettle.waterlevel))
+			inst._kettle.components.waterlevel:SetWaterType(data.kettle.watertype)
+			if data.kettle.boilingtime then
+				inst._kettle.components.distiller.firetime = data.kettle.boilingtime
+				if inst.components.fueled:GetCurrentSection() > 0 then
+					inst._kettle.components.distiller:startBoiling(0,true)
+				end
+			elseif data.kettle.watertype == WATERTYPE.CLEAN and data.kettle.waterlevel > 0 then
+				inst._kettle.components.pickable.numtoharvest = inst._kettle.components.waterlevel:GetWater()
+				inst._kettle.components.pickable.canbepicked = true
+			end
+			inst._kettle.components.waterlevel:UtilityCheck(inst._kettle)
 		end
 	end
 end
@@ -120,14 +133,14 @@ local function onhammered(inst, worker, ...)
 end
 
 local function startboil(inst)
-	if inst._kettle ~= nil and inst._kettle:IsValid() and inst._kettle.components.waterlevel:GetWater() ~= 0 and inst._kettle.components.waterlevel.watertype == WATERTYPE.DIRTY then
-		inst._kettle.components.distiller:startBoiling(inst._kettle.components.waterlevel:GetWater()*2)
+	if inst._kettle ~= nil and inst._kettle:IsValid() and inst._kettle.components.waterlevel:GetWater() ~= 0 and inst._kettle.components.waterlevel.watertype ~= WATERTYPE.CLEAN then
+		inst._kettle.components.distiller:startBoiling(inst._kettle.components.waterlevel:GetWater()*2, true)
 	end
 end
 
 local function stopboil(inst)
 	if inst._kettle ~= nil and inst._kettle:IsValid() then
-		inst._kettle.components.distiller:stopBoiling(0)
+		inst._kettle.components.distiller:stopBoiling(0, true)
 	end
 end
 
@@ -146,6 +159,8 @@ AddPrefabPostInit("firepit",function(inst)
 	inst:AddComponent("upgradeable")
 	inst.components.upgradeable.upgradetype = UPGRADETYPES.CAMPFIRE
 	inst.components.upgradeable.onupgradefn = OnUpgrade
+
+	inst.left_timer = 0
 
 	inst.OnLoad = OnLoad
 	inst.OnSave = OnSave

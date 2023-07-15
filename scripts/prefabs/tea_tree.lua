@@ -127,12 +127,12 @@ local function SetupLoot(lootdropper)
         elseif inst.components.growable.stage == 3 then
             lootdropper:SetLoot({"tealeaves", "tealeaves", "petals"})
             lootdropper:AddChanceLoot("petals", 0.25)
-            lootdropper:AddChanceLoot("petals", 0.01)
+            lootdropper:AddChanceLoot("petals", 0.06)
         elseif inst.components.growable.stage == 4 then
             lootdropper:SetLoot({"tealeaves"})
             lootdropper:AddChanceLoot("tea_seed", 0.25)
-            lootdropper:AddChanceLoot("tea_seed", 0.05)
-            lootdropper:AddChanceLoot("tea_seed", 0.01)
+            lootdropper:AddChanceLoot("tea_seed", 0.12)
+            lootdropper:AddChanceLoot("tea_seed", 0.06)
         end
     end
 end
@@ -146,7 +146,7 @@ local function on_bush_burnt(inst)
     -- The bush, of course, stops growing once it's been burnt.
     inst.components.growable:StopGrowing()
     -- regen code
-    if TheNet:GetDefaultGameMode() ~= "survival" and not inst.planted then
+    if not inst.planted then
         TheWorld:PushEvent("beginregrowth", inst)
     end
 
@@ -170,7 +170,7 @@ local function on_dug_up(inst, digger)
     end
 
         -- regen cord
-    if TheNet:GetDefaultGameMode() ~= "survival" and not inst.planted then
+    if not inst.planted then
         TheWorld:PushEvent("beginregrowth", inst)
     end
 
@@ -245,6 +245,7 @@ local function on_save(inst, data)
         data.burning = true
     end
     data.planted = inst.planted
+    data.was_herd = inst.components.herdmember and true or nil
 end
 
 local function on_load(inst, data)
@@ -260,6 +261,14 @@ local function on_load(inst, data)
         -- growable doesn't call SetStage on load if the stage was saved out as nil (assuming initial state is ok).
         -- Since we randomly choose a stage on prefab creation, we want to explicitly call SetStage(1) for that case.
         inst.components.growable:SetStage(1)
+    end
+end
+
+local function on_preload(inst, data)
+    if data and data.was_herd then
+        if TheWorld.components.lunarthrall_plantspawner then
+            TheWorld.components.lunarthrall_plantspawner:setHerdsOnPlantable(inst)
+        end
     end
 end
 
@@ -282,6 +291,8 @@ local function tea_tree()
 
     inst:AddTag("plant")
     inst:AddTag("renewable")
+    inst:AddTag("witherable")
+    inst:AddTag("lunarplant_target")
 
     MakeSnowCoveredPristine(inst)
 
@@ -339,6 +350,7 @@ local function tea_tree()
 
     inst.OnSave = on_save
     inst.OnLoad = on_load
+    inst.OnPreLoad = on_preload
 
     MakeSnowCovered(inst)
 
@@ -355,6 +367,9 @@ local function on_deploy_fn(inst, position, deployer)
 			deployer.SoundEmitter:PlaySound("dontstarve/common/plant")
 		end
         inst.planted = true
+        if TheWorld.components.lunarthrall_plantspawner and tree:HasTag("lunarplant_target") then
+            TheWorld.components.lunarthrall_plantspawner:setHerdsOnPlantable(tree)
+        end
 	end
 end
 

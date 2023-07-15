@@ -8,11 +8,14 @@ local function OnFill_Waterlevel(inst, from_object ,...)
     		inst.components.finiteuses:SetUses(math.min(maxfin,using+(result*20)))
     		from_object.components.waterlevel:DoDelta(-result)
     		inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/small")
+            if from_object.components.waterlevel.ontakewaterfn ~= nil then
+               from_object.components.waterlevel.ontakewaterfn(from_object)
+            end
     		return true
     	else
     		return false
     	end
-    elseif from_object:HasTag("drink") then
+    elseif from_object:HasTag("farm_water") then
         if using ~= maxfin then
             local stacksize = from_object.components.stackable:StackSize()
             result = math.min(stacksize,math.ceil((maxfin-using)/TUNING.BUCKET_LEVEL_PER_USE))

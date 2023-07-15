@@ -1,17 +1,35 @@
+require("tuning")
 local TUNING = _G.TUNING
-local hydration_per_day = 75
 local wilson_thirst = GetModConfigData("thirst_max")
-local seg_time = 30
-local total_day_time = seg_time*16
-local bucket_max_level = 20
+local hydration_per_day = wilson_thirst*GetModConfigData("thirst_decrease_speed")
+local bucket_max_level = 10
+local caffein_time = GetModConfigData("caffein_time")
+local alcohol_time = GetModConfigData("alcohol_time")
+local capacity_time = GetModConfigData("capacity_time")
+local immune_time = GetModConfigData("immune_time")
+local ghost_time = GetModConfigData("ghost_time")
+local drunkard_time = GetModConfigData("drunkard_time")
+
+table.insert(TUNING.GAMEMODE_STARTING_ITEMS.DEFAULT.WARLY,"portablekettle_item")
 
 -- 물을 담을수 있는 최대치
-local tuning =
+water_tuning =
 {
-	CLEANSOURCE =
-	{
-		"oasislake",
-		"hotspring",
+	TYPES_CLEAN = {
+		--noting
+	},
+
+	TYPES_SALTY = {
+		"pond_cave",
+		"quagmire_pond_salt",
+		"kyno_pond_salt",
+	},
+
+	TYPES_DIRTY = {
+		"pond",
+		"pond_mos",
+		"tidalpool",
+		"tidalpoolnew",
 	},
 
 	CHILDS =
@@ -32,14 +50,14 @@ local tuning =
 	CUP_MAX_LEVEL = 1,
 	RAIN_GIVE_WATER = .5,
 	LOST_WATER = -.1,
-	BUCKET_MAX_LEVEL = 5*bucket_max_level,
+	BUCKET_MAX_LEVEL = bucket_max_level*10,
 	BUCKET_LEVEL_PER_USE = bucket_max_level,
 
 	CAMPKETTLE_MAX_LEVEL = 3,
-	KETTLE_MAX_LEVEL = 5,
-	BARREL_MAX_LEVEL = 360,
-	BREWERY_MAX_LEVEL = 60,
-	DESALINATOR_MAX_LEVEL = 20,
+	KETTLE_MAX_LEVEL = bucket_max_level*.5,
+	BARREL_MAX_LEVEL = bucket_max_level*36,
+	BREWERY_MAX_LEVEL = bucket_max_level*6,
+	DESALINATOR_MAX_LEVEL = bucket_max_level*2,
 
 	-- Wateryprotection
 	BUCKET_EXTINGUISH_HEAT_PERCENT = -1,
@@ -55,10 +73,9 @@ local tuning =
 	WATER_MAXTEMP = 40,
 	WATER_INITTEMP = 5,
 	WATER_CLEAN_MINTEMP = 0,
-	WATER_DIRTY_INITTEMP = -5,
+	WATER_DIRTY_MINTEMP = -5,
 	
 	-- Moistures and getting wet
-	-- BUCKET_DRINK_WET = 10,
 	WATER_BARREL_WETNESS = 25,
 	WATER_BARREL_EXTINGUISH_HEAT_PERCENT = -1,
 	WATER_BARREL_TEMP_REDUCTION = 5,
@@ -69,8 +86,8 @@ local tuning =
 	WATERLEVEL_PER_SIP = 10,
 
 	-- Basic Thirst Rate
-	WILSON_THIRST = wilson_thirst, --Max Thirst
-	WILSON_HUNGER_RATE = hydration_per_day/total_day_time,
+	WILSON_THIRST = wilson_thirst,
+	WILSON_THIRST_RATE = hydration_per_day/TUNING.TOTAL_DAY_TIME, 
 
 	STALE_FOOD_THIRST = .5,
 	SPOILED_FOOD_THIRST = .25,
@@ -78,24 +95,25 @@ local tuning =
 	WICKERBOTTOM_STALE_FOOD_THIRST = .25,
 	WICKERBOTTOM_SPOILED_FOOD_THIRST = 0,
 
-	-- Hydration
-	HYDRATION_SALT = hydration_per_day-90, -- Saltwater
-	HYDRATION_POISON = hydration_per_day-80, -- Failed Fermentation
-	HYDRATION_ROT = hydration_per_day-85, -- Rotten
-	HYDRATION_NONE = 0, -- Suspicious Hibiscus
-	HYDRATION_TINYMICROSCOPIC = hydration_per_day/24,
-	HYDRATION_SUPERTINY = hydration_per_day/16,
-	HYDRATION_TINY = hydration_per_day/12,
-	HYDRATION_SMALLTINY = hydration_per_day/8, -- Normal Water, Failed Cooking
-	HYDRATION_SMALL = hydration_per_day/6, -- Alcohols and Coffee
-	HYDRATION_MEDSMALL = hydration_per_day/4, -- Mixed Beverage
-	HYDRATION_MED = hydration_per_day/3, -- Tea and Florals
-	HYDRATION_LARGE = hydration_per_day/2, -- Drinks made of specific ingredient(i.e. Banana Juice)
-	HYDRATION_HUGE = hydration_per_day, -- Drinks with Special Effect, Lemon & Lime Soda
-	HYDRATION_SUPERHUGE = hydration_per_day*2, -- Cola
+	-- Hydration(기준값:105)
+	HYDRATION_SALT = -15,   
+	HYDRATION_POISON = -5,
+	HYDRATION_ROT = -10,
+	HYDRATION_NONE = 0,
+	HYDRATION_TINYMICROSCOPIC = hydration_per_day/24, -- 4.375
+	HYDRATION_SUPERTINY = hydration_per_day/16, -- 6.5625
+	HYDRATION_TINY = hydration_per_day/12, -- 8.75
+	HYDRATION_SMALLTINY = hydration_per_day/8, -- 13.125 -- 일반물
+	HYDRATION_SMALL = hydration_per_day/6, -- 17.5
+	HYDRATION_MEDSMALL = hydration_per_day/4, -- 26.25
+	HYDRATION_MED = hydration_per_day/3, -- 35
+	HYDRATION_LARGE = hydration_per_day/2, -- 52.5
+	HYDRATION_HUGE = hydration_per_day, -- 105
+	HYDRATION_MOREHUGE = hydration_per_day*8/7, -- 120
+	HYDRATION_SUPERHUGE = hydration_per_day*2, -- 210
 
 	-- Hunger from Drinks
-	DRINK_CALORIES_POISON = 3,
+	DRINK_CALORIES_POISON = 3, --제 개인적인 생각으로는 술은 칼로리가 높아서 안써도 된다고 생각...
 	DRINK_CALORIES = 5,
 
 	-- Alcohol side-effects
@@ -124,19 +142,31 @@ local tuning =
 	TEA_TREE_REGROWTH_TIME_MULT = 1,
 	CAFFEINBERRY_REGROWTH_TIME_MULT = 1,
 
-	CAFFEIN_TIME = GetModConfigData("caffein_time"),
+	CAFFEIN_TIME = TUNING.TOTAL_DAY_TIME*caffein_time,
 	CAFFEIN_SPEED = GetModConfigData("caffein_speed"),
 	TEASLEEP_TIME = GetModConfigData("sleeping_time"),
-	INTOXICATION_TIME = GetModConfigData("alcohol_time"),
-	IMMUNE_TIME = GetModConfigData("immune_time"),
-	GHOST_TIME = GetModConfigData("ghost_time"),
+	INTOXICATION_TIME = TUNING.TOTAL_DAY_TIME*alcohol_time,
+	MAX_CPACITY = GetModConfigData("max_capacity"),
+	CAPACITY_TIME = TUNING.TOTAL_DAY_TIME*capacity_time,
+	IMMUNE_TIME = TUNING.TOTAL_DAY_TIME*immune_time,
+	GHOST_TIME = TUNING.TOTAL_DAY_TIME*ghost_time,
+	DRUNKARD_DURATION = TUNING.TOTAL_DAY_TIME*drunkard_time,
+	WELL_DRILLING_DURATION = TUNING.SEG_TIME*2.5,
+	WELL_DRILL_USES = 20,
 
 	--well sprinkler
-	SPRINKLER_MAX_FUEL_TIME = total_day_time,
+	SPRINKLER_MAX_FUEL_TIME = TUNING.TOTAL_DAY_TIME,
 	MOISTURE_SPRINKLER_PERCENT_INCREASE_PER_SPRAY = 0.5,
-	SPRINKLER_RANGE = 8,
+	FIND_WATER_RANGE = 20,
+	SPRINKLER_RANGE = 15,
+	SPRINKLER_PLACER_SCALE = 1.55,
+
+	DRUNKARD_SANITY_DELTA = -1,
+	DRUNKARD_TICK_RATE = 2,
+
+	WATER_RECIPCARD_CHANCE = 0.25,
 }
 
-for i,v in pairs(tuning) do
+for i,v in pairs(water_tuning) do
 	TUNING[i] = v
 end

@@ -1,9 +1,9 @@
-local function GetThirstFromHungerValue(self)
+--[[local function GetThirstFromHungerValue(self)
 	local mult = (self.inst:HasTag("preparedfood") and 0.25) or 1
 	local thirstvalue = RoundBiasedUp(self.hungervalue * 2 ^ (math.abs(self.hungervalue / 300) - 1), 4) * mult
 	print("Thirstvalue: "..tostring(thirstvalue))
     return thirstvalue
-end
+end]]
 
 AddComponentPostInit("edible", function(self)
     self.stale_thirst = TUNING.STALE_FOOD_THIRST
@@ -14,9 +14,14 @@ AddComponentPostInit("edible", function(self)
     --AFS: If thirstvalue is not assigned, it will be automatically calculated.
 
     function self:GetThirstFromHungerValue()
-		local mult = (self.inst:HasTag("preparedfood") and 0.25) or 1
-		local thirstvalue = RoundBiasedUp(self.hungervalue * 2 ^ (math.abs(self.hungervalue / 300) - 1), 4) * mult
-		--print("Thirstvalue: "..tostring(thirstvalue))
+        local mult = (self.inst:HasTag("preparedfood") and 0.25) or 0.125
+		local thirstvalue = (self.inst:HasTag("fruit") and self.hungervalue * 0.75) or
+             (self.inst:HasTag("veggie") and self.hungervalue * 0.5) or
+             (RoundBiasedUp(self.hungervalue * 2 ^ (math.abs(self.hungervalue / 300) - 1), 4) * mult)
+       --[[print("eat fruit: "..tostring(self.inst:HasTag("fruit")))
+        print("eat veggie: "..tostring(self.inst:HasTag("veggie")))
+        print("eat preparedfood: "..tostring(self.inst:HasTag("preparedfood")))
+		print("Thirstvalue: "..tostring(thirstvalue))]]
 	    return thirstvalue
 	end
 
@@ -33,12 +38,12 @@ AddComponentPostInit("edible", function(self)
             end
         end
 
-        if eater ~= nil and eater.components.foodaffinity ~= nil then
+        --[[if eater ~= nil and eater.components.foodaffinity ~= nil then
             local affinity_bonus = eater.components.foodaffinity:GetAffinity(self.inst)
             if affinity_bonus ~= nil then
                 multiplier = multiplier * affinity_bonus
             end
-        end
+        end]]
 
         return multiplier * thirst
     end

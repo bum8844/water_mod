@@ -1,3 +1,5 @@
+local StateGraph = _G.StateGraph
+
 require("stategraphs/commonstates")
 
 local actionhandlers = {}
@@ -23,7 +25,6 @@ local states =
         tags = {"idle"},
 
         onenter = function(inst)
-            inst.SoundEmitter:PlaySound("dontstarve_DLC003/common/crafted/sprinkler/on")
             inst.AnimState:PlayAnimation("turn_on")
         end,
 
@@ -39,7 +40,7 @@ local states =
         tags = {"idle"},
 
         onenter = function(inst)
-            inst.SoundEmitter:PlaySound("dontstarve_DLC003/common/crafted/sprinkler/off")
+            inst.SoundEmitter:PlaySound("dontstarve_DLC001/common/firesupressor_off")
             inst.AnimState:PlayAnimation("turn_off")
         end,
 
@@ -55,10 +56,10 @@ local states =
         tags = {"idle"},
 
         onenter = function(inst)
-            --Start some loop sound
             if not inst.SoundEmitter:PlayingSound("firesuppressor_idle") then
-                inst.SoundEmitter:PlaySound("dontstarve_DLC003/common/crafted/sprinkler/working", "firesuppressor_idle")
+                inst.SoundEmitter:PlaySound("dangerous_sea/common/water_pump/LP", "firesuppressor_idle")
             end
+            inst.SoundEmitter:PlaySound("farming/common/watering_can/use")
             inst.AnimState:PlayAnimation("launch")
         end,
 
