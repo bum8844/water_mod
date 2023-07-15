@@ -10,7 +10,7 @@ return {
 
 	ANNOUNCE_DRUNK = "히끅... 나 취한 것 같아.",
 	ANNOUNCE_DRUNK_END = "으, 좀 괜찮아진 것 같네.",
-	ANNOUNCE_DRUNK_IMMUNITY = "only_used_by_wathgrithr",
+	ANNOUNCE_DRUNK_IMMUNITY = "크하하! 한 잔 더!",
 	ANNOUNCE_NOTCHARGE = "아직 젖이 나올 상태가 아니야.",
 	ANNOUNCE_NOTHIRSTSLEEP = "목이 너무 말라서 자다가 육포가 되겠어!",
 	ANNOUNCE_NOTHIRSTSIESTA = "낮잠을 자기엔 너무 목말라!",
