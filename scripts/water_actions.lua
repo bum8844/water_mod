@@ -85,7 +85,6 @@ local TAKEWATER = AddAction("TAKEWATER", STRINGS.ACTIONS.FILL, function(act)
     elseif source ~= nil
         and source.components.water ~= nil
         and filled.prefab == source.components.water.returnprefab then
-
         return false
     end
 
@@ -104,10 +103,9 @@ local TAKEWATER = AddAction("TAKEWATER", STRINGS.ACTIONS.FILL, function(act)
         end
     end
 
-    --[[if filled ~= nil and filled:HasTag("watertaker") and filled.components.watertaker ~= nil then
+    if filled ~= nil and filled:HasTag("watertaker") and filled.components.watertaker ~= nil then
         return filled.components.watertaker:Fill(source, act.doer)
-    end]]
-
+    end
     return false
 end)
 TAKEWATER.priority = 2
