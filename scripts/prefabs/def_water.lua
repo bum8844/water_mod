@@ -200,7 +200,7 @@ local function MakeCup(name, masterfn, tags)
             inst.components.temperature.maxtemp = TUNING.WATER_MAXTEMP
             inst.components.temperature.current = TUNING.WATER_INITTEMP
 
-            inst:DoPeriodicTask(1, function()
+            inst:DoPeriodicTask(5, function()
                 if inst:HasTag("clean") and inst.components.temperature.current <= TUNING.WATER_CLEAN_MINTEMP then
                     FreezeWater(inst)
                 elseif inst:HasTag("dirty") and inst.components.temperature.current == TUNING.WATER_DIRTY_MINTEMP then
