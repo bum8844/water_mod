@@ -1,5 +1,5 @@
 name 						= "Don't Starve: Dehydrated"
-version 					= "Alpha 1.0.2"
+version 					= "Alpha 1.0.3"
 
 description = (
 	"The test build of DSD"
