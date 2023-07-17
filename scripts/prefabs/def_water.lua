@@ -130,11 +130,11 @@ local function MakeCup(name, masterfn, tags)
     local function OnUnwrapped(inst, pos, doer)
         local ice = { name = "ice", perishable = inst.components.perishable:GetPercent(), stacksize = TUNING.STACK_SIZE_SMALLITEM  }
         local wetgoop = { name = "wetgoop", perishable = inst.components.perishable:GetPercent(), stacksize = TUNING.STACK_SIZE_SMALLITEM  }
-        local num = (inst.components.stackable:StackSize()*TUNING.BUCKET_LEVEL_PER_USE)
-        local goopnum = math.floor(num/(TUNING.BUCKET_LEVEL_PER_USE*2))
-        MakeItem(inst, pos, ice, num, doer)
-        if inst:HasTag("dirty") and goopnum > 0 then
-            MakeItem(inst, pos, wetgoop, goopnum, doer)
+        local num = inst.components.stackable:StackSize()
+        if inst:HasTag("dirty") then
+            MakeItem(inst, pos, wetgoop, num, doer)
+        else
+            MakeItem(inst, pos, ice, num, doer)
         end
         inst:Remove()
     end
