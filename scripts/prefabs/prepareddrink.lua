@@ -84,6 +84,7 @@ local function MakePreparedDrink(data)
         inst.AnimState:OverrideSymbol("swap", data.overridebuild or "kettle_drink", data.basename or data.name)
 
         inst:AddTag("drink")
+        inst:AddTag("preparedfood")
 
         if data.name == "spoiled_drink" then
             inst:AddTag("spoiled_drink")
