@@ -9,19 +9,20 @@ local function HiddenPipes(inst)
     end
 end
 
-local function OnWaterInit(inst)
-	inst.watertask = nil
-    inst:WatchWorldState("snowlevel", OnSnowLevel)
-    OnSnowLevel(inst, GLOBAL.TheWorld.state.snowlevel)
-    HiddenPipes(inst)
-end
-
 local function OnSnowLevel(inst, snowlevel)
     if snowlevel > .02 then
 		inst.components.water.available = false
     else
         inst.components.water.available = true
     end
+end
+
+
+local function OnWaterInit(inst)
+	inst.watertask = nil
+    inst:WatchWorldState("snowlevel", OnSnowLevel)
+    OnSnowLevel(inst, GLOBAL.TheWorld.state.snowlevel)
+    HiddenPipes(inst)
 end
 
 local function TestWater(inst)
