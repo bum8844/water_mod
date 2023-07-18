@@ -1,5 +1,5 @@
 name 						= "Don't Starve: Dehydrated"
-version 					= "Alpha 1.0.4"
+version 					= "Alpha 1.0.5"
 
 description = (
 	"The test build of DSD"
@@ -290,4 +290,14 @@ configuration_options =
 		},
 		default = .25
 	},
+	{
+		name = "blocking_assassination",
+		label = "Can Feed Another Player?",
+		options = 
+		{
+			{description = "yes" , data = 0},
+			{description = "no" , data = -1}
+		},
+		default = -1
+	}
 }
