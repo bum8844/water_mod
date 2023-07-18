@@ -150,6 +150,7 @@ water_tuning =
 	CAPACITY_TIME = TUNING.TOTAL_DAY_TIME*capacity_time,
 	IMMUNE_TIME = TUNING.TOTAL_DAY_TIME*immune_time,
 	GHOST_TIME = TUNING.TOTAL_DAY_TIME*ghost_time,
+	ANTI_GHOST = GetModConfigData("blocking_assassination"),
 	DRUNKARD_DURATION = TUNING.TOTAL_DAY_TIME*drunkard_time,
 	WELL_DRILLING_DURATION = TUNING.SEG_TIME*2.5,
 	WELL_DRILL_USES = 20,
