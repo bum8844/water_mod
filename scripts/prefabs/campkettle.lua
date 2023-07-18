@@ -1,6 +1,7 @@
 local assets =
 {
     Asset("ANIM", "anim/campkettle.zip"),
+    Asset("ANIM", "anim/campkettle_item.zip"),
     Asset("ANIM", "anim/campkettle_meter_water.zip"),
     Asset("ANIM", "anim/campkettle_meter_dirty.zip"),
     Asset("IMAGE", "images/tea_inventoryitem.tex"),
@@ -215,8 +216,8 @@ local function fn_item()
 
     MakeInventoryPhysics(inst)  
 
-    inst.AnimState:SetBuild("campkettle")
-    inst.AnimState:SetBank("item")
+    inst.AnimState:SetBuild("campkettle_item")
+    inst.AnimState:SetBank("campkettle_item")
     inst.AnimState:PlayAnimation("idle")
 
     inst.entity:SetPristine()
