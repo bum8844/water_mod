@@ -41,7 +41,7 @@ local postinits =
 
 	utils =
 	{
-		"childplayer",
+		"playersetting",
 		"thirstvalue",
 		"watertypes",
 	},

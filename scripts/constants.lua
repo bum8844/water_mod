@@ -377,7 +377,9 @@ FOODTYPEGROUP =
 		{
 			"bananajuice",
 			"sweettea",
+			"vegstinger",
 			--mod_foods
+			"spicyvegstinger",
 			"dish_chilledrosejuice",
 			"pina_colada",
 			"limonade",
@@ -403,12 +405,12 @@ FOODTYPEGROUP =
 			"mfp_strawberrylatte",
 		},
 
-		LARGE = 
-		{
+		MED = {
 			"gazpacho",
-			"vegstinger",
-			--mod_foods
-			"spicyvegstinger",
+		},
+
+		LARGE = 
+		{	
 			--hop
 			"juice_aloe",
 			"juice_asparagus",

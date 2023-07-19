@@ -1,3 +1,14 @@
+local function Get_Waterborne_Disease(inst, eater)
+    if TUNING.ANTI_WATERBORNE then
+        if eater:HasTag("waterborne_immune") then
+            --eater.components.talker:Say(GetString(eater,"ANNOUNCE_WATERBORNE_IMMUNITY"))
+            eater.components.health:DoDelta(-TUNING.HEALING_TINY)
+        else
+            eater:AddDebuff("waterbornedebuff", "waterbornedebuff")
+        end
+    end
+end
+
 local function OnTake(inst, taker, delta)
     local stacksize = math.clamp(math.floor(delta/TUNING.CUP_MAX_LEVEL), 1, inst.components.stackable:StackSize())
 
@@ -268,6 +279,7 @@ local function dirtywater(inst)
     inst.components.edible.hungervalue = 0
     inst.components.edible.sanityvalue = -TUNING.SANITY_MED
     inst.components.edible.thirstvalue = TUNING.HYDRATION_SUPERTINY
+    inst.components.edible.inst.components.edible:SetOnEatenFn(Get_Waterborne_Disease)
 
     inst.components.water:SetWaterType(WATERTYPE.DIRTY)
 

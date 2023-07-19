@@ -588,11 +588,78 @@ local function fn_drunkard()
     inst.components.debuff.keepondespawn = true
 
     inst:AddComponent("timer")
-    inst.components.timer:StartTimer("drunkard", TUNING.SWEETTEA_DURATION)
+    inst.components.timer:StartTimer("drunkard", TUNING.DRUNKARD_DURATION)
     inst:ListenForEvent("timerdone", OnTimerDone_drunkard)
 
     return inst
 end
+
+local function OnTick_waterborne(inst, target)
+    if target.components.health ~= nil
+        and not target.components.health:IsDead()
+        and target.components.sanity ~= nil
+        and not target:HasTag("playerghost") then
+        local healthabsorption = (target.components.eater ~= nil and target.components.eater.healthabsorption)
+                or 1.0
+        local delta = 1 * healthabsorption
+        target.components.health:DoDelta(-delta, nil, inst.prefab)
+    else
+        inst.components.debuff:Stop()
+    end
+end
+
+local function OnAttached_waterborne(inst, target)
+    inst.entity:SetParent(target.entity)
+    inst.Transform:SetPosition(0, 0, 0) --in case of loading
+    inst.task = inst:DoPeriodicTask(TUNING.WATERBORNE_TICK_RATE, OnTick_waterborne, nil, target)
+    inst:ListenForEvent("death", function()
+        inst.components.debuff:Stop()
+    end, target)
+end
+
+local function OnTimerDone_waterborne(inst, data)
+    if data.name == "waterborne" then
+        inst.components.debuff:Stop()
+    end
+end
+
+local function OnExtended_waterborne(inst, target)
+    inst.components.timer:StopTimer("waterborne")
+    inst.components.timer:StartTimer("waterborne", TUNING.WATERBORNE_DURATION)
+    inst.task:Cancel()
+    inst.task = inst:DoPeriodicTask(TUNING.WATERBORNE_TICK_RATE, OnTick_waterborne, nil, target)
+end
+
+local function fn_waterborne()
+    local inst = CreateEntity()
+
+    if not TheWorld.ismastersim then
+        --Not meant for client!
+        inst:DoTaskInTime(0, inst.Remove)
+
+        return inst
+    end
+
+    inst.entity:AddTransform()
+
+    inst.entity:Hide()
+    inst.persists = false
+
+    inst:AddTag("CLASSIFIED")
+
+    inst:AddComponent("debuff")
+    inst.components.debuff:SetAttachedFn(OnAttached_waterborne)
+    inst.components.debuff:SetDetachedFn(inst.Remove)
+    inst.components.debuff:SetExtendedFn(OnExtended_waterborne)
+    inst.components.debuff.keepondespawn = true
+
+    inst:AddComponent("timer")
+    inst.components.timer:StartTimer("waterborne", TUNING.WATERBORNE_DURATION)
+    inst:ListenForEvent("timerdone", OnTimerDone_waterborne)
+
+    return inst
+end
+
 
 return Prefab("caffeinbuff", fn_caffein),
 Prefab("alcoholdebuff", fn_alcohol),
@@ -601,4 +668,5 @@ Prefab("obebuff",fn_obe),
 Prefab("detoxbuff",fn_detoxbuff),
 Prefab("sleepdrinkbuff",fn_sleepdrink),
 Prefab("thirstregenbuff", fn_thirstregen),
-Prefab("drunkarddebuff",fn_drunkard)
+Prefab("drunkarddebuff",fn_drunkard),
+Prefab("waterbornedebuff",fn_waterborne)
