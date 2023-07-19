@@ -22,6 +22,7 @@ local postinits =
 		"portablespicer",
 		"staff",
 		"warly",
+		"woodie",
 		"wurt",
 		"tumbleweed",
 		"mound",
