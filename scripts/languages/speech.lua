@@ -1,14 +1,7 @@
 --the translation function is in progress
 LOC = require("languages/loc")
 
-local locales =
-{
-	en = "en",
-	ko = "ko",
-	--zh = "zh",
-}
-
-local locale = GetModConfigData("locale") or locales[LOC.GetLocaleCode()] or "en"
+local locale = GetModConfigData("locale") or LOC.GetLocaleCode()
 --[[if type(locale)~="table" then
 	print(locale)
 else
