@@ -17,7 +17,7 @@ table.insert(TUNING.GAMEMODE_STARTING_ITEMS.DEFAULT.WARLY,"portablekettle_item")
 water_tuning =
 {
 	TYPES_CLEAN = {
-		--noting
+		"cherry_pond",
 	},
 
 	TYPES_SALTY = {

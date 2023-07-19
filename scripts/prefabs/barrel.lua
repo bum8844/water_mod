@@ -68,6 +68,7 @@ local function onload(inst, data)
 end
 
 local function OnTakeWater(inst)
+	print(inst.components.waterstorage.waterperish)
 	inst.AnimState:PlayAnimation("take_water")
 	inst.AnimState:PushAnimation("idle")
 	inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/medium")
@@ -135,6 +136,8 @@ local function fn()
     inst.components.workable:SetWorkLeft(4)
 	inst.components.workable:SetOnFinishCallback(onhammered)
 	inst.components.workable:SetOnWorkCallback(onhit)
+
+	inst:AddComponent("waterstorage")
 	
 	inst:AddComponent("waterlevel")
 	inst.components.waterlevel:SetTakeWaterFn(OnTakeWater)
