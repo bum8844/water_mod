@@ -288,6 +288,8 @@ FOODTYPEGROUP =
 			"firenettles",
 			"tillweed",
 			"forgetmelots",
+			"lightbulb",
+			"succulent_picked",
 			--mod_ingredients
 			"petals_rose",
 			"petals_lily",
@@ -295,13 +297,7 @@ FOODTYPEGROUP =
 			--hop
 			"kyno_foliage",
 			"kyno_sugartree_petals",
-		},
-
-		SUPERTINY = 
-		{
-			"lightbulb",
-			"succulent_picked",
-		},
+		}
 	},
 
 	INGREDIENT_DRINKABLE = 
