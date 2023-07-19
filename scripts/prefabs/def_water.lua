@@ -19,6 +19,14 @@ local function OnTake(inst, taker, delta)
     end
 end
 
+local function Change_Dirty_Item(inst) 
+    local item = ReplacePrefab(inst, "water_dirty")
+    if inst.components.stackable ~= nil and inst.components.stackable:IsStack() then
+        item.components.stackable:SetStackSize(inst.components.stackable:StackSize())
+    end
+    return item
+end
+
 local function Change_Normal_Item(inst) 
     local item = ReplacePrefab(inst, inst:HasTag("clean") and "water_clean" or "water_dirty")
     if inst.components.stackable ~= nil and inst.components.stackable:IsStack() then
@@ -59,19 +67,28 @@ local function onperish(inst)
     local owner = inst.components.inventoryitem ~= nil and inst.components.inventoryitem:GetGrandOwner() or nil
     local container = owner ~= nil and (owner.components.inventory or owner.components.container) or nil
 
-    if container ~= nil then
-        local result = Change_Normal_Item(inst)
-        container:GiveItem(result)
-    else
-        local water = inst:HasTag("dirty") and "_dirty" or ""
-        if inst.components.stackable:StackSize() >= 5 then
-            inst.AnimState:SetBuild("kettle_drink_bottle")
-        end
-        inst.AnimState:PlayAnimation("turn_to_full"..water)
-        inst:DoTaskInTime(1,function()
-            local result = Change_Normal_Item(inst)
+    if inst:HasTag("def") then
+        local result = Change_Dirty_Item(inst)
+        if container ~= nil then
+            container:GiveItem(result)
+        else
             result.Transform:SetPosition(inst.Transform:GetWorldPosition())
-        end)
+        end
+    else
+        if container ~= nil then
+            local result = Change_Normal_Item(inst)
+            container:GiveItem(result)
+        else
+            local water = inst:HasTag("dirty") and "_dirty" or ""
+            if inst.components.stackable:StackSize() >= 5 then
+                inst.AnimState:SetBuild("kettle_drink_bottle")
+            end
+            inst.AnimState:PlayAnimation("turn_to_full"..water)
+            inst:DoTaskInTime(1,function()
+                local result = Change_Normal_Item(inst)
+                result.Transform:SetPosition(inst.Transform:GetWorldPosition())
+            end)
+        end
     end
 end
 
@@ -187,22 +204,27 @@ local function MakeCup(name, masterfn, tags)
         if not inst:HasTag("frozen") then
             inst:AddComponent("edible")
             inst.components.edible.foodtype = FOODTYPE.GOODIES
-        else
+        end
+
+        if inst:HasTag("frozen") or inst:HasTag("def") then
             inst.displayadjectivefn = displayadjectivefn
             inst:AddTag("show_spoilage")
 
-            inst:AddComponent("smotherer")
-
-            inst:ListenForEvent("firemelt", onfiremelt)
-            inst:ListenForEvent("stopfiremelt", onstopfiremelt)
-
             inst:AddComponent("perishable")
-            inst.components.perishable:SetPerishTime(TUNING.PERISH_SUPERFAST)
             inst.components.perishable:StartPerishing()
             inst.components.perishable:SetOnPerishFn(onperish)
 
-            inst:AddComponent("unwrappable")
-            inst.components.unwrappable:SetOnUnwrappedFn(OnUnwrapped)
+            if not inst:HasTag("def") then
+                inst.components.perishable:SetPerishTime(TUNING.PERISH_SUPERFAST)
+
+                inst:ListenForEvent("firemelt", onfiremelt)
+                inst:ListenForEvent("stopfiremelt", onstopfiremelt)
+
+                inst:AddComponent("unwrappable")
+                inst.components.unwrappable:SetOnUnwrappedFn(OnUnwrapped)
+            else
+                inst.components.perishable:SetPerishTime(TUNING.PERISH_FAST)
+            end
         end
 
         if not inst:HasTag("frozen") and not inst:HasTag("salty") then
@@ -219,6 +241,8 @@ local function MakeCup(name, masterfn, tags)
                 end
             end)
         end
+
+        inst:AddComponent("smotherer")
 
         inst:AddComponent("inspectable")
 
@@ -268,6 +292,7 @@ local function cleanwater(inst)
     inst.components.edible.hungervalue = 0
     inst.components.edible.sanityvalue = 0
     inst.components.edible.thirstvalue = TUNING.HYDRATION_SMALLTINY
+    inst.components.edible.degrades_with_spoilage = false
 
     inst.components.water:SetWaterType(WATERTYPE.CLEAN)
 
@@ -303,7 +328,7 @@ local function dirtywater_ice(inst)
     inst.components.water:SetWaterType(WATERTYPE.DIRTY_ICE)
 end
 
-return MakeCup("water_clean", cleanwater, {"icebox_valid","clean","farm_water","pre-prepareddrink","potion"}),
+return MakeCup("water_clean", cleanwater, {"icebox_valid","clean","farm_water","pre-prepareddrink","potion","def"}),
     MakeCup("water_dirty", dirtywater, {"icebox_valid","dirty","farm_water"}),
     MakeCup("water_clean_ice", cleanwater_ice,{"icebox_valid","clean","frozen","unwrappable"}),
     MakeCup("water_dirty_ice", dirtywater_ice,{"icebox_valid","dirty","frozen","unwrappable"}),

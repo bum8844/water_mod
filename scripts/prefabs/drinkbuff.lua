@@ -1,6 +1,7 @@
 local function Dodetox(inst, target)
     target.components.debuffable:RemoveDebuff("alcoholdebuff")
     target.components.debuffable:RemoveDebuff("drunkarddebuff")
+    target.components.debuffable:RemoveDebuff("waterbornedebuff")
     if KnownModIndex:IsModEnabled("workshop-2334209327") or KnownModIndex:IsModForceEnabled("workshop-2334209327") then
         target.components.debuffable:RemoveDebuff("kyno_strengthbuff")
         target.components.debuffable:RemoveDebuff("kyno_strengthbuff_med")

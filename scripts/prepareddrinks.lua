@@ -2,6 +2,7 @@ require("kettle_recpie_cards")
 
 local function sleepfunction(inst, eater)
 	eater.components.debuffable:RemoveDebuff("alcoholdebuff")
+	eater.components.debuffable:RemoveDebuff("waterbornedebuff")
 	if KnownModIndex:IsModEnabled("workshop-2334209327") or KnownModIndex:IsModForceEnabled("workshop-2334209327") then
 		eater.components.debuffable:RemoveDebuff("kyno_strengthbuff")
 		eater.components.debuffable:RemoveDebuff("kyno_strengthbuff_med")
@@ -540,7 +541,7 @@ local drinks =
 		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_COLD_FOOD,
 	},
 	
-	-- 동굴 고사리
+	-- 동굴 고사리(수인성 질병 해결)
 	fuer =
 	{
 		test = function(boilier, names, tags) return IsFoliage(names, tags) and notmeat(tags) and notname(names) and ressthing(names) end,
@@ -553,6 +554,9 @@ local drinks =
 		cooktime = TUNING.KETTLE_TEA,
 		potlevel = "mid",
 		potlevel_bottle = "mid",
+		oneatenfn = function(inst, eater)
+				eater.components.debuffable:RemoveDebuff("waterbornedebuff")
+		end,
 	},
 	
 	-- 일반 꽃잎
