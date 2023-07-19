@@ -18,6 +18,8 @@ AddPrefabPostInit("wortox",function(inst)
 	end
 	if inst.components.souleater ~= nil then
 		inst.components.souleater._oneatsoulfn = inst.components.souleater.oneatsoulfn
-		inst.components.souleater:SetOnEatSoulFn(OnEatSoul)
+		inst:DoTaskInTime(0, function()	
+			inst.components.souleater:SetOnEatSoulFn(OnEatSoul)
+		end)
 	end
 end)
