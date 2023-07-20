@@ -225,9 +225,6 @@ local function fn()
 
     inst:ListenForEvent("fullwater",ChangBucketState)
 
-    inst.OnSave = onsave
-    inst.OnLoad = onload
-
     return inst
 end
 
