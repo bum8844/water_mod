@@ -35,6 +35,9 @@ function Water_BurntStructureFn(inst)
     if inst.components.water ~= nil then
         inst:RemoveComponent("water")
     end
+    if inst.components.waterstorage ~= nil then
+        inst:RemoveComponent("waterstorage")
+    end
 end
 
 --Useful if you packed your images into one single atlas file by Atlas Image Packer

@@ -165,7 +165,7 @@ local function IsFlower_Cactus(names, tags)
 end
 
 local function IsFlower_Lotus(names, tags)
-	return ( names.lotus_flower or names.kyno_lotus_flower or names.succulent_picked or tags.lotus ) and 
+	return ( names.lotus_flower or names.kyno_lotus_flower or names.succulent_picked or tags.lotus or names.oceanfish_small_7 ) and 
 	Preference(names, tags) and
 	Tea_Def(names, tags) and not 
 	( 
@@ -329,7 +329,7 @@ local drinks =
 		potlevel_bottle = "mid",
 		prefabs = { "wormlight_light_greater" },
 		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_GLOW,
-		card_def = {ingredients={{"wormlight_lesser",3},{"twigs",1}}},
+		card_def = {ingredients={{"wormlight_lesser",3},{"honey",1}}},
 		oneatenfn = function(inst, eater)
            	if eater.wormlight ~= nil then
 	            if eater.wormlight.prefab == "wormlight_light_greater" then

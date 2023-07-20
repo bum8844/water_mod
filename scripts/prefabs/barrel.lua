@@ -68,7 +68,10 @@ local function onload(inst, data)
 end
 
 local function OnTakeWater(inst)
-	print(inst.components.waterstorage.waterperish)
+	local waterperish = inst.components.waterstorage:GetWaterPerish()
+	if waterperish < TUNING.PERISH_FAST then
+		inst.components.waterstorage:StartReFreshinging()
+	end
 	inst.AnimState:PlayAnimation("take_water")
 	inst.AnimState:PushAnimation("idle")
 	inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/medium")
@@ -76,7 +79,11 @@ local function OnTakeWater(inst)
 end
 
 local function OnTaken(inst, taker, water_amount)
+	local waterperish = inst.components.waterstorage:GetWaterPerish()
 	inst.components.waterlevel:DoDelta(-water_amount)
+	if inst.components.waterlevel:GetWater() == 0 or waterperish == TUNING.PERISH_FAST then
+		inst.components.waterstorage:StopReFreshinging()
+	end
 	inst.AnimState:PlayAnimation("get_water")
 	inst.AnimState:PushAnimation("idle")
 	inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/medium")

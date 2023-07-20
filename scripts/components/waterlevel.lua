@@ -230,7 +230,7 @@ function Waterlevel:TakeWaterItem(item, doer)
     self:DoDiistiller(item, doer)
 
     if self.inst.components.waterstorage then
-        self.inst.components.waterstorage:GetWaterPerish(item.components.perishable.perishremainingtime)
+        self.inst.components.waterstorage:SetWaterPerish(item.components.perishable.perishremainingtime)
     end
 
     local delta = self.currentwater - self.oldcurrenwater

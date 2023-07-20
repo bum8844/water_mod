@@ -11,6 +11,8 @@ function Watertaker:Fill(source, doer, watertype)
 	
 	local watertype = source ~= nil and source.components.water:GetWatertype() or watertype or WATERTYPE.SALTY
 	local wateramount = source ~= nil and source.components.water:GetWater() or self.capacity
+	local waterperish = source ~= nil and source.components.waterstorage ~= nil and source.components.waterstorage:GetWaterPerish() or nil
+
 	if self.inst.components.finiteuses ~= nil then
     	if self.inst.components.finiteuses:GetUses() < wateramount then
         	wateramount = self.inst.components.finiteuses:GetUses()
@@ -19,6 +21,12 @@ function Watertaker:Fill(source, doer, watertype)
 	if watertype ~= nil and wateramount > 0 then
 		local item = SpawnPrefab(watertype)
 		if item ~= nil then
+			if waterperish then
+				item.components.perishable.perishremainingtime = waterperish
+				if source.components.waterlevel:IsEmpty() then
+					source.components.waterstorage:ResetWaterPerish()
+				end
+			end
 			local stacksize = math.min(self.capacity, wateramount)
 			self._laststack = stacksize
 
