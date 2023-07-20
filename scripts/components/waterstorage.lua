@@ -12,8 +12,9 @@ function WaterStorage:SetWaterPerish(num)
         self.waterperish = math.ceil(num)
     else
         local old_val = self.waterperish
-        local min_val = math.min(math.ceil(num), old_val)
-        local max_val = math.max(math.ceil(num), old_val)
+        local new_val = math.ceil(num)
+        local min_val = math.min(new_val, old_val)
+        local max_val = math.max(new_val, old_val)
         self.waterperish = math.ceil((2/(max_val - min_val)) + min_val)
     end
 end
