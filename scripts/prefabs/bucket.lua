@@ -10,6 +10,10 @@ local function GetWater(inst, watertype, doer)
     local current_fin = old_val
     local peruse = TUNING.BUCKET_LEVEL_PER_USE
     local sound = "dontstarve/creatures/pengull/splash"
+
+    if inst.components.wateringtool:IsFrozen() then
+        sound = "dontstarve/common/bush_fertilize"
+    end
     
     if current_fin > peruse then
         current_fin = peruse
@@ -24,19 +28,14 @@ local function GetWater(inst, watertype, doer)
         LaunchAt(water, doer, nil, 1, 1)
     end
 
-    if inst._IsFrozen then
-        sound = "dontstarve/common/bush_fertilize"
-    end
     doer.SoundEmitter:PlaySound(sound)
-
-    inst:RemoveComponent("perishable")
-
-    inst._IsFrozen = false
-    inst._IsDirty = false
-    inst._IsFull = false
 
     if old_val > peruse then
         inst.components.finiteuses:Use(peruse)
+        inst.components.wateringtool:SetFrozen(false)
+        inst.components.wateringtool:SetDirty(false)
+        inst.components.wateringtool:SetFull(false)
+        inst.components.wateringtool:StopLostRaindrop()
     else
         inst:Remove()
     end
@@ -44,10 +43,10 @@ end
 local function OnPickup(inst, doer)
     if doer then
         local ice = ""
-        if inst._IsFrozen then
+        if inst.components.wateringtool:IsFrozen() then
             ice = "_ice"
         end
-        if inst._IsDirty then
+        if inst.components.wateringtool:IsDirty() then
             GetWater(inst, "water_dirty"..ice, doer)
         else
             GetWater(inst, "water_clean"..ice, doer)
@@ -73,6 +72,37 @@ local function OnTakeWater(inst, source, doer)
     end
 end
 
+local function MeltWater(inst)
+    inst.components.wateringtool:SetFrozen(false)
+    inst.AnimState:PlayAnimation("turn_to_full")
+    inst:DoTaskInTime(1,function(inst)
+        ChangBucketState(inst)
+    end)
+end
+
+local function FreezeWater(inst)
+    inst.frozentask = nil
+    inst.components.wateringtool:SetFrozen(true)
+    inst.AnimState:PlayAnimation("turn_to_ice")
+    inst:DoTaskInTime(1,function(inst)
+        ChangBucketState(inst)
+    end)
+end
+
+local function SpoilWater(inst)
+    inst.components.wateringtool:SetDirty(true)
+    inst:DoTaskInTime(1,function(inst)
+        ChangBucketState(inst)
+    end)
+end
+
+local function DriesWater(inst)
+    inst.AnimState:PlayAnimation("empty")
+    inst.components.wateringtool:SetDirty(false)
+    inst.components.wateringtool:SetFull(false)
+    inst.components.wateringtool:StopLostRaindrop()
+end
+
 local function onfiremelt(inst)
     inst.components.perishable.frozenfiremult = true
 end
@@ -82,67 +112,44 @@ local function onstopfiremelt(inst)
 end
 
 local function ChangBucketState(inst)
-    if inst.frozentask ~= nil then
-        inst.frozentask:Cancel()
-        inst.frozentask = nil
-        inst._IsFrozen = true
-    end
-    inst.rainfilling = 0
-    local state = "full"
-    local max_temp = TUNING.WATER_CLEAN_MINTEMP
-
+    local waterstate = "full"
     inst:AddComponent("perishable")
-    inst.components.perishable:SetPerishTime(TUNING.PERISH_FAST)
-    inst.components.perishable:SetOnPerishFn(ChangBucketState)
+    if not inst.components.wateringtool:IsFrozen() then
+        local maxtemp = TUNING.TUNING.WATER_CLEAN_MINTEMP
 
-    if not inst._IsFrozen then
+        inst.components.perishable:SetPerishTime(TUNING.PERISH_FAST)
+        inst.components.perishable:SetOnPerishFn(SpoilWater)
+        
+        if inst.components.wateringtool:IsDirty() then
+            maxtemp = TUNING.WATER_DIRTY_MINTEMP
+            waterstate = "dirty"
+            inst.components.perishable:SetOnPerishFn(DriesWater)
+        end
+
         inst:AddComponent("temperature")
         inst.components.temperature.mintemp = TUNING.WATER_MINTEMP
         inst.components.temperature.maxtemp = TUNING.WATER_MAXTEMP
         inst.components.temperature.current = TUNING.WATER_INITTEMP
+
+        if inst.frozentask ~= nil then
+            inst.frozentask:Cancel()
+            inst.frozentask = nil
+        end
+
+        inst.frozentask = inst:DoPeriodicTask(1, function(inst)
+            if inst.components.temperature.current <= maxtemp then
+                FreezeWater(inst)
+            end
+        end)
+        inst.SoundEmitter:PlaySound("dontstarve/creatures/pengull/splash")
     else
+        waterstate = "ice"
         inst.components.perishable:SetPerishTime(TUNING.PERISH_SUPERFAST)
 
         inst:ListenForEvent("firemelt", onfiremelt)
         inst:ListenForEvent("stopfiremelt", onstopfiremelt)
     end
-
-    inst.components.perishable:StartPerishing()
-
-    if not inst._IsFull then
-        inst._IsFull = true
-    elseif not inst._IsDirty then
-        inst._IsDirty = true
-        state = "dirty"
-        max_temp = TUNING.WATER_DIRTY_MINTEMP
-    elseif inst._IsFrozen then
-        inst.AnimState:PushAnimation("turn_to_ice")
-        state = "ice"
-    elseif not TheWorld.state.israining then
-        OnPickup(inst, nil)
-    end
-    inst.AnimState:PlayAnimation(state)
-
-    inst.frozentask = inst:DoPeriodicTask(1, function()
-        if not inst._IsFrozen and inst.components.temperature.current <= max_temp then
-            ChangBucketState(inst)
-        end
-    end)
-
-    inst.SoundEmitter:PlaySound("dontstarve/creatures/pengull/splash")
-end
-
-local function WeatherCheck(inst)
-    local rainfilling = inst.rainfilling
-    local owner = inst.components.inventoryitem.owner
-    if TheWorld.state.israining and owner == nil then
-        inst.rainfilling = inst.rainfilling + TUNING.RAIN_GIVE_WATER
-    elseif not TheWorld.state.israining and inst.rainfilling > 0 then
-        inst.rainfilling = inst.rainfilling - TUNING.LOST_WATER
-    end
-    if rainfilling >= TUNING.BUCKET_LEVEL_PER_USE then
-        ChangBucketState(inst)
-    end
+    inst.AnimState:PlayAnimation(waterstate)
 end
 
 local function onremovewater(inst, doer)
@@ -150,37 +157,13 @@ local function onremovewater(inst, doer)
         inst.SoundEmitter:PlaySound("dontstarve/creatures/pengull/splash")
         inst.rainfilling = 0
     end
-    if inst._IsFull then
+    if inst.components.wateringtool:IsFull() then
         OnPickup(inst, doer)
     end
 end
 
 local function DoneMilkingfn(doer)
     doer.SoundEmitter:PlaySound("dontstarve/creatures/pengull/splash")
-end
-
-local function onsave(inst, data)
-    local rainfilling = inst.rainfilling >= 0 or inst.rainfilling or nil
-    data.rainfilling = rainfilling
-    data.full_bucket = inst._IsFull
-    data.dirty_bucket = inst._IsDirty
-    data.ice_bucket = inst._IsFrozen
-end
-
-local function onload(inst, data)
-    if data.rainfilling ~= nil then
-        inst.rainfilling = data.rainfilling
-    end
-    if data.full_bucket then
-        inst._IsFull = true
-        if data.dirty_bucket then 
-            inst._IsDirty = true
-        if data.ice_bucket then 
-            inst._IsFrozen = true
-        end
-        print(inst._IsFull)
-        ChangBucketState(inst)
-    end
 end
 
 local function fn()
@@ -207,13 +190,6 @@ local function fn()
     if not TheWorld.ismastersim then
         return inst
     end
-
-    --empty full dirty
-    inst.rainfilling = 0
-    inst.Full_Bucket = false
-    inst.Dirty_Bucket = false
-    inst.Frozen_Bucket = false
-    inst:DoPeriodicTask(1,WeatherCheck)
 	
 	-- 우물 상호 작용을 위한 태그
 
@@ -231,6 +207,8 @@ local function fn()
     inst.components.fuel.fuelvalue = TUNING.LARGE_FUEL
     
     inst:AddComponent("wateringtool")
+    inst.components.wateringtool:SetCanContainRain(true)
+    inst.components.wateringtool:StopLostRaindrop()
 
     inst:AddComponent("inspectable")
 
@@ -244,6 +222,8 @@ local function fn()
     inst.components.inventoryitem:SetOnPickupFn(onremovewater)
 
     MakeHauntableLaunchAndSmash(inst)
+
+    inst:ListenForEvent("fullwater",ChangBucketState)
 
     inst.OnSave = onsave
     inst.OnLoad = onload
