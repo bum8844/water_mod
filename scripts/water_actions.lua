@@ -98,7 +98,6 @@ local TAKEWATER = AddAction("TAKEWATER", STRINGS.ACTIONS.FILL, function(act)
             elseif IsClean(groundpt) then
                 watertype =  WATERTYPE.CLEAN
             end
-            print(watertype)
             return filled.components.watertaker:Fill(nil, act.doer, watertype)
         end
     end

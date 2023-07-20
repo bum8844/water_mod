@@ -73,7 +73,6 @@ function WaterStorage:ResetWaterPerish()
 end
 
 function WaterStorage:OnSave()
-    print(self.waterperish)
     return {
         paused = self.updatetask == nil or nil,
         waterperish = self.waterperish
@@ -84,12 +83,11 @@ function WaterStorage:OnLoad(data)
     if data ~= nil then
         if data.waterperish ~= nil then
             self.waterperish = data.waterperish
-            print(self.waterperish)
         end
 
         if data.paused then
             self:StartReFreshinging()
-        elseif data.time ~= nil then
+        elseif data.waterperish == self.maxrefrashing then
             self:StopReFreshinging()
         end
     end
