@@ -1,5 +1,21 @@
 require("brewery_recpie_cards")
 
+local function Get_Waterborne_Disease(inst, eater)
+    if TUNING.ANTI_WATERBORNE then
+        eater.components.health:DoDelta(-TUNING.SPOILED_HEALTH)
+        if eater:HasTag("waterborne_immune") then
+            --eater.components.talker:Say(GetString(eater,"ANNOUNCE_WATERBORNE_IMMUNITY"))
+            eater.components.health:DoDelta(-TUNING.HEALING_TINY)
+        else
+            eater.components.talker:Say(GetString(eater, "ANNOUNCE_EAT", "PAINFUL")) 
+            eater:AddDebuff("waterbornedebuff", "waterbornedebuff")
+        end
+    else
+    	eater.components.health:DoDelta(-TUNING.SPOILED_HEALTH)
+    	eater.components.talker:Say(GetString(eater, "ANNOUNCE_EAT", "PAINFUL")) 
+    end
+end
+
 local function alcahol(inst, eater)
 	if eater:HasTag("player") then
 		eater.components.dcapacity:Start_Intoxication()
@@ -52,7 +68,7 @@ local drinks =
 	{
 		test = function(boilier, names, tags) return true end,
 		priority = -2,
-		health = TUNING.SPOILED_HEALTH,
+		health = 0,
 		hunger = TUNING.SPOILED_HUNGER,
 		sanity = TUNING.SANITY_POISON,
 		thirst = TUNING.HYDRATION_POISON,
@@ -60,6 +76,9 @@ local drinks =
 		potlevel = "high",
 		potlevel_bottle = "mid",
 		watertype = WATERTYPE.ROTTEN,
+		oneatenfn = function(inst, eater)
+			Get_Waterborne_Disease(inst, eater)
+		end,
 	},
 	
 	-- 탄산수 만들때 필수적으로 refined_dust 첨가

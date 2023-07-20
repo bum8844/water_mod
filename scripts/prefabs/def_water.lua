@@ -1,11 +1,16 @@
 local function Get_Waterborne_Disease(inst, eater)
     if TUNING.ANTI_WATERBORNE then
+        eater.components.health:DoDelta(-TUNING.HEALING_TINY)
         if eater:HasTag("waterborne_immune") then
             --eater.components.talker:Say(GetString(eater,"ANNOUNCE_WATERBORNE_IMMUNITY"))
             eater.components.health:DoDelta(-TUNING.HEALING_TINY)
         else
+            eater.components.talker:Say(GetString(eater, "ANNOUNCE_EAT", "PAINFUL")) 
             eater:AddDebuff("waterbornedebuff", "waterbornedebuff")
         end
+    else
+        eater.components.health:DoDelta(-TUNING.HEALING_TINY)
+        eater.components.talker:Say(GetString(eater, "ANNOUNCE_EAT", "PAINFUL")) 
     end
 end
 
@@ -300,7 +305,7 @@ local function cleanwater(inst)
 end
 
 local function dirtywater(inst)
-    inst.components.edible.healthvalue = -TUNING.HEALING_TINY
+    inst.components.edible.healthvalue = 0
     inst.components.edible.hungervalue = 0
     inst.components.edible.sanityvalue = -TUNING.SANITY_MED
     inst.components.edible.thirstvalue = TUNING.HYDRATION_SUPERTINY

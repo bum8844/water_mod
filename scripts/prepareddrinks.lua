@@ -1,5 +1,21 @@
 require("kettle_recpie_cards")
 
+local function Get_Waterborne_Disease(inst, eater)
+    if TUNING.ANTI_WATERBORNE then
+        eater.components.health:DoDelta(-TUNING.SPOILED_HEALTH)
+        if eater:HasTag("waterborne_immune") then
+            --eater.components.talker:Say(GetString(eater,"ANNOUNCE_WATERBORNE_IMMUNITY"))
+            eater.components.health:DoDelta(-TUNING.HEALING_TINY)
+        else
+            eater.components.talker:Say(GetString(eater, "ANNOUNCE_EAT", "PAINFUL")) 
+            eater:AddDebuff("waterbornedebuff", "waterbornedebuff")
+        end
+    else
+    	eater.components.health:DoDelta(-TUNING.SPOILED_HEALTH)
+    	eater.components.talker:Say(GetString(eater, "ANNOUNCE_EAT", "PAINFUL")) 
+    end
+end
+
 local function sleepfunction(inst, eater)
 	eater.components.debuffable:RemoveDebuff("alcoholdebuff")
 	eater.components.debuffable:RemoveDebuff("waterbornedebuff")
@@ -202,7 +218,7 @@ local drinks =
 	{
 		test = function(boilier, names, tags) return dummy(boilier, names, tags) end,
 		priority = -2,
-		health = TUNING.SPOILED_HEALTH,
+		health = 0,
 		hunger = TUNING.SPOILED_HUNGER,
 		sanity = TUNING.SANITY_POISON,
 		thirst = TUNING.HYDRATION_POISON,
@@ -210,6 +226,9 @@ local drinks =
 		potlevel = "high",
 		potlevel_bottle = "mid",
 		watertype = WATERTYPE.ROTTEN,
+		oneatenfn = function(inst, eater)
+			Get_Waterborne_Disease(inst, eater)
+		end,
 	},
 	-- 조합법이 잘못되면 나오는 결과물
 	goopydrink = 
