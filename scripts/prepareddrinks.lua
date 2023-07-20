@@ -2,6 +2,7 @@ require("kettle_recpie_cards")
 
 local function sleepfunction(inst, eater)
 	eater.components.debuffable:RemoveDebuff("alcoholdebuff")
+	eater.components.debuffable:RemoveDebuff("waterbornedebuff")
 	if KnownModIndex:IsModEnabled("workshop-2334209327") or KnownModIndex:IsModForceEnabled("workshop-2334209327") then
 		eater.components.debuffable:RemoveDebuff("kyno_strengthbuff")
 		eater.components.debuffable:RemoveDebuff("kyno_strengthbuff_med")
@@ -164,7 +165,7 @@ local function IsFlower_Cactus(names, tags)
 end
 
 local function IsFlower_Lotus(names, tags)
-	return ( names.lotus_flower or names.kyno_lotus_flower or names.succulent_picked or tags.lotus ) and 
+	return ( names.lotus_flower or names.kyno_lotus_flower or names.succulent_picked or tags.lotus or names.oceanfish_small_7 ) and 
 	Preference(names, tags) and
 	Tea_Def(names, tags) and not 
 	( 
@@ -328,7 +329,7 @@ local drinks =
 		potlevel_bottle = "mid",
 		prefabs = { "wormlight_light_greater" },
 		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_GLOW,
-		card_def = {ingredients={{"wormlight_lesser",2},{"berries",1},{"twigs",1}}},
+		card_def = {ingredients={{"wormlight_lesser",3},{"honey",1}}},
 		oneatenfn = function(inst, eater)
            	if eater.wormlight ~= nil then
 	            if eater.wormlight.prefab == "wormlight_light_greater" then
@@ -377,7 +378,7 @@ local drinks =
 	
 	carrot_tea =
 	{
-		test = function(boilier, names, tags) return (names.carrot or names.carrot_cooked) and tags.veggie and Preference(names, tags) and not tags.fruit and notmeat(tags) and notname(names) and ressthing(names)end,
+		test = function(boilier, names, tags) return (names.carrot or names.carrot_cooked) and tags.veggie and Preference(names, tags) and not tags.fruit and notmeat(tags) and notname(names) and ressthing(names) end,
 		priority = 1,
 		health = TUNING.HEALING_SMALL*1.5,
 		hunger = TUNING.DRINK_CALORIES/5,
@@ -415,7 +416,7 @@ local drinks =
 	
 	cactus_tea =
 	{
-		test = function(boilier, names, tags) return (names.cactus_meat or names.cactus_meat_cooked or names.aloe or names.aloe_cooked or names.kyno_aloe or names.kyno_aloe_cooked or names.mfp_aloe or names.mfp_aloe_cooked ) and tags.veggie and Preference(names, tags) and not tags.fruit and notmeat(tags) and notname(names) end,
+		test = function(boilier, names, tags) return (names.cactus_meat or names.cactus_meat_cooked or names.aloe or names.aloe_cooked or names.kyno_aloe or names.kyno_aloe_cooked or names.mfp_aloe or names.mfp_aloe_cooked ) and tags.veggie and Preference(names, tags) and not tags.fruit and notmeat(tags) and notname(names) and ressthing(names) end,
 		priority = 1,
 		health = TUNING.HEALING_SMALL*2,
 		hunger = TUNING.DRINK_CALORIES/2,
@@ -540,7 +541,7 @@ local drinks =
 		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_COLD_FOOD,
 	},
 	
-	-- 동굴 고사리
+	-- 동굴 고사리(수인성 질병 해결)
 	fuer =
 	{
 		test = function(boilier, names, tags) return IsFoliage(names, tags) and notmeat(tags) and notname(names) and ressthing(names) end,
@@ -553,6 +554,9 @@ local drinks =
 		cooktime = TUNING.KETTLE_TEA,
 		potlevel = "mid",
 		potlevel_bottle = "mid",
+		oneatenfn = function(inst, eater)
+				eater.components.debuffable:RemoveDebuff("waterbornedebuff")
+		end,
 	},
 	
 	-- 일반 꽃잎

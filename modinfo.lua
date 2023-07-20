@@ -1,5 +1,5 @@
 name 						= "Don't Starve: Dehydrated"
-version 					= "Alpha 1.0.6"
+version 					= "Alpha 1.1.0"
 
 description = (
 	"The test build of DSD"
@@ -90,6 +90,16 @@ configuration_options =
 		default = true,
 	},
 	{
+		name = "enable_waterborne",
+		label = "Enable Waterborne Disease?",
+		options =
+		{
+			{description = "Enabled", data = true},
+			{description = "Disabled", data = false},
+		},
+		default = true,
+	},
+	{
 		name = "thirst_max",
 		label = "Max Thirst",
 		options =
@@ -115,6 +125,19 @@ configuration_options =
 			{description = "VeryFast", data = 1, hover = "150/day"},
 		},
 		default = .7,
+	},
+	{
+		name = "waterborne_time",
+		label = "Waterborne Disease Duration",
+		options =
+		{
+			{description = "VeryShort", data = .125},
+			{description = "Short", data = .25},
+			{description = "Default", data = .5},
+			{description = "Long", data = .625},
+			{description = "VeryLong", data = .75},
+		},
+		default = .5
 	},
 	SEPARATOR,
 	Title("Brewery options"),

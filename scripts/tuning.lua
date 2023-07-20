@@ -9,6 +9,7 @@ local capacity_time = GetModConfigData("capacity_time")
 local immune_time = GetModConfigData("immune_time")
 local ghost_time = GetModConfigData("ghost_time")
 local drunkard_time = GetModConfigData("drunkard_time")
+local waterborne_time = GetModConfigData("waterborne_time")
 
 table.insert(TUNING.GAMEMODE_STARTING_ITEMS.DEFAULT.WARLY,"portablekettle_item")
 
@@ -16,7 +17,7 @@ table.insert(TUNING.GAMEMODE_STARTING_ITEMS.DEFAULT.WARLY,"portablekettle_item")
 water_tuning =
 {
 	TYPES_CLEAN = {
-		--noting
+		"cherry_pond",
 	},
 
 	TYPES_SALTY = {
@@ -38,6 +39,12 @@ water_tuning =
 		"walter",
 		"wurt",
 		"webber",
+	},
+
+	WATERBORNE = 
+	{
+		"wormwood",
+		"wx78",
 	},
 
 	SPOILED_DRINK_NUTRIENTS = {  12,  12,  12 },
@@ -151,7 +158,9 @@ water_tuning =
 	IMMUNE_TIME = TUNING.TOTAL_DAY_TIME*immune_time,
 	GHOST_TIME = TUNING.TOTAL_DAY_TIME*ghost_time,
 	ANTI_GHOST = GetModConfigData("blocking_assassination"),
+	ANTI_WATERBORNE = GetModConfigData("enable_waterborne"),
 	DRUNKARD_DURATION = TUNING.TOTAL_DAY_TIME*drunkard_time,
+	WATERBORNE_DURATION = TUNING.TOTAL_DAY_TIME*waterborne_time,
 	WELL_DRILLING_DURATION = TUNING.SEG_TIME*2.5,
 	WELL_DRILL_USES = 20,
 
@@ -164,6 +173,7 @@ water_tuning =
 
 	DRUNKARD_SANITY_DELTA = -1,
 	DRUNKARD_TICK_RATE = 2,
+	WATERBORNE_TICK_RATE = 2,
 
 	WATER_RECIPCARD_CHANCE = 0.25,
 }
