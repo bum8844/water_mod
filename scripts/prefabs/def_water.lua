@@ -49,6 +49,7 @@ local function Change_Ice_Item(inst)
 end
 
 local function FreezeWater(inst)
+    inst.frozentask = nil
     local owner = inst.components.inventoryitem ~= nil and inst.components.inventoryitem:GetGrandOwner() or nil
     local container = owner ~= nil and (owner.components.inventory or owner.components.container) or nil
 
@@ -238,7 +239,12 @@ local function MakeCup(name, masterfn, tags)
             inst.components.temperature.maxtemp = TUNING.WATER_MAXTEMP
             inst.components.temperature.current = TUNING.WATER_INITTEMP
 
-            inst:DoPeriodicTask(5, function()
+            if inst.frozentask ~= nil then
+                inst.frozentask:Cancel()
+                inst.frozentask = nil
+            end
+
+            inst.frozentask = inst:DoPeriodicTask(1, function(inst)
                 if inst:HasTag("clean") and inst.components.temperature.current <= TUNING.WATER_CLEAN_MINTEMP then
                     FreezeWater(inst)
                 elseif inst:HasTag("dirty") and inst.components.temperature.current == TUNING.WATER_DIRTY_MINTEMP then

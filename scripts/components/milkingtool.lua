@@ -10,7 +10,6 @@ function Milkingtool:DoMilking(target, doer)
     local loot = nil
     local finiteuses = self.inst.components.finiteuses:GetUses()
     local stacksize = ( finiteuses >= TUNING.BUCKET_LEVEL_PER_USE ) and TUNING.BUCKET_LEVEL_PER_USE*.5 or finiteuses *.5
-    print(stacksize)
     if doer ~= nil and doer.components.inventory ~= nil then
         loot = SpawnPrefab("goatmilk")
         loot.components.stackable:SetStackSize(math.ceil(stacksize))

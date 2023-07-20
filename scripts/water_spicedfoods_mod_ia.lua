@@ -208,7 +208,6 @@ local ia_water_spiced = {}
 local new_water_spicedfoods = require("water_spicedfoods")
 
 for k,v in pairs(new_water_spicedfoods) do
-    print(k)
     if not new_water_spicedfoods[k] then
         ia_water_spiced[k] = v
     end
