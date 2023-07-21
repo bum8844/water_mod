@@ -10,27 +10,37 @@ local WateringTool = Class(function(self, inst)
 
     self.cancontainrain = false
     self.rainingtask = nil
+
+    self.owner = nil
 end,nil,nil)
 
-local function IsRainStart()
-    if GLOBAL.TheWorld.state.israining then
-        self:GetRainDrop()
-    end
+local function _Update(inst, self)
+    self:Update()
 end
 
-local function Update(rainfilling, value)
-    local self = inst.components.wateringtool
-    if self ~= nil then
-        if not GLOBAL.TheWorld.state.israining then
-            value = -TUNING.LOST_WATER
+function WateringTool:Update(dt)
+    if not self.owner and not self.isfull then
+        local val = dt or TUNING.RAIN_GIVE_WATER
+        if not TheWorld.state.israining then
+            val = TUNING.LOST_WATER
         end
-        rainfilling = rainfilling + value
-        if rainfilling >= self.maxrainfilling then
+        print("물 양 :"..val)
+        self.rainfilling = self.rainfilling + val
+        if self.rainfilling >= self.maxrainfilling then
             self:StopGetRaindrop()
-        elseif inst.rainfilling <= 0 then
-            self.StopLostRaindrop()
+        elseif self.rainfilling <= 0 then
+            self.rainfilling = 0
+            self:CheckWeather(nil)
         end
+    else
+        self.rainfilling = 0
+        self:CheckWeather(self.owner)
     end
+    print("현재 물 양 : "..self.rainfilling)
+end
+
+function WateringTool:HasWater()
+    return self.rainfilling > 0
 end
 
 function WateringTool:IsFull()
@@ -57,13 +67,17 @@ function WateringTool:SetFrozen(val)
     self.isfrozen = val
 end
 
+function WateringTool:IsCanContainRain()
+    return self.cancontainrain
+end
+
 function WateringTool:SetCanContainRain(val)
     self.cancontainrain = val or false
 end
 
 function WateringTool:LongUpdate(dt)
     if self.rainingtask ~= nil then
-        Update(self.rainfilling, dt or 0)
+        self:Update(dt)
     end
 end
 
@@ -73,7 +87,7 @@ function WateringTool:GetRainDrop()
         self.rainingtask = nil
     end
 
-    self.rainingtask = self.inst:DoPeriodicTask(1, Update, self.rainfilling, TUNING.RAIN_GIVE_WATER)
+    self.rainingtask = self.inst:DoPeriodicTask(1, _Update, nil, self)
 end
 
 function WateringTool:StopGetRaindrop()
@@ -84,29 +98,31 @@ function WateringTool:StopGetRaindrop()
         end
 
         self.isfull = true
+        self.cancontainrain = false
         self.inst:PushEvent("fullwater")
     end
 end
 
-function WateringTool:StopLostRaindrop()
+function WateringTool:CheckWeather(doer)
     if self.rainingtask ~= nil then
         self.rainingtask:Cancel()
         self.rainingtask = nil
     end
 
-    self.rainfilling = 0
-    self.rainingtask = self.inst:DoPeriodicTask(1, IsRainStart)
+    self.owner = doer or nil
+
+    self.rainingtask = self.inst:DoPeriodicTask(1, _Update, nil, self)
 end
 
 function WateringTool:OnSave()
     if self.cancontainrain then
         return {
             cancontainrain = self.cancontainrain,
-            paused = self.rainingtask == nil and nil,
             rainfilling = self.rainfilling > 0 and self.rainfilling or 0,
             isfull = self.isfull,
             isdirty = self.isdirty,
             isfrozen = self.isfrozen ,
+            owner = self.owner,
         }
     else
         return {
@@ -117,25 +133,22 @@ end
 
 function WateringTool:OnLoad(data)
     if data.cancontainrain ~= nil then
-        if data.rainfilling > 0 then
-            self.rainfilling = data.rainfilling
-
-            if not data.isfull then
-                if data.paused then
-                    if GLOBAL.TheWorld.state.israining then
-                        self:GetRainDrop()
-                    else
-                        self:LostRainDrop()
-                    end
-                else
-                    self:StopLostRaindrop()
-                end
-            else
-                self.isfull = data.isfull
-                self.isdirty = data.isdirty
-                self.isfrozen = data.isfrozen
-                self.inst:PushEvent("fullwater")
+        self.owner = data.owner or nil
+        if not data.isfull then
+            if data.rainfilling >= 0 then
+                self.rainfilling = data.rainfilling
             end
+            if self.rainingtask ~= nil then
+                self.rainingtask:Cancel()
+                self.rainingtask = nil
+            end
+            self.rainingtask = self.inst:DoPeriodicTask(1, _Update, nil, self)
+        else
+            self.rainfilling = 0
+            self.isfull = data.isfull
+            self.isdirty = data.isdirty
+            self.isfrozen = data.isfrozen
+            self.inst:PushEvent("fullwater")
         end
     end
 end

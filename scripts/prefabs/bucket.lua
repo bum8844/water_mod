@@ -3,6 +3,12 @@ local assets =
 	Asset("ANIM", "anim/buckets.zip"),
 }
 
+local function RemoveOwner(inst)
+    if inst.components.wateringtool:IsCanContainRain() then
+        inst.components.wateringtool.owner = nil
+    end
+end
+
 local function GetWater(inst, watertype, doer)
     local container = doer ~= nil and (doer.components.inventory or doer.components.container) or nil
     local water = SpawnPrefab(watertype)
@@ -18,6 +24,7 @@ local function GetWater(inst, watertype, doer)
     if current_fin > peruse then
         current_fin = peruse
     end
+    print(current_fin)
 
     water.Transform:SetPosition(inst.Transform:GetWorldPosition())
     water.components.stackable:SetStackSize(current_fin)
@@ -35,7 +42,8 @@ local function GetWater(inst, watertype, doer)
         inst.components.wateringtool:SetFrozen(false)
         inst.components.wateringtool:SetDirty(false)
         inst.components.wateringtool:SetFull(false)
-        inst.components.wateringtool:StopLostRaindrop()
+        inst.components.wateringtool:SetCanContainRain(true)
+        inst.components.wateringtool:CheckWeather()
     else
         inst:Remove()
     end
@@ -76,7 +84,7 @@ local function MeltWater(inst)
     inst.components.wateringtool:SetFrozen(false)
     inst.AnimState:PlayAnimation("turn_to_full")
     inst:DoTaskInTime(1,function(inst)
-        ChangBucketState(inst)
+        ChangeBucketState(inst)
     end)
 end
 
@@ -85,14 +93,14 @@ local function FreezeWater(inst)
     inst.components.wateringtool:SetFrozen(true)
     inst.AnimState:PlayAnimation("turn_to_ice")
     inst:DoTaskInTime(1,function(inst)
-        ChangBucketState(inst)
+        ChangeBucketState(inst)
     end)
 end
 
 local function SpoilWater(inst)
     inst.components.wateringtool:SetDirty(true)
     inst:DoTaskInTime(1,function(inst)
-        ChangBucketState(inst)
+        ChangeBucketState(inst)
     end)
 end
 
@@ -100,7 +108,7 @@ local function DriesWater(inst)
     inst.AnimState:PlayAnimation("empty")
     inst.components.wateringtool:SetDirty(false)
     inst.components.wateringtool:SetFull(false)
-    inst.components.wateringtool:StopLostRaindrop()
+    inst.components.wateringtool:CheckWeather()
 end
 
 local function onfiremelt(inst)
@@ -111,11 +119,11 @@ local function onstopfiremelt(inst)
     inst.components.perishable.frozenfiremult = false
 end
 
-local function ChangBucketState(inst)
+local function ChangeBucketState(inst)
     local waterstate = "full"
     inst:AddComponent("perishable")
     if not inst.components.wateringtool:IsFrozen() then
-        local maxtemp = TUNING.TUNING.WATER_CLEAN_MINTEMP
+        local maxtemp = TUNING.WATER_CLEAN_MINTEMP
 
         inst.components.perishable:SetPerishTime(TUNING.PERISH_FAST)
         inst.components.perishable:SetOnPerishFn(SpoilWater)
@@ -145,6 +153,7 @@ local function ChangBucketState(inst)
     else
         waterstate = "ice"
         inst.components.perishable:SetPerishTime(TUNING.PERISH_SUPERFAST)
+        inst.components.perishable:StartPerishing()
 
         inst:ListenForEvent("firemelt", onfiremelt)
         inst:ListenForEvent("stopfiremelt", onstopfiremelt)
@@ -153,12 +162,18 @@ local function ChangBucketState(inst)
 end
 
 local function onremovewater(inst, doer)
-    if inst.rainfilling > 0 then
-        inst.SoundEmitter:PlaySound("dontstarve/creatures/pengull/splash")
-        inst.rainfilling = 0
-    end
-    if inst.components.wateringtool:IsFull() then
-        OnPickup(inst, doer)
+    if inst.components.wateringtool:IsCanContainRain() then
+        if inst.components.wateringtool:IsFull() then
+            OnPickup(inst, doer)
+        else
+            if inst.components.wateringtool:HasWater() then
+                inst.SoundEmitter:PlaySound("dontstarve/creatures/pengull/splash")
+            end
+            inst.components.wateringtool.rainfilling = 0
+            inst.components.wateringtool:CheckWeather(doer)
+        end
+    else
+        inst.components.wateringtool:CheckWeather(doer)
     end
 end
 
@@ -208,7 +223,7 @@ local function fn()
     
     inst:AddComponent("wateringtool")
     inst.components.wateringtool:SetCanContainRain(true)
-    inst.components.wateringtool:StopLostRaindrop()
+    inst.components.wateringtool:CheckWeather()
 
     inst:AddComponent("inspectable")
 
@@ -223,7 +238,8 @@ local function fn()
 
     MakeHauntableLaunchAndSmash(inst)
 
-    inst:ListenForEvent("fullwater",ChangBucketState)
+    inst:ListenForEvent("fullwater",ChangeBucketState)
+    inst:ListenForEvent("ondropped",RemoveOwner)
 
     return inst
 end
