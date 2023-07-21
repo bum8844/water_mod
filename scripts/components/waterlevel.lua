@@ -177,24 +177,27 @@ function Waterlevel:DoDiistiller(item, doer)
     if self.inst.components.distiller then
 
         local watervalue = self:GetWater()
-        local needboiling = true
 
         if self.watertype ~= WATERTYPE.CLEAN then
             if self.watertype == WATERTYPE.DIRTY_ICE then
                 watervalue = watervalue * 2
             end
+            self.inst.components.distiller.done = false
         elseif item.components.perishable ~= nil then
             if item.components.perishable:IsStale() then
                 watervalue = watervalue / 4
+                self.inst.components.distiller.done = false
             elseif item.components.perishable:IsSpoiled() then
                 watervalue = watervalue / 2
+                self.inst.components.distiller.done = false
+            else
+                self.inst.components.distiller.done = true
             end
         else
-            needboiling = false
+            self.inst.components.distiller.done = true
         end
 
-        if needboiling then
-            self.inst.components.distiller.done = false
+        if not self.inst.components.distiller.done then
             if self.inst._fire == nil then
                 self.inst.components.distiller:startBoiling(watervalue)
             else
