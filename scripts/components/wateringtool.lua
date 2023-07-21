@@ -4,11 +4,9 @@ local WateringTool = Class(function(self, inst)
     self.maxrainfilling = TUNING.BUCKET_LEVEL_PER_USE
     self.rainfilling = 0
 
-    self.isfull = false
-    self.isdirty = false
-    self.isfrozen = false
+    self.isfull = nil
 
-    self.cancontainrain = false
+    self.cancontainrain = nil
     self.rainingtask = nil
 
     self.owner = nil
@@ -24,7 +22,6 @@ function WateringTool:Update(dt)
         if not TheWorld.state.israining then
             val = TUNING.LOST_WATER
         end
-        print("물 양 :"..val)
         self.rainfilling = self.rainfilling + val
         if self.rainfilling >= self.maxrainfilling then
             self:StopGetRaindrop()
@@ -36,7 +33,10 @@ function WateringTool:Update(dt)
         self.rainfilling = 0
         self:CheckWeather(self.owner)
     end
-    print("현재 물 양 : "..self.rainfilling)
+end
+
+function WateringTool:IsdoDrying()
+    return self.lefttime > 0
 end
 
 function WateringTool:HasWater()
@@ -47,24 +47,8 @@ function WateringTool:IsFull()
     return self.isfull
 end
 
-function WateringTool:IsDirty()
-    return self.isdirty
-end
-
-function WateringTool:IsFrozen()
-    return self.isfrozen
-end
-
 function WateringTool:SetFull(val)
     self.isfull = val
-end
-
-function WateringTool:SetDirty(val)
-    self.isdirty = val
-end
-
-function WateringTool:SetFrozen(val)
-    self.isfrozen = val
 end
 
 function WateringTool:IsCanContainRain()
@@ -115,39 +99,38 @@ function WateringTool:CheckWeather(doer)
 end
 
 function WateringTool:OnSave()
-    if self.cancontainrain then
-        return {
-            cancontainrain = self.cancontainrain,
-            rainfilling = self.rainfilling > 0 and self.rainfilling or 0,
-            isfull = self.isfull,
-            isdirty = self.isdirty,
-            isfrozen = self.isfrozen ,
-            owner = self.owner,
-        }
-    else
-        return {
-            cancontainrain = self.cancontainrain,
-        }
+    if self.inst.components.perishable ~= nil and self.inst.components.perishable.perishremainingtime then
+        self.lefttime = self.inst.components.perishable.perishremainingtime or nil
     end
+    if not self.cancontainrain then
+        self.isfull = nil
+        self.rainfilling = 0
+        self.lefttime = nil
+    end
+    return {
+        cancontainrain = self.cancontainrain == nil or nil,
+        isfull = self.isfull == nil or nil,
+        rainfilling = self.rainfilling > 0 and self.rainfilling,
+        lefttime = self.lefttime,
+        owner = self.owner,
+    }
 end
 
 function WateringTool:OnLoad(data)
-    if data.cancontainrain ~= nil then
+    if data.cancontainrain then
+        self.cancontainrain = true
         self.owner = data.owner or nil
         if not data.isfull then
-            if data.rainfilling >= 0 then
-                self.rainfilling = data.rainfilling
-            end
+            self.rainfilling = data.rainfilling or 0
             if self.rainingtask ~= nil then
                 self.rainingtask:Cancel()
                 self.rainingtask = nil
             end
             self.rainingtask = self.inst:DoPeriodicTask(1, _Update, nil, self)
         else
+            self.lefttime = data.lefttime or 0
             self.rainfilling = 0
-            self.isfull = data.isfull
-            self.isdirty = data.isdirty
-            self.isfrozen = data.isfrozen
+            self.isfull = true
             self.inst:PushEvent("fullwater")
         end
     end

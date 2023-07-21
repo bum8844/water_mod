@@ -81,32 +81,52 @@ local function OnTakeWater(inst, source, doer)
 end
 
 local function MeltWater(inst)
-    inst.components.wateringtool:SetFrozen(false)
+    inst:RemoveTag("frozen_bucket")
     inst.AnimState:PlayAnimation("turn_to_full")
     inst:DoTaskInTime(1,function(inst)
-        ChangeBucketState(inst)
+        inst:AddComponent("perishable")
+        inst.components.perishable:StopPerishing()
+        inst.components.perishable:SetPerishTime(TUNING.PERISH_FAST)
+        inst.components.perishable:StartPerishing()
+        if inst:HasTag("dirty_bucket") then
+            inst.components.perishable:SetOnPerishFn(DriesWater)
+        else
+            inst.components.perishable:SetOnPerishFn(SpoilWater)
+        end
+        inst:PushEvent("fullwater")
     end)
 end
 
 local function FreezeWater(inst)
     inst.frozentask = nil
-    inst.components.wateringtool:SetFrozen(true)
+    inst:AddTag("frozen_bucket")
     inst.AnimState:PlayAnimation("turn_to_ice")
+    inst.AnimState:PushAnimation("ice")
     inst:DoTaskInTime(1,function(inst)
-        ChangeBucketState(inst)
+        inst:AddComponent("perishable")
+        inst.components.perishable:StopPerishing()
+        inst.components.perishable:SetPerishTime(TUNING.PERISH_SUPERFAST)
+        inst.components.perishable:SetOnPerishFn(MeltWater)
+        inst.components.perishable:StartPerishing()
+        inst:PushEvent("fullwater")
     end)
 end
 
 local function SpoilWater(inst)
-    inst.components.wateringtool:SetDirty(true)
+    inst:AddTag("dirty_bucket")
     inst:DoTaskInTime(1,function(inst)
-        ChangeBucketState(inst)
+        inst:AddComponent("perishable")
+        inst.components.perishable:StopPerishing()
+        inst.components.perishable:SetPerishTime(TUNING.PERISH_FAST)
+        inst.components.perishable:SetOnPerishFn(DriesWater)
+        inst.components.perishable:StartPerishing()
+        inst:PushEvent("fullwater")
     end)
 end
 
 local function DriesWater(inst)
     inst.AnimState:PlayAnimation("empty")
-    inst.components.wateringtool:SetDirty(false)
+    inst:RemoveTag("dirty_bucket")
     inst.components.wateringtool:SetFull(false)
     inst.components.wateringtool:CheckWeather()
 end
@@ -122,16 +142,14 @@ end
 local function ChangeBucketState(inst)
     local waterstate = "full"
     inst:AddComponent("perishable")
-    if not inst.components.wateringtool:IsFrozen() then
+    if not inst:HasTag("frozen_bucket") then
+        print("안 얼었음")
         local maxtemp = TUNING.WATER_CLEAN_MINTEMP
-
-        inst.components.perishable:SetPerishTime(TUNING.PERISH_FAST)
-        inst.components.perishable:SetOnPerishFn(SpoilWater)
         
-        if inst.components.wateringtool:IsDirty() then
+        if inst:HasTag("dirty_bucket") then
+            print("더러움")
             maxtemp = TUNING.WATER_DIRTY_MINTEMP
             waterstate = "dirty"
-            inst.components.perishable:SetOnPerishFn(DriesWater)
         end
 
         inst:AddComponent("temperature")
@@ -151,9 +169,12 @@ local function ChangeBucketState(inst)
         end)
         inst.SoundEmitter:PlaySound("dontstarve/creatures/pengull/splash")
     else
+        print("얼어버림")
+        if inst.frozentask ~= nil then
+            inst.frozentask:Cancel()
+            inst.frozentask = nil
+        end
         waterstate = "ice"
-        inst.components.perishable:SetPerishTime(TUNING.PERISH_SUPERFAST)
-        inst.components.perishable:StartPerishing()
 
         inst:ListenForEvent("firemelt", onfiremelt)
         inst:ListenForEvent("stopfiremelt", onstopfiremelt)
