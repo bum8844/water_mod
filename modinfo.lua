@@ -1,5 +1,5 @@
 name 						= "Don't Starve: Dehydrated"
-version 					= "Alpha 1.1.1"
+version 					= "Alpha 1.2.0"
 
 description = (
 	"The test build of DSD"
@@ -114,17 +114,17 @@ configuration_options =
 	},
 	{
 		name = "thirst_decrease_speed",
-		label = "Decreasing Rate of Thirst",
+		label = "Decreasing Rate of Thirst(Criteria 150)",
 		options =
 		{
 		    {description = "VerySlow", data = .2, hover = "30/day"},
 		    {description = "Slow", data = .4, hover = "60/day"},
 		    {description = "Same as Hunger", data = .5, hover = "75/day"},
-			{description = "Default", data = .7, hover = "105/day"},
-			{description = "Fast", data = .8, hover = "120/day"},
-			{description = "VeryFast", data = 1, hover = "150/day"},
+			{description = "Default", data = .6, hover = "90/day"},
+			{description = "Fast", data = .7, hover = "105/day"},
+			{description = "VeryFast", data = .9, hover = "135/day"},
 		},
-		default = .7,
+		default = .6,
 	},
 	{
 		name = "waterborne_time",

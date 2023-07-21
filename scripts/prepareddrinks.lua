@@ -4,10 +4,14 @@ local function Get_Waterborne_Disease(inst, eater)
     if TUNING.ANTI_WATERBORNE then
         eater.components.health:DoDelta(-TUNING.SPOILED_HEALTH)
         if eater:HasTag("waterborne_immune") then
-            --eater.components.talker:Say(GetString(eater,"ANNOUNCE_WATERBORNE_IMMUNITY"))
+            if eater.components.talker ~= nil then
+                --eater.components.talker:Say(GetString(eater,"ANNOUNCE_WATERBORNE_IMMUNITY"))
+            end
             eater.components.health:DoDelta(-TUNING.HEALING_TINY)
         else
-            eater.components.talker:Say(GetString(eater, "ANNOUNCE_EAT", "PAINFUL")) 
+        	if eater.components.talker ~= nil then
+            	eater.components.talker:Say(GetString(eater, "ANNOUNCE_EAT", "PAINFUL")) 
+            end
             eater:AddDebuff("waterbornedebuff", "waterbornedebuff")
         end
     else
@@ -429,6 +433,7 @@ local drinks =
 				else
 					eater.components.talker:Say(GetString(eater,"ANNOUNCE_EAT","PAINFUL"))
 				end
+				eater.components.debuffable:RemoveDebuff("waterbornedebuff")
 			end
 		end
 	},
@@ -574,7 +579,7 @@ local drinks =
 		potlevel = "mid",
 		potlevel_bottle = "mid",
 		oneatenfn = function(inst, eater)
-				eater.components.debuffable:RemoveDebuff("waterbornedebuff")
+			eater.components.debuffable:RemoveDebuff("waterbornedebuff")
 		end,
 	},
 	
@@ -644,9 +649,9 @@ local drinks =
 			temperatureduration = TUNING.FOOD_TEMP_BRIEF,
 	        prefabs = { "sweettea_buff" },
 			tags = {"honeyed"},
-	        oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_HOT_SANITY_REGEN,
+	        oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_HOT_SANITY_REGEN, -- 바꿔야함
 	        oneatenfn = function(inst, eater)
-				eater:AddDebuff("sweettea_buff", "sweettea_buff")
+				eater:AddDebuff("buff_moistureimmunity", "buff_moistureimmunity")
 	        end,
 			potlevel = "mid",
 			potlevel_bottle = "mid",

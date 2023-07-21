@@ -2,10 +2,14 @@ local function Get_Waterborne_Disease(inst, eater)
     if TUNING.ANTI_WATERBORNE then
         eater.components.health:DoDelta(-TUNING.HEALING_TINY)
         if eater:HasTag("waterborne_immune") then
-            --eater.components.talker:Say(GetString(eater,"ANNOUNCE_WATERBORNE_IMMUNITY"))
+            if eater.components.talker ~= nil then
+                --eater.components.talker:Say(GetString(eater,"ANNOUNCE_WATERBORNE_IMMUNITY"))
+            end
             eater.components.health:DoDelta(-TUNING.HEALING_TINY)
         else
-            eater.components.talker:Say(GetString(eater, "ANNOUNCE_EAT", "PAINFUL")) 
+            if eater.components.talker ~= nil then
+                eater.components.talker:Say(GetString(eater, "ANNOUNCE_EAT", "PAINFUL")) 
+            end
             eater:AddDebuff("waterbornedebuff", "waterbornedebuff")
         end
     else
