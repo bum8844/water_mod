@@ -63,6 +63,11 @@ local function onload(inst, data)
 end
 
 AddPrefabPostInit("kyno_bucket_empty", function(inst)
+
+    inst.AnimState:SetBuild("buckets")
+    inst.AnimState:SetBank("buckets")
+    inst.AnimState:PlayAnimation("empty")
+
 	inst:AddTag("watertaker")
 
 	inst.entity:SetPristine()
