@@ -5,7 +5,8 @@ local MAXREFRASHING = TUNING.PERISH_FAST
 
 local assets =
 {
-    Asset("ANIM", "anim/barrel.zip"),
+    --Asset("ANIM", "anim/barrel.zip"),
+    Asset("ANIM", "anim/DEHY_barrel.zip"),
 	Asset("ANIM", "anim/barrel_meter_water.zip"),
 }
 
@@ -82,7 +83,7 @@ end
 local function OnTaken(inst, taker, water_amount)
 	local waterperish = inst.components.waterstorage:GetWaterPerish()
 	inst.components.waterlevel:DoDelta(-water_amount)
-	if inst.components.waterlevel:GetWater() == 0 or waterperish == MAXREFRASHING then
+	if inst.components.waterlevel:GetWater() <= 0 or waterperish >= MAXREFRASHING then
 		inst.components.waterstorage:StopReFreshinging()
 	end
 	inst.AnimState:PlayAnimation("get_water")
