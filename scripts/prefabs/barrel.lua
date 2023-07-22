@@ -1,6 +1,7 @@
 require "prefabutil"
 
 local MOISTURE_ON_BURNT_MULTIPLIER = 0.1
+local MAXREFRASHING = TUNING.PERISH_FAST
 
 local assets =
 {
@@ -69,7 +70,7 @@ end
 
 local function OnTakeWater(inst)
 	local waterperish = inst.components.waterstorage:GetWaterPerish()
-	if waterperish < TUNING.PERISH_FAST then
+	if waterperish < MAXREFRASHING then
 		inst.components.waterstorage:StartReFreshinging()
 	end
 	inst.AnimState:PlayAnimation("take_water")
@@ -81,7 +82,7 @@ end
 local function OnTaken(inst, taker, water_amount)
 	local waterperish = inst.components.waterstorage:GetWaterPerish()
 	inst.components.waterlevel:DoDelta(-water_amount)
-	if inst.components.waterlevel:GetWater() == 0 or waterperish == TUNING.PERISH_FAST then
+	if inst.components.waterlevel:GetWater() == 0 or waterperish == MAXREFRASHING then
 		inst.components.waterstorage:StopReFreshinging()
 	end
 	inst.AnimState:PlayAnimation("get_water")

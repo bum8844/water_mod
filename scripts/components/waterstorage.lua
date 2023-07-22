@@ -33,7 +33,7 @@ local function Update(inst, dt)
 
         local old_val = self.waterperish
         local delta = dt or (10 + math.random()*FRAMES*8)
-        self.waterperish = math.min(self.maxrefrashing, self.waterperish + delta*modifier)
+        self.waterperish = math.ceil(math.min(self.maxrefrashing, self.waterperish + delta*modifier))
         if self.waterperish == self.maxrefrashing or ( self.inst.components.waterlevel and self.inst.components.waterlevel:IsEmpty() ) then
             self:StopReFreshinging()
         end
