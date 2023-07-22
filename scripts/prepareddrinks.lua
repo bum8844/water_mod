@@ -2,21 +2,24 @@ require("kettle_recpie_cards")
 
 local function Get_Waterborne_Disease(inst, eater)
     if TUNING.ANTI_WATERBORNE then
-        eater.components.health:DoDelta(-TUNING.SPOILED_HEALTH)
-        if eater:HasTag("waterborne_immune") then
-            if eater.components.talker ~= nil then
+        if eater:HasTag("player") and not eater:HasTag("playerghost") then
+            if eater:HasTag("waterborne_immune") then
                 --eater.components.talker:Say(GetString(eater,"ANNOUNCE_WATERBORNE_IMMUNITY"))
+            else
+                eater.components.talker:Say(GetString(eater, "ANNOUNCE_EAT", "PAINFUL")) 
             end
+        end
+        eater.components.health:DoDelta(-TUNING.HEALING_TINY)
+        if eater:HasTag("waterborne_immune") then
             eater.components.health:DoDelta(-TUNING.HEALING_TINY)
         else
-        	if eater.components.talker ~= nil then
-            	eater.components.talker:Say(GetString(eater, "ANNOUNCE_EAT", "PAINFUL")) 
-            end
             eater:AddDebuff("waterbornedebuff", "waterbornedebuff")
         end
     else
-    	eater.components.health:DoDelta(-TUNING.SPOILED_HEALTH)
-    	eater.components.talker:Say(GetString(eater, "ANNOUNCE_EAT", "PAINFUL")) 
+        if eater:HasTag("player") and not eater:HasTag("playerghost") then
+            eater.components.talker:Say(GetString(eater, "ANNOUNCE_EAT", "PAINFUL")) 
+        end
+        eater.components.health:DoDelta(-TUNING.HEALING_TINY)
     end
 end
 
