@@ -3,10 +3,10 @@ local assets =
 	Asset("ANIM", "anim/buckets.zip"),
 }
 
-local function RemoveOwner(inst)
-    if inst.components.wateringtool:IsCanContainRain() then
-        inst.components.wateringtool.owner = nil
-    end
+local function SetCheckWeather(inst)
+    inst.components.wateringtool:SetCanContainRain(true)
+    inst.components.wateringtool.owner = nil
+    inst.components.wateringtool:CheckWeather()
 end
 
 local function GetWater(inst, watertype, doer)
@@ -39,15 +39,14 @@ local function GetWater(inst, watertype, doer)
 
     if old_val > peruse then
         inst.components.finiteuses:Use(peruse)
-        inst.components.wateringtool:SetFrozen(false)
-        inst.components.wateringtool:SetDirty(false)
-        inst.components.wateringtool:SetFull(false)
-        inst.components.wateringtool:SetCanContainRain(true)
-        inst.components.wateringtool:CheckWeather()
+        inst.components.wateringtool:SetCanContainRain()
+        inst.components.wateringtool.owner = doer
+        inst.components.wateringtool:StopCheckWeather()
     else
         inst:Remove()
     end
 end
+
 local function OnPickup(inst, doer)
     if doer then
         local ice = ""
@@ -61,6 +60,20 @@ local function OnPickup(inst, doer)
         end
     end
     inst.AnimState:PlayAnimation("empty")
+end
+
+local function CanGetWater(inst, doer)
+    if inst.components.wateringtool:IsFull() then
+        OnPickup(inst, doer)
+    else
+        if inst.components.wateringtool:HasWater() then
+            inst.SoundEmitter:PlaySound("dontstarve/creatures/pengull/splash")
+        end
+        inst.components.wateringtool.rainfilling = 0
+        inst.components.wateringtool:SetCanContainRain()
+        inst.components.wateringtool.owner = doer
+        inst.components.wateringtool:StopCheckWeather()
+    end
 end
 
 local function OnTakeWater(inst, source, doer)
@@ -182,22 +195,6 @@ local function ChangeBucketState(inst)
     inst.AnimState:PlayAnimation(waterstate)
 end
 
-local function onremovewater(inst, doer)
-    if inst.components.wateringtool:IsCanContainRain() then
-        if inst.components.wateringtool:IsFull() then
-            OnPickup(inst, doer)
-        else
-            if inst.components.wateringtool:HasWater() then
-                inst.SoundEmitter:PlaySound("dontstarve/creatures/pengull/splash")
-            end
-            inst.components.wateringtool.rainfilling = 0
-            inst.components.wateringtool:CheckWeather(doer)
-        end
-    else
-        inst.components.wateringtool:CheckWeather(doer)
-    end
-end
-
 local function DoneMilkingfn(doer)
     doer.SoundEmitter:PlaySound("dontstarve/creatures/pengull/splash")
 end
@@ -243,8 +240,6 @@ local function fn()
     inst.components.fuel.fuelvalue = TUNING.LARGE_FUEL
     
     inst:AddComponent("wateringtool")
-    inst.components.wateringtool:SetCanContainRain(true)
-    inst.components.wateringtool:CheckWeather()
 
     inst:AddComponent("inspectable")
 
@@ -255,12 +250,12 @@ local function fn()
     MakeSmallPropagator(inst)
 	
     inst:AddComponent("inventoryitem")
-    inst.components.inventoryitem:SetOnPickupFn(onremovewater)
+    inst.components.inventoryitem:SetOnPickupFn(CanGetWater)
 
     MakeHauntableLaunchAndSmash(inst)
 
     inst:ListenForEvent("fullwater",ChangeBucketState)
-    inst:ListenForEvent("ondropped",RemoveOwner)
+    inst:ListenForEvent("ondropped",SetCheckWeather)
 
     return inst
 end

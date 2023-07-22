@@ -17,7 +17,7 @@ local function _Update(inst, self)
 end
 
 function WateringTool:Update(dt)
-    if not self.owner and not self.isfull then
+    if not self.isfull then
         local val = dt or TUNING.RAIN_GIVE_WATER
         if not TheWorld.state.israining then
             val = TUNING.LOST_WATER
@@ -27,11 +27,11 @@ function WateringTool:Update(dt)
             self:StopGetRaindrop()
         elseif self.rainfilling <= 0 then
             self.rainfilling = 0
-            self:CheckWeather(nil)
+            self:CheckWeather()
         end
     else
         self.rainfilling = 0
-        self:CheckWeather(self.owner)
+        self:StopCheckWeather()
     end
 end
 
@@ -87,15 +87,20 @@ function WateringTool:StopGetRaindrop()
     end
 end
 
-function WateringTool:CheckWeather(doer)
+function WateringTool:CheckWeather()
     if self.rainingtask ~= nil then
         self.rainingtask:Cancel()
         self.rainingtask = nil
     end
 
-    self.owner = doer or nil
-
     self.rainingtask = self.inst:DoPeriodicTask(1, _Update, nil, self)
+end
+
+function WateringTool:StopCheckWeather()
+    if self.rainingtask ~= nil then
+        self.rainingtask:Cancel()
+        self.rainingtask = nil
+    end
 end
 
 function WateringTool:OnSave()
