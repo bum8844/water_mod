@@ -3,6 +3,7 @@ local WaterStorage = Class(function(self, inst)
 
     self.maxrefrashing = TUNING.PERISH_FAST
     self.waterperish = 0
+    self.paused = true
 
     self.updatetask = nil
 end,nil,nil)
@@ -46,7 +47,7 @@ function WaterStorage:LongUpdate(dt)
     end
 end
 
-function WaterStorage:StartReFreshinging()
+function WaterStorage:StartFreshening()
     if self.updatetask ~= nil then
         self.updatetask:Cancel()
         self.updatetask = nil
@@ -55,13 +56,15 @@ function WaterStorage:StartReFreshinging()
     local dt = 10 + math.random()*FRAMES*8
     self.start_dt = math.random()*2
     self.updatetask = self.inst:DoPeriodicTask(dt, Update, self.start_dt, dt)
+    self.paused = false
 end
 
-function WaterStorage:StopReFreshinging()
+function WaterStorage:StopFreshening()
     if self.updatetask ~= nil then
         self.updatetask:Cancel()
         self.updatetask = nil
     end
+    self.paused = true
 end
 
 function WaterStorage:ResetWaterPerish()
@@ -74,7 +77,7 @@ end
 
 function WaterStorage:OnSave()
     return {
-        paused = self.updatetask == nil or nil,
+        paused = self.paused
         waterperish = self.waterperish
     }
 end
@@ -86,9 +89,9 @@ function WaterStorage:OnLoad(data)
         end
 
         if data.paused then
-            self:StartReFreshinging()
+            self:StartFreshening()
         elseif data.waterperish == self.maxrefrashing then
-            self:StopReFreshinging()
+            self:StopFreshening()
         end
     end
 end

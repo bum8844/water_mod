@@ -72,7 +72,7 @@ end
 local function OnTakeWater(inst)
 	local waterperish = inst.components.waterstorage:GetWaterPerish()
 	if waterperish < MAXREFRASHING then
-		inst.components.waterstorage:StartReFreshinging()
+		inst.components.waterstorage:StartFreshening()
 	end
 	inst.AnimState:PlayAnimation("take_water")
 	inst.AnimState:PushAnimation("idle")
@@ -84,7 +84,7 @@ local function OnTaken(inst, taker, water_amount)
 	local waterperish = inst.components.waterstorage:GetWaterPerish()
 	inst.components.waterlevel:DoDelta(-water_amount)
 	if inst.components.waterlevel:GetWater() <= 0 or waterperish >= MAXREFRASHING then
-		inst.components.waterstorage:StopReFreshinging()
+		inst.components.waterstorage:StopFreshening()
 	end
 	inst.AnimState:PlayAnimation("get_water")
 	inst.AnimState:PushAnimation("idle")
