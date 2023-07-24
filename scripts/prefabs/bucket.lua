@@ -78,18 +78,13 @@ end
 
 local function OnTakeWater(inst, source, doer)
     if source ~= nil and source.components.waterlevel ~= nil then
-        local watervalue = TUNING.BUCKET_LEVEL_PER_USE
-        if TUNING.BUCKET_LEVEL_PER_USE > inst.components.finiteuses:GetUses() then
-            watervalue = inst.components.finiteuses:GetUses()
-        end
+        local watervalue = math.min(TUNING.BUCKET_LEVEL_PER_USE, inst.components.finiteuses:GetUses())
         source.components.water:Taken(inst, watervalue)
     end
     inst.components.finiteuses:Use(inst.components.watertaker._laststack)
-    if inst.components.finiteuses.current == 0 then
+    inst.SoundEmitter:PlaySound("dontstarve/creatures/pengull/splash")
+    if inst.components.finiteuses.current <= 0 then
         inst:Remove()
-        doer.SoundEmitter:PlaySound("dontstarve/creatures/pengull/splash")
-    else
-        inst.SoundEmitter:PlaySound("dontstarve/creatures/pengull/splash")
     end
 end
 
@@ -156,11 +151,11 @@ local function ChangeBucketState(inst)
     local waterstate = "full"
     inst:AddComponent("perishable")
     if not inst:HasTag("frozen_bucket") then
-        print("안 얼었음")
+        --print("안 얼었음")
         local maxtemp = TUNING.WATER_CLEAN_MINTEMP
         
         if inst:HasTag("dirty_bucket") then
-            print("더러움")
+            --print("더러움")
             maxtemp = TUNING.WATER_DIRTY_MINTEMP
             waterstate = "dirty"
         end
@@ -182,7 +177,7 @@ local function ChangeBucketState(inst)
         end)
         inst.SoundEmitter:PlaySound("dontstarve/creatures/pengull/splash")
     else
-        print("얼어버림")
+        --print("얼어버림")
         if inst.frozentask ~= nil then
             inst.frozentask:Cancel()
             inst.frozentask = nil

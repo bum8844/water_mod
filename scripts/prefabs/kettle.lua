@@ -297,7 +297,6 @@ end
 
 local function OnTaken(inst, source, delta)
     if not inst:HasTag("burnt") then
-        inst.components.waterlevel:DoDelta(-inst.components.waterlevel:GetWater())
         if inst.components.container ~= nil and inst.components.container:IsOpen() then
             inst.AnimState:PlayAnimation("getdrink_open")
             inst.AnimState:PushAnimation("cooking_pre_loop")

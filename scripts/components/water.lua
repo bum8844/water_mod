@@ -63,6 +63,9 @@ end
 --Use taker.waterlevel.oldcurrentwater and currentwater
 function Water:Taken(taker, delta)
     self.inst:PushEvent("watertaken", {taker = taker})
+    if self.inst.components.waterlevel then
+        self.inst.components.waterlevel:DoDelta(-delta)
+    end
     if self.ontaken then
         self.ontaken(self.inst, taker, delta)
     end

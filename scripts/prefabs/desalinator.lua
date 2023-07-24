@@ -165,7 +165,6 @@ end
 
 local function OnTaken(inst, taker, water_amount)
     if not inst:HasTag("burnt") then
-        inst.components.waterlevel:DoDelta(-water_amount)
         inst.AnimState:PlayAnimation("get_water")
         inst.AnimState:PushAnimation("idle")
         inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/medium")
