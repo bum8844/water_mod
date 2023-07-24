@@ -2,8 +2,8 @@ require "prefabutil" -- for the MakePlacer function
 
 local assets =
 {
-    Asset("ANIM", "anim/tea_tree_seed.zip"),
-	Asset("ANIM", "anim/tealeaves.zip"),
+    Asset("ANIM", "anim/dehy_tea_tree_seed.zip"),
+	Asset("ANIM", "anim/dehy_tealeaves.zip"),
 }
 
 local prefabs = {
