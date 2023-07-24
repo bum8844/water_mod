@@ -24,7 +24,7 @@ local function MakePreparedFood(data)
     local foodassets =
     {
         Asset("ANIM", "anim/cook_pot_food.zip"),
-        Asset("ANIM", "anim/water_spice.zip"),
+        Asset("ANIM", "anim/dehy_water_spice.zip"),
         Asset("ANIM", "anim/plate_food.zip"),
         Asset("INV_IMAGE", "spice_caffeinpepper_over"),
         Asset("INV_IMAGE", data.name),
