@@ -48,7 +48,7 @@ local function GetWater(inst, watertype, doer)
 end
 
 local function OnPickup(inst, doer)
-    if doer then
+    --[[if doer then
         local ice = ""
         if inst.components.wateringtool:IsFrozen() then
             ice = "_ice"
@@ -58,7 +58,7 @@ local function OnPickup(inst, doer)
         else
             GetWater(inst, "water_clean"..ice, doer)
         end
-    end
+    end]]
     inst.AnimState:PlayAnimation("empty")
 end
 
@@ -245,7 +245,7 @@ local function fn()
     MakeSmallPropagator(inst)
 	
     inst:AddComponent("inventoryitem")
-    inst.components.inventoryitem:SetOnPickupFn(CanGetWater)
+    --inst.components.inventoryitem:SetOnPickupFn(CanGetWater)
 
     MakeHauntableLaunchAndSmash(inst)
 
