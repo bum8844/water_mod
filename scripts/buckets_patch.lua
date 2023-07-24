@@ -16,7 +16,7 @@ local function OnTakeWater(inst, source, doer)
     end
 end
 
-local function FillByRain(inst)
+--[[local function FillByRain(inst)
     local current_fin = inst.components.finiteuses:GetUses()
     local water = SpawnPrefab("water_clean")
     inst.rainfilling = 0
@@ -43,7 +43,7 @@ local function WeatherCheck(inst)
     if inst.rainfilling >= TUNING.BUCKET_LEVEL_PER_USE then
         FillByRain(inst)
     end
-end
+end]]
 
 local function onremovewater(inst)
     if not GLOBAL.TheWorld.state.israining and inst.rainfilling ~= 0 then
@@ -90,5 +90,5 @@ AddPrefabPostInit("kyno_bucket_empty", function(inst)
     inst.components.finiteuses:SetUses(TUNING.BUCKET_MAX_LEVEL)
     inst.components.finiteuses:SetOnFinished(inst.Remove)
     
-    inst:AddComponent("wateringtool")
+    --inst:AddComponent("wateringtool")
 end)
