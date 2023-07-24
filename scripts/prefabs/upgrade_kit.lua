@@ -2,12 +2,12 @@ local NEED_TAGS = { "sprinkler_water" }
 local range = TUNING.FIND_WATER_RANGE
 
 local well_kit_assets = {
-    Asset("ANIM", "anim/dehy_well.zip"),
+    Asset("ANIM", "anim/well.zip"),
 }
 
 local well_sprinkler_kit_assets = {
-    Asset("ANIM", "anim/dehy_well_sprinkler.zip"),
-    Asset("ANIM", "anim/dehy_well_sprinkler_placement.zip")
+    Asset("ANIM", "anim/well_sprinkler.zip"),
+    Asset("ANIM", "anim/well_sprinkler_placement.zip")
 }
 
 local well_sprinkler_kit_prefabs = {

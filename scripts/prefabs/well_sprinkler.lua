@@ -6,9 +6,9 @@ local WATER_RADIUS = 3.8
 
 local assets =
 {
-	Asset("ANIM", "anim/dehy_well_sprinkler.zip"),
-	Asset("ANIM", "anim/dehy_well_sprinkler_meter.zip"),
-	Asset("ANIM", "anim/dehy_well_sprinkler_placement.zip"),
+	Asset("ANIM", "anim/well_sprinkler.zip"),
+	Asset("ANIM", "anim/well_sprinkler_meter.zip"),
+	Asset("ANIM", "anim/well_sprinkler_placement.zip"),
 }
 
 local prefabs =

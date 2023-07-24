@@ -1,6 +1,6 @@
 local assets =
 {
-    Asset("ANIM", "anim/dehy_boillingrecipcard.zip"),
+    Asset("ANIM", "anim/boillingrecipcard.zip"),
 }
 
 local kettle = require("kettle_recpie_cards")

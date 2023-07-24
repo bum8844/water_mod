@@ -1,9 +1,9 @@
 local assets =
 {
-    Asset("ANIM", "anim/dehy_campkettle.zip"),
-    Asset("ANIM", "anim/dehy_campkettle_item.zip"),
-    Asset("ANIM", "anim/dehy_campkettle_meter_water.zip"),
-    Asset("ANIM", "anim/dehy_campkettle_meter_dirty.zip"),
+    Asset("ANIM", "anim/campkettle.zip"),
+    Asset("ANIM", "anim/campkettle_item.zip"),
+    Asset("ANIM", "anim/campkettle_meter_water.zip"),
+    Asset("ANIM", "anim/campkettle_meter_dirty.zip"),
     Asset("IMAGE", "images/tea_inventoryitem.tex"),
     Asset("ATLAS", "images/tea_inventoryitem.xml"),
     Asset("ATLAS_BUILD", "images/tea_inventoryitem.xml", 256),

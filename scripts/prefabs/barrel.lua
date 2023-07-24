@@ -5,8 +5,8 @@ local MAXREFRASHING = TUNING.PERISH_FAST
 
 local assets =
 {
-    Asset("ANIM", "anim/dehy_barrel.zip"),
-	Asset("ANIM", "anim/dehy_barrel_meter_water.zip"),
+    Asset("ANIM", "anim/barrel.zip"),
+	Asset("ANIM", "anim/barrel_meter_water.zip"),
 }
 
 local prefabs =
@@ -41,6 +41,9 @@ local function onhit(inst, worker)
 end
 
 local function onbuilt(inst)
+	--[[inst.components.waterlevel.accepting = false
+	inst.components.water.available = false		inst.components.water.available = false
+	inst.components.waterlevel:SetPercent(0)		inst.components.waterlevel:SetPercent(0)]]
     inst.AnimState:PlayAnimation("place",false)
 	inst.SoundEmitter:PlaySound("dontstarve/common/rain_meter_craft")
 end

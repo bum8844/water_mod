@@ -21,7 +21,7 @@ local function MakePreparedDrink(data)
 
 	local drinkassets =
 	{
-		Asset("ANIM", "anim/dehy_kettle_drink.zip"),
+		Asset("ANIM", "anim/kettle_drink.zip"),
         Asset("SCRIPT", "scripts/prefabs/fertilizer_nutrient_defs.lua"),
 	}
 
