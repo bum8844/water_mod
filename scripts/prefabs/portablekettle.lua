@@ -13,7 +13,7 @@ local assets =
 
 local assets_item =
 {
-    Asset("ANIM", "anim/portablekettle.zip"),
+    Asset("ANIM", "anim/dehy_portablekettle.zip"),
 }
 
 local prefabs_portablekettle =
