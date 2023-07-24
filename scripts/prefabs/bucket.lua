@@ -249,8 +249,8 @@ local function fn()
 
     MakeHauntableLaunchAndSmash(inst)
 
-    inst:ListenForEvent("fullwater",ChangeBucketState)
-    inst:ListenForEvent("ondropped",SetCheckWeather)
+    --inst:ListenForEvent("fullwater",ChangeBucketState)
+    --inst:ListenForEvent("ondropped",SetCheckWeather)
 
     return inst
 end

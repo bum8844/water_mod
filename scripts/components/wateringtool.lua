@@ -1,17 +1,23 @@
 local WateringTool = Class(function(self, inst)
     self.inst = inst
-
-    self.capacity = TUNING.BUCKET_LEVEL_PER_USE
+--[[
+    self.maxrainfilling = TUNING.BUCKET_LEVEL_PER_USE
     self.rainfilling = 0
 
     self.precipitation = TUNING.BUCKET_RAINFALL
     self.evaporation = TUNING.BUCKET_EVAPORATION
 
-    --self.cancontainrain = true
+    self.cancontainrain = true
     self.rainingtask = nil
+
+    self.owner = nil]]
 end,nil,nil)
 
-local function Update(self, dt)
+--[[local function _Update(inst, self)
+    self:Update()
+end
+
+function WateringTool:Update(dt)
     if not self.isfull then
         local multiplier = 1
         if TheWorld.state.israining then
@@ -89,6 +95,6 @@ function WateringTool:OnLoad(data)
     if owner == nil then
         self.inst:DoTaskInTime(0, Update, nil, self)
     end
-end
+end]]
 
 return WateringTool
