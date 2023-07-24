@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<spriter_data scml_version="1.0" generator="BrashMonkey Spriter" generator_version="r11">
+    <folder id="0" name="0">
+        <file id="0" name="0/swap.png" width="269" height="286" pivot_x="0.45" pivot_y="0.88"/>
+    </folder>
+    <folder id="1" name="1">
+        <file id="0" name="1/1.png" width="269" height="286" pivot_x="0.45" pivot_y="0.88"/>
+    </folder>
+    <folder id="2" name="2">
+        <file id="0" name="2/2.png" width="269" height="286" pivot_x="0.45" pivot_y="0.88"/>
+    </folder>
+    <folder id="3" name="3">
+        <file id="0" name="3/3.png" width="269" height="286" pivot_x="0.45" pivot_y="0.88"/>
+    </folder>
+    <entity id="0" name="campkettle_meter_water">
+        <animation id="0" name="idle" length="1000" interval="100">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="swap">
+                <key id="0" spin="0">
+                    <object folder="0" file="0" x="-13.45" y="108.68" angle="0"/>
+                </key>
+            </timeline>
+        </animation>
+    </entity>
+</spriter_data>
