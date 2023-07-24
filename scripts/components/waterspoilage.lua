@@ -88,19 +88,19 @@ function WaterSpoilage:GetPercent()
 end
 
 function WaterSpoilage:Dilute(amount, timeleft)
-    if self.inst.components.waterlevel then
-        local water = self.inst.components.waterlevel:GetWater()
-        if self.freshness or self.max_freshness then
-            local perish = self.freshness or self.max_freshness
-            self:SetFreshness((perish * water + amount * timeleft) / (water + amount))
-        else
-            self:SetFreshness(timeleft)
-        end
+    local water = self.inst.components.waterlevel and self.inst.components.waterlevel:GetWater()
+        or self.inst.components.wateringtool and self.inst.components.wateringtool:GetRainFilling()
+        
+    if self.freshness or self.max_freshness then
+        local perish = self.freshness or self.max_freshness
+        self:SetFreshness((perish * water + amount * timeleft) / (water + amount))
+    else
+        self:SetFreshness(timeleft)
+    end
 
-        local percent = self:GetPercent()
-        if percent > 0 or percent < 1 then
-            self:StartFreshening()
-        end
+    local percent = self:GetPercent()
+    if percent > 0 or percent < 1 then
+        self:StartFreshening()
     end
 end
 
