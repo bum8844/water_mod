@@ -2,9 +2,9 @@ require "prefabutil"
 
 local assets =
 {
-    Asset("ANIM", "anim/desalinator.zip"),
-	Asset("ANIM", "anim/desalinator_meter_water.zip"),
-    Asset("ANIM", "anim/desalinator_meter_salt.zip")
+    Asset("ANIM", "anim/dehy_desalinator.zip"),
+	Asset("ANIM", "anim/dehy_desalinator_meter_water.zip"),
+    Asset("ANIM", "anim/dehy_desalinator_meter_salt.zip")
 }
 
 local function GetWet(inst)

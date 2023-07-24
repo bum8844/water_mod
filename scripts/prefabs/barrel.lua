@@ -5,8 +5,8 @@ local MAXREFRASHING = TUNING.PERISH_FAST
 
 local assets =
 {
-    Asset("ANIM", "anim/barrel.zip"),
-	Asset("ANIM", "anim/barrel_meter_water.zip"),
+    Asset("ANIM", "anim/dehy_barrel.zip"),
+	Asset("ANIM", "anim/dehy_barrel_meter_water.zip"),
 }
 
 local prefabs =

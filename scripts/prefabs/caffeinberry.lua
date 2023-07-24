@@ -2,10 +2,10 @@ require "prefabutil"
 
 local assets =
 {
-	Asset("ANIM", "anim/caffeinberry.zip"),
-	Asset("ANIM", "anim/caffeinberry_diseased.zip"),
-    Asset("ANIM", "anim/caffeinberry_bean.zip"),
-    Asset("ANIM", "anim/water_spice.zip")
+	Asset("ANIM", "anim/dehy_caffeinberry.zip"),
+	Asset("ANIM", "anim/dehy_caffeinberry_diseased.zip"),
+    Asset("ANIM", "anim/dehy_caffeinberry_bean.zip"),
+    Asset("ANIM", "anim/dehy_water_spice.zip")
 }
 
 local prefabs =

@@ -1,6 +1,6 @@
 local assets =
 {
-	Asset("ANIM", "anim/buckets.zip"),
+	Asset("ANIM", "anim/dehy_buckets.zip"),
 }
 
 local function SetCheckWeather(inst)

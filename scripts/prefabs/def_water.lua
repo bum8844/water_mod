@@ -108,8 +108,8 @@ end
 local function MakeCup(name, masterfn, tags)
     local assets =
     {
-        Asset("ANIM", "anim/kettle_drink.zip"),
-        Asset("ANIM", "anim/kettle_drink_bottle.zip"),
+        Asset("ANIM", "anim/dehy_kettle_drink.zip"),
+        Asset("ANIM", "anim/dehy_kettle_drink_bottle.zip"),
     }
 
     local prefabs =

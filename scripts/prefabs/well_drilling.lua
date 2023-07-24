@@ -2,7 +2,7 @@ require "prefabutil"
 
 local assets = 
 {
-	Asset("ANIM", "anim/well_drilling.zip"),
+	Asset("ANIM", "anim/dehy_well_drilling.zip"),
 	Asset("IMAGE", "images/tea_inventoryitem.tex"),
 	Asset("ATLAS", "images/tea_inventoryitem.xml"),
 }
