@@ -5,7 +5,7 @@ local assets =
 	Asset("ANIM", "anim/dehy_caffeinberry.zip"),
 	Asset("ANIM", "anim/dehy_caffeinberry_diseased.zip"),
     Asset("ANIM", "anim/dehy_caffeinberry_bean.zip"),
-    Asset("ANIM", "anim/dehy_water_spice.zip")
+    Asset("ANIM", "anim/dehy_water_spice.zip"),
 }
 
 local prefabs =
