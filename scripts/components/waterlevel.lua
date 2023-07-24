@@ -145,7 +145,7 @@ function Waterlevel:SetTakeWaterFn(fn)
 end
 
 function Waterlevel:UtilityCheck(boilier)
-    if self:GetWater() ~= 0 then
+    if self:GetWater() > 0 then
         if self:IsFull() then
             self.accepting = false
         else
@@ -164,6 +164,9 @@ function Waterlevel:UtilityCheck(boilier)
         end
         if self.inst.components.watersource ~= nil then
             self.inst.components.watersource.available = false
+        end
+        if self.inst.components.waterspoilage ~= nil then
+            self.inst.components.waterspoilage:ResetWaterPerish()
         end
     end
     local sections = self:GetCurrentSection()
@@ -232,8 +235,9 @@ function Waterlevel:TakeWaterItem(item, doer)
 
     self:DoDiistiller(item, doer)
 
-    if self.inst.components.waterstorage then
-        self.inst.components.waterstorage:SetWaterPerish(item.components.perishable.perishremainingtime)
+    if self.inst.components.waterspoilage and item.components.perishable then
+        self.inst.components.waterspoilage:SetMaxFreshness(item.components.perishable.perishtime)
+        self.inst.components.waterspoilage:Dilute(watervalue, item.components.perishable.perishremainingtime)
     end
 
     local delta = self.currentwater - self.oldcurrenwater

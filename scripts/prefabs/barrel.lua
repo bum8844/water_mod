@@ -29,7 +29,7 @@ local function onhammered(inst, worker)
 	inst.components.lootdropper:DropLoot()
 	SpawnPrefab("collapse_small").Transform:SetPosition(inst.Transform:GetWorldPosition())
 	inst.SoundEmitter:PlaySound("dontstarve/common/destroy_stone", "destroy")
-	GetWet(inst)
+	--GetWet(inst)
 	inst:Remove()
 end
 
@@ -46,9 +46,9 @@ local function onbuilt(inst)
 end
 
 local function onburnt(inst)
-	inst.components.waterlevel.accepting = false
+	--[[inst.components.waterlevel.accepting = false
 	inst.components.water.available = false
-	inst.components.waterlevel:SetPercent(0)
+	inst.components.waterlevel:SetPercent(0)]]
 	local amount = math.ceil(inst.components.wateryprotection.addwetness * MOISTURE_ON_BURNT_MULTIPLIER)
 	if amount > 0 then
 		local x, y, z = inst.Transform:GetWorldPosition()
@@ -63,16 +63,12 @@ local function onsave(inst, data)
 end
 
 local function onload(inst, data)
-    if data ~= nil and data.burnt then
+    if data ~= nil and data.burnt and inst.components.burnable ~= nil then
         inst.components.burnable.onburnt(inst)
     end
 end
 
 local function OnTakeWater(inst)
-	local waterperish = inst.components.waterstorage:GetWaterPerish()
-	if waterperish < MAXREFRASHING then
-		inst.components.waterstorage:StartReFreshinging()
-	end
 	inst.AnimState:PlayAnimation("take_water")
 	inst.AnimState:PushAnimation("idle")
 	inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/medium")
@@ -80,11 +76,6 @@ local function OnTakeWater(inst)
 end
 
 local function OnTaken(inst, taker, water_amount)
-	local waterperish = inst.components.waterstorage:GetWaterPerish()
-	inst.components.waterlevel:DoDelta(-water_amount)
-	if inst.components.waterlevel:GetWater() == 0 or waterperish == MAXREFRASHING then
-		inst.components.waterstorage:StopReFreshinging()
-	end
 	inst.AnimState:PlayAnimation("get_water")
 	inst.AnimState:PushAnimation("idle")
 	inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/medium")
@@ -97,10 +88,6 @@ local function OnSectionChange(new, old, inst)
 		inst.AnimState:OverrideSymbol("swap", "barrel_meter_water", tostring(new))
 	end
 end
-
---[[local function changewatertype(inst)
-	inst.components.water:SetWaterType(inst.components.waterlevel.watertype)
-end]]
 
 local function onpercentusedchange(inst, data)
 	inst.components.wateryprotection.addwetness = data.percent * TUNING.WATER_BARREL_WETNESS
@@ -145,7 +132,13 @@ local function fn()
 	inst.components.workable:SetOnFinishCallback(onhammered)
 	inst.components.workable:SetOnWorkCallback(onhit)
 
-	inst:AddComponent("waterstorage")
+	inst:AddComponent("waterspoilage")
+	inst.components.waterspoilage:SetLocalMultiplier(TUNING.BARREL_WATERSPOILAGE_RATE)
+	--[[inst:AddComponent("container")
+	inst.components.container:WidgetSetup("barrel")
+
+	inst:AddComponent("preserver")
+	inst.components.preserver:SetPerishRateMultiplier(-1/3)]]
 	
 	inst:AddComponent("waterlevel")
 	inst.components.waterlevel:SetTakeWaterFn(OnTakeWater)
