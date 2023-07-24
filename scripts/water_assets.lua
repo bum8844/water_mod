@@ -7,8 +7,8 @@ local Assets =
     Asset("ATLAS_BUILD", "images/tea_inventoryitem.xml", 256),
     Asset("SOUNDPACKAGE", "sound/drink_fx.fev"),    
     Asset("SOUND", "sound/drink_fx.fsb"),
-    Asset("ANIM", "anim/dehy_status_thirst.zip"),
-    Asset("ANIM", "anim/dehy_water_spice.zip"),
+    Asset("ANIM", "anim/status_thirst.zip"),
+    Asset("ANIM", "anim/water_spice.zip"),
 }
 
 return Assets
