@@ -5,8 +5,8 @@ local MAXREFRASHING = TUNING.PERISH_FAST
 
 local assets =
 {
-    --Asset("ANIM", "anim/barrel.zip"),
-    Asset("ANIM", "anim/DEHY_barrel.zip"),
+    Asset("ANIM", "anim/barrel.zip"),
+    --Asset("ANIM", "anim/DEHY_barrel.zip"),
 	Asset("ANIM", "anim/barrel_meter_water.zip"),
 }
 
@@ -146,9 +146,14 @@ local function fn()
 	inst.components.workable:SetOnFinishCallback(onhammered)
 	inst.components.workable:SetOnWorkCallback(onhit)
 
-	inst:AddComponent("waterstorage")
+	--inst:AddComponent("waterstorage")
+	inst:AddComponent("container")
+	inst.components.container:WidgetSetup("barrel")
+
+	inst:AddComponent("preserver")
+	inst.components.preserver:SetPerishRateMultiplier(-1/3)
 	
-	inst:AddComponent("waterlevel")
+	--[[inst:AddComponent("waterlevel")
 	inst.components.waterlevel:SetTakeWaterFn(OnTakeWater)
 	inst.components.waterlevel:SetCanAccepts({WATERTYPE.CLEAN, WATERTYPE.EMPTY})
 	inst.components.waterlevel.maxwater = TUNING.BARREL_MAX_LEVEL
@@ -168,7 +173,7 @@ local function fn()
     inst.components.wateryprotection.temperaturereduction = TUNING.WATER_BARREL_TEMP_REDUCTION
     inst.components.wateryprotection.witherprotectiontime = TUNING.WATER_BARREL_PROTECTION_TIME
     inst.components.wateryprotection.addwetness = 0 -- 물의 양에 따라 변형
-    inst.components.wateryprotection.protection_dist = TUNING.WATER_BARREL_DIST
+    inst.components.wateryprotection.protection_dist = TUNING.WATER_BARREL_DIST]]
 	
 	MakeMediumBurnable(inst, nil, nil, true)
     MakeSmallPropagator(inst)

@@ -3,6 +3,19 @@ local containers = require "containers"
 local Vector3 = _G.Vector3
  
 local params = containers.params
+
+params.barrel =
+{
+    widget =
+    {
+        slotpos = {Vector3(0,0,0)},
+        animbank = "ui_chest_3x3",
+        animbuild = "ui_chest_3x3",
+        pos = Vector3(0,200,0),
+        side_align_tip = 160,
+    },
+    type = "chest",
+}
  
 params.kettle =
 {
@@ -28,6 +41,10 @@ params.kettle =
     acceptsstacks = false,
     type = "cooker",
 }
+
+function params.barrel.itemtestfn(container, item, slot)
+    return item:HasTag("clean")
+end
 
 params.brewery =
 {
