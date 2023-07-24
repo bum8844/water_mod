@@ -35,8 +35,8 @@ function Water_BurntStructureFn(inst)
     if inst.components.water ~= nil then
         inst:RemoveComponent("water")
     end
-    if inst.components.waterstorage ~= nil then
-        inst:RemoveComponent("waterstorage")
+    if inst.components.waterspoilage ~= nil then
+        inst:RemoveComponent("waterspoilage")
     end
 end
 

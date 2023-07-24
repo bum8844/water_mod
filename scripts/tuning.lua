@@ -92,6 +92,9 @@ water_tuning =
 	-- Waterlevel
 	WATERLEVEL_PER_SIP = 10,
 
+	-- Waterspoilage
+	BARREL_FRESHENING_RATE = .5,
+
 	-- Basic Thirst Rate
 	WILSON_THIRST = wilson_thirst,
 	WILSON_THIRST_RATE = hydration_per_day/TUNING.TOTAL_DAY_TIME, 
