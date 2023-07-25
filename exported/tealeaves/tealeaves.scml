@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<spriter_data scml_version="1.0" generator="BrashMonkey Spriter" generator_version="r11">
+    <folder id="0" name="tealeaves">
+        <file id="0" name="tealeaves/tealeaves-0.png" width="215" height="277" pivot_x="0.893023" pivot_y="0.475285"/>
+    </folder>
+    <folder id="1" name="tealeaves_dried_item">
+        <file id="0" name="tealeaves_dried_item/tealeaves_dried_item.png" width="165" height="82" pivot_x="0.5" pivot_y="0.5"/>
+    </folder>
+    <folder id="2" name="tealeaves_item">
+        <file id="0" name="tealeaves_item/tealeaves_item.png" width="165" height="82" pivot_x="0.5" pivot_y="0.5"/>
+    </folder>
+    <folder id="3" name="tealeaves_dried">
+        <file id="0" name="tealeaves_dried/tealeaves_dried-0.png" width="215" height="277" pivot_x="0.893023" pivot_y="0.475285"/>
+    </folder>
+    <entity id="0" name="tealeaves">
+        <animation id="0" name="idle_tealeaves" length="50" interval="100">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+                <key id="1" time="25">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+                <key id="2" time="50">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="foliage">
+                <key id="0" spin="0">
+                    <object folder="2" file="0" x="-0.1" y="0.05" angle="0"/>
+                </key>
+            </timeline>
+        </animation>
+        <animation id="1" name="idle_tealeaves_dried" length="50" interval="100">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+                <key id="1" time="25">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+                <key id="2" time="50">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="foliage_Dried">
+                <key id="0" spin="0">
+                    <object folder="1" file="0" x="-0.1" y="0.05" angle="0" scale_x="1.2" scale_y="1.2"/>
+                </key>
+            </timeline>
+        </animation>
+        <animation id="2" name="tealeaves" length="50" interval="100">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+                <key id="1" time="25">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+                <key id="2" time="50">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="tealeaves">
+                <key id="0" spin="0">
+                    <object folder="0" file="0" x="27.8" y="194.92027" angle="0" scale_x="2" scale_y="2"/>
+                </key>
+            </timeline>
+        </animation>
+        <animation id="3" name="tealeaves_dried" length="50" interval="100">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+                <key id="1" time="25">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+                <key id="2" time="50">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="tealeaves">
+                <key id="0" spin="0">
+                    <object folder="3" file="0" x="27.8" y="194.92027" angle="0" scale_x="2" scale_y="2"/>
+                </key>
+            </timeline>
+        </animation>
+    </entity>
+</spriter_data>

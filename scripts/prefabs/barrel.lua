@@ -6,7 +6,6 @@ local MAXREFRASHING = TUNING.PERISH_FAST
 local assets =
 {
     Asset("ANIM", "anim/barrel.zip"),
-    --Asset("ANIM", "anim/DEHY_barrel.zip"),
 	Asset("ANIM", "anim/barrel_meter_water.zip"),
 }
 
@@ -30,7 +29,7 @@ local function onhammered(inst, worker)
 	inst.components.lootdropper:DropLoot()
 	SpawnPrefab("collapse_small").Transform:SetPosition(inst.Transform:GetWorldPosition())
 	inst.SoundEmitter:PlaySound("dontstarve/common/destroy_stone", "destroy")
-	--GetWet(inst)
+	GetWet(inst)
 	inst:Remove()
 end
 
@@ -42,17 +41,14 @@ local function onhit(inst, worker)
 end
 
 local function onbuilt(inst)
-	--[[inst.components.waterlevel.accepting = false
-	inst.components.water.available = false		inst.components.water.available = false
-	inst.components.waterlevel:SetPercent(0)		inst.components.waterlevel:SetPercent(0)]]
     inst.AnimState:PlayAnimation("place",false)
 	inst.SoundEmitter:PlaySound("dontstarve/common/rain_meter_craft")
 end
 
 local function onburnt(inst)
-	--[[inst.components.waterlevel.accepting = false
+	inst.components.waterlevel.accepting = false
 	inst.components.water.available = false
-	inst.components.waterlevel:SetPercent(0)]]
+	inst.components.waterlevel:SetPercent(0)
 	local amount = math.ceil(inst.components.wateryprotection.addwetness * MOISTURE_ON_BURNT_MULTIPLIER)
 	if amount > 0 then
 		local x, y, z = inst.Transform:GetWorldPosition()
@@ -67,7 +63,7 @@ local function onsave(inst, data)
 end
 
 local function onload(inst, data)
-    if data ~= nil and data.burnt and inst.components.burnable ~= nil then
+    if data ~= nil and data.burnt then
         inst.components.burnable.onburnt(inst)
     end
 end
@@ -92,6 +88,10 @@ local function OnSectionChange(new, old, inst)
 		inst.AnimState:OverrideSymbol("swap", "barrel_meter_water", tostring(new))
 	end
 end
+
+--[[local function changewatertype(inst)
+	inst.components.water:SetWaterType(inst.components.waterlevel.watertype)
+end]]
 
 local function onpercentusedchange(inst, data)
 	inst.components.wateryprotection.addwetness = data.percent * TUNING.WATER_BARREL_WETNESS
@@ -137,12 +137,7 @@ local function fn()
 	inst.components.workable:SetOnWorkCallback(onhit)
 
 	inst:AddComponent("waterspoilage")
-	inst.components.waterspoilage:SetLocalMultiplier(TUNING.BARREL_WATERSPOILAGE_RATE)
-	--[[inst:AddComponent("container")
-	inst.components.container:WidgetSetup("barrel")
-
-	inst:AddComponent("preserver")
-	inst.components.preserver:SetPerishRateMultiplier(-1/3)]]
+	inst.components.waterspoilage.localPerishMultiplyer = TUNING.BARREL_FRESHENING_RATE
 	
 	inst:AddComponent("waterlevel")
 	inst.components.waterlevel:SetTakeWaterFn(OnTakeWater)
