@@ -313,15 +313,4 @@ configuration_options =
 		},
 		default = .25
 	},
-	{
-		name = "blocking_assassination",
-		label = "Prevent Poisoning",
-		hover = "Allow Suspicious Hibiscus to be fed to other players",
-		options = 
-		{
-			{description = "Yes" , data = false},
-			{description = "No" , data = true}
-		},
-		default = true
-	}
 }

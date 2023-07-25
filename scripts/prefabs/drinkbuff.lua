@@ -217,12 +217,8 @@ end
 
 local function OnAttached_obe(inst, target)
     inst.entity:SetParent(target.entity)
-    local chk = TUNING.ANTI_GHOST
     if target.components.obe ~= nil then
         local sanity = target.components.sanity.current
-        if chk < 0 then
-           sanity = sanity + 1
-        end
         target.components.obe:SetHealth(target.components.health.currenthealth)
         target.components.obe:SetHunger(target.components.hunger.current)
         target.components.obe:SetSanity(sanity)

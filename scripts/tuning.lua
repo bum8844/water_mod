@@ -160,7 +160,6 @@ water_tuning =
 	CAPACITY_TIME = TUNING.TOTAL_DAY_TIME*capacity_time,
 	IMMUNE_TIME = TUNING.TOTAL_DAY_TIME*immune_time,
 	GHOST_TIME = TUNING.TOTAL_DAY_TIME*ghost_time,
-	ANTI_GHOST = GetModConfigData("blocking_assassination"),
 	ENABLE_WATERBORNE = GetModConfigData("enable_waterborne"),
 	DRUNKARD_DURATION = TUNING.TOTAL_DAY_TIME*drunkard_time,
 	WATERBORNE_DURATION = TUNING.TOTAL_DAY_TIME*waterborne_time,
