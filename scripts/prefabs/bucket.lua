@@ -234,7 +234,7 @@ local function fn()
     inst:AddComponent("fuel")
     inst.components.fuel.fuelvalue = TUNING.LARGE_FUEL
     
-    --inst:AddComponent("wateringtool")
+    inst:AddComponent("wateringtool")
 
     inst:AddComponent("inspectable")
 
