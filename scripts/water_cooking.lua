@@ -21,8 +21,8 @@ end
 --스크립트 분리를 위해 별도 기입
 local spoiled_drink =
 {
-	name = "spoiled_drink"
-	weight = 1
+	name = "spoiled_drink",
+	weight = 1,
 	test = function(boilier, names, tags) return true end,
 	priority = -2,
 	health = -TUNING.HEALING_SMALL,
