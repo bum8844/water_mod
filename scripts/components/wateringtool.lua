@@ -1,6 +1,12 @@
 local WateringTool = Class(function(self, inst)
     self.inst = inst
---[[
+end)
+
+return WateringTool
+
+--[[local WateringTool = Class(function(self, inst)
+    self.inst = inst
+
     self.maxrainfilling = TUNING.BUCKET_LEVEL_PER_USE
     self.rainfilling = 0
 
@@ -10,7 +16,7 @@ local WateringTool = Class(function(self, inst)
     self.cancontainrain = true
     self.rainingtask = nil
 
-    self.owner = nil]]
+    self.owner = nil
 end,nil,nil)
 
 --[[local function _Update(inst, self)
@@ -95,6 +101,9 @@ function WateringTool:OnLoad(data)
     if owner == nil then
         self.inst:DoTaskInTime(0, Update, nil, self)
     end
-end]]
+end
 
 return WateringTool
+]]
+
+
