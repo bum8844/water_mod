@@ -19,7 +19,7 @@ return WateringTool
     self.owner = nil
 end,nil,nil)
 
---[[local function _Update(inst, self)
+local function _Update(inst, self)
     self:Update()
 end
 

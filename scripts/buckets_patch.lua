@@ -90,5 +90,5 @@ AddPrefabPostInit("kyno_bucket_empty", function(inst)
     inst.components.finiteuses:SetUses(TUNING.BUCKET_MAX_LEVEL)
     inst.components.finiteuses:SetOnFinished(inst.Remove)
     
-    --inst:AddComponent("wateringtool")
+    inst:AddComponent("wateringtool")
 end)
