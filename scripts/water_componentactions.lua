@@ -70,7 +70,7 @@ local USEITEM =
 
     edible = function(inst, doer, target, actions, right)
         if target:HasTag("player") then
-            if inst:HasTag("drink") or inst:HasTag("prepareddrink") or inst:HasTag("pre-prepareddrink") then
+            if inst:HasTag("drink") then
                 table.insert(actions, ACTIONS.FEEDPLAYER)
                 return
             end
@@ -139,7 +139,7 @@ local SCENE =
 
 local INVENTORY = {
     edible = function(inst, doer, actions, right)
-        if inst:HasTag("prepareddrink") or inst:HasTag("pre-prepareddrink") or inst:HasTag("def_water") then
+        if inst:HasTag("drink") or inst:HasTag("def_water") then
             if (right or inst.replica.equippable == nil) and
                 not (doer.replica.inventory:GetActiveItem() == inst and
                     doer.replica.rider ~= nil and

@@ -106,7 +106,7 @@ end
 containers.params.portablekettle = params.kettle
 
 --from widgets/containerwidget.lua
---Below allows to refresh button in cooker widget on filling or draining water.
+--Refresh button in cooker widget when filling or taking out water.
 local function RefreshButton(inst, self)
     if self.isopen then
         local widget = self.container.replica.container:GetWidget()
@@ -127,6 +127,14 @@ local function RefreshOnDirty(self, data)
     end
 end
 
+local portablespicer_itemtestfn = params.portablespicer.itemtestfn
+local function RejectDrinks(container, item, slot)
+    return portablespicer_itemtestfn(container, item, slot)
+        and not item:HasTag("prepareddrink")
+end
+
+containers.params.portablespicer.itemtestfn = RejectDrinks --음료의 양념을 허용하지 않으려면 이 부분을 활성화하세요
+
 AddClassPostConstruct("widgets/containerwidget", function(self)
     self.refreshbutton = RefreshOnDirty
     self.OnWaterlevelDirty = function(inst, data) self:refreshbutton(data) end
@@ -136,4 +144,3 @@ AddClassPostConstruct("widgets/containerwidget", function(self)
         self.inst:ListenForEvent("waterleveldirty", self.OnWaterlevelDirty, container)
     end
 end)
-

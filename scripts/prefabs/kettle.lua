@@ -350,6 +350,12 @@ local function fn()
 	minimap:SetIcon("kettle.tex")
 	
     MakeObstaclePhysics(inst, .1)
+
+    inst.Light:Enable(false)
+    inst.Light:SetRadius(.6)
+    inst.Light:SetFalloff(1)
+    inst.Light:SetIntensity(.5)
+    inst.Light:SetColour(235/255,62/255,12/255)
 	
     inst.AnimState:SetBuild("kettle")
     inst.AnimState:SetBank("kettle")

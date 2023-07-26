@@ -41,7 +41,7 @@ water_tuning =
 		"webber",
 	},
 
-	WATERBORNE = 
+	WATERBORNE_IMMUNES = 
 	{
 		"wormwood",
 		"wx78",
@@ -160,8 +160,7 @@ water_tuning =
 	CAPACITY_TIME = TUNING.TOTAL_DAY_TIME*capacity_time,
 	IMMUNE_TIME = TUNING.TOTAL_DAY_TIME*immune_time,
 	GHOST_TIME = TUNING.TOTAL_DAY_TIME*ghost_time,
-	ANTI_GHOST = GetModConfigData("blocking_assassination"),
-	ANTI_WATERBORNE = GetModConfigData("enable_waterborne"),
+	ENABLE_WATERBORNE = GetModConfigData("enable_waterborne"),
 	DRUNKARD_DURATION = TUNING.TOTAL_DAY_TIME*drunkard_time,
 	WATERBORNE_DURATION = TUNING.TOTAL_DAY_TIME*waterborne_time,
 	WELL_DRILLING_DURATION = TUNING.SEG_TIME*2.5,
