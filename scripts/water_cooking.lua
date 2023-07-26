@@ -1,13 +1,21 @@
-local drinks = modrequire("prepareddrinks")
-local ageddrinks = modrequire("preparedageddrinks")
+local drinks = require("prepareddrinks")
+local ageddrinks = require("preparedageddrinks")
 
 for k, recipe in pairs(drinks) do
 	AddCookerRecipe("kettle", recipe)
 	AddCookerRecipe("portablekettle", recipe)
+
+	if recipe.card_def then
+		_G.AddRecipeCard("kettle", recipe)
+	end
 end
 
 for k, recipe in pairs(ageddrinks) do
 	AddCookerRecipe("brewery", recipe)
+
+	if recipe.card_def then
+		_G.AddRecipeCard("brewery", recipe)
+	end
 end
 
 for k, v in pairs(require("water_spicedfoods")) do
