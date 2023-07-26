@@ -1,15 +1,3 @@
-require("kettle_recpie_cards")
-
-local function chkResistance(eater)
-	return eater.components.grogginess:GetResistance() > 4
-end
-
-local function sleepend(inst, eater)
-	eater:RemoveTag("drunk")
-	eater:PushEvent("sleep_end")
-	eater:PushEvent("refreshdrunk")
-end
-
 local function dummy(boilier, names, tags)
 	return false
 end
@@ -559,7 +547,7 @@ local drinks =
 		priority = 2,
 		health = 0,
 		hunger = 0,
-		sanity = -1
+		sanity = -1,
 		thirst = 0,
 		perishtime = TUNING.PERISH_MED,
 		cooktime = TUNING.KETTLE_ABI,
@@ -637,10 +625,6 @@ for k, v in pairs(drinks) do
     v.priority = v.priority or 0
 
     v.cookbook_category = "cookpot"
-
-	if v.card_def then
-		AddRecipeCard_Kettle("kettle",v)
-	end
 end
 
 return drinks
