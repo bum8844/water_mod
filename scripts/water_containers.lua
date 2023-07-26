@@ -130,7 +130,7 @@ end
 local portablespicer_itemtestfn = params.portablespicer.itemtestfn
 local function RejectDrinks(container, item, slot)
     return portablespicer_itemtestfn(container, item, slot)
-        and not item:HasTag("drink")
+        and not item:HasTag("prepareddrink")
 end
 
 containers.params.portablespicer.itemtestfn = RejectDrinks --음료의 양념을 허용하지 않으려면 이 부분을 활성화하세요
