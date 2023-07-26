@@ -2,19 +2,6 @@ local prefabs =
 {
     "spoiled_drink",
 }
-local spoiled_drink_prefabs = 
-{
-    "gridplacer_farmablesoil",
-}
-
---[[local function OnEaten(inst, eater)
-    local item = SpawnPrefab("cup")
-    local stacksize = eater.components.eater.eatwholestack and inst.components.stackable:StackSize() or 1
-    item.components.stackable:SetStackSize(stacksize)
-    RefundItem(inst, "cup", true)
-end]]
-
-local FERTILIZER_DEFS = require("prefabs/fertilizer_nutrient_defs").FERTILIZER_DEFS
 
 local function MakePreparedDrink(data)
 	local oneatenfn = data.oneatenfn or function(inst, eater) end
@@ -22,16 +9,10 @@ local function MakePreparedDrink(data)
 	local drinkassets =
 	{
 		Asset("ANIM", "anim/kettle_drink.zip"),
-        Asset("SCRIPT", "scripts/prefabs/fertilizer_nutrient_defs.lua"),
 	}
 
-    local drinkprefabs
+    local drinkprefabs = prefabs
 
-    if data.name ~= "spoiled_drink" then
-        local drinkprefabs = spoiled_drink_prefabs
-    else
-        local drinkprefabs = prefabs
-    end
     if data.prefabs ~= nil then
         drinkprefabs = shallowcopy(prefabs)
         for k, v in ipairs(data.prefabs) do
@@ -48,12 +29,10 @@ local function MakePreparedDrink(data)
 
     local function OnStackSizeChanged(inst, data)
         if data ~= nil then
-            if not inst:HasTag("spoiled_drink") then
-                if inst.components.perishable ~= nil and data.stacksize >= 20 then
-                    inst.components.perishable:SetLocalMultiplier(0.5)
-                else
-                    inst.components.perishable:SetLocalMultiplier(1)
-                end
+            if inst.components.perishable ~= nil and data.stacksize >= 20 then
+                inst.components.perishable:SetLocalMultiplier(0.5)
+            else
+                inst.components.perishable:SetLocalMultiplier(1)
             end
         end
     end
@@ -85,12 +64,7 @@ local function MakePreparedDrink(data)
 
         inst:AddTag("drink")
         inst:AddTag("preparedfood")
-
-        if data.name == "spoiled_drink" then
-            inst:AddTag("spoiled_drink")
-        else
-            inst:AddTag("prepareddrink")
-        end
+        inst:AddTag("prepareddrink")
 
         if data.tags ~=nil then
         	for i,v in pairs(data.tags) do
@@ -119,16 +93,6 @@ local function MakePreparedDrink(data)
             MakeInventoryFloatable(inst, data.floater[1], data.floater[2], data.floater[3])
         else
             MakeInventoryFloatable(inst)
-        end
-
-        if data.name == "spoiled_drink" then
-            inst:AddTag("heal_fertilize")
-
-            MakeDeployableFertilizerPristine(inst)
-
-            inst:AddTag("fertilizerresearchable")
-
-            inst.GetFertilizerKey = GetFertilizerKey
         end
         
         inst.entity:SetPristine()
@@ -177,23 +141,6 @@ local function MakePreparedDrink(data)
             inst.components.perishable:SetPerishTime(data.perishtime)
             inst.components.perishable:StartPerishing()
             inst.components.perishable.onperishreplacement = "spoiled_drink"
-        end
-
-        if data.name == "spoiled_drink" then
-            inst:AddComponent("fertilizerresearchable")
-            inst.components.fertilizerresearchable:SetResearchFn(fertilizerresearchfn)
-
-            inst:AddComponent("fertilizer")
-            inst.components.fertilizer.fertilizervalue = TUNING.SPOILEDFOOD_FERTILIZE
-            inst.components.fertilizer.soil_cycles = TUNING.SPOILEDFOOD_SOILCYCLES
-            inst.components.fertilizer.withered_cycles = TUNING.SPOILEDFOOD_WITHEREDCYCLES
-            inst.components.fertilizer:SetNutrients(FERTILIZER_DEFS.spoiled_drink.nutrients)
-
-            inst:AddComponent("smotherer")
-            
-            MakeDeployableFertilizer(inst)
-
-            inst:AddComponent("selfstacker")
         end
 
         MakeDynamicCupImage(inst, "swap", "kettle_drink")

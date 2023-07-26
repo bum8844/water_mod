@@ -3,8 +3,6 @@ return {
 	"bucket",
 	"def_water",
 	"upgrade_kit",
-	"fermentingrecipcard",
-	"boillingrecipcard",
 
 	--structures
 	"barrel",
@@ -19,8 +17,8 @@ return {
 
 	--food & plants
 	"caffeinberry",
-	"prepareddrink",
-	--"spoiled_drink",
+	"prepareddrinks",
+	"spoiled_drink",
 	"tea_tree",
 	"tea_seed",
 	"water_spicedfoods",

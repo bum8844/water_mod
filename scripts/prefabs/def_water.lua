@@ -1,23 +1,6 @@
 local function Get_Waterborne_Disease(inst, eater)
-    if TUNING.ANTI_WATERBORNE then
-        if eater:HasTag("player") and not eater:HasTag("playerghost") then
-            if eater:HasTag("waterborne_immune") then
-                --eater.components.talker:Say(GetString(eater,"ANNOUNCE_WATERBORNE_IMMUNITY"))
-            else
-                eater.components.talker:Say(GetString(eater, "ANNOUNCE_EAT", "PAINFUL")) 
-            end
-        end
-        eater.components.health:DoDelta(-TUNING.HEALING_TINY)
-        if eater:HasTag("waterborne_immune") then
-            eater.components.health:DoDelta(-TUNING.HEALING_TINY)
-        else
-            eater:AddDebuff("waterbornedebuff", "waterbornedebuff")
-        end
-    else
-        if eater:HasTag("player") and not eater:HasTag("playerghost") then
-            eater.components.talker:Say(GetString(eater, "ANNOUNCE_EAT", "PAINFUL")) 
-        end
-        eater.components.health:DoDelta(-TUNING.HEALING_TINY)
+    if TUNING.ENABLE_WATERBORNE and eater:HasTag("player") and not eater:HasTag("waterborne_immune") then
+        eater:AddDebuff("waterbornedebuff", "waterbornedebuff")
     end
 end
 
@@ -318,7 +301,7 @@ local function cleanwater(inst)
 end
 
 local function dirtywater(inst)
-    inst.components.edible.healthvalue = 0
+    inst.components.edible.healthvalue = -TUNING.HEALING_TINY
     inst.components.edible.hungervalue = 0
     inst.components.edible.sanityvalue = -TUNING.SANITY_MED
     inst.components.edible.thirstvalue = TUNING.HYDRATION_SUPERTINY
@@ -346,7 +329,7 @@ local function dirtywater_ice(inst)
     inst.components.water:SetWaterType(WATERTYPE.DIRTY_ICE)
 end
 
-return MakeCup("water_clean", cleanwater, {"icebox_valid","clean","farm_water","pre-prepareddrink","potion","def"}),
+return MakeCup("water_clean", cleanwater, {"icebox_valid","clean","farm_water","pre-preparedfood","potion","def"}),
     MakeCup("water_dirty", dirtywater, {"icebox_valid","dirty","farm_water"}),
     MakeCup("water_clean_ice", cleanwater_ice,{"icebox_valid","clean","frozen","unwrappable"}),
     MakeCup("water_dirty_ice", dirtywater_ice,{"icebox_valid","dirty","frozen","unwrappable"}),

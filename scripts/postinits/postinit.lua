@@ -6,26 +6,27 @@ local postinits =
 		"eater",
 		"edible",
 		"inventoryitem_replica",
+		"inventoryitemmoisture",
+		"moisture",
 		"regrowthmanager",
 		"wisecracker",
-		"moisture",
-		"inventoryitemmoisture",
 	},
 
 	prefabs =
 	{
-		"wateringcan",
 		"antlion",
-		"oasislake",
+		"cookingrecipecard",
 		"firepit",
-		"player",
-		"portablespicer",
-		"staff",
-		"warly",
-		"woodie",
-		"wurt",
-		"tumbleweed",
 		"mound",
+		"oasislake",
+		"player",
+		"portablespicer",	
+		"staff",	
+		"tumbleweed",	
+		"warly",	
+		"wateringcan",	
+		"woodie",	
+		"wurt",
 	},
 
 	stategraphs =
@@ -48,14 +49,16 @@ local postinits =
 }
 
 if GetModConfigData("enable_thirst") then
+	table.insert(postinits.prefabs, "hats")
+	table.insert(postinits.prefabs, "wickerbottom")
+	table.insert(postinits.prefabs, "wortox")
+
 	table.insert(postinits.components, "sleepingbag")
 	table.insert(postinits.components, "sleepingbaguser")
-	table.insert(postinits.prefabs, "wortox")
-	table.insert(postinits.prefabs, "wickerbottom")
-	table.insert(postinits.prefabs, "hats")
-	table.insert(postinits.widgets, "statusdisplays")
+	
 	table.insert(postinits.widgets, "bloodover_water")
 	table.insert(postinits.widgets, "healthbadge_water")
+	table.insert(postinits.widgets, "statusdisplays")
 end
 
 for dir, v in pairs(postinits) do

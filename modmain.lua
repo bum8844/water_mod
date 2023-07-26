@@ -10,22 +10,6 @@ PrefabFiles = require("water_prefablist")
 
 Assets = require("water_assets")
 
-for k,v in ipairs(GLOBAL.KnownModIndex:GetModsToLoad()) do 
-	local Mod = GLOBAL.KnownModIndex:GetModInfo(v).name
-	if Mod == "Heap of Foods" then -- workshop-2334209327
-		modimport("scripts/buckets_patch")
-	end
-	if Mod == " Tropical Experience Return of Them" or Mod == " 他们的回归" then -- workshop-1505270912
-		modimport("scripts/water_spicedfoods_mod_te")
-	end
-	if Mod == "Island Adventures - Shipwrecked" or Mod == "岛屿冒险" then -- workshop-1467214795
-		modimport("scripts/water_spicedfoods_mod_ia")
-	end 
-	if Mod == "󰀕 Uncompromising Mode" then -- workshop-2039181790
-		modimport("scripts/water_spicedfoods_mod_unc")
-	end
-end
-
 --[[if GLOBAL.KnownModIndex:IsModEnabled("") or GLOBAL.KnownModIndex:IsModForceEnabled("") then
 end]]
 

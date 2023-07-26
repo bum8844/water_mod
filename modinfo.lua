@@ -1,5 +1,5 @@
 name 						= "Don't Starve: Dehydrated"
-version 					= "Alpha 1.1.5c"
+version 					= "Alpha 1.1.6"
 
 description = (
 	"The test build of DSD"
@@ -114,15 +114,15 @@ configuration_options =
 	},
 	{
 		name = "thirst_decrease_speed",
-		label = "Decreasing Rate of Thirst(Criteria 150)",
+		label = "Thirst Consumption Per Day",
 		options =
 		{
-		    {description = "VerySlow", data = .2, hover = "30/day"},
-		    {description = "Slow", data = .4, hover = "60/day"},
-		    {description = "Same as Hunger", data = .5, hover = "75/day"},
-			{description = "Default", data = .6, hover = "90/day"},
-			{description = "Fast", data = .7, hover = "105/day"},
-			{description = "VeryFast", data = .9, hover = "135/day"},
+		    {description = "30", data = .2},
+		    {description = "60", data = .4},
+		    {description = "75", data = .5},
+			{description = "90(Default)", data = .6},
+			{description = "105", data = .7},
+			{description = "135", data = .9},
 		},
 		default = .6,
 	},
@@ -131,11 +131,11 @@ configuration_options =
 		label = "Waterborne Disease Duration",
 		options =
 		{
-			{description = "VeryShort", data = .125},
+			{description = "Shorter", data = .125},
 			{description = "Short", data = .25},
 			{description = "Default", data = .5},
 			{description = "Long", data = .625},
-			{description = "VeryLong", data = .75},
+			{description = "Longer", data = .75},
 		},
 		default = .5
 	},
@@ -149,11 +149,11 @@ configuration_options =
 		options =
 		{
 			{description = "None", data = 0},
-			{description = "VeryShort", data = .1875},
+			{description = "Shorter", data = .1875},
 			{description = "Short", data = .375},
 			{description = "Default", data = .75},
 			{description = "Long", data = 1.5},
-			{description = "VeryLong", data = 3},
+			{description = "Longer", data = 3},
 		},
 		default = .75
 	},
@@ -165,11 +165,11 @@ configuration_options =
 		options = 
 		{
 			{description = "None", data = 0},
-			{description = "VeryShort", data = .1875},
+			{description = "Shorter", data = .1875},
 			{description = "Short", data = .375},
 			{description = "Default", data = .75},
 			{description = "Long", data = 1.5},
-			{description = "VeryLong", data = 3},
+			{description = "Longer", data = 3},
 		},
 		default = .75
 	},
@@ -181,11 +181,11 @@ configuration_options =
 		label = "Boost Rate",
 		options = 
 		{
-			{description = "VerySlow", data = 1.21},
+			{description = "Slower", data = 1.21},
 			{description = "Slow", data = 1.42},
 			{description = "Default", data = 1.83},
 			{description = "Fast", data = 2.04},
-			{description = "VeryFast", data = 2.25},
+			{description = "Faster", data = 2.25},
 		},
 		default = 1.83
 	},
@@ -194,11 +194,11 @@ configuration_options =
 		label = "Duration",
 		options = 
 		{
-			{description = "VeryShort", data = .5},
+			{description = "Shorter", data = .5},
 			{description = "Short", data = .7},
 			{description = "Default", data = 1},
 			{description = "Long", data = 2},
-			{description = "VeryLong", data = 4},
+			{description = "Longer", data = 4},
 		},
 		default = 1
 	},
@@ -209,11 +209,11 @@ configuration_options =
 		label = "Duration",
 		options =
 		{
-			{description = "VeryShort", data = 3.75},
+			{description = "Shorter", data = 3.75},
 			{description = "Short", data = 7.5},
 			{description = "Default", data = 15},
 			{description = "Long", data = 18.75},
-			{description = "VeryLong", data = 22.5},
+			{description = "Longer", data = 22.5},
 		},
 		default = 15
 	},
@@ -233,11 +233,11 @@ configuration_options =
 		label = "Intoxication Duration",
 		options =
 		{
-			{description = "VeryShort", data = .125},
+			{description = "Shorter", data = .125},
 			{description = "Short", data = .25},
 			{description = "Default", data = .5},
 			{description = "Long", data = .625},
-			{description = "VeryLong", data = .75},
+			{description = "Longer", data = .75},
 		},
 		default = .5
 	},
@@ -246,11 +246,11 @@ configuration_options =
 		label = "Tipsiness Duration",
 		options =
 		{
-			{description = "VeryShort", data = .125},
+			{description = "Shorter", data = .125},
 			{description = "Short", data = .25},
 			{description = "Default", data = .5},
 			{description = "Long", data = .625},
-			{description = "VeryLong", data = .75},
+			{description = "Longer", data = .75},
 		},
 		default = .5
 	},
@@ -259,11 +259,11 @@ configuration_options =
 		label = "Pain Relief Duration",
 		options =
 		{
-			{description = "VeryShort", data = .125},
+			{description = "Shorter", data = .125},
 			{description = "Short", data = .25},
 			{description = "Default", data = .5},
 			{description = "Long", data = .625},
-			{description = "VeryLong", data = .75},
+			{description = "Longer", data = .75},
 		},
 		default = .5
 	},
@@ -290,11 +290,11 @@ configuration_options =
 		label = "Intoxication Decreasing Rate",
 		options =
 		{
-			{description = "VerySlow", data = .75},
+			{description = "Slower", data = .75},
 			{description = "Slow", data = .625},
 			{description = "Default", data = .5},
 			{description = "Fast", data = .25},
-			{description = "VeryFast", data = .125},
+			{description = "Faster", data = .125},
 		},
 		default = .5
 	},
@@ -305,22 +305,12 @@ configuration_options =
 		label = "Duration",
 		options =
 		{
-			{description = "VeryShort", data = .0625},
+			{description = "Shorter", data = .0625},
 			{description = "Short", data = .125},
 			{description = "Default", data = .25},
 			{description = "Long", data = .5},
-			{description = "VeryLong", data = 1},
+			{description = "Longer", data = 1},
 		},
 		default = .25
 	},
-	{
-		name = "blocking_assassination",
-		label = "Can Feed Another Player?",
-		options = 
-		{
-			{description = "yes" , data = 0},
-			{description = "no" , data = -1}
-		},
-		default = -1
-	}
 }

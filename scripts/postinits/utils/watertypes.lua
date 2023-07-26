@@ -37,6 +37,7 @@ local function TestWater(inst)
    	end
 end
 
+--Make a pond the source of a Sprinkler
 for _, v in pairs(TUNING.TYPES_DIRTY) do
 	AddPrefabPostInit(v, function(inst)
 		inst:AddTag("sprinkler_water")

@@ -15,14 +15,5 @@ modrequire("water_containers")
 modrequire("recipes")
 modrequire("postinits/postinit")
 
-local drinks = require("prepareddrinks")
-local drinks_fermented = require("preparedageddrinks")
-
-for k, recipe in pairs(drinks) do
-	AddCookerRecipe("kettle", recipe)
-	AddCookerRecipe("portablekettle", recipe)
-end
-
-for k, recipe in pairs(drinks_fermented) do
-	AddCookerRecipe("brewery", recipe)
-end
+modrequire("water_cooking")
+modrequire("mod_compatibility")
