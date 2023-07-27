@@ -1,7 +1,8 @@
 require("tuning")
 local TUNING = _G.TUNING
 local wilson_thirst = GetModConfigData("thirst_max")
-local hydration_per_day = wilson_thirst*GetModConfigData("thirst_decrease_speed")
+local thirst_decrease = wilson_thirst*GetModConfigData("thirst_decrease_speed")
+local hydration_per_day = wilson_thirst * 0.6
 local bucket_max_level = 10
 local caffein_time = GetModConfigData("caffein_time")
 local alcohol_time = GetModConfigData("alcohol_time")
@@ -97,7 +98,7 @@ water_tuning =
 
 	-- Basic Thirst Rate
 	WILSON_THIRST = wilson_thirst,
-	WILSON_THIRST_RATE = hydration_per_day/TUNING.TOTAL_DAY_TIME, 
+	WILSON_THIRST_RATE = thirst_decrease/TUNING.TOTAL_DAY_TIME, 
 
 	STALE_FOOD_THIRST = .5,
 	SPOILED_FOOD_THIRST = .25,

@@ -59,7 +59,6 @@ local function SetAnyoneCanDrink_Alcohl(inst)
       			inst.components.edible.secondaryfoodtype = GLOBAL.FOODTYPE.GOODIES
       		end
       	end
-
       	if inst.components.edible.oneaten ~= nil then
       		local old_oneaten = inst.components.edible.oneaten
       		inst.components.edible:SetOnEatenFn(function(inst, eater)
