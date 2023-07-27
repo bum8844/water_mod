@@ -29,12 +29,12 @@ AddComponentPostInit("moisture", function(self)
 
 	function self:OnUpdate(dt,...)
 		if self:GetMoistureRate_sping() then
-			--[[if self:IsForceDry() then
-		        return
-		    end]]
-		    if self.forceddrymodifiers:Get() then
+			if self:IsForceDry() then
 		        return
 		    end
+		    --[[if self.forceddrymodifiers:Get() then
+		        return
+		    end]]
 
 		    local sleepingbagdryingrate = self:GetSleepingBagDryingRate()
 		    if sleepingbagdryingrate ~= nil then

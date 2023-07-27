@@ -18,7 +18,6 @@ local postinits =
 		"antlion",
 		"cookingrecipecard",
 		"firepit",
-		"mound",
 		"oasislake",
 		"player",
 		"portablespicer",	

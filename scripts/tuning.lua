@@ -106,22 +106,22 @@ water_tuning =
 	WICKERBOTTOM_STALE_FOOD_THIRST = .25,
 	WICKERBOTTOM_SPOILED_FOOD_THIRST = 0,
 
-	-- Hydration(기준값:105)
+	-- Hydration(기준값:90)
 	HYDRATION_SALT = -15,   
 	HYDRATION_POISON = -5,
 	HYDRATION_ROT = -10,
 	HYDRATION_NONE = 0,
-	HYDRATION_TINYMICROSCOPIC = hydration_per_day/24, -- 4.375
-	HYDRATION_SUPERTINY = hydration_per_day/16, -- 6.5625
-	HYDRATION_TINY = hydration_per_day/12, -- 8.75
-	HYDRATION_SMALLTINY = hydration_per_day/8, -- 13.125 -- 일반물
-	HYDRATION_SMALL = hydration_per_day/6, -- 17.5
-	HYDRATION_MEDSMALL = hydration_per_day/4, -- 26.25
-	HYDRATION_MED = hydration_per_day/3, -- 35
-	HYDRATION_LARGE = hydration_per_day/2, -- 52.5
-	HYDRATION_HUGE = hydration_per_day, -- 105
-	HYDRATION_MOREHUGE = hydration_per_day*8/7, -- 120
-	HYDRATION_SUPERHUGE = hydration_per_day*2, -- 210
+	HYDRATION_TINYMICROSCOPIC = hydration_per_day/24, -- 3.75
+	HYDRATION_SUPERTINY = hydration_per_day/16, -- 5.625
+	HYDRATION_TINY = hydration_per_day/12, -- 7.5
+	HYDRATION_SMALLTINY = hydration_per_day/8, -- 11.25 -- 일반물
+	HYDRATION_SMALL = hydration_per_day/6, -- 15
+	HYDRATION_MEDSMALL = hydration_per_day/4, -- 22.5
+	HYDRATION_MED = hydration_per_day/3, -- 30
+	HYDRATION_LARGE = hydration_per_day/2, -- 45
+	HYDRATION_HUGE = hydration_per_day, -- 90
+	HYDRATION_MOREHUGE = hydration_per_day*8/6, -- 120
+	HYDRATION_SUPERHUGE = hydration_per_day*2, -- 180
 
 	-- Hunger from Drinks
 	DRINK_CALORIES_POISON = 3, --제 개인적인 생각으로는 술은 칼로리가 높아서 안써도 된다고 생각...
