@@ -6,7 +6,7 @@ AddComponentPostInit("foodmemory", function(self)
 	function self:GetBaseFood(prefab)
 		local basefood = _GetBaseFood(self, prefab) --check vanilla spicedfoods
 		if basefood == prefab then
-			basefood = (spicedfoods_caffeinberry[prefab] ~= nil and spicefoods[prefab].basename) or --check mod spicedfoods
+			basefood = (spicedfoods_caffeinberry[prefab] ~= nil and spicedfoods_caffeinberry[prefab].basename) or --check mod spicedfoods
 			(spicedfoods_caffeinberry_mod[prefab] ~= nil and spicedfoods_caffeinberry_mod[prefab].basename) or
 			prefab
 		end
