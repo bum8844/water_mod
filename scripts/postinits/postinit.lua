@@ -5,6 +5,7 @@ local postinits =
 		"dryer",
 		"eater",
 		"edible",
+		"foodmemory",
 		"inventoryitem_replica",
 		"inventoryitemmoisture",
 		"moisture",
