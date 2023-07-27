@@ -41,7 +41,7 @@ water_tuning =
 		"webber",
 	},
 
-	WATERBORNE = 
+	WATERBORNE_IMMUNES = 
 	{
 		"wormwood",
 		"wx78",

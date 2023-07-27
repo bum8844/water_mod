@@ -59,11 +59,15 @@ local function SetAnyoneCanDrink_Alcohl(inst)
       			inst.components.edible.secondaryfoodtype = GLOBAL.FOODTYPE.GOODIES
       		end
       	end
-      	local _oneatenfn = inst.components.edible.oneatenfn
-      	inst.components.edible:SetOnEatenFn(function(inst, eater)
-      		_oneatenfn(inst, eater)
-      		oneatenfn(inst, eater)
-      	end)
+      	if inst.components.edible.oneaten ~= nil then
+      		local old_oneaten = inst.components.edible.oneaten
+      		inst.components.edible:SetOnEatenFn(function(inst, eater)
+	      		old_oneaten(inst, eater)
+	      		oneatenfn(inst, eater)
+	      	end)
+	    else
+	    	inst.components.edible:SetOnEatenFn(oneatenfn)
+      	end
     end
 end
 
