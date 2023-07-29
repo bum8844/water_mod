@@ -553,6 +553,7 @@ local drinks =
 		cooktime = TUNING.KETTLE_ABI,
 		potlevel = "mid",
 		potlevel_bottle = "mid",
+		secondaryfoodtype = FOODTYPE.VEGGIE,
 		prefabs = { "obebuff" },
 		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_SUS,
 		card_def={ingredients={{"petals_evil",1},{"firenettles",1},{"tillweed",1},{"twigs",1}}},
