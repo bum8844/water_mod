@@ -188,6 +188,9 @@ water_tuning =
 	WATERBORNE_TICK_RATE = 4,
 
 	WATER_RECIPCARD_CHANCE = 0.25,
+
+	ADD_TEA_TREE = GetModConfigData("gen_tea_tree")*10,
+	ADD_CAFFEINBERRY_BUSH = GetModConfigData("gen_caffeinberry")*10,
 }
 
 for i,v in pairs(water_tuning) do

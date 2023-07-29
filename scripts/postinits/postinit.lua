@@ -11,6 +11,7 @@ local postinits =
 		"moisture",
 		"regrowthmanager",
 		"wisecracker",
+		"retrofitforestmap_anr",
 	},
 
 	prefabs =
