@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<spriter_data scml_version="1.0" generator="BrashMonkey Spriter" generator_version="r11">
+    <folder id="0" name="0">
+        <file id="0" name="0/0.png" width="246" height="301" pivot_x="0.5" pivot_y="0.1"/>
+    </folder>
+    <folder id="1" name="15">
+        <file id="0" name="15/15.png" width="246" height="301" pivot_x="0.5" pivot_y="0.1"/>
+    </folder>
+    <folder id="2" name="16">
+        <file id="0" name="16/16.png" width="246" height="301" pivot_x="0.5" pivot_y="0.1"/>
+    </folder>
+    <folder id="3" name="17">
+        <file id="0" name="17/17.png" width="246" height="301" pivot_x="0.5" pivot_y="0.1"/>
+    </folder>
+    <folder id="4" name="18">
+        <file id="0" name="18/18.png" width="246" height="301" pivot_x="0.5" pivot_y="0.1"/>
+    </folder>
+    <folder id="5" name="19">
+        <file id="0" name="19/19.png" width="246" height="301" pivot_x="0.5" pivot_y="0.1"/>
+    </folder>
+    <folder id="6" name="20">
+        <file id="0" name="20/20.png" width="246" height="301" pivot_x="0.5" pivot_y="0.1"/>
+    </folder>
+    <entity id="0" name="desalinator_body_dirty">
+        <animation id="0" name="idle" length="34" interval="100">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="0">
+                <key id="0" spin="0">
+                    <object folder="0" file="0" angle="0"/>
+                </key>
+            </timeline>
+        </animation>
+    </entity>
+</spriter_data>
