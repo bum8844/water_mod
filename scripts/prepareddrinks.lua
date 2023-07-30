@@ -176,23 +176,6 @@ end
 
 local drinks =
 {
-	spoiled_drink =
-	{
-		test = function(boilier, names, tags) return dummy(boilier, names, tags) end,
-		priority = -2,
-		health = 0,
-		hunger = TUNING.SPOILED_HUNGER,
-		sanity = TUNING.SANITY_POISON,
-		thirst = TUNING.HYDRATION_POISON,
-		cooktime = TUNING.INCORRECT_BOIL,
-		potlevel = "high",
-		potlevel_bottle = "mid",
-		watertype = WATERTYPE.ROTTEN,
-		oneatenfn = function(inst, eater)
-			Get_Waterborne_Disease(inst, eater)
-		end,
-	},
-
 	-- 조합법이 잘못되면 나오는 결과물
 	goopydrink = 
 	{

@@ -27,6 +27,7 @@ for k, v in pairs(require("water_spicedfoods_mod")) do
 end
 
 --스크립트 분리를 위해 별도 기입
+
 local spoiled_drink =
 {
 	name = "spoiled_drink",

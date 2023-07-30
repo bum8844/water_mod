@@ -96,7 +96,7 @@ local function SetProductSymbol(inst, product, overridebuild)
     local potlevel_bottle = recipe ~= nil and recipe.potlevel_bottle or nil
     local build = IsModDrink(inst, product, overridebuild) and overridebuild or IsModDrink(inst, product, overridebuild) and inst.components.waterlevel:GetWater() >= 5 and overridebuild.."_bottle"
     or inst.components.waterlevel:GetWater() >= 5 and "kettle_drink_bottle" or "kettle_drink"
-    local overridesymbol = (recipe ~= nil and recipe.overridesymbolname) or (recipe.basename ~= nil and recipe.basename) or product
+    local overridesymbol = (recipe ~= nil and (recipe.basename ~= nil and recipe.basename or recipe.overridesymbolname)) or product
     local potlevels = potlevel ~= nil and "swap_"..potlevel or "swap_mid"
     local potlevels_bottle = potlevel_bottle ~= nil and "swap_"..potlevel_bottle.."_bottle" or "swap_mid_bottle"
     local result_potlevels = nil
