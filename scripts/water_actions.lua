@@ -183,7 +183,6 @@ local TURNON_TILEARRIVE = AddAction("TURNON_TILEARRIVE",STRINGS.ACTIONS.TURNON,f
     end
 end)
 
-ACTIONS.TURNON.priority = 1
 TURNON_TILEARRIVE.priority = 4
 TURNON_TILEARRIVE.theme_music = "farming"
 

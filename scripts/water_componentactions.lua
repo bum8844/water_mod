@@ -101,7 +101,7 @@ local POINT =
 
 local SCENE =
 {
-    machine = function(inst, doer, actions, right)
+    watering_machine = function(inst, doer, actions, right)
         if right and not inst:HasTag("cooldown") and
                 not inst:HasTag("fueldepleted") and
                 not (inst.replica.equippable ~= nil and

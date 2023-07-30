@@ -6,25 +6,29 @@ AddComponentPostInit("moisture", function(self)
 		if GLOBAL.FindEntity(self.inst, TUNING.SPRINKLER_RANGE, nil, {"waterspray"}) == nil then
 			return 0
 		end
-	    	local waterproofmult =
-        (   self.inst.components.sheltered ~= nil and
-            self.inst.components.sheltered.sheltered and
-            self.inst.components.sheltered.waterproofness or 0
-        ) +
-        (   self.inst.components.inventory ~= nil and
-            self.inst.components.inventory:GetWaterproofness() or 0
-        ) +
-        (   self.inherentWaterproofness or 0
-        ) +
-        (
-            self.waterproofnessmodifiers:Get() or 0
-        )
-    	if waterproofmult >= 1 then
+		if self.inst.components.rainimmunity ~= nil then
+			return 0
+		end
+
+	    local waterproofmult =
+	        (   self.inst.components.sheltered ~= nil and
+	            self.inst.components.sheltered.sheltered and
+	            self.inst.components.sheltered.waterproofness or 0
+	        ) +
+	        (   self.inst.components.inventory ~= nil and
+	            self.inst.components.inventory:GetWaterproofness() or 0
+	        ) +
+	        (   self.inherentWaterproofness or 0
+	        ) +
+	        (
+	            self.waterproofnessmodifiers:Get() or 0
+	        )
+	    if waterproofmult >= 1 then
         	return 0
     	end
 
-    	local rate = 1 - waterproofmult
-	    return rate
+    	local rate = 1
+    	return rate * (1 - waterproofmult)
 	end
 
 	function self:OnUpdate(dt,...)
