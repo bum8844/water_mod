@@ -135,25 +135,28 @@ local function MakeCup(name, masterfn, tags)
         doer.SoundEmitter:PlaySound("dontstarve/common/bush_fertilize")
     end
 
-    local function MakeItem(inst, pos, item, num, doer)
+    local function MakeItem(inst, pos, item, perish, num, doer)
+        local num_def = TUNING.STACK_SIZE_SMALLITEM
         local moisture = inst.components.inventoryitem:GetMoisture()
         local iswet = inst.components.inventoryitem:IsWet()
         local owner = inst.components.inventoryitem ~= nil and inst.components.inventoryitem:GetGrandOwner() or nil
         local container = owner ~= nil and (owner.components.inventory or owner.components.container) or nil
 
         while num > 0 do
-            if num > item.stacksize then
-                local new_item = SpawnPrefab(item.name)
-                num = num - item.stacksize
+            if num > num_def then
+                local new_item = SpawnPrefab(item)
+                local 
+                num = num - num_def
 
-                new_item.components.perishable:SetPercent(item.perishable)
-                new_item.components.stackable:SetStackSize(item.stacksize)
+                new_item.components.perishable:SetPercent(perish)
+                new_item.components.stackable:SetStackSize(num_def)
                 new_item.components.inventoryitem:InheritMoisture(moisture, iswet)
 
                 MakeDone(new_item, container, pos, owner, doer)
             else
-                local new_item = SpawnPrefab(item.name)
+                local new_item = SpawnPrefab(item)
 
+                new_item.components.perishable:SetPercent(perish)
                 new_item.components.stackable:SetStackSize(num)
                 new_item.components.inventoryitem:InheritMoisture(moisture, iswet)
                 num = 0
@@ -164,14 +167,10 @@ local function MakeCup(name, masterfn, tags)
     end 
 
     local function OnUnwrapped(inst, pos, doer)
-        local ice = { name = "ice", perishable = inst.components.perishable:GetPercent(), stacksize = TUNING.STACK_SIZE_SMALLITEM  }
-        local wetgoop = { name = "wetgoop", stacksize = TUNING.STACK_SIZE_SMALLITEM  }
+        local item = inst:HasTag("dirty") and "wetgoop" or "ice"
+        local perish = inst.components.perishable and inst.components.perishable:GetPercent() or 1
         local num = inst.components.stackable:StackSize()
-        if inst:HasTag("dirty") then
-            MakeItem(inst, pos, wetgoop, num, doer)
-        else
-            MakeItem(inst, pos, ice, num, doer)
-        end
+        MakeItem(inst, pos, item, perish, num, doer)
         inst:Remove()
     end
 
