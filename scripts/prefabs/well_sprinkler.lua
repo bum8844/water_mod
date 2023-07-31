@@ -499,6 +499,8 @@ local function fn()
 	inst.components.machine.turnofffn = TurnOff
 	inst.components.machine.cooldowntime = 0.5
 
+    inst:AddComponent("watering_machine")
+
 	inst:AddComponent("fueled")
 	inst.components.fueled:SetDepletedFn(OnFuelEmpty)
 	inst.components.fueled:SetTakeFuelFn(OnAddFuel)

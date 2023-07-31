@@ -116,7 +116,8 @@ AddStategraphActionHandler("wilson_client", ActionHandler(ACTIONS.DRINK,
             end
             for k, v in pairs(FOODTYPE) do
                 if obj:HasTag("edible_"..v) then
-                    return "drink"
+                    return (v == FOODTYPE.MEAT and "drinkstew")
+                or "drink"
                 end
             end
         end

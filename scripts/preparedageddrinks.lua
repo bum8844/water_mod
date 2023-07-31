@@ -1,28 +1,3 @@
-require("brewery_recpie_cards")
-
-local function Get_Waterborne_Disease(inst, eater)
-    if TUNING.ANTI_WATERBORNE then
-        if eater:HasTag("player") and not eater:HasTag("playerghost") then
-            if eater:HasTag("waterborne_immune") then
-                --eater.components.talker:Say(GetString(eater,"ANNOUNCE_WATERBORNE_IMMUNITY"))
-            else
-                eater.components.talker:Say(GetString(eater, "ANNOUNCE_EAT", "PAINFUL")) 
-            end
-        end
-        eater.components.health:DoDelta(-TUNING.HEALING_TINY)
-        if eater:HasTag("waterborne_immune") then
-            eater.components.health:DoDelta(-TUNING.HEALING_TINY)
-        else
-            eater:AddDebuff("waterbornedebuff", "waterbornedebuff")
-        end
-    else
-        if eater:HasTag("player") and not eater:HasTag("playerghost") then
-            eater.components.talker:Say(GetString(eater, "ANNOUNCE_EAT", "PAINFUL")) 
-        end
-        eater.components.health:DoDelta(-TUNING.HEALING_TINY)
-    end
-end
-
 local function alcahol(inst, eater)
 	if eater:HasTag("player") then
 		eater.components.dcapacity:Start_Intoxication()
@@ -68,28 +43,7 @@ end
 
 local drinks =
 {
-
-	-- 공통적으로 hot, cold 없음
-	-- 잘못된 발효음료 조합법(재료중 찻잎, 꽃류, 채소 제외)
-	spoiled_drink =
-	{
-		test = function(boilier, names, tags) return true end,
-		priority = -2,
-		health = 0,
-		hunger = TUNING.SPOILED_HUNGER,
-		sanity = TUNING.SANITY_POISON,
-		thirst = TUNING.HYDRATION_POISON,
-		cooktime = TUNING.INCORRECT_BOIL,
-		potlevel = "high",
-		potlevel_bottle = "mid",
-		watertype = WATERTYPE.ROTTEN,
-		oneatenfn = function(inst, eater)
-			Get_Waterborne_Disease(inst, eater)
-		end,
-	},
-	
 	-- 탄산수 만들때 필수적으로 refined_dust 첨가
-	
 	soda =
 	{
 		test = function(boilier, names, tags) return names.refined_dust and names.refined_dust >= 1 and notmeat(tags) end,
@@ -373,10 +327,6 @@ for k, v in pairs(drinks) do
     v.priority = v.priority or 0
 
     v.cookbook_category = "cookpot"
-
-	if v.card_def then
-		AddRecipeCard_Brewery("brewery",v)
-	end
 end
 
 return drinks

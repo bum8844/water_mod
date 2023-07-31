@@ -1,7 +1,8 @@
 require("tuning")
 local TUNING = _G.TUNING
 local wilson_thirst = GetModConfigData("thirst_max")
-local hydration_per_day = wilson_thirst*GetModConfigData("thirst_decrease_speed")
+local thirst_decrease = wilson_thirst*GetModConfigData("thirst_decrease_speed")
+local hydration_per_day = wilson_thirst * 0.6
 local bucket_max_level = 10
 local caffein_time = GetModConfigData("caffein_time")
 local alcohol_time = GetModConfigData("alcohol_time")
@@ -41,7 +42,7 @@ water_tuning =
 		"webber",
 	},
 
-	WATERBORNE = 
+	WATERBORNE_IMMUNES = 
 	{
 		"wormwood",
 		"wx78",
@@ -76,11 +77,20 @@ water_tuning =
 	-- Sections
 	BREWERY_SECTIONS = 20,
 
-	WATER_MINTEMP = -5,
-	WATER_MAXTEMP = 40,
+	-- Freezing & Thawing Water
+	WATER_MINTEMP = -10,
+	WATER_MAXTEMP = 70, --기본값을 사용
+	WATER_CLEAN_MINTEMP = 2,
+	WATER_DIRTY_MINTEMP = -2,
+	
+	WATER_FROZEN_MINTEMP = -10, --기본값을 사용
 	WATER_INITTEMP = 5,
-	WATER_CLEAN_MINTEMP = 0,
-	WATER_DIRTY_MINTEMP = -5,
+	WATER_FROZEN_INITTEMP = -5,
+	WATER_CLEAN_FREEZEPOINT = -2,
+	WATER_CLEAN_MELTINGPOINT = 5,
+	WATER_DIRTY_FREEZEPOINT = -2,
+	WATER_DIRTY_MELTINGPOINT = 5,
+
 	
 	-- Moistures and getting wet
 	WATER_BARREL_WETNESS = 25,
@@ -97,7 +107,7 @@ water_tuning =
 
 	-- Basic Thirst Rate
 	WILSON_THIRST = wilson_thirst,
-	WILSON_THIRST_RATE = hydration_per_day/TUNING.TOTAL_DAY_TIME, 
+	WILSON_THIRST_RATE = thirst_decrease/TUNING.TOTAL_DAY_TIME, 
 
 	STALE_FOOD_THIRST = .5,
 	SPOILED_FOOD_THIRST = .25,
@@ -105,22 +115,22 @@ water_tuning =
 	WICKERBOTTOM_STALE_FOOD_THIRST = .25,
 	WICKERBOTTOM_SPOILED_FOOD_THIRST = 0,
 
-	-- Hydration(기준값:105)
+	-- Hydration(기준값:90)
 	HYDRATION_SALT = -15,   
 	HYDRATION_POISON = -5,
 	HYDRATION_ROT = -10,
 	HYDRATION_NONE = 0,
-	HYDRATION_TINYMICROSCOPIC = hydration_per_day/24, -- 4.375
-	HYDRATION_SUPERTINY = hydration_per_day/16, -- 6.5625
-	HYDRATION_TINY = hydration_per_day/12, -- 8.75
-	HYDRATION_SMALLTINY = hydration_per_day/8, -- 13.125 -- 일반물
-	HYDRATION_SMALL = hydration_per_day/6, -- 17.5
-	HYDRATION_MEDSMALL = hydration_per_day/4, -- 26.25
-	HYDRATION_MED = hydration_per_day/3, -- 35
-	HYDRATION_LARGE = hydration_per_day/2, -- 52.5
-	HYDRATION_HUGE = hydration_per_day, -- 105
-	HYDRATION_MOREHUGE = hydration_per_day*8/7, -- 120
-	HYDRATION_SUPERHUGE = hydration_per_day*2, -- 210
+	HYDRATION_TINYMICROSCOPIC = hydration_per_day/24, -- 3.75
+	HYDRATION_SUPERTINY = hydration_per_day/16, -- 5.625
+	HYDRATION_TINY = hydration_per_day/12, -- 7.5
+	HYDRATION_SMALLTINY = hydration_per_day/8, -- 11.25 -- 일반물
+	HYDRATION_SMALL = hydration_per_day/6, -- 15
+	HYDRATION_MEDSMALL = hydration_per_day/4, -- 22.5
+	HYDRATION_MED = hydration_per_day/3, -- 30
+	HYDRATION_LARGE = hydration_per_day/2, -- 45
+	HYDRATION_HUGE = hydration_per_day, -- 90
+	HYDRATION_MOREHUGE = hydration_per_day*8/6, -- 120
+	HYDRATION_SUPERHUGE = hydration_per_day*2, -- 180
 
 	-- Hunger from Drinks
 	DRINK_CALORIES_POISON = 3, --제 개인적인 생각으로는 술은 칼로리가 높아서 안써도 된다고 생각...
@@ -160,8 +170,7 @@ water_tuning =
 	CAPACITY_TIME = TUNING.TOTAL_DAY_TIME*capacity_time,
 	IMMUNE_TIME = TUNING.TOTAL_DAY_TIME*immune_time,
 	GHOST_TIME = TUNING.TOTAL_DAY_TIME*ghost_time,
-	ANTI_GHOST = GetModConfigData("blocking_assassination"),
-	ANTI_WATERBORNE = GetModConfigData("enable_waterborne"),
+	ENABLE_WATERBORNE = GetModConfigData("enable_waterborne"),
 	DRUNKARD_DURATION = TUNING.TOTAL_DAY_TIME*drunkard_time,
 	WATERBORNE_DURATION = TUNING.TOTAL_DAY_TIME*waterborne_time,
 	WELL_DRILLING_DURATION = TUNING.SEG_TIME*2.5,

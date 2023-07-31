@@ -7,6 +7,15 @@ local assets =
     Asset("ANIM", "anim/desalinator_meter_salt.zip")
 }
 
+--수치조정용 변수
+local salt_per_water = 1/80
+local max_salt = 40
+
+--변환용 변수(가급적 변경하지 말 것!)
+local saltvalue_per_salt = 10
+local saltvalue_per_water = saltvalue_per_salt * salt_per_water
+local maxsaltvalue = max_salt * saltvalue_per_salt
+
 local function GetWet(inst)
     if not inst:HasTag("burnt") then
         if inst.components.waterlevel:GetPercent() > 0 then 
@@ -23,10 +32,10 @@ local function onhammered(inst, worker)
         inst.components.burnable:Extinguish()
     end
 
-    while inst._saltvalue >= 10 do
+    while inst._saltvalue >= saltvalue_per_salt do
         local old_saltvalue = inst._saltvalue
-        inst._saltvalue = old_saltvalue - 10
-        if inst._saltvalue >= 10 then
+        inst._saltvalue = old_saltvalue - saltvalue_per_salt
+        if inst._saltvalue >= saltvalue_per_salt then
             inst.components.lootdropper:SpawnLootPrefab("saltrock")
         end
     end
@@ -60,9 +69,8 @@ end
 
 local function onpickedfn(inst, picker)
     if not inst:HasTag("burnt") then
-        local value = inst._saltvalue
-        inst._saltvalue = inst._saltvalue - math.floor((value*.1)*10)
-        inst.components.pickable.numtoharvest = inst.components.pickable.numtoharvest - inst.components.pickable.numtoharvest
+        inst._saltvalue = inst._saltvalue - inst.components.pickable.numtoharvest * saltvalue_per_salt
+        inst.components.pickable.numtoharvest = 0 --어차피 한 번에 다 주게 하니까 상관없음
         inst.SoundEmitter:PlaySound("saltydog/common/saltbox/open")
         inst:DoTaskInTime(0.13, function(inst) inst.AnimState:PlayAnimation("get_salt") end)
         inst.AnimState:PushAnimation("idle")
@@ -70,13 +78,11 @@ local function onpickedfn(inst, picker)
     end
 end
 
-local function CalculationForSalt(inst)
+local function CalculateSalt(inst)
     if not inst:HasTag("burnt") then
-        if inst._saltvalue >= 10 then
-            if inst._saltvalue > inst._saltvaluemax then
-                inst._saltvalue = inst._saltvaluemax
-            end
-            inst.components.pickable.numtoharvest = math.floor(inst._saltvalue*.1)
+        local salt_num = math.floor(inst._saltvalue / saltvalue_per_salt)
+        if salt_num > 0 then
+            inst.components.pickable.numtoharvest = salt_num
             if not inst.components.distiller:isBoiling() then
                 inst.SoundEmitter:PlaySound("hookline/common/trophyscale_fish/place_fish")
                 inst.SoundEmitter:PlaySound("saltydog/common/saltbox/open")
@@ -93,8 +99,8 @@ local function ondoneboilingfn(inst)
         inst.AnimState:OverrideSymbol("swap", "desalinator_meter_water", tostring(inst._waterlevel))
         inst.AnimState:PlayAnimation("idle")
         inst.SoundEmitter:KillSound("desalinator_sound")
-         inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/medium")
-        CalculationForSalt(inst)
+        inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/medium")
+        CalculateSalt(inst)
     end
 end
 
@@ -150,11 +156,8 @@ local function OnTakeWater(inst)
     if not inst:HasTag("burnt") then
         inst.AnimState:PlayAnimation("take_water")
         inst.AnimState:PushAnimation("idle")
-        if inst._saltvalue >= 20 then
-            inst._saltvalue = inst._saltvalue + (inst.components.waterlevel.currentwater - inst.components.waterlevel.oldcurrenwater)
-        else
-            inst._saltvalue = inst.components.waterlevel.currentwater
-        end
+        inst._saltvalue = inst._saltvalue + saltvalue_per_water * (inst.components.waterlevel.currentwater - inst.components.waterlevel.oldcurrentwater)
+        inst._saltvalue = math.clamp(inst._saltvalue, 0, inst._saltvaluemax) 
         inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/medium")
         inst:DoTaskInTime(1,function(inst)
             inst.SoundEmitter:PlaySound("dontstarve/common/wardrobe_close")
@@ -211,7 +214,7 @@ local function fn()
 
     inst._waterlevel = 0
     inst._saltvalue = 0
-    inst._saltvaluemax = 400
+    inst._saltvaluemax = max_salt
 	
 	inst:AddComponent("lootdropper")
     inst:AddComponent("inspectable")

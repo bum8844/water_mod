@@ -127,7 +127,7 @@ MILKINGTOOL.priority = 2
 local _FEEDPLAYER = ACTIONS.FEEDPLAYER.fn
 
 ACTIONS.FEEDPLAYER.fn = function(act)
-    if act.invobject:HasTag("drink") or act.invobject:HasTag("prepareddrink") or act.invobject:HasTag("pre-prepareddrink") then
+    if act.invobject:HasTag("drink") then
         if act.target ~= nil and 
             act.target:IsValid() and
             act.target.sg:HasStateTag("idle") and
@@ -183,7 +183,6 @@ local TURNON_TILEARRIVE = AddAction("TURNON_TILEARRIVE",STRINGS.ACTIONS.TURNON,f
     end
 end)
 
-ACTIONS.TURNON.priority = 1
 TURNON_TILEARRIVE.priority = 4
 TURNON_TILEARRIVE.theme_music = "farming"
 

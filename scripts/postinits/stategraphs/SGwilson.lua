@@ -305,7 +305,7 @@ AddStategraphActionHandler("wilson", ActionHandler(ACTIONS.DRINK,
             else
                 return
             end
-            return "drink"
+            return (obj.components.edible.foodtype == FOODTYPE.MEAT and "drinkstew") or "drink"
         end
     )
 )

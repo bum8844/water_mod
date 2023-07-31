@@ -181,7 +181,6 @@ local prefs = {}
 
 for k, v in pairs(require("water_spicedfoods")) do
     table.insert(prefs, MakePreparedFood(v))
-    AddCookerRecipe("portablespicer", v)
 end
 
 return unpack(prefs)

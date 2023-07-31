@@ -59,7 +59,15 @@ local function SetAnyoneCanDrink_Alcohl(inst)
       			inst.components.edible.secondaryfoodtype = GLOBAL.FOODTYPE.GOODIES
       		end
       	end
-      	inst.components.edible:SetOnEatenFn(oneatenfn)
+      	if inst.components.edible.oneaten ~= nil then
+      		local old_oneaten = inst.components.edible.oneaten
+      		inst.components.edible:SetOnEatenFn(function(inst, eater)
+	      		old_oneaten(inst, eater)
+	      		oneatenfn(inst, eater)
+	      	end)
+	    else
+	    	inst.components.edible:SetOnEatenFn(oneatenfn)
+      	end
     end
 end
 
@@ -71,7 +79,6 @@ end
 
 local function SetIngredientDrinkable(inst, value)
 	SetDrinkableAction(inst)
-	inst:AddTag("pre-prepareddrink")
 
     if not GLOBAL.TheWorld.ismastersim then
         return inst
@@ -83,7 +90,6 @@ end
 
 local function SetDrinkable(inst, value)
 	SetDrinkableAction(inst)
-	inst:AddTag("prepareddrink")
 
     if not GLOBAL.TheWorld.ismastersim then
         return inst
@@ -95,7 +101,6 @@ end
 
 local function SetAlcohlDrink(inst, value)
 	SetDrinkableAction(inst)
-	inst:AddTag("prepareddrink")
 	inst:AddTag("alcohol")
 
     if not GLOBAL.TheWorld.ismastersim then

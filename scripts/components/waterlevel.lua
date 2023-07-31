@@ -225,7 +225,7 @@ function Waterlevel:TakeWaterItem(item, doer)
     local watervalue = item.components.water:GetWater()
     self:SetWaterType(item.components.water:GetWatertype())
 
-    self.oldcurrenwater = self.currentwater
+    self.oldcurrentwater = self.currentwater
 
     if watervalue ~= nil then
         self:DoDelta(watervalue, doer)
@@ -240,7 +240,7 @@ function Waterlevel:TakeWaterItem(item, doer)
         self.inst.components.waterspoilage:Dilute(watervalue, item.components.perishable.perishremainingtime)
     end
 
-    local delta = self.currentwater - self.oldcurrenwater
+    local delta = self.currentwater - self.oldcurrentwater
 
     item.components.water:Taken(self.inst, delta)
 

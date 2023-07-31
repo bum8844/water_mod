@@ -1,48 +1,3 @@
-require("kettle_recpie_cards")
-
-local function Get_Waterborne_Disease(inst, eater)
-    if TUNING.ANTI_WATERBORNE then
-        if eater:HasTag("player") and not eater:HasTag("playerghost") then
-            if eater:HasTag("waterborne_immune") then
-                --eater.components.talker:Say(GetString(eater,"ANNOUNCE_WATERBORNE_IMMUNITY"))
-            else
-                eater.components.talker:Say(GetString(eater, "ANNOUNCE_EAT", "PAINFUL")) 
-            end
-        end
-        eater.components.health:DoDelta(-TUNING.HEALING_TINY)
-        if eater:HasTag("waterborne_immune") then
-            eater.components.health:DoDelta(-TUNING.HEALING_TINY)
-        else
-            eater:AddDebuff("waterbornedebuff", "waterbornedebuff")
-        end
-    else
-        if eater:HasTag("player") and not eater:HasTag("playerghost") then
-            eater.components.talker:Say(GetString(eater, "ANNOUNCE_EAT", "PAINFUL")) 
-        end
-        eater.components.health:DoDelta(-TUNING.HEALING_TINY)
-    end
-end
-
-local function sleepfunction(inst, eater)
-	eater.components.debuffable:RemoveDebuff("alcoholdebuff")
-	eater.components.debuffable:RemoveDebuff("waterbornedebuff")
-	if KnownModIndex:IsModEnabled("workshop-2334209327") or KnownModIndex:IsModForceEnabled("workshop-2334209327") then
-		eater.components.debuffable:RemoveDebuff("kyno_strengthbuff")
-		eater.components.debuffable:RemoveDebuff("kyno_strengthbuff_med")
-		eater.components.debuffable:RemoveDebuff("kyno_dmgreductionbuff")
-	end
-end
-
-local function chkResistance(eater)
-	return eater.components.grogginess:GetResistance() > 4
-end
-
-local function sleepend(inst, eater)
-	eater:RemoveTag("drunk")
-	eater:PushEvent("sleep_end")
-	eater:PushEvent("refreshdrunk")
-end
-
 local function dummy(boilier, names, tags)
 	return false
 end
@@ -221,22 +176,6 @@ end
 
 local drinks =
 {
-	spoiled_drink =
-	{
-		test = function(boilier, names, tags) return dummy(boilier, names, tags) end,
-		priority = -2,
-		health = 0,
-		hunger = TUNING.SPOILED_HUNGER,
-		sanity = TUNING.SANITY_POISON,
-		thirst = TUNING.HYDRATION_POISON,
-		cooktime = TUNING.INCORRECT_BOIL,
-		potlevel = "high",
-		potlevel_bottle = "mid",
-		watertype = WATERTYPE.ROTTEN,
-		oneatenfn = function(inst, eater)
-			Get_Waterborne_Disease(inst, eater)
-		end,
-	},
 	-- 조합법이 잘못되면 나오는 결과물
 	goopydrink = 
 	{
@@ -255,7 +194,7 @@ local drinks =
 
 	-- 과일차 종류(채력특화)
 	
-	berries_juice =
+	berries_juice = --베리주스
 	{
 		test = function(boilier, names, tags) return (names.berries or  names.berries_cooked or names.berries_juicy or names.berries_juicy_cooked) and tags.fruit and Preference(names, tags) and not tags.veggie and notmeat(tags) and notname(names) and ressthing(names) end,
 		priority = 0,
@@ -608,12 +547,13 @@ local drinks =
 		priority = 2,
 		health = 0,
 		hunger = 0,
-		sanity = TUNING.ANTI_GHOST,
+		sanity = -1,
 		thirst = 0,
 		perishtime = TUNING.PERISH_MED,
 		cooktime = TUNING.KETTLE_ABI,
 		potlevel = "mid",
 		potlevel_bottle = "mid",
+		secondaryfoodtype = FOODTYPE.VEGGIE,
 		prefabs = { "obebuff" },
 		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_SUS,
 		card_def={ingredients={{"petals_evil",1},{"firenettles",1},{"tillweed",1},{"twigs",1}}},
@@ -686,10 +626,6 @@ for k, v in pairs(drinks) do
     v.priority = v.priority or 0
 
     v.cookbook_category = "cookpot"
-
-	if v.card_def then
-		AddRecipeCard_Kettle("kettle",v)
-	end
 end
 
 return drinks

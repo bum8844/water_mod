@@ -1,11 +1,3 @@
-local messagebottletreasures = require("messagebottletreasures")
-
-messagebottletreasures.treasure_templates.sunkenchest.presets.traveler.guaranteed_loot.fermentingrecipcard = 1
-messagebottletreasures.treasure_templates.sunkenchest.presets.traveler.guaranteed_loot.boillingrecipcard = 1
-
-messagebottletreasures.treasure_templates.sunkenchest.presets.fisher.guaranteed_loot.fermentingrecipcard = 1
-messagebottletreasures.treasure_templates.sunkenchest.presets.fisher.guaranteed_loot.boillingrecipcard = 1
-
 local function GetItemState(count)
     return count >= 5 and "_bottle" or ""
 end
