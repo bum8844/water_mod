@@ -83,6 +83,16 @@ function WateringTool:StopCollectRainWater()
     end
 end
 
+function WateringTool:GetPercent()
+    local spoiledingtime = self.frozed and TUNING.PERISH_SLOW or TUNING.PERISH_FAST
+    local remainingtime = self.targettime ~= nil math.floor(self.targettime - GetTime()) or 0
+    if remainingtime and remainingtime > 0 then
+        return math.min(1, remainingtime / spoiledingtime)
+    else
+        return 0
+    end
+end
+
 function WateringTool:OnSave()
     local time = (self.targettime ~= nil and math.floor(self.targettime - GetTime())) or nil
     if time then

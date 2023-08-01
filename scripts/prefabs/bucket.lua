@@ -235,6 +235,7 @@ local function fn()
     inst.components.fuel.fuelvalue = TUNING.LARGE_FUEL
     
     inst:AddComponent("wateringtool")
+    inst.components.wateringtool:SetCanContainRain(true)
 
     inst:AddComponent("inspectable")
 
