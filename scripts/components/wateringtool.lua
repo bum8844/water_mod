@@ -10,7 +10,7 @@ local WateringTool = Class(function(self, inst)
     self.makefullfn = nil
 
     self:WatchWorldState("israining", self.CollectRainWater)
-    self:CollectRainWater(GLOBAL.TheWorld.state.israining)
+    self:CollectRainWater(TheWorld.state.israining)
 end,nil,nil)
 
 local function Ondone(inst, self, value)
@@ -34,14 +34,15 @@ function WateringTool:CollectRainWater(israining, time)
 
     self:StopCollectRainWater()
 
-    local rainwater = self.watertype == WATERTYPE.DIRTY and TUNING.BUCKET_LEVEL_PER_USE*4 or TUNING.BUCKET_LEVEL_PER_USE*2
-    local spoiledingtime = self.frozed and TUNING.PERISH_SLOW or TUNING.PERISH_FAST
+    local rainwater = self.watertype ~= nil and ( self.frozed and TUNING.PERISH_SLOW or 
+        (self.watertype == WATERTYPE.DIRTY and TUNING.BUCKET_LEVEL_PER_USE*4) or
+        TUNING.PERISH_FAST ) or TUNING.BUCKET_LEVEL_PER_USE*2
 
     if time ~= nil then
         rainwater = time
     end
 
-    self.targettime = GetTime() + time
+    self.targettime = GetTime() + rainwater
 
     if israining and not self.watertype then
         if self.wateringtooltask ~= nil then
@@ -55,7 +56,7 @@ function WateringTool:CollectRainWater(israining, time)
         end
         if water == WATERTYPE.CLEAN or water == WATERTYPE.CLEAN_ICE then
             local watertype = self.frozed and WATERTYPE.DIRTY_ICE or WATERTYPE.DIRTY
-            self.wateringtooltask = self.inst:DoTaskInTime(spoiledingtime, Ondone, self, watertype)
+            self.wateringtooltask = self.inst:DoTaskInTime(rainwater, Ondone, self, watertype)
         elseif not self.frozed then
             self.wateringtooltask = self.inst:DoTaskInTime(rainwater, Ondone, self, nil)
         end
@@ -85,7 +86,7 @@ end
 
 function WateringTool:GetPercent()
     local spoiledingtime = self.frozed and TUNING.PERISH_SLOW or TUNING.PERISH_FAST
-    local remainingtime = self.targettime ~= nil math.floor(self.targettime - GetTime()) or 0
+    local remainingtime = self.targettime ~= nil and math.floor(self.targettime - GetTime()) or 0
     if remainingtime and remainingtime > 0 then
         return math.min(1, remainingtime / spoiledingtime)
     else
@@ -114,12 +115,12 @@ function WateringTool:OnLoad(data)
         self:SetCanCollectRainWater(data.frozed)
         self:SetWaterType(data.watertype)
         local time = data.time or nil
-        self:StartGrowing(GLOBAL.TheWorld.state.israining,math.max(0, time))
+        self:StartGrowing(TheWorld.state.israining,math.max(0, time))
     end
 end
 
 function WateringTool:LongUpdate(dt)
-    self:CollectRainWater(GLOBAL.TheWorld.state.israining,math.max(0, self.targettime - dt - GetTime()))
+    self:CollectRainWater(TheWorld.state.israining,math.max(0, self.targettime - dt - GetTime()))
 end
 
 return WateringTool

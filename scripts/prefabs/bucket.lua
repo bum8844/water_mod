@@ -245,8 +245,8 @@ local function fn()
     
     inst:AddComponent("wateringtool")
     inst.components.wateringtool:SetCanContainRain(true)
-    inst.components.wateringtool.makeemptyfn
-    inst.components.wateringtool.makefullfn
+    inst.components.wateringtool.makeemptyfn = MakeFull
+    inst.components.wateringtool.makefullfn = MakeEmpty
 
     inst:AddComponent("inspectable")
 
