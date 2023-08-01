@@ -22,6 +22,10 @@ function WateringTool:SetFrozed(value)
     self.frozed = value or false
 end
 
+function WateringTool:IsFrozen()
+    return self.frozed
+end
+
 function WateringTool:SetWaterType(value)
     self.watertype = value or nil
 end
@@ -34,31 +38,36 @@ function WateringTool:CollectRainWater(israining, time)
 
     self:StopCollectRainWater()
 
-    local rainwater = self.watertype ~= nil and ( self.frozed and TUNING.PERISH_SLOW or 
-        (self.watertype == WATERTYPE.DIRTY and TUNING.BUCKET_LEVEL_PER_USE*4) or
-        TUNING.PERISH_FAST ) or TUNING.BUCKET_LEVEL_PER_USE*2
+    if self.cancollectrainwater then
+        local rainwater = self.watertype ~= nil and ( self.frozed and TUNING.PERISH_SLOW or 
+            (self.watertype == WATERTYPE.DIRTY and TUNING.BUCKET_LEVEL_PER_USE*4) or
+            TUNING.PERISH_FAST ) or TUNING.BUCKET_LEVEL_PER_USE*2
 
-    if time ~= nil then
-        rainwater = time
-    end
-
-    self.targettime = GetTime() + rainwater
-
-    if israining and not self.watertype then
-        if self.wateringtooltask ~= nil then
-            self.wateringtooltask:Cancel()
+        if time ~= nil and time > 0 then
+            rainwater = time
         end
-        self.wateringtooltask = self.inst:DoTaskInTime(rainwater, Ondone, self, WATERTYPE.CLEAN)
-    else
-        local water = self.watertype
-        if self.wateringtooltask ~= nil then
-            self.wateringtooltask:Cancel()
-        end
-        if water == WATERTYPE.CLEAN or water == WATERTYPE.CLEAN_ICE then
-            local watertype = self.frozed and WATERTYPE.DIRTY_ICE or WATERTYPE.DIRTY
-            self.wateringtooltask = self.inst:DoTaskInTime(rainwater, Ondone, self, watertype)
-        elseif not self.frozed then
-            self.wateringtooltask = self.inst:DoTaskInTime(rainwater, Ondone, self, nil)
+
+        self.targettime = GetTime() + rainwater
+
+        if israining and not self.watertype then
+            if self.wateringtooltask ~= nil then
+                self.wateringtooltask:Cancel()
+            end
+            self.wateringtooltask = self.inst:DoTaskInTime(rainwater, Ondone, self, WATERTYPE.CLEAN)
+            print("물 답는중")
+        else
+            local water = self.watertype
+            if self.wateringtooltask ~= nil then
+                self.wateringtooltask:Cancel()
+            end
+            if water == WATERTYPE.CLEAN or water == WATERTYPE.CLEAN_ICE then
+                local watertype = self.frozed and WATERTYPE.DIRTY_ICE or WATERTYPE.DIRTY
+                self.wateringtooltask = self.inst:DoTaskInTime(rainwater, Ondone, self, watertype)
+                print("물 썩는중")
+            elseif not self.frozed then
+                self.wateringtooltask = self.inst:DoTaskInTime(rainwater, Ondone, self, nil)
+                print("물 마르는중")
+            end
         end
     end
 end
@@ -114,8 +123,8 @@ function WateringTool:OnLoad(data)
         self:SetCanCollectRainWater(true)
         self:SetCanCollectRainWater(data.frozed)
         self:SetWaterType(data.watertype)
-        local time = data.time or nil
-        self:StartGrowing(TheWorld.state.israining,math.max(0, time))
+        local time = data.time or 0
+        self:CollectRainWater(TheWorld.state.israining,math.max(0, time))
     end
 end
 

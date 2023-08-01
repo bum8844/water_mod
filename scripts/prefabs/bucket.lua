@@ -4,9 +4,7 @@ local assets =
 }
 
 local function SetCheckWeather(inst)
-    inst.components.wateringtool:SetCanContainRain(true)
-    inst.components.wateringtool.owner = nil
-    inst.components.wateringtool:CheckWeather()
+    inst.components.wateringtool:SetCanCollectRainWater(true)
 end
 
 local function GetWater(inst, watertype, doer)
@@ -39,40 +37,34 @@ local function GetWater(inst, watertype, doer)
 
     if old_val > peruse then
         inst.components.finiteuses:Use(peruse)
-        inst.components.wateringtool:SetCanContainRain()
-        inst.components.wateringtool.owner = doer
-        inst.components.wateringtool:StopCheckWeather()
+        inst.components.wateringtool:SetCanCollectRainWater()
+        inst.components.wateringtool:StopCollectRainWater()
     else
         inst:Remove()
     end
 end
 
 local function OnPickup(inst, doer)
-    --[[if doer then
+    if doer then
+        local watertype = inst.components.wateringtool.watertype
         local ice = ""
         if inst.components.wateringtool:IsFrozen() then
             ice = "_ice"
         end
-        if inst.components.wateringtool:IsDirty() then
-            GetWater(inst, "water_dirty"..ice, doer)
-        else
-            GetWater(inst, "water_clean"..ice, doer)
-        end
-    end]]
+        GetWater(inst, "water_"..watertype..ice, doer)
+    end
     inst.AnimState:PlayAnimation("empty")
 end
 
 local function CanGetWater(inst, doer)
-    if inst.components.wateringtool:IsFull() then
+    if inst.components.wateringtool.watertype then
         OnPickup(inst, doer)
     else
-        if inst.components.wateringtool:HasWater() then
+        if inst.components.wateringtool.targettime then
             inst.SoundEmitter:PlaySound("dontstarve/creatures/pengull/splash")
         end
-        inst.components.wateringtool.rainfilling = 0
-        inst.components.wateringtool:SetCanContainRain()
-        inst.components.wateringtool.owner = doer
-        inst.components.wateringtool:StopCheckWeather()
+        inst.components.wateringtool:SetCanCollectRainWater()
+        inst.components.wateringtool:StopCollectRainWater()
     end
 end
 
@@ -244,7 +236,6 @@ local function fn()
     inst.components.fuel.fuelvalue = TUNING.LARGE_FUEL
     
     inst:AddComponent("wateringtool")
-    inst.components.wateringtool:SetCanCollectRainWater(true)
     inst.components.wateringtool.makeemptyfn = MakeFull
     inst.components.wateringtool.makefullfn = MakeEmpty
 
@@ -257,12 +248,11 @@ local function fn()
     MakeSmallPropagator(inst)
 	
     inst:AddComponent("inventoryitem")
-    --inst.components.inventoryitem:SetOnPickupFn(CanGetWater)
+    inst.components.inventoryitem:SetOnPickupFn(CanGetWater)
 
     MakeHauntableLaunchAndSmash(inst)
 
-    --inst:ListenForEvent("fullwater",ChangeBucketState)
-    --inst:ListenForEvent("ondropped",SetCheckWeather)
+    inst:ListenForEvent("ondropped",SetCheckWeather)
 
     return inst
 end
