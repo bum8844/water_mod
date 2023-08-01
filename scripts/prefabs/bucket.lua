@@ -5,6 +5,7 @@ local assets =
 
 local function SetCheckWeather(inst)
     inst.components.wateringtool:SetCanCollectRainWater(true)
+    inst.components.wateringtool:CollectRainWater(TheWorld.state.israining)
 end
 
 local function GetWater(inst, watertype, doer)
@@ -24,6 +25,10 @@ local function GetWater(inst, watertype, doer)
     end
     print(current_fin)
 
+    if water.components.perishable then
+        local perish = inst.components.wateringtool:GetPercent()
+        water.components.perishable:SetPercent(perish)
+    end
     water.Transform:SetPosition(inst.Transform:GetWorldPosition())
     water.components.stackable:SetStackSize(current_fin)
     
@@ -187,8 +192,19 @@ local function MakeFull(inst, watertype)
     inst.AnimState:PlayAnimation(animstate)
 end
 
-local function MakeEmpty(inst)
+local function MakeEmpty(inst, watertype)
     inst.AnimState:PlayAnimation("empty")
+end
+
+local function MakeFreez(inst, watertype)
+    inst.AnimState:PlayAnimation("turn_to_ice")
+    inst.AnimState:PushAnimation("ice")
+end
+
+local function MakeMelt(inst, watertype)
+    local animstate = watertype and ( watertype == WATERTYPE.CLEAN and "full" or "dirty") or "empty"
+    inst.AnimState:PlayAnimation("turn_to_full")
+    inst.AnimState:PlayAnimation(animstate)
 end
 
 local function DoneMilkingfn(doer)
@@ -238,6 +254,8 @@ local function fn()
     inst:AddComponent("wateringtool")
     inst.components.wateringtool.makeemptyfn = MakeFull
     inst.components.wateringtool.makefullfn = MakeEmpty
+    inst.components.wateringtool.makefreezingfn = MakeFreez
+    inst.components.wateringtool.makemeltfn = MakeMelt
 
     inst:AddComponent("inspectable")
 
