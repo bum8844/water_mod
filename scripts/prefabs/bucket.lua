@@ -88,7 +88,7 @@ local function OnTakeWater(inst, source, doer)
     end
 end
 
-local function MeltWater(inst)
+--[[local function MeltWater(inst)
     inst:RemoveTag("frozen_bucket")
     inst.AnimState:PlayAnimation("turn_to_full")
     inst:DoTaskInTime(1,function(inst)
@@ -188,6 +188,15 @@ local function ChangeBucketState(inst)
         inst:ListenForEvent("stopfiremelt", onstopfiremelt)
     end
     inst.AnimState:PlayAnimation(waterstate)
+end]]
+
+local function MakeFull(inst, watertype)
+    local animstate = watertype and ( watertype == WATERTYPE.CLEAN and "full" or "dirty") or "empty"
+    inst.AnimState:PlayAnimation(animstate)
+end
+
+local function MakeEmpty(inst)
+    inst.AnimState:PlayAnimation("empty")
 end
 
 local function DoneMilkingfn(doer)
@@ -236,6 +245,8 @@ local function fn()
     
     inst:AddComponent("wateringtool")
     inst.components.wateringtool:SetCanContainRain(true)
+    inst.components.wateringtool.makeemptyfn
+    inst.components.wateringtool.makefullfn
 
     inst:AddComponent("inspectable")
 
