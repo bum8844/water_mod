@@ -56,8 +56,6 @@ water_tuning =
 
 	-- Maximum Amount of Water
 	CUP_MAX_LEVEL = 1,
-	BUCKET_RAINFALL = .5,
-	BUCKET_EVAPORATION = -.1,
 	BUCKET_MAX_LEVEL = bucket_max_level*10,
 	BUCKET_LEVEL_PER_USE = bucket_max_level,
 
