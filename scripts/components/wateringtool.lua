@@ -51,24 +51,12 @@ function WateringTool:SetFrozed(value)
     self.frozed = value or false
 end
 
-function WateringTool:IsFrozen()
-    return self.frozed
-end
-
 function WateringTool:SetWaterType(value)
     self.watertype = value or nil
 end
 
-function WateringTool:HasWater()
-    return self.watertype
-end
-
 function WateringTool:SetCanCollectRainWater(value)
     self.cancollectrainwater = value or false
-end
-
-function WateringTool:IsCollectRainWater()
-    return self.targettime
 end
 
 function WateringTool:CollectRainWater(israining, time)
@@ -96,6 +84,7 @@ function WateringTool:CollectRainWater(israining, time)
         end
 
         if not self.watertype then
+            self:StopCollectRainWater()
             return true
         end
 
@@ -179,6 +168,18 @@ function WateringTool:StopCollectRainWater()
     end
 end
 
+function WateringTool:IsFrozen()
+    return self.frozed
+end
+
+function WateringTool:HasWater()
+    return self.watertype
+end
+
+function WateringTool:IsCollectRainWater()
+    return self.targettime
+end
+
 function WateringTool:OnSave()
     local time = (self.targettime ~= nil and math.floor(self.targettime - GetTime())) or nil
     if time then
@@ -196,8 +197,9 @@ end
 
 function WateringTool:OnLoad(data)
     if data ~= nil and data.cancollectrainwater then
+        self:StopCollectRainWater()
         self:SetCanCollectRainWater(true)
-        self:SetCanCollectRainWater(data.frozed)
+        self:SetFrozed(data.frozed)
         self:SetWaterType(data.watertype)
         local time = data.time or 0
         self:CollectRainWater(TheWorld.state.israining,math.max(0, time))
