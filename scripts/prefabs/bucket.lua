@@ -52,11 +52,8 @@ end
 local function OnPickup(inst, doer)
     if doer then
         local watertype = inst.components.wateringtool:HasWater()
-        local ice = ""
-        if inst.components.wateringtool:IsFrozen() then
-            ice = "_ice"
-        end
-        GetWater(inst, "water_"..watertype..ice, doer)
+        local ice = inst.components.wateringtool:IsFrozen() and "_ice" or ""
+        GetWater(inst, watertype..ice, doer)
     end
     inst.AnimState:PlayAnimation("empty")
 end
@@ -86,11 +83,13 @@ local function OnTakeWater(inst, source, doer)
 end
 
 local function MakeFull(inst, watertype)
+    inst.SoundEmitter:PlaySound("dontstarve/creatures/pengull/splash")
     local animstate = watertype and ( watertype == WATERTYPE.CLEAN and "full" or "dirty") or "empty"
     inst.AnimState:PlayAnimation(animstate)
 end
 
 local function MakeEmpty(inst, watertype)
+    inst.SoundEmitter:PlaySound("dontstarve/common/dust_blowaway")
     inst.AnimState:PlayAnimation("empty")
 end
 
@@ -150,8 +149,8 @@ local function fn()
     inst.components.fuel.fuelvalue = TUNING.LARGE_FUEL
     
     inst:AddComponent("wateringtool")
-    inst.components.wateringtool.makeemptyfn = MakeFull
-    inst.components.wateringtool.makefullfn = MakeEmpty
+    inst.components.wateringtool.makeemptyfn = MakeEmpty
+    inst.components.wateringtool.makefullfn = MakeFull
     inst.components.wateringtool.makefreezingfn = MakeFreez
     inst.components.wateringtool.makemeltfn = MakeMelt
 

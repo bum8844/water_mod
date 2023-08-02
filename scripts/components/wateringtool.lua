@@ -10,11 +10,19 @@ local WateringTool = Class(function(self, inst)
     self.makefullfn = nil
     self.makefreezingfn = nil
     self.makemeltfn = nil
+
+    self:WatchWorldState("israining", self.CollectRainWater)
+    self:CollectRainWater(TheWorld.state.israining)
 end,nil,nil)
 
 local function Ondone(inst, self, value)
     self.wateringtooltask = nil
     self:DoneResult(value)
+end
+
+local function SetCheckWeather(inst, self)
+    self.wateringtooltask = nil
+    self:CollectRainWater(TheWorld.state.israining)
 end
 
 local function FreezeToIce(inst, data)
@@ -85,6 +93,9 @@ function WateringTool:CollectRainWater(israining, time)
 
         if not self.watertype then
             self:StopCollectRainWater()
+
+            self.wateringtooltask = self.inst:DoTaskInTime(1, SetCheckWeather, self)
+
             return true
         end
 
