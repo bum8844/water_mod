@@ -38,7 +38,7 @@ local function ThawToWater(inst, data)
     --local min_temp = inst.componnets.temperature.mintemp
     local max_temp = inst.components.temperature.maxtemp
     if cur_temp >= max_temp then
-        inst.components.wateringtool:SetFrozed()
+        inst.components.wateringtool:SetFrozed(false)
         local timer = inst.components.wateringtool:GetPercent()
         inst.components.wateringtool:TimerChange(timer)
         if inst.components.wateringtool.makemeltfn then
@@ -59,8 +59,16 @@ function WateringTool:SetWaterType(value)
     self.watertype = value or nil
 end
 
+function WateringTool:HasWater()
+    return self.watertype
+end
+
 function WateringTool:SetCanCollectRainWater(value)
     self.cancollectrainwater = value or false
+end
+
+function WateringTool:IsCollectRainWater()
+    return self.targettime
 end
 
 function WateringTool:CollectRainWater(israining, time)

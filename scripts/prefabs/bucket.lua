@@ -42,7 +42,7 @@ local function GetWater(inst, watertype, doer)
 
     if old_val > peruse then
         inst.components.finiteuses:Use(peruse)
-        inst.components.wateringtool:SetCanCollectRainWater()
+        inst.components.wateringtool:SetCanCollectRainWater(false)
         inst.components.wateringtool:StopCollectRainWater()
     else
         inst:Remove()
@@ -51,7 +51,7 @@ end
 
 local function OnPickup(inst, doer)
     if doer then
-        local watertype = inst.components.wateringtool.watertype
+        local watertype = inst.components.wateringtool:HasWater()
         local ice = ""
         if inst.components.wateringtool:IsFrozen() then
             ice = "_ice"
@@ -62,13 +62,13 @@ local function OnPickup(inst, doer)
 end
 
 local function CanGetWater(inst, doer)
-    if inst.components.wateringtool.watertype then
+    if inst.components.wateringtool:HasWater() then
         OnPickup(inst, doer)
     else
-        if inst.components.wateringtool.targettime then
+        if inst.components.wateringtool:IsCollectRainWater() then
             inst.SoundEmitter:PlaySound("dontstarve/creatures/pengull/splash")
         end
-        inst.components.wateringtool:SetCanCollectRainWater()
+        inst.components.wateringtool:SetCanCollectRainWater(false)
         inst.components.wateringtool:StopCollectRainWater()
     end
 end
