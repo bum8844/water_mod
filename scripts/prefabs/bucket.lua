@@ -82,26 +82,49 @@ local function OnTakeWater(inst, source, doer)
     end
 end
 
-local function MakeFull(inst, watertype)
-    inst.SoundEmitter:PlaySound("dontstarve/creatures/pengull/splash")
-    local animstate = watertype and ( watertype == WATERTYPE.CLEAN and "full" or "dirty") or "empty"
-    inst.AnimState:PlayAnimation(animstate)
-end
+local function SetState(inst, watertype, mustdry)
 
-local function MakeEmpty(inst, watertype)
-    inst.SoundEmitter:PlaySound("dontstarve/common/dust_blowaway")
-    inst.AnimState:PlayAnimation("empty")
-end
+    if mustdry then
+        inst.AnimState:PushAnimation("empty")
+    else
 
-local function MakeFreez(inst, watertype)
-    inst.AnimState:PlayAnimation("turn_to_ice")
-    inst.AnimState:PushAnimation("ice")
-end
+        local frozed = inst.components.wateringtool:IsFrozen()
+        local bucketstate = inst.components.wateringtool:GetState()
+        --local animstate = watertype and ( watertype == WATERTYPE.CLEAN and "full" or "dirty" ) or "empty"
 
-local function MakeMelt(inst, watertype)
-    local animstate = watertype and ( watertype == WATERTYPE.CLEAN and "full" or "dirty") or "empty"
-    inst.AnimState:PlayAnimation("turn_to_full")
-    inst.AnimState:PlayAnimation(animstate)
+        if frozed then
+            inst.SoundEmitter:PlaySound("dontstarve/common/bush_fertilize")
+            inst.AnimState:PlayAnimation("turn_to_ice")
+            inst.AnimState:PushAnimation("ice")
+            --inst.AnimState:PushAnimation(animstate.."_ice")
+        end
+
+        if bucketstate = "dothaw" then
+            inst.SoundEmitter:PlaySound("dontstarve/creatures/pengull/splash")
+            inst.AnimState:PlayAnimation("turn_to_full")
+            inst.AnimState:PushAnimation("full")
+            --inst.AnimState:PushAnimation(animstate)
+        end
+
+        if bucketstate = "dospoil" then
+            --inst.SoundEmitter:PlaySound("dontstarve/creatures/pengull/splash")
+            --inst.AnimState:PlayAnimation("turn_to_full")
+            inst.AnimState:PushAnimation("dirty")
+        end
+
+        if bucketstate = "dodry" then
+            inst.SoundEmitter:PlaySound("dontstarve/common/dust_blowaway")
+            --inst.AnimState:PlayAnimation("turn_to_full")
+            inst.AnimState:PushAnimation("empty")
+        end
+
+        if bucketstate = "dofull" then
+            inst.SoundEmitter:PlaySound("dontstarve/creatures/pengull/splash")
+            --inst.AnimState:PlayAnimation("turn_to_full")
+            inst.AnimState:PushAnimation("full")
+        end
+
+    end
 end
 
 local function DoneMilkingfn(doer)
@@ -149,10 +172,11 @@ local function fn()
     inst.components.fuel.fuelvalue = TUNING.LARGE_FUEL
     
     inst:AddComponent("wateringtool")
-    inst.components.wateringtool.makeemptyfn = MakeEmpty
+    inst.components.wateringtool.setstatesfn = SetState
+    --[[inst.components.wateringtool.makeemptyfn = MakeEmpty
     inst.components.wateringtool.makefullfn = MakeFull
     inst.components.wateringtool.makefreezingfn = MakeFreez
-    inst.components.wateringtool.makemeltfn = MakeMelt
+    inst.components.wateringtool.makemeltfn = MakeMelt]]
 
     inst:AddComponent("inspectable")
 
