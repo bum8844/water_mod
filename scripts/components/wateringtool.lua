@@ -130,7 +130,7 @@ function WateringTool:DoneResult(watertype, time, state)
         if self.watertype == WATERTYPE.DIRTY and not self.frozed then
             self.wateringtooltask = self.inst:DoTaskInTime(remainingtime, Ondone, self, nil, "dodry")
             print("물 마르는중")
-        else self.watertype == WATERTYPE.CLEAN then
+        elseif self.watertype == WATERTYPE.CLEAN then
             self.wateringtooltask = self.inst:DoTaskInTime(remainingtime, Ondone, self, WATERTYPE.DIRTY, "dospoil")
             print("물 썩는중") 
         end
@@ -221,6 +221,7 @@ function WateringTool:OnLoad(data)
         self:SetFrozed(data.frozed)
 
         self:SetWaterType(watertype)
+        self.state = data.state or "dodry"
 
         local time = data.time or 0
         self:CollectRainWater(TheWorld.state.israining,math.max(0, time))
