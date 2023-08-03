@@ -50,6 +50,8 @@ local function fn()
 
 	inst:AddTag("fertilizerresearchable")
 
+	inst:AddTag("drink")
+
 	inst.GetFertilizerKey = GetFertilizerKey
 
 	inst.entity:SetPristine()
