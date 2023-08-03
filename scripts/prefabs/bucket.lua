@@ -46,7 +46,7 @@ end
 
 local function OnPickup(inst, doer)
     if doer then
-        local watertype = inst.components.wateringtool:HasWater()
+        local watertype = inst.components.wateringtool:GetWater()
         local ice = inst.components.wateringtool:IsFrozen() and "_ice" or ""
         GetWater(inst, watertype..ice, doer)
     end
@@ -54,7 +54,7 @@ local function OnPickup(inst, doer)
 end
 
 local function CanGetWater(inst, doer)
-    if inst.components.wateringtool:HasWater() then
+    if inst.components.wateringtool:GetWater() then
         OnPickup(inst, doer)
     else
         if inst.components.wateringtool:IsCollectRainWater() then
