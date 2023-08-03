@@ -4,7 +4,7 @@ local Vector3 = _G.Vector3
  
 local params = containers.params
 
-params.barrel =
+--[[params.barrel =
 {
     widget =
     {
@@ -15,7 +15,11 @@ params.barrel =
         side_align_tip = 160,
     },
     type = "chest",
-}
+
+
+function params.barrel.itemtestfn(container, item, slot)
+    return item:HasTag("clean")
+end]]
  
 params.kettle =
 {
@@ -41,10 +45,6 @@ params.kettle =
     acceptsstacks = false,
     type = "cooker",
 }
-
-function params.barrel.itemtestfn(container, item, slot)
-    return item:HasTag("clean")
-end
 
 params.brewery =
 {
