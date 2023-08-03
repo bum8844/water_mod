@@ -5,7 +5,6 @@ local assets =
 
 local function SetCheckWeather(inst)
     inst.components.wateringtool:SetCanCollectRainWater(true)
-    inst.components.wateringtool:CollectRainWater(TheWorld.state.israining)
 end
 
 local function GetWater(inst, watertype, doer)
@@ -39,9 +38,7 @@ local function GetWater(inst, watertype, doer)
 
     if old_val > peruse then
         inst.components.finiteuses:Use(peruse)
-        inst.components.wateringtool:SetWaterType(nil)
         inst.components.wateringtool:SetCanCollectRainWater(false)
-        inst.components.wateringtool:StopCollectRainWater()
     else
         inst:Remove()
     end
@@ -57,7 +54,6 @@ local function OnPickup(inst, doer)
 end
 
 local function CanGetWater(inst, doer)
-
     if inst.components.wateringtool:HasWater() then
         OnPickup(inst, doer)
     else
@@ -65,7 +61,6 @@ local function CanGetWater(inst, doer)
             inst.SoundEmitter:PlaySound("dontstarve/creatures/pengull/splash")
         end
         inst.components.wateringtool:SetCanCollectRainWater(false)
-        inst.components.wateringtool:StopCollectRainWater()
     end
 end
 
@@ -171,7 +166,7 @@ local function fn()
     inst.components.fuel.fuelvalue = TUNING.LARGE_FUEL
     
     inst:AddComponent("wateringtool")
-    inst.components.wateringtool.setstatesfn = SetState
+    --inst.components.wateringtool.setstatesfn = SetState
 
     inst:AddComponent("inspectable")
 
