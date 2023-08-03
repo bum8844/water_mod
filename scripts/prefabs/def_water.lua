@@ -203,6 +203,7 @@ local function cleanwater(inst)
     inst.components.edible.hungervalue = 0
     inst.components.edible.sanityvalue = 0
     inst.components.edible.thirstvalue = TUNING.HYDRATION_SMALLTINY
+    inst.components.edible.degrades_with_spoilage = false
 
     inst:AddComponent("perishable")
     inst.components.perishable:SetPerishTime(TUNING.PERISH_FAST)
@@ -322,8 +323,8 @@ local function MakeWaterItem(name, masterfn, tags, _prefabs)
     return Prefab(name, fn, assets, prefabs)
 end
 
-return MakeWaterItem("water_clean", cleanwater, {"show_spoilage", "icebox_valid","clean","farm_water","pre-prepareddrink","potion"}, prefabs.water_clean),
-    MakeWaterItem("water_dirty", dirtywater, {"show_spoiled", "icebox_valid","dirty","farm_water"}),
-    MakeWaterItem("water_salty", saltywater, {"salty"}),
+return MakeWaterItem("water_clean", cleanwater, {"show_spoilage", "icebox_valid","clean","farm_water","pre-prepareddrink","potion","drink"}, prefabs.water_clean),
+    MakeWaterItem("water_dirty", dirtywater, {"show_spoiled", "icebox_valid","dirty","farm_water","drink"}),
+    MakeWaterItem("water_salty", saltywater, {"salty","drink"}),
     MakeWaterItem("water_clean_ice", cleanice, {"show_spoilage", "icebox_valid","clean","frozen","unwrappable"}, prefabs.water_clean_ice),
     MakeWaterItem("water_dirty_ice", dirtyice, {"show_spoiled", "icebox_valid","dirty","frozen","unwrappable"}, prefabs.water_dirty_ice)
