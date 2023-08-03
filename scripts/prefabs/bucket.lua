@@ -101,7 +101,7 @@ end
 local function MakeMelt(inst, watertype)
     local animstate = watertype and ( watertype == WATERTYPE.CLEAN and "full" or "dirty") or "empty"
     inst.AnimState:PlayAnimation("turn_to_full")
-    inst.AnimState:PlayAnimation(animstate)
+    inst.AnimState:PushAnimation(animstate)
 end
 
 local function DoneMilkingfn(doer)
