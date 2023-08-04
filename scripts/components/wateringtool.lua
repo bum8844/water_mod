@@ -202,6 +202,8 @@ function WateringTool:SetCanCollectRainWater(bool)
 end
 
 function WateringTool:TimerChange(percent)
+    local isdry = self.drytime or nil
+    local watertype = not isdry and WATERTYPE.DIRTY or nil
     local remainingtime = self.frozed and math.ceil(TUNING.PERISH_SLOW/2) or 
           self.watertype == WATERTYPE.DIRTY and TUNING.BUCKET_LEVEL_PER_USE*4 or 
           math.ceil(TUNING.PERISH_FAST/2)
@@ -213,13 +215,17 @@ function WateringTool:TimerChange(percent)
 
     self:StopAllTask()
 
-    self.spoiltime = GetTime() + remainingtime
+    if isdry then
+        self.drytime = GetTime() + remainingtime
+    else
+        self.spoiltime = GetTime() + remainingtime
+    end
 
     if self.frozed and self.watertype == WATERTYPE.DIRTY then
         return true
     end
 
-    self.wateringtooltask = self.inst:DoTaskInTime(data.timer, OnDone, self, WATERTYPE.DIRTY)
+    self.wateringtooltask = self.inst:DoTaskInTime(remainingtime, OnDone, self, watertype)
 end
 
 function WateringTool:GetPercent()
