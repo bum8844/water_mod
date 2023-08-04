@@ -35,16 +35,27 @@ local function OnTake(inst, taker, delta)
     end
 end
 
-local function TransferComponents(inst, newinst)
-    if inst.components.stackable ~= nil and inst.components.stackable:IsStack() then
-        newinst.components.stackable:SetStackSize(inst.components.stackable:StackSize())
+local function TransferComponents(inst, newinst, num)
+    local moisture = inst.components.inventoryitem:GetMoisture()
+    local iswet = inst.components.inventoryitem:IsWet()
+    local spoilage = inst.components.perishable  and inst.components.perishable:GetPercent()
+    local stacksize = num or
+        (inst.components.stackable and
+        inst.components.stackable:IsStack() and
+        inst.components.stackable:StackSize())
+        or nil
+
+    if stacksize and newinst.components.stackable then
+        newinst.components.stackable:SetStackSize(stacksize)
     end
-    inst.components.temperature:TransferComponent(newinst)
-    if inst.components.perishable ~= nil and
-        newinst.components.perishable ~= nil then
+    if inst.components.temperature and newinst.components.temperature then
+        inst.components.temperature:TransferComponent(newinst)
+    end
+    if inst.components.perishable and newinst.components.perishable then
         local spoilage = inst.components.perishable:GetPercent()
         newinst.components.perishable:SetPercent(spoilage)
     end
+    inst.components.inventoryitem:InheritMoisture(moisture, iswet)
 end
 
 local function ChangeItem(original_inst, prefab)
@@ -76,41 +87,31 @@ local function MakeDone(new_item, container, pos, owner, doer)
     doer.SoundEmitter:PlaySound("dontstarve/common/bush_fertilize")
 end
 
-local function MakeItem(inst, pos, item, perish, num, doer)
-    local num_def = TUNING.STACK_SIZE_SMALLITEM
+local function MakeItem(inst, item, pos, doer)
+    local stacksize = (inst.components.stackable and inst.components.stackable:StackSize()) or 1
     local moisture = inst.components.inventoryitem:GetMoisture()
     local iswet = inst.components.inventoryitem:IsWet()
     local owner = inst.components.inventoryitem ~= nil and inst.components.inventoryitem:GetGrandOwner() or nil
     local container = owner ~= nil and (owner.components.inventory or owner.components.container) or nil
+    local item = inst.prefab.."_ice"
+    --print("'"..inst.prefab.."' has generated '"..item.."'")
 
-    while num > 0 do
-        if num > num_def then
-            local new_item = SpawnPrefab(item)
-            local num = num - num_def
+    local num_def
 
-            new_item.components.perishable:SetPercent(perish)
-            new_item.components.stackable:SetStackSize(num_def)
-            new_item.components.inventoryitem:InheritMoisture(moisture, iswet)
+    while stacksize > 0 do
+        local new_item = SpawnPrefab(item)
+        num_def = math.min(stacksize, new_item.components.stackable and new_item.components.stackable.maxsize or 1)
 
-            MakeDone(new_item, container, pos, owner, doer)
-        else
-            local new_item = SpawnPrefab(item)
-
-            new_item.components.perishable:SetPercent(perish)
-            new_item.components.stackable:SetStackSize(num)
-            new_item.components.inventoryitem:InheritMoisture(moisture, iswet)
-            num = 0
-
-            MakeDone(new_item, container, pos, owner, doer)
-        end
+        TransferComponents(inst, new_item, num_def)
+        MakeDone(new_item, container, pos, owner, doer)
+        print("num = "..tostring(stacksize).." num_def = "..tostring(num_def)..": 만약 이 문구가 도배되고 있다면 루프에 문제가 생긴 것입니다")
+        stacksize = stacksize - num_def
     end
 end 
 
 local function OnUnwrapped(inst, pos, doer)
     local item = inst:HasTag("dirty") and "wetgoop" or "ice"
-    local perish = inst.components.perishable and inst.components.perishable:GetPercent() or 1
-    local num = inst.components.stackable:StackSize()
-    MakeItem(inst, pos, item, perish, num, doer)
+    MakeItem(inst, item, pos, doer)
     inst:Remove()
 end
 ---------------------------
@@ -119,12 +120,11 @@ local function doThaw(inst)
     local container = owner ~= nil and (owner.components.inventory or owner.components.container) or nil
     local item = string.gsub(inst.prefab, "_ice", "")
 
+    local newinst = ChangeItem(inst, item)
     if container ~= nil then
-        local result = ChangeItem(inst, item)
-        container:GiveItem(result)
+        container:GiveItem(newinst)
     else
         local watertype = inst:HasTag("dirty") and "_dirty" or ""
-        local newinst = ChangeItem(inst, item)
         newinst.AnimState:PlayAnimation("turn_to_full"..watertype)
         newinst.AnimState:PushAnimation("idle")
     end
@@ -161,12 +161,11 @@ local function doFreeze(inst)
     local item = inst.prefab.."_ice"
     --print("'"..inst.prefab.."' has generated '"..item.."'")
 
+    local newinst = ChangeItem(inst, item)
     if container ~= nil then
-        local result = ChangeItem(inst, item)
-        container:GiveItem(result)
+        container:GiveItem(newinst)
     else
         local watertype = inst:HasTag("dirty") and "_dirty" or ""
-        local newinst = ChangeItem(inst, item)
         newinst.AnimState:PlayAnimation("turn_to_ice"..watertype)
         newinst.AnimState:PushAnimation("idle")
     end
@@ -206,6 +205,7 @@ local function cleanwater(inst)
     inst.components.edible.hungervalue = 0
     inst.components.edible.sanityvalue = 0
     inst.components.edible.thirstvalue = TUNING.HYDRATION_SMALLTINY
+    inst.components.edible.degrades_with_spoilage = false
 
     inst:AddComponent("perishable")
     inst.components.perishable:SetPerishTime(TUNING.PERISH_FAST)
@@ -223,7 +223,6 @@ local function dirtywater(inst)
     inst.components.edible.sanityvalue = -TUNING.SANITY_MED
     inst.components.edible.thirstvalue = TUNING.HYDRATION_SUPERTINY
     inst.components.edible:SetOnEatenFn(Get_Waterborne_Disease)
-
     inst.components.water:SetWaterType(WATERTYPE.DIRTY)
 end
 
@@ -325,8 +324,8 @@ local function MakeWaterItem(name, masterfn, tags, _prefabs)
     return Prefab(name, fn, assets, prefabs)
 end
 
-return MakeWaterItem("water_clean", cleanwater, {"show_spoilage", "icebox_valid","clean","farm_water","pre-prepareddrink","potion"}, prefabs.water_clean),
-    MakeWaterItem("water_dirty", dirtywater, {"show_spoiled", "icebox_valid","dirty","farm_water"}),
-    MakeWaterItem("water_salty", saltywater, {"salty"}),
+return MakeWaterItem("water_clean", cleanwater, {"show_spoilage", "icebox_valid","clean","farm_water","pre-prepareddrink","potion","drink"}, prefabs.water_clean),
+    MakeWaterItem("water_dirty", dirtywater, {"show_spoiled", "icebox_valid","dirty","farm_water","drink"}),
+    MakeWaterItem("water_salty", saltywater, {"salty","drink"}),
     MakeWaterItem("water_clean_ice", cleanice, {"show_spoilage", "icebox_valid","clean","frozen","unwrappable"}, prefabs.water_clean_ice),
     MakeWaterItem("water_dirty_ice", dirtyice, {"show_spoiled", "icebox_valid","dirty","frozen","unwrappable"}, prefabs.water_dirty_ice)

@@ -142,8 +142,26 @@ local function IsFlower_Cactus(names, tags)
 	)
 end
 
+--bum:꽃다랑어만 들어 갔는지 확인해주는 코드
+local function blocking_thing(names ,tags)
+	return not (tags.egg or tags.boss or tags.poop or tags.elemental or tags.paper or tags.horn or tags.spotspice or tags.gears or tags.rabbit or tags.beanbug or tags.gummybug or tags.flour or tags.bread or tags.chocolate)
+end
+
+local function onlybloomfintuna(names ,tags)
+	local bloomfintuna = names.oceanfish_small_7_inv -- 최대 4개
+
+	local totalblock = tags.meat + tags.fish
+
+	local totalignore = math.max(0,(totalblock - (bloomfintuna)))
+
+	if blocking_thing(names ,tags) and totalignore <= 0 then
+		return bloomfintuna
+	end 
+	return false
+end
+
 local function IsFlower_Lotus(names, tags)
-	return ( names.lotus_flower or names.kyno_lotus_flower or names.succulent_picked or tags.lotus or names.oceanfish_small_7 ) and 
+	return ( names.lotus_flower or names.kyno_lotus_flower or names.succulent_picked or tags.lotus or onlybloomfintuna(names ,tags)) and 
 	Preference(names, tags) and
 	Tea_Def(names, tags) and not 
 	( 
@@ -580,7 +598,7 @@ local drinks =
 	},
 	
 	lotustea = {
-			test = function(boilier, names, tags) return IsFlower_Lotus(names, tags) and notmeat(tags) and notname(names)and ressthing(names) end,
+			test = function(boilier, names, tags) return IsFlower_Lotus(names, tags) and notname(names) and ressthing(names) end,
 			priority = 1,
 			health = TUNING.HEALING_MED,
 			hunger = 0,
