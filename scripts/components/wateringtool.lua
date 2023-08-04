@@ -215,14 +215,15 @@ function WateringTool:TimerChange(percent)
 
     self:StopAllTask()
 
+    if self.frozed and self.watertype == WATERTYPE.DIRTY then
+        self.drytime = remainingtime
+        return true
+    end
+
     if isdry then
         self.drytime = GetTime() + remainingtime
     else
         self.spoiltime = GetTime() + remainingtime
-    end
-
-    if self.frozed and self.watertype == WATERTYPE.DIRTY then
-        return true
     end
 
     self.wateringtooltask = self.inst:DoTaskInTime(remainingtime, OnDone, self, watertype)
