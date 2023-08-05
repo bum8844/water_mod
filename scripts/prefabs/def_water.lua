@@ -93,6 +93,8 @@ local function MakeItem(inst, item, pos, doer)
     local iswet = inst.components.inventoryitem:IsWet()
     local owner = inst.components.inventoryitem ~= nil and inst.components.inventoryitem:GetGrandOwner() or nil
     local container = owner ~= nil and (owner.components.inventory or owner.components.container) or nil
+    local item = inst.prefab.."_ice"
+    --print("'"..inst.prefab.."' has generated '"..item.."'")
 
     local num_def
 
@@ -221,7 +223,6 @@ local function dirtywater(inst)
     inst.components.edible.sanityvalue = -TUNING.SANITY_MED
     inst.components.edible.thirstvalue = TUNING.HYDRATION_SUPERTINY
     inst.components.edible:SetOnEatenFn(Get_Waterborne_Disease)
-
     inst.components.water:SetWaterType(WATERTYPE.DIRTY)
 end
 
