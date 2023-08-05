@@ -90,6 +90,7 @@ local function SetState(inst)
     local isfrozen = inst.components.wateringtool:IsFrozen()
     local watertype = inst.components.wateringtool:GetWater() and 
     ( inst.components.wateringtool:GetWater() == WATERTYPE.CLEAN and BUCKETSTATE.CLEAN or BUCKETSTATE.DIRTY ) or BUCKETSTATE.EMPTY
+    local sound = watertype ~= BUCKETSTATE.EMPTY and ( watertype == BUCKETSTATE.CLEAN and "dontstarve/creatures/pengull/splash" or nil) or "dontstarve/common/dust_blowaway"
 
     if isfrozen then
         local frozenanim = watertype == BUCKETSTATE.DIRTY and "ice_dirty" or "ice"
@@ -101,23 +102,14 @@ local function SetState(inst)
         local meltanim = watertype == BUCKETSTATE.DIRTY and "full_dirty" or "full"
         inst.AnimState:PlayAnimation("turn_to_"..meltanim)
         inst.AnimState:PushAnimation(watertype)
-        DoneMilkingfn(inst)
-        return true
-    end
-
-    if inst.AnimState:IsCurrentAnimation("empty") and not watertype == BUCKETSTATE.EMPTY then
-        inst.AnimState:PushAnimation(watertype)
-        DoneMilkingfn(inst)
-        return true
-    end
-
-    if inst.AnimState:IsCurrentAnimation("full") and not watertype == BUCKETSTATE.CLEAN then
-        inst.AnimState:PushAnimation(watertype)
+        inst.SoundEmitter:PlaySound("dontstarve/creatures/pengull/splash")
         return true
     end
 
     inst.AnimState:PushAnimation(watertype)
-    inst.SoundEmitter:PlaySound("dontstarve/common/dust_blowaway")
+    if sound then
+        inst.SoundEmitter:PlaySound(sound)
+    end
 end
 
 local function fn()

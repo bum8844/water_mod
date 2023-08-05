@@ -127,7 +127,7 @@ function WateringTool:SetStates(state)
         self.inst.components.temperature.inherentinsulation = TUNING.INSULATION_MED_LARGE
         self.inst.components.temperature.inherentsummerinsulation = TUNING.INSULATION_MED_LARGE
 
-        --self.inst:ListenForEvent("temperaturedelta", self.frozed and FreezeToIce or ThawToWater)
+        self.inst:ListenForEvent("temperaturedelta", self.frozed and FreezeToIce or ThawToWater)
     end
 
     --물이 꽉차거나 차는 도중 비가 그처 말라버림
