@@ -71,7 +71,7 @@ local function ChangeItem(original_inst, prefab)
 end
 
 local function onperish(inst, item)
-    if inst.components.temperature and item.components.temperature then
+    if inst.components.temperature and item ~= nil and item.components.temperature then
         inst.components.temperature:TransferComponent(item)
     end
 end 
@@ -93,7 +93,6 @@ local function MakeItem(inst, item, pos, doer)
     local iswet = inst.components.inventoryitem:IsWet()
     local owner = inst.components.inventoryitem ~= nil and inst.components.inventoryitem:GetGrandOwner() or nil
     local container = owner ~= nil and (owner.components.inventory or owner.components.container) or nil
-    local item = inst.prefab.."_ice"
     --print("'"..inst.prefab.."' has generated '"..item.."'")
 
     local num_def
@@ -104,7 +103,7 @@ local function MakeItem(inst, item, pos, doer)
 
         TransferComponents(inst, new_item, num_def)
         MakeDone(new_item, container, pos, owner, doer)
-        print("num = "..tostring(stacksize).." num_def = "..tostring(num_def)..": 만약 이 문구가 도배되고 있다면 루프에 문제가 생긴 것입니다")
+        --print("num = "..tostring(stacksize).." num_def = "..tostring(num_def)..": 만약 이 문구가 도배되고 있다면 루프에 문제가 생긴 것입니다")
         stacksize = stacksize - num_def
     end
 end 
@@ -210,7 +209,7 @@ local function cleanwater(inst)
     inst:AddComponent("perishable")
     inst.components.perishable:SetPerishTime(TUNING.PERISH_FAST)
     inst.components.perishable:StartPerishing()
-    inst.components.perishable:SetOnPerishFn(onperish)
+    inst.components.perishable.onreplacedfn = onperish
     inst.components.perishable.onperishreplacement = "water_dirty"
 
     inst.components.water:SetWaterType(WATERTYPE.CLEAN)

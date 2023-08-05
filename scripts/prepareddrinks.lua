@@ -148,9 +148,9 @@ local function blocking_thing(names ,tags)
 end
 
 local function onlybloomfintuna(names ,tags)
-	local bloomfintuna = names.oceanfish_small_7_inv -- 최대 4개
+	local bloomfintuna = names.oceanfish_small_7_inv or 0 -- 최대 4개
 
-	local totalblock = tags.meat + tags.fish
+	local totalblock = ( tags.meat or 0 ) + ( tags.fish or 0 ) 
 
 	local totalignore = math.max(0,(totalblock - (bloomfintuna)))
 
@@ -216,7 +216,7 @@ local drinks =
 	{
 		test = function(boilier, names, tags) return (names.berries or  names.berries_cooked or names.berries_juicy or names.berries_juicy_cooked) and tags.fruit and Preference(names, tags) and not tags.veggie and notmeat(tags) and notname(names) and ressthing(names) end,
 		priority = 0,
-		health = TUNING.HEALING_MEDSMALL,
+		health = TUNING.HEALING_MEDSMALL/4,
 		hunger = TUNING.DRINK_CALORIES/5, --1
 		sanity = 0,
 		thirst = TUNING.HYDRATION_SMALLTINY,
@@ -231,9 +231,9 @@ local drinks =
 	{
 		test = function(boilier, names, tags) return tags.fruit and tags.fruit >= 3 and Preference(names, tags) and not tags.veggie and notmeat(tags) and notname(names) and ressthing(names) end,
 		priority = 1,
-		health = TUNING.HEALING_MED,
+		health = TUNING.HEALING_MED/4,
 		hunger = TUNING.DRINK_CALORIES/2,
-		sanity = TUNING.SANITY_SUPERTINY,
+		sanity = TUNING.SANITY_SUPERTINY/4,
 		thirst = TUNING.HYDRATION_SMALL,
 		perishtime = TUNING.PERISH_FASTISH,
 		cooktime = TUNING.KETTLE_FRUIT,
@@ -245,8 +245,8 @@ local drinks =
 	{
 		test = function(boilier, names, tags) return (names.cave_banana or names.cave_banana_cooked) and tags.fruit and Preference(names, tags) and not tags.veggie and notmeat(tags) and notname(names) and ressthing(names) end,
 		priority = 2,
-		health = TUNING.HEALING_LARGE,
-		hunger = TUNING.CALORIES_TINY,
+		health = TUNING.HEALING_LARGE/4,
+		hunger = TUNING.CALORIES_TINY/4,
 		sanity = TUNING.SANITY_SUPERTINY/2,
 		thirst = TUNING.HYDRATION_SMALL,
 		perishtime = TUNING.PERISH_MED,
@@ -259,7 +259,7 @@ local drinks =
 	{
 		test = function(boilier, names, tags) return (names.pomegranate or names.pomegranate_cooked) and tags.fruit and Preference(names, tags) and not tags.veggie and notmeat(tags) and notname(names) and ressthing(names) end,
 		priority = 2,
-		health = TUNING.HEALING_HUGE,
+		health = TUNING.HEALING_HUGE/4,
 		hunger = TUNING.DRINK_CALORIES/4,
 		sanity = TUNING.SANITY_SUPERTINY/2,
 		thirst = TUNING.HYDRATION_SMALL,
@@ -273,7 +273,7 @@ local drinks =
 	{
 		test = function(boilier, names, tags) return (names.fig or names.fig_cooked) and tags.fruit and Preference(names, tags) and not tags.veggie and notmeat(tags) and notname(names) and ressthing(names) end,
 		priority = 3,
-		health = TUNING.HEALING_MOREHUGE,
+		health = TUNING.HEALING_MOREHUGE/4,
 		hunger = TUNING.DRINK_CALORIES/2,
 		sanity = TUNING.SANITY_TINY/2,
 		thirst = TUNING.HYDRATION_SMALL,
@@ -287,8 +287,8 @@ local drinks =
 	{
 		test = function(boilier, names, tags) return (names.dragonfruit or names.dragonfruit_cooked) and tags.fruit and Preference(names, tags) and not tags.veggie and notmeat(tags) and notname(names) and ressthing(names) end,
 		priority = 2,
-		health = TUNING.HEALING_MEDLARGE,
-		hunger = TUNING.CALORIES_LARGE,
+		health = TUNING.HEALING_MEDLARGE/4,
+		hunger = TUNING.CALORIES_LARGE/4,
 		sanity = TUNING.SANITY_MED/3,
 		thirst = TUNING.HYDRATION_SMALL,
 		perishtime = TUNING.PERISH_SLOW,
@@ -301,7 +301,7 @@ local drinks =
 	{
 		test = function(boilier, names, tags) return ((names.wormlight and names.wormlight >= 2) or (names.wormlight_lesser and names.wormlight_lesser >= 3)) and (Preference(names, tags) >= 0.5) and not tags.veggie and notmeat(tags) and notname(names) end,
 		priority = 4,
-		health = TUNING.HEALING_MEDSMALL,
+		health = TUNING.HEALING_MEDSMALL/4,
 		hunger = TUNING.DRINK_CALORIES/5,
 		sanity = 0,
 		thirst = TUNING.HYDRATION_SMALL,
@@ -340,9 +340,9 @@ local drinks =
 	{
 		test = function(boilier, names, tags) return (( names.caffeinberry_bean_cooked or 0 ) + ( names.kyno_coffeebeans_cooked or 0 ) + ( names.coffeebeans_cooked or 0 ) + ( names.mfp_coffeecherry_cooked or 0 ) >= 3) and Preference(names, tags) and not tags.veggie and notmeat(tags) and notname(names) end,
 		priority = 5,
-		health = TUNING.HEALING_TINY,
+		health = TUNING.HEALING_TINY/4,
 		hunger = 0,
-		sanity = -TUNING.SANITY_SUPERTINY,
+		sanity = -TUNING.SANITY_SUPERTINY/4,
 		thirst = TUNING.HYDRATION_SMALLTINY,
 		perishtime = TUNING.PERISH_SLOW,
 		cooktime = TUNING.KETTLE_LUXURY_GOODS,
@@ -363,9 +363,9 @@ local drinks =
 	{
 		test = function(boilier, names, tags) return (names.carrot or names.carrot_cooked) and tags.veggie and Preference(names, tags) and not tags.fruit and notmeat(tags) and notname(names) and ressthing(names) end,
 		priority = 1,
-		health = TUNING.HEALING_SMALL*1.5,
+		health = (TUNING.HEALING_SMALL*1.5)/4,
 		hunger = TUNING.DRINK_CALORIES/5,
-		sanity = TUNING.SANITY_TINY/2,
+		sanity = (TUNING.SANITY_TINY/2)/4,
 		thirst = TUNING.HYDRATION_MED,
 		perishtime = TUNING.PERISH_MED,
 		cooktime = TUNING.KETTLE_VEGGIE,
@@ -378,7 +378,7 @@ local drinks =
 	{
 		test = function(boilier, names, tags) return tags.veggie and not tags.lotus and Preference(names, tags) and notmeat(tags) and notname(names) and ressthing(names) end,
 		priority = 0,
-		health = TUNING.HEALING_SMALL*2,
+		health = (TUNING.HEALING_SMALL*2)/4,
 		hunger = TUNING.DRINK_CALORIES/4,
 		sanity = -TUNING.SANITY_LARGE,
 		thirst = TUNING.HYDRATION_LARGE,
@@ -402,9 +402,9 @@ local drinks =
 	{
 		test = function(boilier, names, tags) return (names.cactus_meat or names.cactus_meat_cooked or names.aloe or names.aloe_cooked or names.kyno_aloe or names.kyno_aloe_cooked or names.mfp_aloe or names.mfp_aloe_cooked ) and tags.veggie and Preference(names, tags) and not tags.fruit and notmeat(tags) and notname(names) and ressthing(names) end,
 		priority = 1,
-		health = TUNING.HEALING_SMALL*2,
+		health = (TUNING.HEALING_SMALL*2)/4,
 		hunger = TUNING.DRINK_CALORIES/2,
-		sanity = TUNING.SANITY_TINY/2,
+		sanity = (TUNING.SANITY_TINY/2)/4,
 		thirst = TUNING.HYDRATION_LARGE,
 		perishtime = TUNING.PERISH_MED,
 		temperature = TUNING.COLD_FOOD_BONUS_TEMP,
@@ -417,9 +417,9 @@ local drinks =
 	tomato_juice = {
 		test = function(boilier, names, tags) return (names.tomato or names.tomato_cooked or names.tomato_dried) and tags.veggie and Preference(names, tags) and not tags.fruit and notmeat(tags) and notname(names) end,
 		priority = 1,
-		health = TUNING.HEALING_SMALL*2,
+		health = (TUNING.HEALING_SMALL*2)/4,
 		hunger = TUNING.DRINK_CALORIES/2,
-		sanity = TUNING.SANITY_TINY/2,
+		sanity = (TUNING.SANITY_TINY/2)/4,
 		thirst = TUNING.HYDRATION_LARGE,
 		potlevel = "high",
 		potlevel_bottle = "mid",
@@ -440,9 +440,9 @@ local drinks =
 	{
 		test = function(boilier, names, tags) return (( names.onion or 0 ) + ( names.onion_cooked or 0 ) + ( names.garlic or 0 ) + ( names.garlic_cooked or 0 ) >= 2) and tags.sweetener and tags.sweetener >= 1 and Preference(names, tags) and not tags.frozen and notmeat(tags) and notname(names) end,
 		priority = 2,
-		health = TUNING.HEALING_MEDSMALL,
+		health = TUNING.HEALING_MEDSMALL/4,
 		hunger = TUNING.DRINK_CALORIES/2,
-		sanity = TUNING.SANITY_TINY,
+		sanity = TUNING.SANITY_TINY/4,
 		thirst = TUNING.HYDRATION_MED,
 		perishtime = TUNING.PERISH_MED,
 		temperature = TUNING.HOT_FOOD_WARMING_THRESHOLD,
@@ -465,9 +465,9 @@ local drinks =
 	{
 		test = function(boilier, names, tags) return Tea_Def(names, tags) and notmeat(tags) and notname(names) and ressthing(names) end,
 		priority = 0,
-		health = TUNING.HEALING_TINY,
+		health = TUNING.HEALING_TINY/4,
 		hunger = 0,
-		sanity = TUNING.SANITY_SMALL,
+		sanity = TUNING.SANITY_SMALL/4,
 		thirst = TUNING.HYDRATION_SMALLTINY,
 		perishtime = TUNING.PERISH_FASTISH,
 		cooktime = TUNING.KETTLE_DECORATION,
@@ -480,9 +480,9 @@ local drinks =
 	{
 		test = function(boilier, names, tags) return IsTealeaves(names, tags) and notmeat(tags) and notname(names) and ressthing(names) end,
 		priority = 1,
-		health = TUNING.HEALING_TINY,
+		health = TUNING.HEALING_TINY/4,
 		hunger = 0,
-		sanity = TUNING.SANITY_MED,
+		sanity = TUNING.SANITY_MED/4,
 		thirst = TUNING.HYDRATION_SMALLTINY,
 		perishtime = TUNING.PERISH_MED,
 		cooktime = TUNING.KETTLE_TEA,
@@ -495,9 +495,9 @@ local drinks =
 	{
 		test = function(boilier, names, tags) return IsTealeaves_dried(names, tags) and not tags.frozen and notmeat(tags) and notname(names) and ressthing(names) end,
 		priority = 1,
-		health = TUNING.HEALING_SMALL,
+		health = TUNING.HEALING_SMALL/4,
 		hunger = 0,
-		sanity = TUNING.SANITY_LARGE,
+		sanity = TUNING.SANITY_LARGE/4,
 		thirst = TUNING.HYDRATION_SMALL,
 		perishtime = TUNING.PERISH_MED,
 		temperature = TUNING.HOT_FOOD_BONUS_TEMP,
@@ -512,9 +512,9 @@ local drinks =
 	{
 		test = function(boilier, names, tags) return IsTealeaves_dried(names, tags) and tags.frozen and tags.frozen >= 1 and notmeat(tags) and notname(names) and ressthing(names) end,
 		priority = 1,
-		health = TUNING.HEALING_SMALL,
+		health = TUNING.HEALING_SMALL/4,
 		hunger = 0,
-		sanity = TUNING.SANITY_LARGE,
+		sanity = TUNING.SANITY_LARGE/4,
 		thirst = TUNING.HYDRATION_MEDSMALL,
 		perishtime = TUNING.PERISH_MED,
 		temperature = TUNING.COLD_FOOD_BONUS_TEMP,
@@ -530,10 +530,10 @@ local drinks =
 	{
 		test = function(boilier, names, tags) return IsFoliage(names, tags) and notmeat(tags) and notname(names) and ressthing(names) end,
 		priority = 1,
-		health = TUNING.HEALING_SMALL,
+		health = TUNING.HEALING_SMALL/4,
 		hunger = 0,
-		sanity = TUNING.SANITY_MEDLARGE,
-		thirst = TUNING.HYDRATION_MEDSMALL,
+		sanity = TUNING.SANITY_MEDLARGE/4,
+		thirst = TUNING.HYDRATION_MEDSMAL,
 		perishtime = TUNING.PERISH_MED,
 		cooktime = TUNING.KETTLE_TEA,
 		potlevel = "mid",
@@ -548,9 +548,9 @@ local drinks =
 	{
 		test = function(boilier, names, tags) return IsFlower(names, tags) and notmeat(tags) and notname(names) and ressthing(names) end,
 		priority = 1,
-		health = TUNING.HEALING_MEDSMALL,
+		health = TUNING.HEALING_MEDSMALL/4,
 		hunger = 0,
-		sanity = TUNING.SANITY_MED,
+		sanity = TUNING.SANITY_MED/4,
 		thirst = TUNING.HYDRATION_SMALLTINY,
 		perishtime = TUNING.PERISH_MED,
 		cooktime = TUNING.KETTLE_DECORATION,
@@ -585,9 +585,9 @@ local drinks =
 	{
 		test = function(boilier, names, tags) return IsFlower_Cactus(names, tags) and notmeat(tags) and notname(names) and ressthing(names) end,
 		priority = 2,
-		health = TUNING.HEALING_MED/2,
+		health = (TUNING.HEALING_MED/2)/4,
 		hunger = TUNING.DRINK_CALORIES/2,
-		sanity = TUNING.SANITY_HUGE,
+		sanity = TUNING.SANITY_HUGE/4,
 		thirst = TUNING.HYDRATION_MEDSMALL,
 		perishtime = TUNING.PERISH_MED,
 		temperature = TUNING.COLD_FOOD_BONUS_TEMP,
@@ -600,9 +600,9 @@ local drinks =
 	lotustea = {
 			test = function(boilier, names, tags) return IsFlower_Lotus(names, tags) and notname(names) and ressthing(names) end,
 			priority = 1,
-			health = TUNING.HEALING_MED,
+			health = TUNING.HEALING_MED/4,
 			hunger = 0,
-			sanity = TUNING.SANITY_LARGE,
+			sanity = TUNING.SANITY_LARGE/4,
 			thirst = TUNING.HYDRATION_SMALL,
 			perishtime = TUNING.PERISH_MED,
 			cooktime = TUNING.KETTLE_DECORATION,
