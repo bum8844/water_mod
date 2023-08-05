@@ -48,9 +48,9 @@ local drinks =
 	{
 		test = function(boilier, names, tags) return names.refined_dust and names.refined_dust >= 1 and notmeat(tags) end,
 		priority = 0,
-		health = TUNING.HEALING_TINY,
-		hunger = TUNING.CALORIES_TINY,
-		sanity = TUNING.SANITY_SUPERTINY*3,
+		health = TUNING.HEALING_TINY/4,
+		hunger = TUNING.CALORIES_TINY/4,
+		sanity = (TUNING.SANITY_SUPERTINY*3)/4,
 		thirst = TUNING.HYDRATION_LARGE,
 		perishtime = TUNING.PERISH_PRESERVED,
 		cooktime = (TUNING.KETTLE_DECORATION + TUNING.SODA_WAIT),
@@ -64,9 +64,9 @@ local drinks =
 	{
 		test = function(boilier, names, tags) return names.refined_dust and names.refined_dust >= 1 and tags.fruit and tags.fruit >= 1 and notmeat(tags) and notname(names) and ressthing(names) end,
 		priority = 2,
-		health = TUNING.HEALING_MEDSMALL,
-		hunger = TUNING.CALORIES_SMALL,
-		sanity = TUNING.SANITY_SUPERTINY*3,
+		health = TUNING.HEALING_MEDSMALL/4,
+		hunger = TUNING.CALORIES_SMALL/4,
+		sanity = (TUNING.SANITY_SUPERTINY*3)/4,
 		thirst = TUNING.HYDRATION_HUGE,
 		perishtime = TUNING.PERISH_PRESERVED,
 		cooktime = (TUNING.KETTLE_DECORATION + TUNING.SODA_WAIT),
@@ -79,9 +79,9 @@ local drinks =
 	{
 		test = function(boilier, names, tags) return names.refined_dust and names.refined_dust >= 1 and names.royal_jelly and names.royal_jelly >=1 and notmeat(tags) and notname(names) and ressthing(names) end,
 		priority = 3,
-		health = TUNING.HEALING_MED,
-		hunger = TUNING.CALORIES_MEDSMALL,
-		sanity = TUNING.SANITY_MED,
+		health = TUNING.HEALING_MED/4,
+		hunger = TUNING.CALORIES_MEDSMALL/4,
+		sanity = TUNING.SANITY_MED/4,
 		thirst = TUNING.HYDRATION_MOREHUGE,
 		perishtime = TUNING.PERISH_PRESERVED,
 		cooktime = (TUNING.KETTLE_LUXURY_GOODS + TUNING.SODA_WAIT),
@@ -102,9 +102,9 @@ local drinks =
 	{
 		test = function(boilier, names, tags) return (( names.caffeinberry_bean_cooked or 0 ) + ( names.kyno_coffeebeans_cooked or 0 ) + ( names.mfp_coffeecherry_cooked or 0 ) >= 1) and names.refined_dust and names.refined_dust >= 1 and names.royal_jelly and names.royal_jelly >= 1 and notmeat(tags) and notname(names) end,
 		priority = 4,
-		health = TUNING.HEALING_MED/2,
-		hunger = TUNING.CALORIES_MEDSMALL,
-		sanity = TUNING.SANITY_LARGE,
+		health = (TUNING.HEALING_MED/2)/4,
+		hunger = TUNING.CALORIES_MEDSMALL/4,
+		sanity = TUNING.SANITY_LARGE/4,
 		thirst = TUNING.HYDRATION_MOREHUGE,
 		perishtime = TUNING.PERISH_PRESERVED,
 		cooktime = (TUNING.KETTLE_LUXURY_GOODS + TUNING.SODA_WAIT),
@@ -113,7 +113,7 @@ local drinks =
 		prefabs = { "healthregenbuff","caffeinbuff","honeyed" },
 		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_COLA,
 		oneatenfn = function(inst, eater)
-			eater.caffeinbuff_duration = TUNING.CAFFEIN_TIME
+			eater.caffeinbuff_duration = (TUNING.CAFFEIN_TIME/2)
 			eater:AddDebuff("healthregenbuff", "healthregenbuff")
 			eater:AddDebuff("caffeinbuff", "caffeinbuff")
 		end,
@@ -123,9 +123,9 @@ local drinks =
 	{
 		test = function(boilier, names, tags) return names.wormlight and (( names.caffeinberry_bean_cooked or 0 ) + ( names.kyno_coffeebeans_cooked or 0 ) == 1) and names.refined_dust and names.royal_jelly and notmeat(tags) end,
 		priority = 5,
-		health = TUNING.HEALING_SUPERHUGE*4,
-		hunger = TUNING.CALORIES_HUGE*4,
-		sanity = TUNING.SANITY_HUGE*8,
+		health = TUNING.HEALING_SUPERHUGE,
+		hunger = TUNING.CALORIES_HUGE,
+		sanity = TUNING.SANITY_HUGE*4,
 		thirst = TUNING.HYDRATION_SUPERHUGE,
 		tags = { "masterfood","lightdrink","honeyed" },
 		perishtime = TUNING.PERISH_PRESERVED,
@@ -135,7 +135,7 @@ local drinks =
 		prefabs = { "healthregenbuff","drunkarddebuff","wormlight_light_greater" },
 		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_COLAQUANTUM,
 		oneatenfn = function(inst, eater)
-			eater.caffeinbuff_duration = TUNING.CAFFEIN_TIME
+			eater.caffeinbuff_duration = (TUNING.CAFFEIN_TIME/2)
             eater:AddDebuff("healthregenbuff", "healthregenbuff")
 			eater:AddDebuff("caffeinbuff", "caffeinbuff")
             if eater.wormlight ~= nil then
@@ -165,7 +165,7 @@ local drinks =
 		test = function(boilier, names, tags) return (( names.corn or 0 ) + ( names.corn_cooked or 0 ) >= 3) and notmeat(tags) and notname(names) end,
 		priority = 1,
 		health = 0,
-		hunger = TUNING.CALORIES_SMALL,
+		hunger = TUNING.CALORIES_SMALL/4,
 		sanity = 0,
 		thirst = TUNING.HYDRATION_TINY,
 		tags = {"alcohol"},
@@ -185,9 +185,9 @@ local drinks =
 	{
 		test = function(boilier, names, tags) return tags.sweetener and tags.sweetener >= 3 and notmeat(tags) and notname(names) end,
 		priority = 1,
-		health = TUNING.HEALING_MEDSMALL*3,
-		hunger = TUNING.DRINK_CALORIES,
-		sanity = TUNING.SANITY_SMALL,
+		health = (TUNING.HEALING_MEDSMALL*3)/4,
+		hunger = TUNING.DRINK_CALORIES/4,
+		sanity = TUNING.SANITY_SMALL/4,
 		thirst = TUNING.HYDRATION_TINY,
 		tags = {"alcohol","honeyed"},
 		perishtime = TUNING.PERISH_SUPERSLOW,
@@ -207,7 +207,7 @@ local drinks =
 		priority = 2,
 		health = 0,
 		hunger = TUNING.DRINK_CALORIES,
-		sanity = TUNING.SANITY_SMALL,
+		sanity = TUNING.SANITY_SMALL/4,
 		thirst = TUNING.HYDRATION_TINY,
 		tags = {"alcohol"},
 		perishtime = TUNING.PERISH_SUPERSLOW,
@@ -227,7 +227,7 @@ local drinks =
 		priority = 2,
 		health = 0,
 		hunger = TUNING.DRINK_CALORIES,
-		sanity = TUNING.SANITY_MED,
+		sanity = TUNING.SANITY_MED/4,
 		thirst = TUNING.HYDRATION_TINY,
 		tags = {"alcohol"},
 		perishtime = TUNING.PERISH_SUPERSLOW,
@@ -245,9 +245,9 @@ local drinks =
 	{
 		test = function(boilier, names, tags) return (( names.berries or 0 ) + ( names.berries_juicy or 0 ) >= 2) and names.refined_dust and names.refined_dust >= 1 and notmeat(tags) and notname(names) end,
 		priority = 3,
-		health = TUNING.HEALING_SMALL*2,
-		hunger = TUNING.CALORIES_SMALL,
-		sanity = TUNING.SANITY_HUGE/2,
+		health = (TUNING.HEALING_SMALL*2)/4,
+		hunger = TUNING.CALORIES_SMALL/4,
+		sanity = (TUNING.SANITY_HUGE/2)/4,
 		thirst = TUNING.HYDRATION_MED,
 		tags = {"alcohol"},
 		perishtime = TUNING.PERISH_SUPERSLOW,
@@ -268,7 +268,7 @@ local drinks =
 		priority = 1,
 		health = 0,
 		hunger = TUNING.DRINK_CALORIES,
-		sanity = TUNING.SANITY_MED,
+		sanity = TUNING.SANITY_MED/4,
 		thirst = TUNING.HYDRATION_TINY,
 		tags = {"alcohol","lightdrink"},
 		perishtime = TUNING.PERISH_SUPERSLOW,
@@ -303,9 +303,9 @@ local drinks =
 	kumis = {
 		test = function(boilier, names, tags) return ( ( tags.milk or 0 ) + ( tags.dairy or 0 ) + ( names.goatmilk or 0 ) + ( names.kyno_milk_beefalo or 0 ) + ( names.kyno_milk_koalefant or 0 ) + ( names.milk_box or 0 ) + ( names.beefalo_milk or 0 ) + ( names.rawmilk or 0 ) >= 3) and notmeat(tags) and notname(names) and not tags.fat end,
 		priority = 1,
-		health = TUNING.HEALING_MEDSMALL,
-		hunger = TUNING.CALORIES_TINY,
-		sanity = TUNING.SANITY_MED,
+		health = TUNING.HEALING_MEDSMALL/4,
+		hunger = TUNING.CALORIES_TINY/4,
+		sanity = TUNING.SANITY_MED/4,
 		thirst = TUNING.HYDRATION_TINY,
 		tags = {"alcohol"},
 		perishtime = TUNING.PERISH_SUPERSLOW,

@@ -22,7 +22,6 @@ water_tuning =
 	},
 
 	TYPES_SALTY = {
-		"pond_cave",
 		"quagmire_pond_salt",
 		"kyno_pond_salt",
 	},
@@ -30,6 +29,7 @@ water_tuning =
 	TYPES_DIRTY = {
 		"pond",
 		"pond_mos",
+		"pond_cave",
 		"tidalpool",
 		"tidalpoolnew",
 	},
