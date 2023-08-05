@@ -21,6 +21,48 @@
     <folder id="6" name="20">
         <file id="0" name="20/20.png" width="246" height="301" pivot_x="0.5" pivot_y="0.1"/>
     </folder>
+    <folder id="7" name="1">
+        <file id="0" name="1/1.png" width="246" height="301" pivot_x="0.5" pivot_y="0.1"/>
+    </folder>
+    <folder id="8" name="2">
+        <file id="0" name="2/2.png" width="246" height="301" pivot_x="0.5" pivot_y="0.1"/>
+    </folder>
+    <folder id="9" name="3">
+        <file id="0" name="3/3.png" width="246" height="301" pivot_x="0.5" pivot_y="0.1"/>
+    </folder>
+    <folder id="10" name="4">
+        <file id="0" name="4/4.png" width="246" height="301" pivot_x="0.5" pivot_y="0.1"/>
+    </folder>
+    <folder id="11" name="5">
+        <file id="0" name="5/5.png" width="246" height="301" pivot_x="0.5" pivot_y="0.1"/>
+    </folder>
+    <folder id="12" name="6">
+        <file id="0" name="6/6.png" width="246" height="301" pivot_x="0.5" pivot_y="0.1"/>
+    </folder>
+    <folder id="13" name="7">
+        <file id="0" name="7/7.png" width="246" height="301" pivot_x="0.5" pivot_y="0.1"/>
+    </folder>
+    <folder id="14" name="8">
+        <file id="0" name="8/8.png" width="246" height="301" pivot_x="0.5" pivot_y="0.1"/>
+    </folder>
+    <folder id="15" name="9">
+        <file id="0" name="9/9.png" width="246" height="301" pivot_x="0.5" pivot_y="0.1"/>
+    </folder>
+    <folder id="16" name="10">
+        <file id="0" name="10/10.png" width="246" height="301" pivot_x="0.5" pivot_y="0.1"/>
+    </folder>
+    <folder id="17" name="11">
+        <file id="0" name="11/11.png" width="246" height="301" pivot_x="0.5" pivot_y="0.1"/>
+    </folder>
+    <folder id="18" name="12">
+        <file id="0" name="12/12.png" width="246" height="301" pivot_x="0.5" pivot_y="0.1"/>
+    </folder>
+    <folder id="19" name="13">
+        <file id="0" name="13/13.png" width="246" height="301" pivot_x="0.5" pivot_y="0.1"/>
+    </folder>
+    <folder id="20" name="14">
+        <file id="0" name="14/14.png" width="246" height="301" pivot_x="0.5" pivot_y="0.1"/>
+    </folder>
     <entity id="0" name="desalinator_body_water">
         <animation id="0" name="idle" length="34" interval="100">
             <mainline>
