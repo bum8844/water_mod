@@ -67,6 +67,33 @@ local function onbuilt(inst)
 	inst.AnimState:PushAnimation("idle")
 end
 
+--[[local function ChangeSaltSection(inst)
+    inst.AnimState:OverrideSymbol("desalinator_swap_salt", "desalinator_rope_salt", tostring(saltsection))
+end
+
+function WateringTool:TimerChange(percent)
+
+    if percent < 0 then percent = 0 end
+    if percent > 1 then percent = 1 end
+
+    remainingtime = percent*remainingtime
+
+    self:StopAllTask()
+
+    if self.frozed and self.watertype == WATERTYPE.DIRTY then
+        self.drytime = remainingtime
+        return true
+    end
+
+    if isdry then
+        self.drytime = GetTime() + remainingtime
+    else
+        self.spoiltime = GetTime() + remainingtime
+    end
+
+    self.wateringtooltask = self.inst:DoTaskInTime(remainingtime, OnDone, self, watertype)
+end]]
+
 local function onpickedfn(inst, picker)
     if not inst:HasTag("burnt") then
         inst._saltvalue = inst._saltvalue - inst.components.pickable.numtoharvest * saltvalue_per_salt
@@ -96,7 +123,8 @@ end
 
 local function ondoneboilingfn(inst)
     if not inst:HasTag("burnt") then
-        inst.AnimState:OverrideSymbol("swap", "desalinator_meter_water", tostring(inst._waterlevel))
+        inst.AnimState:OverrideSymbol("swap_body", "desalinator_body_water", tostring(inst._waterlevel))
+        inst.AnimState:OverrideSymbol("desalinator_swap", "desalinator_meter_water", tostring(inst._waterlevel))
         inst.AnimState:PlayAnimation("idle")
         inst.SoundEmitter:KillSound("desalinator_sound")
         inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/medium")
@@ -149,7 +177,8 @@ local function OnSectionChange(new, old, inst)
             inst._waterlevel = new
         end
     end
-    inst.AnimState:OverrideSymbol("swap", "desalinator_meter_"..watertype, tostring(inst._waterlevel))
+    inst.AnimState:OverrideSymbol("swap_body", "desalinator_body_"..watertype, tostring(inst._waterlevel))
+    inst.AnimState:OverrideSymbol("desalinator_swap", "desalinator_meter_"..watertype, tostring(inst._waterlevel))
 end
 
 local function OnTakeWater(inst)
@@ -200,7 +229,9 @@ local function fn()
     inst.AnimState:SetBuild("desalinator")
     inst.AnimState:SetBank("desalinator")
     inst.AnimState:PlayAnimation("idle")
-	inst.AnimState:OverrideSymbol("swap", "desalinator_meter_water", "0")
+    inst.AnimState:OverrideSymbol("swap_body", "desalinator_body_salt", "0")
+	inst.AnimState:OverrideSymbol("desalinator_swap", "desalinator_meter_water", "0")
+    inst.AnimState:OverrideSymbol("desalinator_swap_salt", "desalinator_rope_salt", "0")
     
 	inst:AddTag("structure")
 	inst:AddTag("desalinator")
