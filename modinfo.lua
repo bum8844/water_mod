@@ -181,13 +181,13 @@ configuration_options =
 		label = "Boost Rate",
 		options = 
 		{
-			{description = "Slower", data = 1.21},
-			{description = "Slow", data = 1.42},
-			{description = "Default", data = 1.83},
-			{description = "Fast", data = 2.04},
-			{description = "Faster", data = 2.25},
+			{description = "Slower", data = 1.05},
+			{description = "Slow", data = 1.10},
+			{description = "Default", data = 1.25},
+			{description = "Fast", data = 1.40},
+			{description = "Faster", data = 1.83},
 		},
-		default = 1.83
+		default = 1.25
 	},
 	{
 		name = "caffein_time",
