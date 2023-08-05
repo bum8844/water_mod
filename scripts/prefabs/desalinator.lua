@@ -3,8 +3,13 @@ require "prefabutil"
 local assets =
 {
     Asset("ANIM", "anim/desalinator.zip"),
-	Asset("ANIM", "anim/desalinator_meter_water.zip"),
-    Asset("ANIM", "anim/desalinator_meter_salt.zip")
+    Asset("ANIM", "anim/desalinator_body_dirty.zip"),
+    Asset("ANIM", "anim/desalinator_body_salt.zip"),
+    Asset("ANIM", "anim/desalinator_body_water.zip"),
+	Asset("ANIM", "anim/desalinator_meter_dirty.zip"),
+    Asset("ANIM", "anim/desalinator_meter_salt.zip"),
+    Asset("ANIM", "anim/desalinator_meter_water.zip"),
+    Asset("ANIM", "anim/desalinator_rope_salt.zip"),
 }
 
 --수치조정용 변수
@@ -124,7 +129,7 @@ end
 local function ondoneboilingfn(inst)
     if not inst:HasTag("burnt") then
         inst.AnimState:OverrideSymbol("swap_body", "desalinator_body_water", tostring(inst._waterlevel))
-        inst.AnimState:OverrideSymbol("desalinator_swap", "desalinator_meter_water", tostring(inst._waterlevel))
+        inst.AnimState:OverrideSymbol("swap", "desalinator_meter_water", tostring(inst._waterlevel))
         inst.AnimState:PlayAnimation("idle")
         inst.SoundEmitter:KillSound("desalinator_sound")
         inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/medium")
@@ -178,7 +183,7 @@ local function OnSectionChange(new, old, inst)
         end
     end
     inst.AnimState:OverrideSymbol("swap_body", "desalinator_body_"..watertype, tostring(inst._waterlevel))
-    inst.AnimState:OverrideSymbol("desalinator_swap", "desalinator_meter_"..watertype, tostring(inst._waterlevel))
+    inst.AnimState:OverrideSymbol("swap", "desalinator_meter_"..watertype, tostring(inst._waterlevel))
 end
 
 local function OnTakeWater(inst)
@@ -230,8 +235,8 @@ local function fn()
     inst.AnimState:SetBank("desalinator")
     inst.AnimState:PlayAnimation("idle")
     inst.AnimState:OverrideSymbol("swap_body", "desalinator_body_salt", "0")
-	inst.AnimState:OverrideSymbol("desalinator_swap", "desalinator_meter_water", "0")
-    inst.AnimState:OverrideSymbol("desalinator_swap_salt", "desalinator_rope_salt", "0")
+	inst.AnimState:OverrideSymbol("swap", "desalinator_meter_water", "0")
+    inst.AnimState:OverrideSymbol("swap_salt", "desalinator_rope_salt", "0")
     
 	inst:AddTag("structure")
 	inst:AddTag("desalinator")
