@@ -71,7 +71,7 @@ local function ChangeItem(original_inst, prefab)
 end
 
 local function onperish(inst, item)
-    if inst.components.temperature and item.components.temperature then
+    if inst.components.temperature and item ~= nil and item.components.temperature then
         inst.components.temperature:TransferComponent(item)
     end
 end 
