@@ -93,7 +93,6 @@ local function MakeItem(inst, item, pos, doer)
     local iswet = inst.components.inventoryitem:IsWet()
     local owner = inst.components.inventoryitem ~= nil and inst.components.inventoryitem:GetGrandOwner() or nil
     local container = owner ~= nil and (owner.components.inventory or owner.components.container) or nil
-    local item = inst.prefab.."_ice"
     --print("'"..inst.prefab.."' has generated '"..item.."'")
 
     local num_def
