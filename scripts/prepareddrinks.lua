@@ -148,9 +148,9 @@ local function blocking_thing(names ,tags)
 end
 
 local function onlybloomfintuna(names ,tags)
-	local bloomfintuna = names.oceanfish_small_7_inv -- 최대 4개
+	local bloomfintuna = names.oceanfish_small_7_inv or 0 -- 최대 4개
 
-	local totalblock = tags.meat + tags.fish
+	local totalblock = ( tags.meat or 0 ) + ( tags.fish or 0 ) 
 
 	local totalignore = math.max(0,(totalblock - (bloomfintuna)))
 
@@ -287,7 +287,7 @@ local drinks =
 	{
 		test = function(boilier, names, tags) return (names.dragonfruit or names.dragonfruit_cooked) and tags.fruit and Preference(names, tags) and not tags.veggie and notmeat(tags) and notname(names) and ressthing(names) end,
 		priority = 2,
-		health = TUNING.HEALING_MEDLARGE,/4
+		health = TUNING.HEALING_MEDLARGE/4,
 		hunger = TUNING.CALORIES_LARGE/4,
 		sanity = TUNING.SANITY_MED/3,
 		thirst = TUNING.HYDRATION_SMALL,
