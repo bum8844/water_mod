@@ -172,8 +172,9 @@ ACTIONS.FEEDPLAYER.fn = function(act)
 end
 
 local DRINK = AddAction("DRINK", STRINGS.ACTIONS.DRINK, ACTIONS.EAT.fn)
-DRINK.priority = 2
 DRINK.mount_valid = true
+--bum:소숫점으로 해서 웜우드가 썩은 음료로도 치료 할 수 있개 되었습니다.
+DRINK.priority = 0.5
 
 local TURNON_TILEARRIVE = AddAction("TURNON_TILEARRIVE",STRINGS.ACTIONS.TURNON,function(act)
     local tar = act.target or act.invobject

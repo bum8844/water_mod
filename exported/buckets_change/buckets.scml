@@ -419,7 +419,7 @@
             </mainline>
             <timeline id="0" name="buckets">
                 <key id="0">
-                    <object folder="0" file="1" angle="0"/>
+                    <object folder="0" file="4" angle="0"/>
                 </key>
                 <key id="1" time="100" spin="-1">
                     <object folder="0" file="4" angle="2"/>
