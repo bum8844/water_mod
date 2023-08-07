@@ -13,16 +13,12 @@ local WateringTool = Class(function(self, inst)
     self.weatherchecktask = nil
 
     self.setstatesfn = nil
+    self.settemperaturefn = nil
 end,nil,nil)
 
-local function SetTemperature(inst, self)
-    local temp = self.frozed and TUNING.WATER_FROZEN_INITTEMP or TUNING.WATER_INITTEMP
-    local maxtamp = self.frozed and TUNING.WATER_FROZEN_INITTEMP or TUNING.WATER_INITTEMP
-
-    inst.components.temperature.current = math.min(TheWorld.state.temperature, temp)
-    inst.components.temperature.maxtemp = maxtamp
-    inst.components.temperature.inherentinsulation = TUNING.INSULATION_MED_LARGE
-    inst.components.temperature.inherentsummerinsulation = TUNING.INSULATION_MED_LARGE
+local function CheckIsRaining(inst, self, newstate)
+    self.weatherchecktask = nil
+    self:RestartTimer(newstate)
 end
 
 local function CheckWeather(inst, self)
@@ -52,6 +48,18 @@ function WateringTool:ResetTimer()
     self.targettime = nil
 end
 
+function WateringTool:GetWater()
+    return self.watertype
+end
+
+function WateringTool:IsTask()
+    return self.targettime
+end
+
+function WateringTool:IsFrozen()
+    return self.frozed
+end
+
 function WateringTool:StopWateringToolTask()
     if self.wateringtooltask then
         self.wateringtooltask:Cancel()
@@ -70,6 +78,8 @@ function WateringTool:CollectRainWater(israining)
     if self.cancollectrainwater then
 
         if self.watertype ~= WATERTYPE.EMPTY then
+            self:StopCheckWeatherTask()
+            self.weatherchecktask = self.inst:DoTaskInTime(0, CheckIsRaining, self)
             return true
         end
 
@@ -131,15 +141,47 @@ function WateringTool:SetStates(state)
         return true
     end
 
-    SetTemperature(self.inst, self)
+    if self.inst.components.temperature and self.settemperaturefn then
+        self.settemperaturefn(self.inst)
+    end
+
+    if TheWorld.state.israining then
+        self.targettime = timer
+        self.weatherchecktask = self.inst:DoTaskInTime(0, CheckIsRaining, self, true)
+
+        if self.setstatesfn then
+            self.setstatesfn(self.inst)
+        end
+        return true
+    end
+
+    if self:IsFrozen() then
+        self.targettime = timer
+        return true
+    end
 
     self.targettime = timer + GetTime()
 
-    self.wateringtooltask = self.inst:DoTaskInTime(timer, OnDone, self, water)
+    self.wateringtooltask = self.inst:DoTaskInTime(timer, OnDone, self)
     
     if self.setstatesfn then
         self.setstatesfn(self.inst)
     end
+end
+
+function WateringTool:RestartTimer(newstate)
+    self:StopAllTask()
+    local isnewstate = newstate
+    if not TheWorld.state.israining then
+        local timer = isnewstate and self.targettime or self.targettime - GetTime()
+        self.targettime = timer + GetTime()
+        isnewstate = nil
+        self.wateringtooltask = self.inst:DoTaskInTime(timer, OnDone, self)
+    else
+        local timer = isnewstate and self.targettime or self.targettime - GetTime()
+        self.targettime = timer
+    end
+    self.weatherchecktask = self.inst:DoTaskInTime(0, CheckIsRaining, self, isnewstate)
 end
 
 function WateringTool:SetCanCollectRainWater(bool)
@@ -152,8 +194,7 @@ function WateringTool:SetCanCollectRainWater(bool)
     end
 end
 
---[[function WateringTool:TimerChange(percent)
-    local watertype = self.wateringtoolstate == BUCKETSTATE.CLEAN and WATERTYPE.DIRTY or nil
+function WateringTool:TimerChange(percent)
     local remainingtime = self.frozed and math.ceil(TUNING.PERISH_SLOW/2) or 
           self.watertype == WATERTYPE.DIRTY and TUNING.BUCKET_LEVEL_PER_USE*4 or 
           math.ceil(TUNING.PERISH_FAST/2)
@@ -172,14 +213,14 @@ end
 
     self.targettime = GetTime() + remainingtime
 
-    self.wateringtooltask = self.inst:DoTaskInTime(remainingtime, OnDone, self, watertype)
+    self.wateringtooltask = self.inst:DoTaskInTime(remainingtime, OnDone, self, self.watertype)
 end
 
 function WateringTool:GetPercent()
     local spoiledingtime = self.frozed and math.ceil(TUNING.PERISH_SLOW/2) or 
           self.watertype == WATERTYPE.DIRTY and TUNING.BUCKET_LEVEL_PER_USE*4 or 
           math.ceil(TUNING.PERISH_FAST/2)
-    local remainingtime = self.spoiltime ~= nil and math.floor(self.spoiltime - GetTime()) or 0
+    local remainingtime = self.targettime ~= nil and ( self.frozed and self.targettime or math.floor(self.targettime - GetTime())) or 0
     if remainingtime and remainingtime > 0 then
         return math.min(1, remainingtime / spoiledingtime)
     else
@@ -194,10 +235,14 @@ function WateringTool:SetFrozed(bool)
 
     self:TimerChange(timer)
 
+    if self.settemperaturefn then
+        self.settemperaturefn(self.inst)
+    end
+
     if self.setstatesfn then
         self.setstatesfn(self.inst)
     end
-end]]
+end
 
 function WateringTool:OnSave()
     local tasking = nil
@@ -231,7 +276,20 @@ function WateringTool:OnLoad(data)
             return true
         end
 
-        SetTemperature(self.inst, self)
+        if self.inst.components.temperature and self.settemperaturefn then
+            self.settemperaturefn(self.inst)
+        end
+
+        if data.frozed and not water == WATERTYPE.EMPTY then
+            self.frozed = data.frozed
+            if data.paused then
+                self.targettime = data.timer
+                if self.setstatesfn then
+                    self.setstatesfn(self.inst)
+                end
+                return true
+            end
+        end
 
         self.targettime = GetTime() + math.max(0,data.timer)
         self.wateringtooltask = self.inst:DoTaskInTime(data.timer, OnDone, self, water)
@@ -240,18 +298,6 @@ function WateringTool:OnLoad(data)
             self.setstatesfn(self.inst)
         end
     end
-end
-
-function WateringTool:GetWater()
-    return self.watertype
-end
-
-function WateringTool:IsTask()
-    return self.targettime
-end
-
-function WateringTool:IsFrozen()
-    return self.frozed
 end
 
 function WateringTool:LongUpdate(dt)

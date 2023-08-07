@@ -38,6 +38,7 @@ local function GetWater(inst, watertype, doer)
 
     if old_val > peruse then
         inst.components.finiteuses:Use(peruse)
+        inst.components.wateringtool:Initialize()
         inst.components.wateringtool:SetCanCollectRainWater(false)
     else
         inst:Remove()
@@ -76,17 +77,37 @@ local function OnTakeWater(inst, source, doer)
     end
 end
 
+local function SetTemperature(inst)
+    local isfrozen = inst.components.wateringtool:IsFrozen()
+
+    local temp = isfrozen and TUNING.WATER_FROZEN_INITTEMP or TUNING.WATER_INITTEMP
+
+    inst.components.temperature.current = math.min(TheWorld.state.temperature, temp)
+
+    if isfrozen then
+        inst.components.temperature.maxtemp = TUNING.WATER_INITTEMP
+        inst.components.temperature.mintemp = TUNING.MIN_ENTITY_TEMP
+    else
+        inst.components.temperature.mintemp = TUNING.MAX_ENTITY_TEMP
+        inst.components.temperature.mintemp = TUNING.WATER_FROZEN_INITTEMP
+    end
+    inst.components.temperature.inherentinsulation = TUNING.INSULATION_MED_LARGE
+    inst.components.temperature.inherentsummerinsulation = TUNING.INSULATION_MED_LARGE
+end
+
 local function SetToFrozed(inst, data)
     if inst.components.wateringtool:GetWater() ~= WATERTYPE.EMPTY then
-        local watertype = inst.components.wateringtool:GetWater()
         local cur_temp = inst.components.temperature:GetCurrent()
-        local min_temp = inst.componnets.temperature.mintemp
+        local min_temp = inst.components.temperature.mintemp
         local max_temp = inst.components.temperature.maxtemp
-
-        if cur_temp >= max_temp then
-            inst.components.wateringtool:SetFrozed(false)
+        if inst.components.wateringtool:IsFrozen() then
+            if cur_temp >= max_temp then
+                inst.components.wateringtool:SetFrozed(false)
+                print("녹음")
+            end
         elseif cur_temp <= min_temp then
             inst.components.wateringtool:SetFrozed(true)
+            print("얼음")
         end
     end
 end
@@ -101,7 +122,11 @@ local function SetState(inst)
     local wateranim = watertype ~= WATERTYPE.EMPTY and ( watertype == WATERTYPE.CLEAN and "full" or "dirty") or "empty"
     local sound = watertype ~= WATERTYPE.EMPTY and ( watertype == WATERTYPE.CLEAN and "dontstarve/creatures/pengull/splash" or nil) or "dontstarve/common/dust_blowaway"
 
-    --[[if isfrozen then
+    if isfrozen then
+        if inst.AnimState:IsCurrentAnimation("ice") then
+            inst.AnimState:PushAnimation("ice_dirty")
+            return true
+        end
         local frozenanim = watertype == WATERTYPE.CLEAN and "ice" or "ice_dirty"
         inst.AnimState:PlayAnimation("turn_to_"..frozenanim)
         inst.AnimState:PushAnimation(frozenanim)
@@ -113,7 +138,7 @@ local function SetState(inst)
         inst.AnimState:PushAnimation(wateranim)
         inst.SoundEmitter:PlaySound("dontstarve/creatures/pengull/splash")
         return true
-    end]]
+    end
 
     inst.AnimState:PushAnimation(wateranim)
     if sound then
@@ -158,11 +183,12 @@ local function fn()
 
     inst:AddComponent("fuel")
     inst.components.fuel.fuelvalue = TUNING.LARGE_FUEL
+
+    inst:AddComponent("temperature")
     
     inst:AddComponent("wateringtool")
     inst.components.wateringtool.setstatesfn = SetState
-
-    inst:AddComponent("temperature")
+    inst.components.wateringtool.settemperaturefn = SetTemperature
 
     inst:AddComponent("inspectable")
 
