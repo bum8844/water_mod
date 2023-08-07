@@ -44,8 +44,10 @@
     <folder id="4" name="well_bucket">
         <file id="0" name="well_bucket/well_bucket-0.png" width="126" height="128" pivot_x="0.5" pivot_y="0.5"/>
         <file id="1" name="well_bucket/well_bucket-1.png" width="126" height="128" pivot_x="0.5" pivot_y="0.5"/>
-        <file id="2" name="well_bucket/well_bucket-34.png" width="146" height="128" pivot_x="0.5" pivot_y="0.5"/>
-        <file id="3" name="well_bucket/well_bucket-3.png" width="136" height="128" pivot_x="0.5" pivot_y="0.5"/>
+        <file id="2" name="well_bucket/buckets_steel_empty.png" width="132" height="121" pivot_x="0.5" pivot_y="0.5"/>
+        <file id="3" name="well_bucket/buckets_woodie_empty.png" width="132" height="121" pivot_x="0.5" pivot_y="0.5"/>
+        <file id="4" name="well_bucket/buckets_woodie_clean.png" width="132" height="121" pivot_x="0.5" pivot_y="0.5"/>
+        <file id="5" name="well_bucket/buckets_steel_clean.png" width="132" height="121" pivot_x="0.5" pivot_y="0.5"/>
     </folder>
     <folder id="5" name="shadow">
         <file id="0" name="shadow/shadow-0.png" width="250" height="78" pivot_x="0.5" pivot_y="0.5"/>
@@ -3240,7 +3242,7 @@
             </timeline>
             <timeline id="10" name="well_bucket-0">
                 <key id="0" spin="0">
-                    <object folder="4" file="3" x="-5.478261" y="197.478261" angle="0"/>
+                    <object folder="4" file="1" x="-5.478261" y="197.478261" angle="0"/>
                 </key>
                 <key id="1" time="34" spin="0">
                     <object folder="4" file="1" x="-5.478261" y="197.478261" angle="0"/>
