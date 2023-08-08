@@ -7,6 +7,25 @@ local function SetCheckWeather(inst)
     inst.components.wateringtool:SetCanCollectRainWater(true)
 end
 
+local function SetTemperature(inst)
+    local isfrozen = inst.components.wateringtool:IsFrozen()
+
+    local temp = isfrozen and TUNING.WATER_FROZEN_INITTEMP or TUNING.WATER_INITTEMP
+    local curtemp = inst.components.wateringtool:GetWater() ~= WATERTYPE.EMPTY and math.min(TheWorld.state.temperature, temp) or TheWorld.state.temperature
+
+    inst.components.temperature.current = curtemp
+
+    if isfrozen then
+        inst.components.temperature.maxtemp = TUNING.WATER_INITTEMP
+        inst.components.temperature.mintemp = TUNING.MIN_ENTITY_TEMP
+    else
+        inst.components.temperature.mintemp = TUNING.MAX_ENTITY_TEMP
+        inst.components.temperature.mintemp = TUNING.WATER_FROZEN_INITTEMP
+    end
+    inst.components.temperature.inherentinsulation = TUNING.INSULATION_MED_LARGE
+    inst.components.temperature.inherentsummerinsulation = TUNING.INSULATION_MED_LARGE
+end
+
 local function GetWater(inst, watertype, doer)
     local container = doer ~= nil and (doer.components.inventory or doer.components.container) or nil
     local water = SpawnPrefab(watertype)
@@ -22,7 +41,7 @@ local function GetWater(inst, watertype, doer)
     print(current_fin)
 
     if water.components.perishable then
-        local perish = inst.components.wateringtool:GetPercent()
+        local perish = inst.components.wateringtool:GetPercent(true)
         water.components.perishable:SetPercent(perish)
     end
     water.Transform:SetPosition(inst.Transform:GetWorldPosition())
@@ -40,6 +59,7 @@ local function GetWater(inst, watertype, doer)
         inst.components.finiteuses:Use(peruse)
         inst.components.wateringtool:Initialize()
         inst.components.wateringtool:SetCanCollectRainWater(false)
+        SetTemperature(inst)
     else
         inst:Remove()
     end
@@ -75,24 +95,6 @@ local function OnTakeWater(inst, source, doer)
     if inst.components.finiteuses.current <= 0 then
         inst:Remove()
     end
-end
-
-local function SetTemperature(inst)
-    local isfrozen = inst.components.wateringtool:IsFrozen()
-
-    local temp = isfrozen and TUNING.WATER_FROZEN_INITTEMP or TUNING.WATER_INITTEMP
-
-    inst.components.temperature.current = math.min(TheWorld.state.temperature, temp)
-
-    if isfrozen then
-        inst.components.temperature.maxtemp = TUNING.WATER_INITTEMP
-        inst.components.temperature.mintemp = TUNING.MIN_ENTITY_TEMP
-    else
-        inst.components.temperature.mintemp = TUNING.MAX_ENTITY_TEMP
-        inst.components.temperature.mintemp = TUNING.WATER_FROZEN_INITTEMP
-    end
-    inst.components.temperature.inherentinsulation = TUNING.INSULATION_MED_LARGE
-    inst.components.temperature.inherentsummerinsulation = TUNING.INSULATION_MED_LARGE
 end
 
 local function SetToFrozed(inst, data)
