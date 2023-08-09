@@ -10,6 +10,10 @@ local function Tea_Def(names, tags)
 	return (tags.decoration or 0) and ((tags.veggie or 0) <= 2) and ((tags.mushroom or 0) < 4) and not tags.fruit
 end
 
+local function Mix_Tea_Patch(names, tags)
+	return tags.decoration and ((tags.veggie or 0) <= 2) and ((tags.mushroom or 0) < 4) and not tags.fruit
+end
+
 local function IsTealeaves(names, tags)
 	return names.tealeaves and 
 	Preference(names, tags) and
@@ -140,6 +144,24 @@ local function IsFlower_Cactus(names, tags)
 		names.succulent_picked or
 		tags.lotus 
 	)
+end
+
+--bum:꽃다랑어만 들어 갔는지 확인해주는 코드
+local function blocking_thing(names ,tags)
+	return not (tags.egg or tags.boss or tags.poop or tags.elemental or tags.paper or tags.horn or tags.spotspice or tags.gears or tags.rabbit or tags.beanbug or tags.gummybug or tags.flour or tags.bread or tags.chocolate)
+end
+
+local function onlybloomfintuna(names ,tags)
+	local bloomfintuna = names.oceanfish_small_7_inv or 0 -- 최대 4개
+
+	local totalblock = ( tags.meat or 0 ) + ( tags.fish or 0 ) 
+
+	local totalignore = math.max(0,(totalblock - (bloomfintuna)))
+
+	if blocking_thing(names ,tags) and totalignore <= 0 and bloomfintuna > 0 then
+		return bloomfintuna
+	end 
+	return false
 end
 
 local function IsFlower_Lotus(names, tags)
@@ -445,7 +467,7 @@ local drinks =
 	-- 꽃을 섞으면 나오는 결과물
 	mixflower =
 	{
-		test = function(boilier, names, tags) return Tea_Def(names, tags) and notmeat(tags) and notname(names) and ressthing(names) end,
+		test = function(boilier, names, tags) return Mix_Tea_Patch(names, tags) and notmeat(tags) and notname(names) and ressthing(names) end,
 		priority = 0,
 		health = TUNING.HEALING_TINY,
 		hunger = 0,

@@ -1,5 +1,6 @@
 name 						= "Don't Starve: Dehydrated"
-version 					= "Alpha 1.1.8f"
+
+version 					= "Alpha 1.1.8h"
 
 description = (
 	"Description coming soon..."
@@ -222,6 +223,7 @@ configuration_options =
 	{
 		name = "child_safety",
 		label = "Child Protection",
+		options =
 		{
 			{description = "Enabled", data = true},
 			{description = "Disabled", data = false},
