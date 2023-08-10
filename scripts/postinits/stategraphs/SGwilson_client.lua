@@ -86,7 +86,7 @@ local drink_event = EventHandler("drink",function(inst, action)
         if obj:HasTag("drink") then
             for k, v in pairs(FOODTYPE) do
                 if obj:HasTag("edible_"..v) then
-                    return v == FOODTYPE.MEAT and "drinkstew" or "drink"
+                    return (v == FOODTYPE.MEAT and not obj:HasTag("alcohol") and "drinkstew") or "drink"
                 end
             end
         else
@@ -116,7 +116,7 @@ AddStategraphActionHandler("wilson_client", ActionHandler(ACTIONS.DRINK,
             end
             for k, v in pairs(FOODTYPE) do
                 if obj:HasTag("edible_"..v) then
-                    return (v == FOODTYPE.MEAT and "drinkstew")
+                    return (v == FOODTYPE.MEAT and not obj:HasTag("alcohol") and "drinkstew")
                 or "drink"
                 end
             end
@@ -343,7 +343,7 @@ AddStategraphPostInit("wilson_client", function(sg)
             if obj:HasTag("drink") then
                 for k, v in pairs(FOODTYPE) do
                     if obj:HasTag("edible_"..v) then
-                        return v == FOODTYPE.MEAT and "drinkstew" or "drink"
+                        return (v == FOODTYPE.MEAT and not obj:HasTag("alcohol") and "drinkstew") or "drink"
                     end
                 end
             else
