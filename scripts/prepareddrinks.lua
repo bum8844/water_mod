@@ -158,7 +158,7 @@ local function onlybloomfintuna(names ,tags)
 
 	local totalignore = math.max(0,(totalblock - (bloomfintuna)))
 
-	if blocking_thing(names ,tags) and totalignore <= 0 then
+	if blocking_thing(names ,tags) and totalignore <= 0 and bloomfintuna > 0 then
 		return bloomfintuna
 	end 
 	return false
