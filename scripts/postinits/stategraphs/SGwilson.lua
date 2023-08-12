@@ -604,7 +604,7 @@ AddStategraphPostInit("wilson", function(sg)
                     inst.AnimState:PlayAnimation("idle_hot_pre")
                     inst.AnimState:PushAnimation("idle_hot_loop")
                     inst.AnimState:PushAnimation("idle_hot_pst", false)
-                elseif GetModConfigData("enable_thirst") and inst.components.thirst:GetPercent() < TUNING.THIRST_THRESH then
+                elseif GetModConfigData("enable_thirst") and inst.components.thirst and inst.components.thirst:GetPercent() < TUNING.THIRST_THRESH then
                     inst.AnimState:PlayAnimation("idle_groggy01_pre")
                     inst.AnimState:PushAnimation("idle_groggy01_loop")
                     inst.AnimState:PushAnimation("idle_groggy01_pst", false)
