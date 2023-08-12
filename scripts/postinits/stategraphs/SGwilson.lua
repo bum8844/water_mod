@@ -274,7 +274,7 @@ local drink_event = EventHandler("drink",function(inst, action)
         return
     end
     return --[[(obj.components.soul ~= nil and "drinkstew")
-        or]] (obj.components.edible.foodtype == FOODTYPE.MEAT and "drinkstew")
+        or]] (obj.components.edible.foodtype == FOODTYPE.MEAT and not obj:HasTag("alcohol") and "drinkstew")
         or "drink"
     end)
 
@@ -305,7 +305,7 @@ AddStategraphActionHandler("wilson", ActionHandler(ACTIONS.DRINK,
             else
                 return
             end
-            return (obj.components.edible.foodtype == FOODTYPE.MEAT and "drinkstew") or "drink"
+            return (obj.components.edible.foodtype == FOODTYPE.MEAT and not obj:HasTag("alcohol") and "drinkstew") or "drink"
         end
     )
 )
@@ -677,7 +677,7 @@ AddStategraphPostInit("wilson", function(sg)
                 return
             end
             return --[[(obj.components.soul ~= nil and "drinkstew")
-                or]] (obj.components.edible.foodtype == FOODTYPE.MEAT and "drinkstew")
+                or]] (obj.components.edible.foodtype == FOODTYPE.MEAT and not obj:HasTag("alcohol") and "drinkstew")
                 or "drink"
         else
             return eater(inst, action)
