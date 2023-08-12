@@ -163,6 +163,9 @@ function WateringTool:SetStates(state)
 
     if self:IsFrozen() then
         self.targettime = timer
+        if self.setstatesfn then
+            self.setstatesfn(self.inst)
+        end
         return true
     end
 
