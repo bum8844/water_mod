@@ -47,6 +47,7 @@ function WateringTool:StopAllTask()
 end
 
 function WateringTool:ResetTimer()
+    self.basetime = nil
     self.targettime = nil
 end
 
@@ -88,8 +89,6 @@ function WateringTool:CollectRainWater(israining)
         if israining then
             local rain_timer = TUNING.BUCKET_LEVEL_PER_USE*2
 
-            --self.basetime = rain_timer
-
             if self.targettime then
                 rain_timer = self.targettime - GetTime()
             end
@@ -120,6 +119,7 @@ end
 function WateringTool:SetStates(state)
 
     self:StopAllTask()
+    self:ResetTimer()
 
     self.watertype = state
 
@@ -145,7 +145,7 @@ function WateringTool:SetStates(state)
         return true
     end
 
-    --self.basetime = timer
+    self.basetime = timer
 
     if self.inst.components.temperature and self.settemperaturefn then
         self.settemperaturefn(self.inst)
@@ -209,6 +209,7 @@ function WateringTool:TimerChange(percent)
     if percent < 0 then percent = 0 end
     if percent > 1 then percent = 1 end
 
+    self.basetime = remainingtime
     self.targettime = percent*remainingtime
 
     self:StopAllTask()
@@ -224,16 +225,13 @@ end
 
 function WateringTool:GetPercent()
     local isfrozen = self.frozed
-    local spoiledingtime = isfrozen and math.ceil(TUNING.PERISH_SLOW/2) or 
-          self.watertype == WATERTYPE.DIRTY and TUNING.BUCKET_LEVEL_PER_USE*4 or 
-          math.ceil(TUNING.PERISH_FAST/2)
 
     local remainingtime = self.targettime == nil and 0 or 
           isfrozen and self.watertype == WATERTYPE.DIRTY and self.targettime or
           math.floor(self.targettime - GetTime())
 
-    if remainingtime and remainingtime > 0 then
-        return math.min(1, remainingtime / spoiledingtime)
+    if remainingtime > 0 then
+        return math.min(1, remainingtime / self.basetime)
     else
         return 0
     end
@@ -287,6 +285,8 @@ function WateringTool:OnLoad(data)
             self:CollectRainWater(TheWorld.state.israining)
             return true
         end
+
+        self.basetime = data.basetime
 
         if self.inst.components.temperature and self.settemperaturefn then
             self.settemperaturefn(self.inst)
