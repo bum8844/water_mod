@@ -196,7 +196,8 @@ local function fn()
     inst.components.pickable.numtoharvest = inst.components.waterlevel:GetWater()
     inst.components.pickable:SetOnPickedFn(OnPickedFn)
 
-    MakeHauntableLaunchAndSmash(inst)
+    inst:AddComponent("hauntable")
+    inst.components.hauntable:SetHauntValue(TUNING.HAUNT_TINY)
 
     inst.OnSave = onsave
     inst.OnLoad = onload
