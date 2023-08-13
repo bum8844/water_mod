@@ -158,6 +158,7 @@ function WateringTool:SetStates(state)
         if self.setstatesfn then
             self.setstatesfn(self.inst)
         end
+        print("비가 오므로 안 썩고 안 마릅니다")
         return true
     end
 
@@ -166,6 +167,7 @@ function WateringTool:SetStates(state)
         if self.setstatesfn then
             self.setstatesfn(self.inst)
         end
+        print("더러운 물이 얼어서 안 마릅니다")
         return true
     end
 
@@ -186,9 +188,11 @@ function WateringTool:RestartTimer(newstate)
         self.targettime = timer + GetTime()
         isnewstate = nil
         self.wateringtooltask = self.inst:DoTaskInTime(timer, OnDone, self)
+        print("비가 멈춰서 썩거나 마릅니다 타이머가 시작됨")
     else
         local timer = isnewstate and self.targettime or self.targettime - GetTime()
         self.targettime = timer
+        print("비가 멈춰서 썩거나 마릅니다")
     end
     self.weatherchecktask = self.inst:DoTaskInTime(0, CheckIsRaining, self, isnewstate)
 end
@@ -218,12 +222,14 @@ function WateringTool:TimerChange(percent)
     self:StopAllTask()
 
     if isfrozen and self.watertype == WATERTYPE.DIRTY then
+        print("이미 더러운 물입니다")
         return true
     end
 
     self.targettime = GetTime() + self.targettime
 
     self.wateringtooltask = self.inst:DoTaskInTime(remainingtime, OnDone, self, self.watertype)
+    print("썩는중")
 end
 
 function WateringTool:GetPercent()
@@ -265,7 +271,7 @@ function WateringTool:OnSave()
         frozed = self.frozed,
         paused = self.frozed and timer or nil,
         timer = timer,
-        basetime = self.basetime
+        basetime = self.basetime,
     }
 end
 
@@ -280,9 +286,7 @@ function WateringTool:OnLoad(data)
 
         if data.watertype == WATERTYPE.CLEAN then
             water = WATERTYPE.DIRTY
-        elseif data.watertype == WATERTYPE.DIRTY then
-            water = WATERTYPE.EMPTY
-        elseif data.timer and not TheWorld.state.israining then
+        elseif (data.watertype == WATERTYPE.DIRTY) or (data.timer and not TheWorld.state.israining) then
             water = WATERTYPE.EMPTY
         else
             self:CollectRainWater(TheWorld.state.israining)
@@ -295,6 +299,18 @@ function WateringTool:OnLoad(data)
             self.settemperaturefn(self.inst)
         end
 
+        if TheWorld.state.israining then
+            self.targettime = data.timer
+
+            self.weatherchecktask = self.inst:DoTaskInTime(0, CheckIsRaining, self, true)
+
+            if self.setstatesfn then
+                self.setstatesfn(self.inst)
+            end
+            print("비가 오므로 안 썩고 안 마릅니다:onload")
+            return true
+        end
+
         if data.frozed and not water == WATERTYPE.EMPTY then
             self.frozed = data.frozed
             if data.paused then
@@ -302,13 +318,14 @@ function WateringTool:OnLoad(data)
                 if self.setstatesfn then
                     self.setstatesfn(self.inst)
                 end
+                print("더러운 물이 얼어서 안 마릅니다:onload")
                 return true
             end
         end
 
         self.targettime = GetTime() + math.max(0,data.timer)
         self.wateringtooltask = self.inst:DoTaskInTime(data.timer, OnDone, self, water)
-
+        print("타이머 작동시작:onload")
         if self.setstatesfn then
             self.setstatesfn(self.inst)
         end
@@ -318,24 +335,24 @@ end
 function WateringTool:LongUpdate(dt)
     if self:IsTask() then
         self:StopAllTask()
-        self.basetime = data.basetime or nil
+
         local water = WATERTYPE.CLEAN
 
         if self.watertype == WATERTYPE.CLEAN then
             water = WATERTYPE.DIRTY
-            print("update물 썩는중")
+            print("LongUpdate : 물 썩는중")
         elseif self.watertype == WATERTYPE.DIRTY or not TheWorld.state.israining then
             water = WATERTYPE.EMPTY
-            print("update물 마르는중")
+            print("LongUpdate : 물 마르는중")
         end
         if self.targettime - dt > GetTime() then
             self.targettime = self.targettime - dt
             self.wateringtooltask = self.inst:DoTaskInTime(self.targettime - GetTime(), OnDone, self, water)
-            print("대기")
+            print("LongUpdate : 대기")
         else
             self:ResetTimer()
             OnDone(self.inst, self, water)
-            print("완료")
+            print("LongUpdate : 완료")
         end
     end
 end
