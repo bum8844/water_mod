@@ -8,7 +8,6 @@ local WateringTool = Class(function(self, inst)
     self.targettime = nil
 
     self.frozed = nil
-    --self.raining = nil
     self.cancollectrainwater = nil
     
     self.wateringtooltask = nil
@@ -18,9 +17,10 @@ local WateringTool = Class(function(self, inst)
     self.settemperaturefn = nil
 end,nil,nil)
 
-local function CheckIsRaining(inst, self, newstate)
+local function CheckIsRaining(inst, self, newstate, israining)
+    local raining = israining or TheWorld.state.israining
     self.weatherchecktask = nil
-    self:RestartTimer(newstate)
+    self:RestartTimer(newstate, raining)
 end
 
 local function CheckWeather(inst, self)
@@ -81,13 +81,14 @@ end
 function WateringTool:CollectRainWater(israining)
     if self.cancollectrainwater then
 
-        if self.watertype ~= WATERTYPE.EMPTY then
-            self:StopCheckWeatherTask()
-            self.weatherchecktask = self.inst:DoTaskInTime(0, CheckIsRaining, self)
-            return true
-        end
-
         if israining then
+
+            if self.watertype ~= WATERTYPE.EMPTY then
+                self:StopCheckWeatherTask()
+                self.weatherchecktask = self.inst:DoTaskInTime(0, CheckIsRaining, self, nil, TheWorld.state.israining)
+                return true
+            end
+
             local rain_timer = TUNING.BUCKET_LEVEL_PER_USE*2
 
             if self.targettime then
@@ -141,6 +142,7 @@ function WateringTool:SetStates(state)
         if self.setstatesfn then
             self.setstatesfn(self.inst)
         end
+        self:Initialize()
         self:CollectRainWater(TheWorld.state.israining)
         print("SetStates : 물 마름")
         return true
@@ -154,7 +156,8 @@ function WateringTool:SetStates(state)
 
     if TheWorld.state.israining then
         self.targettime = timer
-        self.weatherchecktask = self.inst:DoTaskInTime(0, CheckIsRaining, self, true)
+
+        self.weatherchecktask = self.inst:DoTaskInTime(0, CheckIsRaining, self, true, TheWorld.state.israining)
 
         if self.setstatesfn then
             self.setstatesfn(self.inst)
@@ -181,26 +184,28 @@ function WateringTool:SetStates(state)
     end
 end
 
-function WateringTool:RestartTimer(newstate)
+function WateringTool:RestartTimer(newstate, israining)
+
     self:StopAllTask()
+
     local isnewstate = newstate
+    local raining = israining or TheWorld.state.israining
+    local timer = isnewstate and self.targettime or self.targettime - GetTime()
 
-    -- 코드가 한번만 작동하도록 만들어야함
-
-    --local israining = TheWorld.state.israining
-
-    --[[if not TheWorld.state.israining then
-        local timer = isnewstate and self.targettime or self.targettime - GetTime()
-        self.targettime = timer + GetTime()
-        isnewstate = nil
-        self.wateringtooltask = self.inst:DoTaskInTime(timer, OnDone, self)
-        print("RestartTimer : 비가 멈춰서 썩거나 마릅니다")
-    else
-        local timer = isnewstate and self.targettime or self.targettime - GetTime()
+    if raining or (self:IsFrozen and self.watertype == WATERTYPE.DIRTY) then
         self.targettime = timer
+        self.weatherchecktask = self.inst:DoTaskInTime(0, CheckIsRaining, self, isnewstate, TheWorld.state.israining)
         print("RestartTimer : 비가 와서 썩지 안고 마르지도 않습니다")
-    end]]
-    self.weatherchecktask = self.inst:DoTaskInTime(0, CheckIsRaining, self, isnewstate)
+        print("RestartTimer : 아니면 더러운 물이 얼어서 마르지 않습니다")
+        return true
+    end
+
+    isnewstate = nil
+    self.targettime = timer + GetTime()
+    self.wateringtooltask = self.inst:DoTaskInTime(timer, OnDone, self)
+    print("RestartTimer : 비가 멈춰서 썩거나 마릅니다")
+
+    self.weatherchecktask = self.inst:DoTaskInTime(0, CheckIsRaining, self, isnewstate, TheWorld.state.israining)
 end
 
 function WateringTool:SetCanCollectRainWater(bool)
@@ -235,7 +240,7 @@ function WateringTool:TimerChange(percent)
     self.targettime = GetTime() + self.targettime
 
     self.wateringtooltask = self.inst:DoTaskInTime(remainingtime, OnDone, self, self.watertype)
-    self.weatherchecktask = self.inst:DoTaskInTime(0, CheckIsRaining, self)
+    self.weatherchecktask = self.inst:DoTaskInTime(0, CheckIsRaining, self, nil, TheWorld.state.israining)
     print("TimerChange : 썩는중")
 end
 
@@ -310,7 +315,7 @@ function WateringTool:OnLoad(data)
         if TheWorld.state.israining then
             self.targettime = data.timer
 
-            self.weatherchecktask = self.inst:DoTaskInTime(0, CheckIsRaining, self, true)
+            self.weatherchecktask = self.inst:DoTaskInTime(0, CheckIsRaining, self, nil, TheWorld.state.israining)
 
             if self.setstatesfn then
                 self.setstatesfn(self.inst)
@@ -344,19 +349,21 @@ function WateringTool:LongUpdate(dt)
     if self:IsTask() and not TheWorld.state.israining then
         self:StopAllTask()
 
+        if self:IsFrozen() and self.watertype == WATERTYPE.DIRTY then
+            print("LongUpdate : 더러운 물이 얼어서 안 마릅니다")
+            return true
+        end
+
         local water = WATERTYPE.CLEAN
 
         if self.watertype == WATERTYPE.CLEAN then
             water = WATERTYPE.DIRTY
             print("LongUpdate : 물 썩는중")
-        elseif self.watertype == WATERTYPE.DIRTY or not TheWorld.state.israining then
+        elseif self.watertype == WATERTYPE.DIRTY then
             water = WATERTYPE.EMPTY
             print("LongUpdate : 물 마르는중")
         end
-        if self:IsFrozen() and self.watertype == WATERTYPE.DIRTY then
-            print("LongUpdate : 더러운 물이 얼어서 안 마릅니다")
-            return true
-        end
+
         if self.targettime - dt > GetTime() then
             self.targettime = self.targettime - dt
             self.wateringtooltask = self.inst:DoTaskInTime(self.targettime - GetTime(), OnDone, self, water)
