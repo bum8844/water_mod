@@ -192,7 +192,7 @@ function WateringTool:RestartTimer(newstate, israining)
     local raining = israining or TheWorld.state.israining
     local timer = isnewstate and self.targettime or self.targettime - GetTime()
 
-    if raining or (self:IsFrozen and self.watertype == WATERTYPE.DIRTY) then
+    if raining or (self:IsFrozen() and self.watertype == WATERTYPE.DIRTY) then
         self.targettime = timer
         self.weatherchecktask = self.inst:DoTaskInTime(0, CheckIsRaining, self, isnewstate, TheWorld.state.israining)
         print("RestartTimer : 비가 와서 썩지 안고 마르지도 않습니다")
