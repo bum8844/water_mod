@@ -126,7 +126,7 @@ local function SetState(inst)
 
     if isfrozen then
         if inst.AnimState:IsCurrentAnimation("ice") then
-            inst.AnimState:PushAnimation("ice_dirty")
+            inst.AnimState:PlayAnimation("ice_dirty")
             return true
         end
         local frozenanim = watertype == WATERTYPE.CLEAN and "ice" or "ice_dirty"
@@ -142,7 +142,7 @@ local function SetState(inst)
         return true
     end
 
-    inst.AnimState:PushAnimation(wateranim)
+    inst.AnimState:PlayAnimation(wateranim)
     if sound then
         inst.SoundEmitter:PlaySound(sound)
     end
