@@ -227,9 +227,10 @@ function WateringTool:TimerChange(percent)
 
     self.basetime = remainingtime
     self.targettime = percent*remainingtime
-
-    if isfrozen and self.watertype == WATERTYPE.DIRTY then
-        print("TimerChange : 더러운 물이 얼어서 안 마릅니다")
+    
+    if TheWorld.state.israining or (isfrozen and self.watertype == WATERTYPE.DIRTY) then
+        self.weatherchecktask = self.inst:DoTaskInTime(0, CheckIsRaining, self, true, TheWorld.state.israining)
+        print("TimerChange : 비가 오거나 더러운 물이 얼어서 안 썩고 안 마릅니다")
         return true
     end
 
