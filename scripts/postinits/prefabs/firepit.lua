@@ -43,12 +43,6 @@ local function OnUpgrade(inst, performer, upgraded_from_item)
 	local traderEnabled = inst.components.trader ~= nil and inst.components.trader.enabled
 	local item = upgraded_from_item.prefab
 
-<<<<<<< Updated upstream
-	if modEnabled then
-		if traderEnabled and numupgrades == 1 then
-			install_kettle(inst)
-		elseif inst.prefab == "campfire" and numupgrades == 1 then
-=======
 	if item == "campkettle_item" then
 		if modEnabled then
 			if traderEnabled and numupgrades == 1 then
@@ -59,7 +53,6 @@ local function OnUpgrade(inst, performer, upgraded_from_item)
 				FailUpgrade(inst, performer, upgraded_from_item)
 			end
 		elseif numupgrades == 1 then
->>>>>>> Stashed changes
 			install_kettle(inst)
 		else
 			FailUpgrade(inst, performer, upgraded_from_item)
