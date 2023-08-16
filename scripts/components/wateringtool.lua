@@ -151,10 +151,10 @@ function WateringTool:SetStates(state)
         water = WATERTYPE.EMPTY
         print("SetStates : 물 썩음")
     else
+        self:Initialize()
         if self.setstatesfn then
             self.setstatesfn(self.inst)
         end
-        self:Initialize()
         self:CollectRainWater(TheWorld.state.israining)
         print("SetStates : 물 마름")
         return true

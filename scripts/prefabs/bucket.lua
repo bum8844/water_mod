@@ -121,7 +121,7 @@ end
 local function SetState(inst)
     local isfrozen = inst.components.wateringtool:IsFrozen()
     local watertype = inst.components.wateringtool:GetWater()
-    local wateranim = watertype ~= WATERTYPE.EMPTY and ( watertype == WATERTYPE.CLEAN and "full" or "dirty") or "empty"
+    local wateranim = watertype ~= WATERTYPE.EMPTY and ( watertype == WATERTYPE.CLEAN and "full" or "dirty" ) or nil
     local sound = watertype ~= WATERTYPE.EMPTY and ( watertype == WATERTYPE.CLEAN and "dontstarve/creatures/pengull/splash" or nil) or "dontstarve/common/dust_blowaway"
 
     if isfrozen then
@@ -142,7 +142,7 @@ local function SetState(inst)
         return true
     end
 
-    inst.AnimState:PlayAnimation(wateranim)
+    inst.AnimState:PlayAnimation(wateranim or "empty")
     if sound then
         inst.SoundEmitter:PlaySound(sound)
     end
