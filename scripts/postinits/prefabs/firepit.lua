@@ -26,7 +26,7 @@ local function install_kettle(inst, no_built_callback)
 end
 
 local function FailUpgrade(inst, performer, upgraded_from_item)
-	local refund = SpawnPrefab("campkettle_item")
+	local refund = SpawnPrefab(upgraded_from_item.prefab)
     if performer ~= nil and performer.components.inventory ~= nil then
 		performer.components.inventory:GiveItem(refund, nil)
 	else
@@ -41,17 +41,34 @@ local function OnUpgrade(inst, performer, upgraded_from_item)
 	local numupgrades = inst.components.upgradeable.numupgrades
 	local modEnabled = _G.KnownModIndex:IsModEnabled("workshop-2334209327") or _G.KnownModIndex:IsModForceEnabled("workshop-2334209327")
 	local traderEnabled = inst.components.trader ~= nil and inst.components.trader.enabled
+	local item = upgraded_from_item.prefab
 
+<<<<<<< Updated upstream
 	if modEnabled then
 		if traderEnabled and numupgrades == 1 then
 			install_kettle(inst)
 		elseif inst.prefab == "campfire" and numupgrades == 1 then
+=======
+	if item == "campkettle_item" then
+		if modEnabled then
+			if traderEnabled and numupgrades == 1 then
+				install_kettle(inst)
+			elseif inst.prefab == "campfire" and numupgrades == 1 then
+				install_kettle(inst)
+			else
+				FailUpgrade(inst, performer, upgraded_from_item)
+			end
+		elseif numupgrades == 1 then
+>>>>>>> Stashed changes
 			install_kettle(inst)
 		else
 			FailUpgrade(inst, performer, upgraded_from_item)
 		end
-	elseif numupgrades == 1 then
-		install_kettle(inst)
+		return true
+	end
+
+	if inst._onupgradefn then
+		inst._onupgradefn(inst, performer, upgraded_from_item)
 	else
 		FailUpgrade(inst, performer, upgraded_from_item)
 	end
@@ -156,9 +173,13 @@ AddPrefabPostInit("firepit",function(inst)
        	end)
     end
 
+    if inst.components.upgradeable and inst.components.upgradeable.onupgradefn then
+		inst._onupgradefn = inst.components.upgradeable.onupgradefn
+	end
+
 	inst:AddComponent("upgradeable")
 	inst.components.upgradeable.upgradetype = UPGRADETYPES.CAMPFIRE
-	inst.components.upgradeable.onupgradefn = OnUpgrade
+ 	inst.components.upgradeable.onupgradefn = OnUpgrade
 
 	inst.left_timer = 0
 
