@@ -102,10 +102,8 @@ function WateringTool:CollectRainWater(israining, isdrying, isload)
 
             local rain_timer = TUNING.BUCKET_LEVEL_PER_USE*2
 
-            if self.targettime then
-                rain_timer = self.targettime - GetTime()
-            else
-                rain_timer = loadtimer
+            if self.targettime or loadtimer then
+                rain_timer = loadtimer and loadtimer or self.targettime - GetTime()
             end
 
             self.targettime = rain_timer + GetTime()

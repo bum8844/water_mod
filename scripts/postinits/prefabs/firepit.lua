@@ -42,6 +42,8 @@ local function OnUpgrade(inst, performer, upgraded_from_item)
 	local modEnabled = _G.KnownModIndex:IsModEnabled("workshop-2334209327") or _G.KnownModIndex:IsModForceEnabled("workshop-2334209327")
 	local traderEnabled = inst.components.trader ~= nil and inst.components.trader.enabled
 
+	print(upgraded_from_item)
+
 	if modEnabled then
 		if traderEnabled and numupgrades == 1 then
 			install_kettle(inst)
