@@ -57,7 +57,6 @@ local function GetWater(inst, watertype, doer)
 
     if old_val > peruse then
         inst.components.finiteuses:Use(peruse)
-        inst.components.wateringtool:Initialize()
         inst.components.wateringtool:SetCanCollectRainWater(false)
         SetTemperature(inst)
     else
