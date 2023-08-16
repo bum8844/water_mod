@@ -125,7 +125,7 @@ function WateringTool:CollectRainWater(israining, isdrying, isload)
 
         self:StopCheckWeatherTask()
 
-        self.weatherchecktask = self.inst:DoTaskInTime(0, CheckWeather, self, drying)
+        self.weatherchecktask = self.inst:DoTaskInTime(0, CheckWeather, self, self.drying)
     else
         self:StopAllTask()
     end
@@ -306,7 +306,7 @@ function WateringTool:OnLoad(data)
         self.watertype = data.watertype
 
         if data.watertype == WATERTYPE.EMPTY and data.timer then
-            self:CollectRainWater(TheWorld.state.israining, nil, dara.timer)
+            self:CollectRainWater(TheWorld.state.israining, nil, data.timer)
             print("OnLoad : 받던 물이 있으므로 빗물을 다시 받거나 마릅니다")
             return true
         end
