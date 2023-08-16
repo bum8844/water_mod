@@ -12,4 +12,7 @@ for k,v in ipairs(GLOBAL.KnownModIndex:GetModsToLoad()) do
 	if Mod == "󰀕 Uncompromising Mode" then -- workshop-2039181790
 		modrequire("modcompats/water_spicedfoods_mod_unc")
 	end
+	if Mod == "󰀍 Cherry Forest 󰀍"then -- workshop-1289779251
+		modrequire("modcompats/cherry_friendpits")
+	end
 end
