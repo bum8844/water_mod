@@ -29,7 +29,7 @@ local function GetWater(inst, watertype, doer)
     if current_fin > peruse then
         current_fin = peruse
     end
-    print(current_fin)
+    --print(current_fin)
 
     if water.components.perishable then
         local perish = inst.components.wateringtool:GetPercent(true)

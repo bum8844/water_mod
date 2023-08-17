@@ -1,8 +1,3 @@
-local assets =
-{
-	Asset("ANIM", "anim/buckets.zip"),
-}
-
 local function SetCheckWeather(inst)
     inst.components.wateringtool:SetCanCollectRainWater(true)
 end
@@ -38,7 +33,7 @@ local function GetWater(inst, watertype, doer)
     if current_fin > peruse then
         current_fin = peruse
     end
-    print(current_fin)
+    --print(current_fin)
 
     if water.components.perishable then
         local perish = inst.components.wateringtool:GetPercent(true)
@@ -147,71 +142,93 @@ local function SetState(inst)
     end
 end
 
-local function fn()
-    local inst = CreateEntity()
+local function MakeBucketItem(bucketname, multiplier)
 
-    inst.entity:AddTransform()
-    inst.entity:AddAnimState()
-    inst.entity:AddSoundEmitter()
-    inst.entity:AddNetwork()
+    local assets =
+    {
+        Asset("ANIM", "anim/buckets.zip"),
+        Asset("ANIM", "anim/buckets_swap.zip")
+    }
 
-    MakeInventoryPhysics(inst)	
+    local names = bucketname == "bucket" and "" or bucketname.."_"
+    local mult = multiplier ~= nil and multiplier or 1
 
-    inst.AnimState:SetBuild("buckets")
-    inst.AnimState:SetBank("buckets")
-    inst.AnimState:PlayAnimation("empty")
-    --[[inst.AnimState:OverrideSymbol("swap_body", "desalinator_body_salt", "0")
-    inst.AnimState:OverrideSymbol("swap", "desalinator_meter_water", "0")
-    inst.AnimState:OverrideSymbol("swap_salt", "desalinator_rope_salt", "0")
-    inst]]
+    local function fn()
+        local inst = CreateEntity()
 
-    inst:AddTag("watertaker")
-    inst:AddTag("bucket_empty")
+        inst.entity:AddTransform()
+        inst.entity:AddAnimState()
+        inst.entity:AddSoundEmitter()
+        inst.entity:AddNetwork()
 
-    MakeInventoryFloatable(inst)
+        MakeInventoryPhysics(inst)	
 
-    inst.entity:SetPristine()
+        inst.AnimState:SetBuild("buckets")
+        inst.AnimState:SetBank("buckets")
+        inst.AnimState:PlayAnimation("empty")
+        inst.AnimState:OverrideSymbol("buckets_empty", "buckets_swap", "buckets_"..names.."empty")
+        inst.AnimState:OverrideSymbol("buckets_full", "buckets_swap", "buckets_"..names.."clean")
+        inst.AnimState:OverrideSymbol("buckets_ice", "buckets_swap", "buckets_"..names.."clean_ice")
+        inst.AnimState:OverrideSymbol("buckets_dirty", "buckets_swap", "buckets_"..names.."dirty")
+        inst.AnimState:OverrideSymbol("buckets_ice_dirty", "buckets_swap", "buckets_"..names.."dirty_ice")
+        --inst.AnimState:OverrideSymbol("buckets_salt", "buckets_swap", "buckets_".names."dirty_salt-0")
 
-    if not TheWorld.ismastersim then
+        print(names)
+
+        inst:AddTag("watertaker")
+        inst:AddTag("bucket_empty")
+
+        MakeInventoryFloatable(inst)
+
+        inst.entity:SetPristine()
+
+        if not TheWorld.ismastersim then
+            return inst
+        end
+
+    	inst:AddComponent("watertaker")
+    	inst.components.watertaker.capacity = TUNING.BUCKET_LEVEL_PER_USE
+    	inst.components.watertaker.onfillfn = OnTakeWater
+    	
+    	inst:AddComponent("waterproofer")
+        inst.components.waterproofer:SetEffectiveness(TUNING.WATERPROOFNESS_SMALL*2)
+
+        inst:AddComponent("finiteuses")
+        inst.components.finiteuses:SetMaxUses(TUNING.BUCKET_MAX_LEVEL*mult)
+        inst.components.finiteuses:SetUses(TUNING.BUCKET_MAX_LEVEL*mult)
+
+        inst:AddComponent("fuel")
+        inst.components.fuel.fuelvalue = TUNING.LARGE_FUEL
+
+        inst:AddComponent("temperature")
+        
+        inst:AddComponent("wateringtool")
+        inst.components.wateringtool.setstatesfn = SetState
+        inst.components.wateringtool.settemperaturefn = SetTemperature
+
+        inst:AddComponent("inspectable")
+
+        inst:AddComponent("milkingtool")
+        inst.components.milkingtool.donemilkingfn = DoneMilkingfn
+    	
+        MakeSmallBurnable(inst, TUNING.MED_BURNTIME)
+        MakeSmallPropagator(inst)
+    	
+        inst:AddComponent("inventoryitem")
+        inst.components.inventoryitem:SetOnPickupFn(CanGetWater)
+
+        MakeHauntableLaunchAndSmash(inst)
+
+        inst:ListenForEvent("ondropped",SetCheckWeather)
+        inst:ListenForEvent("temperaturedelta", SetToFrozed)
+
         return inst
     end
 
-	inst:AddComponent("watertaker")
-	inst.components.watertaker.capacity = TUNING.BUCKET_LEVEL_PER_USE
-	inst.components.watertaker.onfillfn = OnTakeWater
-	
-	inst:AddComponent("waterproofer")
-    inst.components.waterproofer:SetEffectiveness(TUNING.WATERPROOFNESS_SMALL*2)
+    return Prefab("bucket_"..names.."empty", fn, assets)
 
-    inst:AddComponent("finiteuses")
-    inst.components.finiteuses:SetMaxUses(TUNING.BUCKET_MAX_LEVEL)
-
-    inst:AddComponent("fuel")
-    inst.components.fuel.fuelvalue = TUNING.LARGE_FUEL
-
-    inst:AddComponent("temperature")
-    
-    inst:AddComponent("wateringtool")
-    inst.components.wateringtool.setstatesfn = SetState
-    inst.components.wateringtool.settemperaturefn = SetTemperature
-
-    inst:AddComponent("inspectable")
-
-    inst:AddComponent("milkingtool")
-    inst.components.milkingtool.donemilkingfn = DoneMilkingfn
-	
-    MakeSmallBurnable(inst, TUNING.MED_BURNTIME)
-    MakeSmallPropagator(inst)
-	
-    inst:AddComponent("inventoryitem")
-    inst.components.inventoryitem:SetOnPickupFn(CanGetWater)
-
-    MakeHauntableLaunchAndSmash(inst)
-
-    inst:ListenForEvent("ondropped",SetCheckWeather)
-    inst:ListenForEvent("temperaturedelta", SetToFrozed)
-
-    return inst
 end
 
-return Prefab("bucket_empty", fn, assets)
+return MakeBucketItem("bucket"),
+    MakeBucketItem("steel",4),
+    MakeBucketItem("woodie",0.5)
