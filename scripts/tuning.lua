@@ -88,7 +88,6 @@ water_tuning =
 	WATER_CLEAN_MELTINGPOINT = 5,
 	WATER_DIRTY_FREEZEPOINT = -2,
 	WATER_DIRTY_MELTINGPOINT = 5,
-
 	
 	-- Moistures and getting wet
 	WATER_BARREL_WETNESS = 25,

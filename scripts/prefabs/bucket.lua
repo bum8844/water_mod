@@ -1,9 +1,3 @@
-local BUCKETSTATE = {
-    EMPTY = "empty",
-    CLEAN = "full",
-    DIRTY = "dirty",
-}
-
 local assets =
 {
 	Asset("ANIM", "anim/buckets.zip"),
@@ -11,6 +5,25 @@ local assets =
 
 local function SetCheckWeather(inst)
     inst.components.wateringtool:SetCanCollectRainWater(true)
+end
+
+local function SetTemperature(inst)
+    local isfrozen = inst.components.wateringtool:IsFrozen()
+
+    local temp = isfrozen and TUNING.WATER_FROZEN_INITTEMP or TUNING.WATER_INITTEMP
+    local curtemp = inst.components.wateringtool:GetWater() ~= WATERTYPE.EMPTY and math.min(TheWorld.state.temperature, temp) or TheWorld.state.temperature
+
+    inst.components.temperature.current = curtemp
+
+    if isfrozen then
+        inst.components.temperature.maxtemp = TUNING.WATER_INITTEMP
+        inst.components.temperature.mintemp = TUNING.MIN_ENTITY_TEMP
+    else
+        inst.components.temperature.mintemp = TUNING.MAX_ENTITY_TEMP
+        inst.components.temperature.mintemp = TUNING.WATER_FROZEN_INITTEMP
+    end
+    inst.components.temperature.inherentinsulation = TUNING.INSULATION_MED_LARGE
+    inst.components.temperature.inherentsummerinsulation = TUNING.INSULATION_MED_LARGE
 end
 
 local function GetWater(inst, watertype, doer)
@@ -28,7 +41,7 @@ local function GetWater(inst, watertype, doer)
     print(current_fin)
 
     if water.components.perishable then
-        local perish = inst.components.wateringtool:GetPercent()
+        local perish = inst.components.wateringtool:GetPercent(true)
         water.components.perishable:SetPercent(perish)
     end
     water.Transform:SetPosition(inst.Transform:GetWorldPosition())
@@ -45,6 +58,7 @@ local function GetWater(inst, watertype, doer)
     if old_val > peruse then
         inst.components.finiteuses:Use(peruse)
         inst.components.wateringtool:SetCanCollectRainWater(false)
+        SetTemperature(inst)
     else
         inst:Remove()
     end
@@ -60,10 +74,10 @@ local function OnPickup(inst, doer)
 end
 
 local function CanGetWater(inst, doer)
-    if inst.components.wateringtool:GetWater() then
+    if inst.components.wateringtool:GetWater() ~= WATERTYPE.EMPTY then
         OnPickup(inst, doer)
     else
-        if inst.components.wateringtool:IsCollectRainWater() then
+        if inst.components.wateringtool:IsTask() then
             inst.SoundEmitter:PlaySound("dontstarve/creatures/pengull/splash")
         end
         inst.components.wateringtool:SetCanCollectRainWater(false)
@@ -82,31 +96,52 @@ local function OnTakeWater(inst, source, doer)
     end
 end
 
+local function SetToFrozed(inst, data)
+    if inst.components.wateringtool:GetWater() ~= WATERTYPE.EMPTY then
+        local cur_temp = inst.components.temperature:GetCurrent()
+        local min_temp = inst.components.temperature.mintemp
+        local max_temp = inst.components.temperature.maxtemp
+        if inst.components.wateringtool:IsFrozen() then
+            if cur_temp >= max_temp then
+                inst.components.wateringtool:SetFrozed(false)
+                print("녹음")
+            end
+        elseif cur_temp <= min_temp then
+            inst.components.wateringtool:SetFrozed(true)
+            print("얼음")
+        end
+    end
+end
+
 local function DoneMilkingfn(doer)
     doer.SoundEmitter:PlaySound("dontstarve/creatures/pengull/splash")
 end
 
 local function SetState(inst)
     local isfrozen = inst.components.wateringtool:IsFrozen()
-    local watertype = inst.components.wateringtool:GetWater() and 
-    ( inst.components.wateringtool:GetWater() == WATERTYPE.CLEAN and BUCKETSTATE.CLEAN or BUCKETSTATE.DIRTY ) or BUCKETSTATE.EMPTY
-    local sound = watertype ~= BUCKETSTATE.EMPTY and ( watertype == BUCKETSTATE.CLEAN and "dontstarve/creatures/pengull/splash" or nil) or "dontstarve/common/dust_blowaway"
+    local watertype = inst.components.wateringtool:GetWater()
+    local wateranim = watertype ~= WATERTYPE.EMPTY and ( watertype == WATERTYPE.CLEAN and "full" or "dirty" ) or nil
+    local sound = watertype ~= WATERTYPE.EMPTY and ( watertype == WATERTYPE.CLEAN and "dontstarve/creatures/pengull/splash" or nil) or "dontstarve/common/dust_blowaway"
 
     if isfrozen then
-        local frozenanim = watertype == BUCKETSTATE.DIRTY and "ice_dirty" or "ice"
+        if inst.AnimState:IsCurrentAnimation("ice") then
+            inst.AnimState:PlayAnimation("ice_dirty")
+            return true
+        end
+        local frozenanim = watertype == WATERTYPE.CLEAN and "ice" or "ice_dirty"
         inst.AnimState:PlayAnimation("turn_to_"..frozenanim)
         inst.AnimState:PushAnimation(frozenanim)
         inst.SoundEmitter:PlaySound("dontstarve/common/bush_fertilize")
         return true
     elseif inst.AnimState:IsCurrentAnimation("ice") or inst.AnimState:IsCurrentAnimation("ice_dirty") then
-        local meltanim = watertype == BUCKETSTATE.DIRTY and "full_dirty" or "full"
+        local meltanim = watertype == WATERTYPE.CLEAN and "full" or "full_dirty"
         inst.AnimState:PlayAnimation("turn_to_"..meltanim)
-        inst.AnimState:PushAnimation(watertype)
+        inst.AnimState:PushAnimation(wateranim)
         inst.SoundEmitter:PlaySound("dontstarve/creatures/pengull/splash")
         return true
     end
 
-    inst.AnimState:PushAnimation(watertype)
+    inst.AnimState:PlayAnimation(wateranim or "empty")
     if sound then
         inst.SoundEmitter:PlaySound(sound)
     end
@@ -136,8 +171,6 @@ local function fn()
     if not TheWorld.ismastersim then
         return inst
     end
-	
-	-- 우물 상호 작용을 위한 태그
 
 	inst:AddComponent("watertaker")
 	inst.components.watertaker.capacity = TUNING.BUCKET_LEVEL_PER_USE
@@ -151,9 +184,12 @@ local function fn()
 
     inst:AddComponent("fuel")
     inst.components.fuel.fuelvalue = TUNING.LARGE_FUEL
+
+    inst:AddComponent("temperature")
     
     inst:AddComponent("wateringtool")
     inst.components.wateringtool.setstatesfn = SetState
+    inst.components.wateringtool.settemperaturefn = SetTemperature
 
     inst:AddComponent("inspectable")
 
@@ -169,6 +205,7 @@ local function fn()
     MakeHauntableLaunchAndSmash(inst)
 
     inst:ListenForEvent("ondropped",SetCheckWeather)
+    inst:ListenForEvent("temperaturedelta", SetToFrozed)
 
     return inst
 end

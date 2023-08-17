@@ -131,7 +131,7 @@ end
 
 local function ThawToWater(inst, data)
     local cur_temp = inst.components.temperature:GetCurrent()
-    --local min_temp = inst.componnets.temperature.mintemp
+    --local min_temp = inst.components.temperature.mintemp
     local max_temp = inst.components.temperature.maxtemp
     if cur_temp >= max_temp then
         doThaw(inst)
