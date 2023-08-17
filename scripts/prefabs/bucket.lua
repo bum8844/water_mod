@@ -104,11 +104,11 @@ local function SetToFrozed(inst, data)
         if inst.components.wateringtool:IsFrozen() then
             if cur_temp >= max_temp then
                 inst.components.wateringtool:SetFrozed(false)
-                print("녹음")
+                --print("녹음")
             end
         elseif cur_temp <= min_temp then
             inst.components.wateringtool:SetFrozed(true)
-            print("얼음")
+            --print("얼음")
         end
     end
 end
@@ -160,6 +160,10 @@ local function fn()
     inst.AnimState:SetBuild("buckets")
     inst.AnimState:SetBank("buckets")
     inst.AnimState:PlayAnimation("empty")
+    --[[inst.AnimState:OverrideSymbol("swap_body", "desalinator_body_salt", "0")
+    inst.AnimState:OverrideSymbol("swap", "desalinator_meter_water", "0")
+    inst.AnimState:OverrideSymbol("swap_salt", "desalinator_rope_salt", "0")
+    inst]]
 
     inst:AddTag("watertaker")
     inst:AddTag("bucket_empty")

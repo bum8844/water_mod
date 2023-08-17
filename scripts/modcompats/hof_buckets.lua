@@ -95,11 +95,11 @@ local function SetToFrozed(inst, data)
         if inst.components.wateringtool:IsFrozen() then
             if cur_temp >= max_temp then
                 inst.components.wateringtool:SetFrozed(false)
-                print("녹음")
+                --print("녹음")
             end
         elseif cur_temp <= min_temp then
             inst.components.wateringtool:SetFrozed(true)
-            print("얼음")
+            --print("얼음")
         end
     end
 end
