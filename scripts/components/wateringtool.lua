@@ -343,8 +343,8 @@ function WateringTool:LongUpdate(dt)
 
         self:StopAllTask()
 
-        if self:IsFrozen() and self:GetWater() == WATERTYPE.DIRTY then
-            print("LongUpdate : 더러운 물이 얼어서 안 마릅니다")
+        if (TheWorld.state.israining and self:GetWater() ~= WATERTYPE.EMPTY) or (self:IsFrozen() and self:GetWater() == WATERTYPE.DIRTY) then
+            print("LongUpdate : 비가 오거나 더러운 물이 얼어서 안 썩고 안 마릅니다")
             self.weatherchecktask = self.inst:DoTaskInTime(0, CheckIsRaining, self, nil, TheWorld.state.israining)
             return true
         end
