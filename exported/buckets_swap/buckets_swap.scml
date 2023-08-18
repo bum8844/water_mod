@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<spriter_data scml_version="1.0" generator="BrashMonkey Spriter" generator_version="r11">
+    <folder id="0" name="swap">
+        <file id="0" name="swap/swap.png" width="160" height="161" pivot_x="0.5" pivot_y="0.25"/>
+    </folder>
+    <folder id="1" name="buckets_clean">
+        <file id="0" name="buckets_clean/buckets_clean.png" width="160" height="161" pivot_x="0.5" pivot_y="0.25"/>
+    </folder>
+    <folder id="2" name="buckets_clean_ice">
+        <file id="0" name="buckets_clean_ice/buckets_clean_ice.png" width="160" height="161" pivot_x="0.5" pivot_y="0.25"/>
+    </folder>
+    <folder id="3" name="buckets_dirty">
+        <file id="0" name="buckets_dirty/buckets_dirty.png" width="160" height="161" pivot_x="0.5" pivot_y="0.25"/>
+    </folder>
+    <folder id="4" name="buckets_dirty_ice">
+        <file id="0" name="buckets_dirty_ice/buckets_dirty_ice.png" width="160" height="161" pivot_x="0.5" pivot_y="0.25"/>
+    </folder>
+    <folder id="5" name="buckets_empty">
+        <file id="0" name="buckets_empty/buckets_empty.png" width="160" height="161" pivot_x="0.5" pivot_y="0.25"/>
+    </folder>
+    <folder id="6" name="buckets_salt">
+        <file id="0" name="buckets_salt/buckets_salt.png" width="160" height="161" pivot_x="0.5" pivot_y="0.25"/>
+    </folder>
+    <folder id="7" name="buckets_steel_clean">
+        <file id="0" name="buckets_steel_clean/buckets_steel_clean.png" width="176" height="161" pivot_x="0.5" pivot_y="0.25"/>
+    </folder>
+    <folder id="8" name="buckets_steel_dirty">
+        <file id="0" name="buckets_steel_dirty/buckets_steel_dirty.png" width="176" height="161" pivot_x="0.5" pivot_y="0.25"/>
+    </folder>
+    <folder id="9" name="buckets_steel_empty">
+        <file id="0" name="buckets_steel_empty/buckets_steel_empty.png" width="176" height="161" pivot_x="0.5" pivot_y="0.25"/>
+    </folder>
+    <folder id="10" name="buckets_steel_salt">
+        <file id="0" name="buckets_steel_salt/buckets_steel_salt.png" width="176" height="161" pivot_x="0.5" pivot_y="0.25"/>
+    </folder>
+    <folder id="11" name="buckets_steel_clean_ice">
+        <file id="0" name="buckets_steel_clean_ice/buckets_steel_clean_ice.png" width="176" height="161" pivot_x="0.5" pivot_y="0.25"/>
+    </folder>
+    <folder id="12" name="buckets_steel_dirty_ice">
+        <file id="0" name="buckets_steel_dirty_ice/buckets_steel_dirty_ice.png" width="176" height="161" pivot_x="0.5" pivot_y="0.25"/>
+    </folder>
+    <folder id="13" name="buckets_woodie_clean">
+        <file id="0" name="buckets_woodie_clean/buckets_woodie_clean.png" width="176" height="161" pivot_x="0.5" pivot_y="0.25"/>
+    </folder>
+    <folder id="14" name="buckets_woodie_clean_ice">
+        <file id="0" name="buckets_woodie_clean_ice/buckets_woodie_clean_ice.png" width="176" height="161" pivot_x="0.5" pivot_y="0.25"/>
+    </folder>
+    <folder id="15" name="buckets_woodie_dirty">
+        <file id="0" name="buckets_woodie_dirty/buckets_woodie_dirty.png" width="176" height="161" pivot_x="0.5" pivot_y="0.25"/>
+    </folder>
+    <folder id="16" name="buckets_woodie_dirty_ice">
+        <file id="0" name="buckets_woodie_dirty_ice/buckets_steel_dirty_ice.png" width="176" height="161" pivot_x="0.5" pivot_y="0.25"/>
+    </folder>
+    <folder id="17" name="buckets_woodie_empty">
+        <file id="0" name="buckets_woodie_empty/buckets_woodie_empty.png" width="176" height="161" pivot_x="0.5" pivot_y="0.25"/>
+    </folder>
+    <folder id="18" name="buckets_woodie_salt">
+        <file id="0" name="buckets_woodie_salt/buckets_woodie_salt.png" width="176" height="161" pivot_x="0.5" pivot_y="0.25"/>
+    </folder>
+    <entity id="0" name="buckets">
+        <animation id="0" name="idle" length="300" interval="100">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="buckets">
+                <key id="0" spin="0">
+                    <object folder="0" file="0" angle="0"/>
+                </key>
+            </timeline>
+        </animation>
+    </entity>
+</spriter_data>

@@ -10,6 +10,10 @@ local function Tea_Def(names, tags)
 	return (tags.decoration or 0) and ((tags.veggie or 0) <= 2) and ((tags.mushroom or 0) < 4) and not tags.fruit
 end
 
+local function Mix_Tea_Patch(names, tags)
+	return tags.decoration and ((tags.veggie or 0) <= 2) and ((tags.mushroom or 0) < 4) and not tags.fruit
+end
+
 local function IsTealeaves(names, tags)
 	return names.tealeaves and 
 	Preference(names, tags) and
@@ -154,7 +158,7 @@ local function onlybloomfintuna(names ,tags)
 
 	local totalignore = math.max(0,(totalblock - (bloomfintuna)))
 
-	if blocking_thing(names ,tags) and totalignore <= 0 then
+	if blocking_thing(names ,tags) and totalignore <= 0 and bloomfintuna > 0 then
 		return bloomfintuna
 	end 
 	return false
@@ -463,7 +467,7 @@ local drinks =
 	-- 꽃을 섞으면 나오는 결과물
 	mixflower =
 	{
-		test = function(boilier, names, tags) return Tea_Def(names, tags) and notmeat(tags) and notname(names) and ressthing(names) end,
+		test = function(boilier, names, tags) return Mix_Tea_Patch(names, tags) and notmeat(tags) and notname(names) and ressthing(names) end,
 		priority = 0,
 		health = TUNING.HEALING_TINY/4,
 		hunger = 0,

@@ -485,7 +485,6 @@ FOODTYPEGROUP =
 		MEDSMALL = 
 		{
 			"winter_food8",
-			"winter_food9",
 		},
 	},
 
@@ -493,8 +492,16 @@ FOODTYPEGROUP =
 		TINY = 
 		{
 			"winter_food7",
+			"winter_food9",
 		},
 	},
+}
+
+BUCKETSTATE = 
+{
+    EMPTY = "empty",
+    CLEAN = "full",
+    DIRTY = "dirty",
 }
 
 env.WATERTYPE = WATERTYPE

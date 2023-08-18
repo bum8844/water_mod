@@ -274,7 +274,7 @@ local drink_event = EventHandler("drink",function(inst, action)
         return
     end
     return --[[(obj.components.soul ~= nil and "drinkstew")
-        or]] (obj.components.edible.foodtype == FOODTYPE.MEAT and "drinkstew")
+        or]] (obj.components.edible.foodtype == FOODTYPE.MEAT and not obj:HasTag("alcohol") and "drinkstew")
         or "drink"
     end)
 
@@ -305,7 +305,7 @@ AddStategraphActionHandler("wilson", ActionHandler(ACTIONS.DRINK,
             else
                 return
             end
-            return (obj.components.edible.foodtype == FOODTYPE.MEAT and "drinkstew") or "drink"
+            return (obj.components.edible.foodtype == FOODTYPE.MEAT and not obj:HasTag("alcohol") and "drinkstew") or "drink"
         end
     )
 )
@@ -604,7 +604,7 @@ AddStategraphPostInit("wilson", function(sg)
                     inst.AnimState:PlayAnimation("idle_hot_pre")
                     inst.AnimState:PushAnimation("idle_hot_loop")
                     inst.AnimState:PushAnimation("idle_hot_pst", false)
-                elseif GetModConfigData("enable_thirst") and inst.components.thirst:GetPercent() < TUNING.THIRST_THRESH then
+                elseif GetModConfigData("enable_thirst") and inst.components.thirst and inst.components.thirst:GetPercent() < TUNING.THIRST_THRESH then
                     inst.AnimState:PlayAnimation("idle_groggy01_pre")
                     inst.AnimState:PushAnimation("idle_groggy01_loop")
                     inst.AnimState:PushAnimation("idle_groggy01_pst", false)
@@ -677,7 +677,7 @@ AddStategraphPostInit("wilson", function(sg)
                 return
             end
             return --[[(obj.components.soul ~= nil and "drinkstew")
-                or]] (obj.components.edible.foodtype == FOODTYPE.MEAT and "drinkstew")
+                or]] (obj.components.edible.foodtype == FOODTYPE.MEAT and not obj:HasTag("alcohol") and "drinkstew")
                 or "drink"
         else
             return eater(inst, action)
