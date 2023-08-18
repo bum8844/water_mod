@@ -1,4 +1,4 @@
---[[AddComponentPostInit("moisture", function(self)
+AddComponentPostInit("moisture", function(self)
 	local easing = require("easing")
 	local _OnUpdate = self.OnUpdate
 
@@ -36,9 +36,9 @@
 			if self:IsForceDry() then
 		        return
 		    end
-		    --[/[if self.forceddrymodifiers:Get() then
+		    --[[if self.forceddrymodifiers:Get() then
 		        return
-		    end]/]
+		    end]]
 
 		    local sleepingbagdryingrate = self:GetSleepingBagDryingRate()
 		    if sleepingbagdryingrate ~= nil then
@@ -66,4 +66,4 @@
 			return _OnUpdate(dt,...)
 		end
 	end
-end)]]
+end)
