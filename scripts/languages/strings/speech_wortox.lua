@@ -34,8 +34,6 @@ return {
 		HOLE = "",
 		WELL = "",
 		WELL_SPRINKLER = "",
-		
-		BUCKET_EMPTY = "",
 
 		TEA_TREE = "",
 		DUG_TEA_TREE = "",

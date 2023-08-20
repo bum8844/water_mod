@@ -48,6 +48,8 @@ STRINGS.RECIPE_DESC.BREWERY = "Improves your drinking experience. Probably."
 
 -- buckets
 STRINGS.NAMES.BUCKET_EMPTY = "Bucket"
+STRINGS.NAMES.BUCKET_WOODIE_EMPTY = "Small Bucket"
+STRINGS.NAMES.BUCKET_STEEL_EMPTY = "Steel Bucket" 
 STRINGS.RECIPE_DESC.BUCKET_EMPTY = "An empty bucket."
 
 -- campkettle

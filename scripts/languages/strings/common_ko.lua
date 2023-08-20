@@ -48,6 +48,8 @@ STRINGS.RECIPE_DESC.BREWERY = "맛있는 음료를 만들 수 있을... 까요?"
 
 -- buckets
 STRINGS.NAMES.BUCKET_EMPTY = "양동이"
+STRINGS.NAMES.BUCKET_WOODIE_EMPTY = "작은 양동이"
+STRINGS.NAMES.BUCKET_STEEL_EMPTY = "강철 양동이"
 STRINGS.RECIPE_DESC.BUCKET_EMPTY = "비어있는 양동이."
 
 -- campkettle

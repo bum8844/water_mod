@@ -34,8 +34,6 @@ return {
 		HOLE = "잘못 빠지면 뼈도 못 건지겠군.",
 		WELL = "",
 		WELL_SPRINKLER = "",
-		
-		BUCKET_EMPTY = "",
 
 		TEA_TREE = "",
 		DUG_TEA_TREE = "내가 정원사라도 되는 줄 아는가?",
@@ -94,6 +92,30 @@ return {
 		SPARKLINGWINE = "",
 		GLOWBERRYWINE = "",
 		KUMIS = "",
+
+		BUCKET_STEEL_EMPTY = {
+			EMPTY = "",
+			FULL = "",
+			FULL_ICE = "",
+			DIRTY = "",
+			DIRTY_ICE = "",
+		},
+
+		BUCKET_WOODIE_EMPTY = {
+			EMPTY = "",
+			FULL = "",
+			FULL_ICE = "",
+			DIRTY = "",
+			DIRTY_ICE = "",
+		},
+
+		BUCKET_EMPTY = {
+			EMPTY = "",
+			FULL = "",
+			FULL_ICE = "",
+			DIRTY = "",
+			DIRTY_ICE = "",
+		},
 
 		DESALINATOR =
 		{

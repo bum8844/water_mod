@@ -133,14 +133,17 @@ local function SetState(inst)
         inst.SoundEmitter:PlaySound(sound)
     end
 end
-local function onsave(inst, data)
-    return { rainfilling = inst.rainfilling }
-end
 
-local function onload(inst, data)
-    if data.rainfilling ~= nil then
-        inst.rainfilling = data.rainfilling
-    end
+local function getstatus(inst)
+    return inst.components.wateringtool:IsFull() and 
+    (
+        inst.components.wateringtool:IsFrozen() and
+        ( 
+            inst.components.wateringtool:IsDirty() and "DIRTY_ICE" or "FULL_ICE" 
+        )
+        or inst.components.wateringtool:IsDirty() and "DIRTY" or "FULL"
+    )
+    or "EMPTY"
 end
 
 AddPrefabPostInit("kyno_bucket_empty", function(inst)
@@ -148,6 +151,8 @@ AddPrefabPostInit("kyno_bucket_empty", function(inst)
     inst.AnimState:SetBuild("buckets")
     inst.AnimState:SetBank("buckets")
     inst.AnimState:PlayAnimation("empty")
+
+    inst.pickupsound = "wood"
 
 	inst:AddTag("watertaker")
 
@@ -165,6 +170,8 @@ AddPrefabPostInit("kyno_bucket_empty", function(inst)
     inst.components.waterproofer:SetEffectiveness(TUNING.WATERPROOFNESS_SMALL*2)
 
     inst:AddComponent("inspectable")
+    inst.components.inspectable.getstatus = getstatus
+
     inst:AddComponent("milker")
 
     inst.components.finiteuses:SetMaxUses(TUNING.BUCKET_MAX_LEVEL)

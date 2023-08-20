@@ -63,6 +63,14 @@ function WateringTool:IsFrozen()
     return self.frozed
 end
 
+function WateringTool:IsFull()
+    return self:GetWater() ~= WATERTYPE.EMPTY
+end
+
+function WateringTool:IsDirty()
+    return self:GetWater() == WATERTYPE.DIRTY
+end
+
 function WateringTool:StopWateringToolTask()
     if self.wateringtooltask then
         self.wateringtooltask:Cancel()
