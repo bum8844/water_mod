@@ -33,8 +33,6 @@ return {
 		WELL_DRILLING_ITEM = "물을 긷기 위해 우물을 파는 장치야.",
 		HOLE = "여기에 우물을 만들면 되겠어.",
 		WELL = "이제 깨끗한 물을 간편하게 얻을 수 있어!",
-		
-		BUCKET_EMPTY = "물을 채울 수 있어. 물 말고 다른 걸 채워도 되고.",
 
 		TEA_TREE = "참 작고 멋진 나무야.",
 		DUG_TEA_TREE = "다른 곳에 옮겨심을 수 있겠어.",
@@ -93,6 +91,30 @@ return {
 		SPARKLINGWINE = "강렬하게 흔들어보고 싶어졌어.",
 		GLOWBERRYWINE = "음료가 과학으로 빛나고 있어.",
 		KUMIS = "우유로는 요구르트를 만드는 거 아니었어?",
+
+		BUCKET_STEEL_EMPTY = {
+			EMPTY = "물을 채울 수 있어. 물 말고 다른 걸 채워도 되고.",
+			FULL = "",
+			FULL_ICE = "",
+			DIRTY = "",
+			DIRTY_ICE = "",
+		},
+
+		BUCKET_WOODIE_EMPTY = {
+			EMPTY = "물을 채울 수 있어. 물 말고 다른 걸 채워도 되고.",
+			FULL = "",
+			FULL_ICE = "",
+			DIRTY = "",
+			DIRTY_ICE = "",
+		},
+
+		BUCKET_EMPTY = {
+			EMPTY = "물을 채울 수 있어. 물 말고 다른 걸 채워도 되고.",
+			FULL = "",
+			FULL_ICE = "",
+			DIRTY = "",
+			DIRTY_ICE = "",
+		},
 
 		DESALINATOR =
 		{

@@ -16,9 +16,9 @@ end
 
 AddRecipeToFilter("refined_dust","HYDRATION")
 
-AddRecipe2("bucket_steel_empty",{Ingredient("steelwool",2),Ingredient("hammer",0)},TECH.SCIENCE_TWO,{atlas = ModAtlas, image = "bucket_steel_empty.tex"},{"HYDRATION","TOOLS"})
+AddRecipe2("bucket_steel_empty",{Ingredient("steelwool",2),Ingredient("hammer",0)},TECH.SCIENCE_TWO,{atlas = ModAtlas, image = "bucket_steel_empty.tex",  description="bucket_empty"},{"HYDRATION","TOOLS"})
 
-AddRecipe2("bucket_woodie_empty",{Ingredient("lucy",0),Ingredient("log",2)},TECH.NONE,{atlas = ModAtlas, image = "bucket_woodie_empty.tex", builder_tag="woodcarver1", sg_state="carvewood_boards"},{"CHARACTER"})
+AddRecipe2("bucket_woodie_empty",{Ingredient("lucy",0),Ingredient("log",2)},TECH.NONE,{atlas = ModAtlas, image = "bucket_woodie_empty.tex", builder_tag="woodcarver1", sg_state="carvewood_boards",  description="bucket_empty"},{"CHARACTER"})
 
 AddRecipe2("spice_caffeinpepper",{Ingredient("caffeinberry_bean_cooked", 3, ModAtlas, nil, "caffeinberry_bean_cooked.tex")},TECH.FOODPROCESSING_ONE,{atlas = ModAtlas, builder_tag="professionalchef", numtogive=2, image = "spice_caffeinpepper.tex" ,nounlock=true},{"FOODPROCESSING"})
 

@@ -112,6 +112,15 @@ local function DoneMilkingfn(doer)
     doer.SoundEmitter:PlaySound("dontstarve/creatures/pengull/splash")
 end
 
+local function SetMlikingtool(inst)
+    if KnownModIndex:IsModEnabled("workshop-2334209327") or KnownModIndex:IsModForceEnabled("workshop-2334209327") then
+        inst:AddComponent("milker")
+    else
+        inst:AddComponent("milkingtool")
+        inst.components.milkingtool.donemilkingfn = DoneMilkingfn
+    end
+end
+
 local function SetState(inst)
     local isfrozen = inst.components.wateringtool:IsFrozen()
     local watertype = inst.components.wateringtool:GetWater()
@@ -142,7 +151,20 @@ local function SetState(inst)
     end
 end
 
-local function MakeBucketItem(bucketname, multiplier)
+local function getstatus(inst)
+    return inst.components.wateringtool:IsFull() and 
+    (
+        inst.components.wateringtool:IsFrozen() and
+        ( 
+            inst.components.wateringtool:IsDirty() and "DIRTY_ICE" or "FULL_ICE" 
+        )
+        or inst.components.wateringtool:IsDirty() and "DIRTY" or "FULL"
+    )
+    or "EMPTY"
+end
+
+
+local function MakeBucketItem(bucketname, multiplier, sound, nowood)
 
     local assets =
     {
@@ -152,6 +174,7 @@ local function MakeBucketItem(bucketname, multiplier)
 
     local names = bucketname == "bucket" and "" or bucketname.."_"
     local mult = multiplier ~= nil and multiplier or 1
+    local steel = nowood or false
 
     local function fn()
         local inst = CreateEntity()
@@ -173,7 +196,7 @@ local function MakeBucketItem(bucketname, multiplier)
         inst.AnimState:OverrideSymbol("buckets_ice_dirty", "buckets_swap", "buckets_"..names.."dirty_ice")
         --inst.AnimState:OverrideSymbol("buckets_salt", "buckets_swap", "buckets_".names."dirty_salt-0")
 
-        print(names)
+        inst.pickupsound = sound and sound or "wood"
 
         inst:AddTag("watertaker")
         inst:AddTag("bucket_empty")
@@ -197,8 +220,10 @@ local function MakeBucketItem(bucketname, multiplier)
         inst.components.finiteuses:SetMaxUses(TUNING.BUCKET_MAX_LEVEL*mult)
         inst.components.finiteuses:SetUses(TUNING.BUCKET_MAX_LEVEL*mult)
 
-        inst:AddComponent("fuel")
-        inst.components.fuel.fuelvalue = TUNING.LARGE_FUEL
+        if not steel then
+            inst:AddComponent("fuel")
+            inst.components.fuel.fuelvalue = TUNING.LARGE_FUEL
+        end
 
         inst:AddComponent("temperature")
         
@@ -207,13 +232,15 @@ local function MakeBucketItem(bucketname, multiplier)
         inst.components.wateringtool.settemperaturefn = SetTemperature
 
         inst:AddComponent("inspectable")
+        inst.components.inspectable.getstatus = getstatus
 
-        inst:AddComponent("milkingtool")
-        inst.components.milkingtool.donemilkingfn = DoneMilkingfn
+        SetMlikingtool(inst)
     	
-        MakeSmallBurnable(inst, TUNING.MED_BURNTIME)
-        MakeSmallPropagator(inst)
-    	
+        if not steel then
+            MakeSmallBurnable(inst, TUNING.MED_BURNTIME)
+            MakeSmallPropagator(inst)
+    	end
+
         inst:AddComponent("inventoryitem")
         inst.components.inventoryitem:SetOnPickupFn(CanGetWater)
 
@@ -230,5 +257,5 @@ local function MakeBucketItem(bucketname, multiplier)
 end
 
 return MakeBucketItem("bucket"),
-    MakeBucketItem("steel",4),
-    MakeBucketItem("woodie",0.5)
+    MakeBucketItem("woodie",0.5),
+    MakeBucketItem("steel",4,"metal",true)

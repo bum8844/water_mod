@@ -33,8 +33,6 @@ return {
 		WELL_DRILLING_ITEM = "",
 		HOLE = "",
 		WELL = "목마른 자가 우물을 파는 법.",
-		
-		BUCKET_EMPTY = "",
 
 		TEA_TREE = "",
 		DUG_TEA_TREE = "",
@@ -93,6 +91,30 @@ return {
 		SPARKLINGWINE = "",
 		GLOWBERRYWINE = "",
 		KUMIS = "",
+
+		BUCKET_STEEL_EMPTY = {
+			EMPTY = "",
+			FULL = "",
+			FULL_ICE = "",
+			DIRTY = "",
+			DIRTY_ICE = "",
+		},
+
+		BUCKET_WOODIE_EMPTY = {
+			EMPTY = "",
+			FULL = "",
+			FULL_ICE = "",
+			DIRTY = "",
+			DIRTY_ICE = "",
+		},
+
+		BUCKET_EMPTY = {
+			EMPTY = "",
+			FULL = "",
+			FULL_ICE = "",
+			DIRTY = "",
+			DIRTY_ICE = "",
+		},
 
 		DESALINATOR =
 		{
