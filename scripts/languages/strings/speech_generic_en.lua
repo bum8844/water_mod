@@ -33,8 +33,6 @@ return {
 		WELL_DRILLING_ITEM = "It digs a hole to draw water.",
 		HOLE = "Looks good for me to build a well.",
 		WELL = "Now I can conveniently get clean, fresh water!",
-		
-		BUCKET_EMPTY = "I can fill it with water. Or something else.",
 
 		TEA_TREE = "What a lovely little tree.",
 		DUG_TEA_TREE = "Now it can be replanted in other place.",
@@ -93,6 +91,30 @@ return {
 		SPARKLINGWINE = "I have an overwhelming urge to shake it.",
 		GLOWBERRYWINE = "It's glowing by science.",
 		KUMIS = "Wasn't milk supposed to be made into yogurt?",
+
+		BUCKET_STEEL_EMPTY = {
+			EMPTY = "I can fill it with water. Or something else.",
+			FULL = "",
+			FULL_ICE = "",
+			DIRTY = "",
+			DIRTY_ICE = "",
+		},
+
+		BUCKET_WOODIE_EMPTY = {
+			EMPTY = "I can fill it with water. Or something else.",
+			FULL = "",
+			FULL_ICE = "",
+			DIRTY = "",
+			DIRTY_ICE = "",
+		},
+
+		BUCKET_EMPTY = {
+			EMPTY = "I can fill it with water. Or something else.",
+			FULL = "",
+			FULL_ICE = "",
+			DIRTY = "",
+			DIRTY_ICE = "",
+		},
 
 		DESALINATOR =
 		{
