@@ -8012,58 +8012,58 @@
             </timeline>
             <timeline id="19" name="well_buckets_dirty">
                 <key id="0" spin="0">
-                    <object folder="8" file="0" x="-0.47826" y="197.47826" angle="0" a="0"/>
+                    <object folder="8" file="0" x="-0.47826" y="197.47826" angle="0"/>
                 </key>
                 <key id="1" time="100" spin="0">
                     <object folder="8" file="0" x="2.173255" y="194.447957" angle="0" scale_x="1.439171" scale_y="0.444312"/>
                 </key>
-                <key id="2" time="200" spin="-1">
-                    <object folder="8" file="0" x="2.173255" y="203.538866" angle="0" scale_x="0.439856" scale_y="1.342832"/>
+                <key id="2" time="200" spin="0">
+                    <object folder="8" file="0" x="-0.47826" y="197.47826" angle="0"/>
                 </key>
-                <key id="3" time="300">
-                    <object folder="8" file="0" x="-9.054018" y="198.993412" angle="355.858394" scale_x="1" scale_y="1"/>
+                <key id="3" time="300" spin="0">
+                    <object folder="8" file="0" x="-0.47826" y="197.47826" angle="0"/>
                 </key>
-                <key id="4" time="400">
+                <key id="4" time="400" spin="0">
                     <object folder="8" file="0" x="-0.47826" y="197.47826" angle="0"/>
                 </key>
                 <key id="5" time="500" spin="0">
-                    <object folder="8" file="0" x="10.506588" y="197.857048" angle="7.46175" scale_x="1"/>
+                    <object folder="8" file="0" x="-0.47826" y="197.47826" angle="0"/>
                 </key>
-                <key id="6" time="525" spin="-1">
-                    <object folder="8" file="0" x="10.506588" y="197.857048" angle="7.46175" scale_x="1"/>
+                <key id="6" time="525" spin="0">
+                    <object folder="8" file="0" x="-0.47826" y="197.47826" angle="0"/>
                 </key>
-                <key id="7" time="550" spin="-1">
-                    <object folder="8" file="0" x="7.097498" y="198.614624" angle="6.652511" scale_x="1"/>
+                <key id="7" time="550" spin="0">
+                    <object folder="8" file="0" x="-0.47826" y="197.47826" angle="0"/>
                 </key>
-                <key id="8" time="600" spin="-1">
+                <key id="8" time="600" spin="0">
                     <object folder="8" file="0" x="-0.47826" y="197.47826" angle="0"/>
                 </key>
                 <key id="9" time="700" spin="0">
-                    <object folder="8" file="0" x="-9.190381" y="199.372199" angle="354.958805" scale_x="1" scale_y="1"/>
+                    <object folder="8" file="0" x="-0.47826" y="197.47826" angle="0"/>
                 </key>
-                <key id="10" time="725">
-                    <object folder="8" file="0" x="-9.190381" y="199.372199" angle="354.958805" scale_x="1" scale_y="1"/>
+                <key id="10" time="725" spin="0">
+                    <object folder="8" file="0" x="-0.47826" y="197.47826" angle="0"/>
                 </key>
-                <key id="11" time="800">
+                <key id="11" time="800" spin="0">
                     <object folder="8" file="0" x="-0.47826" y="197.47826" angle="0"/>
                 </key>
                 <key id="12" time="900" spin="0">
-                    <object folder="8" file="0" x="5.582346" y="198.235836" angle="4.382292" scale_x="1" scale_y="1"/>
+                    <object folder="8" file="0" x="-0.47826" y="197.47826" angle="0"/>
                 </key>
-                <key id="13" time="925" spin="-1">
-                    <object folder="8" file="0" x="5.582346" y="198.235836" angle="4.382292" scale_x="1" scale_y="1"/>
+                <key id="13" time="925" spin="0">
+                    <object folder="8" file="0" x="-0.47826" y="197.47826" angle="0"/>
                 </key>
-                <key id="14" time="1000" spin="-1">
+                <key id="14" time="1000" spin="0">
                     <object folder="8" file="0" x="-0.47826" y="197.47826" angle="0"/>
                 </key>
                 <key id="15" time="1100" spin="0">
-                    <object folder="8" file="0" x="-4.644927" y="198.993412" angle="358.100667" scale_x="1" scale_y="1"/>
+                    <object folder="8" file="0" x="-0.47826" y="197.47826" angle="0"/>
                 </key>
-                <key id="16" time="1125">
-                    <object folder="8" file="0" x="-4.644927" y="198.993412" angle="358.100667" scale_x="1" scale_y="1"/>
+                <key id="16" time="1125" spin="0">
+                    <object folder="8" file="0" x="-0.47826" y="197.47826" angle="0"/>
                 </key>
-                <key id="17" time="1200">
-                    <object folder="8" file="0" x="-3.887351" y="198.235836" angle="359.577948" scale_x="1" scale_y="1"/>
+                <key id="17" time="1200" spin="0">
+                    <object folder="8" file="0" x="-0.47826" y="197.47826" angle="0"/>
                 </key>
                 <key id="18" time="1300" spin="0">
                     <object folder="8" file="0" x="-0.47826" y="197.47826" angle="0"/>
@@ -8079,11 +8079,11 @@
                 <key id="1" time="100" spin="0">
                     <object folder="12" file="0" x="2.173255" y="194.447957" angle="0" scale_x="1.439171" scale_y="0.444312"/>
                 </key>
-                <key id="2" time="200" spin="-1">
-                    <object folder="12" file="0" x="2.173255" y="203.538866" angle="0" scale_x="0.439856" scale_y="1.342832" a="0"/>
+                <key id="2" time="200" spin="0">
+                    <object folder="12" file="0" x="-0.47826" y="197.47826" angle="0"/>
                 </key>
-                <key id="3" time="300">
-                    <object folder="12" file="0" x="-9.054018" y="198.993412" angle="355.858394" scale_x="1" scale_y="1" a="0"/>
+                <key id="3" time="300" spin="0">
+                    <object folder="12" file="0" x="-0.47826" y="197.47826" angle="0" a="0"/>
                 </key>
                 <key id="4" time="400" spin="0">
                     <object folder="12" file="0" x="-0.47826" y="197.47826" angle="0" a="0"/>
