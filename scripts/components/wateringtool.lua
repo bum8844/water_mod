@@ -14,7 +14,6 @@ local WateringTool = Class(function(self, inst)
     self.weatherchecktask = nil
 
     self.setstatesfn = nil
-    self.settemperaturefn = nil
 end,nil,nil)
 
 local function CheckIsRaining(inst, self, newstate, israining)
@@ -143,7 +142,7 @@ function WateringTool:SetStates(state)
     local timer = 0
     local water = state
 
-    print(water)
+    --print(water)
 
     self:Initialize()
 
@@ -170,9 +169,7 @@ function WateringTool:SetStates(state)
 
     self.basetime = timer
 
-    if self.inst.components.temperature and self.settemperaturefn then
-        self.settemperaturefn(self.inst)
-    end
+    self.inst:PushEvent("settooltemperature")
 
     if TheWorld.state.israining or (self:IsFrozen() and self.watertype == WATERTYPE.DIRTY) then
 
@@ -276,9 +273,7 @@ end
 function WateringTool:SetFrozed(bool)
     self.frozed = bool or nil
 
-    if self.settemperaturefn then
-        self.settemperaturefn(self.inst)
-    end
+    self.inst:PushEvent("settooltemperature")
 
     local timer = self:GetPercent()
 
@@ -318,9 +313,7 @@ function WateringTool:OnLoad(data)
 
         local water = data.watertype == WATERTYPE.CLEAN and WATERTYPE.DIRTY or WATERTYPE.EMPTY
 
-        if self.inst.components.temperature and self.settemperaturefn then
-            self.settemperaturefn(self.inst)
-        end
+        self.inst:PushEvent("settooltemperature")
 
         self.frozed = data.frozed or nil
 
@@ -338,7 +331,9 @@ function WateringTool:OnLoad(data)
         end
 
         self.targettime = GetTime() + math.max(0,data.timer)
+        
         self.wateringtooltask = self.inst:DoTaskInTime(data.timer, OnDone, self, water)
+        self.weatherchecktask = self.inst:DoTaskInTime(0, CheckIsRaining, self, nil, TheWorld.state.israining)
         --print("OnLoad : 타이머 작동시작")
         if self.setstatesfn then
             self.setstatesfn(self.inst)

@@ -124,6 +124,42 @@ local function hole()
 	return inst
 end
 
+local function SetTemperature(inst)
+    local isfrozen = inst.components.wateringstructure:IsFrozen()
+
+    local temp = isfrozen and TUNING.WATER_FROZEN_INITTEMP or TUNING.WATER_INITTEMP
+    local curtemp = inst.components.wateringstructure:GetWater() ~= WATERTYPE.EMPTY and math.min(TheWorld.state.temperature, temp) or TheWorld.state.temperature
+
+    inst.components.temperature.current = curtemp
+
+    if isfrozen then
+        inst.components.temperature.maxtemp = TUNING.WATER_INITTEMP
+        inst.components.temperature.mintemp = TUNING.MIN_ENTITY_TEMP
+    else
+        inst.components.temperature.mintemp = TUNING.MAX_ENTITY_TEMP
+        inst.components.temperature.mintemp = TUNING.WATER_FROZEN_INITTEMP
+    end
+    inst.components.temperature.inherentinsulation = TUNING.INSULATION_MED_LARGE
+    inst.components.temperature.inherentsummerinsulation = TUNING.INSULATION_MED_LARGE
+end
+
+local function SetToFrozed(inst, data)
+    if inst.components.wateringstructure:GetWater() ~= WATERTYPE.EMPTY then
+        local cur_temp = inst.components.temperature:GetCurrent()
+        local min_temp = inst.components.temperature.mintemp
+        local max_temp = inst.components.temperature.maxtemp
+        if inst.components.wateringstructure:IsFrozen() then
+            if cur_temp >= max_temp then
+                inst.components.wateringstructure:SetFrozed(false)
+                --print("녹음")
+            end
+        elseif cur_temp <= min_temp then
+            inst.components.wateringstructure:SetFrozed(true)
+            --print("얼음")
+        end
+    end
+end
+
 local function onhammered(inst)
 	if inst.AnimState:IsCurrentAnimation("watering") or inst.AnimState:IsCurrentAnimation("hit_watering") or inst.AnimState:IsCurrentAnimation("idle_watering") then
 		local water_finiteuses = inst.components.pickable.numtoharvest or 0
@@ -179,24 +215,33 @@ local function ShouldAcceptItem(inst, item, giver)
 	return false
 end
 
-local function SetPickable(inst, pickable, num)
-    inst.components.pickable.canbepicked = pickable
-    inst.components.pickable.caninteractwith = pickable
-    inst.components.pickable.numtoharvest = num
+local function SetCanPickable(pickable)
+	inst.components.pickable.caninteractwith = pickable
+	inst.components.pickable.canbepicked = pickable
+end
+
+local function SetPickable(inst)
+	local isice = inst.components.wateringstructure:IsFrozen() and "_ice" or ""
+	local watertype = inst.components.wateringstructure:GetWater()
+	local amount = inst.components.wateringstructure:GetWaterAmount()
+
+    inst.components.pickable.numtoharvest = amount
+    inst.components.pickable.product = watertype ~= WATERTYPE.EMPTY and watertype..isice or nil
 end
 
 local function givewater(inst, picker, loot)
 	local x, y, z = picker.Transform:GetWorldPosition()
     local refund = nil
+    local toolfin = inst.components.wateringstructure:GetToolFiniteuses()
 
-	inst:AddTag("ready")
 	inst.AnimState:PlayAnimation("shack_watering")
 	inst.AnimState:PushAnimation("idle_empty")
 	picker.SoundEmitter:PlaySound("dontstarve/creatures/pengull/splash")
 
-	if inst.wateringtool_finiteuses > 0 then
-		refund = SpawnPrefab(tostring(inst.wateringtool))
-		refund.components.finiteuses:SetUses(inst.wateringtool_finiteuses)
+	if toolfin > 0 then
+		local item = inst.components.wateringstructure:GetWateringTool()
+		refund = SpawnPrefab(item)
+		refund.components.finiteuses:SetUses(toolfin)
 
     	if picker ~= nil and picker.components.inventory ~= nil then
         	picker.components.inventory:GiveItem(refund, nil, Vector3(x, y, z))
@@ -205,44 +250,34 @@ local function givewater(inst, picker, loot)
     	end
 	end
 	loot.components.inventoryitemmoisture:SetMoisture(0)
-	inst.wateringtool = nil
-	inst.wateringtool_finiteuses = 0
-	inst.water_finiteuses = 0
-	SetPickable(inst, false, 0)
 end
 
-local function WellAct(inst, finiteuses)
+local function StructureAction()
 	inst.SoundEmitter:PlaySound("turnoftides/common/together/boat/anchor/tether_land")
 	inst.AnimState:PlayAnimation("watering")
 	inst:DoTaskInTime(1.1,function(inst)
 		inst.SoundEmitter:PlaySound("turnoftides/common/together/boat/anchor/ocean_hit")
 		inst:DoTaskInTime(1.1,function(inst)
 			inst.AnimState:PushAnimation("idle_watering")
-			SetPickable(inst, true, finiteuses)
+			inst.components.wateringstructure:SetWaterAmount()
 		end)
 	end)
 end
 
 local function OnGetItemFromPlayer(inst, giver, item)
-	inst:RemoveTag("ready")
-	inst.wateringtool = item.prefab
-	local water_finiteuses = item.components.finiteuses:GetUses()
-	if water_finiteuses > TUNING.BUCKET_LEVEL_PER_USE then
-		water_finiteuses = TUNING.BUCKET_LEVEL_PER_USE
-	end
-	inst.water_finiteuses = water_finiteuses
-	item.components.finiteuses:Use(water_finiteuses)
-	inst.wateringtool_finiteuses = item.components.finiteuses:GetUses()
-	WellAct(inst, inst.water_finiteuses)
+	local toolfiniteuses = item.components.finiteuses:GetUses()
+	inst.components.wateringstructure:RegistrationWateringTool(item.prefab, toolfiniteuses)
 end
 
 local function onsave(inst, data)
 	local pickable = inst.components.pickable.numtoharvest
 	local chk_numtoharvest = pickable ~= nil and pickable > 0 and pickable or 0
+
 	data.numtoharvest = chk_numtoharvest
 	data.wateringtool = inst.wateringtool
 	data.wateringtool_finiteuses = inst.wateringtool_finiteuses or 0
 	data.water_finiteuses = inst.water_finiteuses or 0
+	data.water_type = inst.components.pickable.product
 end
 
 local function onload(inst, data)
@@ -254,10 +289,11 @@ local function onload(inst, data)
 		local numtoharvest = data.numtoharvest
 		inst.wateringtool_finiteuses = data.wateringtool_finiteuses
 		local water_finiteuses = data.water_finiteuses
+		local product = data.water_type and data.water_type or WATERTYPE.EMPTY
 
 		if numtoharvest > 0 then
 			inst.AnimState:PlayAnimation("idle_watering")
-			SetPickable(inst, true, numtoharvest)
+			SetPickable(inst, true, numtoharvest, product)
 		elseif inst.wateringtool_finiteuses > 0 then
 			WellAct(inst, water_finiteuses)
 		else
@@ -298,6 +334,8 @@ local function well()
     inst.AnimState:SetBank("well")
     inst.AnimState:SetBuild("well")
     inst.AnimState:PlayAnimation("idle_empty")
+
+    inst:AddComponent("temperature")
 	
 	inst:AddComponent("trader")
 	inst.components.trader:SetAcceptTest(ShouldAcceptItem)
@@ -312,8 +350,10 @@ local function well()
     inst:AddComponent("pickable")
     inst.components.pickable.caninteractwith = false
     inst.components.pickable.onpickedfn = givewater
-    inst.components.pickable.product = "water_clean"
     inst.components.pickable.numtoharvest = 0
+
+    inst:AddComponent("wateringstructure")
+    inst.components.wateringstructure.setstatesfn = 
 	
 	inst:AddComponent("workable")
     inst.components.workable:SetWorkAction(ACTIONS.HAMMER)
@@ -323,6 +363,10 @@ local function well()
 	
 	inst.OnSave = onsave
     inst.OnLoad = onload
+
+    inst:ListenForEvent("setwateringtool_temperature",SetTemperature)
+    inst:ListenForEvent("setwateringtool_water",SetPickable)
+    inst:ListenForEvent("temperaturedelta", SetToFrozed)
 	
 	return inst
 end

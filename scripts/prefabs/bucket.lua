@@ -229,7 +229,6 @@ local function MakeBucketItem(bucketname, multiplier, sound, nowood)
         
         inst:AddComponent("wateringtool")
         inst.components.wateringtool.setstatesfn = SetState
-        inst.components.wateringtool.settemperaturefn = SetTemperature
 
         inst:AddComponent("inspectable")
         inst.components.inspectable.getstatus = getstatus
@@ -246,6 +245,7 @@ local function MakeBucketItem(bucketname, multiplier, sound, nowood)
 
         MakeHauntableLaunchAndSmash(inst)
 
+        inst:ListenForEvent("settooltemperature",SetTemperature)
         inst:ListenForEvent("ondropped",SetCheckWeather)
         inst:ListenForEvent("temperaturedelta", SetToFrozed)
 
