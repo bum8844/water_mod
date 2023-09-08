@@ -42,11 +42,11 @@
     <folder id="13" name="well_buckets_woodie_dirty">
         <file id="0" name="well_buckets_woodie_dirty/well_buckets_woodie_dirty.png" width="132" height="121" pivot_x="0.5" pivot_y="0.5"/>
     </folder>
-    <folder id="14" name="well_buckets_woodie_dirty_ice">
-        <file id="0" name="well_buckets_woodie_dirty_ice/well_buckets_steel_dirty_ice.png" width="132" height="121" pivot_x="0.5" pivot_y="0.5"/>
-    </folder>
-    <folder id="15" name="well_buckets_woodie_empty">
+    <folder id="14" name="well_buckets_woodie_empty">
         <file id="0" name="well_buckets_woodie_empty/well_buckets_woodie_empty.png" width="132" height="121" pivot_x="0.5" pivot_y="0.5"/>
+    </folder>
+    <folder id="15" name="well_buckets_woodie_dirty_ice">
+        <file id="0" name="well_buckets_woodie_dirty_ice/well_buckets_woodie_dirty_ice.png" width="132" height="121" pivot_x="0.5" pivot_y="0.5"/>
     </folder>
     <entity id="0" name="well_bukets_swap">
         <animation id="0" name="idle" length="300" interval="100">
