@@ -24,6 +24,8 @@ local function tealeaves()
     inst.AnimState:SetBuild("tealeaves")
     inst.AnimState:PlayAnimation("idle_tealeaves")
 
+    inst.pickupsound = "vegetation_grassy"
+
     MakeInventoryPhysics(inst)
 
     MakeInventoryFloatable(inst)
@@ -75,6 +77,8 @@ local function tealeaves_dried()
     inst.AnimState:SetBank("tealeaves")
     inst.AnimState:SetBuild("tealeaves")
     inst.AnimState:PlayAnimation("idle_tealeaves_dried")
+
+    inst.pickupsound = "vegetation_grassy"
 
     MakeInventoryPhysics(inst)
 

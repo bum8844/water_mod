@@ -330,6 +330,8 @@ local function caffeinberry_bean()
 
     MakeInventoryFloatable(inst)
 
+    inst.pickupsound = "vegetation_firm"
+
     inst:AddTag("deployedplant")
 
     inst.entity:SetPristine()
@@ -391,6 +393,8 @@ local function caffeinberry_bean_cooked()
     inst.AnimState:SetBank("caffeinberry_bean")
     inst.AnimState:SetBuild("caffeinberry_bean")
     inst.AnimState:PlayAnimation("cooked")
+
+    inst.pickupsound = "vegetation_firm"
 
     MakeInventoryPhysics(inst)
 

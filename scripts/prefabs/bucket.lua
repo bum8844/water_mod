@@ -189,6 +189,7 @@ local function MakeBucketItem(bucketname, multiplier, sound, nowood)
         inst.AnimState:SetBuild("buckets")
         inst.AnimState:SetBank("buckets")
         inst.AnimState:PlayAnimation("empty")
+        
         inst.AnimState:OverrideSymbol("buckets_empty", "buckets_swap", "buckets_"..names.."empty")
         inst.AnimState:OverrideSymbol("buckets_full", "buckets_swap", "buckets_"..names.."clean")
         inst.AnimState:OverrideSymbol("buckets_ice", "buckets_swap", "buckets_"..names.."clean_ice")
@@ -197,6 +198,7 @@ local function MakeBucketItem(bucketname, multiplier, sound, nowood)
         --inst.AnimState:OverrideSymbol("buckets_salt", "buckets_swap", "buckets_".names."dirty_salt-0")
 
         inst.pickupsound = sound and sound or "wood"
+        inst.wellanim = bucketname ~= "bucket" and bucketname or ""
 
         inst:AddTag("watertaker")
         inst:AddTag("bucket_empty")

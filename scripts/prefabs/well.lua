@@ -1,6 +1,7 @@
 local assets =
 {
 	Asset("ANIM", "anim/well.zip"),
+	Asset("ANIM", "anim/well_buckets_swap.zip")
 }
 
 local prefabs =
@@ -128,7 +129,7 @@ local function SetTemperature(inst)
     local isfrozen = inst.components.wateringstructure:IsFrozen()
 
     local temp = isfrozen and TUNING.WATER_FROZEN_INITTEMP or TUNING.WATER_INITTEMP
-    local curtemp = inst.components.wateringstructure:GetWater() ~= WATERTYPE.EMPTY and math.min(TheWorld.state.temperature, temp) or TheWorld.state.temperature
+    local curtemp = inst.components.wateringstructure:GetWater() ~= WATERTYPE.EMPTY and temp or TheWorld.state.temperature
 
     inst.components.temperature.current = curtemp
 
@@ -151,30 +152,34 @@ local function SetToFrozed(inst, data)
         if inst.components.wateringstructure:IsFrozen() then
             if cur_temp >= max_temp then
                 inst.components.wateringstructure:SetFrozed(false)
-                --print("녹음")
+                print("녹음")
             end
         elseif cur_temp <= min_temp then
             inst.components.wateringstructure:SetFrozed(true)
-            --print("얼음")
+            print("얼음")
         end
     end
 end
 
 local function onhammered(inst)
-	if inst.AnimState:IsCurrentAnimation("watering") or inst.AnimState:IsCurrentAnimation("hit_watering") or inst.AnimState:IsCurrentAnimation("idle_watering") then
-		local water_finiteuses = inst.components.pickable.numtoharvest or 0
-		while water_finiteuses > 0 do
-        	if water_finiteuses > 0 then
-            	inst.components.lootdropper:SpawnLootPrefab("water_clean")
+	local wateringtool = inst.components.wateringstructure:GetWateringTool()
+	if wateringtool then
+		local toolfiniteuses = inst.components.wateringstructure:GetToolFiniteuses()
+		local wateramount = inst.components.wateringstructure:GetWaterAmount() or 0
+		local root = inst.components.pickable.product
+
+		while wateramount > 0 do
+        	if wateramount > 0 then
+            	inst.components.lootdropper:SpawnLootPrefab(root)
         	end
-        	water_finiteuses = water_finiteuses - 1
+        	wateramount = wateramount - 1
     	end
-		if inst.wateringtool_finiteuses > 0 then
+		if toolfiniteuses > 0 then
 			local x, y, z = inst.Transform:GetWorldPosition()
 	   		local refund = nil
 
-			refund = SpawnPrefab(tostring(inst.wateringtool))
-			refund.components.finiteuses:SetUses(inst.wateringtool_finiteuses)
+			refund = SpawnPrefab(wateringtool)
+			refund.components.finiteuses:SetUses(toolfiniteuses)
 
 			LaunchAt(refund,inst,inst,-1.8,0.5,nil,65)
 		end
@@ -215,18 +220,22 @@ local function ShouldAcceptItem(inst, item, giver)
 	return false
 end
 
-local function SetCanPickable(pickable)
-	inst.components.pickable.caninteractwith = pickable
-	inst.components.pickable.canbepicked = pickable
+local function SetCanPickable(inst,wateringtool)
+	local hastool = wateringtool and true or nil
+	inst.components.pickable.caninteractwith = hastool and hastool or false
+	inst.components.pickable.canbepicked = hastool
 end
 
 local function SetPickable(inst)
 	local isice = inst.components.wateringstructure:IsFrozen() and "_ice" or ""
 	local watertype = inst.components.wateringstructure:GetWater()
 	local amount = inst.components.wateringstructure:GetWaterAmount()
+	local wateringtool = inst.components.wateringstructure:GetWateringTool()
 
-    inst.components.pickable.numtoharvest = amount
+    inst.components.pickable.numtoharvest = amount > 0 and amount or 1
     inst.components.pickable.product = watertype ~= WATERTYPE.EMPTY and watertype..isice or nil
+
+    SetCanPickable(inst,wateringtool)
 end
 
 local function givewater(inst, picker, loot)
@@ -249,57 +258,50 @@ local function givewater(inst, picker, loot)
         	refund.Transform:SetPosition(x,y,z)
     	end
 	end
-	loot.components.inventoryitemmoisture:SetMoisture(0)
+	if loot then
+		loot.components.inventoryitemmoisture:SetMoisture(0)
+	end
+	inst.components.wateringstructure:Initialize()
 end
 
-local function StructureAction()
-	inst.SoundEmitter:PlaySound("turnoftides/common/together/boat/anchor/tether_land")
-	inst.AnimState:PlayAnimation("watering")
-	inst:DoTaskInTime(1.1,function(inst)
-		inst.SoundEmitter:PlaySound("turnoftides/common/together/boat/anchor/ocean_hit")
-		inst:DoTaskInTime(1.1,function(inst)
-			inst.AnimState:PushAnimation("idle_watering")
-			inst.components.wateringstructure:SetWaterAmount()
-		end)
-	end)
+local function SetBucket(inst)
+	local bucket = inst.components.wateringstructure:GetBucketAnim()
+	local bucket_old = inst.components.wateringstructure.old_wellanim
+
+	if bucket ~= "" then
+	    inst.AnimState:OverrideSymbol("well_buckets_empty", "well_buckets_swap", "well_buckets_"..bucket.."_empty")
+	    inst.AnimState:OverrideSymbol("well_buckets_full", "well_buckets_swap", "well_buckets_"..bucket.."_clean")
+	    inst.AnimState:OverrideSymbol("well_buckets_ice", "well_buckets_swap", "well_buckets_"..bucket.."_clean_ice")
+	    inst.AnimState:OverrideSymbol("well_buckets_dirty", "well_buckets_swap", "well_buckets_"..bucket.."_dirty")
+	    inst.AnimState:OverrideSymbol("well_buckets_ice_dirty", "well_buckets_swap", "well_buckets_"..bucket.."_dirty_ice")
+	end
+end
+
+local function SetWellState(inst, reason)
+	if reason then
+		local sgaction = inst.components.wateringstructure:IsFrozen() and "turn_to_ice" or "turn_to_full"
+		inst.sg:GoToState(sgaction)
+		print(sgaction)
+		print("물이 얼거나 녹음")
+	else
+		local watertype = inst.components.wateringstructure:GetWater()
+		local isfrozen = inst.components.wateringstructure:IsFrozen() and "_ice" or ""
+		local result = watertype ~= WATERTYPE.EMPTY and ( watertype == WATERTYPE.CLEAN and "_full" or "dirty") or "_empty"
+		inst.sg:GoToState("watering_idle", isfrozen..result)
+		print("물이 썩거나 마름")
+	end
 end
 
 local function OnGetItemFromPlayer(inst, giver, item)
 	local toolfiniteuses = item.components.finiteuses:GetUses()
-	inst.components.wateringstructure:RegistrationWateringTool(item.prefab, toolfiniteuses)
+	inst.components.wateringstructure:RegistrationWateringTool(item, toolfiniteuses)
+	SetBucket(inst)
+   	inst.sg:GoToState("watering")
+   	print("물을 깁니다")
 end
 
-local function onsave(inst, data)
-	local pickable = inst.components.pickable.numtoharvest
-	local chk_numtoharvest = pickable ~= nil and pickable > 0 and pickable or 0
-
-	data.numtoharvest = chk_numtoharvest
-	data.wateringtool = inst.wateringtool
-	data.wateringtool_finiteuses = inst.wateringtool_finiteuses or 0
-	data.water_finiteuses = inst.water_finiteuses or 0
-	data.water_type = inst.components.pickable.product
-end
-
-local function onload(inst, data)
-	if data.wateringtool ~= nil then
-		inst.wateringtool = data.wateringtool
-
-		inst:RemoveTag("ready")
-
-		local numtoharvest = data.numtoharvest
-		inst.wateringtool_finiteuses = data.wateringtool_finiteuses
-		local water_finiteuses = data.water_finiteuses
-		local product = data.water_type and data.water_type or WATERTYPE.EMPTY
-
-		if numtoharvest > 0 then
-			inst.AnimState:PlayAnimation("idle_watering")
-			SetPickable(inst, true, numtoharvest, product)
-		elseif inst.wateringtool_finiteuses > 0 then
-			WellAct(inst, water_finiteuses)
-		else
-			inst.wateringtool = nil -- 이럴일은 없갰죠
-		end
-	end
+local function SetAmount(inst)
+	inst.components.wateringstructure:SetWaterAmount()
 end
 
 local function well()
@@ -326,10 +328,6 @@ local function well()
     if not TheWorld.ismastersim then
         return inst
     end
-
-    inst.wateringtool = nil
-	inst.wateringtool_finiteuses = 0
-	inst.water_finiteuses = 0
 	
     inst.AnimState:SetBank("well")
     inst.AnimState:SetBuild("well")
@@ -353,20 +351,21 @@ local function well()
     inst.components.pickable.numtoharvest = 0
 
     inst:AddComponent("wateringstructure")
-    inst.components.wateringstructure.setstatesfn = 
+    inst.components.wateringstructure.setstatesfn = SetWellState
 	
 	inst:AddComponent("workable")
     inst.components.workable:SetWorkAction(ACTIONS.HAMMER)
     inst.components.workable:SetWorkLeft(4)
 	inst.components.workable:SetOnFinishCallback(onhammered)
 	inst.components.workable:SetOnWorkCallback(onhit)
-	
-	inst.OnSave = onsave
-    inst.OnLoad = onload
+
+	inst:SetStateGraph("SGwell")
 
     inst:ListenForEvent("setwateringtool_temperature",SetTemperature)
     inst:ListenForEvent("setwateringtool_water",SetPickable)
     inst:ListenForEvent("temperaturedelta", SetToFrozed)
+    inst:ListenForEvent("setwateramount",SetAmount)
+    inst:ListenForEvent("setbucketanim",SetBucket)
 	
 	return inst
 end
