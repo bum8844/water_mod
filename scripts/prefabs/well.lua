@@ -192,21 +192,23 @@ local function onhammered(inst)
 end
 
 local function onhit(inst)
-	if not inst.AnimState:IsCurrentAnimation("watering") then
-		if inst.AnimState:IsCurrentAnimation("idle_watering") then
-			inst.AnimState:PlayAnimation("hit_watering")
-			inst.AnimState:PushAnimation("idle_watering")
+	if not inst.sg:HasStateTag("busy") then
+		if inst.sg:HasStateTag("watering") then
+			local watertype = inst.components.wateringstructure:GetWater()
+			local isfrozen = inst.components.wateringstructure:IsFrozen() and "_ice" or ""
+			local result = watertype ~= WATERTYPE.EMPTY and ( watertype == WATERTYPE.CLEAN and "_full" or "_dirty") or "_empty"
+			local data = { setwatertype = isfrozen..result }
+			inst.sg:GoToState("hit_watering", data)
 		else
-			inst.AnimState:PlayAnimation("hit_empty")
-			inst.AnimState:PushAnimation("idle_empty")
+			inst.sg:GoToState("hit_empty")
 		end
 	end
 end
 
 local function OnRefuseItem(inst, giver, item)
-	if inst.AnimState:IsCurrentAnimation("watering") or inst.AnimState:IsCurrentAnimation("hit_watering") or inst.AnimState:IsCurrentAnimation("shack_watering") then
+	if inst.sg:HasStateTag("watering") or inst.sg:HasStateTag("busy") then
 		giver.components.talker:Say(GetActionFailString(giver, "GIVE", "WELL_BUSY"))
-	elseif inst.wateringtool then
+	elseif inst.components.wateringstructure:GetWateringTool() then
 		giver.components.talker:Say(GetActionFailString(giver, "GIVE", "WELL_NOTEMPTY"))
 	else
 		giver.components.talker:Say(GetActionFailString(giver, "GIVE", "GENERIC"))
@@ -244,14 +246,11 @@ local function givewater(inst, picker, loot)
     local toolfin = inst.components.wateringstructure:GetToolFiniteuses()
     local toolfin_old = inst.components.wateringstructure.toolfiniteuses_old
 
-    if loot then
-		picker.SoundEmitter:PlaySound("dontstarve/creatures/pengull/splash")
-	else
+	if not loot then
 		toolfin = toolfin_old
 	end
 
-	inst.AnimState:PlayAnimation("shack_watering")
-	inst.AnimState:PushAnimation("idle_empty")
+	inst.sg:GoToState("shack_watering",loot)
 
 	if toolfin > 0 then
 		local item = inst.components.wateringstructure:GetWateringTool()
@@ -274,12 +273,15 @@ local function SetBucket(inst)
 	local bucket = inst.components.wateringstructure:GetBucketAnim()
 	local bucket_old = inst.components.wateringstructure.old_wellanim
 
-	if bucket ~= "" then
-	    inst.AnimState:OverrideSymbol("well_buckets_empty", "well_buckets_swap", "well_buckets_"..bucket.."_empty")
-	    inst.AnimState:OverrideSymbol("well_buckets_full", "well_buckets_swap", "well_buckets_"..bucket.."_clean")
-	    inst.AnimState:OverrideSymbol("well_buckets_ice", "well_buckets_swap", "well_buckets_"..bucket.."_clean_ice")
-	    inst.AnimState:OverrideSymbol("well_buckets_dirty", "well_buckets_swap", "well_buckets_"..bucket.."_dirty")
-	    inst.AnimState:OverrideSymbol("well_buckets_ice_dirty", "well_buckets_swap", "well_buckets_"..bucket.."_dirty_ice")
+	if bucket ~= bucket_old then
+		if bucket ~= "" then
+			bucket = bucket.."_"
+		end
+	    inst.AnimState:OverrideSymbol("well_buckets_empty", "well_buckets_swap", "well_buckets_"..bucket.."empty")
+	    inst.AnimState:OverrideSymbol("well_buckets_full", "well_buckets_swap", "well_buckets_"..bucket.."clean")
+	    inst.AnimState:OverrideSymbol("well_buckets_ice", "well_buckets_swap", "well_buckets_"..bucket.."clean_ice")
+	    inst.AnimState:OverrideSymbol("well_buckets_dirty", "well_buckets_swap", "well_buckets_"..bucket.."dirty")
+	    inst.AnimState:OverrideSymbol("well_buckets_ice_dirty", "well_buckets_swap", "well_buckets_"..bucket.."dirty_ice")
 	end
 end
 
@@ -287,7 +289,6 @@ local function SetWellState(inst, reason)
 	if reason then
 		local sgaction = inst.components.wateringstructure:IsFrozen() and "turn_to_ice" or "turn_to_full"
 		inst.sg:GoToState(sgaction)
-		print(sgaction)
 		print("물이 얼거나 녹음")
 	else
 		local watertype = inst.components.wateringstructure:GetWater()

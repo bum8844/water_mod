@@ -29,6 +29,41 @@ local states =
     },
 	State
 	{
+		name = "hit_empty",
+		tags = {"busy"},
+
+		onenter = function(inst)
+			inst.AnimState:PlayAnimation("hit_empty",false)
+		end,
+
+		events = {
+			EventHandler("animover",
+				function(inst)
+					 inst.sg:GoToState("idle")
+				end),
+		} 
+	},
+	State
+	{
+		name = "shack_watering",
+		tags = {"busy"},
+
+		onenter = function(inst, loot)
+			inst.AnimState:PlayAnimation("shack_watering", false)
+			if loot then
+				inst.SoundEmitter:PlaySound("dontstarve/creatures/pengull/splash")
+			end
+		end,
+
+		events = {
+			EventHandler("animover",
+				function(inst)
+					inst.sg:GoToState("idle")
+				end),
+		} 
+	},
+	State
+	{
 		name = "watering",
 		tags = {"busy", "watering"},
 
@@ -109,6 +144,23 @@ local states =
 	},
 	State
 	{
+		name = "hit_watering",
+		tags = {"busy", "watering"},
+
+		onenter = function(inst, data)
+			inst.AnimState:PlayAnimation("hit_watering",false)
+			inst.sg.statemem.setwatertype = data.setwatertype
+		end,
+
+		events = {
+			EventHandler("animover",
+				function(inst)
+					 inst.sg:GoToState("watering_idle",inst.sg.statemem)
+				end),
+		} 
+	},
+	State
+	{
 		name = "watering_idle",
 		tags = {"idle", "watering"},
 
@@ -126,7 +178,6 @@ local states =
 
 			inst.AnimState:PushAnimation("idle_watering", true)
 			if data.isnewwater then
-				print("물양정하는중")
 				inst:PushEvent("setwateramount")
 			end
 		end,
