@@ -143,7 +143,6 @@ function WateringStructure:SetWaterTimer(watertype, isnew)
         timer = math.ceil(TUNING.PERISH_FAST/2)
     elseif not self:GetWater() == WATERTYPE.DIRTY then
         self.wateramount = 0
-        self.toolfiniteuses = self.toolfiniteuses_old
         self.dried = true
         self.inst:PushEvent("setwateringtool_water")
 
@@ -157,7 +156,7 @@ function WateringStructure:SetWaterTimer(watertype, isnew)
     self.inst:PushEvent("setwateringtool_temperature")
 
     self.basetime = timer
-    self.watertime = timer + GetTime()
+    self.targettime = timer + GetTime()
 
     self.watertask = self.inst:DoTaskInTime(timer, OnDone, self, resultwater)
     self.inst:PushEvent("setwateringtool_water")
@@ -250,10 +249,8 @@ function WateringStructure:OnLoad(data)
 
         self.inst:PushEvent("setbucketanim")
 
-        self.watertype = data.watertype
         self.toolfiniteuses = data.toolfiniteuses
         self.toolfiniteuses_old = data.toolfiniteuses_old
-        self.amount = data.wateramount
 
         local water = data.watertype == WATERTYPE.CLEAN and WATERTYPE.DIRTY or WATERTYPE.EMPTY
 
@@ -270,6 +267,9 @@ function WateringStructure:OnLoad(data)
             self:SetWaterAmount()
             return true
         end
+
+        self.watertype = data.watertype
+        self.wateramount = data.wateramount
 
         self.basetime = data.basetime
 
@@ -301,7 +301,7 @@ end
 function WateringStructure:LongUpdate(dt)
     if self:IsTask() then
 
-        self:StopAllTask()
+        self:StopWatertask()
 
         if self:IsFrozen() and self:GetWater() == WATERTYPE.DIRTY then
             print("LongUpdate : 더러운 물이 얼어서 안 마릅니다")

@@ -242,10 +242,16 @@ local function givewater(inst, picker, loot)
 	local x, y, z = picker.Transform:GetWorldPosition()
     local refund = nil
     local toolfin = inst.components.wateringstructure:GetToolFiniteuses()
+    local toolfin_old = inst.components.wateringstructure.toolfiniteuses_old
+
+    if loot then
+		picker.SoundEmitter:PlaySound("dontstarve/creatures/pengull/splash")
+	else
+		toolfin = toolfin_old
+	end
 
 	inst.AnimState:PlayAnimation("shack_watering")
 	inst.AnimState:PushAnimation("idle_empty")
-	picker.SoundEmitter:PlaySound("dontstarve/creatures/pengull/splash")
 
 	if toolfin > 0 then
 		local item = inst.components.wateringstructure:GetWateringTool()
@@ -286,8 +292,9 @@ local function SetWellState(inst, reason)
 	else
 		local watertype = inst.components.wateringstructure:GetWater()
 		local isfrozen = inst.components.wateringstructure:IsFrozen() and "_ice" or ""
-		local result = watertype ~= WATERTYPE.EMPTY and ( watertype == WATERTYPE.CLEAN and "_full" or "dirty") or "_empty"
-		inst.sg:GoToState("watering_idle", isfrozen..result)
+		local result = watertype ~= WATERTYPE.EMPTY and ( watertype == WATERTYPE.CLEAN and "_full" or "_dirty") or "_empty"
+		local data = { setwatertype = isfrozen..result }
+		inst.sg:GoToState("watering_idle", data)
 		print("물이 썩거나 마름")
 	end
 end

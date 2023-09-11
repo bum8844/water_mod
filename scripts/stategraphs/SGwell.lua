@@ -17,7 +17,7 @@ local states =
     	name = "idle",
     	tag = {"idle"},
 
-        onenter = function(inst, data)
+        onenter = function(inst)
 			inst.AnimState:Hide("well_buckets_empty")
 			inst.AnimState:Hide("well_buckets_full")
 			inst.AnimState:Hide("well_buckets_dirty")
@@ -42,12 +42,15 @@ local states =
 			inst:DoTaskInTime(1.1,function(inst)
 				inst.SoundEmitter:PlaySound("turnoftides/common/together/boat/anchor/ocean_hit")
 			end)
+
+			inst.sg.statemem.setwatertype = "_full"
+			inst.sg.statemem.isnewwater = true
 		end,
 
 		events = {
 			EventHandler("animover",
 				function(inst)
-					 inst.sg:GoToState("watering_idle","_full")
+					inst.sg:GoToState("watering_idle",inst.sg.statemem)
 				end),
 		} 
 	},
@@ -61,7 +64,7 @@ local states =
 			local watertype = isdirty and isdirty or "_full"
 			local frozenwatertype = isdirty and isdirty or ""
 
-			inst.sg.statemem.dirtywater = frozenwatertype
+			inst.sg.statemem.setwatertype = "_ice"..frozenwatertype
 
 			inst.AnimState:Show("well_buckets"..watertype)
 			inst.AnimState:Show("well_buckets_ice"..frozenwatertype)
@@ -74,7 +77,7 @@ local states =
 		events = {
 			EventHandler("animover",
 				function(inst)
-					 inst.sg:GoToState("watering_idle","_ice"..inst.sg.statemem.dirtywater)
+					 inst.sg:GoToState("watering_idle",inst.sg.statemem)
 				end),
 		} 
 	},
@@ -100,7 +103,7 @@ local states =
 		events = {
 			EventHandler("animover",
 				function(inst)
-					 inst.sg:GoToState("watering_idle",inst.sg.statemem.setwatertype)
+					 inst.sg:GoToState("watering_idle",inst.sg.statemem)
 				end),
 		} 
 	},
@@ -109,7 +112,10 @@ local states =
 		name = "watering_idle",
 		tags = {"idle", "watering"},
 
-		onenter = function(inst, showanim)
+		onenter = function(inst, data)
+
+			local showanim = data.setwatertype
+
 			inst.AnimState:Hide("well_buckets_empty")
 			inst.AnimState:Hide("well_buckets_full")
 			inst.AnimState:Hide("well_buckets_dirty")
@@ -119,7 +125,10 @@ local states =
 			inst.AnimState:Show("well_buckets"..showanim)
 
 			inst.AnimState:PushAnimation("idle_watering", true)
-			inst:PushEvent("setwateramount")
+			if data.isnewwater then
+				print("물양정하는중")
+				inst:PushEvent("setwateramount")
+			end
 		end,
 
 	}
