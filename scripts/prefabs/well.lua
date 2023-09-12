@@ -191,13 +191,18 @@ local function onhammered(inst)
 	inst:Remove()
 end
 
+local function SetWaterData(inst)
+	local watertype = inst.components.wateringstructure:GetWater()
+	local isfrozen = inst.components.wateringstructure:IsFrozen() and "_ice" or ""
+	local result = watertype ~= WATERTYPE.EMPTY and ( watertype == WATERTYPE.CLEAN and "_full" or "_dirty") or "_empty"
+	local data = { setwatertype = isfrozen..result }
+	return data
+end
+
 local function onhit(inst)
 	if not inst.sg:HasStateTag("busy") then
 		if inst.sg:HasStateTag("watering") then
-			local watertype = inst.components.wateringstructure:GetWater()
-			local isfrozen = inst.components.wateringstructure:IsFrozen() and "_ice" or ""
-			local result = watertype ~= WATERTYPE.EMPTY and ( watertype == WATERTYPE.CLEAN and "_full" or "_dirty") or "_empty"
-			local data = { setwatertype = isfrozen..result }
+			local data = SetWaterData(inst)
 			inst.sg:GoToState("hit_watering", data)
 		else
 			inst.sg:GoToState("hit_empty")
@@ -291,10 +296,7 @@ local function SetWellState(inst, reason)
 		inst.sg:GoToState(sgaction)
 		print("물이 얼거나 녹음")
 	else
-		local watertype = inst.components.wateringstructure:GetWater()
-		local isfrozen = inst.components.wateringstructure:IsFrozen() and "_ice" or ""
-		local result = watertype ~= WATERTYPE.EMPTY and ( watertype == WATERTYPE.CLEAN and "_full" or "_dirty") or "_empty"
-		local data = { setwatertype = isfrozen..result }
+		local data = SetWaterData(inst)
 		inst.sg:GoToState("watering_idle", data)
 		print("물이 썩거나 마름")
 	end
