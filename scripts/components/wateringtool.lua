@@ -107,7 +107,7 @@ function WateringTool:CollectRainWater(israining, isdrying, isload)
                 return true
             end
 
-            local rain_timer = TUNING.BUCKET_LEVEL_PER_USE*2
+            local rain_timer = TUNING.PERISH_ONE_DAY/8
 
             if self.targettime or loadtimer then
                 rain_timer = loadtimer and loadtimer or self.targettime - GetTime()
@@ -138,26 +138,18 @@ end
 
 function WateringTool:SetStates(state)
 
-    local isfrozen = self:IsFrozen()
-    local timer = 0
-    local water = state
+    self:ResetTimer()
+    self:StopAllTask()
 
-    --print(water)
-
-    self:Initialize()
-
-    self.frozed = isfrozen
     self.watertype = state
+    local timer = TUNING.PERISH_ONE_DAY/2
+    local water = WATERTYPE.EMPTY
 
-    if water == WATERTYPE.CLEAN then
+    if self:GetWater() == WATERTYPE.CLEAN then
         timer = math.ceil(TUNING.PERISH_FAST/2)
         water = WATERTYPE.DIRTY
         --print("SetStates : 물 채움")
-    elseif water == WATERTYPE.DIRTY then
-        timer = TUNING.BUCKET_LEVEL_PER_USE*4
-        water = WATERTYPE.EMPTY
-        --print("SetStates : 물 썩음")
-    else
+    elseif not self:GetWater() == WATERTYPE.DIRTY then
         self:Initialize()
         if self.setstatesfn then
             self.setstatesfn(self.inst)
@@ -234,7 +226,7 @@ function WateringTool:TimerChange(percent)
     local water = self:GetWater() == WATERTYPE.CLEAN and WATERTYPE.DIRTY or WATERTYPE.EMPTY
     local isfrozen = self:IsFrozen()
     local remainingtime = isfrozen and math.ceil(TUNING.PERISH_SLOW/2) or 
-          self.watertype == WATERTYPE.DIRTY and TUNING.BUCKET_LEVEL_PER_USE*4 or 
+          self.watertype == WATERTYPE.DIRTY and TUNING.PERISH_ONE_DAY/2 or 
           math.ceil(TUNING.PERISH_FAST/2)
 
     if percent < 0 then percent = 0 end

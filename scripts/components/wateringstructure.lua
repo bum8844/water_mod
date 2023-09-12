@@ -130,7 +130,7 @@ end
 function WateringStructure:SetWaterTimer(watertype, isnew)
 
     local resultwater = WATERTYPE.EMPTY
-    local timer = TUNING.BUCKET_LEVEL_PER_USE*4
+    local timer = TUNING.PERISH_ONE_DAY/2
     local state = watertype
 
     self:ResetTimer()

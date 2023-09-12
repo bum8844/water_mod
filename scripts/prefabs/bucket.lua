@@ -260,4 +260,4 @@ end
 
 return MakeBucketItem("bucket"),
     MakeBucketItem("woodie",0.5),
-    MakeBucketItem("steel",4,"metal",true)
+    MakeBucketItem("steel",8,"metal",true)
