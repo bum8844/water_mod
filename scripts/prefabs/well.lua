@@ -351,7 +351,6 @@ local function well()
 	inst.components.trader.onrefuse = OnRefuseItem
 	
 	inst:AddComponent("inspectable")
-	inst.IsGetWater = false
 
 	inst:AddComponent("lootdropper")
 	
