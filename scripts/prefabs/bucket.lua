@@ -189,6 +189,7 @@ local function MakeBucketItem(bucketname, multiplier, sound, nowood)
         inst.AnimState:SetBuild("buckets")
         inst.AnimState:SetBank("buckets")
         inst.AnimState:PlayAnimation("empty")
+        
         inst.AnimState:OverrideSymbol("buckets_empty", "buckets_swap", "buckets_"..names.."empty")
         inst.AnimState:OverrideSymbol("buckets_full", "buckets_swap", "buckets_"..names.."clean")
         inst.AnimState:OverrideSymbol("buckets_ice", "buckets_swap", "buckets_"..names.."clean_ice")
@@ -197,6 +198,7 @@ local function MakeBucketItem(bucketname, multiplier, sound, nowood)
         --inst.AnimState:OverrideSymbol("buckets_salt", "buckets_swap", "buckets_".names."dirty_salt-0")
 
         inst.pickupsound = sound and sound or "wood"
+        inst.wellanim = bucketname ~= "bucket" and bucketname or ""
 
         inst:AddTag("watertaker")
         inst:AddTag("bucket_empty")
@@ -229,7 +231,6 @@ local function MakeBucketItem(bucketname, multiplier, sound, nowood)
         
         inst:AddComponent("wateringtool")
         inst.components.wateringtool.setstatesfn = SetState
-        inst.components.wateringtool.settemperaturefn = SetTemperature
 
         inst:AddComponent("inspectable")
         inst.components.inspectable.getstatus = getstatus
@@ -246,6 +247,7 @@ local function MakeBucketItem(bucketname, multiplier, sound, nowood)
 
         MakeHauntableLaunchAndSmash(inst)
 
+        inst:ListenForEvent("settooltemperature",SetTemperature)
         inst:ListenForEvent("ondropped",SetCheckWeather)
         inst:ListenForEvent("temperaturedelta", SetToFrozed)
 
@@ -258,4 +260,4 @@ end
 
 return MakeBucketItem("bucket"),
     MakeBucketItem("woodie",0.5),
-    MakeBucketItem("steel",4,"metal",true)
+    MakeBucketItem("steel",8,"metal",true)
