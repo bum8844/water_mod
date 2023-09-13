@@ -48,14 +48,14 @@
     <folder id="15" name="buckets_woodie_dirty">
         <file id="0" name="buckets_woodie_dirty/buckets_woodie_dirty.png" width="176" height="161" pivot_x="0.5" pivot_y="0.25"/>
     </folder>
-    <folder id="16" name="buckets_woodie_dirty_ice">
-        <file id="0" name="buckets_woodie_dirty_ice/buckets_steel_dirty_ice.png" width="176" height="161" pivot_x="0.5" pivot_y="0.25"/>
-    </folder>
-    <folder id="17" name="buckets_woodie_empty">
+    <folder id="16" name="buckets_woodie_empty">
         <file id="0" name="buckets_woodie_empty/buckets_woodie_empty.png" width="176" height="161" pivot_x="0.5" pivot_y="0.25"/>
     </folder>
-    <folder id="18" name="buckets_woodie_salt">
+    <folder id="17" name="buckets_woodie_salt">
         <file id="0" name="buckets_woodie_salt/buckets_woodie_salt.png" width="176" height="161" pivot_x="0.5" pivot_y="0.25"/>
+    </folder>
+    <folder id="18" name="buckets_woodie_dirty_ice">
+        <file id="0" name="buckets_woodie_dirty_ice/buckets_woodie_dirty_ice.png" width="176" height="161" pivot_x="0.5" pivot_y="0.25"/>
     </folder>
     <entity id="0" name="buckets">
         <animation id="0" name="idle" length="300" interval="100">
