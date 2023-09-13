@@ -211,9 +211,9 @@ local function onhit(inst)
 end
 
 local function OnRefuseItem(inst, giver, item)
-	if inst.sg:HasStateTag("watering") or inst.sg:HasStateTag("busy") then
+	if inst.sg:HasStateTag("busy") then
 		giver.components.talker:Say(GetActionFailString(giver, "GIVE", "WELL_BUSY"))
-	elseif inst.components.wateringstructure:GetWateringTool() then
+	elseif inst.sg:HasStateTag("watering")then
 		giver.components.talker:Say(GetActionFailString(giver, "GIVE", "WELL_NOTEMPTY"))
 	else
 		giver.components.talker:Say(GetActionFailString(giver, "GIVE", "GENERIC"))
