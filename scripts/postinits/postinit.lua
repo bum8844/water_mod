@@ -46,6 +46,10 @@ local postinits =
 		"thirstvalue",
 		"watertypes",
 	},
+
+	scripts = {
+		"savefileupgrades",
+	}
 }
 
 if GetModConfigData("enable_thirst") then

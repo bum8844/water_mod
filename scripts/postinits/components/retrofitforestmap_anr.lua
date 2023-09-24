@@ -1,5 +1,3 @@
-AddComponentPostInit("retrofitforestmap_anr", function(self)
-
 	local tea_tree_biome = {
 		"BGForest",
 		"BGDeepForest",
@@ -74,50 +72,78 @@ AddComponentPostInit("retrofitforestmap_anr", function(self)
 		end
 	end
 
-	local function CaffeinBerry_Bush_Retrofitting()
-		local gen_caffeinberry = TUNING.ADD_CAFFEINBERRY_BUSH
+local function CaffeinBerry_Bush_Retrofitting()
+	local gen_caffeinberry = TUNING.ADD_CAFFEINBERRY_BUSH
 
-		local node_indices = {}
-		local candidtate_nodes = {}
+	local node_indices = {}
+	local candidtate_nodes = {}
 
-		local count = 0
-		for _, ent in pairs(Ents) do
-			if ent:IsValid() and ent.prefab == "caffeinberry" then
-				count = count + 1
-				if count >= gen_caffeinberry then
-					print("Retrofitting for CaffeinBerry Bush De-extinction: Found enough CaffeinBerry Bush in the world.")
-					return
-				end
-			end
-		end
-
-
-		for b,_ in ipairs(caffeinberry_biome) do
-			for i,v in ipairs(TheWorld.topology.ids) do
-				if string.find(v,b) then
-					table.insert(candidtate_nodes, TheWorld.topology.nodes[i])
-				end
-			end
-		end
-
-		if #candidtate_nodes == 0 then
-			print("Retrofitting for CaffeinBerry Bush De-extinction: Failed to find any nodes!")
-			return
-		end
-
-		local turf_fn = function(x, y, z, prefab)
-		--[[if GLOBAL.KnownModIndex:IsModEnabled("workshop-1467214795") or GLOBAL.KnownModIndex:IsModForceEnabled("workshop-1467214795") then
-		elseif GLOBAL.KnownModIndex:IsModEnabled("workshop-1505270912") or GLOBAL.KnownModIndex:IsModForceEnabled("workshop-1505270912") then
-		else]]
-			return TheWorld.Map:GetTileAtPoint(x, y, z) == WORLD_TILES.METEOR or TheWorld.Map:GetTileAtPoint(x, y, z) == WORLD_TILES.PEBBLEBEACH
-		--end
-		end
-
-		print("Retrofitting for CaffeinBerry Bush De-extinction: Found " .. tostring(count) .. " CaffeinBerry Bush in the world. Adding "..tostring(min_dens - count) .. " more.")
-		for i = count, gen_caffeinberry-1 do
-			if not RetrofitNewContentPrefab(inst, "caffeinberry", 1, 4, turf_fn, candidtate_nodes) then
-				RetrofitNewContentPrefab(inst, "caffeinberry", 1, 2, turf_fn, candidtate_nodes)
+	local count = 0
+	for _, ent in pairs(Ents) do
+		if ent:IsValid() and ent.prefab == "caffeinberry" then
+			count = count + 1
+			if count >= gen_caffeinberry then
+				print("Retrofitting for CaffeinBerry Bush De-extinction: Found enough CaffeinBerry Bush in the world.")
+				return
 			end
 		end
 	end
-end)
+
+
+	for b,_ in ipairs(caffeinberry_biome) do
+		for i,v in ipairs(TheWorld.topology.ids) do
+			if string.find(v,b) then
+				table.insert(candidtate_nodes, TheWorld.topology.nodes[i])
+			end
+		end
+	end
+
+	if #candidtate_nodes == 0 then
+		print("Retrofitting for CaffeinBerry Bush De-extinction: Failed to find any nodes!")
+		return
+	end
+
+	local turf_fn = function(x, y, z, prefab)
+	--[[if GLOBAL.KnownModIndex:IsModEnabled("workshop-1467214795") or GLOBAL.KnownModIndex:IsModForceEnabled("workshop-1467214795") then
+	elseif GLOBAL.KnownModIndex:IsModEnabled("workshop-1505270912") or GLOBAL.KnownModIndex:IsModForceEnabled("workshop-1505270912") then
+	else]]
+		return TheWorld.Map:GetTileAtPoint(x, y, z) == WORLD_TILES.METEOR or TheWorld.Map:GetTileAtPoint(x, y, z) == WORLD_TILES.PEBBLEBEACH
+	--end
+	end
+		print("Retrofitting for CaffeinBerry Bush De-extinction: Found " .. tostring(count) .. " CaffeinBerry Bush in the world. Adding "..tostring(min_dens - count) .. " more.")
+	for i = count, gen_caffeinberry-1 do
+		if not RetrofitNewContentPrefab(inst, "caffeinberry", 1, 4, turf_fn, candidtate_nodes) then
+			RetrofitNewContentPrefab(inst, "caffeinberry", 1, 2, turf_fn, candidtate_nodes)
+		end
+	end
+end
+
+local RetrofitForest = require("components/retrofitforestmap_anr")
+
+local oldonpostinit_forest = RetrofitForest.OnPostInit
+local oldonload = RetrofitForest.OnLoad
+
+function RetrofitForest:OnPostInit(...)
+
+	print("Retrofit Forest:OnPostInit", self.Retrofit_tree_tree, self.retrofit_caffeinberry_bush)
+
+	if self.retrofit_tree_tree then
+		print ("Retrofitting for Tea Trees: Adding Tea Trees.")
+		Tea_Tree_Retrofitting()
+		self.requiresreset = true
+	end
+
+	if self.retrofit_caffeinberry_bush then
+		print ("Retrofitting for CaffeinBerry Bushs: Adding CaffeinBerry Bushs.")
+		CaffeinBerry_Bush_Retrofitting()
+		self.requiresreset = true
+	end
+	
+	return oldonpostinit_forest(self, ...)
+end
+
+function RetrofitForest:OnLoad(data, ...)
+	self.retrofit_tree_tree = data.retrofit_tree_tree or false
+	self.retrofit_caffeinberry_bush = data.retrofit_caffeinberry_bush or false
+	return oldonload(data, self, ...)
+end
