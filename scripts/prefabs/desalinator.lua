@@ -73,39 +73,37 @@ local function onbuilt(inst)
 	inst.AnimState:PushAnimation("idle")
 end
 
-local function onpickedfn(inst, picker)
-    if not inst:HasTag("burnt") then
-        inst._saltvalue = inst._saltvalue - inst.components.pickable.numtoharvest * saltvalue_per_salt
-        inst.components.pickable.numtoharvest = 0 --어차피 한 번에 다 주게 하니까 상관없음
-        inst.SoundEmitter:PlaySound("saltydog/common/saltbox/open")
-        inst:DoTaskInTime(0.13, function(inst) inst.AnimState:PlayAnimation("get_salt") end)
-        inst.AnimState:PushAnimation("idle")
-        inst:DoTaskInTime(1.1, function(inst) inst.SoundEmitter:PlaySound("saltydog/common/saltbox/close") end)
-    end
-end
-
 local function IsEmptySalt(inst)
     return inst._saltvalue <= 0
 end
 
 local function IsSameSalt(inst)
-    return inst._saltvalue == inst._saltvaluemax
+    return inst._saltvalue == salt_sections
 end
 
 local function GetSaltPercent(inst)
-    return inst._saltvaluemax > 0 and math.max(0, math.min(1, inst._saltvalue / inst._saltvaluemax)) or 0
+    return inst._saltvalue > 0 and math.max(0, math.min(1, inst._saltvalue / inst._saltvaluemax)) or 0
 end
 
 local function GetSaltSection(inst)
-    return IsEmptySalt(inst) and 0 or IsSameSalt(inst) and math.min( math.ceil(GetSaltPercent(inst)*salt_sections), salt_sections) or math.min( math.ceil(GetSaltPercent(inst)*salt_sections)+1, salt_sections)
+    return IsEmptySalt(inst) and 0 or IsSameSalt(inst) and math.min( math.ceil(GetSaltPercent(inst)*salt_sections), salt_sections) or math.min( math.ceil(GetSaltPercent(inst)*salt_sections), salt_sections)
 end
 
 local function SetSaltSection(inst)
-    print(inst._saltvalue)
-    print(inst._saltvaluemax)
     local result = GetSaltSection(inst)
-    print(result)
     inst.AnimState:OverrideSymbol("swap_salt", "desalinator_rope_salt", tostring(result))
+end
+
+local function onpickedfn(inst, picker)
+    if not inst:HasTag("burnt") then
+        inst._saltvalue = inst._saltvalue - inst.components.pickable.numtoharvest * saltvalue_per_salt
+        inst.components.pickable.numtoharvest = 0 --어차피 한 번에 다 주게 하니까 상관없음
+        SetSaltSection(inst)
+        inst.SoundEmitter:PlaySound("saltydog/common/saltbox/open")
+        inst:DoTaskInTime(0.13, function(inst) inst.AnimState:PlayAnimation("get_salt") end)
+        inst.AnimState:PushAnimation("idle")
+        inst:DoTaskInTime(1.1, function(inst) inst.SoundEmitter:PlaySound("saltydog/common/saltbox/close") end)
+    end
 end
 
 local function CalculateSalt(inst)
