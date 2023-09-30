@@ -125,7 +125,7 @@ function Waterlevel:IsFull()
 end
 
 function Waterlevel:IsSame()
-    return self.maxwater == self.sections
+    return self.maxwater == self.currentwater
 end
 
 function Waterlevel:SetSections(num)

@@ -15,6 +15,7 @@ local assets =
 --수치조정용 변수
 local salt_per_water = 1/80
 local max_salt = 40
+local salt_sections = 9
 
 --변환용 변수(가급적 변경하지 말 것!)
 local saltvalue_per_salt = 10
@@ -72,33 +73,6 @@ local function onbuilt(inst)
 	inst.AnimState:PushAnimation("idle")
 end
 
---[[local function ChangeSaltSection(inst)
-    inst.AnimState:OverrideSymbol("desalinator_swap_salt", "desalinator_rope_salt", tostring(saltsection))
-end
-
-function WateringTool:TimerChange(percent)
-
-    if percent < 0 then percent = 0 end
-    if percent > 1 then percent = 1 end
-
-    remainingtime = percent*remainingtime
-
-    self:StopAllTask()
-
-    if self.frozed and self.watertype == WATERTYPE.DIRTY then
-        self.drytime = remainingtime
-        return true
-    end
-
-    if isdry then
-        self.drytime = GetTime() + remainingtime
-    else
-        self.spoiltime = GetTime() + remainingtime
-    end
-
-    self.wateringtooltask = self.inst:DoTaskInTime(remainingtime, OnDone, self, watertype)
-end]]
-
 local function onpickedfn(inst, picker)
     if not inst:HasTag("burnt") then
         inst._saltvalue = inst._saltvalue - inst.components.pickable.numtoharvest * saltvalue_per_salt
@@ -108,6 +82,30 @@ local function onpickedfn(inst, picker)
         inst.AnimState:PushAnimation("idle")
         inst:DoTaskInTime(1.1, function(inst) inst.SoundEmitter:PlaySound("saltydog/common/saltbox/close") end)
     end
+end
+
+local function IsEmptySalt(inst)
+    return inst._saltvalue <= 0
+end
+
+local function IsSameSalt(inst)
+    return inst._saltvalue == inst._saltvaluemax
+end
+
+local function GetSaltPercent(inst)
+    return inst._saltvaluemax > 0 and math.max(0, math.min(1, inst._saltvalue / inst._saltvaluemax)) or 0
+end
+
+local function GetSaltSection(inst)
+    return IsEmptySalt(inst) and 0 or IsSameSalt(inst) and math.min( math.ceil(GetSaltPercent(inst)*salt_sections), salt_sections) or math.min( math.ceil(GetSaltPercent(inst)*salt_sections)+1, salt_sections)
+end
+
+local function SetSaltSection(inst)
+    print(inst._saltvalue)
+    print(inst._saltvaluemax)
+    local result = GetSaltSection(inst)
+    print(result)
+    inst.AnimState:OverrideSymbol("swap_salt", "desalinator_rope_salt", tostring(result))
 end
 
 local function CalculateSalt(inst)
@@ -123,6 +121,7 @@ local function CalculateSalt(inst)
                 inst.components.pickable.canbepicked = false
             end
         end
+        SetSaltSection(inst)
     end
 end
 
@@ -171,6 +170,7 @@ local function onload(inst, data)
         end
         if data.saltvalue ~= nil then
             inst._saltvalue = data.saltvalue
+            SetSaltSection(inst)
         end
     end
 end
@@ -250,7 +250,7 @@ local function fn()
 
     inst._waterlevel = 0
     inst._saltvalue = 0
-    inst._saltvaluemax = max_salt
+    inst._saltvaluemax = maxsaltvalue
 	
 	inst:AddComponent("lootdropper")
     inst:AddComponent("inspectable")
