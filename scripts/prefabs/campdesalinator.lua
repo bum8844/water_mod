@@ -3,7 +3,7 @@ local assets =
     Asset("ANIM", "anim/campdesalinator.zip"),
     Asset("ANIM", "anim/campdesalinator_item.zip"),
     Asset("ANIM", "anim/campdesalinator_meter_water.zip"),
-    Asset("ANIM", "anim/campdesalinator_meter_dirty.zip"),
+    Asset("ANIM", "anim/campdesalinator_meter_salt.zip"),
     Asset("IMAGE", "images/tea_inventoryitem.tex"),
     Asset("ATLAS", "images/tea_inventoryitem.xml"),
     Asset("ATLAS_BUILD", "images/tea_inventoryitem.xml", 256),
@@ -91,7 +91,7 @@ local function OnTakeWater(inst)
 end
 
 local function OnSectionChange(new, old, inst)
-    local watertype = (inst.components.waterlevel.watertype == WATERTYPE.DIRTY or inst.components.waterlevel.watertype == WATERTYPE.DIRTY_ICE) and "dirty" or "water"
+    local watertype = (inst.components.waterlevel.watertype == WATERTYPE.SALTY) and "salt" or "water"
     if new ~= nil then
         if inst._waterlevel ~= new then
             inst._waterlevel = new
