@@ -20,50 +20,6 @@ local prefabs =
     "campkettle_item",
 }
 
-local assets_campkettle =
-{
-    Asset("ANIM", "anim/campkettle.zip"),
-    Asset("ANIM", "anim/campkettle_item.zip"),
-    Asset("ANIM", "anim/campkettle_meter_water.zip"),
-    Asset("ANIM", "anim/campkettle_meter_dirty.zip"),
-    Asset("IMAGE", "images/tea_inventoryitem.tex"),
-    Asset("ATLAS", "images/tea_inventoryitem.xml"),
-    Asset("ATLAS_BUILD", "images/tea_inventoryitem.xml", 256),
-}
-
-local prefabs_item_campkettle =
-{
-    "campkettle",
-}
-
-local prefabs_campkettle =
-{
-    "collapse_small",
-    "campkettle_item",
-}
-
-local assets_camppurifier =
-{
-    Asset("ANIM", "anim/campkettle.zip"),
-    Asset("ANIM", "anim/campkettle_item.zip"),
-    Asset("ANIM", "anim/campkettle_meter_water.zip"),
-    Asset("ANIM", "anim/campkettle_meter_dirty.zip"),
-    Asset("IMAGE", "images/tea_inventoryitem.tex"),
-    Asset("ATLAS", "images/tea_inventoryitem.xml"),
-    Asset("ATLAS_BUILD", "images/tea_inventoryitem.xml", 256),
-}
-
-local prefabs_item_camppurifier =
-{
-    "campkettle",
-}
-
-local prefabs_camppurifier =
-{
-    "collapse_small",
-    "campkettle_item",
-}
-
 local function onbuilt(inst)
     if not inst.parent then
         print("must build on campfire or firepit! -- removing")

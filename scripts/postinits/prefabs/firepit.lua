@@ -1,6 +1,6 @@
 -- Upgrade Firepit or Campfire with Camp Kettle
-local function install_kettle(inst, no_built_callback)
-	inst._kettle = SpawnPrefab("campkettle")
+local function install_kettle(inst, setkittle, no_built_callback)
+	inst._kettle = SpawnPrefab(setkittle)
 	inst:AddChild(inst._kettle)
 	inst._kettle.entity:SetParent(inst.entity)
 	--inst.components.burnable:OverrideBurnFXBuild("campkettlefire")
@@ -42,18 +42,19 @@ local function OnUpgrade(inst, performer, upgraded_from_item)
 	local modEnabled = _G.KnownModIndex:IsModEnabled("workshop-2334209327") or _G.KnownModIndex:IsModForceEnabled("workshop-2334209327")
 	local traderEnabled = inst.components.trader ~= nil and inst.components.trader.enabled
 	local item = upgraded_from_item.prefab
+	local setkittle = item == "campkettle_item" and "campkettle" or "campdesalinator"
 
-	if item == "campkettle_item" then
+	if item == "campkettle_item" or "campdesalinator_item" then
 		if modEnabled then
 			if traderEnabled and numupgrades == 1 then
-				install_kettle(inst)
+				install_kettle(inst, setkittle)
 			elseif inst.prefab == "campfire" and numupgrades == 1 then
-				install_kettle(inst)
+				install_kettle(inst, setkittle)
 			else
 				FailUpgrade(inst, performer, upgraded_from_item)
 			end
 		elseif numupgrades == 1 then
-			install_kettle(inst)
+			install_kettle(inst, setkittle)
 		else
 			FailUpgrade(inst, performer, upgraded_from_item)
 		end
@@ -74,6 +75,7 @@ local function OnSave(inst, data)
 		local boilingtime = distiller.boiling_timer ~= nil and distiller.boiling_timer - GLOBAL.GetTime() or distiller.firetime or 0
 		data.kettle =
 		{
+			prefab = kettle.prefab,
 			waterlevel = kettle.components.waterlevel.currentwater,
 			watertype = kettle.components.waterlevel.watertype,
 			boilingtime = boilingtime > 0 and boilingtime or nil
@@ -87,7 +89,8 @@ local function OnLoad(inst, data)
 	local numupgrades = inst.components.upgradeable.numupgrades
 	if numupgrades ~= 0 then
 		if data ~= nil and data.kettle ~= nil then
-			install_kettle(inst, true)
+			local setkittle = data.kettle.prefab
+			install_kettle(inst, setkittle, true)
 			inst._kettle.components.waterlevel:InitializeWaterLevel(math.max(0, data.kettle.waterlevel))
 			inst._kettle.components.waterlevel:SetWaterType(data.kettle.watertype)
 			if data.kettle.boilingtime then
