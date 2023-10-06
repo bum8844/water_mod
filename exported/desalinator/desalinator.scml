@@ -1462,7 +1462,7 @@
                     <object_ref id="24" timeline="23" key="2" z_index="24"/>
                     <object_ref id="25" timeline="24" key="1" z_index="25"/>
                     <object_ref id="26" timeline="25" key="1" z_index="26"/>
-                    <object_ref id="27" timeline="26" key="1" z_index="27"/>
+                    <object_ref id="27" timeline="26" key="2" z_index="27"/>
                     <object_ref id="28" timeline="27" key="1" z_index="28"/>
                     <object_ref id="29" timeline="28" key="1" z_index="29"/>
                     <object_ref id="30" timeline="29" key="1" z_index="30"/>
@@ -1496,7 +1496,7 @@
                     <object_ref id="24" timeline="23" key="2" z_index="24"/>
                     <object_ref id="25" timeline="24" key="2" z_index="25"/>
                     <object_ref id="26" timeline="25" key="1" z_index="26"/>
-                    <object_ref id="27" timeline="26" key="1" z_index="27"/>
+                    <object_ref id="27" timeline="26" key="3" z_index="27"/>
                     <object_ref id="28" timeline="27" key="1" z_index="28"/>
                     <object_ref id="29" timeline="28" key="1" z_index="29"/>
                     <object_ref id="30" timeline="29" key="1" z_index="30"/>
@@ -1530,7 +1530,7 @@
                     <object_ref id="24" timeline="23" key="3" z_index="24"/>
                     <object_ref id="25" timeline="24" key="3" z_index="25"/>
                     <object_ref id="26" timeline="25" key="2" z_index="26"/>
-                    <object_ref id="27" timeline="26" key="2" z_index="27"/>
+                    <object_ref id="27" timeline="26" key="4" z_index="27"/>
                     <object_ref id="28" timeline="27" key="2" z_index="28"/>
                     <object_ref id="29" timeline="28" key="2" z_index="29"/>
                     <object_ref id="30" timeline="29" key="2" z_index="30"/>
@@ -1564,7 +1564,7 @@
                     <object_ref id="24" timeline="23" key="3" z_index="24"/>
                     <object_ref id="25" timeline="24" key="3" z_index="25"/>
                     <object_ref id="26" timeline="25" key="2" z_index="26"/>
-                    <object_ref id="27" timeline="26" key="2" z_index="27"/>
+                    <object_ref id="27" timeline="26" key="4" z_index="27"/>
                     <object_ref id="28" timeline="27" key="2" z_index="28"/>
                     <object_ref id="29" timeline="28" key="2" z_index="29"/>
                     <object_ref id="30" timeline="29" key="2" z_index="30"/>
@@ -1598,7 +1598,7 @@
                     <object_ref id="24" timeline="23" key="3" z_index="24"/>
                     <object_ref id="25" timeline="24" key="3" z_index="25"/>
                     <object_ref id="26" timeline="25" key="2" z_index="26"/>
-                    <object_ref id="27" timeline="26" key="2" z_index="27"/>
+                    <object_ref id="27" timeline="26" key="4" z_index="27"/>
                     <object_ref id="28" timeline="27" key="2" z_index="28"/>
                     <object_ref id="29" timeline="28" key="2" z_index="29"/>
                     <object_ref id="30" timeline="29" key="2" z_index="30"/>
@@ -1632,7 +1632,7 @@
                     <object_ref id="24" timeline="23" key="3" z_index="24"/>
                     <object_ref id="25" timeline="24" key="3" z_index="25"/>
                     <object_ref id="26" timeline="25" key="2" z_index="26"/>
-                    <object_ref id="27" timeline="26" key="2" z_index="27"/>
+                    <object_ref id="27" timeline="26" key="4" z_index="27"/>
                     <object_ref id="28" timeline="27" key="2" z_index="28"/>
                     <object_ref id="29" timeline="28" key="2" z_index="29"/>
                     <object_ref id="30" timeline="29" key="2" z_index="30"/>
@@ -1666,7 +1666,7 @@
                     <object_ref id="24" timeline="23" key="3" z_index="24"/>
                     <object_ref id="25" timeline="24" key="3" z_index="25"/>
                     <object_ref id="26" timeline="25" key="2" z_index="26"/>
-                    <object_ref id="27" timeline="26" key="2" z_index="27"/>
+                    <object_ref id="27" timeline="26" key="4" z_index="27"/>
                     <object_ref id="28" timeline="27" key="2" z_index="28"/>
                     <object_ref id="29" timeline="28" key="2" z_index="29"/>
                     <object_ref id="30" timeline="29" key="2" z_index="30"/>
@@ -1700,7 +1700,7 @@
                     <object_ref id="24" timeline="23" key="3" z_index="24"/>
                     <object_ref id="25" timeline="24" key="3" z_index="25"/>
                     <object_ref id="26" timeline="25" key="2" z_index="26"/>
-                    <object_ref id="27" timeline="26" key="2" z_index="27"/>
+                    <object_ref id="27" timeline="26" key="4" z_index="27"/>
                     <object_ref id="28" timeline="27" key="2" z_index="28"/>
                     <object_ref id="29" timeline="28" key="2" z_index="29"/>
                     <object_ref id="30" timeline="29" key="2" z_index="30"/>
@@ -1734,7 +1734,7 @@
                     <object_ref id="24" timeline="23" key="3" z_index="24"/>
                     <object_ref id="25" timeline="24" key="3" z_index="25"/>
                     <object_ref id="26" timeline="25" key="3" z_index="26"/>
-                    <object_ref id="27" timeline="26" key="3" z_index="27"/>
+                    <object_ref id="27" timeline="26" key="5" z_index="27"/>
                     <object_ref id="28" timeline="27" key="2" z_index="28"/>
                     <object_ref id="29" timeline="28" key="2" z_index="29"/>
                     <object_ref id="30" timeline="29" key="2" z_index="30"/>
@@ -1768,7 +1768,7 @@
                     <object_ref id="24" timeline="23" key="3" z_index="24"/>
                     <object_ref id="25" timeline="24" key="3" z_index="25"/>
                     <object_ref id="26" timeline="25" key="3" z_index="26"/>
-                    <object_ref id="27" timeline="26" key="3" z_index="27"/>
+                    <object_ref id="27" timeline="26" key="5" z_index="27"/>
                     <object_ref id="28" timeline="27" key="2" z_index="28"/>
                     <object_ref id="29" timeline="28" key="2" z_index="29"/>
                     <object_ref id="30" timeline="29" key="2" z_index="30"/>
@@ -1802,7 +1802,7 @@
                     <object_ref id="24" timeline="23" key="3" z_index="24"/>
                     <object_ref id="25" timeline="24" key="3" z_index="25"/>
                     <object_ref id="26" timeline="25" key="3" z_index="26"/>
-                    <object_ref id="27" timeline="26" key="3" z_index="27"/>
+                    <object_ref id="27" timeline="26" key="5" z_index="27"/>
                     <object_ref id="28" timeline="27" key="2" z_index="28"/>
                     <object_ref id="29" timeline="28" key="2" z_index="29"/>
                     <object_ref id="30" timeline="29" key="2" z_index="30"/>
@@ -1836,7 +1836,7 @@
                     <object_ref id="24" timeline="23" key="3" z_index="24"/>
                     <object_ref id="25" timeline="24" key="3" z_index="25"/>
                     <object_ref id="26" timeline="25" key="3" z_index="26"/>
-                    <object_ref id="27" timeline="26" key="3" z_index="27"/>
+                    <object_ref id="27" timeline="26" key="5" z_index="27"/>
                     <object_ref id="28" timeline="27" key="2" z_index="28"/>
                     <object_ref id="29" timeline="28" key="2" z_index="29"/>
                     <object_ref id="30" timeline="29" key="2" z_index="30"/>
@@ -1870,7 +1870,7 @@
                     <object_ref id="24" timeline="23" key="3" z_index="24"/>
                     <object_ref id="25" timeline="24" key="3" z_index="25"/>
                     <object_ref id="26" timeline="25" key="3" z_index="26"/>
-                    <object_ref id="27" timeline="26" key="3" z_index="27"/>
+                    <object_ref id="27" timeline="26" key="5" z_index="27"/>
                     <object_ref id="28" timeline="27" key="2" z_index="28"/>
                     <object_ref id="29" timeline="28" key="2" z_index="29"/>
                     <object_ref id="30" timeline="29" key="2" z_index="30"/>
@@ -1904,7 +1904,7 @@
                     <object_ref id="24" timeline="23" key="4" z_index="24"/>
                     <object_ref id="25" timeline="24" key="4" z_index="25"/>
                     <object_ref id="26" timeline="25" key="4" z_index="26"/>
-                    <object_ref id="27" timeline="26" key="4" z_index="27"/>
+                    <object_ref id="27" timeline="26" key="6" z_index="27"/>
                     <object_ref id="28" timeline="27" key="3" z_index="28"/>
                     <object_ref id="29" timeline="28" key="3" z_index="29"/>
                     <object_ref id="30" timeline="29" key="3" z_index="30"/>
@@ -1938,7 +1938,7 @@
                     <object_ref id="24" timeline="23" key="5" z_index="24"/>
                     <object_ref id="25" timeline="24" key="5" z_index="25"/>
                     <object_ref id="26" timeline="25" key="5" z_index="26"/>
-                    <object_ref id="27" timeline="26" key="5" z_index="27"/>
+                    <object_ref id="27" timeline="26" key="7" z_index="27"/>
                     <object_ref id="28" timeline="27" key="4" z_index="28"/>
                     <object_ref id="29" timeline="28" key="4" z_index="29"/>
                     <object_ref id="30" timeline="29" key="4" z_index="30"/>
@@ -2439,16 +2439,22 @@
                 <key id="1" time="200">
                     <object folder="5" file="6" x="-76.042053" y="-1.811998" angle="0" scale_x="-1"/>
                 </key>
-                <key id="2" time="400" spin="-1">
+                <key id="2" time="300" spin="-1">
+                    <object folder="5" file="6" x="-81.399196" y="-9.847712" angle="111.948434" scale_x="-0.444244" scale_y="1"/>
+                </key>
+                <key id="3" time="350">
+                    <object folder="5" file="6" x="-80.158455" y="-7.735279" angle="296.268793" scale_x="0.518506"/>
+                </key>
+                <key id="4" time="400" spin="-1">
                     <object folder="5" file="6" x="-86.060572" y="-6.515702" angle="18.696767"/>
                 </key>
-                <key id="3" time="800" spin="0">
+                <key id="5" time="800" spin="0">
                     <object folder="5" file="6" x="-76.042053" y="-1.811998" angle="0"/>
                 </key>
-                <key id="4" time="1500" spin="0">
+                <key id="6" time="1500" spin="0">
                     <object folder="5" file="6" x="-76.042053" y="-1.811998" angle="0"/>
                 </key>
-                <key id="5" time="1525" spin="0">
+                <key id="7" time="1525" spin="0">
                     <object folder="5" file="6" x="-76.042053" y="-1.811998" angle="0"/>
                 </key>
             </timeline>
@@ -4455,7 +4461,7 @@
                 </key>
             </timeline>
         </animation>
-        <animation id="5" name="hit_cook_open" length="425" interval="100">
+        <animation id="5" name="hit_idle_open" length="425" interval="100">
             <mainline>
                 <key id="0">
                     <object_ref id="0" timeline="0" key="0" z_index="0"/>
