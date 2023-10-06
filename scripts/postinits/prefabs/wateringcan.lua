@@ -1,25 +1,26 @@
 local function OnFill_Waterlevel(inst, from_object ,...)
-
     local maxfin = inst.components.finiteuses.total
     local using = inst.components.finiteuses:GetUses()
-    local result = math.ceil((maxfin-using)/TUNING.BUCKET_LEVEL_PER_USE)
+
+    local totalmax = maxfin/TUNING.WATERINGCAN_PER_WATER
+    local totalusing = math.floor(using/TUNING.WATERINGCAN_PER_WATER)
+
+    local result = totalmax-totalusing
     if from_object.components.waterlevel ~= nil then
+        local waterlevel = from_object.components.waterlevel:GetWater()
     	if result > 0 then
-    		inst.components.finiteuses:SetUses(math.min(maxfin,using+(result*20)))
-    		from_object.components.waterlevel:DoDelta(-result)
+    		inst.components.finiteuses:SetUses(math.min(maxfin,using+(waterlevel*TUNING.WATERINGCAN_PER_WATER)))
+            from_object.components.water:Taken(inst, result)
     		inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/small")
-            if from_object.components.waterlevel.ontakewaterfn ~= nil then
-               from_object.components.waterlevel.ontakewaterfn(from_object)
-            end
     		return true
     	else
     		return false
     	end
     elseif from_object:HasTag("farm_water") then
+        local stacksize = from_object.components.stackable:StackSize()
         if using ~= maxfin then
-            local stacksize = from_object.components.stackable:StackSize()
-            result = math.min(stacksize,math.ceil((maxfin-using)/TUNING.BUCKET_LEVEL_PER_USE))
-            inst.components.finiteuses:SetUses(math.min(maxfin,using+(result*20)))
+            result = math.min(stacksize,result)
+            inst.components.finiteuses:SetUses(math.min(maxfin,using+(result*TUNING.WATERINGCAN_PER_WATER)))
             if from_object.components.stackable:IsStack() then
                 from_object.components.stackable:Get(result):Remove()
             else

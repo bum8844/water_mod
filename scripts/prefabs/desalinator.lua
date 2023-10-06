@@ -22,6 +22,14 @@ local saltvalue_per_salt = 10
 local saltvalue_per_water = saltvalue_per_salt * salt_per_water
 local maxsaltvalue = max_salt * saltvalue_per_salt
 
+local function isdoneboiling(inst)
+    local isopen = "_open"
+    if not inst.AnimState:IsCurrentAnimation("idle_open") then
+        isopen = ""
+    end
+    return isopen
+end
+
 local function GetWet(inst)
     if not inst:HasTag("burnt") then
         if inst.components.waterlevel:GetPercent() > 0 then 
@@ -58,8 +66,9 @@ local function onhit(inst, worker)
             inst.AnimState:PlayAnimation("hit_cook")
             inst.AnimState:PushAnimation("cook", true)
         else
-    		inst.AnimState:PlayAnimation("hit_idle")
-    		inst.AnimState:PushAnimation("idle")
+            local isopen = isdoneboiling(inst)
+    		inst.AnimState:PlayAnimation("hit_idle"..isopen)
+    		inst.AnimState:PushAnimation("idle"..isopen)
         end
 	end
 end
@@ -95,14 +104,18 @@ local function SetSaltSection(inst)
 end
 
 local function onpickedfn(inst, picker)
+    local isopen = isdoneboiling(inst)
     if not inst:HasTag("burnt") then
         inst._saltvalue = inst._saltvalue - inst.components.pickable.numtoharvest * saltvalue_per_salt
         inst.components.pickable.numtoharvest = 0 --어차피 한 번에 다 주게 하니까 상관없음
         SetSaltSection(inst)
         inst.SoundEmitter:PlaySound("saltydog/common/saltbox/open")
-        inst:DoTaskInTime(0.13, function(inst) inst.AnimState:PlayAnimation("get_salt") end)
-        inst.AnimState:PushAnimation("idle")
-        inst:DoTaskInTime(1.1, function(inst) inst.SoundEmitter:PlaySound("saltydog/common/saltbox/close") end)
+        inst:DoTaskInTime(0.13, function(inst) inst.AnimState:PlayAnimation("get_salt"..isopen) 
+            inst:DoTaskInTime(1.1, function(inst) 
+                inst.SoundEmitter:PlaySound("saltydog/common/saltbox/close") 
+                inst.AnimState:PushAnimation("idle"..isopen)
+            end)
+        end)
     end
 end
 
@@ -127,7 +140,12 @@ local function ondoneboilingfn(inst)
     if not inst:HasTag("burnt") then
         inst.AnimState:OverrideSymbol("swap_body", "desalinator_body_water", tostring(inst._waterlevel))
         inst.AnimState:OverrideSymbol("swap", "desalinator_meter_water", tostring(inst._waterlevel))
-        inst.AnimState:PlayAnimation("idle")
+        inst.AnimState:PlayAnimation("cook_pst")
+        if inst.components.waterlevel:GetWater() > 0 then
+            inst.AnimState:PushAnimation("idle_open")
+        else
+            inst.AnimState:PushAnimation("idle")
+        end
         inst.SoundEmitter:KillSound("desalinator_sound")
         inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/medium")
         CalculateSalt(inst)
@@ -201,8 +219,17 @@ end
 local function OnTaken(inst, taker, water_amount)
     if not inst:HasTag("burnt") then
         inst.AnimState:PlayAnimation("get_water")
-        inst.AnimState:PushAnimation("idle")
         inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/medium")
+        if inst.components.waterlevel:GetWater() > 0 then
+            inst.AnimState:PushAnimation("idle_open")
+        else
+            inst:DoTaskInTime(1.1, function(inst) inst.AnimState:PlayAnimation("get_weter_pst")
+                inst:DoTaskInTime(0.13, function(inst) 
+                    inst.SoundEmitter:PlaySound("dontstarve/common/wardrobe_close")
+                    inst.AnimState:PushAnimation("idle")
+                end)
+            end)
+        end
     end
 end
 
@@ -263,6 +290,7 @@ local function fn()
     inst.components.waterlevel:SetCanAccepts({WATERTYPE.SALTY})
     inst.components.waterlevel:SetTakeWaterFn(OnTakeWater)
     inst.components.waterlevel.maxwater = TUNING.DESALINATOR_MAX_LEVEL
+    inst.components.waterlevel.isputoncetime = true
     inst.components.waterlevel:SetSections(TUNING.DESALINATOR_MAX_LEVEL)
     inst.components.waterlevel:SetSectionCallback(OnSectionChange)
     inst.components.waterlevel:InitializeWaterLevel(0)
