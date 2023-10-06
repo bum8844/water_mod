@@ -177,7 +177,7 @@ local function fn()
     inst.components.inspectable.getstatus = getstatus
 
     inst:AddComponent("waterlevel")
-    inst.components.waterlevel:SetCanAccepts({WATERGROUP.CAMP_BOILABLE})
+    inst.components.waterlevel:SetCanAccepts({WATERTYPE.SALTY})
     inst.components.waterlevel:SetTakeWaterFn(OnTakeWater)
     inst.components.waterlevel:SetSections(3)
     inst.components.waterlevel:SetSectionCallback(OnSectionChange)
