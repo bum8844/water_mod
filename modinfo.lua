@@ -1,6 +1,5 @@
 name 						= "Don't Starve: Dehydrated"
-
-version 					= "Alpha 1.1.8i"
+version 					= "Alpha 1.1.9"
 
 description = (
 	"Description coming soon..."
@@ -10,12 +9,14 @@ author 						= ""
 forumthread 				= ""
 api_version 				= 10
 priority 					= -10001
+
 dont_starve_compatible 		= false
 reign_of_giants_compatible 	= false
 shipwrecked_compatible 		= false
-dst_compatible 				= true
 
-all_clients_require_mod 	= true 
+dst_compatible              = true
+all_clients_require_mod     = true
+client_only_mod             = false
 
 icon_atlas 					= "preview.xml"
 icon 						= "preview.tex"
@@ -182,13 +183,13 @@ configuration_options =
 		label = "Boost Rate",
 		options = 
 		{
-			{description = "Slower", data = 1.21},
-			{description = "Slow", data = 1.42},
-			{description = "Default", data = 1.83},
-			{description = "Fast", data = 2.04},
-			{description = "Faster", data = 2.25},
+			{description = "Slower", data = 1.05},
+			{description = "Slow", data = 1.10},
+			{description = "Default", data = 1.25},
+			{description = "Fast", data = 1.40},
+			{description = "Faster", data = 1.83},
 		},
-		default = 1.83
+		default = 1.25
 	},
 	{
 		name = "caffein_time",

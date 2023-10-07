@@ -22,7 +22,6 @@ water_tuning =
 	},
 
 	TYPES_SALTY = {
-		"pond_cave",
 		"quagmire_pond_salt",
 		"kyno_pond_salt",
 	},
@@ -30,6 +29,7 @@ water_tuning =
 	TYPES_DIRTY = {
 		"pond",
 		"pond_mos",
+		"pond_cave",
 		"tidalpool",
 		"tidalpoolnew",
 	},
@@ -56,8 +56,7 @@ water_tuning =
 
 	-- Maximum Amount of Water
 	CUP_MAX_LEVEL = 1,
-	BUCKET_RAINFALL = .5,
-	BUCKET_EVAPORATION = -.1,
+	WATERINGCAN_PER_WATER = 20,
 	BUCKET_MAX_LEVEL = bucket_max_level*10,
 	BUCKET_LEVEL_PER_USE = bucket_max_level,
 
@@ -90,7 +89,6 @@ water_tuning =
 	WATER_CLEAN_MELTINGPOINT = 5,
 	WATER_DIRTY_FREEZEPOINT = -2,
 	WATER_DIRTY_MELTINGPOINT = 5,
-
 	
 	-- Moistures and getting wet
 	WATER_BARREL_WETNESS = 25,

@@ -27,7 +27,7 @@ local function onbuilt(inst)
     else
         inst:Hide()
         inst._type = inst.parent.prefab == "firepit" and "B" or "A"
-        inst.AnimState:SetBank("type_"..inst._type)
+        inst.AnimState:SetBank("campkettle_"..inst._type)
 
         inst:DoTaskInTime(0,function(inst)
             inst:Show()
@@ -128,7 +128,7 @@ local function onload(inst, data)
     if data ~= nil then
         if data.pittype ~= nil then
             inst._type = data.pittype
-            inst.AnimState:SetBank("type_"..inst._type)
+            inst.AnimState:SetBank("campkettle_"..inst._type)
         end
     end
 end
@@ -156,7 +156,7 @@ local function fn()
     MakeInventoryPhysics(inst)
 
     inst.AnimState:SetBuild("campkettle")
-    inst.AnimState:SetBank("type_"..inst._type)
+    inst.AnimState:SetBank("campkettle_"..inst._type)
     inst.AnimState:PlayAnimation("idle_empty")
     inst.AnimState:OverrideSymbol("swap_meter", "campkettle_meter_water", "0")
 
@@ -196,7 +196,8 @@ local function fn()
     inst.components.pickable.numtoharvest = inst.components.waterlevel:GetWater()
     inst.components.pickable:SetOnPickedFn(OnPickedFn)
 
-    MakeHauntableLaunchAndSmash(inst)
+    inst:AddComponent("hauntable")
+    inst.components.hauntable:SetHauntValue(TUNING.HAUNT_TINY)
 
     inst.OnSave = onsave
     inst.OnLoad = onload
@@ -208,6 +209,8 @@ end
 
 local function fn_item()
     local inst = CreateEntity()
+
+    inst.kettletype = "campkettle"
 
     inst.entity:AddTransform()
     inst.entity:AddAnimState()

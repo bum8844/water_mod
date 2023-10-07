@@ -46,9 +46,9 @@ local function fn()
 	MakeInventoryFloatable(inst)
 	MakeDeployableFertilizerPristine(inst)
 
-    inst:AddTag("heal_fertilize")
-
 	inst:AddTag("fertilizerresearchable")
+
+	inst:AddTag("drink")
 
 	inst.GetFertilizerKey = GetFertilizerKey
 

@@ -497,6 +497,13 @@ FOODTYPEGROUP =
 	},
 }
 
+BUCKETSTATE = 
+{
+    EMPTY = "empty",
+    CLEAN = "full",
+    DIRTY = "dirty",
+}
+
 env.WATERTYPE = WATERTYPE
 env.WATERGROUP = WATERGROUP
 env.FOODTYPEGROUP = FOODTYPEGROUP

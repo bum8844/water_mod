@@ -36,8 +36,6 @@ return {
 		WELL_DRILLING_ITEM = "",
 		HOLE = "",
 		WELL = "",
-		
-		BUCKET_EMPTY = "",
 
 		TEA_TREE = "",
 		DUG_TEA_TREE = "",
@@ -97,6 +95,30 @@ return {
 		GLOWBERRYWINE = "",
 		KUMIS = "",
 
+		BUCKET_STEEL_EMPTY = {
+			EMPTY = "",
+			FULL = "",
+			FULL_ICE = "",
+			DIRTY = "",
+			DIRTY_ICE = "",
+		},
+
+		BUCKET_WOODIE_EMPTY = {
+			EMPTY = "",
+			FULL = "",
+			FULL_ICE = "",
+			DIRTY = "",
+			DIRTY_ICE = "",
+		},
+
+		BUCKET_EMPTY = {
+			EMPTY = "",
+			FULL = "",
+			FULL_ICE = "",
+			DIRTY = "",
+			DIRTY_ICE = "",
+		},
+
 		DESALINATOR =
 		{
 			EMPTY = "",
@@ -124,6 +146,16 @@ return {
 
 		CAMPKETTLE_ITEM = "",
 		CAMPKETTLE =
+		{
+			GENERIC = "",
+			BOILING_LONG = "",
+			BOILING_SHORT = "",
+			DONE = "",
+			STOP = "",
+		},
+
+		CAMPDESALINATOR_ITEM = "",
+		CAMPDESALINATOR =
 		{
 			GENERIC = "",
 			BOILING_LONG = "",

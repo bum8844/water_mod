@@ -6,15 +6,6 @@ local actionhandlers = {}
 
 local events =
 {
-    EventHandler("putoutfire", function(inst, data) 
-        if inst.components.machine:IsOn() then
-            if inst.sg:HasStateTag("idle") then
-                inst.sg:GoToState("spin_up", {firePos = data.firePos})
-            elseif inst.sg:HasStateTag("shooting") then
-                inst.sg:GoToState("shoot", {firePos = data.firePos})
-            end
-        end
-    end)
 }
 
 local states =
@@ -84,68 +75,6 @@ local states =
             inst.SoundEmitter:KillSound("firesuppressor_idle")
             inst.AnimState:PlayAnimation("idle_off", true)
         end,
-    },
-
-    State
-    {
-        name = "spin_up",
-        tags = {"busy"},
-
-        onenter = function(inst, data)
-            inst.AnimState:PlayAnimation("launch_pre")
-            inst.sg.statemem.data = data
-        end,
-
-        events =
-        {
-            EventHandler("animover", function(inst) inst.sg:GoToState("shoot", inst.sg.statemem.data) end)
-        },
-    },
-
-    State
-    {  
-        name = "shoot",
-        tags = {"busy", "shooting"},
-
-        onenter = function(inst, data)
-            inst.AnimState:PlayAnimation("launch", true)
-            inst.sg.statemem.firePos = data.firePos
-            -- inst.SoundEmitter:PlaySound("dontstarve_DLC001/common/firesupressor_spin")
-            --Play some sound 
-        end,
-
-        timeline =
-        {
-            -- TimeEvent(6*FRAMES,
-            -- function(inst) 
-            --     inst.SoundEmitter:PlaySound("dontstarve_DLC001/common/firesupressor_shoot")
-            -- end),
-
-            TimeEvent(8*FRAMES,
-            function(inst)
-            end)
-        },
-
-        events =
-        {
-            EventHandler("animover", function(inst) inst.sg:GoToState("spin_down") end)
-        },
-    },
-
-    State
-    {
-        name = "spin_down",
-        tags = {"busy"},
-
-        onenter = function(inst, data)
-            inst.AnimState:PlayAnimation("launch_pst")
-            inst.SoundEmitter:PlaySound("dontstarve_DLC003/common/crafted/sprinkler/off")
-        end,
-
-        events =
-        {
-            EventHandler("animover", function(inst) inst.sg:GoToState("idle_on") end)
-        },
     },
 
     State

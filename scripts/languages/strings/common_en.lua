@@ -48,12 +48,19 @@ STRINGS.RECIPE_DESC.BREWERY = "Improves your drinking experience. Probably."
 
 -- buckets
 STRINGS.NAMES.BUCKET_EMPTY = "Bucket"
+STRINGS.NAMES.BUCKET_WOODIE_EMPTY = "Small Bucket"
+STRINGS.NAMES.BUCKET_STEEL_EMPTY = "Steel Bucket" 
 STRINGS.RECIPE_DESC.BUCKET_EMPTY = "An empty bucket."
 
 -- campkettle
 STRINGS.NAMES.CAMPKETTLE_ITEM = "Camp Kettle Kit"
 STRINGS.RECIPE_DESC.CAMPKETTLE_ITEM = "Your first kettle."
 STRINGS.NAMES.CAMPKETTLE = "Camp Kettle"
+
+-- campcampdesalinator
+STRINGS.NAMES.CAMPDESALINATOR_ITEM = "Camp Desalinator Kit"
+STRINGS.RECIPE_DESC.CAMPDESALINATOR_ITEM = "Your first Desalinator."
+STRINGS.NAMES.CAMPDESALINATOR = "Camp Desalinator"
 
 -- kettle
 STRINGS.NAMES.KETTLE	= "Kettle"

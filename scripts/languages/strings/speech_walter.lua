@@ -33,8 +33,6 @@ return {
 		WELL_DRILLING_ITEM = "우리 우물 한 번 파 볼까, 워비?",
 		HOLE = "혹시 세상 반대편까지 이어져 있는 걸까?",
 		WELL = "왜 그래, 워비? 누가 거기 빠졌어?",
-		
-		BUCKET_EMPTY = "물을 퍼담을 수는 있지만 ",
 
 		TEA_TREE = "교범에 차나무 얘기는 없네.",
 		DUG_TEA_TREE = "이제 심을 곳을 찾아보자, 워비!",
@@ -94,6 +92,30 @@ return {
 		GLOWBERRYWINE = "",
 		KUMIS = "",
 
+		BUCKET_STEEL_EMPTY = {
+			EMPTY = "",
+			FULL = "",
+			FULL_ICE = "",
+			DIRTY = "",
+			DIRTY_ICE = "",
+		},
+
+		BUCKET_WOODIE_EMPTY = {
+			EMPTY = "",
+			FULL = "",
+			FULL_ICE = "",
+			DIRTY = "",
+			DIRTY_ICE = "",
+		},
+
+		BUCKET_EMPTY = {
+			EMPTY = "물을 퍼담을 수는 있지만 ",
+			FULL = "",
+			FULL_ICE = "",
+			DIRTY = "",
+			DIRTY_ICE = "",
+		},
+
 		DESALINATOR =
 		{
 			EMPTY = "",
@@ -123,6 +145,16 @@ return {
 		CAMPKETTLE =
 		{
 			GENERIC = "자연의 물은 끓여마시는 게 안전해.",
+			BOILING_LONG = "",
+			BOILING_SHORT = "",
+			DONE = "",
+			STOP = "",
+		},
+
+		CAMPDESALINATOR_ITEM = "",
+		CAMPDESALINATOR =
+		{
+			GENERIC = "",
 			BOILING_LONG = "",
 			BOILING_SHORT = "",
 			DONE = "",

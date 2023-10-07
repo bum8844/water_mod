@@ -34,8 +34,6 @@ return {
 		HOLE = "",
 		WELL = "",
 		WELL_SPRINKLER = "",
-		
-		BUCKET_EMPTY = "",
 
 		TEA_TREE = "",
 		DUG_TEA_TREE = "",
@@ -122,6 +120,16 @@ return {
 
 		CAMPKETTLE_ITEM = "",
 		CAMPKETTLE =
+		{
+			GENERIC = "",
+			BOILING_LONG = "",
+			BOILING_SHORT = "",
+			DONE = "",
+			STOP = "",
+		},
+
+		CAMPDESALINATOR_ITEM = "",
+		CAMPDESALINATOR =
 		{
 			GENERIC = "",
 			BOILING_LONG = "",

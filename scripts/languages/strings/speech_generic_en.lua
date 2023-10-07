@@ -33,8 +33,6 @@ return {
 		WELL_DRILLING_ITEM = "It digs a hole to draw water.",
 		HOLE = "Looks good for me to build a well.",
 		WELL = "Now I can conveniently get clean, fresh water!",
-		
-		BUCKET_EMPTY = "I can fill it with water. Or something else.",
 
 		TEA_TREE = "What a lovely little tree.",
 		DUG_TEA_TREE = "Now it can be replanted in other place.",
@@ -94,6 +92,30 @@ return {
 		GLOWBERRYWINE = "It's glowing by science.",
 		KUMIS = "Wasn't milk supposed to be made into yogurt?",
 
+		BUCKET_STEEL_EMPTY = {
+			EMPTY = "I can fill it with water. Or something else.",
+			FULL = "It's full of rainwater",
+			FULL_ICE = "It's going to be hard to take this out",
+			DIRTY = "Ugh, water has gone bad...",
+			DIRTY_ICE = "It's frozen...",
+		},
+
+		BUCKET_WOODIE_EMPTY = {
+			EMPTY = "I can fill it with water. Or something else.",
+			FULL = "It's full of rainwater",
+			FULL_ICE = "It's going to be hard to take this out",
+			DIRTY = "Ugh, water has gone bad...",
+			DIRTY_ICE = "It's frozen...",
+		},
+
+		BUCKET_EMPTY = {
+			EMPTY = "I can fill it with water. Or something else.",
+			FULL = "It's full of rainwater",
+			FULL_ICE = "It's going to be hard to take this out",
+			DIRTY = "Ugh, water has gone bad...",
+			DIRTY_ICE = "It's frozen...",
+		},
+
 		DESALINATOR =
 		{
 			EMPTY = "Separating water out of sea water, that's just science.",
@@ -127,6 +149,16 @@ return {
 			BOILING_SHORT = "Almost boiling!",
 			DONE = "It's all done boiling.",
 			STOP = "It's still dirty.",
+		},
+
+		CAMPDESALINATOR_ITEM = "Now I just need a fire.",
+		CAMPDESALINATOR =
+		{
+			GENERIC = "It's no use of it alone.",
+			BOILING_LONG = "This is going to take a while to purified.",
+			BOILING_SHORT = "It's almost done!",
+			DONE = "It's all done purified.",
+			STOP = "It's still too salty.",
 		},
 
 		KETTLE =

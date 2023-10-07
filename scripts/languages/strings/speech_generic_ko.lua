@@ -33,8 +33,6 @@ return {
 		WELL_DRILLING_ITEM = "물을 긷기 위해 우물을 파는 장치야.",
 		HOLE = "여기에 우물을 만들면 되겠어.",
 		WELL = "이제 깨끗한 물을 간편하게 얻을 수 있어!",
-		
-		BUCKET_EMPTY = "물을 채울 수 있어. 물 말고 다른 걸 채워도 되고.",
 
 		TEA_TREE = "참 작고 멋진 나무야.",
 		DUG_TEA_TREE = "다른 곳에 옮겨심을 수 있겠어.",
@@ -94,6 +92,30 @@ return {
 		GLOWBERRYWINE = "음료가 과학으로 빛나고 있어.",
 		KUMIS = "우유로는 요구르트를 만드는 거 아니었어?",
 
+		BUCKET_STEEL_EMPTY = {
+			EMPTY = "물을 채울 수 있어. 물 말고 다른 걸 채워도 되고.",
+			FULL = "빗물로 가득 찼어",
+			FULL_ICE = "이거 빼려면 고생 좀 하겠군",
+			DIRTY = "으 물이 썩었잖아...",
+			DIRTY_ICE = "얼기까지 해버렸군...",
+		},
+
+		BUCKET_WOODIE_EMPTY = {
+			EMPTY = "물을 채울 수 있어. 물 말고 다른 걸 채워도 되고.",
+			FULL = "빗물로 가득 찼어",
+			FULL_ICE = "이거 빼려면 고생 좀 하겠군",
+			DIRTY = "으, 물이 썩었잖아...",
+			DIRTY_ICE = "얼기까지 해버렸군...",
+		},
+
+		BUCKET_EMPTY = {
+			EMPTY = "물을 채울 수 있어. 물 말고 다른 걸 채워도 되고.",
+			FULL = "빗물로 가득 찼어",
+			FULL_ICE = "이거 빼려면 고생 좀 하겠군",
+			DIRTY = "으 물이 썩었잖아...",
+			DIRTY_ICE = "얼기까지 해버렸군...",
+		},
+
 		DESALINATOR =
 		{
 			EMPTY = "바닷물에서 물을 분리하는 건 과학이지.",
@@ -127,6 +149,16 @@ return {
 			BOILING_SHORT = "거의 다 끓었어!",
 			DONE = "물이 다 끓었어.",
 			STOP = "여전히 물이 더러워.",
+		},
+
+		CAMPDESALINATOR_ITEM = "이제 불만 있으면 돼.",
+		CAMPDESALINATOR =
+		{
+			GENERIC = "이것만으론 별 소용이 없어.",
+			BOILING_LONG = "좀 더 정수해야 해.",
+			BOILING_SHORT = "거의 다 됐어!",
+			DONE = "정수가 완료됐어.",
+			STOP = "여전히 물이 짜.",
 		},
 
 		KETTLE =
