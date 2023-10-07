@@ -35,6 +35,7 @@ end]]
 local Waterlevel = Class(function(self, inst)
     self.inst = inst
     self.consuming = false
+    self.isputoncetime = false
 
     self.maxwater = 0
     self.currentwater = 0
@@ -145,12 +146,12 @@ function Waterlevel:SetTakeWaterFn(fn)
 end
 
 function Waterlevel:UtilityCheck(boilier)
+    local canaccepting = true
     if self:GetWater() > 0 then
-        if self:IsFull() then
-            self.accepting = false
-        else
-            self.accepting = true
+        if self:IsFull() or self.isputoncetime then
+            canaccepting = false
         end
+        self.accepting = canaccepting
         if self.inst.components.water ~= nil then
             self.inst.components.water.available = true
         end
@@ -158,7 +159,7 @@ function Waterlevel:UtilityCheck(boilier)
             self.inst.components.watersource.available = true
         end
     else
-        self.accepting = true
+        self.accepting = canaccepting
         if self.inst.components.water ~= nil then
             self.inst.components.water.available = false
         end

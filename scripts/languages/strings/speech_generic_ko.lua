@@ -151,6 +151,16 @@ return {
 			STOP = "여전히 물이 더러워.",
 		},
 
+		CAMPDESALINATOR_ITEM = "이제 불만 있으면 돼.",
+		CAMPDESALINATOR =
+		{
+			GENERIC = "이것만으론 별 소용이 없어.",
+			BOILING_LONG = "좀 더 정수해야 해.",
+			BOILING_SHORT = "거의 다 됐어!",
+			DONE = "정수가 완료됐어.",
+			STOP = "여전히 물이 짜.",
+		},
+
 		KETTLE =
 		{
 			EMPTY = "보기만 해도 목이 말라.",
