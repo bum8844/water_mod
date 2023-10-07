@@ -94,26 +94,26 @@ return {
 
 		BUCKET_STEEL_EMPTY = {
 			EMPTY = "I can fill it with water. Or something else.",
-			FULL = "",
-			FULL_ICE = "",
-			DIRTY = "",
-			DIRTY_ICE = "",
+			FULL = "It's full of rainwater",
+			FULL_ICE = "It's going to be hard to take this out",
+			DIRTY = "Ugh, water has gone bad...",
+			DIRTY_ICE = "It's frozen...",
 		},
 
 		BUCKET_WOODIE_EMPTY = {
 			EMPTY = "I can fill it with water. Or something else.",
-			FULL = "",
-			FULL_ICE = "",
-			DIRTY = "",
-			DIRTY_ICE = "",
+			FULL = "It's full of rainwater",
+			FULL_ICE = "It's going to be hard to take this out",
+			DIRTY = "Ugh, water has gone bad...",
+			DIRTY_ICE = "It's frozen...",
 		},
 
 		BUCKET_EMPTY = {
 			EMPTY = "I can fill it with water. Or something else.",
-			FULL = "",
-			FULL_ICE = "",
-			DIRTY = "",
-			DIRTY_ICE = "",
+			FULL = "It's full of rainwater",
+			FULL_ICE = "It's going to be hard to take this out",
+			DIRTY = "Ugh, water has gone bad...",
+			DIRTY_ICE = "It's frozen...",
 		},
 
 		DESALINATOR =
