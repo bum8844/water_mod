@@ -152,6 +152,16 @@ return {
 			STOP = "",
 		},
 
+		CAMPDESALINATOR_ITEM = "",
+		CAMPDESALINATOR =
+		{
+			GENERIC = "",
+			BOILING_LONG = "",
+			BOILING_SHORT = "",
+			DONE = "",
+			STOP = "",
+		},
+
 		KETTLE =
 		{
 			EMPTY = "",

@@ -31,7 +31,7 @@ AddRecipe2("brewery",{Ingredient("boards",3),Ingredient("livinglog",3),Ingredien
 
 AddRecipe2("campkettle_item",{Ingredient("twigs",2),Ingredient("log",2),Ingredient("cutgrass",2)},TECH.NONE,{atlas = ModAtlas(), image = "campkettle.tex"},{"COOKING","LIGHT","HYDRATION"})
 
-AddRecipe2("campdesalinator_item",{Ingredient("goldnugget",1),Ingredient("rocks",2),Ingredient("minifan",2)},TECH.NONE,{atlas = ModAtlas(), image = "campkettle.tex"},{"COOKING","LIGHT","HYDRATION"})
+AddRecipe2("campdesalinator_item",{Ingredient("goldnugget",1),Ingredient("rocks",2),Ingredient("minifan",2)},TECH.NONE,{atlas = ModAtlas(), image = "campdesalinator.tex"},{"COOKING","LIGHT","HYDRATION"})
 
 AddRecipe2("kettle",{Ingredient("twigs",6),Ingredient("rope",2),Ingredient("charcoal",2)},TECH.SCIENCE_ONE,{placer = "kettle_placer", atlas = ModAtlas(), image = "kettle.tex"},{"COOKING","HYDRATION"})
 

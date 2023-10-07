@@ -27,7 +27,7 @@ local function onbuilt(inst)
     else
         inst:Hide()
         inst._type = inst.parent.prefab == "firepit" and "B" or "A"
-        inst.AnimState:SetBank("type_"..inst._type)
+        inst.AnimState:SetBank("campdesalinator_"..inst._type)
 
         inst:DoTaskInTime(0,function(inst)
             inst:Show()
@@ -75,7 +75,7 @@ end
 local function onstartboilingfn(inst)
     inst.AnimState:PlayAnimation("cooking_loop", true)
     inst.SoundEmitter:KillSound("snd")
-    inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_rattle", "snd")
+    inst.SoundEmitter:PlaySound("dontstarve/common/researchmachine_lvl1_idle_LP", "snd")
 end
     
 local function OnTakeWater(inst)
@@ -128,7 +128,7 @@ local function onload(inst, data)
     if data ~= nil then
         if data.pittype ~= nil then
             inst._type = data.pittype
-            inst.AnimState:SetBank("type_"..inst._type)
+            inst.AnimState:SetBank("campdesalinator_"..inst._type)
         end
     end
 end
@@ -156,7 +156,7 @@ local function fn()
     MakeInventoryPhysics(inst)
 
     inst.AnimState:SetBuild("campdesalinator")
-    inst.AnimState:SetBank("type_"..inst._type)
+    inst.AnimState:SetBank("campdesalinator_"..inst._type)
     inst.AnimState:PlayAnimation("idle_empty")
     inst.AnimState:OverrideSymbol("swap_meter", "campdesalinator_meter_water", "0")
 
@@ -210,6 +210,8 @@ end
 
 local function fn_item()
     local inst = CreateEntity()
+
+    inst.kettletype = "campdesalinator"
 
     inst.entity:AddTransform()
     inst.entity:AddAnimState()

@@ -21,7 +21,7 @@ local function install_kettle(inst, setkittle, no_built_callback)
 		else
 			inst._kettle._type = "A"
 		end
-		inst._kettle.AnimState:SetBank("type_"..inst._kettle._type)
+		inst._kettle.AnimState:SetBank(setkittle.."_"..inst._kettle._type)
 	end
 end
 
@@ -42,7 +42,7 @@ local function OnUpgrade(inst, performer, upgraded_from_item)
 	local modEnabled = _G.KnownModIndex:IsModEnabled("workshop-2334209327") or _G.KnownModIndex:IsModForceEnabled("workshop-2334209327")
 	local traderEnabled = inst.components.trader ~= nil and inst.components.trader.enabled
 	local item = upgraded_from_item.prefab
-	local setkittle = item == "campkettle_item" and "campkettle" or "campdesalinator"
+	local setkittle = upgraded_from_item.kettletype
 
 	if item == "campkettle_item" or "campdesalinator_item" then
 		if modEnabled then

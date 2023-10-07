@@ -151,6 +151,16 @@ return {
 			STOP = "It's still dirty.",
 		},
 
+		CAMPDESALINATOR_ITEM = "Now I just need a fire.",
+		CAMPDESALINATOR =
+		{
+			GENERIC = "It's no use of it alone.",
+			BOILING_LONG = "This is going to take a while to purified.",
+			BOILING_SHORT = "It's almost done!",
+			DONE = "It's all done purified.",
+			STOP = "It's still too salty.",
+		},
+
 		KETTLE =
 		{
 			EMPTY = "It makes me thirsty just to look at it.",
