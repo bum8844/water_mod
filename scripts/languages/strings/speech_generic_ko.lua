@@ -94,26 +94,26 @@ return {
 
 		BUCKET_STEEL_EMPTY = {
 			EMPTY = "물을 채울 수 있어. 물 말고 다른 걸 채워도 되고.",
-			FULL = "",
-			FULL_ICE = "",
-			DIRTY = "",
-			DIRTY_ICE = "",
+			FULL = "빗물로 가득 찼어",
+			FULL_ICE = "이거 빼려면 고생 좀 하겠군",
+			DIRTY = "으 물이 썩었잖아...",
+			DIRTY_ICE = "얼기까지 해버렸군...",
 		},
 
 		BUCKET_WOODIE_EMPTY = {
 			EMPTY = "물을 채울 수 있어. 물 말고 다른 걸 채워도 되고.",
-			FULL = "",
-			FULL_ICE = "",
-			DIRTY = "",
-			DIRTY_ICE = "",
+			FULL = "빗물로 가득 찼어",
+			FULL_ICE = "이거 빼려면 고생 좀 하겠군",
+			DIRTY = "으, 물이 썩었잖아...",
+			DIRTY_ICE = "얼기까지 해버렸군...",
 		},
 
 		BUCKET_EMPTY = {
 			EMPTY = "물을 채울 수 있어. 물 말고 다른 걸 채워도 되고.",
-			FULL = "",
-			FULL_ICE = "",
-			DIRTY = "",
-			DIRTY_ICE = "",
+			FULL = "빗물로 가득 찼어",
+			FULL_ICE = "이거 빼려면 고생 좀 하겠군",
+			DIRTY = "으 물이 썩었잖아...",
+			DIRTY_ICE = "얼기까지 해버렸군...",
 		},
 
 		DESALINATOR =

@@ -89,7 +89,7 @@ local function OnLoad(inst, data)
 	local numupgrades = inst.components.upgradeable.numupgrades
 	if numupgrades ~= 0 then
 		if data ~= nil and data.kettle ~= nil then
-			local setkittle = data.kettle.prefab
+			local setkittle = data.kettle.prefab or "campkettle"
 			install_kettle(inst, setkittle, true)
 			inst._kettle.components.waterlevel:InitializeWaterLevel(math.max(0, data.kettle.waterlevel))
 			inst._kettle.components.waterlevel:SetWaterType(data.kettle.watertype)
