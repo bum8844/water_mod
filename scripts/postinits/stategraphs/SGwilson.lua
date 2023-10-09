@@ -342,7 +342,7 @@ AddStategraphPostInit("wilson", function(sg)
         local function PlayMooseFootstep(inst, volume, ispredicted)
             --moose footstep always full volume
             inst.SoundEmitter:PlaySound("dontstarve/characters/woodie/moose/footstep", nil, nil, ispredicted)
-            PlayFootstep(inst, volume, ispredicted)
+            GLOBAL.PlayFootstep(inst, volume, ispredicted)
         end
 
         local function ConfigureRunState(inst)
@@ -360,13 +360,13 @@ AddStategraphPostInit("wilson", function(sg)
             elseif inst:HasTag("wereplayer") then
                 inst.sg.statemem.iswere = true
                 if inst:HasTag("weremoose") then
-                    if inst:HasTag("groggy") then
+                    if inst:HasTag("groggy") or inst:HasTag("drunk") then
                         inst.sg.statemem.moosegroggy = true
                     else
                         inst.sg.statemem.moose = true
                     end
                 elseif inst:HasTag("weregoose") then
-                    if inst:HasTag("groggy") then
+                    if inst:HasTag("groggy") or inst:HasTag("drunk") then
                         inst.sg.statemem.goosegroggy = true
                     else
                         inst.sg.statemem.goose = true
@@ -376,7 +376,7 @@ AddStategraphPostInit("wilson", function(sg)
                 else
                     inst.sg.statemem.normal = true
                 end
-            elseif inst:GetStormLevel() >= TUNING.SANDSTORM_FULL_LEVEL and not inst.components.playervision:HasGoggleVision() then
+            elseif inst:IsInAnyStormOrCloud() and not inst.components.playervision:HasGoggleVision() then
                 inst.sg.statemem.sandstorm = true
             elseif inst:HasTag("groggy") or inst:HasTag("drunk") then
                 inst.sg.statemem.groggy = true
@@ -472,8 +472,7 @@ AddStategraphPostInit("wilson", function(sg)
                     dofunny = false
                 else
                     inst.sg.statemem.ignoresandstorm = false
-                    if inst:GetStormLevel() >= TUNING.SANDSTORM_FULL_LEVEL
-                        and not inst.components.playervision:HasGoggleVision() then
+                    if inst:IsInAnyStormOrCloud() and not inst.components.playervision:HasGoggleVision() then
                         if not (inst.AnimState:IsCurrentAnimation("sand_walk_pst") or
                                 inst.AnimState:IsCurrentAnimation("sand_walk") or
                                 inst.AnimState:IsCurrentAnimation("sand_walk_pre")) then
