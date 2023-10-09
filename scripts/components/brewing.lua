@@ -297,7 +297,8 @@ function Brewing:Harvest(harvester)
 					harvester:PushEvent("learncookbookrecipe", {product = self.product, ingredients = self.ingredient_prefabs})
 				end
 
-                local stacksize = self.inst.components.waterlevel and self.inst.components.waterlevel:GetWater() or 1
+                local waterlevel = self.inst.components.waterlevel and self.inst.components.waterlevel:GetWater() or 1
+                local stacksize = math.ceil(waterlevel/3)
                 if stacksize > 1 then
                     loot.components.stackable:SetStackSize(stacksize)
                 end
