@@ -4,11 +4,27 @@ local SaveFileupgrades = require("savefileupgrades")
 
 local nextupdate = #SaveFileupgrades.upgrades + 1
 
+local function FlagForRetrofitting_Forest(savedata, flag_name)
+    if savedata ~= nil and savedata.map ~= nil and savedata.map.prefab == "forest" then
+        if savedata.map.persistdata == nil then
+            savedata.map.persistdata = {}
+        end
+
+        if savedata.map.persistdata.retrofitforestmap_anr == nil then
+            savedata.map.persistdata.retrofitforestmap_anr = {}
+        end
+        savedata.map.persistdata.retrofitforestmap_anr[flag_name] = true
+    end
+
+end
+
 SaveFileupgrades.upgrades[nextupdate] = {
-	version = SaveFileupgrades.VERSION,
+	version = SaveFileupgrades.VERSION + 0.000000001,
 	fn = function(savedata)
 		print("해당코드가 작동했습니다.")
-		FlagForRetrofitting_Forest(savedata, "retrofit_tree_tree")
-		FlagForRetrofitting_Forest(savedata, "retrofit_caffeinberry_bush")
-	end,
+	    FlagForRetrofitting_Forest(savedata, "retrofit_tea_tree")
+	    FlagForRetrofitting_Forest(savedata, "retrofit_caffeinberry_bush")
+	    FlagForRetrofitting_Forest(savedata, "retrofit_cutefuzzyanimals")
+		SaveFileupgrades.upgrades[nextupdate-1].fn(savedata)
+	end
 }

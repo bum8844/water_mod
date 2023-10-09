@@ -125,7 +125,7 @@ local oldonload = RetrofitForest.OnLoad
 
 function RetrofitForest:OnPostInit(...)
 
-	print("Retrofit Forest:OnPostInit", self.Retrofit_tree_tree, self.retrofit_caffeinberry_bush)
+	print("Retrofit Forest:OnPostInit tea tree : "..self.retrofit_tea_tree..", caffeinberry bush : "..self.retrofit_caffeinberry_bush)
 
 	if self.retrofit_tree_tree then
 		print ("Retrofitting for Tea Trees: Adding Tea Trees.")
