@@ -135,7 +135,10 @@ AddStategraphActionHandler("wilson_client", ActionHandler(ACTIONS.BREWING,
 
 AddStategraphPostInit("wilson_client", function(sg)
     do
-        local function DoEquipmentFoleySounds(inst)
+        local function isgroggy(inst)
+            return inst.components.grogginess and not inst.components.grogginess.isgroggy
+        end
+        --[[local function DoEquipmentFoleySounds(inst)
             local inventory = inst.replica.inventory
             if inventory ~= nil then
                 for k, v in pairs(inventory:GetEquips()) do
@@ -214,11 +217,17 @@ AddStategraphPostInit("wilson_client", function(sg)
                 or (inst.sg.statemem.careful and "careful_walk")
                 or (inst.sg.statemem.ridingwoby and "run_woby")
                 or "run"
-        end
+        end]]
 
         local _idle_onenter = sg.states["idle"].onenter
-        sg.states["idle"].onenter = function(inst, pushanim,...)    
+        sg.states["idle"].onenter = function(inst, pushanim,...)
             if inst:HasTag("drunk") then
+                inst:AddTag("groggy")
+            elseif isgroggy(inst) then 
+                inst:RemoveTag("groggy")
+            end
+            _idle_onenter(inst, pushanim,...)
+            --[[if inst:HasTag("drunk") then
                 inst.entity:SetIsPredictingMovement(false)
                 inst.components.locomotor:Stop()
                 inst.components.locomotor:Clear()
@@ -276,11 +285,17 @@ AddStategraphPostInit("wilson_client", function(sg)
                 end
             else
                 _idle_onenter(inst, pushanim,...)
-            end
+            end]]
         end
         local _run_start_onenter = sg.states["run_start"].onenter
         sg.states["run_start"].onenter = function(inst,...)
             if inst:HasTag("drunk") then
+                inst:AddTag("groggy")
+            elseif isgroggy(inst) then 
+                inst:RemoveTag("groggy")
+            end
+             _run_start_onenter(inst,...)
+            --[[if inst:HasTag("drunk") then
                 ConfigureRunState(inst)
                 if inst.sg.statemem.normalwonkey and inst.components.locomotor:GetTimeMoving() >= TUNING.WONKEY_TIME_TO_RUN then
                     inst.sg:GoToState("run_monkey") --resuming after brief stop from changing directions
@@ -291,11 +306,17 @@ AddStategraphPostInit("wilson_client", function(sg)
                 inst.sg.mem.footsteps = (inst.sg.statemem.goose or inst.sg.statemem.goosegroggy) and 4 or 0
                 else
                     _run_start_onenter(inst,...)
-                end
+                end]]
             end
         local _run_onenter = sg.states["run"].onenter
         sg.states["run"].onenter = function(inst,...)
             if inst:HasTag("drunk") then
+                inst:AddTag("groggy")
+            elseif isgroggy(inst) then 
+                inst:RemoveTag("groggy")
+            end
+            _run_onenter(inst,...)
+            --[[if inst:HasTag("drunk") then
                 ConfigureRunState(inst)
                 inst.components.locomotor:RunForward()
 
@@ -313,11 +334,17 @@ AddStategraphPostInit("wilson_client", function(sg)
                 inst.sg:SetTimeout(inst.AnimState:GetCurrentAnimationLength())
             else
                 _run_onenter(inst,...)
-            end
+            end]]
         end
         local _run_stop_onenter = sg.states["run_stop"].onenter
         sg.states["run_stop"].onenter = function(inst,...)
             if inst:HasTag("drunk") then
+                inst:AddTag("groggy")
+            elseif isgroggy(inst) then 
+                inst:RemoveTag("groggy")
+            end
+            _run_stop_onenter(inst,...)
+            --[[if inst:HasTag("drunk") then
                 ConfigureRunState(inst)
                 inst.components.locomotor:Stop()
                 inst.AnimState:PlayAnimation(GetRunStateAnim(inst).."_pst")
@@ -328,7 +355,7 @@ AddStategraphPostInit("wilson_client", function(sg)
                 end
             else
                 _run_stop_onenter(inst,...)
-            end
+            end]]
         end
     end
     local eater = sg.actionhandlers[ACTIONS.EAT].deststate
