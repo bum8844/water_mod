@@ -343,6 +343,7 @@ local function fn()
     inst.components.wateryprotection.protection_dist = TUNING.WATER_BARREL_DIST
 
     inst:AddComponent("brewing")
+    inst.components.brewing.reduce = TUNING.REDUCE_BREWERY
 	inst.components.brewing.onstartbrewing = startcookfn
 	inst.components.brewing.oncontinuebrewing = continuecookfn
 	inst.components.brewing.oncontinuedone = continuedonefn

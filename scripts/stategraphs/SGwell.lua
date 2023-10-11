@@ -180,6 +180,10 @@ local states =
 			if data.isnewwater then
 				inst:PushEvent("setwateramount")
 			end
+
+			if showanim == "_empty" then
+				inst.SoundEmitter:PlaySound("dontstarve/common/dust_blowaway")
+			end
 		end,
 
 	}
