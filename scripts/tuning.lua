@@ -75,6 +75,7 @@ water_tuning =
 
 	-- Sections
 	BREWERY_SECTIONS = 20,
+	REDUCE_BREWERY = 3,
 
 	-- Freezing & Thawing Water
 	WATER_MINTEMP = -10,
