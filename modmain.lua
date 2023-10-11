@@ -34,8 +34,14 @@ local mushrooms =
 	"moon_cap",
 }
 
+local ferment = {
+	"refined_dust",
+	"dragoonheart",
+}
+
 AddIngredientValues(mushrooms, {veggie = .5, mushroom = 1},true)
 AddIngredientValues(teaingredients, {veggie = .5, decoration = 1})
+AddIngredientValues(ferment, {ferment=1})
 
 AddIngredientValues({"tealeaves"}, {decoration = 1}, false, true)
 AddIngredientValues({"caffeinberry_bean"}, {fruit=.5}, true)
@@ -44,6 +50,7 @@ AddIngredientValues({"tea_seed_cooked"}, {seed=1})
 
 AddIngredientValues({"beefalo_milk"}, {milk=1, dairy=.5})
 AddIngredientValues({"goatmilk"}, {milk=1, dairy=1})
+AddIngredientValues({"dragoonheart"}, {meat=1,monster=1})
 
 AddReplicableComponent("thirst")
 AddReplicableComponent("waterlevel")

@@ -7,9 +7,23 @@ local function ModAtlas()
   return "images/tea_inventoryitem.xml"
 end
 
+local HOF = false
+local AI = false
+
+for k,v in ipairs(GLOBAL.KnownModIndex:GetModsToLoad()) do 
+	local Mod = GLOBAL.KnownModIndex:GetModInfo(v).name
+	if Mod == "Heap of Foods" then -- workshop-2334209327
+		HOF = true
+	end
+	if Mod == "Island Adventures - Shipwrecked" or Mod == "岛屿冒险" then -- workshop-1467214795
+		AI = true
+	end
+end
+
+
 AddRecipeFilter({name = "HYDRATION", atlas = ModAtlas, image = "hydration.tex", custom_pos=nil, recipes=nil,},nil)
 
-if not (GLOBAL.KnownModIndex:IsModEnabled("workshop-2334209327") or GLOBAL.KnownModIndex:IsModForceEnabled("workshop-2334209327")) then
+if HOF then
 	AddRecipePostInit("fertilizer",function(v) v.ingredients = {Ingredient("poop", 3), Ingredient("boneshard", 2), Ingredient("bucket_empty", 1, ModAtlas(), nil,"bucket_empty.tex")} end)
 	AddRecipe2("bucket_empty",{Ingredient("log",4)},TECH.NONE,{atlas = ModAtlas(), image = "bucket_empty.tex"},{"HYDRATION","TOOLS"})
 else
@@ -50,3 +64,40 @@ AddRecipe2("well_sprinkler_kit",{Ingredient("marble",4),Ingredient("moonglass",1
 AddDeconstructRecipe("well", {Ingredient("boards",2),Ingredient("cutstone",6)})
 
 AddDeconstructRecipe("well_sprinkler", {Ingredient("marble",4),Ingredient("moonglass",1),Ingredient("townportaltalisman",2),Ingredient("gears",1)})
+
+if AI then
+
+	AddRecipePostInit("bucket_steel_empty", function(recipe)
+	  local ingredient = recipe:FindAndConvertIngredient("steelwool")
+	  if ingredient then
+	      ingredient:AddDictionaryPrefab("needlespear")
+	  end
+	end)
+
+	AddRecipePostInit("well_sprinkler_kit", function(recipe)
+	  local ingredient = recipe:FindAndConvertIngredient("marble")
+	  if ingredient then
+	      ingredient:AddDictionaryPrefab("limestonenugget")
+	  end
+	  local ingredient = recipe:FindAndConvertIngredient("moonglass")
+	  if ingredient then
+	      ingredient:AddDictionaryPrefab("ia_messagebottleempty")
+	  end
+	  local ingredient = recipe:FindAndConvertIngredient("townportaltalisman")
+	  if ingredient then
+	      ingredient:AddDictionaryPrefab("dragoonheart")
+	  end
+	end)
+
+	AddRecipePostInit("well_drilling_item", function(recipe)
+	  local ingredient = recipe:FindAndConvertIngredient("trinket_6")
+	  if ingredient then
+	      ingredient:AddDictionaryPrefab("tar")
+	  end
+	  local ingredient = recipe:FindAndConvertIngredient("steelwool")
+	  if ingredient then
+	      ingredient:AddDictionaryPrefab("needlespear")
+	  end
+	end)
+
+end
