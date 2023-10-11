@@ -30,10 +30,10 @@ local function alcahol(inst, eater)
 end
 
 local function notmeat(tags)
-	return not (tags.meat or tags.egg)
+	return not (tags.fish or tags.jellyfish or tags.meat or tags.egg or tags.boss or tags.poop or tags.elemental or tags.paper or tags.horn or tags.spotspice or tags.gears or tags.rabbit or tags.beanbug or tags.gummybug or tags.flour or tags.bread or tags.chocolate)
 end
 
-local function ressthing(names)
+local function lessthing(names)
 	return ((names.twigs or 0) <= 1)
 end
 
@@ -41,12 +41,51 @@ local function notname(names)
 	return not names.boneshard
 end
 
+local function blocking_thing_rainbowjellyfish(names ,tags)
+	return not (tags.meat or tags.egg or tags.boss or tags.poop or tags.elemental or tags.paper or tags.horn or tags.spotspice or tags.gears or tags.rabbit or tags.beanbug or tags.gummybug or tags.flour or tags.bread or tags.chocolate)
+end
+
+local function onlyrainbowjellyfish(names, tags)
+	local rainbowjellyfish = names.rainbowjellyfish or 0
+	local rainbowjellyfish_dead = (names.rainbowjellyfish_cooked or 0) + (names.rainbowjellyfish_cooked or 0)
+
+	local totalblock = tags.fish or 0
+
+	local totalignore = math.max(0,(totalblock - (rainbowjellyfish+rainbowjellyfish_dead)))
+
+	if blocking_thing_rainbowjellyfish(names ,tags) and totalignore <= 0 then
+		return 1
+	end 
+	return false
+end
+
+local function blocking_thing_dragoonheart(names ,tags)
+	return not (tags.jellyfish or tags.fish or tags.egg or tags.boss or tags.poop or tags.elemental or tags.paper or tags.horn or tags.spotspice or tags.gears or tags.rabbit or tags.beanbug or tags.gummybug or tags.flour or tags.bread or tags.chocolate)
+end
+
+local function onlydragoonheart(names, tags)
+	local dragoonheart = names.dragoonheart or 0
+
+	local totalblock = tags.meat or 0
+
+	local totalignore = math.max(0,(totalblock - dragoonheart))
+
+	if blocking_thing_dragoonheart(names ,tags) and totalignore <= 0 then
+		return 1
+	end 
+	return false
+end
+
+local function quantum_calc(names, tags)
+	return (names.wormlight or names.rainbowjellyfish) and onlyrainbowjellyfish(names, tags)
+end
+
 local drinks =
 {
 	-- 탄산수 만들때 필수적으로 refined_dust 첨가
 	soda =
 	{
-		test = function(boilier, names, tags) return names.refined_dust and names.refined_dust >= 1 and notmeat(tags) end,
+		test = function(boilier, names, tags) return tags.ferment and onlydragoonheart(names, tags) end,
 		priority = 0,
 		health = TUNING.HEALING_TINY/2,
 		hunger = TUNING.CALORIES_TINY/2,
@@ -62,7 +101,7 @@ local drinks =
 	
 	fruitsoda =
 	{
-		test = function(boilier, names, tags) return names.refined_dust and names.refined_dust >= 1 and tags.fruit and tags.fruit >= 1 and notmeat(tags) and notname(names) and ressthing(names) end,
+		test = function(boilier, names, tags) return tags.ferment and tags.ferment >= 1 and tags.fruit and tags.fruit >= 1 and onlydragoonheart(names, tags) and notname(names) and lessthing(names) end,
 		priority = 2,
 		health = TUNING.HEALING_MEDSMALL/4,
 		hunger = TUNING.CALORIES_SMALL/4,
@@ -77,7 +116,7 @@ local drinks =
 	
 	lemonlimesoda =
 	{
-		test = function(boilier, names, tags) return names.refined_dust and names.refined_dust >= 1 and names.royal_jelly and names.royal_jelly >=1 and notmeat(tags) and notname(names) and ressthing(names) end,
+		test = function(boilier, names, tags) return tags.ferment and tags.ferment >= 1 and names.royal_jelly and names.royal_jelly >=1 and onlydragoonheart(names, tags) and notname(names) and lessthing(names) end,
 		priority = 3,
 		health = TUNING.HEALING_MED/4,
 		hunger = TUNING.CALORIES_MEDSMALL/4,
@@ -100,7 +139,7 @@ local drinks =
 	
 	cola =
 	{
-		test = function(boilier, names, tags) return (( names.caffeinberry_bean_cooked or 0 ) + ( names.kyno_coffeebeans_cooked or 0 ) + ( names.mfp_coffeecherry_cooked or 0 ) >= 1) and names.refined_dust and names.refined_dust >= 1 and names.royal_jelly and names.royal_jelly >= 1 and notmeat(tags) and notname(names) end,
+		test = function(boilier, names, tags) return (( names.caffeinberry_bean_cooked or 0 ) + ( names.kyno_coffeebeans_cooked or 0 ) + ( names.mfp_coffeecherry_cooked or 0 ) >= 1) and tags.ferment and tags.ferment >= 1 and names.royal_jelly and names.royal_jelly >= 1 and onlydragoonheart(names, tags) and notname(names) end,
 		priority = 4,
 		health = (TUNING.HEALING_MED/2)/4,
 		hunger = TUNING.CALORIES_MEDSMALL/4,
@@ -121,7 +160,7 @@ local drinks =
 	
 	colaquantum =
 	{
-		test = function(boilier, names, tags) return names.wormlight and (( names.caffeinberry_bean_cooked or 0 ) + ( names.kyno_coffeebeans_cooked or 0 ) == 1) and names.refined_dust and names.royal_jelly and notmeat(tags) end,
+		test = function(boilier, names, tags) return quantum_calc(names, tags) and (( names.caffeinberry_bean_cooked or 0 ) + ( names.kyno_coffeebeans_cooked or 0 ) + ( names.mfp_coffeecherry_cooked or 0) == 1) and tags.ferment and tags.ferment == 1 and onlydragoonheart(names, tags) end,
 		priority = 5,
 		health = TUNING.HEALING_SUPERHUGE,
 		hunger = TUNING.CALORIES_HUGE,
@@ -243,7 +282,7 @@ local drinks =
 	
 	sparklingwine =
 	{
-		test = function(boilier, names, tags) return (( names.berries or 0 ) + ( names.berries_juicy or 0 ) >= 2) and names.refined_dust and names.refined_dust >= 1 and notmeat(tags) and notname(names) end,
+		test = function(boilier, names, tags) return (( names.berries or 0 ) + ( names.berries_juicy or 0 ) >= 2) and tags.ferment and tags.ferment >= 1 and onlydragoonheart(names, tags) and notname(names) end,
 		priority = 3,
 		health = (TUNING.HEALING_SMALL*2)/2,
 		hunger = TUNING.CALORIES_MEDSMALL/2,
@@ -264,7 +303,7 @@ local drinks =
 	-- 발광 베리류
 	glowberrywine =
 	{
-		test = function(boilier, names, tags) return (( names.wormlight or 0 ) + ( names.wormlight_lesser or 0 ) >= 3) and notmeat(tags) and notname(names) end,
+		test = function(boilier, names, tags) return ((names.wormlight or 0) + (names.rainbowjellyfish or 0) + (names.wormlight_lesser or 0) + (names.rainbowjellyfish_cooked or 0) + (names.rainbowjellyfish_dead or 0) >= 3) and onlyrainbowjellyfish(names, tags) and notname(names) end,
 		priority = 1,
 		health = 0,
 		hunger = TUNING.CALORIES_MEDSMALL/2,
