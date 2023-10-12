@@ -1,3 +1,15 @@
+local _G = GLOBAL
+local TECH = _G.TECH
+local Ingredient = _G.Ingredient
+
+local function ModAtlas()
+  return "images/tea_inventoryitem.xml"
+end
+
+AddRecipePostInit("fertilizer",function(v) v.ingredients = {Ingredient("poop", 3), Ingredient("boneshard", 2), Ingredient("kyno_bucket_empty", 1, ModAtlas(), nil,"bucket_empty.tex")} end)
+AddRecipePostInit("kyno_bucket_empty",function(v) v.ingredients = {Ingredient("log",4)} v.level = TECH.NONE end)
+AddRecipeToFilter("kyno_bucket_empty","HYDRATION")
+
 local function SetTemperature(inst)
     local isfrozen = inst.components.wateringtool:IsFrozen()
 
@@ -65,7 +77,7 @@ local function OnPickup(inst, doer)
 end
 
 local function CanGetWater(inst, doer)
-    if inst.components.wateringtool:GetWater() ~= WATERTYPE.EMPTY then
+    if inst.components.wateringtool:IsFull() then
         OnPickup(inst, doer)
     else
         if inst.components.wateringtool:IsTask() then
@@ -107,8 +119,8 @@ end
 local function SetState(inst)
     local isfrozen = inst.components.wateringtool:IsFrozen()
     local watertype = inst.components.wateringtool:GetWater()
-    local wateranim = watertype ~= WATERTYPE.EMPTY and ( watertype == WATERTYPE.CLEAN and "full" or "dirty" ) or nil
-    local sound = watertype ~= WATERTYPE.EMPTY and ( watertype == WATERTYPE.CLEAN and "dontstarve/creatures/pengull/splash" or nil) or "dontstarve/common/dust_blowaway"
+    local wateranim = watertype ~= nil and ( watertype == WATERTYPE.CLEAN and "full" or "dirty" ) or "empty"
+    local sound = wateranim ~= "empty" and ( wateranim == "full" and "dontstarve/creatures/pengull/splash" or "") or "dontstarve/common/dust_blowaway"
 
     if isfrozen then
         if inst.AnimState:IsCurrentAnimation("ice") then
@@ -128,8 +140,8 @@ local function SetState(inst)
         return true
     end
 
-    inst.AnimState:PlayAnimation(wateranim or "empty")
-    if sound then
+    inst.AnimState:PlayAnimation(wateranim)
+    if sound ~= "" then
         inst.SoundEmitter:PlaySound(sound)
     end
 end
