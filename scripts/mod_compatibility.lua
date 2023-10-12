@@ -8,6 +8,7 @@ for k,v in ipairs(GLOBAL.KnownModIndex:GetModsToLoad()) do
 	end
 	if Mod == "Island Adventures - Shipwrecked" or Mod == "岛屿冒险" then -- workshop-1467214795
 		modrequire("modcompats/water_spicedfoods_mod_ia")
+		modrequire("modcompats/init_ia")
 	end 
 	if Mod == "󰀕 Uncompromising Mode" then -- workshop-2039181790
 		modrequire("modcompats/water_spicedfoods_mod_unc")
