@@ -8,6 +8,7 @@ return {
 	"barrel",
 	"brewery",
 	"campkettle",
+	"campdesalinator",
 	"desalinator",
 	"kettle",
 	"portablekettle",

@@ -56,6 +56,7 @@ water_tuning =
 
 	-- Maximum Amount of Water
 	CUP_MAX_LEVEL = 1,
+	WATERINGCAN_PER_WATER = 20,
 	BUCKET_MAX_LEVEL = bucket_max_level*10,
 	BUCKET_LEVEL_PER_USE = bucket_max_level,
 
@@ -74,6 +75,7 @@ water_tuning =
 
 	-- Sections
 	BREWERY_SECTIONS = 20,
+	REDUCE_BREWERY = 3,
 
 	-- Freezing & Thawing Water
 	WATER_MINTEMP = -10,

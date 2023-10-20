@@ -7,14 +7,21 @@ local function ModAtlas()
   return "images/tea_inventoryitem.xml"
 end
 
+local NOHOF = true
+
+for k,v in ipairs(GLOBAL.KnownModIndex:GetModsToLoad()) do 
+	local Mod = GLOBAL.KnownModIndex:GetModInfo(v).name
+	if Mod == "Heap of Foods" then -- workshop-2334209327
+		NOHOF = false
+	end
+end
+
+
 AddRecipeFilter({name = "HYDRATION", atlas = ModAtlas, image = "hydration.tex", custom_pos=nil, recipes=nil,},nil)
 
-if not (GLOBAL.KnownModIndex:IsModEnabled("workshop-2334209327") or GLOBAL.KnownModIndex:IsModForceEnabled("workshop-2334209327")) then
+if NOHOF then
 	AddRecipePostInit("fertilizer",function(v) v.ingredients = {Ingredient("poop", 3), Ingredient("boneshard", 2), Ingredient("bucket_empty", 1, ModAtlas(), nil,"bucket_empty.tex")} end)
 	AddRecipe2("bucket_empty",{Ingredient("log",4)},TECH.NONE,{atlas = ModAtlas(), image = "bucket_empty.tex"},{"HYDRATION","TOOLS"})
-else
-	AddRecipePostInit("kyno_bucket_empty",function(v) v.ingredients = {Ingredient("log",4)} v.level = TECH.NONE end)
-	AddRecipeToFilter("kyno_bucket_empty","HYDRATION")	
 end
 
 AddRecipeToFilter("refined_dust","HYDRATION")
@@ -30,6 +37,8 @@ AddRecipe2("barrel",{Ingredient("boards",2),Ingredient("rope",3),Ingredient("cha
 AddRecipe2("brewery",{Ingredient("boards",3),Ingredient("livinglog",3),Ingredient("rope",3),Ingredient("cutstone",6),Ingredient("goldnugget",4)},TECH.SCIENCE_TWO,{placer = "brewery_placer", atlas = ModAtlas(), image = "brewery.tex"},{"COOKING","HYDRATION"})
 
 AddRecipe2("campkettle_item",{Ingredient("twigs",2),Ingredient("log",2),Ingredient("cutgrass",2)},TECH.NONE,{atlas = ModAtlas(), image = "campkettle.tex"},{"COOKING","LIGHT","HYDRATION"})
+
+AddRecipe2("campdesalinator_item",{Ingredient("flint",2),Ingredient("cutstone",1),Ingredient("minifan",2)},TECH.SCIENCE_ONE,{atlas = ModAtlas(), image = "campdesalinator.tex"},{"COOKING","LIGHT","HYDRATION"})
 
 AddRecipe2("kettle",{Ingredient("twigs",6),Ingredient("rope",2),Ingredient("charcoal",2)},TECH.SCIENCE_ONE,{placer = "kettle_placer", atlas = ModAtlas(), image = "kettle.tex"},{"COOKING","HYDRATION"})
 

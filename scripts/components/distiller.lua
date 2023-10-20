@@ -22,7 +22,7 @@ local Distiller = Class(function(self,inst)
 
 local function control(inst, self)
 	if self.inst.components.waterlevel ~= nil then
-		if not self.inst.components.waterlevel:IsFull() then
+		if not self.inst.components.waterlevel:IsFull() and not self.inst.components.waterlevel.isputoncetime then
 			self.inst.components.waterlevel.accepting = true
 		end
 	end

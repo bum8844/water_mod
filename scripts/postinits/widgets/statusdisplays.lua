@@ -35,19 +35,37 @@ local function thirstbadge_statusdisplays(self)
 		if Mod == "Combined Status" then 
 			AlwaysOnStatus = true
 		end
-		if Mod == "[DST]Musha" then
+		--[[if Mod == "[DST]Musha" then
 			Musha_Mod = true
-		end
+		end]]
 	end
 
+	local waterbadgex = -40
+	local waterbadgey = 20
+
+	local hungerbadgex = -120
+	local hungerbadgey = 20
+
 	if AlwaysOnStatus then
-		self.waterstomach:SetPosition(62, -115)
-	elseif Musha_Mod and self.owner:HasTag("musha") then
-		self.waterstomach:SetPosition(0, -105, 0)
+
+		waterbadgex = -62
+		waterbadgey = 35
+
+		hungerbadgex = -124
+		hungerbadgey = 35
+	--[[elseif Musha_Mod and self.owner:HasTag("musha") then
+		hudx = 0
+		hudy = -105]]
 	else
-		self.waterstomach:SetPosition(-80, -40, 0)
+		local character = self.owner.prefab
+		if character == "wolfgang" then
+			self.mightybadge:SetPosition(-80, -115, 0)
+		end
 	end
 	
+	self.waterstomach:SetPosition(waterbadgex, waterbadgey, 0)
+	self.stomach:SetPosition(hungerbadgex, hungerbadgey, 0)
+
 	self.onthirstdelta = nil
 	self.watertask = nil
 

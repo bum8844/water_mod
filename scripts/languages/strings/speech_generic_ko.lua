@@ -94,26 +94,26 @@ return {
 
 		BUCKET_STEEL_EMPTY = {
 			EMPTY = "물을 채울 수 있어. 물 말고 다른 걸 채워도 되고.",
-			FULL = "",
-			FULL_ICE = "",
-			DIRTY = "",
-			DIRTY_ICE = "",
+			FULL = "빗물로 가득 찼어",
+			FULL_ICE = "이거 빼려면 고생 좀 하겠군",
+			DIRTY = "으 물이 썩었잖아...",
+			DIRTY_ICE = "얼기까지 해버렸군...",
 		},
 
 		BUCKET_WOODIE_EMPTY = {
 			EMPTY = "물을 채울 수 있어. 물 말고 다른 걸 채워도 되고.",
-			FULL = "",
-			FULL_ICE = "",
-			DIRTY = "",
-			DIRTY_ICE = "",
+			FULL = "빗물로 가득 찼어",
+			FULL_ICE = "이거 빼려면 고생 좀 하겠군",
+			DIRTY = "으, 물이 썩었잖아...",
+			DIRTY_ICE = "얼기까지 해버렸군...",
 		},
 
 		BUCKET_EMPTY = {
 			EMPTY = "물을 채울 수 있어. 물 말고 다른 걸 채워도 되고.",
-			FULL = "",
-			FULL_ICE = "",
-			DIRTY = "",
-			DIRTY_ICE = "",
+			FULL = "빗물로 가득 찼어",
+			FULL_ICE = "이거 빼려면 고생 좀 하겠군",
+			DIRTY = "으 물이 썩었잖아...",
+			DIRTY_ICE = "얼기까지 해버렸군...",
 		},
 
 		DESALINATOR =
@@ -149,6 +149,16 @@ return {
 			BOILING_SHORT = "거의 다 끓었어!",
 			DONE = "물이 다 끓었어.",
 			STOP = "여전히 물이 더러워.",
+		},
+
+		CAMPDESALINATOR_ITEM = "이제 불만 있으면 돼.",
+		CAMPDESALINATOR =
+		{
+			GENERIC = "이것만으론 별 소용이 없어.",
+			BOILING_LONG = "좀 더 정수해야 해.",
+			BOILING_SHORT = "거의 다 됐어!",
+			DONE = "정수가 완료됐어.",
+			STOP = "여전히 물이 짜.",
 		},
 
 		KETTLE =

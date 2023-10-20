@@ -147,8 +147,12 @@ local function IsFlower_Cactus(names, tags)
 end
 
 --bum:꽃다랑어만 들어 갔는지 확인해주는 코드
-local function blocking_thing(names ,tags)
-	return not (tags.egg or tags.boss or tags.poop or tags.elemental or tags.paper or tags.horn or tags.spotspice or tags.gears or tags.rabbit or tags.beanbug or tags.gummybug or tags.flour or tags.bread or tags.chocolate)
+local function blocking_thing_bloomfintuna(names ,tags)
+	return not (tags.egg or tags.boss or tags.poop or tags.elemental or tags.paper or tags.horn or tags.spotspice or tags.gears or tags.rabbit or tags.beanbug or tags.gummybug or tags.flour or tags.bread or tags.chocolate or tags.jellyfish)
+end
+
+local function blocking_thing_rainbowjellyfish(names ,tags)
+	return not (tags.meat or tags.egg or tags.boss or tags.poop or tags.elemental or tags.paper or tags.horn or tags.spotspice or tags.gears or tags.rabbit or tags.beanbug or tags.gummybug or tags.flour or tags.bread or tags.chocolate)
 end
 
 local function onlybloomfintuna(names ,tags)
@@ -158,8 +162,26 @@ local function onlybloomfintuna(names ,tags)
 
 	local totalignore = math.max(0,(totalblock - (bloomfintuna)))
 
-	if blocking_thing(names ,tags) and totalignore <= 0 and bloomfintuna > 0 then
+	if blocking_thing_bloomfintuna(names ,tags) and totalignore <= 0 and bloomfintuna > 0 then
 		return bloomfintuna
+	end 
+	return false
+end
+
+local function glow_calc(names, tags)
+	return ((names.wormlight or names.rainbowjellyfish) or ((names.wormlight_lesser or names.rainbowjellyfish_cooked or names.rainbowjellyfish_dead) and ((names.wormlight_lesser or 0) + (names.rainbowjellyfish_cooked or 0) + (names.rainbowjellyfish_dead or 0) >= 2)))
+end
+
+local function onlyrainbowjellyfish(names, tags)
+	local rainbowjellyfish = names.rainbowjellyfish or 0
+	local rainbowjellyfish_dead = (names.rainbowjellyfish_cooked or 0) + (names.rainbowjellyfish_cooked or 0)
+
+	local totalblock = tags.fish or 0
+
+	local totalignore = math.max(0,(totalblock - (rainbowjellyfish+rainbowjellyfish_dead)))
+
+	if blocking_thing_rainbowjellyfish(names ,tags) and totalignore <= 0 then
+		return 1
 	end 
 	return false
 end
@@ -185,10 +207,10 @@ local function IsFlower_Lotus(names, tags)
 end
 
 local function notmeat(tags)
-	return not (tags.fish or tags.meat or tags.egg or tags.boss or tags.poop or tags.elemental or tags.paper or tags.horn or tags.spotspice or tags.gears or tags.rabbit or tags.beanbug or tags.gummybug or tags.flour or tags.bread or tags.chocolate)
+	return not (tags.fish or tags.jellyfish or tags.meat or tags.egg or tags.boss or tags.poop or tags.elemental or tags.paper or tags.horn or tags.spotspice or tags.gears or tags.rabbit or tags.beanbug or tags.gummybug or tags.flour or tags.bread or tags.chocolate)
 end
 
-local function ressthing(names)
+local function lessthing(names)
 	return ((names.twigs or 0) <= 1)
 end
 
@@ -218,7 +240,7 @@ local drinks =
 	
 	berries_juice = --베리주스
 	{
-		test = function(boilier, names, tags) return (names.berries or  names.berries_cooked or names.berries_juicy or names.berries_juicy_cooked) and tags.fruit and Preference(names, tags) and not tags.veggie and notmeat(tags) and notname(names) and ressthing(names) end,
+		test = function(boilier, names, tags) return (names.berries or  names.berries_cooked or names.berries_juicy or names.berries_juicy_cooked) and tags.fruit and Preference(names, tags) and not tags.veggie and notmeat(tags) and notname(names) and lessthing(names) end,
 		priority = 0,
 		health = TUNING.HEALING_MEDSMALL/4,
 		hunger = TUNING.DRINK_CALORIES/5, --1
@@ -233,7 +255,7 @@ local drinks =
 
 	fruitjuice =
 	{
-		test = function(boilier, names, tags) return tags.fruit and tags.fruit >= 3 and Preference(names, tags) and not tags.veggie and notmeat(tags) and notname(names) and ressthing(names) end,
+		test = function(boilier, names, tags) return tags.fruit and tags.fruit >= 3 and Preference(names, tags) and not tags.veggie and notmeat(tags) and notname(names) and lessthing(names) end,
 		priority = 1,
 		health = TUNING.HEALING_MED/4,
 		hunger = TUNING.DRINK_CALORIES/2,
@@ -247,7 +269,7 @@ local drinks =
 
 	banana_juice =
 	{
-		test = function(boilier, names, tags) return (names.cave_banana or names.cave_banana_cooked) and tags.fruit and Preference(names, tags) and not tags.veggie and notmeat(tags) and notname(names) and ressthing(names) end,
+		test = function(boilier, names, tags) return (names.cave_banana or names.cave_banana_cooked) and tags.fruit and Preference(names, tags) and not tags.veggie and notmeat(tags) and notname(names) and lessthing(names) end,
 		priority = 2,
 		health = TUNING.HEALING_LARGE/4,
 		hunger = TUNING.CALORIES_TINY/4,
@@ -261,7 +283,7 @@ local drinks =
 
 	pomegranate_juice =
 	{
-		test = function(boilier, names, tags) return (names.pomegranate or names.pomegranate_cooked) and tags.fruit and Preference(names, tags) and not tags.veggie and notmeat(tags) and notname(names) and ressthing(names) end,
+		test = function(boilier, names, tags) return (names.pomegranate or names.pomegranate_cooked) and tags.fruit and Preference(names, tags) and not tags.veggie and notmeat(tags) and notname(names) and lessthing(names) end,
 		priority = 2,
 		health = TUNING.HEALING_HUGE/4,
 		hunger = TUNING.DRINK_CALORIES/4,
@@ -275,7 +297,7 @@ local drinks =
 	
 	fig_juice =
 	{
-		test = function(boilier, names, tags) return (names.fig or names.fig_cooked) and tags.fruit and Preference(names, tags) and not tags.veggie and notmeat(tags) and notname(names) and ressthing(names) end,
+		test = function(boilier, names, tags) return (names.fig or names.fig_cooked) and tags.fruit and Preference(names, tags) and not tags.veggie and notmeat(tags) and notname(names) and lessthing(names) end,
 		priority = 3,
 		health = TUNING.HEALING_MOREHUGE/4,
 		hunger = TUNING.DRINK_CALORIES/2,
@@ -289,7 +311,7 @@ local drinks =
 	
 	dragonjuice =
 	{
-		test = function(boilier, names, tags) return (names.dragonfruit or names.dragonfruit_cooked) and tags.fruit and Preference(names, tags) and not tags.veggie and notmeat(tags) and notname(names) and ressthing(names) end,
+		test = function(boilier, names, tags) return (names.dragonfruit or names.dragonfruit_cooked) and tags.fruit and Preference(names, tags) and not tags.veggie and notmeat(tags) and notname(names) and lessthing(names) end,
 		priority = 2,
 		health = TUNING.HEALING_MEDLARGE/4,
 		hunger = TUNING.CALORIES_LARGE/4,
@@ -303,7 +325,7 @@ local drinks =
 	
 	glowberryjuice =
 	{
-		test = function(boilier, names, tags) return ((names.wormlight and names.wormlight >= 2) or (names.wormlight_lesser and names.wormlight_lesser >= 3)) and (Preference(names, tags) >= 0.5) and not tags.veggie and notmeat(tags) and notname(names) end,
+		test = function(boilier, names, tags) return glow_calc(names, tags) and onlyrainbowjellyfish(names, tags) and (Preference(names, tags) >= 0.5) and not tags.veggie and notname(names) and lessthing(names) end,
 		priority = 4,
 		health = TUNING.HEALING_MEDSMALL/4,
 		hunger = TUNING.DRINK_CALORIES/5,
@@ -365,7 +387,7 @@ local drinks =
 	
 	carrot_tea =
 	{
-		test = function(boilier, names, tags) return (names.carrot or names.carrot_cooked) and tags.veggie and Preference(names, tags) and not tags.fruit and notmeat(tags) and notname(names) and ressthing(names) end,
+		test = function(boilier, names, tags) return (names.carrot or names.carrot_cooked) and tags.veggie and Preference(names, tags) and not tags.fruit and notmeat(tags) and notname(names) and lessthing(names) end,
 		priority = 1,
 		health = (TUNING.HEALING_SMALL*1.5)/4,
 		hunger = TUNING.DRINK_CALORIES/5,
@@ -380,7 +402,7 @@ local drinks =
 
 	veggie_tea =
 	{
-		test = function(boilier, names, tags) return tags.veggie and not tags.lotus and Preference(names, tags) and notmeat(tags) and notname(names) and ressthing(names) end,
+		test = function(boilier, names, tags) return tags.veggie and not tags.lotus and Preference(names, tags) and notmeat(tags) and notname(names) and lessthing(names) end,
 		priority = 0,
 		health = (TUNING.HEALING_SMALL*2)/4,
 		hunger = TUNING.DRINK_CALORIES/4,
@@ -404,7 +426,7 @@ local drinks =
 	
 	cactus_tea =
 	{
-		test = function(boilier, names, tags) return (names.cactus_meat or names.cactus_meat_cooked or names.aloe or names.aloe_cooked or names.kyno_aloe or names.kyno_aloe_cooked or names.mfp_aloe or names.mfp_aloe_cooked ) and tags.veggie and Preference(names, tags) and not tags.fruit and notmeat(tags) and notname(names) and ressthing(names) end,
+		test = function(boilier, names, tags) return (names.cactus_meat or names.cactus_meat_cooked or names.aloe or names.aloe_cooked or names.kyno_aloe or names.kyno_aloe_cooked or names.mfp_aloe or names.mfp_aloe_cooked ) and tags.veggie and Preference(names, tags) and not tags.fruit and notmeat(tags) and notname(names) and lessthing(names) end,
 		priority = 1,
 		health = (TUNING.HEALING_SMALL*2)/4,
 		hunger = TUNING.DRINK_CALORIES/2,
@@ -467,7 +489,7 @@ local drinks =
 	-- 꽃을 섞으면 나오는 결과물
 	mixflower =
 	{
-		test = function(boilier, names, tags) return Mix_Tea_Patch(names, tags) and notmeat(tags) and notname(names) and ressthing(names) end,
+		test = function(boilier, names, tags) return Mix_Tea_Patch(names, tags) and notmeat(tags) and notname(names) and lessthing(names) end,
 		priority = 0,
 		health = TUNING.HEALING_TINY/4,
 		hunger = 0,
@@ -482,7 +504,7 @@ local drinks =
 	
 	greentea =
 	{
-		test = function(boilier, names, tags) return IsTealeaves(names, tags) and notmeat(tags) and notname(names) and ressthing(names) end,
+		test = function(boilier, names, tags) return IsTealeaves(names, tags) and notmeat(tags) and notname(names) and lessthing(names) end,
 		priority = 1,
 		health = TUNING.HEALING_TINY/4,
 		hunger = 0,
@@ -497,7 +519,7 @@ local drinks =
 	-- 녹차 건조대 말린것
 	blacktea =
 	{
-		test = function(boilier, names, tags) return IsTealeaves_dried(names, tags) and not tags.frozen and notmeat(tags) and notname(names) and ressthing(names) end,
+		test = function(boilier, names, tags) return IsTealeaves_dried(names, tags) and not tags.frozen and notmeat(tags) and notname(names) and lessthing(names) end,
 		priority = 1,
 		health = TUNING.HEALING_SMALL/4,
 		hunger = 0,
@@ -514,7 +536,7 @@ local drinks =
 	
 	blacktea_iced =
 	{
-		test = function(boilier, names, tags) return IsTealeaves_dried(names, tags) and tags.frozen and tags.frozen >= 1 and notmeat(tags) and notname(names) and ressthing(names) end,
+		test = function(boilier, names, tags) return IsTealeaves_dried(names, tags) and tags.frozen and tags.frozen >= 1 and notmeat(tags) and notname(names) and lessthing(names) end,
 		priority = 1,
 		health = TUNING.HEALING_SMALL/4,
 		hunger = 0,
@@ -532,12 +554,12 @@ local drinks =
 	-- 동굴 고사리(수인성 질병 해결)
 	fuer =
 	{
-		test = function(boilier, names, tags) return IsFoliage(names, tags) and notmeat(tags) and notname(names) and ressthing(names) end,
+		test = function(boilier, names, tags) return IsFoliage(names, tags) and notmeat(tags) and notname(names) and lessthing(names) end,
 		priority = 1,
 		health = TUNING.HEALING_SMALL/4,
 		hunger = 0,
 		sanity = TUNING.SANITY_MEDLARGE/4,
-		thirst = TUNING.HYDRATION_MEDSMAL,
+		thirst = TUNING.HYDRATION_MEDSMALL,
 		perishtime = TUNING.PERISH_MED,
 		cooktime = TUNING.KETTLE_TEA,
 		potlevel = "mid",
@@ -550,7 +572,7 @@ local drinks =
 	-- 일반 꽃잎
 	hibiscustea =
 	{
-		test = function(boilier, names, tags) return IsFlower(names, tags) and notmeat(tags) and notname(names) and ressthing(names) end,
+		test = function(boilier, names, tags) return IsFlower(names, tags) and notmeat(tags) and notname(names) and lessthing(names) end,
 		priority = 1,
 		health = TUNING.HEALING_MEDSMALL/4,
 		hunger = 0,
@@ -565,7 +587,7 @@ local drinks =
 	--일시적으로 유령으로 만드는 차
 	sushibiscus =
 	{
-		test = function(boilier, names, tags) return IsFlower_Evil(names, tags) and notmeat(tags) and notname(names) and ressthing(names) end,
+		test = function(boilier, names, tags) return IsFlower_Evil(names, tags) and notmeat(tags) and notname(names) and lessthing(names) end,
 		priority = 2,
 		health = 0,
 		hunger = 0,
@@ -587,7 +609,7 @@ local drinks =
 	-- 선인장 꽃잎
 	cactusflower_tea =
 	{
-		test = function(boilier, names, tags) return IsFlower_Cactus(names, tags) and notmeat(tags) and notname(names) and ressthing(names) end,
+		test = function(boilier, names, tags) return IsFlower_Cactus(names, tags) and notmeat(tags) and notname(names) and lessthing(names) end,
 		priority = 2,
 		health = (TUNING.HEALING_MED/2)/4,
 		hunger = TUNING.DRINK_CALORIES/2,
@@ -602,7 +624,7 @@ local drinks =
 	},
 	
 	lotustea = {
-			test = function(boilier, names, tags) return IsFlower_Lotus(names, tags) and notname(names) and ressthing(names) end,
+			test = function(boilier, names, tags) return IsFlower_Lotus(names, tags) and notname(names) and lessthing(names) end,
 			priority = 1,
 			health = TUNING.HEALING_MED/4,
 			hunger = 0,
@@ -624,7 +646,7 @@ local drinks =
 }
 
 --[[local lotustea = {
-		test = function(boilier, names, tags) return ( names.lotus_flower or names.kyno_lotus_flower or names.mfp_lotus_flower ) and ((tags.veggie or 0) <= 2) and not tags.fruit and notmeat(tags) and notname(names)and ressthing(names) end,
+		test = function(boilier, names, tags) return ( names.lotus_flower or names.kyno_lotus_flower or names.mfp_lotus_flower ) and ((tags.veggie or 0) <= 2) and not tags.fruit and notmeat(tags) and notname(names)and lessthing(names) end,
 		priority = 1,
 		health = TUNING.HEALING_MED,
 		hunger = 0,

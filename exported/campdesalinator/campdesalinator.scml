@@ -33,7 +33,7 @@
     <folder id="4" name="swap_meter">
         <file id="0" name="swap_meter/swap_meter.png" width="305" height="223" pivot_x="0.45" pivot_y="0.88"/>
     </folder>
-    <entity id="0" name="type_A">
+    <entity id="0" name="campdesalinator_A">
         <animation id="0" name="idle" length="34" interval="100">
             <mainline>
                 <key id="0">
@@ -2567,7 +2567,7 @@
             </timeline>
         </animation>
     </entity>
-    <entity id="1" name="type_B">
+    <entity id="1" name="campdesalinator_B">
         <animation id="0" name="idle" length="34" interval="100">
             <mainline>
                 <key id="0">
@@ -4290,7 +4290,7 @@
                 </key>
             </timeline>
         </animation>
-        <animation id="4" name="take_water_A" length="1125" interval="100">
+        <animation id="4" name="take_water" length="1125" interval="100">
             <mainline>
                 <key id="0">
                     <object_ref id="0" timeline="0" key="0" z_index="0"/>

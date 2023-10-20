@@ -28,6 +28,7 @@ local Brewing = Class(function(self, inst)
     self.product = nil
     self.product_spoilage = nil
     self.spoiledproduct = "spoiled_drink"
+    self.reduce = 1
     self.spoiltime = nil
     --self.keepspoilage = false --default refreshes spoilage by half, set to true will not
     self.cooktimemult = 1
@@ -297,7 +298,8 @@ function Brewing:Harvest(harvester)
 					harvester:PushEvent("learncookbookrecipe", {product = self.product, ingredients = self.ingredient_prefabs})
 				end
 
-                local stacksize = self.inst.components.waterlevel and self.inst.components.waterlevel:GetWater() or 1
+                local waterlevel = self.inst.components.waterlevel and self.inst.components.waterlevel:GetWater() or 1
+                local stacksize = math.ceil(waterlevel/self.reduce)
                 if stacksize > 1 then
                     loot.components.stackable:SetStackSize(stacksize)
                 end

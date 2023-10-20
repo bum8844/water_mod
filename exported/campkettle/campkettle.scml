@@ -35,7 +35,7 @@
     <folder id="4" name="swap_meter">
         <file id="0" name="swap_meter/swap_meter.png" width="269" height="286" pivot_x="0.45" pivot_y="0.88"/>
     </folder>
-    <entity id="0" name="type_A">
+    <entity id="0" name="campkettle_A">
         <animation id="0" name="idle" length="34" interval="100">
             <mainline>
                 <key id="0">
@@ -1652,7 +1652,7 @@
             </timeline>
         </animation>
     </entity>
-    <entity id="1" name="type_B">
+    <entity id="1" name="campkettle_B">
         <animation id="0" name="idle" length="34" interval="100">
             <mainline>
                 <key id="0">

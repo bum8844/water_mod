@@ -57,6 +57,11 @@ STRINGS.NAMES.CAMPKETTLE_ITEM = "Camp Kettle Kit"
 STRINGS.RECIPE_DESC.CAMPKETTLE_ITEM = "Your first kettle."
 STRINGS.NAMES.CAMPKETTLE = "Camp Kettle"
 
+-- campcampdesalinator
+STRINGS.NAMES.CAMPDESALINATOR_ITEM = "Camp Desalinator Kit"
+STRINGS.RECIPE_DESC.CAMPDESALINATOR_ITEM = "Your first Desalinator."
+STRINGS.NAMES.CAMPDESALINATOR = "Camp Desalinator"
+
 -- kettle
 STRINGS.NAMES.KETTLE	= "Kettle"
 STRINGS.RECIPE_DESC.KETTLE = "It's tea time, doctor."
