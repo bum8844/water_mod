@@ -232,33 +232,7 @@ ACTIONS.HARVEST.fn = function(act)
 end
 
 BREWING = AddAction("BREWING",STRINGS.ACTIONS.BOIL,function(act)
-        if act.target.components.cooker ~= nil then
-            local cook_pos = act.target:GetPosition()
-            local ingredient = act.doer.components.inventory:RemoveItem(act.invobject)
-
-            ingredient.Transform:SetPosition(cook_pos:Get())
-
-            if not act.target.components.cooker:CanCook(ingredient, act.doer) then
-                act.doer.components.inventory:GiveItem(ingredient, nil, cook_pos)
-                return false
-            end
-
-            if ingredient.components.health ~= nil then
-                act.doer:PushEvent("murdered", { victim = ingredient, stackmult = 1 }) -- NOTES(JBK): Cooking something alive.
-                if ingredient.components.combat ~= nil then
-                    act.doer:PushEvent("killed", { victim = ingredient })
-                end
-            end
-
-            local product = act.target.components.cooker:CookItem(ingredient, act.doer)
-            if product ~= nil then
-                act.doer.components.inventory:GiveItem(product, nil, cook_pos)
-                return true
-            elseif ingredient:IsValid() then
-                act.doer.components.inventory:GiveItem(ingredient, nil, cook_pos)
-            end
-            return false
-        elseif act.target.components.brewing ~= nil then
+        if act.target.components.brewing ~= nil then
             if act.target.components.brewing:IsCooking() then
                 return true
             end
@@ -270,61 +244,6 @@ BREWING = AddAction("BREWING",STRINGS.ACTIONS.BOIL,function(act)
             end
             act.target.components.brewing:StartCooking(act.doer)
             return true
-        elseif act.target.components.cookable ~= nil
-            and act.invobject ~= nil
-            and act.invobject.components.cooker ~= nil then
-
-            local cook_pos = act.target:GetPosition()
-
-            if act.doer:GetPosition():Dist(cook_pos) > 2 then
-                return false, "TOOFAR"
-            end
-
-            local owner = act.target.components.inventoryitem:GetGrandOwner()
-            local container = owner ~= nil and (owner.components.inventory or owner.components.container) or nil
-            local stacked = act.target.components.stackable ~= nil and act.target.components.stackable:IsStack()
-            local ingredient = stacked and act.target.components.stackable:Get() or act.target
-
-            if ingredient ~= act.target then
-                ingredient.Transform:SetPosition(cook_pos:Get())
-            end
-
-            if not act.invobject.components.cooker:CanCook(ingredient, act.doer) then
-                if container ~= nil then
-                    container:GiveItem(ingredient, nil, cook_pos)
-                elseif stacked and ingredient ~= act.target then
-                    act.target.components.stackable:SetStackSize(act.target.components.stackable:StackSize() + 1)
-                    ingredient:Remove()
-                end
-                return false
-            end
-
-            if ingredient.components.health ~= nil and ingredient.components.combat ~= nil then
-                act.doer:PushEvent("killed", { victim = ingredient })
-            end
-
-            local product = act.invobject.components.cooker:CookItem(ingredient, act.doer)
-            if product ~= nil then
-                if container ~= nil then
-                    container:GiveItem(product, nil, cook_pos)
-                else
-                    product.Transform:SetPosition(cook_pos:Get())
-                    if stacked and product.Physics ~= nil then
-                        local angle = math.random() * 2 * PI
-                        local speed = math.random() * 2
-                        product.Physics:SetVel(speed * math.cos(angle), GetRandomWithVariance(8, 4), speed * math.sin(angle))
-                    end
-                end
-                return true
-            elseif ingredient:IsValid() then
-                if container ~= nil then
-                    container:GiveItem(ingredient, nil, cook_pos)
-                elseif stacked and ingredient ~= act.target then
-                    act.target.components.stackable:SetStackSize(act.target.components.stackable:StackSize() + 1)
-                    ingredient:Remove()
-                end
-            end
-            return false
         end
     end)
 

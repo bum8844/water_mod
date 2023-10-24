@@ -103,21 +103,26 @@ local function MakePreparedDrink(data)
 
 		--inst.food_symbol_build = food_symbol_build or overridebuild
 
-        inst:AddComponent("edible")
-        inst.components.edible.isdrink = true
-        inst.components.edible.healthvalue = data.health
-        inst.components.edible.hungervalue = data.hunger
-        inst.components.edible.thirstvalue = data.thirst
-        inst.components.edible.foodtype = data.foodtype or FOODTYPE.GOODIES
-        inst.components.edible.secondaryfoodtype = data.secondaryfoodtype or FOODTYPE.GENERIC
-        inst.components.edible.sanityvalue = data.sanity or 0
-        inst.components.edible.temperaturedelta = data.temperature or 0
-        inst.components.edible.temperatureduration = data.temperatureduration or 0
-        inst.components.edible.nochill = data.nochill or nil
-        inst.components.edible:SetOnEatenFn(function(inst, eater)
-            oneatenfn(inst, eater)
-            --OnEaten(inst, eater)
-        end)
+        if not inst:HasTag("disinfectant") then
+            inst:AddComponent("edible")
+            inst.components.edible.isdrink = true
+            inst.components.edible.healthvalue = data.health
+            inst.components.edible.hungervalue = data.hunger
+            inst.components.edible.thirstvalue = data.thirst
+            inst.components.edible.foodtype = data.foodtype or FOODTYPE.GOODIES
+            inst.components.edible.secondaryfoodtype = data.secondaryfoodtype or FOODTYPE.GENERIC
+            inst.components.edible.sanityvalue = data.sanity or 0
+            inst.components.edible.temperaturedelta = data.temperature or 0
+            inst.components.edible.temperatureduration = data.temperatureduration or 0
+            inst.components.edible.nochill = data.nochill or nil
+            inst.components.edible:SetOnEatenFn(function(inst, eater)
+                oneatenfn(inst, eater)
+                --OnEaten(inst, eater)
+            end)
+        else
+            inst:AddComponent("healer")
+            inst.components.healer:SetHealthAmount(TUNING.HEALING_HUGE)
+        end
 
         inst:AddComponent("inspectable")
         inst.wet_prefix = data.wet_prefix
@@ -169,6 +174,10 @@ for k, v in pairs(require("prepareddrinks")) do
 end
 
 for k, v in pairs(require("preparedageddrinks")) do
+    table.insert(prefs, MakePreparedDrink(v))
+end
+
+for k, v in pairs(require("preparedspiritsdrink")) do
     table.insert(prefs, MakePreparedDrink(v))
 end
 

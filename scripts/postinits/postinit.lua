@@ -12,6 +12,7 @@ local postinits =
 		"regrowthmanager",
 		"wisecracker",
 		"retrofitforestmap_anr",
+		"container_replica",
 	},
 
 	prefabs =
@@ -24,6 +25,7 @@ local postinits =
 		"portablespicer",	
 		"staff",		
 		"wateringcan",
+		"acorn",
 	},
 
 	stategraphs =

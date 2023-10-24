@@ -15,6 +15,7 @@ return {
 	"well",
 	"well_sprinkler",
 	"well_drilling",
+	"distillers",
 
 	--food & plants
 	"caffeinberry",

@@ -81,6 +81,7 @@ SLOTMACHINE_LOOT.okspawns.slot_teatree = 5
 SLOTMACHINE_LOOT.actions.slot_teatree = {
     treasure = "slot_teatree",
 }
+
 AddTreasureLoot("slot_teatree", {
     loot = {
     	tealeaves = 3,

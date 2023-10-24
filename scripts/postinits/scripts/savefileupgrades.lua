@@ -18,13 +18,27 @@ local function FlagForRetrofitting_Forest(savedata, flag_name)
 
 end
 
+local function FlagForRetrofitting_Cave(savedata, flag_name)
+    if savedata ~= nil and savedata.map ~= nil and savedata.map.prefab == "cave" then
+        if savedata.map.persistdata == nil then
+            savedata.map.persistdata = {}
+        end
+
+        if savedata.map.persistdata.retrofitcavemap_anr == nil then
+            savedata.map.persistdata.retrofitcavemap_anr = {}
+        end
+        savedata.map.persistdata.retrofitcavemap_anr[flag_name] = true
+    end
+
+end
+
 SaveFileupgrades.upgrades[nextupdate] = {
 	version = SaveFileupgrades.VERSION + 0.000000001,
 	fn = function(savedata)
 		print("해당코드가 작동했습니다.")
 	    FlagForRetrofitting_Forest(savedata, "retrofit_tea_tree")
 	    FlagForRetrofitting_Forest(savedata, "retrofit_caffeinberry_bush")
-	    FlagForRetrofitting_Forest(savedata, "retrofit_cutefuzzyanimals")
+	    FlagForRetrofitting_Cave(savedata, "retrofit_ruincacao_tree")
 		SaveFileupgrades.upgrades[nextupdate-1].fn(savedata)
 	end
 }

@@ -9,13 +9,11 @@ end
 
 local NOHOF = true
 
-for k,v in ipairs(GLOBAL.KnownModIndex:GetModsToLoad()) do 
-	local Mod = GLOBAL.KnownModIndex:GetModInfo(v).name
-	if Mod == "Heap of Foods" then -- workshop-2334209327
+for k,mod_id in ipairs(GLOBAL.KnownModIndex:GetModsToLoad()) do 
+	if mod_id == "workshop-2334209327" then
 		NOHOF = false
 	end
 end
-
 
 AddRecipeFilter({name = "HYDRATION", atlas = ModAtlas, image = "hydration.tex", custom_pos=nil, recipes=nil,},nil)
 
