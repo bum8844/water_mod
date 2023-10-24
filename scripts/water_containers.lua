@@ -82,8 +82,8 @@ params.distillers =
         },
         slotbg =
         {
-            { image = "cook_slot_food.tex" },
-            { image = "cook_slot_spice.tex" },
+            { image = "cook_slot_drink.tex" },
+            { image = "cook_slot_additive.tex" },
         },
         animbank = "ui_cookpot_1x2",
         animbuild = "ui_cookpot_1x2",

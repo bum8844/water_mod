@@ -25,6 +25,8 @@ return {
 	"tea_seed",
 	"water_spicedfoods",
 	"water_spicedfoods_mod",
+	"ruincacao_tree",
+	"ruincacao_seed",
 
 	--buff
 	"drinkbuff",
