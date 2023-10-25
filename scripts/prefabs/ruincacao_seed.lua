@@ -57,6 +57,10 @@ local function on_hammered(inst, hammer, workleft, workdone)
                 i = i + 1
             end
             LaunchAt(loot, inst, hammer, loot_data.SPEED, loot_data.HEIGHT, nil, loot_data.ANGLE)
+            if prefab == "ruincacao_bean" then
+                loot.AnimState:PlayAnimation("split_open")
+                loot.AnimState:PushAnimation("idle_split_open")
+            end
         end
     end
 
@@ -390,8 +394,8 @@ local function ruincacao_seed()
 end
 
 return Prefab("ruincacao", ruincacao, assets, {"ruincacao_seed","ruincacao_bean","butter","charcoal"}),
-    Prefab("ruincacao_seed", ruincacao_seed, assets)
+    Prefab("ruincacao_seed", ruincacao_seed, assets),
 	Prefab("ruincacao_bean", ruincacao_bean, assets, {"ruincacao_bean_cooked"}),
-	Prefab("ruincacao_bean_cooked", ruincacao_seed_cooked, assets),
+	Prefab("ruincacao_bean_cooked", ruincacao_bean_cooked, assets),
     MakePlacer("ruincacao_seed_placer", "ruincacao_seed", "ruincacao_tree_seed", "planted"),
     Prefab("ruincacao_seed_sapling", ruincacao_seed_sapling, assets, {"ruincacao_seed"})
