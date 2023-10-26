@@ -15,7 +15,7 @@ local sw_drink = {
 		potlevel_bottle = "mid",
 		prefabs = { "alcoholdebuff","drunkarddebuff","resistancebuff","wormlight_light" },
 		cooktime = (TUNING.KETTLE_FRUIT + TUNING.BEER_WAIT),
-		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_INTOXICATION_GLOW,
+		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_NAG_AURA_RESIST_GLOW,
 		oneatenfn = function(inst, eater)
 			alcohol(inst, eater)
            	if eater.wormlight ~= nil then
@@ -54,7 +54,7 @@ local coconut_drink = {
 		potlevel = "mid",
 		potlevel_bottle = "mid",
 		prefabs = { "alcoholdebuff","drunkarddebuff","resistancebuff" },
-		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_INTOXICATION,
+		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_NAG_AURA_RESIST,
 		oneatenfn = function(inst, eater)
 			alcohol(inst, eater)
 		end,
@@ -93,7 +93,7 @@ local cf_drink = {
 		potlevel = "high",
 		potlevel_bottle = "mid",
 		prefabs = { "alcoholdebuff","drunkarddebuff","resistancebuff","buff_bloomyhoney" },
-		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_INTOXICATION_CHERRY_TAFFY,
+		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_NAG_AURA_RESIST_CHERRY_TAFFY,
 		oneatenfn = function(inst, eater)
 			alcohol(inst, eater)
 			if eater.components.health ~= nil and eater.components.hunger ~= nil and eater.components.debuffable ~= nil then
@@ -135,7 +135,7 @@ local unc_drink = {
 		potlevel = "high",
 		potlevel_bottle = "mid",
 		prefabs = { "alcoholdebuff","drunkarddebuff","resistancebuff" },
-		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_INTOXICATION,
+		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_NAG_AURA_RESIST,
 		oneatenfn = function(inst, eater)
 			alcohol(inst, eater)
 		end,
@@ -154,7 +154,7 @@ local unc_drink = {
 		potlevel = "high",
 		potlevel_bottle = "mid",
 		prefabs = { "alcoholdebuff","drunkarddebuff","resistancebuff" },
-		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_INTOXICATION,
+		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_NAG_AURA_RESIST_HAYFEVER_RELIEF_HUGE,
 		oneatenfn = function(inst, eater)
 			alcohol(inst, eater)
 			if eater.components.hayfever and eater.components.hayfever.enabled then
@@ -164,4 +164,25 @@ local unc_drink = {
 	},
 }
 
-return { sw_drink = sw_drink, coconut_drink = coconut_drink, cf_drink = cf_drink, unc_drink = unc_drink }
+local wheat_drink = {
+	wheat_beer = {
+		test = function(boilier, names, tags) return ((names.kyno_wheat or 0) + (names.kyno_wheat_cooked or 0) + (names.wheat or 0) + (names.wheat_cooked or 0) or (names.mfp_wheat or 0) or (names.mfp_wheat_cooked) >= 2) and tags.veggie and tags.veggie >= 1 and not tags.fruit and notmeat(tags) and notname(names) and lessthing(names) and notages(tags) end,
+		priority = 1,
+		health = (TUNING.HEALING_SMALL*2)/2,
+		hunger = TUNING.CALORIES_MEDSMALL/2,
+		sanity = (TUNING.SANITY_HUGE/2)/2,
+		thirst = TUNING.HYDRATION_MED,
+		tags = {"alcohol"},
+		perishtime = TUNING.PERISH_PRESERVED,
+		cooktime = (TUNING.KETTLE_VEGGIE + TUNING.BEER_WAIT),
+		potlevel = "mid",
+		potlevel_bottle = "mid",
+		prefabs = { "alcoholdebuff","drunkarddebuff","resistancebuff" },
+		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_NAG_AURA_RESIST,
+		oneatenfn = function(inst, eater)
+			alcohol(inst, eater)
+		end,
+	}
+}
+
+return { sw_drink = sw_drink, coconut_drink = coconut_drink, cf_drink = cf_drink, unc_drink = unc_drink , wheat_drink = wheat_drink }

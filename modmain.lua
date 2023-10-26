@@ -10,9 +10,6 @@ PrefabFiles = require("water_prefablist")
 
 Assets = require("water_assets")
 
---[[if GLOBAL.KnownModIndex:IsModEnabled("") or GLOBAL.KnownModIndex:IsModForceEnabled("") then
-end]]
-
 AddMinimapAtlas("images/tea_minimap.xml")
 
 local teaingredients =
@@ -38,15 +35,16 @@ local ferment = {
 	"refined_dust",
 }
 
-local additives_seed = {
-	"tea_seed_cooked",
-	"acorn_cooked",
+local additives = {
+	"additives_seed",
+	--[["additives_petals",
+	"additives_ruincacao",]]
 }
 
 AddIngredientValues(mushrooms, {veggie = .5, mushroom = 1},true)
 AddIngredientValues(teaingredients, {veggie = .5, decoration = 1})
 AddIngredientValues(ferment, {ferment=1})
-AddIngredientValues(additives_seed, {additives=1, seed=1})
+AddIngredientValues(additives, {additives=1})
 
 AddIngredientValues({"tealeaves"}, {decoration = 1}, false, true)
 AddIngredientValues({"caffeinberry_bean"}, {fruit=.5}, true)

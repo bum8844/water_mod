@@ -6,4 +6,7 @@ AddComponentPostInit("regrowthmanager", function(self)
 	self:SetRegrowthForType("caffeinberry", TUNING.EVERGREEN_REGROWTH.DESOLATION_RESPAWN_TIME, "caffeinberry", function()
 		return TUNING.CAFFEINBERRY_REGROWTH_TIME_MULT
 	end)
+	self:SetRegrowthForType("ruincacao_tree", TUNING.EVERGREEN_REGROWTH.DESOLATION_RESPAWN_TIME, "ruincacao_tree", function()
+		return TUNING.RUINCACAO_TREE_TIME_MULT
+	end)
 end)

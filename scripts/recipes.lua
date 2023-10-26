@@ -30,6 +30,16 @@ AddRecipe2("bucket_woodie_empty",{Ingredient("lucy",0),Ingredient("log",2)},TECH
 
 AddRecipe2("spice_caffeinpepper",{Ingredient("caffeinberry_bean_cooked", 3, ModAtlas(), nil, "caffeinberry_bean_cooked.tex")},TECH.FOODPROCESSING_ONE,{atlas = ModAtlas(), builder_tag="professionalchef", numtogive=2, image = "spice_caffeinpepper.tex" ,nounlock=true},{"FOODPROCESSING"})
 
+--[[AddRecipe2("additives_seed",{Ingredient("seeds_cooked", 3, ModAtlas(), nil, "additives_seed.tex")},TECH.FOODPROCESSING_ONE,{atlas = ModAtlas(), builder_tag="professionalchef", numtogive=2, image = "additives_seed.tex" ,nounlock=true},{"FOODPROCESSING"})
+AddRecipePostInit("additives_seed", function(recipe)
+	local ingredient = recipe:FindAndConvertIngredient("seeds_cooked")
+	if ingredient then
+	    ingredient:AddDictionaryPrefab("acorn_cooked")
+	    ingredient:AddDictionaryPrefab("tea_seed_cooked")
+	end
+end)
+]]
+
 AddRecipe2("barrel",{Ingredient("boards",2),Ingredient("rope",3),Ingredient("charcoal",3)},TECH.SCIENCE_ONE,{placer = "barrel_placer", atlas = ModAtlas(), image = "barrel.tex"},{"CONTAINERS","HYDRATION"})
 
 AddRecipe2("brewery",{Ingredient("boards",3),Ingredient("livinglog",3),Ingredient("rope",3),Ingredient("cutstone",6),Ingredient("goldnugget",4)},TECH.SCIENCE_TWO,{placer = "brewery_placer", atlas = ModAtlas(), image = "brewery.tex"},{"COOKING","HYDRATION"})

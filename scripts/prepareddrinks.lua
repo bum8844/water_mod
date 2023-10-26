@@ -195,13 +195,12 @@ local drinks =
 		potlevel = "mid",
 		potlevel_bottle = "mid",
 		prefabs = { "caffeinbuff" },
-		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_CAFFINE,
+		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_CONSERVE_KNOWLEGEE_CAFFINE,
 		oneatenfn = function(inst, eater)
 			eater.caffeinbuff_duration = TUNING.CAFFEIN_TIME * 0.5
 			eater:AddDebuff("caffeinbuff", "caffeinbuff")
-			if eater:HasTag("player") then
-				eater.components.builder.temptechbonus_count = 1
-				eater.components.builder:GiveTempTechBonus({SCIENCE = 2, MAGIC = 2, SEAFARING = 2 ANCIENT = 2, MASHTURFCRAFTING = 2})
+			if eater.components.builder and eater.components.builder.temptechbonus_count then
+				eater.components.builder.temptechbonus_count = eater.components.builder.temptechbonus_count + 1
 			end
 		end,
 	},]]
@@ -514,7 +513,25 @@ local drinks =
 		potlevel = "mid",
 		potlevel_bottle = "mid",
 	},
-	ruinxocolatl = {
+	ruincolate = {
+		test = function(boilier, names, tags) return names.ruincacao_bean_cooked and names.ruincacao_bean_cooked >= 3 and Preference(names, tags) and notmeat(tags) and notname(names) and lessthing(names) end,
+		priority = 2,
+        health = TUNING.HEALING_TINY/4,
+        hunger = 0,
+        sanity = TUNING.SANITY_TINY/4,
+        thirst = TUNING.HYDRATION_SMALLTINY,
+        perishtime = TUNING.PERISH_SLOW,
+		cooktime = TUNING.KETTLE_LUXURY_GOODS,
+	    oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_ANCIENT_KNOWLEGEE_PIECE,
+	    oneatenfn = function(inst, eater)
+			if eater.components.builder then
+				eater.components.builder:GiveTempTechBonus({ANCIENT = 2})
+			end
+	    end,
+		potlevel = "mid",
+		potlevel_bottle = "mid",
+	},
+	hotruincolate = {
 		test = function(boilier, names, tags) return names.ruincacao_bean_cooked and names.ruincacao_bean_cooked == 3 and (names.pepper or names.pepper_cooked) and notmeat(tags) and notname(names) and lessthing(names) end,
 		priority = 1,
         health = TUNING.HEALING_MED/4,
@@ -523,35 +540,17 @@ local drinks =
         thirst = TUNING.HYDRATION_SMALLTINY,
         perishtime = TUNING.PERISH_SLOW,
 		cooktime = TUNING.KETTLE_LUXURY_GOODS,
+		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_ANCIENT_KNOWLEGEE,
 	    oneatenfn = function(inst, eater)
-			if eater:HasTag("player") then
-				eater.components.builder:GiveTempTechBonus({SCIENCE = 2, MAGIC = 2, SEAFARING = 2 ANCIENT = 2, MASHTURFCRAFTING = 2})
-			end
-	    end,
-		potlevel = "mid",
-		potlevel_bottle = "mid",
-	},
-	hot_ruincolate = {
-		test = function(boilier, names, tags) return names.ruincacao_bean_cooked and names.ruincacao_bean_cooked >= 3 and Preference(names, tags) and notmeat(tags) and notname(names) and lessthing(names) end,
-		priority = 2,
-        health = TUNING.HEALING_TINY/4,
-        hunger = 0,
-        sanity = TUNING.SANITY_TINY/4,
-        thirst = TUNING.HYDRATION_SMALLTINY
-        perishtime = TUNING.PERISH_SLOW
-		cooktime = TUNING.KETTLE_LUXURY_GOODS,
-	    oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_BUTTERHUNTER,
-	    oneatenfn = function(inst, eater)
-			if eater:HasTag("player") then
-				eater.components.builder.temptechbonus_count = 1
-				eater.components.builder:GiveTempTechBonus({SCIENCE = 2, MAGIC = 2, SEAFARING = 2 ANCIENT = 2, MASHTURFCRAFTING = 2})
-			end
+	    	if eater.components.builder then
+				eater.components.builder:GiveTempTechBonus({ANCIENT = 4})
+	    	end
 	    end,
 		potlevel = "mid",
 		potlevel_bottle = "mid",
 	},
 	tea_ruincolate_latte = {
-		test = function(boilier, names, tags) return names.ruincacao_bean_cooked and names.ruincacao_bean_cooked == 2 and names.tealeaves and tags.dairy end,
+		test = function(boilier, names, tags) return names.ruincacao_bean_cooked and names.ruincacao_bean_cooked == 2 and names.tealeaves and (tags.dairy or tags.milk) end,
 		priority = 2,
         health = TUNING.HEALING_SMALL/4,
         hunger = TUNING.DRINK_CALORIES/2,
@@ -559,11 +558,10 @@ local drinks =
         thirst = TUNING.HYDRATION_TINY,
         perishtime = TUNING.PERISH_MED,
 		cooktime = TUNING.KETTLE_LUXURY_GOODS,
-	    oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_BUTTERHUNTER,
+	    oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_CONSERVE_KNOWLEGEE,
 	    oneatenfn = function(inst, eater)
-			if eater:HasTag("player") then
-				eater.components.builder.temptechbonus_count = 3
-				eater.components.builder:GiveTempTechBonus({SCIENCE = 2, MAGIC = 2, SEAFARING = 2 ANCIENT = 2, MASHTURFCRAFTING = 2})
+			if eater.components.builder and eater.components.builder.temptechbonus_count then
+				eater.components.builder.temptechbonus_count = eater.components.builder.temptechbonus_count + 1
 			end
 	    end,
 		potlevel = "mid",

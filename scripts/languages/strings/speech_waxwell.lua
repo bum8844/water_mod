@@ -33,7 +33,6 @@ return {
 		WELL_DRILLING_ITEM = "일종의 농기계인가? 아니, 조금 다르군.",
 		HOLE = "잘못 빠지면 뼈도 못 건지겠군.",
 		WELL = "",
-		WELL_SPRINKLER = "",
 
 		TEA_TREE = "",
 		DUG_TEA_TREE = "내가 정원사라도 되는 줄 아는가?",
@@ -47,6 +46,18 @@ return {
 		DUG_CAFFEINBERRY = "",
 		CAFFEINBERRY_BEAN = "",
 		CAFFEINBERRY_BEAN_COOKED = "",
+
+		RUINCACAO_TREE = "",
+		DUG_RUINCACAO_TREE = "",
+		RUINCACAO_SEED = "",
+		RUINCACAO_SEED_SAPLING = "",
+		RUINCACAO = "",
+		RUINCACAO_BEAN = "",
+		TEA_SEED_COOKED = "",
+
+		ADDITIVE_SEED = "",
+		--ADDITIVE_PETALS = "",
+		--ADDITIVE_RUINCACAO = "",
 
 		WATER_CLEAN = "깨끗한 물 한 모금도 귀한 세상이군.",
 		WATER_DIRTY = "이봐 친구, 내 물 색이 좋지 않군.",
@@ -79,6 +90,22 @@ return {
 		LOTUSTEA = "",
 		SUSHIBISCUS = "어둠의 정수로군.",
 
+		TOFFEE_LATTE = "",
+		RUINCHA_LATTE = "",
+		LUMPY_TEA = "",
+		SEAWEED_SHAKE = "",
+		BUTTERBEER = "",
+		HOTRUINCOLATE = "",
+		RUINXOCOLATL = "",
+		TEA_RUINCOLATE_LATTE = "",
+
+		COCONUT_JUICE = "",
+		RAINBOW_SHAKE = "",
+		QUARTZ_SHAKE = "",
+		CHERRY_ROSEBERRIES_TEA = "",
+		CHERRY_HONEY_TEA = "",
+		SWEET_RICE_DRINK = "",
+
 		SPOILED_DRINK = "내가 썩혀버리기 전에는 음료였는데 말이지.",
 		SODA = "",
 		FRUITSODA = "",
@@ -92,8 +119,36 @@ return {
 		SPARKLINGWINE = "",
 		GLOWBERRYWINE = "",
 		KUMIS = "",
+		LUMPY_WINE = "",
+		PULQUE = "",
 
-		BUCKET_STEEL_EMPTY = {
+		AUROBOW = "",
+		COCONUT_WINE = "",
+		CHERRY_DOCTOR_COLA = "",
+		CHERRY_BLOOM_WINE = "",
+		GIANT_BLUEBERRY_WINE = "",
+		RICE_WINE = "",
+		WHEAT_BEER = "",
+
+		DISINFECTANT = "",
+		CORN_WHISKEY = "",
+		LUMPY_VODKA = "",
+		TEQUILA = "",
+		MADHU_RUM = "",
+		BERRY_BRANDY = "",
+		BERRY_GIN = "",
+		GLOWBERRY_BRANDY = "",
+		AREUHI = "",
+
+		MOONWAY = "",
+		ARRACK = "",
+		CHERRY_BLOOM_RUM = "",
+		GIANT_BLUEBERRY_GIN = "",
+		RICE_SPIRITS = "",
+		WHEAT_WHISKEY = "",
+
+		BUCKET_STEEL_EMPTY = 
+		{
 			EMPTY = "",
 			FULL = "",
 			FULL_ICE = "",
@@ -101,7 +156,8 @@ return {
 			DIRTY_ICE = "",
 		},
 
-		BUCKET_WOODIE_EMPTY = {
+		BUCKET_WOODIE_EMPTY = 
+		{
 			EMPTY = "",
 			FULL = "",
 			FULL_ICE = "",
@@ -109,7 +165,8 @@ return {
 			DIRTY_ICE = "",
 		},
 
-		BUCKET_EMPTY = {
+		BUCKET_EMPTY = 
+		{
 			EMPTY = "",
 			FULL = "",
 			FULL_ICE = "",
@@ -190,7 +247,8 @@ return {
 			MELT_SHORT = "",
 		},
 
-		WELL_SPRINKLER = { 
+		WELL_SPRINKLER = 
+		{ 
 			LOWFUEL = "",
 			ON = "",
 			OFF = "",

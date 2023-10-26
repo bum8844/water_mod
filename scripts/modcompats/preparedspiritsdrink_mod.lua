@@ -42,7 +42,7 @@ local sw_drink = {
 
 local coconut_drink = {
 	arrack = {
-		test = function(boilier, names, tags) return names.coconut_wine and not tags.additives end,
+		test = function(boilier, names, tags) return (names.coconut_wine and names.wine_kokonut) and not tags.additives end,
 		priority = 1,
 		health = TUNING.HEALING_SMALL*2,
 		hunger = TUNING.CALORIES_MEDSMALL,
@@ -128,7 +128,7 @@ local unc_drink = {
         hunger = TUNING.CALORIES_MED,
         sanity = TUNING.SANITY_MEDLARGE,
         thirst = TUNING.HYDRATION_MED,
-		tags = {"alcohol","spirits","explosive"},
+		tags = {"alcohol","spirits"},
 		perishtime = TUNING.PERISH_SUPERSLOW,
 		cooktime = (TUNING.KETTLE_VEGGIE + TUNING.BEER_WAIT),
 		potlevel = "mid",
@@ -144,4 +144,24 @@ local unc_drink = {
 	}
 }
 
-return { sw_drink = sw_drink, coconut_drink = coconut_drink, cf_drink = cf_drink, unc_drink = unc_drink }
+local wheat_drink = {
+	wheat_whiskey = {
+		test = function(boilier, names, tags) return (names.wheat_beer or names.beer) end,
+		priority = 2,
+        health = -TUNING.HEALING_MED,
+        hunger = TUNING.CALORIES_MED,
+        sanity = TUNING.SANITY_MEDLARGE,
+        thirst = TUNING.HYDRATION_MED,
+		tags = {"alcohol","spirits"},
+		perishtime = TUNING.PERISH_SUPERSLOW,
+		cooktime = (TUNING.KETTLE_VEGGIE + TUNING.BEER_WAIT),
+		potlevel = "mid",
+		potlevel_bottle = "mid",
+		prefabs = { "alcoholdebuff","drunkarddebuff","immunebuff" },
+		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_INTOXICATION,
+		oneatenfn = function(inst, eater)
+			spirits(inst, eater)
+		end,
+}
+
+return { sw_drink = sw_drink, coconut_drink = coconut_drink, cf_drink = cf_drink, unc_drink = unc_drink, wheat_drink = wheat_drink }

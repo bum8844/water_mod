@@ -45,6 +45,21 @@ local function MakePreparedDrink(data)
         return inst:GetFertilizerKey()
     end
 
+    local function OnIgniteFn(inst)
+        inst.SoundEmitter:PlaySound("dontstarve/common/blackpowder_fuse_LP", "hiss")
+        DefaultBurnFn(inst)
+    end
+
+    local function OnExtinguishFn(inst)
+        inst.SoundEmitter:KillSound("hiss")
+        DefaultExtinguishFn(inst)
+    end
+
+    local function OnExplodeFn(inst)
+        inst.SoundEmitter:KillSound("hiss")
+        SpawnPrefab("explode_small").Transform:SetPosition(inst.Transform:GetWorldPosition())
+    end
+
     local function fn()
         local inst = CreateEntity()
 
@@ -146,6 +161,19 @@ local function MakePreparedDrink(data)
             inst.components.perishable:SetPerishTime(data.perishtime)
             inst.components.perishable:StartPerishing()
             inst.components.perishable.onperishreplacement = "spoiled_drink"
+        end
+
+        if inst:HasTag("explosive") then
+            MakeSmallBurnable(inst, 3 + math.random() * 3)
+            MakeSmallPropagator(inst)
+
+            inst.components.burnable:SetOnBurntFn(nil)
+            inst.components.burnable:SetOnIgniteFn(OnIgniteFn)
+            inst.components.burnable:SetOnExtinguishFn(OnExtinguishFn)
+
+            inst:AddComponent("explosive")
+            inst.components.explosive:SetOnExplodeFn(OnExplodeFn)
+            inst.components.explosive.explosivedamage = TUNING.GUNPOWDER_DAMAGE
         end
 
         MakeDynamicCupImage(inst, "swap", "kettle_drink")

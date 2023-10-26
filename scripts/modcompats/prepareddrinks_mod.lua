@@ -117,7 +117,7 @@ local cf_drink = {
 }
 
 local unc_drink = {
-	sikhye = 	{
+	sweet_rice_drink = 	{
 		test = function(boilier, names, tags) return names.rice_cooked and names.rice_cooked == 2 and tags.sweetener and tags.frozen and notmeat(tags) and notname(names) and lessthing(names) and notages(tags) end,
 		priority = 2,
         health = 0,
@@ -131,7 +131,7 @@ local unc_drink = {
 		potlevel = "mid",
 		potlevel_bottle = "mid",
 		tags = {"honeyed"},
-		oneat_desc = STRINGS.UI.COOKBOOK.UM_LICELOAF,
+		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_HAYFEVER_RELIEF_MED,
 		oneatenfn = function(inst, eater)
 			if eater.components.hayfever and eater.components.hayfever.enabled then
 				eater.components.hayfever:SetNextSneezeTime(1440)

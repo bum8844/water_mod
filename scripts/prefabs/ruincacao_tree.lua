@@ -206,10 +206,10 @@ local function makeemptyfn(inst)
         inst.components.pickable.canbepicked = false
 
         if not (inst:HasTag("withered") or emptying_dead) then
-            inst.AnimState:PlayAnimation("idle1", false)
+            inst.AnimState:PlayAnimation("idle1",true)
         else
             inst.AnimState:PlayAnimation("dead1_to_idle1")
-            inst.AnimState:PushAnimation("idle1", false)
+            inst.AnimState:PushAnimation("idle1",true)
         end
     end
 end
@@ -221,9 +221,9 @@ local function makebarrenfn(inst, wasempty)
 
     if not POPULATING and inst:HasTag("withered") then
         inst.AnimState:PlayAnimation("idle1_to_dead1") --temporary motion, should be replaced to "idle1_to_dead1"
-        inst.AnimState:PushAnimation("dead1", false)
+        inst.AnimState:PushAnimation("dead1",true)
     else
-        inst.AnimState:PlayAnimation("dead1")
+        inst.AnimState:PlayAnimation("dead1",true)
     end
 end
 
@@ -276,7 +276,7 @@ local function ruincacao_tree()
 
     inst.AnimState:SetBank("ruincacao_tree_build")
     inst.AnimState:SetBuild("ruincacao_tree_build")
-    inst.AnimState:PlayAnimation("idle1")
+    inst.AnimState:PlayAnimation("idle1",true)
 
     MakeSmallObstaclePhysics(inst, .1)
 

@@ -84,7 +84,7 @@ local drinks =
 	-- 증류주(럼)
 	madhu_rum =
 	{
-		test = function(boilier, names, tags) return names.madhu and not tags.additives end,
+		test = function(boilier, names, tags) return (names.madhu or names.mead) and not tags.additives end,
 		priority = 1,
 		health = TUNING.HEALING_MEDSMALL*3,
 		hunger = TUNING.CALORIES_MEDSMALL,
@@ -104,7 +104,7 @@ local drinks =
 	-- 베리류
 	berry_brandy =
 	{
-		test = function(boilier, names, tags) return (names.wine or names.noblewine) and not tags.additives end,
+		test = function(boilier, names, tags) return (names.wine or names.noblewine or names.wine_berries_juicy or names.wine_berries) and not tags.additives end,
 		priority = 1,
 		health = 0,
 		hunger = TUNING.CALORIES_MEDSMALL,
@@ -143,7 +143,7 @@ local drinks =
 	-- 발광 배리
 	glowberry_brandy =
 	{
-		test = function(boilier, names, tags) return names.glowberrywine and not tags.additives end,
+		test = function(boilier, names, tags) return (names.glowberrywine or names.wine_glowberry) and not tags.additives end,
 		priority = 1,
 		health = 0,
 		hunger = TUNING.CALORIES_MEDSMALL,
@@ -201,11 +201,14 @@ local drinks =
 }
 
 local mod_drink = require("modcompats/preparedspiritsdrink_mod")
-local hof, ia, te, cf, unc = false, false, false, false, false
+local hof, ia, te, cf, unc, mfp = false, false, false, false, false, false
 
 for k,mod_id in ipairs(KnownModIndex:GetModsToLoad()) do 
 	if mod_id == "workshop-2334209327" then
 		hof = true
+	end
+	if mod_id == "workshop-2762334054" then
+		mfp = true
 	end
 	if mod_id == "workshop-1505270912" then
 		te = true
@@ -241,6 +244,12 @@ if te or ia or hof then
 	end
 end
 
+if hof or mfp then
+	local wheat_drink = mod_drink.wheat_drink
+	for k, v in pairs(wheat_drink) do
+		drinks[k] = v
+	end
+end
 
 for k, v in pairs(drinks) do
     v.name = k

@@ -78,6 +78,22 @@ return {
 		LOTUSTEA = "비스킷 몇 조각 있으면 어울리겠어.",
 		SUSHIBISCUS = "과학적으로 전혀 말이 안 되'잔'아.",
 
+		TOFFEE_LATTE = "토피넛 라때",
+		RUINCHA_LATTE = "모카 라때",
+		LUMPY_TEA = "루트 비어",
+		SEAWEED_SHAKE = "해초 쉐이크",
+		BUTTERBEER = "버터 비어",
+		HOTRUINCOLATE = "핫 초코",
+		RUINXOCOLATL = "쇼콜라틀",
+		TEA_RUINCOLATE_LATTE = "녹차 초코 라때",
+
+		COCONUT_JUICE = "후르츠 나타 데 코코",
+		RAINBOW_SHAKE = "무지개 쉐이크",
+		QUARTZ_SHAKE = "쿼츠 쉐이크",
+		CHERRY_ROSEBERRIES_TEA = "로즈힙 티",
+		CHERRY_HONEY_TEA = "벚꽃꿀차",
+		SWEET_RICE_DRINK = "식혜",
+
 		SPOILED_DRINK = "음료가 구정물이 됐잖아.",
 		SODA = "정말 상쾌해!",
 		FRUITSODA = "새콤달콤하면서도 상쾌해!",
@@ -91,8 +107,36 @@ return {
 		SPARKLINGWINE = "강렬하게 흔들어보고 싶어졌어.",
 		GLOWBERRYWINE = "음료가 과학으로 빛나고 있어.",
 		KUMIS = "우유로는 요구르트를 만드는 거 아니었어?",
+		LUMPY_WINE = "뿌리 와인",
+		PULQUE = "풀케",
 
-		BUCKET_STEEL_EMPTY = {
+		AUROBOW = "오로보우",
+		COCONUT_WINE = "코코넛 와인",
+		CHERRY_DOCTOR_COLA = "닥터 체리 콜라",
+		CHERRY_BLOOM_WINE = "벚꽃주",
+		GIANT_BLUEBERRY_WINE = "붐배리 와인",
+		RICE_WINE = "막걸리",
+		WHEAT_BEER = "밀 맥주",
+
+		DISINFECTANT = "소독약",
+		CORN_WHISKEY = "옥수수 위스키",
+		LUMPY_VODKA = "뿌리 보드카",
+		TEQUILA = "테킬라",
+		MADHU_RUM = "벌꿀 럼",
+		BERRY_BRANDY = "배리 브렌디",
+		BERRY_GIN = "배리 진",
+		GLOWBERRY_BRANDY = "발광배리 진",
+		AREUHI = "아르히",
+
+		MOONWAY = "문웨이",
+		ARRACK = "아락",
+		CHERRY_BLOOM_RUM = "벚꽃 럼",
+		GIANT_BLUEBERRY_GIN = "붐배리 진",
+		RICE_SPIRITS = "청주",
+		WHEAT_WHISKEY = "밀 위스키",
+
+		BUCKET_STEEL_EMPTY = 
+		{
 			EMPTY = "물을 채울 수 있어. 물 말고 다른 걸 채워도 되고.",
 			FULL = "빗물로 가득 찼어",
 			FULL_ICE = "이거 빼려면 고생 좀 하겠군",
@@ -100,7 +144,8 @@ return {
 			DIRTY_ICE = "얼기까지 해버렸군...",
 		},
 
-		BUCKET_WOODIE_EMPTY = {
+		BUCKET_WOODIE_EMPTY = 
+		{
 			EMPTY = "물을 채울 수 있어. 물 말고 다른 걸 채워도 되고.",
 			FULL = "빗물로 가득 찼어",
 			FULL_ICE = "이거 빼려면 고생 좀 하겠군",
@@ -108,7 +153,8 @@ return {
 			DIRTY_ICE = "얼기까지 해버렸군...",
 		},
 
-		BUCKET_EMPTY = {
+		BUCKET_EMPTY = 
+		{
 			EMPTY = "물을 채울 수 있어. 물 말고 다른 걸 채워도 되고.",
 			FULL = "빗물로 가득 찼어",
 			FULL_ICE = "이거 빼려면 고생 좀 하겠군",

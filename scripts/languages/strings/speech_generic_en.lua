@@ -47,6 +47,18 @@ return {
 		CAFFEINBERRY_BEAN = "Not like coffee beans I used to know.",
 		CAFFEINBERRY_BEAN_COOKED = "Heat certainly improved it.",
 
+		RUINCACAO_TREE = "Cacao Tree",
+		DUG_RUINCACAO_TREE = "Cacao Tree",
+		RUINCACAO_SEED = "Cacao Tree Seed",
+		RUINCACAO_SEED_SAPLING = "Cacao Tree Sapling",
+		RUINCACAO = "Cacao",
+		RUINCACAO_BEAN = "Cacao Beans",
+		TEA_SEED_COOKED = "Roasted Cacao Beans",
+
+		ADDITIVE_SEED = "Seed Additive",
+		--ADDITIVE_PETALS = "Petals Additive",
+		--ADDITIVE_RUINCACAO = "Cacao Additive",
+
 		WATER_CLEAN = "It seems safe to drink.",
 		WATER_DIRTY = "I don't think it's safe to drink as it is.",
 		WATER_SALTY = "It's oversalty to drink.",
@@ -77,6 +89,22 @@ return {
 		CACTUSFLOWER_TEA = "A tea from a prickly plant.",
 		LOTUSTEA = "It would be nice to have some biscuits.",
 		SUSHIBISCUS = "This ought to be a scientifc impossibili-tea.",
+		
+		TOFFEE_LATTE = "Toffee Nut Latte",
+		RUINCHA_LATTE = "Mocha Latte",
+		LUMPY_TEA = "Root Beer",
+		SEAWEED_SHAKE = "Seaweed Shake",
+		BUTTERBEER = "Butter Beer",
+		HOTRUINCOLATE = "Hot Chocolate",
+		RUINXOCOLATL = "Xocolatl",
+		TEA_RUINCOLATE_LATTE = "Green Tea Chocolate Latte",
+
+		COCONUT_JUICE = "Fruits Natas de Coco",
+		RAINBOW_SHAKE = "Rainbow Sxhake",
+		QUARTZ_SHAKE = "Quartz Shake",
+		CHERRY_ROSEBERRIES_TEA = "Rose Hips Tea",
+		CHERRY_HONEY_TEA = "Bloomy Honey Tea",
+		SWEET_RICE_DRINK = "Sikhye",
 
 		SPOILED_DRINK = "It's a muck of spoiled drink.",
 		SODA = "So refreshing!",
@@ -91,8 +119,36 @@ return {
 		SPARKLINGWINE = "I have an overwhelming urge to shake it.",
 		GLOWBERRYWINE = "It's glowing by science.",
 		KUMIS = "Wasn't milk supposed to be made into yogurt?",
+		LUMPY_WINE = "Root Wine",
+		PULQUE = "Pulque",
 
-		BUCKET_STEEL_EMPTY = {
+		AUROBOW = "Aurobow",
+		COCONUT_WINE = "Coconut Wine",
+		CHERRY_DOCTOR_COLA = "Doc Cherry Cola",
+		CHERRY_BLOOM_WINE = "Bloomy Wine",
+		GIANT_BLUEBERRY_WINE = "Boomberry Wine",
+		RICE_WINE = "Makgeolli",
+		WHEAT_BEER = "Wheat Beer",
+
+		DISINFECTANT = "Disinfectant",
+		CORN_WHISKEY = "Corn Whiskey",
+		LUMPY_VODKA = "Lumpy Vodka",
+		TEQUILA = "Tequila",
+		MADHU_RUM = "Mead Rum",
+		BERRY_BRANDY = "Berry Brandy",
+		BERRY_GIN = "Berry Gin",
+		GLOWBERRY_BRANDY = "Glowberry Brandy",
+		AREUHI = "Areuhi",
+
+		MOONWAY = "Moonway",
+		ARRACK = "Arrack",
+		CHERRY_BLOOM_RUM = "Bloomy Rum",
+		GIANT_BLUEBERRY_GIN = "Boomberry Gin",
+		RICE_SPIRITS = "Cheongju",
+		WHEAT_WHISKEY = "Wheat Whiskey",
+
+		BUCKET_STEEL_EMPTY = 
+		{
 			EMPTY = "I can fill it with water. Or something else.",
 			FULL = "It's full of rainwater",
 			FULL_ICE = "It's going to be hard to take this out",
@@ -100,7 +156,8 @@ return {
 			DIRTY_ICE = "It's frozen...",
 		},
 
-		BUCKET_WOODIE_EMPTY = {
+		BUCKET_WOODIE_EMPTY = 
+		{
 			EMPTY = "I can fill it with water. Or something else.",
 			FULL = "It's full of rainwater",
 			FULL_ICE = "It's going to be hard to take this out",
@@ -108,7 +165,8 @@ return {
 			DIRTY_ICE = "It's frozen...",
 		},
 
-		BUCKET_EMPTY = {
+		BUCKET_EMPTY = 
+		{
 			EMPTY = "I can fill it with water. Or something else.",
 			FULL = "It's full of rainwater",
 			FULL_ICE = "It's going to be hard to take this out",

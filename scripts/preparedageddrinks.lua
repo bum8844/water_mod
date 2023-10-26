@@ -133,7 +133,7 @@ local drinks =
 		potlevel = "mid",
 		potlevel_bottle = "mid",
 		prefabs = { "alcoholdebuff","drunkarddebuff","resistancebuff" },
-		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_INTOXICATION,
+		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_NAG_AURA_RESIST,
 		card_def = {ingredients = {{"corn", 4}}},
 		oneatenfn = function(inst, eater)
 			alcohol(inst, eater)
@@ -153,7 +153,7 @@ local drinks =
 		potlevel = "mid",
 		potlevel_bottle = "mid",
 		prefabs = { "alcoholdebuff","drunkarddebuff","resistancebuff" },
-		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_INTOXICATION,
+		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_NAG_AURA_RESIST,
 		oneatenfn = function(inst, eater)
 			alcohol(inst, eater)
 		end,
@@ -173,7 +173,7 @@ local drinks =
 		potlevel = "mid",
 		potlevel_bottle = "mid",
 		prefabs = { "alcoholdebuff","drunkarddebuff","resistancebuff" },
-		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_INTOXICATION,
+		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_NAG_AURA_RESIST,
 		oneatenfn = function(inst, eater)
 			alcohol(inst, eater)
 		end,
@@ -193,7 +193,7 @@ local drinks =
 		potlevel = "mid",
 		potlevel_bottle = "high",
 		prefabs = { "alcoholdebuff","drunkarddebuff","resistancebuff" },
-		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_INTOXICATION,
+		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_NAG_AURA_RESIST,
 		oneatenfn = function(inst, eater)
 			alcohol(inst, eater)
 		end,
@@ -214,7 +214,7 @@ local drinks =
 		potlevel = "high",
 		potlevel_bottle = "mid",
 		prefabs = { "alcoholdebuff","drunkarddebuff","resistancebuff" },
-		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_INTOXICATION,
+		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_NAG_AURA_RESIST,
 		oneatenfn = function(inst, eater)
 			alcohol(inst, eater)
 		end,
@@ -234,7 +234,7 @@ local drinks =
 		potlevel = "high",
 		potlevel_bottle = "mid",
 		prefabs = { "alcoholdebuff","drunkarddebuff","resistancebuff" },
-		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_INTOXICATION,
+		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_NAG_AURA_RESIST,
 		oneatenfn = function(inst, eater)
 			alcohol(inst, eater)
 		end,
@@ -251,7 +251,7 @@ local drinks =
 		tags = {"alcohol"},
 		perishtime = TUNING.PERISH_PRESERVED,
 		cooktime = (TUNING.KETTLE_FRUIT + TUNING.BEER_WAIT),
-		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_INTOXICATION,
+		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_NAG_AURA_RESIST_GLOW,
 		potlevel = "high",
 		potlevel_bottle = "mid",
 		prefabs = { "alcoholdebuff","drunkarddebuff","resistancebuff" },
@@ -275,7 +275,7 @@ local drinks =
 		potlevel_bottle = "mid",
 		prefabs = { "alcoholdebuff","drunkarddebuff","resistancebuff","wormlight_light" },
 		cooktime = (TUNING.KETTLE_FRUIT + TUNING.BEER_WAIT),
-		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_INTOXICATION_GLOW,
+		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_NAG_AURA_RESIST_GLOW,
 		oneatenfn = function(inst, eater)
 			alcohol(inst, eater)
            	if eater.wormlight ~= nil then
@@ -312,7 +312,7 @@ local drinks =
 		potlevel = "mid",
 		potlevel_bottle = "mid",
 		prefabs = { "alcoholdebuff","drunkarddebuff","resistancebuff" },
-		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_INTOXICATION,
+		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_NAG_AURA_RESIST,
 		card_def = {ingredients = {{"goatmilk",4}}},
 		oneatenfn = function(inst, eater)
 			alcohol(inst, eater)
@@ -321,11 +321,14 @@ local drinks =
 }
 
 local mod_drink = require("modcompats/preparedageddrinks_mod")
-local hof, ia, te, cf, unc = false, false, false, false, false
+local hof, ia, te, cf, unc, mfp = false, false, false, false, false, false
 
 for k,mod_id in ipairs(KnownModIndex:GetModsToLoad()) do 
 	if mod_id == "workshop-2334209327" then
 		hof = true
+	end
+	if mod_id == "workshop-2762334054" then
+		mfp = true
 	end
 	if mod_id == "workshop-1505270912" then
 		te = true
@@ -357,6 +360,13 @@ end
 if te or ia or hof then
 	local coconut_drink = mod_drink.coconut_drink
 	for k,v in pairs(coconut_drink) do
+		drinks[k] = v
+	end
+end
+
+if hof or mfp then
+	local wheat_drink = mod_drink.wheat_drink
+	for k, v in pairs(wheat_drink) do
 		drinks[k] = v
 	end
 end

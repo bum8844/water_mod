@@ -46,6 +46,18 @@ return {
 		DUG_CAFFEINBERRY = "커피는 나무에서 열리는 거랬는데.",
 		CAFFEINBERRY_BEAN = "커피가 원래 이렇게 생겼던가?",
 		CAFFEINBERRY_BEAN_COOKED = "이제 좀 커피 같은 냄새가 나!",
+		
+		RUINCACAO_TREE = "",
+		DUG_RUINCACAO_TREE = "",
+		RUINCACAO_SEED = "",
+		RUINCACAO_SEED_SAPLING = "",
+		RUINCACAO = "",
+		RUINCACAO_BEAN = "",
+		TEA_SEED_COOKED = "",
+
+		ADDITIVE_SEED = "",
+		--ADDITIVE_PETALS = "",
+		--ADDITIVE_RUINCACAO = "",
 
 		WATER_CLEAN = "식수 확보는 생존의 핵심이야!",
 		WATER_DIRTY = "한 번 끓여서 마셔야겠어.",
@@ -78,6 +90,22 @@ return {
 		LOTUSTEA = "",
 		SUSHIBISCUS = "",
 
+		TOFFEE_LATTE = "",
+		RUINCHA_LATTE = "",
+		LUMPY_TEA = "",
+		SEAWEED_SHAKE = "",
+		BUTTERBEER = "",
+		HOTRUINCOLATE = "",
+		RUINXOCOLATL = "",
+		TEA_RUINCOLATE_LATTE = "",
+
+		COCONUT_JUICE = "",
+		RAINBOW_SHAKE = "",
+		QUARTZ_SHAKE = "",
+		CHERRY_ROSEBERRIES_TEA = "",
+		CHERRY_HONEY_TEA = "",
+		SWEET_RICE_DRINK = "",
+
 		SPOILED_DRINK = "",
 		SODA = "",
 		FRUITSODA = "",
@@ -91,8 +119,36 @@ return {
 		SPARKLINGWINE = "",
 		GLOWBERRYWINE = "",
 		KUMIS = "",
+		LUMPY_WINE = "",
+		PULQUE = "",
 
-		BUCKET_STEEL_EMPTY = {
+		AUROBOW = "",
+		COCONUT_WINE = "",
+		CHERRY_DOCTOR_COLA = "",
+		CHERRY_BLOOM_WINE = "",
+		GIANT_BLUEBERRY_WINE = "",
+		RICE_WINE = "",
+		WHEAT_BEER = "",
+
+		DISINFECTANT = "",
+		CORN_WHISKEY = "",
+		LUMPY_VODKA = "",
+		TEQUILA = "",
+		MADHU_RUM = "",
+		BERRY_BRANDY = "",
+		BERRY_GIN = "",
+		GLOWBERRY_BRANDY = "",
+		AREUHI = "",
+
+		MOONWAY = "",
+		ARRACK = "",
+		CHERRY_BLOOM_RUM = "",
+		GIANT_BLUEBERRY_GIN = "",
+		RICE_SPIRITS = "",
+		WHEAT_WHISKEY = "",
+
+		BUCKET_STEEL_EMPTY = 
+		{
 			EMPTY = "",
 			FULL = "",
 			FULL_ICE = "",
@@ -100,7 +156,8 @@ return {
 			DIRTY_ICE = "",
 		},
 
-		BUCKET_WOODIE_EMPTY = {
+		BUCKET_WOODIE_EMPTY = 
+		{
 			EMPTY = "",
 			FULL = "",
 			FULL_ICE = "",
@@ -108,7 +165,8 @@ return {
 			DIRTY_ICE = "",
 		},
 
-		BUCKET_EMPTY = {
+		BUCKET_EMPTY = 
+		{
 			EMPTY = "물을 퍼담을 수는 있지만 ",
 			FULL = "",
 			FULL_ICE = "",
