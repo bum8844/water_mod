@@ -104,7 +104,7 @@ return {
 		QUARTZ_SHAKE = "생선 비린내가 안 나기를.",
 		CHERRY_ROSEBERRIES_TEA = "",
 		CHERRY_HONEY_TEA = "",
-		SWEET_RICE_DRINK = "",
+		SWEET_RICE_DRINK = "이런 음료도 있었어?",
 
 		SPOILED_DRINK = "음료가 구정물이 됐잖아.",
 		SODA = "정말 상쾌해!",
@@ -127,7 +127,7 @@ return {
 		CHERRY_DOCTOR_COLA = "의사가 만들었다는 거는 거짓말이야.",
 		CHERRY_BLOOM_WINE = "",
 		GIANT_BLUEBERRY_WINE = "",
-		RICE_WINE = "",
+		RICE_WINE = "이런 양조주도 있었어?",
 		WHEAT_BEER = "과학적으로 이건 맥주야.",
 
 		DISINFECTANT = "",
@@ -144,7 +144,7 @@ return {
 		ARRACK = "",
 		CHERRY_BLOOM_RUM = "",
 		GIANT_BLUEBERRY_GIN = "",
-		RICE_SPIRITS = "",
+		RICE_SPIRITS = "이런 증류주도 있었어?",
 		WHEAT_WHISKEY = "",
 
 		BUCKET_STEEL_EMPTY = 
