@@ -94,7 +94,7 @@ local function ruincacao()
     inst.AnimState:SetBuild("ruincacao_tree_seed")
     inst.AnimState:PlayAnimation("idle_ruincacao")
 
-    inst.pickupsound = "wood"
+    inst.pickupsound = "rock"
 
     inst:AddTag("molebait")
 

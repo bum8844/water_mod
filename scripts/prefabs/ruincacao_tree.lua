@@ -27,12 +27,12 @@ local BUSH_ANIMS =
 }
 
 local function play_idle(inst, stage)
-    inst.AnimState:PlayAnimation(BUSH_ANIMS[stage].idle)
+    inst.AnimState:PlayAnimation(BUSH_ANIMS[stage].idle,true)
 end
 
 local function play_grow(inst, stage)
     inst.AnimState:PlayAnimation(BUSH_ANIMS[stage].grow)
-    inst.AnimState:PushAnimation(BUSH_ANIMS[stage].idle)
+    inst.AnimState:PushAnimation(BUSH_ANIMS[stage].idle,true)
 end
 
 local function set_stage1(inst)
