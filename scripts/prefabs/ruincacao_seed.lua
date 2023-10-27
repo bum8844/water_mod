@@ -3,7 +3,7 @@ require "prefabutil" -- for the MakePlacer function
 local assets =
 {
     Asset("ANIM", "anim/ruincacao_tree_seed.zip"),
-	Asset("ANIM", "anim/ruincacao_build.zip"),
+	Asset("ANIM", "anim/ruincacao_tree_build.zip"),
 }
 
 local function on_hammered(inst, hammer, workleft, workdone)
@@ -84,14 +84,14 @@ local function OnExplosion_ruincacao(inst, data)
 end
 
 local function ruincacao()
-    local inst = CreateEntity
+    local inst = CreateEntity()
 
     inst.entity:AddTransform()
     inst.entity:AddAnimState()
     inst.entity:AddNetwork()
 
-    inst.AnimState:SetBank("ruincacao")
-    inst.AnimState:SetBuild("ruincacao")
+    inst.AnimState:SetBank("ruincacao_tree_seed")
+    inst.AnimState:SetBuild("ruincacao_tree_seed")
     inst.AnimState:PlayAnimation("idle_ruincacao")
 
     inst.pickupsound = "wood"
@@ -113,6 +113,9 @@ local function ruincacao()
 
     inst:AddComponent("inspectable")
 
+    inst:AddComponent("stackable")
+    inst.components.stackable.maxsize = TUNING.STACK_SIZE_SMALLITEM
+
     inst:AddComponent("inventoryitem")
     inst.replica.inventoryitem:SetImage("ruincacao")
     inst.components.inventoryitem.atlasname= "images/tea_inventoryitem.xml"
@@ -123,7 +126,6 @@ local function ruincacao()
     inst:AddComponent("workable")
     inst.components.workable:SetWorkAction(ACTIONS.HAMMER)
     inst.components.workable:SetWorkLeft(TUNING.ROCK_FRUIT_MINES * inst.components.stackable.stacksize)
-    --inst.components.workable:SetOnFinishCallback(on_mine)
     inst.components.workable:SetOnWorkCallback(on_hammered)
 
     inst:AddComponent("bait")
@@ -143,8 +145,8 @@ local function ruincacao_bean()
     inst.entity:AddAnimState()
     inst.entity:AddNetwork()
 
-    inst.AnimState:SetBank("ruincacao_bean")
-    inst.AnimState:SetBuild("ruincacao_bean")
+    inst.AnimState:SetBank("ruincacao_tree_seed")
+    inst.AnimState:SetBuild("ruincacao_tree_seed")
     inst.AnimState:PlayAnimation("idle_ruincacao_bean")
 
     MakeInventoryPhysics(inst)
@@ -163,11 +165,6 @@ local function ruincacao_bean()
     inst.components.stackable.maxsize = TUNING.STACK_SIZE_SMALLITEM
 
     inst:AddComponent("inspectable")
-
-    inst:AddComponent("perishable")
-    inst.components.perishable:SetPerishTime(TUNING.PERISH_FAST)
-    inst.components.perishable.onperishreplacement = "spoiled_food"
-    inst.components.perishable:StartPerishing()
 
     inst:AddComponent("inventoryitem")
     inst.replica.inventoryitem:SetImage("ruincacao_bean")
@@ -194,8 +191,8 @@ local function ruincacao_bean_cooked()
     inst.entity:AddAnimState()
     inst.entity:AddNetwork()
 
-    inst.AnimState:SetBank("ruincacao_bean")
-    inst.AnimState:SetBuild("ruincacao_bean")
+    inst.AnimState:SetBank("ruincacao_tree_seed")
+    inst.AnimState:SetBuild("ruincacao_tree_seed")
     inst.AnimState:PlayAnimation("ruincacao_bean_cooked")
 
     MakeInventoryPhysics(inst)
@@ -288,7 +285,7 @@ local function ruincacao_seed_sapling()
     inst.entity:AddMiniMapEntity()
     inst.entity:AddNetwork()
 
-    inst.AnimState:SetBank("ruincacao_seed")
+    inst.AnimState:SetBank("ruincacao_tree_seed")
     inst.AnimState:SetBuild("ruincacao_tree_seed")
     inst.AnimState:PlayAnimation("planted")
 
@@ -345,7 +342,7 @@ local function ruincacao_seed()
     inst.entity:AddAnimState()
     inst.entity:AddNetwork()
 
-    inst.AnimState:SetBank("ruincacao_seed")
+    inst.AnimState:SetBank("ruincacao_tree_seed")
     inst.AnimState:SetBuild("ruincacao_tree_seed")
     inst.AnimState:PlayAnimation("idle")
 
