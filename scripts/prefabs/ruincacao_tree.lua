@@ -36,6 +36,8 @@ local function play_grow(inst, stage)
 end
 
 local function set_stage1(inst)
+    inst.components.pickable:ChangeProduct(nil)
+
     inst.components.pickable.canbepicked = false
 
     play_idle(inst, 1)
@@ -46,8 +48,10 @@ local function grow_to_stage1(inst)
 end
 
 local function set_stage2(inst)
+    inst.components.pickable:ChangeProduct(nil)
+
     inst.components.pickable.canbepicked = false
-    
+
     play_idle(inst, 2)
 end
 
@@ -56,6 +60,8 @@ local function grow_to_stage2(inst)
 end
 
 local function set_stage3(inst)
+    inst.components.pickable:ChangeProduct("ruincacao")
+
     inst.components.pickable:Regen()
 
     play_idle(inst, 3)
@@ -63,6 +69,17 @@ end
 
 local function grow_to_stage3(inst)
     play_grow(inst, 3)
+end
+
+local function set_stage4(inst)
+    inst.components.pickable:ChangeProduct(nil)
+
+    -- If we got set here directly, instead of going through stage 3, we still need to be pickable.
+    if not inst.components.pickable:CanBePicked() then
+        inst.components.pickable:Regen()
+    end
+
+    play_idle(inst, 4)
 end
 
 local function set_stage4(inst)
@@ -119,19 +136,6 @@ local function onregenfn(inst)
     end
 end
 
-local function SetupLoot(lootdropper)
-    local inst = lootdropper.inst
-    local withered = inst.components.witherable ~= nil and inst.components.witherable:IsWithered()
-
-    if not withered and inst.components.growable ~= nil then
-        if inst.components.growable.stage == 3 then
-            lootdropper:SetLoot({"ruincacao", "ruincacao", "ruincacao"})
-        else
-            inst.components.lootdropper:SetLoot(nil)
-        end
-    end
-end
-
 local function on_bush_burnt(inst)
     -- Just like birchnut tree drops cooked birchnut when burnt
     if inst.components.growable.stage == 3 then
@@ -162,7 +166,13 @@ local function on_dug_up(inst, digger)
         inst.components.lootdropper:SpawnLootPrefab("twigs")
         inst.components.lootdropper:SpawnLootPrefab("twigs")
     elseif inst.components.lootdropper ~= nil then
-        inst.components.lootdropper:DropLoot()
+
+        if inst.components.growable.stage == 3 then
+            inst.components.lootdropper:SpawnLootPrefab("ruincacao")
+            inst.components.lootdropper:SpawnLootPrefab("ruincacao")
+            inst.components.lootdropper:SpawnLootPrefab("ruincacao")
+        end
+
         inst.components.lootdropper:SpawnLootPrefab("dug_ruincacao_tree")
     end
 
@@ -179,7 +189,6 @@ local function onpickedfn(inst, picker)
     local picked_anim = (inst.components.growable.stage == 3 and "picked") or "crumble"
 
     inst.components.growable:SetStage(1)
-    inst.components.lootdropper:SetLoot(nil)
 
     -- Play the proper picked animation.
     inst.AnimState:PlayAnimation(picked_anim)
@@ -302,7 +311,6 @@ local function ruincacao_tree()
     MakeHauntableIgnite(inst)
 
     inst:AddComponent("lootdropper")
-    inst.components.lootdropper.lootsetupfn = SetupLoot
 
     if not GetGameModeProperty("disable_transplanting") then
         inst:AddComponent("workable")
@@ -313,11 +321,7 @@ local function ruincacao_tree()
 
     inst:AddComponent("pickable")
     inst.components.pickable.picksound = "dontstarve/wilson/harvest_berries"
-
-    -- We will have 3 rock fruit, but we only have real product for one stage, and it's not our initial stage.
-    -- We use ChangeProduct to set this up elsewhere.
-    --inst.components.pickable.numtoharvest = 3
-    inst.components.pickable.use_lootdropper_for_product = true
+    inst.components.pickable.numtoharvest = 3
     inst.components.pickable.onpickedfn = onpickedfn
     inst.components.pickable.makeemptyfn = makeemptyfn
     inst.components.pickable.makebarrenfn = makebarrenfn
@@ -338,6 +342,9 @@ local function ruincacao_tree()
     inst.components.growable.magicgrowable = true
     inst.components.growable:SetStage(math.random(1, 4))
     inst.components.growable:StartGrowing()
+
+    inst:AddComponent("simplemagicgrower")
+    inst.components.simplemagicgrower:SetLastStage(#inst.components.growable.stages - 1)
 
     inst.OnSave = on_save
     inst.OnLoad = on_load
