@@ -162,6 +162,7 @@ local wheat_drink = {
 		oneatenfn = function(inst, eater)
 			spirits(inst, eater)
 		end,
+	}
 }
 
 return { sw_drink = sw_drink, coconut_drink = coconut_drink, cf_drink = cf_drink, unc_drink = unc_drink, wheat_drink = wheat_drink }
