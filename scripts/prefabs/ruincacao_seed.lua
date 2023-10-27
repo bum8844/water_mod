@@ -287,7 +287,7 @@ local function ruincacao_seed_sapling()
 
     inst.AnimState:SetBank("ruincacao_tree_seed")
     inst.AnimState:SetBuild("ruincacao_tree_seed")
-    inst.AnimState:PlayAnimation("planted")
+    inst.AnimState:PlayAnimation("planted",true)
 
     --inst:SetPrefabNameOverride("ROCK_AVOCADO_FRUIT_SPROUT")
 	
