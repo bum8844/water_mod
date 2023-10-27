@@ -12,7 +12,7 @@ local function on_hammered(inst, hammer, workleft, workdone)
     local loot_data = TUNING.RUINCACAO_LOOT
     if inst.components.stackable:StackSize() > num_beans_worked then
         inst.AnimState:PlayAnimation("hammered")
-        inst.AnimState:PushAnimation("idle", false)
+        inst.AnimState:PushAnimation("idle_ruincacao", false)
     end
 
     -- Generate a list of prefabs to create first and optimize the loop by having every type here.
@@ -59,7 +59,7 @@ local function on_hammered(inst, hammer, workleft, workdone)
             LaunchAt(loot, inst, hammer, loot_data.SPEED, loot_data.HEIGHT, nil, loot_data.ANGLE)
             if prefab == "ruincacao_bean" then
                 loot.AnimState:PlayAnimation("split_open")
-                loot.AnimState:PushAnimation("idle_split_open")
+                loot.AnimState:PushAnimation("idle_ruincacao_bean")
             end
         end
     end
@@ -240,8 +240,7 @@ local function ruincacao_bean_cooked()
 end
 
 local function dig_sprout(inst, digger)
-    inst.components.lootdropper:SpawnLootPrefab("twigs")
-	inst.components.lootdropper:SpawnLootPrefab("twigs")
+    inst.components.lootdropper:SpawnLootPrefab("ruincacao_seed")
     inst:Remove()
 end
 
