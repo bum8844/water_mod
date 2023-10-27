@@ -195,12 +195,12 @@ local function onpickedfn(inst, picker)
     if inst.components.pickable:IsBarren() then
         -- NOTE: IsBarren just tests cycles_left; MakeBarren hasn't actually been called!
         -- So we need to do the relevant parts of that function. Copied here just to not overload SetStage/animations.
-        inst.AnimState:PushAnimation("idle1_to_dead1", false)
-        inst.AnimState:PushAnimation("dead1", false)
+        inst.AnimState:PushAnimation("idle1_to_dead1")
+        inst.AnimState:PushAnimation("dead1", true)
         inst.components.growable:StopGrowing()
         inst.components.growable.magicgrowable = false
     else
-        inst.AnimState:PushAnimation("idle1", false)
+        inst.AnimState:PushAnimation("idle1", true)
     end
 end
 
