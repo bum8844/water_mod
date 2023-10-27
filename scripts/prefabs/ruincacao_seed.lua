@@ -357,15 +357,7 @@ local function ruincacao_seed()
     if not TheWorld.ismastersim then
         return inst
     end
-
-    inst:AddComponent("edible")
-    inst.components.edible.healthvalue = TUNING.HEALING_TINY
-    inst.components.edible.hungervalue = TUNING.CALORIES_SMALL
-    inst.components.edible.sanityvalue = 0
-    inst.components.edible.foodtype = FOODTYPE.VEGGIE
-
-    inst:AddComponent("bait")
-
+    
     inst:AddComponent("stackable")
     inst.components.stackable.maxsize = TUNING.STACK_SIZE_SMALLITEM
 
