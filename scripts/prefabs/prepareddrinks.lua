@@ -45,6 +45,21 @@ local function MakePreparedDrink(data)
         return inst:GetFertilizerKey()
     end
 
+    local function OnIgniteFn(inst)
+        inst.SoundEmitter:PlaySound("dontstarve/common/blackpowder_fuse_LP", "hiss")
+        DefaultBurnFn(inst)
+    end
+
+    local function OnExtinguishFn(inst)
+        inst.SoundEmitter:KillSound("hiss")
+        DefaultExtinguishFn(inst)
+    end
+
+    local function OnExplodeFn(inst)
+        inst.SoundEmitter:KillSound("hiss")
+        SpawnPrefab("explode_small").Transform:SetPosition(inst.Transform:GetWorldPosition())
+    end
+
     local function fn()
         local inst = CreateEntity()
 
@@ -103,21 +118,26 @@ local function MakePreparedDrink(data)
 
 		--inst.food_symbol_build = food_symbol_build or overridebuild
 
-        inst:AddComponent("edible")
-        inst.components.edible.isdrink = true
-        inst.components.edible.healthvalue = data.health
-        inst.components.edible.hungervalue = data.hunger
-        inst.components.edible.thirstvalue = data.thirst
-        inst.components.edible.foodtype = data.foodtype or FOODTYPE.GOODIES
-        inst.components.edible.secondaryfoodtype = data.secondaryfoodtype or FOODTYPE.GENERIC
-        inst.components.edible.sanityvalue = data.sanity or 0
-        inst.components.edible.temperaturedelta = data.temperature or 0
-        inst.components.edible.temperatureduration = data.temperatureduration or 0
-        inst.components.edible.nochill = data.nochill or nil
-        inst.components.edible:SetOnEatenFn(function(inst, eater)
-            oneatenfn(inst, eater)
-            --OnEaten(inst, eater)
-        end)
+        if not inst:HasTag("disinfectant") then
+            inst:AddComponent("edible")
+            inst.components.edible.isdrink = true
+            inst.components.edible.healthvalue = data.health
+            inst.components.edible.hungervalue = data.hunger
+            inst.components.edible.thirstvalue = data.thirst
+            inst.components.edible.foodtype = data.foodtype or FOODTYPE.GOODIES
+            inst.components.edible.secondaryfoodtype = data.secondaryfoodtype or FOODTYPE.GENERIC
+            inst.components.edible.sanityvalue = data.sanity or 0
+            inst.components.edible.temperaturedelta = data.temperature or 0
+            inst.components.edible.temperatureduration = data.temperatureduration or 0
+            inst.components.edible.nochill = data.nochill or nil
+            inst.components.edible:SetOnEatenFn(function(inst, eater)
+                oneatenfn(inst, eater)
+                --OnEaten(inst, eater)
+            end)
+        else
+            inst:AddComponent("healer")
+            inst.components.healer:SetHealthAmount(TUNING.HEALING_HUGE)
+        end
 
         inst:AddComponent("inspectable")
         inst.wet_prefix = data.wet_prefix
@@ -141,6 +161,19 @@ local function MakePreparedDrink(data)
             inst.components.perishable:SetPerishTime(data.perishtime)
             inst.components.perishable:StartPerishing()
             inst.components.perishable.onperishreplacement = "spoiled_drink"
+        end
+
+        if inst:HasTag("explosive") then
+            MakeSmallBurnable(inst, 3 + math.random() * 3)
+            MakeSmallPropagator(inst)
+
+            inst.components.burnable:SetOnBurntFn(nil)
+            inst.components.burnable:SetOnIgniteFn(OnIgniteFn)
+            inst.components.burnable:SetOnExtinguishFn(OnExtinguishFn)
+
+            inst:AddComponent("explosive")
+            inst.components.explosive:SetOnExplodeFn(OnExplodeFn)
+            inst.components.explosive.explosivedamage = TUNING.GUNPOWDER_DAMAGE
         end
 
         MakeDynamicCupImage(inst, "swap", "kettle_drink")
@@ -169,6 +202,10 @@ for k, v in pairs(require("prepareddrinks")) do
 end
 
 for k, v in pairs(require("preparedageddrinks")) do
+    table.insert(prefs, MakePreparedDrink(v))
+end
+
+for k, v in pairs(require("preparedspiritsdrink")) do
     table.insert(prefs, MakePreparedDrink(v))
 end
 

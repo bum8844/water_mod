@@ -2,6 +2,7 @@
 --every time waterlevel is updated.
 local Waterlevel = Class(function(self, inst)
 	self.inst = inst
+	self._onlydistill = net_bool(inst.GUID, "waterlevel._onlydistill")
 	self._accepting = net_bool(inst.GUID, "waterlevel._accepting")
 	self._isdepleted = net_bool(inst.GUID, "waterlevel._isdepleted", "waterleveldirty")
 	self._watertype = net_hash(inst.GUID, "waterlevel._watertype")
@@ -10,6 +11,10 @@ end)
 --getters
 function Waterlevel:HasWater()
 	return not self._isdepleted:value()
+end
+
+function Waterlevel:OnlyDistill()
+	return self._onlydistill:value()
 end
 
 function Waterlevel:IsAccepting()

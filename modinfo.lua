@@ -79,6 +79,20 @@ configuration_options =
 		},
 		default = 1.2,
 	},
+	{
+		name = "gen_ruincacao_tree",
+		label = "Cacao Plants",
+		hover = "How many Cacao Plants do you want to generate?",
+		options =
+		{
+			{description = "None", data = 0},
+			{description = "Less", data = 0.7},
+			{description = "Default", data = 1.2},
+			{description = "More", data = 1.7},
+			{description = "Lots", data = 1.9},
+		},
+		default = 1.2,
+	},
 	SEPARATOR,
 	Title("Thirst options"),
 	{
@@ -258,6 +272,19 @@ configuration_options =
 		default = .5
 	},
 	{
+		name = "resistance_time",
+		label = "Sanity Depression Arua Resistance",
+		options =
+		{
+			{description = "Shorter", data = .125},
+			{description = "Short", data = .25},
+			{description = "Default", data = .5},
+			{description = "Long", data = .625},
+			{description = "Longer", data = .75},
+		},
+		default = .5
+	},
+	{
 		name = "immune_time",
 		label = "Pain Relief Duration",
 		options =
@@ -305,6 +332,21 @@ configuration_options =
 	Title("Drink O.B.E. Effect"),
 	{
 		name = "ghost_time",
+		label = "Duration",
+		options =
+		{
+			{description = "Shorter", data = .0625},
+			{description = "Short", data = .125},
+			{description = "Default", data = .25},
+			{description = "Long", data = .5},
+			{description = "Longer", data = 1},
+		},
+		default = .25
+	},
+	SEPARATOR,
+	Title("Drink Butterhunter Effect"),
+	{
+		name = "butterhunter_time",
 		label = "Duration",
 		options =
 		{

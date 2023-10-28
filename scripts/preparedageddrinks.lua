@@ -1,91 +1,11 @@
-local function alcahol(inst, eater)
-	if eater:HasTag("player") then
-		eater.components.dcapacity:Start_Intoxication()
-		if eater.components.dcapacity:IsDrunk() then
-			if not eater:HasTag("valkyrie") then
-				eater.alcoholdebuff_duration = TUNING.INTOXICATION_TIME
-				eater:AddDebuff("alcoholdebuff", "alcoholdebuff")
-				eater:AddDebuff("drunkarddebuff", "drunkarddebuff")
-			else
-				eater.components.talker:Say(GetString(eater,"ANNOUNCE_DRUNK_IMMUNITY"))
-			end
-		else
-			if not eater:HasTag("valkyrie") then
-				if eater.components.dcapacity:IsCritical() then
-					eater.components.talker:Say(GetString(eater,"ANNOUNCE_DCAPACITY_CRITICAL"))
-				elseif eater.components.dcapacity:IsHalf() then
-					eater.components.talker:Say(GetString(eater,"ANNOUNCE_DCAPACITY_HALF"))
-				end
-			end
-		end
-		eater.immunebuff_duration = TUNING.IMMUNE_TIME
-		eater:AddDebuff("immunebuff", "immunebuff")
-	else
-		eater.alcoholdebuff_duration = TUNING.INTOXICATION_TIME
-		eater.immunebuff_duration = TUNING.IMMUNE_TIME
-		eater:AddDebuff("immunebuff", "immunebuff")
-		eater:AddDebuff("alcoholdebuff", "alcoholdebuff")
-		eater:AddDebuff("drunkarddebuff", "drunkarddebuff")
-	end
-end
-
-local function notmeat(tags)
-	return not (tags.fish or tags.jellyfish or tags.meat or tags.egg or tags.boss or tags.poop or tags.elemental or tags.paper or tags.horn or tags.spotspice or tags.gears or tags.rabbit or tags.beanbug or tags.gummybug or tags.flour or tags.bread or tags.chocolate)
-end
-
-local function lessthing(names)
-	return ((names.twigs or 0) <= 1)
-end
-
-local function notname(names)
-	return not names.boneshard
-end
-
-local function blocking_thing_rainbowjellyfish(names ,tags)
-	return not (tags.meat or tags.egg or tags.boss or tags.poop or tags.elemental or tags.paper or tags.horn or tags.spotspice or tags.gears or tags.rabbit or tags.beanbug or tags.gummybug or tags.flour or tags.bread or tags.chocolate)
-end
-
-local function onlyrainbowjellyfish(names, tags)
-	local rainbowjellyfish = names.rainbowjellyfish or 0
-	local rainbowjellyfish_dead = (names.rainbowjellyfish_cooked or 0) + (names.rainbowjellyfish_cooked or 0)
-
-	local totalblock = tags.fish or 0
-
-	local totalignore = math.max(0,(totalblock - (rainbowjellyfish+rainbowjellyfish_dead)))
-
-	if blocking_thing_rainbowjellyfish(names ,tags) and totalignore <= 0 then
-		return 1
-	end 
-	return false
-end
-
-local function blocking_thing_dragoonheart(names ,tags)
-	return not (tags.jellyfish or tags.fish or tags.egg or tags.boss or tags.poop or tags.elemental or tags.paper or tags.horn or tags.spotspice or tags.gears or tags.rabbit or tags.beanbug or tags.gummybug or tags.flour or tags.bread or tags.chocolate)
-end
-
-local function onlydragoonheart(names, tags)
-	local dragoonheart = names.dragoonheart or 0
-
-	local totalblock = tags.meat or 0
-
-	local totalignore = math.max(0,(totalblock - dragoonheart))
-
-	if blocking_thing_dragoonheart(names ,tags) and totalignore <= 0 then
-		return 1
-	end 
-	return false
-end
-
-local function quantum_calc(names, tags)
-	return (names.wormlight or names.rainbowjellyfish) and onlyrainbowjellyfish(names, tags)
-end
+require "utils/water_brew_utils"
 
 local drinks =
 {
 	-- 탄산수 만들때 필수적으로 refined_dust 첨가
 	soda =
 	{
-		test = function(boilier, names, tags) return tags.ferment and onlydragoonheart(names, tags) end,
+		test = function(boilier, names, tags) return tags.ferment end,
 		priority = 0,
 		health = TUNING.HEALING_TINY/2,
 		hunger = TUNING.CALORIES_TINY/2,
@@ -101,7 +21,7 @@ local drinks =
 	
 	fruitsoda =
 	{
-		test = function(boilier, names, tags) return tags.ferment and tags.ferment >= 1 and tags.fruit and tags.fruit >= 1 and onlydragoonheart(names, tags) and notname(names) and lessthing(names) end,
+		test = function(boilier, names, tags) return tags.ferment and tags.ferment >= 1 and tags.fruit and tags.fruit >= 1 and notname(names) and lessthing(names) end,
 		priority = 2,
 		health = TUNING.HEALING_MEDSMALL/4,
 		hunger = TUNING.CALORIES_SMALL/4,
@@ -116,7 +36,7 @@ local drinks =
 	
 	lemonlimesoda =
 	{
-		test = function(boilier, names, tags) return tags.ferment and tags.ferment >= 1 and names.royal_jelly and names.royal_jelly >=1 and onlydragoonheart(names, tags) and notname(names) and lessthing(names) end,
+		test = function(boilier, names, tags) return tags.ferment and tags.ferment >= 1 and names.royal_jelly and names.royal_jelly >= 1 and notname(names) and lessthing(names) end,
 		priority = 3,
 		health = TUNING.HEALING_MED/4,
 		hunger = TUNING.CALORIES_MEDSMALL/4,
@@ -139,7 +59,7 @@ local drinks =
 	
 	cola =
 	{
-		test = function(boilier, names, tags) return (( names.caffeinberry_bean_cooked or 0 ) + ( names.kyno_coffeebeans_cooked or 0 ) + ( names.mfp_coffeecherry_cooked or 0 ) >= 1) and tags.ferment and tags.ferment >= 1 and names.royal_jelly and names.royal_jelly >= 1 and onlydragoonheart(names, tags) and notname(names) end,
+		test = function(boilier, names, tags) return (( names.caffeinberry_bean_cooked or 0 ) + ( names.kyno_coffeebeans_cooked or 0 ) + ( names.mfp_coffeecherry_cooked or 0 ) >= 1) and tags.ferment and tags.ferment >= 1 and names.royal_jelly and names.royal_jelly >= 1 and notname(names) end,
 		priority = 4,
 		health = (TUNING.HEALING_MED/2)/4,
 		hunger = TUNING.CALORIES_MEDSMALL/4,
@@ -160,7 +80,7 @@ local drinks =
 	
 	colaquantum =
 	{
-		test = function(boilier, names, tags) return quantum_calc(names, tags) and (( names.caffeinberry_bean_cooked or 0 ) + ( names.kyno_coffeebeans_cooked or 0 ) + ( names.mfp_coffeecherry_cooked or 0) == 1) and tags.ferment and tags.ferment == 1 and onlydragoonheart(names, tags) end,
+		test = function(boilier, names, tags) return quantum_calc(names, tags) and (( names.caffeinberry_bean_cooked or 0 ) + ( names.kyno_coffeebeans_cooked or 0 ) + ( names.mfp_coffeecherry_cooked or 0) == 1) and tags.ferment and tags.ferment == 1 end,
 		priority = 5,
 		health = TUNING.HEALING_SUPERHUGE,
 		hunger = TUNING.CALORIES_HUGE,
@@ -208,17 +128,56 @@ local drinks =
 		sanity = 0,
 		thirst = TUNING.HYDRATION_MED,
 		tags = {"alcohol"},
-		perishtime = TUNING.PERISH_SUPERSLOW,
+		perishtime = TUNING.PERISH_PRESERVED,
 		cooktime = (TUNING.KETTLE_VEGGIE + TUNING.BEER_WAIT),
 		potlevel = "mid",
 		potlevel_bottle = "mid",
-		prefabs = { "alcoholdebuff","caffeinbuff","immunebuff" },
-		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_INTOXICATION,
+		prefabs = { "alcoholdebuff","drunkarddebuff","resistancebuff" },
+		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_NAG_AURA_RESIST,
 		card_def = {ingredients = {{"corn", 4}}},
 		oneatenfn = function(inst, eater)
-			alcahol(inst, eater)
+			alcohol(inst, eater)
 		end,
 	},
+	-- 감자, 고구마
+	--[[lumpy_wine = {
+		test = function(boilier, names, tags) return ( ( names.potato or 0 ) + ( names.potato_cooked or 0 ) + ( names.kyno_sweetpotato or 0 ) + ( names.kyno_sweetpotato_cooked or 0 ) + ( names.mfp_sweetpotato or 0 ) + ( names.mfp_sweetpotato_cooked or 0 ) + ( names.sweetpotato or 0 ) + ( names.sweetpotato_cooked or 0 ) >= 3) and notmeat(tags) and notname(names) end,
+		priority = 1,
+		health = 0,
+		hunger = TUNING.CALORIES_MEDSMALL/2,
+		sanity = TUNING.SANITY_MED/2,
+		thirst = TUNING.HYDRATION_MED,
+		tags = {"alcohol"},
+		perishtime = TUNING.PERISH_PRESERVED,
+		cooktime = (TUNING.KETTLE_VEGGIE + TUNING.BEER_WAIT),
+		potlevel = "mid",
+		potlevel_bottle = "mid",
+		prefabs = { "alcoholdebuff","drunkarddebuff","resistancebuff" },
+		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_NAG_AURA_RESIST,
+		oneatenfn = function(inst, eater)
+			alcohol(inst, eater)
+		end,
+	},
+	-- 선인장
+	pulque = {
+		test = function(boilier, names, tags) return ((names.cactus_meat or 0) + (names.cactus_meat_cooked or 0) + (names.aloe or 0) + (names.aloe_cooked or 0) + (names.kyno_aloe or 0) + (names.kyno_aloe_cooked or 0) + (names.mfp_aloe or 0) + (names.mfp_aloe_cooked or 0)) >= 3 and notmeat(tags) and notname(names) end,
+		health = 0,
+		hunger = TUNING.CALORIES_MEDSMALL/2,
+		sanity = TUNING.SANITY_MED/2,
+		thirst = TUNING.HYDRATION_MED,
+		tags = {"alcohol"},
+		perishtime = TUNING.PERISH_PRESERVED,
+		cooktime = (TUNING.KETTLE_VEGGIE + TUNING.BEER_WAIT),
+		temperature = TUNING.COLD_FOOD_BONUS_TEMP,
+		temperatureduration = TUNING.FOOD_TEMP_AVERAGE,
+		potlevel = "mid",
+		potlevel_bottle = "mid",
+		prefabs = { "alcoholdebuff","drunkarddebuff","resistancebuff" },
+		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_NAG_AURA_RESIST,
+		oneatenfn = function(inst, eater)
+			alcohol(inst, eater)
+		end,
+	},]]
 	--꿀술
 	madhu =
 	{
@@ -229,16 +188,17 @@ local drinks =
 		sanity = TUNING.SANITY_SMALL/4,
 		thirst = TUNING.HYDRATION_MED,
 		tags = {"alcohol","honeyed"},
-		perishtime = TUNING.PERISH_SUPERSLOW,
+		perishtime = TUNING.PERISH_PRESERVED,
 		cooktime = (TUNING.KETTLE_VEGGIE + TUNING.BEER_WAIT),
 		potlevel = "mid",
 		potlevel_bottle = "high",
-		prefabs = { "alcoholdebuff","caffeinbuff","immunebuff" },
-		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_INTOXICATION,
+		prefabs = { "alcoholdebuff","drunkarddebuff","resistancebuff" },
+		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_NAG_AURA_RESIST,
 		oneatenfn = function(inst, eater)
-			alcahol(inst, eater)
+			alcohol(inst, eater)
 		end,
-	},	
+	},
+
 	-- 베리류
 	wine =
 	{
@@ -249,14 +209,14 @@ local drinks =
 		sanity = TUNING.SANITY_SMALL/2,
 		thirst = TUNING.HYDRATION_MED,
 		tags = {"alcohol"},
-		perishtime = TUNING.PERISH_SUPERSLOW,
+		perishtime = TUNING.PERISH_PRESERVED,
 		cooktime = (TUNING.KETTLE_FRUIT + TUNING.BEER_WAIT),
 		potlevel = "high",
 		potlevel_bottle = "mid",
-		prefabs = { "alcoholdebuff","caffeinbuff","immunebuff" },
-		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_INTOXICATION,
+		prefabs = { "alcoholdebuff","drunkarddebuff","resistancebuff" },
+		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_NAG_AURA_RESIST,
 		oneatenfn = function(inst, eater)
-			alcahol(inst, eater)
+			alcohol(inst, eater)
 		end,
 	},
 
@@ -269,14 +229,14 @@ local drinks =
 		sanity = TUNING.SANITY_MED/2,
 		thirst = TUNING.HYDRATION_MED,
 		tags = {"alcohol"},
-		perishtime = TUNING.PERISH_SUPERSLOW,
+		perishtime = TUNING.PERISH_PRESERVED,
 		cooktime = (TUNING.KETTLE_FRUIT + TUNING.BEER_WAIT),
 		potlevel = "high",
 		potlevel_bottle = "mid",
-		prefabs = { "alcoholdebuff","caffeinbuff","immunebuff" },
-		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_INTOXICATION,
+		prefabs = { "alcoholdebuff","drunkarddebuff","resistancebuff" },
+		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_NAG_AURA_RESIST,
 		oneatenfn = function(inst, eater)
-			alcahol(inst, eater)
+			alcohol(inst, eater)
 		end,
 	},
 	
@@ -289,21 +249,21 @@ local drinks =
 		sanity = (TUNING.SANITY_HUGE/2)/2,
 		thirst = TUNING.HYDRATION_MED,
 		tags = {"alcohol"},
-		perishtime = TUNING.PERISH_SUPERSLOW,
+		perishtime = TUNING.PERISH_PRESERVED,
 		cooktime = (TUNING.KETTLE_FRUIT + TUNING.BEER_WAIT),
-		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_INTOXICATION,
+		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_NAG_AURA_RESIST_GLOW,
 		potlevel = "high",
 		potlevel_bottle = "mid",
-		prefabs = { "alcoholdebuff","caffeinbuff","immunebuff" },
+		prefabs = { "alcoholdebuff","drunkarddebuff","resistancebuff" },
 		card_def = {ingredients = {{"refined_dust",1},{"berries",1},{"berries_juicy",1},{"twigs",1}}},
 		oneatenfn = function(inst, eater)
-			alcahol(inst, eater)
+			alcohol(inst, eater)
 		end,
 	},
 	-- 발광 베리류
 	glowberrywine =
 	{
-		test = function(boilier, names, tags) return ((names.wormlight or 0) + (names.rainbowjellyfish or 0) + (names.wormlight_lesser or 0) + (names.rainbowjellyfish_cooked or 0) + (names.rainbowjellyfish_dead or 0) >= 3) and onlyrainbowjellyfish(names, tags) and notname(names) end,
+		test = function(boilier, names, tags) return ((names.wormlight or 0) + (names.wormlight_lesser or 0) >= 3) and notname(names) end,
 		priority = 1,
 		health = 0,
 		hunger = TUNING.CALORIES_MEDSMALL/2,
@@ -313,11 +273,11 @@ local drinks =
 		perishtime = TUNING.PERISH_SUPERSLOW,
 		potlevel = "high",
 		potlevel_bottle = "mid",
-		prefabs = { "alcoholdebuff","caffeinbuff","immunebuff","wormlight_light" },
+		prefabs = { "alcoholdebuff","drunkarddebuff","resistancebuff","wormlight_light" },
 		cooktime = (TUNING.KETTLE_FRUIT + TUNING.BEER_WAIT),
-		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_INTOXICATION_GLOW,
+		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_NAG_AURA_RESIST_GLOW,
 		oneatenfn = function(inst, eater)
-			alcahol(inst, eater)
+			alcohol(inst, eater)
            	if eater.wormlight ~= nil then
 	            if eater.wormlight.prefab == "wormlight_light" then
 	                eater.wormlight.components.spell.lifetime = 0
@@ -347,18 +307,69 @@ local drinks =
 		sanity = TUNING.SANITY_MED/2,
 		thirst = TUNING.HYDRATION_MED,
 		tags = {"alcohol"},
-		perishtime = TUNING.PERISH_SUPERSLOW,
+		perishtime = TUNING.PERISH_PRESERVED,
 		cooktime = (TUNING.KETTLE_VEGGIE + TUNING.BEER_WAIT),
 		potlevel = "mid",
 		potlevel_bottle = "mid",
-		prefabs = { "alcoholdebuff","caffeinbuff","immunebuff" },
-		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_INTOXICATION,
+		prefabs = { "alcoholdebuff","drunkarddebuff","resistancebuff" },
+		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_NAG_AURA_RESIST,
 		card_def = {ingredients = {{"goatmilk",4}}},
 		oneatenfn = function(inst, eater)
-			alcahol(inst, eater)
+			alcohol(inst, eater)
 		end,
-	}
+	},
 }
+
+local mod_drink = require("modcompats/preparedageddrinks_mod")
+local hof, ia, te, cf, unc, mfp = false, false, false, false, false, false
+
+for k,mod_id in ipairs(KnownModIndex:GetModsToLoad()) do 
+	if mod_id == "workshop-2334209327" then
+		hof = true
+	end
+	if mod_id == "workshop-2762334054" then
+		mfp = true
+	end
+	if mod_id == "workshop-1505270912" then
+		te = true
+	end
+	if mod_id == "workshop-1467214795" then
+		ia = true
+	end
+	if mod_id == "workshop-1289779251" then -- cf
+		local cf_drink = mod_drink.cf_drink
+		for k,v in pairs(cf_drink) do
+			drinks[k] = v
+		end
+	end
+	if mod_id == "workshop-2039181790" then -- unc
+		local unc_drink = mod_drink.unc_drink
+		for k,v in pairs(unc_drink) do
+			drinks[k] = v
+		end
+	end
+end
+
+if te or ia then
+	local sw_drink = mod_drink.sw_drink
+	for k,v in pairs(sw_drink) do
+		drinks[k] = v
+	end
+end
+
+if te or ia or hof then
+	local coconut_drink = mod_drink.coconut_drink
+	for k,v in pairs(coconut_drink) do
+		drinks[k] = v
+	end
+end
+
+if hof or mfp then
+	local wheat_drink = mod_drink.wheat_drink
+	for k, v in pairs(wheat_drink) do
+		drinks[k] = v
+	end
+end
 
 for k, v in pairs(drinks) do
     v.name = k

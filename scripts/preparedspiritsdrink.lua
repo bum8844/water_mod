@@ -1,0 +1,262 @@
+require "utils/water_brew_utils"
+
+local drinks =
+{
+	--재료외 증류시 나올거(치료약으로 쓸예정 꿀반창고 보다 좀더 좋은 채력 회복재)
+	disinfectant =
+	{
+		test = function(boilier, names, tags) return true end,
+		priority = -2,
+		health = TUNING.HEALING_HUGE,
+		hunger = 0,
+		sanity = 0,
+		thirst = 0,
+		tags = {"disinfectant"},
+		OnPutInInventory = function(inst, owner) if owner ~= nil and owner:IsValid() then owner:PushEvent("learncookbookstats", inst.food_basename or inst.prefab) end end,
+		perishtime = 9000000,
+		cooktime = (TUNING.INCORRECT_BOIL + TUNING.BEER_WAIT),
+		wet_prefix = STRINGS.WET_PREFIX.WETGOOP,
+		potlevel = "high",
+		potlevel_bottle = "mid",
+	},
+	-- 증류주(위스키)
+	corn_whiskey =
+	{
+		test = function(boilier, names, tags) return names.corn_beer and not tags.additives end,
+		priority = 1,
+		health = TUNING.HEALING_SMALL,
+		hunger = TUNING.CALORIES_MEDSMALL,
+		sanity = TUNING.SANITY_SMALL/2,
+		thirst = TUNING.HYDRATION_MED,
+		tags = {"alcohol","spirits"},
+		perishtime = TUNING.PERISH_SUPERSLOW,
+		cooktime = (TUNING.KETTLE_VEGGIE + TUNING.BEER_WAIT),
+		potlevel = "mid",
+		potlevel_bottle = "mid",
+		prefabs = { "alcoholdebuff","drunkarddebuff","immunebuff" },
+		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_INTOXICATION,
+		oneatenfn = function(inst, eater)
+			spirits(inst, eater)
+		end,
+	},
+	-- 감자, 고구마
+	lumpy_vodka = {
+		test = function(boilier, names, tags) return names.lumpy_wine and not tags.additives end,
+		priority = 1,
+		health = 0,
+		hunger = TUNING.CALORIES_MEDSMALL,
+		sanity = TUNING.SANITY_MED,
+		thirst = TUNING.HYDRATION_MED,
+		tags = {"alcohol","spirits"},
+		perishtime = TUNING.PERISH_SUPERSLOW,
+		cooktime = (TUNING.KETTLE_VEGGIE + TUNING.BEER_WAIT),
+		temperature = TUNING.HOT_FOOD_BONUS_TEMP,
+		temperatureduration = TUNING.FOOD_TEMP_LONG,
+		potlevel = "mid",
+		potlevel_bottle = "mid",
+		prefabs = { "alcoholdebuff","drunkarddebuff","immunebuff" },
+		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_INTOXICATION,
+		oneatenfn = function(inst, eater)
+			spirits(inst, eater)
+		end,
+	},
+	-- 선인장
+	tequila = {
+		test = function(boilier, names, tags) return names.pulque and not tags.additives end,
+		priority = 1,
+		health = 0,
+		hunger = TUNING.CALORIES_MEDSMALL,
+		sanity = TUNING.SANITY_MED,
+		thirst = TUNING.HYDRATION_MED,
+		tags = {"alcohol","spirits"},
+		perishtime = TUNING.PERISH_SUPERSLOW,
+		cooktime = (TUNING.KETTLE_VEGGIE + TUNING.BEER_WAIT),
+		temperature = TUNING.COLD_FOOD_BONUS_TEMP,
+		temperatureduration = TUNING.FOOD_TEMP_LONG,
+		potlevel = "mid",
+		potlevel_bottle = "mid",
+		prefabs = { "alcoholdebuff","drunkarddebuff","immunebuff" },
+		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_INTOXICATION,
+		oneatenfn = function(inst, eater)
+			spirits(inst, eater)
+		end,
+	},
+	-- 증류주(럼)
+	madhu_rum =
+	{
+		test = function(boilier, names, tags) return (names.madhu or names.mead) and not tags.additives end,
+		priority = 1,
+		health = TUNING.HEALING_MEDSMALL*3,
+		hunger = TUNING.CALORIES_MEDSMALL,
+		sanity = TUNING.SANITY_SMALL/2,
+		thirst = TUNING.HYDRATION_MED,
+		tags = {"alcohol","spirits","honeyed"},
+		perishtime = TUNING.PERISH_SUPERSLOW,
+		cooktime = (TUNING.KETTLE_VEGGIE + TUNING.BEER_WAIT),
+		potlevel = "mid",
+		potlevel_bottle = "high",
+		prefabs = { "alcoholdebuff","drunkarddebuff","immunebuff" },
+		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_INTOXICATION,
+		oneatenfn = function(inst, eater)
+			spirits(inst, eater)
+		end,
+	},
+	-- 베리류
+	berry_brandy =
+	{
+		test = function(boilier, names, tags) return (names.wine or names.noblewine or names.wine_berries_juicy or names.wine_berries) and not tags.additives end,
+		priority = 1,
+		health = 0,
+		hunger = TUNING.CALORIES_MEDSMALL,
+		sanity = TUNING.SANITY_SMALL,
+		thirst = TUNING.HYDRATION_MED,
+		tags = {"alcohol","spirits"},
+		perishtime = TUNING.PERISH_SUPERSLOW,
+		cooktime = (TUNING.KETTLE_FRUIT + TUNING.BEER_WAIT),
+		potlevel = "high",
+		potlevel_bottle = "mid",
+		prefabs = { "alcoholdebuff","drunkarddebuff","immunebuff" },
+		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_INTOXICATION,
+		oneatenfn = function(inst, eater)
+			spirits(inst, eater)
+		end,
+	},
+	-- 스파클링 와인
+	berry_gin = {
+		test = function(boilier, names, tags) return names.sparklingwine and tags.seed end,
+		priority = 1,
+		health = TUNING.HEALING_SMALL*2,
+		hunger = TUNING.CALORIES_MEDSMALL,
+		sanity = TUNING.SANITY_HUGE/2,
+		thirst = TUNING.HYDRATION_MED,
+		tags = {"alcohol","spirits"},
+		perishtime = TUNING.PERISH_SUPERSLOW,
+		cooktime = (TUNING.KETTLE_FRUIT + TUNING.BEER_WAIT),
+		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_INTOXICATION,
+		potlevel = "high",
+		potlevel_bottle = "mid",
+		prefabs = { "alcoholdebuff","drunkarddebuff","immunebuff" },
+		oneatenfn = function(inst, eater)
+			spirits(inst, eater)
+		end,
+	},
+	-- 발광 배리
+	glowberry_brandy =
+	{
+		test = function(boilier, names, tags) return (names.glowberrywine or names.wine_glowberry) and not tags.additives end,
+		priority = 1,
+		health = 0,
+		hunger = TUNING.CALORIES_MEDSMALL,
+		sanity = TUNING.SANITY_MED,
+		thirst = TUNING.HYDRATION_MED,
+		tags = {"alcohol","spirits","lightdrink"},
+		perishtime = TUNING.PERISH_SUPERSLOW,
+		potlevel = "high",
+		potlevel_bottle = "mid",
+		prefabs = { "alcoholdebuff","drunkarddebuff","immunebuff","wormlight_light" },
+		cooktime = (TUNING.KETTLE_FRUIT + TUNING.BEER_WAIT),
+		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_INTOXICATION_GLOW,
+		oneatenfn = function(inst, eater)
+			spirits(inst, eater)
+           	if eater.wormlight ~= nil then
+	            if eater.wormlight.prefab == "wormlight_light" then
+	                eater.wormlight.components.spell.lifetime = 0
+	                eater.wormlight.components.spell:ResumeSpell()
+	                return
+	            else
+	                eater.wormlight.components.spell:OnFinish()
+	            end
+	        end
+	        local light = SpawnPrefab("wormlight_light")
+	        light.components.spell:SetTarget(eater)
+	        if light:IsValid() then
+	            if light.components.spell.target == nil then
+	        		light:Remove()
+	            else
+	                light.components.spell:StartSpell()
+	            end
+	        end
+	    end,
+	},
+	-- 우유 증류주
+	areuhi = {
+		test = function(boilier, names, tags) return names.kumis and not tags.additives end,
+		priority = 1,
+		health = TUNING.HEALING_MEDSMALL,
+		hunger = TUNING.CALORIES_MEDSMALL,
+		sanity = TUNING.SANITY_MED,
+		thirst = TUNING.HYDRATION_MED,
+		tags = {"alcohol","spirits"},
+		perishtime = TUNING.PERISH_SUPERSLOW,
+		cooktime = (TUNING.KETTLE_VEGGIE + TUNING.BEER_WAIT),
+		potlevel = "mid",
+		potlevel_bottle = "mid",
+		prefabs = { "alcoholdebuff","drunkarddebuff","immunebuff" },
+		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_INTOXICATION_ELECTRIC_ATTACK,
+		oneatenfn = function(inst, eater)
+			spirits(inst, eater)
+			eater:AddDebuff("buff_electricattack", "buff_electricattack")
+		end,
+	},
+}
+
+local mod_drink = require("modcompats/preparedspiritsdrink_mod")
+local hof, ia, te, cf, unc, mfp = false, false, false, false, false, false
+
+for k,mod_id in ipairs(KnownModIndex:GetModsToLoad()) do 
+	if mod_id == "workshop-2334209327" then
+		hof = true
+	end
+	if mod_id == "workshop-2762334054" then
+		mfp = true
+	end
+	if mod_id == "workshop-1505270912" then
+		te = true
+	end
+	if mod_id == "workshop-1467214795" then
+		ia = true
+	end
+	if mod_id == "workshop-1289779251" then -- cf
+		local cf_drink = mod_drink.cf_drink
+		for k,v in pairs(cf_drink) do
+			drinks[k] = v
+		end
+	end
+	if mod_id == "workshop-2039181790" then -- unc
+		local unc_drink = mod_drink.unc_drink
+		for k,v in pairs(unc_drink) do
+			drinks[k] = v
+		end
+	end
+end
+
+if te or ia then
+	local sw_drink = mod_drink.sw_drink
+	for k,v in pairs(sw_drink) do
+		drinks[k] = v
+	end
+end
+
+if te or ia or hof then
+	local coconut_drink = mod_drink.coconut_drink
+	for k,v in pairs(coconut_drink) do
+		drinks[k] = v
+	end
+end
+
+if hof or mfp then
+	local wheat_drink = mod_drink.wheat_drink
+	for k, v in pairs(wheat_drink) do
+		drinks[k] = v
+	end
+end
+
+for k, v in pairs(drinks) do
+    v.name = k
+    v.weight = v.weight or 1
+    v.priority = v.priority or 0
+
+    v.cookbook_category = "cookpot"
+end
+
+return drinks

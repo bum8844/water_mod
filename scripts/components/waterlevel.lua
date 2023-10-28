@@ -36,6 +36,7 @@ local Waterlevel = Class(function(self, inst)
     self.inst = inst
     self.consuming = false
     self.isputoncetime = false
+    self.onlydistill = false
 
     self.maxwater = 0
     self.currentwater = 0
@@ -82,6 +83,10 @@ function Waterlevel:OnLoad(data)
     if data.waterlevel then
         self:InitializeWaterLevel(math.max(0, data.waterlevel)) 
     end
+end
+
+function Waterlevel:SetOnlyDistill(bool)
+    self.onlydistill = bool
 end
 
 function Waterlevel:MakeEmpty()

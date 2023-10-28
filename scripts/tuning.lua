@@ -8,9 +8,11 @@ local caffein_time = GetModConfigData("caffein_time")
 local alcohol_time = GetModConfigData("alcohol_time")
 local capacity_time = GetModConfigData("capacity_time")
 local immune_time = GetModConfigData("immune_time")
+local resistance_time = GetModConfigData("resistance_time")
 local ghost_time = GetModConfigData("ghost_time")
 local drunkard_time = GetModConfigData("drunkard_time")
 local waterborne_time = GetModConfigData("waterborne_time")
+local butterhunter_time = GetModConfigData("butterhunter_time")
 
 table.insert(TUNING.GAMEMODE_STARTING_ITEMS.DEFAULT.WARLY,"portablekettle_item")
 
@@ -76,6 +78,7 @@ water_tuning =
 	-- Sections
 	BREWERY_SECTIONS = 20,
 	REDUCE_BREWERY = 3,
+	REDUCE_DISTILL = 4,
 
 	-- Freezing & Thawing Water
 	WATER_MINTEMP = -10,
@@ -160,6 +163,7 @@ water_tuning =
 
 	TEA_TREE_REGROWTH_TIME_MULT = 1,
 	CAFFEINBERRY_REGROWTH_TIME_MULT = 1,
+	RUINCACAO_TREE_TIME_MULT = 1,
 
 	CAFFEIN_TIME = TUNING.TOTAL_DAY_TIME*caffein_time,
 	CAFFEIN_SPEED = GetModConfigData("caffein_speed"),
@@ -167,11 +171,16 @@ water_tuning =
 	INTOXICATION_TIME = TUNING.TOTAL_DAY_TIME*alcohol_time,
 	MAX_CPACITY = GetModConfigData("max_capacity"),
 	CAPACITY_TIME = TUNING.TOTAL_DAY_TIME*capacity_time,
+	ALCOHOL_CAPACITY = 1,
+	SPIRITS_CAPACITY = 3,
 	IMMUNE_TIME = TUNING.TOTAL_DAY_TIME*immune_time,
+	RESISTANCE_TIME = TUNING.TOTAL_DAY_TIME*resistance_time,
 	GHOST_TIME = TUNING.TOTAL_DAY_TIME*ghost_time,
 	ENABLE_WATERBORNE = GetModConfigData("enable_waterborne"),
 	DRUNKARD_DURATION = TUNING.TOTAL_DAY_TIME*drunkard_time,
+	DETOX_DURATION = (TUNING.TOTAL_DAY_TIME*drunkard_time)*.5,
 	WATERBORNE_DURATION = TUNING.TOTAL_DAY_TIME*waterborne_time,
+	BUTTERHUNTER_DURATION = TUNING.TOTAL_DAY_TIME*butterhunter_time,
 	WELL_DRILLING_DURATION = TUNING.SEG_TIME*2.5,
 	WELL_DRILL_USES = 20,
 
@@ -187,6 +196,21 @@ water_tuning =
 	WATERBORNE_TICK_RATE = 4,
 
 	WATER_RECIPCARD_CHANCE = 0.25,
+
+	ADD_TEA_TREE = GetModConfigData("gen_tea_tree"),
+	ADD_CAFFEINBERRY_BUSH = GetModConfigData("gen_caffeinberry"),
+	ADD_RUINCACAO_TREE = GetModConfigData("gen_ruincacao_tree"),
+
+	RUINCACAO_LOOT =
+    {
+        ANGLE = 65,
+        SPEED = -1.8,
+        HEIGHT = 0.5,
+        BEAN_CHANCE = 0.60,
+        BUTTER_CHACE = 0.02,
+        SEED_CHANCE = 0.01,
+        MAX_SPAWNS = 10, -- NOTES(JBK): Deprecated, kept around for mods.
+    },
 }
 
 for i,v in pairs(water_tuning) do

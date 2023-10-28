@@ -379,7 +379,7 @@ local function caffeinberry_bean()
 end
 
 local function OnEatBeans(inst, eater)
-    eater.caffeinbuff_duration = 30
+    eater.caffeinbuff_duration = TUNING.SEG_TIME
     eater.components.debuffable:AddDebuff("caffeinbuff", "caffeinbuff")
 end
 

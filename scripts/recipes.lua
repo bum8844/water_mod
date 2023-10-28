@@ -9,13 +9,11 @@ end
 
 local NOHOF = true
 
-for k,v in ipairs(GLOBAL.KnownModIndex:GetModsToLoad()) do 
-	local Mod = GLOBAL.KnownModIndex:GetModInfo(v).name
-	if Mod == "Heap of Foods" then -- workshop-2334209327
+for k,mod_id in ipairs(GLOBAL.KnownModIndex:GetModsToLoad()) do 
+	if mod_id == "workshop-2334209327" then
 		NOHOF = false
 	end
 end
-
 
 AddRecipeFilter({name = "HYDRATION", atlas = ModAtlas, image = "hydration.tex", custom_pos=nil, recipes=nil,},nil)
 
@@ -31,6 +29,16 @@ AddRecipe2("bucket_steel_empty",{Ingredient("steelwool",2),Ingredient("hammer",0
 AddRecipe2("bucket_woodie_empty",{Ingredient("lucy",0),Ingredient("log",2)},TECH.NONE,{atlas = ModAtlas(), image = "bucket_woodie_empty.tex", builder_tag="woodcarver1", sg_state="carvewood_boards",  description="bucket_empty"},{"CHARACTER"})
 
 AddRecipe2("spice_caffeinpepper",{Ingredient("caffeinberry_bean_cooked", 3, ModAtlas(), nil, "caffeinberry_bean_cooked.tex")},TECH.FOODPROCESSING_ONE,{atlas = ModAtlas(), builder_tag="professionalchef", numtogive=2, image = "spice_caffeinpepper.tex" ,nounlock=true},{"FOODPROCESSING"})
+
+--[[AddRecipe2("additives_seed",{Ingredient("seeds_cooked", 3, ModAtlas(), nil, "additives_seed.tex")},TECH.FOODPROCESSING_ONE,{atlas = ModAtlas(), builder_tag="professionalchef", numtogive=2, image = "additives_seed.tex" ,nounlock=true},{"FOODPROCESSING"})
+AddRecipePostInit("additives_seed", function(recipe)
+	local ingredient = recipe:FindAndConvertIngredient("seeds_cooked")
+	if ingredient then
+	    ingredient:AddDictionaryPrefab("acorn_cooked")
+	    ingredient:AddDictionaryPrefab("tea_seed_cooked")
+	end
+end)
+]]
 
 AddRecipe2("barrel",{Ingredient("boards",2),Ingredient("rope",3),Ingredient("charcoal",3)},TECH.SCIENCE_ONE,{placer = "barrel_placer", atlas = ModAtlas(), image = "barrel.tex"},{"CONTAINERS","HYDRATION"})
 

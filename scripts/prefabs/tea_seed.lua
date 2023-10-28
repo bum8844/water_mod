@@ -9,7 +9,7 @@ local assets =
 local prefabs = {
 	"twigs",
     "tea_seed_cooked",
-	"tealeaves_",
+	"tealeaves",
 	"tealeaves_dried"
 }
 
@@ -133,7 +133,7 @@ local function tea_seed_cooked()
     if not TheWorld.ismastersim then
         return inst
     end
-
+    
     inst:AddComponent("edible")
     inst.components.edible.healthvalue = TUNING.HEALING_SMALL
     inst.components.edible.hungervalue = TUNING.CALORIES_SMALL

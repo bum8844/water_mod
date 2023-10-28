@@ -1,0 +1,1 @@
+AddPrefabPostInit("acorn_cooked", function(inst) inst:AddTag("additives") end)

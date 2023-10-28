@@ -1,5 +1,6 @@
 local drinks = require("prepareddrinks")
 local ageddrinks = require("preparedageddrinks")
+local spiritsdrink = require("preparedspiritsdrink")
 
 for k, recipe in pairs(drinks) do
 	AddCookerRecipe("kettle", recipe)
@@ -16,6 +17,10 @@ for k, recipe in pairs(ageddrinks) do
 	if recipe.card_def then
 		_G.AddRecipeCard("brewery", recipe)
 	end
+end
+
+for k, recipe in pairs(spiritsdrink) do
+	AddCookerRecipe("distillers", recipe)
 end
 
 for k, v in pairs(require("water_spicedfoods")) do
@@ -41,6 +46,7 @@ local spoiled_drink =
 	cooktime = TUNING.INCORRECT_BOIL,
 	potlevel = "high",
 	potlevel_bottle = "mid",
+	OnPutInInventory = function(inst, owner) if owner ~= nil and owner:IsValid() then owner:PushEvent("learncookbookstats", inst.food_basename or inst.prefab) end end,
 	cookbook_category = "cookpot",
 }
 

@@ -121,14 +121,15 @@ local SCENE =
                 table.insert(actions, ACTIONS.HARVEST)
             elseif right and (
                 (   
-                    inst:HasTag("readybrewing") and
+                    (inst:HasTag("readybrewing") or inst:HasTag("readydistill")) and
                     --(not inst:HasTag("professionalcookware") or doer:HasTag("professionalchef")) and
                     (not inst:HasTag("mastercookware") or doer:HasTag("masterchef"))
                 ) or
-                (   inst.replica.container ~= nil and
-                    inst.replica.container:IsOpenedBy(doer) and
-                    inst.replica.container:IsFull() and
-                    inst.replica.waterlevel:HasWater()
+                (inst.replica.container ~= nil and
+                    (
+                        (inst.replica.container:IsFull() and inst.replica.waterlevel:HasWater()) or 
+                        (inst.replica.container:HasItemWithTag("alcohol",4))
+                    ) and inst.replica.container:IsOpenedBy(doer)
                 )
             ) then
                 table.insert(actions, ACTIONS.BREWING)

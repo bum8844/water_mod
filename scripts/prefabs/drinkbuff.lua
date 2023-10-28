@@ -14,13 +14,6 @@ local function IsResistance(target)
 end
 
 local function OnAttached_sleepdrink(inst, target)
-    if target.sleepdrinkbuff_duration then
-        inst.components.timer:StartTimer("sleepdrinkbuff_done", target.sleepdrinkbuff_duration)
-    end
-    if not inst.components.timer:TimerExists("sleepdrinkbuff_done") then
-        inst.components.debuff:Stop()
-        return
-    end
     inst.entity:SetParent(target.entity)
     inst.Transform:SetPosition(0, 0, 0)
 
@@ -74,10 +67,8 @@ local function OnDetached_sleepdrink(inst, target)
 end
 
 local function OnExtended_sleepdrink(inst, target)
-    local current_duration = inst.components.timer:GetTimeLeft("sleepdrinkbuff_done")
-    local new_duration = math.max(current_duration, target.sleepdrinkbuff_duration)
     inst.components.timer:StopTimer("sleepdrinkbuff_done")
-    inst.components.timer:StartTimer("sleepdrinkbuff_done", new_duration)
+    inst.components.timer:StartTimer("sleepdrinkbuff_done", TUNING.TEASLEEP_TIME + math.random())
 
     target.knockout_time = inst.components.timer:GetTimeLeft("sleepdrinkbuff_done")
     if target.drinksleeptask ~= nil then
@@ -107,6 +98,12 @@ local function OnExtended_sleepdrink(inst, target)
 
 end
 
+local function OnTimerDone_sleepdrink(inst, data)
+    if data.name == "sleepdrink_done" then
+        inst.components.debuff:Stop()
+    end
+end
+
 local function fn_sleepdrink()
     if not TheWorld.ismastersim then 
         return 
@@ -127,23 +124,13 @@ local function fn_sleepdrink()
     inst.components.debuff.keepondespawn = true
 
     inst:AddComponent("timer")
-    inst:ListenForEvent("timerdone", function(inst, data)
-        if data.name == "sleepdrink_done" then
-            inst.components.debuff:Stop()
-        end
-    end)
+    inst.components.timer:StartTimer("sleepdrinkbuff_done", TUNING.TEASLEEP_TIME + math.random())
+    inst:ListenForEvent("timerdone", OnTimerDone_sleepdrink)
 
     return inst
 end
 
 local function OnAttached_detoxbuff(inst, target)
-    if target.detoxbuff_duration then
-        inst.components.timer:StartTimer("detoxbuff_done", target.detoxbuff_duration)
-    end
-    if not inst.components.timer:TimerExists("detoxbuff_done") then
-        inst.components.debuff:Stop()
-        return
-    end
     inst.entity:SetParent(target.entity)
     inst.Transform:SetPosition(0, 0, 0)
     if target.detoxbufftask ~= nil then
@@ -174,16 +161,20 @@ local function OnExtended_detoxbuff(inst, target)
         target.detoxbufftask = nil
     end
     if target.components.dcapacity:IsDrunk() then
-        local current_duration = inst.components.timer:GetTimeLeft("detoxbuff_done")
-        local new_duration = math.max(current_duration, target.detoxbuff_duration)
         inst.components.timer:StopTimer("detoxbuff_done")
-        inst.components.timer:StartTimer("detoxbuff_done", new_duration)
+        inst.components.timer:StartTimer("detoxbuff_done", TUNING.DETOX_DURATION)
     else
         inst.detoxbufftask = inst:DoTaskInTime(0, function()
             inst.components.debuff:Stop()
         end)
     end
     target.components.dcapacity:Remove_Capacity(1)
+end
+
+local function OnTimerDone_detox(inst, data)
+    if data.name == "detoxbuff_done" then
+        inst.components.debuff:Stop()
+    end
 end
 
 local function fn_detoxbuff()
@@ -206,11 +197,8 @@ local function fn_detoxbuff()
     inst.components.debuff.keepondespawn = true
 
     inst:AddComponent("timer")
-    inst:ListenForEvent("timerdone", function(inst, data)
-        if data.name == "detoxbuff_done" then
-            inst.components.debuff:Stop()
-        end
-    end)
+    inst.components.timer:StartTimer("detoxbuff_done", TUNING.DETOX_DURATION)
+    inst:ListenForEvent("timerdone", OnTimerDone_detox)
 
     return inst
 end
@@ -263,13 +251,7 @@ local function fn_obe()
 end
 
 local function OnAttached_caffein(inst, target)
-    if target.caffeinbuff_duration then
-        inst.components.timer:StartTimer("caffeinbuff_done", target.caffeinbuff_duration)
-    end
-    if not inst.components.timer:TimerExists("caffeinbuff_done") then
-        inst.components.debuff:Stop()
-        return
-    end
+    inst.components.timer:StartTimer("caffeinbuff_done", target.caffeinbuff_duration or TUNING.CAFFEIN_TIME)
     inst.entity:SetParent(target.entity)
     inst.Transform:SetPosition(0, 0, 0)
     if target.components.locomotor ~= nil then
@@ -288,10 +270,14 @@ local function OnDetached_caffein(inst, target)
 end
 
 local function OnExtended_caffein(inst, target)
-    local current_duration = inst.components.timer:GetTimeLeft("caffeinbuff_done")
-    local new_duration = math.max(current_duration, target.caffeinbuff_duration)
     inst.components.timer:StopTimer("caffeinbuff_done")
-    inst.components.timer:StartTimer("caffeinbuff_done", new_duration)
+    inst.components.timer:StartTimer("caffeinbuff_done", target.caffeinbuff_duration or TUNING.CAFFEIN_TIME)
+end
+
+local function OnTimerDone_caffein(inst, data)
+    if data.name == "caffeinbuff_done" then
+        inst.components.debuff:Stop()
+    end
 end
 
 local function fn_caffein()
@@ -314,23 +300,12 @@ local function fn_caffein()
     inst.components.debuff.keepondespawn = true
 
     inst:AddComponent("timer")
-    inst:ListenForEvent("timerdone", function(inst, data)
-        if data.name == "caffeinbuff_done" then
-            inst.components.debuff:Stop()
-        end
-    end)
+    inst:ListenForEvent("timerdone", OnTimerDone_caffein)
 
     return inst
 end
 
 local function OnAttached_alcohol(inst, target)
-    if target.alcoholdebuff_duration then 
-        inst.components.timer:StartTimer("alcoholdebuff_done", target.alcoholdebuff_duration)
-    end
-    if not inst.components.timer:TimerExists("alcoholdebuff_done") then
-        inst.components.debuff:Stop()
-        return
-    end
     inst.entity:SetParent(target.entity)
     inst.Transform:SetPosition(0, 0, 0)
     if target.components.dcapacity ~= nil then
@@ -370,10 +345,14 @@ local function OnDetached_alcohol(inst, target)
 end
 
 local function OnExtended_alcohol(inst, target)
-    local current_duration = inst.components.timer:GetTimeLeft("alcoholdebuff_done")
-    local new_duration = math.max(current_duration, target.alcoholdebuff_duration)
     inst.components.timer:StopTimer("alcoholdebuff_done")
-    inst.components.timer:StartTimer("alcoholdebuff_done", new_duration)
+    inst.components.timer:StartTimer("alcoholdebuff_done", TUNING.INTOXICATION_TIME)
+end
+
+local function OnTimerDone_alcohol(inst, data)
+    if data.name == "alcoholdebuff_done" then
+        inst.components.debuff:Stop()
+    end
 end
 
 local function fn_alcohol()
@@ -396,23 +375,15 @@ local function fn_alcohol()
     inst.components.debuff.keepondespawn = true
 
     inst:AddComponent("timer")
-    inst:ListenForEvent("timerdone", function(inst, data)
-        if data.name == "alcoholdebuff_done" then
-            inst.components.debuff:Stop()
-        end
-    end)
+    inst.components.timer:StartTimer("alcoholdebuff_done", TUNING.INTOXICATION_TIME)
+    inst:ListenForEvent("timerdone", OnTimerDone_alcohol)
 
     return inst
 end
 
 local function OnAttached_immune(inst, target)
-    if target.immunebuff_duration then 
-        inst.components.timer:StartTimer("immunebuff_done", target.immunebuff_duration)
-    end
-    if not inst.components.timer:TimerExists("immunebuff_done") then
-        inst.components.debuff:Stop()
-        return
-    end
+    target._has_immune = true
+    target.components.debuffable:RemoveDebuff("resistancebuff")
     inst.entity:SetParent(target.entity)
     inst.Transform:SetPosition(0, 0, 0)
     if target.components.health ~= nil and not target.components.health:IsDead() then
@@ -423,14 +394,14 @@ local function OnAttached_immune(inst, target)
             target.components.sanity:SetPlayerGhostImmunity(true)
             target.components.sanity:SetLightDrainImmune(true)
         end
-    else
-        inst.immunebufftask = inst:DoTaskInTime(0, function()
-            inst.components.debuff:Stop()
-        end)
     end
+    inst:ListenForEvent("death", function()
+        inst.components.debuff:Stop()
+    end, target)
 end
 
 local function OnDetached_immune(inst, target)
+    target._has_immune = nil
     if target.components.health ~= nil then
         target.components.health.externalabsorbmodifiers:RemoveModifier(target)
         if target.components.sanity ~= nil then
@@ -439,17 +410,19 @@ local function OnDetached_immune(inst, target)
             target.components.sanity:SetPlayerGhostImmunity(false)
             target.components.sanity:SetLightDrainImmune(false)
         end
-    else
-        inst.immunebufftask = nil
     end
     inst:Remove()
 end
 
 local function OnExtended_immune(inst, target)
-    local current_duration = inst.components.timer:GetTimeLeft("immunebuff_done")
-    local new_duration = math.max(current_duration, target.immunebuff_duration)
     inst.components.timer:StopTimer("immunebuff_done")
-    inst.components.timer:StartTimer("immunebuff_done", new_duration)
+    inst.components.timer:StartTimer("immunebuff_done", TUNING.IMMUNE_TIME)
+end
+
+local function OnTimerDone_immune(inst, data)
+    if data.name == "immunebuff_done" then
+        inst.components.debuff:Stop()
+    end
 end
 
 local function fn_immune()
@@ -472,11 +445,92 @@ local function fn_immune()
     inst.components.debuff.keepondespawn = true
 
     inst:AddComponent("timer")
-    inst:ListenForEvent("timerdone", function(inst, data)
-        if data.name == "immunebuff_done" then
-            inst.components.debuff:Stop()
+    inst.components.timer:StartTimer("immunebuff_done",TUNING.IMMUNE_TIME)
+    inst:ListenForEvent("timerdone", OnTimerDone_immune)
+
+    return inst
+end
+
+local function OnAttached_resistance(inst, target)
+    if target._has_immune then
+        inst.components.debuff:Stop()
+        return
+    end
+    inst.entity:SetParent(target.entity)
+    inst.Transform:SetPosition(0, 0, 0)
+    if target.components.sanity ~= nil and target.components.dcapacity ~= nil then
+
+        local capacity = target.components.dcapacity.capacity
+        local neg_aura_mult = 0
+        local night_drain_mult = 0
+
+        target._neg_aura_mult = target.components.sanity.neg_aura_mult
+        target._night_drain_mult = target.components.sanity.night_drain_mult
+
+        if capacity > 0 then
+            neg_aura_mult = 0.1 * capacity
+            night_drain_mult = 0.1 * capacity
         end
-    end)
+
+        target.components.sanity.neg_aura_mult = math.max(0, target._neg_aura_mult - (0.2 + neg_aura_mult))
+        target.components.sanity.night_drain_mult = math.max(0, target._night_drain_mult - (0.2 + neg_aura_mult))
+    end
+    inst:ListenForEvent("death", function()
+        inst.components.debuff:Stop()
+    end, target)
+end
+
+local function OnDetached_resistance(inst, target)
+    if target.components.sanity ~= nil and target.components.dcapacity ~= nil then
+        if target._neg_aura_mult and target._night_drain_mult then
+            target.components.sanity.neg_aura_mult = target._neg_aura_mult
+            target.components.sanity.night_drain_mult = target._night_drain_mult
+        end
+    else
+        inst.resistancebufftask = nil
+    end
+    inst:Remove()
+end
+
+local function OnExtended_resistance(inst, target)
+    local neg_aura_mult = target.components.sanity.neg_aura_mult
+    local night_drain_mult = target.components.sanity.night_drain_mult
+
+    target.components.sanity.neg_aura_mult = math.max(0, neg_aura_mult - 0.1)
+    target.components.sanity.night_drain_mult = math.max(0, neg_aura_mult - 0.1)
+
+    inst.components.timer:StopTimer("resistancebuff_done")
+    inst.components.timer:StartTimer("resistancebuff_done", TUNING.RESISTANCE_TIME)
+end
+
+local function OnTimerDone_resistance(inst, data)
+    if data.name == "resistancebuff_done" then
+        inst.components.debuff:Stop()
+    end
+end
+
+local function fn_resistance()
+    if not TheWorld.ismastersim then 
+        return 
+    end
+
+    local inst = CreateEntity()
+    inst.entity:AddTransform()
+    inst.entity:Hide()
+  
+    inst.persists = false
+
+    inst:AddTag("CLASSIFIED")
+
+    inst:AddComponent("debuff")
+    inst.components.debuff:SetAttachedFn(OnAttached_resistance)
+    inst.components.debuff:SetDetachedFn(OnDetached_resistance)
+    inst.components.debuff:SetExtendedFn(OnExtended_resistance)
+    inst.components.debuff.keepondespawn = true
+
+    inst:AddComponent("timer")
+    inst.components.timer:StartTimer("drunkard", TUNING.RESISTANCE_TIME)
+    inst:ListenForEvent("timerdone", OnTimerDone_resistance)
 
     return inst
 end
@@ -657,6 +711,79 @@ local function fn_waterborne()
     return inst
 end
 
+local function OnKilled(inst, data)
+    local victim = data.victim
+    if data ~= nil and victim ~= nil and victim:HasTag("butterfly") and victim:HasTag("pollinator") then
+        if victim.components.lootdropper ~= nil then
+            victim.components.lootdropper:AddChanceLoot("butter", 0.5)
+        end
+    end
+end
+
+local function OnAttached_butterhunter(inst, target)
+    inst.entity:SetParent(target.entity)
+    inst.Transform:SetPosition(0, 0, 0) 
+    if target.components.health ~= nil and
+    not target.components.health:IsDead() and
+    not target:HasTag("playerghost") then
+        inst:ListenForEvent("killed", OnKilled, target)
+        inst:AddTag("butterhunter")
+    end
+    inst:ListenForEvent("death", function()
+        inst.components.debuff:Stop()
+    end, target)
+end
+
+local function OnTimerDone_butterhunter(inst, data)
+    if data.name == "butterhunterbuff_done" then
+        inst.components.debuff:Stop()
+    end
+end
+
+local function OnExtended_butterhunter(inst, target)
+    inst.components.timer:StopTimer("butterhunterbuff_done")
+    inst.components.timer:StartTimer("butterhunterbuff_done", TUNING.BUTTERHUNTER_DURATION)
+end
+
+local function OnDetached_butterhunter(inst, target)
+    if target.components.health ~= nil and
+    not target.components.health:IsDead() and
+    not target:HasTag("playerghost") then
+        inst:RemoveEventCallback("killed", OnKilled, target)
+        inst:RemoveTag("butterhunter")
+    end
+    inst:Remove()
+end
+
+local function butterhunter_fn()
+    local inst = CreateEntity()
+
+    if not TheWorld.ismastersim then
+        --Not meant for client!
+        inst:DoTaskInTime(0, inst.Remove)
+
+        return inst
+    end
+
+    inst.entity:AddTransform()
+
+    inst.entity:Hide()
+    inst.persists = false
+
+    inst:AddTag("CLASSIFIED")
+
+    inst:AddComponent("debuff")
+    inst.components.debuff:SetAttachedFn(OnAttached_butterhunter)
+    inst.components.debuff:SetDetachedFn(OnDetached_butterhunter)
+    inst.components.debuff:SetExtendedFn(OnExtended_butterhunter)
+    inst.components.debuff.keepondespawn = true
+
+    inst:AddComponent("timer")
+    inst.components.timer:StartTimer("butterhunterbuff_done", TUNING.BUTTERHUNTER_DURATION)
+    inst:ListenForEvent("timerdone", OnTimerDone_butterhunter)
+
+    return inst
+end
 
 return Prefab("caffeinbuff", fn_caffein),
 Prefab("alcoholdebuff", fn_alcohol),
@@ -666,4 +793,6 @@ Prefab("detoxbuff",fn_detoxbuff),
 Prefab("sleepdrinkbuff",fn_sleepdrink),
 Prefab("thirstregenbuff", fn_thirstregen),
 Prefab("drunkarddebuff",fn_drunkard),
-Prefab("waterbornedebuff",fn_waterborne)
+Prefab("waterbornedebuff",fn_waterborne),
+Prefab("resistancebuff",fn_resistance),
+Prefab("butterhunterbuff",butterhunter_fn)

@@ -29,15 +29,11 @@ local function thirstbadge_statusdisplays(self)
 	self.waterstomach = self:AddChild(self.owner.CreateThirstBadge ~= nil and self.owner.CreateThirstBadge(self.owner) or ThirstBadge(self.owner))
 
 	local AlwaysOnStatus = false
-	local Musha_Mod = false
-	for k,v in ipairs(GLOBAL.KnownModIndex:GetModsToLoad()) do 
-		local Mod = GLOBAL.KnownModIndex:GetModInfo(v).name
-		if Mod == "Combined Status" then 
+
+	for k,mod_id in ipairs(GLOBAL.KnownModIndex:GetModsToLoad()) do 
+		if mod_id == "workshop-376333686" or mod_id == "workshop-2438350724" then 
 			AlwaysOnStatus = true
 		end
-		--[[if Mod == "[DST]Musha" then
-			Musha_Mod = true
-		end]]
 	end
 
 	local waterbadgex = -40
@@ -53,9 +49,7 @@ local function thirstbadge_statusdisplays(self)
 
 		hungerbadgex = -124
 		hungerbadgey = 35
-	--[[elseif Musha_Mod and self.owner:HasTag("musha") then
-		hudx = 0
-		hudy = -105]]
+
 	else
 		local character = self.owner.prefab
 		if character == "wolfgang" then

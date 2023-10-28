@@ -32,6 +32,7 @@ local Brewing = Class(function(self, inst)
     self.spoiltime = nil
     --self.keepspoilage = false --default refreshes spoilage by half, set to true will not
     self.cooktimemult = 1
+    self.distill_stack = 0
 
 	-- these are used for the cook book
 	self.chef_id = nil
@@ -87,7 +88,7 @@ local function dostew(inst, self)
         if self.onspoil ~= nil then
             self.onspoil(inst)
         end
-    elseif self.product ~= nil and not self.inst:HasTag("brewery") then
+    elseif self.product ~= nil and not self.inst:HasTag("brewery") and not inst:AddTag("distillers") then
         local recipe = cooking.GetRecipe(inst.prefab, self.product)
         local prep_perishtime = (recipe ~= nil and (recipe.cookpot_perishtime or recipe.perishtime)) or 0
         if prep_perishtime > 0 then
@@ -122,7 +123,7 @@ function Brewing:GetTimeToSpoil()
 end
 
 function Brewing:CanCook()
-    return self.inst.components.container ~= nil and self.inst.components.container:IsFull()
+    return self.inst.components.container ~= nil and (self.inst.components.container:IsFull() or self.inst.components.container:HasItemWithTag("alcohol",4))
 end
 
 function Brewing:GetRecipeForProduct()
@@ -146,8 +147,17 @@ function Brewing:StartCooking(doer)
 		end
 
         local cooktime = 1
-        local waterlevel = (self.inst.components.waterlevel and not self.inst.components.waterlevel:IsEmpty() and (self.inst.components.waterlevel:GetWater()*0.2)) or 0.1
+        local waterlevel = 0.2
+
+        if self.usedistill then
+            self.distill_stack = self.inst.components.container.slots[1].components.stackable:StackSize()
+            waterlevel = self.distill_stack * 0.2
+        else
+            waterlevel = (self.inst.components.waterlevel and not self.inst.components.waterlevel:IsEmpty() and (self.inst.components.waterlevel:GetWater()*0.2)) or 0.2
+        end
+
         self.product, cooktime = cooking.CalculateRecipe(self.inst.prefab, self.ingredient_prefabs)
+        print(self.product)
         local productperishtime = cooking.GetRecipe(self.inst.prefab, self.product).perishtime or 0
 
         if productperishtime > 0 then
@@ -212,6 +222,7 @@ function Brewing:OnSave()
         product_spoilage = self.product_spoilage,
         spoiltime = self.spoiltime,
         remainingtime = remainingtime > 0 and remainingtime or nil,
+        distill_stack = self.distill_stack,
 
 		chef_id = self.chef_id,
 		ingredient_prefabs = self.ingredient_prefabs,
@@ -222,6 +233,7 @@ function Brewing:OnLoad(data)
     if data.product ~= nil then
 		self.chef_id = data.chef_id
 		self.ingredient_prefabs = data.ingredient_prefabs
+        self.distill_stack = data.distill_stack
 
         self.done = data.done or nil
         self.product = data.product
@@ -299,7 +311,7 @@ function Brewing:Harvest(harvester)
 				end
 
                 local waterlevel = self.inst.components.waterlevel and self.inst.components.waterlevel:GetWater() or 1
-                local stacksize = math.ceil(waterlevel/self.reduce)
+                local stacksize = self.distill_stack > 0 and math.floor(self.distill_stack/self.reduce) or math.ceil(waterlevel/self.reduce)
                 if stacksize > 1 then
                     loot.components.stackable:SetStackSize(stacksize)
                 end

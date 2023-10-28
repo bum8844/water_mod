@@ -13,6 +13,7 @@ local Dcapacity = Class(function(self,inst)
 		if self.intoxication_task ~= nil then
 			self.intoxication_task:Cancel()
 		end
+
 		self.intoxication_task = nil
 		self.left_timer = nil
 		self.capacity = 0
@@ -50,8 +51,8 @@ function Dcapacity:GetCapacity()
 	return self.capacity
 end
 
-function Dcapacity:Start_Intoxication()
-	self.capacity = self.capacity + 1
+function Dcapacity:Start_Intoxication(num)
+	self.capacity = self.capacity + num
 
 	if self.intoxication_task ~= nil then
 		self.intoxication_task:Cancel()

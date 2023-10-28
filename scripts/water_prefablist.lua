@@ -15,6 +15,7 @@ return {
 	"well",
 	"well_sprinkler",
 	"well_drilling",
+	"distillers",
 
 	--food & plants
 	"caffeinberry",
@@ -24,6 +25,8 @@ return {
 	"tea_seed",
 	"water_spicedfoods",
 	"water_spicedfoods_mod",
+	"ruincacao_tree",
+	"ruincacao_seed",
 
 	--buff
 	"drinkbuff",

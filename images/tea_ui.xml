@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Atlas>
+	<Texture filename="tea_ui.tex" />
+	<Elements>
+		<Element name="cook_slot_additive.tex" u1="0.001" u2="0.26071875" v2="0.999" v1="0.4775625" variant="" />
+		<Element name="cook_slot_drink.tex" u1="0.26271875" u2="0.5224375" v2="0.999" v1="0.4775625" variant="" />
+	</Elements>
+</Atlas>

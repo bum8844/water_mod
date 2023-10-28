@@ -11,6 +11,8 @@ local postinits =
 		"moisture",
 		"regrowthmanager",
 		"wisecracker",
+		"retrofitforestmap_anr",
+		"container_replica",
 	},
 
 	prefabs =
@@ -23,6 +25,7 @@ local postinits =
 		"portablespicer",	
 		"staff",		
 		"wateringcan",
+		"acorn",
 	},
 
 	stategraphs =
@@ -42,6 +45,10 @@ local postinits =
 		"thirstvalue",
 		"watertypes",
 	},
+
+	scripts = {
+		"savefileupgrades",
+	}
 }
 
 if GetModConfigData("enable_thirst") then

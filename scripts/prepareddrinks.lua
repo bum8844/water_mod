@@ -1,222 +1,4 @@
-local function dummy(boilier, names, tags)
-	return false
-end
-
-local function Preference(names, tags)
-	return ( (tags.sweetener or 0) + (tags.dairy or 0) + (tags.milk or 0) )
-end
-
-local function Tea_Def(names, tags)
-	return (tags.decoration or 0) and ((tags.veggie or 0) <= 2) and ((tags.mushroom or 0) < 4) and not tags.fruit
-end
-
-local function Mix_Tea_Patch(names, tags)
-	return tags.decoration and ((tags.veggie or 0) <= 2) and ((tags.mushroom or 0) < 4) and not tags.fruit
-end
-
-local function IsTealeaves(names, tags)
-	return names.tealeaves and 
-	Preference(names, tags) and
-	Tea_Def(names, tags) and not 
-	( 
-		names.tealeaves_dried or 
-		names.kyno_piko_orange or 
-		names.piko_orange or 
-		names.foliage or
-		names.forgetmelots or
-		names.petals or
-		names.moon_tree_blossom or
-		names.petals_evil or 
-		names.firenettles or 
-		names.tillweed or
-		names.cactus_flower or
-		names.lotus_flower or 
-		names.kyno_lotus_flower or 
-		names.succulent_picked or
-		tags.lotus
-	)
-end
-
-local function IsTealeaves_dried(names, tags)
-	return ( names.tealeaves_dried or names.kyno_piko_orange or names.piko_orange ) and 
-	Preference(names, tags) and
-	Tea_Def(names, tags) and not  
-	( 
-		names.tealeaves or
-		names.foliage or
-		names.forgetmelots or
-		names.petals or
-		names.moon_tree_blossom or
-		names.petals_evil or 
-		names.firenettles or 
-		names.tillweed or
-		names.cactus_flower or
-		names.lotus_flower or 
-		names.kyno_lotus_flower or 
-		names.succulent_picked or
-		tags.lotus
-	)
-end
-
-local function IsFoliage(names, tags)
-	return names.foliage and 
-	Preference(names, tags) and
-	Tea_Def(names, tags) and not 
-	( 
-		names.tealeaves or
-		names.tealeaves_dried or 
-		names.kyno_piko_orange or 
-		names.piko_orange or
-		names.forgetmelots or
-		names.petals or
-		names.moon_tree_blossom or
-		names.petals_evil or 
-		names.firenettles or 
-		names.tillweed or
-		names.cactus_flower or
-		names.lotus_flower or 
-		names.kyno_lotus_flower or 
-		names.succulent_picked or
-		tags.lotus 
-	)
-end
-
-local function IsFlower(names, tags)
-	return ( names.forgetmelots or names.petals or names.moon_tree_blossom ) and 
-	Preference(names, tags) and 
-	Tea_Def(names, tags) and not 
-	( 
-		names.tealeaves or
-		names.tealeaves_dried or 
-		names.kyno_piko_orange or 
-		names.piko_orange or
-		names.foliage or
-		names.petals_evil or 
-		names.firenettles or 
-		names.tillweed or
-		names.cactus_flower or
-		names.lotus_flower or 
-		names.kyno_lotus_flower or 
-		names.succulent_picked or
-		tags.lotus 
-	)
-end
-
-local function IsFlower_Evil(names, tags)
-	return ( names.petals_evil or names.firenettles or names.tillweed ) and 
-	Preference(names, tags) and 
-	Tea_Def(names, tags) and not 
-	( 
-		names.tealeaves or
-		names.tealeaves_dried or 
-		names.kyno_piko_orange or 
-		names.piko_orange or
-		names.foliage or
-		names.forgetmelots or 
-		names.petals or 
-		names.moon_tree_blossom or
-		names.cactus_flower or
-		names.lotus_flower or 
-		names.kyno_lotus_flower or 
-		names.succulent_picked or
-		tags.lotus 
-	)
-end
-
-local function IsFlower_Cactus(names, tags)
-	return names.cactus_flower and 
-	Preference(names, tags) and
-	Tea_Def(names, tags) and not 
-	( 
-		names.tealeaves or
-		names.tealeaves_dried or 
-		names.kyno_piko_orange or 
-		names.piko_orange or
-		names.foliage or
-		names.forgetmelots or 
-		names.petals or 
-		names.moon_tree_blossom or
-		names.petals_evil or 
-		names.firenettles or 
-		names.tillweed or
-		names.lotus_flower or 
-		names.kyno_lotus_flower or 
-		names.succulent_picked or
-		tags.lotus 
-	)
-end
-
---bum:꽃다랑어만 들어 갔는지 확인해주는 코드
-local function blocking_thing_bloomfintuna(names ,tags)
-	return not (tags.egg or tags.boss or tags.poop or tags.elemental or tags.paper or tags.horn or tags.spotspice or tags.gears or tags.rabbit or tags.beanbug or tags.gummybug or tags.flour or tags.bread or tags.chocolate or tags.jellyfish)
-end
-
-local function blocking_thing_rainbowjellyfish(names ,tags)
-	return not (tags.meat or tags.egg or tags.boss or tags.poop or tags.elemental or tags.paper or tags.horn or tags.spotspice or tags.gears or tags.rabbit or tags.beanbug or tags.gummybug or tags.flour or tags.bread or tags.chocolate)
-end
-
-local function onlybloomfintuna(names ,tags)
-	local bloomfintuna = names.oceanfish_small_7_inv or 0 -- 최대 4개
-
-	local totalblock = ( tags.meat or 0 ) + ( tags.fish or 0 ) 
-
-	local totalignore = math.max(0,(totalblock - (bloomfintuna)))
-
-	if blocking_thing_bloomfintuna(names ,tags) and totalignore <= 0 and bloomfintuna > 0 then
-		return bloomfintuna
-	end 
-	return false
-end
-
-local function glow_calc(names, tags)
-	return ((names.wormlight or names.rainbowjellyfish) or ((names.wormlight_lesser or names.rainbowjellyfish_cooked or names.rainbowjellyfish_dead) and ((names.wormlight_lesser or 0) + (names.rainbowjellyfish_cooked or 0) + (names.rainbowjellyfish_dead or 0) >= 2)))
-end
-
-local function onlyrainbowjellyfish(names, tags)
-	local rainbowjellyfish = names.rainbowjellyfish or 0
-	local rainbowjellyfish_dead = (names.rainbowjellyfish_cooked or 0) + (names.rainbowjellyfish_cooked or 0)
-
-	local totalblock = tags.fish or 0
-
-	local totalignore = math.max(0,(totalblock - (rainbowjellyfish+rainbowjellyfish_dead)))
-
-	if blocking_thing_rainbowjellyfish(names ,tags) and totalignore <= 0 then
-		return 1
-	end 
-	return false
-end
-
-local function IsFlower_Lotus(names, tags)
-	return ( names.lotus_flower or names.kyno_lotus_flower or names.succulent_picked or tags.lotus or onlybloomfintuna(names ,tags)) and 
-	Preference(names, tags) and
-	Tea_Def(names, tags) and not 
-	( 
-		names.tealeaves or
-		names.tealeaves_dried or 
-		names.kyno_piko_orange or 
-		names.piko_orange or
-		names.foliage or
-		names.forgetmelots or 
-		names.petals or 
-		names.moon_tree_blossom or
-		names.petals_evil or 
-		names.firenettles or 
-		names.tillweed or
-		names.cactus_flower
-	)
-end
-
-local function notmeat(tags)
-	return not (tags.fish or tags.jellyfish or tags.meat or tags.egg or tags.boss or tags.poop or tags.elemental or tags.paper or tags.horn or tags.spotspice or tags.gears or tags.rabbit or tags.beanbug or tags.gummybug or tags.flour or tags.bread or tags.chocolate)
-end
-
-local function lessthing(names)
-	return ((names.twigs or 0) <= 1)
-end
-
-local function notname(names)
-	return not names.boneshard
-end
+require "utils/water_brew_utils"
 
 local drinks =
 {
@@ -240,7 +22,7 @@ local drinks =
 	
 	berries_juice = --베리주스
 	{
-		test = function(boilier, names, tags) return (names.berries or  names.berries_cooked or names.berries_juicy or names.berries_juicy_cooked) and tags.fruit and Preference(names, tags) and not tags.veggie and notmeat(tags) and notname(names) and lessthing(names) end,
+		test = function(boilier, names, tags) return (names.berries or  names.berries_cooked or names.berries_juicy or names.berries_juicy_cooked) and tags.fruit and Preference(names, tags) and not tags.veggie and notmeat(tags) and notname(names) and lessthing(names) and notages(tags) end,
 		priority = 0,
 		health = TUNING.HEALING_MEDSMALL/4,
 		hunger = TUNING.DRINK_CALORIES/5, --1
@@ -255,7 +37,7 @@ local drinks =
 
 	fruitjuice =
 	{
-		test = function(boilier, names, tags) return tags.fruit and tags.fruit >= 3 and Preference(names, tags) and not tags.veggie and notmeat(tags) and notname(names) and lessthing(names) end,
+		test = function(boilier, names, tags) return tags.fruit and tags.fruit >= 3 and Preference(names, tags) and not tags.veggie and notmeat(tags) and notname(names) and lessthing(names) and notages(tags) end,
 		priority = 1,
 		health = TUNING.HEALING_MED/4,
 		hunger = TUNING.DRINK_CALORIES/2,
@@ -269,7 +51,7 @@ local drinks =
 
 	banana_juice =
 	{
-		test = function(boilier, names, tags) return (names.cave_banana or names.cave_banana_cooked) and tags.fruit and Preference(names, tags) and not tags.veggie and notmeat(tags) and notname(names) and lessthing(names) end,
+		test = function(boilier, names, tags) return (names.cave_banana or names.cave_banana_cooked) and tags.fruit and Preference(names, tags) and not tags.veggie and notmeat(tags) and notname(names) and lessthing(names) and notages(tags) end,
 		priority = 2,
 		health = TUNING.HEALING_LARGE/4,
 		hunger = TUNING.CALORIES_TINY/4,
@@ -283,7 +65,7 @@ local drinks =
 
 	pomegranate_juice =
 	{
-		test = function(boilier, names, tags) return (names.pomegranate or names.pomegranate_cooked) and tags.fruit and Preference(names, tags) and not tags.veggie and notmeat(tags) and notname(names) and lessthing(names) end,
+		test = function(boilier, names, tags) return (names.pomegranate or names.pomegranate_cooked) and tags.fruit and Preference(names, tags) and not tags.veggie and notmeat(tags) and notname(names) and lessthing(names) and notages(tags) end,
 		priority = 2,
 		health = TUNING.HEALING_HUGE/4,
 		hunger = TUNING.DRINK_CALORIES/4,
@@ -297,7 +79,7 @@ local drinks =
 	
 	fig_juice =
 	{
-		test = function(boilier, names, tags) return (names.fig or names.fig_cooked) and tags.fruit and Preference(names, tags) and not tags.veggie and notmeat(tags) and notname(names) and lessthing(names) end,
+		test = function(boilier, names, tags) return (names.fig or names.fig_cooked) and tags.fruit and Preference(names, tags) and not tags.veggie and notmeat(tags) and notname(names) and lessthing(names) and notages(tags) end,
 		priority = 3,
 		health = TUNING.HEALING_MOREHUGE/4,
 		hunger = TUNING.DRINK_CALORIES/2,
@@ -311,7 +93,7 @@ local drinks =
 	
 	dragonjuice =
 	{
-		test = function(boilier, names, tags) return (names.dragonfruit or names.dragonfruit_cooked) and tags.fruit and Preference(names, tags) and not tags.veggie and notmeat(tags) and notname(names) and lessthing(names) end,
+		test = function(boilier, names, tags) return (names.dragonfruit or names.dragonfruit_cooked) and tags.fruit and Preference(names, tags) and not tags.veggie and notmeat(tags) and notname(names) and lessthing(names) and notages(tags) end,
 		priority = 2,
 		health = TUNING.HEALING_MEDLARGE/4,
 		hunger = TUNING.CALORIES_LARGE/4,
@@ -325,7 +107,7 @@ local drinks =
 	
 	glowberryjuice =
 	{
-		test = function(boilier, names, tags) return glow_calc(names, tags) and onlyrainbowjellyfish(names, tags) and (Preference(names, tags) >= 0.5) and not tags.veggie and notname(names) and lessthing(names) end,
+		test = function(boilier, names, tags) return (names.wormlight or (names.wormlight_lesser and names.wormlight_lesser >= 2)) and (Preference(names, tags) >= 0.5) and not tags.veggie and notmeat(tags) and notname(names) and lessthing(names) and notages(tags) end,
 		priority = 4,
 		health = TUNING.HEALING_MEDSMALL/4,
 		hunger = TUNING.DRINK_CALORIES/5,
@@ -378,20 +160,60 @@ local drinks =
 		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_CAFFINE,
 		card_def={ingredients={{"caffeinberry_bean_cooked",3},{"honey",1}}},
 		oneatenfn = function(inst, eater)
-			eater.caffeinbuff_duration = TUNING.CAFFEIN_TIME
 			eater:AddDebuff("caffeinbuff", "caffeinbuff")
 		end,
 	},
+
+	--[[toffee_latte = {
+		test = function(boilier, names, tags) return tags.seed and (( names.caffeinberry_bean_cooked or 0 ) + ( names.kyno_coffeebeans_cooked or 0 ) + ( names.coffeebeans_cooked or 0 ) + ( names.mfp_coffeecherry_cooked or 0 ) > 1) and (tags.dairy or tags.milk) end,
+		priority = 6,
+		health = TUNING.HEALING_MEDSMALL/4,
+		hunger = (TUNING.TUNING.DRINK_CALORIES/2)/4,
+		sanity = TUNING.SANITY_SUPERTINY/4,
+		thirst = TUNING.HYDRATION_TINY,
+		perishtime = TUNING.PERISH_SUPERFAST,
+		cooktime = TUNING.KETTLE_LUXURY_GOODS,
+		potlevel = "mid",
+		potlevel_bottle = "mid",
+		prefabs = { "caffeinbuff" },
+		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_CAFFINE,
+		oneatenfn = function(inst, eater)
+			eater.caffeinbuff_duration = TUNING.CAFFEIN_TIME * 1.5
+			eater:AddDebuff("caffeinbuff", "caffeinbuff")
+		end,
+	},
+
+	ruincha_latte = {
+		test = function(boilier, names, tags) return tags.sweetener and (names.caffeinberry_bean_cooked or names.kyno_coffeebeans_cooked or names.coffeebeans_cooked or names.mfp_coffeecherry_cooked ) and (tags.dairy or tags.milk) and names.ruincacao_bean_cooked end,
+		priority = 6,
+        health = 0,
+        hunger = TUNING.DRINK_CALORIES/3,
+        sanity = TUNING.SSANITY_TINY/2,
+        thirst = TUNING.HYDRATION_TINY,
+        perishtime = TUNING.PERISH_MED,
+		cooktime = TUNING.KETTLE_LUXURY_GOODS,
+		potlevel = "mid",
+		potlevel_bottle = "mid",
+		prefabs = { "caffeinbuff" },
+		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_CONSERVE_KNOWLEGEE_CAFFINE,
+		oneatenfn = function(inst, eater)
+			eater.caffeinbuff_duration = TUNING.CAFFEIN_TIME * 0.5
+			eater:AddDebuff("caffeinbuff", "caffeinbuff")
+			if eater.components.builder and eater.components.builder.temptechbonus_count then
+				eater.components.builder.temptechbonus_count = eater.components.builder.temptechbonus_count + 1
+			end
+		end,
+	},]]
 
 	-- 야채차(목마름 특화)
 	
 	carrot_tea =
 	{
-		test = function(boilier, names, tags) return (names.carrot or names.carrot_cooked) and tags.veggie and Preference(names, tags) and not tags.fruit and notmeat(tags) and notname(names) and lessthing(names) end,
+		test = function(boilier, names, tags) return (names.carrot or names.carrot_cooked) and tags.veggie and Preference(names, tags) and not tags.fruit and notmeat(tags) and notname(names) and lessthing(names) and notages(tags) end,
 		priority = 1,
 		health = (TUNING.HEALING_SMALL*1.5)/4,
 		hunger = TUNING.DRINK_CALORIES/5,
-		sanity = (TUNING.SANITY_TINY/2)/4,
+		sanity = TUNING.SANITY_TINY/2,
 		thirst = TUNING.HYDRATION_MED,
 		perishtime = TUNING.PERISH_MED,
 		cooktime = TUNING.KETTLE_VEGGIE,
@@ -402,7 +224,7 @@ local drinks =
 
 	veggie_tea =
 	{
-		test = function(boilier, names, tags) return tags.veggie and not tags.lotus and Preference(names, tags) and notmeat(tags) and notname(names) and lessthing(names) end,
+		test = function(boilier, names, tags) return tags.veggie and not tags.lotus and Preference(names, tags) and notmeat(tags) and notname(names) and lessthing(names) and notages(tags) end,
 		priority = 0,
 		health = (TUNING.HEALING_SMALL*2)/4,
 		hunger = TUNING.DRINK_CALORIES/4,
@@ -423,17 +245,48 @@ local drinks =
 			end
 		end
 	},
+
+	--[[lumpy_tea = {
+		test = function(boilier, names, tags) return (names.potato or names.potato_cooked or names.sweet_potato or names.sweet_potato_cooked or names.kyno_sweetpotato or names.kyno_sweetpotato_cooked or names.mfp_sweetpotato or names.mfp_sweetpotato_cooked) and tags.veggie and Preference(names, tags) and not tags.fruit and notmeat(tags) and notname(names) and lessthing(names) and notages(tags) end,
+		priority = 1,
+		health = TUNING.HEALING_SMALL/4,
+		hunger = TUNING.DRINK_CALORIES/4,
+		sanity = TUNING.SANITY_MEDLARGE/4,
+		thirst = TUNING.HYDRATION_LARGE,
+		perishtime = TUNING.PERISH_MED,
+		cooktime = TUNING.KETTLE_LUXURY_GOODS,
+		potlevel = "mid",
+		potlevel_bottle = "mid",
+		oneatenfn = function(inst, eater)
+			eater.components.debuffable:RemoveDebuff("waterbornedebuff")
+		end,
+	},
+
+	seaweed_shake = 
+	{
+		test = function(boilier, names, tags) return (names.kelp or names.kelp_cooked or names.kelp_dried or names.seaweed or names.seaweed_cooked or names.seaweed_dried or names.kyno_seaweeds or names.kyno_seaweeds_cooked or names.kyno_seaweeds_dried) and tags.tags.frozen and tags.frozen >= 1 and (Preference(names, tags) >= 0.5) and notmeat(tags) and notname(names) and lessthing(names) end,
+		priority = 1,
+		health = (TUNING.HEALING_SMALL*2)/4,
+		hunger = TUNING.DRINK_CALORIES/4,
+		sanity = TUNING.SANITY_MED/4,
+		thirst = TUNING.HYDRATION_LARGE,
+		temperature = TUNING.COLD_FOOD_CHILLING_THRESHOLD,
+		temperatureduration = TUNING.FOOD_TEMP_AVERAGE,
+		potlevel = "high",
+		potlevel_bottle = "mid",
+		perishtime = TUNING.PERISH_FASTISH,
+	},]]
 	
 	cactus_tea =
 	{
-		test = function(boilier, names, tags) return (names.cactus_meat or names.cactus_meat_cooked or names.aloe or names.aloe_cooked or names.kyno_aloe or names.kyno_aloe_cooked or names.mfp_aloe or names.mfp_aloe_cooked ) and tags.veggie and Preference(names, tags) and not tags.fruit and notmeat(tags) and notname(names) and lessthing(names) end,
+		test = function(boilier, names, tags) return (names.cactus_meat or names.cactus_meat_cooked or names.aloe or names.aloe_cooked or names.kyno_aloe or names.kyno_aloe_cooked or names.mfp_aloe or names.mfp_aloe_cooked ) and tags.veggie and Preference(names, tags) and not tags.fruit and notmeat(tags) and notname(names) and lessthing(names) and notages(tags) end,
 		priority = 1,
 		health = (TUNING.HEALING_SMALL*2)/4,
 		hunger = TUNING.DRINK_CALORIES/2,
-		sanity = (TUNING.SANITY_TINY/2)/4,
+		sanity = TUNING.SANITY_TINY/2,
 		thirst = TUNING.HYDRATION_LARGE,
 		perishtime = TUNING.PERISH_MED,
-		temperature = TUNING.COLD_FOOD_BONUS_TEMP,
+		temperature = TUNING.COLD_FOOD_CHILLING_THRESHOLD,
 		temperatureduration = TUNING.FOOD_TEMP_LONG,
 		cooktime = TUNING.KETTLE_VEGGIE,
 		potlevel = "mid",
@@ -441,12 +294,13 @@ local drinks =
 	},
 
 	tomato_juice = {
-		test = function(boilier, names, tags) return (names.tomato or names.tomato_cooked or names.tomato_dried) and tags.veggie and Preference(names, tags) and not tags.fruit and notmeat(tags) and notname(names) end,
+		test = function(boilier, names, tags) return (names.tomato or names.tomato_cooked or names.tomato_dried) and tags.veggie and Preference(names, tags) and not tags.fruit and notmeat(tags) and notname(names) and lessthing(names) and notages(tags) end,
 		priority = 1,
 		health = (TUNING.HEALING_SMALL*2)/4,
 		hunger = TUNING.DRINK_CALORIES/2,
-		sanity = (TUNING.SANITY_TINY/2)/4,
+		sanity = TUNING.SANITY_TINY/2,
 		thirst = TUNING.HYDRATION_LARGE,
+		cooktime = TUNING.KETTLE_LUXURY_GOODS,
 		potlevel = "high",
 		potlevel_bottle = "mid",
 		perishtime = TUNING.PERISH_MED,
@@ -454,7 +308,6 @@ local drinks =
 		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_DETOX,
 		oneatenfn = function(inst, eater)
 			if eater:HasTag("drunk") then
-				eater.detoxbuff_duration = TUNING.DRUNKARD_DURATION*.5
 				eater:AddDebuff("detoxbuff", "detoxbuff")
 			elseif eater.components.dcapacity ~= nil and eater.components.dcapacity:GetCapacity() > 0 then
 				eater.components.dcapacity:Remove_Capacity(1)
@@ -464,7 +317,7 @@ local drinks =
 
 	mulled =
 	{
-		test = function(boilier, names, tags) return (( names.onion or 0 ) + ( names.onion_cooked or 0 ) + ( names.garlic or 0 ) + ( names.garlic_cooked or 0 ) >= 2) and tags.sweetener and tags.sweetener >= 1 and Preference(names, tags) and not tags.frozen and notmeat(tags) and notname(names) end,
+		test = function(boilier, names, tags) return (( names.onion or 0 ) + ( names.onion_cooked or 0 ) + ( names.garlic or 0 ) + ( names.garlic_cooked or 0 ) >= 2) and tags.sweetener and tags.sweetener >= 1 and Preference(names, tags) and not tags.frozen and notmeat(tags) and notname(names) and lessthing(names) and notages(tags) end,
 		priority = 2,
 		health = TUNING.HEALING_MEDSMALL/4,
 		hunger = TUNING.DRINK_CALORIES/2,
@@ -473,13 +326,12 @@ local drinks =
 		perishtime = TUNING.PERISH_MED,
 		temperature = TUNING.HOT_FOOD_WARMING_THRESHOLD,
 		temperatureduration = TUNING.BUFF_FOOD_TEMP_DURATION,
-		cooktime = TUNING.KETTLE_VEGGIE,
+		cooktime = TUNING.KETTLE_LUXURY_GOODS,
 		potlevel = "mid",
 		potlevel_bottle = "high",
 		prefabs = { "sleepdrinkbuff", "healthregenbuff","honeyed" },
 		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_MULLED,
 		oneatenfn = function(inst, eater)
-			eater.sleepdrinkbuff_duration = TUNING.TEASLEEP_TIME + math.random()
 			eater:AddDebuff("sleepdrinkbuff", "sleepdrinkbuff")
 		end,
 	},
@@ -489,7 +341,7 @@ local drinks =
 	-- 꽃을 섞으면 나오는 결과물
 	mixflower =
 	{
-		test = function(boilier, names, tags) return Mix_Tea_Patch(names, tags) and notmeat(tags) and notname(names) and lessthing(names) end,
+		test = function(boilier, names, tags) return Mix_Tea_Patch(names, tags) and notmeat(tags) and notname(names) and lessthing(names) and notages(tags) end,
 		priority = 0,
 		health = TUNING.HEALING_TINY/4,
 		hunger = 0,
@@ -499,12 +351,11 @@ local drinks =
 		cooktime = TUNING.KETTLE_DECORATION,
 		potlevel = "mid",
 		potlevel_bottle = "mid",
-
 	},
 	
 	greentea =
 	{
-		test = function(boilier, names, tags) return IsTealeaves(names, tags) and notmeat(tags) and notname(names) and lessthing(names) end,
+		test = function(boilier, names, tags) return IsTealeaves(names, tags) and notmeat(tags) and notname(names) and lessthing(names) and notages(tags) end,
 		priority = 1,
 		health = TUNING.HEALING_TINY/4,
 		hunger = 0,
@@ -519,15 +370,15 @@ local drinks =
 	-- 녹차 건조대 말린것
 	blacktea =
 	{
-		test = function(boilier, names, tags) return IsTealeaves_dried(names, tags) and not tags.frozen and notmeat(tags) and notname(names) and lessthing(names) end,
+		test = function(boilier, names, tags) return IsTealeaves_dried(names, tags) and not tags.frozen and notmeat(tags) and notname(names) and lessthing(names) and notages(tags) end,
 		priority = 1,
 		health = TUNING.HEALING_SMALL/4,
 		hunger = 0,
 		sanity = TUNING.SANITY_LARGE/4,
 		thirst = TUNING.HYDRATION_SMALL,
 		perishtime = TUNING.PERISH_MED,
-		temperature = TUNING.HOT_FOOD_BONUS_TEMP,
-		temperatureduration = TUNING.FOOD_TEMP_LONG,
+		temperature = TUNING.HOT_FOOD_WARMING_THRESHOLD,
+		temperatureduration = TUNING.BUFF_FOOD_TEMP_DURATION,
 		cooktime = TUNING.KETTLE_TEA,
 		potlevel = "mid",
 		potlevel_bottle = "mid",
@@ -536,7 +387,7 @@ local drinks =
 	
 	blacktea_iced =
 	{
-		test = function(boilier, names, tags) return IsTealeaves_dried(names, tags) and tags.frozen and tags.frozen >= 1 and notmeat(tags) and notname(names) and lessthing(names) end,
+		test = function(boilier, names, tags) return IsTealeaves_dried(names, tags) and tags.frozen and tags.frozen >= 1 and notmeat(tags) and notname(names) and lessthing(names) and notages(tags) end,
 		priority = 1,
 		health = TUNING.HEALING_SMALL/4,
 		hunger = 0,
@@ -544,7 +395,7 @@ local drinks =
 		thirst = TUNING.HYDRATION_MEDSMALL,
 		perishtime = TUNING.PERISH_MED,
 		temperature = TUNING.COLD_FOOD_BONUS_TEMP,
-		temperatureduration = TUNING.FOOD_TEMP_LONG,
+		temperatureduration = TUNING.BUFF_FOOD_TEMP_DURATION,
 		cooktime = TUNING.KETTLE_TEA,
 		potlevel = "mid",
 		potlevel_bottle = "mid",
@@ -554,14 +405,14 @@ local drinks =
 	-- 동굴 고사리(수인성 질병 해결)
 	fuer =
 	{
-		test = function(boilier, names, tags) return IsFoliage(names, tags) and notmeat(tags) and notname(names) and lessthing(names) end,
+		test = function(boilier, names, tags) return IsFoliage(names, tags) and notmeat(tags) and notname(names) and lessthing(names) and notages(tags) end,
 		priority = 1,
 		health = TUNING.HEALING_SMALL/4,
 		hunger = 0,
 		sanity = TUNING.SANITY_MEDLARGE/4,
 		thirst = TUNING.HYDRATION_MEDSMALL,
 		perishtime = TUNING.PERISH_MED,
-		cooktime = TUNING.KETTLE_TEA,
+		cooktime = TUNING.KETTLE_LUXURY_GOODS,
 		potlevel = "mid",
 		potlevel_bottle = "mid",
 		oneatenfn = function(inst, eater)
@@ -572,7 +423,7 @@ local drinks =
 	-- 일반 꽃잎
 	hibiscustea =
 	{
-		test = function(boilier, names, tags) return IsFlower(names, tags) and notmeat(tags) and notname(names) and lessthing(names) end,
+		test = function(boilier, names, tags) return IsFlower(names, tags) and notmeat(tags) and notname(names) and lessthing(names) and notages(tags) end,
 		priority = 1,
 		health = TUNING.HEALING_MEDSMALL/4,
 		hunger = 0,
@@ -587,7 +438,7 @@ local drinks =
 	--일시적으로 유령으로 만드는 차
 	sushibiscus =
 	{
-		test = function(boilier, names, tags) return IsFlower_Evil(names, tags) and notmeat(tags) and notname(names) and lessthing(names) end,
+		test = function(boilier, names, tags) return IsFlower_Evil(names, tags) and notmeat(tags) and notname(names) and lessthing(names) and notages(tags) end,
 		priority = 2,
 		health = 0,
 		hunger = 0,
@@ -602,67 +453,162 @@ local drinks =
 		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_SUS,
 		card_def={ingredients={{"petals_evil",1},{"firenettles",1},{"tillweed",1},{"twigs",1}}},
 		oneatenfn = function(inst, eater)
-				eater:AddDebuff("obebuff", "obebuff")
+			eater:AddDebuff("obebuff", "obebuff")
 		end,
 	},
 
 	-- 선인장 꽃잎
 	cactusflower_tea =
 	{
-		test = function(boilier, names, tags) return IsFlower_Cactus(names, tags) and notmeat(tags) and notname(names) and lessthing(names) end,
+		test = function(boilier, names, tags) return IsFlower_Cactus(names, tags) and notmeat(tags) and notname(names) and lessthing(names) and notages(tags) end,
 		priority = 2,
-		health = (TUNING.HEALING_MED/2)/4,
+		health = TUNING.HEALING_MED/2,
 		hunger = TUNING.DRINK_CALORIES/2,
 		sanity = TUNING.SANITY_HUGE/4,
 		thirst = TUNING.HYDRATION_MEDSMALL,
 		perishtime = TUNING.PERISH_MED,
 		temperature = TUNING.COLD_FOOD_BONUS_TEMP,
-		temperatureduration = TUNING.BUFF_FOOD_TEMP_DURATION,
+		temperatureduration = TUNING.FOOD_TEMP_LONG,
 		cooktime = TUNING.KETTLE_DECORATION,
 		potlevel = "high",
 		potlevel_bottle = "mid",
 	},
 	
 	lotustea = {
-			test = function(boilier, names, tags) return IsFlower_Lotus(names, tags) and notname(names) and lessthing(names) end,
-			priority = 1,
-			health = TUNING.HEALING_MED/4,
-			hunger = 0,
-			sanity = TUNING.SANITY_LARGE/4,
-			thirst = TUNING.HYDRATION_SMALL,
-			perishtime = TUNING.PERISH_MED,
-			cooktime = TUNING.KETTLE_DECORATION,
-			temperature = TUNING.HOT_FOOD_BONUS_TEMP,
-			temperatureduration = TUNING.FOOD_TEMP_BRIEF,
-	        prefabs = { "sweettea_buff" },
-			tags = {"honeyed"},
-	        oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_HOT_SANITY_REGEN, -- 바꿔야함
-	        oneatenfn = function(inst, eater)
-				eater:AddDebuff("buff_moistureimmunity", "buff_moistureimmunity")
-	        end,
-			potlevel = "mid",
-			potlevel_bottle = "mid",
-	},
-}
-
---[[local lotustea = {
-		test = function(boilier, names, tags) return ( names.lotus_flower or names.kyno_lotus_flower or names.mfp_lotus_flower ) and ((tags.veggie or 0) <= 2) and not tags.fruit and notmeat(tags) and notname(names)and lessthing(names) end,
+		test = function(boilier, names, tags) return IsFlower_Lotus(names, tags) and notname(names) and lessthing(names) and notages(tags) end,
 		priority = 1,
-		health = TUNING.HEALING_MED,
+		health = TUNING.HEALING_MED/4,
 		hunger = 0,
-		sanity = TUNING.SANITY_LARGE,
+		sanity = TUNING.SANITY_LARGE/4,
 		thirst = TUNING.HYDRATION_SMALL,
 		perishtime = TUNING.PERISH_MED,
-		cooktime = TUNING.KETTLE_DECORATION,
+		cooktime = TUNING.KETTLE_LUXURY_GOODS,
+		temperature = TUNING.HOT_FOOD_BONUS_TEMP,
+		temperatureduration = TUNING.FOOD_TEMP_BRIEF,
+	    prefabs = { "buff_moistureimmunity" },
+		tags = {"honeyed"},
+	    oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_DRY,
+	    oneatenfn = function(inst, eater)
+			eater:AddDebuff("buff_moistureimmunity", "buff_moistureimmunity")
+	    end,
 		potlevel = "mid",
-		potlevel_bottle = "high",
+		potlevel_bottle = "mid",
+	},
+	-- 특수차
+	--[[butterbeer = {
+		test = function(boilier, names, tags) return tags.fat and tags.dairy and tags.sweetener and notmeat(tags) and notname(names) and lessthing(names) end,
+		priority = 1,
+        health = TUNING.HEALING_MED/2,
+        hunger = TUNING.CALORIES_SMALL/4,
+        sanity = 0,
+        thirst = TUNING.HYDRATION_SUPERTINY,
+		perishtime = TUNING.PERISH_SLOW,
+		cooktime = TUNING.KETTLE_LUXURY_GOODS,
+	    prefabs = { "butterhunterbuff" },
+		tags = {"honeyed"},
+	    oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_BUTTERHUNTER,
+	    oneatenfn = function(inst, eater)
+			eater:AddDebuff("butterhunterbuff", "butterhunterbuff")
+	    end,
+		potlevel = "mid",
+		potlevel_bottle = "mid",
+	},
+	ruincolate = {
+		test = function(boilier, names, tags) return names.ruincacao_bean_cooked and names.ruincacao_bean_cooked >= 3 and Preference(names, tags) and notmeat(tags) and notname(names) and lessthing(names) end,
+		priority = 2,
+        health = TUNING.HEALING_TINY/4,
+        hunger = 0,
+        sanity = TUNING.SANITY_TINY/4,
+        thirst = TUNING.HYDRATION_SMALLTINY,
+        perishtime = TUNING.PERISH_SLOW,
+		cooktime = TUNING.KETTLE_LUXURY_GOODS,
+	    oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_ANCIENT_KNOWLEGEE_PIECE,
+	    oneatenfn = function(inst, eater)
+			if eater.components.builder then
+				eater.components.builder:GiveTempTechBonus({ANCIENT = 2})
+			end
+	    end,
+		potlevel = "mid",
+		potlevel_bottle = "mid",
+	},
+	hotruincolate = {
+		test = function(boilier, names, tags) return names.ruincacao_bean_cooked and names.ruincacao_bean_cooked == 3 and (names.pepper or names.pepper_cooked) and notmeat(tags) and notname(names) and lessthing(names) end,
+		priority = 1,
+        health = TUNING.HEALING_MED/4,
+        hunger = TUNING.DRINK_CALORIES/2,
+        sanity = -TUNING.SANITY_SMALL,
+        thirst = TUNING.HYDRATION_SMALLTINY,
+        perishtime = TUNING.PERISH_SLOW,
+		cooktime = TUNING.KETTLE_LUXURY_GOODS,
+		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_ANCIENT_KNOWLEGEE,
+	    oneatenfn = function(inst, eater)
+	    	if eater.components.builder then
+				eater.components.builder:GiveTempTechBonus({ANCIENT = 4})
+	    	end
+	    end,
+		potlevel = "mid",
+		potlevel_bottle = "mid",
+	},
+	tea_ruincolate_latte = {
+		test = function(boilier, names, tags) return names.ruincacao_bean_cooked and names.ruincacao_bean_cooked == 2 and names.tealeaves and (tags.dairy or tags.milk) end,
+		priority = 2,
+        health = TUNING.HEALING_SMALL/4,
+        hunger = TUNING.DRINK_CALORIES/2,
+        sanity = TUNING.SANITY_MED/4,
+        thirst = TUNING.HYDRATION_TINY,
+        perishtime = TUNING.PERISH_MED,
+		cooktime = TUNING.KETTLE_LUXURY_GOODS,
+	    oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_CONSERVE_KNOWLEGEE,
+	    oneatenfn = function(inst, eater)
+			if eater.components.builder and eater.components.builder.temptechbonus_count then
+				eater.components.builder.temptechbonus_count = eater.components.builder.temptechbonus_count + 1
+			end
+	    end,
+		potlevel = "mid",
+		potlevel_bottle = "mid",
+	},]]
 }
 
-for k, mod_id in ipairs(KnownModIndex:GetModsToLoad()) do
-    if mod_id == "workshop-2334209327" or mod_id == "workshop-1467214795" or mod_id == "workshop-1505270912" or mod_id == "workshop-2762334054" then
-    	drinks.lotustea = lotustea
+local mod_drink = require("modcompats/prepareddrinks_mod")
+local hof, ia, te, cf, unc = false, false, false, false, false
+
+for k,mod_id in ipairs(KnownModIndex:GetModsToLoad()) do 
+	if mod_id == "workshop-2334209327" then
+		hof = true
 	end
-end]]
+	if mod_id == "workshop-1505270912" then
+		te = true
+	end
+	if mod_id == "workshop-1467214795" then
+		ia = true
+	end
+	if mod_id == "workshop-1289779251" then -- cf
+		local cf_drink = mod_drink.cf_drink
+		for k,v in pairs(cf_drink) do
+			drinks[k] = v
+		end
+	end
+	if mod_id == "workshop-2039181790" then -- unc
+		local unc_drink = mod_drink.unc_drink
+		for k,v in pairs(unc_drink) do
+			drinks[k] = v
+		end
+	end
+end
+
+if te or ia then
+	local sw_drink = mod_drink.sw_drink
+	for k,v in pairs(sw_drink) do
+		drinks[k] = v
+	end
+end
+
+if te or ia or hof then
+	local coconut_drink = mod_drink.coconut_drink
+	for k,v in pairs(coconut_drink) do
+		drinks[k] = v
+	end
+end
 
 for k, v in pairs(drinks) do
     v.name = k
