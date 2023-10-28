@@ -127,7 +127,7 @@ return {
 		CHERRY_DOCTOR_COLA = "의사가 만들었다는 거는 거짓말이야.",
 		CHERRY_BLOOM_WINE = "",
 		GIANT_BLUEBERRY_WINE = "",
-		RICE_WINE = "이런 양조주도 있었어?",
+		RICE_WINE = "이걸로 양조주를 만들수 있었어?",
 		WHEAT_BEER = "과학적으로 이건 맥주야.",
 
 		DISINFECTANT = "",
@@ -144,7 +144,7 @@ return {
 		ARRACK = "",
 		CHERRY_BLOOM_RUM = "",
 		GIANT_BLUEBERRY_GIN = "",
-		RICE_SPIRITS = "이런 증류주도 있었어?",
+		RICE_SPIRITS = "당연히 증류주도 가능하지.",
 		WHEAT_WHISKEY = "",
 
 		BUCKET_STEEL_EMPTY = 
