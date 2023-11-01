@@ -18,24 +18,7 @@ local sw_drink = {
 		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_NAG_AURA_RESIST_GLOW,
 		oneatenfn = function(inst, eater)
 			alcohol(inst, eater)
-           	if eater.wormlight ~= nil then
-	            if eater.wormlight.prefab == "wormlight_light" then
-	                eater.wormlight.components.spell.lifetime = 0
-	                eater.wormlight.components.spell:ResumeSpell()
-	                return
-	            else
-	                eater.wormlight.components.spell:OnFinish()
-	            end
-	        end
-	        local light = SpawnPrefab("wormlight_light")
-	        light.components.spell:SetTarget(eater)
-	        if light:IsValid() then
-	            if light.components.spell.target == nil then
-	        		light:Remove()
-	            else
-	                light.components.spell:StartSpell()
-	            end
-	        end
+			drink_worm_light_less(inst, eater)
 	    end,
 	},
 }
@@ -80,8 +63,8 @@ local cf_drink = {
 			eater:AddDebuff("caffeinbuff", "caffeinbuff")
 		end,
 	},
-	cherry_bloom_wine = {
-		test = function(boilier, names, tags) return names.cherry_roseberries and names.cherry_roseberries == 3 and ( names.forgetmelots or names.petals or names.moon_tree_blossom ) and notmeat(tags) and notname(names) end,
+	cherry_bloom_madhu = {
+		test = function(boilier, names, tags) return names.cherry_honey and names.cherry_honey == 3 and ( names.forgetmelots or names.petals or names.moon_tree_blossom or tags.petals_legion ) and notmeat(tags) and notname(names) end,
 		priority = 2,
         health = (TUNING.HEALING_SMALL*5)/2,
         hunger = (TUNING.CALORIES_MEDSMALL/2)/2,
@@ -185,4 +168,25 @@ local wheat_drink = {
 	}
 }
 
-return { sw_drink = sw_drink, coconut_drink = coconut_drink, cf_drink = cf_drink, unc_drink = unc_drink , wheat_drink = wheat_drink }
+local legion_drink = {
+	pale_beer = {
+		test = function(boilier, names, tags) return names.squamousfruit and names.squamousfruit >= 2 and notmeat(tags) and notname(names) and lessthing(names) and notages(tags) end,
+		priority = 1,
+		health = (TUNING.HEALING_SMALL*2)/2,
+		hunger = TUNING.CALORIES_MEDSMALL/2,
+		sanity = (TUNING.SANITY_HUGE/2)/2,
+		thirst = TUNING.HYDRATION_MED,
+		tags = {"alcohol"},
+		perishtime = TUNING.PERISH_PRESERVED,
+		cooktime = (TUNING.KETTLE_VEGGIE + TUNING.BEER_WAIT),
+		potlevel = "mid",
+		potlevel_bottle = "mid",
+		prefabs = { "alcoholdebuff","drunkarddebuff","resistancebuff" },
+		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_NAG_AURA_RESIST,
+		oneatenfn = function(inst, eater)
+			alcohol(inst, eater)
+		end,
+	}
+}
+
+return { sw_drink = sw_drink, coconut_drink = coconut_drink, cf_drink = cf_drink, unc_drink = unc_drink , wheat_drink = wheat_drink, legion_drink = legion_drink }

@@ -37,7 +37,8 @@ function IsTealeaves(names, tags)
 		names.lotus_flower or 
 		names.kyno_lotus_flower or 
 		names.succulent_picked or
-		tags.lotus
+		tags.lotus or
+		tags.petals_legion
 	)
 end
 
@@ -58,7 +59,8 @@ function IsTealeaves_dried(names, tags)
 		names.lotus_flower or 
 		names.kyno_lotus_flower or 
 		names.succulent_picked or
-		tags.lotus
+		tags.lotus or
+		tags.petals_legion
 	)
 end
 
@@ -81,12 +83,13 @@ function IsFoliage(names, tags)
 		names.lotus_flower or 
 		names.kyno_lotus_flower or 
 		names.succulent_picked or
-		tags.lotus 
+		tags.lotus or
+		tags.petals_legion
 	)
 end
 
 function IsFlower(names, tags)
-	return ( names.forgetmelots or names.petals or names.moon_tree_blossom ) and 
+	return ( names.forgetmelots or names.petals or names.moon_tree_blossom or tags.petals_legion ) and 
 	Preference(names, tags) and 
 	Tea_Def(names, tags) and not 
 	( 
@@ -102,7 +105,8 @@ function IsFlower(names, tags)
 		names.lotus_flower or 
 		names.kyno_lotus_flower or 
 		names.succulent_picked or
-		tags.lotus 
+		tags.lotus or
+		tags.petals_legion
 	)
 end
 
@@ -123,7 +127,8 @@ function IsFlower_Evil(names, tags)
 		names.lotus_flower or 
 		names.kyno_lotus_flower or 
 		names.succulent_picked or
-		tags.lotus 
+		tags.lotus or
+		tags.petals_legion
 	)
 end
 
@@ -146,7 +151,8 @@ function IsFlower_Cactus(names, tags)
 		names.lotus_flower or 
 		names.kyno_lotus_flower or 
 		names.succulent_picked or
-		tags.lotus 
+		tags.lotus or
+		tags.petals_legion
 	)
 end
 
@@ -310,5 +316,65 @@ function spirits(inst, eater)
 		eater:AddDebuff("immunebuff", "immunebuff")
 		eater:AddDebuff("alcoholdebuff", "alcoholdebuff")
 		eater:AddDebuff("drunkarddebuff", "drunkarddebuff")
+	end
+end
+
+function drink_worm_light_less(inst, eater)
+    if eater.wormlight ~= nil then
+	    if eater.wormlight.prefab == "wormlight_light" then
+	        eater.wormlight.components.spell.lifetime = 0
+	        eater.wormlight.components.spell:ResumeSpell()
+		    return
+        else
+    	    eater.wormlight.components.spell:OnFinish()
+	    end
+	end
+    local light = SpawnPrefab("wormlight_light")
+    light.components.spell:SetTarget(eater)
+    if light:IsValid() then
+        if light.components.spell.target == nil then
+	   		light:Remove()
+        else
+            light.components.spell:StartSpell()
+        end
+    end
+end
+
+function drink_worm_light_greater(inst, eater)
+    if eater.wormlight ~= nil then
+        if eater.wormlight.prefab == "wormlight_light_greater" then
+            eater.wormlight.components.spell.lifetime = 0
+            eater.wormlight.components.spell:ResumeSpell()
+            return
+        else
+            eater.wormlight.components.spell:OnFinish()
+        end
+    end
+    local light = SpawnPrefab("wormlight_light_greater")
+    light.components.spell:SetTarget(eater)
+	if light:IsValid() then
+	    if light.components.spell.target == nil then
+	        light:Remove()
+	    else
+	        light.components.spell:StartSpell()
+	    end
+	end
+end
+
+function give_tech(inst, eater, num, count_num)
+	local atech_num = math.max(0,num)
+	local otech_num = math.max(0,num/2)
+	if eater.components.builder then
+		eater.components.builder:GiveTempTechBonus({ANCIENT = atech_num, OBSIDIAN = otech_num})
+		if count_num then
+			eater.components.builder.temptechbonus_count = eater.components.builder.temptechbonus_count + math.max(1,count_num)
+		end
+	end
+end
+
+function add_tech_count(inst, eater, num)
+	local tech_count = math.max(0,num)
+	if eater.components.builder and eater.components.builder.temptechbonus_count then
+		eater.components.builder.temptechbonus_count = eater.components.builder.temptechbonus_count + tech_count
 	end
 end

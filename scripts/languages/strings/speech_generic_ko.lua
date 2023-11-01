@@ -22,6 +22,8 @@ return {
 
 	DESCRIBE =
 	{
+		BOILBOOK = "",
+
 		WATER_CLEAN_ICE = "만나서 정말 차가워.",
 		WATER_DIRTY_ICE = "만나서 더러워.",
 
@@ -33,6 +35,8 @@ return {
 		WELL_DRILLING_ITEM = "물을 긷기 위해 우물을 파는 장치야.",
 		HOLE = "여기에 우물을 만들면 되겠어.",
 		WELL = "이제 깨끗한 물을 간편하게 얻을 수 있어!",
+
+		-- 물 모드 식물
 
 		TEA_TREE = "참 작고 멋진 나무야.",
 		DUG_TEA_TREE = "다른 곳에 옮겨심을 수 있겠어.",
@@ -46,18 +50,23 @@ return {
 		DUG_CAFFEINBERRY = "땅으로 옮겨줘야 해!",
 		CAFFEINBERRY_BEAN = "내가 아는 커피콩하고는 다르게 생겼는데.",
 		CAFFEINBERRY_BEAN_COOKED = "가열했더니 확실히 나아졌어.",
+ 
+		RUINCACAO_TREE = "조금 소름 끼치는 나무네.", 
+		DUG_RUINCACAO_TREE = "다른 곳에 옮겨심을 수 있겠어.",
+		RUINCACAO_SEED = "벌써 발아했잖아?",
+		RUINCACAO_SEED_SAPLING = "시간이 지나면 나무로 자랄 거야.",
+		RUINCACAO = "생각보다 껍질이 바싹 말라있는데?",
+		RUINCACAO_BEAN = "먹기에는 기름기가 너무 많아.",
+		RUINCACAO_SEED_COOKED = "생각보다 스모키 한데?",
 
-		RUINCACAO_TREE = "",
-		DUG_RUINCACAO_TREE = "",
-		RUINCACAO_SEED = "",
-		RUINCACAO_SEED_SAPLING = "",
-		RUINCACAO = "",
-		RUINCACAO_BEAN = "",
-		TEA_SEED_COOKED = "",
+		-- 증류기 첨가제
 
-		ADDITIVE_SEED = "",
-		--ADDITIVE_PETALS = "",
-		--ADDITIVE_RUINCACAO = "",
+		ADDITIVE_SEED = "왈리가 새로운 향신료를 만든걸까?",
+		ADDITIVE_NUT = "커피와 견과류 향이 나.",
+		ADDITIVE_DAIRY = "크림을 단단히 밀봉했네.",
+		ADDIRIVE_PETALS = "말린 꽃잎과 이파리들이야.",
+
+		-- 음료
 
 		WATER_CLEAN = "바로 마셔도 괜찮겠어.",
 		WATER_DIRTY = "그냥 마시기에는 좀 위험하겠는데.",
@@ -65,6 +74,8 @@ return {
 
 		GOOPYDRINK = "마셔도 괜찮은지 모르겠네.",
 		
+		-- 주전자 음료
+
 		FRUITJUICE = "과일 향이 향긋해.",
 		BERRIES_JUICE = "베리에서 과학을 추출해 냈어.",
 		POMEGRANATE_JUICE = "절대 달콤한 석류 주스를 '당'연하게 여기지 말자.",
@@ -72,13 +83,14 @@ return {
 		FIG_JUICE = "뉴턴의 무화과로 만든 비-뉴턴 유체야.",
 		DRAGONJUICE = "용은 안 들어있는데.",
 		GLOWBERRYJUICE = "맛은 나쁘지 않아.",
-		CAFFEINBERRY_JUICE = "기운 나는 냄새가 나!",
+		WATERMELON_JUICE = "이 수분량에 감동받을 '수'박에 없지",
 
 		VEGGIE_TEA = "채소 풋내가 나는데.",
 		CARROT_TEA = "마실 만했으면 좋겠네.",
 		CACTUS_TEA = "다행히 가시는 없어.",
-		MULLED = "뇌를 쉬게 해야겠어.",
 		TOMATO_JUICE = "과학이 잔에 가득해.",
+		LUMPY_TEA = "흙 냄새는 안 나는데...",
+		SEAWEED_SHAKE = "음료로 만들 생각을 왜 했지??",
 		
 		GREENTEA = "이런 차도 있었어?",
 		BLACKTEA = "우유가 조금 있으면 좋겠는데.",
@@ -90,28 +102,42 @@ return {
 		LOTUSTEA = "비스킷 몇 조각 있으면 어울리겠어.",
 		SUSHIBISCUS = "과학적으로 전혀 말이 안 되'잔'아.",
 
-		TOFFEE_LATTE = "기운 나는 냄새와 고소한 향이나!",
-		RUINCHA_LATTE = "모카향과 함깨 기운 나는 냄새가나!",
-		LUMPY_TEA = "흙냄새는 안나는데.",
-		SEAWEED_SHAKE = "음료로 만들 생각을 왜 했지?",
-		BUTTERBEER = "맥주향은 안나는데.",
-		HOTRUINCOLATE = "음, 과학적인 영감이 떠올라.",
-		RUINXOCOLATL = "과학영감에 심취가 되는데?",
+		CAFFEINBERRY_JUICE = "기운 나는 냄새가 나!",		
+		TOFFEE_LATTE = "커피에 견과류 섞은거야?",
+		RUINCHA_LATTE = "두 콩 사이의 핵반응 작용'물'이야.",
+		
+		HOTRUINCOLATE = "마시멜로우가 좀 있었으면.",
+		RUINCOLATE_SMOOTHIE = "정말 달달하고 마시기 편해.",
+		RUINXOCOLATL = "왠지 매캐한데?",
 		TEA_RUINCOLATE_LATTE = "이건 예상치 못한 결과인데?",
 
-		COCONUT_JUICE = "",
-		RAINBOW_SHAKE = "생각보다 맛이 좋은데?",
+		MULLED = "뇌를 쉬게 해야겠어.",
+		BUTTERBEER = "절대 맥주는 아니고 스카치 캔디 같네.",
+
+		-- 콜라보 주전자 음료
+
+		COCONUT_JUICE = "몰캉몰캉한 젤리가 보이는데?",
+		RAINBOW_SHAKE = "다행히 별 맛이 안나.",
 		QUARTZ_SHAKE = "생선 비린내가 안 나기를.",
-		CHERRY_ROSEBERRIES_TEA = "",
-		CHERRY_HONEY_TEA = "",
+		CHERRY_ROSEBERRIES_TEA = "장미향이 강렬해.",
+		CHERRY_HONEY_TEA = "은은하게 꽃향기가 나네.",
 		SWEET_RICE_DRINK = "이런 음료도 있었어?",
 
-		SPOILED_DRINK = "음료가 구정물이 됐잖아.",
+		-- 양조기 음료
+
+		SPOILED_DRINK = "음료가 구정물이 됐잖아.", --썩은 음료
+
+		--소다 
+
 		SODA = "정말 상쾌해!",
 		FRUITSODA = "새콤달콤하면서도 상쾌해!",
 		LEMONLIMESODA = "치과의사들이 보면 아마 환장하겠지.",
 		COLA = "과학이 가득한 맛이야!",
 		COLAQUANTUM = "짜릿한 과학이 들어 있어!",
+		LUMPY_BEER = "엄청나게 톡 쏘는 향이야!",
+
+		--양조주
+
 		CORN_BEER = "과학적으로 이건 맥주가 아니야.",
 		MADHU = "꿀이 발효되었어.",
 		WINE = "'주'책맞게 굴지 마.",
@@ -119,33 +145,66 @@ return {
 		SPARKLINGWINE = "강렬하게 흔들어보고 싶어졌어.",
 		GLOWBERRYWINE = "음료가 과학으로 빛나고 있어.",
 		KUMIS = "우유로는 요구르트를 만드는 거 아니었어?",
-		LUMPY_WINE = "",
-		PULQUE = "",
+		LUMPY_WINE = "깔끔하고 담백한 술이야.",
+		PULQUE = "신대륙의 전통주 였던가?",
+		RUINCACAO_WINE = "카카오로 술도 만들수 있는거였어?",
 
-		AUROBOW = "",
-		COCONUT_WINE = "",
+		--콜라보 소다
+
 		CHERRY_DOCTOR_COLA = "의사가 만들었다는 거는 거짓말이야.",
-		CHERRY_BLOOM_WINE = "",
-		GIANT_BLUEBERRY_WINE = "",
+
+		--콜라보 양조주
+
+		AUROBOW = "음료 색이 시시각각 변하는걸 관찰할수 있어.",
+		COCONUT_WINE = "지중해라도 온 것 같네.",
+		CHERRY_BLOOM_MADHU = "기념품 선반에 한병 장식하면 좋겠네.",
+		GIANT_BLUEBERRY_WINE = "가뜩이나 열매가 발효하면서 불안정해졌어.",
 		RICE_WINE = "이걸로 양조주를 만들수 있었어?",
-		WHEAT_BEER = "과학적으로 이건 맥주야.",
+		WHEAT_BEER = "과학적으로 이건 밀맥주야.",
+		PALE_BEER = "정말로 창백한 맥주잖아?",
 
-		DISINFECTANT = "",
-		CORN_WHISKEY = "",
-		LUMPY_VODKA = "",
-		TEQUILA = "",
-		MADHU_RUM = "",
-		BERRY_BRANDY = "",
-		BERRY_GIN = "",
-		GLOWBERRY_BRANDY = "",
-		AREUHI = "",
+		--증류주
 
-		MOONWAY = "",
-		ARRACK = "",
-		CHERRY_BLOOM_RUM = "",
-		GIANT_BLUEBERRY_GIN = "",
+		DISINFECTANT = "이걸로 내 실험도구들을 씻어내야겠어",
+		CORN_WHISKEY = "미국에서 이런 옥수수 위스키를 만들던데.",
+		LUMPY_VODKA = "정말 빠르게 취하고 싶다면야.",
+		TEQUILA = "생각보다 뿌리 향 같은게 강렬한데?",
+		MADHU_RUM = "배 탈때 한 병 가져가야 겠어.",
+		BERRY_BRANDY = "새로운 실험을 하기 전에 한잔 걸치기 좋은 술이야.",
+		AREUHI = "우유같은건 이제 눈꼽만큼도 안 보이네.",
+
+		--왈리 전용 증류주
+
+		BERRY_GIN = "과학으로 싼 술을 잔뜩 만든게 뭐가 나빠.",
+		GLOWBERRY_GIN = "독주가 빛나서 더 나쁠게 뭐가 있겠어?",
+		ABSINTHE = "톡 쏘는 향이 특징이야.",
+		TEA_LUMPY_VODKA = "찻잎을 침출한거야?",
+		PETALS_BERRY_BRANDY = "브랜디인데 꽃향기가 좀 나는걸.",
+		KAHLUA = "럼에 커피를 진하게 우려냈나봐.",
+		NUT_CORN_WHISKY = "안주로 먹을 땅콩을 위스키랑 합쳐놨네!",
+        RUINCACAO_CREAM_LIQUEUR = "크리미하고 초콜릿 향이 나는 술이야.",
+        RUMCHATA = "목에 부드럽게 잘 넘어가겠는걸?",
+
+		--콜라보 증류주
+
+		MOONWAY = "발광 단백질을 알콜 보존 한걸까?",
+		ARRACK = "은은하게 코코넛 향이 나",
+		CHERRY_BLOOM_RUM = "병속의 꽃잎이 떠 다니는 걸 영원히 감상할수 있겠어.",
 		RICE_SPIRITS = "당연히 증류주도 가능하지.",
-		WHEAT_WHISKEY = "",
+		WHEAT_WHISKEY = "일종의 그레인 위스키야.",
+		PALE_WHISKEY = "과학적으로 말도 안되는 색의 위스키야.",
+
+		--왈리 전용 콜라보 증류주
+
+		NUT_COCONUT_BRANDY = "한 잔 마시면 배멀미를 덜 할거야,아마.",
+	    GIANT_BLUEBERRY_GIN = "향료와 더더욱 격렬하게 반응하고 있어.",
+
+		--냄비 요리
+
+        DARK_RUINCOLATE = "과학실험을 할 거 였으면 나도 불렀어야지.",
+        WHITE_RUINCOLATE = "잔뜩 먹기에는 느끼하겠어.",
+        RUINCOLATE = "실험에는 당분 보충이 필요하지.",
+        RUIN_SCHOKAKOLA = "누가 초콜릿을 구두약 캔에 보관할 생각을 했지?",
 
 		BUCKET_STEEL_EMPTY = 
 		{
@@ -160,18 +219,18 @@ return {
 		{
 			EMPTY = "물을 채울 수 있어. 물 말고 다른 걸 채워도 되고.",
 			FULL = "빗물로 가득 찼어",
-			FULL_ICE = "이거 빼려면 고생 좀 하겠군",
-			DIRTY = "으, 물이 썩었잖아...",
-			DIRTY_ICE = "얼기까지 해버렸군...",
+			FULL_ICE = "얼음으로 가득 찼어",
+			DIRTY = "더러운 물로 가득 찼어",
+			DIRTY_ICE = "더러운 얼음로 가득 찼어",
 		},
 
 		BUCKET_EMPTY = 
 		{
 			EMPTY = "물을 채울 수 있어. 물 말고 다른 걸 채워도 되고.",
 			FULL = "빗물로 가득 찼어",
-			FULL_ICE = "이거 빼려면 고생 좀 하겠군",
-			DIRTY = "으 물이 썩었잖아...",
-			DIRTY_ICE = "얼기까지 해버렸군...",
+			FULL_ICE = "얼음으로 가득 찼어",
+			DIRTY = "더러운 물로 가득 찼어",
+			DIRTY_ICE = "더러운 얼음로 가득 찼어",
 		},
 
 		DESALINATOR =
@@ -245,6 +304,21 @@ return {
 			HASWATER = "물은 됐고, 뭘 넣어볼까?",
 			MELT_LONG = "좀 더 녹여야 해.",
 			MELT_SHORT = "거의 다 녹았어!",
+		},
+		
+		DISTILLERS =
+		{   
+		    EMPTY = "", --증류기 조사 대사
+			DISTILLTING_LONG = "", --증류가 끝나기 까지 많이 남음
+			DISTILLING_SHORT = "", --증류가 곧 끝남
+			DONE = "", --증류기에 음료가 들어있음
+		},
+
+		STEAM_WATERPUMP = {
+			HIGH_PRESSURE = "", -- 압력 최대
+			MIDDLE_PRESSURE = "", -- 압력이 중간
+			LOW_PRESSURE = "", -- 압력이 거의 없을때
+			RECHARG_PRESSURE = "", -- 압력이 아예 없을때
 		},
 		
 		WELL_SPRINKLER =

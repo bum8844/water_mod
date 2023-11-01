@@ -164,6 +164,10 @@ local INVENTORY = {
             end
         end
     end,
+
+    boilbook = function(inst, doer, actions, right)
+        table.insert(actions, ACTIONS.READBOILBOOK)
+    end,
 }
 
 for k, v in pairs(USEITEM) do

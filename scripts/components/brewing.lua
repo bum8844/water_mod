@@ -157,7 +157,6 @@ function Brewing:StartCooking(doer)
         end
 
         self.product, cooktime = cooking.CalculateRecipe(self.inst.prefab, self.ingredient_prefabs)
-        print(self.product)
         local productperishtime = cooking.GetRecipe(self.inst.prefab, self.product).perishtime or 0
 
         if productperishtime > 0 then

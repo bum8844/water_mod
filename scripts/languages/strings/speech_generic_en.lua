@@ -22,6 +22,8 @@ return {
 
 	DESCRIBE =
 	{
+		BOILBOOK = "",
+
 		WATER_CLEAN_ICE = "Ice to meet you so much.",
 		WATER_DIRTY_ICE = "Dirty to meet you.",
 
@@ -147,28 +149,28 @@ return {
 		BUCKET_STEEL_EMPTY = 
 		{
 			EMPTY = "I can fill it with water. Or something else.",
-			FULL = "",
-			FULL_ICE = "",
-			DIRTY = "",
-			DIRTY_ICE = "",
+			FULL = "It's full of rainwater",
+			FULL_ICE = "It's filled with ice",
+			DIRTY = "It's filled with dirty water",
+			DIRTY_ICE = "It's filled with dirty ice",
 		},
 
 		BUCKET_WOODIE_EMPTY = 
 		{
 			EMPTY = "I can fill it with water. Or something else.",
 			FULL = "It's full of rainwater",
-			FULL_ICE = "It's going to be hard to take this out",
-			DIRTY = "Ugh, water has gone bad...",
-			DIRTY_ICE = "It's frozen...",
+			FULL_ICE = "It's filled with ice",
+			DIRTY = "It's filled with dirty water",
+			DIRTY_ICE = "It's filled with dirty ice",
 		},
 
 		BUCKET_EMPTY = 
 		{
 			EMPTY = "I can fill it with water. Or something else.",
 			FULL = "It's full of rainwater",
-			FULL_ICE = "It's going to be hard to take this out",
-			DIRTY = "Ugh, water has gone bad...",
-			DIRTY_ICE = "It's frozen...",
+			FULL_ICE = "It's filled with ice",
+			DIRTY = "It's filled with dirty water",
+			DIRTY_ICE = "It's filled with dirty ice",
 		},
 
 		DESALINATOR =

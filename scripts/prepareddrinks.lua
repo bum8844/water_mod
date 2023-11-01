@@ -76,6 +76,20 @@ local drinks =
 		potlevel = "mid",
 		potlevel_bottle = "mid",
 	},
+
+	watermelon_juice = 
+	{
+		test = function(boilier, names, tags) return (names.watermelon or names.watermelon_cooked) and tags.fruit and Preference(names, tags) and not tags.veggie and notmeat(tags) and notname(names) and lessthing(names) and notages(tags) end,
+		priority = 2,
+		health = TUNING.HEALING_MEDSMALL/4,
+		hunger = TUNING.CALORIES_LARGE/4,
+		sanity = TUNING.SANITY_TINY/2,
+		thirst = TUNING.HYDRATION_LARGE,
+		perishtime = TUNING.PERISH_SLOW,
+		cooktime = TUNING.KETTLE_FRUIT,
+		potlevel = "mid",
+		potlevel_bottle = "mid",
+	},
 	
 	fig_juice =
 	{
@@ -122,25 +136,7 @@ local drinks =
 		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_GLOW,
 		card_def = {ingredients={{"wormlight_lesser",3},{"honey",1}}},
 		oneatenfn = function(inst, eater)
-           	if eater.wormlight ~= nil then
-	            if eater.wormlight.prefab == "wormlight_light_greater" then
-	                eater.wormlight.components.spell.lifetime = 0
-	                eater.wormlight.components.spell:ResumeSpell()
-	                return
-	            else
-	                eater.wormlight.components.spell:OnFinish()
-	            end
-	        end
-
-	        local light = SpawnPrefab("wormlight_light_greater")
-	        light.components.spell:SetTarget(eater)
-	        if light:IsValid() then
-	            if light.components.spell.target == nil then
-	                light:Remove()
-	            else
-	    	        light.components.spell:StartSpell()
-	            end
-	        end
+           	drink_worm_light_greater(inst, eater)
 	    end,
 	},
 	
@@ -164,11 +160,11 @@ local drinks =
 		end,
 	},
 
-	--[[toffee_latte = {
+	toffee_latte = {
 		test = function(boilier, names, tags) return tags.seed and (( names.caffeinberry_bean_cooked or 0 ) + ( names.kyno_coffeebeans_cooked or 0 ) + ( names.coffeebeans_cooked or 0 ) + ( names.mfp_coffeecherry_cooked or 0 ) > 1) and (tags.dairy or tags.milk) end,
 		priority = 6,
 		health = TUNING.HEALING_MEDSMALL/4,
-		hunger = (TUNING.TUNING.DRINK_CALORIES/2)/4,
+		hunger = (TUNING.DRINK_CALORIES/2)/4,
 		sanity = TUNING.SANITY_SUPERTINY/4,
 		thirst = TUNING.HYDRATION_TINY,
 		perishtime = TUNING.PERISH_SUPERFAST,
@@ -188,7 +184,7 @@ local drinks =
 		priority = 6,
         health = 0,
         hunger = TUNING.DRINK_CALORIES/3,
-        sanity = TUNING.SSANITY_TINY/2,
+        sanity = TUNING.SANITY_TINY/2,
         thirst = TUNING.HYDRATION_TINY,
         perishtime = TUNING.PERISH_MED,
 		cooktime = TUNING.KETTLE_LUXURY_GOODS,
@@ -203,7 +199,7 @@ local drinks =
 				eater.components.builder.temptechbonus_count = eater.components.builder.temptechbonus_count + 1
 			end
 		end,
-	},]]
+	},
 
 	-- 야채차(목마름 특화)
 	
@@ -246,7 +242,7 @@ local drinks =
 		end
 	},
 
-	--[[lumpy_tea = {
+	lumpy_tea = {
 		test = function(boilier, names, tags) return (names.potato or names.potato_cooked or names.sweet_potato or names.sweet_potato_cooked or names.kyno_sweetpotato or names.kyno_sweetpotato_cooked or names.mfp_sweetpotato or names.mfp_sweetpotato_cooked) and tags.veggie and Preference(names, tags) and not tags.fruit and notmeat(tags) and notname(names) and lessthing(names) and notages(tags) end,
 		priority = 1,
 		health = TUNING.HEALING_SMALL/4,
@@ -275,7 +271,7 @@ local drinks =
 		potlevel = "high",
 		potlevel_bottle = "mid",
 		perishtime = TUNING.PERISH_FASTISH,
-	},]]
+	},
 	
 	cactus_tea =
 	{
@@ -495,7 +491,7 @@ local drinks =
 		potlevel_bottle = "mid",
 	},
 	-- 특수차
-	--[[butterbeer = {
+	butterbeer = {
 		test = function(boilier, names, tags) return tags.fat and tags.dairy and tags.sweetener and notmeat(tags) and notname(names) and lessthing(names) end,
 		priority = 1,
         health = TUNING.HEALING_MED/2,
@@ -513,26 +509,8 @@ local drinks =
 		potlevel = "mid",
 		potlevel_bottle = "mid",
 	},
-	ruincolate = {
-		test = function(boilier, names, tags) return names.ruincacao_bean_cooked and names.ruincacao_bean_cooked >= 3 and Preference(names, tags) and notmeat(tags) and notname(names) and lessthing(names) end,
-		priority = 2,
-        health = TUNING.HEALING_TINY/4,
-        hunger = 0,
-        sanity = TUNING.SANITY_TINY/4,
-        thirst = TUNING.HYDRATION_SMALLTINY,
-        perishtime = TUNING.PERISH_SLOW,
-		cooktime = TUNING.KETTLE_LUXURY_GOODS,
-	    oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_ANCIENT_KNOWLEGEE_PIECE,
-	    oneatenfn = function(inst, eater)
-			if eater.components.builder then
-				eater.components.builder:GiveTempTechBonus({ANCIENT = 2})
-			end
-	    end,
-		potlevel = "mid",
-		potlevel_bottle = "mid",
-	},
-	hotruincolate = {
-		test = function(boilier, names, tags) return names.ruincacao_bean_cooked and names.ruincacao_bean_cooked == 3 and (names.pepper or names.pepper_cooked) and notmeat(tags) and notname(names) and lessthing(names) end,
+	ruinxocolat = {
+		test = function(boilier, names, tags) return names.ruincacao_bean_cooked and names.ruincacao_bean_cooked >= 3 and ((names.pepper or 0) + (names.pepper_cooked or 0) >= 0) and notmeat(tags) and notname(names) and lessthing(names) end,
 		priority = 1,
         health = TUNING.HEALING_MED/4,
         hunger = TUNING.DRINK_CALORIES/2,
@@ -542,9 +520,39 @@ local drinks =
 		cooktime = TUNING.KETTLE_LUXURY_GOODS,
 		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_ANCIENT_KNOWLEGEE,
 	    oneatenfn = function(inst, eater)
-	    	if eater.components.builder then
-				eater.components.builder:GiveTempTechBonus({ANCIENT = 4})
-	    	end
+	    	give_tech(inst, eater, 4)
+	    end,
+		potlevel = "mid",
+		potlevel_bottle = "mid",
+	},
+	ruincolate = {
+		test = function(boilier, names, tags) return names.ruincacao_bean_cooked and names.ruincacao_bean_cooked >= 2 and (Preference(names, tags) >= 1) and not tags.frozen and notmeat(tags) and notname(names) and lessthing(names) end,
+		priority = 2,
+        health = TUNING.HEALING_TINY/4,
+        hunger = 0,
+        sanity = TUNING.SANITY_TINY/4,
+        thirst = TUNING.HYDRATION_SMALLTINY,
+        perishtime = TUNING.PERISH_SLOW,
+		cooktime = TUNING.KETTLE_LUXURY_GOODS,
+	    oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_ANCIENT_KNOWLEGEE_PIECE,
+	    oneatenfn = function(inst, eater)
+			give_tech(inst, eater, 2)
+	    end,
+		potlevel = "mid",
+		potlevel_bottle = "mid",
+	},
+	ruincolate_smoothie = {
+		test = function(boilier, names, tags) return names.ruincacao_bean_cooked and names.ruincacao_bean_cooked == 2 and tags.sweetener and tags.frozen and notmeat(tags) and notname(names) and lessthing(names) end,
+		priority = 2,
+        health = TUNING.HEALING_TINY/4,
+        hunger = 0,
+        sanity = TUNING.SANITY_TINY/4,
+        thirst = TUNING.HYDRATION_SMALLTINY,
+        perishtime = TUNING.PERISH_SLOW,
+		cooktime = TUNING.KETTLE_LUXURY_GOODS,
+	    oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_ANCIENT_KNOWLEGEE_PIECE,
+	    oneatenfn = function(inst, eater)
+			give_tech(inst, eater, 2)
 	    end,
 		potlevel = "mid",
 		potlevel_bottle = "mid",
@@ -560,17 +568,15 @@ local drinks =
 		cooktime = TUNING.KETTLE_LUXURY_GOODS,
 	    oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_CONSERVE_KNOWLEGEE,
 	    oneatenfn = function(inst, eater)
-			if eater.components.builder and eater.components.builder.temptechbonus_count then
-				eater.components.builder.temptechbonus_count = eater.components.builder.temptechbonus_count + 1
-			end
+			add_tech_count(inst, eater, 1)
 	    end,
 		potlevel = "mid",
 		potlevel_bottle = "mid",
-	},]]
+	},
 }
 
 local mod_drink = require("modcompats/prepareddrinks_mod")
-local hof, ia, te, cf, unc = false, false, false, false, false
+local hof, ia, te, mfp = false, false, false, false
 
 for k,mod_id in ipairs(KnownModIndex:GetModsToLoad()) do 
 	if mod_id == "workshop-2334209327" then
@@ -615,7 +621,9 @@ for k, v in pairs(drinks) do
     v.weight = v.weight or 1
     v.priority = v.priority or 0
 
-    v.cookbook_category = "cookpot"
+    v.is_boilbook_recipes = true
+    v.cookbook_category = "kettle"
+    v.no_cookbook = true
 end
 
 return drinks

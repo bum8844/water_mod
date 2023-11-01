@@ -147,7 +147,7 @@ function Thirst:DoDec(dt, ignore_damage)
             if self.overridestarvefn ~= nil then
                 self.overridestarvefn(self.inst, dt)
             else
-                self.inst.components.health:DoDelta(-self.hurtrate * dt, true, "thirst") --  ich haber thirst
+                self.inst.components.health:DoDelta(-self.hurtrate * dt, true, "dehydration") --  ich haber thirst
             end
         end
     end

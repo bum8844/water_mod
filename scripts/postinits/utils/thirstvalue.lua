@@ -11,30 +11,28 @@ local function SetDrinkableAction(inst)
 end
 
 local function oneatenfn(inst, eater)
-	if not eater.components.health or eater.components.health:IsDead() or eater:HasTag("playerghost") then
-		return
-	elseif eater.components.debuffable and eater.components.debuffable:IsEnabled() and eater:HasTag("player") then
-		eater.components.dcapacity:Start_Intoxication()
+	if eater:HasTag("player") then
+		eater.components.dcapacity:Start_Intoxication(TUNING.ALCOHOL_CAPACITY)
 		if eater.components.dcapacity:IsDrunk() then
 			if not eater:HasTag("valkyrie") then
-				eater.alcoholdebuff_duration = TUNING.INTOXICATION_TIME
-				eater.components.debuffable:AddDebuff("alcoholdebuff", "alcoholdebuff")
-				eater.components.debuffable:AddDebuff("drunkarddebuff", "drunkarddebuff")
+				eater:AddDebuff("alcoholdebuff", "alcoholdebuff")
+				eater:AddDebuff("drunkarddebuff", "drunkarddebuff")
 			else
-				eater.components.talker:Say(GLOBAL.GetString(eater,"ANNOUNCE_DRUNK_IMMUNITY"))
+				eater.components.talker:Say(GetString(eater,"ANNOUNCE_DRUNK_IMMUNITY"))
+			end
+		else
+			if not eater:HasTag("valkyrie") then
+				if eater.components.dcapacity:IsCritical() then
+					eater.components.talker:Say(GetString(eater,"ANNOUNCE_DCAPACITY_CRITICAL"))
+				elseif eater.components.dcapacity:IsHalf() then
+					eater.components.talker:Say(GetString(eater,"ANNOUNCE_DCAPACITY_HALF"))
+				end
 			end
 		end
-		eater.immunebuff_duration = TUNING.IMMUNE_TIME
-		eater.components.debuffable:AddDebuff("immunebuff", "immunebuff")
+		eater:AddDebuff("resistancebuff", "resistancebuff")
 	else
-		eater.components.health.externalabsorbmodifiers:SetModifier(eater, TUNING.BUFF_PLAYERABSORPTION_MODIFIER)
-		eater.components.locomotor:SetExternalSpeedMultiplier(eater, "alcoholdebuff", 0.5)
-		eater:DoTaskInTime(TUNING.INTOXICATION_TIME, function()
-			eater.components.locomotor:RemoveExternalSpeedMultiplier(eater, "alcoholdebuff")
-		end)
-   		eater:DoTaskInTime(TUNING.IMMUNE_TIME, function()
-   			eater.components.health.externalabsorbmodifiers:RemoveModifier(eater)
-   		end)
+		eater:AddDebuff("alcoholdebuff", "alcoholdebuff")
+		eater:AddDebuff("drunkarddebuff", "drunkarddebuff")
 	end
 end 
 

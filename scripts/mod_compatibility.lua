@@ -1,6 +1,7 @@
 for k,mod_id in ipairs(GLOBAL.KnownModIndex:GetModsToLoad()) do 
 	if mod_id == "workshop-2334209327" then
 		modrequire("modcompats/hof_buckets")
+		modrequire("modcompats/hof_berwbook")
 	end
 	if mod_id == "workshop-1505270912" then
 		modrequire("modcompats/water_spicedfoods_mod_te")

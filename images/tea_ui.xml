@@ -2,7 +2,7 @@
 <Atlas>
 	<Texture filename="tea_ui.tex" />
 	<Elements>
-		<Element name="cook_slot_additive.tex" u1="0.001" u2="0.26071875" v2="0.999" v1="0.4775625" variant="" />
-		<Element name="cook_slot_drink.tex" u1="0.26271875" u2="0.5224375" v2="0.999" v1="0.4775625" variant="" />
+		<Element name="status_thirst.tex" u1="0.001" u2="0.47946875" v2="0.999" v1="0.016625" variant="" />
+		<Element name="status_thirst_bed.tex" u1="0.48146875" u2="0.952125" v2="0.999" v1="0.016625" variant="" />
 	</Elements>
 </Atlas>

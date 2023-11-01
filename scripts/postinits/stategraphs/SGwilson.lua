@@ -233,11 +233,72 @@ local drinkstew = State{
             end]]
         end,
     }
+
+local boilbook_open = State{
+        name = "boilbook_open",
+        tags = { "doing", "busy" },
+
+        onenter = function(inst)
+            inst.components.locomotor:StopMoving()
+            inst.AnimState:OverrideSymbol("book_cook", "boilbook", "book_boil")
+            inst.AnimState:PlayAnimation("action_uniqueitem_pre")
+            inst.AnimState:PushAnimation("reading_in", false)
+            inst.AnimState:PushAnimation("reading_loop", true)
+        end,
+
+        timeline =
+        {
+            TimeEvent(8 * FRAMES, function(inst)
+                inst.sg:RemoveStateTag("busy")
+                inst:PerformBufferedAction()
+            end),
+        },
+
+        onupdate = function(inst)
+            if not GLOBAL.CanEntitySeeTarget(inst, inst) then
+                inst.sg:GoToState("cookbook_close")
+            end
+        end,
+
+        events =
+        {
+            EventHandler("ms_closepopup", function(inst, data)
+                if data.popup == GLOBAL.POPUPS.BOILBOOK then
+                    inst.sg:GoToState("cookbook_close")
+                end
+            end),
+        },
+
+        onexit = function(inst)
+            inst:ShowPopUp(GLOBAL.POPUPS.BOILBOOK, false)
+        end,
+    }
+
+local boilbook_close = State{
+        name = "boilbook_close",
+        tags = { "idle", "nodangle" },
+
+        onenter = function(inst)
+            inst.components.locomotor:StopMoving()
+            inst.AnimState:PlayAnimation("reading_pst")
+        end,
+
+        events =
+        {
+            EventHandler("animover", function(inst)
+                if inst.AnimState:AnimDone() then
+                    inst.sg:GoToState(inst.components.inventory:GetEquippedItem(EQUIPSLOTS.HANDS) ~= nil and "item_out" or "idle")
+                end
+            end),
+        },
+    }
     
 AddStategraphState("wilson", refresh_drunk)
 AddStategraphState("wilson", drunk)
 AddStategraphState("wilson", drink)
 AddStategraphState("wilson", drinkstew)
+AddStategraphState("wilson", boilbook_open)
+AddStategraphState("wilson", boilbook_close)
 
 ------------------------------------------------------------------------
 
@@ -316,6 +377,7 @@ AddStategraphActionHandler("wilson", ActionHandler(ACTIONS.BREWING,
         end
     )
 )
+AddStategraphActionHandler("wilson", ActionHandler(ACTIONS.READBOILBOOK,"boilbook_open"))
 
 ------------------------------------------------------------------------
 

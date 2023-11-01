@@ -149,7 +149,6 @@ function WateringStructure:SetWaterTimer(watertype, isnew)
         if self.setstatesfn then
             self.setstatesfn(self.inst)
         end
-        print("SetWaterTimer:물이 마름")
         return true
     end
 
@@ -184,14 +183,12 @@ function WateringStructure:TimerChange(percent)
     self.targettime = percent*remainingtime
 
     if isfrozen and self.watertype == WATERTYPE.DIRTY then
-        print("TimerChange : 더러운 물이 얼어서 마르지 않습니다")
         return true
     end
 
     self.targettime = GetTime() + self.targettime
 
     self.watertask = self.inst:DoTaskInTime(remainingtime, OnDone, self, resultwater)
-    print("TimerChange : 썩거나 마르는중")
 end
 
 function WateringStructure:GetPercent()
@@ -284,13 +281,11 @@ function WateringStructure:OnLoad(data)
                 self.setstatesfn(self.inst)
             end
 
-            print("OnLoad : 더러운 물이 얼어서 안 마릅니다")
             return true
         end
 
         self.targettime = GetTime() + math.max(0,data.timer)
         self.watertask = self.inst:DoTaskInTime(data.timer, OnDone, self, water)
-        print("OnLoad : 타이머 작동시작")
         self.inst:PushEvent("setwateringtool_water")
         if self.setstatesfn then
             self.setstatesfn(self.inst)
@@ -304,7 +299,6 @@ function WateringStructure:LongUpdate(dt)
         self:StopWatertask()
 
         if self:IsFrozen() and self:GetWater() == WATERTYPE.DIRTY then
-            print("LongUpdate : 더러운 물이 얼어서 안 마릅니다")
             return true
         end
 
@@ -312,20 +306,16 @@ function WateringStructure:LongUpdate(dt)
 
         if self:GetWater() == WATERTYPE.CLEAN then
             water = WATERTYPE.DIRTY
-            print("LongUpdate : 썩기가")
         elseif self:GetWater() == WATERTYPE.DIRTY then
-            print("LongUpdate : 마르기가")
             water = WATERTYPE.EMPTY
         end
 
         if self.targettime - dt > GetTime() then
             self.targettime = self.targettime - dt
             self.watertask = self.inst:DoTaskInTime(self.targettime - GetTime(), OnDone, self, water)
-            print("LongUpdate : 진행중")
         else
             self:ResetTimer()
             OnDone(self.inst, self, water)
-            print("LongUpdate : 완료")
         end
     end
 end

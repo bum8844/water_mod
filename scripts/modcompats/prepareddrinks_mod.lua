@@ -19,25 +19,7 @@ local sw_drink = {
 		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_GLOW,
 		card_def = {ingredients={{"wormlight_lesser",3},{"honey",1}}},
 		oneatenfn = function(inst, eater)
-           	if eater.wormlight ~= nil then
-	            if eater.wormlight.prefab == "wormlight_light_greater" then
-	                eater.wormlight.components.spell.lifetime = 0
-	                eater.wormlight.components.spell:ResumeSpell()
-	                return
-	            else
-	                eater.wormlight.components.spell:OnFinish()
-	            end
-	        end
-
-	        local light = SpawnPrefab("wormlight_light_greater")
-	        light.components.spell:SetTarget(eater)
-	        if light:IsValid() then
-	            if light.components.spell.target == nil then
-	                light:Remove()
-	            else
-	    	        light.components.spell:StartSpell()
-	            end
-	        end
+           	drink_worm_light_greater(inst, eater)
 	    end,
 	},
 	quartz_shake = {
@@ -81,7 +63,7 @@ local coconut_drink = {
 
 local cf_drink = {
 	cherry_roseberries_tea = {
-		test = function(boilier, names, tags) return names.cherry_roseberries and ( names.forgetmelots or names.petals or names.moon_tree_blossom ) and ((names.forgetmelots or 0) + (names.petals or 0) + (names.moon_tree_blossom or 0) >= 2) and notmeat(tags) and notname(names) and lessthing(names) and notages(tags) end,
+		test = function(boilier, names, tags) return names.cherry_roseberries and ( names.forgetmelots or names.petals or names.moon_tree_blossom or tags.petals_legion ) and ((names.forgetmelots or 0) + (names.petals or 0) + (names.moon_tree_blossom or 0) + (tags.petals_legion or 0) >= 2) and notmeat(tags) and notname(names) and lessthing(names) and notages(tags) end,
 		priority = 2,
         health = TUNING.HEALING_SMALL/4,
         hunger = 0,

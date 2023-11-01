@@ -1,7 +1,8 @@
 local additives = {
 	"additives_seed",
-	--[["additives_petals",
-	"additives_ruincacao"]]
+    "additives_nut",
+    "additives_dairy",
+	"additives_petals",
 }
 
 local function MakeAdditives(data)

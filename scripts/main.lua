@@ -15,5 +15,6 @@ modrequire("water_containers")
 modrequire("recipes")
 modrequire("postinits/postinit")
 
+modrequire("boilling")
 modrequire("water_cooking")
 modrequire("mod_compatibility")

@@ -58,8 +58,16 @@ local drink_client = State{
     end,
 }
 
+local boilbook_open_client = State{
+        name = "boilbook_open",
+        server_states = { "boilbook_open" },
+        forward_server_states = true,
+        onenter = function(inst) inst.sg:GoToState("action_uniqueitem_busy") end,
+    },
+
 AddStategraphState("wilson_client", drinkstew_client)
 AddStategraphState("wilson_client", drink_client)
+AddStategraphState("wilson_client", boilbook_open_client)
 
 ------------------------------------------------------------------------
 
@@ -123,6 +131,9 @@ AddStategraphActionHandler("wilson_client", ActionHandler(ACTIONS.DRINK,
         end
     )
 )
+
+AddStategraphActionHandler("wilson_client", ActionHandler(ACTIONS.TURNON_TILEARRIVE, "give"))
+AddStategraphActionHandler("wilson_client", ActionHandler(ACTIONS.TURNON_TILEARRIVE, "give"))
 AddStategraphActionHandler("wilson_client", ActionHandler(ACTIONS.TURNON_TILEARRIVE, "give"))
 AddStategraphActionHandler("wilson_client", ActionHandler(ACTIONS.BREWING,
         function(inst, action)
@@ -130,6 +141,7 @@ AddStategraphActionHandler("wilson_client", ActionHandler(ACTIONS.BREWING,
         end
     )
 )
+AddStategraphActionHandler("wilson_client", ActionHandler(ACTIONS.READBOILBOOK,"boilbook_open"))
 
 ------------------------------------------------------------------------
 

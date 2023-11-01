@@ -123,8 +123,8 @@ local drinks =
 	},
 	-- 스파클링 와인
 	berry_gin = {
-		test = function(boilier, names, tags) return names.sparklingwine and tags.seed end,
-		priority = 1,
+		test = function(boilier, names, tags) return names.sparklingwine and names.additives_seed end,
+		priority = 2,
 		health = TUNING.HEALING_SMALL*2,
 		hunger = TUNING.CALORIES_MEDSMALL,
 		sanity = TUNING.SANITY_HUGE/2,
@@ -141,10 +141,10 @@ local drinks =
 		end,
 	},
 	-- 발광 배리
-	glowberry_brandy =
+	glowberry_gin =
 	{
-		test = function(boilier, names, tags) return (names.glowberrywine or names.wine_glowberry) and not tags.additives end,
-		priority = 1,
+		test = function(boilier, names, tags) return (names.glowberrywine or names.wine_glowberry) and names.additives_seed end,
+		priority = 2,
 		health = 0,
 		hunger = TUNING.CALORIES_MEDSMALL,
 		sanity = TUNING.SANITY_MED,
@@ -158,24 +158,7 @@ local drinks =
 		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_INTOXICATION_GLOW,
 		oneatenfn = function(inst, eater)
 			spirits(inst, eater)
-           	if eater.wormlight ~= nil then
-	            if eater.wormlight.prefab == "wormlight_light" then
-	                eater.wormlight.components.spell.lifetime = 0
-	                eater.wormlight.components.spell:ResumeSpell()
-	                return
-	            else
-	                eater.wormlight.components.spell:OnFinish()
-	            end
-	        end
-	        local light = SpawnPrefab("wormlight_light")
-	        light.components.spell:SetTarget(eater)
-	        if light:IsValid() then
-	            if light.components.spell.target == nil then
-	        		light:Remove()
-	            else
-	                light.components.spell:StartSpell()
-	            end
-	        end
+           	drink_worm_light_less(inst, eater)
 	    end,
 	},
 	-- 우유 증류주
@@ -198,10 +181,159 @@ local drinks =
 			eater:AddDebuff("buff_electricattack", "buff_electricattack")
 		end,
 	},
+	-- 리큐르 - 카카오 와인
+	ruincacao_cream_liqueur = {
+		test = function(boilier, names, tags) return names.ruincacao_wine and names.additives_dairy end,
+		priority = 2,
+        health = TUNING.HEALING_MED/2,
+        hunger = TUNING.CALORIES_MEDSMALL,
+        sanity = 0,
+		thirst = TUNING.HYDRATION_MED,
+		tags = {"alcohol","spirits"},
+		perishtime = TUNING.PERISH_SUPERSLOW,
+		cooktime = (TUNING.KETTLE_VEGGIE + TUNING.BEER_WAIT),
+		potlevel = "mid",
+		potlevel_bottle = "mid",
+		prefabs = { "alcoholdebuff","drunkarddebuff","immunebuff" },
+		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_INTOXICATION_ANCIENT_KNOWLEGEE_THIRD,
+		oneatenfn = function(inst, eater)
+			spirits(inst, eater)
+			add_tech_count(inst, eater, 4, 2)
+		end,
+	},
+	-- 커피 + 꿀술
+	kahlua = {
+		test = function(boilier, names, tags) return (names.madhu or names.mead) and names.additives_nut end,
+		priority = 2,
+		health = TUNING.HEALING_MEDSMALL*3,
+		hunger = TUNING.CALORIES_MEDSMALL,
+		sanity = TUNING.SANITY_SMALL/2,
+		thirst = TUNING.HYDRATION_MED,
+		tags = {"alcohol","spirits","honeyed"},
+		perishtime = TUNING.PERISH_SUPERSLOW,
+		cooktime = (TUNING.KETTLE_VEGGIE + TUNING.BEER_WAIT),
+		potlevel = "mid",
+		potlevel_bottle = "high",
+		prefabs = { "alcoholdebuff","drunkarddebuff","immunebuff","caffeinbuff" },
+		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_INTOXICATION_CAFFINE,
+		oneatenfn = function(inst, eater)
+			spirits(inst, eater)
+			eater.caffeinbuff_duration = TUNING.CAFFEIN_TIME * 2
+			eater:AddDebuff("caffeinbuff", "caffeinbuff")
+		end,
+	},
+	greentea_lumpy_vodka = {
+		test = function(boilier, names, tags) return names.lumpy_wine and names.additives_petals end,
+		priority = 2,
+		health = 0,
+		hunger = TUNING.CALORIES_MEDSMALL,
+		sanity = TUNING.SANITY_MED,
+		thirst = TUNING.HYDRATION_MED,
+		tags = {"alcohol","spirits","honeyed"},
+		perishtime = TUNING.PERISH_SUPERSLOW,
+		cooktime = (TUNING.KETTLE_VEGGIE + TUNING.BEER_WAIT),
+		potlevel = "mid",
+		potlevel_bottle = "high",
+		prefabs = { "alcoholdebuff","drunkarddebuff","immunebuff" },
+		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_INTOXICATION,
+		oneatenfn = function(inst, eater)
+			spirits(inst, eater)
+		end,
+	},
+	greentea_lumpy_vodka = {
+		test = function(boilier, names, tags) return names.lumpy_wine and names.additives_nut end,
+		priority = 2,
+		health = 0,
+		hunger = TUNING.CALORIES_MEDSMALL,
+		sanity = TUNING.SANITY_MED,
+		thirst = TUNING.HYDRATION_MED,
+		tags = {"alcohol","spirits","honeyed"},
+		perishtime = TUNING.PERISH_SUPERSLOW,
+		cooktime = (TUNING.KETTLE_VEGGIE + TUNING.BEER_WAIT),
+		potlevel = "mid",
+		potlevel_bottle = "high",
+		prefabs = { "alcoholdebuff","drunkarddebuff","immunebuff" },
+		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_INTOXICATION,
+		oneatenfn = function(inst, eater)
+			spirits(inst, eater)
+		end,
+	},
+	absinthe = {
+		test = function(boilier, names, tags) return (names.wine or names.noblewine or names.wine_berries_juicy or names.wine_berries) and names.additives_seed end,
+		priority = 2,
+		health = 0,
+		hunger = TUNING.CALORIES_MEDSMALL,
+		sanity = TUNING.SANITY_SMALL,
+		thirst = TUNING.HYDRATION_MED,
+		tags = {"alcohol","spirits"},
+		perishtime = TUNING.PERISH_SUPERSLOW,
+		cooktime = (TUNING.KETTLE_FRUIT + TUNING.BEER_WAIT),
+		potlevel = "high",
+		potlevel_bottle = "mid",
+		prefabs = { "alcoholdebuff","drunkarddebuff","immunebuff" },
+		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_INTOXICATION,
+		oneatenfn = function(inst, eater)
+			spirits(inst, eater)
+		end,
+	},
+	petals_berry_brandy = {
+		test = function(boilier, names, tags) return (names.wine or names.noblewine or names.wine_berries_juicy or names.wine_berries) and names.additives_petals end,
+		priority = 2,
+		health = 0,
+		hunger = TUNING.CALORIES_MEDSMALL,
+		sanity = TUNING.SANITY_SMALL,
+		thirst = TUNING.HYDRATION_MED,
+		tags = {"alcohol","spirits"},
+		perishtime = TUNING.PERISH_SUPERSLOW,
+		cooktime = (TUNING.KETTLE_FRUIT + TUNING.BEER_WAIT),
+		potlevel = "high",
+		potlevel_bottle = "mid",
+		prefabs = { "alcoholdebuff","drunkarddebuff","immunebuff" },
+		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_INTOXICATION,
+		oneatenfn = function(inst, eater)
+			spirits(inst, eater)
+		end,
+	},
+	nut_corn_wisky = {
+		test = function(boilier, names, tags) return names.corn_beer and names.additives_nut end,
+		priority = 1,
+		health = TUNING.HEALING_SMALL,
+		hunger = TUNING.CALORIES_MEDSMALL,
+		sanity = TUNING.SANITY_SMALL/2,
+		thirst = TUNING.HYDRATION_MED,
+		tags = {"alcohol","spirits"},
+		perishtime = TUNING.PERISH_SUPERSLOW,
+		cooktime = (TUNING.KETTLE_VEGGIE + TUNING.BEER_WAIT),
+		potlevel = "mid",
+		potlevel_bottle = "mid",
+		prefabs = { "alcoholdebuff","drunkarddebuff","immunebuff" },
+		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_INTOXICATION,
+		oneatenfn = function(inst, eater)
+			spirits(inst, eater)
+		end,
+	},
+	rumchata = {
+		test = function(boilier, names, tags) return (names.madhu or names.mead) and names.additives_dairy end,
+		priority = 2,
+		health = TUNING.HEALING_MEDSMALL*3,
+		hunger = TUNING.CALORIES_MEDSMALL,
+		sanity = TUNING.SANITY_SMALL/2,
+		thirst = TUNING.HYDRATION_MED,
+		tags = {"alcohol","spirits","honeyed"},
+		perishtime = TUNING.PERISH_SUPERSLOW,
+		cooktime = (TUNING.KETTLE_VEGGIE + TUNING.BEER_WAIT),
+		potlevel = "mid",
+		potlevel_bottle = "high",
+		prefabs = { "alcoholdebuff","drunkarddebuff","immunebuff" },
+		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_INTOXICATION,
+		oneatenfn = function(inst, eater)
+			spirits(inst, eater)
+		end,
+	},
 }
 
 local mod_drink = require("modcompats/preparedspiritsdrink_mod")
-local hof, ia, te, cf, unc, mfp = false, false, false, false, false, false
+local hof, ia, te, mfp = false, false, false, false
 
 for k,mod_id in ipairs(KnownModIndex:GetModsToLoad()) do 
 	if mod_id == "workshop-2334209327" then
@@ -228,6 +360,12 @@ for k,mod_id in ipairs(KnownModIndex:GetModsToLoad()) do
 			drinks[k] = v
 		end
 	end
+	if mod_id == "workshop-1392778117" then -- legion
+		local legion_drink = mod_drink.legion_drink
+		for k,v in pairs(legion_drink) do
+			drinks[k] = v
+		end
+	end 
 end
 
 if te or ia then
@@ -256,7 +394,9 @@ for k, v in pairs(drinks) do
     v.weight = v.weight or 1
     v.priority = v.priority or 0
 
-    v.cookbook_category = "cookpot"
+    v.is_boilbook_recipes = true
+    v.cookbook_category = "distillers"
+    v.no_cookbook = true
 end
 
 return drinks

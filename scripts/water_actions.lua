@@ -106,13 +106,10 @@ local TAKEWATER = AddAction("TAKEWATER", STRINGS.ACTIONS.FILL, function(act)
         if success then
             local watertype = nil
             if IsDirty(groundpt) then
-                print("더러운 물입니다")
                 watertype = WATERTYPE.DIRTY
             elseif IsClean(groundpt) then
-                print("깨끗한 물입니다")
                 watertype =  WATERTYPE.CLEAN
             end
-            print("물을 얻음")
             return filled.components.watertaker:Fill(nil, act.doer, watertype)
         end
     end
@@ -248,7 +245,23 @@ BREWING = AddAction("BREWING",STRINGS.ACTIONS.BOIL,function(act)
     end)
 
 BREWING.stroverridefn = function(act)
-    return act.target ~= nil and act.target:HasTag("brewery") and STRINGS.ACTIONS.FERMENT or nil
+    return act.target ~= nil and 
+        act.target:HasTag("brewery") and STRINGS.ACTIONS.FERMENT or 
+        act.target:HasTag("distillers") and STRINGS.ACTIONS.DISITLL or nil
 end
 BREWING.mount_valid = true
 BREWING.priority = 2
+
+READBOILBOOK = AddAction("READBOILBOOK",STRINGS.ACTIONS.READ,function(act)
+    local target = act.target or act.invobject
+    if target ~= nil and act.doer ~= nil then
+        if target.components.boilbook ~= nil then
+            target.components.boilbook:Read(act.doer)
+            return true
+        end
+    end
+end)
+
+READBOILBOOK.priority = 1
+READBOILBOOK.mount_valid = true
+READBOILBOOK.encumbered_valid = true

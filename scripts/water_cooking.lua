@@ -47,7 +47,11 @@ local spoiled_drink =
 	potlevel = "high",
 	potlevel_bottle = "mid",
 	OnPutInInventory = function(inst, owner) if owner ~= nil and owner:IsValid() then owner:PushEvent("learncookbookstats", inst.food_basename or inst.prefab) end end,
-	cookbook_category = "cookpot",
+    is_boilbook_recipes = true,
+    cookbook_category = "brewery",
+    no_cookbook = true,
 }
 
 AddCookerRecipe("brewery", spoiled_drink)
+AddBoilBookRecipe(spoiled_drink)
+

@@ -91,7 +91,7 @@ params.distillers =
         side_align_tip = 100,
         buttoninfo =
         {
-            text = STRINGS.ACTIONS.SPICE,
+            text = STRINGS.ACTIONS.DISITLL,
             position = Vector3(0, -93, 0),
         },
     },

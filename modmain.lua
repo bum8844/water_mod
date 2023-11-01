@@ -37,8 +37,9 @@ local ferment = {
 
 local additives = {
 	"additives_seed",
-	--[["additives_petals",
-	"additives_ruincacao",]]
+    "additives_nut",
+    "additives_dairy",
+	"additives_petals",
 }
 
 AddIngredientValues(mushrooms, {veggie = .5, mushroom = 1},true)

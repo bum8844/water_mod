@@ -1,3 +1,13 @@
+local ia_tech = {
+	"OBSIDIAN"
+}
+
+local Tech = require("techtree")
+
+for k, v in pairs(ia_tech) do
+	table.insert(Tech.BONUS_TECH, k)
+end
+
 local loot = {
 	"needlespear",
 	"cactus_meat",

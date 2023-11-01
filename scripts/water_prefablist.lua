@@ -3,6 +3,8 @@ return {
 	"bucket",
 	"def_water",
 	"upgrade_kit",
+	"boilbook",
+	--"additives",
 
 	--structures
 	"barrel",
@@ -15,7 +17,7 @@ return {
 	"well",
 	"well_sprinkler",
 	"well_drilling",
-	"distillers",
+	--"distillers",
 
 	--food & plants
 	"caffeinberry",

@@ -312,6 +312,7 @@ local function fn()
     
 	inst:AddTag("structure")
 	inst:AddTag("brewery")
+    inst:AddTag("brewing")
     inst:AddTag("drinkproduction")
 	
 	inst.entity:SetPristine()

@@ -17,7 +17,22 @@ local drinks =
 		potlevel_bottle = "mid",
 		card_def = {ingredients = {{"refined_dust", 1}, {"twigs", 3}}},
 	},
-	
+
+	lumpy_beer = {
+		test = function(boilier, names, tags) return (names.potato or names.potato_cooked or names.sweet_potato or names.sweet_potato_cooked or names.kyno_sweetpotato or names.kyno_sweetpotato_cooked or names.mfp_sweetpotato or names.mfp_sweetpotato_cooked) and tags.veggie and tags.ferment and tags.ferment >= 1 and not tags.fruit and notmeat(tags) and notname(names) and lessthing(names) and notages(tags) end,
+		priority = 1,
+		health = TUNING.HEALING_SMALL/4,
+		hunger = TUNING.DRINK_CALORIES/4,
+		sanity = TUNING.SANITY_MEDLARGE/4,
+		thirst = TUNING.HYDRATION_LARGE,
+		perishtime = TUNING.PERISH_MED,
+		cooktime = (TUNING.KETTLE_LUXURY_GOODS + TUNING.SODA_WAIT),
+		potlevel = "mid",
+		potlevel_bottle = "mid",
+		oneatenfn = function(inst, eater)
+			eater.components.debuffable:RemoveDebuff("waterbornedebuff")
+		end,
+	},
 	
 	fruitsoda =
 	{
@@ -97,24 +112,7 @@ local drinks =
 			eater.caffeinbuff_duration = (TUNING.CAFFEIN_TIME/2)
             eater:AddDebuff("healthregenbuff", "healthregenbuff")
 			eater:AddDebuff("caffeinbuff", "caffeinbuff")
-            if eater.wormlight ~= nil then
-	            if eater.wormlight.prefab == "wormlight_light_greater" then
-	                eater.wormlight.components.spell.lifetime = 0
-	                eater.wormlight.components.spell:ResumeSpell()
-	                return
-	            else
-	                eater.wormlight.components.spell:OnFinish()
-	            end
-	        end
-	        local light = SpawnPrefab("wormlight_light_greater")
-	        light.components.spell:SetTarget(eater)
-	        if light:IsValid() then
-	            if light.components.spell.target == nil then
-	                light:Remove()
-	            else
-	                light.components.spell:StartSpell()
-	            end
-	        end
+            drink_worm_light_greater(inst, eater)
 	    end,
 	},
 	
@@ -140,7 +138,7 @@ local drinks =
 		end,
 	},
 	-- 감자, 고구마
-	--[[lumpy_wine = {
+	lumpy_wine = {
 		test = function(boilier, names, tags) return ( ( names.potato or 0 ) + ( names.potato_cooked or 0 ) + ( names.kyno_sweetpotato or 0 ) + ( names.kyno_sweetpotato_cooked or 0 ) + ( names.mfp_sweetpotato or 0 ) + ( names.mfp_sweetpotato_cooked or 0 ) + ( names.sweetpotato or 0 ) + ( names.sweetpotato_cooked or 0 ) >= 3) and notmeat(tags) and notname(names) end,
 		priority = 1,
 		health = 0,
@@ -177,7 +175,7 @@ local drinks =
 		oneatenfn = function(inst, eater)
 			alcohol(inst, eater)
 		end,
-	},]]
+	},
 	--꿀술
 	madhu =
 	{
@@ -278,24 +276,7 @@ local drinks =
 		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_NAG_AURA_RESIST_GLOW,
 		oneatenfn = function(inst, eater)
 			alcohol(inst, eater)
-           	if eater.wormlight ~= nil then
-	            if eater.wormlight.prefab == "wormlight_light" then
-	                eater.wormlight.components.spell.lifetime = 0
-	                eater.wormlight.components.spell:ResumeSpell()
-	                return
-	            else
-	                eater.wormlight.components.spell:OnFinish()
-	            end
-	        end
-	        local light = SpawnPrefab("wormlight_light")
-	        light.components.spell:SetTarget(eater)
-	        if light:IsValid() then
-	            if light.components.spell.target == nil then
-	        		light:Remove()
-	            else
-	                light.components.spell:StartSpell()
-	            end
-	        end
+           	drink_worm_light_less(inst, eater)
 	    end,
 	},
 	-- 우유
@@ -318,10 +299,33 @@ local drinks =
 			alcohol(inst, eater)
 		end,
 	},
+	-- 카카오 와인
+	ruincacao_wine = {
+		test = function(boilier, names, tags) return names.ruincacao_bean_cooked and tags.ruincacao_bean_cooked >= 3 and notmeat(tags) and notname(names) end,
+		priority = 1,
+        health = TUNING.HEALING_MED/4,
+        hunger = TUNING.CALORIES_MEDSMALL/2,
+        sanity = 0,
+        thirst = TUNING.HYDRATION_MED,
+		tags = {"alcohol"},
+		perishtime = TUNING.PERISH_PRESERVED,
+		cooktime = (TUNING.KETTLE_LUXURY_GOODS + TUNING.BEER_WAIT),
+		potlevel = "mid",
+		potlevel_bottle = "mid",
+		prefabs = { "alcoholdebuff","drunkarddebuff","resistancebuff" },
+		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_NAG_AURA_RESIST_ANCIENT_KNOWLEGEE,
+		oneatenfn = function(inst, eater)
+			alcohol(inst, eater)
+			if eater.components.builder then
+				eater.components.builder:GiveTempTechBonus({ANCIENT = 2})
+			end
+		end,
+	}
 }
 
+
 local mod_drink = require("modcompats/preparedageddrinks_mod")
-local hof, ia, te, cf, unc, mfp = false, false, false, false, false, false
+local hof, ia, te, mfp = false, false, false, false
 
 for k,mod_id in ipairs(KnownModIndex:GetModsToLoad()) do 
 	if mod_id == "workshop-2334209327" then
@@ -348,6 +352,12 @@ for k,mod_id in ipairs(KnownModIndex:GetModsToLoad()) do
 			drinks[k] = v
 		end
 	end
+	if mod_id == "workshop-1392778117" then -- legion
+		local legion_drink = mod_drink.legion_drink
+		for k,v in pairs(legion_drink) do
+			drinks[k] = v
+		end
+	end 
 end
 
 if te or ia then
@@ -376,7 +386,9 @@ for k, v in pairs(drinks) do
     v.weight = v.weight or 1
     v.priority = v.priority or 0
 
-    v.cookbook_category = "cookpot"
+    v.is_boilbook_recipes = true
+    v.cookbook_category = "brewery"
+    v.no_cookbook = true
 end
 
 return drinks

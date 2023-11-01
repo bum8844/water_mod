@@ -35,7 +35,6 @@ end
 SaveFileupgrades.upgrades[nextupdate] = {
 	version = SaveFileupgrades.VERSION + 0.000000001,
 	fn = function(savedata)
-		print("해당코드가 작동했습니다.")
 	    FlagForRetrofitting_Forest(savedata, "retrofit_tea_tree")
 	    FlagForRetrofitting_Forest(savedata, "retrofit_caffeinberry_bush")
 	    FlagForRetrofitting_Cave(savedata, "retrofit_ruincacao_tree")
