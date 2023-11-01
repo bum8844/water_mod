@@ -30,15 +30,15 @@ AddRecipe2("bucket_woodie_empty",{Ingredient("lucy",0),Ingredient("log",2)},TECH
 
 AddRecipe2("spice_caffeinpepper",{Ingredient("caffeinberry_bean_cooked", 3, ModAtlas(), nil, "caffeinberry_bean_cooked.tex")},TECH.FOODPROCESSING_ONE,{atlas = ModAtlas(), builder_tag="professionalchef", numtogive=2, image = "spice_caffeinpepper.tex" ,nounlock=true},{"FOODPROCESSING"})
 
---[[AddRecipe2("additives_seed",{Ingredient("seeds_cooked", 3, ModAtlas(), nil, "additives_seed.tex")},TECH.FOODPROCESSING_ONE,{atlas = ModAtlas(), builder_tag="professionalchef", numtogive=2, image = "additives_seed.tex" ,nounlock=true},{"FOODPROCESSING"})
-AddRecipePostInit("additives_seed", function(recipe)
-	local ingredient = recipe:FindAndConvertIngredient("seeds_cooked")
-	if ingredient then
-	    ingredient:AddDictionaryPrefab("acorn_cooked")
-	    ingredient:AddDictionaryPrefab("tea_seed_cooked")
-	end
-end)
-]]
+--[[AddRecipe2("additives_seed",{Ingredient("pinecone",1),Ingredient("pepper_seeds",1),Ingredient("garlic_seeds",1)},TECH.FOODPROCESSING_ONE,{atlas = ModAtlas(), builder_tag="professionalchef", numtogive=2, image = "additives_seed.tex" ,nounlock=true},{"FOODPROCESSING"})
+
+AddRecipe2("additives_nut",{Ingredient("acorn_cooked",1),Ingredient("ruincacao_bean_cooked",1,ModAtlas(),nil,"ruincacao_bean_cooked.tex"),Ingredient("caffeinberry_bean_cooked", 1, ModAtlas(), nil, "caffeinberry_bean_cooked.tex")},TECH.FOODPROCESSING_ONE,{atlas = ModAtlas(), builder_tag="professionalchef", numtogive=2, image = "additives_nut.tex" ,nounlock=true},{"FOODPROCESSING"})
+
+AddRecipe2("additives_dairy",{Ingredient("goatmilk",1),Ingredient("milkywhites",1),Ingredient("butter", 1)},TECH.FOODPROCESSING_ONE,{atlas = ModAtlas(), builder_tag="professionalchef", numtogive=2, image = "additives_dairy.tex" ,nounlock=true},{"FOODPROCESSING"})
+
+AddRecipe2("additives_petals",{Ingredient("petals",1),Ingredient("tealeaves",1,ModAtlas(),nil,"tealeaves.tex"),Ingredient("foliage", 1)},TECH.FOODPROCESSING_ONE,{atlas = ModAtlas(), builder_tag="professionalchef", numtogive=2, image = "additives_petals.tex" ,nounlock=true},{"FOODPROCESSING"})]]
+
+AddRecipe2("boilbook",{Ingredient("papyrus",1),Ingredient("tealeaves",1,ModAtlas(),nil,"tealeaves.tex"},TECH.SCIENCE_ONE,{atlas = ModAtlas(), image = "boilbook.tex"},{"COOKING","HYDRATION"})
 
 AddRecipe2("barrel",{Ingredient("boards",2),Ingredient("rope",3),Ingredient("charcoal",3)},TECH.SCIENCE_ONE,{placer = "barrel_placer", atlas = ModAtlas(), image = "barrel.tex"},{"CONTAINERS","HYDRATION"})
 
@@ -60,8 +60,16 @@ AddRecipe2("well_kit",{Ingredient("boards",2),Ingredient("cutstone",6),Ingredien
 
 AddRecipe2("well_sprinkler_kit",{Ingredient("marble",4),Ingredient("moonglass",1),Ingredient("townportaltalisman",2),Ingredient("gears",1)},TECH.SCIENCE_TWO,{atlas = ModAtlas(), image = "well_sprinkler_kit.tex"},{"GARDENING","HYDRATION"})
 
---CONSTRUCTION_PLANS["hole"] = {Ingredient("boards",2),Ingredient("cutstone",6),Ingredient("hammer",1)}
+-- AddRecipe2("well_burying_kit",{Ingredient("turf_mud",6),Ingredient("seeds",6),Ingredient("papyrus",3),Ingredient("twigs", 3),Ingredient("flint", 3)},TECH.SCIENCE_TWO,{atlas = ModAtlas(), numtogive=3 , image = "well_burying_kit.tex"},{"GARDENING","HYDRATION"})
+
+-- AddRecipe2("distillers",{Ingredient("dreadstone",3),Ingredient("nightmarefuel",4),Ingredient("transistor",4),Ingredient("cutstone",4)},TECH.SCIENCE_TWO,{atlas = ModAtlas(), image = "distillers.tex"},{"COOKING","HYDRATION"})
+
+ --AddRecipe2("well_waterpump_kit",{Ingredient("security_pulse_cage_full",1),Ingredient("wagpunk_bits",4),Ingredient("transistor"),Ingredient("cutstone",2)},TECH.SCIENCE_TWO,{atlas = ModAtlas(), image = "distillers.tex"},{"GARDENING","HYDRATION"})
+
+-- CONSTRUCTION_PLANS["hole"] = {Ingredient("boards",2),Ingredient("cutstone",6),Ingredient("hammer",1)}
 
 AddDeconstructRecipe("well", {Ingredient("boards",2),Ingredient("cutstone",6)})
 
 AddDeconstructRecipe("well_sprinkler", {Ingredient("marble",4),Ingredient("moonglass",1),Ingredient("townportaltalisman",2),Ingredient("gears",1)})
+
+-- AddDeconstructRecipe("well_waterpump", {Ingredient("security_pulse_cage_full",1),Ingredient("wagpunk_bits",4),Ingredient("transistor"),Ingredient("cutstone",2)})

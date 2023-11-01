@@ -12098,7 +12098,7 @@
                     <object folder="9" file="0" x="-12.716395" y="199.356256" angle="353.035493"/>
                 </key>
                 <key id="4" time="225" spin="-1">
-                    <object folder="9" file="0" x="9.084698" y="198.46537" angle="0.867281" scale_x="1" scale_y="1"/>
+                    <object folder="9" file="0" x="9.084698" y="198.46537" angle="0.867281"/>
                 </key>
                 <key id="5" time="300" spin="0">
                     <object folder="9" file="0" x="-0.478261" y="197.478261" angle="0"/>
@@ -12295,7 +12295,7 @@
                     <object folder="11" file="0" x="17.6107" y="199.46207" angle="10.846"/>
                 </key>
                 <key id="3" time="150">
-                    <object folder="11" file="0" x="-12.7164" y="199.35626" angle="353.488285" scale_x="1"/>
+                    <object folder="11" file="0" x="-12.7164" y="199.35626" angle="353.488285"/>
                 </key>
                 <key id="4" time="225" spin="0">
                     <object folder="11" file="0" x="9.0847" y="198.46537" angle="0"/>
@@ -12315,7 +12315,7 @@
                     <object folder="10" file="0" x="17.6107" y="199.46207" angle="10.846"/>
                 </key>
                 <key id="3" time="150">
-                    <object folder="10" file="0" x="-12.7164" y="199.35626" angle="353.488285" scale_x="1"/>
+                    <object folder="10" file="0" x="-12.7164" y="199.35626" angle="353.488285"/>
                 </key>
                 <key id="4" time="225" spin="0">
                     <object folder="10" file="0" x="9.0847" y="198.46537" angle="0"/>
@@ -12335,7 +12335,7 @@
                     <object folder="7" file="0" x="17.6107" y="199.46207" angle="10.846"/>
                 </key>
                 <key id="3" time="150">
-                    <object folder="7" file="0" x="-12.7164" y="199.35626" angle="353.488285" scale_x="1"/>
+                    <object folder="7" file="0" x="-12.7164" y="199.35626" angle="353.488285"/>
                 </key>
                 <key id="4" time="225" spin="0">
                     <object folder="7" file="0" x="9.0847" y="198.46537" angle="0"/>
@@ -12355,7 +12355,7 @@
                     <object folder="8" file="0" x="17.6107" y="199.46207" angle="10.846"/>
                 </key>
                 <key id="3" time="150">
-                    <object folder="8" file="0" x="-12.7164" y="199.35626" angle="352.795989" scale_y="1"/>
+                    <object folder="8" file="0" x="-12.7164" y="199.35626" angle="352.795989"/>
                 </key>
                 <key id="4" time="225" spin="0">
                     <object folder="8" file="0" x="9.0847" y="198.46537" angle="0"/>
@@ -17341,7 +17341,7 @@
                 </key>
             </timeline>
         </animation>
-        <animation id="1" name="place" length="303" interval="100">
+        <animation id="1" name="digging" length="303" interval="100">
             <mainline>
                 <key id="0">
                     <object_ref id="0" timeline="0" key="1" z_index="0"/>
@@ -17392,6 +17392,24 @@
                 </key>
                 <key id="8" time="303" spin="0">
                     <object folder="6" file="0" x="3.343819" y="7.613841" angle="0" scale_x="0.633414" scale_y="0.484681"/>
+                </key>
+            </timeline>
+        </animation>
+        <animation id="2" name="burying" length="303" interval="100">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+                <key id="1" time="303">
+                    <object_ref id="0" timeline="0" key="1" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="sinkholes-0">
+                <key id="0" spin="0">
+                    <object folder="6" file="0" x="3.343819" y="7.613841" angle="0" scale_x="0.633414" scale_y="0.484681"/>
+                </key>
+                <key id="1" time="303" spin="0">
+                    <object folder="6" file="0" x="3.343819" y="7.613841" angle="0" scale_x="0.105122" scale_y="0.053594"/>
                 </key>
             </timeline>
         </animation>

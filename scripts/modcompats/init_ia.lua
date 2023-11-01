@@ -111,6 +111,21 @@ AddRecipePostInit("well_sprinkler_kit", function(recipe)
 	end
 end)
 
+AddRecipePostInit("well_sprinkler", function(recipe)
+	local ingredient = recipe:FindAndConvertIngredient("marble")
+	if ingredient then
+	    ingredient:AddDictionaryPrefab("limestonenugget")
+	end
+	local ingredient = recipe:FindAndConvertIngredient("moonglass")
+	if ingredient then
+	    ingredient:AddDictionaryPrefab("ia_messagebottleempty")
+	end
+	local ingredient = recipe:FindAndConvertIngredient("townportaltalisman")
+	if ingredient then
+	    ingredient:AddDictionaryPrefab("dragoonheart")
+	end
+end)
+
 AddRecipePostInit("well_drilling_item", function(recipe)
 	local ingredient = recipe:FindAndConvertIngredient("trinket_6")
 	if ingredient then
@@ -121,3 +136,42 @@ AddRecipePostInit("well_drilling_item", function(recipe)
     	ingredient:AddDictionaryPrefab("needlespear")
 	end
 end)
+
+--[[AddRecipePostInit("additives_nut", function(recipe)
+	local ingredient = recipe:FindAndConvertIngredient("acorn_cooked")
+	if ingredient then
+	    ingredient:AddDictionaryPrefab("tea_seed_cooked")
+	end
+end)
+
+AddRecipePostInit("additives_dairy", function(recipe)
+	local ingredient = recipe:FindAndConvertIngredient("goatmilk")
+	if ingredient then
+	    ingredient:AddDictionaryPrefab("coconut_halved")
+	end
+end)
+
+AddRecipePostInit("additives_petals", function(recipe)
+	local ingredient = recipe:FindAndConvertIngredient("foliage")
+	if ingredient then
+	    ingredient:AddDictionaryPrefab("moon_tree_blossom")
+	end
+end)
+
+AddRecipePostInit("distillers", function(recipe)
+	local ingredient = recipe:FindAndConvertIngredient("dreadstone")
+	if ingredient then
+	    ingredient:AddDictionaryPrefab("obsidian")
+	end
+end)
+
+AddRecipePostInit("well_waterpump_kit", function(recipe)
+	local ingredient = recipe:FindAndConvertIngredient("security_pulse_cage_full")
+	if ingredient then
+	    ingredient:AddDictionaryPrefab("turbine_blades")
+	end
+	local ingredient = recipe:FindAndConvertIngredient("wagpunk_bits")
+	if ingredient then
+	    ingredient:AddDictionaryPrefab("gears")
+	end
+end)]]

@@ -34,6 +34,8 @@ return {
 
 		WELL_KIT = "", --우물 키트
 		WELL_SPRINKLER_KIT = "", --스프링클러 키트
+		WELL_WATERPUMP_KIT = "", --스팀 물펌프 키트
+		WELL_BURYING_KIT = "", -- 구멍 매설 키트
 		WELL_DRILLING = "", --드릴로 구멍 뚫는 중
 		WELL_DRILLING_ITEM = "", --드릴 아이템
 		HOLE = "", --우물 구멍
@@ -317,7 +319,7 @@ return {
 			DONE = "", --증류기에 음료가 들어있음
 		},
 
-		STEAM_WATERPUMP = {
+		WELL_WATERPUMP = {
 			HIGH_PRESSURE = "", -- 압력 최대
 			MIDDLE_PRESSURE = "", -- 압력이 중간
 			LOW_PRESSURE = "", -- 압력이 거의 없을때

@@ -11,7 +11,7 @@ local prefabs =
 
 local function OnSpawnIn(inst)
 	inst:Show()
-    inst.AnimState:PlayAnimation("place", false)
+    inst.AnimState:PlayAnimation("digging", false)
     inst.AnimState:PushAnimation("idle")
 end
 
@@ -51,12 +51,36 @@ local function CreateWellSprinkler(inst)
 	end)
 end
 
+local function CreateWellWaterPump(inst)
+	local waterpump = ReplacePrefab(inst, "well_waterpump")
+	waterpump.Transform:SetPosition(inst.Transform:GetWorldPosition())
+	waterpump.AnimState:PlayAnimation("place")
+	waterpump.AnimState:PushAnimation("idle_active")
+	waterpump.SoundEmitter:PlaySound("dontstarve/common/together/catapult/hit")
+	waterpump:DoTaskInTime(.6, function()
+		waterpump.SoundEmitter:PlaySound("dontstarve/common/researchmachine_lvl2_place")
+	end)
+end
+
+local function RemoveHole(inst)
+	inst.AnimState:PushAnimation("burying")
+	inst:ListenForEvent("animover",function (inst)
+		local x, y, z = inst.Transform:GetWorldPosition()
+		SpawnPrefab("collapse_small").Transform:SetPosition(x, y, z)
+	    inst:Remove()
+	end)
+end
+
 local function OnUpgrade(inst, performer, upgraded_from_item)
 	local prefab = upgraded_from_item.prefab
 	if prefab == "well_kit" then
 		local hole = CreateWell(inst)
 	elseif prefab == "well_sprinkler_kit" then
 		local hole = CreateWellSprinkler(inst)
+	--[[elseif prefab == "well_waterpump_kit" then 
+		local hole = CreateWellWaterPump(inst)
+	elseif prefab == "well_burying_kit" then 
+		local hole = RemoveHole(inst)]]
 	else
 		FailUpgrade(inst, performer, prefab)
 	end
@@ -75,12 +99,6 @@ end
 
     end
 end]]
-
-local function dig_up(inst)
-	local x, y, z = inst.Transform:GetWorldPosition()
-	SpawnPrefab("collapse_small").Transform:SetPosition(x, y, z)
-    inst:Remove()
-end
 
 local function hole()
     local inst = CreateEntity()
@@ -113,12 +131,6 @@ local function hole()
 	inst:AddComponent("upgradeable")
 	inst.components.upgradeable.upgradetype = UPGRADETYPES.HOLE
 	inst.components.upgradeable.onupgradefn = OnUpgrade
-	
-	inst:AddComponent("workable")
-    inst.components.workable:SetWorkAction(ACTIONS.DIG)
-    inst.components.workable:SetOnFinishCallback(dig_up)
-	inst.components.workable:SetOnWorkCallback(nil)
-    inst.components.workable:SetWorkLeft(3)
 	
 	inst:DoTaskInTime(0, OnSpawnIn)
 
