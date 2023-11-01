@@ -22,7 +22,7 @@ return {
 
 	DESCRIBE =
 	{
-		BOILBOOK = "",
+		BOILBOOK = "나는 지식에 목말라 있기도 하지.",
 
 		WATER_CLEAN_ICE = "만나서 정말 차가워.",
 		WATER_DIRTY_ICE = "만나서 더러워.",
@@ -31,8 +31,8 @@ return {
 
 		WELL_KIT = "물 구멍이 필요하겠어.",
 		WELL_SPRINKLER_KIT = "머리 젖는 건 조심해야겠지.",
-		WELL_WATERPUMP_KIT = "",
-		WELL_BURYING_KIT = "",
+		WELL_WATERPUMP_KIT = "비야흐로 물로 물을 긷는 시대야.",
+		WELL_BURYING_KIT = "사실 구멍이 얼마나 깊은지 알아보고 싶었어.",
 		WELL_DRILLING = "구멍을 파고 있는 중이야.",
 		WELL_DRILLING_ITEM = "물을 긷기 위해 우물을 파는 장치야.",
 		HOLE = "여기에 우물을 만들면 되겠어.",
@@ -310,17 +310,17 @@ return {
 		
 		DISTILLERS =
 		{   
-		    EMPTY = "", --증류기 조사 대사
-			DISTILLTING_LONG = "", --증류가 끝나기 까지 많이 남음
-			DISTILLING_SHORT = "", --증류가 곧 끝남
-			DONE = "", --증류기에 음료가 들어있음
+		    EMPTY = "나를 위한 에탄올을 만들어 봐야 겠어.", --증류기 조사 대사
+			DISTILLTING_LONG = "좀 더 끓여야 해.", --증류가 끝나기 까지 많이 남음
+			DISTILLING_SHORT = "거의 다 끓였어!", --증류가 곧 끝남
+			DONE = "두근 두근 하네.", --증류기에 음료가 들어있음
 		},
 
 		WELL_WATERPUMP = {
-			HIGH_PRESSURE = "", -- 압력 최대
-			MIDDLE_PRESSURE = "", -- 압력이 중간
-			LOW_PRESSURE = "", -- 압력이 거의 없을때
-			RECHARG_PRESSURE = "", -- 압력이 아예 없을때
+			HIGH_PRESSURE = "물이 분수 처럼 쏟아질거야.", -- 압력 최대
+			MIDDLE_PRESSURE = "아직은 수압이 나쁘지 않겠어.", -- 압력이 중간
+			LOW_PRESSURE = "증기압이 너무 낮아!", -- 압력이 거의 없을때
+			RECHARG_PRESSURE = "증기로 쓸 물까지 다 빼버렸어...", -- 압력이 아예 없을때
 		},
 		
 		WELL_SPRINKLER =

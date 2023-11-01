@@ -64,6 +64,10 @@ STRINGS.RECIPE_DESC.WELL_KIT = "우물가에선 우물쭈물거릴 거 없습니
 STRINGS.NAMES.WELL_SPRINKLER_KIT = "스프링클러 키트"
 STRINGS.RECIPE_DESC.WELL_SPRINKLER_KIT = "궁극의 관개 농업."
 
+--well_burying_kit
+STRINGS.NAMES.WELL_BURYING_KIT = "구멍 매립 키트"
+STRINGS.RECIPE_DESC.WELL_BURYING_KIT = "구멍에 행운의 동전대신 돌을."
+
 -- desalinator
 STRINGS.NAMES.DESALINATOR = "제염기"
 STRINGS.RECIPE_DESC.DESALINATOR = "짠돌이 바닷물을 덜 짜게."

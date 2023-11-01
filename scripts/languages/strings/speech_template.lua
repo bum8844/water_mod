@@ -323,7 +323,7 @@ return {
 			HIGH_PRESSURE = "", -- 압력 최대
 			MIDDLE_PRESSURE = "", -- 압력이 중간
 			LOW_PRESSURE = "", -- 압력이 거의 없을때
-			RECHARG_PRESSURE = "", -- 압력이 아예 없을때
+			RECHARG_PRESSURE = "", -- 압력이 아예 없을때(여기까지 쓰면 압력이 최대가 될때까지 못씀.)
 		},
 		
 		WELL_SPRINKLER =
@@ -331,8 +331,6 @@ return {
 			LOWFUEL = "", -- 연료가 거의 없는 상태에서의 조사 대사
 			ON = "", -- 작동중임
 			OFF = "", --작동을 멈춘상태에서의 조사 대사
-		},
-
-		
+		},	
 	},
 }
