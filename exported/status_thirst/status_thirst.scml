@@ -15,7 +15,7 @@
             </mainline>
             <timeline id="0" name="icon-0">
                 <key id="0" spin="0">
-                    <object folder="0" file="0" x="-0" angle="0"/>
+                    <object folder="0" file="0" x="0" y="-0" angle="0"/>
                 </key>
             </timeline>
         </animation>
