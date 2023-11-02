@@ -11,6 +11,8 @@ local prefabs =
 }
 
 local function SetChargingDoneFn(inst)
+	inst.components.water.available = true
+	inst.components.watersources.available = true
 	inst.SoundEmitter:PlaySound("rifts3/wagpunk_armor/upgrade")
 	inst.AnimState:PlayAnimation("activeing")
 	inst.AnimState:PushAnimation("idle_active",true)
@@ -18,6 +20,8 @@ local function SetChargingDoneFn(inst)
 end
 
 local function OnDeplete(inst)
+	inst.components.water.available = false
+	inst.components.watersources.available = false
 	inst.SoundEmitter:KillSound("loop_sound")
 	inst.SoundEmitter:PlaySound("rifts3/wagpunk_armor/downgrade")
 	inst.AnimState:PlayAnimation("stopping")
@@ -120,6 +124,7 @@ local function fn()
 	inst.components.water:SetOnTakenFn(OnTaken)
 
 	inst:AddComponent("watersource")
+	inst.components.watersources.onusefn = OnTaken
 
 	inst:AddComponent("workable")
     inst.components.workable:SetWorkAction(ACTIONS.HAMMER)
