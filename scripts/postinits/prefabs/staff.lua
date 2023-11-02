@@ -12,27 +12,31 @@ local function Spawnhole(target)
 end
 
 local function destroystructure(staff, target)
-	if target.onhole then
+	if target.onhole or target.components.steampressure then
 		Spawnhole(target)
 	elseif target.pipes and target.pipes[1] ~= nil then
 		RetractPipes(target)
-	elseif target.water_finiteuses then
-		if target.AnimState:IsCurrentAnimation("watering") or target.AnimState:IsCurrentAnimation("hit_watering") or target.AnimState:IsCurrentAnimation("idle_watering") then
-			local water_finiteuses = target.components.pickable.numtoharvest or 0
-			while water_finiteuses > 0 do
-	        	if water_finiteuses > 0 then
-	            	target.components.lootdropper:SpawnLootPrefab("water_clean")
+	elseif target.components.wateringstructure then
+		local wateringtool = target.components.wateringstructure:GetWateringTool()
+		if wateringtool then
+			local toolfiniteuses = target.components.wateringstructure:GetToolFiniteuses()
+			local wateramount = target.components.wateringstructure:GetWaterAmount() or 0
+			local root = target.components.pickable.product
+
+			while wateramount > 0 do
+	        	if wateramount > 0 then
+	            	target.components.lootdropper:SpawnLootPrefab(root)
 	        	end
-	        	water_finiteuses = water_finiteuses - 1
+	        	wateramount = wateramount - 1
 	    	end
-			if target.bucket_finiteuses > 0 then
+			if toolfiniteuses > 0 then
 				local x, y, z = target.Transform:GetWorldPosition()
 		   		local refund = nil
 
-				refund = GLOBAL.SpawnPrefab("bucket_empty")
-				refund.components.finiteuses:SetUses(target.bucket_finiteuses)
+				refund = SpawnPrefab(wateringtool)
+				refund.components.finiteuses:SetUses(toolfiniteuses)
 
-				GLOBAL.LaunchAt(refund,target,target,-1.8,0.5,nil,65)
+				LaunchAt(refund,target,target,-1.8,0.5,nil,65)
 			end
 		end
 		Spawnhole(target)

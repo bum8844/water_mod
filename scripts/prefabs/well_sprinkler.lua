@@ -15,6 +15,7 @@ local prefabs =
 {
 	"well_water_pipe",
 	"well_water_spray",
+    "collapse_small",
 }
 
 local function spawndrop(inst)

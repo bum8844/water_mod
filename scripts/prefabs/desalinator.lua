@@ -87,7 +87,7 @@ local function IsEmptySalt(inst)
 end
 
 local function IsSameSalt(inst)
-    return inst._saltvalue == salt_sections
+    return inst._saltvaluemax == salt_sections
 end
 
 local function GetSaltPercent(inst)
@@ -95,7 +95,7 @@ local function GetSaltPercent(inst)
 end
 
 local function GetSaltSection(inst)
-    return IsEmptySalt(inst) and 0 or IsSameSalt(inst) and math.min( math.ceil(GetSaltPercent(inst)*salt_sections), salt_sections) or math.min( math.ceil(GetSaltPercent(inst)*salt_sections), salt_sections)
+    return IsEmptySalt(inst) and 0 or IsSameSalt(inst) and math.min( math.ceil(GetSaltPercent(inst)*salt_sections), salt_sections) or math.min( math.ceil(GetSaltPercent(inst)*salt_sections)+1, salt_sections)
 end
 
 local function SetSaltSection(inst)

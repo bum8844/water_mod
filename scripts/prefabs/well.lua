@@ -55,10 +55,10 @@ local function CreateWellWaterPump(inst)
 	local waterpump = ReplacePrefab(inst, "well_waterpump")
 	waterpump.Transform:SetPosition(inst.Transform:GetWorldPosition())
 	waterpump.AnimState:PlayAnimation("place")
-	waterpump.AnimState:PushAnimation("idle_active")
+	waterpump.AnimState:PushAnimation("idle_active",true)
 	waterpump.SoundEmitter:PlaySound("dontstarve/common/together/catapult/hit")
 	waterpump:DoTaskInTime(.6, function()
-		waterpump.SoundEmitter:PlaySound("dontstarve/common/researchmachine_lvl2_place")
+		waterpump.SoundEmitter:PlaySound("rifts3/sawhorse/place")
 	end)
 end
 
@@ -164,11 +164,9 @@ local function SetToFrozed(inst, data)
         if inst.components.wateringstructure:IsFrozen() then
             if cur_temp >= max_temp then
                 inst.components.wateringstructure:SetFrozed(false)
-                print("녹음")
             end
         elseif cur_temp <= min_temp then
             inst.components.wateringstructure:SetFrozed(true)
-            print("얼음")
         end
     end
 end
@@ -306,11 +304,9 @@ local function SetWellState(inst, reason)
 	if reason then
 		local sgaction = inst.components.wateringstructure:IsFrozen() and "turn_to_ice" or "turn_to_full"
 		inst.sg:GoToState(sgaction)
-		print("물이 얼거나 녹음")
 	else
 		local data = SetWaterData(inst)
 		inst.sg:GoToState("watering_idle", data)
-		print("물이 썩거나 마름")
 	end
 end
 
@@ -319,7 +315,6 @@ local function OnGetItemFromPlayer(inst, giver, item)
 	inst.components.wateringstructure:RegistrationWateringTool(item, toolfiniteuses)
 	SetBucket(inst)
    	inst.sg:GoToState("watering")
-   	print("물을 깁니다")
 end
 
 local function SetAmount(inst)
