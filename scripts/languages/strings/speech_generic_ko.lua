@@ -59,7 +59,7 @@ return {
 		RUINCACAO_SEED_SAPLING = "시간이 지나면 나무로 자랄 거야.",
 		RUINCACAO = "생각보다 껍질이 바싹 말라있는데?",
 		RUINCACAO_BEAN = "먹기에는 기름기가 너무 많아.",
-		RUINCACAO_SEED_COOKED = "생각보다 스모키 한데?",
+		RUINCACAO_BEAN_COOKED = "생각보다 스모키 한데?",
 
 		-- 증류기 첨가제
 

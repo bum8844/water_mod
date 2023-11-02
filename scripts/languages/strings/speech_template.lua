@@ -62,7 +62,7 @@ return {
 		RUINCACAO_SEED_SAPLING = "", -- 카카오 새싹 심은거
 		RUINCACAO = "", --부수기 전 카카오 열매
 		RUINCACAO_BEAN = "", --부순 후 카카오 콩  
-		RUINCACAO_SEED_COOKED = "", --구운 카카오 콩
+		RUINCACAO_BEAN_COOKED = "", --구운 카카오 콩
 
 		-- 증류주 첨가제
 

@@ -525,7 +525,7 @@ local drinks =
 		potlevel = "mid",
 		potlevel_bottle = "mid",
 	},
-	ruincolate = {
+	hotruincolate = {
 		test = function(boilier, names, tags) return names.ruincacao_bean_cooked and names.ruincacao_bean_cooked >= 2 and (Preference(names, tags) >= 1) and not tags.frozen and notmeat(tags) and notname(names) and lessthing(names) end,
 		priority = 2,
         health = TUNING.HEALING_TINY/4,

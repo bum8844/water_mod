@@ -9,7 +9,7 @@ local biome_data = require("utils/water_biome")
 
 local tea_tree_biome = biome_data.SetTeaTreeConfig(GetModConfigData("gen_tea_tree"), MOD_LIST)
 local caffeinberry_biome = biome_data.SetCaffeinberryConfig(GetModConfigData("gen_caffeinberry"), MOD_LIST)
---local ruincacao_biome = biome_data.SetRuinCacaoConfig(GetModConfigData("gen_ruincacao_tree"), MOD_LIST)
+local ruincacao_tree_biome = biome_data.SetRuinCacaoConfig(GetModConfigData("gen_ruincacao_tree"), MOD_LIST)
 
 local function mymathclamp(num, min, max)
     return num <= min and min or (num >= max and max or num)
@@ -67,8 +67,8 @@ end
 
 AddThingtoWorldGeneration("tea_tree",tea_tree_biome)
 AddThingtoWorldGeneration("caffeinberry",caffeinberry_biome)
---AddThingtoWorldGeneration("ruincacao",ruincacao_biome) 
+AddThingtoWorldGeneration("ruincacao_tree",ruincacao_tree_biome) 
 
 GLOBAL.terrain.filter.caffeinberry = {GLOBAL.GROUND.ROAD, GLOBAL.GROUND.WOODFLOOR, GLOBAL.GROUND.CARPET, GLOBAL.GROUND.CHECKER}
 GLOBAL.terrain.filter.tea_tree = {GLOBAL.GROUND.ROAD, GLOBAL.GROUND.WOODFLOOR, GLOBAL.GROUND.CARPET, GLOBAL.GROUND.CHECKER}
---GLOBAL.terrain.filter.ruincacao = {GLOBAL.GROUND.ROAD, GLOBAL.GROUND.WOODFLOOR, GLOBAL.GROUND.CARPET, GLOBAL.GROUND.CHECKER}
+GLOBAL.terrain.filter.ruincacao_tree = {GLOBAL.GROUND.ROAD, GLOBAL.GROUND.WOODFLOOR, GLOBAL.GROUND.CARPET, GLOBAL.GROUND.CHECKER}

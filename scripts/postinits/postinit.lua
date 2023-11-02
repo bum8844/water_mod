@@ -11,6 +11,7 @@ local postinits =
 		"moisture",
 		"regrowthmanager",
 		"wisecracker",
+		"retrofitcavemap_anr",
 		"retrofitforestmap_anr",
 		"container_replica",
 	},
@@ -53,6 +54,8 @@ local postinits =
 	scripts = {
 		"savefileupgrades",
 		"popupmanager",
+		"preparedfoods",
+		"preparedfoods_warly"
 	}
 }
 

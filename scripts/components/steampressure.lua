@@ -4,7 +4,7 @@ local SteamPressure = Class(function(inst, self)
 	self.maxpressure = 100
 	self.curpressure = math.ceil(self.maxpressure/2)
 
-	self.delayed = 0
+	self.delayed = TUNING.TOTAL_DAY_TIME*.5
 
 	self.pressuretask = nil
 	self.isdepleted = false

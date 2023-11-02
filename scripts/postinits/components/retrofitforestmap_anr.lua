@@ -162,7 +162,7 @@ local function Ruincacao_Tree_Retrofitting()
 		return
 	end
 
-	local nodes = #candidtate_nodes/4
+	local nodes = #candidtate_nodes/8
 
 	local gen_ruincacao_tree = math.floor(TUNING.ADD_RUINCACAO_TREE*nodes)
 

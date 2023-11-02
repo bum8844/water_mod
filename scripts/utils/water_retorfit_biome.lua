@@ -125,6 +125,8 @@ end
 local function GetRuinCacaoTreeBiome()
 
 	local ruincacao_tree_biome = {
+        "Vacant",
+        "CaveJungle",
         "RuinedCityEntrance",
         "RuinedGuarden",
         "LabyrinthEntrance",

@@ -10,6 +10,8 @@ local function SetRuinCacaoConfig(var, list)
     local gen_ruincacao_tree = var
 
     local ruincacao_tree_biome = {
+        Vacant=gen_ruincacao_tree,
+        CaveJungle=gen_ruincacao_tree,
         RuinedCityEntrance=gen_ruincacao_tree,
         RuinedGuarden=gen_ruincacao_tree,
         LabyrinthEntrance=gen_ruincacao_tree,
@@ -25,17 +27,17 @@ local function SetRuinCacaoConfig(var, list)
         VolcanoAsh=gen_ruincacao_tree,
         VolcanoNoise=gen_ruincacao_tree,
         VolcanoCage=gen_ruincacao_tree,
-        BG_deeprainforest_base=gen_tea_tree,
-        deeprainforest_fireflygrove=gen_tea_tree,
-        deeprainforest_flytrap_grove=gen_tea_tree,
-        deeprainforest_mandrakeman=gen_tea_tree,
+        BG_deeprainforest_base=gen_ruincacao_tree,
+        deeprainforest_fireflygrove=gen_ruincacao_tree,
+        deeprainforest_flytrap_grove=gen_ruincacao_tree,
+        deeprainforest_mandrakeman=gen_ruincacao_tree,
     }
 
     if list.TE then
-        ruincacao_tree_biome = CheckMods(tea_tree_biome, tea_tree_biome_te)
+        ruincacao_tree_biome = CheckMods(ruincacao_tree_biome, ruincacao_tree_biome_te)
     end
     if list.IA then
-        ruincacao_tree_biome = CheckMods(tea_tree_biome, tea_tree_biome_ia)
+        ruincacao_tree_biome = CheckMods(ruincacao_tree_biome, ruincacao_tree_biome_ia)
     end
 
     return ruincacao_tree_biome
