@@ -129,6 +129,12 @@
     <folder id="42" name="tomato_juice">
         <file id="0" name="tomato_juice/tomato_juice-0.png" width="187" height="187" pivot_x="0.5" pivot_y="0.25"/>
     </folder>
+    <folder id="43" name="butterbeer">
+        <file id="0" name="butterbeer/butterbeer.png" width="187" height="187" pivot_x="0.5" pivot_y="0.25"/>
+    </folder>
+    <folder id="44" name="giant_blueberry_gin">
+        <file id="0" name="giant_blueberry_gin/giant_blueberry_gin.png" width="187" height="187" pivot_x="0.5" pivot_y="0.25"/>
+    </folder>
     <entity id="0" name="kettle_drink">
         <animation id="0" name="idle" length="150" interval="100" looping="false">
             <mainline>
