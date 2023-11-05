@@ -82,8 +82,6 @@ function SteamPressure:GetPressure()
 	local oldsection = self:GetPressureSection()
 	self.curpressure = self.curpressure + 1
 
-	print("증기 얻음 :"..self.curpressure)
-
 	if self.curpressure >= self.maxpressure then
 		self.curpressure = self.maxpressure
 		self.fullpressure = true
@@ -121,8 +119,6 @@ function SteamPressure:LostPressure()
 	self.fullpressure = false
 
 	local newsection = self:GetPressureSection()
-
-	print("증기 빠짐 :"..self.curpressure)
 
     if oldsection ~= newsection then
         if self.pressuresectionfn then
