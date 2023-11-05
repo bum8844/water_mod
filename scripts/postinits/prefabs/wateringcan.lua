@@ -31,6 +31,15 @@ local function OnFill_Waterlevel(inst, from_object ,...)
         else
             return false
         end
+    elseif from_object.components.steampressure then
+        if using < maxfin then
+            inst.components.finiteuses:SetUses(maxfin)
+            from_object.components.steampressure:LostPressure()
+            inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/small")
+            return true
+        else
+            return false
+        end
     else
     	return inst.components.fillable._overrideonfillfn(inst, from_object ,...)
     end

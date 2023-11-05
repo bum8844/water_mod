@@ -102,7 +102,7 @@ local TAKEWATER = AddAction("TAKEWATER", STRINGS.ACTIONS.FILL, function(act)
 
     local groundpt = act:GetActionPoint()
     if groundpt ~= nil then
-        local success = (_G.TheWorld.Map:IsOceanAtPoint(groundpt.x, 0, groundpt.z))
+        local success = (_G.TheWorld.Map:IsOceanAtPoint(groundpt.x, 0, groundpt.z) or _G.TheWorld.Map:IsOceanTileAtPoint(groundpt.x, 0, groundpt.z))
         if success then
             local watertype = nil
             if IsDirty(groundpt) then

@@ -109,8 +109,9 @@ STRINGS.NAMES.DISTILLERS = "Distillers"
 STRINGS.RECIPE_DESC.DISTILLERS = "What can be enriched?"
 
 -- steam_waterpump
-STRINGS.NAMES.STEAM_WATERPUMP = "Steam WaterPump"
-STRINGS.RECIPE_DESC.STEAM_WATERPUMP = "Pull out clean water under pressure!"
+STRINGS.NAMES.WELL_WATERPUMP = "Steam WaterPump"
+STRINGS.NAMES.WELL_WATERPUMP_KIT = "Steam WaterPump Kit"
+STRINGS.RECIPE_DESC.WELL_WATERPUMP_KIT = "Pull out clean water under pressure!"
 
 -- tea_trees
 STRINGS.NAMES.TEA_TREE = "Tea Tree"

@@ -80,12 +80,17 @@ local function CanGetWater(inst, doer)
 end
 
 local function OnTakeWater(inst, source, doer)
-    if source ~= nil and source.components.waterlevel ~= nil then
-        local watervalue = math.min(TUNING.BUCKET_LEVEL_PER_USE, inst.components.finiteuses:GetUses())
-        source.components.water:Taken(inst, watervalue)
+    if source ~= nil then
+        local watervalue = 0
+        if source.components.waterlevel ~= nil then
+            watervalue = math.min(TUNING.BUCKET_LEVEL_PER_USE, inst.components.finiteuses:GetUses())
+            source.components.water:Taken(inst, watervalue)
+        elseif source.components.steampressure ~= nil then
+            source.components.steampressure:LostPressure()
+        end
     end
     inst.components.finiteuses:Use(inst.components.watertaker._laststack)
-    inst.SoundEmitter:PlaySound("dontstarve/creatures/pengull/splash")
+    doer.SoundEmitter:PlaySound("dontstarve/creatures/pengull/splash")
     if inst.components.finiteuses.current <= 0 then
         inst:Remove()
     end

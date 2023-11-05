@@ -1,13 +1,17 @@
 local additives = {
-	"additives_seed",
-    "additives_nut",
-    "additives_dairy",
-	"additives_petals",
+	additive_seed = {},
+    additive_nut = {},
+    additive_dairy = {},
+	additive_petals = {},
 }
+
+for k, v in pairs (additives) do
+    v.name = k
+end
 
 local function MakeAdditives(data)
 	local assets = {
-    	Asset("ANIM", "anim/additives.zip"),
+    	Asset("ANIM", "anim/water_additives.zip"),
 	}
 
 	if data.overridebuild then
@@ -24,10 +28,10 @@ local function MakeAdditives(data)
 
         MakeInventoryPhysics(inst)
 
-    	inst.AnimState:SetBuild("additives")
-        inst.AnimState:SetBank("additives")
+    	inst.AnimState:SetBuild("water_additives")
+        inst.AnimState:SetBank("water_additives")
         inst.AnimState:PlayAnimation("idle")
-        inst.AnimState:OverrideSymbol("swap", data.overridebuild or "additives", data.basename or data.name)
+        inst.AnimState:OverrideSymbol("swap", data.overridebuild or "water_additives", data.basename or data.name)
 
         if data.tags ~= nil then
             for k, v in ipairs(data.tags) do
