@@ -7,15 +7,16 @@ local well_kit_assets = {
 
 local well_sprinkler_kit_assets = {
     Asset("ANIM", "anim/well_sprinkler.zip"),
-    Asset("ANIM", "anim/well_sprinkler_placement.zip")
+    Asset("ANIM", "anim/well_sprinkler_placement.zip"),
 }
 
---[[local well_waterpump_kit_assets = {
-    Asset("ANIM", "anim/well_waterpump.zip")
+local well_waterpump_kit_assets = {
+    Asset("ANIM", "anim/well_waterpump.zip"),
+    Asset("ANIM", "anim/well_waterpump_meter.zip"),
 }
 
-local well_burying_kit_prefabs = {
-     Asset("ANIM", "anim/well_burying.zip")
+local well_burying_kit_assets = {
+     Asset("ANIM", "anim/well_burying_kit.zip")
 }
 
 local well_burying_kit_prefabs = {
@@ -24,7 +25,7 @@ local well_burying_kit_prefabs = {
 
 local well_waterpump_kit_prefabs = {
     "well_waterpump",
-}]]
+}
 
 local well_sprinkler_kit_prefabs = {
     "well_sprinkler",
@@ -159,9 +160,8 @@ local function placer_postinit_fn(inst)
     inst.components.placer:LinkEntity(placer2)
 end
  
-return MakeUpGrade_Kit("well_kit", "well", "idle_ground", nil, well_kit_assets, well_kit_prefabs),
---MakeUpGrade_Kit("well_burying_kit", "well_burying", "idle_ground", nil, well_burying_kit_assets, well_burying_kit_prefabs),
---MakeUpGrade_Kit("well_waterpump_kit", "well_waterpump", "idle_ground", nil, well_waterpump_kit_assets,well_waterpump_kit_prefabs),
-MakeUpGrade_Kit("well_sprinkler_kit", "well_sprinkler", "idle", well_sprinkler_kit_fn, well_sprinkler_kit_assets, well_sprinkler_kit_prefabs,{"well_sprinkler_kit","tile_deploy"}),
+return MakeUpGrade_Kit("well_kit", "well", "idle_well_kit", nil, well_kit_assets, well_kit_prefabs),
+MakeUpGrade_Kit("well_burying_kit", "well_burying_kit", "idle_burying_kit", nil, well_burying_kit_assets, well_burying_kit_prefabs),
+MakeUpGrade_Kit("well_waterpump_kit", "well_waterpump", "idle_waterpump_kit", nil, well_waterpump_kit_assets,well_waterpump_kit_prefabs),
+MakeUpGrade_Kit("well_sprinkler_kit", "well_sprinkler", "idle_sprinkler_kit", well_sprinkler_kit_fn, well_sprinkler_kit_assets, well_sprinkler_kit_prefabs,{"well_sprinkler_kit","tile_deploy"}),
 MakePlacer("well_sprinkler_kit_placer", "well_sprinkler_placement", "well_sprinkler_placement", "idle", true, nil, nil, TUNING.SPRINKLER_PLACER_SCALE, nil, nil, placer_postinit_fn)
---MakePlacer("well_sprinkler_kit_placer", "well_sprinkler_placement", "well_sprinkler_placement", "idle", true, nil, nil, TUNING.SPRINKLER_PLACER_SCALE, nil, nil, placer_postinit_fn)

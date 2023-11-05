@@ -64,7 +64,7 @@ AddRecipe2("well_sprinkler_kit",{Ingredient("marble",4),Ingredient("moonglass",1
 
 -- AddRecipe2("distillers",{Ingredient("dreadstone",8),Ingredient("nightmarefuel",4),Ingredient("transistor",4),Ingredient("redgem",1),Ingredient("bluegem",1)},TECH.SCIENCE_TWO,{atlas = ModAtlas(), image = "distillers.tex"},{"COOKING","HYDRATION"})
 
--- AddRecipe2("well_waterpump_kit",{Ingredient("security_pulse_cage_full",1),Ingredient("wagpunk_bits",4),Ingredient("transistor"),Ingredient("cutstone",2)},TECH.SCIENCE_TWO,{atlas = ModAtlas(), image = "distillers.tex"},{"GARDENING","HYDRATION"})
+-- AddRecipe2("well_waterpump_kit",{Ingredient("security_pulse_cage_full",1),Ingredient("wagpunk_bits",4),Ingredient("transistor",1),Ingredient("cutstone",2)},TECH.SCIENCE_TWO,{atlas = ModAtlas(), image = "distillers.tex"},{"GARDENING","HYDRATION"})
 
 -- CONSTRUCTION_PLANS["hole"] = {Ingredient("boards",2),Ingredient("cutstone",6),Ingredient("hammer",1)}
 
@@ -72,4 +72,4 @@ AddDeconstructRecipe("well", {Ingredient("boards",2),Ingredient("cutstone",6)})
 
 AddDeconstructRecipe("well_sprinkler", {Ingredient("marble",4),Ingredient("moonglass",1),Ingredient("townportaltalisman",2),Ingredient("gears",1)})
 
--- AddDeconstructRecipe("well_waterpump", {Ingredient("security_pulse_cage_full",1),Ingredient("wagpunk_bits",4),Ingredient("transistor"),Ingredient("cutstone",2)})
+AddDeconstructRecipe("well_waterpump", {Ingredient("security_pulse_cage_full",1),Ingredient("wagpunk_bits",4),Ingredient("transistor",1),Ingredient("cutstone",2)})
