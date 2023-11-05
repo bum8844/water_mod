@@ -55,10 +55,10 @@ local function CreateWellWaterPump(inst)
 	local waterpump = ReplacePrefab(inst, "well_waterpump")
 	waterpump.Transform:SetPosition(inst.Transform:GetWorldPosition())
 	waterpump.AnimState:PlayAnimation("place")
-	waterpump.AnimState:PushAnimation("idle_active",true)
-	waterpump.SoundEmitter:PlaySound("dontstarve/common/together/catapult/hit")
-	waterpump:DoTaskInTime(.6, function()
-		waterpump.SoundEmitter:PlaySound("rifts3/sawhorse/place")
+	waterpump.AnimState:PushAnimation("idle_stop",true)
+	waterpump.SoundEmitter:PlaySound("dontstarve/common/together/dragonfly_furnace/place")
+	waterpump:DoTaskInTime(0.8, function()
+		waterpump.SoundEmitter:PlaySound("dontstarve/common/together/catapult/hit")
 	end)
 end
 
@@ -77,10 +77,10 @@ local function OnUpgrade(inst, performer, upgraded_from_item)
 		local hole = CreateWell(inst)
 	elseif prefab == "well_sprinkler_kit" then
 		local hole = CreateWellSprinkler(inst)
-	--[[elseif prefab == "well_waterpump_kit" then 
+	elseif prefab == "well_waterpump_kit" then 
 		local hole = CreateWellWaterPump(inst)
 	elseif prefab == "well_burying_kit" then 
-		local hole = RemoveHole(inst)]]
+		local hole = RemoveHole(inst)
 	else
 		FailUpgrade(inst, performer, prefab)
 	end

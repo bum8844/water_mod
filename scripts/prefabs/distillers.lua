@@ -47,24 +47,20 @@ end
 
 local function startcookfn(inst)
     inst.AnimState:PlayAnimation("cooking_loop", true)
-    inst.SoundEmitter:KillSound("snd")
-    inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_rattle", "snd")
+    inst.SoundEmitter:PlaySound("dontstarve/common/together/dragonfly_furnace/fire_LP", "snd")
     inst.Light:Enable(true)
 end
 
 local function onopen(inst)
     inst.AnimState:PlayAnimation("cooking_pre_loop")
-    inst.SoundEmitter:KillSound("snd")
-    inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_open")
-    inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot", "snd")
+    inst.SoundEmitter:PlaySound("hookline/common/fishbox/open")
 end
 
 local function onclose(inst)
     if not inst.components.brewing:IsCooking() then
         inst.AnimState:PlayAnimation("idle_empty")
-        inst.SoundEmitter:KillSound("snd")
     end
-    inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_close")
+    inst.SoundEmitter:PlaySound("hookline/common/fishbox/close")
 end
 
 local function IsModDrink(inst, product, overridebuild)
@@ -152,12 +148,14 @@ local function continuecookfn(inst)
     inst.AnimState:PlayAnimation("cooking_loop", true)
     inst.Light:Enable(true)
     inst.SoundEmitter:KillSound("snd")
-    inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_rattle", "snd")
+    inst.SoundEmitter:PlaySound("dontstarve/common/together/dragonfly_furnace/fire_LP", "snd")
 end
 
 local function harvestfn(inst)
-    inst.AnimState:PlayAnimation("idle_empty")
-    inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_close")
+    inst.AnimState:PlayAnimation("getdrink")
+    inst.SoundEmitter:PlaySound("dontstarve/creatures/pengull/splash")
+    inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/medium")
+    inst.AnimState:PushAnimation("idle_empty",false)
 end
 
 local function getstatus(inst)

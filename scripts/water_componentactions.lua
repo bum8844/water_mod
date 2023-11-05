@@ -108,9 +108,8 @@ local SCENE =
                 not inst.replica.equippable:IsEquipped() and
                 inst.replica.inventoryitem ~= nil and
                 inst.replica.inventoryitem:IsHeld()) and
-                inst:HasTag("forfarm") and
-                (inst:HasTag("haspipe") or inst:HasTag("hashole")) then
-            table.insert(actions, inst:HasTag("turnedon") and ACTIONS.TURNOFF or ACTIONS.TURNON_TILEARRIVE)
+                (inst:HasTag("haspipe") or inst:HasTag("hashole") or not inst:HasTag("recharg_pressure")) then
+            table.insert(actions, inst:HasTag("turnedon") and ACTIONS.TURNOFF or inst:HasTag("well_waterpump") and ACTIONS.TURNON or ACTIONS.TURNON_TILEARRIVE)
         end
     end,
 
@@ -139,6 +138,13 @@ local SCENE =
 }
 
 local INVENTORY = {
+    watertaker = function(inst, doer, actions, right)
+        local pos = inst:GetPosition()
+        if inst:HasTag("watertaker") and _G.TheWorld.Map:IsOceanTileAtPoint(pos.x, 0, pos.z) then
+            table.insert(actions, ACTIONS.TAKEWATER_OCEAN)
+        end
+    end,
+
     edible = function(inst, doer, actions, right)
         if inst:HasTag("drink") or inst:HasTag("def_water") then
             if (right or inst.replica.equippable == nil) and
