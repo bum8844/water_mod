@@ -30,20 +30,22 @@ local function TurnOn(inst, instant)
 	inst.SoundEmitter:PlaySound("rifts3/sawhorse/proximity_lp", "loop_active")
 end
 
-local function CanInteract(inst)
-    return not inst.components.steampressure:IsDepleted()
-end
-
 local function SetChargingDoneFn(inst)
 	inst.components.water.available = true
 	inst.components.watersource.available = true
-	inst.components.machine.turnofffn(inst)
+	inst:DoTaskInTime(0,function(inst)
+		inst.components.machine.ison = false
+		inst.components.machine.turnofffn(inst)
+	end)
 end
 
 local function OnDeplete(inst)
 	inst.components.water.available = false
 	inst.components.watersource.available = false
-	inst.components.machine.turnonfn(inst)
+	inst:DoTaskInTime(0,function(inst)
+		inst.components.machine.ison = true
+		inst.components.machine.turnonfn(inst)
+	end)
 end
 
 local function SetPressureSection(newsection, oldsection, inst)
@@ -153,6 +155,7 @@ local function fn()
     inst:AddComponent("machine")
     inst.components.machine.turnonfn = TurnOn
     inst.components.machine.turnofffn = TurnOff
+    inst.components.machine.cooldowntime = 0.5
 
     inst:AddComponent("wateringmachine")
 

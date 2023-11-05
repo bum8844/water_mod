@@ -108,6 +108,7 @@ local SCENE =
                 not inst.replica.equippable:IsEquipped() and
                 inst.replica.inventoryitem ~= nil and
                 inst.replica.inventoryitem:IsHeld()) and
+                not inst:HasTag("fullpressure") and
                 (inst:HasTag("haspipe") or inst:HasTag("hashole") or not inst:HasTag("recharg_pressure")) then
             table.insert(actions, inst:HasTag("turnedon") and ACTIONS.TURNOFF or inst:HasTag("well_waterpump") and ACTIONS.TURNON or ACTIONS.TURNON_TILEARRIVE)
         end

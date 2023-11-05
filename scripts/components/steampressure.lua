@@ -6,6 +6,14 @@ local function isdepleted (self, depleted)
 	end
 end
 
+local function isfullpressure (self, isfullpressure)
+	if isfullpressure then
+		self.inst:AddTag("fullpressure")
+	else
+		self.inst:RemoveTag("fullpressure")
+	end
+end
+
 local SteamPressure = Class(function(self, inst)
     self.inst = inst
 
@@ -25,9 +33,11 @@ local SteamPressure = Class(function(self, inst)
 	self.pressuretask = nil
 	self.depletedtask = nil
 	self.depleted = false
+	self.fullpressure = false
 
 end,nil,{
-	depleted = isdepleted
+	depleted = isdepleted,
+	fullpressure = isfullpressure,
 })
 
 local function waitpressure(inst, self)
@@ -38,6 +48,7 @@ end
 local function waitfullpressure(inst, self)
 	self.depletedtask = nil
 	self.depleted = false
+	self.fullpressure = true
 	if self.chargingdonefn then
 		self.chargingdonefn(self.inst)
 	end
@@ -71,8 +82,14 @@ function SteamPressure:GetPressure()
 	local oldsection = self:GetPressureSection()
 	self.curpressure = self.curpressure + 1
 
+	print("증기 얻음 :"..self.curpressure)
+
 	if self.curpressure >= self.maxpressure then
 		self.curpressure = self.maxpressure
+		self.fullpressure = true
+		if self.chargingdonefn then
+			self.chargingdonefn(self.inst)
+		end
 		return true
 	end
 		
@@ -100,7 +117,12 @@ end
 function SteamPressure:LostPressure()
 	local oldsection = self:GetPressureSection()
 	self.curpressure = self.curpressure - 1
+
+	self.fullpressure = false
+
 	local newsection = self:GetPressureSection()
+
+	print("증기 빠짐 :"..self.curpressure)
 
     if oldsection ~= newsection then
         if self.pressuresectionfn then
@@ -124,7 +146,6 @@ function SteamPressure:LostPressure()
  			self.ontakewaterfn(self.inst)
  		end
  	end
- 	print(self.curpressure)
 end
 
 function SteamPressure:IsDepleted()
@@ -175,6 +196,10 @@ function SteamPressure:OnLoad(data)
 		self.curpressure = data.pressure
 		if self.curpressure >= self.maxpressure then
 			self.curpressure = self.maxpressure
+			self.fullpressure = true
+			if self.chargingdonefn then
+				self.chargingdonefn(self.inst)
+			end
 			return true
 		end
 		if data.depleted then
