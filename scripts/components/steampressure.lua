@@ -76,33 +76,32 @@ function SteamPressure:SetPressure(num)
 end
 
 function SteamPressure:GetPressure()
-	local time = self:IsDepleted() and self.delayed*.01 or (self.delayed*.25)*.01
-	self.delay_left_time = time + GetTime()
+    local time = self:IsDepleted() and self.delayed * 0.01 or (self.delayed * 0.25) * 0.01
+    self.delay_left_time = time + GetTime()
 
-	local oldsection = self:GetPressureSection()
-	self.curpressure = self.curpressure + 1
+    local oldsection = self:GetPressureSection()
+    self.curpressure = self.curpressure + 1
 
-	if self.curpressure >= self.maxpressure then
-		self.curpressure = self.maxpressure
-		self.fullpressure = true
-		if self.chargingdonefn then
-			self.chargingdonefn(self.inst)
-		end
-		return true
-	end
-		
-	local newsection = self:GetPressureSection()
+    if self.curpressure >= self.maxpressure then
+        self.curpressure = self.maxpressure
+        self.fullpressure = true
+        if self.chargingdonefn then
+            self.chargingdonefn(self.inst)
+        end
+        return true
+    end
 
-	if oldsection ~= newsection then
-	    if self.pressuresectionfn then
-			self.pressuresectionfn(newsection, oldsection, self.inst)
-		end
-	end
-	if self.pressuretask then
-		self.pressuretask:Cancel()
-		self.pressuretask = nil
-	end
-	self.pressuretask = self.inst:DoTaskInTime(time,waitpressure,self)
+    local newsection = self:GetPressureSection()
+
+    if oldsection ~= newsection and self.pressuresectionfn then
+        self.pressuresectionfn(newsection, oldsection, self.inst)
+    end
+
+    if self.pressuretask then
+        self.pressuretask:Cancel()
+    end
+
+    self.pressuretask = self.inst:DoTaskInTime(time, waitpressure, self)
 end
 
 function SteamPressure:StopGetPressure()
@@ -113,35 +112,33 @@ function SteamPressure:StopGetPressure()
 end
 
 function SteamPressure:LostPressure()
-	local oldsection = self:GetPressureSection()
-	self.curpressure = self.curpressure - 1
+    local oldsection = self:GetPressureSection()
+    self.curpressure = self.curpressure - 1
+    self.fullpressure = false
 
-	self.fullpressure = false
+    local newsection = self:GetPressureSection()
 
-	local newsection = self:GetPressureSection()
+    if oldsection ~= newsection and self.pressuresectionfn then
+        self.pressuresectionfn(newsection, oldsection, self.inst)
+    end
 
-    if oldsection ~= newsection then
-        if self.pressuresectionfn then
-	        self.pressuresectionfn(newsection, oldsection, self.inst)
-		end
-	end
+    if self.curpressure <= 0 then
+        self.depleted = true
 
- 	if self.curpressure <= 0 then
- 		self.depleted = true
- 		if self.depletedtask then
- 			self.depletedtask:Cancel()
- 			self.depletedtask = nil
- 		end
- 		self.left_time = self.delayed + GetTime()
- 		if self.depletedfn then
- 			self.depletedfn(self.inst)
- 		end
- 		self.depletedtask = self.inst:DoTaskInTime(self.delayed, waitfullpressure, self)
- 	else
- 		if self.ontakewaterfn then
- 			self.ontakewaterfn(self.inst)
- 		end
- 	end
+        if self.depletedtask then
+            self.depletedtask:Cancel()
+        end
+
+        self.depletedtask = self.inst:DoTaskInTime(self.delayed, waitfullpressure, self)
+
+        if self.depletedfn then
+            self.depletedfn(self.inst)
+        end
+    else
+        if self.ontakewaterfn then
+            self.ontakewaterfn(self.inst)
+        end
+    end
 end
 
 function SteamPressure:IsDepleted()
@@ -188,39 +185,48 @@ function SteamPressure:OnSave()
 end
 
 function SteamPressure:OnLoad(data)
-	if data ~= nil then
-		self.curpressure = data.pressure
-		if self.curpressure >= self.maxpressure then
-			self.curpressure = self.maxpressure
-			self.fullpressure = true
-			if self.chargingdonefn then
-				self.chargingdonefn(self.inst)
-			end
-			return true
-		end
-		if data.depleted then
-			self.depleted = true
-			if self.depletedtask then
-				self.depletedtask:Cancel()
-				self.depletedtask = nil
-			end
-			self.left_time = data.remainingtime + GetTime()
-	 		if self.depletedfn then
-	 			self.depletedfn(self.inst)
-	 		end
-			self.depletedtask = self.inst:DoTaskInTime(data.remainingtime, waitfullpressure, self)
-		end
-		local time = data.depleted and self.delayed*.01 or (self.delayed*.25)*.01
-		if data.remainingdelaytime then
-			time = data.remainingdelaytime
-		end
-		self.delay_left_time = time + GetTime()
-		if self.pressuretask then
-			self.pressuretask:Cancel()
-			self.pressuretask = nil
-		end
-		self.pressuretask = self.inst:DoTaskInTime(time, waitpressure, self)
-	end
+    if data ~= nil then
+        self.curpressure = data.pressure
+
+        if self.curpressure >= self.maxpressure then
+            self.curpressure = self.maxpressure
+            self.fullpressure = true
+
+            if self.chargingdonefn then
+                self.chargingdonefn(self.inst)
+            end
+
+            return true
+        end
+
+        if data.depleted then
+            self.depleted = true
+
+            if self.depletedtask then
+                self.depletedtask:Cancel()
+            end
+
+            self.depletedtask = self.inst:DoTaskInTime(data.remainingtime, waitfullpressure, self)
+
+            if self.depletedfn then
+                self.depletedfn(self.inst)
+            end
+        end
+
+        local time = data.depleted and self.delayed * 0.01 or (self.delayed * 0.25) * 0.01
+
+        if data.remainingdelaytime then
+            time = data.remainingdelaytime
+        end
+
+        self.delay_left_time = time + GetTime
+
+        if self.pressuretask then
+            self.pressuretask:Cancel()
+        end
+
+        self.pressuretask = self.inst:DoTaskInTime(time, waitpressure, self)
+    end
 end
 
 

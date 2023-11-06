@@ -321,7 +321,7 @@ FOODTYPEGROUP =
 			--hop
 			"kyno_kokonut",
 			"kyno_coconut",
-		}
+		},
 
 		SMALL = 
 		{
