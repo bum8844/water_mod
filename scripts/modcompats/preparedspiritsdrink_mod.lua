@@ -188,6 +188,6 @@ local legion_drink = {
 	}
 }
 
-local mfp_drink = {}
+--[[local mfp_drink = {}]]
 
-return { sw_drink = sw_drink, coconut_drink = coconut_drink, cf_drink = cf_drink, unc_drink = unc_drink, wheat_drink = wheat_drink, legion_drink = legion_drink, mfp_drink = mfp_drink }
+return { sw_drink = sw_drink, coconut_drink = coconut_drink, cf_drink = cf_drink, unc_drink = unc_drink, wheat_drink = wheat_drink, legion_drink = legion_drink } --, mfp_drink = mfp_drink}

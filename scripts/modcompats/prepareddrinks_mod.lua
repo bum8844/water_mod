@@ -122,8 +122,70 @@ local unc_drink = {
 	},
 }
 
-local legion_drink = {}
+--[[local legion_drink = {
+	pineananas_juice = {
+		test = function(boilier, names, tags) return (names.pineananas or names.pineananas_cooked) and tags.fruit and Preference(names, tags) and notmeat(tags) and notname(names) and lessthing(names) and notages(tags)  end,
+		priority = 2,
+        health = 0,
+        hunger = 0,
+        sanity = 0,
+        thirst = 0,
+        perishtime = 0,
+		temperature = 0,
+		temperatureduration = 0,
+		cooktime = 0,
+		potlevel = "mid",
+		potlevel_bottle = "mid",
+	},
+}
 
-local mfp_drink = {}
+local mfp_drink = {
+	orange_juice = {
+	{
+		test = function(boilier, names, tags) return (names.mfp_orange or names.mfp_orange_cooked) and tags.fruit and Preference(names, tags) and not tags.veggie and notmeat(tags) and notname(names) and lessthing(names) and notages(tags) end,
+		priority = 2,
+        health = 0,
+        hunger = 0,
+        sanity = 0,
+        thirst = 0,
+        perishtime = 0,
+		temperature = 0,
+		temperatureduration = 0,
+		cooktime = 0,
+		potlevel = "mid",
+		potlevel_bottle = "mid",
+	},
 
-return { sw_drink = sw_drink, coconut_drink = coconut_drink, cf_drink = cf_drink, unc_drink = unc_drink, legion_drink = legion_drink, mfp_drink = mfp_drink }
+	},
+	strawberry_smoothie = {
+		test = function(boilier, names, tags) return (names.mfp_strawberry or names.mfp_strawberry_cooked) and tags.frozen and tags.fruit and Preference(names, tags) and not tags.veggie and notmeat(tags) and notname(names) and lessthing(names) and notages(tags) end,
+		priority = 2,
+		health = 0,
+        hunger = 0,
+        sanity = 0,
+        thirst = 0,
+        perishtime = 0,
+		temperature = 0,
+		temperatureduration = 0,
+		cooktime = 0,
+		potlevel = "mid",
+		potlevel_bottle = "mid",
+	},
+
+	strawberry_milk_smoothie = {
+		test = function(boilier, names, tags) return (names.mfp_strawberry or names.mfp_strawberry_cooked) and (tags.dairy or tags.milk) and tags.frozen and tags.sweetener end,
+		priority = 3,
+		health = 0,
+        hunger = 0,
+        sanity = 0,
+        thirst = 0,
+        perishtime = 0,
+		temperature = 0,
+		temperatureduration = 0,
+		cooktime = 0,
+		potlevel = "mid",
+		potlevel_bottle = "mid",
+	},
+}]]
+
+return { sw_drink = sw_drink, coconut_drink = coconut_drink, cf_drink = cf_drink, unc_drink = unc_drink }--, legion_drink = legion_drink, mfp_drink = mfp_drink }

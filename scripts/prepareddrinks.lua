@@ -586,6 +586,8 @@ for k,mod_id in ipairs(KnownModIndex:GetModsToLoad()) do
 		mfp = true
 		local mfp_drink = mod_drink.mfp_drink
 		for k, v in pairs(mfp_drink) do
+			drinks[k] = v
+		end
 	end]]
 	if mod_id == "workshop-1505270912" then
 		te = true
