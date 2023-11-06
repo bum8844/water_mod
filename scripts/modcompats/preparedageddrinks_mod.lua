@@ -149,7 +149,7 @@ local unc_drink = {
 
 local wheat_drink = {
 	wheat_beer = {
-		test = function(boilier, names, tags) return ((names.kyno_wheat or 0) + (names.kyno_wheat_cooked or 0) + (names.wheat or 0) + (names.wheat_cooked or 0) or (names.mfp_wheat or 0) or (names.mfp_wheat_cooked) >= 2) and tags.veggie and tags.veggie >= 1 and not tags.fruit and notmeat(tags) and notname(names) and lessthing(names) and notages(tags) end,
+		test = function(boilier, names, tags) return ((names.kyno_wheat or 0) + (names.kyno_wheat_cooked or 0) + (names.wheat or 0) + (names.wheat_cooked or 0) or (names.mfp_wheat or 0) or (names.mfp_wheat_cooked) >= 3) and tags.veggie and tags.veggie >= 1 and not tags.fruit and notmeat(tags) and notname(names) and lessthing(names) and notages(tags) end,
 		priority = 1,
 		health = (TUNING.HEALING_SMALL*2)/2,
 		hunger = TUNING.CALORIES_MEDSMALL/2,
@@ -170,7 +170,7 @@ local wheat_drink = {
 
 local legion_drink = {
 	pale_beer = {
-		test = function(boilier, names, tags) return names.squamousfruit and names.squamousfruit >= 2 and notmeat(tags) and notname(names) and lessthing(names) and notages(tags) end,
+		test = function(boilier, names, tags) return names.squamousfruit and names.squamousfruit >= 3 and notmeat(tags) and notname(names) and lessthing(names) and notages(tags) end,
 		priority = 1,
 		health = (TUNING.HEALING_SMALL*2)/2,
 		hunger = TUNING.CALORIES_MEDSMALL/2,
@@ -178,7 +178,7 @@ local legion_drink = {
 		thirst = TUNING.HYDRATION_MED,
 		tags = {"alcohol"},
 		perishtime = TUNING.PERISH_PRESERVED,
-		cooktime = (TUNING.KETTLE_VEGGIE + TUNING.BEER_WAIT),
+		cooktime = (TUNING.KETTLE_LUXURY_GOODS + TUNING.BEER_WAIT),
 		potlevel = "mid",
 		potlevel_bottle = "mid",
 		prefabs = { "alcoholdebuff","drunkarddebuff","resistancebuff" },
@@ -189,9 +189,64 @@ local legion_drink = {
                 eater.components.moisture:DoDelta(-100)
             end
 		end,
+	},
+	pineananas_wine = {
+		test = function(boilier, names, tags) return (names.pineananas or names.pineananas_cooked) and ((names.pineananas or 0) + (names.pineananas_cooked or 0) >= 3) and notmeat(tags) and notname(names) and lessthing(names) and notages(tags) end,
+		priority = 1,
+		health = 0,
+		hunger = 0,
+		sanity = 0,
+		thirst = 0,
+		tags = {"alcohol"},
+		perishtime = TUNING.PERISH_PRESERVED,
+		cooktime = (TUNING.KETTLE_VEGGIE + TUNING.BEER_WAIT),
+		potlevel = "mid",
+		potlevel_bottle = "mid",
+		prefabs = { "alcoholdebuff","drunkarddebuff","resistancebuff" },
+		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_NAG_AURA_RESIST,
+		oneatenfn = function(inst, eater)
+			alcohol(inst, eater)
+		end,
 	}
 }
 
---[[local mfp_drink = {}]]
+local mfp_drink = {
+	orange_wine = {
+		test = function(boilier, names, tags) return (names.mfp_orange or names.mfp_orange_cooked) and ((names.pineananas or 0) + (names.pineananas_cooked or 0) >= 3) and notmeat(tags) and notname(names) and lessthing(names) and notages(tags) end,
+		priority = 1,
+		health = 0,
+		hunger = 0,
+		sanity = 0,
+		thirst = 0,
+		tags = {"alcohol"},
+		perishtime = TUNING.PERISH_PRESERVED,
+		cooktime = (TUNING.KETTLE_FRUIT + TUNING.BEER_WAIT),
+		potlevel = "mid",
+		potlevel_bottle = "mid",
+		prefabs = { "alcoholdebuff","drunkarddebuff","resistancebuff" },
+		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_NAG_AURA_RESIST,
+		oneatenfn = function(inst, eater)
+			alcohol(inst, eater)
+		end,
+	},
+	strawberry_wine = {
+		test = function(boilier, names, tags) return (names.mfp_strawberry or names.mfp_strawberry_cooked) and ((names.pineananas or 0) + (names.pineananas_cooked or 0) >= 3) and notmeat(tags) and notname(names) and lessthing(names) and notages(tags) end,
+		priority = 1,
+		health = 0,
+		hunger = 0,
+		sanity = 0,
+		thirst = 0,
+		tags = {"alcohol"},
+		perishtime = TUNING.PERISH_PRESERVED,
+		cooktime = (TUNING.KETTLE_FRUIT + TUNING.BEER_WAIT),
+		potlevel = "mid",
+		potlevel_bottle = "mid",
+		prefabs = { "alcoholdebuff","drunkarddebuff","resistancebuff" },
+		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_NAG_AURA_RESIST,
+		oneatenfn = function(inst, eater)
+			alcohol(inst, eater)
+		end,
+	}
+}
 
 return { sw_drink = sw_drink, coconut_drink = coconut_drink, cf_drink = cf_drink, unc_drink = unc_drink , wheat_drink = wheat_drink, legion_drink = legion_drink } --, mfp_drink = mfp_drink}

@@ -122,7 +122,7 @@ local unc_drink = {
 	},
 }
 
---[[local legion_drink = {
+local legion_drink = {
 	pineananas_juice = {
 		test = function(boilier, names, tags) return (names.pineananas or names.pineananas_cooked) and tags.fruit and Preference(names, tags) and notmeat(tags) and notname(names) and lessthing(names) and notages(tags)  end,
 		priority = 2,
@@ -131,9 +131,7 @@ local unc_drink = {
         sanity = 0,
         thirst = 0,
         perishtime = 0,
-		temperature = 0,
-		temperatureduration = 0,
-		cooktime = 0,
+		cooktime = TUNING.KETTLE_FRUIT,
 		potlevel = "mid",
 		potlevel_bottle = "mid",
 	},
@@ -149,9 +147,7 @@ local mfp_drink = {
         sanity = 0,
         thirst = 0,
         perishtime = 0,
-		temperature = 0,
-		temperatureduration = 0,
-		cooktime = 0,
+		cooktime = TUNING.KETTLE_FRUIT,
 		potlevel = "mid",
 		potlevel_bottle = "mid",
 	},
@@ -165,9 +161,9 @@ local mfp_drink = {
         sanity = 0,
         thirst = 0,
         perishtime = 0,
-		temperature = 0,
-		temperatureduration = 0,
-		cooktime = 0,
+		temperature = TUNING.COLD_FOOD_CHILLING_THRESHOLD,
+		temperatureduration = TUNING.FOOD_TEMP_AVERAGE,
+		cooktime = TUNING.KETTLE_FRUIT,
 		potlevel = "mid",
 		potlevel_bottle = "mid",
 	},
@@ -180,12 +176,12 @@ local mfp_drink = {
         sanity = 0,
         thirst = 0,
         perishtime = 0,
-		temperature = 0,
-		temperatureduration = 0,
-		cooktime = 0,
+		temperature = TUNING.COLD_FOOD_BONUS_TEMP,
+		temperatureduration = TUNING.FOOD_TEMP_LONG,
+		cooktime = TUNING.KETTLE_FRUIT,
 		potlevel = "mid",
 		potlevel_bottle = "mid",
 	},
-}]]
+}
 
-return { sw_drink = sw_drink, coconut_drink = coconut_drink, cf_drink = cf_drink, unc_drink = unc_drink }--, legion_drink = legion_drink, mfp_drink = mfp_drink }
+return { sw_drink = sw_drink, coconut_drink = coconut_drink, cf_drink = cf_drink, unc_drink = unc_drink, legion_drink = legion_drink, mfp_drink = mfp_drink }

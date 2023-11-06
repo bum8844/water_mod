@@ -582,13 +582,13 @@ for k,mod_id in ipairs(KnownModIndex:GetModsToLoad()) do
 	if mod_id == "workshop-2334209327" then
 		hof = true
 	end
-	--[[if mod_id == "workshop-2762334054" then
+	if mod_id == "workshop-2762334054" then
 		mfp = true
 		local mfp_drink = mod_drink.mfp_drink
 		for k, v in pairs(mfp_drink) do
 			drinks[k] = v
 		end
-	end]]
+	end
 	if mod_id == "workshop-1505270912" then
 		te = true
 	end
@@ -607,12 +607,12 @@ for k,mod_id in ipairs(KnownModIndex:GetModsToLoad()) do
 			drinks[k] = v
 		end
 	end
-	--[[if mod_id == "workshop-1392778117" then -- legion
+	if mod_id == "workshop-1392778117" then -- legion
 		local legion_drink = mod_drink.legion_drink
 		for k,v in pairs(legion_drink) do
 			drinks[k] = v
 		end
-	end]]
+	end
 end
 
 if te or ia then

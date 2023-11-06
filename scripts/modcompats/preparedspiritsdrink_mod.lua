@@ -14,7 +14,7 @@ local sw_drink = {
 		potlevel = "high",
 		potlevel_bottle = "mid",
 		prefabs = { "alcoholdebuff","drunkarddebuff","immunebuff","wormlight_light" },
-		cooktime = (TUNING.KETTLE_FRUIT + TUNING.BEER_WAIT),
+		cooktime = (TUNING.KETTLE_LUXURY_GOODS + TUNING.BEER_WAIT),
 		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_INTOXICATION_GLOW,
 		oneatenfn = function(inst, eater)
 			spirits(inst, eater)
@@ -72,7 +72,7 @@ local cf_drink = {
         thirst = TUNING.HYDRATION_SMALL,
 		tags = {"alcohol","honeyed","spirits"},
 		perishtime = TUNING.PERISH_PRESERVED,
-		cooktime = (TUNING.KETTLE_FRUIT + TUNING.BEER_WAIT),
+		cooktime = (TUNING.KETTLE_LUXURY_GOODS + TUNING.BEER_WAIT),
 		potlevel = "high",
 		potlevel_bottle = "mid",
 		prefabs = { "alcoholdebuff","drunkarddebuff","immunebuff","buff_bloomyhoney" },
@@ -131,7 +131,7 @@ local unc_drink = {
         thirst = TUNING.HYDRATION_MED,
 		tags = {"alcohol","spirits"},
 		perishtime = TUNING.PERISH_SUPERSLOW,
-		cooktime = (TUNING.KETTLE_VEGGIE + TUNING.BEER_WAIT),
+		cooktime = (TUNING.KETTLE_LUXURY_GOODS + TUNING.BEER_WAIT),
 		potlevel = "mid",
 		potlevel_bottle = "mid",
 		prefabs = { "alcoholdebuff","drunkarddebuff","immunebuff" },
@@ -176,7 +176,7 @@ local legion_drink = {
         thirst = TUNING.HYDRATION_MED,
 		tags = {"alcohol","spirits"},
 		perishtime = TUNING.PERISH_SUPERSLOW,
-		cooktime = (TUNING.KETTLE_VEGGIE + TUNING.BEER_WAIT),
+		cooktime = (TUNING.KETTLE_LUXURY_GOODS + TUNING.BEER_WAIT),
 		potlevel = "mid",
 		potlevel_bottle = "mid",
 		prefabs = { "alcoholdebuff","drunkarddebuff","immunebuff" },
@@ -185,9 +185,64 @@ local legion_drink = {
 			spirits(inst, eater)
 			eater:AddDebuff("buff_moistureimmunity", "buff_moistureimmunity")
 		end,
-	}
+	},
+	pineananas_brandy = {
+		test = function(boilier, names, tags) return names.pineananas_wine and not tags.additives end,
+		priority = 2,
+        health = 0,
+        hunger = 0,
+        sanity = 0,
+        thirst = 0,
+		tags = {"alcohol","spirits"},
+		perishtime = TUNING.PERISH_SUPERSLOW,
+		cooktime = (TUNING.KETTLE_FRUIT + TUNING.BEER_WAIT),
+		potlevel = "mid",
+		potlevel_bottle = "mid",
+		prefabs = { "alcoholdebuff","drunkarddebuff","immunebuff" },
+		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_INTOXICATION,
+		oneatenfn = function(inst, eater)
+			spirits(inst, eater)
+		end,
+	},
 }
 
---[[local mfp_drink = {}]]
+local mfp_drink = {
+	orange_brandy = {
+		test = function(boilier, names, tags) return names.orange_wine and not tags.additives end,
+		priority = 2,
+        health = 0,
+        hunger = 0,
+        sanity = 0,
+        thirst = 0,
+		tags = {"alcohol","spirits"},
+		perishtime = TUNING.PERISH_SUPERSLOW,
+		cooktime = (TUNING.KETTLE_FRUIT + TUNING.BEER_WAIT),
+		potlevel = "mid",
+		potlevel_bottle = "mid",
+		prefabs = { "alcoholdebuff","drunkarddebuff","immunebuff" },
+		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_INTOXICATION,
+		oneatenfn = function(inst, eater)
+			spirits(inst, eater)0
+		end,
+	},
+	strawberry_brandy = {
+		test = function(boilier, names, tags) return names.strawberry_wine and not tags.additives end,
+		priority = 2,
+        health = 0,
+        hunger = 0,
+        sanity = 0,
+        thirst = 0,
+		tags = {"alcohol","spirits"},
+		perishtime = TUNING.PERISH_SUPERSLOW,
+		cooktime = (TUNING.KETTLE_FRUIT + TUNING.BEER_WAIT),
+		potlevel = "mid",
+		potlevel_bottle = "mid",
+		prefabs = { "alcoholdebuff","drunkarddebuff","immunebuff" },
+		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_INTOXICATION,
+		oneatenfn = function(inst, eater)
+			spirits(inst, eater)0
+		end,
+	},
+}
 
-return { sw_drink = sw_drink, coconut_drink = coconut_drink, cf_drink = cf_drink, unc_drink = unc_drink, wheat_drink = wheat_drink, legion_drink = legion_drink } --, mfp_drink = mfp_drink}
+return { sw_drink = sw_drink, coconut_drink = coconut_drink, cf_drink = cf_drink, unc_drink = unc_drink, wheat_drink = wheat_drink, legion_drink = legion_drink, mfp_drink = mfp_drink}
