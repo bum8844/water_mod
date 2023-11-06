@@ -43,7 +43,7 @@ local drinks =
 		sanity = (TUNING.SANITY_SUPERTINY*3)/4,
 		thirst = TUNING.HYDRATION_HUGE,
 		perishtime = TUNING.PERISH_PRESERVED,
-		cooktime = (TUNING.KETTLE_DECORATION + TUNING.SODA_WAIT),
+		cooktime = (TUNING.KETTLE_FRUIT + TUNING.SODA_WAIT),
 		potlevel = "mid",
 		potlevel_bottle = "mid",
 	},
@@ -75,7 +75,7 @@ local drinks =
 	cola =
 	{
 		test = function(boilier, names, tags) return (( names.caffeinberry_bean_cooked or 0 ) + ( names.kyno_coffeebeans_cooked or 0 ) + ( names.mfp_coffeecherry_cooked or 0 ) >= 1) and tags.ferment and tags.ferment >= 1 and names.royal_jelly and names.royal_jelly >= 1 and notname(names) end,
-		priority = 4,
+		priority = 5,
 		health = (TUNING.HEALING_MED/2)/4,
 		hunger = TUNING.CALORIES_MEDSMALL/4,
 		sanity = TUNING.SANITY_LARGE/4,
@@ -96,7 +96,7 @@ local drinks =
 	colaquantum =
 	{
 		test = function(boilier, names, tags) return quantum_calc(names, tags) and (( names.caffeinberry_bean_cooked or 0 ) + ( names.kyno_coffeebeans_cooked or 0 ) + ( names.mfp_coffeecherry_cooked or 0) == 1) and tags.ferment and tags.ferment == 1 end,
-		priority = 5,
+		priority = 6,
 		health = TUNING.HEALING_SUPERHUGE,
 		hunger = TUNING.CALORIES_HUGE,
 		sanity = TUNING.SANITY_HUGE*4,

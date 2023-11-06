@@ -47,7 +47,7 @@ local coconut_drink = {
 local cf_drink = {
 	cherry_doctor_cola = {
 		test = function(boilier, names, tags) return ( names.caffeinberry_bean_cooked or names.kyno_coffeebeans_cooked or names.mfp_coffeecherry_cooked ) and (names.cherry or names.cherry_cooked) and tags.ferment and names.royal_jelly end,
-		priority = 5,
+		priority = 6,
 		health = (TUNING.HEALING_MED/2)/2,
 		hunger = TUNING.CALORIES_MEDSMALL/2,
 		sanity = TUNING.SANITY_LARGE/2,
@@ -190,63 +190,75 @@ local legion_drink = {
             end
 		end,
 	},
-	pineananas_wine = {
-		test = function(boilier, names, tags) return (names.pineananas or names.pineananas_cooked) and ((names.pineananas or 0) + (names.pineananas_cooked or 0) >= 3) and notmeat(tags) and notname(names) and lessthing(names) and notages(tags) end,
-		priority = 1,
-		health = 0,
-		hunger = 0,
-		sanity = 0,
-		thirst = 0,
-		tags = {"alcohol"},
+	pineananassoda =
+	{
+		test = function(boilier, names, tags) return tags.ferment and tags.ferment >= 1 and names.royal_jelly and names.royal_jelly >= 1 and (names.pineananas or names.pineananas_cooked) and ((names.pineananas or 0) + (names.pineananas_cooked or 0) == 2) and notname(names) and lessthing(names) end,
+		priority = 4,
+		health = TUNING.HEALING_MED/2,
+		hunger = TUNING.CALORIES_MEDSMALL/2,
+		sanity = TUNING.SANITY_MED/2,
+		thirst = TUNING.HYDRATION_MOREHUGE,
 		perishtime = TUNING.PERISH_PRESERVED,
-		cooktime = (TUNING.KETTLE_VEGGIE + TUNING.BEER_WAIT),
+		cooktime = (TUNING.KETTLE_LUXURY_GOODS + TUNING.SODA_WAIT),
 		potlevel = "mid",
 		potlevel_bottle = "mid",
-		prefabs = { "alcoholdebuff","drunkarddebuff","resistancebuff" },
-		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_NAG_AURA_RESIST,
+		prefabs = { "healthregenbuff","honeyed" },
+		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_HEALTH_REGEN,
 		oneatenfn = function(inst, eater)
-			alcohol(inst, eater)
+			if not eater.components.health or eater.components.health:IsDead() or eater:HasTag("playerghost") then
+				return
+            else
+				eater:AddDebuff("healthregenbuff", "healthregenbuff")
+			end
 		end,
-	}
+	},
 }
 
 local mfp_drink = {
-	orange_wine = {
-		test = function(boilier, names, tags) return (names.mfp_orange or names.mfp_orange_cooked) and ((names.pineananas or 0) + (names.pineananas_cooked or 0) >= 3) and notmeat(tags) and notname(names) and lessthing(names) and notages(tags) end,
-		priority = 1,
-		health = 0,
-		hunger = 0,
-		sanity = 0,
-		thirst = 0,
-		tags = {"alcohol"},
+	orangesoda =
+	{
+		test = function(boilier, names, tags) return tags.ferment and tags.ferment >= 1 and names.royal_jelly and names.royal_jelly >= 1 and (names.mfp_orange or names.mfp_orange_cooked) and ((names.mfp_orange or 0) + (names.mfp_orange_cooked or 0) == 2) and notname(names) and lessthing(names) end,
+		priority = 4,
+		health = TUNING.HEALING_MED/2,
+		hunger = TUNING.CALORIES_MEDSMALL/2,
+		sanity = TUNING.SANITY_MED/2,
+		thirst = TUNING.HYDRATION_MOREHUGE,
 		perishtime = TUNING.PERISH_PRESERVED,
-		cooktime = (TUNING.KETTLE_FRUIT + TUNING.BEER_WAIT),
+		cooktime = (TUNING.KETTLE_LUXURY_GOODS + TUNING.SODA_WAIT),
 		potlevel = "mid",
 		potlevel_bottle = "mid",
-		prefabs = { "alcoholdebuff","drunkarddebuff","resistancebuff" },
-		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_NAG_AURA_RESIST,
+		prefabs = { "healthregenbuff","honeyed" },
+		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_HEALTH_REGEN,
 		oneatenfn = function(inst, eater)
-			alcohol(inst, eater)
+			if not eater.components.health or eater.components.health:IsDead() or eater:HasTag("playerghost") then
+				return
+            else
+				eater:AddDebuff("healthregenbuff", "healthregenbuff")
+			end
 		end,
 	},
-	strawberry_wine = {
-		test = function(boilier, names, tags) return (names.mfp_strawberry or names.mfp_strawberry_cooked) and ((names.pineananas or 0) + (names.pineananas_cooked or 0) >= 3) and notmeat(tags) and notname(names) and lessthing(names) and notages(tags) end,
-		priority = 1,
-		health = 0,
-		hunger = 0,
-		sanity = 0,
-		thirst = 0,
-		tags = {"alcohol"},
+	strawberrysoda =
+	{
+		test = function(boilier, names, tags) return tags.ferment and tags.ferment >= 1 and names.royal_jelly and names.royal_jelly >= 1 and (names.mfp_strawberry or names.mfp_strawberry_cooked) and ((names.mfp_strawberry or 0) + (names.mfp_strawberry_cooked or 0) == 2) and notname(names) and lessthing(names) end,
+		priority = 4,
+		health = TUNING.HEALING_MED/3,
+		hunger = TUNING.CALORIES_MEDSMALL/3,
+		sanity = TUNING.SANITY_MED/3,
+		thirst = TUNING.HYDRATION_MOREHUGE,
 		perishtime = TUNING.PERISH_PRESERVED,
-		cooktime = (TUNING.KETTLE_FRUIT + TUNING.BEER_WAIT),
+		cooktime = (TUNING.KETTLE_LUXURY_GOODS + TUNING.SODA_WAIT),
 		potlevel = "mid",
 		potlevel_bottle = "mid",
-		prefabs = { "alcoholdebuff","drunkarddebuff","resistancebuff" },
-		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_NAG_AURA_RESIST,
+		prefabs = { "healthregenbuff","honeyed" },
+		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_HEALTH_REGEN,
 		oneatenfn = function(inst, eater)
-			alcohol(inst, eater)
+			if not eater.components.health or eater.components.health:IsDead() or eater:HasTag("playerghost") then
+				return
+            else
+				eater:AddDebuff("healthregenbuff", "healthregenbuff")
+			end
 		end,
-	}
+	},
 }
 
 return { sw_drink = sw_drink, coconut_drink = coconut_drink, cf_drink = cf_drink, unc_drink = unc_drink , wheat_drink = wheat_drink, legion_drink = legion_drink } --, mfp_drink = mfp_drink}
