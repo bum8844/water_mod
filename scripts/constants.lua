@@ -314,6 +314,15 @@ FOODTYPEGROUP =
 			"mfp_syrup",
 		},
 
+		SMALLTINY = {
+			--mod_ingredients
+			"coconut",
+			"kokonut",
+			--hop
+			"kyno_kokonut",
+			"kyno_coconut",
+		}
+
 		SMALL = 
 		{
 			"goatmilk",
