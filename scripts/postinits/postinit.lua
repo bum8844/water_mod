@@ -14,7 +14,6 @@ local postinits =
 		"retrofitcavemap_anr",
 		"retrofitforestmap_anr",
 		"container_replica",
-		"machine",
 	},
 
 	prefabs =

@@ -182,11 +182,16 @@ local legion_drink = {
 		potlevel = "mid",
 		potlevel_bottle = "mid",
 		prefabs = { "alcoholdebuff","drunkarddebuff","resistancebuff" },
-		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_NAG_AURA_RESIST,
+		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_NAG_AURA_RESIST_DRY,
 		oneatenfn = function(inst, eater)
 			alcohol(inst, eater)
+            if eater.components.moisture ~= nil then
+                eater.components.moisture:DoDelta(-100)
+            end
 		end,
 	}
 }
 
-return { sw_drink = sw_drink, coconut_drink = coconut_drink, cf_drink = cf_drink, unc_drink = unc_drink , wheat_drink = wheat_drink, legion_drink = legion_drink }
+local mfp_drink = {}
+
+return { sw_drink = sw_drink, coconut_drink = coconut_drink, cf_drink = cf_drink, unc_drink = unc_drink , wheat_drink = wheat_drink, legion_drink = legion_drink, mfp_drink = mfp_drink }

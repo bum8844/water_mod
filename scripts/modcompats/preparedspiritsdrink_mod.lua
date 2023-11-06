@@ -180,11 +180,14 @@ local legion_drink = {
 		potlevel = "mid",
 		potlevel_bottle = "mid",
 		prefabs = { "alcoholdebuff","drunkarddebuff","immunebuff" },
-		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_INTOXICATION,
+		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_INTOXICATION_DRY,
 		oneatenfn = function(inst, eater)
 			spirits(inst, eater)
+			eater:AddDebuff("buff_moistureimmunity", "buff_moistureimmunity")
 		end,
 	}
 }
 
-return { sw_drink = sw_drink, coconut_drink = coconut_drink, cf_drink = cf_drink, unc_drink = unc_drink, wheat_drink = wheat_drink, legion_drink = legion_drink }
+local mfp_drink = {}
+
+return { sw_drink = sw_drink, coconut_drink = coconut_drink, cf_drink = cf_drink, unc_drink = unc_drink, wheat_drink = wheat_drink, legion_drink = legion_drink, mfp_drink = mfp_drink }

@@ -55,6 +55,7 @@ AddIngredientValues({"ruincacao_bean_cooked"}, {decoration = 1})
 AddIngredientValues({"beefalo_milk"}, {milk=1, dairy=.5})
 AddIngredientValues({"goatmilk"}, {milk=1, dairy=1})
 AddIngredientValues({"coral_brain"}, {meat=1})
+AddIngredientValues({"squamousfruit"}, {veggie=1, monster=1})
 
 AddReplicableComponent("thirst")
 AddReplicableComponent("waterlevel")
