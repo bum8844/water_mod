@@ -124,6 +124,10 @@ return {
 		CHERRY_ROSEBERRIES_TEA = "장미향이 강렬해.",
 		CHERRY_HONEY_TEA = "은은하게 꽃향기가 나네.",
 		SWEET_RICE_DRINK = "이런 음료도 있었어?",
+		PINEANANAS_JUICE = "", -- 레기온 파인애플 주스
+		ORANGE_JUICE = "", -- 모어 푸드 팩 오랜지 주스
+		STRAWBERRY_SMOOTHIE = "", -- 모어 푸드 팩 딸기 스무디
+		STRAWBERRY_MILK_SMOOTHIE = "", -- 모어 푸드 팩 딸기 스무디 라떼
 
 		-- 양조기 음료
 
@@ -154,6 +158,9 @@ return {
 		--콜라보 소다
 
 		CHERRY_DOCTOR_COLA = "의사가 만들었다는 거는 거짓말이야.",
+		PINEANANASSODA = "" -- 탄산 파인애플(오란씨)
+		ORANGESODA = "" -- 탄산 오랜지(환타)
+		STRAWBERRYSODA = "" -- 탄산 딸기(웰치스 딸기)
 
 		--콜라보 양조주
 
