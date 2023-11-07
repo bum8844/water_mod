@@ -161,9 +161,9 @@ return {
 		-- 콜라보 소다
 
 		CHERRY_DOCTOR_COLA = "", --체리숲 닥터 페퍼(닥터 체리)
-		PINEANANASSODA = "" -- 탄산 파인애플(오란씨)
-		ORANGESODA = "" -- 탄산 오랜지(환타)
-		STRAWBERRYSODA = "" -- 탄산 딸기(웰치스 딸기)
+		PINEANANASSODA = "", -- 탄산 파인애플(오란씨)
+		ORANGESODA = "", -- 탄산 오랜지(환타)
+		STRAWBERRYSODA = "", -- 탄산 딸기(웰치스 딸기)
 
 		--콜라보 양조주
 
