@@ -124,6 +124,10 @@ return {
 		CHERRY_ROSEBERRIES_TEA = "장미 향 유체", --체리숲 로즈힙 차
 		CHERRY_HONEY_TEA = "당도 측정 시도: 실패", --체리숲 벚꽃꿀 차
 		SWEET_RICE_DRINK = "감미료가 없음에도 단맛이 남", -- 비타협 식혜
+		PINEANANAS_JUICE = "", -- 레기온 파인애플 주스
+		ORANGE_JUICE = "", -- 모어 푸드 팩 오랜지 주스
+		STRAWBERRY_SMOOTHIE = "", -- 모어 푸드 팩 딸기 스무디
+		STRAWBERRY_MILK_SMOOTHIE = "", -- 모어 푸드 팩 딸기 스무디 라떼
 
 		--양조기 음료
 
@@ -154,6 +158,9 @@ return {
 		-- 콜라보 소다
 
 		CHERRY_DOCTOR_COLA = "누가 이런 혼종을 만들었는가", --체리숲 닥터 페퍼(닥터 체리)
+		PINEANANASSODA = "" -- 탄산 파인애플(오란씨)
+		ORANGESODA = "" -- 탄산 오랜지(환타)
+		STRAWBERRYSODA = "" -- 탄산 딸기(웰치스 딸기)
 
 		--콜라보 양조주
 
