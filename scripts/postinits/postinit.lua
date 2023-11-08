@@ -13,7 +13,6 @@ local postinits =
 		"wisecracker",
 		"retrofitcavemap_anr",
 		"retrofitforestmap_anr",
-		"container_replica",
 	},
 
 	prefabs =
