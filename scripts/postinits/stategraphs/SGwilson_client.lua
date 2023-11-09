@@ -113,7 +113,7 @@ AddStategraphActionHandler("wilson_client", ActionHandler(ACTIONS.TAKEWATER, "do
 AddStategraphActionHandler("wilson_client", ActionHandler(ACTIONS.TAKEWATER_OCEAN, "dolongaction"))
 AddStategraphActionHandler("wilson_client", ActionHandler(ACTIONS.MILKINGTOOL, "dolongaction"))
 AddStategraphActionHandler("wilson_client", ActionHandler(ACTIONS.UPGRADE_TILEARRIVE, "dolongaction"))
-AddStategraphActionHandler("wilson_client", ActionHandler(ACTIONS.DRINK,
+--[[AddStategraphActionHandler("wilson_client", ActionHandler(ACTIONS.DRINK,
         function(inst, action)
             if inst.sg:HasStateTag("busy") or inst:HasTag("busy") then
                 return
@@ -130,7 +130,7 @@ AddStategraphActionHandler("wilson_client", ActionHandler(ACTIONS.DRINK,
             end
         end
     )
-)
+)]]
 
 AddStategraphActionHandler("wilson_client", ActionHandler(ACTIONS.TURNON_TILEARRIVE, "give"))
 AddStategraphActionHandler("wilson_client", ActionHandler(ACTIONS.TURNON_TILEARRIVE, "give"))

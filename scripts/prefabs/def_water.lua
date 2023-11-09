@@ -182,9 +182,6 @@ end
 
 local function common_liquid(inst)
 
-    inst:AddComponent("edible")
-    inst.components.edible.foodtype = FOODTYPE.GOODIES
-
     --기온이 어는점 이하이면 잠시 유예시간을 주도록 설정
     inst:AddComponent("temperature")
     inst.components.temperature.current = math.max(TheWorld.state.temperature, TUNING.WATER_INITTEMP)
@@ -227,8 +224,6 @@ end
 
 local function saltywater(inst)
     --소금물은 상당히 이레귤러라서 직접 넣어줬습니다
-    inst:AddComponent("edible")
-    inst.components.edible.foodtype = FOODTYPE.GOODIES
     inst.components.edible.healthvalue = -TUNING.HEALING_TINY
     inst.components.edible.hungervalue = -TUNING.DRINK_CALORIES
     inst.components.edible.sanityvalue = -TUNING.SANITY_MEDLARGE
@@ -273,6 +268,9 @@ local function MakeWaterItem(name, masterfn, tags, _prefabs)
         inst.entity:AddNetwork()
 
         MakeInventoryPhysics(inst)
+
+        inst:AddComponent("edible")
+        inst.components.edible.foodtype = FOODTYPE.GOODIES
 
         inst.AnimState:SetBank("kettle_drink")
         inst.AnimState:SetBuild("kettle_drink")
@@ -323,8 +321,8 @@ local function MakeWaterItem(name, masterfn, tags, _prefabs)
     return Prefab(name, fn, assets, prefabs)
 end
 
-return MakeWaterItem("water_clean", cleanwater, {"show_spoilage", "icebox_valid","clean","farm_water","pre-prepareddrink","potion","drink"}, prefabs.water_clean),
-    MakeWaterItem("water_dirty", dirtywater, {"show_spoiled", "icebox_valid","dirty","farm_water","drink"}),
-    MakeWaterItem("water_salty", saltywater, {"salty","drink"}),
+return MakeWaterItem("water_clean", cleanwater, {"drink","show_spoilage", "icebox_valid","clean","farm_water","pre-prepareddrink","potion"}, prefabs.water_clean),
+    MakeWaterItem("water_dirty", dirtywater, {"drink","show_spoiled", "icebox_valid","dirty","farm_water"}),
+    MakeWaterItem("water_salty", saltywater, {"drink","salty"}),
     MakeWaterItem("water_clean_ice", cleanice, {"show_spoilage", "icebox_valid","clean","frozen","unwrappable"}, prefabs.water_clean_ice),
     MakeWaterItem("water_dirty_ice", dirtyice, {"show_spoiled", "icebox_valid","dirty","frozen","unwrappable"}, prefabs.water_dirty_ice)

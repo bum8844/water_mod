@@ -159,7 +159,6 @@ ACTIONS.FEEDPLAYER.fn = function(act)
             not (act.invobject:HasTag("badfood") or
                 act.invobject:HasTag("unsafefood") or
                 act.invobject:HasTag("spoiled"))) then
-
             if act.target.components.eater:PrefersToEat(act.invobject) then
                 local food = act.invobject.components.inventoryitem:RemoveFromOwner()
                 if food ~= nil then
@@ -183,10 +182,10 @@ ACTIONS.FEEDPLAYER.fn = function(act)
     end
 end
 
-local DRINK = AddAction("DRINK", STRINGS.ACTIONS.DRINK, ACTIONS.EAT.fn)
+--[[local DRINK = AddAction("DRINK", STRINGS.ACTIONS.DRINK, ACTIONS.EAT.fn)
 DRINK.mount_valid = true
 --bum:소숫점으로 해서 웜우드가 썩은 음료로도 치료 할 수 있개 되었습니다.
-DRINK.priority = 0.5
+DRINK.priority = 0.5]]
 
 local TURNON_TILEARRIVE = AddAction("TURNON_TILEARRIVE",STRINGS.ACTIONS.TURNON,function(act)
     local tar = act.target or act.invobject
@@ -195,6 +194,11 @@ local TURNON_TILEARRIVE = AddAction("TURNON_TILEARRIVE",STRINGS.ACTIONS.TURNON,f
         return true
     end
 end)
+
+local eat_stroverride = ACTIONS.EAT.stroverridefn or function(act) return end
+ACTIONS.EAT.stroverridefn = function(act)
+    return act.invobject:HasTag("drink") and STRINGS.ACTIONS.DRINK or nil
+end
 
 TURNON_TILEARRIVE.priority = 4
 TURNON_TILEARRIVE.theme_music = "farming"

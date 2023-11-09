@@ -133,7 +133,7 @@ for _, v in pairs(FOODTYPEGROUP.SOUP_AND_STEW) do
 	AddPrefabPostInit(v.."_spice_caffeinpepper", SetDrinkableAction)
 	AddPrefabPostInit(v.."_spice_chili", SetDrinkableAction)
 	AddPrefabPostInit(v.."_spice_salt", SetDrinkableAction)
-	AddPrefabPostInit(v.."_spice_suger", SetDrinkableAction)
+	AddPrefabPostInit(v.."_spice_sugar", SetDrinkableAction)
 	AddPrefabPostInit(v.."_spice_garlic", SetDrinkableAction)
 end
 
@@ -191,7 +191,7 @@ for k, v in pairs(FOODTYPEGROUP.DRINKABLE) do
 		AddPrefabPostInit(u.."_spice_salt", function(inst)
 			SetDrinkable(inst, k)
 		end)
-		AddPrefabPostInit(u.."_spice_suger", function(inst)
+		AddPrefabPostInit(u.."_spice_sugar", function(inst)
 			SetDrinkable(inst, k)
 		end)
 		AddPrefabPostInit(u.."_spice_garlic", function(inst)
@@ -214,7 +214,7 @@ for k, v in pairs(FOODTYPEGROUP.DRINKABLE_ALCOHO) do
 		AddPrefabPostInit(u.."_spice_salt", function(inst)
 			SetAlcohlDrink(inst, k)
 		end)
-		AddPrefabPostInit(u.."_spice_suger", function(inst)
+		AddPrefabPostInit(u.."_spice_sugar", function(inst)
 			SetAlcohlDrink(inst, k)
 		end)
 		AddPrefabPostInit(u.."_spice_garlic", function(inst)

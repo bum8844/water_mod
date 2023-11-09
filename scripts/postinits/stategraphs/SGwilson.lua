@@ -350,7 +350,7 @@ AddStategraphActionHandler("wilson", ActionHandler(ACTIONS.TAKEWATER, "dolongact
 AddStategraphActionHandler("wilson", ActionHandler(ACTIONS.TAKEWATER_OCEAN, "dolongaction"))
 AddStategraphActionHandler("wilson", ActionHandler(ACTIONS.MILKINGTOOL, "dolongaction"))
 AddStategraphActionHandler("wilson", ActionHandler(ACTIONS.UPGRADE_TILEARRIVE, "dolongaction"))
-AddStategraphActionHandler("wilson", ActionHandler(ACTIONS.DRINK,
+--[[AddStategraphActionHandler("wilson", ActionHandler(ACTIONS.DRINK,
         function(inst, action)
             if inst.sg:HasStateTag("busy") then
                 return
@@ -369,7 +369,7 @@ AddStategraphActionHandler("wilson", ActionHandler(ACTIONS.DRINK,
             return (obj.components.edible.foodtype == FOODTYPE.MEAT and not obj:HasTag("alcohol") and "drinkstew") or "drink"
         end
     )
-)
+)]]
 AddStategraphActionHandler("wilson", ActionHandler(ACTIONS.TURNON_TILEARRIVE, "give"))
 AddStategraphActionHandler("wilson", ActionHandler(ACTIONS.BREWING,
         function(inst, action)

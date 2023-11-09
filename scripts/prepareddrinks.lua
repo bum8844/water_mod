@@ -496,11 +496,11 @@ local drinks =
 	},
 	-- 달꽃차
 	moon_blossom_tea = {
-		test = function(boilier, names, tags) return IsFlower_Moon(names, tags) and notmeat(tags) and notname(names) and lessthing(names) and notages(tags) end
+		test = function(boilier, names, tags) return IsFlower_Moon(names, tags) and notmeat(tags) and notname(names) and lessthing(names) and notages(tags) end,
 		priority = 1,
 		health = TUNING.HEALING_TINY*2,
 		hunger = 0,
-		sanity = TTUNING.SANITY_HUGE/4, 
+		sanity = TUNING.SANITY_HUGE/4, 
 		thirst = TUNING.HYDRATION_MEDSMALL,
 		perishtime = TUNING.PERISH_MED,
 		cooktime = TUNING.KETTLE_LUXURY_GOODS,
@@ -514,7 +514,7 @@ local drinks =
         end,
 		potlevel = "mid",
 		potlevel_bottle = "mid",
-	}
+	},
 	-- 특수차
 	butterbeer = {
 		test = function(boilier, names, tags) return tags.fat and tags.dairy and tags.sweetener and notmeat(tags) and notname(names) and lessthing(names) end,

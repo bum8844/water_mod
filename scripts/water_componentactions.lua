@@ -68,14 +68,14 @@ local USEITEM =
         end
     end,
 
-    edible = function(inst, doer, target, actions, right)
+    --[[edible = function(inst, doer, target, actions, right)
         if target:HasTag("player") then
             if inst:HasTag("drink") then
                 table.insert(actions, ACTIONS.FEEDPLAYER)
                 return
             end
         end
-    end,
+    end,]]
 
     upgrader = function(inst, doer, target, actions)
         if inst:HasTag("tile_deploy") then
@@ -146,7 +146,7 @@ local INVENTORY = {
         end
     end,
 
-    edible = function(inst, doer, actions, right)
+    --[[edible = function(inst, doer, actions, right)
         if inst:HasTag("drink") or inst:HasTag("def_water") then
             if (right or inst.replica.equippable == nil) and
                 not (doer.replica.inventory:GetActiveItem() == inst and
@@ -170,7 +170,7 @@ local INVENTORY = {
                 end
             end
         end
-    end,
+    end,]]
 
     boilbook = function(inst, doer, actions, right)
         table.insert(actions, ACTIONS.READBOILBOOK)
