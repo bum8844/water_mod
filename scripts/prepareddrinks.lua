@@ -494,6 +494,27 @@ local drinks =
 		potlevel = "mid",
 		potlevel_bottle = "mid",
 	},
+	-- 달꽃차
+	moon_blossom_tea = {
+		test = function(boilier, names, tags) return IsFlower_Moon(names, tags) and notmeat(tags) and notname(names) and lessthing(names) and notages(tags) end
+		priority = 1,
+		health = TUNING.HEALING_TINY*2,
+		hunger = 0,
+		sanity = TTUNING.SANITY_HUGE/4, 
+		thirst = TUNING.HYDRATION_MEDSMALL,
+		perishtime = TUNING.PERISH_MED,
+		cooktime = TUNING.KETTLE_LUXURY_GOODS,
+		temperature = TUNING.HOT_FOOD_BONUS_TEMP,
+		temperatureduration = TUNING.FOOD_TEMP_BRIEF,
+	    prefabs = { "buff_moistureimmunity" },
+		tags = {"honeyed"},
+        oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_HOT_SANITY_REGEN,
+        oneatenfn = function(inst, eater)
+			eater:AddDebuff("sweettea_buff", "sweettea_buff")
+        end,
+		potlevel = "mid",
+		potlevel_bottle = "mid",
+	}
 	-- 특수차
 	butterbeer = {
 		test = function(boilier, names, tags) return tags.fat and tags.dairy and tags.sweetener and notmeat(tags) and notname(names) and lessthing(names) end,

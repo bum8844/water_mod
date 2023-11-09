@@ -1,6 +1,3 @@
---Merge this template to your speech table
---to add speech support for your own character mods.
-
 return {
 	ACTIONFAIL =
 	{
@@ -106,6 +103,7 @@ return {
 		CACTUSFLOWER_TEA = "", --선인꽃차
 		LOTUSTEA = "", --연꽃차
 		SUSHIBISCUS = "", -- 자살차
+		MOON_BLOSSOM_TEA = "", --달꽃차
 
 		CAFFEINBERRY_JUICE = "", -- 블랙 커피
         TOFFEE_LATTE = "", --토피넛 라떼
@@ -341,3 +339,5 @@ return {
 		},	
 	},
 }
+--Merge this template to your speech table
+--to add speech support for your own character mods.

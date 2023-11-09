@@ -103,6 +103,7 @@ return {
 		CACTUSFLOWER_TEA = "A tea from a prickly plant.",
 		LOTUSTEA = "It would be nice to have some biscuits.",
 		SUSHIBISCUS = "This ought to be a scientifc impossibili-tea.",
+		MOON_BLOSSOM_TEA = "향 만 맡아도 눈이 확 뜨이네.",
 		
 		CAFFEINBERRY_JUICE = "Smells energizing!",
 		TOFFEE_LATTE = "Is it mixed coffee with nuts?",
@@ -118,16 +119,16 @@ return {
 
 		-- Mod Collaboration kettle drinks
 
-		COCONUT_JUICE = "Fruits Natas de Coco",
-		RAINBOW_SHAKE = "Rainbow Sxhake",
-		QUARTZ_SHAKE = "Quartz Shake",
-		CHERRY_ROSEBERRIES_TEA = "Rose Hips Tea",
-		CHERRY_HONEY_TEA = "Bloomy Honey Tea",
-		SWEET_RICE_DRINK = "Sikhye",
-		PINEANANAS_JUICE = "", -- 레기온 파인애플 주스
-		ORANGE_JUICE = "", -- 모어 푸드 팩 오랜지 주스
-		STRAWBERRY_SMOOTHIE = "", -- 모어 푸드 팩 딸기 스무디
-		STRAWBERRY_MILK_SMOOTHIE = "", -- 모어 푸드 팩 딸기 스무디 라떼
+		COCONUT_JUICE = "몰캉몰캉한 젤리가 보이는데?",
+		RAINBOW_SHAKE = "다행히 별 맛이 안나.",
+		QUARTZ_SHAKE = "생선 비린내가 안 나기를.",
+		CHERRY_ROSEBERRIES_TEA = "장미향이 강렬해.",
+		CHERRY_HONEY_TEA = "은은하게 꽃향기가 나네.",
+		SWEET_RICE_DRINK = "이런 음료도 있었어?",
+		PINEANANAS_JUICE = "과피가 내 입 천장을 긁을 일은 더 없겠어.", -- Legiones Pinapple Juice
+		ORANGE_JUICE = "오렌지 쥬스를 가져 와서 기뻐.", -- More Foods Pack Oragne Juic
+		STRAWBERRY_SMOOTHIE = "빨대는 어디 있지?", -- More Foods Pack Strawberry Smoothie
+		STRAWBERRY_MILK_SMOOTHIE = "매우 부드럽고 상큼해.", -- More Foods Pack Strawverry Smoothie Latte
 
 		-- brewery drinks
 
@@ -158,9 +159,9 @@ return {
 		-- Mod Collaboration brewery soda	
 
 		CHERRY_DOCTOR_COLA = "A doctor didn't make this!",
-		PINEANANASSODA = "" -- 탄산 파인애플(오란씨)
-		ORANGESODA = "" -- 탄산 오랜지(환타)
-		STRAWBERRYSODA = "" -- 탄산 딸기(웰치스 딸기)
+		PINEANANASSODA = "입 안이 따끔거리는 조합물이야.", -- Pineapple Soft Drink
+		ORANGESODA = "정말 판타스틱하네.", -- Orange Fanta Soft Drink
+		STRAWBERRYSODA = "베리 강력한 탄산감이야", -- Welch's Strawberry Soft Drink
 
 		-- Mod Collaboration brewery alcohol		
 
@@ -328,6 +329,7 @@ return {
 			MIDDLE_PRESSURE = "The pressure isn't too bad.", -- 압력이 중간
 			LOW_PRESSURE = "The vapor pressure is too low!", -- 압력이 거의 없을때
 			RECHARG_PRESSURE = "There isn't even any water for vapor...", -- 압력이 아예 없을때
+		},
 		
 		WELL_SPRINKLER =
 		{ 
@@ -335,5 +337,5 @@ return {
 			ON = "Sprinkle on!",
 			OFF = "It stopped working.",
 		},
-	},
+	}
 }
