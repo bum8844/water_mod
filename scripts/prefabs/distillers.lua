@@ -52,13 +52,15 @@ local function startcookfn(inst)
 end
 
 local function onopen(inst)
-    inst.AnimState:PlayAnimation("cooking_pre_loop")
+    inst.AnimState:PlayAnimation("cooking_pre_open")
+    inst.AnimState:PushAnimation("cooking_pre_loop")
     inst.SoundEmitter:PlaySound("hookline/common/fishbox/open")
 end
 
 local function onclose(inst)
+    inst.AnimState:PlayAnimation("cooking_pre_close")
     if not inst.components.brewing:IsCooking() then
-        inst.AnimState:PlayAnimation("idle_empty")
+        inst.AnimState:PushAnimation("idle_empty")
     end
     inst.SoundEmitter:PlaySound("hookline/common/fishbox/close")
 end
