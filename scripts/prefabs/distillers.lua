@@ -46,6 +46,7 @@ local function onbuilt(inst)
 end
 
 local function startcookfn(inst)
+    inst.SoundEmitter:KillSound("loopsound")
     inst.AnimState:PlayAnimation("cooking_loop", true)
     inst.SoundEmitter:PlaySound("dontstarve/common/together/dragonfly_furnace/fire_LP", "snd")
     inst.Light:Enable(true)
@@ -54,7 +55,7 @@ end
 local function onopen(inst)
     inst.AnimState:PlayAnimation("cooking_pre_open")
     inst.AnimState:PushAnimation("cooking_pre_loop")
-    inst.SoundEmitter:PlaySound("hookline/common/fishbox/open")
+    inst.SoundEmitter:PlaySound("rifts2/shadow_forge/proximity_lp", "loopsound")
 end
 
 local function onclose(inst)
@@ -62,7 +63,8 @@ local function onclose(inst)
     if not inst.components.brewing:IsCooking() then
         inst.AnimState:PushAnimation("idle_empty")
     end
-    inst.SoundEmitter:PlaySound("hookline/common/fishbox/close")
+    inst.SoundEmitter:KillSound("loopsound")
+    inst.SoundEmitter:PlaySound("rifts2/shadow_forge/proximity_pst")
 end
 
 local function IsModDrink(inst, product, overridebuild)
