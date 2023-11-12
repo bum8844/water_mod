@@ -319,8 +319,8 @@ return {
 		DISTILLERS =
 		{   
 		    EMPTY = "나를 위한 에탄올을 만들어 봐야 겠어.", --증류기 조사 대사
-			DISTILLTING_LONG = "좀 더 끓여야 해.", --증류가 끝나기 까지 많이 남음
-			DISTILLING_SHORT = "거의 다 끓였어!", --증류가 곧 끝남
+			DISTILLTING_LONG = "증류가 끝날때까지 기다려야해.", --증류가 끝나기 까지 많이 남음
+			DISTILLING_SHORT = "증류가 거의 다 끝나가고 있어.", --증류가 곧 끝남
 			DONE = "두근 두근 하네.", --증류기에 음료가 들어있음
 		},
 
