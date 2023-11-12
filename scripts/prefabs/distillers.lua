@@ -48,14 +48,15 @@ end
 local function startcookfn(inst)
     inst.SoundEmitter:KillSound("loopsound")
     inst.AnimState:PlayAnimation("cooking_loop", true)
-    inst.SoundEmitter:PlaySound("dontstarve/common/together/dragonfly_furnace/fire_LP", "snd")
+    inst.SoundEmitter:PlaySound("dontstarve_DLC001/common/coldfire", "snda")
+    inst.SoundEmitter:PlaySound("rifts3/oculus_ice_radius/ambient_lp", "sndb")
     inst.Light:Enable(true)
 end
 
 local function onopen(inst)
     inst.AnimState:PlayAnimation("cooking_pre_open")
     inst.AnimState:PushAnimation("cooking_pre_loop")
-    inst.SoundEmitter:PlaySound("rifts2/shadow_forge/proximity_lp", "loopsound")
+    inst.SoundEmitter:PlaySound("rifts2/shadow_forge/proximity_lp", "loopopen")
 end
 
 local function onclose(inst)
@@ -63,7 +64,7 @@ local function onclose(inst)
     if not inst.components.brewing:IsCooking() then
         inst.AnimState:PushAnimation("idle_empty")
     end
-    inst.SoundEmitter:KillSound("loopsound")
+    inst.SoundEmitter:KillSound("loopopen")
     inst.SoundEmitter:PlaySound("rifts2/shadow_forge/proximity_pst")
 end
 
@@ -138,7 +139,8 @@ local function donecookfn(inst)
     inst.AnimState:PlayAnimation("cooking_pst")
     inst.AnimState:PushAnimation("idle_full", false)
     ShowProduct(inst)
-    inst.SoundEmitter:KillSound("snd")
+    inst.SoundEmitter:KillSound("snda")
+    inst.SoundEmitter:KillSound("sndb")
     inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_finish")
     inst.Light:Enable(false)
 end
@@ -151,8 +153,10 @@ end
 local function continuecookfn(inst)
     inst.AnimState:PlayAnimation("cooking_loop", true)
     inst.Light:Enable(true)
-    inst.SoundEmitter:KillSound("snd")
-    inst.SoundEmitter:PlaySound("dontstarve/common/together/dragonfly_furnace/fire_LP", "snd")
+    inst.SoundEmitter:KillSound("snda")
+    inst.SoundEmitter:KillSound("sndb")
+    inst.SoundEmitter:PlaySound("dontstarve_DLC001/common/coldfire", "snda")
+    inst.SoundEmitter:PlaySound("rifts3/oculus_ice_radius/ambient_lp", "sndb")
 end
 
 local function harvestfn(inst)
@@ -176,6 +180,7 @@ local function fn()
     inst.entity:AddAnimState()
     inst.entity:AddSoundEmitter()
     inst.entity:AddMiniMapEntity()
+    inst.entity:AddLight()
     inst.entity:AddNetwork()
 
     inst:SetPhysicsRadiusOverride(.5)
