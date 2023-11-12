@@ -38,8 +38,6 @@
     </folder>
     <folder id="9" name="shadow">
         <file id="0" name="shadow/shadow_0.png" width="281" height="80" pivot_x="0.5" pivot_y="0.5"/>
-        <file id="1" name="shadow/shadow_1.png" width="67" height="28" pivot_x="0" pivot_y="1"/>
-        <file id="2" name="shadow/shadows-0.png" width="197" height="46" pivot_x="0" pivot_y="1"/>
     </folder>
     <folder id="10" name="poll">
         <file id="0" name="poll/poll_A.png" width="225" height="116" pivot_x="0.5" pivot_y="0"/>
@@ -62,7 +60,6 @@
         <file id="6" name="gear/gear_red_E.png" width="39" height="40" pivot_x="0.5" pivot_y="0.5"/>
         <file id="7" name="gear/gear_red_F.png" width="39" height="40" pivot_x="0.5" pivot_y="0.5"/>
         <file id="8" name="gear/fan_shadow.png" width="95" height="95" pivot_x="0.5" pivot_y="0.5"/>
-        <file id="9" name="gear/gear_water.png" width="39" height="40" pivot_x="0.5" pivot_y="0.5"/>
     </folder>
     <folder id="13" name="red_gems_tower">
         <file id="0" name="red_gems_tower/red_gems_tower_A.png" width="113" height="340" pivot_x="0.46" pivot_y="0.7"/>
