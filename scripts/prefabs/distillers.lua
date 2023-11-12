@@ -41,13 +41,17 @@ end
 local function onbuilt(inst)
     inst.AnimState:PlayAnimation("place")
     inst.AnimState:PushAnimation("idle_empty", false)
-    inst.SoundEmitter:PlaySound("dontstarve/common/lean_to_craft")
-    inst:DoTaskInTime(1.2, function(inst) inst.SoundEmitter:PlaySound("dontstarve/creatures/together/stagehand/hit")end)
+    inst.SoundEmitter:PlaySound("rifts2/shadow_forge/place")
+    inst:DoTaskInTime(1.2, function(inst) 
+        inst.SoundEmitter:PlaySound("dontstarve/creatures/together/stagehand/hit")
+        inst:DoTaskInTime(0.1, function(inst) 
+            inst.SoundEmitter:PlaySound("dontstarve/creatures/together/stagehand/hit")
+        end)
+    end)
 end
 
 local function startcookfn(inst)
     inst.SoundEmitter:KillSound("loopsound")
-    inst.AnimState:PlayAnimation("cooking_loop", true)
     inst.SoundEmitter:PlaySound("dontstarve_DLC001/common/coldfire", "snda")
     inst.SoundEmitter:PlaySound("rifts3/oculus_ice_radius/ambient_lp", "sndb")
     inst.Light:Enable(true)
@@ -63,6 +67,8 @@ local function onclose(inst)
     inst.AnimState:PlayAnimation("cooking_pre_close")
     if not inst.components.brewing:IsCooking() then
         inst.AnimState:PushAnimation("idle_empty")
+    else
+        inst.AnimState:PushAnimation("cooking_loop", true)
     end
     inst.SoundEmitter:KillSound("loopopen")
     inst.SoundEmitter:PlaySound("rifts2/shadow_forge/proximity_pst")
