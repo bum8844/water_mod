@@ -128,20 +128,19 @@ function WateringStructure:IsFrozenDirtyWater()
 end
 
 function WateringStructure:SetWaterTimer(watertype, isnew)
-
-    local resultwater = WATERTYPE.EMPTY
-    local timer = TUNING.PERISH_ONE_DAY/2
-    local state = watertype
-
     self:ResetTimer()
     self:StopWatertask()
+
+    local resultwater = WATERTYPE.EMPTY
+    local timer = TUNING.PERISH_ONE_DAY / 2
+    local state = watertype
 
     self:SetWater(state)
 
     if self:GetWater() == WATERTYPE.CLEAN then
         resultwater = WATERTYPE.DIRTY
-        timer = math.ceil(TUNING.PERISH_FAST/2)
-    elseif not self:GetWater() == WATERTYPE.DIRTY then
+        timer = math.ceil(TUNING.PERISH_FAST / 2)
+    elseif self:GetWater() ~= WATERTYPE.DIRTY then
         self.wateramount = 0
         self.dried = true
         self.inst:PushEvent("setwateringtool_water")
@@ -165,22 +164,24 @@ function WateringStructure:SetWaterTimer(watertype, isnew)
     end
 end
 
-
 function WateringStructure:TimerChange(percent)
-
     self:StopWatertask()
 
     local resultwater = self:GetWater() == WATERTYPE.CLEAN and WATERTYPE.DIRTY or WATERTYPE.EMPTY
     local isfrozen = self:IsFrozen()
-    local remainingtime = isfrozen and math.ceil(TUNING.PERISH_SLOW/2) or 
-          self.watertype == WATERTYPE.DIRTY and TUNING.BUCKET_LEVEL_PER_USE*4 or 
-          math.ceil(TUNING.PERISH_FAST/2)
+    local remainingtime
 
-    if percent < 0 then percent = 0 end
-    if percent > 1 then percent = 1 end
+    if isfrozen then
+        remainingtime = math.ceil(TUNING.PERISH_SLOW / 2)
+    elseif self.watertype == WATERTYPE.DIRTY then
+        remainingtime = TUNING.BUCKET_LEVEL_PER_USE * 4
+    else
+        remainingtime = math.ceil(TUNING.PERISH_FAST / 2)
+    end
 
+    percent = math.clamp(percent, 0, 1)
     self.basetime = remainingtime
-    self.targettime = percent*remainingtime
+    self.targettime = percent * remainingtime
 
     if isfrozen and self.watertype == WATERTYPE.DIRTY then
         return true
@@ -238,21 +239,19 @@ end
 
 function WateringStructure:OnLoad(data)
     self:Initialize()
+
     if data and data.wateringtool then
         self.frozed = data.frozed or nil
         self.wateringtool = data.wateringtool or nil
-
         self.wellanim = data.wellanim or ""
-
         self.inst:PushEvent("setbucketanim")
-
         self.toolfiniteuses = data.toolfiniteuses
         self.toolfiniteuses_old = data.toolfiniteuses_old
 
         local water = data.watertype == WATERTYPE.CLEAN and WATERTYPE.DIRTY or WATERTYPE.EMPTY
 
-        if data.dired then
-            self.dired = data.dired
+        if data.dried then
+            self.dried = data.dried
             self.inst:PushEvent("setwateringtool_water")
             if self.setstatesfn then
                 self.setstatesfn(self.inst)
@@ -267,26 +266,24 @@ function WateringStructure:OnLoad(data)
 
         self.watertype = data.watertype
         self.wateramount = data.wateramount
-
         self.basetime = data.basetime
-
         self.inst:PushEvent("setwateringtool_temperature")
 
-        if self:IsFrozen() and self.watertype == WATERTYPE.DIRTY then
+        local isFrozenAndDirty = self:IsFrozen() and self.watertype == WATERTYPE.DIRTY
 
+        if isFrozenAndDirty then
             self.targettime = data.timer
-
             self.inst:PushEvent("setwateringtool_water")
             if self.setstatesfn then
                 self.setstatesfn(self.inst)
             end
-
             return true
         end
 
-        self.targettime = GetTime() + math.max(0,data.timer)
+        self.targettime = GetTime() + math.max(0, data.timer)
         self.watertask = self.inst:DoTaskInTime(data.timer, OnDone, self, water)
         self.inst:PushEvent("setwateringtool_water")
+
         if self.setstatesfn then
             self.setstatesfn(self.inst)
         end

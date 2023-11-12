@@ -1,6 +1,3 @@
---Merge this template to your speech table
---to add speech support for your own character mods.
-
 return {
 	ACTIONFAIL =
 	{
@@ -106,6 +103,7 @@ return {
 		CACTUSFLOWER_TEA = "", --선인꽃차
 		LOTUSTEA = "", --연꽃차
 		SUSHIBISCUS = "", -- 자살차
+		MOON_BLOSSOM_TEA = "", --달꽃차
 
 		CAFFEINBERRY_JUICE = "", -- 블랙 커피
         TOFFEE_LATTE = "", --토피넛 라떼
@@ -127,6 +125,10 @@ return {
 		CHERRY_ROSEBERRIES_TEA = "", --체리숲 로즈힙 차
 		CHERRY_HONEY_TEA = "", --체리숲 벚꽃꿀 차
 		SWEET_RICE_DRINK = "", -- 비타협 식혜
+		PINEANANAS_JUICE = "", -- 레기온 파인애플 주스
+		ORANGE_JUICE = "", -- 모어 푸드 팩 오랜지 주스
+		STRAWBERRY_SMOOTHIE = "", -- 모어 푸드 팩 딸기 스무디
+		STRAWBERRY_MILK_SMOOTHIE = "", -- 모어 푸드 팩 딸기 스무디 라떼
 
 		--양조기 음료
 
@@ -139,7 +141,7 @@ return {
 		LEMONLIMESODA = "", -- 레몬 라임소다(과일소다 상위 호환)
 		COLA = "", -- 콜라
 		COLAQUANTUM = "", --콜라 퀀텀
-		--LUMPY_BEER = "", --루트비어(술이 아님)
+		LUMPY_BEER = "", --루트비어(술이 아님)
 
 		-- 양조주
 
@@ -157,6 +159,9 @@ return {
 		-- 콜라보 소다
 
 		CHERRY_DOCTOR_COLA = "", --체리숲 닥터 페퍼(닥터 체리)
+		PINEANANASSODA = "", -- 탄산 파인애플(오란씨)
+		ORANGESODA = "", -- 탄산 오랜지(환타)
+		STRAWBERRYSODA = "", -- 탄산 딸기(웰치스 딸기)
 
 		--콜라보 양조주
 
@@ -334,3 +339,5 @@ return {
 		},	
 	},
 }
+--Merge this template to your speech table
+--to add speech support for your own character mods.

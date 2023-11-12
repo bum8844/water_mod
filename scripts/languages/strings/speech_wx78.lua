@@ -22,7 +22,7 @@ return {
 
 	DESCRIBE =
 	{
-		BOILBOOK = "",
+		BOILBOOK = "냉각수에 불순물을 조합하는 방법이 적힌 디렉토리", -- 요리책 물 모드 버전
 
 		WATER_CLEAN_ICE = "얼어붙고 갇힌 물. 하하하"--깨끗한 얼음물
 		WATER_DIRTY_ICE = "더럽고 추악함", --더러운 얼음물
@@ -59,14 +59,14 @@ return {
 		RUINCACAO_SEED_SAPLING = "미량의 그림자와 공생중", -- 카카오 새싹 심은거
 		RUINCACAO = "강한 압력을 요구", --부수기 전 카카오 열매
 		RUINCACAO_BEAN = "가공할 만한 가치 있음", --부순 후 카카오 콩  
-		RUINCACAO_SEED_COOKED = "검은 콩을 불에 그을림", --구운 카카오 콩
+		RUINCACAO_BEAN_COOKED = "검은 콩을 불에 그을림", --구운 카카오 콩
 
 		-- 증류주 첨가제
 
 		ADDITIVE_SEED = "본래 기능을 달성하지 못할 씨앗", -- 리큐르에 제조에 첨가 할 씨허브(아니스,쥬니퍼베리,팔각 모티브)첨가제 
 		ADDITIVE_PETALS = "술에 첨가되는 꽃잎", -- 리큐르에 제조에 첨가 할 허브,녹차,꽃잎 첨가제
-		ADDITIVE_NUT = "단단한 첨가물", -- 리큐르에 제조에 첨가 할 버치넛,코코넛,커피콩,카카오콩 첨가제
-		ADDITIVE_DAIRY = "술에 보통 우유를 첨가하는가?", -- 리큐르에 제조에 첨가할 유제품 첨가제
+		ADDITIVE_NUT = "고밀도 첨가물", -- 리큐르에 제조에 첨가 할 버치넛,코코넛,커피콩,카카오콩 첨가제
+		ADDITIVE_DAIRY = "알코올과 유제품의 호환성은 어떠한가?", -- 리큐르에 제조에 첨가할 유제품 첨가제
 
 		-- 음료
 
@@ -103,6 +103,7 @@ return {
 		CACTUSFLOWER_TEA = "물이 붉게 물들었음", --선인꽃차
 		LOTUSTEA = "물 위의 꽃을 물로 끓인 것", --연꽃차
 		SUSHIBISCUS = "상당히 기묘함", -- 자살차
+		MOON_BLOSSOM_TEA = "다른 무엇보다 우월함"
 
 		CAFFEINBERRY_JUICE = "순수한 카페인 콩 음료", -- 블랙 커피
         TOFFEE_LATTE = "풍부한 비타민이 들어있음", --토피넛 라떼
@@ -124,6 +125,10 @@ return {
 		CHERRY_ROSEBERRIES_TEA = "장미 향 유체", --체리숲 로즈힙 차
 		CHERRY_HONEY_TEA = "당도 측정 시도: 실패", --체리숲 벚꽃꿀 차
 		SWEET_RICE_DRINK = "감미료가 없음에도 단맛이 남", -- 비타협 식혜
+		PINEANANAS_JUICE = "스폰지와의 연관성을 부정", -- 레기온 파인애플 주스
+		ORANGE_JUICE = "섭취를 위해 분쇄됨", -- 모어 푸드 팩 오랜지 주스
+		STRAWBERRY_SMOOTHIE = "질감이 나를 불쾌하게 함", -- 모어 푸드 팩 딸기 스무디
+		STRAWBERRY_MILK_SMOOTHIE = "딸기가 포획된 형태", -- 모어 푸드 팩 딸기 스무디 라떼
 
 		--양조기 음료
 
@@ -154,26 +159,29 @@ return {
 		-- 콜라보 소다
 
 		CHERRY_DOCTOR_COLA = "누가 이런 혼종을 만들었는가", --체리숲 닥터 페퍼(닥터 체리)
+		PINEANANASSODA = "파인 튜닝이 사용됨", -- 탄산 파인애플(오란씨)
+		ORANGESODA = "유기체의 행동을 독려시키기 위해 제작됨", -- 탄산 오랜지(환타)
+		STRAWBERRYSODA = "영혼 악마놈을 연상시킴", -- 탄산 딸기(웰치스 딸기)
 
 		--콜라보 양조주
 
-		AUROBOW = "유희성 기능 포함", -- 난파선 오로보우,무지개 해파리주
+		AUROBOW = "유희 애드온 포함", -- 난파선 오로보우,무지개 해파리주
 		COCONUT_WINE = "음용화된 윤활유", -- 난파선 코코넛 와인
 		CHERRY_BLOOM_MADHU = "기생당한 유기체의 우수한 생산물", -- 체리숲 벚꽃꿀주
 		GIANT_BLUEBERRY_WINE = "여전히 위험함", -- 비타협 붐!베리 사파이어(불 붙히면 폭발함)
 		RICE_WINE = "부산물 가공체", -- 비타협 막걸리
 		WHEAT_BEER = "곡물 낭비임", -- 힙 오브 푸드 밀맥주
-		PALE_BEER = "이름과 색상이 다름", -- 레기온 페일에일 (몬스트라 열매를 쓴 청록색 맥주)
+		PALE_BEER = "창백한 유기체의 색임", -- 레기온 페일에일 (몬스트라 열매를 쓴 청록색 맥주)
 
 		--증류주
 
-		DISINFECTANT = "", -- 소독약
+		DISINFECTANT = "기관 청소는 중대사항", -- 소독약
 		CORN_WHISKEY = "농도 심화됨", -- 콘 위스키
 		LUMPY_VODKA = "알코올 농도 굉장히 높음", -- 보드카
 		TEQUILA = "태양의 적외선과 공명", -- 데킬라
 		MADHU_RUM = "배 위의 환경과 호환됨", -- 럼주
 		BERRY_BRANDY = "참으로 긴 공정", -- 베리 브랜디
-		AREUHI = "두번 처리된 우유", -- 크므즈 증류주 아르히
+		AREUHI = "P형 유동체", -- 크므즈 증류주 아르히
 
 		--왈리 전용 증류주
 
@@ -183,7 +191,7 @@ return {
 		TEA_LUMPY_VODKA = "내 알코올 수용체가 버틸 것인가?", -- 보드카
 		PETALS_BERRY_BRANDY = "요리사는 술 제조를 겸직하도록", -- 장미향 브랜디
 		KAHLUA = "카페인 콩 첨가됨", -- 커피 리큐르 깔루아
-		NUT_CORN_WHISKY = "볼트는 어디 있는가", -- 너트 위스키
+		NUT_CORN_WHISKY = "볼트는 어디에 있는가", -- 너트 위스키
         RUINCACAO_CREAM_LIQUEUR = "씁쓸함과 부드러움이 공존", --베일리스 카카오 크림 리큐르
         RUMCHATA = "또 다른 유제품 함유물", -- 럼차타(럼에 오우차타 라는 유제품 섞은)
 
@@ -247,8 +255,8 @@ return {
 
 		BARREL =
 		{
-			GENERIC = "물 파일 저장장치", -- 물통 조사 대사
-			BURNT = "물 응답 없음", -- 물통이 타버림
+			GENERIC = "물 전용 SSD", -- 물통 조사 대사
+			BURNT = "물.exe가 응답하지 않음", -- 물통이 타버림
 		},
 
 		BREWERY =

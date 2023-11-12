@@ -183,44 +183,45 @@ function Waterlevel:UtilityCheck(boilier)
 end
 
 function Waterlevel:DoDiistiller(item, doer)
-    if self.inst.components.distiller then
+    if not self.inst.components.distiller then
+        self:UtilityCheck(doer)
+        return
+    end
 
-        local watervalue = self:GetWater()
+    local watervalue = self:GetWater()
+    local isDirtyIce = self.watertype == WATERTYPE.DIRTY_ICE
 
-        if self.watertype ~= WATERTYPE.CLEAN then
-            if self.watertype == WATERTYPE.DIRTY_ICE then
-                watervalue = watervalue * 2
-            end
+    if self.watertype ~= WATERTYPE.CLEAN or isDirtyIce then
+        watervalue = isDirtyIce and watervalue * 2 or watervalue
+        self.inst.components.distiller.done = false
+    elseif item.components.perishable then
+        if item.components.perishable:IsStale() then
+            watervalue = watervalue / 4
             self.inst.components.distiller.done = false
-        elseif item.components.perishable ~= nil then
-            if item.components.perishable:IsStale() then
-                watervalue = watervalue / 4
-                self.inst.components.distiller.done = false
-            elseif item.components.perishable:IsSpoiled() then
-                watervalue = watervalue / 2
-                self.inst.components.distiller.done = false
-            else
-                self.inst.components.distiller.done = true
-            end
+        elseif item.components.perishable:IsSpoiled() then
+            watervalue = watervalue / 2
+            self.inst.components.distiller.done = false
         else
             self.inst.components.distiller.done = true
         end
+    else
+        self.inst.components.distiller.done = true
+    end
 
-        if not self.inst.components.distiller.done then
-            if self.inst._fire == nil then
-                self.inst.components.distiller:startBoiling(watervalue)
-            else
-                watervalue = watervalue * 2
-                self.inst.components.distiller:startBoiling(watervalue, true)
-            end
-            local sections = self:GetCurrentSection()
-            if self.sectionfn then
-                self.sectionfn(sections, sections, self.inst)
-            end
-            self.inst:PushEvent("onwaterlevelsectionchanged", { newsection = sections, oldsection = sections})
+    if not self.inst.components.distiller.done then
+        if self.inst._fire == nil then
+            self.inst.components.distiller:startBoiling(watervalue)
         else
-            self:UtilityCheck(doer)
+            watervalue = watervalue * 2
+            self.inst.components.distiller:startBoiling(watervalue, true)
         end
+
+        local sections = self:GetCurrentSection()
+        if self.sectionfn then
+            self.sectionfn(sections, sections, self.inst)
+        end
+
+        self.inst:PushEvent("onwaterlevelsectionchanged", { newsection = sections, oldsection = sections })
     else
         self:UtilityCheck(doer)
     end

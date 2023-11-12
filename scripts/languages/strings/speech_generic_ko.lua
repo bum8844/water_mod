@@ -103,6 +103,7 @@ return {
 		CACTUSFLOWER_TEA = "가시 돋친 식물로 향긋한 차를 만들었어.",
 		LOTUSTEA = "비스킷 몇 조각 있으면 어울리겠어.",
 		SUSHIBISCUS = "과학적으로 전혀 말이 안 되'잔'아.",
+		MOON_BLOSSOM_TEA = "향 만 맡아도 눈이 확 뜨이네.",
 
 		CAFFEINBERRY_JUICE = "기운 나는 냄새가 나!",		
 		TOFFEE_LATTE = "커피에 견과류 섞은거야?",
@@ -124,6 +125,10 @@ return {
 		CHERRY_ROSEBERRIES_TEA = "장미향이 강렬해.",
 		CHERRY_HONEY_TEA = "은은하게 꽃향기가 나네.",
 		SWEET_RICE_DRINK = "이런 음료도 있었어?",
+		PINEANANAS_JUICE = "과피가 내 입 천장을 긁을 일은 더 없겠어.", -- 레기온 파인애플 주스
+		ORANGE_JUICE = "오렌지 쥬스를 가져 와서 기뻐.", -- 모어 푸드 팩 오랜지 쥬스
+		STRAWBERRY_SMOOTHIE = " 빨대는 어디 있지? ", -- 모어 푸드 팩 딸기 스무디
+		STRAWBERRY_MILK_SMOOTHIE = "매우 부드럽고 상큼해.", -- 모어 푸드 팩 딸기 스무디 라떼
 
 		-- 양조기 음료
 
@@ -154,6 +159,9 @@ return {
 		--콜라보 소다
 
 		CHERRY_DOCTOR_COLA = "의사가 만들었다는 거는 거짓말이야.",
+		PINEANANASSODA = "입 안이 따끔거리는 조합물이야." -- 탄산 파인애플(오란씨)
+		ORANGESODA = "정말 판타스틱하네." -- 탄산 오랜지(환타)
+		STRAWBERRYSODA = "베리 강력한 탄산감이야." -- 탄산 딸기(웰치스 딸기)
 
 		--콜라보 양조주
 
@@ -311,8 +319,8 @@ return {
 		DISTILLERS =
 		{   
 		    EMPTY = "나를 위한 에탄올을 만들어 봐야 겠어.", --증류기 조사 대사
-			DISTILLTING_LONG = "좀 더 끓여야 해.", --증류가 끝나기 까지 많이 남음
-			DISTILLING_SHORT = "거의 다 끓였어!", --증류가 곧 끝남
+			DISTILLTING_LONG = "증류가 끝날때까지 기다려야해.", --증류가 끝나기 까지 많이 남음
+			DISTILLING_SHORT = "증류가 거의 다 끝나가고 있어.", --증류가 곧 끝남
 			DONE = "두근 두근 하네.", --증류기에 음료가 들어있음
 		},
 

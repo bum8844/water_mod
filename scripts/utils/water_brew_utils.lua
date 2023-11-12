@@ -89,10 +89,35 @@ function IsFoliage(names, tags)
 end
 
 function IsFlower(names, tags)
-	return ( names.forgetmelots or names.petals or names.moon_tree_blossom or tags.petals_legion ) and 
+	return ( names.forgetmelots or names.petals or tags.petals_legion ) and 
 	Preference(names, tags) and 
 	Tea_Def(names, tags) and not 
 	( 
+		names.tealeaves or
+		names.moon_tree_blossom or
+		names.tealeaves_dried or 
+		names.kyno_piko_orange or 
+		names.piko_orange or
+		names.foliage or
+		names.petals_evil or 
+		names.firenettles or 
+		names.tillweed or
+		names.cactus_flower or
+		names.lotus_flower or 
+		names.kyno_lotus_flower or 
+		names.succulent_picked or
+		tags.lotus or
+		tags.petals_legion
+	)
+end
+
+function IsFlower_Moon(names, tags)
+	return names.moon_tree_blossom and 
+	Preference(names, tags) and 
+	Tea_Def(names, tags) and not 
+	( 
+		names.forgetmelots or 
+		names.petals or 
 		names.tealeaves or
 		names.tealeaves_dried or 
 		names.kyno_piko_orange or 
