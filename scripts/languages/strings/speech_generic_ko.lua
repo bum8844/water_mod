@@ -159,9 +159,9 @@ return {
 		--콜라보 소다
 
 		CHERRY_DOCTOR_COLA = "의사가 만들었다는 거는 거짓말이야.",
-		PINEANANASSODA = "입 안이 따끔거리는 조합물이야." -- 탄산 파인애플(오란씨)
-		ORANGESODA = "정말 판타스틱하네." -- 탄산 오랜지(환타)
-		STRAWBERRYSODA = "베리 강력한 탄산감이야." -- 탄산 딸기(웰치스 딸기)
+		PINEANANASSODA = "입 안이 따끔거리는 조합물이야.", -- 탄산 파인애플(오란씨)
+		ORANGESODA = "정말 판타스틱하네.", -- 탄산 오랜지(환타)
+		STRAWBERRYSODA = "베리 강력한 탄산감이야.", -- 탄산 딸기(웰치스 딸기)
 
 		--콜라보 양조주
 
