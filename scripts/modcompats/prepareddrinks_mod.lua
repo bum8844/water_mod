@@ -139,7 +139,6 @@ local legion_drink = {
 
 local mfp_drink = {
 	orange_juice = {
-	{
 		test = function(boilier, names, tags) return (names.mfp_orange or names.mfp_orange_cooked) and tags.fruit and Preference(names, tags) and not tags.veggie and notmeat(tags) and notname(names) and lessthing(names) and notages(tags) end,
 		priority = 2,
         health = TUNING.HEALING_MEDLARGE/5, -- 6 (30) ( MFP모드의 오렌지 쥬스 참고함)
@@ -150,8 +149,6 @@ local mfp_drink = {
 		cooktime = TUNING.KETTLE_FRUIT,
 		potlevel = "mid",
 		potlevel_bottle = "mid",
-	},
-
 	},
 	strawberry_smoothie = {
 		test = function(boilier, names, tags) return (names.mfp_strawberry or names.mfp_strawberry_cooked) and tags.frozen and tags.fruit and Preference(names, tags) and not tags.veggie and notmeat(tags) and notname(names) and lessthing(names) and notages(tags) end,
@@ -167,7 +164,6 @@ local mfp_drink = {
 		potlevel = "mid",
 		potlevel_bottle = "mid",
 	},
-
 	strawberry_milk_smoothie = {
 		test = function(boilier, names, tags) return (names.mfp_strawberry or names.mfp_strawberry_cooked) and (tags.dairy or tags.milk) and tags.frozen and tags.sweetener end,
 		priority = 3,
