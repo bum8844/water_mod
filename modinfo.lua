@@ -46,6 +46,7 @@ configuration_options =
 			{description = "Auto", data = false},
 			{description = "English", data = "en"},
 			{description = "한국어", data = "ko"},
+			{description = "Español", data = "es"},
 		},
 		default = false,
 	},
