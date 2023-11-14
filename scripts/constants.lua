@@ -1,13 +1,11 @@
 WATERTYPE =
 {
-	GENERIC = "generic",
 	CLEAN = "water_clean",
 	DIRTY = "water_dirty",
 	CLEAN_ICE = "water_clean_ice",
 	DIRTY_ICE = "water_dirty_ice",
 	SALTY = "water_salty",
-	DRINK = "drink",
-	EMPTY = "empty",
+	NONE = "none",
 }
 
 WATERGROUP =
@@ -17,12 +15,9 @@ WATERGROUP =
 		name = "OMNI",
 		types =
 		{
-			WATERTYPE.GENERIC,
 			WATERTYPE.CLEAN,
 			WATERTYPE.DIRTY,
 			WATERTYPE.SALTY,
-			WATERTYPE.DRINK,
-			WATERTYPE.EMPTY,
 		}
 	},
 
@@ -33,7 +28,6 @@ WATERGROUP =
 		{
 			WATERTYPE.DIRTY,
 			WATERTYPE.SALTY,
-			WATERTYPE.EMPTY,
 		},
 	},
 
@@ -42,10 +36,8 @@ WATERGROUP =
 		name = "DRINKABLE",
 		types =
 		{
-			WATERTYPE.GENERIC,
 			WATERTYPE.CLEAN,
 			WATERTYPE.DRINK,
-			WATERTYPE.EMPTY,
 		},
 	},
 
@@ -56,7 +48,6 @@ WATERGROUP =
 		{
 			WATERTYPE.CLEAN,
 			WATERTYPE.DIRTY,
-			WATERTYPE.EMPTY,
 			WATERTYPE.CLEAN_ICE,
 			WATERTYPE.DIRTY_ICE,
 		},
@@ -68,11 +59,18 @@ WATERGROUP =
 		types =
 		{
 			WATERTYPE.DIRTY,
-			WATERTYPE.EMPTY,
 			WATERTYPE.CLEAN_ICE,
 			WATERTYPE.DIRTY_ICE,
 		},
 	},
+
+	NONE_BOIL = 
+	{
+		name = "NONE_BOIL",
+		types = {
+			WATERTYPE.NONE,
+		}
+	}
 }
 
 FOODTYPEGROUP = 

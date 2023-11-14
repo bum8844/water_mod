@@ -224,10 +224,12 @@ local function OnTakeWater(inst)
             inst.AnimState:PlayAnimation("take_water_open")
             inst.AnimState:PushAnimation("cooking_pre_loop")
         else
+            inst.components.container.canbeopened = false
             inst.AnimState:PlayAnimation("take_water")
             inst.AnimState:PushAnimation("idle_empty", false)
             inst:DoTaskInTime(1,function(inst)
                 inst.SoundEmitter:PlaySound("dontstarve/common/wardrobe_close")
+                inst.components.container.canbeopened = true
             end)
         end
         inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/medium")

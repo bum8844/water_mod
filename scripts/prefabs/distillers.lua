@@ -225,6 +225,7 @@ local function fn()
     inst.components.brewing.onspoil = spoilfn
 
     inst:AddComponent("waterlevel")
+    inst.components.waterlevel:SetCanAccepts({WATERGROUP.NONE_BOIL})
     inst.components.waterlevel:SetOnlyDistill(true)
 
     inst:AddComponent("container")

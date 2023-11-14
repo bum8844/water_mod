@@ -79,6 +79,10 @@ local function donedistill(inst, self)
     self.done = true
 end
 
+local function setcanbeopened(inst, self)
+    self.inst.components.container.canbeopened = true
+end
+
 local function dostew(inst, self)
     self.task = nil
     self.targettime = nil
@@ -102,11 +106,11 @@ local function dostew(inst, self)
 			self.task = self.inst:DoTaskInTime(self.spoiltime, dospoil, self)
 		end
     end
-    if not self.usedistill then
-        self.done = true
-    else
-        self.inst:DoTaskInTime(2.5,donedistill,self)
+    local delay_time = 0
+    if self.usedistill then
+        delay_time = 2.5    
     end
+    self.inst:DoTaskInTime(delay_time,donedistill,self)
 end
 
 function Brewing:IsDone()
@@ -346,7 +350,15 @@ function Brewing:Harvest(harvester)
         self.product_spoilage = nil
 
         if self.inst.components.container ~= nil then
-            self.inst.components.container.canbeopened = true
+            local canbeopen_delay = 0
+            if self.inst:HasTag("kettle") then
+                canbeopen_delay = .25
+            elseif self.inst:HasTag("brewery") then
+                canbeopen_delay = .5
+            elseif self.inst:HasTag("distillers") then
+                canbeopen_delay = .6
+            end
+            self.inst:DoTaskInTime(canbeopen_delay,setcanbeopened,self)
         end
 
         return true

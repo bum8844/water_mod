@@ -282,12 +282,15 @@ local function OnTakeWater(inst)
                 inst.AnimState:PushAnimation("cooking_pre_loop")
             end
         else
+            inst.components.container.canbeopened = false
             inst.AnimState:PlayAnimation("take_water")
             inst.AnimState:PushAnimation("idle_empty", false)
             inst:DoTaskInTime(1,function(inst)
             inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_close")
                 if not inst.components.distiller:isDone() then
                     onstartboilingfn(inst)
+                else
+                    inst.components.container.canbeopened = true
                 end
             end)
         end
@@ -301,8 +304,12 @@ local function OnTaken(inst, source, delta)
             inst.AnimState:PlayAnimation("getdrink_open")
             inst.AnimState:PushAnimation("cooking_pre_loop")
         else
+            inst.components.container.canbeopened = false
             inst.AnimState:PlayAnimation("getdrink_empty")
             inst.AnimState:PushAnimation("idle_empty", false)
+            inst:DoTaskInTime(.5,function(inst)
+                inst.components.container.canbeopened = true
+            end)
         end
         inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/medium")
     end

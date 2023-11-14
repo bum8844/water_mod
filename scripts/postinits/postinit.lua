@@ -54,7 +54,8 @@ local postinits =
 		"savefileupgrades",
 		"popupmanager",
 		"preparedfoods",
-		"preparedfoods_warly"
+		"preparedfoods_warly",
+		"cookbookdata",
 	}
 }
 
