@@ -75,6 +75,10 @@ local function dospoil(inst, self)
     end
 end
 
+local function donedistill(inst, self)
+    self.done = true
+end
+
 local function dostew(inst, self)
     self.task = nil
     self.targettime = nil
@@ -98,8 +102,11 @@ local function dostew(inst, self)
 			self.task = self.inst:DoTaskInTime(self.spoiltime, dospoil, self)
 		end
     end
-
-    self.done = true
+    if not self.usedistill then
+        self.done = true
+    else
+        self.inst:DoTaskInTime(2.5,donedistill,self)
+    end
 end
 
 function Brewing:IsDone()
