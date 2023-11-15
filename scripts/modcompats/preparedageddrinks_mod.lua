@@ -126,7 +126,7 @@ local unc_drink = {
 	},
 	rice_wine = 
 	{
-		test = function(boilier, names, tags) return (names.rice_cooked or names.fwd_in_pdt_food_cooked_rice) and ((names.rice_cooked or 0) + (names.fwd_in_pdt_food_cooked_rice or 0)) == 3 and names.greenfoliage and notmeat(tags) and notname(names) end,
+		test = function(boilier, names, tags) return (names.rice or names.rice_cooked or names.fwd_in_pdt_food_rice) and ((names.rice or 0) + (names.rice_cooked or 0) + (names.fwd_in_pdt_food_rice or 0)) == 3 and names.greenfoliage and notmeat(tags) and notname(names) end,
 		priority = 2,
 		health = 0,
 		hunger = TUNING.CALORIES_MEDSMALL/2,

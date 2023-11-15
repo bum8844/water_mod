@@ -1,1 +1,0 @@
-AddIngredientValues({"fwd_in_pdt_food_cooked_rice"}, {veggie=1})

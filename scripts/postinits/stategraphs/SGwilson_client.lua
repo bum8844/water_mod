@@ -94,7 +94,7 @@ local drink_event = EventHandler("drink",function(inst, action)
         if obj:HasTag("drink") then
             for k, v in pairs(FOODTYPE) do
                 if obj:HasTag("edible_"..v) then
-                    return (v == FOODTYPE.MEAT and not obj:HasTag("alcohol") and "drinkstew") or "drink"
+                    return (v == FOODTYPE.MEAT and not obj:HasTag("nomeatfood") and not obj:HasTag("alcohol") and "drinkstew") or "drink"
                 end
             end
         else

@@ -484,7 +484,7 @@ AddStategraphPostInit("wilson", function(sg)
                     return
                 end
                 return --[[(obj.components.soul ~= nil and "drinkstew")
-                    or]] (obj.components.edible.foodtype == FOODTYPE.MEAT and not obj:HasTag("alcohol") and "drinkstew")
+                    or]] (obj.components.edible.foodtype == FOODTYPE.MEAT and not obj:HasTag("nomeatfood") and not obj:HasTag("alcohol") and "drinkstew")
                     or "drink"
             else
                 return eater(inst, action)

@@ -100,7 +100,7 @@ local cf_drink = {
 
 local unc_drink = {
 	sweet_rice_drink = 	{
-		test = function(boilier, names, tags) return (names.rice_cooked or names.fwd_in_pdt_food_cooked_rice) and ((names.rice_cooked or 0) + (names.fwd_in_pdt_food_cooked_rice or 0)) == 2 and tags.sweetener and tags.frozen and notmeat(tags) and notname(names) and lessthing(names) and notages(tags) end,
+		test = function(boilier, names, tags) return (names.rice or names.rice_cooked or names.fwd_in_pdt_food_rice) and ((names.rice or 0) + (names.rice_cooked or 0) + (names.fwd_in_pdt_food_rice or 0)) == 2 and tags.sweetener and tags.frozen and notmeat(tags) and notname(names) and lessthing(names) and notages(tags) end,
 		priority = 2,
         health = 0,
         hunger = (TUNING.DRINK_CALORIES/2), --2.5 (12.5)

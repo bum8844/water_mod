@@ -77,6 +77,7 @@ end
 
 local function SetIngredientDrinkable(inst, value)
 	SetDrinkableAction(inst)
+	inst:AddTag("nomeatfood")
 
     if not GLOBAL.TheWorld.ismastersim then
         return inst

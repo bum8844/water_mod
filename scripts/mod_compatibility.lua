@@ -13,9 +13,6 @@ for k,mod_id in ipairs(GLOBAL.KnownModIndex:GetModsToLoad()) do
 	end 
 	if mod_id == "workshop-2039181790" then
 		modrequire("modcompats/2039181790/unc_water_spicedfoods_mod")
-		if mod_id == "3054476656" then
-			modrequire("modcompats/3054476656/fwd_init")
-		end
 	end
 	if mod_id == "workshop-1289779251" then 
 		modrequire("modcompats/1289779251/cherry_friendpits")
