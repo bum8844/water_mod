@@ -5,6 +5,7 @@ local locales =
 {
 	en = "en",
 	ko = "ko",
+	es = "es",
 	--zh = "zh",
 }
 
@@ -49,10 +50,10 @@ local function MergeTable(tbl1, tbl2)
 end
 
 for _, character in pairs(vanilla_characters) do
-	MergeTable(STRINGS.CHARACTERS[string.upper(character)], require("languages/strings/speech_"..character.."_"..locale))
+	MergeTable(STRINGS.CHARACTERS[string.upper(character)], require("languages/strings/"..locale.."/speech_"..character))
 end
 
-modrequire("languages/strings/common_"..locale)
+modrequire("languages/strings/"..locale.."/common")
 
 --AFS: some translation functions taken from Island Adventures. WIP
 --[[function DSD_GeneratePOT()
