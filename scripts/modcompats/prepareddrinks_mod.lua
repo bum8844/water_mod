@@ -100,7 +100,7 @@ local cf_drink = {
 
 local unc_drink = {
 	sweet_rice_drink = 	{
-		test = function(boilier, names, tags) return names.rice_cooked and names.rice_cooked == 2 and tags.sweetener and tags.frozen and notmeat(tags) and notname(names) and lessthing(names) and notages(tags) end,
+		test = function(boilier, names, tags) return (names.rice_cooked or names.fwd_in_pdt_food_cooked_rice) and ((names.rice_cooked or 0) + (names.fwd_in_pdt_food_cooked_rice or 0)) == 2 and tags.sweetener and tags.frozen and notmeat(tags) and notname(names) and lessthing(names) and notages(tags) end,
 		priority = 2,
         health = 0,
         hunger = (TUNING.DRINK_CALORIES/2), --2.5 (12.5)
@@ -138,18 +138,6 @@ local legion_drink = {
 }
 
 local mfp_drink = {
-	orange_juice = {
-		test = function(boilier, names, tags) return (names.mfp_orange or names.mfp_orange_cooked) and tags.fruit and Preference(names, tags) and not tags.veggie and notmeat(tags) and notname(names) and lessthing(names) and notages(tags) end,
-		priority = 2,
-        health = TUNING.HEALING_MEDLARGE/5, -- 6 (30) ( MFP모드의 오렌지 쥬스 참고함)
-        hunger = TUNING.CALORIES_MEDSMALL/5, -- 3.75 (18.75)
-        sanity = TUNING.SANITY_TINY, -- 3 (15)
-        thirst = TUNING.HYDRATION_MEDSMALL, -- 22.5
-        perishtime = TUNING.PERISH_MED,
-		cooktime = TUNING.KETTLE_FRUIT,
-		potlevel = "mid",
-		potlevel_bottle = "mid",
-	},
 	strawberry_smoothie = {
 		test = function(boilier, names, tags) return (names.mfp_strawberry or names.mfp_strawberry_cooked) and tags.frozen and tags.fruit and Preference(names, tags) and not tags.veggie and notmeat(tags) and notname(names) and lessthing(names) and notages(tags) end,
 		priority = 2,
@@ -180,4 +168,19 @@ local mfp_drink = {
 	},
 }
 
-return { sw_drink = sw_drink, coconut_drink = coconut_drink, cf_drink = cf_drink, unc_drink = unc_drink, legion_drink = legion_drink, mfp_drink = mfp_drink }
+local orange_drink = {
+	orange_juice = {
+		test = function(boilier, names, tags) return (names.mfp_orange or names.mfp_orange_cooked or names.fwd_in_pdt_food_orange) and tags.fruit and Preference(names, tags) and not tags.veggie and notmeat(tags) and notname(names) and lessthing(names) and notages(tags) end,
+		priority = 2,
+        health = TUNING.HEALING_MEDLARGE/5, -- 6 (30) ( MFP모드의 오렌지 쥬스 참고함)
+        hunger = TUNING.CALORIES_MEDSMALL/5, -- 3.75 (18.75)
+        sanity = TUNING.SANITY_TINY, -- 3 (15)
+        thirst = TUNING.HYDRATION_MEDSMALL, -- 22.5
+        perishtime = TUNING.PERISH_MED,
+		cooktime = TUNING.KETTLE_FRUIT,
+		potlevel = "mid",
+		potlevel_bottle = "mid",
+	},
+}
+
+return { sw_drink = sw_drink, coconut_drink = coconut_drink, cf_drink = cf_drink, unc_drink = unc_drink, legion_drink = legion_drink, mfp_drink = mfp_drink, orange_drink = orange_drink }

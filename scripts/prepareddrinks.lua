@@ -327,7 +327,8 @@ local drinks =
 		cooktime = TUNING.KETTLE_LUXURY_GOODS,
 		potlevel = "mid",
 		potlevel_bottle = "high",
-		prefabs = { "sleepdrinkbuff", "healthregenbuff","honeyed" },
+		tags = {"honeyed"},
+		prefabs = { "sleepdrinkbuff", "healthregenbuff" },
 		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_MULLED,
 		oneatenfn = function(inst, eater)
 			eater:AddDebuff("sleepdrinkbuff", "sleepdrinkbuff")
@@ -601,7 +602,7 @@ local drinks =
 }
 
 local mod_drink = require("modcompats/prepareddrinks_mod")
-local hof, ia, te, mfp = false, false, false, false
+local hof, ia, te, mfp, fwd = false, false, false, false
 
 for k,mod_id in ipairs(KnownModIndex:GetModsToLoad()) do 
 	if mod_id == "workshop-2334209327" then
@@ -620,6 +621,9 @@ for k,mod_id in ipairs(KnownModIndex:GetModsToLoad()) do
 	if mod_id == "workshop-1467214795" then
 		ia = true
 	end
+	if mod_id == "workshop-3054476656" then -- fwd
+		fwd = true
+	end
 	if mod_id == "workshop-1289779251" then -- cf
 		local cf_drink = mod_drink.cf_drink
 		for k,v in pairs(cf_drink) do
@@ -637,6 +641,13 @@ for k,mod_id in ipairs(KnownModIndex:GetModsToLoad()) do
 		for k,v in pairs(legion_drink) do
 			drinks[k] = v
 		end
+	end
+end
+
+if mfp or fwd then
+	local orange_drink = mod_drink.orange_drink
+	for k,v in pairs(orange_drink) do
+		drinks[k] = v
 	end
 end
 

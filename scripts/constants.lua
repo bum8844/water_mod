@@ -143,6 +143,8 @@ FOODTYPEGROUP =
 		"kyno_parznip_eaten",
 		--mfp
 		"mfp_parsnip_eaten",
+		--fwd
+		"fwd_in_pdt_food_soybeans",
 	},
 
 	TYPEFRUIT = 
@@ -168,6 +170,10 @@ FOODTYPEGROUP =
 		"mfp_coffeecherry",
 		"mfp_strawberry",
 		"mfp_orange",
+		--fwd
+		"fwd_in_pdt_food_orange",
+		"fwd_in_pdt_food_mango",
+		"fwd_in_pdt_food_mango_green",
 	},
 
 	TYPEFRUIT_HAS_HALVED = 
@@ -272,6 +278,12 @@ FOODTYPEGROUP =
 		"mfp_tomato_soup",
 		"mfp_vegetable_soup",
 		"mfp_stone_soup",
+		--fwd
+		"fwd_in_pdt_food_mixed_potato_soup",
+		"fwd_in_pdt_food_red_mushroom_soup",
+		"fwd_in_pdt_food_green_mushroom_soup",
+		"fwd_in_pdt_food_yogurt",
+		"fwd_in_pdt_food_congee_with_meat_and_thousand_year_old_eggs",
 	},
 
 	NONE_HUNGER_INGREDIENT = 
@@ -331,6 +343,8 @@ FOODTYPEGROUP =
 			--hop
 			"kyno_milk_beefalo",
 			"kyno_milk_koalefant",
+			--fwd
+			"fwd_in_pdt_food_raw_milk",
 		},
 
 		MED = 
@@ -357,6 +371,8 @@ FOODTYPEGROUP =
 			"tentacicle",
 			"coldcuts",
 			"snowcone",
+			--fwd
+			"fwd_in_pdt_food_yogurt_ice_cream"
 		},
 
 		LARGE = 
@@ -378,6 +394,8 @@ FOODTYPEGROUP =
 			--mfp
 			"mfp_coffee",
 			"mfp_icedcoffee",
+			--fwd
+			"fwd_in_pdt_food_coffee",
 		},
 
 		MEDSMALL = 
@@ -410,10 +428,14 @@ FOODTYPEGROUP =
 			"mfp_cafemocha",
 			"mfp_orangejuice",
 			"mfp_strawberrylatte",
+			--fwd
+			"fwd_in_pdt_food_steamed_orange_with_honey",
 		},
 
 		MED = {
 			"gazpacho",
+			--fwd
+			"fwd_in_pdt_food_cooked_milk",
 		},
 
 		LARGE = 
@@ -453,6 +475,9 @@ FOODTYPEGROUP =
 			"milkshake_prismatic",
 			--mfp
 			"mfp_aloejuice",
+			--fwd
+			"fwd_in_pdt_food_saline_medicine",
+			"fwd_in_pdt_food_mango_ice_drink",
 		},
 		
 		HUGE = 

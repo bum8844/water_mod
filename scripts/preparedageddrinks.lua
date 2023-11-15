@@ -61,7 +61,8 @@ local drinks =
 		cooktime = (TUNING.KETTLE_LUXURY_GOODS + TUNING.SODA_WAIT),
 		potlevel = "mid",
 		potlevel_bottle = "mid",
-		prefabs = { "healthregenbuff","honeyed" },
+		tags = {"honeyed"},
+		prefabs = { "healthregenbuff" },
 		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_HEALTH_REGEN,
 		oneatenfn = function(inst, eater)
 			if not eater.components.health or eater.components.health:IsDead() or eater:HasTag("playerghost") then
@@ -84,7 +85,8 @@ local drinks =
 		cooktime = (TUNING.KETTLE_LUXURY_GOODS + TUNING.SODA_WAIT),
 		potlevel = "mid",
 		potlevel_bottle = "mid",
-		prefabs = { "healthregenbuff","caffeinbuff","honeyed" },
+		tags = {"honeyed"},
+		prefabs = { "healthregenbuff","caffeinbuff" },
 		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_COLA,
 		oneatenfn = function(inst, eater)
 			eater.caffeinbuff_duration = (TUNING.CAFFEIN_TIME/2)
@@ -344,6 +346,9 @@ for k,mod_id in ipairs(KnownModIndex:GetModsToLoad()) do
 	if mod_id == "workshop-1467214795" then
 		ia = true
 	end
+	if mod_id == "workshop-3054476656" then -- fwd
+		fwd = true
+	end
 	if mod_id == "workshop-1289779251" then -- cf
 		local cf_drink = mod_drink.cf_drink
 		for k,v in pairs(cf_drink) do
@@ -362,6 +367,13 @@ for k,mod_id in ipairs(KnownModIndex:GetModsToLoad()) do
 			drinks[k] = v
 		end
 	end 
+end
+
+if mfp or fwd then
+	local orange_drink = mod_drink.orange_drink
+	for k,v in pairs(orange_drink) do
+		drinks[k] = v
+	end
 end
 
 if te or ia then
