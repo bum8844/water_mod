@@ -10,7 +10,7 @@ return {
 
 	ANNOUNCE_DRUNK = "경고: 화ㅏ하ㅏㅏㄱ 에ㅔㅔ엔ㅈㅈ진 ㅇ이사ㅏㅏㅏㅇ 출력", -- 취함
 	ANNOUNCE_DRUNK_END = "화학 엔진 출력 안정화", --술에서 좀 깸 (그로기)
-	ANNOUNCE_DRUNK_IMMUNITY = "", --임시. 위그 전용,
+	ANNOUNCE_DRUNK_IMMUNITY = "only_used_by_wathgrithr", --임시. 위그 전용,
 	ANNOUNCE_NOTCHARGE = "해당 개체 충전 요구", --번개염소가 충전이 안되서 양동이로 젖을 짤수 없음
 	ANNOUNCE_NOTHIRSTSLEEP = "냉매 부족으로 수면 모드 불가", -- 목이 마른데 밤에 잘려고 시도
 	ANNOUNCE_NOTHIRSTSIESTA = "냉매 부족으로 세션 동결 불가", -- 목이 마른데 낮에 잘려고 시도
