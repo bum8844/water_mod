@@ -3,8 +3,8 @@ return {
 	{
 		GIVE =
 		{
-			WELL_NOTEMPTY = "", -- 우물에 말라 빈 양동이 달려있는데 양동이 달려 함
-			WELL_BUSY = "", -- 우물에 물 든 양동이 달려있는데 달려 함
+			WELL_NOTEMPTY = "", -- 우물에서 올라온 양동이 달려있는데 양동이 달려 함
+			WELL_BUSY = "", -- 우물에 안 에 양동이가 들어가 있는데 달려 함
 		}
 	},
 
@@ -168,7 +168,7 @@ return {
 		AUROBOW = "", -- 난파선 오로보우,무지개 해파리주
 		COCONUT_WINE = "", -- 난파선 코코넛 와인
 		CHERRY_BLOOM_MADHU = "", -- 체리숲 벚꽃꿀주
-		GIANT_BLUEBERRY_WINE = "", -- 비타협 붐!베리 사파이어(불 붙히면 폭발함)
+		GIANT_BLUEBERRY_WINE = "", -- 붐 베리 와인 (불 붙히면 폭발함)
 		RICE_WINE = "", -- 비타협 막걸리
 		WHEAT_BEER = "", -- 힙 오브 푸드 밀맥주
 		PALE_BEER = "", -- 레기온 페일에일 (몬스트라 열매를 쓴 청록색 맥주)
@@ -188,7 +188,7 @@ return {
 		BERRY_GIN = "", --진
 		GLOWBERRY_GIN = "", --글로우 베리 진
 		ABSINTHE = "", -- 압생트
-		TEA_LUMPY_VODKA = "", -- 보드카
+		TEA_LUMPY_VODKA = "", -- 녹차 리큐르
 		PETALS_BERRY_BRANDY = "", -- 장미향 브랜디
 		KAHLUA = "", -- 커피 리큐르 깔루아
 		NUT_CORN_WHISKY = "", -- 너트 위스키
