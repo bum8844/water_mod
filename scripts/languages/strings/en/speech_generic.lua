@@ -218,7 +218,7 @@ return {
 
 		BUCKET_STEEL_EMPTY = 
 		{
-			EMPTY = "I can fill it with water. Or something else.",
+			EMPTY = "It's a bucket made of iron.",
 			FULL = "It's full of rainwater",
 			FULL_ICE = "It's filled with ice",
 			DIRTY = "It's filled with dirty water",
@@ -227,7 +227,7 @@ return {
 
 		BUCKET_WOODIE_EMPTY = 
 		{
-			EMPTY = "I can fill it with water. Or something else.",
+			EMPTY = "It's roughly cut inside.",
 			FULL = "It's full of rainwater",
 			FULL_ICE = "It's filled with ice",
 			DIRTY = "It's filled with dirty water",

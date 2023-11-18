@@ -218,7 +218,7 @@ return {
 
 		BUCKET_STEEL_EMPTY = 
 		{
-			EMPTY = "물을 채울 수 있어. 물 말고 다른 걸 채워도 되고.",
+			EMPTY = "쇠로 만들어진 물동이야.",
 			FULL = "빗물로 가득 찼어",
 			FULL_ICE = "얼음으로 가득 찼어",
 			DIRTY = "더러운 물로 가득 찼어",
@@ -227,7 +227,7 @@ return {
 
 		BUCKET_WOODIE_EMPTY = 
 		{
-			EMPTY = "물을 채울 수 있어. 물 말고 다른 걸 채워도 되고.",
+			EMPTY = "거칠게 속을 깎아 냈어.",
 			FULL = "빗물로 가득 찼어",
 			FULL_ICE = "얼음으로 가득 찼어",
 			DIRTY = "더러운 물로 가득 찼어",

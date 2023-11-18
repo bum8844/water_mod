@@ -103,7 +103,7 @@ return {
 		CACTUSFLOWER_TEA = "엽육에서 즙을!", --선인꽃차 (JUICE FROM FLESH!) (AFS: 선인꽃차는 녹색입니다. 이천군수 자락서스 패러디)
 		LOTUSTEA = "물에 사는 꽃을 물로 끓인 것", --연꽃차
 		SUSHIBISCUS = "상당히 기묘함", -- 자살차
-		--MOON_BLOSSOM_TEA = "다른 무엇보다 우월함"
+		MOON_BLOSSOM_TEA = "다른 무엇보다 우월함", --달꽃차
 
 		CAFFEINBERRY_JUICE = "오버클럭용 냉각제", -- 블랙 커피
         TOFFEE_LATTE = "볼트 미포함", --토피넛 라떼(BOLT NOT INCLUDED)
