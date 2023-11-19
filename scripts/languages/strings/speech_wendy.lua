@@ -17,6 +17,11 @@ return {
 	ANNOUNCE_SLEEP_END = "", --자고 일어나서 술에서 완전히 깸 
 	ANNOUNCE_THIRST = "", --너무 목말라!
 
+    ANNOUNCE_CAFFINE_BUFF_START = "" , -- 카페인 버프 시작
+    ANNOUNCE_CAFFINE_BUFF_STOP = "" ,  -- 카페인 버프 끝
+    
+    ANNOUNCE_CURE_WATERBORNE = "" ,  -- 수인성 질병을 아이템으로 치료했을때의 대사
+
 	ANNOUNCE_DCAPACITY_CRITICAL = "창피한 건 잊어도 아비게일은 잊지 않을 거야.", --취하기 직전
 	ANNOUNCE_DCAPACITY_HALF = "왜 그렇게 창피해했는지 알겠네.", -- 취기가 돌기 시작
 

@@ -1,4 +1,3 @@
-
 return {
 	ACTIONFAIL =
 	{
@@ -17,6 +16,11 @@ return {
 	ANNOUNCE_NOTHIRSTSIESTA = "I'm too thirsty for a siesta!",
 	ANNOUNCE_SLEEP_END = "I feel much refreshed!",
 	ANNOUNCE_THIRST = "I'm so thirsty!",
+	
+    ANNOUNCE_CAFFINE_BUFF_START = "힘이 솟아 나는 것 같아." , -- 카페인 버프 시작
+    ANNOUNCE_CAFFINE_BUFF_STOP = "피로감이 느껴져..." ,  -- 카페인 버프 끝
+    
+    ANNOUNCE_CURE_WATERBORNE = "속이 좀 가라 앉았어." ,  -- 수인성 질병을 아이템으로 치료했을때의 대사
 
 	ANNOUNCE_DCAPACITY_CRITICAL = "My body feels so heavy...",
 	ANNOUNCE_DCAPACITY_HALF = "Is it hot out here, or is it me?",

@@ -20,6 +20,11 @@ return {
 	ANNOUNCE_DCAPACITY_CRITICAL = "아~ 왠지 고양 되는데?", --취하기 직전
 	ANNOUNCE_DCAPACITY_HALF = "불은 안 보이는데 따듯해!", -- 취기가 돌기 시작
 
+	ANNOUNCE_CAFFINE_BUFF_START = "왠지 불태우기 좋은 기분 이야." , -- 카페인 버프 시작
+    ANNOUNCE_CAFFINE_BUFF_STOP = "좋아, 내일로 미루자." ,  -- 카페인 버프 끝
+
+    ANNOUNCE_CURE_WATERBORNE = "그건 정말이지 끔찍했어." , -- 수인성 질병을 아이템으로 치료했을때의 대사
+
 	DESCRIBE =
 	{
 		BOILBOOK = "하나도 재미 없을 것 같아.",

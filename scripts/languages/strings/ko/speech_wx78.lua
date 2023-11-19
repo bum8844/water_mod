@@ -10,12 +10,17 @@ return {
 
 	ANNOUNCE_DRUNK = "경고: 화ㅏ하ㅏㅏㄱ 에ㅔㅔ엔ㅈㅈ진 ㅇ이사ㅏㅏㅏㅇ 출력", -- 취함
 	ANNOUNCE_DRUNK_END = "화학 엔진 출력 안정화", --술에서 좀 깸 (그로기)
-	ANNOUNCE_DRUNK_IMMUNITY = "only_used_by_wathgrithr", --임시. 위그 전용,
+	ANNOUNCE_DRUNK_IMMUNITY = "", --임시. 위그 전용,
 	ANNOUNCE_NOTCHARGE = "해당 개체 충전 요구", --번개염소가 충전이 안되서 양동이로 젖을 짤수 없음
 	ANNOUNCE_NOTHIRSTSLEEP = "냉매 부족으로 수면 모드 불가", -- 목이 마른데 밤에 잘려고 시도
 	ANNOUNCE_NOTHIRSTSIESTA = "냉매 부족으로 세션 동결 불가", -- 목이 마른데 낮에 잘려고 시도
 	ANNOUNCE_SLEEP_END = "화학 엔진 출력 정상화", --자고 일어나서 술에서 완전히 깸 
 	ANNOUNCE_THIRST = "냉각수 보충 필요", --너무 목말라!
+
+	ANNOUNCE_CAFFINE_BUFF_START = "모든 코어 비율 제한 : 49 " , -- 카페인 버프 시작 ( ALL CORE RATIO LIMIT : 49)
+    ANNOUNCE_CAFFINE_BUFF_STOP = "코어 리미트 재 설정중" ,  -- 카페인 버프 끝
+    
+    ANNOUNCE_CURE_WATERBORNE = "냉각수내 PH비율 조정중." ,  -- 78이는 실제로 사용되지 않음.
 
 	ANNOUNCE_DCAPACITY_CRITICAL = "경고: 화학 엔진 이상 출력", --취하기 직전
 	ANNOUNCE_DCAPACITY_HALF = "화학 엔진 출력 변동 발생", -- 취기가 돌기 시작
@@ -66,7 +71,7 @@ return {
 		ADDITIVE_SEED = "생명의 파괴는 즐거움", -- 리큐르에 제조에 첨가 할 씨허브(아니스,쥬니퍼베리,팔각 모티브)첨가제 
 		ADDITIVE_PETALS = "향미 증강용 이파리", -- 리큐르에 제조에 첨가 할 허브,녹차,꽃잎 첨가제
 		ADDITIVE_NUT = "단단한 첨가물", -- 리큐르에 제조에 첨가 할 버치넛,코코넛,커피콩,카카오콩 첨가제
-		ADDITIVE_DAIRY = "주류에 유제품을?", -- 리큐르에 제조에 첨가할 유제품 첨가제
+		ADDITIVE_DAIRY = "내 에탄올에 역겨운 불순물을 넣지 말아라.", -- 리큐르에 제조에 첨가할 유제품 첨가제
 
 		-- 음료
 
@@ -103,7 +108,7 @@ return {
 		CACTUSFLOWER_TEA = "엽육에서 즙을!", --선인꽃차 (JUICE FROM FLESH!) (AFS: 선인꽃차는 녹색입니다. 이천군수 자락서스 패러디)
 		LOTUSTEA = "물에 사는 꽃을 물로 끓인 것", --연꽃차
 		SUSHIBISCUS = "상당히 기묘함", -- 자살차
-		MOON_BLOSSOM_TEA = "다른 무엇보다 우월함", --달꽃차
+		MOON_BLOSSOM_TEA = "더 이상 소생 불능. 하 하 하"
 
 		CAFFEINBERRY_JUICE = "오버클럭용 냉각제", -- 블랙 커피
         TOFFEE_LATTE = "볼트 미포함", --토피넛 라떼(BOLT NOT INCLUDED)
@@ -112,7 +117,7 @@ return {
 		HOTRUINCOLATE = "카카오 냉각제", --핫초코
 		RUINCOLATE_SMOOTHIE = "고가당 카카오 냉각제", --초코 스무디(차가움)
 		RUINXOCOLATL = "무가당 카카오 냉각제", --쇼콜라틀(매캐함)
-		TEA_RUINCOLATE_LATTE = "분쇄된 찻잎 추출물", -- 말차 라떼
+		TEA_RUINCOLATE_LATTE = "분쇄된 찻잎과 콩 추출물", -- 말차 라떼
 
 		MULLED = "에탄올 대부분 소실", --뱅쇼
 		BUTTERBEER = "무알콜 에탄올 부동액", --해리포터 시리즈의 버터비어(ETHANOL-FREE ETHANOL ANTIFREEZE)
@@ -153,7 +158,7 @@ return {
 		GLOWBERRYWINE = "자체발광성 술", --글로우 베리 와인
 		KUMIS = " '/d3d7d4'/ 유지됨", -- 크므즈,산양유주 (포밍레인: d3d7d4는 유백색의 색상코드)
 		LUMPY_WINE = "유기체의 뿌리는 다양한 용도로 사용", --서주(감자 고구마등 뿌리 술)
-		PULQUE = "녹색 본판과 다르게 복제본은 흰색임", --풀케(선인주)
+		PULQUE = "포함된 미생물의 자가진화의 끝은 언제인가.", --풀케(선인주)
 		RUINCACAO_WINE = "카카오. 새로운 가능성 발견됨", -- 카카오 와인 
 
 		-- 콜라보 소다
@@ -167,17 +172,17 @@ return {
 
 		AUROBOW = "유희 애드온 포함", -- 난파선 오로보우,무지개 해파리주
 		COCONUT_WINE = "음용화된 윤활유", -- 난파선 코코넛 와인
-		CHERRY_BLOOM_MADHU = "기생당한 유기체의 우수한 생산물", -- 체리숲 벚꽃꿀주
+		CHERRY_BLOOM_MADHU = "기성 에탄올", -- 체리숲 벚꽃꿀주
 		GIANT_BLUEBERRY_WINE = "여전히 위험함", -- 비타협 붐!베리 사파이어(불 붙히면 폭발함)
 		RICE_WINE = "부산물 가공체", -- 비타협 막걸리
 		WHEAT_BEER = "곡물 낭비임", -- 힙 오브 푸드 밀맥주
-		PALE_BEER = "창백한 유기체의 색임", -- 레기온 페일에일 (몬스트라 열매를 쓴 청록색 맥주)
+		PALE_BEER = "대중적인 부동액임", -- 레기온 페일에일 (몬스트라 열매를 쓴 청록색 맥주)
 
 		--증류주
 
 		DISINFECTANT = "살균성 수선제", -- 소독약(ANTISEPTIC REPAIR AGENT)
 		CORN_WHISKEY = "농도 심화됨", -- 콘 위스키
-		LUMPY_VODKA = "알코올 농도 굉장히 높음", -- 보드카
+		LUMPY_VODKA = "에탄올 농도 굉장히 높음", -- 보드카
 		TEQUILA = "태양의 적외선과 공명", -- 데킬라
 		MADHU_RUM = "배 위의 환경과 호환됨", -- 럼주
 		BERRY_BRANDY = "참으로 긴 공정", -- 베리 브랜디
@@ -186,20 +191,20 @@ return {
 		--왈리 전용 증류주
 
 		BERRY_GIN = "인간 사회에서 대중적임", --진
-		GLOWBERRY_GIN = "여전히 발광함", --글로우 베리 진
+		GLOWBERRY_GIN = "발광성 에탄올", --글로우 베리 진
 		ABSINTHE = "귀를 자르도록 만듬", -- 압생트
-		TEA_LUMPY_VODKA = "내 알코올 수용체가 버틸 것인가?", -- 보드카
-		PETALS_BERRY_BRANDY = "요리사는 술 제조를 겸직하도록", -- 장미향 브랜디
-		KAHLUA = "카페인 콩 첨가됨", -- 커피 리큐르 깔루아
+		TEA_LUMPY_VODKA = "엽록소 대량 포함", -- 녹차 리큐르
+		PETALS_BERRY_BRANDY = "디퓨저로나 딱이다", -- 장미향 브랜디
+		KAHLUA = "고 에너지 기능 포함", -- 커피 리큐르 깔루아
 		NUT_CORN_WHISKY = "볼트는 어디에 있는가", -- 너트 위스키
-        RUINCACAO_CREAM_LIQUEUR = "씁쓸함과 부드러움이 공존", --베일리스 카카오 크림 리큐르
-        RUMCHATA = "또 다른 유제품 함유물", -- 럼차타(럼에 오우차타 라는 유제품 섞은)
+        RUINCACAO_CREAM_LIQUEUR = "역겨운 타르와 단백질의 에탄올 추출물", --베일리스 카카오 크림 리큐르
+        RUMCHATA = "역겨운 유기물을 어째서", -- 럼차타(럼에 오우차타 라는 유제품 섞은)
 
 		--콜라보 증류주
 
-		MOONWAY = "빛나는 유기체. 많은 과정을 거침", -- 무지개 해파리주 증류주
-		ARRACK = "향이 놀라울정도로 강함", -- 아락 인도네시아 버전 코코넛 와인 증류주
-		CHERRY_BLOOM_RUM = "증류되었음에도 여전히 담", -- 체리 꿀주 증류주 벛꽃잎 떠다
+		MOONWAY = "발광성 유기물질 보존함.", -- 무지개 해파리주 증류주
+		ARRACK = "고 섬유질성 에탄올", -- 아락 인도네시아 버전 코코넛 와인 증류주
+		CHERRY_BLOOM_RUM = "쓸데 없는 VFX 포함", -- 체리 꿀주 증류주 벛꽃잎 떠다
 		RICE_SPIRITS = "부산물이 남음", --청주
 		WHEAT_WHISKEY = "내 시간과 귀한 곡물을 투자함", -- 밀 위스크
 		PALE_WHISKEY = "미국 방식", -- 페일 몰트 위스키

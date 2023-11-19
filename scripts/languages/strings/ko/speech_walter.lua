@@ -17,6 +17,11 @@ return {
 	ANNOUNCE_SLEEP_END = "자고 일어나니까 좀 괜찮은 것 같아.",
 	ANNOUNCE_THIRST = "잠깐 목 좀 축이는 게 어떨까?",
 
+	ANNOUNCE_CAFFINE_BUFF_START = "지금 바로 탐험에 나가고 싶어." , -- 카페인 버프 시작
+    ANNOUNCE_CAFFINE_BUFF_STOP = "왠지 좀 피곤해..." ,  -- 카페인 버프 끝
+    
+    ANNOUNCE_CURE_WATERBORNE = "아픈게 좀 가라 앉았어." ,  -- 수인성 질병을 아이템으로 치료했을때의 대사
+
 	ANNOUNCE_DCAPACITY_CRITICAL = "몸이 어째 무거워...",
 	ANNOUNCE_DCAPACITY_HALF = "뭔가 기분이 좀 이상해...",
 

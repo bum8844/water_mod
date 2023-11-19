@@ -17,6 +17,11 @@ return {
 	ANNOUNCE_SLEEP_END = "¡Me siento renovado!",
 	ANNOUNCE_THIRST = "¡Tengo bastante sed!",
 
+    ANNOUNCE_CAFFINE_BUFF_START = "" , -- 카페인 버프 시작
+    ANNOUNCE_CAFFINE_BUFF_STOP = "" ,  -- 카페인 버프 끝
+    
+    ANNOUNCE_CURE_WATERBORNE = "" ,  -- 수인성 질병을 아이템으로 치료했을때의 대사
+
 	ANNOUNCE_DCAPACITY_CRITICAL = "Mi cuerpo se siente pesado...",
 	ANNOUNCE_DCAPACITY_HALF = "Hace calor aquí afuera, ¿O soy yo?",
 

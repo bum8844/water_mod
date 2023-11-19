@@ -17,6 +17,11 @@ return {
 	ANNOUNCE_SLEEP_END = "자고 나니까 좀 상쾌하네!",
 	ANNOUNCE_THIRST = "너무 목말라!",
 
+    ANNOUNCE_CAFFINE_BUFF_START = "힘이 솟아 나는 것 같아." , -- 카페인 버프 시작
+    ANNOUNCE_CAFFINE_BUFF_STOP = "피로감이 느껴져..." ,  -- 카페인 버프 끝
+    
+    ANNOUNCE_CURE_WATERBORNE = "속이 좀 가라 앉았어." ,  -- 수인성 질병을 아이템으로 치료했을때의 대사
+
 	ANNOUNCE_DCAPACITY_CRITICAL = "몸이 좀 축 쳐져...",
 	ANNOUNCE_DCAPACITY_HALF = "뭔가 더운데 기분 탓인가?",
 
