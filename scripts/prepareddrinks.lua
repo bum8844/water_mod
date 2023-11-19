@@ -238,7 +238,9 @@ local drinks =
 				else
 					eater.components.talker:Say(GetString(eater,"ANNOUNCE_EAT","PAINFUL"))
 				end
-				eater.components.debuffable:RemoveDebuff("waterbornedebuff")
+				if eater.components.debuffable:HasDebuff("waterbornedebuff") then
+					eater.components.debuffable:RemoveDebuff("waterbornedebuff")
+				end
 			end
 		end
 	},
@@ -256,7 +258,10 @@ local drinks =
 		potlevel_bottle = "mid",
 		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_CURE_WATERBORNE,
 		oneatenfn = function(inst, eater)
-			eater.components.debuffable:RemoveDebuff("waterbornedebuff")
+			if eater.components.debuffable:HasDebuff("waterbornedebuff") then 
+				eater.components.talker:Say(GetString(eater,"ANNOUNCE_CURE_WATERBORNE"))
+				eater.components.debuffable:RemoveDebuff("waterbornedebuff")
+			end
 		end,
 	},
 
@@ -417,7 +422,10 @@ local drinks =
 		potlevel_bottle = "mid",
 		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_CURE_WATERBORNE,
 		oneatenfn = function(inst, eater)
-			eater.components.debuffable:RemoveDebuff("waterbornedebuff")
+			if eater.components.debuffable:HasDebuff("waterbornedebuff") then
+				eater.components.talker:Say(GetString(eater,"ANNOUNCE_CURE_WATERBORNE"))
+				eater.components.debuffable:RemoveDebuff("waterbornedebuff")
+			end
 		end,
 	},
 	

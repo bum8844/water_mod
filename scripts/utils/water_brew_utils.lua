@@ -296,18 +296,30 @@ end
 
 -- 술 관련 효과를 주는 코드
 
+local function checkcharging(eater)
+	return inst.components.upgrademoduleowner and inst.components.upgrademoduleowner:ChargeIsMaxed()
+end
+
+local function notspiritstags(eater)
+	return not eater:HasTag("mightiness_mighty") or not checkcharging(eater)
+end
+
+local function notalcoholtags(eater)
+	return not eater:HasTag("valkyrie") or notspiritstags(eater)
+end
+
 function alcohol(inst, eater)
 	if eater:HasTag("player") then
 		eater.components.dcapacity:Start_Intoxication(TUNING.ALCOHOL_CAPACITY)
 		if eater.components.dcapacity:IsDrunk() then
-			if not eater:HasTag("valkyrie") then
+			if not notalcoholtags(eater) then
 				eater:AddDebuff("alcoholdebuff", "alcoholdebuff")
 				eater:AddDebuff("drunkarddebuff", "drunkarddebuff")
 			else
 				eater.components.talker:Say(GetString(eater,"ANNOUNCE_DRUNK_IMMUNITY"))
 			end
 		else
-			if not eater:HasTag("valkyrie") then
+			if not notalcoholtags(eater) then
 				if eater.components.dcapacity:IsCritical() then
 					eater.components.talker:Say(GetString(eater,"ANNOUNCE_DCAPACITY_CRITICAL"))
 				elseif eater.components.dcapacity:IsHalf() then
@@ -327,13 +339,19 @@ function spirits(inst, eater)
 	if eater:HasTag("player") then
 		eater.components.dcapacity:Start_Intoxication(TUNING.SPIRITS_CAPACITY)
 		if eater.components.dcapacity:IsDrunk() then
-			eater:AddDebuff("alcoholdebuff", "alcoholdebuff")
-			eater:AddDebuff("drunkarddebuff", "drunkarddebuff")
+			if not notspiritstags(eater) then
+				eater:AddDebuff("alcoholdebuff", "alcoholdebuff")
+				eater:AddDebuff("drunkarddebuff", "drunkarddebuff")
+			else
+				eater.components.talker:Say(GetString(eater,"ANNOUNCE_DRUNK_IMMUNITY"))
+			end
 		else
-			if eater.components.dcapacity:IsCritical() then
-				eater.components.talker:Say(GetString(eater,"ANNOUNCE_DCAPACITY_CRITICAL"))
-			elseif eater.components.dcapacity:IsHalf() then
-				eater.components.talker:Say(GetString(eater,"ANNOUNCE_DCAPACITY_HALF"))
+			if not notalcoholtags(eater) then
+				if eater.components.dcapacity:IsCritical() then
+					eater.components.talker:Say(GetString(eater,"ANNOUNCE_DCAPACITY_CRITICAL"))
+				elseif eater.components.dcapacity:IsHalf() then
+					eater.components.talker:Say(GetString(eater,"ANNOUNCE_DCAPACITY_HALF"))
+				end
 			end
 		end
 		eater:AddDebuff("immunebuff", "immunebuff")

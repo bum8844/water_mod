@@ -251,6 +251,7 @@ local function fn_obe()
 end
 
 local function OnAttached_caffein(inst, target)
+    target:PushEvent("foodbuffattached", { buff = "ANNOUNCE_CAFFINE_BUFF_START", priority = 1 })
     inst.components.timer:StartTimer("caffeinbuff_done", target.caffeinbuff_duration or TUNING.CAFFEIN_TIME)
     inst.entity:SetParent(target.entity)
     inst.Transform:SetPosition(0, 0, 0)
@@ -263,6 +264,7 @@ local function OnAttached_caffein(inst, target)
 end
 
 local function OnDetached_caffein(inst, target)
+    target:PushEvent("foodbuffdetached", { buff = "ANNOUNCE_CAFFINE_BUFF_STOP", priority = 1 })
     if target.components.locomotor ~= nil then
         target.components.locomotor:RemoveExternalSpeedMultiplier(target, "caffeinbuff")
     end
@@ -343,10 +345,15 @@ local function OnDetached_alcohol(inst, target)
     end
     inst:Remove()
 end
+local function checkcharging(eater)
+    return inst.components.upgrademoduleowner and inst.components.upgrademoduleowner:ChargeIsMaxed()
+end
 
 local function OnExtended_alcohol(inst, target)
-    inst.components.timer:StopTimer("alcoholdebuff_done")
-    inst.components.timer:StartTimer("alcoholdebuff_done", TUNING.INTOXICATION_TIME)
+    if not eater:HasTag("mightiness_mighty") or not checkcharging(eater) then
+        inst.components.timer:StopTimer("alcoholdebuff_done")
+        inst.components.timer:StartTimer("alcoholdebuff_done", TUNING.INTOXICATION_TIME)
+    end
 end
 
 local function OnTimerDone_alcohol(inst, data)
