@@ -5,8 +5,8 @@ local MAXREFRASHING = TUNING.PERISH_FAST
 
 local assets =
 {
-    Asset("ANIM", "anim/barrel.zip"),
-	Asset("ANIM", "anim/barrel_meter_water.zip"),
+    Asset("ANIM", "anim/barrel_dehy.zip"),
+	Asset("ANIM", "anim/barrel_dehy_meter_water.zip"),
 }
 
 local prefabs =
@@ -85,7 +85,7 @@ end
 local function OnSectionChange(new, old, inst)
 	if inst._waterlevel ~= new then
 		inst._waterlevel = new
-		inst.AnimState:OverrideSymbol("swap", "barrel_meter_water", tostring(new))
+		inst.AnimState:OverrideSymbol("swap", "barrel_dehy_meter_water", tostring(new))
 	end
 end
 
@@ -111,10 +111,10 @@ local function fn()
 	
     MakeObstaclePhysics(inst, .1)
 	
-    inst.AnimState:SetBuild("barrel")
-    inst.AnimState:SetBank("waterbarrel")
+    inst.AnimState:SetBuild("barrel_dehy")
+    inst.AnimState:SetBank("barrel_dehy")
     inst.AnimState:PlayAnimation("idle")
-	inst.AnimState:OverrideSymbol("swap","barrel_meter_water", "0")
+	inst.AnimState:OverrideSymbol("swap","barrel_dehy_meter_water", "0")
 	
 	inst:AddTag("structure")
 	inst:AddTag("barrel")
@@ -176,4 +176,4 @@ local function fn()
 end
 
 return Prefab("barrel", fn, assets),
-MakePlacer("barrel_placer", "waterbarrel", "barrel", "idle")
+MakePlacer("barrel_placer", "barrel_dehy", "barrel_dehy", "idle")
