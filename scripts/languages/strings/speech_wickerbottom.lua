@@ -8,75 +8,75 @@ return {
 		}
 	},
 
-	ANNOUNCE_DRUNK = "", -- 취함
-	ANNOUNCE_DRUNK_END = "", --술에서 좀 깸 (그로기)
+	ANNOUNCE_DRUNK = "정신적.으..로...으흠..흠..", -- 취함
+	ANNOUNCE_DRUNK_END = "아무튼 과음은 절대 금물이란다.", --술에서 좀 깸 (그로기)
 	ANNOUNCE_DRUNK_IMMUNITY = "", --임시. 위그 전용,
-	ANNOUNCE_NOTCHARGE = "", --번개염소가 충전이 안되서 양동이로 젖을 짤수 없음
+	ANNOUNCE_NOTCHARGE = "젖을 짤 수 있는 상태가 아니란다.", --번개염소가 충전이 안되서 양동이로 젖을 짤수 없음
 	ANNOUNCE_NOTHIRSTSLEEP = "", -- 목이 마른데 밤에 잘려고 시도
 	ANNOUNCE_NOTHIRSTSIESTA = "", -- 목이 마른데 낮에 잘려고 시도
 	ANNOUNCE_SLEEP_END = "", --자고 일어나서 술에서 완전히 깸 
-	ANNOUNCE_THIRST = "", --너무 목말라!
+	ANNOUNCE_THIRST = "사서에게 마실 것이 필요해.", --너무 목말라!
 
     ANNOUNCE_CAFFINE_BUFF_START = "" , -- 카페인 버프 시작
     ANNOUNCE_CAFFINE_BUFF_STOP = "" ,  -- 카페인 버프 끝
     
     ANNOUNCE_CURE_WATERBORNE = "" ,  -- 수인성 질병을 아이템으로 치료했을때의 대사
 
-	ANNOUNCE_DCAPACITY_CRITICAL = "", --취하기 직전
-	ANNOUNCE_DCAPACITY_HALF = "", -- 취기가 돌기 시작
+	ANNOUNCE_DCAPACITY_CRITICAL = "과음하면 안 된단다. 과음은 간과 소화기에 악영향을 주고...", --취하기 직전
+	ANNOUNCE_DCAPACITY_HALF = "적당한 음주는 몸에 어느 정도 이롭단다.", -- 취기가 돌기 시작
 
 	DESCRIBE =
 	{
-		BOILBOOK = "",
+		BOILBOOK = "음료 정보 모음집이란다.",
 
-		WATER_CLEAN_ICE = "",--깨끗한 얼음물
-		WATER_DIRTY_ICE = "", --더러운 얼음물
+		WATER_CLEAN_ICE = "고체 상태의 물이야.",--깨끗한 얼음물
+		WATER_DIRTY_ICE = "박테리아가 포함된 고체 상태의 물이야.", --더러운 얼음물
 
-		SPICE_CAFFEINPEPPER = "" --후추 향신료
+		SPICE_CAFFEINPEPPER = "과거에는 매우 귀한 향신료였단다." --후추 향신료
 
-		WELL_KIT = "", --우물 키트
-		WELL_SPRINKLER_KIT = "", --스프링클러 키트
-		WELL_WATERPUMP_KIT = "", --스팀 물펌프 키트
-		WELL_BURYING_KIT = "", -- 구멍 매설 키트
+		WELL_KIT = "깊은 수맥에서 물을 기기 위해 쓰는 건축물 재료란다.", --우물 키트
+		WELL_SPRINKLER_KIT = "농사할때 깊은 수맥에서 물을 끓어다 쓰는 기계지.", --스프링클러 키트
+		WELL_WATERPUMP_KIT = "깊은 수맥에서 물을 퍼올리기 위한 기계란다. ", --스팀 물펌프 키트
+		WELL_BURYING_KIT = "수맥이 비거나 더이상 안 사용할때 매꾸는 도구들이지.", -- 구멍 매설 키트
 		WELL_DRILLING = "", --드릴로 구멍 뚫는 중
-		WELL_DRILLING_ITEM = "", --드릴 아이템
-		HOLE = "", --우물 구멍
-		WELL = "", --우물
+		WELL_DRILLING_ITEM = "수맥이 있을만한 적당한 장소를 찾아야겠어.", --드릴 아이템
+		HOLE = "물소리가 들리는걸 보니 재대로 팠구나.", --우물 구멍
+		WELL = "깊은 수맥에서 물을 기기 위해 쓰는 건축물이지", --우물
 
 		-- 물 모드 식물
 
 		TEA_TREE = "",--차나무
-		DUG_TEA_TREE = "", --땅에서 파낸 차나무
+		DUG_TEA_TREE = "성장하려면 토양이 필요하단다.", --땅에서 파낸 차나무
 		TEA_SEED = "", -- 차나무 열매
 		TEA_SEED_COOKED = "", --구운 차나무 열매
 		TEA_SEED_SAPLING = "", --차나무 새싹
 		TEALEAVES = "", --찻잎
 		TEALEAVES_DRIED = "", --말린 찻잎
 
-		CAFFEINBERRY = "", --커피 덤불
-		DUG_CAFFEINBERRY = "", --파낸 커피덤불
-		CAFFEINBERRY_BEAN = "", --생 커피콩
-		CAFFEINBERRY_BEAN_COOKED = "", --구운 커피콩
+		CAFFEINBERRY = "달 토양에서 자란 낮은 덤불이란다.", --커피 덤불
+		DUG_CAFFEINBERRY = "커피속과 후추속의 특징이 혼합돼 있구나.", --파낸 커피덤불
+		CAFFEINBERRY_BEAN = "향이 특이하구나.", --생 커피콩
+		CAFFEINBERRY_BEAN_COOKED = "볶으니 진한 커피향과 약간의 후추향이 나는구나.", --구운 커피콩
 
-		RUINCACAO_TREE = "", --카카오 나무
+		RUINCACAO_TREE = "열매가 싱크홀 아래로 떨어져 내린 게 틀림없구나.", --카카오 나무
 		DUG_RUINCACAO_TREE = "", --파낸 카카오 나무
 		RUINCACAO_SEED = "", --카카오 새싹 아이템
 		RUINCACAO_SEED_SAPLING = "", -- 카카오 새싹 심은거
-		RUINCACAO = "", --부수기 전 카카오 열매
+		RUINCACAO = "고대 아즈텍에서는 화폐로 이용되었었지.", --부수기 전 카카오 열매
 		RUINCACAO_BEAN = "", --부순 후 카카오 콩  
 		RUINCACAO_BEAN_COOKED = "", --구운 카카오 콩
 
 		-- 증류주 첨가제
 
-		ADDITIVE_SEED = "", -- 리큐르에 제조에 첨가 할 씨허브(아니스,쥬니퍼베리,팔각 모티브)첨가제 
-		ADDITIVE_PETALS = "", -- 리큐르에 제조에 첨가 할 허브,녹차,꽃잎 첨가제
-		ADDITIVE_NUT = "", -- 리큐르에 제조에 첨가 할 버치넛,코코넛,커피콩,카카오콩 첨가제
-		ADDITIVE_DAIRY = "", -- 리큐르에 제조에 첨가할 유제품 첨가제
+		ADDITIVE_SEED = "리큐르에 씨앗향을 나게 만들어 준단다.", -- 리큐르에 제조에 첨가 할 씨허브(아니스,쥬니퍼베리,팔각 모티브)첨가제 
+		ADDITIVE_PETALS = "리큐르에 잎과 꽃 향을 나게 만들어 준단다.", -- 리큐르에 제조에 첨가 할 허브,녹차,꽃잎 첨가제
+		ADDITIVE_NUT = "리큐르에 열매향을 나게 만들어 준단다.", -- 리큐르에 제조에 첨가 할 버치넛,코코넛,커피콩,카카오콩 첨가제
+		ADDITIVE_DAIRY = "리큐르에 고소한 향을 나게 만들어 준단다.", -- 리큐르에 제조에 첨가할 유제품 첨가제
 
 		-- 음료
 
-		WATER_CLEAN = "", --깨끗한 물
-		WATER_DIRTY = "", --더러운 물
+		WATER_CLEAN = "사람 몸에 필수 요소란다.", --깨끗한 물
+		WATER_DIRTY = "물에 박테리아가 들끓고 있어.", --더러운 물
 		WATER_SALTY = "", --바닷물
 
 		GOOPYDRINK = "", --실패한 음료(웻 굽 개념)
@@ -95,14 +95,14 @@ return {
 		VEGGIE_TEA = "", --녹즙
 		CARROT_TEA = "", --당근차
 		CACTUS_TEA = "", --선인차
-		TOMATO_JUICE = "", --토마토 쥬스
-		LUMPY_TEA = "" --뿌리차,
+		TOMATO_JUICE = "이 음료에는 알콜을 해독하는데 도움을 주는 성분이 있구나.", --토마토 쥬스
+		LUMPY_TEA = "이 음료에는 풍토병을 완화 시켜주는 성분이 있단다." --뿌리차,
 		SEAWEED_SHAKE = "", --해초 쉐이크
 		
 		GREENTEA = "", --생잎 녹차
 		BLACKTEA = "", --홍차
 		BLACKTEA_ICED = "", -- 홍차 아이스티
-		FUER = "", --보이차,이파리차,고사리차
+		FUER = "이 음료에는 풍토병에 걸렸을때 도움을 주는 성분이 있구나.", --보이차,이파리차,고사리차
 		MIXFLOWER = "", --잡 꽃잎 차
 		HIBISCUSTEA = "", --히비스커스 차
 		CACTUSFLOWER_TEA = "", --선인꽃차
@@ -110,13 +110,13 @@ return {
 		SUSHIBISCUS = "", -- 자살차
 		MOON_BLOSSOM_TEA = "", --달꽃차
 
-		CAFFEINBERRY_JUICE = "", -- 블랙 커피
+		CAFFEINBERRY_JUICE = "난 커피 한 잔과 책을 좋아한단다.", -- 블랙 커피
         TOFFEE_LATTE = "", --토피넛 라떼
 		RUINCHA_LATTE = "", --모카 라떼(커피+초코)
 		
 		HOTRUINCOLATE = "", --핫초코
 		RUINCOLATE_SMOOTHIE = "", --초코 스무디(차가움)
-		RUINXOCOLATL = "", --쇼콜라틀(매캐함)
+		RUINXOCOLATL = "고대 아즈텍에서 부터 유래된 음료이지.", --쇼콜라틀(매캐함)
 		TEA_RUINCOLATE_LATTE = "", -- 말차 라떼
 
 		MULLED = "", --뱅쇼
@@ -137,7 +137,7 @@ return {
 
 		--양조기 음료
 
-		SPOILED_DRINK = "", --썩은 음료
+		SPOILED_DRINK = "마실 것이 생물학적 위험이 되어가고 있어.", --썩은 음료
 
 		-- 양조소다
 	
@@ -223,29 +223,29 @@ return {
 
 		BUCKET_STEEL_EMPTY = 
 		{
-			EMPTY = "", --빈 양철 양동이
-			FULL = "", -- 깨끗한 빗물이 참
-			FULL_ICE = "", -- 빗물이 얼어버림
-			DIRTY = "", --빗물이 더러워짐
-			DIRTY_ICE = "", --더러운 빗물이 얼어버림
+			EMPTY = "철 재질로 만들어진 동이란다.", --빈 양철 양동이
+			FULL = "마실수 있는 깨끗한 물이야.", -- 깨끗한 빗물이 참
+			FULL_ICE = "작은 얼음 덩어리야.", --빗물이 얼어버림
+			DIRTY = "박테리아가 들끓고 있는 물이야.", --빗물이 더러워짐
+			DIRTY_ICE = "박테리아가 포함된 작은 얼음 덩어리야.", --더러운 빗물 얼어버림
 		},
 
 		BUCKET_WOODIE_EMPTY = 
 		{
-			EMPTY = "", --우디의 빈 나무 양동이
-			FULL = "",  --깨끗한 빗물이 참
-			FULL_ICE = "", --빗물이 얼어버림
-			DIRTY = "", --빗물이 더러워짐
-			DIRTY_ICE = "", --더러운 빗물 얼어버림
+			EMPTY = "통나무로 만들어진 동이란다.", --우디의 빈 나무 양동이
+			FULL = "마실수 있는 깨끗한 물이야.", -- 깨끗한 빗물이 참
+			FULL_ICE = "작은 얼음 덩어리야.", --빗물이 얼어버림
+			DIRTY = "박테리아가 들끓고 있는 물이야.", --빗물이 더러워짐
+			DIRTY_ICE = "박테리아가 포함된 작은 얼음 덩어리야.", --더러운 빗물 얼어버림
 		},
 
 		BUCKET_EMPTY = 
 		{
-			EMPTY = "", -- 빈 나무 양동이
-			FULL = "", -- 깨끗한 빗물이 참
-			FULL_ICE = "", --빗물이 얼어버림
-			DIRTY = "", --빗물이 더러워짐
-			DIRTY_ICE = "", --더러운 빗물 얼어버림
+			EMPTY = "나무로 만들어진 동이란다.", -- 빈 나무 양동이
+			FULL = "마실수 있는 깨끗한 물이야.", -- 깨끗한 빗물이 참
+			FULL_ICE = "작은 얼음 덩어리야.", --빗물이 얼어버림
+			DIRTY = "박테리아가 들끓고 있는 물이야.", --빗물이 더러워짐
+			DIRTY_ICE = "박테리아가 포함된 작은 얼음 덩어리야.", --더러운 빗물 얼어버림
 		},
 
 		DESALINATOR =
@@ -330,10 +330,10 @@ return {
 		},
 
 		WELL_WATERPUMP = {
-			HIGH_PRESSURE = "", -- 압력 최대
-			MIDDLE_PRESSURE = "", -- 압력이 중간
-			LOW_PRESSURE = "", -- 압력이 거의 없을때
-			RECHARG_PRESSURE = "", -- 압력이 아예 없을때(여기까지 쓰면 압력이 최대가 될때까지 못씀.)
+			HIGH_PRESSURE = "압력이 매우 충분하단다.", -- 압력 최대
+			MIDDLE_PRESSURE = "압력이 적당하단다.", -- 압력이 중간
+			LOW_PRESSURE = "압력이 매우 낮구나.", -- 압력이 거의 없을때
+			RECHARG_PRESSURE = "압력이 충전될 때까지 사용을 못한단다.", -- 압력이 아예 없을때(여기까지 쓰면 압력이 최대가 될때까지 못씀.)
 		},
 		
 		WELL_SPRINKLER =
