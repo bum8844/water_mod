@@ -11,29 +11,29 @@ local function SetDrinkableAction(inst)
 end
 
 local function checkcharging(eater)
-	return inst.components.upgrademoduleowner and inst.components.upgrademoduleowner:ChargeIsMaxed()
+	return eater.components.upgrademoduleowner and eater.components.upgrademoduleowner:ChargeIsMaxed()
 end
 
 local function notspiritstags(eater)
-	return not eater:HasTag("mightiness_mighty") or not checkcharging(eater)
+	return not eater:HasTag("mightiness_mighty") and not checkcharging(eater)
 end
 
 local function notalcoholtags(eater)
-	return not eater:HasTag("valkyrie") or notspiritstags(eater)
+	return not eater:HasTag("valkyrie") and notspiritstags(eater)
 end
 
 local function oneatenfn(inst, eater)
 	if eater:HasTag("player") then
 		eater.components.dcapacity:Start_Intoxication(TUNING.ALCOHOL_CAPACITY)
 		if eater.components.dcapacity:IsDrunk() then
-			if not notalcoholtags(eater) then
+			if notalcoholtags(eater) then
 				eater:AddDebuff("alcoholdebuff", "alcoholdebuff")
 				eater:AddDebuff("drunkarddebuff", "drunkarddebuff")
 			else
 				eater.components.talker:Say(GetString(eater,"ANNOUNCE_DRUNK_IMMUNITY"))
 			end
 		else
-			if not notalcoholtags(eater) then
+			if notalcoholtags(eater) then
 				if eater.components.dcapacity:IsCritical() then
 					eater.components.talker:Say(GetString(eater,"ANNOUNCE_DCAPACITY_CRITICAL"))
 				elseif eater.components.dcapacity:IsHalf() then
