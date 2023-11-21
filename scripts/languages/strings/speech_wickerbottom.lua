@@ -79,7 +79,7 @@ return {
 		WATER_DIRTY = "물에 박테리아가 들끓어서 풍토병 위험이 있어.", --더러운 물
 		WATER_SALTY = "마시면 오히러 탈수를 일으킬수 있어.", --바닷물
 
-		GOOPYDRINK = "", --실패한 음료(웻 굽 개념)
+		GOOPYDRINK = "이런,안돼,안돼,안돼,이러면 안되는데.", --실패한 음료(웻 굽 개념)
 		
 		-- 주전자 음료
 
@@ -92,7 +92,7 @@ return {
 		GLOWBERRYJUICE = "", -- 발광베리 쥬스
 		WATERMELON_JUICE = "", --수박 쥬스
 
-		VEGGIE_TEA = "몸에 좋은 음식은,", --녹즙
+		VEGGIE_TEA = "몸에 좋은 음료는 쓴 법이지.", --녹즙
 		CARROT_TEA = "", --당근차
 		CACTUS_TEA = "", --선인차
 		TOMATO_JUICE = "알콜을 해독하는데 도움을 주는 성분이 있구나.", --토마토 쥬스
@@ -111,10 +111,10 @@ return {
 		MOON_BLOSSOM_TEA = "", --달꽃차
 
 		CAFFEINBERRY_JUICE = "난 커피 한 잔과 책을 좋아한단다.", -- 블랙 커피
-        TOFFEE_LATTE = "", --토피넛 라떼
+        TOFFEE_LATTE = "고소한 향을 한껏 올렸구나.", --토피넛 라떼
 		RUINCHA_LATTE = "", --모카 라떼(커피+초코)
 		
-		HOTRUINCOLATE = "", --핫초코
+		HOTRUINCOLATE = "쇼콜라틀이 유럽으로 넘어오면서 번형된 음료란다.", --핫초코
 		RUINCOLATE_SMOOTHIE = "", --초코 스무디(차가움)
 		RUINXOCOLATL = "고대 아즈텍에서 부터 유래된 음료이지.", --쇼콜라틀(매캐함)
 		TEA_RUINCOLATE_LATTE = "", -- 말차 라떼
@@ -218,7 +218,7 @@ return {
 
         DARK_RUINCOLATE = "", --다크 초콜릿.
         WHITE_RUINCOLATE = "", --화이트 초콜릿
-        RUINCOLATE = "", -- 그냥 초콜릿
+        RUINCOLATE = "쇼콜라틀을 고형분으로 만든 음식이란다.", -- 그냥 초콜릿
         RUIN_SCHOKAKOLA = "", -- 쇼카콜라
 
 		BUCKET_STEEL_EMPTY = 
