@@ -17,10 +17,10 @@ return {
 	ANNOUNCE_SLEEP_END = "", --자고 일어나서 술에서 완전히 깸 
 	ANNOUNCE_THIRST = "사서에게 마실 것이 필요해.", --너무 목말라!
 
-    ANNOUNCE_CAFFINE_BUFF_START = "" , -- 카페인 버프 시작
-    ANNOUNCE_CAFFINE_BUFF_STOP = "" ,  -- 카페인 버프 끝
+    ANNOUNCE_CAFFINE_BUFF_START = "카페인 수용체의 효과가 나타나기 시작하는구나.", -- 카페인 버프 시작
+    ANNOUNCE_CAFFINE_BUFF_STOP = "몸에서 카페인 수용체의 대사가 끝났구나.",  -- 카페인 버프 끝
     
-    ANNOUNCE_CURE_WATERBORNE = "" ,  -- 수인성 질병을 아이템으로 치료했을때의 대사
+    ANNOUNCE_CURE_WATERBORNE = "풍토병의 고통이 완화되는구나.",  -- 수인성 질병을 아이템으로 치료했을때의 대사
 
 	ANNOUNCE_DCAPACITY_CRITICAL = "과음하면 안 된단다. 과음은 간과 소화기에 악영향을 주고...", --취하기 직전
 	ANNOUNCE_DCAPACITY_HALF = "적당한 음주는 몸에 어느 정도 이롭단다.", -- 취기가 돌기 시작
@@ -38,10 +38,10 @@ return {
 		WELL_SPRINKLER_KIT = "농사할 때 깊은 수맥에서 물을 끌어다 쓰는 기계지.", --스프링클러 키트
 		WELL_WATERPUMP_KIT = "깊은 수맥에서 물을 퍼 올리기 위한 기계란다.", --스팀 물펌프 키트
 		WELL_BURYING_KIT = "수맥이 비거나 더 이상 안 사용할 때 메꾸는 도구들이지.", -- 구멍 매설 키트
-		WELL_DRILLING = "", --드릴로 구멍 뚫는 중
+		WELL_DRILLING = "수맥이 있는지 파보고 있어.", --드릴로 구멍 뚫는 중
 		WELL_DRILLING_ITEM = "수맥이 있을 만한 적당한 장소를 찾아야겠어.", --드릴 아이템
 		HOLE = "물소리가 들리는걸 보니 재대로 팠구나.", --우물 구멍
-		WELL = "깊은 수맥에서 물을 기기 위해 쓰는 건축물이지", --우물
+		WELL = "깊은 수맥에서 물을 기기 위해 쓰는 건축물이지.", --우물
 
 		-- 물 모드 식물
 
@@ -63,7 +63,7 @@ return {
 		RUINCACAO_SEED = "카카오 나무의 씨앗이란다.", --카카오 새싹 아이템
 		RUINCACAO_SEED_SAPLING = "카카오 나무의 종자가 성장할 것이야.", -- 카카오 새싹 심은거
 		RUINCACAO = "고대 아즈텍에서는 화폐로 이용되었었지.", --부수기 전 카카오 열매
-		RUINCACAO_BEAN = "카카오 버터와 카카오 빈으로 이루어저 있어.", --부순 후 카카오 콩  
+		RUINCACAO_BEAN = "약간의 버터와 카카오 빈으로 이루어져 있어.", --부순 후 카카오 콩  
 		RUINCACAO_BEAN_COOKED = "초콜릿이나 음료의 재료로 사용되지.", --구운 카카오 콩
 
 		-- 증류주 첨가제
@@ -75,7 +75,7 @@ return {
 
 		-- 음료
 
-		WATER_CLEAN = "", --깨끗한 물
+		WATER_CLEAN = "생명에 필수적이란다. 화학식으로는 H2O이지.", --깨끗한 물
 		WATER_DIRTY = "물에 박테리아가 들끓어서 풍토병 위험이 있어.", --더러운 물
 		WATER_SALTY = "마시면 오히러 탈수를 일으킬수 있어.", --바닷물
 
@@ -92,17 +92,17 @@ return {
 		GLOWBERRYJUICE = "", -- 발광베리 쥬스
 		WATERMELON_JUICE = "", --수박 쥬스
 
-		VEGGIE_TEA = "", --녹즙
+		VEGGIE_TEA = "몸에 좋은 음식은,", --녹즙
 		CARROT_TEA = "", --당근차
 		CACTUS_TEA = "", --선인차
-		TOMATO_JUICE = "이 음료에는 알콜을 해독하는데 도움을 주는 성분이 있구나.", --토마토 쥬스
-		LUMPY_TEA = "이 음료에는 풍토병을 완화 시켜주는 성분이 있단다." --뿌리차,
+		TOMATO_JUICE = "알콜을 해독하는데 도움을 주는 성분이 있구나.", --토마토 쥬스
+		LUMPY_TEA = "풍토병을 완화 시켜주는 성분이 있단다." --뿌리차,
 		SEAWEED_SHAKE = "", --해초 쉐이크
 		
 		GREENTEA = "", --생잎 녹차
 		BLACKTEA = "", --홍차
 		BLACKTEA_ICED = "", -- 홍차 아이스티
-		FUER = "이 음료에는 풍토병에 걸렸을때 도움을 주는 성분이 있구나.", --보이차,이파리차,고사리차
+		FUER = "풍토병에 걸렸을때 도움을 주는 성분이 있구나.", --보이차,이파리차,고사리차
 		MIXFLOWER = "", --잡 꽃잎 차
 		HIBISCUSTEA = "", --히비스커스 차
 		CACTUSFLOWER_TEA = "", --선인꽃차
@@ -141,16 +141,16 @@ return {
 
 		-- 양조소다
 	
-		SODA = "", -- 탄산수
+		SODA = " 이산화탄소가 용해되어 이온화된 물이란다.", -- 탄산수
 		FRUITSODA = "", -- 과일소다
 		LEMONLIMESODA = "", -- 레몬 라임소다(과일소다 상위 호환)
 		COLA = "", -- 콜라
-		COLAQUANTUM = "", --콜라 퀀텀
+		COLAQUANTUM = "체렌코프 현상을 일으키고 있구나.", --콜라 퀀텀
 		LUMPY_BEER = "", --루트비어(술이 아님)
 
 		-- 양조주
 
-		CORN_BEER = "", -- 콘 맥주
+		CORN_BEER = "기원은 고대 잉카로부터 시작된단다.", -- 콘 맥주
 		MADHU = "봉밀주는 인류가 최초로 만든 술이라고 알려져 있지.", --벌꿀주
 		WINE = "", --와인 (그냥 베리 양조)
 		NOBLEWINE = "", --노블 와인(구운 베리 양조)
@@ -175,8 +175,8 @@ return {
 		CHERRY_BLOOM_MADHU = "", -- 체리숲 벚꽃꿀주
 		GIANT_BLUEBERRY_WINE = "", -- 비타협 붐!베리 사파이어(불 붙히면 폭발함)
 		RICE_WINE = "", -- 비타협 막걸리
-		WHEAT_BEER = "", -- 힙 오브 푸드 밀맥주
-		PALE_BEER = "", -- 레기온 페일에일 (몬스트라 열매를 쓴 청록색 맥주)
+		WHEAT_BEER = "고대 이집트로 부터 시작되었지.", -- 힙 오브 푸드 밀맥주
+		PALE_BEER = "상면발효식 맥주의 한 종류란다.", -- 레기온 페일에일 (몬스트라 열매를 쓴 청록색 맥주)
 
 		--증류주
 
