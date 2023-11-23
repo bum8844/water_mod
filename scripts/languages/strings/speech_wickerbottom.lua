@@ -3,8 +3,8 @@ return {
 	{
 		GIVE =
 		{
-			WELL_NOTEMPTY = "", -- 우물에 말라 빈 양동이 달려있는데 양동이 달려 함
-			WELL_BUSY = "", -- 우물에 물 든 양동이 달려있는데 달려 함
+			WELL_NOTEMPTY = "물을 길을만한걸 가져와야지.", -- 우물에 말라 빈 양동이 달려있는데 양동이 달려 함
+			WELL_BUSY = "기다리자꾸나.", -- 우물에 물 든 양동이 달려있는데 달려 함
 		}
 	},
 
@@ -100,8 +100,8 @@ return {
 		SEAWEED_SHAKE = "", --해초 쉐이크
 		
 		GREENTEA = "", --생잎 녹차
-		BLACKTEA = "", --홍차
-		BLACKTEA_ICED = "", -- 홍차 아이스티
+		BLACKTEA = "차 한 잔과 좋은 책이 필요하단다.", --홍차
+		BLACKTEA_ICED = "기운이 솟는구나.", -- 홍차 아이스티
 		FUER = "풍토병에 걸렸을때 도움을 주는 성분이 있구나.", --보이차,이파리차,고사리차
 		MIXFLOWER = "", --잡 꽃잎 차
 		HIBISCUSTEA = "", --히비스커스 차
@@ -112,7 +112,7 @@ return {
 
 		CAFFEINBERRY_JUICE = "난 커피 한 잔과 책을 좋아한단다.", -- 블랙 커피
         TOFFEE_LATTE = "고소한 향을 한껏 올렸구나.", --토피넛 라떼
-		RUINCHA_LATTE = "", --모카 라떼(커피+초코)
+		RUINCHA_LATTE = "지명을 따왔단다. 커피와 초콜릿의 조합이지.", --모카 라떼(커피+초코)
 		
 		HOTRUINCOLATE = "쇼콜라틀이 유럽으로 넘어오면서 번형된 음료란다.", --핫초코
 		RUINCOLATE_SMOOTHIE = "", --초코 스무디(차가움)
@@ -137,16 +137,16 @@ return {
 
 		--양조기 음료
 
-		SPOILED_DRINK = "마실 것이 생물학적 위험이 되어가고 있어.", --썩은 음료
+		SPOILED_DRINK = "마실 것이 박테리아의 온상이 되어가고 있어.", --썩은 음료
 
 		-- 양조소다
 	
-		SODA = " 이산화탄소가 용해되어 이온화된 물이란다.", -- 탄산수
-		FRUITSODA = "", -- 과일소다
-		LEMONLIMESODA = "", -- 레몬 라임소다(과일소다 상위 호환)
-		COLA = "", -- 콜라
-		COLAQUANTUM = "체렌코프 현상을 일으키고 있구나.", --콜라 퀀텀
-		LUMPY_BEER = "", --루트비어(술이 아님)
+		SODA = "이산화탄소가 용해되어 이온화된 물이란다.", -- 탄산수
+		FRUITSODA = "탄산수에 과일즙이 첨가되어 있구나.", -- 과일소다
+		LEMONLIMESODA = "단맛이 꽤 강하구나.", -- 레몬 라임소다(과일소다 상위 호환)
+		COLA = "미국에서 인기를 끌고있는 음료이지.", -- 콜라(배경이 1907임 코카콜라가 존제함)
+		COLAQUANTUM = "신기한 음료로구나. 놀라워!", --콜라 퀀텀
+		LUMPY_BEER = "여러 뿌리 채소가 섞여있구나.", --루트비어(술이 아님)
 
 		-- 양조주
 
@@ -163,10 +163,10 @@ return {
 
 		-- 콜라보 소다
 
-		CHERRY_DOCTOR_COLA = "", --체리숲 닥터 페퍼(닥터 체리)
-		PINEANANASSODA = "", -- 탄산 파인애플(오란씨)
-		ORANGESODA = "", -- 탄산 오랜지(환타)
-		STRAWBERRYSODA = "", -- 탄산 딸기(웰치스 딸기)
+		CHERRY_DOCTOR_COLA = "23가지의 향신료가 들어간 웨츠빌 완치 음료구나.", --체리숲 닥터 페퍼(닥터 체리)
+		PINEANANASSODA = "파인애플과즙이 들어간 탄산수구나.", -- 탄산 파인애플(오란씨)
+		ORANGESODA = "오렌지과즙이 들어가 있구나.", -- 탄산 오랜지(환타)
+		STRAWBERRYSODA = "탄산수에 딸기과즙이 들어가 있구나.", -- 탄산 딸기(웰치스 딸기)
 
 		--콜라보 양조주
 
@@ -205,7 +205,7 @@ return {
 		MOONWAY = "", -- 무지개 해파리주 증류주
 		ARRACK = "", -- 아락 인도네시아 버전 코코넛 와인 증류주
 		CHERRY_BLOOM_RUM = "", -- 체리 꿀주 증류주 벛꽃잎 떠다
-		RICE_SPIRITS = "", --청주
+		RICE_SPIRITS = "사케와 비슷하구나.", --청주
 		WHEAT_WHISKEY = "", -- 밀 위스크
 		PALE_WHISKEY = "", -- 페일 몰트 위스키
 
@@ -216,10 +216,10 @@ return {
 
 		--냄비 요리
 
-        DARK_RUINCOLATE = "", --다크 초콜릿.
-        WHITE_RUINCOLATE = "", --화이트 초콜릿
+        DARK_RUINCOLATE = "카카오 매스의 함유률이 높구나.", --다크 초콜릿.
+        WHITE_RUINCOLATE = "카카오 버터의 함유률이 높단다.", --화이트 초콜릿
         RUINCOLATE = "쇼콜라틀을 고형분으로 만든 음식이란다.", -- 그냥 초콜릿
-        RUIN_SCHOKAKOLA = "", -- 쇼카콜라
+        RUIN_SCHOKAKOLA = "카페인 함량이 매우 높은 초콜릿이란다.", -- 쇼카콜라
 
 		BUCKET_STEEL_EMPTY = 
 		{
@@ -250,23 +250,23 @@ return {
 
 		DESALINATOR =
 		{
-			EMPTY = "", --제염기에 물이 없음
+			EMPTY = "바닷물을 이 기기를 이용해서 물과 소금을 분리한단다.", --제염기에 물이 없음
 			PURIFY_LONG = "", -- 정수 끝나기까지 많이 남음
 			PURIFY_SHORT = "", -- 정수가 곧 끝남
 			HASWATER = "", --제염기에 깨끗한 물이 있음
 			BURNT = "",   --제염기가 타버림
-			HASSALT = "", --제염기에 소금이 남아 있음
+			HASSALT = "소금이 충분히 모였구나.", --제염기에 소금이 남아 있음
 		},
 
 		BARREL =
 		{
-			GENERIC = "", -- 물통 조사 대사
+			GENERIC = "물을 안전하게 보관을 위해 숯이 첨가되었단다.", -- 물통 조사 대사
 			BURNT = "", -- 물통이 타버림
 		},
 
 		BREWERY =
 		{
-			EMPTY = "", --양조기 조사 대사
+			EMPTY = "식량의 장기 보존을 위해 술을 만들기 시작했단다.", --양조기 조사 대사
 			BURNT = "", --양조기 타버림
 			FERMENTING_LONG = "", --양조 끝나기 까지 많이 남음
 			FERMENTING_SHORT = "", --양조가 곧 끝남
@@ -276,7 +276,7 @@ return {
 		CAMPKETTLE_ITEM = "", --휴대 주전자 아이템 조사 대사
 		CAMPKETTLE =
 		{
-			GENERIC = "", -- 화덕에 건 휴대 주전자 안에 물이 없음
+			GENERIC = "더러운 물을 끓여서 박테리아를 박멸한단다.", -- 화덕에 건 휴대 주전자 안에 물이 없음
 			BOILING_LONG = "", -- 물 끓이기 시작함
 			BOILING_SHORT = "", -- 물 거의 다 끓음
 			DONE = "", --깨끗한 물이 들음
@@ -286,7 +286,7 @@ return {
 		CAMPDESALINATOR_ITEM = "", --휴대 제염기 아이템 조사 대사
 		CAMPDESALINATOR = 
 		{
-			GENERIC = "", --물 없음
+			GENERIC = "바닷물을 증발시켜서 물을 얻는단다.", --물 없음
 			BOILING_LONG = "", --물 끓이기 시작
 			BOILING_SHORT = "", --거의 다 끓음 
 			DONE = "", -- 깨끗한 물이 들음
@@ -323,7 +323,7 @@ return {
 		
 		DISTILLERS =
 		{   
-		    EMPTY = "", --증류기 조사 대사
+		    EMPTY = "양조주를 이용해서 증류주나, 리큐르를 만들때 쓴단다.", --증류기 조사 대사
 			DISTILLTING_LONG = "", --증류가 끝나기 까지 많이 남음
 			DISTILLING_SHORT = "", --증류가 곧 끝남
 			DONE = "", --증류기에 음료가 들어있음
