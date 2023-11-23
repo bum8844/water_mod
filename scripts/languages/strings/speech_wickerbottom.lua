@@ -83,12 +83,12 @@ return {
 		
 		-- 주전자 음료
 
-		FRUITJUICE = "", --잡 과일쥬스
-		BERRIES_JUICE = "", -- 베리 쥬스
-		POMEGRANATE_JUICE = "", -- 석류 쥬스
+		FRUITJUICE = "조금 엉성한 과일들로 만들어도 좋단다", --잡 과일쥬스
+		BERRIES_JUICE = "백량금 열매의 약리작용으로는 해열, 소염등이 있단다.", -- 베리 쥬스
+		POMEGRANATE_JUICE = "천연 에스트로겐이 풍부하단다.", -- 석류 쥬스
 		BANANA_JUICE = "", -- 바나나 쥬스
 		FIG_JUICE = "", -- 무화과 쥬스
-		DRAGONJUICE = "", --용과 쥬스
+		DRAGONJUICE = "백육종은 가장 은은한 향을 낸단다.", --용과 쥬스
 		GLOWBERRYJUICE = "", -- 발광베리 쥬스
 		WATERMELON_JUICE = "", --수박 쥬스
 
@@ -99,7 +99,7 @@ return {
 		LUMPY_TEA = "풍토병을 완화 시켜주는 성분이 있단다." --뿌리차,
 		SEAWEED_SHAKE = "", --해초 쉐이크
 		
-		GREENTEA = "", --생잎 녹차
+		GREENTEA = "아시아에서 부터 유래되었단다.", --생잎 녹차
 		BLACKTEA = "차 한 잔과 좋은 책이 필요하단다.", --홍차
 		BLACKTEA_ICED = "기운이 솟는구나.", -- 홍차 아이스티
 		FUER = "풍토병에 걸렸을때 도움을 주는 성분이 있구나.", --보이차,이파리차,고사리차
@@ -114,10 +114,10 @@ return {
         TOFFEE_LATTE = "고소한 향을 한껏 올렸구나.", --토피넛 라떼
 		RUINCHA_LATTE = "지명을 따왔단다. 커피와 초콜릿의 조합이지.", --모카 라떼(커피+초코)
 		
-		HOTRUINCOLATE = "쇼콜라틀이 유럽으로 넘어오면서 번형된 음료란다.", --핫초코
-		RUINCOLATE_SMOOTHIE = "", --초코 스무디(차가움)
+		HOTRUINCOLATE = "쇼콜라틀이 유럽으로 넘어오면서 변형된 음료란다.", --핫초코
+		RUINCOLATE_SMOOTHIE = "핫 초콜릿의 변형된 음료구나!", --초코 스무디(차가움)
 		RUINXOCOLATL = "고대 아즈텍에서 부터 유래된 음료이지.", --쇼콜라틀(매캐함)
-		TEA_RUINCOLATE_LATTE = "", -- 말차 라떼
+		TEA_RUINCOLATE_LATTE = "새로운 음료구나. 놀라워!", -- 말차 라떼
 
 		MULLED = "", --뱅쇼
 		BUTTERBEER = "", --해리포터 시리즈의 버터비어
@@ -144,8 +144,8 @@ return {
 		SODA = "이산화탄소가 용해되어 이온화된 물이란다.", -- 탄산수
 		FRUITSODA = "탄산수에 과일즙이 첨가되어 있구나.", -- 과일소다
 		LEMONLIMESODA = "단맛이 꽤 강하구나.", -- 레몬 라임소다(과일소다 상위 호환)
-		COLA = "미국에서 인기를 끌고있는 음료이지.", -- 콜라(배경이 1907임 코카콜라가 존제함)
-		COLAQUANTUM = "신기한 음료로구나. 놀라워!", --콜라 퀀텀
+		COLA = "미국에서 인기를 끌고있는 음료이지.", -- 콜라(배경이 1907임 코카콜라가 존재함)
+		COLAQUANTUM = "신기한 음료로구나. 놀라워!", --콜라 퀀텀(아직 체랜코프 현상이 발견 안돰(1911년도로 추정))
 		LUMPY_BEER = "여러 뿌리 채소가 섞여있구나.", --루트비어(술이 아님)
 
 		-- 양조주
