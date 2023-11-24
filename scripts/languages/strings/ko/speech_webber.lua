@@ -20,14 +20,14 @@ return {
     ANNOUNCE_CAFFINE_BUFF_START = "으음 엄청 뛰고 싶은 기분이야." , -- 카페인 버프 시작
     ANNOUNCE_CAFFINE_BUFF_STOP = "아, 나른하다." ,  -- 카페인 버프 끝
     
-    ANNOUNCE_CURE_WATERBORNE = "웨버는 더러운 물 먼역(안씀)" ,  -- 수인성 질병을 아이템으로 치료했을때의 대사
+    ANNOUNCE_CURE_WATERBORNE = "속이 시원해!" ,  -- 수인성 질병을 아이템으로 치료했을때의 대사
 
 	ANNOUNCE_DCAPACITY_CRITICAL = "우리가 찢어지는것 같애...!", --취하기 직전
 	ANNOUNCE_DCAPACITY_HALF = "왠지 머리가 핑 핑 돌아.", -- 취기가 돌기 시작
 
 	DESCRIBE =
 	{
-		BOILBOOK = "으으, 외어야 할 레시피가 늘었어.",
+		BOILBOOK = "으으, 외어야 할 레시피가 늘었어./",
 
 		WATER_CLEAN_ICE = "앗 차거!",--깨끗한 얼음물
 		WATER_DIRTY_ICE = "얼어 붙었네. 웩", --더러운 얼음물
@@ -76,8 +76,8 @@ return {
 		-- 음료
 
 		WATER_CLEAN = "깨끗한 물이야!", --깨끗한 물
-		WATER_DIRTY = "우리 흔하게 마시는 물이야.", --더러운 물
-		WATER_SALTY = "바닷물은 우리도 안 마셔.", --바닷물
+		WATER_DIRTY = "연못에서 뜬 물이야.", --더러운 물
+		WATER_SALTY = "바닷물은 마셔서 안될거야.", --바닷물
 
 		GOOPYDRINK = "벌칙게임용 음료야!", --실패한 음료(웻 굽 개념)
 		
@@ -280,7 +280,7 @@ return {
 			BOILING_LONG = "아직까진 손가락을 담궈도 뜨겁진 않아.", -- 물 끓이기 시작함
 			BOILING_SHORT = "수증기가 뿜어져 나오고 있어!", -- 물 거의 다 끓음
 			DONE = "깨끗한 물이야!", --깨끗한 물이 들음
-			STOP = "물 마실 사람이 없다면 내가 마실까?", --화덕에 불이 없어서 더러운물이 끓지 않는 상태
+			STOP = "끓이다 말았어.", --화덕에 불이 없어서 더러운물이 끓지 않는 상태
 		},
 
 		CAMPDESALINATOR_ITEM = "내 팔 여러개로 들고 다녀야 겠어!", --휴대 제염기 아이템 조사 대사
