@@ -105,10 +105,10 @@ return {
 		FUER = "풍토병에 걸렸을때 도움을 주는 성분이 있구나.", --보이차,이파리차,고사리차
 		MIXFLOWER = "여러 종류의 꽃들이 섞여있구나.", --잡 꽃잎 차
 		HIBISCUSTEA = "무궁화속 꽃을 차로 만든것이란다.", --히비스커스 차
-		CACTUSFLOWER_TEA = "", --선인꽃차
-		LOTUSTEA = "", --연꽃차
+		CACTUSFLOWER_TEA = "일부 지역에서는 건강에 좋다고 여기지.", --선인꽃차
+		LOTUSTEA = "아시아 지역에서 특별한 기념일이나 행사때 마신단다.", --연꽃차
 		SUSHIBISCUS = "가만... 이건 히비스커스 차가 아니구나.", -- 자살차
-		MOON_BLOSSOM_TEA = "", --달꽃차
+		MOON_BLOSSOM_TEA = "보고만 있어도 차분해지는것 같네.", --달꽃차
 
 		CAFFEINBERRY_JUICE = "난 커피 한 잔과 책을 좋아한단다.", -- 블랙 커피
         TOFFEE_LATTE = "고소한 향을 한껏 올렸구나.", --토피넛 라떼
@@ -219,7 +219,7 @@ return {
         DARK_RUINCOLATE = "다크 초콜릿이구나! 카카오 메스의 함유율이 매우 높단다.", --다크 초콜릿.
         WHITE_RUINCOLATE = "화이트초콜릿이구나! 카카오버터의 함유율이 높단다.", --화이트 초콜릿
         RUINCOLATE = "초콜릿이구나! 쇼콜라틀을 고형분으로 만든 음식이란다.", -- 그냥 초콜릿
-        RUIN_SCHOKAKOLA = "새로운 종류의 초콜릿이구나! 카페인 함량이 매우 높구나.", -- 쇼카콜라
+        RUIN_SCHOKAKOLA = "새로운 종류의 초콜릿이구나! 각성 물질이 강화되었구나.", -- 쇼카콜라
 
 		BUCKET_STEEL_EMPTY = 
 		{
@@ -250,7 +250,7 @@ return {
 
 		DESALINATOR =
 		{
-			EMPTY = "바닷물을 이 기기를 이용해서 물과 소금을 분리한단다.", --제염기에 물이 없음
+			EMPTY = "바닷물을 이 제염기를 이용해서 물과 소금을 분리한단다.", --제염기에 물이 없음
 			PURIFY_LONG = "제염이 되려면 아직 멀었어.", -- 정수 끝나기까지 많이 남음
 			PURIFY_SHORT = "제염이 거의 됐단다!", -- 정수가 곧 끝남
 			HASWATER = "순수한 물만 남았구나.", --제염기에 깨끗한 물이 있음
@@ -286,7 +286,7 @@ return {
 		CAMPDESALINATOR_ITEM = "바닷물을 증발시켜서 물을 얻는단다.", --휴대 제염기 아이템 조사 대사
 		CAMPDESALINATOR = 
 		{
-			GENERIC = "비어 있단다.", --물 없음
+			GENERIC = "모인 담수가 없구나.", --물 없음
 			BOILING_LONG = "담수가 모일려면 아직 멀었어.", --물 끓이기 시작
 			BOILING_SHORT = "거의 다 모였구나!", --거의 다 끓음 
 			DONE = "담수가 가득 찼단다.", -- 깨끗한 물이 들음
@@ -309,14 +309,14 @@ return {
 
 		PORTABLEKETTLE_ITEM =
 		{
-			GENERIC = "", -- 휴대용 주전자(아이템) 조사 대사
+			GENERIC = "어디서든 차를 준비할 수 있겠구나.", -- 휴대용 주전자(아이템) 조사 대사
 			EMPTY = "", -- 설치한 빈 휴대용 주전자 조사 대사
 			BOILING_LONG = "", -- 음료를 만들기 시작한지 얼마 안됨
 			BOILING_SHORT = "", --음료 조리가 거의 끝나감
-			DONE = "", --음료가 완성됨
+			DONE = "기운이 솟는 향이로구나.", --음료가 완성됨
 			PURIFY_LONG = "", -- 더러운 물을 끓이기 시작한지 얼마 안됨
 			PURIFY_SHORT = "", --더러운물을 거의 다 끓여감
-			HASWATER = "", -- 깨끗한 물이 차 있는 상태
+			HASWATER = "흠, 내가 한 번 차를 만들어 볼까.", -- 깨끗한 물이 차 있는 상태
 			MELT_LONG = "", -- 얼음물을 녹이기 시작한지 얼마 안됨
 			MELT_SHORT = "", -- 얼음물을 거의 녹여감
 		},
