@@ -59,7 +59,6 @@ WATERGROUP =
 		types =
 		{
 			WATERTYPE.DIRTY,
-			WATERTYPE.CLEAN_ICE,
 			WATERTYPE.DIRTY_ICE,
 		},
 	},

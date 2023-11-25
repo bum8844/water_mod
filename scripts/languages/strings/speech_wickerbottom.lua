@@ -89,12 +89,12 @@ return {
 		BANANA_JUICE = "", -- 바나나 쥬스
 		FIG_JUICE = "", -- 무화과 쥬스
 		DRAGONJUICE = "백육종은 가장 은은한 향을 낸단다.", --용과 쥬스
-		GLOWBERRYJUICE = "", -- 발광베리 쥬스
+		GLOWBERRYJUICE = "본적 없는 음료구나, 놀라워!", -- 발광베리 쥬스
 		WATERMELON_JUICE = "", --수박 쥬스
 
 		VEGGIE_TEA = "몸에 좋은 음료는 쓴 법이지.", --녹즙
 		CARROT_TEA = "", --당근차
-		CACTUS_TEA = "", --선인차
+		CACTUS_TEA = "멕시코의 전통적인 차란다.", --선인차(Nopales Tea차가 실제 존재함)
 		TOMATO_JUICE = "알콜을 해독하는데 도움을 주는 성분이 있구나.", --토마토 쥬스
 		LUMPY_TEA = "풍토병을 완화 시켜주는 성분이 있단다." --뿌리차,
 		SEAWEED_SHAKE = "", --해초 쉐이크
@@ -103,11 +103,11 @@ return {
 		BLACKTEA = "차 한 잔과 좋은 책이 필요하단다.", --홍차
 		BLACKTEA_ICED = "기운이 솟는구나.", -- 홍차 아이스티
 		FUER = "풍토병에 걸렸을때 도움을 주는 성분이 있구나.", --보이차,이파리차,고사리차
-		MIXFLOWER = "", --잡 꽃잎 차
-		HIBISCUSTEA = "", --히비스커스 차
+		MIXFLOWER = "여러 종류의 꽃들이 섞여있구나.", --잡 꽃잎 차
+		HIBISCUSTEA = "무궁화속 꽃을 차로 만든것이란다.", --히비스커스 차
 		CACTUSFLOWER_TEA = "", --선인꽃차
 		LOTUSTEA = "", --연꽃차
-		SUSHIBISCUS = "", -- 자살차
+		SUSHIBISCUS = "가만... 이건 히비스커스 차가 아니구나.", -- 자살차
 		MOON_BLOSSOM_TEA = "", --달꽃차
 
 		CAFFEINBERRY_JUICE = "난 커피 한 잔과 책을 좋아한단다.", -- 블랙 커피
@@ -145,7 +145,7 @@ return {
 		FRUITSODA = "탄산수에 과일즙이 첨가되어 있구나.", -- 과일소다
 		LEMONLIMESODA = "단맛이 꽤 강하구나.", -- 레몬 라임소다(과일소다 상위 호환)
 		COLA = "미국에서 인기를 끌고있는 음료이지.", -- 콜라(배경이 1907임 코카콜라가 존재함)
-		COLAQUANTUM = "신기한 음료로구나. 놀라워!", --콜라 퀀텀(아직 체랜코프 현상이 발견 안돰(1911년도로 추정))
+		COLAQUANTUM = "", --콜라 퀀텀(아직 체랜코프 현상이 발견 안됨(1911년도로 추정))
 		LUMPY_BEER = "여러 뿌리 채소가 섞여있구나.", --루트비어(술이 아님)
 
 		-- 양조주
@@ -216,10 +216,10 @@ return {
 
 		--냄비 요리
 
-        DARK_RUINCOLATE = "카카오 매스의 함유률이 높구나.", --다크 초콜릿.
-        WHITE_RUINCOLATE = "카카오 버터의 함유률이 높단다.", --화이트 초콜릿
-        RUINCOLATE = "쇼콜라틀을 고형분으로 만든 음식이란다.", -- 그냥 초콜릿
-        RUIN_SCHOKAKOLA = "카페인 함량이 매우 높은 초콜릿이란다.", -- 쇼카콜라
+        DARK_RUINCOLATE = "다크 초콜릿이구나! 카카오 메스의 함유율이 매우 높단다.", --다크 초콜릿.
+        WHITE_RUINCOLATE = "화이트초콜릿이구나! 카카오버터의 함유율이 높단다.", --화이트 초콜릿
+        RUINCOLATE = "초콜릿이구나! 쇼콜라틀을 고형분으로 만든 음식이란다.", -- 그냥 초콜릿
+        RUIN_SCHOKAKOLA = "새로운 종류의 초콜릿이구나! 카페인 함량이 매우 높구나.", -- 쇼카콜라
 
 		BUCKET_STEEL_EMPTY = 
 		{
@@ -251,9 +251,9 @@ return {
 		DESALINATOR =
 		{
 			EMPTY = "바닷물을 이 기기를 이용해서 물과 소금을 분리한단다.", --제염기에 물이 없음
-			PURIFY_LONG = "", -- 정수 끝나기까지 많이 남음
-			PURIFY_SHORT = "", -- 정수가 곧 끝남
-			HASWATER = "", --제염기에 깨끗한 물이 있음
+			PURIFY_LONG = "제염이 되려면 아직 멀었어.", -- 정수 끝나기까지 많이 남음
+			PURIFY_SHORT = "제염이 거의 됐단다!", -- 정수가 곧 끝남
+			HASWATER = "순수한 물만 남았구나.", --제염기에 깨끗한 물이 있음
 			BURNT = "",   --제염기가 타버림
 			HASSALT = "소금이 충분히 모였구나.", --제염기에 소금이 남아 있음
 		},
@@ -268,29 +268,29 @@ return {
 		{
 			EMPTY = "식량의 장기 보존을 위해 술을 만들기 시작했단다.", --양조기 조사 대사
 			BURNT = "", --양조기 타버림
-			FERMENTING_LONG = "", --양조 끝나기 까지 많이 남음
-			FERMENTING_SHORT = "", --양조가 곧 끝남
+			FERMENTING_LONG = "이제 재료들이 발효되기를 인내 해야되는단다.", --양조 끝나기 까지 많이 남음
+			FERMENTING_SHORT = "발효가 거의 다되어가는구나!", --양조가 곧 끝남
 			DONE = "", --양조기에 음료가 들어있음
 		},
 
-		CAMPKETTLE_ITEM = "", --휴대 주전자 아이템 조사 대사
+		CAMPKETTLE_ITEM = "더러운 물을 끓여서 박테리아를 박멸한단다.", --휴대 주전자 아이템 조사 대사
 		CAMPKETTLE =
 		{
-			GENERIC = "더러운 물을 끓여서 박테리아를 박멸한단다.", -- 화덕에 건 휴대 주전자 안에 물이 없음
-			BOILING_LONG = "", -- 물 끓이기 시작함
-			BOILING_SHORT = "", -- 물 거의 다 끓음
-			DONE = "", --깨끗한 물이 들음
-			STOP = "", --화덕에 불이 없어서 더러운물이 끓지 않는 상태
+			GENERIC = "비어 있단다.", -- 화덕에 건 휴대 주전자 안에 물이 없음
+			BOILING_LONG = "소독이 되려면 아직 멀었어.", -- 물 끓이기 시작함
+			BOILING_SHORT = "거의 다 소독되었구나!", -- 물 거의 다 끓음
+			DONE = "마실 수 있게 소독이 되었단다.", --깨끗한 물이 들음
+			STOP = "소독을 완료하려면 불을 지펴야 한단다.", --화덕에 불이 없어서 더러운물이 끓지 않는 상태
 		},
 
-		CAMPDESALINATOR_ITEM = "", --휴대 제염기 아이템 조사 대사
+		CAMPDESALINATOR_ITEM = "바닷물을 증발시켜서 물을 얻는단다.", --휴대 제염기 아이템 조사 대사
 		CAMPDESALINATOR = 
 		{
-			GENERIC = "바닷물을 증발시켜서 물을 얻는단다.", --물 없음
-			BOILING_LONG = "", --물 끓이기 시작
-			BOILING_SHORT = "", --거의 다 끓음 
-			DONE = "", -- 깨끗한 물이 들음
-			STOP = "", -- 화덕에 불이 없어서 소금물이 정수 되지 않는 상태
+			GENERIC = "비어 있단다.", --물 없음
+			BOILING_LONG = "담수가 모일려면 아직 멀었어.", --물 끓이기 시작
+			BOILING_SHORT = "거의 다 모였구나!", --거의 다 끓음 
+			DONE = "담수가 가득 찼단다.", -- 깨끗한 물이 들음
+			STOP = "불이 사그라 들어서 담수가 충분이 모이지 않았구나.", -- 화덕에 불이 없어서 소금물이 정수 되지 않는 상태
 		},
 
 		KETTLE =
