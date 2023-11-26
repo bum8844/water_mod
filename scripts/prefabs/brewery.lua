@@ -324,7 +324,7 @@ local function fn()
     end
 
     inst:AddComponent("waterspoilage")
-    inst.components.waterspoilage.localPerishMultiplyer = TUNING.BARREL_FRESHENING_RATE
+    inst.components.waterspoilage.localPerishMultiplyer = TUNING.BREWERY_FRESHENING_RATE
 
     inst:AddComponent("waterlevel")
     inst.components.waterlevel:SetCanAccepts({WATERTYPE.CLEAN, WATERTYPE.EMPTY})
