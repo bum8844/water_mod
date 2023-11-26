@@ -18,16 +18,16 @@ return {
 	ANNOUNCE_THIRST = "티 타임이야!", --너무 목말라!
 
     ANNOUNCE_CAFFINE_BUFF_START = "으음 엄청 뛰고 싶은 기분이야." , -- 카페인 버프 시작
-    ANNOUNCE_CAFFINE_BUFF_STOP = "아, 나른하다." ,  -- 카페인 버프 끝
+    ANNOUNCE_CAFFINE_BUFF_STOP = "아, 나른하다.",  -- 카페인 버프 끝
     
-    ANNOUNCE_CURE_WATERBORNE = "속이 시원해!" ,  -- 수인성 질병을 아이템으로 치료했을때의 대사
+    ANNOUNCE_CURE_WATERBORNE = "", --"속이 시원해!",  -- 수인성 질병을 아이템으로 치료했을때의 대사
 
 	ANNOUNCE_DCAPACITY_CRITICAL = "우리가 찢어지는것 같애...!", --취하기 직전
 	ANNOUNCE_DCAPACITY_HALF = "왠지 머리가 핑 핑 돌아.", -- 취기가 돌기 시작
 
 	DESCRIBE =
 	{
-		BOILBOOK = "으으, 외어야 할 레시피가 늘었어./",
+		BOILBOOK = "으으, 외어야 할 레시피가 늘었어.",
 
 		WATER_CLEAN_ICE = "앗 차거!",--깨끗한 얼음물
 		WATER_DIRTY_ICE = "얼어 붙었네. 웩", --더러운 얼음물
@@ -277,7 +277,7 @@ return {
 		CAMPKETTLE =
 		{
 			GENERIC = "으음, 이대로는 별 쓸모가 없을거야.", -- 화덕에 건 휴대 주전자 안에 물이 없음
-			BOILING_LONG = "아직까진 손가락을 담궈도 뜨겁진 않아.", -- 물 끓이기 시작함
+			BOILING_LONG = "아직까진 손가락을 담궈도 뜨겁지 않아.", -- 물 끓이기 시작함
 			BOILING_SHORT = "수증기가 뿜어져 나오고 있어!", -- 물 거의 다 끓음
 			DONE = "깨끗한 물이야!", --깨끗한 물이 들음
 			STOP = "끓이다 말았어.", --화덕에 불이 없어서 더러운물이 끓지 않는 상태
@@ -309,7 +309,7 @@ return {
 
 		PORTABLEKETTLE_ITEM =
 		{
-			GENERIC = "들고다니면서 쥬스를 만들!", -- 휴대용 주전자(아이템) 조사 대사
+			GENERIC = "들고다니면서 쥬스를 만들어 보자!", -- 휴대용 주전자(아이템) 조사 대사
 			EMPTY = "에이, 안에 아무것도 없네.", -- 설치한 빈 휴대용 주전자 조사 대사
 			BOILING_LONG = "이거 너~무 오래 걸려.", -- 음료를 만들기 시작한지 얼마 안됨
 			BOILING_SHORT = "음료가 금방 나올거야!", --음료 조리가 거의 끝나감
