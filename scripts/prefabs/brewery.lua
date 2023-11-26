@@ -323,6 +323,9 @@ local function fn()
         return inst
     end
 
+    inst:AddComponent("waterspoilage")
+    inst.components.waterspoilage.localPerishMultiplyer = TUNING.BARREL_FRESHENING_RATE
+
     inst:AddComponent("waterlevel")
     inst.components.waterlevel:SetCanAccepts({WATERTYPE.CLEAN, WATERTYPE.EMPTY})
     inst.components.waterlevel:SetTakeWaterFn(OnTakeWater)

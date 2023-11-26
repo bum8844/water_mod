@@ -106,6 +106,7 @@ water_tuning =
 
 	-- Waterspoilage
 	BARREL_FRESHENING_RATE = .5,
+	BREWERY_FRESHENING_RATE = 0,
 
 	-- Basic Thirst Rate
 	WILSON_THIRST = wilson_thirst,
