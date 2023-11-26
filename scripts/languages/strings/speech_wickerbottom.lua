@@ -75,7 +75,7 @@ return {
 
 		-- 음료
 
-		WATER_CLEAN = "생명에 필수적이란다. 화학식으로는 H2O이지.", --깨끗한 물
+		WATER_CLEAN = "생명에 필수적이란다. 화학식으로는 H₂O이지.", --깨끗한 물
 		WATER_DIRTY = "물에 박테리아가 들끓어서 풍토병 위험이 있어.", --더러운 물
 		WATER_SALTY = "마시면 오히러 탈수를 일으킬수 있어.", --바닷물
 
@@ -86,11 +86,11 @@ return {
 		FRUITJUICE = "조금 엉성한 과일들로 만들어도 좋단다", --잡 과일쥬스
 		BERRIES_JUICE = "백량금 열매의 약리작용으로는 해열, 소염등이 있단다.", -- 베리 쥬스
 		POMEGRANATE_JUICE = "천연 에스트로겐이 풍부하단다.", -- 석류 쥬스
-		BANANA_JUICE = "", -- 바나나 쥬스
-		FIG_JUICE = "", -- 무화과 쥬스
+		BANANA_JUICE = "따뜻하게 마시는것도 나쁘지 않겠지.", -- 바나나 쥬스
+		FIG_JUICE = "중동 지역에서 전통적으로 마시는 상쾌한 주스구나.", -- 무화과 쥬스
 		DRAGONJUICE = "백육종은 가장 은은한 향을 낸단다.", --용과 쥬스
 		GLOWBERRYJUICE = "본적 없는 음료구나, 놀라워!", -- 발광베리 쥬스
-		WATERMELON_JUICE = "", --수박 쥬스
+		WATERMELON_JUICE = "수분 함량이 매우 높아서 목을 축이기에는 좋지.", --수박 쥬스
 
 		VEGGIE_TEA = "몸에 좋은 음료는 쓴 법이지.", --녹즙
 		CARROT_TEA = "", --당근차
@@ -117,7 +117,7 @@ return {
 		HOTRUINCOLATE = "쇼콜라틀이 유럽으로 넘어오면서 변형된 음료란다.", --핫초코
 		RUINCOLATE_SMOOTHIE = "핫 초콜릿의 변형된 음료구나!", --초코 스무디(차가움)
 		RUINXOCOLATL = "고대 아즈텍에서 부터 유래된 음료이지.", --쇼콜라틀(매캐함)
-		TEA_RUINCOLATE_LATTE = "새로운 음료구나. 놀라워!", -- 말차 라떼
+		TEA_RUINCOLATE_LATTE = "이 방법으로도 음료의 종류가 다양해지는구나.", -- 말차 라떼
 
 		MULLED = "", --뱅쇼
 		BUTTERBEER = "", --해리포터 시리즈의 버터비어
@@ -180,7 +180,7 @@ return {
 
 		--증류주
 
-		DISINFECTANT = "", -- 소독약
+		DISINFECTANT = "상처를 소독하는 데 사용하는 에탄올이란다. 화학식으로는 C₂H₅OH이지.", -- 소독약
 		CORN_WHISKEY = "", -- 콘 위스키
 		LUMPY_VODKA = "", -- 보드카
 		TEQUILA = "", -- 데킬라
@@ -295,14 +295,14 @@ return {
 
 		KETTLE =
 		{
-			EMPTY = "", --빈 주전자 조사대사
+			EMPTY = "물이 필요하단다.", --빈 주전자 조사대사
 			BURNT = "", --주전자가 불탐
-			BOILING_LONG = "", -- 음료를 만들기 시작한지 얼마 안됨
-			BOILING_SHORT = "", --음료 조리가 거의 끝나감
+			BOILING_LONG = "재료가 우려나오려면 아직 멀었어.", -- 음료를 만들기 시작한지 얼마 안됨
+			BOILING_SHORT = "거의 다 됬어!", --음료 조리가 거의 끝나감
 			DONE = "", --음료가 완성됨
 			PURIFY_LONG = "", -- 더러운 물을 끓이기 시작한지 얼마 안됨
 			PURIFY_SHORT = "", --더러운물을 거의 다 끓여감
-			HASWATER = "", -- 깨끗한 물이 차 있는 상태
+			HASWATER = "재료가 필요하단다.", -- 깨끗한 물이 차 있는 상태
 			MELT_LONG = "", -- 얼음물을 녹이기 시작한지 얼마 안됨
 			MELT_SHORT = "", -- 얼음물을 거의 녹여감
 		},
@@ -310,7 +310,7 @@ return {
 		PORTABLEKETTLE_ITEM =
 		{
 			GENERIC = "어디서든 차를 준비할 수 있겠구나.", -- 휴대용 주전자(아이템) 조사 대사
-			EMPTY = "", -- 설치한 빈 휴대용 주전자 조사 대사
+			EMPTY = "사용전에 물을 담아야 한단다.", -- 설치한 빈 휴대용 주전자 조사 대사
 			BOILING_LONG = "", -- 음료를 만들기 시작한지 얼마 안됨
 			BOILING_SHORT = "", --음료 조리가 거의 끝나감
 			DONE = "기운이 솟는 향이로구나.", --음료가 완성됨
