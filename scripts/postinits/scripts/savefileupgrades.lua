@@ -33,7 +33,7 @@ local function FlagForRetrofitting_Cave(savedata, flag_name)
 end
 
 SaveFileupgrades.upgrades[nextupdate] = {
-	version = SaveFileupgrades.VERSION + 0.000000001,
+	version = SaveFileupgrades.VERSION + 0.000002217,
 	fn = function(savedata)
 	    FlagForRetrofitting_Forest(savedata, "retrofit_tea_tree")
 	    FlagForRetrofitting_Forest(savedata, "retrofit_caffeinberry_bush")

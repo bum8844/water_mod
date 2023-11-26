@@ -19,7 +19,18 @@ local Dcapacity = Class(function(self,inst)
 		self.capacity = 0
 	end
 
+	self.SetCapacity_max = function()
+		local max = self.max_capacity 
+		if self.inst:HasTag("mightiness_wimpy") then
+			max = max/2
+		else
+			max = TUNING.MAX_CPACITY or 5
+		end
+		self.max_capacity = max
+	end
+
 	inst:ListenForEvent("ms_becameghost",self.Reset_capacity)
+	inst:ListenForEvent("mightiness_statechange",self.SetCapacity_max)
 	end,
 	nil,
 	nil
@@ -80,6 +91,7 @@ end
 function Dcapacity:OnSave()
 	local remainingtime = self.left_timer ~= nil and self.left_timer - GetTime() or 0
 	return{
+		max_capacity = self.max_capacity,
         capacity = self.capacity,
         dremainingtime = remainingtime > 0 and remainingtime or nil,
 	}
@@ -87,6 +99,10 @@ end
 
 function Dcapacity:OnLoad(data)
 	self.capacity = data.capacity
+
+	if data.max_capacity then
+		self.max_capacity = data.max_capacity
+	end
 
     if self.intoxication_task ~= nil then
         self.intoxication_task:Cancel()
