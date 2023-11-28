@@ -49,11 +49,11 @@ local function Finished(inst, force_fx)
 
 	    item.SoundEmitter:PlaySound("drink_fx/sfx/drilling_pst", "drilling_pst")
 		
-		SpawnPrefab("collapse_small").Transform:SetPosition(x, y, z)
+		SpawnPrefab("small_puff").Transform:SetPosition(x, y, z)
 		SpawnPrefab("hole").Transform:SetPosition(x, y, z)
 	    item.SoundEmitter:PlaySound("farming/common/farm/plow/dirt_puff")
 	else
-		SpawnPrefab("collapse_small").Transform:SetPosition(x, y, z)
+		SpawnPrefab("small_puff").Transform:SetPosition(x, y, z)
 		SpawnPrefab("hole").Transform:SetPosition(x, y, z)
 	end
 

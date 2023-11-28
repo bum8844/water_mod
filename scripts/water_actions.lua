@@ -222,6 +222,10 @@ UPGRADE_TILEARRIVE.priority = 4
 UPGRADE_TILEARRIVE.rmb = true
 UPGRADE_TILEARRIVE.theme_music = "farming"
 
+ACTIONS.UPGRADE.stroverridefn = function(act)
+    return act.invobject:HasTag("burying") and STRINGS.ACTIONS.BURYING or nil
+end
+
 local HARVEST_ = ACTIONS.HARVEST.fn
 
 ACTIONS.HARVEST.fn = function(act)

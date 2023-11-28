@@ -51,6 +51,8 @@ STRINGS.ACTIONS.PURIFY = "Purificar"
 STRINGS.ACTIONS.MILKINGTOOL = "Ordeñar"
 STRINGS.ACTIONS.FERMENT = "Fermentar"
 STRINGS.ACTIONS.DISITLL = "Destilar"
+STRINGS.ACTIONS.BURYING = "Enterrando"
+
 -- Libro de bebidas
 STRINGS.NAMES.BOILBOOK = "Libro de bebidas"
 STRINGS.RECIPE_DESC.BOILBOOK = " Experimenta con ingredientes en la elaboración de bebidas para descubrir nuevas recetas y ampliar tu libro de bebidas." 

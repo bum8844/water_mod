@@ -48,6 +48,8 @@ water_tuning =
 	{
 		"wormwood",
 		"wx78",
+		"wurt",
+		"webber",
 	},
 
 	SPOILED_DRINK_NUTRIENTS = {  12,  12,  12 },

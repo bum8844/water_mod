@@ -161,7 +161,7 @@ local function placer_postinit_fn(inst)
 end
  
 return MakeUpGrade_Kit("well_kit", "well", "idle_well_kit", nil, well_kit_assets, well_kit_prefabs),
-MakeUpGrade_Kit("well_burying_kit", "well_burying_kit", "idle_burying_kit", nil, well_burying_kit_assets, well_burying_kit_prefabs),
+MakeUpGrade_Kit("well_burying_kit", "well_burying_kit", "idle_burying_kit", nil, well_burying_kit_assets, well_burying_kit_prefabs,{"burying"}),
 MakeUpGrade_Kit("well_waterpump_kit", "well_waterpump", "idle_waterpump_kit", nil, well_waterpump_kit_assets,well_waterpump_kit_prefabs),
 MakeUpGrade_Kit("well_sprinkler_kit", "well_sprinkler", "idle_sprinkler_kit", well_sprinkler_kit_fn, well_sprinkler_kit_assets, well_sprinkler_kit_prefabs,{"well_sprinkler_kit","tile_deploy"}),
 MakePlacer("well_sprinkler_kit_placer", "well_sprinkler_placement", "well_sprinkler_placement", "idle", true, nil, nil, TUNING.SPRINKLER_PLACER_SCALE, nil, nil, placer_postinit_fn)

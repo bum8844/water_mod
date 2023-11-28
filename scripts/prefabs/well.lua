@@ -66,7 +66,7 @@ local function RemoveHole(inst)
 	inst.AnimState:PushAnimation("burying")
 	inst:ListenForEvent("animover",function (inst)
 		local x, y, z = inst.Transform:GetWorldPosition()
-		SpawnPrefab("collapse_small").Transform:SetPosition(x, y, z)
+		SpawnPrefab("small_puff").Transform:SetPosition(x, y, z)
 	    inst:Remove()
 	end)
 end

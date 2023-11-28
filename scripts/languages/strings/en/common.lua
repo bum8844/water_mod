@@ -51,6 +51,8 @@ STRINGS.ACTIONS.PURIFY = "Purify"
 STRINGS.ACTIONS.MILKINGTOOL = "Milk"
 STRINGS.ACTIONS.FERMENT = "Ferment"
 STRINGS.ACTIONS.DISITLL = "Distill"
+STRINGS.ACTIONS.BURYING = "Burying"
+
 -- boilbook
 STRINGS.NAMES.BOILBOOK = "Drink Book"
 STRINGS.RECIPE_DESC.BOILBOOK = "Experiment with ingredients in the beverage production to discover new recipes and expand your drinkbook." 
