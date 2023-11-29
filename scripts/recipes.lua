@@ -38,7 +38,7 @@ AddRecipe2("additives_dairy",{Ingredient("goatmilk",1),Ingredient("milkywhites",
 
 AddRecipe2("additives_petals",{Ingredient("petals",1),Ingredient("tealeaves",1,ModAtlas(),nil,"tealeaves.tex"),Ingredient("foliage", 1)},TECH.FOODPROCESSING_ONE,{atlas = ModAtlas(), builder_tag="professionalchef", numtogive=2, image = "additives_petals.tex" ,nounlock=true},{"FOODPROCESSING"})]]
 
---AddRecipe2("boilbook",{Ingredient("papyrus",1),Ingredient("tealeaves",1,ModAtlas(),nil,"tealeaves.tex"},TECH.SCIENCE_ONE,{atlas = ModAtlas(), image = "boilbook.tex"},{"COOKING","HYDRATION"})
+AddRecipe2("boilbook",{Ingredient("papyrus",1),Ingredient("tealeaves",1,ModAtlas(),nil,"tealeaves.tex")},TECH.SCIENCE_ONE,{atlas = ModAtlas(), image = "boilbook.tex"},{"COOKING","HYDRATION"})
 
 AddRecipe2("barrel",{Ingredient("boards",2),Ingredient("rope",3),Ingredient("charcoal",3)},TECH.SCIENCE_ONE,{placer = "barrel_placer", atlas = ModAtlas(), image = "barrel.tex"},{"CONTAINERS","HYDRATION"})
 
