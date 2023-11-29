@@ -204,6 +204,8 @@ water_tuning =
 	ADD_CAFFEINBERRY_BUSH = GetModConfigData("gen_caffeinberry"),
 	ADD_RUINCACAO_TREE = GetModConfigData("gen_ruincacao_tree"),
 
+	THIRST_GAIN = (hydration_per_day/TUNING.TOTAL_DAY_TIME)*2,
+
 	RUINCACAO_LOOT =
     {
         ANGLE = 65,
