@@ -335,7 +335,14 @@ function BoilbookPage:PopulateRecipeDetailPanel(data)
 		local details_x = 60
 		if data.has_eaten then
 			local details_y = y + 85
-			local status_scale = 0.5
+			local status_scale = 0.7
+			local hunger_x = 0
+			local is_enable_thirst = TUNING.IS_ENABLE_THIRST
+
+			if is_enable_thirst then
+				status_scale = 0.5
+				hunger_x = 20
+			end
 
 			local health = data.recipe_def.health ~= nil and math.floor(10*data.recipe_def.health)/10 or nil
 			self.health_status = details_root:AddChild(TEMPLATES.MakeUIStatusBadge((health ~= nil and health >= 0) and "health" or "health_bad"))
@@ -345,17 +352,19 @@ function BoilbookPage:PopulateRecipeDetailPanel(data)
 
 			local hunger = data.recipe_def.hunger ~= nil and math.floor(10*data.recipe_def.hunger)/10 or nil
 			self.hunger_status = details_root:AddChild(TEMPLATES.MakeUIStatusBadge((hunger ~= nil and hunger >= 0) and "hunger" or "hunger_bad"))
-			self.hunger_status:SetPosition(details_x-20, details_y)
+			self.hunger_status:SetPosition(details_x-hunger_x, details_y)
 			self.hunger_status.status_value:SetString(hunger or STRINGS.UI.COOKBOOK.STAT_UNKNOWN)
 			self.hunger_status:SetScale(status_scale)
 
-			local thirst = data.recipe_def.thirst ~= nil and math.floor(10*data.recipe_def.thirst)/10 or 
-			ChackConstants(data.recipe_def.name) and math.floor(10*ChackConstants(data.recipe_def.name))/10 or
-			data.recipe_def.hunger and math.floor(10*Calchungerforthirst(data))/10  or nil
-			self.thirst_status = details_root:AddChild(TEMPLATES_WATER.MakeUIStatusBadge((thirst ~= nil and thirst >= 0) and "thirst" or "thirst_bed"))
-			self.thirst_status:SetPosition(details_x+20, details_y)
-			self.thirst_status.status_value:SetString(thirst or STRINGS.UI.COOKBOOK.STAT_UNKNOWN)
-			self.thirst_status:SetScale(status_scale)
+			if is_enable_thirst then
+				local thirst = data.recipe_def.thirst ~= nil and math.floor(10*data.recipe_def.thirst)/10 or 
+				ChackConstants(data.recipe_def.name) and math.floor(10*ChackConstants(data.recipe_def.name))/10 or
+				data.recipe_def.hunger and math.floor(10*Calchungerforthirst(data))/10  or nil
+				self.thirst_status = details_root:AddChild(TEMPLATES_WATER.MakeUIStatusBadge((thirst ~= nil and thirst >= 0) and "thirst" or "thirst_bed"))
+				self.thirst_status:SetPosition(details_x+20, details_y)
+				self.thirst_status.status_value:SetString(thirst or STRINGS.UI.COOKBOOK.STAT_UNKNOWN)
+				self.thirst_status:SetScale(status_scale)
+			end
 
 			local sanity = data.recipe_def.sanity ~= nil and math.floor(10*data.recipe_def.sanity)/10 or nil
 			self.sanity_status = details_root:AddChild(TEMPLATES.MakeUIStatusBadge((sanity ~= nil and sanity >= 0) and "sanity" or "sanity_bad"))
@@ -400,7 +409,7 @@ function BoilbookPage:PopulateRecipeDetailPanel(data)
 		MakeDetailsLine(details_root, -column_offset_x, y - 2, .5, "quagmire_recipe_line_veryshort.tex")
 		y = y - 8
 		y = y - body_font_size/2
-		local str = STRINGS.UI.FOOD_TYPES[data.recipe_def.foodtype or FOODTYPE.GENERIC]  or STRINGS.UI.COOKBOOK.FOOD_TYPE_UNKNOWN
+		local str = STRINGS.UI.FOOD_TYPES[data.recipe_def.drinktype or DRINKTYPY.GENERIC]  or STRINGS.UI.COOKBOOK.FOOD_TYPE_UNKNOWN
 		local tags = details_root:AddChild(Text(HEADERFONT, body_font_size, str, UICOLOURS.BROWN_DARK))
 		tags:SetPosition(-column_offset_x, y)
 		y = y - body_font_size/2 - 4
@@ -670,15 +679,26 @@ end
 
 function BoilbookPage:ApplySort()
 	local sortby = TheCookbook:GetFilter("sort")
+	if TUNING.IS_ENABLE_THIRST then
+		table.sort(self.filtered_recipes,
+				sortby == "alphabetical"	and function(a, b) return a.unlocked and not b.unlocked or (a.unlocked and b.unlocked and a.name < b.name) end
+			or	sortby == "health"			and function(a, b) return (a.unlocked and not b.unlocked) or (a.has_eaten and not b.has_eaten) or (a.has_eaten and ((a.recipe_def.health > b.recipe_def.health) or (a.recipe_def.health == b.recipe_def.health and a.name < b.name))) end
+			or	sortby == "hunger"			and function(a, b) return (a.unlocked and not b.unlocked) or (a.has_eaten and not b.has_eaten) or (a.has_eaten and ((a.recipe_def.hunger > b.recipe_def.hunger) or (a.recipe_def.hunger == b.recipe_def.hunger and a.name < b.name))) end
+			or	sortby == "thirst"			and function(a, b) return (a.unlocked and not b.unlocked) or (a.has_eaten and not b.has_eaten) or (a.has_eaten and ((a.recipe_def.thirst or ChackConstants(a.recipe_def.name) or Calchungerforthirst(a)) > (b.recipe_def.thirst or ChackConstants(b.recipe_def.name) or Calchungerforthirst(b)) or ((a.recipe_def.thirst or ChackConstants(a.recipe_def.name) or Calchungerforthirst(a)) == (b.recipe_def.thirst or ChackConstants(b.recipe_def.name) or Calchungerforthirst(b)) and a.name < b.name))) end
+			or	sortby == "sanity"			and function(a, b) return (a.unlocked and not b.unlocked) or (a.has_eaten and not b.has_eaten) or (a.has_eaten and ((a.recipe_def.sanity > b.recipe_def.sanity) or (a.recipe_def.sanity == b.recipe_def.sanity and a.name < b.name))) end
+			or	sortby == "sideeffects"		and function(a, b) return self:_sortfn_sideeffects(a, b) end
+			or									function(a, b) return self:_sortfn_default(a, b) end
+		)
+	else
 	table.sort(self.filtered_recipes,
 			sortby == "alphabetical"	and function(a, b) return a.unlocked and not b.unlocked or (a.unlocked and b.unlocked and a.name < b.name) end
 		or	sortby == "health"			and function(a, b) return (a.unlocked and not b.unlocked) or (a.has_eaten and not b.has_eaten) or (a.has_eaten and ((a.recipe_def.health > b.recipe_def.health) or (a.recipe_def.health == b.recipe_def.health and a.name < b.name))) end
 		or	sortby == "hunger"			and function(a, b) return (a.unlocked and not b.unlocked) or (a.has_eaten and not b.has_eaten) or (a.has_eaten and ((a.recipe_def.hunger > b.recipe_def.hunger) or (a.recipe_def.hunger == b.recipe_def.hunger and a.name < b.name))) end
-		or	sortby == "thirst"			and function(a, b) return (a.unlocked and not b.unlocked) or (a.has_eaten and not b.has_eaten) or (a.has_eaten and ((a.recipe_def.thirst or ChackConstants(a.recipe_def.name) or Calchungerforthirst(a)) > (b.recipe_def.thirst or ChackConstants(b.recipe_def.name) or Calchungerforthirst(b)) or ((a.recipe_def.thirst or ChackConstants(a.recipe_def.name) or Calchungerforthirst(a)) == (b.recipe_def.thirst or ChackConstants(b.recipe_def.name) or Calchungerforthirst(b)) and a.name < b.name))) end
 		or	sortby == "sanity"			and function(a, b) return (a.unlocked and not b.unlocked) or (a.has_eaten and not b.has_eaten) or (a.has_eaten and ((a.recipe_def.sanity > b.recipe_def.sanity) or (a.recipe_def.sanity == b.recipe_def.sanity and a.name < b.name))) end
 		or	sortby == "sideeffects"		and function(a, b) return self:_sortfn_sideeffects(a, b) end
 		or									function(a, b) return self:_sortfn_default(a, b) end
 	)
+	end
 
     self.recipe_grid:SetItemsData(self.filtered_recipes)
 	self:_DoFocusHookups()
@@ -690,11 +710,12 @@ function BoilbookPage:ApplyFilters()
 	self.filtered_recipes = {}
 
 	for i, item in ipairs(self.all_recipes) do
-		local foodtype = item.recipe_def.foodtype or FOODTYPE.GENERIC
+		local drinktype = item.recipe_def.drinktype or DRINKTYPY.GENERIC
 		if (filterby == FILTER_ALL)
-			or (filterby == FOODTYPE.MEAT		and foodtype == FOODTYPE.MEAT)
-			or (filterby == FOODTYPE.VEGGIE		and foodtype == FOODTYPE.VEGGIE)
-			or (filterby == "OTHER"				and foodtype ~= FOODTYPE.MEAT and foodtype ~= FOODTYPE.VEGGIE)
+			or (filterby == DRINKTYPY.FRUIT		and drinktype == DRINKTYPY.FRUIT)
+			or (filterby == DRINKTYPY.VEGGIE 	and drinktype == DRINKTYPY.VEGGIE)
+			or (filterby == DRINKTYPY.LEAFS 	and drinktype == DRINKTYPY.LEAFS)
+			or (filterby == "OTHER"				and drinktype ~= DRINKTYPY.FRUIT and drinktype ~= DRINKTYPY.VEGGIE and drinktype ~= DRINKTYPY.LEAFS)
 			or (filterby == "SIDEEFFECTS"		and (item.recipe_def.oneat_desc ~= nil or item.recipe_def.temperature ~= nil))
 			or (filterby == "INCOMPLETE"		and (item.recipes == nil or not item.has_eaten))
 			then
@@ -712,15 +733,29 @@ function BoilbookPage:BuildSpinners()
 	local top = 50
 	local left = 0 -- -width/2 + 5
 
-	local sort_options = {
-		{text = STRINGS.UI.COOKBOOK.SORT_DEFAULT,		data = "default"},
-		{text = STRINGS.UI.COOKBOOK.SORT_ALPHABETICAL,	data = "alphabetical"},
-		{text = STRINGS.UI.COOKBOOK.SORT_HEALTH,		data = "health"},
-		{text = STRINGS.UI.COOKBOOK.SORT_HUNGER,		data = "hunger"},
-		{text = STRINGS.UI.COOKBOOK.SORT_THIRST,		data = "thirst"},
-		{text = STRINGS.UI.COOKBOOK.SORT_SANITY,		data = "sanity"},
-		{text = STRINGS.UI.COOKBOOK.SORT_SIDE_EFFECTS,	data = "sideeffects"},
-	}
+	local sort_options = {}
+
+	if TUNING.IS_ENABLE_THIRST then
+		sort_options = {
+			{text = STRINGS.UI.COOKBOOK.SORT_DEFAULT,		data = "default"},
+			{text = STRINGS.UI.COOKBOOK.SORT_ALPHABETICAL,	data = "alphabetical"},
+			{text = STRINGS.UI.COOKBOOK.SORT_HEALTH,		data = "health"},
+			{text = STRINGS.UI.COOKBOOK.SORT_HUNGER,		data = "hunger"},
+			{text = STRINGS.UI.COOKBOOK.SORT_THIRST,		data = "thirst"},
+			{text = STRINGS.UI.COOKBOOK.SORT_SANITY,		data = "sanity"},
+			{text = STRINGS.UI.COOKBOOK.SORT_SIDE_EFFECTS,	data = "sideeffects"},
+		}
+	else
+		sort_options = {
+			{text = STRINGS.UI.COOKBOOK.SORT_DEFAULT,		data = "default"},
+			{text = STRINGS.UI.COOKBOOK.SORT_ALPHABETICAL,	data = "alphabetical"},
+			{text = STRINGS.UI.COOKBOOK.SORT_HEALTH,		data = "health"},
+			{text = STRINGS.UI.COOKBOOK.SORT_HUNGER,		data = "hunger"},
+			{text = STRINGS.UI.COOKBOOK.SORT_SANITY,		data = "sanity"},
+			{text = STRINGS.UI.COOKBOOK.SORT_SIDE_EFFECTS,	data = "sideeffects"},
+		}
+	end
+
 	local function on_sort_fn( data )
 		TheCookbook:SetFilter("sort", data)
 		self:ApplySort()
@@ -728,9 +763,10 @@ function BoilbookPage:BuildSpinners()
 
 	local filter_options = {
 		{text = STRINGS.UI.COOKBOOK.FILTER_ALL,			data = FILTER_ALL},
-		{text = STRINGS.UI.COOKBOOK.FILTER_GOODIES,		data = "OTHER"},
-		{text = STRINGS.UI.COOKBOOK.FILTER_VEGGIE,		data = FOODTYPE.VEGGIE},
-		--{text = STRINGS.UI.COOKBOOK.FILTER_OTHER,		data = "OTHER"},
+		{text = STRINGS.UI.COOKBOOK.FILTER_FRUIT,		data = DRINKTYPY.FRUIT},
+		{text = STRINGS.UI.COOKBOOK.FILTER_VEGGIE,		data = DRINKTYPY.VEGGIE},
+		{text = STRINGS.UI.COOKBOOK.FILTER_LEAFS,		data = DRINKTYPY.LEAFS},
+		{text = STRINGS.UI.COOKBOOK.FILTER_OTHER,		data = "OTHER"},
 		{text = STRINGS.UI.COOKBOOK.FILTER_SIDE_EFFECTS,data = "SIDEEFFECTS"},
 		{text = STRINGS.UI.COOKBOOK.FILTER_INCOMPLETE  ,data = "INCOMPLETE"},
 	}

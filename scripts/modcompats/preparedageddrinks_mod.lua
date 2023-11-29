@@ -41,6 +41,7 @@ local coconut_drink = {
 		oneatenfn = function(inst, eater)
 			alcohol(inst, eater)
 		end,
+		drinktype = DRINKTYPY.FRUIT,
 	},
 }
 
@@ -63,6 +64,7 @@ local cf_drink = {
 			eater:AddDebuff("healthregenbuff", "healthregenbuff")
 			eater:AddDebuff("caffeinbuff", "caffeinbuff")
 		end,
+		drinktype = DRINKTYPY.FRUIT,
 	},
 	cherry_bloom_madhu = {
 		test = function(boilier, names, tags) return names.cherry_honey and names.cherry_honey == 3 and ( names.forgetmelots or names.petals or names.moon_tree_blossom or tags.petals_legion ) and notmeat(tags) and notname(names) end,
@@ -123,6 +125,7 @@ local unc_drink = {
 		oneatenfn = function(inst, eater)
 			alcohol(inst, eater)
 		end,
+		drinktype = DRINKTYPY.FRUIT,
 	},
 	rice_wine = 
 	{
@@ -145,6 +148,7 @@ local unc_drink = {
 				eater.components.hayfever:SetNextSneezeTime(1440)
 			end
 		end,
+		drinktype = DRINKTYPY.VEGGIE,
 	},
 }
 
@@ -166,6 +170,7 @@ local wheat_drink = {
 		oneatenfn = function(inst, eater)
 			alcohol(inst, eater)
 		end,
+		drinktype = DRINKTYPY.VEGGIE,
 	}
 }
 
@@ -190,6 +195,7 @@ local legion_drink = {
                 eater.components.moisture:DoDelta(-100)
             end
 		end,
+		drinktype = DRINKTYPY.VEGGIE,
 	},
 	pineananassoda =
 	{
@@ -213,6 +219,7 @@ local legion_drink = {
 				eater:AddDebuff("healthregenbuff", "healthregenbuff")
 			end
 		end,
+		drinktype = DRINKTYPY.FRUIT,
 	},
 }
 
@@ -239,6 +246,7 @@ local mfp_drink = {
 				eater:AddDebuff("healthregenbuff", "healthregenbuff")
 			end
 		end,
+		drinktype = DRINKTYPY.FRUIT,
 	},
 }
 
@@ -266,6 +274,7 @@ local orange_drink = {
 			end
 		end,
 	},
+	drinktype = DRINKTYPY.FRUIT,
 }
 
 return { sw_drink = sw_drink, coconut_drink = coconut_drink, cf_drink = cf_drink, unc_drink = unc_drink , wheat_drink = wheat_drink, legion_drink = legion_drink, mfp_drink = mfp_drink, orange_drink = orange_drink}

@@ -58,6 +58,7 @@ local coconut_drink = {
 		cooktime = TUNING.KETTLE_FRUIT,
 		potlevel = "high",
 		potlevel_bottle = "mid",
+		drinktype = DRINKTYPY.FRUIT,
 	},
 }
 
@@ -75,6 +76,7 @@ local cf_drink = {
 		cooktime = TUNING.KETTLE_FRUIT,
 		potlevel = "high",
 		potlevel_bottle = "mid",
+		drinktype = DRINKTYPY.FRUIT,
 	},
 	cherry_honey_tea = {
 		test = function(boilier, names, tags) return names.cherry_honey and tags.sweetener and tags.sweetener >= 4 and not tags.veggie and notmeat(tags) and notname(names) and lessthing(names) and notages(tags) end,
@@ -119,6 +121,7 @@ local unc_drink = {
 				eater.components.hayfever:SetNextSneezeTime(1440)
 			end
 		end,
+		drinktype = DRINKTYPY.VEGGIE,
 	},
 }
 
@@ -134,6 +137,7 @@ local legion_drink = {
 		cooktime = TUNING.KETTLE_FRUIT,
 		potlevel = "mid",
 		potlevel_bottle = "mid",
+		drinktype = DRINKTYPY.FRUIT,
 	},
 }
 
@@ -151,6 +155,7 @@ local mfp_drink = {
 		cooktime = TUNING.KETTLE_FRUIT,
 		potlevel = "mid",
 		potlevel_bottle = "mid",
+		drinktype = DRINKTYPY.FRUIT,
 	},
 	strawberry_milk_smoothie = {
 		test = function(boilier, names, tags) return (names.mfp_strawberry or names.mfp_strawberry_cooked) and (tags.dairy or tags.milk) and tags.frozen and tags.sweetener end,
@@ -165,6 +170,7 @@ local mfp_drink = {
 		cooktime = TUNING.KETTLE_FRUIT,
 		potlevel = "mid",
 		potlevel_bottle = "mid",
+		drinktype = DRINKTYPY.FRUIT,
 	},
 }
 
@@ -180,6 +186,7 @@ local orange_drink = {
 		cooktime = TUNING.KETTLE_FRUIT,
 		potlevel = "mid",
 		potlevel_bottle = "mid",
+		drinktype = DRINKTYPY.FRUIT,
 	},
 }
 

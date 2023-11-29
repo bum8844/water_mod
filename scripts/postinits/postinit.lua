@@ -59,14 +59,6 @@ local postinits =
 	}
 }
 
-local redux_widgets = {
-	"cookbookpage_crockpot",
-}
-
-for _, filename in pairs(redux_widgets) do
-	modrequire("postinits/widgets/redux/"..filename)
-end
-
 if GetModConfigData("enable_thirst") then
 
 	local prefabs = {
@@ -90,6 +82,14 @@ if GetModConfigData("enable_thirst") then
 		"healthbadge_water",
 		"statusdisplays",
 	}
+
+	local redux_widgets = {
+		"cookbookpage_crockpot",
+	}
+
+	for _, filename in pairs(redux_widgets) do
+		modrequire("postinits/widgets/redux/"..filename)
+	end
 
 	for i, v in ipairs(prefabs) do
 	    table.insert(postinits.prefabs, v)

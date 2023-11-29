@@ -18,3 +18,7 @@ modrequire("postinits/postinit")
 modrequire("boilling")
 modrequire("water_cooking")
 modrequire("mod_compatibility")
+
+if GetModConfigData("enable_thirst") then
+	require("water_debugcommands")
+end

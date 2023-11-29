@@ -32,6 +32,7 @@ local drinks =
 		cooktime = TUNING.KETTLE_FRUIT,
 		potlevel = "mid",
 		potlevel_bottle = "mid",
+		drinktype = DRINKTYPY.FRUIT,
 		card_def={ingredients={{"berries",2},{"berries_juicy",2}}},
 	},
 
@@ -47,6 +48,7 @@ local drinks =
 		cooktime = TUNING.KETTLE_FRUIT,
 		potlevel = "mid",
 		potlevel_bottle = "mid",
+		drinktype = DRINKTYPY.FRUIT,
 	},
 
 	banana_juice =
@@ -61,6 +63,7 @@ local drinks =
 		cooktime = TUNING.KETTLE_FRUIT,
 		potlevel = "mid",
 		potlevel_bottle = "mid",
+		drinktype = DRINKTYPY.FRUIT,
 	},
 
 	pomegranate_juice =
@@ -75,6 +78,7 @@ local drinks =
 		cooktime = TUNING.KETTLE_FRUIT,
 		potlevel = "mid",
 		potlevel_bottle = "mid",
+		drinktype = DRINKTYPY.FRUIT,
 	},
 
 	watermelon_juice = 
@@ -89,6 +93,7 @@ local drinks =
 		cooktime = TUNING.KETTLE_FRUIT,
 		potlevel = "mid",
 		potlevel_bottle = "mid",
+		drinktype = DRINKTYPY.FRUIT,
 	},
 	
 	fig_juice =
@@ -103,6 +108,7 @@ local drinks =
 		cooktime = TUNING.KETTLE_FRUIT,
 		potlevel = "mid",
 		potlevel_bottle = "mid",
+		drinktype = DRINKTYPY.FRUIT,
 	},
 	
 	dragonjuice =
@@ -117,6 +123,7 @@ local drinks =
 		cooktime = TUNING.KETTLE_FRUIT,
 		potlevel = "mid",
 		potlevel_bottle = "mid",
+		drinktype = DRINKTYPY.FRUIT,
 	},
 	
 	glowberryjuice =
@@ -138,6 +145,7 @@ local drinks =
 		oneatenfn = function(inst, eater)
            	drink_worm_light_greater(inst, eater)
 	    end,
+	    drinktype = DRINKTYPY.FRUIT,
 	},
 	
 	caffeinberry_juice =
@@ -158,6 +166,7 @@ local drinks =
 		oneatenfn = function(inst, eater)
 			eater:AddDebuff("caffeinbuff", "caffeinbuff")
 		end,
+		drinktype = DRINKTYPY.FRUIT,
 	},
 
 	toffee_latte = {
@@ -177,6 +186,7 @@ local drinks =
 			eater.caffeinbuff_duration = TUNING.CAFFEIN_TIME * 1.5
 			eater:AddDebuff("caffeinbuff", "caffeinbuff")
 		end,
+		drinktype = DRINKTYPY.FRUIT,
 	},
 
 	ruincha_latte = {
@@ -216,6 +226,7 @@ local drinks =
 		potlevel = "high",
 		potlevel_bottle = "mid",
 		card_def={ingredients={{"carrot",3},{"twigs",1}},},
+		drinktype = DRINKTYPY.VEGGIE,
 	},
 
 	veggie_tea =
@@ -242,7 +253,8 @@ local drinks =
 					eater.components.debuffable:RemoveDebuff("waterbornedebuff")
 				end
 			end
-		end
+		end,
+		drinktype = DRINKTYPY.VEGGIE,
 	},
 
 	lumpy_tea = {
@@ -263,6 +275,7 @@ local drinks =
 				eater.components.debuffable:RemoveDebuff("waterbornedebuff")
 			end
 		end,
+		drinktype = DRINKTYPY.VEGGIE,
 	},
 
 	seaweed_shake = 
@@ -278,6 +291,7 @@ local drinks =
 		potlevel = "high",
 		potlevel_bottle = "mid",
 		perishtime = TUNING.PERISH_FAST, -- 8 -> 6일
+		drinktype = DRINKTYPY.VEGGIE,
 	},
 	
 	cactus_tea =
@@ -294,6 +308,7 @@ local drinks =
 		cooktime = TUNING.KETTLE_VEGGIE,
 		potlevel = "mid",
 		potlevel_bottle = "mid",
+		drinktype = DRINKTYPY.VEGGIE,
 	},
 
 	tomato_juice = {
@@ -316,6 +331,7 @@ local drinks =
 				eater.components.dcapacity:Remove_Capacity(1)
 			end
 		end,
+		drinktype = DRINKTYPY.VEGGIE,
 	},
 
 	mulled =
@@ -338,6 +354,7 @@ local drinks =
 		oneatenfn = function(inst, eater)
 			eater:AddDebuff("sleepdrinkbuff", "sleepdrinkbuff")
 		end,
+		drinktype = DRINKTYPY.VEGGIE,
 	},
 	
 	-- 잎&꽃차 종류(정신력 특화)
@@ -355,6 +372,7 @@ local drinks =
 		cooktime = TUNING.KETTLE_DECORATION,
 		potlevel = "mid",
 		potlevel_bottle = "mid",
+		drinktype = DRINKTYPY.LEAFS,
 	},
 	
 	greentea =
@@ -369,6 +387,7 @@ local drinks =
 		cooktime = TUNING.KETTLE_TEA,
 		potlevel = "mid",
 		potlevel_bottle = "mid",
+		drinktype = DRINKTYPY.LEAFS,
 	},
 	
 	-- 녹차 건조대 말린것
@@ -388,6 +407,7 @@ local drinks =
 		potlevel_bottle = "mid",
 		card_def={ingredients={{"tealeaves_dried",4}}},
 		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_HOT_FOOD,
+		drinktype = DRINKTYPY.LEAFS,
 	},
 	
 	blacktea_iced =
@@ -405,6 +425,7 @@ local drinks =
 		potlevel = "mid",
 		potlevel_bottle = "mid",
 		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_COLD_FOOD,
+		drinktype = DRINKTYPY.LEAFS,
 	},
 	
 	-- 동굴 고사리(수인성 질병 해결)
@@ -427,6 +448,7 @@ local drinks =
 				eater.components.debuffable:RemoveDebuff("waterbornedebuff")
 			end
 		end,
+		drinktype = DRINKTYPY.LEAFS,
 	},
 	
 	-- 일반 꽃잎
@@ -442,6 +464,7 @@ local drinks =
 		cooktime = TUNING.KETTLE_DECORATION,
 		potlevel = "mid",
 		potlevel_bottle = "mid",
+		drinktype = DRINKTYPY.LEAFS,
 	},
 	
 	--일시적으로 유령으로 만드는 차
@@ -464,6 +487,7 @@ local drinks =
 		oneatenfn = function(inst, eater)
 			eater:AddDebuff("obebuff", "obebuff")
 		end,
+		drinktype = DRINKTYPY.LEAFS,
 	},
 
 	-- 선인장 꽃잎
@@ -481,6 +505,7 @@ local drinks =
 		cooktime = TUNING.KETTLE_DECORATION,
 		potlevel = "high",
 		potlevel_bottle = "mid",
+		drinktype = DRINKTYPY.LEAFS,
 	},
 	
 	lotustea = {
@@ -502,6 +527,7 @@ local drinks =
 	    end,
 		potlevel = "mid",
 		potlevel_bottle = "mid",
+		drinktype = DRINKTYPY.LEAFS,
 	},
 	-- 달꽃차
 	moon_blossom_tea = {
@@ -523,6 +549,7 @@ local drinks =
         end,
 		potlevel = "mid",
 		potlevel_bottle = "mid",
+		drinktype = DRINKTYPY.LEAFS,
 	},
 	-- 특수차
 	butterbeer = {

@@ -29,6 +29,7 @@ local drinks =
 		cooktime = (TUNING.KETTLE_LUXURY_GOODS + TUNING.SODA_WAIT),
 		potlevel = "mid",
 		potlevel_bottle = "mid",
+		drinktype = DRINKTYPY.VEGGIE,
 	},
 	
 	fruitsoda =
@@ -43,6 +44,7 @@ local drinks =
 		cooktime = (TUNING.KETTLE_FRUIT + TUNING.SODA_WAIT),
 		potlevel = "mid",
 		potlevel_bottle = "mid",
+		drinktype = DRINKTYPY.FRUIT,
 	},
 	
 	
@@ -68,6 +70,7 @@ local drinks =
 				eater:AddDebuff("healthregenbuff", "healthregenbuff")
 			end
 		end,
+		drinktype = DRINKTYPY.FRUIT,
 	},
 	
 	cola =
@@ -90,6 +93,7 @@ local drinks =
 			eater:AddDebuff("healthregenbuff", "healthregenbuff")
 			eater:AddDebuff("caffeinbuff", "caffeinbuff")
 		end,
+		drinktype = DRINKTYPY.FRUIT,
 	},
 	
 	colaquantum =
@@ -135,6 +139,7 @@ local drinks =
 		oneatenfn = function(inst, eater)
 			alcohol(inst, eater)
 		end,
+		drinktype = DRINKTYPY.VEGGIE,
 	},
 	-- 감자, 고구마
 	lumpy_wine = {
@@ -154,6 +159,7 @@ local drinks =
 		oneatenfn = function(inst, eater)
 			alcohol(inst, eater)
 		end,
+		drinktype = DRINKTYPY.VEGGIE,
 	},
 	-- 선인장
 	pulque = {
@@ -174,6 +180,7 @@ local drinks =
 		oneatenfn = function(inst, eater)
 			alcohol(inst, eater)
 		end,
+		drinktype = DRINKTYPY.VEGGIE,
 	},
 	--꿀술
 	madhu =
@@ -215,6 +222,7 @@ local drinks =
 		oneatenfn = function(inst, eater)
 			alcohol(inst, eater)
 		end,
+		drinktype = DRINKTYPY.FRUIT,
 	},
 
 	noblewine = 
@@ -235,6 +243,7 @@ local drinks =
 		oneatenfn = function(inst, eater)
 			alcohol(inst, eater)
 		end,
+		drinktype = DRINKTYPY.FRUIT,
 	},
 	
 	sparklingwine =
@@ -256,6 +265,7 @@ local drinks =
 		oneatenfn = function(inst, eater)
 			alcohol(inst, eater)
 		end,
+		drinktype = DRINKTYPY.FRUIT,
 	},
 	-- 발광 베리류
 	glowberrywine =
@@ -277,6 +287,7 @@ local drinks =
 			alcohol(inst, eater)
            	drink_worm_light_less(inst, eater)
 	    end,
+	    drinktype = DRINKTYPY.FRUIT,
 	},
 	-- 우유
 	kumis = {

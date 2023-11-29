@@ -41,6 +41,7 @@ local coconut_drink = {
 		oneatenfn = function(inst, eater)
 			spirits(inst, eater)
 		end,
+		drinktype = DRINKTYPY.FRUIT,
 	},
 	nut_coconut_brandy = {
 		test = function(boilier, names, tags) return (names.coconut_wine or names.wine_kokonut) and names.additives_nut end,
@@ -59,6 +60,7 @@ local coconut_drink = {
 		oneatenfn = function(inst, eater)
 			spirits(inst, eater)
 		end,
+		drinktype = DRINKTYPY.FRUIT,
 	},
 }
 
@@ -121,6 +123,7 @@ local unc_drink = {
 		oneatenfn = function(inst, eater)
 			spirits(inst, eater)
 		end,
+		drinktype = DRINKTYPY.FRUIT,
 	},
 	rice_spirits = {
 		test = function(boilier, names, tags) return names.rice_wine and not tags.additives end,
@@ -142,6 +145,7 @@ local unc_drink = {
 				eater.components.hayfever:SetNextSneezeTime(1920)
 			end
 		end,
+		drinktype = DRINKTYPY.VEGGIE,
 	}
 }
 
@@ -163,6 +167,7 @@ local wheat_drink = {
 		oneatenfn = function(inst, eater)
 			spirits(inst, eater)
 		end,
+		drinktype = DRINKTYPY.VEGGIE,
 	}
 }
 
@@ -185,6 +190,7 @@ local legion_drink = {
 			spirits(inst, eater)
 			eater:AddDebuff("buff_moistureimmunity", "buff_moistureimmunity")
 		end,
+		drinktype = DRINKTYPY.VEGGIE,
 	}
 }
 

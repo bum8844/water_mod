@@ -1,7 +1,9 @@
 for k,mod_id in ipairs(GLOBAL.KnownModIndex:GetModsToLoad()) do 
 	if mod_id == "workshop-2334209327" then
 		modrequire("modcompats/2334209327/hof_buckets")
-		modrequire("modcompats/2334209327/hof_berwbook")
+		if GetModConfigData("enable_thirst") then
+			modrequire("modcompats/2334209327/hof_berwbook")
+		end
 	end
 	if mod_id == "workshop-1505270912" then
 		modrequire("modcompats/1505270912/te_water_spicedfoods_mod")
