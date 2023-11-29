@@ -18,6 +18,9 @@ local Assets =
 
     Asset("ATLAS", "images/tea_ui.xml"),
     Asset("IMAGE", "images/tea_ui.tex"),
+
+    Asset("ATLAS", "images/tea_scrapbook_icons.xml"),
+    Asset("IMAGE", "images/tea_scrapbook_icons.tex"),
 }
 
 return Assets

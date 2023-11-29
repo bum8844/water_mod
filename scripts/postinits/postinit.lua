@@ -56,7 +56,11 @@ local postinits =
 		"preparedfoods",
 		"preparedfoods_warly",
 		"cookbookdata",
-	}
+	},
+
+	redux = {
+
+	} 
 }
 
 if GetModConfigData("enable_thirst") then
@@ -83,12 +87,17 @@ if GetModConfigData("enable_thirst") then
 		"statusdisplays",
 	}
 
-	local redux_widgets = {
-		"cookbookpage_crockpot",
+	local redux	 = {
+		screens = {
+			"scrapbookscreen",
+		},
+		widgets = {
+			"cookbookpage_crockpot",
+		},
 	}
 
-	for _, filename in pairs(redux_widgets) do
-		modrequire("postinits/widgets/redux/"..filename)
+	for i, v in pairs(redux) do
+		postinits.redux[i] = v
 	end
 
 	for i, v in ipairs(prefabs) do
@@ -105,7 +114,15 @@ if GetModConfigData("enable_thirst") then
 end
 
 for dir, v in pairs(postinits) do
-	for _, filename in ipairs(v) do
-		modrequire("postinits/"..dir.."/"..filename)
+	if dir == "redux" then
+		for duxdir, duxv in pairs(v) do
+			for _, duxfile in ipairs(duxv) do
+				modrequire("postinits/"..duxdir.."/redux/"..duxfile)
+			end
+		end
+	else
+		for _, filename in ipairs(v) do
+			modrequire("postinits/"..dir.."/"..filename)
+		end
 	end
 end
