@@ -4,13 +4,13 @@
         <file id="0" name="swap_food/swap_food.png" width="120" height="120" pivot_x="0.5" pivot_y="0.5"/>
     </folder>
     <folder id="1" name="dark_ruincolate">
-        <file id="0" name="dark_ruincolate/dark_ruincolate.png" width="120" height="120" pivot_x="0" pivot_y="1"/>
+        <file id="0" name="dark_ruincolate/dark_ruincolate.png" width="188" height="81" pivot_x="0.5" pivot_y="0.3"/>
     </folder>
     <folder id="2" name="ruin_schokakola">
         <file id="0" name="ruin_schokakola/ruin_schokakola.png" width="120" height="120" pivot_x="0" pivot_y="1"/>
     </folder>
     <folder id="3" name="ruincolate">
-        <file id="0" name="ruincolate/ruincolate.png" width="120" height="120" pivot_x="0" pivot_y="1"/>
+        <file id="0" name="ruincolate/ruincolate.png" width="181" height="88" pivot_x="0.5" pivot_y="0.4"/>
     </folder>
     <folder id="4" name="white_ruincolate">
         <file id="0" name="white_ruincolate/white_ruincolate.png" width="120" height="120" pivot_x="0" pivot_y="1"/>
