@@ -166,6 +166,11 @@ local function ruincacao_bean()
 
     inst:AddComponent("inspectable")
 
+    inst:AddComponent("perishable")
+    inst.components.perishable:SetPerishTime(TUNING.PERISH_MED*.5)
+    inst.components.perishable.onperishreplacement = "spoiled_food"
+    inst.components.perishable:StartPerishing()
+
     inst:AddComponent("inventoryitem")
     inst.replica.inventoryitem:SetImage("ruincacao_bean")
 	inst.components.inventoryitem.atlasname= "images/tea_inventoryitem.xml"
@@ -211,7 +216,7 @@ local function ruincacao_bean_cooked()
     inst:AddComponent("inspectable")
 
     inst:AddComponent("perishable")
-    inst.components.perishable:SetPerishTime(TUNING.PERISH_SLOW)
+    inst.components.perishable:SetPerishTime(TUNING.PERISH_MED)
     inst.components.perishable.onperishreplacement = "spoiled_food"
     inst.components.perishable:StartPerishing()
 
