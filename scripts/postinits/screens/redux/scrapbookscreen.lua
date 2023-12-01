@@ -646,18 +646,19 @@ function ScrapbookScreen:PopulateInfoPanel(entry, ...)
 
 		local showfood = true 
 		local thirstvalue = data.thirstvalue
+
 		if data.hungervalue and data.hungervalue == 0 and
 			data.healthvalue and data.healthvalue == 0 and
 			data.sanityvalue and data.sanityvalue == 0 then
 			if not thirstvalue and thirstvalue == 0 then
 				showfood = false
 			end
-		else
-			if not thirstvalue then
+		end
+
+		if not thirstvalue then
 			thirstvalue = ChackConstants(data.name) and ChackConstants(data.name) or
 				(data.hungervalue and data.hungervalue ~= 0) and Calchungerforthirst(data.hungervalue,data.name) or
 				0
-			end
 		end
 --[[
 		if data.foodtype == FOODTYPE.ELEMENTAL or data.foodtype == FOODTYPE.ROUGHAGE or data.foodtype == FOODTYPE.HORRIBLE then

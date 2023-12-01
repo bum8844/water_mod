@@ -115,6 +115,7 @@ local function fn()
     inst.AnimState:SetBank("barrel_dehy")
     inst.AnimState:PlayAnimation("idle")
 	inst.AnimState:OverrideSymbol("swap","barrel_dehy_meter_water", "0")
+	inst.scrapbook_anim = "idle"
 	
 	inst:AddTag("structure")
 	inst:AddTag("barrel")

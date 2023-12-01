@@ -368,6 +368,7 @@ local function fn()
     inst.AnimState:SetBank("kettle")
     inst.AnimState:PlayAnimation("idle_empty")
 	inst.AnimState:OverrideSymbol("swap", "kettle_meter_water", "0")
+    inst.scrapbook_anim = "idle_empty"
     
 	inst:AddTag("structure")
     inst:AddTag("kettle")

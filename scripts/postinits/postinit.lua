@@ -89,6 +89,7 @@ if GetModConfigData("enable_thirst") then
 
 	local redux	 = {
 		screens = {
+			"scrapbookdata",
 			"scrapbookscreen",
 		},
 		widgets = {

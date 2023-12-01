@@ -110,6 +110,7 @@ local function hole()
     inst.AnimState:SetBank("holes")
     inst.AnimState:SetBuild("well")
     inst.AnimState:PlayAnimation("idle")
+    inst.scrapbook_anim = "idle"
 	
 	inst:AddTag("antlion_sinkhole_blocker")
     inst:AddTag("birdblocker")
