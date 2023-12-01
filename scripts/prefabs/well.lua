@@ -350,6 +350,7 @@ local function well()
     inst.AnimState:SetBank("well")
     inst.AnimState:SetBuild("well")
     inst.AnimState:PlayAnimation("idle_empty")
+    inst.scrapbook_anim = "idle_empty"
 
     inst:AddComponent("temperature")
 	

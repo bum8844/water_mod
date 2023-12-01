@@ -128,6 +128,7 @@ local function main_fn()
 
     inst.AnimState:SetBank("well_drilling")
     inst.AnimState:SetBuild("well_drilling")
+    inst.scrapbook_anim = "idle_place"
 
     inst.entity:SetPristine()
 
