@@ -46,7 +46,7 @@ return {
 		-- 물 모드 식물
 
 		TEA_TREE = "매력적인 친구",--차나무
-		DUG_TEA_TREE = "", --땅에서 파낸 차나무
+		DUG_TEA_TREE = "흙 필요해", --땅에서 파낸 차나무
 		TEA_SEED = "", -- 차나무 열매
 		TEA_SEED_COOKED = "", --구운 차나무 열매
 		TEA_SEED_SAPLING = "", --차나무 새싹
@@ -54,12 +54,12 @@ return {
 		TEALEAVES_DRIED = "", --말린 찻잎
 
 		CAFFEINBERRY = " 친구", --커피 덤불
-		DUG_CAFFEINBERRY = "", --파낸 커피덤불
+		DUG_CAFFEINBERRY = "흙 필요해", --파낸 커피덤불
 		CAFFEINBERRY_BEAN = "", --생 커피콩
 		CAFFEINBERRY_BEAN_COOKED = "", --구운 커피콩
 
-		RUINCACAO_TREE = " 친구", --카카오 나무
-		DUG_RUINCACAO_TREE = "", --파낸 카카오 나무
+		RUINCACAO_TREE = "시스투스같은 친구", --카카오 나무
+		DUG_RUINCACAO_TREE = "흙 필요해", --파낸 카카오 나무
 		RUINCACAO_SEED = "", --카카오 새싹 아이템
 		RUINCACAO_SEED_SAPLING = "", -- 카카오 새싹 심은거
 		RUINCACAO = "", --부수기 전 카카오 열매
