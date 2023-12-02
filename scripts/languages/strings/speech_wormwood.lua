@@ -12,10 +12,10 @@ return {
 	ANNOUNCE_DRUNK_END = "", --술에서 좀 깸 (그로기)
 	ANNOUNCE_DRUNK_IMMUNITY = "", --임시. 위그 전용,
 	ANNOUNCE_NOTCHARGE = "", --번개염소가 충전이 안되서 양동이로 젖을 짤수 없음
-	ANNOUNCE_NOTHIRSTSLEEP = "", -- 목이 마른데 밤에 잘려고 시도
-	ANNOUNCE_NOTHIRSTSIESTA = "", -- 목이 마른데 낮에 잘려고 시도
+	ANNOUNCE_NOTHIRSTSLEEP = "너무 목말라", -- 목이 마른데 밤에 잘려고 시도
+	ANNOUNCE_NOTHIRSTSIESTA = "너무 목말라", -- 목이 마른데 낮에 잘려고 시도
 	ANNOUNCE_SLEEP_END = "", --자고 일어나서 술에서 완전히 깸 
-	ANNOUNCE_THIRST = "", --너무 목말라!
+	ANNOUNCE_THIRST = "마실거 필요해", --너무 목말라!
 
     ANNOUNCE_CAFFINE_BUFF_START = "" , -- 카페인 버프 시작
     ANNOUNCE_CAFFINE_BUFF_STOP = "" ,  -- 카페인 버프 끝
@@ -27,7 +27,7 @@ return {
 
 	DESCRIBE =
 	{
-		BOILBOOK = "",
+		BOILBOOK = "마실 것들",
 
 		WATER_CLEAN_ICE = "",--깨끗한 얼음물
 		WATER_DIRTY_ICE = "", --더러운 얼음물
@@ -45,7 +45,7 @@ return {
 
 		-- 물 모드 식물
 
-		TEA_TREE = "",--차나무
+		TEA_TREE = "매력적인 친구",--차나무
 		DUG_TEA_TREE = "", --땅에서 파낸 차나무
 		TEA_SEED = "", -- 차나무 열매
 		TEA_SEED_COOKED = "", --구운 차나무 열매
@@ -53,12 +53,12 @@ return {
 		TEALEAVES = "", --찻잎
 		TEALEAVES_DRIED = "", --말린 찻잎
 
-		CAFFEINBERRY = "", --커피 덤불
+		CAFFEINBERRY = " 친구", --커피 덤불
 		DUG_CAFFEINBERRY = "", --파낸 커피덤불
 		CAFFEINBERRY_BEAN = "", --생 커피콩
 		CAFFEINBERRY_BEAN_COOKED = "", --구운 커피콩
 
-		RUINCACAO_TREE = "", --카카오 나무
+		RUINCACAO_TREE = " 친구", --카카오 나무
 		DUG_RUINCACAO_TREE = "", --파낸 카카오 나무
 		RUINCACAO_SEED = "", --카카오 새싹 아이템
 		RUINCACAO_SEED_SAPLING = "", -- 카카오 새싹 심은거
