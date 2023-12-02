@@ -7,13 +7,13 @@
         <file id="0" name="dark_ruincolate/dark_ruincolate.png" width="188" height="81" pivot_x="0.5" pivot_y="0.3"/>
     </folder>
     <folder id="2" name="ruin_schokakola">
-        <file id="0" name="ruin_schokakola/ruin_schokakola.png" width="156" height="96" pivot_x="0.5" pivot_y="0.4"/>
+        <file id="0" name="ruin_schokakola/ruin_schokakola.png" width="156" height="96" pivot_x="0.5" pivot_y="0.35"/>
     </folder>
     <folder id="3" name="ruincolate">
-        <file id="0" name="ruincolate/ruincolate.png" width="181" height="88" pivot_x="0.5" pivot_y="0.4"/>
+        <file id="0" name="ruincolate/ruincolate.png" width="181" height="88" pivot_x="0.5" pivot_y="0.35"/>
     </folder>
     <folder id="4" name="white_ruincolate">
-        <file id="0" name="white_ruincolate/white_ruincolate.png" width="184" height="106" pivot_x="0.5" pivot_y="0.5"/>
+        <file id="0" name="white_ruincolate/white_ruincolate.png" width="175" height="129" pivot_x="0.5" pivot_y="0.3"/>
     </folder>
     <entity id="0" name="water_cook_pot">
         <animation id="0" name="idle" length="1000" interval="100">
