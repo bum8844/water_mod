@@ -29,17 +29,17 @@ return {
 	{
 		BOILBOOK = "마실 것들",
 
-		WATER_CLEAN_ICE = "",--깨끗한 얼음물
-		WATER_DIRTY_ICE = "", --더러운 얼음물
+		WATER_CLEAN_ICE = "차가워. 진짜 차가워",--깨끗한 얼음물
+		WATER_DIRTY_ICE = "차가워. 진짜 차가워", --더러운 얼음물
 
 		SPICE_CAFFEINPEPPER = "" --후추 향신료
 
-		WELL_KIT = "", --우물 키트
+		WELL_KIT = "구멍에 심어", --우물 키트
 		WELL_SPRINKLER_KIT = "", --스프링클러 키트
-		WELL_WATERPUMP_KIT = "", --스팀 물펌프 키트
-		WELL_BURYING_KIT = "", -- 구멍 매설 키트
-		WELL_DRILLING = "", --드릴로 구멍 뚫는 중
-		WELL_DRILLING_ITEM = "", --드릴 아이템
+		WELL_WATERPUMP_KIT = "구멍에 심어", --스팀 물펌프 키트
+		WELL_BURYING_KIT = "구멍 막아", -- 구멍 매설 키트
+		WELL_DRILLING = "땅에 구멍내", --드릴로 구멍 뚫는 중
+		WELL_DRILLING_ITEM = "구멍내는 도구", --드릴 아이템
 		HOLE = "", --우물 구멍
 		WELL = "", --우물
 
@@ -47,24 +47,24 @@ return {
 
 		TEA_TREE = "매력적인 친구",--차나무
 		DUG_TEA_TREE = "흙 필요해", --땅에서 파낸 차나무
-		TEA_SEED = "", -- 차나무 열매
-		TEA_SEED_COOKED = "", --구운 차나무 열매
-		TEA_SEED_SAPLING = "", --차나무 새싹
-		TEALEAVES = "", --찻잎
-		TEALEAVES_DRIED = "", --말린 찻잎
+		TEA_SEED = "매력덩어리야!", -- 차나무 열매
+		TEA_SEED_COOKED = "이젠 먹는거", --구운 차나무 열매
+		TEA_SEED_SAPLING = "멋쟁이로 자라라!", --차나무 새싹
+		TEALEAVES = "매력적인 친구야 고마워!", --찻잎
+		TEALEAVES_DRIED = "흐으음... 냄새 좋아", --말린 찻잎
 
-		CAFFEINBERRY = " 친구", --커피 덤불
+		CAFFEINBERRY = "먹는 바위 친구", --커피 덤불
 		DUG_CAFFEINBERRY = "흙 필요해", --파낸 커피덤불
-		CAFFEINBERRY_BEAN = "", --생 커피콩
-		CAFFEINBERRY_BEAN_COOKED = "", --구운 커피콩
+		CAFFEINBERRY_BEAN = "좋은 냄새", --생 커피콩
+		CAFFEINBERRY_BEAN_COOKED = "아주 좋아!", --구운 커피콩
 
 		RUINCACAO_TREE = "시스투스같은 친구", --카카오 나무
 		DUG_RUINCACAO_TREE = "흙 필요해", --파낸 카카오 나무
-		RUINCACAO_SEED = "", --카카오 새싹 아이템
-		RUINCACAO_SEED_SAPLING = "", -- 카카오 새싹 심은거
-		RUINCACAO = "", --부수기 전 카카오 열매
-		RUINCACAO_BEAN = "", --부순 후 카카오 콩  
-		RUINCACAO_BEAN_COOKED = "", --구운 카카오 콩
+		RUINCACAO_SEED = "애기 친구 흙 필요해", --카카오 새싹 아이템
+		RUINCACAO_SEED_SAPLING = "아주 잘해!", -- 카카오 새싹 심은거
+		RUINCACAO = "애기 친구를 구했어", --부수기 전 카카오 열매
+		RUINCACAO_BEAN = "기름진 먹는거", --부순 후 카카오 콩  
+		RUINCACAO_BEAN_COOKED = "익힌 먹는거", --구운 카카오 콩
 
 		-- 증류주 첨가제
 
@@ -75,9 +75,9 @@ return {
 
 		-- 음료
 
-		WATER_CLEAN = "", --깨끗한 물
-		WATER_DIRTY = "", --더러운 물
-		WATER_SALTY = "", --바닷물
+		WATER_CLEAN = "깨끗 마실거", --깨끗한 물
+		WATER_DIRTY = "더러운 마실거", --더러운 물
+		WATER_SALTY = "못 마실거", --바닷물
 
 		GOOPYDRINK = "", --실패한 음료(웻 굽 개념)
 		
@@ -137,7 +137,7 @@ return {
 
 		--양조기 음료
 
-		SPOILED_DRINK = "", --썩은 음료
+		SPOILED_DRINK = "마실 거,", --썩은 음료
 
 		-- 양조소다
 	
@@ -295,7 +295,7 @@ return {
 
 		KETTLE =
 		{
-			EMPTY = "", --빈 주전자 조사대사
+			EMPTY = "아무것도 없어", --빈 주전자 조사대사
 			BURNT = "", --주전자가 불탐
 			BOILING_LONG = "", -- 음료를 만들기 시작한지 얼마 안됨
 			BOILING_SHORT = "", --음료 조리가 거의 끝나감
@@ -310,7 +310,7 @@ return {
 		PORTABLEKETTLE_ITEM =
 		{
 			GENERIC = "", -- 휴대용 주전자(아이템) 조사 대사
-			EMPTY = "", -- 설치한 빈 휴대용 주전자 조사 대사
+			EMPTY = "비었어...", -- 설치한 빈 휴대용 주전자 조사 대사
 			BOILING_LONG = "", -- 음료를 만들기 시작한지 얼마 안됨
 			BOILING_SHORT = "", --음료 조리가 거의 끝나감
 			DONE = "", --음료가 완성됨
