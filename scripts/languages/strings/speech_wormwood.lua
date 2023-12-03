@@ -20,7 +20,7 @@ return {
     ANNOUNCE_CAFFINE_BUFF_START = "" , -- 카페인 버프 시작
     ANNOUNCE_CAFFINE_BUFF_STOP = "" ,  -- 카페인 버프 끝
     
-    ANNOUNCE_CURE_WATERBORNE = "" ,  -- 수인성 질병을 아이템으로 치료했을때의 대사
+    ANNOUNCE_CURE_WATERBORNE = "" ,  -- 수인성 질병을 아이템으로 치료했을때의 대사 -- 웜우드 먼역
 
 	ANNOUNCE_DCAPACITY_CRITICAL = "", --취하기 직전
 	ANNOUNCE_DCAPACITY_HALF = "", -- 취기가 돌기 시작
@@ -35,13 +35,13 @@ return {
 		SPICE_CAFFEINPEPPER = "" --후추 향신료
 
 		WELL_KIT = "구멍에 심어", --우물 키트
-		WELL_SPRINKLER_KIT = "", --스프링클러 키트
+		WELL_SPRINKLER_KIT = "구멍이나 물덩이 근처에 심어", --스프링클러 키트
 		WELL_WATERPUMP_KIT = "구멍에 심어", --스팀 물펌프 키트
 		WELL_BURYING_KIT = "구멍 막아", -- 구멍 매설 키트
 		WELL_DRILLING = "땅에 구멍내", --드릴로 구멍 뚫는 중
 		WELL_DRILLING_ITEM = "구멍내는 도구", --드릴 아이템
-		HOLE = "", --우물 구멍
-		WELL = "", --우물
+		HOLE = "물 있어", --우물 구멍
+		WELL = "물 얻을수 있어.", --우물
 
 		-- 물 모드 식물
 
@@ -62,7 +62,7 @@ return {
 		DUG_RUINCACAO_TREE = "흙 필요해", --파낸 카카오 나무
 		RUINCACAO_SEED = "애기 친구 흙 필요해", --카카오 새싹 아이템
 		RUINCACAO_SEED_SAPLING = "아주 잘해!", -- 카카오 새싹 심은거
-		RUINCACAO = "애기 친구를 구했어", --부수기 전 카카오 열매
+		RUINCACAO = "애기 친구의 집", --부수기 전 카카오 열매
 		RUINCACAO_BEAN = "기름진 먹는거", --부순 후 카카오 콩  
 		RUINCACAO_BEAN_COOKED = "익힌 먹는거", --구운 카카오 콩
 
@@ -180,7 +180,7 @@ return {
 
 		--증류주
 
-		DISINFECTANT = "", -- 소독약
+		DISINFECTANT = "아야에 좋아", -- 소독약
 		CORN_WHISKEY = "", -- 콘 위스키
 		LUMPY_VODKA = "", -- 보드카
 		TEQUILA = "", -- 데킬라
@@ -223,29 +223,29 @@ return {
 
 		BUCKET_STEEL_EMPTY = 
 		{
-			EMPTY = "", --빈 양철 양동이
-			FULL = "", -- 깨끗한 빗물이 참
-			FULL_ICE = "", -- 빗물이 얼어버림
-			DIRTY = "", --빗물이 더러워짐
-			DIRTY_ICE = "", --더러운 빗물이 얼어버림
+			EMPTY = "비어있는 동이", --빈 양철 양동이
+			FULL = "깨끗 마실거", -- 깨끗한 빗물이 참
+			FULL_ICE = "깨끗 차가운거", -- 빗물이 얼어버림
+			DIRTY = "더러운 마실거", --빗물이 더러워짐
+			DIRTY_ICE = "더러운 차가운거", --더러운 빗물이 얼어버림
 		},
 
 		BUCKET_WOODIE_EMPTY = 
 		{
-			EMPTY = "", --우디의 빈 나무 양동이
-			FULL = "",  --깨끗한 빗물이 참
-			FULL_ICE = "", --빗물이 얼어버림
-			DIRTY = "", --빗물이 더러워짐
-			DIRTY_ICE = "", --더러운 빗물 얼어버림
+			EMPTY = "친구들 속을 파냈어 힝...", --우디의 빈 나무 양동이
+			FULL = "깨끗 마실거",  --깨끗한 빗물이 참
+			FULL_ICE = "깨끗 차가운거", --빗물이 얼어버림
+			DIRTY = "더러운 마실거", --빗물이 더러워짐
+			DIRTY_ICE = "더러운 차가운거", --더러운 빗물 얼어버림
 		},
 
 		BUCKET_EMPTY = 
 		{
-			EMPTY = "", -- 빈 나무 양동이
-			FULL = "", -- 깨끗한 빗물이 참
-			FULL_ICE = "", --빗물이 얼어버림
-			DIRTY = "", --빗물이 더러워짐
-			DIRTY_ICE = "", --더러운 빗물 얼어버림
+			EMPTY = "친구들로 만들어 졌어", -- 빈 나무 양동이
+			FULL = "깨끗 마실거", -- 깨끗한 빗물이 참
+			FULL_ICE = "깨끗 차가운거", --빗물이 얼어버림
+			DIRTY = "더러운 마실거", --빗물이 더러워짐
+			DIRTY_ICE = "더러운 차가운거", --더러운 빗물 얼어버림
 		},
 
 		DESALINATOR =
@@ -330,7 +330,7 @@ return {
 		},
 
 		WELL_WATERPUMP = {
-			HIGH_PRESSURE = "", -- 압력 최대
+			HIGH_PRESSURE = "콸콸", -- 압력 최대
 			MIDDLE_PRESSURE = "", -- 압력이 중간
 			LOW_PRESSURE = "", -- 압력이 거의 없을때
 			RECHARG_PRESSURE = "", -- 압력이 아예 없을때(여기까지 쓰면 압력이 최대가 될때까지 못씀.)
