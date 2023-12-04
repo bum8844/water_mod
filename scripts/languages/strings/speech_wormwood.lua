@@ -125,8 +125,8 @@ return {
 		-- 콜라보 주전자 음료
 
 		COCONUT_JUICE = "", --난파선 코코넛 쥬스
-		RAINBOW_SHAKE = "", --난파선 무지개 해파리 쉐이크
-		QUARTZ_SHAKE = "", --난파선 광대 물고기 쉐이크
+		RAINBOW_SHAKE = "예쁜 뽀글이로 만든 마실거", --난파선 무지개 해파리 쉐이크
+		QUARTZ_SHAKE = "뻐끔으로 만든 마실거", --난파선 광대 물고기 쉐이크
 		CHERRY_ROSEBERRIES_TEA = "", --체리숲 로즈힙 차
 		CHERRY_HONEY_TEA = "", --체리숲 벚꽃꿀 차
 		SWEET_RICE_DRINK = "", -- 비타협 식혜
@@ -137,7 +137,7 @@ return {
 
 		--양조기 음료
 
-		SPOILED_DRINK = "마실 거,", --썩은 음료
+		SPOILED_DRINK = "마실 거, 으음... 냄새 좋아!", --썩은 음료
 
 		-- 양조소다
 	
@@ -216,10 +216,10 @@ return {
 
 		--냄비 요리
 
-        DARK_RUINCOLATE = "", --다크 초콜릿.
-        WHITE_RUINCOLATE = "", --화이트 초콜릿
-        RUINCOLATE = "", -- 그냥 초콜릿
-        RUIN_SCHOKAKOLA = "", -- 쇼카콜라
+        DARK_RUINCOLATE = "검은 먹을거", --다크 초콜릿.
+        WHITE_RUINCOLATE = "하얀 먹을거", --화이트 초콜릿
+        RUINCOLATE = "갈색 먹을거", -- 그냥 초콜릿
+        RUIN_SCHOKAKOLA = "눈이 번쩍 먹을거", -- 쇼카콜라
 
 		BUCKET_STEEL_EMPTY = 
 		{
