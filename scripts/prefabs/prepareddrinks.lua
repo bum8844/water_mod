@@ -3,6 +3,24 @@ local prefabs =
     "spoiled_drink",
 }
 
+local function GetHealthvalue(inst, eater)
+    if eater:HasTag("valkyrie") then
+        if inst:HasTag("veggietype") or inst:HasTag("fruittype") or inst:HasTag("leavestype") then
+            return inst.components.edible.healthvalue *.25
+        end
+    end
+    return false
+end
+
+local function GetSanityvalue(inst, eater)
+    if eater:HasTag("valkyrie") then
+        if inst:HasTag("veggietype") or inst:HasTag("fruittype") or inst:HasTag("leavestype") then
+            return inst.components.edible.sanityvalue *.25
+        end
+    end
+    return false
+end
+
 local function MakePreparedDrink(data)
 	local oneatenfn = data.oneatenfn or function(inst, eater) end
 
@@ -130,6 +148,8 @@ local function MakePreparedDrink(data)
             inst.components.edible.temperaturedelta = data.temperature or 0
             inst.components.edible.temperatureduration = data.temperatureduration or 0
             inst.components.edible.nochill = data.nochill or nil
+            inst.components.edible:SetGetHealthFn(GetHealthvalue) 
+            inst.components.edible.SetGetSanityFn(GetSanityvalue)
             inst.components.edible:SetOnEatenFn(function(inst, eater)
                 oneatenfn(inst, eater)
                 --OnEaten(inst, eater)
