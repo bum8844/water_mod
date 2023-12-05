@@ -216,10 +216,10 @@ return {
 
 		--냄비 요리
 
-        DARK_RUINCOLATE = "검은 먹을거", --다크 초콜릿.
-        WHITE_RUINCOLATE = "하얀 먹을거", --화이트 초콜릿
-        RUINCOLATE = "갈색 먹을거", -- 그냥 초콜릿
-        RUIN_SCHOKAKOLA = "눈이 번쩍 먹을거", -- 쇼카콜라
+        DARK_RUINCOLATE = "검은 먹는거", --다크 초콜릿.
+        WHITE_RUINCOLATE = "하얀 먹는거", --화이트 초콜릿
+        RUINCOLATE = "갈색 먹는거", -- 그냥 초콜릿
+        RUIN_SCHOKAKOLA = "눈이 번쩍 먹는거", -- 쇼카콜라
 
 		BUCKET_STEEL_EMPTY = 
 		{
