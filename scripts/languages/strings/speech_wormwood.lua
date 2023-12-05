@@ -11,7 +11,7 @@ return {
 	ANNOUNCE_DRUNK = "", -- 취함
 	ANNOUNCE_DRUNK_END = "", --술에서 좀 깸 (그로기)
 	ANNOUNCE_DRUNK_IMMUNITY = "", --임시. 위그 전용,
-	ANNOUNCE_NOTCHARGE = "", --번개염소가 충전이 안되서 양동이로 젖을 짤수 없음
+	ANNOUNCE_NOTCHARGE = "준비 안됬어", --번개염소가 충전이 안되서 양동이로 젖을 짤수 없음
 	ANNOUNCE_NOTHIRSTSLEEP = "너무 목말라", -- 목이 마른데 밤에 잘려고 시도
 	ANNOUNCE_NOTHIRSTSIESTA = "너무 목말라", -- 목이 마른데 낮에 잘려고 시도
 	ANNOUNCE_SLEEP_END = "", --자고 일어나서 술에서 완전히 깸 
@@ -40,7 +40,7 @@ return {
 		WELL_BURYING_KIT = "구멍 막아", -- 구멍 매설 키트
 		WELL_DRILLING = "땅에 구멍내", --드릴로 구멍 뚫는 중
 		WELL_DRILLING_ITEM = "구멍내는 도구", --드릴 아이템
-		HOLE = "물 있어", --우물 구멍
+		HOLE = "안에 물 있어", --우물 구멍
 		WELL = "물 얻을수 있어.", --우물
 
 		-- 물 모드 식물
@@ -79,7 +79,7 @@ return {
 		WATER_DIRTY = "더러운 마실거", --더러운 물
 		WATER_SALTY = "못 마실거", --바닷물
 
-		GOOPYDRINK = "", --실패한 음료(웻 굽 개념)
+		GOOPYDRINK = "꿀꺽", --실패한 음료(웻 굽 개념)
 		
 		-- 주전자 음료
 
@@ -137,7 +137,7 @@ return {
 
 		--양조기 음료
 
-		SPOILED_DRINK = "마실 거, 으음... 냄새 좋아!", --썩은 음료
+		SPOILED_DRINK = "마실 거, ", --썩은 음료
 
 		-- 양조소다
 	
@@ -216,10 +216,10 @@ return {
 
 		--냄비 요리
 
-        DARK_RUINCOLATE = "검은 먹는거", --다크 초콜릿.
-        WHITE_RUINCOLATE = "하얀 먹는거", --화이트 초콜릿
-        RUINCOLATE = "갈색 먹는거", -- 그냥 초콜릿
-        RUIN_SCHOKAKOLA = "눈이 번쩍 먹는거", -- 쇼카콜라
+        DARK_RUINCOLATE = "먹는 검은거", --다크 초콜릿.
+        WHITE_RUINCOLATE = "먹는 하얀거", --화이트 초콜릿
+        RUINCOLATE = "", -- 그냥 초콜릿
+        RUIN_SCHOKAKOLA = "먹는거 눈이 번쩍", -- 쇼카콜라
 
 		BUCKET_STEEL_EMPTY = 
 		{
@@ -273,52 +273,52 @@ return {
 			DONE = "", --양조기에 음료가 들어있음
 		},
 
-		CAMPKETTLE_ITEM = "", --휴대 주전자 아이템 조사 대사
+		CAMPKETTLE_ITEM = "더러운 물 깨끗으로 만들어", --휴대 주전자 아이템 조사 대사
 		CAMPKETTLE =
 		{
-			GENERIC = "", -- 화덕에 건 휴대 주전자 안에 물이 없음
-			BOILING_LONG = "", -- 물 끓이기 시작함
-			BOILING_SHORT = "", -- 물 거의 다 끓음
-			DONE = "", --깨끗한 물이 들음
-			STOP = "", --화덕에 불이 없어서 더러운물이 끓지 않는 상태
+			GENERIC = "물 없어", -- 화덕에 건 휴대 주전자 안에 물이 없음
+			BOILING_LONG = "기다려...", -- 물 끓이기 시작함
+			BOILING_SHORT = "곧 끝나", -- 물 거의 다 끓음
+			DONE = "끝!", --깨끗한 물이 들음
+			STOP = "안 깨끗해", --화덕에 불이 없어서 더러운물이 끓지 않는 상태
 		},
 
-		CAMPDESALINATOR_ITEM = "", --휴대 제염기 아이템 조사 대사
+		CAMPDESALINATOR_ITEM = "못 마실 물 깨끗으로 만들어", --휴대 제염기 아이템 조사 대사
 		CAMPDESALINATOR = 
 		{
-			GENERIC = "", --물 없음
-			BOILING_LONG = "", --물 끓이기 시작
-			BOILING_SHORT = "", --거의 다 끓음 
-			DONE = "", -- 깨끗한 물이 들음
-			STOP = "", -- 화덕에 불이 없어서 소금물이 정수 되지 않는 상태
+			GENERIC = "물 없어", --물 없음
+			BOILING_LONG = "기다려...", --물 끓이기 시작
+			BOILING_SHORT = "곧 끝나", --거의 다 끓음 
+			DONE = "끝!", -- 깨끗한 물이 들음
+			STOP = "못 마셔", -- 화덕에 불이 없어서 소금물이 정수 되지 않는 상태
 		},
 
 		KETTLE =
 		{
 			EMPTY = "아무것도 없어", --빈 주전자 조사대사
-			BURNT = "", --주전자가 불탐
-			BOILING_LONG = "", -- 음료를 만들기 시작한지 얼마 안됨
-			BOILING_SHORT = "", --음료 조리가 거의 끝나감
-			DONE = "", --음료가 완성됨
-			PURIFY_LONG = "", -- 더러운 물을 끓이기 시작한지 얼마 안됨
-			PURIFY_SHORT = "", --더러운물을 거의 다 끓여감
+			BURNT = "이런", --주전자가 불탐
+			BOILING_LONG = "기다려...", -- 음료를 만들기 시작한지 얼마 안됨
+			BOILING_SHORT = "곧 끝나", --음료 조리가 거의 끝나감
+			DONE = "끝!", --음료가 완성됨
+			PURIFY_LONG = "더러워", -- 더러운 물을 끓이기 시작한지 얼마 안됨
+			PURIFY_SHORT = "곧 끝나", --더러운물을 거의 다 끓여감
 			HASWATER = "", -- 깨끗한 물이 차 있는 상태
-			MELT_LONG = "", -- 얼음물을 녹이기 시작한지 얼마 안됨
-			MELT_SHORT = "", -- 얼음물을 거의 녹여감
+			MELT_LONG = "차가워", -- 얼음물을 녹이기 시작한지 얼마 안됨
+			MELT_SHORT = "곧 끝나", -- 얼음물을 거의 녹여감
 		},
 
 		PORTABLEKETTLE_ITEM =
 		{
-			GENERIC = "", -- 휴대용 주전자(아이템) 조사 대사
+			GENERIC = "마실거 만들어", -- 휴대용 주전자(아이템) 조사 대사
 			EMPTY = "비었어...", -- 설치한 빈 휴대용 주전자 조사 대사
-			BOILING_LONG = "", -- 음료를 만들기 시작한지 얼마 안됨
-			BOILING_SHORT = "", --음료 조리가 거의 끝나감
-			DONE = "", --음료가 완성됨
-			PURIFY_LONG = "", -- 더러운 물을 끓이기 시작한지 얼마 안됨
-			PURIFY_SHORT = "", --더러운물을 거의 다 끓여감
+			BOILING_LONG = "두 디 두...", -- 음료를 만들기 시작한지 얼마 안됨
+			BOILING_SHORT = "금방 끝나", --음료 조리가 거의 끝나감
+			DONE = "다 됐어!", --음료가 완성됨
+			PURIFY_LONG = "더러워", -- 더러운 물을 끓이기 시작한지 얼마 안됨
+			PURIFY_SHORT = "금방 끝나", --더러운물을 거의 다 끓여감
 			HASWATER = "", -- 깨끗한 물이 차 있는 상태
-			MELT_LONG = "", -- 얼음물을 녹이기 시작한지 얼마 안됨
-			MELT_SHORT = "", -- 얼음물을 거의 녹여감
+			MELT_LONG = "차가워", -- 얼음물을 녹이기 시작한지 얼마 안됨
+			MELT_SHORT = "금방 끝나", -- 얼음물을 거의 녹여감
 		},
 		
 		DISTILLERS =
