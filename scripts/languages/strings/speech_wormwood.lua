@@ -9,7 +9,7 @@ return {
 	},
 
 	ANNOUNCE_DRUNK = "", -- 취함
-	ANNOUNCE_DRUNK_END = "", --술에서 좀 깸 (그로기)
+	ANNOUNCE_DRUNK_END = "휴....", --술에서 좀 깸 (그로기)
 	ANNOUNCE_DRUNK_IMMUNITY = "", --임시. 위그 전용,
 	ANNOUNCE_NOTCHARGE = "준비 안됬어", --번개염소가 충전이 안되서 양동이로 젖을 짤수 없음
 	ANNOUNCE_NOTHIRSTSLEEP = "너무 목말라", -- 목이 마른데 밤에 잘려고 시도
@@ -250,12 +250,12 @@ return {
 
 		DESALINATOR =
 		{
-			EMPTY = "", --제염기에 물이 없음
-			PURIFY_LONG = "", -- 정수 끝나기까지 많이 남음
-			PURIFY_SHORT = "", -- 정수가 곧 끝남
-			HASWATER = "", --제염기에 깨끗한 물이 있음
+			EMPTY = "짠물 깨끗 분리해", --제염기에 물이 없음
+			PURIFY_LONG = "기다려...", -- 정수 끝나기까지 많이 남음
+			PURIFY_SHORT = "곧 끝나", -- 정수가 곧 끝남
+			HASWATER = "끝!", --제염기에 깨끗한 물이 있음
 			BURNT = "",   --제염기가 타버림
-			HASSALT = "", --제염기에 소금이 남아 있음
+			HASSALT = "짠게 많아", --제염기에 소금이 남아 있음
 		},
 
 		BARREL =
@@ -283,7 +283,7 @@ return {
 			STOP = "안 깨끗해", --화덕에 불이 없어서 더러운물이 끓지 않는 상태
 		},
 
-		CAMPDESALINATOR_ITEM = "못 마실 물 깨끗으로 만들어", --휴대 제염기 아이템 조사 대사
+		CAMPDESALINATOR_ITEM = "짠 물 깨끗으로 만들어", --휴대 제염기 아이템 조사 대사
 		CAMPDESALINATOR = 
 		{
 			GENERIC = "물 없어", --물 없음
