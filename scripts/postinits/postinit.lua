@@ -26,6 +26,7 @@ local postinits =
 		"staff",		
 		"wateringcan",
 		"acorn",
+		"mosquitosack",
 	},
 
 	screens = {

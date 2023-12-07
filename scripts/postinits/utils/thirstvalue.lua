@@ -139,6 +139,8 @@ end
 for _, v in pairs(FOODTYPEGROUP.TYPEFRUIT_HAS_HALVED) do 
 	AddPrefabPostInit(v.."_halved",SetFruitTag)
 	AddPrefabPostInit(v.."_cooked", SetFruitTag)
+	AddPrefabPostInit(v.."_halved",SetAnyoneCanDrink)
+	AddPrefabPostInit(v.."_cooked", SetAnyoneCanDrink)
 end
 
 for _, v in pairs(FOODTYPEGROUP.SOUP_AND_STEW) do 

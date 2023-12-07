@@ -99,6 +99,7 @@ local function OnLoad(inst, data)
 					inst._kettle.components.distiller:startBoiling(0,true)
 				end
 			elseif data.kettle.watertype == WATERTYPE.CLEAN and data.kettle.waterlevel > 0 then
+				inst._kettle.components.distiller.done = true
 				inst._kettle.components.pickable.numtoharvest = inst._kettle.components.waterlevel:GetWater()
 				inst._kettle.components.pickable.canbepicked = true
 			end

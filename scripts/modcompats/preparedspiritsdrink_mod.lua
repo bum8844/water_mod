@@ -11,6 +11,7 @@ local sw_drink = {
 		thirst = TUNING.HYDRATION_MED,
 		tags = {"alcohol","spirits","lightdrink"},
 		perishtime = TUNING.PERISH_SUPERSLOW,
+		secondaryfoodtype = FOODTYPE.MEAT,
 		potlevel = "high",
 		potlevel_bottle = "mid",
 		prefabs = { "alcoholdebuff","drunkarddebuff","immunebuff","wormlight_light" },
