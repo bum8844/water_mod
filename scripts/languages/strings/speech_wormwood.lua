@@ -3,12 +3,12 @@ return {
 	{
 		GIVE =
 		{
-			WELL_NOTEMPTY = "", -- 우물에 말라 빈 양동이 달려있는데 양동이 달려 함
-			WELL_BUSY = "", -- 우물에 물 든 양동이 달려있는데 달려 함
+			WELL_NOTEMPTY = "안에 들었어", -- 우물에 말라 빈 양동이 달려있는데 양동이 달려 함
+			WELL_BUSY = "바빠", -- 우물에 물 든 양동이 달려있는데 달려 함
 		}
 	},
 
-	ANNOUNCE_DRUNK = "", -- 취함
+	ANNOUNCE_DRUNK = "몸 뜨거워!", -- 취함
 	ANNOUNCE_DRUNK_END = "휴....", --술에서 좀 깸 (그로기)
 	ANNOUNCE_DRUNK_IMMUNITY = "", --임시. 위그 전용,
 	ANNOUNCE_NOTCHARGE = "준비 안됬어", --번개염소가 충전이 안되서 양동이로 젖을 짤수 없음
@@ -17,13 +17,13 @@ return {
 	ANNOUNCE_SLEEP_END = "", --자고 일어나서 술에서 완전히 깸 
 	ANNOUNCE_THIRST = "마실거 필요해", --너무 목말라!
 
-    ANNOUNCE_CAFFINE_BUFF_START = "" , -- 카페인 버프 시작
-    ANNOUNCE_CAFFINE_BUFF_STOP = "" ,  -- 카페인 버프 끝
+    ANNOUNCE_CAFFINE_BUFF_START = "가벼워", -- 카페인 버프 시작
+    ANNOUNCE_CAFFINE_BUFF_STOP = "안 가벼워",  -- 카페인 버프 끝
     
     ANNOUNCE_CURE_WATERBORNE = "" ,  -- 수인성 질병을 아이템으로 치료했을때의 대사 -- 웜우드 먼역
 
-	ANNOUNCE_DCAPACITY_CRITICAL = "", --취하기 직전
-	ANNOUNCE_DCAPACITY_HALF = "", -- 취기가 돌기 시작
+	ANNOUNCE_DCAPACITY_CRITICAL = "느낌이 이상해....", --취하기 직전
+	ANNOUNCE_DCAPACITY_HALF = "으으음....", -- 취기가 돌기 시작
 
 	DESCRIBE =
 	{
@@ -83,11 +83,11 @@ return {
 		
 		-- 주전자 음료
 
-		FRUITJUICE = "", --잡 과일쥬스
-		BERRIES_JUICE = "", -- 베리 쥬스
-		POMEGRANATE_JUICE = "", -- 석류 쥬스
-		BANANA_JUICE = "", -- 바나나 쥬스
-		FIG_JUICE = "", -- 무화과 쥬스
+		FRUITJUICE = "달콤 섞인것 마실거", --잡 과일쥬스
+		BERRIES_JUICE = "달콤한 마실거", -- 베리 쥬스
+		POMEGRANATE_JUICE = "씨 과일 마실거", -- 석류 쥬스
+		BANANA_JUICE = "달콤 친구 마실거", -- 바나나 쥬스
+		FIG_JUICE = "대롱 마실거", -- 무화과 쥬스
 		DRAGONJUICE = "", --용과 쥬스
 		GLOWBERRYJUICE = "", -- 발광베리 쥬스
 		WATERMELON_JUICE = "", --수박 쥬스
@@ -141,7 +141,7 @@ return {
 
 		-- 양조소다
 	
-		SODA = "", -- 탄산수
+		SODA = "톡톡 쏘는 물", -- 탄산수
 		FRUITSODA = "", -- 과일소다
 		LEMONLIMESODA = "", -- 레몬 라임소다(과일소다 상위 호환)
 		COLA = "", -- 콜라
