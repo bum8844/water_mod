@@ -208,6 +208,13 @@ FOODTYPEGROUP =
 		"bonesoup",
 		"lobsterbisque",
 		"moqueca",
+		--event_halloweenpotion
+		"halloweenpotion_bravery_small",
+		"halloweenpotion_bravery_large",
+		"halloweenpotion_health_small",
+		"halloweenpotion_health_large",
+		"halloweenpotion_sanity_small",
+		"halloweenpotion_sanity_large",
 		--mod_foods
 		"musselbouillabaise",
 		"sharkfinsoup",
