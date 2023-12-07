@@ -181,6 +181,11 @@ FOODTYPEGROUP =
 		"fwd_in_pdt_food_orange",
 		"fwd_in_pdt_food_mango",
 		"fwd_in_pdt_food_mango_green",
+		--cf
+		"cherry",
+		"cherry_roseberries",
+		"cherry_gooseberries",
+		"cherryruins_swanapple",
 	},
 
 	TYPEFRUIT_HAS_HALVED = 
@@ -291,6 +296,9 @@ FOODTYPEGROUP =
 		"fwd_in_pdt_food_green_mushroom_soup",
 		"fwd_in_pdt_food_yogurt",
 		"fwd_in_pdt_food_congee_with_meat_and_thousand_year_old_eggs",
+		--cf
+		"cherry_gooseberries_preserve",
+		"cherry_shrimp_chowder",
 	},
 
 	NONE_HUNGER_INGREDIENT = 
@@ -485,6 +493,8 @@ FOODTYPEGROUP =
 			--fwd
 			"fwd_in_pdt_food_saline_medicine",
 			"fwd_in_pdt_food_mango_ice_drink",
+			--cf
+			"cherry_cola",
 		},
 		
 		HUGE = 

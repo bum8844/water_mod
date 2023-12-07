@@ -9,7 +9,7 @@ local function GetHealthvalue(inst, eater)
             return inst.components.edible.healthvalue *.25
         end
     end
-    return false
+    return inst.components.edible.healthvalue
 end
 
 local function GetSanityvalue(inst, eater)
@@ -18,7 +18,7 @@ local function GetSanityvalue(inst, eater)
             return inst.components.edible.sanityvalue *.25
         end
     end
-    return false
+    return inst.components.edible.sanityvalue
 end
 
 local function MakePreparedDrink(data)
@@ -148,8 +148,8 @@ local function MakePreparedDrink(data)
             inst.components.edible.temperaturedelta = data.temperature or 0
             inst.components.edible.temperatureduration = data.temperatureduration or 0
             inst.components.edible.nochill = data.nochill or nil
-            inst.components.edible:SetGetHealthFn(GetHealthvalue) 
-            inst.components.edible.SetGetSanityFn(GetSanityvalue)
+            inst.components.edible.gethealthfn = GetHealthvalue 
+            inst.components.edible.getsanityfn = GetSanityvalue
             inst.components.edible:SetOnEatenFn(function(inst, eater)
                 oneatenfn(inst, eater)
                 --OnEaten(inst, eater)
