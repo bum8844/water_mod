@@ -395,6 +395,7 @@ FOODTYPEGROUP =
 			"icecream",
 			"berrysundae",
 			"frozenbananadaiquiri",
+			"cherry_sorbet",
 		},
 	},
 
