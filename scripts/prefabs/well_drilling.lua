@@ -162,7 +162,7 @@ local function main_fn()
 end
 
 local function PlaceTestFn(inst, pt, mouseover, deployer)
-    return TheWorld.Map:IsAboveGroundAtPoint(pt.x, pt.y, pt.z, false) and not TheWorld.Map:IsDockAtPoint(pt.x, 0, pt.z)
+    return TheWorld.Map:IsAboveGroundAtPoint(pt.x, pt.y, pt.z, false) and not TheWorld.Map:IsDockAtPoint(pt.x, 0, pt.z) and TheWorld.Map:CanDeployPlantAtPoint(pt, inst)
 end
 
 local function ondeploy(inst, pt, deployer)
@@ -211,6 +211,7 @@ local function item_fn()
     inst.components.inventoryitem.imagename= "well_drilling_item"
 
     inst:AddComponent("deployable")
+    inst.components.deployable.spacing = 4.5
     inst.components.deployable:SetDeployMode(DEPLOYMODE.CUSTOM)
     inst.components.deployable.ondeploy = ondeploy
 
