@@ -18,6 +18,11 @@ return {
 	ANNOUNCE_THIRST = "강력한 근육이 말라버릴것 같다...", --너무 목말라!
 	ANNOUNCE_DRUNK_IMMUNITY = "하! 술같은건 강한 볼프강에게 아무것도 아니다!" --마이티 상태 술 면역
 
+	ANNOUNCE_CAFFINE_BUFF_START = "볼프강 늑대처럼 달린다!" , -- 카페인 버프 시작
+    ANNOUNCE_CAFFINE_BUFF_STOP = "볼프강 무산소 운동 할 시간이다." ,  -- 카페인 버프 끝
+    
+    ANNOUNCE_CURE_WATERBORNE = "속이 편안하군." ,  -- 수인성 질병을 아이템으로 치료했을때의 대사
+
 	ANNOUNCE_DCAPACITY_CRITICAL = "볼프강 그만 마셔야겠다..", --취하기 직전
 	ANNOUNCE_DCAPACITY_HALF = "볼프강 왠지 좀 더워진 것 같다..", -- 취기가 돌기 시작
 
