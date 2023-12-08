@@ -114,7 +114,7 @@ local function hole()
 	inst:AddTag("antlion_sinkhole_blocker")
     inst:AddTag("birdblocker")
 	
-	MakeObstaclePhysics(inst, .6)
+	MakeObstaclePhysics(inst, .15)
 
     inst.entity:SetPristine()
 
