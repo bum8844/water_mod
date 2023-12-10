@@ -112,7 +112,7 @@ local unc_drink = {
 	{
 		test = function(boilier, names, tags) return name.giant_blueberry and names.giant_blueberry >= 2 and names.viperfruit and names.viperfruit >= 1 and not tags.veggie and notmeat(tags) and notname(names) end,
 		priority = 2,
-        health = -TUNING.HEALING_MED/2,
+        health = 0,
         hunger = TUNING.CALORIES_MED/2,
         sanity = TUNING.SANITY_MEDLARGE/2,
         thirst = TUNING.HYDRATION_MED,
