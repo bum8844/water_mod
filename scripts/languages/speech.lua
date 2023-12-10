@@ -7,6 +7,10 @@ local locales =
 	ko = "ko",
 	es = "es",
 	--zh = "zh",
+	--zht = "zh",
+	--zhr = "zh",
+	--ru = "ru",
+	--uk-UA = "ru",
 }
 
 local locale = GetModConfigData("locale") or locales[LOC.GetLocaleCode()] or "en"
@@ -20,8 +24,8 @@ end]]
 
 local vanilla_characters = {
 	"generic",
-	--[["walter",
-	"wanda",
+	"walter",
+	--"wanda",
 	"warly",
 	"wathgrithr",
 	"waxwell",
@@ -34,7 +38,7 @@ local vanilla_characters = {
 	"wormwood",
 	"wortox",
 	"wurt",
-	"wx78",]]
+	"wx78",
 }
 
 local function MergeTable(tbl1, tbl2)
