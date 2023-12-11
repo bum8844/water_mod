@@ -32,7 +32,7 @@ return {
 		WATER_CLEAN_ICE = "흐드드, 엄청 차가워!",--깨끗한 얼음물
 		WATER_DIRTY_ICE = "흐드드, 굳어버린 물이야!", --더러운 얼음물
 
-		SPICE_CAFFEINPEPPER = "냄새 매워!" --후추 향신료
+		SPICE_CAFFEINPEPPER = "냄새 매워!", --후추 향신료
 
 		WELL_KIT = "어인들 이런거 만드는거 본 적 없어.", --우물 키트
 		WELL_SPRINKLER_KIT = "동그란거 한번 누르면 된데, 뽀륵.", --스프링클러 키트
@@ -96,7 +96,7 @@ return {
 		CARROT_TEA = "더 맛있어졌서!", --당근차
 		CACTUS_TEA = "가시 없어? 좋아!", --선인차
 		TOMATO_JUICE = "토마토 주스!", --토마토 쥬스
-		LUMPY_TEA = "흙 야채 물 좋아해!" --뿌리차,
+		LUMPY_TEA = "흙 야채 물 좋아해!", --뿌리차
 		SEAWEED_SHAKE = "미끈미끈 물도 좋아!", --해초 쉐이크
 		
 		GREENTEA = "물 향기나!", --생잎 녹차

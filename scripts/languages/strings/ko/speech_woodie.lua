@@ -32,7 +32,7 @@ return {
 		WATER_CLEAN_ICE = "녹여야 겠지?",--깨끗한 얼음물
 		WATER_DIRTY_ICE = "더럽고 얼었잖아.", --더러운 얼음물
 
-		SPICE_CAFFEINPEPPER = "고기에는 오직 소금 이라고 생각하는데 말이지." --후추 향신료
+		SPICE_CAFFEINPEPPER = "고기에는 오직 소금 이라고 생각하는데 말이지.", --후추 향신료
 
 		WELL_KIT = "내가 손 좀 써 보지.", --우물 키트
 		WELL_SPRINKLER_KIT = "완전 전자동 이잖아?", --스프링클러 키트
@@ -96,7 +96,7 @@ return {
 		CARROT_TEA = "토끼 밥에 곁들이기라도 할 건가?", --당근차
 		CACTUS_TEA = "가시가 남아있을지 의심스러워.", --선인차
 		TOMATO_JUICE = "시럽 좀 넣어서 달게 먹자.", --토마토 쥬스
-		LUMPY_TEA = "이걸론 차 말고 해쉬를 해서 줘." --뿌리차,
+		LUMPY_TEA = "이걸론 차 말고 해쉬를 해서 줘.", --뿌리차
 		SEAWEED_SHAKE = "더 나은 방법은 없었어?", --해초 쉐이크
 		
 		GREENTEA = "차나 한잔 마셔야 겠다.", --생잎 녹차

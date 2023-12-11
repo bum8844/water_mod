@@ -335,7 +335,7 @@ return {
 			MIDDLE_PRESSURE = "볼프강 아저씨 만큼이나 일을 잘해!", -- 압력이 중간
 			LOW_PRESSURE = "기계가 밥을 못 먹은걸까?", -- 압력이 거의 없을때
 			RECHARG_PRESSURE = "아무래도 연못을 찾아봐야 겠어, 워비.", -- 압력이 아예 없을때
-
+		},
 		WELL_SPRINKLER =
 		{ 
 			LOWFUEL = "땔감을 좀 더 넣어줘야겠어.",

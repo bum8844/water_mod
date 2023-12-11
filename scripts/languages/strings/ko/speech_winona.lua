@@ -32,7 +32,7 @@ return {
 		WATER_CLEAN_ICE = "씹어 먹어야 하나.",--깨끗한 얼음물
 		WATER_DIRTY_ICE = "먼지 섞인 얼음이네.", --더러운 얼음물
 
-		SPICE_CAFFEINPEPPER = "어디 고기만 있으면 완벽할 텐데.." --후추 향신료
+		SPICE_CAFFEINPEPPER = "어디 고기만 있으면 완벽할 텐데..", --후추 향신료
 
 		WELL_KIT = "힘 좀 써볼까.", --우물 키트
 		WELL_SPRINKLER_KIT = "꽤 정교하게 잘 만들었어.", --스프링클러 키트
@@ -96,7 +96,7 @@ return {
 		CARROT_TEA = "마침 눈이 침침 했는데 잘됬어.", --당근차
 		CACTUS_TEA = "가시가 있어도 다 물렁해졌겠네.", --선인차
 		TOMATO_JUICE = "굳이 찾아 마시진 않았는데 좋네.", --토마토 쥬스
-		LUMPY_TEA = "생각보다 나쁘지 않네, 괜찮아." --뿌리차,
+		LUMPY_TEA = "생각보다 나쁘지 않네, 괜찮아.", --뿌리차
 		SEAWEED_SHAKE = "엄.. 변비에 좋을것 같네.", --해초 쉐이크
 		
 		GREENTEA = "은은하게 향이 좋네.", --생잎 녹차

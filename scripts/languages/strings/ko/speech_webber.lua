@@ -32,7 +32,7 @@ return {
 		WATER_CLEAN_ICE = "앗 차거!",--깨끗한 얼음물
 		WATER_DIRTY_ICE = "얼어 붙었네. 웩", --더러운 얼음물
 
-		SPICE_CAFFEINPEPPER = "후에취!!!" --후추 향신료
+		SPICE_CAFFEINPEPPER = "후에취!!!", --후추 향신료
 
 		WELL_KIT = "우리 멋진 우물을 쌓아 보자!", --우물 키트
 		WELL_SPRINKLER_KIT = "버튼만 누르면 자동으로 설치된다니 완전 멋져!", --스프링클러 키트
@@ -96,7 +96,7 @@ return {
 		CARROT_TEA = "그렇다고 이렇게까지 먹고 싶진 않았어.", --당근차
 		CACTUS_TEA = "엽육이 입안 가득이야.", --선인차
 		TOMATO_JUICE = "확실하게 정해서 과채 주스야.", --토마토 쥬스
-		LUMPY_TEA = "쓸것 같은데 써." --뿌리차,
+		LUMPY_TEA = "쓸것 같은데 써.", --뿌리차,
 		SEAWEED_SHAKE = "점액으로 미끌미끌 거릴거야.", --해초 쉐이크
 		
 		GREENTEA = "으음, 잎 비린내.", --생잎 녹차
@@ -158,7 +158,7 @@ return {
 		GLOWBERRYWINE = "술이 빛나!", --글로우 베리 와인
 		KUMIS = "우유가 상한건가?", -- 크므즈,산양유주
 		LUMPY_WINE = "으음, 엄청 쓰겠어.", --서주(감자 고구마등 뿌리 술)
-		PULQUE = "풀로 만든 우유 같은 술이야!" --풀케(선인주)
+		PULQUE = "풀로 만든 우유 같은 술이야!", --풀케(선인주)
 		RUINCACAO_WINE = "우리는 초콜릿이 좋은데.", -- 카카오 와인 
 
 		-- 콜라보 소다

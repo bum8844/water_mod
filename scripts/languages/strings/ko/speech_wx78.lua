@@ -29,10 +29,10 @@ return {
 	{
 		BOILBOOK = "냉각수에 불순물을 조합하는 방법이 적힌 디렉토리", -- 요리책 물 모드 버전
 
-		WATER_CLEAN_ICE = "얼어붙고 갇힌 물. 하 하"--깨끗한 얼음물
+		WATER_CLEAN_ICE = "얼어붙고 갇힌 물. 하 하",--깨끗한 얼음물
 		WATER_DIRTY_ICE = "더럽고 추악함", --더러운 얼음물
 
-		SPICE_CAFFEINPEPPER = "무미건조한 음식에 향을 추가함" --후추 향신료
+		SPICE_CAFFEINPEPPER = "무미건조한 음식에 향을 추가함", --후추 향신료
 
 		WELL_KIT = "설치에 수맥 요구", --우물 키트
 		WELL_SPRINKLER_KIT = "사용에 주의할 것", --스프링클러 키트
@@ -96,7 +96,7 @@ return {
 		CARROT_TEA = "베타카로틴 농축액", --당근차
 		CACTUS_TEA = "방화벽 완전 무력화", --선인차 (PROTECTIVE BARRIER NEUTRALIZED)
 		TOMATO_JUICE = "처참하게 분쇄됨. 하 하", --토마토 쥬스(IT'S UTTERLY CRUSHED. HA HA)
-		LUMPY_TEA = "루트 권한 획득" --뿌리차, (ROOT PERMISSION GRANTED)
+		LUMPY_TEA = "루트 권한 획득", --뿌리차, (ROOT PERMISSION GRANTED)
 		SEAWEED_SHAKE = "50% 해, 50% 초", --해초 쉐이크 (AFS: 스폰지밥 드립. 플랭크톤이 스폰지밥 조종하는 에피소드에서 따옴)
 		
 		GREENTEA = "잎 우린 물일 뿐", --생잎 녹차 (IT IS JUST LEAF JUICE)
@@ -108,7 +108,7 @@ return {
 		CACTUSFLOWER_TEA = "엽육에서 즙을!", --선인꽃차 (JUICE FROM FLESH!) (AFS: 선인꽃차는 녹색입니다. 이천군수 자락서스 패러디)
 		LOTUSTEA = "물에 사는 꽃을 물로 끓인 것", --연꽃차
 		SUSHIBISCUS = "상당히 기묘함", -- 자살차
-		MOON_BLOSSOM_TEA = "더 이상 소생 불능. 하 하 하"
+		MOON_BLOSSOM_TEA = "더 이상 소생 불능. 하 하 하",
 
 		CAFFEINBERRY_JUICE = "오버클럭용 냉각제", -- 블랙 커피
         TOFFEE_LATTE = "볼트 미포함", --토피넛 라떼(BOLT NOT INCLUDED)
