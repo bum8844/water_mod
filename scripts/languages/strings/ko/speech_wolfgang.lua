@@ -10,7 +10,7 @@ return {
 
 	ANNOUNCE_DRUNK = "으으, 볼프강 술보다 약하다...", -- 취함
 	ANNOUNCE_DRUNK_END = "볼프강 좀 나아진것 같다.", --술에서 좀 깸 (그로기)
-	ANNOUNCE_DRUNK_IMMUNITY = "", --임시. 위그 전용,
+	ANNOUNCE_DRUNK_IMMUNITY = "하! 술같은건 강한 볼프강에게 아무것도 아니다!", --마이티 상태 술 면역
 	ANNOUNCE_NOTCHARGE = "볼프강이 힘 주면 염소만 다칠거다.", --번개염소가 충전이 안되서 양동이로 젖을 짤수 없음
 	ANNOUNCE_NOTHIRSTSLEEP = "볼프강 목 말라서 못 자겠다...", -- 목이 마른데 밤에 잘려고 시도
 	ANNOUNCE_NOTHIRSTSIESTA = "볼프강 물 좀 마시고 자야겠다...", -- 목이 마른데 낮에 잘려고 시도
@@ -206,7 +206,7 @@ return {
 
 		--왈리 전용 콜라보 증류주
 
-		NUT_COCONUT_BRANDY = "볼프강 해적 느낌 낸다!", -- 코코넛 브랜디 (캐러비안 럼을 만들수 없어서 카리브 브랜디 라는 이름으로 대체)
+		NUT_COCONUT_BRANDY = "세상은 넓고! 훔칠 건 많다!", -- Take what you can! Give nothin' back! -- 캐러비안의 해적 조샤미 깁스, 잭 스패로우
 	    GIANT_BLUEBERRY_GIN = "볼프강 근육처럼 터질것 같다!", -- 붐 베리 사파이어 (당근 폭발함)
 
 		--냄비 요리

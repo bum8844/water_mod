@@ -8,38 +8,38 @@ return {
 		}
 	},
 
-	ANNOUNCE_DRUNK = "술내기에서 내가 졌는가, 히끅.", -- 취함
+	ANNOUNCE_DRUNK = "술 내기에서 내가 졌는가, 히끅.", -- 취함
 	ANNOUNCE_DRUNK_END = "아직 내가 에기르의 연회장에 있는가?", --술에서 좀 깸 (그로기)
 	ANNOUNCE_DRUNK_IMMUNITY = "크하하! 한 잔 더!", --임시. 위그 전용,
 	ANNOUNCE_NOTCHARGE = "일각수가 아직 준비가 안되었다 하는군.", --번개염소가 충전이 안되서 양동이로 젖을 짤수 없음
 	ANNOUNCE_NOTHIRSTSLEEP = "이대로 자면 밤새 갈사할것이야! 우선 물 부터 마시자.", -- 목이 마른데 밤에 잘려고 시도
 	ANNOUNCE_NOTHIRSTSIESTA = "목이 이렇게 타는데 어떻게 쉴 수 있다는 거지!", -- 목이 마른데 낮에 잘려고 시도
 	ANNOUNCE_SLEEP_END = "개운하군!", --자고 일어나서 술에서 완전히 깸 
-	ANNOUNCE_THIRST = "어서 연회에 참가할수 있었면 좋겠군.", --너무 목말라!
+	ANNOUNCE_THIRST = "어서 연회에 참가할수 있었으면 좋겠군.", --너무 목말라!
 
-    ANNOUNCE_CAFFINE_BUFF_START = "누가 내 발걸음을 쫒아 올수 있으리라!" , -- 카페인 버프 시작
+    ANNOUNCE_CAFFINE_BUFF_START = "누가 내 발걸음을 쫒아 올 수 있으리라!" , -- 카페인 버프 시작
     ANNOUNCE_CAFFINE_BUFF_STOP = "평소와 같은 발걸음으로 돌아왔군." ,  -- 카페인 버프 끝
     
-    ANNOUNCE_CURE_WATERBORNE = "다음엔 가려마셔서 싸움에 지장이 없게 해야겠군." ,  -- 수인성 질병을 아이템으로 치료했을때의 대사
+    ANNOUNCE_CURE_WATERBORNE = "다음엔 가려 마셔서 싸움에 지장이 없게 해야겠군." ,  -- 수인성 질병을 아이템으로 치료했을때의 대사
 
 	ANNOUNCE_DCAPACITY_CRITICAL = "하루 종일도 마실수 있다 토르!", --취하기 직전
 	ANNOUNCE_DCAPACITY_HALF = "두려움이 사라지는게 느껴진다!", -- 취기가 돌기 시작
 
 	DESCRIBE =
 	{
-		BOILBOOK = "음료에는 고기를 쓰는게 하나도 없다는걸 인정해야 겠군.",
+		BOILBOOK = "만찬에 곁들일 연회주가 얼마나 많이 적혀있지?",
 
 		WATER_CLEAN_ICE = "얼어붙었도다.",--깨끗한 얼음물
 		WATER_DIRTY_ICE = "얼음 찌거기로군.", --더러운 얼음물
 
-		SPICE_CAFFEINPEPPER = "내 만찬에 전투의 흥분을 더하는 가루로." --후추 향신료
+		SPICE_CAFFEINPEPPER = "내 만찬에 전투의 흥분을 더하는 가루로다." --후추 향신료
 
 		WELL_KIT = "내 기꺼이 우물을 설치하리.", --우물 키트
-		WELL_SPRINKLER_KIT = "구름없이 비를 뿌리는 기계로다.", --스프링클러 키트
+		WELL_SPRINKLER_KIT = "구름 없이 비를 뿌리는 기계로다.", --스프링클러 키트
 		WELL_WATERPUMP_KIT = "기계의 힘이 지하 세계를 약탈할 것이라.", --스팀 물펌프 키트
-		WELL_BURYING_KIT = "발 헛딛는 자가 없도록 하자.", -- 구멍 매설 키트
+		WELL_BURYING_KIT = "발 헛 딛는 자가 없도록 하자.", -- 구멍 매설 키트
 		WELL_DRILLING = "스틱스 강까지 밀어붙혀라!", --드릴로 구멍 뚫는 중
-		WELL_DRILLING_ITEM = "운더월드까지 길을 뚫을 막강한 도구로다.", --드릴 아이템
+		WELL_DRILLING_ITEM = "지하세계까지 길을 뚫을 막강한 도구로다.", --드릴 아이템
 		HOLE = "저 아래 물소리가 들리나니.", --우물 구멍
 		WELL = "목마른 자가 우물을 파는 법.", --우물
 
@@ -116,7 +116,7 @@ return {
 		
 		HOTRUINCOLATE = "영혼을 데워주는구나.", --핫초코
 		RUINCOLATE_SMOOTHIE = "서리 거인들의 음료인가?", --초코 스무디(차가움)
-		RUINXOCOLATL = "난폭한 고대 전사들의 음료 로다.", --쇼콜라틀(매캐함)
+		RUINXOCOLATL = "난폭한 고대 전사들의 음료로다.", --쇼콜라틀(매캐함)
 		TEA_RUINCOLATE_LATTE = "내 영혼을 깨워주는군.", -- 말차 초코 라떼
 
 		MULLED = "지친 영혼을 쉬게 해주노라.", --뱅쇼
@@ -124,7 +124,7 @@ return {
 
 		-- 콜라보 주전자 음료
 
-		COCONUT_JUICE = "말랑한 과육이 담겨져 있구나.", --난파선 코코넛 쥬스
+		COCONUT_JUICE = "말랑한 과육으로 가득하구나.", --난파선 코코넛 쥬스
 		RAINBOW_SHAKE = "프레야의 축복이 담겨져 있도다!", --난파선 무지개 해파리 쉐이크
 		QUARTZ_SHAKE = "내 기꺼이 마시리라!", --난파선 광대 물고기 쉐이크
 		CHERRY_ROSEBERRIES_TEA = "이런 추악한 열매를 담은 음료를 마셔야 하는가?", --체리숲 로즈힙 차
@@ -157,7 +157,7 @@ return {
 		SPARKLINGWINE = "전사를 위한 연회주는 아니로군.", --스파클링 와인
 		GLOWBERRYWINE = "크바시르의 혈주로군.", --글로우 베리 와인
 		KUMIS = "일각수 맙소사, 젖으로 술을 만든다고?", -- 크므즈,산양유주
-		LUMPY_WINE = "내 기준을 충족하진 못하는구나.", --서주(감자 고구마등 뿌리 술)
+		LUMPY_WINE = "내 주량을 충족시키진 못하도다.", --서주(감자 고구마등 뿌리 술)
 		PULQUE = "마야우엘의 피로군!", --풀케(선인주)
 		RUINCACAO_WINE = "톨텍의 와인인가?", -- 카카오 와인 
 
@@ -171,7 +171,7 @@ return {
 		--콜라보 양조주
 
 		AUROBOW = "아름답게도 빛나는군!", -- 난파선 오로보우,무지개 해파리주
-		COCONUT_WINE = "야자기름 향이 묵직하게 느껴지도다.", -- 난파선 코코넛 와인
+		COCONUT_WINE = "야자기름 향이 묵직하게 느껴지는구나.", -- 난파선 코코넛 와인
 		CHERRY_BLOOM_MADHU = "보기좋은 술이 마시기도 좋은법.", -- 체리숲 벚꽃꿀주
 		GIANT_BLUEBERRY_WINE = "강력한 술이로다.", -- 비타협 붐!베리 사파이어(불 붙히면 폭발함)
 		RICE_WINE = "내가 보기엔 우유나 마찬가지로다.", -- 비타협 막걸리
@@ -195,7 +195,7 @@ return {
 		ABSINTHE = "청량한 향이 마음에 드는군!", -- 압생트
 		TEA_LUMPY_VODKA = "술에서 이파리 향이 나는군.", -- 녹차 리큐르
 		PETALS_BERRY_BRANDY = "전사는 꽃향기를 즐길 여유가 없다.", -- 장미향 브랜디
-		KAHLUA = "전사가 이 술을 즐기기에는 너무 달군.", -- 커피 리큐르 깔루아
+		KAHLUA = "전사로써 이 술은 너무 달군.", -- 커피 리큐르 깔루아
 		NUT_CORN_WHISKY = "묵직한 향이 느껴지는군.", -- 너트 위스키
         RUINCACAO_CREAM_LIQUEUR = "어린 아이들을 위한 술인가?", --베일리스 카카오 크림 리큐르
         RUMCHATA = "나는 술과 젖은 따로 마시길 원하노라.", -- 럼차타(럼에 오우차타 라는 유제품 섞은)
@@ -266,7 +266,7 @@ return {
 
 		BREWERY =
 		{
-			EMPTY = "내 채소와 과일로 연회주를 만들것이라.", --양조기 조사 대사
+			EMPTY = "나 여기서 선언하니, 채소와 과일로 연회주를 만들것이라.", --양조기 조사 대사
 			BURNT = "말라버린 술을 두고 울어서 무슨 소용이랴.", --양조기 타버림
 			FERMENTING_LONG = "기다리는 동안 다른 것을 하는 것이 좋겠군.", --양조 끝나기 까지 많이 남음
 			FERMENTING_SHORT = "연회를 준비해야 겠구나!", --양조가 곧 끝남

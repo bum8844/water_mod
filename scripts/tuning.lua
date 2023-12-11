@@ -206,6 +206,7 @@ water_tuning =
 
 	IS_ENABLE_THIRST = GetModConfigData("enable_thirst"),
 	THIRST_GAIN = (hydration_per_day/TUNING.TOTAL_DAY_TIME)*2,
+	WURT_THIRST_RATE_MODIFIER = 1.25,
 
 	RUINCACAO_LOOT =
     {

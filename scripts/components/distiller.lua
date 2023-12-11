@@ -17,7 +17,7 @@ local Distiller = Class(function(self,inst)
 	self.boiling_timer = nil
 	end,
 	nil,
-	{done = ondone,}
+	{done = ondone}
 )
 
 local function control(inst, self)
