@@ -32,7 +32,7 @@ return {
 		WATER_CLEAN_ICE = "이가 다 시리는군.",--깨끗한 얼음물
 		WATER_DIRTY_ICE = "얼어붙은 쓰레기야.", --더러운 얼음물
 
-		SPICE_CAFFEINPEPPER = "어디 넣어도 제 값은 하지." --후추 향신료
+		SPICE_CAFFEINPEPPER = "어디 넣어도 제 값은 하지.", --후추 향신료
 
 		WELL_KIT = "내가 이걸 들고 날라야 하나?", --우물 키트
 		WELL_SPRINKLER_KIT = "기계와 마법의 혼종이로군.", --스프링클러 키트
@@ -96,7 +96,7 @@ return {
 		CARROT_TEA = "어쩔수 없지, 씁.", --당근차
 		CACTUS_TEA = "내 손안에 작은 오아시스가 있군.", --선인차
 		TOMATO_JUICE = "목넘김이 부드럽군.", --토마토 쥬스
-		LUMPY_TEA = "이렇게 하니 나름 품위가 있군." --뿌리차,
+		LUMPY_TEA = "이렇게 하니 나름 품위가 있군.", --뿌리차,
 		SEAWEED_SHAKE = "아니 제발..", --해초 쉐이크
 		
 		GREENTEA = "잎 비린내가 나잖니.", --생잎 녹차

@@ -11,7 +11,7 @@ local drinks =
 		hunger = 0,
 		sanity = 0,
 		thirst = 0,
-		tags = {"disinfectant"},
+		tags = {"disinfectant","spirits"},
 		OnPutInInventory = function(inst, owner) if owner ~= nil and owner:IsValid() then owner:PushEvent("learncookbookstats", inst.food_basename or inst.prefab) end end,
 		perishtime = 9000000,
 		cooktime = (TUNING.INCORRECT_BOIL + TUNING.BEER_WAIT),

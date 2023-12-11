@@ -183,17 +183,29 @@ local function MakePreparedDrink(data)
             inst.components.perishable.onperishreplacement = "spoiled_drink"
         end
 
-        if inst:HasTag("explosive") then
-            MakeSmallBurnable(inst, 3 + math.random() * 3)
+        if inst:HasTag("spirits") then
+            local burntime = TUNING.LARGE_BURNTIME
+            local isexplosive = inst:HasTag("explosive")
+
+            if isexplosive then
+                burntime = 3 + math.random() * 3
+
+                inst:AddComponent("explosive")
+                inst.components.explosive:SetOnExplodeFn(OnExplodeFn)
+                inst.components.explosive.explosivedamage = TUNING.GUNPOWDER_DAMAGE
+            end
+
+            MakeSmallBurnable(inst, burntime)
             MakeSmallPropagator(inst)
 
-            inst.components.burnable:SetOnBurntFn(nil)
-            inst.components.burnable:SetOnIgniteFn(OnIgniteFn)
-            inst.components.burnable:SetOnExtinguishFn(OnExtinguishFn)
+            if isexplosive then
+                inst.components.burnable:SetOnBurntFn(nil)
+                inst.components.burnable:SetOnIgniteFn(OnIgniteFn)
+                inst.components.burnable:SetOnExtinguishFn(OnExtinguishFn)
+            end
 
-            inst:AddComponent("explosive")
-            inst.components.explosive:SetOnExplodeFn(OnExplodeFn)
-            inst.components.explosive.explosivedamage = TUNING.GUNPOWDER_DAMAGE
+            inst:AddComponent("fuel")
+            inst.components.fuel.fuelvalue = TUNING.MED_FUEL
         end
 
         MakeDynamicCupImage(inst, "swap", "kettle_drink")
