@@ -62,14 +62,23 @@ local function CreateWellWaterPump(inst)
 	end)
 end
 
-local function RemoveHole(inst)
+local function CreateWellBuryingSite(inst)
+	local buryingsite = ReplacePrefab(inst, "well_buryingsite")
+	buryingsite.Transform:SetPosition(inst.Transform:GetWorldPosition())
+	buryingsite.AnimState:PlayAnimation("set_site_0")
+	buryingsite.AnimState:PushAnimation("idle_site_0",true)
+	buryingsite.SoundEmitter:PlaySound("dontstarve/common/together/spawn_portal_celestial/reveal")
+end
+
+
+--[[local function RemoveHole(inst)
 	inst.AnimState:PushAnimation("burying")
 	inst:ListenForEvent("animover",function (inst)
 		local x, y, z = inst.Transform:GetWorldPosition()
 		SpawnPrefab("small_puff").Transform:SetPosition(x, y, z)
 	    inst:Remove()
 	end)
-end
+end]]
 
 local function OnUpgrade(inst, performer, upgraded_from_item)
 	local prefab = upgraded_from_item.prefab
@@ -80,31 +89,19 @@ local function OnUpgrade(inst, performer, upgraded_from_item)
 	elseif prefab == "well_waterpump_kit" then 
 		local hole = CreateWellWaterPump(inst)
 	elseif prefab == "well_burying_kit" then 
-		local hole = RemoveHole(inst)
+		local hole = CreateWellBuryingSite(inst)
 	else
 		FailUpgrade(inst, performer, prefab)
 	end
 end
 
---[[local function OnConstructed(inst, doer)
-    local concluded = true
-    for i, v in ipairs(CONSTRUCTION_PLANS[inst.prefab] or {}) do
-        if inst.components.constructionsite:GetMaterialCount(v.type) < v.amount then
-            concluded = false
-            break
-        end
-    end
-
-    if concluded then
-
-    end
-end]]
-
 local function hole()
     local inst = CreateEntity()
 
-    inst.entity:AddTransform()
+	inst.entity:AddTransform()
     inst.entity:AddAnimState()
+    inst.entity:AddSoundEmitter()
+    inst.entity:AddMiniMapEntity()
     inst.entity:AddNetwork()
 
     inst.AnimState:SetBank("holes")
@@ -386,5 +383,95 @@ local function well()
 	return inst
 end
 
+local function CalculatedValue(inst)
+	local a = 0
+    local t = 0
+    for i, v in ipairs(CONSTRUCTION_PLANS[inst.prefab] or {}) do
+        a = a + inst.components.constructionsite:GetMaterialCount(v.type)
+        t = t + v.amount
+    end
+    return a, t
+end
+
+local function DoBurying(inst)
+	inst.AnimState:PushAnimation("burying")
+	inst:ListenForEvent("animover",function (inst)
+		local x, y, z = inst.Transform:GetWorldPosition()
+		SpawnPrefab("small_puff").Transform:SetPosition(x, y, z)
+	    inst:Remove()
+	end)
+end
+
+local function OnConstructed(inst, doer)
+    local amount, total = CalculatedValue(inst)
+    local pct = math.min(1, amount / total)
+    if inst.AnimState:IsCurrentAnimation("idle_site_0") and pct >= .5 and pct < 1 then
+    	inst.components.constructionsite:Disable()
+    	inst.AnimState:PlayAnimation("set_site_1")
+    	inst.AnimState:PushAnimation("idle_site_1")
+    	inst:ListenForEvent("animover",function (inst)
+    		inst.components.constructionsite:Enable()
+    	end)
+    elseif pct >= 1 then
+    	inst.components.constructionsite:Disable()
+    	if inst.AnimState:IsCurrentAnimation("idle_site_0") then
+    		inst.AnimState:PlayAnimation("set_site_1")
+    		inst.AnimState:PushAnimation("idle_site_1")
+			inst:DoTaskInTime(1.25,function(inst)
+				DoBurying(inst)
+			end)
+    	else
+    		DoBurying(inst)
+    	end
+    end
+end
+
+local function OnLoad(inst)
+	local amount, total = CalculatedValue(inst)
+	local pct = math.min(1, amount / total)
+	if pct >= .5 then
+    	inst.AnimState:PlayAnimation("idle_site_1")
+	end
+end
+
+local function site()
+    local inst = CreateEntity()
+
+	inst.entity:AddTransform()
+    inst.entity:AddAnimState()
+    inst.entity:AddSoundEmitter()
+    inst.entity:AddMiniMapEntity()
+    inst.entity:AddNetwork()
+
+    inst.AnimState:SetBank("buryingsite")
+    inst.AnimState:SetBuild("well")
+    inst.AnimState:PlayAnimation("idle_site_0")
+	
+	inst:AddTag("antlion_sinkhole_blocker")
+    inst:AddTag("birdblocker")
+	
+	MakeObstaclePhysics(inst, .15)
+
+    inst.entity:SetPristine()
+
+    if not TheWorld.ismastersim then
+        return inst
+    end
+	
+	inst:AddComponent("inspectable")
+	
+	inst:AddComponent("constructionsite")
+
+	inst:SetPrefabNameOverride("hole")
+
+    inst.components.constructionsite:SetConstructionPrefab("construction_container")
+    inst.components.constructionsite:SetOnConstructedFn(OnConstructed)
+
+    inst.OnLoad = OnLoad
+	
+	return inst
+end
+
 return Prefab("hole", hole, assets),
-	Prefab("well", well, assets, prefabs)
+	Prefab("well", well, assets, prefabs),
+	Prefab("well_buryingsite", site, assets, prefabs)
