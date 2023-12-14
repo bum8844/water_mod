@@ -60,16 +60,18 @@ AddRecipe2("well_kit",{Ingredient("boards",2),Ingredient("cutstone",6),Ingredien
 
 AddRecipe2("well_sprinkler_kit",{Ingredient("marble",4),Ingredient("moonglass",1),Ingredient("townportaltalisman",2),Ingredient("gears",1)},TECH.SCIENCE_TWO,{atlas = ModAtlas(), image = "well_sprinkler_kit.tex"},{"GARDENING","HYDRATION"})
 
--- AddRecipe2("well_burying_kit",{Ingredient("turf_mud",6),Ingredient("seeds",6),Ingredient("papyrus",3),Ingredient("twigs", 3),Ingredient("flint", 3)},TECH.SCIENCE_TWO,{atlas = ModAtlas(), numtogive=3 , image = "well_burying_kit.tex"},{"GARDENING","HYDRATION"})
+--AddRecipe2("well_burying_kit",{Ingredient("boards",4),Ingredient("hammer",1)},TECH.SCIENCE_TWO,{atlas = ModAtlas(), numtogive=3 , image = "well_burying_kit.tex"},{"GARDENING","HYDRATION"})
 
 AddRecipe2("distillers",{Ingredient("dreadstone",8),Ingredient("nightmarefuel",4),Ingredient("transistor",4),Ingredient("redgem",1),Ingredient("bluegem",1)},TECH.SCIENCE_TWO,{placer = "distillers_placer",atlas = ModAtlas(), image = "distillers.tex"},{"COOKING","HYDRATION"})
 
 -- AddRecipe2("well_waterpump_kit",{Ingredient("security_pulse_cage_full",1),Ingredient("wagpunk_bits",4),Ingredient("transistor",1),Ingredient("cutstone",2)},TECH.NONE,{atlas = ModAtlas(), image = "well_waterpump_kit.tex", builder_tag="handyperson"},{"CHARACTER","GARDENING","HYDRATION"})
 
--- CONSTRUCTION_PLANS["hole"] = {Ingredient("boards",2),Ingredient("cutstone",6),Ingredient("hammer",1)}
-
 AddDeconstructRecipe("well", {Ingredient("boards",2),Ingredient("cutstone",6)})
+
+AddDeconstructRecipe("well_buryingsite", {Ingredient("boards",4)})
 
 AddDeconstructRecipe("well_sprinkler", {Ingredient("marble",4),Ingredient("moonglass",1),Ingredient("townportaltalisman",2),Ingredient("gears",1)})
 
 AddDeconstructRecipe("well_waterpump", {Ingredient("security_pulse_cage_full",1),Ingredient("wagpunk_bits",4),Ingredient("transistor",1),Ingredient("cutstone",2)})
+
+CONSTRUCTION_PLANS["well_buryingsite"] = {Ingredient("shovel",1),Ingredient("seeds",6),Ingredient("rocks",6),Ingredient("turf_mud",6)}
