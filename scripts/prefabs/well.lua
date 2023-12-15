@@ -440,6 +440,15 @@ local function OnLoad(inst)
 	end
 end
 
+local function onhammered_site(inst)
+	inst.components.lootdropper:DropLoot()
+	SpawnPrefab("collapse_big").Transform:SetPosition(inst.Transform:GetWorldPosition())
+	SpawnPrefab("hole").Transform:SetPosition(inst.Transform:GetWorldPosition())
+	inst.SoundEmitter:PlaySound("dontstarve/common/destroy_wood")
+	inst.components.lootdropper:DropLoot()
+	inst:Remove()
+end
+
 local function site()
     local inst = CreateEntity()
 
@@ -469,9 +478,14 @@ local function site()
 	inst:AddComponent("inspectable")
 	
 	inst:AddComponent("constructionsite")
-
     inst.components.constructionsite:SetConstructionPrefab("construction_container")
     inst.components.constructionsite:SetOnConstructedFn(OnConstructed)
+
+    inst:AddComponent("lootdropper")
+	inst:AddComponent("workable")
+    inst.components.workable:SetWorkAction(ACTIONS.HAMMER)
+    inst.components.workable:SetWorkLeft(1)
+	inst.components.workable:SetOnFinishCallback(onhammered_site)
 
     inst.OnLoad = OnLoad
 	
