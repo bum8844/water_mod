@@ -337,6 +337,7 @@ local function well()
     inst:AddTag("structure")
     inst:AddTag("cleanwaterproduction")
     inst:AddTag("ready")
+    inst:AddTag("hashole")
 	
 	MakeObstaclePhysics(inst, .5)
 
@@ -464,6 +465,7 @@ local function site()
 	
 	inst:AddTag("antlion_sinkhole_blocker")
     inst:AddTag("birdblocker")
+    inst:AddTag("hashole")
 
     inst:SetPrefabNameOverride("hole")
 	
