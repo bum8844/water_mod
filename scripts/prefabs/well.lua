@@ -104,6 +104,9 @@ local function hole()
     inst.entity:AddMiniMapEntity()
     inst.entity:AddNetwork()
 
+	local minimap = inst.entity:AddMiniMapEntity()
+	minimap:SetIcon("holes.tex")
+
     inst.AnimState:SetBank("holes")
     inst.AnimState:SetBuild("well")
     inst.AnimState:PlayAnimation("idle")
@@ -394,6 +397,7 @@ local function CalculatedValue(inst)
 end
 
 local function DoBurying(inst)
+	inst.SoundEmitter:PlaySound("dontstarve/creatures/together/antlion/sfx/ground_break")
 	inst.AnimState:PushAnimation("burying")
 	inst:ListenForEvent("animover",function (inst)
 		local x, y, z = inst.Transform:GetWorldPosition()
@@ -409,6 +413,7 @@ local function OnConstructed(inst, doer)
     	inst.components.constructionsite:Disable()
     	inst.AnimState:PlayAnimation("set_site_1")
     	inst.AnimState:PushAnimation("idle_site_1")
+    	inst.SoundEmitter:PlaySound("dontstarve/common/fixed_stonefurniture")
     	inst:ListenForEvent("animover",function (inst)
     		inst.components.constructionsite:Enable()
     	end)
@@ -417,6 +422,7 @@ local function OnConstructed(inst, doer)
     	if inst.AnimState:IsCurrentAnimation("idle_site_0") then
     		inst.AnimState:PlayAnimation("set_site_1")
     		inst.AnimState:PushAnimation("idle_site_1")
+    		inst.SoundEmitter:PlaySound("dontstarve/common/fixed_stonefurniture")
 			inst:DoTaskInTime(1.25,function(inst)
 				DoBurying(inst)
 			end)
@@ -449,6 +455,8 @@ local function site()
 	
 	inst:AddTag("antlion_sinkhole_blocker")
     inst:AddTag("birdblocker")
+
+    inst:SetPrefabNameOverride("hole")
 	
 	MakeObstaclePhysics(inst, .15)
 
@@ -461,8 +469,6 @@ local function site()
 	inst:AddComponent("inspectable")
 	
 	inst:AddComponent("constructionsite")
-
-	inst:SetPrefabNameOverride("hole")
 
     inst.components.constructionsite:SetConstructionPrefab("construction_container")
     inst.components.constructionsite:SetOnConstructedFn(OnConstructed)
