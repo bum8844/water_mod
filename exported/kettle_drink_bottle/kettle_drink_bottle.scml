@@ -133,7 +133,10 @@
         <file id="0" name="butterbeer/butterbeer.png" width="187" height="187" pivot_x="0.5" pivot_y="0.25"/>
     </folder>
     <folder id="44" name="giant_blueberry_gin">
-        <file id="0" name="giant_blueberry_gin/giant_blueberry_gin.png" width="187" height="187" pivot_x="0.5" pivot_y="0.25"/>
+        <file id="0" name="giant_blueberry_gin/giant_blueberry_gin-0.png" width="187" height="187" pivot_x="0.5" pivot_y="0.25"/>
+    </folder>
+    <folder id="45" name="giant_blueberry_wine">
+        <file id="0" name="giant_blueberry_wine/giant_blueberry_wine-0.png" width="187" height="187" pivot_x="0.5" pivot_y="0.25"/>
     </folder>
     <entity id="0" name="kettle_drink">
         <animation id="0" name="idle" length="150" interval="100" looping="false">
