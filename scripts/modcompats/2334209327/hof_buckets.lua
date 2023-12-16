@@ -8,7 +8,6 @@ end
 
 AddRecipePostInit("fertilizer",function(v) v.ingredients = {Ingredient("poop", 3), Ingredient("boneshard", 2), Ingredient("kyno_bucket_empty", 1, ModAtlas(), nil,"bucket_empty.tex")} end)
 AddRecipePostInit("kyno_bucket_empty",function(v) v.ingredients = {Ingredient("log",4)} v.level = TECH.NONE end)
-AddRecipeToFilter("kyno_bucket_empty","HYDRATION")
 
 local function SetTemperature(inst)
     local isfrozen = inst.components.wateringtool:IsFrozen()

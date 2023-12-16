@@ -130,13 +130,19 @@
         <file id="0" name="tomato_juice/tomato_juice-0.png" width="120" height="120" pivot_x="0.5" pivot_y="0.35"/>
     </folder>
     <folder id="43" name="butterbeer">
-        <file id="0" name="butterbeer/butterbeer.png" width="120" height="120" pivot_x="0.5" pivot_y="0.25"/>
+        <file id="0" name="butterbeer/butterbeer.png" width="64" height="64" pivot_x="0.5" pivot_y="0.25"/>
     </folder>
-    <folder id="44" name="giant_blueberry_gin">
-        <file id="0" name="giant_blueberry_gin/giant_blueberry_gin.png" width="120" height="120" pivot_x="0.49" pivot_y="0.35"/>
+    <folder id="44" name="ruinxocolat">
+        <file id="0" name="ruinxocolat/ruinxocolat-0.png" width="115" height="103" pivot_x="0.45" pivot_y="0.25"/>
     </folder>
-    <folder id="45" name="giant_blueberry_wine">
-        <file id="0" name="giant_blueberry_wine/giant_blueberry_wine.png" width="97" height="124" pivot_x="0.45" pivot_y="0.35"/>
+    <folder id="45" name="moon_blossom_tea">
+        <file id="0" name="moon_blossom_tea/moon_blossom_tea-0.png" width="107" height="107" pivot_x="0.5" pivot_y="0.29"/>
+    </folder>
+    <folder id="46" name="giant_blueberry_gin">
+        <file id="0" name="giant_blueberry_gin/giant_blueberry_gin-0.png" width="120" height="120" pivot_x="0.48" pivot_y="0.35"/>
+    </folder>
+    <folder id="47" name="giant_blueberry_wine">
+        <file id="0" name="giant_blueberry_wine/giant_blueberry_wine-0.png" width="97" height="124" pivot_x="0.45" pivot_y="0.35"/>
     </folder>
     <entity id="0" name="kettle_drink">
         <animation id="0" name="turn_to_ice" length="700" interval="100">
