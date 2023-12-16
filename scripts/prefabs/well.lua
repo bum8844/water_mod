@@ -286,7 +286,7 @@ local function givewater(inst, picker, loot)
 end
 
 local function SetBucket(inst)
-	local bucket = inst.components.wateringstructure:GetBucketAnim()
+	local bucket = inst.components.wateringstructure:GetBucketAnim() or ""
 	local bucket_old = inst.components.wateringstructure.old_wellanim
 
 	if bucket ~= bucket_old then
