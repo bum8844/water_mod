@@ -82,16 +82,6 @@ local function set_stage4(inst)
     play_idle(inst, 4)
 end
 
-local function set_stage4(inst)
-
-    -- If we got set here directly, instead of going through stage 3, we still need to be pickable.
-    if not inst.components.pickable:CanBePicked() then
-        inst.components.pickable:Regen()
-    end
-
-    play_idle(inst, 4)
-end
-
 local function grow_to_stage4(inst)
     play_grow(inst, 4)
 end
