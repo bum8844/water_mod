@@ -110,6 +110,11 @@ local function getstatus(inst, viewer)
 		   or "MIDDLE_PRESSURE" ) or "RECHARG_PRESSURE"
 end
 
+local function OnSpawnIn(inst)
+	local lunacyarea = TheWorld.Map:IsInLunacyArea(inst.Transform:GetWorldPosition())
+	inst.components.water:SetWaterType(lunacyarea and WATERTYPE.MINERAL or WATERTYPE.CLEAN)
+end
+
 local function fn()
 	local inst = CreateEntity()
 	
@@ -168,7 +173,6 @@ local function fn()
 	inst:AddComponent("lootdropper")
 
 	inst:AddComponent("water")
-	inst.components.water:SetWaterType(WATERTYPE.CLEAN)
 	inst.components.water:SetOnTakenFn(OnTaken)
 
 	inst:AddComponent("watersource")
@@ -180,6 +184,8 @@ local function fn()
 	inst.components.workable:SetOnWorkCallback(onhit)
 
 	inst:ListenForEvent("depleted_pressure")
+
+	inst:DoTaskInTime(0, OnSpawnIn)
 
 	return inst
 end

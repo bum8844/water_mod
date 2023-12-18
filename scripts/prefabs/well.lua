@@ -15,6 +15,11 @@ local function OnSpawnIn(inst)
     inst.AnimState:PushAnimation("idle")
 end
 
+local function OnSpawnIn_Well(inst)
+	local lunacyarea = TheWorld.Map:IsInLunacyArea(inst.Transform:GetWorldPosition())
+	inst.components.wateringstructure.islunacy = lunacyarea
+end
+
 local function FailUpgrade(inst, performer, prefabs)
 	local refund = SpawnPrefab(prefabs)
     if performer ~= nil and performer.components.inventory ~= nil then
@@ -69,16 +74,6 @@ local function CreateWellBuryingSite(inst)
 	buryingsite.AnimState:PushAnimation("idle_site_0",true)
 	buryingsite.SoundEmitter:PlaySound("dontstarve/common/together/spawn_portal_celestial/reveal")
 end
-
-
---[[local function RemoveHole(inst)
-	inst.AnimState:PushAnimation("burying")
-	inst:ListenForEvent("animover",function (inst)
-		local x, y, z = inst.Transform:GetWorldPosition()
-		SpawnPrefab("small_puff").Transform:SetPosition(x, y, z)
-	    inst:Remove()
-	end)
-end]]
 
 local function OnUpgrade(inst, performer, upgraded_from_item)
 	local prefab = upgraded_from_item.prefab
@@ -142,7 +137,8 @@ local function SetTemperature(inst)
     local isfrozen = inst.components.wateringstructure:IsFrozen()
 
     local temp = isfrozen and TUNING.WATER_FROZEN_INITTEMP or TUNING.WATER_INITTEMP
-    local curtemp = inst.components.wateringstructure:GetWater() ~= WATERTYPE.EMPTY and temp or TheWorld.state.temperature
+    local watertype = inst.components.wateringstructure:GetWater()
+    local curtemp = (watertype ~= WATERTYPE.EMPTY or watertype ~= WATERTYPE.MINERAL) and temp or TheWorld.state.temperature
 
     inst.components.temperature.current = curtemp
 
@@ -158,7 +154,8 @@ local function SetTemperature(inst)
 end
 
 local function SetToFrozed(inst, data)
-    if inst.components.wateringstructure:GetWater() ~= WATERTYPE.EMPTY then
+	local watertype = inst.components.wateringstructure:GetWater()
+    if watertype ~= WATERTYPE.EMPTY or watertype ~= WATERTYPE.MINERAL then
         local cur_temp = inst.components.temperature:GetCurrent()
         local min_temp = inst.components.temperature.mintemp
         local max_temp = inst.components.temperature.maxtemp
@@ -205,7 +202,7 @@ end
 local function SetWaterData(inst)
 	local watertype = inst.components.wateringstructure:GetWater()
 	local isfrozen = inst.components.wateringstructure:IsFrozen() and "_ice" or ""
-	local result = watertype ~= WATERTYPE.EMPTY and ( watertype == WATERTYPE.CLEAN and "_full" or "_dirty") or "_empty"
+	local result = watertype ~= WATERTYPE.EMPTY and ((watertype == WATERTYPE.CLEAN or watertype == WATERTYPE.MINERAL) and "_full" or "_dirty") or "_empty"
 	local data = { setwatertype = isfrozen..result }
 	return data
 end
@@ -385,6 +382,8 @@ local function well()
     inst:ListenForEvent("temperaturedelta", SetToFrozed)
     inst:ListenForEvent("setwateramount",SetAmount)
     inst:ListenForEvent("setbucketanim",SetBucket)
+
+    inst:DoTaskInTime(0, OnSpawnIn_Well)
 	
 	return inst
 end
