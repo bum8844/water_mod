@@ -2,6 +2,7 @@ WATERTYPE =
 {
 	CLEAN = "water_clean",
 	DIRTY = "water_dirty",
+	MINERAL = "water_mineral",
 	CLEAN_ICE = "water_clean_ice",
 	DIRTY_ICE = "water_dirty_ice",
 	SALTY = "water_salty",
@@ -16,6 +17,7 @@ WATERGROUP =
 		types =
 		{
 			WATERTYPE.CLEAN,
+			WATERTYPE.MINERAL,
 			WATERTYPE.DIRTY,
 			WATERTYPE.SALTY,
 		}
@@ -37,6 +39,7 @@ WATERGROUP =
 		types =
 		{
 			WATERTYPE.CLEAN,
+			WATERTYPE.MINERAL,
 			WATERTYPE.DRINK,
 		},
 	},
@@ -47,6 +50,7 @@ WATERGROUP =
 		types =
 		{
 			WATERTYPE.CLEAN,
+			WATERTYPE.MINERAL,
 			WATERTYPE.DIRTY,
 			WATERTYPE.CLEAN_ICE,
 			WATERTYPE.DIRTY_ICE,

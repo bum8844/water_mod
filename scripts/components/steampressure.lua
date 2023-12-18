@@ -219,7 +219,7 @@ function SteamPressure:OnLoad(data)
             time = data.remainingdelaytime
         end
 
-        self.delay_left_time = time + GetTime
+        self.delay_left_time = time + GetTime()
 
         if self.pressuretask then
             self.pressuretask:Cancel()

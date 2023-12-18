@@ -9,32 +9,25 @@ local function HiddenPipes(inst)
     end
 end
 
-local function OnSnowLevel(inst, snowlevel)
-    if snowlevel > .02 then
-		inst.components.water.available = false
-    else
-        inst.components.water.available = true
-    end
-end
-
-
 local function OnWaterInit(inst)
 	inst.watertask = nil
-    inst:WatchWorldState("snowlevel", OnSnowLevel)
-    OnSnowLevel(inst, GLOBAL.TheWorld.state.snowlevel)
-    HiddenPipes(inst)
-end
 
-local function TestWater(inst)
-	inst.watertask = nil
-   	if inst:HasTag("watersource") and inst.components.watersource.available then
-   		inst.components.watersource.available = false
-   	end
-   	if inst.nitreformation_ents ~= nil then
-   		inst.components.water.available = false
-   	else
-   		inst.components.water.available = true
-   	end
+	local test
+	
+	if inst:HasTag("sprinkler_water") then
+    	HiddenPipes(inst)
+    end
+
+	if inst.components.watersource then
+		test = inst.components.watersource.available
+	end
+
+	if inst.nitreformation_ents ~= nil then
+		test = false
+	end
+
+	inst.components.water.available = test
+    inst.watertask = inst:DoTaskInTime(0,OnWaterInit)
 end
 
 --Make a pond the source of a Sprinkler
@@ -77,6 +70,19 @@ for _, v in pairs(TUNING.TYPES_SALTY) do
 		inst:AddComponent("water")
 		inst.components.water.watertype = WATERTYPE.SALTY
 
-		inst.watertask = inst:DoTaskInTime(0,TestWater)
+		inst.watertask = inst:DoTaskInTime(0,OnWaterInit)
+	end)
+end
+
+for _, v in pairs(TUNING.TYPES_MINERAL) do
+	AddPrefabPostInit(v, function(inst)
+	    if not GLOBAL.TheWorld.ismastersim then
+	        return inst
+	    end
+		
+		inst:AddComponent("water")
+		inst.components.water.watertype = WATERTYPE.MINERAL
+
+		inst.watertask = inst:DoTaskInTime(0,OnWaterInit)
 	end)
 end

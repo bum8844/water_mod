@@ -20,6 +20,7 @@ table.insert(TUNING.GAMEMODE_STARTING_ITEMS.DEFAULT.WARLY,"portablekettle_item")
 water_tuning =
 {
 	TYPES_CLEAN = {
+		"oasislake",
 		"cherry_pond",
 	},
 
@@ -34,6 +35,12 @@ water_tuning =
 		"pond_cave",
 		"tidalpool",
 		"tidalpoolnew",
+	},
+
+	TYPES_MINERAL = {
+		"hotspring",
+		"grotto_pool_big",
+		"grotto_pool_small",
 	},
 
 	CHILDS =
