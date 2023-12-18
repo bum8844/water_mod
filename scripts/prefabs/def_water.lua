@@ -227,7 +227,7 @@ local function mineralwater(inst)
     inst.components.perishable.onreplacedfn = onperish
     inst.components.perishable.onperishreplacement = "water_dirty"
 
-    inst.components.water:SetWaterType(WATERTYPE.CLEAN)
+    inst.components.water:SetWaterType(WATERTYPE.MINERAL)
 end
 
 local function dirtywater(inst)
@@ -340,7 +340,7 @@ local function MakeWaterItem(name, masterfn, tags, _prefabs)
 end
 
 return MakeWaterItem("water_clean", cleanwater, {"drink","show_spoilage","icebox_valid","clean","farm_water","pre-prepareddrink","potion"}, prefabs.water_clean),
-    MakeWaterItem("water_mineral", mineralwater, {"drink","show_spoiled","icebox_valid","clean","farm_water","pre-prepareddrink","potion"}),
+    MakeWaterItem("water_mineral", mineralwater, {"drink","show_spoilage","icebox_valid","clean","farm_water","pre-prepareddrink","potion"}),
     MakeWaterItem("water_dirty", dirtywater, {"drink","show_spoiled", "icebox_valid","dirty","farm_water"}),
     MakeWaterItem("water_salty", saltywater, {"drink","salty"}),
     MakeWaterItem("water_clean_ice", cleanice, {"show_spoilage", "icebox_valid","clean","frozen","unwrappable"}, prefabs.water_clean_ice),

@@ -160,6 +160,7 @@ local function ruincacao_bean()
     end
 	
 	inst:AddTag("cookable")
+    inst:AddTag("show_spoilage")
 
     inst:AddComponent("stackable")
     inst.components.stackable.maxsize = TUNING.STACK_SIZE_SMALLITEM
