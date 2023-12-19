@@ -204,7 +204,7 @@ local drinks =
 		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_INTOXICATION_ANCIENT_KNOWLEGEE_THIRD,
 		oneatenfn = function(inst, eater)
 			spirits(inst, eater)
-			add_tech_count(inst, eater, 4, 2)
+			give_tech(inst, eater, 4, 2)
 		end,
 	},
 	-- 커피 + 꿀술

@@ -1,4 +1,5 @@
 STRINGS.UI.CRAFTING_FILTERS.HYDRATION = "Hydration"
+STRINGS.UI.CRAFTING_FILTERS.SECRETKNOWLEDGE = "Secret Knowledge"
 
 STRINGS.UI.COOKBOOK.TAB_TITLE_KETTLE = "Kettle Recpies"
 STRINGS.UI.COOKBOOK.TAB_TITLE_BREWERY = "Brewery Recpies"
@@ -58,7 +59,7 @@ STRINGS.ACTIONS.BURYING = "Burying"
 
 -- boilbook
 STRINGS.NAMES.BOILBOOK = "Drink Book"
-STRINGS.RECIPE_DESC.BOILBOOK = "Experiment with ingredients in the beverage production to discover new recipes and expand your drinkbook." 
+STRINGS.RECIPE_DESC.BOILBOOK = "Review all your drink recipes." 
 
 -- well drilling
 STRINGS.NAMES.WELL_DRILLING ="Well Drill"
@@ -149,11 +150,15 @@ STRINGS.NAMES.RUINCACAO_BEAN = "Cacao Beans"
 STRINGS.NAMES.RUINCACAO_BEAN_COOKED = "Roasted Cacao Beans"
 
 -- additives
-STRINGS.NAMES.ADDITIVE_SEED = "seed-flavored additive"
-STRINGS.NAMES.ADDITIVE_PETALS = "leaves-flavored additive"
-STRINGS.NAMES.ADDITIVE_NUT = "nut-flavored additive"
-STRINGS.NAMES.ADDITIVE_DAIRY = "dairy-flavored additive"
+STRINGS.NAMES.ADDITIVE_SEED = "Seed-Flavored Additive"
+STRINGS.NAMES.ADDITIVE_PETALS = "Leaves-Flavored Additive"
+STRINGS.NAMES.ADDITIVE_NUT = "Nut-Flavored Additive"
+STRINGS.NAMES.ADDITIVE_DAIRY = "Dairy-Flavored Additive"
 
+STRINGS.RECIPE_DESC.ADDITIVE_SEED = "Mixture of several seeds."
+STRINGS.RECIPE_DESC.ADDITIVE_PETALS = "Collection of leaves and petals."
+STRINGS.RECIPE_DESC.ADDITIVE_NUT = "Bag of fruit."
+STRINGS.RECIPE_DESC.ADDITIVE_DAIRY = "If want a savory scent."
 -- preparedrink
 
 STRINGS.NAMES.WATER_CLEAN_ICE = "Frozen Water"

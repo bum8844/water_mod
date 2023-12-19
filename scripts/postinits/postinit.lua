@@ -56,6 +56,7 @@ local postinits =
 		"preparedfoods",
 		"preparedfoods_warly",
 		"cookbookdata",
+		"techtree",
 	}
 }
 

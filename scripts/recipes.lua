@@ -40,16 +40,63 @@ local function ModAtlas()
 end
 
 local NOHOF = true
+local NOSW = false
 
 for k,mod_id in ipairs(GLOBAL.KnownModIndex:GetModsToLoad()) do 
 	if mod_id == "workshop-2334209327" then
 		NOHOF = false
 	end
+    if mod_id == "workshop-1467214795"  then
+        NOSW = true
+    end
 end
 
 AddRecipeFilter({name = "HYDRATION", atlas = ModAtlas, image = "hydration.tex", custom_pos=nil, recipes=nil,},nil)
+AddRecipeFilter({name = "SECRETKNOWLEDGE", atlas = ModAtlas, image = "secretknowledge.tex", custom_pos=nil, recipes=nil,},nil)
 
 AddRecipeToFilter("refined_dust","HYDRATION")
+
+-- CELESTIAL
+AddRecipeToFilter("moonrockidol","SECRETKNOWLEDGE")
+AddRecipeToFilter("multiplayer_portal_moonrock_constr_plans","SECRETKNOWLEDGE")
+AddRecipeToFilter("lunar_forge_kit","SECRETKNOWLEDGE")
+AddRecipeToFilter("moonglassaxe","SECRETKNOWLEDGE")
+AddRecipeToFilter("glasscutter","SECRETKNOWLEDGE")
+AddRecipeToFilter("turf_meteor","SECRETKNOWLEDGE")
+AddRecipeToFilter("turf_fungus_moon","SECRETKNOWLEDGE")
+AddRecipeToFilter("bathbomb","SECRETKNOWLEDGE")
+AddRecipeToFilter("chesspiece_moon_sketch","SECRETKNOWLEDGE")
+AddRecipeToFilter("chesspiece_butterfly_sketch","SECRETKNOWLEDGE")
+
+-- ANCIENT
+AddRecipeToFilter("thulecite","SECRETKNOWLEDGE")
+AddRecipeToFilter("wall_ruins_item","SECRETKNOWLEDGE")
+AddRecipeToFilter("nightmare_timepiece","SECRETKNOWLEDGE")
+AddRecipeToFilter("orangeamulet","SECRETKNOWLEDGE")
+AddRecipeToFilter("yellowamulet","SECRETKNOWLEDGE")
+AddRecipeToFilter("greenstaff","SECRETKNOWLEDGE")
+AddRecipeToFilter("multitool_axe_pickaxe","SECRETKNOWLEDGE")
+AddRecipeToFilter("nutrientsgoggleshat","SECRETKNOWLEDGE")
+AddRecipeToFilter("ruinshat","SECRETKNOWLEDGE")
+AddRecipeToFilter("armorruins","SECRETKNOWLEDGE")
+AddRecipeToFilter("ruins_bat","SECRETKNOWLEDGE")
+AddRecipeToFilter("eyeturret_item","SECRETKNOWLEDGE")
+AddRecipeToFilter("shadow_forge_kit","SECRETKNOWLEDGE")
+AddRecipeToFilter("blueprint_craftingset_ruins_builder","SECRETKNOWLEDGE")
+AddRecipeToFilter("blueprint_craftingset_ruinsglow_builder","SECRETKNOWLEDGE")
+
+if NOSW then
+    -- OBSIDIAN
+    AddRecipeToFilter("obsidianaxe","SECRETKNOWLEDGE")
+    AddRecipeToFilter("obsidianmachete","SECRETKNOWLEDGE")
+    AddRecipeToFilter("spear_obsidian","SECRETKNOWLEDGE")
+    AddRecipeToFilter("volcanostaff","SECRETKNOWLEDGE")
+    AddRecipeToFilter("armorobsidian","SECRETKNOWLEDGE")
+    AddRecipeToFilter("obsidiancoconade","SECRETKNOWLEDGE")
+    AddRecipeToFilter("wind_conch","SECRETKNOWLEDGE")
+    AddRecipeToFilter("windstaff","SECRETKNOWLEDGE")
+    AddRecipeToFilter("turf_ruinsbrick_glow_blueprint","SECRETKNOWLEDGE")
+end
 
 AddRecipe2("bucket_woodie_empty",{Ingredient("lucy",0),Ingredient("log",2)},TECH.NONE,{atlas = ModAtlas(), image = "bucket_woodie_empty.tex", builder_tag="woodcarver1", sg_state="carvewood_boards",  description="bucket_empty"},{"CHARACTER","HYDRATION","TOOLS"})
 SortAfter("bucket_woodie_empty", "goldenpitchfork", "TOOLS")
@@ -71,17 +118,17 @@ end
 AddRecipe2("spice_caffeinpepper",{Ingredient("caffeinberry_bean_cooked", 3, ModAtlas(), nil, "caffeinberry_bean_cooked.tex")},TECH.FOODPROCESSING_ONE,{atlas = ModAtlas(), builder_tag="professionalchef", numtogive=2, image = "spice_caffeinpepper.tex" ,nounlock=true},{"FOODPROCESSING"})
 SortAfter("spice_caffeinpepper", "spice_salt", "FOODPROCESSING")
 
---[[AddRecipe2("additives_seed",{Ingredient("pinecone",1),Ingredient("pepper_seeds",1),Ingredient("garlic_seeds",1)},TECH.FOODPROCESSING_ONE,{atlas = ModAtlas(), builder_tag="professionalchef", numtogive=2, image = "additives_seed.tex" ,nounlock=true},{"FOODPROCESSING"})
-SortAfter("additives_seed", "spice_caffeinpepper", "FOODPROCESSING")
+AddRecipe2("additive_seed",{Ingredient("pinecone",1),Ingredient("pepper_seeds",1),Ingredient("garlic_seeds",1)},TECH.FOODPROCESSING_ONE,{atlas = ModAtlas(), builder_tag="professionalchef", numtogive=2, image = "additive_seed.tex" ,nounlock=true},{"FOODPROCESSING"})
+SortAfter("additive_seed", "spice_caffeinpepper", "FOODPROCESSING")
 
-AddRecipe2("additives_nut",{Ingredient("acorn_cooked",1),Ingredient("ruincacao_bean_cooked",1,ModAtlas(),nil,"ruincacao_bean_cooked.tex"),Ingredient("caffeinberry_bean_cooked", 1, ModAtlas(), nil, "caffeinberry_bean_cooked.tex")},TECH.FOODPROCESSING_ONE,{atlas = ModAtlas(), builder_tag="professionalchef", numtogive=2, image = "additives_nut.tex" ,nounlock=true},{"FOODPROCESSING"})
-SortAfter("additives_nut", "additives_seed", "FOODPROCESSING")
+AddRecipe2("additive_nut",{Ingredient("acorn_cooked",1),Ingredient("ruincacao_bean_cooked",1,ModAtlas(),nil,"ruincacao_bean_cooked.tex"),Ingredient("caffeinberry_bean_cooked", 1, ModAtlas(), nil, "caffeinberry_bean_cooked.tex")},TECH.FOODPROCESSING_ONE,{atlas = ModAtlas(), builder_tag="professionalchef", numtogive=2, image = "additive_nut.tex" ,nounlock=true},{"FOODPROCESSING"})
+SortAfter("additive_nut", "additive_seed", "FOODPROCESSING")
 
-AddRecipe2("additives_dairy",{Ingredient("goatmilk",1),Ingredient("milkywhites",1),Ingredient("butter", 1)},TECH.FOODPROCESSING_ONE,{atlas = ModAtlas(), builder_tag="professionalchef", numtogive=2, image = "additives_dairy.tex" ,nounlock=true},{"FOODPROCESSING"})
-SortAfter("additives_dairy", "additives_seed", "FOODPROCESSING")
+AddRecipe2("additive_dairy",{Ingredient("goatmilk",1),Ingredient("milkywhites",1),Ingredient("butter", 1)},TECH.FOODPROCESSING_ONE,{atlas = ModAtlas(), builder_tag="professionalchef", numtogive=2, image = "additive_dairy.tex" ,nounlock=true},{"FOODPROCESSING"})
+SortAfter("additive_dairy", "additive_seed", "FOODPROCESSING")
 
-AddRecipe2("additives_petals",{Ingredient("petals",1),Ingredient("tealeaves",1,ModAtlas(),nil,"tealeaves.tex"),Ingredient("foliage", 1)},TECH.FOODPROCESSING_ONE,{atlas = ModAtlas(), builder_tag="professionalchef", numtogive=2, image = "additives_petals.tex" ,nounlock=true},{"FOODPROCESSING"})
-SortAfter("additives_petals", "additives_seed", "FOODPROCESSING")]]
+--[[AddRecipe2("additive_petals",{Ingredient("petals",1),Ingredient("tealeaves",1,ModAtlas(),nil,"tealeaves.tex"),Ingredient("foliage", 1)},TECH.FOODPROCESSING_ONE,{atlas = ModAtlas(), builder_tag="professionalchef", numtogive=2, image = "additive_petals.tex" ,nounlock=true},{"FOODPROCESSING"})
+SortAfter("additive_petals", "additive_seed", "FOODPROCESSING")]]
 
 AddRecipe2("boilbook",{Ingredient("papyrus",1),Ingredient("tealeaves",1,ModAtlas(),nil,"tealeaves.tex")},TECH.SCIENCE_ONE,{atlas = ModAtlas(), image = "boilbook.tex"},{"COOKING","HYDRATION"})
 SortAfter("boilbook","cookbook","COOKING")

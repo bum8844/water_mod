@@ -326,9 +326,7 @@ local drinks =
 		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_NAG_AURA_RESIST_ANCIENT_KNOWLEGEE,
 		oneatenfn = function(inst, eater)
 			alcohol(inst, eater)
-			if eater.components.builder then
-				eater.components.builder:GiveTempTechBonus({ANCIENT = 2})
-			end
+			give_tech(inst, eater, 2)
 		end,
 	}
 }
