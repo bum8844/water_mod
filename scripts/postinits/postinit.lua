@@ -56,11 +56,13 @@ local postinits =
 		"preparedfoods",
 		"preparedfoods_warly",
 		"cookbookdata",
+		"techtree",
+
 	},
 
 	redux = {
 
-	} 
+	}
 }
 
 if GetModConfigData("enable_thirst") then

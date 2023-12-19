@@ -1,4 +1,5 @@
 STRINGS.UI.CRAFTING_FILTERS.HYDRATION = "Hydration"
+STRINGS.UI.CRAFTING_FILTERS.SECRETKNOWLEDGE = "Conocimiento secreto"
 
 STRINGS.UI.COOKBOOK.TAB_TITLE_KETTLE = "Recetas de tetera"
 STRINGS.UI.COOKBOOK.TAB_TITLE_BREWERY = "Recetas cerveceras"
@@ -58,7 +59,7 @@ STRINGS.ACTIONS.BURYING = "Enterrando"
 
 -- Libro de bebidas
 STRINGS.NAMES.BOILBOOK = "Libro de bebidas"
-STRINGS.RECIPE_DESC.BOILBOOK = " Experimenta con ingredientes en la elaboración de bebidas para descubrir nuevas recetas y ampliar tu libro de bebidas." 
+STRINGS.RECIPE_DESC.BOILBOOK = "Revise todas sus recetas de bebida." 
 
 -- Perforadora de pozos
 STRINGS.NAMES.WELL_DRILLING ="Perforadora de pozos "
@@ -137,7 +138,7 @@ STRINGS.NAMES.CAFFEINBERRY_BEAN = "Granos de café"
 STRINGS.NAMES.CAFFEINBERRY_BEAN_COOKED = "Granos tostados de café"
 STRINGS.NAMES.SPICE_CAFFEINPEPPER = "Desmenuzador de sazonador"
 STRINGS.RECIPE_DESC.SPICE_CAFFEINPEPPER = "La energizante especie de la vida."
-STRINGS.NAMES.SPICE_CAFFEINPEPPER_FOOD = "Sazonador {comida }"
+STRINGS.NAMES.SPICE_CAFFEINPEPPER_FOOD = "Sazonador {food}"
 
 -- Cacao de las ruinas
 STRINGS.NAMES.RUINCACAO_TREE = "Árbol de cacao"
@@ -149,10 +150,15 @@ STRINGS.NAMES.RUINCACAO_BEAN = "Granos de cacao"
 STRINGS.NAMES.RUINCACAO_BEAN_COOKED = "Granos de cacao tostados"
 
 -- Añadidos
-STRINGS.NAMES.ADDITIVE_SEED = "semilla-condimento añadido "
-STRINGS.NAMES.ADDITIVE_PETALS = "hojas - condimento añadido "
-STRINGS.NAMES.ADDITIVE_NUT = "nuez- condimento añadido "
-STRINGS.NAMES.ADDITIVE_DAIRY = "lácteo- condimento añadido "
+STRINGS.NAMES.ADDITIVE_SEED = "Semilla-Condimento Añadido"
+STRINGS.NAMES.ADDITIVE_PETALS = "Hojas-Condimento Añadido"
+STRINGS.NAMES.ADDITIVE_NUT = "Nuez-Condimento Añadido"
+STRINGS.NAMES.ADDITIVE_DAIRY = "Lácteo-Condimento Añadido"
+
+STRINGS.RECIPE_DESC.ADDITIVE_SEED = "Mezcla de varias semillas."
+STRINGS.RECIPE_DESC.ADDITIVE_PETALS = "Colección de hojas y pétalos."
+STRINGS.RECIPE_DESC.ADDITIVE_NUT = "Bolsa de frutas."
+STRINGS.RECIPE_DESC.ADDITIVE_DAIRY = "Si quiere un aroma sabroso."
 
 -- Bebidas preparadas
 

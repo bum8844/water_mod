@@ -212,9 +212,7 @@ local drinks =
 		oneatenfn = function(inst, eater)
 			eater.caffeinbuff_duration = TUNING.CAFFEIN_TIME * 0.5
 			eater:AddDebuff("caffeinbuff", "caffeinbuff")
-			if eater.components.builder and eater.components.builder.temptechbonus_count then
-				eater.components.builder.temptechbonus_count = eater.components.builder.temptechbonus_count + 1
-			end
+			add_tech_count(inst, eater, 1)
 		end,
 	},
 

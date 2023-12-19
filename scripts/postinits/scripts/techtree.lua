@@ -1,0 +1,1 @@
+require("techtree").BONUS_TECH[#require("techtree").BONUS_TECH+1] = "CELESTIAL"
