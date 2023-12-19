@@ -129,38 +129,44 @@
     <folder id="42" name="tomato_juice">
         <file id="0" name="tomato_juice/tomato_juice-0.png" width="73" height="120" pivot_x="0.36" pivot_y="0.35"/>
     </folder>
-    <folder id="43" name="ruinxocolat">
-        <file id="0" name="ruinxocolat/ruinxocolat-0.png" width="115" height="103" pivot_x="0.45" pivot_y="0.25"/>
-    </folder>
-    <folder id="44" name="moon_blossom_tea">
+    <folder id="43" name="moon_blossom_tea">
         <file id="0" name="moon_blossom_tea/moon_blossom_tea-0.png" width="107" height="107" pivot_x="0.53" pivot_y="0.35"/>
     </folder>
-    <folder id="45" name="giant_blueberry_gin">
+    <folder id="44" name="giant_blueberry_gin">
         <file id="0" name="giant_blueberry_gin/giant_blueberry_gin-0.png" width="99" height="114" pivot_x="0.42" pivot_y="0.4"/>
     </folder>
-    <folder id="46" name="giant_blueberry_wine">
+    <folder id="45" name="giant_blueberry_wine">
         <file id="0" name="giant_blueberry_wine/giant_blueberry_wine-0.png" width="97" height="124" pivot_x="0.45" pivot_y="0.35"/>
     </folder>
-    <folder id="47" name="butterbeer">
+    <folder id="46" name="butterbeer">
         <file id="0" name="butterbeer/butterbeer-0.png" width="108" height="115" pivot_x="0.49" pivot_y="0.25"/>
     </folder>
-    <folder id="48" name="water_mineral">
+    <folder id="47" name="water_mineral">
         <file id="0" name="water_mineral/water_mineral-0.png" width="120" height="120" pivot_x="0.45" pivot_y="0.25"/>
     </folder>
-    <folder id="49" name="hotruincolate">
+    <folder id="48" name="hotruincolate">
         <file id="0" name="hotruincolate/hotruincolate-0.png" width="109" height="114" pivot_x="0.5" pivot_y="0.25"/>
     </folder>
-    <folder id="50" name="toffee_latte">
+    <folder id="49" name="toffee_latte">
         <file id="0" name="toffee_latte/toffee_latte-0.png" width="110" height="108" pivot_x="0.44" pivot_y="0.28"/>
     </folder>
-    <folder id="51" name="tea_ruincolate_latte">
+    <folder id="50" name="tea_ruincolate_latte">
         <file id="0" name="tea_ruincolate_latte/tea_ruincolate_latte-0.png" width="110" height="105" pivot_x="0.57" pivot_y="0.28"/>
     </folder>
-    <folder id="52" name="seaweed_shake">
+    <folder id="51" name="seaweed_shake">
         <file id="0" name="seaweed_shake/seaweed_shake-0.png" width="82" height="120" pivot_x="0.5" pivot_y="0.25"/>
     </folder>
-    <folder id="53" name="ruincha_latte">
-        <file id="0" name="ruincha_latte/ruincha_latte-0.png" width="149" height="187" pivot_x="0.44" pivot_y="0.3"/>
+    <folder id="52" name="ruincha_latte">
+        <file id="0" name="ruincha_latte/ruincha_latte-0.png" width="95" height="124" pivot_x="0.44" pivot_y="0.3"/>
+    </folder>
+    <folder id="53" name="ruincolate_smoothie">
+        <file id="0" name="ruincolate_smoothie/ruincolate_smoothie-0.png" width="59" height="120" pivot_x="0.5" pivot_y="0.25"/>
+    </folder>
+    <folder id="54" name="lumpy_tea">
+        <file id="0" name="lumpy_tea/lumpy_tea-0.png" width="93" height="103" pivot_x="0.5" pivot_y="0.25"/>
+    </folder>
+    <folder id="55" name="ruinxocolatl">
+        <file id="0" name="ruinxocolatl/ruinxocolatl-0.png" width="115" height="103" pivot_x="0.45" pivot_y="0.25"/>
     </folder>
     <entity id="0" name="kettle_drink">
         <animation id="0" name="turn_to_ice" length="700" interval="100">
@@ -231,58 +237,58 @@
             </mainline>
             <timeline id="0" name="water">
                 <key id="0" spin="0">
-                    <object folder="1" file="0" x="-0.799999" y="-0" angle="0"/>
+                    <object folder="1" file="0" x="-0.799999" angle="0"/>
                 </key>
                 <key id="1" time="25" spin="0">
-                    <object folder="1" file="0" x="-2.799999" y="-0" angle="0"/>
+                    <object folder="1" file="0" x="-2.799999" angle="0"/>
                 </key>
                 <key id="2" time="50" spin="0">
                     <object folder="1" file="0" x="1.2" angle="0"/>
                 </key>
                 <key id="3" time="75" spin="0">
-                    <object folder="1" file="0" x="-2.8" y="-0" angle="0"/>
+                    <object folder="1" file="0" x="-2.8" angle="0"/>
                 </key>
                 <key id="4" time="100" spin="0">
                     <object folder="1" file="0" x="1.2" angle="0"/>
                 </key>
                 <key id="5" time="125" spin="0">
-                    <object folder="1" file="0" x="-2.8" y="-0" angle="0"/>
+                    <object folder="1" file="0" x="-2.8" angle="0"/>
                 </key>
                 <key id="6" time="150" spin="0">
                     <object folder="1" file="0" x="1.2" angle="0"/>
                 </key>
                 <key id="7" time="175" spin="0">
-                    <object folder="1" file="0" x="-2.8" y="-0" angle="0"/>
+                    <object folder="1" file="0" x="-2.8" angle="0"/>
                 </key>
                 <key id="8" time="200" spin="0">
                     <object folder="1" file="0" x="1.2" angle="0"/>
                 </key>
                 <key id="9" time="225" spin="0">
-                    <object folder="1" file="0" x="-2.8" y="-0" angle="0"/>
+                    <object folder="1" file="0" x="-2.8" angle="0"/>
                 </key>
                 <key id="10" time="250" spin="0">
                     <object folder="1" file="0" x="1.2" angle="0"/>
                 </key>
                 <key id="11" time="275" spin="0">
-                    <object folder="1" file="0" x="-2.8" y="-0" angle="0"/>
+                    <object folder="1" file="0" x="-2.8" angle="0"/>
                 </key>
                 <key id="12" time="300" spin="0">
                     <object folder="1" file="0" x="1.2" angle="0"/>
                 </key>
                 <key id="13" time="325" spin="0">
-                    <object folder="1" file="0" x="-2.8" y="-0" angle="0"/>
+                    <object folder="1" file="0" x="-2.8" angle="0"/>
                 </key>
                 <key id="14" time="350" spin="0">
                     <object folder="1" file="0" x="1.2" angle="0"/>
                 </key>
                 <key id="15" time="375" spin="0">
-                    <object folder="1" file="0" x="-2.8" y="-0" angle="0"/>
+                    <object folder="1" file="0" x="-2.8" angle="0"/>
                 </key>
                 <key id="16" time="400" spin="0">
-                    <object folder="1" file="0" x="-0.8" y="-0" angle="0"/>
+                    <object folder="1" file="0" x="-0.8" angle="0"/>
                 </key>
                 <key id="17" time="450" spin="0">
-                    <object folder="1" file="0" x="-0.8" y="-0" angle="0"/>
+                    <object folder="1" file="0" x="-0.8" angle="0"/>
                 </key>
                 <key id="18" time="500" spin="0">
                     <object folder="40" file="0" x="0.6" y="0.96" angle="0" scale_x="0.5" scale_y="1.2"/>
@@ -363,58 +369,58 @@
             </mainline>
             <timeline id="0" name="water">
                 <key id="0" spin="0">
-                    <object folder="11" file="0" x="-0.799999" y="-0" angle="0"/>
+                    <object folder="11" file="0" x="-0.799999" angle="0"/>
                 </key>
                 <key id="1" time="25" spin="0">
-                    <object folder="11" file="0" x="-2.799999" y="-0" angle="0"/>
+                    <object folder="11" file="0" x="-2.799999" angle="0"/>
                 </key>
                 <key id="2" time="50" spin="0">
                     <object folder="11" file="0" x="1.2" angle="0"/>
                 </key>
                 <key id="3" time="75" spin="0">
-                    <object folder="11" file="0" x="-2.8" y="-0" angle="0"/>
+                    <object folder="11" file="0" x="-2.8" angle="0"/>
                 </key>
                 <key id="4" time="100" spin="0">
                     <object folder="11" file="0" x="1.2" angle="0"/>
                 </key>
                 <key id="5" time="125" spin="0">
-                    <object folder="11" file="0" x="-2.8" y="-0" angle="0"/>
+                    <object folder="11" file="0" x="-2.8" angle="0"/>
                 </key>
                 <key id="6" time="150" spin="0">
                     <object folder="11" file="0" x="1.2" angle="0"/>
                 </key>
                 <key id="7" time="175" spin="0">
-                    <object folder="11" file="0" x="-2.8" y="-0" angle="0"/>
+                    <object folder="11" file="0" x="-2.8" angle="0"/>
                 </key>
                 <key id="8" time="200" spin="0">
                     <object folder="11" file="0" x="1.2" angle="0"/>
                 </key>
                 <key id="9" time="225" spin="0">
-                    <object folder="11" file="0" x="-2.8" y="-0" angle="0"/>
+                    <object folder="11" file="0" x="-2.8" angle="0"/>
                 </key>
                 <key id="10" time="250" spin="0">
                     <object folder="11" file="0" x="1.2" angle="0"/>
                 </key>
                 <key id="11" time="275" spin="0">
-                    <object folder="11" file="0" x="-2.8" y="-0" angle="0"/>
+                    <object folder="11" file="0" x="-2.8" angle="0"/>
                 </key>
                 <key id="12" time="300" spin="0">
                     <object folder="11" file="0" x="1.2" angle="0"/>
                 </key>
                 <key id="13" time="325" spin="0">
-                    <object folder="11" file="0" x="-2.8" y="-0" angle="0"/>
+                    <object folder="11" file="0" x="-2.8" angle="0"/>
                 </key>
                 <key id="14" time="350" spin="0">
                     <object folder="11" file="0" x="1.2" angle="0"/>
                 </key>
                 <key id="15" time="375" spin="0">
-                    <object folder="11" file="0" x="-2.8" y="-0" angle="0"/>
+                    <object folder="11" file="0" x="-2.8" angle="0"/>
                 </key>
                 <key id="16" time="400" spin="0">
-                    <object folder="11" file="0" x="-0.8" y="-0" angle="0"/>
+                    <object folder="11" file="0" x="-0.8" angle="0"/>
                 </key>
                 <key id="17" time="450" spin="0">
-                    <object folder="11" file="0" x="-0.8" y="-0" angle="0"/>
+                    <object folder="11" file="0" x="-0.8" angle="0"/>
                 </key>
                 <key id="18" time="500" spin="0">
                     <object folder="41" file="0" x="0.6" y="0.96" angle="0" scale_x="0.5" scale_y="1.2"/>
