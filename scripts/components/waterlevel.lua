@@ -37,6 +37,7 @@ local Waterlevel = Class(function(self, inst)
     self.consuming = false
     self.isputoncetime = false
     self.onlydistill = false
+    self.onlysamewater = false
 
     self.maxwater = 0
     self.currentwater = 0
@@ -228,6 +229,12 @@ function Waterlevel:DoDiistiller(item, doer)
 end
 
 function Waterlevel:TakeWaterItem(item, doer)
+    if self.onlysamewater then
+        if self.watertype ~= nil and self.watertype ~= item.components.water:GetWatertype() then
+            return false
+        end
+    end
+
     local campkettle = nil
     local watervalue = item.components.water:GetWater()
     self:SetWaterType(item.components.water:GetWatertype())
@@ -244,7 +251,7 @@ function Waterlevel:TakeWaterItem(item, doer)
 
     if self.inst.components.waterspoilage and item.components.perishable then
         self.inst.components.waterspoilage:SetMaxFreshness(item.components.perishable.perishtime)
-        self.inst.components.waterspoilage:Dilute(watervalue, item.components.perishable.perishremainingtime)
+        self.inst.components.waterspoilage:Dilute(item.components.perishable.perishremainingtime)
     end
 
     local delta = self.currentwater - self.oldcurrentwater

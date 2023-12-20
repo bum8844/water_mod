@@ -69,7 +69,7 @@ if GetModConfigData("enable_thirst") then
             for k, word in pairs(water_commands) do
                 for k, v in pairs(dictionary.words) do
                     if dictionary.words == word then
-                        table.remove(dictionary.words, word)
+                        break
                     end
                 end
                 table.insert(dictionary.words, word)
