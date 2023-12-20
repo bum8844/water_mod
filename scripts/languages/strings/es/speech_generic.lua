@@ -71,7 +71,7 @@ return {
 		ADDITIVE_SEED = "¿Warly inventó una nueva especia?",
 		ADDITIVE_NUT = "Huele como café y nueces.",
 		ADDITIVE_DAIRY = "Esta herméticamente cerrada.",
-		ADDIRIVE_PETALS = "Son pétalos secos y hojas.",
+		ADDITIVE_PETALS = "Son pétalos secos y hojas.",
 
         -- Bebidas
 

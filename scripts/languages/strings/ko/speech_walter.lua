@@ -71,7 +71,7 @@ return {
 		ADDITIVE_SEED = "이 씨앗들로 표본을 만들면 좋을 것 같아.",
 		ADDITIVE_NUT = "산행스낵! 이 아니네...",
 		ADDITIVE_DAIRY = "케이크에 올릴 크림일까?",
-		ADDIRIVE_PETALS = "말린 잎과 꽃잎들이야!",
+		ADDITIVE_PETALS = "말린 잎과 꽃잎들이야!",
 
 		-- 음료
 

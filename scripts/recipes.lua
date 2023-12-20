@@ -127,8 +127,8 @@ SortAfter("additive_nut", "additive_seed", "FOODPROCESSING")
 AddRecipe2("additive_dairy",{Ingredient("goatmilk",1),Ingredient("milkywhites",1),Ingredient("butter", 1)},TECH.FOODPROCESSING_ONE,{atlas = ModAtlas(), builder_tag="professionalchef", numtogive=2, image = "additive_dairy.tex" ,nounlock=true},{"FOODPROCESSING"})
 SortAfter("additive_dairy", "additive_seed", "FOODPROCESSING")
 
---[[AddRecipe2("additive_petals",{Ingredient("petals",1),Ingredient("tealeaves",1,ModAtlas(),nil,"tealeaves.tex"),Ingredient("foliage", 1)},TECH.FOODPROCESSING_ONE,{atlas = ModAtlas(), builder_tag="professionalchef", numtogive=2, image = "additive_petals.tex" ,nounlock=true},{"FOODPROCESSING"})
-SortAfter("additive_petals", "additive_seed", "FOODPROCESSING")]]
+AddRecipe2("additive_petals",{Ingredient("petals",1),Ingredient("tealeaves",1,ModAtlas(),nil,"tealeaves.tex"),Ingredient("foliage", 1)},TECH.FOODPROCESSING_ONE,{atlas = ModAtlas(), builder_tag="professionalchef", numtogive=2, image = "additive_petals.tex" ,nounlock=true},{"FOODPROCESSING"})
+SortAfter("additive_petals", "additive_seed", "FOODPROCESSING")
 
 AddRecipe2("boilbook",{Ingredient("papyrus",1),Ingredient("tealeaves",1,ModAtlas(),nil,"tealeaves.tex")},TECH.SCIENCE_ONE,{atlas = ModAtlas(), image = "boilbook.tex"},{"COOKING","HYDRATION"})
 SortAfter("boilbook","cookbook","COOKING")
