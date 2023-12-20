@@ -50,12 +50,13 @@ end
 
 function WaterSpoilage:AddTime(time)
     if self.updatetask ~= nil then
-        self:SetFreshness(self.freshness + time)
+        local remaintime = self.freshness
+        self.freshness = remaintime + time
     end
 end
 
 function WaterSpoilage:SetFreshness(time)
-    self.freshness = math.clamp(time, 0, self.max_freshness)
+    self.freshness = math.min(time, self.max_freshness)
 end
 
 function WaterSpoilage:SetLocalMultiplier(newMult)
@@ -67,16 +68,7 @@ function WaterSpoilage:GetLocalMultiplier()
 end
 
 function WaterSpoilage:SetMaxFreshness(max)
-    local percent = self:GetPercent()
     self.max_freshness = max
-    self:SetPercent(percent)
-end
-
-function WaterSpoilage:SetPercent(percent)
-    if self.max_freshness then
-        percent = math.clamp(percent, 0, 1)
-        self.freshness = self.max_freshness * percent
-    end
 end
 
 function WaterSpoilage:GetPercent()
@@ -87,15 +79,15 @@ function WaterSpoilage:GetPercent()
     end
 end
 
-function WaterSpoilage:Dilute(amount, timeleft)
-    local water = self.inst.components.waterlevel and self.inst.components.waterlevel:GetWater()
-        or self.inst.components.wateringtool and self.inst.components.wateringtool:GetRainFilling()
-        
-    if self.freshness or self.max_freshness then
-        local perish = self.freshness or self.max_freshness
-        self:SetFreshness((perish * water + amount * timeleft) / (water + amount))
+function WaterSpoilage:Dilute(timeleft)
+    local old_water = self:GetPercent()
+    local new_water = math.min(1, timeleft / self.max_freshness)
+
+    if old_water > 0 then
+        local fresh = timeleft + (((old_water * new_water)*self.freshness)/2)
+        self:SetFreshness(fresh)
     else
-        self:SetFreshness(timeleft)
+        self:SetFreshness((new_water * self.max_freshness))
     end
 
     local percent = self:GetPercent()

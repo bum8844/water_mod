@@ -141,8 +141,9 @@ local function fn()
 	inst.components.waterspoilage.localPerishMultiplyer = TUNING.BARREL_FRESHENING_RATE
 	
 	inst:AddComponent("waterlevel")
+	inst.components.waterlevel.onlysamewater = true
 	inst.components.waterlevel:SetTakeWaterFn(OnTakeWater)
-	inst.components.waterlevel:SetCanAccepts({WATERTYPE.CLEAN, WATERTYPE.EMPTY})
+	inst.components.waterlevel:SetCanAccepts({WATERTYPE.CLEAN, WATERTYPE.MINERAL})
 	inst.components.waterlevel.maxwater = TUNING.BARREL_MAX_LEVEL
 	inst.components.waterlevel:SetSections(TUNING.BREWERY_SECTIONS)
 	inst.components.waterlevel:SetSectionCallback(OnSectionChange)
