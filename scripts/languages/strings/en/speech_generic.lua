@@ -71,7 +71,7 @@ return {
 		ADDITIVE_SEED = "Did Warly concoct a new spice?",
 		ADDITIVE_NUT = "Smells like coffee and nuts.",
 		ADDITIVE_DAIRY = "The cream is tightly sealed.",
-		ADDIRIVE_PETALS = "It's dried petals and leaves.",
+		ADDITIVE_PETALS = "It's dried petals and leaves.",
 
         -- drinks
 

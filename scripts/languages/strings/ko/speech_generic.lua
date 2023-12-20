@@ -71,7 +71,7 @@ return {
 		ADDITIVE_SEED = "왈리가 새로운 향신료를 만든걸까?",
 		ADDITIVE_NUT = "커피와 견과류 향이 나.",
 		ADDITIVE_DAIRY = "크림을 단단히 밀봉했네.",
-		ADDIRIVE_PETALS = "말린 꽃잎과 이파리들이야.",
+		ADDITIVE_PETALS = "말린 꽃잎과 이파리들이야.",
 
 		-- 음료
 
