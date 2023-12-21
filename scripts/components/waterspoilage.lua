@@ -80,15 +80,20 @@ function WaterSpoilage:GetPercent()
 end
 
 function WaterSpoilage:Dilute(timeleft)
-    local old_water = self:GetPercent()
-    local new_water = math.min(1, timeleft / self.max_freshness)
+    local freshness = self:GetPercent()
 
-    if old_water > 0 then
-        local fresh = timeleft + (((old_water * new_water)*self.freshness)/2)
-        self:SetFreshness(fresh)
-    else
-        self:SetFreshness((new_water * self.max_freshness))
+    local result = timeleft
+
+    if freshness > 0 then
+        local component = self.inst.components.waterlevel
+        local waterlevel = component and component:GetWater() or 2
+        local waterlevel_old = component and component.oldcurrentwater or 0
+        local water = math.max(0,waterlevel-waterlevel_old)
+
+        result = ( water * self.freshness + waterlevel * timeleft ) / ( water + waterlevel )
     end
+
+    self:SetFreshness(result)
 
     local percent = self:GetPercent()
     if percent > 0 or percent < 1 then
