@@ -163,7 +163,7 @@ local drinks =
 	},
 	-- 선인장
 	pulque = {
-		test = function(boilier, names, tags) return ((names.cactus_meat or 0) + (names.cactus_meat_cooked or 0) + (names.aloe or 0) + (names.aloe_cooked or 0) + (names.kyno_aloe or 0) + (names.kyno_aloe_cooked or 0) + (names.mfp_aloe or 0) + (names.mfp_aloe_cooked or 0)) >= 3 and notmeat(tags) and notname(names) end,
+		test = function(boilier, names, tags) return ((names.succulent_picked or 0) + (names.cactus_meat or 0) + (names.cactus_meat_cooked or 0) + (names.aloe or 0) + (names.aloe_cooked or 0) + (names.kyno_aloe or 0) + (names.kyno_aloe_cooked or 0) + (names.mfp_aloe or 0) + (names.mfp_aloe_cooked or 0)) >= 3 and notmeat(tags) and notname(names) end,
 		health = TUNING.HEALING_TINY*5, -- 5 (100)
 		hunger = TUNING.CALORIES_MEDSMALL/3, -- 6.25 (125) 
 		sanity = TUNING.SANITY_SMALL, -- 10 (200)
