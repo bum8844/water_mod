@@ -90,7 +90,7 @@ function WaterSpoilage:Dilute(timeleft)
         local waterlevel_old = component and component.oldcurrentwater or 0
         local water = math.max(0,waterlevel-waterlevel_old)
 
-        result = ( water * self.freshness + waterlevel * timeleft ) / ( water + waterlevel )
+        result = ( waterlevel * self.freshness + water * timeleft ) / ( water + waterlevel )
     end
 
     self:SetFreshness(result)
