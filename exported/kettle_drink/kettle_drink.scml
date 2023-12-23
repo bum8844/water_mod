@@ -157,7 +157,7 @@
         <file id="0" name="seaweed_shake/seaweed_shake-0.png" width="82" height="120" pivot_x="0.5" pivot_y="0.25"/>
     </folder>
     <folder id="52" name="ruincha_latte">
-        <file id="0" name="ruincha_latte/ruincha_latte-0.png" width="95" height="124" pivot_x="0.44" pivot_y="0.3"/>
+        <file id="0" name="ruincha_latte/ruincha_latte-0.png" width="95" height="124" pivot_x="0.45" pivot_y="0.25"/>
     </folder>
     <folder id="53" name="ruincolate_smoothie">
         <file id="0" name="ruincolate_smoothie/ruincolate_smoothie-0.png" width="59" height="120" pivot_x="0.5" pivot_y="0.25"/>
@@ -167,6 +167,30 @@
     </folder>
     <folder id="55" name="ruinxocolatl">
         <file id="0" name="ruinxocolatl/ruinxocolatl-0.png" width="115" height="103" pivot_x="0.45" pivot_y="0.25"/>
+    </folder>
+    <folder id="56" name="corn_whiskey">
+        <file id="0" name="corn_whiskey/corn_whiskey-0.png" width="120" height="120" pivot_x="0.5" pivot_y="0.25"/>
+    </folder>
+    <folder id="57" name="disinfectant">
+        <file id="0" name="disinfectant/disinfectant-0.png" width="57" height="110" pivot_x="0.5" pivot_y="0.25"/>
+    </folder>
+    <folder id="58" name="lumpy_beer">
+        <file id="0" name="lumpy_beer/lumpy_beer-0.png" width="120" height="120" pivot_x="0.61" pivot_y="0.25"/>
+    </folder>
+    <folder id="59" name="lumpy_vodka">
+        <file id="0" name="lumpy_vodka/lumpy_vodka-0.png" width="120" height="120" pivot_x="0.5" pivot_y="0.25"/>
+    </folder>
+    <folder id="60" name="lumpy_wine">
+        <file id="0" name="lumpy_wine/lumpy_wine-0.png" width="102" height="119" pivot_x="0.43" pivot_y="0.25"/>
+    </folder>
+    <folder id="61" name="pulque">
+        <file id="0" name="pulque/pulque-0.png" width="120" height="120" pivot_x="0.5" pivot_y="0.25"/>
+    </folder>
+    <folder id="62" name="ruincacao_wine">
+        <file id="0" name="ruincacao_wine/ruincacao_wine-0.png" width="61" height="115" pivot_x="0.5" pivot_y="0.35"/>
+    </folder>
+    <folder id="63" name="watermelon_juice">
+        <file id="0" name="watermelon_juice/watermelon_juice-0.png" width="100" height="120" pivot_x="0.5" pivot_y="0.25"/>
     </folder>
     <entity id="0" name="kettle_drink">
         <animation id="0" name="turn_to_ice" length="700" interval="100">
