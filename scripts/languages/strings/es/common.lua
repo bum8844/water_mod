@@ -267,6 +267,7 @@ STRINGS.NAMES.GLOWBERRYWINE = "Vino de bayas brillantes"
 STRINGS.NAMES.KUMIS = "Kumi eléctrico"
 STRINGS.NAMES.LUMPY_WINE = "Vino de raíz"
 STRINGS.NAMES.PULQUE = "Pulque"
+STRINGS.NAMES.RUINCACAO_WINE = "Vino de Cacao"
 
 -- Mod colaboración bebidas preparadas
 

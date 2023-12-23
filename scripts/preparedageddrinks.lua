@@ -20,7 +20,7 @@ local drinks =
 
 	lumpy_beer = {
 		test = function(boilier, names, tags) return (names.potato or names.potato_cooked or names.sweet_potato or names.sweet_potato_cooked or names.kyno_sweetpotato or names.kyno_sweetpotato_cooked or names.mfp_sweetpotato or names.mfp_sweetpotato_cooked) and tags.veggie and tags.ferment and tags.ferment >= 1 and not tags.fruit and notmeat(tags) and notname(names) and lessthing(names) and notages(tags) end,
-		priority = 1,
+		priority = 2,
 		health = TUNING.HEALING_TINY, -- 0.75 -> 1 (20)
 		hunger = TUNING.CALORIES_SMALL/4, -- 3.125 (62.5)
 		sanity = TUNING.SANITY_MEDLARGE/5, -- 5 -> 4(80)
@@ -311,7 +311,7 @@ local drinks =
 	},
 	-- 카카오 와인
 	ruincacao_wine = {
-		test = function(boilier, names, tags) return names.ruincacao_bean_cooked and tags.ruincacao_bean_cooked >= 3 and notmeat(tags) and notname(names) end,
+		test = function(boilier, names, tags) return names.ruincacao_bean_cooked and names.ruincacao_bean_cooked >= 3 and notmeat(tags) and notname(names) end,
 		priority = 1,
         health = TUNING.HEALING_MED/5, -- 5 -> 4 (80)
         hunger = TUNING.DRINK_CALORIES, -- 9.375 -> 5 (100)
