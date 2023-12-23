@@ -266,6 +266,7 @@ STRINGS.NAMES.GLOWBERRYWINE = "Glowberry Wine"
 STRINGS.NAMES.KUMIS = "Electric Kumis"
 STRINGS.NAMES.LUMPY_WINE = "Root Wine"
 STRINGS.NAMES.PULQUE = "Pulque"
+STRINGS.NAMES.RUINCACAO_WINE = "Cacao Wine"
 
 -- prepareagedrink 타모드 전용
 

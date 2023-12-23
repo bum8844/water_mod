@@ -46,7 +46,7 @@ local function MakePreparedDrink(data)
 	end
 
     local function OnStackSizeChanged(inst, data)
-        if data ~= nil then
+        if data ~= nil and not inst:HasTag("disinfectant") then
             if inst.components.perishable ~= nil and data.stacksize >= 20 then
                 inst.components.perishable:SetLocalMultiplier(0.5)
             else
@@ -95,10 +95,6 @@ local function MakePreparedDrink(data)
         inst.AnimState:PlayAnimation("idle")
         inst.AnimState:OverrideSymbol("swap", data.overridebuild or "kettle_drink", data.basename or data.name)
 
-        inst:AddTag("drink")
-        inst:AddTag("preparedfood")
-        inst:AddTag("prepareddrink")
-
         if data.tags ~=nil then
         	for i,v in pairs(data.tags) do
         		inst:AddTag(v)
@@ -106,6 +102,9 @@ local function MakePreparedDrink(data)
         end
 
         if not inst:HasTag("common") then
+            inst:AddTag("drink")
+            inst:AddTag("preparedfood")
+            inst:AddTag("prepareddrink")
         	inst:AddTag("show_spoiled")
         	inst:AddTag("icebox_valid")
         end
@@ -176,7 +175,7 @@ local function MakePreparedDrink(data)
         inst:AddComponent("stackable")
         inst.components.stackable.maxsize = TUNING.STACK_SIZE_TINYITEM
 
-        if data.perishtime ~= nil and data.perishtime > 0 then
+        if data.perishtime ~= nil and data.perishtime > 0 and not inst:HasTag("disinfectant") then
             inst:AddComponent("perishable")
             inst.components.perishable:SetPerishTime(data.perishtime)
             inst.components.perishable:StartPerishing()
