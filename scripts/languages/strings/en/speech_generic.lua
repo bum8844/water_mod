@@ -63,6 +63,7 @@ return {
 		RUINCACAO_SEED = "It's germinating already?",
 		RUINCACAO_SEED_SAPLING = "It'll grow into a tree in time.",
 		RUINCACAO = "It's drier than I thought.",
+
 		RUINCACAO_BEAN = "Too greasy to eat.",
 		RUINCACAO_SEED_COOKED = "It's more smokey than I thought.",
 
@@ -110,6 +111,7 @@ return {
 		SUSHIBISCUS = "This ought to be a scientifc impossibili-tea.",
 		MOON_BLOSSOM_TEA = "The aroma sure is an eye-opener.",
 		CAFFEINBERRY_JUICE = "Smells energizing!",
+		
 		TOFFEE_LATTE = "Is it mixed coffee with nuts?",
 		RUINCHA_LATTE = "The light is a nuclear reaction from the two beans.",		
 		
