@@ -204,12 +204,22 @@ ingredient_icon_remap.acorn = "acorn_cooked"
 ingredient_icon_remap.trunk = "trunk_cooked"
 ingredient_icon_remap.ruincacao_bean = "ruincacao_bean_cooked"
 ingredient_icon_remap.caffeinberry_bean = "caffeinberry_bean_cooked"
+ingredient_icon_remap.kyno_coffeebeans = "kyno_coffeebeans_cooked"
+ingredient_icon_remap.coffeebeans = "coffeebeans_cooked"
+ingredient_icon_remap.berries = "berries_cooked"
+ingredient_icon_remap.berries_juicy = "berries_juicy"
+ingredient_icon_remap.mfp_coffeecherry = "mfp_coffeecherry_cooked"
 
 local ingredient_name_remap = {}
 ingredient_name_remap.acorn = "acorn_cooked"
 ingredient_name_remap.trunk = "trunk_cooked"
 ingredient_name_remap.ruincacao_bean = "ruincacao_bean_cooked"
 ingredient_name_remap.caffeinberry_bean = "caffeinberry_bean_cooked"
+ingredient_name_remap.kyno_coffeebeans = "kyno_coffeebeans_cooked"
+ingredient_name_remap.coffeebeans = "coffeebeans_cooked"
+ingredient_name_remap.berries = "berries_cooked"
+ingredient_name_remap.berries_juicy = "berries_juicy"
+ingredient_name_remap.mfp_coffeecherry = "mfp_coffeecherry_cooked"
 
 function BoilbookPage:_SetupRecipeIngredientDetails(recipes, parent, y)
 	local ingredient_size = 30
