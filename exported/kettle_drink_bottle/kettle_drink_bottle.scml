@@ -166,7 +166,31 @@
         <file id="0" name="lumpy_tea/lumpy_tea-0.png" width="130" height="168" pivot_x="0.5" pivot_y="0.24"/>
     </folder>
     <folder id="55" name="ruincolate_smoothie">
-        <file id="0" name="ruincolate_smoothie/ruincolate_smoothie-0.png" width="103" height="174" pivot_x="0.51" pivot_y="0.25"/>
+        <file id="0" name="ruincolate_smoothie/ruincolate_smoothie-0.png" width="103" height="174" pivot_x="0.5" pivot_y="0.25"/>
+    </folder>
+    <folder id="56" name="corn_whiskey">
+        <file id="0" name="corn_whiskey/corn_whiskey-0.png" width="116" height="187" pivot_x="0.5" pivot_y="0.25"/>
+    </folder>
+    <folder id="57" name="disinfectant">
+        <file id="0" name="disinfectant/disinfectant-0.png" width="124" height="187" pivot_x="0.5" pivot_y="0.25"/>
+    </folder>
+    <folder id="58" name="lumpy_beer">
+        <file id="0" name="lumpy_beer/lumpy_beer-0.png" width="80" height="187" pivot_x="0.5" pivot_y="0.25"/>
+    </folder>
+    <folder id="59" name="lumpy_vodka">
+        <file id="0" name="lumpy_vodka/lumpy_vodka-0.png" width="105" height="183" pivot_x="0.5" pivot_y="0.25"/>
+    </folder>
+    <folder id="60" name="lumpy_wine">
+        <file id="0" name="lumpy_wine/lumpy_wine-0.png" width="74" height="187" pivot_x="0.5" pivot_y="0.25"/>
+    </folder>
+    <folder id="61" name="pulque">
+        <file id="0" name="pulque/pulque-0.png" width="187" height="187" pivot_x="0.5" pivot_y="0.25"/>
+    </folder>
+    <folder id="62" name="ruincacao_wine">
+        <file id="0" name="ruincacao_wine/ruincacao_wine-0.png" width="85" height="181" pivot_x="0.5" pivot_y="0.25"/>
+    </folder>
+    <folder id="63" name="watermelon_juice">
+        <file id="0" name="watermelon_juice/watermelon_juice-0.png" width="187" height="187" pivot_x="0.5" pivot_y="0.25"/>
     </folder>
     <entity id="0" name="kettle_drink">
         <animation id="0" name="idle" length="150" interval="100" looping="false">

@@ -726,7 +726,7 @@ for k, v in pairs(drinks) do
     v.priority = v.priority or 0
 
     v.is_boilbook_recipes = true
-    v.cookbook_category = "kettle"
+    v.boilbook_category = "kettle"
     v.no_cookbook = true
 end
 
