@@ -208,6 +208,14 @@ local function fn()
     return inst
 end
 
+local function onhammered(inst, worker)
+    inst.components.lootdropper:DropLoot()
+    local fx = SpawnPrefab("collapse_small")
+    fx.Transform:SetPosition(inst.Transform:GetWorldPosition())
+    fx:SetMaterial("metal")
+    inst:Remove()
+end
+
 local function fn_item()
     local inst = CreateEntity()
 
@@ -231,6 +239,12 @@ local function fn_item()
     if not TheWorld.ismastersim then
         return inst
     end
+    
+    inst:AddComponent("lootdropper")
+    inst:AddComponent("workable")
+    inst.components.workable:SetWorkAction(ACTIONS.HAMMER)
+    inst.components.workable:SetWorkLeft(2)
+    inst.components.workable:SetOnFinishCallback(onhammered)
 
     inst:AddComponent("tradable")
 

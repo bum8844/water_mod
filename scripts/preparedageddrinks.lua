@@ -248,7 +248,7 @@ local drinks =
 	
 	sparklingwine =
 	{
-		test = function(boilier, names, tags) return (( names.berries or 0 ) + ( names.berries_juicy or 0 ) >= 2) and tags.ferment and tags.ferment >= 1 and onlydragoonheart(names, tags) and notname(names) end,
+		test = function(boilier, names, tags) return (( names.berries or 0 ) + ( names.berries_juicy or 0 ) >= 2) and tags.ferment and tags.ferment >= 1 and notname(names) end,
 		priority = 3,
 		health = TUNING.HEALING_SMALL, -- 3 (60)
 		hunger = TUNING.DRINK_CALORIES, -- 9.375 -> 5 (100)
