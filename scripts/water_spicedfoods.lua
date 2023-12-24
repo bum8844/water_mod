@@ -84,7 +84,17 @@ for k, mod_id in ipairs(KnownModIndex:GetModsToLoad()) do
     if mod_id == "workshop-2762334054" then
         GenerateSpicedFoods_Water(require("mfp_foodrecipes"))
     end
+    if mod_id == "workshop-2039181790" then
+        GenerateSpicedFoods_Water(require("um_preparedfoods"))
+    end
+    if mod_id == "workshop-1289779251" then
+        GenerateSpicedFoods_Water(require("cherry_preparedfoods"))
+        GenerateSpicedFoods_Water(require("cherry_preparedfoods_warly"))
+        GenerateSpicedFoods_Water(require("cherry_preparedfoods_wirly"))
+    end
 end
+
+--
 
 GenerateSpicedFoods_Water(require("preparedfoods"))
 GenerateSpicedFoods_Water(require("preparedfoods_warly"))
