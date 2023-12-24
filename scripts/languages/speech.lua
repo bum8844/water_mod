@@ -25,7 +25,7 @@ end]]
 local vanilla_characters = {
 	"generic",
 	"walter",
-	--"wanda",
+	"wanda",
 	"warly",
 	"wathgrithr",
 	"waxwell",
