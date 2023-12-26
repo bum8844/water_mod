@@ -29,7 +29,6 @@ local drinks =
 		cooktime = (TUNING.KETTLE_LUXURY_GOODS + TUNING.SODA_WAIT),
 		potlevel = "mid",
 		potlevel_bottle = "mid",
-		drinktype = DRINKTYPY.VEGGIE,
 	},
 	
 	fruitsoda =
@@ -44,7 +43,6 @@ local drinks =
 		cooktime = (TUNING.KETTLE_FRUIT + TUNING.SODA_WAIT),
 		potlevel = "mid",
 		potlevel_bottle = "mid",
-		drinktype = DRINKTYPY.FRUIT,
 	},
 	
 	
@@ -70,7 +68,6 @@ local drinks =
 				eater:AddDebuff("healthregenbuff", "healthregenbuff")
 			end
 		end,
-		drinktype = DRINKTYPY.FRUIT,
 	},
 	
 	cola =
@@ -93,7 +90,6 @@ local drinks =
 			eater:AddDebuff("healthregenbuff", "healthregenbuff")
 			eater:AddDebuff("caffeinbuff", "caffeinbuff")
 		end,
-		drinktype = DRINKTYPY.FRUIT,
 	},
 	
 	colaquantum =
@@ -133,13 +129,13 @@ local drinks =
 		cooktime = (TUNING.KETTLE_VEGGIE + TUNING.BEER_WAIT),
 		potlevel = "mid",
 		potlevel_bottle = "mid",
+		drinktype = DRINKTYPY.BREWER,
 		prefabs = { "alcoholdebuff","drunkarddebuff","resistancebuff" },
 		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_NAG_AURA_RESIST,
 		card_def = {ingredients = {{"corn", 4}}},
 		oneatenfn = function(inst, eater)
 			alcohol(inst, eater)
 		end,
-		drinktype = DRINKTYPY.VEGGIE,
 	},
 	-- 감자, 고구마
 	lumpy_wine = {
@@ -154,12 +150,12 @@ local drinks =
 		cooktime = (TUNING.KETTLE_VEGGIE + TUNING.BEER_WAIT),
 		potlevel = "mid",
 		potlevel_bottle = "mid",
+		drinktype = DRINKTYPY.BREWER,
 		prefabs = { "alcoholdebuff","drunkarddebuff","resistancebuff" },
 		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_NAG_AURA_RESIST,
 		oneatenfn = function(inst, eater)
 			alcohol(inst, eater)
 		end,
-		drinktype = DRINKTYPY.VEGGIE,
 	},
 	-- 선인장
 	pulque = {
@@ -175,12 +171,12 @@ local drinks =
 		temperatureduration = TUNING.FOOD_TEMP_AVERAGE,
 		potlevel = "mid",
 		potlevel_bottle = "mid",
+		drinktype = DRINKTYPY.BREWER,
 		prefabs = { "alcoholdebuff","drunkarddebuff","resistancebuff" },
 		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_NAG_AURA_RESIST,
 		oneatenfn = function(inst, eater)
 			alcohol(inst, eater)
 		end,
-		drinktype = DRINKTYPY.VEGGIE,
 	},
 	--꿀술
 	madhu =
@@ -196,6 +192,7 @@ local drinks =
 		cooktime = (TUNING.KETTLE_VEGGIE + TUNING.BEER_WAIT),
 		potlevel = "mid",
 		potlevel_bottle = "high",
+		drinktype = DRINKTYPY.BREWER,
 		prefabs = { "alcoholdebuff","drunkarddebuff","resistancebuff" },
 		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_NAG_AURA_RESIST,
 		oneatenfn = function(inst, eater)
@@ -217,12 +214,12 @@ local drinks =
 		cooktime = (TUNING.KETTLE_FRUIT + TUNING.BEER_WAIT),
 		potlevel = "high",
 		potlevel_bottle = "mid",
+		drinktype = DRINKTYPY.BREWER,
 		prefabs = { "alcoholdebuff","drunkarddebuff","resistancebuff" },
 		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_NAG_AURA_RESIST,
 		oneatenfn = function(inst, eater)
 			alcohol(inst, eater)
 		end,
-		drinktype = DRINKTYPY.FRUIT,
 	},
 
 	noblewine = 
@@ -238,12 +235,12 @@ local drinks =
 		cooktime = (TUNING.KETTLE_FRUIT + TUNING.BEER_WAIT),
 		potlevel = "high",
 		potlevel_bottle = "mid",
+		drinktype = DRINKTYPY.BREWER,
 		prefabs = { "alcoholdebuff","drunkarddebuff","resistancebuff" },
 		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_NAG_AURA_RESIST,
 		oneatenfn = function(inst, eater)
 			alcohol(inst, eater)
 		end,
-		drinktype = DRINKTYPY.FRUIT,
 	},
 	
 	sparklingwine =
@@ -260,12 +257,12 @@ local drinks =
 		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_NAG_AURA_RESIST_GLOW,
 		potlevel = "high",
 		potlevel_bottle = "mid",
+		drinktype = DRINKTYPY.BREWER,
 		prefabs = { "alcoholdebuff","drunkarddebuff","resistancebuff" },
 		card_def = {ingredients = {{"refined_dust",1},{"berries",1},{"berries_juicy",1},{"twigs",1}}},
 		oneatenfn = function(inst, eater)
 			alcohol(inst, eater)
 		end,
-		drinktype = DRINKTYPY.FRUIT,
 	},
 	-- 발광 베리류
 	glowberrywine =
@@ -280,6 +277,7 @@ local drinks =
 		perishtime = TUNING.PERISH_SUPERSLOW,
 		potlevel = "high",
 		potlevel_bottle = "mid",
+		drinktype = DRINKTYPY.BREWER,
 		prefabs = { "alcoholdebuff","drunkarddebuff","resistancebuff","wormlight_light" },
 		cooktime = (TUNING.KETTLE_FRUIT + TUNING.BEER_WAIT),
 		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_NAG_AURA_RESIST_GLOW,
@@ -287,7 +285,6 @@ local drinks =
 			alcohol(inst, eater)
            	drink_worm_light_less(inst, eater)
 	    end,
-	    drinktype = DRINKTYPY.FRUIT,
 	},
 	-- 우유
 	kumis = {
@@ -302,6 +299,7 @@ local drinks =
 		cooktime = (TUNING.KETTLE_VEGGIE + TUNING.BEER_WAIT),
 		potlevel = "mid",
 		potlevel_bottle = "mid",
+		drinktype = DRINKTYPY.BREWER,
 		prefabs = { "alcoholdebuff","drunkarddebuff","resistancebuff" },
 		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_NAG_AURA_RESIST,
 		card_def = {ingredients = {{"goatmilk",4}}},
@@ -322,6 +320,7 @@ local drinks =
 		cooktime = (TUNING.KETTLE_LUXURY_GOODS + TUNING.BEER_WAIT),
 		potlevel = "mid",
 		potlevel_bottle = "mid",
+		drinktype = DRINKTYPY.BREWER,
 		prefabs = { "alcoholdebuff","drunkarddebuff","resistancebuff" },
 		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_NAG_AURA_RESIST_ANCIENT_KNOWLEGEE,
 		oneatenfn = function(inst, eater)
@@ -407,6 +406,7 @@ for k, v in pairs(drinks) do
     v.name = k
     v.weight = v.weight or 1
     v.priority = v.priority or 0
+    v.drinktype = v.drinktype or DRINKTYPY.GENERIC
 
     v.is_boilbook_recipes = true
     v.boilbook_category = "brewery"

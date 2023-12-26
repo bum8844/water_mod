@@ -1,4 +1,11 @@
 local function OnFill_Waterlevel(inst, from_object ,...)
+    local water = from_object.components.water and from_object.components.water:GetWatertype() or nil
+    local waterlevel = from_object.components.waterlevel
+
+    if water ~= nil and water == WATERTYPE.SALTY then
+        return false
+    end
+
     local maxfin = inst.components.finiteuses.total
     local using = inst.components.finiteuses:GetUses()
 
@@ -6,11 +13,13 @@ local function OnFill_Waterlevel(inst, from_object ,...)
     local totalusing = math.floor(using/TUNING.WATERINGCAN_PER_WATER)
 
     local result = totalmax-totalusing
-    if from_object.components.waterlevel ~= nil then
-        local waterlevel = from_object.components.waterlevel:GetWater()
+    if waterlevel ~= nil then
+        local waterlevel_water = from_object.components.waterlevel:GetWater()
     	if result > 0 then
-    		inst.components.finiteuses:SetUses(math.min(maxfin,using+(waterlevel*TUNING.WATERINGCAN_PER_WATER)))
-            from_object.components.water:Taken(inst, result)
+    		inst.components.finiteuses:SetUses(math.min(maxfin,using+(waterlevel_water*TUNING.WATERINGCAN_PER_WATER)))
+            if water ~= nil then
+                water:Taken(inst, result)
+            end
     		inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/small")
     		return true
     	else

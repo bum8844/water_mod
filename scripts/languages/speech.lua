@@ -1,4 +1,6 @@
 --the translation function is in progress
+STRINGS.UI.DRINK_TYPES = {}
+
 LOC = require("languages/loc")
 
 local locales =

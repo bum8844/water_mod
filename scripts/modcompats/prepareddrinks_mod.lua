@@ -116,6 +116,7 @@ local unc_drink = {
 		cooktime = TUNING.KETTLE_LUXURY_GOODS,
 		potlevel = "mid",
 		potlevel_bottle = "mid",
+		drinktype = DRINKTYPY.VEGGIE,
 		tags = {"honeyed"},
 		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_HAYFEVER_RELIEF_MED,
 		oneatenfn = function(inst, eater)
@@ -123,7 +124,6 @@ local unc_drink = {
 				eater.components.hayfever:SetNextSneezeTime(1440)
 			end
 		end,
-		drinktype = DRINKTYPY.VEGGIE,
 	},
 }
 

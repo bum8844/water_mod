@@ -8,7 +8,7 @@ forumthread = ""
 author 						= ""
 forumthread 				= ""
 api_version 				= 10
-priority 					= -10001
+priority 					= -10000010001
 
 dont_starve_compatible 		= false
 reign_of_giants_compatible 	= false

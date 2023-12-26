@@ -167,6 +167,9 @@ local function MakePreparedDrink(data)
         inst.components.water.returnprefab = "cup"]]
 
 		inst:AddComponent("inventoryitem")
+        if data.OnPutInInventory then
+            inst:ListenForEvent("onputininventory", data.OnPutInInventory)
+        end
 
         if data.basename ~= nil then
             inst.components.inventoryitem:ChangeImageName(data.basename)

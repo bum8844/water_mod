@@ -93,7 +93,7 @@ local USEITEM =
 local POINT =
 {
     watertaker = function(inst, doer, pos, actions, right, target)
-        if inst:HasTag("watertaker") and _G.TheWorld.Map:IsOceanAtPoint(pos.x, 0, pos.z) then
+        if inst:HasTag("watertaker") and (_G.TheWorld.Map:IsOceanAtPoint(pos.x, 0, pos.z) or _G.FindVirtualOceanEntity(pos.x, 0, pos.z) ~= nil) then
             table.insert(actions, ACTIONS.TAKEWATER_OCEAN)
         end
     end,
@@ -141,7 +141,7 @@ local SCENE =
 local INVENTORY = {
     watertaker = function(inst, doer, actions, right)
         local pos = inst:GetPosition()
-        if inst:HasTag("watertaker") and _G.TheWorld.Map:IsOceanTileAtPoint(pos.x, 0, pos.z) then
+        if inst:HasTag("watertaker") and (_G.TheWorld.Map:IsOceanAtPoint(pos.x, 0, pos.z) or _G.FindVirtualOceanEntity(pos.x, 0, pos.z) ~= nil) then
             table.insert(actions, ACTIONS.TAKEWATER_OCEAN)
         end
     end,

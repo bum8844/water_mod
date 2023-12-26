@@ -37,6 +37,8 @@ function GenerateSpicedFoods_Water_mod(foods)
             newdata.stacksize = nil
             newdata.spice = spicenameupper
             newdata.basename = foodname
+            newdata.overimg = fooddata.basename
+            newdata.tetype = fooddata.tetype
             newdata.name = foodname.."_spice_caffeinpepper"
             newdata.floater = {"med", nil, {0.85, 0.7, 0.85}}
             newdata.official = true
@@ -53,6 +55,10 @@ function GenerateSpicedFoods_Water_mod(foods)
                 newdata.temperatureduration = math.max(newdata.temperatureduration, TUNING.FOOD_TEMP_LONG)
                 newdata.nochill = true
             end
+
+            --[[if fooddata.platetype then
+                newdata.platetype = fooddata.platetype
+            end]]
 
             if spicedata.prefabs ~= nil then
                 --make a copy (via ArrayUnion) if there are dependencies from the original food

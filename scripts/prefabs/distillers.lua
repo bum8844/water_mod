@@ -80,17 +80,18 @@ local function IsModDrink(inst, product, overridebuild)
 end
 
 local function SetProductSymbol(inst, product, overridebuild)
+    local distill_stack = inst.components.brewing.distill_stack*.2
     local recipe = cooking.GetRecipe(inst.prefab, product)
     local potlevel = recipe ~= nil and recipe.potlevel or nil
     local potlevel_bottle = recipe ~= nil and recipe.potlevel_bottle or nil
-    local build = IsModDrink(inst, product, overridebuild) and overridebuild or IsModDrink(inst, product, overridebuild) and inst.components.brewing.distill_stack >= 5 and overridebuild.."_bottle"
-    or inst.components.brewing.distill_stack >= 5 and "kettle_drink_bottle" or "kettle_drink"
+    local build = IsModDrink(inst, product, overridebuild) and overridebuild or IsModDrink(inst, product, overridebuild) and distill_stack >= 5 and overridebuild.."_bottle"
+    or distill_stack >= 5 and "kettle_drink_bottle" or "kettle_drink"
     local overridesymbol = (recipe ~= nil and recipe.overridesymbolname) or (recipe.basename ~= nil and recipe.basename) or product
     local potlevels = potlevel ~= nil and "swap_"..potlevel or "swap_mid"
     local potlevels_bottle = potlevel_bottle ~= nil and "swap_"..potlevel_bottle.."_bottle" or "swap_mid_bottle"
     local result_potlevels = nil
     
-    if inst.components.brewing.distill_stack >= 5 then
+    if distill_stack >= 5 then
         result_potlevels = potlevels_bottle
         inst.AnimState:Hide("swap_high")
         inst.AnimState:Hide("swap_mid")
