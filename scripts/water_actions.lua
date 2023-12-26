@@ -6,6 +6,41 @@ require 'vecutil'
 require ("components/embarker")
 require ("actions")
 
+local function CheckOceanRange(doer, dest)
+    local doer_pos = doer:GetPosition()
+    local target_pos = _G.Vector3(dest:GetPoint())
+    local dir = target_pos - doer_pos
+
+    local test_pt = doer_pos + dir:GetNormalized() * (doer:GetPhysicsRadius(0) + 0.25)
+
+    if _G.TheWorld.Map:IsVisualGroundAtPoint(test_pt.x, 0, test_pt.z) or _G.TheWorld.Map:GetPlatformAtPoint(test_pt.x, test_pt.z) ~= nil then
+        if _G.FindVirtualOceanEntity(test_pt.x, 0, test_pt.z) ~= nil then
+            return true
+        end
+
+        return false
+    else
+        return true
+    end
+end
+
+local function IsOcean(groundpt)
+    local is_ice_hole = false
+
+    local is_ocean_tile = (_G.TheWorld.Map:IsOceanAtPoint(groundpt.x, 0, groundpt.z) or
+        _G.TheWorld.Map:IsOceanTileAtPoint(groundpt.x, 0, groundpt.z))
+
+    if _G.TheWorld.Map:IsVisualGroundAtPoint(groundpt.x, 0, groundpt.z) and _G.TheWorld.Map:GetPlatformAtPoint(groundpt.x, groundpt.z) ~= nil then
+        if _G.FindVirtualOceanEntity(groundpt.x, 0, groundpt.z) ~= nil then
+            is_ice_hole = true
+        end
+    end
+
+    local test = is_ice_hole or is_ocean_tile
+
+    return test
+end
+
 local function IsDirty(pos)
     local test = (_G.TheWorld.Map:GetTileAtPoint(pos.x-2.5, 0, pos.z) == _G.WORLD_TILES.MANGROVE_SHORE or
          _G.TheWorld.Map:GetTileAtPoint(pos.x+2.5, 0, pos.z) == _G.WORLD_TILES.MANGROVE_SHORE or
@@ -102,7 +137,7 @@ local TAKEWATER = AddAction("TAKEWATER", STRINGS.ACTIONS.FILL, function(act)
 
     local groundpt = act:GetActionPoint()
     if groundpt ~= nil then
-        local success = (_G.TheWorld.Map:IsOceanAtPoint(groundpt.x, 0, groundpt.z) or _G.TheWorld.Map:IsOceanTileAtPoint(groundpt.x, 0, groundpt.z))
+        local success = IsOcean(groundpt)
         if success then
             local watertype = nil
             if IsDirty(groundpt) then
@@ -122,8 +157,9 @@ end)
 TAKEWATER.priority = 2
 
 local TAKEWATER_OCEAN = AddAction("TAKEWATER_OCEAN", STRINGS.ACTIONS.FILL, TAKEWATER.fn)
+TAKEWATER_OCEAN.customarrivecheck = CheckOceanRange
 TAKEWATER_OCEAN.is_relative_to_platform = true
-TAKEWATER_OCEAN.extra_arrive_dist = ExtraDropDist
+TAKEWATER_OCEAN.disable_platform_hopping = true
 TAKEWATER_OCEAN.priority = 1
 
 local MILKINGTOOL = AddAction("MILKINGTOOL", STRINGS.ACTIONS.MILKINGTOOL, function(act)

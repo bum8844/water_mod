@@ -423,7 +423,7 @@ function BoilbookPage:PopulateRecipeDetailPanel(data)
 		MakeDetailsLine(details_root, -column_offset_x, y - 2, .5, "quagmire_recipe_line_veryshort.tex")
 		y = y - 8
 		y = y - body_font_size/2
-		local str = STRINGS.UI.FOOD_TYPES[data.recipe_def.drinktype or DRINKTYPY.GENERIC]  or STRINGS.UI.COOKBOOK.FOOD_TYPE_UNKNOWN
+		local str = STRINGS.UI.DRINK_TYPES[data.recipe_def.drinktype or DRINKTYPY.GENERIC]  or STRINGS.UI.COOKBOOK.FOOD_TYPE_UNKNOWN
 		local tags = details_root:AddChild(Text(HEADERFONT, body_font_size, str, UICOLOURS.BROWN_DARK))
 		tags:SetPosition(-column_offset_x, y)
 		y = y - body_font_size/2 - 4

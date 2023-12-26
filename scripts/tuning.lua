@@ -27,6 +27,7 @@ water_tuning =
 	TYPES_SALTY = {
 		"quagmire_pond_salt",
 		"kyno_pond_salt",
+		"icefishing_hole",
 	},
 
 	TYPES_DIRTY = {
@@ -87,7 +88,7 @@ water_tuning =
 	-- Sections
 	BREWERY_SECTIONS = 20,
 	REDUCE_BREWERY = 3,
-	REDUCE_DISTILL = 4,
+	REDUCE_DISTILL = .2,
 
 	-- Freezing & Thawing Water
 	WATER_MINTEMP = -10,

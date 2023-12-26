@@ -319,12 +319,10 @@ function Brewing:Harvest(harvester)
 					boilling.boilbook_recipes[recipe.boilbook_category] ~= nil and
 					boilling.boilbook_recipes[recipe.boilbook_category][self.product] ~= nil then
 					harvester:PushEvent("learncookbookrecipe", {product = self.product, ingredients = self.ingredient_prefabs})
-                else
-                    print("실패")
                 end
 
                 local waterlevel = self.inst.components.waterlevel and self.inst.components.waterlevel:GetWater() or 1
-                local stacksize = self.distill_stack > 0 and math.floor(self.distill_stack/self.reduce) or math.ceil(waterlevel/self.reduce)
+                local stacksize = self.distill_stack > 0 and self.distill_stack*self.reduce or math.ceil(waterlevel/self.reduce)
                 if stacksize > 1 then
                     loot.components.stackable:SetStackSize(stacksize)
                 end

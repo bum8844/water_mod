@@ -82,6 +82,9 @@ DRINKTYPY =
 	FRUIT = "FRUIT",
 	VEGGIE = "VEGGIE",
 	LEAFS = "LEAFS",
+	BREWER = "BREWER",
+	SPIRITS = "SPIRITS",
+	MEDICINE = "MEDICINE",
 }
 
 FOODTYPEGROUP = 
@@ -343,6 +346,7 @@ FOODTYPEGROUP =
 			--mod_ingredients
 			"molasses",
 			"fruit_syrup",
+			"syrup",
 			--hop
 			"kyno_syrup",
 			"kyno_oil",
@@ -432,6 +436,8 @@ FOODTYPEGROUP =
 			"sweettea",
 			"vegstinger",
 			--mod_foods
+			"peach_juice_bottle_green",
+			"peach_smoothie",
 			"spicyvegstinger",
 			"dish_chilledrosejuice",
 			"pina_colada",
@@ -440,6 +446,7 @@ FOODTYPEGROUP =
 			"juice_waterberry",
 			"fruit_truffle",
 			"tea_floral",
+			"fruityjuice",
 			"icedtea",
 			"tea",
 			"zaspberryparfait",
@@ -462,6 +469,8 @@ FOODTYPEGROUP =
 
 		MED = {
 			"gazpacho",
+			--mod_foods
+			"potion_bottle_green",
 			--fwd
 			"fwd_in_pdt_food_cooked_milk",
 		},

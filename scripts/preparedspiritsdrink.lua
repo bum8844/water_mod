@@ -18,6 +18,7 @@ local drinks =
 		wet_prefix = STRINGS.WET_PREFIX.WETGOOP,
 		potlevel = "high",
 		potlevel_bottle = "mid",
+		drinktype = DRINKTYPY.MEDICINE
 	},
 	-- 증류주(위스키)
 	corn_whiskey =
@@ -38,7 +39,6 @@ local drinks =
 		oneatenfn = function(inst, eater)
 			spirits(inst, eater)
 		end,
-		drinktype = DRINKTYPY.VEGGIE,
 	},
 	-- 감자, 고구마
 	lumpy_vodka = {
@@ -60,7 +60,6 @@ local drinks =
 		oneatenfn = function(inst, eater)
 			spirits(inst, eater)
 		end,
-		drinktype = DRINKTYPY.VEGGIE,
 	},
 	-- 선인장
 	tequila = {
@@ -82,7 +81,6 @@ local drinks =
 		oneatenfn = function(inst, eater)
 			spirits(inst, eater)
 		end,
-		drinktype = DRINKTYPY.VEGGIE,
 	},
 	-- 증류주(럼)
 	madhu_rum =
@@ -123,7 +121,6 @@ local drinks =
 		oneatenfn = function(inst, eater)
 			spirits(inst, eater)
 		end,
-		drinktype = DRINKTYPY.FRUIT,
 	},
 	-- 스파클링 와인
 	berry_gin = {
@@ -143,7 +140,6 @@ local drinks =
 		oneatenfn = function(inst, eater)
 			spirits(inst, eater)
 		end,
-		drinktype = DRINKTYPY.FRUIT,
 	},
 	-- 발광 배리
 	glowberry_gin =
@@ -165,7 +161,6 @@ local drinks =
 			spirits(inst, eater)
            	drink_worm_light_less(inst, eater)
 	    end,
-	    drinktype = DRINKTYPY.FRUIT,
 	},
 	-- 우유 증류주
 	areuhi = {
@@ -245,7 +240,6 @@ local drinks =
 		oneatenfn = function(inst, eater)
 			spirits(inst, eater)
 		end,
-		drinktype = DRINKTYPY.VEGGIE,
 	},
 	absinthe = {
 		test = function(boilier, names, tags) return (names.wine or names.noblewine or names.wine_berries_juicy or names.wine_berries) and names.additives_seed end,
@@ -264,7 +258,6 @@ local drinks =
 		oneatenfn = function(inst, eater)
 			spirits(inst, eater)
 		end,
-		drinktype = DRINKTYPY.FRUIT,
 	},
 	petals_berry_brandy = {
 		test = function(boilier, names, tags) return (names.wine or names.noblewine or names.wine_berries_juicy or names.wine_berries) and names.additives_petals end,
@@ -283,7 +276,6 @@ local drinks =
 		oneatenfn = function(inst, eater)
 			spirits(inst, eater)
 		end,
-		drinktype = DRINKTYPY.FRUIT,
 	},
 	nut_corn_wisky = {
 		test = function(boilier, names, tags) return names.corn_beer and names.additives_nut end,
@@ -302,7 +294,6 @@ local drinks =
 		oneatenfn = function(inst, eater)
 			spirits(inst, eater)
 		end,
-		drinktype = DRINKTYPY.VEGGIE,
 	},
 	rumchata = {
 		test = function(boilier, names, tags) return (names.madhu or names.mead) and names.additives_dairy end,
@@ -385,6 +376,7 @@ for k, v in pairs(drinks) do
     v.name = k
     v.weight = v.weight or 1
     v.priority = v.priority or 0
+	v.drinktype = v.drinktype or DRINKTYPY.SPIRITS
 
     v.is_boilbook_recipes = true
     v.boilbook_category = "distillers"

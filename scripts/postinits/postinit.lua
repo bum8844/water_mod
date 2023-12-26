@@ -76,6 +76,8 @@ if GetModConfigData("enable_thirst") then
 		"woodie",
 		"wurt",
 		"wintersfeastbuff",
+		"armor_slurper",
+		"slurper",
 	}
 
 	local components = {
