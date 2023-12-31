@@ -196,7 +196,7 @@ return {
             TEA_LUMPY_VODKA = "Can't I just eat the leaves instead of putting them in alcohol?", -- Green Tea Liqueur
             PETALS_BERRY_BRANDY = "The smell of ugly flowers is too strong, slurp.", -- Rose Scented Brandy
             KAHLUA = "Can't I just eat the bean snack without mixing it with alcohol, slurp..", -- Coffee Liqueur Kahlua
-            NUT_CORN_WHISKY = "I wish they gave me the nuts instead of using them to make alcohol, slurp.", -- Nut Whiskey
+            NUT_CORN_WHISKEY = "I wish they gave me the nuts instead of using them to make alcohol, slurp.", -- Nut Whiskey
             RUINCACAO_CREAM_LIQUEUR = "Wow... it smells like delicious snacks..", -- Baileys Cacao Cream Liqueur
             RUMCHATA = "Why mix milk with alcohol when it's not water?", -- Rumchata (Rum with Horchata, a dairy beverage)
 

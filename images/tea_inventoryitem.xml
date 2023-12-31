@@ -2,205 +2,205 @@
 <Atlas>
 	<Texture filename="tea_inventoryitem.tex" />
 	<Elements>
-		<Element name="additive_dairy.tex" u1="0.251" u2="0.3115" v2="0.749" v1="0.6885" variant="" />
-		<Element name="additive_nut.tex" u1="0.8105703125" u2="0.8710703125" v2="0.999" v1="0.9385" variant="" />
-		<Element name="additive_petals.tex" u1="0.2480703125" u2="0.3085703125" v2="0.6865" v1="0.626" variant="" />
-		<Element name="additive_seed.tex" u1="0.4961171875" u2="0.5566171875" v2="0.6865" v1="0.626" variant="" />
+		<Element name="additive_dairy.tex" u1="0.0635" u2="0.124" v2="0.5615" v1="0.501" variant="" />
+		<Element name="additive_nut.tex" u1="0.751" u2="0.8115" v2="0.9365" v1="0.876" variant="" />
+		<Element name="additive_petals.tex" u1="0.2480703125" u2="0.3085703125" v2="0.6874765625" v1="0.6269765625" variant="" />
+		<Element name="additive_seed.tex" u1="0.49709375" u2="0.55759375" v2="0.6865" v1="0.626" variant="" />
 		<Element name="barrel.tex" u1="0.7988515625" u2="0.8593515625" v2="0.874" v1="0.8135" variant="" />
-		<Element name="brewery.tex" u1="0.37209375" u2="0.43259375" v2="0.1865" v1="0.126" variant="" />
-		<Element name="desalinator.tex" u1="0.4922109375" u2="0.5527109375" v2="0.250953125" v1="0.190453125" variant="" />
+		<Element name="brewery.tex" u1="0.6875234375" u2="0.7480234375" v2="0.499" v1="0.4385" variant="" />
+		<Element name="desalinator.tex" u1="0.5000234375" u2="0.5605234375" v2="0.3115" v1="0.251" variant="" />
 		<Element name="distillers.tex" u1="0.674828125" u2="0.735328125" v2="0.874" v1="0.8135" variant="" />
 		<Element name="boilbook.tex" u1="0.6035390625" u2="0.6640390625" v2="0.8115" v1="0.7519765625" variant="" />
 		<Element name="absinthe_bottle.tex" u1="0.001" u2="0.0615" v2="0.874" v1="0.8135" variant="" />
-		<Element name="areuhi_bottle.tex" u1="0.3135" u2="0.374" v2="0.9365" v1="0.876" variant="" />
-		<Element name="banana_juice_bottle.tex" u1="0.24709375" u2="0.30759375" v2="0.0644296875" v1="0.0039296875" variant="" />
-		<Element name="berries_juice_bottle.tex" u1="0.30959375" u2="0.37009375" v2="0.1269296875" v1="0.0664296875" variant="" />
+		<Element name="areuhi_bottle.tex" u1="0.376" u2="0.4365" v2="0.999" v1="0.9385" variant="" />
+		<Element name="banana_juice_bottle.tex" u1="0.3730703125" u2="0.4335703125" v2="0.1874765625" v1="0.1269765625" variant="" />
+		<Element name="berries_juice_bottle.tex" u1="0.6250234375" u2="0.6855234375" v2="0.4394296875" v1="0.3789296875" variant="" />
 		<Element name="berry_brandy_bottle.tex" u1="0.001" u2="0.0615" v2="0.9365" v1="0.876" variant="" />
-		<Element name="berry_gin_bottle.tex" u1="0.3730703125" u2="0.4335703125" v2="0.999" v1="0.9385" variant="" />
-		<Element name="blacktea_bottle.tex" u1="0.501" u2="0.5615" v2="0.317359375" v1="0.256859375" variant="" />
-		<Element name="blacktea_iced_bottle.tex" u1="0.6855703125" u2="0.7460703125" v2="0.499" v1="0.4385" variant="" />
+		<Element name="berry_gin_bottle.tex" u1="0.251" u2="0.3115" v2="0.874" v1="0.8135" variant="" />
+		<Element name="blacktea_bottle.tex" u1="0.249046875" u2="0.309546875" v2="0.0615" v1="0.001" variant="" />
+		<Element name="blacktea_iced_bottle.tex" u1="0.4355703125" u2="0.4960703125" v2="0.249" v1="0.1885" variant="" />
 		<Element name="butterbeer_bottle.tex" u1="0.501" u2="0.5615" v2="0.749" v1="0.6885" variant="" />
-		<Element name="cactus_tea_bottle.tex" u1="0.4297109375" u2="0.4902109375" v2="0.249" v1="0.1885" variant="" />
-		<Element name="cactusflower_tea_bottle.tex" u1="0.5635" u2="0.624" v2="0.3818125" v1="0.3213125" variant="" />
-		<Element name="caffeinberry_juice_bottle.tex" u1="0.501" u2="0.5615" v2="0.3769296875" v1="0.319359375" variant="" />
-		<Element name="carrot_tea_bottle.tex" u1="0.4385" u2="0.499" v2="0.313453125" v1="0.252953125" variant="" />
-		<Element name="cola_bottle.tex" u1="0.626" u2="0.6835703125" v2="0.499" v1="0.4414296875" variant="" />
-		<Element name="colaquantum_bottle.tex" u1="0.311546875" u2="0.37009375" v2="0.1874765625" v1="0.1289296875" variant="" />
-		<Element name="corn_beer_bottle.tex" u1="0.3681875" u2="0.4277109375" v2="0.249" v1="0.1894765625" variant="" />
+		<Element name="cactus_tea_bottle.tex" u1="0.186546875" u2="0.247046875" v2="0.0615" v1="0.001" variant="" />
+		<Element name="cactusflower_tea_bottle.tex" u1="0.557640625" u2="0.618140625" v2="0.374" v1="0.3135" variant="" />
+		<Element name="caffeinberry_juice_bottle.tex" u1="0.6250234375" u2="0.6855234375" v2="0.499" v1="0.4414296875" variant="" />
+		<Element name="carrot_tea_bottle.tex" u1="0.4375234375" u2="0.4980234375" v2="0.3115" v1="0.251" variant="" />
+		<Element name="cola_bottle.tex" u1="0.5635" u2="0.6210703125" v2="0.4365" v1="0.3789296875" variant="" />
+		<Element name="colaquantum_bottle.tex" u1="0.303734375" u2="0.36228125" v2="0.124" v1="0.065453125" variant="" />
+		<Element name="corn_beer_bottle.tex" u1="0.376" u2="0.4355234375" v2="0.3115" v1="0.2519765625" variant="" />
 		<Element name="corn_whiskey_bottle.tex" u1="0.0635" u2="0.124" v2="0.749" v1="0.6885" variant="" />
 		<Element name="disinfectant_bottle.tex" u1="0.126" u2="0.1865" v2="0.749" v1="0.6885" variant="" />
-		<Element name="dragonjuice_bottle.tex" u1="0.5635" u2="0.624" v2="0.4443125" v1="0.3838125" variant="" />
+		<Element name="dragonjuice_bottle.tex" u1="0.495140625" u2="0.555640625" v2="0.374" v1="0.3135" variant="" />
 		<Element name="empty_bottle.tex" u1="0.424828125" u2="0.485328125" v2="0.874" v1="0.8135" variant="" />
-		<Element name="fig_juice_bottle.tex" u1="0.182640625" u2="0.243140625" v2="0.0615" v1="0.001" variant="" />
-		<Element name="fruitjuice_bottle.tex" u1="0.24709375" u2="0.30759375" v2="0.1269296875" v1="0.0664296875" variant="" />
-		<Element name="fruitsoda_bottle.tex" u1="0.3086171875" u2="0.3661875" v2="0.249" v1="0.1914296875" variant="" />
-		<Element name="fuer_bottle.tex" u1="0.4385" u2="0.499" v2="0.375953125" v1="0.315453125" variant="" />
-		<Element name="giant_blueberry_gin_bottle.tex" u1="0.4385" u2="0.499" v2="0.9365" v1="0.876" variant="" />
-		<Element name="giant_blueberry_wine_bottle.tex" u1="0.6885" u2="0.749" v2="0.9365" v1="0.876" variant="" />
-		<Element name="glowberry_gin_bottle.tex" u1="0.3105703125" u2="0.3710703125" v2="0.999" v1="0.9385" variant="" />
-		<Element name="glowberryjuice_bottle.tex" u1="0.501" u2="0.5615" v2="0.4394296875" v1="0.3789296875" variant="" />
-		<Element name="glowberrywine_bottle.tex" u1="0.376" u2="0.434546875" v2="0.3115" v1="0.251" variant="" />
-		<Element name="goopydrink_bottle.tex" u1="0.5635" u2="0.624" v2="0.5068125" v1="0.4463125" variant="" />
-		<Element name="greentea_bottle.tex" u1="0.249046875" u2="0.309546875" v2="0.1894296875" v1="0.1289296875" variant="" />
-		<Element name="hibiscustea_bottle.tex" u1="0.18459375" u2="0.24509375" v2="0.1249765625" v1="0.0644765625" variant="" />
-		<Element name="hotruincolate_bottle.tex" u1="0.3135" u2="0.374" v2="0.8115" v1="0.751" variant="" />
-		<Element name="kahlua_bottle.tex" u1="0.126" u2="0.1865" v2="0.9365" v1="0.876" variant="" />
-		<Element name="kumis_bottle.tex" u1="0.1230703125" u2="0.180640625" v2="0.0615" v1="0.002953125" variant="" />
-		<Element name="lemonlimesoda_bottle.tex" u1="0.1885" u2="0.2460703125" v2="0.1874765625" v1="0.1289296875" variant="" />
-		<Element name="lotustea_bottle.tex" u1="0.3135" u2="0.374" v2="0.3115" v1="0.251" variant="" />
-		<Element name="lumpy_beer_bottle.tex" u1="0.126" u2="0.1865" v2="0.624" v1="0.5644765625" variant="" />
-		<Element name="lumpy_tea_bottle.tex" u1="0.7480703125" u2="0.8085703125" v2="0.999" v1="0.9385" variant="" />
-		<Element name="lumpy_vodka_bottle.tex" u1="0.376" u2="0.4365" v2="0.9365" v1="0.876" variant="" />
-		<Element name="lumpy_wine_bottle.tex" u1="0.0635" u2="0.124" v2="0.5615" v1="0.501" variant="" />
-		<Element name="madhu_bottle.tex" u1="0.0635" u2="0.1210703125" v2="0.0615" v1="0.002953125" variant="" />
-		<Element name="mixflower_bottle.tex" u1="0.376" u2="0.4365" v2="0.374" v1="0.3135" variant="" />
+		<Element name="fig_juice_bottle.tex" u1="0.3105703125" u2="0.3710703125" v2="0.1865" v1="0.126" variant="" />
+		<Element name="fruitjuice_bottle.tex" u1="0.3730703125" u2="0.4335703125" v2="0.2499765625" v1="0.1894765625" variant="" />
+		<Element name="fruitsoda_bottle.tex" u1="0.1836171875" u2="0.2411875" v2="0.124" v1="0.0664296875" variant="" />
+		<Element name="fuer_bottle.tex" u1="0.5625234375" u2="0.6230234375" v2="0.499" v1="0.4385" variant="" />
+		<Element name="giant_blueberry_gin_bottle.tex" u1="0.3135" u2="0.374" v2="0.8115" v1="0.751" variant="" />
+		<Element name="giant_blueberry_wine_bottle.tex" u1="0.751" u2="0.8115" v2="0.999" v1="0.9385" variant="" />
+		<Element name="glowberry_gin_bottle.tex" u1="0.251" u2="0.3115" v2="0.9365" v1="0.876" variant="" />
+		<Element name="glowberryjuice_bottle.tex" u1="0.501" u2="0.5615" v2="0.4365" v1="0.376" variant="" />
+		<Element name="glowberrywine_bottle.tex" u1="0.2431875" u2="0.301734375" v2="0.124" v1="0.0635" variant="" />
+		<Element name="goopydrink_bottle.tex" u1="0.432640625" u2="0.493140625" v2="0.374" v1="0.3135" variant="" />
+		<Element name="greentea_bottle.tex" u1="0.124046875" u2="0.184546875" v2="0.0644296875" v1="0.0039296875" variant="" />
+		<Element name="hibiscustea_bottle.tex" u1="0.3105703125" u2="0.3710703125" v2="0.249" v1="0.1885" variant="" />
+		<Element name="hotruincolate_bottle.tex" u1="0.4385" u2="0.499" v2="0.9365" v1="0.876" variant="" />
+		<Element name="kahlua_bottle.tex" u1="0.1885" u2="0.249" v2="0.938453125" v1="0.877953125" variant="" />
+		<Element name="kumis_bottle.tex" u1="0.251" u2="0.3085703125" v2="0.188453125" v1="0.12990625" variant="" />
+		<Element name="lemonlimesoda_bottle.tex" u1="0.0635" u2="0.1210703125" v2="0.0624765625" v1="0.0039296875" variant="" />
+		<Element name="lotustea_bottle.tex" u1="0.4385" u2="0.499" v2="0.4365" v1="0.376" variant="" />
+		<Element name="lumpy_beer_bottle.tex" u1="0.251" u2="0.3115" v2="0.749" v1="0.6894765625" variant="" />
+		<Element name="lumpy_tea_bottle.tex" u1="0.6885" u2="0.749" v2="0.9365" v1="0.876" variant="" />
+		<Element name="lumpy_vodka_bottle.tex" u1="0.251" u2="0.3115" v2="0.8115" v1="0.751" variant="" />
+		<Element name="lumpy_wine_bottle.tex" u1="0.126" u2="0.1865" v2="0.624" v1="0.5635" variant="" />
+		<Element name="madhu_bottle.tex" u1="0.251" u2="0.3085703125" v2="0.249" v1="0.190453125" variant="" />
+		<Element name="mixflower_bottle.tex" u1="0.1885" u2="0.249" v2="0.1865" v1="0.126" variant="" />
 		<Element name="moon_blossom_tea_bottle.tex" u1="0.612328125" u2="0.672828125" v2="0.874" v1="0.8135" variant="" />
-		<Element name="mulled_bottle.tex" u1="0.001" u2="0.0615" v2="0.0615" v1="0.001" variant="" />
-		<Element name="noblewine_bottle.tex" u1="0.4980703125" u2="0.555640625" v2="0.499" v1="0.4414296875" variant="" />
-		<Element name="nut_corn_whiskey_bottle.tex" u1="0.001" u2="0.0615" v2="0.999" v1="0.9385" variant="" />
-		<Element name="petals_berry_brandy_bottle.tex" u1="0.0635" u2="0.124" v2="0.999" v1="0.9385" variant="" />
-		<Element name="pomegranate_juice_bottle.tex" u1="0.4385" u2="0.499" v2="0.438453125" v1="0.377953125" variant="" />
-		<Element name="pulque_bottle.tex" u1="0.001" u2="0.0615" v2="0.5615" v1="0.501" variant="" />
-		<Element name="ruincacao_cream_liqueur_bottle.tex" u1="0.251" u2="0.3115" v2="0.9365" v1="0.876" variant="" />
+		<Element name="mulled_bottle.tex" u1="0.5000234375" u2="0.5605234375" v2="0.5068125" v1="0.4463125" variant="" />
+		<Element name="noblewine_bottle.tex" u1="0.3730703125" u2="0.430640625" v2="0.374" v1="0.3164296875" variant="" />
+		<Element name="nut_corn_whiskey_bottle.tex" u1="0.0635" u2="0.124" v2="0.9365" v1="0.876" variant="" />
+		<Element name="petals_berry_brandy_bottle.tex" u1="0.126" u2="0.1865" v2="0.999" v1="0.9385" variant="" />
+		<Element name="pomegranate_juice_bottle.tex" u1="0.3135" u2="0.374" v2="0.313453125" v1="0.252953125" variant="" />
+		<Element name="pulque_bottle.tex" u1="0.1885" u2="0.249" v2="0.750953125" v1="0.690453125" variant="" />
+		<Element name="ruincacao_cream_liqueur_bottle.tex" u1="0.3135" u2="0.374" v2="0.999" v1="0.9385" variant="" />
 		<Element name="ruincacao_wine_bottle.tex" u1="0.0635" u2="0.124" v2="0.624" v1="0.5635" variant="" />
 		<Element name="ruincha_latte_bottle.tex" u1="0.362328125" u2="0.422828125" v2="0.874" v1="0.8135" variant="" />
-		<Element name="ruincolate_smoothie_bottle.tex" u1="0.251" u2="0.3115" v2="0.8115" v1="0.751" variant="" />
+		<Element name="ruincolate_smoothie_bottle.tex" u1="0.4385" u2="0.499" v2="0.999" v1="0.9385" variant="" />
 		<Element name="ruinxocolatl_bottle.tex" u1="0.5410390625" u2="0.6015390625" v2="0.8115" v1="0.751" variant="" />
-		<Element name="rumchata_bottle.tex" u1="0.37209375" u2="0.43259375" v2="0.124" v1="0.0635" variant="" />
+		<Element name="rumchata_bottle.tex" u1="0.001" u2="0.0615" v2="0.999" v1="0.9385" variant="" />
 		<Element name="seaweed_shake_bottle.tex" u1="0.501" u2="0.5390390625" v2="0.8115" v1="0.751" variant="" />
-		<Element name="soda_bottle.tex" u1="0.249046875" u2="0.3066171875" v2="0.249" v1="0.1914296875" variant="" />
-		<Element name="sparklingwine_bottle.tex" u1="0.4385" u2="0.4960703125" v2="0.499" v1="0.440453125" variant="" />
-		<Element name="spoiled_drink_bottle.tex" u1="0.3135" u2="0.374" v2="0.374" v1="0.3135" variant="" />
-		<Element name="sushibiscus_bottle.tex" u1="0.12209375" u2="0.18259375" v2="0.124" v1="0.0635" variant="" />
-		<Element name="tea_lumpy_vodka_bottle.tex" u1="0.1885" u2="0.249" v2="0.9365" v1="0.876" variant="" />
-		<Element name="tea_ruincolate_latte_bottle.tex" u1="0.4355703125" u2="0.4960703125" v2="0.999" v1="0.9385" variant="" />
-		<Element name="tequila_bottle.tex" u1="0.2480703125" u2="0.3085703125" v2="0.999" v1="0.9385" variant="" />
+		<Element name="soda_bottle.tex" u1="0.124046875" u2="0.1816171875" v2="0.124" v1="0.0664296875" variant="" />
+		<Element name="sparklingwine_bottle.tex" u1="0.3135" u2="0.3710703125" v2="0.374" v1="0.315453125" variant="" />
+		<Element name="spoiled_drink_bottle.tex" u1="0.376" u2="0.4365" v2="0.4365" v1="0.376" variant="" />
+		<Element name="sushibiscus_bottle.tex" u1="0.251" u2="0.3115" v2="0.3115" v1="0.251" variant="" />
+		<Element name="tea_lumpy_vodka_bottle.tex" u1="0.0635" u2="0.124" v2="0.999" v1="0.9385" variant="" />
+		<Element name="tea_ruincolate_latte_bottle.tex" u1="0.376" u2="0.4365" v2="0.9365" v1="0.876" variant="" />
+		<Element name="tequila_bottle.tex" u1="0.251" u2="0.3115" v2="0.999" v1="0.9385" variant="" />
 		<Element name="toffee_latte_bottle.tex" u1="0.3135" u2="0.360328125" v2="0.874" v1="0.8144765625" variant="" />
-		<Element name="tomato_juice_bottle.tex" u1="0.251" u2="0.3115" v2="0.3115" v1="0.251" variant="" />
-		<Element name="veggie_tea_bottle.tex" u1="0.1885" u2="0.247046875" v2="0.249" v1="0.1894765625" variant="" />
-		<Element name="water_clean_bottle.tex" u1="0.6181875" u2="0.66696875" v2="0.6865" v1="0.626" variant="" />
-		<Element name="water_clean_ice_bottle.tex" u1="0.376" u2="0.4365" v2="0.4365" v1="0.376" variant="" />
-		<Element name="water_dirty_bottle.tex" u1="0.376" u2="0.4365" v2="0.499" v1="0.4385" variant="" />
-		<Element name="water_dirty_ice_bottle.tex" u1="0.05959375" u2="0.12009375" v2="0.124" v1="0.0635" variant="" />
-		<Element name="water_mineral_bottle.tex" u1="0.626" u2="0.6865" v2="0.9365" v1="0.876" variant="" />
-		<Element name="water_salty_bottle.tex" u1="0.126" u2="0.1865" v2="0.1874765625" v1="0.1269765625" variant="" />
+		<Element name="tomato_juice_bottle.tex" u1="0.126" u2="0.1865" v2="0.1865" v1="0.126" variant="" />
+		<Element name="veggie_tea_bottle.tex" u1="0.0635" u2="0.122046875" v2="0.124" v1="0.0644765625" variant="" />
+		<Element name="water_clean_bottle.tex" u1="0.6191640625" u2="0.6679453125" v2="0.6865" v1="0.626" variant="" />
+		<Element name="water_clean_ice_bottle.tex" u1="0.001" u2="0.0615" v2="0.0615" v1="0.001" variant="" />
+		<Element name="water_dirty_bottle.tex" u1="0.3135" u2="0.374" v2="0.4365" v1="0.376" variant="" />
+		<Element name="water_dirty_ice_bottle.tex" u1="0.43459375" u2="0.49509375" v2="0.499" v1="0.4385" variant="" />
+		<Element name="water_mineral_bottle.tex" u1="0.6885" u2="0.749" v2="0.999" v1="0.9385" variant="" />
+		<Element name="water_salty_bottle.tex" u1="0.1885" u2="0.249" v2="0.249" v1="0.1885" variant="" />
 		<Element name="watermelon_juice_bottle.tex" u1="0.4385" u2="0.499" v2="0.8115" v1="0.751" variant="" />
-		<Element name="wine_bottle.tex" u1="0.001" u2="0.05759375" v2="0.124" v1="0.0664296875" variant="" />
+		<Element name="wine_bottle.tex" u1="0.376" u2="0.43259375" v2="0.499" v1="0.4414296875" variant="" />
 		<Element name="bucket_clean.tex" u1="0.7285390625" u2="0.7870859375" v2="0.8115" v1="0.752953125" variant="" />
-		<Element name="bucket_dirty.tex" u1="0.626" u2="0.684546875" v2="0.749" v1="0.690453125" variant="" />
-		<Element name="bucket_empty.tex" u1="0.1885" u2="0.249" v2="0.3115" v1="0.251" variant="" />
-		<Element name="bucket_ice.tex" u1="0.501" u2="0.5605234375" v2="0.624" v1="0.5644765625" variant="" />
-		<Element name="bucket_salty.tex" u1="0.0635" u2="0.124" v2="0.1865" v1="0.126" variant="" />
-		<Element name="bucket_steel_empty.tex" u1="0.8730703125" u2="0.9335703125" v2="0.999" v1="0.9385" variant="" />
-		<Element name="bucket_woodie_empty.tex" u1="0.8135" u2="0.874" v2="0.9365" v1="0.876" variant="" />
+		<Element name="bucket_dirty.tex" u1="0.8135" u2="0.872046875" v2="0.9365" v1="0.877953125" variant="" />
+		<Element name="bucket_empty.tex" u1="0.0635" u2="0.124" v2="0.1865" v1="0.126" variant="" />
+		<Element name="bucket_ice.tex" u1="0.626" u2="0.6855234375" v2="0.749" v1="0.6894765625" variant="" />
+		<Element name="bucket_salty.tex" u1="0.001" u2="0.0615" v2="0.124" v1="0.0635" variant="" />
+		<Element name="bucket_steel_empty.tex" u1="0.5000234375" u2="0.5605234375" v2="0.624" v1="0.5635" variant="" />
+		<Element name="bucket_woodie_empty.tex" u1="0.876" u2="0.9365" v2="0.999" v1="0.9385" variant="" />
 		<Element name="caffeinberry_bean.tex" u1="0.3135" u2="0.374" v2="0.499" v1="0.4385" variant="" />
-		<Element name="caffeinberry_bean_cooked.tex" u1="0.126" u2="0.1865" v2="0.2499765625" v1="0.1894765625" variant="" />
-		<Element name="caffeinberry_bush_dug.tex" u1="0.3135" u2="0.374" v2="0.4365" v1="0.376" variant="" />
-		<Element name="spice_caffeinpepper.tex" u1="0.251" u2="0.3115" v2="0.374" v1="0.3135" variant="" />
-		<Element name="spice_caffeinpepper_over.tex" u1="0.001" u2="0.0615" v2="0.1865" v1="0.126" variant="" />
-		<Element name="hydration.tex" u1="0.6855703125" u2="0.7460703125" v2="0.999" v1="0.9385" variant="" />
+		<Element name="caffeinberry_bean_cooked.tex" u1="0.251" u2="0.3115" v2="0.374" v1="0.3135" variant="" />
+		<Element name="caffeinberry_bush_dug.tex" u1="0.1885" u2="0.249" v2="0.3115" v1="0.251" variant="" />
+		<Element name="spice_caffeinpepper.tex" u1="0.126" u2="0.1865" v2="0.249" v1="0.1885" variant="" />
+		<Element name="spice_caffeinpepper_over.tex" u1="0.1885" u2="0.249" v2="0.374" v1="0.3135" variant="" />
+		<Element name="hydration.tex" u1="0.626" u2="0.6865" v2="0.9365" v1="0.876" variant="" />
 		<Element name="secretknowledge.tex" u1="0.549828125" u2="0.610328125" v2="0.874" v1="0.8135" variant="" />
-		<Element name="absinthe.tex" u1="0.0635" u2="0.124" v2="0.9365" v1="0.876" variant="" />
+		<Element name="absinthe.tex" u1="0.126" u2="0.1865" v2="0.9365" v1="0.876" variant="" />
 		<Element name="areuhi.tex" u1="0.126" u2="0.1865" v2="0.8115" v1="0.751" variant="" />
-		<Element name="banana_juice.tex" u1="0.1885" u2="0.249" v2="0.374" v1="0.3135" variant="" />
-		<Element name="berries_juice.tex" u1="0.0635" u2="0.124" v2="0.249" v1="0.1885" variant="" />
-		<Element name="berry_brandy.tex" u1="0.1885" u2="0.249" v2="0.8115" v1="0.751" variant="" />
-		<Element name="berry_gin.tex" u1="0.1885" u2="0.249" v2="0.874" v1="0.8135" variant="" />
-		<Element name="blacktea.tex" u1="0.001" u2="0.0615" v2="0.249" v1="0.1885" variant="" />
-		<Element name="blacktea_iced.tex" u1="0.126" u2="0.1865" v2="0.3124765625" v1="0.2519765625" variant="" />
-		<Element name="butterbeer.tex" u1="0.5635" u2="0.624" v2="0.9365" v1="0.876" variant="" />
-		<Element name="cactus_tea.tex" u1="0.251" u2="0.3115" v2="0.4365" v1="0.376" variant="" />
-		<Element name="cactusflower_tea.tex" u1="0.126" u2="0.1865" v2="0.3749765625" v1="0.3144765625" variant="" />
-		<Element name="caffeinberry_juice.tex" u1="0.251" u2="0.3115" v2="0.499" v1="0.4385" variant="" />
-		<Element name="carrot_tea.tex" u1="0.1885" u2="0.249" v2="0.4365" v1="0.376" variant="" />
-		<Element name="cola.tex" u1="0.0635" u2="0.124" v2="0.3115" v1="0.251" variant="" />
-		<Element name="colaquantum.tex" u1="0.1885" u2="0.249" v2="0.499" v1="0.4385" variant="" />
-		<Element name="corn_beer.tex" u1="0.0635" u2="0.124" v2="0.374" v1="0.3135" variant="" />
+		<Element name="banana_juice.tex" u1="0.0635" u2="0.124" v2="0.249" v1="0.1885" variant="" />
+		<Element name="berries_juice.tex" u1="0.001" u2="0.0615" v2="0.1865" v1="0.126" variant="" />
+		<Element name="berry_brandy.tex" u1="0.1885" u2="0.249" v2="0.813453125" v1="0.752953125" variant="" />
+		<Element name="berry_gin.tex" u1="0.1885" u2="0.249" v2="0.875953125" v1="0.815453125" variant="" />
+		<Element name="blacktea.tex" u1="0.251" u2="0.3115" v2="0.499" v1="0.4385" variant="" />
+		<Element name="blacktea_iced.tex" u1="0.251" u2="0.3115" v2="0.4365" v1="0.376" variant="" />
+		<Element name="butterbeer.tex" u1="0.626" u2="0.6865" v2="0.999" v1="0.9385" variant="" />
+		<Element name="cactus_tea.tex" u1="0.126" u2="0.1865" v2="0.3115" v1="0.251" variant="" />
+		<Element name="cactusflower_tea.tex" u1="0.0635" u2="0.124" v2="0.3115" v1="0.251" variant="" />
+		<Element name="caffeinberry_juice.tex" u1="0.126" u2="0.1865" v2="0.374" v1="0.3135" variant="" />
+		<Element name="carrot_tea.tex" u1="0.001" u2="0.0615" v2="0.249" v1="0.1885" variant="" />
+		<Element name="cola.tex" u1="0.1885" u2="0.249" v2="0.4365" v1="0.376" variant="" />
+		<Element name="colaquantum.tex" u1="0.001" u2="0.0615" v2="0.3115" v1="0.251" variant="" />
+		<Element name="corn_beer.tex" u1="0.126" u2="0.1865" v2="0.4365" v1="0.376" variant="" />
 		<Element name="corn_whiskey.tex" u1="0.001" u2="0.0585703125" v2="0.6865" v1="0.6269765625" variant="" />
 		<Element name="disinfectant.tex" u1="0.0605703125" u2="0.1210703125" v2="0.6865" v1="0.626" variant="" />
-		<Element name="dragonjuice.tex" u1="0.001" u2="0.0615" v2="0.3115" v1="0.251" variant="" />
-		<Element name="empty_cup.tex" u1="0.251" u2="0.3115" v2="0.874" v1="0.8135" variant="" />
-		<Element name="fig_juice.tex" u1="0.126" u2="0.1865" v2="0.4999765625" v1="0.4394765625" variant="" />
-		<Element name="fruitjuice.tex" u1="0.001" u2="0.0615" v2="0.374" v1="0.3135" variant="" />
-		<Element name="fruitsoda.tex" u1="0.0635" u2="0.124" v2="0.4365" v1="0.376" variant="" />
-		<Element name="fuer.tex" u1="0.126" u2="0.1865" v2="0.4374765625" v1="0.3769765625" variant="" />
-		<Element name="giant_blueberry_gin.tex" u1="0.6230703125" u2="0.6835703125" v2="0.999" v1="0.9385" variant="" />
+		<Element name="dragonjuice.tex" u1="0.1885" u2="0.249" v2="0.499" v1="0.4385" variant="" />
+		<Element name="empty_cup.tex" u1="0.3135" u2="0.374" v2="0.9365" v1="0.876" variant="" />
+		<Element name="fig_juice.tex" u1="0.126" u2="0.1865" v2="0.499" v1="0.4385" variant="" />
+		<Element name="fruitjuice.tex" u1="0.0635" u2="0.124" v2="0.4365" v1="0.376" variant="" />
+		<Element name="fruitsoda.tex" u1="0.001" u2="0.0615" v2="0.374" v1="0.3135" variant="" />
+		<Element name="fuer.tex" u1="0.0635" u2="0.124" v2="0.374" v1="0.3135" variant="" />
+		<Element name="giant_blueberry_gin.tex" u1="0.5635" u2="0.624" v2="0.9365" v1="0.876" variant="" />
 		<Element name="giant_blueberry_wine.tex" u1="0.487328125" u2="0.547828125" v2="0.874" v1="0.8135" variant="" />
-		<Element name="glowberry_gin.tex" u1="0.126" u2="0.1865" v2="0.874" v1="0.8135" variant="" />
-		<Element name="glowberryjuice.tex" u1="0.9385" u2="0.999" v2="0.5624765625" v1="0.5019765625" variant="" />
+		<Element name="glowberry_gin.tex" u1="0.0635" u2="0.124" v2="0.8115" v1="0.751" variant="" />
+		<Element name="glowberryjuice.tex" u1="0.9375234375" u2="0.9980234375" v2="0.5615" v1="0.501" variant="" />
 		<Element name="glowberrywine.tex" u1="0.001" u2="0.0615" v2="0.499" v1="0.4385" variant="" />
 		<Element name="goopydrink.tex" u1="0.001" u2="0.0615" v2="0.4365" v1="0.376" variant="" />
 		<Element name="greentea.tex" u1="0.0635" u2="0.124" v2="0.499" v1="0.4385" variant="" />
-		<Element name="hibiscustea.tex" u1="0.8730703125" u2="0.9335703125" v2="0.6249765625" v1="0.5644765625" variant="" />
-		<Element name="hotruincolate.tex" u1="0.501" u2="0.5615" v2="0.9365" v1="0.876" variant="" />
-		<Element name="kahlua.tex" u1="0.126" u2="0.1835703125" v2="0.999" v1="0.940453125" variant="" />
-		<Element name="kumis.tex" u1="0.8135" u2="0.874" v2="0.5615" v1="0.501" variant="" />
-		<Element name="lemonlimesoda.tex" u1="0.9355703125" u2="0.9960703125" v2="0.6249765625" v1="0.5644765625" variant="" />
-		<Element name="lotustea.tex" u1="0.876" u2="0.9365" v2="0.5624765625" v1="0.5019765625" variant="" />
+		<Element name="hibiscustea.tex" u1="0.8125234375" u2="0.8730234375" v2="0.5615" v1="0.501" variant="" />
+		<Element name="hotruincolate.tex" u1="0.5635" u2="0.624" v2="0.999" v1="0.9385" variant="" />
+		<Element name="kahlua.tex" u1="0.1885" u2="0.2460703125" v2="0.999" v1="0.940453125" variant="" />
+		<Element name="kumis.tex" u1="0.8750234375" u2="0.9355234375" v2="0.624" v1="0.5635" variant="" />
+		<Element name="lemonlimesoda.tex" u1="0.9375234375" u2="0.9980234375" v2="0.624" v1="0.5635" variant="" />
+		<Element name="lotustea.tex" u1="0.8750234375" u2="0.9355234375" v2="0.5615" v1="0.501" variant="" />
 		<Element name="lumpy_beer.tex" u1="0.1855703125" u2="0.2460703125" v2="0.6865" v1="0.626" variant="" />
 		<Element name="lumpy_tea.tex" u1="0.001" u2="0.0615" v2="0.749" v1="0.6885" variant="" />
 		<Element name="lumpy_vodka.tex" u1="0.0635" u2="0.124" v2="0.874" v1="0.8135" variant="" />
-		<Element name="lumpy_wine.tex" u1="0.1885" u2="0.249" v2="0.749" v1="0.6885" variant="" />
-		<Element name="madhu.tex" u1="0.932640625" u2="0.993140625" v2="0.7499765625" v1="0.6894765625" variant="" />
-		<Element name="mixflower.tex" u1="0.8105703125" u2="0.8710703125" v2="0.624" v1="0.5635" variant="" />
-		<Element name="moon_blossom_tea.tex" u1="0.5605703125" u2="0.6210703125" v2="0.999" v1="0.9385" variant="" />
-		<Element name="mulled.tex" u1="0.751" u2="0.8115" v2="0.5615" v1="0.501" variant="" />
-		<Element name="noblewine.tex" u1="0.91896875" u2="0.97946875" v2="0.6874765625" v1="0.6269765625" variant="" />
-		<Element name="nut_corn_whiskey.tex" u1="0.626" u2="0.6865" v2="0.4365" v1="0.376" variant="" />
-		<Element name="petals_berry_brandy.tex" u1="0.30959375" u2="0.37009375" v2="0.0644296875" v1="0.0039296875" variant="" />
-		<Element name="pomegranate_juice.tex" u1="0.7480703125" u2="0.8085703125" v2="0.624" v1="0.5635" variant="" />
+		<Element name="lumpy_wine.tex" u1="0.001" u2="0.0615" v2="0.5615" v1="0.501" variant="" />
+		<Element name="madhu.tex" u1="0.93459375" u2="0.99509375" v2="0.749" v1="0.6885" variant="" />
+		<Element name="mixflower.tex" u1="0.8125234375" u2="0.8730234375" v2="0.624" v1="0.5635" variant="" />
+		<Element name="moon_blossom_tea.tex" u1="0.501" u2="0.5615" v2="0.9365" v1="0.876" variant="" />
+		<Element name="mulled.tex" u1="0.7500234375" u2="0.8105234375" v2="0.5615" v1="0.501" variant="" />
+		<Element name="noblewine.tex" u1="0.91896875" u2="0.97946875" v2="0.6865" v1="0.626" variant="" />
+		<Element name="nut_corn_whiskey.tex" u1="0.4355703125" u2="0.4960703125" v2="0.1865" v1="0.126" variant="" />
+		<Element name="petals_berry_brandy.tex" u1="0.4980703125" u2="0.5585703125" v2="0.249" v1="0.1885" variant="" />
+		<Element name="pomegranate_juice.tex" u1="0.87209375" u2="0.93259375" v2="0.749" v1="0.6885" variant="" />
 		<Element name="pulque.tex" u1="0.001" u2="0.0615" v2="0.624" v1="0.5635" variant="" />
-		<Element name="ruincacao_cream_liqueur.tex" u1="0.0635" u2="0.124" v2="0.8115" v1="0.751" variant="" />
+		<Element name="ruincacao_cream_liqueur.tex" u1="0.126" u2="0.1865" v2="0.874" v1="0.8135" variant="" />
 		<Element name="ruincacao_wine.tex" u1="0.1230703125" u2="0.1835703125" v2="0.6865" v1="0.626" variant="" />
-		<Element name="ruincha_latte.tex" u1="0.4980703125" u2="0.5585703125" v2="0.999" v1="0.9385" variant="" />
+		<Element name="ruincha_latte.tex" u1="0.501" u2="0.5615" v2="0.999" v1="0.9385" variant="" />
 		<Element name="ruincolate_smoothie.tex" u1="0.4375234375" u2="0.4980234375" v2="0.5615" v1="0.501" variant="" />
-		<Element name="ruinxocolatl.tex" u1="0.4385" u2="0.499" v2="0.624" v1="0.5635" variant="" />
-		<Element name="rumchata.tex" u1="0.5635" u2="0.624" v2="0.3193125" v1="0.2588125" variant="" />
-		<Element name="seaweed_shake.tex" u1="0.3750234375" u2="0.4355234375" v2="0.5615" v1="0.501" variant="" />
-		<Element name="soda.tex" u1="0.932640625" u2="0.993140625" v2="0.8124765625" v1="0.7519765625" variant="" />
-		<Element name="sparklingwine.tex" u1="0.6885" u2="0.749" v2="0.5615" v1="0.501" variant="" />
-		<Element name="spoiled_drink.tex" u1="0.85646875" u2="0.91696875" v2="0.6874765625" v1="0.6269765625" variant="" />
-		<Element name="sushibiscus.tex" u1="0.79396875" u2="0.85446875" v2="0.6865" v1="0.626" variant="" />
-		<Element name="tea_lumpy_vodka.tex" u1="0.1855703125" u2="0.2460703125" v2="0.999" v1="0.9385" variant="" />
-		<Element name="tea_ruincolate_latte.tex" u1="0.376" u2="0.4365" v2="0.624" v1="0.5635" variant="" />
+		<Element name="ruinxocolatl.tex" u1="0.3750234375" u2="0.4355234375" v2="0.5615" v1="0.501" variant="" />
+		<Element name="rumchata.tex" u1="0.36428125" u2="0.42478125" v2="0.124" v1="0.0635" variant="" />
+		<Element name="seaweed_shake.tex" u1="0.4375234375" u2="0.4980234375" v2="0.624" v1="0.5635" variant="" />
+		<Element name="soda.tex" u1="0.6875234375" u2="0.7480234375" v2="0.5615" v1="0.501" variant="" />
+		<Element name="sparklingwine.tex" u1="0.7500234375" u2="0.8105234375" v2="0.624" v1="0.5635" variant="" />
+		<Element name="spoiled_drink.tex" u1="0.85646875" u2="0.91696875" v2="0.6865" v1="0.626" variant="" />
+		<Element name="sushibiscus.tex" u1="0.6250234375" u2="0.6855234375" v2="0.5615" v1="0.501" variant="" />
+		<Element name="tea_lumpy_vodka.tex" u1="0.620140625" u2="0.680640625" v2="0.3769296875" v1="0.3164296875" variant="" />
+		<Element name="tea_ruincolate_latte.tex" u1="0.3750234375" u2="0.4355234375" v2="0.624" v1="0.5635" variant="" />
 		<Element name="tequila.tex" u1="0.001" u2="0.0615" v2="0.8115" v1="0.751" variant="" />
 		<Element name="toffee_latte.tex" u1="0.3125234375" u2="0.3730234375" v2="0.5615" v1="0.501" variant="" />
-		<Element name="tomato_juice.tex" u1="0.8711171875" u2="0.930640625" v2="0.7616953125" v1="0.7011953125" variant="" />
-		<Element name="veggie_tea.tex" u1="0.626" u2="0.6865" v2="0.5615" v1="0.501" variant="" />
-		<Element name="water_clean.tex" u1="0.5586171875" u2="0.6161875" v2="0.6865" v1="0.6269765625" variant="" />
-		<Element name="water_clean_ice.tex" u1="0.811546875" u2="0.8691171875" v2="0.749" v1="0.6894765625" variant="" />
-		<Element name="water_dirty.tex" u1="0.9385" u2="0.999" v2="0.8749765625" v1="0.8144765625" variant="" />
-		<Element name="water_dirty_ice.tex" u1="0.626" u2="0.6835703125" v2="0.624" v1="0.5644765625" variant="" />
-		<Element name="water_mineral.tex" u1="0.4336171875" u2="0.4941171875" v2="0.6865" v1="0.626" variant="" />
-		<Element name="water_salty.tex" u1="0.73146875" u2="0.79196875" v2="0.6865" v1="0.626" variant="" />
+		<Element name="tomato_juice.tex" u1="0.7949453125" u2="0.85446875" v2="0.6865" v1="0.626" variant="" />
+		<Element name="veggie_tea.tex" u1="0.920921875" u2="0.981421875" v2="0.8115" v1="0.751" variant="" />
+		<Element name="water_clean.tex" u1="0.55959375" u2="0.6171640625" v2="0.6865" v1="0.6269765625" variant="" />
+		<Element name="water_clean_ice.tex" u1="0.8125234375" u2="0.87009375" v2="0.749" v1="0.6894765625" variant="" />
+		<Element name="water_dirty.tex" u1="0.6875234375" u2="0.7480234375" v2="0.624" v1="0.5635" variant="" />
+		<Element name="water_dirty_ice.tex" u1="0.8613515625" u2="0.918921875" v2="0.825171875" v1="0.7656484375" variant="" />
+		<Element name="water_mineral.tex" u1="0.43459375" u2="0.49509375" v2="0.6865" v1="0.626" variant="" />
+		<Element name="water_salty.tex" u1="0.7324453125" u2="0.7929453125" v2="0.6865" v1="0.626" variant="" />
 		<Element name="watermelon_juice.tex" u1="0.376" u2="0.4365" v2="0.8115" v1="0.751" variant="" />
-		<Element name="wine.tex" u1="0.6855703125" u2="0.7460703125" v2="0.624" v1="0.5635" variant="" />
+		<Element name="wine.tex" u1="0.9218984375" u2="0.9823984375" v2="0.874" v1="0.8135" variant="" />
 		<Element name="campdesalinator.tex" u1="0.737328125" u2="0.7968515625" v2="0.874" v1="0.8144765625" variant="" />
-		<Element name="campkettle.tex" u1="0.8613515625" u2="0.9218515625" v2="0.8241953125" v1="0.7636953125" variant="" />
-		<Element name="distillers.tex" u1="0.4385" u2="0.499" v2="0.749" v1="0.6885" variant="" />
-		<Element name="kettle.tex" u1="0.751" u2="0.8115" v2="0.9365" v1="0.876" variant="" />
+		<Element name="campkettle.tex" u1="0.7500234375" u2="0.8105234375" v2="0.749" v1="0.6885" variant="" />
+		<Element name="distillers.tex" u1="0.2500234375" u2="0.3105234375" v2="0.5615" v1="0.501" variant="" />
+		<Element name="kettle.tex" u1="0.8135" u2="0.874" v2="0.999" v1="0.9385" variant="" />
 		<Element name="portablekettle.tex" u1="0.6660390625" u2="0.7265390625" v2="0.8115" v1="0.751" variant="" />
 		<Element name="portablekettle_item.tex" u1="0.5635" u2="0.624" v2="0.749" v1="0.6885" variant="" />
-		<Element name="boillingrecipcard.tex" u1="0.5635" u2="0.624" v2="0.5693125" v1="0.5088125" variant="" />
-		<Element name="fermentingrecipcard.tex" u1="0.9385" u2="0.999" v2="0.9374765625" v1="0.8769765625" variant="" />
-		<Element name="ruincacao.tex" u1="0.3135" u2="0.374" v2="0.624" v1="0.5635" variant="" />
-		<Element name="ruincacao_bean.tex" u1="0.37209375" u2="0.4316171875" v2="0.6865" v1="0.626" variant="" />
-		<Element name="ruincacao_bean_cooked.tex" u1="0.2500234375" u2="0.3105234375" v2="0.5615" v1="0.501" variant="" />
-		<Element name="ruincacao_seed.tex" u1="0.1885" u2="0.2480234375" v2="0.5615" v1="0.501" variant="" />
+		<Element name="boillingrecipcard.tex" u1="0.5625234375" u2="0.6230234375" v2="0.5615" v1="0.501" variant="" />
+		<Element name="fermentingrecipcard.tex" u1="0.6250234375" u2="0.6855234375" v2="0.624" v1="0.5635" variant="" />
+		<Element name="ruincacao.tex" u1="0.4385" u2="0.499" v2="0.749" v1="0.6885" variant="" />
+		<Element name="ruincacao_bean.tex" u1="0.3730703125" u2="0.43259375" v2="0.6865" v1="0.626" variant="" />
+		<Element name="ruincacao_bean_cooked.tex" u1="0.3125234375" u2="0.3730234375" v2="0.624" v1="0.5635" variant="" />
+		<Element name="ruincacao_seed.tex" u1="0.251" u2="0.3105234375" v2="0.624" v1="0.5635" variant="" />
 		<Element name="ruincacao_tree_dug.tex" u1="0.376" u2="0.4365" v2="0.749" v1="0.6885" variant="" />
-		<Element name="tea_seed.tex" u1="0.66896875" u2="0.72946875" v2="0.6865" v1="0.626" variant="" />
-		<Element name="tea_seed_cooked.tex" u1="0.8613515625" u2="0.9198984375" v2="0.874" v1="0.8261953125" variant="" />
-		<Element name="tea_tree_bush_dug.tex" u1="0.749046875" u2="0.809546875" v2="0.749" v1="0.6885" variant="" />
-		<Element name="tealeaves.tex" u1="0.501" u2="0.5615" v2="0.5624765625" v1="0.5019765625" variant="" />
-		<Element name="tealeaves_dried.tex" u1="0.876" u2="0.9365" v2="0.9365" v1="0.876" variant="" />
-		<Element name="dark_ruincolate.tex" u1="0.251" u2="0.3115" v2="0.624" v1="0.5635" variant="" />
-		<Element name="ruin_schokakola.tex" u1="0.1885" u2="0.249" v2="0.624" v1="0.5635" variant="" />
-		<Element name="ruincolate.tex" u1="0.3105703125" u2="0.37009375" v2="0.6865" v1="0.6269765625" variant="" />
-		<Element name="white_ruincolate.tex" u1="0.3135" u2="0.374" v2="0.749" v1="0.6885" variant="" />
+		<Element name="tea_seed.tex" u1="0.6699453125" u2="0.7304453125" v2="0.6865" v1="0.626" variant="" />
+		<Element name="tea_seed_cooked.tex" u1="0.8613515625" u2="0.9198984375" v2="0.8749765625" v1="0.827171875" variant="" />
+		<Element name="tea_tree_bush_dug.tex" u1="0.936546875" u2="0.997046875" v2="0.9365" v1="0.876" variant="" />
+		<Element name="tealeaves.tex" u1="0.5625234375" u2="0.6230234375" v2="0.624" v1="0.5635" variant="" />
+		<Element name="tealeaves_dried.tex" u1="0.9385" u2="0.999" v2="0.999" v1="0.9385" variant="" />
+		<Element name="dark_ruincolate.tex" u1="0.3105703125" u2="0.3710703125" v2="0.6865" v1="0.626" variant="" />
+		<Element name="ruin_schokakola.tex" u1="0.126" u2="0.1865" v2="0.5615" v1="0.501" variant="" />
+		<Element name="ruincolate.tex" u1="0.1885" u2="0.2480234375" v2="0.5615" v1="0.5019765625" variant="" />
+		<Element name="white_ruincolate.tex" u1="0.1885" u2="0.249" v2="0.624" v1="0.5635" variant="" />
 		<Element name="well.tex" u1="0.7890859375" u2="0.8495859375" v2="0.8115" v1="0.751" variant="" />
-		<Element name="well_burying_kit.tex" u1="0.126" u2="0.1865" v2="0.5624765625" v1="0.5019765625" variant="" />
-		<Element name="well_drilling_item.tex" u1="0.9355703125" u2="0.9960703125" v2="0.999" v1="0.9394765625" variant="" />
-		<Element name="well_kit.tex" u1="0.686546875" u2="0.747046875" v2="0.749" v1="0.6885" variant="" />
-		<Element name="well_sprinkler_kit.tex" u1="0.5625234375" u2="0.6230234375" v2="0.624" v1="0.5713125" variant="" />
+		<Element name="well_burying_kit.tex" u1="0.3135" u2="0.374" v2="0.749" v1="0.6885" variant="" />
+		<Element name="well_drilling_item.tex" u1="0.874046875" u2="0.934546875" v2="0.9365" v1="0.8769765625" variant="" />
+		<Element name="well_kit.tex" u1="0.6875234375" u2="0.7480234375" v2="0.749" v1="0.6885" variant="" />
+		<Element name="well_sprinkler_kit.tex" u1="0.5000234375" u2="0.5605234375" v2="0.5615" v1="0.5088125" variant="" />
 	</Elements>
 </Atlas>

@@ -197,7 +197,7 @@ return {
 		TEA_LUMPY_VODKA = "건강에 좋을것 같아 보여! 술이지만.",
 		PETALS_BERRY_BRANDY = "맛은 모르지만, 예쁘기는 하네!",
 		KAHLUA = "왈리 아저씨가 커피와 술을 동시에 마시고 싶어 하셨나봐!",
-		NUT_CORN_WHISKY = "내가 먹을 수 있는 형태 였으면 좋았을 텐데.",
+		NUT_CORN_WHISKEY = "내가 먹을 수 있는 형태 였으면 좋았을 텐데.",
         RUINCACAO_CREAM_LIQUEUR = "맛있을것 같은데 술 이라는게 아쉽네.",
         RUMCHATA = "달콤하고 부드러울것 처럼 보여!",
 

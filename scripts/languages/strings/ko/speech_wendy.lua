@@ -196,7 +196,7 @@ return {
 		TEA_LUMPY_VODKA = "건강해 지진 않을거야.", -- 녹차 리큐르
 		PETALS_BERRY_BRANDY = "꽃 향기로 유혹하고 있어.", -- 장미향 브랜디
 		KAHLUA = "커피를 진하게 응축한듯한 향이야.", -- 커피 리큐르 깔루아
-		NUT_CORN_WHISKY = "땅콩 알레르기가 있다면 금상첨화 겠지.", -- 너트 위스키
+		NUT_CORN_WHISKEY = "땅콩 알레르기가 있다면 금상첨화 겠지.", -- 너트 위스키
         RUINCACAO_CREAM_LIQUEUR = "향은 달콤해.", --베일리스 카카오 크림 리큐르
         RUMCHATA = "고통 받는 아이들에게 이 음료를.", -- 럼차타(럼에 오우차타 라는 유제품 섞은)
 

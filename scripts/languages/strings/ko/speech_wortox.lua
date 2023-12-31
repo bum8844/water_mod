@@ -196,7 +196,7 @@ return {
 		TEA_LUMPY_VODKA = "아냐, 아냐, 아냐.", -- 녹차 리큐르
 		PETALS_BERRY_BRANDY = "난 고급스러운건 안 어울려.", -- 장미향 브랜디
 		KAHLUA = "잠과 깨는 것의 평형이야.", -- 커피 리큐르 깔루아
-		NUT_CORN_WHISKY = "볼트는 좀 없나?", -- 너트 위스키
+		NUT_CORN_WHISKEY = "볼트는 좀 없나?", -- 너트 위스키
         RUINCACAO_CREAM_LIQUEUR = "으음, 난 괜찮아.", --베일리스 카카오 크림 리큐르
         RUMCHATA = "필멸자 사회에서는 이런게 평범한건가?", -- 럼차타(럼에 오우차타 라는 유제품 섞은)
 

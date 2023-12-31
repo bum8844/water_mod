@@ -1,4 +1,4 @@
-return {
+sreturn {
     ACTIONFAIL =
     {
         GIVE =
@@ -196,7 +196,7 @@ return {
             TEA_LUMPY_VODKA = "Is it different from absinthe?", -- Green Tea Liqueur
             PETALS_BERRY_BRANDY = "Seems quite luxurious.", -- Rose Petal Brandy
             KAHLUA = "I think I'll have to drink alcohol and coffee separately.", -- Coffee Liqueur Kahlua
-            NUT_CORN_WHISKY = "The scent is as robust as lead.", -- Nut Whiskey
+            NUT_CORN_WHISKEY = "The scent is as robust as lead.", -- Nut Whiskey
             RUINCACAO_CREAM_LIQUEUR = "There's a sweet liqueur like this too, huh?", -- Baileys Cacao Cream Liqueur
             RUMCHATA = "Milk for grown-ups!", -- Rumchata
 

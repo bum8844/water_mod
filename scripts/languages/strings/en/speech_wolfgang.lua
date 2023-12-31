@@ -195,7 +195,7 @@ return {
             TEA_LUMPY_VODKA = "It's a strange vodka with a grassy taste!", -- Green Tea Lumpy Vodka
             PETALS_BERRY_BRANDY = "It smells fragrant.", -- Rose Petal Berry Brandy
             KAHLUA = "Made with beans, it's a spirit.", -- Coffee Liqueur Kahlua
-            NUT_CORN_WHISKY = "It smells nutty.", -- Nutty Corn Whiskey
+            NUT_CORN_WHISKEY = "It smells nutty.", -- Nutty Corn Whiskey
             RUINCACAO_CREAM_LIQUEUR = "Did they make chocolate into spirits?", -- Bailey's Cacao Cream Liqueur
             RUMCHATA = "It's a strange spirit with milk.", -- Rumchata (Rum and Horchata, a dairy-based beverage)
 

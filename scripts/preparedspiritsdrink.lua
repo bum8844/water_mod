@@ -277,7 +277,7 @@ local drinks =
 			spirits(inst, eater)
 		end,
 	},
-	nut_corn_whisky = {
+	nut_corn_whiskey = {
 		test = function(boilier, names, tags) return names.corn_beer and names.additive_nut end,
 		priority = 1,
 		health = TUNING.HEALING_SMALL,
@@ -384,3 +384,5 @@ for k, v in pairs(drinks) do
 end
 
 return drinks
+
+-- 녹차 보드카, 글로우배리 진, 넛 콘 위스키 데이터 수정해야함(es버전 오면)

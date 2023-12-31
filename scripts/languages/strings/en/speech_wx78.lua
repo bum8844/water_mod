@@ -196,7 +196,7 @@ return {
             TEA_LUMPY_VODKA = "Abundant chlorophyll content.", -- Green Tea Liqueur
             PETALS_BERRY_BRANDY = "Just like a diffuser.", -- Rose Petal Brandy
             KAHLUA = "High-energy function included.", -- Coffee Liqueur Kahlua
-            NUT_CORN_WHISKY = "Where is the bolt?", -- Nut Whiskey (Kahlua)
+            NUT_CORN_WHISKEY = "Where is the bolt?", -- Nut Whiskey (Kahlua)
             RUINCACAO_CREAM_LIQUEUR = "Disgusting tar and protein ethanol extract",
             RUMCHATA = "Why mix disgusting organics?",
 

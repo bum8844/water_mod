@@ -196,7 +196,7 @@ return {
             TEA_LUMPY_VODKA = "Hey, this is real tea.", -- Green Tea Liqueur
             PETALS_BERRY_BRANDY = "I can smell the flowers, so I'll drink anything.", -- Rose-Scented Brandy
             KAHLUA = "I can drink both coffee and alcohol, hehe...", -- Coffee Liqueur Kahlua
-            NUT_CORN_WHISKY = "Did you put nuts in whiskey?", -- Nut Whiskey
+            NUT_CORN_WHISKEY = "Did you put nuts in whiskey?", -- Nut Whiskey
             RUINCACAO_CREAM_LIQUEUR = "This tastes really good!", -- Baileys Cacao Cream Liqueur
             RUMCHATA = "I've never seen this drink before, but it looks worth trying.", -- Rumchata (Rum mixed with horchata)
 

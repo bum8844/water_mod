@@ -196,7 +196,7 @@ return {
             TEA_LUMPY_VODKA = "Is this alcohol made from vegetables?", -- Green Tea Liqueur
             PETALS_BERRY_BRANDY = "Mmm, it has a pleasant aroma.", -- Rose-Scented Brandy
             KAHLUA = "Hmm, I think I'll pass.", -- Coffee Liqueur Kahlua
-            NUT_CORN_WHISKY = "Woody would probably like this!", -- Nut Whiskey
+            NUT_CORN_WHISKEY = "Woody would probably like this!", -- Nut Whiskey
             RUINCACAO_CREAM_LIQUEUR = "Wow! It's chocolate liqueur!", -- Baileys Cacao Cream Liqueur
             RUMCHATA = "Ugh, just give me regular milk.", -- Rumchata (Rum mixed with dairy product)
 

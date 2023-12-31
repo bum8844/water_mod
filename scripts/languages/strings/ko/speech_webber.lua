@@ -196,7 +196,7 @@ return {
 		TEA_LUMPY_VODKA = "야채로 만든 술일까?", -- 녹차 리큐르
 		PETALS_BERRY_BRANDY = "으으음, 향기롭긴 해.", -- 장미향 브랜디
 		KAHLUA = "으음, 쓸 것 같아.", -- 커피 리큐르 깔루아
-		NUT_CORN_WHISKY = "우디 아저씨가 좋아 할것 같아!", -- 너트 위스키
+		NUT_CORN_WHISKEY = "우디 아저씨가 좋아 할것 같아!", -- 너트 위스키
         RUINCACAO_CREAM_LIQUEUR = "와! 초콜릿 술이잖아?", --베일리스 카카오 크림 리큐르
         RUMCHATA = "으으음, 그냥 우유를 줘.", -- 럼차타(럼에 오우차타 라는 유제품 섞은)
 
