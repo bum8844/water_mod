@@ -196,7 +196,7 @@ return {
             TEA_LUMPY_VODKA = "I've never seen this type of liquor before, but it's not bad.", -- Matcha Liqueur
             PETALS_BERRY_BRANDY = "It's fragrant and nice.", -- Rose Scented Brandy
             KAHLUA = "I prefer to drink coffee and alcohol separately.", -- Coffee Liqueur Kahlua
-            NUT_CORN_WHISKY = "It has a somewhat robust aroma.", -- Nut Whiskey
+            NUT_CORN_WHISKEY = "It has a somewhat robust aroma.", -- Nut Whiskey
             RUINCACAO_CREAM_LIQUEUR = "I'm conflicted whether to consider this as a liquor.", -- Baileys Cocoa Cream Liqueur
             RUMCHATA = "Did the people from the south mix alcohol with milk?", -- Rumchata (Mixed with Horchata)
 

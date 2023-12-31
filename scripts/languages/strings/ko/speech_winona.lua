@@ -196,7 +196,7 @@ return {
 		TEA_LUMPY_VODKA = "압생트랑은 다른건가?", -- 녹차 리큐르
 		PETALS_BERRY_BRANDY = "꽤나 사치스런 술 같네.", -- 장미향 브랜디
 		KAHLUA = "아무래도 술과 커피는 따로 마셔야 겠다.", -- 커피 리큐르 깔루아
-		NUT_CORN_WHISKY = "향이 납처럼 묵직하군.", -- 너트 위스키
+		NUT_CORN_WHISKEY = "향이 납처럼 묵직하군.", -- 너트 위스키
         RUINCACAO_CREAM_LIQUEUR = "이런 달달한 술도 다 있네, 허!", --베일리스 카카오 크림 리큐르
         RUMCHATA = "키 다 큰 어른들을 위한 우유구먼!", -- 럼차타(럼에 오우차타 라는 유제품 섞은)
 

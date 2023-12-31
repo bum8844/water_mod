@@ -197,7 +197,7 @@ return {
         TEA_LUMPY_VODKA = "Honestly, I'm not sure if it even has the scent of tea.", -- Green Tea Liqueur
         PETALS_BERRY_BRANDY = "I don't have the time to enjoy the floral scent in my drinks.", -- Rose Scented Brandy
         KAHLUA = "Fantastic! It helps me overcome fear and boosts my energy.", -- Coffee Liqueur Kahlúa
-        NUT_CORN_WHISKY = "It's a waste of time to distinguish between types of spirits.", -- Nut Whiskey
+        NUT_CORN_WHISKEY = "It's a waste of time to distinguish between types of spirits.", -- Nut Whiskey
         RUINCACAO_CREAM_LIQUEUR = "It suits my taste, but I should be cautious about overindulging.", -- Baileys Cacao Cream Liqueur
         RUMCHATA = "It's a bit less repulsive now.", -- Rumchata (a mixture of rum and Horchata, a dairy-based beverage)
 

@@ -196,7 +196,7 @@ return {
             TEA_LUMPY_VODKA = "Hmm, it's subtle.", -- Green tea liqueur
             PETALS_BERRY_BRANDY = "A bit excessive.", -- Rose-scented brandy
             KAHLUA = "It's not that bad.", -- Coffee liqueur Kahlua
-            NUT_CORN_WHISKY = "I have a craving for smoked meat.", -- Nut whiskey
+            NUT_CORN_WHISKEY = "I have a craving for smoked meat.", -- Nut whiskey
             RUINCACAO_CREAM_LIQUEUR = "These young folks...", -- Baileys Cacao Cream Liqueur
             RUMCHATA = "What kind of drink is this?", -- Rumchata (a mix of rum and horchata, a dairy-based beverage)
 

@@ -196,7 +196,7 @@ return {
         TEA_LUMPY_VODKA = "I've blended the bitterness and strong aroma of tea leaves.", -- Green Tea Liqueur
         PETALS_BERRY_BRANDY = "You can feel the aroma of raspberries, tangerines, strawberries, and flowers.", -- Rose Petal Brandy
         KAHLUA = "Intense black coffee with a sweet buttery hint, nutty, and slightly bitter.", -- Coffee Liqueur Kahlua
-        NUT_CORN_WHISKY = "I can't resist the slight bitterness and vanilla aroma.", -- Nut Whiskey
+        NUT_CORN_WHISKEY = "I can't resist the slight bitterness and vanilla aroma.", -- Nut Whiskey
         RUINCACAO_CREAM_LIQUEUR = "You can enjoy the creamy aroma and sweet taste of Belgian chocolate.", -- Baileys Cacao Cream Liqueur
         RUMCHATA = "Cinnamon flavor combines with vanilla, and it feels creamy and nutty.", -- Rumchata (Rum mixed with horchata, a dairy beverage)
 

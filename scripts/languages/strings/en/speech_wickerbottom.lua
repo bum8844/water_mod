@@ -196,7 +196,7 @@ return {
             TEA_LUMPY_VODKA = "Interesting, the balance of flavors seems to be well-preserved.", --Green Tea Liqueur
             PETALS_BERRY_BRANDY = "Flower scent is added to brandy to make it more spectacular.", --Rose Petal Brandy
             KAHLUA = "More commonly used for making cocktails due to its coffee aroma and sweetness.", --Coffee Liqueur Kahlua
-            NUT_CORN_WHISKY = "Emphasizes the body of whiskey, making it robust.", --Nut Whiskey
+            NUT_CORN_WHISKEY = "Emphasizes the body of whiskey, making it robust.", --Nut Whiskey
             RUINCACAO_CREAM_LIQUEUR = "Originally created to cheaply handle leftover whiskey and cream.", --Baileys Cacao Cream Liqueur
             RUMCHATA = "Rum is mixed with cream to make it easier to drink.", --Rumchata (Rum with Horchata)
 

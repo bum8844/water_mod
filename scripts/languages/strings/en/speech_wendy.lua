@@ -196,7 +196,7 @@ return {
             TEA_LUMPY_VODKA = "It won't make you healthier.", -- Green Tea Liqueur
             PETALS_BERRY_BRANDY = "It seduces with the scent of flowers.", -- Rose Petal Brandy
             KAHLUA = "It smells like strongly concentrated coffee.", -- Coffee Liqueur Kahlua
-            NUT_CORN_WHISKY = "If you have a peanut allergy, it will be perfect.", -- Nut Whiskey
+            NUT_CORN_WHISKEY = "If you have a peanut allergy, it will be perfect.", -- Nut Whiskey
             RUINCACAO_CREAM_LIQUEUR = "It has a sweet scent.", -- Baileys Cacao Cream Liqueur
             RUMCHATA = "Give this drink to suffering children.", -- Rumchata (Mix of Rum and Horchata)
 

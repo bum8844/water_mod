@@ -197,7 +197,7 @@ return {
 		TEA_LUMPY_VODKA = "This looks healthy! But it's still alcohol.",
 		PETALS_BERRY_BRANDY = "I don't know about the taste, but it looks pretty!",
 		KAHLUA = "I think Mr. Warly wanted to drink coffee and alcohol",
-		NUT_CORN_WHISKY = "I wish I could have some.",
+		NUT_CORN_WHISKEY = "I wish I could have some.",
         RUINCACAO_CREAM_LIQUEUR = "Looks tasty! Too bad it's alcohol.",
         RUMCHATA = "Looks sweet and soft!",
 

@@ -196,7 +196,7 @@ return {
 		TEA_LUMPY_VODKA = "엽록소 대량 포함", -- 녹차 리큐르
 		PETALS_BERRY_BRANDY = "디퓨저로나 딱이다", -- 장미향 브랜디
 		KAHLUA = "고 에너지 기능 포함", -- 커피 리큐르 깔루아
-		NUT_CORN_WHISKY = "볼트는 어디에 있는가", -- 너트 위스키
+		NUT_CORN_WHISKEY = "볼트는 어디에 있는가", -- 너트 위스키
         RUINCACAO_CREAM_LIQUEUR = "역겨운 타르와 단백질의 에탄올 추출물", --베일리스 카카오 크림 리큐르
         RUMCHATA = "역겨운 유기물을 어째서", -- 럼차타(럼에 오우차타 라는 유제품 섞은)
 

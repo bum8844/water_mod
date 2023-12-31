@@ -196,7 +196,7 @@ return {
 		TEA_LUMPY_VODKA = "", -- 녹차 리큐르
 		PETALS_BERRY_BRANDY = "", -- 장미향 브랜디
 		KAHLUA = "", -- 커피 리큐르 깔루아
-		NUT_CORN_WHISKY = "", -- 너트 위스키
+		NUT_CORN_WHISKEY = "", -- 너트 위스키
         RUINCACAO_CREAM_LIQUEUR = "", --베일리스 카카오 크림 리큐르
         RUMCHATA = "", -- 럼차타(럼에 오우차타 라는 유제품 섞은)
 

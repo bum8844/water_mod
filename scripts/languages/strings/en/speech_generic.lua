@@ -197,7 +197,7 @@ return {
 		TEA_LUMPY_VODKA = "Did he leach this from tea leaves?",
 		PETALS_BERRY_BRANDY = "A brandy with a flowery aroma?",
 		KAHLUA = "Seems like rum brewed with coffee.",
-		NUT_CORN_WHISKY = "Snack food peanuts combined with whiskey!",
+		NUT_CORN_WHISKEY = "Snack food peanuts combined with whiskey!",
         RUINCACAO_CREAM_LIQUEUR = "It's a creamy chocolatey drink.",
         RUMCHATA = "Smooth going down.",
 

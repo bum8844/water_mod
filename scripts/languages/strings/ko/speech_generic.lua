@@ -196,7 +196,7 @@ return {
 		TEA_LUMPY_VODKA = "찻잎을 침출한거야?",
 		PETALS_BERRY_BRANDY = "브랜디인데 꽃향기가 좀 나는걸.",
 		KAHLUA = "럼에 커피를 진하게 우려냈나봐.",
-		NUT_CORN_WHISKY = "안주로 먹을 땅콩을 위스키랑 합쳐놨네!",
+		NUT_CORN_WHISKEY = "안주로 먹을 땅콩을 위스키랑 합쳐놨네!",
         RUINCACAO_CREAM_LIQUEUR = "크리미하고 초콜릿 향이 나는 술이야.",
         RUMCHATA = "목에 부드럽게 잘 넘어가겠는걸?",
 

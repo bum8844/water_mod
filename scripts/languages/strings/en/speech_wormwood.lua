@@ -196,7 +196,7 @@ return {
             TEA_LUMPY_VODKA = "", -- Vodka
             PETALS_BERRY_BRANDY = "", -- Rose Brandy
             KAHLUA = "", -- Coffee liqueur Kahlua
-            NUT_CORN_WHISKY = "", -- Nut Whiskey
+            NUT_CORN_WHISKEY = "", -- Nut Whiskey
             RUINCACAO_CREAM_LIQUEUR = "", -- Baileys Cocoa Cream Liqueur
             RUMCHATA = "", -- Rumchata (a dairy product mixed with rum)
 

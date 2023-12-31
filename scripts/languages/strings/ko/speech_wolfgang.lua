@@ -195,7 +195,7 @@ return {
 		TEA_LUMPY_VODKA = "풀 맛 나는 신기한 보드카다!", -- 녹차 보ㄷㅡ카
 		PETALS_BERRY_BRANDY = "향긋한 냄새 나는 술이다.", -- 장미향 브랜디
 		KAHLUA = "콩 넣어서 만든 술이다.", -- 커피 리큐르 깔루아
-		NUT_CORN_WHISKY = "견과류 냄새 난다.", -- 너트 위스키
+		NUT_CORN_WHISKEY = "견과류 냄새 난다.", -- 너트 위스키
         RUINCACAO_CREAM_LIQUEUR = "초콜릿도 술로 만드는거였나?", --베일리스 카카오 크림 리큐르
         RUMCHATA = "우유 들어간 신기한 술이다.", -- 럼차타(럼에 오우차타 라는 유제품 섞은)
 

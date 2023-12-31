@@ -196,7 +196,7 @@ return {
             TEA_LUMPY_VODKA = "The scent of tea leaves emanates from the liquor.", -- Green Tea Liqueur
             PETALS_BERRY_BRANDY = "Warriors have no time to enjoy the scent of flowers.", -- Rose Petal Brandy
             KAHLUA = "As a warrior, this drink is too sweet for me.", -- Coffee Liqueur Kahlua
-            NUT_CORN_WHISKY = "The scent of nuts is prominent.", -- Nut Whiskey
+            NUT_CORN_WHISKEY = "The scent of nuts is prominent.", -- Nut Whiskey
             RUINCACAO_CREAM_LIQUEUR = "Is this for children?", -- Baileys Cacao Cream Liqueur
             RUMCHATA = "I prefer to drink alcohol and milk separately.", -- Rumchata (Mixture of rum and dairy)
 

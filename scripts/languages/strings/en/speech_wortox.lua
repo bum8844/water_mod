@@ -192,7 +192,7 @@ return {
         TEA_LUMPY_VODKA = "No, no, no.", -- Green Tea Liqueur
         PETALS_BERRY_BRANDY = "I don't fit in with upscale things.", -- Rose Scented Brandy
         KAHLUA = "Balance between sleeping and waking up.", -- Coffee Liqueur Kahlua
-        NUT_CORN_WHISKY = "Is there a bolt in it?", -- Nut Whiskey
+        NUT_CORN_WHISKEY = "Is there a bolt in it?", -- Nut Whiskey
         RUINCACAO_CREAM_LIQUEUR = "Hmm, I'm fine.", -- Baileys Cacao Cream Liqueur
         RUMCHATA = "Is this common in mortal society?", -- Rumchata (Rum mixed with Ouatza)
 
