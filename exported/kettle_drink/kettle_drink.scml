@@ -133,7 +133,7 @@
         <file id="0" name="moon_blossom_tea/moon_blossom_tea-0.png" width="107" height="107" pivot_x="0.53" pivot_y="0.35"/>
     </folder>
     <folder id="44" name="giant_blueberry_gin">
-        <file id="0" name="giant_blueberry_gin/giant_blueberry_gin-0.png" width="99" height="114" pivot_x="0.42" pivot_y="0.4"/>
+        <file id="0" name="giant_blueberry_gin/giant_blueberry_gin-0.png" width="100" height="120" pivot_x="0.42" pivot_y="0.4"/>
     </folder>
     <folder id="45" name="giant_blueberry_wine">
         <file id="0" name="giant_blueberry_wine/giant_blueberry_wine-0.png" width="97" height="124" pivot_x="0.45" pivot_y="0.35"/>
@@ -178,7 +178,7 @@
         <file id="0" name="lumpy_beer/lumpy_beer-0.png" width="120" height="120" pivot_x="0.61" pivot_y="0.25"/>
     </folder>
     <folder id="59" name="lumpy_vodka">
-        <file id="0" name="lumpy_vodka/lumpy_vodka-0.png" width="120" height="120" pivot_x="0.5" pivot_y="0.25"/>
+        <file id="0" name="lumpy_vodka/lumpy_vodka-0.png" width="120" height="120" pivot_x="0.5" pivot_y="0.3"/>
     </folder>
     <folder id="60" name="lumpy_wine">
         <file id="0" name="lumpy_wine/lumpy_wine-0.png" width="102" height="119" pivot_x="0.43" pivot_y="0.25"/>
@@ -191,6 +191,39 @@
     </folder>
     <folder id="63" name="watermelon_juice">
         <file id="0" name="watermelon_juice/watermelon_juice-0.png" width="100" height="120" pivot_x="0.5" pivot_y="0.25"/>
+    </folder>
+    <folder id="64" name="absinthe">
+        <file id="0" name="absinthe/absinthe-0.png" width="120" height="120" pivot_x="0.5" pivot_y="0.25"/>
+    </folder>
+    <folder id="65" name="areuhi">
+        <file id="0" name="areuhi/areuhi-0.png" width="120" height="111" pivot_x="0.5" pivot_y="0.35"/>
+    </folder>
+    <folder id="66" name="berry_brandy">
+        <file id="0" name="berry_brandy/berry_brandy-0.png" width="120" height="120" pivot_x="0.5" pivot_y="0.35"/>
+    </folder>
+    <folder id="67" name="berry_gin">
+        <file id="0" name="berry_gin/berry_gin-0.png" width="120" height="120" pivot_x="0.5" pivot_y="0.35"/>
+    </folder>
+    <folder id="68" name="glowberry_gin">
+        <file id="0" name="glowberry_gin/glowberry_gin-0.png" width="120" height="120" pivot_x="0.5" pivot_y="0.35"/>
+    </folder>
+    <folder id="69" name="tea_lumpy_vodka">
+        <file id="0" name="tea_lumpy_vodka/tea_lumpy_vodka-0.png" width="120" height="120" pivot_x="0.5" pivot_y="0.35"/>
+    </folder>
+    <folder id="70" name="kahlua">
+        <file id="0" name="kahlua/kahlua-0.png" width="114" height="114" pivot_x="0.5" pivot_y="0.25"/>
+    </folder>
+    <folder id="71" name="nut_corn_whisky">
+        <file id="0" name="nut_corn_whisky/nut_corn_whisky-0.png" width="120" height="120" pivot_x="0.5" pivot_y="0.35"/>
+    </folder>
+    <folder id="72" name="ruincacao_cream_liqueur">
+        <file id="0" name="ruincacao_cream_liqueur/ruincacao_cream_liqueur-0.png" width="120" height="120" pivot_x="0.5" pivot_y="0.3"/>
+    </folder>
+    <folder id="73" name="rumchata">
+        <file id="0" name="rumchata/rumchata-0.png" width="120" height="120" pivot_x="0.5" pivot_y="0.25"/>
+    </folder>
+    <folder id="74" name="tequila">
+        <file id="0" name="tequila/tequila-0.png" width="120" height="120" pivot_x="0.5" pivot_y="0.35"/>
     </folder>
     <entity id="0" name="kettle_drink">
         <animation id="0" name="turn_to_ice" length="700" interval="100">
