@@ -124,7 +124,7 @@ local drinks =
 	},
 	-- 스파클링 와인
 	berry_gin = {
-		test = function(boilier, names, tags) return names.sparklingwine and names.additives_seed end,
+		test = function(boilier, names, tags) return names.sparklingwine and names.additive_seed end,
 		priority = 2,
 		health = TUNING.HEALING_SMALL*2,
 		hunger = TUNING.CALORIES_MEDSMALL,
@@ -144,7 +144,7 @@ local drinks =
 	-- 발광 배리
 	glowberry_gin =
 	{
-		test = function(boilier, names, tags) return (names.glowberrywine or names.wine_glowberry) and names.additives_seed end,
+		test = function(boilier, names, tags) return (names.glowberrywine or names.wine_glowberry) and names.additive_seed end,
 		priority = 2,
 		health = 0,
 		hunger = TUNING.CALORIES_MEDSMALL,
@@ -184,7 +184,7 @@ local drinks =
 	},
 	-- 리큐르 - 카카오 와인
 	ruincacao_cream_liqueur = {
-		test = function(boilier, names, tags) return names.ruincacao_wine and names.additives_dairy end,
+		test = function(boilier, names, tags) return names.ruincacao_wine and names.additive_dairy end,
 		priority = 2,
         health = TUNING.HEALING_MED/2,
         hunger = TUNING.CALORIES_MEDSMALL,
@@ -204,7 +204,7 @@ local drinks =
 	},
 	-- 커피 + 꿀술
 	kahlua = {
-		test = function(boilier, names, tags) return (names.madhu or names.mead) and names.additives_nut end,
+		test = function(boilier, names, tags) return (names.madhu or names.mead) and names.additive_nut end,
 		priority = 2,
 		health = TUNING.HEALING_MEDSMALL*3,
 		hunger = TUNING.CALORIES_MEDSMALL,
@@ -223,8 +223,8 @@ local drinks =
 			eater:AddDebuff("caffeinbuff", "caffeinbuff")
 		end,
 	},
-	greentea_lumpy_vodka = {
-		test = function(boilier, names, tags) return names.lumpy_wine and names.additives_petals end,
+	tea_lumpy_vodka = {
+		test = function(boilier, names, tags) return names.lumpy_wine and names.additive_petals end,
 		priority = 2,
 		health = 0,
 		hunger = TUNING.CALORIES_MEDSMALL,
@@ -242,7 +242,7 @@ local drinks =
 		end,
 	},
 	absinthe = {
-		test = function(boilier, names, tags) return (names.wine or names.noblewine or names.wine_berries_juicy or names.wine_berries) and names.additives_seed end,
+		test = function(boilier, names, tags) return (names.wine or names.noblewine or names.wine_berries_juicy or names.wine_berries) and names.additive_seed end,
 		priority = 2,
 		health = 0,
 		hunger = TUNING.CALORIES_MEDSMALL,
@@ -260,7 +260,7 @@ local drinks =
 		end,
 	},
 	petals_berry_brandy = {
-		test = function(boilier, names, tags) return (names.wine or names.noblewine or names.wine_berries_juicy or names.wine_berries) and names.additives_petals end,
+		test = function(boilier, names, tags) return (names.wine or names.noblewine or names.wine_berries_juicy or names.wine_berries) and names.additive_petals end,
 		priority = 2,
 		health = 0,
 		hunger = TUNING.CALORIES_MEDSMALL,
@@ -277,8 +277,8 @@ local drinks =
 			spirits(inst, eater)
 		end,
 	},
-	nut_corn_wisky = {
-		test = function(boilier, names, tags) return names.corn_beer and names.additives_nut end,
+	nut_corn_whisky = {
+		test = function(boilier, names, tags) return names.corn_beer and names.additive_nut end,
 		priority = 1,
 		health = TUNING.HEALING_SMALL,
 		hunger = TUNING.CALORIES_MEDSMALL,
@@ -296,7 +296,7 @@ local drinks =
 		end,
 	},
 	rumchata = {
-		test = function(boilier, names, tags) return (names.madhu or names.mead) and names.additives_dairy end,
+		test = function(boilier, names, tags) return (names.madhu or names.mead) and names.additive_dairy end,
 		priority = 2,
 		health = TUNING.HEALING_MEDSMALL*3,
 		hunger = TUNING.CALORIES_MEDSMALL,
@@ -315,7 +315,7 @@ local drinks =
 	},
 }
 
-local mod_drink = require("modcompats/preparedspiritsdrink_mod")
+--[[local mod_drink = require("modcompats/preparedspiritsdrink_mod")
 local hof, ia, te, mfp = false, false, false, false
 
 for k,mod_id in ipairs(KnownModIndex:GetModsToLoad()) do 
@@ -370,7 +370,7 @@ if hof or mfp then
 	for k, v in pairs(wheat_drink) do
 		drinks[k] = v
 	end
-end
+end]]
 
 for k, v in pairs(drinks) do
     v.name = k

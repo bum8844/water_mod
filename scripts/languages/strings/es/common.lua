@@ -309,7 +309,7 @@ STRINGS.NAMES.AREUHI = "Areuhi"
 -- Solo Warly puede hacerlas
 
 STRINGS.NAMES.BERRY_GIN = "Ginebra de bayas"
-STRINGS.NAMES.GLOWBERRY_BRANDY = "Ginebra de bayas brillantes"
+STRINGS.NAMES.GLOWBERRY_GIN = "Ginebra de bayas brillantes"
 STRINGS.NAMES.ABSINTHE = "Diablo verde"
 STRINGS.NAMES.TEA_LUMPY_VODKA = "Licor de té verde"
 STRINGS.NAMES.PETALS_BERRY_BRANDY = "Ginebra de rosas"

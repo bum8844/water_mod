@@ -51,6 +51,12 @@ local function onbuilt(inst)
 end
 
 local function startcookfn(inst)
+    if inst.components.container:IsOpen() then
+        inst.AnimState:PlayAnimation("cooking_pre_close")
+        inst.AnimState:PushAnimation("cooking_loop", true)
+    else
+        inst.AnimState:PlayAnimation("cooking_loop", true)
+    end
     inst.SoundEmitter:KillSound("loopsound")
     inst.SoundEmitter:PlaySound("dontstarve_DLC001/common/coldfire", "snda")
     inst.SoundEmitter:PlaySound("rifts3/oculus_ice_radius/ambient_lp", "sndb")
