@@ -3,344 +3,346 @@ return {
     {
         GIVE =
         {
-            WELL_NOTEMPTY = "Duplicate input denied", -- Attempt to give a full bucket to a well
-            WELL_BUSY = "Error: Device is busy", -- Attempt to give a filled bucket to a well (parody of "Printer is busy")
+            WELL_NOTEMPTY = "DUPLICATE INPUT DENIED", -- Attempt to give a full bucket to a well
+            WELL_BUSY = "ERROR: DEVICE IS BUSY", -- Attempt to give a filled bucket to a well (parody of "Printer is busy")
         }
     },
 
-        ANNOUNCE_DRUNK = "WARNING: Output intoxicated", -- Drunk
-        ANNOUNCE_DRUNK_END = "Chemical engine output stabilized", -- Sobered up a bit (hangover)
-        ANNOUNCE_DRUNK_IMMUNITY = "Self-diagnosis: Chemical engine / Normal", -- Temporary. For Wigfrid only.
-        ANNOUNCE_NOTCHARGE = "Charging required for this entity", -- Attempting to milk a Volt Goat with no charge
-        ANNOUNCE_NOTHIRSTSLEEP = "Insufficient coolant for sleep mode", -- Trying to sleep at night with severe thirst
-        ANNOUNCE_NOTHIRSTSIESTA = "Insufficient coolant for session freeze", -- Trying to siesta during the day with severe thirst
-        ANNOUNCE_SLEEP_END = "Chemical engine output restored", -- Waking up and fully sober from drinking
-        ANNOUNCE_THIRST = "Coolant replenishment required", -- Very thirsty!
+        ANNOUNCE_DRUNK = "WARNING: OUTPUT INTOXICATED", -- Drunk
+        ANNOUNCE_DRUNK_END = "CHEMICAL ENGINE OUTPUT STABILIZED", -- Sobered up a bit (hangover)
+        ANNOUNCE_DRUNK_IMMUNITY = "SELF-DIAGNOSIS: CHEMICAL ENGINE / NORMAL", -- Temporary For Wigfrid only
+        ANNOUNCE_NOTCHARGE = "CHARGING REQUIRED FOR THIS ENTITY", -- Attempting to milk a Volt Goat with no charge
+        ANNOUNCE_NOTHIRSTSLEEP = "INSUFFICIENT COOLANT FOR SLEEP MODE", -- Trying to sleep at night with severe thirst
+        ANNOUNCE_NOTHIRSTSIESTA = "INSUFFICIENT COOLANT FOR SESSION FREEZE", -- Trying to siesta during the day with severe thirst
+        ANNOUNCE_SLEEP_END = "CHEMICAL ENGINE OUTPUT RESTORED", -- Waking up and fully sober from drinking
+        ANNOUNCE_THIRST = "COOLANT REPLENISHMENT REQUIRED", -- Very thirsty!
 
-        ANNOUNCE_CAFFINE_BUFF_START = "All core ratio limit: 49", -- Caffeine buff starts (ALL CORE RATIO LIMIT: 49)
-        ANNOUNCE_CAFFINE_BUFF_STOP = "Core limit being reconfigured", -- Caffeine buff ends
+        ANNOUNCE_CAFFINE_BUFF_START = "ALL CORE RATIO LIMIT: 49", -- Caffeine buff starts (ALL CORE RATIO LIMIT: 49)
+        ANNOUNCE_CAFFINE_BUFF_STOP = "CORE LIMIT BEING RECONFIGURED", -- Caffeine buff ends
 
-        ANNOUNCE_CURE_WATERBORNE = "Adjusting waterborne pH ratio", -- 78 is not actually used.
+        ANNOUNCE_CURE_WATERBORNE = "ADJUSTING WATERBORNE pH RATIO", -- 78 is not actually used
 
-        ANNOUNCE_DCAPACITY_CRITICAL = "WARNING: Chemical engine output abnormal", -- About to get drunk
-        ANNOUNCE_DCAPACITY_HALF = "Chemical engine output fluctuation detected", -- The drunkenness is kicking in
+        ANNOUNCE_DCAPACITY_CRITICAL = "WARNING: CHEMICAL ENGINE OUTPUT ABNORMAL", -- About to get drunk
+        ANNOUNCE_DCAPACITY_HALF = "CHEMICAL ENGINE OUTPUT FLUCTUATION DETECTED", -- The drunkenness is kicking in
 
         DESCRIBE =
         {
-            BOILBOOK = "A directory containing instructions on combining impurities in coolant.",
+            BOILBOOK = "A DIRECTORY CONTAINING INSTRUCTIONS ON COMBINING IMPURITIES IN COOLANT",
 
-            WATER_CLEAN_ICE = "Frozen and trapped water. Hehe.", -- Clean ice water
-            WATER_DIRTY_ICE = "Dirty and nasty.", -- Dirty ice water
+            WATER_CLEAN_ICE = "FROZEN AND TRAPPED WATER HEHE", -- Clean ice water
+            WATER_DIRTY_ICE = "DIRTY AND NASTY", -- Dirty ice water
 
-            SPICE_CAFFEINPEPPER = "Adds flavor to bland food.", -- Caffeine pepper spice
+            SPICE_CAFFEINPEPPER = "ADDS FLAVOR TO BLAND FOOD", -- Caffeine pepper spice
 
-            WELL_KIT = "Requires a water source for installation.", -- Well kit
-            WELL_SPRINKLER_KIT = "Use with caution.", -- Sprinkler kit
-            WELL_WATERPUMP_KIT = "High-performance water pumping device.", -- Steam water pump kit
-            WELL_BURYING_KIT = "Tools for filling holes.", -- Hole burial kit
-            WELL_DRILLING = "Exploring water veins.", -- Drilling holes with a drill
-            WELL_DRILLING_ITEM = "Device for water vein development.", -- Drill item (AFS: "A 'WELL'-DEVELOPING DEVICE"?)
-            HOLE = "A hole for extracting water.", -- Well hole
-            WELL = "A stable source of water.", -- Well
+            WELL_KIT = "REQUIRES A WATER SOURCE FOR INSTALLATION", -- Well kit
+            WELL_SPRINKLER_KIT = "USE WITH CAUTION", -- Sprinkler kit
+            WELL_WATERPUMP_KIT = "HIGH-PERFORMANCE WATER PUMPING DEVICE", -- Steam water pump kit
+            WELL_BURYING_KIT = "TOOLS FOR FILLING HOLES", -- Hole burial kit
+            WELL_DRILLING = "EXPLORING WATER VEINS", -- Drilling holes with a drill
+            WELL_DRILLING_ITEM = "DEVICE FOR WATER VEIN DEVELOPMENT", -- Drill item (AFS: "A 'WELL'-DEVELOPING DEVICE"?)
+            HOLE = "A HOLE FOR EXTRACTING WATER", -- Well hole
+            WELL = "A STABLE SOURCE OF WATER", -- Well
+
+            WX78MODULE_NONEDRUNK = "CHEMICAL ENGINE OUTPUT ASSISTANCE", -- 78전용 묘듈
 
             -- Water Mode Plants
 
-            TEA_TREE = "A continuous source of tea leaves.", -- Tea tree
-            DUG_TEA_TREE = "Requires soil.", -- Dug-up tea tree
-            TEA_SEED = "Source code package.", -- Tea tree seed
-            TEA_SEED_COOKED = "Life activity suspended.", -- Cooked tea tree seed
-            TEA_SEED_SAPLING = "A tree in the early growth stage.", -- Tea tree sapling
-            TEALEAVES = "Simple leaves.", -- Tea leaves (JUST A BUNCH OF LEAVES)
-            TEALEAVES_DRIED = "Modified.", -- Dried tea leaves (IT IS MODIFIED)
+            TEA_TREE = "A CONTINUOUS SOURCE OF TEA LEAVES", -- Tea tree
+            DUG_TEA_TREE = "REQUIRES SOIL", -- Dug-up tea tree
+            TEA_SEED = "SOURCE CODE PACKAGE", -- Tea tree seed
+            TEA_SEED_COOKED = "LIFE ACTIVITY SUSPENDED", -- Cooked tea tree seed
+            TEA_SEED_SAPLING = "A TREE IN THE EARLY GROWTH STAGE", -- Tea tree sapling
+            TEALEAVES = "SIMPLE LEAVES", -- Tea leaves (JUST A BUNCH OF LEAVES)
+            TEALEAVES_DRIED = "MODIFIED", -- Dried tea leaves (IT IS MODIFIED)
 
-            CAFFEINBERRY = "A lunar-mutated drinkable bean plant.", -- Caffeine berry bush (LUNAR-MUTATED DRINKABLE BEAN PLANT)
-            DUG_CAFFEINBERRY = "Requires soil.", -- Dug-up caffeine berry bush
-            CAFFEINBERRY_BEAN = "A drinkable bean.", -- Raw caffeine bean
-            CAFFEINBERRY_BEAN_COOKED = "Optimized through heating.", -- Cooked caffeine bean (BEANS OPTIMIZED BY FIRE)
+            CAFFEINBERRY = "A LUNAR-MUTATED DRINKABLE BEAN PLANT", -- Caffeine berry bush (LUNAR-MUTATED DRINKABLE BEAN PLANT)
+            DUG_CAFFEINBERRY = "REQUIRES SOIL", -- Dug-up caffeine berry bush
+            CAFFEINBERRY_BEAN = "A DRINKABLE BEAN", -- Raw caffeine bean
+            CAFFEINBERRY_BEAN_COOKED = "OPTIMIZED THROUGH HEATING", -- Cooked caffeine bean (BEANS OPTIMIZED BY FIRE)
 
-            RUINCACAO_TREE = "An unusual form of cocoa tree.", -- Cocoa tree
-            DUG_RUINCACAO_TREE = "Requires soil.", -- Dug-up cocoa tree
-            RUINCACAO_SEED = "Grow immediately to provide fruit.", -- Cocoa tree sapling item
-            RUINCACAO_SEED_SAPLING = "With a trace of shadow and symbiosis.", -- Cocoa tree sapling planted
-            RUINCACAO = "Requires some post-processing.", -- Pre-broken cocoa fruit
-            RUINCACAO_BEAN = "Worth processing.", -- Cocoa bean after breaking
-            RUINCACAO_SEED_COOKED = "Black beans roasted over fire.", -- Roasted cocoa beans
+            RUINCACAO_TREE = "AN UNUSUAL FORM OF COCOA TREE", -- Cocoa tree
+            DUG_RUINCACAO_TREE = "REQUIRES SOIL", -- Dug-up cocoa tree
+            RUINCACAO_SEED = "GROW IMMEDIATELY TO PROVIDE FRUIT", -- Cocoa tree sapling item
+            RUINCACAO_SEED_SAPLING = "WITH A TRACE OF SHADOW AND SYMBIOSIS", -- Cocoa tree sapling planted
+            RUINCACAO = "REQUIRES SOME POST-PROCESSING", -- Pre-broken cocoa fruit
+            RUINCACAO_BEAN = "WORTH PROCESSING", -- Cocoa bean after breaking
+            RUINCACAO_SEED_COOKED = "BLACK BEANS ROASTED OVER FIRE", -- Roasted cocoa beans
 
             -- Distillery Additives
 
-            ADDITIVE_SEED = "Destruction of life is enjoyable.", -- Seed herbs (Anise, Juniper Berry, Octagon Motif) as additives for liqueurs
-            ADDITIVE_PETALS = "Herbs for enhancing aroma.", -- Herbs, tea leaves, and flower petals as additives for liqueurs
-            ADDITIVE_NUT = "Solid additive.", -- Nut additives for liqueurs (Birch Nut, Coconut, Coffee Bean, Cocoa Bean)
-            ADDITIVE_DAIRY = "Do not put disgusting impurities in ethanol.", -- Dairy additives for liqueurs
+            ADDITIVE_SEED = "DESTRUCTION OF LIFE IS ENJOYABLE", -- Seed herbs (Anise, Juniper Berry, Octagon Motif) as additives for liqueurs
+            ADDITIVE_PETALS = "HERBS FOR ENHANCING AROMA", -- Herbs, tea leaves, and flower petals as additives for liqueurs
+            ADDITIVE_NUT = "SOLID ADDITIVE", -- Nut additives for liqueurs (Birch Nut, Coconut, Coffee Bean, Cocoa Bean)
+            ADDITIVE_DAIRY = "DO NOT PUT DISGUSTING IMPURITIES IN ETHANOL", -- Dairy additives for liqueurs
 
             -- Drinks
 
-            WATER_CLEAN = "Standard coolant. Caution: Leakage.", -- Clean water
-            WATER_DIRTY = "External purification device required.", -- Dirty water
-            WATER_SALTY = "Corrodes the body.", -- Saltwater
+            WATER_CLEAN = "STANDARD COOLANT CAUTION: LEAKAGE", -- Clean water
+            WATER_DIRTY = "EXTERNAL PURIFICATION DEVICE REQUIRED", -- Dirty water
+            WATER_SALTY = "CORRODES THE BODY", -- Saltwater
 
-            GOOPYDRINK = "Water turned into something terrible.", -- Failed drink (concept of wet roast)
+            GOOPYDRINK = "WATER TURNED INTO SOMETHING TERRIBLE", -- Failed drink (concept of wet roast)
 
             -- Kettle Drinks
 
-            FRUITJUICE = "Energy pod mixture.", -- Mixed fruit juice
-            BERRIES_JUICE = "Excellent source of sweetness.", -- Berry juice
-            POMEGRANATE_JUICE = "The red liquid is reminiscent of blood.", -- Pomegranate juice
-            BANANA_JUICE = "Not a dairy product.", -- Banana juice
-            FIG_JUICE = "A fluid form of sustenance.", -- Fig juice
-            DRAGONJUICE = "Liquid fiber.", -- Dragon fruit juice
-            GLOWBERRYJUICE = "Luminous fluid.", -- Glowberry juice
-            WATERMELON_JUICE = "A drink with plenty of juice.", -- Watermelon juice
+            FRUITJUICE = "ENERGY POD MIXTURE", -- Mixed fruit juice
+            BERRIES_JUICE = "EXCELLENT SOURCE OF SWEETNESS", -- Berry juice
+            POMEGRANATE_JUICE = "THE RED LIQUID IS REMINISCENT OF BLOOD", -- Pomegranate juice
+            BANANA_JUICE = "NOT A DAIRY PRODUCT", -- Banana juice
+            FIG_JUICE = "A FLUID FORM OF SUSTENANCE", -- Fig juice
+            DRAGONJUICE = "LIQUID FIBER", -- Dragon fruit juice
+            GLOWBERRYJUICE = "LUMINOUS FLUID", -- Glowberry juice
+            WATERMELON_JUICE = "A DRINK WITH PLENTY OF JUICE", -- WATERMELON JUICE
 
-            VEGGIE_TEA = "Fluidized organics.", -- Vegetable juice
-            CARROT_TEA = "Concentrated beta-carotene.", -- Carrot juice
-            CACTUS_TEA = "Complete firewall neutralization.", -- Cactus juice (PROTECTIVE BARRIER NEUTRALIZED)
-            TOMATO_JUICE = "Utterly crushed. Hehe.", -- Tomato juice (IT'S UTTERLY CRUSHED. HA HA)
-            LUMPY_TEA = "Root access granted.", -- Root tea (ROOT PERMISSION GRANTED)
-            SEAWEED_SHAKE = "50% sea, 50% grass.", -- Seaweed shake (AFS: SpongeBob reference, parody of an episode where plankton controls spongebob and says 50% evil)
+            VEGGIE_TEA = "FLUIDIZED ORGANICS", -- VEGETABLE JUICE
+            CARROT_TEA = "CONCENTRATED BETA-CAROTENE", -- CARROT JUICE
+            CACTUS_TEA = "COMPLETE FIREWALL NEUTRALIZATION", -- CACTUS JUICE (PROTECTIVE BARRIER NEUTRALIZED)
+            TOMATO_JUICE = "UTTERLY CRUSHED HEHE", -- TOMATO JUICE (IT'S UTTERLY CRUSHED HA HA)
+            LUMPY_TEA = "ROOT ACCESS GRANTED", -- ROOT TEA (ROOT PERMISSION GRANTED)
+            SEAWEED_SHAKE = "50% SEA, 50% GRASS", -- SEAWEED SHAKE (AFS: SPONGEBOB REFERENCE, PARODY OF AN EPISODE WHERE PLANKTON CONTROLS SPONGEBOB AND SAYS 50% EVIL)
 
-            GREENTEA = "Just boiled leaves.", -- Raw green tea (IT IS JUST LEAF JUICE)
-            BLACKTEA = "A red extract from black leaves. Contradictory.", -- Black tea (RED EXTRACT FROM BLACK LEAF. CONTRADICTION)
-            BLACKTEA_ICED = "Enhanced cooling power.", -- Iced black tea
-            FUER = "Extract from fresh leaves.", -- Fu'er, leaf tea, fern tea
-            MIXFLOWER = "The taste of destroyed beauty.", -- Mixed flower petal tea
-            HIBISCUSTEA = "A solution of intense sourness.", -- Hibiscus tea (CONCENTRATED SOURNESS SOLUTION)
-            CACTUSFLOWER_TEA = "Juice from flesh!", -- Cactus flower tea (JUICE FROM FLESH!) (AFS: The cactus flower tea is green. This is a reference to Yichengunso's parody)
-            LOTUSTEA = "Boiled water lily flowers into water.", -- Lotus tea
-            SUSHIBISCUS = "Quite peculiar.", -- Suicidal tea
-            MOON_BLOSSOM_TEA = "No longer capable of regeneration. Hehehe.",
+            GREENTEA = "JUST BOILED LEAVES", -- RAW GREEN TEA (IT IS JUST LEAF JUICE)
+            BLACKTEA = "A RED EXTRACT FROM BLACK LEAVES CONTRADICTORY", -- BLACK TEA (RED EXTRACT FROM BLACK LEAF CONTRADICTION)
+            BLACKTEA_ICED = "ENHANCED COOLING POWER", -- ICED BLACK TEA
+            FUER = "EXTRACT FROM FRESH LEAVES", -- FU'ER, LEAF TEA, FERN TEA
+            MIXFLOWER = "THE TASTE OF DESTROYED BEAUTY", -- MIXED FLOWER PETAL TEA
+            HIBISCUSTEA = "A SOLUTION OF INTENSE SOURNESS", -- HIBISCUS TEA (CONCENTRATED SOURNESS SOLUTION)
+            CACTUSFLOWER_TEA = "JUICE FROM FLESH!", -- CACTUS FLOWER TEA (JUICE FROM FLESH!) (AFS: THE CACTUS FLOWER TEA IS GREEN THIS IS A REFERENCE TO YICHENGUNSO'S PARODY)
+            LOTUSTEA = "BOILED WATER LILY FLOWERS INTO WATER", -- LOTUS TEA
+            SUSHIBISCUS = "QUITE PECULIAR", -- SUICIDAL TEA
+            MOON_BLOSSOM_TEA = "NO LONGER CAPABLE OF REGENERATION HEHEHE",
 
-            CAFFEINBERRY_JUICE = "Coolant for overclocking.", -- Black coffee
-            TOFFEE_LATTE = "Bolt not included.", -- Toffee nut latte (BOLT NOT INCLUDED)
-            RUINCHA_LATTE = "Mixed bean mixture.", -- Mocha latte (coffee + chocolate)
+            CAFFEINBERRY_JUICE = "COOLANT FOR OVERCLOCKING", -- BLACK COFFEE
+            TOFFEE_LATTE = "BOLT NOT INCLUDED", -- TOFFEE NUT LATTE (BOLT NOT INCLUDED)
+            RUINCHA_LATTE = "MIXED BEAN MIXTURE", -- MOCHA LATTE (COFFEE + CHOCOLATE)
 
-            HOTRUINCOLATE = "Cocoa coolant.", -- Hot chocolate
-            RUINCOLATE_SMOOTHIE = "High-sugar cocoa coolant.", -- Chocolate smoothie (cold)
-            RUINXOCOLATL = "Sugar-free cocoa coolant.", -- Chocolatl (bitter)
-            TEA_RUINCOLATE_LATTE = "Crushed tea leaves and bean extract.", -- Matcha latte
+            HOTRUINCOLATE = "COCOA COOLANT", -- HOT CHOCOLATE
+            RUINCOLATE_SMOOTHIE = "HIGH-SUGAR COCOA COOLANT", -- CHOCOLATE SMOOTHIE (COLD)
+            RUINXOCOLATL = "SUGAR-FREE COCOA COOLANT", -- CHOCOLATL (BITTER)
+            TEA_RUINCOLATE_LATTE = "CRUSHED TEA LEAVES AND BEAN EXTRACT", -- MATCHA LATTE
 
-            MULLED = "Most ethanol lost.", -- Banchao (mulled wine)
-            BUTTERBEER = "Non-alcoholic ethanol antifreeze.", -- Butterbeer (ETHANOL-FREE ETHANOL ANTIFREEZE)
+            MULLED = "MOST ETHANOL LOST", -- BANCHAO (MULLED WINE)
+            BUTTERBEER = "NON-ALCOHOLIC ETHANOL ANTIFREEZE", -- BUTTERBEER (ETHANOL-FREE ETHANOL ANTIFREEZE)
 
-            -- Collaborative Kettle Drinks
+            -- COLLABORATIVE KETTLE DRINKS
 
-            COCONUT_JUICE = "Rich in electrolytes.", -- Cast Away Coconut Juice
-            RAINBOW_SHAKE = "Radiates rainbow rays.", -- Cast Away Rainbow Jelly Shake
-            QUARTZ_SHAKE = "Mix of land and sea organisms.", -- Cast Away Glitter Jelly Shake
-            CHERRY_ROSEBERRIES_TEA = "Fluid with a rose scent.", -- Cherry Forest Rosehip Tea
-            CHERRY_HONEY_TEA = "Attempted sweetness measurement: failed.", -- Cherry Forest Cherry Blossom Honey Tea
-            SWEET_RICE_DRINK = "Warning: Excessive maltose content.", -- Vitahebok Sikhye (WARNING: CONTAINS EXCESSIVE AMOUNTS OF MALTOSE)
-            PINEANANAS_JUICE = "Denies association with sponges.", -- Legion Pineapple Juice
-            ORANGE_JUICE = "Crushed for consumption.", -- More Food Pack Orange Juice
-            STRAWBERRY_SMOOTHIE = "Texture makes me uncomfortable.", -- More Food Pack Strawberry Smoothie
-            STRAWBERRY_MILK_SMOOTHIE = "Strawberries captured in form.", -- More Food Pack Strawberry Smoothie Latte
+            COCONUT_JUICE = "RICH IN ELECTROLYTES", -- CAST AWAY COCONUT JUICE
+            RAINBOW_SHAKE = "RADIATES RAINBOW RAYS", -- CAST AWAY RAINBOW JELLY SHAKE
+            QUARTZ_SHAKE = "MIX OF LAND AND SEA ORGANISMS", -- CAST AWAY GLITTER JELLY SHAKE
+            CHERRY_ROSEBERRIES_TEA = "FLUID WITH A ROSE SCENT", -- CHERRY FOREST ROSEHIP TEA
+            CHERRY_HONEY_TEA = "ATTEMPTED SWEETNESS MEASUREMENT: FAILED", -- CHERRY FOREST CHERRY BLOSSOM HONEY TEA
+            SWEET_RICE_DRINK = "WARNING: EXCESSIVE MALTOSE CONTENT", -- VITAHEBOK SIKHYE (WARNING: CONTAINS EXCESSIVE AMOUNTS OF MALTOSE)
+            PINEANANAS_JUICE = "DENIES ASSOCIATION WITH SPONGES", -- LEGION PINEAPPLE JUICE
+            ORANGE_JUICE = "CRUSHED FOR CONSUMPTION", -- MORE FOOD PACK ORANGE JUICE
+            STRAWBERRY_SMOOTHIE = "TEXTURE MAKES ME UNCOMFORTABLE", -- MORE FOOD PACK STRAWBERRY SMOOTHIE
+            STRAWBERRY_MILK_SMOOTHIE = "STRAWBERRIES CAPTURED IN FORM", -- MORE FOOD PACK STRAWBERRY SMOOTHIE LATTE
 
-            -- Brewery Drinks
+            -- BREWERY DRINKS
 
-            SPOILED_DRINK = "Incompatible with cooling systems.", -- Spoiled Drink
+            SPOILED_DRINK = "INCOMPATIBLE WITH COOLING SYSTEMS", -- SPOILED DRINK
 
-            -- Brewery Soda
+            -- BREWERY SODA
 
-            SODA = "Carbon dioxide solution.", -- Carbonated Water (CO2 SOLUTION)
-            FRUITSODA = "Carbon dioxide solution with added fructose.", -- Fruit Soda (CO2 SOLUTION WITH FRUCTOSE)
-            LEMONLIMESODA = "Contains a large amount of citric acid.", -- Lemon Lime Soda (Fruit Soda upgrade)
-            COLA = "Caramel liquid loved by foolish organisms.", -- Cola
-            COLAQUANTUM = "Contains a large amount of radiation.", -- Quantum Cola
-            LUMPY_BEER = "Incomprehensible obsession with carbonation by organisms.", -- Root Beer (not alcoholic)
+            SODA = "CARBON DIOXIDE SOLUTION", -- CARBONATED WATER (CO2 SOLUTION)
+            FRUITSODA = "CARBON DIOXIDE SOLUTION WITH ADDED FRUCTOSE", -- FRUIT SODA (CO2 SOLUTION WITH FRUCTOSE)
+            LEMONLIMESODA = "CONTAINS A LARGE AMOUNT OF CITRIC ACID", -- LEMON LIME SODA (FRUIT SODA UPGRADE)
+            COLA = "CARAMEL LIQUID LOVED BY FOOLISH ORGANISMS", -- COLA
+            COLAQUANTUM = "CONTAINS A LARGE AMOUNT OF RADIATION", -- QUANTUM COLA
+            LUMPY_BEER = "INCOMPREHENSIBLE OBSESSION WITH CARBONATION BY ORGANISMS", -- ROOT BEER (NOT ALCOHOLIC)
 
-            -- Brewery Spirits
+            -- BREWERY SPIRITS
 
-            CORN_BEER = "Corn - Alcohol add-on installed.", -- Corn Beer
-            MADHU = "Processed product of a day's work.", -- Madhu Honey Wine
-            WINE = "Berries that have undergone an inefficient process.", -- Wine (basic berry brewing)
-            NOBLEWINE = "Underwent one more brewing process.", -- Noble Wine (cooked berry brewing)
-            SPARKLINGWINE = "Contains all the elements fatal to the digestive system.", -- Sparkling Wine
-            GLOWBERRYWINE = "Self-illuminating alcohol.", -- Glow Berry Wine
-            KUMIS = "'/d3d7d4' preserved.", -- Kumis, fermented mare's milk (Fermentation: d3d7d4 is a pale white color code)
-            LUMPY_WINE = "Organisms' roots used for various purposes.", -- Sur Wine (potato, sweet potato, etc. root liquor)
-            PULQUE = "When will the end of self-evolution of included microbes be?", -- Pulque (Agave wine)
-            RUINCACAO_WINE = "Cacao. New possibilities discovered.", -- Cacao Wine
+            CORN_BEER = "CORN - ALCOHOL ADD-ON INSTALLED", -- CORN BEER
+            MADHU = "PROCESSED PRODUCT OF A DAY'S WORK", -- MADHU HONEY WINE
+            WINE = "BERRIES THAT HAVE UNDERGONE AN INEFFICIENT PROCESS", -- WINE (BASIC BERRY BREWING)
+            NOBLEWINE = "UNDERWENT ONE MORE BREWING PROCESS", -- NOBLE WINE (COOKED BERRY BREWING)
+            SPARKLINGWINE = "CONTAINS ALL THE ELEMENTS FATAL TO THE DIGESTIVE SYSTEM", -- SPARKLING WINE
+            GLOWBERRYWINE = "SELF-ILLUMINATING ALCOHOL", -- GLOW BERRY WINE
+            KUMIS = "'/D3D7D4' PRESERVED", -- KUMIS, FERMENTED MARE'S MILK (FERMENTATION: D3D7D4 IS A PALE WHITE COLOR CODE)
+            LUMPY_WINE = "ORGANISMS' ROOTS USED FOR VARIOUS PURPOSES", -- SUR WINE (POTATO, SWEET POTATO, ETC ROOT LIQUOR)
+            PULQUE = "WHEN WILL THE END OF SELF-EVOLUTION OF INCLUDED MICROBES BE?", -- PULQUE (AGAVE WINE)
+            RUINCACAO_WINE = "CACAO NEW POSSIBILITIES DISCOVERED", -- CACAO WINE
 
-            -- Collaborative Soda
+            -- COLLABORATIVE SODA
 
-            CHERRY_DOCTOR_COLA = "Who created such a hybrid?", -- Cherry Forest Doctor Pepper (Doctor Cherry)
-            PINEANANASSODA = "Pine tuning used.", -- Carbonated Pineapple (Oranchi)
-            ORANGESODA = "Produced to encourage the behavior of organisms.", -- Carbonated Orange (Fanta)
-            STRAWBERRYSODA = "Evokes thoughts of a demon soul.", -- Carbonated Strawberry (Welch's Strawberry)
+            CHERRY_DOCTOR_COLA = "WHO CREATED SUCH A HYBRID?", -- CHERRY FOREST DOCTOR PEPPER (DOCTOR CHERRY)
+            PINEANANASSODA = "PINE TUNING USED", -- CARBONATED PINEAPPLE (ORANCHI)
+            ORANGESODA = "PRODUCED TO ENCOURAGE THE BEHAVIOR OF ORGANISMS", -- CARBONATED ORANGE (FANTA)
+            STRAWBERRYSODA = "EVOKES THOUGHTS OF A DEMON SOUL", -- CARBONATED STRAWBERRY (WELCH'S STRAWBERRY)
 
-            -- Collaborative Spirits
+            -- COLLABORATIVE SPIRITS
 
-            AUROBOW = "Includes a playful add-on.", -- Cast Away Rainbow Jelly Wine
-            COCONUT_WINE = "Lubricating oil turned into a drink.", -- Cast Away Coconut Wine
-            CHERRY_BLOOM_MADHU = "Pre-made ethanol.", -- Cherry Forest Cherry Blossom Honey Wine
-            GIANT_BLUEBERRY_WINE = "Still dangerous.", -- Vitahebok Boom! Berry Sapphire (Explodes when ignited)
-            RICE_WINE = "Byproduct processed.", -- Vitahebok Makgeolli (Rice wine)
-            WHEAT_BEER = "Grain wastefulness.", -- Heap of Food Wheat Beer
-            PALE_BEER = "Conventional immiscibility.", -- Legion Pale Ale (Uses Monstera fruit for the green color)
+            AUROBOW = "INCLUDES A PLAYFUL ADD-ON", -- CAST AWAY RAINBOW JELLY WINE
+            COCONUT_WINE = "LUBRICATING OIL TURNED INTO A DRINK", -- CAST AWAY COCONUT WINE
+            CHERRY_BLOOM_MADHU = "PRE-MADE ETHANOL", -- CHERRY FOREST CHERRY BLOSSOM HONEY WINE
+            GIANT_BLUEBERRY_WINE = "STILL DANGEROUS", -- VITAHEBOK BOOM! BERRY SAPPHIRE (EXPLODES WHEN IGNITED)
+            RICE_WINE = "BYPRODUCT PROCESSED", -- VITAHEBOK MAKGEOLLI (RICE WINE)
+            WHEAT_BEER = "GRAIN WASTEFULNESS", -- HEAP OF FOOD WHEAT BEER
+            PALE_BEER = "CONVENTIONAL IMMISCIBILITY", -- LEGION PALE ALE (USES MONSTERA FRUIT FOR THE GREEN COLOR)
 
-            -- Distilled Spirits
+            -- DISTILLED SPIRITS
 
-            DISINFECTANT = "Germicidal solution.", -- Disinfectant (ANTISEPTIC REPAIR AGENT)
-            CORN_WHISKEY = "Higher concentration achieved.", -- Corn Whiskey
-            LUMPY_VODKA = "Very high ethanol concentration.", -- Vodka
-            TEQUILA = "Infrared and resonance of the sun.", -- Tequila
-            MADHU_RUM = "Compatible with the environment on the stomach.", -- Rum
-            BERRY_BRANDY = "Truly lengthy process.", -- Berry Brandy
-            AREUHI = "P-type fluid.", -- Kumis Distilled Spirits (Fermentation: d3d7d4 is a pale white color code)
+            DISINFECTANT = "GERMICIDAL SOLUTION", -- DISINFECTANT (ANTISEPTIC REPAIR AGENT)
+            CORN_WHISKEY = "HIGHER CONCENTRATION ACHIEVED", -- CORN WHISKEY
+            LUMPY_VODKA = "VERY HIGH ETHANOL CONCENTRATION", -- VODKA
+            TEQUILA = "INFRARED AND RESONANCE OF THE SUN", -- TEQUILA
+            MADHU_RUM = "COMPATIBLE WITH THE ENVIRONMENT ON THE STOMACH", -- RUM
+            BERRY_BRANDY = "TRULY LENGTHY PROCESS", -- BERRY BRANDY
+            AREUHI = "P-TYPE FLUID", -- KUMIS DISTILLED SPIRITS (FERMENTATION: D3D7D4 IS A PALE WHITE COLOR CODE)
 
-            -- Warly Exclusive Distilled Spirits
+            -- WARLY EXCLUSIVE DISTILLED SPIRITS
 
-            BERRY_GIN = "Popular in human society.", -- Gin
-            GLOWBERRY_GIN = "Contains tremendous dynamic energy.", -- Glow Berry Gin (Explodes when ignited)
-            ABSINTHE = "Makes you want to cut your ears.", -- Absinthe
-            TEA_LUMPY_VODKA = "Abundant chlorophyll content.", -- Green Tea Liqueur
-            PETALS_BERRY_BRANDY = "Just like a diffuser.", -- Rose Petal Brandy
-            KAHLUA = "High-energy function included.", -- Coffee Liqueur Kahlua
-            NUT_CORN_WHISKEY = "Where is the bolt?", -- Nut Whiskey (Kahlua)
-            RUINCACAO_CREAM_LIQUEUR = "Disgusting tar and protein ethanol extract",
-            RUMCHATA = "Why mix disgusting organics?",
+            BERRY_GIN = "POPULAR IN HUMAN SOCIETY", -- GIN
+            GLOWBERRY_GIN = "CONTAINS TREMENDOUS DYNAMIC ENERGY", -- GLOW BERRY GIN (EXPLODES WHEN IGNITED)
+            ABSINTHE = "MAKES YOU WANT TO CUT YOUR EARS", -- ABSINTHE
+            TEA_LUMPY_VODKA = "ABUNDANT CHLOROPHYLL CONTENT", -- GREEN TEA LIQUEUR
+            PETALS_BERRY_BRANDY = "JUST LIKE A DIFFUSER", -- ROSE PETAL BRANDY
+            KAHLUA = "HIGH-ENERGY FUNCTION INCLUDED", -- COFFEE LIQUEUR KAHLUA
+            NUT_CORN_WHISKEY = "WHERE IS THE BOLT?", -- NUT WHISKEY (KAHLUA)
+            RUINCACAO_CREAM_LIQUEUR = "DISGUSTING TAR AND PROTEIN ETHANOL EXTRACT",
+            RUMCHATA = "WHY MIX DISGUSTING ORGANICS?",
 
-            -- Collaborative Distilled Spirits
+            -- COLLABORATIVE DISTILLED SPIRITS
 
-            MOONWAY = "Preserves luminescent organic matter.", -- Cast Away Rainbow Jelly Distilled Spirits
-            ARRACK = "Highly fibrous ethanol.", -- Arrack (Indonesian version of Coconut Wine)
-            CHERRY_BLOOM_RUM = "Unnecessary VFX included.", -- Cherry Blossom Honey Rum (Cherry petals floating)
-            RICE_SPIRITS = "Byproduct remains.", -- Rice Spirits (Cheongju)
-            WHEAT_WHISKEY = "Invested time and precious grains.", -- Wheat Whiskey
-            PALE_WHISKEY = "American style.", -- Pale Malt Whiskey
+            MOONWAY = "PRESERVES LUMINESCENT ORGANIC MATTER", -- CAST AWAY RAINBOW JELLY DISTILLED SPIRITS
+            ARRACK = "HIGHLY FIBROUS ETHANOL", -- ARRACK (INDONESIAN VERSION OF COCONUT WINE)
+            CHERRY_BLOOM_RUM = "UNNECESSARY VFX INCLUDED", -- CHERRY BLOSSOM HONEY RUM (CHERRY PETALS FLOATING)
+            RICE_SPIRITS = "BYPRODUCT REMAINS", -- RICE SPIRITS (CHEONGJU)
+            WHEAT_WHISKEY = "INVESTED TIME AND PRECIOUS GRAINS", -- WHEAT WHISKEY
+            PALE_WHISKEY = "AMERICAN STYLE", -- PALE MALT WHISKEY
 
-            -- Warly Exclusive Collaborative Distilled Spirits
+            -- WARLY EXCLUSIVE COLLABORATIVE DISTILLED SPIRITS
 
-            NUT_COCONUT_BRANDY = "Exclusive to unpleasant marine organisms' byproducts.", -- Coconut Brandy (Renamed to Caribbean Brandy because Caribbean Rum could not be created)
-            GIANT_BLUEBERRY_GIN = "Has tremendous kinetic energy.", -- Boom Berry Sapphire (Explodes when ignited)
+            NUT_COCONUT_BRANDY = "EXCLUSIVE TO UNPLEASANT MARINE ORGANISMS' BYPRODUCTS", -- COCONUT BRANDY (RENAMED TO CARIBBEAN BRANDY BECAUSE CARIBBEAN RUM COULD NOT BE CREATED)
+            GIANT_BLUEBERRY_GIN = "HAS TREMENDOUS KINETIC ENERGY", -- BOOM BERRY SAPPHIRE (EXPLODES WHEN IGNITED)
 
-            -- Pot Recipes
+            -- POT RECIPES
 
-            DARK_RUINCOLATE = "Processed pure cacao mass.", -- Dark Chocolate
-            WHITE_RUINCOLATE = "Contains 20% cocoa butter.", -- White Chocolate
-            RUINCOLATE = "Processed cacao.", -- Just Chocolate
-            RUIN_SCHOKAKOLA = "Solid fuel booster.", -- Chokakola
+            DARK_RUINCOLATE = "PROCESSED PURE CACAO MASS", -- DARK CHOCOLATE
+            WHITE_RUINCOLATE = "CONTAINS 20% COCOA BUTTER", -- WHITE CHOCOLATE
+            RUINCOLATE = "PROCESSED CACAO", -- JUST CHOCOLATE
+            RUIN_SCHOKAKOLA = "SOLID FUEL BOOSTER", -- CHOKAKOLA
 
             BUCKET_STEEL_EMPTY =
             {
-                EMPTY = "Advanced sturdiness.", -- Empty Steel Bucket (ADVANCED STURDINESS)
-                FULL = "Even damn rain has its uses.", -- Clean Rainwater (EVEN DAMN RAIN HAS ITS USES)
-                FULL_ICE = "Frozen.", -- Frozen Rainwater (IT IS FROZEN)
-                DIRTY = "Contents corrupted.", -- Dirty Water (CONTENT CORRUPTED)
-                DIRTY_ICE = "Filthy solid water.", -- Dirty Frozen Water (FILTHY SOLID WATER)
+                EMPTY = "ADVANCED STURDINESS", -- EMPTY STEEL BUCKET (ADVANCED STURDINESS)
+                FULL = "EVEN DAMN RAIN HAS ITS USES", -- CLEAN RAINWATER (EVEN DAMN RAIN HAS ITS USES)
+                FULL_ICE = "FROZEN", -- FROZEN RAINWATER (IT IS FROZEN)
+                DIRTY = "CONTENTS CORRUPTED", -- DIRTY WATER (CONTENT CORRUPTED)
+                DIRTY_ICE = "FILTHY SOLID WATER", -- DIRTY FROZEN WATER (FILTHY SOLID WATER)
             },
 
             BUCKET_WOODIE_EMPTY =
             {
-                EMPTY = "No integrity issue despite the rustic appearance.", -- Empty Wooden Bucket (NO INTEGRITY ISSUE DESPITE THE RUSTIC APPEARANCE)
-                FULL = "Even damn rain has its uses.", -- Clean Rainwater (EVEN DAMN RAIN HAS ITS USES)
-                FULL_ICE = "Frozen.", -- Frozen Rainwater (IT IS FROZEN)
-                DIRTY = "Contents corrupted.", -- Dirty Water (CONTENT CORRUPTED)
-                DIRTY_ICE = "Filthy solid water.", -- Dirty Frozen Water (FILTHY SOLID WATER)
+                EMPTY = "NO INTEGRITY ISSUE DESPITE THE RUSTIC APPEARANCE", -- EMPTY WOODEN BUCKET (NO INTEGRITY ISSUE DESPITE THE RUSTIC APPEARANCE)
+                FULL = "EVEN DAMN RAIN HAS ITS USES", -- CLEAN RAINWATER (EVEN DAMN RAIN HAS ITS USES)
+                FULL_ICE = "FROZEN", -- FROZEN RAINWATER (IT IS FROZEN)
+                DIRTY = "CONTENTS CORRUPTED", -- DIRTY WATER (CONTENT CORRUPTED)
+                DIRTY_ICE = "FILTHY SOLID WATER", -- DIRTY FROZEN WATER (FILTHY SOLID WATER)
             },
 
             BUCKET_EMPTY =
             {
-                EMPTY = "It contains horrible water.", -- Empty Wooden Bucket (IT CONTAINS HORRIBLE WATER)
-                FULL = "Even damn rain has its uses.", -- Clean Rainwater (EVEN DAMN RAIN HAS ITS USES)
-                FULL_ICE = "Frozen.", -- Frozen Rainwater
-                DIRTY = "Contents corrupted.", -- Dirty Water (CONTENT CORRUPTED)
-                DIRTY_ICE = "Dirty and solid.", -- Dirty Frozen Water
+                EMPTY = "IT CONTAINS HORRIBLE WATER", -- EMPTY WOODEN BUCKET (IT CONTAINS HORRIBLE WATER)
+                FULL = "EVEN DAMN RAIN HAS ITS USES", -- CLEAN RAINWATER (EVEN DAMN RAIN HAS ITS USES)
+                FULL_ICE = "FROZEN", -- FROZEN RAINWATER
+                DIRTY = "CONTENTS CORRUPTED", -- DIRTY WATER (CONTENT CORRUPTED)
+                DIRTY_ICE = "DIRTY AND SOLID", -- DIRTY FROZEN WATER
             },
 
             DESALINATOR =
             {
-                EMPTY = "Input required.", -- Desalinator (NO WATER)
-                PURIFY_LONG = "Salt separation in progress.", -- Desalinator (LOTS OF TIME LEFT)
-                PURIFY_SHORT = "Salt separation almost complete.", -- Desalinator (ALMOST DONE)
-                HASWATER = "Desalination successful.", -- Desalinator (CLEAN WATER)
-                BURNT = "Functionality lost.", -- Burnt Desalinator (OUT OF ORDER)
-                HASSALT = "Salt removal needed.", -- Desalinator (SALT LEFT)
+                EMPTY = "INPUT REQUIRED", -- DESALINATOR (NO WATER)
+                PURIFY_LONG = "SALT SEPARATION IN PROGRESS", -- DESALINATOR (LOTS OF TIME LEFT)
+                PURIFY_SHORT = "SALT SEPARATION ALMOST COMPLETE", -- DESALINATOR (ALMOST DONE)
+                HASWATER = "DESALINATION SUCCESSFUL", -- DESALINATOR (CLEAN WATER)
+                BURNT = "FUNCTIONALITY LOST", -- BURNT DESALINATOR (OUT OF ORDER)
+                HASSALT = "SALT REMOVAL NEEDED", -- DESALINATOR (SALT LEFT)
             },
 
             BARREL =
             {
-                GENERIC = "External water storage device.", -- Barrel (EMPTY)
-                BURNT = "Water.exe not responding.", -- Burnt Barrel
+                GENERIC = "EXTERNAL WATER STORAGE DEVICE", -- BARREL (EMPTY)
+                BURNT = "WATEREXE NOT RESPONDING", -- BURNT BARREL
             },
 
             BREWERY =
             {
-                EMPTY = "Microorganism incubator.", -- Brewery (EMPTY)
-                BURNT = "Forced shutdown in progress.", -- Burnt Brewery (DEVICE SHUT DOWN)
-                FERMENTING_LONG = "It will take a long time.", -- Brewery (LOTS OF TIME LEFT)
-                FERMENTING_SHORT = "Almost done.", -- Brewery (ALMOST DONE)
-                DONE = "Fermentation complete.", -- Brewery (INCUBATION COMPLETE)
+                EMPTY = "MICROORGANISM INCUBATOR", -- BREWERY (EMPTY)
+                BURNT = "FORCED SHUTDOWN IN PROGRESS", -- BURNT BREWERY (DEVICE SHUT DOWN)
+                FERMENTING_LONG = "IT WILL TAKE A LONG TIME", -- BREWERY (LOTS OF TIME LEFT)
+                FERMENTING_SHORT = "ALMOST DONE", -- BREWERY (ALMOST DONE)
+                DONE = "FERMENTATION COMPLETE", -- BREWERY (INCUBATION COMPLETE)
             },
 
-            CAMPKETTLE_ITEM = "Primitive method of purification.", -- Camp Kettle Item (PRIMITIVE METHOD OF PURIFICATION)
+            CAMPKETTLE_ITEM = "PRIMITIVE METHOD OF PURIFICATION", -- CAMP KETTLE ITEM (PRIMITIVE METHOD OF PURIFICATION)
             CAMPKETTLE =
             {
-                GENERIC = "Moisture replenishment needed.", -- Camp Kettle (NO WATER)
-                BOILING_LONG = "It will take time.", -- Camp Kettle (STARTED BOILING)
-                BOILING_SHORT = "Almost finished.", -- Camp Kettle (ALMOST DONE)
-                DONE = "Purification complete.", -- Camp Kettle (PURIFICATION COMPLETE)
-                STOP = "Heating required.", -- Camp Kettle (NO FIRE, CONTENT CORRUPTED)
+                GENERIC = "MOISTURE REPLENISHMENT NEEDED", -- CAMP KETTLE (NO WATER)
+                BOILING_LONG = "IT WILL TAKE TIME", -- CAMP KETTLE (STARTED BOILING)
+                BOILING_SHORT = "ALMOST FINISHED", -- CAMP KETTLE (ALMOST DONE)
+                DONE = "PURIFICATION COMPLETE", -- CAMP KETTLE (PURIFICATION COMPLETE)
+                STOP = "HEATING REQUIRED", -- CAMP KETTLE (NO FIRE, CONTENT CORRUPTED)
             },
 
-            CAMPDESALINATOR_ITEM = "Device for salt removal.", -- Camp Desalinator Item
+            CAMPDESALINATOR_ITEM = "DEVICE FOR SALT REMOVAL", -- CAMP DESALINATOR ITEM
             CAMPDESALINATOR =
             {
-                GENERIC = "Saltwater replenishment needed.", -- Camp Desalinator (NO WATER)
-                BOILING_LONG = "It will take time.", -- Camp Desalinator (STARTED BOILING)
-                BOILING_SHORT = "Almost finished.", -- Camp Desalinator (ALMOST DONE)
-                DONE = "Salt removal complete.", -- Camp Desalinator (PURIFICATION COMPLETE)
-                STOP = "Heating required.", -- Camp Desalinator (NO FIRE, SALT LEFT)
+                GENERIC = "SALTWATER REPLENISHMENT NEEDED", -- CAMP DESALINATOR (NO WATER)
+                BOILING_LONG = "IT WILL TAKE TIME", -- CAMP DESALINATOR (STARTED BOILING)
+                BOILING_SHORT = "ALMOST FINISHED", -- CAMP DESALINATOR (ALMOST DONE)
+                DONE = "SALT REMOVAL COMPLETE", -- CAMP DESALINATOR (PURIFICATION COMPLETE)
+                STOP = "HEATING REQUIRED", -- CAMP DESALINATOR (NO FIRE, SALT LEFT)
             },
 
             KETTLE =
             {
-                EMPTY = "Bestow purpose upon horrible water.", -- Empty Kettle (EMPTY)
-                BURNT = "Kettle overheated.", -- Burnt Kettle
-                BOILING_LONG = "It will take time.", -- Kettle (STARTED BOILING)
-                BOILING_SHORT = "Almost finished.", -- Kettle (ALMOST DONE)
-                DONE = "Coolant mixture complete.", -- Kettle (COOLANT MIXTURE COMPLETE)
-                PURIFY_LONG = "Additional purification in progress.", -- Kettle (STARTED PURIFYING)
-                PURIFY_SHORT = "Purification almost complete.", -- Kettle (ALMOST DONE)
-                HASWATER = "Additional input required.", -- Kettle (CLEAN WATER)
-                MELT_LONG = "Thawing in progress.", -- Kettle (STARTED MELTING)
-                MELT_SHORT = "Thawing almost complete.", -- Kettle (ALMOST DONE)
+                EMPTY = "BESTOW PURPOSE UPON HORRIBLE WATER", -- EMPTY KETTLE (EMPTY)
+                BURNT = "KETTLE OVERHEATED", -- BURNT KETTLE
+                BOILING_LONG = "IT WILL TAKE TIME", -- KETTLE (STARTED BOILING)
+                BOILING_SHORT = "ALMOST FINISHED", -- KETTLE (ALMOST DONE)
+                DONE = "COOLANT MIXTURE COMPLETE", -- KETTLE (COOLANT MIXTURE COMPLETE)
+                PURIFY_LONG = "ADDITIONAL PURIFICATION IN PROGRESS", -- KETTLE (STARTED PURIFYING)
+                PURIFY_SHORT = "PURIFICATION ALMOST COMPLETE", -- KETTLE (ALMOST DONE)
+                HASWATER = "ADDITIONAL INPUT REQUIRED", -- KETTLE (CLEAN WATER)
+                MELT_LONG = "THAWING IN PROGRESS", -- KETTLE (STARTED MELTING)
+                MELT_SHORT = "THAWING ALMOST COMPLETE", -- KETTLE (ALMOST DONE)
             },
 
             PORTABLEKETTLE_ITEM =
             {
-                GENERIC = "Nice to meet you, my brother.", -- Portable Kettle Item
-                EMPTY = "Code 418: Teapot.", -- Installed Empty Portable Kettle (CODE 418: THIS IS A TEAPOT)
-                BOILING_LONG = "It will take time.", -- Portable Kettle (STARTED BOILING)
-                BOILING_SHORT = "Almost finished.", -- Portable Kettle (ALMOST DONE)
-                DONE = "Coolant mixture complete.", -- Portable Kettle (COOLANT MIXTURE COMPLETE)
-                PURIFY_LONG = "Additional purification in progress.", -- Portable Kettle (STARTED PURIFYING)
-                PURIFY_SHORT = "Purification almost complete.", -- Portable Kettle (ALMOST DONE)
-                HASWATER = "Additional input required.", -- Portable Kettle (CLEAN WATER)
-                MELT_LONG = "Thawing in progress.", -- Portable Kettle (STARTED MELTING)
-                MELT_SHORT = "Thawing almost complete.", -- Portable Kettle (ALMOST DONE)
+                GENERIC = "NICE TO MEET YOU, MY BROTHER", -- PORTABLE KETTLE ITEM
+                EMPTY = "CODE 418: TEAPOT", -- INSTALLED EMPTY PORTABLE KETTLE (CODE 418: THIS IS A TEAPOT)
+                BOILING_LONG = "IT WILL TAKE TIME", -- PORTABLE KETTLE (STARTED BOILING)
+                BOILING_SHORT = "ALMOST FINISHED", -- PORTABLE KETTLE (ALMOST DONE)
+                DONE = "COOLANT MIXTURE COMPLETE", -- PORTABLE KETTLE (COOLANT MIXTURE COMPLETE)
+                PURIFY_LONG = "ADDITIONAL PURIFICATION IN PROGRESS", -- PORTABLE KETTLE (STARTED PURIFYING)
+                PURIFY_SHORT = "PURIFICATION ALMOST COMPLETE", -- PORTABLE KETTLE (ALMOST DONE)
+                HASWATER = "ADDITIONAL INPUT REQUIRED", -- PORTABLE KETTLE (CLEAN WATER)
+                MELT_LONG = "THAWING IN PROGRESS", -- PORTABLE KETTLE (STARTED MELTING)
+                MELT_SHORT = "THAWING ALMOST COMPLETE", -- PORTABLE KETTLE (ALMOST DONE)
             },
 
             DISTILLERS =
             {
-                EMPTY = "Another great sibling.", -- Distillers (EMPTY)
-                DISTILLTING_LONG = "It will take a long time.", -- Distillers (LOTS OF TIME LEFT)
-                DISTILLING_SHORT = "Almost done.", -- Distillers (ALMOST DONE)
-                DONE = "Distillation process complete.", -- Distillers (INCUBATION COMPLETE)
+                EMPTY = "ANOTHER GREAT SIBLING", -- DISTILLERS (EMPTY)
+                DISTILLTING_LONG = "IT WILL TAKE A LONG TIME", -- DISTILLERS (LOTS OF TIME LEFT)
+                DISTILLING_SHORT = "ALMOST DONE", -- DISTILLERS (ALMOST DONE)
+                DONE = "DISTILLATION PROCESS COMPLETE", -- DISTILLERS (INCUBATION COMPLETE)
             },
 
             WELL_WATERPUMP = {
-                HIGH_PRESSURE = "Maximum remaining pressure.", -- Well Water Pump (MAXIMUM PRESSURE)
-                MIDDLE_PRESSURE = "Pressure at an adequate level.", -- Well Water Pump (MIDDLE PRESSURE)
-                LOW_PRESSURE = "Low remaining pressure.", -- Well Water Pump (LOW PRESSURE)
-                RECHARG_PRESSURE = "Time needed to restore pressure.", -- Well Water Pump (OUT OF ORDER)
+                HIGH_PRESSURE = "MAXIMUM REMAINING PRESSURE", -- WELL WATER PUMP (MAXIMUM PRESSURE)
+                MIDDLE_PRESSURE = "PRESSURE AT AN ADEQUATE LEVEL", -- WELL WATER PUMP (MIDDLE PRESSURE)
+                LOW_PRESSURE = "LOW REMAINING PRESSURE", -- WELL WATER PUMP (LOW PRESSURE)
+                RECHARG_PRESSURE = "TIME NEEDED TO RESTORE PRESSURE", -- WELL WATER PUMP (OUT OF ORDER)
             },
 
             WELL_SPRINKLER =
             {
-                LOWFUEL = "Do I need to supply fuel to the danger molecule?", -- Well Sprinkler (LOW FUEL)
-                ON = "Aaaah!", -- Well Sprinkler (RUNNING)
-                OFF = "Keep watching.", -- Well Sprinkler (OFF)
+                LOWFUEL = "DO I NEED TO SUPPLY FUEL TO THE DANGER MOLECULE?", -- WELL SPRINKLER (LOW FUEL)
+                ON = "AAAAH!", -- WELL SPRINKLER (RUNNING)
+                OFF = "KEEP WATCHING", -- WELL SPRINKLER (OFF)
             },
         },
     }

@@ -43,6 +43,8 @@ return {
             HOLE = "I can hear water, so it looks like I dug it properly.", -- Well hole
             WELL = "A construction used to draw water from deep aquifers.", -- Well
 
+            WX78MODULE_NONEDRUNK = "They dislike organics, but don't seem opposed to taking inspiration from them.", -- 78전용 묘듈
+
             -- Water mode plants
 
             TEA_TREE = "A type of small camellia tree.", -- Tea tree

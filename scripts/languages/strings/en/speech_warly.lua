@@ -43,6 +43,8 @@ return {
         HOLE = "I can hear the sound of flowing water.", -- Well hole
         WELL = "Let's extend our supply of drinking water!", -- Well
 
+        WX78MODULE_NONEDRUNK = "They give our metal friend a little extra zest, non?", -- 78전용 묘듈
+
         -- Waterlogged Plant Mod
 
         TEA_TREE = "Usually found across the sea, I suppose.", -- Tea tree

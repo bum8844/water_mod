@@ -43,6 +43,8 @@ return {
             HOLE = "I can hear water down there.", -- Well hole
             WELL = "A well for the thirsty.", -- Well
 
+            WX78MODULE_NONEDRUNK = "These boons shall empower our metal warrior.", -- 78전용 묘듈
+
             -- Waterlogged plants
 
             TEA_TREE = "A fragrant shrub.", -- Tea tree

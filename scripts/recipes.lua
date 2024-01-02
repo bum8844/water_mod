@@ -40,14 +40,14 @@ local function ModAtlas()
 end
 
 local NOHOF = true
-local NOSW = false
+local SWON = false
 
 for k,mod_id in ipairs(GLOBAL.KnownModIndex:GetModsToLoad()) do 
 	if mod_id == "workshop-2334209327" then
 		NOHOF = false
 	end
     if mod_id == "workshop-1467214795"  then
-        NOSW = true
+        SWON = true
     end
 end
 
@@ -85,7 +85,7 @@ AddRecipeToFilter("shadow_forge_kit","SECRETKNOWLEDGE")
 AddRecipeToFilter("blueprint_craftingset_ruins_builder","SECRETKNOWLEDGE")
 AddRecipeToFilter("blueprint_craftingset_ruinsglow_builder","SECRETKNOWLEDGE")
 
-if NOSW then
+if SWON then
     -- OBSIDIAN
     AddRecipeToFilter("obsidianaxe","SECRETKNOWLEDGE")
     AddRecipeToFilter("obsidianmachete","SECRETKNOWLEDGE")
@@ -177,6 +177,9 @@ SortAfter("well_sprinkler_kit","well_kit","GARDENING")
 AddRecipe2("well_burying_kit",{Ingredient("boards",4),Ingredient("hammer",1)},TECH.SCIENCE_TWO,{atlas = ModAtlas(), image = "well_burying_kit.tex"},{"GARDENING","REFINE","HYDRATION"})
 --SortAfter("well_burying_kit","well_waterpump_kit","GARDENING")
 SortAfter("well_burying_kit","well_sprinkler_kit","GARDENING")
+
+AddRecipe2("wx78module_nonedrunk",{Ingredient("scandata",3),Ingredient("fruitflyfruit",1),Ingredient("gears",2),Ingredient("wx78module_maxhunger1",1)},TECH.ROBOTMODULECRAFT_ONE,{atlas = ModAtlas(), image = "wx78module_nonedrunk.tex", builder_tag="upgrademoduleowner"},{"CHARACTER"})
+SortAfter("wx78module_nonedrunk","wx78module_maxhunger1","CHARACTER")
 
 AddDeconstructRecipe("well", {Ingredient("boards",2),Ingredient("cutstone",6)})
 

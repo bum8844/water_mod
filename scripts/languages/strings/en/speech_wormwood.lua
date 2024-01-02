@@ -43,6 +43,8 @@ return {
             HOLE = "There's water inside", -- Well hole
             WELL = "You can get water", -- Well
 
+            WX78MODULE_NONEDRUNK = "Beep boops", -- 78전용 묘듈
+
             -- Water mode plants
 
             TEA_TREE = "Stylish friend", -- Tea tree

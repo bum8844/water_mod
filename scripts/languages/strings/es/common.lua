@@ -65,6 +65,9 @@ STRINGS.ACTIONS.FERMENT = "Fermentar"
 STRINGS.ACTIONS.DISITLL = "Destilar"
 STRINGS.ACTIONS.BURYING = "Enterrando"
 
+STRINGS.NAMES.WX78MODULE_NONEDRUNK = "Súper-A.D.T Circuito"
+STRINGS.RECIPE_DESC.WX78MODULE_NONEDRUNK = "Digerirá etanol sin emborracharse."
+
 -- Libro de bebidas
 STRINGS.NAMES.BOILBOOK = "Libro de bebidas"
 STRINGS.RECIPE_DESC.BOILBOOK = "Revise todas sus recetas de bebida." 

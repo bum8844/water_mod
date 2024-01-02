@@ -43,6 +43,8 @@ return {
 		HOLE = "I wonder if it leads to the other side of the world?",
 		WELL = "What's wrong Woby? Did somebody fall in?",
 
+		WX78MODULE_NONEDRUNK = "Robot guts! Neat!", -- 78전용 묘듈
+		
 	    -- 물 모드 식물
 
 		TEA_TREE = "Nothing about tee treas in the handbook.",

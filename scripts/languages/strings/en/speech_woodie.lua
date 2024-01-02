@@ -43,6 +43,8 @@ return {
             HOLE = "Yikes, we should be careful here.", -- Well hole
             WELL = "Every town should have one of these.", -- Well
 
+            WX78MODULE_NONEDRUNK = "Some fancy robot bits.", -- 78전용 묘듈
+            
             -- Water mode plants
 
             TEA_TREE = "It looks like a fence made of trees.", -- Tea Tree

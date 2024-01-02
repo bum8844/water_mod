@@ -1,6 +1,15 @@
+local function onactive(self, onactive)
+	if onactive then
+		self.inst:AddTag("drunk_immunity")
+	else
+		self.inst:RemoveTag("drunk_immunity")
+	end
+end
+
 local Dcapacity = Class(function(self,inst)
 	self.inst = inst
 
+	self.nonedrunk = nil
 	self.max_capacity = TUNING.MAX_CPACITY or 5
 	self.capacity = 0
 	self.capacity_half = math.ceil(self.max_capacity*.5)
@@ -33,7 +42,9 @@ local Dcapacity = Class(function(self,inst)
 	inst:ListenForEvent("mightiness_statechange",self.SetCapacity_max)
 	end,
 	nil,
-	nil
+	{
+    	nonedrunk = onactive,
+	}
 )
 
 local function Done_Intoxication(inst, self)
@@ -63,6 +74,8 @@ function Dcapacity:GetCapacity()
 end
 
 function Dcapacity:Start_Intoxication(num)
+	local mult_time = 1
+
 	self.capacity = self.capacity + num
 
 	if self.intoxication_task ~= nil then
@@ -70,7 +83,19 @@ function Dcapacity:Start_Intoxication(num)
 		self.intoxication_task = nil
 	end
 
-	self.left_timer = GetTime() + self.timer
+	if self.inst.components.skilltreeupdater then
+		local skilltreeupdater = self.inst.components.skilltreeupdater
+		local mightiness = self.inst.components.mightiness 
+		if mightiness and skilltreeupdater:IsActivated("wathgrithr_combat_defense") and mightiness:GetCurrent() > mightiness:GetMax() then
+			mult_time = 0.4
+		elseif skilltreeupdater:IsActivated("wathgrithr_combat_defense") then
+			mult_time = 0.2
+		end
+	elseif self.nonedrunk then
+		mult_time = 0.6
+	end
+
+	self.left_timer = GetTime() + (self.timer * mult_time)
 
 	self.intoxication_task = self.inst:DoTaskInTime(self.timer,Done_Intoxication,self)
 end
@@ -91,6 +116,7 @@ end
 function Dcapacity:OnSave()
 	local remainingtime = self.left_timer ~= nil and self.left_timer - GetTime() or 0
 	return{
+		nonedrunk = self.nonedrunk,
 		max_capacity = self.max_capacity,
         capacity = self.capacity,
         dremainingtime = remainingtime > 0 and remainingtime or nil,
@@ -102,6 +128,10 @@ function Dcapacity:OnLoad(data)
 
 	if data.max_capacity then
 		self.max_capacity = data.max_capacity
+	end
+
+	if data.nonedrunk then
+		self.nonedrunk = data.nonedrunk
 	end
 
     if self.intoxication_task ~= nil then

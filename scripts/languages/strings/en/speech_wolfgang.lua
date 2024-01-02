@@ -43,6 +43,8 @@ return {
             HOLE = "Wolfgang gets water from this hole.", -- Well hole
             WELL = "Now Wolfgang can get water from the well!", -- Well
 
+            WX78MODULE_NONEDRUNK = "Is robot snacks, yes?", -- 78전용 묘듈
+
             -- Water mode plants
 
             TEA_TREE = "It's a small tree; be careful not to step on it!", -- Tea tree
