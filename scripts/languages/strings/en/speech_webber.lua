@@ -43,6 +43,8 @@ return {
             HOLE = "Hellooo? Is anyone in there?", -- Well hole
             WELL = "We were told not to hide in here.", -- Well
 
+            WX78MODULE_NONEDRUNK = "Huh. Is that what robot insides look like?", -- 78전용 묘듈
+
             -- Water Mode Plants
 
             TEA_TREE = "It's a bit small for hiding.", -- Tea tree

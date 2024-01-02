@@ -43,6 +43,8 @@ return {
 		HOLE = "Looks good for me to build a well.",
 		WELL = "Now I can conveniently get clean, fresh water!",
 
+		WX78MODULE_NONEDRUNK = "So much science packed into one tiny gizmo.", -- 78전용 묘듈
+
         -- water mod plants
 
 		TEA_TREE = "What a lovely little tree.",

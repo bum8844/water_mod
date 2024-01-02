@@ -26,6 +26,8 @@ local postinits =
 		"wateringcan",
 		"acorn",
 		"mosquitosack",
+		"wx78_modules",
+		"fruitfly",
 	},
 
 	screens = {
@@ -41,6 +43,7 @@ local postinits =
 	widgets =
 	{
 		"itemtile",
+		"upgrademodulesdisplay",
 	},
 
 	utils =
@@ -57,6 +60,7 @@ local postinits =
 		"preparedfoods_warly",
 		"cookbookdata",
 		"techtree",
+		"wx78_moduledefs",
 	}
 }
 

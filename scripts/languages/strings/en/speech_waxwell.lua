@@ -43,6 +43,8 @@ return {
             HOLE = "I might not be able to catch bones if I fall in.", -- Well hole
             WELL = "I'm dying of thirst next to this well.", -- Well
 
+            WX78MODULE_NONEDRUNK = "That robot needs to pull themselves together.", -- 78전용 묘듈
+
             -- Water Mode Plants
 
             TEA_TREE = "The leaves are flourishing on this tiny thing.", -- Tea tree

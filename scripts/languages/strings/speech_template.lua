@@ -43,6 +43,8 @@ return {
 		HOLE = "", --우물 구멍
 		WELL = "", --우물
 
+		WX78MODULE_NONEDRUNK = "",-- 78전용 묘듈
+
 		-- 물 모드 식물
 
 		TEA_TREE = "",--차나무

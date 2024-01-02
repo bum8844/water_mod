@@ -213,20 +213,23 @@
     <folder id="70" name="kahlua">
         <file id="0" name="kahlua/kahlua-0.png" width="86" height="179" pivot_x="0.5" pivot_y="0.25"/>
     </folder>
-    <folder id="71" name="nut_corn_whisky">
-        <file id="0" name="nut_corn_whisky/nut_corn_whisky-0.png" width="109" height="187" pivot_x="0.52" pivot_y="0.25"/>
-    </folder>
-    <folder id="72" name="petals_berry_brandy">
+    <folder id="71" name="petals_berry_brandy">
         <file id="0" name="petals_berry_brandy/petals_berry_brandy-0.png" width="136" height="177" pivot_x="0.52" pivot_y="0.25"/>
     </folder>
-    <folder id="73" name="ruincacao_cream_liqueur">
+    <folder id="72" name="ruincacao_cream_liqueur">
         <file id="0" name="ruincacao_cream_liqueur/ruincacao_cream_liqueur-0.png" width="143" height="187" pivot_x="0.55" pivot_y="0.25"/>
     </folder>
-    <folder id="74" name="rumchata">
+    <folder id="73" name="rumchata">
         <file id="0" name="rumchata/rumchata-0.png" width="103" height="187" pivot_x="0.51" pivot_y="0.25"/>
     </folder>
-    <folder id="75" name="tequila">
+    <folder id="74" name="tequila">
         <file id="0" name="tequila/tequila-0.png" width="131" height="178" pivot_x="0.62" pivot_y="0.25"/>
+    </folder>
+    <folder id="75" name="madhu_rum">
+        <file id="0" name="madhu_rum/madhu_rum-0.png" width="140" height="187" pivot_x="0.5" pivot_y="0.25"/>
+    </folder>
+    <folder id="76" name="nut_corn_whiskey">
+        <file id="0" name="nut_corn_whiskey/nut_corn_whiskey-0.png" width="109" height="187" pivot_x="0.52" pivot_y="0.25"/>
     </folder>
     <entity id="0" name="kettle_drink">
         <animation id="0" name="idle" length="150" interval="100" looping="false">

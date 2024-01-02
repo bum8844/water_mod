@@ -10,7 +10,7 @@ return {
 
 	ANNOUNCE_DRUNK = "경고: 화ㅏ하ㅏㅏㄱ 에ㅔㅔ엔ㅈㅈ진 ㅇ이사ㅏㅏㅏㅇ 출력", -- 취함
 	ANNOUNCE_DRUNK_END = "화학 엔진 출력 안정화", --술에서 좀 깸 (그로기)
-	ANNOUNCE_DRUNK_IMMUNITY = "자가진단 : 화학 엔진 / 정상", --임시. 위그 전용,
+	ANNOUNCE_DRUNK_IMMUNITY = "자가진단 : 화학 엔진 / 정상", --임시 위그 전용,
 	ANNOUNCE_NOTCHARGE = "해당 개체 충전 요구", --번개염소가 충전이 안되서 양동이로 젖을 짤수 없음
 	ANNOUNCE_NOTHIRSTSLEEP = "냉매 부족으로 수면 모드 불가", -- 목이 마른데 밤에 잘려고 시도
 	ANNOUNCE_NOTHIRSTSIESTA = "냉매 부족으로 세션 동결 불가", -- 목이 마른데 낮에 잘려고 시도
@@ -20,7 +20,7 @@ return {
 	ANNOUNCE_CAFFINE_BUFF_START = "모든 코어 비율 제한 : 49 " , -- 카페인 버프 시작 ( ALL CORE RATIO LIMIT : 49)
     ANNOUNCE_CAFFINE_BUFF_STOP = "코어 리미트 재 설정중" ,  -- 카페인 버프 끝
     
-    ANNOUNCE_CURE_WATERBORNE = "냉각수내 PH비율 조정중." ,  -- 78이는 실제로 사용되지 않음.
+    ANNOUNCE_CURE_WATERBORNE = "냉각수내 PH비율 조정중" ,  -- 78이는 실제로 사용되지 않음
 
 	ANNOUNCE_DCAPACITY_CRITICAL = "경고: 화학 엔진 이상 출력", --취하기 직전
 	ANNOUNCE_DCAPACITY_HALF = "화학 엔진 출력 변동 발생", -- 취기가 돌기 시작
@@ -29,7 +29,7 @@ return {
 	{
 		BOILBOOK = "냉각수에 불순물을 조합하는 방법이 적힌 디렉토리", -- 요리책 물 모드 버전
 
-		WATER_CLEAN_ICE = "얼어붙고 갇힌 물. 하 하",--깨끗한 얼음물
+		WATER_CLEAN_ICE = "얼어붙고 갇힌 물 하 하",--깨끗한 얼음물
 		WATER_DIRTY_ICE = "더럽고 추악함", --더러운 얼음물
 
 		SPICE_CAFFEINPEPPER = "무미건조한 음식에 향을 추가함", --후추 향신료
@@ -42,6 +42,8 @@ return {
 		WELL_DRILLING_ITEM = "수맥 개발용 장치", --드릴 아이템(AFS: "A 'WELL'-DEVELOPING DEVICE"?)
 		HOLE = "물을 뽑아내기 위한 구멍", --우물 구멍
 		WELL = "물의 안정적 공급처", --우물
+
+		WX78MODULE_NONEDRUNK = "화학 엔진 출력보조", -- 78전용 묘듈
 
 		-- 물 모드 식물
 
@@ -71,11 +73,11 @@ return {
 		ADDITIVE_SEED = "생명의 파괴는 즐거움", -- 리큐르에 제조에 첨가 할 씨허브(아니스,쥬니퍼베리,팔각 모티브)첨가제 
 		ADDITIVE_PETALS = "향미 증강용 이파리", -- 리큐르에 제조에 첨가 할 허브,녹차,꽃잎 첨가제
 		ADDITIVE_NUT = "단단한 첨가물", -- 리큐르에 제조에 첨가 할 버치넛,코코넛,커피콩,카카오콩 첨가제
-		ADDITIVE_DAIRY = "내 에탄올에 역겨운 불순물을 넣지 말아라.", -- 리큐르에 제조에 첨가할 유제품 첨가제
+		ADDITIVE_DAIRY = "내 에탄올에 역겨운 불순물을 넣지 말아라", -- 리큐르에 제조에 첨가할 유제품 첨가제
 
 		-- 음료
 
-		WATER_CLEAN = "표준 냉각수. 유출 주의", --깨끗한 물
+		WATER_CLEAN = "표준 냉각수 유출 주의", --깨끗한 물
 		WATER_DIRTY = "외부 정수 장치 필요", --더러운 물
 		WATER_SALTY = "동체를 부식시킴", --바닷물
 
@@ -95,20 +97,20 @@ return {
 		VEGGIE_TEA = "푸른 유기체의 피", --녹즙
 		CARROT_TEA = "베타카로틴 농축액", --당근차
 		CACTUS_TEA = "방화벽 완전 무력화", --선인차 (PROTECTIVE BARRIER NEUTRALIZED)
-		TOMATO_JUICE = "처참하게 분쇄됨. 하 하", --토마토 쥬스(IT'S UTTERLY CRUSHED. HA HA)
+		TOMATO_JUICE = "처참하게 분쇄됨 하 하", --토마토 쥬스(IT'S UTTERLY CRUSHED HA HA)
 		LUMPY_TEA = "루트 권한 획득", --뿌리차, (ROOT PERMISSION GRANTED)
-		SEAWEED_SHAKE = "50% 해, 50% 초", --해초 쉐이크 (AFS: 스폰지밥 드립. 플랭크톤이 스폰지밥 조종하는 에피소드에서 따옴)
+		SEAWEED_SHAKE = "50% 해, 50% 초", --해초 쉐이크 (AFS: 스폰지밥 드립 플랭크톤이 스폰지밥 조종하는 에피소드에서 따옴)
 		
 		GREENTEA = "잎 우린 물일 뿐", --생잎 녹차 (IT IS JUST LEAF JUICE)
-		BLACKTEA = "검은 잎의 붉은 추출물. 모순적", --홍차 (RED EXTRACT FROM BLACK LEAF. CONTRADICTION)
+		BLACKTEA = "검은 잎의 붉은 추출물 모순적", --홍차 (RED EXTRACT FROM BLACK LEAF CONTRADICTION)
 		BLACKTEA_ICED = "냉각력 향상됨", -- 홍차 아이스티
-		FUER = "초엽 추출물. 인상적", --보이차,이파리차,고사리차
+		FUER = "초엽 추출물 인상적", --보이차,이파리차,고사리차
 		MIXFLOWER = "파괴된 아름다움의 맛", --잡 꽃잎 차
 		HIBISCUSTEA = "진한 신맛 용액", --히비스커스 차 (CONCENTRATED SOURNESS SOLUTION)
-		CACTUSFLOWER_TEA = "엽육에서 즙을!", --선인꽃차 (JUICE FROM FLESH!) (AFS: 선인꽃차는 녹색입니다. 이천군수 자락서스 패러디)
+		CACTUSFLOWER_TEA = "엽육에서 즙을!", --선인꽃차 (JUICE FROM FLESH!) (AFS: 선인꽃차는 녹색입니다 이천군수 자락서스 패러디)
 		LOTUSTEA = "물에 사는 꽃을 물로 끓인 것", --연꽃차
 		SUSHIBISCUS = "상당히 기묘함", -- 자살차
-		MOON_BLOSSOM_TEA = "더 이상 소생 불능. 하 하 하",
+		MOON_BLOSSOM_TEA = "더 이상 소생 불능 하 하 하",
 
 		CAFFEINBERRY_JUICE = "오버클럭용 냉각제", -- 블랙 커피
         TOFFEE_LATTE = "볼트 미포함", --토피넛 라떼(BOLT NOT INCLUDED)
@@ -158,8 +160,8 @@ return {
 		GLOWBERRYWINE = "자체발광성 술", --글로우 베리 와인
 		KUMIS = " '/d3d7d4'/ 유지됨", -- 크므즈,산양유주 (포밍레인: d3d7d4는 유백색의 색상코드)
 		LUMPY_WINE = "유기체의 뿌리는 다양한 용도로 사용", --서주(감자 고구마등 뿌리 술)
-		PULQUE = "포함된 미생물의 자가진화의 끝은 언제인가.", --풀케(선인주)
-		RUINCACAO_WINE = "카카오. 새로운 가능성 발견됨", -- 카카오 와인 
+		PULQUE = "포함된 미생물의 자가진화의 끝은 언제인가", --풀케(선인주)
+		RUINCACAO_WINE = "카카오 새로운 가능성 발견됨", -- 카카오 와인 
 
 		-- 콜라보 소다
 
@@ -202,7 +204,7 @@ return {
 
 		--콜라보 증류주
 
-		MOONWAY = "발광성 유기물질 보존함.", -- 무지개 해파리주 증류주
+		MOONWAY = "발광성 유기물질 보존함", -- 무지개 해파리주 증류주
 		ARRACK = "고 섬유질성 에탄올", -- 아락 인도네시아 버전 코코넛 와인 증류주
 		CHERRY_BLOOM_RUM = "쓸데 없는 VFX 포함", -- 체리 꿀주 증류주 벛꽃잎 떠다
 		RICE_SPIRITS = "부산물이 남음", --청주
@@ -216,7 +218,7 @@ return {
 
 		--냄비 요리
 
-        DARK_RUINCOLATE = "순수한 카카오매스 가공물", --다크 초콜릿.
+        DARK_RUINCOLATE = "순수한 카카오매스 가공물", --다크 초콜릿
         WHITE_RUINCOLATE = "카카오 버터 20% 함유", --화이트 초콜릿
         RUINCOLATE = "가공된 카카오", -- 그냥 초콜릿
         RUIN_SCHOKAKOLA = "고체연료 부스터", -- 쇼카콜라
@@ -261,7 +263,7 @@ return {
 		BARREL =
 		{
 			GENERIC = "외장 물 저장장치", -- 물통 조사 대사
-			BURNT = "물.exe 응답 없음", -- 물통이 타버림
+			BURNT = "물exe 응답 없음", -- 물통이 타버림
 		},
 
 		BREWERY =
@@ -309,8 +311,8 @@ return {
 
 		PORTABLEKETTLE_ITEM =
 		{
-			GENERIC = "만나서 반갑다. 나의 형제", -- 휴대용 주전자(아이템) 조사 대사
-			EMPTY = "코드 418: 찻주전자임", -- 설치한 빈 휴대용 주전자 조사 대사(CODE 418: THIS IS A TEAPOT)(AFS: HTTP 응답코드에 관한 유명한 만우절 장난이 있습니다. 418 I'm a teapot 검색)
+			GENERIC = "만나서 반갑다 나의 형제", -- 휴대용 주전자(아이템) 조사 대사
+			EMPTY = "코드 418: 찻주전자임", -- 설치한 빈 휴대용 주전자 조사 대사(CODE 418: THIS IS A TEAPOT)(AFS: HTTP 응답코드에 관한 유명한 만우절 장난이 있습니다 418 I'm a teapot 검색)
 			BOILING_LONG = "시간이 걸릴 것", -- 음료를 만들기 시작한지 얼마 안됨
 			BOILING_SHORT = "거의 끝나감", --음료 조리가 거의 끝나감
 			DONE = "냉각수 배합 완료", --음료가 완성됨
@@ -333,7 +335,7 @@ return {
 			HIGH_PRESSURE = "잔여 압력 최대", -- 압력 최대
 			MIDDLE_PRESSURE = "잔여 압력 적당함", -- 압력이 중간
 			LOW_PRESSURE = "잔여 압력 낮음", -- 압력이 거의 없을때
-			RECHARG_PRESSURE = "압력 복원에 시간 필요", -- 압력이 아예 없을때(여기까지 쓰면 압력이 최대가 될때까지 못씀.)
+			RECHARG_PRESSURE = "압력 복원에 시간 필요", -- 압력이 아예 없을때(여기까지 쓰면 압력이 최대가 될때까지 못씀)
 		},
 		
 		WELL_SPRINKLER =

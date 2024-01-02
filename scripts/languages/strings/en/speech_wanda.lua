@@ -43,6 +43,8 @@ return {
         HOLE = "It takes ages to climb out once you fall in.", -- Well hole
         WELL = "Watching it won't make the water magically appear; I need a tool!", -- Well
 
+        WX78MODULE_NONEDRUNK = "Aha! I was wondering when they'd started making these.", -- 78전용 묘듈
+
         -- Waterlogged Plant Mode
 
         TEA_TREE = "This tree has reached its growth limit.", -- Tea tree

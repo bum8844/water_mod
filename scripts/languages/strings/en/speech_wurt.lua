@@ -43,6 +43,8 @@ return {
             HOLE = "I can hear the water.", -- Well hole
             WELL = "Beefalos drink from these smooth holes, why?", -- Well
 
+            WX78MODULE_NONEDRUNK = "Crunchy.", -- 78전용 묘듈
+
             -- Water mode plants
 
             TEA_TREE = "The leaves smell nice!", -- Tea tree

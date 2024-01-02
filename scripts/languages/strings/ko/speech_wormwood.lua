@@ -43,6 +43,8 @@ return {
 		HOLE = "안에 물 있어", --우물 구멍
 		WELL = "물 얻을수 있어.", --우물
 
+		WX78MODULE_NONEDRUNK = "삐빅 삑", -- 78전용 묘듈
+
 		-- 물 모드 식물
 
 		TEA_TREE = "멋쟁이 친구",--차나무

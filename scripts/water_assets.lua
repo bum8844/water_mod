@@ -13,6 +13,8 @@ local Assets =
 
     Asset("ANIM", "anim/status_thirst.zip"),
     Asset("ANIM", "anim/water_spice.zip"),
+    Asset("ANIM", "anim/water_status_wx.zip"),
+    Asset("ANIM", "anim/water_wx_chips.zip"),
     Asset("ANIM", "anim/boillingrecipcard.zip"),
     Asset("ANIM", "anim/fermentingrecipcard.zip"),
 

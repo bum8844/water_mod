@@ -43,6 +43,8 @@ return {
             HOLE = "I'm definitely not falling in.", -- Well hole
             WELL = "If there's a 'well,' there should be a 'fireplace,' right?", -- Well
 
+            WX78MODULE_NONEDRUNK = "Hey WX, when are you gonna install a flamethrower?", -- 78전용 묘듈
+
             -- Water-based plants
 
             TEA_TREE = "Are you good at catching fire?", -- Tea tree

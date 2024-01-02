@@ -39,6 +39,8 @@ return {
         HOLE = "It's quite deep inside!", -- Well hole
         WELL = "I need to find a bucket to lower.", -- Well
 
+        WX78MODULE_NONEDRUNK = "Are you the brightest bulb of the bunch?", -- 78전용 묘듈
+
         -- Water-mode Plants
 
         TEA_TREE = "A fragrant and feeble tree.", -- Tea tree

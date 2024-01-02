@@ -43,6 +43,8 @@ sreturn {
             HOLE = "It's a hole connected to an underground water source.", -- Well hole
             WELL = "Hmm, I wonder if there's a way to automate this...", -- Well
 
+            WX78MODULE_NONEDRUNK = "They've really gotta start takin' better care of themselves.", -- 78전용 묘듈
+
             -- Water mode plants
 
             TEA_TREE = "It's a small and pretty tree.", -- Tea tree

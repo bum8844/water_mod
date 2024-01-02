@@ -296,16 +296,32 @@ end
 
 -- 술 관련 효과를 주는 코드
 
-local function checkcharging(eater)
-	return eater.components.upgrademoduleowner and eater.components.upgrademoduleowner:ChargeIsMaxed()
+local function check_mightiness(eater)
+	local skilltreeupdater = eater.components.skilltreeupdater
+	if not skilltreeupdater then
+		return false
+	end
+	local mightiness = eater.components.mightiness
+	if not mightiness then
+		return false
+	end
+	return skilltreeupdater:IsActivated("wolfgang_overbuff_1") and mightiness:GetCurrent() > mightiness:GetMax()
+end
+
+local function check_wathgrithr_combat_defense(eater)
+	local skilltreeupdater = eater.components.skilltreeupdater
+	if not skilltreeupdater then
+		return false
+	end
+	return skilltreeupdater:IsActivated("wathgrithr_combat_defense")
 end
 
 local function notspiritstags(eater)
-	return not eater:HasTag("mightiness_mighty") and not checkcharging(eater)
+	return not check_mightiness(eater) and not check_wathgrithr_combat_defense(eater) and not eater:HasTag("drunk_immunity")
 end
 
 local function notalcoholtags(eater)
-	return not eater:HasTag("valkyrie") and notspiritstags(eater)
+	return not eater:HasTag("valkyrie") and not eater:HasTag("mightiness_mighty") and notspiritstags(eater)
 end
 
 function alcohol(inst, eater)

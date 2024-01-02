@@ -43,6 +43,8 @@ return {
             HOLE = "I haven't reached the bottom yet, how can I get back home?", -- (Alice's Adventures in Wonderland)
             WELL = "I wonder if it will grant a wish if I throw a coin in?",
 
+            WX78MODULE_NONEDRUNK = "It looks so fragile... hopefully no tragic accidents befall it.", -- 78전용 묘듈
+
             -- Waterlogged plants
 
             TEA_TREE = "The leaves are lush.", -- Tea Tree
