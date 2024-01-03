@@ -87,12 +87,16 @@ function Dcapacity:Start_Intoxication(num)
 		local skilltreeupdater = self.inst.components.skilltreeupdater
 		local mightiness = self.inst.components.mightiness 
 		if mightiness and skilltreeupdater:IsActivated("wathgrithr_combat_defense") and mightiness:GetCurrent() > mightiness:GetMax() then
-			mult_time = 0.4
+			mult_time = 0.25
 		elseif skilltreeupdater:IsActivated("wathgrithr_combat_defense") then
-			mult_time = 0.2
+			mult_time = 0.5
 		end
 	elseif self.nonedrunk then
-		mult_time = 0.6
+		if inst._activate_nonedrunk_module then
+			mult_time = 0.125
+		else
+			mult_time = 0.6
+		end
 	end
 
 	self.left_timer = GetTime() + (self.timer * mult_time)
