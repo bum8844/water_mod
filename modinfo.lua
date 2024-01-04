@@ -1,9 +1,15 @@
 name 						= "Don't Starve: Dehydrated"
 version 					= "Alpha 1.1.9g"
+local info_version = "Version "..version.."\n"
 
-description = (
-	"Description coming soon..."
-	)
+description = info_version..[[
+
+Don't Starve: Dehydrated add new Plants, Drink, and Thirst Constant!
+
+Walking around the map, You have to find things that can fill your thirst and survive from it.
+
+Once you get used to the situation, try making a drink that makes you feel more thirsty!
+]]
 forumthread = ""
 author 						= ""
 forumthread 				= ""
