@@ -178,7 +178,7 @@ AddRecipe2("well_burying_kit",{Ingredient("boards",4),Ingredient("hammer",1)},TE
 --SortAfter("well_burying_kit","well_waterpump_kit","GARDENING")
 SortAfter("well_burying_kit","well_sprinkler_kit","GARDENING")
 
-AddRecipe2("wx78module_nonedrunk",{Ingredient("scandata",3),Ingredient("fruitflyfruit",1),Ingredient("gears",2),Ingredient("wx78module_maxhunger1",1)},TECH.ROBOTMODULECRAFT_ONE,{atlas = ModAtlas(), image = "wx78module_nonedrunk.tex", builder_tag="upgrademoduleowner"},{"CHARACTER"})
+AddRecipe2("wx78module_nonedrunk",{Ingredient("scandata",3),Ingredient("fruitflyfruit_dead",1),Ingredient("gears",2),Ingredient("wx78module_maxhunger1",1)},TECH.ROBOTMODULECRAFT_ONE,{atlas = ModAtlas(), image = "wx78module_nonedrunk.tex", builder_tag="upgrademoduleowner"},{"CHARACTER"})
 SortAfter("wx78module_nonedrunk","wx78module_maxhunger1","CHARACTER")
 
 AddDeconstructRecipe("well", {Ingredient("boards",2),Ingredient("cutstone",6)})

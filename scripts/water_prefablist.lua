@@ -5,6 +5,7 @@ return {
 	"upgrade_kit",
 	"boilbook",
 	"additives",
+	"fruitflyfruit_dead",
 
 	--structures
 	"barrel",
