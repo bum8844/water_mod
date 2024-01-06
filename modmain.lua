@@ -55,6 +55,7 @@ AddIngredientValues({"squamousfruit"}, {veggie=1, monster=1})
 
 AddReplicableComponent("thirst")
 AddReplicableComponent("waterlevel")
+AddReplicableComponent("distill")
 
 RegisterItemAtlasFile("images/tea_inventoryitem.xml")
 
