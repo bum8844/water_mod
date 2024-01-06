@@ -143,12 +143,14 @@ local SCENE =
                     (inst:HasTag("readybrewing") or inst:HasTag("readydistill")) and
                     --(not inst:HasTag("professionalcookware") or doer:HasTag("professionalchef")) and
                     (not inst:HasTag("mastercookware") or doer:HasTag("masterchef"))
-                ) or
-                (inst.replica.container ~= nil and
-                    (
-                        (inst.replica.container:IsFull() and inst.replica.waterlevel:HasWater()) or 
-                        (inst.replica.container:HasItemWithTag("alcohol",4))
-                    ) and inst.replica.container:IsOpenedBy(doer)
+                ) or (
+                    inst.replica.container ~= nil and
+                    inst.replica.container:IsFull() and 
+                    inst.replica.waterlevel:HasWater() and 
+                    inst.replica.container:IsOpenedBy(doer)
+                ) or (
+                    inst.replica.distill ~= nil and
+                    inst.replica.distill:IsFull()
                 )
             ) then
                 table.insert(actions, ACTIONS.BREWING)

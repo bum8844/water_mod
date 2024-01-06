@@ -44,6 +44,7 @@ local postinits =
 	{
 		"itemtile",
 		"upgrademodulesdisplay",
+		"containerwidget",
 	},
 
 	utils =
