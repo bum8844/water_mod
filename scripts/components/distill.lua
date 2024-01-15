@@ -12,7 +12,7 @@ end
 
 local Distill = Class(function(self, inst)
     self.inst = inst
-    self.require_stack = 5
+    self.require_stack = 4
     self.isfull = false
     self.isfull_open = false
 

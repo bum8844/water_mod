@@ -59,12 +59,6 @@ end
 local function CreateWellWaterPump(inst)
 	local waterpump = ReplacePrefab(inst, "well_waterpump")
 	waterpump.Transform:SetPosition(inst.Transform:GetWorldPosition())
-	waterpump.AnimState:PlayAnimation("place")
-	waterpump.AnimState:PushAnimation("idle_stop",true)
-	waterpump.SoundEmitter:PlaySound("dontstarve/common/together/dragonfly_furnace/place")
-	waterpump:DoTaskInTime(0.8, function()
-		waterpump.SoundEmitter:PlaySound("dontstarve/common/together/catapult/hit")
-	end)
 end
 
 local function CreateWellBuryingSite(inst)
