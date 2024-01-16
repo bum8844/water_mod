@@ -96,11 +96,22 @@ local function getstatus(inst, viewer)
 end
 
 local function SetMeter(inst)
-	inst._meter = SpawnPrefab("well_waterpump_meter")
-	inst:AddChild(inst._meter)
-	inst._meter.entity:SetParent(inst.entity)
-	local num = inst.components.steampressure:GetPressurePercent()
-	inst._meter.SetSection(inst._meter,num)
+	if inst._meter then
+		local num = inst.components.steampressure:GetPressurePercent()
+		inst._meter.SetSection(inst._meter,num)
+	end
+end
+
+local function ShowMeter(inst)
+	if inst._meter then
+		inst._meter:Show()--.AnimState:Show("meter_needle")
+	end
+end
+
+local function HideMeter(inst)
+	if inst._meter then
+		inst._meter:Hide()--.AnimState:Hide("meter_needle")
+	end
 end
 
 local function OnSpawnIn(inst)
@@ -134,8 +145,6 @@ local function fn()
     inst:AddTag("structure")
     inst:AddTag("cleanwaterproduction")
     inst:AddTag("alwayson")
-
-    inst:AddComponent("steampressure")
 	
 	MakeObstaclePhysics(inst, .5)
 
@@ -145,10 +154,18 @@ local function fn()
         return inst
     end
 
+    inst:DoTaskInTime(0.5,function()
+    	inst._meter = SpawnPrefab("well_waterpump_meter")
+		inst:AddChild(inst._meter)
+		inst._meter.entity:SetParent(inst.entity)
+		inst._meter:Hide()
+	end)
+
     inst.AnimState:SetBank("well_waterpump")
     inst.AnimState:SetBuild("well_waterpump")
     inst.AnimState:PlayAnimation("deactive")
 
+    inst:AddComponent("steampressure")
     inst.components.steampressure:SetDepletedFn(OnDeplete)
     inst.components.steampressure:SetChargingDoneFn(SetChargingDoneFn)
     inst.components.steampressure:SetPressureSectionFn(SetPressureSection)
@@ -186,6 +203,8 @@ local function fn()
 	inst:DoTaskInTime(0, OnSpawnIn)
 
 	inst:ListenForEvent("setmeter", SetMeter)
+	inst:ListenForEvent("showmeter", ShowMeter)
+	inst:ListenForEvent("hidemeter", HideMeter)
 
 	return inst
 end

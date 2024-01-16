@@ -28,9 +28,7 @@ local states =
 		onenter = function(inst)
 			inst.AnimState:PushAnimation("deactive")
 			inst.SoundEmitter:PlaySound("dontstarve/common/together/dragonfly_furnace/fire_LP", "loop_deactive")
-			if inst._meter then
-				inst._meter.AnimState:Show("meter_needle")
-			end
+			inst:PushEvent("showmeter")
 		end,
 	},
 	State
@@ -41,9 +39,7 @@ local states =
 			local section = SetActionSection(inst)
 			inst.AnimState:PushAnimation("active"..section,true)
 			inst.SoundEmitter:PlaySound("rifts3/sawhorse/proximity_lp","loop_active")
-			if inst._meter then
-				inst._meter.AnimState:Show("meter_needle")
-			end
+			inst:PushEvent("showmeter")
 		end,
 	},
 	State
@@ -51,9 +47,7 @@ local states =
 		name = "clutch",
 		tags = {"busy","active","clutching"},
 		onenter = function(inst)
-			if inst._meter then
-				inst._meter.AnimState:Show("meter_needle")
-			end
+			inst:PushEvent("showmeter")
 			inst.AnimState:PlayAnimation("active_clutch")
 		end,
 
@@ -96,9 +90,7 @@ local states =
 		tags = {"hit","busy"},
 		onenter = function(inst,ison)
 			inst.sg.statemem.ison = ison
-			if inst._meter then
-				inst._meter.AnimState:Hide("meter_needle")
-			end
+			inst:PushEvent("hidemeter")
 			inst.SoundEmitter:KillSound("loop_active")
 			inst.SoundEmitter:KillSound("loop_deactive")
 			if inst.sg.statemem.ison then
@@ -129,9 +121,7 @@ local states =
 		tags = {"busy","pumping"},
 		onenter = function(inst,ison)
 			inst.sg.statemem.ison = ison
-			if inst._meter then
-				inst._meter.AnimState:Hide("meter_needle")
-			end
+			inst:PushEvent("hidemeter")
 			inst.SoundEmitter:KillSound("loop_active")
 			inst.SoundEmitter:KillSound("loop_deactive")
 			if inst.sg.statemem.ison then
@@ -161,9 +151,7 @@ local states =
 		name = "turn_on",
 		tags = {"busy","turn_on","active"},
 		onenter = function(inst)
-			if inst._meter then
-				inst._meter.AnimState:Hide("meter_needle")
-			end
+			inst:PushEvent("hidemeter")
 			inst.SoundEmitter:KillSound("loop_deactive")
 			inst.AnimState:PlayAnimation("activeing")
 		end,
@@ -184,9 +172,7 @@ local states =
 		name = "turn_off",
 		tags = {"busy","turn_off","deactive"},
 		onenter = function(inst)
-			if inst._meter then
-				inst._meter.AnimState:Hide("meter_needle")
-			end
+			inst:PushEvent("hidemeter")
 			inst.SoundEmitter:KillSound("loop_active")
 			inst.AnimState:PlayAnimation("deactiveing")
 		end,

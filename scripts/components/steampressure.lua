@@ -14,6 +14,23 @@ local function isfullpressure (self, isfullpressure)
 	end
 end
 
+local function waitpressure(inst, self)
+    self.pressuretask = nil
+    self:GetPressure()
+end
+
+local function waitfullpressure(inst, self)
+	self.depletedtask = nil
+	self.depleted = false
+	self.fullpressure = true
+	if self.chargingdonefn then
+		self.chargingdonefn(self.inst)
+	end
+	if self.meterfn then
+    	self.meterfn(self.inst)
+    end
+end
+
 local SteamPressure = Class(function(self, inst)
     self.inst = inst
 
@@ -40,23 +57,6 @@ end,nil,{
 	depleted = isdepleted,
 	fullpressure = isfullpressure,
 })
-
-local function waitpressure(inst, self)
-    self.pressuretask = nil
-    self:GetPressure()
-end
-
-local function waitfullpressure(inst, self)
-	self.depletedtask = nil
-	self.depleted = false
-	self.fullpressure = true
-	if self.chargingdonefn then
-		self.chargingdonefn(self.inst)
-	end
-	if self.meterfn then
-    	self.meterfn(self.inst)
-    end
-end
 
 function SteamPressure:SetDepletedFn(fn)
 	self.depletedfn = fn
@@ -242,7 +242,6 @@ function SteamPressure:OnLoad(data)
         end
     end
 end
-
 
 function SteamPressure:LongUpdate(dt)
 	if self.pressuretask then

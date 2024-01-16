@@ -81,7 +81,7 @@ local states =
 
 		timeline = {
 			TimeEvent(33 * FRAMES,function(inst) inst.SoundEmitter:PlaySound("turnoftides/common/together/boat/anchor/ocean_hit") end)
-		}
+		},
 
 		events = {
 			EventHandler("animover",
