@@ -12,22 +12,31 @@ local prefabs =
 	"collapse_small",
 }
 
+local function SetSection(meter, num)
+	meter.AnimState:SetPercent("idle", num)
+end
+
+local function meterfn(inst)
+	if inst._meter then
+		local num = inst.components.steampressure:GetPressurePercent()
+		inst._meter.SetSection(inst._meter ,num)
+	end
+end
+
+local function SetPressureSection(newsection, oldsection, inst)
+	if inst.components.machine:IsOn() and newsection > oldsection and not inst.sg:HasStateTag("busy") then
+		inst.sg:GoToState("clutch")
+	end
+end
+
 local function TurnOff(inst, instant)
+	inst.sg:GoToState("turn_off")
 	inst.components.steampressure:StopGetPressure()
-	inst.SoundEmitter:KillSound("loop_active")
-	inst.SoundEmitter:PlaySound("rifts3/wagpunk_armor/downgrade")
-	inst.AnimState:PlayAnimation("stopping")
-	inst.AnimState:PushAnimation("idle_stop",true)
-	inst.SoundEmitter:PlaySound("dontstarve/common/together/dragonfly_furnace/fire_LP", "loop_deactive")
 end
 
 local function TurnOn(inst, instant)
+	inst.sg:GoToState("turn_on")
 	inst.components.steampressure:GetPressure()
-	inst.SoundEmitter:KillSound("loop_deactive")
-	inst.SoundEmitter:PlaySound("rifts3/wagpunk_armor/upgrade")
-	inst.AnimState:PlayAnimation("activeing")
-	inst.AnimState:PushAnimation("idle_active",true)
-	inst.SoundEmitter:PlaySound("rifts3/sawhorse/proximity_lp", "loop_active")
 end
 
 local function SetChargingDoneFn(inst)
@@ -48,41 +57,17 @@ local function OnDeplete(inst)
 	end)
 end
 
-local function SetPressureSection(newsection, oldsection, inst)
-    if new ~= nil then
-        if inst._steampressure ~= new then
-            inst._steampressure = new
-        end
-    end
-    inst.AnimState:OverrideSymbol("swap", "well_waterpump_meter", tostring(inst._steampressure))
-	inst.SoundEmitter:PlaySound("rifts3/wagpunk_armor/upgrade")
-end
-
 local function OnTaken(inst, taker, delta)
-	inst.SoundEmitter:KillSound("loop_active")
-	inst.SoundEmitter:KillSound("loop_deactive")
-	inst.AnimState:PlayAnimation("pumping")
-	inst.SoundEmitter:PlaySound("rifts3/wagpunk_armor/downgrade")
-	if inst.components.machine:IsOn() then
-		inst.SoundEmitter:PlaySound("rifts3/sawhorse/proximity_lp", "loop_active")
-		inst.AnimState:PushAnimation("idle_active",true)
-	else
-		inst.SoundEmitter:PlaySound("dontstarve/common/together/dragonfly_furnace/fire_LP", "loop_deactive")
-		inst.AnimState:PushAnimation("idle_stop",true)
+	if not inst.sg:HasStateTag("busy") then
+		local ison = inst.components.machine:IsOn()
+		inst.sg:GoToState("pumping",ison)
 	end
 end
 
 local function onhit(inst, worker)
-	inst.SoundEmitter:KillSound("loop_active")
-	inst.SoundEmitter:KillSound("loop_deactive")
-	inst.AnimState:PlayAnimation("hit")
-	inst.SoundEmitter:PlaySound("grotto/common/turf_crafting_station/hit")
-	if inst.components.machine:IsOn() then
-		inst.SoundEmitter:PlaySound("rifts3/sawhorse/proximity_lp", "loop_active")
-		inst.AnimState:PushAnimation("idle_active",true)
-	else
-		inst.SoundEmitter:PlaySound("dontstarve/common/together/dragonfly_furnace/fire_LP", "loop_deactive")
-		inst.AnimState:PushAnimation("idle_stop",true)
+	if not inst.sg:HasStateTag("busy") then
+		local ison = inst.components.machine:IsOn()
+		inst.sg:GoToState("hit",ison)
 	end
 end
 
@@ -110,9 +95,36 @@ local function getstatus(inst, viewer)
 		   or "MIDDLE_PRESSURE" ) or "RECHARG_PRESSURE"
 end
 
+local function SetMeter(inst)
+	if inst._meter then
+		local num = inst.components.steampressure:GetPressurePercent()
+		inst._meter.SetSection(inst._meter,num)
+	end
+end
+
+local function ShowMeter(inst)
+	if inst._meter then
+		inst._meter:Show()--.AnimState:Show("meter_needle")
+	end
+end
+
+local function HideMeter(inst)
+	if inst._meter then
+		inst._meter:Hide()--.AnimState:Hide("meter_needle")
+	end
+end
+
 local function OnSpawnIn(inst)
+	inst.entity:Show()
+
 	local lunacyarea = TheWorld.Map:IsInLunacyArea(inst.Transform:GetWorldPosition())
 	inst.components.water:SetWaterType(lunacyarea and WATERTYPE.MINERAL or WATERTYPE.CLEAN)
+
+	if not inst.sg:HasStateTag("active") then
+		inst.sg:GoToState("place")
+	else
+		SetMeter(inst)
+	end
 end
 
 local function fn()
@@ -123,6 +135,7 @@ local function fn()
     inst.entity:AddSoundEmitter()
     inst.entity:AddMiniMapEntity()
     inst.entity:AddNetwork()
+    inst.entity:Hide()
 
 	local minimap = inst.entity:AddMiniMapEntity()
 	minimap:SetIcon("well_waterpump.tex")
@@ -132,8 +145,6 @@ local function fn()
     inst:AddTag("structure")
     inst:AddTag("cleanwaterproduction")
     inst:AddTag("alwayson")
-
-    inst:AddComponent("steampressure")
 	
 	MakeObstaclePhysics(inst, .5)
 
@@ -143,29 +154,33 @@ local function fn()
         return inst
     end
 
+    inst:DoTaskInTime(0.5,function()
+    	inst._meter = SpawnPrefab("well_waterpump_meter")
+		inst:AddChild(inst._meter)
+		inst._meter.entity:SetParent(inst.entity)
+		inst._meter:Hide()
+	end)
+
     inst.AnimState:SetBank("well_waterpump")
     inst.AnimState:SetBuild("well_waterpump")
-    inst.AnimState:PlayAnimation("idle_stop",true)
+    inst.AnimState:PlayAnimation("deactive")
 
+    inst:AddComponent("steampressure")
     inst.components.steampressure:SetDepletedFn(OnDeplete)
     inst.components.steampressure:SetChargingDoneFn(SetChargingDoneFn)
-    --inst.components.steampressure:SetPressureSectionFn(SetPressureSection)
+    inst.components.steampressure:SetPressureSectionFn(SetPressureSection)
     inst.components.steampressure:SetTakeWaterFn(OnTaken)
-    inst.components.steampressure:SetPressureSections(50)
+    inst.components.steampressure:SetPressureSections(4)
     inst.components.steampressure:SetPressure(100)
+    inst.components.steampressure.meterfn = meterfn
     inst._steampressure = inst.components.steampressure.pressuresection
-
-    --inst.AnimState:OverrideSymbol("swap", "well_waterpump_meter", tostring(math.ceil(inst._steampressure/2)))
 
     inst:AddComponent("machine")
     inst.components.machine.turnonfn = TurnOn
     inst.components.machine.turnofffn = TurnOff
-    inst.components.machine.cooldowntime = 0.5
+    inst.components.machine.cooldowntime = 2
 
     inst:AddComponent("wateringmachine")
-
-    -- inst.SoundEmitter:PlaySound("rifts3/sawhorse/proximity_lp", "loop_active")
-    inst.SoundEmitter:PlaySound("dontstarve/common/together/dragonfly_furnace/fire_LP", "loop_deactive")
 
     inst:AddComponent("inspectable")
     inst.components.inspectable.getstatus = getstatus
@@ -183,11 +198,37 @@ local function fn()
 	inst.components.workable:SetOnFinishCallback(onhammered)
 	inst.components.workable:SetOnWorkCallback(onhit)
 
-	inst:ListenForEvent("depleted_pressure")
+	inst:SetStateGraph("SGwell_waterpump")
 
 	inst:DoTaskInTime(0, OnSpawnIn)
+
+	inst:ListenForEvent("setmeter", SetMeter)
+	inst:ListenForEvent("showmeter", ShowMeter)
+	inst:ListenForEvent("hidemeter", HideMeter)
 
 	return inst
 end
 
-return Prefab("well_waterpump", fn, assets, prefabs)
+local function meterfn()
+	local inst = CreateEntity()
+	inst.entity:AddTransform()
+	inst.entity:AddAnimState()
+	inst.entity:AddSoundEmitter()
+    inst.entity:AddNetwork()
+
+    inst:AddTag("NOCLICK")
+    inst:AddTag("NOBLOCK")
+
+	inst.AnimState:SetBank("well_waterpump_meter")
+	inst.AnimState:SetBuild("well_waterpump_meter")
+	inst.AnimState:SetPercent("idle", 0)
+
+	inst.SetSection = SetSection
+
+	inst.persists = false
+	
+	return inst
+end
+
+return Prefab("well_waterpump", fn, assets, prefabs),
+Prefab("well_waterpump_meter", meterfn, assets, prefabs)

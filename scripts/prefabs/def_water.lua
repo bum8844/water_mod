@@ -123,8 +123,18 @@ local function doThaw(inst)
     if container ~= nil then
         container:GiveItem(newinst)
     else
-        local watertype = inst:HasTag("dirty") and "_dirty" or ""
-        newinst.AnimState:PlayAnimation("turn_to_full"..watertype)
+        local stacksize = newinst.components.stackable:StackSize()
+        if stacksize >= 5 then
+            newinst.AnimState:Hide("cups_UN")
+            newinst.AnimState:Hide("cups")
+            newinst.AnimState:Show("bottles")
+        else
+            newinst.AnimState:Hide("bottles")
+            newinst.AnimState:Show("cups_UN")
+            newinst.AnimState:Show("cups")
+        end
+        local anim = inst:HasTag("dirty") and "_dirty" or ""
+        newinst.AnimState:PlayAnimation("turn_to_full"..anim)
         newinst.AnimState:PushAnimation("idle")
     end
 end
@@ -164,8 +174,16 @@ local function doFreeze(inst)
     if container ~= nil then
         container:GiveItem(newinst)
     else
-        local watertype = inst:HasTag("dirty") and "_dirty" or ""
-        newinst.AnimState:PlayAnimation("turn_to_ice"..watertype)
+        local stacksize = newinst.components.stackable:StackSize()
+        if stacksize >= 5 then
+            newinst.AnimState:Hide("cups")
+            newinst.AnimState:Show("bottles")
+        else
+            newinst.AnimState:Hide("bottles")
+            newinst.AnimState:Show("cups")
+        end
+        local anim = inst:HasTag("dirty") and "_dirty" or ""
+        newinst.AnimState:PlayAnimation("turn_to_ice"..anim)
         newinst.AnimState:PushAnimation("idle")
     end
 end
@@ -273,6 +291,7 @@ local function MakeWaterItem(name, masterfn, tags, _prefabs)
 	{
 		Asset("ANIM", "anim/kettle_drink.zip"),
 		Asset("ANIM", "anim/kettle_drink_bottle.zip"),
+        Asset("ANIM", "anim/kettle_drink_ice.zip")
 	}
 
     local prefabs = _prefabs or nil

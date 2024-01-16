@@ -379,8 +379,10 @@ local function caffeinberry_bean()
 end
 
 local function OnEatBeans(inst, eater)
-    eater.caffeinbuff_duration = TUNING.SEG_TIME
-    eater.components.debuffable:AddDebuff("caffeinbuff", "caffeinbuff")
+    if eater.components.debuffable then
+        eater.caffeinbuff_duration = TUNING.SEG_TIME
+        eater:AddDebuff("caffeinbuff", "caffeinbuff")
+    end
 end
 
 local function caffeinberry_bean_cooked()

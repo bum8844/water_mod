@@ -245,8 +245,6 @@ local function fn_item()
     inst.components.workable:SetWorkLeft(2)
     inst.components.workable:SetOnFinishCallback(onhammered)
 
-    inst:AddComponent("tradable")
-
     inst:AddComponent("inspectable")
     
     inst:AddComponent("inventoryitem")
