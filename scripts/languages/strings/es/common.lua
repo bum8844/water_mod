@@ -293,7 +293,7 @@ STRINGS.NAMES.STRAWBERRYSODA = "Fresas chispeantes"
 
 STRINGS.NAMES.AUROBOW = "Aurobow"
 STRINGS.NAMES.COCONUT_WINE = "Vino de coco"
-STRINGS.NAMES.CHERRY_BLOOM_WINE = "Vino de flor de cerezo"
+STRINGS.NAMES.CHERRY_BLOOM_MADHU = "Hidromiel de flor de cerezo"
 STRINGS.NAMES.GIANT_BLUEBERRY_WINE = "Vino de boombayas"
 STRINGS.NAMES.RICE_WINE = "Makgeolli"
 STRINGS.NAMES.WHEAT_BEER = "Cerveza de trigo"
