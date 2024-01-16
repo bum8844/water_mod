@@ -315,7 +315,7 @@ local drinks =
 	},
 }
 
---[[local mod_drink = require("modcompats/preparedspiritsdrink_mod")
+local mod_drink = require("modcompats/preparedspiritsdrink_mod")
 local hof, ia, te, mfp = false, false, false, false
 
 for k,mod_id in ipairs(KnownModIndex:GetModsToLoad()) do 
@@ -370,7 +370,7 @@ if hof or mfp then
 	for k, v in pairs(wheat_drink) do
 		drinks[k] = v
 	end
-end]]
+end
 
 for k, v in pairs(drinks) do
     v.name = k

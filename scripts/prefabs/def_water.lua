@@ -290,8 +290,7 @@ local function MakeWaterItem(name, masterfn, tags, _prefabs)
 	local assets =
 	{
 		Asset("ANIM", "anim/kettle_drink.zip"),
-		Asset("ANIM", "anim/kettle_drink_bottle.zip"),
-        Asset("ANIM", "anim/kettle_drink_ice.zip")
+		Asset("ANIM", "anim/kettle_drink_bottle.zip")
 	}
 
     local prefabs = _prefabs or nil

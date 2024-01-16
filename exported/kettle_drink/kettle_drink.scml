@@ -289,6 +289,9 @@
     <folder id="93" name="strawberrysoda">
         <file id="0" name="strawberrysoda/strawberrysoda-0.png" width="81" height="117" pivot_x="0.58" pivot_y="0.25"/>
     </folder>
+    <folder id="94" name="sweet_rice_drink">
+        <file id="0" name="sweet_rice_drink/sweet_rice_drink-0.png" width="100" height="109" pivot_x="0.5" pivot_y="0.35"/>
+    </folder>
     <entity id="0" name="kettle_drink">
         <animation id="0" name="turn_to_ice" length="1000" interval="100">
             <mainline>
@@ -1051,6 +1054,7 @@
             <mainline>
                 <key id="0">
                     <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="0" z_index="1"/>
                 </key>
                 <key id="1" time="150">
                     <object_ref id="0" timeline="0" key="0" z_index="0"/>
@@ -1059,6 +1063,11 @@
             <timeline id="0" name="swap">
                 <key id="0" spin="0">
                     <object folder="0" file="0" angle="0"/>
+                </key>
+            </timeline>
+            <timeline id="1" name="sweet_rice_drink-0">
+                <key id="0" spin="0">
+                    <object folder="94" file="0" x="299" y="-59"/>
                 </key>
             </timeline>
         </animation>
