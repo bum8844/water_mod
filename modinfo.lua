@@ -3,12 +3,13 @@ version 					= "Alpha 1.1.9g"
 local info_version = "Version "..version.."\n"
 
 description = info_version..[[
+With Don't Starve: Dehydrated hunger is not the only threat coming for you.
 
-Don't Starve: Dehydrated add new Plants, Drink, and Thirst Constant!
+You will have to explore the Constant and gather materials to quench your thirst if you want to survive. 
 
-Walking around the map, You have to find things that can fill your thirst and survive from it.
+You can and should concoct your beverages in a teapot or a brewing stand instead of drinking unrefined sea water.
 
-Once you get used to the situation, try making a drink that makes you feel more thirsty!
+Another tool for survival is a book that you could accumulate information in about a variety of plants and edible food, even favorites!
 ]]
 forumthread = ""
 author 						= ""

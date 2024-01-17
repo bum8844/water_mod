@@ -87,6 +87,10 @@ STRINGS.RECIPE_DESC.WELL_KIT = "All's well that there's well."
 STRINGS.NAMES.WELL_SPRINKLER_KIT = "Sprinkler Kit"
 STRINGS.RECIPE_DESC.WELL_SPRINKLER_KIT = "The ultimate irrigation."
 
+--well_burying_kit
+STRINGS.NAMES.WELL_BURYING_KIT = "Burying Kit"
+STRINGS.RECIPE_DESC.WELL_BURYING_KIT = "Stone in the hole instead of a lucky coin."
+
 -- desalinator
 STRINGS.NAMES.DESALINATOR = "Desalinator"
 STRINGS.RECIPE_DESC.DESALINATOR = "Bottle up the salty nature of sea water."

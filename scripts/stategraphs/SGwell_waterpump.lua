@@ -52,7 +52,9 @@ local states =
 		end,
 
 		timeline = {
-			TimeEvent(1 * FRAMES,function(inst) inst.SoundEmitter:PlaySound("monkeyisland/autopilot/magnet_place") end)
+			TimeEvent(1 * FRAMES,function(inst) inst.SoundEmitter:PlaySound("monkeyisland/autopilot/magnet_search_pre") end),
+			TimeEvent(2 * FRAMES,function(inst) inst.SoundEmitter:PlaySound("monkeyisland/autopilot/beacon_search","search_loop") end),
+			TimeEvent(48 * FRAMES,function(inst) inst.SoundEmitter:KillSound("search_loop") end)
 		},
 
 		events = {

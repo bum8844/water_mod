@@ -381,7 +381,7 @@ if mfp or fwd then
 	end
 end
 
-if te or ia then
+--[[if te or ia then
 	local sw_drink = mod_drink.sw_drink
 	for k,v in pairs(sw_drink) do
 		drinks[k] = v
@@ -400,7 +400,7 @@ if hof or mfp then
 	for k, v in pairs(wheat_drink) do
 		drinks[k] = v
 	end
-end
+end]]
 
 for k, v in pairs(drinks) do
     v.name = k
