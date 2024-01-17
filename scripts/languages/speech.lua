@@ -1,4 +1,5 @@
 --the translation function is in progress
+STRINGS.NAMES.FRUITFLYFRUIT_DEAD = STRINGS.NAMES.FRUITFLYFRUIT
 STRINGS.UI.DRINK_TYPES = {}
 
 LOC = require("languages/loc")
@@ -7,7 +8,7 @@ local locales =
 {
 	en = "en",
 	ko = "ko",
-	es = "es",
+	--es = "es",
 	--zh = "zh",
 	--zht = "zh",
 	--zhr = "zh",
@@ -35,6 +36,7 @@ local vanilla_characters = {
 	"wendy",
 	"wickerbottom",
 	"willow",
+	"winona",
 	"wolfgang",
 	"woodie",
 	"wormwood",

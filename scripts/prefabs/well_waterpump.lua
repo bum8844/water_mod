@@ -104,6 +104,7 @@ end
 
 local function ShowMeter(inst)
 	if inst._meter then
+		SetMeter(inst)
 		inst._meter:Show()--.AnimState:Show("meter_needle")
 	end
 end
@@ -148,18 +149,18 @@ local function fn()
 	
 	MakeObstaclePhysics(inst, .5)
 
-    inst.entity:SetPristine()
-
-    if not TheWorld.ismastersim then
-        return inst
-    end
-
     inst:DoTaskInTime(0.5,function()
     	inst._meter = SpawnPrefab("well_waterpump_meter")
 		inst:AddChild(inst._meter)
 		inst._meter.entity:SetParent(inst.entity)
 		inst._meter:Hide()
 	end)
+
+    inst.entity:SetPristine()
+
+    if not TheWorld.ismastersim then
+        return inst
+    end
 
     inst.AnimState:SetBank("well_waterpump")
     inst.AnimState:SetBuild("well_waterpump")
@@ -218,6 +219,7 @@ local function meterfn()
 
     inst:AddTag("NOCLICK")
     inst:AddTag("NOBLOCK")
+    inst:AddTag("FX")
 
 	inst.AnimState:SetBank("well_waterpump_meter")
 	inst.AnimState:SetBuild("well_waterpump_meter")

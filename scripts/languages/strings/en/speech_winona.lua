@@ -1,4 +1,4 @@
-sreturn {
+return {
     ACTIONFAIL =
     {
         GIVE =
