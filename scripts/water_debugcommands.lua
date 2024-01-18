@@ -1,4 +1,4 @@
-require("debugcommands")
+require("consolecommands")
 
 local function ListingOrConsolePlayer(input)
     if type(input) == "string" or type(input) == "number" then
@@ -7,15 +7,15 @@ local function ListingOrConsolePlayer(input)
     return input or ConsoleCommandPlayer()
 end
 
-function c_supergodmodewater(player)
+function c_supergodmode(player)
     if TheWorld ~= nil and not TheWorld.ismastersim then
-        c_remote("c_supergodmodewater()")
+        c_remote("c_supergodmode()")
         return
     end
 
     player = ListingOrConsolePlayer(player)
     if player ~= nil then
-        SuUsed("c_supergodmodewater", true)
+        SuUsed("c_supergodmode", true)
         if player:HasTag("playerghost") then
             player:PushEvent("respawnfromghost")
             print("Reviving "..player.name.." from ghost.")

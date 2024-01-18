@@ -3,10 +3,14 @@ local Assets =
     Asset("ATLAS", "images/tea_inventoryitem.xml"),
     Asset("IMAGE", "images/tea_inventoryitem.tex"),
 
+    Asset("ATLAS", "images/tea_inventoryitem_drinks.xml"),
+    Asset("IMAGE", "images/tea_inventoryitem_drinks.tex"),
+
     Asset("ATLAS", "images/tea_minimap.xml"),
     Asset("IMAGE", "images/tea_minimap.tex"),
 
     Asset("ATLAS_BUILD", "images/tea_inventoryitem.xml", 256),
+    Asset("ATLAS_BUILD", "images/tea_inventoryitem_drinks.xml", 256),
 
     Asset("SOUNDPACKAGE", "sound/drink_fx.fev"),    
     Asset("SOUND", "sound/drink_fx.fsb"),
