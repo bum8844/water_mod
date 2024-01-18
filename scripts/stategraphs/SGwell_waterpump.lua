@@ -175,6 +175,7 @@ local states =
 		tags = {"busy","turn_off","deactive"},
 		onenter = function(inst)
 			inst:PushEvent("hidemeter")
+			inst.SoundEmitter:KillSound("search_loop")
 			inst.SoundEmitter:KillSound("loop_active")
 			inst.AnimState:PlayAnimation("deactiveing")
 		end,
