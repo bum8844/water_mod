@@ -1,20 +1,27 @@
 local STRUCTURE = {
-	barrel                 = {subcat="structure", workable="HAMMER", burnable=true, build="barrel_dehy", bank="barrel_dehy", anim="idle", overridesymbol={"swap","barrel_dehy_meter_water","5"}, deps={"boards","rope","charcoal","water_clean"}},
-	caffeinberry           = {workable="DIG", burnable=true, picakble=true, specialinfo="NEEDFERTILIZER", build="caffeinberry", bank="caffeinberry", anim="idle", deps={"twigs"}},
-	campdesalinator        = {subcat="structure", speechname = "campdesalinator_item", build="campdesalinator", bank="campdesalinator_A", anim="idle_empty", overridesymbol={"swap_meter","campdesalinator_meter_water","0"}, deps={}},
-	campkettle             = {subcat="structure", speechname = "campkettle_item", build="campkettle", bank="campkettle_A", anim="idle_empty", overridesymbol={"swap_meter","campkettle_meter_water","0"}, deps={}},
-	desalinator            = {subcat="structure", workable="HAMMER", burnable=true, build="desalinator", bank="desalinator", anim="idle", overridesymbol={"swap", "desalinator_meter_salt", "5"}, deps={"boards","rope","rocks","nitre","charcoal","water_clean"}},
-	hole                   = {build="well", bank="holes", anim="idle", deps={"well_drilling"}},
-	kettle                 = {subcat="structure", workable="HAMMER", burnable=true, stewer=true, specialinfo="KETTLE", build="kettle", bank="kettle", anim="idle_empty", overridesymbol={"swap","kettle_meter_water","0"}, deps={"twigs","rope","charcoal","water_clean"}},
-	portablekettle         = {subcat="structure", workable="HAMMER", burnable=true, stewer=true, specialinfo="PORTABLE_KETTLE", build="portablekettle", bank="portablekettle", anim="idle_empty", overridesymbol={"swap","portablekettle_meter_water","0"}, deps={"twigs","rope","charcoal","water_clean"}},
+	barrel                 = {burnable=true, build="barrel_dehy", bank="barrel_dehy", anim="idle", overridesymbol={"swap","barrel_dehy_meter_water","5"}, deps={"boards","rope","charcoal","water_clean"}},
+	campdesalinator        = {speechname = "campdesalinator_item", build="campdesalinator", bank="campdesalinator_A", anim="idle_empty", overridesymbol={"swap_meter","campdesalinator_meter_water","0"}, deps={}},
+	campkettle             = {speechname = "campkettle_item", build="campkettle", bank="campkettle_A", anim="idle_empty", overridesymbol={"swap_meter","campkettle_meter_water","0"}, deps={}},
+	desalinator            = {burnable=true, build="desalinator", bank="desalinator", anim="idle", overridesymbol={"swap", "desalinator_meter_salt", "5"}, deps={"boards","rope","rocks","nitre","charcoal","water_clean"}},
+
+	kettle                 = {burnable=true, stewer=true, specialinfo="KETTLE", build="kettle", bank="kettle", anim="idle_empty", overridesymbol={"swap","kettle_meter_water","0"}, deps={"twigs","rope","charcoal","water_clean"}},
+	portablekettle         = {burnable=true, stewer=true, specialinfo="PORTABLE_KETTLE", build="portablekettle", bank="portablekettle", anim="idle_empty", overridesymbol={"swap","portablekettle_meter_water","0"}, deps={"twigs","rope","charcoal","water_clean"}},
+	well                   = {specialinfo="WELL", build="well", bank="well", anim="idle"},--, deps={"twigs","rope","charcoal","water_clean"}},
+	well_drilling          = {specialinfo="WELL_DRILLING", build="well_drilling", bank="well_drilling", anim="idle_place"},--, deps={"well_drilling_item"}},
+	well_sprinkler         = {specialinfo="WELL_SPRINKLER", fueledmax=480, fueledrate=1, fueledtype1="BURNABLE", fueledtype2="CHEMICAL", build="portablekettle", bank="portablekettle", anim="idle_empty", overridesymbol={"swap","well_sprinkler_meter","10"}},--, deps={"twigs","rope","charcoal","water_clean"}},
+	--well_waterpump         = {specialinfo="WELL_WATERPUMP", },
+}
+
+local PLANTS = {
+	caffeinberry           = {workable="DIG", burnable=true, picakble=true, specialinfo="NEEDFERTILIZER", build="caffeinberry", bank="caffeinberry", anim="idle", deps={"twigs"}},	
 	ruincacao_seed_sapling = {workable="DIG", burnable=true, build="ruincacao_tree_seed", bank="ruincacao_tree_seed", anim="planted"},--, deps={"ruincacao_tree","ruincacao_tree_seed","ash"}},
 	ruincacao_tree         = {workable="DIG", burnable=true, picakble=true, specialinfo="NEEDFERTILIZER", build="ruincacao_tree_build", bank="ruincacao_tree_build", anim="idle3"},--, deps={"dug_ruincacao_tree","ruincacao","twigs","ash"}},
 	tea_seed_sapling       = {workable="DIG", burnable=true, picakble=true, build="tea_seed", bank="tea_tree_seed", anim="planted", deps={"tea_tree","twigs","ash"}},
 	tea_tree               = {workable="DIG", burnable=true, picakble=true, specialinfo="NEEDFERTILIZER", build="tea_tree_build", bank="tea_tree_build", anim="idle2"},--, deps={"dug_tea_tree","tealeaves","petals","twigs","ash"}},
-	well                   = {subcat="structure", workable="HAMMER", specialinfo="WELL", build="well", bank="well", anim="idle"},--, deps={"twigs","rope","charcoal","water_clean"}},
-	well_drilling          = {subcat="structure", workable="HAMMER", specialinfo="WELL_DRILLING", build="well_drilling", bank="well_drilling", anim="idle_place"},--, deps={"well_drilling_item"}},
-	well_sprinkler         = {subcat="structure", workable="HAMMER", specialinfo="WELL_SPRINKLER", fueledmax=480, fueledrate=1, fueledtype1="BURNABLE", fueledtype2="CHEMICAL", build="portablekettle", bank="portablekettle", anim="idle_empty", overridesymbol={"swap","well_sprinkler_meter","10"}},--, deps={"twigs","rope","charcoal","water_clean"}},
-	--well_waterpump         = {subcat="structure", workable="HAMMER", specialinfo="WELL_WATERPUMP", },
+}
+
+local ETC = {
+	hole                   = {build="well", bank="holes", anim="idle", deps={"well_drilling"}},	
 }
 
 local ITEM = {
@@ -185,6 +192,20 @@ local scrapbook_prefabs = require("scrapbook_prefabs")
 local scrapbookdata = require("screens/redux/scrapbookdata")
 
 for k, v in pairs(STRUCTURE) do
+	v.subcat = "structure"
+	v.workable = "HAMMER"
+	v.name = v.name or k
+	v.prefab = k
+	v.tex = v.tex or k..".tex"
+	v.type = "thing"
+	v.deps = v.deps or {}
+	v.notes = v.notes or {}
+
+	scrapbook_prefabs[k] = true
+	scrapbookdata[k] = v
+end
+
+for k, v in pairs(PLATES) do
 	if v.subcat and STRINGS.SCRAPBOOK.SUBCATS[string.upper(v.subcat)] == nil then
 		STRINGS.SCRAPBOOK.SUBCATS[string.upper(v.subcat)] = v.subcat
 	end
@@ -198,6 +219,22 @@ for k, v in pairs(STRUCTURE) do
 	scrapbook_prefabs[k] = true
 	scrapbookdata[k] = v
 end
+
+for k, v in pairs(ETC) do
+	if v.subcat and STRINGS.SCRAPBOOK.SUBCATS[string.upper(v.subcat)] == nil then
+		STRINGS.SCRAPBOOK.SUBCATS[string.upper(v.subcat)] = v.subcat
+	end
+	v.name = v.name or k
+	v.prefab = k
+	v.tex = v.tex or k..".tex"
+	v.type = "thing"
+	v.deps = v.deps or {}
+	v.notes = v.notes or {}
+
+	scrapbook_prefabs[k] = true
+	scrapbookdata[k] = v
+end
+
 
 for k, v in pairs(ITEM) do
 	if v.subcat and STRINGS.SCRAPBOOK.SUBCATS[string.upper(v.subcat)] == nil then

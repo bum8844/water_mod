@@ -889,6 +889,15 @@ function ScrapbookScreen:PopulateInfoPanel(entry, ...)
 		if data.harvestable then
 			makeentry("icon_action.tex",STRINGS.SCRAPBOOK.DATA_HARVESTABLE)			
 		end				
+		if data.brewing then
+			makeentry("icon_action.tex",STRINGS.SCRAPBOOK.DATA_BREWING)			
+		end
+		if data.ferment then
+			makeentry("icon_action.tex",STRINGS.SCRAPBOOK.DATA_FERMENT)		
+		end
+		if data.disitll then
+			makeentry("icon_action.tex",STRINGS.SCRAPBOOK.DATA_DISITLL)	
+		end	
 		if data.stewer then
 			makeentry("icon_action.tex",STRINGS.SCRAPBOOK.DATA_STEWER)			
 		end
