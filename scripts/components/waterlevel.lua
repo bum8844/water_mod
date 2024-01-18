@@ -135,8 +135,16 @@ function Waterlevel:SetSections(num)
     self.sections = num
 end
 
+function Waterlevel:IsSame()
+    return self.maxwater == self.sections
+end
+
+function Waterlevel:GetSection()
+    return self:IsSame() and math.floor(self:GetPercent()* self.sections) or math.floor(self:GetPercent()* self.sections)+1
+end
+
 function Waterlevel:GetCurrentSection()
-    return self:IsEmpty() and 0 or math.min( math.floor(self:GetPercent()* self.sections)+1, self.sections)
+    return self:IsEmpty() and 0 or math.min(self:GetSection(), self.sections)
 end
 
 function Waterlevel:ChangeSection(amount)
