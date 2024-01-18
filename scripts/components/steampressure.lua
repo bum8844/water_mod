@@ -182,10 +182,12 @@ function SteamPressure:IsSame()
     return self.maxpressure == self.pressuresection
 end
 
-
+function SteamPressure:GetSection()
+    return self:IsSame() and math.floor(self:GetPressurePercent()* self.pressuresection) or math.floor(self:GetPressurePercent()* self.pressuresection)+1
+end
 
 function SteamPressure:GetPressureSection()
-    return self:IsEmptyPressure() and 0 or math.min( math.floor(self:GetPressurePercent()* self.pressuresection)+1, self.pressuresection)
+    return self:IsEmptyPressure() and 0 or math.min(self:GetSection(), self.pressuresection)
 end
 
 function SteamPressure:OnSave()
