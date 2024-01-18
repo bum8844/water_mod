@@ -219,7 +219,6 @@ local function meterfn()
 
     inst:AddTag("NOCLICK")
     inst:AddTag("NOBLOCK")
-    inst:AddTag("FX")
 
 	inst.AnimState:SetBank("well_waterpump_meter")
 	inst.AnimState:SetBuild("well_waterpump_meter")
@@ -227,7 +226,11 @@ local function meterfn()
 
 	inst.SetSection = SetSection
 
-	inst.persists = false
+    inst.entity:SetPristine()
+
+    if not TheWorld.ismastersim then
+        return inst
+    end
 	
 	return inst
 end
