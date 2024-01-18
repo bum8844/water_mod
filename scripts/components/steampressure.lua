@@ -178,6 +178,12 @@ function SteamPressure:GetPressurePercent()
     return self.maxpressure > 0 and math.max(0, math.min(1, self.curpressure / self.maxpressure)) or 0
 end
 
+function SteamPressure:IsSame()
+    return self.maxpressure == self.pressuresection
+end
+
+
+
 function SteamPressure:GetPressureSection()
     return self:IsEmptyPressure() and 0 or math.min( math.floor(self:GetPressurePercent()* self.pressuresection)+1, self.pressuresection)
 end
