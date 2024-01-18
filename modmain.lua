@@ -58,5 +58,6 @@ AddReplicableComponent("waterlevel")
 AddReplicableComponent("distill")
 
 RegisterItemAtlasFile("images/tea_inventoryitem.xml")
+RegisterItemAtlasFile("images/tea_inventoryitem_drinks.xml")
 
 modrequire("main")

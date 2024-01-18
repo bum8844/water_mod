@@ -62,17 +62,12 @@ if GetModConfigData("enable_thirst") then
         if self.console_edit then
             local water_commands = 
             {
-                "supergodmodewater",
+                "supergodmode",
                 "setthirst",
             }
             local dictionary = self.console_edit.prediction_widget.word_predictor.dictionaries[3]
             for k, word in pairs(water_commands) do
-                for k, v in pairs(dictionary.words) do
-                    if dictionary.words == word then
-                        break
-                    end
-                end
-                table.insert(dictionary.words, word)
+                dictionary.words[word] = word
             end
         end
     end)
