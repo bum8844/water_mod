@@ -160,7 +160,7 @@
         <file id="0" name="ruincha_latte/ruincha_latte-0.png" width="95" height="124" pivot_x="0.45" pivot_y="0.25"/>
     </folder>
     <folder id="53" name="ruincolate_smoothie">
-        <file id="0" name="ruincolate_smoothie/ruincolate_smoothie-0.png" width="59" height="120" pivot_x="0.5" pivot_y="0.25"/>
+        <file id="0" name="ruincolate_smoothie/ruincolate_smoothie-0.png" width="59" height="120" pivot_x="0.5" pivot_y="0.4"/>
     </folder>
     <folder id="54" name="lumpy_tea">
         <file id="0" name="lumpy_tea/lumpy_tea-0.png" width="93" height="103" pivot_x="0.5" pivot_y="0.25"/>
@@ -187,7 +187,7 @@
         <file id="0" name="pulque/pulque-0.png" width="120" height="120" pivot_x="0.5" pivot_y="0.25"/>
     </folder>
     <folder id="62" name="ruincacao_wine">
-        <file id="0" name="ruincacao_wine/ruincacao_wine-0.png" width="61" height="115" pivot_x="0.5" pivot_y="0.35"/>
+        <file id="0" name="ruincacao_wine/ruincacao_wine-0.png" width="61" height="115" pivot_x="0.5" pivot_y="0.4"/>
     </folder>
     <folder id="63" name="watermelon_juice">
         <file id="0" name="watermelon_juice/watermelon_juice-0.png" width="100" height="120" pivot_x="0.5" pivot_y="0.25"/>
@@ -256,41 +256,62 @@
     <folder id="82" name="coconut_juice">
         <file id="0" name="coconut_juice/coconut_juice-0.png" width="120" height="118" pivot_x="0.5" pivot_y="0.25"/>
     </folder>
-    <folder id="83" name="orange_juice">
-        <file id="0" name="orange_juice/orange_juice-0.png" width="113" height="120" pivot_x="0.4" pivot_y="0.35"/>
-    </folder>
-    <folder id="84" name="orangesoda">
+    <folder id="83" name="orangesoda">
         <file id="0" name="orangesoda/orangesoda-0.png" width="74" height="118" pivot_x="0.52" pivot_y="0.25"/>
     </folder>
-    <folder id="85" name="pale_beer">
+    <folder id="84" name="pale_beer">
         <file id="0" name="pale_beer/pale_beer-0.png" width="120" height="120" pivot_x="0.45" pivot_y="0.25"/>
     </folder>
-    <folder id="86" name="pale_whiskey">
-        <file id="0" name="pale_whiskey/pale_whiskey-0.png" width="120" height="120" pivot_x="0.5" pivot_y="0.25"/>
+    <folder id="85" name="pale_whiskey">
+        <file id="0" name="pale_whiskey/pale_whiskey-0.png" width="120" height="120" pivot_x="0.5" pivot_y="0.35"/>
     </folder>
-    <folder id="87" name="pineananas_juice">
+    <folder id="86" name="pineananas_juice">
         <file id="0" name="pineananas_juice/pineananas_juice-0.png" width="111" height="120" pivot_x="0.53" pivot_y="0.35"/>
     </folder>
-    <folder id="88" name="pineananassoda">
+    <folder id="87" name="pineananassoda">
         <file id="0" name="pineananassoda/pineananassoda-0.png" width="84" height="120" pivot_x="0.54" pivot_y="0.25"/>
     </folder>
-    <folder id="89" name="rice_spirits">
+    <folder id="88" name="rice_spirits">
         <file id="0" name="rice_spirits/rice_spirits.png" width="120" height="120" pivot_x="0.5" pivot_y="0.35"/>
     </folder>
-    <folder id="90" name="rice_wine">
+    <folder id="89" name="rice_wine">
         <file id="0" name="rice_wine/rice_wine-0.png" width="112" height="86" pivot_x="0.5" pivot_y="0.25"/>
     </folder>
-    <folder id="91" name="strawberry_milk_smoothie">
-        <file id="0" name="strawberry_milk_smoothie/strawberry_milk_smoothie-0.png" width="55" height="120" pivot_x="0.52" pivot_y="0.25"/>
+    <folder id="90" name="strawberry_milk_smoothie">
+        <file id="0" name="strawberry_milk_smoothie/strawberry_milk_smoothie-0.png" width="55" height="120" pivot_x="0.52" pivot_y="0.4"/>
     </folder>
-    <folder id="92" name="strawberry_smoothie">
+    <folder id="91" name="strawberry_smoothie">
         <file id="0" name="strawberry_smoothie/strawberry_smoothie-0.png" width="70" height="120" pivot_x="0.52" pivot_y="0.25"/>
     </folder>
-    <folder id="93" name="strawberrysoda">
+    <folder id="92" name="strawberrysoda">
         <file id="0" name="strawberrysoda/strawberrysoda-0.png" width="81" height="117" pivot_x="0.58" pivot_y="0.25"/>
     </folder>
-    <folder id="94" name="sweet_rice_drink">
+    <folder id="93" name="sweet_rice_drink">
         <file id="0" name="sweet_rice_drink/sweet_rice_drink-0.png" width="100" height="109" pivot_x="0.5" pivot_y="0.35"/>
+    </folder>
+    <folder id="94" name="arrack">
+        <file id="0" name="arrack/arrack-0.png" width="120" height="120" pivot_x="0.5" pivot_y="0.35"/>
+    </folder>
+    <folder id="95" name="aurobow">
+        <file id="0" name="aurobow/aurobow-0.png" width="89" height="119" pivot_x="0.5" pivot_y="0.4"/>
+    </folder>
+    <folder id="96" name="coconut_wine">
+        <file id="0" name="coconut_wine/coconut_wine-0.png" width="62" height="120" pivot_x="0.5" pivot_y="0.4"/>
+    </folder>
+    <folder id="97" name="moonway">
+        <file id="0" name="moonway/moonway-0.png" width="120" height="120" pivot_x="0.5" pivot_y="0.3"/>
+    </folder>
+    <folder id="98" name="nut_coconut_brandy">
+        <file id="0" name="nut_coconut_brandy/nut_coconut_brandy-0.png" width="120" height="120" pivot_x="0.5" pivot_y="0.35"/>
+    </folder>
+    <folder id="99" name="quartz_shake">
+        <file id="0" name="quartz_shake/quartz_shake-0.png" width="60" height="120" pivot_x="0.5" pivot_y="0.4"/>
+    </folder>
+    <folder id="100" name="wheat_beer">
+        <file id="0" name="wheat_beer/wheat_beer-0.png" width="120" height="120" pivot_x="0.51" pivot_y="0.25"/>
+    </folder>
+    <folder id="101" name="wheat_whiskey">
+        <file id="0" name="wheat_whiskey/wheat_whiskey-0.png" width="120" height="120" pivot_x="0.5" pivot_y="0.4"/>
     </folder>
     <entity id="0" name="kettle_drink">
         <animation id="0" name="turn_to_ice" length="1000" interval="100">
@@ -1067,7 +1088,7 @@
             </timeline>
             <timeline id="1" name="sweet_rice_drink-0">
                 <key id="0" spin="0">
-                    <object folder="94" file="0" x="299" y="-59"/>
+                    <object folder="93" file="0" x="299" y="-59" angle="0"/>
                 </key>
             </timeline>
         </animation>
