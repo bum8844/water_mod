@@ -179,6 +179,7 @@ function WateringStructure:TimerChange(percent)
     end
 
     percent = math.clamp(percent, 0, 1)
+
     self.basetime = remainingtime
     self.targettime = percent * remainingtime
 
@@ -265,7 +266,7 @@ function WateringStructure:OnLoad(data)
 
         self.watertype = data.watertype
         self.wateramount = data.wateramount
-        self.basetime = data.watertype 
+        self.basetime = data.basetime 
         self.inst:PushEvent("setwateringtool_temperature")
 
         local isFrozenAndDirty = self:IsFrozen() and self.watertype == WATERTYPE.DIRTY
