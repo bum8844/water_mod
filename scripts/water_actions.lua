@@ -99,9 +99,9 @@ local function ExtraPickupRange(doer, dest)
     return 0
 end
 
-local store_stroverride = ACTIONS.STORE.stroverridefn or function(act) return end
+local store_stroverride = ACTIONS.STORE.stroverridefn or function(act) return  end
 ACTIONS.STORE.stroverridefn = function(act)
-    return act.target:HasTag("kettle") and STRINGS.ACTIONS.BOIL or act.target:HasTag("brewery") and STRINGS.ACTIONS.FERMENT or act.target:HasTag("distillers") and STRINGS.ACTIONS.DISITLL
+    return act.target:HasTag("kettle") and STRINGS.ACTIONS.BOIL or act.target:HasTag("brewery") and STRINGS.ACTIONS.FERMENT or act.target:HasTag("distillers") and STRINGS.ACTIONS.DISITLL or nil
 end
 
 --Adding new actions
