@@ -290,6 +290,7 @@ BREWING = AddAction("BREWING",STRINGS.ACTIONS.BOIL,function(act)
 
 BREWING.stroverridefn = function(act)
     return act.target ~= nil and 
+        act.target:HasTag("kettle") and STRINGS.ACTIONS.BOIL or 
         act.target:HasTag("brewery") and STRINGS.ACTIONS.FERMENT or 
         act.target:HasTag("distillers") and STRINGS.ACTIONS.DISITLL or nil
 end
