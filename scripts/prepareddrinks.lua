@@ -286,7 +286,7 @@ local drinks =
 
 	seaweed_shake = 
 	{
-		test = function(boilier, names, tags) return (names.kelp or names.kelp_cooked or names.kelp_dried or names.seaweed or names.seaweed_cooked or names.seaweed_dried or names.kyno_seaweeds or names.kyno_seaweeds_cooked or names.kyno_seaweeds_dried) and tags.tags.frozen and tags.frozen >= 1 and (Preference(names, tags) >= 0.5) and notmeat(tags) and notname(names) and lessthing(names) end,
+		test = function(boilier, names, tags) return (names.kelp or names.kelp_cooked or names.kelp_dried or names.seaweed or names.seaweed_cooked or names.seaweed_dried or names.kyno_seaweeds or names.kyno_seaweeds_cooked or names.kyno_seaweeds_dried) and tags.frozen and tags.frozen >= 1 and (Preference(names, tags) >= 0.5) and notmeat(tags) and notname(names) and lessthing(names) end,
 		priority = 1,
 		health = (TUNING.HEALING_SMALL*2)/4, --1.5 (7.5)
 		hunger = TUNING.DRINK_CALORIES/4, --1.25 (6.25)
