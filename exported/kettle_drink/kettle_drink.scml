@@ -313,6 +313,12 @@
     <folder id="101" name="wheat_whiskey">
         <file id="0" name="wheat_whiskey/wheat_whiskey-0.png" width="120" height="120" pivot_x="0.5" pivot_y="0.4"/>
     </folder>
+    <folder id="102" name="petals_berry_brandy">
+        <file id="0" name="petals_berry_brandy/petals_berry_brandy-0.png" width="120" height="120" pivot_x="0.5" pivot_y="0.4"/>
+    </folder>
+    <folder id="103" name="orange_juice">
+        <file id="0" name="orange_juice/orange_juice-0.png" width="113" height="120" pivot_x="0.4" pivot_y="0.3"/>
+    </folder>
     <entity id="0" name="kettle_drink">
         <animation id="0" name="turn_to_ice" length="1000" interval="100">
             <mainline>

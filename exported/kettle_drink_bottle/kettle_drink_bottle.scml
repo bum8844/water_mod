@@ -303,6 +303,9 @@
     <folder id="100" name="wheat_whiskey">
         <file id="0" name="wheat_whiskey/wheat_whiskey-0.png" width="137" height="187" pivot_x="0.52" pivot_y="0.25"/>
     </folder>
+    <folder id="101" name="orange_juice">
+        <file id="0" name="orange_juice/orange_juice-0.png" width="121" height="175" pivot_x="0.5" pivot_y="0.25"/>
+    </folder>
     <entity id="0" name="kettle_drink">
         <animation id="0" name="idle" length="150" interval="100" looping="false">
             <mainline>
