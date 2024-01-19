@@ -170,14 +170,12 @@ function WateringStructure:TimerChange(percent)
 
     local resultwater = self:GetWater() == WATERTYPE.CLEAN and WATERTYPE.DIRTY or WATERTYPE.EMPTY
     local isfrozen = self:IsFrozen()
-    local remainingtime
+    local remainingtime = math.ceil(TUNING.PERISH_FAST / 2)
 
     if isfrozen then
         remainingtime = math.ceil(TUNING.PERISH_SLOW / 2)
     elseif self.watertype == WATERTYPE.DIRTY then
         remainingtime = TUNING.BUCKET_LEVEL_PER_USE * 4
-    else
-        remainingtime = math.ceil(TUNING.PERISH_FAST / 2)
     end
 
     percent = math.clamp(percent, 0, 1)

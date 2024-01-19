@@ -2,18 +2,9 @@
 <Atlas>
 	<Texture filename="tea_ui.tex" />
 	<Elements>
-		<Element name="barrel.tex" u1="0.001" u2="0.249" v2="0.499" v1="0.251" variant="" />
-		<Element name="brewery.tex" u1="0.001" u2="0.249" v2="0.249" v1="0.001" variant="" />
-		<Element name="caffeinberrybush.tex" u1="0.251" u2="0.4911875" v2="0.50290625" v1="0.25490625" variant="" />
-		<Element name="desalinator.tex" u1="0.251" u2="0.499" v2="0.25290625" v1="0.00490625" variant="" />
-		<Element name="distillers.tex" u1="0.501" u2="0.749" v2="0.499" v1="0.251" variant="" />
-		<Element name="holes.tex" u1="0.001" u2="0.249" v2="0.999" v1="0.751" variant="" />
-		<Element name="kettle.tex" u1="0.251" u2="0.499" v2="0.999" v1="0.751" variant="" />
-		<Element name="portablekettle.tex" u1="0.001" u2="0.249" v2="0.749" v1="0.501" variant="" />
-		<Element name="ruincacao_tree.tex" u1="0.251" u2="0.49509375" v2="0.749" v1="0.50490625" variant="" />
-		<Element name="tea_tree.tex" u1="0.501" u2="0.749" v2="0.999" v1="0.751" variant="" />
-		<Element name="well.tex" u1="0.49709375" u2="0.74509375" v2="0.749" v1="0.501" variant="" />
-		<Element name="well_sprinkler.tex" u1="0.751" u2="0.97946875" v2="0.999" v1="0.75490625" variant="" />
-		<Element name="well_waterpump.tex" u1="0.751" u2="0.999" v2="0.75290625" v1="0.50490625" variant="" />
+		<Element name="cook_slot_additive.tex" u1="0.001" u2="0.26071875" v2="0.999" v1="0.73928125" variant="" />
+		<Element name="cook_slot_drink.tex" u1="0.26271875" u2="0.5224375" v2="0.999" v1="0.73928125" variant="" />
+		<Element name="status_thirst.tex" u1="0.001" u2="0.47946875" v2="0.73728125" v1="0.24709375" variant="" />
+		<Element name="status_thirst_bed.tex" u1="0.5244375" u2="0.99509375" v2="0.999" v1="0.5088125" variant="" />
 	</Elements>
 </Atlas>
