@@ -123,8 +123,18 @@ local function doThaw(inst)
     if container ~= nil then
         container:GiveItem(newinst)
     else
-        local watertype = inst:HasTag("dirty") and "_dirty" or ""
-        newinst.AnimState:PlayAnimation("turn_to_full"..watertype)
+        local stacksize = newinst.components.stackable:StackSize()
+        if stacksize >= 5 then
+            newinst.AnimState:Hide("cups_UN")
+            newinst.AnimState:Hide("cups")
+            newinst.AnimState:Show("bottles")
+        else
+            newinst.AnimState:Hide("bottles")
+            newinst.AnimState:Show("cups_UN")
+            newinst.AnimState:Show("cups")
+        end
+        local anim = inst:HasTag("dirty") and "_dirty" or ""
+        newinst.AnimState:PlayAnimation("turn_to_full"..anim)
         newinst.AnimState:PushAnimation("idle")
     end
 end
@@ -164,8 +174,16 @@ local function doFreeze(inst)
     if container ~= nil then
         container:GiveItem(newinst)
     else
-        local watertype = inst:HasTag("dirty") and "_dirty" or ""
-        newinst.AnimState:PlayAnimation("turn_to_ice"..watertype)
+        local stacksize = newinst.components.stackable:StackSize()
+        if stacksize >= 5 then
+            newinst.AnimState:Hide("cups")
+            newinst.AnimState:Show("bottles")
+        else
+            newinst.AnimState:Hide("bottles")
+            newinst.AnimState:Show("cups")
+        end
+        local anim = inst:HasTag("dirty") and "_dirty" or ""
+        newinst.AnimState:PlayAnimation("turn_to_ice"..anim)
         newinst.AnimState:PushAnimation("idle")
     end
 end
@@ -212,6 +230,24 @@ local function cleanwater(inst)
     inst.components.water:SetWaterType(WATERTYPE.CLEAN)
 end
 
+local function mineralwater(inst)
+    inst:SetPrefabNameOverride("water_clean")
+
+    inst.components.edible.healthvalue = TUNING.HEALING_MEDSMALL/4
+    inst.components.edible.hungervalue = 0
+    inst.components.edible.sanityvalue = TUNING.SANITY_TINY/2
+    inst.components.edible.thirstvalue = TUNING.HYDRATION_SMALL
+    inst.components.edible.degrades_with_spoilage = false
+
+    inst:AddComponent("perishable")
+    inst.components.perishable:SetPerishTime(TUNING.PERISH_SUPERFAST)
+    inst.components.perishable:StartPerishing()
+    inst.components.perishable.onreplacedfn = onperish
+    inst.components.perishable.onperishreplacement = "water_dirty"
+
+    inst.components.water:SetWaterType(WATERTYPE.MINERAL)
+end
+
 local function dirtywater(inst)
     common_liquid(inst)
     inst.components.edible.healthvalue = -TUNING.HEALING_TINY
@@ -254,7 +290,7 @@ local function MakeWaterItem(name, masterfn, tags, _prefabs)
 	local assets =
 	{
 		Asset("ANIM", "anim/kettle_drink.zip"),
-		Asset("ANIM", "anim/kettle_drink_bottle.zip"),
+		Asset("ANIM", "anim/kettle_drink_bottle.zip")
 	}
 
     local prefabs = _prefabs or nil
@@ -321,7 +357,8 @@ local function MakeWaterItem(name, masterfn, tags, _prefabs)
     return Prefab(name, fn, assets, prefabs)
 end
 
-return MakeWaterItem("water_clean", cleanwater, {"drink","show_spoilage", "icebox_valid","clean","farm_water","pre-prepareddrink","potion"}, prefabs.water_clean),
+return MakeWaterItem("water_clean", cleanwater, {"drink","show_spoilage","icebox_valid","clean","farm_water","pre-prepareddrink","potion"}, prefabs.water_clean),
+    MakeWaterItem("water_mineral", mineralwater, {"drink","show_spoilage","icebox_valid","clean","farm_water","pre-prepareddrink","potion"}),
     MakeWaterItem("water_dirty", dirtywater, {"drink","show_spoiled", "icebox_valid","dirty","farm_water"}),
     MakeWaterItem("water_salty", saltywater, {"drink","salty"}),
     MakeWaterItem("water_clean_ice", cleanice, {"show_spoilage", "icebox_valid","clean","frozen","unwrappable"}, prefabs.water_clean_ice),

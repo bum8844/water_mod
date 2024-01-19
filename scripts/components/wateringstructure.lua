@@ -25,6 +25,7 @@ local WateringStructure = Class(function(self, inst)
     self.dried = nil
     
     self.watertask = nil
+    self.islunacy = nil
 
     self.setstatesfn = nil
 end,
@@ -80,7 +81,7 @@ function WateringStructure:SetWaterAmount()
 
     self.wateramount = amount
 
-    self:SetWaterTimer(WATERTYPE.CLEAN, true)
+    self:SetWaterTimer(self.islunacy and WATERTYPE.MINERAL or WATERTYPE.CLEAN, true)
 end
 
 function WateringStructure:SetWater(watertype)
@@ -137,9 +138,9 @@ function WateringStructure:SetWaterTimer(watertype, isnew)
 
     self:SetWater(state)
 
-    if self:GetWater() == WATERTYPE.CLEAN then
+    if self:GetWater() == WATERTYPE.CLEAN or self:GetWater() == WATERTYPE.MINERAL then
         resultwater = WATERTYPE.DIRTY
-        timer = math.ceil(TUNING.PERISH_FAST / 2)
+        timer = self:GetWater() == WATERTYPE.CLEAN and math.ceil(TUNING.PERISH_FAST / 2) or math.ceil(TUNING.PERISH_SUPERFAST / 2)
     elseif self:GetWater() ~= WATERTYPE.DIRTY then
         self.wateramount = 0
         self.dried = true
@@ -248,7 +249,7 @@ function WateringStructure:OnLoad(data)
         self.toolfiniteuses = data.toolfiniteuses
         self.toolfiniteuses_old = data.toolfiniteuses_old
 
-        local water = data.watertype == WATERTYPE.CLEAN and WATERTYPE.DIRTY or WATERTYPE.EMPTY
+        local water = (data.watertype == WATERTYPE.CLEAN or data.watertype == WATERTYPE.MINERAL) and WATERTYPE.DIRTY or WATERTYPE.EMPTY
 
         if data.dried then
             self.dried = data.dried
@@ -266,7 +267,7 @@ function WateringStructure:OnLoad(data)
 
         self.watertype = data.watertype
         self.wateramount = data.wateramount
-        self.basetime = data.basetime
+        self.basetime = data.watertype 
         self.inst:PushEvent("setwateringtool_temperature")
 
         local isFrozenAndDirty = self:IsFrozen() and self.watertype == WATERTYPE.DIRTY
@@ -300,10 +301,11 @@ function WateringStructure:LongUpdate(dt)
         end
 
         local water = WATERTYPE.CLEAN
+        local watertype = self:GetWater()
 
-        if self:GetWater() == WATERTYPE.CLEAN then
+        if watertype == WATERTYPE.CLEAN or watertype == WATERTYPE.MINERAL then
             water = WATERTYPE.DIRTY
-        elseif self:GetWater() == WATERTYPE.DIRTY then
+        elseif watertype == WATERTYPE.DIRTY then
             water = WATERTYPE.EMPTY
         end
 

@@ -4,6 +4,25 @@ if KnownModIndex:IsModEnabled("workshop-2334209327") or KnownModIndex:IsModForce
     ACTIONS.UPGRADE.priority = 2
 end
 
+local MAX_PHYSICS_RADIUS = 4
+local VIRTUALOCEAN_HASTAGS = {"virtualocean"}
+local VIRTUALOCEAN_CANTTAGS = {"INLIMBO"}
+local function find_icefishing_hole(x, y, z, r)
+    local ents = TheSim:FindEntities(x, y, z, r or MAX_PHYSICS_RADIUS, VIRTUALOCEAN_HASTAGS, VIRTUALOCEAN_CANTTAGS)
+    for _, ent in ipairs(ents) do
+        if ent.Physics ~= nil then
+            local radius = ent.Physics:GetRadius()
+            local ex, ey, ez = ent.Transform:GetWorldPosition()
+            local dx, dz = ex - x, ez - z
+            if dx * dx + dz * dz <= (radius * radius)*1.75 then
+                return true
+            end
+        end
+    end
+
+    return nil
+end
+
 local function evaluate_watertype(giver, taker)
     for k, v in pairs(WATERGROUP) do
         if taker:HasTag(v.name.."_waterlevel") then
@@ -93,7 +112,7 @@ local USEITEM =
 local POINT =
 {
     watertaker = function(inst, doer, pos, actions, right, target)
-        if inst:HasTag("watertaker") and _G.TheWorld.Map:IsOceanAtPoint(pos.x, 0, pos.z) then
+        if inst:HasTag("watertaker") and (_G.TheWorld.Map:IsOceanAtPoint(pos.x, 0, pos.z) or _G.FindVirtualOceanEntity(pos.x, 0, pos.z) ~= nil) then
             table.insert(actions, ACTIONS.TAKEWATER_OCEAN)
         end
     end,
@@ -124,12 +143,14 @@ local SCENE =
                     (inst:HasTag("readybrewing") or inst:HasTag("readydistill")) and
                     --(not inst:HasTag("professionalcookware") or doer:HasTag("professionalchef")) and
                     (not inst:HasTag("mastercookware") or doer:HasTag("masterchef"))
-                ) or
-                (inst.replica.container ~= nil and
-                    (
-                        (inst.replica.container:IsFull() and inst.replica.waterlevel:HasWater()) or 
-                        (inst.replica.container:HasItemWithTag("alcohol",4))
-                    ) and inst.replica.container:IsOpenedBy(doer)
+                ) or (
+                    inst.replica.container ~= nil and
+                    inst.replica.container:IsFull() and 
+                    inst.replica.waterlevel:HasWater() and 
+                    inst.replica.container:IsOpenedBy(doer)
+                ) or (
+                    inst.replica.distill ~= nil and
+                    inst.replica.distill:IsFull()
                 )
             ) then
                 table.insert(actions, ACTIONS.BREWING)
@@ -139,10 +160,13 @@ local SCENE =
 }
 
 local INVENTORY = {
-    watertaker = function(inst, doer, actions, right)
-        local pos = inst:GetPosition()
-        if inst:HasTag("watertaker") and _G.TheWorld.Map:IsOceanTileAtPoint(pos.x, 0, pos.z) then
-            table.insert(actions, ACTIONS.TAKEWATER_OCEAN)
+    watertaker = function(inst, doer, actions)
+        if doer.components.playercontroller ~= nil and not doer.components.playercontroller.deploy_mode then
+            local pos = inst:GetPosition()
+            local isVirtualOceanEntity = find_icefishing_hole(pos.x, 0, pos.z)
+            if inst:HasTag("watertaker") and (_G.TheWorld.Map:IsOceanTileAtPoint(pos.x, 0, pos.z) or isVirtualOceanEntity ~= nil) then
+                table.insert(actions, ACTIONS.TAKEWATER_OCEAN)
+            end
         end
     end,
 

@@ -2,6 +2,7 @@ WATERTYPE =
 {
 	CLEAN = "water_clean",
 	DIRTY = "water_dirty",
+	MINERAL = "water_mineral",
 	CLEAN_ICE = "water_clean_ice",
 	DIRTY_ICE = "water_dirty_ice",
 	SALTY = "water_salty",
@@ -16,6 +17,7 @@ WATERGROUP =
 		types =
 		{
 			WATERTYPE.CLEAN,
+			WATERTYPE.MINERAL,
 			WATERTYPE.DIRTY,
 			WATERTYPE.SALTY,
 		}
@@ -37,6 +39,7 @@ WATERGROUP =
 		types =
 		{
 			WATERTYPE.CLEAN,
+			WATERTYPE.MINERAL,
 			WATERTYPE.DRINK,
 		},
 	},
@@ -47,6 +50,7 @@ WATERGROUP =
 		types =
 		{
 			WATERTYPE.CLEAN,
+			WATERTYPE.MINERAL,
 			WATERTYPE.DIRTY,
 			WATERTYPE.CLEAN_ICE,
 			WATERTYPE.DIRTY_ICE,
@@ -78,6 +82,9 @@ DRINKTYPY =
 	FRUIT = "FRUIT",
 	VEGGIE = "VEGGIE",
 	LEAFS = "LEAFS",
+	BREWER = "BREWER",
+	SPIRITS = "SPIRITS",
+	MEDICINE = "MEDICINE",
 }
 
 FOODTYPEGROUP = 
@@ -339,6 +346,7 @@ FOODTYPEGROUP =
 			--mod_ingredients
 			"molasses",
 			"fruit_syrup",
+			"syrup",
 			--hop
 			"kyno_syrup",
 			"kyno_oil",
@@ -427,6 +435,8 @@ FOODTYPEGROUP =
 			"sweettea",
 			"vegstinger",
 			--mod_foods
+			"peach_juice_bottle_green",
+			"peach_smoothie",
 			"spicyvegstinger",
 			"dish_chilledrosejuice",
 			"pina_colada",
@@ -435,6 +445,7 @@ FOODTYPEGROUP =
 			"juice_waterberry",
 			"fruit_truffle",
 			"tea_floral",
+			"fruityjuice",
 			"icedtea",
 			"tea",
 			"zaspberryparfait",
@@ -457,6 +468,8 @@ FOODTYPEGROUP =
 
 		MED = {
 			"gazpacho",
+			--mod_foods
+			"potion_bottle_green",
 			--fwd
 			"fwd_in_pdt_food_cooked_milk",
 		},

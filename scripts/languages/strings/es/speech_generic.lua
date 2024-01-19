@@ -71,7 +71,7 @@ return {
 		ADDITIVE_SEED = "¿Warly inventó una nueva especia?",
 		ADDITIVE_NUT = "Huele como café y nueces.",
 		ADDITIVE_DAIRY = "Esta herméticamente cerrada.",
-		ADDIRIVE_PETALS = "Son pétalos secos y hojas.",
+		ADDITIVE_PETALS = "Son pétalos secos y hojas.",
 
         -- Bebidas
 
@@ -196,7 +196,7 @@ return {
 		TEA_LUMPY_VODKA = "¿Saco esto de las hojas de té?",
 		PETALS_BERRY_BRANDY = "¿Un coñac con aroma frutal?",
 		KAHLUA = "Parece ron preparado con café.",
-		NUT_CORN_WHISKY = " ¡Aperitivo de cacahuetes combinado con whisky!",
+		NUT_CORN_WHISKEY = " ¡Aperitivo de cacahuetes combinado con whisky!",
         RUINCACAO_CREAM_LIQUEUR = "Es una bebida cremosa de chocolate.",
         RUMCHATA = "Una bajada suave.",
 

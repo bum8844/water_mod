@@ -16,7 +16,6 @@ return {
 	ANNOUNCE_NOTHIRSTSIESTA = "볼프강 물 좀 마시고 자야겠다...", -- 목이 마른데 낮에 잘려고 시도
 	ANNOUNCE_SLEEP_END = "볼프강 술보다 훨씬 강하다!", --자고 일어나서 술에서 완전히 깸 
 	ANNOUNCE_THIRST = "강력한 근육이 말라버릴것 같다...", --너무 목말라!
-	ANNOUNCE_DRUNK_IMMUNITY = "하! 술같은건 강한 볼프강에게 아무것도 아니다!" --마이티 상태 술 면역
 
 	ANNOUNCE_CAFFINE_BUFF_START = "볼프강 늑대처럼 달린다!", -- 카페인 버프 시작
     ANNOUNCE_CAFFINE_BUFF_STOP = "볼프강 무산소 운동 할 시간이다.",  -- 카페인 버프 끝
@@ -33,7 +32,7 @@ return {
 		WATER_CLEAN_ICE = "볼프강이 마실 물이 얼어버렸다..",--깨끗한 얼음물
 		WATER_DIRTY_ICE = "못 먹을 얼음이다.", --더러운 얼음물
 
-		SPICE_CAFFEINPEPPER = "음... 좋은 냄새 난다..." --후추 향신료
+		SPICE_CAFFEINPEPPER = "음... 좋은 냄새 난다...", --후추 향신료
 
 		WELL_KIT = "볼프강이 친구들을 위한 우물 지을거다!", --우물 키트
 		WELL_SPRINKLER_KIT = "강력한 자동 물뿌리개다!", --스프링클러 키트
@@ -43,6 +42,8 @@ return {
 		WELL_DRILLING_ITEM = "땅을 파헤친다. 아주 강력하게!", --드릴 아이템
 		HOLE = "볼프강 구멍에서 물 얻어낸다.", --우물 구멍
 		WELL = "이제 우물에서 물 얻을수 있다!", --우물
+
+		WX78MODULE_NONEDRUNK = "로봇 먹는 과자다, 맞지?", -- 78전용 묘듈Is robot snacks, yes?
 
 		-- 물 모드 식물
 
@@ -97,7 +98,7 @@ return {
 		CARROT_TEA = "볼프강은 당근 마시는것도 좋다!", --당근차
 		CACTUS_TEA = "뾰족한 가시 없지? 그렇지?", --선인차
 		TOMATO_JUICE = "건강한 음료다!", --토마토 쥬스
-		LUMPY_TEA = "풀들의 근육을 끓였다" --뿌리차,
+		LUMPY_TEA = "풀들의 근육을 끓였다", --뿌리차
 		SEAWEED_SHAKE = "먹어도 강해지진 않는다.", --해초 쉐이크
 		
 		GREENTEA = "풀 향이 많이 난다.", --생잎 녹차
@@ -164,9 +165,9 @@ return {
 		-- 콜라보 소다
 
 		CHERRY_DOCTOR_COLA = "사탕같은 맛 난다!", --체리숲 닥터 페퍼(닥터 체리)
-		PINEANANASSODA = "시고 시원한 음료수다." -- 탄산 파인애플(오란씨)
-		ORANGESODA = "달고 따끔하다." -- 탄산 오랜지(환타)
-		STRAWBERRYSODA = "탄산만큼 씨앗도 가득하다!" -- 탄산 딸기(웰치스 딸기)
+		PINEANANASSODA = "시고 시원한 음료수다.", -- 탄산 파인애플(오란씨)
+		ORANGESODA = "달고 따끔하다.", -- 탄산 오랜지(환타)
+		STRAWBERRYSODA = "탄산만큼 씨앗도 가득하다!", -- 탄산 딸기(웰치스 딸기)
 
 		--콜라보 양조주
 
@@ -196,7 +197,7 @@ return {
 		TEA_LUMPY_VODKA = "풀 맛 나는 신기한 보드카다!", -- 녹차 보ㄷㅡ카
 		PETALS_BERRY_BRANDY = "향긋한 냄새 나는 술이다.", -- 장미향 브랜디
 		KAHLUA = "콩 넣어서 만든 술이다.", -- 커피 리큐르 깔루아
-		NUT_CORN_WHISKY = "견과류 냄새 난다.", -- 너트 위스키
+		NUT_CORN_WHISKEY = "견과류 냄새 난다.", -- 너트 위스키
         RUINCACAO_CREAM_LIQUEUR = "초콜릿도 술로 만드는거였나?", --베일리스 카카오 크림 리큐르
         RUMCHATA = "우유 들어간 신기한 술이다.", -- 럼차타(럼에 오우차타 라는 유제품 섞은)
 

@@ -74,13 +74,14 @@ local states =
 			inst.AnimState:PlayAnimation("watering", false)
 
 			inst.SoundEmitter:PlaySound("turnoftides/common/together/boat/anchor/tether_land")
-			inst:DoTaskInTime(1.1,function(inst)
-				inst.SoundEmitter:PlaySound("turnoftides/common/together/boat/anchor/ocean_hit")
-			end)
 
 			inst.sg.statemem.setwatertype = "_full"
 			inst.sg.statemem.isnewwater = true
 		end,
+
+		timeline = {
+			TimeEvent(33 * FRAMES,function(inst) inst.SoundEmitter:PlaySound("turnoftides/common/together/boat/anchor/ocean_hit") end)
+		},
 
 		events = {
 			EventHandler("animover",

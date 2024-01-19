@@ -146,13 +146,13 @@ local drinks =
 		cooktime = TUNING.KETTLE_LUXURY_GOODS,
 		potlevel = "mid",
 		potlevel_bottle = "mid",
+		drinktype = DRINKTYPY.FRUIT,
 		prefabs = { "wormlight_light_greater" },
 		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_GLOW,
 		card_def = {ingredients={{"wormlight_lesser",3},{"honey",1}}},
 		oneatenfn = function(inst, eater)
            	drink_worm_light_greater(inst, eater)
 	    end,
-	    drinktype = DRINKTYPY.FRUIT,
 	},
 	
 	caffeinberry_juice =
@@ -173,7 +173,6 @@ local drinks =
 		oneatenfn = function(inst, eater)
 			eater:AddDebuff("caffeinbuff", "caffeinbuff")
 		end,
-		drinktype = DRINKTYPY.FRUIT,
 	},
 
 	toffee_latte = {
@@ -193,7 +192,6 @@ local drinks =
 			eater.caffeinbuff_duration = TUNING.CAFFEIN_TIME * 1.5
 			eater:AddDebuff("caffeinbuff", "caffeinbuff")
 		end,
-		drinktype = DRINKTYPY.FRUIT,
 	},
 
 	ruincha_latte = {
@@ -212,9 +210,7 @@ local drinks =
 		oneatenfn = function(inst, eater)
 			eater.caffeinbuff_duration = TUNING.CAFFEIN_TIME * 0.5
 			eater:AddDebuff("caffeinbuff", "caffeinbuff")
-			if eater.components.builder and eater.components.builder.temptechbonus_count then
-				eater.components.builder.temptechbonus_count = eater.components.builder.temptechbonus_count + 1
-			end
+			add_tech_count(inst, eater, 1)
 		end,
 	},
 
@@ -303,6 +299,7 @@ local drinks =
 		potlevel_bottle = "mid",
 		perishtime = TUNING.PERISH_FAST, -- 8 -> 6일
 		drinktype = DRINKTYPY.VEGGIE,
+		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_COLD_FOOD,
 	},
 	
 	cactus_tea =
@@ -321,6 +318,7 @@ local drinks =
 		potlevel = "mid",
 		potlevel_bottle = "mid",
 		drinktype = DRINKTYPY.VEGGIE,
+		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_COLD_FOOD,
 	},
 
 	tomato_juice = {
@@ -334,6 +332,7 @@ local drinks =
 		cooktime = TUNING.KETTLE_LUXURY_GOODS,
 		potlevel = "high",
 		potlevel_bottle = "mid",
+		drinktype = DRINKTYPY.VEGGIE,
 		perishtime = TUNING.PERISH_MED,
 		prefabs = { "detoxbuff" },
 		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_DETOX,
@@ -344,7 +343,6 @@ local drinks =
 				eater.components.dcapacity:Remove_Capacity(1)
 			end
 		end,
-		drinktype = DRINKTYPY.VEGGIE,
 	},
 
 	mulled =
@@ -362,12 +360,12 @@ local drinks =
 		cooktime = TUNING.KETTLE_LUXURY_GOODS,
 		potlevel = "mid",
 		potlevel_bottle = "high",
+		drinktype = DRINKTYPY.VEGGIE,
 		prefabs = { "sleepdrinkbuff", "healthregenbuff" },
 		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_MULLED,
 		oneatenfn = function(inst, eater)
 			eater:AddDebuff("sleepdrinkbuff", "sleepdrinkbuff")
 		end,
-		drinktype = DRINKTYPY.VEGGIE,
 	},
 	
 	-- 잎&꽃차 종류(정신력 특화)
@@ -592,7 +590,7 @@ local drinks =
 		potlevel = "mid",
 		potlevel_bottle = "mid",
 	},
-	ruinxocolat = {
+	ruinxocolatl = {
 		test = function(boilier, names, tags) return names.ruincacao_bean_cooked and names.ruincacao_bean_cooked >= 3 and ((names.pepper or 0) + (names.pepper_cooked or 0) >= 0) and notmeat(tags) and notname(names) and lessthing(names) end,
 		priority = 1,
         health = TUNING.HEALING_MED/4, -- 5 (25)
@@ -728,7 +726,7 @@ for k, v in pairs(drinks) do
     v.priority = v.priority or 0
 
     v.is_boilbook_recipes = true
-    v.cookbook_category = "kettle"
+    v.boilbook_category = "kettle"
     v.no_cookbook = true
 end
 

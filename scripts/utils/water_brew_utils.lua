@@ -296,16 +296,32 @@ end
 
 -- 술 관련 효과를 주는 코드
 
-local function checkcharging(eater)
-	return eater.components.upgrademoduleowner and eater.components.upgrademoduleowner:ChargeIsMaxed()
+local function check_mightiness(eater)
+	local skilltreeupdater = eater.components.skilltreeupdater
+	if not skilltreeupdater then
+		return false
+	end
+	local mightiness = eater.components.mightiness
+	if not mightiness then
+		return false
+	end
+	return skilltreeupdater:IsActivated("wolfgang_overbuff_1") and mightiness:GetCurrent() > mightiness:GetMax()
+end
+
+local function check_wathgrithr_combat_defense(eater)
+	local skilltreeupdater = eater.components.skilltreeupdater
+	if not skilltreeupdater then
+		return false
+	end
+	return skilltreeupdater:IsActivated("wathgrithr_combat_defense")
 end
 
 local function notspiritstags(eater)
-	return not eater:HasTag("mightiness_mighty") and not checkcharging(eater)
+	return not check_mightiness(eater) and not check_wathgrithr_combat_defense(eater) and not eater:HasTag("drunk_immunity")
 end
 
 local function notalcoholtags(eater)
-	return not eater:HasTag("valkyrie") and notspiritstags(eater)
+	return not eater:HasTag("valkyrie") and not eater:HasTag("mightiness_mighty") and notspiritstags(eater)
 end
 
 function alcohol(inst, eater)
@@ -339,14 +355,14 @@ function spirits(inst, eater)
 	if eater:HasTag("player") then
 		eater.components.dcapacity:Start_Intoxication(TUNING.SPIRITS_CAPACITY)
 		if eater.components.dcapacity:IsDrunk() then
-			if not notspiritstags(eater) then
+			if notspiritstags(eater) then
 				eater:AddDebuff("alcoholdebuff", "alcoholdebuff")
 				eater:AddDebuff("drunkarddebuff", "drunkarddebuff")
 			else
 				eater.components.talker:Say(GetString(eater,"ANNOUNCE_DRUNK_IMMUNITY"))
 			end
 		else
-			if not notalcoholtags(eater) then
+			if notalcoholtags(eater) then
 				if eater.components.dcapacity:IsCritical() then
 					eater.components.talker:Say(GetString(eater,"ANNOUNCE_DCAPACITY_CRITICAL"))
 				elseif eater.components.dcapacity:IsHalf() then
@@ -413,8 +429,9 @@ end
 function give_tech(inst, eater, num, count_num)
 	local atech_num = math.max(0,num)
 	local otech_num = math.max(0,num/2)
+	local ctech_num = math.max(0,num)
 	if eater.components.builder then
-		eater.components.builder:GiveTempTechBonus({ANCIENT = atech_num, OBSIDIAN = otech_num})
+		eater.components.builder:GiveTempTechBonus({ANCIENT = atech_num, OBSIDIAN = otech_num, CELESTIAL = ctech_num})
 		if count_num then
 			eater.components.builder.temptechbonus_count = eater.components.builder.temptechbonus_count + math.max(1,count_num)
 		end

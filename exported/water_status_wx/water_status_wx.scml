@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<spriter_data scml_version="1.0" generator="BrashMonkey Spriter" generator_version="r11">
+    <folder id="0" name="nonedrunk_chip">
+        <file id="0" name="nonedrunk_chip/nonedrunk_chip-0.png" width="141" height="86" pivot_x="0.824113" pivot_y="0.499128"/>
+        <file id="1" name="nonedrunk_chip/nonedrunk_chip-1.png" width="141" height="86" pivot_x="0.824113" pivot_y="0.499128"/>
+        <file id="2" name="nonedrunk_chip/nonedrunk_chip-2.png" width="141" height="86" pivot_x="0.824113" pivot_y="0.499128"/>
+        <file id="3" name="nonedrunk_chip/nonedrunk_chip-3.png" width="141" height="86" pivot_x="0.824113" pivot_y="0.499128"/>
+        <file id="4" name="nonedrunk_chip/nonedrunk_chip-4.png" width="141" height="86" pivot_x="0.824113" pivot_y="0.499128"/>
+        <file id="5" name="nonedrunk_chip/nonedrunk_chip-5.png" width="141" height="86" pivot_x="0.824113" pivot_y="0.499128"/>
+        <file id="6" name="nonedrunk_chip/nonedrunk_chip-6.png" width="177" height="156" pivot_x="0.768805" pivot_y="0.437564"/>
+    </folder>
+    <entity id="0" name="status_wx">
+        <animation id="0" name="swap" length="1000" interval="100">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="1" key="0" z_index="0"/>
+                    <object_ref id="1" timeline="0" key="0" z_index="1"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="nonedrunk_chip-0">
+                <key id="0" spin="0">
+                    <object folder="0" file="2" x="1" y="-1" angle="0"/>
+                </key>
+            </timeline>
+            <timeline id="1" name="nonedrunk_chip-6">
+                <key id="0" spin="0">
+                    <object folder="0" file="6" x="1"/>
+                </key>
+            </timeline>
+        </animation>
+    </entity>
+</spriter_data>

@@ -46,7 +46,7 @@ local function MakePreparedDrink(data)
 	end
 
     local function OnStackSizeChanged(inst, data)
-        if data ~= nil then
+        if data ~= nil and not inst:HasTag("disinfectant") then
             if inst.components.perishable ~= nil and data.stacksize >= 20 then
                 inst.components.perishable:SetLocalMultiplier(0.5)
             else
@@ -95,10 +95,6 @@ local function MakePreparedDrink(data)
         inst.AnimState:PlayAnimation("idle")
         inst.AnimState:OverrideSymbol("swap", data.overridebuild or "kettle_drink", data.basename or data.name)
 
-        inst:AddTag("drink")
-        inst:AddTag("preparedfood")
-        inst:AddTag("prepareddrink")
-
         if data.tags ~=nil then
         	for i,v in pairs(data.tags) do
         		inst:AddTag(v)
@@ -106,6 +102,9 @@ local function MakePreparedDrink(data)
         end
 
         if not inst:HasTag("common") then
+            inst:AddTag("drink")
+            inst:AddTag("preparedfood")
+            inst:AddTag("prepareddrink")
         	inst:AddTag("show_spoiled")
         	inst:AddTag("icebox_valid")
         end
@@ -168,6 +167,9 @@ local function MakePreparedDrink(data)
         inst.components.water.returnprefab = "cup"]]
 
 		inst:AddComponent("inventoryitem")
+        if data.OnPutInInventory then
+            inst:ListenForEvent("onputininventory", data.OnPutInInventory)
+        end
 
         if data.basename ~= nil then
             inst.components.inventoryitem:ChangeImageName(data.basename)
@@ -176,24 +178,36 @@ local function MakePreparedDrink(data)
         inst:AddComponent("stackable")
         inst.components.stackable.maxsize = TUNING.STACK_SIZE_TINYITEM
 
-        if data.perishtime ~= nil and data.perishtime > 0 then
+        if data.perishtime ~= nil and data.perishtime > 0 and not inst:HasTag("disinfectant") then
             inst:AddComponent("perishable")
             inst.components.perishable:SetPerishTime(data.perishtime)
             inst.components.perishable:StartPerishing()
             inst.components.perishable.onperishreplacement = "spoiled_drink"
         end
 
-        if inst:HasTag("explosive") then
-            MakeSmallBurnable(inst, 3 + math.random() * 3)
+        if inst:HasTag("spirits") then
+            local burntime = TUNING.LARGE_BURNTIME
+            local isexplosive = inst:HasTag("explosive")
+
+            if isexplosive then
+                burntime = 3 + math.random() * 3
+
+                inst:AddComponent("explosive")
+                inst.components.explosive:SetOnExplodeFn(OnExplodeFn)
+                inst.components.explosive.explosivedamage = TUNING.GUNPOWDER_DAMAGE
+            end
+
+            MakeSmallBurnable(inst, burntime)
             MakeSmallPropagator(inst)
 
-            inst.components.burnable:SetOnBurntFn(nil)
-            inst.components.burnable:SetOnIgniteFn(OnIgniteFn)
-            inst.components.burnable:SetOnExtinguishFn(OnExtinguishFn)
+            if isexplosive then
+                inst.components.burnable:SetOnBurntFn(nil)
+                inst.components.burnable:SetOnIgniteFn(OnIgniteFn)
+                inst.components.burnable:SetOnExtinguishFn(OnExtinguishFn)
+            end
 
-            inst:AddComponent("explosive")
-            inst.components.explosive:SetOnExplodeFn(OnExplodeFn)
-            inst.components.explosive.explosivedamage = TUNING.GUNPOWDER_DAMAGE
+            inst:AddComponent("fuel")
+            inst.components.fuel.fuelvalue = TUNING.MED_FUEL
         end
 
         MakeDynamicCupImage(inst, "swap", "kettle_drink")

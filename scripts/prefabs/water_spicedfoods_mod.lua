@@ -65,27 +65,39 @@ local function MakePreparedFood(data)
             inst.inv_image_bg = { image = (data.basename or data.name)..".tex",
             atlas = "images/inventoryimages/"..(data.basename or data.name)..".xml"}
         elseif KnownModIndex:IsModEnabled("workshop-1505270912") or KnownModIndex:IsModForceEnabled("workshop-1505270912") then
-            if inst:HasTag("volcanoinventory") then
+            if data.tetype == "volcano" then
                 inst.inv_image_bg = { image = (data.basename or data.name)..".tex",
                 atlas = "images/inventoryimages/volcanoinventory.xml"}
-            elseif inst:HasTag("hamletinventory") then
+            elseif data.tetype == "hamlet" then
                 inst.inv_image_bg = { image = (data.basename or data.name)..".tex",
                 atlas = "images/inventoryimages/hamletinventory.xml"}
-            else
+            --[[elseif data.tetype == "gorge" then
                 inst.inv_image_bg = { image = (data.basename or data.name)..".tex",
                 atlas = "images/inventoryimages/quagmirefoods.xml"}
-                data.overridebuild = "preparedfood_gorge"
-                table.insert(foodassets, Asset("ANIM", "anim/"..data.overridebuild..".zip"))
+                table.insert(foodassets, Asset("ANIM", "anim/preparedfood_gorge.zip"))]]
+            elseif data.tetype == "normal" then
+                inst.inv_image_bg = { image = (data.basename or data.name)..".tex"}
+                inst.inv_image_bg.atlas = GetInventoryItemAtlas(inst.inv_image_bg.image)
+                table.insert(foodassets, Asset("ANIM", "anim/cook_pot_food.zip"))
+            elseif data.tetype == "citd" then
+                inst.inv_image_bg = { image = (data.basename or data.name)..".tex",
+                atlas = "images/inventoryimages/food/"..(data.basename or data.name)..".xml"}
+            else
+                inst.inv_image_bg = { image = (data.basename or data.name)..".tex",
+                atlas = "images/inventoryimages/"..(data.basename or data.name)..".xml"}
+                table.insert(foodassets, Asset("ANIM", "anim/"..data.basename or data.name..".zip"))
             end
+        else
+            inst.inv_image_bg = { image = (data.basename or data.name)..".tex",
+            atlas = "images/inventoryimages/"..(data.basename or data.name)..".xml"}
+            table.insert(foodassets, Asset("ANIM", "anim/"..data.basename or data.name..".zip"))
         end
 
         food_symbol_build = data.overridebuild or "cook_pot_food"
+        print(data.overimg or "nil")
 
         inst.AnimState:PlayAnimation("idle")
-        inst.AnimState:OverrideSymbol("swap_food", data.overridebuild or data.basename or data.name, data.basename or data.name)
-        --[[if data.overridebuild == "preparedfood_gorge" then
-            inst.AnimState:SetScale(2,2,2)
-        end]]
+        inst.AnimState:OverrideSymbol("swap_food", data.overridebuild or data.basename or data.name, data.overimg or data.basename or data.name)
 
         inst:AddTag("preparedfood")
         if data.tags ~= nil then

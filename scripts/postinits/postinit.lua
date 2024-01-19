@@ -20,13 +20,14 @@ local postinits =
 		"antlion",
 		"cookingrecipecard",
 		"firepit",
-		"oasislake",
 		"player",
 		"portablespicer",	
 		"staff",		
 		"wateringcan",
 		"acorn",
 		"mosquitosack",
+		"wx78_modules",
+		"fruitfly",
 	},
 
 	screens = {
@@ -42,6 +43,8 @@ local postinits =
 	widgets =
 	{
 		"itemtile",
+		"upgrademodulesdisplay",
+		"containerwidget",
 	},
 
 	utils =
@@ -57,6 +60,8 @@ local postinits =
 		"preparedfoods",
 		"preparedfoods_warly",
 		"cookbookdata",
+		"techtree",
+		"wx78_moduledefs",
 	}
 }
 
@@ -71,6 +76,8 @@ if GetModConfigData("enable_thirst") then
 		"woodie",
 		"wurt",
 		"wintersfeastbuff",
+		"armor_slurper",
+		"slurper",
 	}
 
 	local components = {

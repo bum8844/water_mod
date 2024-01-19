@@ -43,6 +43,8 @@ return {
 		HOLE = "Looks good for me to build a well.",
 		WELL = "Now I can conveniently get clean, fresh water!",
 
+		WX78MODULE_NONEDRUNK = "So much science packed into one tiny gizmo.", -- 78전용 묘듈
+
         -- water mod plants
 
 		TEA_TREE = "What a lovely little tree.",
@@ -63,6 +65,7 @@ return {
 		RUINCACAO_SEED = "It's germinating already?",
 		RUINCACAO_SEED_SAPLING = "It'll grow into a tree in time.",
 		RUINCACAO = "It's drier than I thought.",
+
 		RUINCACAO_BEAN = "Too greasy to eat.",
 		RUINCACAO_SEED_COOKED = "It's more smokey than I thought.",
 
@@ -71,7 +74,7 @@ return {
 		ADDITIVE_SEED = "Did Warly concoct a new spice?",
 		ADDITIVE_NUT = "Smells like coffee and nuts.",
 		ADDITIVE_DAIRY = "The cream is tightly sealed.",
-		ADDIRIVE_PETALS = "It's dried petals and leaves.",
+		ADDITIVE_PETALS = "It's dried petals and leaves.",
 
         -- drinks
 
@@ -110,6 +113,7 @@ return {
 		SUSHIBISCUS = "This ought to be a scientifc impossibili-tea.",
 		MOON_BLOSSOM_TEA = "The aroma sure is an eye-opener.",
 		CAFFEINBERRY_JUICE = "Smells energizing!",
+		
 		TOFFEE_LATTE = "Is it mixed coffee with nuts?",
 		RUINCHA_LATTE = "The light is a nuclear reaction from the two beans.",		
 		
@@ -195,7 +199,7 @@ return {
 		TEA_LUMPY_VODKA = "Did he leach this from tea leaves?",
 		PETALS_BERRY_BRANDY = "A brandy with a flowery aroma?",
 		KAHLUA = "Seems like rum brewed with coffee.",
-		NUT_CORN_WHISKY = "Snack food peanuts combined with whiskey!",
+		NUT_CORN_WHISKEY = "Snack food peanuts combined with whiskey!",
         RUINCACAO_CREAM_LIQUEUR = "It's a creamy chocolatey drink.",
         RUMCHATA = "Smooth going down.",
 

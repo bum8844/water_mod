@@ -20,12 +20,14 @@ table.insert(TUNING.GAMEMODE_STARTING_ITEMS.DEFAULT.WARLY,"portablekettle_item")
 water_tuning =
 {
 	TYPES_CLEAN = {
+		"oasislake",
 		"cherry_pond",
 	},
 
 	TYPES_SALTY = {
 		"quagmire_pond_salt",
 		"kyno_pond_salt",
+		"icefishing_hole",
 	},
 
 	TYPES_DIRTY = {
@@ -34,6 +36,12 @@ water_tuning =
 		"pond_cave",
 		"tidalpool",
 		"tidalpoolnew",
+	},
+
+	TYPES_MINERAL = {
+		"hotspring",
+		"grotto_pool_big",
+		"grotto_pool_small",
 	},
 
 	CHILDS =
@@ -80,7 +88,7 @@ water_tuning =
 	-- Sections
 	BREWERY_SECTIONS = 20,
 	REDUCE_BREWERY = 3,
-	REDUCE_DISTILL = 4,
+	REDUCE_DISTILL = .2,
 
 	-- Freezing & Thawing Water
 	WATER_MINTEMP = -10,

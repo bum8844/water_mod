@@ -11,13 +11,14 @@ local drinks =
 		hunger = 0,
 		sanity = 0,
 		thirst = 0,
-		tags = {"disinfectant"},
+		tags = {"disinfectant","common"},
 		OnPutInInventory = function(inst, owner) if owner ~= nil and owner:IsValid() then owner:PushEvent("learncookbookstats", inst.food_basename or inst.prefab) end end,
 		perishtime = 9000000,
 		cooktime = (TUNING.INCORRECT_BOIL + TUNING.BEER_WAIT),
 		wet_prefix = STRINGS.WET_PREFIX.WETGOOP,
-		potlevel = "high",
+		potlevel = "mid",
 		potlevel_bottle = "mid",
+		drinktype = DRINKTYPY.MEDICINE
 	},
 	-- 증류주(위스키)
 	corn_whiskey =
@@ -38,7 +39,6 @@ local drinks =
 		oneatenfn = function(inst, eater)
 			spirits(inst, eater)
 		end,
-		drinktype = DRINKTYPY.VEGGIE,
 	},
 	-- 감자, 고구마
 	lumpy_vodka = {
@@ -60,7 +60,6 @@ local drinks =
 		oneatenfn = function(inst, eater)
 			spirits(inst, eater)
 		end,
-		drinktype = DRINKTYPY.VEGGIE,
 	},
 	-- 선인장
 	tequila = {
@@ -82,7 +81,6 @@ local drinks =
 		oneatenfn = function(inst, eater)
 			spirits(inst, eater)
 		end,
-		drinktype = DRINKTYPY.VEGGIE,
 	},
 	-- 증류주(럼)
 	madhu_rum =
@@ -97,7 +95,7 @@ local drinks =
 		perishtime = TUNING.PERISH_SUPERSLOW,
 		cooktime = (TUNING.KETTLE_VEGGIE + TUNING.BEER_WAIT),
 		potlevel = "mid",
-		potlevel_bottle = "high",
+		potlevel_bottle = "mid",
 		prefabs = { "alcoholdebuff","drunkarddebuff","immunebuff" },
 		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_INTOXICATION,
 		oneatenfn = function(inst, eater)
@@ -116,18 +114,17 @@ local drinks =
 		tags = {"alcohol","spirits"},
 		perishtime = TUNING.PERISH_SUPERSLOW,
 		cooktime = (TUNING.KETTLE_FRUIT + TUNING.BEER_WAIT),
-		potlevel = "high",
+		potlevel = "mid",
 		potlevel_bottle = "mid",
 		prefabs = { "alcoholdebuff","drunkarddebuff","immunebuff" },
 		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_INTOXICATION,
 		oneatenfn = function(inst, eater)
 			spirits(inst, eater)
 		end,
-		drinktype = DRINKTYPY.FRUIT,
 	},
 	-- 스파클링 와인
 	berry_gin = {
-		test = function(boilier, names, tags) return names.sparklingwine and names.additives_seed end,
+		test = function(boilier, names, tags) return names.sparklingwine and names.additive_seed end,
 		priority = 2,
 		health = TUNING.HEALING_SMALL*2,
 		hunger = TUNING.CALORIES_MEDSMALL,
@@ -137,18 +134,17 @@ local drinks =
 		perishtime = TUNING.PERISH_SUPERSLOW,
 		cooktime = (TUNING.KETTLE_FRUIT + TUNING.BEER_WAIT),
 		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_INTOXICATION,
-		potlevel = "high",
+		potlevel = "mid",
 		potlevel_bottle = "mid",
 		prefabs = { "alcoholdebuff","drunkarddebuff","immunebuff" },
 		oneatenfn = function(inst, eater)
 			spirits(inst, eater)
 		end,
-		drinktype = DRINKTYPY.FRUIT,
 	},
 	-- 발광 배리
 	glowberry_gin =
 	{
-		test = function(boilier, names, tags) return (names.glowberrywine or names.wine_glowberry) and names.additives_seed end,
+		test = function(boilier, names, tags) return (names.glowberrywine or names.wine_glowberry) and names.additive_seed end,
 		priority = 2,
 		health = 0,
 		hunger = TUNING.CALORIES_MEDSMALL,
@@ -156,7 +152,7 @@ local drinks =
 		thirst = TUNING.HYDRATION_MED,
 		tags = {"alcohol","spirits","lightdrink"},
 		perishtime = TUNING.PERISH_SUPERSLOW,
-		potlevel = "high",
+		potlevel = "mid",
 		potlevel_bottle = "mid",
 		prefabs = { "alcoholdebuff","drunkarddebuff","immunebuff","wormlight_light" },
 		cooktime = (TUNING.KETTLE_FRUIT + TUNING.BEER_WAIT),
@@ -165,7 +161,6 @@ local drinks =
 			spirits(inst, eater)
            	drink_worm_light_less(inst, eater)
 	    end,
-	    drinktype = DRINKTYPY.FRUIT,
 	},
 	-- 우유 증류주
 	areuhi = {
@@ -189,7 +184,7 @@ local drinks =
 	},
 	-- 리큐르 - 카카오 와인
 	ruincacao_cream_liqueur = {
-		test = function(boilier, names, tags) return names.ruincacao_wine and names.additives_dairy end,
+		test = function(boilier, names, tags) return names.ruincacao_wine and names.additive_dairy end,
 		priority = 2,
         health = TUNING.HEALING_MED/2,
         hunger = TUNING.CALORIES_MEDSMALL,
@@ -204,12 +199,12 @@ local drinks =
 		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_INTOXICATION_ANCIENT_KNOWLEGEE_THIRD,
 		oneatenfn = function(inst, eater)
 			spirits(inst, eater)
-			add_tech_count(inst, eater, 4, 2)
+			give_tech(inst, eater, 4, 2)
 		end,
 	},
 	-- 커피 + 꿀술
 	kahlua = {
-		test = function(boilier, names, tags) return (names.madhu or names.mead) and names.additives_nut end,
+		test = function(boilier, names, tags) return (names.madhu or names.mead) and names.additive_nut end,
 		priority = 2,
 		health = TUNING.HEALING_MEDSMALL*3,
 		hunger = TUNING.CALORIES_MEDSMALL,
@@ -219,7 +214,7 @@ local drinks =
 		perishtime = TUNING.PERISH_SUPERSLOW,
 		cooktime = (TUNING.KETTLE_VEGGIE + TUNING.BEER_WAIT),
 		potlevel = "mid",
-		potlevel_bottle = "high",
+		potlevel_bottle = "mid",
 		prefabs = { "alcoholdebuff","drunkarddebuff","immunebuff","caffeinbuff" },
 		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_INTOXICATION_CAFFINE,
 		oneatenfn = function(inst, eater)
@@ -228,8 +223,8 @@ local drinks =
 			eater:AddDebuff("caffeinbuff", "caffeinbuff")
 		end,
 	},
-	greentea_lumpy_vodka = {
-		test = function(boilier, names, tags) return names.lumpy_wine and names.additives_petals end,
+	tea_lumpy_vodka = {
+		test = function(boilier, names, tags) return names.lumpy_wine and names.additive_petals end,
 		priority = 2,
 		health = 0,
 		hunger = TUNING.CALORIES_MEDSMALL,
@@ -239,16 +234,15 @@ local drinks =
 		perishtime = TUNING.PERISH_SUPERSLOW,
 		cooktime = (TUNING.KETTLE_VEGGIE + TUNING.BEER_WAIT),
 		potlevel = "mid",
-		potlevel_bottle = "high",
+		potlevel_bottle = "mid",
 		prefabs = { "alcoholdebuff","drunkarddebuff","immunebuff" },
 		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_INTOXICATION,
 		oneatenfn = function(inst, eater)
 			spirits(inst, eater)
 		end,
-		drinktype = DRINKTYPY.VEGGIE,
 	},
 	absinthe = {
-		test = function(boilier, names, tags) return (names.wine or names.noblewine or names.wine_berries_juicy or names.wine_berries) and names.additives_seed end,
+		test = function(boilier, names, tags) return (names.wine or names.noblewine or names.wine_berries_juicy or names.wine_berries) and names.additive_seed end,
 		priority = 2,
 		health = 0,
 		hunger = TUNING.CALORIES_MEDSMALL,
@@ -257,17 +251,16 @@ local drinks =
 		tags = {"alcohol","spirits"},
 		perishtime = TUNING.PERISH_SUPERSLOW,
 		cooktime = (TUNING.KETTLE_FRUIT + TUNING.BEER_WAIT),
-		potlevel = "high",
+		potlevel = "mid",
 		potlevel_bottle = "mid",
 		prefabs = { "alcoholdebuff","drunkarddebuff","immunebuff" },
 		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_INTOXICATION,
 		oneatenfn = function(inst, eater)
 			spirits(inst, eater)
 		end,
-		drinktype = DRINKTYPY.FRUIT,
 	},
 	petals_berry_brandy = {
-		test = function(boilier, names, tags) return (names.wine or names.noblewine or names.wine_berries_juicy or names.wine_berries) and names.additives_petals end,
+		test = function(boilier, names, tags) return (names.wine or names.noblewine or names.wine_berries_juicy or names.wine_berries) and names.additive_petals end,
 		priority = 2,
 		health = 0,
 		hunger = TUNING.CALORIES_MEDSMALL,
@@ -276,17 +269,16 @@ local drinks =
 		tags = {"alcohol","spirits"},
 		perishtime = TUNING.PERISH_SUPERSLOW,
 		cooktime = (TUNING.KETTLE_FRUIT + TUNING.BEER_WAIT),
-		potlevel = "high",
+		potlevel = "mid",
 		potlevel_bottle = "mid",
 		prefabs = { "alcoholdebuff","drunkarddebuff","immunebuff" },
 		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_INTOXICATION,
 		oneatenfn = function(inst, eater)
 			spirits(inst, eater)
 		end,
-		drinktype = DRINKTYPY.FRUIT,
 	},
-	nut_corn_wisky = {
-		test = function(boilier, names, tags) return names.corn_beer and names.additives_nut end,
+	nut_corn_whiskey = {
+		test = function(boilier, names, tags) return names.corn_beer and names.additive_nut end,
 		priority = 1,
 		health = TUNING.HEALING_SMALL,
 		hunger = TUNING.CALORIES_MEDSMALL,
@@ -302,10 +294,9 @@ local drinks =
 		oneatenfn = function(inst, eater)
 			spirits(inst, eater)
 		end,
-		drinktype = DRINKTYPY.VEGGIE,
 	},
 	rumchata = {
-		test = function(boilier, names, tags) return (names.madhu or names.mead) and names.additives_dairy end,
+		test = function(boilier, names, tags) return (names.madhu or names.mead) and names.additive_dairy end,
 		priority = 2,
 		health = TUNING.HEALING_MEDSMALL*3,
 		hunger = TUNING.CALORIES_MEDSMALL,
@@ -315,7 +306,7 @@ local drinks =
 		perishtime = TUNING.PERISH_SUPERSLOW,
 		cooktime = (TUNING.KETTLE_VEGGIE + TUNING.BEER_WAIT),
 		potlevel = "mid",
-		potlevel_bottle = "high",
+		potlevel_bottle = "mid",
 		prefabs = { "alcoholdebuff","drunkarddebuff","immunebuff" },
 		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_INTOXICATION,
 		oneatenfn = function(inst, eater)
@@ -385,10 +376,13 @@ for k, v in pairs(drinks) do
     v.name = k
     v.weight = v.weight or 1
     v.priority = v.priority or 0
+	v.drinktype = v.drinktype or DRINKTYPY.SPIRITS
 
     v.is_boilbook_recipes = true
-    v.cookbook_category = "distillers"
+    v.boilbook_category = "distillers"
     v.no_cookbook = true
 end
 
 return drinks
+
+-- 녹차 보드카, 글로우배리 진, 넛 콘 위스키 데이터 수정해야함(es버전 오면)

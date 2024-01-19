@@ -32,7 +32,7 @@ return {
 		WATER_CLEAN_ICE = "차가워. 진짜 차가워",--깨끗한 얼음물
 		WATER_DIRTY_ICE = "차가워. 진짜 차가워", --더러운 얼음물
 
-		SPICE_CAFFEINPEPPER = "(킁킁) 에엣-취이! 엣-취이!" --후추 향신료
+		SPICE_CAFFEINPEPPER = "(킁킁) 에엣-취이! 엣-취이!", --후추 향신료
 
 		WELL_KIT = "구멍에 심어", --우물 키트
 		WELL_SPRINKLER_KIT = "구멍이나 물덩이 근처에 심어", --스프링클러 키트
@@ -42,6 +42,8 @@ return {
 		WELL_DRILLING_ITEM = "구멍내는 도구", --드릴 아이템
 		HOLE = "안에 물 있어", --우물 구멍
 		WELL = "물 얻을수 있어.", --우물
+
+		WX78MODULE_NONEDRUNK = "삐빅 삑", -- 78전용 묘듈
 
 		-- 물 모드 식물
 
@@ -96,7 +98,7 @@ return {
 		CARROT_TEA = "주황색 마실거", --당근차
 		CACTUS_TEA = "탱글탱글 한거 있어", --선인차
 		TOMATO_JUICE = "물렁물렁 공 물", --토마토 쥬스
-		LUMPY_TEA = "흙에서 난걸로 만든 마실거" --뿌리차,
+		LUMPY_TEA = "흙에서 난걸로 만든 마실거", --뿌리차
 		SEAWEED_SHAKE = "미끌미끌 가득", --해초 쉐이크
 		
 		GREENTEA = "멋쟁이걸로 우렸어", --생잎 녹차
@@ -196,7 +198,7 @@ return {
 		TEA_LUMPY_VODKA = "", -- 보드카
 		PETALS_BERRY_BRANDY = "", -- 장미향 브랜디
 		KAHLUA = "", -- 커피 리큐르 깔루아
-		NUT_CORN_WHISKY = "", -- 너트 위스키
+		NUT_CORN_WHISKEY = "", -- 너트 위스키
         RUINCACAO_CREAM_LIQUEUR = "", --베일리스 카카오 크림 리큐르
         RUMCHATA = "", -- 럼차타(럼에 오우차타 라는 유제품 섞은)
 

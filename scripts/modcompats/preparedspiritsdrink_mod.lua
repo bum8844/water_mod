@@ -42,7 +42,6 @@ local coconut_drink = {
 		oneatenfn = function(inst, eater)
 			spirits(inst, eater)
 		end,
-		drinktype = DRINKTYPY.FRUIT,
 	},
 	nut_coconut_brandy = {
 		test = function(boilier, names, tags) return (names.coconut_wine or names.wine_kokonut) and names.additives_nut end,
@@ -61,7 +60,6 @@ local coconut_drink = {
 		oneatenfn = function(inst, eater)
 			spirits(inst, eater)
 		end,
-		drinktype = DRINKTYPY.FRUIT,
 	},
 }
 
@@ -110,7 +108,7 @@ local unc_drink = {
 	giant_blueberry_gin = {
 		test = function(boilier, names, tags) return names.giant_blueberry_wine and names.additives_seed end,
 		priority = 2,
-        health = -TUNING.HEALING_MED,
+        health = 0,
         hunger = TUNING.CALORIES_MED,
         sanity = TUNING.SANITY_MEDLARGE,
         thirst = TUNING.HYDRATION_MED,
@@ -124,12 +122,11 @@ local unc_drink = {
 		oneatenfn = function(inst, eater)
 			spirits(inst, eater)
 		end,
-		drinktype = DRINKTYPY.FRUIT,
 	},
 	rice_spirits = {
 		test = function(boilier, names, tags) return names.rice_wine and not tags.additives end,
 		priority = 2,
-        health = -TUNING.HEALING_MED,
+        health = 0,
         hunger = TUNING.CALORIES_MED,
         sanity = TUNING.SANITY_MEDLARGE,
         thirst = TUNING.HYDRATION_MED,
@@ -146,7 +143,6 @@ local unc_drink = {
 				eater.components.hayfever:SetNextSneezeTime(1920)
 			end
 		end,
-		drinktype = DRINKTYPY.VEGGIE,
 	}
 }
 
@@ -154,7 +150,7 @@ local wheat_drink = {
 	wheat_whiskey = {
 		test = function(boilier, names, tags) return (names.wheat_beer or names.beer) and not tags.additives end,
 		priority = 2,
-        health = -TUNING.HEALING_MED,
+        health = TUNING.HEALING_SMALL*2,
         hunger = TUNING.CALORIES_MED,
         sanity = TUNING.SANITY_MEDLARGE,
         thirst = TUNING.HYDRATION_MED,
@@ -168,7 +164,6 @@ local wheat_drink = {
 		oneatenfn = function(inst, eater)
 			spirits(inst, eater)
 		end,
-		drinktype = DRINKTYPY.VEGGIE,
 	}
 }
 
@@ -176,7 +171,7 @@ local legion_drink = {
 	pale_whiskey = {
 		test = function(boilier, names, tags) return names.pale_beer and not tags.additives end,
 		priority = 2,
-        health = -TUNING.HEALING_MED,
+        health = TUNING.HEALING_SMALL*2,
         hunger = TUNING.CALORIES_MED,
         sanity = TUNING.SANITY_MEDLARGE,
         thirst = TUNING.HYDRATION_MED,
@@ -191,7 +186,6 @@ local legion_drink = {
 			spirits(inst, eater)
 			eater:AddDebuff("buff_moistureimmunity", "buff_moistureimmunity")
 		end,
-		drinktype = DRINKTYPY.VEGGIE,
 	}
 }
 

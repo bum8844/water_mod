@@ -43,6 +43,8 @@ return {
 		HOLE = "혹시 세상 반대편까지 이어져 있는 걸까?",
 		WELL = "왜 그래, 워비? 누가 거기 빠졌어?",
 
+		WX78MODULE_NONEDRUNK = "로봇 내장이잖아! 짱이다!", -- 78전용 묘듈
+
 	    -- 물 모드 식물
 
 		TEA_TREE = "교범에 차나무 얘기는 없네.",
@@ -71,7 +73,7 @@ return {
 		ADDITIVE_SEED = "이 씨앗들로 표본을 만들면 좋을 것 같아.",
 		ADDITIVE_NUT = "산행스낵! 이 아니네...",
 		ADDITIVE_DAIRY = "케이크에 올릴 크림일까?",
-		ADDIRIVE_PETALS = "말린 잎과 꽃잎들이야!",
+		ADDITIVE_PETALS = "말린 잎과 꽃잎들이야!",
 
 		-- 음료
 
@@ -197,7 +199,7 @@ return {
 		TEA_LUMPY_VODKA = "건강에 좋을것 같아 보여! 술이지만.",
 		PETALS_BERRY_BRANDY = "맛은 모르지만, 예쁘기는 하네!",
 		KAHLUA = "왈리 아저씨가 커피와 술을 동시에 마시고 싶어 하셨나봐!",
-		NUT_CORN_WHISKY = "내가 먹을 수 있는 형태 였으면 좋았을 텐데.",
+		NUT_CORN_WHISKEY = "내가 먹을 수 있는 형태 였으면 좋았을 텐데.",
         RUINCACAO_CREAM_LIQUEUR = "맛있을것 같은데 술 이라는게 아쉽네.",
         RUMCHATA = "달콤하고 부드러울것 처럼 보여!",
 
@@ -335,7 +337,7 @@ return {
 			MIDDLE_PRESSURE = "볼프강 아저씨 만큼이나 일을 잘해!", -- 압력이 중간
 			LOW_PRESSURE = "기계가 밥을 못 먹은걸까?", -- 압력이 거의 없을때
 			RECHARG_PRESSURE = "아무래도 연못을 찾아봐야 겠어, 워비.", -- 압력이 아예 없을때
-
+		},
 		WELL_SPRINKLER =
 		{ 
 			LOWFUEL = "땔감을 좀 더 넣어줘야겠어.",

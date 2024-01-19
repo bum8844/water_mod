@@ -83,15 +83,13 @@ local function OnTaken(inst, taker, water_amount)
 end
 
 local function OnSectionChange(new, old, inst)
+	--local watertype = inst.components.waterlevel.watertype ~= WATERTYPE.CLEAN and "mineral" or "water"
+	local watertype = "water"
 	if inst._waterlevel ~= new then
 		inst._waterlevel = new
-		inst.AnimState:OverrideSymbol("swap", "barrel_dehy_meter_water", tostring(new))
+		inst.AnimState:OverrideSymbol("swap", "barrel_dehy_meter_"..watertype, tostring(new))
 	end
 end
-
---[[local function changewatertype(inst)
-	inst.components.water:SetWaterType(inst.components.waterlevel.watertype)
-end]]
 
 local function onpercentusedchange(inst, data)
 	inst.components.wateryprotection.addwetness = data.percent * TUNING.WATER_BARREL_WETNESS
@@ -140,8 +138,9 @@ local function fn()
 	inst.components.waterspoilage.localPerishMultiplyer = TUNING.BARREL_FRESHENING_RATE
 	
 	inst:AddComponent("waterlevel")
+	inst.components.waterlevel.onlysamewater = true
 	inst.components.waterlevel:SetTakeWaterFn(OnTakeWater)
-	inst.components.waterlevel:SetCanAccepts({WATERTYPE.CLEAN, WATERTYPE.EMPTY})
+	inst.components.waterlevel:SetCanAccepts({WATERTYPE.CLEAN, WATERTYPE.MINERAL})
 	inst.components.waterlevel.maxwater = TUNING.BARREL_MAX_LEVEL
 	inst.components.waterlevel:SetSections(TUNING.BREWERY_SECTIONS)
 	inst.components.waterlevel:SetSectionCallback(OnSectionChange)

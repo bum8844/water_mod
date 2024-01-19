@@ -345,12 +345,12 @@ local function OnDetached_alcohol(inst, target)
     end
     inst:Remove()
 end
-local function checkcharging(eater)
+local function checkcharging(target)
     return inst.components.upgrademoduleowner and inst.components.upgrademoduleowner:ChargeIsMaxed()
 end
 
 local function OnExtended_alcohol(inst, target)
-    if not eater:HasTag("mightiness_mighty") or not checkcharging(eater) then
+    if not target:HasTag("mightiness_mighty") or not checkcharging(target) then
         inst.components.timer:StopTimer("alcoholdebuff_done")
         inst.components.timer:StartTimer("alcoholdebuff_done", TUNING.INTOXICATION_TIME)
     end
@@ -546,7 +546,7 @@ local function OnTick_thirstregen(inst, target)
     if target.components.health ~= nil and target.components.thirst ~= nil and
             not target.components.health:IsDead() and
             not target:HasTag("playerghost") then
-        local thirstabsorption = (target.components.eater ~= nil and target.components.eater.thirstabsorption)
+        local thirstabsorption = (target.components.target ~= nil and target.components.target.thirstabsorption)
                 or 1.0
 
         local delta = TUNING.HUNGERREGEN_TICK_VALUE * thirstabsorption
@@ -657,7 +657,7 @@ local function OnTick_waterborne(inst, target)
         and not target.components.health:IsDead()
         and target.components.sanity ~= nil
         and not target:HasTag("playerghost") then
-        local healthabsorption = (target.components.eater ~= nil and target.components.eater.healthabsorption)
+        local healthabsorption = (target.components.target ~= nil and target.components.target.healthabsorption)
                 or 1.0
         local delta = 1 * healthabsorption
         target.components.health:DoDelta(-delta, nil, inst.prefab)

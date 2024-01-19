@@ -14,6 +14,7 @@ local sw_drink = {
 		secondaryfoodtype = FOODTYPE.MEAT,
 		potlevel = "high",
 		potlevel_bottle = "mid",
+		drinktype = DRINKTYPY.BREWER,
 		prefabs = { "alcoholdebuff","drunkarddebuff","resistancebuff","wormlight_light" },
 		cooktime = (TUNING.KETTLE_FRUIT + TUNING.BEER_WAIT),
 		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_NAG_AURA_RESIST_GLOW,
@@ -37,6 +38,7 @@ local coconut_drink = {
 		cooktime = (TUNING.KETTLE_VEGGIE + TUNING.BEER_WAIT),
 		potlevel = "mid",
 		potlevel_bottle = "mid",
+		drinktype = DRINKTYPY.BREWER,
 		prefabs = { "alcoholdebuff","drunkarddebuff","resistancebuff" },
 		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_NAG_AURA_RESIST,
 		oneatenfn = function(inst, eater)
@@ -65,7 +67,6 @@ local cf_drink = {
 			eater:AddDebuff("healthregenbuff", "healthregenbuff")
 			eater:AddDebuff("caffeinbuff", "caffeinbuff")
 		end,
-		drinktype = DRINKTYPY.FRUIT,
 	},
 	cherry_bloom_madhu = {
 		test = function(boilier, names, tags) return names.cherry_honey and names.cherry_honey == 3 and ( names.forgetmelots or names.petals or names.moon_tree_blossom or tags.petals_legion ) and notmeat(tags) and notname(names) end,
@@ -79,6 +80,7 @@ local cf_drink = {
 		cooktime = (TUNING.KETTLE_FRUIT + TUNING.BEER_WAIT),
 		potlevel = "high",
 		potlevel_bottle = "mid",
+		drinktype = DRINKTYPY.BREWER,
 		prefabs = { "alcoholdebuff","drunkarddebuff","resistancebuff","buff_bloomyhoney" },
 		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_NAG_AURA_RESIST_CHERRY_TAFFY,
 		oneatenfn = function(inst, eater)
@@ -110,9 +112,9 @@ local cf_drink = {
 local unc_drink = {
 	giant_blueberry_wine = 
 	{
-		test = function(boilier, names, tags) return name.giant_blueberry and names.giant_blueberry >= 2 and names.viperfruit and names.viperfruit >= 1 and not tags.veggie and notmeat(tags) and notname(names) end,
+		test = function(boilier, names, tags) return name.giant_blueberry and names.giant_blueberry >= 2 and names.zaspberry and names.zaspberry >= 1 and not tags.veggie and notmeat(tags) and notname(names) end,
 		priority = 2,
-        health = -TUNING.HEALING_MED/2,
+        health = 0,
         hunger = TUNING.CALORIES_MED/2,
         sanity = TUNING.SANITY_MEDLARGE/2,
         thirst = TUNING.HYDRATION_MED,
@@ -121,12 +123,12 @@ local unc_drink = {
 		cooktime = (TUNING.KETTLE_FRUIT + TUNING.BEER_WAIT),
 		potlevel = "high",
 		potlevel_bottle = "mid",
+		drinktype = DRINKTYPY.BREWER,
 		prefabs = { "alcoholdebuff","drunkarddebuff","resistancebuff" },
 		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_NAG_AURA_RESIST,
 		oneatenfn = function(inst, eater)
 			alcohol(inst, eater)
 		end,
-		drinktype = DRINKTYPY.FRUIT,
 	},
 	rice_wine = 
 	{
@@ -141,6 +143,7 @@ local unc_drink = {
 		cooktime = (TUNING.KETTLE_FRUIT + TUNING.BEER_WAIT),
 		potlevel = "high",
 		potlevel_bottle = "mid",
+		drinktype = DRINKTYPY.BREWER,
 		prefabs = { "alcoholdebuff","drunkarddebuff","resistancebuff" },
 		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_NAG_AURA_RESIST_HAYFEVER_RELIEF_HUGE,
 		oneatenfn = function(inst, eater)
@@ -149,7 +152,6 @@ local unc_drink = {
 				eater.components.hayfever:SetNextSneezeTime(1440)
 			end
 		end,
-		drinktype = DRINKTYPY.VEGGIE,
 	},
 }
 
@@ -166,12 +168,12 @@ local wheat_drink = {
 		cooktime = (TUNING.KETTLE_VEGGIE + TUNING.BEER_WAIT),
 		potlevel = "mid",
 		potlevel_bottle = "mid",
+		drinktype = DRINKTYPY.BREWER,
 		prefabs = { "alcoholdebuff","drunkarddebuff","resistancebuff" },
 		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_NAG_AURA_RESIST,
 		oneatenfn = function(inst, eater)
 			alcohol(inst, eater)
 		end,
-		drinktype = DRINKTYPY.VEGGIE,
 	}
 }
 
@@ -188,6 +190,7 @@ local legion_drink = {
 		cooktime = (TUNING.KETTLE_LUXURY_GOODS + TUNING.BEER_WAIT),
 		potlevel = "mid",
 		potlevel_bottle = "mid",
+		drinktype = DRINKTYPY.BREWER,
 		prefabs = { "alcoholdebuff","drunkarddebuff","resistancebuff" },
 		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_NAG_AURA_RESIST_DRY,
 		oneatenfn = function(inst, eater)
@@ -196,7 +199,6 @@ local legion_drink = {
                 eater.components.moisture:DoDelta(-100)
             end
 		end,
-		drinktype = DRINKTYPY.VEGGIE,
 	},
 	pineananassoda =
 	{
@@ -220,7 +222,6 @@ local legion_drink = {
 				eater:AddDebuff("healthregenbuff", "healthregenbuff")
 			end
 		end,
-		drinktype = DRINKTYPY.FRUIT,
 	},
 }
 
@@ -247,7 +248,6 @@ local mfp_drink = {
 				eater:AddDebuff("healthregenbuff", "healthregenbuff")
 			end
 		end,
-		drinktype = DRINKTYPY.FRUIT,
 	},
 }
 
@@ -275,7 +275,6 @@ local orange_drink = {
 			end
 		end,
 	},
-	drinktype = DRINKTYPY.FRUIT,
 }
 
 return { sw_drink = sw_drink, coconut_drink = coconut_drink, cf_drink = cf_drink, unc_drink = unc_drink , wheat_drink = wheat_drink, legion_drink = legion_drink, mfp_drink = mfp_drink, orange_drink = orange_drink}

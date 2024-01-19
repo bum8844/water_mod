@@ -1,14 +1,21 @@
 name 						= "Don't Starve: Dehydrated"
-version 					= "Alpha 1.1.9g"
+version 					= "Alpha 1.1.9"
+local info_version = "Version "..version.."\n"
 
-description = (
-	"Description coming soon..."
-	)
+description = info_version..[[
+With Don't Starve: Dehydrated hunger is not the only threat coming for you.
+
+You will have to explore the Constant and gather materials to quench your thirst if you want to survive. 
+
+You can and should concoct your beverages in a teapot or a brewing stand instead of drinking unrefined sea water.
+
+Another tool for survival is a book that you could accumulate information in about a variety of plants and edible food, even favorites!
+]]
 forumthread = ""
 author 						= ""
 forumthread 				= ""
 api_version 				= 10
-priority 					= -10001
+priority 					= -10000010001
 
 dont_starve_compatible 		= false
 reign_of_giants_compatible 	= false

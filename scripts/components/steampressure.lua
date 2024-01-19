@@ -14,6 +14,23 @@ local function isfullpressure (self, isfullpressure)
 	end
 end
 
+local function waitpressure(inst, self)
+    self.pressuretask = nil
+    self:GetPressure()
+end
+
+local function waitfullpressure(inst, self)
+	self.depletedtask = nil
+	self.depleted = false
+	self.fullpressure = true
+	if self.chargingdonefn then
+		self.chargingdonefn(self.inst)
+	end
+	if self.meterfn then
+    	self.meterfn(self.inst)
+    end
+end
+
 local SteamPressure = Class(function(self, inst)
     self.inst = inst
 
@@ -25,6 +42,7 @@ local SteamPressure = Class(function(self, inst)
 	self.depletedfn = nil
 	self.chargingdonefn = nil
 	self.ontakewaterfn = nil
+	self.meterfn = nil
 
 	self.delayed = TUNING.TOTAL_DAY_TIME*.5 -- 240
 	self.left_time = nil
@@ -39,20 +57,6 @@ end,nil,{
 	depleted = isdepleted,
 	fullpressure = isfullpressure,
 })
-
-local function waitpressure(inst, self)
-    self.pressuretask = nil
-    self:GetPressure()
-end
-
-local function waitfullpressure(inst, self)
-	self.depletedtask = nil
-	self.depleted = false
-	self.fullpressure = true
-	if self.chargingdonefn then
-		self.chargingdonefn(self.inst)
-	end
-end
 
 function SteamPressure:SetDepletedFn(fn)
 	self.depletedfn = fn
@@ -81,6 +85,10 @@ function SteamPressure:GetPressure()
 
     local oldsection = self:GetPressureSection()
     self.curpressure = self.curpressure + 1
+
+    if self.meterfn then
+    	self.meterfn(self.inst)
+    end
 
     if self.curpressure >= self.maxpressure then
         self.curpressure = self.maxpressure
@@ -116,6 +124,10 @@ function SteamPressure:LostPressure()
     self.curpressure = self.curpressure - 1
     self.fullpressure = false
 
+    if self.meterfn then
+    	self.meterfn(self.inst)
+    end
+
     local newsection = self:GetPressureSection()
 
     if oldsection ~= newsection and self.pressuresectionfn then
@@ -127,6 +139,7 @@ function SteamPressure:LostPressure()
 
         if self.depletedtask then
             self.depletedtask:Cancel()
+            self.depletedtask = nil
         end
 
         self.depletedtask = self.inst:DoTaskInTime(self.delayed, waitfullpressure, self)
@@ -149,10 +162,6 @@ function SteamPressure:IsEmptyPressure()
     return self.curpressure <= 0
 end
 
-function SteamPressure:IsSamePressure()
-    return self.maxpressure == self.pressuresection
-end
-
 function SteamPressure:SetPressureSections(num)
     self.pressuresection = num
 end
@@ -169,8 +178,16 @@ function SteamPressure:GetPressurePercent()
     return self.maxpressure > 0 and math.max(0, math.min(1, self.curpressure / self.maxpressure)) or 0
 end
 
+function SteamPressure:IsSame()
+    return self.maxpressure == self.pressuresection
+end
+
+function SteamPressure:GetSection()
+    return self:IsSame() and math.floor(self:GetPressurePercent()* self.pressuresection) or math.floor(self:GetPressurePercent()* self.pressuresection)+1
+end
+
 function SteamPressure:GetPressureSection()
-    return self:IsEmptyPressure() and 0 or self:IsSamePressure() and math.min( math.ceil(self:GetPressurePercent()*self.pressuresection), self.pressuresection) or math.min( math.ceil(self:GetPressurePercent()*self.pressuresection)+1, self.pressuresection)
+    return self:IsEmptyPressure() and 0 or math.min(self:GetSection(), self.pressuresection)
 end
 
 function SteamPressure:OnSave()
@@ -204,6 +221,7 @@ function SteamPressure:OnLoad(data)
 
             if self.depletedtask then
                 self.depletedtask:Cancel()
+                self.depletedtask = nil
             end
 
             self.depletedtask = self.inst:DoTaskInTime(data.remainingtime, waitfullpressure, self)
@@ -219,35 +237,37 @@ function SteamPressure:OnLoad(data)
             time = data.remainingdelaytime
         end
 
-        self.delay_left_time = time + GetTime
+        self.delay_left_time = time + GetTime()
 
         if self.pressuretask then
             self.pressuretask:Cancel()
         end
 
         self.pressuretask = self.inst:DoTaskInTime(time, waitpressure, self)
+
+        if self.meterfn then
+        	self.meterfn(self.inst)
+        end
     end
 end
-
 
 function SteamPressure:LongUpdate(dt)
 	if self.pressuretask then
 		self.pressuretask:Cancel()
-	        if self.delay_left_time - dt > GetTime() then
-	            self.delay_left_time = self.delay_left_time - dt
-	            self.pressuretask = self.inst:DoTaskInTime(self.delay_left_time - GetTime(), waitpressure, self)
-	        else
-	            waitpressure(self.inst, self)
-	        end
-		end
+		self.pressuretask = nil
+		self.curpressure = self.maxpressure
 		if self.depletedtask then
 			self.depletedtask:Cancel()
-			if self.left_time - dt > GetTime() then
-				self.left_time = self.left_time - dt
-				self.depletedtask = self.inst:DoTaskInTime(self.left_time - GetTime(), waitfullpressure, self)
-			else
-			waitfullpressure(self.inst, self)
+			self.depletedtask = nil
+			self.depleted = false
+			self.fullpressure = true
+			if self.chargingdonefn then
+				self.chargingdonefn(self.inst)
+			end
 		end
+		if self.meterfn then
+    		self.meterfn(self.inst)
+    	end
 	end
 	dt = 0
 end

@@ -32,7 +32,7 @@ return {
 		WATER_CLEAN_ICE = "마시긴 힘들겠는데.",--깨끗한 얼음물
 		WATER_DIRTY_ICE = "흐유유! 불결해라!", --더러운 얼음물
 
-		SPICE_CAFFEINPEPPER = "매콤한 노략물이야." --후추 향신료
+		SPICE_CAFFEINPEPPER = "매콤한 노략물이야.", --후추 향신료
 
 		WELL_KIT = "목마른 필멸자가 우물을 파는법.", --우물 키트
 		WELL_SPRINKLER_KIT = "털 적시는건 싫은데.", --스프링클러 키트
@@ -42,6 +42,8 @@ return {
 		WELL_DRILLING_ITEM = "흐유유, 땅 좀 파 보자고!", --드릴 아이템
 		HOLE = "안쪽이 꽤 깊은데!", --우물 구멍
 		WELL = "내릴 양동이를 찾아봐야겠네.", --우물
+
+		WX78MODULE_NONEDRUNK = "네가 그 폐급 속의 A급이니?", -- 78전용 묘듈
 
 		-- 물 모드 식물
 
@@ -96,7 +98,7 @@ return {
 		CARROT_TEA = "당근 좀 마셔도 별 일 없지.", --당근차
 		CACTUS_TEA = "가시 없고 가시성 좋은 음료지.", --선인차
 		TOMATO_JUICE = "슬픈 토마토네. 흐유유!", --토마토 쥬스
-		LUMPY_TEA = "뿌리 맛은 무슨 맛이지?" --뿌리차,
+		LUMPY_TEA = "뿌리 맛은 무슨 맛이지?", --뿌리차,
 		SEAWEED_SHAKE = "다시 말린 다시마야.", --해초 쉐이크
 		
 		GREENTEA = "뭔가 부족한데.", --생잎 녹차
@@ -165,7 +167,7 @@ return {
 
 		CHERRY_DOCTOR_COLA = "괜찮은 고문 도구가 되지. 흐유유!", --체리숲 닥터 페퍼(닥터 체리)
 		PINEANANASSODA = "톡 쏘는건 좋지만 마사는건 안 선호해서 말야.", -- 탄산 파인애플(오란씨)
-		ORANGESODA = "렌지에 못 돌릴 오렌지야." -- 탄산 오랜지(환타)
+		ORANGESODA = "렌지에 못 돌릴 오렌지야.", -- 탄산 오랜지(환타)
 		STRAWBERRYSODA = "씨앗이 폭탄처럼 터질까?", -- 탄산 딸기(웰치스 딸기)
 
 		--콜라보 양조주
@@ -196,7 +198,7 @@ return {
 		TEA_LUMPY_VODKA = "아냐, 아냐, 아냐.", -- 녹차 리큐르
 		PETALS_BERRY_BRANDY = "난 고급스러운건 안 어울려.", -- 장미향 브랜디
 		KAHLUA = "잠과 깨는 것의 평형이야.", -- 커피 리큐르 깔루아
-		NUT_CORN_WHISKY = "볼트는 좀 없나?", -- 너트 위스키
+		NUT_CORN_WHISKEY = "볼트는 좀 없나?", -- 너트 위스키
         RUINCACAO_CREAM_LIQUEUR = "으음, 난 괜찮아.", --베일리스 카카오 크림 리큐르
         RUMCHATA = "필멸자 사회에서는 이런게 평범한건가?", -- 럼차타(럼에 오우차타 라는 유제품 섞은)
 

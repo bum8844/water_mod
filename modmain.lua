@@ -32,10 +32,10 @@ local ferment = {
 }
 
 local additives = {
-	"additives_seed",
-    "additives_nut",
-    "additives_dairy",
-	"additives_petals",
+	"additive_seed",
+    "additive_nut",
+    "additive_dairy",
+	"additive_petals",
 }
 
 AddIngredientValues(mushrooms, {veggie = .5, mushroom = 1},true)
@@ -55,7 +55,9 @@ AddIngredientValues({"squamousfruit"}, {veggie=1, monster=1})
 
 AddReplicableComponent("thirst")
 AddReplicableComponent("waterlevel")
+AddReplicableComponent("distill")
 
 RegisterItemAtlasFile("images/tea_inventoryitem.xml")
+RegisterItemAtlasFile("images/tea_inventoryitem_drinks.xml")
 
 modrequire("main")

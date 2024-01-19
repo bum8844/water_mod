@@ -1,7 +1,7 @@
 require "utils/water_brew_utils"
 
 local sw_drink = {
-	rainbow_shake = {
+	--[[rainbow_shake = {
 		test = function(boilier, names, tags) return onlyrainbowjellyfish(names, tags) and ((names.kyno_kokonut_halved or 0) + (names.kyno_kokonut_cooked or 0) + (names.coconut_halved or 0) + (names.coconut_cooked or 0) + (names.coconut_milk or 0) >= 1) and tags.frozen and tags.frozen >= 1 and notname(names) and lessthing(names) end,
 		priority = 4,
 		health = TUNING.HEALING_TINY, -- 1 (5)
@@ -22,7 +22,7 @@ local sw_drink = {
 		oneatenfn = function(inst, eater)
            	drink_worm_light_greater(inst, eater)
 	    end,
-	},
+	},]]
 	quartz_shake = {
 		test = function(boilier, names, tags) return ( names.pondpierrot_fish or names.pierrot_fish or names.pierrot_fish_cooked or names.fish4 or names.fish4_cooked ) and ((names.kyno_kokonut_halved or 0) + (names.kyno_kokonut_cooked or 0) + (names.coconut_halved or 0) + (names.coconut_cooked or 0) + (names.coconut_milk or 0) >= 1) and tags.frozen and tags.frozen >= 1 and onlypierrot_fish(names ,tags) and notname(names) and lessthing(names) and notages(tags) end,
 		priority = 1,
@@ -116,6 +116,7 @@ local unc_drink = {
 		cooktime = TUNING.KETTLE_LUXURY_GOODS,
 		potlevel = "mid",
 		potlevel_bottle = "mid",
+		drinktype = DRINKTYPY.VEGGIE,
 		tags = {"honeyed"},
 		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_HAYFEVER_RELIEF_MED,
 		oneatenfn = function(inst, eater)
@@ -123,7 +124,6 @@ local unc_drink = {
 				eater.components.hayfever:SetNextSneezeTime(1440)
 			end
 		end,
-		drinktype = DRINKTYPY.VEGGIE,
 	},
 }
 

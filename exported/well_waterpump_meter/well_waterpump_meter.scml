@@ -1,18 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <spriter_data scml_version="1.0" generator="BrashMonkey Spriter" generator_version="r11">
-    <folder id="0">
-        <file id="0" name="test.png" width="80" height="80" pivot_x="0.5" pivot_y="0.5"/>
+    <folder id="0" name="meter_needle">
+        <file id="0" name="meter_needle/meter_needle.png" width="50" height="29" pivot_x="0.713484" pivot_y="0.502807"/>
     </folder>
     <entity id="0" name="well_waterpump_meter">
-        <animation id="0" name="idle" length="1000" interval="100">
+        <animation id="0" name="idle" length="600" interval="100">
             <mainline>
                 <key id="0">
                     <object_ref id="0" timeline="0" key="0" z_index="0"/>
                 </key>
+                <key id="1" time="200">
+                    <object_ref id="0" timeline="0" key="1" z_index="0"/>
+                </key>
+                <key id="2" time="400">
+                    <object_ref id="0" timeline="0" key="2" z_index="0"/>
+                </key>
+                <key id="3" time="600">
+                    <object_ref id="0" timeline="0" key="3" z_index="0"/>
+                </key>
             </mainline>
-            <timeline id="0" name="test">
-                <key id="0" spin="0">
-                    <object folder="0" file="0"/>
+            <timeline id="0" name="meter_needle">
+                <key id="0" spin="-1">
+                    <object folder="0" file="0" x="-5.34265" y="215.335" angle="24.742038" scale_x="1.5" scale_y="1.5"/>
+                </key>
+                <key id="1" time="200" spin="-1">
+                    <object folder="0" file="0" x="-5.34265" y="215.335" angle="313.841257" scale_x="1.5" scale_y="1.5"/>
+                </key>
+                <key id="2" time="400" spin="-1">
+                    <object folder="0" file="0" x="-5.34265" y="215.335" angle="228.85067" scale_x="1.5" scale_y="1.5"/>
+                </key>
+                <key id="3" time="600" spin="-1">
+                    <object folder="0" file="0" x="-5.34265" y="215.335" angle="153.805445" scale_x="1.5" scale_y="1.5"/>
                 </key>
             </timeline>
         </animation>

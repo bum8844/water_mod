@@ -32,7 +32,7 @@ return {
 		WATER_CLEAN_ICE = "이가 다 시리는군.",--깨끗한 얼음물
 		WATER_DIRTY_ICE = "얼어붙은 쓰레기야.", --더러운 얼음물
 
-		SPICE_CAFFEINPEPPER = "어디 넣어도 제 값은 하지." --후추 향신료
+		SPICE_CAFFEINPEPPER = "어디 넣어도 제 값은 하지.", --후추 향신료
 
 		WELL_KIT = "내가 이걸 들고 날라야 하나?", --우물 키트
 		WELL_SPRINKLER_KIT = "기계와 마법의 혼종이로군.", --스프링클러 키트
@@ -42,6 +42,8 @@ return {
 		WELL_DRILLING_ITEM = "꽤 험하게 생겼군.", --드릴 아이템
 		HOLE = "잘못 빠지면 뼈도 못 건지겠군.", --우물 구멍
 		WELL = "우물 옆에서 목말라 죽겠군.", --우물
+
+		WX78MODULE_NONEDRUNK = "저 로봇 녀석 자제 좀 해야 할 텐데.", -- 78전용 묘듈
 
 		-- 물 모드 식물
 
@@ -96,7 +98,7 @@ return {
 		CARROT_TEA = "어쩔수 없지, 씁.", --당근차
 		CACTUS_TEA = "내 손안에 작은 오아시스가 있군.", --선인차
 		TOMATO_JUICE = "목넘김이 부드럽군.", --토마토 쥬스
-		LUMPY_TEA = "이렇게 하니 나름 품위가 있군." --뿌리차,
+		LUMPY_TEA = "이렇게 하니 나름 품위가 있군.", --뿌리차,
 		SEAWEED_SHAKE = "아니 제발..", --해초 쉐이크
 		
 		GREENTEA = "잎 비린내가 나잖니.", --생잎 녹차
@@ -196,7 +198,7 @@ return {
 		TEA_LUMPY_VODKA = "흠, 미묘하군.", -- 녹차 리큐르
 		PETALS_BERRY_BRANDY = "좀 과해.", -- 장미향 브랜디
 		KAHLUA = "그렇게 나쁘진 않군.", -- 커피 리큐르 깔루아
-		NUT_CORN_WHISKY = "염지한 고기가 좀 땡기는군.", -- 너트 위스키
+		NUT_CORN_WHISKEY = "염지한 고기가 좀 땡기는군.", -- 너트 위스키
         RUINCACAO_CREAM_LIQUEUR = "요즘 젊은이들이란..", --베일리스 카카오 크림 리큐르
         RUMCHATA = "이건 또 뭐하는 술인가?", -- 럼차타(럼에 오우차타 라는 유제품 섞은)
 

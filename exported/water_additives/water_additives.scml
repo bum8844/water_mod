@@ -4,16 +4,16 @@
         <file id="0" name="swap/swap.png" width="120" height="120" pivot_x="0.5" pivot_y="0.25"/>
     </folder>
     <folder id="1" name="additive_dairy">
-        <file id="0" name="additive_dairy/additive_dairy.png" width="120" height="120" pivot_x="0.5" pivot_y="0.25"/>
+        <file id="0" name="additive_dairy/additive_dairy.png" width="116" height="116" pivot_x="0.5" pivot_y="0.2"/>
     </folder>
     <folder id="2" name="additive_nut">
-        <file id="0" name="additive_nut/additive_nut.png" width="120" height="120" pivot_x="0.5" pivot_y="0.25"/>
+        <file id="0" name="additive_nut/additive_nut.png" width="116" height="116" pivot_x="0.5" pivot_y="0.2"/>
     </folder>
     <folder id="3" name="additive_petals">
         <file id="0" name="additive_petals/additive_petals.png" width="120" height="120" pivot_x="0.5" pivot_y="0.25"/>
     </folder>
     <folder id="4" name="additive_seed">
-        <file id="0" name="additive_seed/additive_seed.png" width="120" height="120" pivot_x="0.5" pivot_y="0.25"/>
+        <file id="0" name="additive_seed/additive_seed.png" width="110" height="116" pivot_x="0.5" pivot_y="0.2"/>
     </folder>
     <entity id="0" name="water_additives">
         <animation id="0" name="idle" length="1000" interval="100">

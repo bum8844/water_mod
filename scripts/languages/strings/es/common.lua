@@ -1,4 +1,5 @@
 STRINGS.UI.CRAFTING_FILTERS.HYDRATION = "Hydration"
+STRINGS.UI.CRAFTING_FILTERS.SECRETKNOWLEDGE = "Conocimiento secreto"
 
 STRINGS.UI.COOKBOOK.TAB_TITLE_KETTLE = "Recetas de tetera"
 STRINGS.UI.COOKBOOK.TAB_TITLE_BREWERY = "Recetas cerveceras"
@@ -8,6 +9,14 @@ STRINGS.UI.COOKBOOK.SORT_THIRST = "Sed"
 
 STRINGS.UI.COOKBOOK.FILTER_FRUIT = "Frutas"
 STRINGS.UI.COOKBOOK.FILTER_LEAFS = "Folige"
+
+STRINGS.UI.DRINK_TYPES.GENERIC = "Beber"
+STRINGS.UI.DRINK_TYPES.FRUIT = "Fruta"
+STRINGS.UI.DRINK_TYPES.VEGGIE = "Vegetal"
+STRINGS.UI.DRINK_TYPES.LEAFS = "Hojas"
+STRINGS.UI.DRINK_TYPES.BREWER = "Vino"
+STRINGS.UI.DRINK_TYPES.SPIRITS = "Vino destilado"
+STRINGS.UI.DRINK_TYPES.MEDICINE = "Medicamento"
 
 STRINGS.UI.COOKBOOK.FOOD_EFFECTS_CAFFINE_SLEEP_RESIST = "Incrementa la velocidad de movimiento y evita el sueño"
 STRINGS.UI.COOKBOOK.FOOD_EFFECTS_CURE_WATERBORNE = "Cura del mal del agua"
@@ -56,9 +65,12 @@ STRINGS.ACTIONS.FERMENT = "Fermentar"
 STRINGS.ACTIONS.DISITLL = "Destilar"
 STRINGS.ACTIONS.BURYING = "Enterrando"
 
+STRINGS.NAMES.WX78MODULE_NONEDRUNK = "Súper-A.D.T Circuito"
+STRINGS.RECIPE_DESC.WX78MODULE_NONEDRUNK = "Digerirá etanol sin emborracharse."
+
 -- Libro de bebidas
 STRINGS.NAMES.BOILBOOK = "Libro de bebidas"
-STRINGS.RECIPE_DESC.BOILBOOK = " Experimenta con ingredientes en la elaboración de bebidas para descubrir nuevas recetas y ampliar tu libro de bebidas." 
+STRINGS.RECIPE_DESC.BOILBOOK = "Revise todas sus recetas de bebida." 
 
 -- Perforadora de pozos
 STRINGS.NAMES.WELL_DRILLING ="Perforadora de pozos "
@@ -74,6 +86,10 @@ STRINGS.NAMES.WELL_KIT = "Kit para pozo"
 STRINGS.RECIPE_DESC.WELL_KIT = "Bien esta lo que bien esta."
 STRINGS.NAMES.WELL_SPRINKLER_KIT = "Kit para aspersor"
 STRINGS.RECIPE_DESC.WELL_SPRINKLER_KIT = "La irrigación definitiva."
+
+--well_burying_kit
+STRINGS.NAMES.WELL_BURYING_KIT = "Kit de entierro"
+STRINGS.RECIPE_DESC.WELL_BURYING_KIT = "Piedra en el hoyo en lugar de una moneda de la suerte."
 
 -- Desalinizador
 STRINGS.NAMES.DESALINATOR = "Desalinizador"
@@ -137,7 +153,7 @@ STRINGS.NAMES.CAFFEINBERRY_BEAN = "Granos de café"
 STRINGS.NAMES.CAFFEINBERRY_BEAN_COOKED = "Granos tostados de café"
 STRINGS.NAMES.SPICE_CAFFEINPEPPER = "Desmenuzador de sazonador"
 STRINGS.RECIPE_DESC.SPICE_CAFFEINPEPPER = "La energizante especie de la vida."
-STRINGS.NAMES.SPICE_CAFFEINPEPPER_FOOD = "Sazonador {comida }"
+STRINGS.NAMES.SPICE_CAFFEINPEPPER_FOOD = "Sazonador {food}"
 
 -- Cacao de las ruinas
 STRINGS.NAMES.RUINCACAO_TREE = "Árbol de cacao"
@@ -149,16 +165,22 @@ STRINGS.NAMES.RUINCACAO_BEAN = "Granos de cacao"
 STRINGS.NAMES.RUINCACAO_BEAN_COOKED = "Granos de cacao tostados"
 
 -- Añadidos
-STRINGS.NAMES.ADDITIVE_SEED = "semilla-condimento añadido "
-STRINGS.NAMES.ADDITIVE_PETALS = "hojas - condimento añadido "
-STRINGS.NAMES.ADDITIVE_NUT = "nuez- condimento añadido "
-STRINGS.NAMES.ADDITIVE_DAIRY = "lácteo- condimento añadido "
+STRINGS.NAMES.ADDITIVE_SEED = "Semilla-Condimento Añadido"
+STRINGS.NAMES.ADDITIVE_PETALS = "Hojas-Condimento Añadido"
+STRINGS.NAMES.ADDITIVE_NUT = "Nuez-Condimento Añadido"
+STRINGS.NAMES.ADDITIVE_DAIRY = "Lácteo-Condimento Añadido"
+
+STRINGS.RECIPE_DESC.ADDITIVE_SEED = "Mezcla de varias semillas."
+STRINGS.RECIPE_DESC.ADDITIVE_PETALS = "Colección de hojas y pétalos."
+STRINGS.RECIPE_DESC.ADDITIVE_NUT = "Bolsa de frutas."
+STRINGS.RECIPE_DESC.ADDITIVE_DAIRY = "Si quiere un aroma sabroso."
 
 -- Bebidas preparadas
 
 STRINGS.NAMES.WATER_CLEAN_ICE = "Agua congelada"
 STRINGS.NAMES.WATER_DIRTY_ICE = "Agua sucia congelada"
 STRINGS.NAMES.WATER_CLEAN = "Agua"
+STRINGS.NAMES.WATER_MINERAL = "Agua"
 STRINGS.NAMES.WATER_DIRTY = "Agua congelada"
 STRINGS.NAMES.WATER_SALTY = "Agua salada"
 
@@ -260,6 +282,7 @@ STRINGS.NAMES.GLOWBERRYWINE = "Vino de bayas brillantes"
 STRINGS.NAMES.KUMIS = "Kumi eléctrico"
 STRINGS.NAMES.LUMPY_WINE = "Vino de raíz"
 STRINGS.NAMES.PULQUE = "Pulque"
+STRINGS.NAMES.RUINCACAO_WINE = "Vino de Cacao"
 
 -- Mod colaboración bebidas preparadas
 
@@ -274,7 +297,7 @@ STRINGS.NAMES.STRAWBERRYSODA = "Fresas chispeantes"
 
 STRINGS.NAMES.AUROBOW = "Aurobow"
 STRINGS.NAMES.COCONUT_WINE = "Vino de coco"
-STRINGS.NAMES.CHERRY_BLOOM_WINE = "Vino de flor de cerezo"
+STRINGS.NAMES.CHERRY_BLOOM_MADHU = "Hidromiel de flor de cerezo"
 STRINGS.NAMES.GIANT_BLUEBERRY_WINE = "Vino de boombayas"
 STRINGS.NAMES.RICE_WINE = "Makgeolli"
 STRINGS.NAMES.WHEAT_BEER = "Cerveza de trigo"
@@ -293,12 +316,12 @@ STRINGS.NAMES.AREUHI = "Areuhi"
 -- Solo Warly puede hacerlas
 
 STRINGS.NAMES.BERRY_GIN = "Ginebra de bayas"
-STRINGS.NAMES.GLOWBERRY_BRANDY = "Ginebra de bayas brillantes"
+STRINGS.NAMES.GLOWBERRY_GIN = "Ginebra de bayas brillantes"
 STRINGS.NAMES.ABSINTHE = "Diablo verde"
 STRINGS.NAMES.TEA_LUMPY_VODKA = "Licor de té verde"
 STRINGS.NAMES.PETALS_BERRY_BRANDY = "Ginebra de rosas"
 STRINGS.NAMES.KAHLUA = "Licor de café"
-STRINGS.NAMES.NUT_CORN_WHISKY = "Licor de nueces"
+STRINGS.NAMES.NUT_CORN_WHISKEY = "Licor de nueces"
 STRINGS.NAMES.RUINCACAO_CREAM_LIQUEUR = "Licor de crema de cacao"
 STRINGS.NAMES.RUMCHATA = "RumChata"
 

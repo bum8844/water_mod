@@ -43,6 +43,8 @@ return {
 		HOLE = "여기에 우물을 만들면 되겠어.",
 		WELL = "이제 깨끗한 물을 간편하게 얻을 수 있어!",
 
+		WX78MODULE_NONEDRUNK = "작은 장치 하나에 아주 많은 과학이 압축되어 있어.", -- 78전용 묘듈
+
 		-- 물 모드 식물
 
 		TEA_TREE = "참 작고 멋진 나무야.",
@@ -71,7 +73,7 @@ return {
 		ADDITIVE_SEED = "왈리가 새로운 향신료를 만든걸까?",
 		ADDITIVE_NUT = "커피와 견과류 향이 나.",
 		ADDITIVE_DAIRY = "크림을 단단히 밀봉했네.",
-		ADDIRIVE_PETALS = "말린 꽃잎과 이파리들이야.",
+		ADDITIVE_PETALS = "말린 꽃잎과 이파리들이야.",
 
 		-- 음료
 
@@ -196,7 +198,7 @@ return {
 		TEA_LUMPY_VODKA = "찻잎을 침출한거야?",
 		PETALS_BERRY_BRANDY = "브랜디인데 꽃향기가 좀 나는걸.",
 		KAHLUA = "럼에 커피를 진하게 우려냈나봐.",
-		NUT_CORN_WHISKY = "안주로 먹을 땅콩을 위스키랑 합쳐놨네!",
+		NUT_CORN_WHISKEY = "안주로 먹을 땅콩을 위스키랑 합쳐놨네!",
         RUINCACAO_CREAM_LIQUEUR = "크리미하고 초콜릿 향이 나는 술이야.",
         RUMCHATA = "목에 부드럽게 잘 넘어가겠는걸?",
 

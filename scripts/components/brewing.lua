@@ -1,4 +1,5 @@
 local cooking = require("cooking")
+local boilling = require("boilling")
 
 local function ondone(self, done)
     if done then
@@ -309,19 +310,19 @@ function Brewing:Harvest(harvester)
         if self.product ~= nil then
             local loot = SpawnPrefab(self.product)
             if loot ~= nil then
-				local recipe = cooking.GetRecipe(self.inst.prefab, self.product)
+				local recipe = boilling.GetRecipe(self.inst.prefab, self.product)
 
 				if harvester ~= nil and
 					self.chef_id == harvester.userid and
 					recipe ~= nil and
-					recipe.cookbook_category ~= nil and
-					cooking.cookbook_recipes[recipe.cookbook_category] ~= nil and
-					cooking.cookbook_recipes[recipe.cookbook_category][self.product] ~= nil then
+					recipe.boilbook_category ~= nil and
+					boilling.boilbook_recipes[recipe.boilbook_category] ~= nil and
+					boilling.boilbook_recipes[recipe.boilbook_category][self.product] ~= nil then
 					harvester:PushEvent("learncookbookrecipe", {product = self.product, ingredients = self.ingredient_prefabs})
-				end
+                end
 
                 local waterlevel = self.inst.components.waterlevel and self.inst.components.waterlevel:GetWater() or 1
-                local stacksize = self.distill_stack > 0 and math.floor(self.distill_stack/self.reduce) or math.ceil(waterlevel/self.reduce)
+                local stacksize = self.distill_stack > 0 and math.floor(self.distill_stack*self.reduce) or math.ceil(waterlevel/self.reduce)
                 if stacksize > 1 then
                     loot.components.stackable:SetStackSize(stacksize)
                 end
