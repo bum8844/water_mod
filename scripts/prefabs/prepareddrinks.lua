@@ -4,7 +4,7 @@ local prefabs =
 }
 
 local function GetHealthvalue(inst, eater)
-    if eater:HasTag("valkyrie") then
+    if eater and eater:HasTag("valkyrie") then
         if inst:HasTag("veggietype") or inst:HasTag("fruittype") or inst:HasTag("leavestype") then
             return inst.components.edible.healthvalue *.25
         end
@@ -13,7 +13,7 @@ local function GetHealthvalue(inst, eater)
 end
 
 local function GetSanityvalue(inst, eater)
-    if eater:HasTag("valkyrie") then
+    if eater and eater:HasTag("valkyrie") then
         if inst:HasTag("veggietype") or inst:HasTag("fruittype") or inst:HasTag("leavestype") then
             return inst.components.edible.sanityvalue *.25
         end
