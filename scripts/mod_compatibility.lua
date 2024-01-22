@@ -1,4 +1,9 @@
 for k,mod_id in ipairs(GLOBAL.KnownModIndex:GetModsToLoad()) do 
+	if mod_id == "workshop-1392778117" then
+		if GetModConfigData("enable_thirst") then
+			modrequire("modcompats/1392778117/cookbookui_legion")
+		end
+	end
 	if mod_id == "workshop-2334209327" then
 		modrequire("modcompats/2334209327/hof_buckets")
 		if GetModConfigData("enable_thirst") then
