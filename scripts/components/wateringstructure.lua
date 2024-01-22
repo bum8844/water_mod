@@ -266,7 +266,7 @@ function WateringStructure:OnLoad(data)
 
         self.watertype = data.watertype
         self.wateramount = data.wateramount
-        self.basetime = data.basetime 
+        self.basetime = data.basetime
         self.inst:PushEvent("setwateringtool_temperature")
 
         local isFrozenAndDirty = self:IsFrozen() and self.watertype == WATERTYPE.DIRTY
