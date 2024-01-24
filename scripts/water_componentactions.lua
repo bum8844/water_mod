@@ -161,7 +161,7 @@ local SCENE =
 
 local INVENTORY = {
     watertaker = function(inst, doer, actions)
-        if doer.components.playercontroller ~= nil and not doer.components.playercontroller.deploy_mode then
+        if doer.components.playercontroller ~= nil then
             local pos = inst:GetPosition()
             local isVirtualOceanEntity = find_icefishing_hole(pos.x, 0, pos.z)
             if inst:HasTag("watertaker") and (_G.TheWorld.Map:IsOceanTileAtPoint(pos.x, 0, pos.z) or isVirtualOceanEntity ~= nil) then
