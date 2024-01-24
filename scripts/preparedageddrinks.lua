@@ -94,7 +94,7 @@ local drinks =
 	
 	colaquantum =
 	{
-		test = function(boilier, names, tags) return quantum_calc(names, tags) and (( names.caffeinberry_bean_cooked or 0 ) + ( names.kyno_coffeebeans_cooked or 0 ) + ( names.mfp_coffeecherry_cooked or 0) == 1) and tags.ferment and tags.ferment == 1 end,
+		test = function(boilier, names, tags) return quantum_calc(names, tags) and (( names.caffeinberry_bean_cooked or 0 ) + ( names.kyno_coffeebeans_cooked or 0 ) + ( names.mfp_coffeecherry_cooked or 0) == 1) and tags.ferment and tags.ferment == 1 and names.royal_jelly and names.royal_jelly == 1 end,
 		priority = 6,
 		health = TUNING.HEALING_SUPERHUGE/2, -- 100 -> 50 (500) @.퀀텀 너무 강함... 너프해도 무화과보다 강함.
 		hunger = TUNING.CALORIES_HUGE/4, -- 75 -> 18.75 (187.5) @.허기는 요리를 합시다...
