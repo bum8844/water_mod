@@ -305,8 +305,10 @@ local function MakeWaterItem(name, masterfn, tags, _prefabs)
 
         MakeInventoryPhysics(inst)
 
-        inst:AddComponent("edible")
-        inst.components.edible.foodtype = FOODTYPE.GOODIES
+        if not inst:HasTag("unwrappable") then
+            inst:AddComponent("edible")
+            inst.components.edible.foodtype = FOODTYPE.GOODIES
+        end
 
         inst.AnimState:SetBank("kettle_drink")
         inst.AnimState:SetBuild("kettle_drink")

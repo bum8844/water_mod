@@ -249,11 +249,11 @@ function onlycoral_brain(names, tags)
 	if blocking_thing_coral_brain(names ,tags) and totalignore <= 0 then
 		return coral_brain
 	end 
-	return false
+	return 0
 end
 
 function quantum_calc(names, tags)
-	return (names.wormlight or names.coral_brain) and onlycoral_brain(names, tags)
+	return ((names.wormlight or 0) + (onlycoral_brain(names, tags) == 1))
 end
 
 function IsFlower_Lotus(names, tags)
