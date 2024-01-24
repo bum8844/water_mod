@@ -18,11 +18,11 @@ local function SetTemperature(inst)
     inst.components.temperature.current = curtemp
 
     if isfrozen then
-        inst.components.temperature.maxtemp = TUNING.WATER_INITTEMP
+        inst.components.temperature.maxtemp = TUNING.WATER_FROZEN_INITTEMP
         inst.components.temperature.mintemp = TUNING.MIN_ENTITY_TEMP
     else
-        inst.components.temperature.mintemp = TUNING.MAX_ENTITY_TEMP
-        inst.components.temperature.mintemp = TUNING.WATER_FROZEN_INITTEMP
+        inst.components.temperature.maxtemp = TUNING.WATER_MAXTEMP
+        inst.components.temperature.mintemp = TUNING.WATER_MINTEMP
     end
     inst.components.temperature.inherentinsulation = TUNING.INSULATION_MED_LARGE
     inst.components.temperature.inherentsummerinsulation = TUNING.INSULATION_MED_LARGE

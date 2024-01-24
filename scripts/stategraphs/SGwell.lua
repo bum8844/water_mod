@@ -179,6 +179,8 @@ local states =
 
 			inst.AnimState:PushAnimation("idle_watering", true)
 			if data.isnewwater then
+				inst:PushEvent("setwateringtool_temperature")
+				inst.components.wateringstructure.checktemp = true
 				inst:PushEvent("setwateramount")
 			end
 
