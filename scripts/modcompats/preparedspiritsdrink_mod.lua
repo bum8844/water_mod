@@ -65,7 +65,7 @@ local coconut_drink = {
 
 local cf_drink = {
 	cherry_bloom_rum = {
-		test = function(boilier, names, tags) return names.cherry_bloom_wine and not tags.additives end,
+		test = function(boilier, names, tags) return names.cherry_bloom_madhu and not tags.additives end,
 		priority = 1,
         health = TUNING.HEALING_SMALL*5,
         hunger = TUNING.CALORIES_MEDSMALL/2,
