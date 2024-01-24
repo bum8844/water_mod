@@ -137,30 +137,35 @@ local function SetTemperature(inst)
     inst.components.temperature.current = curtemp
 
     if isfrozen then
-        inst.components.temperature.maxtemp = TUNING.WATER_INITTEMP
+        inst.components.temperature.maxtemp = TUNING.WATER_FROZEN_INITTEMP
         inst.components.temperature.mintemp = TUNING.MIN_ENTITY_TEMP
     else
-        inst.components.temperature.mintemp = TUNING.MAX_ENTITY_TEMP
-        inst.components.temperature.mintemp = TUNING.WATER_FROZEN_INITTEMP
+        inst.components.temperature.maxtemp = TUNING.WATER_MAXTEMP
+        inst.components.temperature.mintemp = TUNING.WATER_MINTEMP
     end
     inst.components.temperature.inherentinsulation = TUNING.INSULATION_MED_LARGE
     inst.components.temperature.inherentsummerinsulation = TUNING.INSULATION_MED_LARGE
 end
 
 local function SetToFrozed(inst, data)
-	local watertype = inst.components.wateringstructure:GetWater()
-    if watertype ~= WATERTYPE.EMPTY or watertype ~= WATERTYPE.MINERAL then
-        local cur_temp = inst.components.temperature:GetCurrent()
-        local min_temp = inst.components.temperature.mintemp
-        local max_temp = inst.components.temperature.maxtemp
-        if inst.components.wateringstructure:IsFrozen() then
-            if cur_temp >= max_temp then
-                inst.components.wateringstructure:SetFrozed(false)
-            end
-        elseif cur_temp <= min_temp then
-            inst.components.wateringstructure:SetFrozed(true)
-        end
-    end
+	if not inst.components.wateringstructure.checktemp then
+		return
+	end
+	if inst.components.wateringstructure:GetWateringTool() then
+		local watertype = inst.components.wateringstructure:GetWater()
+		if watertype ~= WATERTYPE.EMPTY or watertype ~= WATERTYPE.MINERAL then
+		    local cur_temp = inst.components.temperature:GetCurrent()
+		    local min_temp = inst.components.temperature.mintemp
+		    local max_temp = inst.components.temperature.maxtemp
+		    if inst.components.wateringstructure:IsFrozen() then
+		        if cur_temp >= max_temp then
+		            inst.components.wateringstructure:SetFrozed(false)
+		        end
+		    elseif cur_temp <= min_temp then
+		        inst.components.wateringstructure:SetFrozed(true)
+		    end
+		end
+	end
 end
 
 local function onhammered(inst)

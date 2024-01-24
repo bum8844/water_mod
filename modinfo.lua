@@ -1,5 +1,5 @@
 name 						= "Don't Starve: Dehydrated"
-version 					= "Alpha 1.1.9"
+version 					= "Alpha 1.2.2a"
 local info_version = "Version "..version.."\n"
 
 description = info_version..[[
@@ -53,7 +53,6 @@ configuration_options =
 			{description = "Auto", data = false},
 			{description = "English", data = "en"},
 			{description = "한국어", data = "ko"},
-			{description = "Español", data = "es"},
 		},
 		default = false,
 	},

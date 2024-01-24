@@ -86,7 +86,7 @@ local function IsModDrink(inst, product, overridebuild)
 end
 
 local function SetProductSymbol(inst, product, overridebuild)
-    local distill_stack = inst.components.brewing.distill_stack*.2
+    local distill_stack = inst.components.brewing.distill_stack*.25
     local recipe = cooking.GetRecipe(inst.prefab, product)
     local potlevel = recipe ~= nil and recipe.potlevel or nil
     local potlevel_bottle = recipe ~= nil and recipe.potlevel_bottle or nil
