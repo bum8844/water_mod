@@ -253,7 +253,7 @@ function onlycoral_brain(names, tags)
 end
 
 function quantum_calc(names, tags)
-	return ((names.wormlight or 0) + (onlycoral_brain(names, tags) == 1))
+	return ((names.wormlight or 0) + onlycoral_brain(names, tags)) == 1
 end
 
 function IsFlower_Lotus(names, tags)
