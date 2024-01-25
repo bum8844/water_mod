@@ -53,6 +53,8 @@ AddIngredientValues({"goatmilk"}, {milk=1, dairy=1})
 AddIngredientValues({"coral_brain"}, {meat=1})
 AddIngredientValues({"squamousfruit"}, {veggie=1, monster=1})
 
+AddIngredientValues({"rainbowjellyfish", "rainbowjellyfish_dead", "rainbowjellyfish_cooked"},{fish=1,jellyfish=1,monster=1})
+
 AddReplicableComponent("thirst")
 AddReplicableComponent("waterlevel")
 AddReplicableComponent("distill")

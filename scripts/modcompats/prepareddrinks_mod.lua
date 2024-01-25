@@ -2,7 +2,7 @@ require "utils/water_brew_utils"
 
 local sw_drink = {
 	rainbow_shake = {
-		test = function(boilier, names, tags) return onlyrainbowjellyfish(names, tags) and ((names.kyno_kokonut_halved or 0) + (names.kyno_kokonut_cooked or 0) + (names.coconut_halved or 0) + (names.coconut_cooked or 0) + (names.coconut_milk or 0) >= 1) and tags.frozen and tags.frozen >= 1 and notname(names) and lessthing(names) end,
+		test = function(boilier, names, tags) return ((names.rainbowjellyfish or 0) + (names.rainbowjellyfish_cooked or 0) + (names.rainbowjellyfish_dead or 0) >= 1) and onlyrainbowjellyfish(names, tags) and ((names.kyno_kokonut_halved or 0) + (names.kyno_kokonut_cooked or 0) + (names.coconut_halved or 0) + (names.coconut_cooked or 0) + (names.coconut_milk or 0) >= 1) and tags.frozen and tags.frozen >= 1 and notname(names) and lessthing(names) end,
 		priority = 4,
 		health = TUNING.HEALING_TINY, -- 1 (5)
 		hunger = TUNING.DRINK_CALORIES/5, -- 1 (5)
