@@ -7,7 +7,7 @@ local foods = require("preparedfoods")
 local water_foods = {
 	ruincolate =
 	{
-		test = function(cooker, names, tags) return names.ruincacao_bean_cooked and names.ruincacao_bean_cooked <= 3 and tags.sweetener and tags.sweetener <= 2 and ((tags.dairy or 0) + (tags.milk or 0) <= 1) and notmeat(tags) end,
+		test = function(cooker, names, tags) return names.ruincacao_bean_cooked and names.ruincacao_bean_cooked <= 3 and tags.sweetener and tags.sweetener <= 2 and ((tags.dairy or 0) + (tags.milk or 0) <= 1) and notmeat(tags) and not tags.inedible end,
 		priority = 1,
 		weight = 1,
 		foodtype = FOODTYPE.GOODIES,
@@ -21,7 +21,7 @@ local water_foods = {
 		card_def = {ingredients = {{"ruincacao_bean_cooked", 3}, {"honey", 1}}},
 	},
 	ruin_schokakola = {
-		test = function(cooker, names, tags) return names.ruincacao_bean_cooked and names.ruincacao_bean_cooked <= 2 and names.caffeinberry_bean_cooked and names.moon_cap and names.moon_cap <= 2 and ((tags.sweetener or 0) + (tags.dairy or 0) + (tags.milk or 0) <= 1) and notmeat(tags) end,
+		test = function(cooker, names, tags) return names.ruincacao_bean_cooked and names.ruincacao_bean_cooked <= 2 and names.caffeinberry_bean_cooked and names.moon_cap and names.moon_cap <= 2 and ((tags.sweetener or 0) + (tags.dairy or 0) + (tags.milk or 0) <= 1) and notmeat(tags) and not tags.inedible end,
 		priority = 2,
 		weight = 1,
 		foodtype = FOODTYPE.GOODIES,
