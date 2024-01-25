@@ -44,7 +44,7 @@ local coconut_drink = {
 		end,
 	},
 	nut_coconut_brandy = {
-		test = function(boilier, names, tags) return (names.coconut_wine or names.wine_kokonut) and names.additives_nut end,
+		test = function(boilier, names, tags) return (names.coconut_wine or names.wine_kokonut) and names.additive_nut end,
 		priority = 2,
 		health = TUNING.HEALING_SMALL*2,
 		hunger = TUNING.CALORIES_MEDSMALL,
@@ -106,7 +106,7 @@ local cf_drink = {
 
 local unc_drink = {
 	giant_blueberry_gin = {
-		test = function(boilier, names, tags) return names.giant_blueberry_wine and names.additives_seed end,
+		test = function(boilier, names, tags) return names.giant_blueberry_wine and names.additive_seed end,
 		priority = 2,
         health = 0,
         hunger = TUNING.CALORIES_MED,

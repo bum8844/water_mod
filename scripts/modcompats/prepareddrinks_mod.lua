@@ -158,6 +158,7 @@ local mfp_drink = {
 		potlevel = "mid",
 		potlevel_bottle = "mid",
 		drinktype = DRINKTYPY.FRUIT,
+		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_COLD_FOOD,
 	},
 	strawberry_milk_smoothie = {
 		test = function(boilier, names, tags) return (names.mfp_strawberry or names.mfp_strawberry_cooked) and (tags.dairy or tags.milk) and tags.frozen and tags.sweetener end,
@@ -173,6 +174,7 @@ local mfp_drink = {
 		potlevel = "mid",
 		potlevel_bottle = "mid",
 		drinktype = DRINKTYPY.FRUIT,
+		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_COLD_FOOD,
 	},
 }
 
