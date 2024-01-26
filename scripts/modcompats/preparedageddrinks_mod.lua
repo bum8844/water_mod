@@ -3,7 +3,7 @@ require "utils/water_brew_utils"
 local sw_drink = {
 	aurobow =
 	{
-		test = function(boilier, names, tags) return ((names.rainbowjellyfish or 0) + (names.rainbowjellyfish_cooked or 0) + (names.rainbowjellyfish_dead or 0) >= 3) and onlyrainbowjellyfish(names, tags) and notname(names) end,
+		test = function(boilier, names, tags) return (names.rainbowjellyfish or names.rainbowjellyfish_cooked or names.rainbowjellyfish_dead) and ((names.rainbowjellyfish or 0) + (names.rainbowjellyfish_cooked or 0) + (names.rainbowjellyfish_dead or 0) >= 3) and onlyrainbowjellyfish(names, tags) and notname(names) end,
 		priority = 1,
 		health = 0,
 		hunger = TUNING.CALORIES_MEDSMALL/2,
@@ -27,7 +27,7 @@ local sw_drink = {
 
 local coconut_drink = {
 	coconut_wine = {
-		test = function(boilier, names, tags) return ((names.kyno_kokonut_halved or 0) + (names.kyno_kokonut_cooked or 0) + (names.coconut_halved or 0) + (names.coconut_cooked or 0) or (names.coconut_milk or 0) >= 2) and tags.fruit and tags.fruit >= 1 and not tags.veggie and notmeat(tags) and notname(names) and lessthing(names) and notages(tags) end,
+		test = function(boilier, names, tags) return (names.kyno_kokonut_halved or names.kyno_kokonut_cooked or names.coconut_halved or names.coconut_cooked or names.coconut_milk) and ((names.kyno_kokonut_halved or 0) + (names.kyno_kokonut_cooked or 0) + (names.coconut_halved or 0) + (names.coconut_cooked or 0) or (names.coconut_milk or 0) >= 2) and tags.fruit and tags.fruit >= 1 and not tags.veggie and notmeat(tags) and notname(names) and lessthing(names) and notages(tags) end,
 		priority = 1,
 		health = (TUNING.HEALING_SMALL*2)/2,
 		hunger = TUNING.CALORIES_MEDSMALL/2,

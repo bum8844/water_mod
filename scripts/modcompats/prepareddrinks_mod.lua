@@ -2,7 +2,7 @@ require "utils/water_brew_utils"
 
 local sw_drink = {
 	rainbow_shake = {
-		test = function(boilier, names, tags) return ((names.rainbowjellyfish or 0) + (names.rainbowjellyfish_cooked or 0) + (names.rainbowjellyfish_dead or 0) >= 1) and onlyrainbowjellyfish(names, tags) and ((names.kyno_kokonut_halved or 0) + (names.kyno_kokonut_cooked or 0) + (names.coconut_halved or 0) + (names.coconut_cooked or 0) + (names.coconut_milk or 0) >= 1) and tags.frozen and tags.frozen >= 1 and notname(names) and lessthing(names) end,
+		test = function(boilier, names, tags) return (names.rainbowjellyfish or names.rainbowjellyfish_cooked or names.rainbowjellyfish_dead) and ((names.rainbowjellyfish or 0) + (names.rainbowjellyfish_cooked or 0) + (names.rainbowjellyfish_dead or 0) >= 1) and onlyrainbowjellyfish(names, tags) and ((names.kyno_kokonut_halved or 0) + (names.kyno_kokonut_cooked or 0) + (names.coconut_halved or 0) + (names.coconut_cooked or 0) + (names.coconut_milk or 0) >= 1) and tags.frozen and tags.frozen >= 1 and notname(names) and lessthing(names) end,
 		priority = 4,
 		health = TUNING.HEALING_TINY, -- 1 (5)
 		hunger = TUNING.DRINK_CALORIES/5, -- 1 (5)
@@ -48,7 +48,7 @@ local sw_drink = {
 
 local coconut_drink = {
 	coconut_juice = {
-		test = function(boilier, names, tags) return (names.kyno_kokonut_halved or names.names.coconut_halved or names.coconut_cooked or names.coconut_milk) and ((names.kyno_kokonut_halved or 0) + (names.kyno_kokonut_cooked or 0) + (names.coconut_halved or 0) + (names.coconut_cooked or 0) + (names.coconut_milk or 0) >= 2) and tags.fruit >= 1 and not tags.veggie and notmeat(tags) and notname(names) and lessthing(names) and notages(tags) end,
+		test = function(boilier, names, tags) return (names.kyno_kokonut_halved or names.kyno_kokonut_cooked or names.coconut_halved or names.coconut_cooked or names.coconut_milk) and ((names.kyno_kokonut_halved or 0) + (names.kyno_kokonut_cooked or 0) + (names.coconut_halved or 0) + (names.coconut_cooked or 0) + (names.coconut_milk or 0) >= 2) and tags.fruit >= 1 and not tags.veggie and notmeat(tags) and notname(names) and lessthing(names) and notages(tags) end,
 		priority = 2,
         health = TUNING.HEALING_TINY, -- 1 (5)
         hunger = (TUNING.DRINK_CALORIES/2)/4, -- 0.5625 (2.8125)
