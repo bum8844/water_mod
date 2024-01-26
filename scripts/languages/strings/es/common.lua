@@ -232,7 +232,6 @@ STRINGS.NAMES.TEA_RUINCOLATE_LATTE = "Té verde con leche y chocolate"
 
 STRINGS.NAMES.MULLED = "Vino especiado"
 STRINGS.NAMES.BUTTERBEER = "Cerveza de mantequilla"
-STRINGS.NAMES.LUMPY_TEA = "Cerveza de raíz"
 
 -- Mod colaboración bebidas preparadas
 

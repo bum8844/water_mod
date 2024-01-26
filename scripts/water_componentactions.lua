@@ -8,7 +8,7 @@ local MAX_PHYSICS_RADIUS = 4
 local VIRTUALOCEAN_HASTAGS = {"virtualocean"}
 local VIRTUALOCEAN_CANTTAGS = {"INLIMBO"}
 local function find_icefishing_hole(x, y, z, r)
-    local ents = TheSim:FindEntities(x, y, z, r or MAX_PHYSICS_RADIUS, VIRTUALOCEAN_HASTAGS, VIRTUALOCEAN_CANTTAGS)
+    local ents = _G.TheSim:FindEntities(x, y, z, r or MAX_PHYSICS_RADIUS, VIRTUALOCEAN_HASTAGS, VIRTUALOCEAN_CANTTAGS)
     for _, ent in ipairs(ents) do
         if ent.Physics ~= nil then
             local radius = ent.Physics:GetRadius()
