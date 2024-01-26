@@ -624,7 +624,7 @@ local drinks =
 	},
 	ruincolate_smoothie = {
 		test = function(boilier, names, tags) return names.ruincacao_bean_cooked and names.ruincacao_bean_cooked == 2 and tags.sweetener and tags.frozen and notmeat(tags) and notname(names) and lessthing(names) end,
-		priority = 2,
+		priority = 3,
         health = 0,
         hunger = TUNING.DRINK_CALORIES/2, -- 2.5 (12.5)
         sanity = TUNING.SANITY_TINY/4,  -- 1.875 (9.375)
@@ -640,7 +640,7 @@ local drinks =
 	},
 	tea_ruincolate_latte = {
 		test = function(boilier, names, tags) return names.ruincacao_bean_cooked and names.ruincacao_bean_cooked == 2 and names.tealeaves and (tags.dairy or tags.milk) end,
-		priority = 2,
+		priority = 3,
         health = 0,
         hunger = TUNING.DRINK_CALORIES/2, -- 2.5 (12.5)
         sanity = (TUNING.SANITY_MED*2)/5, -- 5 -> 6 (30) 유제품 버프

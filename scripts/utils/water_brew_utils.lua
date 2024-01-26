@@ -181,6 +181,14 @@ function IsFlower_Cactus(names, tags)
 	)
 end
 
+function Coconut( ... )
+	return (names.kyno_kokonut_halved or
+		names.names.coconut_halved or
+		names.coconut_cooked or 
+		names.coconut_milk 
+		)
+end
+
 local function blocking_thing_bloomfintuna(names ,tags)
 	return not (tags.egg or tags.boss or tags.poop or tags.elemental or tags.paper or tags.horn or tags.spotspice or tags.gears or tags.rabbit or tags.beanbug or tags.gummybug or tags.flour or tags.bread or tags.chocolate or tags.jellyfish)
 end
