@@ -8,12 +8,13 @@ local locales =
 {
 	en = "en",
 	ko = "ko",
+	vi = "vi",
 	--es = "es",
 	--zh = "zh",
 	--zht = "zh",
 	--zhr = "zh",
 	--ru = "ru",
-	--uk-UA = "ru",
+	--ua = "ua",--우크라니아
 }
 
 local locale = GetModConfigData("locale") or locales[LOC.GetLocaleCode()] or "en"
