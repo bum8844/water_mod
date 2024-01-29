@@ -173,12 +173,12 @@ return {
             -- Collaborative Liquor
 
             AUROBOW = "Colorful as is!", -- Shipwrecked Aurobouros, Rainbow Jellywine
-            COCONUT_WINE = "", -- Shipwrecked Coconut Wine
-            CHERRY_BLOOM_MADHU = "", -- Cherry Forest Cherry Blossom Honey Madhu
-            GIANT_BLUEBERRY_WINE = "", -- VitaHive Boom!Berry Sapphire (explodes when ignited)
-            RICE_WINE = "", -- VitaHive Makgeolli
-            WHEAT_BEER = "", -- Hip of Food Wheat Beer
-            PALE_BEER = "", -- Legion Pale Ale (beer made with various roots like yams)
+            COCONUT_WINE = "No tangled things", -- Shipwrecked coconut wine
+            CHERRY_BLOOM_MADHU = "Pretty flower petals floating", -- Cherry Forest cherry blossom honey wine
+            GIANT_BLUEBERRY_WINE = "Boom! Fermented explosive fruit", -- Vita Hyb Boom!Berry Sapphire (explodes if set on fire)
+            RICE_WINE = "Not sweet...", -- Vita Hyb Makgeolli
+            WHEAT_BEER = "Pretty seeds fermented", -- Hip of Food Wheat Beer
+            PALE_BEER = "Round fruit fermented", -- Legion Pale Ale (beer brewed with Monstrous Fruit)
 
             -- Distilled Spirits
 
@@ -192,29 +192,29 @@ return {
 
             -- Warly Exclusive Distilled Spirits
 
-            BERRY_GIN = "", -- Gin
-            GLOWBERRY_GIN = "", -- Glowberry Gin
-            ABSINTHE = "", -- Absinthe
-            TEA_LUMPY_VODKA = "", -- Vodka
-            PETALS_BERRY_BRANDY = "", -- Rose Brandy
-            KAHLUA = "", -- Coffee liqueur Kahlua
-            NUT_CORN_WHISKEY = "", -- Nut Whiskey
-            RUINCACAO_CREAM_LIQUEUR = "", -- Baileys Cocoa Cream Liqueur
-            RUMCHATA = "", -- Rumchata (a dairy product mixed with rum)
+            BERRY_GIN = "Not sweet but smooth to drink", -- Pure
+            GLOWBERRY_GIN = "Shiny and smooth to drink", -- Glow Berry Gin
+            ABSINTHE = "Green and smooth to drink", -- Absinthe
+            TEA_LUMPY_VODKA = "Cool guys go in", -- Vodka
+            PETALS_BERRY_BRANDY = "Colorful", -- Rose-scented Brandy
+            KAHLUA = "Thick black and smooth to drink", -- Coffee liqueur Kahlua
+            NUT_CORN_WHISKEY = "Has a nutty aroma", -- Nut Whiskey
+            RUINCACAO_CREAM_LIQUEUR = "Rich flavor", -- Baileys Cocoa Cream Liqueur
+            RUMCHATA = "Rich and invigorating", -- Rumchata (a blend of rum and horchata, a dairy product)
 
             -- Collaboration Distilled Spirits
 
             MOONWAY = "Colorful as it is", -- Rainbow Jellyfish Distilled Spirits
-            ARRACK = "", -- Arrack Indonesian version of coconut wine distilled spirits
-            CHERRY_BLOOM_RUM = "", -- Cherry Honey Distilled Spirits Cherry Blossom Leaves Floating
-            RICE_SPIRITS = "", -- Rice wine
-            WHEAT_WHISKEY = "", -- Wheat Whiskey
-            PALE_WHISKEY = "", -- Pale Malt Whiskey
+            ARRACK = "No tangled smooth drink", -- Arrack, Indonesian version of coconut wine distilled spirit
+            CHERRY_BLOOM_RUM = "Smooth to drink", -- Cherry Honey Rum Distilled Spirit, cherry blossom petals floating
+            RICE_SPIRITS = "Incredibly clear!", -- Rice Wine
+            WHEAT_WHISKEY = "Pretty seeds smooth to drink", -- Wheat Whiskey
+            PALE_WHISKEY = "Round fruit smooth to drink", -- Pale Malt Whiskey
 
             -- Warly Exclusive Distillery Collaborative Liquor
 
-            NUT_COCONUT_BRANDY = "", -- Coconut Brandy (Caribbean Brandy, renamed due to inability to make Caribbean Brandy)
-            GIANT_BLUEBERRY_GIN = "", -- Boom Berry Sapphire (carrot explodes when ignited)
+            NUT_COCONUT_BRANDY = "Clear", -- Coconut Brandy (Cannot make Caribbean Rum, so replaced with the name Caribbean Brandy)
+            GIANT_BLUEBERRY_GIN = "Smooth to drink, Boom Boom!", -- Boom Berry Sapphire (Definitely explodes when ignited)
 
             -- Pot Recipes
 
