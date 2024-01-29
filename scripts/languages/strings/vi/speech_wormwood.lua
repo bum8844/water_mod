@@ -173,12 +173,12 @@ return {
             -- Rượu hợp tác
 
             AUROBOW = "Đầy màu sắc!", -- Aurobouros bị đắm tàu, Thạch cầu vồng
-            COCONUT_WINE = "Không có thứ gì rối bời", -- Rượu dừa tại nạn đắm
-            CHERRY_BLOOM_MADHU = "Những cánh hoa xinh đẹp nổi trôi", -- Rượu mật hoa anh đào trong rừng anh đào
-            GIANT_BLUEBERRY_WINE = "Bum! Quả cầu nổ lên từ loại trái cây được lên men", -- Vita Hyb Boom!Berry Sapphire (nổ nếu bị đốt cháy)
-            RICE_WINE = "Không ngọt...", -- Vita Hyb Makgeolli
-            WHEAT_BEER = "Hạt giống đẹp được lên men", -- Bia lúa mạch của Hip of Food
-            PALE_BEER = "Quả tròn được lên men", -- Bia Pale Ale của Legion (bia được chế tạo với Trái Quái Vật)
+            COCONUT_WINE = "Không có sợi gì đó rối rắm", -- Rượu dừa đắm tàu
+            CHERRY_BLOOM_MADHU = "Cánh hoa xinh xắn nổi lềnh bềnh", -- Rừng anh đào Mật ong hoa anh đào Madhu
+            GIANT_BLUEBERRY_WINE = "Đoàng! Trái cây nổ lên men", -- VitaHive Boom!Berry Sapphire (nổ khi bắt lửa)
+            RICE_WINE = "Chả thấy ngọt...", -- VitaHive Makgeolli
+            WHEAT_BEER = "Những hạt lúa xinh xắn được lên men", -- Hip của Bia lúa mì thực phẩm
+            PALE_BEER = "Những quả tròn tròn được lên men", -- Legion Pale Ale (bia được làm từ nhiều loại rễ khác nhau như khoai mỡ)
 
             -- Rượu chưng cất
 
@@ -186,35 +186,35 @@ return {
             CORN_WHISKEY = "Uống hạt nhỏ", -- Whisky ngô
             LUMPY_VODKA = "Rõ ràng", -- Vodka
             TEQUILA = "Không có màu trắng", -- Tequila
-            MADHU_RUM = "Nước ép bong bóng, sạch", -- Rum
+            MADHU_RUM = "Nước ép bong bóng, khá sạch", -- Rum
             BERRY_BRANDY = "Ăn nhỏ, uống nhanh", -- Berry Brandy
             AREUHI = "Không phải Ha-ye", -- Rượu chưng cất Kruse Areuhi
 
             -- Rượu chưng cất độc quyền của Warly
 
-            BERRY_GIN = "Không ngọt nhưng mượt mà khi uống", -- Tinh khiết
-            GLOWBERRY_GIN = "Lấp lánh và mượt mà khi uống", -- Gin Glow Berry
-            ABSINTHE = "Xanh và mượt mà khi uống", -- Absinthe
-            TEA_LUMPY_VODKA = "Chỉ có cool guy mới vào", -- Vodka
-            PETALS_BERRY_BRANDY = "Nhiều màu sắc", -- Rượu mâm xôi hương hoa hồng
-            KAHLUA = "Đen đặc và mượt mà khi uống", -- Rượu Cà phê Kahlua
-            NUT_CORN_WHISKEY = "Có mùi hạt giống", -- Rượu Whiskey Hạt Giống
-            RUINCACAO_CREAM_LIQUEUR = "Hương vị phong phú", -- Rượu Baileys Cocoa Cream Liqueur
-            RUMCHATA = "Phong phú và sôi động", -- Rumchata (hỗn hợp của rum và horchata, một sản phẩm từ sữa)
+            BERRY_GIN = "Không ngọt nhưng khá dễ uống", -- Gin
+            GLOWBERRY_GIN = "Hoàng Quang và dễ uống", -- Rượu Gin Glowberry
+            ABSINTHE = "Xanh lá và dễ uống", -- Absinthe
+            TEA_LUMPY_VODKA = "Hey mấy ông đồng chí ngầu lòi của tôi, vào trong đi!", -- Vodka
+            PETALS_BERRY_BRANDY = "Đầy màu sắc", -- Rượu mạnh hoa hồng
+            KAHLUA = "Đen đặc và dễ uống", -- Rượu mùi cà phê Kahlua
+            NUT_CORN_WHISKEY = "Có hương thơm của hạt dẻ", -- Whisky hạt
+            RUINCACAO_CREAM_LIQUEUR = "Hương vị phong phú", -- Rượu mùi kem ca cao Baileys
+            RUMCHATA = "Phong phú và tiếp thêm sinh lực", -- Rumchata (một sản phẩm từ sữa trộn với rượu rum)
 
             -- Hợp tác chưng cất rượu mạnh
 
-            MOONWAY = "Đầy màu sắc", -- Rượu chưng cất sứa cầu vồng
-            ARRACK = "Rượu mượt mà không rối bời", -- Arrack, phiên bản Indonesia của rượu dừa
-            CHERRY_BLOOM_RUM = "Mượt mà khi uống", -- Rượu Rum Mật Ong Anh Đào, những cánh hoa anh đào nổi trôi
-            RICE_SPIRITS = "Độ trong suốt khó tin!", -- Rượu Gạo
-            WHEAT_WHISKEY = "Hạt giống đẹp mượt mà khi uống", -- Rượu Whiskey Lúa mạch
-            PALE_WHISKEY = "Quả tròn mượt mà khi uống", -- Rượu Whiskey Mạch nha Pale
+            MOONWAY = "Đầy mùi vị như màu sắc của chúng", -- Rượu chưng cất sứa cầu vồng
+            ARRACK = "Đồ uống không mịn cho lắm", -- Arrack phiên bản rượu dừa chưng cất của Indonesia
+            CHERRY_BLOOM_RUM = "Sánh mịn để uống", -- Rượu anh đào Mật ong chưng cất Lá hoa anh đào nổi
+            RICE_SPIRITS = "Rõ ràng đến khó tin!", -- Rượu gạo
+            WHEAT_WHISKEY = "Nước từ hạt xinh xắn dễ uống", -- Whisky lúa mì
+            PALE_WHISKEY = "Nước quả tròn tròn dễ uống", -- Whisky mạch nha nhạt
 
             -- Rượu hợp tác của nhà máy chưng cất độc quyền Warly
 
-            NUT_COCONUT_BRANDY = "Trong suốt", -- Rượu Brandy dừa (Không thể tạo ra Rượu Caribbean, nên thay thế bằng tên là Brandy Caribbean)
-            GIANT_BLUEBERRY_GIN = "Mượt mà khi uống, Boom Boom!", -- Boom Berry Sapphire (Chắc chắn nổ khi châm lửa)
+            NUT_COCONUT_BRANDY = "Trong suốt"
+            GIANT_BLUEBERRY_GIN = "Dễ uống nhưng bùm bùm!", -- Boom Berry Sapphire (carrot explodes when ignited)
 
             -- Pot Recipes
 
