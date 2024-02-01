@@ -213,7 +213,7 @@ return {
 
             -- Rượu hợp tác của nhà máy chưng cất độc quyền Warly
 
-            NUT_COCONUT_BRANDY = "Trong suốt"
+            NUT_COCONUT_BRANDY = "Trong suốt",
             GIANT_BLUEBERRY_GIN = "Dễ uống nhưng bùm bùm!", -- Boom Berry Sapphire (carrot explodes when ignited)
 
             -- Pot Recipes
