@@ -177,7 +177,6 @@ FOODTYPEGROUP =
 		"banana",
 		"strawberry",
 		"orange",
-		"cherry",
 		--hop
 		"kyno_banana",
 		--mfp
@@ -193,6 +192,13 @@ FOODTYPEGROUP =
 		"cherry_roseberries",
 		"cherry_gooseberries",
 		"cherryruins_swanapple",
+		--umc
+		"giant_blueberry",
+		"zaspberry",
+		"viperfruit",
+		--legion
+		"pineananas",
+		"squamousfruit"
 	},
 
 	TYPEFRUIT_HAS_HALVED = 
@@ -336,7 +342,7 @@ FOODTYPEGROUP =
 			--hop
 			"kyno_foliage",
 			"kyno_sugartree_petals",
-		}
+		},
 	},
 
 	INGREDIENT_DRINKABLE = 
