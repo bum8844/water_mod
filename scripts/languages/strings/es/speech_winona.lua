@@ -95,7 +95,7 @@ return {
             VEGGIE_TEA = "Esto debería ayudarme a recuperar energía .", -- Vegetable juice
             CARROT_TEA = "Justo lo que necesito en un día relajante..", -- Carrot tea
             CACTUS_TEA = "Incluso con espinas, se volvió blando.", -- Cactus tea
-            TOMATO_JUICE = En realidad, nunca lo habías pensado, pero es bueno.", -- Tomato juice
+            TOMATO_JUICE = "En realidad, nunca lo habías pensado, pero es bueno.", -- Tomato juice
             LUMPY_TEA = "No es como pensaba. Está bueno.", -- Lumpy tea
             SEAWEED_SHAKE = "Hmm... Es posible que sea bueno para la gripe.", -- Seaweed shake
 
@@ -207,7 +207,7 @@ return {
             CHERRY_BLOOM_RUM = "Parece un souvenir de aeropuerto, todos son iguales al final.", -- Cherry Blossom Honey Wine Distilled Spirit Floating Petals
             RICE_SPIRITS = "¡Ahora es claro!", -- Rice Wine
             WHEAT_WHISKEY = "No beber alcohol mientras trabajo.", -- Wheat Whiskey
-            PALE_WHISKEY = Jamás he visto una bebida alcohólica artesanal de este color, antes...", -- Pale Malt Whiskey
+            PALE_WHISKEY = "Jamás he visto una bebida alcohólica artesanal de este color, antes...", -- Pale Malt Whiskey
 
             -- Walani Exclusive Collaboration Distilled Spirits
 
@@ -340,7 +340,7 @@ return {
             {
                 LOWFUEL = "Necesita recargarse.", -- Inspecting the well sprinkler with low fuel
                 ON = "No debo estar tan cerca con mi equipo.", -- It's working
-                OFF = "Algunas partes funcionan "mágicamente" cuando está apagado.", -- Inspecting the well sprinkler when it's turned off
+                OFF = "Algunas partes funcionan \"mágicamente\" cuando está apagado.", -- Inspecting the well sprinkler when it's turned off
             },
         },
     }

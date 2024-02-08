@@ -35,7 +35,7 @@ return {
 		SPICE_CAFFEINPEPPER = "Hace la comida para acampar más sabrosa.",
 
 		WELL_KIT = "No lo pienses en el pozo, Je.",
-		WELL_SPRINKLER_KIT = "Para una mejor "regación" con las plantas!",
+		WELL_SPRINKLER_KIT = "Para una mejor \"regación\" con las plantas!",
 		WELL_WATERPUMP_KIT = "¡Bomba de extracción! ¿Conduce el agua de abajo hacia arriba?",
 		WELL_BURYING_KIT = "Mejor no caer en un agujero",
 		WELL_DRILLING = "¡Un pozo a la vez!",

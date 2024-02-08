@@ -62,7 +62,7 @@ return {
             DUG_RUINCACAO_TREE = "El que siembra árboles encontraría esto útil.", -- Dug cacao tree
             RUINCACAO_SEED = "Parece que ha florecido.", -- Cacao seed item
             RUINCACAO_SEED_SAPLING = "Supongo que no se plantará solo.", -- Planted cacao sapling
-            RUINCACAO = Lo comeré pero no lo voy a disfrutar.", -- Cacao fruit before breaking
+            RUINCACAO = "Lo comeré pero no lo voy a disfrutar.", -- Cacao fruit before breaking
             RUINCACAO_BEAN = "Cubierto en aceite barato.", -- Crushed cacao bean
             RUINCACAO_BEAN_COOKED = "Mejor que comerlo crudo, pero debe haber otros métodos.", -- Roasted cacao bean
 

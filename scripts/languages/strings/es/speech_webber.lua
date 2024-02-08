@@ -20,7 +20,7 @@ return {
         ANNOUNCE_CAFFINE_BUFF_START = "Hmm, Podría correr una maratón.", -- Starting caffeine buff
         ANNOUNCE_CAFFINE_BUFF_STOP = "Eh, ahora me siento lento.", -- Ending caffeine buff
 
-        ANNOUNCE_CURE_WATERBORNE = "Ah, ¡Refrescante!"  -- Dialogue when curing waterborne disease with an item
+        ANNOUNCE_CURE_WATERBORNE = "Ah, ¡Refrescante!",  -- Dialogue when curing waterborne disease with an item
 
         ANNOUNCE_DCAPACITY_CRITICAL = "Parece que nos vamos a dividir...", -- About to get drunk
         ANNOUNCE_DCAPACITY_HALF = "Mi cabeza está empezando a girar.", -- Getting tipsy

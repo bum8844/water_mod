@@ -43,7 +43,7 @@ return {
 		HOLE = "Se ve bien para mí, para construir un pozo.",
 		WELL = "¡Ahora puedo obtener agua limpia y fresca, fácilmente!",
 
-		WX78MODULE_NONEDRUNK = "Tanta ciencia empaquetada en un pequeño artilugio."
+		WX78MODULE_NONEDRUNK = "Tanta ciencia empaquetada en un pequeño artilugio.",
 
         -- Plantas mod
 

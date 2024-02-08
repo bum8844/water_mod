@@ -257,7 +257,7 @@ return {
                 HASWATER = "¡Ahora Wolfgang puede tomar agua!", -- Clean water is ready in the desalinator
                 BURNT = "La máquina se quemó, pero la sal quedó ahí.", -- The desalinator has burnt
                 HASSALT = "Hay un olor salado que viene del interior..", -- Salt is still inside the desalinator
-            },<
+            },
 
             BARREL =
             {

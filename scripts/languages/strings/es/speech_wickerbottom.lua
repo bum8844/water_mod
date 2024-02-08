@@ -182,10 +182,10 @@ return {
 
             DISINFECTANT = "El etanol se utiliza para desinfectar heridas. Su fórmula química es C₂H₅OH.", --Disinfectant
             CORN_WHISKEY = "El whisky Bourbon de Kentucky EU, es famoso.", --Corn Whiskey
-            LUMPY_VODKA = "Derivado de "вода", que significa "agua" en ruso.", --Vodka
+            LUMPY_VODKA = "Derivado de \"вода\", que significa \"agua\" en ruso.", --Vodka
             TEQUILA = "Los conquistadores hicieron mezcal de agave cuando se les acabaron las uvas.", --Tequila
             MADHU_RUM = "Se diluye con agua durante la navegación para evitar el deterioro del agua potable.", --Rum
-            BERRY_BRANDY = "Conocido como el "rey de los licores" por su elevado precio y complicada elaboración.", --Berry Brandy
+            BERRY_BRANDY = "Conocido como el \"rey de los licores\" por su elevado precio y complicada elaboración.", --Berry Brandy
             AREUHI = "El makgeolli se destila y purifica repetidamente para eliminar las impurezas.", --Kumis Distilled Spirits Areuhi
 
             -- Warly Exclusive Distilled Spirits

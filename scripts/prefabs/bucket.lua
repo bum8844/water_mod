@@ -216,6 +216,9 @@ local function MakeBucketItem(bucketname, multiplier, sound, nowood)
             return inst
         end
 
+        inst:AddComponent("inventoryitem")
+        inst.components.inventoryitem:SetOnPickupFn(CanGetWater)
+
     	inst:AddComponent("watertaker")
     	inst.components.watertaker.capacity = TUNING.BUCKET_LEVEL_PER_USE
     	inst.components.watertaker.onfillfn = OnTakeWater
@@ -246,9 +249,6 @@ local function MakeBucketItem(bucketname, multiplier, sound, nowood)
             MakeSmallBurnable(inst, TUNING.MED_BURNTIME)
             MakeSmallPropagator(inst)
     	end
-
-        inst:AddComponent("inventoryitem")
-        inst.components.inventoryitem:SetOnPickupFn(CanGetWater)
 
         MakeHauntableLaunchAndSmash(inst)
 
