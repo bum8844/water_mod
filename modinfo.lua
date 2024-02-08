@@ -1,5 +1,5 @@
 name 						= "Don't Starve: Dehydrated"
-version 					= "Alpha 1.2.3d"
+version 					= "Alpha 1.2.3e"
 local info_version = "Version "..version.."\n"
 
 description = info_version..[[
@@ -40,8 +40,6 @@ local function Title(title,hover)
 	}
 end
 
---{description = "Español", data="es"},
-
 local SEPARATOR = Title("")
 
 configuration_options =
@@ -56,6 +54,7 @@ configuration_options =
 			{description = "English", data = "en"},
 			{description = "한국어", data = "ko"},
 			{description = "Tiếng Việt", data = "vi"},
+			{description = "Español", data="es"},
 		},
 		default = false,
 	},
