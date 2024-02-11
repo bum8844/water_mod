@@ -1,5 +1,5 @@
 name 						= "Don't Starve: Dehydrated"
-version 					= "Alpha 1.2.3f"
+version 					= "Alpha 1.2.4"
 local info_version = "Version "..version.."\n"
 
 description = info_version..[[
@@ -48,6 +48,7 @@ configuration_options =
 	{
 		name = "locale",
 		label = "Language",
+		hover = "",
 		options =
 		{
 			{description = "Auto", data = false},

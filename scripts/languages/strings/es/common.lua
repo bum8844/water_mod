@@ -153,7 +153,7 @@ STRINGS.NAMES.CAFFEINBERRY_BEAN = "Granos de café"
 STRINGS.NAMES.CAFFEINBERRY_BEAN_COOKED = "Granos tostados de café"
 STRINGS.NAMES.SPICE_CAFFEINPEPPER = "Sazonador de cafeína"
 STRINGS.RECIPE_DESC.SPICE_CAFFEINPEPPER = "La energizante especia de la vida."
-STRINGS.NAMES.SPICE_CAFFEINPEPPER_FOOD = "Sazonador comestible"
+STRINGS.NAMES.SPICE_CAFFEINPEPPER_FOOD = "{food} Sazonador comestible"
 
 -- Cacao de las ruinas
 STRINGS.NAMES.RUINCACAO_TREE = "Árbol de cacao"

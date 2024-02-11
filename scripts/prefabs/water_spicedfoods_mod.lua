@@ -87,6 +87,10 @@ local function MakePreparedFood(data)
                 atlas = "images/inventoryimages/"..(data.basename or data.name)..".xml"}
                 table.insert(foodassets, Asset("ANIM", "anim/"..data.basename or data.name..".zip"))
             end
+        elseif KnownModIndex:IsModEnabled("workshop-2334209327") or KnownModIndex:IsModForceEnabled("workshop-2334209327") then
+            inst.inv_image_bg = { image = (data.basename or data.name)..".tex",
+            atlas = "images/inventoryimages/hof_inventoryimages.xml"}
+            table.insert(foodassets, Asset("ANIM", "anim/"..data.basename or data.name..".zip"))
         else
             inst.inv_image_bg = { image = (data.basename or data.name)..".tex",
             atlas = "images/inventoryimages/"..(data.basename or data.name)..".xml"}
@@ -94,7 +98,6 @@ local function MakePreparedFood(data)
         end
 
         food_symbol_build = data.overridebuild or "cook_pot_food"
-        print(data.overimg or "nil")
 
         inst.AnimState:PlayAnimation("idle")
         inst.AnimState:OverrideSymbol("swap_food", data.overridebuild or data.basename or data.name, data.overimg or data.basename or data.name)
