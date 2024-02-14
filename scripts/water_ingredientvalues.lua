@@ -68,7 +68,6 @@ local teaingredients =
 
 if hof then
 	foliage_ingredient["veggie"] = .25
-	mushrooms_ingredient["veggie"] = .25
 	succulent_ingredient["veggie"] = .25
 	foliage_ingredient["foliage"] = 1
 	foliage_cookable = true

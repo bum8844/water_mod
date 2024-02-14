@@ -349,7 +349,7 @@ local function ruincacao_seed()
 
     inst.AnimState:SetBank("ruincacao_tree_seed")
     inst.AnimState:SetBuild("ruincacao_tree_seed")
-    inst.AnimState:PlayAnimation("idle")
+    inst.AnimState:PlayAnimation("idle_ruincacao_sapling")
 
     MakeInventoryPhysics(inst)
 
