@@ -18,7 +18,7 @@ local function OnFill_Waterlevel(inst, from_object ,...)
     	if result > 0 then
     		inst.components.finiteuses:SetUses(math.min(maxfin,using+(waterlevel_water*TUNING.WATERINGCAN_PER_WATER)))
             if water ~= nil then
-                water:Taken(inst, result)
+                from_object.components.water:Taken(inst, result)
             end
     		inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/small")
     		return true
