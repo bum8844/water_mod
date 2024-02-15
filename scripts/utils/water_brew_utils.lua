@@ -446,3 +446,5 @@ function add_tech_count(inst, eater, num)
 		FxSpawn(eater)
 	end
 end
+
+return {notmeat = notmeat, give_tech = give_tech, add_tech_count = add_tech_count}

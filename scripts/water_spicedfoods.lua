@@ -1,4 +1,5 @@
 require("tuning")
+local modlist = require("utils/water_modlist")
 
 local water_spicedfoods = {}
 
@@ -74,27 +75,27 @@ function GenerateSpicedFoods_Water(foods)
     end
 end
 
-for k, mod_id in ipairs(KnownModIndex:GetModsToLoad()) do
-    if mod_id == "workshop-1392778117" then
-        GenerateSpicedFoods_Water(require("preparedfoods_legion"))
-    end
-    if mod_id == "workshop-2748801553" then
-        GenerateSpicedFoods_Water(require("gyul_foodrecipes"))
-    end
-    if mod_id == "workshop-2762334054" then
-        GenerateSpicedFoods_Water(require("mfp_foodrecipes"))
-    end
-    if mod_id == "workshop-2039181790" then
-        GenerateSpicedFoods_Water(require("um_preparedfoods"))
-    end
-    if mod_id == "workshop-1289779251" then
-        GenerateSpicedFoods_Water(require("cherry_preparedfoods"))
-        GenerateSpicedFoods_Water(require("cherry_preparedfoods_warly"))
-        GenerateSpicedFoods_Water(require("cherry_preparedfoods_wirly"))
-    end
+if modlist.water_modlist.legion then
+    GenerateSpicedFoods_Water(require("preparedfoods_legion"))
 end
 
---
+if modlist.water_modlist.gyul then
+    GenerateSpicedFoods_Water(require("gyul_foodrecipes"))
+end
+
+if modlist.water_modlist.mfp then
+    GenerateSpicedFoods_Water(require("mfp_foodrecipes"))
+end
+
+if modlist.water_modlist.unc then
+    GenerateSpicedFoods_Water(require("um_preparedfoods"))
+end
+
+if modlist.water_modlist.cf then
+    GenerateSpicedFoods_Water(require("cherry_preparedfoods"))
+    GenerateSpicedFoods_Water(require("cherry_preparedfoods_warly"))
+    GenerateSpicedFoods_Water(require("cherry_preparedfoods_wirly"))
+end
 
 GenerateSpicedFoods_Water(require("preparedfoods"))
 GenerateSpicedFoods_Water(require("preparedfoods_warly"))

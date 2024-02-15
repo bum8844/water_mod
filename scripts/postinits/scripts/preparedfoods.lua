@@ -1,6 +1,4 @@
-local function notmeat(tags)
-	return not (tags.fish or tags.jellyfish or tags.meat or tags.egg or tags.boss or tags.poop or tags.elemental or tags.paper or tags.horn or tags.spotspice or tags.gears or tags.rabbit or tags.beanbug or tags.gummybug or tags.flour or tags.bread )
-end
+local notmeat = require"utils/water_brew_utils".notmeat
 
 local foods = require("preparedfoods")
 

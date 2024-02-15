@@ -657,63 +657,49 @@ local drinks =
 }
 
 local mod_drink = require("modcompats/prepareddrinks_mod")
-local hof, ia, te, mfp, fwd = false, false, false, false, false
+local modlist = require("utils/water_modlist")
 
-for k,mod_id in ipairs(KnownModIndex:GetModsToLoad()) do 
-	if mod_id == "workshop-2334209327" then
-		hof = true
+if modlist.mfp then
+	local mfp_drink = mod_drink.mfp_drink
+	for k, v in pairs(mfp_drink) do
+		drinks[k] = v
 	end
-	if mod_id == "workshop-2762334054" then
-		mfp = true
-		local mfp_drink = mod_drink.mfp_drink
-		for k, v in pairs(mfp_drink) do
-			drinks[k] = v
-		end
+end
+if modlist.cf then
+	local cf_drink = mod_drink.cf_drink
+	for k,v in pairs(cf_drink) do
+		drinks[k] = v
 	end
-	if mod_id == "workshop-1505270912" then
-		te = true
-	end
-	if mod_id == "workshop-1467214795" then
-		ia = true
-	end
-	if mod_id == "workshop-3054476656" then -- fwd
-		fwd = true
-	end
-	if mod_id == "workshop-1289779251" then -- cf
-		local cf_drink = mod_drink.cf_drink
-		for k,v in pairs(cf_drink) do
-			drinks[k] = v
-		end
-	end
-	if mod_id == "workshop-2039181790" then -- unc
-		local unc_drink = mod_drink.unc_drink
-		for k,v in pairs(unc_drink) do
-			drinks[k] = v
-		end
-	end
-	if mod_id == "workshop-1392778117" then -- legion
-		local legion_drink = mod_drink.legion_drink
-		for k,v in pairs(legion_drink) do
-			drinks[k] = v
-		end
+end
+if modlist.unc then
+	local unc_drink = mod_drink.unc_drink
+	for k,v in pairs(unc_drink) do
+		drinks[k] = v
 	end
 end
 
-if mfp or fwd then
+if modlist.legion then
+	local legion_drink = mod_drink.legion_drink
+	for k,v in pairs(legion_drink) do
+		drinks[k] = v
+	end
+end
+
+if modlist.mfp or modlist.fwd then
 	local orange_drink = mod_drink.orange_drink
 	for k,v in pairs(orange_drink) do
 		drinks[k] = v
 	end
 end
 
-if te or ia then
+if modlist.te or modlist.ia then
 	local sw_drink = mod_drink.sw_drink
 	for k,v in pairs(sw_drink) do
 		drinks[k] = v
 	end
 end
 
-if te or ia or hof then
+if modlist.te or modlist.ia or modlist.hof then
 	local coconut_drink = mod_drink.coconut_drink
 	for k,v in pairs(coconut_drink) do
 		drinks[k] = v

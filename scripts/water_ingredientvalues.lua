@@ -1,22 +1,4 @@
-local hof, te, ia, legion, mfp, beefalo_milk = false, false, false, false, false, false
-
-for k,mod_id in ipairs(GLOBAL.KnownModIndex:GetModsToLoad()) do 
-	if mod_id == "workshop-2334209327" then
-		hof = true
-	end
-	if mod_id == "workshop-1505270912" then
-		te = true
-	end
-	if mod_id == "workshop-1467214795" then
-		ia = true
-	end
-	if mod_id == "workshop-1392778117" then
-		legion = true
-	end
-	if mod_id == "workshop-436654027" or mod_id == "workshop-1277605967" or mod_id == "workshop-2431867642" or mod_id == "workshop-1935156140" then
-		beefalo_milk = true
-	end
-end
+local modlist = require("utils/water_modlist")
 
 -- 기본 물모드 재료
 local additives = {
@@ -66,12 +48,12 @@ local teaingredients =
 	"tillweed",
 }
 
-if hof then
+if modlist.water_modlist.hof then
 	foliage_ingredient["veggie"] = .25
 	succulent_ingredient["veggie"] = .25
 	foliage_ingredient["foliage"] = 1
 	foliage_cookable = true
-elseif mfp then
+elseif modlist.water_modlist.mfp then
 	foliage_ingredient["veggie"] = 1
 else
 	petals_ingredient["veggie"] = .5
@@ -84,18 +66,18 @@ AddIngredientValues(mushrooms, mushrooms_ingredient, true)
 AddIngredientValues(petals, petals_ingredient)
 AddIngredientValues({"goatmilk"}, {milk=1, dairy=1})
 
-if te then
+if modlist.water_modlist.te then
 	AddIngredientValues({"rainbowjellyfish", "rainbowjellyfish_dead", "rainbowjellyfish_cooked"},{fish=1,jellyfish=1,monster=1})
 end
 
-if te or ia then
+if modlist.water_modlist.te or modlist.water_modlist.ia then
 	AddIngredientValues({"coral_brain"}, {meat=1})
 end
 
-if beefalo_milk then
+if modlist.water_modlist.bm then
 	AddIngredientValues({"beefalo_milk"}, {milk=1, dairy=.5})
 end
 
-if legion then
+if modlist.water_modlist.legion then
 	AddIngredientValues({"squamousfruit"}, {veggie=1, monster=1})
 end

@@ -5,6 +5,7 @@ local UIAnim = require "widgets/uianim"
 local Text = require "widgets/text"
 local Grid = require "widgets/grid"
 local Spinner = require "widgets/spinner"
+local modlist = require("utils/water_modlist")
 
 local TEMPLATES = require "widgets/redux/templates"
 local TEMPLATES_WATER = require "widgets/redux/templates_water"
@@ -103,27 +104,23 @@ function CookbookPageCrockPot:PopulateRecipeDetailPanel(data, ...)
 	local y = ((((( top - 11 ) - name_font_size/2 ) - name_font_size/2 - 4 ) - 30) - image_size/2 ) - image_size/2
 
 	local has_details = false
-
-	if data.recipe_def.custom_cookbook_details_fn ~= nil then
-		for k,mod_id in ipairs(GLOBAL.KnownModIndex:GetModsToLoad()) do
-			if mod_id == "workshop-1392778117" then
-				for foodname, _ in pairs(require("preparedfoods_legion")) do
-					if foodname == data.recipe_def.name then
-						has_details = true
-					end
+		if modlist.legion then
+			for foodname, _ in pairs(require("preparedfoods_legion")) do
+				if foodname == data.recipe_def.name then
+					has_details = true
 				end
-				for nonefoodname, _ in pairs(require("prepareditems_legion")) do
-					if nonefoodname == data.recipe_def.name then
-						has_details = true
-					end
+			end
+			for nonefoodname, _ in pairs(require("prepareditems_legion")) do
+				if nonefoodname == data.recipe_def.name then
+					has_details = true
 				end
-				if has_details then
-					local cookbookui_legion = require "modcompats/1392778117/cookbookui_legion"
-					data.recipe_def.custom_cookbook_details_fn = function(data, self, top, left)
-            			local root = cookbookui_legion(data, self, top, left)
-            			return root
-        			end
-				end
+			end
+			if has_details then
+				local cookbookui_legion = require "modcompats/1392778117/cookbookui_legion"
+				data.recipe_def.custom_cookbook_details_fn = function(data, self, top, left)
+           			local root = cookbookui_legion(data, self, top, left)
+           			return root
+        		end
 			end
 		end
 	end

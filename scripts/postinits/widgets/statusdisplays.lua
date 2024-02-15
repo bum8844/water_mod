@@ -1,6 +1,7 @@
 local ThirstBadge = require "widgets/thirstbadge"
 local Widget = require "widgets/widget"
 local UIAnim = require "widgets/uianim"
+local modlist = require("utils/water_modlist")
 
 local function OnSetPlayerMode(inst, self)
 	self.watertask = nil
@@ -28,22 +29,13 @@ local function thirstbadge_statusdisplays(self)
 
 	self.waterstomach = self:AddChild(self.owner.CreateThirstBadge ~= nil and self.owner.CreateThirstBadge(self.owner) or ThirstBadge(self.owner))
 
-	local AlwaysOnStatus = false
-
-	for k,mod_id in ipairs(GLOBAL.KnownModIndex:GetModsToLoad()) do 
-		if mod_id == "workshop-376333686" or mod_id == "workshop-2438350724" then 
-			AlwaysOnStatus = true
-		end
-	end
-
 	local waterbadgex = -40
 	local waterbadgey = 20
 
 	local hungerbadgex = -120
 	local hungerbadgey = 20
 
-	if AlwaysOnStatus then
-
+	if modlist.cs then
 		waterbadgex = -62
 		waterbadgey = 35
 

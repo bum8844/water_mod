@@ -1,24 +1,8 @@
-local function notmeat(tags)
-	return not (tags.fish or tags.jellyfish or tags.meat or tags.egg or tags.boss or tags.poop or tags.elemental or tags.paper or tags.horn or tags.spotspice or tags.gears or tags.rabbit or tags.beanbug or tags.gummybug or tags.flour or tags.bread )
-end
+local water_brew_utils = require"utils/water_brew_utils"
 
-local function give_tech(inst, eater, num, count_num)
-	local atech_num = math.max(0,num)
-	local otech_num = math.max(0,num/2)
-	if eater.components.builder then
-		eater.components.builder:GiveTempTechBonus({ANCIENT = atech_num, OBSIDIAN = otech_num})
-		if count_num then
-			eater.components.builder.temptechbonus_count = eater.components.builder.temptechbonus_count + math.max(1,count_num)
-		end
-	end
-end
-
-local function add_tech_count(inst, eater, num)
-	local tech_count = math.max(0,num)
-	if eater.components.builder and eater.components.builder.temptechbonus_count then
-		eater.components.builder.temptechbonus_count = eater.components.builder.temptechbonus_count + tech_count
-	end
-end
+local notmeat = water_brew_utils.notmeat
+local give_tech = water_brew_utils.give_tech
+local add_tech_count = water_brew_utils.add_tech_count
 
 local foods = require("preparedfoods_warly")
 

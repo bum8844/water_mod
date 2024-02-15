@@ -1,16 +1,4 @@
-local mod_list = {
-	TE = false,
-	IA = false,
-}
-
-for k,mod_id in ipairs(KnownModIndex:GetModsToLoad()) do 
-	if mod_id == "workshop-1505270912" then
-		mod_list.TE = true
-	end
-	if mod_id == "workshop-1467214795" then
-		mod_list.IA = true
-	end 
-end
+local modlist = require("utils/water_modlist")
 
 local function CheckMods(table1, table2)
     for i, v in pairs(table2) do
@@ -68,11 +56,11 @@ local function GetTeaTreeBiome()
         "JungleEvilFlowers",
     }
 
-    if mod_list.TE then
+    if modlist.te then
     	tea_tree_biome = CheckMods(tea_tree_biome, tea_tree_biome_te)
     end
 
-    if mod_list.IA then
+    if modlist.ia then
     	tea_tree_biome = CheckMods(tea_tree_biome, tea_tree_biome_ia)
     end
 
@@ -111,11 +99,11 @@ local function GetCaffeinBerryBiome()
         "MeadowRocky",
     }
 
-    if mod_list.TE then
+    if modlist.te then
     	caffeinberry_biome = CheckMods(caffeinberry_biome, caffeinberry_biome_te)
     end
 
-    if mod_list.IA then
+    if modlist.ia then
     	caffeinberry_biome = CheckMods(caffeinberry_biome, caffeinberry_biome_ia)
     end
 
@@ -148,11 +136,11 @@ local function GetRuinCacaoTreeBiome()
         "deeprainforest_mandrakeman",
     }
 
-    if mod_list.TE then
+    if modlist.te then
     	ruincacao_tree_biome = CheckMods(ruincacao_tree_biome, ruincacao_tree_biome_te)
     end
 
-    if mod_list.IA then
+    if modlist.ia then
     	ruincacao_tree_biome = CheckMods(ruincacao_tree_biome, ruincacao_tree_biome_ia)
     end
 
