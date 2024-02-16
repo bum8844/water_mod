@@ -1,7 +1,7 @@
 local ThirstBadge = require "widgets/thirstbadge"
 local Widget = require "widgets/widget"
 local UIAnim = require "widgets/uianim"
-local modlist = require("utils/water_modlist")
+local modlist = require("utils/water_modlist").active_mod_compatibility
 
 local function OnSetPlayerMode(inst, self)
 	self.watertask = nil

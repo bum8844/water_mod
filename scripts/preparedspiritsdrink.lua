@@ -316,26 +316,18 @@ local drinks =
 }
 
 local mod_drink = require("modcompats/preparedspiritsdrink_mod")
-local modlist = require("utils/water_modlist")
+local modlist = require("utils/water_modlist").active_mod_compatibility
 
-if modlist.cf then
-	local cf_drink = mod_drink.cf_drink
-	for k,v in pairs(cf_drink) do
-		drinks[k] = v
+for active, _ in pairs(modlist) do
+	local test = active.."_drink"
+	for mod_drinks, drink_table in pairs(mod_drink) do
+		if test == mod_drinks then
+			for k, v in pairs(drink_table) do
+				drinks[k] = v
+			end
+		end
 	end
 end
-if modlist.unc then
-	local unc_drink = mod_drink.unc_drink
-	for k,v in pairs(unc_drink) do
-		drinks[k] = v
-	end
-end
-if modlist.legion then
-	local legion_drink = mod_drink.legion_drink
-	for k,v in pairs(legion_drink) do
-		drinks[k] = v
-	end
-end 
 
 if modlist.te or modlist.ia then
 	local sw_drink = mod_drink.sw_drink
@@ -366,6 +358,17 @@ for k, v in pairs(drinks) do
 
     v.is_boilbook_recipes = true
     v.boilbook_category = "distillers"
+    if modlist.legion and _G.CONFIGS_LEGION.BETTERCOOKBOOK then
+    	v.cook_need = ""
+    	v.cook_cant = ""
+    	v.recipe_count = 4
+		local cookbookui_legion = require "modcompats/1392778117/cookbookui_legion"
+		v.custom_cookbook_details_fn = function(data, self, top, left)
+			local root = cookbookui_legion(data, self, top, left)
+			return root
+		end
+    end
+    v.drinktype = v.drinktype or DRINKTYPY.GENERIC
     v.no_cookbook = true
 end
 

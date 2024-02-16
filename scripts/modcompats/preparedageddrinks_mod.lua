@@ -109,7 +109,7 @@ local cf_drink = {
 	},
 }
 
-local unc_drink = {
+local umc_drink = {
 	giant_blueberry_wine = 
 	{
 		test = function(boilier, names, tags) return names.giant_blueberry and names.giant_blueberry >= 2 and names.zaspberry and names.zaspberry >= 1 and not tags.veggie and notmeat(tags) and notname(names) end,
@@ -277,4 +277,4 @@ local orange_drink = {
 	},
 }
 
-return { sw_drink = sw_drink, coconut_drink = coconut_drink, cf_drink = cf_drink, unc_drink = unc_drink , wheat_drink = wheat_drink, legion_drink = legion_drink, mfp_drink = mfp_drink, orange_drink = orange_drink}
+return { sw_drink = sw_drink, coconut_drink = coconut_drink, cf_drink = cf_drink, umc_drink = umc_drink , wheat_drink = wheat_drink, legion_drink = legion_drink, mfp_drink = mfp_drink, orange_drink = orange_drink}

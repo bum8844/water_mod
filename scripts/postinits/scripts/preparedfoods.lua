@@ -1,4 +1,5 @@
 local notmeat = require"utils/water_brew_utils".notmeat
+local modlist = require("utils/water_modlist").active_mod_compatibility
 
 local foods = require("preparedfoods")
 
@@ -50,6 +51,16 @@ for k, v in pairs(water_foods) do
     v.priority = v.priority or 0
 
 	v.cookbook_category = "cookpot"
+    if modlist.legion and _G.CONFIGS_LEGION.BETTERCOOKBOOK then
+    	v.cook_need = ""
+    	v.cook_cant = ""
+    	v.recipe_count = 4
+		local cookbookui_legion = require "modcompats/1392778117/cookbookui_legion"
+		v.custom_cookbook_details_fn = function(data, self, top, left)
+			local root = cookbookui_legion(data, self, top, left)
+			return root
+		end
+    end
 	v.overridebuild = "water_cook_pot"
 end
 

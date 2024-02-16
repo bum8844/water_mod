@@ -147,30 +147,38 @@ local ui = Class(Widget, function(self,data,parent,top,left)
 
 	local details_x = 60
 	local details_y = y + 85
-	local status_scale = 0.5
+	local status_scale = 0.7
+	local hunger_x = 0
+	local is_enable_thirst = TUNING.IS_ENABLE_THIRST
+
+	if is_enable_thirst then
+		status_scale = 0.5
+		hunger_x = 20
+	end
 
 	local health = data.recipe_def.health ~= nil and math.floor(10*data.recipe_def.health)/10 or nil
-	local hunger = data.recipe_def.hunger ~= nil and math.floor(10*data.recipe_def.hunger)/10 or nil
-	local sanity = data.recipe_def.sanity ~= nil and math.floor(10*data.recipe_def.sanity)/10 or nil
-	local thirst = data.recipe_def.thirst ~= nil and math.floor(10*data.recipe_def.thirst)/10 or 
-	ChackConstants(data.recipe_def.name) and math.floor(10*ChackConstants(data.recipe_def.name))/10 or
-	data.recipe_def.hunger and math.floor(10*Calchungerforthirst(data))/10  or nil
-
 	self.health_status = self:AddChild(TEMPLATES.MakeUIStatusBadge((health ~= nil and health >= 0) and "health" or "health_bad"))
 	self.health_status:SetPosition(details_x-60, details_y)
 	self.health_status.status_value:SetString(health or STRINGS.UI.COOKBOOK.STAT_UNKNOWN)
 	self.health_status:SetScale(status_scale)
 
+	local hunger = data.recipe_def.hunger ~= nil and math.floor(10*data.recipe_def.hunger)/10 or nil
 	self.hunger_status = self:AddChild(TEMPLATES.MakeUIStatusBadge((hunger ~= nil and hunger >= 0) and "hunger" or "hunger_bad"))
-	self.hunger_status:SetPosition(details_x-20, details_y)
+	self.hunger_status:SetPosition(details_x-hunger_x, details_y)
 	self.hunger_status.status_value:SetString(hunger or STRINGS.UI.COOKBOOK.STAT_UNKNOWN)
 	self.hunger_status:SetScale(status_scale)
 
-	self.thirst_status = self:AddChild(TEMPLATES_WATER.MakeUIStatusBadge((thirst ~= nil and thirst >= 0) and "thirst" or "thirst_bed"))
-	self.thirst_status:SetPosition(details_x+20, details_y)
-	self.thirst_status.status_value:SetString(thirst or STRINGS.UI.COOKBOOK.STAT_UNKNOWN)
-	self.thirst_status:SetScale(status_scale)
+	if is_enable_thirst then
+		local thirst = data.recipe_def.thirst ~= nil and math.floor(10*data.recipe_def.thirst)/10 or 
+		ChackConstants(data.recipe_def.name) and math.floor(10*ChackConstants(data.recipe_def.name))/10 or
+		data.recipe_def.hunger and math.floor(10*Calchungerforthirst(data))/10  or nil
+		self.thirst_status = self:AddChild(TEMPLATES_WATER.MakeUIStatusBadge((thirst ~= nil and thirst >= 0) and "thirst" or "thirst_bed"))
+		self.thirst_status:SetPosition(details_x+20, details_y)
+		self.thirst_status.status_value:SetString(thirst or STRINGS.UI.COOKBOOK.STAT_UNKNOWN)
+		self.thirst_status:SetScale(status_scale)
+	end
 
+	local sanity = data.recipe_def.sanity ~= nil and math.floor(10*data.recipe_def.sanity)/10 or nil
 	self.sanity_status = self:AddChild(TEMPLATES.MakeUIStatusBadge((sanity ~= nil and sanity >= 0) and "sanity" or "sanity_bad"))
 	self.sanity_status:SetPosition(details_x+60, details_y)
 	self.sanity_status.status_value:SetString(sanity or STRINGS.UI.COOKBOOK.STAT_UNKNOWN)
@@ -206,7 +214,7 @@ local ui = Class(Widget, function(self,data,parent,top,left)
 	MakeDetailsLine(self, column_offset_x, y - 2, .3, "quagmire_recipe_line_veryshort.tex")
 	y = y - 8
 	y = y - body_font_size/2
-	local str = STRINGS.UI.FOOD_TYPES[data.recipe_def.foodtype or FOODTYPE.GENERIC] or STRINGS.UI.COOKBOOK.FOOD_TYPE_UNKNOWN
+	local str = data.recipe_def.drinktype and STRINGS.UI.DRINK_TYPES[data.recipe_def.drinktype] or STRINGS.UI.FOOD_TYPES[data.recipe_def.foodtype or FOODTYPE.GENERIC] or STRINGS.UI.COOKBOOK.FOOD_TYPE_UNKNOWN
 	if data.recipe_def.secondaryfoodtype ~= nil then
 		str = str.."、"..(STRINGS.UI.FOOD_TYPES[data.recipe_def.secondaryfoodtype] or STRINGS.UI.COOKBOOK.FOOD_TYPE_UNKNOWN)
 	end

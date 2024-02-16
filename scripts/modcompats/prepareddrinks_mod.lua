@@ -102,7 +102,7 @@ local cf_drink = {
 	},
 }
 
-local unc_drink = {
+local umc_drink = {
 	sweet_rice_drink = 	{
 		test = function(boilier, names, tags) return (names.rice or names.rice_cooked or names.fwd_in_pdt_food_rice) and ((names.rice or 0) + (names.rice_cooked or 0) + (names.fwd_in_pdt_food_rice or 0)) == 2 and tags.sweetener and tags.frozen and notmeat(tags) and notname(names) and lessthing(names) and notages(tags) end,
 		priority = 2,
@@ -194,4 +194,4 @@ local orange_drink = {
 	},
 }
 
-return { sw_drink = sw_drink, coconut_drink = coconut_drink, cf_drink = cf_drink, unc_drink = unc_drink, legion_drink = legion_drink, mfp_drink = mfp_drink, orange_drink = orange_drink }
+return { sw_drink = sw_drink, coconut_drink = coconut_drink, cf_drink = cf_drink, umc_drink = umc_drink, legion_drink = legion_drink, mfp_drink = mfp_drink, orange_drink = orange_drink }

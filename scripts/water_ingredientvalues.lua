@@ -1,4 +1,4 @@
-local modlist = require("utils/water_modlist")
+local modlist = require("utils/water_modlist").active_mod_compatibility
 
 -- 기본 물모드 재료
 local additives = {
@@ -48,12 +48,12 @@ local teaingredients =
 	"tillweed",
 }
 
-if modlist.water_modlist.hof then
+if modlist.hof then
 	foliage_ingredient["veggie"] = .25
 	succulent_ingredient["veggie"] = .25
 	foliage_ingredient["foliage"] = 1
 	foliage_cookable = true
-elseif modlist.water_modlist.mfp then
+elseif modlist.mfp then
 	foliage_ingredient["veggie"] = 1
 else
 	petals_ingredient["veggie"] = .5
@@ -66,18 +66,18 @@ AddIngredientValues(mushrooms, mushrooms_ingredient, true)
 AddIngredientValues(petals, petals_ingredient)
 AddIngredientValues({"goatmilk"}, {milk=1, dairy=1})
 
-if modlist.water_modlist.te then
+if modlist.te then
 	AddIngredientValues({"rainbowjellyfish", "rainbowjellyfish_dead", "rainbowjellyfish_cooked"},{fish=1,jellyfish=1,monster=1})
 end
 
-if modlist.water_modlist.te or modlist.water_modlist.ia then
+if modlist.te or modlist.ia then
 	AddIngredientValues({"coral_brain"}, {meat=1})
 end
 
-if modlist.water_modlist.bm then
+if modlist.bm then
 	AddIngredientValues({"beefalo_milk"}, {milk=1, dairy=.5})
 end
 
-if modlist.water_modlist.legion then
+if modlist.legion then
 	AddIngredientValues({"squamousfruit"}, {veggie=1, monster=1})
 end

@@ -1,4 +1,4 @@
-local modlist = require("utils/water_modlist")
+local modlist = require("utils/water_modlist").active_mod_compatibility
 
 if modlist.hof then
 	modrequire("modcompats/2334209327/hof_buckets")
