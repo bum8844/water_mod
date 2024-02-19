@@ -52,9 +52,9 @@ for k, v in pairs(water_foods) do
 
 	v.cookbook_category = "cookpot"
     if modlist.legion and _G.CONFIGS_LEGION.BETTERCOOKBOOK then
-    	v.cook_need = ""
-    	v.cook_cant = ""
-    	v.recipe_count = 4
+    	v.cook_need = nil
+    	v.cook_cant = nil
+    	v.recipe_count = 0
 		local cookbookui_legion = require "modcompats/1392778117/cookbookui_legion"
 		v.custom_cookbook_details_fn = function(data, self, top, left)
 			local root = cookbookui_legion(data, self, top, left)

@@ -18,12 +18,17 @@ local water_modlist = {
 
 local active_mod_compatibility = {}
 
+local infodata
+
 for k,mod_id in ipairs(KnownModIndex:GetModsToLoad()) do
 	for list, code in pairs(water_modlist) do
 		if mod_id == list then
 			active_mod_compatibility[code] = true
+			if code == "cs" then
+				infodata = ModManager:GetMod(mod_id).modinfo
+			end
 		end
 	end
 end
 
-return {water_modlist = water_modlist, active_mod_compatibility = active_mod_compatibility}
+return {water_modlist = water_modlist, active_mod_compatibility = active_mod_compatibility, infodata = infodata}

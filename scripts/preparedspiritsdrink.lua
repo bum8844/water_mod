@@ -359,8 +359,8 @@ for k, v in pairs(drinks) do
     v.is_boilbook_recipes = true
     v.boilbook_category = "distillers"
     if modlist.legion and _G.CONFIGS_LEGION.BETTERCOOKBOOK then
-    	v.cook_need = ""
-    	v.cook_cant = ""
+    	v.cook_need = nil
+    	v.cook_cant = nil
     	v.recipe_count = 4
 		local cookbookui_legion = require "modcompats/1392778117/cookbookui_legion"
 		v.custom_cookbook_details_fn = function(data, self, top, left)
