@@ -591,7 +591,7 @@ local drinks =
 		potlevel_bottle = "mid",
 	},
 	ruinxocolatl = {
-		test = function(boilier, names, tags) return names.ruincacao_bean_cooked and names.ruincacao_bean_cooked >= 3 and ((names.pepper or 0) + (names.pepper_cooked or 0) >= 0) and notmeat(tags) and notname(names) and lessthing(names) end,
+		test = function(boilier, names, tags) return names.ruincacao_bean_cooked and names.ruincacao_bean_cooked >= 3 and ((names.pepper or 0) + (names.pepper_cooked or 0) >= 1) and notmeat(tags) and notname(names) and lessthing(names) end,
 		priority = 1,
         health = TUNING.HEALING_MED/4, -- 5 (25)
         hunger = TUNING.DRINK_CALORIES/2, --2.5 (12.5)

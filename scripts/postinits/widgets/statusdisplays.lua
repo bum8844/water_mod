@@ -57,10 +57,10 @@ local function thirstbadge_statusdisplays(self)
 
 	if modlist.cs then
 		local infodata = require("utils/water_modlist").infodata.configuration_options
-		local SEASONOPTIONS = "Clock"
+		local SEASONOPTIONS = ""
 		for k, v in pairs(infodata) do
 			if v.name == "SEASONOPTIONS" then
-				SEASONOPTIONS = v.saved
+				SEASONOPTIONS = v.saved_server or v.saved_client or v.saved or v.default
 				print(SEASONOPTIONS)
 			end
 		end
