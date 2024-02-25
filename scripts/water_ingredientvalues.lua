@@ -64,6 +64,7 @@ AddIngredientValues(teaingredients, {veggie = .5, decoration = 1})
 AddIngredientValues({"foliage"}, foliage_ingredient, foliage_cookable)
 AddIngredientValues(mushrooms, mushrooms_ingredient, true)
 AddIngredientValues(petals, petals_ingredient)
+AddIngredientValues({"succulent_picked"},succulent_ingredient)
 AddIngredientValues({"goatmilk"}, {milk=1, dairy=1})
 
 if modlist.te then
