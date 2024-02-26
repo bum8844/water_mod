@@ -1,5 +1,5 @@
 name 						= "Don't Starve: Dehydrated"
-version 					= "Alpha 1.2.4e"
+version 					= "Alpha 1.2.5"
 local info_version = "Version "..version.."\n"
 
 description = info_version..[[
@@ -102,6 +102,19 @@ configuration_options =
 			{description = "Lots", data = 1.9},
 		},
 		default = 1.2,
+	},
+	{
+		name = "re_retrofit",
+		label = "Re Retrofit Plants",
+		hover = "When re-applying this mode",
+		options = {
+			{description = "Not Need", data = 0},
+			{description = "All", data = 1},
+			{description = "Only Tree Trees", data = 2},
+			{description = "Only Coffee Plants", data = 3},
+			{description = "Only Cacao Plants", data = 4},
+		},
+		default = 0
 	},
 	SEPARATOR,
 	Title("Thirst options"),

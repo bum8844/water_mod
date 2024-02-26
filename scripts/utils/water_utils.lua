@@ -2,6 +2,18 @@ local function GetItemState(count)
     return count >= 5 and "_bottle" or ""
 end
 
+function SetRetrofitSetting(name, value)
+    local configs = KnownModIndex:LoadModConfigurationOptions("workshop-3004639365", false)
+    if configs ~= nil then
+        for i, v in ipairs(configs) do
+            if v.name == name then
+                v.saved = value
+            end
+        end
+    end
+    KnownModIndex:SaveConfigurationOptions(function() end, "workshop-3004639365", configs, false)
+end
+
 function MakeDynamicCupImage(inst, symbol, build, use_bg)
     local function ChangeCupImage(inst, data)
         if data ~= nil then
