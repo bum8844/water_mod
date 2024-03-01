@@ -19,7 +19,9 @@ local prefabs =
 }   
 
 local function Get_Waterborne_Disease(inst, eater)
+    local random = math.random()
     if TUNING.ENABLE_WATERBORNE and not eater:HasTag("waterborne_immune") and
+        random > TUNING.WATERBORNE_IMMUNES_CHANCE and
         eater:HasTag("player") and not eater:HasTag("playerghost") then
         eater:AddDebuff("waterbornedebuff", "waterbornedebuff")
     end
