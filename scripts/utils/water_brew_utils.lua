@@ -9,7 +9,7 @@ function Preference(names, tags)
 end
 
 function Tea_Def(names, tags)
-	return ((tags.veggie or 0) <= 2) and ((tags.mushroom or 0) < 4) and not tags.fruit
+	return ((tags.veggie or 0) <= 2.1) and ((tags.mushroom or 0) < 4) and not tags.fruit
 end
 
 --특정재료만 들어 갔는지 확인해주는 코드들
