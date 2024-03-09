@@ -133,6 +133,7 @@ water_tuning =
 	HYDRATION_POISON = -5,
 	HYDRATION_ROT = -10,
 	HYDRATION_NONE = 0,
+	HYDRATION_SUPERTINYMICROSCOPIC = hydration_per_day/64, -- 1.40625
 	HYDRATION_TINYMICROSCOPIC = hydration_per_day/24, -- 3.75
 	HYDRATION_SUPERTINY = hydration_per_day/16, -- 5.625
 	HYDRATION_TINY = hydration_per_day/12, -- 7.5

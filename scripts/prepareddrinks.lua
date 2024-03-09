@@ -447,7 +447,7 @@ local drinks =
 	fuer =
 	{
 		test = function(boilier, names, tags) return IsFoliage(names, tags) and notmeat(tags) and notname(names) and lessthing(names) and notages(tags) end,
-		priority = 1,
+		priority = 2,
 		health = TUNING.HEALING_TINY, --1
 		hunger = 0,
 		sanity = TUNING.SANITY_MEDLARGE/4, --7.5 (37.5)

@@ -9,7 +9,7 @@ function Preference(names, tags)
 end
 
 function Tea_Def(names, tags)
-	return (tags.decoration or 0) and ((tags.veggie or 0) <= 2) and ((tags.mushroom or 0) < 4) and not tags.fruit
+	return ((tags.veggie or 0) <= 2) and ((tags.mushroom or 0) < 4) and not tags.fruit
 end
 
 --특정재료만 들어 갔는지 확인해주는 코드들
@@ -106,8 +106,7 @@ function IsFlower(names, tags)
 		names.lotus_flower or 
 		names.kyno_lotus_flower or 
 		names.succulent_picked or
-		tags.lotus or
-		tags.petals_legion
+		tags.lotus
 	)
 end
 
@@ -130,8 +129,12 @@ function IsFlower_Moon(names, tags)
 		names.lotus_flower or 
 		names.kyno_lotus_flower or 
 		names.succulent_picked or
-		tags.lotus or
-		tags.petals_legion
+		names.petals_rose or
+		names.petals_lily or
+		names.petals_orchid or
+		names.aip_veggie_sunflower or
+		names.myth_lotus_flower or
+		tags.lotus
 	)
 end
 
@@ -152,6 +155,11 @@ function IsFlower_Evil(names, tags)
 		names.lotus_flower or 
 		names.kyno_lotus_flower or 
 		names.succulent_picked or
+		names.petals_rose or
+		names.petals_lily or
+		names.petals_orchid or
+		names.aip_veggie_sunflower or
+		names.myth_lotus_flower or
 		tags.lotus or
 		tags.petals_legion
 	)
@@ -176,8 +184,12 @@ function IsFlower_Cactus(names, tags)
 		names.lotus_flower or 
 		names.kyno_lotus_flower or 
 		names.succulent_picked or
-		tags.lotus or
-		tags.petals_legion
+		names.petals_rose or
+		names.petals_lily or
+		names.petals_orchid or
+		names.aip_veggie_sunflower or
+		names.myth_lotus_flower or
+		tags.lotus
 	)
 end
 
@@ -257,7 +269,7 @@ function quantum_calc(names, tags)
 end
 
 function IsFlower_Lotus(names, tags)
-	return ( names.lotus_flower or names.kyno_lotus_flower or names.succulent_picked or tags.lotus or onlybloomfintuna(names ,tags)) and 
+	return ( names.lotus_flower or names.kyno_lotus_flower or names.myth_lotus_flower or names.succulent_picked or tags.lotus or onlybloomfintuna(names ,tags)) and 
 	Preference(names, tags) and
 	Tea_Def(names, tags) and not 
 	( 
@@ -272,6 +284,10 @@ function IsFlower_Lotus(names, tags)
 		names.petals_evil or 
 		names.firenettles or 
 		names.tillweed or
+		names.petals_rose or
+		names.petals_lily or
+		names.petals_orchid or
+		names.aip_veggie_sunflower or
 		names.cactus_flower
 	)
 end

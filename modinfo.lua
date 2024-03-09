@@ -1,5 +1,5 @@
 name 						= "Don't Starve: Dehydrated"
-version 					= "Alpha 1.2.5"
+version 					= "Alpha 1.2.5a"
 local info_version = "Version "..version.."\n"
 
 description = info_version..[[
@@ -114,7 +114,7 @@ configuration_options =
 			{description = "Only Coffee Plants", data = 3},
 			{description = "Only Cacao Plants", data = 4},
 		},
-		default = 0
+		default = 0,
 	},
 	SEPARATOR,
 	Title("Thirst options"),

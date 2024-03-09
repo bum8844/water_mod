@@ -55,6 +55,8 @@ if modlist.hof then
 	foliage_cookable = true
 elseif modlist.mfp then
 	foliage_ingredient["veggie"] = 1
+elseif modlist.legion then
+	foliage_ingredient["decoration"] = 1
 else
 	petals_ingredient["veggie"] = .5
 	foliage_ingredient["veggie"] = .5

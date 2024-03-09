@@ -157,7 +157,7 @@ local umc_drink = {
 
 local wheat_drink = {
 	wheat_beer = {
-		test = function(boilier, names, tags) return ((names.kyno_wheat or 0) + (names.kyno_wheat_cooked or 0) + (names.wheat or 0) + (names.wheat_cooked or 0) or (names.mfp_wheat or 0) or (names.mfp_wheat_cooked) >= 3) and not tags.fruit and notmeat(tags) and notname(names) and lessthing(names) and notages(tags) end,
+		test = function(boilier, names, tags) return (names.kyno_wheat or names.kyno_wheat_cooked or names.wheat or names.wheat_cooked or names.mfp_wheat or names.mfp_wheat_cooked) and ((names.kyno_wheat or 0) + (names.kyno_wheat_cooked or 0) + (names.wheat or 0) + (names.wheat_cooked or 0) + (names.mfp_wheat or 0) + (names.mfp_wheat_cooked or 0) >= 3) and not tags.fruit and notmeat(tags) and notname(names) and lessthing(names) and notages(tags) end,
 		priority = 1,
 		health = (TUNING.HEALING_SMALL*2)/2,
 		hunger = TUNING.CALORIES_MEDSMALL/2,

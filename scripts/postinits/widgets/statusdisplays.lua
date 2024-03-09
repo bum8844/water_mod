@@ -61,7 +61,6 @@ local function thirstbadge_statusdisplays(self)
 		for k, v in pairs(infodata) do
 			if v.name == "SEASONOPTIONS" then
 				SEASONOPTIONS = v.saved_server or v.saved_client or v.saved or v.default
-				print(SEASONOPTIONS)
 			end
 		end
 		local SHOWSEASONCLOCK = SEASONOPTIONS == "Clock"
