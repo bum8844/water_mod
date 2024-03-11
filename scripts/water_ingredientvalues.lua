@@ -53,10 +53,8 @@ if modlist.hof then
 	succulent_ingredient["veggie"] = .25
 	foliage_ingredient["foliage"] = 1
 	foliage_cookable = true
-elseif modlist.mfp then
+elseif modlist.mfp or modlist.te then
 	foliage_ingredient["veggie"] = 1
-elseif modlist.legion then
-	foliage_ingredient["decoration"] = 1
 else
 	petals_ingredient["veggie"] = .5
 	foliage_ingredient["veggie"] = .5
