@@ -235,7 +235,7 @@ local drinks =
 
 	veggie_tea =
 	{
-		test = function(boilier, names, tags) return tags.veggie and not tags.lotus and Preference(names, tags) and notmeat(tags) and notname(names) and lessthing(names) and notages(tags) end,
+		test = function(boilier, names, tags) return tags.veggie and not tags.decoration and not tags.lotus and Preference(names, tags) and notmeat(tags) and notname(names) and lessthing(names) and notages(tags) end,
 		priority = 0,
 		health = (TUNING.HEALING_SMALL*2)/4, -- 1.5 (7.5)
 		hunger = TUNING.DRINK_CALORIES/4, -- 1.25 (6.25)
@@ -447,7 +447,7 @@ local drinks =
 	fuer =
 	{
 		test = function(boilier, names, tags) return IsFoliage(names, tags) and notmeat(tags) and notname(names) and lessthing(names) and notages(tags) end,
-		priority = 2,
+		priority = 1,
 		health = TUNING.HEALING_TINY, --1
 		hunger = 0,
 		sanity = TUNING.SANITY_MEDLARGE/4, --7.5 (37.5)

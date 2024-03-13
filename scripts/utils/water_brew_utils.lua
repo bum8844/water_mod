@@ -20,19 +20,6 @@ local function blocking_thing_coral_brain(names ,tags)
 	return not (tags.jellyfish or tags.fish or tags.egg or tags.boss or tags.poop or tags.elemental or tags.paper or tags.horn or tags.spotspice or tags.gears or tags.rabbit or tags.beanbug or tags.gummybug or tags.flour or tags.bread or tags.chocolate)
 end
 
-function onlyfoliage(names ,tags)
-	local foliage = (names.foliage or 0) + (names.foliage_cooked or 0) + (names.kyno_foliage_cooked or 0) + (names.kyno_foliage or 0)
-
-	local totalblock = tags.veggie or 0
-
-	local totalignore = math.max(0,(totalblock - (foliage)))
-
-	if totalignore <= 0 and foliage > 0 then
-		return foliage
-	end 
-	return false
-end
-
 function onlybloomfintuna(names ,tags)
 	local bloomfintuna = names.oceanfish_small_7_inv or 0 -- 최대 4개
 
@@ -93,13 +80,13 @@ function Preference(names, tags)
 end
 
 function Tea_Def(names, tags)
-	return (((tags.veggie or 0) <= 2) or (onlyfoliage(names ,tags) or 0) <= 2) and ((tags.mushroom or 0) < 4) and not tags.fruit
+	return (math.max(0,((tags.veggie or 0) - (tags.decoration or 0))) <= 2) and ((tags.mushroom or 0) < 4) and not tags.fruit
 end
 
 --특정재료만 들어 갔는지 확인해주는 코드들
 
 function Mix_Tea_Patch(names, tags)
-	return tags.decoration and ((tags.veggie or 0) <= 2) and ((tags.mushroom or 0) < 4) and not tags.fruit
+	return tags.decoration and (math.max(0,((tags.veggie or 0) - (tags.decoration or 0))) <= 2) and ((tags.mushroom or 0) < 4) and not tags.fruit
 end
 
 function IsTealeaves(names, tags)
@@ -149,7 +136,7 @@ function IsTealeaves_dried(names, tags)
 end
 
 function IsFoliage(names, tags)
-	return names.foliage or names.kyno_foliage or names.kyno_foliage_cooked and 
+	return (names.foliage or names.kyno_foliage or names.kyno_foliage_cooked) and 
 	Preference(names, tags) and
 	Tea_Def(names, tags) and not 
 	( 

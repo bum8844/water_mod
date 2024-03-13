@@ -22,10 +22,11 @@ AddIngredientValues({"ruincacao_bean_cooked"}, {decoration = 1})
 
 -- 바닐라 재료(모드 호완 관련 패치)
 
-local foliage_ingredient = {decoration = 1}
-local petals_ingredient = {decoration = 1}
+local foliage_ingredient = {veggie = .5, decoration = 1}
+local petals_ingredient = {veggie = .5, decoration = 1}
 local mushrooms_ingredient = {veggie = .5, mushroom = 1}
 local succulent_ingredient = {veggie = .5, decoration = 1}
+local cactus_flower_ingredient = {veggie = .5, decoration = 1}
 local foliage_cookable = false
 
 local mushrooms =
@@ -51,19 +52,19 @@ local teaingredients =
 if modlist.hof then
 	foliage_ingredient["veggie"] = .25
 	succulent_ingredient["veggie"] = .25
+	cactus_flower_ingredient["veggie"] = 1
+	cactus_flower_ingredient["cactus_flower"] = 1
 	foliage_ingredient["foliage"] = 1
 	foliage_cookable = true
 elseif modlist.mfp or modlist.te then
 	foliage_ingredient["veggie"] = 1
-else
-	petals_ingredient["veggie"] = .5
-	foliage_ingredient["veggie"] = .5
 end
 
 AddIngredientValues(teaingredients, {veggie = .5, decoration = 1})
 AddIngredientValues({"foliage"}, foliage_ingredient, foliage_cookable)
 AddIngredientValues(mushrooms, mushrooms_ingredient, true)
 AddIngredientValues(petals, petals_ingredient)
+AddIngredientValues({"cactus_flower"},cactus_flower_ingredient)
 AddIngredientValues({"succulent_picked"},succulent_ingredient)
 AddIngredientValues({"goatmilk"}, {milk=1, dairy=1})
 
