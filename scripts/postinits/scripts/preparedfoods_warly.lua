@@ -14,10 +14,10 @@ local water_foods = {
 		priority = 1,
 		weight = 1,
 		foodtype = FOODTYPE.GOODIES,
-		health = TUNING.HEALING_MEDSMALL*4,
-		hunger = TUNING.CALORIES_MEDSMALL,
-		perishtime = TUNING.PERISH_PRESERVED,
-		sanity = -TUNING.SANITY_MED,
+		health = TUNING.HEALING_MEDSMALL*4, -- 32
+		hunger = TUNING.CALORIES_MEDSMALL, -- 22.5
+		perishtime = TUNING.PERISH_PRESERVED, --20일 
+		sanity = -TUNING.SANITY_MED, -- -15
 		thirst = 0,
 		cooktime = 2,
         floater = {"small", 0.05, 0.7},
@@ -27,14 +27,14 @@ local water_foods = {
 		end
 	},
 	white_ruincolate = {
-		test = function(cooker, names, tags) return names.ruincacao_bean_cooked and tags.fat and tags.dairy and tags.sweetener end,
+		test = function(cooker, names, tags) return names.ruincacao_bean_cooked and tags.fat and (tags.dairy or tags.milk) and (((tags.dairy or 0) + (tags.milk or 0)) - tags.fat) > 0 and tags.sweetener end,
 		priority = 2,
 		weight = 1,
-		foodtype = FOODTYPE.GOODIES,
-		health = TUNING.HEALING_MEDSMALL*2,
-		hunger = TUNING.CALORIES_MEDSMALL,
-		perishtime = TUNING.PERISH_PRESERVED,
-		sanity = TUNING.SANITY_TINY,
+		foodtype = FOODTYPE.GOODIES, 
+		health = TUNING.HEALING_MEDSMALL*7, -- 16 -> 56 (버터+ 꿀 + 카카오 + 우유 = 51)
+		hunger = TUNING.CALORIES_MEDSMALL*3, -- 18.75 -> 56.25 (재료총합 =56.25)
+		perishtime = TUNING.PERISH_PRESERVED, --20일
+		sanity = TUNING.SANITY_MEDLARGE, -- 5 -> 20 (우유 10)
 		thirst = 0,
 		cooktime = 2,
         floater = {"small", 0.05, 0.7},

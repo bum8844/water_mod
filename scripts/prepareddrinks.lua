@@ -576,7 +576,7 @@ local drinks =
 	},
 	-- 특수차
 	butterbeer = { --크레페보다 만들기 어렵기에 버프/ 크레페: 체+60 정+15 허기 + 150 (재료:버터,과일,꿀)
-		test = function(boilier, names, tags) return tags.fat and tags.dairy and tags.dairy >= 2 and tags.sweetener and notmeat(tags) and notname(names) and lessthing(names) end,
+		test = function(boilier, names, tags) return tags.fat and (tags.dairy or tags.milk) and (((tags.dairy or 0) + (tags.milk or 0)) - tags.fat) > 0 and tags.sweetener and notmeat(tags) and notname(names) and lessthing(names) end,
 		priority = 1,
         health = TUNING.HEALING_HUGE/5, -- 6 -> 12 (60) -- 버터+우유+꿀 = 46
         hunger = TUNING.CALORIES_SMALL, -- 12.5 (62.5)

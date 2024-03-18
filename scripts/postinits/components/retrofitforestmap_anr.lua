@@ -207,6 +207,10 @@ AddComponentPostInit("retrofitforestmap_anr",function(self)
 		local caffeinberry_bush = (self.retrofit_caffeinberry_bush or re_retrofit == 1 or re_retrofit == 3) and true or false
 		local ruincacao_tree = (self.retrofit_tea_tree or re_retrofit == 1 or re_retrofit == 4) and true or false
 
+		if re_retrofit > 0 then
+			GLOBAL.SetRetrofitSetting("re_retrofit", 0)
+		end
+
 		print("Retrofit Forest:OnPostInit tea tree : "..tostring(tea_tree)..", caffeinberry bush : "..tostring(caffeinberry_bush)..", Retrofit Forest:OnPostInit RuinCacao Trees : "..tostring(ruincacao_tree))
 
 		if tea_tree then
@@ -222,10 +226,6 @@ AddComponentPostInit("retrofitforestmap_anr",function(self)
 		if ruincacao_tree then
 			print ("Retrofitting for RuinCacao Trees: Adding RuinCacao Trees.")
 			Ruincacao_Tree_Retrofitting()
-		end
-
-		if re_retrofit ~= 0 then
-			GLOBAL.SetRetrofitSetting("re_retrofit", 0)
 		end
 		
 		return oldonpostinit_forest(self, ...)
