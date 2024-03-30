@@ -231,7 +231,6 @@ STRINGS.NAMES.TEA_RUINCOLATE_LATTE = "Green Tea Chocolate Latte"
 
 STRINGS.NAMES.MULLED = "Mulled Drink"
 STRINGS.NAMES.BUTTERBEER = "Butter Beer"
-STRINGS.NAMES.LUMPY_TEA = "Root Beer"
 
 -- preparedrink 타모드 전용
 

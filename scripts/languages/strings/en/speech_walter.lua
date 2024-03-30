@@ -86,7 +86,7 @@ return {
 		-- 주전자 음료
 		
 		FRUITJUICE = "It's fruit so it's good for me!",
-		BERRIES_JUICE = "Berry berry good! See? It's make out of berries.",
+		BERRIES_JUICE = "Berry berry good! See? It's made out of berries.",
 		POMEGRANATE_JUICE = "Is this juice from inside a fruit which was already inside another fruit?",
 		BANANA_JUICE = "This is better than I thought it'd be.",
 		FIG_JUICE = "Not good as a juice either...",
@@ -135,7 +135,7 @@ return {
 		PINEANANAS_JUICE = "Do you know who Anana's brother is? Banana!", -- 레기온 파인애플 주스
 		ORANGE_JUICE = "Meet my 'oranginal' juice.", -- 모어 푸드 팩 오랜지 쥬스
 		STRAWBERRY_SMOOTHIE = "Strong but soft. Because it's a strong berry smoothie.", -- 모어 푸드 팩 딸기 스무디
-		STRAWBERRY_MILK_SMOOTHIE = "Refershing and cool!", -- 모어 푸드 팩 딸기 스무디 라떼
+		STRAWBERRY_MILK_SMOOTHIE = "Refreshing and cool!", -- 모어 푸드 팩 딸기 스무디 라떼
 
 		-- 양조기 음료
 
@@ -193,7 +193,7 @@ return {
 
 		--왈리 전용 증류주
 
-		BERRY_GIN = "I head it was medicine that made people sick.",
+		BERRY_GIN = "I heard it was medicine that made people sick.",
 		GLOWBERRY_GIN = "Shiney Gin! But it's not in a lamp.",
 		ABSINTHE = "I think I heard it's called the green fairy!",
 		TEA_LUMPY_VODKA = "This looks healthy! But it's still alcohol.",

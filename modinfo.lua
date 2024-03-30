@@ -1,5 +1,5 @@
 name 						= "Don't Starve: Dehydrated"
-version 					= "Alpha 1.2.2c"
+version 					= "Alpha 1.2.5b"
 local info_version = "Version "..version.."\n"
 
 description = info_version..[[
@@ -48,11 +48,14 @@ configuration_options =
 	{
 		name = "locale",
 		label = "Language",
+		hover = "",
 		options =
 		{
 			{description = "Auto", data = false},
-			{description = "English", data = "en"},
-			{description = "한국어", data = "ko"},
+			{description = "English", data = "en", hover="By lord lee"},
+			{description = "한국어", data = "ko", hover="기본지원"},
+			{description = "Tiếng Việt", data = "vi", hover="Bởi Shinosan"},
+			{description = "Español", data="es", hover="Traducido por Deimos y RavenCorwen"},
 		},
 		default = false,
 	},
@@ -99,6 +102,19 @@ configuration_options =
 			{description = "Lots", data = 1.9},
 		},
 		default = 1.2,
+	},
+	{
+		name = "re_retrofit",
+		label = "Re Retrofit Plants",
+		hover = "When re-applying this mode",
+		options = {
+			{description = "Not Need", data = 0},
+			{description = "All", data = 1},
+			{description = "Only Tree Trees", data = 2},
+			{description = "Only Coffee Plants", data = 3},
+			{description = "Only Cacao Plants", data = 4},
+		},
+		default = 0,
 	},
 	SEPARATOR,
 	Title("Thirst options"),

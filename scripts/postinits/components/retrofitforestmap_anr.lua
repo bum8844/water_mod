@@ -4,6 +4,8 @@ local STRUCTURE_TAGS = {"structure"}
 
 local biome_data = require("utils/water_retorfit_biome")
 
+local re_retrofit = GetModConfigData("re_retrofit")
+
 local tea_tree_biome = biome_data.GetTeaTreeBiome()
 local caffeinberry_biome = biome_data.GetCaffeinBerryBiome()
 local ruincacao_tree_biome = biome_data.GetRuinCacaoTreeBiome()
@@ -78,7 +80,7 @@ local function Tea_Tree_Retrofitting()
 			count = count + 1
 			if count >= gen_tea_tree then
 				print("Retrofitting for Tea Trees De-extinction: Found enough Tea Trees in the world.")
-				return
+				return false
 			end
 		end
 	end
@@ -197,25 +199,31 @@ AddComponentPostInit("retrofitforestmap_anr",function(self)
 
 	local oldonpostinit_forest = self.OnPostInit
 	local oldonload = self.OnLoad
+
+
 	function self:OnPostInit(...)
 
-		local tea_tree = self.retrofit_tea_tree and "true" or "false"
-		local caffeinberry_bush = self.retrofit_caffeinberry_bush and "true" or "false"
-		local ruincacao_tree = self.retrofit_tea_tree and "true" or "false"
+		local tea_tree = (self.retrofit_tea_tree or re_retrofit == 1 or re_retrofit == 2) and true or false
+		local caffeinberry_bush = (self.retrofit_caffeinberry_bush or re_retrofit == 1 or re_retrofit == 3) and true or false
+		local ruincacao_tree = (self.retrofit_tea_tree or re_retrofit == 1 or re_retrofit == 4) and true or false
 
-		print("Retrofit Forest:OnPostInit tea tree : "..tea_tree..", caffeinberry bush : "..caffeinberry_bush..", Retrofit Forest:OnPostInit RuinCacao Trees : "..ruincacao_tree)
+		if re_retrofit > 0 then
+			GLOBAL.SetRetrofitSetting("re_retrofit", 0)
+		end
 
-		if self.retrofit_tea_tree then
+		print("Retrofit Forest:OnPostInit tea tree : "..tostring(tea_tree)..", caffeinberry bush : "..tostring(caffeinberry_bush)..", Retrofit Forest:OnPostInit RuinCacao Trees : "..tostring(ruincacao_tree))
+
+		if tea_tree then
 			print ("Retrofitting for Tea Trees: Adding Tea Trees.")
 			Tea_Tree_Retrofitting()
 		end
 
-		if self.retrofit_caffeinberry_bush then
+		if caffeinberry_bush then
 			print ("Retrofitting for CaffeinBerry Bushs: Adding CaffeinBerry Bushs.")
 			CaffeinBerry_Bush_Retrofitting()
 		end
 
-		if self.retrofit_ruincacao_tree then
+		if ruincacao_tree then
 			print ("Retrofitting for RuinCacao Trees: Adding RuinCacao Trees.")
 			Ruincacao_Tree_Retrofitting()
 		end

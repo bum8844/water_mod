@@ -1,34 +1,33 @@
-local function notmeat(tags)
-	return not (tags.fish or tags.jellyfish or tags.meat or tags.egg or tags.boss or tags.poop or tags.elemental or tags.paper or tags.horn or tags.spotspice or tags.gears or tags.rabbit or tags.beanbug or tags.gummybug or tags.flour or tags.bread )
-end
+local notmeat = require"utils/water_brew_utils".notmeat
+local modlist = require("utils/water_modlist").active_mod_compatibility
 
 local foods = require("preparedfoods")
 
 local water_foods = {
 	ruincolate =
 	{
-		test = function(cooker, names, tags) return names.ruincacao_bean_cooked and names.ruincacao_bean_cooked <= 3 and tags.sweetener and tags.sweetener <= 2 and ((tags.dairy or 0) + (tags.milk or 0) <= 1) and notmeat(tags) end,
+		test = function(cooker, names, tags) return names.ruincacao_bean_cooked and names.ruincacao_bean_cooked <= 3 and tags.sweetener and tags.sweetener <= 2 and ((tags.dairy or 0) + (tags.milk or 0) <= 1) and notmeat(tags) and not tags.inedible end,
 		priority = 1,
 		weight = 1,
 		foodtype = FOODTYPE.GOODIES,
-		health = TUNING.HEALING_MEDSMALL*2,
-		hunger = TUNING.CALORIES_MED,
-		perishtime = TUNING.PERISH_PRESERVED,
-		sanity = TUNING.SANITY_SMALL,
+		health = TUNING.HEALING_MEDSMALL*2, -- 16
+		hunger = TUNING.CALORIES_TINY*3, -- 25 -> 28.125 ( 2카카오 + 1꿀 수치 )
+		perishtime = TUNING.PERISH_PRESERVED, -- 20일
+		sanity = TUNING.SANITY_SMALL, -- 10 
 		thirst = 0,
 		cooktime = 2,
         floater = {"small", 0.05, 0.7},
 		card_def = {ingredients = {{"ruincacao_bean_cooked", 3}, {"honey", 1}}},
 	},
 	ruin_schokakola = {
-		test = function(cooker, names, tags) return names.ruincacao_bean_cooked and names.ruincacao_bean_cooked <= 2 and names.caffeinberry_bean_cooked and names.moon_cap and names.moon_cap <= 2 and ((tags.sweetener or 0) + (tags.dairy or 0) + (tags.milk or 0) <= 1) and notmeat(tags) end,
+		test = function(cooker, names, tags) return names.ruincacao_bean_cooked and names.ruincacao_bean_cooked <= 2 and names.caffeinberry_bean_cooked and names.moon_cap and names.moon_cap <= 2 and ((tags.sweetener or 0) + (tags.dairy or 0) + (tags.milk or 0) <= 1) and notmeat(tags) and not tags.inedible end,
 		priority = 2,
 		weight = 1,
 		foodtype = FOODTYPE.GOODIES,
-		health = TUNING.HEALING_MEDSMALL*2,
-		hunger = TUNING.CALORIES_MEDSMALL,
-		perishtime = TUNING.PERISH_PRESERVED,
-		sanity = TUNING.SANITY_TINY,
+		health = TUNING.HEALING_MEDSMALL*3, -- 16 -> 24
+		hunger = TUNING.CALORIES_TINY*4.4, -- 18.75  -> 41.25 [꿀+커피+카카오+파란버섯의 총 허기 회복량 = 40.625]
+		perishtime = TUNING.PERISH_PRESERVED, --20일
+		sanity = TUNING.SANITY_TINY, -- 5
 		thirst = 0,
 		cooktime = 2,
         floater = {"small", 0.05, 0.7},
@@ -52,6 +51,16 @@ for k, v in pairs(water_foods) do
     v.priority = v.priority or 0
 
 	v.cookbook_category = "cookpot"
+    if modlist.legion and _G.CONFIGS_LEGION.BETTERCOOKBOOK then
+    	v.cook_need = nil
+    	v.cook_cant = nil
+    	v.recipe_count = 1
+		local cookbookui_legion = require "modcompats/1392778117/cookbookui_legion"
+		v.custom_cookbook_details_fn = function(data, self, top, left)
+			local root = cookbookui_legion(data, self, top, left)
+			return root
+		end
+    end
 	v.overridebuild = "water_cook_pot"
 end
 

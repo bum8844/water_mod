@@ -316,56 +316,34 @@ local drinks =
 }
 
 local mod_drink = require("modcompats/preparedspiritsdrink_mod")
-local hof, ia, te, mfp = false, false, false, false
+local modlist = require("utils/water_modlist").active_mod_compatibility
 
-for k,mod_id in ipairs(KnownModIndex:GetModsToLoad()) do 
-	if mod_id == "workshop-2334209327" then
-		hof = true
-	end
-	if mod_id == "workshop-2762334054" then
-		mfp = true
-	end
-	if mod_id == "workshop-1505270912" then
-		te = true
-	end
-	if mod_id == "workshop-1467214795" then
-		ia = true
-	end
-	if mod_id == "workshop-1289779251" then -- cf
-		local cf_drink = mod_drink.cf_drink
-		for k,v in pairs(cf_drink) do
-			drinks[k] = v
+for active, _ in pairs(modlist) do
+	local test = active.."_drink"
+	for mod_drinks, drink_table in pairs(mod_drink) do
+		if test == mod_drinks then
+			for k, v in pairs(drink_table) do
+				drinks[k] = v
+			end
 		end
 	end
-	if mod_id == "workshop-2039181790" then -- unc
-		local unc_drink = mod_drink.unc_drink
-		for k,v in pairs(unc_drink) do
-			drinks[k] = v
-		end
-	end
-	if mod_id == "workshop-1392778117" then -- legion
-		local legion_drink = mod_drink.legion_drink
-		for k,v in pairs(legion_drink) do
-			drinks[k] = v
-		end
-	end 
 end
 
-if te or ia then
+if modlist.te or modlist.ia then
 	local sw_drink = mod_drink.sw_drink
 	for k,v in pairs(sw_drink) do
 		drinks[k] = v
 	end
 end
 
-if te or ia or hof then
+if modlist.te or modlist.ia or modlist.hof then
 	local coconut_drink = mod_drink.coconut_drink
 	for k,v in pairs(coconut_drink) do
 		drinks[k] = v
 	end
 end
 
-if hof or mfp then
+if modlist.hof or modlist.mfp then
 	local wheat_drink = mod_drink.wheat_drink
 	for k, v in pairs(wheat_drink) do
 		drinks[k] = v
@@ -380,9 +358,18 @@ for k, v in pairs(drinks) do
 
     v.is_boilbook_recipes = true
     v.boilbook_category = "distillers"
+    if modlist.legion and _G.CONFIGS_LEGION.BETTERCOOKBOOK then
+    	v.cook_need = nil
+    	v.cook_cant = nil
+    	v.recipe_count = 4
+		local cookbookui_legion = require "modcompats/1392778117/cookbookui_legion"
+		v.custom_cookbook_details_fn = function(data, self, top, left)
+			local root = cookbookui_legion(data, self, top, left)
+			return root
+		end
+    end
+    v.drinktype = v.drinktype or DRINKTYPY.GENERIC
     v.no_cookbook = true
 end
 
 return drinks
-
--- 녹차 보드카, 글로우배리 진, 넛 콘 위스키 데이터 수정해야함(es버전 오면)

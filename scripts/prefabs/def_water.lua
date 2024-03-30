@@ -19,7 +19,9 @@ local prefabs =
 }   
 
 local function Get_Waterborne_Disease(inst, eater)
+    local random = math.random()
     if TUNING.ENABLE_WATERBORNE and not eater:HasTag("waterborne_immune") and
+        random > TUNING.WATERBORNE_IMMUNES_CHANCE and
         eater:HasTag("player") and not eater:HasTag("playerghost") then
         eater:AddDebuff("waterbornedebuff", "waterbornedebuff")
     end
@@ -359,8 +361,8 @@ local function MakeWaterItem(name, masterfn, tags, _prefabs)
     return Prefab(name, fn, assets, prefabs)
 end
 
-return MakeWaterItem("water_clean", cleanwater, {"drink","show_spoilage","icebox_valid","clean","farm_water","pre-prepareddrink","potion"}, prefabs.water_clean),
-    MakeWaterItem("water_mineral", mineralwater, {"drink","show_spoilage","icebox_valid","clean","farm_water","pre-prepareddrink","potion"}),
+return MakeWaterItem("water_clean", cleanwater, {"drink","show_spoilage","icebox_valid","clean","farm_water","pre-prepareddrink","pre-preparedfood","potion"}, prefabs.water_clean),
+    MakeWaterItem("water_mineral", mineralwater, {"drink","show_spoilage","icebox_valid","clean","farm_water","pre-prepareddrink","pre-preparedfood","potion"}),
     MakeWaterItem("water_dirty", dirtywater, {"drink","show_spoiled", "icebox_valid","dirty","farm_water"}),
     MakeWaterItem("water_salty", saltywater, {"drink","salty"}),
     MakeWaterItem("water_clean_ice", cleanice, {"show_spoilage", "icebox_valid","clean","frozen","unwrappable"}, prefabs.water_clean_ice),

@@ -173,12 +173,12 @@ return {
 		--콜라보 양조주
 
 		AUROBOW = "알록달록해!", -- 난파선 오로보우,무지개 해파리주
-		COCONUT_WINE = "", -- 난파선 코코넛 와인
-		CHERRY_BLOOM_MADHU = "", -- 체리숲 벚꽃꿀주
-		GIANT_BLUEBERRY_WINE = "", -- 비타협 붐!베리 사파이어(불 붙히면 폭발함)
-		RICE_WINE = "", -- 비타협 막걸리
-		WHEAT_BEER = "", -- 힙 오브 푸드 밀맥주
-		PALE_BEER = "", -- 레기온 페일에일 (몬스트라 열매를 쓴 청록색 맥주)
+		COCONUT_WINE = "탱글탱글 한 거 없어", -- 난파선 코코넛 와인
+		CHERRY_BLOOM_MADHU = "예쁜 꽃잎 둥둥", -- 체리숲 벚꽃꿀주
+		GIANT_BLUEBERRY_WINE = "펑 열매 발효된거", -- 비타협 붐!베리 사파이어(불 붙히면 폭발함)
+		RICE_WINE = "안 달아...", -- 비타협 막걸리
+		WHEAT_BEER = "이쁜 씨앗 발효된거", -- 힙 오브 푸드 밀맥주
+		PALE_BEER = "동그란 열매 발효된거", -- 레기온 페일에일 (몬스트라 열매를 쓴 청록색 맥주)
 
 		--증류주
 
@@ -192,29 +192,29 @@ return {
 
 		--왈리 전용 증류주
 
-		BERRY_GIN = "", --진
-		GLOWBERRY_GIN = "", --글로우 베리 진
-		ABSINTHE = "", -- 압생트
-		TEA_LUMPY_VODKA = "", -- 보드카
-		PETALS_BERRY_BRANDY = "", -- 장미향 브랜디
-		KAHLUA = "", -- 커피 리큐르 깔루아
-		NUT_CORN_WHISKEY = "", -- 너트 위스키
-        RUINCACAO_CREAM_LIQUEUR = "", --베일리스 카카오 크림 리큐르
-        RUMCHATA = "", -- 럼차타(럼에 오우차타 라는 유제품 섞은)
+		BERRY_GIN = "안 달콤한 화르륵 마시는거", --진
+		GLOWBERRY_GIN = "빛나는 화르륵 마시는거", --글로우 베리 진
+		ABSINTHE = "초록색 화르륵 마실거", -- 압생트
+		TEA_LUMPY_VODKA = "멋쟁이 들어갔어", -- 보드카
+		PETALS_BERRY_BRANDY = "알록달록", -- 장미향 브랜디
+		KAHLUA = "진한 검은 화르륵 마실거", -- 커피 리큐르 깔루아
+		NUT_CORN_WHISKEY = "고소한 향나", -- 너트 위스키
+        RUINCACAO_CREAM_LIQUEUR = "고소해", --베일리스 카카오 크림 리큐르
+        RUMCHATA = "고소하고 기운나", -- 럼차타(럼에 오우차타 라는 유제품 섞은)
 
 		--콜라보 증류주
 
 		MOONWAY = "알록달록 그대로", -- 무지개 해파리주 증류주
-		ARRACK = "", -- 아락 인도네시아 버전 코코넛 와인 증류주
-		CHERRY_BLOOM_RUM = "", -- 체리 꿀주 증류주 벛꽃잎 떠다
-		RICE_SPIRITS = "", --청주
-		WHEAT_WHISKEY = "", -- 밀 위스크
-		PALE_WHISKEY = "", -- 페일 몰트 위스키
+		ARRACK = "탱글 없는 화르륵 마시는거", -- 아락 인도네시아 버전 코코넛 와인 증류주
+		CHERRY_BLOOM_RUM = "화르륵 마시는거", -- 체리 꿀주 증류주 벛꽃잎 떠다
+		RICE_SPIRITS = "엄청 투명해!", --청주
+		WHEAT_WHISKEY = "이쁜 씨앗 화르륵 마시는거", -- 밀 위스크
+		PALE_WHISKEY = "동그란 열매 화르륵 마시는거", -- 페일 몰트 위스키
 
 		--왈리 전용 콜라보 증류주
 
-		NUT_COCONUT_BRANDY = "", -- 코코넛 브랜디 (캐러비안 럼을 만들수 없어서 카리브 브랜디 라는 이름으로 대체)
-	    GIANT_BLUEBERRY_GIN = "", -- 붐 베리 사파이어 (당근 폭발함)
+		NUT_COCONUT_BRANDY = "투명해", -- 코코넛 브랜디 (캐러비안 럼을 만들수 없어서 카리브 브랜디 라는 이름으로 대체)
+	    GIANT_BLUEBERRY_GIN = "화르륵 마시는거 펑펑!", -- 붐 베리 사파이어 (당근 폭발함)
 
 		--냄비 요리
 

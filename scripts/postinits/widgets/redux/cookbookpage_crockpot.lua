@@ -5,6 +5,7 @@ local UIAnim = require "widgets/uianim"
 local Text = require "widgets/text"
 local Grid = require "widgets/grid"
 local Spinner = require "widgets/spinner"
+local modlist = require("utils/water_modlist").active_mod_compatibility
 
 local TEMPLATES = require "widgets/redux/templates"
 local TEMPLATES_WATER = require "widgets/redux/templates_water"
@@ -102,36 +103,49 @@ function CookbookPageCrockPot:PopulateRecipeDetailPanel(data, ...)
 
 	local y = ((((( top - 11 ) - name_font_size/2 ) - name_font_size/2 - 4 ) - 30) - image_size/2 ) - image_size/2
 
+	local has_details = false
+
+	if modlist.legion and _G.CONFIGS_LEGION.BETTERCOOKBOOK then
+		local cookbookui_legion = require "modcompats/1392778117/cookbookui_legion"
+		data.recipe_def.custom_cookbook_details_fn = function(data, self, top, left)
+			local root = cookbookui_legion(data, self, top, left)
+			return root
+		end
+		has_details = true
+	end
+
 	local old_data = _PopulateRecipeDetailPanel(self, data,  ...)
 
-	if data.unlocked and data.has_eaten then
-		local details_x = 60
-		local details_y = y + 85
-		local status_scale = 0.5
+	if not has_details then
+		if data.unlocked and data.has_eaten then
+			local details_x = 60
+			local details_y = y + 85
+			local status_scale = 0.5
 
-		local health = data.recipe_def.health ~= nil and math.floor(10*data.recipe_def.health)/10 or nil
-		local hunger = data.recipe_def.hunger ~= nil and math.floor(10*data.recipe_def.hunger)/10 or nil
-		local sanity = data.recipe_def.sanity ~= nil and math.floor(10*data.recipe_def.sanity)/10 or nil
-		local thirst = data.recipe_def.thirst ~= nil and math.floor(10*data.recipe_def.thirst)/10 or 
-		ChackConstants(data.recipe_def.name) and math.floor(10*ChackConstants(data.recipe_def.name))/10 or
-		data.recipe_def.hunger and math.floor(10*Calchungerforthirst(data))/10  or nil
+			local health = data.recipe_def.health ~= nil and math.floor(10*data.recipe_def.health)/10 or nil
+			local hunger = data.recipe_def.hunger ~= nil and math.floor(10*data.recipe_def.hunger)/10 or nil
+			local sanity = data.recipe_def.sanity ~= nil and math.floor(10*data.recipe_def.sanity)/10 or nil
+			local thirst = data.recipe_def.thirst ~= nil and math.floor(10*data.recipe_def.thirst)/10 or 
+			ChackConstants(data.recipe_def.name) and math.floor(10*ChackConstants(data.recipe_def.name))/10 or
+			data.recipe_def.hunger and math.floor(10*Calchungerforthirst(data))/10  or nil
+			
+			self.health_status:SetPosition(details_x-60, details_y)
+			self.health_status.status_value:SetString(health or STRINGS.UI.COOKBOOK.STAT_UNKNOWN)
+			self.health_status:SetScale(status_scale)
 
-		self.health_status:SetPosition(details_x-60, details_y)
-		self.health_status.status_value:SetString(health or STRINGS.UI.COOKBOOK.STAT_UNKNOWN)
-		self.health_status:SetScale(status_scale)
+			self.hunger_status:SetPosition(details_x-20, details_y)
+			self.hunger_status.status_value:SetString(hunger or STRINGS.UI.COOKBOOK.STAT_UNKNOWN)
+			self.hunger_status:SetScale(status_scale)
 
-		self.hunger_status:SetPosition(details_x-20, details_y)
-		self.hunger_status.status_value:SetString(hunger or STRINGS.UI.COOKBOOK.STAT_UNKNOWN)
-		self.hunger_status:SetScale(status_scale)
+			self.thirst_status = old_data:AddChild(TEMPLATES_WATER.MakeUIStatusBadge((thirst ~= nil and thirst >= 0) and "thirst" or "thirst_bed"))
+			self.thirst_status:SetPosition(details_x+20, details_y)
+			self.thirst_status.status_value:SetString(thirst or STRINGS.UI.COOKBOOK.STAT_UNKNOWN)
+			self.thirst_status:SetScale(status_scale)
 
-		self.thirst_status = old_data:AddChild(TEMPLATES_WATER.MakeUIStatusBadge((thirst ~= nil and thirst >= 0) and "thirst" or "thirst_bed"))
-		self.thirst_status:SetPosition(details_x+20, details_y)
-		self.thirst_status.status_value:SetString(thirst or STRINGS.UI.COOKBOOK.STAT_UNKNOWN)
-		self.thirst_status:SetScale(status_scale)
-
-		self.sanity_status:SetPosition(details_x+60, details_y)
-		self.sanity_status.status_value:SetString(sanity or STRINGS.UI.COOKBOOK.STAT_UNKNOWN)
-		self.sanity_status:SetScale(status_scale)
+			self.sanity_status:SetPosition(details_x+60, details_y)
+			self.sanity_status.status_value:SetString(sanity or STRINGS.UI.COOKBOOK.STAT_UNKNOWN)
+			self.sanity_status:SetScale(status_scale)
+		end
 	end
 	return old_data
 end

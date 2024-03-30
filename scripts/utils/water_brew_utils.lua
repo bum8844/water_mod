@@ -4,18 +4,89 @@ function dummy(boilier, names, tags)
 	return false
 end
 
+local function blocking_thing_bloomfintuna(names ,tags)
+	return not (tags.egg or tags.boss or tags.poop or tags.elemental or tags.paper or tags.horn or tags.spotspice or tags.gears or tags.rabbit or tags.beanbug or tags.gummybug or tags.flour or tags.bread or tags.chocolate or tags.jellyfish)
+end
+
+local function blocking_thing_rainbowjellyfish(names ,tags)
+	return not (tags.meat or tags.egg or tags.boss or tags.poop or tags.elemental or tags.paper or tags.horn or tags.spotspice or tags.gears or tags.rabbit or tags.beanbug or tags.gummybug or tags.flour or tags.bread or tags.chocolate)
+end
+
+local function blocking_thing_pierrot_fish(names ,tags)
+	return not (tags.egg or tags.boss or tags.poop or tags.elemental or tags.paper or tags.horn or tags.spotspice or tags.gears or tags.rabbit or tags.beanbug or tags.gummybug or tags.flour or tags.bread or tags.chocolate or tags.jellyfish)
+end
+
+local function blocking_thing_coral_brain(names ,tags)
+	return not (tags.jellyfish or tags.fish or tags.egg or tags.boss or tags.poop or tags.elemental or tags.paper or tags.horn or tags.spotspice or tags.gears or tags.rabbit or tags.beanbug or tags.gummybug or tags.flour or tags.bread or tags.chocolate)
+end
+
+function onlybloomfintuna(names ,tags)
+	local bloomfintuna = names.oceanfish_small_7_inv or 0 -- 최대 4개
+
+	local totalblock = ( tags.meat or 0 ) + ( tags.fish or 0 ) 
+
+	local totalignore = math.max(0,(totalblock - (bloomfintuna)))
+
+	if blocking_thing_bloomfintuna(names ,tags) and totalignore <= 0 and bloomfintuna > 0 then
+		return bloomfintuna
+	end 
+	return false
+end
+
+function onlyrainbowjellyfish(names, tags)
+	local rainbowjellyfish = (names.rainbowjellyfish or 0) + (names.rainbowjellyfish_cooked or 0) + (names.rainbowjellyfish_dead or 0)
+
+	local totalblock = tags.fish or 0
+
+	local totalignore = math.max(0,(totalblock - rainbowjellyfish))
+
+	if blocking_thing_rainbowjellyfish(names ,tags) and totalignore <= 0 and rainbowjellyfish > 0 then
+		return rainbowjellyfish
+	end 
+	return false
+end
+
+function onlypierrot_fish(names ,tags)
+	local pierrot_fish = (names.pierrot_fish or 0) + (names.pondpierrot_fish or 0) + (names.pierrot_fish_cooked or 0) + (names.fish4 or 0) + (names.fish4_cooked or 0) 
+	local exrta_meat = pierrot_fish * 0.5
+
+	local total_ingredient = pierrot_fish + exrta_meat
+
+	local totalblock = ( tags.meat or 0 ) + ( tags.fish or 0 ) 
+
+	local totalignore = math.max(0,(totalblock - total_ingredient))
+
+	if blocking_thing_bloomfintuna(names ,tags) and totalignore <= 0 and pierrot_fish > 0 then
+		return pierrot_fish
+	end 
+	return false
+end
+
+function onlycoral_brain(names, tags)
+	local coral_brain = names.coral_brain or 0
+
+	local totalblock = tags.meat or 0
+
+	local totalignore = math.max(0,(totalblock - coral_brain))
+
+	if blocking_thing_coral_brain(names ,tags) and totalignore <= 0 then
+		return coral_brain
+	end 
+	return 0
+end
+
 function Preference(names, tags)
 	return ( (tags.sweetener or 0) + (tags.dairy or 0) + (tags.milk or 0) )
 end
 
 function Tea_Def(names, tags)
-	return (tags.decoration or 0) and ((tags.veggie or 0) <= 2) and ((tags.mushroom or 0) < 4) and not tags.fruit
+	return (math.max(0,((tags.veggie or 0) - (tags.decoration or 0))) <= 2) and ((tags.mushroom or 0) < 4) and not tags.fruit
 end
 
 --특정재료만 들어 갔는지 확인해주는 코드들
 
 function Mix_Tea_Patch(names, tags)
-	return tags.decoration and ((tags.veggie or 0) <= 2) and ((tags.mushroom or 0) < 4) and not tags.fruit
+	return tags.decoration and (math.max(0,((tags.veggie or 0) - (tags.decoration or 0))) <= 2) and ((tags.mushroom or 0) < 4) and not tags.fruit
 end
 
 function IsTealeaves(names, tags)
@@ -65,7 +136,7 @@ function IsTealeaves_dried(names, tags)
 end
 
 function IsFoliage(names, tags)
-	return names.foliage and 
+	return (names.foliage or names.kyno_foliage or names.kyno_foliage_cooked) and 
 	Preference(names, tags) and
 	Tea_Def(names, tags) and not 
 	( 
@@ -106,8 +177,7 @@ function IsFlower(names, tags)
 		names.lotus_flower or 
 		names.kyno_lotus_flower or 
 		names.succulent_picked or
-		tags.lotus or
-		tags.petals_legion
+		tags.lotus
 	)
 end
 
@@ -130,8 +200,12 @@ function IsFlower_Moon(names, tags)
 		names.lotus_flower or 
 		names.kyno_lotus_flower or 
 		names.succulent_picked or
-		tags.lotus or
-		tags.petals_legion
+		names.petals_rose or
+		names.petals_lily or
+		names.petals_orchid or
+		names.aip_veggie_sunflower or
+		names.myth_lotus_flower or
+		tags.lotus
 	)
 end
 
@@ -152,6 +226,11 @@ function IsFlower_Evil(names, tags)
 		names.lotus_flower or 
 		names.kyno_lotus_flower or 
 		names.succulent_picked or
+		names.petals_rose or
+		names.petals_lily or
+		names.petals_orchid or
+		names.aip_veggie_sunflower or
+		names.myth_lotus_flower or
 		tags.lotus or
 		tags.petals_legion
 	)
@@ -176,80 +255,13 @@ function IsFlower_Cactus(names, tags)
 		names.lotus_flower or 
 		names.kyno_lotus_flower or 
 		names.succulent_picked or
-		tags.lotus or
-		tags.petals_legion
+		names.petals_rose or
+		names.petals_lily or
+		names.petals_orchid or
+		names.aip_veggie_sunflower or
+		names.myth_lotus_flower or
+		tags.lotus
 	)
-end
-
-local function blocking_thing_bloomfintuna(names ,tags)
-	return not (tags.egg or tags.boss or tags.poop or tags.elemental or tags.paper or tags.horn or tags.spotspice or tags.gears or tags.rabbit or tags.beanbug or tags.gummybug or tags.flour or tags.bread or tags.chocolate or tags.jellyfish)
-end
-
-function onlybloomfintuna(names ,tags)
-	local bloomfintuna = names.oceanfish_small_7_inv or 0 -- 최대 4개
-
-	local totalblock = ( tags.meat or 0 ) + ( tags.fish or 0 ) 
-
-	local totalignore = math.max(0,(totalblock - (bloomfintuna)))
-
-	if blocking_thing_bloomfintuna(names ,tags) and totalignore <= 0 and bloomfintuna > 0 then
-		return bloomfintuna
-	end 
-	return false
-end
-
-local function blocking_thing_rainbowjellyfish(names ,tags)
-	return not (tags.meat or tags.egg or tags.boss or tags.poop or tags.elemental or tags.paper or tags.horn or tags.spotspice or tags.gears or tags.rabbit or tags.beanbug or tags.gummybug or tags.flour or tags.bread or tags.chocolate)
-end
-
-function onlyrainbowjellyfish(names, tags)
-	local rainbowjellyfish = names.rainbowjellyfish or 0
-	local rainbowjellyfish_dead = (names.rainbowjellyfish_cooked or 0) + (names.rainbowjellyfish_dead or 0)
-
-	local totalblock = tags.fish or 0
-
-	local totalignore = math.max(0,(totalblock - (rainbowjellyfish+rainbowjellyfish_dead)))
-
-	if blocking_thing_rainbowjellyfish(names ,tags) and totalignore <= 0 then
-		return 1
-	end 
-	return false
-end
-
-local function blocking_thing_pierrot_fish(names ,tags)
-	return not (tags.egg or tags.boss or tags.poop or tags.elemental or tags.paper or tags.horn or tags.spotspice or tags.gears or tags.rabbit or tags.beanbug or tags.gummybug or tags.flour or tags.bread or tags.chocolate or tags.jellyfish)
-end
-
-function onlypierrot_fish(names ,tags)
-	local pierrot_fish = (names.pierrot_fish or 0) + (names.pondpierrot_fish or 0) + (names.pierrot_fish_cooked or 0) + (names.fish4 or 0) + (names.fish4_cooked or 0) 
-
-	local exrta_meat = pierrot_fish * 0.5
-
-	local totalblock = ( tags.meat or 0 ) + ( tags.fish or 0 ) 
-
-	local totalignore = math.max(0,(totalblock - (pierrot_fish + exrta_meat)))
-
-	if blocking_thing_bloomfintuna(names ,tags) and totalignore <= 0 and pierrot_fish > 0 then
-		return pierrot_fish
-	end 
-	return false
-end
-
-local function blocking_thing_coral_brain(names ,tags)
-	return not (tags.jellyfish or tags.fish or tags.egg or tags.boss or tags.poop or tags.elemental or tags.paper or tags.horn or tags.spotspice or tags.gears or tags.rabbit or tags.beanbug or tags.gummybug or tags.flour or tags.bread or tags.chocolate)
-end
-
-function onlycoral_brain(names, tags)
-	local coral_brain = names.coral_brain or 0
-
-	local totalblock = tags.meat or 0
-
-	local totalignore = math.max(0,(totalblock - coral_brain))
-
-	if blocking_thing_coral_brain(names ,tags) and totalignore <= 0 then
-		return coral_brain
-	end 
-	return 0
 end
 
 function quantum_calc(names, tags)
@@ -257,7 +269,7 @@ function quantum_calc(names, tags)
 end
 
 function IsFlower_Lotus(names, tags)
-	return ( names.lotus_flower or names.kyno_lotus_flower or names.succulent_picked or tags.lotus or onlybloomfintuna(names ,tags)) and 
+	return ( names.lotus_flower or names.kyno_lotus_flower or names.myth_lotus_flower or names.succulent_picked or tags.lotus or onlybloomfintuna(names ,tags)) and 
 	Preference(names, tags) and
 	Tea_Def(names, tags) and not 
 	( 
@@ -272,6 +284,10 @@ function IsFlower_Lotus(names, tags)
 		names.petals_evil or 
 		names.firenettles or 
 		names.tillweed or
+		names.petals_rose or
+		names.petals_lily or
+		names.petals_orchid or
+		names.aip_veggie_sunflower or
 		names.cactus_flower
 	)
 end
@@ -446,3 +462,5 @@ function add_tech_count(inst, eater, num)
 		FxSpawn(eater)
 	end
 end
+
+return {notmeat = notmeat, give_tech = give_tech, add_tech_count = add_tech_count}

@@ -1,4 +1,5 @@
 require("tuning")
+local modlist = require("utils/water_modlist")
 
 local water_spicedfoods_mod = {}
 
@@ -81,20 +82,20 @@ function GenerateSpicedFoods_Water_mod(foods)
 end
 
 
-for k, mod_id in ipairs(KnownModIndex:GetModsToLoad()) do
-    if mod_id == "workshop-2431867642" then
-        GenerateSpicedFoods_Water_mod(require("bm_foodrecipes"))
-    end
-    if mod_id == "workshop-381565292" then
-        GenerateSpicedFoods_Water_mod(require("W101_menu"))
-        GenerateSpicedFoods_Water_mod(require("W101_shunted"))
-        GenerateSpicedFoods_Water_mod(require("W101_frozen"))
-        GenerateSpicedFoods_Water_mod(require("W101_mushrooms"))
-    end
-    if mod_id == "workshop-2334209327" then
-        GenerateSpicedFoods_Water_mod(require("hof_foodrecipes"))
-        GenerateSpicedFoods_Water_mod(require("hof_foodrecipes_warly"))
-    end
+if modlist.bm then
+    GenerateSpicedFoods_Water_mod(require("bm_foodrecipes"))
+end
+
+if modlist.w101 then
+    GenerateSpicedFoods_Water_mod(require("W101_menu"))
+    GenerateSpicedFoods_Water_mod(require("W101_shunted"))
+    GenerateSpicedFoods_Water_mod(require("W101_frozen"))
+    GenerateSpicedFoods_Water_mod(require("W101_mushrooms"))
+end
+
+if modlist.hof then
+     GenerateSpicedFoods_Water_mod(require("hof_foodrecipes"))
+     GenerateSpicedFoods_Water_mod(require("hof_foodrecipes_warly"))
 end
 
 return water_spicedfoods_mod

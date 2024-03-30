@@ -177,7 +177,6 @@ FOODTYPEGROUP =
 		"banana",
 		"strawberry",
 		"orange",
-		"cherry",
 		--hop
 		"kyno_banana",
 		--mfp
@@ -193,6 +192,13 @@ FOODTYPEGROUP =
 		"cherry_roseberries",
 		"cherry_gooseberries",
 		"cherryruins_swanapple",
+		--umc
+		"giant_blueberry",
+		"zaspberry",
+		"viperfruit",
+		--legion
+		"pineananas",
+		"squamousfruit"
 	},
 
 	TYPEFRUIT_HAS_HALVED = 
@@ -317,18 +323,10 @@ FOODTYPEGROUP =
 
 	NONE_HUNGER_INGREDIENT = 
 	{
-		TINYMICROSCOPIC = 
-		{
+		SUPERTINYMICROSCOPIC = {
 			"petals",
-			"petals_evil",
 			"foliage",
-			"butterflywings",
-			"kyno_sugarflywings",
-			"firenettles",
-			"tillweed",
-			"forgetmelots",
 			"lightbulb",
-			"succulent_picked",
 			--mod_ingredients
 			"petals_rose",
 			"petals_lily",
@@ -336,7 +334,18 @@ FOODTYPEGROUP =
 			--hop
 			"kyno_foliage",
 			"kyno_sugartree_petals",
-		}
+		},
+		TINYMICROSCOPIC = 
+		{
+			"petals_evil",
+			"butterflywings",
+			"firenettles",
+			"tillweed",
+			"forgetmelots",
+			"succulent_picked",	
+			--hop	
+			"kyno_sugarflywings",	
+		},
 	},
 
 	INGREDIENT_DRINKABLE = 
