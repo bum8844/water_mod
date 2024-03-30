@@ -50,7 +50,7 @@ local function GiveWater(inst, watertype, doer)
 
     doer.SoundEmitter:PlaySound(sound)
 
-    if old_val > peruse then
+    if old_val+1 > peruse then
         inst.components.finiteuses:Use(peruse)
         inst.components.wateringtool:SetCanCollectRainWater(false)
         SetTemperature(inst)
