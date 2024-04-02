@@ -24,7 +24,7 @@ end
 local function GiveWater(inst, watertype, doer)
     local container = doer ~= nil and (doer.components.inventory or doer.components.container) or nil
     local water = SpawnPrefab(watertype)
-    local old_val = inst.components.finiteuses:GetUses()
+    local old_val = inst.components.finiteuses:GetUses() + 1
     local current_fin = old_val
     local peruse = TUNING.BUCKET_LEVEL_PER_USE
     local sound = inst.components.wateringtool:IsFrozen() and "dontstarve_DLC001/common/iceboulder_smash" or "dontstarve/creatures/pengull/splash"
@@ -50,13 +50,9 @@ local function GiveWater(inst, watertype, doer)
 
     doer.SoundEmitter:PlaySound(sound)
 
-    if old_val+1 > peruse then
-        inst.components.finiteuses:Use(peruse)
-        inst.components.wateringtool:SetCanCollectRainWater(false)
-        SetTemperature(inst)
-    else
-        inst:Remove()
-    end
+    inst.components.finiteuses:Use(peruse)
+    inst.components.wateringtool:SetCanCollectRainWater(false)
+    SetTemperature(inst)
 end
 
 local function OnPickup(inst, doer)
@@ -181,6 +177,13 @@ local function MakeBucketItem(bucketname, multiplier, sound, nowood)
     local mult = multiplier ~= nil and multiplier or 1
     local steel = nowood or false
 
+    local function OnRemove(inst)
+        inst:DoTaskInTime(0,function()
+            inst:Remove()
+        end
+        )
+    end
+
     local function fn()
         local inst = CreateEntity()
 
@@ -227,6 +230,7 @@ local function MakeBucketItem(bucketname, multiplier, sound, nowood)
         inst.components.waterproofer:SetEffectiveness(TUNING.WATERPROOFNESS_SMALL*2)
 
         inst:AddComponent("finiteuses")
+        inst.components.finiteuses:SetOnFinished(OnRemove)
         inst.components.finiteuses:SetMaxUses(TUNING.BUCKET_MAX_LEVEL*mult)
         inst.components.finiteuses:SetUses(TUNING.BUCKET_MAX_LEVEL*mult)
 
