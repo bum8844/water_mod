@@ -277,7 +277,8 @@ local ui = Class(Widget, function(self,data,parent,top,left)
 	local include_desc = strs.unkonwn
 	local exclude_desc = strs.unkonwn
 	if recipes_count > 0 then
-		if recipes_count < data.recipe_def.recipe_count then --快要解锁了
+		local get_count = data.recipe_def.recipe_count or data.recipe_def.recipes_count -- for old cookpot recipes count....
+		if recipes_count < get_count then --快要解锁了
 			include_desc = strs.discovery
 			exclude_desc = strs.discovery
 		else
