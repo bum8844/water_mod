@@ -72,8 +72,10 @@ if GetModConfigData("enable_thirst") then
         inst.maxthirst = _G.net_ushortint(inst.GUID, "thirst.max", "thirstdirty")
         inst.isthirstpulseup = _G.net_bool(inst.GUID, "thirst.dodeltaovertime(up)", "thirstdirty")
         inst.isthirstpulsedown = _G.net_bool(inst.GUID, "thirst.dodeltaovertime(down)", "thirstdirty")
+        inst.temp_per_dry = _G.net_ushortint(inst.GUID, "thirst.temp_per_dry", "thirstdirty")
         inst.currentthirst:set(100)
         inst.maxthirst:set(100)
+        inst.temp_per_dry:set(1)
 
         inst:DoStaticTaskInTime(0, function(inst)
             if _G.TheWorld.ismastersim then
