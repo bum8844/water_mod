@@ -48,6 +48,21 @@ function Thirst:SetMax(max)
         self.classified:SetValue("maxthirst", max)
     end
 end
+function Thirst:SetTempPerDry(value)
+    if self.classified ~= nil then
+        self.classified:SetValue("temp_per_dry", value)
+    end
+end
+
+function Thirst:GetTempPerDry()
+    if self.inst.components.thirst ~= nil then
+        return self.inst.components.thirst:GetTempPerDry()
+    elseif self.classified ~= nil then
+        return self.classified.temp_per_dry:value()
+    else
+        return 1
+    end
+end
 
 function Thirst:Max()
     if self.inst.components.thirst ~= nil then
