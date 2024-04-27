@@ -117,7 +117,7 @@ function WateringTool:CollectRainWater(israining, isdrying, isload)
 
             self.targettime = rain_timer + GetTime()
 
-            print("물 채우는중")
+            --print("물 채우는중")
             self.wateringtooltask = self.inst:DoTaskInTime(rain_timer, OnDone, self, WATERTYPE.CLEAN)
         elseif ( self.targettime or loadtimer ) and not self.drying then
             local dry_timer = loadtimer and loadtimer or self.targettime - GetTime()
@@ -129,7 +129,7 @@ function WateringTool:CollectRainWater(israining, isdrying, isload)
             self.wateringtooltask = self.inst:DoTaskInTime(dry_timer, OnDone, self, nil)
 
             self.drying = true
-            print("물 마르는중")
+            --print("물 마르는중")
         end
 
         self:StopCheckWeatherTask()
@@ -152,7 +152,7 @@ function WateringTool:SetStates(state)
     local water = nil
     local isdryed = false
 
-    print(current_watertype)
+    --print(current_watertype)
 
     if current_watertype == WATERTYPE.CLEAN then
         timer = math.ceil(TUNING.PERISH_FAST/2)

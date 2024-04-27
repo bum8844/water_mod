@@ -21,7 +21,7 @@ function ThirstBadge:OnUpdate(dt)
 
     if self.owner ~= nil and self.owner.replica.thirst ~= nil and self.owner.replica.thirst:GetPercent() > 0 then
         local get_temp_per_dry = self.owner.replica.thirst:GetTempPerDry()
-        print(get_temp_per_dry)
+        --print(get_temp_per_dry)
         if self.owner:HasTag("sleeping") or (get_temp_per_dry > 1 and get_temp_per_dry < 4) then 
             anim = "arrow_loop_decrease"
         elseif get_temp_per_dry >= 4 then
