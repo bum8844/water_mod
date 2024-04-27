@@ -19,10 +19,11 @@ end
 
 local function tempcheck(self, inst)
     local tempcheck = self.inst.components.temperature:GetCurrent()
+    local iscave = TheWorld:HasTag("cave")
     local issummer = TheWorld.state.issummer
     local iswinter = TheWorld.state.iswinter
 
-    local c = issummer and (( tempcheck > TUNING.OVERHEAT_TEMP - 15 and 4 ) or ( tempcheck > TUNING.OVERHEAT_TEMP - 30 and 2 )) or
+    local c = not iscave and (issummer and (( tempcheck > TUNING.OVERHEAT_TEMP - 15 and 4 ) or ( tempcheck > TUNING.OVERHEAT_TEMP - 30 and 2 ))) or
            iswinter and (( tempcheck < 5 and 0.25 ) or ( tempcheck < 15 and 0.5 )) or 
            (tempcheck > TUNING.OVERHEAT_TEMP - 15 and 2) or (tempcheck < 5 and 0.5) or 1
 
