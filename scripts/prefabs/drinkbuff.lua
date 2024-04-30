@@ -345,8 +345,9 @@ local function OnDetached_alcohol(inst, target)
     end
     inst:Remove()
 end
+
 local function checkcharging(target)
-    return inst.components.upgrademoduleowner and inst.components.upgrademoduleowner:ChargeIsMaxed()
+    return target.components.upgrademoduleowner and target.components.upgrademoduleowner:ChargeIsMaxed()
 end
 
 local function OnExtended_alcohol(inst, target)
