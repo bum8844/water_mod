@@ -1,5 +1,5 @@
 name 						= "Don't Starve: Dehydrated"
-version 					= "Alpha 1.2.6b"
+version 					= "Alpha 1.2.6c"
 local info_version = "Version "..version.."\n"
 
 description = info_version..[[

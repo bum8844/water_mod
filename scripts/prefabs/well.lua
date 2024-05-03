@@ -16,7 +16,7 @@ local function OnSpawnIn(inst)
 end
 
 local function OnSpawnIn_Well(inst)
-	local lunacyarea = TheWorld.Map:IsInLunacyArea(inst.Transform:GetWorldPosition())
+	local lunacyarea = TheWorld.Map:FindVisualNodeAtPoint(inst.Transform:GetWorldPosition(), "lunacyarea") ~= nil
 	inst.components.wateringstructure.islunacy = lunacyarea
 end
 
