@@ -118,7 +118,8 @@ end
 local function OnSpawnIn(inst)
 	inst.entity:Show()
 
-	local lunacyarea = TheWorld.Map:IsInLunacyArea(inst.Transform:GetWorldPosition())
+	local x, y, z = inst.Transform:GetWorldPosition()
+	local lunacyarea = TheWorld.Map:FindVisualNodeAtPoint(x, y, z , "lunacyarea") ~= nil
 	inst.components.water:SetWaterType(lunacyarea and WATERTYPE.MINERAL or WATERTYPE.CLEAN)
 
 	if not inst.sg:HasStateTag("active") then

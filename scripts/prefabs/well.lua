@@ -17,9 +17,6 @@ end
 
 local function OnSpawnIn_Well(inst)
 	local x, y, z = inst.Transform:GetWorldPosition()
-	print("x : "..x)
-	print("y : "..y)
-	print("z : "..z)
 	local lunacyarea = TheWorld.Map:FindVisualNodeAtPoint(x, y, z , "lunacyarea") ~= nil
 	inst.components.wateringstructure.islunacy = lunacyarea
 end
