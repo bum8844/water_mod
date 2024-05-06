@@ -4,5 +4,6 @@ AddPrefabPostInit("wurt",function(inst)
 	end
 	if inst.components.foodaffinity ~= nil then
 		inst.components.foodaffinity:AddPrefabAffinity("veggie_tea", 1.93)
+		inst.components.foodaffinity:AddPrefabAffinity("seaweed_shake", 1.93)
 	end
 end)

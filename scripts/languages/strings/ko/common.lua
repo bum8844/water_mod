@@ -70,7 +70,7 @@ STRINGS.RECIPE_DESC.WX78MODULE_NONEDRUNK = "취할 틈도 없이 에탄올을 �
 
 -- boilbook
 STRINGS.NAMES.BOILBOOK = "음료책"
-STRINGS.RECIPE_DESC.BOILBOOK = "당신의 모든 음료재조법을 복습하세요." 
+STRINGS.RECIPE_DESC.BOILBOOK = "당신의 모든 음료제조법을 복습하세요." 
 
 -- well drilling
 STRINGS.NAMES.WELL_DRILLING ="우물 드릴"
