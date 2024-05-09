@@ -723,7 +723,7 @@ local function OnKilled(inst, data)
     local victim = data.victim
     if data ~= nil and victim ~= nil and victim:HasTag("butterfly") and victim:HasTag("pollinator") then
         if victim.components.lootdropper ~= nil then
-            victim.components.lootdropper:AddChanceLoot("butter", 0.5)
+            victim.components.lootdropper.randomloot[1].weight = 1.35
         end
     end
 end
