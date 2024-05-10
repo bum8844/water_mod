@@ -217,6 +217,7 @@ local function meterfn()
 	inst.entity:AddAnimState()
 	inst.entity:AddSoundEmitter()
     inst.entity:AddNetwork()
+    inst.entity:AddTag("overridetop")
 
     inst:AddTag("NOCLICK")
     inst:AddTag("NOBLOCK")
