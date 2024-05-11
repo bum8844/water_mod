@@ -22,8 +22,11 @@ local postinits =
 		"firepit",
 		"player",
 		"portablespicer",	
-		"staff",		
+		"staff",	
+		"warly",	
 		"wateringcan",
+		"wathgrithr",
+		"wurt",
 		"acorn",
 		"mosquitosack",
 		"wx78_modules",
@@ -68,17 +71,13 @@ local postinits =
 if GetModConfigData("enable_thirst") then
 
 	local prefabs = {
-		"hats",
-		"wathgrithr",
-		"wickerbottom",
-		"wortox",
-		"warly",
-		"wortox",
-		"woodie",
-		"wurt",
-		"wintersfeastbuff",
 		"armor_slurper",
+		"hats",
 		"slurper",
+		"wickerbottom",
+		"wintersfeastbuff",
+		"woodie",
+		"wortox",
 	}
 
 	local components = {
