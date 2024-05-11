@@ -723,7 +723,7 @@ local function OnKilled(inst, data)
     local victim = data.victim
     if data ~= nil and victim ~= nil and victim:HasTag("butterfly") and victim:HasTag("pollinator") then
         if victim.components.lootdropper ~= nil then
-            victim.components.lootdropper:AddChanceLoot("butter", 0.5)
+            victim.components.lootdropper.randomloot[1].weight = 1.35
         end
     end
 end
@@ -734,8 +734,8 @@ local function OnAttached_butterhunter(inst, target)
     if target.components.health ~= nil and
     not target.components.health:IsDead() and
     not target:HasTag("playerghost") then
-        inst:ListenForEvent("killed", OnKilled, target)
-        inst:AddTag("butterhunter")
+        target:ListenForEvent("killed", OnKilled, target)
+        target:AddTag("butterhunter")
     end
     inst:ListenForEvent("death", function()
         inst.components.debuff:Stop()
@@ -757,8 +757,8 @@ local function OnDetached_butterhunter(inst, target)
     if target.components.health ~= nil and
     not target.components.health:IsDead() and
     not target:HasTag("playerghost") then
-        inst:RemoveEventCallback("killed", OnKilled, target)
-        inst:RemoveTag("butterhunter")
+        target:RemoveEventCallback("killed", OnKilled, target)
+        target:RemoveTag("butterhunter")
     end
     inst:Remove()
 end

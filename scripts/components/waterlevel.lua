@@ -233,7 +233,7 @@ function Waterlevel:DoDiistiller(item, doer)
 end
 
 function Waterlevel:TakeWaterItem(item, doer)
-    if self.onlysamewater then
+    if self.onlysamewater and self.currentwater > 0 then
         if self.watertype ~= nil and self.watertype ~= item.components.water:GetWatertype() then
             return false
         end

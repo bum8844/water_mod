@@ -75,6 +75,10 @@ local function OnTakeWater(inst)
 	inst:DoTaskInTime(1,function() inst.SoundEmitter:PlaySound("dontstarve/common/wardrobe_close") end)
 end
 
+local function OnDeplete( ... )
+	-- body
+end
+
 local function OnTaken(inst, taker, water_amount)
 	inst.AnimState:PlayAnimation("get_water")
 	inst.AnimState:PushAnimation("idle")
@@ -141,6 +145,7 @@ local function fn()
 	inst:AddComponent("waterlevel")
 	inst.components.waterlevel.onlysamewater = true
 	inst.components.waterlevel:SetTakeWaterFn(OnTakeWater)
+	inst.components.waterlevel:SetDepletedFn(OnDeplete)
 	inst.components.waterlevel:SetCanAccepts({WATERTYPE.CLEAN, WATERTYPE.MINERAL})
 	inst.components.waterlevel.maxwater = TUNING.BARREL_MAX_LEVEL
 	inst.components.waterlevel:SetSections(TUNING.BREWERY_SECTIONS)

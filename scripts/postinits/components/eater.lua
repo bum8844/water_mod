@@ -28,7 +28,7 @@ AddComponentPostInit("eater", function(self)
 
 	if GetModConfigData("child_safety") then
 		function self:PrefersToEat(food, ...)
-			if food:HasTag("alcohol") and self.inst:HasTag("childplayer") then
+			if food:HasTag("alcohol") and self.inst.childplayer then
 				return false
 			end
 			return _PrefersToEat(self, food, ...)

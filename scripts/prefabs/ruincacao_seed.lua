@@ -23,7 +23,7 @@ local function on_hammered(inst, hammer, workleft, workdone)
         ["charcoal"] = 0,
     }
 
-    local butterhunter = hammer:HasTag("butterhunter") and 0.28 or 0
+    local butterhunter = hammer:HasTag("butterhunter") and 0.18 or 0
 
     local odds_bean = hammer:HasTag("butterhunter") and loot_data.BEAN_CHANCE/2 or loot_data.BEAN_CHANCE
     local odds_butter = odds_bean + (loot_data.BUTTER_CHACE + butterhunter)

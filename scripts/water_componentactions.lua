@@ -122,13 +122,23 @@ local SCENE =
 {
     wateringmachine = function(inst, doer, actions, right)
         if right and not inst:HasTag("cooldown") and
-                not inst:HasTag("fueldepleted") and
-                not (inst.replica.equippable ~= nil and
-                not inst.replica.equippable:IsEquipped() and
-                inst.replica.inventoryitem ~= nil and
-                inst.replica.inventoryitem:IsHeld()) and
-                not inst:HasTag("fullpressure") and
-                (inst:HasTag("haspipe") or inst:HasTag("hashole") or not inst:HasTag("recharg_pressure")) then
+            not inst:HasTag("fueldepleted") then
+            local inventoryitem = inst.replica.inventoryitem
+            local held = inventoryitem ~= nil and inventoryitem:IsHeld()
+            if inst:HasTag("groundonlymachine") and (held or (inst.components.floater ~= nil and inst.components.floater:IsFloating())) then
+                return
+            elseif held then
+                local equippable = inst.replica.equippable
+                if equippable ~= nil and not equippable:IsEquipped() then
+                    return
+                end
+            elseif inst:HasTag("well_waterpump") then 
+                if inst:HasTag("fullpressure") or inst:HasTag("recharg_pressure") then
+                    return
+                end
+            elseif not inst:HasTag("haspipe") and not inst:HasTag("hashole") then
+                return
+            end
             table.insert(actions, inst:HasTag("turnedon") and ACTIONS.TURNOFF or inst:HasTag("well_waterpump") and ACTIONS.TURNON or ACTIONS.TURNON_TILEARRIVE)
         end
     end,

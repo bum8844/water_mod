@@ -285,10 +285,6 @@ local function OnLoadPostPass(inst, newents, data)
         inst.pipes = {}
         inst.loadedPipesFromFile = false
 
-        if data.waterSpray ~= nil then
-            inst.waterSpray = newents[data.waterSpray].entity
-        end
-
         if data.pipes ~= nil then
             for i, pipeGUID in ipairs(data.pipes) do
                 local newpipe = newents[pipeGUID].entity
