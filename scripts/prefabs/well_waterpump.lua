@@ -138,6 +138,7 @@ local function fn()
     inst.entity:AddMiniMapEntity()
     inst.entity:AddNetwork()
     inst.entity:Hide()
+    inst.entity:AddTag("underlay")
 
 	local minimap = inst.entity:AddMiniMapEntity()
 	minimap:SetIcon("well_waterpump.tex")
@@ -162,6 +163,8 @@ local function fn()
     if not TheWorld.ismastersim then
         return inst
     end
+
+    inst:ListenForEvent("player_despawn", SetMeter)
 
     inst.AnimState:SetBank("well_waterpump")
     inst.AnimState:SetBuild("well_waterpump")
