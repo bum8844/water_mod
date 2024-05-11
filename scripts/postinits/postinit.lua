@@ -69,6 +69,7 @@ if GetModConfigData("enable_thirst") then
 
 	local prefabs = {
 		"hats",
+		"wathgrithr",
 		"wickerbottom",
 		"wortox",
 		"warly",
