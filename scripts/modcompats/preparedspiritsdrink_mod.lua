@@ -6,20 +6,20 @@ local sw_drink = {
 		test = function(boilier, names, tags) return names.aurobow and not tags.additives end,
 		priority = 1,
 		health = 0,
-		hunger = TUNING.CALORIES_MEDSMALL,
-		sanity = TUNING.SANITY_MED,
-		thirst = TUNING.HYDRATION_MED,
+		hunger = TUNING.CALORIES_LARGE, -- 28.125 + ☆9.375 = 37.5
+		sanity = (TUNING.SANITY_MED/2)*3, -- 22.5
+		thirst = TUNING.HYDRATION_MED, -- 30 [150] (600)
 		tags = {"alcohol","spirits","lightdrink"},
 		perishtime = TUNING.PERISH_SUPERSLOW,
 		secondaryfoodtype = FOODTYPE.MEAT,
 		potlevel = "high",
 		potlevel_bottle = "mid",
-		prefabs = { "alcoholdebuff","drunkarddebuff","immunebuff","wormlight_light" },
+		prefabs = { "alcoholdebuff","drunkarddebuff","immunebuff","wormlight_light_greater" },
 		cooktime = (TUNING.KETTLE_LUXURY_GOODS + TUNING.BEER_WAIT),
 		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_INTOXICATION_GLOW,
 		oneatenfn = function(inst, eater)
 			spirits(inst, eater)
-           	drink_worm_light_less(inst, eater)
+           	drink_worm_light_greater(inst, eater)
 	    end,
 	},
 }
@@ -28,12 +28,14 @@ local coconut_drink = {
 	arrack = {
 		test = function(boilier, names, tags) return (names.coconut_wine or names.wine_kokonut) and not tags.additives end,
 		priority = 1,
-		health = TUNING.HEALING_SMALL*2,
-		hunger = TUNING.CALORIES_MEDSMALL,
-		sanity = TUNING.SANITY_HUGE/2,
+		health = (TUNING.HEALING_SMALL)*3, -- 9
+		hunger = TUNING.CALORIES_LARGE, -- 28.125 + ☆9.375 = 37.5
+		sanity = (TUNING.SANITY_HUGE/4)*3, -- 37.5
 		thirst = TUNING.HYDRATION_MED,
 		tags = {"alcohol","spirits"},
 		perishtime = TUNING.PERISH_SUPERSLOW,
+		temperature = TUNING.COLD_FOOD_BONUS_TEMP, 
+		temperatureduration = TUNING.TOTAL_DAY_TIME/3, -- 2분 40초
 		cooktime = (TUNING.KETTLE_VEGGIE + TUNING.BEER_WAIT),
 		potlevel = "mid",
 		potlevel_bottle = "mid",
@@ -46,12 +48,14 @@ local coconut_drink = {
 	nut_coconut_brandy = {
 		test = function(boilier, names, tags) return (names.coconut_wine or names.wine_kokonut) and names.additive_nut end,
 		priority = 2,
-		health = TUNING.HEALING_SMALL*2,
-		hunger = TUNING.CALORIES_MEDSMALL,
-		sanity = TUNING.SANITY_HUGE/2,
+		health = (TUNING.HEALING_SMALL)*3, -- 9
+		hunger = TUNING.CALORIES_LARGE, -- 28.125 + ★9.375 = 37.5
+		sanity = (TUNING.SANITY_HUGE/4)*3 +(TUNING.SANITY_SMALL), -- 37.5 + ☆10 = 47.5
 		thirst = TUNING.HYDRATION_MED,
 		tags = {"alcohol","spirits"},
 		perishtime = TUNING.PERISH_SUPERSLOW,
+		temperature = TUNING.COLD_FOOD_BONUS_TEMP, 
+		temperatureduration = TUNING.TOTAL_DAY_TIME/3, -- 2분 40초
 		cooktime = (TUNING.KETTLE_VEGGIE + TUNING.BEER_WAIT),
 		potlevel = "mid",
 		potlevel_bottle = "mid",
@@ -59,6 +63,9 @@ local coconut_drink = {
 		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_INTOXICATION,
 		oneatenfn = function(inst, eater)
 			spirits(inst, eater)
+			if eater.components.moisture ~= nil then
+                eater.components.moisture:DoDelta(-25)
+            end
 		end,
 	},
 }
@@ -67,19 +74,20 @@ local cf_drink = {
 	cherry_bloom_rum = {
 		test = function(boilier, names, tags) return names.cherry_bloom_madhu and not tags.additives end,
 		priority = 1,
-        health = TUNING.HEALING_SMALL*5,
-        hunger = TUNING.CALORIES_MEDSMALL/2,
-        sanity = TUNING.SANITY_SMALL/3,
+        health = (TUNING.HEALING_MED/2)*3, -- 30
+        hunger = TUNING.CALORIES_TINY*3, -- 28.125
+        sanity = (TUNING.SANITY_SMALL/4)*3 + (TUNING.SANITY_SMALL), -- 7.5 + ☆10 = 17.5 
         thirst = TUNING.HYDRATION_SMALL,
 		tags = {"alcohol","honeyed","spirits"},
 		perishtime = TUNING.PERISH_PRESERVED,
 		cooktime = (TUNING.KETTLE_LUXURY_GOODS + TUNING.BEER_WAIT),
 		potlevel = "high",
 		potlevel_bottle = "mid",
-		prefabs = { "alcoholdebuff","drunkarddebuff","immunebuff","buff_bloomyhoney" },
+		prefabs = { "alcoholdebuff","drunkarddebuff","immunebuff","buff_bloomyhoney","healthregenbuff"},
 		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_INTOXICATION_CHERRY_TAFFY,
 		oneatenfn = function(inst, eater)
 			spirits(inst, eater)
+			eater:AddDebuff("healthregenbuff", "healthregenbuff")
 			if eater.components.health ~= nil and eater.components.hunger ~= nil and eater.components.debuffable ~= nil then
 				local poison = eater.components.debuffable:GetDebuff("cherry_beepoisonbuff")
 				if eater.components.hunger:GetPercent() <= TUNING.BLOOMYHONEY_HUNGERLIMIT then
@@ -108,9 +116,9 @@ local umc_drink = {
 	giant_blueberry_gin = {
 		test = function(boilier, names, tags) return names.giant_blueberry_wine and names.additive_seed end,
 		priority = 2,
-        health = 0,
-        hunger = TUNING.CALORIES_MED,
-        sanity = TUNING.SANITY_MEDLARGE,
+        health = (TUNING.HEALING_MEDLARGE/2) + (TUNING.HEALING_MED), -- 15 + ☆10 + ★10 = 25 
+        hunger = (TUNING.CALORIES_MED/2)*3, -- 37.5
+        sanity = TUNING.SANITY_SMALL*3, -- 30 
         thirst = TUNING.HYDRATION_MED,
 		tags = {"alcohol","spirits","explosive"},
 		perishtime = TUNING.PERISH_SUPERSLOW,
@@ -123,12 +131,13 @@ local umc_drink = {
 			spirits(inst, eater)
 		end,
 	},
+
 	rice_spirits = {
 		test = function(boilier, names, tags) return names.rice_wine and not tags.additives end,
 		priority = 2,
-        health = 0,
-        hunger = TUNING.CALORIES_MED,
-        sanity = TUNING.SANITY_MEDLARGE,
+        health = TUNING.HEALING_SMALL*6, -- 18
+		hunger = TUNING.CALORIES_LARGE, -- 28.125 +☆9.375 = 37.5
+		sanity = (TUNING.SANITY_MED/2)*3,-- 22.5
         thirst = TUNING.HYDRATION_MED,
 		tags = {"alcohol","spirits"},
 		perishtime = TUNING.PERISH_SUPERSLOW,
@@ -150,9 +159,9 @@ local wheat_drink = {
 	wheat_whiskey = {
 		test = function(boilier, names, tags) return (names.wheat_beer or names.beer) and not tags.additives end,
 		priority = 2,
-        health = TUNING.HEALING_SMALL*2,
-        hunger = TUNING.CALORIES_MED,
-        sanity = TUNING.SANITY_MEDLARGE,
+        health = TUNING.HEALING_SMALL*3, -- 9
+		hunger = TUNING.CALORIES_TINY*3 , -- 28.125
+		sanity = (TUNING.SANITY_HUGE/4)*3 + (TUNING.SANITY_SMALL), -- 37.5 + ☆10 = 47.5
         thirst = TUNING.HYDRATION_MED,
 		tags = {"alcohol","spirits"},
 		perishtime = TUNING.PERISH_SUPERSLOW,
@@ -171,9 +180,9 @@ local legion_drink = {
 	pale_whiskey = {
 		test = function(boilier, names, tags) return names.pale_beer and not tags.additives end,
 		priority = 2,
-        health = TUNING.HEALING_SMALL*2,
-        hunger = TUNING.CALORIES_MED,
-        sanity = TUNING.SANITY_MEDLARGE,
+        health = TUNING.HEALING_SMALL*3, -- 9
+		hunger = TUNING.CALORIES_TINY*3 , -- 28.125
+		sanity = (TUNING.SANITY_HUGE/4)*3 + (TUNING.SANITY_SMALL), -- 37.5 + ☆10 = 47.5
         thirst = TUNING.HYDRATION_MED,
 		tags = {"alcohol","spirits"},
 		perishtime = TUNING.PERISH_SUPERSLOW,
@@ -185,6 +194,9 @@ local legion_drink = {
 		oneatenfn = function(inst, eater)
 			spirits(inst, eater)
 			eater:AddDebuff("buff_moistureimmunity", "buff_moistureimmunity")
+			 if eater.components.moisture ~= nil then
+                eater.components.moisture:DoDelta(-100)
+            end
 		end,
 	}
 }

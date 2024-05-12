@@ -90,7 +90,7 @@ function Mix_Tea_Patch(names, tags)
 end
 
 function IsTealeaves(names, tags)
-	return names.tealeaves and 
+	return names.tealeaves and names.tealeaves >=2 and 
 	Preference(names, tags) and
 	Tea_Def(names, tags) and not 
 	( 
@@ -98,6 +98,7 @@ function IsTealeaves(names, tags)
 		names.kyno_piko_orange or 
 		names.piko_orange or 
 		names.foliage or
+		names.greenfoliage or
 		names.forgetmelots or
 		names.petals or
 		names.moon_tree_blossom or
@@ -114,12 +115,13 @@ function IsTealeaves(names, tags)
 end
 
 function IsTealeaves_dried(names, tags)
-	return ( names.tealeaves_dried or names.kyno_piko_orange or names.piko_orange ) and 
+	return ( names.tealeaves_dried or names.kyno_piko_orange or names.piko_orange ) and (names.tealeaves_dried or 0)+(names.kyno_piko_orange or 0)+(names.piko_orange or 0) >= 2 and 
 	Preference(names, tags) and
 	Tea_Def(names, tags) and not  
 	( 
 		names.tealeaves or
 		names.foliage or
+		names.greenfoliage or
 		names.forgetmelots or
 		names.petals or
 		names.moon_tree_blossom or
@@ -136,7 +138,7 @@ function IsTealeaves_dried(names, tags)
 end
 
 function IsFoliage(names, tags)
-	return (names.foliage or names.kyno_foliage or names.kyno_foliage_cooked) and 
+	return (names.foliage or names.kyno_foliage or names.kyno_foliage_cooked or names.greenfoliage) and ((names.foliage or 0)+(names.kyno_foliage or 0)+(names.kyno_foliage_cooked or 0)+(names.greenfoliage or 0)) >= 2 and
 	Preference(names, tags) and
 	Tea_Def(names, tags) and not 
 	( 
@@ -160,7 +162,7 @@ function IsFoliage(names, tags)
 end
 
 function IsFlower(names, tags)
-	return ( names.forgetmelots or names.petals or tags.petals_legion ) and 
+	return ( names.forgetmelots or names.petals or tags.petals_legion ) and (names.forgetmelots or 0)+(names.petals or 0)+(tags.petals_legion or 0) >= 2 and 
 	Preference(names, tags) and 
 	Tea_Def(names, tags) and not 
 	( 
@@ -170,6 +172,7 @@ function IsFlower(names, tags)
 		names.kyno_piko_orange or 
 		names.piko_orange or
 		names.foliage or
+		names.greenfoliage or
 		names.petals_evil or 
 		names.firenettles or 
 		names.tillweed or
@@ -182,7 +185,7 @@ function IsFlower(names, tags)
 end
 
 function IsFlower_Moon(names, tags)
-	return names.moon_tree_blossom and 
+	return names.moon_tree_blossom and names.moon_tree_blossom >= 2 and 
 	Preference(names, tags) and 
 	Tea_Def(names, tags) and not 
 	( 
@@ -193,6 +196,7 @@ function IsFlower_Moon(names, tags)
 		names.kyno_piko_orange or 
 		names.piko_orange or
 		names.foliage or
+		names.greenfoliage or
 		names.petals_evil or 
 		names.firenettles or 
 		names.tillweed or
@@ -210,7 +214,7 @@ function IsFlower_Moon(names, tags)
 end
 
 function IsFlower_Evil(names, tags)
-	return ( names.petals_evil or names.firenettles or names.tillweed ) and 
+	return ( names.petals_evil or names.firenettles or names.tillweed ) and (names.petals_evil or 0)+(names.firenettles or 0)+(names.tillweed or 0) >= 3 and
 	Preference(names, tags) and 
 	Tea_Def(names, tags) and not 
 	( 
@@ -219,6 +223,7 @@ function IsFlower_Evil(names, tags)
 		names.kyno_piko_orange or 
 		names.piko_orange or
 		names.foliage or
+		names.greenfoliage or
 		names.forgetmelots or 
 		names.petals or 
 		names.moon_tree_blossom or
@@ -237,7 +242,7 @@ function IsFlower_Evil(names, tags)
 end
 
 function IsFlower_Cactus(names, tags)
-	return names.cactus_flower and 
+	return names.cactus_flower and
 	Preference(names, tags) and
 	Tea_Def(names, tags) and not 
 	( 
@@ -246,6 +251,7 @@ function IsFlower_Cactus(names, tags)
 		names.kyno_piko_orange or 
 		names.piko_orange or
 		names.foliage or
+		names.greenfoliage or
 		names.forgetmelots or 
 		names.petals or 
 		names.moon_tree_blossom or
@@ -265,7 +271,20 @@ function IsFlower_Cactus(names, tags)
 end
 
 function quantum_calc(names, tags)
-	return ((names.wormlight or 0) + onlycoral_brain(names, tags)) == 1
+	return (names.wormlight or names.zaspberry or names.viperfruit or onlycoral_brain(names, tags)) and (names.wormlight or 0) + (names.zaspberry or 0) + (names.viperfruit or 0) + onlycoral_brain(names, tags) >= 1
+end
+
+function Root_calc(names, tags)
+	return (names.mandrake or names.cookedmandrake or names.carrot or names.carrot_cooked 
+		or names.potato or names.potato_cooked or names.sweet_potato or names.sweet_potato_cooked or names.kyno_sweetpotato or names.kyno_sweetpotato_cooked or names.mfp_sweetpotato or names.mfp_sweetpotato_cooked 
+        or names.radish or names.radish_cooked or names.mfp_radish or names.mfp_radish_cooked or names.kyno_radish or names.kyno_radish_cooked 
+        or names.parsnip or names.parsnip_cooked or names.mfp_parsnip or names.mfo_parsnip_cooked or names.kyno_parsnip or names.kyno_parsnip_cooked 
+        or names.turnip or names.turnip_cooked or names.mfp_turnip or names.mfp_turnip_cooked or names.kyno_turnip or names.kyno_turnip_cooked)
+		and (names.mandrake or 0)+(names.cookedmandrake or 0)+(names.carrot or 0)+(names.carrot_cooked or 0)
+		+(names.potato or 0)+(names.potato_cooked or 0)+(names.sweet_potato or 0)+(names.sweet_potato_cooked or 0)+(names.kyno_sweetpotato or 0)+(names.kyno_sweetpotato_cooked or 0)+(names.mfp_sweetpotato or 0)+(names.mfp_sweetpotato_cooked or 0)
+		+(names.radish or 0)+(names.radish_cooked or 0)+(names.mfp_radish or 0)+(names.mfp_radish_cooked or 0)+(names.kyno_radish or 0)+(names.kyno_radish_cooked or 0)
+		+(names.parsnip or 0)+(names.parsnip_cooked or 0)+(names.mfp_parsnip or 0)+(names.mfo_parsnip_cooked or 0)+(names.kyno_parsnip or 0)+(names.kyno_parsnip_cooked or 0)
+		+(names.turnip or 0)+(names.turnip_cooked or 0)+(names.mfp_turnip or 0)+(names.mfp_turnip_cooked or 0)+(names.kyno_turnip or 0)+(names.kyno_turnip_cooked or 0) >= 2
 end
 
 function IsFlower_Lotus(names, tags)
@@ -278,6 +297,7 @@ function IsFlower_Lotus(names, tags)
 		names.kyno_piko_orange or 
 		names.piko_orange or
 		names.foliage or
+		names.greenfoliage or
 		names.forgetmelots or 
 		names.petals or 
 		names.moon_tree_blossom or
@@ -392,6 +412,27 @@ function spirits(inst, eater)
 		eater:AddDebuff("alcoholdebuff", "alcoholdebuff")
 		eater:AddDebuff("drunkarddebuff", "drunkarddebuff")
 	end
+end
+
+function drink_worm_light_lesser(inst, eater)
+    if eater.wormlight ~= nil then
+	    if eater.wormlight.prefab == "wormlight_light_lesser" then
+	        eater.wormlight.components.spell.lifetime = 0
+	        eater.wormlight.components.spell:ResumeSpell()
+		    return
+        else
+    	    eater.wormlight.components.spell:OnFinish()
+	    end
+	end
+    local light = SpawnPrefab("wormlight_light_lesser")
+    light.components.spell:SetTarget(eater)
+    if light:IsValid() then
+        if light.components.spell.target == nil then
+	   		light:Remove()
+        else
+            light.components.spell:StartSpell()
+        end
+    end
 end
 
 function drink_worm_light_less(inst, eater)
