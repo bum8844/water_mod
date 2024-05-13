@@ -20,4 +20,6 @@ end
 if modlist.fwd then
 	modrequire("modcompats/3054476656/fwd_water_spicedfoods_mod")
 end
-
+if modlist.ef then
+	modrequire("modcompats/2938233879/emberfavor")
+end

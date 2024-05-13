@@ -2,12 +2,13 @@ require "utils/water_brew_utils"
 
 local drinks =
 {
-	--재료외 증류시 나올거(치료약으로 쓸예정 꿀반창고 보다 좀더 좋은 채력 회복재)
+	--재료외 증류시 나올거(치료약으로 쓸예정 꿀반창고 보다 좀더 좋은 력 회복재)
+	-- ☆은 증류보너스 ★은 첨가제 보너스
 	disinfectant =
 	{
 		test = function(boilier, names, tags) return true end,
 		priority = -2,
-		health = TUNING.HEALING_HUGE,
+		health = TUNING.HEALING_HUGE, -- 60
 		hunger = 0,
 		sanity = 0,
 		thirst = 0,
@@ -25,12 +26,12 @@ local drinks =
 	{
 		test = function(boilier, names, tags) return names.corn_beer and not tags.additives end,
 		priority = 1,
-		health = TUNING.HEALING_SMALL,
-		hunger = TUNING.CALORIES_MEDSMALL,
-		sanity = TUNING.SANITY_SMALL/2,
-		thirst = TUNING.HYDRATION_MED,
+		health = TUNING.HEALING_SMALL*3, -- 9
+		hunger = TUNING.CALORIES_TINY*3, -- 28.125
+		sanity = TUNING.SANITY_SMALL, -- ☆10
+		thirst = TUNING.HYDRATION_MED, -- 30 
 		tags = {"alcohol","spirits"},
-		perishtime = TUNING.PERISH_SUPERSLOW,
+		perishtime = TUNING.PERISH_SUPERSLOW, -- 40일
 		cooktime = (TUNING.KETTLE_VEGGIE + TUNING.BEER_WAIT),
 		potlevel = "mid",
 		potlevel_bottle = "mid",
@@ -44,15 +45,15 @@ local drinks =
 	lumpy_vodka = {
 		test = function(boilier, names, tags) return names.lumpy_wine and not tags.additives end,
 		priority = 1,
-		health = 0,
-		hunger = TUNING.CALORIES_MEDSMALL,
-		sanity = TUNING.SANITY_MED,
-		thirst = TUNING.HYDRATION_MED,
+		health = TUNING.HEALING_SMALL*3, -- 9
+		hunger = (TUNING.CALORIES_HUGE/10)*3 + (TUNING.CALORIES_TINY), -- 22.5 + ☆10 = 32.5
+		sanity = 0,
+		thirst = TUNING.HYDRATION_MED, -- 30
 		tags = {"alcohol","spirits"},
 		perishtime = TUNING.PERISH_SUPERSLOW,
 		cooktime = (TUNING.KETTLE_VEGGIE + TUNING.BEER_WAIT),
 		temperature = TUNING.HOT_FOOD_BONUS_TEMP,
-		temperatureduration = TUNING.FOOD_TEMP_LONG,
+		temperatureduration = TUNING.TOTAL_DAY_TIME/3, -- 2분 40초
 		potlevel = "mid",
 		potlevel_bottle = "mid",
 		prefabs = { "alcoholdebuff","drunkarddebuff","immunebuff" },
@@ -65,15 +66,15 @@ local drinks =
 	tequila = {
 		test = function(boilier, names, tags) return names.pulque and not tags.additives end,
 		priority = 1,
-		health = 0,
-		hunger = TUNING.CALORIES_MEDSMALL,
-		sanity = TUNING.SANITY_MED,
-		thirst = TUNING.HYDRATION_MED,
+		health = (TUNING.HEALING_TINY*5)*3 + (TUNING.HEALING_MED/2), -- 15 + ☆10 = 25
+		hunger = TUNING.CALORIES_MEDSMALL, -- 18.75
+		sanity = TUNING.SANITY_MED*2, -- 30
+		thirst = TUNING.HYDRATION_MED, -- 30
 		tags = {"alcohol","spirits"},
-		perishtime = TUNING.PERISH_SUPERSLOW,
+		perishtime = TUNING.PERISH_SUPERSLOW, --40일
 		cooktime = (TUNING.KETTLE_VEGGIE + TUNING.BEER_WAIT),
 		temperature = TUNING.COLD_FOOD_BONUS_TEMP,
-		temperatureduration = TUNING.FOOD_TEMP_LONG,
+		temperatureduration = TUNING.TOTAL_DAY_TIME/3, --2분 40초
 		potlevel = "mid",
 		potlevel_bottle = "mid",
 		prefabs = { "alcoholdebuff","drunkarddebuff","immunebuff" },
@@ -87,10 +88,10 @@ local drinks =
 	{
 		test = function(boilier, names, tags) return (names.madhu or names.mead) and not tags.additives end,
 		priority = 1,
-		health = TUNING.HEALING_MEDSMALL*3,
-		hunger = TUNING.CALORIES_MEDSMALL,
-		sanity = TUNING.SANITY_SMALL/2,
-		thirst = TUNING.HYDRATION_MED,
+		health = (TUNING.HEALING_SMALL*3)*3 + (TUNING.HEALING_MED/2), -- 27 + ☆10 = 37
+		hunger = (TUNING.CALORIES_HUGE/10)*3, -- 22.5
+		sanity = (TUNING.SANITY_SMALL/4)*3, --7.5
+		thirst = TUNING.HYDRATION_MED, -- 30
 		tags = {"alcohol","spirits","honeyed"},
 		perishtime = TUNING.PERISH_SUPERSLOW,
 		cooktime = (TUNING.KETTLE_VEGGIE + TUNING.BEER_WAIT),
@@ -107,10 +108,10 @@ local drinks =
 	{
 		test = function(boilier, names, tags) return (names.wine or names.noblewine or names.wine_berries_juicy or names.wine_berries) and not tags.additives end,
 		priority = 1,
-		health = 0,
-		hunger = TUNING.CALORIES_MEDSMALL,
-		sanity = TUNING.SANITY_SMALL,
-		thirst = TUNING.HYDRATION_MED,
+		health = (TUNING.HEALING_SMALL*6)*3, -- 18
+		hunger = TUNING.DRINK_CALORIES*3, -- 15
+		sanity = (TUNING.SANITY_SMALL/2)*3 + (TUNING.SANITY_SMALL), -- 22 + ☆10 = 32
+		thirst = TUNING.HYDRATION_MED, -- 30 
 		tags = {"alcohol","spirits"},
 		perishtime = TUNING.PERISH_SUPERSLOW,
 		cooktime = (TUNING.KETTLE_FRUIT + TUNING.BEER_WAIT),
@@ -126,10 +127,10 @@ local drinks =
 	berry_gin = {
 		test = function(boilier, names, tags) return names.sparklingwine and names.additive_seed end,
 		priority = 2,
-		health = TUNING.HEALING_SMALL*2,
-		hunger = TUNING.CALORIES_MEDSMALL,
-		sanity = TUNING.SANITY_HUGE/2,
-		thirst = TUNING.HYDRATION_MED,
+		health = (TUNING.HEALING_MEDSMALL*3) + (TUNING.HEALING_MED), -- 24 + ☆10 + ★10 = 44
+		hunger = TUNING.DRINK_CALORIES*3, -- 15
+		sanity = (TUNING.SANITY_HUGE/4)*3, -- 37.5
+		thirst = TUNING.HYDRATION_MED, -- 30
 		tags = {"alcohol","spirits"},
 		perishtime = TUNING.PERISH_SUPERSLOW,
 		cooktime = (TUNING.KETTLE_FRUIT + TUNING.BEER_WAIT),
@@ -146,30 +147,30 @@ local drinks =
 	{
 		test = function(boilier, names, tags) return (names.glowberrywine or names.wine_glowberry) and names.additive_seed end,
 		priority = 2,
-		health = 0,
-		hunger = TUNING.CALORIES_MEDSMALL,
-		sanity = TUNING.SANITY_MED,
-		thirst = TUNING.HYDRATION_MED,
+		health = (TUNING.HEALING_SMALL)*3 + (TUNING.HEALING_MED), -- 9 + ☆10 + ★10 = 29
+		hunger = TUNING.DRINK_CALORIES*3, -- 15
+		sanity = (TUNING.SANITY_MED/2)*3, -- 22.5 
+		thirst = TUNING.HYDRATION_MED, -- 30 
 		tags = {"alcohol","spirits","lightdrink"},
 		perishtime = TUNING.PERISH_SUPERSLOW,
 		potlevel = "mid",
 		potlevel_bottle = "mid",
-		prefabs = { "alcoholdebuff","drunkarddebuff","immunebuff","wormlight_light" },
+		prefabs = { "alcoholdebuff","drunkarddebuff","immunebuff","wormlight_light_greater" },
 		cooktime = (TUNING.KETTLE_FRUIT + TUNING.BEER_WAIT),
 		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_INTOXICATION_GLOW,
 		oneatenfn = function(inst, eater)
 			spirits(inst, eater)
-           	drink_worm_light_less(inst, eater)
+           	drink_worm_light_greater(inst, eater)
 	    end,
 	},
 	-- 우유 증류주
 	areuhi = {
 		test = function(boilier, names, tags) return names.kumis and not tags.additives end,
 		priority = 1,
-		health = TUNING.HEALING_MEDSMALL,
-		hunger = TUNING.CALORIES_MEDSMALL,
-		sanity = TUNING.SANITY_MED,
-		thirst = TUNING.HYDRATION_MED,
+		health = (TUNING.HEALING_SMALL*12), -- 36
+		hunger = (TUNING.CALORIES_MEDSMALL) + (TUNING.CALORIES_TINY), -- 18.75 + ☆9.375 = 28.125
+		sanity = (TUNING.SANITY_MED/2)*3, -- 22.5
+		thirst = TUNING.HYDRATION_MED, -- 30
 		tags = {"alcohol","spirits"},
 		perishtime = TUNING.PERISH_SUPERSLOW,
 		cooktime = (TUNING.KETTLE_VEGGIE + TUNING.BEER_WAIT),
@@ -186,10 +187,10 @@ local drinks =
 	ruincacao_cream_liqueur = {
 		test = function(boilier, names, tags) return names.ruincacao_wine and names.additive_dairy end,
 		priority = 2,
-        health = TUNING.HEALING_MED/2,
-        hunger = TUNING.CALORIES_MEDSMALL,
-        sanity = 0,
-		thirst = TUNING.HYDRATION_MED,
+        health = ((TUNING.HEALING_MED/5)*3) + (TUNING.HEALING_MED), -- 12 + ★20 = 32
+        hunger = (TUNING.DRINK_CALORIES*3)  + (TUNING.CALORIES_MEDSMALL), -- 15 + ★18.75 = 33.75
+        sanity = TUNING.SANITY_SMALL, -- ☆10
+        thirst = TUNING.HYDRATION_MED, -- 30
 		tags = {"alcohol","spirits"},
 		perishtime = TUNING.PERISH_SUPERSLOW,
 		cooktime = (TUNING.KETTLE_VEGGIE + TUNING.BEER_WAIT),
@@ -199,17 +200,17 @@ local drinks =
 		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_INTOXICATION_ANCIENT_KNOWLEGEE_THIRD,
 		oneatenfn = function(inst, eater)
 			spirits(inst, eater)
-			give_tech(inst, eater, 4, 2)
+			give_tech(inst, eater, 4, 3)
 		end,
 	},
 	-- 커피 + 꿀술
 	kahlua = {
 		test = function(boilier, names, tags) return (names.madhu or names.mead) and names.additive_nut end,
 		priority = 2,
-		health = TUNING.HEALING_MEDSMALL*3,
-		hunger = TUNING.CALORIES_MEDSMALL,
-		sanity = TUNING.SANITY_SMALL/2,
-		thirst = TUNING.HYDRATION_MED,
+		health = (TUNING.HEALING_SMALL*3) + (TUNING.HEALING_MED/2) , -- 27 + ☆10 = 37
+		hunger = (TUNING.CALORIES_HUGE/10)*3 + (TUNING.CALORIES_TINY), -- 22.5 + ★9.375 = 31.875
+		sanity = (TUNING.SANITY_SMALL/4)*3, --7.5
+		thirst = TUNING.HYDRATION_MED, --30 
 		tags = {"alcohol","spirits","honeyed"},
 		perishtime = TUNING.PERISH_SUPERSLOW,
 		cooktime = (TUNING.KETTLE_VEGGIE + TUNING.BEER_WAIT),
@@ -219,7 +220,7 @@ local drinks =
 		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_INTOXICATION_CAFFINE,
 		oneatenfn = function(inst, eater)
 			spirits(inst, eater)
-			eater.caffeinbuff_duration = TUNING.CAFFEIN_TIME * 2
+			eater.caffeinbuff_duration = TUNING.CAFFEIN_TIME * 3
 			eater:AddDebuff("caffeinbuff", "caffeinbuff")
 		end,
 	},
@@ -227,9 +228,9 @@ local drinks =
 		test = function(boilier, names, tags) return names.lumpy_wine and names.additive_petals end,
 		priority = 2,
 		health = 0,
-		hunger = TUNING.CALORIES_MEDSMALL,
-		sanity = TUNING.SANITY_MED,
-		thirst = TUNING.HYDRATION_MED,
+		hunger = (TUNING.CALORIES_HUGE/10)*3, -- 21.5
+		sanity = TUNING.SANITY_MEDLARGE, -- ☆10 + ★10 = 20
+		thirst = TUNING.HYDRATION_MED, -- 30
 		tags = {"alcohol","spirits",},
 		perishtime = TUNING.PERISH_SUPERSLOW,
 		cooktime = (TUNING.KETTLE_VEGGIE + TUNING.BEER_WAIT),
@@ -239,15 +240,17 @@ local drinks =
 		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_INTOXICATION,
 		oneatenfn = function(inst, eater)
 			spirits(inst, eater)
+			eater:AddDebuff("sweettea_buff", "sweettea_buff")
 		end,
 	},
+
 	absinthe = {
 		test = function(boilier, names, tags) return (names.wine or names.noblewine or names.wine_berries_juicy or names.wine_berries) and names.additive_seed end,
 		priority = 2,
-		health = 0,
-		hunger = TUNING.CALORIES_MEDSMALL,
-		sanity = TUNING.SANITY_SMALL,
-		thirst = TUNING.HYDRATION_MED,
+		health = (TUNING.HEALING_SMALL*2)*3 + (TUNING.HEALING_MED), -- 18 +☆10 +★10 =38
+		hunger = TUNING.DRINK_CALORIES*3, -- 15,
+		sanity = (TUNING.SANITY_MED/2)*3, -- 22.5
+		thirst = TUNING.HYDRATION_MED, -- 30
 		tags = {"alcohol","spirits"},
 		perishtime = TUNING.PERISH_SUPERSLOW,
 		cooktime = (TUNING.KETTLE_FRUIT + TUNING.BEER_WAIT),
@@ -259,13 +262,14 @@ local drinks =
 			spirits(inst, eater)
 		end,
 	},
+
 	petals_berry_brandy = {
 		test = function(boilier, names, tags) return (names.wine or names.noblewine or names.wine_berries_juicy or names.wine_berries) and names.additive_petals end,
 		priority = 2,
-		health = 0,
-		hunger = TUNING.CALORIES_MEDSMALL,
-		sanity = TUNING.SANITY_SMALL,
-		thirst = TUNING.HYDRATION_MED,
+		health = (TUNING.HEALING_SMALL*2)*3, -- 18
+		hunger = TUNING.DRINK_CALORIES*3, -- 15,
+		sanity = (TUNING.SANITY_MED/2)*3 + (TUNING.SANITY_SMALL)*2, -- 22.5 + +☆10 +★10 = 42.5
+		thirst = TUNING.HYDRATION_MED, -- 30
 		tags = {"alcohol","spirits"},
 		perishtime = TUNING.PERISH_SUPERSLOW,
 		cooktime = (TUNING.KETTLE_FRUIT + TUNING.BEER_WAIT),
@@ -280,10 +284,10 @@ local drinks =
 	nut_corn_whiskey = {
 		test = function(boilier, names, tags) return names.corn_beer and names.additive_nut end,
 		priority = 1,
-		health = TUNING.HEALING_SMALL,
-		hunger = TUNING.CALORIES_MEDSMALL,
-		sanity = TUNING.SANITY_SMALL/2,
-		thirst = TUNING.HYDRATION_MED,
+		health = 0,
+		hunger = (TUNING.CALORIES_TINY*3) + (TUNING.CALORIES_TINY), -- 28.125 + ★9.375 = 37.5
+		sanity = TUNING.SANITY_SMALL, -- ☆10
+		thirst = TUNING.HYDRATION_MED, -- 30
 		tags = {"alcohol","spirits"},
 		perishtime = TUNING.PERISH_SUPERSLOW,
 		cooktime = (TUNING.KETTLE_VEGGIE + TUNING.BEER_WAIT),
@@ -298,10 +302,10 @@ local drinks =
 	rumchata = {
 		test = function(boilier, names, tags) return (names.madhu or names.mead) and names.additive_dairy end,
 		priority = 2,
-		health = TUNING.HEALING_MEDSMALL*3,
-		hunger = TUNING.CALORIES_MEDSMALL,
-		sanity = TUNING.SANITY_SMALL/2,
-		thirst = TUNING.HYDRATION_MED,
+		health = (TUNING.HEALING_SMALL*3)*3 + (TUNING.HEALING_MED/2)*3 , -- 27 +☆10 +★20 = 57
+		hunger = (TUNING.CALORIES_HUGE/10)*3 + (TUNING.CALORIES_MEDSMALL), -- 22.5 + ★18.75 = 41.25
+		sanity = (TUNING.SANITY_SMALL/4)*3,
+		thirst = TUNING.HYDRATION_MED, -- 30
 		tags = {"alcohol","spirits","honeyed"},
 		perishtime = TUNING.PERISH_SUPERSLOW,
 		cooktime = (TUNING.KETTLE_VEGGIE + TUNING.BEER_WAIT),
