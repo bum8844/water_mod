@@ -77,7 +77,7 @@ function Brewing:Harvest(harvester, ...)
 end
 
 ENV.AddPrefabPostInit("portablekettle", function(inst)
-	if not GLOBAL.TheWorld.ismastersim then
+	if not TheWorld.ismastersim then
 		return
 	end
 	
