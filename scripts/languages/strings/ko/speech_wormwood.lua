@@ -14,7 +14,7 @@ return {
 	ANNOUNCE_NOTCHARGE = "꼬불가지친구 준비 안됬어", --번개염소가 충전이 안되서 양동이로 젖을 짤수 없음
 	ANNOUNCE_NOTHIRSTSLEEP = "너무 목말라", -- 목이 마른데 밤에 잘려고 시도
 	ANNOUNCE_NOTHIRSTSIESTA = "너무 목말라", -- 목이 마른데 낮에 잘려고 시도
-	ANNOUNCE_SLEEP_END = "", --자고 일어나서 술에서 완전히 깸 
+	ANNOUNCE_SLEEP_END = "이제 괜찮아", --자고 일어나서 술에서 완전히 깸 
 	ANNOUNCE_THIRST = "마실거 필요해", --너무 목말라!
 
     ANNOUNCE_CAFFINE_BUFF_START = "뭉실뭉실 가벼워", -- 카페인 버프 시작
@@ -72,7 +72,7 @@ return {
 
 		ADDITIVE_SEED = "애기들 들어있어", -- 리큐르에 제조에 첨가 할 씨허브(아니스,쥬니퍼베리,팔각 모티브)첨가제 
 		ADDITIVE_PETALS = "예쁜것들 들어있어", -- 리큐르에 제조에 첨가 할 허브,녹차,꽃잎 첨가제
-		ADDITIVE_NUT = "먹을 것들 들어있어", -- 리큐르에 제조에 첨가 할 버치넛,코코넛,커피콩,카카오콩 첨가제
+		ADDITIVE_NUT = "먹을것들 들어있어", -- 리큐르에 제조에 첨가 할 버치넛,코코넛,커피콩,카카오콩 첨가제
 		ADDITIVE_DAIRY = "흐으음?", -- 리큐르에 제조에 첨가할 유제품 첨가제
 
 		-- 음료
@@ -173,7 +173,7 @@ return {
 		--콜라보 양조주
 
 		AUROBOW = "알록달록해!", -- 난파선 오로보우,무지개 해파리주
-		COCONUT_WINE = "탱글탱글 한 거 없어", -- 난파선 코코넛 와인
+		COCONUT_WINE = "탱글탱글한거 없어", -- 난파선 코코넛 와인
 		CHERRY_BLOOM_MADHU = "예쁜 꽃잎 둥둥", -- 체리숲 벚꽃꿀주
 		GIANT_BLUEBERRY_WINE = "펑 열매 발효된거", -- 비타협 붐!베리 사파이어(불 붙히면 폭발함)
 		RICE_WINE = "안 달아...", -- 비타협 막걸리

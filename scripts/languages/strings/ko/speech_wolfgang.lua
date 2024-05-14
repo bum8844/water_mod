@@ -10,7 +10,7 @@ return {
 
 	ANNOUNCE_DRUNK = "으으, 볼프강 술보다 약하다...", -- 취함
 	ANNOUNCE_DRUNK_END = "볼프강 좀 나아진것 같다.", --술에서 좀 깸 (그로기)
-	ANNOUNCE_DRUNK_IMMUNITY = "하! 술같은건 강한 볼프강에게 아무것도 아니다!", --마이티 상태 술 면역
+	ANNOUNCE_DRUNK_IMMUNITY = "하! 술 같은건 강한 볼프강에게 아무것도 아니다!", --마이티 상태 술 면역
 	ANNOUNCE_NOTCHARGE = "볼프강이 힘 주면 염소만 다칠거다.", --번개염소가 충전이 안되서 양동이로 젖을 짤수 없음
 	ANNOUNCE_NOTHIRSTSLEEP = "볼프강 목 말라서 못 자겠다...", -- 목이 마른데 밤에 잘려고 시도
 	ANNOUNCE_NOTHIRSTSIESTA = "볼프강 물 좀 마시고 자야겠다...", -- 목이 마른데 낮에 잘려고 시도
@@ -23,7 +23,7 @@ return {
     ANNOUNCE_CURE_WATERBORNE = "속이 편안하군.",  -- 수인성 질병을 아이템으로 치료했을때의 대사
 
 	ANNOUNCE_DCAPACITY_CRITICAL = "볼프강 그만 마셔야겠다..", --취하기 직전
-	ANNOUNCE_DCAPACITY_HALF = "볼프강 왠지 좀 더워진 것 같다..", -- 취기가 돌기 시작
+	ANNOUNCE_DCAPACITY_HALF = "볼프강 왠지 좀 더워진것 같다..", -- 취기가 돌기 시작
 
 	DESCRIBE =
 	{
@@ -32,7 +32,7 @@ return {
 		WATER_CLEAN_ICE = "볼프강이 마실 물이 얼어버렸다..",--깨끗한 얼음물
 		WATER_DIRTY_ICE = "못 먹을 얼음이다.", --더러운 얼음물
 
-		SPICE_CAFFEINPEPPER = "음... 좋은 냄새 난다...", --후추 향신료
+		SPICE_CAFFEINPEPPER = "음...좋은 냄새 난다...", --후추 향신료
 
 		WELL_KIT = "볼프강이 친구들을 위한 우물 지을거다!", --우물 키트
 		WELL_SPRINKLER_KIT = "강력한 자동 물뿌리개다!", --스프링클러 키트
@@ -49,10 +49,10 @@ return {
 
 		TEA_TREE = "조그만 나무야, 나한테 안 밟히게 조심하렴!",--차나무
 		DUG_TEA_TREE = "작은 나무 땅에서 나왔다.", --땅에서 파낸 차나무
-		TEA_SEED = "볼프강이 손으로 부숴버릴 수 있다!", -- 차나무 열매
+		TEA_SEED = "볼프강이 손으로 부숴버릴수 있다!", -- 차나무 열매
 		TEA_SEED_COOKED = "약한 씨앗은 먹기에 너무 작다.", --구운 차나무 열매
 		TEA_SEED_SAPLING = "엄청 작은 나무다!", --차나무 새싹
-		TEALEAVES = "좋은 냄새 나는 잎이다.", --찻잎
+		TEALEAVES = "좋은 냄새나는 잎이다.", --찻잎
 		TEALEAVES_DRIED = "초록색 잎 갈색 됐다.", --말린 찻잎
 
 		CAFFEINBERRY = "볼프강이 아는거랑 좀 다르다.", --커피 덤불
@@ -94,15 +94,15 @@ return {
 		GLOWBERRYJUICE = "빛나는 물을 마셔도 되나?", -- 발광베리 쥬스
 		WATERMELON_JUICE = "큰 수박으로 만든 음료수다.", --수박 쥬스
 
-		VEGGIE_TEA = "풀 맛 나고 엄청 쓰다!", --녹즙
+		VEGGIE_TEA = "풀맛 나고 엄청 쓰다!", --녹즙
 		CARROT_TEA = "볼프강은 당근 마시는것도 좋다!", --당근차
 		CACTUS_TEA = "뾰족한 가시 없지? 그렇지?", --선인차
 		TOMATO_JUICE = "건강한 음료다!", --토마토 쥬스
 		LUMPY_TEA = "풀들의 근육을 끓였다", --뿌리차
 		SEAWEED_SHAKE = "먹어도 강해지진 않는다.", --해초 쉐이크
 		
-		GREENTEA = "풀 향이 많이 난다.", --생잎 녹차
-		BLACKTEA = "볼프강 생각엔 홍차는 좀 위험한 것 같다..", --홍차
+		GREENTEA = "풀향이 많이 난다.", --생잎 녹차
+		BLACKTEA = "볼프강 생각엔 홍차는 좀 위험한것 같다..", --홍차
 		BLACKTEA_ICED = "시원한 차다! 마음에 들어.", -- 홍차 아이스티
 		FUER = "나뭇잎으로 만든 차다.", --보이차,이파리차,고사리차
 		MIXFLOWER = "냄새 좋다.", --잡 꽃잎 차
@@ -110,6 +110,7 @@ return {
 		CACTUSFLOWER_TEA = "빨간 꽃으로 만든 차다.", --선인꽃차
 		LOTUSTEA = "분홍색인 차도 있었나?", --연꽃차
 		SUSHIBISCUS = "볼프강 근육까지 소름이 돋는다...", -- 자살차
+		MOON_BLOSSOM_TEA = "향이 강한 차가 강한정신 깃들게 해준다!",
 
 		CAFFEINBERRY_JUICE = "씁쓸하지만 강하게 해준다!", -- 블랙 커피
         TOFFEE_LATTE = "견과류 맛 난다.", --토피넛 라떼
@@ -120,15 +121,15 @@ return {
 		RUINXOCOLATL = "되게 쓴 초콜릿 음료수다!", --쇼콜라틀(매캐함)
 		TEA_RUINCOLATE_LATTE = "초콜릿맛 나는 풀 음료수다.", -- 말차 라떼
 
-		MULLED = "술 냄새는 안 난다.", --뱅쇼
-		BUTTERBEER = "맥주인데..단 맛 난다!", --해리포터 시리즈의 버터비어
+		MULLED = "술 냄새는 안난다.", --뱅쇼
+		BUTTERBEER = "맥주인데..단맛 난다!", --해리포터 시리즈의 버터비어
 
 		-- 콜라보 주전자 음료
 
 		COCONUT_JUICE = "단단한 열매는 마실 게 됐다!", --난파선 코코넛 쥬스
 		RAINBOW_SHAKE = "마시기 좋은 예쁜 젤리다!", --난파선 무지개 해파리 쉐이크
 		QUARTZ_SHAKE = "볼프강 혼란스럽다. 물고기가 마시는 거였나?", --난파선 광대 물고기 쉐이크
-		CHERRY_ROSEBERRIES_TEA = "예쁜 장미 냄새 난다.", --체리숲 로즈힙 차
+		CHERRY_ROSEBERRIES_TEA = "예쁜 장미냄새 난다.", --체리숲 로즈힙 차
 		CHERRY_HONEY_TEA = "엄청 달다!", --체리숲 벚꽃꿀 차
 		SWEET_RICE_DRINK = "쌀만 넣었는데 단 맛이 나!", -- 비타협 식혜
 		PINEANANAS_JUICE = "엄청 신 주스다.", -- 레기온 파인애플 주스
@@ -145,7 +146,7 @@ return {
 		SODA = "따끔한 물이다!", -- 탄산수
 		FRUITSODA = "따끔하고 달달하다.", -- 과일소다
 		LEMONLIMESODA = "엄청 달다!", -- 레몬 라임소다(과일소다 상위 호환)
-		COLA = "단 맛 나고 검은 음료수다.", -- 콜라
+		COLA = "단맛 나고 검은 음료수다.", -- 콜라
 		COLAQUANTUM = "강력한 음료로군! 아주 좋아!", --콜라 퀀텀
 		LUMPY_BEER = "알싸하고 특이한 맛이 난다.", --루트비어(술이 아님)
 
@@ -153,13 +154,13 @@ return {
 
 		CORN_BEER = "옥수수로 만든 술이다.", -- 콘 맥주
 		MADHU = "화난 벌 꿀로 만든 술이다.", --벌꿀주
-		WINE = "좋은 날에 먹는 술이다.", --와인 (그냥 베리 양조)
-		NOBLEWINE = "구운 과일로 귀한 술 만들었다!", --노블 와인(구운 베리 양조)
+		WINE = "좋은날에 먹는 술이다.", --와인 (그냥 베리 양조)
+		NOBLEWINE = "구운과일로 귀한 술 만들었다!", --노블 와인(구운 베리 양조)
 		SPARKLINGWINE = "따끔하고 노란 술이다!", --스파클링 와인
 		GLOWBERRYWINE = "반짝거리는 술이다.", --글로우 베리 와인
 		KUMIS = "우유로 술을 만들었다", -- 크므즈,산양유주
 		LUMPY_WINE = "풀 뿌리로 만든 술이야.", --서주(감자 고구마등 뿌리 술)
-		PULQUE = "가시 없는 술로 변했다.", --풀케(선인주)
+		PULQUE = "가시없는 술로 변했다.", --풀케(선인주)
 		RUINCACAO_WINE = "초콜릿으로 술도 만드나?", -- 카카오 와인 
 
 		-- 콜라보 소다
@@ -198,7 +199,7 @@ return {
 		PETALS_BERRY_BRANDY = "향긋한 냄새 나는 술이다.", -- 장미향 브랜디
 		KAHLUA = "콩 넣어서 만든 술이다.", -- 커피 리큐르 깔루아
 		NUT_CORN_WHISKEY = "견과류 냄새 난다.", -- 너트 위스키
-        RUINCACAO_CREAM_LIQUEUR = "초콜릿도 술로 만드는거였나?", --베일리스 카카오 크림 리큐르
+        RUINCACAO_CREAM_LIQUEUR = "초콜릿으로 술로 만드는거였나?", --베일리스 카카오 크림 리큐르
         RUMCHATA = "우유 들어간 신기한 술이다.", -- 럼차타(럼에 오우차타 라는 유제품 섞은)
 
 		--콜라보 증류주
@@ -206,13 +207,13 @@ return {
 		MOONWAY = "예쁜 젤리 끓여서 만들었다.", -- 무지개 해파리주 증류주
 		ARRACK = "끓여서 만든 코코넛 술이다.", -- 아락 인도네시아 버전 코코넛 와인 증류주
 		CHERRY_BLOOM_RUM = "이정도로 단 술도 있었나?", -- 체리 꿀주 증류주 벛꽃잎 떠다
-		RICE_SPIRITS = "흰 술이랑 같이 만들었다.", --청주
+		RICE_SPIRITS = "흰 술이랑 같히 만들었다.", --청주
 		WHEAT_WHISKEY = "볼프강은 센 위스키가 좋다!", -- 밀 위스키
 		PALE_WHISKEY = "볼프강이 알기론 미국 방식이다.", -- 페일 몰트 위스키
 
 		--왈리 전용 콜라보 증류주
 
-		NUT_COCONUT_BRANDY = "세상은 넓고! 훔칠 건 많다!", -- Take what you can! Give nothin' back! -- 캐러비안의 해적 조샤미 깁스, 잭 스패로우
+		NUT_COCONUT_BRANDY = "세상은 넓고! 훔칠건 많다!", -- Take what you can! Give nothin' back! -- 캐러비안의 해적 조샤미 깁스, 잭 스패로우
 	    GIANT_BLUEBERRY_GIN = "볼프강 근육처럼 터질것 같다!", -- 붐 베리 사파이어 (당근 폭발함)
 
 		--냄비 요리
