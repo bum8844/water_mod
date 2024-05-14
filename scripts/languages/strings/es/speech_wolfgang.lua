@@ -110,6 +110,7 @@ return {
             CACTUSFLOWER_TEA = "Té hecho con flores rojas.", -- Cactus flower tea
             LOTUSTEA = "Wolfgang nunca había visto un té rosa", -- Lotus tea
             SUSHIBISCUS = "Incluso los músculos de Wolfgang están temblando...", -- Suicide tea
+            MOON_BLOSSOM_TEA = "¡Un té fuerte y aromatico infunde un espíritu fuerte!", -- ㅡMoon Blossom tea
 
             CAFFEINBERRY_JUICE = "¡Es amargo, pero hace a Wolfgang más fuerte!", -- Black coffee
             TOFFEE_LATTE = "Tiene un olor a nuez.", -- Toffeenut latte
