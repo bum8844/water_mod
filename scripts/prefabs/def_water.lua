@@ -365,6 +365,6 @@ end
 return MakeWaterItem("water_clean", cleanwater, {"drink","show_spoilage","icebox_valid","clean","farm_water","pre-prepareddrink","pre-preparedfood","potion"}, prefabs.water_clean),
     MakeWaterItem("water_mineral", mineralwater, {"drink","show_spoilage","icebox_valid","clean","farm_water","pre-prepareddrink","pre-preparedfood","potion"}),
     MakeWaterItem("water_dirty", dirtywater, {"drink","show_spoiled", "icebox_valid","dirty","farm_water"}),
-    MakeWaterItem("water_salty", saltywater, {"drink","salty"}),
-    MakeWaterItem("water_clean_ice", cleanice, {"show_spoilage", "icebox_valid","clean","frozen","unwrappable"}, prefabs.water_clean_ice),
-    MakeWaterItem("water_dirty_ice", dirtyice, {"show_spoiled", "icebox_valid","dirty","frozen","unwrappable"}, prefabs.water_dirty_ice)
+    MakeWaterItem("water_salty", saltywater, {"drink","salty","notwatersource"}),
+    MakeWaterItem("water_clean_ice", cleanice, {"show_spoilage", "icebox_valid","clean","frozen","unwrappable","notwatersource"}, prefabs.water_clean_ice),
+    MakeWaterItem("water_dirty_ice", dirtyice, {"show_spoiled", "icebox_valid","dirty","frozen","unwrappable","notwatersource"}, prefabs.water_dirty_ice)
