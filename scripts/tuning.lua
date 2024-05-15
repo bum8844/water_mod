@@ -50,6 +50,7 @@ water_tuning =
 		"walter",
 		"wurt",
 		"webber",
+		"wirlywings",
 	},
 
 	WATERBORNE_IMMUNES = 
