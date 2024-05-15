@@ -336,6 +336,7 @@ local function MakeWaterItem(name, masterfn, tags, _prefabs)
         inst:AddComponent("inspectable")
 
         inst:AddComponent("water")
+        inst.components.water.isitem = true
         inst.components.water.watervalue = TUNING.CUP_MAX_LEVEL
         inst.components.water:SetOnTakenFn(OnTake)
 
