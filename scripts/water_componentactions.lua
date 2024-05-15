@@ -77,13 +77,10 @@ local USEITEM =
 
     watertaker = function(inst, doer, target, actions)
         if target:HasTag("water") and (target.replica.waterlevel == nil or target.replica.waterlevel:HasWater()) then
-            if inst:HasTag("bucket_empty") then
-                if not target:HasTag("farm_water") and not target:HasTag("notwatersource") then
-                    table.insert(actions, ACTIONS.TAKEWATER)
-                end
-            else
-                table.insert(actions, ACTIONS.TAKEWATER)
+            if inst:HasTag("bucket_empty") and (target:HasTag("farm_water") or target:HasTag("notwatersource")) then
+                return
             end
+            table.insert(actions, ACTIONS.TAKEWATER)
         end
     end,
 
