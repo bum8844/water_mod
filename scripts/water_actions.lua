@@ -131,7 +131,7 @@ local TAKEWATER = AddAction("TAKEWATER", STRINGS.ACTIONS.FILL, function(act)
         return false
     elseif source ~= nil
         and source.components.water ~= nil
-        and filled.prefab == source.components.water.returnprefab then
+        and source.components.water.isitem then
         return false
     end
 

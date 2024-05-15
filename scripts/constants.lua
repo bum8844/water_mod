@@ -319,6 +319,11 @@ FOODTYPEGROUP =
 		--cf
 		"cherry_gooseberries_preserve",
 		"cherry_shrimp_chowder",
+		--cgc
+		"bigcrop_cornporridge",
+		"bigcrop_pumpkinsoup",
+		"bigcrop_spidersoup",
+		"bigcrop_tomatosoup",
 	},
 
 	NONE_HUNGER_INGREDIENT = 
@@ -420,6 +425,8 @@ FOODTYPEGROUP =
 			"berrysundae",
 			"frozenbananadaiquiri",
 			"cherry_sorbet",
+			--cgc
+			"bigcrop_duriancream",
 		},
 	},
 
@@ -525,6 +532,10 @@ FOODTYPEGROUP =
 			"fwd_in_pdt_food_mango_ice_drink",
 			--cf
 			"cherry_cola",
+			--cgc
+			"bigcrop_fruitdrink",
+			"bigcrop_garlicsauce",
+			"bigcrop_hotsauce",
 		},
 		
 		HUGE = 
