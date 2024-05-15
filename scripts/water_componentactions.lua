@@ -59,16 +59,14 @@ local USEITEM =
 
     water = function(inst, doer, target, actions, right)
         if inst:HasTag("water") then
-            if target:HasTag("watertaker") and not inst:HasTag("farm_water") then
+            if target:HasTag("watertaker") and not inst:HasTag("farm_water") and not inst:HasTag("notwatersource") then
                 table.insert(actions, ACTIONS.TAKEWATER)
             elseif target.replica.waterlevel ~= nil
                 and target.replica.waterlevel:IsAccepting()
                 and evaluate_watertype(inst, target) then
                 table.insert(actions, ACTIONS.GIVEWATER)
             end
-        end
-
-        if inst.replica.waterlevel ~= nil
+        elseif inst.replica.waterlevel ~= nil
             and inst.replica.waterlevel:IsAccepting()
             and evaluate_watertype(target, inst) then
             table.insert(actions, ACTIONS.TAKEWATER)
