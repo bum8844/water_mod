@@ -203,14 +203,14 @@ end
 
 function SteamPressure:OnLoad(data)
     if data ~= nil then
-    	local oldsection = self:GetPressureSection()
+    	local oldsection = self:GetPressureSection(self)
         self.curpressure = data.pressure
 
         if self.curpressure >= self.maxpressure then
             self.curpressure = self.maxpressure
             self.fullpressure = true
 
-            local newsection = self.GetPressureSection()
+            local newsection = self:GetPressureSection(self)
 
             if self.chargingdonefn then
                 self.chargingdonefn(self.inst)
@@ -252,7 +252,7 @@ function SteamPressure:OnLoad(data)
 
         self.pressuretask = self.inst:DoTaskInTime(time, waitpressure, self)
 
-        local newsection = self.GetPressureSection()
+        local newsection = self:GetPressureSection(self)
 		if oldsection ~= newsection and self.pressuresectionfn then
 		    self.pressuresectionfn(newsection, oldsection, self.inst)
 		end
@@ -265,7 +265,7 @@ end
 
 function SteamPressure:LongUpdate(dt)
 	if self.pressuretask then
-		local oldsection = self.GetPressureSection()
+		local oldsection = self:GetPressureSection()
 		self.pressuretask:Cancel()
 		self.pressuretask = nil
 		self.curpressure = self.maxpressure
@@ -278,7 +278,7 @@ function SteamPressure:LongUpdate(dt)
 				self.chargingdonefn(self.inst)
 			end
 		end
-		local newsection = self.GetPressureSection()
+		local newsection = self:GetPressureSection()
 		if self.meterfn then
     		self.meterfn(self.inst)
     	end
