@@ -24,9 +24,15 @@ local function meterfn(inst)
 end
 
 local function SetPressureSection(newsection, oldsection, inst)
-	if inst.components.machine:IsOn() and newsection > oldsection and not inst.sg:HasStateTag("busy") then
+	local new_val = math.floor(newsection/4)
+	local old_vel = math.floor(oldsection/4)
+	if inst.components.machine:IsOn() and new_val > old_vel and not inst.sg:HasStateTag("busy") then
 		inst.sg:GoToState("clutch")
 	end
+    if inst._steampressure ~= newsection then
+        inst._steampressure = newsection
+        inst.AnimState:OverrideSymbol("swap", "well_waterpump_meter", tostring(newsection))
+    end
 end
 
 local function TurnOff(inst, instant)
@@ -124,8 +130,6 @@ local function OnSpawnIn(inst)
 
 	if not inst.sg:HasStateTag("active") then
 		inst.sg:GoToState("place")
-	else
-		SetMeter(inst)
 	end
 end
 
@@ -151,12 +155,12 @@ local function fn()
 	
 	MakeObstaclePhysics(inst, .5)
 
-    inst:DoTaskInTime(0.5,function()
+    --[[inst:DoTaskInTime(0.5,function()
     	inst._meter = SpawnPrefab("well_waterpump_meter")
 		inst:AddChild(inst._meter)
 		inst._meter.entity:SetParent(inst.entity)
 		inst._meter:Hide()
-	end)
+	end)]]
 
     inst.entity:SetPristine()
 
@@ -164,20 +168,21 @@ local function fn()
         return inst
     end
 
-    inst:ListenForEvent("player_despawn", SetMeter)
+    --inst:ListenForEvent("player_despawn", SetMeter)
 
     inst.AnimState:SetBank("well_waterpump")
     inst.AnimState:SetBuild("well_waterpump")
     inst.AnimState:PlayAnimation("deactive")
+    inst.AnimState:OverrideSymbol("swap", "well_waterpump_meter", "0")
 
     inst:AddComponent("steampressure")
     inst.components.steampressure:SetDepletedFn(OnDeplete)
     inst.components.steampressure:SetChargingDoneFn(SetChargingDoneFn)
     inst.components.steampressure:SetPressureSectionFn(SetPressureSection)
     inst.components.steampressure:SetTakeWaterFn(OnTaken)
-    inst.components.steampressure:SetPressureSections(4)
+    inst.components.steampressure:SetPressureSections(16)
     inst.components.steampressure:SetPressure(100)
-    inst.components.steampressure.meterfn = meterfn
+    --inst.components.steampressure.meterfn = meterfn
     inst._steampressure = inst.components.steampressure.pressuresection
 
     inst:AddComponent("machine")
@@ -206,15 +211,13 @@ local function fn()
 	inst:SetStateGraph("SGwell_waterpump")
 
 	inst:DoTaskInTime(0, OnSpawnIn)
-
-	inst:ListenForEvent("setmeter", SetMeter)
-	inst:ListenForEvent("showmeter", ShowMeter)
-	inst:ListenForEvent("hidemeter", HideMeter)
+	--inst:ListenForEvent("showmeter", ShowMeter)
+	--inst:ListenForEvent("hidemeter", HideMeter)
 
 	return inst
 end
 
-local function meterfn()
+--[[local function meterfn()
 	local inst = CreateEntity()
 	inst.entity:AddTransform()
 	inst.entity:AddAnimState()
@@ -238,7 +241,7 @@ local function meterfn()
     end
 	
 	return inst
-end
+end]]
 
-return Prefab("well_waterpump", fn, assets, prefabs),
-Prefab("well_waterpump_meter", meterfn, assets, prefabs)
+return Prefab("well_waterpump", fn, assets, prefabs)
+--Prefab("well_waterpump_meter", meterfn, assets, prefabs)
