@@ -131,6 +131,8 @@ local function OnSpawnIn(inst)
 	if not inst.sg:HasStateTag("active") then
 		inst.sg:GoToState("place")
 	end
+	local test = inst.components.steampressure:GetPressureSection()
+	inst.AnimState:OverrideSymbol("swap", "well_waterpump_meter", tostring(test))
 end
 
 local function fn()
@@ -180,7 +182,7 @@ local function fn()
     inst.components.steampressure:SetChargingDoneFn(SetChargingDoneFn)
     inst.components.steampressure:SetPressureSectionFn(SetPressureSection)
     inst.components.steampressure:SetTakeWaterFn(OnTaken)
-    inst.components.steampressure:SetPressureSections(16)
+    inst.components.steampressure:SetPressureSections(32)
     inst.components.steampressure:SetPressure(100)
     --inst.components.steampressure.meterfn = meterfn
     inst._steampressure = inst.components.steampressure.pressuresection
