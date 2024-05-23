@@ -27,7 +27,7 @@ return {
 
 	DESCRIBE =
 	{
-		BOILBOOK = "까짓거 한권 더 암기해보자.",
+		BOILBOOK = "까짓거 한 권 더 암기해보자.",
 
 		WATER_CLEAN_ICE = "이런,꽁꽁 얼었네.",
 		WATER_DIRTY_ICE = "얼음이 새까매!!",
@@ -198,14 +198,14 @@ return {
 		ABSINTHE = "녹색요정이라 부르는걸 들은적 있는것같아!",
 		TEA_LUMPY_VODKA = "건강에 좋을것같아보여! 술 이지만.",
 		PETALS_BERRY_BRANDY = "맛은 모르지만, 예쁘기는하네!",
-		KAHLUA = "왈리 아저씨가 커피와 술을 동시에 마시고싶어 하셨나봐!",
+		KAHLUA = "왈리아저씨가 커피와 술을 동시에 마시고싶어 하셨나봐!",
 		NUT_CORN_WHISKEY = "내가 먹을수 있는 형태였으면 더 좋았을 텐데.",
         RUINCACAO_CREAM_LIQUEUR = "맛있을것 같은데 술 이라는게 아쉽네.",
         RUMCHATA = "달콤하고 부드러울것 같아!",
 
 		--콜라보 증류주
 
-		MOONWAY = "내손 안에서 일곱빛깔로 빛나고있어.",
+		MOONWAY = "내 손안에서 일곱빛깔로 빛나고있어.",
 		ARRACK = "이게 아니라 열매가 있었으면 더 좋았을텐데.",
 		CHERRY_BLOOM_RUM = "벌레보관함 뒤에 놔두면 운치있겠어!",
 		RICE_SPIRITS = "이걸 무슨맛으로 마실까?",
@@ -215,7 +215,7 @@ return {
 		--왈리 전용 콜라보 증류주
 
 		NUT_COCONUT_BRANDY = "해적들의 술 인가봐!",
-	    GIANT_BLUEBERRY_GIN = "화기 엄금이야!",
+	    GIANT_BLUEBERRY_GIN = "화기엄금이야!",
 
 		--냄비 요리
 
@@ -326,7 +326,7 @@ return {
 
 		DISTILLERS =
 		{   
-		    EMPTY = "복잡한 장치가 잔뜩 달려있어!.", --증류기 조사 대사
+		    EMPTY = "복잡한 장치가 잔뜩 달려있어!", --증류기 조사 대사
 			DISTILLTING_LONG = "아마도 오래 걸릴것같아.", --증류가 끝나기 까지 많이 남음
 			DISTILLING_SHORT = "아무래도 술을 만드는거겠지?", --증류가 곧 끝남
 			DONE = "캠프의 모두에게 술이 준비되었다고 전해야겠어.", --증류기에 음료가 들어있음

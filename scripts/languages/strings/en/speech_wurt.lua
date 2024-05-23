@@ -41,7 +41,7 @@ return {
             WELL_DRILLING = "Drilling holes in the ground, florp!", -- Drilling holes in the ground
             WELL_DRILLING_ITEM = "Why drill holes in the ground?", -- Drilling item
             HOLE = "Can hear the sound of stream.", -- Well hole
-            WELL = "Smoothskins drink from that holes, why?", -- Well
+            WELL = "Scale-less drink from that holes, why?", -- Well
 
             WX78MODULE_NONEDRUNK = "Crunchy.", -- 78전용 묘듈
 
@@ -108,7 +108,7 @@ return {
             MIXFLOWER = "Ugly flowers went into it!", -- Mixed flower petals
             HIBISCUSTEA = "Heh-heh, I boiled red flowers!", -- Hibiscus tea
             CACTUSFLOWER_TEA = "Ugly flowers went into it and it's sweet, florp!", -- Cactus flower tea
-            LOTUSTEA = "Smooth skins like this flower water, I don't know, florp!", -- Lotus tea
+            LOTUSTEA = "Scale-less like this flower water, I don't know, florp!", -- Lotus tea
             SUSHIBISCUS = "There are very ugly flowers in the water.", -- Sushi cha
             MOON_BLOSSOM_TEA = "This smells really strange.", -- Moon flower tea
 
@@ -156,7 +156,7 @@ return {
             MADHU = "Viking women were looking for this intensely.", -- Mead
             WINE = "Glurp... is red, but not sweet.", -- Wine (Berry brewing)
             NOBLEWINE = "Make white alcohol by spoiling the bush's snack treats?", -- Noble Wine (Roasted Berry brewing)
-            SPARKLINGWINE = "Lady Wicker warned not to shake it.", -- Sparkling Wine
+            SPARKLINGWINE = "Wicker lady warned not to shake it.", -- Sparkling Wine
             GLOWBERRYWINE = "Give me juice instead of shining fruit wine.", -- Glow Berry Wine
             KUMIS = "Is surging milk spoiled?", -- Kumis (Milk of the Mountain Goat)
             LUMPY_WINE = "Earthy vegetable water smells painful.", -- Sake (Root vegetable brewing)
@@ -186,7 +186,7 @@ return {
             CORN_WHISKEY = "Smells poisonous, glorpt.", -- Corn Whiskey
             LUMPY_VODKA = "That isn't water, glorp!", -- Vodka
             TEQUILA = "Alcohol resembles character of a thorny plant!", -- Tequila
-            MADHU_RUM = "Smoothskins says put in the water it when they got on board, Why?", -- Rum
+            MADHU_RUM = "Scale-less says put in the water it when they got on board, Why?", -- Rum
             BERRY_BRANDY = "Where are my snack fruit, glurph?", -- Berry Brandy
             AREUHI = "Where did the milk go?", -- Kumis Distilled Spirits (Arhi)
 
@@ -234,7 +234,7 @@ return {
 
             BUCKET_WOODIE_EMPTY =
             {
-                EMPTY = "Woodchopper said not to sit on it.", -- Empty Woodie's wooden bucket
+                EMPTY = "Wood choppy man said not to sit on it.", -- Empty Woodie's wooden bucket
                 FULL = "Full of rainwater!", -- Clean rainwater inside
                 FULL_ICE = "Flrrr, don't want to touch it.", -- Rainwater has frozen
                 DIRTY = "It turned into a tiny pond, florp!", -- Rainwater has become dirty
@@ -262,7 +262,7 @@ return {
 
             BARREL =
             {
-                GENERIC = "Lady Wicker got mad at them for raising fish in this...", -- Examining the barrel
+                GENERIC = "Wicker lady got mad at them for raising fish in this...", -- Examining the barrel
                 BURNT = "Why is burning when there's water inside?", -- The barrel is burnt
             },
 
@@ -275,7 +275,7 @@ return {
                 DONE = "Is it so-da, florp?", -- There's a drink in the brewery
             },
 
-            CAMPKETTLE_ITEM = "Needed for smoothskins to drink pond water!", -- Examining the camp kettle item
+            CAMPKETTLE_ITEM = "Needed for Scale-less to drink pond water!", -- Examining the camp kettle item
             CAMPKETTLE =
             {
                 GENERIC = "Fww, is empty.", -- Examining the empty camp kettle on the fire pit

@@ -115,6 +115,10 @@ function SteamPressure:GetPressurePercent()
     return self.maxpressure > 0 and math.max(0, math.min(1, self.curpressure / self.maxpressure)) or 0
 end
 
+function SteamPressure:GetTime()
+    return self.delay_left_time ~= nil and self.delay_left_time - GetTime() or 0
+end
+
 function SteamPressure:GetPressure()
     local time = self:IsDepleted() and self.delayed * 0.01 or (self.delayed * 0.25) * 0.01
     self.delay_left_time = time + GetTime()
@@ -172,6 +176,7 @@ function SteamPressure:LostPressure()
 
     if self.curpressure <= 0 then
         self.depleted = true
+        self.left_time = self.delayed + GetTime()
 
         if self.depletedtask then
             self.depletedtask:Cancel()
@@ -230,6 +235,8 @@ function SteamPressure:OnLoad(data)
                 self.depletedtask:Cancel()
                 self.depletedtask = nil
             end
+
+            self.left_time = data.remainingtime+GetTime()
 
             self.depletedtask = self.inst:DoTaskInTime(data.remainingtime, waitfullpressure, self)
 

@@ -56,6 +56,10 @@ function WateringTool:GetWater()
     return self.watertype
 end
 
+function WateringTool:GetTimeLeft()
+    return self.targettime ~= nil and self.targettime - GetTime() or 0
+end
+
 function WateringTool:IsTask()
     return self.targettime ~= nil
 end
