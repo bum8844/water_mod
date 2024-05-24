@@ -73,6 +73,9 @@ water_tuning =
 	BUCKET_MAX_LEVEL = bucket_max_level*10,
 	BUCKET_LEVEL_PER_USE = bucket_max_level,
 
+	STEEL_BUCKET_MULT = 8,
+	WOODIE_BUCKET_MULT = 0.5,
+
 	CAMPKETTLE_MAX_LEVEL = 3,
 	KETTLE_MAX_LEVEL = bucket_max_level*.5,
 	BARREL_MAX_LEVEL = bucket_max_level*36,
