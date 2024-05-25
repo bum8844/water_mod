@@ -95,6 +95,7 @@ function WateringTool:CollectRainWater(israining, isdrying, isload)
 
         self.drying = isdrying or false
         local loadtimer = isload or nil
+        local rain_timer = TUNING.PERISH_ONE_DAY/8
 
         if israining then
             if self:GetWater() ~= nil then
@@ -113,10 +114,10 @@ function WateringTool:CollectRainWater(israining, isdrying, isload)
                 return true
             end
 
-            local rain_timer = TUNING.PERISH_ONE_DAY/8
-
-            if self.targettime or loadtimer then
-                rain_timer = loadtimer and loadtimer or self.targettime - GetTime()
+            if self.targettime then
+                rain_timer = rain_timer - (self.targettime - GetTime())
+            elseif loadtimer then
+                rain_timer = loadtimer
             end
 
             self.targettime = rain_timer + GetTime()
@@ -124,7 +125,14 @@ function WateringTool:CollectRainWater(israining, isdrying, isload)
             --print("물 채우는중")
             self.wateringtooltask = self.inst:DoTaskInTime(rain_timer, OnDone, self, WATERTYPE.CLEAN)
         elseif ( self.targettime or loadtimer ) and not self.drying then
-            local dry_timer = loadtimer and loadtimer or self.targettime - GetTime()
+
+            local dry_timer = loadtimer
+
+            if loadtimer then
+                dry_timer = loadtimer
+            else
+                dry_timer = rain_timer - (self.targettime - GetTime())
+            end
 
             self.targettime = dry_timer + GetTime()
 

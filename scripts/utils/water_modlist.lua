@@ -14,7 +14,8 @@ local water_modlist = {
 	["workshop-1935156140"] = "bm",
 	["workshop-2431867642"] = "bm",
 	["workshop-376333686"] = "cs",
-	["workshop-2938233879"] = "ef"
+	["workshop-2938233879"] = "ef",
+	["workshop-2189004162"] = "it",
 }
 
 local active_mod_compatibility = {}
