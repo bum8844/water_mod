@@ -63,6 +63,8 @@ for _, character in pairs(vanilla_characters) do
 end
 
 modrequire("languages/strings/"..locale.."/common")
+--modrequire("languages/strings/"..locale.."/insight")
+modrequire("languages/strings/en/insight")
 
 --AFS: some translation functions taken from Island Adventures. WIP
 --[[function DSD_GeneratePOT()

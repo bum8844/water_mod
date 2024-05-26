@@ -16,3 +16,9 @@ RegisterItemAtlasFile("images/tea_inventoryitem.xml")
 RegisterItemAtlasFile("images/tea_inventoryitem_drinks.xml")
 
 modrequire("main")
+
+local modlist = require("utils/water_modlist").active_mod_compatibility
+
+if modlist.it then
+	modrequire("modcompats/2189004162/insight_setting")
+end

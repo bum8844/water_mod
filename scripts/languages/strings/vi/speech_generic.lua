@@ -92,7 +92,7 @@ return {
 		FIG_JUICE = "Chất lỏng phi Newton từ dạng Newton.",
 		DRAGONJUICE = "Nó vẫn lạ sao sao ý.",
 		GLOWBERRYJUICE = "Không tệ đến thế đâu.",
-		WATERMELON_JUICE = "Bây giờ đó là nguồn gốc của \"nước\" trong dưa hấu!",
+		WATERMELON_JUICE = "Thật là thức uống dưa hấu tuyệt hảo!!",
 
 		VEGGIE_TEA = "Tất cả đều là rau.",
 		CARROT_TEA = "Tôi hy vọng nó có thể chấp nhận được.",
@@ -114,9 +114,9 @@ return {
 		CAFFEINBERRY_JUICE = "Mùi tràn đầy năng lượng!",
 		
 		TOFFEE_LATTE = "Có phải cà phê pha với các loại hạt không?",
-		RUINCHA_LATTE = "Ánh sáng là phản ứng hạt nhân từ hai hạt đậu.",
+		RUINCHA_LATTE = "Thứ dung dịch này là sản phẩm của phản ứng hạt nhân giữa 2 hạt đỗ.",
 		
-		HOTRUINCOLATE = "Một chút kẹo dẻo sẽ có tác dụng.",
+		HOTRUINCOLATE = "Rắc thêm một chút kẹo dẻo marshmallow sẽ khiến nó hoàn hảo hơn",
 		RUINCOLATE_SMOOTHIE = "Ngọt và dễ uống.",
 		RUINXOCOLATL = "Hơi chát",
 		TEA_RUINCOLATE_LATTE = "Chà, điều này thật bất ngờ.",
@@ -127,7 +127,7 @@ return {
 		-- Mod Cộng tác ấm đun nước đồ uống
 
 		COCONUT_JUICE = "Tôi thấy thứ thạch sền sệt đó phải không?",
-		RAINBOW_SHAKE = "Có vị như 7 màu.",
+		RAINBOW_SHAKE = "Ơn trời, nó nhạt toẹt",
 		UARTZ_SHAKE = "Hy vọng nó không tanh mùi cá.",
 		CHERRY_ROSEBERRIES_TEA = "Hương hoa hồng nồng nàn.",
 		CHERRY_HONEY_TEA = "Tôi chỉ có thể nếm những cánh hoa.",
@@ -145,8 +145,8 @@ return {
 		
 		SODA = "Thật sảng khoái!",
 		FRUITSODA = "Ngọt, chua và mặn!",
-		LEMONLIMESODA = "Nếu nha sĩ nhìn thấy điều này thì họ sẽ .",
-		COLA = "Nó có vị giống khoa học!",
+		LEMONLIMESODA = "Nha sĩ sẽ cảm thấy khiếp sợ khi trông thấy chúng",
+		COLA = "Nó có vị đậm chất khoa học",
 		COLAQUANTUM = "Có điều gì đó rất khoa học về nó!",
 		LUMPY_BEER = "Mùi thơm quá!",
 		
@@ -161,7 +161,7 @@ return {
 		KUMIS = "Không phải sữa được dùng làm sữa chua sao?",
 		LUMPY_WINE = "Đó là một loại rượu sạch và tinh khiết.",
 		PULQUE = "Thức uống truyền thống từ vùng đất mới?",
-		RUINCACAO_WINE = "Bạn có thể pha rượu bằng kakao?",
+		RUINCACAO_WINE = "Thực sự có thể làm rượu wine từ ca cao hửm?",
 		
 		-- Mod Cộng tác nhà máy bia soda
 		
@@ -172,11 +172,11 @@ return {
 		
 		-- Mod Cộng tác nhà máy bia rượu
 		
-		AUROBOW = "Bạn có thể quan sát sự thay đổi màu sắc cùng lúc.",
+		AUROBOW = "Tôi có thể quan sát được sự chuyển màu liên tục trong một lúc",
 		COCONUT_WINE = "Tôi cảm thấy như đang ở Địa Trung Hải.",
 		CHERRY_BLOOM_MADHU = "Cái này đang nằm trên kệ bộ sưu tập chai của tôi.",
 		GIANT_BLUEBERRY_WINE = "Trái cây không ổn định trong quá trình lên men.",
-		RICE_WINE = "Bạn có thể làm rượu lên men từ thứ này?",
+		RICE_WINE = "Có thể làm rượu lên men bằng thứ này thật sao?",
 		WHEAT_BEER = "Nói một cách khoa học thì đó là bia lúa mì.",
 		PALE_BEER = "Thức uống nhạt quá.",
 
@@ -184,7 +184,7 @@ return {
 
 		DISINFECTANT = "Tôi nên rửa thiết bị phòng thí nghiệm của mình bằng cái này.",
 		CORN_WHISKEY = "Họ từng làm rượu whisky ngô như thế này ở Mỹ.",
-		LUMPY_VODKA = "Nếu bạn thực sự muốn say nhanh.",
+		LUMPY_VODKA = "Nếu như tôi muốn chìm đắm trong niềm say khướt, Vâng!",
 		TEQUILA = "Có mùi rễ cây nồng nặc.",
 		MADHU_RUM = "Tôi nên mang theo một chai cho thuyền.",
 		BERRY_BRANDY = "Một thức uống ngon cần có trước một thử nghiệm mới.",
@@ -195,10 +195,10 @@ return {
 		BERRY_GIN = "Có gì sai khi pha chế đồ uống rẻ tiền bằng khoa học?",
 		GLOWBERRY_GIN = "Không thể tệ hơn được nữa khi làm rượu mạnh tỏa sáng.",
 		ABSINTHE = "Chú ý vị cay nồng.",
-		TEA_LUMPY_VODKA = "Anh ấy đã lọc thứ này từ lá trà à?",
+		TEA_LUMPY_VODKA = "Có phải điều này đến từ việc ngâm lá trà?",
 		PETALS_BERRY_BRANDY = "Rượu mạnh có mùi thơm hoa?",
 		KAHLUA = "Có vẻ như rượu rum được pha với cà phê.",
-		NUT_CORN_WHISKEY = "Đậu phộng ăn nhẹ kết hợp với rượu whisky!",
+		NUT_CORN_WHISKEY = "Đậu phộng kết hợp với rượu whisky cho bữa ăn nhẹ!",
         RUINCACAO_CREAM_LIQUEUR = "Đó là đồ uống có vị kem sô-cô-la.",
         RUMCHATA = "Đi xuống êm ả.",
 
@@ -219,7 +219,7 @@ return {
 		--냄비 요리
 
         DARK_RUINCOLATE = "Đáng lẽ bạn nên gọi cho tôi nếu bạn đang tiến hành một thí nghiệm khoa học.",
-        WHITE_RUINCOLATE = "Quá béo nếu bạn ăn quá nhiều.",
+        WHITE_RUINCOLATE = "Tôi sẽ bị ngớn nếu ăn quá nhiều",
         RUINCOLATE = "Tôi sẽ cần bổ sung đường để thử nghiệm.",
         RUIN_SCHOKAKOLA = "Ai nghĩ đến việc đựng sôcôla và xi đánh giày trong hộp?",
 
