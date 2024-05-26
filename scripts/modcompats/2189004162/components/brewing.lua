@@ -26,12 +26,10 @@ local function Descriptors()
 			local cooking = require("cooking")
 
 			local function GetRecipe(cooker, product)
-				-- DST
 				if cooking.GetRecipe then
 					return cooking.GetRecipe(cooker, product)
 				end
 
-				-- DS
 				local recipes = cooking.recipes[cooker] or {}
 				return recipes[product]
 			end
@@ -84,19 +82,13 @@ local function Descriptors()
 					return
 				end
 
-				-- cook time modifier
 				local cook_time_modifier = GetCookTimeModifier(self)
 				if cook_time_modifier < 0 then
-					-- 1 - 1.25 = -0.25 = you cook slower
-					-- slower
 					cook_time_string = string.format(context.lstr.stewer.cooktime_modifier_slower, math.abs(cook_time_modifier) * 100)
 				elseif cook_time_modifier > 0 then
-					-- 1 - 0.8 = 0.2 = you cook faster
-					-- faster
 					cook_time_string = string.format(context.lstr.stewer.cooktime_modifier_faster, cook_time_modifier * 100)
 				end
 
-				-- chef
 				if self.done or cooktime > 0 then -- IsDone() missing in DS, exists in DLC
 					local chef = context.config["stewer_chef"] and GetChef(self)
 					if chef then
@@ -108,10 +100,8 @@ local function Descriptors()
 					local recipe = GetRecipe(self.inst.prefab, self.product)
 
 					if not recipe then
-						--if self.product == self.spoiledproduct then
-						-- we'll show the product and see what happens
 						local base_food_string = context.usingIcons and PrefabHasIcon(self.product) and context.lstr.stewer.product or context.lstr.lang.stewer.product
-						food = string.format(base_food_string, self.product, "?") -- dont know if spoiling sets stack amount to 1
+						food = string.format(base_food_string, self.product, "?")
 					else
 						local data = GetRecipeInfo(recipe)
                 		local waterlevel = self.inst.components.waterlevel and self.inst.components.waterlevel:GetWater() or 1

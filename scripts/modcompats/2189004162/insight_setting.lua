@@ -19,7 +19,6 @@ AddSimPostInit(wateringstructurefn)
 AddSimPostInit(desalinatorfn)
 
 if GetModConfigData("enable_thirst") then
-
 	require(default.."/components/edible")
 	local thirstfn = require(default.."/components/thirst").Descriptors
 	AddSimPostInit(thirstfn)

@@ -9,18 +9,17 @@ end
 
 local function GetWorldType()
 	if TheSim:GetGameID() == "DST" then
-		return -1 -- Don't Starve Together
-		-- ds DLC variables don't exist here by the way
+		return
 	end
 
 	if IsDLCEnabled(PORKLAND_DLC) then
-		return 3 -- hamlet
+		return 3
 	elseif IsDLCEnabled(CAPY_DLC) then
-		return 2 -- shipwrecked
+		return 2
 	elseif IsDLCEnabled(REIGN_OF_GIANTS) then
-		return 1 -- reign of giants
+		return 1
 	else
-		return 0 -- base game of Don't Starve
+		return 0
 	end
 end
 
@@ -37,7 +36,7 @@ if type(Insight.descriptors.edible) == "table" and Insight.descriptors.edible.De
 
 		local rawtext, rawtext_ext = STRINGS.INSIGHT.EDIBLE.RAWTEXT.LONG, STRINGS.INSIGHT.EDIBLE.RAWTEXT.LONG
 
-		local owner = context.player --GetPlayer()
+		local owner = context.player
 		local foodmemory = owner.components.foodmemory
 		local stats = context.stats
 
@@ -49,7 +48,6 @@ if type(Insight.descriptors.edible) == "table" and Insight.descriptors.edible.De
 			end
 			
 			if owner.components.eater then
-				-- base game does not have :IsValidFood()
 				if owner.components.eater.IsValidFood and owner.components.eater:IsValidFood(inst) then
 					if owner.components.eater:AbleToEat(inst) then
 						return true
@@ -75,12 +73,10 @@ if type(Insight.descriptors.edible) == "table" and Insight.descriptors.edible.De
 				end
 			end
 
-			-- get hunger values
-			local thirst = self:GetThirst(eating_entity) or 0 -- DST's food affinity is included in all 3
+			local thirst = self:GetThirst(eating_entity) or 0
 			local eater = eating_entity.components.eater
 
-			-- food effects
-			if eater and world_type ~= 0 then -- accounting for strong stomach in anywhere except base game since no one cares there
+			if eater and world_type ~= 0 then
 				local do_effects = eater:DoFoodEffects(self.inst)
 				
 				if thirst < 0 and do_effects == false then
@@ -88,17 +84,11 @@ if type(Insight.descriptors.edible) == "table" and Insight.descriptors.edible.De
 				end
 			end
 
-			-- food multipliers
-			local base_mult = eating_entity.components.foodmemory ~= nil and eating_entity.components.foodmemory:GetFoodMultiplier(self.inst.prefab) or 1 -- warly? added while was doing food stat modifiers
+			local base_mult = eating_entity.components.foodmemory ~= nil and eating_entity.components.foodmemory:GetFoodMultiplier(self.inst.prefab) or 1
 			if not stats or (type(stats) == 'table' and not stats.fixed) then
-				-- uncompromising mode sets absorptions to 0 on first eat event and stores the original as a variable in the player.
-				-- \init\init_food\init_foodregen.lua in local function oneat, August 17, 2021.
-				-- Variable change necessary according to Atoba, Dec 16 2022
-				-- Do I want to do something with custom logic for uncomp absorption??
 				thirst = thirst * base_mult * eater.thirstabsorption --(uncompromising and eating_entity.modded_thirstabsorption or eater.thirstabsorption)
 			end
 
-			-- new very helpful function by klei
 			if eater and eater.custom_stats_mod_water_fn then
 				thirst = eater.custom_stats_mod_water_fn(eating_entity, thirst, self.inst, feeder)
 			end
