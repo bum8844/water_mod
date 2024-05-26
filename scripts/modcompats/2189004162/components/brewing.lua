@@ -1,10 +1,10 @@
 local Color = require("helpers/color")
 
-function EscapeRichText(str)
+local function EscapeRichText(str)
 	return str:gsub("<", "&lt;"):gsub(">", "&gt;")
 end
 
-function CombineLines(...)
+local function CombineLines(...)
 	local lines, argnum = nil, select("#",...)
 
 	for i = 1, argnum do
