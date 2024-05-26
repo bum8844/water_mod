@@ -33,7 +33,7 @@ STRINGS.INSIGHT.STATE.BUCKET_STEEL_EMPTY = "<color=#8C8B84>"..STRINGS.NAMES.BUCK
 
 STRINGS.INSIGHT.DISITLLER.RAWTEXT = "%s will be done in %s second(s)."
 
-STRINGS.INSIGHT.WATERLEVEL.RAWTEXT = "Type : %s / Amonut : <color=#2F70C0>%s/%s</color>"
+STRINGS.INSIGHT.WATERLEVEL.RAWTEXT = "Type : %s / Amount : <color=#2F70C0>%s/%s</color>"
 
 STRINGS.INSIGHT.WATERSPOILAGE.RAWTEXT = "{state} in {time}"
 STRINGS.INSIGHT.WATERSPOILAGE.RAWTEXT_EXT = "{state} in {time}({percent})"
@@ -44,20 +44,19 @@ STRINGS.INSIGHT.STEAMPRESSURE.RAWTEXT_TIME = "<color=#D4D4D4>Steam</color> recha
 STRINGS.INSIGHT.STEAMPRESSURE.RAWTEXT_TIME_EXT = "<color=#D4D4D4>Steam</color> recharging in {time}({percent})[<color=#D4D4D4>{cur}/{max}</color>]"
 
 STRINGS.INSIGHT.WATERINGSTRUCTURE.RAWTEXT = "Bucket : %s / Water Type : %s"
-STRINGS.INSIGHT.WATERINGSTRUCTURE.RAWTEXT_EXT = "Bucket : %s(%s)[%s/%s] / Water Type : %s(Amonut : %s)"
+STRINGS.INSIGHT.WATERINGSTRUCTURE.RAWTEXT_EXT = "Bucket : %s(%s)[%s/%s] / Water Type : %s(Amount : %s)"
 
 STRINGS.INSIGHT.WATERINGSTRUCTURE.RAWTEXT_TIME = "Bucket : %s / Water Type : %s / %s in %s"
-STRINGS.INSIGHT.WATERINGSTRUCTURE.RAWTEXT_TIME_EXT = "Bucket : %s(%s)[%s/%s] / Water Type : %s(Amonut : %s) / %s in %s"
+STRINGS.INSIGHT.WATERINGSTRUCTURE.RAWTEXT_TIME_EXT = "Bucket : %s(%s)[%s/%s] / Water Type : %s(Amount : %s) / %s in %s"
 
 STRINGS.INSIGHT.WATERINGTOOL.RAWTEXT_GAIN_LOSS= "Water %s in %s"
 STRINGS.INSIGHT.WATERINGTOOL.RAWTEXT_TIME = "Water Type : %s / %s in %s"
-STRINGS.INSIGHT.WATERINGTOOL.RAWTEXT_TIME_EXT = "Water Type : %s(Amonut : %s) / %s in %s"
+STRINGS.INSIGHT.WATERINGTOOL.RAWTEXT_TIME_EXT = "Water Type : %s(Amount : %s) / %s in %s"
 STRINGS.INSIGHT.WATERINGTOOL.RAWTEXT = "Water Type : %s"
-STRINGS.INSIGHT.WATERINGTOOL.RAWTEXT_EXT = "Water Type : %s(Amonut : %s)"
+STRINGS.INSIGHT.WATERINGTOOL.RAWTEXT_EXT = "Water Type : %s(Amount : %s)"
 
 STRINGS.INSIGHT.DESALINATION.RAWTEXT = "<color=#E0E0E0>Salt</color> Obtained <color=#E0E0E0>%s/%s</color>"
 STRINGS.INSIGHT.DESALINATION.RAWTEXT_EXT = "<color=#E0E0E0>Salt</color> Obtained <color=#E0E0E0>%s/%s</color> (<color=#E0E0E0>%s/%s</color>)"
-
 
 STRINGS.INSIGHT.EDIBLE.RAWTEXT.LONG = "<color=#2F70C0>Thirst</color>: <color=#2F70C0>%s</color>"
 STRINGS.INSIGHT.EDIBLE.RAWTEXT.SHORT = "<color=#2F70C0>%s</color>"
