@@ -119,7 +119,7 @@ local function Descriptors()
 				description = CombineLines(thirst_str, burn_str)
 
 				return {
-					priority = 2,
+					priority = 28.5,
 					description = description,
 					GetData = GetData,
 				}
