@@ -3,7 +3,7 @@ return {
 	{
 		GIVE =
 		{
-			WELL_NOTEMPTY = "Trước tiên phải tháo cái bể này ra.",
+			WELL_NOTEMPTY = "Tôi cần loại bỏ cái xô trước đã",
 			WELL_BUSY = "Nước vẫn đang lên.",
 		}
 	},
@@ -11,33 +11,33 @@ return {
 	ANNOUNCE_DRUNK = "Tôi từng nghe một câu chuyện trên radio...hic",
 	ANNOUNCE_DRUNK_END = "Bây giờ tôi cảm thấy tốt hơn nhiều!",
 	ANNOUNCE_DRUNK_IMMUNITY = "",--only_used_by_wathgrithr
-	ANNOUNCE_NOTCHARGE = "Cần 'lấy sữa'. Heh, thế thì tốt rồi.",
+	ANNOUNCE_NOTCHARGE = "Không thể vắt sữa được, nó khô quá rồi! Heh, điều đó thật tốt.",
 	ANNOUNCE_NOTHIRSTSLEEP = "Tôi khát quá không ngủ được.",
 	ANNOUNCE_NOTHIRSTSIESTA = "Tôi cần uống nước trước khi đi ngủ.",
-	ANNOUNCE_SLEEP_END = "Đang làm mới.",
-	ANNOUNCE_THIRST = "Làm nguội nhanh thì sao?",
+	ANNOUNCE_SLEEP_END = "Tôi cảm thấy tốt hơn một chút sau khi ngủ",
+	ANNOUNCE_THIRST = "Bạn có muốn dành một chút thời gian để uống nước không?",
 	
 	ANNOUNCE_CAFFINE_BUFF_START = "Tôi muốn bắt đầu khám phá ngay bây giờ." , -- 카페인 버프 시작
 	ANNOUNCE_CAFFINE_BUFF_STOP = "Hơi mệt một chút..." , -- 카페인 버프 끝
 	ANNOUNCE_CURE_WATERBORNE = "Bây giờ tôi thấy khỏe hơn rồi." , -- 수인성 질병을 아이템으로 치료했을때의 대사
 	ANNOUNCE_DCAPACITY_CRITICAL = "Sao tôi thấy nặng nề quá...",
-	ANNOUNCE_DCAPACITY_HALF = "Có gì đó sai sai....",
+	ANNOUNCE_DCAPACITY_HALF = "Tôi cảm thấy như có điều gì đó không ổn...",
 
 	DESCRIBE =
 	{
-		BOILBOOK = "Sao không học thêm một cuốn nữa.",
+		BOILBOOK =  "Sẽ không có hại gì khi ghi nhớ thêm một cuốn sổ tay nữa.", --★★★★★★★
 
-		WATER_CLEAN_ICE = "Nó bị đóng băng.",
+		WATER_CLEAN_ICE = "Ôi Chúa ơi, nó bị đóng băng rồi.", --★★★★★★★
 		WATER_DIRTY_ICE = "Băng trông đen quá!",
 		
 		SPICE_CAFFEINPEPPER = "Làm cho đồ ăn cắm trại ngon hơn nhiều.",
 		
 		WELL_KIT = "Đừng ở quanh giếng. Heh.",
-		WELL_SPRINKLER_KIT = "Vì một 'khu vực' tốt đẹp với thực vật!",
+		WELL_SPRINKLER_KIT = "Hãy 'tưới nước' cho cây của chúng ta ngay bây giờ!", --★★★★★★★
 		WELL_WATERPUMP_KIT = "Máy bơm hút cao! Nó dẫn nước từ thấp lên cao?",
-		WELL_BURYING_KIT = "An toàn hơn là rơi xuống hố!",
+		WELL_BURYING_KIT = "Tôi nên lấp đầy những cái lỗ mà tôi không thể bước xuống để đảm bảo an toàn!", --★★★★★★★
 		WELL_DRILLING = "Mỗi lần một giếng!",
-		WELL_DRILLING_ITEM = "Muốn đào giếng không Woby?",
+		WELL_DRILLING_ITEM = "Muốn đào một cái giếng không em, Woby?", --★★★★★★★
 		HOLE = "Tôi tự hỏi liệu nó có dẫn đến bên kia thế giới không?",
 		WELL = "Sao vậy Woby? Có ai rơi vào à?",
 		
@@ -54,7 +54,7 @@ return {
 		TEALEAVES_DRIED = "Lá bị rỉ sét.",
 		
 		CAFFEINBERRY = "Tôi tưởng cà phê mọc từ cây.",
-		DUG_CAFFEINBERRY = "Những người lớn ở trại sẽ thích món này.",
+		DUG_CAFFEINBERRY = "Mang cái này đi cắm trại, người lớn sẽ thích nó.", --★★★★★★★
 		CAFFEINBERRY_BEAN = "Cà phê trông như thế này à?",
 		CAFFEINBERRY_BEAN_COOKED = "Bây giờ nó có mùi giống cà phê hơn!",
 		
@@ -94,15 +94,15 @@ return {
 		
 		VEGGIE_TEA = "Cái này trông...khỏe mạnh nhỉ?",
 		CARROT_TEA = "Cà rốt tội nghiệp...nhưng không hẳn.",
-		CACTUS_TEA = "Hy vọng tôi không bị mảnh dằm vào miệng?",
+		VEGGIE_TEA = "Hừm, thứ này.... trông thật tốt cho sức khoẻ",--★★★★★★★
 		TOMATO_JUICE = "Thứ này trông giống đồ uống của ma cà rồng.",
-		LUMPY_TEA = "Ơ...cái này trông giống bụi bẩn quá.",
-		SEAWEED_SHAKE = "Nếu nó bắt đầu phát triển bên trong tôi thì sao?",
+		LUMPY_TEA =  "Eo ôi,... tôi mong rằng nó không có vị như đất" , --★★★★★★★
+		SEAWEED_SHAKE = "Không biết liệu rong biển sẽ \"đâm chồi nảy lộc\" trong bụng tôi không nhỉ?", --★★★★★★★
 		
 		GRENTEA = "Tôi nghĩ tôi đã nhìn thấy một con bọ! Đùa thôi.",
 		BLACKTEA = "Con khủng long nào thích trà? Tea-Rex!",
 		BLACKTEA_ICED = "Có đá trong ấm trà.",
-		FUER = "Tôi không biết họ sẽ sử dụng vòi phun nước.",
+		FUER = "Thử một chút 'Folli-Tea' để thưởng thức hương vị sảng khoái từ thiên nhiên nào!!", --★★★★★★★
 		MIXFLOWER = "Ong có uống trà không? Có lẽ là không.",
 		HIBISCUSTEA = "Tôi có cảm giác nó sẽ chua.",
 		CACTUSFLOWER_TEA = "Đây là cách bạn sống sót trong sa mạc.",
@@ -116,7 +116,7 @@ return {
 		
 		HOTRUINCOLATE = "Bây giờ tôi không phải đợi đến Giáng sinh.",
 		RUINCOLATE_SMOOTHIE = "Sô cô la và đá sẽ giòn.",
-		RUINXOCOLATL = "Đây là ca cao? Thật sao?",
+		RUINXOCOLATL = "Đây là cacao hả? Thật đấy à", --★★★★★★★
 		TEA_RUINCOLATE_LATTE = "Nó có màu xanh...mà tôi không thích.",
 		
 		MULLED = "Thuốc đắng giã tật",
@@ -132,7 +132,7 @@ return {
 		SWEET_RICE_DRINK = "Không phải nước ép, không phải trà!",
 		PINEANANAS_JUICE = "Bạn có biết anh trai của Anana là ai không? Chuối!", -- Legion Pineapple Juice
 		ORANGE_JUICE = "Gặp nước ép 'oranginal' của tôi.", -- Thêm gói thực phẩm Nước cam.
-		STRAWBERRY_SMOOTHIE = "Mạnh nhưng mềm. Bởi vì nó là một loại sinh tố dâu đậm đà.", -- Thêm gói thực phẩm Sinh tố dâu tây
+		STRAWBERRY_SMOOTHIE = "Cường mạnh và mềm lỏng, đó là thức uống sinh tố dâu tằm", --★★★★★★★ 
 		STRAWBERRY_MILK_SMOOTHIE = "Sáng mát và sảng khoái!", -- Thêm gói thực phẩm Strawberry Smoothie Latte
 
 		-- 양조기 음료
@@ -166,7 +166,7 @@ return {
 
 		CHERRY_DOCTOR_COLA = "Chắc chắn không phải là nha sĩ.",
 		PINEANANASSODA = "Chúng tôi sẽ gọi nó là soda Thông Phong Táo.", -- Dứa có ga (Oran)
-		ORANGESODA = "Bạn gọi nó là gì khi một cốc soda cam mơ thấy? Fanta-sy!", -- Cam có ga (Fanta)
+		ORANGESODA = "Bạn gọi nó là gì khi trông thấy một cốc soda cam? Fanta-sy :>", --  --★★★★★★★ 
 		STRAWBERRYSODA = "Tôi chưa bao giờ thấy soda dâu trước đây!", -- Dâu tây có ga (dâu tây của Welch)
 
 		--콜라보 양조주
@@ -174,7 +174,7 @@ return {
 		AUROBOW = "Tôi muốn uống màu đó. Có lẽ chỉ một ngụm thôi?", -- Shipwreck Aurobow, Rainbow Jellyfish Wine
 		COCONUT_WINE = "Trông thật ngọt ngào!", -- Rượu dừa đắm tàu
 		CHERRY_BLOOM_MADHU = "Trông giống như rượu trong cửa hàng quà tặng!", -- Rượu mật ong hoa anh đào rừng anh đào
-		GIANT_BLUEBERRY_WINE = "Ít nhất thì họ vẫn giữ được tiếng nổ.", -- Sự bùng nổ không khoan nhượng! Berry Sapphire (nổ khi thắp sáng)
+		GIANT_BLUEBERRY_WINE = "Uh, ít nhất thứ đó giữ được bình tĩnh.", --  --★★★★★★★ 
 		RICE_WINE = "Có lẽ không phải sữa.", -- Makgeolli không khoan nhượng
 		WHEAT_BEER = "Trông giống bia thật!", -- Đống thức ăn Bia lúa mì
 		PALE_BEER = "Bây giờ tôi biết tại sao người lớn gọi nó là bia nhạt.", -- Legion Pale Ale (bia màu ngọc lam làm từ trái cây Monstra)
@@ -191,13 +191,13 @@ return {
 
 		--왈리 전용 증류주
 
-		BERRY_GIN = "Tôi nghĩ chính thuốc làm người ta bị bệnh.",
+		BERRY_GIN = "Tôi nghe nói nó được sản xuất với mục đích chữa bệnh nhưng nó đã khiến rất nhiều người bị bệnh.", --★★★★★★★
 		GLOWBERRY_GIN = "Rượu Gin lấp lánh! Nhưng nó không có trong đèn.",
 		ABSINTHE = "Tôi nghĩ tôi nghe nói nó được gọi là nàng tiên xanh!",
 		TEA_LUMPY_VODKA = "Thứ này trông có vẻ tốt cho sức khỏe! Nhưng nó vẫn là rượu.",
 		PETALS_BERRY_BRANDY = "Tôi không biết mùi vị thế nào, nhưng nó trông khá ngon!",
 		KAHLUA = "Tôi nghĩ ông Warly muốn uống cà phê và rượu",
-		NUT_CORN_WHISKEY = "Ước gì tôi có thể có một ít.",
+		NUT_CORN_WHISKEY = "Sẽ tốt hơn nếu nó ở dạng mà tôi có thể ăn được.",--★★★★★★★ 
 		RUINCACAO_CREAM_LIQUEUR = "Trông ngon quá! Tiếc là lại là rượu.",
 		RUMCHATA = "Trông ngọt ngào và mềm mại!",
 
@@ -218,7 +218,7 @@ return {
 		--냄비 요리
 
 		DARK_RUINCOLATE = "Tôi nghĩ ông Warly đã phạm sai lầm.",
-		WHITE_RUINCOLATE = "Tôi cần chia khẩu phần món này!",
+        WHITE_RUINCOLATE = "Chúng ta hãy tiết kiệm để không ăn quá nhiều cùng một lúc nhé!", --★★★★★★★
 		RUINCOLATE = "Oompa loompa doompety doo.",
 		RUIN_SCHOKAKOLA = "Ít nhất sô cô la sẽ không bị đè bẹp trong chuyến phiêu lưu của tôi.",
 
@@ -324,7 +324,7 @@ return {
 
 		DISTILLERS =
 		{   
-			EMPTY = "Vô cùng phức tạp!.", --Dòng điều tra Distiller
+		    EMPTY = "Nó có đủ loại tiện ích phức tạp kèm theo!", --★★★★★★
 			DISTILLTING_LONG = "Sẽ mất một lúc.", --Còn rất nhiều cho đến khi quá trình chưng cất hoàn tất.
 			DISTILLING_SHORT = "Tôi nghĩ đó là rượu?", --Quá trình chưng cất sẽ sớm kết thúc
 			DONE = "Tôi nên nói với những người ở trại đồ uống đã sẵn sàng.", --Có đồ uống trong máy chưng cất.
@@ -333,7 +333,7 @@ return {
 		WELL_WATERPUMP = {
 			HIGH_PRESSURE = "Sức mạnh của hơi nước thật tuyệt vời!", -- Áp suất tối đa
 			MIDDLE_PRESSURE = "Giỏi như ông Wolfgang!", -- Áp suất trung bình
-			LOW_PRESSURE = "Vật đó có cần thêm thức ăn không?", -- Khi có ít áp lực
+			LOW_PRESSURE = "Máy có cần thêm thức ăn không?", --★★★★★★ 
 			RECHARG_PRESSURE = "Chúng ta cần tìm một cái ao Woby.", -- Khi không có áp lực nào cả.
 		},
 

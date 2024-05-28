@@ -61,7 +61,7 @@ return {
 		CAFFEINBERRY_BEAN_COOKED = "가열했더니 확실히 나아졌어.",
  
 		RUINCACAO_TREE = "조금 소름끼치는 나무네.", 
-		DUG_RUINCACAO_TREE = "다른곳에 옮겨심을수 있겠어.",
+		DUG_RUINCACAO_TREE = "다른곳에 옮겨 심을수 있겠어.",
 		RUINCACAO_SEED = "벌써 발아했잖아?",
 		RUINCACAO_SEED_SAPLING = "시간이지나면 나무로 자랄거야.",
 		RUINCACAO = "생각보다 껍질이 바싹 말라있는데?",
@@ -107,7 +107,7 @@ return {
 		FUER = "향은 생각보다 나쁘지 않아.",
 		MIXFLOWER = "꽃향기가 가득해.",
 		HIBISCUSTEA = "향도 향인데 엄청 시어!",
-		CACTUSFLOWER_TEA = "가시돋친식물로 향긋한차를 만들었어.",
+		CACTUSFLOWER_TEA = "가시돋친 식물로 향긋한 차를 만들었어.",
 		LOTUSTEA = "비스킷 몇조각만 더 있으면 좋겠어.",
 		SUSHIBISCUS = "과학적으로 전혀 말이 안 되'잔'아.",
 		MOON_BLOSSOM_TEA = "향만맡아도 눈이 확 뜨이네.",
@@ -221,7 +221,7 @@ return {
         DARK_RUINCOLATE = "과학실험을 할거였으면 나도 불렀어야지.",
         WHITE_RUINCOLATE = "잔뜩 먹기에는 느끼하겠어.",
         RUINCOLATE = "실험에는 당분보충이 필요하지.",
-        RUIN_SCHOKAKOLA = "누가 초콜릿을 구두약캔에 보관할생각을했지?",
+        RUIN_SCHOKAKOLA = "누가 초콜릿을 구두약캔에 보관할 생각을 했지?",
 
 		BUCKET_STEEL_EMPTY = 
 		{

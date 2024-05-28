@@ -233,7 +233,7 @@ end)
 
 local eat_stroverride = ACTIONS.EAT.stroverridefn or function(act) return end
 ACTIONS.EAT.stroverridefn = function(act)
-    return act.invobject:HasTag("drink") and STRINGS.ACTIONS.DRINK or nil
+    return act.invobject and act.invobject:HasTag("drink") and STRINGS.ACTIONS.DRINK or nil
 end
 
 TURNON_TILEARRIVE.priority = 4
