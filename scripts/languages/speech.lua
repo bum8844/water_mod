@@ -1,3 +1,4 @@
+local modlist = require("utils/water_modlist").active_mod_compatibility
 --the translation function is in progress
 STRINGS.NAMES.FRUITFLYFRUIT_DEAD = STRINGS.NAMES.FRUITFLYFRUIT
 STRINGS.UI.DRINK_TYPES = {}
@@ -63,8 +64,10 @@ for _, character in pairs(vanilla_characters) do
 end
 
 modrequire("languages/strings/"..locale.."/common")
---modrequire("languages/strings/"..locale.."/insight")
-modrequire("languages/strings/en/insight")
+
+if modlist.it and GetModConfigData("useinsight") then
+	modrequire("languages/strings/"..locale.."/insight")
+end
 
 --AFS: some translation functions taken from Island Adventures. WIP
 --[[function DSD_GeneratePOT()

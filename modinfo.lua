@@ -1,5 +1,5 @@
 name 						= "Don't Starve: Dehydrated"
-version 					= "Alpha 1.2.7b.1"
+version 					= "Alpha 1.2.7b.2"
 local info_version = "Version "..version.."\n"
 
 description = info_version..[[
@@ -58,6 +58,17 @@ configuration_options =
 			{description = "Español", data="es", hover="Traducido por Deimos y RavenCorwen"},
 		},
 		default = false,
+	},
+	{
+		name = "useinsight",
+		label = "Use Insight",
+		hover = "",
+		options =
+		{
+			{description = "No", data = false},
+			{description = "YES", data = true},
+		},
+		default = true,
 	},
 	SEPARATOR,
 	Title("WorldGen options"),
