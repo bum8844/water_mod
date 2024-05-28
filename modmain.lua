@@ -19,6 +19,6 @@ modrequire("main")
 
 local modlist = require("utils/water_modlist").active_mod_compatibility
 
-if modlist.it then
+if modlist.it and GetModConfigData("useinsight") then
 	modrequire("modcompats/2189004162/insight_setting")
 end

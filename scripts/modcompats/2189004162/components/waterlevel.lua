@@ -4,6 +4,12 @@ local function Descriptors()
 
 			local function Describe(self, context)
 
+				local brewing = self.inst.components.brewing
+
+				if brewing and ( brewing.product or brewing.usedistill ) then
+					return
+				end
+
 				local description, water_amont_string
 
 				local maxwater = self.maxwater
