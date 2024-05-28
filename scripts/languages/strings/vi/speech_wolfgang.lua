@@ -110,7 +110,7 @@ return {
             CACTUSFLOWER_TEA = "Trà làm từ hoa màu đỏ.", -- Trà hoa xương rồng
             LOTUSTEA = "Wolfgang đã từng nhìn thấy trà hồng chưa?", -- Trà sen
             SUSHIBISCUS = "Ngay cả cơ bắp của Wolfgang cũng run rẩy...", -- Trà tự sát
-            MOON_BLOSSOM_TEA = "Trà thơm và đậm đặc làm cho tinh thần mạnh mẽ hơn!" -- Trà hoa dương quang
+            MOON_BLOSSOM_TEA = "Trà thơm và đậm đặc làm cho tinh thần mạnh mẽ hơn!", -- Trà hoa dương quang
 
             CAFFEINBERRY_JUICE = "Tuy đắng nhưng khiến Wolfgang mạnh mẽ hơn!", -- Cà phê đen
             TOFFEE_LATTE = "Có vị hạt dẻ.", -- Toffeenut latte

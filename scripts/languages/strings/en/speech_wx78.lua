@@ -66,7 +66,7 @@ return {
             RUINCACAO_SEED_SAPLING = "WITH A TRACE OF SHADOW AND SYMBIOSIS", -- Cocoa tree sapling planted
             RUINCACAO = "REQUIRES SOME POST-PROCESSING", -- Pre-broken cocoa fruit
             RUINCACAO_BEAN = "WORTH PROCESSING", -- Cocoa bean after breaking
-            RUINCACAO_SEED_COOKED = "BLACK BEANS ROASTED OVER FIRE", -- Roasted cocoa beans
+            RUINCACAO_BEAN_COOKED = "BLACK BEANS ROASTED OVER FIRE", -- Roasted cocoa beans
 
             -- Distillery Additives
 
