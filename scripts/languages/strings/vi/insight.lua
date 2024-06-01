@@ -10,8 +10,7 @@ STRINGS.INSIGHT.STATE = {}
 STRINGS.INSIGHT.EDIBLE = {}
 STRINGS.INSIGHT.EDIBLE.RAWTEXT = {}
 STRINGS.INSIGHT.THIRST = {}
-
-STRINGS.INSIGHT.DESALINATION = {}
+STRINGS.INSIGHT.SALTMAKER = {}
 
 STRINGS.INSIGHT.STATE.MELT = "<color=#85AFAF>Tan chảy</color>"
 STRINGS.INSIGHT.STATE.PURIFY = "<color=#2F70C0>Thanh lọc</color>"
@@ -55,8 +54,8 @@ STRINGS.INSIGHT.WATERINGTOOL.RAWTEXT_TIME_EXT = "Loại nước : %s(Số lượ
 STRINGS.INSIGHT.WATERINGTOOL.RAWTEXT = "Water Type : %s"
 STRINGS.INSIGHT.WATERINGTOOL.RAWTEXT_EXT = "Water Type : %s(Số lượng : %s)"
 
-STRINGS.INSIGHT.DESALINATION.RAWTEXT = "<color=#E0E0E0>Muối</color> thu được <color=#E0E0E0>%s/%s</color>"
-STRINGS.INSIGHT.DESALINATION.RAWTEXT_EXT = "<color=#E0E0E0>Muối</color> thu được <color=#E0E0E0>%s/%s</color> (<color=#E0E0E0>%s/%s</color>)"
+STRINGS.INSIGHT.SALTMAKER.RAWTEXT = "<color=#E0E0E0>Muối</color> thu được <color=#E0E0E0>%s/%s</color>"
+STRINGS.INSIGHT.SALTMAKER.RAWTEXT_EXT = "<color=#E0E0E0>Muối</color> thu được <color=#E0E0E0>%s/%s</color> (<color=#E0E0E0>%s/%s</color>)"
 
 STRINGS.INSIGHT.EDIBLE.RAWTEXT.LONG = "<color=#2F70C0>Khát</color>: <color=#2F70C0>%s</color>"
 STRINGS.INSIGHT.EDIBLE.RAWTEXT.SHORT = "<color=#2F70C0>%s</color>"

@@ -7,7 +7,7 @@ local waterspoilagefn = require(default.."/components/waterspoilage").Descriptor
 local steampressurefn = require(default.."/components/steampressure").Descriptors
 local wateringtoolfn = require(default.."/components/wateringtool").Descriptors
 local wateringstructurefn = require(default.."/components/wateringstructure").Descriptors
-local desalinatorfn = require(default.."/prefabs/desalinator").AddPrefabDescriptors
+local saltmakerfn = require(default.."/components/saltmaker").Descriptors
 
 AddSimPostInit(brewingfn)
 AddSimPostInit(distillerfn)
@@ -16,7 +16,7 @@ AddSimPostInit(waterspoilagefn)
 AddSimPostInit(steampressurefn)
 AddSimPostInit(wateringtoolfn)
 AddSimPostInit(wateringstructurefn)
-AddSimPostInit(desalinatorfn)
+AddSimPostInit(saltmakerfn)
 
 if GetModConfigData("enable_thirst") then
 	require(default.."/components/edible")
