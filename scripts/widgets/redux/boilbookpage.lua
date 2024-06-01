@@ -448,7 +448,7 @@ function BoilbookPage:PopulateRecipeDetailPanel(data)
 		if data.recipes ~= nil and #data.recipes > 0 then
 			-- Cooking Time
 			y = y - title_font_size/2
-			title = details_root:AddChild(Text(HEADERFONT, title_font_size, STRINGS.UI.COOKBOOK.COOKINGTIME_TITLE, UICOLOURS.BROWN_DARK))
+			title = details_root:AddChild(Text(HEADERFONT, title_font_size, STRINGS.UI.COOKBOOK.BOILTIME_TITLE, UICOLOURS.BROWN_DARK))
 			title:SetPosition(0, y)
 			y = y - title_font_size/2
 			MakeDetailsLine(details_root, 0, y - 2, .49)

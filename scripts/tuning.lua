@@ -233,6 +233,11 @@ water_tuning =
         SEED_CHANCE = 0.01,
         MAX_SPAWNS = 10, -- NOTES(JBK): Deprecated, kept around for mods.
     },
+
+    SALT_VALUE = 10,
+    DESALINATOR_MAX_SALT = 40,
+    DESALINATOR_SALT_SECTION = 9,
+    SALT_PER_WATER = 1/80,
 }
 
 for i,v in pairs(water_tuning) do

@@ -36,7 +36,7 @@ local Waterlevel = Class(function(self, inst)
     self.inst = inst
     self.consuming = false
     self.isputoncetime = false
-    self.onlydistill = false
+    self.noneboil = false
     self.onlysamewater = false
 
     self.maxwater = 0
@@ -86,8 +86,8 @@ function Waterlevel:OnLoad(data)
     end
 end
 
-function Waterlevel:SetOnlyDistill(bool)
-    self.onlydistill = bool
+function Waterlevel:SetNoneBoil(bool)
+    self.noneboil = bool
 end
 
 function Waterlevel:MakeEmpty()
@@ -193,6 +193,8 @@ function Waterlevel:DoDiistiller(item, doer)
         return
     end
 
+    self.inst.components.distiller.done = true
+
     local watervalue = self:GetWater()
     local isDirtyIce = self.watertype == WATERTYPE.DIRTY_ICE
 
@@ -202,15 +204,10 @@ function Waterlevel:DoDiistiller(item, doer)
     elseif item.components.perishable then
         if item.components.perishable:IsStale() then
             watervalue = watervalue / 4
-            self.inst.components.distiller.done = false
         elseif item.components.perishable:IsSpoiled() then
             watervalue = watervalue / 2
-            self.inst.components.distiller.done = false
-        else
-            self.inst.components.distiller.done = true
         end
-    else
-        self.inst.components.distiller.done = true
+        self.inst.components.distiller.done = false
     end
 
     if not self.inst.components.distiller.done then
