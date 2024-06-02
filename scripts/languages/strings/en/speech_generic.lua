@@ -66,7 +66,7 @@ return {
 		RUINCACAO_SEED_SAPLING = "It'll grow into a tree in time.",
 		RUINCACAO = "It's drier than I thought.",
 		RUINCACAO_BEAN = "Too greasy to eat.",
-		RUINCACAO_SEED_COOKED = "It's more smokey than I thought.",
+		RUINCACAO_BEAN_COOKED = "It's more smokey than I thought.",
 
         -- distiller ADDITIVE
 
