@@ -71,6 +71,10 @@ if modlist.it and GetModConfigData("useinsight") then
 	modrequire("languages/strings/"..locale.."/insight")
 end
 
+if modlist.it and GetModConfigData("useinsight") then
+	modrequire("languages/strings/"..locale.."/insight")
+end
+
 --AFS: some translation functions taken from Island Adventures. WIP
 --[[function DSD_GeneratePOT()
 	--create the file

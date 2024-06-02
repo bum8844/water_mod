@@ -10,8 +10,7 @@ STRINGS.INSIGHT.STATE = {}
 STRINGS.INSIGHT.EDIBLE = {}
 STRINGS.INSIGHT.EDIBLE.RAWTEXT = {}
 STRINGS.INSIGHT.THIRST = {}
-
-STRINGS.INSIGHT.DESALINATION = {}
+STRINGS.INSIGHT.SALTMAKER = {}
 
 STRINGS.INSIGHT.STATE.MELT = "<color=#85AFAF>Descongelará</color>"
 STRINGS.INSIGHT.STATE.PURIFY = "<color=#2F70C0>Purificará</color>"
@@ -55,8 +54,8 @@ STRINGS.INSIGHT.WATERINGTOOL.RAWTEXT_TIME_EXT = "Tipo de agua : %s(Cantidad : %s
 STRINGS.INSIGHT.WATERINGTOOL.RAWTEXT = "Tipo de agua : %s"
 STRINGS.INSIGHT.WATERINGTOOL.RAWTEXT_EXT = "Tipo de agua : %s(Cantidad : %s)"
 
-STRINGS.INSIGHT.DESALINATION.RAWTEXT = "<color=#E0E0E0>Sal</color> Obtenida <color=#E0E0E0>%s/%s</color>"
-STRINGS.INSIGHT.DESALINATION.RAWTEXT_EXT = "<color=#E0E0E0>Sal</color> Obtenida <color=#E0E0E0>%s/%s</color> (<color=#E0E0E0>%s/%s</color>)"
+STRINGS.INSIGHT.SALTMAKER.RAWTEXT = "<color=#E0E0E0>Sal</color> Obtenida <color=#E0E0E0>%s/%s</color>"
+STRINGS.INSIGHT.SALTMAKER.RAWTEXT_EXT = "<color=#E0E0E0>Sal</color> Obtenida <color=#E0E0E0>%s/%s</color> (<color=#E0E0E0>%s/%s</color>)"
 
 STRINGS.INSIGHT.EDIBLE.RAWTEXT.LONG = "<color=#2F70C0>Sed</color>: <color=#2F70C0>%s</color>"
 STRINGS.INSIGHT.EDIBLE.RAWTEXT.SHORT = "<color=#2F70C0>%s</color>"

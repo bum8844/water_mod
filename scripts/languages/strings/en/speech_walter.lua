@@ -27,7 +27,7 @@ return {
 
 	DESCRIBE =
 	{
-		BOILBOOK =  "I can memorize one more book, anyway", --★★★★★★★
+		BOILBOOK =  "It doesn't hurt to memorize one more handbook.", --★★★★★★★
 
 		WATER_CLEAN_ICE = "Oh, gosh,It's frozen.", --★★★★★★★
 		WATER_DIRTY_ICE = "The ice is so black!.",

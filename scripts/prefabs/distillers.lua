@@ -233,7 +233,7 @@ local function fn()
 
     inst:AddComponent("waterlevel")
     inst.components.waterlevel:SetCanAccepts({WATERGROUP.NONE_BOIL})
-    inst.components.waterlevel:SetOnlyDistill(true)
+    inst.components.waterlevel:SetNoneBoil(true)
 
     inst:AddComponent("container")
     inst.components.container:WidgetSetup("distillers")
