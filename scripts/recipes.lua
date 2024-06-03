@@ -98,18 +98,22 @@ AddRecipe2("bucket_woodie_empty",{Ingredient("lucy",0),Ingredient("log",2)},TECH
 SortAfter("bucket_woodie_empty", "goldenpitchfork", "TOOLS")
 SortAfter("bucket_woodie_empty","woodie_boards","CHARACTER")
 
+AddRecipe2("bucket_driftwood_empty",{Ingredient("driftwood_log",2)},TECH.NONE,{atlas = ModAtlas(), image = "bucket_driftwood_empty.tex", description="bucket_empty"},{"HYDRATION","TOOLS"})
 AddRecipe2("bucket_steel_empty",{Ingredient("steelwool",2),Ingredient("hammer",0)},TECH.SCIENCE_TWO,{atlas = ModAtlas(), image = "bucket_steel_empty.tex",  description="bucket_empty"},{"HYDRATION","TOOLS"})
 
 if modlist.hof then
     AddRecipeToFilter("kyno_bucket_empty","HYDRATION")
     SortAfter("kyno_bucket_empty","bucket_woodie_empty","TOOLS")
     SortAfter("kyno_bucket_empty","bucket_woodie_empty","HYDRATION")
-    SortAfter("bucket_steel_empty","kyno_bucket_empty","TOOLS")
+    SortAfter("bucket_driftwood_empty","kyno_bucket_empty","TOOLS")
+    SortAfter("bucket_driftwood_empty","kyno_bucket_empty","HYDRATION")
+    SortAfter("bucket_steel_empty","bucket_driftwood_empty","TOOLS")
 else
     AddRecipePostInit("fertilizer",function(v) v.ingredients = {Ingredient("poop", 3), Ingredient("boneshard", 2), Ingredient("bucket_empty", 1, ModAtlas(), nil,"bucket_empty.tex")} end)
     AddRecipe2("bucket_empty",{Ingredient("log",4)},TECH.NONE,{atlas = ModAtlas(), image = "bucket_empty.tex"},{"HYDRATION","TOOLS"})
     SortAfter("bucket_empty","bucket_woodie_empty","TOOLS")
-    SortAfter("bucket_steel_empty","bucket_empty","TOOLS")
+    SortAfter("bucket_driftwood_empty","bucket_empty","TOOLS")
+    SortAfter("bucket_steel_empty","bucket_driftwood_empty","TOOLS")
 end
 
 AddRecipe2("spice_caffeinpepper",{Ingredient("caffeinberry_bean_cooked", 3, ModAtlas(), nil, "caffeinberry_bean_cooked.tex")},TECH.FOODPROCESSING_ONE,{atlas = ModAtlas(), builder_tag="professionalchef", numtogive=2, image = "spice_caffeinpepper.tex" ,nounlock=true},{"FOODPROCESSING"})

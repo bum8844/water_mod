@@ -268,5 +268,6 @@ local function MakeBucketItem(bucketname, multiplier, sound, nowood)
 end
 
 return MakeBucketItem("bucket"),
+    MakeBucketItem("driftwood",TUNING.DRIFWOOD_BUCKET_MULT),
     MakeBucketItem("woodie",TUNING.WOODIE_BUCKET_MULT),
     MakeBucketItem("steel",TUNING.STEEL_BUCKET_MULT,"metal",true)
