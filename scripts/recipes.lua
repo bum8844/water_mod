@@ -94,7 +94,7 @@ if modlist.ia or modlist.te then
     AddRecipeToFilter("turf_ruinsbrick_glow_blueprint","SECRETKNOWLEDGE")
 end
 
-AddRecipe2("bucket_woodie_empty",{Ingredient("lucy",0),Ingredient("log",2)},TECH.NONE,{atlas = ModAtlas(), image = "bucket_woodie_empty.tex", builder_tag="woodcarver1", sg_state="carvewood_boards",  description="bucket_empty"},{"CHARACTER","HYDRATION","TOOLS"})
+AddRecipe2("bucket_woodie_empty",{Ingredient("lucy",0),Ingredient("log",3)},TECH.NONE,{atlas = ModAtlas(), image = "bucket_woodie_empty.tex", builder_tag="woodcarver1", sg_state="carvewood_boards",  description="bucket_empty"},{"CHARACTER","HYDRATION","TOOLS"})
 SortAfter("bucket_woodie_empty", "goldenpitchfork", "TOOLS")
 SortAfter("bucket_woodie_empty","woodie_boards","CHARACTER")
 
