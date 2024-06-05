@@ -10,8 +10,8 @@ return {
 
         ANNOUNCE_DRUNK = "Tôi có thua trong trò chơi uống rượu không? Nấc cụt.", -- Say rượu
         ANNOUNCE_DRUNK_END = "Tôi vẫn còn ở bữa tiệc của Egir à?", -- Tỉnh dậy vì say (nôn nao)
-        ANNOUNCE_DRUNK_IMMUNITY = "Hahaha! Thêm một ly nữa!", -- Tạm thời. Dành riêng cho Wigfrid.
-        ANNOUNCE_NOTCHARGE = "Có vẻ như dê sét chưa sẵn sàng để sạc nên tôi không thể vắt sữa nó bằng xô.", -- Cố gắng vắt sữa dê sét bằng xô khi nó chưa được sạc
+        ANNOUNCE_DRUNK_IMMUNITY = "Hahahaha! Thêm cốc nữa nào!", -- Tạm thời. Dành riêng cho Wigfrid.
+        ANNOUNCE_NOTCHARGE ="Kỳ lân nói rằng có vẻ như họ vẫn chưa sẵn sàng.", -- Cố gắng vắt sữa dê sét bằng xô khi nó chưa được sạc
         ANNOUNCE_NOTHIRSTSLEEP = "Nếu ngủ như thế này, tôi sẽ khát cả đêm! Tôi nên uống chút nước trước đã.", -- Cố gắng ngủ vào ban đêm khi khát
         ANNOUNCE_NOTHIRSTSIESTA = "Làm sao tôi có thể nghỉ ngơi như thế này khi cổ họng tôi khô khốc thế này!", -- Cố gắng nghỉ ngơi trong ngày khi khát nước
         ANNOUNCE_SLEEP_END = "Tôi cảm thấy sảng khoái!", -- Thức dậy sau khi ngủ và hoàn toàn tỉnh táo
@@ -27,7 +27,7 @@ return {
 
         DESCRIBE =
         {
-            BOILBOOK = "Cuốn sách này viết bao nhiêu công thức nấu tiệc?",
+            BOILBOOK = "Bao nhiêu rượu vang được liệt kê cho bữa tiệc tối?",
 
             WATER_CLEAN_ICE = "Đó là chất rắn đông lạnh.", -- Đá sạch
             WATER_DIRTY_ICE = "Đá có tạp chất.", -- Đá bẩn
@@ -37,11 +37,11 @@ return {
             WELL_KIT = "Tôi rất sẵn lòng lắp đặt một cái giếng.", -- Bộ dụng cụ tốt
             WELL_SPRINKLER_KIT = "Máy mưa không mây.", -- Bộ phun nước
             WELL_WATERPUMP_KIT = "Máy móc sẽ cướp bóc thế giới dưới lòng đất.", -- Bộ máy bơm nước bằng hơi nước
-            WELL_BURYING_KIT = "Hãy đảm bảo không có ai dẫm lên thứ này.", -- Bộ dụng cụ chôn lỗ
+            WELL_BURYING_KIT = "Hãy chắc chắn rằng không ai vấp ngã.", -- Bộ dụng cụ chôn lỗ
             WELL_DRILLING = "Đẩy nó đến tận Styx!", -- Khoan lỗ bằng máy khoan
             WELL_DRILLING_ITEM = "Một công cụ mạnh mẽ để mở đường đến thế giới dưới lòng đất.", -- Vật phẩm khoan
             HOLE = "Tôi nghe thấy tiếng nước ở dưới đó.", -- Lỗ giếng
-            WELL = "Một cái giếng cho người khát.", -- Vâng
+            WELL = "Hãy đào giếng ngay trước khi chết khát.", -- Vâng
 
             WX78MODULE_NONEDRUNK = "Những lợi ích này sẽ tiếp thêm sức mạnh cho chiến binh kim loại của chúng ta.", -- 78전용 묘듈
 
@@ -55,7 +55,7 @@ return {
             TEALEAVES = "Một chùm lá thơm.", -- Lá trà
             TEALEAVES_DRIED = "Một nắm lá trà khô.", -- Lá trà khô
 
-            CAFFEINBERRY = "Bụi cây mang sức sống.", -- Bụi cà phê
+            CAFFEINBERRY = "Những bụi cây đậu đã được Mani phù hộ.", -- Bụi cà phê
             DUG_CAFFEINBERRY = "Chúng ta cùng đi nhé.", -- Đào bụi cà phê
             CAFFEINBERRY_BEAN = "Cần rang cho đến khi chuyển sang màu đen.", -- Hạt cà phê thô
             CAFFEINBERRY_BEAN_COOKED = "Hạt cà phê tràn đầy sức sống.", -- Hạt cà phê nấu chín
@@ -64,7 +64,7 @@ return {
             DUG_RUINCACAO_TREE = "Tôi hy vọng nó sẽ trở về với nữ thần Trái đất.", -- Đào cây cacao
             RUINCACAO_SEED = "Nó vượt qua nỗi sợ hãi và nở hoa.", -- Vật phẩm cây giống Cacao
             RUINCACAO_SEED_SAPLING = "Nó đã trút bỏ được nỗi sợ hãi. Hãy lớn lên đi, cây non!", -- Đã trồng cây cacao
-            RUINCACAO = "Có phải cây non đang chờ bị đốt phải không?", -- Vỏ ca cao trước khi đập
+            RUINCACAO = "Có phải những cây non sẽ bị đốt cháy trong khi chúng bị giam giữ?", -- Vỏ ca cao trước khi đập
             RUINCACAO_BEAN = "Nó rỉ ra dầu.", -- Hạt cacao nghiền nát
             RUINCACAO_BEAN_COOKED = "Cây non đã được nấu chín.", -- Hạt cacao đã nấu chín
 
@@ -77,11 +77,11 @@ return {
 
             -- Đồ uống
 
-            WATER_CLEAN = "Nước tinh khiết.", -- Nước sạch
-            WATER_DIRTY = "Nước hoang dã, hoang dã.", -- Nước bẩn
+            WATER_CLEAN = "Thứ này là nước tinh khiết", -- Nước sạch
+            WATER_DIRTY = "Một thứ nước đầy hoang dã cần được thuần hoá!", -- Nước bẩn
             WATER_SALTY = "Một cốc nước biển.", -- Nước biển
 
-            GOOPYDRINK = "Hầu hết là thức ăn thừa.", -- Đồ uống không thành công (khái niệm nướng ướt)
+            GOOPYDRINK = "Thức uống thừa có vẻ khá ẩm ướt.", -- Đồ uống không thành công (khái niệm nướng ướt)
 
             -- Đồ uống ấm trà
 
@@ -89,24 +89,24 @@ return {
             BERRIES_JUICE = "Nó tỏa ra mùi trái cây màu đỏ.", -- Nước ép quả mọng
             POMEGRANATE_JUICE = "Tôi nên coi nó như máu của trái cây.", -- Nước ép lựu
             BANANA_JUICE = "Có vẻ như là nước ép khỉ.", -- Nước chuối
-            FIG_JUICE = "Ở đây có quá nhiều trái cây.", -- Nước ép quả sung
-            DRAGONJUICE = "Tràn đầy trái cây trắng.", -- Nước ép thanh long
+            FIG_JUICE = "Có một số lượng quá lớn thịt trái cây bất kính.", -- Nước ép quả sung
+            DRAGONJUICE = "Đầy thịt trái cây màu trắng.", -- Nước ép thanh long
             GLOWBERRYJUICE = "Hãy giả vờ đó là nước từ một con suối rực sáng.", -- Nước ép Glowberry
-            WATERMELON_JUICE = "Đây là nước lọc, không phải nước ép trái cây.", -- Nước ép dưa hấu
+            WATERMELON_JUICE = "Hãy tưởng tượng rằng đây không phải là trái cây mà là nước.", -- Nước ép dưa hấu
 
             VEGGIE_TEA = "Tôi có thực sự phải uống thứ này không?", -- Nước ép rau củ
             CARROT_TEA = "Sao các chiến binh có thể phục vụ thức ăn cho thỏ như thế này!", -- Trà cà rốt
             CACTUS_TEA = "Được rồi, hãy coi nó như một lời tri ân dành cho cỏ phiến.", -- Trà xương rồng
             TOMATO_JUICE = "Tôi sẽ chỉ uống nước của loại rau này.", -- Nước ép cà chua
-            LUMPY_TEA = "Hãy coi nó như tinh chất của các loại rau củ trong nước.", -- Trà rễ
+            LUMPY_TEA = "Làm sao bạn có thể đưa một thứ có mùi bẩn thỉu như vậy cho một chiến binh!", -- Trà rễ
             SEAWEED_SHAKE = "Kinh khủng. Hoàn toàn khủng khiếp!", -- Rong biển lắc
 
             GREENTEA = "Chỉ là... nước có vị lá.", -- Trà xanh lá tươi
             BLACKTEA = "Tôi không có thời gian để tụ tập nhàn nhã.", -- Trà đen
-            BLACKTEA_ICED = "Cái này lạnh quá.", -- Trà đen đá
+            BLACKTEA_ICED = "Chỉ nhìn thôi cũng thấy nhức răng.", -- Trà đen đá
             FUER = "Chỉ là một chút dương xỉ thôi!", -- Trà Bohee, trà lá, trà dương xỉ
             MIXFLOWER = "Những phước lành của Freya được chứa đựng bên trong.", -- Trà cánh hoa hỗn hợp
-            HIBISCUSTEA = "Bông hoa đang rơi nước mắt.", -- Trà dâm bụt
+            HIBISCUSTEA = "Bông hoa đang đổ máu.", -- Trà dâm bụt
             CACTUSFLOWER_TEA = "Tôi sẽ uống nước, nhưng không uống hoa.", -- Trà hoa xương rồng
             LOTUSTEA = "Cho tôi cá! Cá!!", -- Trà hoa sen
             SUSHIBISCUS = "Thức uống này chắc chắn bị nguyền rủa.", -- Trà tự sát
@@ -117,12 +117,12 @@ return {
             RUINCHA_LATTE = "Tâm trí của tôi đang thức tỉnh.", -- Mocha latte (Cà phê + Sôcôla)
 
             HOTRUINCOLATE = "Sưởi ấm tâm hồn.", -- Sôcôla nóng
-            RUINCOLATE_SMOOTHIE = "Đây có phải là thức uống của gã khổng lồ băng giá không?", -- Sinh tố sô cô la (Lạnh)
+            RUINCOLATE_SMOOTHIE = "Đây có phải là thức uống của Hrim-thurs không?", -- Sinh tố sô cô la (Lạnh)
             RUINXOCOLATL = "Thức uống của các chiến binh cổ xưa.", -- Chocolatl (cay)
             TEA_RUINCOLATE_LATTE = "Nó đánh thức tâm hồn tôi.", -- Matcha sô cô la latte
 
             MULLED = "Nó sẽ mang lại sự nghỉ ngơi cho những tâm hồn mệt mỏi.", -- Bhang
-            BUTTERBEER = "Lòng dũng cảm của các pháp sư trẻ rất cao.", -- Bia bơ trong bộ truyện Harry Potter
+            BUTTERBEER = "Tôi đánh giá cao lòng dũng cảm của các pháp sư trẻ.", -- Bia bơ trong bộ truyện Harry Potter
 
             -- Hợp tác Ấm trà Đồ uống
 
@@ -134,8 +134,8 @@ return {
             SWEET_RICE_DRINK = "Cái này không chứa hạt à?", -- Vita-Hybiscus Sweet Rice Punch
             PINEANANAS_JUICE = "Nó đã nghiền nát những vảy cứng để lấy thịt.", -- Reign of Giants Pineananas Juice
             ORANGE_JUICE = "Nó bảo tôi uống nước ép chua của nó à?", -- Thêm gói thực phẩm Nước cam
-            STRAWBERRY_SMOOTHIE = "Một hỗn hợp trái cây lạnh, màu đỏ.", -- Thêm gói thực phẩm Sinh tố dâu tây
-            STRAWBERRY_MILK_SMOOTHIE = "Thức uống có màu hồng, hương trái cây.", -- Gói thực phẩm khác Sinh tố sữa dâu
+            STRAWBERRY_SMOOTHIE = "Đó là một loại nước ép trái cây màu đỏ, lạnh.", -- Thêm gói thực phẩm Sinh tố dâu tây
+            STRAWBERRY_MILK_SMOOTHIE = "Đồ uống này không thích hợp cho một chiến binh.", -- Gói thực phẩm khác Sinh tố sữa dâu
 
             -- Đồ uống chưng cất
 
@@ -143,7 +143,7 @@ return {
 
             -- Nhà máy chưng cất soda
 
-            SODA = "Soda nước suối.", -- Nước có ga
+            SODA = "Đó là nước suối có ga.", -- Nước có ga
             FRUITSODA = "Giống như nước ép trái cây.", -- Fruit Punch Soda
             LEMONLIMESODA = "Nó không phải là thức uống xứng đáng của một chiến binh.", -- Lemon Lime Soda (Phiên bản cao cấp của Fruit Soda)
             COLA = "Nó quyến rũ như chính bóng tối vậy.", -- Cola
@@ -153,14 +153,14 @@ return {
             -- Rượu chưng cất
 
             ORN_BEER = "Đó là bia giả của Đức.", -- Bia ngô
-            MADHU = "Đó là rượu mật ong của Xiye!", -- Mead
+            MADHU = "Đó là đồng cỏ của Nord!", -- Mead
             WINE = "Nó được làm từ máu của nhà tiên tri.", -- Rượu (Rượu vang cơ bản)
             NOBLEWINE = "Thịt đi kèm ở đâu?", -- Noble Wine (Rượu nấu chín)
             SPARKLINGWINE = "Đây không phải là thức uống ăn mừng dành cho các chiến binh.", -- Sparkling Wine
             GLOWBERRYWINE = "Nó giống như máu của Kvasir.", -- Glow Berry Wine
             KUMIS = "Cầu xin các vị thần giúp chúng ta làm rượu từ sữa?", -- Kumis, sữa yak lên men
             LUMPY_WINE = "Nó sẽ không thỏa mãn cơn khát của tôi.", -- Mead với khoai tây, khoai lang hoặc rễ
-            PULQUE = "Đó là máu của Maya-Uh!", -- Pulque (Agave brew)
+            PULQUE = "Đó là máu của Mayahuel!", -- Pulque (Agave brew)
             RUINCACAO_WINE = "Đây có phải là rượu của người Toltec không?", -- Rượu Cacao
 
             -- Hợp tác Soda
@@ -176,13 +176,13 @@ return {
             COCONUT_WINE = "Mùi dầu cọ nồng nặc.", -- Rượu dừa đắm tàu
             CHERRY_BLOOM_MADHU = "Một thức uống ngon và bắt mắt.", -- Cherry Forest Cherry Blossom Mead
             GIANT_BLUEBERRY_WINE = "Đó là một thức uống mạnh mẽ!", -- Vita-Hybiscus Boom! Berry Sapphire (Nổ khi đánh lửa)
-            RICE_WINE = "Rõ ràng nhất có thể!", -- Vita-Hybiscus Makgeolli
-            WHEAT_BEER = "Đó cũng là bia phải không?", -- Hip of Food Wheat Beer
+            RICE_WINE = "Tôi không thể thấy bất kỳ sự khác biệt nào giữa nó và sữa.", -- Vita-Hybiscus Makgeolli
+            WHEAT_BEER = "Đó là bia của Egir.", -- Hip of Food Wheat Beer
             PALE_BEER = "Đây cũng là bia à?", -- Reign of Giants Pale Ale (Bia màu ngọc lam làm từ Monsterlas)
 
             -- Rượu chưng cất
 
-            DISINFECTANT = "Nó sẽ làm sạch vết thương và chữa lành chúng!", -- Thuốc khử trùng
+            DISINFECTANT = "Sẽ đốt vết thương của bạn để chữa lành chúng!", -- Thuốc khử trùng
             CORN_WHISKEY = "Ngọt và thơm.", -- Corn Whiskey
             LUMPY_VODKA = "Tôi tuyên bố, tôi sẽ uống thứ này như uống nước.", -- Vodka
             TEQUILA = "Đó là một thức uống thô và hoang dã!", -- Tequila
@@ -218,7 +218,7 @@ return {
 
             -- Nấu nồi
 
-            DARK_RUINCOLATE = "Đồng đội của tôi có thể làm món Samiaki không?", -- Sôcôla đen
+            DARK_RUINCOLATE = "Tôi nên hỏi đồng minh của mình xem anh ấy có thể làm salmiakki không.", -- Sôcôla đen
             WHITE_RUINCOLATE = "Người Viking không thích đồ ăn nhẹ ngọt ngào như vậy.", -- Sôcôla trắng
             RUINCOLATE = "Đó là một khẩu phần có thể chấp nhận được.", -- Just Chocolate
             RUIN_SCHOKAKOLA = "Nó khuấy động sự phấn khích của chiến trường.", -- Schokakola
@@ -227,7 +227,7 @@ return {
             {
                 EMPTY = "Đó là một cái xô sắt.", -- Xô sắt rỗng
                 FULL = "Nó chứa đầy nước sạch.", -- Bên trong có nước mưa sạch
-                FULL_ICE = "Nó đã đóng băng thành nước hoa.", -- Nước mưa đã đóng băng
+                FULL_ICE = "Nó gợi lên một cảm giác hoài niệm.", -- Nước mưa đã đóng băng
                 DIRTY = "Thật bẩn.", -- Nước mưa đã trở nên bẩn
                 DIRTY_ICE = "Nó đã biến thành một cục bẩn.", -- Nước mưa bẩn đã đóng băng
             },
@@ -236,7 +236,7 @@ return {
             {
                 EMPTY = "Bạn đã đổ khúc gỗ một cách khéo léo.", -- Thùng gỗ rỗng
                 FULL = "Nó chứa đầy nước sạch.", -- Bên trong có nước mưa sạch
-                FULL_ICE = "Nó đã đóng băng thành nước hoa.", -- Nước mưa đã đóng băng
+                FULL_ICE = "Nó gợi lên một cảm giác hoài niệm.", -- Nước mưa đã đóng băng
                 DIRTY = "Thật bẩn.", -- Nước mưa đã trở nên bẩn
                 DIRTY_ICE = "Nó đã biến thành một cục bẩn.", -- Nước mưa bẩn đã đóng băng
             },
@@ -245,7 +245,7 @@ return {
             {
                 EMPTY = "Đó là một cái xô gỗ rỗng.", -- Xô gỗ rỗng
                 FULL = "Nó chứa đầy nước sạch.", -- Bên trong có nước mưa sạch
-                FULL_ICE = "Nó đã đóng băng thành nước hoa.", -- Nước mưa đã đóng băng
+                FULL_ICE = "Nó gợi lên một cảm giác hoài niệm.", -- Nước mưa đã đóng băng
                 DIRTY = "Thật bẩn.", -- Nước mưa đã trở nên bẩn
                 DIRTY_ICE = "Nó đã biến thành một cục bẩn.", -- Nước mưa bẩn đã đóng băng
             },
@@ -268,11 +268,11 @@ return {
 
             BREWERY =
             {
-                EMPTY = "Tôi tuyên bố rằng tôi sẽ làm rượu punch với rau và trái cây ở đây.", -- Kiểm tra nhà máy bia
-                BURNT = "Khóc lóc vì rượu cạn cũng vô ích.", -- Nhà máy bia đã cháy rụi
-                FERMENTING_LONG = "Tốt hơn là nên làm việc khác trong khi chờ đợi.", -- Vẫn còn rất nhiều quá trình lên men
+                EMPTY = "Nghe này, nghe đây! Tôi sẽ chuẩn bị một bữa tiệc rượu bằng cách sử dụng những món quà, rau và trái cây ngon nhất của thiên nhiên.", -- Kiểm tra nhà máy bia
+                BURNT = "Khóc lóc vì rượu đổ có ích gì?", -- Nhà máy bia đã cháy rụi
+                FERMENTING_LONG = "Tốt hơn là nên kiếm thịt cho bữa tiệc bằng cách săn bắn thay vì chỉ chờ đợi.", -- Vẫn còn rất nhiều quá trình lên men
                 FERMENTING_SHORT = "Đã đến lúc chuẩn bị cho bữa tiệc!", -- Quá trình lên men gần như đã hoàn tất
-                DONE = "Punch đã sẵn sàng cho bữa tiệc chưa?", -- Có đồ uống trong nhà máy bia
+                DONE = "Rượu đã sẵn sàng cho bữa tiệc chưa?", -- Có đồ uống trong nhà máy bia
             },
 
             CAMPKETTLE_ITEM = "Đó là một chiếc ấm đun nước tạm thời.", -- Kiểm tra hạng mục ấm đun nước di động
@@ -311,14 +311,14 @@ return {
 
             PORTABLEKETTLE_ITEM =
             {
-                GENERIC = "Chiến trường không phải là nơi tổ chức tiệc.", -- Kiểm tra vật phẩm ấm đun nước di động
+                GENERIC = "Chiến trường không phải là nơi tổ chức tiệc trà.", -- Kiểm tra vật phẩm ấm đun nước di động
                 EMPTY = "Không còn chỗ cho thịt.", -- Kiểm tra một ấm đun nước di động được đặt trống
                 BOILING_LONG = "Thà đi tìm kẻ thù còn hơn là pha đồ uống.", -- Quá trình pha đồ uống vừa mới bắt đầu
                 BOILING_SHORT = "Đồ uống gần như đã sẵn sàng.", -- Đồ uống gần như đã sẵn sàng
                 DONE = "Hãy uống nhanh và ra trận.", -- Đồ uống đã sẵn sàng
                 PURIFY_LONG = "Hãy kiên nhẫn, nó vẫn chưa sôi đâu", -- Quá trình đun sôi nước bẩn vừa mới bắt đầu
                 PURIFY_SHORT = "Sẽ không mất nhiều thời gian đâu.", -- Nước bẩn gần như đã sẵn sàng
-                HASWATER = "Chiến binh không có thời gian cho bữa tiệc; hãy đổ nước đi.", -- Có nước sạch trong ấm di động
+                HASWATER = "Một chiến binh không có thời gian cho một bữa tiệc trà; khô máu thôi.", -- Có nước sạch trong ấm di động
                 MELT_LONG = "Trời vẫn còn khá lạnh.", -- Quá trình làm tan nước đá vừa mới bắt đầu
                 MELT_SHORT = "Nước suối gần như đã sẵn sàng.", -- Nước đá gần như tan hết
             },
@@ -328,7 +328,7 @@ return {
                 EMPTY = "Nó có thể được gọi là cái vạc thánh ca!", -- Kiểm tra máy chưng cất
                 DISTILLTING_LONG = "Tâm trạng đang tụt dốc... Nhanh lên, vạc!", -- Vẫn còn rất nhiều rượu chưng cất
                 DISTILLING_SHORT = "Việc chưng cất sẽ được thực hiện ngay lập tức!", -- Quá trình chưng cất gần như đã hoàn tất
-                DONE = "Có rượu mạnh không?", -- Có đồ uống trong máy chưng cất
+                DONE = "Nó có chứa linh hồn không?", -- Có đồ uống trong máy chưng cất
             },
 
             WELL_WATERPUMP = {

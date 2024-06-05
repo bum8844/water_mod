@@ -140,7 +140,7 @@ if type(Insight.descriptors.edible) == "table" and Insight.descriptors.edible.De
 					v.description = string.gsub(v.description,"</color> / <color=SANITY>","</color> / "..rawtext.." / <color=SANITY>")
 				end
 				if v.alt_description then
-					v.alt_description = "Stuff: " .. string.gsub(v.alt_description,"</color> / <color=SANITY>","</color> / "..rawtext.." / <color=SANITY>")
+					v.alt_description = string.gsub(v.alt_description,"</color> / <color=SANITY>","</color> / "..rawtext.." / <color=SANITY>")
 				end
 				break
 			end
