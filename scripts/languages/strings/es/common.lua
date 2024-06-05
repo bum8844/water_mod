@@ -4,6 +4,7 @@ STRINGS.UI.CRAFTING_FILTERS.SECRETKNOWLEDGE = "Conocimiento secreto"
 STRINGS.UI.COOKBOOK.TAB_TITLE_KETTLE = "Recetas de tetera"
 STRINGS.UI.COOKBOOK.TAB_TITLE_BREWERY = "Recetas cerveceras"
 STRINGS.UI.COOKBOOK.TAB_TITLE_DISTILLERS = "Recetas del destilador"
+STRINGS.UI.COOKBOOK.BOILTIME_TITLE = "Tiempo de ebullición"
 
 STRINGS.UI.COOKBOOK.SORT_THIRST = "Sed"
 
@@ -105,8 +106,9 @@ STRINGS.RECIPE_DESC.BREWERY = "Mejora la experiencia en bebidas. Probablemente."
 
 -- Cubetas
 STRINGS.NAMES.BUCKET_EMPTY = "Cubeta"
-STRINGS.NAMES.BUCKET_WOODIE_EMPTY = "Cubeta pequeña"
+STRINGS.NAMES.BUCKET_WOODIE_EMPTY = "Cubeta de troncos" --Hollowed Log Bucket
 STRINGS.NAMES.BUCKET_STEEL_EMPTY = "Cubeta de acero" 
+STRINGS.NAMES.BUCKET_DRIFTWOOD_EMPTY = "Cubeta de madera flotante" --Driftwood Bucket
 STRINGS.RECIPE_DESC.BUCKET_EMPTY = "Una cubeta vacía."
 
 -- Tetera de acampada

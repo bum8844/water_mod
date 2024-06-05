@@ -61,7 +61,7 @@ return {
 		CAFFEINBERRY_BEAN_COOKED = "El calor sin duda lo mejoró.",
 
 		RUINCACAO_TREE = "Ese árbol es un poco espeluznante.", 
-		DUG_RUINCACAO_TREE = "¡Debería ponerlo en el suelo!.",
+		DUG_RUINCACAO_TREE = "Puedo plantarlo en otro sitio.",
 		RUINCACAO_SEED = "¿Ya está germinando?",
 		RUINCACAO_SEED_SAPLING = "Crecerá para ser un árbol con el tiempo.",
 		RUINCACAO = "Esta más seco de lo que pensaba.",
@@ -92,7 +92,7 @@ return {
 		FIG_JUICE = "Fluido no Newtoniano fuera del higo de Newton.",
 		DRAGONJUICE = "Se ve raro.",
 		GLOWBERRYJUICE = "No esta tan mal.",
-		WATERMELON_JUICE = "Sera melón, será sandía, es el jugó de cada día",
+		WATERMELON_JUICE = "De ahí viene el agua de la sandía",
 
 		VEGGIE_TEA = "Es todo vegetariano.",
 		CARROT_TEA = "Espero que sea aceptable.",
@@ -114,9 +114,9 @@ return {
 		
 		CAFFEINBERRY_JUICE = "¡Huele energizante!",
 		TOFFEE_LATTE = "¿Es una mezcla de café y nueces?",
-		RUINCHA_LATTE = "El fluido es una reacción nuclear entre dos granos.",		
+		RUINCHA_LATTE = "La luz es una reacción nuclear entre dos granos.",		
 		
-		HOTRUINCOLATE = "Un toque de bombones para terminar.",
+		HOTRUINCOLATE = "Un poco de caramelo habría hecho el truco.",
 		RUINCOLATE_SMOOTHIE = "Dulce y fácil de beber.",
 		RUINXOCOLATL = "Algo acido",
 		TEA_RUINCOLATE_LATTE = "Bueno, esto fue inesperado.",
@@ -127,7 +127,7 @@ return {
 		-- Mod colaboración bebidas de la tetera 
 
 		COCONUT_JUICE = "¿Es una gelatina blanda lo que veo?",
-		RAINBOW_SHAKE = "Afortunadamente, carece de sabor",
+		RAINBOW_SHAKE = "Un sabor de 7 colores",
 		QUARTZ_SHAKE = "Espero el sabor no sea de pescado",
 		CHERRY_ROSEBERRIES_TEA = "El sabor a rosas es fuertes.",
 		CHERRY_HONEY_TEA = "Puedo saborear las flores.",
@@ -145,8 +145,8 @@ return {
 
 		SODA = "¡Que refrescante!",
 		FRUITSODA = "¡Dulce, agrio, y sabroso!",
-		LEMONLIMESODA = "¡Los dentistas se horrorizarían de ver esto! .",
-		COLA = "¡Sabe cómo infundido con ciencia!",
+		LEMONLIMESODA = "¡Si los dentistas vieran esto! .",
+		COLA = "¡Sabe cómo a ciencia!",
 		COLAQUANTUM = "¡Debe haber algo muy científico en esto!",
 		LUMPY_BEER = "¡El aroma es muy penetrante!",
 
@@ -161,7 +161,7 @@ return {
 		KUMIS = "¿No se supone que la leche se convierte en yogurt??",
 		LUMPY_WINE = "Es un licor limpio y pulcro.",
 		PULQUE = "¿Una bebida tradicional del nuevo mundo?",
-		RUINCACAO_WINE = "¿Es posible hacer vino con cacao?",
+		RUINCACAO_WINE = "¿Puedes hacer licor con cacao?",
 
 		-- Mod colaboración refrescos de cerveceria	
 
@@ -172,11 +172,11 @@ return {
 
 		-- Mod colaboración alcoholes de cervecería		
 
-		AUROBOW = "Puedo observar el cambio de color simultáneamente.",
+		AUROBOW = "Se puede observar el cambio de color simultáneamente.",
 		COCONUT_WINE = "Me siento como si estuviera en el Mediterráneo.",
 		CHERRY_BLOOM_MADHU = "Este va a mi estante de colección de botellas.",
 		GIANT_BLUEBERRY_WINE = "La fruta se desestabiliza durante la fermentación.",
-		RICE_WINE = "¿Es posible fermentarlo para sacar alcohol?",
+		RICE_WINE = "¿Puedes fermentarlo y hacer alcohol de esto?",
 		WHEAT_BEER = "Científicamente hablando, es cerveza de trigo.",
 		PALE_BEER = "Que bebida tan pálida.",
 
@@ -195,10 +195,10 @@ return {
 		BERRY_GIN = "¿Qué hay de malo en hacer bebidas baratas con ciencia?",
 		GLOWBERRY_GIN = "No podría ser peor hacer brillar un licor fuerte.",
 		ABSINTHE = "Nota tiene un sabor picante y fuerte.",
-		TEA_LUMPY_VODKA = "¿Esto viene de fermentar hojas de té?",
+		TEA_LUMPY_VODKA = "¿Saco esto de las hojas de té?",
 		PETALS_BERRY_BRANDY = "¿Un coñac con aroma frutal?",
 		KAHLUA = "Parece ron preparado con café.",
-		NUT_CORN_WHISKEY = "¡Combinar cacahuates con whisky para un bocadillo!",
+		NUT_CORN_WHISKEY = " ¡Aperitivo de cacahuetes combinado con whisky!",
         RUINCACAO_CREAM_LIQUEUR = "Es una bebida cremosa de chocolate.",
         RUMCHATA = "Una bajada suave.",
 
@@ -235,6 +235,15 @@ return {
 		BUCKET_WOODIE_EMPTY = 
 		{
 			EMPTY = "Esta tallada bruscamente por dentro",
+			FULL = "Está lleno de agua de lluvia",
+			FULL_ICE = "Está lleno de hielo",
+			DIRTY = "Está lleno de agua sucia",
+			DIRTY_ICE = "Está lleno de hielo sucio",
+		},
+
+		BUCKET_DRIFTWOOD_EMPTY = 
+		{
+			EMPTY = "Es mas dura de lo que parece.",
 			FULL = "Está lleno de agua de lluvia",
 			FULL_ICE = "Está lleno de hielo",
 			DIRTY = "Está lleno de agua sucia",
@@ -298,7 +307,7 @@ return {
 		KETTLE =
 		{
 			EMPTY = "Me da sed de todo mirarlo.",
-			BURNT = "Se ha desbordado y quemado.",
+			BURNT = "La tetera se ha asado.",
 			BOILING_LONG = "Esto tomara un tiempo.",
 			BOILING_SHORT = "¡Ya casi acaba!",
 			DONE = "¡Es hora del té!",

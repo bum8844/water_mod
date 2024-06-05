@@ -198,8 +198,7 @@ local function fn()
     inst.entity:AddLight()
     inst.entity:AddNetwork()
 
-    inst:SetPhysicsRadiusOverride(.5)
-    MakeObstaclePhysics(inst, inst.physicsradiusoverride)
+    MakeObstaclePhysics(inst, 1.00)
 
     local minimap = inst.entity:AddMiniMapEntity()
     minimap:SetIcon("distillers.tex")
@@ -233,7 +232,7 @@ local function fn()
 
     inst:AddComponent("waterlevel")
     inst.components.waterlevel:SetCanAccepts({WATERGROUP.NONE_BOIL})
-    inst.components.waterlevel:SetOnlyDistill(true)
+    inst.components.waterlevel:SetNoneBoil(true)
 
     inst:AddComponent("container")
     inst.components.container:WidgetSetup("distillers")
@@ -259,6 +258,25 @@ local function fn()
 
     return inst
 end
+
+--[[local function CustomTestFunction(inst)
+    local pt = TheInput:GetWorldPosition()
+    
+    if pt == nil then
+        return false
+    end
+
+    local deployspacing = DEPLOYSPACING.MEDIUM
+    local entities = TheSim:FindEntities(pt.x, pt.y, pt.z, deployspacing)
+    
+    for _, entity in ipairs(entities) do
+        if entity ~= inst and entity:HasTag("structure") then
+            return false
+        end
+    end
+    
+    return true
+end]]
 
 return Prefab("distillers", fn, assets, prefabs),
     MakePlacer("distillers_placer", "distillers", "distillers", "idle_empty")

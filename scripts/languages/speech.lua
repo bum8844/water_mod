@@ -69,6 +69,8 @@ modrequire("languages/strings/en/insight")
 
 if modlist.it and GetModConfigData("useinsight") then
 	modrequire("languages/strings/"..locale.."/insight")
+elseif modlist.sm and GetModConfigData("useshowme") then
+	modrequire("languages/strings/"..locale.."/showme")
 end
 
 --AFS: some translation functions taken from Island Adventures. WIP

@@ -241,6 +241,15 @@ return {
                 DIRTY_ICE = "Se congeló antes de que pudiera limpiarla.", -- Dirty rainwater frozen in the bucket
             },
 
+            BUCKET_DRIFTWOOD_EMPTY = 
+            {
+                EMPTY = "Hmm... Creo que tengo que lijarla un poco más.", 
+                FULL = "Vaciemos el agua antes de que se hehe a perder.", -- 
+                FULL_ICE = "¿Quién dejó la cubeta afuera para que se congelara?", --
+                DIRTY = "Debería usar esto para regar el jardín.", -- 
+                DIRTY_ICE = "Se congeló antes de que pudiera limpiarla.", -- 
+            },
+
             BUCKET_EMPTY = 
             {
                 EMPTY = "Una cubeta hecha con madera.", -- Empty Wooden Bucket

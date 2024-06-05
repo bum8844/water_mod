@@ -68,6 +68,9 @@ local function MakeUpGrade_Kit(name, animname, playanim, masterfn, assets, prefa
 
         MakeInventoryPhysics(inst)
 
+        inst.minisign_atlas = "minisign_dehy_items_swap"
+        inst.minisign_prefab_name = true
+
     	inst.AnimState:SetBuild(animname)
         inst.AnimState:SetBank("item")
         inst.AnimState:PlayAnimation(playanim)

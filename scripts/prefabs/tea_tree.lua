@@ -380,6 +380,9 @@ local function dug_tea_tree()
     inst.entity:AddAnimState()
     inst.entity:AddNetwork()
 
+    inst.minisign_atlas = "minisign_dehy_items_swap"
+    inst.minisign_prefab_name = true
+
     inst.AnimState:SetBank("tea_tree_build")
     inst.AnimState:SetBuild("tea_tree_build")
     inst.AnimState:PlayAnimation("dropped")

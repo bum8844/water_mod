@@ -236,7 +236,16 @@ return {
 
         BUCKET_WOODIE_EMPTY =
         {
-            EMPTY = "Kỹ năng chế biến gỗ của Woodie thật đáng nể; anh ấy đã làm trống nó rồi.", -- Thùng gỗ rỗng của Woodie
+            EMPTY = "Tôi cảm thấy bất ngờ khi những nguyên liệu cũ vẫn làm được đồ mới ngon nghẻ vậy luôn á!", -- Thùng gỗ rỗng của Woodie
+            FULL = "Hãy lấy nó trước khi thủy triều thay đổi!", -- Nước mưa sạch đã đầy
+            FULL_ICE = "Ôi trời, nó đã đóng băng theo thời gian rồi.", -- Nước mưa đã đóng băng
+            DIRTY = "Ôi trời, nó bị ô nhiễm theo thời gian rồi.", -- Nước mưa đã trở nên bẩn rồi
+            DIRTY_ICE = "Ôi trời, nó bị đóng băng trong khi vẫn bị ô nhiễm.", -- Nước mưa bẩn đã đóng băng
+        },
+
+        BUCKET_DRIFTWOOD_EMPTY =
+        {
+            EMPTY = "Nó chỉ là một cái xô bình thường thôi.", -- Xô Gỗ Rỗng
             FULL = "Hãy lấy nó trước khi thủy triều thay đổi!", -- Nước mưa sạch đã đầy
             FULL_ICE = "Ôi trời, nó đã đóng băng theo thời gian rồi.", -- Nước mưa đã đóng băng
             DIRTY = "Ôi trời, nó bị ô nhiễm theo thời gian rồi.", -- Nước mưa đã trở nên bẩn rồi

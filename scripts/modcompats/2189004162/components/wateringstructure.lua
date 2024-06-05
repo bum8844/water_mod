@@ -1,10 +1,3 @@
-local function Round(num, decimals)
-    decimals = math.pow(10, decimals or 0)
-    num = num * decimals
-    if num >= 0 then num = math.floor(num + 0.5) else num = math.ceil(num - 0.5) end
-    return math.floor(num / decimals).."%"
-end
-
 local function Descriptors()
 	Insight.descriptors.wateringstructure = {
 		Describe = function(self, context)
@@ -66,10 +59,10 @@ local function Descriptors()
 					rawtext_ext = STRINGS.INSIGHT.WATERINGSTRUCTURE.RAWTEXT_TIME_EXT
 
 					description = string.format(rawtext,bucket,state,change_state,timedata)
-					alt_description = string.format(rawtext_ext,bucket,Round(percent * 100, 1),toolfiniteuses,max_toolfiniteuses,state,wateramount,change_state,timedata)
+					alt_description = string.format(rawtext_ext,bucket,Insight.env.Round(percent * 100, 1),toolfiniteuses,max_toolfiniteuses,state,wateramount,change_state,timedata)
 				else
 					description = string.format(rawtext,bucket,state)
-					alt_description = string.format(rawtext_ext,bucket,Round(percent * 100, 1),toolfiniteuses,max_toolfiniteuses,state,wateramount)
+					alt_description = string.format(rawtext_ext,bucket,Insight.env.Round(percent * 100, 1),toolfiniteuses,max_toolfiniteuses,state,wateramount)
 				end
 
 				return {

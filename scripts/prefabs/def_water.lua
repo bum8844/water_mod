@@ -312,6 +312,9 @@ local function MakeWaterItem(name, masterfn, tags, _prefabs)
             inst.components.edible.foodtype = FOODTYPE.GOODIES
         end
 
+        inst.minisign_atlas = "minisign_dehy_drinks_swap"
+        inst.minisign_prefab_name = true
+
         inst.AnimState:SetBank("kettle_drink")
         inst.AnimState:SetBuild("kettle_drink")
         inst.AnimState:PlayAnimation("idle")
@@ -345,6 +348,7 @@ local function MakeWaterItem(name, masterfn, tags, _prefabs)
         inst.components.watersource.available = false
 
         inst:AddComponent("inventoryitem")
+        inst.components.inventoryitem.atlasname = "images/tea_inventoryitem_drinks.xml"
 
         inst:AddComponent("stackable")
         inst.components.stackable.maxsize = TUNING.STACK_SIZE_TINYITEM

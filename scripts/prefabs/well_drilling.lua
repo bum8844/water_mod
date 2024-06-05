@@ -187,6 +187,9 @@ local function item_fn()
 
     MakeInventoryPhysics(inst)
 
+    inst.minisign_atlas = "minisign_dehy_items_swap"
+    inst.minisign_prefab_name = true
+
     inst.AnimState:SetBank("well_drilling")
     inst.AnimState:SetBuild("well_drilling")
     inst.AnimState:PlayAnimation("idle_packed")

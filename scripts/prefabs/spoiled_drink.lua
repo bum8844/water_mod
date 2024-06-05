@@ -35,6 +35,9 @@ local function fn()
 
 	MakeInventoryPhysics(inst)
 
+    inst.minisign_atlas = "minisign_dehy_drinks_swap"
+    inst.minisign_prefab_name = true
+
 	inst.AnimState:SetBank("kettle_drink")
 	inst.AnimState:SetBuild("kettle_drink")
 	inst.AnimState:PlayAnimation("idle")

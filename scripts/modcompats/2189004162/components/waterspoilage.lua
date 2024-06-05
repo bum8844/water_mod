@@ -1,10 +1,3 @@
-local function Round(num, decimals)
-    decimals = math.pow(10, decimals or 0)
-    num = num * decimals
-    if num >= 0 then num = math.floor(num + 0.5) else num = math.ceil(num - 0.5) end
-    return math.floor(num / decimals).."%"
-end
-
 local function Descriptors()
 	Insight.descriptors.waterspoilage = {
 		Describe = function(self, context)
@@ -71,7 +64,7 @@ local function Descriptors()
 				if data and data.modifier == 0 then
 					return
 				elseif data then
-					local percent = Round(data.percent * 100, 1)..""
+					local percent = Insight.env.Round(data.percent * 100, 1)..""
 					percent = data.modifier >= 0 and "<color=#2F70C0>"..percent.."</color>" or "<color=#4E5347>"..percent.."</color>"
 					spoilage_time = context.time:SimpleProcess(math.abs(data.time_to_perish))
 					alt_spoilage_time = context.time:SimpleProcess(math.abs(data.alt_time_to_perish))

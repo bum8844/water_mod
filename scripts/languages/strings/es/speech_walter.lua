@@ -11,11 +11,11 @@ return {
 	ANNOUNCE_DRUNK = "Escuché una historia en una radio una vez... hip",
 	ANNOUNCE_DRUNK_END = "Me siento mucho mejor ahora!",
 	ANNOUNCE_DRUNK_IMMUNITY = "only_used_by_wathgrithr",
-	ANNOUNCE_NOTCHARGE = "No puedo ordeñarla, esta completamente seca.",
+	ANNOUNCE_NOTCHARGE = "Necesito mas fuerza.",
 	ANNOUNCE_NOTHIRSTSLEEP = "Estoy demasiado sediento para dormir.",
 	ANNOUNCE_NOTHIRSTSIESTA = "Necesito una bebida antes de dormir.",
-	ANNOUNCE_SLEEP_END = "Me siento un poco mejor despues de dormir.",
-	ANNOUNCE_THIRST = "¿Podemos tomar un momento para un poco de agua?",
+	ANNOUNCE_SLEEP_END = "Refrescante.",
+	ANNOUNCE_THIRST = "¿Qué tal un pequeño sorbo?",
 
 	ANNOUNCE_CAFFINE_BUFF_START = "Quiero empezar a explorar ahora mismo." , -- 카페인 버프 시작
     ANNOUNCE_CAFFINE_BUFF_STOP = "Me siento un poco cansado..." ,  -- 카페인 버프 끝
@@ -23,23 +23,23 @@ return {
     ANNOUNCE_CURE_WATERBORNE = "Me siento mucho mejor ahora." ,  -- 수인성 질병을 아이템으로 치료했을때의 대사
 
 	ANNOUNCE_DCAPACITY_CRITICAL = "¿Porqué me siento tan pesado?...",
-	ANNOUNCE_DCAPACITY_HALF = "Siento que algo está mal...",
+	ANNOUNCE_DCAPACITY_HALF = "Algo está mal...",
 
 	DESCRIBE =
 	{
-		BOILBOOK = "No hace daño memorizar otro manual.",
+		BOILBOOK = "¿Porqué no leer otro libro más?.",
 
-		WATER_CLEAN_ICE = "¡Oh cielos esta congelado¡.",
+		WATER_CLEAN_ICE = "Está congelado.",
 		WATER_DIRTY_ICE = "El hielo está negro!.",
 
 		SPICE_CAFFEINPEPPER = "Hace la comida para acampar más sabrosa.",
 
 		WELL_KIT = "No lo pienses en el pozo, Je.",
-		WELL_SPRINKLER_KIT = "Para darle una mejor irri-gación a nuestras plantas",
+		WELL_SPRINKLER_KIT = "Para una mejor \"regación\" con las plantas!",
 		WELL_WATERPUMP_KIT = "¡Bomba de extracción! ¿Conduce el agua de abajo hacia arriba?",
-		WELL_BURYING_KIT = "Debería llenar los agujeros por los que no puedo bajar",
+		WELL_BURYING_KIT = "Mejor no caer en un agujero",
 		WELL_DRILLING = "¡Un pozo a la vez!",
-		WELL_DRILLING_ITEM = "¿Quieres cavar un hoyo para un pozo Woby?",
+		WELL_DRILLING_ITEM = "¿Quieres cavar un pozo Woby?",
 		HOLE = "Me pregunto si lleva al otro lado del mundo",
 		WELL = "¿Que pása Woby? ¿Alguien cayó dentro?",
 
@@ -56,7 +56,7 @@ return {
 		TEALEAVES_DRIED = "Las hojas están oxidadas.",
 
 		CAFFEINBERRY = "Pensaba que el café crecía en árboles.",
-		DUG_CAFFEINBERRY = "Lo llevaré al campamento y a los adultos les encantará.",
+		DUG_CAFFEINBERRY = "A los adultos en el campamento les gustará esto.",
 		CAFFEINBERRY_BEAN = "¿Así es como se ve el café?",
 		CAFFEINBERRY_BEAN_COOKED = "¡Ahora si huele como café!",
 		
@@ -98,13 +98,13 @@ return {
 		CARROT_TEA = "Pobre zanahoria...no realmente.",
 		CACTUS_TEA = "Espero no espinarme la boca",
 		TOMATO_JUICE = "Parece una bebida para vampiros.",
-		LUMPY_TEA = "Iugh... espero que no tenga sabor a suciedad.",
+		LUMPY_TEA = "Iugh...parece tierra.",
 		SEAWEED_SHAKE = "¿Qué pasa si comienza a crecer dentro de mí?",
 
 		GREENTEA = "¡Creo que vi un bicho! Estoy bromeando.",
 		BLACKTEA = "Déjate llevar!",
 		BLACKTEA_ICED = "Hay hielo en la taza.",
-		FUER = "¿Que tal un poco de té para un refrescante toque de naturaleza.",
+		FUER = "No sabía que usarían roceadores de agua.",
 		MIXFLOWER = "¿La abejas beben té? Probablemente no.",
 		HIBISCUSTEA = "Presiento que sabrá agrio.",
 		CACTUSFLOWER_TEA = "Así es como sobrevives en el desierto.",
@@ -134,7 +134,7 @@ return {
 		SWEET_RICE_DRINK = "No es jugo aunque tampoco té",
 		PINEANANAS_JUICE = "¿Sabes cual es la hermana de la piñanana? ¡Bananana!", -- 레기온 파인애플 주스
 		ORANGE_JUICE = "¡Conoce mi jugo naranja!.", -- 모어 푸드 팩 오랜지 쥬스
-		STRAWBERRY_SMOOTHIE = "Fuerte pero rico, es re-fresante", -- 모어 푸드 팩 딸기 스무디
+		STRAWBERRY_SMOOTHIE = "Fuerte pero rico.", -- 모어 푸드 팩 딸기 스무디
 		STRAWBERRY_MILK_SMOOTHIE = "¡Refrescante!", -- 모어 푸드 팩 딸기 스무디 라떼
 
 		-- 양조기 음료
@@ -168,7 +168,7 @@ return {
 
 		CHERRY_DOCTOR_COLA = "Definitivamente no es un dentista.",
 		PINEANANASSODA = "Lo llamaremos el refresco del pino pionero.", -- 탄산 파인애플(오란씨)
-		ORANGESODA = "¿Cómo le dices al refresco de naraja de tus sueños? Fanta-sía. 오렌지소다가 꿈을 꾸면? Fanta-sy!", -- 탄산 오랜지(환타)
+		ORANGESODA = "¿Cómo le dices a un refresco de naranja? Naranjezco, Je. 오렌지소다가 꿈을 꾸면? Fanta-sy!", -- 탄산 오랜지(환타)
 		STRAWBERRYSODA = "¡Nunca había visto un refresco de fresa!", -- 탄산 딸기(웰치스 딸기)
 
 		--콜라보 양조주
@@ -193,13 +193,13 @@ return {
 
 		--왈리 전용 증류주
 
-		BERRY_GIN = "Escuché que fue hecho con propositos medicinales, pero enfermó a mucha gente.",
+		BERRY_GIN = "Escuché que era medicina que enferma.",
 		GLOWBERRY_GIN = "Ginebra brillante, aunque no está en una lámpara.",
 		ABSINTHE = "¡Creo haber escuchado que la llaman la hada verde!",
 		TEA_LUMPY_VODKA = "Se ve saludable! Pero aún así es alcohol.",
 		PETALS_BERRY_BRANDY = "No sé si sabe bien, ¡pero se ve bonito!",
 		KAHLUA = "Creo que el Sr. Warly querría beber café con alcohol",
-		NUT_CORN_WHISKEY = "Hubiera sido mejor si pudiera comerlo.",
+		NUT_CORN_WHISKEY = "Desearía poder beberlo.",
         RUINCACAO_CREAM_LIQUEUR = "Se ve sabroso, que mal que sea alcohol.",
         RUMCHATA = "¡Se ve dulce y cremoso!",
 
@@ -220,7 +220,7 @@ return {
 		--냄비 요리
 
         DARK_RUINCOLATE = "Creo que el Sr. Warly se equivocó.",
-        WHITE_RUINCOLATE = "¡Debo racionar esto y no comer mucho a la vez!",
+        WHITE_RUINCOLATE = "¡Debo racionar esto!",
         RUINCOLATE = "Oompa loompa doompety doo.",
         RUIN_SCHOKAKOLA = "Al menos así el chocolate no se aplastará en mis aventuras.",
 
@@ -236,6 +236,15 @@ return {
 		BUCKET_WOODIE_EMPTY = 
 		{
 			EMPTY = "¡Esta cubeta es genial!",
+			FULL = "¡Listo para beber!",
+			FULL_ICE = "Oh, ahora debo hervirlo.",
+			DIRTY = "¡Creo que esto salió mal!",
+			DIRTY_ICE = "No creo que pueda comer este hielo.",
+		},
+
+		BUCKET_DRIFTWOOD_EMPTY = 
+		{
+			EMPTY = "¡Parece un cubo que flota a la deriva en una isla desierta!",
 			FULL = "¡Listo para beber!",
 			FULL_ICE = "Oh, ahora debo hervirlo.",
 			DIRTY = "¡Creo que esto salió mal!",
@@ -326,7 +335,7 @@ return {
 
 		DISTILLERS =
 		{   
-		    EMPTY = "¡Tiene un montón de artilujios complicados en el!", --증류기 조사 대사
+		    EMPTY = "¡Cosas complicadas!", --증류기 조사 대사
 			DISTILLTING_LONG = "Tardará mucho.", --증류가 끝나기 까지 많이 남음
 			DISTILLING_SHORT = "¿Creo que es alcohol?", --증류가 곧 끝남
 			DONE = "¡Debería decirles a todos en el campamento que está listo!", --증류기에 음료가 들어있음
@@ -335,7 +344,7 @@ return {
 		WELL_WATERPUMP = {
 			HIGH_PRESSURE = "¡El poder del vapor es asombroso!", -- 압력 최대
 			MIDDLE_PRESSURE = "¡Es tan bueno como el Sr. Wolfgang!", -- 압력이 중간
-			LOW_PRESSURE = "¿La maquina necesita mas combustible?", -- 압력이 거의 없을때
+			LOW_PRESSURE = "¿Necesita más?", -- 압력이 거의 없을때
 			RECHARG_PRESSURE = "Debemos encontrar un estanque Woby.", -- 압력이 아예 없을때
 		},
 

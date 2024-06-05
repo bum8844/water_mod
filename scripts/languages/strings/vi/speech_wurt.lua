@@ -241,6 +241,15 @@ return {
                 DIRTY_ICE = "Brrr, cái ao nhỏ đã đóng băng.", -- Nước mưa bẩn đã đóng băng
             },
 
+            BUCKET_DRIFTWOOD_EMPTY =
+            {
+                EMPTY = "Nó là một cái xô có thể nổi được he, phờ lóp", -- Xô gỗ rỗng
+                FULL = "Đầy nước mưa!", -- Làm sạch nước mưa bên trong
+                FULL_ICE = "Brrr, không muốn chạm vào nó.", -- Nước mưa đã đóng băng
+                DIRTY = "Nó biến thành một cái ao nhỏ, ribbit!", -- Nước mưa đã trở nên bẩn
+                DIRTY_ICE = "Brrr, cái ao nhỏ đã đóng băng.", -- Nước mưa bẩn đã đóng băng
+            },
+
             BUCKET_EMPTY =
             {
                 EMPTY = "Đó là một cái xô, ribbit.", -- Xô gỗ rỗng
@@ -331,7 +340,7 @@ return {
                 DONE = "Hãy đưa nó cho người biết uống, ribbit!", -- Có đồ uống trong máy chưng cất
             },
 
-            WELL_WATERPUMP = {
+                WELL_WATERPUMP = {
                 HIGH_PRESSURE = "Nó tràn đầy năng lượng!", -- Áp suất tối đa
                 MIDDLE_PRESSURE = "Đang bơm nước từ dưới lòng đất, ribbit.", -- Áp suất trung bình
                 LOW_PRESSURE = "Có vẻ mệt mỏi, ribbit.", -- Hầu như không có áp lực

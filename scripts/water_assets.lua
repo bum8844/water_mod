@@ -21,6 +21,9 @@ local Assets =
     Asset("ANIM", "anim/water_wx_chips.zip"),
     Asset("ANIM", "anim/boillingrecipcard.zip"),
     Asset("ANIM", "anim/fermentingrecipcard.zip"),
+    Asset("ANIM", "anim/minisign_dehy_items_swap.zip"),
+    Asset("ANIM", "anim/minisign_dehy_drinks_swap.zip"),
+    Asset("ANIM", "anim/minisign_dehy_drinks_bottle_swap.zip"),
 
     Asset("ATLAS", "images/tea_ui.xml"),
     Asset("IMAGE", "images/tea_ui.tex"),

@@ -35,6 +35,7 @@ local foods_hamlet_list = {
     "snakebonesoup",
     "nettlelosange",
     "spicyvegstinger",
+    "meated_nettle",
 }
 
 local foods_te_list = {

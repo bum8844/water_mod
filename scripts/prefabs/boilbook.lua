@@ -19,6 +19,8 @@ local function fn()
 
     MakeInventoryPhysics(inst)
 
+    inst.minisign_atlas = "minisign_dehy_items_swap"
+
     inst.AnimState:SetBank("boilbook")
     inst.AnimState:SetBuild("boilbook")
     inst.AnimState:PlayAnimation("idle")

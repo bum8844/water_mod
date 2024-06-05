@@ -43,6 +43,8 @@ return {
             HOLE = "Hay agua dentro", -- Well hole
             WELL = "Puedes tomar agua", -- Well
 
+            --WX78MODULE_NONEDRUNK = "Tanta ciencia empaquetada en un pequeño artilugio.",
+
             -- Water mode plants
 
             TEA_TREE = "Amigo con estilo", -- Tea tree
@@ -239,9 +241,18 @@ return {
                 DIRTY_ICE = "Sucio y congelado", -- Dirty rainwater has frozen
             },
 
-            BUCKET_EMPTY =
+            BUCKET_DRIFTWOOD_EMPTY = 
             {
                 EMPTY = "Hecho de amigos", -- Empty wooden bucket
+                FULL = "Agua para tomar", -- Clean collected rainwater
+                FULL_ICE = "Brr limpio y frío", -- Rainwater has frozen
+                DIRTY = "Sucio", -- Rainwater has become dirty
+                DIRTY_ICE = "Sucio y congelado", -- Dirty rainwater has frozen
+            },
+
+            BUCKET_EMPTY =
+            {
+                EMPTY = "Hechos de amigos acuáticos", -- Empty wooden bucket
                 FULL = "Agua para tomar", -- Clean collected rainwater
                 FULL_ICE = "Brr limpio y frío", -- Rainwater has frozen
                 DIRTY = "Sucio", -- Rainwater has become dirty

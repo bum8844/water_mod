@@ -241,6 +241,15 @@ return {
                 DIRTY_ICE = "Có phải họ quên dọn dẹp và đổ nó vào giữa mùa đông lạnh giá không?", -- Nước mưa bẩn đã đóng băng
             },
 
+            BUCKET_DRIFTWOOD_EMPTY =
+            {
+                EMPTY = "Ai chà, thứ đó chắc hẳn không thể nào đạt đủ chất lượng an toàn vệ sinh!", -- Thùng gỗ rỗng
+                FULL = "Nước mưa đã được thu thập.", -- Nước mưa sạch đã được thu thập
+                FULL_ICE = "Sẽ phải nỗ lực để loại bỏ nó.", -- Nước mưa đã đóng băng
+                DIRTY = "Có vẻ như nó cần được dọn dẹp sạch sẽ.", -- Nước mưa đã trở nên bẩn
+                DIRTY_ICE = "Có phải họ quên dọn dẹp và đổ nó vào giữa mùa đông lạnh giá không?", -- Nước mưa bẩn đã đóng băng
+            },
+
             BUCKET_EMPTY =
             {
                 EMPTY = "Tôi nên cho gì vào đây?", -- Thùng gỗ rỗng

@@ -274,6 +274,9 @@ local function dug_caffeinberry()
     inst.entity:AddAnimState()
     inst.entity:AddNetwork()
 
+    inst.minisign_atlas = "minisign_dehy_items_swap"
+    inst.minisign_prefab_name = true
+
     inst.AnimState:SetBank("caffeinberry")
     inst.AnimState:SetBuild("caffeinberry")
     inst.AnimState:PlayAnimation("dropped")
@@ -321,6 +324,8 @@ local function caffeinberry_bean()
     inst.entity:AddTransform()
     inst.entity:AddAnimState()
     inst.entity:AddNetwork()
+
+    inst.minisign_atlas = "minisign_dehy_items_swap"
 
     inst.AnimState:SetBank("caffeinberry_bean")
     inst.AnimState:SetBuild("caffeinberry_bean")
@@ -392,6 +397,8 @@ local function caffeinberry_bean_cooked()
     inst.entity:AddAnimState()
     inst.entity:AddNetwork()
 
+    inst.minisign_atlas = "minisign_dehy_items_swap"
+
     inst.AnimState:SetBank("caffeinberry_bean")
     inst.AnimState:SetBuild("caffeinberry_bean")
     inst.AnimState:PlayAnimation("cooked")
@@ -452,6 +459,8 @@ local function fn_spice()
 
     MakeInventoryPhysics(inst)
 
+    inst.minisign_atlas = "minisign_dehy_items_swap"
+    
     inst.AnimState:SetBank("water_spice")
     inst.AnimState:SetBuild("water_spice")
     inst.AnimState:PlayAnimation("idle")

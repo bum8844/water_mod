@@ -176,7 +176,7 @@ local drinks =
 		cooktime = (TUNING.KETTLE_VEGGIE + TUNING.BEER_WAIT),
 		potlevel = "mid",
 		potlevel_bottle = "mid",
-		prefabs = { "alcoholdebuff","drunkarddebuff","immunebuff" },
+		prefabs = { "alcoholdebuff","drunkarddebuff","immunebuff","buff_electricattack" },
 		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_INTOXICATION_ELECTRIC_ATTACK,
 		oneatenfn = function(inst, eater)
 			spirits(inst, eater)
@@ -333,14 +333,14 @@ for active, _ in pairs(modlist) do
 	end
 end
 
-if modlist.te or modlist.ia then
+if modlist.te or modlist.ia or modlist.ta then
 	local sw_drink = mod_drink.sw_drink
 	for k,v in pairs(sw_drink) do
 		drinks[k] = v
 	end
 end
 
-if modlist.te or modlist.ia or modlist.hof then
+if modlist.te or modlist.ia or modlist.hof or modlist.ta then
 	local coconut_drink = mod_drink.coconut_drink
 	for k,v in pairs(coconut_drink) do
 		drinks[k] = v
