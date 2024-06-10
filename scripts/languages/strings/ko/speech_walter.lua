@@ -163,7 +163,6 @@ return {
 		PULQUE = "교본에 선인장을 이렇게 먹는 방법은 안나와있어.",
 		RUINCACAO_WINE = "어른들을 위한 코코아 인가봐!",
 
-
 		--콜라보 소다
 
 		CHERRY_DOCTOR_COLA = "적어도 치과의사는 아니였을거야.",
@@ -236,6 +235,15 @@ return {
 		BUCKET_WOODIE_EMPTY = 
 		{
 			EMPTY = "완전 야생느낌의 양동이야!",
+			FULL = "그대로 마셔도 안전할거야!",
+			FULL_ICE = "이런, 결국 끓여서 녹여야해.",
+			DIRTY = "너무 오래 방치했나봐!",
+			DIRTY_ICE = "이런얼음은 먹어서는안돼.",
+		},
+
+		BUCKET_DRIFTWOOD_EMPTY = 
+		{
+			EMPTY = "무인도에 표류한듯한 양동이네.",
 			FULL = "그대로 마셔도 안전할거야!",
 			FULL_ICE = "이런, 결국 끓여서 녹여야해.",
 			DIRTY = "너무 오래 방치했나봐!",

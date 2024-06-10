@@ -241,6 +241,15 @@ return {
                 DIRTY_ICE = "I don't even want to look at it.", --
             },
 
+            BUCKET_DRIFTWOOD_EMPTY = 
+            {
+                EMPTY = "Hey, Didn't you make the bucket too carelessly?", -- 
+                FULL = "To think that I've come to the point where I have to collect rainwater to drink.",---- ★★★★★
+                FULL_ICE = "Do I need to get that out?", --
+                DIRTY = "It's disgusting.", --
+                DIRTY_ICE = "I don't even want to look at it.", -- 
+            },
+
             BUCKET_EMPTY =
             {
                 EMPTY = "I'd rather not dirty my hands.", -- 

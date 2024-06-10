@@ -241,6 +241,15 @@ return {
 			DIRTY_ICE = "더러운 고체 물", --더러운 빗물 얼어버림(FILTHY SOLID WATER)
 		},
 
+		BUCKET_DRIFTWOOD_EMPTY = 
+		{
+			EMPTY = "효율성 증가에 관심없음.", -- 유목양동이(ITS INCREASED EFFICIENCY DOES NOT IMPRESS ME)
+			FULL = "망할 비라도 쓸모가 있음",  --깨끗한 빗물이 참
+			FULL_ICE = "동결되었음", --빗물이 얼어버림(IT IS FROZEN)
+			DIRTY = "내용물 변질됨", --빗물이 더러워짐(CONTENT CORRUPTED)
+			DIRTY_ICE = "더러운 고체 물", --더러운 빗물 얼어버림(FILTHY SOLID WATER)
+		},
+
 		BUCKET_EMPTY = 
 		{
 			EMPTY = "끔찍한 물을 가둠", --  빈 나무 양동이(IT CONTAINS HORRIBLE WATER)

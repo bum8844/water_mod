@@ -241,6 +241,15 @@ return {
                 DIRTY_ICE = "Did they forget to clean and empty it in the dead of winter?", -- Dirty rainwater has frozen
             },
 
+            BUCKET_DRIFTWOOD_EMPTY = 
+            {
+                EMPTY = "Whoa, This thing definitely wouldn't pass the hygiene safety standards.", -- Empty wooden bucket
+                FULL = "Rainwater has collected.", -- Clean rainwater has collected
+                FULL_ICE = "It'll take some effort to remove it.", -- Rainwater has frozen
+                DIRTY = "Seems like it needs a good cleaning.", -- Rainwater has become dirty
+                DIRTY_ICE = "Did they forget to clean and empty it in the dead of winter?", -- Dirty rainwater has frozen
+            },
+
             BUCKET_EMPTY =
             {
                 EMPTY = "What should I put in it?", -- Empty wooden bucket

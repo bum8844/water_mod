@@ -114,10 +114,6 @@ GIVEWATER.priority = 1
 
 local TAKEWATER = AddAction("TAKEWATER", STRINGS.ACTIONS.FILL, function(act)
 
-    if act.target:HasTag("onlyoneget") then
-        return false
-    end
-
     local source, filled = nil, nil
 
     if act.target == nil then
@@ -137,6 +133,10 @@ local TAKEWATER = AddAction("TAKEWATER", STRINGS.ACTIONS.FILL, function(act)
     elseif source ~= nil
         and source.components.water ~= nil
         and source.components.water.isitem then
+        return false
+    end
+
+    if (filled and filled:HasTag("onlyoneget")) or (source and source:HasTag("onlyoneget")) then
         return false
     end
 

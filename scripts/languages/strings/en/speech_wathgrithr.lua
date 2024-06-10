@@ -241,6 +241,15 @@ return {
                 DIRTY_ICE = "It has turned into a dirty lump.", -- 
             },
 
+            BUCKET_DRIFTWOOD_EMPTY = 
+            {
+                EMPTY = "I will contain the sea within this.", -- 유목양동이
+                FULL = "It's filled with clean water.", --
+                FULL_ICE = "It evokes a sense of nostalgia.", --★★★★★
+                DIRTY = "It's dirty.", -- 
+                DIRTY_ICE = "It has turned into a dirty lump.", -- 
+            },
+
             BUCKET_EMPTY =
             {
                 EMPTY = "It's an empty wooden bucket.", -- 

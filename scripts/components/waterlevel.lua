@@ -204,10 +204,11 @@ function Waterlevel:DoDiistiller(item, doer)
     elseif item.components.perishable then
         if item.components.perishable:IsStale() then
             watervalue = watervalue / 4
+            self.inst.components.distiller.done = false
         elseif item.components.perishable:IsSpoiled() then
             watervalue = watervalue / 2
+            self.inst.components.distiller.done = false
         end
-        self.inst.components.distiller.done = false
     end
 
     if not self.inst.components.distiller.done then

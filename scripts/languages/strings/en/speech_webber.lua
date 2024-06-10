@@ -243,6 +243,15 @@ return {
                 DIRTY_ICE = "It's frozen as it is!", -- Dirty rainwater frozen into ice
             },
 
+            BUCKET_DRIFTWOOD_EMPTY = 
+            {
+                EMPTY = "Let's put our toys in this and float it on the water!", -- Driftwood bucket
+                FULL = "It's filled with clean rainwater!", -- Clean rainwater in the bucket
+                FULL_ICE = "It's frozen solid", -- Rainwater frozen into ice
+                DIRTY = "There might be wrigglers in here.", -- Rainwater turned dirty
+                DIRTY_ICE = "It's frozen as it is!", -- Dirty rainwater frozen into ice
+            },
+
             BUCKET_EMPTY =
             {
                 EMPTY = "It's a bit small for my friends to fit in.", -- Empty Wooden Bucket

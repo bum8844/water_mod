@@ -241,6 +241,15 @@ return {
                 DIRTY_ICE = "Oh no! What a waste!", -- Dirty rainwater has frozen
             },
 
+            BUCKET_DRIFTWOOD_EMPTY = 
+            {
+                EMPTY = "This bucket is lighter but sturdier.", -- Empty wooden bucket
+                FULL = "Water for Wolfgang is ready!", -- Clean rainwater in the wooden bucket
+                FULL_ICE = "The water has frozen in the cold.", -- Rainwater has frozen in the wooden bucket
+                DIRTY = "Precious water has become dirty...", -- Rainwater has become dirty
+                DIRTY_ICE = "Oh no! What a waste!", -- Dirty rainwater has frozen
+            },
+
             BUCKET_EMPTY =
             {
                 EMPTY = "Ha! A cup fit for mighty Wolfgang!", -- Empty wooden bucket

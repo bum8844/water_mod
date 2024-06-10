@@ -70,6 +70,17 @@ configuration_options =
 		},
 		default = true,
 	},
+	{
+		name = "useshowme",
+		label = "Use ShowMe",
+		hover = "",
+		options =
+		{
+			{description = "No", data = false},
+			{description = "YES", data = true},
+		},
+		default = true,
+	},
 	SEPARATOR,
 	Title("WorldGen options"),
 	{

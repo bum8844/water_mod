@@ -241,6 +241,15 @@ return {
             DIRTY_ICE = "Oh botheration, it's frozen while still contaminated.", -- 
         },
 
+        BUCKET_DRIFTWOOD_EMPTY = 
+        {
+            EMPTY = "I'm surprised that something made of old wood is more durable, huh.", -- 유목양동이
+            FULL = "Let's quickly retrieve this before its condition changes.", --- ★★★★★
+            FULL_ICE = "Oh botheration, it's frozen over from the passage of time.", --
+            DIRTY = "Oh botheration, it's been contaminated by time.", -- 
+            DIRTY_ICE = "Oh botheration, it's frozen while still contaminated.", -- 
+        },
+
         BUCKET_EMPTY =
         {
             EMPTY = "It's just an ordinary bucket.", -- 

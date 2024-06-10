@@ -241,6 +241,15 @@ return {
 			DIRTY_ICE = "It's filled with dirty ice",
 		},
 
+		BUCKET_DRIFTWOOD_EMPTY = 
+		{
+			EMPTY = "It's sturdier than it looks.",
+			FULL = "It's full of rainwater",
+			FULL_ICE = "It's filled with ice",
+			DIRTY = "It's filled with dirty water",
+			DIRTY_ICE = "It's filled with dirty ice",
+		},
+
 		BUCKET_EMPTY = 
 		{
 			EMPTY = "I can fill it with water. Or something else.",

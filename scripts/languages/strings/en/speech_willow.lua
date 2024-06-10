@@ -241,6 +241,15 @@ return {
                 DIRTY_ICE = "Maybe burning it all at once will solve everything?", -- Dirty rainwater has frozen
             },
 
+            BUCKET_DRIFTWOOD_EMPTY = 
+            {
+                EMPTY = "How cool would it be if I put fire in this?", -- Empty Wooden Bucket
+                FULL = "Rainwater has collected inside.", -- Clean rainwater is inside
+                FULL_ICE = "It's frozen solid.", -- Rainwater has frozen
+                DIRTY = "Dirty water has collected inside!", -- Rainwater has become dirty
+                DIRTY_ICE = "Maybe burning it all at once will solve everything?", -- Dirty rainwater has frozen
+            },
+
             BUCKET_EMPTY =
             {
                 EMPTY = "It would be fun to put firewood in it and burn it all at once!", -- Empty Wooden Bucket

@@ -225,7 +225,7 @@ return {
 
             BUCKET_STEEL_EMPTY =
             {
-                EMPTY = "A bucket made of steel.", --Empty steel bucket
+                EMPTY = "It's a bucket made of steel.", -- ★★★
                 FULL = "Clean water that you can drink.", -- Clean rainwater
                 FULL_ICE = "Small ice chunks.", -- Rainwater frozen
                 DIRTY = "Water with bacteria boiling in it.", -- Rainwater got dirty
@@ -234,7 +234,16 @@ return {
 
             BUCKET_WOODIE_EMPTY =
             {
-                EMPTY = "A bucket made of logs.", --Empty wooden bucket of Woody
+                EMPTY = "It's a bucket made of logs.", -- ★★★
+                FULL = "Clean water that you can drink.", -- Clean rainwater
+                FULL_ICE = "Small ice chunks.", -- Rainwater frozen
+                DIRTY = "Water with bacteria boiling in it.", -- Rainwater got dirty
+                DIRTY_ICE = "Small ice chunks with bacteria.", -- Dirty rainwater frozen
+            },
+
+            BUCKET_DRIFTWOOD_EMPTY = 
+            {
+                EMPTY = "It's a bucket made of driftwood.", -- 
                 FULL = "Clean water that you can drink.", -- Clean rainwater
                 FULL_ICE = "Small ice chunks.", -- Rainwater frozen
                 DIRTY = "Water with bacteria boiling in it.", -- Rainwater got dirty
@@ -243,13 +252,13 @@ return {
 
             BUCKET_EMPTY =
             {
-                EMPTY = "A bucket made of wood.", -- Empty wooden bucket
+                EMPTY = "It's a bucket made of wood.", -- ★★★
                 FULL = "Clean water that you can drink.", -- Clean rainwater
                 FULL_ICE = "Small ice chunks.", -- Rainwater frozen
                 DIRTY = "Water with bacteria boiling in it.", -- Rainwater got dirty
                 DIRTY_ICE = "Small ice chunks with bacteria.", -- Dirty rainwater frozen
             },
-
+            
             DESALINATOR =
             {
                 EMPTY = "Water and salt are separated using this desalinator with seawater.", -- Desalinator has no water
