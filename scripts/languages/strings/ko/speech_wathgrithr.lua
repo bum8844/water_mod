@@ -11,7 +11,7 @@ return {
 	ANNOUNCE_DRUNK = "술내기에 내가 졌는가, 히끅.", -- 취함
 	ANNOUNCE_DRUNK_END = "아직 내가 에기르의 연회장에 있는가?", --술에서 좀 깸 (그로기)
 	ANNOUNCE_DRUNK_IMMUNITY = "크하하! 한 잔 더!", --임시. 위그 전용,
-	ANNOUNCE_NOTCHARGE = "일각수가 아직 준비가안되었다 하는군.", --번개염소가 충전이 안되서 양동이로 젖을 짤수 없음
+	ANNOUNCE_NOTCHARGE = "일각수가 아직 준비가 안되었다 하는군.", --번개염소가 충전이 안되서 양동이로 젖을 짤수 없음
 	ANNOUNCE_NOTHIRSTSLEEP = "이대로 자면 밤새 갈사할것이야! 우선 물부터 마시자.", -- 목이 마른데 밤에 잘려고 시도
 	ANNOUNCE_NOTHIRSTSIESTA = "목이 이렇게 타는데 어떻게 쉴수 있다는거지!", -- 목이 마른데 낮에 잘려고 시도
 	ANNOUNCE_SLEEP_END = "개운하군!", --자고 일어나서 술에서 완전히 깸 
@@ -39,7 +39,7 @@ return {
 		WELL_WATERPUMP_KIT = "기계의 힘이 지하세계를 약탈할 것이라.", --스팀 물펌프 키트
 		WELL_BURYING_KIT = "발 헛 딛는 자가 없도록 하자.", -- 구멍 매설 키트
 		WELL_DRILLING = "스틱스 강까지 밀어붙혀라!", --드릴로 구멍 뚫는 중
-		WELL_DRILLING_ITEM = "지하세계까지 길을뚫을 막강한도구로다.", --드릴 아이템
+		WELL_DRILLING_ITEM = "지하세계까지 길을 뚫을 막강한도구로다.", --드릴 아이템
 		HOLE = "저 아래 물소리가 들리나니.", --우물 구멍
 		WELL = "목마른 자가 우물을 파는 법.", --우물
 
@@ -55,7 +55,7 @@ return {
 		TEALEAVES = "향기나는 잎 뭉치로군", --찻잎
 		TEALEAVES_DRIED = "찻잎 한줌이로군.", --말린 찻잎
 
-		CAFFEINBERRY = "콩을맺는덤불이 마니의 축복을 받았구나.", --커피 덤불
+		CAFFEINBERRY = "콩을 맺는덤불이 마니의 축복을 받았구나.", --커피 덤불
 		DUG_CAFFEINBERRY = "나랑 함께 가자꾸나.", --파낸 커피덤불
 		CAFFEINBERRY_BEAN = "검게 될때까지 볶아야 겠군.", --생 커피콩
 		CAFFEINBERRY_BEAN_COOKED = "활력이 넘치는 향이로군.", --구운 커피콩
@@ -112,7 +112,7 @@ return {
 		SUSHIBISCUS = "이 차는 저주받은것이 틀림없도다.", -- 자살차
 		MOON_BLOSSOM_TEA = "과연, 마니의 축복이 담겼구나.", --달꽃차
 
-		CAFFEINBERRY_JUICE = "쓰고 심장이 요동친다네.", -- 블랙 커피
+		CAFFEINBERRY_JUICE = "쓰고 심장이 요동치는구나.", -- 블랙 커피
         TOFFEE_LATTE = "참 달고 고소하군.", --토피넛 라떼
 		RUINCHA_LATTE = "내 정신이 번쩍 드는군.", --모카 라떼(커피+초코)
 		
@@ -148,7 +148,7 @@ return {
 		LEMONLIMESODA = "전사에게 걸맞는 음료는 아니로다.", -- 레몬 라임소다(과일소다 상위 호환)
 		COLA = "검은 유혹과도 같구나.", -- 콜라
 		COLAQUANTUM = "내 심장을 뛰게 하는군!", --콜라 퀀텀
-		LUMPY_BEER = "흙냄새나는 채소로 만든 음료가 상쾌하기도하군.", --루트비어(술이 아님)
+		LUMPY_BEER = "흙냄새 나는 채소로 만든 음료가 상쾌하기도하군.", --루트비어(술이 아님)
 
 		-- 양조주
 
@@ -285,7 +285,7 @@ return {
 			STOP = "먼저 땔감에 불을 붙혀야겠지", --화덕에 불이 없어서 더러운물이 끓지 않는 상태
 		},
 
-		CAMPDESALINATOR_ITEM = "바닷물을 샘물로 손환시키는 솥이로다.", --휴대 제염기 아이템 조사 대사
+		CAMPDESALINATOR_ITEM = "바닷물을 샘물로 환시키는 솥이로다.", --휴대 제염기 아이템 조사 대사
 		CAMPDESALINATOR = 
 		{
 			GENERIC = "솥에 가뭄이 들었나니.", --물 없음
@@ -297,7 +297,7 @@ return {
 
 		KETTLE =
 		{
-			EMPTY = "이상태로는 고깃국을 만들수 없다.", --빈 주전자 조사대사
+			EMPTY = "이 상태로는 고깃국을 만들수 없다.", --빈 주전자 조사대사
 			BURNT = "불길에 삼켜져 버렸군.", --주전자가 불탐
 			BOILING_LONG = "기다리지 말고 다른 것을 하는 것이 좋겠어.", -- 음료를 만들기 시작한지 얼마 안됨
 			BOILING_SHORT = "차를 거의 다 끓여냈군.", --음료 조리가 거의 끝나감
