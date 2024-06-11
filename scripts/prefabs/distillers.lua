@@ -198,8 +198,7 @@ local function fn()
     inst.entity:AddLight()
     inst.entity:AddNetwork()
 
-    inst:SetPhysicsRadiusOverride(.5)
-    MakeObstaclePhysics(inst, inst.physicsradiusoverride)
+    MakeObstaclePhysics(inst, 1.00)
 
     local minimap = inst.entity:AddMiniMapEntity()
     minimap:SetIcon("distillers.tex")
