@@ -259,5 +259,24 @@ local function fn()
     return inst
 end
 
+--[[local function CustomTestFunction(inst)
+    local pt = TheInput:GetWorldPosition()
+    
+    if pt == nil then
+        return false
+    end
+
+    local deployspacing = DEPLOYSPACING.MEDIUM
+    local entities = TheSim:FindEntities(pt.x, pt.y, pt.z, deployspacing)
+    
+    for _, entity in ipairs(entities) do
+        if entity ~= inst and entity:HasTag("structure") then
+            return false
+        end
+    end
+    
+    return true
+end]]
+
 return Prefab("distillers", fn, assets, prefabs),
     MakePlacer("distillers_placer", "distillers", "distillers", "idle_empty")
