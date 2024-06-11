@@ -35,6 +35,9 @@ local function fn()
 
 	MakeInventoryPhysics(inst)
 
+    inst._swap_type = "kettle_drink"
+    inst._same_name = true
+
 	inst.AnimState:SetBank("kettle_drink")
 	inst.AnimState:SetBuild("kettle_drink")
 	inst.AnimState:PlayAnimation("idle")

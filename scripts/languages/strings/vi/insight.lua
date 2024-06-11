@@ -51,8 +51,8 @@ STRINGS.INSIGHT.WATERINGSTRUCTURE.RAWTEXT_TIME_EXT = "Xô : %s(%s)[%s/%s] / Dạ
 STRINGS.INSIGHT.WATERINGTOOL.RAWTEXT_GAIN_LOSS= "Nước %s trong %s"
 STRINGS.INSIGHT.WATERINGTOOL.RAWTEXT_TIME = "Loại nước : %s / %s trong %s"
 STRINGS.INSIGHT.WATERINGTOOL.RAWTEXT_TIME_EXT = "Loại nước : %s(Số lượng : %s) / %s in %s"
-STRINGS.INSIGHT.WATERINGTOOL.RAWTEXT = "Water Type : %s"
-STRINGS.INSIGHT.WATERINGTOOL.RAWTEXT_EXT = "Water Type : %s(Số lượng : %s)"
+STRINGS.INSIGHT.WATERINGTOOL.RAWTEXT = "Loại nước : %s"
+STRINGS.INSIGHT.WATERINGTOOL.RAWTEXT_EXT = "Loại nước : %s(Số lượng : %s)"
 
 STRINGS.INSIGHT.SALTMAKER.RAWTEXT = "<color=#E0E0E0>Muối</color> thu được <color=#E0E0E0>%s/%s</color>"
 STRINGS.INSIGHT.SALTMAKER.RAWTEXT_EXT = "<color=#E0E0E0>Muối</color> thu được <color=#E0E0E0>%s/%s</color> (<color=#E0E0E0>%s/%s</color>)"

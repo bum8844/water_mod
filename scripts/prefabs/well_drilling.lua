@@ -187,6 +187,8 @@ local function item_fn()
 
     MakeInventoryPhysics(inst)
 
+    inst._swap_type = "well_drilling"
+
     inst.AnimState:SetBank("well_drilling")
     inst.AnimState:SetBuild("well_drilling")
     inst.AnimState:PlayAnimation("idle_packed")

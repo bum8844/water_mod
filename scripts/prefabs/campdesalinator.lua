@@ -228,6 +228,8 @@ local function fn_item()
 
     MakeInventoryPhysics(inst)  
 
+    inst._swap_type = "campdesalinator_item"
+    
     inst.AnimState:SetBuild("campdesalinator_item")
     inst.AnimState:SetBank("campdesalinator_item")
     inst.AnimState:PlayAnimation("idle")

@@ -242,6 +242,15 @@ return {
 			DIRTY_ICE = "I don't think I can eat this ice.",
 		},
 
+		BUCKET_DRIFTWOOD_EMPTY = 
+		{
+			EMPTY = "Looks like a bucket that has drifted onto a deserted island!",
+			FULL = "Safe to drink now!",
+			FULL_ICE = "Aw, now I have to boil it.",
+			DIRTY = "I think this went bad!",
+			DIRTY_ICE = "I don't think I can eat this ice.",
+		},
+
 		BUCKET_EMPTY = 
 		{
 			EMPTY = "Saving rain water is good for survival!",

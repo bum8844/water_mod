@@ -241,6 +241,15 @@ return {
                 DIRTY_ICE = "Freezing won't make it clean.", -- Dirty rainwater has frozen
             },
 
+            BUCKET_DRIFTWOOD_EMPTY = 
+            {
+                EMPTY = "Let's put bone meal in this, and send it back to the sea just like that.", -- 유목양동이
+                FULL = "Filled with rainwater.", -- Clean rainwater inside
+                FULL_ICE = "It's frozen solid.", -- Rainwater has frozen
+                DIRTY = "Filled with life-rich toxic water.", -- Rainwater has become dirty
+                DIRTY_ICE = "Freezing won't make it clean.", -- Dirty rainwater has frozen
+            },
+
             BUCKET_EMPTY =
             {
                 EMPTY = "Just an empty bucket.", -- Empty wooden bucket

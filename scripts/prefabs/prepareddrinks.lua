@@ -88,6 +88,9 @@ local function MakePreparedDrink(data)
 
         MakeInventoryPhysics(inst)
 
+        inst._swap_type = "kettle_drink"
+        inst._same_name = true
+
 		local food_symbol_build = nil
 		inst.AnimState:SetBuild("kettle_drink")
 		inst.AnimState:SetBank("kettle_drink")
@@ -167,6 +170,7 @@ local function MakePreparedDrink(data)
         inst.components.water.returnprefab = "cup"]]
 
 		inst:AddComponent("inventoryitem")
+        inst.components.inventoryitem.atlasname = data.atlas or "images/tea_inventoryitem_drinks.xml"
         if data.OnPutInInventory then
             inst:ListenForEvent("onputininventory", data.OnPutInInventory)
         end

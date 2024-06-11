@@ -241,6 +241,15 @@ return {
             DIRTY_ICE = "After removing the ice, I need to do proper dishwashing.", 
         },
 
+        BUCKET_DRIFTWOOD_EMPTY = 
+        {
+            EMPTY = "Is it okay to use this kind of bucket for drawing water?", -- 유목양동이
+            FULL = "It's clean water!", 
+            FULL_ICE = "It would be perfect for holding wine.",
+            DIRTY = "There are a lot of inconvenient green guests.", 
+            DIRTY_ICE = "After removing the ice, I need to do proper dishwashing.",
+        },
+
         BUCKET_EMPTY = 
         {
             EMPTY = "It's a water bucket made from carved wood.", 

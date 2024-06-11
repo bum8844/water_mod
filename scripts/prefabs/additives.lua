@@ -28,6 +28,8 @@ local function MakeAdditives(data)
 
         MakeInventoryPhysics(inst)
 
+        inst._swap_type = "water_additives"
+
     	inst.AnimState:SetBuild("water_additives")
         inst.AnimState:SetBank("water_additives")
         inst.AnimState:PlayAnimation("idle")

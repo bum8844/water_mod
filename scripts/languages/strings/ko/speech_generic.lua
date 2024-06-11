@@ -131,7 +131,7 @@ return {
 		QUARTZ_SHAKE = "생선 비린내가 안 나기를.",
 		CHERRY_ROSEBERRIES_TEA = "장미향이 강렬해.",
 		CHERRY_HONEY_TEA = "은은하게 꽃향기가 나네.",
-		SWEET_RICE_DRINK = "이런 음료도 있었어?",
+		SWEET_RICE_DRINK = "이런음료도 있었어?",
 		PINEANANAS_JUICE = "과피가 내 입천장을 긁을일은 더 없겠어.", -- 레기온 파인애플 주스
 		ORANGE_JUICE = "오렌지 주스를 가져와서 기뻐.", -- 모어 푸드 팩 오랜지 쥬스
 		STRAWBERRY_SMOOTHIE = " 빨대는 어디있지? ", -- 모어 푸드 팩 딸기 스무디
@@ -165,7 +165,7 @@ return {
 
 		--콜라보 소다
 
-		CHERRY_DOCTOR_COLA = "의사가 만들었다는거는 거짓말이야.",
+		CHERRY_DOCTOR_COLA = "의사가 만들었다는 예기는 거짓말이야.",
 		PINEANANASSODA = "입안이 따끔거리는 조합'물'이야.", -- 탄산 파인애플(오란씨)
 		ORANGESODA = "정말 환타스틱하네.", -- 탄산 오랜지(환타)
 		STRAWBERRYSODA = "베리강력한 탄산감이야.", -- 탄산 딸기(웰치스 딸기)
@@ -192,7 +192,7 @@ return {
 
 		--왈리 전용 증류주
 
-		BERRY_GIN = "과학으로 싼 술을 잔뜩만든게 뭐가나빠.",
+		BERRY_GIN = "과학으로 싼 술을 잔뜩 만든게 뭐가나빠.",
 		GLOWBERRY_GIN = "독주가 빛나서 더 나쁠게 뭐가있겠어?",
 		ABSINTHE = "톡 쏘는 향이 특징이야.",
 		TEA_LUMPY_VODKA = "찻잎을 침출한거야?",
@@ -209,7 +209,7 @@ return {
 		CHERRY_BLOOM_RUM = "병속의 꽃잎이 떠다니는걸 영원히 감상할수있겠어.",
 		RICE_SPIRITS = "당연히 증류주도 가능하지.",
 		WHEAT_WHISKEY = "일종의 그레인 위스키야.",
-		PALE_WHISKEY = "과학적으로 말도안되는색의 위스키야.",
+		PALE_WHISKEY = "과학적으로 말도 안되는 색의 위스키야.",
 
 		--왈리 전용 콜라보 증류주
 
@@ -218,7 +218,7 @@ return {
 
 		--냄비 요리
 
-        DARK_RUINCOLATE = "과학실험을 할거였으면 나도 불렀어야지.",
+        DARK_RUINCOLATE = "과학실험을 하는거 였으면 나도 불렀어야지.",
         WHITE_RUINCOLATE = "잔뜩 먹기에는 느끼하겠어.",
         RUINCOLATE = "실험에는 당분보충이 필요하지.",
         RUIN_SCHOKAKOLA = "누가 초콜릿을 구두약캔에 보관할 생각을 했지?",
@@ -238,7 +238,16 @@ return {
 			FULL = "빗물로 가득찼어",
 			FULL_ICE = "얼음으로 가득찼어",
 			DIRTY = "더러운물로 가득찼어",
-			DIRTY_ICE = "더러운얼음로 가득찼어",
+			DIRTY_ICE = "더러운얼음으로 가득찼어",
+		},
+
+		BUCKET_DRIFTWOOD_EMPTY = 
+		{
+			EMPTY = "보기보다 튼튼해.",
+			FULL = "빗물로 가득찼어",
+			FULL_ICE = "얼음으로 가득찼어",
+			DIRTY = "더러운물로 가득찼어",
+			DIRTY_ICE = "더러운얼음으로 가득찼어",
 		},
 
 		BUCKET_EMPTY = 
@@ -247,7 +256,7 @@ return {
 			FULL = "빗물로 가득찼어",
 			FULL_ICE = "얼음으로 가득찼어",
 			DIRTY = "더러운물로 가득찼어",
-			DIRTY_ICE = "더러운얼음로 가득찼어",
+			DIRTY_ICE = "더러운얼음으로 가득찼어",
 		},
 
 		DESALINATOR =

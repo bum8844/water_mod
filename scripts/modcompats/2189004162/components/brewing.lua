@@ -1,5 +1,47 @@
 local Color = require("helpers/color")
 
+local function LookupIcon(icon)
+	if icon_list[icon] then
+		return unpack(icon_list[icon])
+	end
+end
+
+local function DefineIcon(icon, tex, atlas)
+	assert(icon_list[icon] == nil, "Attempt to overwrite existing icon '" .. icon .. "'")
+	assert(tex ~= nil, "DefineIcon(..., tex, ...): tex == nil")
+	assert(atlas ~= nil, "DefineIcon(..., ..., atlas): atlas == nil")
+	icon_list[icon] = {tex, atlas}
+end
+
+local function GetAtlasForTex(tex)
+	if atlas_lookups[tex] then
+		return atlas_lookups[tex]
+	end
+
+	-- simutil.lua
+	for _, atlas in pairs(known_atlases) do
+		if TheSim:AtlasContains(atlas, tex) then
+			atlas_lookups[tex] = atlas
+			return atlas
+		end
+	end
+end
+
+local function PrefabHasIcon(prefab)
+	if LookupIcon(prefab) then
+		return true
+	end
+
+	local tex = prefab .. ".tex"
+	local atlas = GetAtlasForTex(tex)
+	if atlas then
+		DefineIcon(prefab, tex, atlas)
+		return true
+	end
+
+	return false
+end
+
 local function EscapeRichText(str)
 	return str:gsub("<", "&lt;"):gsub(">", "&gt;")
 end

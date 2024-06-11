@@ -10,8 +10,8 @@ return {
 
         ANNOUNCE_DRUNK = "¿Perdí en el juego de beber? Hip.", -- Drunk
         ANNOUNCE_DRUNK_END = "¿Aún estoy en el banquete de Egis?", -- Sobers up from being drunk (hangover)
-        ANNOUNCE_DRUNK_IMMUNITY = "¡Jajaja! ¡Otro trago!", -- Temporary. Exclusive to Wigfrid.
-        ANNOUNCE_NOTCHARGE = "Parece que la cabra rayo no esta cargada, así no puedo ordeñarla.", -- Trying to milk the lightning goat with a bucket when it's not charged
+        ANNOUNCE_DRUNK_IMMUNITY = "¡Jajaja! ¡Salud de nuevo!", -- Temporary. Exclusive to Wigfrid.
+        ANNOUNCE_NOTCHARGE = "El unicornio parece que aun no esta listo.", -- Trying to milk the lightning goat with a bucket when it's not charged
         ANNOUNCE_NOTHIRSTSLEEP = "Si duermo así, tendré sed toda la noche, antes debería beber agua..", -- Trying to sleep at night when thirsty
         ANNOUNCE_NOTHIRSTSIESTA = "¿Cómo puedo descansar así cuando tengo la garganta tan seca?", -- Trying to rest during the day when thirsty
         ANNOUNCE_SLEEP_END = "¡Me siento renovada!", -- Wakes up after sleeping and completely sobers up
@@ -27,7 +27,7 @@ return {
 
         DESCRIBE =
         {
-            BOILBOOK = "¿Cuántas recetas para un banquete estarán escritas en este libro?",
+            BOILBOOK = "¿Cuánto vino se indica para la cena del banquete?",
 
             WATER_CLEAN_ICE = "Congelado.", -- Clean ice
             WATER_DIRTY_ICE = "Hielo con impurezas.", -- Dirty ice
@@ -37,11 +37,11 @@ return {
             WELL_KIT = "Con gusto instalaré un pozo.", -- Well kit
             WELL_SPRINKLER_KIT = "Una máquina que hace llover sin nubes.", -- Sprinkler kit
             WELL_WATERPUMP_KIT = "Las máquinas saquearán el mundo subterráneo.", -- Steam water pump kit
-            WELL_BURYING_KIT = "Asegurémonos de que nadie pise esto.", -- Hole burying kit
+            WELL_BURYING_KIT = "Asegurémonos que nadie tropiece.", -- Hole burying kit
             WELL_DRILLING = "¡Empuja todo el camino hasta Styx!", -- Drilling a hole with a drill
             WELL_DRILLING_ITEM = "Una poderosa herramienta para abrir un camino al mundo subterráneo.", -- Drill item
             HOLE = "Puedo escuchar agua ahí abajo.", -- Well hole
-            WELL = "Un pozo para la sed.", -- Well
+            WELL = "Cava el pozo antes de tener sed.", -- Well
 
             -- Waterlogged plants
 
@@ -53,7 +53,7 @@ return {
             TEALEAVES = "Un montón de hojas perfumadas.", -- Tea leaves
             TEALEAVES_DRIED = "Un puñado de hojas de té secas.", -- Dried tea leaves
 
-            CAFFEINBERRY = "Un matorral que da granos de vitalidad.", -- Coffee thicket
+            CAFFEINBERRY = "Los granos de esos arbustos estan bendecidos por Mani.", -- Coffee thicket
             DUG_CAFFEINBERRY = "Vayamos juntos.", -- Dug coffee thicket
             CAFFEINBERRY_BEAN = "Necesita tostarse para ponerse negro.", -- Raw coffee bean
             CAFFEINBERRY_BEAN_COOKED = "Un grano con vitalidad desbordante.", -- Cooked coffee bean
@@ -75,11 +75,11 @@ return {
 
             -- Beverages
 
-            WATER_CLEAN = "Agua pura.", -- Clean water
-            WATER_DIRTY = "Agua salvaje e indómita.", -- Dirty water
+            WATER_CLEAN = "Esto es agua pura.", -- Clean water
+            WATER_DIRTY = "Agua salvaje que se rehúsa a ser domada.", -- Dirty water
             WATER_SALTY = "Una taza de agua marina.", -- Seawater
 
-            GOOPYDRINK = "Principalmente desechos de comida.", -- Failed drink (concept of wet grilling)
+            GOOPYDRINK = "Los restos de comida parecen bastante húmedos.", -- Failed drink (concept of wet grilling)
 
             -- Teapot beverages
 
@@ -87,10 +87,10 @@ return {
             BERRIES_JUICE = "Siento el olor a frutos rojos.", -- Berry juice
             POMEGRANATE_JUICE = "Voy a pensar que es la sangre de la fruta.", -- Pomegranate juice
             BANANA_JUICE = "Jugo para monos, parece.", -- Banana juice
-            FIG_JUICE = "Hay una cantidad excesiva de fruta ahí.", -- Fig juice
+            FIG_JUICE = "Hay una cantidad escandalosa de carne de fruta irreverente.", -- Fig juice
             DRAGONJUICE = "Lleno de fruta blanca.", -- Dragon fruit juice
             GLOWBERRYJUICE = "Voy a pretender que es agua de un manantial brillante.", -- Glowberry juice
-            WATERMELON_JUICE = "Esto es agua, no jugo de fruta.", -- Watermelon juice
+            WATERMELON_JUICE = "Imagina que no es fruta, es agua.", -- Watermelon juice
 
             VEGGIE_TEA = "¿En verdad voy a beber esto?", -- Vegetable juice
             CARROT_TEA = "¡Cómo es que los guerreros sirven comida para conejos de esta forma!", -- Carrot tea
@@ -101,10 +101,10 @@ return {
 
             GREENTEA = "Es sólo... agua con sabor a hoja.", -- Fresh leaf green tea
             BLACKTEA = "No tengo tiempo para reuniones ociosas.", -- Black tea
-            BLACKTEA_ICED = "Está frío.", -- Iced black tea
+            BLACKTEA_ICED = "Con sólo mirarlo me duelen los dientes.", -- Iced black tea
             FUER = "¡Es sólo un poco de helecho!", -- Bohee tea, leaf tea, fern tea
             MIXFLOWER = "Las bendiciones de Freya están aquí.", -- Mixed flower petal tea
-            HIBISCUSTEA = "La flor está derramando lágrimas.", -- Hibiscus tea
+            HIBISCUSTEA = "La flor está derramando sangre.", -- Hibiscus tea
             CACTUSFLOWER_TEA = "Me tomaré el agua, pero no la flor.", -- Cactus flower tea
             LOTUSTEA = "¡Dame pescado! ¡Pescado!", -- Lotus flower tea
             SUSHIBISCUS = "Está indudablemente maldito.", -- Suicide tea
@@ -115,12 +115,12 @@ return {
             RUINCHA_LATTE = "Mi mente esta despertando.", -- Mocha latte (Coffee + Chocolate)
 
             HOTRUINCOLATE = "Calienta incluso el alma.", -- Hot chocolate
-            RUINCOLATE_SMOOTHIE = "¿Esta es la bebida de los gigantes de hielo?", -- Chocolate smoothie (Cold)
+            RUINCOLATE_SMOOTHIE = "¿Es esta la bebida de Hrimthurs?", -- Chocolate smoothie (Cold)
             RUINXOCOLATL = "Una bebida de guerreros ancestrales.", -- Chocolatl (Spicy)
             TEA_RUINCOLATE_LATTE = "Despierta mi alma.", -- Matcha chocolate latte
 
             MULLED = "Dará un respiro a las almas cansadas.", -- Bhang
-            BUTTERBEER = "El valor de los jóvenes magos es alto.", -- Butterbeer from the Harry Potter series
+            BUTTERBEER = "Tengo en alta estima el valor de los jóvenes magos.", -- Butterbeer from the Harry Potter series
 
             -- Collaboration Teapot Drinks
 
@@ -132,16 +132,16 @@ return {
             SWEET_RICE_DRINK = "¿Esto no contiene semillas?", -- Vita-Hybiscus Sweet Rice Punch
             PINEANANAS_JUICE = "Aplastaron las duras escamas para obtener la carne.", -- Reign of Giants Pineananas Juice
             ORANGE_JUICE = "¿Me está pidiendo que beba su jugo agrio?", -- More Food Pack Orange Juice
-            STRAWBERRY_SMOOTHIE = "Un brebaje frío de frutas rojas.", -- More Food Pack Strawberry Smoothie
-            STRAWBERRY_MILK_SMOOTHIE = "Un brebaje rosa y afrutado.", -- More Food Pack Strawberry Milk Smoothie
+            STRAWBERRY_SMOOTHIE = "Esta frío, es un puré de frutos rojos.", -- More Food Pack Strawberry Smoothie
+            STRAWBERRY_MILK_SMOOTHIE = "Esta bebida no es apropiada para el consumo de un guerrero.", -- More Food Pack Strawberry Milk Smoothie
 
             -- Distillery Drinks
 
-            SPOILED_DRINK = "El tiempo no le dio conocimiento, sino podredumbre.", -- Spoiled Drink
+            SPOILED_DRINK = "La edad sólo ha dado impurezas a esta bebida, no sabiduría.", -- Spoiled Drink
 
             -- Distillery Soda
 
-            SODA = "Refresco de agua manantial.", -- Carbonated Water
+            SODA = "Es agua mineral carbonatada.", -- Carbonated Water
             FRUITSODA = "Es ponche de frutas.", -- Fruit Punch Soda
             LEMONLIMESODA = "No es una bebida digna de un guerrero.", -- Lemon Lime Soda (Superior version of Fruit Soda)
             COLA = "Es tan seductor como la oscuridad misma.", -- Cola
@@ -151,7 +151,7 @@ return {
             -- Distillery Spirits
 
             CORN_BEER = "Es una imitación falsa de la cerveza alemana.", -- Corn Beer
-            MADHU = "¡Es el dulce vino de Xiye!", -- Mead
+            MADHU = "¡Es el hidromiel de Nord!", -- Mead
             WINE = "Esta hecho con la sangre del profeta.", -- Wine (Basic berry brew)
             NOBLEWINE = "¿Es para acompañar mi carne?", -- Noble Wine (Cooked berry brew)
             SPARKLINGWINE = "No es una bebida para la celebración de guerreros.", -- Sparkling Wine
@@ -174,13 +174,13 @@ return {
             COCONUT_WINE = "El olor al aceite de palma es fuerte.", -- Shipwrecked Coconut Wine
             CHERRY_BLOOM_MADHU = "Una bebida deliciosa y con una bella presentación .", -- Cherry Forest Cherry Blossom Mead
             GIANT_BLUEBERRY_WINE = "¡Es una bebida poderosa!", -- Vita-Hybiscus Boom! Berry Sapphire (Explodes when ignited)
-            RICE_WINE = "¡Es tan claro que es transparente!", -- Vita-Hybiscus Makgeolli
-            WHEAT_BEER = "Solo es cerveza ¿Cierto?", -- Hip of Food Wheat Beer
+            RICE_WINE = "No puedo ver diferencia entre esto y leche.", -- Vita-Hybiscus Makgeolli
+            WHEAT_BEER = "¡Es la cerveza de Egir!", -- Hip of Food Wheat Beer
             PALE_BEER = "¿Esto es cerveza?", -- Reign of Giants Pale Ale (Turquoise beer made from Monsterlas)
 
             -- Distillery Liquors
 
-            DISINFECTANT = "¡Para limpiar heridas y realizar curaciones!", -- Disinfectant
+            DISINFECTANT = "¨¡Quemará tus heridas para curarlas!", -- Disinfectant
             CORN_WHISKEY = "Es dulce y aromatico.", -- Corn Whiskey
             LUMPY_VODKA = "Yo declaro, que beberé esto como agua.", -- Vodka
             TEQUILA = "¡Es una bebida áspera y salvaje!", -- Tequila
@@ -225,7 +225,7 @@ return {
             {
                 EMPTY = "Es una cubeta de hierro.", -- Empty iron bucket
                 FULL = "Esta llena de agua limpia.", -- Clean rainwater is inside
-                FULL_ICE = "Se ha congelado.", -- The rainwater has frozen
+                FULL_ICE = "Evoca una sensación de nostalgia.", -- The rainwater has frozen
                 DIRTY = "Está sucio.", -- The rainwater has become dirty
                 DIRTY_ICE = "Se ha vuelto un vertedero sucio.", -- Dirty rainwater has frozen
             },
@@ -234,7 +234,7 @@ return {
             {
                 EMPTY = "Convirtió los troncos el tronco con gran habilidad.", -- Empty wooden log bucket
                 FULL = "Está lleno de agua limpia.", -- Clean rainwater is inside
-                FULL_ICE = "Se ha congelado.", -- The rainwater has frozen
+                FULL_ICE = "Evoca una sensación de nostalgia.", -- The rainwater has frozen
                 DIRTY = "Esta sucio.", -- The rainwater has become dirty
                 DIRTY_ICE = "Se volvió un vertedero sucio.", -- Dirty rainwater has frozen
             },
@@ -243,7 +243,7 @@ return {
             {
                 EMPTY = "Es una cubeta de madera vacía.", -- Empty wooden bucket
                 FULL = "Está lleno de agua limpia.", -- Clean rainwater is inside
-                FULL_ICE = "Se ha congelado.", -- The rainwater has frozen
+                FULL_ICE = "Evoca una sensación de nostalgia.", -- The rainwater has frozen
                 DIRTY = "Esta sucio.", -- The rainwater has become dirty
                 DIRTY_ICE = "Se volvió un vertedero sucio.", -- Dirty rainwater has frozen
             },
@@ -267,10 +267,10 @@ return {
             BREWERY =
             {
                 EMPTY = "Declaro que no haré ponche con verduras y frutas.", -- Examining the brewery
-                BURNT = "Llorar por espíritus secos es inútil.", -- The brewery has burned down
+                BURNT = "¿De que sirve llorar sobre el vino derramado?", -- The brewery has burned down
                 FERMENTING_LONG = "Es mejor hacer otra cosa mientras espero.", -- There's still a lot of fermentation left
-                FERMENTING_SHORT = "¡Es hora de prepararse para la fiesta!", -- Fermentation is almost done
-                DONE = "¿Está listo el ponche para la fiesta?", -- There's a drink in the brewery
+                FERMENTING_SHORT = "Hora de preparar un banquete!", -- Fermentation is almost done
+                DONE = "¿Está listo el vino para el banquete?"", -- There's a drink in the brewery
             },
 
             CAMPKETTLE_ITEM = "Es una tetera improvisada.", -- Examining the portable kettle item
@@ -309,7 +309,7 @@ return {
 
             PORTABLEKETTLE_ITEM =
             {
-                GENERIC = "El campo de batalla no es lugar para un banquete.", -- Examining the portable kettle item
+                GENERIC = "El campo de batalla no es lugar para una fiesta de té.", -- Examining the portable kettle item
                 EMPTY = "No hay lugar para carne.", -- Examining an empty placed portable kettle
                 BOILING_LONG = "Es mejor encontrar a mis enemigos en lugar de hacer una bebida.", -- The process of making a drink has just started
                 BOILING_SHORT = "La bebida está casi lista.", -- The drink is almost ready
@@ -326,7 +326,7 @@ return {
                 EMPTY = "¡Podría llamarse el caldero de Hymir!", -- Examining the distiller
                 DISTILLTING_LONG = "El ambiente está apagándose ... ¡Date prisa, caldero!", -- There's still a lot of distillation left
                 DISTILLING_SHORT = "Estará listo en un santiamén.", -- Distillation is almost done
-                DONE = "¿Hay alcohol fuerte?", -- There's a drink in the distiller
+                DONE = "¿Contiene alguna bebida alcohólica", -- There's a drink in the distiller
             },
 
             WELL_WATERPUMP = {

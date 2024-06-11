@@ -520,6 +520,8 @@ local function itemfn()
 
     MakeInventoryPhysics(inst)
 
+    inst._swap_type = "portablekettle"
+
     inst.AnimState:SetBank("portablekettle")
     inst.AnimState:SetBuild("portablekettle")
     inst.AnimState:PlayAnimation("idle_ground")

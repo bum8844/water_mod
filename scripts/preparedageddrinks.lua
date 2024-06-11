@@ -33,6 +33,7 @@ local drinks =
 		cooktime = (TUNING.KETTLE_LUXURY_GOODS + TUNING.SODA_WAIT),
 		potlevel = "mid",
 		potlevel_bottle = "mid",
+		tags = {"honeyed"},
 	},
 	
 	fruitsoda =
@@ -49,6 +50,7 @@ local drinks =
 		cooktime = (TUNING.KETTLE_FRUIT + TUNING.SODA_WAIT),
 		potlevel = "mid",
 		potlevel_bottle = "mid",
+		tags = {"honeyed"},
 	},
 	
 	

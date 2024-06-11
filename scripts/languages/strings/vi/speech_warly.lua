@@ -8,12 +8,12 @@ return {
         }
     },
 
-    ANNOUNCE_DRUNK = "Nấc cụt, đây là khoảng thời gian vui vẻ, nhưng tôi sẽ không uống quá nhiều...", -- Say rượu
-    ANNOUNCE_DRUNK_END = "Hm... Tôi nên nghĩ ra một số cách chữa trị chứng nôn nao.", -- Tỉnh táo sau cơn say (nôn nao)
+    ANNOUNCE_DRUNK = "Nấc cụt, tui đã cố nhắc nhở bản thân phải thưởng thức, chứ không để say mèm thế này....", -- Say rượu
+    ANNOUNCE_DRUNK_END = "Hừm... tôi nghĩ tôi nên cần chuẩn bị một bữa ăn để giải quyết tàn dư của cơn say này.", -- Tỉnh táo sau cơn say (nôn nao)
     ANNOUNCE_DRUNK_IMMUNITY = "", -- Tạm thời. Chỉ dành cho Wigfrid.
     ANNOUNCE_NOTCHARGE = "Vắt sữa bây giờ sẽ không mang lại kết quả gì.", -- Cố gắng vắt sữa Dê Điện mà không cần sạc điện
-    ANNOUNCE_NOTHIRSTSLEEP = "Tôi khát nước, nhưng tôi chưa được ngủ ngay.", -- Cố gắng ngủ vào ban đêm với ít khát nước
-    ANNOUNCE_NOTHIRSTSIESTA = "Tôi khát nước, nhưng chưa đến lúc ngủ trưa.", -- Cố gắng ngủ trưa trong ngày với mức độ khát nước thấp
+    ANNOUNCE_NOTHIRSTSLEEP = "Cơn khát của tôi còn gay gắt hơn cơn mệt mỏi của mình!", -- Cố gắng ngủ vào ban đêm với ít khát nước
+    ANNOUNCE_NOTHIRSTSIESTA = "Cơn khát của tôi còn gay gắt hơn cơn mệt mỏi của mình!", -- Cố gắng ngủ trưa trong ngày với mức độ khát nước thấp
     ANNOUNCE_SLEEP_END = "À... Lần sau tôi phải thận trọng hơn và tránh uống quá nhiều.", -- Thức dậy sau khi ngủ và hoàn toàn tỉnh táo
     ANNOUNCE_THIRST = "Tôi phải uống gì đó...", -- Rất khát
 
@@ -22,8 +22,8 @@ return {
 
     ANNOUNCE_CURE_WATERBORNE = "Dạ dày của tôi đã ổn định lại một chút.", -- Wigfrid từ chối uống nước bị ô nhiễm
 
-    ANNOUNCE_DCAPACITY_CRITICAL = "Tôi phải kiềm chế; tôi không thể uống thêm được nữa.", -- Gần như say rượu
-    ANNOUNCE_DCAPACITY_HALF = "Mmm, tôi đang cảm thấy vui vẻ vừa phải.", -- Bắt đầu cảm nhận được tác dụng của việc uống rượu
+    ANNOUNCE_DCAPACITY_CRITICAL = "Tôi nên ngưng uống lại.", -- Gần như say rượu
+    ANNOUNCE_DCAPACITY_HALF = "Uừmm, tôi cảm thấy hơi say say rồi.", -- Bắt đầu cảm nhận được tác dụng của việc uống rượu
 
     DESCRIBE =
     {
@@ -34,38 +34,38 @@ return {
 
         SPICE_CAFFEINPEPPER = "Nó làm tăng hương vị của bất kỳ món ăn nào.", -- Gia vị hạt tiêu caffein
 
-        WELL_KIT = "Bây giờ, tất cả những gì chúng ta cần là một nguồn suối sủi bọt!", -- Well Kit
+        WELL_KIT = "Giá như bây giờ có một nguồn nước sạch thì tốt biết mấy.", -- Well Kit
         WELL_SPRINKLER_KIT = "Tôi có thể dễ dàng phục vụ nước cho khách trong vườn của mình bằng cái này.", -- Bộ phun nước
         WELL_WATERPUMP_KIT = "Giống như máy lọc nước!", -- Bộ bơm nước bằng hơi nước
-        WELL_BURYING_KIT = "Chúng ta phải đảm bảo không ai rơi vào những cái lỗ này.", -- Bộ chôn lỗ
-        WELL_DRILLING = "Tôi nên tránh nấu ăn gần máy khoan đó.", -- Khoan lỗ bằng máy khoan
-        WELL_DRILLING_ITEM = "Tôi sẽ tìm một tầng chứa nước và khoan nó.", -- Vật phẩm khoan
+        WELL_BURYING_KIT = "Nếu như ai đó trượt chân vào cái lỗ kia thì quả thật là một tai nạn đầy đáng tiếc!", -- Bộ chôn lỗ
+        WELL_DRILLING = "Nó sẽ tìm mạch nước và đào lên.", -- Khoan lỗ bằng máy khoan
+        WELL_DRILLING_ITEM = "Nó sẽ tìm mạch nước và đào lên.", -- Vật phẩm khoan
         HOLE = "Tôi có thể nghe thấy tiếng nước chảy.", -- Lỗ giếng
         WELL = "Hãy mở rộng nguồn cung cấp nước uống của chúng ta!", -- Vâng
 
-        WX78MODULE_NONEDRUNK = "Họ mang đến cho người bạn kim loại của chúng ta thêm chút thú vị phải không?", -- 78전용 묘듈
+        WX78MODULE_NONEDRUNK = "Thứ đó mang lại cho người bạn kim loại của chúng ta thêm một chút niềm say mê, phải không?", -- 78전용 묘듈
 
         -- Mod cây ngập nước
 
         TEA_TREE = "Tôi cho là thường được tìm thấy ở bên kia biển.", -- Cây trà
-        DUG_TEA_TREE = "Giống như trà mang đi.", -- Cây trà đào từ mặt đất
+        DUG_TEA_TREE = "Tôi sẽ tìm nguồn cung cấp lá trà tại địa phương.", -- Cây trà đào từ mặt đất
         TEA_SEED = "Không biết bên trong hạt này có gì nhỉ.", -- Hạt cây trà
-        TEA_SEED_COOKED = "Có vẻ như nó không có giá trị như một nguyên liệu nấu ăn.", -- Hạt cây trà đã rang
+        TEA_SEED_COOKED = "Tôi là người phải tìm ra cách sử dụng thứ này trong nấu ăn.", -- Hạt cây trà đã rang
         TEA_SEED_SAPLING = "Nó vẫn còn khá non.", -- Cây non trà
         TEALEAVES = "Tôi nên xử lý chúng trước.", -- Lá trà
         TEALEAVES_DRIED = "Bây giờ, tất cả những gì tôi cần là nước nóng...", -- Lá trà khô
 
         CAFFEINBERRY = "Giá như nó mọc hạt cà phê vào mỗi buổi sáng.", -- Bụi cà phê
-        DUG_CAFFEINBERRY = "Cà phê mang đi.", -- Bụi cà phê đào từ mặt đất
-        CAFFEINBERRY_BEAN = "Có mùi thơm hạt tiêu...", -- Hạt cà phê thô
+        DUG_CAFFEINBERRY = "Đây là cà phê mang đi.", -- Bụi cà phê đào từ mặt đất
+        CAFFEINBERRY_BEAN = "Đợi đã, nó có chút... mùi thơm của hạt tiêu...?", -- Hạt cà phê thô
         CAFFEINBERRY_BEAN_COOKED = "Tuyệt vời!", -- Hạt cà phê rang
 
         RUINCACAO_TREE = "Bạn thường phải vượt biển để tìm thấy những thứ này.", -- Cây Cacao
         DUG_RUINCACAO_TREE = "Tôi có nên hồi sinh nó không?", -- Cây cacao đào từ lòng đất
         RUINCACAO_SEED = "Thật lạnh sống lưng.", -- Vật phẩm cây giống Cacao
-        RUINCACAO_SEED_SAPLING = "Thật lạnh sống lưng.", -- Trồng cây cacao
+        RUINCACAO_SEED_SAPLING = "Loài hoa này có màu sắc thật kỳ lạ phải không?", -- Trồng cây cacao
         RUINCACAO = "Tôi nên kiểm tra xem bên trong có gì.", -- Vỏ cacao nguyên khối
-        RUINCACAO_BEAN = "Nó có mùi cacao nồng nặc!", -- Vỏ cacao vỡ
+        RUINCACAO_BEAN = "Ugh, mùi dầu mỡ đó!", -- Vỏ cacao vỡ
         RUINCACAO_BEAN_COOKED = "Tôi không thể ăn nó như thế này được.", -- Vỏ cacao rang
 
         -- Phụ gia chưng cất
@@ -77,11 +77,11 @@ return {
 
         -- Đồ uống
 
-        WATER_CLEAN = "Nước sạch không có tạp chất là điều cần thiết để nấu nướng.", -- Nước sạch
+        WATER_CLEAN = "Tinh khiết, vô vị dùng để nấu ăn!", -- Nước sạch
         WATER_DIRTY = "Tôi không thể dùng nước này để nấu ăn.", -- Nước bẩn
-        WATER_SALTY = "Tôi không nghĩ cái này phù hợp để làm nước dùng.", -- Saltwater
+        WATER_SALTY = "Bạn có chắc thứ này đủ đạt để làm nước dùng không?", -- Saltwater
 
-        GOOPYDRINK = "Đây là hiện thân của sự hỗn loạn, sự hỗn loạn thuần túy!", -- Đồ uống thất bại (đồ uống ướt) - Câu nói của Gordon Ramsay
+        GOOPYDRINK = "Đây là một thứ hỗn mang! Hoàn toàn là một thứ hỗn mang thuần khiết!", -- Đồ uống thất bại (đồ uống ướt) - Câu nói của Gordon Ramsay
 
         -- Đồ uống ấm trà
 
@@ -121,21 +121,21 @@ return {
         RUINXOCOLATL = "Thức uống kỳ lạ chứa đựng trí tuệ của người Nam Mỹ!", -- Xocolatl (cay)
         TEA_RUINCOLATE_LATTE = "Vị đắng của lá trà bù đắp cho vị ngọt của sô cô la.", -- Matcha Latte
 
-        MULLED = "Điều này thật tuyệt vời khi bạn cảm thấy khó chịu.", -- Bungsho
+        MULLED = "Tôi khuyên bạn nên dùng đồ uống này khi nào cảm thấy thật sự khó chịu.", -- Bungsho
         BUTTERBEER = "Thức uống ngon nhất ở Hẻm Xéo.", -- Bia bơ trong bộ truyện Harry Potter
 
         -- Hợp tác Ấm trà Đồ uống
 
-        COCONUT_JUICE = "Mỗi ngụm nước khiến tôi cảm thấy như đang đi nghỉ dưỡng ở vùng nhiệt đới.", -- Castaway Coconut Juice
-        RAINBOW_SHAKE = "Nó không hẳn là hương vị của cầu vồng, nhưng nó gần giống.", -- Castaway Rainbow Jelly Shake
-        QUARTZ_SHAKE = "Lẽ ra tôi nên dùng Moon Rock Shake ngon miệng hơn.", -- Castaway Quartz Crystals Shake
+        COCONUT_JUICE = "Ăn miếng thạch trong thứ nước này khiến tôi có cảm giác như đang ở rì-sọt vậy!", -- Castaway Coconut Juice
+        RAINBOW_SHAKE = "Nó không hẳn là có vị của bảy sắc cầu vòng cơ mà không quá tệ đâu.", -- Castaway Rainbow Jelly Shake
+        QUARTZ_SHAKE = "Theo ý kiến của tôi thì, thứ này sẽ tốt hơn khi dùng để làm Nạm Plà", -- Castaway Quartz Crystals Shake
         CHERRY_ROSEBERRIES_TEA = "Nó có hương thơm thú vị và giúp điều hòa nhiệt độ cơ thể.", -- Trà hoa hồng hoa anh đào
         CHERRY_HONEY_TEA = "Đó là cách chữa đau họng nhanh chóng.", -- Trà mật ong anh đào hoa anh đào
         SWEET_RICE_DRINK = "Nó ngọt ngào và có kết cấu khác thường!", -- Vitahebhi Sikhye
-        PINEANANAS_JUICE = "Cẩn thận đừng uống quá nhiều, nó có thể khiến miệng bạn bị ngọt!", -- Legion Pineapple Juice
+        PINEANANAS_JUICE = "Tốt nhất không nên uống quá nhiều, MỒM của tôi sẽ chảy máu mất.", -- Legion Pineapple Juice
         ORANGE_JUICE = "Đó là nước cam mới vắt!", -- Thêm gói thực phẩm Nước cam
         STRAWBERRY_SMOOTHIE = "Thật sảng khoái và ngon miệng!", -- Gói thực phẩm khác Sinh tố dâu tây
-        STRAWBERRY_MILK_SMOOTHIE = "Thật mát mẻ và sảng khoái!", -- Thêm gói thực phẩm Strawberry Smoothie Latte
+        STRAWBERRY_MILK_SMOOTHIE = "Đây là một trong những món đồ uống tráng miệng từ dâu tây được các chị em vô cùng yêu thích.", -- Thêm gói thực phẩm Strawberry Smoothie Latte
 
         --Đồ uống nhà máy bia
 
@@ -148,7 +148,7 @@ return {
         LEMONLIMESODA = "Mới mẻ như ngọt ngào!", -- Soda chanh chanh (Tốt hơn so với soda trái cây)
         COLA = "Trẻ em luôn thích nó.", -- Cola
         COLAQUANTUM = "Một quý cô đã phát điên khi tìm kiếm thứ này...", -- Cola Quantum (Tham khảo Forn McRain: Fallout 3 Sierra Petrovita)
-        LUMPY_BEER = "Chỉ được một số khách hàng nhất định ưa thích.", -- Root beer (không cồn)
+        LUMPY_BEER = "Khách hàng thích đồ uống này chỉ yêu cầu loại này.", -- Root beer (không cồn)
 
         -- Rượu mạnh nhà máy bia
 
@@ -159,32 +159,32 @@ return {
         SPARKLINGWINE = "Giải khát và kích thích cảm giác ngon miệng.", -- Rượu vang sủi
         GLOWBERRYWINE = "Một thử nghiệm mới về rượu vang!", -- Rượu Glowberry
         KUMIS = "Trí tuệ từ người dân Trung Á.", -- Kumis, sữa ngựa lên men
-        LUMPY_WINE = "Nhạt và hơi thơm.", -- Sake (Rượu gốc, bao gồm khoai tây, khoai lang, v.v.)
-        PULQUE = "Hơi dính và có vị thơm.", -- Pulque (Nhựa cây thùa)
+        LUMPY_WINE = "Nó có độ vang nhẹ với độ axit êm dịu.", -- Sake (Rượu gốc, bao gồm khoai tây, khoai lang, v.v.)
+        PULQUE = "Nó có vị chua kéo dài trong vòm miệng.", -- Pulque (Nhựa cây thùa)
         RUINCACAO_WINE = "Đầy hương vị cacao.", -- Rượu Cacao
 
         -- Hợp tác Soda
 
-        CHERRY_DOCTOR_COLA = "Chắc chắn được những người đam mê ưa thích.", -- Cherry Forest Dr. Pepper (Dr. Cherry)
-        PINEANANASSODA = "Hoàn hảo nếu bạn đã ăn quá nhiều đồ ăn ngon.", -- Soda dứa (Oran C)
+        CHERRY_DOCTOR_COLA = "Đó là một thức uống phù hợp và có lượng người hâm mộ cuồng nhiệt.", -- Cherry Forest Dr. Pepper (Dr. Cherry)
+        PINEANANASSODA = "Đây là thức uống hoàn hảo giúp bạn tiêu hóa sau bữa liên hoan lớn.", -- Soda dứa (Oran C)
         ORANGESODA = "Giải khát sau bữa ăn!", -- Soda cam (Fanta)
         STRAWBERRYSODA = "Soda vị dâu ngọt ngào.", -- Soda dâu (Dâu tây của Welch)
 
         -- Tinh thần hợp tác
 
-        AUROBOW = "Thức uống có màu sắc và mùi thơm phức tạp như cầu vồng.", -- Rượu sứa cầu vồng (Aurobo)
+        AUROBOW = "Thứ này quả thật là một thức uống đầy sắc cầu vòng", -- Rượu sứa cầu vồng (Aurobo)
         COCONUT_WINE = "Vị ngọt kem với một chút axit và độ nhớt.", -- Rượu dừa (Rượu dừa Aurobo)
         CHERRY_BLOOM_MADHU = "Bạn có thể cảm nhận được hương thơm của dâu tây quả mâm xôi và một chút hương vani.", -- Cherry Blossom Honey Mead (Cherry Forest Cherry Blossom Mead)
         GIANT_BLUEBERRY_WINE = "Có vẻ như ý tưởng của tôi đã đi theo một hướng hơi khác.", -- Boom Berry Wine (Nổ khi bắt lửa)
-        RICE_WINE = "Rượu truyền thống từ Đông Á.", -- Vitahebhi Makgeolli
+        RICE_WINE = "Đây là thức uống truyền thống của Đông Á.", -- Vitahebhi Makgeolli
         WHEAT_BEER = "Hương chuối độc đáo và dễ uống.", -- Heap of Food Wheat Beer
         PALE_BEER = "Một nỗ lực mới với bia!", -- Legion Pale Ale (Bia màu xanh nhạt với trái cây Munstera)
 
         -- Rượu chưng cất
 
         DISINFECTANT = "Đừng nhầm lẫn nó với rượu!", -- Thuốc khử trùng
-        CORN_WHISKEY = "Vị ngọt, vị cay và kết cấu đậm đà.", -- Corn Whiskey
-        LUMPY_VODKA = "Rượu vodka càng tinh khiết, dịu nhẹ và không mùi thì càng ngon.", -- Vodka
+        CORN_WHISKEY = "Thứ này được đặc trưng bởi sự cân bằng của hương vị ngọt ngào, vị cay nồng đánh thức các giác quan và kết cấu kem đậm đà.", -- Corn Whiskey
+        LUMPY_VODKA = "Rượu vodka chất lượng cao phải trong, có vị trung tính và không có mùi thơm rõ rệt.", -- Vodka
         TEQUILA = "Mùi thơm êm dịu như gỗ.", -- Tequila
         MADHU_RUM = "Hương thơm ngọt ngào đặc trưng của rượu chưng cất.", -- Rum
         BERRY_BRANDY = "Bạn có thể cảm nhận được hương thơm đậm đà.", -- Berry Brandy
@@ -192,24 +192,24 @@ return {
 
         -- Rượu chưng cất độc quyền của Warly
 
-        BERRY_GIN = "Mùi thông đặc biệt.", -- Gin
+        BERRY_GIN = "Mùi thơm của cây thông gợi nhớ đến việc đi dạo trong rừng.", -- Gin
         GLOWBERRY_GIN = "Hương thơm bí ẩn như thể nuốt chửng ánh sáng.", -- Glow Berry Gin
         ABSINTHE = "Vị ngọt tinh tế, mùi ngải cứu và sự hòa quyện giữa hương vị gia vị và thảo dược.", -- Absinthe
-        TEA_LUMPY_VODKA = "Tôi đã pha trộn vị đắng và hương thơm nồng nàn của lá trà.", -- Rượu mùi trà xanh
+        TEA_LUMPY_VODKA = "Nó đã hòa quyện vị đắng và hương thơm nồng nàn của lá trà.", -- Rượu mùi trà xanh
         PETALS_BERRY_BRANDY = "Bạn có thể cảm nhận được mùi thơm của quả mâm xôi, quýt, dâu tây và hoa.", -- Rose Petal Brandy
-        KAHLUA = "Cà phê đen đậm đà với chút vị bơ ngọt ngào, béo ngậy và hơi đắng.", -- Coffee Liqueur Kahlua
-        NUT_CORN_WHISKEY = "Tôi không thể cưỡng lại vị đắng nhẹ và hương vani.", -- Nut Whiskey
+        KAHLUA = "Loại này có hương vị cà phê đen đậm đà với hương thơm bơ ngọt ngào và hương vị đậm đà." -- Coffee Liqueur Kahlua
+        NUT_CORN_WHISKEY = "Sự hòa quyện phức tạp giữa vị đắng và vị ngọt trong hương vani quyến rũ đến nỗi tôi không thể không uống nó.", -- Nut Whiskey
         RUINCACAO_CREAM_LIQUEUR = "Bạn có thể thưởng thức hương thơm kem và vị ngọt ngào của sôcôla Bỉ.", -- Rượu mùi kem Cacao Baileys
         RUMCHATA = "Hương quế kết hợp với vani, tạo cảm giác kem và béo ngậy.", -- Rumchata (Rum trộn với horchata, một loại đồ uống từ sữa)
 
         -- Hợp tác chưng cất rượu mạnh
 
         MOONWAY = "Trông như có cầu vồng, với màu sắc và mùi thơm phức tạp.", -- Tinh dầu chưng cất sứa cầu vồng (Rượu sứa cầu vồng)
-        ARRACK = "Vị nặng đặc trưng của quả cọ và mùi thơm phức hợp của các loại hạt.", -- Arrack Phiên bản Rượu dừa của Arrack
+        ARRACK = "Hương thơm phong phú và phức tạp, với những nốt hương hạt dẻ gợi nhớ đến mùi cọ.", -- Arrack Phiên bản Rượu dừa của Arrack
         CHERRY_BLOOM_RUM = "Chỉ cần nhìn thôi cũng thấy thú vị rồi.", -- Rượu rum mật ong hoa anh đào (Cánh hoa anh đào bồng bềnh)
-        RICE_SPIRITS = "Một kết thúc sạch sẽ!", -- Cheongju (rượu gạo Hàn Quốc)
+        RICE_SPIRITS = "Kết thúc sạch sẽ và sắc nét!", -- Cheongju (rượu gạo Hàn Quốc)
         WHEAT_WHISKEY = "Tôi cần chuẩn bị món ăn để kết hợp với nó.", -- Wheat Whiskey
-        PALE_WHISKEY = "Vị đất thô và tinh tế với hương vị độc đáo và dễ chịu.", -- Pale Malt Whiskey
+        PALE_WHISKEY = "Hương thơm của đất và gồ ghề, với một chút phức tạp.", -- Pale Malt Whiskey
 
         -- Hợp tác độc quyền của Warly Rượu chưng cất
 
@@ -234,7 +234,7 @@ return {
 
         BUCKET_WOODIE_EMPTY = 
         {
-            EMPTY = "Tôi đã đổ nó một cách cẩn thận và tỉ mỉ.", -- Thùng rỗng của Woody bằng gỗ
+            EMPTY = "Anh ta cẩn thận và tỉ mỉ làm sạch nó.", -- Thùng rỗng của Woody bằng gỗ
             FULL = "Đó là nước sạch!", -- Nước mưa sạch là tốt
             FULL_ICE = "Thật hoàn hảo để đựng rượu.", -- Nước mưa đã đóng băng
             DIRTY = "Có nhiều khách xanh bất tiện.", -- Nước mưa đã trở nên bẩn
@@ -256,7 +256,7 @@ return {
             PURIFY_LONG = "Tôi nên chuẩn bị một số đồ ăn nhẹ đơn giản trong khi nó hoạt động.", -- Vẫn còn một chặng đường dài cho đến khi quá trình thanh lọc hoàn tất
             PURIFY_SHORT = "Nước đã trở nên khá trong.", -- Quá trình lọc gần như hoàn tất
             HASWATER = "Có đủ để nấu ăn!", -- Nước sạch trong máy khử muối
-            BURNT = "Tôi đang cố gắng lấy muối rang hả?", -- Máy khử muối đã cháy
+            BURNT = "Nó đang cố làm muối rang phải không?", -- Máy khử muối đã cháy
             HASSALT = "Thật là sai lầm, lẽ ra tôi nên thu hoạch muối trước.", -- Có muối trong máy khử muối
         },
 
@@ -303,7 +303,7 @@ return {
             BOILING_SHORT = "Sắp xong rồi.", -- Đồ uống gần như đã sẵn sàng
             DONE = "À, xong rồi!", -- Đồ uống đã xong
             PURIFY_LONG = "Tôi không thể có bất kỳ mùi vị lạ nào trong đồ uống.", -- Mới bắt đầu đun sôi nước bẩn
-            PURIFY_SHORT = "Tôi gần như đã loại bỏ được tạp chất!", -- Gần xong việc đun sôi nước bẩn
+            PURIFY_SHORT = "Nó gần như đã loại bỏ được tạp chất!", -- Gần xong việc đun sôi nước bẩn
             HASWATER = "Tôi không biết nên pha loại đồ uống nào.", -- Ấm đun nước có nước sạch
             MELT_LONG = "Những vị khách lạnh lùng đã đến.", -- Nước đá vừa mới bắt đầu tan
             MELT_SHORT = "Nó gần như tan chảy.", -- Nước đá gần tan hết
@@ -315,7 +315,7 @@ return {
             EMPTY = "Tôi không thể ra ngoài mà không có cái này!", -- Kiểm tra ấm đun nước di động trống đã được lắp đặt
             BOILING_LONG = "Đồ uống ngon cần sự nỗ lực của chính mình.", -- Mới bắt đầu làm đồ uống
             BOILING_SHORT = "Tôi sẽ rời khỏi đây sớm!", -- Đồ uống gần như đã sẵn sàng
-            DONE = "Đồ uống tôi gọi... à, đó là thói quen.", -- Đồ uống đã uống xong
+            DONE = "Ok đồ uống của bạn gọ..., à xin lỗi bệnh nghề nghiệp tí!", -- Đồ uống đã uống xong
             PURIFY_LONG = "Vệ sinh trong nhà bếp luôn là điều quan trọng.", -- Mới bắt đầu đun sôi nước bẩn
             PURIFY_SHORT = "Tôi gần như đã loại bỏ được tạp chất!", -- Gần xong việc đun sôi nước bẩn
             HASWATER = "Tôi không biết nên pha loại đồ uống nào.", -- Ấm đun nước có nước sạch

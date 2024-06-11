@@ -66,7 +66,7 @@ return {
 		RUINCACAO_SEED_SAPLING = "It'll grow into a tree in time.",
 		RUINCACAO = "It's drier than I thought.",
 		RUINCACAO_BEAN = "Too greasy to eat.",
-		RUINCACAO_BEAN_COOKED = "It's more smokey than I thought.",
+		RUINCACAO_SEED_COOKED = "It's more smokey than I thought.",
 
         -- distiller ADDITIVE
 
@@ -235,6 +235,15 @@ return {
 		BUCKET_WOODIE_EMPTY = 
 		{
 			EMPTY = "It's roughly cut inside.",
+			FULL = "It's full of rainwater",
+			FULL_ICE = "It's filled with ice",
+			DIRTY = "It's filled with dirty water",
+			DIRTY_ICE = "It's filled with dirty ice",
+		},
+
+		BUCKET_DRIFTWOOD_EMPTY = 
+		{
+			EMPTY = "It's sturdier than it looks.",
 			FULL = "It's full of rainwater",
 			FULL_ICE = "It's filled with ice",
 			DIRTY = "It's filled with dirty water",

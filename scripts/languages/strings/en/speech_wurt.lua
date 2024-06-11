@@ -241,6 +241,15 @@ return {
                 DIRTY_ICE = "Flrrr, the tiny pond has frozen.", -- Dirty rainwater has frozen
             },
 
+            BUCKET_DRIFTWOOD_EMPTY = 
+            {
+                EMPTY = "Is a floaty bucket. florp", -- Empty wooden bucket
+                FULL = "Full of rainwater!", -- Clean rainwater inside
+                FULL_ICE = "Flrrr, don't want to touch it.", -- Rainwater has frozen
+                DIRTY = "It turned into a tiny pond, florp!", -- Rainwater has become dirty
+                DIRTY_ICE = "Flrrr, the tiny pond has frozen.", -- Dirty rainwater has frozen
+            },
+
             BUCKET_EMPTY =
             {
                 EMPTY = "Is a bucket.florp", -- Empty wooden bucket
