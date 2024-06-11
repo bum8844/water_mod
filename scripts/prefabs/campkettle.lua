@@ -227,6 +227,8 @@ local function fn_item()
 
     MakeInventoryPhysics(inst)  
 
+    inst._swap_type = "campkettle"
+
     inst.AnimState:SetBuild("campkettle_item")
     inst.AnimState:SetBank("campkettle_item")
     inst.AnimState:PlayAnimation("idle")

@@ -68,6 +68,8 @@ local function MakeUpGrade_Kit(name, animname, playanim, masterfn, assets, prefa
 
         MakeInventoryPhysics(inst)
 
+        inst._swap_type = animname
+
     	inst.AnimState:SetBuild(animname)
         inst.AnimState:SetBank("item")
         inst.AnimState:PlayAnimation(playanim)

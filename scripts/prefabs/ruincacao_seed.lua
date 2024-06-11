@@ -90,6 +90,8 @@ local function ruincacao()
     inst.entity:AddAnimState()
     inst.entity:AddNetwork()
 
+    inst._swap_type = "ruincacao_tree_seed"
+
     inst.AnimState:SetBank("ruincacao_tree_seed")
     inst.AnimState:SetBuild("ruincacao_tree_seed")
     inst.AnimState:PlayAnimation("idle_ruincacao")
@@ -145,6 +147,8 @@ local function ruincacao_bean()
     inst.entity:AddAnimState()
     inst.entity:AddNetwork()
 
+    inst._swap_type = "ruincacao_tree_seed"
+
     inst.AnimState:SetBank("ruincacao_tree_seed")
     inst.AnimState:SetBuild("ruincacao_tree_seed")
     inst.AnimState:PlayAnimation("idle_ruincacao_bean")
@@ -196,6 +200,8 @@ local function ruincacao_bean_cooked()
     inst.entity:AddTransform()
     inst.entity:AddAnimState()
     inst.entity:AddNetwork()
+
+    inst._swap_type = "ruincacao_tree_seed"
 
     inst.AnimState:SetBank("ruincacao_tree_seed")
     inst.AnimState:SetBuild("ruincacao_tree_seed")
@@ -346,6 +352,8 @@ local function ruincacao_seed()
     inst.entity:AddTransform()
     inst.entity:AddAnimState()
     inst.entity:AddNetwork()
+
+    inst._swap_type = "ruincacao_tree_seed"
 
     inst.AnimState:SetBank("ruincacao_tree_seed")
     inst.AnimState:SetBuild("ruincacao_tree_seed")

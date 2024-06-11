@@ -19,6 +19,8 @@ local function fn()
 
     MakeInventoryPhysics(inst)
 
+    inst._swap_type = "boilbook"
+
     inst.AnimState:SetBank("boilbook")
     inst.AnimState:SetBuild("boilbook")
     inst.AnimState:PlayAnimation("idle")

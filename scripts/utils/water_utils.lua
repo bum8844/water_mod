@@ -20,6 +20,7 @@ function MakeDynamicCupImage(inst, symbol, build, use_bg)
             local new_state = GetItemState(data.stacksize)
             local cur_state = GetItemState(data.oldstacksize)
             if new_state ~= cur_state then
+                inst._swap_type = build..new_state
                 inst.AnimState:OverrideSymbol(symbol, build..new_state, inst.prefab)
                 if inst.components.inventoryitem.imagename ~= inst.prefab..new_state then
                     inst.components.inventoryitem:ChangeImageName(inst.prefab..new_state)
