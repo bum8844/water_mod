@@ -1,10 +1,3 @@
-local function Round(num, decimals)
-    decimals = math.pow(10, decimals or 0)
-    num = num * decimals
-    if num >= 0 then num = math.floor(num + 0.5) else num = math.ceil(num - 0.5) end
-    return math.floor(num / decimals).."%"
-end
-
 local function Descriptors()
 	Insight.descriptors.steampressure = {
 		Describe = function(self, context)
@@ -60,8 +53,8 @@ local function Descriptors()
 					rawtext_ext = STRINGS.INSIGHT.STEAMPRESSURE.RAWTEXT_TIME_EXT
 				end
 
-				description = subfmt(rawtext,{percent = Round(data.percent * 100, 1), time = time })
-				alt_description = subfmt(rawtext_ext,{percent = Round(data.percent * 100, 1), time = time, cur = self.curpressure, max = self.maxpressure})
+				description = subfmt(rawtext,{percent = Insight.env.Round(data.percent * 100, 1), time = time })
+				alt_description = subfmt(rawtext_ext,{percent = Insight.env.Round(data.percent * 100, 1), time = time, cur = self.curpressure, max = self.maxpressure})
 
 				return {
 					priority = 0,

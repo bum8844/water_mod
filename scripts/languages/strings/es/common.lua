@@ -106,8 +106,9 @@ STRINGS.RECIPE_DESC.BREWERY = "Mejora la experiencia en bebidas. Probablemente."
 
 -- Cubetas
 STRINGS.NAMES.BUCKET_EMPTY = "Cubeta"
-STRINGS.NAMES.BUCKET_WOODIE_EMPTY = "Cubeta pequeña"
+STRINGS.NAMES.BUCKET_WOODIE_EMPTY = "Cubeta de troncos" --Hollowed Log Bucket
 STRINGS.NAMES.BUCKET_STEEL_EMPTY = "Cubeta de acero" 
+STRINGS.NAMES.BUCKET_DRIFTWOOD_EMPTY = "Cubeta de madera flotante" --Driftwood Bucket
 STRINGS.RECIPE_DESC.BUCKET_EMPTY = "Una cubeta vacía."
 
 -- Tetera de acampada

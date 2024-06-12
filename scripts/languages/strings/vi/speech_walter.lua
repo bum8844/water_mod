@@ -240,6 +240,15 @@ return {
 			DIRTY_ICE = "Tôi không nghĩ mình có thể ăn được đá.",
 		},
 
+		BUCKET_DRIFTWOOD_EMPTY =
+		{
+			EMPTY = "Cảm như một chiếc xô trôi dạt vào đảo hoang vậy!",
+			FULL = "An toàn để uống bây giờ!",
+			FULL_ICE = "Ồ, bây giờ tôi phải đun nó.",
+			DIRTY = "Tôi nghĩ chuyện này trở nên tệ rồi!",
+			DIRTY_ICE = "Tôi không nghĩ mình có thể ăn được đá.",
+		},
+
 		BUCKET_EMPTY = 
 		{
 			EMPTY = "Tốt nhất nên tiết kiệm nước mưa cho công cuộc sinh tồn này!",

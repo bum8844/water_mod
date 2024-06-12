@@ -1,69 +1,8 @@
-local Color = require("helpers/color")
-
-local function LookupIcon(icon)
-	if icon_list[icon] then
-		return unpack(icon_list[icon])
-	end
-end
-
-local function DefineIcon(icon, tex, atlas)
-	assert(icon_list[icon] == nil, "Attempt to overwrite existing icon '" .. icon .. "'")
-	assert(tex ~= nil, "DefineIcon(..., tex, ...): tex == nil")
-	assert(atlas ~= nil, "DefineIcon(..., ..., atlas): atlas == nil")
-	icon_list[icon] = {tex, atlas}
-end
-
-local function GetAtlasForTex(tex)
-	if atlas_lookups[tex] then
-		return atlas_lookups[tex]
-	end
-
-	-- simutil.lua
-	for _, atlas in pairs(known_atlases) do
-		if TheSim:AtlasContains(atlas, tex) then
-			atlas_lookups[tex] = atlas
-			return atlas
-		end
-	end
-end
-
-local function PrefabHasIcon(prefab)
-	if LookupIcon(prefab) then
-		return true
-	end
-
-	local tex = prefab .. ".tex"
-	local atlas = GetAtlasForTex(tex)
-	if atlas then
-		DefineIcon(prefab, tex, atlas)
-		return true
-	end
-
-	return false
-end
-
-local function EscapeRichText(str)
-	return str:gsub("<", "&lt;"):gsub(">", "&gt;")
-end
-
-local function CombineLines(...)
-	local lines, argnum = nil, select("#",...)
-
-	for i = 1, argnum do
-		local v = select(i, ...)
-		
-		if v ~= nil then
-			lines = lines or {}
-			lines[#lines+1] = tostring(v)
-		end
-	end
-
-	return (lines and table.concat(lines, "\n")) or nil
-end
-
 local function Descriptors()
 	Insight.descriptors.brewing = {
 		Describe = function(self, context)
+
+			local Color = require("helpers/color")
 
 			local cooking = require("cooking")
 
@@ -134,7 +73,7 @@ local function Descriptors()
 				if self.done or cooktime > 0 then -- IsDone() missing in DS, exists in DLC
 					local chef = context.config["stewer_chef"] and GetChef(self)
 					if chef then
-						chef_string = string.format(context.lstr.stewer.cooker, chef.colour, EscapeRichText(chef.name))
+						chef_string = string.format(context.lstr.stewer.cooker, chef.colour, Insight.env.EscapeRichText(chef.name))
 					end
 
 					cooktime = math.ceil(cooktime)
@@ -142,14 +81,14 @@ local function Descriptors()
 					local recipe = GetRecipe(self.inst.prefab, self.product)
 
 					if not recipe then
-						local base_food_string = context.usingIcons and PrefabHasIcon(self.product) and context.lstr.stewer.product or context.lstr.lang.stewer.product
+						local base_food_string = context.usingIcons and Insight.env.PrefabHasIcon(self.product) and context.lstr.stewer.product or context.lstr.lang.stewer.product
 						food = string.format(base_food_string, self.product, "?")
 					else
 						local data = GetRecipeInfo(recipe)
                 		local waterlevel = self.inst.components.waterlevel and self.inst.components.waterlevel:GetWater() or 1
                 		local stacksize = self.usedistill and math.floor(self.distill_stack*self.reduce) or math.ceil(waterlevel/self.reduce)
 
-						if context.usingIcons and PrefabHasIcon(data.name) then -- self.product
+						if context.usingIcons and Insight.env.PrefabHasIcon(data.name) then -- self.product
 							local base_food_string = cooktime > 0 and context.lstr.stewer.cooktime_remaining or context.lstr.stewer.product
 							food = string.format(base_food_string, data.name, stacksize, cooktime)
 						else
@@ -159,7 +98,7 @@ local function Descriptors()
 					end
 				end
 
-				description = CombineLines(food, chef_string, cook_time_string)
+				description = Insight.env.CombineLines(food, chef_string, cook_time_string)
 
 				return {
 					priority = 2,

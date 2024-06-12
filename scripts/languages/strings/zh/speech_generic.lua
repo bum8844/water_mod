@@ -11,7 +11,7 @@ return {
 	ANNOUNCE_DRUNK = "嗝……我想我喝醉了。",
 	ANNOUNCE_DRUNK_END = "噢，我感觉好多了。",
 	ANNOUNCE_DRUNK_IMMUNITY = "哈！再来一杯！",
-	ANNOUNCE_NOTCHARGE = "它太小了还不能挤奶",
+	ANNOUNCE_NOTCHARGE = "现在还不是挤奶的时候。",
 	ANNOUNCE_NOTHIRSTSLEEP = "我渴的难以入眠，我要风干成人肉干了！",
 	ANNOUNCE_NOTHIRSTSIESTA = "我太渴了没法午睡！",
 	ANNOUNCE_SLEEP_END = "我感觉精神多了！",
@@ -236,6 +236,15 @@ return {
 		BUCKET_WOODIE_EMPTY = 
 		{
 			EMPTY = "内部被粗糙的切削。",
+			FULL = "它里面装满了雨水。",
+			FULL_ICE = "它里面装满了冰。",
+			DIRTY = "它里面装满了脏水。",
+			DIRTY_ICE = "它里面装满了很脏的冰。",
+		},
+
+		BUCKET_DRIFTWOOD_EMPTY = 
+		{
+			EMPTY = "它比想象中还要硬。"
 			FULL = "它里面装满了雨水。",
 			FULL_ICE = "它里面装满了冰。",
 			DIRTY = "它里面装满了脏水。",

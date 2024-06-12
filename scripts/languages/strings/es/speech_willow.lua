@@ -241,6 +241,15 @@ return {
                 DIRTY_ICE = "¿Tal vez quemarlo lo arregle?", -- Dirty rainwater has frozen
             },
 
+            BUCKET_DRIFTWOOD_EMPTY = 
+            {
+                EMPTY ="¿No sería genial si pusiera fuego en esto?", 
+                FULL = "Se ha llenado de agua de lluvia.", -- Clean rainwater is inside
+                FULL_ICE = "Está sólidamente congelado.", -- Rainwater has frozen
+                DIRTY = "¡Se ha llenado de agua sucia!", -- Rainwater has become dirty
+                DIRTY_ICE = "¿Tal vez quemarlo lo arregle?", -- Dirty rainwater has frozen
+            },
+            
             BUCKET_EMPTY =
             {
                 EMPTY = "¡Sería divertido poner madera dentro y quemarlo todo!", -- Empty Wooden Bucket

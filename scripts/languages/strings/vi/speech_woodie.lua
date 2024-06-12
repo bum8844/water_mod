@@ -241,6 +241,15 @@ return {
                 DIRTY_ICE = "Nó đóng băng trước khi tôi kịp làm sạch.", -- Nước mưa bẩn đóng băng trong xô
             },
 
+            BUCKET_DRIFTWOOD_EMPTY =
+            {
+                EMPTY = "Hửm... tôi nghĩ tôi nên phủ một lớp cát nên nó một chút.", -- Xô gỗ rỗng
+                FULL = "Hãy đổ hết nước mưa trong xô đi trước khi nó mục nát.", -- Làm sạch nước mưa trong xô
+                FULL_ICE = "Ai đã bỏ xô ra ngoài để đóng băng?", -- Nước mưa đóng băng trong xô
+                DIRTY = "Tôi nên dùng cái này để tưới vườn.", -- Nước mưa đã trở nên bẩn
+                DIRTY_ICE = "Nó đóng băng trước khi tôi kịp làm sạch.", -- Nước mưa bẩn đóng băng trong xô
+            },
+
             BUCKET_EMPTY = 
             {
                 EMPTY = "Một cái xô làm bằng ván gỗ.", -- Xô gỗ rỗng
