@@ -729,6 +729,9 @@
     <folder id="242" name="well_sprinkler_kit.tex">
         <file id="0" name="well_sprinkler_kit.tex/well_sprinkler_kit.tex.png" width="212" height="217" pivot_x="0.5" pivot_y="0.5"/>
     </folder>
+    <folder id="243" name="spice_caffeinpepper_over.tex">
+        <file id="0" name="spice_caffeinpepper_over.tex/spice_caffeinpepper_over.tex.png" width="64" height="64" pivot_x="0.5" pivot_y="0.5"/>
+    </folder>
     <entity id="0" name="water_minisign_swap">
         <animation id="0" name="swap" length="1000" interval="100">
             <mainline>
