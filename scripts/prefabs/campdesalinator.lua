@@ -228,7 +228,8 @@ local function fn_item()
 
     MakeInventoryPhysics(inst)  
 
-    inst._swap_type = "campdesalinator_item"
+    inst.water_swap_type = true
+    inst.water_use_prefab_name = true
     
     inst.AnimState:SetBuild("campdesalinator_item")
     inst.AnimState:SetBank("campdesalinator_item")

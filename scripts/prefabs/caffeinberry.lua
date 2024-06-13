@@ -274,7 +274,8 @@ local function dug_caffeinberry()
     inst.entity:AddAnimState()
     inst.entity:AddNetwork()
 
-    inst._swap_type = "caffeinberry"
+    inst.water_swap_type = true
+    inst.water_use_prefab_name = true
 
     inst.AnimState:SetBank("caffeinberry")
     inst.AnimState:SetBuild("caffeinberry")
@@ -324,7 +325,8 @@ local function caffeinberry_bean()
     inst.entity:AddAnimState()
     inst.entity:AddNetwork()
 
-    inst._swap_type = "caffeinberry"
+    inst.water_swap_type = true
+    --inst.water_use_prefab_name = true
 
     inst.AnimState:SetBank("caffeinberry_bean")
     inst.AnimState:SetBuild("caffeinberry_bean")
@@ -396,7 +398,8 @@ local function caffeinberry_bean_cooked()
     inst.entity:AddAnimState()
     inst.entity:AddNetwork()
 
-    inst._swap_type = "caffeinberry"
+    inst.water_swap_type = true
+    --inst.water_use_prefab_name = true
 
     inst.AnimState:SetBank("caffeinberry_bean")
     inst.AnimState:SetBuild("caffeinberry_bean")
@@ -458,7 +461,8 @@ local function fn_spice()
 
     MakeInventoryPhysics(inst)
 
-    inst._swap_type = "water_spice"
+    inst.water_swap_type = true
+    --inst.water_use_prefab_name = true
 
     inst.AnimState:SetBank("water_spice")
     inst.AnimState:SetBuild("water_spice")

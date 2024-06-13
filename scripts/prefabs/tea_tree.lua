@@ -380,7 +380,8 @@ local function dug_tea_tree()
     inst.entity:AddAnimState()
     inst.entity:AddNetwork()
 
-    inst._swap_type = "tea_tree_build"
+    inst.water_swap_type = true
+    inst.water_use_prefab_name = true
 
     inst.AnimState:SetBank("tea_tree_build")
     inst.AnimState:SetBuild("tea_tree_build")

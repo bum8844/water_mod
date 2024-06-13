@@ -5,24 +5,31 @@ end
 _G.pendingThirstValueCallback = nil
 local function RequestThirstValue(entity, callback)
     if not _G.TheWorld.ismastersim and entity then
-        local x, y, z = entity.Transform:GetWorldPosition()
-        if x ~= nil and y ~= nil and z ~= nil then 
-            SendModRPCToServer(GetModRPC("ShowMeSHint_Water", "RequestThirstValue"), entity.prefab, x, y, z)
-            if callback then
-                _G.pendingThirstValueCallback = callback
+        if entity.Transform and not entity:HasTag("") then
+            local x, y, z = entity.Transform:GetWorldPosition()
+            if x ~= nil and y ~= nil and z ~= nil then 
+                SendModRPCToServer(GetModRPC("ShowMeSHint_Water", "RequestThirstValue"), entity.prefab, x, y, z)
+                if callback then
+                    _G.pendingThirstValueCallback = callback
+                end
             end
         end
     end
 end
 
 AddModRPCHandler("ShowMeSHint_Water", "RequestThirstValue", function(player, prefab, x, y, z)
-    local entities = TheSim:FindEntities(x, y, z, 1)
+    local entities = TheSim:FindEntities(x, y, z, .25)
     for k, entity in pairs(entities) do
         if entity.prefab == prefab then
             local thirstvalue = false
             local can_eat = false
-			if player.components and player.components.eater then
-				can_eat = player.components.eater:CanEat(entity)
+			if player.components then
+                if player.components.eater then
+				    can_eat = player.components.eater:CanEat(entity)
+                end
+                if player.components.wereness and player.components.wereness.current > 0 then
+                    can_eat = false
+                end
 			end
             if can_eat and entity.components and entity.components.edible then
                 thirstvalue = entity.components.edible.thirstvalue or entity.components.edible:GetThirstFromHungerValue()
@@ -65,6 +72,8 @@ local function fn(self)
                     self.waterstr = thirstvalue < 0 and string.format(txt,tostring(round2(thirstvalue,1)))  or string.format(txt,"+"..tostring(round2(thirstvalue,1))) 
                     self.watertxt:SetString(self.waterstr)
                     self.watertxt:Show()         
+                else
+                    self.watertxt:Hide()
                 end
             end)
         else
