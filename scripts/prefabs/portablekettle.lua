@@ -520,7 +520,8 @@ local function itemfn()
 
     MakeInventoryPhysics(inst)
 
-    inst._swap_type = "portablekettle"
+    inst.water_swap_type = true
+    inst.water_use_prefab_name = true
 
     inst.AnimState:SetBank("portablekettle")
     inst.AnimState:SetBuild("portablekettle")

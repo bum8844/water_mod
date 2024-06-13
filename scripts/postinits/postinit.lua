@@ -32,6 +32,7 @@ local postinits =
 		"mosquitosack",
 		"wx78_modules",
 		"fruitfly",
+		"preparedfoods",
 	},
 
 	screens = {

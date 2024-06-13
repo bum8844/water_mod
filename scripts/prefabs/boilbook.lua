@@ -19,7 +19,8 @@ local function fn()
 
     MakeInventoryPhysics(inst)
 
-    inst._swap_type = "boilbook"
+    inst.water_swap_type = true
+    --inst.water_use_prefab_name = true
 
     inst.AnimState:SetBank("boilbook")
     inst.AnimState:SetBuild("boilbook")

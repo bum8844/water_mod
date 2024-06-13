@@ -194,8 +194,9 @@ local function MakeBucketItem(bucketname, multiplier, sound, nowood)
 
         MakeInventoryPhysics(inst)	
 
-        inst._swap_type = "buckets_swap"
-        --inst._swap_img = "buckets_"..names.."empty"
+        inst.water_swap_type = true
+        --inst.water_use_prefab_name = true
+        inst.water_swap_img = "buckets_"..names.."empty"
 
         inst.AnimState:SetBuild("buckets")
         inst.AnimState:SetBank("buckets")

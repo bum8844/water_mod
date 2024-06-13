@@ -241,6 +241,15 @@ return {
             DIRTY_ICE = "Después de quitar el hielo, necesito hacer un lavado de utensilios adecuado.", -- Dirty rainwater has frozen
         },
 
+        BUCKET_DRIFTWOOD_EMPTY = 
+        {
+            EMPTY = "¿Esta bien usar este tipo de cubos para sacar agua?",
+            FULL = "¡Es agua limpia!", -- Clean rainwater is good
+            FULL_ICE = "Sería perfecto para guardar vino.", -- Rainwater has frozen
+            DIRTY = "Hay muchos invitados verdes no deseados.", -- Rainwater has become dirty
+            DIRTY_ICE = "Después de quitar el hielo, necesito hacer un lavado de utensilios adecuado.", -- Dirty rainwater has frozen
+        },
+
         BUCKET_EMPTY = 
         {
             EMPTY = "Es una cubeta hecha de madera tallada.", -- Empty wooden bucket

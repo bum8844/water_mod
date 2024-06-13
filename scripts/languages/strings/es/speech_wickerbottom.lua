@@ -239,6 +239,15 @@ return {
                 DIRTY_ICE = "Pequeños pedazos de hielo con bacterias.", -- Dirty rainwater frozen
             },
 
+            BUCKET_DRIFTWOOD_EMPTY = 
+            {
+                EMPTY = "Es un cubo hecho de madera flotante.", 
+                FULL = "Agua limpia para beber.", -- Clean rainwater
+                FULL_ICE = "Pequeños pedazos de hielo.", -- Rainwater frozen
+                DIRTY = "El agua contiene bacterias, necesita hervirse.", -- Rainwater got dirty
+                DIRTY_ICE = "Pequeños pedazos de hielo con bacterias.", -- Dirty rainwater frozen
+            },
+
             BUCKET_EMPTY =
             {
                 EMPTY = "Una cubeta hecha de madera.", -- Empty wooden bucket

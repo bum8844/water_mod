@@ -368,7 +368,8 @@ local function dug_ruincacao_tree()
     inst.entity:AddAnimState()
     inst.entity:AddNetwork()
 
-    inst._swap_type = "ruincacao_tree_build"
+    inst.water_swap_type = true
+    inst.water_use_prefab_name = true
 
     inst.AnimState:SetBank("ruincacao_tree_build")
     inst.AnimState:SetBuild("ruincacao_tree_build")

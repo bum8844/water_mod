@@ -68,7 +68,8 @@ local function MakeUpGrade_Kit(name, animname, playanim, masterfn, assets, prefa
 
         MakeInventoryPhysics(inst)
 
-        inst._swap_type = animname
+        inst.water_swap_type = true
+        inst.water_use_prefab_name = true
 
     	inst.AnimState:SetBuild(animname)
         inst.AnimState:SetBank("item")

@@ -20,7 +20,8 @@ local function tealeaves()
     inst.entity:AddAnimState()
     inst.entity:AddNetwork()
 
-    inst._swap_type = "tealeaves"
+    inst.water_swap_type = true
+    --inst.water_use_prefab_name = true
 
     inst.AnimState:SetBank("tealeaves")
     inst.AnimState:SetBuild("tealeaves")
@@ -76,7 +77,8 @@ local function tealeaves_dried()
     inst.entity:AddAnimState()
     inst.entity:AddNetwork()
 
-    inst._swap_type = "tealeaves"
+    inst.water_swap_type = true
+    --inst.water_use_prefab_name = true
 
     inst.AnimState:SetBank("tealeaves")
     inst.AnimState:SetBuild("tealeaves")
@@ -124,7 +126,8 @@ local function tea_seed_cooked()
     inst.entity:AddAnimState()
     inst.entity:AddNetwork()
 
-    inst._swap_type = "tea_tree_seed"
+    inst.water_swap_type = true
+    --inst.water_use_prefab_name = true
 
     inst.AnimState:SetBank("tea_seed")
     inst.AnimState:SetBuild("tea_tree_seed")
@@ -277,7 +280,8 @@ local function tea_seed()
     inst.entity:AddAnimState()
     inst.entity:AddNetwork()
 
-    inst._swap_type = "tea_tree_seed"
+    inst.water_swap_type = true
+    --inst.water_use_prefab_name = true
 
     inst.AnimState:SetBank("tea_seed")
     inst.AnimState:SetBuild("tea_tree_seed")

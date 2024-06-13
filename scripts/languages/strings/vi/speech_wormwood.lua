@@ -241,6 +241,15 @@ return {
                 DIRTY_ICE = "Bẩn và đóng băng", -- Nước mưa bẩn đã đóng băng
             },
 
+            BUCKET_DRIFTWOOD_EMPTY =
+            {
+                EMPTY = "Được làm bởi những người bạn nước", -- Thùng gỗ rỗng
+                FULL = "Nước sạch uống được", -- Nước mưa sạch được thu gom
+                FULL_ICE = "Sạch và lạnh", -- Nước mưa đã đóng băng
+                DIRTY = "Uống bẩn", -- Nước mưa đã trở nên bẩn
+                DIRTY_ICE = "Bẩn và đóng băng", -- Nước mưa bẩn đã đóng băng
+            },
+
             BUCKET_EMPTY =
             {
                 EMPTY = "Làm từ bạn bè", -- Thùng gỗ rỗng

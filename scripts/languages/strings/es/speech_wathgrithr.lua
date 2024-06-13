@@ -239,6 +239,15 @@ return {
                 DIRTY_ICE = "Se volvió un vertedero sucio.", -- Dirty rainwater has frozen
             },
 
+            BUCKET_DRIFTWOOD_EMPTY = 
+            {
+                EMPTY = "Contendré el mar dentro de este.", -- Empty wooden bucket
+                FULL = "Está lleno de agua limpia.", -- Clean rainwater is inside
+                FULL_ICE = "Evoca una sensación de nostalgia.", -- The rainwater has frozen
+                DIRTY = "Esta sucio.", -- The rainwater has become dirty
+                DIRTY_ICE = "Se volvió un vertedero sucio.", -- Dirty rainwater has frozen
+            },
+
             BUCKET_EMPTY =
             {
                 EMPTY = "Es una cubeta de madera vacía.", -- Empty wooden bucket
@@ -270,7 +279,7 @@ return {
                 BURNT = "¿De que sirve llorar sobre el vino derramado?", -- The brewery has burned down
                 FERMENTING_LONG = "Es mejor hacer otra cosa mientras espero.", -- There's still a lot of fermentation left
                 FERMENTING_SHORT = "Hora de preparar un banquete!", -- Fermentation is almost done
-                DONE = "¿Está listo el vino para el banquete?"", -- There's a drink in the brewery
+                DONE = "¿Está listo el vino para el banquete?", -- There's a drink in the brewery
             },
 
             CAMPKETTLE_ITEM = "Es una tetera improvisada.", -- Examining the portable kettle item

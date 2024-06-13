@@ -241,6 +241,15 @@ return {
                 DIRTY_ICE = "Ồ không! Thật lãng phí!", -- Nước mưa bẩn đã đóng băng
             },
 
+            BUCKET_DRIFTWOOD_EMPTY =
+            {
+                EMPTY = "Cái xô này nhẹ hơn nhiều nhưng lại khá chắc chắn đấy.", -- Thùng gỗ rỗng
+                FULL = "Nước cho Wolfgang đã sẵn sàng!", -- Làm sạch nước mưa trong xô gỗ
+                FULL_ICE = "Nước đã đóng băng trong giá lạnh.", -- Nước mưa đã đóng băng trong thùng gỗ
+                DIRTY = "Nước quý giá đã trở nên bẩn...", -- Nước mưa đã trở nên bẩn
+                DIRTY_ICE = "Ồ không! Thật lãng phí!", -- Nước mưa bẩn đã đóng băng
+            },
+
             BUCKET_EMPTY =
             {
                 EMPTY = "Ha! Một chiếc cốc dành cho Wolfgang hùng mạnh!", -- Thùng gỗ rỗng

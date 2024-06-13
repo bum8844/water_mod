@@ -197,7 +197,7 @@ return {
         ABSINTHE = "Vị ngọt tinh tế, mùi ngải cứu và sự hòa quyện giữa hương vị gia vị và thảo dược.", -- Absinthe
         TEA_LUMPY_VODKA = "Nó đã hòa quyện vị đắng và hương thơm nồng nàn của lá trà.", -- Rượu mùi trà xanh
         PETALS_BERRY_BRANDY = "Bạn có thể cảm nhận được mùi thơm của quả mâm xôi, quýt, dâu tây và hoa.", -- Rose Petal Brandy
-        KAHLUA = "Loại này có hương vị cà phê đen đậm đà với hương thơm bơ ngọt ngào và hương vị đậm đà." -- Coffee Liqueur Kahlua
+        KAHLUA = "Loại này có hương vị cà phê đen đậm đà với hương thơm bơ ngọt ngào và hương vị đậm đà.", -- Coffee Liqueur Kahlua
         NUT_CORN_WHISKEY = "Sự hòa quyện phức tạp giữa vị đắng và vị ngọt trong hương vani quyến rũ đến nỗi tôi không thể không uống nó.", -- Nut Whiskey
         RUINCACAO_CREAM_LIQUEUR = "Bạn có thể thưởng thức hương thơm kem và vị ngọt ngào của sôcôla Bỉ.", -- Rượu mùi kem Cacao Baileys
         RUMCHATA = "Hương quế kết hợp với vani, tạo cảm giác kem và béo ngậy.", -- Rumchata (Rum trộn với horchata, một loại đồ uống từ sữa)
@@ -240,6 +240,16 @@ return {
             DIRTY = "Có nhiều khách xanh bất tiện.", -- Nước mưa đã trở nên bẩn
             DIRTY_ICE = "Sau khi loại bỏ đá, tôi cần rửa bát đúng cách.", -- Nước mưa bẩn đã đóng băng
         },
+
+        BUCKET_DRIFTWOOD_EMPTY =
+        {
+            EMPTY = "Liệu nó có ổn khi sử dụng chiếc xô này cho việc múc nước không nhỉ?", -- Xô gỗ rỗng
+            FULL = "Đó là nước sạch!", -- Nước mưa sạch là tốt
+            FULL_ICE = "Thật hoàn hảo để đựng rượu.", -- Nước mưa đã đóng băng
+            DIRTY = "Có nhiều khách xanh bất tiện.", -- Nước mưa đã trở nên bẩn
+            DIRTY_ICE = "Sau khi loại bỏ đá, tôi cần rửa bát đúng cách.", -- Nước mưa bẩn đã đóng băng
+        },
+
 
         BUCKET_EMPTY = 
         {

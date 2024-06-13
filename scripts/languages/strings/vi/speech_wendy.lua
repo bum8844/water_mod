@@ -241,6 +241,15 @@ return {
                 DIRTY_ICE = "Đóng băng sẽ không làm sạch được.", -- Nước mưa bẩn đã đóng băng
             },
 
+            BUCKET_DRIFTWOOD_EMPTY =
+            {
+                EMPTY = "Hãy rải tro cốt nên nó rồi cho trôi trong lòng đại dương!", -- Xô gỗ rỗng
+                FULL = "Tràn đầy nước mưa.", -- Làm sạch nước mưa bên trong
+                FULL_ICE = "Nó đã đông cứng.", -- Nước mưa đã đóng băng
+                DIRTY = "Chứa đầy nước độc hại giàu sự sống.", -- Nước mưa đã trở nên bẩn
+                DIRTY_ICE = "Đóng băng sẽ không làm sạch được.", -- Nước mưa bẩn đã đóng băng
+            },
+
             BUCKET_EMPTY =
             {
                 EMPTY = "Chỉ là một cái xô rỗng.", -- Xô gỗ rỗng

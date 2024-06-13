@@ -1,34 +1,9 @@
-local function FormatDecimal(num, places)
-	if not places then
-		local x = string.match(num, "%.(.+)")
-		places = x and #x or 1
-	end
-	
-	return string.format("%+." .. places .. "f", num)
-end
-
-local function GetWorldType()
-	if TheSim:GetGameID() == "DST" then
-		return
-	end
-
-	if IsDLCEnabled(PORKLAND_DLC) then
-		return 3
-	elseif IsDLCEnabled(CAPY_DLC) then
-		return 2
-	elseif IsDLCEnabled(REIGN_OF_GIANTS) then
-		return 1
-	else
-		return 0
-	end
-end
-
 if type(Insight.descriptors.edible) == "table" and Insight.descriptors.edible.Describe then
 	local oldDescribe = Insight.descriptors.edible.Describe
 	Insight.descriptors.edible.Describe = function(self, context, ...)
 		local packed = Insight.env.pack(oldDescribe(self, context, ...))
 
-		local world_type = GetWorldType()
+		local world_type = Insight.env.GetWorldType()
 
 		if not context.player.components.eater then
 			return
@@ -129,7 +104,7 @@ if type(Insight.descriptors.edible) == "table" and Insight.descriptors.edible.De
 				thirst = GetWaterStatsForEntity(self, context.player, nil, false)
 			end
 			
-			thirst = (thirst ~= 0 and FormatDecimal(thirst, thirst%1==0 and 0 or 1)) or thirst
+			thirst = (thirst ~= 0 and Insight.env.FormatDecimal(thirst, thirst%1==0 and 0 or 1)) or thirst
 			
 			rawtext = string.format(rawtext, thirst)
 		end

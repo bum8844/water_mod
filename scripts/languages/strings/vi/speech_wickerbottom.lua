@@ -241,6 +241,15 @@ return {
                 DIRTY_ICE = "Những khối băng nhỏ chứa vi khuẩn.", -- Nước mưa bẩn đóng băng
             },
 
+            BUCKET_DRIFTWOOD_EMPTY =
+            {
+                EMPTY = "Nó là một cái xô được làm từ gỗ mục trôi.", -- Xô gỗ rỗng
+                FULL = "Nước sạch có thể uống được.", -- Nước mưa sạch
+                FULL_ICE = "Những khối băng nhỏ.", -- Nước mưa đóng băng
+                DIRTY = "Nước có vi khuẩn sôi.", -- Nước mưa bị bẩn
+                DIRTY_ICE = "Những khối băng nhỏ chứa vi khuẩn.", -- Nước mưa bẩn đóng băng
+            },
+
             BUCKET_EMPTY =
             {
                 EMPTY = "Một cái xô làm bằng gỗ.", -- Xô gỗ rỗng

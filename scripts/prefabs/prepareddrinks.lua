@@ -88,8 +88,7 @@ local function MakePreparedDrink(data)
 
         MakeInventoryPhysics(inst)
 
-        inst._swap_type = "kettle_drink"
-        inst._same_name = true
+        inst.water_swap_type = true
 
 		local food_symbol_build = nil
 		inst.AnimState:SetBuild("kettle_drink")

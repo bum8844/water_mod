@@ -187,7 +187,8 @@ local function item_fn()
 
     MakeInventoryPhysics(inst)
 
-    inst._swap_type = "well_drilling"
+    inst.water_swap_type = true
+    inst.water_use_prefab_name = true
 
     inst.AnimState:SetBank("well_drilling")
     inst.AnimState:SetBuild("well_drilling")

@@ -1,23 +1,9 @@
-local Color = require("helpers/color")
-
-local function CombineLines(...)
-	local lines, argnum = nil, select("#",...)
-
-	for i = 1, argnum do
-		local v = select(i, ...)
-		
-		if v ~= nil then
-			lines = lines or {}
-			lines[#lines+1] = tostring(v)
-		end
-	end
-
-	return (lines and table.concat(lines, "\n")) or nil
-end
-
 local function Descriptors()
 	Insight.descriptors.distiller = {
 		Describe = function(self, context)
+
+			local Color = require("helpers/color")
+
 			local description, boiling_time_string
 			local boiling_time_string = self:GetTimeToBoil()
 
@@ -42,7 +28,7 @@ local function Descriptors()
 			local rawtext = STRINGS.INSIGHT.DISITLLER.RAWTEXT
 			boiling_time_string = string.format(rawtext,water_type_string,boiling_time_string)
 
-			description = CombineLines(boiling_time_string)
+			description = Insight.env.CombineLines(boiling_time_string)
 
 			return {
 				priority = 2,
