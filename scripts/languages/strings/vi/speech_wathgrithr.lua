@@ -152,7 +152,7 @@ return {
 
             -- Rượu chưng cất
 
-            ORN_BEER = "Đó là bia giả của Đức.", -- Bia ngô
+            CORN_BEER = "Đây hẳn là một hàng nhái lại của bia Đức", -- Bia ngô
             MADHU = "Đó là đồng cỏ của Nord!", -- Mead
             WINE = "Nó được làm từ máu của nhà tiên tri.", -- Rượu (Rượu vang cơ bản)
             NOBLEWINE = "Thịt đi kèm ở đâu?", -- Noble Wine (Rượu nấu chín)
