@@ -8,12 +8,12 @@ return {
         }
     },
 
-    ANNOUNCE_DRUNK = "Hiccup, I was told to enjoy myself, but not to get drunk...", -- ★★★★★
-    ANNOUNCE_DRUNK_END = "Hm...I need to whip up a meal that'll cure my hangover.", -- ★★★★★
+    ANNOUNCE_DRUNK = "Hiccup, I was told to enjoy myself, but not to get drunk...", -- 
+    ANNOUNCE_DRUNK_END = "Hm...I need to whip up a meal that'll cure my hangover.", -- 
     ANNOUNCE_DRUNK_IMMUNITY = "", -- 
     ANNOUNCE_NOTCHARGE = "Milking now won't yield any results.", -- 
-    ANNOUNCE_NOTHIRSTSLEEP = "My thirst is greater than my fatigue!", -- ★★★★★
-    ANNOUNCE_NOTHIRSTSIESTA = "My thirst is greater than my fatigue!", -- ★★★★★
+    ANNOUNCE_NOTHIRSTSLEEP = "My thirst is greater than my fatigue!", -- 
+    ANNOUNCE_NOTHIRSTSIESTA = "My thirst is greater than my fatigue!", -- 
     ANNOUNCE_SLEEP_END = "Ah... I must be more cautious and avoid overindulgence next time.", --
     ANNOUNCE_THIRST = "I must drink something...", -- 
 
@@ -22,8 +22,8 @@ return {
 
     ANNOUNCE_CURE_WATERBORNE = "My stomach has settled a bit.", --
 
-    ANNOUNCE_DCAPACITY_CRITICAL = "I need to cut back on drinking.", -- ★★★★★
-    ANNOUNCE_DCAPACITY_HALF = "Mmm, I'm feeling just the right amount of tipsy.", -- ★★★★★
+    ANNOUNCE_DCAPACITY_CRITICAL = "I need to cut back on drinking.", -- 
+    ANNOUNCE_DCAPACITY_HALF = "Mmm, I'm feeling just the right amount of tipsy.", -- 
 
     DESCRIBE =
     {
@@ -34,38 +34,38 @@ return {
 
         SPICE_CAFFEINPEPPER = "It enhances the flavor of any dish.", 
 
-        WELL_KIT = "If only there were a wellspring of clean water now...!", -- ★★★★★
+        WELL_KIT = "If only there were a wellspring of clean water now...!", -- 
         WELL_SPRINKLER_KIT = "I can easily serve water to my garden guests with this.", --
         WELL_WATERPUMP_KIT = "It's like a water dispenser!", -- 
-        WELL_BURYING_KIT = "If someone stumbles into that dangerous hole, it'll be a big accident!", -- ★★★★★
+        WELL_BURYING_KIT = "If someone stumbles into that dangerous hole, it'll be a big accident!", -- 
         WELL_DRILLING = "I should avoid cooking near that drilling.", --
-        WELL_DRILLING_ITEM = "This will find the water vein and drill a hole.", -- ★★★★★
+        WELL_DRILLING_ITEM = "This will find the water vein and drill a hole.", -- 
         HOLE = "I can hear the sound of flowing water.", -- 
         WELL = "Let's extend our supply of drinking water!", --
 
-        WX78MODULE_NONEDRUNK = "That gives our metal friend a little extra zest, right?", -- ★★★★★
+        WX78MODULE_NONEDRUNK = "That gives our metal friend a little extra zest, right?", -- 
 
         -- Dehydrated Mod Plant
 
         TEA_TREE = "Usually found across the sea, I suppose.", -- 
-        DUG_TEA_TREE = "I'll be sourcing the tea leaves locally.", -- ★★★★★
+        DUG_TEA_TREE = "I'll be sourcing the tea leaves locally.", -- 
         TEA_SEED = "I wonder what's inside this seed.", -- 
-        TEA_SEED_COOKED = "I'm the one who has to figure out how to use this in cooking.", -- ★★★★★
+        TEA_SEED_COOKED = "I'm the one who has to figure out how to use this in cooking.", -- 
         TEA_SEED_SAPLING = "It's still quite young.", --
         TEALEAVES = "I should process them first.", --
         TEALEAVES_DRIED = "Now, all I need is hot water...", -- 
 
         CAFFEINBERRY = "If only it grew coffee beans every morning.", -- Coffee bush
-        DUG_CAFFEINBERRY = "This is takeout coffee." , -- ★★★★★
-        CAFFEINBERRY_BEAN = "Wait, It has a hint... of a peppery aroma...?", -- ★★★★★
+        DUG_CAFFEINBERRY = "This is takeout coffee." , -- 
+        CAFFEINBERRY_BEAN = "Wait, It has a hint... of a peppery aroma...?", -- 
         CAFFEINBERRY_BEAN_COOKED = "Splendid!", 
 
         RUINCACAO_TREE = "You typically have to cross the sea to find these.", --
         DUG_RUINCACAO_TREE = "Should I resurrect it?", -- 
         RUINCACAO_SEED = "It's rather spine-chilling.", -- 
-        RUINCACAO_SEED_SAPLING = "This flower has a really eerie color, doesn't it?" , -- ★★★★★
+        RUINCACAO_SEED_SAPLING = "This flower has a really eerie color, doesn't it?" , -- 
         RUINCACAO = "I should check what's inside.", --
-        RUINCACAO_BEAN = "Ugh, that grease smell!", -- ★★★★★
+        RUINCACAO_BEAN = "Ugh, that grease smell!", -- 
         RUINCACAO_BEAN_COOKED = "I can't eat it like this.", -- 
 
         -- Distiller Additives
@@ -77,11 +77,11 @@ return {
 
         -- Drinks
 
-        WATER_CLEAN = "Pure, tasteless water is essential for cooking.", -- ★★★★★
+        WATER_CLEAN = "Pure, tasteless water is essential for cooking.", -- 
         WATER_DIRTY = "I can't use this water for cooking.", --
-        WATER_SALTY = "Are you sure this is enough to make broth?" , -- ★★★★★
+        WATER_SALTY = "Are you sure this is enough to make broth?" , -- 
 
-        GOOPYDRINK = "This is pure chaos! Absolutely pure chaos!", -- ★★★★★
+        GOOPYDRINK = "This is pure chaos! Absolutely pure chaos!", -- 
 
         -- Teapot Drinks
 
@@ -121,21 +121,21 @@ return {
         RUINXOCOLATL = "An exotic drink filled with the wisdom of South Americans!", -- 
         TEA_RUINCOLATE_LATTE = "The bitterness of the tea leaves complements the sweetness of the chocolate.", -- 
 
-        MULLED = "I recommend this drink if you're feeling under the weather.", -- ★★★★★
+        MULLED = "I recommend this drink if you're feeling under the weather.", -- 
         BUTTERBEER = "The most delicious drink in Diagon Alley.", --
 
         -- Collaboration Teapot Drinks
 
-        COCONUT_JUICE = "Chewing the jelly in this drink makes me feel like I'm at a resort.", -- ★★★★★
-        RAINBOW_SHAKE = "It's not quite the taste of a rainbow, but it's fine.", -- ★★★★★
-        QUARTZ_SHAKE = "In my opinion, it would have been preferable to make Nam pla", -- ★★★★★
+        COCONUT_JUICE = "Chewing the jelly in this drink makes me feel like I'm at a resort.", -- 
+        RAINBOW_SHAKE = "It's not quite the taste of a rainbow, but it's fine.", -- 
+        QUARTZ_SHAKE = "In my opinion, it would have been preferable to make Nam pla", -- 
         CHERRY_ROSEBERRIES_TEA = "It has a delightful fragrance and helps regulate body heat.", -- 
         CHERRY_HONEY_TEA = "It's a quick fix for a sore throat.", --
         SWEET_RICE_DRINK = "It's sweet and has an unusual texture!", --
-        PINEANANAS_JUICE = "Be careful not to drink too much, or My mouth will peel off.", -- ★★★★★
+        PINEANANAS_JUICE = "Be careful not to drink too much, or My mouth will peel off.", -- 
         ORANGE_JUICE = "It's freshly squeezed orange juice!", -- 
         STRAWBERRY_SMOOTHIE = "It's refreshing and delicious!", --
-        STRAWBERRY_MILK_SMOOTHIE = "This is one of the strawberry dessert drinks that ladies really love.", -- ★★★★★
+        STRAWBERRY_MILK_SMOOTHIE = "This is one of the strawberry dessert drinks that ladies really love.", -- 
 
         --Brewery Drinks
 
@@ -147,44 +147,44 @@ return {
         FRUITSODA = "Refreshing fruitiness with a fizzy kick!", -- 
         LEMONLIMESODA = "As refreshing as a honeydew!", -- 
         COLA = "Kids always love it.", 
-        COLAQUANTUM = "As far as I recall, there was a woman who went crazy looking for this...", -- ★★★★★
-        LUMPY_BEER = "Customers who like this drink only ask for this one.", -- ★★★★★
+        COLAQUANTUM = "As far as I recall, there was a woman who went crazy looking for this...", -- 
+        LUMPY_BEER = "Customers who like this drink only ask for this one.", -- 
 
         -- Brewery Spirits
 
         CORN_BEER = "Tastes even better after a greasy meal.", --
-        MADHU = "I wonder if Vilod is still making that mead with juniper berries mixed in.", -- ★★★★★
+        MADHU = "I wonder if Vilod is still making that mead with juniper berries mixed in.", -- 
         WINE = "It's the best gift from the gods to humans!", 
         NOBLEWINE = "Would be better with some blue cheese and nuts.", 
         SPARKLINGWINE = "Refreshing and whets the appetite.", 
         GLOWBERRYWINE = "A new attempt at wine!", 
         KUMIS = "Wisdom from the people of Central Asia.", 
-        LUMPY_WINE = "It has a light-body with a crisp acidity.", -- ★★★★★
-        PULQUE = "It has a lingering tartness on the palate.", -- ★★★★★
+        LUMPY_WINE = "It has a light-body with a crisp acidity.", -- 
+        PULQUE = "It has a lingering tartness on the palate.", -- 
         RUINCACAO_WINE = "Full of cocoa flavor.", -- 
 
         -- Collaboration Soda
 
-        CHERRY_DOCTOR_COLA = "It's a niche drink that has a passionate fan base." , -- ★★★★★
-        PINEANANASSODA = "This is the perfect drink to help you digest after a big meal." , -- ★★★★★
+        CHERRY_DOCTOR_COLA = "It's a niche drink that has a passionate fan base." , -- 
+        PINEANANASSODA = "This is the perfect drink to help you digest after a big meal." , -- 
         ORANGESODA = "Refreshing after a meal!", 
         STRAWBERRYSODA = "It is Sweet strawberry-flavored soda.", 
 
         -- Collaboration Spirits
 
-        AUROBOW = "This is a really colorful drink.", -- ★★★★★
-        COCONUT_WINE = "This wine has a creamy sweetness with a hint of tanginess and a viscous texture.", -- ★★★★★
+        AUROBOW = "This is a really colorful drink.", -- 
+        COCONUT_WINE = "This wine has a creamy sweetness with a hint of tanginess and a viscous texture.", -- 
         CHERRY_BLOOM_MADHU = "You can feel the fragrance of strawberries, raspberries, and a hint of vanilla.", 
         GIANT_BLUEBERRY_WINE = "It seems like my idea went in a slightly different direction.", 
-        RICE_WINE = "This is a traditional drink from East Asia.", -- ★★★★★
+        RICE_WINE = "This is a traditional drink from East Asia.", -- 
         WHEAT_BEER = "Unique banana aroma and easy to drink.", -- 
         PALE_BEER = "A new attempt at beer!", --
 
         -- Distilled Spirits
 
         DISINFECTANT = "Don't confuse it with alcohol!", -- Disinfectant
-        CORN_WHISKEY = "This is characterized by a balance of sweet flavor, a spicy tingle that awakens the senses, and a rich, creamy texture.", -- ★★★★★
-        LUMPY_VODKA = "A high-quality vodka should be clear, neutral in taste, and have no discernible aroma.", -- ★★★★★
+        CORN_WHISKEY = "This is characterized by a balance of sweet flavor, a spicy tingle that awakens the senses, and a rich, creamy texture.", -- 
+        LUMPY_VODKA = "A high-quality vodka should be clear, neutral in taste, and have no discernible aroma.", -- 
         TEQUILA = "Smooth wood-like aroma.", 
         MADHU_RUM = "Distinctive sweet aroma of distilled spirits.", 
         BERRY_BRANDY = "You can feel the rich aroma.", --
@@ -192,24 +192,24 @@ return {
 
         -- Warly Exclusive Distilled Spirits
 
-        BERRY_GIN = "The aroma of pine is reminiscent of a walk in the forest.", -- ★★★★★
+        BERRY_GIN = "The aroma of pine is reminiscent of a walk in the forest.", -- 
         GLOWBERRY_GIN = "An enigmatic fragrance as if swallowing light.", 
         ABSINTHE = "Subtle sweetness, wormwood aroma, and a blend of spice and herbal flavors.", -- 
-        TEA_LUMPY_VODKA = "It has blended the bitterness and strong aroma of tea leaves.",-- ★★★★★
+        TEA_LUMPY_VODKA = "It has blended the bitterness and strong aroma of tea leaves.",-- 
         PETALS_BERRY_BRANDY = "You can feel the aroma of raspberries, tangerines, strawberries, and flowers.",
-        KAHLUA = "This has a strong black coffee flavor with a sweet, buttery aroma and nutty undertones.", -- ★★★★★
-        NUT_CORN_WHISKEY = "The complex blend of bitterness and sweetness in the vanilla aroma is so captivating that I can't help but drink it." , -- ★★★★★
+        KAHLUA = "This has a strong black coffee flavor with a sweet, buttery aroma and nutty undertones.", -- 
+        NUT_CORN_WHISKEY = "The complex blend of bitterness and sweetness in the vanilla aroma is so captivating that I can't help but drink it." , -- 
         RUINCACAO_CREAM_LIQUEUR = "You can enjoy the creamy aroma and sweet taste of Belgian chocolate.", -- 
         RUMCHATA = "Cinnamon flavor combines with vanilla, and it feels creamy and nutty.", -- 
 
         -- Collaboration Distilled Spirits
 
         MOONWAY = "It looks like it contains a rainbow, with complex colors and aromas.", -- 
-        ARRACK = "The aroma is rich and complex, with nutty notes reminiscent of palm.", -- ★★★★★
+        ARRACK = "The aroma is rich and complex, with nutty notes reminiscent of palm.", -- 
         CHERRY_BLOOM_RUM = "Even just looking at it is enjoyable.", 
-        RICE_SPIRITS = "The finish is clean and crisp!" , -- ★★★★★
+        RICE_SPIRITS = "The finish is clean and crisp!" , -- 
         WHEAT_WHISKEY = "I need to prepare dishes to pair with it.", 
-        PALE_WHISKEY = "The aroma is earthy and rugged, with a hint of complexity.", -- ★★★★★
+        PALE_WHISKEY = "The aroma is earthy and rugged, with a hint of complexity.", -- 
 
         -- Warly Exclusive Collaboration Distilled Spirits
 
@@ -225,7 +225,7 @@ return {
 
         BUCKET_STEEL_EMPTY = 
         {
-            EMPTY = "I remember a kitchen assistant trying to make pudding with this.", -- ★★★★★
+            EMPTY = "I remember a kitchen assistant trying to make pudding with this.", -- 
             FULL = "It's clean water!", --
             FULL_ICE = "It would be perfect for holding wine.", -- 
             DIRTY = "There are a lot of inconvenient green guests.", --
@@ -234,7 +234,7 @@ return {
 
         BUCKET_WOODIE_EMPTY = 
         {
-            EMPTY = "He carefully and meticulously emptied it.", -- ★★★★★
+            EMPTY = "He carefully and meticulously emptied it.", -- 
             FULL = "It's clean water!", 
             FULL_ICE = "It would be perfect for holding wine.",
             DIRTY = "There are a lot of inconvenient green guests.", 
@@ -265,7 +265,7 @@ return {
             PURIFY_LONG = "I should prepare some simple snacks while it's working.", --
             PURIFY_SHORT = "The water has become quite clear.", -- 
             HASWATER = "There's enough to use for cooking!", -- 
-            BURNT = "It was trying to get roasted salt, huh?", -- ★★★★★ 
+            BURNT = "It was trying to get roasted salt, huh?", --  
             HASSALT = "What a mistake, I should have harvested the salt first.", 
         },
 
@@ -313,7 +313,7 @@ return {
             BOILING_SHORT = "It's almost done.", -- 
             DONE = "Ah, it's ready!", -- 
             PURIFY_LONG = "I can't have any off-flavors in the drink.", -- 
-            PURIFY_SHORT = "It has almost removed the impurities!", -- ★★★★★ 
+            PURIFY_SHORT = "It has almost removed the impurities!", --  
             HASWATER = "I wonder what kind of drink I should make.", --
             MELT_LONG = "Chilly guests have arrived.", -- 
             MELT_SHORT = "It's almost melted.", -- 
@@ -325,7 +325,7 @@ return {
             EMPTY = "I can't go out without this!",
             BOILING_LONG = "Good drinks require their own efforts.", 
             BOILING_SHORT = "Itwill be out of here soon!", 
-            DONE = "Here's the drink you orde... ah, it's a habit.", -- ★★★★★ 
+            DONE = "Here's the drink you orde... ah, it's a habit.", --  
             PURIFY_LONG = "Hygiene in the kitchen is always important.", -- 
             PURIFY_SHORT = "I've almost removed the impurities!", -- 
             HASWATER = "I wonder what kind of drink I should make.", -- 

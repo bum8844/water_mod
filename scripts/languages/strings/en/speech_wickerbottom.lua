@@ -225,7 +225,7 @@ return {
 
             BUCKET_STEEL_EMPTY =
             {
-                EMPTY = "It's a bucket made of steel.", -- ★★★
+                EMPTY = "It's a bucket made of steel.", -- 
                 FULL = "Clean water that you can drink.", -- Clean rainwater
                 FULL_ICE = "Small ice chunks.", -- Rainwater frozen
                 DIRTY = "Water with bacteria boiling in it.", -- Rainwater got dirty
@@ -234,7 +234,7 @@ return {
 
             BUCKET_WOODIE_EMPTY =
             {
-                EMPTY = "It's a bucket made of logs.", -- ★★★
+                EMPTY = "It's a bucket made of logs.", -- 
                 FULL = "Clean water that you can drink.", -- Clean rainwater
                 FULL_ICE = "Small ice chunks.", -- Rainwater frozen
                 DIRTY = "Water with bacteria boiling in it.", -- Rainwater got dirty
@@ -252,7 +252,7 @@ return {
 
             BUCKET_EMPTY =
             {
-                EMPTY = "It's a bucket made of wood.", -- ★★★
+                EMPTY = "It's a bucket made of wood.", -- 
                 FULL = "Clean water that you can drink.", -- Clean rainwater
                 FULL_ICE = "Small ice chunks.", -- Rainwater frozen
                 DIRTY = "Water with bacteria boiling in it.", -- Rainwater got dirty

@@ -37,11 +37,11 @@ end
 
 local function onseasonchange_active(inst)
     if not inst.prevseason then
-        inst.prevseason = TheWorld.state.season
+        inst.prevseason = GLOBAL.TheWorld.state.season
         return
     end
 
-    if TheWorld.state.isautumn and inst.prevseason == SEASONS.SUMMER then
+    if GLOBAL.TheWorld.state.isautumn and inst.prevseason == SEASONS.SUMMER then
         local dormant = SpawnPrefab("elephantcactus")
         if dormant then
             dormant.Physics:Teleport(inst.Transform:GetWorldPosition())
@@ -50,7 +50,7 @@ local function onseasonchange_active(inst)
         end
     end
 
-    inst.prevseason = TheWorld.state.season
+    inst.prevseason = GLOBAL.TheWorld.state.season
 end
 
 AddPrefabPostInit("elephantcactus_active", function(inst)

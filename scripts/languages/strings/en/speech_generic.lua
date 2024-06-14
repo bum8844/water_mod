@@ -56,7 +56,7 @@ return {
 		TEALEAVES_DRIED = "Now it seems like some tea I know.",
 
 		CAFFEINBERRY = "It roots itself deep in the ground.",
-		DUG_CAFFEINBERRY = "I should to move that to the ground!", --★★★--★★★
+		DUG_CAFFEINBERRY = "I should to move that to the ground!", ----
 		CAFFEINBERRY_BEAN = "Not like coffee beans I used to know.",
 		CAFFEINBERRY_BEAN_COOKED = "Heat certainly improved it.",
 
@@ -92,7 +92,7 @@ return {
 		FIG_JUICE = "Non-Newtonian fluid out of Newton's fig.",
 		DRAGONJUICE = "It's still weird.",
 		GLOWBERRYJUICE = "It's not that bad.",
-		WATERMELON_JUICE = "What a melon-derful juice!", --★★★--★★★
+		WATERMELON_JUICE = "What a melon-derful juice!", ----
 
 		VEGGIE_TEA = "It's all veggie-y.",
 		CARROT_TEA = "I hope it's acceptable.",
@@ -114,9 +114,9 @@ return {
 		
 		CAFFEINBERRY_JUICE = "Smells energizing!",
 		TOFFEE_LATTE = "Is it mixed coffee with nuts?",
-		RUINCHA_LATTE = "This fluid is the result of a nuclear reaction from the two beans.", --★★★--★★★		
+		RUINCHA_LATTE = "This fluid is the result of a nuclear reaction from the two beans.", ----		
 		
-		HOTRUINCOLATE = "A bit of marshmellow would've done.", --★★★--★★★
+		HOTRUINCOLATE = "A bit of marshmellow would've done.", ----
 		RUINCOLATE_SMOOTHIE = "Sweet and easy to drink.",
 		RUINXOCOLATL = "Somewhat acrid",
 		TEA_RUINCOLATE_LATTE = "Well, this was unexpected.",
@@ -127,7 +127,7 @@ return {
 		-- Mod Collaboration kettle drinks
 
 		COCONUT_JUICE = "Is that squishy jelly I see?",
-		RAINBOW_SHAKE = "Thankfully, it lacks flavor.", --★★★--★★★
+		RAINBOW_SHAKE = "Thankfully, it lacks flavor.", ----
 		QUARTZ_SHAKE = "Hope it doesn't taste like fish.",
 		CHERRY_ROSEBERRIES_TEA = "The rosey aroma is strong.",
 		CHERRY_HONEY_TEA = "I can just taste the flowers.",
@@ -145,8 +145,8 @@ return {
 
 		SODA = "So refreshing!",
 		FRUITSODA = "Sweet, sour, and savory!",
-		LEMONLIMESODA = "Dentists would likely be horrified if they saw this.",  --★★★--★★★
-		COLA = "It tastes like it's infused with science", --★★★--★★★
+		LEMONLIMESODA = "Dentists would likely be horrified if they saw this.",  ----
+		COLA = "It tastes like it's infused with science", ----
 		COLAQUANTUM = "There's something very scientific about it!",
 		LUMPY_BEER = "The aroma is so sharp!",
 
@@ -161,7 +161,7 @@ return {
 		KUMIS = "Wasn't milk supposed to be made into yogurt?",
 		LUMPY_WINE = "It's a clean and neat liquor.",
 		PULQUE = "A traditional drink from the new land?",
-		RUINCACAO_WINE = "Is it possible to make wine with cacao?",--★★★--★★★
+		RUINCACAO_WINE = "Is it possible to make wine with cacao?",----
 
 		-- Mod Collaboration brewery soda	
 
@@ -172,11 +172,11 @@ return {
 
 		-- Mod Collaboration brewery alcohol		
 
-		AUROBOW = "I can observe the color changing simultaneously.", --★★★--★★★
+		AUROBOW = "I can observe the color changing simultaneously.", ----
 		COCONUT_WINE = "I feel like I'm in the Mediterraneans.", 
 		CHERRY_BLOOM_MADHU = "This is going on my bottle collection shelf.",
 		GIANT_BLUEBERRY_WINE = "The fruit is destabilizing during fermenation.",
-		RICE_WINE = "Is it possible to make fermented liquor from this?",--★★★--★★★
+		RICE_WINE = "Is it possible to make fermented liquor from this?",----
 		WHEAT_BEER = "Scientifically speaking, it's wheat beer.",
 		PALE_BEER = "What a pale drink.",
 
@@ -184,7 +184,7 @@ return {
 
 		DISINFECTANT = "I should wash my lab equipment with this.",
 		CORN_WHISKEY = "They used to make corn whiskey like this in America.",
-		LUMPY_VODKA = "If i really want to get drunk fast.", --★★★--★★★
+		LUMPY_VODKA = "If i really want to get drunk fast.", ----
 		TEQUILA = "There's a strong rooty smell.",
 		MADHU_RUM = "I should bring a bottle for the boat.",
 		BERRY_BRANDY = "A good drink to have before a new experiment.",
@@ -195,10 +195,10 @@ return {
 		BERRY_GIN = "What's wrong with making cheap drinks with science?",
 		GLOWBERRY_GIN = "Couldn't get any worse making a hard liquor shine.",
 		ABSINTHE = "Notice the sharp stinging taste.",
-		TEA_LUMPY_VODKA = "Did this come from steeping tea leaves?", --★★★--★★★
+		TEA_LUMPY_VODKA = "Did this come from steeping tea leaves?", ----
 		PETALS_BERRY_BRANDY = "A brandy with a flowery aroma?",
 		KAHLUA = "Seems like rum brewed with coffee.",
-		NUT_CORN_WHISKEY = "Combined peanuts with whiskey for snacks!",--★★★--★★★
+		NUT_CORN_WHISKEY = "Combined peanuts with whiskey for snacks!",----
         RUINCACAO_CREAM_LIQUEUR = "It's a creamy chocolatey drink.",
         RUMCHATA = "Smooth going down.",
 
@@ -219,7 +219,7 @@ return {
 		--냄비 요리
 
         DARK_RUINCOLATE = "You should have called me if you're conducting a science experiment.",
-        WHITE_RUINCOLATE = "Too greasy if I have too much.", --★★★--★★★
+        WHITE_RUINCOLATE = "Too greasy if I have too much.", ----
         RUINCOLATE = "I'll need sugar supplements to experiment.",
         RUIN_SCHOKAKOLA = "Who thought of keeping chocolates and shoe polish in a can?",
 
@@ -307,7 +307,7 @@ return {
 		KETTLE =
 		{
 			EMPTY = "It makes me thirsty just to look at it.",
-			BURNT = "It boiled over and burned", --★★★--★★★
+			BURNT = "It boiled over and burned", ----
 			BOILING_LONG = "This is going to take a while.",
 			BOILING_SHORT = "Almost done!",
 			DONE = "Mmm, it's tea time!",

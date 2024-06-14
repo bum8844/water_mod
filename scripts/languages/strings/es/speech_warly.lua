@@ -43,7 +43,7 @@ return {
         HOLE = "Puedo oír el sonido de el agua fluyendo.", -- Well hole
         WELL = "¡Ampliemos nuestro suministro de agua potable!", -- Well
 
-        WX78MODULE_NONEDRUNK = "Eso le da a nuestro amigo metálico un poco más de sabor, ¿verdad?", -- ★★★★★
+        WX78MODULE_NONEDRUNK = "Eso le da a nuestro amigo metálico un poco más de sabor, ¿verdad?", -- 
 
         -- Waterlogged Plant Mod
 
