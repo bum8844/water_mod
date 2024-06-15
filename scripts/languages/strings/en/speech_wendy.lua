@@ -11,11 +11,11 @@ return {
     ANNOUNCE_DRUNK = "Sob... Abigail, I'm so lonely...",
     ANNOUNCE_DRUNK_END = "Don't laugh, Abigail. It's embarrassing.",
     ANNOUNCE_DRUNK_IMMUNITY = "",
-    ANNOUNCE_NOTCHARGE = "It seems there is no milk for me to share.", --★★★★★
+    ANNOUNCE_NOTCHARGE = "It seems there is no milk for me to share.", --
     ANNOUNCE_NOTHIRSTSLEEP = "My throat is submerged in the abyss. I can't sleep now.",
     ANNOUNCE_NOTHIRSTSIESTA = "My throat is drying up in the sunlight. I can't sleep now.",
-    ANNOUNCE_SLEEP_END = "Still trapped in a nightmare, I can't believe that wasn't a dream!", --★★★★★
-    ANNOUNCE_THIRST = "My throat is parched.", --★★★★★
+    ANNOUNCE_SLEEP_END = "Still trapped in a nightmare, I can't believe that wasn't a dream!", --
+    ANNOUNCE_THIRST = "My throat is parched.", --
 
     ANNOUNCE_CAFFINE_BUFF_START = "I feel like my arms and legs are lighter.", 
     ANNOUNCE_CAFFINE_BUFF_STOP = "My body feels heavy as usual.", 
@@ -27,17 +27,17 @@ return {
 
     DESCRIBE =
     {
-        BOILBOOK = "Even if I could quench my own thirst, it would only wash away in tears.", --★★★★★
+        BOILBOOK = "Even if I could quench my own thirst, it would only wash away in tears.", --
 
         WATER_CLEAN_ICE = "As frozen as my heart.",
         WATER_DIRTY_ICE = "Dirty and frozen water.",
 
         SPICE_CAFFEINPEPPER = "It's more versatile than I am.",
 
-        WELL_KIT = "It's heavy, but I'll try to stay motivated.", --★★★★★
-        WELL_SPRINKLER_KIT = "If I just designate where to install the machine, it will automatically find its place.", --★★★★★
+        WELL_KIT = "It's heavy, but I'll try to stay motivated.", --
+        WELL_SPRINKLER_KIT = "If I just designate where to install the machine, it will automatically find its place.", --
         WELL_WATERPUMP_KIT = "A cold mechanical heart.",
-        WELL_BURYING_KIT = "Even if you dig such a deep hole and try to seal it with a huge nail..", --★★★★★
+        WELL_BURYING_KIT = "Even if you dig such a deep hole and try to seal it with a huge nail..", --
         WELL_DRILLING = "Drilling a large hole into the ground.",
         WELL_DRILLING_ITEM = "It will drill a deep hole into the ground.",
         HOLE = "I haven't reached the bottom yet, how can I get back home?", --(Alice’s Adventures in Wonderland)
@@ -49,14 +49,14 @@ return {
 
         TEA_TREE = "The leaves are lush.", 
         DUG_TEA_TREE = "I like it dead as it is, but I should return it to the ground.", 
-        TEA_SEED = "Life has found a place within an unstable death.", --★★★★★
+        TEA_SEED = "Life has found a place within an unstable death.", --
         TEA_SEED_COOKED = "It ended up roasted to death.",
-        TEA_SEED_SAPLING = "They share the same root, but the stems don't get along.", --★★★★★
+        TEA_SEED_SAPLING = "They share the same root, but the stems don't get along.", --
         TEALEAVES = "The leaves will never attach themselves to the stems again.",
-        TEALEAVES_DRIED = "The leaves were badly scorched by the sunlight.", --★★★★★
+        TEALEAVES_DRIED = "The leaves were badly scorched by the sunlight.", --
 
         CAFFEINBERRY = "A plant that forms beans.",
-        DUG_CAFFEINBERRY = "How sad. You have no home.", --★★★★★
+        DUG_CAFFEINBERRY = "How sad. You have no home.", --
         CAFFEINBERRY_BEAN = "Seems quite stimulating.",
         CAFFEINBERRY_BEAN_COOKED = "Who would have thought you could obtain determination from a bean?", 
 
@@ -70,23 +70,23 @@ return {
 
         -- Distilled Spirits Additives
 
-        ADDITIVE_SEED = "It collected seeds with unusual scents.", --★★★★★
+        ADDITIVE_SEED = "It collected seeds with unusual scents.", --
         ADDITIVE_PETALS = "Dried-up flower petals and leaves.", 
         ADDITIVE_NUT = "Finely chopped nuts.",
-        ADDITIVE_DAIRY = "It sealed cream.", --★★★★★
+        ADDITIVE_DAIRY = "It sealed cream.", --
 
         -- Drinks
 
         WATER_CLEAN = "It extends life for a moment.", 
-        WATER_DIRTY = "If you want to experience a long-lasting pain.", --★★★★★
-        WATER_SALTY = "It gives life, yet it is also a poison that leads to death..", --★★★★★ Salt Water (from the novel "Lord of the Flies")
+        WATER_DIRTY = "If you want to experience a long-lasting pain.", --
+        WATER_SALTY = "It gives life, yet it is also a poison that leads to death..", -- Salt Water (from the novel "Lord of the Flies")
 
-        GOOPYDRINK = "Like my life, this is terribly messed up.", ---★★★★★
+        GOOPYDRINK = "Like my life, this is terribly messed up.", ---
 
         -- Teapot Drinks
 
         FRUITJUICE = "Made with various fruits.", 
-        BERRIES_JUICE = "It must have taken a lot of berries to make a bottle.", ---★★★★★
+        BERRIES_JUICE = "It must have taken a lot of berries to make a bottle.", ---
         POMEGRANATE_JUICE = "It will stain your clothes red if you spill it.",
         BANANA_JUICE = "If only I could share it with Abigail...",
         FIG_JUICE = "Tiny seeds are getting caught in my throat.",
@@ -96,24 +96,24 @@ return {
 
         VEGGIE_TEA = "I mixed vegetables and boiled them.",
         CARROT_TEA = "I steeped carrots in water.", 
-        CACTUS_TEA = "Needing water so badly, they ended up drowning.", ---★★★★★
-        TOMATO_JUICE = "Blood is thicker but the drink I prefer is water", ---★★★★★ (From a Place of Love)
-        LUMPY_TEA = "It can't take root any longer.",  ---★★★★★
-        SEAWEED_SHAKE = "I can't make any sense of this.", ---★★★★★
+        CACTUS_TEA = "Needing water so badly, they ended up drowning.", ---
+        TOMATO_JUICE = "Blood is thicker but the drink I prefer is water", --- (From a Place of Love)
+        LUMPY_TEA = "It can't take root any longer.",  ---
+        SEAWEED_SHAKE = "I can't make any sense of this.", ---
 
         GREENTEA = "I'm not sure if I can call this tea.", 
         BLACKTEA = "A short break for weary souls...", -- Black Tea (Jane Austen / Pride and Prejudice)
         BLACKTEA_ICED = "A short break for weary souls...", 
-        FUER = "I can't see the Hatter to celebrate an unbirthday today.", ---★★★★★ (Alice's Adventures in Wonderland)
+        FUER = "I can't see the Hatter to celebrate an unbirthday today.", --- (Alice's Adventures in Wonderland)
         MIXFLOWER = "I gathered petals and boiled them.",
         HIBISCUSTEA = "It's quite tangy.",
-        CACTUSFLOWER_TEA = "Even when simmered, it looks pretty. I'm jealous.", ---★★★★★
+        CACTUSFLOWER_TEA = "Even when simmered, it looks pretty. I'm jealous.", ---
         LOTUSTEA = "Calm has taken root even amidst suffering.",
-        SUSHIBISCUS = "If I could be with Abigail even for a moment.", ---★★★★★
-        MOON_BLOSSOM_TEA = "It can't exude any more beauty.", ---★★★★★
+        SUSHIBISCUS = "If I could be with Abigail even for a moment.", ---
+        MOON_BLOSSOM_TEA = "It can't exude any more beauty.", ---
 
         CAFFEINBERRY_JUICE = "Dark and bitter.", 
-        TOFFEE_LATTE = "It is too sweet, lacking the lingering echo of coffee's aroma.", ---★★★★★
+        TOFFEE_LATTE = "It is too sweet, lacking the lingering echo of coffee's aroma.", ---
         RUINCHA_LATTE = "Coffee for adults who can't drink bitter things.", 
 
         HOTRUINCOLATE = "I've missed warm cocoa.", 
@@ -121,21 +121,21 @@ return {
         RUINXOCOLATL = "Did I and my heart roll down the stairs?",
         TEA_RUINCOLATE_LATTE = "It's bitter but also sweet.",
 
-        MULLED = "Can It melt down a cold and shattered heart?", ---★★★★★
+        MULLED = "Can It melt down a cold and shattered heart?", ---
         BUTTERBEER = "As sweet as magic.",
 
         -- Collaborative Teapot Drinks
 
-        COCONUT_JUICE = "I wish I could harden my inner self like this.", ---★★★★★
+        COCONUT_JUICE = "I wish I could harden my inner self like this.", ---
         RAINBOW_SHAKE = "It's a beautiful death in a cup.",
         QUARTZ_SHAKE = "A fitting death for a fool.",
         CHERRY_ROSEBERRIES_TEA = "I'll be careful not to swallow the flower buds.",
         CHERRY_HONEY_TEA = "Can it get any sweeter than this?",
         SWEET_RICE_DRINK = "There's something chewy in it.",
-        PINEANANAS_JUICE = "It tore through the tough rind and mashed the pulp.", ---★★★★★
-        ORANGE_JUICE = "As sour as the thick rind.", ---★★★★★
+        PINEANANAS_JUICE = "It tore through the tough rind and mashed the pulp.", ---
+        ORANGE_JUICE = "As sour as the thick rind.", ---
         STRAWBERRY_SMOOTHIE = "A drink made by crushing strawberries with ice.", 
-        STRAWBERRY_MILK_SMOOTHIE = "Smoothly wraps around the tip of my tongue.", ---★★★★★
+        STRAWBERRY_MILK_SMOOTHIE = "Smoothly wraps around the tip of my tongue.", ---
 
         -- Brewing Drinks
 
@@ -144,39 +144,39 @@ return {
         -- Soda Machine
 
         SODA = "It's fizzing.", 
-        FRUITSODA = "Soda with fruit juice squeezed in.", ---★★★★★
-        LEMONLIMESODA = "It is Excessively sweet carbonated beverage.", ---★★★★★
+        FRUITSODA = "Soda with fruit juice squeezed in.", ---
+        LEMONLIMESODA = "It is Excessively sweet carbonated beverage.", ---
         COLA = "A dark, sweet substance that dominates many people.",
-        COLAQUANTUM = "That pitch-black drink even shines.", ---★★★★★
+        COLAQUANTUM = "That pitch-black drink even shines.", ---
         LUMPY_BEER = "It seems to suit my taste.", 
 
         -- Distilled Spirits
 
         CORN_BEER = "Bitter beer with lots of foam.", 
-        MADHU = "How much honey must have been stolen to make this?", ---★★★★★
+        MADHU = "How much honey must have been stolen to make this?", ---
         WINE = "As red and dark as blood.",
-        NOBLEWINE = "Is it made from fruit afflicted with leukemia?", ---★★★★★
-        SPARKLINGWINE = "It's suppressing it insides with a small cork stopper.",  ---★★★★★
-        GLOWBERRYWINE = "Is there a shimmering ghost trapped inside the bottle?", ---★★★★★
-        KUMIS = "It's a sad thing for babies.",---★★★★★
+        NOBLEWINE = "Is it made from fruit afflicted with leukemia?", ---
+        SPARKLINGWINE = "It's suppressing it insides with a small cork stopper.",  ---
+        GLOWBERRYWINE = "Is there a shimmering ghost trapped inside the bottle?", ---
+        KUMIS = "It's a sad thing for babies.",---
         LUMPY_WINE = "It's transparent and slightly mustard-colored.",
         PULQUE = "All the prideful needles have melted away.", -- Pulque (Saminju)
-        RUINCACAO_WINE = "It's never going to get sweet now.", ---★★★★★
+        RUINCACAO_WINE = "It's never going to get sweet now.", ---
 
         -- Collaborative Soda
 
-        CHERRY_DOCTOR_COLA = "It isn't a real doctor, but it might offer some fleeting comfort.", ---★★★★★
-        PINEANANASSODA = "It's tangy and sweet soda.", ---★★★★★
-        ORANGESODA = "It's carbonated beverage with squeezed orange juice.",---★★★★★
-        STRAWBERRYSODA = "It'sCarbonated beverage with crushed strawberries.", ---★★★★★
+        CHERRY_DOCTOR_COLA = "It isn't a real doctor, but it might offer some fleeting comfort.", ---
+        PINEANANASSODA = "It's tangy and sweet soda.", ---
+        ORANGESODA = "It's carbonated beverage with squeezed orange juice.",---
+        STRAWBERRYSODA = "It'sCarbonated beverage with crushed strawberries.", ---
 
         -- Collaborative Distilled Spirits
 
-        AUROBOW = "Even when made into alcohol, it shines with vibrant colors.", --★★★★★
-        COCONUT_WINE = "A subtle sweet scent wafts.", --★★★★★
+        AUROBOW = "Even when made into alcohol, it shines with vibrant colors.", --
+        COCONUT_WINE = "A subtle sweet scent wafts.", --
         CHERRY_BLOOM_MADHU = "Did it want to enjoy the ephemeral beauty a little longer?",
         GIANT_BLUEBERRY_WINE = "Wine with an explosive aroma.",
-        RICE_WINE =  "It’s wine made from rice.", --★★★★★
+        RICE_WINE =  "It’s wine made from rice.", --
         WHEAT_BEER = "I can no longer taste the sweetness of the grain.", 
         PALE_BEER = "Pale like its name suggests.", 
 
@@ -199,29 +199,29 @@ return {
         PETALS_BERRY_BRANDY = "It seduces with the scent of flowers.",
         KAHLUA = "It smells like strongly concentrated coffee.",
         NUT_CORN_WHISKEY = "If you have a peanut allergy, it will be perfect.",
-        RUINCACAO_CREAM_LIQUEUR = "Only the scent is sweet.", --★★★★★
-        RUMCHATA = "Give this drink to suffering babies.", --★★★★★
+        RUINCACAO_CREAM_LIQUEUR = "Only the scent is sweet.", --
+        RUMCHATA = "Give this drink to suffering babies.", --
 
         -- Collaborative Distilled Spirits
 
         MOONWAY = "A rainbow of death.", -- 
         ARRACK = "It's palm wine distilled into alcohol.", 
         CHERRY_BLOOM_RUM = "It's better to look at it than to drink it.",
-        RICE_SPIRITS = "It's hard liquor disguised as water.",  --★★★★★
+        RICE_SPIRITS = "It's hard liquor disguised as water.",  --
         WHEAT_WHISKEY = "It's just a poison that slowly kills people.", 
         PALE_WHISKEY = "The pale knight watches over those who drink it.", 
 
         -- Exclusive Collaborative Distilled Spirits for Warly
 
-        NUT_COCONUT_BRANDY = "Same story, different versions, and all are true.",  --★★★★★ (Pirates of the Caribbean : Tia Dalma)
-        GIANT_BLUEBERRY_GIN = "As self-destructive as I am.",  --★★★★★
+        NUT_COCONUT_BRANDY = "Same story, different versions, and all are true.",  -- (Pirates of the Caribbean : Tia Dalma)
+        GIANT_BLUEBERRY_GIN = "As self-destructive as I am.",  --
 
         -- Pot Cooking
 
         DARK_RUINCOLATE = "As bitter and dark as my life.",
         WHITE_RUINCOLATE = "If only I could share this sweetness with Abigail...",
-        RUINCOLATE = "It's edible black fuel.", --★★★★★
-        RUIN_SCHOKAKOLA = "Has everything to wake you up.", --★★★★★
+        RUINCOLATE = "It's edible black fuel.", --
+        RUIN_SCHOKAKOLA = "Has everything to wake you up.", --
 
         BUCKET_STEEL_EMPTY =
         {
@@ -266,7 +266,7 @@ return {
             PURIFY_SHORT = "The water has become quite fresh.",
             HASWATER = "The clean water is ready.",
             BURNT = "Only the smell of burnt salt remains.",
-            HASSALT = "It's like filtering salt with salt.", --★★★★★
+            HASSALT = "It's like filtering salt with salt.", --
         },
 
         BARREL =
@@ -277,17 +277,17 @@ return {
 
         BREWERY =
         {
-            EMPTY = "Just rots ingredients to make them drinkable.", --★★★★★
-            BURNT = "Only the scorched scent remains.", --★★★★★
-            FERMENTING_LONG = "Whatever is inside, it will still be fresh.", --★★★★★
+            EMPTY = "Just rots ingredients to make them drinkable.", --
+            BURNT = "Only the scorched scent remains.", --
+            FERMENTING_LONG = "Whatever is inside, it will still be fresh.", --
             FERMENTING_SHORT = "It needs a bit more time to ferment.", 
             DONE = "Another task completed.", 
         },
 
-        CAMPKETTLE_ITEM = "It's a handled kettle.", --★★★★★
+        CAMPKETTLE_ITEM = "It's a handled kettle.", --
         CAMPKETTLE =
         {
-            GENERIC = "I could draw water from a pond with it.",  --★★★★★
+            GENERIC = "I could draw water from a pond with it.",  --
             BOILING_LONG = "The water is lukewarm.", 
             BOILING_SHORT = "I need to boil it a bit more.", 
             DONE = "I've extended its life a bit.", 
@@ -297,9 +297,9 @@ return {
         CAMPDESALINATOR_ITEM = "I have to carry it reluctantly.", 
         CAMPDESALINATOR =
         {
-            GENERIC = "I could get some seawater with it.", --★★★★★
+            GENERIC = "I could get some seawater with it.", --
             BOILING_LONG = "Most of it is seawater.", 
-            BOILING_SHORT = "Many lives must have been lost.", --★★★★★
+            BOILING_SHORT = "Many lives must have been lost.", --
             DONE = "I've extended its life a bit.", 
             STOP = "It's not boiled enough yet.", 
         },
@@ -308,9 +308,9 @@ return {
         {
             EMPTY = "As dry as my eyeballs.", 
             BURNT = "It's been scorched.", 
-            BOILING_LONG = "Whatever is inside, it will still be alive.", --★★★★★
+            BOILING_LONG = "Whatever is inside, it will still be alive.", --
             BOILING_SHORT = "It needs a bit more time to cook.", 
-            DONE = "Finally, I can quench my thirst.", --★★★★★
+            DONE = "Finally, I can quench my thirst.", --
             PURIFY_LONG = "The water is still lukewarm.", 
             PURIFY_SHORT = "I need to boil it a bit more.", 
             HASWATER = "Shall I gather ingredients for a drink?", 
@@ -322,7 +322,7 @@ return {
         {
             GENERIC = "For when my throat is parched.", 
             EMPTY = "As dry as my eyeballs.", 
-            BOILING_LONG = "Whatever is inside, it will still be alive.", --★★★★★
+            BOILING_LONG = "Whatever is inside, it will still be alive.", --
             BOILING_SHORT = "It needs a bit more time to cook.",
             DONE = "Finally, I can quench my thirst.",
             PURIFY_LONG = "The water is still lukewarm.",
@@ -334,7 +334,7 @@ return {
 
         DISTILLERS =
         {
-            EMPTY = "Machines will drink alcohol, and eventually, alcohol will consume people.", --★★★★★
+            EMPTY = "Machines will drink alcohol, and eventually, alcohol will consume people.", --
             DISTILLTING_LONG = "It probably takes a while.", 
             DISTILLING_SHORT = "I need to wait a bit more.", 
             DONE = "Another task completed.",
@@ -349,7 +349,7 @@ return {
 
         WELL_SPRINKLER =
         {
-            LOWFUEL = "It can work again, as long as I provide fuel." , --★★★★★
+            LOWFUEL = "It can work again, as long as I provide fuel." , --
             ON = "It stole my job.", 
             OFF = "It has stopped working.", 
         },
