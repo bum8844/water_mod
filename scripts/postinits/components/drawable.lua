@@ -1,8 +1,9 @@
+local modlist = require("utils/water_modlist").active_mod_compatibility
+
 AddComponentPostInit("drawable", function(self)
 	self._OnDrawn = self.OnDrawn
 
 	function self:OnDrawn(imagename, imagesource, atlasname, bgimagename, bgatlasname)
-
 		if imagesource then
 			if imagesource.minisign_atlas then
 				atlasname = imagesource.minisign_atlas
@@ -18,6 +19,7 @@ AddComponentPostInit("drawable", function(self)
 				bgatlasname = imagesource.inv_image_bg.minisign_atlas
 			end
 		end
+
 		self:_OnDrawn(imagename, imagesource, atlasname, bgimagename, bgatlasname)
 	end
 end)

@@ -2,6 +2,7 @@ local water_modlist = {
 	["workshop-2334209327"] = "hof",
 	["workshop-2762334054"] = "mfp",
 	["workshop-1505270912"] = "te",
+	["workshop-2986194136"] = "ta",
 	["workshop-1467214795"] = "ia",
 	["workshop-1392778117"] = "legion",
 	["workshop-2039181790"] = "umc",

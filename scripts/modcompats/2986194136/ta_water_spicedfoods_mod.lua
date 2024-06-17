@@ -13,7 +13,6 @@ local foods_citd = {}
 local warlyfoods = {}
 
 local foods_volcano_list = {
-    "fruityjuice",
     "coffee",
     "sharkfinsoup",
     "lobsterdinner",
@@ -142,7 +141,7 @@ end
     recipe.overridebuild = "preparedfood_gorge"
 end]]
 
---[[why not support Vanilla spied? ... damm it TE....
+--[[why not support Vanilla spied? ... damm it TE....]]
 GLOBAL.GenerateSpicedFoods(foods_volcano)
 GLOBAL.GenerateSpicedFoods(foods_hamlet)
 GLOBAL.GenerateSpicedFoods(foods_te)
@@ -157,7 +156,7 @@ end
 for k,v in pairs(te_spiced) do
     --new_spicedfoods[k] = nil --do not let the game make the prefabs
     env.AddCookerRecipe("portablespicer", v)
-end]]
+end
 
 local spiced_waterfoods = GLOBAL.shallowcopy(require("water_spicedfoods_mod"))
 GLOBAL.GenerateSpicedFoods_Water_mod(foods_volcano)
