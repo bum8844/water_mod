@@ -228,8 +228,8 @@ local function fn_item()
 
     MakeInventoryPhysics(inst)  
 
-    inst.water_swap_type = true
-    inst.water_use_prefab_name = true
+    inst.minisign_atlas = "minisign_dehy_items_swap"
+    inst.minisign_prefab_name = true
     
     inst.AnimState:SetBuild("campdesalinator_item")
     inst.AnimState:SetBank("campdesalinator_item")

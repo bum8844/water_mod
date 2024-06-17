@@ -62,6 +62,7 @@ for k, v in pairs(water_foods) do
 		end
     end
 	v.overridebuild = "water_cook_pot"
+	v.minisign_atlas = "minisign_dehy_items_swap"
 end
 
 for k, v in pairs(water_foods) do

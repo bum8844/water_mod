@@ -43,7 +43,7 @@ return {
             HOLE = "No podré ser capaz de obtener huesos si caigo dentro.", -- Well hole
             WELL = "Moriré de sed a lado de este pozo.", -- Well
 
-             WX78MODULE_NONEDRUNK = "Ese robot debe controlarse.", --- ★★★★★
+             WX78MODULE_NONEDRUNK = "Ese robot debe controlarse.", --- 
 
             -- Water Mode Plants
 

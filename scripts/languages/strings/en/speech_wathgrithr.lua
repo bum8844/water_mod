@@ -10,8 +10,8 @@ return {
 
         ANNOUNCE_DRUNK = "Did I lose in the drinking game? Hiccup.", -- 
         ANNOUNCE_DRUNK_END = "Am I still at Egir's banquet?", -- 
-        ANNOUNCE_DRUNK_IMMUNITY = "Hahaha! Cheers again!!", -- ★★★★★
-        ANNOUNCE_NOTCHARGE = "The unicorn says that it seems they are not ready yet.", -- ★★★★★
+        ANNOUNCE_DRUNK_IMMUNITY = "Hahaha! Cheers again!!", -- 
+        ANNOUNCE_NOTCHARGE = "The unicorn says that it seems they are not ready yet.", -- 
         ANNOUNCE_NOTHIRSTSLEEP = "If I sleep like this, I'll be thirsty all night! I should drink some water first.", -- 
         ANNOUNCE_NOTHIRSTSIESTA = "How can I rest like this when my throat is so dry!", -- 
         ANNOUNCE_SLEEP_END = "I feel refreshed!", -- 
@@ -20,14 +20,14 @@ return {
         ANNOUNCE_CAFFINE_BUFF_START = "No one can catch up with my pace now!", -- 
         ANNOUNCE_CAFFINE_BUFF_STOP = "I'm back to my usual pace.", --
 
-        ANNOUNCE_CURE_WATERBORNE = "Next time, I should drink in moderation so it doesn't affect my ability to fight.", -- ★★★★★
+        ANNOUNCE_CURE_WATERBORNE = "Next time, I should drink in moderation so it doesn't affect my ability to fight.", -- 
 
         ANNOUNCE_DCAPACITY_CRITICAL = "Thor, I can drink all day!", --
         ANNOUNCE_DCAPACITY_HALF = "I feel the fear fading away!", -- 
 
         DESCRIBE =
         {
-            BOILBOOK = "How much wine is listed for the banquet dinner?", -- ★★★★★
+            BOILBOOK = "How much wine is listed for the banquet dinner?", -- 
 
             WATER_CLEAN_ICE = "It's frozen solid.", -- 
             WATER_DIRTY_ICE = "Ice with impurities.", --
@@ -37,11 +37,11 @@ return {
             WELL_KIT = "I'll gladly install a well.", -- 
             WELL_SPRINKLER_KIT = "A machine that showers rain without clouds.", -- 
             WELL_WATERPUMP_KIT = "Machines will plunder the underground world.", -- 
-            WELL_BURYING_KIT = "Let's make sure no one stumbles.", -- ★★★★★
+            WELL_BURYING_KIT = "Let's make sure no one stumbles.", -- 
             WELL_DRILLING = "Push it all the way to the Styx!", --
             WELL_DRILLING_ITEM = "A mighty tool to bore a path to the underground world.", 
             HOLE = "I can hear water down there.",
-            WELL = "Dig the well before you are thirsty.", -- ★★★★★
+            WELL = "Dig the well before you are thirsty.", -- 
 
             WX78MODULE_NONEDRUNK = "These boons shall empower our metal warrior.", -- 78전용 묘듈
 
@@ -55,7 +55,7 @@ return {
             TEALEAVES = "A bunch of fragrant leaves.", -- 
             TEALEAVES_DRIED = "A handful of dried tea leaves.", -- 
 
-            CAFFEINBERRY = "The bushes that bear beans have been blessed by Mani.", -- ★★★★★
+            CAFFEINBERRY = "The bushes that bear beans have been blessed by Mani.", -- 
             DUG_CAFFEINBERRY = "Let's go together.", 
             CAFFEINBERRY_BEAN = "It needs to be roasted until it turns black.", -- 
             CAFFEINBERRY_BEAN_COOKED = "A bean with an overflowing vitality.", -- 
@@ -64,7 +64,7 @@ return {
             DUG_RUINCACAO_TREE = "I hope it returns to the Earth goddess.", -- 
             RUINCACAO_SEED = "It overcame fear and bloomed into a flower.", -- 
             RUINCACAO_SEED_SAPLING = "It has cast off its fear. Grow, young tree!", --
-            RUINCACAO = "Are the young trees destined to be burned while they are confined?", -- ★★★★★
+            RUINCACAO = "Are the young trees destined to be burned while they are confined?", -- 
             RUINCACAO_BEAN = "It's oozing with oil.",
             RUINCACAO_BEAN_COOKED = "The young trees have been cooked.", --
 
@@ -77,11 +77,11 @@ return {
 
             -- Beverages
 
-            WATER_CLEAN = "This is pure water.", -- ★★★★★
-            WATER_DIRTY = "Wild waters that refuse to be tamed.", -- ★★★★★
+            WATER_CLEAN = "This is pure water.", -- 
+            WATER_DIRTY = "Wild waters that refuse to be tamed.", -- 
             WATER_SALTY = "A cup of seawater.", 
 
-            GOOPYDRINK = "The food scraps seem quite moist.", -- ★★★★★
+            GOOPYDRINK = "The food scraps seem quite moist.", -- 
 
             -- Teapot beverages
 
@@ -89,24 +89,24 @@ return {
             BERRIES_JUICE = "It emits a scent of red fruits.", 
             POMEGRANATE_JUICE = "I should think of it as the blood of the fruit.", 
             BANANA_JUICE = "Monkey's juice, it seems.", 
-            FIG_JUICE ="There is an outrageous amount of irreverent fruit flesh.", -- ★★★★★
-            DRAGONJUICE = "Full of white fruit flesh.", -- ★★★★★
+            FIG_JUICE ="There is an outrageous amount of irreverent fruit flesh.", -- 
+            DRAGONJUICE = "Full of white fruit flesh.", -- 
             GLOWBERRYJUICE = "Let's pretend it's water from a glowing spring.", --
-            WATERMELON_JUICE = "Imagine that this is not fruit, but water.", -- ★★★★★
+            WATERMELON_JUICE = "Imagine that this is not fruit, but water.", -- 
 
             VEGGIE_TEA = "Do I really have to drink this!?", --
             CARROT_TEA = "How can warriors serve rabbit food like this!", -- 
             CACTUS_TEA = "Alright, let's think of it as a tribute to the blade grass.", 
             TOMATO_JUICE = "I'll consume only the water of this vegetable.", -- 
-            LUMPY_TEA = "How could you give such a thing that smells of dirt to a warrior!", -- ★★★★★
+            LUMPY_TEA = "How could you give such a thing that smells of dirt to a warrior!", -- 
             SEAWEED_SHAKE = "Dreadful. Absolutely dreadful!", --
 
             GREENTEA = "It's just... leaf-flavored water.", -- 
             BLACKTEA = "I have no time for leisurely gatherings.", --
-            BLACKTEA_ICED = "Just looking at it makes my teeth ache.",  -- ★★★★★
+            BLACKTEA_ICED = "Just looking at it makes my teeth ache.",  -- 
             FUER = "It's just a little bit of fern...!", -- 
             MIXFLOWER = "Freya's blessings are contained within.", --
-            HIBISCUSTEA = "The flower is shedding blood.", -- ★★★★★
+            HIBISCUSTEA = "The flower is shedding blood.", -- 
             CACTUSFLOWER_TEA = "I'll drink the water, but not the flower.", 
             LOTUSTEA = "Give me fish! Fish!!", -- 
             SUSHIBISCUS = "This drink is undoubtedly cursed.", -- 
@@ -117,12 +117,12 @@ return {
             RUINCHA_LATTE = "My mind is awakening.", -- 
 
             HOTRUINCOLATE = "It warms the soul.", -- 
-            RUINCOLATE_SMOOTHIE = "Is this the drink of Hrim-thurs?", -- ★★★★★
+            RUINCOLATE_SMOOTHIE = "Is this the drink of Hrim-thurs?", -- 
             RUINXOCOLATL = "A drink of ancient warriors.", -- 
             TEA_RUINCOLATE_LATTE = "It awakens my soul.", -- 
 
             MULLED = "It will give respite to weary souls.", -- 
-            BUTTERBEER = "I hold the young wizards' courage in high esteem.",  -- ★★★★★
+            BUTTERBEER = "I hold the young wizards' courage in high esteem.",  -- 
 
             -- Collaboration Teapot Drinks
 
@@ -134,33 +134,33 @@ return {
             SWEET_RICE_DRINK = "Doesn't this contain seeds?", 
             PINEANANAS_JUICE = "It has crushed the tough scales to get the flesh.", 
             ORANGE_JUICE = "Is it asking me to drink its tart juice?", 
-            STRAWBERRY_SMOOTHIE = "It's a cold, red fruit puree.", -- ★★★★★
-            STRAWBERRY_MILK_SMOOTHIE = "This beverage is not appropriate for a warrior's consumption.", -- ★★★★★
+            STRAWBERRY_SMOOTHIE = "It's a cold, red fruit puree.", -- 
+            STRAWBERRY_MILK_SMOOTHIE = "This beverage is not appropriate for a warrior's consumption.", -- 
 
             -- Distillery Drinks
 
-            SPOILED_DRINK = "Age has only made this drink gross, not wisdom.", -- ★★★★★
+            SPOILED_DRINK = "Age has only made this drink gross, not wisdom.", -- 
 
             -- Distillery Soda
 
-            SODA = "It is a carbonated spring water.", -- ★★★★★
+            SODA = "It is a carbonated spring water.", -- 
             FRUITSODA = "It's like fruit punch.", --
             LEMONLIMESODA = "It's not a drink worthy of a warrior.",
             COLA = "It's as seductive as darkness itself.", -- 
             COLAQUANTUM = "It makes my heart beat faster!", -- 
-            LUMPY_BEER = "Even a beverage made from vegetables that smell like dirt can be refreshing.", -- ★★★★★
+            LUMPY_BEER = "Even a beverage made from vegetables that smell like dirt can be refreshing.", -- 
 
             -- Distillery Spirits
 
-            CORN_BEER = "It's an imitation of the fake German beer.", -- 
-            MADHU = "It's Nord's mead!", -- ★★★★★
+            CORN_BEER = "It is a poor imitation of Germanic beer.",
+            MADHU = "It's Nord's mead!", -- 
             WINE = "It's made from the prophet's blood.", 
             NOBLEWINE = "Where's the accompanying meat?", 
             SPARKLINGWINE = "This is not a celebratory drink for warriors.", 
             GLOWBERRYWINE = "It's like Kvasir's blood.", 
             KUMIS = "May gods help us, making alcohol from milk?", 
             LUMPY_WINE = "It won't satisfy my thirst.", 
-            PULQUE = "It's Mayahuel's blood!",  -- ★★★★★
+            PULQUE = "It's Mayahuel's blood!",  -- 
             RUINCACAO_WINE = "Is this the wine of the Toltecs?", -- 
 
             -- Collaboration Soda
@@ -168,7 +168,7 @@ return {
             CHERRY_DOCTOR_COLA = "It's a repulsive crimson chaos.", -- 
             PINEANANASSODA = "Whether it's pinecones or fruit, it's not right.", -- 
             ORANGESODA = "It's spring water with a tangy fruit flavor.", --
-            STRAWBERRYSODA = "The warrior has a distaste for mineral water with red fruits.", --★★★★★
+            STRAWBERRYSODA = "The warrior has a distaste for mineral water with red fruits.", --
 
             -- Collaboration Spirits
 
@@ -176,13 +176,13 @@ return {
             COCONUT_WINE = "The scent of palm oil is thick.", -- 
             CHERRY_BLOOM_MADHU = "A visually pleasing and delicious drink.", -- 
             GIANT_BLUEBERRY_WINE = "It's a powerful drink!", --
-            RICE_WINE = "I can't see any difference between it and milk." , --★★★★★
-            WHEAT_BEER = "It's Egir's beer." , --★★★★★
+            RICE_WINE = "I can't see any difference between it and milk." , --
+            WHEAT_BEER = "It's Egir's beer." , --
             PALE_BEER = "Is this also beer?", -- 
 
             -- Distillery Liquors
 
-            DISINFECTANT =  "Will burn your wounds to heal them!", --★★★★★
+            DISINFECTANT =  "Will burn your wounds to heal them!", --
             CORN_WHISKEY = "It's sweet and aromatic.", 
             LUMPY_VODKA = "I declare, I shall drink this like water.", 
             TEQUILA = "It's a rough and wild drink!", 
@@ -214,11 +214,11 @@ return {
             -- Warly's Exclusive Collaboration Distilled Spirits
 
             NUT_COCONUT_BRANDY = "Vikings are warriors and explorers, not pirates.", 
-            GIANT_BLUEBERRY_GIN = "Power Overwhelming!", --★★★★★
+            GIANT_BLUEBERRY_GIN = "Power Overwhelming!", --
 
             -- Pot Cooking
 
-            DARK_RUINCOLATE = "I should ask my ally if he can also make salmiakki." , ---★★★★★
+            DARK_RUINCOLATE = "I should ask my ally if he can also make salmiakki." , ---
             WHITE_RUINCOLATE = "Vikings do not enjoy such sweet snacks.", -- 
             RUINCOLATE = "It's an acceptable ration.", -- 
             RUIN_SCHOKAKOLA = "It stirs the excitement of the battlefield.", -- 
@@ -227,7 +227,7 @@ return {
             {
                 EMPTY = "It's an iron bucket.", -- 
                 FULL = "It's filled with clean water.", --
-                FULL_ICE = "It evokes a sense of nostalgia.", ---★★★★★
+                FULL_ICE = "It evokes a sense of nostalgia.", ---
                 DIRTY = "It's dirty.", -- 
                 DIRTY_ICE = "It has turned into a dirty lump.", -- 
             },
@@ -236,7 +236,7 @@ return {
             {
                 EMPTY = "He had hollowed out the wooden log skillfully.", -- Empty wooden log bucket
                 FULL = "It's filled with clean water.", --
-                FULL_ICE = "It evokes a sense of nostalgia.", ---★★★★★
+                FULL_ICE = "It evokes a sense of nostalgia.", ---
                 DIRTY = "It's dirty.", -- 
                 DIRTY_ICE = "It has turned into a dirty lump.", -- 
             },
@@ -245,7 +245,7 @@ return {
             {
                 EMPTY = "I will contain the sea within this.", -- 유목양동이
                 FULL = "It's filled with clean water.", --
-                FULL_ICE = "It evokes a sense of nostalgia.", --★★★★★
+                FULL_ICE = "It evokes a sense of nostalgia.", --
                 DIRTY = "It's dirty.", -- 
                 DIRTY_ICE = "It has turned into a dirty lump.", -- 
             },
@@ -254,7 +254,7 @@ return {
             {
                 EMPTY = "It's an empty wooden bucket.", -- 
                 FULL = "It's filled with clean water.", --
-                FULL_ICE = "It evokes a sense of nostalgia.", --★★★★★
+                FULL_ICE = "It evokes a sense of nostalgia.", --
                 DIRTY = "It's dirty.", -- 
                 DIRTY_ICE = "It has turned into a dirty lump.", -- 
             },
@@ -277,11 +277,11 @@ return {
 
             BREWERY =
             {
-                EMPTY =  "Hear ye, hear ye! I shall concoct a banquet libation using nature's finest offerings, vegetables and fruits.", --★★★★★
-                BURNT = "What good is weeping over spilled wine?", --★★★★★
-                FERMENTING_LONG = "It's better to procure meat for the banquet by hunting rather than just waiting.", --★★★★★
-                FERMENTING_SHORT = "Time to prepare for the banquet!", --★★★★★
-                DONE = "Is the wine ready for the banquet?", --★★★★★
+                EMPTY =  "Hear ye, hear ye! I shall concoct a banquet libation using nature's finest offerings, vegetables and fruits.", --
+                BURNT = "What good is weeping over spilled wine?", --
+                FERMENTING_LONG = "It's better to procure meat for the banquet by hunting rather than just waiting.", --
+                FERMENTING_SHORT = "Time to prepare for the banquet!", --
+                DONE = "Is the wine ready for the banquet?", --
             },
 
             CAMPKETTLE_ITEM = "It's a makeshift kettle.", --
@@ -320,14 +320,14 @@ return {
 
             PORTABLEKETTLE_ITEM =
             {
-                GENERIC = "The battlefield is not the place for a tea party.", --★★★★★
+                GENERIC = "The battlefield is not the place for a tea party.", --
                 EMPTY = "There's no place for meat.", -- 
                 BOILING_LONG = "It's better to find my enemies instead of making a drink.", -- 
                 BOILING_SHORT = "The drink is almost ready.", -- 
                 DONE = "Let's drink quickly and go to battle.", -- 
                 PURIFY_LONG = "Let's be patient; it's not boiling yet", -- 
                 PURIFY_SHORT = "It won't take long.", -- 
-                HASWATER = "A warrior has no time for a tea party; let's remove the water.", --★★★★★
+                HASWATER = "A warrior has no time for a tea party; let's remove the water.", --
                 MELT_LONG = "It's still quite cold.", -- 
                 MELT_SHORT = "The spring water is almost ready.", -- 
             },
@@ -337,7 +337,7 @@ return {
                 EMPTY = "It could be called Hymir's cauldron!", -- 
                 DISTILLTING_LONG = "The mood is dropping... Hurry up, cauldron!", -- 
                 DISTILLING_SHORT = "It will be done in no time!", -- 
-                DONE = "Does that contain any spirits?", --★★★★★
+                DONE = "Does that contain any spirits?", --
             },
 
             WELL_WATERPUMP = {
@@ -355,5 +355,3 @@ return {
             },
         },
     }
-
-   

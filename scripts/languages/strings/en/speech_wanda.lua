@@ -3,15 +3,15 @@ return {
     {
         GIVE =
         {
-            WELL_NOTEMPTY = "I need to move this bucket out of the way first.", -- ★★★★★ 
-            WELL_BUSY = "Did I forget that I put bucket in the well?", -- ★★★★★  
+            WELL_NOTEMPTY = "I need to move this bucket out of the way first.", --  
+            WELL_BUSY = "Did I forget that I put bucket in the well?", --   
         }
     },
 
-    ANNOUNCE_DRUNK = "Oh botheration, I feel so dizzy!", -- ★★★★★ 
+    ANNOUNCE_DRUNK = "Oh botheration, I feel so dizzy!", --  
     ANNOUNCE_DRUNK_END = "No more time to waste!", -- 
     ANNOUNCE_DRUNK_IMMUNITY = "", -- 
-    ANNOUNCE_NOTCHARGE = "At present, that doesn't have milk.", -- ★★★★★    
+    ANNOUNCE_NOTCHARGE = "At present, that doesn't have milk.", --     
     ANNOUNCE_NOTHIRSTSLEEP = "I should find something to drink first.", -- 
     ANNOUNCE_NOTHIRSTSIESTA = "I should find something to drink first.", -- 
     ANNOUNCE_SLEEP_END = "Oh my, which time phase am I in now?", -- 
@@ -20,24 +20,24 @@ return {
     ANNOUNCE_CAFFINE_BUFF_START = "Excellent, I feel like I can chase time!" , -- 
     ANNOUNCE_CAFFINE_BUFF_STOP = "Darn it! Time is speeding up again!" ,  -- 
     
-    ANNOUNCE_CURE_WATERBORNE = "I finally fixed my internal clock." ,  -- ★★★★★ 
+    ANNOUNCE_CURE_WATERBORNE = "I finally fixed my internal clock." ,  --  
 
     ANNOUNCE_DCAPACITY_CRITICAL = "Time is accelerating!", -- 
     ANNOUNCE_DCAPACITY_HALF = "I'm starting to feel more composed as the intoxication wears off.", -- 
 
     DESCRIBE =
     {
-        BOILBOOK = "When do I have time to think about refreshments when I'm even pressed for time to boil water!", -- ★★★★★
+        BOILBOOK = "When do I have time to think about refreshments when I'm even pressed for time to boil water!", -- 
 
-        WATER_CLEAN_ICE = "When will I ever get around to melting and eating this?", -- ★★★★★  
+        WATER_CLEAN_ICE = "When will I ever get around to melting and eating this?", --   
         WATER_DIRTY_ICE = "I'd rather get fresh ice for my drink.", -- 
 
-        SPICE_CAFFEINPEPPER = "I can't wait around after marinating it.", -- ★★★★★
+        SPICE_CAFFEINPEPPER = "I can't wait around after marinating it.", -- 
 
         WELL_KIT = "Just having it in my hand won't make the water flow, I need to install it!", -- 
-        WELL_SPRINKLER_KIT = "That is sophisticated, yet it won't take more than a second to install.", -- ★★★★★ 
+        WELL_SPRINKLER_KIT = "That is sophisticated, yet it won't take more than a second to install.", --  
         WELL_WATERPUMP_KIT = "I can get groundwater without wasting time.", 
-        WELL_BURYING_KIT = "Oh botheration, What a waste of time this is.", -- ★★★★★
+        WELL_BURYING_KIT = "Oh botheration, What a waste of time this is.", -- 
         WELL_DRILLING = "It'll do it by itself, let's save my time.", --
         WELL_DRILLING_ITEM = "I should decide where to dig for groundwater first.", -- 
         HOLE = "It takes ages to climb out once you fall in.", -- 
@@ -51,9 +51,9 @@ return {
         DUG_TEA_TREE = "No time to waste, I'll just take it all!", 
         TEA_SEED = "It'll grow into a new tree when the time is right.",
         TEA_SEED_COOKED = "It either gets eaten or rots, there's no in-between future for this.", 
-        TEA_SEED_SAPLING = "This little guy seems to be intentionally growing slowly just to annoy me.", -- ★★★★★
+        TEA_SEED_SAPLING = "This little guy seems to be intentionally growing slowly just to annoy me.", -- 
         TEALEAVES = "These are the picked tea leaves.", 
-        TEALEAVES_DRIED = "These are the dried tea leaves.", -- ★★★★★
+        TEALEAVES_DRIED = "These are the dried tea leaves.", -- 
 
         CAFFEINBERRY = "The past life of a hanging alien plant.", -- 
         DUG_CAFFEINBERRY = "If I take it, maybe I can save some time to rest.", -- 
@@ -63,14 +63,14 @@ return {
         RUINCACAO_TREE = "It's as twisted as the timelines themselves.", --
         DUG_RUINCACAO_TREE = "No time to waste, I'll just take it all!", --
         RUINCACAO_SEED = "A new life is slowly sprouting.", --
-        RUINCACAO_SEED_SAPLING = "This little guy seems to be intentionally growing slowly just to annoy me.",  -- ★★★★★
+        RUINCACAO_SEED_SAPLING = "This little guy seems to be intentionally growing slowly just to annoy me.",  -- 
         RUINCACAO = "You can't tell if it's fruit or charcoal until you open it.", --
         RUINCACAO_BEAN = "Eating this will surely turn my stomach upside down.", -- 
         RUINCACAO_BEAN_COOKED = "Is this a waste of time or not? I can't tell.", -- 
 
         -- Distillery Additives
 
-        ADDITIVE_SEED = "Fledgling seeds turned spice shall brew potent spirits.", -- ★★★★★
+        ADDITIVE_SEED = "Fledgling seeds turned spice shall brew potent spirits.", -- 
         ADDITIVE_PETALS = "Bundles of old petals yearning for timeless beauty.", 
         ADDITIVE_NUT = "Should I just pop it in my mouth?", -- 
         ADDITIVE_DAIRY = "When it's easier to drink, I'll drink it faster.", -- 
@@ -88,13 +88,13 @@ return {
         FRUITJUICE = "Excellent, I can consume multiple fruits at once.", --
         BERRIES_JUICE = "Isn't it faster to just pick and eat them?", -- 
         POMEGRANATE_JUICE = "Now I can consume the seeds as well.", -- 
-        BANANA_JUICE = "it doesn't go down my throat easily when it's warm.", -- ★★★★★
+        BANANA_JUICE = "it doesn't go down my throat easily when it's warm.", -- 
         FIG_JUICE = "The essence of sweetness!", -- 
         DRAGONJUICE = "This is definitely fruit juice.", -- 
         GLOWBERRYJUICE = "Delicious and useful!", --
         WATERMELON_JUICE = "It's really refreshing!", --
 
-        VEGGIE_TEA = "I can't stand the bitter taste every time it touches the tip of my tongue!", -- ★★★★★
+        VEGGIE_TEA = "I can't stand the bitter taste every time it touches the tip of my tongue!", -- 
         CARROT_TEA = "Let's drink it quickly.", --
         CACTUS_TEA = "It should aid digestion.", --
         TOMATO_JUICE = "Smooth, perfect for quick consumption.", -- 
@@ -105,12 +105,12 @@ return {
         BLACKTEA = "Maybe I can indulge in a treat once in a while?", -- 
         BLACKTEA_ICED = "A sip of something cold is nice.", --
         FUER = "Maybe I can enjoy a cup once in a while.", -- 
-        MIXFLOWER = "It's like being grabbed by the collar and forced to smell the flowers.", -- ★★★★★
+        MIXFLOWER = "It's like being grabbed by the collar and forced to smell the flowers.", -- 
         HIBISCUSTEA = "Why is it so sour?", --
-        CACTUSFLOWER_TEA = "I don't have the time to stop and smell the flowers.", -- ★★★★★
+        CACTUSFLOWER_TEA = "I don't have the time to stop and smell the flowers.", -- 
         LOTUSTEA = "In the past, it might have been a flower or perhaps a fish.", -- 
-        SUSHIBISCUS = "No time to distinguish-- wait, what's this now?", -- ★★★★★
-        MOON_BLOSSOM_TEA = "I don't know what tea this is, but I don't have time to worry about it.", -- ★★★★★
+        SUSHIBISCUS = "No time to distinguish-- wait, what's this now?", -- 
+        MOON_BLOSSOM_TEA = "I don't know what tea this is, but I don't have time to worry about it.", -- 
 
         CAFFEINBERRY_JUICE = "Perfect for staying awake all night in the workshop.", -- Black coffee
         TOFFEE_LATTE = "It's both coffee and dessert.", --
@@ -132,9 +132,9 @@ return {
         CHERRY_ROSEBERRIES_TEA = "Sometimes, it's nice to have a cup of tea while looking at flowers.", -- 
         CHERRY_HONEY_TEA = "It's elegant and warm.", -- 
         SWEET_RICE_DRINK = "I don't know why these seeds take so long to eat...", -- 
-        PINEANANAS_JUICE = "Even without the outer skin, if you eat a lot, your mouth will start to bleed." , -- ★★★★★
+        PINEANANAS_JUICE = "Even without the outer skin, if you eat a lot, your mouth will start to bleed." , -- 
         ORANGE_JUICE = "I should have it as a snack after a meal.", -- 
-        STRAWBERRY_SMOOTHIE = "I'll choke if I swallow hastily.", -- ★★★★★ 
+        STRAWBERRY_SMOOTHIE = "I'll choke if I swallow hastily.", --  
         STRAWBERRY_MILK_SMOOTHIE = "What a wonderful dessert!", -- 
 
         -- Distillery Drinks
@@ -143,24 +143,24 @@ return {
 
         -- Sodas
 
-        SODA = "Surely we're not spending all this time just making bubbles in the water, right?", -- ★★★★★
-        FRUITSODA = "It won't take long to finish a soft drink if I drink it slowly.", -- ★★★★★
+        SODA = "Surely we're not spending all this time just making bubbles in the water, right?", -- 
+        FRUITSODA = "It won't take long to finish a soft drink if I drink it slowly.", -- 
         LEMONLIMESODA = "Carbonated drinks are delicious because they're sweet.", -- 
         COLA = "It's excellent, except for the burping.", -- 
         COLAQUANTUM = "Interesting, it's a beverage that shouldn't exist in this timeline.", 
-        LUMPY_BEER = "When did it become impossible to use the roots of the sassafras tree?", -- ★★★★★
+        LUMPY_BEER = "When did it become impossible to use the roots of the sassafras tree?", -- 
 
         -- Spirits
 
-        CORN_BEER = "Where do I even have the time to drink and enjoy myself?", -- ★★★★★
+        CORN_BEER = "Where do I even have the time to drink and enjoy myself?", -- 
         MADHU = "It lost its sweetness, but at least it gained some time.", -- Mead
         WINE = "It won't turn into vinegar too quickly.", --
         NOBLEWINE = "Isn't it just clear wine?", --
         SPARKLINGWINE = "In another timeline, I might be the one popping champagne at a party.", -- 
         GLOWBERRYWINE = "That's it! It doesn't spoil easily and it's efficient!", --
         KUMIS = "I hope the investment of time was worth it.", -- 
-        LUMPY_WINE = "I guess I've benefited from this.", -- ★★★★★
-        PULQUE = "I think it might spoil quickly compared to the time invested.", -- ★★★★★
+        LUMPY_WINE = "I guess I've benefited from this.", -- 
+        PULQUE = "I think it might spoil quickly compared to the time invested.", -- 
         RUINCACAO_WINE = "It's a strange idea, but regardless, I gained some time.", 
 
         -- Collaboration Sodas
@@ -172,12 +172,12 @@ return {
 
         -- Collaboration Spirits
 
-        AUROBOW = "I'm not sure if this is possible, but anyway, this is awesome!" , -- ★★★★★
+        AUROBOW = "I'm not sure if this is possible, but anyway, this is awesome!" , -- 
         COCONUT_WINE = "If the voyage gets longer, I should have it on hand.", 
         CHERRY_BLOOM_MADHU = "It's quite elegant!", -- 
         GIANT_BLUEBERRY_WINE = "It makes me slightly anxious.", 
-        RICE_WINE = "Either way, I can't eat this unless I spend time cooking it.", -- ★★★★★
-        WHEAT_BEER = "It's not a bad method for making beer.", -- ★★★★★
+        RICE_WINE = "Either way, I can't eat this unless I spend time cooking it.", -- 
+        WHEAT_BEER = "It's not a bad method for making beer.", -- 
         PALE_BEER = "I've seen so many strange things by now that this doesn't surprise me.", 
 
         -- Distilled Spirits
@@ -185,10 +185,10 @@ return {
         DISINFECTANT = "It's useless for me. I only need time!", 
         CORN_WHISKEY = "Honestly, I don't know the taste, but at least it won't spoil quickly.", 
         LUMPY_VODKA = "Be careful not to waste time getting drunk.", 
-        TEQUILA = "Don't hesitate, just close my eyes and drink it!", -- ★★★★★
+        TEQUILA = "Don't hesitate, just close my eyes and drink it!", -- 
         MADHU_RUM = "With this, I can set sail, maybe tomorrow, or even now.", 
         BERRY_BRANDY = "Whiskey, Brandy... Honestly, I don't know the difference, as long as it doesn't spoil.", -- Berry Brandy
-        AREUHI = "it won't spoil quickly now.", -- ★★★★★
+        AREUHI = "it won't spoil quickly now.", -- 
 
         -- Wolly-Exclusive Distilled Spirits
 
@@ -218,15 +218,15 @@ return {
 
         -- Pot Dishes
 
-        DARK_RUINCOLATE = "Does Warly understand the secret of this snack?", -- ★★★★★
-        WHITE_RUINCOLATE = "Warly knows my taste well!", --- ★★★★★
-        RUINCOLATE = "This is not only sweet, but it also keeps well for a long time!", -- ★★★★★
+        DARK_RUINCOLATE = "Does Warly understand the secret of this snack?", -- 
+        WHITE_RUINCOLATE = "Warly knows my taste well!", --- 
+        RUINCOLATE = "This is not only sweet, but it also keeps well for a long time!", -- 
         RUIN_SCHOKAKOLA = "A perfect snack!", 
 
         BUCKET_STEEL_EMPTY =
         {
             EMPTY = "Is there really a need to stare at this empty bucket?", 
-        FULL = "Let's quickly retrieve this before its condition changes.", --- ★★★★★
+        FULL = "Let's quickly retrieve this before its condition changes.", --- 
         FULL_ICE = "Oh botheration, it's frozen over from the passage of time.", -- 
         DIRTY = "Oh botheration, it's been contaminated by time.", -- 
         DIRTY_ICE = "Oh botheration, it's frozen while still contaminated.", -- 
@@ -235,7 +235,7 @@ return {
         BUCKET_WOODIE_EMPTY =
         {
             EMPTY = "Woodie's woodworking skills are respectable. he's already emptied it.", --
-            FULL = "Let's quickly retrieve this before its condition changes.", --- ★★★★★
+            FULL = "Let's quickly retrieve this before its condition changes.", --- 
             FULL_ICE = "Oh botheration, it's frozen over from the passage of time.", --
             DIRTY = "Oh botheration, it's been contaminated by time.", -- 
             DIRTY_ICE = "Oh botheration, it's frozen while still contaminated.", -- 
@@ -244,7 +244,7 @@ return {
         BUCKET_DRIFTWOOD_EMPTY = 
         {
             EMPTY = "I'm surprised that something made of old wood is more durable, huh.", -- 유목양동이
-            FULL = "Let's quickly retrieve this before its condition changes.", --- ★★★★★
+            FULL = "Let's quickly retrieve this before its condition changes.", --- 
             FULL_ICE = "Oh botheration, it's frozen over from the passage of time.", --
             DIRTY = "Oh botheration, it's been contaminated by time.", -- 
             DIRTY_ICE = "Oh botheration, it's frozen while still contaminated.", -- 
@@ -253,7 +253,7 @@ return {
         BUCKET_EMPTY =
         {
             EMPTY = "It's just an ordinary bucket.", -- 
-            FULL = "Let's quickly retrieve this before its condition changes.", --- ★★★★★
+            FULL = "Let's quickly retrieve this before its condition changes.", --- 
             FULL_ICE = "Oh botheration, it's frozen over from the passage of time.", --
             DIRTY = "Oh botheration, it's been contaminated by time.", -- 
             DIRTY_ICE = "Oh botheration, it's frozen while still contaminated.", -- 
@@ -263,10 +263,10 @@ return {
         {
             EMPTY = "A device that turns seawater into rainwater.", --
             PURIFY_LONG = "I can't just stand around waiting for it to finish. time is precious!", -- Purification has a long way to go
-            PURIFY_SHORT = "Come on, hurry up!", --- ★★★★★ 
+            PURIFY_SHORT = "Come on, hurry up!", ---  
             HASWATER = "Finally!", --
             BURNT = "There's been a bit of a hiccup.", --
-            HASSALT = "Get a grip, I need to remove the salt first!", --- ★★★★★
+            HASSALT = "Get a grip, I need to remove the salt first!", --- 
         },
 
         BARREL =
@@ -277,7 +277,7 @@ return {
 
         BREWERY =
         {
-            EMPTY = "This is a real time hog.", --- ★★★★★
+            EMPTY = "This is a real time hog.", --- 
             BURNT = "I suppose this was its destiny.", --
             FERMENTING_LONG = "Fermentation takes time, and I can't just wait around.", -- 
             FERMENTING_SHORT = "I've been waiting for quite a while!", --
@@ -288,31 +288,31 @@ return {
         CAMPKETTLE =
         {
             GENERIC = "Did I forget to put water in this?", 
-            BOILING_LONG = "Come on, hurry up!", --- ★★★★★
+            BOILING_LONG = "Come on, hurry up!", --- 
             BOILING_SHORT = "Isn't it ready to drink yet?", -- 
             DONE = "It took this long just to make a drink?", -- 
-            STOP = "Oh botheration, the fire's not strong enough!", --- ★★★★★
+            STOP = "Oh botheration, the fire's not strong enough!", --- 
         },
 
-        CAMPDESALINATOR_ITEM = "This will be useful because the ocean is all around me wherever I go.", --- ★★★★★
+        CAMPDESALINATOR_ITEM = "This will be useful because the ocean is all around me wherever I go.", --- 
         CAMPDESALINATOR =
         {
             GENERIC = "Was there water in here to begin with, or was it always empty?", -- Camp desalinator is empty
-            BOILING_LONG = "Why is this taking so long...!", --- ★★★★★
-            BOILING_SHORT = "It's almost done!", --- ★★★★★
+            BOILING_LONG = "Why is this taking so long...!", --- 
+            BOILING_SHORT = "It's almost done!", --- 
             DONE = "It took this long just to make a drink?", -- 
-            STOP = "Oh botheration, the fire's not strong enough!", --- ★★★★★
+            STOP = "Oh botheration, the fire's not strong enough!", --- 
         },
 
         KETTLE =
         {
             EMPTY = "At least I can boil a lot of water at once with this.", -- I
             BURNT = "Oh botheration, I'll have to lick dew off leaves for a while now.", -- 
-            BOILING_LONG = "Why does it take so long to make a drink?", --- ★★★★★
+            BOILING_LONG = "Why does it take so long to make a drink?", --- 
             BOILING_SHORT = "I hope it's not over-extracted. can I drink it now?", --
-            DONE = "At last, the beverages have arrived!", --- ★★★★★
-            PURIFY_LONG = "Come on, hurry up!",  --- ★★★★★
-            PURIFY_SHORT = "Isn't it ready to drink yet?",  --- ★★★★★
+            DONE = "At last, the beverages have arrived!", --- 
+            PURIFY_LONG = "Come on, hurry up!",  --- 
+            PURIFY_SHORT = "Isn't it ready to drink yet?",  --- 
             HASWATER = "Can I drink it now?", -- 
             MELT_LONG = "Can't I just melt the ice and drink it now?", -- 
             MELT_SHORT = "It's almost melted!", --
@@ -322,11 +322,11 @@ return {
         {
             GENERIC = "I don't have time to lay out a picnic blanket and have a tea party.", -- 
             EMPTY = "I'd better just... replenish my fluids from berries or carrots instead.", -- 
-            BOILING_LONG = "Why does it take so long to make a drink?", --  ★★★★★
+            BOILING_LONG = "Why does it take so long to make a drink?", --  
             BOILING_SHORT = "It won't take too long, right?", -- 
-            DONE = "At last, the beverages have arrived!", -- ★★★★★
-            PURIFY_LONG = "Come on, hurry up!", -- ★★★★★
-            PURIFY_SHORT = "Isn't it ready to drink yet?", -- ★★★★★
+            DONE = "At last, the beverages have arrived!", -- 
+            PURIFY_LONG = "Come on, hurry up!", -- 
+            PURIFY_SHORT = "Isn't it ready to drink yet?", -- 
             HASWATER = "Can I drink it now?", -- 
             MELT_LONG = "Can't I just melt the ice and drink it now?", -- 
             MELT_SHORT = "It's almost melted!", -- 
@@ -335,7 +335,7 @@ return {
         DISTILLERS =
         {
             EMPTY = "Spirits made with this won't spoil easily, at least.", --
-            DISTILLTING_LONG = "If I keep watching this until the end, I'll be old and dead before it's over.", -- ★★★★★
+            DISTILLTING_LONG = "If I keep watching this until the end, I'll be old and dead before it's over.", -- 
             DISTILLING_SHORT = "It shouldn't take too long!", 
             DONE = "Finally!", 
         },
@@ -344,7 +344,7 @@ return {
             HIGH_PRESSURE = "All the hard work paid off!", 
             MIDDLE_PRESSURE = "I can get clean water right away.", 
             LOW_PRESSURE = "It seems the power is running low.", 
-            RECHARG_PRESSURE = "Oh botheration, it will take some time to pump water again.", -- ★★★★★
+            RECHARG_PRESSURE = "Oh botheration, it will take some time to pump water again.", -- 
         },
 
         WELL_SPRINKLER =

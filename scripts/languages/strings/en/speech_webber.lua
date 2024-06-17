@@ -103,7 +103,7 @@ return {
 
         GREENTEA = "Mmm, smells leafy.", -- ★★★★★
         BLACKTEA = "We need some cookies to go with this.", -- ★★★★★
-        BLACKTEA_ICED = "Iced black tea with ice.", 
+        BLACKTEA_ICED = "A cold black tea with ice.", 
         FUER = "Mmmmm, It's an airy tea.", -- ★★★★★
         MIXFLOWER = "A tea with various flower petals.",
         HIBISCUSTEA = "It's turned red.",
@@ -351,7 +351,7 @@ return {
         {
             LOWFUEL = "It's out of fuel.",
             ON = "It's water playtime!",
-            OFF = "It's sprinkling water around.",
+            OFF = "it sprays water all around.",
         },
     },
 }

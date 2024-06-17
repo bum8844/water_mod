@@ -702,14 +702,14 @@ if modlist.mfp or modlist.fwd then
 	end
 end
 
-if modlist.te or modlist.ia then
+if modlist.te or modlist.ia or modlist.ta then
 	local sw_drink = mod_drink.sw_drink
 	for k,v in pairs(sw_drink) do
 		drinks[k] = v
 	end
 end
 
-if modlist.te or modlist.ia or modlist.hof then
+if modlist.te or modlist.ia or modlist.hof or modlist.ta then
 	local coconut_drink = mod_drink.coconut_drink
 	for k,v in pairs(coconut_drink) do
 		drinks[k] = v

@@ -8,7 +8,10 @@ local food = {
 for k, v in pairs(food) do
 	AddPrefabPostInit(v,function(inst)
 		inst:DoTaskInTime(0, function()	
-			inst.water_swap_type = true
+			inst.minisign_atlas = "minisign_dehy_items_swap"
+			if inst.inv_image_bg then
+				inst.inv_image_bg.minisign_atlas = inst.minisign_atlas
+			end
 		end)
 	end)
 end

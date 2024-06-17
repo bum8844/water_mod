@@ -74,7 +74,7 @@ local function MakePreparedFood(data)
 
         local food_symbol_build = nil
 
-        inst.water_swap_type = true
+        inst.minisign_atlas = "minisign_dehy_items_swap"
 
         inst.AnimState:SetBuild("plate_food")
         inst.AnimState:SetBank("plate_food")
@@ -84,6 +84,9 @@ local function MakePreparedFood(data)
 
         inst.inv_image_bg = { image = (data.basename or data.name)..".tex" }
         changeimage(inst)
+        if data.minisign_atlas then
+            inst.inv_image_bg.minisign_atlas = data.minisign_atlas
+        end
 
         food_symbol_build = data.overridebuild or "cook_pot_food"
 

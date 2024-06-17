@@ -58,7 +58,7 @@ if modlist.hof then
 	cactus_flower_ingredient["cactus_flower"] = 1
 	foliage_ingredient["foliage"] = 1
 	foliage_cookable = true
-elseif modlist.mfp or modlist.te then
+elseif modlist.mfp or modlist.te or modlist.ta then
 	foliage_ingredient["veggie"] = 1
 end
 
@@ -70,11 +70,11 @@ AddIngredientValues({"cactus_flower"},cactus_flower_ingredient)
 AddIngredientValues({"succulent_picked"},succulent_ingredient)
 AddIngredientValues({"goatmilk"}, {milk=1, dairy=1})
 
-if modlist.te then
+if modlist.te or modlist.ta then
 	AddIngredientValues({"rainbowjellyfish", "rainbowjellyfish_dead", "rainbowjellyfish_cooked"},{fish=1,jellyfish=1,monster=1})
 end
 
-if modlist.te or modlist.ia then
+if modlist.te or modlist.ia or modlist.ta then
 	AddIngredientValues({"coral_brain"}, {meat=1})
 end
 
