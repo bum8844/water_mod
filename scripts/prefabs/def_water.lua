@@ -312,8 +312,8 @@ local function MakeWaterItem(name, masterfn, tags, _prefabs)
             inst.components.edible.foodtype = FOODTYPE.GOODIES
         end
 
-        inst.water_swap_type = true
-        --inst.water_use_prefab_name = true
+        inst.minisign_atlas = "minisign_dehy_drinks_swap"
+        inst.minisign_prefab_name = true
 
         inst.AnimState:SetBank("kettle_drink")
         inst.AnimState:SetBuild("kettle_drink")

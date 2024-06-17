@@ -90,8 +90,7 @@ local function ruincacao()
     inst.entity:AddAnimState()
     inst.entity:AddNetwork()
 
-    inst.water_swap_type = true
-    --inst.water_use_prefab_name = true
+    inst.minisign_atlas = "minisign_dehy_items_swap"
 
     inst.AnimState:SetBank("ruincacao_tree_seed")
     inst.AnimState:SetBuild("ruincacao_tree_seed")
@@ -148,8 +147,7 @@ local function ruincacao_bean()
     inst.entity:AddAnimState()
     inst.entity:AddNetwork()
 
-    inst.water_swap_type = true
-    --inst.water_use_prefab_name = true
+    inst.minisign_atlas = "minisign_dehy_items_swap"
 
     inst.AnimState:SetBank("ruincacao_tree_seed")
     inst.AnimState:SetBuild("ruincacao_tree_seed")
@@ -203,8 +201,7 @@ local function ruincacao_bean_cooked()
     inst.entity:AddAnimState()
     inst.entity:AddNetwork()
 
-    inst.water_swap_type = true
-    --inst.water_use_prefab_name = true
+    inst.minisign_atlas = "minisign_dehy_items_swap"
 
     inst.AnimState:SetBank("ruincacao_tree_seed")
     inst.AnimState:SetBuild("ruincacao_tree_seed")
@@ -356,8 +353,7 @@ local function ruincacao_seed()
     inst.entity:AddAnimState()
     inst.entity:AddNetwork()
 
-    inst.water_swap_type = true
-    --inst.water_use_prefab_name = true
+    inst.minisign_atlas = "minisign_dehy_items_swap"
 
     inst.AnimState:SetBank("ruincacao_tree_seed")
     inst.AnimState:SetBuild("ruincacao_tree_seed")

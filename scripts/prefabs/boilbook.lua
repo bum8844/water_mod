@@ -19,8 +19,7 @@ local function fn()
 
     MakeInventoryPhysics(inst)
 
-    inst.water_swap_type = true
-    --inst.water_use_prefab_name = true
+    inst.minisign_atlas = "minisign_dehy_items_swap"
 
     inst.AnimState:SetBank("boilbook")
     inst.AnimState:SetBuild("boilbook")

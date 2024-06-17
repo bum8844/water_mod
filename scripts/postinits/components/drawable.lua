@@ -1,36 +1,22 @@
-local food = {
-	"ruincolate",
-	"ruin_schokakola",
-	"dark_ruincolate",
-	"white_ruincolate",
-}
-
 AddComponentPostInit("drawable", function(self)
 	self._OnDrawn = self.OnDrawn
-	
+
 	function self:OnDrawn(imagename, imagesource, atlasname, bgimagename, bgatlasname)
+
 		if imagesource then
-			if imagesource.water_swap_type then
-				atlasname = "water_minisign_swap"
-			end
-			if imagesource.water_use_prefab_name then
-				imagename = tostring(imagesource.prefab)
-			elseif imagesource.water_swap_img then
-				imagename = imagesource.water_swap_img
+			if imagesource.minisign_atlas then
+				atlasname = imagesource.minisign_atlas
 			end
 
-			for k, v in pairs(food) do
-				print(k)
-				print(v)
-				--[[if bgimagename == v then
-					bgatlasname = "water_minisign_swap"
-				end]]
+			if imagesource.minisign_prefab_name then
+				imagename = tostring(imagesource.prefab)
+			elseif imagesource.minisign_custom_name then
+				imagename = imagesource.minisign_custom_name 
 			end
-			print("imagename : ",imagename)
-			print("imagesource : ",imagesource)
-			print("atlasname : ",atlasname)
-			print("bgimagename : ",bgimagename)
-			print("bgatlasname : ",bgatlasname)
+
+			if bgimagename and bgatlasname == nil and imagesource.inv_image_bg.minisign_atlas ~= nil then
+				bgatlasname = imagesource.inv_image_bg.minisign_atlas
+			end
 		end
 		self:_OnDrawn(imagename, imagesource, atlasname, bgimagename, bgatlasname)
 	end

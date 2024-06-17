@@ -88,7 +88,8 @@ local function MakePreparedDrink(data)
 
         MakeInventoryPhysics(inst)
 
-        inst.water_swap_type = true
+        inst.minisign_atlas = "minisign_dehy_drinks_swap"
+        inst.minisign_prefab_name = true
 
 		local food_symbol_build = nil
 		inst.AnimState:SetBuild("kettle_drink")

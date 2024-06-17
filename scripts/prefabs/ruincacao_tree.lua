@@ -368,9 +368,9 @@ local function dug_ruincacao_tree()
     inst.entity:AddAnimState()
     inst.entity:AddNetwork()
 
-    inst.water_swap_type = true
-    inst.water_use_prefab_name = true
-
+    inst.minisign_atlas = "minisign_dehy_items_swap"
+    inst.minisign_prefab_name = true
+    
     inst.AnimState:SetBank("ruincacao_tree_build")
     inst.AnimState:SetBuild("ruincacao_tree_build")
     inst.AnimState:PlayAnimation("dropped")
