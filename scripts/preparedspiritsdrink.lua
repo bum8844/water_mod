@@ -176,7 +176,7 @@ local drinks =
 		cooktime = (TUNING.KETTLE_VEGGIE + TUNING.BEER_WAIT),
 		potlevel = "mid",
 		potlevel_bottle = "mid",
-		prefabs = { "alcoholdebuff","drunkarddebuff","immunebuff" },
+		prefabs = { "alcoholdebuff","drunkarddebuff","immunebuff","buff_electricattack" },
 		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_INTOXICATION_ELECTRIC_ATTACK,
 		oneatenfn = function(inst, eater)
 			spirits(inst, eater)
