@@ -233,6 +233,7 @@ local function cleanwater(inst)
 end
 
 local function mineralwater(inst)
+
     inst:SetPrefabNameOverride("water_clean")
 
     inst.components.edible.healthvalue = TUNING.HEALING_MEDSMALL/4
@@ -325,6 +326,8 @@ local function MakeWaterItem(name, masterfn, tags, _prefabs)
                 inst:AddTag(v)
             end
         end
+        
+        inst:AddTag("drink_icebox_valid")
 
         MakeInventoryFloatable(inst)
 
@@ -367,8 +370,8 @@ local function MakeWaterItem(name, masterfn, tags, _prefabs)
     return Prefab(name, fn, assets, prefabs)
 end
 
-return MakeWaterItem("water_clean", cleanwater, {"drink","show_spoilage","icebox_valid","clean","farm_water","pre-prepareddrink","pre-preparedfood","potion"}, prefabs.water_clean),
-    MakeWaterItem("water_mineral", mineralwater, {"drink","show_spoilage","icebox_valid","clean","farm_water","pre-prepareddrink","pre-preparedfood","potion"}),
+return MakeWaterItem("water_clean", cleanwater, {"cocktail_ingredients","drink","show_spoilage","icebox_valid","clean","farm_water","pre-prepareddrink","pre-preparedfood","potion"}, prefabs.water_clean),
+    MakeWaterItem("water_mineral", mineralwater, {"cocktail_ingredients","drink","show_spoilage","icebox_valid","clean","farm_water","pre-prepareddrink","pre-preparedfood","potion"}),
     MakeWaterItem("water_dirty", dirtywater, {"drink","show_spoiled", "icebox_valid","dirty","farm_water"}),
     MakeWaterItem("water_salty", saltywater, {"drink","salty","notwatersource"}),
     MakeWaterItem("water_clean_ice", cleanice, {"show_spoilage", "icebox_valid","clean","frozen","unwrappable","notwatersource"}, prefabs.water_clean_ice),

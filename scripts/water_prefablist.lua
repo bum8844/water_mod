@@ -6,6 +6,7 @@ return {
 	"boilbook",
 	"additives",
 	"fruitflyfruit_dead",
+	"water_spice",
 
 	--structures
 	"barrel",
@@ -20,6 +21,8 @@ return {
 	"well_drilling",
 	"well_waterpump",
 	"distillers",
+	"drink_ice_box",
+	"wine_cellar",
 
 	--food & plants
 	"caffeinberry",

@@ -20,6 +20,57 @@ local params = containers.params
 function params.barrel.itemtestfn(container, item, slot)
     return item:HasTag("clean")
 end]]
+
+params.drink_ice_box =
+{
+    widget =
+    {
+        slotpos = {},
+        animbank = "ui_fish_box_5x4",
+        animbuild = "ui_fish_box_5x4",
+        pos = Vector3(0, 220, 0),
+        side_align_tip = 160,
+    },
+    type = "chest",
+}
+
+for y = 2.5, -0.5, -1 do
+    for x = -1, 3 do
+        table.insert(params.drink_ice_box.widget.slotpos, Vector3(75 * x - 75 * 2 + 75, 75 * y - 75 * 2 + 75, 0))
+    end
+end
+
+function params.drink_ice_box.itemtestfn(container, item, slot)
+    return item:HasTag("drink_icebox_valid")
+end
+
+params.wine_cellar =
+{
+    widget =
+    {
+        slotpos = {},
+        slotbg  = {},
+        animbank = "ui_fish_box_5x4",
+        animbuild = "ui_fish_box_5x4",
+        pos = Vector3(0, 220, 0),
+        side_align_tip = 160,
+    },
+    type = "chest",
+}
+
+local wine_cellar_bg = { image = "cook_slot_drink.tex", atlas = "images/tea_ui.xml" }
+
+for y = 2.5, -0.5, -1 do
+    for x = -1, 3 do
+        table.insert(params.wine_cellar.widget.slotpos, Vector3(75 * x - 75 * 2 + 75, 75 * y - 75 * 2 + 75, 0))
+
+        table.insert(params.wine_cellar.widget.slotbg, wine_cellar_bg)
+    end
+end
+
+function params.wine_cellar.itemtestfn(container, item, slot)
+    return item:HasTag("alcohol") or item:HasTag("spirits")
+end
  
 params.kettle =
 {

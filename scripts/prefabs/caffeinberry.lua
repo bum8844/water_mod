@@ -4,9 +4,7 @@ local assets =
 {
 	Asset("ANIM", "anim/caffeinberry.zip"),
 	Asset("ANIM", "anim/caffeinberry_diseased.zip"),
-    Asset("ANIM", "anim/caffeinberry_bean.zip"),
-    Asset("ANIM", "anim/water_spice.zip")
-}
+    Asset("ANIM", "anim/caffeinberry_bean.zip")
 
 local prefabs =
 {
@@ -337,7 +335,7 @@ local function caffeinberry_bean()
 
     inst.pickupsound = "vegetation_firm"
 
-    inst:AddTag("deployedplant")
+    inst:AddTag("cocktail_ingredients")
 
     inst.entity:SetPristine()
 
@@ -403,6 +401,8 @@ local function caffeinberry_bean_cooked()
     inst.AnimState:SetBuild("caffeinberry_bean")
     inst.AnimState:PlayAnimation("cooked")
 
+    inst:AddTag("cocktail_ingredients")
+
     inst.pickupsound = "vegetation_firm"
 
     MakeInventoryPhysics(inst)
@@ -467,6 +467,7 @@ local function fn_spice()
 
     inst:AddTag("spice")
     inst:AddTag("watermod")
+    inst:AddTag("cocktail_ingredients")
 
     MakeInventoryFloatable(inst, "med", nil, 0.85)
 
@@ -494,5 +495,4 @@ return Prefab("caffeinberry_bean_cooked", caffeinberry_bean_cooked, assets),
 Prefab("caffeinberry_bean", caffeinberry_bean, assets, {"caffeinberry_bean_cooked"}),
 Prefab("caffeinberry", caffeinberry, assets, prefabs),
 Prefab("dug_caffeinberry",dug_caffeinberry, assets, prefabs_item),
-MakePlacer("dug_caffeinberry_placer","caffeinberry","caffeinberry","caffeinberriesmost"),
-Prefab("spice_caffeinpepper",fn_spice, assets)
+MakePlacer("dug_caffeinberry_placer","caffeinberry","caffeinberry","caffeinberriesmost")

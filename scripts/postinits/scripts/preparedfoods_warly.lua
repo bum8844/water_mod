@@ -18,6 +18,7 @@ local water_foods = {
 		hunger = TUNING.CALORIES_MEDSMALL, -- 22.5
 		perishtime = TUNING.PERISH_PRESERVED, --20일 
 		sanity = -TUNING.SANITY_MED, -- -15
+		tags = {"cocktail_ingredients"},
 		thirst = 0,
 		cooktime = 2,
         floater = {"small", 0.05, 0.7},
@@ -35,6 +36,7 @@ local water_foods = {
 		hunger = TUNING.CALORIES_MEDSMALL*3, -- 18.75 -> 56.25 (재료총합 =56.25)
 		perishtime = TUNING.PERISH_PRESERVED, --20일
 		sanity = TUNING.SANITY_MEDLARGE, -- 5 -> 20 (우유 10)
+		tags = {"cocktail_ingredients"},
 		thirst = 0,
 		cooktime = 2,
         floater = {"small", 0.05, 0.7},

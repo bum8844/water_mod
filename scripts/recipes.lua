@@ -182,6 +182,15 @@ SortAfter("well_burying_kit","well_waterpump_kit","GARDENING")
 AddRecipe2("wx78module_nonedrunk",{Ingredient("scandata",3),Ingredient("fruitflyfruit_dead",1),Ingredient("gears",2),Ingredient("wx78module_maxhunger1",1)},TECH.ROBOTMODULECRAFT_ONE,{atlas = ModAtlas(), image = "wx78module_nonedrunk.tex", builder_tag="upgrademoduleowner"},{"CHARACTER"})
 SortAfter("wx78module_nonedrunk","wx78module_maxhunger1","CHARACTER")
 
+--AddRecipe2("portable_shaker_machine_item")
+--AddRecipe2("shaker_machine")
+
+--AddRecipe2("wine_cellar")
+--AddRecipe2("drink_ice_box")
+
+--AddRecipe2("steamdesalinator_kit")
+--AddRecipe2("spice_ruincolate_spread")
+
 AddDeconstructRecipe("well", {Ingredient("boards",2),Ingredient("cutstone",6)})
 
 AddDeconstructRecipe("well_buryingsite", {Ingredient("boards",4)})

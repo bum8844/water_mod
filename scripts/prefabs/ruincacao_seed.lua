@@ -3,7 +3,7 @@ require "prefabutil" -- for the MakePlacer function
 local assets =
 {
     Asset("ANIM", "anim/ruincacao_tree_seed.zip"),
-	Asset("ANIM", "anim/ruincacao_tree_build.zip"),
+	Asset("ANIM", "anim/ruincacao_tree_build.zip")
 }
 
 local function on_hammered(inst, hammer, workleft, workdone)
@@ -165,6 +165,7 @@ local function ruincacao_bean()
 	
 	inst:AddTag("cookable")
     inst:AddTag("show_spoilage")
+    inst:AddTag("cocktail_ingredients")
 
     inst:AddComponent("stackable")
     inst.components.stackable.maxsize = TUNING.STACK_SIZE_SMALLITEM
@@ -206,6 +207,8 @@ local function ruincacao_bean_cooked()
     inst.AnimState:SetBank("ruincacao_tree_seed")
     inst.AnimState:SetBuild("ruincacao_tree_seed")
     inst.AnimState:PlayAnimation("ruincacao_bean_cooked")
+
+    inst:AddTag("cocktail_ingredients")
 
     MakeInventoryPhysics(inst)
 

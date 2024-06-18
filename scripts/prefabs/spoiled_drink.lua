@@ -44,6 +44,7 @@ local function fn()
 
 	inst.AnimState:OverrideSymbol("swap", "kettle_drink", "spoiled_drink")
 	inst:AddTag("icebox_valid")
+	inst:AddTag("drink_icebox_valid")
 	inst:AddTag("show_spoiled")
 
 	MakeInventoryFloatable(inst)

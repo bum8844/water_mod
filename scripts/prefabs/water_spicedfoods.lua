@@ -30,6 +30,8 @@ local function MakePreparedFood(data)
         Asset("INV_IMAGE", data.name),
     }
 
+    local spicename = data.spice ~= nil and string.lower(data.spice) or nil
+
     if data.overridebuild then
         table.insert(foodassets, Asset("ANIM", "anim/"..data.overridebuild..".zip"))
     end
@@ -136,9 +138,9 @@ local function MakePreparedFood(data)
         inst.wet_prefix = data.wet_prefix
 
         inst:AddComponent("inventoryitem")
-        inst.replica.inventoryitem:SetImage("spice_caffeinpepper_over")
+        inst.replica.inventoryitem:SetImage(spicename.."_over")
         inst.components.inventoryitem.atlasname = "images/tea_inventoryitem.xml"
-        inst.components.inventoryitem.imagename = "spice_caffeinpepper_over"
+        inst.components.inventoryitem.imagename = spicename.."_over"
 
         inst:AddComponent("stackable")
         inst.components.stackable.maxsize = TUNING.STACK_SIZE_SMALLITEM

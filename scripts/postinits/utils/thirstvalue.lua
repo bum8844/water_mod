@@ -105,6 +105,7 @@ end
 
 local function SetIngredientDrinkable(inst, value)
 	SetDrinkableAction(inst)
+	inst:AddTag("drink_icebox_valid")
 	inst:AddTag("nomeatfood")
 
     if not GLOBAL.TheWorld.ismastersim then
@@ -116,7 +117,10 @@ local function SetIngredientDrinkable(inst, value)
 end
 
 local function SetDrinkable(inst, value)
+
 	SetDrinkableAction(inst)
+
+	inst:AddTag("drink_icebox_valid")
 
     if not GLOBAL.TheWorld.ismastersim then
         return inst
@@ -127,7 +131,10 @@ local function SetDrinkable(inst, value)
 end
 
 local function SetAlcohlDrink(inst, value)
+	
 	SetDrinkableAction(inst)
+
+	inst:AddTag("drink_icebox_valid")
 	inst:AddTag("alcohol")
 
     if not GLOBAL.TheWorld.ismastersim then

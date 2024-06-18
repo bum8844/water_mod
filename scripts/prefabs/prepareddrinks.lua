@@ -106,10 +106,12 @@ local function MakePreparedDrink(data)
 
         if not inst:HasTag("common") then
             inst:AddTag("drink")
+            inst:AddTag("drink_icebox_valid")
             inst:AddTag("preparedfood")
             inst:AddTag("prepareddrink")
-        	inst:AddTag("show_spoiled")
-        	inst:AddTag("icebox_valid")
+            inst:AddTag("show_spoiled")
+            inst:AddTag("icebox_valid")
+            inst:AddTag("cocktail_ingredients")
         end
 
         if inst:HasTag("lightdrink") then
