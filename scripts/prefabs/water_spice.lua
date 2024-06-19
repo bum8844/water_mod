@@ -1,4 +1,3 @@
-
 local function MakeWater_Spice(name)
     local assets =
     {
@@ -19,7 +18,7 @@ local function MakeWater_Spice(name)
         inst.AnimState:SetBank("water_spice")
         inst.AnimState:SetBuild("water_spice")
         inst.AnimState:PlayAnimation("idle")
-        inst.AnimState:OverrideSymbol("swap","water_spice",name)
+        inst.AnimState:OverrideSymbol("spice_swap","water_spice",name)
 
         inst:AddTag("spice")
         inst:AddTag("watermod")

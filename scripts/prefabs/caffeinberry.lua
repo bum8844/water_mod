@@ -5,6 +5,7 @@ local assets =
 	Asset("ANIM", "anim/caffeinberry.zip"),
 	Asset("ANIM", "anim/caffeinberry_diseased.zip"),
     Asset("ANIM", "anim/caffeinberry_bean.zip")
+}
 
 local prefabs =
 {

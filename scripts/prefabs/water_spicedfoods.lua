@@ -80,7 +80,7 @@ local function MakePreparedFood(data)
 
         inst.AnimState:SetBuild("plate_food")
         inst.AnimState:SetBank("plate_food")
-        inst.AnimState:OverrideSymbol("swap_garnish", "water_spice", "spice_caffeinpepper")
+        inst.AnimState:OverrideSymbol("swap_garnish", "water_spice", spicename)
 
         inst:AddTag("spicedfood")
 

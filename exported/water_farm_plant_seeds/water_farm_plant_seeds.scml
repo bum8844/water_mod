@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<spriter_data scml_version="1.0" generator="BrashMonkey Spriter" generator_version="r11">
+    <folder id="0" name="papeda">
+        <file id="0" name="papeda/papeda-0.png" width="80" height="80" pivot_x="0.5" pivot_y="0.5"/>
+    </folder>
+    <folder id="1" name="pinenanas">
+        <file id="0" name="pinenanas/pinenanas-0.png" width="80" height="80" pivot_x="0.5" pivot_y="0.5"/>
+    </folder>
+    <entity id="0" name="water_farm_plant_seeds">
+        <animation id="0" name="papeda" length="1000" interval="100">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+                <key id="1" time="1000">
+                    <object_ref id="0" timeline="0" key="1" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="papeda-0">
+                <key id="0" spin="0">
+                    <object folder="0" file="0"/>
+                </key>
+                <key id="1" time="1000" spin="0">
+                    <object folder="0" file="0"/>
+                </key>
+            </timeline>
+        </animation>
+        <animation id="1" name="pinenanas" length="1000" interval="100">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+                <key id="1" time="1000">
+                    <object_ref id="0" timeline="0" key="1" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="pinenanas-0">
+                <key id="0" spin="0">
+                    <object folder="1" file="0"/>
+                </key>
+                <key id="1" time="1000" spin="0">
+                    <object folder="1" file="0"/>
+                </key>
+            </timeline>
+        </animation>
+    </entity>
+</spriter_data>

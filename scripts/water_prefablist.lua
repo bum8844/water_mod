@@ -34,6 +34,8 @@ return {
 	"water_spicedfoods_mod",
 	"ruincacao_tree",
 	"ruincacao_seed",
+	"mentha_spicata",
+	"water_new_veggies",
 
 	--buff
 	"drinkbuff",
