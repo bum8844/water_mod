@@ -8,9 +8,9 @@ modrequire("stategraphs/SGwell_sprinkler_pipes")
 modrequire("languages/speech")
 
 --Add actions and componentactions
+modrequire("water_farming")
 modrequire("water_actions")
 modrequire("water_componentactions")
-modrequire("water_farming")
 modrequire("water_ingredientvalues")
 modrequire("water_containers")
 modrequire("recipes")

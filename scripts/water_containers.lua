@@ -21,26 +21,26 @@ function params.barrel.itemtestfn(container, item, slot)
     return item:HasTag("clean")
 end]]
 
-params.drink_ice_box =
+params.thermos_bottle =
 {
     widget =
     {
-        slotpos = {},
-        animbank = "ui_fish_box_5x4",
-        animbuild = "ui_fish_box_5x4",
-        pos = Vector3(0, 220, 0),
-        side_align_tip = 160,
+        slotpos = {
+            Vector3(-2, 18, 0),
+        },
+        slotbg =
+        {
+            { image = "spore_slot.tex", atlas = "images/hud2.xml" },
+        },
+        animbank = "ui_alterguardianhat_1x1",
+        animbuild = "ui_alterguardianhat_1x1",
+        pos = Vector3(0, 160, 0),
     },
+    acceptsstacks = false,
     type = "chest",
 }
 
-for y = 2.5, -0.5, -1 do
-    for x = -1, 3 do
-        table.insert(params.drink_ice_box.widget.slotpos, Vector3(75 * x - 75 * 2 + 75, 75 * y - 75 * 2 + 75, 0))
-    end
-end
-
-function params.drink_ice_box.itemtestfn(container, item, slot)
+function params.thermos_bottle.itemtestfn(container, item, slot)
     return item:HasTag("drink_icebox_valid")
 end
 

@@ -2,7 +2,7 @@ require "prefabutil"
 
 local assets =
 {
-    Asset("ANIM", "anim/ice_box.zip"),
+    Asset("ANIM", "anim/wine_cellar.zip"),
     Asset("ANIM", "anim/ui_fish_box_5x4.zip"),
 }
 
@@ -52,12 +52,12 @@ local function fn()
     inst.entity:AddMiniMapEntity()
     inst.entity:AddNetwork()
 
-    inst.MiniMapEntity:SetIcon("icebox.png")
+    --inst.MiniMapEntity:SetIcon("icebox.png")
 
     inst:AddTag("structure")
 
-    inst.AnimState:SetBank("icebox")
-    inst.AnimState:SetBuild("ice_box")
+    inst.AnimState:SetBank("wine_cellar")
+    inst.AnimState:SetBuild("wine_cellar")
     inst.AnimState:PlayAnimation("closed")
 
     inst.SoundEmitter:PlaySound("dontstarve/common/ice_box_LP", "idlesound")
