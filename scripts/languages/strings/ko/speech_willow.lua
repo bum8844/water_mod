@@ -57,7 +57,7 @@ return {
 
 		CAFFEINBERRY = "이번엔 차가운 달에서 널 보네.", --커피 덤불
 		DUG_CAFFEINBERRY = "이제 내가 널 어떻게 해줄까?", --파낸 커피덤불
-		CAFFEINBERRY_BEAN = "결국 불 속에 넣어야 하는건 똑같구나.", --생 커피콩
+		CAFFEINBERRY_BEAN = "결국 불 속에 넣어야 하는건 똑같네.", --생 커피콩
 		CAFFEINBERRY_BEAN_COOKED = "아, 향긋한걸?", --구운 커피콩
 
 		RUINCACAO_TREE = "보아하니 너도 불이랑 친구 먹었구나?", --카카오 나무
@@ -88,7 +88,7 @@ return {
 		FRUITJUICE = "과일은 그냥 그대로 먹지 그래?", --잡 과일쥬스
 		BERRIES_JUICE = "새 빨갛게 우려냈네", -- 베리 쥬스
 		POMEGRANATE_JUICE = "빨간게 맛 없을리가 없지.", -- 석류 쥬스
-		BANANA_JUICE = "이거 껍질채로 우려낸거야?", -- 바나나 쥬스
+		BANANA_JUICE = "이거 껍질 채로 우려낸거야?", -- 바나나 쥬스
 		FIG_JUICE = "물을 쓰니깐 당연히 더 별로야.", -- 무화과 쥬스
 		DRAGONJUICE = "불같은 과일을 왜 물에 넣었어?", --용과 쥬스
 		GLOWBERRYJUICE = "물이 빛나다니 진짜 이상해.", -- 발광베리 쥬스
@@ -105,9 +105,9 @@ return {
 		BLACKTEA = "아무 잎이나 우러서 되는게 아니라고? 어쩌라구.", --홍차
 		BLACKTEA_ICED = "왜 얼음을 못 넣어서 안달이지?", -- 홍차 아이스티
 		FUER = "차는 다 똑같은거 아니야?", --보이차,이파리차,고사리차
-		MIXFLOWER = "적어도 물이 좀더 향긋해 졌네.", --잡 꽃잎 차
+		MIXFLOWER = "적어도 물이 좀 더 향긋해 졌네.", --잡 꽃잎 차
 		HIBISCUSTEA = "이거 시큼한데 맛있네.", --히비스커스 차
-		CACTUSFLOWER_TEA = "그냥 또 다른 꽃차야.", --선인꽃차
+		CACTUSFLOWER_TEA = "그냥 또 다른 꽃 차야.", --선인꽃차
 		LOTUSTEA = "물속으로 돌아갔으니깐 만족했을거야.", --연꽃차
 		SUSHIBISCUS = "누구 식탁위에 올려볼까?", -- 자살차
 		MOON_BLOSSOM_TEA = "이건 좀 인상적이네.", --달꽃차
@@ -193,7 +193,7 @@ return {
 		--왈리 전용 증류주
 
 		BERRY_GIN = "내가 진정으로 태우고 싶었던건 이 썩어빠진 세상이였다구.", --진
-		GLOWBERRY_GIN = "빛도 나고, 내 목에 불꽃을 붙혀줄거야.", --글로우 베리 진
+		GLOWBERRY_GIN = "빛도 나고, 내 목에 불꽃 붙혀줄거야.", --글로우 베리 진
 		ABSINTHE = "방화도 예술로 봐달라구우.", -- 압생트
 		TEA_LUMPY_VODKA = "야,이게 진짜 차지.", -- 녹차 리큐르
 		PETALS_BERRY_BRANDY = "꽃향기가 나네, 취할수 있음 뭐든지 좋아.", -- 장미향 브랜디
@@ -306,7 +306,7 @@ return {
 
 		KETTLE =
 		{
-			EMPTY = "모든물은 불로 살균해야해.", --빈 주전자 조사대사
+			EMPTY = "모든 물은 불로 살균해야해.", --빈 주전자 조사대사
 			BURNT = "물이 없음 별것도 아니네.", --주전자가 불탐
 			BOILING_LONG = "불이 열심히 재료를 우리기 시작했어.", -- 음료를 만들기 시작한지 얼마 안됨
 			BOILING_SHORT = "불이 재료를 거의 다 우려냈어!", --음료 조리가 거의 끝나감
