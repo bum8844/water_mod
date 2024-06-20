@@ -1,7 +1,7 @@
 local assets =
 {
     Asset("ANIM", "anim/thermos_bottle.zip"),
-    Asset("ANIM", "anim/ui_alterguardianhat_1x1.zip"),
+    Asset("ANIM", "anim/ui_thermos_bottle_1x1.zip"),
 }
 
 local function OnOpen(inst)

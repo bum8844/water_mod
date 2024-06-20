@@ -30,10 +30,10 @@ params.thermos_bottle =
         },
         slotbg =
         {
-            { image = "spore_slot.tex", atlas = "images/hud2.xml" },
+            { image = "cook_slot_drink.tex", atlas = "images/tea_ui.xml" },
         },
-        animbank = "ui_alterguardianhat_1x1",
-        animbuild = "ui_alterguardianhat_1x1",
+        animbank = "ui_thermos_bottle_1x1",
+        animbuild = "ui_thermos_bottle_1x1",
         pos = Vector3(0, 160, 0),
     },
     acceptsstacks = false,
@@ -50,15 +50,15 @@ params.wine_cellar =
     {
         slotpos = {},
         slotbg  = {},
-        animbank = "ui_fish_box_5x4",
-        animbuild = "ui_fish_box_5x4",
+        animbank = "ui_wine_cellar_5x4",
+        animbuild = "ui_wine_cellar_5x4",
         pos = Vector3(0, 220, 0),
         side_align_tip = 160,
     },
     type = "chest",
 }
 
-local wine_cellar_bg = { image = "cook_slot_drink.tex", atlas = "images/tea_ui.xml" }
+local wine_cellar_bg = { image = "cook_slot_alcohol.tex", atlas = "images/tea_ui.xml" }
 
 for y = 2.5, -0.5, -1 do
     for x = -1, 3 do
@@ -133,7 +133,7 @@ params.distillers =
         },
         slotbg =
         {
-            { image = "cook_slot_drink.tex", atlas = "images/tea_ui.xml" },
+            { image = "cook_slot_alcohol.tex", atlas = "images/tea_ui.xml" },
             { image = "cook_slot_additive.tex", atlas = "images/tea_ui.xml" },
         },
         animbank = "ui_cookpot_1x2",

@@ -3,7 +3,7 @@ require "prefabutil"
 local assets =
 {
     Asset("ANIM", "anim/wine_cellar.zip"),
-    Asset("ANIM", "anim/ui_fish_box_5x4.zip"),
+    Asset("ANIM", "anim/ui_wine_cellar_5x4.zip"),
 }
 
 local prefabs =
