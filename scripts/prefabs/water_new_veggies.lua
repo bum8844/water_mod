@@ -140,6 +140,7 @@ PlayWaxAnimation = function(inst)
 end
 
 local function MakeVeggie(name)
+
     local assets = {
     	Asset("ANIM", "anim/water_farm_plant_veggies.zip"),
 
@@ -623,10 +624,9 @@ local function MakeVeggie(name)
     table.insert(exported_prefabs, Prefab(name.."_oversized", fn_oversized, assets_oversized))
     table.insert(exported_prefabs, Prefab(name.."_oversized_waxed", fn_oversized_waxed, assets_oversized))
     table.insert(exported_prefabs, Prefab(name.."_oversized_rotten", fn_oversized_rotten, assets_oversized))
-
     table.insert(exported_prefabs, Prefab(name.."_seeds", fn_seeds, assets_seeds))
-    table.insert(exported_prefabs, Prefab(name, fn, assets, prefabs))
     table.insert(exported_prefabs, Prefab(name.."_cooked", fn_cooked, assets))
+    table.insert(exported_prefabs, Prefab(name, fn, assets, prefabs))
 
     return exported_prefabs
 end

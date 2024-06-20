@@ -63,21 +63,15 @@ WATER_VEGGIES[name] =
     }
 end
 
-MakeVegStats("pinenanas",
-"fruit",
-UNCOMMON,
+MakeVegStats("pinenanas","fruit",UNCOMMON,
 TUNING.CALORIES_SMALL,TUNING.HEALING_SMALL,TUNING.PERISH_FAST,TUNING.SANITY_TINY,
 TUNING.CALORIES_SMALL,TUNING.HEALING_TINY,TUNING.PERISH_SUPERFAST,TUNING.SANITY_TINY*1.5,
-{"med", 0.05, 0.8}, {"small", 0.1, nil}
-)
+{"med", 0.05, 0.8}, {"small", 0.1, nil})
 
-MakeVegStats("papeda",
-"fruit",
-UNCOMMON,
+MakeVegStats("papeda","fruit",UNCOMMON,
 TUNING.CALORIES_TINY,TUNING.HEALING_SMALL,TUNING.PERISH_FAST,0,
 TUNING.CALORIES_SMALL,TUNING.HEALING_MED,TUNING.PERISH_SUPERFAST,0,
-{"med", 0.05, 0.8}, {"small", 0.1, nil}
-)
+{"med", 0.05, 0.8}, {"small", 0.1, nil})
 
 local function MakeGrowTimes(germination_min, germination_max, full_grow_min, full_grow_max)
     local grow_time = {}

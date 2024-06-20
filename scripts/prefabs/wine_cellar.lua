@@ -52,7 +52,7 @@ local function fn()
     inst.entity:AddMiniMapEntity()
     inst.entity:AddNetwork()
 
-    --inst.MiniMapEntity:SetIcon("icebox.png")
+    --inst.MiniMapEntity:SetIcon("wine_cellar.png")
 
     inst:AddTag("structure")
 

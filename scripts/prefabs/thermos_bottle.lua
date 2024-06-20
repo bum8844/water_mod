@@ -6,9 +6,11 @@ local assets =
 
 local function OnOpen(inst)
     inst.AnimState:PlayAnimation("open")
+    --inst.components.inventoryitem:ChangeImageName("thermos_bottle")
 end
 
 local function OnClose(inst)
+    --inst.components.inventoryitem:ChangeImageName()
     if not inst.components.inventoryitem:IsHeld() then
         inst.AnimState:PlayAnimation("close")
         inst.AnimState:PushAnimation("closed", false)
@@ -23,6 +25,7 @@ local function OnPutInInventory(inst)
 end
 
 local floatable_swap_data = { bank = "beargerfur_sack", anim = "closed" }
+--local floatable_swap_data = { bank = "thermos_bottle", anim = "closed" }
 
 local function fn()
     local inst = CreateEntity()
@@ -33,7 +36,7 @@ local function fn()
     inst.entity:AddMiniMapEntity()
     inst.entity:AddNetwork()
 
-    inst.MiniMapEntity:SetIcon("beargerfur_sack.png")
+    --inst.MiniMapEntity:SetIcon("thermos_bottle.png")
 
     inst.AnimState:SetBank("beargerfur_sack")
     inst.AnimState:SetBuild("beargerfur_sack")
@@ -53,9 +56,6 @@ local function fn()
         return inst
     end
 
-    inst._sounds = sounds
-    inst._frostfx = nil
-
     inst:AddComponent("inspectable")
 
     inst:AddComponent("container")
@@ -71,8 +71,6 @@ local function fn()
 
     inst:AddComponent("inventoryitem")
     inst.components.inventoryitem:SetOnPutInInventoryFn(OnPutInInventory)
-
-    --inst.OnRemoveEntity = OnRemoveEntity
 
     MakeHauntableLaunchAndDropFirstItem(inst)
 
