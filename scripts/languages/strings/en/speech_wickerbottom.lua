@@ -313,7 +313,7 @@ return {
                 DONE = "Let's enjoy the taste.", 
                 PURIFY_LONG = "We need to wait for sterilization to complete.", 
                 PURIFY_SHORT = "It's almost sterilized!", 
-                HASWATER = "Ingredients are needed."
+                HASWATER = "Ingredients are needed.",
                 MELT_LONG = "We need to wait for the ice to melt.",
                 MELT_SHORT = "It's almost melted!", 
             },

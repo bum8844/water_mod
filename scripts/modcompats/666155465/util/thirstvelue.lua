@@ -5,7 +5,7 @@ end
 _G.pendingThirstValueCallback = nil
 local function RequestThirstValue(entity, callback)
     if not _G.TheWorld.ismastersim and entity then
-        if entity.Transform and not entity:HasTag("") then
+        if entity.Transform then
             local x, y, z = entity.Transform:GetWorldPosition()
             if x ~= nil and y ~= nil and z ~= nil then 
                 SendModRPCToServer(GetModRPC("ShowMeSHint_Water", "RequestThirstValue"), entity.prefab, x, y, z)
@@ -18,12 +18,12 @@ local function RequestThirstValue(entity, callback)
 end
 
 AddModRPCHandler("ShowMeSHint_Water", "RequestThirstValue", function(player, prefab, x, y, z)
-    local entities = TheSim:FindEntities(x, y, z, .25)
+    local entities = TheSim:FindEntities(x, y, z, .001)
     for k, entity in pairs(entities) do
         if entity.prefab == prefab then
             local thirstvalue = false
             local can_eat = false
-			if player.components then
+			if player.components and not player:HasTag("playerghost") then
                 if player.components.eater then
 				    can_eat = player.components.eater:CanEat(entity)
                 end
@@ -58,11 +58,14 @@ local function fn(self)
 
     self.updater_old = self.OnUpdate
     function self:OnUpdate()
+        local activeItem = _G.ThePlayer.replica.inventory:GetActiveItem()
         local target = _G.TheInput:GetHUDEntityUnderMouse()
-        if target ~= nil then
-            target = target.widget ~= nil and target.widget.parent ~= nil and target.widget.parent.item
-        else
-            target = _G.TheInput:GetWorldEntityUnderMouse()
+        if not activeItem then
+            if target ~= nil then
+                target = target.widget ~= nil and target.widget.parent ~= nil and target.widget.parent.item
+            else
+                target = _G.TheInput:GetWorldEntityUnderMouse()
+            end
         end
 
         if target ~= nil then

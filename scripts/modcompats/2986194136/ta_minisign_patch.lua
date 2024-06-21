@@ -42,7 +42,7 @@ local function OnDrawnFn(inst, image, src, atlas, bgimage, bgatlas)
 	        end
 	    end
 	else
-		inst.components.drawable.ondrawnfn(inst, image, src, atlas, bgimage, bgatlas)
+		inst.components.drawable.old_ondrawnfn(inst, image, src, atlas, bgimage, bgatlas)
 	end
 end
 
