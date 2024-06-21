@@ -98,7 +98,7 @@ local function MakeGrowTimes_Weed(full_grow_min, full_grow_max, bolting)
     return grow_time
 end
 
--- Pinenanas Plant.
+--[[ Pinenanas Plant.
 PLANT_DEFS.pinenanas = {build = "farm_plant_pinenanas", bank = "farm_plant_pinenanas"}
 PLANT_DEFS.pinenanas.prefab = "farm_plant_pinenanas"
 PLANT_DEFS.pinenanas.product = "pinenanas"
@@ -176,7 +176,7 @@ PLANT_DEFS.pinenanas.plantregistryinfo = {
         is_rotten = true,
         hidden = true,
     },
-}
+}]]
 
 -- Papeda Plant.
 PLANT_DEFS.papeda = {build = "farm_plant_papeda", bank = "farm_plant_papeda"}
