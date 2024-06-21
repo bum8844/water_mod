@@ -92,7 +92,7 @@ return {
             FIG_JUICE = "Of course it tastes worse cooked with water.", 
             DRAGONJUICE = "Why did you put fire-like fruits in water?", 
             GLOWBERRYJUICE = "It's strange that the water is glowing.", 
-            WATERMELON_JUICE = "This is so watery, you could build a river with it.", -
+            WATERMELON_JUICE = "This is so watery, you could build a river with it.",
 
             VEGGIE_TEA = "I, Don't, Want to, Drink it.",  
             CARROT_TEA = "Ugh. Did you boil the carrots in water?",
@@ -234,7 +234,7 @@ return {
 
             BUCKET_WOODIE_EMPTY =
             {
-                EMPTY = "Isn't it just firewood with the insides hollowed out?", -
+                EMPTY = "Isn't it just firewood with the insides hollowed out?",
                 FULL = "Rainwater has collected inside.",
                 FULL_ICE = "It's frozen solid.", 
                 DIRTY = "Dirty water has collected inside!", 
