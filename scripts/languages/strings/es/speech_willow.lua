@@ -206,7 +206,7 @@ return {
 
             MOONWAY = "Si me emborracha, no me importa de qué esté hecho.", -- Shipwrecked Rainbow Jelly Distilled Spirit
             ARRACK = "Me gusta que tenga un suave aroma frutal.", -- Arrack (Coconut Wine)
-            CHERRY_BLOOM_RUM = "Es bonito, debería bebérmelo todo y prenderle fuego." -- Cherry Honey Wine Distilled Spirit Cherry Blossom Petal Floating
+            CHERRY_BLOOM_RUM = "Es bonito, debería bebérmelo todo y prenderle fuego.", -- Cherry Honey Wine Distilled Spirit Cherry Blossom Petal Floating
             RICE_SPIRITS = "Me gustan los licores fuertes como éste.", -- Cheongju (Clear Rice Wine)
             WHEAT_WHISKEY = "Beberlo sería tan bueno como prender fuego a un campo de trigo.", -- Wheat Whiskey
             PALE_WHISKEY = "Ahora hasta el whisky es azul.", -- Pale Malt Whiskey
@@ -278,7 +278,7 @@ return {
             BREWERY =
             {
                 EMPTY = "No hay nada que puedas hacer sin fuego.", -- Examining the Brewery
-                BURNT = "Hehe se fermentó intensamente.",, -- Brewery has burnt down
+                BURNT = "Hehe se fermentó intensamente.", -- Brewery has burnt down
                 FERMENTING_LONG = "El fuego nutrirá cálidamente la levadura.", -- Still a long way to go until fermentation is complete
                 FERMENTING_SHORT = "Date prisa, fuego, me está entrando sed.", -- Fermentation is almost complete
                 DONE = "Debería haber una bebida con fuego ahí dentro.", -- Brewery contains a brewed drink

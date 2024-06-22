@@ -88,7 +88,7 @@ return {
             POMEGRANATE_JUICE = "Rico en estrógenos naturales.", -- Pomegranate juice
             BANANA_JUICE = "No está mal tomar una bebida caliente.", -- Banana juice
             FIG_JUICE = "Un zumo refrescante consumido tradicionalmente en Oriente Medio.", -- Fig juice
-            DRAGONJUICE = "La variedad blanca tiene una sutil fragancia.",, -- Dragon fruit juice
+            DRAGONJUICE = "La variedad blanca tiene una sutil fragancia.", -- Dragon fruit juice
             GLOWBERRYJUICE = "Nunca había visto una bebida así, ¡Es increíble!", -- Glowberry juice
             WATERMELON_JUICE = "Su alto contenido en agua lo hace ideal para calmar la sed.", -- Watermelon juice
 
