@@ -3,24 +3,24 @@ return {
     {
         GIVE =
         {
-            WELL_NOTEMPTY = "Parece que el pozo ya tiene una cubeta.", -- There's a dry bucket on the well, and you tried to put a bucket on it.
+            WELL_NOTEMPTY = "Este pozo solo puede tener una cubeta a la vez.", -- There's a dry bucket on the well, and you tried to put a bucket on it.
             WELL_BUSY = "Esperemos un momento.", -- There's a bucket filled with water on the well, and you tried to put a bucket on it.
         }
     },
 
-        ANNOUNCE_DRUNK = "Me sien...to, un poco, mare...ada", -- Drunk
-        ANNOUNCE_DRUNK_END = "El consumo excesivo de alcohol queda completamente prohibido.", -- Sobering up from alcohol (Hangover)
+        ANNOUNCE_DRUNK = "Mi sistema diges-tivoo, y mentaal ejem edn.", -- Drunk
+        ANNOUNCE_DRUNK_END = "De todas formas, beber en exceso esta completamente prohibido.", -- Sobering up from alcohol (Hangover)
         ANNOUNCE_DRUNK_IMMUNITY = "", -- Temporary. Wickerbottom only.
-        ANNOUNCE_NOTCHARGE = "No puedo ordeñarla  sino está cargada.", -- Unable to milk with a bucket because the Volt Goat is not charged.
+        ANNOUNCE_NOTCHARGE = "La cabra no esta en condiciones de ser ordeñada.", -- Unable to milk with a bucket because the Volt Goat is not charged.
         ANNOUNCE_NOTHIRSTSLEEP = "", -- Thirsty but trying to sleep at night -- Not used for Wickerbottom
         ANNOUNCE_NOTHIRSTSIESTA = "", -- Thirsty but trying to sleep during the day -- Not used for Wickerbottom
         ANNOUNCE_SLEEP_END = "", -- Fully sober after sleeping -- Not used for Wickerbottom
-        ANNOUNCE_THIRST = "Necesito recargar mis electrolitos.", -- Too thirsty!
+        ANNOUNCE_THIRST = "La bibliotecaria necesita agua.", -- Too thirsty!
 
-        ANNOUNCE_CAFFINE_BUFF_START = "Los efectos de la cafeína empiezan a aparecer.", -- Caffeine buff starts
-        ANNOUNCE_CAFFINE_BUFF_STOP = "Mi cuerpo ha metabolizado toda la cafeína.", -- Caffeine buff ends
+        ANNOUNCE_CAFFINE_BUFF_START = "Puedo sentir la cafeína empezando a unirse a mis receptores de adenosina.", -- Caffeine buff starts
+        ANNOUNCE_CAFFINE_BUFF_STOP = "La cafeína fue metabolizada completamente en mi cuerpo.", -- Caffeine buff ends
 
-        ANNOUNCE_CURE_WATERBORNE = "El dolor empieza a bajar.", -- Dialogue when curing a waterborne disease with an item
+        ANNOUNCE_CURE_WATERBORNE = "Puedo sentir el dolor de la enfermedad endémica aliviarse.", -- Dialogue when curing a waterborne disease with an item
 
         ANNOUNCE_DCAPACITY_CRITICAL = "No debería beber demasiado, tiene efectos nocivos para el hígado y aparato digestivo", -- Just before getting drunk
         ANNOUNCE_DCAPACITY_HALF = "Beber con moderación tiene efectos positivos en la salud.", -- When starting to get tipsy
@@ -29,19 +29,19 @@ return {
         {
             BOILBOOK = "Interesante, una compilación de información sobre bebidas.",
 
-            WATER_CLEAN_ICE = "H₂O en estado sólido por las bajas temperaturas.", -- Clean ice
-            WATER_DIRTY_ICE = "Congelado, pero esta lleno de bacterias.", -- Dirty ice
+            WATER_CLEAN_ICE = "Agua solidificada.", 
+            WATER_DIRTY_ICE = "Agua solidificada que contiene bacterias.", 
 
-            SPICE_CAFFEINPEPPER = "Una especia muy valiosa.", -- Caffeinpepper spice
+            SPICE_CAFFEINPEPPER = "En el pasado, era una rara y cara especia.",
 
-            WELL_KIT = "Materiales de construcción utilizados para extraer agua de mantos acuíferos profundos.", -- Well kit
-            WELL_SPRINKLER_KIT = "Una máquina utilizada para extraer agua subterránea a tu granja.", -- Sprinkler kit
-            WELL_WATERPUMP_KIT = "Una máquina usada para bombear agua desde mantos acuíferos profundos.", -- Steam water pump kit
-            WELL_BURYING_KIT = "Herramientas usadas para sellar un pozo.", -- Burying kit
-            WELL_DRILLING = "Está tratando de encontrar un acuífero aquí.", -- Drilling a hole
+            WELL_KIT = "Materiales para la construccion de instalaciones para extraer agua de vetas profundas", 
+            WELL_SPRINKLER_KIT = "Una máquina utilizada para extraer agua de vetas profundas para la agricultura.", 
+            WELL_WATERPUMP_KIT = "Una máquina usada para bombear agua desde.", 
+            WELL_BURYING_KIT = "Herramientas para enterrar un agujero cuando ya no es necesario o no funciona.", 
+            WELL_DRILLING = "Que está tratando de cavar aquí para ver si hay un acuífero.", 
             WELL_DRILLING_ITEM = "Necesitó encontrar un lugar adecuado en donde perforar.", -- Drilling item
             HOLE = "Puedo oír el agua, parece que cavé correctamente.", -- Well hole
-            WELL = "Una construcción para tomar agua desde un manto acuífero.", -- Well
+            WELL = "Construcción utilizada para extraer agua de una vena de agua profunda.", -- Well
 
             -- Water mode plants
 
@@ -50,20 +50,20 @@ return {
             TEA_SEED = "Semillas de un árbol de té.", -- Tea seed
             TEA_SEED_COOKED = "Plantarla no dará resultados.", -- Cooked tea seed
             TEA_SEED_SAPLING = "La planta de té ah empezado a crecer.", -- Tea tree sapling
-            TEALEAVES = "Pequeñas hojas de té.", -- Tea leaves
-            TEALEAVES_DRIED = "Pueden ser usadas para hacer té negro.", -- Dried tea leaves
+            TEALEAVES = "Es un tipo de hoja de té de la variedad Camellia sinensis.", -- Tea leaves
+            TEALEAVES_DRIED = "Se usarán para hacer té negro", -- Dried tea leaves
 
-            CAFFEINBERRY = "Parece pimienta y café.", -- Caffeinberry bush
-            DUG_CAFFEINBERRY = "Un arbusto extraño que crece en suelos arenosos.", -- Dug Caffeinberry bush
+            CAFFEINBERRY = "Un arbusto bajo que crece en suelo lunar arenoso.", -- Caffeinberry bush
+            DUG_CAFFEINBERRY = "Es una combinación de café y pimienta.", -- Dug Caffeinberry bush
             CAFFEINBERRY_BEAN = "Posee un aroma único.", -- Raw coffee bean
             CAFFEINBERRY_BEAN_COOKED = "Huele a café con un toque de pimienta.", -- Cooked coffee bean
 
             RUINCACAO_TREE = "La fruta cayó en un sumidero.", -- Ruincacao tree
             DUG_RUINCACAO_TREE = "Necesita tierra para crecer.", -- Ruincacao tree (dug)
-            RUINCACAO_SEED = "Semilla de cacao de las ruinas.", -- Ruincacao seed
-            RUINCACAO_SEED_SAPLING = "La planta del cacao crecerá.", -- Ruincacao sapling
+            RUINCACAO_SEED = "Semillas de árbol de cacao.", -- Ruincacao seed
+            RUINCACAO_SEED_SAPLING = "La plántula de cacao crecerá.", -- Ruincacao sapling
             RUINCACAO = "Se utilizaba como moneda en las antiguas civilizaciones aztecas.", -- Unsmashed Ruincacao
-            RUINCACAO_BEAN = "Se compone de un poco de mantequilla y cacao.", -- Smashed Ruincacao bean
+            RUINCACAO_BEAN = "Se compone de un poco de mantequilla y granos de cacao.", -- Smashed Ruincacao bean
             RUINCACAO_BEAN_COOKED = "Usado para hacer bebidas de chocolate.", -- Cooked Ruincacao bean
 
             -- Distillery additives
@@ -79,43 +79,43 @@ return {
             WATER_DIRTY = "Hervirla prevé enfermedades transmitidas por el agua.", -- Dirty water
             WATER_SALTY = "Beber esto puede provocar deshidratación.", -- Saltwater
 
-            GOOPYDRINK = "Oh no, esto no esta bien en absoluto.", -- Failed beverage (Wet goop concept)
+            GOOPYDRINK = "Oh, no, no, no, esto no servirá para nada.", -- Failed beverage (Wet goop concept)
 
             -- Teapot drinks
 
-            FRUITJUICE = "Incluso con frutas al azar no está mal.", -- Mixed fruit juice
-            BERRIES_JUICE = "Tiene propiedades antiinflamatorias.", -- Berries juice
+            FRUITJUICE = "No está mal hacerlo con frutas ligeramente imperfectas.", -- Mixed fruit juice
+            BERRIES_JUICE = "Los efectos farmacológicos del fruto de la Ardisia crenata incluyen propiedades antipiréticas y antiinflamatorias.", -- Berries juice
             POMEGRANATE_JUICE = "Rico en estrógenos naturales.", -- Pomegranate juice
             BANANA_JUICE = "No está mal tomar una bebida caliente.", -- Banana juice
             FIG_JUICE = "Un zumo refrescante consumido tradicionalmente en Oriente Medio.", -- Fig juice
-            DRAGONJUICE = "La variedad blanca es la más olorosa.", -- Dragon fruit juice
+            DRAGONJUICE = "La variedad blanca tiene una sutil fragancia.", -- Dragon fruit juice
             GLOWBERRYJUICE = "Nunca había visto una bebida así, ¡Es increíble!", -- Glowberry juice
-            WATERMELON_JUICE = "Alto contenido en agua, perfecto para calmar la sed.", -- Watermelon juice
+            WATERMELON_JUICE = "Su alto contenido en agua lo hace ideal para calmar la sed.", -- Watermelon juice
 
-            VEGGIE_TEA = "Una bebida amarga es buena para el cuerpo.", -- Green juice
-            CARROT_TEA = "Rico en vitaminas y hierro.", -- Carrot tea
+            VEGGIE_TEA = "Las bebidas saludables suelen ser amargas.", -- Green juice
+            CARROT_TEA = "De todas maneras, es rico en hierro y vitaminas.", -- Carrot tea
             CACTUS_TEA = "Opuntia ficus-indica, té tradicional de algunas regiones mexicanas.", -- Cactus tea (Nopales Tea actually exists)
-            TOMATO_JUICE = "Contiene ingredientes que pueden desintoxicar el cuerpo.", -- Tomato juice
-            LUMPY_TEA = "Contiene ingredientes que alivian las enfermedades transmitidas por el agua.", -- Root tea
-            SEAWEED_SHAKE = "Rico en ácido algínico, que lo hace espeso.", -- Seaweed shake
+            TOMATO_JUICE = "Contiene componentes que ayudan a desintoxicar el alcohol.", -- Tomato juice
+            LUMPY_TEA = "Contiene componentes que ayudan a aliviar las enfermedades endémicas.", -- Root tea
+            SEAWEED_SHAKE = "Es pegajosa porque es rica en ácido algínico.", -- Seaweed shake
 
             GREENTEA = "Originario de Asia.", -- Fresh green tea leaves
             BLACKTEA = "Una taza de té y un buen libro es lo que necesito.", -- Black tea
             BLACKTEA_ICED = "Vigoriza el espíritu.", -- Iced black tea
-            FUER = "Contiene ingredientes que alivian las enfermedades transmitidas por el agua.", -- Boichaa, Leaf Tea, Gwessari Tea
+            FUER = "Contiene componentes que ayudan a aliviar las enfermedades endémicas.", -- Boichaa, Leaf Tea, Gwessari Tea
             MIXFLOWER = "Una mezcla de varios tipos de flores.", -- Mixed flower petal tea
             HIBISCUSTEA = "Hecho con flores de hibisco.", -- Hibiscus tea
             CACTUSFLOWER_TEA = "En algunas regiones se cree que es bueno para la salud.", -- Nopales tea
             LOTUSTEA = "Tradicionalmente consumido durante ocasiones especiales en las regiones asiáticas.", -- Lotus tea
             SUSHIBISCUS = "Espera... Esto no es té de hibisco.", -- Suicide tea
-            MOON_BLOSSOM_TEA = "El mero hecho de estar cerca me tranquiliza.", -- Moonflower tea
+            MOON_BLOSSOM_TEA = "Sólo con mirarlo me siento tranquila.", -- Moonflower tea
 
             CAFFEINBERRY_JUICE = "Me gusta una rica taza de café con un buen libro.", -- Black coffee
-            TOFFEE_LATTE = "El rico aroma se potencia.", -- Toffeenut latte
-            RUINCHA_LATTE = "Toma su nombre de los mayas. Una combinación de café y chocolate.", -- Mocha latte (Coffee + Cocoa)
+            TOFFEE_LATTE = "Tiene un rico aroma a nuez.", -- Toffeenut latte
+            RUINCHA_LATTE = "Toma su nombre de un topónimo. Es una combinación de café y chocolate.", -- Mocha latte (Coffee + Cocoa)
 
-            HOTRUINCOLATE = "Una bebida que evolucionó cuando el chocolate viajó a Europa.", -- Hot chocolate
-            RUINCOLATE_SMOOTHIE = "¡Una versión modificada del chocolate caliente como batido frío!", -- Chocolate smoothie (cold)
+            HOTRUINCOLATE = "Es una bebida modificada que tiene su origen en el 'xocolatl' cuando se introdujo en Europa.", -- Hot chocolate
+            RUINCOLATE_SMOOTHIE = "¡Una versión modificada del chocolate caliente!", -- Chocolate smoothie (cold)
             RUINXOCOLATL = "Una antigua bebida de origen azteca.", -- Chocolatl (rich and spicy)
             TEA_RUINCOLATE_LATTE = "Hay variedad a las opciones de bebidas.", -- Matcha latte
 
@@ -125,23 +125,23 @@ return {
             -- Collaborative Pitcher Drinks
 
             COCONUT_JUICE = "El agua de coco se ha gelificado por fermentación microbiana.", --Shipwrecked Coconut Juice
-            RAINBOW_SHAKE = "Fascinante, mantiene la bioluminiscencia.", --Shipwrecked Rainbow Jelly Shake
+            RAINBOW_SHAKE = "Interesante, mantiene la bioluminiscencia.", --Shipwrecked Rainbow Jelly Shake
             QUARTZ_SHAKE = "Debería estudiar las propiedades de esta sopa de pescado por separado.", --Shipwrecked Quacken Soup Shake
             CHERRY_ROSEBERRIES_TEA = "Es dulce y fragante.", --Cherry Forest Rosehip Tea
-            CHERRY_HONEY_TEA = "Té-hace entrar en calor.", --Cherry Forest Cherry Blossom Honey Tea
-            SWEET_RICE_DRINK = "Fermentado para endulzar y facilitar la digestión.", --Vitacorp Sweet Hyphae
-            PINEANANAS_JUICE = "Rica en bromelina, así que tómala con moderación.", --More Food Pack Pineapple Juice
+            CHERRY_HONEY_TEA = "Siento que mi cuerpo se está calentando.", --Cherry Forest Cherry Blossom Honey Tea
+            SWEET_RICE_DRINK = "Se ha fermentado para darle un sabor dulce y facilitar su digestión.", --Vitacorp Sweet Hyphae
+            PINEANANAS_JUICE = "Contiene mucha bromelina, por lo que puede provocar llagas en la boca. Bébelo con moderación.", --More Food Pack Pineapple Juice
             ORANGE_JUICE = "Zumo de naranja, es como el tipo de zumo estereotípico.", --More Food Pack Orange Juice
             STRAWBERRY_SMOOTHIE = "Hielo y fresas mezclados, estaría aún mejor con leche.", --More Food Pack Strawberry Smoothie
             STRAWBERRY_MILK_SMOOTHIE = "Una popular bebida de fresa, a veces hecha con yogur en lugar de leche.", --More Food Pack Strawberry Milk Smoothie
 
             -- Brewing Drinks
 
-            SPOILED_DRINK = "Se está convirtiendo en un caldo de cultivo para las bacterias.", --Spoiled Drink
+            SPOILED_DRINK = "Esta bebida se está convirtiendo en un caldo de cultivo para las bacterias.", --Spoiled Drink
 
             -- Brewing Sodas
 
-            SODA = "El dióxido de carbono se disuelve y se ioniza en el agua.", --Carbonated Water
+            SODA = "Agua en la que el dióxido de carbono está disuelto e ionizado.", --Carbonated Water
             FRUITSODA = "Zumo de frutas añadido al agua carbonatada.", --Fruit Soda
             LEMONLIMESODA = "Tiene una dulzura muy fuerte.", --Lemon Lime Soda (Fruit Soda Superior)
             COLA = "Es una bebida muy popular en Estados Unidos.", --Cola (Background in 1907, Coca-Cola exists)
@@ -152,9 +152,9 @@ return {
 
             CORN_BEER = "Tiene su origen en los antiguos incas.", --Corn Beer
             MADHU = "La hidromiel es conocida como la primera bebida alcohólica elaborada por el ser humano.", --Mead
-            WINE = "Originalmente se elaboraba con uvas, pero tiene una larga historia.", --Wine (Berry Brewing)
+            WINE = "El vino se elabora originalmente con uvas, pero también hay una larga historia de vino elaborado con frambuesas.", --Wine (Berry Brewing)
             NOBLEWINE = "El profundo dulzor se debe a un hongo llamado Botrytis cinerea.", --Noble Wine (Roasted Berry Brewing)
-            SPARKLINGWINE = "Originalmente, el dióxido de carbono se libera a través de la fermentación, pero ésta carbonatación fue inyectada artificialmente.", --Sparkling Wine
+            SPARKLINGWINE = "Originalmente, el dióxido de carbono se produce a través de la fermentación, pero en este caso, la carbonatación se añadió artificialmente.", --Sparkling Wine
             GLOWBERRYWINE = "Un nuevo tipo de vino, debería averiguar por qué no pierde la luz durante la fermentación.", --Glow Berry Wine
             KUMIS = "Bebida tradicional de Asia Central.", --Kumis (Fermented Horse Milk)
             LUMPY_WINE = "Mayoritariamente fabricado en Islandia.", --Lumpy Wine (Root Vegetable Wine)
@@ -163,7 +163,7 @@ return {
 
             -- Collaborative Sodas
 
-            CHERRY_DOCTOR_COLA = "Bebida con 23 especias.", --Cherry Forest Doctor Pepper (Doctor Cherry)
+            CHERRY_DOCTOR_COLA = "W. B. Bebida medicinal con 23 especias.", --Cherry Forest Doctor Pepper (Doctor Cherry)
             PINEANANASSODA = "Zumo de piña con agua carbonatada.", --Carbonated Pineapple (Orancee)
             ORANGESODA = "Contiene zumo de naranja.", --Carbonated Orange (Fanta)
             STRAWBERRYSODA = "Agua carbonatada con zumo de fresa.", --Carbonated Strawberry (Welch's Strawberry)
@@ -176,7 +176,7 @@ return {
             GIANT_BLUEBERRY_WINE = "Conserva la inestabilidad incluso después de la fermentación.", --Vitacorp Boom Berry Wine (Explodes when ignited)
             RICE_WINE = "Uno de los métodos para el almacenamiento a largo plazo de cereales.", --Vitacorp Makgeolli (Korean rice wine)
             WHEAT_BEER = "Comenzó en el antiguo Egipto.", --Heap of Food Wheat Beer
-            PALE_BEER = "Un tipo de cerveza de fermentación superficial.", --Leigion Pale Ale (Green beer made from Monstra fruits)
+            PALE_BEER = "Un tipo de cerveza de alta fermentación.", --Leigion Pale Ale (Green beer made from Monstra fruits)
 
             -- Distilled Spirits
 
@@ -186,11 +186,11 @@ return {
             TEQUILA = "Los conquistadores hicieron mezcal de agave cuando se les acabaron las uvas.", --Tequila
             MADHU_RUM = "Se diluye con agua durante la navegación para evitar el deterioro del agua potable.", --Rum
             BERRY_BRANDY = "Conocido como el \"rey de los licores\" por su elevado precio y complicada elaboración.", --Berry Brandy
-            AREUHI = "El makgeolli se destila y purifica repetidamente para eliminar las impurezas.", --Kumis Distilled Spirits Areuhi
+            AREUHI = "El Shimiin Arkhi se elabora destilando y fraccionando repetidamente los kumis para eliminar las impurezas.", --Kumis Distilled Spirits Areuhi
 
             -- Warly Exclusive Distilled Spirits
 
-            BERRY_GIN = "Originariamente se utilizaba como bebida medicinal diurética, antipirética y diaforética.", --Gin
+            BERRY_GIN = "Originalmente se utilizaba como bebida medicinal para la diuresis, con efectos antipiréticos y para favorecer la digestión.", --Gin
             GLOWBERRY_GIN = "Incluso después de la fermentación y la destilación, sigue emitiendo luz.", --Glow Berry Gin
             ABSINTHE = "Bebida destilada mediante la extracción de diversas hierbas en alcohol.", --Absinthe
             TEA_LUMPY_VODKA = "Interesante, el equilibrio de sabores parece estar bien conservado.", --Green Tea Liqueur
@@ -204,7 +204,7 @@ return {
 
             MOONWAY = "Incluso después de la destilación, no pierde su luz. Interesante.", --Shipwrecked Moonway (Distilled Bioluminescent Jellyfish Spirits)
             ARRACK = "Destilado de savia de coco elaborado por los indígenas del sur de Asia.", --Arrack Indonesian Version Coconut Wine Distilled Spirits
-            CHERRY_BLOOM_RUM = "Hermoso e intrigante en su mecanismo de elaboración.", --Cherry Blossom Honey Spirits Distilled Spirits Cherry Blossom Petals Floating in Liquor
+            CHERRY_BLOOM_RUM = "Es precioso, pero también me interesa su mecanismo de acción.", --Cherry Blossom Honey Spirits Distilled Spirits Cherry Blossom Petals Floating in Liquor
             RICE_SPIRITS = "Similar al sake.", --Cheongju (Korean Rice Wine)
             WHEAT_WHISKEY = "Empezó a fabricarse en Irlanda o Escocia.", --Heap of Food Malt Whiskey
             PALE_WHISKEY = "Nunca había visto este whisky. Tiene un aroma bastante único.", --Pale Malt Whiskey
@@ -226,7 +226,7 @@ return {
                 EMPTY = "Una cubeta hecha de hierro.", --Empty steel bucket
                 FULL = "Agua limpia para beber.", -- Clean rainwater
                 FULL_ICE = "Pequeños pedazos de hielo.", -- Rainwater frozen
-                DIRTY = "El agua contiene bacterias, necesita hervirse.", -- Rainwater got dirty
+                DIRTY = "Agua en la que pululan bacterias.", -- Rainwater got dirty
                 DIRTY_ICE = "Pequeños pedazos de hielo con bacterias.", -- Dirty rainwater frozen
             },
 
@@ -235,7 +235,16 @@ return {
                 EMPTY = "Una cubeta hecha habilidosamente con troncos.", --Empty wooden bucket of Woody
                 FULL = "Agua limpia para beber.", -- Clean rainwater
                 FULL_ICE = "Pequeños pedazos de hielo.", -- Rainwater frozen
-                DIRTY = "El agua contiene bacterias, necesita hervirse.", -- Rainwater got dirty
+                DIRTY = "Agua llena de bacterias", -- Rainwater got dirty
+                DIRTY_ICE = "Pequeños pedazos de hielo con bacterias.", -- Dirty rainwater frozen
+            },
+
+            BUCKET_DRIFTWOOD_EMPTY = 
+            {
+                EMPTY = "Es un cubo hecho de madera flotante.", 
+                FULL = "Agua limpia para beber.", -- Clean rainwater
+                FULL_ICE = "Pequeños pedazos de hielo.", -- Rainwater frozen
+                DIRTY = "Agua en camino a ser caldo de cultivo", -- Rainwater got dirty
                 DIRTY_ICE = "Pequeños pedazos de hielo con bacterias.", -- Dirty rainwater frozen
             },
 
@@ -253,7 +262,7 @@ return {
                 EMPTY = "Una cubeta hecha de madera.", -- Empty wooden bucket
                 FULL = "Agua limpia para beber.", -- Clean rainwater
                 FULL_ICE = "Pequeños pedazos de hielo.", -- Rainwater frozen
-                DIRTY = "El agua contiene bacterias, necesita hervirse.", -- Rainwater got dirty
+                DIRTY = "Un caldo de cultivo de bacterias.", -- Rainwater got dirty
                 DIRTY_ICE = "Pequeños pedazos de hielo con bacterias.", -- Dirty rainwater frozen
             },
 
@@ -263,7 +272,7 @@ return {
                 PURIFY_LONG = "Todavía queda mucho camino por recorrer para la desalinización.", -- A long way to go until purification is complete
                 PURIFY_SHORT = "¡La desalinización casi termina!", -- Desalination is almost complete
                 HASWATER = "Solo el agua potable permanece.", -- Desalinator has clean water
-                BURNT = "Es completamente inútil en este estado.", -- Desalinator has burnt
+                BURNT = "Oh, es completamente inútil en ese estado..", -- Desalinator has burnt
                 HASSALT = "Suficiente sal fue recolectada.", -- Desalinator has salt
             },
 
@@ -275,8 +284,8 @@ return {
 
             BREWERY =
             {
-                EMPTY = "Hemos empezado a fabricar alcohol para conservar alimentos a largo plazo.", -- Inspect empty brewery
-                BURNT = "Tendremos que posponer nuestra investigación sobre la fermentación por un tiempo.", -- Brewery burnt
+                EMPTY = "Para conservar los alimentos durante mucho tiempo, empezaron a fabricar alcohol.", -- Inspect empty brewery
+                BURNT = "Tendré que aplazar por un tiempo la investigación sobre la fermentación.", -- Brewery burnt
                 FERMENTING_LONG = "Tendremos que tener paciencia hasta que los ingredientes fermenten.", -- A long way to go until fermentation is complete
                 FERMENTING_SHORT = "¡La fermentación ya casi acaba!", -- Fermentation is almost complete
                 DONE = "Puedes olerlo desde lejos.", -- Brewery has beverage
@@ -299,14 +308,14 @@ return {
                 BOILING_LONG = "Aún queda mucho tiempo para recolectar el agua potable.", -- Boiling has just started
                 BOILING_SHORT = "¡Ya casi está lleno!", -- Boiling is almost complete
                 DONE = "Esta lleno de agua potable.", -- Clean water is collected
-                STOP = "El fuego se ha apagado.", -- Campfire has no fire so saltwater is not distilled
+                STOP = "El fuego se ha apagado, por lo que no ha recogido suficiente agua fresca todavía.", -- Campfire has no fire so saltwater is not distilled
             },
 
             KETTLE =
             {
                 EMPTY = "Necesitamos agua.", -- Empty kettle inspect
                 BURNT = "Esta desolado ahora.", -- Kettle burnt
-                BOILING_LONG = "Falta un largo tiempo para que finalice la extracción.", -- Boiling has just started
+                BOILING_LONG = "Aún queda mucho para la extracción.", -- Boiling has just started
                 BOILING_SHORT = "¡Ya casi termina!", -- Boiling is almost complete
                 DONE = "Probemos el resultado.", -- Beverage is ready
                 PURIFY_LONG = "Necesitamos esperar hasta que la esterilización finalice.", -- Boiling dirty water has just started
