@@ -164,7 +164,6 @@ local function MakeVeggie(name)
 
     local assets_oversized = {
         Asset("ANIM", "anim/"..PLANT_DEFS[name].build..".zip"),
-
         Asset("IMAGE", "images/tea_inventoryitem.tex"),
         Asset("ATLAS", "images/tea_inventoryitem.xml"),
         Asset("ATLAS_BUILD", "images/tea_inventoryitem.xml", 256),

@@ -13,6 +13,7 @@ local ghost_time = GetModConfigData("ghost_time")
 local drunkard_time = GetModConfigData("drunkard_time")
 local waterborne_time = GetModConfigData("waterborne_time")
 local butterhunter_time = GetModConfigData("butterhunter_time")
+local satiety_time = GetModConfigData("satiety_time")
 
 table.insert(TUNING.GAMEMODE_STARTING_ITEMS.DEFAULT.WARLY,"portablekettle_item")
 TUNING.WX78_CHARGING_FOODS["areuhi"] = 1
@@ -200,6 +201,7 @@ water_tuning =
 	DETOX_DURATION = (TUNING.TOTAL_DAY_TIME*drunkard_time)*.5,
 	ENABLE_WATERBORNE = GetModConfigData("enable_waterborne"),
 	WATERBORNE_DURATION = TUNING.TOTAL_DAY_TIME*waterborne_time,
+	SATIETY_DURATION = TUNING.TOTAL_DAY_TIME*satiety_time,
 	WATERBORNE_IMMUNES_CHANCE = .65,
 	BUTTERHUNTER_DURATION = TUNING.TOTAL_DAY_TIME*butterhunter_time,
 	WELL_DRILLING_DURATION = TUNING.SEG_TIME*2.5,

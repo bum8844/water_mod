@@ -21,20 +21,14 @@ local function oneaten_ruincolate_spread(inst, eater)
     if not eater.components.health or eater.components.health:IsDead() or eater:HasTag("playerghost") then
         return
     elseif eater.components.debuffable and eater.components.debuffable:IsEnabled() then
-        eater.caffeinbuff_duration = TUNING.CAFFEIN_TIME
-        eater.components.debuffable:AddDebuff("caffeinbuff", "caffeinbuff")
-    else
-        eater.components.locomotor:SetExternalSpeedMultiplier(eater, "caffeinbuff", TUNING.CAFFEIN_SPEED)
-        eater:DoTaskInTime(TUNING.CAFFEIN_TIME, function()
-            eater.components.locomotor:RemoveExternalSpeedMultiplier(eater, "caffeinbuff")
-        end)
+        eater.components.debuffable:AddDebuff("satietybuff", "satietybuff")
     end
 end
 
 local SPICES =
 {
     SPICE_CAFFEINPEPPER = { oneatenfn = oneaten_caffeinpepper, prefabs = { "caffeinbuff" } },
-    SPICE_RUINCOLATE_SPREAD = { oneatenfn = oneaten_ruincolate_spread, prefabs = { "caffeinbuff" } },
+    SPICE_RUINCOLATE_SPREAD = { oneatenfn = oneaten_ruincolate_spread, prefabs = { "satietybuff" } },
 }
 
 function GenerateSpicedFoods_Water_mod(foods)

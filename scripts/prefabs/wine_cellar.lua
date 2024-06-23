@@ -94,4 +94,4 @@ local function fn()
 end
 
 return Prefab("wine_cellar", fn, assets, prefabs),
-    MakePlacer("wine_cellar_placer", "icebox", "ice_box", "closed")
+    MakePlacer("wine_cellar_placer", "wine_cellar", "wine_cellar", "closed")

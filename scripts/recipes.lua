@@ -122,8 +122,11 @@ SortAfter("bucket_steel_empty","bucket_driftwood_empty","HYDRATION")
 AddRecipe2("spice_caffeinpepper",{Ingredient("caffeinberry_bean_cooked", 3, ModAtlas(), nil, "caffeinberry_bean_cooked.tex")},TECH.FOODPROCESSING_ONE,{atlas = ModAtlas(), builder_tag="professionalchef", numtogive=2, image = "spice_caffeinpepper.tex" ,nounlock=true},{"FOODPROCESSING"})
 SortAfter("spice_caffeinpepper", "spice_salt", "FOODPROCESSING")
 
+AddRecipe2("spice_ruincolate_spread",{Ingredient("ruincacao_bean_cooked", 3, ModAtlas(), nil, "ruincacao_bean_cooked.tex")},TECH.FOODPROCESSING_ONE,{atlas = ModAtlas(), builder_tag="professionalchef", numtogive=2, image = "spice_ruincolate_spread.tex" ,nounlock=true},{"FOODPROCESSING"})
+SortAfter("spice_ruincolate_spread", "spice_caffeinpepper", "FOODPROCESSING")
+
 AddRecipe2("additive_seed",{Ingredient("pinecone",1),Ingredient("pepper_seeds",1),Ingredient("garlic_seeds",1)},TECH.FOODPROCESSING_ONE,{atlas = ModAtlas(), builder_tag="professionalchef", numtogive=2, image = "additive_seed.tex" ,nounlock=true},{"FOODPROCESSING"})
-SortAfter("additive_seed", "spice_caffeinpepper", "FOODPROCESSING")
+SortAfter("additive_seed", "spice_ruincolate_spread", "FOODPROCESSING")
 
 AddRecipe2("additive_nut",{Ingredient("acorn_cooked",1),Ingredient("ruincacao_bean_cooked",1,ModAtlas(),nil,"ruincacao_bean_cooked.tex"),Ingredient("caffeinberry_bean_cooked", 1, ModAtlas(), nil, "caffeinberry_bean_cooked.tex")},TECH.FOODPROCESSING_ONE,{atlas = ModAtlas(), builder_tag="professionalchef", numtogive=2, image = "additive_nut.tex" ,nounlock=true},{"FOODPROCESSING"})
 SortAfter("additive_nut", "additive_seed", "FOODPROCESSING")
@@ -165,6 +168,16 @@ SortAfter("desalinator","barrel","CONTAINERS")
 SortAfter("desalinator","barrel","COOKING")
 SortAfter("desalinator","barrel","GARDENING")
 
+AddRecipe2("thermos_bottle",{Ingredient("steelwool",1),Ingredient("moonglass",2),Ingredient("goldnugget",2),Ingredient("bluegem",1)},TECH.SCIENCE_TWO,{atlas = ModAtlas(), image = "thermos_bottle.tex"},{"HYDRATION","STRUCTURES","CONTAINERS","COOKING"})
+SortAfter("thermos_bottle","icebox","STRUCTURES")
+SortAfter("thermos_bottle","icebox","CONTAINERS")
+SortAfter("thermos_bottle","icebox","COOKING")
+
+AddRecipe2("wine_cellar",{Ingredient("cutstone",2),Ingredient("transistor",1),Ingredient("gears",1),Ingredient("opalpreciousgem",1)},TECH.SCIENCE_TWO,{atlas = ModAtlas(), image = "wine_cellar.tex"},{"HYDRATION","STRUCTURES","CONTAINERS","COOKING"})
+SortAfter("wine_cellar","thermos_bottle","STRUCTURES")
+SortAfter("wine_cellar","thermos_bottle","CONTAINERS")
+SortAfter("wine_cellar","thermos_bottle","COOKING")
+
 AddRecipe2("well_drilling_item",{Ingredient("trinket_6",4),Ingredient("transistor",2),Ingredient("goldnugget",4),Ingredient("flint",4),Ingredient("steelwool",2)},TECH.SCIENCE_TWO,{atlas = ModAtlas(), image = "well_drilling_item.tex"},{"GARDENING","REFINE","HYDRATION"})
 SortAfter("well_drilling_item","farm_plow_item","GARDENING")
 
@@ -187,9 +200,6 @@ SortAfter("wx78module_nonedrunk","wx78module_maxhunger1","CHARACTER")
 
 --AddRecipe2("portable_shaker_machine_item")
 --AddRecipe2("shaker_machine")
-
---AddRecipe2("wine_cellar")
---AddRecipe2("drink_ice_box")
 
 --AddRecipe2("steamdesalinator_kit")
 --AddRecipe2("spice_ruincolate_spread")

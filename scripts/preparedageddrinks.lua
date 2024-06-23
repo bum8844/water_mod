@@ -119,7 +119,7 @@ local drinks =
             drink_worm_light_greater(inst, eater)
 	    end,
 	},
-	--[[에너지 드링크(비팔로-비[Beefalo-B])
+	--에너지 드링크(비팔로-비[Beefalo-B])(조정 해야함)
 	moon_cap_drink = {
 		test = function(boilier, names, tags) return (names.durian or names.durian_cooked) and ((names.durian or 0)+(names.durian_cooked or 0)) == 1 and and (names.moon_cap or names.moon_cap_cooked) and ((names.moon_cap or 0)+(names.moon_cap_cooked or 0)) == 1 and tags.ferment and tags.ferment == 1 and names.nightmarefuel and names.nightmarefuel == 1 end,
 		priority = 2,
@@ -144,7 +144,7 @@ local drinks =
 			eater.caffeinbuff_duration = (TUNING.CAFFEIN_TIME/2)
 			eater:AddDebuff("caffeinbuff", "caffeinbuff")
 	    end,
-	},]]--조정해야함
+	},
 	
 	-- 술(물 장기 보관용도)
 	corn_beer =
