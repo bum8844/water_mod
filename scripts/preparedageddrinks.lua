@@ -73,7 +73,7 @@ local drinks =
 	
 	cola =
 	{ -- 
-		test = function(boilier, names, tags) return (( names.caffeinberry_bean_cooked or 0 ) + ( names.coffeebeans_cooked or 0 ) + ( names.kyno_coffeebeans_cooked or 0 ) + ( names.mfp_coffeecherry_cooked or 0 )) >= 1 and tags.ferment and tags.ferment == 1 and names.royal_jelly and names.royal_jelly == 1 and names.nightmarefuel and names.nightmarefuel ==1 end,
+		test = function(boilier, names, tags) return (( names.caffeinberry_bean_cooked or 0 ) + ( names.coffeebeans_cooked or 0 ) + ( names.kyno_coffeebeans_cooked or 0 ) + ( names.mfp_coffeecherry_cooked or 0 )) >= 1 and tags.ferment and tags.ferment == 1 and names.royal_jelly and names.royal_jelly == 1 and names.nightmarefuel and names.nightmarefuel == 1 end,
 		priority = 5,
 		health = TUNING.HEALING_SMALL*2, -- 6 [30] (120)  
 		hunger = TUNING.CALORIES_TINY, -- 9.375 [46.875] (93.75)
@@ -119,6 +119,32 @@ local drinks =
             drink_worm_light_greater(inst, eater)
 	    end,
 	},
+	--[[에너지 드링크(비팔로-비[Beefalo-B])
+	moon_cap_drink = {
+		test = function(boilier, names, tags) return (names.durian or names.durian_cooked) and ((names.durian or 0)+(names.durian_cooked or 0)) == 1 and and (names.moon_cap or names.moon_cap_cooked) and ((names.moon_cap or 0)+(names.moon_cap_cooked or 0)) == 1 and tags.ferment and tags.ferment == 1 and names.nightmarefuel and names.nightmarefuel == 1 end,
+		priority = 2,
+		health = TUNING.HEALING_MED/4,  -- 5 (25)
+		hunger = TUNING.CALORIES_LARGE/5, -- 4 -> 7.5 (37.5)
+		sanity = TUNING.SANITY_SUPERTINY*2, -- 1 -> 2 (10)
+		thirst = TUNING.HYDRATION_LARGE, -- 45 [225] (900)
+		tags = {},
+		perishtime = TUNING.PERISH_PRESERVED, -- 20일
+		cooktime = (TUNING.KETTLE_LUXURY_GOODS + TUNING.SODA_WAIT),
+		potlevel = "mid",
+		potlevel_bottle = "mid",
+		prefabs = { "buff_sleepresistance","drunkarddebuff" },
+		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_CAFFINE_SLEEP_RESIST,
+		oneatenfn = function(inst, eater)
+            if eater.components.grogginess ~= nil and
+			not (eater.components.health ~= nil and eater.components.health:IsDead()) and
+			not eater:HasTag("playerghost") then
+				eater.components.grogginess:ResetGrogginess()
+            end
+			eater:AddDebuff("shroomsleepresist", "buff_sleepresistance")
+			eater.caffeinbuff_duration = (TUNING.CAFFEIN_TIME/2)
+			eater:AddDebuff("caffeinbuff", "caffeinbuff")
+	    end,
+	},]]--조정해야함
 	
 	-- 술(물 장기 보관용도)
 	corn_beer =

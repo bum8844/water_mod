@@ -679,6 +679,20 @@ local drinks =
 		potlevel = "mid",
 		potlevel_bottle = "mid",
 	},
+	--[[durian_shake = {
+		test = function(boilier, names, tags) return (names.durian or names.durian_cooked) and ((names.durian or 0)+(names.durian_cooked or 0)) == 1 and (tags.milk or tags.dairy) and ((tags.milk or 0)+(tags.dairy or 0)) == 1 and tags.frozen and tags.sweetener end,
+		priority = 2,
+		health = TUNING.HEALING_MED/4,  -- 5 (25)
+		hunger = TUNING.CALORIES_LARGE/5, -- 4 -> 7.5 (37.5)
+		sanity = TUNING.SANITY_SUPERTINY*2, -- 1 -> 2 (10)
+		thirst = TUNING.HYDRATION_SMALL, -- 15 (75)
+		tags = {"fruittype"},
+		perishtime = TUNING.PERISH_FASTISH, -- 8일
+		cooktime = TUNING.KETTLE_FRUIT,
+		potlevel = "mid",
+		potlevel_bottle = "mid",
+		drinktype = DRINKTYPY.FRUIT,
+	}]]--조정해야함
 }
 
 local mod_drink = require("modcompats/prepareddrinks_mod")
