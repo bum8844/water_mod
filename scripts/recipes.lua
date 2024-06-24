@@ -202,7 +202,6 @@ SortAfter("wx78module_nonedrunk","wx78module_maxhunger1","CHARACTER")
 --AddRecipe2("shaker_machine")
 
 --AddRecipe2("steamdesalinator_kit")
---AddRecipe2("spice_ruincolate_spread")
 
 AddDeconstructRecipe("well", {Ingredient("boards",2),Ingredient("cutstone",6)})
 

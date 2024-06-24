@@ -232,7 +232,7 @@ local function fn()
     
 	inst:AddTag("structure")
 	inst:AddTag("desalinator")
-    inst:AddTag("cleanwater")
+    inst:AddTag("cleanwaterproduction")
 	
 	inst.entity:SetPristine()
 	
