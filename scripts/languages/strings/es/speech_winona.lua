@@ -239,6 +239,15 @@ return {
                 DIRTY_ICE = "¿Se olvidaron de limpiarlo y vaciarlo en pleno invierno?", -- Dirty rainwater has frozen
             },
 
+            BUCKET_DRIFTWOOD_EMPTY = 
+            {
+                EMPTY = "Esta cosa definitivamente no pasaría los estándares de seguridad higiénica.", -- 
+                FULL = "Se ha acumulado agua de lluvia.", -- Clean rainwater has collected
+                FULL_ICE = "Tomará algo de esfuerzo removerlo.", -- Rainwater has frozen
+                DIRTY = "Parece que necesita una buena limpieza.", -- Rainwater has become dirty
+                DIRTY_ICE = "¿Se olvidaron de limpiarlo y vaciarlo en pleno invierno?", -- Dirty rainwater has frozen
+            },
+
             BUCKET_EMPTY =
             {
                 EMPTY = "¿Que debería poner en él?", -- Empty wooden bucket

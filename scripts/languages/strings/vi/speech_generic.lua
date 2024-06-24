@@ -232,9 +232,18 @@ return {
 			DIRTY_ICE = "Nó chứa đầy đá bẩn",
 		},
 
-			BUCKET_WOODIE_EMPTY =
+		BUCKET_WOODIE_EMPTY =
 		{
 			EMPTY = "Nó bị cắt thô bên trong.",
+			FULL = "Nó chứa đầy nước mưa",
+			FULL_ICE = "Nó chứa đầy băng",
+			DIRTY = "Nó chứa đầy nước bẩn",
+			DIRTY_ICE = "Nó chứa đầy đá bẩn",
+		},
+
+		BUCKET_DRIFTWOOD_EMPTY =
+		{
+			EMPTY = "Nó có vẻ chắc chắn hơn những gì tôi tưởng.",
 			FULL = "Nó chứa đầy nước mưa",
 			FULL_ICE = "Nó chứa đầy băng",
 			DIRTY = "Nó chứa đầy nước bẩn",

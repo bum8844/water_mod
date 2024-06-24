@@ -241,6 +241,15 @@ return {
                 DIRTY_ICE = "NƯỚC RẮN LỌC", -- NƯỚC ĐÔNG LẠNH BẨN (NƯỚC RẮN LỌC)
             },
 
+            BUCKET_DRIFTWOOD_EMPTY =
+            {
+                EMPTY = "NÓ CÓ CẢI THIỆN HIỆU SUẤT THÌ CŨNG CHẢ KHIẾN TÔI ẤN TƯỢNG ĐÂU", -- XÔ GỖ RỖNG (KHÔNG CÓ VẤN ĐỀ VỀ TÍNH CHÍNH TRỰC DÙ BẰNG NGOẠI TUYỆT VỜI MÔ TẢ)
+                FULL = "Ngay cả mưa chết tiệt cũng có công dụng", -- NƯỚC MƯA SẠCH (Ngay cả mưa chết tiệt cũng có công dụng)
+                FULL_ICE = "ĐÔNG LẠNH", -- NƯỚC MƯA ĐÔNG LẠNH (ĐÓ LÀ ĐÔNG LẠNH)
+                DIRTY = "NỘI DUNG BỊ HỎNG", -- NƯỚC BẨN (NỘI DUNG BỊ HỎNG)
+                DIRTY_ICE = "NƯỚC RẮN LỌC", -- NƯỚC ĐÔNG LẠNH BẨN (NƯỚC RẮN LỌC)
+            },
+
             BUCKET_EMPTY =
             {
                 EMPTY = "NÓ CHỨA NƯỚC KHỦNG", -- XÔ GỖ RỖNG (NÓ CHỨA NƯỚC KHỦNG)

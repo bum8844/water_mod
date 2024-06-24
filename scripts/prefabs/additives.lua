@@ -28,6 +28,8 @@ local function MakeAdditives(data)
 
         MakeInventoryPhysics(inst)
 
+        inst.minisign_atlas = "minisign_dehy_items_swap"
+
     	inst.AnimState:SetBuild("water_additives")
         inst.AnimState:SetBank("water_additives")
         inst.AnimState:PlayAnimation("idle")

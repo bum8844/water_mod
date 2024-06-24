@@ -235,6 +235,15 @@ return {
                 DIRTY_ICE = "Có lẽ đốt hết một lúc sẽ giải quyết được mọi chuyện?", -- Nước mưa bẩn đã đóng băng
             },
 
+            BUCKET_DRIFTWOOD_EMPTY =
+            {
+                EMPTY = "Sẽ thật thú vị nếu như tôi đặt một ngọn lửa lên thứ đó, hehe", -- Xô Gỗ Rỗng
+                FULL = "Nước mưa đã tích tụ bên trong.", -- Nước mưa sạch bên trong
+                FULL_ICE = "Nó đã đông cứng.", -- Nước mưa đã đóng băng
+                DIRTY = "Nước bẩn đã tích tụ bên trong!", -- Nước mưa đã trở nên bẩn
+                DIRTY_ICE = "Có lẽ đốt hết một lúc sẽ giải quyết được mọi chuyện?", -- Nước mưa bẩn đã đóng băng
+            },
+
             BUCKET_EMPTY =
             {
                 EMPTY = "Thật thú vị khi cho củi vào và đốt hết cùng một lúc!", -- Xô Gỗ Rỗng

@@ -16,15 +16,19 @@ return {
     ANNOUNCE_NOTHIRSTSIESTA = "No quiero convertirme en carne seca por la sed.", -- Attempting to siesta when thirsty during the day
     ANNOUNCE_SLEEP_END = "¡De vuelta al mundo terrenal!", -- Waking up after sleeping and completely sobering up from alcohol
     ANNOUNCE_THIRST = "Puedo parecer inmortal, ¡Pero aún necesito beber agua!", -- When extremely thirsty
+    
     ANNOUNCE_CAFFINE_BUFF_START = "Wow, estoy empezando a temblar", -- Starting the caffeine buff
     ANNOUNCE_CAFFINE_BUFF_STOP = "¿Me pregunto cuánto espíritu queda dentro de mí?", -- Ending the caffeine buff
+    
     ANNOUNCE_CURE_WATERBORNE = "Wow, eso no estuvo tan mal.", -- Dialogue when curing a waterborne disease with an item
+    
     ANNOUNCE_DCAPACITY_CRITICAL = "Los tragos me van a llevar al mundo de las sombras!", -- About to become drunk
     ANNOUNCE_DCAPACITY_HALF = "Wow, ¡Me siento muy bien!", -- When starting to feel tipsy
 
     DESCRIBE =
     {
         BOILBOOK = "¿Hay un manual para hervir agua también?",
+        
         WATER_CLEAN_ICE = "Debe ser difícil de beber.", -- Clean ice water
         WATER_DIRTY_ICE = "Hugh, ¡Está sucio!", -- Dirty ice water
 
@@ -120,7 +124,7 @@ return {
         MULLED = "Es una bebida cálida.", -- Banchou
         BUTTERBEER = "Se siente extrañamente mágico.", -- Butterbeer from the Harry Potter series
 
-            -- Collaborative Teapot Drinks
+        -- Collaborative Teapot Drinks
 
         COCONUT_JUICE = "No tiene ningún tipo de sabor.", -- Shipwrecked Coconut Juice
         RAINBOW_SHAKE = "Con solo ver los colores es suficiente.", -- Shipwrecked Rainbow Jelly Shake
@@ -212,7 +216,7 @@ return {
         NUT_COCONUT_BRANDY = "¡Oye, cabeza de pulpo! ¿Estás buscando algo? ¿Podría ser esto? ¡Se ve bien!", -- ¡Oye, cara de pez! ¿Perdiste algo? ¿Eh?. -- Calypso, Pirates of the Caribbean
         GIANT_BLUEBERRY_GIN = "Hohoho, ¡Esto debería ser divertido!", -- Boom Berry Sapphire (Explodes when carrots are added)
 
-            -- Pot Recipes
+        -- Pot Recipes
 
         DARK_RUINCOLATE = "¡Un trozo del mundo oscuro!", -- Dark Chocolate
         WHITE_RUINCOLATE = "Sigue siendo más suave que un alma.", -- White Chocolate
@@ -231,6 +235,15 @@ return {
         BUCKET_WOODIE_EMPTY =
         {
             EMPTY = "Es casi un contenedor.", -- Woodie's empty wooden bucket
+            FULL = "Agua para mortales.", -- Clean rainwater is filled
+            FULL_ICE = "Un mundo demasiado frío para vivir.", -- Rainwater has frozen
+            DIRTY = "Agua sucia.", -- Rainwater has become dirty
+            DIRTY_ICE = "Parece haber experimentado toda la suciedad del mundo.", -- Dirty rainwater has frozen
+        },
+
+        BUCKET_DRIFTWOOD_EMPTY = 
+        {
+            EMPTY = "¡Uy uy! Me preguntó si cuando saqué agua me clavaré astillas de la madera", -- Empty wooden bucket
             FULL = "Agua para mortales.", -- Clean rainwater is filled
             FULL_ICE = "Un mundo demasiado frío para vivir.", -- Rainwater has frozen
             DIRTY = "Agua sucia.", -- Rainwater has become dirty
@@ -272,7 +285,6 @@ return {
         },
 
         CAMPKETTLE_ITEM = "Una manera para sobrevivir de los mortales.", -- Examining a camp kettle item
-
         CAMPKETTLE =
         {
             GENERIC = "¡Crear algo de la nada es imposible!", -- Examining a camp kettle with no water
@@ -283,7 +295,6 @@ return {
         },
 
         CAMPDESALINATOR_ITEM = "Una herramienta sencilla para quitar la sal.", -- Examining a camp desalinator item
-
         CAMPDESALINATOR =
         {
             GENERIC = "Quiere agua salada, a diferencia de los mortales.", -- Camp desalinator has no water

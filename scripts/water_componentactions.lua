@@ -82,14 +82,11 @@ local USEITEM =
         end
     end,
 
-    --[[edible = function(inst, doer, target, actions, right)
-        if target:HasTag("player") then
-            if inst:HasTag("drink") then
-                table.insert(actions, ACTIONS.FEEDPLAYER)
-                return
-            end
+    machinetool = function(inst, doer, target, actions)
+        if target:HasTag("onlyoneget") then
+            table.insert(actions, ACTIONS.MACHINETOOL)
         end
-    end,]]
+    end,
 
     upgrader = function(inst, doer, target, actions)
         if inst:HasTag("tile_deploy") then

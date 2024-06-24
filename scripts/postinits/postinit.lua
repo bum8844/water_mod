@@ -13,6 +13,7 @@ local postinits =
 		"wisecracker",
 		"retrofitcavemap_anr",
 		"retrofitforestmap_anr",
+		"drawable",
 	},
 
 	prefabs =
@@ -31,6 +32,7 @@ local postinits =
 		"mosquitosack",
 		"wx78_modules",
 		"fruitfly",
+		"preparedfoods",
 	},
 
 	screens = {

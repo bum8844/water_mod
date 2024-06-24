@@ -229,6 +229,9 @@ local function fn_item()
 
     MakeInventoryPhysics(inst)  
 
+    inst.minisign_atlas = "minisign_dehy_items_swap"
+    inst.minisign_prefab_name = true
+    
     inst.AnimState:SetBuild("campdesalinator_item")
     inst.AnimState:SetBank("campdesalinator_item")
     inst.AnimState:PlayAnimation("idle")

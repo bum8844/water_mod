@@ -237,6 +237,15 @@ return {
             DIRTY_ICE = "Dường như đã trải qua mọi biến động trên thế giới.", -- Nước mưa bẩn đã đóng băng
         },
 
+        BUCKET_DRIFTWOOD_EMPTY =
+        {
+            EMPTY = "Hyuyu, Không biết mảnh vụn có dính vào tay tôi khi dùng thứ này để múc nước không!", -- Thùng gỗ rỗng
+            FULL = "Nước cho con người.", -- Nước mưa sạch được đổ đầy
+            FULL_ICE = "Một thế giới quá lạnh để sống mặc dù nó trông giống như nước.", -- Nước mưa đã đóng băng
+            DIRTY = "Đó là nước bẩn.", -- Nước mưa đã trở nên bẩn
+            DIRTY_ICE = "Dường như đã trải qua mọi biến động trên thế giới.", -- Nước mưa bẩn đã đóng băng
+        },
+
         BUCKET_EMPTY =
         {
             EMPTY = "Xô đựng nước.", -- Xô gỗ rỗng

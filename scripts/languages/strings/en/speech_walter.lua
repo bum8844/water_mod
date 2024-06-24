@@ -3,7 +3,7 @@ return {
 	{
 		GIVE =
 		{
-			WELL_NOTEMPTY = "Have to remove the bucket first.", --★★★★★★★
+			WELL_NOTEMPTY = "Have to remove the bucket first.", --
 			WELL_BUSY = "The water's still coming up.",
 		}
 	},
@@ -11,11 +11,11 @@ return {
 	ANNOUNCE_DRUNK = "I heard a story on a radio once...hic",
 	ANNOUNCE_DRUNK_END = "I feel much better now!",
 	ANNOUNCE_DRUNK_IMMUNITY = "only_used_by_wathgrithr",
-	ANNOUNCE_NOTCHARGE = "Can't milk it, it's utterly dry! Heh, that was good.", --★★★★★★★
+	ANNOUNCE_NOTCHARGE = "Can't milk it, it's utterly dry! Heh, that was good.", --
 	ANNOUNCE_NOTHIRSTSLEEP = "I'm too thirsty to sleep.",
 	ANNOUNCE_NOTHIRSTSIESTA = "I need a drink before bedtime.",
-	ANNOUNCE_SLEEP_END = "I feel a bit better after sleeping", --★★★★★★★
-	ANNOUNCE_THIRST = "How about taking a moment to have some water?",  --★★★★★★★
+	ANNOUNCE_SLEEP_END = "I feel a bit better after sleeping", --
+	ANNOUNCE_THIRST = "How about taking a moment to have some water?",  --
 
 	ANNOUNCE_CAFFINE_BUFF_START = "I wanna start exploring right now." , -- 카페인 버프 시작
     ANNOUNCE_CAFFINE_BUFF_STOP = "Getting a little tired..." ,  -- 카페인 버프 끝
@@ -23,23 +23,23 @@ return {
     ANNOUNCE_CURE_WATERBORNE = "I'm feeling better now." ,  -- 수인성 질병을 아이템으로 치료했을때의 대사
 
 	ANNOUNCE_DCAPACITY_CRITICAL = "Why do I feel so heavy...",
-	ANNOUNCE_DCAPACITY_HALF = "I'm feeling like something's wrong...", --★★★★★★★
+	ANNOUNCE_DCAPACITY_HALF = "I'm feeling like something's wrong...", --
 
 	DESCRIBE =
 	{
-		BOILBOOK =  "I can memorize one more book, anyway", --★★★★★★★
+		BOILBOOK =  "It doesn't hurt to memorize one more handbook.", --
 
-		WATER_CLEAN_ICE = "Oh, gosh,It's frozen.", --★★★★★★★
+		WATER_CLEAN_ICE = "Oh, gosh,It's frozen.", --
 		WATER_DIRTY_ICE = "The ice is so black!.",
 
 		SPICE_CAFFEINPEPPER = "Makes camping food taste much better.",
 
 		WELL_KIT = "Don't dwell around the well. Heh.", 
-		WELL_SPRINKLER_KIT = "Let's give our plants some 'irri-gation' now!", --★★★★★★★
+		WELL_SPRINKLER_KIT = "Let's give our plants some 'irri-gation' now!", --
 		WELL_WATERPUMP_KIT = "High-Draw Pump! It leads the water from low to high?",
-		WELL_BURYING_KIT = "I should fill in any holes that I can't even step down into for safety!", --★★★★★★★
+		WELL_BURYING_KIT = "I should fill in any holes that I can't even step down into for safety!", --
 		WELL_DRILLING = "One well at a time!",
-		WELL_DRILLING_ITEM = "Wanna dig a well hole Woby?", --★★★★★★★
+		WELL_DRILLING_ITEM = "Wanna dig a well hole Woby?", --
 		HOLE = "I wonder if it leads to the other side of the world?",
 		WELL = "What's wrong Woby? Did somebody fall in?",
 
@@ -56,7 +56,7 @@ return {
 		TEALEAVES_DRIED = "The leaves are rustly.",
 
 		CAFFEINBERRY = "I thought coffee grew from trees.",
-		DUG_CAFFEINBERRY = "Take this to camp, and the grown-ups will love it.", --★★★★★★★
+		DUG_CAFFEINBERRY = "Take this to camp, and the grown-ups will love it.", --
 		CAFFEINBERRY_BEAN = "This is what coffee looks like?",
 		CAFFEINBERRY_BEAN_COOKED = "Now it smells more like coffee!",
 		
@@ -94,17 +94,17 @@ return {
 		GLOWBERRYJUICE = "I wonder if this'll make me bright?",
 		WATERMELON_JUICE = "Should I call this watermelon water?",
 
-		VEGGIE_TEA = "Um,This looks...healthy.",--★★★★★★★
+		VEGGIE_TEA = "Um,This looks...healthy.",--
 		CARROT_TEA = "Poor carrot...but not really.",
 		CACTUS_TEA = "Hope i don't get a thorn in my mouth.",
 		TOMATO_JUICE = "This looks like a vampire drink.",
-		LUMPY_TEA =  "Ew... I hope it doesn't smell like dirt." , --★★★★★★★
-		SEAWEED_SHAKE = "What if it starts growing sea weeds inside me?", --★★★★★★★
+		LUMPY_TEA =  "Ew... I hope it doesn't smell like dirt." , --
+		SEAWEED_SHAKE = "What if it starts growing sea weeds inside me?", --
 
 		GREENTEA = "I think I saw a bug! Just kidding.",
 		BLACKTEA = "Which dinosaur enjoys tea? Tea-Rex!",
 		BLACKTEA_ICED = "Ice is in the pot-tea.",
-		FUER = "How about trying some 'Folli-Tea' for a refreshing taste of nature?", --★★★★★★★
+		FUER = "How about trying some 'Folli-Tea' for a refreshing taste of nature?", --
 		MIXFLOWER = "Do bees drink tea? Probably not.",
 		HIBISCUSTEA = "I have a feeling it's gonna be sour.",
 		CACTUSFLOWER_TEA = "This is how you survive in the desert.",
@@ -118,7 +118,7 @@ return {
 
 		HOTRUINCOLATE = "Now I don't have to wait for Christmas.",
 		RUINCOLATE_SMOOTHIE = "Chocolate and ice will be crunchy.",
-		RUINXOCOLATL = "Is this cocoa? Really?", --★★★★★★★
+		RUINXOCOLATL = "Is this cocoa? Really?", --
 		TEA_RUINCOLATE_LATTE = "It's green...which I don't like.",
 
 		MULLED = "Bitter is good for you!",
@@ -134,7 +134,7 @@ return {
 		SWEET_RICE_DRINK = "Not a juice, But not a tea!",
 		PINEANANAS_JUICE = "Do you know who Anana's brother is? Banana!", 
 		ORANGE_JUICE = "Meet my 'oranginal' juice.", 
-		STRAWBERRY_SMOOTHIE = "Strong but soft. Because it's a strawng berry smoothie.", --★★★★★★★ 
+		STRAWBERRY_SMOOTHIE = "Strong but soft. Because it's a strawng berry smoothie.", -- 
 		STRAWBERRY_MILK_SMOOTHIE = "Refreshing and cool!", 
 
 		-- 양조기 음료
@@ -168,7 +168,7 @@ return {
 
 		CHERRY_DOCTOR_COLA = "Definitely not a dentist.",
 		PINEANANASSODA = "We'll call it the Pinetree Pioneer Apple Soda.", 
-		ORANGESODA = "What do you call it when an orange soda dreams? Fanta-sy!", --  --★★★★★★★ 
+		ORANGESODA = "What do you call it when an orange soda dreams? Fanta-sy!", --  -- 
 		STRAWBERRYSODA = "I've never seen strawberry soda before!", -- 
 
 		--콜라보 양조주
@@ -176,7 +176,7 @@ return {
 		AUROBOW = "I wanna drink that color. Maybe just a sip?", 
 		COCONUT_WINE = "Looks sweet!", -- 난파선 코코넛 와인
 		CHERRY_BLOOM_MADHU = "Looks like alcohol in a gift shop!", 
-		GIANT_BLUEBERRY_WINE = "Uh, at least that kept its temper.", --  --★★★★★★★ 
+		GIANT_BLUEBERRY_WINE = "Uh, at least that kept its temper.", --  -- 
 		RICE_WINE = "Probably not milk.", -- 비타협 막걸리
 		WHEAT_BEER = "Looks like real beer!", -- 힙 오브 푸드 밀맥주
 		PALE_BEER = "Now I know why grown ups call it pale ail.", 
@@ -193,13 +193,13 @@ return {
 
 		--왈리 전용 증류주
 
-		BERRY_GIN = "I heard it was made for medicinal purposes, but it made a lot of people sick.", --★★★★★★★
+		BERRY_GIN = "I heard it was made for medicinal purposes, but it made a lot of people sick.", --
 		GLOWBERRY_GIN = "Shiney Gin! But it's not in a lamp.",
 		ABSINTHE = "I think I heard it's called the green fairy!",
 		TEA_LUMPY_VODKA = "This looks healthy! but it's still alcohol.",
 		PETALS_BERRY_BRANDY = "I don't know about the taste, but it looks pretty!",
 		KAHLUA = "I think Mr. Warly wanted to drink coffee and alcohol",
-		NUT_CORN_WHISKEY = "It would have been better if it was a form that I could eat.",--★★★★★★★ 
+		NUT_CORN_WHISKEY = "It would have been better if it was a form that I could eat.",-- 
         RUINCACAO_CREAM_LIQUEUR = "Looks tasty! Too bad it's alcohol.",
         RUMCHATA = "Looks sweet and soft!",
 
@@ -220,7 +220,7 @@ return {
 		--냄비 요리
 
         DARK_RUINCOLATE = "I think Mr. Warly made a mistake.",
-        WHITE_RUINCOLATE = "Let's save it so that we don't eat too much at once!", --★★★★★★★
+        WHITE_RUINCOLATE = "Let's save it so that we don't eat too much at once!", --
         RUINCOLATE = "Oompa- loompa- doompety- doo-.",
         RUIN_SCHOKAKOLA = "At least the chocolate won't get squashed on my adventures.",
 
@@ -236,6 +236,15 @@ return {
 		BUCKET_WOODIE_EMPTY = 
 		{
 			EMPTY = "This bucket is wild!",
+			FULL = "Safe to drink now!",
+			FULL_ICE = "Aw, now I have to boil it.",
+			DIRTY = "I think this went bad!",
+			DIRTY_ICE = "I don't think I can eat this ice.",
+		},
+
+		BUCKET_DRIFTWOOD_EMPTY = 
+		{
+			EMPTY = "Looks like a bucket that has drifted onto a deserted island!",
 			FULL = "Safe to drink now!",
 			FULL_ICE = "Aw, now I have to boil it.",
 			DIRTY = "I think this went bad!",
@@ -326,7 +335,7 @@ return {
 
 		DISTILLERS =
 		{   
-		    EMPTY = "It's got all kinds of complicated gadgets attached!", --★★★★★★
+		    EMPTY = "It's got all kinds of complicated gadgets attached!", --
 			DISTILLTING_LONG = "This'll be a while.", --
 			DISTILLING_SHORT = "I think it's for alcohol?", --
 			DONE = "I should tell the guys at camp drinks are ready.", --
@@ -335,7 +344,7 @@ return {
 		WELL_WATERPUMP = {
 			HIGH_PRESSURE = "The power of steam is awesome!", -- 
 			MIDDLE_PRESSURE = "It's as good as Mr. Wolfgang!", --
-			LOW_PRESSURE = "Does the machine need more food?", --★★★★★★ 
+			LOW_PRESSURE = "Does the machine need more food?", -- 
 			RECHARG_PRESSURE = "We need to find a pond Woby.", -- 
 		},
 

@@ -20,6 +20,8 @@ local function tealeaves()
     inst.entity:AddAnimState()
     inst.entity:AddNetwork()
 
+    inst.minisign_atlas = "minisign_dehy_items_swap"
+
     inst.AnimState:SetBank("tealeaves")
     inst.AnimState:SetBuild("tealeaves")
     inst.AnimState:PlayAnimation("idle_tealeaves")
@@ -74,6 +76,8 @@ local function tealeaves_dried()
     inst.entity:AddAnimState()
     inst.entity:AddNetwork()
 
+    inst.minisign_atlas = "minisign_dehy_items_swap"
+
     inst.AnimState:SetBank("tealeaves")
     inst.AnimState:SetBuild("tealeaves")
     inst.AnimState:PlayAnimation("idle_tealeaves_dried")
@@ -119,6 +123,8 @@ local function tea_seed_cooked()
     inst.entity:AddTransform()
     inst.entity:AddAnimState()
     inst.entity:AddNetwork()
+
+    inst.minisign_atlas = "minisign_dehy_items_swap"
 
     inst.AnimState:SetBank("tea_seed")
     inst.AnimState:SetBuild("tea_tree_seed")
@@ -270,6 +276,8 @@ local function tea_seed()
     inst.entity:AddTransform()
     inst.entity:AddAnimState()
     inst.entity:AddNetwork()
+
+    inst.minisign_atlas = "minisign_dehy_items_swap"
 
     inst.AnimState:SetBank("tea_seed")
     inst.AnimState:SetBuild("tea_tree_seed")

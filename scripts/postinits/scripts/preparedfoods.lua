@@ -1,9 +1,5 @@
---local notmeat = require"utils/water_brew_utils".notmeat
---local modlist = require("utils/water_modlist").active_mod_compatibility
-
-local function notmeat(tags)
-	return not (tags.fish or tags.jellyfish or tags.meat or tags.egg or tags.boss or tags.poop or tags.elemental or tags.paper or tags.horn or tags.spotspice or tags.gears or tags.rabbit or tags.beanbug or tags.gummybug or tags.flour or tags.bread )
-end
+local notmeat = require"utils/water_brew_utils".notmeat
+local modlist = require("utils/water_modlist").active_mod_compatibility
 
 local foods = require("preparedfoods")
 
@@ -55,17 +51,18 @@ for k, v in pairs(water_foods) do
     v.priority = v.priority or 0
 
 	v.cookbook_category = "cookpot"
-	-- if modlist.legion and _G.CONFIGS_LEGION.BETTERCOOKBOOK then
-    --	v.cook_need = nil
-    --	v.cook_cant = nil
-    --	v.recipe_count = 1
-	--	local cookbookui_legion = require "modcompats/1392778117/cookbookui_legion"
-	--	v.custom_cookbook_details_fn = function(data, self, top, left)
-	--		local root = cookbookui_legion(data, self, top, left)
-	--		return root
-	--	end
-    --end
+	if modlist.legion and _G.CONFIGS_LEGION.BETTERCOOKBOOK then
+    	v.cook_need = nil
+    	v.cook_cant = nil
+    	v.recipe_count = 1
+		local cookbookui_legion = require "modcompats/1392778117/cookbookui_legion"
+		v.custom_cookbook_details_fn = function(data, self, top, left)
+			local root = cookbookui_legion(data, self, top, left)
+			return root
+		end
+    end
 	v.overridebuild = "water_cook_pot"
+	v.minisign_atlas = "minisign_dehy_items_swap"
 end
 
 for k, v in pairs(water_foods) do

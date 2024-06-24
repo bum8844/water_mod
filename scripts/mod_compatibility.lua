@@ -8,6 +8,11 @@ if modlist.hof then
 end
 if modlist.te then
 	modrequire("modcompats/1505270912/te_water_spicedfoods_mod")
+	modrequire("modcompats/1505270912/te_minisign_patch")
+end
+if modlist.ta then
+	modrequire("modcompats/2986194136/ta_water_spicedfoods_mod")
+	modrequire("modcompats/2986194136/ta_minisign_patch")
 end
 if modlist.ia then
 	modrequire("modcompats/1467214795/ia_water_spicedfoods_mod")

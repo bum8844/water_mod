@@ -194,6 +194,9 @@ local function MakeBucketItem(bucketname, multiplier, sound, nowood)
 
         MakeInventoryPhysics(inst)	
 
+        inst.minisign_atlas = "minisign_dehy_items_swap"
+        inst.minisign_custom_name = "buckets_"..names.."empty"
+
         inst.AnimState:SetBuild("buckets")
         inst.AnimState:SetBank("buckets")
         inst.AnimState:PlayAnimation("empty")

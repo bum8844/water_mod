@@ -8,12 +8,12 @@ return {
         }
     },
 
-    ANNOUNCE_DRUNK = "Hip, me siento algo alegre, pero no me excederé...", -- Drunk
-    ANNOUNCE_DRUNK_END = "Hm...debería preparar algo para la resaca.", -- Sobering up from being drunk (hungover)
+    ANNOUNCE_DRUNK = "Hipo, me dijeron que me divirtiera, pero que no me emborrachara...", -- Drunk
+    ANNOUNCE_DRUNK_END = "Necesito preparar una comida que me cure la resaca..", -- Sobering up from being drunk (hungover)
     ANNOUNCE_DRUNK_IMMUNITY = "", -- Temporary. For Wigfrid only.
     ANNOUNCE_NOTCHARGE = "Ordeñarla ahora no producirá ningún resultado.", -- Trying to milk the Electric Milk Goat without it being charged
-    ANNOUNCE_NOTHIRSTSLEEP = "Estoy sediento, no debería dormirme todavía.", -- Trying to sleep at night with low thirst
-    ANNOUNCE_NOTHIRSTSIESTA = "Estoy sediento, no es hora de una siesta.", -- Trying to take a siesta during the day with low thirst
+    ANNOUNCE_NOTHIRSTSLEEP = "¡Mi sed es mas grande que mi cansancio!", -- Trying to sleep at night with low thirst
+    ANNOUNCE_NOTHIRSTSIESTA = "¡Mi sed es mayor que mi fatiga!", -- Trying to take a siesta during the day with low thirst
     ANNOUNCE_SLEEP_END = "Ah... Debo ser más cauteloso y evitar los excesos la próxima vez..", -- Waking up after sleeping and sobering up completely
     ANNOUNCE_THIRST = "Debo beber algo...", -- Very thirsty
 
@@ -22,8 +22,8 @@ return {
 
     ANNOUNCE_CURE_WATERBORNE = "Mi estómago se ha calmado un poco.", -- Wigfrid refusing to drink contaminated water
 
-    ANNOUNCE_DCAPACITY_CRITICAL = "Debo moderarme, no debería beber más.", -- Very close to getting drunk
-    ANNOUNCE_DCAPACITY_HALF = "Mmm, me siento muy alegre.", -- Starting to feel the effects of drinking
+    ANNOUNCE_DCAPACITY_CRITICAL = "Tengo que dejar de beber.", -- Very close to getting drunk
+    ANNOUNCE_DCAPACITY_HALF = "Mmm, me siento un poco mareado.", -- Starting to feel the effects of drinking
 
     DESCRIBE =
     {
@@ -34,19 +34,21 @@ return {
 
         SPICE_CAFFEINPEPPER = "Realza el sabor de cualquier plato.", -- Caffeine pepper spice
 
-        WELL_KIT = "¡Ahora sólo necesitamos un manantial burbujeante!", -- Well Kit
+        WELL_KIT = "¡Si ahora hubiera un manantial de agua limpia...!", -- Well Kit
         WELL_SPRINKLER_KIT = "Con esto puedo servirle agua fácilmente a mis invitados del jardín", -- Sprinkler Kit
         WELL_WATERPUMP_KIT = "¡Es como un dispensador de agua!", -- Steam Water Pump Kit
         WELL_BURYING_KIT = "Debemos asegurarnos que nadie tropiece con estos agujeros.", -- Hole Burying Kit
         WELL_DRILLING = "Debo evitar cocinar cerca de ese taladrerío.", -- Drilling a hole with a drill
-        WELL_DRILLING_ITEM = "Encontraré un manto acuífero y lo perforaré.", -- Drilling item
+        WELL_DRILLING_ITEM = "Esto encontrará la veta de agua y perforará un agujero.", -- Drilling item
         HOLE = "Puedo oír el sonido de el agua fluyendo.", -- Well hole
         WELL = "¡Ampliemos nuestro suministro de agua potable!", -- Well
+
+        WX78MODULE_NONEDRUNK = "Eso le da a nuestro amigo metálico un poco más de sabor, ¿verdad?", -- 
 
         -- Waterlogged Plant Mod
 
         TEA_TREE = "Normalmente se encuentran al otro lado del mar, supongo.", -- Tea tree
-        DUG_TEA_TREE = "Es como té para llevar.", -- Tea tree dug from the ground
+        DUG_TEA_TREE = "Me abasteceré de las hojas de té localmente.", -- Tea tree dug from the ground
         TEA_SEED = "Me pregunto qué habrá dentro de esta semilla.", -- Tea tree seed
         TEA_SEED_COOKED = "No parece muy valioso como ingrediente culinario.", -- Roasted tea tree seed
         TEA_SEED_SAPLING = "Todavía es muy joven.", -- Tea tree sapling
@@ -54,8 +56,8 @@ return {
         TEALEAVES_DRIED = "Ahora, todo lo que necesita es agua caliente...", -- Dried tea leaves
 
         CAFFEINBERRY = "Si creciera, tendría granos de café cada mañana.", -- Coffee bush
-        DUG_CAFFEINBERRY = "Un café para llevar.", -- Coffee bush dug from the ground
-        CAFFEINBERRY_BEAN = "Tiene un ligero aroma a pimienta...", -- Raw coffee bean
+        DUG_CAFFEINBERRY = "Este es un café para llevar.", -- Coffee bush dug from the ground
+        CAFFEINBERRY_BEAN = "Espera, ¿tiene un toque... de aroma a pimienta...?", -- Raw coffee bean
         CAFFEINBERRY_BEAN_COOKED = "¡Espléndido!", -- Roasted coffee bean
 
         RUINCACAO_TREE = "Usualmente hay que cruzar el mar para verlo.", -- Cacao tree
@@ -63,7 +65,7 @@ return {
         RUINCACAO_SEED = "Es bastante escalofriante.", -- Cacao sapling item
         RUINCACAO_SEED_SAPLING = "Es bastante aterrador.", -- Cacao sapling planted
         RUINCACAO = "Debería ver que tiene dentro.", -- Unbroken cacao pod
-        RUINCACAO_BEAN = "¡Tiene un fuerte aroma!", -- Broken cacao pod
+        RUINCACAO_BEAN = "¡Iug! ¡Esto huele grasoso!", -- Broken cacao pod
         RUINCACAO_BEAN_COOKED = "No puedo comerlo así.", -- Roasted cacao pod
 
         -- Distiller Additives
@@ -75,11 +77,11 @@ return {
 
         -- Drinks
 
-        WATER_CLEAN = "El agua limpia y sin impurezas es vital para cocinar.", -- Clean water
+        WATER_CLEAN = "El agua pura y sin sabor, es esencial para cocinar.", -- Clean water
         WATER_DIRTY = "No puedo usar esta agua para cocinar.", -- Dirty water
-        WATER_SALTY = "No creo que esto sea adecuado para hacer un caldo.", -- Saltwater
+        WATER_SALTY = "¿Seguro que es suficiente para purificarla?", -- Saltwater
 
-        GOOPYDRINK = "¡Esto es el caos encarnado, el caos!", -- Failed drink (wet goop) - Gordon Ramsay's quote
+        GOOPYDRINK = "¡Esto es puro caos! ¡Absolutamente puro caos!", -- Failed drink (wet goop) - Gordon Ramsay's quote
 
         -- Teapot Drinks
 
@@ -119,18 +121,18 @@ return {
         RUINXOCOLATL = "Una bebida exótica llena de la sabiduría de los sudamericanos.", -- Xocolatl (Spicy)
         TEA_RUINCOLATE_LATTE = "El amargor de las hojas de té complementa el dulzor del chocolate.", -- Matcha Latte
 
-        MULLED = "Esto es genial para cuando te sientes indispuesto.", -- Bungsho
+        MULLED = "Te recomiendo esta bebida si te sientes indispuesto.", -- Bungsho
         BUTTERBEER = "La bebida más deliciosa del callejón Diagon.", -- Butterbeer from the Harry Potter series
 
         -- Collaboration Teapot Drinks
 
         COCONUT_JUICE = "Me hace sentir como si estuviera en unas vacaciones tropicales con cada sorbo.", -- Castaway Coconut Juice
-        RAINBOW_SHAKE = "No es exactamente el sabor del arcoíris, pero casi.", -- Castaway Rainbow Jelly Shake
-        QUARTZ_SHAKE = "Debería haber preparado el apetitoso batido de piedra lunar.", -- Castaway Quartz Crystals Shake
+        RAINBOW_SHAKE = "No tiene el sabor del arco iris, pero está bien.", -- Castaway Rainbow Jelly Shake
+        QUARTZ_SHAKE = "En mi opinión, habría sido preferible que Nam pla", -- Castaway Quartz Crystals Shake
         CHERRY_ROSEBERRIES_TEA = "Tiene una fragancia deliciosa y ayuda a regular el calor corporal.", -- Cherry Blossom Rose Hip Tea
         CHERRY_HONEY_TEA = "Es una solución rápida para el dolor de garganta.", -- Cherry Blossom Cherry Honey Tea
         SWEET_RICE_DRINK = "¡Es dulce con una textura inusual!", -- Vitahebhi Sikhye
-        PINEANANAS_JUICE = "Ten cuidado de no beber demasiado, ¡Podría caramelizar tu boca!", -- Legion Pineapple Juice
+        PINEANANAS_JUICE = "Debo cuidar de no beber mucho, o me pelara la lengua.", -- Legion Pineapple Juice
         ORANGE_JUICE = "¡Es zumo de naranja recién exprimido!", -- More Food Pack Orange Juice
         STRAWBERRY_SMOOTHIE = "¡Está fresco y delicioso!.", -- More Food Pack Strawberry Smoothie
         STRAWBERRY_MILK_SMOOTHIE = "¡Es refrescante, y delicioso!", -- More Food Pack Strawberry Smoothie Latte
@@ -146,43 +148,43 @@ return {
         LEMONLIMESODA = "¡Tan refrescante como un melón!", -- Lemon-lime soda (Superior to fruit soda)
         COLA = "Los niños la adora.", -- Cola
         COLAQUANTUM = "Una dama se volvió loca buscando esto ...", -- Cola Quantum (Forn McRain: Fallout 3 Sierra Petrovita reference)
-        LUMPY_BEER = "Sólo lo prefieren algunos clientes.", -- Root beer (non-alcoholic)
+        LUMPY_BEER = "Los clientes a los que les gusta esta bebida sólo piden ésta.", -- Root beer (non-alcoholic)
 
         -- Brewery Spirits
 
         CORN_BEER = "Sabe aún mejor después de una comida grasosa.", -- Corn beer
-        MADHU = "Me pregunto si Bilroad sigue haciendo hidromiel con frutos de roble.", -- Mead (Forn McRain: Skyrim Honningbrew Mead story)
+        MADHU = "Me pregunto si Vilod sigue haciendo ese hidromiel con bayas de enebro mezcladas.", -- Mead (Forn McRain: Skyrim Honningbrew Mead story)
         WINE = "¡Es el mejor regalo de los dioses a los humanos!", -- Wine (Regular berry brewing)
         NOBLEWINE = "Sería mejor con un poco de queso azul y nueces.", -- Noble wine (Roasted berry brewing)
         SPARKLINGWINE = "Refresca y despierta el apetito.", -- Sparkling wine
         GLOWBERRYWINE = "¡Un nuevo intento de vino!", -- Glowberry wine
         KUMIS = "Sabiduría de la gente de Asia Central.", -- Kumis, fermented mare's milk
-        LUMPY_WINE = "Ligeramente ácido.", -- Sake (Root liquor, includes potatoes, sweet potatoes, etc.)
-        PULQUE = "Es un poco pegajoso y tiene un sabor ácido.", -- Pulque (Agave sap)
+        LUMPY_WINE = "Tiene un cuerpo ligero con una acidez fresca.", -- Sake (Root liquor, includes potatoes, sweet potatoes, etc.)
+        PULQUE = "Tiene una acidez persistente al paladar.", -- Pulque (Agave sap)
         RUINCACAO_WINE = "Lleno de sabor a cacao.", -- Cacao wine
 
         -- Collaboration Soda
 
-        CHERRY_DOCTOR_COLA = "La preferida por los entusiastas, sin duda.", -- Cherry Forest Dr. Pepper (Dr. Cherry)
-        PINEANANASSODA = "Perfecta si has comido demasiado.", -- Pineapple soda (Oran C)
+        CHERRY_DOCTOR_COLA = "Es una bebida de nicho que cuenta con apasionados seguidores.", -- Cherry Forest Dr. Pepper (Dr. Cherry)
+        PINEANANASSODA = "Esta bebida es perfecta para ayudar a digerir una buena merienda.", -- Pineapple soda (Oran C)
         ORANGESODA = "¡Refrescante después de una comida!", -- Orange soda (Fanta)
         STRAWBERRYSODA = "Refresco dulce con sabor a fresa.", -- Strawberry soda (Welch's Strawberry)
 
         -- Collaboration Spirits
 
-        AUROBOW = "Una bebida con colores y aromas complejos como un arcoíris.", -- Rainbow Jellyfish Liquor (Aurobo)
+        AUROBOW = "Es una bebida verdaderamente colorida.", -- Rainbow Jellyfish Liquor (Aurobo)
         COCONUT_WINE = "Cremosamente dulce, con un toque de acidez y viscosidad.", -- Coconut Wine (Aurobo Coconut Wine)
         CHERRY_BLOOM_MADHU = "Se puede sentir la fragancia de fresas, frambuesas y un toque de vainilla.", -- Cherry Blossom Honey Mead (Cherry Forest Cherry Blossom Mead)
         GIANT_BLUEBERRY_WINE = "Parece que mi idea iba en una dirección ligeramente diferente.", -- Boom Berry Wine (Explodes when ignited)
-        RICE_WINE = "Licor tradicional de Asia Oriental.", -- Vitahebhi Makgeolli
+        RICE_WINE = "Es una bebida tradicional de Asia Oriental.", -- Vitahebhi Makgeolli
         WHEAT_BEER = "Aroma de plátano único y fácil de beber.", -- Heap of Food Wheat Beer
         PALE_BEER = "¡Un nuevo intento de cerveza!", -- Legion Pale Ale (Light blue beer with Munstera fruit)
 
         -- Distilled Spirits
 
         DISINFECTANT = "¡No lo confundas con alcohol!", -- Disinfectant
-        CORN_WHISKEY = "Dulzor, picante y una rica textura.", -- Corn Whiskey
-        LUMPY_VODKA = "Cuanto más puro, suave e inoloro sea el vodka, mejor.", -- Vodka
+        CORN_WHISKEY = "Se caracteriza por un balance entre un sabor dulce, un cosquilleo picante que despierta los sentidos, y un rico sabor cremoso.", -- Corn Whiskey
+        LUMPY_VODKA = "Un vodka de alta calidad debe ser transparente, de sabor neutro y sin aroma perceptible.", -- Vodka
         TEQUILA = "Aroma suavemente amaderado.", -- Tequila
         MADHU_RUM = "Aroma dulce característico de las bebidas destiladas.", -- Rum
         BERRY_BRANDY = "Se puede olfatear un aroma abundante.", -- Berry Brandy
@@ -190,12 +192,12 @@ return {
 
         -- Warly Exclusive Distilled Spirits
 
-        BERRY_GIN = "Olor característico a pino.", -- Gin
+        BERRY_GIN = "El aroma a pino recuerda a un paseo por el bosque.", -- Gin
         GLOWBERRY_GIN = "Una fragancia enigmática como si tragase la misma luz.", -- Glow Berry Gin
         ABSINTHE = "Dulzor sutíl, aroma a ajenjo y una mezcla de sabores a especias y hierbas.", -- Absinthe
-        TEA_LUMPY_VODKA = "He mezclado el amargor y el fuerte aroma de las hojas de té.", -- Green Tea Liqueur
+        TEA_LUMPY_VODKA = "Ha mezclado el amargor y el fuerte aroma de las hojas de té.", -- Green Tea Liqueur
         PETALS_BERRY_BRANDY = "Se siente el aroma de frambuesas, mandarinas, fresas y flores.", -- Rose Petal Brandy
-        KAHLUA = "Café negro intenso con un toque dulce de mantequilla, nuez y ligeramente amargo.", -- Coffee Liqueur Kahlua
+        KAHLUA = "Tiene un fuerte sabor a café negro con un aroma dulce y mantecoso y matices de nuez.", -- Coffee Liqueur Kahlua
         NUT_CORN_WHISKY = "No puedo resistirme ante el ligero amargor y aroma a vainilla.", -- Nut Whiskey
         RUINCACAO_CREAM_LIQUEUR = "Puedes disfrutar del cremoso aroma y el dulce sabor del chocolate belga.", -- Baileys Cacao Cream Liqueur
         RUMCHATA = "El sabor a canela se combina con la vainilla, y resulta en un sabor de nuez cremoso.", -- Rumchata (Rum mixed with horchata, a dairy beverage)
@@ -203,9 +205,9 @@ return {
         -- Collaboration Distilled Spirits
 
         MOONWAY = "Parece que contiene un arcoíris, con colores y aromas complejos.", -- Rainbow Jellyfish Distilled Spirit (Rainbow Jellyfish Liquor)
-        ARRACK = "Pesadez distintiva de la fruta de palma y un complejo aroma de frutos secos.", -- Arrack Indonesian version of Coconut Wine
+        ARRACK = "El aroma es rico y complejo, con notas de nuez que recuerdan a la palma.", -- Arrack Indonesian version of Coconut Wine
         CHERRY_BLOOM_RUM = "Incluso mirarlo es agradable.", -- Cherry Blossom Honey Rum (Cherry Blossom petals floating)
-        RICE_SPIRITS = "¡Un acabado limpio!", -- Cheongju (Korean rice wine)
+        RICE_SPIRITS = "El acabado es limpio y nítido.", -- Cheongju (Korean rice wine)
         WHEAT_WHISKEY = "Necesito platillos para acompañarlo.", -- Wheat Whiskey
         PALE_WHISKEY = "Gusto terroso y áspero, con un sabor único y agradable.", -- Pale Malt Whiskey
 
@@ -232,7 +234,16 @@ return {
 
         BUCKET_WOODIE_EMPTY = 
         {
-            EMPTY = "Es una cubeta hecha de madera meticulosamente tallada.", -- Empty wooden Woody's bucket
+            EMPTY = "Se cuidadoso y meticuloso al vaciarlo.", -- Empty wooden Woody's bucket
+            FULL = "¡Es agua limpia!", -- Clean rainwater is good
+            FULL_ICE = "Sería perfecto para guardar vino.", -- Rainwater has frozen
+            DIRTY = "Hay muchos invitados verdes no deseados.", -- Rainwater has become dirty
+            DIRTY_ICE = "Después de quitar el hielo, necesito hacer un lavado de utensilios adecuado.", -- Dirty rainwater has frozen
+        },
+
+        BUCKET_DRIFTWOOD_EMPTY = 
+        {
+            EMPTY = "¿Esta bien usar este tipo de cubos para sacar agua?",
             FULL = "¡Es agua limpia!", -- Clean rainwater is good
             FULL_ICE = "Sería perfecto para guardar vino.", -- Rainwater has frozen
             DIRTY = "Hay muchos invitados verdes no deseados.", -- Rainwater has become dirty
@@ -301,7 +312,7 @@ return {
             BOILING_SHORT = "Ya casi esté listo.", -- Drink is almost ready
             DONE = "¡Está listo!", -- The drink is finished
             PURIFY_LONG = "No puedo tener sabores extraños en la bebida...", -- Just started boiling dirty water
-            PURIFY_SHORT = "¡Ya casi ha eliminado las impurezas!", -- Almost done boiling dirty water
+            PURIFY_SHORT = "¡Se han removido la mayoría de las impurezas!", -- Almost done boiling dirty water
             HASWATER = "Me pregunto qué tipo de bebida debería hacer.", -- Kettle has clean water
             MELT_LONG = "Han llegado los invitados del frío.", -- Just started melting ice water
             MELT_SHORT = "Está casi derretido.", -- Almost done melting ice water
@@ -313,7 +324,7 @@ return {
             EMPTY = "¡No puedo salir sin esto!", -- Inspecting the installed empty portable kettle
             BOILING_LONG = "Las buenas bebidas exigen su propio tiempo.", -- Just started making a drink
             BOILING_SHORT = "¡Saldré pronto de aquí!", -- Drink is almost ready
-            DONE = "La bebida que ordené... ah, es un hábito.", -- The drink is finished
+            DONE = "Aquí está la bebida que orde... ah, es un hábito.", -- The drink is finished
             PURIFY_LONG = "La higiene en la cocina siempre es importante.", -- Just started boiling dirty water
             PURIFY_SHORT = "¡Casi ha eliminado las impurezas!", -- Almost done boiling dirty water
             HASWATER = "Me pregunto qué tipo de bebida debería preparar.", -- Kettle has clean water

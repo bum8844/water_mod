@@ -113,6 +113,7 @@ end)
 GIVEWATER.priority = 1
 
 local TAKEWATER = AddAction("TAKEWATER", STRINGS.ACTIONS.FILL, function(act)
+
     local source, filled = nil, nil
 
     if act.target == nil then
@@ -132,6 +133,10 @@ local TAKEWATER = AddAction("TAKEWATER", STRINGS.ACTIONS.FILL, function(act)
     elseif source ~= nil
         and source.components.water ~= nil
         and source.components.water.isitem then
+        return false
+    end
+
+    if (filled and filled:HasTag("onlyoneget")) or (source and source:HasTag("onlyoneget")) then
         return false
     end
 
@@ -171,6 +176,14 @@ local MILKINGTOOL = AddAction("MILKINGTOOL", STRINGS.ACTIONS.MILKINGTOOL, functi
 end)
 
 MILKINGTOOL.priority = 2
+
+local MACHINETOOL = AddAction("MACHINETOOL", STRINGS.ACTIONS.INTERACT_WITH.GENERIC, function(act)
+    if act.target:HasTag("desalinatorpump") then
+        act.target.components.saltmaker:SetProduct()
+    end
+end)
+
+MACHINETOOL.priority = 2
 
 local _FEEDPLAYER = ACTIONS.FEEDPLAYER.fn
 
