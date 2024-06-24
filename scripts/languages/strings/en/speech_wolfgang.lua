@@ -62,9 +62,9 @@ return {
 
             RUINCACAO_TREE = "Ugh... Wolfgang has a bad feeling about this.", 
             DUG_RUINCACAO_TREE = "This is an unpleasant tree.",
-            RUINCACAO_SEED = "Scary tree is still small and weak.", -
+            RUINCACAO_SEED = "Scary tree is still small and weak.",
             RUINCACAO_SEED_SAPLING = "A small and scary tree will grow soon.", 
-            RUINCACAO = "Wolfgang can't break this with my mighty grip strength.", -
+            RUINCACAO = "Wolfgang can't break this with my mighty grip strength.",
             RUINCACAO_BEAN = "The tough fruit has been defeated.",
             RUINCACAO_BEAN_COOKED = "It smells delicious, but it's also scary...", 
 
@@ -102,7 +102,7 @@ return {
             SEAWEED_SHAKE = "Drinking this won't make Wolfgang stronger.",
 
             GREENTEA = "It has a strong grassy smell.",
-            BLACKTEA = "Wolfgang thinks black tea might be dangerous..."
+            BLACKTEA = "Wolfgang thinks black tea might be dangerous...",
             BLACKTEA_ICED = "Is a iced tea! I likes it.", 
             FUER = "Made from pretty plants leaves.", 
             MIXFLOWER = "Smells nice.", 
@@ -197,7 +197,7 @@ return {
             ABSINTHE = "Wow... is like green fairy spirits.",
             TEA_LUMPY_VODKA = "Is a strange vodka with a grassy taste!",
             PETALS_BERRY_BRANDY = "It smells fragrant.",
-            KAHLUA = "Made with beans, is a spirit."
+            KAHLUA = "Made with beans, is a spirit.",
             NUT_CORN_WHISKEY = "It smells nutty.", 
             RUINCACAO_CREAM_LIQUEUR = "Did they make chocolate into spirits?",
             RUMCHATA = "Is a strange spirit with milk.",
