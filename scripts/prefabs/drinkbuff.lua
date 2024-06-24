@@ -797,7 +797,7 @@ local function OnAttached_satiety(inst, target)
     --target:PushEvent("foodbuffattached", { buff = "ANNOUNCE_SATIETY_BUFF_START", priority = 1 })
     inst.entity:SetParent(target.entity)
     inst.Transform:SetPosition(0, 0, 0)
-    if owner.components.hunger ~= nil then
+    if target.components.hunger ~= nil then
         target.components.hunger.burnratemodifiers:SetModifier(inst, TUNING.ARMORSLURPER_SLOW_HUNGER)
     end
     inst:ListenForEvent("death", function()
