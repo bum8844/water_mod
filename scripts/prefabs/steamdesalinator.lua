@@ -116,6 +116,8 @@ local function fn()
     inst:AddTag("cleanwaterproduction")
     inst:AddTag("alwayson")
 
+    MakeObstaclePhysics(inst, .4)
+
     inst.AnimState:SetBuild("steamdesalinator")
     inst.AnimState:SetBank("steamdesalinator")
     inst.AnimState:PlayAnimation("deactive")
@@ -127,7 +129,6 @@ local function fn()
 
     inst:AddComponent("steampressure")
     inst.components.steampressure:SetDepletedFn(OnDeplete)
-    inst.components.steampressure:SetProductFn(SetProduct)
     inst.components.steampressure:SetChargingDoneFn(SetChargingDoneFn)
     inst.components.steampressure:SetPressureSectionFn(SetPressureSection)
     inst.components.steampressure:SetTakeWaterFn(OnTaken)
@@ -144,6 +145,7 @@ local function fn()
     inst.components.waterlevel.noneboil = false
 
     inst:AddComponent("saltmaker")
+    inst.components.saltmaker:SetProductFn(SetProduct)
     inst.components.saltmaker.canchangestate = true
 
     inst:AddComponent("wateringmachine")

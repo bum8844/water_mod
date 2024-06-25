@@ -378,6 +378,12 @@ AddStategraphActionHandler("wilson", ActionHandler(ACTIONS.BREWING,
     )
 )
 AddStategraphActionHandler("wilson", ActionHandler(ACTIONS.READBOILBOOK,"boilbook_open"))
+AddStategraphActionHandler("wilson", ActionHandler(ACTIONS.MACHINETOOL,
+        function(inst, action)
+            return inst:HasTag("handyperson") and "domediumaction" or "dolongaction"
+        end
+    )
+)
 
 ------------------------------------------------------------------------
 

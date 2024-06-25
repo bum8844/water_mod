@@ -33,6 +33,7 @@ local postinits =
 		"wx78_modules",
 		"fruitfly",
 		"preparedfoods",
+		"wagpunkbits_kit",
 	},
 
 	screens = {

@@ -179,7 +179,7 @@ MILKINGTOOL.priority = 2
 
 local MACHINETOOL = AddAction("MACHINETOOL", STRINGS.ACTIONS.INTERACT_WITH.GENERIC, function(act)
     if act.target:HasTag("onlyoneget") then
-        act.target.components.saltmaker:SetProduct()
+        return act.target.components.saltmaker:SetProduct()
     end
 end)
 

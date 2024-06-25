@@ -92,6 +92,7 @@ function SaltMaker:SetProduct()
 	if self.setproductfn then
 		self.setproductfn(self.inst, self.nonemakesalt)
 	end
+	return true
 end
 
 function SaltMaker:CalculateSalt()

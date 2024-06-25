@@ -202,6 +202,7 @@ SortAfter("wx78module_nonedrunk","wx78module_maxhunger1","CHARACTER")
 --AddRecipe2("shaker_machine")
 
 --AddRecipe2("steamdesalinator_kit")
+--"wagpunkbits_kit
 
 AddDeconstructRecipe("well", {Ingredient("boards",2),Ingredient("cutstone",6)})
 
