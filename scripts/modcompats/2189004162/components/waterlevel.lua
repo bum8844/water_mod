@@ -1,7 +1,7 @@
 local function Descriptors()
 	Insight.descriptors.waterlevel = {
 		Describe = function(self, context)
-
+			if self.inst:HasTag("onlyoneget") then return end
 			local function Describe(self, context)
 
 				local brewing = self.inst.components.brewing

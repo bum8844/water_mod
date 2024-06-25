@@ -23,6 +23,7 @@ return {
 	"well_waterpump",
 	"distillers",
 	"wine_cellar",
+	"steamdesalinator",
 
 	--food & plants
 	"caffeinberry",

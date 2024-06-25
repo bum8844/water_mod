@@ -1,6 +1,7 @@
 local function Descriptors()
 	Insight.descriptors.saltmaker = {
 		Describe = function(self, context)
+			if self.inst:HasTag("onlyoneget") then return end
 			local function Describe(self, context)
 				local description, alt_description
 
