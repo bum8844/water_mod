@@ -70,7 +70,7 @@ local function fn(self)
 
         if target ~= nil then
             RequestThirstValue(target, function(thirstvalue)
-            	local txt = STRINGS.SHOWME.THIRSTVELUE.THIRST
+            	local txt = STRINGS.SHOWME.THIRSTVALUE.THIRST
                 if thirstvalue then
                     self.waterstr = thirstvalue < 0 and string.format(txt,tostring(round2(thirstvalue,1)))  or string.format(txt,"+"..tostring(round2(thirstvalue,1))) 
                     self.watertxt:SetString(self.waterstr)
