@@ -24,6 +24,7 @@ return {
 	"distillers",
 	"wine_cellar",
 	"steamdesalinator",
+	--"well_winona_sprinkler",
 
 	--food & plants
 	"caffeinberry",

@@ -46,12 +46,8 @@ local states =
         name = "idle_on",
         tags = {"idle"},
 
-        onenter = function(inst, data)
-            if not inst.SoundEmitter:PlayingSound("firesuppressor_idle") then
-                inst.SoundEmitter:PlaySound("dangerous_sea/common/water_pump/LP", "firesuppressor_idle")
-            end
-            inst.SoundEmitter:PlaySound("farming/common/watering_can/use")
-            inst.AnimState:PlayAnimation("launch")
+        onenter = function(inst)
+            inst.AnimState:PlayAnimation("idle_on_loop")
         end,
 
         -- timeline =
@@ -75,6 +71,75 @@ local states =
             inst.SoundEmitter:KillSound("firesuppressor_idle")
             inst.AnimState:PlayAnimation("idle_off", true)
         end,
+    },
+
+    State{
+        name = "spin_up",
+        tags = { "busy" },
+
+        onenter = function(inst, data)
+            inst.AnimState:PlayAnimation("launch_pre")
+            --inst.sg.statemem.data = data
+        end,
+
+        events =
+        {
+            EventHandler("animover", function(inst)
+                inst.sg:GoToState("shoot")--, inst.sg.statemem.data)
+            end),
+        },
+    },            
+
+    State{
+        name = "shoot",
+        tags = { "busy", "shooting" },
+
+        onenter = function(inst, data)
+            inst.AnimState:PlayAnimation("launch")
+            --inst.sg.statemem.firePos = data.firePos
+            --inst.sg.statemem.data = data
+            if not inst.SoundEmitter:PlayingSound("firesuppressor_idle") then
+                inst.SoundEmitter:PlaySound("dangerous_sea/common/water_pump/LP", "firesuppressor_idle")
+            end
+        end,
+
+        timeline =
+        {
+            TimeEvent(6 * FRAMES, function(inst)
+                inst.SoundEmitter:PlaySound("farming/common/watering_can/use")
+                --inst:LaunchProjectile(inst.sg.statemem.firePos)
+            end),
+            TimeEvent(8 * FRAMES, function(inst)
+                --inst.components.firedetector:DetectFire()
+            end),
+        },
+
+        events =
+        {
+            EventHandler("animover", function(inst)
+                --[[if inst.sg.statemem.data then
+                    inst.sg:GoToState("shoot")
+                else]]
+                    inst.sg:GoToState("spin_down")
+                --end
+            end),
+        },
+    },
+
+    State{
+        name = "spin_down",
+        tags = { "busy" },
+
+        onenter = function(inst)
+            inst.AnimState:PlayAnimation("launch_pst")
+        end,
+
+        events =
+        {
+            EventHandler("animover", function(inst)
+                inst.sg:GoToState("idle_on")
+            end),
+        },
     },
 
     State
