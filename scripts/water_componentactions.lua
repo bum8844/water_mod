@@ -1,4 +1,26 @@
 local KnownModIndex = _G.KnownModIndex
+local UpvalueHacker = require("utils/upvaluehacker")
+local COMPONENT_ACTIONS = UpvalueHacker.GetUpvalue(EntityScript.CollectActions, "COMPONENT_ACTIONS")
+
+local _USEITEM = COMPONENT_ACTIONS.USEITEM
+local _USEITEMupgrader = _USEITEM.upgrader
+function _USEITEM.upgrader(inst, doer, target, actions,...)
+    if inst:HasTag("tile_deploy") then
+        if not doer:HasTag("handyperson") and inst:HasTag("engineering") then
+            return
+        end
+        for k,v in pairs(UPGRADETYPES) do
+            if inst:HasTag(v.."_upgrader") and doer:HasTag(v.."_upgradeuser") and target:HasTag(v.."_upgradeable") then
+                table.insert(actions, ACTIONS.UPGRADE_TILEARRIVE)
+                return
+            end
+        end
+    elseif not doer:HasTag("handyperson") and inst:HasTag("engineering") then
+        return
+    else
+        _USEITEMupgrader(inst, doer, target, actions,...)
+    end
+end
 
 if KnownModIndex:IsModEnabled("workshop-2334209327") or KnownModIndex:IsModForceEnabled("workshop-2334209327") then
     ACTIONS.UPGRADE.priority = 2
@@ -83,22 +105,12 @@ local USEITEM =
     end,
 
     machinetool = function(inst, doer, target, actions)
-        if target:HasTag("onlyoneget") then
+        if target.HasTag("needmachtool") then
+            table.insert(actions, ACTIONS.MACHINETOOL)
+        elseif doer:HasTag("portableengineer") and target:HasTag("dismantleable") then
             table.insert(actions, ACTIONS.MACHINETOOL)
         end
     end,
-
-    upgrader = function(inst, doer, target, actions)
-        if inst:HasTag("tile_deploy") then
-            for k,v in pairs(UPGRADETYPES) do
-                if inst:HasTag(v.."_upgrader") and doer:HasTag(v.."_upgradeuser") and target:HasTag(v.."_upgradeable") then
-                    table.insert(actions, ACTIONS.UPGRADE_TILEARRIVE)
-                    return
-                end
-            end
-        end
-    end,
-
 }
 
 local POINT =

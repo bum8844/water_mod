@@ -188,9 +188,21 @@ SortAfter("well_kit","well_drilling_item","REFINE")
 AddRecipe2("well_sprinkler_kit",{Ingredient("marble",4),Ingredient("moonglass",1),Ingredient("townportaltalisman",2),Ingredient("gears",1)},TECH.SCIENCE_TWO,{atlas = ModAtlas(), image = "well_sprinkler_kit.tex"},{"GARDENING","REFINE","HYDRATION"})
 SortAfter("well_sprinkler_kit","well_kit","GARDENING")
 
-AddRecipe2("well_waterpump_kit",{Ingredient("security_pulse_cage_full",1),Ingredient("wagpunk_bits",4),Ingredient("transistor",1),Ingredient("cutstone",2)},TECH.NONE,{atlas = ModAtlas(), image = "well_waterpump_kit.tex", builder_tag="handyperson"},{"CHARACTER","GARDENING","REFINE","HYDRATION"})
-SortAfter("well_waterpump_kit","well_sprinkler_kit","GARDENING")
-SortAfter("well_waterpump_kit","winona_battery_high","CHARACTER")
+AddRecipe2("well_winona_sprinkler_kit",{Ingredient("well_sprinkler_kit",1, ModAtlas(), nil, "well_sprinkler_kit.tex"),Ingredient("sewing_tape", 1),Ingredient("wagpunk_bits",2),Ingredient("transistor",2)},TECH.NONE,{atlas = ModAtlas(), image = "well_winona_sprinkler_kit.tex", builder_tag="portableengineer", nameoverride="well_sprinkler_kit",description="well_sprinkler_kit"},{"CHARACTER","GARDENING","REFINE","HYDRATION"})
+SortAfter("well_winona_sprinkler_kit","well_sprinkler_kit","GARDENING")
+SortAfter("well_winona_sprinkler_kit","winona_battery_high","CHARACTER")
+
+AddRecipe2("well_waterpump",{Ingredient("security_pulse_cage_full",1),Ingredient("sewing_tape", 1),Ingredient("wagpunk_bits",4),Ingredient("transistor",1),Ingredient("cutstone",2)},TECH.NONE,{placer = "well_waterpump_placer" ,atlas = ModAtlas(), image = "well_waterpump.tex", builder_tag="basicengineer"},{"CHARACTER","GARDENING","REFINE","HYDRATION"})
+SortAfter("well_waterpump","well_winona_sprinkler_kit","GARDENING")
+SortAfter("well_waterpump","well_winona_sprinkler_kit","CHARACTER")
+
+AddRecipe2("well_waterpump_kit",{Ingredient("security_pulse_cage_full",1),Ingredient("sewing_tape", 1),Ingredient("wagpunk_bits",4),Ingredient("transistor",1),Ingredient("cutstone",2)},TECH.NONE,{atlas = ModAtlas(), image = "well_waterpump_kit.tex", builder_tag="portableengineer"},{"CHARACTER","GARDENING","REFINE","HYDRATION"})
+SortAfter("well_waterpump_kit","well_waterpump","GARDENING")
+SortAfter("well_waterpump_kit","well_waterpump","CHARACTER")
+
+AddRecipe2("steamdesalinator_kit",{Ingredient("well_waterpump_kit", 1, ModAtlas(), nil, "well_waterpump_kit.tex"),Ingredient("sewing_tape", 1),Ingredient("wagpunkbits_kit",1)},TECH.NONE,{atlas = ModAtlas(), image = "steamdesalinator_kit", builder_tag="portableengineer"},{"CHARACTER","GARDENING","REFINE","HYDRATION"})
+SortAfter("steamdesalinator_kit","well_waterpump_kit","GARDENING")
+SortAfter("steamdesalinator_kit","well_waterpump_kit","CHARACTER")
 
 AddRecipe2("well_burying_kit",{Ingredient("boards",4),Ingredient("hammer",1)},TECH.SCIENCE_TWO,{atlas = ModAtlas(), image = "well_burying_kit.tex"},{"GARDENING","REFINE","HYDRATION"})
 SortAfter("well_burying_kit","well_waterpump_kit","GARDENING")
@@ -201,8 +213,7 @@ SortAfter("wx78module_nonedrunk","wx78module_maxhunger1","CHARACTER")
 --AddRecipe2("portable_shaker_machine_item")
 --AddRecipe2("shaker_machine")
 
---AddRecipe2("steamdesalinator_kit")
---"wagpunkbits_kit
+--
 
 AddDeconstructRecipe("well", {Ingredient("boards",2),Ingredient("cutstone",6)})
 
@@ -210,6 +221,8 @@ AddDeconstructRecipe("well_buryingsite", {Ingredient("boards",4)})
 
 AddDeconstructRecipe("well_sprinkler", {Ingredient("marble",4),Ingredient("moonglass",1),Ingredient("townportaltalisman",2),Ingredient("gears",1)})
 
-AddDeconstructRecipe("well_waterpump", {Ingredient("security_pulse_cage_full",1),Ingredient("wagpunk_bits",4),Ingredient("transistor",1),Ingredient("cutstone",2)})
+AddDeconstructRecipe("steamdesalinator", {Ingredient("security_pulse_cage_full",1),Ingredient("sewing_tape", 1),Ingredient("wagpunk_bits",4),Ingredient("transistor",1),Ingredient("cutstone",2),Ingredient("wagpunkbits_kit",1)})
+
+AddDeconstructRecipe("well_winona_sprinkler", {Ingredient("marble",4),Ingredient("moonglass",1),Ingredient("townportaltalisman",2),Ingredient("gears",1),Ingredient("wagpunk_bits",2),Ingredient("transistor",2),Ingredient("sewing_tape", 1),Ingredient("wagpunkbits_kit",1)})
 
 CONSTRUCTION_PLANS["well_buryingsite"] = {Ingredient("shovel",1),Ingredient("seeds",6),Ingredient("turf_desertdirt",4),Ingredient("turf_mud",4)}

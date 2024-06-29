@@ -1,3 +1,5 @@
+local UpvalueHacker = require("utils/upvaluehacker")
+
 require("constants")
 local BLOCKERS_TAGS = { "FX", "NOCLICK", "DECOR", "INLIMBO", "playerghost", "ghost", "flying", "structure" }
 local NEED_TAGS = { "sprinkler_water" }
@@ -18,18 +20,6 @@ local prefabs =
     "collapse_small",
 }
 
---[[local function GetMoistureValue(inst)
-    local x, y, z = inst.Transform:GetWorldPosition()
-    local entities = TheSim:FindEntities(x, y, z, TUNING.SPRINKLER_RANGE) -- 반경 20 타일 내에서 "farmtile" 태그를 가진 엔티티를 찾습니다.
-
-    for _, entity in ipairs(entities) do
-        print("_ : ",_)
-        print("entity : ",entity)
-    end
-    local px, py, pz = inst.Transform:GetWorldPosition:GetWorldPosition()
-    local x, y = TheWorld.Map:GetTileXYAtPoint(px, py, pz)
-end]]
-
 local function GetTilesInRange(inst)
     local range = TUNING.SPRINKLER_RANGE
     local x, y, z = inst.Transform:GetWorldPosition()
@@ -40,15 +30,12 @@ local function GetTilesInRange(inst)
             local tile_x, tile_z = x + dx, z + dz
             local mos = TheWorld.components.farming_manager:IsSoilMoistAtPoint(tile_x, y, tile_z)
             if mos then
-                local test = TheWorld.components.farming_manager:GetMoistureGrid()
-                print("test",test)
+                local grid = UpvalueHacker.GetUpvalue(mos,"soilmoisture")
+                print("grid = ",grid)
+                --local test = TheWorld.components.farming_manager:GetMoistureGrid()
             end
         end
     end
-
-    
-
-    --return tiles
 end
 
 local function spawndrop(inst)
@@ -83,7 +70,7 @@ local function TurnOn(inst)
 
 	inst.spraytask = inst:DoPeriodicTask(0.2,function()
 			if inst.components.machine:IsOn() then
-                GetTilesInRange(inst)
+                --GetTilesInRange(inst)
 				inst.UpdateSpray(inst)
 			end
 		end)
@@ -481,6 +468,103 @@ local function OnEnableHelper(inst, enabled)
     end
 end
 
+local function SetPowered(inst, powered, duration)
+    if not powered then
+        if inst._powertask then
+            inst._powertask:Cancel()
+            inst._powertask = nil
+            --[[inst:StopWatchingWorldState("isnight", OnIsDarkOrCold)
+            inst:StopWatchingWorldState("isfullmoon", OnIsDarkOrCold)
+            inst:StopWatchingWorldState("iswinter", OnIsDarkOrCold)]]
+        end
+        --[[EnableTargetSearch(inst, false)
+        SetLedStatusOff(inst)]]
+    else
+        local waspowered = inst._powertask ~= nil
+        local remaining = waspowered and GetTaskRemaining(inst._powertask) or 0
+        if duration > remaining then
+            if inst._powertask then
+                inst._powertask:Cancel()
+            end
+            inst._powertask = inst:DoTaskInTime(duration, SetPowered, false)
+            if not waspowered then
+                --[[inst:WatchWorldState("isnight", OnIsDarkOrCold)
+                inst:WatchWorldState("isfullmoon", OnIsDarkOrCold)
+                inst:WatchWorldState("iswinter", OnIsDarkOrCold)
+                SetLedStatusBlink(inst, true)
+                OnIsDarkOrCold(inst)]]
+            end
+        end
+    end
+end
+
+
+local function NotifyCircuitChanged(inst, node)
+    node:PushEvent("engineeringcircuitchanged")
+end
+
+local function OnCircuitChanged(inst)
+    --Notify other connected batteries
+    inst.components.circuitnode:ForEachNode(NotifyCircuitChanged)
+end
+
+local function DoWireSparks(inst)
+    inst.SoundEmitter:PlaySound("dontstarve/common/together/spot_light/electricity", nil, .5)
+    --SpawnPrefab("winona_battery_sparks").entity:AddFollower():FollowSymbol(inst.GUID, "wire", 0, 0, 0)
+    --[[if inst.components.updatelooper ~= nil then
+        if inst._flash == nil then
+            inst.components.updatelooper:AddOnUpdateFn(OnUpdateSparks)
+        end
+        --inst._flash = 1
+        OnUpdateSparks(inst)
+    end]]
+end
+
+local function OnConnectCircuit(inst)--, node)
+    if not inst._wired then
+        inst._wired = true
+        inst.AnimState:ClearOverrideSymbol("wire")
+        if not POPULATING then
+            DoWireSparks(inst)
+        end
+    end
+    OnCircuitChanged(inst)
+end
+
+local function OnDisconnectCircuit(inst)--, node)
+    if inst.components.circuitnode:IsConnected() then
+        OnCircuitChanged(inst)
+    elseif inst._wired then
+        inst._wired = nil
+        --This will remove mouseover as well (rather than just :Hide("wire"))
+        inst.AnimState:OverrideSymbol("wire", "winona_spotlight", "dummy")
+        DoWireSparks(inst)
+        SetPowered(inst, false)
+    end
+end
+
+local function ChangeToItem(inst)
+    local item = SpawnPrefab("well_winona_sprinkler_kit")
+    item.Transform:SetPosition(inst.Transform:GetWorldPosition())
+    if inst.onhole ~= nil then
+        local hole = SpawnPrefab("hole")
+        hole.Transform:SetPosition(inst.Transform:GetWorldPosition())
+    elseif inst.pipes ~= nil then
+        RetractPipes(inst)
+    end
+    item.AnimState:PushAnimation("idle_sprinkler_kit", false)
+    item.SoundEmitter:PlaySound("meta4/winona_spotlight/collapse")
+    if inst._wired then
+        item.SoundEmitter:PlaySound("dontstarve/common/together/spot_light/electricity", nil, .5)
+        SpawnPrefab("winona_battery_sparks").Transform:SetPosition(inst.Transform:GetWorldPosition())
+    end
+end
+
+local function OnDismantle(inst)--, doer)
+    ChangeToItem(inst)
+    inst:Remove()
+end
+
 local function fn()
     local inst = CreateEntity()
 
@@ -502,14 +586,19 @@ local function fn()
     inst.AnimState:SetBuild("well_sprinkler")  
 	inst.AnimState:PlayAnimation("idle_off")
 
-	inst:AddTag("structure")
+    inst:AddTag("engineering")
+    inst:AddTag("engineeringbatterypowered")
+    inst:AddTag("structure")
 	inst:AddTag("forfarm")
     inst:AddTag("alwayson")
+    inst:AddTag("dismantleable")
 
 	if not TheNet:IsDedicated() then
 		inst:AddComponent("deployhelper")
 		inst.components.deployhelper.onenablehelper = OnEnableHelper
     end
+
+    inst:AddComponent("updatelooper")
 
     inst.entity:SetPristine()
 
@@ -537,6 +626,22 @@ local function fn()
 	inst.components.workable:SetWorkLeft(4)
 	inst.components.workable:SetOnFinishCallback(onhammered)
 	inst.components.workable:SetOnWorkCallback(onhit)
+
+    inst:AddComponent("dismantleable")
+    inst.components.dismantleable:SetOnDismantleFn(OnDismantle)
+
+    inst:AddComponent("circuitnode")
+    inst.components.circuitnode:SetRange(TUNING.WINONA_BATTERY_RANGE)
+    inst.components.circuitnode:SetFootprint(TUNING.WINONA_ENGINEERING_FOOTPRINT)
+    inst.components.circuitnode:SetOnConnectFn(OnConnectCircuit)
+    inst.components.circuitnode:SetOnDisconnectFn(OnDisconnectCircuit)
+    inst.components.circuitnode.connectsacrossplatforms = false
+    inst.components.circuitnode.rangeincludesfootprint = true
+
+    inst:AddComponent("powerload")
+    inst.components.powerload:SetLoad(TUNING.WINONA_SPOTLIGHT_POWER_LOAD_OFF, true)
+
+    inst:ListenForEvent("engineeringcircuitchanged", OnCircuitChanged)
 
 	inst:SetStateGraph("SGwell_sprinkler")
 

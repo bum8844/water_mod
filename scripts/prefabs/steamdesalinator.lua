@@ -75,9 +75,6 @@ local function onhammered(inst, worker)
     inst.SoundEmitter:KillSound("loop_active")
     local fx = SpawnPrefab("collapse_small")
 
-    local hole = SpawnPrefab("hole")
-    hole.Transform:SetPosition(inst.Transform:GetWorldPosition())
-
     fx.Transform:SetPosition(inst.Transform:GetWorldPosition())
     fx:SetMaterial("metal")
     inst.components.lootdropper:DropLoot()
@@ -102,6 +99,20 @@ local function getstatus(inst, viewer)
            or "MIDDLE_PRESSURE" ) or "RECHARG_PRESSURE"
 end
 
+local function ChangeToItem(inst)
+    local item = SpawnPrefab("steamdesalinator_kit")
+    item.Transform:SetPosition(inst.Transform:GetWorldPosition())
+    local hole = SpawnPrefab("hole")
+    hole.Transform:SetPosition(inst.Transform:GetWorldPosition())
+    item.AnimState:PushAnimation("idle_steamdesalinator_kit", false)
+    item.SoundEmitter:PlaySound("meta4/winona_spotlight/collapse")
+end
+
+local function OnDismantle(inst)--, doer)
+    ChangeToItem(inst)
+    inst:Remove()
+end
+
 local function fn()
 	local inst = CreateEntity()
 
@@ -115,6 +126,8 @@ local function fn()
     inst:AddTag("structure")
     inst:AddTag("cleanwaterproduction")
     inst:AddTag("alwayson")
+    inst:AddTag("dismantleable")
+    inst:AddTag("needmachtool")
 
     MakeObstaclePhysics(inst, .4)
 
@@ -155,6 +168,9 @@ local function fn()
 
 	inst:AddComponent("lootdropper")
 
+    inst:AddComponent("dismantleable")
+    inst.components.dismantleable:SetOnDismantleFn(OnDismantle)
+
 	inst:AddComponent("pickable")
     inst.components.pickable.canbepicked = true
     inst.components.pickable.product = "water_clean"
@@ -173,8 +189,35 @@ local function fn()
 	return inst
 end
 
-local function PlaceTestFn(inst, pt, mouseover, deployer)
-    return TheWorld.Map:IsDockAtPoint(pt.x, 0, pt.z) or TheWorld.Map:IsPassableAtPointWithPlatformRadiusBias(x,y,z,false,false,TUNING.BOAT.NO_BUILD_BORDER_RADIUS,true)
+local BOAT_MUST_TAGS = {"boat"}
+local function PlaceTestFn(inst, pt, mouseover, deployer, rot)
+    local boat = (mouseover ~= nil and mouseover:HasTag("boat") and mouseover) or nil
+    if not boat then
+        boat = TheWorld.Map:GetPlatformAtPoint(pt.x,pt.z)
+
+        -- If we're not standing on a boat, try to get the closest boat position via FindEntities()
+        if not boat or not boat:HasTag("boat") then
+            local boats = TheSim:FindEntities(pt.x, 0, pt.z, TUNING.MAX_WALKABLE_PLATFORM_RADIUS, BOAT_MUST_TAGS)
+            if #boats <= 0 then
+                return TheWorld.Map:IsDockAtPoint(pt.x, 0, pt.z)
+            end
+            boat = GetClosest(inst, boats)
+        end
+    end
+
+    if not boat then return TheWorld.Map:IsDockAtPoint(pt.x, 0, pt.z) end
+
+    -- Check the outside rim to see if no objects are there
+    local boatpos = boat:GetPosition()
+    local boatangle = boat.Transform:GetRotation()
+
+    -- Need to look a little outside of the boat edge here
+    local boatringdata = boat.components.boatringdata
+    local radius = (boatringdata and boatringdata:GetRadius() + 0.25) or 0
+    local boatsegments = (boatringdata and boatringdata:GetNumSegments()) or 1
+
+    local snap_point = GetCircleEdgeSnapTransform(boatsegments, radius, boatpos, pt, boatangle)
+    return TheWorld.Map:CanDeployWalkablePeripheralAtPoint(snap_point, inst)
 end
 
 local function ondeploy(inst, pt, deployer)
@@ -223,4 +266,4 @@ end
 
 return Prefab("steamdesalinator",fn,asset),
 Prefab("steamdesalinator_kit",fn_kit,asset),
-MakePlacer("steamdesalinator_placer","steamdesalinator","steamdesalinator","idle",nil)
+MakePlacer("steamdesalinator_kit_placer","steamdesalinator","steamdesalinator","deactive",nil,nil,nil)

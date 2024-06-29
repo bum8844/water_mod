@@ -135,6 +135,70 @@ local function OnSpawnIn(inst)
 	inst.AnimState:OverrideSymbol("swap", "well_waterpump_meter", tostring(test))
 end
 
+local function removehole(inst)
+	local x, y, z = inst.Transform:GetWorldPosition()
+	local ent = TheSim:FindEntities(x, y, z,1,{"water_hole"})
+	if ent then
+		for k, v in pairs(ent) do
+			ent[k]:Remove()
+		end
+	end
+end
+
+local function ChangeToItem(inst)
+    local item = SpawnPrefab("well_waterpump_kit")
+    item.Transform:SetPosition(inst.Transform:GetWorldPosition())
+    local hole = SpawnPrefab("hole")
+    hole.Transform:SetPosition(inst.Transform:GetWorldPosition())
+    item.AnimState:PushAnimation("idle_swaterpump_kit", false)
+    item.SoundEmitter:PlaySound("meta4/winona_spotlight/collapse")
+end
+
+local function OnDismantle(inst)--, doer)
+    ChangeToItem(inst)
+    inst:Remove()
+end
+
+local PLACER_SNAP_DISTANCE = 2
+local function placer_onupdatetransform(inst)
+    local pos = inst:GetPosition()
+    local ents = TheSim:FindEntities(pos.x, 0, pos.z, PLACER_SNAP_DISTANCE, { "water_hole" })
+
+    if #ents > 0 then
+        local targetpos = ents[1]:GetPosition()
+        inst.Transform:SetPosition(targetpos.x, 0, targetpos.z)
+
+        inst.accept_placement = ents[1]:HasTag("water_hole")
+    else
+        inst.accept_placement = false
+    end
+end
+
+local function placer_override_build_point(inst)
+    return inst:GetPosition()
+end
+
+local function placer_override_testfn(inst)
+    local can_build, mouse_blocked = true, false
+
+    if inst.components.placer.testfn ~= nil then
+        can_build, mouse_blocked = inst.components.placer.testfn(inst:GetPosition(), inst:GetRotation())
+    end
+
+    can_build = inst.accept_placement
+
+    return can_build, mouse_blocked
+end
+
+local function placer_postinit_fn(inst)
+    inst.components.placer.onupdatetransform = placer_onupdatetransform
+    inst.components.placer.override_build_point_fn = placer_override_build_point
+
+    inst.components.placer.override_testfn = placer_override_testfn
+
+    inst.accept_placement = false
+end
+
 local function fn()
 	local inst = CreateEntity()
 	
@@ -154,6 +218,8 @@ local function fn()
     inst:AddTag("structure")
     inst:AddTag("cleanwaterproduction")
     inst:AddTag("alwayson")
+    inst:AddTag("hashole")
+    inst:AddTag("dismantleable")
 	
 	MakeObstaclePhysics(inst, .5)
 
@@ -194,6 +260,9 @@ local function fn()
 
     inst:AddComponent("wateringmachine")
 
+    inst:AddComponent("dismantleable")
+    inst.components.dismantleable:SetOnDismantleFn(OnDismantle)
+
     inst:AddComponent("inspectable")
     inst.components.inspectable.getstatus = getstatus
 
@@ -213,6 +282,7 @@ local function fn()
 	inst:SetStateGraph("SGwell_waterpump")
 
 	inst:DoTaskInTime(0, OnSpawnIn)
+	inst:ListenForEvent("onbuilt",removehole)
 	--inst:ListenForEvent("showmeter", ShowMeter)
 	--inst:ListenForEvent("hidemeter", HideMeter)
 
@@ -245,5 +315,6 @@ end
 	return inst
 end]]
 
-return Prefab("well_waterpump", fn, assets, prefabs)
+return Prefab("well_waterpump", fn, assets, prefabs),
+MakePlacer("well_waterpump_placer", "well_waterpump", "well_waterpump", "deactive", nil, nil, nil, nil, nil, nil, placer_postinit_fn)
 --Prefab("well_waterpump_meter", meterfn, assets, prefabs)

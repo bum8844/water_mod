@@ -3,6 +3,7 @@ require "bufferedaction"
 require "debugtools"
 require 'util'
 require 'vecutil'
+require "componentutil"
 require ("components/embarker")
 require ("actions")
 
@@ -178,8 +179,14 @@ end)
 MILKINGTOOL.priority = 2
 
 local MACHINETOOL = AddAction("MACHINETOOL", STRINGS.ACTIONS.INTERACT_WITH.GENERIC, function(act)
-    if act.target:HasTag("onlyoneget") then
-        return act.target.components.saltmaker:SetProduct()
+    if act.invobject:HasTag("changesetuptool") then
+        if act.target.components.saltmaker then
+            return act.target.components.saltmaker:SetProduct()
+        end
+    elseif act.doer:HasTag("portableengineer") and 
+            act.target.components.dismantleable and 
+            act.invobject:HasTag("dismantletool") then
+                return act.target.components.dismantleable:Dismantle()
     end
 end)
 

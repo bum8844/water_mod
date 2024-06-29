@@ -57,6 +57,19 @@ local function CreateWellSprinkler(inst)
 	end)
 end
 
+local function CreateWellWinonaSprinkler(inst)
+	local sprinkler = ReplacePrefab(inst, "well_winona_sprinkler")
+	sprinkler.Transform:SetPosition(inst.Transform:GetWorldPosition())
+	sprinkler.AnimState:PlayAnimation("place_hole")
+	sprinkler.AnimState:PushAnimation("idle_off")
+	sprinkler.onhole = "hole"
+	sprinkler.SoundEmitter:PlaySound("dontstarve/common/together/catapult/hit")
+	sprinkler:DoTaskInTime(.6, function()
+		sprinkler.SoundEmitter:PlaySound("dontstarve/common/researchmachine_lvl2_place")
+	end)
+end
+
+
 local function CreateWellWaterPump(inst)
 	local waterpump = ReplacePrefab(inst, "well_waterpump")
 	waterpump.Transform:SetPosition(inst.Transform:GetWorldPosition())
@@ -80,6 +93,8 @@ local function OnUpgrade(inst, performer, upgraded_from_item)
 		local hole = CreateWellWaterPump(inst)
 	elseif prefab == "well_burying_kit" then 
 		local hole = CreateWellBuryingSite(inst)
+	elseif prefab =="well_winona_sprinkler_kit" then
+		local hole = CreateWellWinonaSprinkler(inst)
 	else
 		FailUpgrade(inst, performer, prefab)
 	end
@@ -101,7 +116,9 @@ local function hole()
     inst.AnimState:SetBuild("well")
     inst.AnimState:PlayAnimation("idle")
 	
+	inst:AddTag("water_hole")
 	inst:AddTag("antlion_sinkhole_blocker")
+    inst:AddTag("NOBLOCK")
     inst:AddTag("birdblocker")
 	
 	MakeObstaclePhysics(inst, .15)
