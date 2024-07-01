@@ -8,6 +8,7 @@ local assets = {
     well_sprinkler_kit = {
         Asset("ANIM", "anim/well_sprinkler.zip"),
         Asset("ANIM", "anim/well_sprinkler_placement.zip"),
+        Asset("ANIM", "anim/winona_battery_placement.zip"),
     },
     well_waterpump_kit = {
         Asset("ANIM", "anim/well_waterpump.zip"),
@@ -152,33 +153,81 @@ local function well_winona_sprinkler_kit_fn(inst)
     inst.components.deployable.ondeploy = ondeploy_w
 end
 
-local function placer_postinit_fn(inst)
-    --Show the flingo placer on top of the flingo range ground placer
+local PLACER_SCALE = 0.6
 
-    local placer2 = CreateEntity()
+local function CreatePlacerBatteryRing()
+    local inst = CreateEntity()
 
     --[[Non-networked entity]]
-    placer2.entity:SetCanSleep(false)
-    placer2.persists = false
+    inst.entity:SetCanSleep(false)
+    inst.persists = false
 
-    placer2.entity:AddTransform()
-    placer2.entity:AddAnimState()
+    inst.entity:AddTransform()
+    inst.entity:AddAnimState()
 
-    placer2:AddTag("CLASSIFIED")
-    placer2:AddTag("NOCLICK")
-    placer2:AddTag("placer")
+    inst:AddTag("CLASSIFIED")
+    inst:AddTag("NOCLICK")
+    inst:AddTag("placer")
+
+    inst.AnimState:SetBank("winona_battery_placement")
+    inst.AnimState:SetBuild("winona_battery_placement")
+    inst.AnimState:PlayAnimation("idle_small")
+    inst.AnimState:SetLightOverride(1)
+    inst.AnimState:SetOrientation(ANIM_ORIENTATION.OnGround)
+    inst.AnimState:SetLayer(LAYER_BACKGROUND)
+    inst.AnimState:SetSortOrder(1)
+    inst.AnimState:SetScale(PLACER_SCALE, PLACER_SCALE)
+
+    return inst
+end
+
+local function CreatePlacerSprinkler()
+    local inst = CreateEntity()
+
+    --[[Non-networked entity]]
+    inst.entity:SetCanSleep(false)
+    inst.persists = false
+
+    inst.entity:AddTransform()
+    inst.entity:AddAnimState()
+
+    inst:AddTag("CLASSIFIED")
+    inst:AddTag("NOCLICK")
+    inst:AddTag("placer")
 
     local s = 1 / TUNING.SPRINKLER_PLACER_SCALE
-    placer2.Transform:SetScale(s, s, s)
+    inst.Transform:SetScale(s, s, s)
 
-    placer2.AnimState:SetBank("well_sprinkler")
-    placer2.AnimState:SetBuild("well_sprinkler")
-    placer2.AnimState:PlayAnimation("idle_off")
-    placer2.AnimState:SetLightOverride(1)
+    inst.AnimState:SetBank("well_sprinkler")
+    inst.AnimState:SetBuild("well_sprinkler")
+    inst.AnimState:PlayAnimation("idle_off")
+    inst.AnimState:SetLightOverride(1)
 
+    return inst
+end
+
+local function placer_postinit_fn(inst)
+    --Show the flingo placer on top of the flingo range ground placer
+    local placer2 = CreatePlacerSprinkler()
     placer2.entity:SetParent(inst.entity)
-
     inst.components.placer:LinkEntity(placer2)
+end
+
+local function placer_postinit_fn_w(inst)
+    --Show the spotlight placer on top of the spotlight range ground placer
+    --Also add the small battery range indicator
+
+    local placer2 = CreatePlacerBatteryRing()
+    placer2.entity:SetParent(inst.entity)
+    inst.components.placer:LinkEntity(placer2)
+
+    placer2 = CreatePlacerSprinkler()
+    placer2.entity:SetParent(inst.entity)
+    inst.components.placer:LinkEntity(placer2)
+
+    --inst.AnimState:SetScale(PLACER_SCALE, PLACER_SCALE)
+
+    inst.deployhelper_key = "winona_battery_engineering"
 end
  
 return MakeUpGrade_Kit("well_kit", "well", "idle_well_kit", nil, assets.well_kit, prefabs.well_kit),
@@ -186,5 +235,5 @@ MakeUpGrade_Kit("well_burying_kit", "well_burying_kit", "idle_burying_kit", nil,
 MakeUpGrade_Kit("well_waterpump_kit", "well_waterpump", "idle_waterpump_kit", nil, assets.well_waterpump_kit,prefabs.well_waterpump_kit,{"engineering"}),
 MakeUpGrade_Kit("well_sprinkler_kit", "well_sprinkler", "idle_sprinkler_kit", well_sprinkler_kit_fn, assets.well_sprinkler_kit,prefabs.well_sprinkler_kit,{"well_sprinkler_kit","tile_deploy","deploykititem"}),
 MakeUpGrade_Kit("well_winona_sprinkler_kit", "well_sprinkler", "idle_sprinkler_kit", well_winona_sprinkler_kit_fn, assets.well_sprinkler_kit,prefabs.well_sprinkler_kit,{"well_sprinkler_kit","tile_deploy","deploykititem","engineering"}),
-MakePlacer("well_winona_sprinkler_kit_placer", "well_sprinkler_placement", "well_sprinkler_placement", "idle", true, nil, nil, TUNING.SPRINKLER_PLACER_SCALE, nil, nil, placer_postinit_fn),
+MakePlacer("well_winona_sprinkler_kit_placer", "well_sprinkler_placement", "well_sprinkler_placement", "idle", true, nil, nil, TUNING.SPRINKLER_PLACER_SCALE, nil, nil, placer_postinit_fn_w),
 MakePlacer("well_sprinkler_kit_placer", "well_sprinkler_placement", "well_sprinkler_placement", "idle", true, nil, nil, TUNING.SPRINKLER_PLACER_SCALE, nil, nil, placer_postinit_fn)

@@ -11,6 +11,7 @@ local assets =
 	--Asset("ANIM", "anim/well_winona_sprinkler.zip"),
     Asset("ANIM", "anim/well_sprinkler.zip"),
 	Asset("ANIM", "anim/well_sprinkler_placement.zip"),
+    Asset("ANIM", "anim/winona_battery_placement.zip"),
 }
 
 local prefabs =
@@ -433,34 +434,97 @@ local function onhammered(inst, worker)
 	inst:Remove()
 end
 
-local function OnEnableHelper(inst, enabled)
+local PLACER_SCALE = 1.5
+local SPRINKLER_PLACER_SCALE = 2.4
+
+local function OnUpdatePlacerHelper(helperinst)
+    if not helperinst.placerinst:IsValid() then
+        helperinst.components.updatelooper:RemoveOnUpdateFn(OnUpdatePlacerHelper)
+        helperinst.AnimState:SetAddColour(0, 0, 0, 0)
+    else
+        local range = TUNING.WINONA_BATTERY_RANGE - TUNING.WINONA_ENGINEERING_FOOTPRINT
+        local hx, hy, hz = helperinst.Transform:GetWorldPosition()
+        local px, py, pz = helperinst.placerinst.Transform:GetWorldPosition()
+        --<= match circuitnode FindEntities range tests
+        if distsq(hx, hz, px, pz) <= range * range and TheWorld.Map:GetPlatformAtPoint(hx, hz) == TheWorld.Map:GetPlatformAtPoint(px, pz) then
+            helperinst.AnimState:SetAddColour(helperinst.placerinst.AnimState:GetAddColour())
+        else
+            helperinst.AnimState:SetAddColour(0, 0, 0, 0)
+        end
+    end
+end
+
+local function CreatePlacerBatteryRing()
+    local inst = CreateEntity()
+
+    --[[Non-networked entity]]
+    inst.entity:SetCanSleep(false)
+    inst.persists = false
+
+    inst.entity:AddTransform()
+    inst.entity:AddAnimState()
+
+    inst:AddTag("CLASSIFIED")
+    inst:AddTag("NOCLICK")
+    inst:AddTag("placer")
+
+    inst.AnimState:SetBank("winona_battery_placement")
+    inst.AnimState:SetBuild("winona_battery_placement")
+    inst.AnimState:PlayAnimation("idle_small")
+    inst.AnimState:SetLightOverride(1)
+    inst.AnimState:SetOrientation(ANIM_ORIENTATION.OnGround)
+    inst.AnimState:SetLayer(LAYER_BACKGROUND)
+    inst.AnimState:SetSortOrder(1)
+    inst.AnimState:SetScale(PLACER_SCALE, PLACER_SCALE)
+
+    return inst
+end
+
+local function CreatePlacerRing()
+    local inst = CreateEntity()
+
+    --[[Non-networked entity]]
+    inst.entity:SetCanSleep(false)
+    inst.persists = false
+
+    inst.entity:AddTransform()
+    inst.entity:AddAnimState()
+
+    inst:AddTag("CLASSIFIED")
+    inst:AddTag("NOCLICK")
+    inst:AddTag("placer")
+
+    inst.AnimState:SetBank("well_sprinkler_placement")
+    inst.AnimState:SetBuild("well_sprinkler_placement")
+    inst.AnimState:PlayAnimation("idle")
+    inst.AnimState:SetLightOverride(1)
+    inst.AnimState:SetOrientation(ANIM_ORIENTATION.OnGround)
+    inst.AnimState:SetLayer(LAYER_BACKGROUND)
+    inst.AnimState:SetSortOrder(1)
+    inst.AnimState:SetScale(SPRINKLER_PLACER_SCALE, SPRINKLER_PLACER_SCALE)
+    inst.AnimState:SetAddColour(0, .2, .5, 0)
+
+    CreatePlacerBatteryRing().entity:SetParent(inst.entity)
+
+    return inst
+end
+
+local function OnEnableHelper(inst, enabled, recipename, placerinst)
     if enabled then
-        if inst.helper == nil then
-            inst.helper = CreateEntity()
-
-            --[[Non-networked entity]]
-            inst.helper.entity:SetCanSleep(false)
-            inst.helper.persists = false
-
-            inst.helper.entity:AddTransform()
-            inst.helper.entity:AddAnimState()
-
-            inst.helper:AddTag("CLASSIFIED")
-            inst.helper:AddTag("NOCLICK")
-            inst.helper:AddTag("placer")
-
-            inst.helper.Transform:SetScale(TUNING.SPRINKLER_PLACER_SCALE, TUNING.SPRINKLER_PLACER_SCALE, TUNING.SPRINKLER_PLACER_SCALE)
-
-            inst.helper.AnimState:SetBank("well_sprinkler_placement")
-            inst.helper.AnimState:SetBuild("well_sprinkler_placement")
-            inst.helper.AnimState:PlayAnimation("idle")
-            inst.helper.AnimState:SetLightOverride(1)
-            inst.helper.AnimState:SetOrientation(ANIM_ORIENTATION.OnGround)
-            inst.helper.AnimState:SetLayer(LAYER_BACKGROUND)
-            inst.helper.AnimState:SetSortOrder(1)
-            inst.helper.AnimState:SetAddColour(0, .2, .5, 0)
-
+        if inst.helper == nil and inst:HasTag("HAMMER_workable") and not inst:HasTag("burnt") then
+            inst.helper = CreatePlacerRing()
             inst.helper.entity:SetParent(inst.entity)
+            if placerinst and (
+                placerinst.prefab == "winona_battery_low_item_placer" or
+                placerinst.prefab == "winona_battery_high_item_placer" or
+                recipename == "winona_battery_low" or
+                recipename == "winona_battery_high"
+            ) then
+                inst.helper:AddComponent("updatelooper")
+                inst.helper.components.updatelooper:AddOnUpdateFn(OnUpdatePlacerHelper)
+                inst.helper.placerinst = placerinst
+                OnUpdatePlacerHelper(inst.helper)
+            end
         end
     elseif inst.helper ~= nil then
         inst.helper:Remove()
@@ -565,6 +629,12 @@ local function OnDismantle(inst)--, doer)
     inst:Remove()
 end
 
+local function OnStartHelper(inst)--, recipename, placerinst)
+    if inst.AnimState:IsCurrentAnimation("place") then
+        inst.components.deployhelper:StopHelper()
+    end
+end
+
 local function fn()
     local inst = CreateEntity()
 
@@ -595,7 +665,8 @@ local function fn()
 
 	if not TheNet:IsDedicated() then
 		inst:AddComponent("deployhelper")
-		inst.components.deployhelper.onenablehelper = OnEnableHelper
+        inst.components.deployhelper.onenablehelper = OnEnableHelper
+        inst.components.deployhelper.onstarthelper = OnStartHelper
     end
 
     inst:AddComponent("updatelooper")

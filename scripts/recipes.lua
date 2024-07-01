@@ -190,7 +190,7 @@ SortAfter("well_sprinkler_kit","well_kit","GARDENING")
 
 AddRecipe2("well_winona_sprinkler_kit",{Ingredient("well_sprinkler_kit",1, ModAtlas(), nil, "well_sprinkler_kit.tex"),Ingredient("sewing_tape", 1),Ingredient("wagpunk_bits",2),Ingredient("transistor",2)},TECH.NONE,{atlas = ModAtlas(), image = "well_winona_sprinkler_kit.tex", builder_tag="portableengineer", nameoverride="well_sprinkler_kit",description="well_sprinkler_kit"},{"CHARACTER","GARDENING","REFINE","HYDRATION"})
 SortAfter("well_winona_sprinkler_kit","well_sprinkler_kit","GARDENING")
-SortAfter("well_winona_sprinkler_kit","winona_battery_high","CHARACTER")
+SortAfter("well_winona_sprinkler_kit","winona_battery_high_kit","CHARACTER")
 
 AddRecipe2("well_waterpump",{Ingredient("security_pulse_cage_full",1),Ingredient("sewing_tape", 1),Ingredient("wagpunk_bits",4),Ingredient("transistor",1),Ingredient("cutstone",2)},TECH.NONE,{placer = "well_waterpump_placer" ,atlas = ModAtlas(), image = "well_waterpump.tex", builder_tag="basicengineer"},{"CHARACTER","GARDENING","REFINE","HYDRATION"})
 SortAfter("well_waterpump","well_winona_sprinkler_kit","GARDENING")
