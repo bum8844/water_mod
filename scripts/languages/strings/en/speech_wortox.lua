@@ -3,238 +3,251 @@ return {
     {
         GIVE =
         {
-            WELL_NOTEMPTY = "One bucket is enough.", -- Trying to give a bucket when the well already has one.
-            WELL_BUSY = "You won't receive a gift if you're greedy.", -- Trying to give a bucket when there's a bucket inside the well.
+            WELL_NOTEMPTY = "One bucket is enough.",
+            WELL_BUSY = "You won't get a gift if you're greedy.",
         }
     },
 
-    ANNOUNCE_DRUNK = "Both the material world and the shadow world are visible!", -- Getting drunk
-    ANNOUNCE_DRUNK_END = "The material world is starting to become clear again.", -- Sobering up from alcohol (hangover)
+    ANNOUNCE_DRUNK = "I can see both the material world and the shadow realm!",
+    ANNOUNCE_DRUNK_END = "The material world is starting to become clear again.", 
     ANNOUNCE_DRUNK_IMMUNITY = "", -- Temporary. Specific to Wickerbottom.
-    ANNOUNCE_NOTCHARGE = "I need to charge up, buddy!", -- Wolfgang can't milk a bucket without enough charge.
-    ANNOUNCE_NOTHIRSTSLEEP = "If I sleep like this, I'll turn into an imp snack in the morning.", -- Attempting to sleep when thirsty at night
-    ANNOUNCE_NOTHIRSTSIESTA = "I don't want to turn into jerky from thirst during the day.", -- Attempting to siesta when thirsty during the day
-    ANNOUNCE_SLEEP_END = "I'm fully back to the material world!", -- Waking up after sleeping and completely sobering up from alcohol
-    ANNOUNCE_THIRST = "I might look mortal, but I need a drink!", -- When extremely thirsty
-    ANNOUNCE_CAFFINE_BUFF_START = "Whoa, I'm getting all jittery!", -- Starting the caffeine buff
-    ANNOUNCE_CAFFINE_BUFF_STOP = "I wonder how much spirit I have left in me?", -- Ending the caffeine buff
-    ANNOUNCE_CURE_WATERBORNE = "Whoa, that wasn't too bad at all.", -- Dialogue when curing a waterborne disease with an item
-    ANNOUNCE_DCAPACITY_CRITICAL = "The drinks are trying to drag me into the shadow world!", -- About to become drunk
-    ANNOUNCE_DCAPACITY_HALF = "Whoa, I'm feeling pretty good!", -- When starting to feel tipsy
+    ANNOUNCE_NOTCHARGE = "You need to charge up, buddy!",
+    ANNOUNCE_NOTHIRSTSLEEP = "If I sleep like this, I'll turn into imp jerky by morning.",
+    ANNOUNCE_NOTHIRSTSIESTA = "I don't want to dry out and become jerky.",
+    ANNOUNCE_SLEEP_END = "I'm fully back to the material world!", 
+    ANNOUNCE_THIRST = "May look like a mortal, but I need to drink some water!",
+    
+    ANNOUNCE_CAFFINE_BUFF_START = "Hyuyu, this is exciting!",
+    ANNOUNCE_CAFFINE_BUFF_STOP = "How many souls do I have left in my hand?",
+   
+    ANNOUNCE_CURE_WATERBORNE = "Hyuyu, that pain wasn't so bad after all.",
+   
+   ANNOUNCE_DCAPACITY_CRITICAL = "The drink is trying to pull me into the shadow realm!",
+    ANNOUNCE_DCAPACITY_HALF = "Whew, this feels awesome!",
 
     DESCRIBE =
     {
-        BOILBOOK = "Is there a manual for boiling water too?",
-        WATER_CLEAN_ICE = "It must be tough to drink.", -- Clean ice water
-        WATER_DIRTY_ICE = "Eww, it's filthy!", -- Dirty ice water
+        BOILBOOK = "Do you really need an instruction manual to boil water?",
 
-        SPICE_CAFFEINPEPPER = "Spicy robbery spice.", -- Caffeine pepper spice
+        WATER_CLEAN_ICE = "It might be hard to drink this.",
+        WATER_DIRTY_ICE = "Hyuyu, it's filthy!",
 
-        WELL_KIT = "A guide for mortals on how to dig a well.", -- Well kit
-        WELL_SPRINKLER_KIT = "I don't like getting sprayed.", -- Sprinkler kit
-        WELL_WATERPUMP_KIT = "A well relying on magic, how amusing!", -- Steam water pump kit
-        WELL_BURYING_KIT = "A tool for burying past mistakes.", -- Hole burial kit
-        WELL_DRILLING = "Creating holes in the world.", -- Drilling holes
-        WELL_DRILLING_ITEM = "Let's dig a little!", -- Drill item
-        HOLE = "It's quite deep inside!", -- Well hole
-        WELL = "I need to find a bucket to lower.", -- Well
+        SPICE_CAFFEINPEPPER = "It's spicy loot.",
 
-        WX78MODULE_NONEDRUNK = "Are you the brightest bulb of the bunch?", -- 78전용 묘듈
+        WELL_KIT = "A thirsty mortal digs a well.",
+        WELL_SPRINKLER_KIT = "I don't like getting my fur wet.",
+        WELL_WATERPUMP_KIT = "A well that relies on magic, hyuyu!",
+        WELL_BURYING_KIT = "It's a tool to cover up past mistakes.",
+        WELL_DRILLING = "Making holes in the world.",
+        WELL_DRILLING_ITEM = "Hyuyu, let's dig up some ground!",
+        HOLE = "It's quite deep inside!", 
+        WELL = "I need to find a bucket to lower.",
+
+        WX78MODULE_NONEDRUNK = "Are you the brightest bulb of the bunch?",
 
         -- Water-mode Plants
 
-        TEA_TREE = "A fragrant and feeble tree.", -- Tea tree
-        DUG_TEA_TREE = "I should plant it somewhere quickly.", -- Dug tea tree
-        TEA_SEED = "There's something small inside the big one.", -- Tea tree seed
-        TEA_SEED_COOKED = "It couldn't handle the heat.", -- Roasted tea tree seed
-        TEA_SEED_SAPLING = "It's growing so diligently!", -- Tea tree sapling
-        TEALEAVES = "Fragrant-smelling leaves.", -- Tea leaves
-        TEALEAVES_DRIED = "They've dried up. Cruelty has its own charm!", -- Dried tea leaves
+        TEA_TREE = "Fragrant and flimsy tree.", 
+        DUG_TEA_TREE = "Need to plant it somewhere quickly.",
+        TEA_SEED = "There's something small inside the big one.", 
+        TEA_SEED_COOKED = "It couldn't handle the heat.", 
+        TEA_SEED_SAPLING = "It's trying so hard to grow!",
+        TEALEAVES = "Fragrant-smelling leaves.", 
+        TEALEAVES_DRIED = "It's all dried up. How cruel!",
 
-        CAFFEINBERRY = "It's blue, unlike me.", -- Caffeine berry bush
-        DUG_CAFFEINBERRY = "Is there a place to plant this?", -- Dug caffeine berry bush
-        CAFFEINBERRY_BEAN = "A lively-smelling bean.", -- Fresh caffeine bean
-        CAFFEINBERRY_BEAN_COOKED = "It has an invigorating scent.", -- Roasted caffeine bean
+        CAFFEINBERRY = "It's blue, unlike me.", 
+        DUG_CAFFEINBERRY = "Is there anywhere to plant this?",
+        CAFFEINBERRY_BEAN = "A lively-smelling bean.", 
+        CAFFEINBERRY_BEAN_COOKED = "It has an invigorating scent.", 
 
-        RUINCACAO_TREE = "A cheerful and eerie tree. How amusing!", -- Cacao tree
-        DUG_RUINCACAO_TREE = "Is it okay to plant this near home?", -- Dug cacao tree
-        RUINCACAO_SEED = "Is it sprouting?", -- Cacao seed item
-        RUINCACAO_SEED_SAPLING = "It's strangely growing!", -- Cacao seedling
-        RUINCACAO = "I'm not Krampus, but...", -- Cacao before breaking
-        RUINCACAO_BEAN = "It doesn't smell like burning.", -- Crushed cacao bean
-        RUINCACAO_BEAN_COOKED = "Strangely, it smells okay.", -- Roasted cacao bean
+        RUINCACAO_TREE = "It's a cheerful and spooky tree. Hyuyu!",
+        DUG_RUINCACAO_TREE = "Is it okay to plant this near home?", 
+        RUINCACAO_SEED = "Is it sprouting?",
+        RUINCACAO_SEED_SAPLING = "It's strangely growing!",
+        RUINCACAO = "I'm not Krampus, but...", 
+        RUINCACAO_BEAN = "Don't you think it smells like something's burning?",
+        RUINCACAO_BEAN_COOKED = "Strangely, the smell is actually okay.",
 
         -- Distilled Spirits Additives
 
-        ADDITIVE_SEED = "It has a spicy scent.", -- Herbal additives (Anise, Juniper Berry, Palgak Motive) for liqueurs
-        ADDITIVE_PETALS = "These are herbs used to make drinks.", -- Herbal, Tea, and Petal additives for liqueurs
-        ADDITIVE_NUT = "Mortals can break their teeth on this!", -- Nut additives (Burchi Nut, Coconut, Coffee Bean, Cacao Bean) for liqueurs
-        ADDITIVE_DAIRY = "I wonder what mortals made with milk this time?", -- Dairy additives for liqueurs
+        ADDITIVE_SEED = "It has a spicy scent.", 
+        ADDITIVE_PETALS = "These are herbs used to make drinks.", 
+        ADDITIVE_NUT = "This can break and shatter the teeth of mortals!",
+        ADDITIVE_DAIRY = "What have the mortals made with milk this time?",
 
         -- Drinks
 
-        WATER_CLEAN = "Mortals can't live without this.", -- Clean water
-        WATER_DIRTY = "Eww, it's really impure!", -- Dirty water
-        WATER_SALTY = "Eww, the more I drink, the thirstier I get!", -- Saltwater
+        WATER_CLEAN = "Mortals can't live without this.",
+        WATER_DIRTY = "Hyuyu, that's really filthy!",
+        WATER_SALTY = "Hyuyu, the more I drink, the thirstier I get!", 
 
-        GOOPYDRINK = "An unpleasant failed experiment.", -- Failed drink (Wet Goop concept)
+        GOOPYDRINK = "An unpleasant failed experiment.",
 
         -- Teapot Drinks
 
-        FRUITJUICE = "It has everything in it.", -- Mixed fruit juice
-        BERRIES_JUICE = "It has the sweet taste mortals like.", -- Berry juice
-        POMEGRANATE_JUICE = "Should I drink it even though I have to stay underground?", -- Pomegranate juice
-        BANANA_JUICE = "Mortals would like this drink.", -- Banana juice
-        FIG_JUICE = "Drinking this will get me kicked out of the farm.", -- Fig juice
-        DRAGONJUICE = "Is it dragon-flavored or fly-flavored?", -- Dragonfruit juice
-        GLOWBERRYJUICE = "It's nice to shine, but not to drink.", -- Glowberry juice
-        WATERMELON_JUICE = "Hmm, I'll pass.", -- Watermelon juice
+        FRUITJUICE = "All sorts of things have gone into this.",
+        BERRIES_JUICE = "Mortals love this sweet taste.",
+        POMEGRANATE_JUICE = "Even if I drink what has become a beverage, should I still remain underground?",
+        BANANA_JUICE = "Mortals would like this drink.",
+        FIG_JUICE = "Drinking this will get you kicked out of paradise.",
+        DRAGONJUICE = "Is it dragon-flavored or fly-flavored?", 
+        GLOWBERRYJUICE = "It's nice that it shines, but drinking it isn't great.",
+        WATERMELON_JUICE = "Hmm, I'll pass.",
 
-        VEGGIE_TEA = "I'm fine. It's just the soul that matters.", -- Vegetable juice
-        CARROT_TEA = "Drinking carrots won't hurt much.", -- Carrot tea
-        CACTUS_TEA = "A beverage with no thorns and a good view.", -- Cactus tea
-        TOMATO_JUICE = "Sad tomato. Hehe!", -- Tomato juice
-        LUMPY_TEA = "What does root flavor taste like?", -- Root tea
-        SEAWEED_SHAKE = "Seaweed again after drying.", -- Seaweed shake
+        VEGGIE_TEA = "I'll pass. As long as I have souls, that's enough.",
+        CARROT_TEA = "Drinking carrots won't hurt much.",
+        CACTUS_TEA = "A beverage with no thorns.",
+        TOMATO_JUICE = "Sad tomato. Hyuyu!",
+        LUMPY_TEA = "What does root flavor taste like?",
+        SEAWEED_SHAKE = "My whole body will sprout seaweed, hyuyu!",
 
-        GREENTEA = "It feels like something's missing.", -- Fresh leaf green tea
-        BLACKTEA = "The leaves weren't red.", -- Black tea
-        BLACKTEA_ICED = "Oops. It's cold. Hehe!", -- Iced black tea
-        FUER = "Just boiled leaves.", -- Fu Cha, Leaf Tea, Goshari Tea
-        MIXFLOWER = "A master's flower tea.", -- Mixed flower petal tea
-        HIBISCUSTEA = "It feels like a soul. Hehe!", -- Hibiscus tea
-        CACTUSFLOWER_TEA = "It was a beautiful flower. Now it's liquid!", -- Cactus flower tea
-        LOTUSTEA = "No pink souls, though.", -- Lotus tea
-        SUSHIBISCUS = "Sushi, my friend. Want to see what I brought?", -- Seosalt tea
-        MOON_BLOSSOM_TEA = "Even the drink glows with moonlight!", -- Moon Blossom tea
+        GREENTEA = "Something's missing.",
+        BLACKTEA = "The leaves weren't red.", 
+        BLACKTEA_ICED = "Oops. It's cold. hyuyu!",
+        FUER = "Just boiled leaves.", 
+        MIXFLOWER = "It's tea brewed from flowers.",
+        HIBISCUSTEA = "It feels like a soul. hyuyu!",
+        CACTUSFLOWER_TEA = "It was a beautiful flower. Now it's liquid!",
+        LOTUSTEA = "There are no pink souls.",
+        SUSHIBISCUS = "Hey pig, wanna see what I brought,?",
+        MOON_BLOSSOM_TEA = "Even the drink is moonlit!",
 
-        CAFFEINBERRY_JUICE = "It'll give you energy. It doesn't taste great to me.", -- Black coffee
-        TOFFEE_LATTE = "I don't really like drinks.", -- Toffee Nut Latte
-        RUINCHA_LATTE = "I guess I should try this.", -- Mocha Latte (Coffee + Chocolate)
+        CAFFEINBERRY_JUICE = "Drinking it gives you strength. But I can't taste anything.",
+        TOFFEE_LATTE = "I don't really like drinks.",
+        RUINCHA_LATTE = "I guess I should try this.", 
 
-        HOTRUINCOLATE = "A solution for mortals without fur during winter.", -- Hot Chocolate
-        RUINCOLATE_SMOOTHIE = "I prefer cold drinks. Not my taste.", -- Chocolate Smoothie (Chilled)
-        RUINXOCOLATL = "Even if you only taste half, it's bitter!", -- Chocolatl (Spicy)
-        TEA_RUINCOLATE_LATTE = "I'm not really fond of drinking.", -- Matcha Latte
+        HOTRUINCOLATE = "A solution for mortals without fur during winter.", 
+        RUINCOLATE_SMOOTHIE = "I like it cold. But I don't really like drinking it.",
+        RUINXOCOLATL = "Even if I feel just half of it, it's too bitter!",
+        TEA_RUINCOLATE_LATTE = "I don't really like drinking.",
 
-        MULLED = "Warming imp intestines.", -- Banchou
-        BUTTERBEER = "I strangely feel magic.", -- Butterbeer from the Harry Potter series
+        MULLED = "Warms up the imp's guts",
+        BUTTERBEER = "I strangely feel magic.", 
 
             -- Collaborative Teapot Drinks
 
-        COCONUT_JUICE = "Drinking something with no taste at all.", -- Shipwrecked Coconut Juice
-        RAINBOW_SHAKE = "Just looking at the colors is enough.", -- Shipwrecked Rainbow Jelly Shake
-        QUARTZ_SHAKE = "Fish drinking this? I couldn't have imagined it.", -- Shipwrecked Brainy Matter Shake
-        CHERRY_ROSEBERRIES_TEA = "It has a shadowy rose scent.", -- Cherry Forest Rosehip Tea
-        CHERRY_HONEY_TEA = "It's sweet enough to drink.", -- Cherry Forest Sakura Honey Tea
-        SWEET_RICE_DRINK = "They say you should drink and eat it at the same time!", -- Vita Co-op Sikhye
-        PINEANANAS_JUICE = "I could be an essence.", -- Legion Pineapple Juice
-        ORANGE_JUICE = "I'm satisfied with just looking at the orange color.", -- More Food Pack Orange Juice
-        STRAWBERRY_SMOOTHIE = "It's a split red fruit.", -- More Food Pack Strawberry Smoothie
-        STRAWBERRY_MILK_SMOOTHIE = "At least it should be smooth.", -- More Food Pack Strawberry Smoothie Latte
+        COCONUT_JUICE = "Drinking something that doesn't even have any taste.",
+        RAINBOW_SHAKE = "Just looking at the colors is enough.",
+        QUARTZ_SHAKE = "Even the fish never imagined it would be drunk.",
+        CHERRY_ROSEBERRIES_TEA = "I can smell the scent of roses without feeling the shadows.",
+        CHERRY_HONEY_TEA = "It's sweet enough to drink.", 
+        SWEET_RICE_DRINK = "Drinking and eating at the same time!",
+        PINEANANAS_JUICE = "As long as I have souls, that's enough.",
+        ORANGE_JUICE = "I'm satisfied with just looking at the orange color.", 
+        STRAWBERRY_SMOOTHIE = "It's a split red fruit.", 
+        STRAWBERRY_MILK_SMOOTHIE = "At least it should be smooth.",
 
         -- Brewery Drinks
 
-        SPOILED_DRINK = "It's really spoiled water!", -- Spoiled Drink
+        SPOILED_DRINK = "It's really spoiled water!",
 
         -- Brewery Soda
 
-        SODA = "Hmm, it's like water attacking me!", -- Soda Water
-        FRUITSODA = "It feels like the fruits are screaming!", -- Fruit Soda
-        LEMONLIMESODA = "It's a sweet drink with a fruity taste.", -- Lemon Lime Soda (Superior to Fruit Soda)
-        COLA = "It's okay for something black!", -- Cola
-        COLAQUANTUM = "Hmm, radioactivity is good!", -- Cola Quantum
-        LUMPY_BEER = "It looks like it's designed for the police.", -- Root Beer (Not alcohol)
+        SODA = "Hyuyu, it's water attacking me!",
+        FRUITSODA = "I feel like I can hear the fruits screaming, hyuyu!",
+        LEMONLIMESODA = "It's sweet nectar that tastes like honey.",
+        COLA = "For something black, it's quite edible!",
+        COLAQUANTUM = "Hyuyu! Radiation is nice!",
+        LUMPY_BEER = "Which idiot commits murder just to collect bottle caps with stars on them? hyuyu!",
 
         -- Brewery Spirits
 
-        CORN_BEER = "Where did all the corns go?", -- Corn Beer
-        MADHU = "If you drink it, you'll buzz like a bee!", -- Madhu
-        WINE = "It tastes like a luxurious mortal.", -- Wine (Berry Brewing)
-        NOBLEWINE = "How can red turn into white?", -- Noble Wine (Baked Berry Brewing)
-        SPARKLINGWINE = "Hmm, it's full of things that are bad for the body!", -- Sparkling Wine
-        GLOWBERRYWINE = "I'm going to drink something strange.", -- Glow Berry Wine
-        KUMIS = "Well, it won't be a gift if you drink it, kids.", -- Kumis
-        LUMPY_WINE = "I can't trust someone from the underground.", -- Sake (Roots such as potatoes and sweet potatoes)
-        PULQUE = "Who would have thought that plants with thorns would be used for drinking?", -- Pulque
-        RUINCACAO_WINE = "Oh, now you can make alcohol with beans?", -- Cacao Wine
+        CORN_BEER = "Where did all the corns go?", 
+        MADHU = "Drinking it makes you feel like buzzing like a bee!",
+        WINE = "Tastes like a luxurious mortal.",
+        NOBLEWINE = "How can red turn into white?", 
+        SPARKLINGWINE = "Hmm, it's full of things that are bad for the body!", 
+        GLOWBERRYWINE = "You're willing to drink some really peculiar things.",
+        KUMIS = "Well, it's not great to have next to cookies.",
+        LUMPY_WINE = "Those from the underground world can't be trusted.",
+        PULQUE = "Who thought of drinking a thorny plant?",
+        RUINCACAO_WINE = "Oh, now they're making alcohol from beans too?",
 
         -- Collaborative Soda
 
-        CHERRY_DOCTOR_COLA = "It can be a good torture tool. Hohoho!", -- Cherry Forest Doctor Pepper (Doctor Cherry)
-        PINEANANASSODA = "I prefer to enjoy being an essence rather than drinking it.", -- Pineapple Soda (Orangina)
-        ORANGESODA = "Oranges that can't be turned into juice.", -- Orange Soda (Fanta)
-        STRAWBERRYSODA = "Will the seeds explode like a bomb?", -- Strawberry Soda (Welch's Strawberry)
+        CHERRY_DOCTOR_COLA = "It could make a decent torture device, hyuyu!",
+        PINEANANASSODA = "Although I like the tingling sensation, I don't prefer drinking it",
+        ORANGESODA = "I’m feeling citrus-sational today!",
+        STRAWBERRYSODA = "Will the seeds explode like a bomb?", 
 
         -- Collaborative Spirits
 
-        AUROBOW = "Will it be a drink that appears after it rains? Hohoho!", -- Shipwrecked Rainbow Jelly Wine
-        COCONUT_WINE = "It doesn't taste like anything special.", -- Shipwrecked Coconut Wine
-        CHERRY_BLOOM_MADHU = "It's sweet enough to drink.", -- Cherry Blossom Honey Wine
-        GIANT_BLUEBERRY_WINE = "It's good enough to drink. It's better as a weapon!", -- Boom Berry Wine (Explodes when ignited)
-        RICE_WINE = "Did the rice dissolve in the water?", -- Vita Co-op Makgeolli
-        WHEAT_BEER = "I'll drink wheat beer when it's high tide.", -- Heap of Food Wheat Beer
-        PALE_BEER = "Will my complexion turn pale?", -- Legion Pale Ale (Beer made with Monster's Fruit)
+        AUROBOW = "Will it be a drink that appears after it rains? hyuyu!",
+        COCONUT_WINE = "It doesn't taste like anything special.", 
+        CHERRY_BLOOM_MADHU = "It's sweet enough to drink.", 
+        GIANT_BLUEBERRY_WINE = "It's good enough to drink. It's better as a weapon!",
+        RICE_WINE = "Did the rice dissolve in the water?",
+        WHEAT_BEER = "I'll drink wheat beer when it's high tide.",
+        PALE_BEER = "Is it a flavor that would make you turn pale?",
 
         -- Distilled Spirits
 
-        DISINFECTANT = "As long as you have a soul, you don't need to disinfect.", -- Disinfectant
-        CORN_WHISKEY = "It's just corn liquor.", -- Corn Whiskey
-        LUMPY_VODKA = "Imps will have a hard time with this.", -- Vodka
-        TEQUILA = "Praise the sun! Hohoho!", -- Tequila
-        MADHU_RUM = "They say mortals try to drink poison, you know.", -- Rum
-        BERRY_BRANDY = "It has a taste that mortal sophisticates would like. Not me.", -- Berry Brandy
-        AREUHI = "I wonder if mortal children drink it and act like adults.", -- Kumis Distilled Areuhi
+        DISINFECTANT = "With just a soul, I don't need to disinfect.",
+        CORN_WHISKEY = "It's just corn liquor.", 
+        LUMPY_VODKA = "Isn't this a bit harsh for an imp's body?",
+        TEQUILA = "Praise the sun! hyuyu!",
+        MADHU_RUM = "Mortal beings go out of their way to consume poison",
+        BERRY_BRANDY = "It's a sophisticated taste that mortals would enjoy. Not me.",
+        AREUHI = "If young mortals drink it, they probably won't get any presents.",
 
         -- Warly Exclusive Distilled Spirits
 
-        BERRY_GIN = "They say mortals mix it with other things.", -- Gin
-        GLOWBERRY_GIN = "Will your stomach glow?", -- Glow Berry Gin
-        ABSINTHE = "It's like me when you remove the color.", -- Absinthe
-        TEA_LUMPY_VODKA = "No, no, no.", -- Green Tea Liqueur
-        PETALS_BERRY_BRANDY = "I don't fit in with upscale things.", -- Rose Scented Brandy
-        KAHLUA = "Balance between sleeping and waking up.", -- Coffee Liqueur Kahlua
-        NUT_CORN_WHISKEY = "Is there a bolt in it?", -- Nut Whiskey
-        RUINCACAO_CREAM_LIQUEUR = "Hmm, I'm fine.", -- Baileys Cacao Cream Liqueur
-        RUMCHATA = "Is this common in mortal society?", -- Rumchata (Rum mixed with Ouatza)
+        BERRY_GIN = "I've seen mortals mix it with other things to drink.",
+        GLOWBERRY_GIN = "Will my stomach glow?",
+        ABSINTHE = "Except for the color, it might have a similar personality to mine.",
+        TEA_LUMPY_VODKA = "No, no, no.",
+        PETALS_BERRY_BRANDY = "I don't fit in with upscale things.", 
+        KAHLUA = "Balance between sleeping and waking up.", 
+        NUT_CORN_WHISKEY = "Got any bolts lying around?",
+        RUINCACAO_CREAM_LIQUEUR = "Hmm, I'll pass.",
+        RUMCHATA = "Is this common in mortal society?",
 
         -- Collaborative Distilled Spirits
 
-        MOONWAY = "I know their thoughts about immortality, but I don't understand.", -- Shipwrecked Rainbow Jelly Distilled Wine
-        ARRACK = "It's still a bit plain.", -- Arrack (Indonesian version of Coconut Wine Distilled Spirit)
-        CHERRY_BLOOM_RUM = "It's good enough to drink.", -- Cherry Blossom Honey Wine Distilled Spirit with Cherry Blossoms Floating
-        RICE_SPIRITS = "It would be fun to hide it in the water.", -- Cheongju
-        WHEAT_WHISKEY = "Mortals should mix it with their beverages. Hohoho.", -- Wheat Whiskey
-        PALE_WHISKEY = "It's really pale.", -- Pale Malt Whiskey
+        MOONWAY = "I can't quite understand what mortals are thinking.",
+        ARRACK = "It's still bland.",
+        CHERRY_BLOOM_RUM = "It's good enough to drink.", 
+        RICE_SPIRITS = "It would be fun to hide it among the water.",
+        WHEAT_WHISKEY = "I should mix it into the mortals' drinks, hyuyu!",
+        PALE_WHISKEY = "It's really pale.", 
 
         -- Warly Exclusive Collaborative Distilled Spirits
 
-        NUT_COCONUT_BRANDY = "Hey, octopus head! Are you looking for something? Could it be this? It looks good!", -- Oi, fishface! Lose something? Eh? Got it!. -- Calypso, Pirates of the Caribbean
-        GIANT_BLUEBERRY_GIN = "Hohoho, this should be fun!", -- Boom Berry Sapphire (Explodes when carrots are added)
+        NUT_COCONUT_BRANDY = "Oi, fishface! Lose something? Eh? Got it!",
+        GIANT_BLUEBERRY_GIN = "Hyuyu, this will be fun!",
 
             -- Pot Recipes
 
-        DARK_RUINCOLATE = "It's the taste of the darkness realm!", -- Dark Chocolate
-        WHITE_RUINCOLATE = "It's still smoother than a soul.", -- White Chocolate
-        RUINCOLATE = "It's mostly a favorite block.", -- Plain Chocolate
-        RUIN_SCHOKAKOLA = "Do mortals try to eat plants they've never seen before?", -- Chocacola
+        DARK_RUINCOLATE = "It's the taste of the Shadow Realm!",
+        WHITE_RUINCOLATE = "It's still smoother than a soul.", 
+        RUINCOLATE = "Mortals seem to love these blocks.", 
+        RUIN_SCHOKAKOLA = "Do mortals try to eat plants they've never seen before?", 
 
         BUCKET_STEEL_EMPTY =
         {
-            EMPTY = "Does it taste like iron from the water?", -- Empty steel bucket
-            FULL = "Water for mortals.", -- Clean rainwater is filled
-            FULL_ICE = "A world too cold to live even though it looks like water.", -- Rainwater has frozen
-            DIRTY = "It's dirty water.", -- Rainwater has become dirty
-            DIRTY_ICE = "It seems to have experienced all the turmoil in the world.", -- Dirty rainwater has frozen
+            EMPTY = "I wonder if it will taste like metal in the water!", 
+            FULL = "It's water for the mortals.",
+            FULL_ICE = "It looks like water, but it's a cold world to live in.",
+            DIRTY = "It's tainted water.",
+            DIRTY_ICE = "It seems to have experienced all the turmoil in the world.",
         },
 
         BUCKET_WOODIE_EMPTY =
         {
-            EMPTY = "It's almost just a container.", -- Woodie's empty wooden bucket
-            FULL = "Water for mortals.", -- Clean rainwater is filled
-            FULL_ICE = "A world too cold to live even though it looks like water.", -- Rainwater has frozen
-            DIRTY = "It's dirty water.", -- Rainwater has become dirty
-            DIRTY_ICE = "It seems to have experienced all the turmoil in the world.", -- Dirty rainwater has frozen
+            EMPTY = "It's almost just a tree stump.",
+            FULL = "It's water for the mortals.",
+            FULL_ICE = "It looks like water, but it's a cold world to live in.",
+            DIRTY = "It's tainted water.",
+            DIRTY_ICE = "It seems to have experienced all the turmoil in the world.",
+        },
+
+        BUCKET_DRIFTWOOD_EMPTY = 
+        {
+            EMPTY = "Hyuyu, I wonder if splinters will get into my hand while drawing water with this!", -- 빈 나무 양동이
+            FULL = "It's water for the mortals.",
+            FULL_ICE = "It looks like water, but it's a cold world to live in.",
+            DIRTY = "It's tainted water.",
+            DIRTY_ICE = "It seems to have experienced all the turmoil in the world.",
         },
 
         BUCKET_DRIFTWOOD_EMPTY = 
@@ -249,107 +262,107 @@ return {
         BUCKET_EMPTY =
         {
             EMPTY = "A bucket to hold water.", -- Empty wooden bucket
-            FULL = "Water for mortals.", -- Clean rainwater is filled
-            FULL_ICE = "A world too cold to live even though it looks like water.", -- Rainwater has frozen
-            DIRTY = "It's dirty water.", -- Rainwater has become dirty
-            DIRTY_ICE = "It seems to have experienced all the turmoil in the world.", -- Dirty rainwater has frozen
+            FULL = "It's water for the mortals.",
+            FULL_ICE = "It looks like water, but it's a cold world to live in.",
+            DIRTY = "It's tainted water.",
+            DIRTY_ICE = "It seems to have experienced all the turmoil in the world.",
         },
 
         DESALINATOR =
         {
-            EMPTY = "It wants salty water, unlike mortals.", -- Desalinator has no water
-            PURIFY_LONG = "It will take quite some time.", -- Much time left for purification
-            PURIFY_SHORT = "It's almost done!", -- Purification is almost finished
-            HASWATER = "It seems it's finally done!", -- Desalinator has clean water
-            BURNT = "I guess I have to drink salty water again. Hehehe!", -- Desalinator has burned
-            HASSALT = "Eek! It smells like salt!", -- Desalinator still has salt
+            EMPTY = "It wants salty water, unlike mortals.", 
+            PURIFY_LONG = "It will take quite some time.", 
+            PURIFY_SHORT = "It's almost done!", 
+            HASWATER = "Looks like it's finally over!",
+            BURNT = "Time to drink the salty water again, hyuyu!",
+            HASSALT = "Eek! It smells like salt!",
         },
 
         BARREL =
         {
-            GENERIC = "Filled with water instead of souls.", -- Examining a barrel with water
-            BURNT = "Did the water burn too?", -- Barrel has burned
+            GENERIC = "Filled with water instead of souls.",
+            BURNT = "Hyuyu, did the water burn too?",
         },
 
         BREWERY =
         {
-            EMPTY = "I don't really understand mortal tastes.", -- Examining an empty brewery
-            BURNT = "Hehehe, I can't comprehend mortal cooking at all.", -- Brewery has burned
-            FERMENTING_LONG = "It will take quite some time.", -- Much time left for fermentation
-            FERMENTING_SHORT = "It's almost done!", -- Fermentation is almost finished
-            DONE = "I thought I would die waiting!", -- Brewery has a drink in it
+            EMPTY = "I don't really understand mortal tastes.", 
+            BURNT = "Hyuyu, wicked fire indeed!",
+            FERMENTING_LONG = "It will take quite some time.", 
+            FERMENTING_SHORT = "It's almost done!", 
+            DONE = "I almost dried up waiting!",
         },
 
-        CAMPKETTLE_ITEM = "A way for mortals to survive.", -- Examining a camp kettle item
+        CAMPKETTLE_ITEM = "A way for mortals to survive.", 
 
         CAMPKETTLE =
         {
-            GENERIC = "Creating something from nothing is impossible!", -- Examining a camp kettle with no water
-            BOILING_LONG = "It will take quite some time.", -- Boiling water has started
-            BOILING_SHORT = "I'm really looking forward to this!", -- Water boiling is almost done
-            DONE = "Shall I try some water now?", -- Clean water is obtained
-            STOP = "Weak, weak, weak!", -- Dirty water isn't boiling because there's no fire
+            GENERIC = "You can't create something from nothing!", 
+            BOILING_LONG = "It will take quite some time.",
+            BOILING_SHORT = "Looks like it's almost boiled!",
+            DONE = "Let's wet our whistles!",
+            STOP = "Weak, weak, weak!", 
         },
 
-        CAMPDESALINATOR_ITEM = "A simple tool for removing salt.", -- Examining a camp desalinator item
+        CAMPDESALINATOR_ITEM = "It's a simple tool to get rid of the salt.",
 
         CAMPDESALINATOR =
         {
-            GENERIC = "It wants salty water, unlike mortals.", -- Camp desalinator has no water
-            BOILING_LONG = "It will take quite some time.", -- Boiling water has started
-            BOILING_SHORT = "I'm almost done!", -- Salt removal is almost done
-            DONE = "Now I can drink it!", -- Clean water is obtained
-            STOP = "Weak, weak, weak!", -- Salt removal isn't happening because there's no fire
+            GENERIC = "It wants salty water, unlike mortals.", 
+            BOILING_LONG = "It will take quite some time.",
+            BOILING_SHORT = "It's almost done!",
+            DONE = "Now I can drink it!", 
+            STOP = "Weak, weak, weak!",
         },
 
         KETTLE =
         {
-            EMPTY = "It's completely empty.", -- Examining an empty kettle
-            BURNT = "I can't understand mortal cuisine at all.", -- Kettle has burned
-            BOILING_LONG = "It will take quite some time.", -- Cooking a drink has started
-            BOILING_SHORT = "I'm really looking forward to this!", -- Drink preparation is almost done
-            DONE = "Shall I try some water now?", -- A drink is complete
-            PURIFY_LONG = "It will take quite some time.", -- Purifying dirty water has started
-            PURIFY_SHORT = "I'm almost done!", -- Dirty water is almost purified
-            HASWATER = "I guess I need to boil it again. There are so many requests!", -- Kettle has clean water
-            MELT_LONG = "It will take quite some time.", -- Melting ice water has started
-            MELT_SHORT = "It's almost melted!", -- Ice water is almost melted
+            EMPTY = "It's completely empty.", 
+            BURNT = "I just can't understand mortal cooking.",
+            BOILING_LONG = "It will take quite some time.", 
+            BOILING_SHORT = "I'm really looking forward to this!", 
+            DONE = "Let's wet our whistles!",
+            PURIFY_LONG = "It will take quite some time.", 
+            PURIFY_SHORT = "It's almost done!",
+            HASWATER = "Now we need something to boil, So many requests!",
+            MELT_LONG = "It will take quite some time.", 
+            MELT_SHORT = "It's almost melted!", 
         },
 
         PORTABLEKETTLE_ITEM =
         {
-            GENERIC = "Can I boil souls in it?", -- Examining a portable kettle item
-            EMPTY = "It's completely empty.", -- Examining an empty placed portable kettle
-            BOILING_LONG = "It will take quite some time.", -- Cooking a drink has started
-            BOILING_SHORT = "I'm really looking forward to this!", -- Drink preparation is almost done
-            DONE = "Shall I try some water now?", -- A drink is complete
-            PURIFY_LONG = "It will take quite some time.", -- Purifying dirty water has started
-            PURIFY_SHORT = "I'm almost done!", -- Dirty water is almost purified
-            HASWATER = "I guess I need to boil it again. There are so many requests!", -- Placed portable kettle has clean water
-            MELT_LONG = "It will take quite some time.", -- Melting ice water has started
-            MELT_SHORT = "It's almost melted!", -- Ice water is almost melted
+            GENERIC = "Can I boil souls in it?", 
+            EMPTY = "It's completely empty.",
+            BOILING_LONG = "It will take quite some time.", 
+            BOILING_SHORT = "I'm really looking forward to this!", 
+            DONE = "Let's wet our whistles!",
+            PURIFY_LONG = "It will take quite some time.",
+            PURIFY_SHORT = "I'm almost done!", 
+            HASWATER =  "Now we need something to boil, So many requests!",
+            MELT_LONG = "It will take quite some time.", 
+            MELT_SHORT = "It's almost melted!", 
         },
 
         DISTILLERS =
         {
-            EMPTY = "Well, shall we drink some spirits?", -- Examining an empty distiller
-            DISTILLTING_LONG = "It will take quite some time.", -- Distillation is taking a long time
-            DISTILLING_SHORT = "It was too long!", -- Distillation is almost done
-            DONE = "I thought my throat would dry out!", -- Distiller has a drink in it
+            EMPTY = "Well, maybe I'll have a drink.",
+            DISTILLTING_LONG = "Looks like it's going to take a really long time.",
+            DISTILLING_SHORT = "That was such a long time!",
+            DONE = "I thought my throat would dry out!", 
         },
 
         WELL_WATERPUMP = {
-            HIGH_PRESSURE = "It's making quite a noise!", -- Maximum pressure
-            MIDDLE_PRESSURE = "The sound has weakened a bit.", -- Medium pressure
-            LOW_PRESSURE = "It looks like it's about to turn off.", -- Almost no pressure
-            RECHARG_PRESSURE = "I guess I need to recharge it!", -- No pressure (can't use it until pressure is at maximum)
+            HIGH_PRESSURE = "It's making quite a noise!",
+            MIDDLE_PRESSURE = "The sound has weakened a bit.",
+            LOW_PRESSURE = "It looks like it's about to turn off.", 
+            RECHARG_PRESSURE = "It needs to be recharged!",
         },
 
         WELL_SPRINKLER =
         {
-            LOWFUEL = "It looks like it needs more fuel.", -- Examining with almost no fuel
-            ON = "A fountain show!", -- It's working
-            OFF = "It's not working, just resting.", -- Examining when not working
+            LOWFUEL = "It looks like it needs more materials.", 
+            ON = "A fountain show!",
+            OFF = "Taking a break without working.", 
         },
     }
 }
