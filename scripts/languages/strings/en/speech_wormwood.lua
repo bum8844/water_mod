@@ -126,7 +126,7 @@ return {
 
             -- Collaborative Kettle Drinks
 
-            COCONUT_JUICE = "Full of chewy stuff", , 
+            COCONUT_JUICE = "Full of chewy stuff",
             RAINBOW_SHAKE = "Made with pretty glub glub blobs", 
             QUARTZ_SHAKE = "Made with glub glub", 
             CHERRY_ROSEBERRIES_TEA = "Has a tangy scent", 

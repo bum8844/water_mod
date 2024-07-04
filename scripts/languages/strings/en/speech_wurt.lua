@@ -23,7 +23,7 @@ return {
         ANNOUNCE_CURE_WATERBORNE = "Feeling a bit better, florp.",
 
         ANNOUNCE_DCAPACITY_CRITICAL = "Florpt, feeling dizzy for some reason!",
-        ANNOUNCE_DCAPACITY_HALF = "Face feels hot, florp!"
+        ANNOUNCE_DCAPACITY_HALF = "Face feels hot, florp!",
 
         DESCRIBE =
         {
