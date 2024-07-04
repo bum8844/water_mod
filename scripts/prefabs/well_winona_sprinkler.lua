@@ -125,6 +125,16 @@ end
 
 local function OnEntitySleep(inst)
     inst.SoundEmitter:KillSound("firesuppressor_idle")
+    --[[inst.components.updatelooper:RemoveOnUpdateFn(OnUpdateLightServer)
+    SetTarget(inst, nil)
+    EnableLight(inst, false)]]
+end
+
+local function OnEntityWake(inst)
+    --inst.components.updatelooper:AddOnUpdateFn(OnUpdateLightServer)
+    if not inst.SoundEmitter:PlayingSound("firesuppressor_idle") then
+        inst.SoundEmitter:PlaySound("dangerous_sea/common/water_pump/LP", "firesuppressor_idle")
+    end
 end
 
 local function onbuilt(inst)
@@ -550,6 +560,7 @@ local function SetPowered(inst, powered, duration)
             if inst._powertask then
                 inst._powertask:Cancel()
             end
+            inst.AnimState:PlayAnimation("idle_on_loop")
             inst._powertask = inst:DoTaskInTime(duration, SetPowered, false)
             if not waspowered then
                 --[[inst:WatchWorldState("isnight", OnIsDarkOrCold)
@@ -570,6 +581,40 @@ end
 local function OnCircuitChanged(inst)
     --Notify other connected batteries
     inst.components.circuitnode:ForEachNode(NotifyCircuitChanged)
+end
+
+local function OnIsisraining( ... )
+    -- body
+end
+
+local function SetPowered(inst, powered, duration)
+    if not powered then
+        if inst._powertask then
+            inst._powertask:Cancel()
+            inst._powertask = nil
+            inst:StopWatchingWorldState("israining",OnIsisraining)
+        end
+        --[[EnableTargetSearch(inst, false)
+        SetLedStatusOff(inst)]]
+    else
+        local waspowered = inst._powertask ~= nil
+        local remaining = waspowered and GetTaskRemaining(inst._powertask) or 0
+        if duration > remaining then
+            if inst._powertask then
+                inst._powertask:Cancel()
+            end
+            inst._powertask = inst:DoTaskInTime(duration, SetPowered, false)
+            if not waspowered then
+                inst:WatchWorldState("israining", OnIsisraining)
+                --[[SetLedStatusBlink(inst, true)
+                OnIsDarkOrCold(inst)]]
+            end
+        end
+    end
+end
+
+local function AddBatteryPower(inst, power)
+    --SetPowered(inst, true, power)
 end
 
 local function DoWireSparks(inst)
@@ -601,7 +646,7 @@ local function OnDisconnectCircuit(inst)--, node)
     elseif inst._wired then
         inst._wired = nil
         --This will remove mouseover as well (rather than just :Hide("wire"))
-        inst.AnimState:OverrideSymbol("wire", "winona_spotlight", "dummy")
+        --inst.AnimState:OverrideSymbol("wire", "winona_spotlight", "dummy")
         DoWireSparks(inst)
         SetPowered(inst, false)
     end
@@ -633,6 +678,11 @@ local function OnStartHelper(inst)--, recipename, placerinst)
     if inst.AnimState:IsCurrentAnimation("place") then
         inst.components.deployhelper:StopHelper()
     end
+end
+
+local function OnInit(inst)
+    inst._inittask = nil
+    inst.components.circuitnode:ConnectTo("engineeringbattery")
 end
 
 local function fn()
@@ -677,19 +727,15 @@ local function fn()
         return inst
     end
 
-    inst.onhole = nil
-    inst.on = false
-    inst.waterSpray = nil
-
 	inst:AddComponent("inspectable")
 	inst.components.inspectable.getstatus = GetStatus
 
-	inst:AddComponent("machine")
+	--[[inst:AddComponent("machine")
 	inst.components.machine.turnonfn = TurnOn
 	inst.components.machine.turnofffn = TurnOff
 	inst.components.machine.cooldowntime = 0.5
 
-    inst:AddComponent("wateringmachine")
+    inst:AddComponent("wateringmachine")]]
 
 	inst:AddComponent("lootdropper")
 	inst:AddComponent("workable")
@@ -723,6 +769,18 @@ local function fn()
     inst.OnLoad = OnLoad
     inst.OnLoadPostPass = OnLoadPostPass
     inst.OnEntitySleep = OnEntitySleep
+    --inst.OnEntityWake = OnEntityWake
+    inst.AddBatteryPower = AddBatteryPower
+
+    inst._engineerid = nil
+
+    inst._wired = nil
+    inst._flash = nil
+    inst.onhole = nil
+    inst.waterSpray = nil
+    inst._updatedelay = nil
+    inst._ledblinkdelay = nil
+    inst._inittask = inst:DoTaskInTime(0, OnInit)
 
 	inst:ListenForEvent("onbuilt", onbuilt)
     inst:ListenForEvent("pipedone",addtags)
