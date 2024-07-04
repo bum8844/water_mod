@@ -250,15 +250,6 @@ return {
             DIRTY_ICE = "It seems to have experienced all the turmoil in the world.",
         },
 
-        BUCKET_DRIFTWOOD_EMPTY = 
-        {
-            EMPTY = "Hyuyu, I wonder if splinters will get into my hand while drawing water with this!", -- 빈 나무 양동이
-            FULL = "Water for mortals.", -- Clean rainwater is filled
-            FULL_ICE = "A world too cold to live even though it looks like water.", -- Rainwater has frozen
-            DIRTY = "It's dirty water.", -- Rainwater has become dirty
-            DIRTY_ICE = "It seems to have experienced all the turmoil in the world.", -- Dirty rainwater has frozen
-        },
-
         BUCKET_EMPTY =
         {
             EMPTY = "A bucket to hold water.", -- Empty wooden bucket

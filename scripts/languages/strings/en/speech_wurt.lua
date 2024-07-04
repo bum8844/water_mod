@@ -23,7 +23,7 @@ return {
         ANNOUNCE_CURE_WATERBORNE = "Feeling a bit better, florp.",
 
         ANNOUNCE_DCAPACITY_CRITICAL = "Florpt, feeling dizzy for some reason!",
-        ANNOUNCE_DCAPACITY_HALF = "Face feels hot, florp!"
+        ANNOUNCE_DCAPACITY_HALF = "Face feels hot, florp!",
 
         DESCRIBE =
         {
@@ -248,15 +248,6 @@ return {
                 FULL_ICE = "Flrrr, don't want to touch it.",
                 DIRTY = "Turned into a tiny pond, florp!",
                 DIRTY_ICE = "Flrrr, the tiny pond has frozen.",
-            },
-
-            BUCKET_DRIFTWOOD_EMPTY = 
-            {
-                EMPTY = "Is a floaty bucket. florp", -- Empty wooden bucket
-                FULL = "Full of rainwater!", -- Clean rainwater inside
-                FULL_ICE = "Flrrr, don't want to touch it.", -- Rainwater has frozen
-                DIRTY = "It turned into a tiny pond, florp!", -- Rainwater has become dirty
-                DIRTY_ICE = "Flrrr, the tiny pond has frozen.", -- Dirty rainwater has frozen
             },
 
             BUCKET_EMPTY =

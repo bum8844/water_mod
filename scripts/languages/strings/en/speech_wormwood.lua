@@ -126,7 +126,7 @@ return {
 
             -- Collaborative Kettle Drinks
 
-            COCONUT_JUICE = "Full of chewy stuff", , 
+            COCONUT_JUICE = "Full of chewy stuff",
             RAINBOW_SHAKE = "Made with pretty glub glub blobs", 
             QUARTZ_SHAKE = "Made with glub glub", 
             CHERRY_ROSEBERRIES_TEA = "Has a tangy scent", 
@@ -248,15 +248,6 @@ return {
                 FULL_ICE = "Clean and cold", 
                 DIRTY = "Dirty to drink", 
                 DIRTY_ICE = "Dirty and frozen", 
-            },
-
-            BUCKET_DRIFTWOOD_EMPTY = 
-            {
-                EMPTY = "Made from watery friends", -- Empty wooden bucket
-                FULL = "Clean drinkable water", -- Clean collected rainwater
-                FULL_ICE = "Clean and cold", -- Rainwater has frozen
-                DIRTY = "Dirty to drink", -- Rainwater has become dirty
-                DIRTY_ICE = "Dirty and frozen", -- Dirty rainwater has frozen
             },
 
             BUCKET_EMPTY =

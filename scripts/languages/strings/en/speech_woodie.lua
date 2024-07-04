@@ -250,15 +250,6 @@ return {
                 DIRTY_ICE = "It even froze.", 
             },
 
-            BUCKET_DRIFTWOOD_EMPTY = 
-            {
-                EMPTY = "Hmm... I think I need to sand it some more.", -- Empty Wooden Bucket
-                FULL = "Let's empty the bucket before it rots.", -- Clean rainwater in the bucket
-                FULL_ICE = "Who left the bucket out to freeze?", -- Rainwater frozen in the bucket
-                DIRTY = "I should use this to water the garden.", -- Rainwater has become dirty
-                DIRTY_ICE = "It froze before I could clean it.", -- Dirty rainwater frozen in the bucket
-            },
-
             BUCKET_EMPTY = 
             {
                 EMPTY = "A bucket made of wooden planks.", 
