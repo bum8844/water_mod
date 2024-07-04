@@ -53,7 +53,7 @@ configuration_options =
 		{
 			{description = "Auto", data = false},
 			{description = "English", data = "en", hover="By lord lee"},
-			{description = "한국어", data = "ko", hover="기본지원"},
+			{description = "한국어", data = "ko", hover="기본 언어"},
 			{description = "Tiếng Việt", data = "vi", hover="Bởi Shinosan"},
 			{description = "Español", data="es", hover="Traducido por Deimos y RavenCorwen"},
 		},

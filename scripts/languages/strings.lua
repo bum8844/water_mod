@@ -6,14 +6,14 @@ LOC = require("languages/loc")
 local locales =
 {
 	en = "en",
-	ko = "ko",
+	ko = "ko",  --default langugage
 	vi = "vi",
 	es = "es",
 	--zh = "zh",
 	--zht = "zh",
 	--zhr = "zh",
 	--ru = "ru",
-	--ua = "ua",--Ukranian
+	--ua = "ua",  --Ukranian
 }
 
 local stringfiles =
@@ -23,7 +23,8 @@ local stringfiles =
 	"showme",
 }
 
-local locale = GetModConfigData("locale") or locales[LOC.GetLocaleCode()] or "en"
+local lang = GetModConfigData("locale") or LOC.GetLocaleCode() or "en"
+local locale =  locales[lang]
 
 local vanilla_characters =
 {
@@ -78,14 +79,11 @@ local function GetKeyTable(tbl, base, keytbl)
     return keytbl
 end
 
-function LoadStringsV1(loc)
-	if locales[loc] == nil then return end
-	--[[modrequire("languages/strings/"..locale.."/common"))
-	if modlist.it and GetModConfigData("useinsight") then
-		modrequire("languages/strings/"..locale.."/insight")
-	elseif modlist.sm and GetModConfigData("useshowme") then
-		modrequire("languages/strings/"..locale.."/showme")
-	end]]
+local function LoadStringsV1(loc)
+	if locales[loc] == nil then
+		print('DSD Failed to load language file')
+		return
+	end
 
 	for _, file in pairs(stringfiles) do
 		modrequire("languages/strings/"..loc.."/"..file)
@@ -96,20 +94,63 @@ function LoadStringsV1(loc)
 	end
 end
 
-function LoadStringsV2()
+local function LoadStringsV2(str_tbl)
 	for _, file in pairs(stringfiles) do
 		MergeTable(str_tbl, require("languages/strings/"..file))
 	end
 
-	local character = nil
+	if type(str_tbl["CHARACTERS"]) ~= "table" then
+		str_tbl["CHARACTERS"] = {}
+	end
 	for _, name in pairs(vanilla_characters) do
-		character = string.upper(name)
-		MergeTable(str_tbl["CHARCTERS"][character], require("languages/strings/speech_"..character))
+		local character = string.upper(name)
+		if type(str_tbl["CHARACTERS"][character]) ~= "table" then
+			str_tbl["CHARACTERS"][character] = {}
+		end
+		MergeTable(str_tbl["CHARACTERS"][character], require("languages/strings/speech_"..character))
 	end
 end
 
-LoadStringsV1(locale)
---LoadStringsV2()
+--LoadStringsV1(locale)
+LoadStringsV2(STRINGS)
+
+--------------------------------------------------------------------------------------------------------------------
+require "translator"
+local LanguageTranslator = GLOBAL.LanguageTranslator
+
+function UnloadPOCache(lang)
+	LanguageTranslator.languages[lang.."_temp"] = nil
+end
+
+function DSD_LoadPOFile(lang) --lang==nil -> Load the current language file
+	local _defaultlang = LanguageTranslator.defaultlang
+	local loc = lang or locale
+
+	LanguageTranslator:LoadPOFile(MODROOT.."scripts/languages/DSD_"..loc..".po", loc.."_temp") --loc_temp라는 언어명으로 번역된 문자열 테이블이 저장됨
+	if lang == nil then
+		if LanguageTranslator.languages[loc] == nil then
+			LanguageTranslator.languages[loc] = {}
+		end
+		MergeTable(LanguageTranslator.languages[loc], LanguageTranslator.languages[loc.."_temp"], true)
+		UnloadPOCache(loc)
+	end
+	LanguageTranslator.defaultlang = _defaultlang
+
+	return LanguageTranslator.languages[loc.."_temp"]
+end
+
+function TranslateString()
+	local _defaultlang = LanguageTranslator.defaultlang
+	LanguageTranslator.defaultlang = locale
+	GLOBAL.TranslateStringTable(STRINGS)
+	LanguageTranslator.defaultlang = _defaultlang
+end
+
+--This part should only run once at the startup
+if locale ~= "ko" then
+	DSD_LoadPOFile()
+	TranslateString()
+end
 ---------------------------------------------------------------------------------
 -- PO/T Generation
 ---------------------------------------------------------------------------------
@@ -120,49 +161,7 @@ local STRING_RESERVED_LEAD_BYTES =
     239,
 }
 
-local STRINGS_LOOKUP = {}
-
---This function only works correctly when both tables have the same key structure.
-local function LookupIdValue(lkp_var, path)
-	local evalstr = "return "..lkp_var.."."..path
-	local result, val = pcall(function() return loadstring(evalstr)() end)
-	if result and type(val) == "string" then return val else return nil end
-end
-
---returns a table of flattened keys
---ex: { K1 = {a1 = "foo", a2 = "bar"}} -> {K1.a1, K1.a2}
-local function GetIndexTable()
-	local idxtbl = {}
-	for _, file in pairs(stringfiles) do
-		GetKeyTable(require("languages/strings/"..file), nil, idxtbl)
-	end
-
-	for _, name in pairs(vanilla_characters) do
-		GetKeyTable(require("languages/strings/speech_"..name), "CHARACTERS."..string.upper(name), idxtbl)
-	end
-	--[[print("GetIndexTable():")
-	for k, v in pairs(idxtbl) do
-		print(k.." : "..v)
-	end]]
-	return idxtbl
-end
-
---'indexttable' must be a table of flattened keys
---returns a table of flattened keys - strings table
-local function ExtractTableByIndex(lkp_var, indextable)
-	local str_tbl = {}
-	for _, v in pairs(indextable) do
-		local str = LookupIdValue(lkp_var, v)
-		if str then
-			str_tbl[v] = str
-		end
-	end
-	--[[print("str_tbl:")
-	for k, v in pairs(str_tbl) do
-		print(k.." : "..v)
-	end]]
-	return str_tbl
-end
+local STRINGS_LOOKUP = nil
 
 local function IsValidString( str )
     if 0 < string.len(str) then
@@ -176,6 +175,22 @@ local function IsValidString( str )
     return true
 end
 
+local function ConvertEscapeCharactersToString(str)
+	local newstr = string.gsub(str, "\n", "\\n")
+	newstr = string.gsub(newstr, "\r", "\\r")
+	newstr = string.gsub(newstr, "\"", "\\\"")
+
+	return newstr
+end
+
+local function ConvertEscapeCharactersToRaw(str)
+	local newstr = string.gsub(str, "\\n", "\n")
+	newstr = string.gsub(newstr, "\\r", "\r")
+	newstr = string.gsub(newstr, "\\\"", "\"")
+
+	return newstr
+end
+
 local output_strings = nil
 local function PrintStringTable( base, tbl, file )
 	if file then
@@ -183,13 +198,11 @@ local function PrintStringTable( base, tbl, file )
 	end
 
 	for k,v in pairs(tbl) do
-		local path = base.."."..k
+		local path = (base ~= nil and base.."."..k) or k
 		if type(v) == "table" then
 			PrintStringTable(path, v)
 		else
-			local str = string.gsub(v, "\n", "\\n")
-			str = string.gsub(str, "\r", "\\r")
-			str = string.gsub(str, "\"", "\\\"")
+			local str = ConvertEscapeCharactersToString(v)
 			if IsValidString( str ) then
 				local to_add = {}
 				to_add.path = path
@@ -219,71 +232,111 @@ end
 
 --both tbl_dta and lkp_tbl must be a flattened string table
 local function PrintTranslatedStringTable( base, tbl_dta, lkp_tbl, file )
+	if file then
+		output_strings = {}
+	end
+
 	for k,v in pairs(tbl_dta) do
 		local idstr = lkp_tbl[k]
 		if idstr then
-			idstr = string.gsub(idstr, "\n", "\\n")
-			idstr = string.gsub(idstr, "\r", "\\r")
-			idstr = string.gsub(idstr, "\"", "\\\"")
+			idstr = ConvertEscapeCharactersToString(idstr)
 		else
 			idstr = ""
 		end
+		local str = ConvertEscapeCharactersToString(v)
 
-		local str = v
-		str = string.gsub(str, "\n", "\\n")
-		str = string.gsub(str, "\r", "\\r")
-		str = string.gsub(str, "\"", "\\\"")
+		if idstr and idstr ~= "" then
+			table.insert(output_strings, {path=base.."."..k, idstr=idstr, str=str})
+		end
+	end
+	table.sort(output_strings, function(a,b) return a.path < b.path end )
 
-		if idstr ~= "" then
-			file:write("#. "..k)
+	if file then
+		for _, v in pairs(output_strings) do
+			file:write("#. "..v.path)
 			file:write("\n")
-			file:write("msgctxt \""..k.."\"")
+			file:write("msgctxt \""..v.path.."\"")
 			file:write("\n")
-			file:write("msgid \""..idstr.."\"")
+			file:write("msgid \""..v.idstr.."\"")
 			file:write("\n")
-			file:write("msgstr \""..str.."\"")
+			file:write("msgstr \""..v.str.."\"")
 			file:write("\n\n")
 		end
 	end
 end
 
-function DSD_CreateStringsPOT(filename, root, baselang)
-	local change_lang = locale ~= baselang
-	if change_lang then LoadStringsV1(baselang) end
-
-	local tbl_idx = GetIndexTable()
-	local tbl_dta = ExtractTableByIndex("STRINGS", tbl_idx)
+function DSD_CreateStringsPOT(filename, root, str_tbl, baselang)
 	baselang = baselang or "en"
 	filename = filename or "scripts\\languages\\strings.pot"
-	root = root or "STRINGS"
+	--root = root or "STRINGS"
 
 	local file, errormsg = io.open(MODROOT..filename, "w")
 	if not file then print("DSD FAILED TO GENERATE .POT:\n"..tostring(errormsg)) return end
 
 	--write header
-	file:write('# Please Notice: If strings_'..baselang..'.pot is not updated, you can update it by using DSD_Generate'..string.upper(baselang)..'POT() in the in-game console')
+	file:write('# Please Notice: If strings_'..baselang..'.pot is not updated, you can update it by using DSD_Generate'..string.upper(baselang)..'POT() in the in-game console\n')
 	file:write('msgid ""\n')
 	file:write('msgstr ""\n')
-	file:write('"Application: Don\'t Starve\\n"\n')
-	file:write('"POT Version: 2.0\\n"\n\n')
+	file:write('"DSD Version: '..modinfo.version..'"\n')
+	file:write('"Application: Don\'t Starve"\n')
+	file:write('"POT Version: 2.0"\n\n')
 
-	PrintStringTable( root, tbl_dta, file )
+	PrintStringTable( root, str_tbl, file )
 
 	file:close()
 
-	if change_lang then LoadStringsV1(locale) end
+
 	output_strings = nil
 end
 
 DSD_GenerateENPOT = function()
-	DSD_CreateStringsPOT("scripts\\languages\\strings_en.pot", "STRINGS", "en")
+	local str_tbl = DSD_LoadPOFile("en")
+	DSD_CreateStringsPOT("scripts\\languages\\strings_en.pot", nil, str_tbl, "en")
+	UnloadPOCache("en")
 end
-GLOBAL.DSD_GenerateENPOT = DSD_GenerateENPOT
 
 DSD_GenerateKOPOT = function()
-	DSD_CreateStringsPOT("scripts\\languages\\strings_kr.pot", "STRINGS", "ko")
+	STRINGS_LOOKUP = {}
+	LoadStringsV2(STRINGS_LOOKUP)
+	DSD_CreateStringsPOT("scripts\\languages\\strings_ko.pot", "STRINGS", STRINGS_LOOKUP, "ko")
+	STRINGS_LOOKUP = nil
 end
-GLOBAL.DSD_GenerateKOPOT = DSD_GenerateKOPOT
+
+--------------------------------------------------------------------------------------------
+
+--assume both the table share the same structure
+local function LookupIdValue(lkp_var, path)
+	local evalstr = "return "..lkp_var.."["..path.."]"
+	local result, val = pcall(function() return loadstring(evalstr)() end)
+	if result and type(val) == "string" then return val else return nil end
+end
+
+--returns a table of flattened keys
+--ex: { K1 = {a1 = "foo", a2 = "bar"}} -> {K1.a1, K1.a2}
+local function GetIndexTable()
+	local idxtbl = {}
+	for _, file in pairs(stringfiles) do
+		GetKeyTable(require("languages/strings/"..file), "STRINGS", idxtbl)
+	end
+
+	for _, name in pairs(vanilla_characters) do
+		GetKeyTable(require("languages/strings/speech_"..name), "STRINGS.CHARACTERS."..string.upper(name), idxtbl)
+	end
+	return idxtbl
+end
+
+--'indexttable' must be a table of flattened keys
+--returns a table of flattened keys - strings table
+local function ExtractTableByIndex(lkp_var, indextable)
+	local str_tbl = {}
+	for _, v in pairs(indextable) do
+		local str = LookupIdValue(lkp_var, v)
+		if str then
+			str_tbl[v] = str
+		end
+	end
+	return str_tbl
+end
 
 --This function was used for initial .po generation only
 DSD_GeneratePOfromLua = function(lang)
@@ -301,20 +354,26 @@ DSD_GeneratePOfromLua = function(lang)
 	if not file then print("DSD FAILED TO GENERATE .POT:\n"..tostring(errormsg)) return end
 
 	--write header
-	file:write('# Please Notice: If strings_'..baselang..'.pot is not updated, you can update it by using DSD_Generate'..string.upper(baselang)..'POT() in the in-game console')
+	file:write('# Please Notice: If strings_'..baselang..'.pot is not updated, you can update it by using DSD_Generate'..string.upper(baselang)..'POT() in the in-game console\n')
 	file:write('msgid ""\n')
 	file:write('msgstr ""\n')
-	file:write('"Language: '.. lang .. '\n"\n')
-	file:write('"Content-Type: text/plain; charset=utf-8\n"\n')
-	file:write('"Content-Transfer-Encoding: 8bit\n"\n')
-	file:write('"Application: Don\'t Starve\\n"\n')
-	file:write('"POT Version: 2.0\\n"\n\n')
+	file:write('"Language: '.. lang .. '"\n')
+	file:write('"Content-Type: text/plain; charset=utf-8"\n')
+	file:write('"Content-Transfer-Encoding: 8bit"\n')
+	file:write('"DSD Version: '..modinfo.version..'"')
+	file:write('"Application: Don\'t Starve"\n')
+	file:write('"POT Version: 2.0"\n\n')
 
-	PrintTranslatedStringTable( root, tbl_dta, "STRINGS_LOOKUP", file )
+	PrintTranslatedStringTable( "STRINGS", tbl_dta, STRINGS_LOOKUP, file )
 
 	file:close()
 
 	LoadStringsV1(locale)
 	output_strings = nil
+	STRINGS_LOOKUP = nil
 end
+
+---------------------------------------------------------------------------------------
+GLOBAL.DSD_GenerateENPOT = DSD_GenerateENPOT
+GLOBAL.DSD_GenerateKOPOT = DSD_GenerateKOPOT
 GLOBAL.DSD_GeneratePOfromLua = DSD_GeneratePOfromLua

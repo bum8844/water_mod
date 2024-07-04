@@ -1,6 +1,6 @@
-require "utils/water_utils"
+modimport "scripts/utils/water_utils"
+modimport "scripts/set_env"
 
-modimport("scripts/set_env")
 
 PrefabFiles = require("water_prefablist")
 
