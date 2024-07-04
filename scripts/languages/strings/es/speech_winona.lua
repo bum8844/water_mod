@@ -3,240 +3,251 @@ return {
     {
         GIVE =
         {
-            WELL_NOTEMPTY = "Si vas a hacer eso, deberías añadir otra cubeta", -- Well has a dry bucket hanging, but trying to hang another bucket
-            WELL_BUSY = "Detente, el pozo está tapado.", -- Well has a bucket of water hanging, but trying to hang another bucket
+            WELL_NOTEMPTY = "Si ibas a hacer eso, deberías haber agregado otra polea desde la etapa de diseño.",
+            WELL_BUSY = "Detengámonos, solo va a bloquear el pozo.",
         }
     },
 
-        ANNOUNCE_DRUNK = "Hip, No puedo hacer esto...", -- Drunk
-        ANNOUNCE_DRUNK_END = "Me siento un poco mejor, ¿Debería tratar de recuperar fuerza?", -- Sobering up from drinking (groggy)
+        ANNOUNCE_DRUNK = "Hic, ya no puedo trabajar...",
+        ANNOUNCE_DRUNK_END = "Eso está mejor. Vamos a dar lo mejor de mí.",
         ANNOUNCE_DRUNK_IMMUNITY = "", -- Temporary, for Wigfrid only
-        ANNOUNCE_NOTCHARGE = "Hmm... ¿Cuándo tendrá leche?", -- Trying to milk a Volt Goat that isn't charged, so can't use the bucket
-        ANNOUNCE_NOTHIRSTSLEEP = "Debería beber  agua antes de ir a dormir.", -- Thirsty but attempting to sleep at night
-        ANNOUNCE_NOTHIRSTSIESTA = "Debería beber agua antes de descansar.", -- Thirsty but attempting to rest during the day
-        ANNOUNCE_SLEEP_END = "Fiu, la próxima vez no debería beber tanto.", -- Waking up after sleeping while drunk
-        ANNOUNCE_THIRST = "Debo de beber agua.", -- Very thirsty!
+        ANNOUNCE_NOTCHARGE = "Hmm... ¿Cuándo puedo ordeñar esta cabra?", 
+        ANNOUNCE_NOTHIRSTSLEEP = "I should drink water before I sleep.", 
+        ANNOUNCE_NOTHIRSTSIESTA = "I should drink water before I rest.", 
+        ANNOUNCE_SLEEP_END = "Uf, no debería beber tanto la próxima vez.",
+        ANNOUNCE_THIRST = "I need to drink some water.", 
 
-        ANNOUNCE_CAFFINE_BUFF_START = "¡Reparación a domicilio activado!", -- Starting the caffeine buff
-        ANNOUNCE_CAFFINE_BUFF_STOP = "Necesito regresar al oficio.", -- Ending the caffeine buff
+        ANNOUNCE_CAFFINE_BUFF_START = "On-site repair service activated!", 
+        ANNOUNCE_CAFFINE_BUFF_STOP = "Ahora tendré que volver a mi taller.",
 
-        ANNOUNCE_CURE_WATERBORNE = "Me siento mucho mejor ahora.", -- When curing a waterborne illness with an item
+        ANNOUNCE_CURE_WATERBORNE = "I feel much better now.",
 
-        ANNOUNCE_DCAPACITY_CRITICAL = "Es difícil concentrarse...", -- Just before getting drunk
-        ANNOUNCE_DCAPACITY_HALF = "Hmm, debería empezar a controlarme.", -- Starting to get tipsy
+        ANNOUNCE_DCAPACITY_CRITICAL = "It's hard to focus...",
+        ANNOUNCE_DCAPACITY_HALF = "Hmm, I should start moderating myself now.",
 
         DESCRIBE =
         {
-            BOILBOOK = "Está lleno de recetas para hacer bebidas con alcohol.",
+            BOILBOOK = "It's full of recipes for making drinks and alcohol.",
 
-            WATER_CLEAN_ICE = "¿Debo de masticar esto?", -- Clean ice
-            WATER_DIRTY_ICE = "Parece ser hielo con polvo .", -- Dirty ice
+            WATER_CLEAN_ICE = "Should I chew on this?", 
+            WATER_DIRTY_ICE = "Hielo mezclado con polvo.",
 
-            SPICE_CAFFEINPEPPER = "Estaría perfecto si tuviera algo de carne para acompañar...", -- Caffeine pepper spice
+            SPICE_CAFFEINPEPPER = "It would be perfect if I had some meat to go with it...",
 
-            WELL_KIT = "¿Debería darle una oportunidad?", -- Well kit
-            WELL_SPRINKLER_KIT = "Hecho a mano, un poco intrigante.", -- Sprinkler kit
-            WELL_WATERPUMP_KIT = "Éstas baterías no pueden tolerar este consumo de energía.", -- Steam water pump kit
-            WELL_BURYING_KIT = "No deberías dejar agujeros en el suelo, es peligroso.", -- Hole burying kit
-            WELL_DRILLING = "Debería tener cuidado de no ser golpeada por las piedras voladoras.", -- Drilling a hole with a drill
-            WELL_DRILLING_ITEM = "Asegúrate que esté sujetado firmemente al suelo antes de operar , ¡Y sigue todas las reglas de seguridad!", -- Drill item
-            HOLE = "Es un agujero conectado a la fuente subterránea de agua.", -- Well hole
-            WELL = "Hmm, me pregunto si habrá alguna forma de automatizarlo.", -- Well
+            WELL_KIT = "Vamos a intentarlo.",
+            WELL_SPRINKLER_KIT = "Well-made and quite intricate.", 
+            WELL_WATERPUMP_KIT = "Batteries couldn't handle the energy consumption.",
+            WELL_BURYING_KIT = "No sería seguro dejar el agujero en el suelo desatendido.",
+            WELL_DRILLING = "I should be careful not to get hit by flying rocks.",
+            WELL_DRILLING_ITEM = "Make sure to secure it firmly to the ground before operating, and follow safety rules!",
+            HOLE = "Agujero conectado a aguas subterráneas.",
+            WELL = "Hmm, I wonder if there's a way to automate this...",
+
+            WX78MODULE_NONEDRUNK = "They've really gotta start takin' better care of themselves.", 
 
             -- Water mode plants
 
-            TEA_TREE = "Es un pequeño y bonito  árbol.", -- Tea tree
-            DUG_TEA_TREE = "No importa ensuciarme las manos .", -- Dug-up tea tree
-            TEA_SEED = "Esto es lo que necesitas para hacer crecer el árbol.", -- Tea tree seed
-            TEA_SEED_COOKED = "Supongo que lo puedo comer. ¡No es tan complicado!!", -- Cooked tea tree seed
-            TEA_SEED_SAPLING = "Este árbol continua creciendo.", -- Tea tree sapling
-            TEALEAVES = "¿Hay algo especial en las hojas?", -- Tea leaves
-            TEALEAVES_DRIED = "Preparemos agua caliente.", -- Dried tea leaves
+            TEA_TREE = "Este árbol es pequeño y bonito.",
+            DUG_TEA_TREE = "I don't mind getting my hands dirty.", 
+            TEA_SEED = "Todo lo que necesitas para construir un árbol.",
+            TEA_SEED_COOKED = "Parece comestible. ¡Solo hay una forma de averiguarlo!",
+            TEA_SEED_SAPLING = "This tree is still building.", 
+            TEALEAVES = "Olor agradable para una hoja.",
+            TEALEAVES_DRIED = "Let's prepare some hot water.", 
 
-            CAFFEINBERRY = "¡Los granos de café están explotando! Increíble.", -- Caffeine berry bush
-            DUG_CAFFEINBERRY = "Debo de replantar esto, así tendré mi propio terreno. ¡Ja!", -- Dug-up caffeine berry bush
-            CAFFEINBERRY_BEAN = "¿Se pone al fuego primero, ¿No?", -- Raw coffee bean
-            CAFFEINBERRY_BEAN_COOKED = "Ah, el aroma fresco de granos de café tostado!", -- Roasted coffee bean
+            CAFFEINBERRY = "¡Oh mi!, ¡Hay granos de café aquí!",
+            DUG_CAFFEINBERRY = "I should replant this, if I had my own land. Ha!",
+            CAFFEINBERRY_BEAN = "Necesito arrojarlo al fuego primero.",
+            CAFFEINBERRY_BEAN_COOKED = "Me encanta el olor del café por la mañana",
 
-            RUINCACAO_TREE = "Hmm, estas ramas no tiene forma, son algo caóticas.", -- Ruin cacao tree
-            DUG_RUINCACAO_TREE = "Mientras más lo miro, más extraño se ve.", -- Dug-up ruin cacao tree
-            RUINCACAO_SEED = "¿Había flores dentro de esta fruta?", -- Ruin cacao sapling item
-            RUINCACAO_SEED_SAPLING = "Escalofriante... Ahora que lo pienso.", -- Planted ruin cacao sapling
-            RUINCACAO = "Así que, ¿Es carbón vegetal o una fruta?", -- Ruin cacao
-            RUINCACAO_BEAN = "No parece algo comestible.", -- Ruin cacao bean
-            RUINCACAO_BEAN_COOKED = "Es masticable, supongo.", -- Roasted ruin cacao bean
+            RUINCACAO_TREE = "Uh-oh, Looks like the blueprints for its branches were a bit off.",
+            DUG_RUINCACAO_TREE = "Cuanto más miro, más extraño se ve este árbol.",
+            RUINCACAO_SEED = "Did it have flowers even inside the fruit?", 
+            RUINCACAO_SEED_SAPLING = "It's a bit eerie now that I think about it.", 
+            RUINCACAO = "So, is this charcoal or a fruit?", 
+            RUINCACAO_BEAN = "No parece algo de aceite comestible.",
+            RUINCACAO_BEAN_COOKED = "Es lo suficientemente masticable.",
 
             -- Distillery additives
 
-            ADDITIVE_SEED = "Una serie de extrañas semillas.", -- Additives for liqueurs (anise, juniper berry, octagon motif)
-            ADDITIVE_PETALS = "Un montón de hojas y pétalos.", -- Additives for liqueurs (herbs, tea leaves, flower petals)
-            ADDITIVE_NUT = "No recolectaron esto para aperitivos.", -- Additives for liqueurs (burchinut, coconut, coffee bean, cacao bean)
-            ADDITIVE_DAIRY = "Es crema de leche.", -- Dairy additives for liqueurs
+            ADDITIVE_SEED = "Gathered some strange seeds.",
+            ADDITIVE_PETALS = "Bunches of leaves and petals.", 
+            ADDITIVE_NUT = "¿No los estabas recolectando para picar?",
+            ADDITIVE_DAIRY = "It's milk cream.",
 
             -- Drinks
 
-            WATER_CLEAN = "Debo ser agradecida por el agua limpia, daré un sorbo.", -- Clean water
-            WATER_DIRTY = "Aunque esté desesperada, no beberé de esta agua estancada.", -- Dirty water
-            WATER_SALTY = "Beber agua salada es algo suicida.", -- Salty water
+            WATER_CLEAN = "Tan limpio.",
+            WATER_DIRTY = "Incluso con prisa, no bebas agua estancada.",
+            WATER_SALTY = "Drinking seawater is suicidal.",
 
-            GOOPYDRINK = "Meh.", -- Failed drink (wet goop concept)
+            GOOPYDRINK = "Yuck.",
 
             -- Teapot drinks
 
-            FRUITJUICE = "Tiene un poco de todo.", -- Mixed fruit juice
-            BERRIES_JUICE = "No me mancharé de jugo mis manos .", -- Berry juice
-            POMEGRANATE_JUICE = "Finalmente puedo comer esta fruta.", -- Pomegranate juice
-            BANANA_JUICE = "En realidad, no pedí un té caliente de plátano.", -- Banana juice
-            FIG_JUICE = "Tiene una textura única.", -- Fig juice
-            DRAGONJUICE = "Es un jugo premium.", -- Dragon fruit juice
-            GLOWBERRYJUICE = "Adentro hay un palo brillante.", -- Glowberry juice
-            WATERMELON_JUICE = "Refrescante.", -- Watermelon juice
+            FRUITJUICE = "Todo está dentro.",
+            BERRIES_JUICE = "Al menos no tendré jugo en mis manos.",
+            POMEGRANATE_JUICE = "Por fin puedo limpiar para comer esa fruta.", 
+            BANANA_JUICE = "Micrómetro... No quería té de plátano caliente.",
+            FIG_JUICE = "The texture is unique.", 
+            DRAGONJUICE = "Que zumo tan luj-oso.",
+            GLOWBERRYJUICE = "Se parece a los productos químicos dentro de una barra luminosa.",
+            WATERMELON_JUICE = "Refreshing.",
 
-            VEGGIE_TEA = "Esto debería ayudarme a recuperar energía .", -- Vegetable juice
-            CARROT_TEA = "Justo lo que necesito en un día relajante..", -- Carrot tea
-            CACTUS_TEA = "Incluso con espinas, se volvió blando.", -- Cactus tea
-            TOMATO_JUICE = "En realidad, nunca lo habías pensado, pero es bueno.", -- Tomato juice
-            LUMPY_TEA = "No es como pensaba. Está bueno.", -- Lumpy tea
-            SEAWEED_SHAKE = "Hmm... Es posible que sea bueno para la gripe.", -- Seaweed shake
+            VEGGIE_TEA = "This should help me regain some energy.",
+            CARROT_TEA = "Perfecto, mis ojos estaban tensos de todos modos.",
+            CACTUS_TEA = "Even with thorns, it's turned mushy.", 
+            TOMATO_JUICE = "No lo hubiera buscado, pero no está mal.",
+            LUMPY_TEA = "No está mal como pensaba.",
+            SEAWEED_SHAKE = "Umm... Parece que es bueno para el estreñimiento.", 
 
-            GREENTEA = "Tiene un aroma sutíl.", -- Green tea
-            BLACKTEA = "Prefiero el café, pero si no hay nada más beberé esto.", -- Black tea
-            BLACKTEA_ICED = "Debería beber esto después de sudar .", -- Iced black tea
-            FUER = "Sorprendentemente, el aroma no está mal.", -- Herbal tea, leaf tea, fern tea
-            MIXFLOWER = "Parece que complementa el gusto refinado de una señorita.", -- Mixed flower petal tea
-            HIBISCUSTEA = "Incluso aunque no tenga fruto, sabe ácido y dulce .", -- Hibiscus tea
-            CACTUSFLOWER_TEA = "Parece está de moda hacer té de flores.", -- Cactus flower tea
-            LOTUSTEA = "Es algo exótico..", -- Lotus tea
-            SUSHIBISCUS = "Hay muchos tipos de té.", -- Suicide tea
-            MOON_BLOSSOM_TEA = "¡Fiu! ¡Mi mente se aclaró!.", -- Moon blossom tea
+            GREENTEA = "It has a subtle aroma.",
+            BLACKTEA = "Prefiero el café, pero lo beberé si no hay nada más.",
+            BLACKTEA_ICED = "I should drink it after breaking a sweat.",
+            FUER = "Surprisingly, the aroma is not bad.",
+            MIXFLOWER = "It seems to match the refined taste of a lady.",
+            HIBISCUSTEA = "No hay frutas a la vista, pero es picante y dulce.",
+            CACTUSFLOWER_TEA = "It seems like a trend to make tea from flowers.",
+            LOTUSTEA = "It's quite exotic.", 
+            SUSHIBISCUS = "¿Qué diablos es este té?",
+            MOON_BLOSSOM_TEA = "¡Ufff! Esto realmente me despierta.",
 
-            CAFFEINBERRY_JUICE = "Confío en esto cuando tengo mucho trabajo de noche ", -- Black coffee
-            TOFFEE_LATTE = "Prefiero mi café sin azúcar .", -- Toffee nut latte
-            RUINCHA_LATTE = "Vafei y chocolate, ¿Cuál debo escoger?", -- Mocha latte (coffee + chocolate)
+            CAFFEINBERRY_JUICE = "I used to rely on this a lot during late-night work.", 
+            TOFFEE_LATTE = "I prefer my coffee without sugar.", 
+            RUINCHA_LATTE = "Café y chocolate, y ambos.",
 
-            HOTRUINCOLATE = "Está caliente.", -- Hot chocolate
-            RUINCOLATE_SMOOTHIE = "He visto esto en las tiendas, pero jamás lo he comprado.", -- Chocolate smoothie (cold)
-            RUINXOCOLATL = "El sabor es intenso que parece hecha chispas.", -- Xocolatl (bitterness)
-            TEA_RUINCOLATE_LATTE = "Estoy confundida, ¿Es esto té de leche o es un smoothie de chocolate?", -- Matcha chocolate latte
+            HOTRUINCOLATE = "It's warm.",
+            RUINCOLATE_SMOOTHIE = "I've seen these in stores, but I've never bought one.",
+            RUINXOCOLATL = "Ese sabor es tan intenso como los gases de escape.", 
+            TEA_RUINCOLATE_LATTE = "This is confusing. Is it milk tea or a chocolate smoothie?",
 
-            MULLED = "No soy una chica con una chimenea, ¡Pero disfruto las copas!", -- Mulled wine
-            BUTTERBEER = "Una tecnología muy avanzada como la magia misma.", -- Butterbeer from the Harry Potter series
+            MULLED = "El momento perfecto, mi garganta se sentía áspera.", 
+            BUTTERBEER = "Cualquier tecnología suficientemente avanzada es indistinguible de la magia.",
 
             -- Collaboration Teapot Drinks
 
-            COCONUT_JUICE = "Dulce y refrescante.", -- Shipwrecked Coconut Juice
-            RAINBOW_SHAKE = "¿Debería darle una oportunidad a este arcoíris ?", -- Shipwrecked Rainbow Jelly Shake
-            QUARTZ_SHAKE = "Esto debería ser suficiente.", -- Shipwrecked Quartz Jelly Shake
-            CHERRY_ROSEBERRIES_TEA = "La acidez lo hace aún mejor.", -- Cherry Forest Rosehip Tea
-            CHERRY_HONEY_TEA = "Con una taza de esto, refresco mi garganta.", -- Cherry Forest Cherry Blossom Honey Tea
-            SWEET_RICE_DRINK = "Hmm,  es algo dulce.", -- Vita Hyup Sikhye
-            PINEANANAS_JUICE = "Definitivamente mejor que el líquido de las sodas.", -- Region of Lekia Pineapples Juice
-            ORANGE_JUICE = "Siempre he visto el refrigerador lleno de esto.", -- More Food Pack Orange Juice
-            STRAWBERRY_SMOOTHIE = "Es un sabor que una señorita amará, bueno, yo soy una también. ¡Hm!", -- More Food Pack Strawberry Smoothie
-            STRAWBERRY_MILK_SMOOTHIE = "Sabe como el postre bebible de una tienda de té.", -- More Food Pack Strawberry Milk Smoothie
+            COCONUT_JUICE = "Sweet and refreshing.", 
+            RAINBOW_SHAKE = "Intentemos beber un arcoíris.",
+            QUARTZ_SHAKE = "This should be good enough.", 
+            CHERRY_ROSEBERRIES_TEA = "The tartness makes it even better.",
+            CHERRY_HONEY_TEA = "Necesito beber esto para limpiar el polvo de mi garganta.",
+            SWEET_RICE_DRINK = "Hmm, it's quite sweet.",
+            PINEANANAS_JUICE = "Definitivamente mejor que el jugo en los productos enlatados.", 
+            ORANGE_JUICE = "I've never seen a day when this isn't in the break room fridge.",
+            STRAWBERRY_SMOOTHIE = "Parece ser del gusto de las trabajadoras. Oh, yo también soy una trabajadora. ¡Hm!",
+            STRAWBERRY_MILK_SMOOTHIE = "Sabe a una bebida de postre de la casa de té, pero es deliciosa.",
 
             -- Distillery Teapot Drinks
 
-            SPOILED_DRINK = "No es acorde con el uso industrial.", -- Spoiled Drink
+            SPOILED_DRINK = "Not even suitable for industrial use.",
 
             -- Distillery Sodas
 
-            SODA = "Agua carbonatada simple.", -- Soda Water
-            FRUITSODA = "No necesito beber a menos que vaya a una fiesta.", -- Fruit Soda
-            LEMONLIMESODA = "Mis dientes van a podrirse debido a esto...", -- Lemon Lime Soda (higher-tier fruit soda)
-            COLA = "No podré probarlo, alguien más que se lo acabé.", -- Cola
-            COLAQUANTUM = "Wow, ¿Es seguro beber esto?", -- Cola Quantum
-            LUMPY_BEER = "Sabe mejor que la cola, pero no es algo de mi gusto.", -- Root Beer (non-alcoholic)
+            SODA = "Plain sparkling water.",
+            FRUITSODA = "Nunca bebí esto porque nunca fui a fiestas.",
+            LEMONLIMESODA = "Se siente como si me pudriera los dientes.",
+            COLA = "Cada vez que voy a beberlo, alguien ya lo ha terminado.", 
+            COLAQUANTUM = "Whoa, is it safe to drink this?", 
+            LUMPY_BEER = "It tastes better than cola, but no one's on my side.", 
 
             -- Distillery Spirits
 
-            CORN_BEER = "¡Es lo ideal para beber después del trabajo!", -- Corn Beer
-            MADHU = "Creo que me gustará esto.", -- Mead
-            WINE = "No tengo tiempo para olerlo, tengo una montaña de trabajo que hacer.", -- Wine (regular berry brew)
-            NOBLEWINE = "Estás cosas finas están muy lejos de mí.", -- Noble Wine (cooked berry brew)
-            SPARKLINGWINE = "Tienes que sacudirlo enfrente de Maxwell.", -- Sparkling Wine
-            GLOWBERRYWINE = "El romance de una hogareña producción de alcohol.", -- Glow Berry Wine
-            KUMIS = "Es la primera vez que veo usar leche con alcohol.", -- Kumis, Fermented Yak Milk
-            LUMPY_WINE = "Tiene un sabor refrescante, ¿No lo crees?", -- Sake (root brew)
-            PULQUE = "Increíble que puedas hacer alcohol usando cactus.", -- Pulque (Cactus Wine)
-            RUINCACAO_WINE = "Un vino hecho con cocoa, cualquier cosa es posible.", -- Cacao Wine
+            CORN_BEER = "¡Justo después del trabajo!",
+            MADHU = "Creo que a Wig le gustaría esto.",
+            WINE = "No tengo tiempo para saborear el aroma, tengo una montaña de trabajo que hacer.",
+            NOBLEWINE = "Such fine things are far from me.",
+            SPARKLINGWINE = "Tengo que sacudirlo delante de Max.",
+            GLOWBERRYWINE = "The romance of homemade brewing.",
+            KUMIS = "Nunca antes había visto alcohol hecho con leche.",
+            LUMPY_WINE = "Tiene un sabor bastante refrescante.",
+            PULQUE = "No sabía que se podía hacer alcohol con cactus.",
+            RUINCACAO_WINE = "Si el vino se puede hacer a partir del cacao, entonces es posible.",
 
             -- Collaboration Sodas
 
-            CHERRY_DOCTOR_COLA = "Esto no es cola.", -- Cherry Forest Dr. Pepper (Dr. Cherry)
-            PINEANANASSODA = "Sabe como refresco de piña de tienda comercial.", -- Pineapple Soda (Oranch Soda)
-            ORANGESODA = "Sabe como refresco de naranja de tienda comercial.", -- Orange Soda (Frontera)
-            STRAWBERRYSODA = "No me sorprende que exista un refresco sabor fresa.", -- Strawberry Soda (Welch's Strawberry)
+            CHERRY_DOCTOR_COLA = "Esto no es coca cola.",
+            PINEANANASSODA = "It tastes like store-bought pineapple soda.",
+            ORANGESODA = "It tastes like store-bought orange soda.",
+            STRAWBERRYSODA = "I'm not surprised that there's strawberry-flavored soda.",
 
             -- Collaboration Spirits
 
-            AUROBOW = "Líquido arcoíris, los ingredientes son un poco inusuales.", -- Shipwrecked Aurobow, Rainbow Jelly Liquor
-            COCONUT_WINE = "Es un licor hecho con el fruto de una palma.", -- Shipwrecked Coconut Wine
-            CHERRY_BLOOM_MADHU = "No sabe igual.", -- Cherry Forest Cherry Blossom Honey Wine (Foaming Rainbow: When examining Cherry Blossom Honey with Winona's speech 'I'm not sure if this is honey or glue.', there is a dialogue that says 'Is this honey or 'Foaming Rainbow'?')
-            GIANT_BLUEBERRY_WINE = "No hay razón para hacer vino con mora azul.", -- Vita Hyup Boom Berry Wine (Explodes when ignited)
-            RICE_WINE = "¡El alcohol es claro!", -- Cheongju
-            WHEAT_BEER = "¡Debo tomar una bebida después del trabajo!", -- Heap of Food Wheat Beer
-            PALE_BEER = "¿Acaso tiene un color equivocado esta cerveza?", -- Region of Lekia Pale Ale (Blue beer made with Monstera fruit)
+            AUROBOW = "Aunque los ingredientes son algo cuestionables, ¡Es arcoíris!.",
+            COCONUT_WINE = "Es un vino de fruta de palma.",
+            CHERRY_BLOOM_MADHU = "Ahora ya no puedo llamarlo pegamento.",
+            GIANT_BLUEBERRY_WINE = "There's no reason you can't make wine from blueberries.", 
+            RICE_WINE = "Este alcohol es un poco turbio.",
+            WHEAT_BEER = "Debería tomar una copa después del trabajo.",
+            PALE_BEER = "Beber un poco no me matará, ¿verdad?",
 
             -- Distilled Spirits
 
-            DISINFECTANT = "Tratamiento de emergencia.", -- Disinfectant
-            CORN_WHISKEY = "Prefiero beber en abundancia a dar sorbos.", -- Corn Whiskey
-            LUMPY_VODKA = "Debo guardar esto hasta que el tiempo se vuelva frío.", -- Vodka
-            TEQUILA = "¡Tiene un aroma atrevido!", -- Tequila
-            MADHU_RUM = "La era de los marinos de combinar ron con agua guardada, ha quedado atrás.", -- Rum
-            BERRY_BRANDY = "No suelo tener tiempo de beber bebidas costosas como está.", -- Berry Brandy
-            AREUHI = "Tiene una alta graduación de alcohol.", -- Krampus Distilled Spirit Areuhi
+            DISINFECTANT = "For emergency treatment.", 
+            CORN_WHISKEY = "I prefer drinking in abundance rather than sipping.",
+            LUMPY_VODKA = "I should keep this until the weather gets colder.",
+            TEQUILA = "The aroma is quite bold!",
+            MADHU_RUM = "La era de los marineros que mezclaban ron con agua ha quedado atrás.", 
+            BERRY_BRANDY = "I don't often get the chance to drink expensive spirits like this.", 
+            AREUHI = "Nunca antes había visto este licor.",
 
             -- Walani Exclusive Distilled Spirits
 
-            BERRY_GIN = "Gracias a esto, he hecho algunos amigos en los barrios bajos.", -- Gin
-            GLOWBERRY_GIN = "Me pregunto, ¿Cuánto tiempo seguirá brillando?", -- Glow Berry Gin
-            ABSINTHE = "¡Al menos no lo mezclaron con sulfato de cobre!", -- Absinthe
-            TEA_LUMPY_VODKA = "¿Es distinto a la absento?", -- Green Tea Liqueur
-            PETALS_BERRY_BRANDY = "Luce lujoso.", -- Rose Petal Brandy
-            KAHLUA = "Creo que beberé el alcohol y el café, separados.", -- Coffee Liqueur Kahlua
-            NUT_CORN_WHISKY = "La esencia es robusta como el plomo.", -- Nut Whiskey
-            RUINCACAO_CREAM_LIQUEUR = "¿Hay un licor dulce como este también, ¿Verdad?", -- Baileys Cacao Cream Liqueur
-            RUMCHATA = "¡Leche para adultos!", -- Rumchata
+            BERRY_GIN = "Conozco a algunos amigos que arruinaron sus vidas debido a esto.",
+            GLOWBERRY_GIN = "¿Cuánto tiempo brillará, ya que la energía no es infinita?",
+            ABSINTHE = "At least we're not mixing it with copper sulfate!", 
+            TEA_LUMPY_VODKA = "Is it different from absinthe?",
+            PETALS_BERRY_BRANDY = "Seems quite luxurious.", 
+            KAHLUA = "Debo beber alcohol y café por separado.",
+            NUT_CORN_WHISKEY = "The scent is as robust as lead.", 
+            RUINCACAO_CREAM_LIQUEUR = "También hay un licor dulce como este, ¡eh!",
+            RUMCHATA = "Leche para adultos adultos, ¡eh!",
 
             -- Collaboration Distilled Spirits
 
-            MOONWAY = "Parece alto en calorías. ¿Puede usarse como combustible?", -- Rainbow Jellyfish Distilled Spirit
-            ARRACK = "Huele como la palma.", -- Arrack Indonesian version of coconut wine
-            CHERRY_BLOOM_RUM = "Parece un souvenir de aeropuerto, todos son iguales al final.", -- Cherry Blossom Honey Wine Distilled Spirit Floating Petals
-            RICE_SPIRITS = "¡Ahora es claro!", -- Rice Wine
-            WHEAT_WHISKEY = "No beber alcohol mientras trabajo.", -- Wheat Whiskey
-            PALE_WHISKEY = "Jamás he visto una bebida alcohólica artesanal de este color, antes...", -- Pale Malt Whiskey
+            MOONWAY = "Parece alto en calorías, ¿podría usarse como combustible?",
+            ARRACK = "Smells like palm sap.", 
+            CHERRY_BLOOM_RUM = "Parece un recuerdo de aeropuerto." ,
+            RICE_SPIRITS = "It's pretty clear now!", 
+            WHEAT_WHISKEY = "No drinking alcohol while working.",
+            PALE_WHISKEY = "I've never seen a distilled spirit of this color before.", 
 
             -- Walani Exclusive Collaboration Distilled Spirits
 
-            NUT_COCONUT_BRANDY = "Tiene un ligero olor dulce.", -- Coconut Brandy (Replaced Caribbean Rum because she can't make it)
-            GIANT_BLUEBERRY_GIN = "Parece que es acorde al consumo insutrial.", -- Boom Berry Sapphire (Explodes if consumed)
+            NUT_COCONUT_BRANDY = "It has a quite sweet scent.", 
+            GIANT_BLUEBERRY_GIN = "¿No es esto más adecuado para uso industrial que comestible?",
 
-            -- Distillery Cooked Dishes
+            -- Cooked Dishes
 
-            DARK_RUINCOLATE = "¿El amigo cocinero me ha preparado esta golosina?", -- Dark Chocolate
-            WHITE_RUINCOLATE = "Oh, Warly, sabes que no me gustan las cosas dulces...", -- White Chocolate
-            RUINCOLATE = "Es fácil de derretir, así que no lo como a menudo.", -- Plain Chocolate
-            RUIN_SCHOKAKOLA = "No se derrite fácilmente y tiene un estuche. También puedo ganar fuerza mientras trabajo.", -- Schokakola
+            DARK_RUINCOLATE = "Mi amigo me preparó bocadillos mientras trabajaba.",
+            WHITE_RUINCOLATE = "Oh, cauteloso, sabes que no me gustan las cosas dulces.",
+            RUINCOLATE = "Easy to melt, so I don't eat it often.", 
+            RUIN_SCHOKAKOLA = "¡Perfecto, no se derrite, tiene un estuche y me da energía mientras trabajo!",
 
             BUCKET_STEEL_EMPTY =
             {
-                EMPTY = "Se ve bien hecho y robusto.", -- Empty steel bucket
-                FULL = "Se ha acumulado agua de lluvia.", -- Clean rainwater has collected
-                FULL_ICE = "Tomará algo de esfuerzo removerlo.", -- Rainwater has frozen
-                DIRTY = "Parece que necesita una buena limpieza.", -- Rainwater has become dirty
-                DIRTY_ICE = "¿Se olvidaron de limpiarlo y vaciarlo en pleno invierno?", -- Dirty rainwater has frozen
+                EMPTY = "Bien hecho y robusto.", 
+                FULL = "Rainwater has collected.", 
+                FULL_ICE = "Parece que será difícil de eliminar.",
+                DIRTY = "Parece que se usaba para lavar una fregona.",
+                DIRTY_ICE = "Parece que se descuidó después de la limpieza invernal.", 
             },
 
             BUCKET_WOODIE_EMPTY =
             {
-                EMPTY = "Tengo mis dudas sobre su durabilidad.", -- Empty wooden bucket of Woody
-                FULL = "Se ha acumulado agua de lluvia.", -- Clean rainwater has collected
-                FULL_ICE = "Tomará algo de esfuerzo removerlo.", -- Rainwater has frozen
-                DIRTY = "Parece que necesita una buena limpieza.", -- Rainwater has become dirty
-                DIRTY_ICE = "¿Se olvidaron de limpiarlo y vaciarlo en pleno invierno?", -- Dirty rainwater has frozen
+                EMPTY = "Dudo de su durabilidad.",
+                FULL = "Rainwater has collected.", 
+                FULL_ICE = "Parece que será difícil de eliminar.",
+                DIRTY = "Parece que se usaba para lavar una fregona.",
+                DIRTY_ICE = "Parece que se descuidó después de la limpieza invernal.", 
+            },
+
+            BUCKET_DRIFTWOOD_EMPTY = 
+            {
+                EMPTY = "Whoa, This thing definitely wouldn't pass the hygiene safety standards.", 
+                FULL = "Rainwater has collected.", 
+                FULL_ICE = "Parece que será difícil de limpiar.",
+                DIRTY = "Parece que se usaba para lavar una fregona.",
+                DIRTY_ICE = "Parece que se descuidó después de la limpieza de invierno.", 
             },
 
             BUCKET_DRIFTWOOD_EMPTY = 
@@ -250,106 +261,106 @@ return {
 
             BUCKET_EMPTY =
             {
-                EMPTY = "¿Que debería poner en él?", -- Empty wooden bucket
-                FULL = "Se ha acumulado agua de lluvia.", -- Clean rainwater has collected
-                FULL_ICE = "Tomará algo de esfuerzo removerlo.", -- Rainwater has frozen
-                DIRTY = "Parece que necesita una buena limpieza.", -- Rainwater has become dirty
-                DIRTY_ICE = "¿Se olvidaron de limpiarlo y vaciarlo en pleno invierno?", -- Dirty rainwater has frozen
+                EMPTY = "What should I put in it?", 
+                FULL = "Rainwater has collected.", 
+                FULL_ICE = "Parece que será difícil de limpiar.",
+                DIRTY = "Parece que se usaba para lavar una fregona.",
+                DIRTY_ICE = "Parece que se descuidó después de la limpieza invernal.", 
             },
 
             DESALINATOR =
             {
-                EMPTY = "Se ha pensado mucho en el diseño de este.", -- No water in the desalinator
-                PURIFY_LONG = "Veamos... la salinidad sigue siendo bastante alta.", -- Still a long way to go for purification
-                PURIFY_SHORT = "No está demasiado salado ahora, ¿Verdad?", -- Purification is almost complete
-                HASWATER = "No hay garantías de que no sea agua de mar en el interior.", -- Clean water is in the desalinator
-                BURNT = "Esto es bastante exasperante.", -- The desalinator is burnt
-                HASSALT = "Es necesario retirar la sal de la caja del filtro.", -- There is salt left in the desalinator
+                EMPTY = "Me costó mucho pensar en esto.",
+                PURIFY_LONG = "Let's see... the salinity is still quite high.", 
+                PURIFY_SHORT = "Veamos... La salinidad no es demasiado alta.",
+                HASWATER = "Puedo garantizar que en el interior no hay agua de mar.",
+                BURNT = "Esto me está poniendo de los nervios",
+                HASSALT = "Necesito quitar la sal de la caja del filtro.",
             },
 
             BARREL =
             {
-                GENERIC = "Woodie y yo juntamos nuestro ingenio para asegurar que el agua no se eche a perder.", -- Inspecting the barrel
-                BURNT = "Está bien, podemos hacer otro.", -- The barrel has burned
+                GENERIC = "Woody and I put our heads together to ensure the water doesn't go bad.",
+                BURNT = "Está bien, hagamos otro.",
             },
 
             BREWERY =
             {
-                EMPTY = "¡Tiene una madera muy cara, te lo aseguro!", -- Inspecting the brewery
-                BURNT = "Se mire como se mire, esto es exasperante.", -- The brewery has burned
-                FERMENTING_LONG = "Después de todo, la fermentación lleva un tiempo...", -- A long way to go until fermentation is done
-                FERMENTING_SHORT = "Ya casi está, ¿No?", -- Fermentation is almost complete
-                DONE = "¿Lo probamos ahora?", -- There's a drink in the brewery
+                EMPTY = "¡Debo decir que usó una madera bastante cara!",
+                BURNT = "Pase lo que pase, tengo que enojarme por esto.",
+                FERMENTING_LONG = "Escuché que la fermentación lleva mucho tiempo.",
+                FERMENTING_SHORT = "¿Está casi hecho?",
+                DONE = "Vamos a probarlo.",
             },
 
-            CAMPKETTLE_ITEM = "Es un poco más pesada que las de casa.", -- Inspecting the portable kettle item
+            CAMPKETTLE_ITEM = "It's a bit heavier than the factory-made ones.", 
             CAMPKETTLE =
             {
-                GENERIC = "Tengo que conseguir un poco de agua.", -- There's no water in the camp kettle in the hearth
-                BOILING_LONG = "Todavía está alrededor de 68 °F.", -- Starting to boil water
-                BOILING_SHORT = "Está hirviendo a 192.2 °F.", -- Water is nearly boiling
-                DONE = "¡Es hora de descansar!", -- Clean water has been obtained
-                STOP = "Bueno, no va a hervir sin combustible.", -- The hearth doesn't have fire, so dirty water won't boil
+                GENERIC = "I need to get some water for it.", 
+                BOILING_LONG = "It's still around 68°F.", 
+                BOILING_SHORT = "It's boiling at 192.2°F.",
+                DONE = "Parece suficiente, pero necesito comprobarlo.",
+                STOP = "Vaya, probablemente aún no esté listo para beber.",
             },
 
-            CAMPDESALINATOR_ITEM = "Portátil dicen, pero pesa bastante.", -- Inspecting the camp desalinator item
+            CAMPDESALINATOR_ITEM = "Es bastante pesado para ser llamado 'portátil'.'", 
             CAMPDESALINATOR =
             {
-                GENERIC = "Una lata vacía.", -- No water in the camp desalinator
-                BOILING_LONG = "El nivel de salinidad es alto.", -- Starting to boil seawater
-                BOILING_SHORT = "El nivel de agua potable es alto.", -- Water is nearly done boiling
-                DONE = "¡Agua potable conseguida!", -- Clean water has been obtained
-                STOP = "Necesita combustible.", -- There's no fire in the hearth, so the saltwater won't purify
+                GENERIC = "An empty canister.", 
+                BOILING_LONG = "The seawater level is still high.", 
+                BOILING_SHORT = "The freshwater level is higher now.",
+                DONE = "Freshwater has collected!",
+                STOP = "It needs fuel.", 
             },
 
             KETTLE =
             {
-                EMPTY = "Estoy a punto de hacer una taza de café con estilo.", -- Empty kettle inspection
-                BURNT = "¿He exagerado?", -- The kettle has burned
-                BOILING_LONG = "Aún necesita mucho tiempo.", -- Just started cooking the drink
-                BOILING_SHORT = "Ya casi esta.", -- Drink is nearly done cooking
-                DONE = "¡Hora del café!", -- The drink is ready
-                PURIFY_LONG = "Se mantiene alrededor de 68°F.", -- Just started boiling dirty water
-                PURIFY_SHORT = "Esta hirviendo a 192.2°F.", -- Dirty water is nearly done boiling
-                HASWATER = "Déjame ver, sería mejor si tuviera café dentro.", -- There's clean water inside
-                MELT_LONG = "Es hielo solido.", -- Just started melting ice
-                MELT_SHORT = "El hielo esta casi derretido.", -- Ice is almost melted
+                EMPTY = "I'm about to make a cup of coffee in style.",
+                BURNT = "Did I overdo it?",
+                BOILING_LONG = "It still needs more time.", 
+                BOILING_SHORT = "It's almost done.", 
+                DONE = "¡Hora de descansar!",
+                PURIFY_LONG = "It's still around 68°F.", 
+                PURIFY_SHORT = "It's boiling at 192.2°F.",
+                HASWATER = "Let's see, it'd be nice if there's coffee.",
+                MELT_LONG = "It's still frozen solid.", 
+                MELT_SHORT = "The ice is almost gone.", 
             },
 
             PORTABLEKETTLE_ITEM =
             {
-                GENERIC = "En términos de calidad, no esta tan detrás de las fabricadas industriales.", -- Inspecting the portable kettle item
-                EMPTY = "Ni una gota de agua hay dentro.", -- Inspecting the placed empty portable kettle
-                BOILING_LONG = "Las cosas buenas toman tiempo, después de todo.", -- Just started boiling the drink
-                BOILING_SHORT = "¡Terminará en un santiamén!", -- Drink is almost done cooking
-                DONE = "¿Valió la pena tanto esfuerzo?", -- The drink is ready
-                PURIFY_LONG = "Se esta calentando.", -- Just started boiling dirty water
-                PURIFY_SHORT = "Ya puedo oír las burbujas.", -- Dirty water is nearly done boiling
-                HASWATER = "Ahora necesito poner ingredientes.", -- There's clean water inside
-                MELT_LONG = "Es todo hielo sólido.", -- Just started melting ice
-                MELT_SHORT = "El hielo ya casi se ha derretido.", -- Ice is almost melted
+                GENERIC = "In terms of quality, it doesn't lag behind the factory-made teapots.", 
+                EMPTY = "Not a drop of water in it.",
+                BOILING_LONG = "Good things take time, after all.",
+                BOILING_SHORT = "It'll be done in the blink of an eye!", 
+                DONE = "¡Hora de descansar!",
+                PURIFY_LONG = "It's still lukewarm.", 
+                PURIFY_SHORT = "I can hear the bubbles.",
+                HASWATER = "Now I need to add ingredients.", 
+                MELT_LONG = "It's all frozen solid.", 
+                MELT_SHORT = "The ice is almost melted away.",
             },
 
             DISTILLERS =
             {
-                EMPTY = "Diseñado para soportar el calor y la presión.", -- Inspecting the distiller
-                DISTILLTING_LONG = "El temporizador apenas se ha movido.", -- Still a long way to go for distillation
-                DISTILLING_SHORT = "No tomará demasiado tiempo.", -- Distillation is almost done
-                DONE = "¿Deberíamos probarlo ahora?", -- There's a drink in the distiller
+                EMPTY = "Designed to withstand heat and pressure.", 
+                DISTILLTING_LONG = "The timer has barely moved.", 
+                DISTILLING_SHORT = "It won't be long now.", 
+                DONE = "Vamos a probarlo.",
             },
 
             WELL_WATERPUMP = {
-                HIGH_PRESSURE = "Extrae agua con una presión aproximada de 123 psi.", -- Maximum pressure
-                MIDDLE_PRESSURE = "Extrae agua con una presión aproximada de 81 psi.", -- Pressure is in the middle
-                LOW_PRESSURE = "Extrae agua con una presión aproximada de 47 psi.", -- Almost no pressure
-                RECHARG_PRESSURE = "Con esta presión, le tomará una cantidad de tiempo enorme volver a extraer agua.", -- No pressure (can't be used until pressure is maximum)
+                HIGH_PRESSURE = "Drawing water with an approximate pressure of 123 psi.",
+                MIDDLE_PRESSURE = "Drawing water with an approximate pressure of 81 psi.", 
+                LOW_PRESSURE = "Drawing water with an approximate pressure of 47 psi.", 
+                RECHARG_PRESSURE = "At this pressure, it'll take an incredibly long time to draw water.", 
             },
 
             WELL_SPRINKLER =
             {
-                LOWFUEL = "Necesita recargarse.", -- Inspecting the well sprinkler with low fuel
-                ON = "No debo estar tan cerca con mi equipo.", -- It's working
-                OFF = "Algunas partes funcionan \"mágicamente\" cuando está apagado.", -- Inspecting the well sprinkler when it's turned off
+                LOWFUEL = "It needs refueling.", 
+                ON = "Don't get too close with my equipment.", 
+                OFF = "Algunas piezas funcionan \"mágicamente\".",
             },
         },
     }

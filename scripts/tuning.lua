@@ -61,6 +61,7 @@ water_tuning =
 		"wx78",
 		"wurt",
 		"webber",
+		"wonderwhy",
 	},
 
 	SPOILED_DRINK_NUTRIENTS = {  12,  12,  12 },
