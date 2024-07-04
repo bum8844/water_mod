@@ -260,7 +260,7 @@ function Brewing:OnLoad(data)
         if data.remainingtime ~= nil then
             self.targettime = GetTime() + math.max(0, data.remainingtime)
             if self.done then
-                if not self.inst:HasTag("brewery") then
+                if not self.inst:HasTag("brewery") and not self.inst:HasTag("distillers") then
                     self.task = self.inst:DoTaskInTime(data.remainingtime, dospoil, self)
                 end
                 if self.oncontinuedone ~= nil then

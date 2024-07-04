@@ -102,7 +102,7 @@ return {
             SEAWEED_SHAKE = "Drinking this won't make Wolfgang stronger.",
 
             GREENTEA = "It has a strong grassy smell.",
-            BLACKTEA = "Wolfgang thinks black tea might be dangerous..."
+            BLACKTEA = "Wolfgang thinks black tea might be dangerous...",
             BLACKTEA_ICED = "Is a iced tea! I likes it.",
             FUER = "Made from pretty plants leaves.",
             MIXFLOWER = "Smells nice.",
@@ -197,7 +197,7 @@ return {
             ABSINTHE = "Wow... is like green fairy spirits.",
             TEA_LUMPY_VODKA = "Is a strange vodka with a grassy taste!",
             PETALS_BERRY_BRANDY = "It smells fragrant.",
-            KAHLUA = "Made with beans, is a spirit."
+            KAHLUA = "Made with beans, is a spirit.",
             NUT_CORN_WHISKEY = "It smells nutty.", 
             RUINCACAO_CREAM_LIQUEUR = "Did they make chocolate into spirits?",
             RUMCHATA = "Is a strange spirit with milk.",
@@ -248,15 +248,6 @@ return {
                 FULL_ICE = "The water succumbed to the cold.",
                 DIRTY = "Precious water has become dirty...", 
                 DIRTY_ICE = "Oh no! What a waste!", 
-            },
-
-            BUCKET_DRIFTWOOD_EMPTY = 
-            {
-                EMPTY = "This bucket is lighter but sturdier.", -- Empty wooden bucket
-                FULL = "Water for Wolfgang is ready!", -- Clean rainwater in the wooden bucket
-                FULL_ICE = "The water has frozen in the cold.", -- Rainwater has frozen in the wooden bucket
-                DIRTY = "Precious water has become dirty...", -- Rainwater has become dirty
-                DIRTY_ICE = "Oh no! What a waste!", -- Dirty rainwater has frozen
             },
 
             BUCKET_EMPTY =
