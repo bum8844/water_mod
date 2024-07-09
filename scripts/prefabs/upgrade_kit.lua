@@ -140,6 +140,22 @@ local function ondeploy_w(inst, pt, deployer)
     end
 end
 
+local function waterpump_OnSave(inst, data)
+    if inst._steampressure then
+        data.steampressure = inst._steampressure
+    end
+end
+local function waterpump_OnLoad(inst, data)
+    if data and data.steampressure then
+        inst._steampressure = data.steampressure
+    end
+end
+
+local function well_waterpump_kit_fn(inst)
+    inst.OnSave = waterpump_OnSave
+    inst.OnLoad = waterpump_OnLoad
+end
+
 local function well_sprinkler_kit_fn(inst)
     inst:AddComponent("deployable")
     inst.components.deployable:SetDeployMode(DEPLOYMODE.CUSTOM)
@@ -151,6 +167,9 @@ local function well_winona_sprinkler_kit_fn(inst)
     inst.components.deployable.restrictedtag = "handyperson"
     inst.components.deployable:SetDeployMode(DEPLOYMODE.CUSTOM)
     inst.components.deployable.ondeploy = ondeploy_w
+
+    inst.OnSave = winona_sprinkler_OnSave
+    inst.OnLoad = winona_sprinkler_OnLoad
 end
 
 local PLACER_SCALE = 0.6
@@ -232,7 +251,7 @@ end
  
 return MakeUpGrade_Kit("well_kit", "well", "idle_well_kit", nil, assets.well_kit, prefabs.well_kit),
 MakeUpGrade_Kit("well_burying_kit", "well_burying_kit", "idle_burying_kit", nil, assets.well_burying_kit, prefabs.well_burying_kit,{"burying"}),
-MakeUpGrade_Kit("well_waterpump_kit", "well_waterpump", "idle_waterpump_kit", nil, assets.well_waterpump_kit,prefabs.well_waterpump_kit,{"engineering"}),
+MakeUpGrade_Kit("well_waterpump_kit", "well_waterpump", "idle_waterpump_kit", well_waterpump_kit_fn, assets.well_waterpump_kit,prefabs.well_waterpump_kit,{"engineering"}),
 MakeUpGrade_Kit("well_sprinkler_kit", "well_sprinkler", "idle_sprinkler_kit", well_sprinkler_kit_fn, assets.well_sprinkler_kit,prefabs.well_sprinkler_kit,{"well_sprinkler_kit","tile_deploy","deploykititem"}),
 MakeUpGrade_Kit("well_winona_sprinkler_kit", "well_sprinkler", "idle_sprinkler_kit", well_winona_sprinkler_kit_fn, assets.well_sprinkler_kit,prefabs.well_sprinkler_kit,{"well_sprinkler_kit","tile_deploy","deploykititem","engineering"}),
 MakePlacer("well_winona_sprinkler_kit_placer", "well_sprinkler_placement", "well_sprinkler_placement", "idle", true, nil, nil, TUNING.SPRINKLER_PLACER_SCALE, nil, nil, placer_postinit_fn_w),

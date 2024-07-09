@@ -70,8 +70,11 @@ local function CreateWellWinonaSprinkler(inst)
 end
 
 
-local function CreateWellWaterPump(inst)
+local function CreateWellWaterPump(inst, upgraded_from_item)
 	local waterpump = ReplacePrefab(inst, "well_waterpump")
+	if upgraded_from_item._steampressure then
+		waterpump.components.steampressure.curpressure = upgraded_from_item._steampressure
+	end
 	waterpump.Transform:SetPosition(inst.Transform:GetWorldPosition())
 end
 
@@ -90,7 +93,7 @@ local function OnUpgrade(inst, performer, upgraded_from_item)
 	elseif prefab == "well_sprinkler_kit" then
 		local hole = CreateWellSprinkler(inst)
 	elseif prefab == "well_waterpump_kit" then 
-		local hole = CreateWellWaterPump(inst)
+		local hole = CreateWellWaterPump(inst, upgraded_from_item)
 	elseif prefab == "well_burying_kit" then 
 		local hole = CreateWellBuryingSite(inst)
 	elseif prefab =="well_winona_sprinkler_kit" then

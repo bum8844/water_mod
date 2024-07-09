@@ -47,7 +47,7 @@ local states =
         tags = {"idle"},
 
         onenter = function(inst)
-            inst.AnimState:PlayAnimation("idle_on_loop")
+            inst.AnimState:PushAnimation("idle_on_loop")
         end,
 
         -- timeline =
@@ -190,4 +190,4 @@ local states =
     },
 }
 
-return StateGraph("well_sprinkler", states, events, "idle_off", actionhandlers)
+return StateGraph("well_winona_sprinkler", states, events, "idle_off", actionhandlers)

@@ -6,11 +6,11 @@ local assets =
 
 local function OnOpen(inst)
     inst.AnimState:PlayAnimation("open")
-    --inst.components.inventoryitem:ChangeImageName("thermos_bottle")
+    inst.components.inventoryitem:ChangeImageName("thermos_bottle_open")
 end
 
 local function OnClose(inst)
-    --inst.components.inventoryitem:ChangeImageName()
+    inst.components.inventoryitem:ChangeImageName()
     if not inst.components.inventoryitem:IsHeld() then
         inst.AnimState:PlayAnimation("close")
         inst.AnimState:PushAnimation("closed", false)
@@ -24,8 +24,7 @@ local function OnPutInInventory(inst)
     inst.AnimState:PlayAnimation("closed", false)
 end
 
-local floatable_swap_data = { bank = "beargerfur_sack", anim = "closed" }
---local floatable_swap_data = { bank = "thermos_bottle", anim = "closed" }
+local floatable_swap_data = { bank = "thermos_bottle", anim = "closed" }
 
 local function fn()
     local inst = CreateEntity()
@@ -36,10 +35,10 @@ local function fn()
     inst.entity:AddMiniMapEntity()
     inst.entity:AddNetwork()
 
-    --inst.MiniMapEntity:SetIcon("thermos_bottle.png")
+    inst.MiniMapEntity:SetIcon("thermos_bottle.png")
 
-    inst.AnimState:SetBank("beargerfur_sack")
-    inst.AnimState:SetBuild("beargerfur_sack")
+    inst.AnimState:SetBank("thermos_bottle")
+    inst.AnimState:SetBuild("thermos_bottle")
     inst.AnimState:PlayAnimation("closed")
 
     inst.AnimState:SetLightOverride(0.1)

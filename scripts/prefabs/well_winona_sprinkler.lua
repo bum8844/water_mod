@@ -282,7 +282,7 @@ local function OnSave(inst, data)
     end
 
     data.onhole = inst.onhole
-    data.on = inst.on
+    data._systemtype = inst._systemtype
     if inst.onhole == nil and inst.pipes ~= nil then
         data.pipes = {}
         data.pipeAngles = {}
@@ -306,12 +306,12 @@ local function OnLoad(inst, data)
         end
 
         inst.onhole = data.onhole or nil
-        inst.on = data.on or false
+        inst._systemtype = data._systemtype or "smart"
     end
 end
 
 local function OnLoadPostPass(inst, newents, data)
-    if not data.onhole then
+    if data and not data.onhole then
         inst.pipes = {}
         inst.loadedPipesFromFile = false
 
@@ -330,63 +330,12 @@ local function OnLoadPostPass(inst, newents, data)
     end
 end
 
-local function HasPhysics(obj)
-    return obj.Physics ~= nil
-end
-
-local function TryAvailable(inst, OnSandstormChanged)
-    if FindEntity(inst, WATER_RADIUS, HasPhysics, nil, BLOCKERS_TAGS) ~= nil then
-        inst.availabletask = inst:DoTaskInTime(5, TryAvailable, OnSandstormChanged)
-        return
-    end
-    inst.availabletask = nil
-    inst.driedup_water = false
-    inst:AddTag("haspipe")
-end
-
-local function OnSandstormChanged(inst, active)
-    if inst.availabletask then
-        inst.availabletask:Cancel()
-        inst.availabletask = nil
-    end
-    if active then
-        if inst.driedup_water then
-            TryAvailable(inst, OnSandstormChanged)
-        end
-    elseif not inst.driedup_water then
-        inst.driedup_water = true
-        if inst.components.machine:IsOn() then
-            inst.on = false
-            inst.components.machine:TurnOff(inst)
-            TurnOff(inst)
-        end
-        inst:RemoveTag("haspipe")
-    end
-end
-
-local function OnSnowLevel(inst, snowlevel)
-    if snowlevel > .02 then
-        if not inst.pondisfrozen then
-            inst.pondisfrozen = true
-            if inst.components.machine:IsOn() then
-                inst.on = false
-                inst.components.machine:TurnOff(inst)
-                TurnOff(inst)
-            end
-            inst:RemoveTag("haspipe")
-        end
-    elseif inst.pondisfrozen or inst.pondisfrozen == nil then
-        inst.pondisfrozen = false
-        inst:AddTag("haspipe")
-    end
-end
-
 local function addtags(inst)
     inst:AddTag("connected")
     inst:AddTag("haspipe") 
 end
 
-local function WeatherCheck(inst)
+--[[local function WeatherCheck(inst)
     if inst:HasTag("connected") then
         if inst:HasTag("stormchecker") then
             inst:ListenForEvent("ms_stormchanged", function(src, data)
@@ -400,7 +349,7 @@ local function WeatherCheck(inst)
             OnSnowLevel(inst, TheWorld.state.snowlevel)
         end
     end
-end
+end]]
 
 local function PipeCheck(inst)
     local pt = inst:GetPosition()
@@ -464,32 +413,6 @@ local function OnUpdatePlacerHelper(helperinst)
     end
 end
 
-local function CreatePlacerBatteryRing()
-    local inst = CreateEntity()
-
-    --[[Non-networked entity]]
-    inst.entity:SetCanSleep(false)
-    inst.persists = false
-
-    inst.entity:AddTransform()
-    inst.entity:AddAnimState()
-
-    inst:AddTag("CLASSIFIED")
-    inst:AddTag("NOCLICK")
-    inst:AddTag("placer")
-
-    inst.AnimState:SetBank("winona_battery_placement")
-    inst.AnimState:SetBuild("winona_battery_placement")
-    inst.AnimState:PlayAnimation("idle_small")
-    inst.AnimState:SetLightOverride(1)
-    inst.AnimState:SetOrientation(ANIM_ORIENTATION.OnGround)
-    inst.AnimState:SetLayer(LAYER_BACKGROUND)
-    inst.AnimState:SetSortOrder(1)
-    inst.AnimState:SetScale(PLACER_SCALE, PLACER_SCALE)
-
-    return inst
-end
-
 local function CreatePlacerRing()
     local inst = CreateEntity()
 
@@ -514,7 +437,33 @@ local function CreatePlacerRing()
     inst.AnimState:SetScale(SPRINKLER_PLACER_SCALE, SPRINKLER_PLACER_SCALE)
     inst.AnimState:SetAddColour(0, .2, .5, 0)
 
-    CreatePlacerBatteryRing().entity:SetParent(inst.entity)
+    return inst
+end
+
+local function CreatePlacerBatteryRing()
+    local inst = CreateEntity()
+
+    --[[Non-networked entity]]
+    inst.entity:SetCanSleep(false)
+    inst.persists = false
+
+    inst.entity:AddTransform()
+    inst.entity:AddAnimState()
+
+    inst:AddTag("CLASSIFIED")
+    inst:AddTag("NOCLICK")
+    inst:AddTag("placer")
+
+    inst.AnimState:SetBank("winona_battery_placement")
+    inst.AnimState:SetBuild("winona_battery_placement")
+    inst.AnimState:PlayAnimation("idle_small")
+    inst.AnimState:SetLightOverride(1)
+    inst.AnimState:SetOrientation(ANIM_ORIENTATION.OnGround)
+    inst.AnimState:SetLayer(LAYER_BACKGROUND)
+    inst.AnimState:SetSortOrder(1)
+    inst.AnimState:SetScale(PLACER_SCALE, PLACER_SCALE)
+
+    CreatePlacerRing().entity:SetParent(inst.entity)
 
     return inst
 end
@@ -522,7 +471,7 @@ end
 local function OnEnableHelper(inst, enabled, recipename, placerinst)
     if enabled then
         if inst.helper == nil and inst:HasTag("HAMMER_workable") and not inst:HasTag("burnt") then
-            inst.helper = CreatePlacerRing()
+            inst.helper = CreatePlacerBatteryRing()
             inst.helper.entity:SetParent(inst.entity)
             if placerinst and (
                 placerinst.prefab == "winona_battery_low_item_placer" or
@@ -542,38 +491,6 @@ local function OnEnableHelper(inst, enabled, recipename, placerinst)
     end
 end
 
-local function SetPowered(inst, powered, duration)
-    if not powered then
-        if inst._powertask then
-            inst._powertask:Cancel()
-            inst._powertask = nil
-            --[[inst:StopWatchingWorldState("isnight", OnIsDarkOrCold)
-            inst:StopWatchingWorldState("isfullmoon", OnIsDarkOrCold)
-            inst:StopWatchingWorldState("iswinter", OnIsDarkOrCold)]]
-        end
-        --[[EnableTargetSearch(inst, false)
-        SetLedStatusOff(inst)]]
-    else
-        local waspowered = inst._powertask ~= nil
-        local remaining = waspowered and GetTaskRemaining(inst._powertask) or 0
-        if duration > remaining then
-            if inst._powertask then
-                inst._powertask:Cancel()
-            end
-            inst.AnimState:PlayAnimation("idle_on_loop")
-            inst._powertask = inst:DoTaskInTime(duration, SetPowered, false)
-            if not waspowered then
-                --[[inst:WatchWorldState("isnight", OnIsDarkOrCold)
-                inst:WatchWorldState("isfullmoon", OnIsDarkOrCold)
-                inst:WatchWorldState("iswinter", OnIsDarkOrCold)
-                SetLedStatusBlink(inst, true)
-                OnIsDarkOrCold(inst)]]
-            end
-        end
-    end
-end
-
-
 local function NotifyCircuitChanged(inst, node)
     node:PushEvent("engineeringcircuitchanged")
 end
@@ -583,16 +500,98 @@ local function OnCircuitChanged(inst)
     inst.components.circuitnode:ForEachNode(NotifyCircuitChanged)
 end
 
-local function OnIsisraining( ... )
-    -- body
+local function EnableMoistureSearch(inst, enable)
+    if inst._turnofftask then
+        inst._turnofftask:Cancel()
+        inst._turnofftask = nil
+    end
+    if not enable then
+        inst._updatedelay = nil
+        --[[SetTarget(inst, nil)
+        EnableLight(inst, false)]]
+    elseif inst._updatedelay == nil then
+        if not inst:IsAsleep() then
+            inst._updatedelay = 0
+            --OnUpdateLightServer(inst, 0)
+        end
+        inst._updatedelay = math.random() * UPDATE_TARGET_PERIOD
+    end
 end
 
-local function SetPowered(inst, powered, duration)
+local function HasPhysics(obj)
+    return obj.Physics ~= nil
+end
+
+local function TryAvailable(inst, OnSandstormChanged)
+    if FindEntity(inst, WATER_RADIUS, HasPhysics, nil, BLOCKERS_TAGS) ~= nil then
+        inst.availabletask = inst:DoTaskInTime(5, TryAvailable, OnSandstormChanged)
+        return
+    end
+    inst.availabletask = nil
+    inst.driedup_water = false
+    inst:AddTag("haspipe")
+end
+
+local function OnSandstormChanged(inst, active)
+    if inst.availabletask then
+        inst.availabletask:Cancel()
+        inst.availabletask = nil
+    end
+    if active then
+        if inst.driedup_water then
+            TryAvailable(inst, OnSandstormChanged)
+        end
+    elseif not inst.driedup_water then
+        inst.driedup_water = true
+        if inst.components.machine:IsOn() then
+            inst.on = false
+            inst.components.machine:TurnOff(inst)
+            TurnOff(inst)
+        end
+        inst:RemoveTag("haspipe")
+    end
+end
+
+local function OnSnowLevel(inst)
+    local snowlevel = TheWorld.state.snowlevel
+    if snowlevel > .02 then
+        if not inst.pondisfrozen then
+            inst.pondisfrozen = true
+        end
+    elseif inst.pondisfrozen or inst.pondisfrozen == nil then
+        inst.pondisfrozen = false
+    end
+    return inst.pondisfrozen
+end
+
+local function WeatherCheck(inst)
+    if not TheWorld.state.israining and not OnSnowLevel(inst) then
+        EnableMoistureSearch(inst, true)
+    elseif inst._turnofftask == nil then
+        inst._turnofftask = inst:DoTaskInTime(2 + math.random() * 0.5, EnableMoistureSearch, false)
+    end
+end
+
+local function ChackStorm(inst, src, data)
+    if data.stormtype == STORM_TYPES.SANDSTORM then
+        OnSandstormChanged(inst, data.setting)
+    end
+end
+
+local function SetPowered(inst, powered, duration, ispipe)
     if not powered then
         if inst._powertask then
             inst._powertask:Cancel()
             inst._powertask = nil
-            inst:StopWatchingWorldState("israining",OnIsisraining)
+            inst.sg:GoToState("turn_off")
+            inst:StopWatchingWorldState("israining",WeatherCheck)
+            if ispipe then
+                if inst:HasTag("stormchecker") then
+                    inst:RemoveEventCallback("ms_stormchanged",ChackStorm, TheWorld)
+                elseif not inst:HasTag("dummy") then
+                    inst:StopWatchingWorldState("snowlevel", WeatherCheck)
+                end
+            end
         end
         --[[EnableTargetSearch(inst, false)
         SetLedStatusOff(inst)]]
@@ -605,16 +604,34 @@ local function SetPowered(inst, powered, duration)
             end
             inst._powertask = inst:DoTaskInTime(duration, SetPowered, false)
             if not waspowered then
-                inst:WatchWorldState("israining", OnIsisraining)
-                --[[SetLedStatusBlink(inst, true)
-                OnIsDarkOrCold(inst)]]
+                inst.sg:GoToState("turn_on")
+                inst:WatchWorldState("israining", WeatherCheck)
+                --EnableMoistureSearch(inst, true)
+                if ispipe then
+                    if inst:HasTag("stormchecker") then
+                        inst:ListenForEvent("ms_stormchanged",ChackStorm, TheWorld)
+                        OnSandstormChanged(inst, TheWorld.components.sandstorms ~= nil and TheWorld.components.sandstorms:IsSandstormActive())
+                    elseif not inst:HasTag("dummy") then
+                        inst:WatchWorldState("snowlevel", WeatherCheck)
+                    end
+                end
+                WeatherCheck(inst)
             end
         end
     end
 end
 
 local function AddBatteryPower(inst, power)
-    --SetPowered(inst, true, power)
+    if inst._watertask then
+        inst._watertask:Cancel()
+    end
+    if inst:HasTag("hashole") then
+        SetPowered(inst, true, power)
+    elseif inst:HasTag("haspipe") and inst:HasTag("connected") then
+        SetPowered(inst, true, power, true)
+    else
+        inst._watertask = inst:DoTaskInTime(0, AddBatteryPower, power)
+    end
 end
 
 local function DoWireSparks(inst)
@@ -630,7 +647,7 @@ local function DoWireSparks(inst)
 end
 
 local function OnConnectCircuit(inst)--, node)
-    if not inst._wired then
+    if not inst._wired  then
         inst._wired = true
         inst.AnimState:ClearOverrideSymbol("wire")
         if not POPULATING then
@@ -760,7 +777,7 @@ local function fn()
 
     inst:ListenForEvent("engineeringcircuitchanged", OnCircuitChanged)
 
-	inst:SetStateGraph("SGwell_sprinkler")
+	inst:SetStateGraph("SGwell_winona_sprinkler")
 
 	inst.moisturizing = 2
 	inst.UpdateSpray = UpdateSpray
@@ -780,6 +797,8 @@ local function fn()
     inst.waterSpray = nil
     inst._updatedelay = nil
     inst._ledblinkdelay = nil
+    inst._watertask = nil
+    inst._systemtype = "smart"
     inst._inittask = inst:DoTaskInTime(0, OnInit)
 
 	inst:ListenForEvent("onbuilt", onbuilt)
@@ -788,10 +807,6 @@ local function fn()
 	MakeSnowCovered(inst, .01)
 
 	inst:DoTaskInTime(0,PipeCheck)
-
-    if not inst.onhole then
-        inst:DoPeriodicTask(1,WeatherCheck)
-    end
 
 	return inst
 end

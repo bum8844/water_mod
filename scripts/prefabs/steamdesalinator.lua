@@ -102,8 +102,7 @@ end
 local function ChangeToItem(inst)
     local item = SpawnPrefab("steamdesalinator_kit")
     item.Transform:SetPosition(inst.Transform:GetWorldPosition())
-    local hole = SpawnPrefab("hole")
-    hole.Transform:SetPosition(inst.Transform:GetWorldPosition())
+    item._steampressure = inst.components.steampressure.curpressure
     item.AnimState:PushAnimation("idle_steamdesalinator_kit", false)
     item.SoundEmitter:PlaySound("meta4/winona_spotlight/collapse")
 end
@@ -189,40 +188,16 @@ local function fn()
 	return inst
 end
 
-local BOAT_MUST_TAGS = {"boat"}
 local function PlaceTestFn(inst, pt, mouseover, deployer, rot)
-    local boat = (mouseover ~= nil and mouseover:HasTag("boat") and mouseover) or nil
-    if not boat then
-        boat = TheWorld.Map:GetPlatformAtPoint(pt.x,pt.z)
-
-        -- If we're not standing on a boat, try to get the closest boat position via FindEntities()
-        if not boat or not boat:HasTag("boat") then
-            local boats = TheSim:FindEntities(pt.x, 0, pt.z, TUNING.MAX_WALKABLE_PLATFORM_RADIUS, BOAT_MUST_TAGS)
-            if #boats <= 0 then
-                return TheWorld.Map:IsDockAtPoint(pt.x, 0, pt.z)
-            end
-            boat = GetClosest(inst, boats)
-        end
-    end
-
-    if not boat then return TheWorld.Map:IsDockAtPoint(pt.x, 0, pt.z) end
-
-    -- Check the outside rim to see if no objects are there
-    local boatpos = boat:GetPosition()
-    local boatangle = boat.Transform:GetRotation()
-
-    -- Need to look a little outside of the boat edge here
-    local boatringdata = boat.components.boatringdata
-    local radius = (boatringdata and boatringdata:GetRadius() + 0.25) or 0
-    local boatsegments = (boatringdata and boatringdata:GetNumSegments()) or 1
-
-    local snap_point = GetCircleEdgeSnapTransform(boatsegments, radius, boatpos, pt, boatangle)
-    return TheWorld.Map:CanDeployWalkablePeripheralAtPoint(snap_point, inst)
+    return TheWorld.Map:GetPlatformAtPoint(pt.x, 0, pt.z, -0.5) ~= nil or TheWorld.Map:IsDockAtPoint(pt.x, 0, pt.z)
 end
 
 local function ondeploy(inst, pt, deployer)
     local steamdesalinator = SpawnPrefab("steamdesalinator")
     if steamdesalinator ~= nil then
+        if inst._steampressure then
+            steamdesalinator.components.steampressure.curpressure = inst._steampressure
+        end
         steamdesalinator.Physics:SetCollides(false)
         steamdesalinator.Physics:Teleport(pt.x, 0, pt.z)
         steamdesalinator.Physics:SetCollides(true)
@@ -230,6 +205,18 @@ local function ondeploy(inst, pt, deployer)
         steamdesalinator.AnimState:PushAnimation("deactive")
         steamdesalinator.SoundEmitter:PlaySound("dontstarve/common/researchmachine_lvl2_place")
         inst:Remove()
+    end
+end
+
+local function OnSave(inst,data)
+    if inst._steampressure then
+        data.steampressure = inst._steampressure
+    end
+end
+
+local function OnLoad(inst,data)
+    if data and data.steampressure then
+        inst._steampressure = data.steampressure
     end
 end
 
@@ -253,6 +240,8 @@ local function fn_kit()
         return inst
     end
 
+    inst._steampressure = nil
+
     inst:AddComponent("deployable")
     inst.components.deployable:SetDeployMode(DEPLOYMODE.CUSTOM)
     inst.components.deployable.ondeploy = ondeploy
@@ -261,9 +250,13 @@ local function fn_kit()
 
 	inst:AddComponent("inventoryitem")
 
+    inst.OnSave = OnSave
+    inst.OnLoad = OnLoad
+
 	return inst
 end
 
 return Prefab("steamdesalinator",fn,asset),
 Prefab("steamdesalinator_kit",fn_kit,asset),
+MakePlacer("steamdesalinator_placer","steamdesalinator","steamdesalinator","deactive",nil,nil,nil,nil,nil,nil),
 MakePlacer("steamdesalinator_kit_placer","steamdesalinator","steamdesalinator","deactive",nil,nil,nil)

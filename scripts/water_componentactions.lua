@@ -105,9 +105,9 @@ local USEITEM =
     end,
 
     machinetool = function(inst, doer, target, actions)
-        if target.HasTag("needmachtool") then
+        if target:HasTag("needmachtool") and inst:HasTag("machinetool") then
             table.insert(actions, ACTIONS.MACHINETOOL)
-        elseif doer:HasTag("portableengineer") and target:HasTag("dismantleable") then
+        elseif doer:HasTag("portableengineer") and target:HasTag("dismantleable") and inst:HasTag("dismantletool") then
             table.insert(actions, ACTIONS.MACHINETOOL)
         end
     end,
