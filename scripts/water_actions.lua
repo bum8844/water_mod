@@ -179,7 +179,7 @@ end)
 MILKINGTOOL.priority = 2
 
 local MACHINETOOL = AddAction("MACHINETOOL", STRINGS.ACTIONS.INTERACT_WITH.GENERIC, function(act)
-    if act.invobject:HasTag("changesetuptool") then
+    if act.invobject:HasTag("machinetool") then
         if act.target.components.saltmaker then
             return act.target.components.saltmaker:SetProduct()
         end

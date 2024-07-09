@@ -151,6 +151,16 @@ local function waterpump_OnLoad(inst, data)
     end
 end
 
+local function winona_sprinkler_OnSave(inst, data)
+    data.systemtype = inst._systemtype
+end
+
+local function winona_sprinkler_OnLoad(inst, data)
+    if data then
+        inst._systemtype = data._systemtype or "smart"
+    end
+end
+
 local function well_waterpump_kit_fn(inst)
     inst.OnSave = waterpump_OnSave
     inst.OnLoad = waterpump_OnLoad
@@ -163,6 +173,9 @@ local function well_sprinkler_kit_fn(inst)
 end
 
 local function well_winona_sprinkler_kit_fn(inst)
+
+    inst._systemtype = "smart"
+
     inst:AddComponent("deployable")
     inst.components.deployable.restrictedtag = "handyperson"
     inst.components.deployable:SetDeployMode(DEPLOYMODE.CUSTOM)

@@ -1,5 +1,7 @@
 local UpvalueHacker = require("utils/upvaluehacker")
 
+local UPDATE_TARGET_PERIOD = .5
+
 require("constants")
 local BLOCKERS_TAGS = { "FX", "NOCLICK", "DECOR", "INLIMBO", "playerghost", "ghost", "flying", "structure" }
 local NEED_TAGS = { "sprinkler_water" }
@@ -135,12 +137,6 @@ local function OnEntityWake(inst)
     if not inst.SoundEmitter:PlayingSound("firesuppressor_idle") then
         inst.SoundEmitter:PlaySound("dangerous_sea/common/water_pump/LP", "firesuppressor_idle")
     end
-end
-
-local function onbuilt(inst)
-	inst.AnimState:PlayAnimation("place")
-	inst.AnimState:PushAnimation("idle_off")
-	inst.SoundEmitter:PlaySound("dontstarve_DLC001/common/firesupressor_craft")
 end
 
 local function UpdateSpray(inst)
@@ -702,6 +698,20 @@ local function OnInit(inst)
     inst.components.circuitnode:ConnectTo("engineeringbattery")
 end
 
+local function removehole(inst)
+    local x, y, z = inst.Transform:GetWorldPosition()
+    local ent = TheSim:FindEntities(x, y, z,1,{"water_hole"})
+    if ent then
+        for k, v in pairs(ent) do
+            inst.onhole = "hole"
+            ent[k]:Remove()
+        end
+    end
+    inst.AnimState:PlayAnimation("place_hole")
+    inst.AnimState:PushAnimation("idle_off")
+    inst.SoundEmitter:PlaySound("dontstarve_DLC001/common/firesupressor_craft")
+end
+
 local function fn()
     local inst = CreateEntity()
 
@@ -801,14 +811,123 @@ local function fn()
     inst._systemtype = "smart"
     inst._inittask = inst:DoTaskInTime(0, OnInit)
 
-	inst:ListenForEvent("onbuilt", onbuilt)
+	inst:ListenForEvent("onbuilt",removehole)
     inst:ListenForEvent("pipedone",addtags)
 
 	MakeSnowCovered(inst, .01)
 
-	inst:DoTaskInTime(0,PipeCheck)
+    if not inst.onhole then
+	   inst:DoTaskInTime(0,PipeCheck)
+    end
 
 	return inst
 end
 
-return Prefab("well_winona_sprinkler", fn, assets, prefabs)
+local function CreatePlacerBatteryRing()
+    local inst = CreateEntity()
+
+    --[[Non-networked entity]]
+    inst.entity:SetCanSleep(false)
+    inst.persists = false
+
+    inst.entity:AddTransform()
+    inst.entity:AddAnimState()
+
+    inst:AddTag("CLASSIFIED")
+    inst:AddTag("NOCLICK")
+    inst:AddTag("placer")
+
+    inst.AnimState:SetBank("winona_battery_placement")
+    inst.AnimState:SetBuild("winona_battery_placement")
+    inst.AnimState:PlayAnimation("idle_small")
+    inst.AnimState:SetLightOverride(1)
+    inst.AnimState:SetOrientation(ANIM_ORIENTATION.OnGround)
+    inst.AnimState:SetLayer(LAYER_BACKGROUND)
+    inst.AnimState:SetSortOrder(1)
+    inst.AnimState:SetScale(PLACER_SCALE, PLACER_SCALE)
+
+    return inst
+end
+
+local function CreatePlacerSprinkler()
+    local inst = CreateEntity()
+
+    --[[Non-networked entity]]
+    inst.entity:SetCanSleep(false)
+    inst.persists = false
+
+    inst.entity:AddTransform()
+    inst.entity:AddAnimState()
+
+    inst:AddTag("CLASSIFIED")
+    inst:AddTag("NOCLICK")
+    inst:AddTag("placer")
+
+    local s = 1 / TUNING.SPRINKLER_PLACER_SCALE
+    inst.Transform:SetScale(s, s, s)
+
+    inst.AnimState:SetBank("well_sprinkler")
+    inst.AnimState:SetBuild("well_sprinkler")
+    inst.AnimState:PlayAnimation("idle_off")
+    inst.AnimState:SetLightOverride(1)
+
+    return inst
+end
+
+local PLACER_SNAP_DISTANCE = 2
+local function placer_onupdatetransform(inst)
+    local pos = inst:GetPosition()
+    local hole = TheSim:FindEntities(pos.x, 0, pos.z, PLACER_SNAP_DISTANCE, { "water_hole" })
+
+    if #hole > 0 then
+        local targetpos = hole[1]:GetPosition()
+        inst.Transform:SetPosition(targetpos.x, 0, targetpos.z)
+
+        inst.accept_placement = hole[1]:HasTag("water_hole")
+    else
+        inst.accept_placement = GetValidWaterPointNearby(inst) ~= nil
+    end
+end
+
+local function placer_override_build_point(inst)
+    return inst:GetPosition()
+end
+
+local function placer_override_testfn(inst)
+    local can_build, mouse_blocked = true, false
+
+    if inst.components.placer.testfn ~= nil then
+        can_build, mouse_blocked = inst.components.placer.testfn(inst:GetPosition(), inst:GetRotation())
+    end
+
+    can_build = inst.accept_placement
+
+    return can_build, mouse_blocked
+end
+
+local function placer_postinit_fn(inst)
+    --Show the spotlight placer on top of the spotlight range ground placer
+    --Also add the small battery range indicator
+
+    local placer2 = CreatePlacerBatteryRing()
+    placer2.entity:SetParent(inst.entity)
+    inst.components.placer:LinkEntity(placer2)
+
+    placer2 = CreatePlacerSprinkler()
+    placer2.entity:SetParent(inst.entity)
+    inst.components.placer:LinkEntity(placer2)
+
+    --inst.AnimState:SetScale(PLACER_SCALE, PLACER_SCALE)
+
+    inst.deployhelper_key = "winona_battery_engineering"
+
+    inst.components.placer.onupdatetransform = placer_onupdatetransform
+    inst.components.placer.override_build_point_fn = placer_override_build_point
+
+    inst.components.placer.override_testfn = placer_override_testfn
+
+    inst.accept_placement = false
+end
+
+return Prefab("well_winona_sprinkler", fn, assets, prefabs),
+MakePlacer("well_winona_sprinkler_placer", "well_sprinkler_placement", "well_sprinkler_placement", "idle", true, nil, nil, TUNING.SPRINKLER_PLACER_SCALE, nil, nil, placer_postinit_fn)

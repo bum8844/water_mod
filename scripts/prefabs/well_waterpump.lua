@@ -210,7 +210,6 @@ local function fn()
     inst.entity:AddMiniMapEntity()
     inst.entity:AddNetwork()
     inst.entity:Hide()
-    inst.entity:AddTag("underlay")
 
 	local minimap = inst.entity:AddMiniMapEntity()
 	minimap:SetIcon("well_waterpump.tex")

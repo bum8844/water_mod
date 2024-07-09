@@ -68,6 +68,7 @@ local function onhit(inst, worker)
 end
 
 local function onhammered(inst, worker)
+    local x, y, z = inst.Transform:GetWorldPosition()
     if inst.components.burnable ~= nil and inst.components.burnable:IsBurning() then
         inst.components.burnable:Extinguish()
     end
@@ -78,13 +79,21 @@ local function onhammered(inst, worker)
     fx.Transform:SetPosition(inst.Transform:GetWorldPosition())
     fx:SetMaterial("metal")
     inst.components.lootdropper:DropLoot()
+
+    local boat = inst:GetCurrentPlatform()
+    if boat ~= nil then
+        boat:PushEvent("spawnnewboatleak", { pt = Vector3(x, y, z), leak_size = "med_leak", playsoundfx = true })
+    end
+
     inst:Remove()
 end
 
 local function SetProduct(inst, chk)
     inst.components.pickable.canbepicked = true
+    inst.components.pickable.numtoharvest = 40
     inst.components.pickable.product = "water_clean"
     if chk then
+        inst.components.pickable.numtoharvest = 1
         inst.components.pickable.product = "saltrock"
     end
     if inst.components.steampressure.depleted then
@@ -107,9 +116,24 @@ local function ChangeToItem(inst)
     item.SoundEmitter:PlaySound("meta4/winona_spotlight/collapse")
 end
 
+local function OnSpawnIn(inst)
+    inst.entity:Show()
+    if not inst.sg:HasStateTag("active") then
+        inst.sg:GoToState("place")
+    end
+    local test = inst.components.steampressure:GetPressureSection()
+    inst.AnimState:OverrideSymbol("swap", "well_waterpump_meter", tostring(test))
+end
+
 local function OnDismantle(inst)--, doer)
     ChangeToItem(inst)
     inst:Remove()
+end
+
+local function OnSink(inst)
+    if inst:GetCurrentPlatform() == nil and not TheWorld.Map:IsDockAtPoint(inst.Transform:GetWorldPosition()) then
+        inst.components.workable:Destroy(inst)
+    end
 end
 
 local function fn()
@@ -120,6 +144,7 @@ local function fn()
     inst.entity:AddSoundEmitter()
     inst.entity:AddMiniMapEntity()
     inst.entity:AddNetwork()
+    inst.entity:Hide()
 
     inst:AddTag("watersource")
     inst:AddTag("structure")
@@ -154,7 +179,8 @@ local function fn()
     inst.components.machine.cooldowntime = 2
 
     inst:AddComponent("waterlevel")
-    inst.components.waterlevel.noneboil = false
+    inst.components.waterlevel:SetCanAccepts({WATERGROUP.NONE_BOIL})
+    inst.components.waterlevel:SetNoneBoil(true)
 
     inst:AddComponent("saltmaker")
     inst.components.saltmaker:SetProductFn(SetProduct)
@@ -172,6 +198,7 @@ local function fn()
 
 	inst:AddComponent("pickable")
     inst.components.pickable.canbepicked = true
+    inst.components.pickable.numtoharvest = TUNING.DESALINATOR_MAX_SALT
     inst.components.pickable.product = "water_clean"
     inst.components.pickable:SetOnPickedFn(OnLostPressureFn)
 
@@ -182,8 +209,11 @@ local function fn()
 	inst.components.workable:SetOnWorkCallback(onhit)
 
     inst:ListenForEvent("picked",SetPickedFn)
+    inst:ListenForEvent("onsink", OnSink)
 
     inst:SetStateGraph("SGwell_waterpump")
+
+    inst:DoTaskInTime(0, OnSpawnIn)
 
 	return inst
 end
@@ -195,15 +225,12 @@ end
 local function ondeploy(inst, pt, deployer)
     local steamdesalinator = SpawnPrefab("steamdesalinator")
     if steamdesalinator ~= nil then
-        if inst._steampressure then
+        if inst._steampressure ~= nil then
             steamdesalinator.components.steampressure.curpressure = inst._steampressure
         end
         steamdesalinator.Physics:SetCollides(false)
         steamdesalinator.Physics:Teleport(pt.x, 0, pt.z)
         steamdesalinator.Physics:SetCollides(true)
-        steamdesalinator.AnimState:PlayAnimation("place")
-        steamdesalinator.AnimState:PushAnimation("deactive")
-        steamdesalinator.SoundEmitter:PlaySound("dontstarve/common/researchmachine_lvl2_place")
         inst:Remove()
     end
 end
@@ -231,6 +258,8 @@ local function fn_kit()
     inst.AnimState:SetBuild("steamdesalinator")
     inst.AnimState:SetBank("item")
     inst.AnimState:PlayAnimation("steamdesalinator_kit")
+
+    inst:AddTag("deploykititem")
 
     MakeInventoryPhysics(inst)
 
