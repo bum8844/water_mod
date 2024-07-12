@@ -112,6 +112,7 @@ local function ChangeToItem(inst)
     local item = SpawnPrefab("steamdesalinator_kit")
     item.Transform:SetPosition(inst.Transform:GetWorldPosition())
     item._steampressure = inst.components.steampressure.curpressure
+    --item.AnimState:PlayAnimation("collapse"..anim)
     item.AnimState:PushAnimation("idle_steamdesalinator_kit", false)
     item.SoundEmitter:PlaySound("meta4/winona_spotlight/collapse")
 end
@@ -285,7 +286,32 @@ local function fn_kit()
 	return inst
 end
 
+local function MakeSteamdesalinator(inst)
+    local steamdesalinator = SpawnPrefab("steamdesalinator")
+    steamdesalinator.Transform:SetPosition(inst.Transform:GetWorldPosition())
+    inst:Remove()
+end
+
+local function fn_fake()
+    local inst = CreateEntity()
+
+    inst.entity:AddTransform()
+    inst.entity:AddAnimState()
+    inst.entity:AddNetwork()
+
+    inst.entity:SetPristine()
+
+    if not TheWorld.ismastersim then
+        return inst
+    end
+
+    inst:ListenForEvent("onbuilt",MakeSteamdesalinator)
+
+    return inst
+end
+
 return Prefab("steamdesalinator",fn,asset),
+Prefab("steamdesalinator_maker",fn_fake,asset),
 Prefab("steamdesalinator_kit",fn_kit,asset),
 MakePlacer("steamdesalinator_placer","steamdesalinator","steamdesalinator","deactive",nil,nil,nil,nil,nil,nil),
 MakePlacer("steamdesalinator_kit_placer","steamdesalinator","steamdesalinator","deactive",nil,nil,nil)

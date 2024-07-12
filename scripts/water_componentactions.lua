@@ -175,9 +175,7 @@ local SCENE =
     end,
 
     machinetool = function(inst, doer, actions, right)
-        if right and doer:HasTag("portableengineer") then
-            table.insert(actions, ACTIONS.MACHINETOOL)
-        end
+        table.insert(actions, ACTIONS.MACHINETOOL)
     end,
 }
 
@@ -193,9 +191,7 @@ local INVENTORY = {
     end,
 
     machinetool = function(inst, doer, actions, right)
-        if right and doer:HasTag("portableengineer") then
-            table.insert(actions, ACTIONS.MACHINETOOL)
-        end
+        table.insert(actions, ACTIONS.MACHINETOOL)
     end,
 
     --[[edible = function(inst, doer, actions, right)

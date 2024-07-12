@@ -759,8 +759,6 @@ local function fn()
     inst:AddTag("structure")
 	inst:AddTag("forfarm")
     inst:AddTag("alwayson")
-    inst:AddTag("needmachtool")
-    inst:AddTag("dismantleable")
 
 	if not TheNet:IsDedicated() then
 		inst:AddComponent("deployhelper")

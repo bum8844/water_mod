@@ -180,16 +180,17 @@ MILKINGTOOL.priority = 2
 
 local MACHINETOOL = AddAction("MACHINETOOL", STRINGS.ACTIONS.INTERACT_WITH.GENERIC, function(act)
     if act.doer:HasTag("portableengineer") then
-        if act.invobject:HasTag("machinetool") then
+        local item = act.invobject or act.target
+        if item:HasTag("machinetool") then
             if act.target and act.target.components.saltmaker then
                 return act.target.components.saltmaker:SetProduct()
             end
-            return act.invobject.components.machinetool:SetToolType("dismantletool")
-        elseif act.invobject:HasTag("dismantletool") then
+            return item.components.machinetool:SetToolType("dismantletool")
+        elseif item:HasTag("dismantletool") then
             if act.target and act.target.components.dismantleable then
                 return act.target.components.dismantleable:Dismantle()
             else
-                return act.invobject.components.machinetool:SetToolType("machinetool")
+                return item.components.machinetool:SetToolType("machinetool")
             end
         end
     end
