@@ -403,6 +403,7 @@ local function fn()
 
     inst:AddTag("structure")
 	inst:AddTag("kettle")
+    inst:AddTag("mastercookware")
     inst:AddTag("brewing")
     inst:AddTag("drinkproduction")
 
@@ -545,6 +546,7 @@ local function itemfn()
     inst.components.inventoryitem.imagename= "portablekettle_item"
 
     inst:AddComponent("deployable")
+    inst.components.deployable.restrictedtag = "masterchef"
     inst.components.deployable.ondeploy = ondeploy
     --inst.components.deployable:SetDeployMode(DEPLOYMODE.ANYWHERE)
     --inst.components.deployable:SetDeploySpacing(DEPLOYSPACING.NONE)
