@@ -21,7 +21,9 @@ local states =
 
         events =
         {
-            EventHandler("animover", function(inst) inst.sg:GoToState("idle_on") end),
+            EventHandler("animover", function(inst)
+                inst:PushEvent("checkweather")
+            end),
         }
     },
 
@@ -57,7 +59,9 @@ local states =
 
         events =
         {
-            EventHandler("animover", function(inst) inst.sg:GoToState("idle_on") end),
+            EventHandler("animover", function(inst)
+                inst.sg:GoToState("idle_on")
+            end),
         }
     },
 
@@ -73,7 +77,8 @@ local states =
         end,
     },
 
-    State{
+    State
+    {
         name = "spin_up",
         tags = { "busy" },
 
@@ -90,54 +95,51 @@ local states =
         },
     },            
 
-    State{
+    State
+    {
         name = "shoot",
         tags = { "busy", "shooting" },
 
         onenter = function(inst, data)
-            inst.AnimState:PlayAnimation("launch")
-            --inst.sg.statemem.firePos = data.firePos
-            --inst.sg.statemem.data = data
             if not inst.SoundEmitter:PlayingSound("firesuppressor_idle") then
                 inst.SoundEmitter:PlaySound("dangerous_sea/common/water_pump/LP", "firesuppressor_idle")
             end
+            inst.AnimState:PushAnimation("launch")
         end,
 
         timeline =
         {
             TimeEvent(6 * FRAMES, function(inst)
                 inst.SoundEmitter:PlaySound("farming/common/watering_can/use")
-                --inst:LaunchProjectile(inst.sg.statemem.firePos)
-            end),
-            TimeEvent(8 * FRAMES, function(inst)
-                --inst.components.firedetector:DetectFire()
             end),
         },
 
         events =
         {
             EventHandler("animover", function(inst)
-                --[[if inst.sg.statemem.data then
-                    inst.sg:GoToState("shoot")
-                else]]
-                    inst.sg:GoToState("spin_down")
-                --end
+                inst.sg:GoToState("shoot")
             end),
         },
     },
 
-    State{
+    State
+    {
         name = "spin_down",
         tags = { "busy" },
 
         onenter = function(inst)
+            inst.SoundEmitter:KillSound("firesuppressor_idle")
             inst.AnimState:PlayAnimation("launch_pst")
         end,
 
         events =
         {
             EventHandler("animover", function(inst)
-                inst.sg:GoToState("idle_on")
+                if inst._powertask then
+                    inst.sg:GoToState("idle_on")
+                else
+                    inst:PushEvent("smart_off")
+                end
             end),
         },
     },
@@ -167,7 +169,7 @@ local states =
         tags = {"busy"},
 
         onenter = function(inst, data)
-            if inst.on then 
+            if inst._powertask then 
                 inst.AnimState:PlayAnimation("hit_on")
             else
                 inst.AnimState:PlayAnimation("hit_off")
@@ -180,8 +182,12 @@ local states =
         events =
         {
             EventHandler("animover", function(inst) 
-                if inst.on then 
-                    inst.sg:GoToState("idle_on")
+                if inst._powertask then
+                    if inst._on then
+                        inst.sg:GoToState("shoot")
+                    else
+                        inst.sg:GoToState("idle_on")
+                    end
                 else
                     inst.sg:GoToState("idle_off")
                 end

@@ -244,6 +244,9 @@ water_tuning =
     DESALINATOR_MAX_SALT = 40,
     DESALINATOR_SALT_SECTION = 9,
     SALT_PER_WATER = 1/80,
+
+	WINONA_WELL_SPRINKLER_POWER_LOAD_ON = 0.5,
+	WINONA_WELL_SPRINKLER_POWER_LOAD_OFF = 0.05,
 }
 
 for i,v in pairs(water_tuning) do

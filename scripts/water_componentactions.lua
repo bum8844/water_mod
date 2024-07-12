@@ -105,10 +105,12 @@ local USEITEM =
     end,
 
     machinetool = function(inst, doer, target, actions)
-        if target:HasTag("needmachtool") and inst:HasTag("machinetool") then
-            table.insert(actions, ACTIONS.MACHINETOOL)
-        elseif doer:HasTag("portableengineer") and target:HasTag("dismantleable") and inst:HasTag("dismantletool") then
-            table.insert(actions, ACTIONS.MACHINETOOL)
+        if doer:HasTag("portableengineer") then
+            if target:HasTag("needmachtool") and inst:HasTag("machinetool") then
+                table.insert(actions, ACTIONS.MACHINETOOL)
+            elseif target:HasTag("dismantleable") and inst:HasTag("dismantletool") then
+                table.insert(actions, ACTIONS.MACHINETOOL)
+            end
         end
     end,
 }
@@ -171,6 +173,12 @@ local SCENE =
             end
         end
     end,
+
+    machinetool = function(inst, doer, actions, right)
+        if right and doer:HasTag("portableengineer") then
+            table.insert(actions, ACTIONS.MACHINETOOL)
+        end
+    end,
 }
 
 local INVENTORY = {
@@ -181,6 +189,12 @@ local INVENTORY = {
             if inst:HasTag("watertaker") and (_G.TheWorld.Map:IsOceanTileAtPoint(pos.x, 0, pos.z) or isVirtualOceanEntity ~= nil) then
                 table.insert(actions, ACTIONS.TAKEWATER_OCEAN)
             end
+        end
+    end,
+
+    machinetool = function(inst, doer, actions, right)
+        if right and doer:HasTag("portableengineer") then
+            table.insert(actions, ACTIONS.MACHINETOOL)
         end
     end,
 

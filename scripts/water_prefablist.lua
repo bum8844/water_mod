@@ -8,6 +8,7 @@ return {
 	"fruitflyfruit_dead",
 	"water_spice",
 	"thermos_bottle",
+	"wagpunkmachintool",
 
 	--structures
 	"barrel",

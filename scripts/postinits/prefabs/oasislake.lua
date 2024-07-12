@@ -1,0 +1,1 @@
+AddPrefabPostInit("oasislake", function(inst) inst:AddTag("oasislake") end)

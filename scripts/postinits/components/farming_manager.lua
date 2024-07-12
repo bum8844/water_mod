@@ -14,11 +14,11 @@ local function GetUpValue(func, varname)
 end
 
 AddComponentPostInit("farming_manager", function(self)
-	self.GetTileMoisureAtPoint = function(_, x,y,z)
+	function self:GetTileMoisureAtPoint(x,y,z)
 		local _overlaygrid = GetUpValue(self.AddSoilMoistureAtPoint, "_overlaygrid")
 		local _moisturegrid = GetUpValue(self.AddSoilMoistureAtPoint, "_moisturegrid")
-		local _x,_y = G.TheWorld.Map:GetTileCoordsAtPoint(x,y,z)
+		local _x,_y = GLOBAL.TheWorld.Map:GetTileCoordsAtPoint(x,y,z)
 		local index = _overlaygrid:GetIndex(_x,_y)
-		return {soilmoisture=_moisturegrid:GetDataAtIndex(index)}
+		return _moisturegrid:GetDataAtIndex(index)
 	end
 end)

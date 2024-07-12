@@ -14,6 +14,7 @@ local postinits =
 		"retrofitcavemap_anr",
 		"retrofitforestmap_anr",
 		"drawable",
+		"farming_manager",
 	},
 
 	prefabs =
@@ -33,7 +34,7 @@ local postinits =
 		"wx78_modules",
 		"fruitfly",
 		"preparedfoods",
-		"wagpunkbits_kit",
+		"oasislake",
 	},
 
 	screens = {

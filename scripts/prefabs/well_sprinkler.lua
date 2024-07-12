@@ -162,7 +162,7 @@ local function GetValidWaterPointNearby(inst)
                 best_point = cur_point
             end
         end
-        if v:HasTag("oasis_lake") then
+        if v:HasTag("oasislake") then
             inst:AddTag("stormchecker")
         end
     end
