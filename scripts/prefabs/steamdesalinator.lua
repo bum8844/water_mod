@@ -99,6 +99,7 @@ local function SetProduct(inst, chk)
     if inst.components.steampressure.depleted then
         inst.components.pickable.canbepicked = false
     end
+    inst.SoundEmitter:PlaySound("rifts3/wagpunk_armor/upgrade")
 end
 
 local function getstatus(inst, viewer)

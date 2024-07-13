@@ -2,12 +2,12 @@ local Screen = require "widgets/screen"
 local MapWidget = require("widgets/mapwidget")
 local Widget = require "widgets/widget"
 local ImageButton = require "widgets/imagebutton"
-local BoilbookWidget = require "widgets/redux/boilbookwidget"
+local BoilbookWidget = require "widgets/redux/boilbookadvancedwidget"
 local TEMPLATES = require "widgets/redux/templates"
 
-local BoilbookPopupScreen = Class(Screen, function(self, owner)
+local BoilbookAdvancedPopupScreen = Class(Screen, function(self, owner)
     self.owner = owner
-    Screen._ctor(self, "BoilbookPopupScreen")
+    Screen._ctor(self, "BoilbookAdvancedPopupScreen")
 
     local black = self:AddChild(ImageButton("images/global.xml", "square.tex"))
     black.image:SetVRegPoint(ANCHOR_MIDDLE)
@@ -32,27 +32,27 @@ local BoilbookPopupScreen = Class(Screen, function(self, owner)
     SetAutopaused(true)
 end)
 
-function BoilbookPopupScreen:OnDestroy()
+function BoilbookAdvancedPopupScreen:OnDestroy()
     SetAutopaused(false)
 
-    POPUPS.BOILBOOK:Close(self.owner)
+    POPUPS.BOILBOOK_ADVANCED:Close(self.owner)
 
     TheCookbook:ClearNewFlags()
     TheCookbook:Save() -- for saving filter settings
 
-    BoilbookPopupScreen._base.OnDestroy(self)
+    BoilbookAdvancedPopupScreen._base.OnDestroy(self)
 end
 
-function BoilbookPopupScreen:OnBecomeInactive()
-    BoilbookPopupScreen._base.OnBecomeInactive(self)
+function BoilbookAdvancedPopupScreen:OnBecomeInactive()
+    BoilbookAdvancedPopupScreen._base.OnBecomeInactive(self)
 end
 
-function BoilbookPopupScreen:OnBecomeActive()
-    BoilbookPopupScreen._base.OnBecomeActive(self)
+function BoilbookAdvancedPopupScreen:OnBecomeActive()
+    BoilbookAdvancedPopupScreen._base.OnBecomeActive(self)
 end
 
-function BoilbookPopupScreen:OnControl(control, down)
-    if BoilbookPopupScreen._base.OnControl(self, control, down) then return true end
+function BoilbookAdvancedPopupScreen:OnControl(control, down)
+    if BoilbookAdvancedPopupScreen._base.OnControl(self, control, down) then return true end
 
     if not down and (control == CONTROL_MAP or control == CONTROL_CANCEL) then
         TheFrontEnd:GetSound():PlaySound("dontstarve/HUD/click_move")
@@ -63,7 +63,7 @@ function BoilbookPopupScreen:OnControl(control, down)
     return false
 end
 
-function BoilbookPopupScreen:GetHelpText()
+function BoilbookAdvancedPopupScreen:GetHelpText()
     local controller_id = TheInput:GetControllerID()
     local t = {}
 
@@ -72,4 +72,4 @@ function BoilbookPopupScreen:GetHelpText()
     return table.concat(t, "  ")
 end
 
-return BoilbookPopupScreen
+return BoilbookAdvancedPopupScreen

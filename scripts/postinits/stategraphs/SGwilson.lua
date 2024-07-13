@@ -343,13 +343,13 @@ local drinkstew = State{
         end,
     }
 
-local boilbook_open = State{
-        name = "boilbook_open",
+local bookboil_basic_open = State{
+        name = "bookboil_basic_open",
         tags = { "doing", "busy" },
 
         onenter = function(inst)
             inst.components.locomotor:StopMoving()
-            inst.AnimState:OverrideSymbol("book_cook", "boilbook", "book_boil")
+            inst.AnimState:OverrideSymbol("book_cook", "boilbook", "boilbook_basic")
             inst.AnimState:PlayAnimation("action_uniqueitem_pre")
             inst.AnimState:PushAnimation("reading_in", false)
             inst.AnimState:PushAnimation("reading_loop", true)
@@ -372,15 +372,55 @@ local boilbook_open = State{
         events =
         {
             EventHandler("ms_closepopup", function(inst, data)
-                if data.popup == GLOBAL.POPUPS.BOILBOOK then
+                if data.popup == GLOBAL.POPUPS.BOILBOOK_BASIC then
                     inst.sg:GoToState("cookbook_close")
                 end
             end),
         },
 
         onexit = function(inst)
-            inst:ShowPopUp(GLOBAL.POPUPS.BOILBOOK, false)
+            inst:ShowPopUp(GLOBAL.POPUPS.BOILBOOK_BASIC, false)
         end,
+    }
+
+local bookboil_advanced_open = State{
+    name = "bookboil_advanced_open",
+    tags = { "doing", "busy" },
+
+    onenter = function(inst)
+        inst.components.locomotor:StopMoving()
+        inst.AnimState:OverrideSymbol("book_cook", "boilbook", "boilbook_advanced")
+        inst.AnimState:PlayAnimation("action_uniqueitem_pre")
+        inst.AnimState:PushAnimation("reading_in", false)
+        inst.AnimState:PushAnimation("reading_loop", true)
+    end,
+
+    timeline =
+    {
+        TimeEvent(8 * FRAMES, function(inst)
+            inst.sg:RemoveStateTag("busy")
+            inst:PerformBufferedAction()
+        end),
+    },
+
+    onupdate = function(inst)
+        if not GLOBAL.CanEntitySeeTarget(inst, inst) then
+            inst.sg:GoToState("cookbook_close")
+        end
+    end,
+
+    events =
+    {
+        EventHandler("ms_closepopup", function(inst, data)
+            if data.popup == GLOBAL.POPUPS.BOILBOOK_ADVANCED then
+                inst.sg:GoToState("cookbook_close")
+            end
+        end),
+    },
+
+    onexit = function(inst)
+        inst:ShowPopUp(GLOBAL.POPUPS.BOILBOOK_ADVANCED, false)
+    end,
     }
 
 local boilbook_close = State{
@@ -406,7 +446,8 @@ AddStategraphState("wilson", refresh_drunk)
 AddStategraphState("wilson", drunk)
 AddStategraphState("wilson", drink)
 AddStategraphState("wilson", drinkstew)
-AddStategraphState("wilson", boilbook_open)
+AddStategraphState("wilson", bookboil_basic_open)
+AddStategraphState("wilson", bookboil_advanced_open)
 AddStategraphState("wilson", boilbook_close)
 
 ------------------------------------------------------------------------
@@ -486,7 +527,13 @@ AddStategraphActionHandler("wilson", ActionHandler(ACTIONS.BREWING,
         end
     )
 )
-AddStategraphActionHandler("wilson", ActionHandler(ACTIONS.READBOILBOOK,"boilbook_open"))
+AddStategraphActionHandler("wilson", ActionHandler(ACTIONS.READBOILBOOK,
+    function(inst ,action)
+        print("action",action.invobject:HasTag("boilbook_basic"))
+        return action.invobject:HasTag("boilbook_basic") and "bookboil_basic_open" or "bookboil_advanced_open"
+    end
+    )
+)
 AddStategraphActionHandler("wilson", ActionHandler(ACTIONS.MACHINETOOL,
         function(inst, action)
             return inst:HasTag("handyperson") and "domediumaction" or "dolongaction"

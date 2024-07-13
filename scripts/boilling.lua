@@ -1,6 +1,7 @@
 require "tuning"
 
 local drinks = require("prepareddrinks")
+local drinks_warly = require("prepareddrinks_warly")
 local ageddrinks = require("preparedageddrinks")
 local spiritsdrink = require("preparedspiritsdrink")
 
@@ -18,6 +19,10 @@ function AddBoilBookRecipe(recipe)
 end
 
 for k, recipe in pairs(drinks) do
+	AddBoilBookRecipe(recipe)
+end
+
+for k, recipe in pairs(drinks_warly) do
 	AddBoilBookRecipe(recipe)
 end
 

@@ -137,8 +137,11 @@ SortAfter("additive_dairy", "additive_seed", "FOODPROCESSING")
 AddRecipe2("additive_petals",{Ingredient("petals",1),Ingredient("tealeaves",1,ModAtlas(),nil,"tealeaves.tex"),Ingredient("foliage", 1)},TECH.FOODPROCESSING_ONE,{atlas = ModAtlas(), builder_tag="professionalchef", numtogive=2, image = "additive_petals.tex" ,nounlock=true},{"FOODPROCESSING"})
 SortAfter("additive_petals", "additive_seed", "FOODPROCESSING")
 
-AddRecipe2("boilbook",{Ingredient("papyrus",1),Ingredient("tealeaves",1,ModAtlas(),nil,"tealeaves.tex")},TECH.SCIENCE_ONE,{atlas = ModAtlas(), image = "boilbook.tex"},{"COOKING","HYDRATION"})
-SortAfter("boilbook","cookbook","COOKING")
+AddRecipe2("boilbook_basic",{Ingredient("papyrus",1),Ingredient("tealeaves",1,ModAtlas(),nil,"tealeaves.tex")},TECH.SCIENCE_ONE,{atlas = ModAtlas(), image = "boilbook_basic.tex"},{"COOKING","HYDRATION"})
+SortAfter("boilbook_basic","cookbook","COOKING")
+
+AddRecipe2("boilbook_advanced",{Ingredient("boilbook_basic",1,ModAtlas(),nil,"boilbook_basic.tex"),Ingredient("featherpencil",1),Ingredient("papyrus",2)},TECH.SCIENCE_ONE,{atlas = ModAtlas(), image = "boilbook_advanced.tex"},{"COOKING","HYDRATION"})
+SortAfter("boilbook_advanced","boilbook_basic","COOKING")
 
 AddRecipe2("campkettle_item",{Ingredient("twigs",2),Ingredient("log",2),Ingredient("cutgrass",2)},TECH.NONE,{atlas = ModAtlas(), image = "campkettle.tex"},{"COOKING","REFINE","HYDRATION"})
 SortBefore("campkettle_item","cookpot","COOKING")

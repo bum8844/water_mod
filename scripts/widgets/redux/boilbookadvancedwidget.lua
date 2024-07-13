@@ -15,7 +15,7 @@ local cooking = require("cooking")
 require("util")
 
 -------------------------------------------------------------------------------------------------------
-local BoilbookWidget = Class(Widget, function(self, parent)
+local BoilbookAdvancedWidget = Class(Widget, function(self, parent)
     Widget._ctor(self, "Widget")
 
     self.root = self:AddChild(Widget("root"))
@@ -34,9 +34,9 @@ local BoilbookWidget = Class(Widget, function(self, parent)
 	local base_size = .7
 
 	local button_data = {
-		{text = STRINGS.UI.COOKBOOK.TAB_TITLE_KETTLE, build_panel_fn = function() return BoilPage(parent, "kettle") end},
-		{text = STRINGS.UI.COOKBOOK.TAB_TITLE_BREWERY, build_panel_fn = function() return BoilPage(parent, "brewery") end},
-		{text = STRINGS.UI.COOKBOOK.TAB_TITLE_DISTILLERS, build_panel_fn = function() return BoilPage(parent, "distillers") end},
+		{text = STRINGS.UI.COOKBOOK.TAB_TITLE_KETTLE, build_panel_fn = function() return BoilPage(parent, "portablekettle") end},
+		--{text = STRINGS.UI.COOKBOOK.TAB_TITLE_BREWERY, build_panel_fn = function() return BoilPage(parent, "brewery") end},
+		--{text = STRINGS.UI.COOKBOOK.TAB_TITLE_DISTILLERS, build_panel_fn = function() return BoilPage(parent, "distillers") end},
 	}
 	--[[if cooking.HasModCookerFood() then
 		table.insert(button_data, {text = STRINGS.UI.COOKBOOK.TAB_TITLE_MOD_RECIPES, build_panel_fn = function() return BerwPage(parent, "mod") end})
@@ -97,7 +97,7 @@ local BoilbookWidget = Class(Widget, function(self, parent)
 	self.focus_forward = self.panel.parent_default_focus
 end)
 
-function BoilbookWidget:_PositionTabs(tabs, w, y)
+function BoilbookAdvancedWidget:_PositionTabs(tabs, w, y)
 	local offset = #self.tabs / 2
 	for i = 1, #self.tabs do
 		local x = (i - offset - 0.5) * w
@@ -105,7 +105,7 @@ function BoilbookWidget:_PositionTabs(tabs, w, y)
 	end
 end
 
-function BoilbookWidget:OnControlTabs(control, down)
+function BoilbookAdvancedWidget:OnControlTabs(control, down)
 	if control == CONTROL_OPEN_CRAFTING then
 		local tab = self.tabs[((self.last_selected._tabindex - 1) % #self.tabs) + 1]
 		if not down then
@@ -122,13 +122,13 @@ function BoilbookWidget:OnControlTabs(control, down)
 
 end
 
-function BoilbookWidget:OnControl(control, down)
-    if BoilbookWidget._base.OnControl(self, control, down) then return true end
+function BoilbookAdvancedWidget:OnControl(control, down)
+    if BoilbookAdvancedWidget._base.OnControl(self, control, down) then return true end
 
 	return self:OnControlTabs(control, down)
 end
 
-function BoilbookWidget:GetHelpText()
+function BoilbookAdvancedWidget:GetHelpText()
     local controller_id = TheInput:GetControllerID()
     local t = {}
 
@@ -138,4 +138,4 @@ function BoilbookWidget:GetHelpText()
 end
 
 
-return BoilbookWidget
+return BoilbookAdvancedWidget

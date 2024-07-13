@@ -36,7 +36,7 @@ params.thermos_bottle =
         animbuild = "ui_thermos_bottle_1x1",
         pos = Vector3(0, 160, 0),
     },
-    acceptsstacks = false,
+    acceptsstacks = true,
     type = "chest",
 }
 
@@ -55,6 +55,7 @@ params.wine_cellar =
         pos = Vector3(0, 220, 0),
         side_align_tip = 160,
     },
+    acceptsstacks = true,
     type = "chest",
 }
 
