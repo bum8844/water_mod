@@ -29,8 +29,7 @@ for k, recipe in pairs(spiritsdrink) do
 	AddBoilBookRecipe(recipe)
 end
 
-local function GetRecipe(cooker, product)
-	local boillier = cooker == "portablekettle" and "kettle" or cooker
+local function GetRecipe(boillier, product)
 	local recipes = boilbook_recipes[boillier] or {}
 	return recipes[product]
 end

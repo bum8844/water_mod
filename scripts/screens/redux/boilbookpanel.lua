@@ -1,5 +1,5 @@
 local Widget = require "widgets/widget"
-local BoilbookWidget = require "widgets/redux/boilbookkwidget"
+local BoilbookWidget = require "widgets/redux/boilbookwidget"
 
 local BoilbookPanel = Class(Widget, function(self, parent_screen)
     Widget._ctor(self, "BoilbookPanel")
