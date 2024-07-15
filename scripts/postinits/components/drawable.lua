@@ -5,6 +5,7 @@ AddComponentPostInit("drawable", function(self)
 
 	function self:OnDrawn(imagename, imagesource, atlasname, bgimagename, bgatlasname)
 		if imagesource then
+			print("GetInventoryItemAtlas",GetInventoryItemAtlas(imagename..".tex"))
 			if imagesource.minisign_atlas then
 				atlasname = imagesource.minisign_atlas
 			end

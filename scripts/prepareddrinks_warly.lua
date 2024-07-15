@@ -131,6 +131,25 @@ local drinks =
 		potlevel = "mid",
 		potlevel_bottle = "mid",
 	},
+
+	ruinxocolatl = { 
+		test = function(boilier, names, tags) return names.ruincacao_bean_cooked and names.ruincacao_bean_cooked >= 3 and ((names.pepper or 0) + (names.pepper_cooked or 0)) >= 1 and notmeat(tags) and notname(names) and lessthing(names) end,
+		priority = 1,
+        health = TUNING.HEALING_MED/4, -- 5 (25)
+        hunger = (TUNING.CALORIES_LARGE)/5, -- 5 -> 7.5 (37.5) -- 카카오3 + 고추 = 허기 37.5
+        sanity = -TUNING.SANITY_HUGE/2, -- -25 (-125)
+        thirst = TUNING.HYDRATION_SMALLTINY, -- 11.25 (56.25)
+        perishtime = TUNING.PERISH_SLOW, -- 15일
+        temperature = TUNING.HOT_FOOD_WARMING_THRESHOLD, 
+		temperatureduration = TUNING.TOTAL_DAY_TIME/4, -- 2분
+		cooktime = TUNING.KETTLE_LUXURY_GOODS,
+		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_ANCIENT_KNOWLEGEE,
+	    oneatenfn = function(inst, eater)
+	    	give_tech(inst, eater, 4)
+	    end,
+		potlevel = "mid",
+		potlevel_bottle = "mid",
+	},
 }
 
 local mod_drink = require("modcompats/prepareddrinks_mod")

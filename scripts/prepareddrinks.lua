@@ -510,8 +510,9 @@ local drinks =
 		potlevel_bottle = "mid",
 		drinktype = DRINKTYPY.LEAFS,
 	},
-	ruinxocolatl = { 
-		test = function(boilier, names, tags) return names.ruincacao_bean_cooked and names.ruincacao_bean_cooked >= 3 and ((names.pepper or 0) + (names.pepper_cooked or 0)) >= 1 and notmeat(tags) and notname(names) and lessthing(names) end,
+
+	ruinnibs_tea = { -- 음식값들을 수정해야함
+		test = function(boilier, names, tags) return names.ruincacao_bean_cooked and names.ruincacao_bean_cooked >= 3 and tags.sweetener and tags.sweetener >= 1 and notmeat(tags) and notname(names) and lessthing(names) end,
 		priority = 1,
         health = TUNING.HEALING_MED/4, -- 5 (25)
         hunger = (TUNING.CALORIES_LARGE)/5, -- 5 -> 7.5 (37.5) -- 카카오3 + 고추 = 허기 37.5
@@ -521,13 +522,14 @@ local drinks =
         temperature = TUNING.HOT_FOOD_WARMING_THRESHOLD, 
 		temperatureduration = TUNING.TOTAL_DAY_TIME/4, -- 2분
 		cooktime = TUNING.KETTLE_LUXURY_GOODS,
-		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_ANCIENT_KNOWLEGEE,
+		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_ANCIENT_KNOWLEGEE_PIECE,
 	    oneatenfn = function(inst, eater)
-	    	give_tech(inst, eater, 4)
+	    	give_tech(inst, eater, 2)
 	    end,
 		potlevel = "mid",
 		potlevel_bottle = "mid",
 	},
+
 	hotruincolate = {
 		test = function(boilier, names, tags) return names.ruincacao_bean_cooked and names.ruincacao_bean_cooked >= 2 and (Preference(names, tags) >= 1) and not tags.frozen and notmeat(tags) and notname(names) and lessthing(names) end,
 		priority = 2,
@@ -538,14 +540,11 @@ local drinks =
         perishtime = TUNING.PERISH_MED, -- 10일
         temperature = TUNING.HOT_FOOD_BONUS_TEMP, -- 따듯함
 		temperatureduration = TUNING.TOTAL_DAY_TIME/8, -- 1분
-		cooktime = TUNING.KETTLE_LUXURY_GOODS,
-	    oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_ANCIENT_KNOWLEGEE_PIECE,
-	    oneatenfn = function(inst, eater)
-			give_tech(inst, eater, 2)
-	    end,
+		cooktime = TUNING.KETTLE_DECORATION,
 		potlevel = "mid",
 		potlevel_bottle = "mid",
 	},
+
 	ruincolate_smoothie = {
 		test = function(boilier, names, tags) return names.ruincacao_bean_cooked and names.ruincacao_bean_cooked == 2 and tags.sweetener and tags.frozen and notmeat(tags) and notname(names) and lessthing(names) end,
 		priority = 3,
@@ -556,11 +555,8 @@ local drinks =
         perishtime = TUNING.PERISH_FASTISH, --8일
         temperature = TUNING.COLD_FOOD_BONUS_TEMP, -- 차가움
 		temperatureduration = TUNING.TOTAL_DAY_TIME/8, -- 1분
-		cooktime = TUNING.KETTLE_LUXURY_GOODS,
-	    oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_ANCIENT_KNOWLEGEE_PIECE,
-	    oneatenfn = function(inst, eater)
-			give_tech(inst, eater, 2)
-	    end,
+		cooktime = TUNING.KETTLE_DECORATION,
+		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_COLD_FOOD,
 		potlevel = "mid",
 		potlevel_bottle = "mid",
 	},
