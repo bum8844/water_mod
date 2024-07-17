@@ -65,7 +65,7 @@ end
 
 modrequire("languages/strings/"..locale.."/common")
 --modrequire("languages/strings/"..locale.."/insight")
-modrequire("languages/strings/en/insight")
+--modrequire("languages/strings/en/insight")
 
 if modlist.it and GetModConfigData("useinsight") then
 	modrequire("languages/strings/"..locale.."/insight")
