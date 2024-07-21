@@ -66,7 +66,7 @@ end
 --[[MakeVegStats("pinenanas","fruit",UNCOMMON,
 TUNING.CALORIES_SMALL,TUNING.HEALING_SMALL,TUNING.PERISH_FAST,TUNING.SANITY_TINY,
 TUNING.CALORIES_SMALL,TUNING.HEALING_TINY,TUNING.PERISH_SUPERFAST,TUNING.SANITY_TINY*1.5,
-{"med", 0.05, 0.8}, {"small", 0.1, nil})]]
+{"med", 0.05, 0.8}, {"small", 0.1, nil})
 
 MakeVegStats("papeda","fruit",UNCOMMON,
 TUNING.CALORIES_TINY,TUNING.HEALING_SMALL,TUNING.PERISH_FAST,0,
@@ -83,7 +83,7 @@ local function MakeGrowTimes(germination_min, germination_max, full_grow_min, fu
     grow_time.oversized = 6 * DAYS
     grow_time.regrow    = {4 * DAYS, 5 * DAYS} -- min, max
     return grow_time
-end
+end]]
 
 local function MakeGrowTimes_Weed(full_grow_min, full_grow_max, bolting)
     local grow_time = {}
@@ -176,7 +176,7 @@ PLANT_DEFS.pinenanas.plantregistryinfo = {
         is_rotten = true,
         hidden = true,
     },
-}]]
+}
 
 -- Papeda Plant.
 PLANT_DEFS.papeda = {build = "farm_plant_papeda", bank = "farm_plant_papeda"}
@@ -256,7 +256,7 @@ PLANT_DEFS.papeda.plantregistryinfo = {
         is_rotten = true,
         hidden = true,
     },
-}
+}]]
 
 -- Mentha Spicata Weed.
 
