@@ -146,7 +146,7 @@ GLOBAL.GenerateSpicedFoods(foods_volcano)
 GLOBAL.GenerateSpicedFoods(foods_hamlet)
 GLOBAL.GenerateSpicedFoods(foods_te)
 GLOBAL.GenerateSpicedFoods(warlyfoods)
-GLOBAL.GenerateSpicedFoods(require("gorge_foods"))
+--GLOBAL.GenerateSpicedFoods(require("gorge_foods"))
 local te_spiced = {}
 local new_spicedfoods = require("spicedfoods")
 
