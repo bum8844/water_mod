@@ -173,6 +173,7 @@ FOODTYPEGROUP =
 		"watermelon",
 		"wormlight",
 		"wormlight_lesser",
+		"ancientfruit_nightvision",
 		--mod_ingredients
 		"banana",
 		"strawberry",

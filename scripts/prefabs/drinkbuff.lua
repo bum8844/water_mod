@@ -763,7 +763,7 @@ local function OnDetached_butterhunter(inst, target)
     inst:Remove()
 end
 
-local function butterhunter_fn()
+local function fn_butterhunter()
     local inst = CreateEntity()
 
     if not TheWorld.ismastersim then
@@ -850,6 +850,132 @@ local function fn_satiety()
     return inst
 end
 
+local function OnAttached_GoodNightVision(inst, target)
+    inst.entity:SetParent(target.entity)
+    inst.Transform:SetPosition(0, 0, 0)
+
+    inst:ListenForEvent("death", function()
+        inst.components.debuff:Stop()
+    end, target)
+
+    if target.components.playervision ~= nil then
+        target.components.playervision:PushForcedNightVision(inst, 1, ANCIENTFRUIT_NIGHTVISION_COLOURCUBES, true)
+        inst._enabled:set(true)
+    end
+end
+
+local function OnDetached_GoodNightVision(inst, target)
+    if target ~= nil and target:IsValid() then
+        if target.components.playervision ~= nil then
+            target.components.playervision:PopForcedNightVision(inst)
+            inst._enabled:set(false)
+        end
+    end
+
+    -- NOTES(DiogoW): Delayed removal to let the client run the dirty event.
+    inst:DoTaskInTime(10*FRAMES, inst.Remove)
+end
+
+local function Expire_GoodNightVision(inst)
+    if inst.components.debuff ~= nil then
+        inst.components.debuff:Stop()
+    end
+end
+
+local function OnExtended_GoodNightVision(inst)
+    if inst.task ~= nil then
+        inst.task:Cancel()
+        inst.task = nil
+    end
+
+    inst.task = inst:DoTaskInTime(TUNING.ANCIENTTREE_NIGHTVISION_FRUIT_BUFF_DURATION, Expire_GoodNightVision)
+end
+
+local function OnSave_GoodNightVision(inst, data)
+    if inst.task ~= nil then
+        data.remaining = GetTaskRemaining(inst.task)
+    end
+end
+
+local function OnLoad_GoodNightVision(inst, data)
+    if data == nil then
+        return
+    end
+
+    if data.remaining then
+        if inst.task ~= nil then
+            inst.task:Cancel()
+            inst.task = nil
+        end
+
+        inst.task = inst:DoTaskInTime(data.remaining, Expire_GoodNightVision)
+    end
+end
+
+local function OnLongUpdate_GoodNightVision(inst, dt)
+    if inst.task == nil then
+        return
+    end
+
+    local remaining = GetTaskRemaining(inst.task) - dt
+
+    inst.task:Cancel()
+
+    if remaining > 0 then
+        inst.task = inst:DoTaskInTime(remaining, Expire_GoodNightVision)
+    else
+        Expire_GoodNightVision(inst)
+    end
+end
+
+local function OnEnabledDirty_GoodNightVision(inst)
+    if ThePlayer ~= nil and inst.entity:GetParent() == ThePlayer and ThePlayer.components.playervision ~= nil then
+        if inst._enabled:value() then
+            ThePlayer.components.playervision:PushForcedNightVision(inst, 1, ANCIENTFRUIT_NIGHTVISION_COLOURCUBES, true)
+        else
+            ThePlayer.components.playervision:PopForcedNightVision(inst)
+        end
+    end
+end
+
+local function fn_goodnightvision()
+    local inst = CreateEntity()
+
+    inst.entity:AddTransform()
+    inst.entity:AddNetwork()
+
+    inst:AddTag("CLASSIFIED")
+
+    inst._enabled = net_bool(inst.GUID, "nightvision_buff._enabled", "enableddirty")
+
+    inst.entity:SetPristine()
+
+    if not TheWorld.ismastersim then
+        inst:ListenForEvent("enableddirty", OnEnabledDirty_GoodNightVision)
+
+        return inst
+    end
+
+    inst.entity:Hide()
+
+    inst.persists = false
+
+    inst:AddComponent("debuff")
+    inst.components.debuff:SetAttachedFn(OnAttached_GoodNightVision)
+    inst.components.debuff:SetDetachedFn(OnDetached_GoodNightVision)
+    inst.components.debuff:SetExtendedFn(OnExtended_GoodNightVision)
+    inst.components.debuff.keepondespawn = true
+
+    buff_OnExtended(inst)
+
+    inst.OnSave = OnSave_GoodNightVision
+    inst.OnLoad = OnLoad_GoodNightVision
+
+    inst.OnLongUpdate = OnLongUpdate_GoodNightVision
+
+    return inst
+end
+
 return Prefab("caffeinbuff", fn_caffein),
 Prefab("alcoholdebuff", fn_alcohol),
 Prefab("immunebuff",fn_immune),
@@ -860,5 +986,6 @@ Prefab("thirstregenbuff", fn_thirstregen),
 Prefab("drunkarddebuff",fn_drunkard),
 Prefab("waterbornedebuff",fn_waterborne),
 Prefab("resistancebuff",fn_resistance),
-Prefab("butterhunterbuff",butterhunter_fn),
-Prefab("satietybuff",fn_satiety)
+Prefab("butterhunterbuff",fn_butterhunter),
+Prefab("satietybuff",fn_satiety),
+Prefab("goodnightvisionbuff",fn_goodnightvision)
