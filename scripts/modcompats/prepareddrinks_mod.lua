@@ -133,7 +133,7 @@ local umc_drink = {
 
 local legion_drink = {
 	pineananas_juice = {
-		test = function(boilier, names, tags) return (names.pineananas or names.pineananas_cooked) and tags.fruit and tags.fruit >= 2 and Preference(names, tags) and notmeat(tags) and notname(names) and lessthing(names) and notages(tags)  end,
+		test = function(boilier, names, tags) return (names.pineananas or names.pineananas_cooked) and tags.fruit and tags.fruit >= 2 and notmeat(tags) and notname(names) and lessthing(names) and notages(tags)  end,
 		priority = 2,
         health = TUNING.HEALING_HUGE/5, -- 12 (60) --바나나와 석류 사이
         hunger = TUNING.CALORIES_MEDSMALL/4, -- 5.625 (28.125)
@@ -149,7 +149,7 @@ local legion_drink = {
 
 local mfp_drink = {
 	strawberry_smoothie = {
-		test = function(boilier, names, tags) return (names.mfp_strawberry or names.mfp_strawberry_cooked) and tags.fruit and tags.fruit >= 2 and tags.frozen and tags.frozen >=1 and Preference(names, tags) and not tags.veggie and notmeat(tags) and notname(names) and lessthing(names) and notages(tags) end,
+		test = function(boilier, names, tags) return (names.mfp_strawberry or names.mfp_strawberry_cooked) and tags.fruit and tags.fruit >= 2 and tags.frozen and tags.frozen >=1 and not tags.veggie and notmeat(tags) and notname(names) and lessthing(names) and notages(tags) end,
 		priority = 2,
 		health = TUNING.HEALING_MEDLARGE/5, -- 6 (30),
         hunger = TUNING.DRINK_CALORIES/4, -- 1.25 (6.25)
@@ -185,7 +185,7 @@ local mfp_drink = {
 
 local orange_drink = {
 	orange_juice = {
-		test = function(boilier, names, tags) return (names.mfp_orange or names.mfp_orange_cooked or names.fwd_in_pdt_food_orange) and tags.fruit and tags.fruit >= 2 and Preference(names, tags) and not tags.veggie and notmeat(tags) and notname(names) and lessthing(names) and notages(tags) end,
+		test = function(boilier, names, tags) return (names.mfp_orange or names.mfp_orange_cooked or names.fwd_in_pdt_food_orange) and tags.fruit and tags.fruit >= 2 and not tags.veggie and notmeat(tags) and notname(names) and lessthing(names) and notages(tags) end,
 		priority = 2,
         health = TUNING.HEALING_LARGE/5, -- 8 (40) ( MFP모드의 오렌지 쥬스 참고함)
         hunger = TUNING.CALORIES_MEDSMALL/5, -- 3.75 (18.75)

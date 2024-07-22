@@ -75,8 +75,21 @@ function onlycoral_brain(names, tags)
 	return 0
 end
 
-function Preference(names, tags)
-	return ( (tags.sweetener or 0) + (tags.dairy or 0) + (tags.milk or 0) )
+function Preference(names, tags, must, num)
+	local musttag = true
+
+	if must and type(must) == "table" then
+		for k, v in pairs(must) do
+			if not tags[v] then
+				return false
+			end
+		end
+	elseif must then
+		musttag = tags[must]
+	end
+
+	local vel = num or 0
+	return musttag and ( (tags.sweetener or 0) + (tags.dairy or 0) + (tags.milk or 0) ) > vel
 end
 
 function Tea_Def(names, tags)
@@ -91,7 +104,6 @@ end
 
 function IsTealeaves(names, tags)
 	return names.tealeaves and names.tealeaves >=2 and 
-	Preference(names, tags) and
 	Tea_Def(names, tags) and not 
 	( 
 		names.tealeaves_dried or 
@@ -116,7 +128,6 @@ end
 
 function IsTealeaves_dried(names, tags)
 	return ( names.tealeaves_dried or names.kyno_piko_orange or names.piko_orange ) and (names.tealeaves_dried or 0)+(names.kyno_piko_orange or 0)+(names.piko_orange or 0) >= 2 and 
-	Preference(names, tags) and
 	Tea_Def(names, tags) and not  
 	( 
 		names.tealeaves or
@@ -139,7 +150,6 @@ end
 
 function IsFoliage(names, tags)
 	return (names.foliage or names.kyno_foliage or names.kyno_foliage_cooked or names.greenfoliage) and ((names.foliage or 0)+(names.kyno_foliage or 0)+(names.kyno_foliage_cooked or 0)+(names.greenfoliage or 0)) >= 2 and
-	Preference(names, tags) and
 	Tea_Def(names, tags) and not 
 	( 
 		names.tealeaves or
@@ -163,7 +173,6 @@ end
 
 function IsFlower(names, tags)
 	return ( names.forgetmelots or names.petals or tags.petals_legion ) and (names.forgetmelots or 0)+(names.petals or 0)+(tags.petals_legion or 0) >= 2 and 
-	Preference(names, tags) and 
 	Tea_Def(names, tags) and not 
 	( 
 		names.tealeaves or
@@ -186,7 +195,6 @@ end
 
 function IsFlower_Moon(names, tags)
 	return names.moon_tree_blossom and names.moon_tree_blossom >= 2 and 
-	Preference(names, tags) and 
 	Tea_Def(names, tags) and not 
 	( 
 		names.forgetmelots or 
@@ -215,7 +223,6 @@ end
 
 function IsFlower_Evil(names, tags)
 	return ( names.petals_evil or names.firenettles or names.tillweed ) and (names.petals_evil or 0)+(names.firenettles or 0)+(names.tillweed or 0) >= 3 and
-	Preference(names, tags) and 
 	Tea_Def(names, tags) and not 
 	( 
 		names.tealeaves or
@@ -243,7 +250,6 @@ end
 
 function IsFlower_Cactus(names, tags)
 	return names.cactus_flower and
-	Preference(names, tags) and
 	Tea_Def(names, tags) and not 
 	( 
 		names.tealeaves or
@@ -289,7 +295,6 @@ end
 
 function IsFlower_Lotus(names, tags)
 	return ( names.lotus_flower or names.kyno_lotus_flower or names.myth_lotus_flower or names.succulent_picked or tags.lotus or onlybloomfintuna(names ,tags)) and 
-	Preference(names, tags) and
 	Tea_Def(names, tags) and not 
 	( 
 		names.tealeaves or
