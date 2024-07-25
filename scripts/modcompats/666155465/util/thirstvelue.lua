@@ -1,5 +1,9 @@
 local SERVER_SIDE = TheNet:GetIsServer()
 local CLIENT_SIDE =  TheNet:GetIsClient() or (SERVER_SIDE and not TheNet:IsDedicated())
+local food_estimation = tonumber(GetModConfigData("food_estimation",true)) or -1
+if food_estimation == -1 then
+    food_estimation = tonumber(GetModConfigData("food_estimation","Show Me (Origin)")) or 0
+end
 
 local LOCALS = {
     " / Sanidade:", --br
@@ -13,11 +17,35 @@ local LOCALS = {
 
 --_G.pendingThirstValueCallback = nil
 
+local function round2(num, idp)
+    return tonumber(string.format("%." .. (idp or 0) .. "f", num))
+end
+
 local function GetThirstString(item,player)
     local thirstvalue = ""
     if item.components.edible and player.components.eater then
-        if player.components.eater:CanEat(item) then
-            thirstvalue = item.components.edible.thirstvalue or item.components.edible:GetThirstFromHungerValue()
+        local edible = item.components.edible
+        local eater = player.components.eater
+        if eater:CanEat(item) then
+            local should_Estimate_Stale = player and player.should_Estimate_Stale
+            if not should_Estimate_Stale then
+                should_Estimate_Stale = food_estimation ~= 0
+            end
+
+            if should_Estimate_Stale and edible.GetThirst then
+                thirstvalue = round2(edible:GetThirst(player),1)
+            else
+                thirstvalue = edible.thirstvalue or edible:GetThirstFromHungerValue()
+                thirstvalue = round2(thirstvalue,1)
+            end
+
+            local base_mult = player.components.foodmemory ~= nil and player.components.foodmemory:GetFoodMultiplier(item) or 1
+            local tt_mult = (eater.thirstabsorption or 1) * base_mult
+
+            thirstvalue = thirstvalue * tt_mult
+            if thirstvalue > 0 then
+                thirstvalue = "+"..tostring(thirstvalue)
+            end
         end
     end
     return thirstvalue
@@ -79,10 +107,6 @@ end)]]
 
 local function hovererfn(self)
 
-    local function round2(num, idp)
-        return tonumber(string.format("%." .. (idp or 0) .. "f", num))
-    end
-
     local function GetThirst(inst)
         local c = _G.ThePlayer and _G.ThePlayer.player_classified
         if c == nil then
@@ -136,7 +160,7 @@ local function hovererfn(self)
             local waterstr = GetThirst(target)
             if waterstr ~= "" then
                 local txt = STRINGS.SHOWME.THIRSTVELUE.THIRST
-                waterstr = tonumber(waterstr) < 0 and string.format(txt,tostring(round2(waterstr,1))) or string.format(txt,"+"..tostring(round2(waterstr,1)))
+                waterstr = string.format(txt,tostring(waterstr))
                 local newstr = text:GetString()
                 local pattern = " / Sanity:" --en
              
