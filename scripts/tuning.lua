@@ -73,7 +73,7 @@ water_tuning =
 
 	-- Maximum Amount of Water
 	CUP_MAX_LEVEL = 1,
-	WATERINGCAN_PER_WATER = 20,
+	WATERINGCAN_PER_WATER = 2,
 	BUCKET_MAX_LEVEL = bucket_max_level*10,
 	BUCKET_LEVEL_PER_USE = bucket_max_level,
 
