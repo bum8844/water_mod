@@ -9,6 +9,20 @@ return {
     },
 
         ANNOUNCE_DRUNK = "Ugh, me siento un poco borracho.", -- Feeling drunk
+
+        ANNOUNCE_DRUNKING =
+        {
+            "Huff... Pant...",
+            "I should have built... a lifting machine...",
+            "Lift... with your back...",
+            "This isn't... gentleman's work...",
+            "For... science... oof!",
+            "Is this... messing up my hair?",
+            "Hngh...!",
+            "Pant... Pant...",
+            "This is the worst... experiment...",
+        },
+
         ANNOUNCE_DRUNK_END = "Las cosas mejoran.", -- Sobering up from alcohol
         ANNOUNCE_DRUNK_IMMUNITY = "only_used_by_wathgrithr", -- Temporary. Exclusive to Wigfrid.
         ANNOUNCE_NOTCHARGE = "Esto es innecesario.", -- Trying to milk a Volt Goat that isn't charged with electricity

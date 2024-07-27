@@ -9,6 +9,20 @@ return {
     },
 
         ANNOUNCE_DRUNK = "Hic, I can't do work anymore...", 
+
+        ANNOUNCE_DRUNKING =
+        {
+            "Huff... Pant...",
+            "I should have built... a lifting machine...",
+            "Lift... with your back...",
+            "This isn't... gentleman's work...",
+            "For... science... oof!",
+            "Is this... messing up my hair?",
+            "Hngh...!",
+            "Pant... Pant...",
+            "This is the worst... experiment...",
+        },
+
         ANNOUNCE_DRUNK_END = "That's better. Let's give it my best shot.", 
         ANNOUNCE_DRUNK_IMMUNITY = "", -- Temporary, for Wigfrid only
         ANNOUNCE_NOTCHARGE = "Hmm... when can I milk this goat?",  

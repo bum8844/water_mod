@@ -9,6 +9,20 @@ return {
 	},
 
 	ANNOUNCE_DRUNK = "Hic, creo que estoy borracho.",
+
+    ANNOUNCE_DRUNKING =
+    {
+        "Huff... Pant...",
+        "I should have built... a lifting machine...",
+        "Lift... with your back...",
+        "This isn't... gentleman's work...",
+        "For... science... oof!",
+        "Is this... messing up my hair?",
+        "Hngh...!",
+        "Pant... Pant...",
+        "This is the worst... experiment...",
+    },
+
 	ANNOUNCE_DRUNK_END = "Uff, me siento mejor.",
 	ANNOUNCE_DRUNK_IMMUNITY = "¡Hey! ¡Otra más!",
 	ANNOUNCE_NOTCHARGE = "Todavía es pronto para ordeñar.",

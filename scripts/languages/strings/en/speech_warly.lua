@@ -9,6 +9,20 @@ return {
     },
 
     ANNOUNCE_DRUNK = "Hiccup, I was told to enjoy myself, but not to get drunk...", -- 
+
+    ANNOUNCE_DRUNKING =
+    {
+        "Huff... Pant...",
+        "I should have built... a lifting machine...",
+        "Lift... with your back...",
+        "This isn't... gentleman's work...",
+        "For... science... oof!",
+        "Is this... messing up my hair?",
+        "Hngh...!",
+        "Pant... Pant...",
+        "This is the worst... experiment...",
+    },
+    
     ANNOUNCE_DRUNK_END = "Hm...I need to whip up a meal that'll cure my hangover.", -- 
     ANNOUNCE_DRUNK_IMMUNITY = "", -- 
     ANNOUNCE_NOTCHARGE = "Milking now won't yield any results.", -- 

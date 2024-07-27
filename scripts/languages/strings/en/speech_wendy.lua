@@ -9,6 +9,20 @@ return {
     },
 
     ANNOUNCE_DRUNK = "Sob... Abigail, I'm so lonely...",
+
+    ANNOUNCE_DRUNKING =
+    {
+        "Huff... Pant...",
+        "I should have built... a lifting machine...",
+        "Lift... with your back...",
+        "This isn't... gentleman's work...",
+        "For... science... oof!",
+        "Is this... messing up my hair?",
+        "Hngh...!",
+        "Pant... Pant...",
+        "This is the worst... experiment...",
+    },
+
     ANNOUNCE_DRUNK_END = "Don't laugh, Abigail. It's embarrassing.",
     ANNOUNCE_DRUNK_IMMUNITY = "",
     ANNOUNCE_NOTCHARGE = "It seems there is no milk for me to share.", --

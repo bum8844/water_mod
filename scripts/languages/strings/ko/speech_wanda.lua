@@ -9,6 +9,20 @@ return {
 	},
 
 	ANNOUNCE_DRUNK = "아이고 이런, 몸을 못 가누겠네!", -- 취함
+
+    ANNOUNCE_DRUNKING =
+    {
+        "Huff... Pant...",
+        "I should have built... a lifting machine...",
+        "Lift... with your back...",
+        "This isn't... gentleman's work...",
+        "For... science... oof!",
+        "Is this... messing up my hair?",
+        "Hngh...!",
+        "Pant... Pant...",
+        "This is the worst... experiment...",
+    },
+
 	ANNOUNCE_DRUNK_END = "더는 낭비할 시간이없어!", --술에서 좀 깸 (그로기)
 	ANNOUNCE_DRUNK_IMMUNITY = "", --임시. 위그 전용,
 	ANNOUNCE_NOTCHARGE = "현 시상에서는 우유를 가지고있지 않아.", -- 시상 = (時相)

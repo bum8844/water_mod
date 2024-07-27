@@ -9,6 +9,20 @@ return {
     },
 
         ANNOUNCE_DRUNK = "Did I lose in the drinking game? Hiccup.", -- 
+
+        ANNOUNCE_DRUNKING =
+        {
+            "Huff... Pant...",
+            "I should have built... a lifting machine...",
+            "Lift... with your back...",
+            "This isn't... gentleman's work...",
+            "For... science... oof!",
+            "Is this... messing up my hair?",
+            "Hngh...!",
+            "Pant... Pant...",
+            "This is the worst... experiment...",
+        },
+
         ANNOUNCE_DRUNK_END = "Am I still at Egir's banquet?", -- 
         ANNOUNCE_DRUNK_IMMUNITY = "Hahaha! Cheers again!!", -- 
         ANNOUNCE_NOTCHARGE = "The unicorn says that it seems they are not ready yet.", -- 

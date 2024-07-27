@@ -9,6 +9,20 @@ return {
     },
 
         ANNOUNCE_DRUNK = "ADEVERTENCIA DE INTOXICACIÓN", -- Drunk
+
+        ANNOUNCE_DRUNKING =
+        {
+            "Huff... Pant...",
+            "I should have built... a lifting machine...",
+            "Lift... with your back...",
+            "This isn't... gentleman's work...",
+            "For... science... oof!",
+            "Is this... messing up my hair?",
+            "Hngh...!",
+            "Pant... Pant...",
+            "This is the worst... experiment...",
+        },
+        
         ANNOUNCE_DRUNK_END = "MOTOR ESTABILIZADO", -- Sobered up a bit (hangover)
         ANNOUNCE_DRUNK_IMMUNITY = "AUTO-DIAGNÓSTICO: MOTOR NORMAL", -- Temporary For Wigfrid only
         ANNOUNCE_NOTCHARGE = "RECARGA NECESARIA PARA ESTA ENTIDAD", -- Attempting to milk a Volt Goat with no charge

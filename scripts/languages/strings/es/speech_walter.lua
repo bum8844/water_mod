@@ -9,6 +9,20 @@ return {
 	},
 
 	ANNOUNCE_DRUNK = "Escuché una historia en una radio una vez... hip",
+
+    ANNOUNCE_DRUNKING =
+    {
+        "Huff... Pant...",
+        "I should have built... a lifting machine...",
+        "Lift... with your back...",
+        "This isn't... gentleman's work...",
+        "For... science... oof!",
+        "Is this... messing up my hair?",
+        "Hngh...!",
+        "Pant... Pant...",
+        "This is the worst... experiment...",
+    },
+
 	ANNOUNCE_DRUNK_END = "Me siento mucho mejor ahora!",
 	ANNOUNCE_DRUNK_IMMUNITY = "only_used_by_wathgrithr",
 	ANNOUNCE_NOTCHARGE = "Necesito mas fuerza.",

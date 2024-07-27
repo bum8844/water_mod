@@ -9,6 +9,20 @@ return {
     },
 
     ANNOUNCE_DRUNK = "CẢNH BÁO: ĐẦU RA BỊ SAY", -- Say rượu
+
+    ANNOUNCE_DRUNKING =
+    {
+        "Huff... Pant...",
+        "I should have built... a lifting machine...",
+        "Lift... with your back...",
+        "This isn't... gentleman's work...",
+        "For... science... oof!",
+        "Is this... messing up my hair?",
+        "Hngh...!",
+        "Pant... Pant...",
+        "This is the worst... experiment...",
+    },
+
     ANNOUNCE_DRUNK_END = "ĐẦU RA ĐỘNG CƠ HÓA HỌC ỔN ĐỊNH", -- Tỉnh táo một chút (nôn nao)
     ANNOUNCE_DRUNK_IMMUNITY = "TỰ CHẨN ĐOÁN: ĐỘNG CƠ HÓA HỌC / BÌNH THƯỜNG", -- Tạm thời chỉ dành cho Wigfrid
     ANNOUNCE_NOTCHARGE = "BẮT BUỘC SẠC CHO THỰC THỂ NÀY", -- Cố gắng vắt sữa dê Volt miễn phí

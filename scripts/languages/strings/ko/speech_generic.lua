@@ -10,6 +10,20 @@ return {
 
 	ANNOUNCE_DRUNK = "히끅... 나 취한것 같아.",
 	ANNOUNCE_DRUNK_END = "으, 좀 괜찮아진것 같네.",
+
+    ANNOUNCE_DRUNKING =
+    {
+        "Huff... Pant...",
+        "I should have built... a lifting machine...",
+        "Lift... with your back...",
+        "This isn't... gentleman's work...",
+        "For... science... oof!",
+        "Is this... messing up my hair?",
+        "Hngh...!",
+        "Pant... Pant...",
+        "This is the worst... experiment...",
+    },
+
 	ANNOUNCE_DRUNK_IMMUNITY = "크하하! 한 잔 더!", --임시. 위그 전용
 	ANNOUNCE_NOTCHARGE = "아직 젖이나올 상태가 아니야.",
 	ANNOUNCE_NOTHIRSTSLEEP = "목이 너무말라서 자다가 육포가 되겠어!",

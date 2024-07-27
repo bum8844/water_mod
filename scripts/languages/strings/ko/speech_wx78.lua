@@ -9,6 +9,20 @@ return {
 	},
 
 	ANNOUNCE_DRUNK = "경고: 화ㅏ하ㅏㅏㄱ 에ㅔㅔ엔ㅈㅈ진 ㅇ이사ㅏㅏㅏㅇ 출력", -- 취함
+
+    ANNOUNCE_DRUNKING =
+    {
+        "Huff... Pant...",
+        "I should have built... a lifting machine...",
+        "Lift... with your back...",
+        "This isn't... gentleman's work...",
+        "For... science... oof!",
+        "Is this... messing up my hair?",
+        "Hngh...!",
+        "Pant... Pant...",
+        "This is the worst... experiment...",
+    },
+	
 	ANNOUNCE_DRUNK_END = "화학엔진 출력 안정화", --술에서 좀 깸 (그로기)
 	ANNOUNCE_DRUNK_IMMUNITY = "자가진단 : 화학엔진 / 정상", --임시 위그 전용,
 	ANNOUNCE_NOTCHARGE = "해당개체 충전 요구", --번개염소가 충전이 안되서 양동이로 젖을 짤수 없음

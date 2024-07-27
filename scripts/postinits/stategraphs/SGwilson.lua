@@ -550,6 +550,7 @@ AddStategraphPostInit("wilson", function(sg)
         end
 
         local _idle_onenter = sg.states["idle"].onenter
+        local _idle_onupdate = sg.states["idle"].onupdate
         sg.states["idle"].onenter = function(inst, pushanim,...)    
             if inst:HasTag("drunk") then
                 inst:AddTag("groggy")
@@ -558,6 +559,26 @@ AddStategraphPostInit("wilson", function(sg)
             end
             _idle_onenter(inst, pushanim,...)
         end
+
+        sg.states["idle"].onupdate = function(inst,...) 
+            if not inst.sg.mem.gooseframe and inst:HasTag("drunk") then
+                if inst.sg.mem.drunk == nil then
+                    inst.sg.mem.drunk = 0
+                end
+                if inst.sg.mem.drunk > 240 then
+                    inst.sg.mem.drunk = math.random(4, 8)
+                    inst:PushEvent("drunkwalking")
+                else
+                    inst.sg.mem.drunk = inst.sg.mem.drunk + 1
+                end
+            else
+                inst.sg.mem.drunk = 0 
+            end
+            _idle_onupdate(inst,...)
+        end
+
+        sg.states["idle"].timeline = {
+        }
 
         local _run_start_onenter = sg.states["run_start"].onenter
         sg.states["run_start"].onenter = function(inst,...)
@@ -570,6 +591,8 @@ AddStategraphPostInit("wilson", function(sg)
         end
 
         local _run_onenter = sg.states["run"].onenter
+        local _run_timeline_5 = sg.states["run"].timeline[5].fn
+        local _run_timeline_6 = sg.states["run"].timeline[6].fn
         sg.states["run"].onenter = function(inst,...)
             if inst:HasTag("drunk") then
                 inst:AddTag("groggy")
@@ -578,6 +601,31 @@ AddStategraphPostInit("wilson", function(sg)
             end            
             _run_onenter(inst,...)
         end
+
+        sg.states["run"].timeline[5].fn = function(inst, ...)
+            if inst:HasTag("drunk") then
+                if inst.sg.mem.footsteps > 3 then
+                    --normally stops at > 3, but heavy needs to keep count
+                    inst.sg.mem.footsteps = inst.sg.mem.footsteps + 1
+                end
+            end
+            _run_timeline_5(inst,...)
+        end
+        
+        sg.states["run"].timeline[6].fn = function(inst, ...)
+            if inst:HasTag("drunk") then
+                if inst.sg.mem.footsteps > 26 then
+                    inst.sg.mem.footsteps = math.random(4, 6)
+                    inst:PushEvent("drunkwalking")
+                elseif inst.sg.mem.footsteps > 3 then
+                    --normally stops at > 3, but heavy needs to keep count
+                    inst.sg.mem.footsteps = inst.sg.mem.footsteps + 1
+                end
+            end
+            _run_timeline_6(inst,...)
+        end
+
+        table.insert(sg.states["run"].timeline,run_timeline)
 
         local _run_stop_onenter = sg.states["run_stop"].onenter
         sg.states["run_stop"].onenter = function(inst,...)

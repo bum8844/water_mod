@@ -9,6 +9,20 @@ return {
     },
 
         ANNOUNCE_DRUNK = "¿Perdí en el juego de beber? Hip.", -- Drunk
+
+        ANNOUNCE_DRUNKING =
+        {
+            "Huff... Pant...",
+            "I should have built... a lifting machine...",
+            "Lift... with your back...",
+            "This isn't... gentleman's work...",
+            "For... science... oof!",
+            "Is this... messing up my hair?",
+            "Hngh...!",
+            "Pant... Pant...",
+            "This is the worst... experiment...",
+        },
+
         ANNOUNCE_DRUNK_END = "¿Aún estoy en el banquete de Egis?", -- Sobers up from being drunk (hangover)
         ANNOUNCE_DRUNK_IMMUNITY = "¡Jajaja! ¡Salud de nuevo!", -- Temporary. Exclusive to Wigfrid.
         ANNOUNCE_NOTCHARGE = "El unicornio parece que aun no esta listo.", -- Trying to milk the lightning goat with a bucket when it's not charged

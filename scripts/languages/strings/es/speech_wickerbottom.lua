@@ -9,6 +9,20 @@ return {
     },
 
         ANNOUNCE_DRUNK = "Mi sistema diges-tivoo, y mentaal ejem edn.", -- Drunk
+
+        ANNOUNCE_DRUNKING =
+        {
+            "Huff... Pant...",
+            "I should have built... a lifting machine...",
+            "Lift... with your back...",
+            "This isn't... gentleman's work...",
+            "For... science... oof!",
+            "Is this... messing up my hair?",
+            "Hngh...!",
+            "Pant... Pant...",
+            "This is the worst... experiment...",
+        },
+        
         ANNOUNCE_DRUNK_END = "De todas formas, beber en exceso esta completamente prohibido.", -- Sobering up from alcohol (Hangover)
         ANNOUNCE_DRUNK_IMMUNITY = "", -- Temporary. Wickerbottom only.
         ANNOUNCE_NOTCHARGE = "La cabra no esta en condiciones de ser ordeñada.", -- Unable to milk with a bucket because the Volt Goat is not charged.

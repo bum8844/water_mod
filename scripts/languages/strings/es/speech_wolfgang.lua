@@ -9,6 +9,20 @@ return {
     },
 
         ANNOUNCE_DRUNK = "Ugh, mas débil que el alcohol de Wolfgang...", -- Becoming drunk
+
+        ANNOUNCE_DRUNKING =
+        {
+            "Huff... Pant...",
+            "I should have built... a lifting machine...",
+            "Lift... with your back...",
+            "This isn't... gentleman's work...",
+            "For... science... oof!",
+            "Is this... messing up my hair?",
+            "Hngh...!",
+            "Pant... Pant...",
+            "This is the worst... experiment...",
+        },
+
         ANNOUNCE_DRUNK_END = "Wolfgang se siente mejor.", -- Sobering up from alcohol (hangover)
         ANNOUNCE_DRUNK_IMMUNITY = "¡Ja! ¡El alcohol no es nada para el gran Wolfgang!", -- Mighty state alcohol immunity
         ANNOUNCE_NOTCHARGE = "Wolfgang debe darle poder para cargar a la cabra", -- Trying to milk Goat without charged rods

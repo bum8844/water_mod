@@ -9,6 +9,20 @@ return {
     },
 
         ANNOUNCE_DRUNK = "¿Cuatro?¿Ocho? No...¡Somos una legion!", -- Drunk
+
+        ANNOUNCE_DRUNKING =
+        {
+            "Huff... Pant...",
+            "I should have built... a lifting machine...",
+            "Lift... with your back...",
+            "This isn't... gentleman's work...",
+            "For... science... oof!",
+            "Is this... messing up my hair?",
+            "Hngh...!",
+            "Pant... Pant...",
+            "This is the worst... experiment...",
+        },
+        
         ANNOUNCE_DRUNK_END = "No... Ahora sólo somos uno...", -- Sobering up from drinking (hangover)
         ANNOUNCE_DRUNK_IMMUNITY = "", -- Temporary. For Wickerbottom only.
         ANNOUNCE_NOTCHARGE = "No creo que produzca leche justo ahora.", -- Lightning goat can't charge to milk with buckets

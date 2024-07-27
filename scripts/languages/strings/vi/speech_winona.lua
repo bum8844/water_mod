@@ -9,6 +9,20 @@ return {
     },
 
     ANNOUNCE_DRUNK = "Hic, tôi không thể làm điều này được nữa...", -- Say rượu
+
+    ANNOUNCE_DRUNKING =
+    {
+        "Huff... Pant...",
+        "I should have built... a lifting machine...",
+        "Lift... with your back...",
+        "This isn't... gentleman's work...",
+        "For... science... oof!",
+        "Is this... messing up my hair?",
+        "Hngh...!",
+        "Pant... Pant...",
+        "This is the worst... experiment...",
+    },
+
     ANNOUNCE_DRUNK_END = "Bây giờ cảm thấy tốt hơn một chút, tôi có nên cố gắng lấy lại sức không?", -- Tỉnh táo sau khi uống rượu (chảo loạn)
     ANNOUNCE_DRUNK_IMMUNITY = "", -- Tạm thời, chỉ dành cho Wigfrid
     ANNOUNCE_NOTCHARGE = "Hmm... Khi nào con dê này mới cho sữa?", -- Đang cố gắng vắt sữa một con dê Volt không được sạc nên không thể sử dụng xô

@@ -9,6 +9,20 @@ return {
     },
 
     ANNOUNCE_DRUNK = "Oh botheration, I feel so dizzy!", --  
+
+    ANNOUNCE_DRUNKING =
+    {
+        "Huff... Pant...",
+        "I should have built... a lifting machine...",
+        "Lift... with your back...",
+        "This isn't... gentleman's work...",
+        "For... science... oof!",
+        "Is this... messing up my hair?",
+        "Hngh...!",
+        "Pant... Pant...",
+        "This is the worst... experiment...",
+    },
+
     ANNOUNCE_DRUNK_END = "No more time to waste!", -- 
     ANNOUNCE_DRUNK_IMMUNITY = "", -- 
     ANNOUNCE_NOTCHARGE = "At present, that doesn't have milk.", --     

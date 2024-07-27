@@ -9,6 +9,20 @@ return {
     },
 
     ANNOUNCE_DRUNK = "Woozy...", -- Nhân vật nói rượu
+
+    ANNOUNCE_DRUNKING =
+    {
+        "Huff... Pant...",
+        "I should have built... a lifting machine...",
+        "Lift... with your back...",
+        "This isn't... gentleman's work...",
+        "For... science... oof!",
+        "Is this... messing up my hair?",
+        "Hngh...!",
+        "Pant... Pant...",
+        "This is the worst... experiment...",
+    },
+
     ANNOUNCE_DRUNK_END = "Phew...", -- Nhân vật tỉnh táo (nôn nao)
     ANNOUNCE_DRUNK_IMMUNITY = "", -- Tạm thời. Dành riêng cho Wigfrid.
     ANNOUNCE_NOTCHARGE = "Người bạn nguệch ngoạc của tôi vẫn chưa sẵn sàng.", -- Cố gắng vắt sữa một con dê volt miễn phí

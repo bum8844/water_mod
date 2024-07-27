@@ -9,6 +9,20 @@ return {
     },
 
     ANNOUNCE_DRUNK = "Hic, tôi cảm thấy như một khúc gỗ...", -- Đang say
+
+    ANNOUNCE_DRUNKING =
+    {
+        "Huff... Pant...",
+        "I should have built... a lifting machine...",
+        "Lift... with your back...",
+        "This isn't... gentleman's work...",
+        "For... science... oof!",
+        "Is this... messing up my hair?",
+        "Hngh...!",
+        "Pant... Pant...",
+        "This is the worst... experiment...",
+    },
+
     ANNOUNCE_DRUNK_END = "Tôi suýt rung chuông.", -- Tỉnh táo sau khi say
     ANNOUNCE_DRUNK_IMMUNITY = "", -- Tạm thời, dành riêng cho Wigfrid
     ANNOUNCE_NOTCHARGE = "Huh? Không có điện?", -- Cố gắng vắt sữa một con dê Volt đã tích điện bằng một cái xô

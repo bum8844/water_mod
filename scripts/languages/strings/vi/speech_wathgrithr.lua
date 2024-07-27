@@ -9,6 +9,20 @@ return {
     },
 
         ANNOUNCE_DRUNK = "Tôi có thua trong trò chơi uống rượu không? Nấc cụt.", -- Say rượu
+
+        ANNOUNCE_DRUNKING =
+        {
+            "Huff... Pant...",
+            "I should have built... a lifting machine...",
+            "Lift... with your back...",
+            "This isn't... gentleman's work...",
+            "For... science... oof!",
+            "Is this... messing up my hair?",
+            "Hngh...!",
+            "Pant... Pant...",
+            "This is the worst... experiment...",
+        },
+        
         ANNOUNCE_DRUNK_END = "Tôi vẫn còn ở bữa tiệc của Egir à?", -- Tỉnh dậy vì say (nôn nao)
         ANNOUNCE_DRUNK_IMMUNITY = "Hahahaha! Thêm cốc nữa nào!", -- Tạm thời. Dành riêng cho Wigfrid.
         ANNOUNCE_NOTCHARGE ="Kỳ lân nói rằng có vẻ như họ vẫn chưa sẵn sàng.", -- Cố gắng vắt sữa dê sét bằng xô khi nó chưa được sạc

@@ -9,6 +9,20 @@ return {
     },
 
         ANNOUNCE_DRUNK = "Hip, Me siento como un tronco...", -- Getting drunk
+
+        ANNOUNCE_DRUNKING =
+        {
+            "Huff... Pant...",
+            "I should have built... a lifting machine...",
+            "Lift... with your back...",
+            "This isn't... gentleman's work...",
+            "For... science... oof!",
+            "Is this... messing up my hair?",
+            "Hngh...!",
+            "Pant... Pant...",
+            "This is the worst... experiment...",
+        },
+        
         ANNOUNCE_DRUNK_END = "¿Casi acabó talandomé a mi mismo, eh?", -- Getting sober after being drunk
         ANNOUNCE_DRUNK_IMMUNITY = "", -- Temporary, specific to Wigfrid
         ANNOUNCE_NOTCHARGE = "Eh... ¿No sale leche?", -- Attempting to milk a charged Volt Goat with a bucket

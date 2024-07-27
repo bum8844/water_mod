@@ -9,6 +9,20 @@ return {
     },
 
         ANNOUNCE_DRUNK = "Hmmm... Abigail, estoy tan sola...", -- Drunk
+
+        ANNOUNCE_DRUNKING =
+        {
+            "Huff... Pant...",
+            "I should have built... a lifting machine...",
+            "Lift... with your back...",
+            "This isn't... gentleman's work...",
+            "For... science... oof!",
+            "Is this... messing up my hair?",
+            "Hngh...!",
+            "Pant... Pant...",
+            "This is the worst... experiment...",
+        },
+
         ANNOUNCE_DRUNK_END = "No te rías Abigail, es vergonzoso.", -- Sobered up (Hungover)
         ANNOUNCE_DRUNK_IMMUNITY = "",
         ANNOUNCE_NOTCHARGE = "Parece que no tiene leche para mi.", -- Lightning goat can't be charged, so milk can't be squeezed into a bucket

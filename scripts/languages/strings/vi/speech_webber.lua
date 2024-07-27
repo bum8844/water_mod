@@ -9,6 +9,20 @@ ACTIONFAIL =
 },
 
 ANNOUNCE_DRUNK = "Bốn? mười sáu? KHÔNG chúng ta có cả bầy nè... hahahaha", -- Say rượu
+
+ANNOUNCE_DRUNKING =
+{
+    "Huff... Pant...",
+    "I should have built... a lifting machine...",
+    "Lift... with your back...",
+    "This isn't... gentleman's work...",
+    "For... science... oof!",
+    "Is this... messing up my hair?",
+    "Hngh...!",
+    "Pant... Pant...",
+    "This is the worst... experiment...",
+},
+
 ANNOUNCE_DRUNK_END = "Không... giờ chúng ta chỉ là một...", -- Tỉnh táo sau khi uống rượu (nôn nao)
 ANNOUNCE_DRUNK_IMMUNITY = "", -- Tạm thời. Chỉ dành cho Wickerbottom.
 ANNOUNCE_NOTCHARGE = "Con dê sẽ không cho sữa bây giờ đâu.", -- Dê tia chớp không thể sạc sữa bằng xô

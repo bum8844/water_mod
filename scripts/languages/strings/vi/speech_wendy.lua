@@ -9,6 +9,20 @@ return {
     },
 
     ANNOUNCE_DRUNK = "Nức nở... Abigail, tôi cô đơn quá...", -- Say rượu
+
+    ANNOUNCE_DRUNKING =
+    {
+        "Huff... Pant...",
+        "I should have built... a lifting machine...",
+        "Lift... with your back...",
+        "This isn't... gentleman's work...",
+        "For... science... oof!",
+        "Is this... messing up my hair?",
+        "Hngh...!",
+        "Pant... Pant...",
+        "This is the worst... experiment...",
+    },
+
     ANNOUNCE_DRUNK_END = "Đừng cười, Abigail. Thật xấu hổ.", -- Tỉnh táo (Hungover)
     ANNOUNCE_DRUNK_IMMUNITY = "",
     ANNOUNCE_NOTCHARGE = "Nó trông có vẻ không có sữa dành cho tui để chia sẻ.", -- Lightning dê không sạc được nên không thể vắt sữa vào xô

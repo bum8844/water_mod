@@ -9,6 +9,20 @@ return {
     },
 
     ANNOUNCE_DRUNK = "Ugh, yếu hơn rượu của Wolfgang...", -- Trở nên say xỉn
+
+    ANNOUNCE_DRUNKING =
+    {
+        "Huff... Pant...",
+        "I should have built... a lifting machine...",
+        "Lift... with your back...",
+        "This isn't... gentleman's work...",
+        "For... science... oof!",
+        "Is this... messing up my hair?",
+        "Hngh...!",
+        "Pant... Pant...",
+        "This is the worst... experiment...",
+    },
+
     ANNOUNCE_DRUNK_END = "Wolfgang cảm thấy khỏe hơn rồi.", -- Tỉnh táo vì rượu (nôn nao)
     ANNOUNCE_DRUNK_IMMUNITY = "Ha! Rượu chẳng là gì đối với Wolfgang hùng mạnh!", -- Trạng thái miễn nhiễm rượu mạnh mẽ
     ANNOUNCE_NOTCHARGE = "Wolfgang phải cung cấp năng lượng để sạc Dê!", -- Cố gắng vắt sữa Dê mà không cần thanh tích điện

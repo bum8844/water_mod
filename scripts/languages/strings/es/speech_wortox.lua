@@ -9,6 +9,20 @@ return {
     },
 
     ANNOUNCE_DRUNK = "¡El mundo terrenal y el de las sombras son visibles!", -- Getting drunk
+
+    ANNOUNCE_DRUNKING =
+    {
+        "Huff... Pant...",
+        "I should have built... a lifting machine...",
+        "Lift... with your back...",
+        "This isn't... gentleman's work...",
+        "For... science... oof!",
+        "Is this... messing up my hair?",
+        "Hngh...!",
+        "Pant... Pant...",
+        "This is the worst... experiment...",
+    },
+
     ANNOUNCE_DRUNK_END = "El mundo terrenal esta aclarándose de nuevo.", -- Sobering up from alcohol (hangover)
     ANNOUNCE_DRUNK_IMMUNITY = "", -- Temporary. Specific to Wickerbottom.
     ANNOUNCE_NOTCHARGE = "Necesita recargarse, amigo", -- Wolfgang can't milk a bucket without enough charge.

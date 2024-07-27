@@ -9,6 +9,20 @@ return {
     },
 
     ANNOUNCE_DRUNK = "Hipo, me dijeron que me divirtiera, pero que no me emborrachara...", -- Drunk
+
+    ANNOUNCE_DRUNKING =
+    {
+        "Huff... Pant...",
+        "I should have built... a lifting machine...",
+        "Lift... with your back...",
+        "This isn't... gentleman's work...",
+        "For... science... oof!",
+        "Is this... messing up my hair?",
+        "Hngh...!",
+        "Pant... Pant...",
+        "This is the worst... experiment...",
+    },
+
     ANNOUNCE_DRUNK_END = "Necesito preparar una comida que me cure la resaca..", -- Sobering up from being drunk (hungover)
     ANNOUNCE_DRUNK_IMMUNITY = "", -- Temporary. For Wigfrid only.
     ANNOUNCE_NOTCHARGE = "Ordeñarla ahora no producirá ningún resultado.", -- Trying to milk the Electric Milk Goat without it being charged

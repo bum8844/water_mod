@@ -9,6 +9,20 @@ return {
     },
 
         ANNOUNCE_DRUNK = "Head hurts... feels like a fever",
+
+        ANNOUNCE_DRUNKING =
+        {
+            "Huff... Pant...",
+            "I should have built... a lifting machine...",
+            "Lift... with your back...",
+            "This isn't... gentleman's work...",
+            "For... science... oof!",
+            "Is this... messing up my hair?",
+            "Hngh...!",
+            "Pant... Pant...",
+            "This is the worst... experiment...",
+        },
+        
         ANNOUNCE_DRUNK_END = "Florpt! Feeling a bit less dizzy.",
         ANNOUNCE_DRUNK_IMMUNITY = "", 
         ANNOUNCE_NOTCHARGE = "No milk is coming out!", 

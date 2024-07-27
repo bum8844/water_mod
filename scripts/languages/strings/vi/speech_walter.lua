@@ -9,6 +9,20 @@ return {
 	},
 
 	ANNOUNCE_DRUNK = "Tôi từng nghe một câu chuyện trên radio...hic",
+
+    ANNOUNCE_DRUNKING =
+    {
+        "Huff... Pant...",
+        "I should have built... a lifting machine...",
+        "Lift... with your back...",
+        "This isn't... gentleman's work...",
+        "For... science... oof!",
+        "Is this... messing up my hair?",
+        "Hngh...!",
+        "Pant... Pant...",
+        "This is the worst... experiment...",
+    },
+	
 	ANNOUNCE_DRUNK_END = "Bây giờ tôi cảm thấy tốt hơn nhiều!",
 	ANNOUNCE_DRUNK_IMMUNITY = "",--only_used_by_wathgrithr
 	ANNOUNCE_NOTCHARGE = "Không thể vắt sữa được, nó khô quá rồi! Heh, điều đó thật tốt.",

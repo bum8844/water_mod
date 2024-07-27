@@ -9,6 +9,20 @@ return {
 	},
 
 	ANNOUNCE_DRUNK = "그뤄고보니 롸디오극에서 들었-던 이야기가 생각놔눈데 말야...",
+
+    ANNOUNCE_DRUNKING =
+    {
+        "Huff... Pant...",
+        "I should have built... a lifting machine...",
+        "Lift... with your back...",
+        "This isn't... gentleman's work...",
+        "For... science... oof!",
+        "Is this... messing up my hair?",
+        "Hngh...!",
+        "Pant... Pant...",
+        "This is the worst... experiment...",
+    },
+
 	ANNOUNCE_DRUNK_END = "한결 나아진것 같아!",
 	ANNOUNCE_DRUNK_IMMUNITY = "only_used_by_wathgrithr",
 	ANNOUNCE_NOTCHARGE = "젖을 짜기 영 젖치 않아. 헤,이건 좋았다.",

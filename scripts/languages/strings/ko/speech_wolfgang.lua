@@ -9,6 +9,20 @@ return {
 	},
 
 	ANNOUNCE_DRUNK = "으으, 볼프강 술보다 약하다...", -- 취함
+
+    ANNOUNCE_DRUNKING =
+    {
+        "Huff... Pant...",
+        "I should have built... a lifting machine...",
+        "Lift... with your back...",
+        "This isn't... gentleman's work...",
+        "For... science... oof!",
+        "Is this... messing up my hair?",
+        "Hngh...!",
+        "Pant... Pant...",
+        "This is the worst... experiment...",
+    },
+
 	ANNOUNCE_DRUNK_END = "볼프강 좀 나아진것 같다.", --술에서 좀 깸 (그로기)
 	ANNOUNCE_DRUNK_IMMUNITY = "하! 술 같은건 강한 볼프강에게 아무것도 아니다!", --마이티 상태 술 면역
 	ANNOUNCE_NOTCHARGE = "볼프강이 힘 주면 염소만 다칠거다.", --번개염소가 충전이 안되서 양동이로 젖을 짤수 없음

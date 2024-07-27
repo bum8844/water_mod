@@ -9,6 +9,20 @@ return {
     },
 
         ANNOUNCE_DRUNK = "Mareooo...", -- Character is drunk
+
+        ANNOUNCE_DRUNKING =
+        {
+            "Huff... Pant...",
+            "I should have built... a lifting machine...",
+            "Lift... with your back...",
+            "This isn't... gentleman's work...",
+            "For... science... oof!",
+            "Is this... messing up my hair?",
+            "Hngh...!",
+            "Pant... Pant...",
+            "This is the worst... experiment...",
+        },
+        
         ANNOUNCE_DRUNK_END = "Uff...", -- Character sobers up (hangover)
         ANNOUNCE_DRUNK_IMMUNITY = "", -- Temporary. Reserved for Wigfrid.
         ANNOUNCE_NOTCHARGE = "Mi amigo cornudo aún no esta listo.", -- Attempting to milk a volt goat with no charge

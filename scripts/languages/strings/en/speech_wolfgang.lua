@@ -9,6 +9,20 @@ return {
     },
 
         ANNOUNCE_DRUNK = "Ugh, Wolfgang is weaker than booze...",
+
+        ANNOUNCE_DRUNKING =
+        {
+            "Huff... Pant...",
+            "I should have built... a lifting machine...",
+            "Lift... with your back...",
+            "This isn't... gentleman's work...",
+            "For... science... oof!",
+            "Is this... messing up my hair?",
+            "Hngh...!",
+            "Pant... Pant...",
+            "This is the worst... experiment...",
+        },
+        
         ANNOUNCE_DRUNK_END = "Wolfgang feeling better now.", 
         ANNOUNCE_DRUNK_IMMUNITY = "Ha! Alcohol is nothing to Mighty Wolfgang!", 
         ANNOUNCE_NOTCHARGE = "Even if Wolfgang tries, only the goat gets hurt.",

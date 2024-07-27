@@ -9,6 +9,20 @@ return {
     },
 
     ANNOUNCE_DRUNK = "Có thể nhìn thấy cả thế giới vật chất và thế giới bóng tối!", -- Đang say
+
+    ANNOUNCE_DRUNKING =
+    {
+        "Huff... Pant...",
+        "I should have built... a lifting machine...",
+        "Lift... with your back...",
+        "This isn't... gentleman's work...",
+        "For... science... oof!",
+        "Is this... messing up my hair?",
+        "Hngh...!",
+        "Pant... Pant...",
+        "This is the worst... experiment...",
+    },
+
     ANNOUNCE_DRUNK_END = "Thế giới vật chất đang bắt đầu trở nên rõ ràng trở lại.", -- Tỉnh táo sau rượu (nôn nao)
     ANNOUNCE_DRUNK_IMMUNITY = "", -- Tạm thời. Dành riêng cho Wickerbottom.
     ANNOUNCE_NOTCHARGE = "Tôi cần sạc pin, anh bạn!", -- Wolfgang không thể vắt sữa nếu không sạc đủ.

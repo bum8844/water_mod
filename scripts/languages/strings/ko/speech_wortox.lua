@@ -9,6 +9,20 @@ return {
 	},
 
 	ANNOUNCE_DRUNK = "물질계랑 어둠계가 둘 다 보여!", -- 취함
+
+    ANNOUNCE_DRUNKING =
+    {
+        "Huff... Pant...",
+        "I should have built... a lifting machine...",
+        "Lift... with your back...",
+        "This isn't... gentleman's work...",
+        "For... science... oof!",
+        "Is this... messing up my hair?",
+        "Hngh...!",
+        "Pant... Pant...",
+        "This is the worst... experiment...",
+    },
+	
 	ANNOUNCE_DRUNK_END = "물질계가 명료해지기 시작했어.", --술에서 좀 깸 (그로기)
 	ANNOUNCE_DRUNK_IMMUNITY = "", --임시. 위그 전용,
 	ANNOUNCE_NOTCHARGE = "충전 좀 해야겠는데, 친구!", --번개염소가 충전이 안되서 양동이로 젖을 짤수 없음

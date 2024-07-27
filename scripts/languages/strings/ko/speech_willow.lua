@@ -9,6 +9,20 @@ return {
 	},
 
 	ANNOUNCE_DRUNK = "흐헤헤... 아이 좋다...",
+
+    ANNOUNCE_DRUNKING =
+    {
+        "Huff... Pant...",
+        "I should have built... a lifting machine...",
+        "Lift... with your back...",
+        "This isn't... gentleman's work...",
+        "For... science... oof!",
+        "Is this... messing up my hair?",
+        "Hngh...!",
+        "Pant... Pant...",
+        "This is the worst... experiment...",
+    },
+
 	ANNOUNCE_DRUNK_END = "으...몸이 식고 있어.", --술에서 좀 깸 (그로기)
 	ANNOUNCE_DRUNK_IMMUNITY = "", --임시. 위그 전용,
 	ANNOUNCE_NOTCHARGE = "어머, 너 젖이 안나오는구나.", --번개염소가 충전이 안되서 양동이로 젖을 짤수 없음

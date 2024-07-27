@@ -9,6 +9,20 @@ return {
     },
 
     ANNOUNCE_DRUNK = "Ồ, tôi cảm thấy chóng mặt quá!", -- Say rượu
+
+    ANNOUNCE_DRUNKING =
+    {
+        "Huff... Pant...",
+        "I should have built... a lifting machine...",
+        "Lift... with your back...",
+        "This isn't... gentleman's work...",
+        "For... science... oof!",
+        "Is this... messing up my hair?",
+        "Hngh...!",
+        "Pant... Pant...",
+        "This is the worst... experiment...",
+    },
+    
     ANNOUNCE_DRUNK_END = "Không còn thời gian để lãng phí nữa!", -- Tỉnh táo vì rượu (nôn nao)
     ANNOUNCE_DRUNK_IMMUNITY = "", -- Tạm thời, dành riêng cho Wigfrid,
     ANNOUNCE_NOTCHARGE = "Hiện tại tôi không mang theo sữa.", -- Giai đoạn thời gian = (時相)

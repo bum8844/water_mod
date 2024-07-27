@@ -9,6 +9,20 @@ return {
 	},
 	
 	ANNOUNCE_DRUNK = "으윽, 좀 취한 것 같군.", -- 취함
+
+    ANNOUNCE_DRUNKING =
+    {
+        "Huff... Pant...",
+        "I should have built... a lifting machine...",
+        "Lift... with your back...",
+        "This isn't... gentleman's work...",
+        "For... science... oof!",
+        "Is this... messing up my hair?",
+        "Hngh...!",
+        "Pant... Pant...",
+        "This is the worst... experiment...",
+    },
+
 	ANNOUNCE_DRUNK_END = "이제 좀 낫군.", --술에서 좀 깸 (그로기)
 	ANNOUNCE_DRUNK_IMMUNITY = "only_used_by_wathgrithr", --임시. 위그 전용,
 	ANNOUNCE_NOTCHARGE = "쓸모없는 녀석.", --번개염소가 충전이 안되서 양동이로 젖을 짤수 없음
