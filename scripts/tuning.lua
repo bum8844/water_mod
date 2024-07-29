@@ -240,6 +240,16 @@ water_tuning =
         MAX_SPAWNS = 10, -- NOTES(JBK): Deprecated, kept around for mods.
     },
 
+    FREEZE_WATER = 
+    {
+        ANGLE = 65,
+        SPEED = -1.8,
+        HEIGHT = 0.5,   
+        WETGOOP_CHANCE = 0.15,
+        ICE_CHANCE = 0.40, 
+        MAX_SPAWNS = 10, -- NOTES(JBK): Deprecated, kept around for mods.	
+    },
+
     SALT_VALUE = 10,
     DESALINATOR_MAX_SALT = 40,
     DESALINATOR_SALT_SECTION = 9,

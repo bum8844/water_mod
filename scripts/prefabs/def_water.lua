@@ -89,7 +89,9 @@ local function MakeDone(new_item, container, pos, owner, doer)
     doer.SoundEmitter:PlaySound("dontstarve/common/bush_fertilize")
 end
 
-local function MakeItem(inst, item, pos, doer)
+--[[
+    bum:나중에 쓸때가 있을 수도 있으므로 나둘깨요
+    local function MakeItem(inst, item, pos, doer)
     local stacksize = (inst.components.stackable and inst.components.stackable:StackSize()) or 1
     local moisture = inst.components.inventoryitem:GetMoisture()
     local iswet = inst.components.inventoryitem:IsWet()
@@ -114,7 +116,62 @@ local function OnUnwrapped(inst, pos, doer)
     local item = inst:HasTag("dirty") and "wetgoop" or "ice"
     MakeItem(inst, item, pos, doer)
     inst:Remove()
+end]]
+
+local function on_hammered(inst, hammer, workleft, workdone)
+    local num_frozn_worked = math.clamp(math.ceil(workdone / TUNING.ROCK_FRUIT_MINES), 1, inst.components.stackable:StackSize())
+
+    local loot_data = TUNING.FREEZE_WATER
+
+    local spawned_prefabs = {
+        [inst.workabletype] = 0
+    }
+
+    local odds_item = inst.workabletype == "wetgoop" and loot_data.WETGOOP_CHANCE or loot_data.ICE_CHANCE
+    local pass = false
+
+    for _ = 1, num_frozn_worked do
+        -- Choose a ripeness to spawn.
+        local loot_roll = math.random()
+        if loot_roll < odds_item then
+            spawned_prefabs[inst.workabletype] = spawned_prefabs[inst.workabletype] + 1
+        end
+    end
+
+    for prefab, count in pairs(spawned_prefabs) do
+        local i = 1
+        while i <= count do
+            local loot = SpawnPrefab(prefab)
+            local room = loot.components.stackable ~= nil and loot.components.stackable:RoomLeft() or 0
+            if room > 0 then
+                local stacksize = math.min(count - i, room) + 1
+                loot.components.stackable:SetStackSize(stacksize)
+                i = i + stacksize
+            else
+                i = i + 1
+            end
+            LaunchAt(loot, inst, hammer, loot_data.SPEED, loot_data.HEIGHT, nil, loot_data.ANGLE)
+         end
+    end
+
+    local top_stack_item = inst.components.stackable:Get(num_frozn_worked)
+    top_stack_item:Remove()
 end
+
+local function stack_size_changed(inst, data)
+    if data ~= nil and data.stacksize ~= nil and inst.components.workable ~= nil then
+        inst.components.workable:SetWorkLeft(data.stacksize * TUNING.ROCK_FRUIT_MINES)
+    end
+end
+
+local function OnExplosion_freeze_water(inst, data)
+    local miner = data and data.explosive or nil
+    if miner then
+        local loot_data = TUNING.FREEZE_WATER
+        LaunchAt(inst, inst, miner, loot_data.SPEED, loot_data.HEIGHT, nil, loot_data.ANGLE)
+    end
+end
+
 ---------------------------
 local function doThaw(inst)
     local owner = inst.components.inventoryitem ~= nil and inst.components.inventoryitem:GetGrandOwner()
@@ -152,8 +209,13 @@ end
 
 local function common_solid(inst)
 
-    inst:AddComponent("unwrappable")
-    inst.components.unwrappable:SetOnUnwrappedFn(OnUnwrapped)
+    --[[inst:AddComponent("unwrappable")
+    inst.components.unwrappable:SetOnUnwrappedFn(OnUnwrapped)]]
+    
+    inst:AddComponent("workable")
+    inst.components.workable:SetWorkAction(ACTIONS.HAMMER)
+    inst.components.workable:SetWorkLeft(TUNING.ROCK_FRUIT_MINES * inst.components.stackable.stacksize)
+    inst.components.workable:SetOnWorkCallback(on_hammered)
 
     --기온이 녹는점 이상이면 잠시 유예시간을 주도록 설정
     inst:AddComponent("temperature")
@@ -163,6 +225,9 @@ local function common_solid(inst)
     inst.components.temperature.inherentsummerinsulation = TUNING.INSULATION_MED_LARGE
 
     inst:ListenForEvent("temperaturedelta", ThawToWater)
+    inst:ListenForEvent("stacksizechange", stack_size_changed)
+    inst:ListenForEvent("explosion", OnExplosion_freeze_water)
+
 end
 
 -------- Liquids --------
@@ -215,6 +280,7 @@ local function common_liquid(inst)
 end
 ---------------------------
 local function cleanwater(inst)
+
     common_liquid(inst)
 
     inst.components.edible.healthvalue = 0
@@ -272,6 +338,9 @@ local function saltywater(inst)
 end
 
 local function cleanice(inst)
+
+    inst.workabletype = "ice"
+
     common_solid(inst)
 
     inst:AddComponent("perishable")
@@ -284,6 +353,9 @@ local function cleanice(inst)
 end
 
 local function dirtyice(inst)
+
+    inst.workabletype = "wetgoop"
+
     common_solid(inst)
 
     inst.components.water:SetWaterType(WATERTYPE.DIRTY_ICE)
