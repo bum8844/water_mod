@@ -7,6 +7,7 @@ local water_modlist = {
 	["workshop-1392778117"] = "legion",
 	["workshop-2039181790"] = "umc",
 	["workshop-1289779251"] = "cf",
+	["workshop-3047220901"] = "cf", -- test cf mod
 	["workshop-3054476656"] = "fwd",
 	["workshop-2748801553"] = "gyul",
 	["workshop-381565292"] = "w101",
