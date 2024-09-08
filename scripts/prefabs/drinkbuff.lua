@@ -250,6 +250,8 @@ local function fn_obe()
     return inst
 end
 
+-------------------------------------------------------------------------------------
+
 local function OnAttached_caffein(inst, target)
     target:PushEvent("foodbuffattached", { buff = "ANNOUNCE_CAFFINE_BUFF_START", priority = 1 })
     inst.components.timer:StartTimer("caffeinbuff_done", target.caffeinbuff_duration or TUNING.CAFFEIN_TIME)
@@ -306,6 +308,8 @@ local function fn_caffein()
 
     return inst
 end
+
+-------------------------------------------------------------------------------------------------
 
 local function OnAttached_alcohol(inst, target)
     inst.entity:SetParent(target.entity)
@@ -388,6 +392,8 @@ local function fn_alcohol()
 
     return inst
 end
+
+------------------------------------------------------------------------------------------------
 
 local function OnAttached_immune(inst, target)
     target._has_immune = true

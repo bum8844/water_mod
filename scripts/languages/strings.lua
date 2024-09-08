@@ -347,7 +347,7 @@ DSD_GeneratePOfromLua = function(lang)
 
 	LoadStringsV1(baselang)	--Load the base language, extract strings and store
 	STRINGS_LOOKUP = ExtractTableByIndex("STRINGS", tbl_idx)
-	LoadStringsV1(lang) 	--Reload the selected language and extract the same strings
+	LoadStringsV1(lang) 	--Reload the selected language and extract strings with the same key
 	local tbl_dta = ExtractTableByIndex("STRINGS", tbl_idx)
 
 	local file, errormsg = io.open(MODROOT.."scripts\\languages\\DSD_"..lang..".po", "w")
