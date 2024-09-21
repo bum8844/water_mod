@@ -403,4 +403,19 @@ configuration_options =
 		},
 		default = .25
 	},
+	SEPARATOR,
+	Title("Satiety Effect"),
+	{
+		name = "satiety_time",
+		label = "Duration",
+		options = 
+		{
+			{description = "Shorter", data = .5},
+			{description = "Short", data = .7},
+			{description = "Default", data = 1},
+			{description = "Long", data = 2},
+			{description = "Longer", data = 4},
+		},
+		default = 1
+	},
 }
