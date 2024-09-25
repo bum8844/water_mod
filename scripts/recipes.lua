@@ -176,7 +176,7 @@ SortAfter("thermos_bottle","icebox","STRUCTURES")
 SortAfter("thermos_bottle","icebox","CONTAINERS")
 SortAfter("thermos_bottle","icebox","COOKING")
 
-AddRecipe2("wine_cellar",{Ingredient("cutstone",2),Ingredient("transistor",1),Ingredient("gears",1),Ingredient("opalpreciousgem",1)},TECH.SCIENCE_TWO,{atlas = ModAtlas(), image = "wine_cellar.tex"},{"HYDRATION","STRUCTURES","CONTAINERS","COOKING"})
+AddRecipe2("wine_cellar",{Ingredient("cutstone",2),Ingredient("transistor",1),Ingredient("gears",1),Ingredient("opalpreciousgem",1)},TECH.SCIENCE_TWO,{placer = "wine_cellar_placer",atlas = ModAtlas(), image = "wine_cellar.tex"},{"HYDRATION","STRUCTURES","CONTAINERS","COOKING"})
 SortAfter("wine_cellar","thermos_bottle","STRUCTURES")
 SortAfter("wine_cellar","thermos_bottle","CONTAINERS")
 SortAfter("wine_cellar","thermos_bottle","COOKING")
