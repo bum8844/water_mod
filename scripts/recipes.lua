@@ -194,7 +194,7 @@ SortAfter("well_kit","well_drilling_item","REFINE")
 AddRecipe2("well_sprinkler_kit",{Ingredient("marble",4),Ingredient("moonglass",1),Ingredient("townportaltalisman",2),Ingredient("gears",1)},TECH.SCIENCE_TWO,{atlas = ModAtlas(), image = "well_sprinkler_kit.tex"},{"GARDENING","REFINE","HYDRATION"})
 SortAfter("well_sprinkler_kit","well_kit","GARDENING")
 
-AddRecipe2("well_winona_sprinkler_maker",{Ingredient("well_sprinkler_kit",1, ModAtlas(), nil, "well_sprinkler_kit.tex"),Ingredient("sewing_tape", 1),Ingredient("wagpunk_bits",2),Ingredient("transistor",2)},TECH.NONE,{placer="well_winona_sprinkler_placer", atlas = ModAtlas(), image = "well_winona_sprinkler.tex", nameoverride="well_winona_sprinkler_kit", description="well_winona_sprinkler_kit", builder_tag="basicengineer"},{"CHARACTER","GARDENING","REFINE","HYDRATION"})
+AddRecipe2("well_winona_sprinkler_maker",{Ingredient("well_sprinkler_kit",1, ModAtlas(), nil, "well_sprinkler_kit.tex"),Ingredient("sewing_tape", 1),Ingredient("wagpunk_bits",2),Ingredient("transistor",2)},TECH.NONE,{placer="well_winona_sprinkler_placer", atlas = ModAtlas(), image = "well_winona_sprinkler_maker.tex", nameoverride="well_winona_sprinkler_kit", description="well_winona_sprinkler_kit", builder_tag="basicengineer"},{"CHARACTER","GARDENING","REFINE","HYDRATION"})
 SortAfter("well_winona_sprinkler_maker","well_sprinkler_kit","GARDENING")
 SortAfter("well_winona_sprinkler_maker","winona_battery_high_kit","CHARACTER")
 
