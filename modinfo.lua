@@ -1,5 +1,5 @@
 name 						= "Don't Starve: Dehydrated"
-version 					= "Alpha 1.2.7c.4.3"
+version 					= "Alpha 1.2.7d"
 local info_version = "Version "..version.."\n"
 
 description = info_version..[[
@@ -402,20 +402,5 @@ configuration_options =
 			{description = "Longer", data = 1},
 		},
 		default = .25
-	},
-	SEPARATOR,
-	Title("Satiety Effect"),
-	{
-		name = "satiety_time",
-		label = "Duration",
-		options = 
-		{
-			{description = "Shorter", data = .5},
-			{description = "Short", data = .7},
-			{description = "Default", data = 1},
-			{description = "Long", data = 2},
-			{description = "Longer", data = 4},
-		},
-		default = 1
 	},
 }

@@ -403,6 +403,13 @@ local function MakeWaterItem(name, masterfn, tags, _prefabs)
         
         inst:AddTag("drink_icebox_valid")
 
+        if not inst:HasTag("unwrappable") then
+            inst:AddComponent("edible")
+            inst.components.edible.foodtype = FOODTYPE.GOODIES
+        end
+        
+        inst:AddTag("drink_icebox_valid")
+
         MakeInventoryFloatable(inst)
 
         inst.entity:SetPristine()
