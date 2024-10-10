@@ -308,11 +308,6 @@ local function MakeWaterItem(name, masterfn, tags, _prefabs)
 
         MakeInventoryPhysics(inst)
 
-        if not inst:HasTag("unwrappable") then
-            inst:AddComponent("edible")
-            inst.components.edible.foodtype = FOODTYPE.GOODIES
-        end
-
         inst.minisign_atlas = "minisign_dehy_drinks_swap"
         inst.minisign_prefab_name = true
 
@@ -325,6 +320,13 @@ local function MakeWaterItem(name, masterfn, tags, _prefabs)
             for k, v in ipairs(tags) do
                 inst:AddTag(v)
             end
+        end
+        
+        inst:AddTag("drink_icebox_valid")
+
+        if not inst:HasTag("unwrappable") then
+            inst:AddComponent("edible")
+            inst.components.edible.foodtype = FOODTYPE.GOODIES
         end
         
         inst:AddTag("drink_icebox_valid")

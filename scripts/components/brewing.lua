@@ -97,7 +97,7 @@ local function dostew(inst, self)
         if self.onspoil ~= nil then
             self.onspoil(inst)
         end
-    elseif self.product ~= nil and not self.inst:HasTag("brewery") and not inst:AddTag("distillers") then
+    elseif self.product ~= nil and not self.inst:HasTag("brewery") and not inst:HasTag("distillers") then
         local recipe = cooking.GetRecipe(inst.prefab, self.product)
         local prep_perishtime = (recipe ~= nil and (recipe.cookpot_perishtime or recipe.perishtime)) or 0
         if prep_perishtime > 0 then
@@ -260,7 +260,7 @@ function Brewing:OnLoad(data)
         if data.remainingtime ~= nil then
             self.targettime = GetTime() + math.max(0, data.remainingtime)
             if self.done then
-                if not self.inst:HasTag("brewery") then
+                if not self.inst:HasTag("brewery") and not self.inst:HasTag("distillers") then
                     self.task = self.inst:DoTaskInTime(data.remainingtime, dospoil, self)
                 end
                 if self.oncontinuedone ~= nil then

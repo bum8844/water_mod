@@ -58,7 +58,7 @@ return {
 		CAFFEINBERRY = "간식이 잔뜩 열려!", --커피 덤불
 		DUG_CAFFEINBERRY = "너 좋은곳 찾을 거야.", --파낸 커피덤불
 		CAFFEINBERRY_BEAN = "맛있는 간식이야!", --생 커피콩
-		CAFFEINBERRY_BEAN_COOKED = "더이상 맛있지 않아..", --구운 커피콩
+		CAFFEINBERRY_BEAN_COOKED = "더 이상 맛있지 않아..", --구운 커피콩
 
 		RUINCACAO_TREE = "검은과일 그냥 먹음 맛업써.", --카카오 나무
 		DUG_RUINCACAO_TREE = "너 좋은곳 찾을거야.", --파낸 카카오 나무

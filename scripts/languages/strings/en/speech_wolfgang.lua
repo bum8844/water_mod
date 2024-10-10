@@ -3,355 +3,355 @@ return {
     {
         GIVE =
         {
-            WELL_NOTEMPTY = "There's no room for another.", -- Trying to give a full bucket to a well
-            WELL_BUSY = "I'm out of rope!", -- Trying to give a bucket with water to a well
+            WELL_NOTEMPTY = "There's no space for another.",
+            WELL_BUSY = "There's no more rope!",
         }
     },
 
-        ANNOUNCE_DRUNK = "Ugh, weaker than Wolfgang's booze...", -- Becoming drunk
-        ANNOUNCE_DRUNK_END = "Wolfgang feeling better now.", -- Sobering up from alcohol (hangover)
-        ANNOUNCE_DRUNK_IMMUNITY = "Ha! Alcohol is nothing to mighty Wolfgang!", -- Mighty state alcohol immunity
-        ANNOUNCE_NOTCHARGE = "Wolfgang must give power to charge Goat!", -- Trying to milk Goat without charged rods
-        ANNOUNCE_NOTHIRSTSLEEP = "Wolfgang is too thirsty to sleep...", -- Trying to sleep at night with low thirst
-        ANNOUNCE_NOTHIRSTSIESTA = "Wolfgang needs a drink before a siesta...", -- Trying to sleep during the day with low thirst
-        ANNOUNCE_SLEEP_END = "Wolfgang stronger than puny booze!", -- Waking up after sleeping and sobering up from alcohol
-        ANNOUNCE_THIRST = "Mighty muscles drying up...", -- Becoming too thirsty
+        ANNOUNCE_DRUNK = "Ugh, Wolfgang is weaker than booze...",
+        ANNOUNCE_DRUNK_END = "Wolfgang feeling better now.", 
+        ANNOUNCE_DRUNK_IMMUNITY = "Ha! Alcohol is nothing to Mighty Wolfgang!", 
+        ANNOUNCE_NOTCHARGE = "Even if Wolfgang tries, only the goat gets hurt.",
+        ANNOUNCE_NOTHIRSTSLEEP = "Wolfgang too thirsty to sleep...", 
+        ANNOUNCE_NOTHIRSTSIESTA = "Wolfgang needs a drink before a nap...",
+        ANNOUNCE_SLEEP_END = "Wolfgang stronger than puny booze!", 
+        ANNOUNCE_THIRST = "Mighty muscles drying up...", 
 
-        ANNOUNCE_CAFFINE_BUFF_START = "Wolfgang running like a wolf!", -- Starting caffeine buff
-        ANNOUNCE_CAFFINE_BUFF_STOP = "Time for Wolfgang's anaerobic exercise.", -- Ending caffeine buff
+        ANNOUNCE_CAFFINE_BUFF_START = "Wolfgang running like a wolf!",
+        ANNOUNCE_CAFFINE_BUFF_STOP = "Time for Wolfgang's anaerobic exercise.",
 
-        ANNOUNCE_CURE_WATERBORNE = "Wolfgang feels relieved.", -- Announce when curing waterborne disease with an item
+        ANNOUNCE_CURE_WATERBORNE = "Wolfgang feels relieved.",
 
-        ANNOUNCE_DCAPACITY_CRITICAL = "Wolfgang should stop drinking...", -- About to get drunk
-        ANNOUNCE_DCAPACITY_HALF = "Wolfgang feels a bit warmer...", -- Starting to get drunk
+        ANNOUNCE_DCAPACITY_CRITICAL = "Wolfgang should stop drinking...",
+        ANNOUNCE_DCAPACITY_HALF = "Wolfgang feels a bit warmer...",
 
         DESCRIBE =
         {
-            BOILBOOK = "It's a guide on making drinks!",
+            BOILBOOK = "Is a guide on making drinks!",
 
-            WATER_CLEAN_ICE = "Wolfgang's drinking water froze...", -- Clean ice
-            WATER_DIRTY_ICE = "This ice is not fit for consumption.", -- Dirty ice
+            WATER_CLEAN_ICE = "Wolfgang's drinking water froze...", 
+            WATER_DIRTY_ICE = "This ice is not fit for consumption.", 
 
-            SPICE_CAFFEINPEPPER = "Hmm... It smells good...", -- Caffeine pepper spice
+            SPICE_CAFFEINPEPPER = "Hmm... It smells good...", 
 
-            WELL_KIT = "Wolfgang will build wells for his friends!", -- Well kit
-            WELL_SPRINKLER_KIT = "A powerful automatic sprinkler!", -- Sprinkler kit
-            WELL_WATERPUMP_KIT = "Materials for a strong well.", -- Steam water pump kit
-            WELL_BURYING_KIT = "Can Wolfgang seal the holes he dug?", -- Hole burying kit
-            WELL_DRILLING = "The machine is fighting with the ground!", -- Drilling the hole
-            WELL_DRILLING_ITEM = "Digging into the ground. Very powerful!", -- Drilling item
-            HOLE = "Wolfgang gets water from this hole.", -- Well hole
-            WELL = "Now Wolfgang can get water from the well!", -- Well
+            WELL_KIT = "Wolfgang will build wells for My friends!",
+            WELL_SPRINKLER_KIT = "A powerful automatic sprinkler!", 
+            WELL_WATERPUMP_KIT = "Materials for a strong well.",
+            WELL_BURYING_KIT = "Can it seal the holes Wolfgang dug?",
+            WELL_DRILLING = "The machine is fighting with the ground!", -- 
+            WELL_DRILLING_ITEM = "Digging into the ground. Very powerful!",
+            HOLE = "Wolfgang gets water from this hole.",
+            WELL = "Now Wolfgang can get water from the well!", 
 
-            WX78MODULE_NONEDRUNK = "Is robot snacks, yes?", -- 78전용 묘듈
+            WX78MODULE_NONEDRUNK = "Is robot snacks, yes?", 
 
             -- Water mode plants
 
-            TEA_TREE = "It's a small tree; be careful not to step on it!", -- Tea tree
-            DUG_TEA_TREE = "This small tree came out of the ground.", -- Dug tea tree
-            TEA_SEED = "Wolfgang can crush it with his hands!", -- Tea tree seed
-            TEA_SEED_COOKED = "These tiny seeds are too small to eat.", -- Cooked tea tree seed
-            TEA_SEED_SAPLING = "It's a very small tree!", -- Tea tree sapling
-            TEALEAVES = "These leaves smell nice.", -- Tea leaves
-            TEALEAVES_DRIED = "The green leaves turned brown after drying.", -- Dried tea leaves
+            TEA_TREE = "Hey, small tree, be careful not to be stepped on by me!",
+            DUG_TEA_TREE = "This small tree came out of the ground.",
+            TEA_SEED = "Wolfgang can crush it with my hands!",
+            TEA_SEED_COOKED = "These tiny seeds are too small to eat.",
+            TEA_SEED_SAPLING = "Is a very small tree!", 
+            TEALEAVES = "These leaves smell nice.",
+            TEALEAVES_DRIED = "Green leaves turned brown.",
 
-            CAFFEINBERRY = "This is different from what Wolfgang knows.", -- Coffee bush
-            DUG_CAFFEINBERRY = "Cold and lonely.", -- Dug coffee bush
-            CAFFEINBERRY_BEAN = "Hmm... It smells good.", -- Raw coffee bean
-            CAFFEINBERRY_BEAN_COOKED = "These small beans make Wolfgang stronger!", -- Cooked coffee bean
+            CAFFEINBERRY = "This is different from what Wolfgang knows.",
+            DUG_CAFFEINBERRY = "Cold and lonely.",
+            CAFFEINBERRY_BEAN = "Hmm... It smells good.",
+            CAFFEINBERRY_BEAN_COOKED = "These small beans make Wolfgang stronger!",
 
-            RUINCACAO_TREE = "Ugh... Wolfgang has a bad feeling about this.", -- Cacao tree
-            DUG_RUINCACAO_TREE = "This is an unpleasant tree.", -- Dug cacao tree
-            RUINCACAO_SEED = "This scary tree is still small and weak.", -- Cacao seed item
-            RUINCACAO_SEED_SAPLING = "A small and scary tree will grow soon.", -- Cacao sapling planted
-            RUINCACAO = "Wolfgang can't break this with his mighty strength.", -- Cacao fruit before breaking
-            RUINCACAO_BEAN = "The tough fruit has been defeated.", -- Cacao bean after breaking
-            RUINCACAO_BEAN_COOKED = "It smells delicious, but it's also scary...", -- Cooked cacao bean
+            RUINCACAO_TREE = "Ugh... Wolfgang has a bad feeling about this.", 
+            DUG_RUINCACAO_TREE = "This is an unpleasant tree.",
+            RUINCACAO_SEED = "Scary tree is still small and weak.",
+            RUINCACAO_SEED_SAPLING = "A small and scary tree will grow soon.", 
+            RUINCACAO = "Wolfgang can't break this with my mighty grip strength.",
+            RUINCACAO_BEAN = "The tough fruit has been defeated.",
+            RUINCACAO_BEAN_COOKED = "It smells delicious, but it's also scary...", 
 
             -- Distilled spirit additives
 
-            ADDITIVE_SEED = "It has a refreshing smell.", -- Herb (anise, juniper berry, and star-shaped motifs) additive for liqueur production
-            ADDITIVE_PETALS = "Where should Wolfgang use these small flowers?", -- Herb, tea leaves, and flower petal additives for liqueur production
-            ADDITIVE_NUT = "Wolfgang can easily crush this.", -- Nut, coconut, coffee bean, and cacao bean additives for liqueur production
-            ADDITIVE_DAIRY = "Should Wolfgang not drink milk?", -- Dairy product additives for liqueur production
+            ADDITIVE_SEED = "It has a pungent smell.",
+            ADDITIVE_PETALS = "Where should he use these petals?",
+            ADDITIVE_NUT = "Wolfgang can easily crush this.", 
+            ADDITIVE_DAIRY = "Should Wolfgang not drink milk?",
 
             -- Drinks
 
-            WATER_CLEAN = "Water is important for strong muscles!", -- Clean water
-            WATER_DIRTY = "Drinking this would make Wolfgang sick.", -- Dirty water
-            WATER_SALTY = "Wolfgang doesn't like salty water!", -- Saltwater
+            WATER_CLEAN = "Water is also important for strong muscles!",
+            WATER_DIRTY = "Drinking this would make Wolfgang sick.",
+            WATER_SALTY = "Wolfgang doesn't like salty water!",
 
-            GOOPYDRINK = "Did Wolfgang put something strange in it?", -- Failed drink (Wet Goop concept)
+            GOOPYDRINK = "Did Wolfgang put something strange in it?",
 
             -- Teapot drinks
 
-            FRUITJUICE = "It's water with fruit in it.", -- Mixed fruit juice
-            BERRIES_JUICE = "Sweet and red.", -- Berry juice
-            POMEGRANATE_JUICE = "Any seeds in there?", -- Pomegranate juice
-            BANANA_JUICE = "Cool and tasty!", -- Banana juice
-            FIG_JUICE = "Made from big, sweet fruits.", -- Fig juice
-            DRAGONJUICE = "Why is the fruit red but the juice white?", -- Dragon fruit juice
-            GLOWBERRYJUICE = "Can Wolfgang drink glowing water?", -- Glowberry juice
-            WATERMELON_JUICE = "Made from a big watermelon.", -- Watermelon juice
+            FRUITJUICE = "Is water with fruit in it.",
+            BERRIES_JUICE = "Sweet and red.",
+            POMEGRANATE_JUICE = "Any seeds in there?",
+            BANANA_JUICE = "Awesome and tasty!", 
+            FIG_JUICE = "Made from big, sweet fruits.", 
+            DRAGONJUICE = "Why is the fruit red but the juice white?", 
+            GLOWBERRYJUICE = "Can Wolfgang drink glowing water?",
+            WATERMELON_JUICE = "Made from a big watermelon.",
 
-            VEGGIE_TEA = "It tastes like grass and is very bitter!", -- Green juice
-            CARROT_TEA = "Wolfgang enjoys drinking carrots too!", -- Carrot tea
-            CACTUS_TEA = "No sharp spines, right?", -- Cactus tea
-            TOMATO_JUICE = "A healthy drink!", -- Tomato juice
-            LUMPY_TEA = "Wolfgang boiled the muscles of plants.", -- Root tea
-            SEAWEED_SHAKE = "Drinking this won't make Wolfgang stronger.", -- Seaweed shake
+            VEGGIE_TEA = "It tastes like grass and is very bitter!",
+            CARROT_TEA = "Wolfgang enjoys drinking carrots too!",
+            CACTUS_TEA = "No sharp spines, right?",
+            TOMATO_JUICE = "A healthy drink!",
+            LUMPY_TEA = "Boiled the muscles of plants.",
+            SEAWEED_SHAKE = "Drinking this won't make Wolfgang stronger.",
 
-            GREENTEA = "It has a strong grassy smell.", -- Fresh green tea
-            BLACKTEA = "Wolfgang thinks black tea might be dangerous...", -- Black tea
-            BLACKTEA_ICED = "It's a refreshing tea! Wolfgang likes it.", -- Black tea iced
-            FUER = "Made from tree leaves.", -- Fuer, leaf tea, fern tea
-            MIXFLOWER = "It smells nice.", -- Mixed flower petal tea
-            HIBISCUSTEA = "It makes Wolfgang emotional.", -- Hibiscus tea
-            CACTUSFLOWER_TEA = "Tea made from red flowers.", -- Cactus flower tea
-            LOTUSTEA = "Has Wolfgang ever seen pink tea?", -- Lotus tea
-            SUSHIBISCUS = "Even Wolfgang's muscles are shivering...", -- Suicide tea
-            MOON_BLOSSOM_TEA = "Fragrant strong tea instills a strong spirit!", -- ㅡMoon Blossom tea
+            GREENTEA = "It has a strong grassy smell.",
+            BLACKTEA = "Wolfgang thinks black tea might be dangerous...",
+            BLACKTEA_ICED = "Is a iced tea! I likes it.",
+            FUER = "Made from pretty plants leaves.",
+            MIXFLOWER = "Smells nice.",
+            HIBISCUSTEA = "It makes Wolfgang emotional.",
+            CACTUSFLOWER_TEA = "Tea made from red flowers.",
+            LOTUSTEA = "Was there a pink tea too?",
+            SUSHIBISCUS = "Even Wolfgang's muscles are shivering...",
+            MOON_BLOSSOM_TEA = "Fragrant strong tea instills a strong spirit!",
 
-            CAFFEINBERRY_JUICE = "It's bitter, but it makes Wolfgang stronger!", -- Black coffee
-            TOFFEE_LATTE = "It has a nutty flavor.", -- Toffeenut latte
-            RUINCHA_LATTE = "It's sweet and makes Wolfgang stronger!", -- Mocha latte (coffee + cocoa)
+            CAFFEINBERRY_JUICE = "Is bitter, but it makes Wolfgang stronger!",
+            TOFFEE_LATTE = "It has a nutty flavor.",
+            RUINCHA_LATTE = "Is sweet and makes Wolfgang stronger!",
 
-            HOTRUINCOLATE = "It's sweet and warm chocolate.", -- Hot chocolate
-            RUINCOLATE_SMOOTHIE = "It's a cold chocolate drink.", -- Chocolate smoothie (cold)
-            RUINXOCOLATL = "It's very bitter chocolate drink!", -- Chocotlatl (spicy)
-            TEA_RUINCOLATE_LATTE = "A grassy drink with chocolate flavor.", -- Matcha latte
+            HOTRUINCOLATE = "Is sweet and warm chocolate.",
+            RUINCOLATE_SMOOTHIE = "Is a cold chocolate drink.", 
+            RUINXOCOLATL = "Is very bitter chocolate drink!",
+            TEA_RUINCOLATE_LATTE = "A grassy drink with chocolate flavor.",
 
-            MULLED = "Wolfgang can't smell alcohol.", -- Bancha
-            BUTTERBEER = "It's beer, but sweet!", -- Butterbeer from the Harry Potter series
+            MULLED = "Wolfgang can't smell alcohol.",
+            BUTTERBEER = "Looks like beer... but sweet!",
 
             -- Collaboration Teapot Drinks
 
-            COCONUT_JUICE = "The tough fruit is now a drink!", -- Shipwrecked Coconut Juice
-            RAINBOW_SHAKE = "A pretty jelly drink!", -- Shipwrecked Rainbow Jelly Shake
-            QUARTZ_SHAKE = "Wolfgang is confused. Is this what fish drink?", -- Shipwrecked Crystalline Fish Shake
-            CHERRY_ROSEBERRIES_TEA = "It smells like lovely roses.", -- Cherry Forest Rosehip Tea
-            CHERRY_HONEY_TEA = "Extremely sweet!", -- Cherry Forest Cherry Blossom Honey Tea
-            SWEET_RICE_DRINK = "It's sweet even though it only has rice!", -- Vita Hybrids Sikhye
-            PINEANANAS_JUICE = "Incredibly refreshing juice.", -- Regal's Pineapple Juice
-            ORANGE_JUICE = "Sour, sweet, and orange.", -- More Food Pack Orange Juice
-            STRAWBERRY_SMOOTHIE = "It's full of seeds.", -- More Food Pack Strawberry Smoothie
-            STRAWBERRY_MILK_SMOOTHIE = "Smooth and tasty.", -- More Food Pack Strawberry Milk Smoothie
+            COCONUT_JUICE = "The tough fruit is now a drink!",
+            RAINBOW_SHAKE = "A pretty jelly is easy to drink!",
+            QUARTZ_SHAKE = "Wolfgang is confused. Was fish used in the drink?",
+            CHERRY_ROSEBERRIES_TEA = "It smells like lovely roses.",
+            CHERRY_HONEY_TEA = "Extremely sweet!",
+            SWEET_RICE_DRINK = "Is sweet even though it only has rice!", 
+            PINEANANAS_JUICE = "Incredibly sour juice.", 
+            ORANGE_JUICE = "Sour, sweet, and orange.",
+            STRAWBERRY_SMOOTHIE = "Is full of seeds.",
+            STRAWBERRY_MILK_SMOOTHIE = "Smooth and tasty.", 
 
             -- Brewery Drinks
 
-            SPOILED_DRINK = "Ugh, it smells terrible!", -- Spoiled drink
+            SPOILED_DRINK = "Ugh, it smells terrible!",
 
             -- Brewery Soda
 
-            SODA = "It's fizzy!", -- Carbonated Water
-            FRUITSODA = "Fizzy and sweet.", -- Fruit Soda
-            LEMONLIMESODA = "Extremely sweet!", -- Lemon Lime Soda (Superior version of Fruit Soda)
-            COLA = "Sweet and black beverage.", -- Cola
-            COLAQUANTUM = "A powerful drink! Wolfgang likes it a lot!", -- Cola Quantum
-            LUMPY_BEER = "It has a unique and refreshing taste.", -- Root Beer (Not alcoholic)
+            SODA = "It's fizzy!",
+            FRUITSODA = "Fizzy and sweet.", 
+            LEMONLIMESODA = "Extremely sweet!", 
+            COLA = "Sweet and black beverage.", 
+            COLAQUANTUM = "A powerful drink! Wolfgang likes it a lot!", 
+            LUMPY_BEER = "It has a unique and refreshing taste.", 
 
             -- Brewery Spirits
 
-            CORN_BEER = "Made from corn.", -- Corn Beer
-            MADHU = "Made from angry bee honey.", -- Madhu
-            WINE = "A drink for special occasions.", -- Wine (Made from just berries)
-            NOBLEWINE = "Made from roasted fruit!", -- Noble Wine (Made from roasted berries)
-            SPARKLINGWINE = "Fizzing and yellow!", -- Sparkling Wine
-            GLOWBERRYWINE = "It sparkles.", -- Glow Berry Wine
-            KUMIS = "Made milk into alcohol.", -- Kumis (Fermented mare's milk)
-            LUMPY_WINE = "Made from root vegetables.", -- Sake (Made from potatoes, sweet potatoes, etc.)
-            PULQUE = "Became a prickly pear drink.", -- Pulque (Agave)
-            RUINCACAO_WINE = "Can you make alcohol from chocolate?", -- Cacao Wine
+            CORN_BEER = "Made from corn.", 
+            MADHU = "Made from angry bee honey.", 
+            WINE = "A drink for special occasions.", 
+            NOBLEWINE = "Made from roasted fruit!", 
+            SPARKLINGWINE = "Fizzing and yellow!", 
+            GLOWBERRYWINE = "It sparkles.", 
+            KUMIS = "Made milk into alcohol.", 
+            LUMPY_WINE = "Made from root vegetables.", 
+            PULQUE = "Turned into a thornless alcohol.",
+            RUINCACAO_WINE = "Is alcohol also made from chocolate?",
 
             -- Collaboration Soda
 
-            CHERRY_DOCTOR_COLA = "Tastes like candy!", -- Cherry Forest Doctor Pepper (Doctor Cherry)
-            PINEANANASSODA = "Sour and refreshing.", -- Carbonated Pineapple (Orangina)
-            ORANGESODA = "Sweet and fizzy.", -- Carbonated Orange (Fanta)
-            STRAWBERRYSODA = "As many seeds as bubbles!", -- Carbonated Strawberry (Welch's Strawberry)
+            CHERRY_DOCTOR_COLA = "Tastes like candy!",
+            PINEANANASSODA = "Sour and refreshing.",
+            ORANGESODA = "Sweet and fizzy.",
+            STRAWBERRYSODA = "As many bubbles as seeds!",
 
             -- Collaboration Spirits
 
-            AUROBOW = "A pretty jelly drink.", -- Shipwrecked Aurobouros (Rainbow Jellyfish Wine)
-            COCONUT_WINE = "It became a coconut drink.", -- Shipwrecked Coconut Wine
-            CHERRY_BLOOM_MADHU = "Incredibly sweet!", -- Cherry Blossom Honey Wine
-            GIANT_BLUEBERRY_WINE = "Will Wolfgang's belly explode?", -- Vita Hybrids Boom! Berry Sapphire (Explodes when ignited)
-            RICE_WINE = "It's white like milk.", -- Vita Koalefant Soju
-            WHEAT_BEER = "It's like Bavaria!", -- Hip of Food Wheat Beer
-            PALE_BEER = "Pale like a little ghost's skin.", -- Regiom Pale Ale (Beer made with Monster Meat)
+            AUROBOW = "A pretty jelly drink.",
+            COCONUT_WINE = "It became a coconut drink.", 
+            CHERRY_BLOOM_MADHU = "Incredibly sweet!",
+            GIANT_BLUEBERRY_WINE = "Will Wolfgang's belly explode?", 
+            RICE_WINE = "Is white like milk.", 
+            WHEAT_BEER = "Is a Weizen!",
+            PALE_BEER = "As pale as that little girl's face.",
 
             -- Distilled Spirits Descriptions
 
-            DISINFECTANT = "It's used for cleaning.", -- Disinfectant
-            CORN_WHISKEY = "It's made in the Scottish way.", -- Corn Whiskey
-            LUMPY_VODKA = "Vodka! It's famous in the homeland!", -- Lumpy Vodka
-            TEQUILA = "It's best enjoyed under the sun!", -- Tequila
-            MADHU_RUM = "Sea monkeys might like this.", -- Madhu Rum
-            BERRY_BRANDY = "It's a fine-tasting spirit.", -- Berry Brandy
-            AREUHI = "It's made by boiling milk.", -- Creamy Kremez Distilled Spirit Areuhi
+            DISINFECTANT = "Is used for cleaning.",
+            CORN_WHISKEY = "Is made in the Scottish way.", 
+            LUMPY_VODKA = "Vodka! Is famous in the homeland!",
+            TEQUILA = "Is best enjoyed under the sun!",
+            MADHU_RUM = "Sea monkeys might like this.", 
+            BERRY_BRANDY = "Is a fine-tasting spirit.", 
+            AREUHI = "Is made by boiling milk.",
 
             -- Warly-Specific Distilled Spirits
 
-            BERRY_GIN = "Best when mixed with tonic!", -- Gin
-            GLOWBERRY_GIN = "Never seen glowing spirits before!", -- Glow Berry Gin
-            ABSINTHE = "Wow... it's like green fairy spirits.", -- Absinthe
-            TEA_LUMPY_VODKA = "It's a strange vodka with a grassy taste!", -- Green Tea Lumpy Vodka
-            PETALS_BERRY_BRANDY = "It smells fragrant.", -- Rose Petal Berry Brandy
-            KAHLUA = "Made with beans, it's a spirit.", -- Coffee Liqueur Kahlua
-            NUT_CORN_WHISKEY = "It smells nutty.", -- Nutty Corn Whiskey
-            RUINCACAO_CREAM_LIQUEUR = "Did they make chocolate into spirits?", -- Bailey's Cacao Cream Liqueur
-            RUMCHATA = "It's a strange spirit with milk.", -- Rumchata (Rum and Horchata, a dairy-based beverage)
+            BERRY_GIN = "Best when mixed with tonic!", 
+            GLOWBERRY_GIN = "Never seen glowing spirits before!", 
+            ABSINTHE = "Wow... is like green fairy spirits.",
+            TEA_LUMPY_VODKA = "Is a strange vodka with a grassy taste!",
+            PETALS_BERRY_BRANDY = "It smells fragrant.",
+            KAHLUA = "Made with beans, is a spirit.",
+            NUT_CORN_WHISKEY = "It smells nutty.", 
+            RUINCACAO_CREAM_LIQUEUR = "Did they make chocolate into spirits?",
+            RUMCHATA = "Is a strange spirit with milk.",
 
             -- Collaborative Distilled Spirits
 
-            MOONWAY = "Made by boiling pretty jellies.", -- Rainbow Jellyfish Spirits
-            ARRACK = "Coconut spirits made by boiling.", -- Arrack, Indonesian version of coconut wine spirits
-            CHERRY_BLOOM_RUM = "Was there such a sweet spirit?", -- Cherry Honey Spirits with cherry blossom petals floating
-            RICE_SPIRITS = "Made with white spirits.", -- Rice Spirits
-            WHEAT_WHISKEY = "Wolfgang prefers strong whiskey!", -- Wheat Whiskey
-            PALE_WHISKEY = "Wolfgang knows it's American style.", -- Pale Malt Whiskey
+            MOONWAY = "Made by boiling pretty jellies.",
+            ARRACK = "Coconut spirits made by boiling.",
+            CHERRY_BLOOM_RUM = "Was there such a sweet spirit?", 
+            RICE_SPIRITS = "Made with white brew.",
+            WHEAT_WHISKEY = "Wolfgang prefers strong whiskey!",
+            PALE_WHISKEY = "Wolfgang knows it's American style.",
 
             -- Warly Exclusive Spirits
 
-            NUT_COCONUT_BRANDY = "The world is wide! There's plenty to steal!", -- Take what you can! Give nothin' back! - Captain Jack Sparrow, Pirates of the Caribbean
-            GIANT_BLUEBERRY_GIN = "Wolfgang feels like he might explode like a giant blueberry!", -- Boom Berry Sapphire (Carrot explodes)
+            NUT_COCONUT_BRANDY = "Take what you can! Give nothin' back!", --Joshamee Gibbs, Captain Jack Sparrow, Pirates of the Caribbean
+            GIANT_BLUEBERRY_GIN = "As explosive as Wolfgang's muscles!",
 
             -- Pot Cooking Descriptions
 
-            DARK_RUINCOLATE = "Hmm, it's bitter!", -- Dark Chocolate
-            WHITE_RUINCOLATE = "It's filled with fat.", -- White Chocolate
-            RUINCOLATE = "Wolfgang likes sweet food too!", -- Plain Chocolate
-            RUIN_SCHOKAKOLA = "Wolfgang has tried this before!", -- Schokakola
+            DARK_RUINCOLATE = "Mmm, Is bitter!",
+            WHITE_RUINCOLATE = "Is filled with fat.",
+            RUINCOLATE = "Wolfgang likes sweet food too!",
+            RUIN_SCHOKAKOLA = "Wolfgang has tried this before!",
 
             BUCKET_STEEL_EMPTY =
             {
-                EMPTY = "As sturdy as Wolfgang's muscles!", -- Steel bucket is empty
-                FULL = "Water for Wolfgang is ready!", -- Clean rainwater in the steel bucket
-                FULL_ICE = "The water has frozen in the cold.", -- Rainwater has frozen in the steel bucket
-                DIRTY = "Precious water has become dirty...", -- Rainwater has become dirty
-                DIRTY_ICE = "Oh no! What a waste!", -- Dirty rainwater has frozen
+                EMPTY = "As sturdy as Wolfgang's muscles!",
+                FULL = "Water for Wolfgang is ready!", 
+                FULL_ICE = "The water succumbed to the cold.",
+                DIRTY = "Precious water has become dirty...", 
+                DIRTY_ICE = "Oh no! What a waste!",
             },
 
             BUCKET_WOODIE_EMPTY =
             {
-                EMPTY = "Delicate and strong.", -- Wooden bucket is empty
-                FULL = "Water for Wolfgang is ready!", -- Clean rainwater in the wooden bucket
-                FULL_ICE = "The water has frozen in the cold.", -- Rainwater has frozen in the wooden bucket
-                DIRTY = "Precious water has become dirty...", -- Rainwater has become dirty
-                DIRTY_ICE = "Oh no! What a waste!", -- Dirty rainwater has frozen
+                EMPTY = "Delicate and strong.", 
+                FULL = "Water for Wolfgang is ready!", 
+                FULL_ICE = "The water succumbed to the cold.",
+                DIRTY = "Precious water has become dirty...", 
+                DIRTY_ICE = "Oh no! What a waste!",
             },
 
             BUCKET_DRIFTWOOD_EMPTY = 
             {
-                EMPTY = "This bucket is lighter but sturdier.", -- Empty wooden bucket
-                FULL = "Water for Wolfgang is ready!", -- Clean rainwater in the wooden bucket
-                FULL_ICE = "The water has frozen in the cold.", -- Rainwater has frozen in the wooden bucket
-                DIRTY = "Precious water has become dirty...", -- Rainwater has become dirty
-                DIRTY_ICE = "Oh no! What a waste!", -- Dirty rainwater has frozen
+                EMPTY = "This bucket is lighter but sturdier.", 
+                FULL = "Water for Wolfgang is ready!", 
+                FULL_ICE = "The water succumbed to the cold.",
+                DIRTY = "Precious water has become dirty...", 
+                DIRTY_ICE = "Oh no! What a waste!", 
             },
 
             BUCKET_EMPTY =
             {
-                EMPTY = "Ha! A cup fit for mighty Wolfgang!", -- Empty wooden bucket
-                FULL = "Water for Wolfgang is ready!", -- Clean rainwater in the wooden bucket
-                FULL_ICE = "The water has frozen in the cold.", -- Rainwater has frozen in the wooden bucket
-                DIRTY = "Precious water has become dirty...", -- Rainwater has become dirty
-                DIRTY_ICE = "Oh no! What a waste!", -- Dirty rainwater has frozen
+                EMPTY = "Ha! A cup fit for mighty Wolfgang!", 
+                FULL = "Water for Wolfgang is ready!", 
+                FULL_ICE = "The water succumbed to the cold.",
+                DIRTY = "Precious water has become dirty...", 
+                DIRTY_ICE = "Oh no! What a waste!",
             },
 
             DESALINATOR =
             {
-                EMPTY = "No salty water.", -- No water in the desalinator
-                PURIFY_LONG = "Salty water still remains.", -- Purification is in progress, still a lot to go
-                PURIFY_SHORT = "It's almost done!", -- Purification is almost complete
-                HASWATER = "Now Wolfgang can drink!", -- Clean water is ready in the desalinator
-                BURNT = "The machine burned, and white salt remains.", -- The desalinator has burnt
-                HASSALT = "There's a salty smell from inside.", -- Salt is still inside the desalinator
+                EMPTY = "No salty water.", 
+                PURIFY_LONG = "Salty water still remains.", 
+                PURIFY_SHORT = "It's almost done!",
+                HASWATER = "Now Wolfgang can drink!", 
+                BURNT = "The machine that produces white salt has burned black.",
+                HASSALT = "There's a salty smell from inside.",
             },
 
             BARREL =
             {
-                GENERIC = "Wolfgang prepares for tough times.", -- Examining a barrel
-                BURNT = "Did all the water burn?", -- The barrel has burnt
+                GENERIC = "Wolfgang prepares for tough times.",
+                BURNT = "Did all the water burn?",
             },
 
             BREWERY =
             {
-                EMPTY = "Turning water into drinks.", -- Examining an empty brewery
-                BURNT = "Can Wolfgang no longer drink?", -- The brewery has burnt
-                FERMENTING_LONG = "It will take a long time.", -- Fermentation will take a while
-                FERMENTING_SHORT = "It's almost done!", -- Fermentation is nearly complete
-                DONE = "Finally finished!", -- Brewery contains a drink
+                EMPTY = "Turning water into brew.",
+                BURNT = "Can Wolfgang no longer drink?", 
+                FERMENTING_LONG = "It will take a long time.",
+                FERMENTING_SHORT = "It's almost done!",
+                DONE = "Finally finished!",
             },
 
-            CAMPKETTLE_ITEM = "Make clean water with this!", -- Examining the camp kettle item
+            CAMPKETTLE_ITEM = "Make clean water with this!",
             CAMPKETTLE =
             {
-                GENERIC = "We need boiling water.", -- Examining an empty camp kettle on a fire pit
-                BOILING_LONG = "The water is still dirty.", -- Starting to boil the water
-                BOILING_SHORT = "It's almost done!", -- Water is almost done boiling
-                DONE = "Now we can drink!", -- Clean water is ready in the camp kettle
-                STOP = "The fire needs more work.", -- There's no fire to continue boiling
+                GENERIC = "We need boiling water.",
+                BOILING_LONG = "The water is still dirty.",
+                BOILING_SHORT = "It's almost done!",
+                DONE = "Now we can drink!",
+                STOP = "The fire needs more exercise.",
             },
 
-            CAMPDESALINATOR_ITEM = "Now we can drink salty water!", -- Examining the camp desalinator item
+            CAMPDESALINATOR_ITEM = "Now we can drink salty water!",
             CAMPDESALINATOR =
             {
-                GENERIC = "We need to boil salty water.", -- Examining an empty camp desalinator on a fire pit
-                BOILING_LONG = "Salty water still remains.", -- Starting to boil the salty water
-                BOILING_SHORT = "It's almost done!", -- Salty water is almost done boiling
-                DONE = "Now we can drink!", -- Clean water is ready in the camp desalinator
-                STOP = "The fire needs more work.", -- There's no fire to continue boiling
+                GENERIC = "We need to boil salty water.", 
+                BOILING_LONG = "Salty water still remains.",
+                BOILING_SHORT = "It's almost done!",
+                DONE = "Now we can drink!",
+                STOP = "The fire needs more exercise.",
             },
 
             KETTLE =
             {
-                EMPTY = "Kettle needs water.", -- Empty kettle
-                BURNT = "Did everything burn, even the water?", -- The kettle has burnt
-                BOILING_LONG = "It needs more time to boil.", -- Starting to cook a drink
-                BOILING_SHORT = "It's almost done!", -- Drink is nearly ready
-                DONE = "It's time to drink!", -- Drink is ready
-                PURIFY_LONG = "Water is still dirty.", -- Starting to purify dirty water
-                PURIFY_SHORT = "It's almost done!", -- Water is almost purified
-                HASWATER = "The kettle is filled with water.", -- Clean water is ready in the kettle
-                MELT_LONG = "It needs more time to melt.", -- Starting to melt ice
-                MELT_SHORT = "It's almost done!", -- Ice is almost melted
+                EMPTY = "Kettle needs water.",
+                BURNT = "That was overcome by the strong flames...",
+                BOILING_LONG = "It needs more time to boil.",
+                BOILING_SHORT = "It's almost done!", 
+                DONE = "Time to drink!", 
+                PURIFY_LONG = "Water is still dirty.",
+                PURIFY_SHORT = "It's almost done!", 
+                HASWATER = "The kettle is filled with water.", 
+                MELT_LONG = "It needs more time to melt.", 
+                MELT_SHORT = "It's almost done!",
             },
 
             PORTABLEKETTLE_ITEM =
             {
-                GENERIC = "Wolfgang can carry it around!", -- Examining the portable kettle item
-                EMPTY = "Kettle needs water.", -- Examining an empty portable kettle
-                BOILING_LONG = "It needs more time to boil.", -- Starting to cook a drink
-                BOILING_SHORT = "It's almost done!", -- Drink is nearly ready
-                DONE = "It's time to drink!", -- Drink is ready
-                PURIFY_LONG = "Water is still dirty.", -- Starting to purify dirty water
-                PURIFY_SHORT = "It's almost done!", -- Water is almost purified
-                HASWATER = "The kettle is filled with water.", -- Clean water is ready in the portable kettle
-                MELT_LONG = "It needs more time to melt.", -- Starting to melt ice
-                MELT_SHORT = "It's almost done!", -- Ice is almost melted
+                GENERIC = "Wolfgang can carry it around!",
+                EMPTY = "Kettle needs water.",  
+                BOILING_LONG = "It needs more time to boil.", 
+                BOILING_SHORT = "It's almost done!", 
+                DONE = "Time to drink!", 
+                PURIFY_LONG = "Water is still dirty.",
+                PURIFY_SHORT = "It's almost done!",
+                HASWATER = "The kettle is filled with water.", 
+                MELT_LONG = "It needs more time to melt.",
+                MELT_SHORT = "It's almost done!", 
             },
 
             DISTILLERS =
             {
-                EMPTY = "A scary machine...", -- Examining an empty distiller
-                DISTILLTING_LONG = "It will take a while.", -- Distillation will take a while
-                DISTILLING_SHORT = "It's almost done!", -- Distillation is nearly complete
-                DONE = "The scary machine has finished its work!", -- Distiller contains a drink
+                EMPTY = "A scary machine...",
+                DISTILLTING_LONG = "It will take a while.",
+                DISTILLING_SHORT = "It's almost done!", 
+                DONE = "The scary machine has finished its work!", 
             },
 
             WELL_WATERPUMP = {
-                HIGH_PRESSURE = "Mighty well, like Wolfgang!", -- High water pressure in the well
-                MIDDLE_PRESSURE = "Well still has enough pressure.", -- Medium water pressure in the well
-                LOW_PRESSURE = "Well seems weak...", -- Low water pressure in the well
-                RECHARG_PRESSURE = "Is the well taking a break?", -- No water pressure, needs recharging (maximum pressure can't be reached).
+                HIGH_PRESSURE = "Mighty well, like Wolfgang!",
+                MIDDLE_PRESSURE = "Well still has enough strong.",
+                LOW_PRESSURE = "Well seems weak...", 
+                RECHARG_PRESSURE = "Is the well taking a break?", 
             },
 
             WELL_SPRINKLER =
             {
-                LOWFUEL = "Sprinkler seems weak.", -- Low fuel condition for the well sprinkler
-                ON = "Sprinkler is working hard!", -- Sprinkler is turned on
-                OFF = "Sprinkler is taking a break.", -- Sprinkler is turned off
+                LOWFUEL = "Sprinkler seems weak.", 
+                ON = "Sprinkler is working hard!", 
+                OFF = "Sprinkler is taking a break.", 
             },
         },
     }           

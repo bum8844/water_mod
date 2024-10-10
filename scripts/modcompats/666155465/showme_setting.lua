@@ -22,6 +22,8 @@ env.AddPrefabPostInit("bucket_woodie_empty",watercollator)
 --env.AddPrefabPostInit("bucket_driftwood_empty",watercollator)
 
 if GetModConfigData("enable_thirst") then
-	local watervalue = require(default.."/thirstvalue").fn
-	env.AddClassPostConstruct("widgets/hoverer",watervalue)
+	local hovererfn = require(default.."/thirstvelue").hovererfn
+	local player_classifiedfn = require(default.."/thirstvelue").player_classifiedfn
+	env.AddClassPostConstruct("widgets/hoverer",hovererfn)
+	env.AddPrefabPostInit("player_classified",player_classifiedfn)
 end

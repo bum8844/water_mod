@@ -54,6 +54,7 @@ env.RoundBiasedUp = _G.RoundBiasedUp
 --SG Classes
 env.State = _G.State
 env.TimeEvent = _G.TimeEvent
+env.FrameEvent = _G.FrameEvent
 env.ActionHandler = _G.ActionHandler
 env.EventHandler = _G.EventHandler
 
