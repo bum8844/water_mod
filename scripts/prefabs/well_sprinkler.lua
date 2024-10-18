@@ -133,7 +133,7 @@ local function UpdateSpray(inst)
 			crop_comp.growthpercent = crop_comp.growthpercent + (0.001)
 		end		
 
-    	if growable_comp ~= nil then
+    	if growable_comp ~= nil and growable_comp:IsGrowing() then
 			growable_comp:ExtendGrowTime(-0.2)
     	end
 

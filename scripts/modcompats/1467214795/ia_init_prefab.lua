@@ -41,7 +41,7 @@ local function onseasonchange_active(inst)
         return
     end
 
-    if GLOBAL.TheWorld.state.isautumn and inst.prevseason == SEASONS.SUMMER then
+    if GLOBAL.TheWorld.state.isautumn and inst.prevseason == GLOBAL.SEASONS.SUMMER then
         local dormant = SpawnPrefab("elephantcactus")
         if dormant then
             dormant.Physics:Teleport(inst.Transform:GetWorldPosition())

@@ -42,8 +42,8 @@ local function ChangeToItem(inst)
     local item = SpawnPrefab("campkettle_item")
     if inst._fire then
         inst._fire.components.burnable:OverrideBurnFXBuild("campfire_fire")
-        if inst._fire.components.trader ~= nil then
-            inst._fire.components.trader:Enable()
+        if inst._fire.components.cookwareinstaller ~= nil then --for compatibility with Heap of Foods
+            inst._fire.components.cookwareinstaller.enabled = true
         end
         inst._fire.components.upgradeable.upgradetype = UPGRADETYPES.CAMPFIRE
         inst._fire.components.upgradeable.numupgrades = 0

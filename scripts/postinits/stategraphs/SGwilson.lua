@@ -9,6 +9,78 @@ local function ForceStopHeavyLifting(inst)
     end
 end
 
+local function SetPocketRummageMem(inst, item)
+    inst.sg.mem.pocket_rummage_item = item
+end
+
+local function ClosePocketRummageMem(inst, item)
+    if item == nil then
+        item = inst.sg.mem.pocket_rummage_item
+    elseif item ~= inst.sg.mem.pocket_rummage_item then
+        return
+    end
+    if item then
+        inst.sg.mem.pocket_rummage_item = nil
+
+        if item.components.inventoryitem and
+            item.components.inventoryitem:GetGrandOwner() == inst and
+            item.components.container
+        then
+            item.components.container:Close(inst)
+        end
+    end
+end
+
+--Call this when exiting a "keep_pocket_rummage" state
+local function CheckPocketRummageMem(inst)
+    local item = inst.sg.mem.pocket_rummage_item
+    if item then
+        if not (item.components.container and
+                item.components.container:IsOpenedBy(inst) and
+                item.components.inventoryitem and
+                item.components.inventoryitem:GetGrandOwner() == inst)
+        then
+            SetPocketRummageMem(inst, nil)
+        else
+            local stayopen = inst.sg.statemem.keep_pocket_rummage_mem_onexit
+            if not stayopen and inst.sg.statemem.is_going_to_action_state then
+                local buffaction = inst:GetBufferedAction()
+                if buffaction and
+                    (   buffaction.action == ACTIONS.BUILD or
+                        (   buffaction.invobject and
+                            buffaction.invobject.components.inventoryitem and
+                            buffaction.invobject.components.inventoryitem:IsHeldBy(item)
+                        )
+                    )
+                then
+                    stayopen = true
+                end
+            end
+            if not stayopen then
+                ClosePocketRummageMem(inst)
+            end
+        end
+    end
+end
+
+local function TryResumePocketRummage(inst)
+    local item = inst.sg.mem.pocket_rummage_item
+    if item then
+        if item.components.container and
+            item.components.container:IsOpenedBy(inst) and
+            item.components.inventoryitem and
+            item.components.inventoryitem:GetGrandOwner() == inst
+        then
+            inst.sg.statemem.keep_pocket_rummage_mem_onexit = true
+            inst.sg:GoToState("start_pocket_rummage", item)
+            return true
+        end
+        inst.sg.mem.pocket_rummage_item = nil
+    end
+    return false
+end
+
+
 local drunk = State{
     name = "drunk",
     tags = { "busy", "pausepredict", "nomorph" },
@@ -73,7 +145,7 @@ local refresh_drunk = State{
 
 local drink = State{
     name = "drink",
-    tags = {"busy"},
+    tags = {"busy", "keep_pocket_rummage" },
 
     onenter = function(inst, foodinfo)
         inst.SoundEmitter:KillSound("eating")
@@ -115,15 +187,34 @@ local drink = State{
             else
                 inst:PerformBufferedAction()
             end
-            inst.sg:RemoveStateTag("busy")
-            inst.sg:RemoveStateTag("pausepredict")
+            --NOTE: "queue_post_eat_state" can be triggered immediately from the eat action
+            if inst.sg.statemem.queued_post_eat_state == nil then
+                inst.sg:RemoveStateTag("busy")
+                inst.sg:RemoveStateTag("pausepredict")
+            end
+        end),
+        FrameEvent(21, function(inst)
+            if inst.sg.statemem.queued_post_eat_state ~= nil then
+                inst.sg:GoToState(inst.sg.statemem.queued_post_eat_state)
+            else
+                TryResumePocketRummage(inst)
+            end
         end),
     },
 
     events = {
+        EventHandler("queue_post_eat_state", function(inst, data)
+            --NOTE: this event can trigger instantly instead of buffered
+            if data ~= nil then
+                inst.sg.statemem.queued_post_eat_state = data.post_eat_state
+                if data.nointerrupt then
+                    inst.sg:AddStateTag("nointerrupt")
+                end
+            end
+        end),
         EventHandler("animqueueover", function(inst)
             if inst.AnimState:AnimDone() then
-                inst.sg:GoToState("idle")
+                inst.sg:GoToState(inst.sg.statemem.queued_post_eat_state or "idle")
             end
         end),
     },
@@ -139,12 +230,13 @@ local drink = State{
         if inst.sg.statemem.feed ~= nil and inst.sg.statemem.feed:IsValid() then
             inst.sg.statemem.feed:Remove()
         end
+        CheckPocketRummageMem(inst)
     end,
 }
 
 local drinkstew = State{
         name = "drinkstew",
-        tags = { "busy", "nodangle" },
+        tags = { "busy", "nodangle", "keep_pocket_rummage" },
 
         onenter = function(inst, foodinfo)
             inst.SoundEmitter:KillSound("eating")
@@ -200,22 +292,35 @@ local drinkstew = State{
                     inst.components.souleater:EatSoul(inst.sg.statemem.feed)]]
                 end
             end),
-
             TimeEvent(30 * FRAMES, function(inst)
                 inst.sg:RemoveStateTag("busy")
                 inst.sg:RemoveStateTag("pausepredict")
             end),
-
+            FrameEvent(52, function(inst)
+                if inst.sg.statemem.queued_post_eat_state ~= nil then
+                    inst.sg:GoToState(inst.sg.statemem.queued_post_eat_state)
+                end
+            end),
             TimeEvent(70 * FRAMES, function(inst)
                 inst.SoundEmitter:KillSound("drinkstew")
             end),
+            FrameEvent(94, TryResumePocketRummage),
         },
 
         events =
         {
+            EventHandler("queue_post_eat_state", function(inst, data)
+                --NOTE: this event can trigger instantly instead of buffered
+                if data ~= nil then
+                    inst.sg.statemem.queued_post_eat_state = data.post_eat_state
+                    if data.nointerrupt then
+                        inst.sg:AddStateTag("nointerrupt")
+                    end
+                end
+            end),
             EventHandler("animqueueover", function(inst)
                 if inst.AnimState:AnimDone() then
-                    inst.sg:GoToState("idle")
+                    inst.sg:GoToState(inst.sg.statemem.queued_post_eat_state or "idle")
                 end
             end),
         },
@@ -224,6 +329,9 @@ local drinkstew = State{
             inst.SoundEmitter:KillSound("drinkstew")
             if not GetGameModeProperty("no_hunger") then
                 inst.components.hunger:Resume()
+                if inst.components.thirst ~= nil then
+                    inst.components.thirst:Resume()
+                end
             end
             if inst.sg.statemem.feed ~= nil and inst.sg.statemem.feed:IsValid() then
                 inst.sg.statemem.feed:Remove()
@@ -231,6 +339,7 @@ local drinkstew = State{
             --[[if inst.sg.statemem.soulfx ~= nil then
                 inst.sg.statemem.soulfx:Remove()
             end]]
+            CheckPocketRummageMem(inst)
         end,
     }
 
