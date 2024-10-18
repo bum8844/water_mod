@@ -151,8 +151,8 @@ local function ChangeToItem(inst)
     item.Transform:SetPosition(inst.Transform:GetWorldPosition())
     local hole = SpawnPrefab("hole")
     hole.Transform:SetPosition(inst.Transform:GetWorldPosition())
-    --item.AnimState:PushAnimation("idle_swaterpump_kit", false)
-    --item.SoundEmitter:PlaySound("meta4/winona_spotlight/collapse")
+    item.AnimState:PlayAnimation("collapse")
+    item.SoundEmitter:PlaySound("meta4/winona_spotlight/collapse")
     return true
 end
 

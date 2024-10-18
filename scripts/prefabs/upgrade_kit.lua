@@ -271,6 +271,6 @@ return MakeUpGrade_Kit("well_kit", "well", "idle_well_kit", nil, assets.well_kit
 MakeUpGrade_Kit("well_burying_kit", "well_burying_kit", "idle_burying_kit", nil, assets.well_burying_kit, prefabs.well_burying_kit,{"burying"}),
 MakeUpGrade_Kit("well_waterpump_kit", "well_waterpump", "idle_waterpump_kit", well_waterpump_kit_fn, assets.well_waterpump_kit,prefabs.well_waterpump_kit,{"engineering"}),
 MakeUpGrade_Kit("well_sprinkler_kit", "well_sprinkler", "idle_sprinkler_kit", well_sprinkler_kit_fn, assets.well_sprinkler_kit,prefabs.well_sprinkler_kit,{"well_sprinkler_kit","tile_deploy","deploykititem"}),
-MakeUpGrade_Kit("well_winona_sprinkler_kit", "well_sprinkler", "idle_winona_sprinkler_kit", well_winona_sprinkler_kit_fn, assets.well_winona_sprinkler_kit,prefabs.well_sprinkler_kit,{"well_sprinkler_kit","tile_deploy","deploykititem","engineering"}),
-MakePlacer("well_winona_sprinkler_kit_placer", "well_sprinkler_placement", "well_sprinkler_placement", "idle", true, nil, nil, TUNING.SPRINKLER_PLACER_SCALE, nil, nil, placer_postinit_fn_w),
+MakeUpGrade_Kit("well_winona_sprinkler_kit", "well_winona_sprinkler", "idle_winona_sprinkler_kit", well_winona_sprinkler_kit_fn, assets.well_winona_sprinkler_kit,prefabs.well_sprinkler_kit,{"well_sprinkler_kit","tile_deploy","deploykititem","engineering"}),
+MakePlacer("well_winona_sprinkler_kit_placer", "well_winona_sprinkler_placement", "well_winona_sprinkler_placement", "idle", true, nil, nil, TUNING.SPRINKLER_PLACER_SCALE, nil, nil, placer_postinit_fn_w),
 MakePlacer("well_sprinkler_kit_placer", "well_sprinkler_placement", "well_sprinkler_placement", "idle", true, nil, nil, TUNING.SPRINKLER_PLACER_SCALE, nil, nil, placer_postinit_fn)
