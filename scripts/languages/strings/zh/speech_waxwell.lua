@@ -132,7 +132,7 @@ return {
             CHERRY_ROSEBERRIES_TEA = "所以饼干呢？",
             CHERRY_HONEY_TEA = "配些姜和柠檬会更好……",
             SWEET_RICE_DRINK = "糊糊的质感。",
-            PINEANANAS_JUICE = "这么酸的果汁我没法一口气喝完。",
+            ANANAS_JUICE = "这么酸的果汁我没法一口气喝完。",
             ORANGE_JUICE = "我来到这里之前从来没有在休息室注意到这个。",
             STRAWBERRY_SMOOTHIE = "看起来像是街边饮料。",
             STRAWBERRY_MILK_SMOOTHIE = "它不适合我的品味。",
@@ -166,7 +166,7 @@ return {
             -- 联动气泡水
 
             CHERRY_DOCTOR_COLA = "没有真正的医生真是可惜。",
-            PINEANANASSODA = "我感觉和文明世界更靠近了。",
+            ANANASSODA = "我感觉和文明世界更靠近了。",
             ORANGESODA = "这气泡水的碳酸太多了。",
             STRAWBERRYSODA = "这气泡水的碳酸太多了。",
 

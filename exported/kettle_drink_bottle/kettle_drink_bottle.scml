@@ -255,11 +255,11 @@
     <folder id="84" name="pale_whiskey">
         <file id="0" name="pale_whiskey/pale_whiskey-0.png" width="119" height="187" pivot_x="0.54" pivot_y="0.25"/>
     </folder>
-    <folder id="85" name="pineananas_juice">
-        <file id="0" name="pineananas_juice/pineananas_juice-0.png" width="158" height="179" pivot_x="0.5" pivot_y="0.25"/>
+    <folder id="85" name="ananas_juice">
+        <file id="0" name="ananas_juice/ananas_juice-0.png" width="158" height="179" pivot_x="0.5" pivot_y="0.25"/>
     </folder>
-    <folder id="86" name="pineananassoda">
-        <file id="0" name="pineananassoda/pineananassoda-0.png" width="85" height="187" pivot_x="0.57" pivot_y="0.25"/>
+    <folder id="86" name="ananassoda">
+        <file id="0" name="ananassoda/ananassoda-0.png" width="85" height="187" pivot_x="0.57" pivot_y="0.25"/>
     </folder>
     <folder id="87" name="rice_spirits">
         <file id="0" name="rice_spirits/rice_spirits.png" width="75" height="185" pivot_x="0.5" pivot_y="0.25"/>

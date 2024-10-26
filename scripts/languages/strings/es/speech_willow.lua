@@ -132,7 +132,7 @@ return {
             CHERRY_ROSEBERRIES_TEA = "Sí, huele fragante.", -- Cherry Forest Rosehip Tea
             CHERRY_HONEY_TEA = "Al menos se ve bonito.", -- Cherry Forest Cherry Blossom Honey Tea
             SWEET_RICE_DRINK = "Prefiero la versión tostada.", -- Vita-Hyphy Sikhye
-            PINEANANAS_JUICE = "Está bueno cuando lo bebes, pero después te hormiguea la boca.", -- Legion Pineapple Juice
+            ANANAS_JUICE = "Está bueno cuando lo bebes, pero después te hormiguea la boca.", -- Legion Pineapple Juice
             ORANGE_JUICE = "Si alguien se lo bebe, le sugiero que se lave los dientes.", -- More Food Pack Orange Juice
             STRAWBERRY_SMOOTHIE = "Ha sido mezclado hasta tener un rojo bonito.", -- More Food Pack Strawberry Smoothie
             STRAWBERRY_MILK_SMOOTHIE = "A veces, las cosas frías no están tan mal.", -- More Food Pack Strawberry Milk Smoothie
@@ -166,7 +166,7 @@ return {
             -- Collaborative Sodas
 
             CHERRY_DOCTOR_COLA = "Una imitación casera.", -- Cherry Forest Dr. Pepper (Dr. Cherry)
-            PINEANANASSODA = "Es sólo refresco de piña.", -- Pineapple Soda (Oransi)
+            ANANASSODA = "Es sólo refresco de piña.", -- Pineapple Soda (Oransi)
             ORANGESODA = "Nada especial, solo un refresco naranja.", -- Orange Soda (Fanta)
             STRAWBERRYSODA = "Es roja y efervescente, así que es buena.", -- Strawberry Soda (Welch's Strawberry)
 

@@ -132,7 +132,7 @@ return {
             CHERRY_ROSEBERRIES_TEA = "Vậy, bánh quy ở đâu?", -- Trà tầm xuân Rừng Anh Đào
             CHERRY_HONEY_TEA = "Sẽ ngon hơn với gừng và chanh...", -- Trà mật ong hoa anh đào Cherry Forest
             SWEET_RICE_DRINK = "Kết cấu nhão.", -- Nước gạo ngọt Vitacomp
-            PINEANANAS_JUICE = "Tôi không thể uống nước ép trái cây thơm này trong một lần được.", -- Nước ép dứa Regione
+            ANANAS_JUICE = "Tôi không thể uống nước ép trái cây thơm này trong một lần được.", -- Nước ép dứa Regione
             ORANGE_JUICE = "Tôi chưa bao giờ nhận thấy điều này trong phòng nghỉ trước khi đến đây.", -- Nước cam Moore Food Pack
             STRAWBERRY_SMOOTHIE = "Trông giống như đồ uống bán rong.", -- Sinh tố dâu tây Moore Food Pack
             STRAWBERRY_MILK_SMOOTHIE = "Nó không hợp khẩu vị của tôi.", -- Sinh tố sữa dâu Moore Food Pack
@@ -166,7 +166,7 @@ return {
             -- Nước ngọt hợp tác
 
             CHERRY_DOCTOR_COLA = "Thật tiếc là ở đây không có bác sĩ thực sự.", -- Cherry Forest Dr. Pepper (Doctor Cherry)
-            PINEANANASSODA = "Bây giờ tôi cảm thấy gần gũi hơn với nền văn minh.", -- Dứa có ga (Oransi)
+            ANANASSODA = "Bây giờ tôi cảm thấy gần gũi hơn với nền văn minh.", -- Dứa có ga (Oransi)
             ORANGESODA = "Soda này có quá nhiều ga.", -- Cam có ga (Fanta)
             STRAWBERRYSODA = "Soda này có quá nhiều ga.", -- Dâu tây có ga (dâu tây của Welch)
 

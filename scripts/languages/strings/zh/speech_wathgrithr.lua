@@ -132,7 +132,7 @@ return {
             CHERRY_ROSEBERRIES_TEA = "我需要喝这个邪恶水果做的饮料吗？",
             CHERRY_HONEY_TEA = "做得很精致的蜂蜜水。",
             SWEET_RICE_DRINK = "里面没有种子吗？",
-            PINEANANAS_JUICE = "为了里面的肉，它的鳞甲被粉碎了。",
+            ANANAS_JUICE = "为了里面的肉，它的鳞甲被粉碎了。",
             ORANGE_JUICE = "它在让我喝它这个酸酸的汁水吗？",
             STRAWBERRY_SMOOTHIE = "冷冷的红色果泥。",
             STRAWBERRY_MILK_SMOOTHIE = "这饮料不适合战士饮用。",
@@ -166,7 +166,7 @@ return {
             -- 联动气泡水
 
             CHERRY_DOCTOR_COLA = "恶心的赤色混沌形态。",
-            PINEANANASSODA = "它是松果还是水果，虽然都有问题。",
+            ANANASSODA = "它是松果还是水果，虽然都有问题。",
             ORANGESODA = "是有着酸酸水果味的泉水。",
             STRAWBERRYSODA = "战士可不稀罕混有红色水果的泉水。",
 

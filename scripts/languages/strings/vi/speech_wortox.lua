@@ -128,7 +128,7 @@ return {
         CHERRY_ROSEBERRIES_TEA = "Có mùi hoa hồng thoang thoảng.", -- Trà tầm xuân rừng anh đào
         CHERRY_HONEY_TEA = "Ngọt vừa phải để uống.", -- Trà mật ong hoa anh đào rừng anh đào
         SWEET_RICE_DRINK = "Họ nói rằng bạn nên uống và ăn cùng lúc!", -- Vita Co-op Sikhye
-        PINEANANAS_JUICE = "Tôi có thể là một tinh chất.", -- Legion Dứa
+        ANANAS_JUICE = "Tôi có thể là một tinh chất.", -- Legion Dứa
         ORANGE_JUICE = "Chỉ nhìn màu cam là tôi đã thấy hài lòng rồi.", -- Thêm gói thực phẩm Nước cam
         STRAWBERRY_SMOOTHIE = "Đó là một loại trái cây màu đỏ.", -- Gói thực phẩm khác Sinh tố dâu tây
         STRAWBERRY_MILK_SMOOTHIE = "Ít nhất nó phải mịn.", -- Thêm gói thực phẩm Strawberry Smoothie Latte
@@ -162,7 +162,7 @@ return {
         -- Soda hợp tác
 
         CHERRY_DOCTOR_COLA = "Nó có thể là một công cụ tra tấn tốt. Hohoho!", -- Cherry Forest Doctor Pepper (Doctor Cherry)
-        PINEANANASSODA = "Tôi thích tận hưởng tinh chất hơn là uống nó.", -- Pineapple Soda (Orangina)
+        ANANASSODA = "Tôi thích tận hưởng tinh chất hơn là uống nó.", -- Pineapple Soda (Orangina)
         ORANGESODA = "Quả cam không thể ép thành nước được.", -- Orange Soda (Fanta)
         STRAWBERRYSODA = "Liệu hạt có nổ như bom không?", -- Strawberry Soda (Dâu tây xứ Welch)
 
