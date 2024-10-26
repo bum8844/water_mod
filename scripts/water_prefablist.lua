@@ -8,7 +8,6 @@ return {
 	"fruitflyfruit_dead",
 	"water_spice",
 	"thermos_bottle",
-	"wagpunkmachintool",
 
 	--structures
 	"barrel",
@@ -24,8 +23,6 @@ return {
 	"well_waterpump",
 	"distillers",
 	"wine_cellar",
-	"steamdesalinator",
-	"well_winona_sprinkler",
 
 	--food & plants
 	"caffeinberry",
