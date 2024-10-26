@@ -146,7 +146,7 @@ return {
         CHERRY_ROSEBERRIES_TEA = "Tiene una fragancia deliciosa y ayuda a regular el calor corporal.", -- Cherry Blossom Rose Hip Tea
         CHERRY_HONEY_TEA = "Es una solución rápida para el dolor de garganta.", -- Cherry Blossom Cherry Honey Tea
         SWEET_RICE_DRINK = "¡Es dulce con una textura inusual!", -- Vitahebhi Sikhye
-        PINEANANAS_JUICE = "Debo cuidar de no beber mucho, o me pelara la lengua.", -- Legion Pineapple Juice
+        ANANAS_JUICE = "Debo cuidar de no beber mucho, o me pelara la lengua.", -- Legion Pineapple Juice
         ORANGE_JUICE = "¡Es zumo de naranja recién exprimido!", -- More Food Pack Orange Juice
         STRAWBERRY_SMOOTHIE = "¡Está fresco y delicioso!.", -- More Food Pack Strawberry Smoothie
         STRAWBERRY_MILK_SMOOTHIE = "¡Es refrescante, y delicioso!", -- More Food Pack Strawberry Smoothie Latte
@@ -180,7 +180,7 @@ return {
         -- Collaboration Soda
 
         CHERRY_DOCTOR_COLA = "Es una bebida de nicho que cuenta con apasionados seguidores.", -- Cherry Forest Dr. Pepper (Dr. Cherry)
-        PINEANANASSODA = "Esta bebida es perfecta para ayudar a digerir una buena merienda.", -- Pineapple soda (Oran C)
+        ANANASSODA = "Esta bebida es perfecta para ayudar a digerir una buena merienda.", -- Pineapple soda (Oran C)
         ORANGESODA = "¡Refrescante después de una comida!", -- Orange soda (Fanta)
         STRAWBERRYSODA = "Refresco dulce con sabor a fresa.", -- Strawberry soda (Welch's Strawberry)
 

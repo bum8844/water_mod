@@ -146,7 +146,7 @@ return {
             CHERRY_ROSEBERRIES_TEA = "Must I drink a beverage with such vile fruits?", 
             CHERRY_HONEY_TEA = "This is truly exquisite honeywater.", 
             SWEET_RICE_DRINK = "Doesn't this contain seeds?", 
-            PINEANANAS_JUICE = "It has crushed the tough scales to get the flesh.", 
+            ANANAS_JUICE = "It has crushed the tough scales to get the flesh.", 
             ORANGE_JUICE = "Is it asking me to drink its tart juice?", 
             STRAWBERRY_SMOOTHIE = "It's a cold, red fruit puree.", -- 
             STRAWBERRY_MILK_SMOOTHIE = "This beverage is not appropriate for a warrior's consumption.", -- 
@@ -180,7 +180,7 @@ return {
             -- Collaboration Soda
 
             CHERRY_DOCTOR_COLA = "It's a repulsive crimson chaos.", -- 
-            PINEANANASSODA = "Whether it's pinecones or fruit, it's not right.", -- 
+            ANANASSODA = "Whether it's pinecones or fruit, it's not right.", -- 
             ORANGESODA = "It's spring water with a tangy fruit flavor.", --
             STRAWBERRYSODA = "The warrior has a distaste for mineral water with red fruits.", --
 

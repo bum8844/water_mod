@@ -146,7 +146,7 @@ return {
             CHERRY_ROSEBERRIES_TEA = "No more ugly fruit hair?",
             CHERRY_HONEY_TEA = "Drinking pretty honey-tanned water makes body warm!",
             SWEET_RICE_DRINK = "Merms don't make snacks this way.", 
-            PINEANANAS_JUICE = "Sour fruit was put into the water, making it less sour and sweeter, florp.", 
+            ANANAS_JUICE = "Sour fruit was put into the water, making it less sour and sweeter, florp.", 
             ORANGE_JUICE = "Juicy and refreshing, florp!", 
             STRAWBERRY_SMOOTHIE = "Flrrr, Crushed frozen red juice!", 
             STRAWBERRY_MILK_SMOOTHIE = "Flrrr, is smooth!", 
@@ -180,7 +180,7 @@ return {
             -- Collaborative Sodas
 
             CHERRY_DOCTOR_COLA = "Black water fizzy, taste like red juice!",
-            PINEANANASSODA = "Fizzy and sour fruit water!",
+            ANANASSODA = "Fizzy and sour fruit water!",
             ORANGESODA = "Glurp, Refreshing and cool!", 
             STRAWBERRYSODA = "Fizzy red fruit water, florp.",
 

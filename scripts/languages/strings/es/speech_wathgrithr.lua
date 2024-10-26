@@ -144,7 +144,7 @@ return {
             CHERRY_ROSEBERRIES_TEA = "¿Debo beber una bebida con frutos tan viles?", -- Cherry Forest Rosehip Tea
             CHERRY_HONEY_TEA = "Esta agua miel es realmente exquisita.", -- Cherry Forest Cherry Blossom Honey Tea
             SWEET_RICE_DRINK = "¿Esto no contiene semillas?", -- Vita-Hybiscus Sweet Rice Punch
-            PINEANANAS_JUICE = "Aplastaron las duras escamas para obtener la carne.", -- Reign of Giants Pineananas Juice
+            ANANAS_JUICE = "Aplastaron las duras escamas para obtener la carne.", -- Reign of Giants Pineananas Juice
             ORANGE_JUICE = "¿Me está pidiendo que beba su jugo agrio?", -- More Food Pack Orange Juice
             STRAWBERRY_SMOOTHIE = "Esta frío, es un puré de frutos rojos.", -- More Food Pack Strawberry Smoothie
             STRAWBERRY_MILK_SMOOTHIE = "Esta bebida no es apropiada para el consumo de un guerrero.", -- More Food Pack Strawberry Milk Smoothie
@@ -178,7 +178,7 @@ return {
             -- Collaboration Soda
 
             CHERRY_DOCTOR_COLA = "Es un repulsivo caos carmesí.", -- Cherry Forest Doctor Pepper (Doctor Cherry)
-            PINEANANASSODA = "Ya sean piñas o fruta, no está bien.", -- Pineapple Soda (Orang-Soda)
+            ANANASSODA = "Ya sean piñas o fruta, no está bien.", -- Pineapple Soda (Orang-Soda)
             ORANGESODA = "Es agua mineral con un penetrante sabor a frutas.", -- Orange Soda (Fanta)
             STRAWBERRYSODA = "Este refresco no da el ancho para los guerreros.", -- Strawberry Soda (Welch's Strawberry)
 

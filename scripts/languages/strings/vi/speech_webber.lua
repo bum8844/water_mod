@@ -146,7 +146,7 @@ ANNOUNCE_DCAPACITY_HALF = "Không hiểu sao đầu tôi bắt đầu quay cuồ
             CHERRY_ROSEBERRIES_TEA = "Nó có lấy máu từ con nhện ngoài hành tinh đó không?", -- Trà tầm xuân rừng anh đào
             CHERRY_HONEY_TEA = "Ngọt và ấm, nhưng màu lạ!", -- Trà mật ong hoa anh đào rừng anh đào
             SWEET_RICE_DRINK = "Có hạt mềm bên trong!", -- Vita Coop Sikhye
-            PINEANANAS_JUICE = "Răng của tôi cảm thấy kỳ lạ sau khi uống thứ này.", -- Nước ép dứa Regione
+            ANANAS_JUICE = "Răng của tôi cảm thấy kỳ lạ sau khi uống thứ này.", -- Nước ép dứa Regione
             ORANGE_JUICE = "Tốt nhất là tôi nên tạm dừng việc đánh răng một lúc.", -- Thêm gói thực phẩm Nước cam
             STRAWBERRY_SMOOTHIE = "Uống từ từ để tránh não đơ.", -- More Food Pack Strawberry Smoothie
             STRAWBERRY_MILK_SMOOTHIE = "Đây là món sinh tố dâu tây thật sự!", -- Gói thực phẩm khác Sinh tố sữa dâu
@@ -180,7 +180,7 @@ ANNOUNCE_DCAPACITY_HALF = "Không hiểu sao đầu tôi bắt đầu quay cuồ
             -- Hợp tác Soda
 
             CHERRY_DOCTOR_COLA = "Nó chỉ giống cola, chứ vị thì chưa chắc, cơ mà chúng tôi thích nó phết!", -- Cherry Forest Doctor Pepper (Tiến sĩ Cherry)
-            PINEANANASSODA = "Chúng ta nên uống nó ít thôi nếu không muốn bị sâu răng.", -- Pineapple Soda (Oranchi)
+            ANANASSODA = "Chúng ta nên uống nó ít thôi nếu không muốn bị sâu răng.", -- Pineapple Soda (Oranchi)
             ORANGESODA = "Là đồ uống có ga vị cam!", -- Orange Soda (Fanta)
             STRAWBERRYSODA = "Wickerbottom khuyên nên uống đồ uống có ga một cách điều độ.", -- Strawberry Soda (Welch's Strawberry)
 

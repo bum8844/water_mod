@@ -132,7 +132,7 @@ return {
         CHERRY_ROSEBERRIES_TEA = "有时候赏着花喝着茶也是不错的。",
         CHERRY_HONEY_TEA = "优雅且暖和。",
         SWEET_RICE_DRINK = "不知道为什么这些种子吃下去得花这么多时间……",
-        PINEANANAS_JUICE = "没有它的外皮，喝多了也会使你的嘴巴出血。",
+        ANANAS_JUICE = "没有它的外皮，喝多了也会使你的嘴巴出血。",
         ORANGE_JUICE = "就当作饭后甜点好了。",
         STRAWBERRY_SMOOTHIE = "得小心别噎着了。",
         STRAWBERRY_MILK_SMOOTHIE = "好棒的甜食！",
@@ -166,7 +166,7 @@ return {
         -- 联动气泡水
 
         CHERRY_DOCTOR_COLA = "我不觉得这个饮料和时间旅行有关系。", -- 漫威探头（至少原文备注是那样的）
-        PINEANANASSODA = "很好，不需要对这个浪费时间了。",
+        ANANASSODA = "很好，不需要对这个浪费时间了。",
         ORANGESODA = "很好，不需要对这个浪费时间了。",
         STRAWBERRYSODA = "很好，不需要对这个浪费时间了。",
 

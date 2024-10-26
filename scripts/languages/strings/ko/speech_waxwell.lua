@@ -146,7 +146,7 @@ return {
 		CHERRY_ROSEBERRIES_TEA = "그래서, 비스킷은 어디있나?", --체리숲 로즈힙 차
 		CHERRY_HONEY_TEA = "생강이랑 레몬이 있었으면..", --체리숲 벚꽃꿀 차
 		SWEET_RICE_DRINK = "흐믈흐믈 하군.", -- 비타협 식혜
-		PINEANANAS_JUICE = "이런 시큼한 과일주스는 마시기 힘들단 말일세.", -- 레기온 파인애플 주스
+		ANANAS_JUICE = "이런 시큼한 과일주스는 마시기 힘들단 말일세.", -- 레기온 파인애플 주스
 		ORANGE_JUICE = "여기 오기전에는 휴게실에 항상있던거 쳐다도 안봤는데 말일세.", -- 모어 푸드 팩 오랜지 주스
 		STRAWBERRY_SMOOTHIE = "길거리 음료 같군.", -- 모어 푸드 팩 딸기 스무디
 		STRAWBERRY_MILK_SMOOTHIE = "내 취향하고는 거리가 머네.", -- 모어 푸드 팩 딸기 스무디 라떼
@@ -180,7 +180,7 @@ return {
 		-- 콜라보 소다
 
 		CHERRY_DOCTOR_COLA = "진짜 의사가 이 자리에 없는건 좀 아쉽군.", --체리숲 닥터 페퍼(닥터 체리)
-		PINEANANASSODA = "문명인에 더 가까워진듯한 기분이군.", -- 탄산 파인애플(오란씨)
+		ANANASSODA = "문명인에 더 가까워진듯한 기분이군.", -- 탄산 파인애플(오란씨)
 		ORANGESODA = "탄산이 강한건 매한가지로구먼.", -- 탄산 오랜지(환타)
 		STRAWBERRYSODA = "탄산이 강한건 매한가지로구먼.", -- 탄산 딸기(웰치스 딸기)
 

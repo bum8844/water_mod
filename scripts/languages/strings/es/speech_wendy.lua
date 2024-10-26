@@ -144,7 +144,7 @@ return {
             CHERRY_ROSEBERRIES_TEA = "Debo tener cuidado de no tragarme los capullos de las flores.", -- Cherry Forest Rose Hip Tea
             CHERRY_HONEY_TEA = "¿Puede haber algo mas dulce que esto?", -- Cherry Forest Cherry Blossom Honey Tea
             SWEET_RICE_DRINK = "¿Tiene algo masticable dentro?.", -- Vita-Hybiscus Sikhye
-            PINEANANAS_JUICE = "Rompió la espinosa corteza, y trituró la pulpa", -- Legacy Pineapple Juice
+            ANANAS_JUICE = "Rompió la espinosa corteza, y trituró la pulpa", -- Legacy Pineapple Juice
             ORANGE_JUICE = "Tan amargo como la vida nuestra.", -- Moer Food Pack Orange Juice
             STRAWBERRY_SMOOTHIE = "Una bebida hecha triturando fresas con hielo.", -- Moer Food Pack Strawberry Smoothie
             STRAWBERRY_MILK_SMOOTHIE = "Suavemente envuelve la punta de mi lengua", -- Moer Food Pack Strawberry Smoothie Latte
@@ -178,7 +178,7 @@ return {
             -- Collaborative Soda
 
             CHERRY_DOCTOR_COLA = "No es un médico de verdad, pero puede ofrecer algún consuelo fugaz.", ---★★★★★
-            PINEANANASSODA = "Es una bebida acida y dulce", 
+            ANANASSODA = "Es una bebida acida y dulce", 
             ORANGESODA = "Esta carbonatada con jugo de naranja exprimido",
             STRAWBERRYSODA = "Es una bebida carbonatada con fresas trituradas",
 

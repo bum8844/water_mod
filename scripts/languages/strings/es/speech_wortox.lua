@@ -146,7 +146,7 @@ return {
         CHERRY_ROSEBERRIES_TEA = "Tiene un oscuro olor a rosa.", -- Cherry Forest Rosehip Tea
         CHERRY_HONEY_TEA = "Es lo suficientemente dulce para beberlo.", -- Cherry Forest Sakura Honey Tea
         SWEET_RICE_DRINK = "¡Deberías comerlo y beberlo a la vez!", -- Vita Co-op Sikhye
-        PINEANANAS_JUICE = "Podría ser una esencia.", -- Legion Pineapple Juice
+        ANANAS_JUICE = "Podría ser una esencia.", -- Legion Pineapple Juice
         ORANGE_JUICE = "Estoy satisfecho con solo ver el color.", -- More Food Pack Orange Juice
         STRAWBERRY_SMOOTHIE = "¿Una fruta roja hizo esto?.", -- More Food Pack Strawberry Smoothie
         STRAWBERRY_MILK_SMOOTHIE = "Al menos es suave.", -- More Food Pack Strawberry Smoothie Latte
@@ -180,7 +180,7 @@ return {
         -- Collaborative Soda
 
         CHERRY_DOCTOR_COLA = "Puede ser una herramienta de toruta, jojo.", -- Cherry Forest Doctor Pepper (Doctor Cherry)
-        PINEANANASSODA = "Prefiero que sea una fruta a que sea bebida.", -- Pineapple Soda (Orangina)
+        ANANASSODA = "Prefiero que sea una fruta a que sea bebida.", -- Pineapple Soda (Orangina)
         ORANGESODA = "Naranjas que se hicieron juego.", -- Orange Soda (Fanta)
         STRAWBERRYSODA = "¿Las semillas explotarán?", -- Strawberry Soda (Welch's Strawberry)
 

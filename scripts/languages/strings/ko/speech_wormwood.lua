@@ -146,7 +146,7 @@ return {
 		CHERRY_ROSEBERRIES_TEA = "새콤한 향", --체리숲 로즈힙 차
 		CHERRY_HONEY_TEA = "붕붕이들 매우 좋아해", --체리숲 벚꽃꿀 차
 		SWEET_RICE_DRINK = "달콤해!", -- 비타협 식혜
-		PINEANANAS_JUICE = "멋쟁이 왕관 마실거", -- 레기온 파인애플 주스
+		ANANAS_JUICE = "멋쟁이 왕관 마실거", -- 레기온 파인애플 주스
 		ORANGE_JUICE = "주황색 공 마실거", -- 모어 푸드 팩 오랜지 주스
 		STRAWBERRY_SMOOTHIE = "새콤 시원", -- 모어 푸드 팩 딸기 스무디
 		STRAWBERRY_MILK_SMOOTHIE = "부들부들 새콤 시원", -- 모어 푸드 팩 딸기 스무디 라떼
@@ -180,7 +180,7 @@ return {
 		-- 콜라보 소다
 
 		CHERRY_DOCTOR_COLA = "톡톡 과일 검은 물", --체리숲 닥터 페퍼(닥터 체리)
-		PINEANANASSODA = "톡톡 멋쟁이 왕관 물", -- 탄산 파인애플(오란씨)
+		ANANASSODA = "톡톡 멋쟁이 왕관 물", -- 탄산 파인애플(오란씨)
 		ORANGESODA = "톡톡 주황 공 물", -- 탄산 오랜지(환타)
 		STRAWBERRYSODA = "톡톡 달콤 과일 물", -- 탄산 딸기(웰치스 딸기)
 

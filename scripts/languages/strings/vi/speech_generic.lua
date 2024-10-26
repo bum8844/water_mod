@@ -146,7 +146,7 @@ return {
 		CHERRY_ROSEBERRIES_TEA = "Hương hoa hồng nồng nàn.",
 		CHERRY_HONEY_TEA = "Tôi chỉ có thể nếm những cánh hoa.",
 		SWEET_RICE_DRINK = "Đó là sự kết hợp mới.",
-		PINEANANAS_JUICE = "Ít nhất thì da của nó sẽ không làm xước miệng tôi nữa.", -- Legiones Pinapple Juice
+		ANANAS_JUICE = "Ít nhất thì da của nó sẽ không làm xước miệng tôi nữa.", -- Legiones Pinapple Juice
 		ORANGE_JUICE = "Này cam, có vẻ bạn đang vui vì tôi đã mang theo một ít nước ép?", -- Gói thực phẩm khác Nước cam
 		STRAWBERRY_SMOOTHIE = "Ống hút của tôi đâu?", -- Gói thực phẩm khác Sinh tố dâu tây
 		STRAWBERRY_MILK_SMOOTHIE = "Nó thật là sinh tố quả mọng!", -- Gói thực phẩm khác Strawverry Smoothie Latte
@@ -180,7 +180,7 @@ return {
 		-- Mod Cộng tác nhà máy bia soda
 		
 		CHERRY_DOCTOR_COLA = "Không phải bác sĩ đã làm ra thứ này!",
-		PINEANANASSODA = "Đó là một cây thông trong miệng tôi.", -- Nước giải khát dứa
+		ANANASSODA = "Đó là một cây thông trong miệng tôi.", -- Nước giải khát dứa
 		ORANGESODA = "Thật tuyệt vời!", -- Nước ngọt Orange Fanta
 		STRAWBERRYSODA = "Đó là một loại đồ uống có ga có ga từ quả mọng.", -- Welch's Strawberry Soft Drink
 		

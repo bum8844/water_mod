@@ -146,7 +146,7 @@ return {
             CHERRY_ROSEBERRIES_TEA = "Có mùi thơm nồng", -- Trà Tầm Xuân Rừng Anh Đào
             CHERRY_HONEY_TEA = "Những con ong thích nó", -- Trà mật ong hoa anh đào rừng anh đào
             SWEET_RICE_DRINK = "Ngọt!", -- Sake VitaHive
-            PINEANANAS_JUICE = "Dành cho vương miện", -- Nước ép Legion Pineananas
+            ANANAS_JUICE = "Dành cho vương miện", -- Nước ép Legion Pineananas
             ORANGE_JUICE = "Một quả cầu có múi để uống", -- Thêm gói thực phẩm Nước cam
             STRAWBERRY_SMOOTHIE = "Mát và thơm", -- Gói thực phẩm khác Sinh tố dâu tây
             STRAWBERRY_MILK_SMOOTHIE = "Kem và thơm", -- Gói thực phẩm khác Sinh tố sữa dâu
@@ -180,7 +180,7 @@ return {
             -- Soda hợp tác
 
             CHERRY_DOCTOR_COLA = "Nước sẫm màu có mùi trái cây sủi bọt", -- Cherry Forest Doctor Pepper (Doctor Cherry)
-            PINEANANASSODA = "Nước sủi bọt phù hợp cho vương miện", -- Thông có ga (Olimar's)
+            ANANASSODA = "Nước sủi bọt phù hợp cho vương miện", -- Thông có ga (Olimar's)
             ORANGESODA = "Nước quả cầu màu cam sủi bọt", -- Cam có ga (Fanta)
             STRAWBERRYSODA = "Nước trái cây sủi bọt và ngọt ngào", -- Dâu có ga (Dâu xứ Wales)
 

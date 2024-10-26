@@ -146,7 +146,7 @@ return {
             CHERRY_ROSEBERRIES_TEA = "Ngọt và thơm.", --Trà tầm xuân rừng anh đào
             CHERRY_HONEY_TEA = "Cảm giác ấm áp.", --Trà mật ong hoa anh đào rừng anh đào
             SWEET_RICE_DRINK = "Được lên men để tạo vị ngọt và dễ tiêu hóa.", --Vitacorp Sweet Hyphae
-            PINEANANAS_JUICE = "Giàu bromelain, nên uống điều độ.", --More Food Pack Nước ép dứa
+            ANANAS_JUICE = "Giàu bromelain, nên uống điều độ.", --More Food Pack Nước ép dứa
             ORANGE_JUICE = "Nước cam, nó giống như loại nước ép nổi.", --More Food Pack Orange Juice
             STRAWBERRY_SMOOTHIE = "Đá và dâu tây hòa quyện với nhau, uống với sữa sẽ ngon hơn.", --More Food Pack Strawberry Smoothie
             STRAWBERRY_MILK_SMOOTHIE = "Một loại đồ uống dâu tây phổ biến, đôi khi được làm bằng sữa chua thay vì sữa.", --More Food Pack Strawberry Milk Smoothie
@@ -180,7 +180,7 @@ return {
             -- Nước ngọt hợp tác
 
             CHERRY_DOCTOR_COLA = "Thức uống chữa bệnh Wetsville với 23 loại gia vị.", --Cherry Forest Doctor Pepper (Doctor Cherry)
-            PINEANANASSODA = "Nước ép dứa được thêm vào nước có ga.", --Dứa có ga (Orancee)
+            ANANASSODA = "Nước ép dứa được thêm vào nước có ga.", --Dứa có ga (Orancee)
             ORANGESODA = "Nó chứa nước cam.", --Cam có ga (Fanta)
             STRAWBERRYSODA = "Nước có ga với nước ép dâu tây.", --Dâu tây có ga (Dâu tây của Welch)
 

@@ -146,7 +146,7 @@ return {
         CHERRY_ROSEBERRIES_TEA = "I'll be careful not to swallow the flower buds.",
         CHERRY_HONEY_TEA = "Can it get any sweeter than this?",
         SWEET_RICE_DRINK = "There's something chewy in it.",
-        PINEANANAS_JUICE = "It tore through the tough rind and mashed the pulp.", ---
+        ANANAS_JUICE = "It tore through the tough rind and mashed the pulp.", ---
         ORANGE_JUICE = "As sour as the thick rind.", ---
         STRAWBERRY_SMOOTHIE = "A drink made by crushing strawberries with ice.", 
         STRAWBERRY_MILK_SMOOTHIE = "Smoothly wraps around the tip of my tongue.", ---
@@ -180,7 +180,7 @@ return {
         -- Collaborative Soda
 
         CHERRY_DOCTOR_COLA = "It isn't a real doctor, but it might offer some fleeting comfort.", ---
-        PINEANANASSODA = "It's tangy and sweet soda.", ---
+        ANANASSODA = "It's tangy and sweet soda.", ---
         ORANGESODA = "It's carbonated beverage with squeezed orange juice.",---
         STRAWBERRYSODA = "It'sCarbonated beverage with crushed strawberries.", ---
 

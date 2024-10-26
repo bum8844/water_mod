@@ -146,7 +146,7 @@ return {
         CHERRY_ROSEBERRIES_TEA = "Sometimes, it's nice to have a cup of tea while looking at flowers.", -- 
         CHERRY_HONEY_TEA = "It's elegant and warm.", -- 
         SWEET_RICE_DRINK = "I don't know why these seeds take so long to eat...", -- 
-        PINEANANAS_JUICE = "Even without the outer skin, if you eat a lot, your mouth will start to bleed." , -- 
+        ANANAS_JUICE = "Even without the outer skin, if you eat a lot, your mouth will start to bleed." , -- 
         ORANGE_JUICE = "I should have it as a snack after a meal.", -- 
         STRAWBERRY_SMOOTHIE = "I'll choke if I swallow hastily.", --  
         STRAWBERRY_MILK_SMOOTHIE = "What a wonderful dessert!", -- 
@@ -180,7 +180,7 @@ return {
         -- Collaboration Sodas
 
         CHERRY_DOCTOR_COLA = "I don't think this drink involves time travel.", 
-        PINEANANASSODA = "Good, I won't waste too much time enjoying this.",
+        ANANASSODA = "Good, I won't waste too much time enjoying this.",
         ORANGESODA = "Good, I won't waste too much time enjoying this.",
         STRAWBERRYSODA = "Good, I won't waste too much time enjoying this.", 
 

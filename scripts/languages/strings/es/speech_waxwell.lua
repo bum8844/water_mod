@@ -146,7 +146,7 @@ return {
             CHERRY_ROSEBERRIES_TEA = "Así que, ¿Dónde están los panecillos?", -- Cherry Forest rosehip tea
             CHERRY_HONEY_TEA = "Estaría mejor con jengibre y limón...", -- Cherry Forest cherry blossom honey tea
             SWEET_RICE_DRINK = "La textura es pastosa.", -- Vitacomp sweet rice drink
-            PINEANANAS_JUICE = "No puedo tomar este jugo de fruta ácido  en un solo instante.", -- Regione pineapple juice
+            ANANAS_JUICE = "No puedo tomar este jugo de fruta ácido  en un solo instante.", -- Regione pineapple juice
             ORANGE_JUICE = "Nunca noté que esto estuviera en el jardín.", -- Moore Food Pack orange juice
             STRAWBERRY_SMOOTHIE = "Parece una bebida de un vendedor callejero", -- Moore Food Pack strawberry smoothie
             STRAWBERRY_MILK_SMOOTHIE = "No es de mi agrado.", -- Moore Food Pack strawberry milk smoothie
@@ -180,7 +180,7 @@ return {
             -- Collaboration Sodas
 
             CHERRY_DOCTOR_COLA = "Es una lástima que no tengamos ningún doctor aquí .", -- Cherry Forest Dr. Pepper (Doctor Cherry)
-            PINEANANASSODA = "Me siento cerca a la civilización.", -- Carbonated pineapple (Oransi)
+            ANANASSODA = "Me siento cerca a la civilización.", -- Carbonated pineapple (Oransi)
             ORANGESODA = "Este refresco está excesivamente carbonatado.", -- Carbonated orange (Fanta)
             STRAWBERRYSODA = "Este refresco está excesivamente carbonatado.", -- Carbonated strawberry (Welch's strawberry)
 

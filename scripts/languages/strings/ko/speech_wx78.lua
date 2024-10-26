@@ -146,7 +146,7 @@ return {
 		CHERRY_ROSEBERRIES_TEA = "장미향 유체", --체리숲 로즈힙 차
 		CHERRY_HONEY_TEA = "당도 측정 시도: 실패", --체리숲 벚꽃꿀 차
 		SWEET_RICE_DRINK = "경고: 과량의 엿당 함유", -- 비타협 식혜(WARNING: CONTAINS EXCESSIVE AMOUNTS OF MALTOSE)
-        PINEANANAS_JUICE = "스폰지와의 연관성을 부정", -- 레기온 파인애플 주스
+        ANANAS_JUICE = "스폰지와의 연관성을 부정", -- 레기온 파인애플 주스
 		ORANGE_JUICE = "섭취를 위해 분쇄됨", -- 모어 푸드 팩 오랜지 주스
 		STRAWBERRY_SMOOTHIE = "질감이 나를 불쾌하게 함", -- 모어 푸드 팩 딸기 스무디
 		STRAWBERRY_MILK_SMOOTHIE = "딸기가 포획된 형태", -- 모어 푸드 팩 딸기 스무디 라떼
@@ -180,7 +180,7 @@ return {
 		-- 콜라보 소다
 
 		CHERRY_DOCTOR_COLA = "누가 이런 혼종을 만들었는가", --체리숲 닥터 페퍼(닥터 체리)
-		PINEANANASSODA = "파인 튜닝이 사용됨", -- 탄산 파인애플(오란씨)
+		ANANASSODA = "파인 튜닝이 사용됨", -- 탄산 파인애플(오란씨)
 		ORANGESODA = "유기체의 행동을 독려시키기위해 제작됨", -- 탄산 오랜지(환타)
 		STRAWBERRYSODA = "영혼 악마놈을 연상시킴", -- 탄산 딸기(웰치스 딸기)
 

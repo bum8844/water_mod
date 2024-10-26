@@ -146,7 +146,7 @@ return {
             CHERRY_ROSEBERRIES_TEA = "So, where are the biscuits?", -- 
             CHERRY_HONEY_TEA = "It would be better with ginger and lemon...", -- 
             SWEET_RICE_DRINK = "The texture is mushy.", --- 
-            PINEANANAS_JUICE = "I can't drink this tangy fruit juice in one go.", 
+            ANANAS_JUICE = "I can't drink this tangy fruit juice in one go.", 
             ORANGE_JUICE = "I never noticed this in the break room before coming here.", 
             STRAWBERRY_SMOOTHIE = "Seems like a street vendor drink.", 
             STRAWBERRY_MILK_SMOOTHIE = "It's not to my taste.", 
@@ -180,7 +180,7 @@ return {
             -- Collaboration Sodas
 
             CHERRY_DOCTOR_COLA = "It's a shame there's no real doctor here.", 
-            PINEANANASSODA = "I feel closer to civilization now.", 
+            ANANASSODA = "I feel closer to civilization now.", 
             ORANGESODA = "This soda is overly carbonated.", --
             STRAWBERRYSODA = "This soda is overly carbonated.", --
 

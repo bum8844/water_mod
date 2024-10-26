@@ -146,7 +146,7 @@ return {
             CHERRY_ROSEBERRIES_TEA = "It's sweet and fragrant.", 
             CHERRY_HONEY_TEA = "I feel like my body is getting warm.", 
             SWEET_RICE_DRINK = "It has been fermented to give it a sweet taste and make it easier to digest.", 
-            PINEANANAS_JUICE = "It contains a lot of bromelain, so it can cause mouth sores. Drink it in moderation.", 
+            ANANAS_JUICE = "It contains a lot of bromelain, so it can cause mouth sores. Drink it in moderation.", 
             ORANGE_JUICE = "Orange juice, it's like the stereo type of juice.", 
             STRAWBERRY_SMOOTHIE = "Ice and strawberries blended together, it would be even better with milk.", 
             STRAWBERRY_MILK_SMOOTHIE = "A popular strawberry beverage, sometimes made with yogurt instead of milk.", 
@@ -180,7 +180,7 @@ return {
             -- Collaborative Sodas
 
             CHERRY_DOCTOR_COLA = "W.B. Medicinal Drink with 23 spices.", 
-            PINEANANASSODA = "Pineapple juice added to carbonated water.", 
+            ANANASSODA = "Pineapple juice added to carbonated water.", 
             ORANGESODA = "It contains orange juice.",
             STRAWBERRYSODA = "Carbonated water with strawberry juice.", 
 

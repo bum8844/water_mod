@@ -146,7 +146,7 @@ return {
         CHERRY_ROSEBERRIES_TEA = "Did it extract blood from that alien spider?", -- ★★★★★
         CHERRY_HONEY_TEA = "Sweet and warm, but the color is strange!",
         SWEET_RICE_DRINK = "It has soft seeds in it!", 
-        PINEANANAS_JUICE = "Our teeth feel weird after drinking this.",
+        ANANAS_JUICE = "Our teeth feel weird after drinking this.",
         ORANGE_JUICE = "We will have to postpone brushing our teeth for a bit.",
         STRAWBERRY_SMOOTHIE = "Let's drink it slowly to avoid brain freeze.",
         STRAWBERRY_MILK_SMOOTHIE = "This is real strawberry shake!",
@@ -180,7 +180,7 @@ return {
         -- Collaboration Soda
 
         CHERRY_DOCTOR_COLA = "It's similar to cola, but not quite the same, but we like it!", -- ★★★★★
-        PINEANANASSODA = "We should be careful so our teeth don't decay.",  -- ★★★★★
+        ANANASSODA = "We should be careful so our teeth don't decay.",  -- ★★★★★
         ORANGESODA = "It's orange-flavored carbonated beverage!", 
         STRAWBERRYSODA = "Wickerbottom said to drink carbonated drinks in moderation.", 
 

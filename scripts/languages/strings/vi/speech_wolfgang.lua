@@ -146,7 +146,7 @@ return {
             CHERRY_ROSEBERRIES_TEA = "Có mùi như hoa hồng đáng yêu.", -- Trà Tầm Xuân Rừng Anh Đào
             CHERRY_HONEY_TEA = "Cực kỳ ngọt ngào!", -- Trà mật ong hoa anh đào rừng anh đào
             SWEET_RICE_DRINK = "Thật ngọt dù chỉ có cơm!", -- Vita Hybrids Sikhye
-            PINEANANAS_JUICE = "Nước trái cây cực kỳ sảng khoái.", -- Nước ép dứa của Regal
+            ANANAS_JUICE = "Nước trái cây cực kỳ sảng khoái.", -- Nước ép dứa của Regal
             ORANGE_JUICE = "chua, ngọt và cam.", -- Gói thực phẩm khác Nước cam
             STRAWBERRY_SMOOTHIE = "Nó chứa đầy hạt.", -- Gói thực phẩm khác Sinh tố dâu tây
             STRAWBERRY_MILK_SMOOTHIE = "Mịn màng và thơm ngon.", -- Thêm gói thực phẩm Sinh tố sữa dâu
@@ -180,7 +180,7 @@ return {
             -- Hợp tác Soda
 
             CHERRY_DOCTOR_COLA = "Có vị như kẹo!", -- Cherry Forest Doctor Pepper (Doctor Cherry)
-            PINEANANASSODA = "chua và sảng khoái.", -- Dứa có ga (Orangina)
+            ANANASSODA = "chua và sảng khoái.", -- Dứa có ga (Orangina)
             ORANGESODA = "Ngọt và có ga.", -- Cam có ga (Fanta)
             STRAWBERRYSODA = "Nhiều hạt như bong bóng!", -- Dâu có ga (Dâu xứ Welch)
 

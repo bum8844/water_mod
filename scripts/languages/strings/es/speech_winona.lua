@@ -144,7 +144,7 @@ return {
             CHERRY_ROSEBERRIES_TEA = "La acidez lo hace aún mejor.", -- Cherry Forest Rosehip Tea
             CHERRY_HONEY_TEA = "Necesito beber esto para limpiar el polvo de mi garganta.",
             SWEET_RICE_DRINK = "Hmm,  es algo dulce.", -- Vita Hyup Sikhye
-            PINEANANAS_JUICE = "Definitivamente mejor que el jugo en los productos enlatados.", 
+            ANANAS_JUICE = "Definitivamente mejor que el jugo en los productos enlatados.", 
             ORANGE_JUICE = "Siempre he visto el refrigerador lleno de esto.", -- More Food Pack Orange Juice
             STRAWBERRY_SMOOTHIE = "Parece ser del gusto de las trabajadoras. Oh, yo también soy una trabajadora. ¡Hm!",
             STRAWBERRY_MILK_SMOOTHIE = "Sabe a una bebida de postre de la casa de té, pero es deliciosa.",
@@ -178,7 +178,7 @@ return {
             -- Collaboration Sodas
 
             CHERRY_DOCTOR_COLA = "Esto no es coca cola.",
-            PINEANANASSODA = "Sabe como refresco de piña de tienda comercial.", -- Pineapple Soda (Oranch Soda)
+            ANANASSODA = "Sabe como refresco de piña de tienda comercial.", -- Pineapple Soda (Oranch Soda)
             ORANGESODA = "Sabe como refresco de naranja de tienda comercial.", -- Orange Soda (Frontera)
             STRAWBERRYSODA = "No me sorprende que exista un refresco sabor fresa.", -- Strawberry Soda (Welch's Strawberry)
 

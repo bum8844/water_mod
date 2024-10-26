@@ -146,7 +146,7 @@ return {
             CHERRY_ROSEBERRIES_TEA = "Chắc chắn rồi, nó có mùi thơm.", -- Trà Tầm Xuân Rừng Anh Đào
             CHERRY_HONEY_TEA = "Ít nhất trông nó cũng đẹp.", -- Trà Mật Ong Hoa Anh Đào Rừng Anh Đào
             SWEET_RICE_DRINK = "Tôi thích phiên bản rang hơn.", -- Vita-Hyphy Sikhye
-            PINEANANAS_JUICE = "Uống thì tốt, nhưng nó sẽ khiến miệng bạn ngứa ran.", -- Legion Pineapple Juice
+            ANANAS_JUICE = "Uống thì tốt, nhưng nó sẽ khiến miệng bạn ngứa ran.", -- Legion Pineapple Juice
             ORANGE_JUICE = "Nếu ai đó uống nó, tôi nên giới thiệu kem đánh răng.", -- Thêm gói thực phẩm Nước cam
             STRAWBERRY_SMOOTHIE = "Nó được pha trộn độc đáo với màu đỏ.", -- Thêm gói thực phẩm Sinh tố dâu tây
             STRAWBERRY_MILK_SMOOTHIE = "Đôi khi, đồ lạnh cũng không tệ lắm.", -- Thêm gói thực phẩm Sinh tố sữa dâu
@@ -180,7 +180,7 @@ return {
             -- Nước ngọt hợp tác
 
             CHERRY_DOCTOR_COLA = "Đó là hàng nhái tự chế.", -- Cherry Forest Dr. Pepper (Dr. Cherry)
-            PINEANANASSODA = "Chỉ là soda dứa thôi.", -- Soda dứa (Oransi)
+            ANANASSODA = "Chỉ là soda dứa thôi.", -- Soda dứa (Oransi)
             ORANGESODA = "Không có gì đặc biệt, chỉ là soda cam thôi.", -- Orange Soda (Fanta)
             STRAWBERRYSODA = "Nó có màu đỏ và có ga, ngon lắm phải không?", -- Strawberry Soda (Welch's Strawberry)
             GIANT_BLUEBERRY_WINE = "Tôi thích cách bố trí mới của nó!", -- Vita-Hyphy Boom Berry Wine (nổ khi đốt lửa)

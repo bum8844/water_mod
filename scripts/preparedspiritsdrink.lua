@@ -333,6 +333,13 @@ for active, _ in pairs(modlist) do
 	end
 end
 
+if modlist.hof or modlist.umc then
+	local rice_drink = mod_drink.rice_drink
+	for k,v in pairs(rice_drink) do
+		drinks[k] = v
+	end
+end
+
 if modlist.te or modlist.ia or modlist.ta then
 	local sw_drink = mod_drink.sw_drink
 	for k,v in pairs(sw_drink) do

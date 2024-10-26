@@ -132,7 +132,7 @@ return {
             CHERRY_ROSEBERRIES_TEA = "这酸味让它更好喝。",
             CHERRY_HONEY_TEA = "来一杯清掉喉咙里的积尘。",
             SWEET_RICE_DRINK = "唔，蛮甜的。",
-            PINEANANAS_JUICE = "肯定比罐头的更好。",
+            ANANAS_JUICE = "肯定比罐头的更好。",
             ORANGE_JUICE = "没有一天在休息室的冰箱看不到这个。",
             STRAWBERRY_SMOOTHIE = "蛮适合女工的口味，等等我就是啊！嗯！",
             STRAWBERRY_MILK_SMOOTHIE = "尝起来像是茶馆的甜点，不过蛮好喝的。",
@@ -166,7 +166,7 @@ return {
             -- 联动气泡水
 
             CHERRY_DOCTOR_COLA = "这可不是可乐。",
-            PINEANANASSODA = "尝起来像是店里的菠萝气泡水。",
+            ANANASSODA = "尝起来像是店里的菠萝气泡水。",
             ORANGESODA = "尝起来像是店里的橘子气泡水。",
             STRAWBERRYSODA = "它的存在并不令我感到意外。",
 

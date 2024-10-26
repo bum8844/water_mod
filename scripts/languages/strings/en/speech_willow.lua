@@ -146,7 +146,7 @@ return {
             CHERRY_ROSEBERRIES_TEA = "Yeah, it smells fragrant.", 
             CHERRY_HONEY_TEA = "Ha, such a nice color.", 
             SWEET_RICE_DRINK = "I prefer the roasted version.",
-            PINEANANAS_JUICE = "Good when you drink, but your mouth will tingle after.", 
+            ANANAS_JUICE = "Good when you drink, but your mouth will tingle after.", 
             ORANGE_JUICE = "If someone's drinking it, I'll suggest brushing their teeth.", 
             STRAWBERRY_SMOOTHIE = "It's been blended nicely into red.", 
             STRAWBERRY_MILK_SMOOTHIE = "Sometimes, cold things aren't so bad.", 
@@ -180,7 +180,7 @@ return {
             -- Collaborative Sodas
 
             CHERRY_DOCTOR_COLA = "It's a homemade imitation.", 
-            PINEANANASSODA = "It's just pineapple soda.",
+            ANANASSODA = "It's just pineapple soda.",
             ORANGESODA = "Nothing special, just orange soda.", 
             STRAWBERRYSODA = "It's red and fizzy, so it's good.",
 

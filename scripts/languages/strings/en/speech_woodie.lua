@@ -146,7 +146,7 @@ return {
             CHERRY_ROSEBERRIES_TEA = "I'm suspicious if any hair-like parts are left.",
             CHERRY_HONEY_TEA = "Honey and tree scent, fantastic.", 
             SWEET_RICE_DRINK = "This is an unusual grain juice.", 
-            PINEANANAS_JUICE = "It's refreshing, but it's too sour for me to eat much of it.", 
+            ANANAS_JUICE = "It's refreshing, but it's too sour for me to eat much of it.", 
             ORANGE_JUICE = "It's so sour that I want to add some syrup.", 
             STRAWBERRY_SMOOTHIE = "I wouldn't seek it out, but it's nice to have.", 
             STRAWBERRY_MILK_SMOOTHIE = "It's smooth and refreshing, eh?", 
@@ -180,7 +180,7 @@ return {
             -- Collaboration Sodas
 
             CHERRY_DOCTOR_COLA = "As long as it's sweet and refreshing, that's enough.",
-            PINEANANASSODA = "It's pineapple soda.",
+            ANANASSODA = "It's pineapple soda.",
             ORANGESODA = "It's orange soda.", 
             STRAWBERRYSODA = "It's strawberry soda.",
 
