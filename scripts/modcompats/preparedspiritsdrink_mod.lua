@@ -130,8 +130,10 @@ local umc_drink = {
 		oneatenfn = function(inst, eater)
 			spirits(inst, eater)
 		end,
-	},
+	}
+}
 
+local rice_drink = {
 	rice_spirits = {
 		test = function(boilier, names, tags) return names.rice_wine and not tags.additives end,
 		priority = 2,
@@ -201,4 +203,4 @@ local legion_drink = {
 	}
 }
 
-return { sw_drink = sw_drink, coconut_drink = coconut_drink, cf_drink = cf_drink, umc_drink = umc_drink, wheat_drink = wheat_drink, legion_drink = legion_drink }
+return { sw_drink = sw_drink, coconut_drink = coconut_drink, cf_drink = cf_drink, umc_drink = umc_drink, wheat_drink = wheat_drink, legion_drink = legion_drink, rice_drink = rice_drink }

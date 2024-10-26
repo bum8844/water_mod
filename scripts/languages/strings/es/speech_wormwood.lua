@@ -132,7 +132,7 @@ return {
             CHERRY_ROSEBERRIES_TEA = "Huele fuerte", -- Cherry Forest Rosehip Tea
             CHERRY_HONEY_TEA = "A amigas abejas les gusta", -- Cherry Forest Cherry Blossom Honey Tea
             SWEET_RICE_DRINK = "¡Suave!", -- VitaHive Sake
-            PINEANANAS_JUICE = "Digno de coronar", -- Legion Pineananas Juice
+            ANANAS_JUICE = "Digno de coronar", -- Legion Pineananas Juice
             ORANGE_JUICE = "Bola cítrica de tomar", -- More Food Pack Orange Juice
             STRAWBERRY_SMOOTHIE = "Frío y ácido", -- More Food Pack Strawberry Smoothie
             STRAWBERRY_MILK_SMOOTHIE = "Rico, acidito y cremoso", -- More Food Pack Strawberry Milk Smoothie
@@ -166,7 +166,7 @@ return {
             -- Collaborative Soda
 
             CHERRY_DOCTOR_COLA = "Burbujas oscuras", -- Cherry Forest Doctor Pepper (Doctor Cherry)
-            PINEANANASSODA = "Agua burbujeante", -- Carbonated Pineananas (Olimar's)
+            ANANASSODA = "Agua burbujeante", -- Carbonated Pineananas (Olimar's)
             ORANGESODA = "Bola naranja burbujeante", -- Carbonated Orange (Fanta)
             STRAWBERRYSODA = "Agua con burbujas frutales", -- Carbonated Strawberry (Welch's Strawberry)
 

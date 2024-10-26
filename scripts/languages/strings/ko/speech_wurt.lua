@@ -132,7 +132,7 @@ return {
 		CHERRY_ROSEBERRIES_TEA = "못생긴열매 머리카락 없지?", --체리숲 로즈힙 차
 		CHERRY_HONEY_TEA = "예쁜벌꿀 꿀 탄물 마시면 몸 따듯해져!", --체리숲 벚꽃꿀 차
 		SWEET_RICE_DRINK = "어인들 이런식으로 간식 안만들어.", -- 비타협 식혜
-		PINEANANAS_JUICE = "시큼한 과일 물에 넣어서 덜시고 더 달아, 뽀륵.", -- 레기온 파인애플 주스
+		ANANAS_JUICE = "시큼한 과일 물에 넣어서 덜시고 더 달아, 뽀륵.", -- 레기온 파인애플 주스
 		ORANGE_JUICE = "과즙팡팡 상큼해, 뽀륵!", -- 모어 푸드 팩 오랜지 주스
 		STRAWBERRY_SMOOTHIE = "흐드드, 빨간과즙 얼은거 갈았어!", -- 모어 푸드 팩 딸기 스무디
 		STRAWBERRY_MILK_SMOOTHIE = "흐드드드, 부드러워!", -- 모어 푸드 팩 딸기 스무디 라떼
@@ -166,7 +166,7 @@ return {
 		-- 콜라보 소다
 
 		CHERRY_DOCTOR_COLA = "검은물 톡 톡 하고 붉은 과즙맛 나!", --체리숲 닥터 페퍼(닥터 체리)
-		PINEANANASSODA = "톡 톡 하는 시큼한 과일물!", -- 탄산 파인애플(오란씨)
+		ANANASSODA = "톡 톡 하는 시큼한 과일물!", -- 탄산 파인애플(오란씨)
 		ORANGESODA = "뽀륵, 상큼하고 시원해!", -- 탄산 오랜지(환타)
 		STRAWBERRYSODA = "톡 톡 하는 붉은과일 물이야, 뽀륵.", -- 탄산 딸기(웰치스 딸기)
 

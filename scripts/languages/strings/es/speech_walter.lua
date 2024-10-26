@@ -132,7 +132,7 @@ return {
 		CHERRY_ROSEBERRIES_TEA = "Es tan relajante.",
 		CHERRY_HONEY_TEA = "¡Es como medicina en jarabe!",
 		SWEET_RICE_DRINK = "No es jugo aunque tampoco té",
-		PINEANANAS_JUICE = "¿Sabes cual es la hermana de la piñanana? ¡Bananana!", -- 레기온 파인애플 주스
+		ANANAS_JUICE = "¿Sabes cual es la hermana de la piñanana? ¡Bananana!", -- 레기온 파인애플 주스
 		ORANGE_JUICE = "¡Conoce mi jugo naranja!.", -- 모어 푸드 팩 오랜지 쥬스
 		STRAWBERRY_SMOOTHIE = "Fuerte pero rico.", -- 모어 푸드 팩 딸기 스무디
 		STRAWBERRY_MILK_SMOOTHIE = "¡Refrescante!", -- 모어 푸드 팩 딸기 스무디 라떼
@@ -167,7 +167,7 @@ return {
 		--콜라보 소다
 
 		CHERRY_DOCTOR_COLA = "Definitivamente no es un dentista.",
-		PINEANANASSODA = "Lo llamaremos el refresco del pino pionero.", -- 탄산 파인애플(오란씨)
+		ANANASSODA = "Lo llamaremos el refresco del pino pionero.", -- 탄산 파인애플(오란씨)
 		ORANGESODA = "¿Cómo le dices a un refresco de naranja? Naranjezco, Je. 오렌지소다가 꿈을 꾸면? Fanta-sy!", -- 탄산 오랜지(환타)
 		STRAWBERRYSODA = "¡Nunca había visto un refresco de fresa!", -- 탄산 딸기(웰치스 딸기)
 

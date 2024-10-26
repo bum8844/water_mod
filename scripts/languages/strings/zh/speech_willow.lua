@@ -132,7 +132,7 @@ return {
             CHERRY_ROSEBERRIES_TEA = "嗯，确实很香。",
             CHERRY_HONEY_TEA = "颜色蛮好看的。",
             SWEET_RICE_DRINK = "烤过的版本更好。",
-            PINEANANAS_JUICE = "这个好喝，不过会弄得嘴巴麻麻的。",
+            ANANAS_JUICE = "这个好喝，不过会弄得嘴巴麻麻的。",
             ORANGE_JUICE = "喝这个的人应该去刷个牙。",
             STRAWBERRY_SMOOTHIE = "这红色的东西混得还算不错。",
             STRAWBERRY_MILK_SMOOTHIE = "有时候冷的东西蛮不赖的。",
@@ -166,7 +166,7 @@ return {
             -- 联动气泡水
 
             CHERRY_DOCTOR_COLA = "家常仿制品。",
-            PINEANANASSODA = "只是个菠萝气泡水吧。",
+            ANANASSODA = "只是个菠萝气泡水吧。",
             ORANGESODA = "就只是个橘子气泡水。",
             STRAWBERRYSODA = "红色的而且很多气泡，会很好喝的。",
 

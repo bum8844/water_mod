@@ -132,7 +132,7 @@ return {
             CHERRY_ROSEBERRIES_TEA = "Sospecho que queden partes de pelo.", -- Cherry Forest Rosehip Tea
             CHERRY_HONEY_TEA = "Aroma a miel y árbol, fantástico.",
             SWEET_RICE_DRINK = "Un jugo de granos algo inusual.", -- Vitacomp Sweet Rice Drink
-            PINEANANAS_JUICE = "Es refrescante, pero es demasiado amargo para que pueda comer mucho.",
+            ANANAS_JUICE = "Es refrescante, pero es demasiado amargo para que pueda comer mucho.",
             ORANGE_JUICE = "Es tan agrio que quiero agregar un poco de sirope.",
             STRAWBERRY_SMOOTHIE = "No lo buscaría, pero es bueno tenerlo.",
             STRAWBERRY_MILK_SMOOTHIE = "Es suave y refrescante, ¿eh?",
@@ -166,7 +166,7 @@ return {
             -- Collaboration Sodas
 
             CHERRY_DOCTOR_COLA = "Mientras sea dulce y refrescante, eso es suficiente.",
-            PINEANANASSODA = "Es refresco de piña.", -- Pineapple Soda (Orancee)
+            ANANASSODA = "Es refresco de piña.", -- Pineapple Soda (Orancee)
             ORANGESODA = "Es un refresco naranja.", -- Orange Soda (Fanta)
             STRAWBERRYSODA = "Refresco de fresa.", -- Strawberry Soda (Welch's Strawberry)
 

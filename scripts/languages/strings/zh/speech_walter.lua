@@ -132,7 +132,7 @@ return {
 		CHERRY_ROSEBERRIES_TEA = "好潮！同时令人安心。",
 		CHERRY_HONEY_TEA = "好像甜甜的药！",
 		SWEET_RICE_DRINK = "不是蔬果汁，也不是茶！",
-		PINEANANAS_JUICE = "香蕉为什么是弯的？看看香蕉哥！", -- 有更好的方案请务必告知
+		ANANAS_JUICE = "香蕉为什么是弯的？看看香蕉哥！", -- 有更好的方案请务必告知
 		ORANGE_JUICE = "看看这个原汁原味的橙汁吧。", 
 		STRAWBERRY_SMOOTHIE = "好重的口味。", -- 有更好的方案请务必告知
 		STRAWBERRY_MILK_SMOOTHIE = "好凉爽！", 
@@ -167,7 +167,7 @@ return {
 		--콜라보 소다
 
 		CHERRY_DOCTOR_COLA = "肯定不是牙医。",
-		PINEANANASSODA = "我们会把它叫做松萝树先锋气泡水。", 
+		ANANASSODA = "我们会把它叫做松萝树先锋气泡水。", 
 		ORANGESODA = "这个是在局子做的吗？", -- 有更好的方案请务必告知
 		STRAWBERRYSODA = "我没看过草莓味的气泡水！",
 

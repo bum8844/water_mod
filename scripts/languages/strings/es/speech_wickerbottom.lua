@@ -130,7 +130,7 @@ return {
             CHERRY_ROSEBERRIES_TEA = "Es dulce y fragante.", --Cherry Forest Rosehip Tea
             CHERRY_HONEY_TEA = "Siento que mi cuerpo se está calentando.", --Cherry Forest Cherry Blossom Honey Tea
             SWEET_RICE_DRINK = "Se ha fermentado para darle un sabor dulce y facilitar su digestión.", --Vitacorp Sweet Hyphae
-            PINEANANAS_JUICE = "Contiene mucha bromelina, por lo que puede provocar llagas en la boca. Bébelo con moderación.", --More Food Pack Pineapple Juice
+            ANANAS_JUICE = "Contiene mucha bromelina, por lo que puede provocar llagas en la boca. Bébelo con moderación.", --More Food Pack Pineapple Juice
             ORANGE_JUICE = "Zumo de naranja, es como el tipo de zumo estereotípico.", --More Food Pack Orange Juice
             STRAWBERRY_SMOOTHIE = "Hielo y fresas mezclados, estaría aún mejor con leche.", --More Food Pack Strawberry Smoothie
             STRAWBERRY_MILK_SMOOTHIE = "Una popular bebida de fresa, a veces hecha con yogur en lugar de leche.", --More Food Pack Strawberry Milk Smoothie
@@ -164,7 +164,7 @@ return {
             -- Collaborative Sodas
 
             CHERRY_DOCTOR_COLA = "W. B. Bebida medicinal con 23 especias.", --Cherry Forest Doctor Pepper (Doctor Cherry)
-            PINEANANASSODA = "Zumo de piña con agua carbonatada.", --Carbonated Pineapple (Orancee)
+            ANANASSODA = "Zumo de piña con agua carbonatada.", --Carbonated Pineapple (Orancee)
             ORANGESODA = "Contiene zumo de naranja.", --Carbonated Orange (Fanta)
             STRAWBERRYSODA = "Agua carbonatada con zumo de fresa.", --Carbonated Strawberry (Welch's Strawberry)
 
