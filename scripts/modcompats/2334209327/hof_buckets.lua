@@ -35,12 +35,17 @@ local function SortAfter(a, b, filter_name)
 end
 
 local function ModAtlas()
-  return "images/tea_inventoryitem.xml"
+  return "images/inventoryimages/hof_inventoryimages.xml"
 end
 
-AddRecipePostInit("fertilizer",function(v) v.ingredients = {Ingredient("poop", 3), Ingredient("boneshard", 2), Ingredient("kyno_bucket_empty", 1, ModAtlas(), nil,"bucket_empty.tex")} end)
+AddRecipePostInit("fertilizer",function(v) v.ingredients = {Ingredient("poop", 3), Ingredient("boneshard", 2), Ingredient("kyno_bucket_empty", 1, ModAtlas(), nil,"kyno_bucket_empty.tex")} end)
 AddRecipePostInit("kyno_bucket_empty",function(v) v.ingredients = {Ingredient("log",4)} v.level = TECH.NONE end)
 AddRecipeToFilter("kyno_bucket_empty","HYDRATION")
+
+RemoveRecipeFromFilter("bucket_empty","HYDRATION")
+RemoveRecipeFromFilter("bucket_empty","TOOLS")
+AddRecipeToFilter("buckets_empty","LOST")
+AddRecipePostInit("buckets_empty",function(v) v.nounlock = true end)
 
 SortAfter("kyno_bucket_empty","bucket_woodie_empty","TOOLS")
 SortAfter("kyno_bucket_empty","bucket_woodie_empty","HYDRATION")

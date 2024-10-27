@@ -94,39 +94,22 @@ if modlist.ia or modlist.te then
     AddRecipeToFilter("turf_ruinsbrick_glow_blueprint","SECRETKNOWLEDGE")
 end
 
-AddRecipe2("bucket_woodie_empty",{Ingredient("lucy",0),Ingredient("log",3)},TECH.NONE,{atlas = ModAtlas(), image = "bucket_woodie_empty.tex", builder_tag="woodcarver1", sg_state="carvewood_boards",  description="bucket_empty"},{"CHARACTER","HYDRATION","TOOLS"})
+AddRecipe2("bucket_woodie_empty",{Ingredient("lucy",0),Ingredient("log",2)},TECH.NONE,{atlas = ModAtlas(), image = "bucket_woodie_empty.tex", builder_tag="woodcarver1", sg_state="carvewood_boards",  description="bucket_empty"},{"CHARACTER","HYDRATION","TOOLS"})
 SortAfter("bucket_woodie_empty", "goldenpitchfork", "TOOLS")
 SortAfter("bucket_woodie_empty","woodie_boards","CHARACTER")
 
-AddRecipe2("bucket_driftwood_empty",{Ingredient("driftwood_log",2)},TECH.NONE,{atlas = ModAtlas(), image = "bucket_driftwood_empty.tex", description="bucket_empty"},{"HYDRATION","TOOLS"})
 AddRecipe2("bucket_steel_empty",{Ingredient("steelwool",2),Ingredient("hammer",0)},TECH.SCIENCE_TWO,{atlas = ModAtlas(), image = "bucket_steel_empty.tex",  description="bucket_empty"},{"HYDRATION","TOOLS"})
 
-if modlist.hof then
-    AddRecipeToFilter("kyno_bucket_empty","HYDRATION")
-    SortAfter("kyno_bucket_empty","bucket_woodie_empty","TOOLS")
-    SortAfter("kyno_bucket_empty","bucket_woodie_empty","HYDRATION")
-    SortAfter("bucket_driftwood_empty","kyno_bucket_empty","TOOLS")
-    SortAfter("bucket_driftwood_empty","kyno_bucket_empty","HYDRATION")
-else
-    AddRecipePostInit("fertilizer",function(v) v.ingredients = {Ingredient("poop", 3), Ingredient("boneshard", 2), Ingredient("bucket_empty", 1, ModAtlas(), nil,"bucket_empty.tex")} end)
-    AddRecipe2("bucket_empty",{Ingredient("log",4)},TECH.NONE,{atlas = ModAtlas(), image = "bucket_empty.tex"},{"HYDRATION","TOOLS"})
-    SortAfter("bucket_empty","bucket_woodie_empty","TOOLS")
-    SortAfter("bucket_empty","bucket_woodie_empty","HYDRATION")
-    SortAfter("bucket_driftwood_empty","bucket_empty","TOOLS")
-    SortAfter("bucket_driftwood_empty","bucket_empty","HYDRATION")
-end
-
-SortAfter("bucket_steel_empty","bucket_driftwood_empty","TOOLS")
-SortAfter("bucket_steel_empty","bucket_driftwood_empty","HYDRATION")
+AddRecipePostInit("fertilizer",function(v) v.ingredients = {Ingredient("poop", 3), Ingredient("boneshard", 2), Ingredient("bucket_empty", 1, ModAtlas(), nil,"bucket_empty.tex")} end)
+AddRecipe2("bucket_empty",{Ingredient("log",4)},TECH.NONE,{atlas = ModAtlas(), image = "bucket_empty.tex"},{"HYDRATION","TOOLS"})
+SortAfter("bucket_empty","bucket_woodie_empty","TOOLS")
+SortAfter("bucket_steel_empty","bucket_empty","TOOLS")
 
 AddRecipe2("spice_caffeinpepper",{Ingredient("caffeinberry_bean_cooked", 3, ModAtlas(), nil, "caffeinberry_bean_cooked.tex")},TECH.FOODPROCESSING_ONE,{atlas = ModAtlas(), builder_tag="professionalchef", numtogive=2, image = "spice_caffeinpepper.tex" ,nounlock=true},{"FOODPROCESSING"})
 SortAfter("spice_caffeinpepper", "spice_salt", "FOODPROCESSING")
 
-AddRecipe2("spice_ruincolate_spread",{Ingredient("ruincacao_bean_cooked", 3, ModAtlas(), nil, "ruincacao_bean_cooked.tex")},TECH.FOODPROCESSING_ONE,{atlas = ModAtlas(), builder_tag="professionalchef", numtogive=2, image = "spice_ruincolate_spread.tex" ,nounlock=true},{"FOODPROCESSING"})
-SortAfter("spice_ruincolate_spread", "spice_caffeinpepper", "FOODPROCESSING")
-
 AddRecipe2("additive_seed",{Ingredient("pinecone",1),Ingredient("pepper_seeds",1),Ingredient("garlic_seeds",1)},TECH.FOODPROCESSING_ONE,{atlas = ModAtlas(), builder_tag="professionalchef", numtogive=2, image = "additive_seed.tex" ,nounlock=true},{"FOODPROCESSING"})
-SortAfter("additive_seed", "spice_ruincolate_spread", "FOODPROCESSING")
+SortAfter("additive_seed", "spice_caffeinpepper", "FOODPROCESSING")
 
 AddRecipe2("additive_nut",{Ingredient("acorn_cooked",1),Ingredient("ruincacao_bean_cooked",1,ModAtlas(),nil,"ruincacao_bean_cooked.tex"),Ingredient("caffeinberry_bean_cooked", 1, ModAtlas(), nil, "caffeinberry_bean_cooked.tex")},TECH.FOODPROCESSING_ONE,{atlas = ModAtlas(), builder_tag="professionalchef", numtogive=2, image = "additive_nut.tex" ,nounlock=true},{"FOODPROCESSING"})
 SortAfter("additive_nut", "additive_seed", "FOODPROCESSING")
@@ -137,11 +120,8 @@ SortAfter("additive_dairy", "additive_seed", "FOODPROCESSING")
 AddRecipe2("additive_petals",{Ingredient("petals",1),Ingredient("tealeaves",1,ModAtlas(),nil,"tealeaves.tex"),Ingredient("foliage", 1)},TECH.FOODPROCESSING_ONE,{atlas = ModAtlas(), builder_tag="professionalchef", numtogive=2, image = "additive_petals.tex" ,nounlock=true},{"FOODPROCESSING"})
 SortAfter("additive_petals", "additive_seed", "FOODPROCESSING")
 
-AddRecipe2("boilbook_basic",{Ingredient("papyrus",1),Ingredient("tealeaves",1,ModAtlas(),nil,"tealeaves.tex")},TECH.SCIENCE_ONE,{atlas = ModAtlas(), image = "boilbook_basic.tex"},{"COOKING","HYDRATION"})
-SortAfter("boilbook_basic","cookbook","COOKING")
-
-AddRecipe2("boilbook_advanced",{Ingredient("boilbook_basic",1,ModAtlas(),nil,"boilbook_basic.tex"),Ingredient("featherpencil",1),Ingredient("papyrus",2)},TECH.SCIENCE_ONE,{atlas = ModAtlas(), image = "boilbook_advanced.tex"},{"COOKING","HYDRATION"})
-SortAfter("boilbook_advanced","boilbook_basic","COOKING")
+AddRecipe2("boilbook",{Ingredient("papyrus",1),Ingredient("tealeaves",1,ModAtlas(),nil,"tealeaves.tex")},TECH.SCIENCE_ONE,{atlas = ModAtlas(), image = "boilbook.tex"},{"COOKING","HYDRATION"})
+SortAfter("boilbook","cookbook","COOKING")
 
 AddRecipe2("campkettle_item",{Ingredient("twigs",2),Ingredient("log",2),Ingredient("cutgrass",2)},TECH.NONE,{atlas = ModAtlas(), image = "campkettle.tex"},{"COOKING","REFINE","HYDRATION"})
 SortBefore("campkettle_item","cookpot","COOKING")
@@ -149,7 +129,7 @@ SortBefore("campkettle_item","cookpot","COOKING")
 AddRecipe2("kettle",{Ingredient("twigs",6),Ingredient("rope",2),Ingredient("charcoal",2)},TECH.SCIENCE_ONE,{placer = "kettle_placer", atlas = ModAtlas(), image = "kettle.tex"},{"COOKING","HYDRATION"})
 SortAfter("kettle","cookpot","COOKING")
 
-AddRecipe2("portablekettle_item",{Ingredient("transistor",2),Ingredient("cutstone",4),Ingredient("charcoal",3)},TECH.SCIENCE_TWO,{atlas = ModAtlas(), image = "portablekettle_item.tex", builder_tag="masterchef"},{"CHARACTER","COOKING","HYDRATION"})
+AddRecipe2("portablekettle_item",{Ingredient("transistor",2),Ingredient("cutstone",4),Ingredient("charcoal",3)},TECH.SCIENCE_TWO,{atlas = ModAtlas(), image = "portablekettle_item.tex"},{"COOKING","HYDRATION"})
 SortAfter("portablekettle_item","kettle","COOKING")
 
 AddRecipe2("brewery",{Ingredient("boards",3),Ingredient("livinglog",3),Ingredient("rope",3),Ingredient("cutstone",6),Ingredient("goldnugget",4)},TECH.SCIENCE_TWO,{placer = "brewery_placer", atlas = ModAtlas(), image = "brewery.tex"},{"COOKING","HYDRATION"})
@@ -171,21 +151,8 @@ SortAfter("desalinator","barrel","CONTAINERS")
 SortAfter("desalinator","barrel","COOKING")
 SortAfter("desalinator","barrel","GARDENING")
 
-AddRecipe2("thermos_bottle",{Ingredient("steelwool",1),Ingredient("moonglass",2),Ingredient("goldnugget",2),Ingredient("bluegem",1)},TECH.SCIENCE_TWO,{atlas = ModAtlas(), image = "thermos_bottle.tex"},{"HYDRATION","STRUCTURES","CONTAINERS","COOKING"})
-SortAfter("thermos_bottle","icebox","STRUCTURES")
-SortAfter("thermos_bottle","icebox","CONTAINERS")
-SortAfter("thermos_bottle","icebox","COOKING")
-
-AddRecipe2("wine_cellar",{Ingredient("cutstone",2),Ingredient("transistor",1),Ingredient("gears",1),Ingredient("opalpreciousgem",1)},TECH.SCIENCE_TWO,{placer = "wine_cellar_placer",atlas = ModAtlas(), image = "wine_cellar.tex"},{"HYDRATION","STRUCTURES","CONTAINERS","COOKING"})
-SortAfter("wine_cellar","thermos_bottle","STRUCTURES")
-SortAfter("wine_cellar","thermos_bottle","CONTAINERS")
-SortAfter("wine_cellar","thermos_bottle","COOKING")
-
 AddRecipe2("well_drilling_item",{Ingredient("trinket_6",4),Ingredient("transistor",2),Ingredient("goldnugget",4),Ingredient("flint",4),Ingredient("steelwool",2)},TECH.SCIENCE_TWO,{atlas = ModAtlas(), image = "well_drilling_item.tex"},{"GARDENING","REFINE","HYDRATION"})
 SortAfter("well_drilling_item","farm_plow_item","GARDENING")
-
-AddRecipe2("well_burying_kit",{Ingredient("boards",4),Ingredient("hammer",1)},TECH.SCIENCE_TWO,{atlas = ModAtlas(), image = "well_burying_kit.tex"},{"GARDENING","REFINE","HYDRATION"})
-SortAfter("well_burying_kit","well_waterpump_kit","GARDENING")
 
 AddRecipe2("well_kit",{Ingredient("boards",2),Ingredient("cutstone",6),Ingredient("hammer",1)},TECH.SCIENCE_TWO,{atlas = ModAtlas(), image = "well_kit.tex"},{"GARDENING","REFINE","HYDRATION"})
 SortAfter("well_kit","well_drilling_item","GARDENING")
@@ -194,40 +161,15 @@ SortAfter("well_kit","well_drilling_item","REFINE")
 AddRecipe2("well_sprinkler_kit",{Ingredient("marble",4),Ingredient("moonglass",1),Ingredient("townportaltalisman",2),Ingredient("gears",1)},TECH.SCIENCE_TWO,{atlas = ModAtlas(), image = "well_sprinkler_kit.tex"},{"GARDENING","REFINE","HYDRATION"})
 SortAfter("well_sprinkler_kit","well_kit","GARDENING")
 
-AddRecipe2("well_winona_sprinkler_maker",{Ingredient("well_sprinkler_kit",1, ModAtlas(), nil, "well_sprinkler_kit.tex"),Ingredient("sewing_tape", 1),Ingredient("wagpunk_bits",2),Ingredient("transistor",2)},TECH.NONE,{placer="well_winona_sprinkler_placer", atlas = ModAtlas(), image = "well_winona_sprinkler_maker.tex", nameoverride="well_winona_sprinkler_kit", description="well_winona_sprinkler_kit", builder_tag="basicengineer"},{"CHARACTER","GARDENING","REFINE","HYDRATION"})
-SortAfter("well_winona_sprinkler_maker","well_sprinkler_kit","GARDENING")
-SortAfter("well_winona_sprinkler_maker","winona_battery_high_kit","CHARACTER")
+AddRecipe2("well_waterpump_kit",{Ingredient("security_pulse_cage_full",1),Ingredient("wagpunk_bits",4),Ingredient("transistor",1),Ingredient("cutstone",2)},TECH.NONE,{atlas = ModAtlas(), image = "well_waterpump_kit.tex", builder_tag="handyperson"},{"CHARACTER","GARDENING","REFINE","HYDRATION"})
+SortAfter("well_waterpump_kit","well_sprinkler_kit","GARDENING")
+SortAfter("well_waterpump_kit","winona_battery_high","CHARACTER")
 
-AddRecipe2("well_winona_sprinkler_kit",{Ingredient("well_sprinkler_kit",1, ModAtlas(), nil, "well_sprinkler_kit.tex"),Ingredient("sewing_tape", 1),Ingredient("wagpunk_bits",2),Ingredient("transistor",2)},TECH.NONE,{atlas = ModAtlas(), image = "well_winona_sprinkler_kit.tex", builder_tag="portableengineer"},{"CHARACTER","GARDENING","REFINE","HYDRATION"})
-SortAfter("well_winona_sprinkler_kit","well_sprinkler_kit","GARDENING")
-SortAfter("well_winona_sprinkler_kit","winona_battery_high_kit","CHARACTER")
-
-AddRecipe2("well_waterpump",{Ingredient("security_pulse_cage_full",1),Ingredient("sewing_tape", 1),Ingredient("wagpunk_bits",4),Ingredient("transistor",1),Ingredient("cutstone",2)},TECH.NONE,{placer = "well_waterpump_placer" ,atlas = ModAtlas(), image = "well_waterpump.tex",description="well_waterpump_kit", builder_tag="basicengineer"},{"CHARACTER","GARDENING","REFINE","HYDRATION"})
-SortAfter("well_waterpump","well_winona_sprinkler_kit","GARDENING")
-SortAfter("well_waterpump","well_winona_sprinkler_kit","CHARACTER")
-
-AddRecipe2("well_waterpump_kit",{Ingredient("security_pulse_cage_full",1),Ingredient("sewing_tape", 1),Ingredient("wagpunk_bits",4),Ingredient("transistor",1),Ingredient("cutstone",2)},TECH.NONE,{atlas = ModAtlas(), image = "well_waterpump_kit.tex", builder_tag="portableengineer"},{"CHARACTER","GARDENING","REFINE","HYDRATION"})
-SortAfter("well_waterpump_kit","well_waterpump","GARDENING")
-SortAfter("well_waterpump_kit","well_waterpump","CHARACTER")
-
-AddRecipe2("steamdesalinator_maker",{Ingredient("well_waterpump_kit", 1, ModAtlas(), nil, "well_waterpump_kit.tex"),Ingredient("sewing_tape", 1),Ingredient("wagpunkbits_kit",1)},TECH.NONE,{placer="steamdesalinator_placer", min_spacing=1.5, testfn=function(pt) return TheWorld.Map:GetPlatformAtPoint(pt.x, 0, pt.z, -0.5) ~= nil or TheWorld.Map:IsDockAtPoint(pt.x, 0, pt.z) end, atlas = ModAtlas(), image = "steamdesalinator.tex",nameoverride="steamdesalinator_kit",description="steamdesalinator_kit", builder_tag="basicengineer"},{"CHARACTER","GARDENING","REFINE","HYDRATION"})
-SortAfter("steamdesalinator_maker","well_waterpump_kit","GARDENING")
-SortAfter("steamdesalinator_maker","well_waterpump_kit","CHARACTER")
-
-AddRecipe2("steamdesalinator_kit",{Ingredient("well_waterpump_kit", 1, ModAtlas(), nil, "well_waterpump_kit.tex"),Ingredient("sewing_tape", 1),Ingredient("wagpunkbits_kit",1)},TECH.NONE,{atlas = ModAtlas(), image = "steamdesalinator_kit.tex",builder_tag="portableengineer"},{"CHARACTER","GARDENING","REFINE","HYDRATION"})
-SortAfter("steamdesalinator_kit","well_waterpump_kit","GARDENING")
-SortAfter("steamdesalinator_kit","well_waterpump_kit","CHARACTER")
-
-AddRecipe2("wagpunkmachinetool",{Ingredient("wagpunkbits_kit",2),Ingredient("sewing_tape",1),Ingredient("wagpunk_bits",1)},TECH.NONE,{atlas = ModAtlas(), image = "wagpunkmachinetool.tex", builder_tag="portableengineer"},{"CHARACTER","REFINE","HYDRATION"})
-SortAfter("wagpunkmachinetool","steamdesalinator_kit","CHARACTER")
+AddRecipe2("well_burying_kit",{Ingredient("boards",4),Ingredient("hammer",1)},TECH.SCIENCE_TWO,{atlas = ModAtlas(), image = "well_burying_kit.tex"},{"GARDENING","REFINE","HYDRATION"})
+SortAfter("well_burying_kit","well_waterpump_kit","GARDENING")
 
 AddRecipe2("wx78module_nonedrunk",{Ingredient("scandata",3),Ingredient("fruitflyfruit_dead",1),Ingredient("gears",2),Ingredient("wx78module_maxhunger1",1)},TECH.ROBOTMODULECRAFT_ONE,{atlas = ModAtlas(), image = "wx78module_nonedrunk.tex", builder_tag="upgrademoduleowner"},{"CHARACTER"})
 SortAfter("wx78module_nonedrunk","wx78module_maxhunger1","CHARACTER")
-
---AddRecipe2("portable_shaker_machine_item")
---AddRecipe2("shaker_machine")
-
---
 
 AddDeconstructRecipe("well", {Ingredient("boards",2),Ingredient("cutstone",6)})
 
@@ -235,8 +177,6 @@ AddDeconstructRecipe("well_buryingsite", {Ingredient("boards",4)})
 
 AddDeconstructRecipe("well_sprinkler", {Ingredient("marble",4),Ingredient("moonglass",1),Ingredient("townportaltalisman",2),Ingredient("gears",1)})
 
-AddDeconstructRecipe("well_winona_sprinkler", {Ingredient("marble",4),Ingredient("moonglass",1),Ingredient("townportaltalisman",2),Ingredient("gears",1),Ingredient("sewing_tape", 1),Ingredient("wagpunk_bits",2),Ingredient("transistor",2)})
-
-AddDeconstructRecipe("steamdesalinator", {Ingredient("security_pulse_cage_full",1),Ingredient("sewing_tape", 2),Ingredient("wagpunk_bits",4),Ingredient("transistor",1),Ingredient("cutstone",2),Ingredient("wagpunkbits_kit",1)})
+AddDeconstructRecipe("well_waterpump", {Ingredient("security_pulse_cage_full",1),Ingredient("wagpunk_bits",4),Ingredient("transistor",1),Ingredient("cutstone",2)})
 
 CONSTRUCTION_PLANS["well_buryingsite"] = {Ingredient("shovel",1),Ingredient("seeds",6),Ingredient("turf_desertdirt",4),Ingredient("turf_mud",4)}
