@@ -103,7 +103,7 @@ return {
 		BERRIES_JUICE = "빨간 즙을 우려냈어.", -- 베리 쥬스
 		POMEGRANATE_JUICE = "빨간 건 절대 맛없을 수가 없지.", -- 석류 쥬스
 		BANANA_JUICE = "설마 껍질채로 끓인 거야?", -- 바나나 쥬스
-		FIG_JUICE = "주스로 만들어도 나쁘지는 않네." -- 무화과 쥬스
+		FIG_JUICE = "주스로 만들어도 나쁘지는 않네.", -- 무화과 쥬스
 		DRAGONJUICE = "불 같은 과일에 물을 넣다니 별로야.", --용과 쥬스
 		GLOWBERRYJUICE = "물이 빛나다니 진짜 이상해.", -- 발광베리 쥬스
 		WATERMELON_JUICE = "끈적하고 달콤하고 시원해.", --수박 쥬스
@@ -356,7 +356,7 @@ return {
 
 		WELL_WATERPUMP = {
 			HIGH_PRESSURE = "불에 타지도 않네. 완전 별로야.", -- 압력 최대
-			MIDDLE_PRESSURE = "두레박 오르내릴 필요 없는 건 편하네." -- 압력이 중간
+			MIDDLE_PRESSURE = "두레박 오르내릴 필요 없는 건 편하네.", -- 압력이 중간
 			LOW_PRESSURE = "어째 기계 상태가 시원찮은데.", -- 압력이 거의 없을때
 			RECHARG_PRESSURE = "멍청한 놈의 펌프가 막혔잖아!", -- 압력이 아예 없을때(여기까지 쓰면 압력이 최대가 될때까지 못씀.)
 		},
