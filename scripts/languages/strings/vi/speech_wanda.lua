@@ -133,7 +133,7 @@ return {
         CHERRY_ROSEBERRIES_TEA = "Đôi khi, thật tuyệt khi vừa uống một tách trà vừa ngắm hoa.", -- Trà Tầm Xuân Rừng Anh Đào
         CHERRY_HONEY_TEA = "Thật thanh lịch và ấm áp.", -- Trà mật ong hoa anh đào rừng anh đào
         SWEET_RICE_DRINK = "Tôi không biết tại sao những hạt này lại ăn lâu như vậy...", -- Vita Hyphy Sikhye
-        PINEANANAS_JUICE = "Ngay cả khi không có vỏ, nó vẫn khiến bạn thèm ăn hơn.", -- Legion Dứa
+        ANANAS_JUICE = "Ngay cả khi không có vỏ, nó vẫn khiến bạn thèm ăn hơn.", -- Legion Dứa
         ORANGE_JUICE = "Tôi nên dùng nó như một bữa ăn nhẹ sau bữa ăn.", -- Thêm gói thực phẩm Nước cam
         STRAWBERRY_SMOOTHIE = "Tôi phải uống nó nhanh thôi.", -- Thêm gói thực phẩm Sinh tố dâu tây
         STRAWBERRY_MILK_SMOOTHIE = "Thật là một món tráng miệng tuyệt vời!", -- Gói thực phẩm khác Sinh tố sữa dâu
@@ -167,7 +167,7 @@ return {
         -- Nước ngọt hợp tác
 
         CHERRY_DOCTOR_COLA = "Tôi không nghĩ đồ uống này liên quan đến việc du hành thời gian.", -- Cherry Forest Dr. Pepper (Doctor Cherry) (nhại lại Doctor Who)
-        PINEANANASSODA = "Tốt, tôi sẽ không lãng phí quá nhiều thời gian để thưởng thức món này.", -- Dứa có ga (Ohranjii)
+        ANANASSODA = "Tốt, tôi sẽ không lãng phí quá nhiều thời gian để thưởng thức món này.", -- Dứa có ga (Ohranjii)
         ORANGESODA = "Tốt, tôi sẽ không lãng phí quá nhiều thời gian để thưởng thức món này.", -- Carbonated Oranj (Fanta)
         STRAWBERRYSODA = "Tốt, tôi sẽ không lãng phí quá nhiều thời gian để thưởng thức món này.", -- Dâu có ga (Dâu xứ Wales)
 

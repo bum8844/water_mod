@@ -132,7 +132,7 @@ return {
             CHERRY_ROSEBERRIES_TEA = "Tôi sẽ cẩn thận không nuốt nụ hoa.", -- Trà hoa hồng anh đào rừng
             CHERRY_HONEY_TEA = "Nó có thể ngọt hơn thế này không?", -- Trà mật ong hoa anh đào rừng anh đào
             SWEET_RICE_DRINK = "Có gì đó dai trong đó.", -- Vita-Hybiscus Sikhye
-            PINEANANAS_JUICE = "Nó xé nát lớp vỏ cứng và nghiền nát cùi.", -- Nước Dứa Legacy
+            ANANAS_JUICE = "Nó xé nát lớp vỏ cứng và nghiền nát cùi.", -- Nước Dứa Legacy
             ORANGE_JUICE = "Chua như lớp vỏ dày.", -- Moer Food Pack Orange Juice
             STRAWBERRY_SMOOTHIE = "Thức uống được làm bằng cách nghiền dâu tây với đá.", -- Moer Food Pack Strawberry Smoothie
             STRAWBERRY_MILK_SMOOTHIE = "Nhẹ nhàng quấn quanh đầu lưỡi của tôi.", -- Moer Food Pack Strawberry Smoothie Latte
@@ -166,7 +166,7 @@ return {
             -- Soda hợp tác
 
             CHERRY_DOCTOR_COLA = "Đó không phải là một bác sĩ thực sự, nhưng nó có thể mang lại sự thoải mái thoáng qua.", ---★★★★★
-            PINEANANASSODA = "Đó là soda thơm và ngọt.",
+            ANANASSODA = "Đó là soda thơm và ngọt.",
             ORANGESODA = "Đó là đồ uống có ga với nước cam ép.",
             STRAWBERRYSODA = "Đó là nước giải khát có ga với dâu tây nghiền.", 
             

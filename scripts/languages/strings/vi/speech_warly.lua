@@ -132,7 +132,7 @@ return {
         CHERRY_ROSEBERRIES_TEA = "Nó có hương thơm thú vị và giúp điều hòa nhiệt độ cơ thể.", -- Trà hoa hồng hoa anh đào
         CHERRY_HONEY_TEA = "Đó là cách chữa đau họng nhanh chóng.", -- Trà mật ong anh đào hoa anh đào
         SWEET_RICE_DRINK = "Nó ngọt ngào và có kết cấu khác thường!", -- Vitahebhi Sikhye
-        PINEANANAS_JUICE = "Tốt nhất không nên uống quá nhiều, MỒM của tôi sẽ chảy máu mất.", -- Legion Pineapple Juice
+        ANANAS_JUICE = "Tốt nhất không nên uống quá nhiều, MỒM của tôi sẽ chảy máu mất.", -- Legion Pineapple Juice
         ORANGE_JUICE = "Đó là nước cam mới vắt!", -- Thêm gói thực phẩm Nước cam
         STRAWBERRY_SMOOTHIE = "Thật sảng khoái và ngon miệng!", -- Gói thực phẩm khác Sinh tố dâu tây
         STRAWBERRY_MILK_SMOOTHIE = "Đây là một trong những món đồ uống tráng miệng từ dâu tây được các chị em vô cùng yêu thích.", -- Thêm gói thực phẩm Strawberry Smoothie Latte
@@ -166,7 +166,7 @@ return {
         -- Hợp tác Soda
 
         CHERRY_DOCTOR_COLA = "Đó là một thức uống phù hợp và có lượng người hâm mộ cuồng nhiệt.", -- Cherry Forest Dr. Pepper (Dr. Cherry)
-        PINEANANASSODA = "Đây là thức uống hoàn hảo giúp bạn tiêu hóa sau bữa liên hoan lớn.", -- Soda dứa (Oran C)
+        ANANASSODA = "Đây là thức uống hoàn hảo giúp bạn tiêu hóa sau bữa liên hoan lớn.", -- Soda dứa (Oran C)
         ORANGESODA = "Giải khát sau bữa ăn!", -- Soda cam (Fanta)
         STRAWBERRYSODA = "Soda vị dâu ngọt ngào.", -- Soda dâu (Dâu tây của Welch)
 

@@ -132,7 +132,7 @@ return {
             CHERRY_ROSEBERRIES_TEA = "又香又甜。",
             CHERRY_HONEY_TEA = "感觉身体暖和起来了。",
             SWEET_RICE_DRINK = "发酵后更甜且易于消化。",
-            PINEANANAS_JUICE = "富含使口腔溃疡的蛋白酶，别喝太多了。",
+            ANANAS_JUICE = "富含使口腔溃疡的蛋白酶，别喝太多了。",
             ORANGE_JUICE = "橘子汁，像是饮料界的立体音声。",
             STRAWBERRY_SMOOTHIE = "混在一起的草莓和冰，再加上奶会更好。",
             STRAWBERRY_MILK_SMOOTHIE = "一个受欢迎的饮料，也可以用酸奶代替。",
@@ -166,7 +166,7 @@ return {
             -- 联动气泡水
 
             CHERRY_DOCTOR_COLA = "有医药价值的饮料，用23种香料做出来的。",
-            PINEANANASSODA = "加了松萝汁的碳酸水。",
+            ANANASSODA = "加了松萝汁的碳酸水。",
             ORANGESODA = "含有橘子汁。",
             STRAWBERRYSODA = "含有草莓汁的碳酸水。",
 

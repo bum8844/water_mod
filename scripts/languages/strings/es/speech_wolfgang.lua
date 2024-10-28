@@ -132,7 +132,7 @@ return {
             CHERRY_ROSEBERRIES_TEA = "Huele a rosas preciosas.", -- Cherry Forest Rosehip Tea
             CHERRY_HONEY_TEA = "¡Extremadamente dulce!", -- Cherry Forest Cherry Blossom Honey Tea
             SWEET_RICE_DRINK = "Está dulce a pesar de que solo tiene arroz!", -- Vita Hybrids Sikhye
-            PINEANANAS_JUICE = "Un jugo increíblemente refrescante.", -- Regal's Pineapple Juice
+            ANANAS_JUICE = "Un jugo increíblemente refrescante.", -- Regal's Pineapple Juice
             ORANGE_JUICE = "Agrio, dulce y naranja.", -- More Food Pack Orange Juice
             STRAWBERRY_SMOOTHIE = "Está lleno de semillas.", -- More Food Pack Strawberry Smoothie
             STRAWBERRY_MILK_SMOOTHIE = "Suave y sabroso.", -- More Food Pack Strawberry Milk Smoothie
@@ -166,7 +166,7 @@ return {
             -- Collaboration Soda
 
             CHERRY_DOCTOR_COLA = "¡Sabe a dulces!", -- Cherry Forest Doctor Pepper (Doctor Cherry)
-            PINEANANASSODA = "Agrio y refrescante.", -- Carbonated Pineapple (Orangina)
+            ANANASSODA = "Agrio y refrescante.", -- Carbonated Pineapple (Orangina)
             ORANGESODA = "Dulce y burbujeante.", -- Carbonated Orange (Fanta)
             STRAWBERRYSODA = "¡Tantas semillas y burbujas!", -- Carbonated Strawberry (Welch's Strawberry)
 

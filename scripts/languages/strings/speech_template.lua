@@ -134,16 +134,16 @@ return {
 
 		-- Mod-compatibility Drinks
 
-		COCONUT_JUICE = "",
-		RAINBOW_SHAKE = "",
-		QUARTZ_SHAKE = "",
-		CHERRY_ROSEBERRIES_TEA = "",
-		CHERRY_HONEY_TEA = "",
-		SWEET_RICE_DRINK = "",
-		PINEANANAS_JUICE = "", -- Legion: Pineapple Juice
-		ORANGE_JUICE = ""
-		STRAWBERRY_SMOOTHIE = "", -- More Food Pack: Strawberry Smoothie
-		STRAWBERRY_MILK_SMOOTHIE = "", -- More Food Pack: Strawberry Milkshake
+		COCONUT_JUICE = "", --난파선 코코넛 쥬스
+		RAINBOW_SHAKE = "", --난파선 무지개 해파리 쉐이크
+		QUARTZ_SHAKE = "", --난파선 광대 물고기 쉐이크
+		CHERRY_ROSEBERRIES_TEA = "", --체리숲 로즈힙 차
+		CHERRY_HONEY_TEA = "", --체리숲 벚꽃꿀 차
+		SWEET_RICE_DRINK = "", -- 비타협 식혜
+		ANANAS_JUICE = "", -- 레기온 파인애플 주스
+		ORANGE_JUICE = "", -- 모어 푸드 팩 오랜지 주스
+		STRAWBERRY_SMOOTHIE = "", -- 모어 푸드 팩 딸기 스무디
+		STRAWBERRY_MILK_SMOOTHIE = "", -- 모어 푸드 팩 딸기 스무디 라떼
 
 		-- Brewery Drinks
 
@@ -171,7 +171,10 @@ return {
 		PULQUE = "",
 		RUINCACAO_WINE = "",
 
-		-- Mod-compatibility Sodas
+		CHERRY_DOCTOR_COLA = "", --체리숲 닥터 페퍼(닥터 체리)
+		ANANASSODA = "", -- 탄산 파인애플(오란씨)
+		ORANGESODA = "", -- 탄산 오랜지(환타)
+		STRAWBERRYSODA = "", -- 탄산 딸기(웰치스 딸기)
 
 		CHERRY_DOCTOR_COLA = "",
 		PINEANANASSODA = "", -- Pineapple Soda

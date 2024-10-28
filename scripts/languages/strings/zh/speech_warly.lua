@@ -132,7 +132,7 @@ return {
         CHERRY_ROSEBERRIES_TEA = "有着一股清香味，同时也能帮助平衡体温。",
         CHERRY_HONEY_TEA = "润喉宝具。",
         SWEET_RICE_DRINK = "有着不寻常的",
-        PINEANANAS_JUICE = "别喝太多了，不然嘴巴的皮会破。",
+        ANANAS_JUICE = "别喝太多了，不然嘴巴的皮会破。",
         ORANGE_JUICE = "鲜榨的橘子汁！",
         STRAWBERRY_SMOOTHIE = "真是爽口！",
         STRAWBERRY_MILK_SMOOTHIE = "受到多位女士喜爱的草莓饮料。",
@@ -166,7 +166,7 @@ return {
         -- 联动气泡水
 
         CHERRY_DOCTOR_COLA = "那些发烧友肯定会喜欢这个。",
-        PINEANANASSODA = "吃了太多美食可以试试这个。",
+        ANANASSODA = "吃了太多美食可以试试这个。",
         ORANGESODA = "优质的饭后饮料！",
         STRAWBERRYSODA = "甜甜的草莓味气泡水。",
 

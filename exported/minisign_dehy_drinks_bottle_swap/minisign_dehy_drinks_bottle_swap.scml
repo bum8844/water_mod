@@ -144,11 +144,11 @@
     <folder id="47" name="pale_whiskey.tex">
         <file id="0" name="pale_whiskey.tex/pale_whiskey.tex.png" width="224" height="224" pivot_x="0.5" pivot_y="0.5"/>
     </folder>
-    <folder id="48" name="pineananas_juice.tex">
-        <file id="0" name="pineananas_juice.tex/pineananas_juice.tex.png" width="224" height="224" pivot_x="0.5" pivot_y="0.5"/>
+    <folder id="48" name="ananas_juice.tex">
+        <file id="0" name="ananas_juice.tex/ananas_juice.tex.png" width="224" height="224" pivot_x="0.5" pivot_y="0.5"/>
     </folder>
-    <folder id="49" name="pineananassoda.tex">
-        <file id="0" name="pineananassoda.tex/pineananassoda.tex.png" width="224" height="224" pivot_x="0.5" pivot_y="0.5"/>
+    <folder id="49" name="ananassoda.tex">
+        <file id="0" name="ananassoda.tex/ananassoda.tex.png" width="224" height="224" pivot_x="0.5" pivot_y="0.5"/>
     </folder>
     <folder id="50" name="pomegranate_juice.tex">
         <file id="0" name="pomegranate_juice.tex/pomegranate_juice.tex.png" width="224" height="224" pivot_x="0.5" pivot_y="0.5"/>

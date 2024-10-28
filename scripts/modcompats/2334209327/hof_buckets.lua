@@ -2,12 +2,54 @@ local _G = GLOBAL
 local TECH = _G.TECH
 local Ingredient = _G.Ingredient
 
-local function ModAtlas()
-  return "images/tea_inventoryitem.xml"
+-- For sorting recipe.
+-- Source: https://steamcommunity.com/sharedfiles/filedetails/?id=1467214795
+local function SortRecipe(a, b, filter_name, offset)
+    local filter = _G.CRAFTING_FILTERS[filter_name]
+    if filter and filter.recipes then
+        for sortvalue, product in ipairs(filter.recipes) do
+            if product == a then
+                table.remove(filter.recipes, sortvalue)
+                break
+            end
+        end
+
+        local target_position = #filter.recipes + 1
+        for sortvalue, product in ipairs(filter.recipes) do
+            if product == b then
+                target_position = sortvalue + offset
+                break
+            end
+        end
+
+        table.insert(filter.recipes, target_position, a)
+    end
+end 
+ 
+local function SortBefore(a, b, filter_name)
+    SortRecipe(a, b, filter_name, 0)
+end 
+
+local function SortAfter(a, b, filter_name)
+    SortRecipe(a, b, filter_name, 1)
 end
 
-AddRecipePostInit("fertilizer",function(v) v.ingredients = {Ingredient("poop", 3), Ingredient("boneshard", 2), Ingredient("kyno_bucket_empty", 1, ModAtlas(), nil,"bucket_empty.tex")} end)
+local function ModAtlas()
+  return "images/inventoryimages/hof_inventoryimages.xml"
+end
+
+AddRecipePostInit("fertilizer",function(v) v.ingredients = {Ingredient("poop", 3), Ingredient("boneshard", 2), Ingredient("kyno_bucket_empty", 1, ModAtlas(), nil,"kyno_bucket_empty.tex")} end)
 AddRecipePostInit("kyno_bucket_empty",function(v) v.ingredients = {Ingredient("log",4)} v.level = TECH.NONE end)
+AddRecipeToFilter("kyno_bucket_empty","HYDRATION")
+
+RemoveRecipeFromFilter("bucket_empty","HYDRATION")
+RemoveRecipeFromFilter("bucket_empty","TOOLS")
+AddRecipeToFilter("buckets_empty","LOST")
+AddRecipePostInit("buckets_empty",function(v) v.nounlock = true end)
+
+SortAfter("kyno_bucket_empty","bucket_woodie_empty","TOOLS")
+SortAfter("kyno_bucket_empty","bucket_woodie_empty","HYDRATION")
+SortAfter("bucket_steel_empty","kyno_bucket_empty","TOOLS")
 
 local function SetTemperature(inst)
     local isfrozen = inst.components.wateringtool:IsFrozen()

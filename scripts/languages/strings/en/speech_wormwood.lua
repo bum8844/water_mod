@@ -132,7 +132,7 @@ return {
             CHERRY_ROSEBERRIES_TEA = "Has a tangy scent", 
             CHERRY_HONEY_TEA = "Bees love it", 
             SWEET_RICE_DRINK = "Sweet!",
-            PINEANANAS_JUICE = "stylish crown to drink", 
+            ANANAS_JUICE = "stylish crown to drink", 
             ORANGE_JUICE = "Orange orb to drink", 
             STRAWBERRY_SMOOTHIE = "Cool and tangy", 
             STRAWBERRY_MILK_SMOOTHIE = "Creamy and tangy", 
@@ -166,7 +166,7 @@ return {
             -- Collaborative Soda
 
             CHERRY_DOCTOR_COLA = "belly ball to fizzing dark water",  
-            PINEANANASSODA = "Crown to Bubbly water", 
+            ANANASSODA = "Crown to Bubbly water", 
             ORANGESODA = "Orange orb to Bubbly water", 
             STRAWBERRYSODA = "Bubbly and sweet fruity water", 
 

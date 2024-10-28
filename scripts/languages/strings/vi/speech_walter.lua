@@ -130,7 +130,7 @@ return {
 		CHERRY_ROSEBERRIES_TEA = "Thật sành điệu! Và thư giãn.",
 		CHERRY_HONEY_TEA = "Giống như thuốc sirô!",
 		SWEET_RICE_DRINK = "Không phải nước ép, không phải trà!",
-		PINEANANAS_JUICE = "Bạn có biết anh trai của Anana là ai không? Chuối!", -- Legion Pineapple Juice
+		ANANAS_JUICE = "Bạn có biết anh trai của Anana là ai không? Chuối!", -- Legion Pineapple Juice
 		ORANGE_JUICE = "Gặp nước ép 'oranginal' của tôi.", -- Thêm gói thực phẩm Nước cam.
 		STRAWBERRY_SMOOTHIE = "Cường mạnh và mềm lỏng, đó là thức uống sinh tố dâu tằm", -- 
 		STRAWBERRY_MILK_SMOOTHIE = "Sáng mát và sảng khoái!", -- Thêm gói thực phẩm Strawberry Smoothie Latte
@@ -165,7 +165,7 @@ return {
 		--콜라보 소다
 
 		CHERRY_DOCTOR_COLA = "Chắc chắn không phải là nha sĩ.",
-		PINEANANASSODA = "Chúng tôi sẽ gọi nó là soda Thông Phong Táo.", -- Dứa có ga (Oran)
+		ANANASSODA = "Chúng tôi sẽ gọi nó là soda Thông Phong Táo.", -- Dứa có ga (Oran)
 		ORANGESODA = "Bạn gọi nó là gì khi trông thấy một cốc soda cam? Fanta-sy :>", --  -- 
 		STRAWBERRYSODA = "Tôi chưa bao giờ thấy soda dâu trước đây!", -- Dâu tây có ga (dâu tây của Welch)
 

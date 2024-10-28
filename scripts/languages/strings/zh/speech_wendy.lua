@@ -132,7 +132,7 @@ return {
             CHERRY_ROSEBERRIES_TEA = "要小心别把花苞吃下去了。",
             CHERRY_HONEY_TEA = "还有比它更甜的吗？",
             SWEET_RICE_DRINK = "里面有一些耐嚼的东西。",
-            PINEANANAS_JUICE = "它的果肉随着坚韧外皮被突破变成渣滓了。",
+            ANANAS_JUICE = "它的果肉随着坚韧外皮被突破变成渣滓了。",
             ORANGE_JUICE = "和它厚厚的外皮一样酸。",
             STRAWBERRY_SMOOTHIE = "把草莓和冰块一起压碎的饮料。",
             STRAWBERRY_MILK_SMOOTHIE = "溜嘴顺口。",
@@ -166,7 +166,7 @@ return {
             -- 联动气泡水
 
             CHERRY_DOCTOR_COLA = "它不是真的医生，不过应该可以给予一丝慰藉。",
-            PINEANANASSODA = "酸酸甜甜的气泡水。",
+            ANANASSODA = "酸酸甜甜的气泡水。",
             ORANGESODA = "加了鲜榨橘子汁的气泡水。",
             STRAWBERRYSODA = "加了打碎了的草莓的气泡水。",
 

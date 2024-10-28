@@ -209,6 +209,7 @@ FOODTYPEGROUP =
 		--hop
 		"kyno_kokonut",
 		"kyno_coconut",
+		"kyno_pineapple",
 	},
 
 	SOUP_AND_STEW = 

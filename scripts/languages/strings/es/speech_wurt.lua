@@ -130,7 +130,7 @@ return {
             CHERRY_ROSEBERRIES_TEA = "Fruta fea, ¿Sin pelos?", -- Cherry Forest Rosehip Tea
             CHERRY_HONEY_TEA = "¡Beber agua de miel te mantiene cálido!", -- Cherry Forest Cherry Blossom Honey Tea
             SWEET_RICE_DRINK = "Los merms no hacen está bebida.", -- Vitacorp Sweet Rice Drink
-            PINEANANAS_JUICE = "Fruta ácida en agua dulce, slurp.", -- Legion Pineapple Juice
+            ANANAS_JUICE = "Fruta ácida en agua dulce, slurp.", -- Legion Pineapple Juice
             ORANGE_JUICE = "Jugoso y refrescante, ¡Florp!", -- Moore Food Pack Orange Juice
             STRAWBERRY_SMOOTHIE = "¡Hurra!, trituré el jugo rojo congelado", -- Moore Food Pack Strawberry Smoothie
             STRAWBERRY_MILK_SMOOTHIE = "¡Hurra!, ¡Es ligero!", -- Moore Food Pack Strawberry Milk Smoothie
@@ -164,7 +164,7 @@ return {
             -- Collaborative Sodas
 
             CHERRY_DOCTOR_COLA = "¡El agua oscura tiene burbujas y sabe a jugo rojo!", -- Cherry Forest Dr. Pepper (Dr. Cherry)
-            PINEANANASSODA = "¡Agua de fruta ácida y burbujeante!", -- Carbonated Pineapple (Oran-C)
+            ANANASSODA = "¡Agua de fruta ácida y burbujeante!", -- Carbonated Pineapple (Oran-C)
             ORANGESODA = "Sorbe, ¡Es refrescante y genial!", -- Carbonated Orange (Fanta)
             STRAWBERRYSODA = "Es una burbujeante agua de fruta roja, slurp.", -- Carbonated Strawberry (Welch's Strawberry)
 

@@ -132,7 +132,7 @@ return {
             CHERRY_ROSEBERRIES_TEA = "¿Extrajeron esto de una araña del espacio?", -- Cherry Forest Rosehip Tea
             CHERRY_HONEY_TEA = "Dulce y caliente, ¡Aunque el color es extraño!", -- Cherry Forest Cherry Blossom Honey Tea
             SWEET_RICE_DRINK = "¡Tiene unas semillas suaves dentro!", -- Vita Coop Sikhye
-            PINEANANAS_JUICE = "Nuestros dientes se sienten raro después de beber esto.", -- Regione Pineapple Juice
+            ANANAS_JUICE = "Nuestros dientes se sienten raro después de beber esto.", -- Regione Pineapple Juice
             ORANGE_JUICE = "Debería cepillar nuestros dientes.", -- More Food Pack Orange Juice
             STRAWBERRY_SMOOTHIE = "Tomémoslo lentamente para que no se congele nuestro cerebro.", -- More Food Pack Strawberry Smoothie
             STRAWBERRY_MILK_SMOOTHIE = "¡Esto es un batido de fresa de verdad!", -- More Food Pack Strawberry Milk Smoothie
@@ -166,7 +166,7 @@ return {
             -- Collaboration Soda
 
             CHERRY_DOCTOR_COLA = "Es similar al cola, pero no igual, ¡Nos gusta!", -- Cherry Forest Doctor Pepper (Dr. Cherry)
-            PINEANANASSODA = "Debemos ser cuidadosos de que no se pudra.", -- Pineapple Soda (Oranchi)
+            ANANASSODA = "Debemos ser cuidadosos de que no se pudra.", -- Pineapple Soda (Oranchi)
             ORANGESODA = "¡Una bebida carbonatada de naranja!", -- Orange Soda (Fanta)
             STRAWBERRYSODA = "La señora wicker nos dijo que bebamos refresco con moderación.", -- Strawberry Soda (Welch's Strawberry)
 

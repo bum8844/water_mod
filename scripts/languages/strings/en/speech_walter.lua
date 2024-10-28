@@ -132,7 +132,7 @@ return {
 		CHERRY_ROSEBERRIES_TEA = "It's so hip! And relaxed.",
 		CHERRY_HONEY_TEA = "It's like syrup medicine!",
 		SWEET_RICE_DRINK = "Not a juice, But not a tea!",
-		PINEANANAS_JUICE = "Do you know who Anana's brother is? Banana!", 
+		ANANAS_JUICE = "Do you know who Anana's brother is? Banana!", 
 		ORANGE_JUICE = "Meet my 'oranginal' juice.", 
 		STRAWBERRY_SMOOTHIE = "Strong but soft. Because it's a strawng berry smoothie.", -- 
 		STRAWBERRY_MILK_SMOOTHIE = "Refreshing and cool!", 
@@ -167,7 +167,7 @@ return {
 		--콜라보 소다
 
 		CHERRY_DOCTOR_COLA = "Definitely not a dentist.",
-		PINEANANASSODA = "We'll call it the Pinetree Pioneer Apple Soda.", 
+		ANANASSODA = "We'll call it the Pinetree Pioneer Apple Soda.", 
 		ORANGESODA = "What do you call it when an orange soda dreams? Fanta-sy!", --  -- 
 		STRAWBERRYSODA = "I've never seen strawberry soda before!", -- 
 

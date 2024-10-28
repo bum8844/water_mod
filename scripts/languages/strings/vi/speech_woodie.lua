@@ -132,7 +132,7 @@ return {
             CHERRY_ROSEBERRIES_TEA = "Tôi nghi ngờ liệu còn sót lại phần giống tóc nào không.", -- Trà Tầm Xuân Rừng Anh Đào
             CHERRY_HONEY_TEA = "Mùi mật ong và mùi cây, thật thú vị.", -- Trà mật ong hoa anh đào rừng anh đào
             SWEET_RICE_DRINK = "Đây là một loại nước ép ngũ cốc đặc biệt.", -- Nước gạo ngọt Vitacomp
-            PINEANANAS_JUICE = "Thật là sảng khoái, nhưng tôi không thể uống nhiều như thế này được.", -- Legion Pineapple Juice
+            ANANAS_JUICE = "Thật là sảng khoái, nhưng tôi không thể uống nhiều như thế này được.", -- Legion Pineapple Juice
             ORANGE_JUICE = "Thêm một ít xi-rô vào và nó sẽ hoàn hảo.", -- Thêm gói thực phẩm Nước cam
             STRAWBERRY_SMOOTHIE = "Tôi không chủ động tìm kiếm nó, nhưng nó rất ngon.", -- Thêm gói thực phẩm Sinh tố dâu tây
             STRAWBERRY_MILK_SMOOTHIE = "Thật mịn màng và sảng khoái.", -- Thêm gói thực phẩm Sinh tố sữa dâu
@@ -166,7 +166,7 @@ return {
             -- Nước ngọt hợp tác
 
             CHERRY_DOCTOR_COLA = "Chỉ cần ngọt ngào và sảng khoái là đủ.", -- Cherry Forest Doctor Pepper (Doctor Cherry)
-            PINEANANASSODA = "Đó là soda dứa.", -- Soda dứa (Orancee)
+            ANANASSODA = "Đó là soda dứa.", -- Soda dứa (Orancee)
             ORANGESODA = "Đó là soda cam.", -- Orange Soda (Fanta)
             STRAWBERRYSODA = "Đó là soda dâu tây.", -- Strawberry Soda (Dâu tây của Welch)
 

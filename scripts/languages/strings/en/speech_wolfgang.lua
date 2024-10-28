@@ -132,7 +132,7 @@ return {
             CHERRY_ROSEBERRIES_TEA = "It smells like lovely roses.",
             CHERRY_HONEY_TEA = "Extremely sweet!",
             SWEET_RICE_DRINK = "Is sweet even though it only has rice!", 
-            PINEANANAS_JUICE = "Incredibly sour juice.", 
+            ANANAS_JUICE = "Incredibly sour juice.", 
             ORANGE_JUICE = "Sour, sweet, and orange.",
             STRAWBERRY_SMOOTHIE = "Is full of seeds.",
             STRAWBERRY_MILK_SMOOTHIE = "Smooth and tasty.", 
@@ -166,7 +166,7 @@ return {
             -- Collaboration Soda
 
             CHERRY_DOCTOR_COLA = "Tastes like candy!",
-            PINEANANASSODA = "Sour and refreshing.",
+            ANANASSODA = "Sour and refreshing.",
             ORANGESODA = "Sweet and fizzy.",
             STRAWBERRYSODA = "As many bubbles as seeds!",
 

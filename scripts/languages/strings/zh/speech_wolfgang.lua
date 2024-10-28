@@ -132,7 +132,7 @@ return {
             CHERRY_ROSEBERRIES_TEA = "好香的玫瑰味。",
             CHERRY_HONEY_TEA = "很甜！",
             SWEET_RICE_DRINK = "只有白米还是甜甜的！",
-            PINEANANAS_JUICE = "好酸的果汁。",
+            ANANAS_JUICE = "好酸的果汁。",
             ORANGE_JUICE = "酸酸甜甜的橙色饮料。",
             STRAWBERRY_SMOOTHIE = "很多种子。",
             STRAWBERRY_MILK_SMOOTHIE = "滑滑的很好喝。",
@@ -166,7 +166,7 @@ return {
             -- 联动气泡水
 
             CHERRY_DOCTOR_COLA = "很像糖果！",
-            PINEANANASSODA = "酸酸的很好喝。",
+            ANANASSODA = "酸酸的很好喝。",
             ORANGESODA = "很多气泡然后甜甜的。",
             STRAWBERRYSODA = "气泡和种子一样多！",
 
