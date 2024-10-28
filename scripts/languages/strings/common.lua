@@ -172,7 +172,7 @@ return
 		CHERRY_ROSEBERRIES_TEA = "로즈힙티",
 		CHERRY_HONEY_TEA = "벚꿀차",
 		SWEET_RICE_DRINK = "식혜",
-		PINEANANAS_JUICE = "파인애플주스",
+		ANANAS_JUICE = "파인애플주스",
 		ORANGE_JUICE = "오랜지주스",
 		STRAWBERRY_SMOOTHIE = "딸기 스무디",
 		STRAWBERRY_MILK_SMOOTHIE = "딸기 밀크셰이크",
@@ -218,7 +218,7 @@ return
 		--소다
 
 		CHERRY_DOCTOR_COLA = "닥터 체리",
-		PINEANANASSODA = "파인애플 소다",
+		ANANASSODA = "파인애플 소다",
 		ORANGESODA = "오랜지 소다",
 		STRAWBERRYSODA = "딸기 소다",
 

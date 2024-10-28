@@ -146,7 +146,7 @@ return {
 		CHERRY_ROSEBERRIES_TEA = "이런 추악한 열매를 담은 음료를 마셔야 하는가?", --체리숲 로즈힙 차
 		CHERRY_HONEY_TEA = "참 고급진 꿀물이로군.", --체리숲 벚꽃꿀 차
 		SWEET_RICE_DRINK = "달콤한 물만을 취하리라.", -- 비타협 식혜
-		PINEANANAS_JUICE = "질긴 비늘을 찢고 과육을 갈아냈군.", -- 레기온 파인애플 주스
+		ANANAS_JUICE = "질긴 비늘을 찢고 과육을 갈아냈군.", -- 레기온 파인애플 주스
 		ORANGE_JUICE = "시큼하기만 하군.", -- 모어 푸드 팩 오랜지 주스
 		STRAWBERRY_SMOOTHIE = "차갑고 붉은 과일 곤죽이로군.", -- 모어 푸드 팩 딸기 스무디
 		STRAWBERRY_MILK_SMOOTHIE = "전사에게 걸맞지 못한 음료로다.", -- 모어 푸드 팩 딸기 스무디 라떼
@@ -180,7 +180,7 @@ return {
 		-- 콜라보 소다
 
 		CHERRY_DOCTOR_COLA = "검붉은 혼돈이로다.", --체리숲 닥터 페퍼(닥터 체리)
-		PINEANANASSODA = "솔방울이라 하든 사과라 하든 무슨 상관이랴, 어느 쪽이든 불경한 것을.", -- 탄산 파인애플(오란씨)
+		ANANASSODA = "솔방울이라 하든 사과라 하든 무슨 상관이랴, 어느 쪽이든 불경한 것을.", -- 탄산 파인애플(오란씨)
 		ORANGESODA = "시큼한 과일즙이 들어간 광천수로다.", -- 탄산 오랜지(환타)
 		STRAWBERRYSODA = "붉은 열매로 만든 광천수로군.", -- 탄산 딸기(웰치스 딸기)
 

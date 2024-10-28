@@ -146,7 +146,7 @@ return {
 		CHERRY_ROSEBERRIES_TEA = "그래, 향긋하네.", --체리숲 로즈힙 차
 		CHERRY_HONEY_TEA = "뭐, 색깔은 예쁘네.", --체리숲 벚꽃꿀 차
 		SWEET_RICE_DRINK = "난 구운 쪽이 더 맘에 드는데.", -- 비타협 식혜
-		PINEANANAS_JUICE = "마실 땐 좋은데, 마시고 나면 입안이 얼얼해.", -- 레기온 파인애플 주스
+		ANANAS_JUICE = "마실 땐 좋은데, 마시고 나면 입안이 얼얼해.", -- 레기온 파인애플 주스
 		ORANGE_JUICE = "아우, 셔!", -- 모어 푸드 팩 오랜지 주스
 		STRAWBERRY_SMOOTHIE = "빨갛게 잘 갈았네.", -- 모어 푸드 팩 딸기 스무디
 		STRAWBERRY_MILK_SMOOTHIE = "가끔은 차가운 것도 나쁘지 않네.", -- 모어 푸드 팩 딸기 스무디 라떼
@@ -180,7 +180,7 @@ return {
 		-- 콜라보 소다
 
 		CHERRY_DOCTOR_COLA = "홈메이드 짝퉁이야.", --체리숲 닥터 페퍼(닥터 체리)
-		PINEANANASSODA = "소다에 파인애플 과즙 좀 넣은 거야.", -- 탄산 파인애플(오란씨)
+		ANANASSODA = "소다에 파인애플 과즙 좀 넣은 거야.", -- 탄산 파인애플(오란씨)
 		ORANGESODA = "오렌지 주스에 탄산을 넣었단 말야?", -- 탄산 오랜지(환타)
 		STRAWBERRYSODA = "빨갛고 톡 쏘는 게 마음에 드는걸.", -- 탄산 딸기(웰치스 딸기)
 

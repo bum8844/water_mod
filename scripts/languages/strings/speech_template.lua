@@ -177,7 +177,7 @@ return {
 		STRAWBERRYSODA = "", -- 탄산 딸기(웰치스 딸기)
 
 		CHERRY_DOCTOR_COLA = "",
-		PINEANANASSODA = "", -- Pineapple Soda
+		ANANASSODA = "", -- Pineapple Soda
 		ORANGESODA = "", -- Orange Soda (Similar to Fanta Orange)
 		STRAWBERRYSODA = "", -- Strawberry Soda (like Welch's Strawberry Soda)
 

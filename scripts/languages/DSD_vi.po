@@ -807,13 +807,13 @@ msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.PETALS_BERRY_BRANDY"
 msgid "A brandy with a flowery aroma?"
 msgstr "Rượu mạnh có mùi thơm hoa?"
 
-#. STRINGS.CHARACTERS.GENERIC.DESCRIBE.PINEANANASSODA
-msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.PINEANANASSODA"
+#. STRINGS.CHARACTERS.GENERIC.DESCRIBE.ANANASSODA
+msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.ANANASSODA"
 msgid "It's a pine in my mouth."
 msgstr "Đó là một cây thông trong miệng tôi."
 
-#. STRINGS.CHARACTERS.GENERIC.DESCRIBE.PINEANANAS_JUICE
-msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.PINEANANAS_JUICE"
+#. STRINGS.CHARACTERS.GENERIC.DESCRIBE.ANANAS_JUICE
+msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.ANANAS_JUICE"
 msgid "At least the skin won't scratch my mouth anymore."
 msgstr "Ít nhất thì da của nó sẽ không làm xước miệng tôi nữa."
 
@@ -1952,13 +1952,13 @@ msgctxt "STRINGS.CHARACTERS.WALTER.DESCRIBE.PETALS_BERRY_BRANDY"
 msgid "I don't know about the taste, but it looks pretty!"
 msgstr "Tôi không biết mùi vị thế nào, nhưng nó trông khá ngon!"
 
-#. STRINGS.CHARACTERS.WALTER.DESCRIBE.PINEANANASSODA
-msgctxt "STRINGS.CHARACTERS.WALTER.DESCRIBE.PINEANANASSODA"
+#. STRINGS.CHARACTERS.WALTER.DESCRIBE.ANANASSODA
+msgctxt "STRINGS.CHARACTERS.WALTER.DESCRIBE.ANANASSODA"
 msgid "We'll call it the Pinetree Pioneer Apple Soda."
 msgstr "Chúng tôi sẽ gọi nó là soda Thông Phong Táo."
 
-#. STRINGS.CHARACTERS.WALTER.DESCRIBE.PINEANANAS_JUICE
-msgctxt "STRINGS.CHARACTERS.WALTER.DESCRIBE.PINEANANAS_JUICE"
+#. STRINGS.CHARACTERS.WALTER.DESCRIBE.ANANAS_JUICE
+msgctxt "STRINGS.CHARACTERS.WALTER.DESCRIBE.ANANAS_JUICE"
 msgid "Do you know who Anana's brother is? Banana!"
 msgstr "Bạn có biết anh trai của Anana là ai không? Chuối!"
 
@@ -3092,13 +3092,13 @@ msgctxt "STRINGS.CHARACTERS.WANDA.DESCRIBE.PETALS_BERRY_BRANDY"
 msgid "I don't have the time to enjoy the floral scent in my drinks."
 msgstr "Tôi không có thời gian để thưởng thức hương hoa trong đồ uống của mình."
 
-#. STRINGS.CHARACTERS.WANDA.DESCRIBE.PINEANANASSODA
-msgctxt "STRINGS.CHARACTERS.WANDA.DESCRIBE.PINEANANASSODA"
+#. STRINGS.CHARACTERS.WANDA.DESCRIBE.ANANASSODA
+msgctxt "STRINGS.CHARACTERS.WANDA.DESCRIBE.ANANASSODA"
 msgid "Good, I won't waste too much time enjoying this."
 msgstr "Tốt, tôi sẽ không lãng phí quá nhiều thời gian để thưởng thức món này."
 
-#. STRINGS.CHARACTERS.WANDA.DESCRIBE.PINEANANAS_JUICE
-msgctxt "STRINGS.CHARACTERS.WANDA.DESCRIBE.PINEANANAS_JUICE"
+#. STRINGS.CHARACTERS.WANDA.DESCRIBE.ANANAS_JUICE
+msgctxt "STRINGS.CHARACTERS.WANDA.DESCRIBE.ANANAS_JUICE"
 msgid "Even without the outer skin, if you eat a lot, your mouth will start to bleed."
 msgstr "Ngay cả khi không có vỏ, nó vẫn khiến bạn thèm ăn hơn."
 
@@ -4232,13 +4232,13 @@ msgctxt "STRINGS.CHARACTERS.WARLY.DESCRIBE.PETALS_BERRY_BRANDY"
 msgid "You can feel the aroma of raspberries, tangerines, strawberries, and flowers."
 msgstr "Bạn có thể cảm nhận được mùi thơm của quả mâm xôi, quýt, dâu tây và hoa."
 
-#. STRINGS.CHARACTERS.WARLY.DESCRIBE.PINEANANASSODA
-msgctxt "STRINGS.CHARACTERS.WARLY.DESCRIBE.PINEANANASSODA"
+#. STRINGS.CHARACTERS.WARLY.DESCRIBE.ANANASSODA
+msgctxt "STRINGS.CHARACTERS.WARLY.DESCRIBE.ANANASSODA"
 msgid "This is the perfect drink to help you digest after a big meal."
 msgstr "Đây là thức uống hoàn hảo giúp bạn tiêu hóa sau bữa liên hoan lớn."
 
-#. STRINGS.CHARACTERS.WARLY.DESCRIBE.PINEANANAS_JUICE
-msgctxt "STRINGS.CHARACTERS.WARLY.DESCRIBE.PINEANANAS_JUICE"
+#. STRINGS.CHARACTERS.WARLY.DESCRIBE.ANANAS_JUICE
+msgctxt "STRINGS.CHARACTERS.WARLY.DESCRIBE.ANANAS_JUICE"
 msgid "Be careful not to drink too much, or My mouth will peel off."
 msgstr "Tốt nhất không nên uống quá nhiều, MỒM của tôi sẽ chảy máu mất."
 
@@ -5377,13 +5377,13 @@ msgctxt "STRINGS.CHARACTERS.WATHGRITHR.DESCRIBE.PETALS_BERRY_BRANDY"
 msgid "Warriors have no time to enjoy the scent of flowers."
 msgstr "Chiến binh không có thời gian để thưởng thức hương thơm của hoa."
 
-#. STRINGS.CHARACTERS.WATHGRITHR.DESCRIBE.PINEANANASSODA
-msgctxt "STRINGS.CHARACTERS.WATHGRITHR.DESCRIBE.PINEANANASSODA"
+#. STRINGS.CHARACTERS.WATHGRITHR.DESCRIBE.ANANASSODA
+msgctxt "STRINGS.CHARACTERS.WATHGRITHR.DESCRIBE.ANANASSODA"
 msgid "Whether it's pinecones or fruit, it's not right."
 msgstr "Dù là quả thông hay trái cây thì đều không đúng."
 
-#. STRINGS.CHARACTERS.WATHGRITHR.DESCRIBE.PINEANANAS_JUICE
-msgctxt "STRINGS.CHARACTERS.WATHGRITHR.DESCRIBE.PINEANANAS_JUICE"
+#. STRINGS.CHARACTERS.WATHGRITHR.DESCRIBE.ANANAS_JUICE
+msgctxt "STRINGS.CHARACTERS.WATHGRITHR.DESCRIBE.ANANAS_JUICE"
 msgid "It has crushed the tough scales to get the flesh."
 msgstr "Nó đã nghiền nát những vảy cứng để lấy thịt."
 
@@ -6522,13 +6522,13 @@ msgctxt "STRINGS.CHARACTERS.WAXWELL.DESCRIBE.PETALS_BERRY_BRANDY"
 msgid "A bit excessive."
 msgstr "Hơi quá đáng."
 
-#. STRINGS.CHARACTERS.WAXWELL.DESCRIBE.PINEANANASSODA
-msgctxt "STRINGS.CHARACTERS.WAXWELL.DESCRIBE.PINEANANASSODA"
+#. STRINGS.CHARACTERS.WAXWELL.DESCRIBE.ANANASSODA
+msgctxt "STRINGS.CHARACTERS.WAXWELL.DESCRIBE.ANANASSODA"
 msgid "I feel closer to civilization now."
 msgstr "Bây giờ tôi cảm thấy gần gũi hơn với nền văn minh."
 
-#. STRINGS.CHARACTERS.WAXWELL.DESCRIBE.PINEANANAS_JUICE
-msgctxt "STRINGS.CHARACTERS.WAXWELL.DESCRIBE.PINEANANAS_JUICE"
+#. STRINGS.CHARACTERS.WAXWELL.DESCRIBE.ANANAS_JUICE
+msgctxt "STRINGS.CHARACTERS.WAXWELL.DESCRIBE.ANANAS_JUICE"
 msgid "I can't drink this tangy fruit juice in one go."
 msgstr "Tôi không thể uống nước ép trái cây thơm này trong một lần được."
 
@@ -7662,13 +7662,13 @@ msgctxt "STRINGS.CHARACTERS.WEBBER.DESCRIBE.PETALS_BERRY_BRANDY"
 msgid "It has a pleasant aroma."
 msgstr "Nó có mùi thơm dễ chịu."
 
-#. STRINGS.CHARACTERS.WEBBER.DESCRIBE.PINEANANASSODA
-msgctxt "STRINGS.CHARACTERS.WEBBER.DESCRIBE.PINEANANASSODA"
+#. STRINGS.CHARACTERS.WEBBER.DESCRIBE.ANANASSODA
+msgctxt "STRINGS.CHARACTERS.WEBBER.DESCRIBE.ANANASSODA"
 msgid "We should be careful so our teeth don't decay."
 msgstr "Chúng ta nên uống nó ít thôi nếu không muốn bị sâu răng."
 
-#. STRINGS.CHARACTERS.WEBBER.DESCRIBE.PINEANANAS_JUICE
-msgctxt "STRINGS.CHARACTERS.WEBBER.DESCRIBE.PINEANANAS_JUICE"
+#. STRINGS.CHARACTERS.WEBBER.DESCRIBE.ANANAS_JUICE
+msgctxt "STRINGS.CHARACTERS.WEBBER.DESCRIBE.ANANAS_JUICE"
 msgid "Our teeth feel weird after drinking this."
 msgstr "Răng của tôi cảm thấy kỳ lạ sau khi uống thứ này."
 
@@ -8802,13 +8802,13 @@ msgctxt "STRINGS.CHARACTERS.WENDY.DESCRIBE.PETALS_BERRY_BRANDY"
 msgid "It seduces with the scent of flowers."
 msgstr "Nó quyến rũ với mùi hương của hoa."
 
-#. STRINGS.CHARACTERS.WENDY.DESCRIBE.PINEANANASSODA
-msgctxt "STRINGS.CHARACTERS.WENDY.DESCRIBE.PINEANANASSODA"
+#. STRINGS.CHARACTERS.WENDY.DESCRIBE.ANANASSODA
+msgctxt "STRINGS.CHARACTERS.WENDY.DESCRIBE.ANANASSODA"
 msgid "It's tangy and sweet soda."
 msgstr "Đó là soda thơm và ngọt."
 
-#. STRINGS.CHARACTERS.WENDY.DESCRIBE.PINEANANAS_JUICE
-msgctxt "STRINGS.CHARACTERS.WENDY.DESCRIBE.PINEANANAS_JUICE"
+#. STRINGS.CHARACTERS.WENDY.DESCRIBE.ANANAS_JUICE
+msgctxt "STRINGS.CHARACTERS.WENDY.DESCRIBE.ANANAS_JUICE"
 msgid "It tore through the tough rind and mashed the pulp."
 msgstr "Nó xé nát lớp vỏ cứng và nghiền nát cùi."
 
@@ -9927,13 +9927,13 @@ msgctxt "STRINGS.CHARACTERS.WICKERBOTTOM.DESCRIBE.PETALS_BERRY_BRANDY"
 msgid "Flower scent is added to brandy to make it more spectacular."
 msgstr "Hương hoa được thêm vào rượu mạnh để làm cho rượu trở nên ngoạn mục hơn."
 
-#. STRINGS.CHARACTERS.WICKERBOTTOM.DESCRIBE.PINEANANASSODA
-msgctxt "STRINGS.CHARACTERS.WICKERBOTTOM.DESCRIBE.PINEANANASSODA"
+#. STRINGS.CHARACTERS.WICKERBOTTOM.DESCRIBE.ANANASSODA
+msgctxt "STRINGS.CHARACTERS.WICKERBOTTOM.DESCRIBE.ANANASSODA"
 msgid "Pineapple juice added to carbonated water."
 msgstr "Nước ép dứa được thêm vào nước có ga."
 
-#. STRINGS.CHARACTERS.WICKERBOTTOM.DESCRIBE.PINEANANAS_JUICE
-msgctxt "STRINGS.CHARACTERS.WICKERBOTTOM.DESCRIBE.PINEANANAS_JUICE"
+#. STRINGS.CHARACTERS.WICKERBOTTOM.DESCRIBE.ANANAS_JUICE
+msgctxt "STRINGS.CHARACTERS.WICKERBOTTOM.DESCRIBE.ANANAS_JUICE"
 msgid "It contains a lot of bromelain, so it can cause mouth sores. Drink it in moderation."
 msgstr "Giàu bromelain, nên uống điều độ."
 
@@ -11067,13 +11067,13 @@ msgctxt "STRINGS.CHARACTERS.WILLOW.DESCRIBE.PETALS_BERRY_BRANDY"
 msgid "The booze smells like flowers; as long as I can get drunk, I don't care."
 msgstr "Tôi có thể ngửi thấy mùi hoa nên tôi sẽ uống bất cứ thứ gì."
 
-#. STRINGS.CHARACTERS.WILLOW.DESCRIBE.PINEANANASSODA
-msgctxt "STRINGS.CHARACTERS.WILLOW.DESCRIBE.PINEANANASSODA"
+#. STRINGS.CHARACTERS.WILLOW.DESCRIBE.ANANASSODA
+msgctxt "STRINGS.CHARACTERS.WILLOW.DESCRIBE.ANANASSODA"
 msgid "It's just pineapple soda."
 msgstr "Chỉ là soda dứa thôi."
 
-#. STRINGS.CHARACTERS.WILLOW.DESCRIBE.PINEANANAS_JUICE
-msgctxt "STRINGS.CHARACTERS.WILLOW.DESCRIBE.PINEANANAS_JUICE"
+#. STRINGS.CHARACTERS.WILLOW.DESCRIBE.ANANAS_JUICE
+msgctxt "STRINGS.CHARACTERS.WILLOW.DESCRIBE.ANANAS_JUICE"
 msgid "Good when you drink, but your mouth will tingle after."
 msgstr "Uống thì tốt, nhưng nó sẽ khiến miệng bạn ngứa ran."
 
@@ -12207,13 +12207,13 @@ msgctxt "STRINGS.CHARACTERS.WINONA.DESCRIBE.PETALS_BERRY_BRANDY"
 msgid "Seems quite luxurious."
 msgstr "Có vẻ khá sang trọng."
 
-#. STRINGS.CHARACTERS.WINONA.DESCRIBE.PINEANANASSODA
-msgctxt "STRINGS.CHARACTERS.WINONA.DESCRIBE.PINEANANASSODA"
+#. STRINGS.CHARACTERS.WINONA.DESCRIBE.ANANASSODA
+msgctxt "STRINGS.CHARACTERS.WINONA.DESCRIBE.ANANASSODA"
 msgid "It tastes like store-bought pineapple soda."
 msgstr "Có vị như soda dứa mua ở cửa hàng."
 
-#. STRINGS.CHARACTERS.WINONA.DESCRIBE.PINEANANAS_JUICE
-msgctxt "STRINGS.CHARACTERS.WINONA.DESCRIBE.PINEANANAS_JUICE"
+#. STRINGS.CHARACTERS.WINONA.DESCRIBE.ANANAS_JUICE
+msgctxt "STRINGS.CHARACTERS.WINONA.DESCRIBE.ANANAS_JUICE"
 msgid "Definitely better than the liquid in canned goods."
 msgstr "Chắc chắn tốt hơn chất lỏng trong đồ hộp."
 
@@ -13352,13 +13352,13 @@ msgctxt "STRINGS.CHARACTERS.WOLFGANG.DESCRIBE.PETALS_BERRY_BRANDY"
 msgid "It smells fragrant."
 msgstr "Nó có mùi thơm."
 
-#. STRINGS.CHARACTERS.WOLFGANG.DESCRIBE.PINEANANASSODA
-msgctxt "STRINGS.CHARACTERS.WOLFGANG.DESCRIBE.PINEANANASSODA"
+#. STRINGS.CHARACTERS.WOLFGANG.DESCRIBE.ANANASSODA
+msgctxt "STRINGS.CHARACTERS.WOLFGANG.DESCRIBE.ANANASSODA"
 msgid "Sour and refreshing."
 msgstr "chua và sảng khoái."
 
-#. STRINGS.CHARACTERS.WOLFGANG.DESCRIBE.PINEANANAS_JUICE
-msgctxt "STRINGS.CHARACTERS.WOLFGANG.DESCRIBE.PINEANANAS_JUICE"
+#. STRINGS.CHARACTERS.WOLFGANG.DESCRIBE.ANANAS_JUICE
+msgctxt "STRINGS.CHARACTERS.WOLFGANG.DESCRIBE.ANANAS_JUICE"
 msgid "Incredibly refreshing juice."
 msgstr "Nước trái cây cực kỳ sảng khoái."
 
@@ -14492,13 +14492,13 @@ msgctxt "STRINGS.CHARACTERS.WOODIE.DESCRIBE.PETALS_BERRY_BRANDY"
 msgid "It's fragrant and nice."
 msgstr "Nó thơm và dễ chịu."
 
-#. STRINGS.CHARACTERS.WOODIE.DESCRIBE.PINEANANASSODA
-msgctxt "STRINGS.CHARACTERS.WOODIE.DESCRIBE.PINEANANASSODA"
+#. STRINGS.CHARACTERS.WOODIE.DESCRIBE.ANANASSODA
+msgctxt "STRINGS.CHARACTERS.WOODIE.DESCRIBE.ANANASSODA"
 msgid "It's pineapple soda."
 msgstr "Đó là soda dứa."
 
-#. STRINGS.CHARACTERS.WOODIE.DESCRIBE.PINEANANAS_JUICE
-msgctxt "STRINGS.CHARACTERS.WOODIE.DESCRIBE.PINEANANAS_JUICE"
+#. STRINGS.CHARACTERS.WOODIE.DESCRIBE.ANANAS_JUICE
+msgctxt "STRINGS.CHARACTERS.WOODIE.DESCRIBE.ANANAS_JUICE"
 msgid "It's refreshing, but I can't drink too much of it like this."
 msgstr "Thật là sảng khoái, nhưng tôi không thể uống nhiều như thế này được."
 
@@ -15622,13 +15622,13 @@ msgctxt "STRINGS.CHARACTERS.WORMWOOD.DESCRIBE.PETALS_BERRY_BRANDY"
 msgid "Colorful"
 msgstr "Đầy màu sắc"
 
-#. STRINGS.CHARACTERS.WORMWOOD.DESCRIBE.PINEANANASSODA
-msgctxt "STRINGS.CHARACTERS.WORMWOOD.DESCRIBE.PINEANANASSODA"
+#. STRINGS.CHARACTERS.WORMWOOD.DESCRIBE.ANANASSODA
+msgctxt "STRINGS.CHARACTERS.WORMWOOD.DESCRIBE.ANANASSODA"
 msgid "Bubbly fit-for-a-crown water"
 msgstr "Nước sủi bọt phù hợp cho vương miện"
 
-#. STRINGS.CHARACTERS.WORMWOOD.DESCRIBE.PINEANANAS_JUICE
-msgctxt "STRINGS.CHARACTERS.WORMWOOD.DESCRIBE.PINEANANAS_JUICE"
+#. STRINGS.CHARACTERS.WORMWOOD.DESCRIBE.ANANAS_JUICE
+msgctxt "STRINGS.CHARACTERS.WORMWOOD.DESCRIBE.ANANAS_JUICE"
 msgid "Fit for a crown"
 msgstr "Dành cho vương miện"
 
@@ -16762,13 +16762,13 @@ msgctxt "STRINGS.CHARACTERS.WORTOX.DESCRIBE.PETALS_BERRY_BRANDY"
 msgid "I don't fit in with upscale things."
 msgstr "Tôi không hợp với những thứ cao cấp."
 
-#. STRINGS.CHARACTERS.WORTOX.DESCRIBE.PINEANANASSODA
-msgctxt "STRINGS.CHARACTERS.WORTOX.DESCRIBE.PINEANANASSODA"
+#. STRINGS.CHARACTERS.WORTOX.DESCRIBE.ANANASSODA
+msgctxt "STRINGS.CHARACTERS.WORTOX.DESCRIBE.ANANASSODA"
 msgid "I prefer to enjoy being an essence rather than drinking it."
 msgstr "Tôi thích tận hưởng tinh chất hơn là uống nó."
 
-#. STRINGS.CHARACTERS.WORTOX.DESCRIBE.PINEANANAS_JUICE
-msgctxt "STRINGS.CHARACTERS.WORTOX.DESCRIBE.PINEANANAS_JUICE"
+#. STRINGS.CHARACTERS.WORTOX.DESCRIBE.ANANAS_JUICE
+msgctxt "STRINGS.CHARACTERS.WORTOX.DESCRIBE.ANANAS_JUICE"
 msgid "I could be an essence."
 msgstr "Tôi có thể là một tinh chất."
 
@@ -17902,13 +17902,13 @@ msgctxt "STRINGS.CHARACTERS.WURT.DESCRIBE.PETALS_BERRY_BRANDY"
 msgid "Ugly flowers also smells strong, glorp."
 msgstr "Mùi hoa xấu xí quá nồng, húp xì xụp."
 
-#. STRINGS.CHARACTERS.WURT.DESCRIBE.PINEANANASSODA
-msgctxt "STRINGS.CHARACTERS.WURT.DESCRIBE.PINEANANASSODA"
+#. STRINGS.CHARACTERS.WURT.DESCRIBE.ANANASSODA
+msgctxt "STRINGS.CHARACTERS.WURT.DESCRIBE.ANANASSODA"
 msgid "Bubbly sour fruit water!"
 msgstr "Nước hoa quả chua sủi bọt!"
 
-#. STRINGS.CHARACTERS.WURT.DESCRIBE.PINEANANAS_JUICE
-msgctxt "STRINGS.CHARACTERS.WURT.DESCRIBE.PINEANANAS_JUICE"
+#. STRINGS.CHARACTERS.WURT.DESCRIBE.ANANAS_JUICE
+msgctxt "STRINGS.CHARACTERS.WURT.DESCRIBE.ANANAS_JUICE"
 msgid "Sour fruit was put into the water, making it less sour and sweeter, florp."
 msgstr "Trái cây chua trong nước ngọt, húp xì xụp."
 
@@ -19047,13 +19047,13 @@ msgctxt "STRINGS.CHARACTERS.WX78.DESCRIBE.PETALS_BERRY_BRANDY"
 msgid "JUST LIKE A DIFFUSER"
 msgstr "CHỈ GIỐNG NHƯ MỘT NGƯỜI KHÁC BIỆT"
 
-#. STRINGS.CHARACTERS.WX78.DESCRIBE.PINEANANASSODA
-msgctxt "STRINGS.CHARACTERS.WX78.DESCRIBE.PINEANANASSODA"
+#. STRINGS.CHARACTERS.WX78.DESCRIBE.ANANASSODA
+msgctxt "STRINGS.CHARACTERS.WX78.DESCRIBE.ANANASSODA"
 msgid "PINE TUNING USED"
 msgstr "ĐÃ SỬ DỤNG ĐIỀU CHỈNH THÔNG"
 
-#. STRINGS.CHARACTERS.WX78.DESCRIBE.PINEANANAS_JUICE
-msgctxt "STRINGS.CHARACTERS.WX78.DESCRIBE.PINEANANAS_JUICE"
+#. STRINGS.CHARACTERS.WX78.DESCRIBE.ANANAS_JUICE
+msgctxt "STRINGS.CHARACTERS.WX78.DESCRIBE.ANANAS_JUICE"
 msgid "DENIES ASSOCIATION WITH SPONGES"
 msgstr "TỪ CHỐI LIÊN KẾT VỚI BỌT BIỂN"
 
@@ -20102,13 +20102,13 @@ msgctxt "STRINGS.NAMES.PETALS_BERRY_BRANDY"
 msgid "Rose Brandy"
 msgstr "Rượu mạnh quả mọng hương hoa hồng"
 
-#. STRINGS.NAMES.PINEANANASSODA
-msgctxt "STRINGS.NAMES.PINEANANASSODA"
+#. STRINGS.NAMES.ANANASSODA
+msgctxt "STRINGS.NAMES.ANANASSODA"
 msgid "Sparkling Pineapple"
 msgstr "Soda Dứa"
 
-#. STRINGS.NAMES.PINEANANAS_JUICE
-msgctxt "STRINGS.NAMES.PINEANANAS_JUICE"
+#. STRINGS.NAMES.ANANAS_JUICE
+msgctxt "STRINGS.NAMES.ANANAS_JUICE"
 msgid "Pineapple Juice"
 msgstr "Nước Dứa"
 

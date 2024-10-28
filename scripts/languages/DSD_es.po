@@ -807,13 +807,13 @@ msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.PETALS_BERRY_BRANDY"
 msgid "A brandy with a flowery aroma?"
 msgstr "¿Un coñac con aroma frutal?"
 
-#. STRINGS.CHARACTERS.GENERIC.DESCRIBE.PINEANANASSODA
-msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.PINEANANASSODA"
+#. STRINGS.CHARACTERS.GENERIC.DESCRIBE.ANANASSODA
+msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.ANANASSODA"
 msgid "It's a pine in my mouth."
 msgstr "Es un pino en mi boca."
 
-#. STRINGS.CHARACTERS.GENERIC.DESCRIBE.PINEANANAS_JUICE
-msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.PINEANANAS_JUICE"
+#. STRINGS.CHARACTERS.GENERIC.DESCRIBE.ANANAS_JUICE
+msgctxt "STRINGS.CHARACTERS.GENERIC.DESCRIBE.ANANAS_JUICE"
 msgid "At least the skin won't scratch my mouth anymore."
 msgstr "Al menos la piel ya no me araña la boca."
 
@@ -1952,13 +1952,13 @@ msgctxt "STRINGS.CHARACTERS.WALTER.DESCRIBE.PETALS_BERRY_BRANDY"
 msgid "I don't know about the taste, but it looks pretty!"
 msgstr "No sé si sabe bien, ¡pero se ve bonito!"
 
-#. STRINGS.CHARACTERS.WALTER.DESCRIBE.PINEANANASSODA
-msgctxt "STRINGS.CHARACTERS.WALTER.DESCRIBE.PINEANANASSODA"
+#. STRINGS.CHARACTERS.WALTER.DESCRIBE.ANANASSODA
+msgctxt "STRINGS.CHARACTERS.WALTER.DESCRIBE.ANANASSODA"
 msgid "We'll call it the Pinetree Pioneer Apple Soda."
 msgstr "Lo llamaremos el refresco del pino pionero."
 
-#. STRINGS.CHARACTERS.WALTER.DESCRIBE.PINEANANAS_JUICE
-msgctxt "STRINGS.CHARACTERS.WALTER.DESCRIBE.PINEANANAS_JUICE"
+#. STRINGS.CHARACTERS.WALTER.DESCRIBE.ANANAS_JUICE
+msgctxt "STRINGS.CHARACTERS.WALTER.DESCRIBE.ANANAS_JUICE"
 msgid "Do you know who Anana's brother is? Banana!"
 msgstr "¿Sabes cual es la hermana de la piñanana? ¡Bananana!"
 
@@ -3092,13 +3092,13 @@ msgctxt "STRINGS.CHARACTERS.WANDA.DESCRIBE.PETALS_BERRY_BRANDY"
 msgid "I don't have the time to enjoy the floral scent in my drinks."
 msgstr "I don't have the time to enjoy the floral scent in my drinks."
 
-#. STRINGS.CHARACTERS.WANDA.DESCRIBE.PINEANANASSODA
-msgctxt "STRINGS.CHARACTERS.WANDA.DESCRIBE.PINEANANASSODA"
+#. STRINGS.CHARACTERS.WANDA.DESCRIBE.ANANASSODA
+msgctxt "STRINGS.CHARACTERS.WANDA.DESCRIBE.ANANASSODA"
 msgid "Good, I won't waste too much time enjoying this."
 msgstr "Good, I won't waste too much time enjoying this."
 
-#. STRINGS.CHARACTERS.WANDA.DESCRIBE.PINEANANAS_JUICE
-msgctxt "STRINGS.CHARACTERS.WANDA.DESCRIBE.PINEANANAS_JUICE"
+#. STRINGS.CHARACTERS.WANDA.DESCRIBE.ANANAS_JUICE
+msgctxt "STRINGS.CHARACTERS.WANDA.DESCRIBE.ANANAS_JUICE"
 msgid "Even without the outer skin, if you eat a lot, your mouth will start to bleed."
 msgstr "Incluso sin la piel exterior, si comes mucho, tu boca empezará a sangrar."
 
@@ -4232,13 +4232,13 @@ msgctxt "STRINGS.CHARACTERS.WARLY.DESCRIBE.PETALS_BERRY_BRANDY"
 msgid "You can feel the aroma of raspberries, tangerines, strawberries, and flowers."
 msgstr "Se siente el aroma de frambuesas, mandarinas, fresas y flores."
 
-#. STRINGS.CHARACTERS.WARLY.DESCRIBE.PINEANANASSODA
-msgctxt "STRINGS.CHARACTERS.WARLY.DESCRIBE.PINEANANASSODA"
+#. STRINGS.CHARACTERS.WARLY.DESCRIBE.ANANASSODA
+msgctxt "STRINGS.CHARACTERS.WARLY.DESCRIBE.ANANASSODA"
 msgid "This is the perfect drink to help you digest after a big meal."
 msgstr "Esta bebida es perfecta para ayudar a digerir una buena merienda."
 
-#. STRINGS.CHARACTERS.WARLY.DESCRIBE.PINEANANAS_JUICE
-msgctxt "STRINGS.CHARACTERS.WARLY.DESCRIBE.PINEANANAS_JUICE"
+#. STRINGS.CHARACTERS.WARLY.DESCRIBE.ANANAS_JUICE
+msgctxt "STRINGS.CHARACTERS.WARLY.DESCRIBE.ANANAS_JUICE"
 msgid "Be careful not to drink too much, or My mouth will peel off."
 msgstr "Debo cuidar de no beber mucho, o me pelara la lengua."
 
@@ -5377,13 +5377,13 @@ msgctxt "STRINGS.CHARACTERS.WATHGRITHR.DESCRIBE.PETALS_BERRY_BRANDY"
 msgid "Warriors have no time to enjoy the scent of flowers."
 msgstr "Los guerreros no tienen tiempo para disfrutar del perfume de las flores."
 
-#. STRINGS.CHARACTERS.WATHGRITHR.DESCRIBE.PINEANANASSODA
-msgctxt "STRINGS.CHARACTERS.WATHGRITHR.DESCRIBE.PINEANANASSODA"
+#. STRINGS.CHARACTERS.WATHGRITHR.DESCRIBE.ANANASSODA
+msgctxt "STRINGS.CHARACTERS.WATHGRITHR.DESCRIBE.ANANASSODA"
 msgid "Whether it's pinecones or fruit, it's not right."
 msgstr "Ya sean piñas o fruta, no está bien."
 
-#. STRINGS.CHARACTERS.WATHGRITHR.DESCRIBE.PINEANANAS_JUICE
-msgctxt "STRINGS.CHARACTERS.WATHGRITHR.DESCRIBE.PINEANANAS_JUICE"
+#. STRINGS.CHARACTERS.WATHGRITHR.DESCRIBE.ANANAS_JUICE
+msgctxt "STRINGS.CHARACTERS.WATHGRITHR.DESCRIBE.ANANAS_JUICE"
 msgid "It has crushed the tough scales to get the flesh."
 msgstr "Aplastaron las duras escamas para obtener la carne."
 
@@ -6522,13 +6522,13 @@ msgctxt "STRINGS.CHARACTERS.WAXWELL.DESCRIBE.PETALS_BERRY_BRANDY"
 msgid "A bit excessive."
 msgstr "Un poco excesivo."
 
-#. STRINGS.CHARACTERS.WAXWELL.DESCRIBE.PINEANANASSODA
-msgctxt "STRINGS.CHARACTERS.WAXWELL.DESCRIBE.PINEANANASSODA"
+#. STRINGS.CHARACTERS.WAXWELL.DESCRIBE.ANANASSODA
+msgctxt "STRINGS.CHARACTERS.WAXWELL.DESCRIBE.ANANASSODA"
 msgid "I feel closer to civilization now."
 msgstr "Me siento cerca a la civilización."
 
-#. STRINGS.CHARACTERS.WAXWELL.DESCRIBE.PINEANANAS_JUICE
-msgctxt "STRINGS.CHARACTERS.WAXWELL.DESCRIBE.PINEANANAS_JUICE"
+#. STRINGS.CHARACTERS.WAXWELL.DESCRIBE.ANANAS_JUICE
+msgctxt "STRINGS.CHARACTERS.WAXWELL.DESCRIBE.ANANAS_JUICE"
 msgid "I can't drink this tangy fruit juice in one go."
 msgstr "No puedo tomar este jugo de fruta ácido  en un solo instante."
 
@@ -7662,13 +7662,13 @@ msgctxt "STRINGS.CHARACTERS.WEBBER.DESCRIBE.PETALS_BERRY_BRANDY"
 msgid "It has a pleasant aroma."
 msgstr "Mmm, tiene un aroma placentero."
 
-#. STRINGS.CHARACTERS.WEBBER.DESCRIBE.PINEANANASSODA
-msgctxt "STRINGS.CHARACTERS.WEBBER.DESCRIBE.PINEANANASSODA"
+#. STRINGS.CHARACTERS.WEBBER.DESCRIBE.ANANASSODA
+msgctxt "STRINGS.CHARACTERS.WEBBER.DESCRIBE.ANANASSODA"
 msgid "We should be careful so our teeth don't decay."
 msgstr "Debemos ser cuidadosos de que no se pudra."
 
-#. STRINGS.CHARACTERS.WEBBER.DESCRIBE.PINEANANAS_JUICE
-msgctxt "STRINGS.CHARACTERS.WEBBER.DESCRIBE.PINEANANAS_JUICE"
+#. STRINGS.CHARACTERS.WEBBER.DESCRIBE.ANANAS_JUICE
+msgctxt "STRINGS.CHARACTERS.WEBBER.DESCRIBE.ANANAS_JUICE"
 msgid "Our teeth feel weird after drinking this."
 msgstr "Nuestros dientes se sienten raro después de beber esto."
 
@@ -8802,13 +8802,13 @@ msgctxt "STRINGS.CHARACTERS.WENDY.DESCRIBE.PETALS_BERRY_BRANDY"
 msgid "It seduces with the scent of flowers."
 msgstr "Seduce con el perfume de las flores."
 
-#. STRINGS.CHARACTERS.WENDY.DESCRIBE.PINEANANASSODA
-msgctxt "STRINGS.CHARACTERS.WENDY.DESCRIBE.PINEANANASSODA"
+#. STRINGS.CHARACTERS.WENDY.DESCRIBE.ANANASSODA
+msgctxt "STRINGS.CHARACTERS.WENDY.DESCRIBE.ANANASSODA"
 msgid "It's tangy and sweet soda."
 msgstr "Es una bebida acida y dulce"
 
-#. STRINGS.CHARACTERS.WENDY.DESCRIBE.PINEANANAS_JUICE
-msgctxt "STRINGS.CHARACTERS.WENDY.DESCRIBE.PINEANANAS_JUICE"
+#. STRINGS.CHARACTERS.WENDY.DESCRIBE.ANANAS_JUICE
+msgctxt "STRINGS.CHARACTERS.WENDY.DESCRIBE.ANANAS_JUICE"
 msgid "It tore through the tough rind and mashed the pulp."
 msgstr "Rompió la espinosa corteza, y trituró la pulpa"
 
@@ -9927,13 +9927,13 @@ msgctxt "STRINGS.CHARACTERS.WICKERBOTTOM.DESCRIBE.PETALS_BERRY_BRANDY"
 msgid "Flower scent is added to brandy to make it more spectacular."
 msgstr "El aroma de las flores se añade al brandy para hacerlo más espectacular."
 
-#. STRINGS.CHARACTERS.WICKERBOTTOM.DESCRIBE.PINEANANASSODA
-msgctxt "STRINGS.CHARACTERS.WICKERBOTTOM.DESCRIBE.PINEANANASSODA"
+#. STRINGS.CHARACTERS.WICKERBOTTOM.DESCRIBE.ANANASSODA
+msgctxt "STRINGS.CHARACTERS.WICKERBOTTOM.DESCRIBE.ANANASSODA"
 msgid "Pineapple juice added to carbonated water."
 msgstr "Zumo de piña con agua carbonatada."
 
-#. STRINGS.CHARACTERS.WICKERBOTTOM.DESCRIBE.PINEANANAS_JUICE
-msgctxt "STRINGS.CHARACTERS.WICKERBOTTOM.DESCRIBE.PINEANANAS_JUICE"
+#. STRINGS.CHARACTERS.WICKERBOTTOM.DESCRIBE.ANANAS_JUICE
+msgctxt "STRINGS.CHARACTERS.WICKERBOTTOM.DESCRIBE.ANANAS_JUICE"
 msgid "It contains a lot of bromelain, so it can cause mouth sores. Drink it in moderation."
 msgstr "Contiene mucha bromelina, por lo que puede provocar llagas en la boca. Bébelo con moderación."
 
@@ -11067,13 +11067,13 @@ msgctxt "STRINGS.CHARACTERS.WILLOW.DESCRIBE.PETALS_BERRY_BRANDY"
 msgid "The booze smells like flowers; as long as I can get drunk, I don't care."
 msgstr "Puedo oler las flores."
 
-#. STRINGS.CHARACTERS.WILLOW.DESCRIBE.PINEANANASSODA
-msgctxt "STRINGS.CHARACTERS.WILLOW.DESCRIBE.PINEANANASSODA"
+#. STRINGS.CHARACTERS.WILLOW.DESCRIBE.ANANASSODA
+msgctxt "STRINGS.CHARACTERS.WILLOW.DESCRIBE.ANANASSODA"
 msgid "It's just pineapple soda."
 msgstr "Es sólo refresco de piña."
 
-#. STRINGS.CHARACTERS.WILLOW.DESCRIBE.PINEANANAS_JUICE
-msgctxt "STRINGS.CHARACTERS.WILLOW.DESCRIBE.PINEANANAS_JUICE"
+#. STRINGS.CHARACTERS.WILLOW.DESCRIBE.ANANAS_JUICE
+msgctxt "STRINGS.CHARACTERS.WILLOW.DESCRIBE.ANANAS_JUICE"
 msgid "Good when you drink, but your mouth will tingle after."
 msgstr "Está bueno cuando lo bebes, pero después te hormiguea la boca."
 
@@ -12207,13 +12207,13 @@ msgctxt "STRINGS.CHARACTERS.WINONA.DESCRIBE.PETALS_BERRY_BRANDY"
 msgid "Seems quite luxurious."
 msgstr "Luce lujoso."
 
-#. STRINGS.CHARACTERS.WINONA.DESCRIBE.PINEANANASSODA
-msgctxt "STRINGS.CHARACTERS.WINONA.DESCRIBE.PINEANANASSODA"
+#. STRINGS.CHARACTERS.WINONA.DESCRIBE.ANANASSODA
+msgctxt "STRINGS.CHARACTERS.WINONA.DESCRIBE.ANANASSODA"
 msgid "It tastes like store-bought pineapple soda."
 msgstr "Sabe como refresco de piña de tienda comercial."
 
-#. STRINGS.CHARACTERS.WINONA.DESCRIBE.PINEANANAS_JUICE
-msgctxt "STRINGS.CHARACTERS.WINONA.DESCRIBE.PINEANANAS_JUICE"
+#. STRINGS.CHARACTERS.WINONA.DESCRIBE.ANANAS_JUICE
+msgctxt "STRINGS.CHARACTERS.WINONA.DESCRIBE.ANANAS_JUICE"
 msgid "Definitely better than the liquid in canned goods."
 msgstr "Definitivamente mejor que el líquido de las sodas."
 
@@ -13352,13 +13352,13 @@ msgctxt "STRINGS.CHARACTERS.WOLFGANG.DESCRIBE.PETALS_BERRY_BRANDY"
 msgid "It smells fragrant."
 msgstr "Huele fragante."
 
-#. STRINGS.CHARACTERS.WOLFGANG.DESCRIBE.PINEANANASSODA
-msgctxt "STRINGS.CHARACTERS.WOLFGANG.DESCRIBE.PINEANANASSODA"
+#. STRINGS.CHARACTERS.WOLFGANG.DESCRIBE.ANANASSODA
+msgctxt "STRINGS.CHARACTERS.WOLFGANG.DESCRIBE.ANANASSODA"
 msgid "Sour and refreshing."
 msgstr "Agrio y refrescante."
 
-#. STRINGS.CHARACTERS.WOLFGANG.DESCRIBE.PINEANANAS_JUICE
-msgctxt "STRINGS.CHARACTERS.WOLFGANG.DESCRIBE.PINEANANAS_JUICE"
+#. STRINGS.CHARACTERS.WOLFGANG.DESCRIBE.ANANAS_JUICE
+msgctxt "STRINGS.CHARACTERS.WOLFGANG.DESCRIBE.ANANAS_JUICE"
 msgid "Incredibly refreshing juice."
 msgstr "Un jugo increíblemente refrescante."
 
@@ -14492,13 +14492,13 @@ msgctxt "STRINGS.CHARACTERS.WOODIE.DESCRIBE.PETALS_BERRY_BRANDY"
 msgid "It's fragrant and nice."
 msgstr "Es aromático y sabe bien."
 
-#. STRINGS.CHARACTERS.WOODIE.DESCRIBE.PINEANANASSODA
-msgctxt "STRINGS.CHARACTERS.WOODIE.DESCRIBE.PINEANANASSODA"
+#. STRINGS.CHARACTERS.WOODIE.DESCRIBE.ANANASSODA
+msgctxt "STRINGS.CHARACTERS.WOODIE.DESCRIBE.ANANASSODA"
 msgid "It's pineapple soda."
 msgstr "Es refresco de piña."
 
-#. STRINGS.CHARACTERS.WOODIE.DESCRIBE.PINEANANAS_JUICE
-msgctxt "STRINGS.CHARACTERS.WOODIE.DESCRIBE.PINEANANAS_JUICE"
+#. STRINGS.CHARACTERS.WOODIE.DESCRIBE.ANANAS_JUICE
+msgctxt "STRINGS.CHARACTERS.WOODIE.DESCRIBE.ANANAS_JUICE"
 msgid "It's refreshing, but I can't drink too much of it like this."
 msgstr "Refrescante, pero no puedo beber mucho."
 
@@ -15622,13 +15622,13 @@ msgctxt "STRINGS.CHARACTERS.WORMWOOD.DESCRIBE.PETALS_BERRY_BRANDY"
 msgid "Colorful"
 msgstr "Colorido"
 
-#. STRINGS.CHARACTERS.WORMWOOD.DESCRIBE.PINEANANASSODA
-msgctxt "STRINGS.CHARACTERS.WORMWOOD.DESCRIBE.PINEANANASSODA"
+#. STRINGS.CHARACTERS.WORMWOOD.DESCRIBE.ANANASSODA
+msgctxt "STRINGS.CHARACTERS.WORMWOOD.DESCRIBE.ANANASSODA"
 msgid "Bubbly fit-for-a-crown water"
 msgstr "Agua burbujeante"
 
-#. STRINGS.CHARACTERS.WORMWOOD.DESCRIBE.PINEANANAS_JUICE
-msgctxt "STRINGS.CHARACTERS.WORMWOOD.DESCRIBE.PINEANANAS_JUICE"
+#. STRINGS.CHARACTERS.WORMWOOD.DESCRIBE.ANANAS_JUICE
+msgctxt "STRINGS.CHARACTERS.WORMWOOD.DESCRIBE.ANANAS_JUICE"
 msgid "Fit for a crown"
 msgstr "Digno de coronar"
 
@@ -16762,13 +16762,13 @@ msgctxt "STRINGS.CHARACTERS.WORTOX.DESCRIBE.PETALS_BERRY_BRANDY"
 msgid "I don't fit in with upscale things."
 msgstr "No es mi estilo."
 
-#. STRINGS.CHARACTERS.WORTOX.DESCRIBE.PINEANANASSODA
-msgctxt "STRINGS.CHARACTERS.WORTOX.DESCRIBE.PINEANANASSODA"
+#. STRINGS.CHARACTERS.WORTOX.DESCRIBE.ANANASSODA
+msgctxt "STRINGS.CHARACTERS.WORTOX.DESCRIBE.ANANASSODA"
 msgid "I prefer to enjoy being an essence rather than drinking it."
 msgstr "Prefiero que sea una fruta a que sea bebida."
 
-#. STRINGS.CHARACTERS.WORTOX.DESCRIBE.PINEANANAS_JUICE
-msgctxt "STRINGS.CHARACTERS.WORTOX.DESCRIBE.PINEANANAS_JUICE"
+#. STRINGS.CHARACTERS.WORTOX.DESCRIBE.ANANAS_JUICE
+msgctxt "STRINGS.CHARACTERS.WORTOX.DESCRIBE.ANANAS_JUICE"
 msgid "I could be an essence."
 msgstr "Podría ser una esencia."
 
@@ -17902,13 +17902,13 @@ msgctxt "STRINGS.CHARACTERS.WURT.DESCRIBE.PETALS_BERRY_BRANDY"
 msgid "Ugly flowers also smells strong, glorp."
 msgstr "Huele como flores podridas, es un sabor muy fuerte, flort."
 
-#. STRINGS.CHARACTERS.WURT.DESCRIBE.PINEANANASSODA
-msgctxt "STRINGS.CHARACTERS.WURT.DESCRIBE.PINEANANASSODA"
+#. STRINGS.CHARACTERS.WURT.DESCRIBE.ANANASSODA
+msgctxt "STRINGS.CHARACTERS.WURT.DESCRIBE.ANANASSODA"
 msgid "Bubbly sour fruit water!"
 msgstr "¡Agua de fruta ácida y burbujeante!"
 
-#. STRINGS.CHARACTERS.WURT.DESCRIBE.PINEANANAS_JUICE
-msgctxt "STRINGS.CHARACTERS.WURT.DESCRIBE.PINEANANAS_JUICE"
+#. STRINGS.CHARACTERS.WURT.DESCRIBE.ANANAS_JUICE
+msgctxt "STRINGS.CHARACTERS.WURT.DESCRIBE.ANANAS_JUICE"
 msgid "Sour fruit was put into the water, making it less sour and sweeter, florp."
 msgstr "Fruta ácida en agua dulce, slurp."
 
@@ -19047,13 +19047,13 @@ msgctxt "STRINGS.CHARACTERS.WX78.DESCRIBE.PETALS_BERRY_BRANDY"
 msgid "JUST LIKE A DIFFUSER"
 msgstr "JUSTO COMO UN DIFUSOR"
 
-#. STRINGS.CHARACTERS.WX78.DESCRIBE.PINEANANASSODA
-msgctxt "STRINGS.CHARACTERS.WX78.DESCRIBE.PINEANANASSODA"
+#. STRINGS.CHARACTERS.WX78.DESCRIBE.ANANASSODA
+msgctxt "STRINGS.CHARACTERS.WX78.DESCRIBE.ANANASSODA"
 msgid "PINE TUNING USED"
 msgstr "PIÑA USADA"
 
-#. STRINGS.CHARACTERS.WX78.DESCRIBE.PINEANANAS_JUICE
-msgctxt "STRINGS.CHARACTERS.WX78.DESCRIBE.PINEANANAS_JUICE"
+#. STRINGS.CHARACTERS.WX78.DESCRIBE.ANANAS_JUICE
+msgctxt "STRINGS.CHARACTERS.WX78.DESCRIBE.ANANAS_JUICE"
 msgid "DENIES ASSOCIATION WITH SPONGES"
 msgstr "NO ASOCIADO CON LAS ESPONJAS"
 
@@ -20102,13 +20102,13 @@ msgctxt "STRINGS.NAMES.PETALS_BERRY_BRANDY"
 msgid "Rose Brandy"
 msgstr "Ginebra de rosas"
 
-#. STRINGS.NAMES.PINEANANASSODA
-msgctxt "STRINGS.NAMES.PINEANANASSODA"
+#. STRINGS.NAMES.ANANASSODA
+msgctxt "STRINGS.NAMES.ANANASSODA"
 msgid "Sparkling Pineapple"
 msgstr "Refresco de piña"
 
-#. STRINGS.NAMES.PINEANANAS_JUICE
-msgctxt "STRINGS.NAMES.PINEANANAS_JUICE"
+#. STRINGS.NAMES.ANANAS_JUICE
+msgctxt "STRINGS.NAMES.ANANAS_JUICE"
 msgid "Pineapple Juice"
 msgstr "Jugo de piña"
 

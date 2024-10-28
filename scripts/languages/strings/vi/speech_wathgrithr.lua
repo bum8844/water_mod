@@ -132,7 +132,7 @@ return {
             CHERRY_ROSEBERRIES_TEA = "Tôi có phải uống đồ uống có trái cây hèn hạ như vậy không?", -- Trà Tầm Xuân Anh Đào
             CHERRY_HONEY_TEA = "Đây thực sự là nước mật ong tinh tế.", -- Trà mật ong hoa anh đào rừng anh đào
             SWEET_RICE_DRINK = "Cái này không chứa hạt à?", -- Vita-Hybiscus Sweet Rice Punch
-            ANANAS_JUICE = "Nó đã nghiền nát những vảy cứng để lấy thịt.", -- Reign of Giants Pineananas Juice
+            ANANAS_JUICE = "Nó đã nghiền nát những vảy cứng để lấy thịt.", -- Reign of Giants ANANAS Juice
             ORANGE_JUICE = "Nó bảo tôi uống nước ép chua của nó à?", -- Thêm gói thực phẩm Nước cam
             STRAWBERRY_SMOOTHIE = "Đó là một loại nước ép trái cây màu đỏ, lạnh.", -- Thêm gói thực phẩm Sinh tố dâu tây
             STRAWBERRY_MILK_SMOOTHIE = "Đồ uống này không thích hợp cho một chiến binh.", -- Gói thực phẩm khác Sinh tố sữa dâu
