@@ -56,12 +56,23 @@ local function GetTeaTreeBiome()
         "JungleEvilFlowers",
     }
 
+    local tea_tree_biome_ac = {
+        "BG_cultivated_base",
+        "cultivated_base_1",
+        "cultivated_base_2",
+        "piko_land",
+    }
+
     if modlist.te then
     	tea_tree_biome = CheckMods(tea_tree_biome, tea_tree_biome_te)
     end
 
     if modlist.ia then
     	tea_tree_biome = CheckMods(tea_tree_biome, tea_tree_biome_ia)
+    end
+
+    if modlist.ac then
+        tea_tree_biome = CheckMods(tea_tree_biome, tea_tree_biome_ac)
     end
 
 	return tea_tree_biome
@@ -99,6 +110,11 @@ local function GetCaffeinBerryBiome()
         "MeadowRocky",
     }
 
+    local caffeinberry_biome_ac = {
+        "deeprainforest_gas",
+        "deeprainforest_gas_flytrap_grove",
+    }
+
     if modlist.te then
     	caffeinberry_biome = CheckMods(caffeinberry_biome, caffeinberry_biome_te)
     end
@@ -106,6 +122,10 @@ local function GetCaffeinBerryBiome()
     if modlist.ia then
     	caffeinberry_biome = CheckMods(caffeinberry_biome, caffeinberry_biome_ia)
     end
+
+    if modlist.ac then
+        caffeinberry_biome = CheckMods(caffeinberry_biome, caffeinberry_biome_ac)
+    end        
 
 	return caffeinberry_biome
 end
@@ -136,12 +156,23 @@ local function GetRuinCacaoTreeBiome()
         "deeprainforest_mandrakeman",
     }
 
+    local ruincacao_tree_biome_ac = {
+        "BG_deeprainforest_base",
+        "deeprainforest_fireflygrove",
+        "deeprainforest_flytrap_grove",
+        "deeprainforest_mandrakeman",
+    }
+
     if modlist.te then
     	ruincacao_tree_biome = CheckMods(ruincacao_tree_biome, ruincacao_tree_biome_te)
     end
 
     if modlist.ia then
     	ruincacao_tree_biome = CheckMods(ruincacao_tree_biome, ruincacao_tree_biome_ia)
+    end
+
+    if modlist.ac then
+        ruincacao_tree_biome = CheckMods(ruincacao_tree_biome, ruincacao_tree_biome_ac)
     end
 
 	return ruincacao_tree_biome
