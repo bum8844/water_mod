@@ -492,12 +492,13 @@ function give_tech(inst, eater, num, count_num)
 	local atech_num = math.max(0,num)
 	local otech_num = math.max(0,num/2)
 	local ctech_num = math.max(0,num)
+	local pctech_num = math.max(0,num)
 	if eater.components.builder then
 		local test = eater.components.builder:GetTechBonuses()
 		if test then
 			for k, v in pairs(test) do
 				if k == "ANCIENT" and atech_num >= v then
-					eater.components.builder:GiveTempTechBonus({ANCIENT = atech_num, OBSIDIAN = otech_num, CELESTIAL = ctech_num})
+					eater.components.builder:GiveTempTechBonus({ANCIENT = atech_num, OBSIDIAN = otech_num, CELESTIAL = ctech_num, CITY = pctech_num})
 				end
 			end
 		end

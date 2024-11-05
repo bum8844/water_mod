@@ -142,7 +142,7 @@ local SCENE =
                 if inst:HasTag("fullpressure") or inst:HasTag("recharg_pressure") then
                     return
                 end
-            elseif not inst:HasTag("haspipe") and not inst:HasTag("hashole") then
+            elseif not inst:HasTag("haspipe") and not inst:HasTag("hashole") and not inst:HasTag("bigpond_haspipe") then
                 return
             end
             table.insert(actions, inst:HasTag("turnedon") and ACTIONS.TURNOFF or inst:HasTag("well_waterpump") and ACTIONS.TURNON or ACTIONS.TURNON_TILEARRIVE)

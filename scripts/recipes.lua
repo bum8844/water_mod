@@ -39,11 +39,6 @@ local function ModAtlas()
   return "images/tea_inventoryitem.xml"
 end
 
-local NOHOF = true
-local SWON = false
-
-local modlist = require("utils/water_modlist")
-
 AddRecipeFilter({name = "HYDRATION", atlas = ModAtlas, image = "hydration.tex", custom_pos=nil, recipes=nil,},nil)
 AddRecipeFilter({name = "SECRETKNOWLEDGE", atlas = ModAtlas, image = "secretknowledge.tex", custom_pos=nil, recipes=nil,},nil)
 
@@ -80,19 +75,6 @@ AddRecipeToFilter("eyeturret_item","SECRETKNOWLEDGE")
 AddRecipeToFilter("shadow_forge_kit","SECRETKNOWLEDGE")
 AddRecipeToFilter("blueprint_craftingset_ruins_builder","SECRETKNOWLEDGE")
 AddRecipeToFilter("blueprint_craftingset_ruinsglow_builder","SECRETKNOWLEDGE")
-
-if modlist.ia or modlist.te then
-    -- OBSIDIAN
-    AddRecipeToFilter("obsidianaxe","SECRETKNOWLEDGE")
-    AddRecipeToFilter("obsidianmachete","SECRETKNOWLEDGE")
-    AddRecipeToFilter("spear_obsidian","SECRETKNOWLEDGE")
-    AddRecipeToFilter("volcanostaff","SECRETKNOWLEDGE")
-    AddRecipeToFilter("armorobsidian","SECRETKNOWLEDGE")
-    AddRecipeToFilter("obsidiancoconade","SECRETKNOWLEDGE")
-    AddRecipeToFilter("wind_conch","SECRETKNOWLEDGE")
-    AddRecipeToFilter("windstaff","SECRETKNOWLEDGE")
-    AddRecipeToFilter("turf_ruinsbrick_glow_blueprint","SECRETKNOWLEDGE")
-end
 
 AddRecipe2("bucket_woodie_empty",{Ingredient("lucy",0),Ingredient("log",2)},TECH.NONE,{atlas = ModAtlas(), image = "bucket_woodie_empty.tex", builder_tag="woodcarver1", sg_state="carvewood_boards",  description="bucket_empty"},{"CHARACTER","HYDRATION","TOOLS"})
 SortAfter("bucket_woodie_empty", "goldenpitchfork", "TOOLS")

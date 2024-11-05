@@ -47,6 +47,10 @@ local function IsDirty(pos)
          _G.TheWorld.Map:GetTileAtPoint(pos.x+2.5, 0, pos.z) == _G.WORLD_TILES.MANGROVE_SHORE or
          _G.TheWorld.Map:GetTileAtPoint(pos.x, 0, pos.z-2.5) == _G.WORLD_TILES.MANGROVE_SHORE or
          _G.TheWorld.Map:GetTileAtPoint(pos.x, 0, pos.z+2.5) == _G.WORLD_TILES.MANGROVE_SHORE) or
+        (_G.TheWorld.Map:GetTileAtPoint(pos.x-2.5, 0, pos.z) == _G.WORLD_TILES.LILYPOND or
+         _G.TheWorld.Map:GetTileAtPoint(pos.x+2.5, 0, pos.z) == _G.WORLD_TILES.LILYPOND or
+         _G.TheWorld.Map:GetTileAtPoint(pos.x, 0, pos.z-2.5) == _G.WORLD_TILES.LILYPOND or
+         _G.TheWorld.Map:GetTileAtPoint(pos.x, 0, pos.z+2.5) == _G.WORLD_TILES.LILYPOND) or
         (_G.TheWorld.Map:GetTileAtPoint(pos.x-2.5, 0, pos.z) == _G.WORLD_TILES.MANGROVE or
          _G.TheWorld.Map:GetTileAtPoint(pos.x+2.5, 0, pos.z) == _G.WORLD_TILES.MANGROVE or
          _G.TheWorld.Map:GetTileAtPoint(pos.x, 0, pos.z-2.5) == _G.WORLD_TILES.MANGROVE or

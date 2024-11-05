@@ -18,7 +18,13 @@ if modlist.ia then
 	modrequire("modcompats/1467214795/ia_water_spicedfoods_mod")
 	modrequire("modcompats/1467214795/ia_init")
 	modrequire("modcompats/1467214795/ia_init_prefab")
-end 
+end
+if modlist.ac or modlist.te or modlist.ta then
+	modrequire("modcompats/pigcity_recipes_patch")
+end
+if modlist.ia or modlist.te or modlist.ta then
+	modrequire("modcompats/obsidian_recipes_patch")
+end
 if modlist.cf then 
 	modrequire("modcompats/1289779251/cherry_friendpits")
 end

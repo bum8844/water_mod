@@ -147,6 +147,10 @@ local function UpdateSpray(inst)
 	end
 end
 
+local function IsValidSprinklerTile(tile)
+    return not TileGroupManager:IsOceanTile(tile) and (tile ~= WORLD_TILES.INVALID) and (tile ~= WORLD_TILES.IMPASSABLE)
+end
+
 local function GetValidWaterPointNearby(inst)
     local pt = inst:GetPosition()
     local best_point = nil
@@ -164,6 +168,28 @@ local function GetValidWaterPointNearby(inst)
         end
         if v:HasTag("oasislake") then
             inst:AddTag("stormchecker")
+        end
+    end
+
+    if not best_point then
+        local range = 20
+        local cx, cy = TheWorld.Map:GetTileCoordsAtPoint(pt.x, 0, pt.z)
+        local center_tile = TheWorld.Map:GetTile(cx, cy)
+        for x = pt.x - range, pt.x + range, 1 do
+            for z = pt.z - range, pt.z + range, 1 do
+                local tile = TheWorld.Map:GetTileAtPoint(x, 0, z)
+
+                if IsValidSprinklerTile(center_tile) and tile == WORLD_TILES.LILYPOND then
+                    local cur_point = Vector3(x, 0, z)
+                    local cur_sq_dist = cur_point:DistSq(pt)
+
+                    if cur_sq_dist < min_sq_dist then
+                        min_sq_dist = cur_sq_dist
+                        best_point = cur_point
+                        inst:AddTag("bigpond_haspipe")
+                    end
+                end
+            end
         end
     end
 
@@ -353,7 +379,7 @@ end
 
 local function addtags(inst)
     inst:AddTag("connected")
-    inst:AddTag("haspipe") 
+    inst:AddTag("haspipe")
 end
 
 local function WeatherCheck(inst)
@@ -365,7 +391,7 @@ local function WeatherCheck(inst)
                 end
             end, TheWorld)
             OnSandstormChanged(inst, TheWorld.components.sandstorms ~= nil and TheWorld.components.sandstorms:IsSandstormActive())
-        elseif not inst:HasTag("dummy") then
+        elseif not inst:HasTag("dummy") and not inst:HasTag("bigpond_haspipe") then
             inst:WatchWorldState("snowlevel", OnSnowLevel)
             OnSnowLevel(inst, TheWorld.state.snowlevel)
         end

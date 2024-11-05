@@ -33,11 +33,21 @@ local function SetRuinCacaoConfig(var, list)
         deeprainforest_mandrakeman=gen_ruincacao_tree,
     }
 
+    local ruincacao_tree_biome_ac = {
+        BG_deeprainforest_base=gen_ruincacao_tree,
+        deeprainforest_fireflygrove=gen_ruincacao_tree,
+        deeprainforest_flytrap_grove=gen_ruincacao_tree,
+        deeprainforest_mandrakeman=gen_ruincacao_tree,        
+    }
+
     if list.TE then
         ruincacao_tree_biome = CheckMods(ruincacao_tree_biome, ruincacao_tree_biome_te)
     end
     if list.IA then
         ruincacao_tree_biome = CheckMods(ruincacao_tree_biome, ruincacao_tree_biome_ia)
+    end 
+    if list.AC then
+        ruincacao_tree_biome = CheckMods(ruincacao_tree_biome, ruincacao_tree_biome_ac)
     end
 
     return ruincacao_tree_biome
@@ -77,11 +87,19 @@ local function SetCaffeinberryConfig(var, list)
         MeadowRocky=gen_caffeinberry,
     }
 
+    local caffeinberry_biome_ac = {
+        deeprainforest_gas=gen_caffeinberry,
+        deeprainforest_gas_flytrap_grove=gen_caffeinberry,
+    }
+
     if list.TE then
         caffeinberry_biome = CheckMods(caffeinberry_biome, caffeinberry_biome_te)
     end
     if list.IA then
         caffeinberry_biome = CheckMods(caffeinberry_biome, caffeinberry_biome_ia)
+    end
+    if list.AC then
+        caffeinberry_biome = CheckMods(caffeinberry_biome, caffeinberry_biome_ac)
     end
 
     return caffeinberry_biome
@@ -138,11 +156,21 @@ local function SetTeaTreeConfig(var, list)
         JungleEvilFlowers=gen_tea_tree
     }
 
+    local tea_tree_biome_ac = {
+        BG_cultivated_base=gen_tea_tree,
+        cultivated_base_1=gen_tea_tree,
+        cultivated_base_2=gen_tea_tree,
+        piko_land=gen_tea_tree
+    }
+
     if list.TE then
         tea_tree_biome = CheckMods(tea_tree_biome, tea_tree_biome_te)
     end
     if list.IA then
         tea_tree_biome = CheckMods(tea_tree_biome, tea_tree_biome_ia)
+    end
+    if list.AC then
+        tea_tree_biome = CheckMods(tea_tree_biome, tea_tree_biome_ac)
     end
 
     return tea_tree_biome
