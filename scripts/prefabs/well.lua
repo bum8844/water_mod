@@ -57,23 +57,14 @@ local function CreateWellSprinkler(inst)
 	end)
 end
 
-local function CreateWellWinonaSprinkler(inst)
-	local sprinkler = ReplacePrefab(inst, "well_winona_sprinkler")
-	sprinkler.Transform:SetPosition(inst.Transform:GetWorldPosition())
-	sprinkler.AnimState:PlayAnimation("place_hole")
-	sprinkler.AnimState:PushAnimation("idle_off")
-	sprinkler.onhole = "hole"
-	sprinkler.SoundEmitter:PlaySound("dontstarve/common/together/catapult/hit")
-	sprinkler:DoTaskInTime(.6, function()
-		sprinkler.SoundEmitter:PlaySound("dontstarve/common/researchmachine_lvl2_place")
-	end)
-end
-
-
 local function CreateWellWaterPump(inst, upgraded_from_item)
 	local waterpump = ReplacePrefab(inst, "well_waterpump")
 	if upgraded_from_item._steampressure then
-		waterpump.components.steampressure.curpressure = upgraded_from_item._steampressure
+		local steampressure = waterpump.components.steampressure
+		steampressure.curpressure = upgraded_from_item._steampressure
+		if upgraded_from_item._steampressure >= steampressure.maxpressure then
+			steampressure.fullpressure = true
+		end
 	end
 	waterpump.Transform:SetPosition(inst.Transform:GetWorldPosition())
 end
