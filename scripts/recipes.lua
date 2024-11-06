@@ -143,9 +143,12 @@ SortAfter("well_kit","well_drilling_item","REFINE")
 AddRecipe2("well_sprinkler_kit",{Ingredient("marble",4),Ingredient("moonglass",1),Ingredient("townportaltalisman",2),Ingredient("gears",1)},TECH.SCIENCE_TWO,{atlas = ModAtlas(), image = "well_sprinkler_kit.tex"},{"GARDENING","REFINE","HYDRATION"})
 SortAfter("well_sprinkler_kit","well_kit","GARDENING")
 
-AddRecipe2("well_waterpump_kit",{Ingredient("security_pulse_cage_full",1),Ingredient("wagpunk_bits",4),Ingredient("transistor",1),Ingredient("cutstone",2)},TECH.NONE,{atlas = ModAtlas(), image = "well_waterpump_kit.tex", builder_tag="handyperson"},{"CHARACTER","GARDENING","REFINE","HYDRATION"})
-SortAfter("well_waterpump_kit","well_sprinkler_kit","GARDENING")
-SortAfter("well_waterpump_kit","winona_battery_high","CHARACTER")
+AddRecipe2("well_waterpump",{Ingredient("security_pulse_cage_full",1),Ingredient("wagpunk_bits",4),Ingredient("transistor",1),Ingredient("cutstone",2)},TECH.NONE,{placer = "well_waterpump_placer",atlas = ModAtlas(), image = "well_waterpump.tex", builder_tag="basicengineer", nameoverride="well_waterpump_kit", description="well_waterpump_kit"},{"CHARACTER","GARDENING","REFINE","HYDRATION"})
+AddRecipe2("well_waterpump_kit",{Ingredient("security_pulse_cage_full",1),Ingredient("wagpunk_bits",4),Ingredient("transistor",1),Ingredient("cutstone",2)},TECH.NONE,{atlas = ModAtlas(), image = "well_waterpump_kit.tex", builder_tag="portableengineer"},{"CHARACTER","GARDENING","REFINE","HYDRATION"})
+SortAfter("well_waterpump","well_sprinkler_kit","GARDENING")
+SortAfter("well_waterpump","winona_battery_high","CHARACTER")
+SortAfter("well_waterpump_kit","well_waterpump_kit","GARDENING")
+SortAfter("well_waterpump_kit","well_waterpump_kit","CHARACTER")
 
 AddRecipe2("well_burying_kit",{Ingredient("boards",4),Ingredient("hammer",1)},TECH.SCIENCE_TWO,{atlas = ModAtlas(), image = "well_burying_kit.tex"},{"GARDENING","REFINE","HYDRATION"})
 SortAfter("well_burying_kit","well_waterpump_kit","GARDENING")
@@ -158,7 +161,5 @@ AddDeconstructRecipe("well", {Ingredient("boards",2),Ingredient("cutstone",6)})
 AddDeconstructRecipe("well_buryingsite", {Ingredient("boards",4)})
 
 AddDeconstructRecipe("well_sprinkler", {Ingredient("marble",4),Ingredient("moonglass",1),Ingredient("townportaltalisman",2),Ingredient("gears",1)})
-
-AddDeconstructRecipe("well_waterpump", {Ingredient("security_pulse_cage_full",1),Ingredient("wagpunk_bits",4),Ingredient("transistor",1),Ingredient("cutstone",2)})
 
 CONSTRUCTION_PLANS["well_buryingsite"] = {Ingredient("shovel",1),Ingredient("seeds",6),Ingredient("turf_desertdirt",4),Ingredient("turf_mud",4)}

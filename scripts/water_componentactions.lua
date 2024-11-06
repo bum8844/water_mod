@@ -126,6 +126,11 @@ local POINT =
 
 local SCENE =
 {
+    dismantleable = function(inst, doer, actions, right)
+        if not inst:HasTag("engineering") or doer:HasTag("portableengineer") then
+            table.insert(actions, ACTIONS.DISASSEMBLE)
+        end
+    end,
     wateringmachine = function(inst, doer, actions, right)
         if right and not inst:HasTag("cooldown") and
             not inst:HasTag("fueldepleted") then

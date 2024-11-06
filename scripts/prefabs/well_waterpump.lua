@@ -217,10 +217,10 @@ local function fn()
 	inst:AddTag("watersource")
     inst:AddTag("well_waterpump")
     inst:AddTag("structure")
+    inst:AddTag("engineering")
     inst:AddTag("cleanwaterproduction")
     inst:AddTag("alwayson")
     inst:AddTag("hashole")
-    inst:AddTag("dismantleable")
 	
 	MakeObstaclePhysics(inst, .5)
 

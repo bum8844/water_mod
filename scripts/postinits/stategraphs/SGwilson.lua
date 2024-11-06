@@ -540,6 +540,12 @@ AddStategraphActionHandler("wilson", ActionHandler(ACTIONS.MACHINETOOL,
         end
     )
 )
+AddStategraphActionHandler("wilson", ActionHandler(ACTIONS.DISASSEMBLE,
+        function(inst, action)
+            return inst:HasTag("handyperson") and "domediumaction" or "dolongaction"
+        end
+    )
+)
 
 ------------------------------------------------------------------------
 

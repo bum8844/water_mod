@@ -10,11 +10,6 @@ local assets = {
         Asset("ANIM", "anim/well_sprinkler_placement.zip"),
         Asset("ANIM", "anim/winona_battery_placement.zip"),
     },
-    well_winona_sprinkler_kit = {
-        Asset("ANIM", "anim/well_winona_sprinkler.zip"),
-        Asset("ANIM", "anim/well_sprinkler_placement.zip"),
-        Asset("ANIM", "anim/winona_battery_placement.zip"),
-    },
     well_waterpump_kit = {
         Asset("ANIM", "anim/well_waterpump.zip"),
         Asset("ANIM", "anim/well_waterpump_meter.zip"),
@@ -157,19 +152,6 @@ local function ondeploy(inst, pt, deployer)
     end
 end
 
-local function ondeploy_w(inst, pt, deployer)
-    local sprinkler = SpawnPrefab("well_winona_sprinkler")
-    if sprinkler ~= nil then
-        sprinkler.Physics:SetCollides(false)
-        sprinkler.Physics:Teleport(pt.x, 0, pt.z)
-        sprinkler.Physics:SetCollides(true)
-        sprinkler.AnimState:PlayAnimation("place")
-        sprinkler.AnimState:PushAnimation("idle_off")
-        sprinkler.SoundEmitter:PlaySound("dontstarve/common/researchmachine_lvl2_place")
-        inst:Remove()
-    end
-end
-
 local function waterpump_OnSave(inst, data)
     if inst._steampressure then
         data.steampressure = inst._steampressure
@@ -181,16 +163,6 @@ local function waterpump_OnLoad(inst, data)
     end
 end
 
-local function winona_sprinkler_OnSave(inst, data)
-    data.systemtype = inst._systemtype
-end
-
-local function winona_sprinkler_OnLoad(inst, data)
-    if data then
-        inst._systemtype = data._systemtype or "smart"
-    end
-end
-
 local function well_waterpump_kit_fn(inst)
     inst.OnSave = waterpump_OnSave
     inst.OnLoad = waterpump_OnLoad
@@ -198,50 +170,12 @@ end
 
 local function well_sprinkler_kit_fn(inst)
     inst:AddComponent("deployable")
+    inst.components.deployable.restrictedtag = "handyperson"
     inst.components.deployable:SetDeployMode(DEPLOYMODE.CUSTOM)
     inst.components.deployable.ondeploy = ondeploy
 end
 
-local function well_winona_sprinkler_kit_fn(inst)
-
-    inst._systemtype = "smart"
-
-    inst:AddComponent("deployable")
-    inst.components.deployable.restrictedtag = "handyperson"
-    inst.components.deployable:SetDeployMode(DEPLOYMODE.CUSTOM)
-    inst.components.deployable.ondeploy = ondeploy_w
-
-    inst.OnSave = winona_sprinkler_OnSave
-    inst.OnLoad = winona_sprinkler_OnLoad
-end
-
 local PLACER_SCALE = 0.6
-
-local function CreatePlacerBatteryRing()
-    local inst = CreateEntity()
-
-    --[[Non-networked entity]]
-    inst.entity:SetCanSleep(false)
-    inst.persists = false
-
-    inst.entity:AddTransform()
-    inst.entity:AddAnimState()
-
-    inst:AddTag("CLASSIFIED")
-    inst:AddTag("NOCLICK")
-    inst:AddTag("placer")
-
-    inst.AnimState:SetBank("winona_battery_placement")
-    inst.AnimState:SetBuild("winona_battery_placement")
-    inst.AnimState:PlayAnimation("idle_small")
-    inst.AnimState:SetLightOverride(1)
-    inst.AnimState:SetOrientation(ANIM_ORIENTATION.OnGround)
-    inst.AnimState:SetLayer(LAYER_BACKGROUND)
-    inst.AnimState:SetSortOrder(1)
-    inst.AnimState:SetScale(PLACER_SCALE, PLACER_SCALE)
-
-    return inst
-end
 
 local function CreatePlacerSprinkler()
     local inst = CreateEntity()
@@ -274,28 +208,9 @@ local function placer_postinit_fn(inst)
     placer2.entity:SetParent(inst.entity)
     inst.components.placer:LinkEntity(placer2)
 end
-
-local function placer_postinit_fn_w(inst)
-    --Show the spotlight placer on top of the spotlight range ground placer
-    --Also add the small battery range indicator
-
-    local placer2 = CreatePlacerBatteryRing()
-    placer2.entity:SetParent(inst.entity)
-    inst.components.placer:LinkEntity(placer2)
-
-    placer2 = CreatePlacerSprinkler()
-    placer2.entity:SetParent(inst.entity)
-    inst.components.placer:LinkEntity(placer2)
-
-    --inst.AnimState:SetScale(PLACER_SCALE, PLACER_SCALE)
-
-    inst.deployhelper_key = "winona_battery_engineering"
-end
  
 return MakeUpGrade_Kit("well_kit", "well", "idle_well_kit", nil, assets.well_kit, prefabs.well_kit),
 MakeUpGrade_Kit("well_burying_kit", "well_burying_kit", "idle_burying_kit", nil, assets.well_burying_kit, prefabs.well_burying_kit,{"burying"}),
-MakeUpGrade_Kit("well_waterpump_kit", "well_waterpump", "idle_waterpump_kit", well_waterpump_kit_fn, assets.well_waterpump_kit,prefabs.well_waterpump_kit,{"engineering"}),
-MakeUpGrade_Kit("well_sprinkler_kit", "well_sprinkler", "idle_sprinkler_kit", well_sprinkler_kit_fn, assets.well_sprinkler_kit,prefabs.well_sprinkler_kit,{"well_sprinkler_kit","tile_deploy","deploykititem"}),
-MakeUpGrade_Kit("well_winona_sprinkler_kit", "well_winona_sprinkler", "idle_winona_sprinkler_kit", well_winona_sprinkler_kit_fn, assets.well_winona_sprinkler_kit,prefabs.well_sprinkler_kit,{"well_sprinkler_kit","tile_deploy","deploykititem","engineering"}),
-MakePlacer("well_winona_sprinkler_kit_placer", "well_winona_sprinkler_placement", "well_winona_sprinkler_placement", "idle", true, nil, nil, TUNING.SPRINKLER_PLACER_SCALE, nil, nil, placer_postinit_fn_w),
+MakeUpGrade_Kit("well_waterpump_kit", "well_waterpump", "idle_waterpump_kit", well_waterpump_kit_fn, assets.well_waterpump_kit,prefabs.well_waterpump_kit,{"engineering","portableitem"}),
+MakeUpGrade_Kit("well_sprinkler_kit", "well_sprinkler", "idle_sprinkler_kit", well_sprinkler_kit_fn, assets.well_sprinkler_kit,prefabs.well_sprinkler_kit,{"well_sprinkler_kit","tile_deploy","portableitem"}),
 MakePlacer("well_sprinkler_kit_placer", "well_sprinkler_placement", "well_sprinkler_placement", "idle", true, nil, nil, TUNING.SPRINKLER_PLACER_SCALE, nil, nil, placer_postinit_fn)
