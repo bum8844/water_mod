@@ -147,6 +147,9 @@ FOODTYPEGROUP =
 		"mfp_radish",
 		"mfp_sweetpotato",
 		"mfp_white_cap",
+		--ac
+		"tuber_bloom_crop",
+		"tuber_crop"
 	},
 
 	TYPEVEGGIE_NONE_COOKED = 
@@ -159,6 +162,9 @@ FOODTYPEGROUP =
 		"mfp_parsnip_eaten",
 		--fwd
 		"fwd_in_pdt_food_soybeans",
+		--ac
+		"bramble_bulb",
+		"clippings",
 	},
 
 	TYPEFRUIT = 
@@ -474,6 +480,8 @@ FOODTYPEGROUP =
 			"figjuice",
 			"teagreen",
 			"teared",
+			"pinacolada",
+			"chimas",
 			--mfp
 			"mfp_cafelatte",
 			"mfp_cafemocha",
@@ -494,36 +502,36 @@ FOODTYPEGROUP =
 		LARGE = 
 		{	
 			--hop
-			"juice_aloe",
-			"juice_asparagus",
-			"juice_avovado",
-			"juice_bluecap",
-			"juice_cactus",
 			"juice_carrot",
 			"juice_corn",
-			"juice_cucumber",
 			"juice_eggplant",
-			"juice_fennel",
-			"juice_garlic",
-			"juice_greencap",
-			"juice_kelp",
+			"juice_pumpkin",
 			"juice_lichen",
-			"juice_lotus",
-			"juice_mooncap",
+			"juice_cactus",
+			"juice_garlic",
+			"juice_asparagus",
 			"juice_onion",
-			"juice_parznip",
-			"juice_pepper",
-			"juice_potato",
-			"juice_pumpkim",
-			"juice_radish",
-			"juice_redcap",
-			"juice_seaweeds",
-			"juice_sweetpotato",
-			"juice_taroroot",
 			"juice_tomato",
-			"juice_turnip",
-			"juice_waterycress",
+			"juice_potato",
+			"juice_pepper",
+			"juice_redcap",
+			"juice_greencap",
+			"juice_bluecap",
+			"juice_mooncap",
+			"juice_kelp",
+			"juice_avocado",
 			"juice_whitecap",
+			"juice_aloe",
+			"juice_radish",
+			"juice_sweetpotato",
+			"juice_lotus",
+			"juice_seaweeds",
+			"juice_taroroot",
+			"juice_waterycress",
+			"juice_cucumber",
+			"juice_parznip",
+			"juice_turnip",
+			"juice_fennel",
 			"milkshake",
 			"milkshake_prismatic",
 			--mfp
@@ -542,10 +550,21 @@ FOODTYPEGROUP =
 		HUGE = 
 		{
 			--hop
+			"nukacola",
 			"kyno_cokecan",
 			"kyno_energycan",
 			"kyno_sodacan",
 		},
+
+		MOREHUGE = 
+		{
+			"nukacola_quantum",
+		},
+
+		SUPERHUGE =
+		{
+			"waterdrop",
+		}
 	},
 
 	DRINKABLE_ALCOHO = 
@@ -560,10 +579,28 @@ FOODTYPEGROUP =
 			"liquor",
 			"daiquiri",
 			--hop
+			"wine_berries",
+			"wine_berries_juicy",
+			"wine_pomegranate",
+			"wine_dragonfruit",
+			"wine_cave_banana",
+			"wine_durian",
+			"wine_watermelon",
+			"wine_fig",
+			"wine_glowberry",
+			"wine_banana",
+			"wine_kokonut",
+			"wine_pineapple",
+			"wine_nightberry",
 			"beer",
-			"mead",
 			"paleale",
-			"twistedtequile",
+			"mead",
+			"twistedtequila",
+			"ricesake"
+		},
+
+		HUGE = {
+			"nukashine",
 		},
 
 		SUPERHUGE = 
