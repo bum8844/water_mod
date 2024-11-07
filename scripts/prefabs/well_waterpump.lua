@@ -146,13 +146,13 @@ local function removehole(inst)
 end
 
 local function ChangeToItem(inst)
-	inst.AnimState:PlayAnimation("collapse")
-	inst.SoundEmitter:PlaySound("meta4/winona_spotlight/collapse")
     local item = SpawnPrefab("well_waterpump_kit")
     item._steampressure = inst.components.steampressure.curpressure
     item.Transform:SetPosition(inst.Transform:GetWorldPosition())
     local hole = SpawnPrefab("hole")
     hole.Transform:SetPosition(inst.Transform:GetWorldPosition())
+	item.AnimState:PlayAnimation("collapse")
+	item.SoundEmitter:PlaySound("meta4/winona_spotlight/collapse")
     return true
 end
 
