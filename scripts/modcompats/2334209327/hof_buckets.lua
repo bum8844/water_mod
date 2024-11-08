@@ -199,38 +199,28 @@ local function getstatus(inst)
     or "EMPTY"
 end
 
-AddPrefabPostInit("kyno_bucket_empty", function(inst)
-
+local function SetBucket(inst)
     inst.AnimState:SetBuild("buckets")
     inst.AnimState:SetBank("buckets")
     inst.AnimState:PlayAnimation("empty")
 
-    inst.pickupsound = "wood"
+    if not GLOBAL.TheWorld.ismastersim then
+        return inst
+    end
 
-	inst:AddTag("watertaker")
-
-	inst.entity:SetPristine()
-
-	if not GLOBAL.TheWorld.ismastersim then
-		return inst
-	end
-
-	inst:AddComponent("watertaker")
-	inst.components.watertaker.capacity = TUNING.BUCKET_LEVEL_PER_USE
-	inst.components.watertaker.onfillfn = OnTakeWater
-	
-	inst:AddComponent("waterproofer")
+    inst:AddComponent("watertaker")
+    inst.components.watertaker.capacity = TUNING.BUCKET_LEVEL_PER_USE
+    inst.components.watertaker.onfillfn = OnTakeWater
+    
+    inst:AddComponent("waterproofer")
     inst.components.waterproofer:SetEffectiveness(TUNING.WATERPROOFNESS_SMALL*2)
 
-    inst:AddComponent("inspectable")
     inst.components.inspectable.getstatus = getstatus
-
-    inst:AddComponent("milker")
 
     inst.components.finiteuses:SetMaxUses(TUNING.BUCKET_MAX_LEVEL)
     inst.components.finiteuses:SetUses(TUNING.BUCKET_MAX_LEVEL)
     inst.components.finiteuses:SetOnFinished(inst.Remove)
-    
+
     inst:AddComponent("wateringtool")
     inst.components.wateringtool.setstatesfn = SetState
     inst.components.wateringtool.settemperaturefn = SetTemperature
@@ -239,4 +229,10 @@ AddPrefabPostInit("kyno_bucket_empty", function(inst)
 
     inst:ListenForEvent("ondropped",SetCheckWeather)
     inst:ListenForEvent("temperaturedelta", SetToFrozed)
+end
+
+AddPrefabPostInit("kyno_bucket_empty", function(inst)
+    inst:DoTaskInTime(0, function()
+        SetBucket(inst)
+    end)
 end)
