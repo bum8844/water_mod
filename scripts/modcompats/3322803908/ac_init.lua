@@ -1,0 +1,8 @@
+AddRecipePostInit("well_waterpump_kit",function(v) v.ingredients = {Ingredient("infused_iron",1),Ingredient("alloy",4),Ingredient("transistor",1),Ingredient("cutstone",2)} end)
+AddRecipePostInit("well_drilling_item",function(v) v.ingredients = {Ingredient("trinket_6",4),Ingredient("transistor",2),Ingredient("goldnugget",4),Ingredient("flint",4),Ingredient("alloy",2)} end)
+AddRecipePostInit("bucket_steel_empty",function(v) v.ingredients = {Ingredient("alloy",2),Ingredient("hammer",0)} end)
+AddRecipePostInit("distillers",function(v) v.ingredients = {Ingredient("ancient_remnant",8),Ingredient("nightmarefuel",4),Ingredient("transistor",4),Ingredient("redgem",1),Ingredient("bluegem",1)} end)
+AddRecipePostInit("well_sprinkler_kit",function(v) v.ingredients = {Ingredient("oinc10",4),Ingredient("moonglass",1),Ingredient("townportaltalisman",2),Ingredient("gears",1)} end)
+AddRecipePostInit("well_sprinkler",function(v) v.ingredients = {Ingredient("oinc10",4),Ingredient("moonglass",1),Ingredient("townportaltalisman",2),Ingredient("gears",1)} end)
+AddRecipePostInit("well_waterpump",function(v) v.ingredients = {Ingredient("infused_iron",1),Ingredient("alloy",4),Ingredient("transistor",1),Ingredient("cutstone",2)} end)
+AddRecipePostInit("wx78module_nonedrunk",function(v) v.ingredients = ,{Ingredient("scandata",3),Ingredient("waterdrop",1),Ingredient("gears",2),Ingredient("wx78module_maxhunger1",1)} end)
