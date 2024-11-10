@@ -179,7 +179,7 @@ local MILKINGTOOL = AddAction("MILKINGTOOL", STRINGS.ACTIONS.MILKINGTOOL, functi
     end
 end)
 
-MILKINGTOOL.priority = 1
+MILKINGTOOL.priority = 2
 
 local MACHINETOOL = AddAction("MACHINETOOL", STRINGS.ACTIONS.INTERACT_WITH.GENERIC, function(act)
     if act.target:HasTag("desalinatorpump") then

@@ -20,6 +20,7 @@ if modlist.ia then
 	modrequire("modcompats/1467214795/ia_init_prefab")
 end
 if modlist.ac then
+	modrequire("modcompats/3322803908/ac_init")
 	modrequire("modcompats/3322803908/pig_shop_def_patch")
 	modrequire("modcompats/3322803908/water_spicedfoods_mod")
 end

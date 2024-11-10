@@ -1,5 +1,6 @@
 env._G = GLOBAL
 
+local modlist = require("utils/water_modlist").active_mod_compatibility
 local default = "modcompats/666155465/util"
 
 local boilware = require(default.."/boilware").fn
