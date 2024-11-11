@@ -5,4 +5,4 @@ AddRecipePostInit("distillers",function(v) v.ingredients = {Ingredient("ancient_
 AddRecipePostInit("well_sprinkler_kit",function(v) v.ingredients = {Ingredient("oinc10",4),Ingredient("moonglass",1),Ingredient("townportaltalisman",2),Ingredient("gears",1)} end)
 AddRecipePostInit("well_sprinkler",function(v) v.ingredients = {Ingredient("oinc10",4),Ingredient("moonglass",1),Ingredient("townportaltalisman",2),Ingredient("gears",1)} end)
 AddRecipePostInit("well_waterpump",function(v) v.ingredients = {Ingredient("infused_iron",1),Ingredient("alloy",4),Ingredient("transistor",1),Ingredient("cutstone",2)} end)
-AddRecipePostInit("wx78module_nonedrunk",function(v) v.ingredients = ,{Ingredient("scandata",3),Ingredient("waterdrop",1),Ingredient("gears",2),Ingredient("wx78module_maxhunger1",1)} end)
+AddRecipePostInit("wx78module_nonedrunk",function(v) v.ingredients = {Ingredient("scandata",3),Ingredient("waterdrop",1),Ingredient("gears",2),Ingredient("wx78module_maxhunger1",1)} end)
