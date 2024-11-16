@@ -78,6 +78,11 @@ if modlist.te or modlist.ia or modlist.ta then
 	AddIngredientValues({"coral_brain"}, {meat=1})
 end
 
+if modlist.te or modlist.ta or modlist.ac then
+	AddIngredientValues({"lotus_flower"}, {"veggie" = 1, "lotus" = 1})
+	AddIngredientValues({"lotus_flower_cooked"}, {"veggie" = 1, "lotus" = 1})
+end
+
 if modlist.bm then
 	AddIngredientValues({"beefalo_milk"}, {milk=1, dairy=.5})
 end
