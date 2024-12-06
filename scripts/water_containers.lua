@@ -44,6 +44,37 @@ function params.thermos_bottle.itemtestfn(container, item, slot)
     return item:HasTag("drink_icebox_valid")
 end
 
+params.bottle_pouch = 
+{
+    widget = 
+    {
+        slotpos =
+        {
+            Vector3(-37.5, 32 + 20, 0),
+            Vector3(37.5, 32 + 20, 0),
+            Vector3(-37.5, -(32 - 10), 0),
+            Vector3(37.5, -(32 - 10), 0),
+        },
+        slotbg =
+        {
+            { image = "cook_slot_drink.tex", atlas = "images/tea_ui.xml" },
+            { image = "cook_slot_drink.tex", atlas = "images/tea_ui.xml" },
+            { image = "cook_slot_drink.tex", atlas = "images/tea_ui.xml" },
+            { image = "cook_slot_drink.tex", atlas = "images/tea_ui.xml" },
+        },
+        animbank = "ui_bottle_pouch_2x2",
+        animbuild = "ui_bottle_pouch_2x2",
+        pos = Vector3(200, 0, 0),
+        side_align_tip = 120,
+    },
+    acceptsstacks = true,
+    type = "chest",
+}
+
+function params.bottle_pouch.itemtestfn(container, item, slot)
+    return item:HasTag("prepareddrink") or item:HasTag("drink_icebox_valid")
+end
+
 params.wine_cellar =
 {
     widget =

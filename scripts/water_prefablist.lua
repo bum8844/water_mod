@@ -7,7 +7,8 @@ return {
 	"additives",
 	"fruitflyfruit_dead",
 	"water_spice",
-	"thermos_bottle",
+	--"thermos_bottle",
+	"bottle_pouch",
 
 	--structures
 	"barrel",
