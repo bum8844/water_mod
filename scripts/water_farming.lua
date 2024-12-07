@@ -63,12 +63,17 @@ WATER_VEGGIES[name] =
     }
 end
 
---[[MakeVegStats("pinenanas","fruit",UNCOMMON,
+--[[MakeVegStats("appine","fruit",UNCOMMON,
 TUNING.CALORIES_SMALL,TUNING.HEALING_SMALL,TUNING.PERISH_FAST,TUNING.SANITY_TINY,
 TUNING.CALORIES_SMALL,TUNING.HEALING_TINY,TUNING.PERISH_SUPERFAST,TUNING.SANITY_TINY*1.5,
 {"med", 0.05, 0.8}, {"small", 0.1, nil})
 
-MakeVegStats("papeda","fruit",UNCOMMON,
+MakeVegStats("limemon","fruit",UNCOMMON,
+TUNING.CALORIES_TINY,TUNING.HEALING_SMALL,TUNING.PERISH_FAST,0,
+TUNING.CALORIES_SMALL,TUNING.HEALING_MED,TUNING.PERISH_SUPERFAST,0,
+{"med", 0.05, 0.8}, {"small", 0.1, nil})
+
+MakeVegStats("citryuja","fruit",UNCOMMON,
 TUNING.CALORIES_TINY,TUNING.HEALING_SMALL,TUNING.PERISH_FAST,0,
 TUNING.CALORIES_SMALL,TUNING.HEALING_MED,TUNING.PERISH_SUPERFAST,0,
 {"med", 0.05, 0.8}, {"small", 0.1, nil})
@@ -98,28 +103,28 @@ local function MakeGrowTimes_Weed(full_grow_min, full_grow_max, bolting)
     return grow_time
 end
 
---[[ Pinenanas Plant.
-PLANT_DEFS.pinenanas = {build = "farm_plant_pinenanas", bank = "farm_plant_pinenanas"}
-PLANT_DEFS.pinenanas.prefab = "farm_plant_pinenanas"
-PLANT_DEFS.pinenanas.product = "pinenanas"
-PLANT_DEFS.pinenanas.product_oversized = "pinenanas_oversized" 
-PLANT_DEFS.pinenanas.seed = "pinenanas_seeds"
-PLANT_DEFS.pinenanas.loot_oversized_rot = {"spoiled_food", "spoiled_food", "spoiled_food", "pinenanas_seeds", "fruitfly", "fruitfly"}
-PLANT_DEFS.pinenanas.family_min_count = TUNING.FARM_PLANT_SAME_FAMILY_MIN
-PLANT_DEFS.pinenanas.family_check_dist = TUNING.FARM_PLANT_SAME_FAMILY_RADIUS
-PLANT_DEFS.pinenanas.plant_type_tag = "farm_plant_pinenanas"
-PLANT_DEFS.pinenanas.grow_time = MakeGrowTimes(12*TUNING.SEG_TIME, 16*TUNING.SEG_TIME, 4*DAYS, 7*DAYS) 
-PLANT_DEFS.pinenanas.moisture = {drink_rate = DRINK_HIGH, min_percent = TUNING.FARM_PLANT_DROUGHT_TOLERANCE}
-PLANT_DEFS.pinenanas.good_seasons = {autumn = true, spring = true, summer = true}
-PLANT_DEFS.pinenanas.nutrient_consumption = {0, NUTRIENT_MED, NUTRIENT_MED}
-PLANT_DEFS.pinenanas.nutrient_restoration = {NUTRIENT_LOW ,0 , 0}
-PLANT_DEFS.pinenanas.max_killjoys_tolerance = TUNING.FARM_PLANT_KILLJOY_TOLERANCE
-PLANT_DEFS.pinenanas.weight_data = { 462.37, 688.45, .93 }
-PLANT_DEFS.pinenanas.pictureframeanim  = {anim = "emote_jumpcheer", time = 19*FRAMES}
-PLANT_DEFS.pinenanas.sounds = PLANT_DEFS.tomato.sounds
-PLANT_DEFS.pinenanas.plantregistrywidget = "widgets/redux/farmplantpage" 
-PLANT_DEFS.pinenanas.plantregistrysummarywidget = "widgets/redux/farmplantsummarywidget" 
-PLANT_DEFS.pinenanas.plantregistryinfo = { 
+--[[ Appine Plant.
+PLANT_DEFS.appine = {build = "farm_plant_appine", bank = "farm_plant_appine"}
+PLANT_DEFS.appine.prefab = "farm_plant_appine"
+PLANT_DEFS.appine.product = "appine"
+PLANT_DEFS.appine.product_oversized = "appine_oversized" 
+PLANT_DEFS.appine.seed = "appine_seeds"
+PLANT_DEFS.appine.loot_oversized_rot = {"spoiled_food", "spoiled_food", "spoiled_food", "appine_seeds", "fruitfly", "fruitfly"}
+PLANT_DEFS.appine.family_min_count = TUNING.FARM_PLANT_SAME_FAMILY_MIN
+PLANT_DEFS.appine.family_check_dist = TUNING.FARM_PLANT_SAME_FAMILY_RADIUS
+PLANT_DEFS.appine.plant_type_tag = "farm_plant_appine"
+PLANT_DEFS.appine.grow_time = MakeGrowTimes(12*TUNING.SEG_TIME, 16*TUNING.SEG_TIME, 4*DAYS, 7*DAYS) 
+PLANT_DEFS.appine.moisture = {drink_rate = DRINK_HIGH, min_percent = TUNING.FARM_PLANT_DROUGHT_TOLERANCE}
+PLANT_DEFS.appine.good_seasons = {autumn = true, spring = true, summer = true}
+PLANT_DEFS.appine.nutrient_consumption = {0, NUTRIENT_MED, NUTRIENT_MED}
+PLANT_DEFS.appine.nutrient_restoration = {NUTRIENT_LOW ,0 , 0}
+PLANT_DEFS.appine.max_killjoys_tolerance = TUNING.FARM_PLANT_KILLJOY_TOLERANCE
+PLANT_DEFS.appine.weight_data = { 462.37, 688.45, .93 }
+PLANT_DEFS.appine.pictureframeanim  = {anim = "emote_jumpcheer", time = 19*FRAMES}
+PLANT_DEFS.appine.sounds = PLANT_DEFS.tomato.sounds
+PLANT_DEFS.appine.plantregistrywidget = "widgets/redux/farmplantpage" 
+PLANT_DEFS.appine.plantregistrysummarywidget = "widgets/redux/farmplantsummarywidget" 
+PLANT_DEFS.appine.plantregistryinfo = { 
     {
         text = "seed",
         anim = "crop_seed",
@@ -178,28 +183,108 @@ PLANT_DEFS.pinenanas.plantregistryinfo = {
     },
 }
 
--- Papeda Plant.
-PLANT_DEFS.papeda = {build = "farm_plant_papeda", bank = "farm_plant_papeda"}
-PLANT_DEFS.papeda.prefab = "farm_plant_papeda"
-PLANT_DEFS.papeda.product = "papeda"
-PLANT_DEFS.papeda.product_oversized = "papeda_oversized" 
-PLANT_DEFS.papeda.seed = "papeda_seeds"
-PLANT_DEFS.papeda.loot_oversized_rot = {"spoiled_food", "spoiled_food", "spoiled_food", "papeda_seeds", "fruitfly", "fruitfly"}
-PLANT_DEFS.papeda.family_min_count = TUNING.FARM_PLANT_SAME_FAMILY_MIN
-PLANT_DEFS.papeda.family_check_dist = TUNING.FARM_PLANT_SAME_FAMILY_RADIUS
-PLANT_DEFS.papeda.plant_type_tag = "farm_plant_pinenanas"
-PLANT_DEFS.papeda.grow_time = MakeGrowTimes(12*TUNING.SEG_TIME, 16*TUNING.SEG_TIME, 4*DAYS, 7*DAYS) 
-PLANT_DEFS.papeda.moisture = {drink_rate = DRINK_MED, min_percent = TUNING.FARM_PLANT_DROUGHT_TOLERANCE}
-PLANT_DEFS.papeda.good_seasons = {autumn = true, winter = true, spring = true}
-PLANT_DEFS.papeda.nutrient_consumption = {NUTRIENT_MED, 0, 0}
-PLANT_DEFS.papeda.nutrient_restoration = {0, NUTRIENT_LOW, NUTRIENT_LOW}
-PLANT_DEFS.papeda.max_killjoys_tolerance = TUNING.FARM_PLANT_KILLJOY_TOLERANCE
-PLANT_DEFS.papeda.weight_data = { 404.38, 547.80, .48 }
-PLANT_DEFS.papeda.pictureframeanim = {anim = "emoteXL_loop_dance8", time = 27*FRAMES}
-PLANT_DEFS.papeda.sounds = PLANT_DEFS.potato.sounds
-PLANT_DEFS.papeda.plantregistrywidget = "widgets/redux/farmplantpage" 
-PLANT_DEFS.papeda.plantregistrysummarywidget = "widgets/redux/farmplantsummarywidget" 
-PLANT_DEFS.papeda.plantregistryinfo = { 
+-- Limemon Plant.
+PLANT_DEFS.limemon = {build = "farm_plant_limemon", bank = "farm_plant_limemon"}
+PLANT_DEFS.limemon.prefab = "farm_plant_limemon"
+PLANT_DEFS.limemon.product = "limemon"
+PLANT_DEFS.limemon.product_oversized = "limemon_oversized" 
+PLANT_DEFS.limemon.seed = "limemon_seeds"
+PLANT_DEFS.limemon.loot_oversized_rot = {"spoiled_food", "spoiled_food", "spoiled_food", "limemon_seeds", "fruitfly", "fruitfly"}
+PLANT_DEFS.limemon.family_min_count = TUNING.FARM_PLANT_SAME_FAMILY_MIN
+PLANT_DEFS.limemon.family_check_dist = TUNING.FARM_PLANT_SAME_FAMILY_RADIUS
+PLANT_DEFS.limemon.plant_type_tag = "farm_plant_limemon"
+PLANT_DEFS.limemon.grow_time = MakeGrowTimes(12*TUNING.SEG_TIME, 16*TUNING.SEG_TIME, 4*DAYS, 7*DAYS) 
+PLANT_DEFS.limemon.moisture = {drink_rate = DRINK_MED, min_percent = TUNING.FARM_PLANT_DROUGHT_TOLERANCE}
+PLANT_DEFS.limemon.good_seasons = {autumn = true, winter = true, spring = true}
+PLANT_DEFS.limemon.nutrient_consumption = {NUTRIENT_MED, 0, 0}
+PLANT_DEFS.limemon.nutrient_restoration = {0, NUTRIENT_LOW, NUTRIENT_LOW}
+PLANT_DEFS.limemon.max_killjoys_tolerance = TUNING.FARM_PLANT_KILLJOY_TOLERANCE
+PLANT_DEFS.limemon.weight_data = { 404.38, 547.80, .48 }
+PLANT_DEFS.limemon.pictureframeanim = {anim = "emoteXL_loop_dance8", time = 27*FRAMES}
+PLANT_DEFS.limemon.sounds = PLANT_DEFS.potato.sounds
+PLANT_DEFS.limemon.plantregistrywidget = "widgets/redux/farmplantpage" 
+PLANT_DEFS.limemon.plantregistrysummarywidget = "widgets/redux/farmplantsummarywidget" 
+PLANT_DEFS.limemon.plantregistryinfo = { 
+    {
+        text = "seed",
+        anim = "crop_seed",
+        grow_anim = "grow_seed",
+        learnseed = true,
+        growing = true,
+    },
+    {
+        text = "sprout",
+        anim = "crop_sprout",
+        grow_anim = "grow_sprout",
+        growing = true,
+    },
+    {
+        text = "small",
+        anim = "crop_small",
+        grow_anim = "grow_small",
+        growing = true,
+    },
+    {
+        text = "medium",
+        anim = "crop_med",
+        grow_anim = "grow_med",
+        growing = true,
+    },
+    {
+        text = "grown",
+        anim = "crop_full",
+        grow_anim = "grow_full",
+        revealplantname = true,
+        fullgrown = true,
+    },
+    {
+        text = "oversized",
+        anim = "crop_oversized",
+        grow_anim = "grow_oversized",
+        revealplantname = true,
+        fullgrown = true,
+        hidden = true,
+    },
+    {
+        text = "rotting",
+        anim = "crop_rot",
+        grow_anim = "grow_rot",
+        stagepriority = -100,
+        is_rotten = true,
+        hidden = true,
+    },
+    {
+        text = "oversized_rotting",
+        anim = "crop_rot_oversized",
+        grow_anim = "grow_rot_oversized",
+        stagepriority = -100,
+        is_rotten = true,
+        hidden = true,
+    },
+}
+
+-- Citryuja Plant.
+PLANT_DEFS.citryuja = {build = "farm_plant_citryuja", bank = "farm_plant_citryuja"}
+PLANT_DEFS.citryuja.prefab = "farm_plant_citryuja"
+PLANT_DEFS.citryuja.product = "citryuja"
+PLANT_DEFS.citryuja.product_oversized = "citryuja_oversized" 
+PLANT_DEFS.citryuja.seed = "citryuja_seeds"
+PLANT_DEFS.citryuja.loot_oversized_rot = {"spoiled_food", "spoiled_food", "spoiled_food", "citryuja_seeds", "fruitfly", "fruitfly"}
+PLANT_DEFS.citryuja.family_min_count = TUNING.FARM_PLANT_SAME_FAMILY_MIN
+PLANT_DEFS.citryuja.family_check_dist = TUNING.FARM_PLANT_SAME_FAMILY_RADIUS
+PLANT_DEFS.citryuja.plant_type_tag = "farm_plant_citryuja"
+PLANT_DEFS.citryuja.grow_time = MakeGrowTimes(12*TUNING.SEG_TIME, 16*TUNING.SEG_TIME, 4*DAYS, 7*DAYS) 
+PLANT_DEFS.citryuja.moisture = {drink_rate = DRINK_MED, min_percent = TUNING.FARM_PLANT_DROUGHT_TOLERANCE}
+PLANT_DEFS.citryuja.good_seasons = {autumn = true, winter = true, spring = true}
+PLANT_DEFS.citryuja.nutrient_consumption = {NUTRIENT_MED, 0, 0}
+PLANT_DEFS.citryuja.nutrient_restoration = {0, NUTRIENT_LOW, NUTRIENT_LOW}
+PLANT_DEFS.citryuja.max_killjoys_tolerance = TUNING.FARM_PLANT_KILLJOY_TOLERANCE
+PLANT_DEFS.citryuja.weight_data = { 404.38, 547.80, .48 }
+PLANT_DEFS.citryuja.pictureframeanim = {anim = "emoteXL_loop_dance8", time = 27*FRAMES}
+PLANT_DEFS.citryuja.sounds = PLANT_DEFS.potato.sounds
+PLANT_DEFS.citryuja.plantregistrywidget = "widgets/redux/farmplantpage" 
+PLANT_DEFS.citryuja.plantregistrysummarywidget = "widgets/redux/farmplantsummarywidget" 
+PLANT_DEFS.citryuja.plantregistryinfo = { 
     {
         text = "seed",
         anim = "crop_seed",
