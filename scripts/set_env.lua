@@ -3,7 +3,7 @@ env._G = GLOBAL
 --env.require = _G.require
 
 env.modrequire = function(loc) modimport("scripts/"..loc) end
-env.RegisterInvItemAtlas = function(atlasname, imagename)
+--[[env.RegisterInvItemAtlas = function(atlasname, imagename)
 	RegisterInventoryItemAtlas(atlasname, imagename)
     RegisterInventoryItemAtlas(_G.resolvefilepath(atlasname), _G.hash(imagename))
 end
@@ -15,7 +15,10 @@ env.RegisterItemAtlasFile = function(fname)
             RegisterInvItemAtlas(fname, image)
         end
     end
-end
+end]]
+
+env.RegisterInvItemAtlas = _G.RegisterInvItemAtlas
+env.RegisterItemAtlasFile = _G.RegisterItemAtlasFile
 
 --Global Tables
 env.STRINGS = _G.STRINGS

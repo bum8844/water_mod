@@ -1,8 +1,10 @@
+GLOBAL.setfenv(1, GLOBAL)
+
 local function GetItemState(count)
     return count >= 5 and "_bottle" or ""
 end
 
-function SetRetrofitSetting(name, value)
+SetRetrofitSetting = function(name, value)
     local configs = KnownModIndex:LoadModConfigurationOptions("workshop-3004639365", false)
     if configs ~= nil then
         for i, v in ipairs(configs) do
@@ -14,7 +16,7 @@ function SetRetrofitSetting(name, value)
     KnownModIndex:SaveConfigurationOptions(function() end, "workshop-3004639365", configs, false)
 end
 
-function MakeDynamicCupImage(inst, symbol, build, use_bg)
+MakeDynamicCupImage = function(inst, symbol, build, use_bg)
     local function ChangeCupImage(inst, data)
         if data ~= nil then
             local new_state = GetItemState(data.stacksize)
@@ -32,7 +34,7 @@ function MakeDynamicCupImage(inst, symbol, build, use_bg)
     inst:ListenForEvent("stacksizechange", ChangeCupImage)
 end
 
-function Water_BurntStructureFn(inst)
+Water_BurntStructureFn = function(inst)
     DefaultBurntStructureFn(inst)
     if inst.components.waterlevel ~= nil then
         inst:RemoveComponent("waterlevel")
@@ -46,12 +48,12 @@ function Water_BurntStructureFn(inst)
 end
 
 --Useful if you packed your images into one single atlas file by Atlas Image Packer
-function RegisterInvItemAtlas(atlasname, imagename)
+RegisterInvItemAtlas = function(atlasname, imagename)
     RegisterInventoryItemAtlas(atlasname, imagename)
     RegisterInventoryItemAtlas(_G.resolvefilepath(atlasname), _G.hash(imagename))
 end
 
-function RegisterItemAtlasFile(fname)
+RegisterItemAtlasFile = function(fname)
     local atlas = _G.io.lines(_G.resolvefilepath(fname))
     for line in atlas do
         local _, _, image = line:find("<Element name=\"(.+)\" u1")

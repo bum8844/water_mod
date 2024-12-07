@@ -4,8 +4,8 @@ modrequire("stategraphs/SGwell_sprinkler")
 modrequire("stategraphs/SGwell_sprinkler_pipes")
 
 --Set mod speeches & strings
---modrequire("languages/strings/strings")
-modrequire("languages/speech")
+modrequire("languages/strings")
+--modrequire("languages/DSD_translator")
 
 --Add actions and componentactions
 modrequire("water_farming")

@@ -146,7 +146,7 @@ return {
             CHERRY_ROSEBERRIES_TEA = "Có mùi thơm nồng", -- Trà Tầm Xuân Rừng Anh Đào
             CHERRY_HONEY_TEA = "Những con ong thích nó", -- Trà mật ong hoa anh đào rừng anh đào
             SWEET_RICE_DRINK = "Ngọt!", -- Sake VitaHive
-            ANANAS_JUICE = "Dành cho vương miện", -- Nước ép Legion Pineananas
+            ANANAS_JUICE = "Dành cho vương miện", -- Nước ép Legion ANANAS
             ORANGE_JUICE = "Một quả cầu có múi để uống", -- Thêm gói thực phẩm Nước cam
             STRAWBERRY_SMOOTHIE = "Mát và thơm", -- Gói thực phẩm khác Sinh tố dâu tây
             STRAWBERRY_MILK_SMOOTHIE = "Kem và thơm", -- Gói thực phẩm khác Sinh tố sữa dâu
