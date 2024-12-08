@@ -82,6 +82,8 @@ local function fn()
     inst.entity:AddMiniMapEntity()
     inst.entity:AddNetwork()
 
+    inst.minisign_atlas = "minisign_dehy_items_swap"
+
     inst.MiniMapEntity:SetIcon("bottle_pouch.png")
 
     inst.AnimState:SetBank("bottle_pouch")

@@ -146,8 +146,8 @@ return {
         CHERRY_ROSEBERRIES_TEA = "It has a delightful fragrance and helps regulate body heat.", -- 
         CHERRY_HONEY_TEA = "It's a quick fix for a sore throat.", --
         SWEET_RICE_DRINK = "It's sweet and has an unusual texture!", --
-        ANANAS_JUICE = "Be careful not to drink too much, or My mouth will peel off.", -- 
-        ORANGE_JUICE = "It's freshly squeezed orange juice!", -- 
+        APPLEPINE_JUICE = "Be careful not to drink too much, or My mouth will peel off.", -- 
+        CITROYUZU_JUICE = "It's freshly squeezed CITROYUZU juice!", -- 
         STRAWBERRY_SMOOTHIE = "It's refreshing and delicious!", --
         STRAWBERRY_MILK_SMOOTHIE = "This is one of the strawberry dessert drinks that ladies really love.", -- 
 
@@ -159,7 +159,7 @@ return {
 
         SODA = "It's carbonated water without any strange flavors.",
         FRUITSODA = "Refreshing fruitiness with a fizzy kick!", -- 
-        LEMONLIMESODA = "As refreshing as a honeydew!", -- 
+        LIMONSODA = "As refreshing as a honeydew!", -- 
         COLA = "Kids always love it.", 
         COLAQUANTUM = "As far as I recall, there was a woman who went crazy looking for this...", -- 
         LUMPY_BEER = "Customers who like this drink only ask for this one.", -- 
@@ -180,8 +180,8 @@ return {
         -- Collaboration Soda
 
         CHERRY_DOCTOR_COLA = "It's a niche drink that has a passionate fan base." , -- 
-        ANANASSODA = "This is the perfect drink to help you digest after a big meal." , -- 
-        ORANGESODA = "Refreshing after a meal!", 
+        APPLEPINESODA = "This is the perfect drink to help you digest after a big meal." , -- 
+        CITROYUZUSODA = "Refreshing after a meal!", 
         STRAWBERRYSODA = "It is Sweet strawberry-flavored soda.", 
 
         -- Collaboration Spirits

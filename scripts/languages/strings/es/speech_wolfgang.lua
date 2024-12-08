@@ -146,8 +146,8 @@ return {
             CHERRY_ROSEBERRIES_TEA = "Huele a rosas preciosas.", -- Cherry Forest Rosehip Tea
             CHERRY_HONEY_TEA = "¡Extremadamente dulce!", -- Cherry Forest Cherry Blossom Honey Tea
             SWEET_RICE_DRINK = "Está dulce a pesar de que solo tiene arroz!", -- Vita Hybrids Sikhye
-            ANANAS_JUICE = "Un jugo increíblemente refrescante.", -- Regal's Pineapple Juice
-            ORANGE_JUICE = "Agrio, dulce y naranja.", -- More Food Pack Orange Juice
+            APPLEPINE_JUICE = "Un jugo increíblemente refrescante.", -- Regal's Pineapple Juice
+            CITROYUZU_JUICE = "Agrio, dulce y naranja.", -- More Food Pack CITROYUZU Juice
             STRAWBERRY_SMOOTHIE = "Está lleno de semillas.", -- More Food Pack Strawberry Smoothie
             STRAWBERRY_MILK_SMOOTHIE = "Suave y sabroso.", -- More Food Pack Strawberry Milk Smoothie
 
@@ -159,7 +159,7 @@ return {
 
             SODA = "¡Es buerbujeante!", -- Carbonated Water
             FRUITSODA = "Burbujeante y dulce.", -- Fruit Soda
-            LEMONLIMESODA = "¡Extremadamente dulce!", -- Lemon Lime Soda (Superior version of Fruit Soda)
+            LIMONSODA = "¡Extremadamente dulce!", -- Lemon Lime Soda (Superior version of Fruit Soda)
             COLA = "Una bebida dulce y negra.", -- Cola
             COLAQUANTUM = "¡Una bebida poderosa! ¡Le gusta mucho a Wolfgang!", -- Cola Quantum
             LUMPY_BEER = "Tiene un sabor único y refrescante.", -- Root Beer (Not alcoholic)
@@ -180,8 +180,8 @@ return {
             -- Collaboration Soda
 
             CHERRY_DOCTOR_COLA = "¡Sabe a dulces!", -- Cherry Forest Doctor Pepper (Doctor Cherry)
-            ANANASSODA = "Agrio y refrescante.", -- Carbonated Pineapple (Orangina)
-            ORANGESODA = "Dulce y burbujeante.", -- Carbonated Orange (Fanta)
+            APPLEPINESODA = "Agrio y refrescante.", -- Carbonated Pineapple (Orangina)
+            CITROYUZUSODA = "Dulce y burbujeante.", -- Carbonated CITROYUZU (Fanta)
             STRAWBERRYSODA = "¡Tantas semillas y burbujas!", -- Carbonated Strawberry (Welch's Strawberry)
 
             -- Collaboration Spirits

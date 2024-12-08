@@ -146,8 +146,8 @@ return {
             CHERRY_ROSEBERRIES_TEA = "It smells like lovely roses.",
             CHERRY_HONEY_TEA = "Extremely sweet!",
             SWEET_RICE_DRINK = "Is sweet even though it only has rice!", 
-            ANANAS_JUICE = "Incredibly sour juice.", 
-            ORANGE_JUICE = "Sour, sweet, and orange.",
+            APPLEPINE_JUICE = "Incredibly sour juice.", 
+            CITROYUZU_JUICE = "Sour, sweet, and CITROYUZU.",
             STRAWBERRY_SMOOTHIE = "Is full of seeds.",
             STRAWBERRY_MILK_SMOOTHIE = "Smooth and tasty.", 
 
@@ -159,7 +159,7 @@ return {
 
             SODA = "It's fizzy!",
             FRUITSODA = "Fizzy and sweet.", 
-            LEMONLIMESODA = "Extremely sweet!", 
+            LIMONSODA = "Extremely sweet!", 
             COLA = "Sweet and black beverage.", 
             COLAQUANTUM = "A powerful drink! Wolfgang likes it a lot!", 
             LUMPY_BEER = "It has a unique and refreshing taste.", 
@@ -180,8 +180,8 @@ return {
             -- Collaboration Soda
 
             CHERRY_DOCTOR_COLA = "Tastes like candy!",
-            ANANASSODA = "Sour and refreshing.",
-            ORANGESODA = "Sweet and fizzy.",
+            APPLEPINESODA = "Sour and refreshing.",
+            CITROYUZUSODA = "Sweet and fizzy.",
             STRAWBERRYSODA = "As many bubbles as seeds!",
 
             -- Collaboration Spirits

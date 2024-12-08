@@ -42,6 +42,7 @@ return {
 		WATER_DIRTY_ICE = "",
 
 		SPICE_CAFFEINPEPPER = "",
+		SPICE_RUINCOLATE_SPREAD = "",
 
 		WELL_KIT = "",
 		WELL_SPRINKLER_KIT = "",
@@ -78,12 +79,23 @@ return {
 		RUINCACAO_BEAN = "",
 		RUINCACAO_BEAN_COOKED = "",
 
+		--APPLEPINE
 		APPLEPINE = "",
 		APPLEPINE_COOKED = "",
+		APPLEPINE_SEEDS = "",
+		APPLEPINE_OVERSIZED = "",
+
+		--limon
 		LIMON = "",
 		LIMON_COOKED = "",
+		LIMON_SEEDS = "",
+		LIMON_OVERSIZED = "",
+
+		--citroyuzu
 		CITROYUZU = "",
 		CITROYUZU_COOKED = "",
+		CITROYUZU_SEEDS = "",
+		CITROYUZU_OVERSIZED = "",
 
 		-- Distiller Additives
 
@@ -149,8 +161,8 @@ return {
 		CHERRY_ROSEBERRIES_TEA = "", --체리숲 로즈힙 차
 		CHERRY_HONEY_TEA = "", --체리숲 벚꽃꿀 차
 		SWEET_RICE_DRINK = "", -- 비타협 식혜
-		ANANAS_JUICE = "", -- 레기온 파인애플 주스
-		ORANGE_JUICE = "", -- 모어 푸드 팩 오랜지 주스
+		APPLEPINE_JUICE = "", -- 레기온 파인애플 주스
+		CITROYUZU_JUICE = "", -- 모어 푸드 팩 오랜지 주스
 		STRAWBERRY_SMOOTHIE = "", -- 모어 푸드 팩 딸기 스무디
 		STRAWBERRY_MILK_SMOOTHIE = "", -- 모어 푸드 팩 딸기 스무디 라떼
 
@@ -162,7 +174,7 @@ return {
 
 		SODA = "",
 		FRUITSODA = "",
-		LEMONLIMESODA = "",
+		LIMONSODA = "",
 		COLA = "",
 		COLAQUANTUM = "",
 		LUMPY_BEER = "",
@@ -181,13 +193,13 @@ return {
 		RUINCACAO_WINE = "",
 
 		CHERRY_DOCTOR_COLA = "", --체리숲 닥터 페퍼(닥터 체리)
-		ANANASSODA = "", -- 탄산 파인애플(오란씨)
-		ORANGESODA = "", -- 탄산 오랜지(환타)
+		APPLEPINESODA = "", -- 탄산 파인애플(오란씨)
+		CITROYUZUSODA = "", -- 탄산 오랜지(환타)
 		STRAWBERRYSODA = "", -- 탄산 딸기(웰치스 딸기)
 
 		CHERRY_DOCTOR_COLA = "",
-		ANANASSODA = "", -- Pineapple Soda
-		ORANGESODA = "", -- Orange Soda (Similar to Fanta Orange)
+		APPLEPINESODA = "", -- Pineapple Soda
+		CITROYUZUSODA = "", -- CITROYUZU Soda (Similar to Fanta CITROYUZU)
 		STRAWBERRYSODA = "", -- Strawberry Soda (like Welch's Strawberry Soda)
 
 		-- Mod-compatibility Brewages

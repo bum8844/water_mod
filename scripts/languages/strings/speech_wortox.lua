@@ -31,7 +31,8 @@ return {
 
 	DESCRIBE =
 	{
-		BOILBOOK = "물 끓이는것도 설명서가 있는거야?",
+		BOILBOOK_BASIC = "물 끓이는것도 설명서가 있는거야?",
+		BOILBOOK_ADVANCED = "물 끓이는것도 설명서가 있는거야?",
 
 		WATER_CLEAN_ICE = "마시긴 힘들겠는데.",--깨끗한 얼음물
 		WATER_DIRTY_ICE = "흐유유! 불결해라!", --더러운 얼음물
@@ -73,12 +74,23 @@ return {
 		RUINCACAO_BEAN = "타는냄새 나는것 같지 않아?", --부순 후 카카오 콩  
 		RUINCACAO_BEAN_COOKED = "기이하게도 냄새가 괜찮네.", --구운 카카오 콩
 
-		APPLEPINE = "작업해야함",
-		APPLEPINE_COOKED = "작업해야함",
-		LIMON = "작업해야함",
-		LIMON_COOKED = "작업해야함",
-		CITROYUZU = "작업해야함",
-		CITROYUZU_COOKED = "작업해야함",
+		--APPLEPINE
+		APPLEPINE = "",
+		APPLEPINE_COOKED = "",
+		APPLEPINE_SEEDS = "",
+		APPLEPINE_OVERSIZED = "",
+
+		--limon
+		LIMON = "",
+		LIMON_COOKED = "",
+		LIMON_SEEDS = "",
+		LIMON_OVERSIZED = "",
+
+		--citroyuzu
+		CITROYUZU = "",
+		CITROYUZU_COOKED = "",
+		CITROYUZU_SEEDS = "",
+		CITROYUZU_OVERSIZED = "",
 
 		-- 증류주 첨가제
 
@@ -144,8 +156,8 @@ return {
 		CHERRY_ROSEBERRIES_TEA = "그림자 느낌나는 장미향이네.", --체리숲 로즈힙 차
 		CHERRY_HONEY_TEA = "이렇게 달면 먹을만하지.", --체리숲 벚꽃꿀 차
 		SWEET_RICE_DRINK = "마시는거랑 먹는걸 같이해야 한다니!", -- 비타협 식혜
-		ANANAS_JUICE = "난 영혼이면 될것같아.", -- 레기온 파인애플 주스
-		ORANGE_JUICE = "난 주황색을보는 걸로 만족할게.", -- 모어 푸드 팩 오랜지 주스
+		APPLEPINE_JUICE = "난 영혼이면 될것같아.", -- 레기온 파인애플 주스
+		CITROYUZU_JUICE = "난 주황색을보는 걸로 만족할게.", -- 모어 푸드 팩 오랜지 주스
 		STRAWBERRY_SMOOTHIE = "갈린 붉은 과실이야.", -- 모어 푸드 팩 딸기 스무디
 		STRAWBERRY_MILK_SMOOTHIE = "적어도 부드러운게 좋겠지.", -- 모어 푸드 팩 딸기 스무디 라떼
 
@@ -157,7 +169,7 @@ return {
 	
 		SODA = "흐유유, 날 공격하는 물이잖아!", -- 탄산수
 		FRUITSODA = "과일들 비명이 들리는것 같기도 하네!", -- 과일소다
-		LEMONLIMESODA = "꿀맛 나는 단물이네.", -- 레몬 라임소다(과일소다 상위 호환)
+		LIMONSODA = "꿀맛 나는 단물이네.", -- 레몬 라임소다(과일소다 상위 호환)
 		COLA = "검은것 치곤 먹을만한걸!", -- 콜라
 		COLAQUANTUM = "흐유유! 방사능 좋지!", --콜라 퀀텀
 		LUMPY_BEER = "경찰에 적성맞게 생겼네.", --루트비어(술이 아님)
@@ -178,8 +190,8 @@ return {
 		-- 콜라보 소다
 
 		CHERRY_DOCTOR_COLA = "괜찮은 고문도구가 되지. 흐유유!", --체리숲 닥터 페퍼(닥터 체리)
-		ANANASSODA = "톡 쏘는건 좋지만 마시는건 안 선호해서 말야.", -- 탄산 파인애플(오란씨)
-		ORANGESODA = "렌지에 못 돌릴 오렌지야.", -- 탄산 오랜지(환타)
+		APPLEPINESODA = "톡 쏘는건 좋지만 마시는건 안 선호해서 말야.", -- 탄산 파인애플(오란씨)
+		CITROYUZUSODA = "렌지에 못 돌릴 오렌지야.", -- 탄산 오랜지(환타)
 		STRAWBERRYSODA = "씨앗이 폭탄처럼 터질까?", -- 탄산 딸기(웰치스 딸기)
 
 		--콜라보 양조주

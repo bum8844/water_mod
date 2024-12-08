@@ -132,19 +132,7 @@ local rice_drink = {
 }
 
 local ananas_drink = {
-	ananas_juice = {
-		test = function(boilier, names, tags) return (names.pineananas or names.pineananas_cooked or names.kyno_pineapple_halved or names.kyno_pineapple_cooked) and tags.fruit and tags.fruit >= 2 and Preference(names, tags) and notmeat(tags) and notname(names) and lessthing(names) and notages(tags)  end,
-		priority = 2,
-        health = TUNING.HEALING_HUGE/5, -- 12 (60) --바나나와 석류 사이
-        hunger = TUNING.CALORIES_MEDSMALL/4, -- 5.625 (28.125)
-        sanity = 0,
-        thirst = TUNING.HYDRATION_MEDSMALL,  -- 22.5
-        perishtime = TUNING.PERISH_MED, --10일
-		cooktime = TUNING.KETTLE_FRUIT,
-		potlevel = "mid",
-		potlevel_bottle = "mid",
-		drinktype = DRINKTYPY.FRUIT,
-	},
+
 }
 
 local mfp_drink = {
@@ -183,20 +171,4 @@ local mfp_drink = {
 	},
 }
 
-local orange_drink = {
-	orange_juice = {
-		test = function(boilier, names, tags) return (names.mfp_orange or names.mfp_orange_cooked or names.fwd_in_pdt_food_orange) and tags.fruit and tags.fruit >= 2 and Preference(names, tags) and not tags.veggie and notmeat(tags) and notname(names) and lessthing(names) and notages(tags) end,
-		priority = 2,
-        health = TUNING.HEALING_LARGE/5, -- 8 (40) ( MFP모드의 오렌지 쥬스 참고함)
-        hunger = TUNING.CALORIES_MEDSMALL/5, -- 3.75 (18.75)
-        sanity = TUNING.SANITY_TINY, -- 3 (15)
-        thirst = TUNING.HYDRATION_MEDSMALL, -- 22.5 (111)
-        perishtime = TUNING.PERISH_MED, --10일
-		cooktime = TUNING.KETTLE_FRUIT,
-		potlevel = "mid",
-		potlevel_bottle = "mid",
-		drinktype = DRINKTYPY.FRUIT,
-	},
-}
-
-return { sw_drink = sw_drink, coconut_drink = coconut_drink, cf_drink = cf_drink, rice_drink = rice_drink, ananas_drink = ananas_drink, mfp_drink = mfp_drink, orange_drink = orange_drink }
+return { sw_drink = sw_drink, coconut_drink = coconut_drink, cf_drink = cf_drink, rice_drink = rice_drink, mfp_drink = mfp_drink}

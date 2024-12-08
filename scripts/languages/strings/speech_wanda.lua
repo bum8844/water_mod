@@ -48,6 +48,7 @@ return {
 		WATER_DIRTY_ICE = "차라리 눈을 퍼먹고 말지!", --더러운 얼음물
 
 		SPICE_CAFFEINPEPPER = "뭔가 반복적으로 찾게 되네.", --후추 향신료
+		SPICE_RUINCOLATE_SPREAD = "",
 
 		WELL_KIT = "아이고 이런, 내가 우물 구멍을 팔 것을 잊지 말았어야 할 텐데.", --우물 키트 "Oh botheration, I hope I remembered to dig "
 		WELL_SPRINKLER_KIT = "정교한 기계지만, 조립하는 데에 1초도 안 걸리겠어.", --스프링클러 키트
@@ -84,12 +85,23 @@ return {
 		RUINCACAO_BEAN = "그냥 먹으면 속이 뒤집어질 거야.", --부순 후 카카오 콩  
 		RUINCACAO_BEAN_COOKED = "이거 시간낭비 아닌가 모르겠네.", --구운 카카오 콩
 
-		APPLEPINE = "작업해야함",
-		APPLEPINE_COOKED = "작업해야함",
-		LIMON = "작업해야함",
-		LIMON_COOKED = "작업해야함",
-		CITROYUZU = "작업해야함",
-		CITROYUZU_COOKED = "작업해야함",
+		--APPLEPINE
+		APPLEPINE = "",
+		APPLEPINE_COOKED = "",
+		APPLEPINE_SEEDS = "",
+		APPLEPINE_OVERSIZED = "",
+
+		--limon
+		LIMON = "",
+		LIMON_COOKED = "",
+		LIMON_SEEDS = "",
+		LIMON_OVERSIZED = "",
+
+		--citroyuzu
+		CITROYUZU = "",
+		CITROYUZU_COOKED = "",
+		CITROYUZU_SEEDS = "",
+		CITROYUZU_OVERSIZED = "",
 
 		-- 증류주 첨가제
 
@@ -155,8 +167,8 @@ return {
 		CHERRY_ROSEBERRIES_TEA = "가끔은 꽃 구경과 차 한 잔의 여유를 즐기는 것도 나쁘지 않을지도...", --체리숲 로즈힙 차
 		CHERRY_HONEY_TEA = "고급스러우면서 따뜻해.", --체리숲 벚꽃꿀 차
 		SWEET_RICE_DRINK = "거 참 먹기 한 번 번거로운 씨앗이네.", -- 비타협 식혜
-		ANANAS_JUICE = "과피가 없어도 많이 먹으면 입에서 피나지.", -- 레기온 파인애플 주스
-		ORANGE_JUICE = "밥 먹고 입가심 해야지.", -- 모어 푸드 팩 오랜지 주스
+		APPLEPINE_JUICE = "과피가 없어도 많이 먹으면 입에서 피나지.", -- 레기온 파인애플 주스
+		CITROYUZU_JUICE = "밥 먹고 입가심 해야지.", -- 모어 푸드 팩 오랜지 주스
 		STRAWBERRY_SMOOTHIE = "급하게 먹다가는 머리 아프겠어.", -- 모어 푸드 팩 딸기 스무디
 		STRAWBERRY_MILK_SMOOTHIE = "그냥 녹게 뒀다가 쭉 들이키는 게 낫겠어.", -- 모어 푸드 팩 딸기 스무디 라떼
 
@@ -168,7 +180,7 @@ return {
 	
 		SODA = "고작 물에 기포 좀 넣겠다고 이 고생을 한 건 아니겠지.", -- 탄산수
 		FRUITSODA = "음료 한 잔 마실 시간도 모자라.", -- 과일소다
-		LEMONLIMESODA = "뭔가 레모네이드랑 비슷한 맛인데.", -- 레몬 라임소다(과일소다 상위 호환)
+		LIMONSODA = "뭔가 레모네이드랑 비슷한 맛인데.", -- 레몬 라임소다(과일소다 상위 호환)
 		COLA = "사레 들리기 쉽다는 점만 빼면 훌룡해.", -- 콜라
 		COLAQUANTUM = "흠, 이거는 이 시간선에 있으면 안 될 물건 같은데.", --콜라 퀀텀
 		LUMPY_BEER = "이거 은근히 중독성 있는데.", --루트비어(미국 찰나무 = Sassafras 굶지마 세계관 기준으로 미래인 1979년에 금지됨;)
@@ -189,8 +201,8 @@ return {
 		-- 콜라보 소다
 
 		CHERRY_DOCTOR_COLA = "이 음료가 시간여행을 하진 않겠지.", --체리숲 닥터 페퍼(닥터 체리) (대충 닥터후 패러디)
-		ANANASSODA = "파인애플에 탄산이라, 뭔가 이상한데.", -- 탄산 파인애플(오란씨)
-		ORANGESODA = "뭐, 마실 거 한 모금의 여유 정도는 괜찮겠지.", -- 탄산 오랜지(환타)
+		APPLEPINESODA = "파인애플에 탄산이라, 뭔가 이상한데.", -- 탄산 파인애플(오란씨)
+		CITROYUZUSODA = "뭐, 마실 거 한 모금의 여유 정도는 괜찮겠지.", -- 탄산 오랜지(환타)
 		STRAWBERRYSODA = "딸기가 아니라 무슨 약 맛이 나잖아.", -- 탄산 딸기(웰치스 딸기)
 
 		--콜라보 양조주

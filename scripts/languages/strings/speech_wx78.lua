@@ -73,12 +73,23 @@ return {
 		RUINCACAO_BEAN = "가공할만한 가치 있음", --부순 후 카카오 콩
 		RUINCACAO_SEED_COOKED = "검은콩을 불에 그을림", --구운 카카오 콩
 
-		APPLEPINE = "작업해야함",
-		APPLEPINE_COOKED = "작업해야함",
-		LIMON = "작업해야함",
-		LIMON_COOKED = "작업해야함",
-		CITROYUZU = "작업해야함",
-		CITROYUZU_COOKED = "작업해야함",
+		--APPLEPINE
+		APPLEPINE = "",
+		APPLEPINE_COOKED = "",
+		APPLEPINE_SEEDS = "",
+		APPLEPINE_OVERSIZED = "",
+
+		--limon
+		LIMON = "",
+		LIMON_COOKED = "",
+		LIMON_SEEDS = "",
+		LIMON_OVERSIZED = "",
+
+		--citroyuzu
+		CITROYUZU = "",
+		CITROYUZU_COOKED = "",
+		CITROYUZU_SEEDS = "",
+		CITROYUZU_OVERSIZED = "",
 
 		-- 증류주 첨가제
 
@@ -144,8 +155,8 @@ return {
 		CHERRY_ROSEBERRIES_TEA = "장미향 유체", --체리숲 로즈힙 차
 		CHERRY_HONEY_TEA = "당도 측정 시도: 실패", --체리숲 벚꽃꿀 차
 		SWEET_RICE_DRINK = "경고: 과량의 엿당 함유", -- 비타협 식혜(WARNING: CONTAINS EXCESSIVE AMOUNTS OF MALTOSE)
-        ANANAS_JUICE = "스폰지와의 연관성을 부정", -- 레기온 파인애플 주스
-		ORANGE_JUICE = "섭취를 위해 분쇄됨", -- 모어 푸드 팩 오랜지 주스
+        APPLEPINE_JUICE = "스폰지와의 연관성을 부정", -- 레기온 파인애플 주스
+		CITROYUZU_JUICE = "섭취를 위해 분쇄됨", -- 모어 푸드 팩 오랜지 주스
 		STRAWBERRY_SMOOTHIE = "질감이 나를 불쾌하게 함", -- 모어 푸드 팩 딸기 스무디
 		STRAWBERRY_MILK_SMOOTHIE = "딸기가 포획된 형태", -- 모어 푸드 팩 딸기 스무디 라떼
 
@@ -157,7 +168,7 @@ return {
 	
 		SODA = "이산화탄소 수용액", -- 탄산수 (CO2 SOLUTION)
 		FRUITSODA = "과당이 첨가된 이산화탄소 수용액", -- 과일소다 (CO2 SOLUTION WITH FRUCTOSE)
-		LEMONLIMESODA = "과당 다량 포함", -- 레몬 라임소다(과일소다 상위 호환)
+		LIMONSODA = "과당 다량 포함", -- 레몬 라임소다(과일소다 상위 호환)
 		COLA = "멍청한 유기체들이 좋아하는 캐러맬 액체", -- 콜라
 		COLAQUANTUM = "다량의 방사능 함유", --콜라 퀀텀
 		LUMPY_BEER = "유기체의 탄산에 대한 집착 이해 불가", --루트비어(술이 아님)
@@ -178,8 +189,8 @@ return {
 		-- 콜라보 소다
 
 		CHERRY_DOCTOR_COLA = "누가 이런 혼종을 만들었는가", --체리숲 닥터 페퍼(닥터 체리)
-		ANANASSODA = "파인 튜닝이 사용됨", -- 탄산 파인애플(오란씨)
-		ORANGESODA = "유기체의 행동을 독려시키기위해 제작됨", -- 탄산 오랜지(환타)
+		APPLEPINESODA = "파인 튜닝이 사용됨", -- 탄산 파인애플(오란씨)
+		CITROYUZUSODA = "유기체의 행동을 독려시키기위해 제작됨", -- 탄산 오랜지(환타)
 		STRAWBERRYSODA = "영혼 악마놈을 연상시킴", -- 탄산 딸기(웰치스 딸기)
 
 		--콜라보 양조주

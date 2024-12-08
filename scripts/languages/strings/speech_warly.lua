@@ -48,6 +48,7 @@ return {
 		WATER_DIRTY_ICE = "이런 얼음은 요리에 쓸 수 없어.", --더러운 얼음물
 
 		SPICE_CAFFEINPEPPER = "그래, 너도 잊으면 안 되지!", --후추 향신료
+		SPICE_RUINCOLATE_SPREAD = "",
 
 		WELL_KIT = "이제 깨끗한 물이 샘솟는 우물 구멍만 있다면...!", --우물 키트
 		WELL_SPRINKLER_KIT = "내 밭 손님들에 편하게 물을 서비스할 수 있어.", --스프링클러 키트
@@ -84,12 +85,23 @@ return {
 		RUINCACAO_BEAN = "약간의 로스팅이 필요하겠어.", --부순 후 카카오 콩  
 		RUINCACAO_BEAN_COOKED = "초콜릿을 콩에서부터 만든다니 색다른 도전인걸.", --구운 카카오 콩
 
-		APPLEPINE = "작업해야함",
-		APPLEPINE_COOKED = "작업해야함",
-		LIMON = "작업해야함",
-		LIMON_COOKED = "작업해야함",
-		CITROYUZU = "작업해야함",
-		CITROYUZU_COOKED = "작업해야함",
+		--APPLEPINE
+		APPLEPINE = "",
+		APPLEPINE_COOKED = "",
+		APPLEPINE_SEEDS = "",
+		APPLEPINE_OVERSIZED = "",
+
+		--limon
+		LIMON = "",
+		LIMON_COOKED = "",
+		LIMON_SEEDS = "",
+		LIMON_OVERSIZED = "",
+
+		--citroyuzu
+		CITROYUZU = "",
+		CITROYUZU_COOKED = "",
+		CITROYUZU_SEEDS = "",
+		CITROYUZU_OVERSIZED = "",
 
 		-- 증류주 첨가제
 
@@ -155,8 +167,8 @@ return {
 		CHERRY_ROSEBERRIES_TEA = "향기롭고, 냉정함을 유지시켜 줘.", --체리숲 로즈힙 차
 		CHERRY_HONEY_TEA = "목이 아플 때 특효약이야.", --체리숲 벚꽃꿀 차
 		SWEET_RICE_DRINK = "설탕과는 다른 달콤함이야!", -- 비타협 식혜
-		ANANAS_JUICE = "코코넛을 곁들이면 딱이겠어.", -- 레기온 파인애플 주스
-		ORANGE_JUICE = "갓 짜낸 오렌지 주스야!", -- 모어 푸드 팩 오랜지 주스
+		APPLEPINE_JUICE = "코코넛을 곁들이면 딱이겠어.", -- 레기온 파인애플 주스
+		CITROYUZU_JUICE = "갓 짜낸 오렌지 주스야!", -- 모어 푸드 팩 오랜지 주스
 		STRAWBERRY_SMOOTHIE = "상큼하고 맛있어!", -- 모어 푸드 팩 딸기 스무디
 		STRAWBERRY_MILK_SMOOTHIE = "고향에서 내놓으면 여성분들이 좋아하겠어.", -- 모어 푸드 팩 딸기 스무디 라떼
 
@@ -168,7 +180,7 @@ return {
 	
 		SODA = "깔끔한 맛의 탄산수야.", -- 탄산수
 		FRUITSODA = "과즙의 단맛과 톡 쏘는 탄산감!", -- 과일소다
-		LEMONLIMESODA = "아, 리모나드와 비슷한 거구나?", -- 레몬 라임소다(과일소다 상위 호환)
+		LIMONSODA = "아, 리모나드와 비슷한 거구나?", -- 레몬 라임소다(과일소다 상위 호환)
 		COLA = "속이 더부룩할 때 마시면 좋아.", -- 콜라
 		COLAQUANTUM = "이거... 정말 음료는 맞나?", --콜라 퀀텀 (포밍레인: 폴아웃3 시에라 페트로비타 관련)
 		LUMPY_BEER = "야성적인 맛이야.", --루트비어(술이 아님)
@@ -189,8 +201,8 @@ return {
 		-- 콜라보 소다
 
 		CHERRY_DOCTOR_COLA = "엄밀히 말해서 콜라는 아니야.", --체리숲 닥터 페퍼(닥터 체리)
-		ANANASSODA = "거하게 먹고 입가심할 때 최고야.", -- 탄산 파인애플(오란씨)
-		ORANGESODA = "입안이 상쾌해져!", -- 탄산 오랜지(환타)
+		APPLEPINESODA = "거하게 먹고 입가심할 때 최고야.", -- 탄산 파인애플(오란씨)
+		CITROYUZUSODA = "입안이 상쾌해져!", -- 탄산 오랜지(환타)
 		STRAWBERRYSODA = "달달한 딸기향 탄산음료야.", -- 탄산 딸기(웰치스 딸기)
 
 		--콜라보 양조주

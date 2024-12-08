@@ -132,8 +132,8 @@ return {
         CHERRY_ROSEBERRIES_TEA = "有时候赏着花喝着茶也是不错的。",
         CHERRY_HONEY_TEA = "优雅且暖和。",
         SWEET_RICE_DRINK = "不知道为什么这些种子吃下去得花这么多时间……",
-        ANANAS_JUICE = "没有它的外皮，喝多了也会使你的嘴巴出血。",
-        ORANGE_JUICE = "就当作饭后甜点好了。",
+        APPLEPINE_JUICE = "没有它的外皮，喝多了也会使你的嘴巴出血。",
+        CITROYUZU_JUICE = "就当作饭后甜点好了。",
         STRAWBERRY_SMOOTHIE = "得小心别噎着了。",
         STRAWBERRY_MILK_SMOOTHIE = "好棒的甜食！",
 
@@ -145,7 +145,7 @@ return {
 
         SODA = "别跟我说花这么多时间就为了给水加气泡。",
         FRUITSODA = "慢慢喝应该就能快点喝完了。",
-        LEMONLIMESODA = "碳酸饮料之所以好喝是因为它的甜味。",
+        LIMONSODA = "碳酸饮料之所以好喝是因为它的甜味。",
         COLA = "这个很棒，除了使人打嗝的部分。",
         COLAQUANTUM = "有趣，这个饮料本不该出现在这个时间线的。",
         LUMPY_BEER = "是什么时候不让用黄樟根了？", -- 曾经用来做这个饮料，后来因为致癌问题被禁
@@ -166,8 +166,8 @@ return {
         -- 联动气泡水
 
         CHERRY_DOCTOR_COLA = "我不觉得这个饮料和时间旅行有关系。", -- 漫威探头（至少原文备注是那样的）
-        ANANASSODA = "很好，不需要对这个浪费时间了。",
-        ORANGESODA = "很好，不需要对这个浪费时间了。",
+        APPLEPINESODA = "很好，不需要对这个浪费时间了。",
+        CITROYUZUSODA = "很好，不需要对这个浪费时间了。",
         STRAWBERRYSODA = "很好，不需要对这个浪费时间了。",
 
         -- 联动酿酒

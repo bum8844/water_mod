@@ -146,8 +146,8 @@ return {
         CHERRY_ROSEBERRIES_TEA = "Tiene un oscuro olor a rosa.", -- Cherry Forest Rosehip Tea
         CHERRY_HONEY_TEA = "Es lo suficientemente dulce para beberlo.", -- Cherry Forest Sakura Honey Tea
         SWEET_RICE_DRINK = "¡Deberías comerlo y beberlo a la vez!", -- Vita Co-op Sikhye
-        ANANAS_JUICE = "Podría ser una esencia.", -- Legion Pineapple Juice
-        ORANGE_JUICE = "Estoy satisfecho con solo ver el color.", -- More Food Pack Orange Juice
+        APPLEPINE_JUICE = "Podría ser una esencia.", -- Legion Pineapple Juice
+        CITROYUZU_JUICE = "Estoy satisfecho con solo ver el color.", -- More Food Pack CITROYUZU Juice
         STRAWBERRY_SMOOTHIE = "¿Una fruta roja hizo esto?.", -- More Food Pack Strawberry Smoothie
         STRAWBERRY_MILK_SMOOTHIE = "Al menos es suave.", -- More Food Pack Strawberry Smoothie Latte
 
@@ -159,7 +159,7 @@ return {
 
         SODA = "Hmm, ¡Es como si el agua me atacara!", -- Soda Water
         FRUITSODA = "Parece como si las frutas gritaran", -- Fruit Soda
-        LEMONLIMESODA = "Una bebida dulce con sabor frutal.", -- Lemon Lime Soda (Superior to Fruit Soda)
+        LIMONSODA = "Una bebida dulce con sabor frutal.", -- Lemon Lime Soda (Superior to Fruit Soda)
         COLA = "Está bien para estar negro.", -- Cola
         COLAQUANTUM = "Hmm, ¡La radiación es buena!", -- Cola Quantum
         LUMPY_BEER = "Parece estar diseñado para la policía.", -- Root Beer (Not alcohol)
@@ -180,8 +180,8 @@ return {
         -- Collaborative Soda
 
         CHERRY_DOCTOR_COLA = "Puede ser una herramienta de toruta, jojo.", -- Cherry Forest Doctor Pepper (Doctor Cherry)
-        ANANASSODA = "Prefiero que sea una fruta a que sea bebida.", -- Pineapple Soda (Orangina)
-        ORANGESODA = "Naranjas que se hicieron juego.", -- Orange Soda (Fanta)
+        APPLEPINESODA = "Prefiero que sea una fruta a que sea bebida.", -- Pineapple Soda (Orangina)
+        CITROYUZUSODA = "Naranjas que se hicieron juego.", -- CITROYUZU Soda (Fanta)
         STRAWBERRYSODA = "¿Las semillas explotarán?", -- Strawberry Soda (Welch's Strawberry)
 
         -- Collaborative Spirits

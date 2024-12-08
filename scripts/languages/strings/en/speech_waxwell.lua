@@ -146,8 +146,8 @@ return {
             CHERRY_ROSEBERRIES_TEA = "So, where are the biscuits?", -- 
             CHERRY_HONEY_TEA = "It would be better with ginger and lemon...", -- 
             SWEET_RICE_DRINK = "The texture is mushy.", --- 
-            ANANAS_JUICE = "I can't drink this tangy fruit juice in one go.", 
-            ORANGE_JUICE = "I never noticed this in the break room before coming here.", 
+            APPLEPINE_JUICE = "I can't drink this tangy fruit juice in one go.", 
+            CITROYUZU_JUICE = "I never noticed this in the break room before coming here.", 
             STRAWBERRY_SMOOTHIE = "Seems like a street vendor drink.", 
             STRAWBERRY_MILK_SMOOTHIE = "It's not to my taste.", 
 
@@ -159,7 +159,7 @@ return {
 
             SODA = "I never even thought about trying this.", 
             FRUITSODA = "Should I perform in front of the punch bowl?", 
-            LEMONLIMESODA = "This is going to wreck my teeth.",
+            LIMONSODA = "This is going to wreck my teeth.",
             COLA = "I wish it had a straw.", 
             COLAQUANTUM = "Suspicious but spectacular.",
             LUMPY_BEER = "How did it recreate the taste?", --- 
@@ -180,8 +180,8 @@ return {
             -- Collaboration Sodas
 
             CHERRY_DOCTOR_COLA = "It's a shame there's no real doctor here.", 
-            ANANASSODA = "I feel closer to civilization now.", 
-            ORANGESODA = "This soda is overly carbonated.", --
+            APPLEPINESODA = "I feel closer to civilization now.", 
+            CITROYUZUSODA = "This soda is overly carbonated.", --
             STRAWBERRYSODA = "This soda is overly carbonated.", --
 
             -- Collaboration Brewery Drinks

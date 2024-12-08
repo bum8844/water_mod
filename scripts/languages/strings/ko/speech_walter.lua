@@ -146,8 +146,8 @@ return {
 		CHERRY_ROSEBERRIES_TEA = "완전 힙해! 루즈하기도 하고.",
 		CHERRY_HONEY_TEA = "시럽약 탄것 같기도 해!",
 		SWEET_RICE_DRINK = "주스는 아닌것 같은데, 차도 아닌것 같아!",
-		ANANAS_JUICE = "파인애플은 아나나스라고도 불러, 동생은 바나나스야!", -- 레기온 파인애플 주스
-		ORANGE_JUICE = "소개할게, 나만의 오렌지널 쥬스야.", -- 모어 푸드 팩 오랜지 쥬스
+		APPLEPINE_JUICE = "파인애플은 아나나스라고도 불러, 동생은 바나나스야!", -- 레기온 파인애플 주스
+		CITROYUZU_JUICE = "소개할게, 나만의 오렌지널 쥬스야.", -- 모어 푸드 팩 오랜지 쥬스
 		STRAWBERRY_SMOOTHIE = "강하지만 엄청 부드러워. 왜냐면 스트로-ㅇ 베리 스무디잖아?", -- 모어 푸드 팩 딸기 스무디
 		STRAWBERRY_MILK_SMOOTHIE = "엄청 시원해!", -- 모어 푸드 팩 딸기 스무디 라떼
 
@@ -159,7 +159,7 @@ return {
 
 		SODA = "캠프 근처에 광천수를 본적은 없는데.",
 		FRUITSODA = "홈 메이드 과일소다야!",
-		LEMONLIMESODA = "달고 톡 쏘네.",
+		LIMONSODA = "달고 톡 쏘네.",
 		COLA = "콜라를 다시 볼줄은 상상도 못했어.",
 		COLAQUANTUM = "안에서 붕붕 소리가나!",
 		LUMPY_BEER = "야채가 들어갔으니까 탄산음료여도 몸에 좋을거야!",
@@ -180,8 +180,8 @@ return {
 		--콜라보 소다
 
 		CHERRY_DOCTOR_COLA = "적어도 치과의사는 아니였을거야.",
-		ANANASSODA = "소나무 개척단 제식 '소나무 사과'소다라 할 수 있지.", -- 탄산 파인애플(오란씨)
-		ORANGESODA = "오렌지소다가 꿈을 꾸면? 환타-지!", -- 탄산 오랜지(환타)
+		APPLEPINESODA = "소나무 개척단 제식 '소나무 사과'소다라 할 수 있지.", -- 탄산 파인애플(오란씨)
+		CITROYUZUSODA = "오렌지소다가 꿈을 꾸면? 환타-지!", -- 탄산 오랜지(환타)
 		STRAWBERRYSODA = "딸기소다라는거 처음 봐!", -- 탄산 딸기(웰치스 딸기)
 
 		--콜라보 양조주

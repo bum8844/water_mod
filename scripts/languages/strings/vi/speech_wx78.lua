@@ -146,8 +146,8 @@ return {
             CHERRY_ROSEBERRIES_TEA = "FLUID VỚI HƯƠNG HOA HỒNG", -- TRÀ HƯƠNG RỪNG CHERRY
             CHERRY_HONEY_TEA = "ĐO ĐỘ NGỌT ĐÃ ĐƯỢC THỰC HIỆN: THẤT BẠI", -- TRÀ MẬT ONG CHERRY RỪNG ANH ĐÀO
             SWEET_RICE_DRINK = "CẢNH BÁO: NỘI DUNG MALTOSE QUÁ QUÁ", -- VITAHEBOK SIKHYE (CẢNH BÁO: CHỨA SỐ LƯỢNG MALTOSE QUÁ)
-            ANANAS_JUICE = "TỪ CHỐI LIÊN KẾT VỚI BỌT BIỂN", -- NƯỚC DỨA LEGION
-            ORANGE_JUICE = "nghiền để tiêu thụ", -- THÊM GÓI THỰC PHẨM NƯỚC CAM
+            APPLEPINE_JUICE = "TỪ CHỐI LIÊN KẾT VỚI BỌT BIỂN", -- NƯỚC DỨA LEGION
+            CITROYUZU_JUICE = "nghiền để tiêu thụ", -- THÊM GÓI THỰC PHẨM NƯỚC CAM
             STRAWBERRY_SMOOTHIE = "KẾT CẤU LÀM TÔI KHÔNG THOẢI MÁI", -- THÊM GÓI THỰC PHẨM MẶT NẠ DÂU TUYỆT VỜI
             STRAWBERRY_MILK_SMOOTHIE = "Dâu tây được chụp dưới dạng", -- THÊM GÓI THỰC PHẨM DÂU TUYỆT VỜI LATTE
 
@@ -159,7 +159,7 @@ return {
 
             SODA = "DUNG DỊCH CARBON DIOXIDE", -- NƯỚC Cacbonat (DUNG DỊCH CO2)
             FRUITSODA = "DUNG DỊCH CARBON DIOXIDE CÓ THÊM FRUCTOSE", -- SODA TRÁI CÂY (DUNG DỊCH CO2 VỚI FRUCTOSE)
-            LEMONLIMESODA = "CHỨA LƯỢNG LỚN ACID CITRIC", -- LEMON LIME SODA (NÂNG CẤP SODA TRÁI CÂY)
+            LIMONSODA = "CHỨA LƯỢNG LỚN ACID CITRIC", -- LEMON LIME SODA (NÂNG CẤP SODA TRÁI CÂY)
             COLA = "Chất lỏng caramel được các sinh vật ngu ngốc yêu thích", -- Cola
             COLAQUANTUM = "CHỨA LƯỢNG BỨC XẠ LỚN", -- Cola QUANTUM
             LUMPY_BEER = "NĂM KIẾM KHÔNG THỂ KIẾM ĐƯỢC VỚI SỰ THẬT CARBON CỦA SINH VẬT", -- BIA GỐC (KHÔNG CÓ CỒN)
@@ -180,8 +180,8 @@ return {
             -- COLLABORATIVE SODA
 
             CHERRY_DOCTOR_COLA = "AI TẠO RA MỘT HYBRID NHƯ VẬY?", -- CHERRY FOREST DOCTOR PEPPER (DOCTOR CHERRY)
-            ANANASSODA = "ĐÃ SỬ DỤNG ĐIỀU CHỈNH THÔNG", -- Dứa có ga (ORANCHI)
-            ORANGESODA = "Được sản xuất để khuyến khích hành vi của sinh vật", -- CAM có ga (FANTA)
+            APPLEPINESODA = "ĐÃ SỬ DỤNG ĐIỀU CHỈNH THÔNG", -- Dứa có ga (ORANCHI)
+            CITROYUZUSODA = "Được sản xuất để khuyến khích hành vi của sinh vật", -- CAM có ga (FANTA)
             STRAWBERRYSODA = "Gợi lên ý nghĩ của linh hồn quỷ", -- DÂU CÓ Cacbonat (WELCH'S STRAWBERRY)
 
             -- COLLABORATIVE SPIRITS

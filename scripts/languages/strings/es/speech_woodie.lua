@@ -146,8 +146,8 @@ return {
             CHERRY_ROSEBERRIES_TEA = "Sospecho que queden partes de pelo.", -- Cherry Forest Rosehip Tea
             CHERRY_HONEY_TEA = "Aroma a miel y árbol, fantástico.",
             SWEET_RICE_DRINK = "Un jugo de granos algo inusual.", -- Vitacomp Sweet Rice Drink
-            ANANAS_JUICE = "Es refrescante, pero es demasiado amargo para que pueda comer mucho.",
-            ORANGE_JUICE = "Es tan agrio que quiero agregar un poco de sirope.",
+            APPLEPINE_JUICE = "Es refrescante, pero es demasiado amargo para que pueda comer mucho.",
+            CITROYUZU_JUICE = "Es tan agrio que quiero agregar un poco de sirope.",
             STRAWBERRY_SMOOTHIE = "No lo buscaría, pero es bueno tenerlo.",
             STRAWBERRY_MILK_SMOOTHIE = "Es suave y refrescante, ¿eh?",
 
@@ -159,7 +159,7 @@ return {
 
             SODA = "Es agua carbonatada.", -- Soda
             FRUITSODA = "Es un ponche de frutas, ¿eh?", -- Fruit Soda
-            LEMONLIMESODA = "Es dulce y refrescante.", -- Lemon Lime Soda (Fruit Soda variant)
+            LIMONSODA = "Es dulce y refrescante.", -- Lemon Lime Soda (Fruit Soda variant)
             COLA = "Debería beberla cuando termine de trabajar.", -- Cola
             COLAQUANTUM = "Es bastante adictivo.", -- Cola Quantum
             LUMPY_BEER = "¿Es bebida de zarzaparrilla?", -- Lumpy Beer (non-alcoholic)
@@ -180,8 +180,8 @@ return {
             -- Collaboration Sodas
 
             CHERRY_DOCTOR_COLA = "Mientras sea dulce y refrescante, eso es suficiente.",
-            ANANASSODA = "Es refresco de piña.", -- Pineapple Soda (Orancee)
-            ORANGESODA = "Es un refresco naranja.", -- Orange Soda (Fanta)
+            APPLEPINESODA = "Es refresco de piña.", -- Pineapple Soda (Orancee)
+            CITROYUZUSODA = "Es un refresco naranja.", -- CITROYUZU Soda (Fanta)
             STRAWBERRYSODA = "Refresco de fresa.", -- Strawberry Soda (Welch's Strawberry)
 
             -- Collaboration Spirits

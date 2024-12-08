@@ -31,7 +31,8 @@ return {
 
 	DESCRIBE =
 	{
-		BOILBOOK = "참 편리하네. 루시, 내가 차 우리는동안 시간좀 재줄래?",
+		BOILBOOK_BASIC = "참 편리하네. 루시, 내가 차 우리는동안 시간좀 재줄래?",
+		BOILBOOK_ADVANCED = "참 편리하네. 루시, 내가 차 우리는동안 시간좀 재줄래?",
 
 		WATER_CLEAN_ICE = "녹여야겠지?",--깨끗한 얼음물
 		WATER_DIRTY_ICE = "더럽고 얼었있어.", --더러운 얼음물
@@ -73,12 +74,23 @@ return {
 		RUINCACAO_BEAN = "먹을수있는 버터향이 아닌데?", --부순 후 카카오 콩  
 		RUINCACAO_BEAN_COOKED = "보통 그대로 먹진 않아.", --구운 카카오 콩
 
-		APPLEPINE = "작업해야함",
-		APPLEPINE_COOKED = "작업해야함",
-		LIMON = "작업해야함",
-		LIMON_COOKED = "작업해야함",
-		CITROYUZU = "작업해야함",
-		CITROYUZU_COOKED = "작업해야함",
+		--APPLEPINE
+		APPLEPINE = "",
+		APPLEPINE_COOKED = "",
+		APPLEPINE_SEEDS = "",
+		APPLEPINE_OVERSIZED = "",
+
+		--limon
+		LIMON = "",
+		LIMON_COOKED = "",
+		LIMON_SEEDS = "",
+		LIMON_OVERSIZED = "",
+
+		--citroyuzu
+		CITROYUZU = "",
+		CITROYUZU_COOKED = "",
+		CITROYUZU_SEEDS = "",
+		CITROYUZU_OVERSIZED = "",
 
 		-- 증류주 첨가제
 
@@ -144,8 +156,8 @@ return {
 		CHERRY_ROSEBERRIES_TEA = "머리카락같은 부분이 남아있을지 의심스러워.", --체리숲 로즈힙 차
 		CHERRY_HONEY_TEA = "꿀과 나무향, 기가 맥히네.", --체리숲 벚꽃꿀 차
 		SWEET_RICE_DRINK = "이상한 곡물주스네.", -- 비타협 식혜
-		ANANAS_JUICE = "시원한데 난 셔서 많이 못먹겠다 그려.", -- 레기온 파인애플 주스
-		ORANGE_JUICE = "셔서 시럽좀 넣어 먹고 싶네.", -- 모어 푸드 팩 오랜지 주스
+		APPLEPINE_JUICE = "시원한데 난 셔서 많이 못먹겠다 그려.", -- 레기온 파인애플 주스
+		CITROYUZU_JUICE = "셔서 시럽좀 넣어 먹고 싶네.", -- 모어 푸드 팩 오랜지 주스
 		STRAWBERRY_SMOOTHIE = "찾아서 먹진않는데, 좋지.", -- 모어 푸드 팩 딸기 스무디
 		STRAWBERRY_MILK_SMOOTHIE = "부드럽고 시원한걸?", -- 모어 푸드 팩 딸기 스무디 라떼
 
@@ -157,7 +169,7 @@ return {
 	
 		SODA = "광천수네.", -- 탄산수
 		FRUITSODA = "후르츠펀치네 그려.", -- 과일소다
-		LEMONLIMESODA = "달고 시원한걸.", -- 레몬 라임소다(과일소다 상위 호환)
+		LIMONSODA = "달고 시원한걸.", -- 레몬 라임소다(과일소다 상위 호환)
 		COLA = "일하다  지치면 마셔야겠어.", -- 콜라
 		COLAQUANTUM = "이거 참 중독되네.", --콜라 퀀텀
 		LUMPY_BEER = "사르사파릴라 음료인가?", --루트비어(술이 아님)
@@ -178,8 +190,8 @@ return {
 		-- 콜라보 소다
 
 		CHERRY_DOCTOR_COLA = "달고 시원하면 그만이지.", --체리숲 닥터 페퍼(닥터 체리)
-		ANANASSODA = "파인애플 탄산음료야.", -- 탄산 파인애플(오란씨)
-		ORANGESODA = "오렌지 탄산음료야.", -- 탄산 오랜지(환타)
+		APPLEPINESODA = "파인애플 탄산음료야.", -- 탄산 파인애플(오란씨)
+		CITROYUZUSODA = "오렌지 탄산음료야.", -- 탄산 오랜지(환타)
 		STRAWBERRYSODA = "딸기 탄산음료야.", -- 탄산 딸기(웰치스 딸기)
 
 		--콜라보 양조주

@@ -146,8 +146,8 @@ return {
 		CHERRY_ROSEBERRIES_TEA = "Hương hoa hồng nồng nàn.",
 		CHERRY_HONEY_TEA = "Tôi chỉ có thể nếm những cánh hoa.",
 		SWEET_RICE_DRINK = "Đó là sự kết hợp mới.",
-		ANANAS_JUICE = "Ít nhất thì da của nó sẽ không làm xước miệng tôi nữa.", -- Legiones Pinapple Juice
-		ORANGE_JUICE = "Này cam, có vẻ bạn đang vui vì tôi đã mang theo một ít nước ép?", -- Gói thực phẩm khác Nước cam
+		APPLEPINE_JUICE = "Ít nhất thì da của nó sẽ không làm xước miệng tôi nữa.", -- Legiones Pinapple Juice
+		CITROYUZU_JUICE = "Này cam, có vẻ bạn đang vui vì tôi đã mang theo một ít nước ép?", -- Gói thực phẩm khác Nước cam
 		STRAWBERRY_SMOOTHIE = "Ống hút của tôi đâu?", -- Gói thực phẩm khác Sinh tố dâu tây
 		STRAWBERRY_MILK_SMOOTHIE = "Nó thật là sinh tố quả mọng!", -- Gói thực phẩm khác Strawverry Smoothie Latte
 
@@ -159,7 +159,7 @@ return {
 		
 		SODA = "Thật sảng khoái!",
 		FRUITSODA = "Ngọt, chua và mặn!",
-		LEMONLIMESODA = "Nha sĩ sẽ cảm thấy khiếp sợ khi trông thấy chúng",
+		LIMONSODA = "Nha sĩ sẽ cảm thấy khiếp sợ khi trông thấy chúng",
 		COLA = "Nó có vị đậm chất khoa học",
 		COLAQUANTUM = "Có điều gì đó rất khoa học về nó!",
 		LUMPY_BEER = "Mùi thơm quá!",
@@ -180,8 +180,8 @@ return {
 		-- Mod Cộng tác nhà máy bia soda
 		
 		CHERRY_DOCTOR_COLA = "Không phải bác sĩ đã làm ra thứ này!",
-		ANANASSODA = "Đó là một cây thông trong miệng tôi.", -- Nước giải khát dứa
-		ORANGESODA = "Thật tuyệt vời!", -- Nước ngọt Orange Fanta
+		APPLEPINESODA = "Đó là một cây thông trong miệng tôi.", -- Nước giải khát dứa
+		CITROYUZUSODA = "Thật tuyệt vời!", -- Nước ngọt CITROYUZU Fanta
 		STRAWBERRYSODA = "Đó là một loại đồ uống có ga có ga từ quả mọng.", -- Welch's Strawberry Soft Drink
 		
 		-- Mod Cộng tác nhà máy bia rượu

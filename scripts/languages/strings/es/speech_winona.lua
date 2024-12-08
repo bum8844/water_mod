@@ -144,8 +144,8 @@ return {
             CHERRY_ROSEBERRIES_TEA = "La acidez lo hace aún mejor.", -- Cherry Forest Rosehip Tea
             CHERRY_HONEY_TEA = "Necesito beber esto para limpiar el polvo de mi garganta.",
             SWEET_RICE_DRINK = "Hmm,  es algo dulce.", -- Vita Hyup Sikhye
-            ANANAS_JUICE = "Definitivamente mejor que el jugo en los productos enlatados.", 
-            ORANGE_JUICE = "Siempre he visto el refrigerador lleno de esto.", -- More Food Pack Orange Juice
+            APPLEPINE_JUICE = "Definitivamente mejor que el jugo en los productos enlatados.", 
+            CITROYUZU_JUICE = "Siempre he visto el refrigerador lleno de esto.", -- More Food Pack CITROYUZU Juice
             STRAWBERRY_SMOOTHIE = "Parece ser del gusto de las trabajadoras. Oh, yo también soy una trabajadora. ¡Hm!",
             STRAWBERRY_MILK_SMOOTHIE = "Sabe a una bebida de postre de la casa de té, pero es deliciosa.",
 
@@ -157,7 +157,7 @@ return {
 
             SODA = "Agua carbonatada simple.", -- Soda Water
             FRUITSODA = "Nunca bebí esto porque nunca fui a fiestas.",
-            LEMONLIMESODA = "Se siente como si me pudriera los dientes.",
+            LIMONSODA = "Se siente como si me pudriera los dientes.",
             COLA = "Cada vez que voy a beberlo, alguien ya lo ha terminado.", 
             COLAQUANTUM = "Wow, ¿Es seguro beber esto?", -- Cola Quantum
             LUMPY_BEER = "Sabe mejor que la cola, pero no es algo de mi gusto.", -- Root Beer (non-alcoholic)
@@ -178,8 +178,8 @@ return {
             -- Collaboration Sodas
 
             CHERRY_DOCTOR_COLA = "Esto no es coca cola.",
-            ANANASSODA = "Sabe como refresco de piña de tienda comercial.", -- Pineapple Soda (Oranch Soda)
-            ORANGESODA = "Sabe como refresco de naranja de tienda comercial.", -- Orange Soda (Frontera)
+            APPLEPINESODA = "Sabe como refresco de piña de tienda comercial.", -- Pineapple Soda (Oranch Soda)
+            CITROYUZUSODA = "Sabe como refresco de naranja de tienda comercial.", -- CITROYUZU Soda (Frontera)
             STRAWBERRYSODA = "No me sorprende que exista un refresco sabor fresa.", -- Strawberry Soda (Welch's Strawberry)
 
             -- Collaboration Spirits

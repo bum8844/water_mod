@@ -146,8 +146,8 @@ return {
             CHERRY_ROSEBERRIES_TEA = "The tartness makes it even better.",
             CHERRY_HONEY_TEA = "I need to drink this to clear the dust from my throat.", 
             SWEET_RICE_DRINK = "Hmm, it's quite sweet.",
-            ANANAS_JUICE = "Definitely better than the juice in canned goods.",  
-            ORANGE_JUICE = "I've never seen a day when this isn't in the break room fridge.", 
+            APPLEPINE_JUICE = "Definitely better than the juice in canned goods.",  
+            CITROYUZU_JUICE = "I've never seen a day when this isn't in the break room fridge.", 
             STRAWBERRY_SMOOTHIE = "Seems to be to the taste of the female workers. Oh, I'm a female worker too. Hm!", 
             STRAWBERRY_MILK_SMOOTHIE = "Tastes like a teahouse dessert drink, but it's delicious.", 
 
@@ -159,7 +159,7 @@ return {
 
             SODA = "Plain sparkling water.",
             FRUITSODA = "I never drank this because I never went to parties.", 
-            LEMONLIMESODA = "Feels like it will rot my teeth.", 
+            LIMONSODA = "Feels like it will rot my teeth.", 
             COLA = "Every time I go to drink it, someone has already finished it.",  
             COLAQUANTUM = "Whoa, is it safe to drink this?", 
             LUMPY_BEER = "It tastes better than cola, but no one's on my side.", 
@@ -180,8 +180,8 @@ return {
             -- Collaboration Sodas
 
             CHERRY_DOCTOR_COLA = "This is not coke.", 
-            ANANASSODA = "It tastes like store-bought pineapple soda.",
-            ORANGESODA = "It tastes like store-bought orange soda.",
+            APPLEPINESODA = "It tastes like store-bought pineapple soda.",
+            CITROYUZUSODA = "It tastes like store-bought CITROYUZU soda.",
             STRAWBERRYSODA = "I'm not surprised that there's strawberry-flavored soda.",
 
             -- Collaboration Spirits

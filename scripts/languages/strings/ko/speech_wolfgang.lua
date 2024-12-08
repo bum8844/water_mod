@@ -146,8 +146,8 @@ return {
 		CHERRY_ROSEBERRIES_TEA = "예쁜 장미냄새 난다.", --체리숲 로즈힙 차
 		CHERRY_HONEY_TEA = "엄청 달다!", --체리숲 벚꽃꿀 차
 		SWEET_RICE_DRINK = "쌀만 넣었는데 단 맛이 나!", -- 비타협 식혜
-		ANANAS_JUICE = "엄청 신 주스다.", -- 레기온 파인애플 주스
-		ORANGE_JUICE = "시고, 달고, 주황색이야.", -- 모어 푸드 팩 오랜지 주스
+		APPLEPINE_JUICE = "엄청 신 주스다.", -- 레기온 파인애플 주스
+		CITROYUZU_JUICE = "시고, 달고, 주황색이야.", -- 모어 푸드 팩 오랜지 주스
 		STRAWBERRY_SMOOTHIE = "씨가 엄청 많다.", -- 모어 푸드 팩 딸기 스무디
 		STRAWBERRY_MILK_SMOOTHIE = "부드러운 맛이야.", -- 모어 푸드 팩 딸기 스무디 라떼
 
@@ -159,7 +159,7 @@ return {
 	
 		SODA = "따끔한 물이다!", -- 탄산수
 		FRUITSODA = "따끔하고 달달하다.", -- 과일소다
-		LEMONLIMESODA = "엄청 달다!", -- 레몬 라임소다(과일소다 상위 호환)
+		LIMONSODA = "엄청 달다!", -- 레몬 라임소다(과일소다 상위 호환)
 		COLA = "단맛 나고 검은 음료수다.", -- 콜라
 		COLAQUANTUM = "강력한 음료로군! 아주 좋아!", --콜라 퀀텀
 		LUMPY_BEER = "알싸하고 특이한 맛이 난다.", --루트비어(술이 아님)
@@ -180,8 +180,8 @@ return {
 		-- 콜라보 소다
 
 		CHERRY_DOCTOR_COLA = "사탕같은 맛 난다!", --체리숲 닥터 페퍼(닥터 체리)
-		ANANASSODA = "시고 시원한 음료수다.", -- 탄산 파인애플(오란씨)
-		ORANGESODA = "달고 따끔하다.", -- 탄산 오랜지(환타)
+		APPLEPINESODA = "시고 시원한 음료수다.", -- 탄산 파인애플(오란씨)
+		CITROYUZUSODA = "달고 따끔하다.", -- 탄산 오랜지(환타)
 		STRAWBERRYSODA = "씨앗만큼 탄산도 가득하다!", -- 탄산 딸기(웰치스 딸기)
 
 		--콜라보 양조주

@@ -41,12 +41,14 @@ return {
 
 	DESCRIBE =
 	{
-		BOILBOOK = "음료 정보 모음집이란다.",
+		BOILBOOK_BASIC = "음료 정보 모음집이란다.",
+		BOILBOOK_ADVANCED = "음료 정보 모음집이란다.",
 
 		WATER_CLEAN_ICE = "고체 상태의 물이야.",--깨끗한 얼음물
 		WATER_DIRTY_ICE = "미생물에 오염된 고체 물이야.", --더러운 얼음물
 
 		SPICE_CAFFEINPEPPER = "과거에는 매우 귀한 향신료였단다.", --후추 향신료
+		SPICE_RUINCOLATE_SPREAD = "",
 
 		WELL_KIT = "수맥에 구멍을 뚫고 그 위에 설치하자꾸나.", --우물 키트
 		WELL_SPRINKLER_KIT = "수맥 구멍 위에 설치해야 해.", --스프링클러 키트
@@ -81,6 +83,24 @@ return {
 		RUINCACAO = "고대 아즈텍에서는 화폐로 이용되었었지.", --부수기 전 카카오 열매
 		RUINCACAO_BEAN = "가공되지 않은 상태로는 활용이 어려워.", --부순 후 카카오 콩  
 		RUINCACAO_BEAN_COOKED = "이제 특유의 풍미가 드러나는구나.", --구운 카카오 콩
+
+		--APPLEPINE
+		APPLEPINE = "",
+		APPLEPINE_COOKED = "",
+		APPLEPINE_SEEDS = "",
+		APPLEPINE_OVERSIZED = "",
+
+		--limon
+		LIMON = "",
+		LIMON_COOKED = "",
+		LIMON_SEEDS = "",
+		LIMON_OVERSIZED = "",
+
+		--citroyuzu
+		CITROYUZU = "",
+		CITROYUZU_COOKED = "",
+		CITROYUZU_SEEDS = "",
+		CITROYUZU_OVERSIZED = "",
 
 		-- 증류주 첨가제
 
@@ -146,8 +166,8 @@ return {
 		CHERRY_ROSEBERRIES_TEA = "달콤하고 향긋하구나.", --체리숲 로즈힙 차
 		CHERRY_HONEY_TEA = "몸이 따뜻해지는 효과가 있구나.", --체리숲 벚꽃꿀 차
 		SWEET_RICE_DRINK = "효소에 의해 녹말이 엿당으로 분해되었어.", -- 비타협 식혜
-		ANANAS_JUICE = "너무 많이 마시면 입안이 헐 수 있으니 주의하렴.", -- 레기온 파인애플 주스
-		ORANGE_JUICE = "주스 하면 역시 오렌지 주스가 대표적이지.", -- 모어 푸드 팩 오랜지 주스
+		APPLEPINE_JUICE = "너무 많이 마시면 입안이 헐 수 있으니 주의하렴.", -- 레기온 파인애플 주스
+		CITROYUZU_JUICE = "주스 하면 역시 오렌지 주스가 대표적이지.", -- 모어 푸드 팩 오랜지 주스
 		STRAWBERRY_SMOOTHIE = "마시는 딸기 샤베트라니, 흥미로워.", -- 모어 푸드 팩 딸기 스무디
 		STRAWBERRY_MILK_SMOOTHIE = "마시는 딸기 샤베트에 우유를 더했구나.", -- 모어 푸드 팩 딸기 스무디 라떼
 
@@ -159,7 +179,7 @@ return {
 	
 		SODA = "소화에 도움이 된다고 알려져 있지.", -- 탄산수
 		FRUITSODA = "과일즙을 첨가한 탄산수로구나.", -- 과일소다
-		LEMONLIMESODA = "단 걸 너무 많이 먹으면 치아에 안 좋단다.", -- 레몬 라임소다(과일소다 상위 호환)
+		LIMONSODA = "단 걸 너무 많이 먹으면 치아에 안 좋단다.", -- 레몬 라임소다(과일소다 상위 호환)
 		COLA = "최근 미국에서 인기를 끌고있는 음료이지.", -- 콜라(배경이 1907임 코카콜라가 존재함)
 		COLAQUANTUM = "흠... 섭취 시의 부작용은 없는지 연구해 봐야겠구나.", --콜라 퀀텀(아직 체랜코프 현상이 발견 안됨(1911년도로 추정))
 		LUMPY_BEER = "여러 뿌리채소가 섞여있구나.", --루트비어(술이 아님)
@@ -180,8 +200,8 @@ return {
 		-- 콜라보 소다
 
 		CHERRY_DOCTOR_COLA = "소화에 효능이 있을지도 모르겠구나.", --체리숲 닥터 페퍼(닥터 체리)
-		ANANASSODA = "파인애플 과즙을 첨가한 탄산수구나.", -- 탄산 파인애플(오란씨)
-		ORANGESODA = "탄산수에 오렌지 과즙을 첨가했어.", -- 탄산 오랜지(환타)
+		APPLEPINESODA = "파인애플 과즙을 첨가한 탄산수구나.", -- 탄산 파인애플(오란씨)
+		CITROYUZUSODA = "탄산수에 오렌지 과즙을 첨가했어.", -- 탄산 오랜지(환타)
 		STRAWBERRYSODA = "딸기 과즙으로 만든 탄산음료란다.", -- 탄산 딸기(웰치스 딸기)
 
 		--콜라보 양조주

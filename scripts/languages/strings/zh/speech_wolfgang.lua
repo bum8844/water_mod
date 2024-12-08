@@ -132,8 +132,8 @@ return {
             CHERRY_ROSEBERRIES_TEA = "好香的玫瑰味。",
             CHERRY_HONEY_TEA = "很甜！",
             SWEET_RICE_DRINK = "只有白米还是甜甜的！",
-            ANANAS_JUICE = "好酸的果汁。",
-            ORANGE_JUICE = "酸酸甜甜的橙色饮料。",
+            APPLEPINE_JUICE = "好酸的果汁。",
+            CITROYUZU_JUICE = "酸酸甜甜的橙色饮料。",
             STRAWBERRY_SMOOTHIE = "很多种子。",
             STRAWBERRY_MILK_SMOOTHIE = "滑滑的很好喝。",
 
@@ -145,7 +145,7 @@ return {
 
             SODA = "好多气泡！",
             FRUITSODA = "很多气泡然后甜甜的。",
-            LEMONLIMESODA = "很甜！",
+            LIMONSODA = "很甜！",
             COLA = "甜甜的黑色饮料。",
             COLAQUANTUM = "好强大的饮料！沃尔夫冈很喜欢！",
             LUMPY_BEER = "它特别的味道很好喝。",
@@ -166,8 +166,8 @@ return {
             -- 联动气泡水
 
             CHERRY_DOCTOR_COLA = "很像糖果！",
-            ANANASSODA = "酸酸的很好喝。",
-            ORANGESODA = "很多气泡然后甜甜的。",
+            APPLEPINESODA = "酸酸的很好喝。",
+            CITROYUZUSODA = "很多气泡然后甜甜的。",
             STRAWBERRYSODA = "气泡和种子一样多！",
 
             -- 联动酿酒

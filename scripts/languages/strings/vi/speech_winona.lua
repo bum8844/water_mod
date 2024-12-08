@@ -146,8 +146,8 @@ return {
             CHERRY_ROSEBERRIES_TEA = "Vị chua càng khiến món ăn ngon hơn.", -- Trà Tầm Xuân Rừng Anh Đào
             CHERRY_HONEY_TEA = "Tôi nên uống một cốc để lọc bụi trong cổ họng.", -- Trà mật ong hoa anh đào rừng anh đào
             SWEET_RICE_DRINK = "Hmm, nó khá ngọt.", -- Vita Hyup Sikhye
-            ANANAS_JUICE = "Chắc chắn tốt hơn chất lỏng trong đồ hộp.", -- Vùng nước ép dứa Lekia
-            ORANGE_JUICE = "Tôi chưa bao giờ thấy ngày nào mà không có thứ này trong tủ lạnh Tangbisil.", -- Thêm gói thực phẩm Nước cam
+            APPLEPINE_JUICE = "Chắc chắn tốt hơn chất lỏng trong đồ hộp.", -- Vùng nước ép dứa Lekia
+            CITROYUZU_JUICE = "Tôi chưa bao giờ thấy ngày nào mà không có thứ này trong tủ lạnh Tangbisil.", -- Thêm gói thực phẩm Nước cam
             STRAWBERRY_SMOOTHIE = "Đó là hương vị mà những người phụ nữ sẽ yêu thích, à, tôi cũng vậy. Hm!", -- Thêm gói thực phẩm Sinh tố dâu tây
             STRAWBERRY_MILK_SMOOTHIE = "Nó có vị giống đồ uống tráng miệng ở quán trà.", -- Thêm gói thực phẩm Sinh tố sữa dâu
 
@@ -159,7 +159,7 @@ return {
 
             SODA = "Nước có ga nguyên chất.", -- Nước Soda
             FRUITSODA = "Tôi không cần uống thứ này trừ khi tôi đi dự tiệc.", -- Fruit Soda
-            LEMONLIMESODA = "Răng của tôi sẽ bị thối vì thứ này.", -- Lemon Lime Soda (soda trái cây cao cấp hơn)
+            LIMONSODA = "Răng của tôi sẽ bị thối vì thứ này.", -- Lemon Lime Soda (soda trái cây cao cấp hơn)
             COLA = "Nếu tôi cố uống thì người khác đã uống hết rồi.", -- Cola
             COLAQUANTUM = "Ồ, uống thứ này có an toàn không?", -- Cola Quantum
             LUMPY_BEER = "Nó ngon hơn cola, nhưng không có ai đứng về phía tôi cả.", -- Root Beer (không cồn)
@@ -180,8 +180,8 @@ return {
             -- Nước ngọt hợp tác
 
             CHERRY_DOCTOR_COLA = "Đây không phải là cola.", -- Cherry Forest Dr. Pepper (Tiến sĩ Cherry)
-            ANANASSODA = "Có vị như soda dứa mua ở cửa hàng.", -- Pineapple Soda (Oranch Soda)
-            ORANGESODA = "Nó có vị như soda cam mua ở cửa hàng.", -- Orange Soda (Frontera)
+            APPLEPINESODA = "Có vị như soda dứa mua ở cửa hàng.", -- Pineapple Soda (Oranch Soda)
+            CITROYUZUSODA = "Nó có vị như soda cam mua ở cửa hàng.", -- CITROYUZU Soda (Frontera)
             STRAWBERRYSODA = "Tôi không ngạc nhiên khi có soda vị dâu.", -- Strawberry Soda (Welch's Strawberry)
 
             -- Tinh thần hợp tác

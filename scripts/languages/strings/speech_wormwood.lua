@@ -31,12 +31,14 @@ return {
 
 	DESCRIBE =
 	{
-		BOILBOOK = "마실 것들",
+		BOILBOOK_BASIC = "마실 것들",
+		BOILBOOK_ADVANCED = "마실 것들",
 
 		WATER_CLEAN_ICE = "차가워. 진짜 차가워",--깨끗한 얼음물
 		WATER_DIRTY_ICE = "차가워. 진짜 차가워", --더러운 얼음물
 
 		SPICE_CAFFEINPEPPER = "(킁킁) 에엣-취이! 엣-취이!", --후추 향신료
+		SPICE_RUINCOLATE_SPREAD = "",
 
 		WELL_KIT = "구멍에 심어", --우물 키트
 		WELL_SPRINKLER_KIT = "구멍이나 물덩이 근처에 심어", --스프링클러 키트
@@ -73,12 +75,23 @@ return {
 		RUINCACAO_BEAN = "기름진 먹는거", --부순 후 카카오 콩  
 		RUINCACAO_BEAN_COOKED = "익힌 먹는거", --구운 카카오 콩
 
-		APPLEPINE = "작업해야함",
-		APPLEPINE_COOKED = "작업해야함",
-		LIMON = "작업해야함",
-		LIMON_COOKED = "작업해야함",
-		CITROYUZU = "작업해야함",
-		CITROYUZU_COOKED = "작업해야함",
+		--APPLEPINE
+		APPLEPINE = "",
+		APPLEPINE_COOKED = "",
+		APPLEPINE_SEEDS = "",
+		APPLEPINE_OVERSIZED = "",
+
+		--limon
+		LIMON = "",
+		LIMON_COOKED = "",
+		LIMON_SEEDS = "",
+		LIMON_OVERSIZED = "",
+
+		--citroyuzu
+		CITROYUZU = "",
+		CITROYUZU_COOKED = "",
+		CITROYUZU_SEEDS = "",
+		CITROYUZU_OVERSIZED = "",
 
 		-- 증류주 첨가제
 
@@ -144,8 +157,8 @@ return {
 		CHERRY_ROSEBERRIES_TEA = "새콤한 향", --체리숲 로즈힙 차
 		CHERRY_HONEY_TEA = "붕붕이들 매우 좋아해", --체리숲 벚꽃꿀 차
 		SWEET_RICE_DRINK = "달콤해!", -- 비타협 식혜
-		ANANAS_JUICE = "멋쟁이 왕관 마실거", -- 레기온 파인애플 주스
-		ORANGE_JUICE = "주황색 공 마실거", -- 모어 푸드 팩 오랜지 주스
+		APPLEPINE_JUICE = "멋쟁이 왕관 마실거", -- 레기온 파인애플 주스
+		CITROYUZU_JUICE = "주황색 공 마실거", -- 모어 푸드 팩 오랜지 주스
 		STRAWBERRY_SMOOTHIE = "새콤 시원", -- 모어 푸드 팩 딸기 스무디
 		STRAWBERRY_MILK_SMOOTHIE = "부들부들 새콤 시원", -- 모어 푸드 팩 딸기 스무디 라떼
 
@@ -157,7 +170,7 @@ return {
 	
 		SODA = "톡톡 쏘는 물", -- 탄산수
 		FRUITSODA = "톡톡 과일물", -- 과일소다
-		LEMONLIMESODA = "톡톡 단 물", -- 레몬 라임소다(과일소다 상위 호환)
+		LIMONSODA = "톡톡 단 물", -- 레몬 라임소다(과일소다 상위 호환)
 		COLA = "톡톡 단 검은 물", -- 콜라
 		COLAQUANTUM = "톡톡 빛나는 물", --콜라 퀀텀
 		LUMPY_BEER = "톡톡 뿌리덩어리 물", --루트비어(술이 아님)
@@ -178,8 +191,8 @@ return {
 		-- 콜라보 소다
 
 		CHERRY_DOCTOR_COLA = "톡톡 과일 검은 물", --체리숲 닥터 페퍼(닥터 체리)
-		ANANASSODA = "톡톡 멋쟁이 왕관 물", -- 탄산 파인애플(오란씨)
-		ORANGESODA = "톡톡 주황 공 물", -- 탄산 오랜지(환타)
+		APPLEPINESODA = "톡톡 멋쟁이 왕관 물", -- 탄산 파인애플(오란씨)
+		CITROYUZUSODA = "톡톡 주황 공 물", -- 탄산 오랜지(환타)
 		STRAWBERRYSODA = "톡톡 달콤 과일 물", -- 탄산 딸기(웰치스 딸기)
 
 		--콜라보 양조주

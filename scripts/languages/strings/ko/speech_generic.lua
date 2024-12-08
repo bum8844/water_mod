@@ -146,8 +146,8 @@ return {
 		CHERRY_ROSEBERRIES_TEA = "장미향이 강렬해.",
 		CHERRY_HONEY_TEA = "은은하게 꽃향기가 나네.",
 		SWEET_RICE_DRINK = "이런음료도 있었어?",
-		ANANAS_JUICE = "과피가 내 입천장을 긁을일은 더 없겠어.", -- 레기온 파인애플 주스
-		ORANGE_JUICE = "오렌지 주스를 가져와서 기뻐.", -- 모어 푸드 팩 오랜지 쥬스
+		APPLEPINE_JUICE = "과피가 내 입천장을 긁을일은 더 없겠어.", -- 레기온 파인애플 주스
+		CITROYUZU_JUICE = "오렌지 주스를 가져와서 기뻐.", -- 모어 푸드 팩 오랜지 쥬스
 		STRAWBERRY_SMOOTHIE = " 빨대는 어디있지? ", -- 모어 푸드 팩 딸기 스무디
 		STRAWBERRY_MILK_SMOOTHIE = "매우 부드럽고 상큼해.", -- 모어 푸드 팩 딸기 스무디 라떼
 
@@ -159,7 +159,7 @@ return {
 
 		SODA = "정말 상쾌해!",
 		FRUITSODA = "새콤달콤하면서도 상쾌해!",
-		LEMONLIMESODA = "치과의사들이 보면 아마 환장하겠지.",
+		LIMONSODA = "치과의사들이 보면 아마 환장하겠지.",
 		COLA = "과학이 가득한 맛이야!",
 		COLAQUANTUM = "짜릿한 과학이 들어있어!",
 		LUMPY_BEER = "엄청나게 톡 쏘는 향이야!",
@@ -180,8 +180,8 @@ return {
 		--콜라보 소다
 
 		CHERRY_DOCTOR_COLA = "의사가 만들었다는 예기는 거짓말이야.",
-		ANANASSODA = "입안이 따끔거리는 조합'물'이야.", -- 탄산 파인애플(오란씨)
-		ORANGESODA = "정말 환타스틱하네.", -- 탄산 오랜지(환타)
+		APPLEPINESODA = "입안이 따끔거리는 조합'물'이야.", -- 탄산 파인애플(오란씨)
+		CITROYUZUSODA = "정말 환타스틱하네.", -- 탄산 오랜지(환타)
 		STRAWBERRYSODA = "베리강력한 탄산감이야.", -- 탄산 딸기(웰치스 딸기)
 
 		--콜라보 양조주

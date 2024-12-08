@@ -144,8 +144,8 @@ return {
             CHERRY_ROSEBERRIES_TEA = "Debo tener cuidado de no tragarme los capullos de las flores.", -- Cherry Forest Rose Hip Tea
             CHERRY_HONEY_TEA = "¿Puede haber algo mas dulce que esto?", -- Cherry Forest Cherry Blossom Honey Tea
             SWEET_RICE_DRINK = "¿Tiene algo masticable dentro?.", -- Vita-Hybiscus Sikhye
-            ANANAS_JUICE = "Rompió la espinosa corteza, y trituró la pulpa", -- Legacy Pineapple Juice
-            ORANGE_JUICE = "Tan amargo como la vida nuestra.", -- Moer Food Pack Orange Juice
+            APPLEPINE_JUICE = "Rompió la espinosa corteza, y trituró la pulpa", -- Legacy Pineapple Juice
+            CITROYUZU_JUICE = "Tan amargo como la vida nuestra.", -- Moer Food Pack CITROYUZU Juice
             STRAWBERRY_SMOOTHIE = "Una bebida hecha triturando fresas con hielo.", -- Moer Food Pack Strawberry Smoothie
             STRAWBERRY_MILK_SMOOTHIE = "Suavemente envuelve la punta de mi lengua", -- Moer Food Pack Strawberry Smoothie Latte
 
@@ -157,7 +157,7 @@ return {
 
             SODA = "Está efervescente.", -- Carbonated Water
             FRUITSODA = "Bebida con jugo de fruta exprimido.", -- Fruit Soda
-            LEMONLIMESODA = "Es una bebida carbonatada exageradamente dulce", -- Lemon Lime Soda (Superior to Fruit Soda)
+            LIMONSODA = "Es una bebida carbonatada exageradamente dulce", -- Lemon Lime Soda (Superior to Fruit Soda)
             COLA = "Una sustancia oscura, que controla a mucha gente", -- Cola
             COLAQUANTUM = "Es tan negra como carbón, que brilla", -- Cola Quantum
             LUMPY_BEER = "Parece que se ajusta a mis gustos", -- Root Beer (Not alcoholic)
@@ -178,8 +178,8 @@ return {
             -- Collaborative Soda
 
             CHERRY_DOCTOR_COLA = "No es un médico de verdad, pero puede ofrecer algún consuelo fugaz.", ---★★★★★
-            ANANASSODA = "Es una bebida acida y dulce", 
-            ORANGESODA = "Esta carbonatada con jugo de naranja exprimido",
+            APPLEPINESODA = "Es una bebida acida y dulce", 
+            CITROYUZUSODA = "Esta carbonatada con jugo de naranja exprimido",
             STRAWBERRYSODA = "Es una bebida carbonatada con fresas trituradas",
 
             -- Collaborative Distilled Spirits

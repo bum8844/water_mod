@@ -41,12 +41,14 @@ return {
 
 	DESCRIBE =
 	{
-     	BOILBOOK = "목을 축일 수 있다해도, 눈물로 다 흘려보낼 뿐이야.",
+     	BOILBOOK_BASIC = "목을 축일 수 있다해도, 눈물로 다 흘려보낼 뿐이야.",
+     	BOILBOOK_ADVANCED = "목을 축일 수 있다해도, 눈물로 다 흘려보낼 뿐이야.",
 
 		WATER_CLEAN_ICE = "내 심장처럼 얼어붙었어.",
 		WATER_DIRTY_ICE = "더럽혀진 차가운 마음이야.",
 
 		SPICE_CAFFEINPEPPER = "나보다도 쓰임새가 많아.",
+		SPICE_RUINCOLATE_SPREAD = "",
 
 		WELL_KIT = "무겁지만 의욕을 내봐야 겠지.",
 		WELL_SPRINKLER_KIT = "설치할 곳만 알려주면 기계가 알아서 자리를 잡을 거야.",
@@ -81,6 +83,24 @@ return {
 		RUINCACAO = "작은 생명들이 갇힌 화장용 관이야.", --부수기 전 카카오 열매
 		RUINCACAO_BEAN = "기름으로 가득해.", --부순 후 카카오 콩  
 		RUINCACAO_BEAN_COOKED = "결국 끝은 똑같았구나.", --구운 카카오 콩
+
+		--APPLEPINE
+		APPLEPINE = "",
+		APPLEPINE_COOKED = "",
+		APPLEPINE_SEEDS = "",
+		APPLEPINE_OVERSIZED = "",
+
+		--limon
+		LIMON = "",
+		LIMON_COOKED = "",
+		LIMON_SEEDS = "",
+		LIMON_OVERSIZED = "",
+
+		--citroyuzu
+		CITROYUZU = "",
+		CITROYUZU_COOKED = "",
+		CITROYUZU_SEEDS = "",
+		CITROYUZU_OVERSIZED = "",
 
 		-- 증류주 첨가제
 
@@ -146,8 +166,8 @@ return {
 		CHERRY_ROSEBERRIES_TEA = "꽃 봉우리를 들이키지 않도록 조심해야지.", --체리숲 로즈힙 차
 		CHERRY_HONEY_TEA = "그 어떤 달콤함도 아비게일을 대신하진 못해.", --체리숲 벚꽃꿀 차
 		SWEET_RICE_DRINK = "씹히는 무언가가 있어.", -- 비타협 식혜
-		ANANAS_JUICE = "질긴 과피를 찢고 과육을 갈아냈어.", -- 레기온 파인애플 주스
-		ORANGE_JUICE = "두꺼운 과피만큼이나 시어.", -- 모어 푸드 팩 오랜지 주스
+		APPLEPINE_JUICE = "질긴 과피를 찢고 과육을 갈아냈어.", -- 레기온 파인애플 주스
+		CITROYUZU_JUICE = "두꺼운 과피만큼이나 시어.", -- 모어 푸드 팩 오랜지 주스
 		STRAWBERRY_SMOOTHIE = "딸기를 얼음과 함께 갈아냈어.", -- 모어 푸드 팩 딸기 스무디
 		STRAWBERRY_MILK_SMOOTHIE = "부드러움이 혀 끝에 휘감기는 맛이야.", -- 모어 푸드 팩 딸기 스무디 라떼
 
@@ -159,7 +179,7 @@ return {
 	
 		SODA = "그저 톡 쏘는 물일 뿐이야.", -- 탄산수
 		FRUITSODA = "과일즙을 갈아 넣은 소다야.", -- 과일소다
-		LEMONLIMESODA = "이조차도 아비게일만큼 달콤하진 않아.", -- 레몬 라임소다(과일소다 상위 호환)
+		LIMONSODA = "이조차도 아비게일만큼 달콤하진 않아.", -- 레몬 라임소다(과일소다 상위 호환)
 		COLA = "수많은 사람을 지배하는 검은 단물이야.", -- 콜라
 		COLAQUANTUM = "새까만 음료가 빛까지 내네.", --콜라 퀀텀
 		LUMPY_BEER = "내 입맛에는 잘 맞는 것 같아.", --루트비어(술이 아님)
@@ -180,8 +200,8 @@ return {
 		-- 콜라보 소다
 
 		CHERRY_DOCTOR_COLA = "진짜 의사는 아니지만 잠깐의 위안은 되겠지.", --체리숲 닥터 페퍼(닥터 체리)
-		ANANASSODA = "시고 달콤한 소다야.", -- 탄산 파인애플(오란씨)
-		ORANGESODA = "오렌지 과즙을 짜 넣은 탄산음료야.", -- 탄산 오랜지(환타)
+		APPLEPINESODA = "시고 달콤한 소다야.", -- 탄산 파인애플(오란씨)
+		CITROYUZUSODA = "오렌지 과즙을 짜 넣은 탄산음료야.", -- 탄산 오랜지(환타)
 		STRAWBERRYSODA = "딸기를 으깨넣은 탄산음료야.", -- 탄산 딸기(웰치스 딸기)
 
 		--콜라보 양조주

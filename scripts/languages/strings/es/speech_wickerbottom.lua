@@ -144,8 +144,8 @@ return {
             CHERRY_ROSEBERRIES_TEA = "Es dulce y fragante.", --Cherry Forest Rosehip Tea
             CHERRY_HONEY_TEA = "Siento que mi cuerpo se está calentando.", --Cherry Forest Cherry Blossom Honey Tea
             SWEET_RICE_DRINK = "Se ha fermentado para darle un sabor dulce y facilitar su digestión.", --Vitacorp Sweet Hyphae
-            ANANAS_JUICE = "Contiene mucha bromelina, por lo que puede provocar llagas en la boca. Bébelo con moderación.", --More Food Pack Pineapple Juice
-            ORANGE_JUICE = "Zumo de naranja, es como el tipo de zumo estereotípico.", --More Food Pack Orange Juice
+            APPLEPINE_JUICE = "Contiene mucha bromelina, por lo que puede provocar llagas en la boca. Bébelo con moderación.", --More Food Pack Pineapple Juice
+            CITROYUZU_JUICE = "Zumo de naranja, es como el tipo de zumo estereotípico.", --More Food Pack CITROYUZU Juice
             STRAWBERRY_SMOOTHIE = "Hielo y fresas mezclados, estaría aún mejor con leche.", --More Food Pack Strawberry Smoothie
             STRAWBERRY_MILK_SMOOTHIE = "Una popular bebida de fresa, a veces hecha con yogur en lugar de leche.", --More Food Pack Strawberry Milk Smoothie
 
@@ -157,7 +157,7 @@ return {
 
             SODA = "Agua en la que el dióxido de carbono está disuelto e ionizado.", --Carbonated Water
             FRUITSODA = "Zumo de frutas añadido al agua carbonatada.", --Fruit Soda
-            LEMONLIMESODA = "Tiene una dulzura muy fuerte.", --Lemon Lime Soda (Fruit Soda Superior)
+            LIMONSODA = "Tiene una dulzura muy fuerte.", --Lemon Lime Soda (Fruit Soda Superior)
             COLA = "Es una bebida muy popular en Estados Unidos.", --Cola (Background in 1907, Coca-Cola exists)
             COLAQUANTUM = "Hmm... Debería investigar si el consumo excesivo tiene efectos secundarios.", --Cola Quantum (No signs of Cherenkov radiation yet (estimated around 1911))
             LUMPY_BEER = "Se mezclaron diversos tubérculos.", --Root Beer (Not an alcoholic beverage)
@@ -178,8 +178,8 @@ return {
             -- Collaborative Sodas
 
             CHERRY_DOCTOR_COLA = "W. B. Bebida medicinal con 23 especias.", --Cherry Forest Doctor Pepper (Doctor Cherry)
-            ANANASSODA = "Zumo de piña con agua carbonatada.", --Carbonated Pineapple (Orancee)
-            ORANGESODA = "Contiene zumo de naranja.", --Carbonated Orange (Fanta)
+            APPLEPINESODA = "Zumo de piña con agua carbonatada.", --Carbonated Pineapple (Orancee)
+            CITROYUZUSODA = "Contiene zumo de naranja.", --Carbonated CITROYUZU (Fanta)
             STRAWBERRYSODA = "Agua carbonatada con zumo de fresa.", --Carbonated Strawberry (Welch's Strawberry)
 
             -- Collaborative Spirits

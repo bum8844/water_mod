@@ -146,8 +146,8 @@ ANNOUNCE_DCAPACITY_HALF = "Không hiểu sao đầu tôi bắt đầu quay cuồ
             CHERRY_ROSEBERRIES_TEA = "Nó có lấy máu từ con nhện ngoài hành tinh đó không?", -- Trà tầm xuân rừng anh đào
             CHERRY_HONEY_TEA = "Ngọt và ấm, nhưng màu lạ!", -- Trà mật ong hoa anh đào rừng anh đào
             SWEET_RICE_DRINK = "Có hạt mềm bên trong!", -- Vita Coop Sikhye
-            ANANAS_JUICE = "Răng của tôi cảm thấy kỳ lạ sau khi uống thứ này.", -- Nước ép dứa Regione
-            ORANGE_JUICE = "Tốt nhất là tôi nên tạm dừng việc đánh răng một lúc.", -- Thêm gói thực phẩm Nước cam
+            APPLEPINE_JUICE = "Răng của tôi cảm thấy kỳ lạ sau khi uống thứ này.", -- Nước ép dứa Regione
+            CITROYUZU_JUICE = "Tốt nhất là tôi nên tạm dừng việc đánh răng một lúc.", -- Thêm gói thực phẩm Nước cam
             STRAWBERRY_SMOOTHIE = "Uống từ từ để tránh não đơ.", -- More Food Pack Strawberry Smoothie
             STRAWBERRY_MILK_SMOOTHIE = "Đây là món sinh tố dâu tây thật sự!", -- Gói thực phẩm khác Sinh tố sữa dâu
 
@@ -159,7 +159,7 @@ ANNOUNCE_DCAPACITY_HALF = "Không hiểu sao đầu tôi bắt đầu quay cuồ
 
             SODA = "Cái này là cái gì? Thật nhạt nhẽo!", -- Soda
             FRUITSODA = "Mmm, soda trái cây ngọt ngào!", -- Soda trái cây
-            LEMONLIMESODA = "Thật sảng khoái, nhưng sau đó cổ họng tôi lại cảm thấy dính!", -- Lemon Lime Soda (tốt hơn Fruit Soda)
+            LIMONSODA = "Thật sảng khoái, nhưng sau đó cổ họng tôi lại cảm thấy dính!", -- Lemon Lime Soda (tốt hơn Fruit Soda)
             COLA = "Tôi chưa bao giờ nghĩ rằng tôi sẽ nhìn thấy điều này một lần nữa!", -- Cola
             COLAQUANTUM = "Soda có màu xanh và thậm chí còn phát sáng!", -- Cola Quantum
             LUMPY_BEER = "Ugh, mùi này lạ quá.", -- Root Beer (không phải rượu thật)
@@ -180,8 +180,8 @@ ANNOUNCE_DCAPACITY_HALF = "Không hiểu sao đầu tôi bắt đầu quay cuồ
             -- Hợp tác Soda
 
             CHERRY_DOCTOR_COLA = "Nó chỉ giống cola, chứ vị thì chưa chắc, cơ mà chúng tôi thích nó phết!", -- Cherry Forest Doctor Pepper (Tiến sĩ Cherry)
-            ANANASSODA = "Chúng ta nên uống nó ít thôi nếu không muốn bị sâu răng.", -- Pineapple Soda (Oranchi)
-            ORANGESODA = "Là đồ uống có ga vị cam!", -- Orange Soda (Fanta)
+            APPLEPINESODA = "Chúng ta nên uống nó ít thôi nếu không muốn bị sâu răng.", -- Pineapple Soda (Oranchi)
+            CITROYUZUSODA = "Là đồ uống có ga vị cam!", -- CITROYUZU Soda (Fanta)
             STRAWBERRYSODA = "Wickerbottom khuyên nên uống đồ uống có ga một cách điều độ.", -- Strawberry Soda (Welch's Strawberry)
 
             -- Tinh thần hợp tác

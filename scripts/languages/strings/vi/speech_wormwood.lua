@@ -146,8 +146,8 @@ return {
             CHERRY_ROSEBERRIES_TEA = "Có mùi thơm nồng", -- Trà Tầm Xuân Rừng Anh Đào
             CHERRY_HONEY_TEA = "Những con ong thích nó", -- Trà mật ong hoa anh đào rừng anh đào
             SWEET_RICE_DRINK = "Ngọt!", -- Sake VitaHive
-            ANANAS_JUICE = "Dành cho vương miện", -- Nước ép Legion ANANAS
-            ORANGE_JUICE = "Một quả cầu có múi để uống", -- Thêm gói thực phẩm Nước cam
+            APPLEPINE_JUICE = "Dành cho vương miện", -- Nước ép Legion APPLEPINE
+            CITROYUZU_JUICE = "Một quả cầu có múi để uống", -- Thêm gói thực phẩm Nước cam
             STRAWBERRY_SMOOTHIE = "Mát và thơm", -- Gói thực phẩm khác Sinh tố dâu tây
             STRAWBERRY_MILK_SMOOTHIE = "Kem và thơm", -- Gói thực phẩm khác Sinh tố sữa dâu
 
@@ -159,7 +159,7 @@ return {
 
             SODA = "Nước có ga", -- Nước có ga
             FRUITSODA = "Nước trái cây sủi bọt", -- Soda trái cây
-            LEMONLIMESODA = "Sủi bọt và ngọt ngào", -- Soda chanh chanh (loại Soda trái cây cao cấp hơn)
+            LIMONSODA = "Sủi bọt và ngọt ngào", -- Soda chanh chanh (loại Soda trái cây cao cấp hơn)
             COLA = "Nước đen sủi bọt", -- Cola
             COLAQUANTUM = "Xì hơi và rạng rỡ", -- Cola Quantum
             LUMPY_BEER = "Nước rễ cây có ga", -- Bia gốc (không phải đồ uống có cồn)
@@ -180,8 +180,8 @@ return {
             -- Soda hợp tác
 
             CHERRY_DOCTOR_COLA = "Nước sẫm màu có mùi trái cây sủi bọt", -- Cherry Forest Doctor Pepper (Doctor Cherry)
-            ANANASSODA = "Nước sủi bọt phù hợp cho vương miện", -- Thông có ga (Olimar's)
-            ORANGESODA = "Nước quả cầu màu cam sủi bọt", -- Cam có ga (Fanta)
+            APPLEPINESODA = "Nước sủi bọt phù hợp cho vương miện", -- Thông có ga (Olimar's)
+            CITROYUZUSODA = "Nước quả cầu màu cam sủi bọt", -- Cam có ga (Fanta)
             STRAWBERRYSODA = "Nước trái cây sủi bọt và ngọt ngào", -- Dâu có ga (Dâu xứ Wales)
 
             -- Rượu hợp tác

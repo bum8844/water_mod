@@ -146,8 +146,8 @@ return {
             CHERRY_ROSEBERRIES_TEA = "Tôi có phải uống đồ uống có trái cây hèn hạ như vậy không?", -- Trà Tầm Xuân Anh Đào
             CHERRY_HONEY_TEA = "Đây thực sự là nước mật ong tinh tế.", -- Trà mật ong hoa anh đào rừng anh đào
             SWEET_RICE_DRINK = "Cái này không chứa hạt à?", -- Vita-Hybiscus Sweet Rice Punch
-            ANANAS_JUICE = "Nó đã nghiền nát những vảy cứng để lấy thịt.", -- Reign of Giants ANANAS Juice
-            ORANGE_JUICE = "Nó bảo tôi uống nước ép chua của nó à?", -- Thêm gói thực phẩm Nước cam
+            APPLEPINE_JUICE = "Nó đã nghiền nát những vảy cứng để lấy thịt.", -- Reign of Giants APPLEPINE Juice
+            CITROYUZU_JUICE = "Nó bảo tôi uống nước ép chua của nó à?", -- Thêm gói thực phẩm Nước cam
             STRAWBERRY_SMOOTHIE = "Đó là một loại nước ép trái cây màu đỏ, lạnh.", -- Thêm gói thực phẩm Sinh tố dâu tây
             STRAWBERRY_MILK_SMOOTHIE = "Đồ uống này không thích hợp cho một chiến binh.", -- Gói thực phẩm khác Sinh tố sữa dâu
 
@@ -159,7 +159,7 @@ return {
 
             SODA = "Đó là nước suối có ga.", -- Nước có ga
             FRUITSODA = "Giống như nước ép trái cây.", -- Fruit Punch Soda
-            LEMONLIMESODA = "Nó không phải là thức uống xứng đáng của một chiến binh.", -- Lemon Lime Soda (Phiên bản cao cấp của Fruit Soda)
+            LIMONSODA = "Nó không phải là thức uống xứng đáng của một chiến binh.", -- Lemon Lime Soda (Phiên bản cao cấp của Fruit Soda)
             COLA = "Nó quyến rũ như chính bóng tối vậy.", -- Cola
             COLAQUANTUM = "Nó khiến tim tôi đập nhanh hơn!", -- Quantum Cola
             LUMPY_BEER = "Nó có nhiều mùi hương khác nhau.", -- Root Beer (Không cồn)
@@ -180,8 +180,8 @@ return {
             -- Hợp tác Soda
 
             CHERRY_DOCTOR_COLA = "Đó là một sự hỗn loạn màu đỏ thẫm kinh tởm.", -- Cherry Forest Doctor Pepper (Doctor Cherry)
-            ANANASSODA = "Dù là quả thông hay trái cây thì đều không đúng.", -- Pineapple Soda (Orang-Soda)
-            ORANGESODA = "Là nước suối có vị trái cây thơm.", -- Orange Soda (Fanta)
+            APPLEPINESODA = "Dù là quả thông hay trái cây thì đều không đúng.", -- Pineapple Soda (Orang-Soda)
+            CITROYUZUSODA = "Là nước suối có vị trái cây thơm.", -- CITROYUZU Soda (Fanta)
             STRAWBERRYSODA = "Soda này không phù hợp với chiến binh.", -- Strawberry Soda (Welch's Strawberry)
 
             -- Tinh thần hợp tác

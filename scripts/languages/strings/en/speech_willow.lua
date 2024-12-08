@@ -146,8 +146,8 @@ return {
             CHERRY_ROSEBERRIES_TEA = "Yeah, it smells fragrant.", 
             CHERRY_HONEY_TEA = "Ha, such a nice color.", 
             SWEET_RICE_DRINK = "I prefer the roasted version.",
-            ANANAS_JUICE = "Good when you drink, but your mouth will tingle after.", 
-            ORANGE_JUICE = "If someone's drinking it, I'll suggest brushing their teeth.", 
+            APPLEPINE_JUICE = "Good when you drink, but your mouth will tingle after.", 
+            CITROYUZU_JUICE = "If someone's drinking it, I'll suggest brushing their teeth.", 
             STRAWBERRY_SMOOTHIE = "It's been blended nicely into red.", 
             STRAWBERRY_MILK_SMOOTHIE = "Sometimes, cold things aren't so bad.", 
 
@@ -159,7 +159,7 @@ return {
 
             SODA = "Fizzy water.", 
             FRUITSODA = "Among beverages, this one's the tastiest.",
-            LEMONLIMESODA = "Honey water is meant to be drunk warm.", 
+            LIMONSODA = "Honey water is meant to be drunk warm.", 
             COLA = "Who would have thought I'd see cola here?", 
             COLAQUANTUM = "This is truly an abnormal drink.", 
             LUMPY_BEER = "It's the worst among sodas.", 
@@ -180,8 +180,8 @@ return {
             -- Collaborative Sodas
 
             CHERRY_DOCTOR_COLA = "It's a homemade imitation.", 
-            ANANASSODA = "It's just pineapple soda.",
-            ORANGESODA = "Nothing special, just orange soda.", 
+            APPLEPINESODA = "It's just pineapple soda.",
+            CITROYUZUSODA = "Nothing special, just CITROYUZU soda.", 
             STRAWBERRYSODA = "It's red and fizzy, so it's good.",
 
             -- Collaborative Brewed Spirits

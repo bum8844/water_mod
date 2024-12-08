@@ -114,6 +114,10 @@ local function SetIngredientDrinkable(inst, value)
 
 	SetHydration(inst, value)
 	SetAnyoneCanDrink(inst)
+
+	if inst.components.stackable then
+		inst.components.stackable.maxsize = TUNING.STACK_SIZE_TINYITEM
+	end
 end
 
 local function SetDrinkable(inst, value)
@@ -128,6 +132,10 @@ local function SetDrinkable(inst, value)
 
 	SetHydration(inst, value)
 	SetAnyoneCanDrink(inst)
+
+	if inst.components.stackable then
+		inst.components.stackable.maxsize = TUNING.STACK_SIZE_TINYITEM
+	end
 end
 
 local function SetAlcohlDrink(inst, value)
@@ -143,6 +151,10 @@ local function SetAlcohlDrink(inst, value)
 
 	SetHydration(inst, value)
 	SetAnyoneCanDrink_Alcohl(inst)
+
+	if inst.components.stackable then
+		inst.components.stackable.maxsize = TUNING.STACK_SIZE_TINYITEM
+	end
 end
 
 for _, v in pairs(FOODTYPEGROUP.TYPEVEGGIE) do 

@@ -87,8 +87,8 @@
     <folder id="28" name="kumis.tex">
         <file id="0" name="kumis.tex/kumis.tex.png" width="224" height="224" pivot_x="0.5" pivot_y="0.5"/>
     </folder>
-    <folder id="29" name="lemonlimesoda.tex">
-        <file id="0" name="lemonlimesoda.tex/lemonlimesoda.tex.png" width="224" height="224" pivot_x="0.5" pivot_y="0.5"/>
+    <folder id="29" name="limonsoda.tex">
+        <file id="0" name="limonsoda.tex/limonsoda.tex.png" width="224" height="224" pivot_x="0.5" pivot_y="0.5"/>
     </folder>
     <folder id="30" name="lotustea.tex">
         <file id="0" name="lotustea.tex/lotustea.tex.png" width="224" height="224" pivot_x="0.5" pivot_y="0.5"/>
@@ -132,11 +132,11 @@
     <folder id="43" name="nut_corn_whiskey.tex">
         <file id="0" name="nut_corn_whiskey.tex/nut_corn_whiskey.tex.png" width="224" height="224" pivot_x="0.5" pivot_y="0.5"/>
     </folder>
-    <folder id="44" name="orange_juice.tex">
-        <file id="0" name="orange_juice.tex/orange_juice.tex.png" width="224" height="224" pivot_x="0.5" pivot_y="0.5"/>
+    <folder id="44" name="citroyuzu_juice.tex">
+        <file id="0" name="citroyuzu_juice.tex/citroyuzu_juice.tex.png" width="224" height="224" pivot_x="0.5" pivot_y="0.5"/>
     </folder>
-    <folder id="45" name="orangesoda.tex">
-        <file id="0" name="orangesoda.tex/orangesoda.tex.png" width="224" height="224" pivot_x="0.5" pivot_y="0.5"/>
+    <folder id="45" name="citroyuzusoda.tex">
+        <file id="0" name="citroyuzusoda.tex/citroyuzusoda.tex.png" width="224" height="224" pivot_x="0.5" pivot_y="0.5"/>
     </folder>
     <folder id="46" name="pale_beer.tex">
         <file id="0" name="pale_beer.tex/pale_beer.tex.png" width="224" height="224" pivot_x="0.5" pivot_y="0.5"/>
@@ -144,11 +144,11 @@
     <folder id="47" name="pale_whiskey.tex">
         <file id="0" name="pale_whiskey.tex/pale_whiskey.tex.png" width="224" height="224" pivot_x="0.5" pivot_y="0.5"/>
     </folder>
-    <folder id="48" name="ananas_juice.tex">
-        <file id="0" name="ananas_juice.tex/ananas_juice.tex.png" width="224" height="224" pivot_x="0.5" pivot_y="0.5"/>
+    <folder id="48" name="appine_juice.tex">
+        <file id="0" name="appine_juice.tex/appine_juice.tex.png" width="224" height="224" pivot_x="0.5" pivot_y="0.5"/>
     </folder>
-    <folder id="49" name="ananassoda.tex">
-        <file id="0" name="ananassoda.tex/ananassoda.tex.png" width="224" height="224" pivot_x="0.5" pivot_y="0.5"/>
+    <folder id="49" name="appinesoda.tex">
+        <file id="0" name="appinesoda.tex/appinesoda.tex.png" width="224" height="224" pivot_x="0.5" pivot_y="0.5"/>
     </folder>
     <folder id="50" name="pomegranate_juice.tex">
         <file id="0" name="pomegranate_juice.tex/pomegranate_juice.tex.png" width="224" height="224" pivot_x="0.5" pivot_y="0.5"/>

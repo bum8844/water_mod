@@ -144,8 +144,8 @@ return {
             CHERRY_ROSEBERRIES_TEA = "¿Debo beber una bebida con frutos tan viles?", -- Cherry Forest Rosehip Tea
             CHERRY_HONEY_TEA = "Esta agua miel es realmente exquisita.", -- Cherry Forest Cherry Blossom Honey Tea
             SWEET_RICE_DRINK = "¿Esto no contiene semillas?", -- Vita-Hybiscus Sweet Rice Punch
-            ANANAS_JUICE = "Aplastaron las duras escamas para obtener la carne.", -- Reign of Giants ANANAS Juice
-            ORANGE_JUICE = "¿Me está pidiendo que beba su jugo agrio?", -- More Food Pack Orange Juice
+            APPLEPINE_JUICE = "Aplastaron las duras escamas para obtener la carne.", -- Reign of Giants APPLEPINE Juice
+            CITROYUZU_JUICE = "¿Me está pidiendo que beba su jugo agrio?", -- More Food Pack CITROYUZU Juice
             STRAWBERRY_SMOOTHIE = "Esta frío, es un puré de frutos rojos.", -- More Food Pack Strawberry Smoothie
             STRAWBERRY_MILK_SMOOTHIE = "Esta bebida no es apropiada para el consumo de un guerrero.", -- More Food Pack Strawberry Milk Smoothie
 
@@ -157,7 +157,7 @@ return {
 
             SODA = "Es agua mineral carbonatada.", -- Carbonated Water
             FRUITSODA = "Es ponche de frutas.", -- Fruit Punch Soda
-            LEMONLIMESODA = "No es una bebida digna de un guerrero.", -- Lemon Lime Soda (Superior version of Fruit Soda)
+            LIMONSODA = "No es una bebida digna de un guerrero.", -- Lemon Lime Soda (Superior version of Fruit Soda)
             COLA = "Es tan seductor como la oscuridad misma.", -- Cola
             COLAQUANTUM = "¡Hace que mi corazón se acelere!", -- Quantum Cola
             LUMPY_BEER = "Esta imbuido con una variedad de esencias.", -- Root Beer (Not alcoholic)
@@ -178,8 +178,8 @@ return {
             -- Collaboration Soda
 
             CHERRY_DOCTOR_COLA = "Es un repulsivo caos carmesí.", -- Cherry Forest Doctor Pepper (Doctor Cherry)
-            ANANASSODA = "Ya sean piñas o fruta, no está bien.", -- Pineapple Soda (Orang-Soda)
-            ORANGESODA = "Es agua mineral con un penetrante sabor a frutas.", -- Orange Soda (Fanta)
+            APPLEPINESODA = "Ya sean piñas o fruta, no está bien.", -- Pineapple Soda (Orang-Soda)
+            CITROYUZUSODA = "Es agua mineral con un penetrante sabor a frutas.", -- CITROYUZU Soda (Fanta)
             STRAWBERRYSODA = "Este refresco no da el ancho para los guerreros.", -- Strawberry Soda (Welch's Strawberry)
 
             -- Collaboration Spirits

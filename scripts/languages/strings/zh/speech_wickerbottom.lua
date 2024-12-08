@@ -132,8 +132,8 @@ return {
             CHERRY_ROSEBERRIES_TEA = "又香又甜。",
             CHERRY_HONEY_TEA = "感觉身体暖和起来了。",
             SWEET_RICE_DRINK = "发酵后更甜且易于消化。",
-            ANANAS_JUICE = "富含使口腔溃疡的蛋白酶，别喝太多了。",
-            ORANGE_JUICE = "橘子汁，像是饮料界的立体音声。",
+            APPLEPINE_JUICE = "富含使口腔溃疡的蛋白酶，别喝太多了。",
+            CITROYUZU_JUICE = "橘子汁，像是饮料界的立体音声。",
             STRAWBERRY_SMOOTHIE = "混在一起的草莓和冰，再加上奶会更好。",
             STRAWBERRY_MILK_SMOOTHIE = "一个受欢迎的饮料，也可以用酸奶代替。",
 
@@ -145,7 +145,7 @@ return {
 
             SODA = "二氧化碳溶解在水里并离子化后的产物。",
             FRUITSODA = "加了果汁的碳酸水。",
-            LEMONLIMESODA = "它有很强烈的甜味。",
+            LIMONSODA = "它有很强烈的甜味。",
             COLA = "美国近期的流行饮料。", -- 背景是1907的时候
             COLAQUANTUM = "唔……该研究下过量喝这个有什么副作用。",
             LUMPY_BEER = "混合了多种根茎蔬菜。",
@@ -166,8 +166,8 @@ return {
             -- 联动气泡水
 
             CHERRY_DOCTOR_COLA = "有医药价值的饮料，用23种香料做出来的。",
-            ANANASSODA = "加了松萝汁的碳酸水。",
-            ORANGESODA = "含有橘子汁。",
+            APPLEPINESODA = "加了松萝汁的碳酸水。",
+            CITROYUZUSODA = "含有橘子汁。",
             STRAWBERRYSODA = "含有草莓汁的碳酸水。",
 
             -- 联动酿酒

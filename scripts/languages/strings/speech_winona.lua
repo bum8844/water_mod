@@ -40,12 +40,14 @@ return {
 
 	DESCRIBE =
 	{
-		BOILBOOK = "온갖 마실거리를 만드는 방법이 적혀 있어.",
+		BOILBOOK_BASIC = "온갖 마실거리를 만드는 방법이 적혀 있어.",
+		BOILBOOK_ADVANCED = "온갖 마실거리를 만드는 방법이 적혀 있어.",
 
 		WATER_CLEAN_ICE = "이거 씹어 먹어야 하나?",--깨끗한 얼음물
 		WATER_DIRTY_ICE = "먼지 섞인 얼음이네.", --더러운 얼음물
 
 		SPICE_CAFFEINPEPPER = "바베큐에 뿌리면 딱이겠는데.", --후추 향신료
+		SPICE_RUINCOLATE_SPREAD = "",
 
 		WELL_KIT = "어디 힘 좀 써 보자고.", --우물 키트
 		WELL_SPRINKLER_KIT = "꽤 정교하게 잘 만들었어.", --스프링클러 키트
@@ -80,6 +82,24 @@ return {
 		RUINCACAO = "열매보다는 거의 목탄 덩어리 같은데.", --부수기 전 카카오 열매
 		RUINCACAO_BEAN = "향은 좋은데 완전 기름 덩어리네.", --부순 후 카카오 콩  
 		RUINCACAO_BEAN_COOKED = "뭐, 쓴맛 덕에 잠 깨는 데에는 좋겠네.", --구운 카카오 콩
+
+		--APPLEPINE
+		APPLEPINE = "",
+		APPLEPINE_COOKED = "",
+		APPLEPINE_SEEDS = "",
+		APPLEPINE_OVERSIZED = "",
+
+		--limon
+		LIMON = "",
+		LIMON_COOKED = "",
+		LIMON_SEEDS = "",
+		LIMON_OVERSIZED = "",
+
+		--citroyuzu
+		CITROYUZU = "",
+		CITROYUZU_COOKED = "",
+		CITROYUZU_SEEDS = "",
+		CITROYUZU_OVERSIZED = "",
 
 		-- 증류주 첨가제
 
@@ -145,8 +165,8 @@ return {
 		CHERRY_ROSEBERRIES_TEA = "신맛이 뭔가 중독성 있는데.", --체리숲 로즈힙 차
 		CHERRY_HONEY_TEA = "목 아플 때 마시면 딱이겠어.", --체리숲 벚꽃꿀 차
 		SWEET_RICE_DRINK = "달달하니 괜찮네.", -- 비타협 식혜
-		ANANAS_JUICE = "통조림에 든 국물보다는 확실히 낫네.", -- 레기온 파인애플 주스
-		ORANGE_JUICE = "탕비실 냉장고에 항상 있더라.", -- 모어 푸드 팩 오랜지 주스
+		APPLEPINE_JUICE = "통조림에 든 국물보다는 확실히 낫네.", -- 레기온 파인애플 주스
+		CITROYUZU_JUICE = "탕비실 냉장고에 항상 있더라.", -- 모어 푸드 팩 오랜지 주스
 		STRAWBERRY_SMOOTHIE = "음, 이거 꽤 괜찮은데!", -- 모어 푸드 팩 딸기 스무디
 		STRAWBERRY_MILK_SMOOTHIE = "달달한 게 맛있네!", -- 모어 푸드 팩 딸기 스무디 라떼
 
@@ -158,7 +178,7 @@ return {
 	
 		SODA = "그냥 탄산만 들었잖아.", -- 탄산수
 		FRUITSODA = "레모네이드 대신이라고 생각하면 괜찮아.", -- 과일소다
-		LEMONLIMESODA = "이빨 썩겠는데.", -- 허니소다(과일소다 상위 호환)
+		LIMONSODA = "이빨 썩겠는데.", -- 허니소다(과일소다 상위 호환)
 		COLA = "마시려고 보면 꼭 누가 다 마시고 없더라.", -- 콜라
 		COLAQUANTUM = "워, 이거 마셔도 안전한 거야?", --콜라 퀀텀
 		LUMPY_BEER = "꽤 맛있는데 다들 맛을 모른단 말이지.", --루트비어(술이 아님)
@@ -179,8 +199,8 @@ return {
 		-- 콜라보 소다
 
 		CHERRY_DOCTOR_COLA = "흠, 콜라는 아닌데.", --체리숲 닥터 페퍼(닥터 체리)
-		ANANASSODA = "이러면 입천장 아플 일은 없겠지.", -- 탄산 파인애플(오란씨)
-		ORANGESODA = "새콤달콤하니 맛있어.", -- 탄산 오랜지(환타)
+		APPLEPINESODA = "이러면 입천장 아플 일은 없겠지.", -- 탄산 파인애플(오란씨)
+		CITROYUZUSODA = "새콤달콤하니 맛있어.", -- 탄산 오랜지(환타)
 		STRAWBERRYSODA = "뭐, 레모네이드에서 레몬 대신 딸기를 넣었구만.", -- 탄산 딸기(웰치스 딸기)
 
 		--콜라보 양조주

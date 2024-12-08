@@ -146,8 +146,8 @@ return {
         CHERRY_ROSEBERRIES_TEA = "Sometimes, it's nice to have a cup of tea while looking at flowers.", -- 
         CHERRY_HONEY_TEA = "It's elegant and warm.", -- 
         SWEET_RICE_DRINK = "I don't know why these seeds take so long to eat...", -- 
-        ANANAS_JUICE = "Incluso sin la piel exterior, si comes mucho, tu boca empezará a sangrar." ,
-        ORANGE_JUICE = "I should have it as a snack after a meal.", -- 
+        APPLEPINE_JUICE = "Incluso sin la piel exterior, si comes mucho, tu boca empezará a sangrar." ,
+        CITROYUZU_JUICE = "I should have it as a snack after a meal.", -- 
         STRAWBERRY_SMOOTHIE = "Me atragantaré si trago precipitadamente.",
         STRAWBERRY_MILK_SMOOTHIE = "What a wonderful dessert!", -- 
 
@@ -159,7 +159,7 @@ return {
 
         SODA = "Seguro que no nos pasamos todo este tiempo haciendo burbujas en el agua, ¿verdad?",
         FRUITSODA = "No tardaré mucho en acabarlo, mejor beberlo despacio.",
-        LEMONLIMESODA = "Carbonated drinks are delicious because they're sweet.", -- 
+        LIMONSODA = "Carbonated drinks are delicious because they're sweet.", -- 
         COLA = "It's excellent, except for the burping.", -- 
         COLAQUANTUM = "Interesting, it's a beverage that shouldn't exist in this timeline.", 
         LUMPY_BEER = "¿Cuándo dejó de ser posible utilizar las raíces del árbol de sasafrás?",
@@ -180,8 +180,8 @@ return {
         -- Collaboration Sodas
 
         CHERRY_DOCTOR_COLA = "I don't think this drink involves time travel.", 
-        ANANASSODA = "Good, I won't waste too much time enjoying this.",
-        ORANGESODA = "Good, I won't waste too much time enjoying this.",
+        APPLEPINESODA = "Good, I won't waste too much time enjoying this.",
+        CITROYUZUSODA = "Good, I won't waste too much time enjoying this.",
         STRAWBERRYSODA = "Good, I won't waste too much time enjoying this.", 
 
         -- Collaboration Spirits

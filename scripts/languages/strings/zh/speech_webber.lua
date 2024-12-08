@@ -132,8 +132,8 @@ return {
             CHERRY_ROSEBERRIES_TEA = "这是从那个奇怪的蜘蛛拿到的血吗？",
             CHERRY_HONEY_TEA = "又暖又甜，但是颜色怪怪的！",
             SWEET_RICE_DRINK = "里面有软软的种子！",
-            ANANAS_JUICE = "它弄得我们的牙齿怪怪的。",
-            ORANGE_JUICE = "看来我们这段时间不能刷牙了。",
+            APPLEPINE_JUICE = "它弄得我们的牙齿怪怪的。",
+            CITROYUZU_JUICE = "看来我们这段时间不能刷牙了。",
             STRAWBERRY_SMOOTHIE = "慢慢喝，别冻坏脑袋了。",
             STRAWBERRY_MILK_SMOOTHIE = "这才是理想的草莓果昔！",
 
@@ -145,7 +145,7 @@ return {
 
             SODA = "这是什么？淡淡的！",
             FRUITSODA = "甜甜的水果味气泡水！",
-            LEMONLIMESODA = "好好喝，但是弄得我们的喉咙黏黏的！",
+            LIMONSODA = "好好喝，但是弄得我们的喉咙黏黏的！",
             COLA = "我居然又能看到它了！",
             COLAQUANTUM = "蓝色的发光汽泡水！",
             LUMPY_BEER = "怪怪的味道。",
@@ -166,8 +166,8 @@ return {
             -- 联动气泡水
 
             CHERRY_DOCTOR_COLA = "是可乐，但不完全是，我们也喜欢！",
-            ANANASSODA = "我们要注意不让牙齿蛀掉了。",
-            ORANGESODA = "是橘子味的碳酸饮料！",
+            APPLEPINESODA = "我们要注意不让牙齿蛀掉了。",
+            CITROYUZUSODA = "是橘子味的碳酸饮料！",
             STRAWBERRYSODA = "薇克巴顿说过适度喝碳酸饮料。",
 
             -- 联动酿酒

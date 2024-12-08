@@ -31,7 +31,8 @@ return {
 
 	DESCRIBE =
 	{
-		BOILBOOK = "마시는거 잔뜩 그려져이써!", -- 음료 요리
+		BOILBOOK_BASIC = "마시는거 잔뜩 그려져이써!", -- 음료 요리
+		BOILBOOK_ADVANCED = "마시는거 잔뜩 그려져이써!",
 
 		WATER_CLEAN_ICE = "흐드드, 엄청 차가워!",--깨끗한 얼음물
 		WATER_DIRTY_ICE = "흐드드, 굳어버린 물이야!", --더러운 얼음물
@@ -73,12 +74,23 @@ return {
 		RUINCACAO_BEAN = "기름많아, 뽀륵.", --부순 후 카카오 콩  
 		RUINCACAO_BEAN_COOKED = "아직 초콜릿 아니야!", --구운 카카오 콩
 
-		APPLEPINE = "작업해야함",
-		APPLEPINE_COOKED = "작업해야함",
-		LIMON = "작업해야함",
-		LIMON_COOKED = "작업해야함",
-		CITROYUZU = "작업해야함",
-		CITROYUZU_COOKED = "작업해야함",
+		--APPLEPINE
+		APPLEPINE = "",
+		APPLEPINE_COOKED = "",
+		APPLEPINE_SEEDS = "",
+		APPLEPINE_OVERSIZED = "",
+
+		--limon
+		LIMON = "",
+		LIMON_COOKED = "",
+		LIMON_SEEDS = "",
+		LIMON_OVERSIZED = "",
+
+		--citroyuzu
+		CITROYUZU = "",
+		CITROYUZU_COOKED = "",
+		CITROYUZU_SEEDS = "",
+		CITROYUZU_OVERSIZED = "",
 
 		-- 증류주 첨가제
 
@@ -144,8 +156,8 @@ return {
 		CHERRY_ROSEBERRIES_TEA = "못생긴열매 머리카락 없지?", --체리숲 로즈힙 차
 		CHERRY_HONEY_TEA = "예쁜벌꿀 꿀 탄물 마시면 몸 따듯해져!", --체리숲 벚꽃꿀 차
 		SWEET_RICE_DRINK = "어인들 이런식으로 간식 안만들어.", -- 비타협 식혜
-		ANANAS_JUICE = "시큼한 과일 물에 넣어서 덜시고 더 달아, 뽀륵.", -- 레기온 파인애플 주스
-		ORANGE_JUICE = "과즙팡팡 상큼해, 뽀륵!", -- 모어 푸드 팩 오랜지 주스
+		APPLEPINE_JUICE = "시큼한 과일 물에 넣어서 덜시고 더 달아, 뽀륵.", -- 레기온 파인애플 주스
+		CITROYUZU_JUICE = "과즙팡팡 상큼해, 뽀륵!", -- 모어 푸드 팩 오랜지 주스
 		STRAWBERRY_SMOOTHIE = "흐드드, 빨간과즙 얼은거 갈았어!", -- 모어 푸드 팩 딸기 스무디
 		STRAWBERRY_MILK_SMOOTHIE = "흐드드드, 부드러워!", -- 모어 푸드 팩 딸기 스무디 라떼
 
@@ -157,7 +169,7 @@ return {
 	
 		SODA = "물 이상해, 톡 톡 하고있어.", -- 탄산수
 		FRUITSODA = "과즙 맛나는데 톡 톡이 방해해.", -- 과일소다
-		LEMONLIMESODA = "달고 맛있는데 이상해!", -- 레몬 라임소다(과일소다 상위 호환)
+		LIMONSODA = "달고 맛있는데 이상해!", -- 레몬 라임소다(과일소다 상위 호환)
 		COLA = "이거 엄청 맛나, 굉장해 뽀륵!", -- 콜라
 		COLAQUANTUM = "반짝반짝하고 소리 나, 뽀륵!", --콜라 퀀텀
 		LUMPY_BEER = "약맛 나는데 달고 톡 톡 해.", --루트비어(술이 아님)
@@ -178,8 +190,8 @@ return {
 		-- 콜라보 소다
 
 		CHERRY_DOCTOR_COLA = "검은물 톡 톡 하고 붉은 과즙맛 나!", --체리숲 닥터 페퍼(닥터 체리)
-		ANANASSODA = "톡 톡 하는 시큼한 과일물!", -- 탄산 파인애플(오란씨)
-		ORANGESODA = "뽀륵, 상큼하고 시원해!", -- 탄산 오랜지(환타)
+		APPLEPINESODA = "톡 톡 하는 시큼한 과일물!", -- 탄산 파인애플(오란씨)
+		CITROYUZUSODA = "뽀륵, 상큼하고 시원해!", -- 탄산 오랜지(환타)
 		STRAWBERRYSODA = "톡 톡 하는 붉은과일 물이야, 뽀륵.", -- 탄산 딸기(웰치스 딸기)
 
 		--콜라보 양조주

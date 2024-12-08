@@ -146,8 +146,8 @@ return {
             CHERRY_ROSEBERRIES_TEA = "It's sweet and fragrant.", 
             CHERRY_HONEY_TEA = "I feel like my body is getting warm.", 
             SWEET_RICE_DRINK = "It has been fermented to give it a sweet taste and make it easier to digest.", 
-            ANANAS_JUICE = "It contains a lot of bromelain, so it can cause mouth sores. Drink it in moderation.", 
-            ORANGE_JUICE = "Orange juice, it's like the stereo type of juice.", 
+            APPLEPINE_JUICE = "It contains a lot of bromelain, so it can cause mouth sores. Drink it in moderation.", 
+            CITROYUZU_JUICE = "CITROYUZU juice, it's like the stereo type of juice.", 
             STRAWBERRY_SMOOTHIE = "Ice and strawberries blended together, it would be even better with milk.", 
             STRAWBERRY_MILK_SMOOTHIE = "A popular strawberry beverage, sometimes made with yogurt instead of milk.", 
 
@@ -159,7 +159,7 @@ return {
 
             SODA = "A water in which carbon dioxide is dissolved and ionized.", 
             FRUITSODA = "Fruit juice added to carbonated water.", 
-            LEMONLIMESODA = "It has a strong sweetness.", 
+            LIMONSODA = "It has a strong sweetness.", 
             COLA = "It's a popular drink recently in the United States.",
             COLAQUANTUM = "Hmm... I should investigate if there are any side effects of overconsumption.",
             LUMPY_BEER = "Various root vegetables are mixed in.", 
@@ -180,8 +180,8 @@ return {
             -- Collaborative Sodas
 
             CHERRY_DOCTOR_COLA = "W.B. Medicinal Drink with 23 spices.", 
-            ANANASSODA = "Pineapple juice added to carbonated water.", 
-            ORANGESODA = "It contains orange juice.",
+            APPLEPINESODA = "Pineapple juice added to carbonated water.", 
+            CITROYUZUSODA = "It contains CITROYUZU juice.",
             STRAWBERRYSODA = "Carbonated water with strawberry juice.", 
 
             -- Collaborative Spirits

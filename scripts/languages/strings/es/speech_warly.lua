@@ -146,8 +146,8 @@ return {
         CHERRY_ROSEBERRIES_TEA = "Tiene una fragancia deliciosa y ayuda a regular el calor corporal.", -- Cherry Blossom Rose Hip Tea
         CHERRY_HONEY_TEA = "Es una solución rápida para el dolor de garganta.", -- Cherry Blossom Cherry Honey Tea
         SWEET_RICE_DRINK = "¡Es dulce con una textura inusual!", -- Vitahebhi Sikhye
-        ANANAS_JUICE = "Debo cuidar de no beber mucho, o me pelara la lengua.", -- Legion Pineapple Juice
-        ORANGE_JUICE = "¡Es zumo de naranja recién exprimido!", -- More Food Pack Orange Juice
+        APPLEPINE_JUICE = "Debo cuidar de no beber mucho, o me pelara la lengua.", -- Legion Pineapple Juice
+        CITROYUZU_JUICE = "¡Es zumo de naranja recién exprimido!", -- More Food Pack CITROYUZU Juice
         STRAWBERRY_SMOOTHIE = "¡Está fresco y delicioso!.", -- More Food Pack Strawberry Smoothie
         STRAWBERRY_MILK_SMOOTHIE = "¡Es refrescante, y delicioso!", -- More Food Pack Strawberry Smoothie Latte
 
@@ -159,7 +159,7 @@ return {
 
         SODA = "Agua carbonatada sin sabores extraños.", -- Carbonated water
         FRUITSODA = "¡Refrescante sabor frutal con un toque efervescente!", -- Fruit soda
-        LEMONLIMESODA = "¡Tan refrescante como un melón!", -- Lemon-lime soda (Superior to fruit soda)
+        LIMONSODA = "¡Tan refrescante como un melón!", -- Lemon-lime soda (Superior to fruit soda)
         COLA = "Los niños la adora.", -- Cola
         COLAQUANTUM = "Una dama se volvió loca buscando esto ...", -- Cola Quantum (Forn McRain: Fallout 3 Sierra Petrovita reference)
         LUMPY_BEER = "Los clientes a los que les gusta esta bebida sólo piden ésta.", -- Root beer (non-alcoholic)
@@ -180,8 +180,8 @@ return {
         -- Collaboration Soda
 
         CHERRY_DOCTOR_COLA = "Es una bebida de nicho que cuenta con apasionados seguidores.", -- Cherry Forest Dr. Pepper (Dr. Cherry)
-        ANANASSODA = "Esta bebida es perfecta para ayudar a digerir una buena merienda.", -- Pineapple soda (Oran C)
-        ORANGESODA = "¡Refrescante después de una comida!", -- Orange soda (Fanta)
+        APPLEPINESODA = "Esta bebida es perfecta para ayudar a digerir una buena merienda.", -- Pineapple soda (Oran C)
+        CITROYUZUSODA = "¡Refrescante después de una comida!", -- CITROYUZU soda (Fanta)
         STRAWBERRYSODA = "Refresco dulce con sabor a fresa.", -- Strawberry soda (Welch's Strawberry)
 
         -- Collaboration Spirits

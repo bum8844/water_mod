@@ -146,8 +146,8 @@ return {
             CHERRY_ROSEBERRIES_TEA = "Huele fuerte", -- Cherry Forest Rosehip Tea
             CHERRY_HONEY_TEA = "A amigas abejas les gusta", -- Cherry Forest Cherry Blossom Honey Tea
             SWEET_RICE_DRINK = "¡Suave!", -- VitaHive Sake
-            ANANAS_JUICE = "Digno de coronar", -- Legion ANANAS Juice
-            ORANGE_JUICE = "Bola cítrica de tomar", -- More Food Pack Orange Juice
+            APPLEPINE_JUICE = "Digno de coronar", -- Legion APPLEPINE Juice
+            CITROYUZU_JUICE = "Bola cítrica de tomar", -- More Food Pack CITROYUZU Juice
             STRAWBERRY_SMOOTHIE = "Frío y ácido", -- More Food Pack Strawberry Smoothie
             STRAWBERRY_MILK_SMOOTHIE = "Rico, acidito y cremoso", -- More Food Pack Strawberry Milk Smoothie
 
@@ -159,7 +159,7 @@ return {
 
             SODA = "Agua burbujeante", -- Carbonated Water
             FRUITSODA = "Burbujas con fruta ", -- Fruit Soda
-            LEMONLIMESODA = "Burbujeante y dulce", -- Lemon Lime Soda (a higher tier of Fruit Soda)
+            LIMONSODA = "Burbujeante y dulce", -- Lemon Lime Soda (a higher tier of Fruit Soda)
             COLA = "Agua negra burbujeante", -- Cola
             COLAQUANTUM = "Burbujea con brillo", -- Cola Quantum
             LUMPY_BEER = "Agua de raíces burbujeantes", -- Root Beer (not an alcoholic beverage)
@@ -180,8 +180,8 @@ return {
             -- Collaborative Soda
 
             CHERRY_DOCTOR_COLA = "Burbujas oscuras", -- Cherry Forest Doctor Pepper (Doctor Cherry)
-            ANANASSODA = "Agua burbujeante", -- Carbonated ANANAS (Olimar's)
-            ORANGESODA = "Bola naranja burbujeante", -- Carbonated Orange (Fanta)
+            APPLEPINESODA = "Agua burbujeante", -- Carbonated APPLEPINE (Olimar's)
+            CITROYUZUSODA = "Bola naranja burbujeante", -- Carbonated CITROYUZU (Fanta)
             STRAWBERRYSODA = "Agua con burbujas frutales", -- Carbonated Strawberry (Welch's Strawberry)
 
             -- Collaborative Liquor

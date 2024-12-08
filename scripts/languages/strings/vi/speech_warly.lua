@@ -146,8 +146,8 @@ return {
         CHERRY_ROSEBERRIES_TEA = "Nó có hương thơm thú vị và giúp điều hòa nhiệt độ cơ thể.", -- Trà hoa hồng hoa anh đào
         CHERRY_HONEY_TEA = "Đó là cách chữa đau họng nhanh chóng.", -- Trà mật ong anh đào hoa anh đào
         SWEET_RICE_DRINK = "Nó ngọt ngào và có kết cấu khác thường!", -- Vitahebhi Sikhye
-        ANANAS_JUICE = "Tốt nhất không nên uống quá nhiều, MỒM của tôi sẽ chảy máu mất.", -- Legion Pineapple Juice
-        ORANGE_JUICE = "Đó là nước cam mới vắt!", -- Thêm gói thực phẩm Nước cam
+        APPLEPINE_JUICE = "Tốt nhất không nên uống quá nhiều, MỒM của tôi sẽ chảy máu mất.", -- Legion Pineapple Juice
+        CITROYUZU_JUICE = "Đó là nước cam mới vắt!", -- Thêm gói thực phẩm Nước cam
         STRAWBERRY_SMOOTHIE = "Thật sảng khoái và ngon miệng!", -- Gói thực phẩm khác Sinh tố dâu tây
         STRAWBERRY_MILK_SMOOTHIE = "Đây là một trong những món đồ uống tráng miệng từ dâu tây được các chị em vô cùng yêu thích.", -- Thêm gói thực phẩm Strawberry Smoothie Latte
 
@@ -159,7 +159,7 @@ return {
 
         SODA = "Nước có ga không có mùi vị lạ.", -- Nước có ga
         FRUITSODA = "Trải nghiệm hương vị trái cây tươi mát bằng đá có ga!", -- Soda trái cây
-        LEMONLIMESODA = "Mới mẻ như ngọt ngào!", -- Soda chanh chanh (Tốt hơn so với soda trái cây)
+        LIMONSODA = "Mới mẻ như ngọt ngào!", -- Soda chanh chanh (Tốt hơn so với soda trái cây)
         COLA = "Trẻ em luôn thích nó.", -- Cola
         COLAQUANTUM = "Một quý cô đã phát điên khi tìm kiếm thứ này...", -- Cola Quantum (Tham khảo Forn McRain: Fallout 3 Sierra Petrovita)
         LUMPY_BEER = "Khách hàng thích đồ uống này chỉ yêu cầu loại này.", -- Root beer (không cồn)
@@ -180,8 +180,8 @@ return {
         -- Hợp tác Soda
 
         CHERRY_DOCTOR_COLA = "Đó là một thức uống phù hợp và có lượng người hâm mộ cuồng nhiệt.", -- Cherry Forest Dr. Pepper (Dr. Cherry)
-        ANANASSODA = "Đây là thức uống hoàn hảo giúp bạn tiêu hóa sau bữa liên hoan lớn.", -- Soda dứa (Oran C)
-        ORANGESODA = "Giải khát sau bữa ăn!", -- Soda cam (Fanta)
+        APPLEPINESODA = "Đây là thức uống hoàn hảo giúp bạn tiêu hóa sau bữa liên hoan lớn.", -- Soda dứa (Oran C)
+        CITROYUZUSODA = "Giải khát sau bữa ăn!", -- Soda cam (Fanta)
         STRAWBERRYSODA = "Soda vị dâu ngọt ngào.", -- Soda dâu (Dâu tây của Welch)
 
         -- Tinh thần hợp tác

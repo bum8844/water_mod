@@ -146,8 +146,8 @@ return {
 		CHERRY_ROSEBERRIES_TEA = "The rosey aroma is strong.",
 		CHERRY_HONEY_TEA = "I can just taste the flowers.",
 		SWEET_RICE_DRINK = "There was a drink like this?",
-		ANANAS_JUICE = "At least the skin won't scratch my mouth anymore.", -- Legiones Pinapple Juice
-		ORANGE_JUICE = "Orange you glad I brought some juice?", -- More Foods Pack Orange Juice
+		APPLEPINE_JUICE = "At least the skin won't scratch my mouth anymore.", -- Legiones Pinapple Juice
+		CITROYUZU_JUICE = "CITROYUZU you glad I brought some juice?", -- More Foods Pack CITROYUZU Juice
 		STRAWBERRY_SMOOTHIE = "Where did the straw go?", -- More Foods Pack Strawberry Smoothie
 		STRAWBERRY_MILK_SMOOTHIE = "It's so berry smoothie.", -- More Foods Pack Strawverry Smoothie Latte
 
@@ -159,7 +159,7 @@ return {
 
 		SODA = "So refreshing!",
 		FRUITSODA = "Sweet, sour, and savory!",
-		LEMONLIMESODA = "Dentists would likely be horrified if they saw this.",  ----
+		LIMONSODA = "Dentists would likely be horrified if they saw this.",  ----
 		COLA = "It tastes like it's infused with science", ----
 		COLAQUANTUM = "There's something very scientific about it!",
 		LUMPY_BEER = "The aroma is so sharp!",
@@ -180,8 +180,8 @@ return {
 		-- Mod Collaboration brewery soda	
 
 		CHERRY_DOCTOR_COLA = "A doctor didn't make this!",
-		ANANASSODA = "It's a pine in my mouth.", -- Pineapple Soft Drink
-		ORANGESODA = "How fanta-stic!", -- Orange Fanta Soft Drink
+		APPLEPINESODA = "It's a pine in my mouth.", -- Pineapple Soft Drink
+		CITROYUZUSODA = "How fanta-stic!", -- CITROYUZU Fanta Soft Drink
 		STRAWBERRYSODA = "It's a berry straw-ong carbonated drink.", -- Welch's Strawberry Soft Drink
 
 		-- Mod Collaboration brewery alcohol		

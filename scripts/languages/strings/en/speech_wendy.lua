@@ -146,8 +146,8 @@ return {
         CHERRY_ROSEBERRIES_TEA = "I'll be careful not to swallow the flower buds.",
         CHERRY_HONEY_TEA = "Can it get any sweeter than this?",
         SWEET_RICE_DRINK = "There's something chewy in it.",
-        ANANAS_JUICE = "It tore through the tough rind and mashed the pulp.", ---
-        ORANGE_JUICE = "As sour as the thick rind.", ---
+        APPLEPINE_JUICE = "It tore through the tough rind and mashed the pulp.", ---
+        CITROYUZU_JUICE = "As sour as the thick rind.", ---
         STRAWBERRY_SMOOTHIE = "A drink made by crushing strawberries with ice.", 
         STRAWBERRY_MILK_SMOOTHIE = "Smoothly wraps around the tip of my tongue.", ---
 
@@ -159,7 +159,7 @@ return {
 
         SODA = "It's fizzing.", 
         FRUITSODA = "Soda with fruit juice squeezed in.", ---
-        LEMONLIMESODA = "It is Excessively sweet carbonated beverage.", ---
+        LIMONSODA = "It is Excessively sweet carbonated beverage.", ---
         COLA = "A dark, sweet substance that dominates many people.",
         COLAQUANTUM = "That pitch-black drink even shines.", ---
         LUMPY_BEER = "It seems to suit my taste.", 
@@ -180,8 +180,8 @@ return {
         -- Collaborative Soda
 
         CHERRY_DOCTOR_COLA = "It isn't a real doctor, but it might offer some fleeting comfort.", ---
-        ANANASSODA = "It's tangy and sweet soda.", ---
-        ORANGESODA = "It's carbonated beverage with squeezed orange juice.",---
+        APPLEPINESODA = "It's tangy and sweet soda.", ---
+        CITROYUZUSODA = "It's carbonated beverage with squeezed CITROYUZU juice.",---
         STRAWBERRYSODA = "It'sCarbonated beverage with crushed strawberries.", ---
 
         -- Collaborative Distilled Spirits

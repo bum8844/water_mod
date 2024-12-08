@@ -3,8 +3,8 @@
 	<Texture filename="tea_inventoryitem_drinks.tex" />
 	<Elements>
 		<Element name="absinthe_bottle.tex" u1="0.80959375" u2="0.87009375" v2="0.499" v1="0.4385" variant="" />
-		<Element name="ananas_juice_bottle.tex" u1="0.0635" u2="0.124" v2="0.3115" v1="0.251" variant="" />
-		<Element name="ananassoda_bottle.tex" u1="0.251" u2="0.3115" v2="0.499" v1="0.4385" variant="" />
+		<Element name="appine_juice_bottle.tex" u1="0.0635" u2="0.124" v2="0.3115" v1="0.251" variant="" />
+		<Element name="appinesoda_bottle.tex" u1="0.251" u2="0.3115" v2="0.499" v1="0.4385" variant="" />
 		<Element name="areuhi_bottle.tex" u1="0.3711171875" u2="0.4316171875" v2="0.063453125" v1="0.002953125" variant="" />
 		<Element name="arrack_bottle.tex" u1="0.499046875" u2="0.559546875" v2="0.249" v1="0.1885" variant="" />
 		<Element name="aurobow_bottle.tex" u1="0.6885" u2="0.749" v2="0.4365" v1="0.376" variant="" />
@@ -48,7 +48,7 @@
 		<Element name="hotruincolate_bottle.tex" u1="0.3105703125" u2="0.3710703125" v2="0.3115" v1="0.251" variant="" />
 		<Element name="kahlua_bottle.tex" u1="0.376" u2="0.4365" v2="0.3808359375" v1="0.3203359375" variant="" />
 		<Element name="kumis_bottle.tex" u1="0.251" u2="0.3085703125" v2="0.3115" v1="0.252953125" variant="" />
-		<Element name="lemonlimesoda_bottle.tex" u1="0.1885" u2="0.2460703125" v2="0.249" v1="0.190453125" variant="" />
+		<Element name="limonsoda_bottle.tex" u1="0.1885" u2="0.2460703125" v2="0.249" v1="0.190453125" variant="" />
 		<Element name="lotustea_bottle.tex" u1="0.0635" u2="0.124" v2="0.124" v1="0.0635" variant="" />
 		<Element name="lumpy_beer_bottle.tex" u1="0.3135" u2="0.374" v2="0.374" v1="0.3144765625" variant="" />
 		<Element name="lumpy_tea_bottle.tex" u1="0.126" u2="0.1865" v2="0.188453125" v1="0.127953125" variant="" />
@@ -63,8 +63,8 @@
 		<Element name="noblewine_bottle.tex" u1="0.376" u2="0.4335703125" v2="0.500953125" v1="0.4433828125" variant="" />
 		<Element name="nut_coconut_brandy_bottle.tex" u1="0.001" u2="0.0615" v2="0.1269296875" v1="0.0664296875" variant="" />
 		<Element name="nut_corn_whiskey_bottle.tex" u1="0.0635" u2="0.124" v2="0.249" v1="0.1885" variant="" />
-		<Element name="orange_juice_bottle.tex" u1="0.1885" u2="0.249" v2="0.374" v1="0.3135" variant="" />
-		<Element name="orangesoda_bottle.tex" u1="0.251" u2="0.3115" v2="0.4365" v1="0.376" variant="" />
+		<Element name="citryuja_juice_bottle.tex" u1="0.1885" u2="0.249" v2="0.374" v1="0.3135" variant="" />
+		<Element name="citryujasoda_bottle.tex" u1="0.251" u2="0.3115" v2="0.4365" v1="0.376" variant="" />
 		<Element name="pale_beer_bottle.tex" u1="0.3135" u2="0.374" v2="0.499" v1="0.4385" variant="" />
 		<Element name="pale_whiskey_bottle.tex" u1="0.126" u2="0.1865" v2="0.313453125" v1="0.252953125" variant="" />
 		<Element name="petals_berry_brandy_bottle.tex" u1="0.001" u2="0.0615" v2="0.1894296875" v1="0.1289296875" variant="" />
@@ -106,8 +106,8 @@
 		<Element name="wheat_whiskey_bottle.tex" u1="0.6885" u2="0.749" v2="0.6865" v1="0.626" variant="" />
 		<Element name="wine_bottle.tex" u1="0.626" u2="0.68259375" v2="0.624" v1="0.5664296875" variant="" />
 		<Element name="absinthe.tex" u1="0.9385" u2="0.999" v2="0.9365" v1="0.876" variant="" />
-		<Element name="ananas_juice.tex" u1="0.1885" u2="0.249" v2="0.749" v1="0.6885" variant="" />
-		<Element name="ananassoda.tex" u1="0.0635" u2="0.124" v2="0.624" v1="0.5635" variant="" />
+		<Element name="appine_juice.tex" u1="0.1885" u2="0.249" v2="0.749" v1="0.6885" variant="" />
+		<Element name="appinesoda.tex" u1="0.0635" u2="0.124" v2="0.624" v1="0.5635" variant="" />
 		<Element name="areuhi.tex" u1="0.8105703125" u2="0.8710703125" v2="0.8115" v1="0.751" variant="" />
 		<Element name="arrack.tex" u1="0.5605703125" u2="0.6210703125" v2="0.5615" v1="0.501" variant="" />
 		<Element name="aurobow.tex" u1="0.876" u2="0.9365" v2="0.9365" v1="0.876" variant="" />
@@ -151,7 +151,7 @@
 		<Element name="hotruincolate.tex" u1="0.501" u2="0.5615" v2="0.999" v1="0.9385" variant="" />
 		<Element name="kahlua.tex" u1="0.376" u2="0.4335703125" v2="0.5615" v1="0.502953125" variant="" />
 		<Element name="kumis.tex" u1="0.4355703125" u2="0.4960703125" v2="0.5615" v1="0.501" variant="" />
-		<Element name="lemonlimesoda.tex" u1="0.376" u2="0.4365" v2="0.624" v1="0.5635" variant="" />
+		<Element name="limonsoda.tex" u1="0.376" u2="0.4365" v2="0.624" v1="0.5635" variant="" />
 		<Element name="lotustea.tex" u1="0.4385" u2="0.499" v2="0.624" v1="0.5635" variant="" />
 		<Element name="lumpy_beer.tex" u1="0.4385" u2="0.499" v2="0.6865" v1="0.626" variant="" />
 		<Element name="lumpy_tea.tex" u1="0.3135" u2="0.374" v2="0.5615" v1="0.501" variant="" />
@@ -166,8 +166,8 @@
 		<Element name="noblewine.tex" u1="0.251" u2="0.3115" v2="0.6865" v1="0.626" variant="" />
 		<Element name="nut_coconut_brandy.tex" u1="0.3135" u2="0.374" v2="0.749" v1="0.6885" variant="" />
 		<Element name="nut_corn_whiskey.tex" u1="0.1885" u2="0.249" v2="0.624" v1="0.5635" variant="" />
-		<Element name="orange_juice.tex" u1="0.126" u2="0.1865" v2="0.563453125" v1="0.502953125" variant="" />
-		<Element name="orangesoda.tex" u1="0.1885" u2="0.249" v2="0.6865" v1="0.626" variant="" />
+		<Element name="citryuja_juice.tex" u1="0.126" u2="0.1865" v2="0.563453125" v1="0.502953125" variant="" />
+		<Element name="citryujasoda.tex" u1="0.1885" u2="0.249" v2="0.6865" v1="0.626" variant="" />
 		<Element name="pale_beer.tex" u1="0.251" u2="0.3115" v2="0.749" v1="0.6885" variant="" />
 		<Element name="pale_whiskey.tex" u1="0.0635" u2="0.124" v2="0.5615" v1="0.501" variant="" />
 		<Element name="petals_berry_brandy.tex" u1="0.126" u2="0.1865" v2="0.625953125" v1="0.565453125" variant="" />

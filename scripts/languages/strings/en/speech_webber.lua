@@ -102,7 +102,7 @@ return {
         FRUITJUICE = "it's a juice made from various fruits.", -- ★★★★★
         BERRIES_JUICE = "Raspberry juice!", 
         POMEGRANATE_JUICE = "it's tasty, but a bit sour.", -- ★★★★★
-        BANANA_JUICE = "Mmm, Smells like bananas.", -- ★★★★★
+        BANANA_JUICE = "Mmm, Smells like bAPPLEPINE.", -- ★★★★★
         FIG_JUICE = "It's quite sweet!", 
         DRAGONJUICE = "Looks like something edible now.",
         GLOWBERRYJUICE = "Look so tasty!", -- ★★★★★
@@ -146,8 +146,8 @@ return {
         CHERRY_ROSEBERRIES_TEA = "Did it extract blood from that alien spider?", -- ★★★★★
         CHERRY_HONEY_TEA = "Sweet and warm, but the color is strange!",
         SWEET_RICE_DRINK = "It has soft seeds in it!", 
-        ANANAS_JUICE = "Our teeth feel weird after drinking this.",
-        ORANGE_JUICE = "We will have to postpone brushing our teeth for a bit.",
+        APPLEPINE_JUICE = "Our teeth feel weird after drinking this.",
+        CITROYUZU_JUICE = "We will have to postpone brushing our teeth for a bit.",
         STRAWBERRY_SMOOTHIE = "Let's drink it slowly to avoid brain freeze.",
         STRAWBERRY_MILK_SMOOTHIE = "This is real strawberry shake!",
 
@@ -159,7 +159,7 @@ return {
 
         SODA = "What is this? It's bland!",  -- ★★★★★
         FRUITSODA = "Sweet fruit soda!", 
-        LEMONLIMESODA = "It's refreshing, but our throat feels sticky afterward!", -- ★★★★★
+        LIMONSODA = "It's refreshing, but our throat feels sticky afterward!", -- ★★★★★
         COLA = "I never thought I'd see this again!", -- ★★★★★
         COLAQUANTUM = "The soda is blue and it even glows!", -- ★★★★★
         LUMPY_BEER = "This tastes weird.", 
@@ -180,8 +180,8 @@ return {
         -- Collaboration Soda
 
         CHERRY_DOCTOR_COLA = "It's similar to cola, but not quite the same, but we like it!", -- ★★★★★
-        ANANASSODA = "We should be careful so our teeth don't decay.",  -- ★★★★★
-        ORANGESODA = "It's orange-flavored carbonated beverage!", 
+        APPLEPINESODA = "We should be careful so our teeth don't decay.",  -- ★★★★★
+        CITROYUZUSODA = "It's CITROYUZU-flavored carbonated beverage!", 
         STRAWBERRYSODA = "Wickerbottom said to drink carbonated drinks in moderation.", 
 
         -- Collaboration Spirits

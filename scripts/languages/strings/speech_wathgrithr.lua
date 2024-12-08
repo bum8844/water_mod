@@ -48,6 +48,7 @@ return {
 		WATER_DIRTY_ICE = "불결한 얼음이로군.", --더러운 얼음물
 
 		SPICE_CAFFEINPEPPER = "내 만찬에 전투의 흥분을 더하는 가루로다.", --후추 향신료
+		SPICE_RUINCOLATE_SPREAD = "",
 
 		WELL_KIT = "내 기꺼이 우물을 설치하리.", --우물 키트
 		WELL_SPRINKLER_KIT = "구름없이 비를 뿌리는 기계로다.", --스프링클러 키트
@@ -84,12 +85,23 @@ return {
 		RUINCACAO_BEAN = "기름지지만 향기롭군.", --부순 후 카카오 콩  
 		RUINCACAO_BEAN_COOKED = "이것이 고대의 향기인가.", --구운 카카오 콩
 
-		APPLEPINE = "작업해야함",
-		APPLEPINE_COOKED = "작업해야함",
-		LIMON = "작업해야함",
-		LIMON_COOKED = "작업해야함",
-		CITROYUZU = "작업해야함",
-		CITROYUZU_COOKED = "작업해야함",
+		--APPLEPINE
+		APPLEPINE = "",
+		APPLEPINE_COOKED = "",
+		APPLEPINE_SEEDS = "",
+		APPLEPINE_OVERSIZED = "",
+
+		--limon
+		LIMON = "",
+		LIMON_COOKED = "",
+		LIMON_SEEDS = "",
+		LIMON_OVERSIZED = "",
+
+		--citroyuzu
+		CITROYUZU = "",
+		CITROYUZU_COOKED = "",
+		CITROYUZU_SEEDS = "",
+		CITROYUZU_OVERSIZED = "",
 
 		-- 증류주 첨가제
 
@@ -155,8 +167,8 @@ return {
 		CHERRY_ROSEBERRIES_TEA = "이런 추악한 열매를 담은 음료를 마셔야 하는가?", --체리숲 로즈힙 차
 		CHERRY_HONEY_TEA = "참 고급진 꿀물이로군.", --체리숲 벚꽃꿀 차
 		SWEET_RICE_DRINK = "달콤한 물만을 취하리라.", -- 비타협 식혜
-		ANANAS_JUICE = "질긴 비늘을 찢고 과육을 갈아냈군.", -- 레기온 파인애플 주스
-		ORANGE_JUICE = "시큼하기만 하군.", -- 모어 푸드 팩 오랜지 주스
+		APPLEPINE_JUICE = "질긴 비늘을 찢고 과육을 갈아냈군.", -- 레기온 파인애플 주스
+		CITROYUZU_JUICE = "시큼하기만 하군.", -- 모어 푸드 팩 오랜지 주스
 		STRAWBERRY_SMOOTHIE = "차갑고 붉은 과일 곤죽이로군.", -- 모어 푸드 팩 딸기 스무디
 		STRAWBERRY_MILK_SMOOTHIE = "전사에게 걸맞지 못한 음료로다.", -- 모어 푸드 팩 딸기 스무디 라떼
 
@@ -168,7 +180,7 @@ return {
 	
 		SODA = "광천수로군.", -- 탄산수
 		FRUITSODA = "과일 펀치로군.", -- 과일소다
-		LEMONLIMESODA = "전사에게 걸맞는 음료는 아니로다.", -- 레몬 라임소다(과일소다 상위 호환)
+		LIMONSODA = "전사에게 걸맞는 음료는 아니로다.", -- 레몬 라임소다(과일소다 상위 호환)
 		COLA = "검은 유혹과도 같구나.", -- 콜라
 		COLAQUANTUM = "내 심장을 뛰게 하는군!", --콜라 퀀텀
 		LUMPY_BEER = "흙냄새 나는 비육류로 만든 음료가 상쾌하기도 하군.", --루트비어(술이 아님)
@@ -189,8 +201,8 @@ return {
 		-- 콜라보 소다
 
 		CHERRY_DOCTOR_COLA = "검붉은 혼돈이로다.", --체리숲 닥터 페퍼(닥터 체리)
-		ANANASSODA = "솔방울이라 하든 사과라 하든 무슨 상관이랴, 어느 쪽이든 불경한 것을.", -- 탄산 파인애플(오란씨)
-		ORANGESODA = "시큼한 과일즙이 들어간 광천수로다.", -- 탄산 오랜지(환타)
+		APPLEPINESODA = "솔방울이라 하든 사과라 하든 무슨 상관이랴, 어느 쪽이든 불경한 것을.", -- 탄산 파인애플(오란씨)
+		CITROYUZUSODA = "시큼한 과일즙이 들어간 광천수로다.", -- 탄산 오랜지(환타)
 		STRAWBERRYSODA = "붉은 열매로 만든 광천수로군.", -- 탄산 딸기(웰치스 딸기)
 
 		--콜라보 양조주

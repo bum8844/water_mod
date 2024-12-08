@@ -146,8 +146,8 @@ return {
             CHERRY_ROSEBERRIES_TEA = "Tôi nghi ngờ liệu còn sót lại phần giống tóc nào không.", -- Trà Tầm Xuân Rừng Anh Đào
             CHERRY_HONEY_TEA = "Mùi mật ong và mùi cây, thật thú vị.", -- Trà mật ong hoa anh đào rừng anh đào
             SWEET_RICE_DRINK = "Đây là một loại nước ép ngũ cốc đặc biệt.", -- Nước gạo ngọt Vitacomp
-            ANANAS_JUICE = "Thật là sảng khoái, nhưng tôi không thể uống nhiều như thế này được.", -- Legion Pineapple Juice
-            ORANGE_JUICE = "Thêm một ít xi-rô vào và nó sẽ hoàn hảo.", -- Thêm gói thực phẩm Nước cam
+            APPLEPINE_JUICE = "Thật là sảng khoái, nhưng tôi không thể uống nhiều như thế này được.", -- Legion Pineapple Juice
+            CITROYUZU_JUICE = "Thêm một ít xi-rô vào và nó sẽ hoàn hảo.", -- Thêm gói thực phẩm Nước cam
             STRAWBERRY_SMOOTHIE = "Tôi không chủ động tìm kiếm nó, nhưng nó rất ngon.", -- Thêm gói thực phẩm Sinh tố dâu tây
             STRAWBERRY_MILK_SMOOTHIE = "Thật mịn màng và sảng khoái.", -- Thêm gói thực phẩm Sinh tố sữa dâu
 
@@ -159,7 +159,7 @@ return {
 
             SODA = "Đó là nước có ga.", -- Soda
             FRUITSODA = "Đó là nước ép trái cây phải không?", -- Fruit Soda
-            LEMONLIMESODA = "Thật ngọt ngào và sảng khoái.", -- Soda chanh chanh (biến thể Soda trái cây)
+            LIMONSODA = "Thật ngọt ngào và sảng khoái.", -- Soda chanh chanh (biến thể Soda trái cây)
             COLA = "Tôi nên uống nó khi làm việc mệt mỏi.", -- Cola
             COLAQUANTUM = "Cái này khá gây nghiện.", -- Cola Quantum
             LUMPY_BEER = "Đây có phải là đồ uống sarsaparilla không?", -- Bia Lumpy (không cồn)
@@ -180,8 +180,8 @@ return {
             -- Nước ngọt hợp tác
 
             CHERRY_DOCTOR_COLA = "Chỉ cần ngọt ngào và sảng khoái là đủ.", -- Cherry Forest Doctor Pepper (Doctor Cherry)
-            ANANASSODA = "Đó là soda dứa.", -- Soda dứa (Orancee)
-            ORANGESODA = "Đó là soda cam.", -- Orange Soda (Fanta)
+            APPLEPINESODA = "Đó là soda dứa.", -- Soda dứa (Orancee)
+            CITROYUZUSODA = "Đó là soda cam.", -- CITROYUZU Soda (Fanta)
             STRAWBERRYSODA = "Đó là soda dâu tây.", -- Strawberry Soda (Dâu tây của Welch)
 
             -- Tinh thần hợp tác

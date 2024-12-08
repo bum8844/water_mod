@@ -146,8 +146,8 @@ return {
             CHERRY_ROSEBERRIES_TEA = "Vậy, bánh quy ở đâu?", -- Trà tầm xuân Rừng Anh Đào
             CHERRY_HONEY_TEA = "Sẽ ngon hơn với gừng và chanh...", -- Trà mật ong hoa anh đào Cherry Forest
             SWEET_RICE_DRINK = "Kết cấu nhão.", -- Nước gạo ngọt Vitacomp
-            ANANAS_JUICE = "Tôi không thể uống nước ép trái cây thơm này trong một lần được.", -- Nước ép dứa Regione
-            ORANGE_JUICE = "Tôi chưa bao giờ nhận thấy điều này trong phòng nghỉ trước khi đến đây.", -- Nước cam Moore Food Pack
+            APPLEPINE_JUICE = "Tôi không thể uống nước ép trái cây thơm này trong một lần được.", -- Nước ép dứa Regione
+            CITROYUZU_JUICE = "Tôi chưa bao giờ nhận thấy điều này trong phòng nghỉ trước khi đến đây.", -- Nước cam Moore Food Pack
             STRAWBERRY_SMOOTHIE = "Trông giống như đồ uống bán rong.", -- Sinh tố dâu tây Moore Food Pack
             STRAWBERRY_MILK_SMOOTHIE = "Nó không hợp khẩu vị của tôi.", -- Sinh tố sữa dâu Moore Food Pack
 
@@ -159,7 +159,7 @@ return {
 
             SODA = "Tôi thậm chí chưa bao giờ nghĩ đến việc thử cái này.", -- Nước có ga (tạo cacbonat thô bằng bụi)
             FRUITSODA = "Tôi có nên biểu diễn trước bát punch không?", -- Soda trái cây
-            LEMONLIMESODA = "Thứ này sẽ làm hỏng răng của tôi.", -- Soda chanh chanh (phiên bản cao cấp của soda trái cây)
+            LIMONSODA = "Thứ này sẽ làm hỏng răng của tôi.", -- Soda chanh chanh (phiên bản cao cấp của soda trái cây)
             COLA = "Ước gì nó có ống hút.", -- Cola
             COLAQUANTUM = "Đáng ngờ nhưng ngoạn mục.", -- Cola Quantum
             LUMPY_BEER = "Làm thế nào mà nó tái tạo được hương vị?", -- Bia gốc (không cồn)
@@ -180,8 +180,8 @@ return {
             -- Nước ngọt hợp tác
 
             CHERRY_DOCTOR_COLA = "Thật tiếc là ở đây không có bác sĩ thực sự.", -- Cherry Forest Dr. Pepper (Doctor Cherry)
-            ANANASSODA = "Bây giờ tôi cảm thấy gần gũi hơn với nền văn minh.", -- Dứa có ga (Oransi)
-            ORANGESODA = "Soda này có quá nhiều ga.", -- Cam có ga (Fanta)
+            APPLEPINESODA = "Bây giờ tôi cảm thấy gần gũi hơn với nền văn minh.", -- Dứa có ga (Oransi)
+            CITROYUZUSODA = "Soda này có quá nhiều ga.", -- Cam có ga (Fanta)
             STRAWBERRYSODA = "Soda này có quá nhiều ga.", -- Dâu tây có ga (dâu tây của Welch)
 
             -- Cộng tác Đồ uống Nhà máy bia

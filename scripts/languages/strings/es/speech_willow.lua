@@ -146,8 +146,8 @@ return {
             CHERRY_ROSEBERRIES_TEA = "Sí, huele fragante.", -- Cherry Forest Rosehip Tea
             CHERRY_HONEY_TEA = "Al menos se ve bonito.", -- Cherry Forest Cherry Blossom Honey Tea
             SWEET_RICE_DRINK = "Prefiero la versión tostada.", -- Vita-Hyphy Sikhye
-            ANANAS_JUICE = "Está bueno cuando lo bebes, pero después te hormiguea la boca.", -- Legion Pineapple Juice
-            ORANGE_JUICE = "Si alguien se lo bebe, le sugiero que se lave los dientes.", -- More Food Pack Orange Juice
+            APPLEPINE_JUICE = "Está bueno cuando lo bebes, pero después te hormiguea la boca.", -- Legion Pineapple Juice
+            CITROYUZU_JUICE = "Si alguien se lo bebe, le sugiero que se lave los dientes.", -- More Food Pack CITROYUZU Juice
             STRAWBERRY_SMOOTHIE = "Ha sido mezclado hasta tener un rojo bonito.", -- More Food Pack Strawberry Smoothie
             STRAWBERRY_MILK_SMOOTHIE = "A veces, las cosas frías no están tan mal.", -- More Food Pack Strawberry Milk Smoothie
 
@@ -159,7 +159,7 @@ return {
 
             SODA = "Agua burbujeante.", -- Soda Water
             FRUITSODA = "De todas las bebidas, esta es la más sabrosa.", -- Fruit Soda
-            LEMONLIMESODA = "El agua con miel se bebe caliente.", -- Lemon Lime Soda (superior to Fruit Soda)
+            LIMONSODA = "El agua con miel se bebe caliente.", -- Lemon Lime Soda (superior to Fruit Soda)
             COLA = "¿Quién iba a pensar que vería cola aquí?", -- Cola
             COLAQUANTUM = "Esto es totalmente anormal.", -- Cola Quantum
             LUMPY_BEER = "El peor refresco.", -- Root Beer (not alcoholic)
@@ -180,8 +180,8 @@ return {
             -- Collaborative Sodas
 
             CHERRY_DOCTOR_COLA = "Una imitación casera.", -- Cherry Forest Dr. Pepper (Dr. Cherry)
-            ANANASSODA = "Es sólo refresco de piña.", -- Pineapple Soda (Oransi)
-            ORANGESODA = "Nada especial, solo un refresco naranja.", -- Orange Soda (Fanta)
+            APPLEPINESODA = "Es sólo refresco de piña.", -- Pineapple Soda (Oransi)
+            CITROYUZUSODA = "Nada especial, solo un refresco naranja.", -- CITROYUZU Soda (Fanta)
             STRAWBERRYSODA = "Es roja y efervescente, así que es buena.", -- Strawberry Soda (Welch's Strawberry)
 
             -- Collaborative Brewed Spirits

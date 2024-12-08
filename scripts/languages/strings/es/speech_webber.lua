@@ -102,7 +102,7 @@ return {
             FRUITJUICE = "Jugo hecho con varias frutas.", -- Mixed fruit juice
             BERRIES_JUICE = "¡Jugo de zarzamora!", -- Berry juice
             POMEGRANATE_JUICE = "Sabroso, pero un poco agrio.", -- Pomegranate juice
-            BANANA_JUICE = "Hmm, huele a bananas.", -- Banana juice
+            BANANA_JUICE = "Hmm, huele a bAPPLEPINE.", -- Banana juice
             FIG_JUICE = "¡Es bastante dulce!", -- Fig juice
             DRAGONJUICE = "Se ve como algo bebible ahora.", -- Dragon fruit juice
             GLOWBERRYJUICE = "¡Esto debería saber bien!", -- Glowberry juice
@@ -146,8 +146,8 @@ return {
             CHERRY_ROSEBERRIES_TEA = "¿Extrajeron esto de una araña del espacio?", -- Cherry Forest Rosehip Tea
             CHERRY_HONEY_TEA = "Dulce y caliente, ¡Aunque el color es extraño!", -- Cherry Forest Cherry Blossom Honey Tea
             SWEET_RICE_DRINK = "¡Tiene unas semillas suaves dentro!", -- Vita Coop Sikhye
-            ANANAS_JUICE = "Nuestros dientes se sienten raro después de beber esto.", -- Regione Pineapple Juice
-            ORANGE_JUICE = "Debería cepillar nuestros dientes.", -- More Food Pack Orange Juice
+            APPLEPINE_JUICE = "Nuestros dientes se sienten raro después de beber esto.", -- Regione Pineapple Juice
+            CITROYUZU_JUICE = "Debería cepillar nuestros dientes.", -- More Food Pack CITROYUZU Juice
             STRAWBERRY_SMOOTHIE = "Tomémoslo lentamente para que no se congele nuestro cerebro.", -- More Food Pack Strawberry Smoothie
             STRAWBERRY_MILK_SMOOTHIE = "¡Esto es un batido de fresa de verdad!", -- More Food Pack Strawberry Milk Smoothie
 
@@ -159,7 +159,7 @@ return {
 
             SODA = "¿Qué es esto? ¡Es increíble!", -- Soda
             FRUITSODA = "Mmm, ¡Rico refresco frutal!", -- Fruit Soda
-            LEMONLIMESODA = "Es refrescante, pero nuestra garganta se siente pegajosa después de beberlo", -- Lemon Lime Soda (superior to Fruit Soda)
+            LIMONSODA = "Es refrescante, pero nuestra garganta se siente pegajosa después de beberlo", -- Lemon Lime Soda (superior to Fruit Soda)
             COLA = "¡Nunca hubiésemos pensado ver esto de nuevo!", -- Cola
             COLAQUANTUM = "¡El refresco azul está brillando!", -- Cola Quantum
             LUMPY_BEER = "Emm, esto sabe raro.", -- Root Beer (not actual alcohol)
@@ -180,8 +180,8 @@ return {
             -- Collaboration Soda
 
             CHERRY_DOCTOR_COLA = "Es similar al cola, pero no igual, ¡Nos gusta!", -- Cherry Forest Doctor Pepper (Dr. Cherry)
-            ANANASSODA = "Debemos ser cuidadosos de que no se pudra.", -- Pineapple Soda (Oranchi)
-            ORANGESODA = "¡Una bebida carbonatada de naranja!", -- Orange Soda (Fanta)
+            APPLEPINESODA = "Debemos ser cuidadosos de que no se pudra.", -- Pineapple Soda (Oranchi)
+            CITROYUZUSODA = "¡Una bebida carbonatada de naranja!", -- CITROYUZU Soda (Fanta)
             STRAWBERRYSODA = "La señora wicker nos dijo que bebamos refresco con moderación.", -- Strawberry Soda (Welch's Strawberry)
 
             -- Collaboration Spirits

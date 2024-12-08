@@ -63,17 +63,17 @@ WATER_VEGGIES[name] =
     }
 end
 
---[[MakeVegStats("appine","fruit",UNCOMMON,
+--[[MakeVegStats("applepine","fruit",UNCOMMON,
 TUNING.CALORIES_SMALL,TUNING.HEALING_SMALL,TUNING.PERISH_FAST,TUNING.SANITY_TINY,
 TUNING.CALORIES_SMALL,TUNING.HEALING_TINY,TUNING.PERISH_SUPERFAST,TUNING.SANITY_TINY*1.5,
 {"med", 0.05, 0.8}, {"small", 0.1, nil})
 
-MakeVegStats("limemon","fruit",UNCOMMON,
+MakeVegStats("limon","fruit",UNCOMMON,
 TUNING.CALORIES_TINY,TUNING.HEALING_SMALL,TUNING.PERISH_FAST,0,
 TUNING.CALORIES_SMALL,TUNING.HEALING_MED,TUNING.PERISH_SUPERFAST,0,
 {"med", 0.05, 0.8}, {"small", 0.1, nil})
 
-MakeVegStats("citryuja","fruit",UNCOMMON,
+MakeVegStats("citroyuzu","fruit",UNCOMMON,
 TUNING.CALORIES_TINY,TUNING.HEALING_SMALL,TUNING.PERISH_FAST,0,
 TUNING.CALORIES_SMALL,TUNING.HEALING_MED,TUNING.PERISH_SUPERFAST,0,
 {"med", 0.05, 0.8}, {"small", 0.1, nil})
@@ -103,28 +103,28 @@ local function MakeGrowTimes_Weed(full_grow_min, full_grow_max, bolting)
     return grow_time
 end
 
---[[ Appine Plant.
-PLANT_DEFS.appine = {build = "farm_plant_appine", bank = "farm_plant_appine"}
-PLANT_DEFS.appine.prefab = "farm_plant_appine"
-PLANT_DEFS.appine.product = "appine"
-PLANT_DEFS.appine.product_oversized = "appine_oversized" 
-PLANT_DEFS.appine.seed = "appine_seeds"
-PLANT_DEFS.appine.loot_oversized_rot = {"spoiled_food", "spoiled_food", "spoiled_food", "appine_seeds", "fruitfly", "fruitfly"}
-PLANT_DEFS.appine.family_min_count = TUNING.FARM_PLANT_SAME_FAMILY_MIN
-PLANT_DEFS.appine.family_check_dist = TUNING.FARM_PLANT_SAME_FAMILY_RADIUS
-PLANT_DEFS.appine.plant_type_tag = "farm_plant_appine"
-PLANT_DEFS.appine.grow_time = MakeGrowTimes(12*TUNING.SEG_TIME, 16*TUNING.SEG_TIME, 4*DAYS, 7*DAYS) 
-PLANT_DEFS.appine.moisture = {drink_rate = DRINK_HIGH, min_percent = TUNING.FARM_PLANT_DROUGHT_TOLERANCE}
-PLANT_DEFS.appine.good_seasons = {autumn = true, spring = true, summer = true}
-PLANT_DEFS.appine.nutrient_consumption = {0, NUTRIENT_MED, NUTRIENT_MED}
-PLANT_DEFS.appine.nutrient_restoration = {NUTRIENT_LOW ,0 , 0}
-PLANT_DEFS.appine.max_killjoys_tolerance = TUNING.FARM_PLANT_KILLJOY_TOLERANCE
-PLANT_DEFS.appine.weight_data = { 462.37, 688.45, .93 }
-PLANT_DEFS.appine.pictureframeanim  = {anim = "emote_jumpcheer", time = 19*FRAMES}
-PLANT_DEFS.appine.sounds = PLANT_DEFS.tomato.sounds
-PLANT_DEFS.appine.plantregistrywidget = "widgets/redux/farmplantpage" 
-PLANT_DEFS.appine.plantregistrysummarywidget = "widgets/redux/farmplantsummarywidget" 
-PLANT_DEFS.appine.plantregistryinfo = { 
+--[[ Applepine Plant.
+PLANT_DEFS.applepine = {build = "farm_plant_applepine", bank = "farm_plant_applepine"}
+PLANT_DEFS.applepine.prefab = "farm_plant_applepine"
+PLANT_DEFS.applepine.product = "applepine"
+PLANT_DEFS.applepine.product_oversized = "applepine_oversized" 
+PLANT_DEFS.applepine.seed = "applepine_seeds"
+PLANT_DEFS.applepine.loot_oversized_rot = {"spoiled_food", "spoiled_food", "spoiled_food", "applepine_seeds", "fruitfly", "fruitfly"}
+PLANT_DEFS.applepine.family_min_count = TUNING.FARM_PLANT_SAME_FAMILY_MIN
+PLANT_DEFS.applepine.family_check_dist = TUNING.FARM_PLANT_SAME_FAMILY_RADIUS
+PLANT_DEFS.applepine.plant_type_tag = "farm_plant_applepine"
+PLANT_DEFS.applepine.grow_time = MakeGrowTimes(12*TUNING.SEG_TIME, 16*TUNING.SEG_TIME, 4*DAYS, 7*DAYS) 
+PLANT_DEFS.applepine.moisture = {drink_rate = DRINK_HIGH, min_percent = TUNING.FARM_PLANT_DROUGHT_TOLERANCE}
+PLANT_DEFS.applepine.good_seasons = {autumn = true, spring = true, summer = true}
+PLANT_DEFS.applepine.nutrient_consumption = {0, NUTRIENT_MED, NUTRIENT_MED}
+PLANT_DEFS.applepine.nutrient_restoration = {NUTRIENT_LOW ,0 , 0}
+PLANT_DEFS.applepine.max_killjoys_tolerance = TUNING.FARM_PLANT_KILLJOY_TOLERANCE
+PLANT_DEFS.applepine.weight_data = { 462.37, 688.45, .93 }
+PLANT_DEFS.applepine.pictureframeanim  = {anim = "emote_jumpcheer", time = 19*FRAMES}
+PLANT_DEFS.applepine.sounds = PLANT_DEFS.tomato.sounds
+PLANT_DEFS.applepine.plantregistrywidget = "widgets/redux/farmplantpage" 
+PLANT_DEFS.applepine.plantregistrysummarywidget = "widgets/redux/farmplantsummarywidget" 
+PLANT_DEFS.applepine.plantregistryinfo = { 
     {
         text = "seed",
         anim = "crop_seed",
@@ -183,28 +183,28 @@ PLANT_DEFS.appine.plantregistryinfo = {
     },
 }
 
--- Limemon Plant.
-PLANT_DEFS.limemon = {build = "farm_plant_limemon", bank = "farm_plant_limemon"}
-PLANT_DEFS.limemon.prefab = "farm_plant_limemon"
-PLANT_DEFS.limemon.product = "limemon"
-PLANT_DEFS.limemon.product_oversized = "limemon_oversized" 
-PLANT_DEFS.limemon.seed = "limemon_seeds"
-PLANT_DEFS.limemon.loot_oversized_rot = {"spoiled_food", "spoiled_food", "spoiled_food", "limemon_seeds", "fruitfly", "fruitfly"}
-PLANT_DEFS.limemon.family_min_count = TUNING.FARM_PLANT_SAME_FAMILY_MIN
-PLANT_DEFS.limemon.family_check_dist = TUNING.FARM_PLANT_SAME_FAMILY_RADIUS
-PLANT_DEFS.limemon.plant_type_tag = "farm_plant_limemon"
-PLANT_DEFS.limemon.grow_time = MakeGrowTimes(12*TUNING.SEG_TIME, 16*TUNING.SEG_TIME, 4*DAYS, 7*DAYS) 
-PLANT_DEFS.limemon.moisture = {drink_rate = DRINK_MED, min_percent = TUNING.FARM_PLANT_DROUGHT_TOLERANCE}
-PLANT_DEFS.limemon.good_seasons = {autumn = true, winter = true, spring = true}
-PLANT_DEFS.limemon.nutrient_consumption = {NUTRIENT_MED, 0, 0}
-PLANT_DEFS.limemon.nutrient_restoration = {0, NUTRIENT_LOW, NUTRIENT_LOW}
-PLANT_DEFS.limemon.max_killjoys_tolerance = TUNING.FARM_PLANT_KILLJOY_TOLERANCE
-PLANT_DEFS.limemon.weight_data = { 404.38, 547.80, .48 }
-PLANT_DEFS.limemon.pictureframeanim = {anim = "emoteXL_loop_dance8", time = 27*FRAMES}
-PLANT_DEFS.limemon.sounds = PLANT_DEFS.potato.sounds
-PLANT_DEFS.limemon.plantregistrywidget = "widgets/redux/farmplantpage" 
-PLANT_DEFS.limemon.plantregistrysummarywidget = "widgets/redux/farmplantsummarywidget" 
-PLANT_DEFS.limemon.plantregistryinfo = { 
+-- Limon Plant.
+PLANT_DEFS.limon = {build = "farm_plant_limon", bank = "farm_plant_limon"}
+PLANT_DEFS.limon.prefab = "farm_plant_limon"
+PLANT_DEFS.limon.product = "limon"
+PLANT_DEFS.limon.product_oversized = "limon_oversized" 
+PLANT_DEFS.limon.seed = "limon_seeds"
+PLANT_DEFS.limon.loot_oversized_rot = {"spoiled_food", "spoiled_food", "spoiled_food", "limon_seeds", "fruitfly", "fruitfly"}
+PLANT_DEFS.limon.family_min_count = TUNING.FARM_PLANT_SAME_FAMILY_MIN
+PLANT_DEFS.limon.family_check_dist = TUNING.FARM_PLANT_SAME_FAMILY_RADIUS
+PLANT_DEFS.limon.plant_type_tag = "farm_plant_limon"
+PLANT_DEFS.limon.grow_time = MakeGrowTimes(12*TUNING.SEG_TIME, 16*TUNING.SEG_TIME, 4*DAYS, 7*DAYS) 
+PLANT_DEFS.limon.moisture = {drink_rate = DRINK_MED, min_percent = TUNING.FARM_PLANT_DROUGHT_TOLERANCE}
+PLANT_DEFS.limon.good_seasons = {autumn = true, winter = true, spring = true}
+PLANT_DEFS.limon.nutrient_consumption = {NUTRIENT_MED, 0, 0}
+PLANT_DEFS.limon.nutrient_restoration = {0, NUTRIENT_LOW, NUTRIENT_LOW}
+PLANT_DEFS.limon.max_killjoys_tolerance = TUNING.FARM_PLANT_KILLJOY_TOLERANCE
+PLANT_DEFS.limon.weight_data = { 404.38, 547.80, .48 }
+PLANT_DEFS.limon.pictureframeanim = {anim = "emoteXL_loop_dance8", time = 27*FRAMES}
+PLANT_DEFS.limon.sounds = PLANT_DEFS.potato.sounds
+PLANT_DEFS.limon.plantregistrywidget = "widgets/redux/farmplantpage" 
+PLANT_DEFS.limon.plantregistrysummarywidget = "widgets/redux/farmplantsummarywidget" 
+PLANT_DEFS.limon.plantregistryinfo = { 
     {
         text = "seed",
         anim = "crop_seed",
@@ -263,28 +263,28 @@ PLANT_DEFS.limemon.plantregistryinfo = {
     },
 }
 
--- Citryuja Plant.
-PLANT_DEFS.citryuja = {build = "farm_plant_citryuja", bank = "farm_plant_citryuja"}
-PLANT_DEFS.citryuja.prefab = "farm_plant_citryuja"
-PLANT_DEFS.citryuja.product = "citryuja"
-PLANT_DEFS.citryuja.product_oversized = "citryuja_oversized" 
-PLANT_DEFS.citryuja.seed = "citryuja_seeds"
-PLANT_DEFS.citryuja.loot_oversized_rot = {"spoiled_food", "spoiled_food", "spoiled_food", "citryuja_seeds", "fruitfly", "fruitfly"}
-PLANT_DEFS.citryuja.family_min_count = TUNING.FARM_PLANT_SAME_FAMILY_MIN
-PLANT_DEFS.citryuja.family_check_dist = TUNING.FARM_PLANT_SAME_FAMILY_RADIUS
-PLANT_DEFS.citryuja.plant_type_tag = "farm_plant_citryuja"
-PLANT_DEFS.citryuja.grow_time = MakeGrowTimes(12*TUNING.SEG_TIME, 16*TUNING.SEG_TIME, 4*DAYS, 7*DAYS) 
-PLANT_DEFS.citryuja.moisture = {drink_rate = DRINK_MED, min_percent = TUNING.FARM_PLANT_DROUGHT_TOLERANCE}
-PLANT_DEFS.citryuja.good_seasons = {autumn = true, winter = true, spring = true}
-PLANT_DEFS.citryuja.nutrient_consumption = {NUTRIENT_MED, 0, 0}
-PLANT_DEFS.citryuja.nutrient_restoration = {0, NUTRIENT_LOW, NUTRIENT_LOW}
-PLANT_DEFS.citryuja.max_killjoys_tolerance = TUNING.FARM_PLANT_KILLJOY_TOLERANCE
-PLANT_DEFS.citryuja.weight_data = { 404.38, 547.80, .48 }
-PLANT_DEFS.citryuja.pictureframeanim = {anim = "emoteXL_loop_dance8", time = 27*FRAMES}
-PLANT_DEFS.citryuja.sounds = PLANT_DEFS.potato.sounds
-PLANT_DEFS.citryuja.plantregistrywidget = "widgets/redux/farmplantpage" 
-PLANT_DEFS.citryuja.plantregistrysummarywidget = "widgets/redux/farmplantsummarywidget" 
-PLANT_DEFS.citryuja.plantregistryinfo = { 
+-- Citroyuzu Plant.
+PLANT_DEFS.citroyuzu = {build = "farm_plant_citroyuzu", bank = "farm_plant_citroyuzu"}
+PLANT_DEFS.citroyuzu.prefab = "farm_plant_citroyuzu"
+PLANT_DEFS.citroyuzu.product = "citroyuzu"
+PLANT_DEFS.citroyuzu.product_oversized = "citroyuzu_oversized" 
+PLANT_DEFS.citroyuzu.seed = "citroyuzu_seeds"
+PLANT_DEFS.citroyuzu.loot_oversized_rot = {"spoiled_food", "spoiled_food", "spoiled_food", "citroyuzu_seeds", "fruitfly", "fruitfly"}
+PLANT_DEFS.citroyuzu.family_min_count = TUNING.FARM_PLANT_SAME_FAMILY_MIN
+PLANT_DEFS.citroyuzu.family_check_dist = TUNING.FARM_PLANT_SAME_FAMILY_RADIUS
+PLANT_DEFS.citroyuzu.plant_type_tag = "farm_plant_citroyuzu"
+PLANT_DEFS.citroyuzu.grow_time = MakeGrowTimes(12*TUNING.SEG_TIME, 16*TUNING.SEG_TIME, 4*DAYS, 7*DAYS) 
+PLANT_DEFS.citroyuzu.moisture = {drink_rate = DRINK_MED, min_percent = TUNING.FARM_PLANT_DROUGHT_TOLERANCE}
+PLANT_DEFS.citroyuzu.good_seasons = {autumn = true, winter = true, spring = true}
+PLANT_DEFS.citroyuzu.nutrient_consumption = {NUTRIENT_MED, 0, 0}
+PLANT_DEFS.citroyuzu.nutrient_restoration = {0, NUTRIENT_LOW, NUTRIENT_LOW}
+PLANT_DEFS.citroyuzu.max_killjoys_tolerance = TUNING.FARM_PLANT_KILLJOY_TOLERANCE
+PLANT_DEFS.citroyuzu.weight_data = { 404.38, 547.80, .48 }
+PLANT_DEFS.citroyuzu.pictureframeanim = {anim = "emoteXL_loop_dance8", time = 27*FRAMES}
+PLANT_DEFS.citroyuzu.sounds = PLANT_DEFS.potato.sounds
+PLANT_DEFS.citroyuzu.plantregistrywidget = "widgets/redux/farmplantpage" 
+PLANT_DEFS.citroyuzu.plantregistrysummarywidget = "widgets/redux/farmplantsummarywidget" 
+PLANT_DEFS.citroyuzu.plantregistryinfo = { 
     {
         text = "seed",
         anim = "crop_seed",

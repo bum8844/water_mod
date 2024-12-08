@@ -146,8 +146,8 @@ return {
             CHERRY_ROSEBERRIES_TEA = "Có mùi như hoa hồng đáng yêu.", -- Trà Tầm Xuân Rừng Anh Đào
             CHERRY_HONEY_TEA = "Cực kỳ ngọt ngào!", -- Trà mật ong hoa anh đào rừng anh đào
             SWEET_RICE_DRINK = "Thật ngọt dù chỉ có cơm!", -- Vita Hybrids Sikhye
-            ANANAS_JUICE = "Nước trái cây cực kỳ sảng khoái.", -- Nước ép dứa của Regal
-            ORANGE_JUICE = "chua, ngọt và cam.", -- Gói thực phẩm khác Nước cam
+            APPLEPINE_JUICE = "Nước trái cây cực kỳ sảng khoái.", -- Nước ép dứa của Regal
+            CITROYUZU_JUICE = "chua, ngọt và cam.", -- Gói thực phẩm khác Nước cam
             STRAWBERRY_SMOOTHIE = "Nó chứa đầy hạt.", -- Gói thực phẩm khác Sinh tố dâu tây
             STRAWBERRY_MILK_SMOOTHIE = "Mịn màng và thơm ngon.", -- Thêm gói thực phẩm Sinh tố sữa dâu
 
@@ -159,7 +159,7 @@ return {
 
             SODA = "Có ga!", -- Nước có ga
             FRUITSODA = "Có ga và ngọt ngào.", -- Soda trái cây
-            LEMONLIMESODA = "Cực kỳ ngọt ngào!", -- Soda chanh chanh (Phiên bản cao cấp của Soda trái cây)
+            LIMONSODA = "Cực kỳ ngọt ngào!", -- Soda chanh chanh (Phiên bản cao cấp của Soda trái cây)
             COLA = "Thức uống ngọt và đen.", -- Cola
             COLAQUANTUM = "Thức uống cực mạnh! Wolfgang rất thích nó!", -- Cola Quantum
             LUMPY_BEER = "Nó có hương vị độc đáo và sảng khoái.", -- Root Beer (Không cồn)
@@ -180,8 +180,8 @@ return {
             -- Hợp tác Soda
 
             CHERRY_DOCTOR_COLA = "Có vị như kẹo!", -- Cherry Forest Doctor Pepper (Doctor Cherry)
-            ANANASSODA = "chua và sảng khoái.", -- Dứa có ga (Orangina)
-            ORANGESODA = "Ngọt và có ga.", -- Cam có ga (Fanta)
+            APPLEPINESODA = "chua và sảng khoái.", -- Dứa có ga (Orangina)
+            CITROYUZUSODA = "Ngọt và có ga.", -- Cam có ga (Fanta)
             STRAWBERRYSODA = "Nhiều hạt như bong bóng!", -- Dâu có ga (Dâu xứ Welch)
 
             -- Tinh thần hợp tác

@@ -48,6 +48,7 @@ return {
 		WATER_DIRTY_ICE = "얼어붙은 쓰레기야.", --더러운 얼음물
 
 		SPICE_CAFFEINPEPPER = "어디에 뿌리든 제 값은 하지.", --후추 향신료
+		SPICE_RUINCOLATE_SPREAD = "",
 
 		WELL_KIT = "지금 이걸 나 보고 옮기라는 건가?", --우물 키트
 		WELL_SPRINKLER_KIT = "기계와 마법의 혼종이로군.", --스프링클러 키트
@@ -84,12 +85,23 @@ return {
 		RUINCACAO_BEAN = "'콩'이라고 보이지는 않는군.", --부순 후 카카오 콩  
 		RUINCACAO_BEAN_COOKED = "이것만으로는 많이 부족해 보이는군.", --구운 카카오 콩
 
-		APPLEPINE = "작업해야함",
-		APPLEPINE_COOKED = "작업해야함",
-		LIMON = "작업해야함",
-		LIMON_COOKED = "작업해야함",
-		CITROYUZU = "작업해야함",
-		CITROYUZU_COOKED = "작업해야함",
+		--APPLEPINE
+		APPLEPINE = "",
+		APPLEPINE_COOKED = "",
+		APPLEPINE_SEEDS = "",
+		APPLEPINE_OVERSIZED = "",
+
+		--limon
+		LIMON = "",
+		LIMON_COOKED = "",
+		LIMON_SEEDS = "",
+		LIMON_OVERSIZED = "",
+
+		--citroyuzu
+		CITROYUZU = "",
+		CITROYUZU_COOKED = "",
+		CITROYUZU_SEEDS = "",
+		CITROYUZU_OVERSIZED = "",
 
 		-- 증류주 첨가제
 
@@ -155,8 +167,8 @@ return {
 		CHERRY_ROSEBERRIES_TEA = "그래... 비스킷은 없나?", --체리숲 로즈힙 차
 		CHERRY_HONEY_TEA = "벚꽃 향이 심신의 안정을 주는군.", --체리숲 벚꽃꿀 차
 		SWEET_RICE_DRINK = "흐물흐물하군.", -- 비타협 식혜
-		ANANAS_JUICE = "흥, 주스를 쓸데없이 경박하게 만들어 놓았군.", -- 레기온 파인애플 주스
-		ORANGE_JUICE = "예전에는 쳐다도 안 봤었는데 말이야.", -- 모어 푸드 팩 오랜지 주스
+		APPLEPINE_JUICE = "흥, 주스를 쓸데없이 경박하게 만들어 놓았군.", -- 레기온 파인애플 주스
+		CITROYUZU_JUICE = "예전에는 쳐다도 안 봤었는데 말이야.", -- 모어 푸드 팩 오랜지 주스
 		STRAWBERRY_SMOOTHIE = "죄다 갈아서 으깨놨군.", -- 모어 푸드 팩 딸기 스무디
 		STRAWBERRY_MILK_SMOOTHIE = "내 취향에는 맞지 않는군.", -- 모어 푸드 팩 딸기 스무디 라떼
 
@@ -168,7 +180,7 @@ return {
 	
 		SODA = "정말 시도할 생각조차 못했던 일이군.", -- 탄산수 (대충 먼지로 탄산 만들 생각 따위 못했다는 예기)
 		FRUITSODA = "참신하기도 하지, 과일을 대충 섞어넣다니.", -- 과일소다
-		LEMONLIMESODA = "이가 썩을 것 같군.", -- 레몬 라임소다(과일소다 상위 호환)
+		LIMONSODA = "이가 썩을 것 같군.", -- 레몬 라임소다(과일소다 상위 호환)
 		COLA = "개인적으로 빨대가 있었으면 좋겠네.", -- 콜라
 		COLAQUANTUM = "의심쩍지만 훌룡해.", --콜라 퀀텀
 		LUMPY_BEER = "음? 이 맛은...", --루트비어(술이 아님)
@@ -189,8 +201,8 @@ return {
 		-- 콜라보 소다
 
 		CHERRY_DOCTOR_COLA = "진짜 의사가 이 자리에 없는 건 좀 아쉽군.", --체리숲 닥터 페퍼(닥터 체리)
-		ANANASSODA = "꽤 문명적인 음료로군.", -- 탄산 파인애플(오란씨)
-		ORANGESODA = "이거 상상이 과했던 거 아닌가?", -- 탄산 오랜지(환타) "A bit too much fantasy, isn't it?"
+		APPLEPINESODA = "꽤 문명적인 음료로군.", -- 탄산 파인애플(오란씨)
+		CITROYUZUSODA = "이거 상상이 과했던 거 아닌가?", -- 탄산 오랜지(환타) "A bit too much fantasy, isn't it?"
 		STRAWBERRYSODA = "탄산이 너무 강하군.", -- 탄산 딸기(웰치스 딸기) "The sparkling is too strong."
 
 		--콜라보 양조주

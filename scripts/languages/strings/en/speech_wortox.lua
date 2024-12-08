@@ -146,8 +146,8 @@ return {
         CHERRY_ROSEBERRIES_TEA = "I can smell the scent of roses without feeling the shadows.",
         CHERRY_HONEY_TEA = "It's sweet enough to drink.", 
         SWEET_RICE_DRINK = "Drinking and eating at the same time!",
-        ANANAS_JUICE = "As long as I have souls, that's enough.",
-        ORANGE_JUICE = "I'm satisfied with just looking at the orange color.", 
+        APPLEPINE_JUICE = "As long as I have souls, that's enough.",
+        CITROYUZU_JUICE = "I'm satisfied with just looking at the CITROYUZU color.", 
         STRAWBERRY_SMOOTHIE = "It's a split red fruit.", 
         STRAWBERRY_MILK_SMOOTHIE = "At least it should be smooth.",
 
@@ -159,7 +159,7 @@ return {
 
         SODA = "Hyuyu, it's water attacking me!",
         FRUITSODA = "I feel like I can hear the fruits screaming, hyuyu!",
-        LEMONLIMESODA = "It's sweet nectar that tastes like honey.",
+        LIMONSODA = "It's sweet nectar that tastes like honey.",
         COLA = "For something black, it's quite edible!",
         COLAQUANTUM = "Hyuyu! Radiation is nice!",
         LUMPY_BEER = "Which idiot commits murder just to collect bottle caps with stars on them? hyuyu!",
@@ -180,8 +180,8 @@ return {
         -- Collaborative Soda
 
         CHERRY_DOCTOR_COLA = "It could make a decent torture device, hyuyu!",
-        ANANASSODA = "Although I like the tingling sensation, I don't prefer drinking it",
-        ORANGESODA = "I’m feeling citrus-sational today!",
+        APPLEPINESODA = "Although I like the tingling sensation, I don't prefer drinking it",
+        CITROYUZUSODA = "I’m feeling citrus-sational today!",
         STRAWBERRYSODA = "Will the seeds explode like a bomb?", 
 
         -- Collaborative Spirits

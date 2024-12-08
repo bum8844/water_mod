@@ -210,24 +210,6 @@ local legion_drink = {
 	},
 }
 
-local ananas_drink = {
-	ananassoda =
-	{
-		test = function(boilier, names, tags) return tags.ferment and tags.ferment == 1 and tags.sweetener and tags.sweetener >= 1 and (names.pineananas or names.pineananas_cooked or names.kyno_pineapple_halved or names.kyno_pineapple_cooked) and ((names.pineananas or 0) + (names.pineananas_cooked or 0) + (names.kyno_pineapple_halved or 0) + (names.kyno_pineapple_cooked or 0)) == 2 and notname(names) and lessthing(names) end,
-		priority = 4,
-		health = TUNING.HEALING_SMALL*3, -- 9 [45] (180)
-		hunger = TUNING.CALORIES_SMALL/2, --  6.25 [31.25] (125)
-		sanity = TUNING.SANITY_MED/2, -- 7.5 (37.5) (150)
-		thirst = TUNING.HYDRATION_HUGE, -- 90 [450] (1800)
-		temperature = TUNING.COLD_FOOD_BONUS_TEMP,
-		temperatureduration = TUNING.FOOD_TEMP_LONG, --15초
-		perishtime = TUNING.PERISH_PRESERVED,
-		cooktime = (TUNING.KETTLE_FRUIT + TUNING.SODA_WAIT),
-		potlevel = "mid",
-		potlevel_bottle = "mid",
-	},
-}
-
 local mfp_drink = {
 	strawberrysoda =
 	{
@@ -246,22 +228,4 @@ local mfp_drink = {
 	},
 }
 
-local orange_drink = {
-	orangesoda =
-	{
-		test = function(boilier, names, tags) return tags.ferment and tags.ferment >= 1 and tags.sweetener and tags.sweetener >= 1 and (names.mfp_orange or names.mfp_orange_cooked or names.fwd_in_pdt_food_orange) and ((names.mfp_orange or 0) + (names.fwd_in_pdt_food_orange or 0) + (names.mfp_orange_cooked or 0)) == 2 and notname(names) and lessthing(names) end,
-		priority = 4,
-		health = TUNING.HEALING_SMALL*3, -- 9 [45] (180)
-		hunger = TUNING.CALORIES_SMALL/2, --  6.25 [31.25] (125)
-		sanity = TUNING.SANITY_MED/2, -- 7.5 [37.5] (150) 
-		thirst = TUNING.HYDRATION_LARGE, -- 45 [225] (900)
-		temperature = TUNING.COLD_FOOD_BONUS_TEMP,
-		temperatureduration = TUNING.FOOD_TEMP_LONG, --15초
-		perishtime = TUNING.PERISH_PRESERVED,
-		cooktime = (TUNING.KETTLE_FRUIT + TUNING.SODA_WAIT),
-		potlevel = "mid",
-		potlevel_bottle = "mid",
-	},
-}
-
-return { sw_drink = sw_drink, coconut_drink = coconut_drink, cf_drink = cf_drink, umc_drink = umc_drink , wheat_drink = wheat_drink, legion_drink = legion_drink, mfp_drink = mfp_drink, orange_drink = orange_drink, rice_drink = rice_drink, ananas_drink = ananas_drink}
+return { sw_drink = sw_drink, coconut_drink = coconut_drink, cf_drink = cf_drink, umc_drink = umc_drink , wheat_drink = wheat_drink, legion_drink = legion_drink, mfp_drink = mfp_drink, rice_drink = rice_drink}

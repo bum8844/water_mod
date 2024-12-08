@@ -146,8 +146,8 @@ return {
             CHERRY_ROSEBERRIES_TEA = "Trái cây xấu, không có tóc?", -- Trà tầm xuân anh đào
             CHERRY_HONEY_TEA = "Uống nước rám nắng mật ong làm ấm cơ thể!", -- Trà mật ong hoa anh đào rừng anh đào
             SWEET_RICE_DRINK = "Tiên cá không tạo ra rượu từ món ăn vặt nước này.", -- Nước Cơm Ngọt Vitacorp
-            ANANAS_JUICE = "Trái cây chua trong nước ngọt, húp xì xụp.", -- Nước ép dứa Legion
-            ORANGE_JUICE = "Ngon ngọt và sảng khoái, húp xì xụp!", -- Gói Thực phẩm Moore Nước Cam
+            APPLEPINE_JUICE = "Trái cây chua trong nước ngọt, húp xì xụp.", -- Nước ép dứa Legion
+            CITROYUZU_JUICE = "Ngon ngọt và sảng khoái, húp xì xụp!", -- Gói Thực phẩm Moore Nước Cam
             STRAWBERRY_SMOOTHIE = "Hoan hô, tôi đã nghiền nát nước ép đỏ đông lạnh!", -- Sinh tố dâu tây gói thực phẩm Moore
             STRAWBERRY_MILK_SMOOTHIE = "Hoan hô, mịn thật!", -- Sinh Tố Sữa Dâu Moore Food Pack
 
@@ -159,7 +159,7 @@ return {
 
             SODA = "Nước thật kỳ lạ, sủi bọt.", -- Nước có ga
             FRUITSODA = "Nó có vị trái cây nhưng sủi bọt rất khó chịu.", -- Fruit Soda
-            LEMONLIMESODA = "Vị ngọt và ngon nhưng lạ quá!", -- Lemon Lime Soda (cao cấp hơn Fruit Soda)
+            LIMONSODA = "Vị ngọt và ngon nhưng lạ quá!", -- Lemon Lime Soda (cao cấp hơn Fruit Soda)
             COLA = "Chà, ngon quá, húp úp!", -- Cola
             COLAQUANTUM = "Nó lấp lánh và phát ra âm thanh, xì xụp!", -- Cola Quantum
             LUMPY_BEER = "Nó có vị thuốc nhưng ngọt và sủi bọt.", -- Root Beer (không cồn)
@@ -180,8 +180,8 @@ return {
             -- Nước ngọt hợp tác
 
             CHERRY_DOCTOR_COLA = "Nước đen sủi bọt và có vị như nước trái cây màu đỏ!", -- Cherry Forest Dr. Pepper (Dr. Cherry)
-            ANANASSODA = "Nước hoa quả chua sủi bọt!", -- Dứa có ga (Oran-C)
-            ORANGESODA = "Suỵt, thật sảng khoái và mát mẻ!", -- Cam có ga (Fanta)
+            APPLEPINESODA = "Nước hoa quả chua sủi bọt!", -- Dứa có ga (Oran-C)
+            CITROYUZUSODA = "Suỵt, thật sảng khoái và mát mẻ!", -- Cam có ga (Fanta)
             STRAWBERRYSODA = "Đó là một loại nước hoa quả màu đỏ sủi bọt, sền sệt.", -- Dâu có ga (Dâu xứ Wales)
 
             -- Đồ uống hợp tác của nhà máy bia

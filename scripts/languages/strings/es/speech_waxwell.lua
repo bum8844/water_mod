@@ -146,8 +146,8 @@ return {
             CHERRY_ROSEBERRIES_TEA = "Así que, ¿Dónde están los panecillos?", -- Cherry Forest rosehip tea
             CHERRY_HONEY_TEA = "Estaría mejor con jengibre y limón...", -- Cherry Forest cherry blossom honey tea
             SWEET_RICE_DRINK = "La textura es pastosa.", -- Vitacomp sweet rice drink
-            ANANAS_JUICE = "No puedo tomar este jugo de fruta ácido  en un solo instante.", -- Regione pineapple juice
-            ORANGE_JUICE = "Nunca noté que esto estuviera en el jardín.", -- Moore Food Pack orange juice
+            APPLEPINE_JUICE = "No puedo tomar este jugo de fruta ácido  en un solo instante.", -- Regione pineapple juice
+            CITROYUZU_JUICE = "Nunca noté que esto estuviera en el jardín.", -- Moore Food Pack CITROYUZU juice
             STRAWBERRY_SMOOTHIE = "Parece una bebida de un vendedor callejero", -- Moore Food Pack strawberry smoothie
             STRAWBERRY_MILK_SMOOTHIE = "No es de mi agrado.", -- Moore Food Pack strawberry milk smoothie
 
@@ -159,7 +159,7 @@ return {
 
             SODA = "Nunca hubiera imaginado probar algo como esto.", -- Carbonated water (roughly made carbonation using dust)
             FRUITSODA = "¿Debería ponerlo con el recipiente de ponche?", -- Fruit soda
-            LEMONLIMESODA = "Esto destrozará mis diente.", -- Lemon lime soda (superior version of fruit soda)
+            LIMONSODA = "Esto destrozará mis diente.", -- Lemon lime soda (superior version of fruit soda)
             COLA = "Desearía tener un popote.", -- Cola
             COLAQUANTUM = "Sospechosamente grandioso.", -- Cola Quantum
             LUMPY_BEER = "¿Cómo ha recreado el sabor?", -- Root beer (not alcoholic)
@@ -180,8 +180,8 @@ return {
             -- Collaboration Sodas
 
             CHERRY_DOCTOR_COLA = "Es una lástima que no tengamos ningún doctor aquí .", -- Cherry Forest Dr. Pepper (Doctor Cherry)
-            ANANASSODA = "Me siento cerca a la civilización.", -- Carbonated pineapple (Oransi)
-            ORANGESODA = "Este refresco está excesivamente carbonatado.", -- Carbonated orange (Fanta)
+            APPLEPINESODA = "Me siento cerca a la civilización.", -- Carbonated pineapple (Oransi)
+            CITROYUZUSODA = "Este refresco está excesivamente carbonatado.", -- Carbonated CITROYUZU (Fanta)
             STRAWBERRYSODA = "Este refresco está excesivamente carbonatado.", -- Carbonated strawberry (Welch's strawberry)
 
             -- Collaboration Brewery Drinks

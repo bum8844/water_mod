@@ -48,6 +48,7 @@ return {
 		WATER_DIRTY_ICE = "얼음이 새까매!",
 
 		SPICE_CAFFEINPEPPER = "소금의 단짝이야!",
+		SPICE_RUINCOLATE_SPREAD = "",
 
 		WELL_KIT = "우물가에서 우물쭈물하면 안 돼. 헤, 이건 좋았다.",
 		WELL_SPRINKLER_KIT = "이제 식물들과 좋은'관개'를 가져보자!",
@@ -84,12 +85,23 @@ return {
 		RUINCACAO_BEAN = "하얗고 미끌거리는 게 초콜릿 같지는 않아.",
 		RUINCACAO_BEAN_COOKED = "이제 좀 익숙한 냄새가 나네.",
 
-		APPLEPINE = "작업해야함",
-		APPLEPINE_COOKED = "작업해야함",
-		LIMON = "작업해야함",
-		LIMON_COOKED = "작업해야함",
-		CITROYUZU = "작업해야함",
-		CITROYUZU_COOKED = "작업해야함",
+		--APPLEPINE
+		APPLEPINE = "",
+		APPLEPINE_COOKED = "",
+		APPLEPINE_SEEDS = "",
+		APPLEPINE_OVERSIZED = "",
+
+		--limon
+		LIMON = "",
+		LIMON_COOKED = "",
+		LIMON_SEEDS = "",
+		LIMON_OVERSIZED = "",
+
+		--citroyuzu
+		CITROYUZU = "",
+		CITROYUZU_COOKED = "",
+		CITROYUZU_SEEDS = "",
+		CITROYUZU_OVERSIZED = "",
 
        -- 증류기 첨가제
 
@@ -155,8 +167,8 @@ return {
 		CHERRY_ROSEBERRIES_TEA = "완전 힙해! 로-즈하기도 하고.",
 		CHERRY_HONEY_TEA = "뭔가 감기약 맛이 나는 것 같아.",
 		SWEET_RICE_DRINK = "주스는 아닌 것 같은데, 차도 아닌 것 같아!",
-		ANANAS_JUICE = "파인애플이 파이느라 수고 많았겠어! 헤, 이건 좋았다.", -- 레기온 파인애플 주스
-		ORANGE_JUICE = "소개할게, 나만의 오렌지널 쥬스야.", -- 모어 푸드 팩 오랜지 쥬스
+		APPLEPINE_JUICE = "파인애플이 파이느라 수고 많았겠어! 헤, 이건 좋았다.", -- 레기온 파인애플 주스
+		CITROYUZU_JUICE = "소개할게, 나만의 오렌지널 쥬스야.", -- 모어 푸드 팩 오랜지 쥬스
 		STRAWBERRY_SMOOTHIE = "강하지만 엄청 부드러워. 왜냐면 스트로-ㅇ 베리 스무디잖아?", -- 모어 푸드 팩 딸기 스무디
 		STRAWBERRY_MILK_SMOOTHIE = "엄청 시원해!", -- 모어 푸드 팩 딸기 스무디 라떼
 
@@ -168,7 +180,7 @@ return {
 
 		SODA = "캠프 근처에 광천수를 본 적은 없는데.",
 		FRUITSODA = "홈메이드 과일소다야!",
-		LEMONLIMESODA = "새콤달콤하고 톡톡 쏴!",
+		LIMONSODA = "새콤달콤하고 톡톡 쏴!",
 		COLA = "콜라를 다시 볼 줄은 상상도 못했어.",
 		COLAQUANTUM = "안에서 붕붕 소리가 나!",
 		LUMPY_BEER = "아무튼 야채가 들어갔으니까 몸에 좋은 거겠지.",
@@ -189,8 +201,8 @@ return {
 		--콜라보 소다
 
 		CHERRY_DOCTOR_COLA = "적어도 치과의사가 만든 건 아니었을 것 같아.",
-		ANANASSODA = "소나무 개척단 공식 음료로 좋겠어. 그러니까, '소나무-사과'로 만든 거잖아?", -- 탄산 파인애플(오란씨)
-		ORANGESODA = "오렌지소다가 꿈을 꾸면? 환타-지!", -- 탄산 오랜지(환타)
+		APPLEPINESODA = "소나무 개척단 공식 음료로 좋겠어. 그러니까, '소나무-사과'로 만든 거잖아?", -- 탄산 파인애플(오란씨)
+		CITROYUZUSODA = "오렌지소다가 꿈을 꾸면? 환타-지!", -- 탄산 오랜지(환타)
 		STRAWBERRYSODA = "딸기 소다는 처음 봤어.", -- 탄산 딸기(웰치스 딸기)
 
 		--콜라보 양조주

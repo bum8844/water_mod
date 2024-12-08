@@ -142,8 +142,8 @@ return {
         CHERRY_ROSEBERRIES_TEA = "Có mùi hoa hồng thoang thoảng.", -- Trà tầm xuân rừng anh đào
         CHERRY_HONEY_TEA = "Ngọt vừa phải để uống.", -- Trà mật ong hoa anh đào rừng anh đào
         SWEET_RICE_DRINK = "Họ nói rằng bạn nên uống và ăn cùng lúc!", -- Vita Co-op Sikhye
-        ANANAS_JUICE = "Tôi có thể là một tinh chất.", -- Legion Dứa
-        ORANGE_JUICE = "Chỉ nhìn màu cam là tôi đã thấy hài lòng rồi.", -- Thêm gói thực phẩm Nước cam
+        APPLEPINE_JUICE = "Tôi có thể là một tinh chất.", -- Legion Dứa
+        CITROYUZU_JUICE = "Chỉ nhìn màu cam là tôi đã thấy hài lòng rồi.", -- Thêm gói thực phẩm Nước cam
         STRAWBERRY_SMOOTHIE = "Đó là một loại trái cây màu đỏ.", -- Gói thực phẩm khác Sinh tố dâu tây
         STRAWBERRY_MILK_SMOOTHIE = "Ít nhất nó phải mịn.", -- Thêm gói thực phẩm Strawberry Smoothie Latte
 
@@ -155,7 +155,7 @@ return {
 
         SODA = "Hmm, cứ như nước đang tấn công tôi vậy!", -- Soda Water
         FRUITSODA = "Cảm giác như trái cây đang gào thét!", -- Fruit Soda
-        LEMONLIMESODA = "Là đồ uống ngọt có vị trái cây.", -- Lemon Lime Soda (Cao cấp hơn so với Soda trái cây)
+        LIMONSODA = "Là đồ uống ngọt có vị trái cây.", -- Lemon Lime Soda (Cao cấp hơn so với Soda trái cây)
         COLA = "Thứ gì đó màu đen cũng được!", -- Cola
         COLAQUANTUM = "Hmm, độ phóng xạ tốt!", -- Cola Quantum
         LUMPY_BEER = "Có vẻ như nó được thiết kế cho cảnh sát.", -- Root Beer (Không phải rượu)
@@ -176,8 +176,8 @@ return {
         -- Soda hợp tác
 
         CHERRY_DOCTOR_COLA = "Nó có thể là một công cụ tra tấn tốt. Hohoho!", -- Cherry Forest Doctor Pepper (Doctor Cherry)
-        ANANASSODA = "Tôi thích tận hưởng tinh chất hơn là uống nó.", -- Pineapple Soda (Orangina)
-        ORANGESODA = "Quả cam không thể ép thành nước được.", -- Orange Soda (Fanta)
+        APPLEPINESODA = "Tôi thích tận hưởng tinh chất hơn là uống nó.", -- Pineapple Soda (Orangina)
+        CITROYUZUSODA = "Quả cam không thể ép thành nước được.", -- CITROYUZU Soda (Fanta)
         STRAWBERRYSODA = "Liệu hạt có nổ như bom không?", -- Strawberry Soda (Dâu tây xứ Welch)
 
         -- Tinh thần hợp tác

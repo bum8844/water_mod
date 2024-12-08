@@ -54,10 +54,10 @@ local drinks =
 	},
 	
 	
-	lemonlimesoda =
+	limonsoda =
 	{   
-		test = function(boilier, names, tags) return tags.ferment and tags.ferment == 1 and tags.sweetener and tags.sweetener >=3 and notmeat(tags) and not names.twigs and notname(names) end,
-		priority = 2,
+		test = function(boilier, names, tags) return tags.ferment and tags.ferment == 1 and tags.sweetener and tags.sweetener == 2 and names.limon and names.limon == 1 and notmeat(tags) and not names.twigs and notname(names) end,
+		priority = 3,
 		health = TUNING.HEALING_SMALL*2, -- 6 [30] (120)  
 		hunger = TUNING.CALORIES_SMALL/4, -- 3.125 [15.625] (62.5)
 		sanity = TUNING.SANITY_MED/2, -- 7.5 [37.5] (150)
@@ -69,6 +69,38 @@ local drinks =
 		potlevel = "mid",
 		potlevel_bottle = "mid",
 		tags = {"honeyed"},
+	},
+
+	applepinesoda =
+	{
+		test = function(boilier, names, tags) return tags.ferment and tags.ferment == 1 and tags.sweetener and tags.sweetener >= 1 and (names.pineananas or names.pineananas_cooked or names.kyno_pineapple_halved or names.kyno_pineapple_cooked or names.applepine_cooked) and ((names.pineananas or 0) + (names.pineananas_cooked or 0) + (names.kyno_pineapple_halved or 0) + (names.kyno_pineapple_cooked or 0) + (names.names.applepine_cooked or 0)) == 2 and notname(names) and lessthing(names) end,
+		priority = 4,
+		health = TUNING.HEALING_SMALL*3, -- 9 [45] (180)
+		hunger = TUNING.CALORIES_SMALL/2, --  6.25 [31.25] (125)
+		sanity = TUNING.SANITY_MED/2, -- 7.5 (37.5) (150)
+		thirst = TUNING.HYDRATION_HUGE, -- 90 [450] (1800)
+		temperature = TUNING.COLD_FOOD_BONUS_TEMP,
+		temperatureduration = TUNING.FOOD_TEMP_LONG, --15초
+		perishtime = TUNING.PERISH_PRESERVED,
+		cooktime = (TUNING.KETTLE_FRUIT + TUNING.SODA_WAIT),
+		potlevel = "mid",
+		potlevel_bottle = "mid",
+	},
+
+	citroyuzusoda =
+	{
+		test = function(boilier, names, tags) return tags.ferment and tags.ferment >= 1 and tags.sweetener and tags.sweetener >= 1 and (names.mfp_orange or names.mfp_orange_cooked or names.fwd_in_pdt_food_orange or names.citroyuzu or names.citroyuzu_cooked) and ((names.mfp_orange or 0) + (names.fwd_in_pdt_food_orange or 0) + (names.mfp_orange_cooked or 0) + (names.citroyuzu or 0) + (names.citroyuzu_cooked or 0)) == 2 and notname(names) and lessthing(names) end,
+		priority = 4,
+		health = TUNING.HEALING_SMALL*3, -- 9 [45] (180)
+		hunger = TUNING.CALORIES_SMALL/2, --  6.25 [31.25] (125)
+		sanity = TUNING.SANITY_MED/2, -- 7.5 [37.5] (150) 
+		thirst = TUNING.HYDRATION_LARGE, -- 45 [225] (900)
+		temperature = TUNING.COLD_FOOD_BONUS_TEMP,
+		temperatureduration = TUNING.FOOD_TEMP_LONG, --15초
+		perishtime = TUNING.PERISH_PRESERVED,
+		cooktime = (TUNING.KETTLE_FRUIT + TUNING.SODA_WAIT),
+		potlevel = "mid",
+		potlevel_bottle = "mid",
 	},
 	
 	cola =
@@ -378,23 +410,9 @@ for active, _ in pairs(modlist) do
 	end
 end
 
-if modlist.mfp or modlist.fwd then
-	local orange_drink = mod_drink.orange_drink
-	for k,v in pairs(orange_drink) do
-		drinks[k] = v
-	end
-end
-
 if modlist.hof or modlist.umc then
 	local rice_drink = mod_drink.rice_drink
 	for k,v in pairs(rice_drink) do
-		drinks[k] = v
-	end
-end
-
-if modlist.hof or modlist.legion then
-	local ananas_drink = mod_drink.ananas_drink
-	for k,v in pairs(ananas_drink) do
 		drinks[k] = v
 	end
 end

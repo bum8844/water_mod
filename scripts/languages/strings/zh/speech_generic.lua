@@ -133,8 +133,8 @@ return {
 		CHERRY_ROSEBERRIES_TEA = "玫瑰的味道非常强烈。",
 		CHERRY_HONEY_TEA = "隐隐约约有花香。",
 		SWEET_RICE_DRINK = "还有这种饮料吗？",
-		ANANAS_JUICE = "至少它不扎嘴了。",
-		ORANGE_JUICE = "谢谢你带来的橘子汁。",
+		APPLEPINE_JUICE = "至少它不扎嘴了。",
+		CITROYUZU_JUICE = "谢谢你带来的橘子汁。",
 		STRAWBERRY_SMOOTHIE = "吸管在哪里？",
 		STRAWBERRY_MILK_SMOOTHIE = "多么丝滑爽口。",
 
@@ -146,7 +146,7 @@ return {
 
 		SODA = "如此清爽！",
 		FRUITSODA = "酸甜爽口！",
-		LEMONLIMESODA = "牙医看到了一定会疯掉的。",
+		LIMONSODA = "牙医看到了一定会疯掉的。",
 		COLA = "满是科学的味道！",
 		COLAQUANTUM = "蕴含惊人的科学!",
 		LUMPY_BEER = "好浓的香味！",
@@ -167,8 +167,8 @@ return {
 		-- Mod Collaboration brewery soda	
 
 		CHERRY_DOCTOR_COLA = "没有医生会做这个出来！",
-		ANANASSODA = "真是扎嘴。",
-		ORANGESODA = "太美妙了！",
+		APPLEPINESODA = "真是扎嘴。",
+		CITROYUZUSODA = "太美妙了！",
 		STRAWBERRYSODA = "充满草莓味的碳酸饮料。",
 
 		-- Mod Collaboration brewery alcohol		

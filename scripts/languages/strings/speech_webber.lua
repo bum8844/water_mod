@@ -48,6 +48,7 @@ return {
 		WATER_DIRTY_ICE = "차갑고 더러워!", --더러운 얼음물
 
 		SPICE_CAFFEINPEPPER = "한 꼬집이면 충분해!", --후추 향신료
+		SPICE_RUINCOLATE_SPREAD = "",
 
 		WELL_KIT = "우리 멋진 우물을 지어 보자!", --우물 키트
 		WELL_SPRINKLER_KIT = "버튼만 누르면 자동으로 설치된다니 완전 멋져!", --스프링클러 키트
@@ -148,8 +149,8 @@ return {
 		CHERRY_ROSEBERRIES_TEA = "그 외계 거미한테서 피를 뽑아낸 거야?", --체리숲 로즈힙 차
 		CHERRY_HONEY_TEA = "달고 따뜻하고, 색이 이상해!", --체리숲 벚꽃꿀 차
 		SWEET_RICE_DRINK = "말랑한 씨앗들이 들어있어!", -- 비타협 식혜
-		ANANAS_JUICE = "마시고 나면 이가 좀 뻑뻑해.", -- 레기온 파인애플 주스
-		ORANGE_JUICE = "양치는 좀 미뤄야겠네.", -- 모어 푸드 팩 오랜지 주스
+		APPLEPINE_JUICE = "마시고 나면 이가 좀 뻑뻑해.", -- 레기온 파인애플 주스
+		CITROYUZU_JUICE = "양치는 좀 미뤄야겠네.", -- 모어 푸드 팩 오랜지 주스
 		STRAWBERRY_SMOOTHIE = "머리가 띵하지 않도록 천천히 마시자.", -- 모어 푸드 팩 딸기 스무디
 		STRAWBERRY_MILK_SMOOTHIE = "진짜 딸기로 만들었어!", -- 모어 푸드 팩 딸기 스무디 라떼
 
@@ -161,7 +162,7 @@ return {
 	
 		SODA = "뭐야, 밍밍해!", -- 탄산수
 		FRUITSODA = "으음, 달콤한 과일 소다야!", -- 과일소다
-		LEMONLIMESODA = "시원한데 마시고 나면 목이 끈적여!", -- 레몬 라임소다(과일소다 상위 호환)
+		LIMONSODA = "시원한데 마시고 나면 목이 끈적여!", -- 레몬 라임소다(과일소다 상위 호환)
 		COLA = "이걸 다시볼 줄은 꿈도 못 꿨어!", -- 콜라
 		COLAQUANTUM = "예쁜 파란 빛이 나!", --콜라 퀀텀
 		LUMPY_BEER = "으으음, 이거 맛이 이상해.", --루트비어(술이 아님)
@@ -182,8 +183,8 @@ return {
 		-- 콜라보 소다
 
 		CHERRY_DOCTOR_COLA = "콜라처럼 맛있는데 콜라는 아니야!", --체리숲 닥터 페퍼(닥터 체리)
-		ANANASSODA = "이가 안 썩게 조심해야지.", -- 탄산 파인애플(오란씨)
-		ORANGESODA = "오렌지향 탄산음료야!", -- 탄산 오랜지(환타)
+		APPLEPINESODA = "이가 안 썩게 조심해야지.", -- 탄산 파인애플(오란씨)
+		CITROYUZUSODA = "오렌지향 탄산음료야!", -- 탄산 오랜지(환타)
 		STRAWBERRYSODA = "위커바텀 선생님이 탄산음료는 적당히 마시랬어.", -- 탄산 딸기(웰치스 딸기)
 
 		--콜라보 양조주

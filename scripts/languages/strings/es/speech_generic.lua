@@ -146,8 +146,8 @@ return {
 		CHERRY_ROSEBERRIES_TEA = "El sabor a rosas es fuertes.",
 		CHERRY_HONEY_TEA = "Puedo saborear las flores.",
 		SWEET_RICE_DRINK = "¿Es una nueva mezcla?",
-		ANANAS_JUICE = "Al menos la piel ya no me araña la boca.", -- Legiones Pinapple Juice
-		ORANGE_JUICE = "Te alegrara haber traido un poco de jugo de naranja.", -- More Foods Pack Oragne Juic
+		APPLEPINE_JUICE = "Al menos la piel ya no me araña la boca.", -- Legiones Pinapple Juice
+		CITROYUZU_JUICE = "Te alegrara haber traido un poco de jugo de naranja.", -- More Foods Pack Oragne Juic
 		STRAWBERRY_SMOOTHIE = "¿Dondé fue la paja?", -- More Foods Pack Strawberry Smoothie
 		STRAWBERRY_MILK_SMOOTHIE = "Es un batido de fresa.", -- More Foods Pack Strawverry Smoothie Latte
 
@@ -159,7 +159,7 @@ return {
 
 		SODA = "¡Que refrescante!",
 		FRUITSODA = "¡Dulce, agrio, y sabroso!",
-		LEMONLIMESODA = "¡Si los dentistas vieran esto! .",
+		LIMONSODA = "¡Si los dentistas vieran esto! .",
 		COLA = "¡Sabe cómo a ciencia!",
 		COLAQUANTUM = "¡Debe haber algo muy científico en esto!",
 		LUMPY_BEER = "¡El aroma es muy penetrante!",
@@ -180,8 +180,8 @@ return {
 		-- Mod colaboración refrescos de cerveceria	
 
 		CHERRY_DOCTOR_COLA = "¡Un doctor no haría esto!",
-		ANANASSODA = "Es un pino en mi boca.", -- Refresco de piña
-		ORANGESODA = "¡Que fanta-stico.", -- Refresco de naranja Fanta
+		APPLEPINESODA = "Es un pino en mi boca.", -- Refresco de piña
+		CITROYUZUSODA = "¡Que fanta-stico.", -- Refresco de naranja Fanta
 		STRAWBERRYSODA = "Es una bebida carbonatada de bayas", -- Refresco de fresas Welch's 
 
 		-- Mod colaboración alcoholes de cervecería		

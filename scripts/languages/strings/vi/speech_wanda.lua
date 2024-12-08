@@ -147,8 +147,8 @@ return {
         CHERRY_ROSEBERRIES_TEA = "Đôi khi, thật tuyệt khi vừa uống một tách trà vừa ngắm hoa.", -- Trà Tầm Xuân Rừng Anh Đào
         CHERRY_HONEY_TEA = "Thật thanh lịch và ấm áp.", -- Trà mật ong hoa anh đào rừng anh đào
         SWEET_RICE_DRINK = "Tôi không biết tại sao những hạt này lại ăn lâu như vậy...", -- Vita Hyphy Sikhye
-        ANANAS_JUICE = "Ngay cả khi không có vỏ, nó vẫn khiến bạn thèm ăn hơn.", -- Legion Dứa
-        ORANGE_JUICE = "Tôi nên dùng nó như một bữa ăn nhẹ sau bữa ăn.", -- Thêm gói thực phẩm Nước cam
+        APPLEPINE_JUICE = "Ngay cả khi không có vỏ, nó vẫn khiến bạn thèm ăn hơn.", -- Legion Dứa
+        CITROYUZU_JUICE = "Tôi nên dùng nó như một bữa ăn nhẹ sau bữa ăn.", -- Thêm gói thực phẩm Nước cam
         STRAWBERRY_SMOOTHIE = "Tôi phải uống nó nhanh thôi.", -- Thêm gói thực phẩm Sinh tố dâu tây
         STRAWBERRY_MILK_SMOOTHIE = "Thật là một món tráng miệng tuyệt vời!", -- Gói thực phẩm khác Sinh tố sữa dâu
 
@@ -160,7 +160,7 @@ return {
 
         SODA = "Tôi không nghĩ họ đã phải trải qua tất cả rắc rối này chỉ để thêm bọt vào nước.", -- Nước có ga
         FRUITSODA = "Sẽ không mất quá nhiều thời gian để thưởng thức đồ uống có ga này.", -- Fruit Soda
-        LEMONLIMESODA = "Đồ uống có ga rất ngon vì chúng ngọt.", -- Lemon Lime Soda (cao cấp hơn Fruit Soda)
+        LIMONSODA = "Đồ uống có ga rất ngon vì chúng ngọt.", -- Lemon Lime Soda (cao cấp hơn Fruit Soda)
         COLA = "Thật tuyệt vời, ngoại trừ việc ợ hơi.", -- Cola
         COLAQUANTUM = "Thú vị đấy, đó là một loại đồ uống không nên tồn tại trong dòng thời gian này.", -- Quantum Cola
         LUMPY_BEER = "Lần cuối cùng tôi sử dụng rễ cây xá xị là khi nào?", -- Root Beer (Trong bối cảnh thế giới Đói cho mọi thời đại, nó đã bị cấm vào năm 1979.)
@@ -181,8 +181,8 @@ return {
         -- Nước ngọt hợp tác
 
         CHERRY_DOCTOR_COLA = "Tôi không nghĩ đồ uống này liên quan đến việc du hành thời gian.", -- Cherry Forest Dr. Pepper (Doctor Cherry) (nhại lại Doctor Who)
-        ANANASSODA = "Tốt, tôi sẽ không lãng phí quá nhiều thời gian để thưởng thức món này.", -- Dứa có ga (Ohranjii)
-        ORANGESODA = "Tốt, tôi sẽ không lãng phí quá nhiều thời gian để thưởng thức món này.", -- Carbonated Oranj (Fanta)
+        APPLEPINESODA = "Tốt, tôi sẽ không lãng phí quá nhiều thời gian để thưởng thức món này.", -- Dứa có ga (Ohranjii)
+        CITROYUZUSODA = "Tốt, tôi sẽ không lãng phí quá nhiều thời gian để thưởng thức món này.", -- Carbonated Oranj (Fanta)
         STRAWBERRYSODA = "Tốt, tôi sẽ không lãng phí quá nhiều thời gian để thưởng thức món này.", -- Dâu có ga (Dâu xứ Wales)
 
         -- Tinh thần hợp tác

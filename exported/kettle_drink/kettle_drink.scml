@@ -117,8 +117,8 @@
     <folder id="38" name="soda">
         <file id="0" name="soda/soda-0.png" width="76" height="120" pivot_x="0.5" pivot_y="0.25"/>
     </folder>
-    <folder id="39" name="lemonlimesoda">
-        <file id="0" name="lemonlimesoda/lemonlimesoda-0.png" width="76" height="120" pivot_x="0.5" pivot_y="0.25"/>
+    <folder id="39" name="limonsoda">
+        <file id="0" name="limonsoda/limonsoda-0.png" width="76" height="120" pivot_x="0.5" pivot_y="0.25"/>
     </folder>
     <folder id="40" name="water_clean_ice">
         <file id="0" name="water_clean_ice/water_clean_ice.png" width="120" height="120" pivot_x="0.45" pivot_y="0.25"/>
@@ -250,8 +250,8 @@
     <folder id="80" name="coconut_juice">
         <file id="0" name="coconut_juice/coconut_juice-0.png" width="120" height="118" pivot_x="0.5" pivot_y="0.25"/>
     </folder>
-    <folder id="81" name="orangesoda">
-        <file id="0" name="orangesoda/orangesoda-0.png" width="74" height="118" pivot_x="0.52" pivot_y="0.25"/>
+    <folder id="81" name="citroyuzusoda">
+        <file id="0" name="citroyuzusoda/citroyuzusoda-0.png" width="74" height="118" pivot_x="0.52" pivot_y="0.25"/>
     </folder>
     <folder id="82" name="pale_beer">
         <file id="0" name="pale_beer/pale_beer-0.png" width="120" height="120" pivot_x="0.45" pivot_y="0.25"/>
@@ -259,11 +259,11 @@
     <folder id="83" name="pale_whiskey">
         <file id="0" name="pale_whiskey/pale_whiskey-0.png" width="120" height="120" pivot_x="0.5" pivot_y="0.35"/>
     </folder>
-    <folder id="84" name="ananas_juice">
-        <file id="0" name="ananas_juice/ananas_juice-0.png" width="111" height="120" pivot_x="0.53" pivot_y="0.35"/>
+    <folder id="84" name="applepine_juice">
+        <file id="0" name="applepine_juice/applepine_juice-0.png" width="111" height="120" pivot_x="0.53" pivot_y="0.35"/>
     </folder>
-    <folder id="85" name="ananassoda">
-        <file id="0" name="ananassoda/ananassoda-0.png" width="84" height="120" pivot_x="0.54" pivot_y="0.25"/>
+    <folder id="85" name="applepinesoda">
+        <file id="0" name="applepinesoda/applepinesoda-0.png" width="84" height="120" pivot_x="0.54" pivot_y="0.25"/>
     </folder>
     <folder id="86" name="rice_spirits">
         <file id="0" name="rice_spirits/rice_spirits.png" width="120" height="120" pivot_x="0.5" pivot_y="0.35"/>
@@ -310,8 +310,8 @@
     <folder id="100" name="petals_berry_brandy">
         <file id="0" name="petals_berry_brandy/petals_berry_brandy-0.png" width="120" height="120" pivot_x="0.5" pivot_y="0.4"/>
     </folder>
-    <folder id="101" name="orange_juice">
-        <file id="0" name="orange_juice/orange_juice-0.png" width="113" height="120" pivot_x="0.4" pivot_y="0.3"/>
+    <folder id="101" name="citroyuzu_juice">
+        <file id="0" name="citroyuzu_juice/citroyuzu_juice-0.png" width="113" height="120" pivot_x="0.4" pivot_y="0.3"/>
     </folder>
     <folder id="102" name="rainbow_shake">
         <file id="0" name="rainbow_shake/rainbow_shake-0.png" width="104" height="107" pivot_x="0.5" pivot_y="0.25"/>

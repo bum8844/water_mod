@@ -144,8 +144,8 @@ return {
             CHERRY_ROSEBERRIES_TEA = "Fruta fea, ¿Sin pelos?", -- Cherry Forest Rosehip Tea
             CHERRY_HONEY_TEA = "¡Beber agua de miel te mantiene cálido!", -- Cherry Forest Cherry Blossom Honey Tea
             SWEET_RICE_DRINK = "Los merms no hacen está bebida.", -- Vitacorp Sweet Rice Drink
-            ANANAS_JUICE = "Fruta ácida en agua dulce, slurp.", -- Legion Pineapple Juice
-            ORANGE_JUICE = "Jugoso y refrescante, ¡Florp!", -- Moore Food Pack Orange Juice
+            APPLEPINE_JUICE = "Fruta ácida en agua dulce, slurp.", -- Legion Pineapple Juice
+            CITROYUZU_JUICE = "Jugoso y refrescante, ¡Florp!", -- Moore Food Pack CITROYUZU Juice
             STRAWBERRY_SMOOTHIE = "¡Hurra!, trituré el jugo rojo congelado", -- Moore Food Pack Strawberry Smoothie
             STRAWBERRY_MILK_SMOOTHIE = "¡Hurra!, ¡Es ligero!", -- Moore Food Pack Strawberry Milk Smoothie
 
@@ -157,7 +157,7 @@ return {
 
             SODA = "El agua está rara, está burbujeando.", -- Carbonated water
             FRUITSODA = "Sabe a frutas, pero las burbujas son molestas.", -- Fruit Soda
-            LEMONLIMESODA = "Es dulce y delicioso ,¡Pero extraño!", -- Lemon Lime Soda (superior to Fruit Soda)
+            LIMONSODA = "Es dulce y delicioso ,¡Pero extraño!", -- Lemon Lime Soda (superior to Fruit Soda)
             COLA = "Wow, ¡Sabe increíble!, flurp!", -- Cola
             COLAQUANTUM = "Brilla y hace ruido, slurp!", -- Cola Quantum
             LUMPY_BEER = "Tiene un sabor medicinal, pero es dulce y burbujeante.", -- Root Beer (not alcoholic)
@@ -178,8 +178,8 @@ return {
             -- Collaborative Sodas
 
             CHERRY_DOCTOR_COLA = "¡El agua oscura tiene burbujas y sabe a jugo rojo!", -- Cherry Forest Dr. Pepper (Dr. Cherry)
-            ANANASSODA = "¡Agua de fruta ácida y burbujeante!", -- Carbonated Pineapple (Oran-C)
-            ORANGESODA = "Sorbe, ¡Es refrescante y genial!", -- Carbonated Orange (Fanta)
+            APPLEPINESODA = "¡Agua de fruta ácida y burbujeante!", -- Carbonated Pineapple (Oran-C)
+            CITROYUZUSODA = "Sorbe, ¡Es refrescante y genial!", -- Carbonated CITROYUZU (Fanta)
             STRAWBERRYSODA = "Es una burbujeante agua de fruta roja, slurp.", -- Carbonated Strawberry (Welch's Strawberry)
 
             -- Collaborative Brewery Drinks

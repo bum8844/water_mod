@@ -21,7 +21,7 @@ return
 
 		-- boilbook
 		BOILBOOK_BASIC = "음료의 세계",
-		BOILBOOK_ADVANCED = "칵테일 제조법",
+		BOILBOOK_ADVANCED = "고급 음료의 세계",
 
 		-- well drilling
 		WELL_DRILLING ="우물 드릴",
@@ -90,8 +90,10 @@ return
 		CAFFEINBERRY_BEAN = "커피 열매",
 		CAFFEINBERRY_BEAN_COOKED = "구운 커피 열매",
 		SPICE_CAFFEINPEPPER = "후추가루",
+		SPICE_RUINCOLATE_SPREAD = "초콜릿 스프레드",
 
 		SPICE_CAFFEINPEPPER_FOOD = "후추뿌린 {food}",
+		SPICE_RUINCOLATE_SPREAD_FOOD = "초콜릿 바른 {food}",
 
 		-- ruincacao
 		RUINCACAO_TREE = "카카오나무",
@@ -101,6 +103,24 @@ return
 		RUINCACAO = "카카오",
 		RUINCACAO_BEAN = "카카오콩",
 		RUINCACAO_BEAN_COOKED = "구운 카카오콩",
+
+		--APPLEPINE
+		APPLEPINE = "파인사과",
+		APPLEPINE_COOKED = "구운 파인사과",
+		APPLEPINE_SEEDS = "파인사과 씨앗",
+		APPLEPINE_OVERSIZED = "거대한 파인사과",
+
+		--limon
+		LIMON = "리몬",
+		LIMON_COOKED = "구운 리몬",
+		LIMON_SEEDS = "리몬 씨앗",
+		LIMON_OVERSIZED = "거대한 리몬 씨앗",
+
+		--citroyuzu
+		CITROYUZU = "시트유주",
+		CITROYUZU_COOKED = "구운 시트유주",
+		CITROYUZU_SEEDS = "시트유주 씨앗",
+		CITROYUZU_OVERSIZED = "거대한 시트유주",
 
 		-- additives
 		ADDITIVE_SEED = "모둠씨앗 향료",
@@ -174,8 +194,8 @@ return
 		CHERRY_ROSEBERRIES_TEA = "로즈힙티",
 		CHERRY_HONEY_TEA = "벚꿀차",
 		SWEET_RICE_DRINK = "식혜",
-		ANANAS_JUICE = "파인애플주스",
-		ORANGE_JUICE = "오랜지주스",
+		APPLEPINE_JUICE = "파인애플주스",
+		CITROYUZU_JUICE = "오랜지주스",
 		STRAWBERRY_SMOOTHIE = "딸기 스무디",
 		STRAWBERRY_MILK_SMOOTHIE = "딸기 밀크셰이크",
 
@@ -198,7 +218,7 @@ return
 		LUMPY_BEER = "루트비어",
 		SODA = "탄산수",
 		FRUITSODA = "과일소다",
-		LEMONLIMESODA = "허니소다",
+		LIMONSODA = "허니소다",
 		COLA = "콜라",
 		COLAQUANTUM = "퀀텀콜라",
 
@@ -220,8 +240,8 @@ return
 		--소다
 
 		CHERRY_DOCTOR_COLA = "닥터 체리",
-		ANANASSODA = "파인애플 소다",
-		ORANGESODA = "오랜지 소다",
+		APPLEPINESODA = "파인애플 소다",
+		CITROYUZUSODA = "오랜지 소다",
 		STRAWBERRYSODA = "딸기 소다",
 
 		--양조주

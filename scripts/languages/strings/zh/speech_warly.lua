@@ -132,8 +132,8 @@ return {
         CHERRY_ROSEBERRIES_TEA = "有着一股清香味，同时也能帮助平衡体温。",
         CHERRY_HONEY_TEA = "润喉宝具。",
         SWEET_RICE_DRINK = "有着不寻常的",
-        ANANAS_JUICE = "别喝太多了，不然嘴巴的皮会破。",
-        ORANGE_JUICE = "鲜榨的橘子汁！",
+        APPLEPINE_JUICE = "别喝太多了，不然嘴巴的皮会破。",
+        CITROYUZU_JUICE = "鲜榨的橘子汁！",
         STRAWBERRY_SMOOTHIE = "真是爽口！",
         STRAWBERRY_MILK_SMOOTHIE = "受到多位女士喜爱的草莓饮料。",
 
@@ -145,7 +145,7 @@ return {
 
         SODA = "没有什么奇怪味道的气泡水。",
         FRUITSODA = "附带酥麻感的爽口果香味！",
-        LEMONLIMESODA = "A它有着蜜瓜般的爽口！",
+        LIMONSODA = "A它有着蜜瓜般的爽口！",
         COLA = "孩子们一直都喜欢这个。",
         COLAQUANTUM = "我记得有个女人为了寻找这个疯掉了……",
         LUMPY_BEER = "喜欢这个的客人只会点这个。",
@@ -166,8 +166,8 @@ return {
         -- 联动气泡水
 
         CHERRY_DOCTOR_COLA = "那些发烧友肯定会喜欢这个。",
-        ANANASSODA = "吃了太多美食可以试试这个。",
-        ORANGESODA = "优质的饭后饮料！",
+        APPLEPINESODA = "吃了太多美食可以试试这个。",
+        CITROYUZUSODA = "优质的饭后饮料！",
         STRAWBERRYSODA = "甜甜的草莓味气泡水。",
 
         -- 联动酿酒

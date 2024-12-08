@@ -132,8 +132,8 @@ return {
             CHERRY_ROSEBERRIES_TEA = "酸酸的味道",
             CHERRY_HONEY_TEA = "蜜蜂喜欢",
             SWEET_RICE_DRINK = "甜甜的",
-            ANANAS_JUICE = "喝的漂亮皇冠",
-            ORANGE_JUICE = "喝的橙色球",
+            APPLEPINE_JUICE = "喝的漂亮皇冠",
+            CITROYUZU_JUICE = "喝的橙色球",
             STRAWBERRY_SMOOTHIE = "酸酸冷冷的",
             STRAWBERRY_MILK_SMOOTHIE = "酸酸滑滑的",
 
@@ -145,7 +145,7 @@ return {
 
             SODA = "泡泡水",
             FRUITSODA = "用水果做的泡泡水",
-            LEMONLIMESODA = "甜甜的泡泡水",
+            LIMONSODA = "甜甜的泡泡水",
             COLA = "黑色的泡泡水",
             COLAQUANTUM = "很亮的泡泡水",
             LUMPY_BEER = "用泥土东西做的泡泡水",
@@ -166,8 +166,8 @@ return {
             -- 联动气泡水
 
             CHERRY_DOCTOR_COLA = "用填肚子的球做的黑色泡泡水",
-            ANANASSODA = "用漂亮皇冠做的泡泡水",
-            ORANGESODA = "用橙色球做的泡泡水",
+            APPLEPINESODA = "用漂亮皇冠做的泡泡水",
+            CITROYUZUSODA = "用橙色球做的泡泡水",
             STRAWBERRYSODA = "甜甜的泡泡水",
 
             -- 联动酿酒

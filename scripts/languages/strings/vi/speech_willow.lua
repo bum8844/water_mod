@@ -146,8 +146,8 @@ return {
             CHERRY_ROSEBERRIES_TEA = "Chắc chắn rồi, nó có mùi thơm.", -- Trà Tầm Xuân Rừng Anh Đào
             CHERRY_HONEY_TEA = "Ít nhất trông nó cũng đẹp.", -- Trà Mật Ong Hoa Anh Đào Rừng Anh Đào
             SWEET_RICE_DRINK = "Tôi thích phiên bản rang hơn.", -- Vita-Hyphy Sikhye
-            ANANAS_JUICE = "Uống thì tốt, nhưng nó sẽ khiến miệng bạn ngứa ran.", -- Legion Pineapple Juice
-            ORANGE_JUICE = "Nếu ai đó uống nó, tôi nên giới thiệu kem đánh răng.", -- Thêm gói thực phẩm Nước cam
+            APPLEPINE_JUICE = "Uống thì tốt, nhưng nó sẽ khiến miệng bạn ngứa ran.", -- Legion Pineapple Juice
+            CITROYUZU_JUICE = "Nếu ai đó uống nó, tôi nên giới thiệu kem đánh răng.", -- Thêm gói thực phẩm Nước cam
             STRAWBERRY_SMOOTHIE = "Nó được pha trộn độc đáo với màu đỏ.", -- Thêm gói thực phẩm Sinh tố dâu tây
             STRAWBERRY_MILK_SMOOTHIE = "Đôi khi, đồ lạnh cũng không tệ lắm.", -- Thêm gói thực phẩm Sinh tố sữa dâu
 
@@ -159,7 +159,7 @@ return {
 
             SODA = "Nước có ga.", -- Nước Soda
             FRUITSODA = "Trong số các loại đồ uống, loại này là ngon nhất.", -- Fruit Soda
-            LEMONLIMESODA = "Họ nói rằng bạn nên uống loại này khi còn ấm.", -- Lemon Lime Soda (tốt hơn Fruit Soda)
+            LIMONSODA = "Họ nói rằng bạn nên uống loại này khi còn ấm.", -- Lemon Lime Soda (tốt hơn Fruit Soda)
             COLA = "Tôi có thể tìm thấy cola ở bất cứ đâu quanh đây.", -- Cola
             COLAQUANTUM = "Đây thực sự là một thức uống bất thường.", -- Cola Quantum
             LUMPY_BEER = "Đây là loại nước ngọt tệ nhất.", -- Root Beer (không chứa cồn)
@@ -180,8 +180,8 @@ return {
             -- Nước ngọt hợp tác
 
             CHERRY_DOCTOR_COLA = "Đó là hàng nhái tự chế.", -- Cherry Forest Dr. Pepper (Dr. Cherry)
-            ANANASSODA = "Chỉ là soda dứa thôi.", -- Soda dứa (Oransi)
-            ORANGESODA = "Không có gì đặc biệt, chỉ là soda cam thôi.", -- Orange Soda (Fanta)
+            APPLEPINESODA = "Chỉ là soda dứa thôi.", -- Soda dứa (Oransi)
+            CITROYUZUSODA = "Không có gì đặc biệt, chỉ là soda cam thôi.", -- CITROYUZU Soda (Fanta)
             STRAWBERRYSODA = "Nó có màu đỏ và có ga, ngon lắm phải không?", -- Strawberry Soda (Welch's Strawberry)
             GIANT_BLUEBERRY_WINE = "Tôi thích cách bố trí mới của nó!", -- Vita-Hyphy Boom Berry Wine (nổ khi đốt lửa)
             RICE_WINE = "Bạn có thể làm rượu với những nguyên liệu kì lạ.", -- Vita-Hyphy Makgeolli

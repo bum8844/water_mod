@@ -132,8 +132,8 @@ return {
             CHERRY_ROSEBERRIES_TEA = "所以饼干呢？",
             CHERRY_HONEY_TEA = "配些姜和柠檬会更好……",
             SWEET_RICE_DRINK = "糊糊的质感。",
-            ANANAS_JUICE = "这么酸的果汁我没法一口气喝完。",
-            ORANGE_JUICE = "我来到这里之前从来没有在休息室注意到这个。",
+            APPLEPINE_JUICE = "这么酸的果汁我没法一口气喝完。",
+            CITROYUZU_JUICE = "我来到这里之前从来没有在休息室注意到这个。",
             STRAWBERRY_SMOOTHIE = "看起来像是街边饮料。",
             STRAWBERRY_MILK_SMOOTHIE = "它不适合我的品味。",
 
@@ -145,7 +145,7 @@ return {
 
             SODA = "我没想过尝试这个。",
             FRUITSODA = "我应该在装有潘趣果汁的碗前表演吗？",
-            LEMONLIMESODA = "这会毁掉我的牙齿。",
+            LIMONSODA = "这会毁掉我的牙齿。",
             COLA = "有根吸管就好了。",
             COLAQUANTUM = "可疑且壮观。",
             LUMPY_BEER = "它是怎么把味道复现出来的？",
@@ -166,8 +166,8 @@ return {
             -- 联动气泡水
 
             CHERRY_DOCTOR_COLA = "没有真正的医生真是可惜。",
-            ANANASSODA = "我感觉和文明世界更靠近了。",
-            ORANGESODA = "这气泡水的碳酸太多了。",
+            APPLEPINESODA = "我感觉和文明世界更靠近了。",
+            CITROYUZUSODA = "这气泡水的碳酸太多了。",
             STRAWBERRYSODA = "这气泡水的碳酸太多了。",
 
             -- 联动酿酒
