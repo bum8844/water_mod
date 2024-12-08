@@ -23,6 +23,9 @@ return {
 
 	ANNOUNCE_CAFFINE_BUFF_START = "볼프강 늑대처럼 달린다!", -- 카페인 버프 시작
     ANNOUNCE_CAFFINE_BUFF_STOP = "볼프강 무산소 운동 할 시간이다.",  -- 카페인 버프 끝
+
+    ANNOUNCE_SATIETY_BUFF_START = "" , -- 포만감 버프 시작
+    ANNOUNCE_SATIETY_BUFF_STOP = "" ,  -- 포만감 버프 끝
     
     ANNOUNCE_CURE_WATERBORNE = "속이 편안하군.",  -- 수인성 질병을 아이템으로 치료했을때의 대사
 

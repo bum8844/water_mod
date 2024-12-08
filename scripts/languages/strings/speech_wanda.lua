@@ -33,6 +33,9 @@ return {
 
     ANNOUNCE_CAFFINE_BUFF_START = "이 정도면 시간도 날 따라잡지 못하겠지!", -- 카페인 버프 시작
     ANNOUNCE_CAFFINE_BUFF_STOP = "아이고 이런, 내 시간이 다시 느려졌어!",  -- 카페인 버프 끝
+
+    ANNOUNCE_SATIETY_BUFF_START = "" , -- 포만감 버프 시작
+    ANNOUNCE_SATIETY_BUFF_STOP = "" ,  -- 포만감 버프 끝
     
     ANNOUNCE_CURE_WATERBORNE = "이제야 겨우 배꼽시계를 고쳤어.",  -- 수인성 질병을 아이템으로 치료했을때의 대사
 

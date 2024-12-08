@@ -27,6 +27,9 @@ return {
 
     ANNOUNCE_CAFFINE_BUFF_START = "" , -- Caffeine buff enabled
     ANNOUNCE_CAFFINE_BUFF_STOP = "" , -- Caffeine buff disabled
+
+    ANNOUNCE_SATIETY_BUFF_START = "" , -- 포만감 버프 시작
+    ANNOUNCE_SATIETY_BUFF_STOP = "" ,  -- 포만감 버프 끝
     
     ANNOUNCE_CURE_WATERBORNE = "" ,  -- Waterborne disease cured by consuming items
 

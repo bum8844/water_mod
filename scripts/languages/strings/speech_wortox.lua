@@ -23,6 +23,9 @@ return {
 
 	ANNOUNCE_CAFFINE_BUFF_START = "흐유유, 흥분되는걸!" , -- 카페인 버프 시작
     ANNOUNCE_CAFFINE_BUFF_STOP = "내 손안에 영혼이 얼마나 남았지?" ,  -- 카페인 버프 끝
+
+    ANNOUNCE_SATIETY_BUFF_START = "" , -- 포만감 버프 시작
+    ANNOUNCE_SATIETY_BUFF_STOP = "" ,  -- 포만감 버프 끝
     
     ANNOUNCE_CURE_WATERBORNE = "흐유유, 그 고통도 나쁘진 않았네." ,  -- 수인성 질병을 아이템으로 치료했을때의 대사
 

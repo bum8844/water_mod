@@ -383,6 +383,8 @@ return
 			FOOD_EFFECTS_INTOXICATION_CAFFINE = "만취, 피해경감, 이속 증가",
 			FOOD_EFFECTS_INTOXICATION_ANCIENT_KNOWLEGEE_THIRD = "만취, 피해경감, 모든 고대 아이템 3회 제작",
 			FOOD_EFFECTS_INTOXICATION_DRY = "만취, 피해경감 및 방습",
+			FOOD_EFFECTS_SATIETY = "허기 감소 수치 완화",
+			FOOD_EFFECTS_GOODNIGHTVISION = "더 좋은 야간투시",
 		},
 	},
 }

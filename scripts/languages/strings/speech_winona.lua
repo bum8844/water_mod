@@ -32,6 +32,9 @@ return {
 
     ANNOUNCE_CAFFINE_BUFF_START = "더 열심히, 더 빠르게 일해보자고!", -- 카페인 버프 시작. "Let's work it harder and faster!"
     ANNOUNCE_CAFFINE_BUFF_STOP = "커피빨이 떨어졌어." ,  -- 카페인 버프 끝 "Now I'm de-caffeinated."
+
+    ANNOUNCE_SATIETY_BUFF_START = "" , -- 포만감 버프 시작
+    ANNOUNCE_SATIETY_BUFF_STOP = "" ,  -- 포만감 버프 끝
     
     ANNOUNCE_CURE_WATERBORNE = "휴, 이제야 속이 좀 편하네." ,  -- 수인성 질병을 아이템으로 치료했을때의 대사
 

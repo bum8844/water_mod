@@ -23,6 +23,9 @@ return {
 
     ANNOUNCE_CAFFINE_BUFF_START = "코요테마냥 빠르게!" , -- 카페인 버프 시작
     ANNOUNCE_CAFFINE_BUFF_STOP = "우두커니서서 나무나 베야겠구먼." ,  -- 카페인 버프 끝
+
+    ANNOUNCE_SATIETY_BUFF_START = "" , -- 포만감 버프 시작
+    ANNOUNCE_SATIETY_BUFF_STOP = "" ,  -- 포만감 버프 끝
     
     ANNOUNCE_CURE_WATERBORNE = "속이 좀 가라앉는구먼." ,  -- 수인성 질병을 아이템으로 치료했을때의 대사
 

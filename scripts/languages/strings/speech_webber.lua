@@ -33,6 +33,9 @@ return {
 
     ANNOUNCE_CAFFINE_BUFF_START = "엄청 뛰고 싶은 기분이야!" , -- 카페인 버프 시작
     ANNOUNCE_CAFFINE_BUFF_STOP = "아이, 나른해...",  -- 카페인 버프 끝
+
+    ANNOUNCE_SATIETY_BUFF_START = "" , -- 포만감 버프 시작
+    ANNOUNCE_SATIETY_BUFF_STOP = "" ,  -- 포만감 버프 끝
     
     ANNOUNCE_CURE_WATERBORNE = "휴, 이제 배 안 아프다!", --"속이 시원해!",  -- 수인성 질병을 아이템으로 치료했을때의 대사
 

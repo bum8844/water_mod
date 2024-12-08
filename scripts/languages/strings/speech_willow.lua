@@ -37,6 +37,9 @@ return {
 	ANNOUNCE_CAFFINE_BUFF_START = "왠지 불태우기 좋은 기분인걸!" , -- 카페인 버프 시작
     ANNOUNCE_CAFFINE_BUFF_STOP = "좋아, 나머지는 나중에." ,  -- 카페인 버프 끝
 
+    ANNOUNCE_SATIETY_BUFF_START = "" , -- 포만감 버프 시작
+    ANNOUNCE_SATIETY_BUFF_STOP = "" ,  -- 포만감 버프 끝
+
     ANNOUNCE_CURE_WATERBORNE = "진짜 죽는 줄 알았네..." , -- 수인성 질병을 아이템으로 치료했을때의 대사
 
 	DESCRIBE =

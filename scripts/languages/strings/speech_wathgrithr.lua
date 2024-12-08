@@ -33,6 +33,9 @@ return {
 
     ANNOUNCE_CAFFINE_BUFF_START = "헤르모드와 같은 날렵함으로!", -- 카페인 버프 시작
     ANNOUNCE_CAFFINE_BUFF_STOP = "평소의 발걸음으로 돌아왔군.",  -- 카페인 버프 끝
+
+    ANNOUNCE_SATIETY_BUFF_START = "" , -- 포만감 버프 시작
+    ANNOUNCE_SATIETY_BUFF_STOP = "" ,  -- 포만감 버프 끝
     
     ANNOUNCE_CURE_WATERBORNE = "이질을 이겨냈노라!" ,  -- 수인성 질병을 아이템으로 치료했을때의 대사
 

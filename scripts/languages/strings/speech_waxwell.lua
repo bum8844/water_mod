@@ -34,6 +34,9 @@ return {
     ANNOUNCE_CAFFINE_BUFF_START = "이거 흥분되는군!" , -- 카페인 버프 시작
     ANNOUNCE_CAFFINE_BUFF_STOP = "쇼는 끝났어." ,  -- 카페인 버프 끝
     
+    ANNOUNCE_SATIETY_BUFF_START = "" , -- 포만감 버프 시작
+    ANNOUNCE_SATIETY_BUFF_STOP = "" ,  -- 포만감 버프 끝
+    
     ANNOUNCE_CURE_WATERBORNE = "속이 좀 잠잠해지는군." ,  -- 수인성 질병을 아이템으로 치료했을때의 대사
 
 	ANNOUNCE_DCAPACITY_CRITICAL = "적당히 마시고 여기서 끝내는 게 좋겠지.", --취하기 직전

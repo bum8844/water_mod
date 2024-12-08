@@ -33,6 +33,9 @@ return {
 
 	ANNOUNCE_CAFFINE_BUFF_START = "저 멀리 날아갈 수도 있을 것 같은 기분이야!", -- 카페인 버프 시작
     ANNOUNCE_CAFFINE_BUFF_STOP = "다시 땅에 묶이고 말았어.",  -- 카페인 버프 끝
+
+    ANNOUNCE_SATIETY_BUFF_START = "" , -- 포만감 버프 시작
+    ANNOUNCE_SATIETY_BUFF_STOP = "" ,  -- 포만감 버프 끝
     
     ANNOUNCE_CURE_WATERBORNE = "이 고통이 멎어도 또다른 고통이 찾아올 뿐이겠지." ,  -- 수인성 질병을 아이템으로 치료했을때의 대사
 

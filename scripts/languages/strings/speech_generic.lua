@@ -33,6 +33,9 @@ return {
 
     ANNOUNCE_CAFFINE_BUFF_START = "힘이 솟아나는 것 같아!" , -- 카페인 버프 시작
     ANNOUNCE_CAFFINE_BUFF_STOP = "힘이 빠지는 것 같아..." ,  -- 카페인 버프 끝
+
+    ANNOUNCE_SATIETY_BUFF_START = "배가 덜 고파!" , -- 포만감 버프 시작
+    ANNOUNCE_SATIETY_BUFF_STOP = "허기가 져..." ,  -- 포만감 버프 끝
     
     ANNOUNCE_CURE_WATERBORNE = "속이 좀 가라앉았어." ,  -- 수인성 질병을 아이템으로 치료했을때의 대사
 

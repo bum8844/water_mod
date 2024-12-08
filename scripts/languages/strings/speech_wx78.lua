@@ -23,6 +23,9 @@ return {
 
 	ANNOUNCE_CAFFINE_BUFF_START = "모든 코어 비율 제한 : 49 " , -- 카페인 버프 시작 ( ALL CORE RATIO LIMIT : 49)
     ANNOUNCE_CAFFINE_BUFF_STOP = "코어 리미트 재설정중" ,  -- 카페인 버프 끝
+
+    ANNOUNCE_SATIETY_BUFF_START = "" , -- 포만감 버프 시작
+    ANNOUNCE_SATIETY_BUFF_STOP = "" ,  -- 포만감 버프 끝
     
     ANNOUNCE_CURE_WATERBORNE = "냉각수내 PH비율 조정중" ,  -- 78이는 실제로 사용되지 않음
 

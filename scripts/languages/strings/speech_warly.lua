@@ -33,6 +33,9 @@ return {
 
 	ANNOUNCE_CAFFINE_BUFF_START = "아아, 기운이 나는걸!" , -- 카페인 버프 시작
     ANNOUNCE_CAFFINE_BUFF_STOP = "기운이 더는 솟지 않아." ,  -- 카페인 버프 끝
+
+    ANNOUNCE_SATIETY_BUFF_START = "" , -- 포만감 버프 시작
+    ANNOUNCE_SATIETY_BUFF_STOP = "" ,  -- 포만감 버프 끝
     
     ANNOUNCE_CURE_WATERBORNE = "속이 좀 가라앉았어." ,  -- 왈리는 더러운 물을 거부함
 

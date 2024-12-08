@@ -33,6 +33,9 @@ return {
 
 	ANNOUNCE_CAFFINE_BUFF_START = "아무리 험한 숲도 단숨에 달릴 수 있겠어!" , -- 카페인 버프 시작
     ANNOUNCE_CAFFINE_BUFF_STOP = "왠지 좀 피곤해..." ,  -- 카페인 버프 끝
+
+    ANNOUNCE_SATIETY_BUFF_START = "" , -- 포만감 버프 시작
+    ANNOUNCE_SATIETY_BUFF_STOP = "" ,  -- 포만감 버프 끝
     
     ANNOUNCE_CURE_WATERBORNE = "아픈 게 좀 가라앉았어." ,  -- 수인성 질병을 아이템으로 치료했을때의 대사
 
