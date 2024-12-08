@@ -3,8 +3,8 @@
 	<Texture filename="tea_inventoryitem_drinks.tex" />
 	<Elements>
 		<Element name="absinthe_bottle.tex" u1="0.80959375" u2="0.87009375" v2="0.499" v1="0.4385" variant="" />
-		<Element name="appine_juice_bottle.tex" u1="0.0635" u2="0.124" v2="0.3115" v1="0.251" variant="" />
-		<Element name="appinesoda_bottle.tex" u1="0.251" u2="0.3115" v2="0.499" v1="0.4385" variant="" />
+		<Element name="applepine_juice_bottle.tex" u1="0.0635" u2="0.124" v2="0.3115" v1="0.251" variant="" />
+		<Element name="applepinesoda_bottle.tex" u1="0.251" u2="0.3115" v2="0.499" v1="0.4385" variant="" />
 		<Element name="areuhi_bottle.tex" u1="0.3711171875" u2="0.4316171875" v2="0.063453125" v1="0.002953125" variant="" />
 		<Element name="arrack_bottle.tex" u1="0.499046875" u2="0.559546875" v2="0.249" v1="0.1885" variant="" />
 		<Element name="aurobow_bottle.tex" u1="0.6885" u2="0.749" v2="0.4365" v1="0.376" variant="" />
@@ -106,8 +106,8 @@
 		<Element name="wheat_whiskey_bottle.tex" u1="0.6885" u2="0.749" v2="0.6865" v1="0.626" variant="" />
 		<Element name="wine_bottle.tex" u1="0.626" u2="0.68259375" v2="0.624" v1="0.5664296875" variant="" />
 		<Element name="absinthe.tex" u1="0.9385" u2="0.999" v2="0.9365" v1="0.876" variant="" />
-		<Element name="appine_juice.tex" u1="0.1885" u2="0.249" v2="0.749" v1="0.6885" variant="" />
-		<Element name="appinesoda.tex" u1="0.0635" u2="0.124" v2="0.624" v1="0.5635" variant="" />
+		<Element name="applepine_juice.tex" u1="0.1885" u2="0.249" v2="0.749" v1="0.6885" variant="" />
+		<Element name="applepinesoda.tex" u1="0.0635" u2="0.124" v2="0.624" v1="0.5635" variant="" />
 		<Element name="areuhi.tex" u1="0.8105703125" u2="0.8710703125" v2="0.8115" v1="0.751" variant="" />
 		<Element name="arrack.tex" u1="0.5605703125" u2="0.6210703125" v2="0.5615" v1="0.501" variant="" />
 		<Element name="aurobow.tex" u1="0.876" u2="0.9365" v2="0.9365" v1="0.876" variant="" />
