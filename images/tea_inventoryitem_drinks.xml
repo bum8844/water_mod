@@ -63,8 +63,8 @@
 		<Element name="noblewine_bottle.tex" u1="0.376" u2="0.4335703125" v2="0.500953125" v1="0.4433828125" variant="" />
 		<Element name="nut_coconut_brandy_bottle.tex" u1="0.001" u2="0.0615" v2="0.1269296875" v1="0.0664296875" variant="" />
 		<Element name="nut_corn_whiskey_bottle.tex" u1="0.0635" u2="0.124" v2="0.249" v1="0.1885" variant="" />
-		<Element name="citryuja_juice_bottle.tex" u1="0.1885" u2="0.249" v2="0.374" v1="0.3135" variant="" />
-		<Element name="citryujasoda_bottle.tex" u1="0.251" u2="0.3115" v2="0.4365" v1="0.376" variant="" />
+		<Element name="citroyuzu_juice_bottle.tex" u1="0.1885" u2="0.249" v2="0.374" v1="0.3135" variant="" />
+		<Element name="citroyuzusoda_bottle.tex" u1="0.251" u2="0.3115" v2="0.4365" v1="0.376" variant="" />
 		<Element name="pale_beer_bottle.tex" u1="0.3135" u2="0.374" v2="0.499" v1="0.4385" variant="" />
 		<Element name="pale_whiskey_bottle.tex" u1="0.126" u2="0.1865" v2="0.313453125" v1="0.252953125" variant="" />
 		<Element name="petals_berry_brandy_bottle.tex" u1="0.001" u2="0.0615" v2="0.1894296875" v1="0.1289296875" variant="" />
@@ -166,8 +166,8 @@
 		<Element name="noblewine.tex" u1="0.251" u2="0.3115" v2="0.6865" v1="0.626" variant="" />
 		<Element name="nut_coconut_brandy.tex" u1="0.3135" u2="0.374" v2="0.749" v1="0.6885" variant="" />
 		<Element name="nut_corn_whiskey.tex" u1="0.1885" u2="0.249" v2="0.624" v1="0.5635" variant="" />
-		<Element name="citryuja_juice.tex" u1="0.126" u2="0.1865" v2="0.563453125" v1="0.502953125" variant="" />
-		<Element name="citryujasoda.tex" u1="0.1885" u2="0.249" v2="0.6865" v1="0.626" variant="" />
+		<Element name="citroyuzu_juice.tex" u1="0.126" u2="0.1865" v2="0.563453125" v1="0.502953125" variant="" />
+		<Element name="citroyuzusoda.tex" u1="0.1885" u2="0.249" v2="0.6865" v1="0.626" variant="" />
 		<Element name="pale_beer.tex" u1="0.251" u2="0.3115" v2="0.749" v1="0.6885" variant="" />
 		<Element name="pale_whiskey.tex" u1="0.0635" u2="0.124" v2="0.5615" v1="0.501" variant="" />
 		<Element name="petals_berry_brandy.tex" u1="0.126" u2="0.1865" v2="0.625953125" v1="0.565453125" variant="" />
