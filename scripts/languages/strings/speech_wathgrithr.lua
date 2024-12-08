@@ -41,7 +41,8 @@ return {
 
 	DESCRIBE =
 	{
-		BOILBOOK = "축배를 들기 좋은 음료가 있었으면 하네.",
+		BOILBOOK_BASIC = "축배를 들기 좋은 음료가 있었으면 하네.",
+		BOILBOOK_ADVANCED = "축배를 들기 좋은 음료가 있었으면 하네.",
 
 		WATER_CLEAN_ICE = "얼어붙었군.",--깨끗한 얼음물
 		WATER_DIRTY_ICE = "불결한 얼음이로군.", --더러운 얼음물
@@ -56,6 +57,7 @@ return {
 		WELL_DRILLING_ITEM = "지하 세계까지도 닿을 기계로다.", --드릴 아이템
 		HOLE = "마치 망자의 울음 같은 소리로다.", --우물 구멍
 		WELL = "목마른 자가 우물을 파는 법.", --우물
+		BOTTLE_POUCH = "작업해야함",
 
 		WX78MODULE_NONEDRUNK = "이 물건이 우리의 철갑 전사에게 힘을 보태리라.", -- 78전용 묘듈
 
@@ -81,6 +83,13 @@ return {
 		RUINCACAO = "신들의 축복을 받은 열매로다.", --부수기 전 카카오 열매
 		RUINCACAO_BEAN = "기름지지만 향기롭군.", --부순 후 카카오 콩  
 		RUINCACAO_BEAN_COOKED = "이것이 고대의 향기인가.", --구운 카카오 콩
+
+		APPLEPINE = "작업해야함",
+		APPLEPINE_COOKED = "작업해야함",
+		LIMON = "작업해야함",
+		LIMON_COOKED = "작업해야함",
+		CITROYUZU = "작업해야함",
+		CITROYUZU_COOKED = "작업해야함",
 
 		-- 증류주 첨가제
 

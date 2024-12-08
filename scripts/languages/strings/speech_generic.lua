@@ -41,7 +41,8 @@ return {
 
 	DESCRIBE =
 	{
-		BOILBOOK = "목마른 자의 지식이야.",
+		BOILBOOK_BASIC = "목마른 자의 지식이야.",
+		BOILBOOK_ADVANCED = "목마른 자의 지식이야.",
 
 		WATER_CLEAN_ICE = "만나서 정말 차가워.",
 		WATER_DIRTY_ICE = "만나서 더러워.",
@@ -56,6 +57,7 @@ return {
 		WELL_DRILLING_ITEM = "물을 길을 우물을 파는 장치야.",
 		HOLE = "여기에 우물을 만들면 되겠어.",
 		WELL = "이제 깨끗한 물을 간편하게 얻을 수 있어!",
+		BOTTLE_POUCH = "작업해야함",
 
 		WX78MODULE_NONEDRUNK = "작은 장치 하나에 아주 많은 과학이 압축되어 있어.", -- 78전용 묘듈
 
@@ -81,6 +83,14 @@ return {
 		RUINCACAO = "껍질이 바스락거려.",
 		RUINCACAO_BEAN = "볶으면 좀 더 괜찮겠어.",
 		RUINCACAO_BEAN_COOKED = "꽤 익숙한 향이 나는걸.",
+
+		APPLEPINE = "작업해야함",
+		APPLEPINE_OVERSIZED = "작업해야함",
+		APPLEPINE_COOKED = "작업해야함",
+		LIMON = "작업해야함",
+		LIMON_COOKED = "작업해야함",
+		CITROYUZU = "작업해야함",
+		CITROYUZU_COOKED = "작업해야함",
 
 		-- 증류기 첨가제
 

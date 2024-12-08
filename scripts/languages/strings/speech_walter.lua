@@ -41,7 +41,9 @@ return {
 
 	DESCRIBE =
 	{
-		BOILBOOK = "암기할 게 아무리 많아도 상관 없어!",
+		BOILBOOK_BASIC = "암기할 게 아무리 많아도 상관 없어!",
+		BOILBOOK_ADVANCED = "암기할 게 아무리 많아도 상관 없어!",
+
 		WATER_CLEAN_ICE = "이런, 꽁꽁 얼었네.",
 		WATER_DIRTY_ICE = "얼음이 새까매!",
 
@@ -55,6 +57,7 @@ return {
 		WELL_DRILLING_ITEM = "우리 우물 한번 파 볼까,워비?",
 		HOLE = "혹시 세상 반대편까지 이어져 있는걸까?",
 		WELL = "왜 그래 워비? 누가 거기 빠졌어?",
+		BOTTLE_POUCH = "작업해야함",
 
 		WX78MODULE_NONEDRUNK = "로봇 내장이잖아! 짱이다!", -- 78전용 묘듈
 
@@ -80,6 +83,13 @@ return {
 		RUINCACAO = "난쟁이 나라의 보물이야!",
 		RUINCACAO_BEAN = "하얗고 미끌거리는 게 초콜릿 같지는 않아.",
 		RUINCACAO_BEAN_COOKED = "이제 좀 익숙한 냄새가 나네.",
+
+		APPLEPINE = "작업해야함",
+		APPLEPINE_COOKED = "작업해야함",
+		LIMON = "작업해야함",
+		LIMON_COOKED = "작업해야함",
+		CITROYUZU = "작업해야함",
+		CITROYUZU_COOKED = "작업해야함",
 
        -- 증류기 첨가제
 

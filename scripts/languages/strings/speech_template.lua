@@ -35,7 +35,8 @@ return {
 
 	DESCRIBE =
 	{
-		BOILBOOK = "",
+		BOILBOOK_BASIC = "",
+		BOILBOOK_ADVANCED = "",
 
 		WATER_CLEAN_ICE = "",
 		WATER_DIRTY_ICE = "",
@@ -50,6 +51,7 @@ return {
 		WELL_DRILLING_ITEM = "",
 		HOLE = "",
 		WELL = "",
+		BOTTLE_POUCH = "",
 
 		WX78MODULE_NONEDRUNK = "", -- WX-78 module
 
@@ -75,6 +77,13 @@ return {
 		RUINCACAO = "",
 		RUINCACAO_BEAN = "",
 		RUINCACAO_BEAN_COOKED = "",
+
+		APPLEPINE = "",
+		APPLEPINE_COOKED = "",
+		LIMON = "",
+		LIMON_COOKED = "",
+		CITROYUZU = "",
+		CITROYUZU_COOKED = "",
 
 		-- Distiller Additives
 

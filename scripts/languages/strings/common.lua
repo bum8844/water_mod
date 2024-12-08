@@ -17,9 +17,11 @@ return
 	{
 		WX78MODULE_NONEDRUNK = "에탄올 재처리 모듈",
 
+		BOTTLE_POUCH = "물병파우치",
 
 		-- boilbook
-		BOILBOOK = "음료의 세계",
+		BOILBOOK_BASIC = "음료의 세계",
+		BOILBOOK_ADVANCED = "칵테일 제조법",
 
 		-- well drilling
 		WELL_DRILLING ="우물 드릴",
@@ -279,7 +281,8 @@ return
 	RECIPE_DESC =
 	{
 		WX78MODULE_NONEDRUNK = "취할 틈도 없이 벌컥벌컥.",
-		BOILBOOK = "지금까지의 모든 음료 제조법을 복습." ,
+		BOILBOOK_BASIC = "지금까지의 모든 음료 제조법을 복습." ,
+		BOILBOOK_ADVANCED = "지금까지의 모든 칵테일 제조법을 복습." ,
 		WELL_DRILLING_ITEM = "땅에다가 엄청 큰 구멍을 뚫어보세요.",
 		WELL_KIT = "우물가에서 우물쭈물하지 마세요.",
 		WELL_SPRINKLER_KIT = "궁극의 관개농업.",

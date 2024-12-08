@@ -41,7 +41,8 @@ return {
 
 	DESCRIBE =
 	{
-		BOILBOOK = "칵테일 만드는 법도 적어놔야겠어.",
+		BOILBOOK_BASIC = "칵테일 만드는 법도 적어놔야겠어.",
+		BOILBOOK_ADVANCED = "칵테일 만드는 법도 적어놔야겠어.",
 
 		WATER_CLEAN_ICE = "잘 갈아서 빙수를 만들어볼까?",--깨끗한 얼음물
 		WATER_DIRTY_ICE = "이런 얼음은 요리에 쓸 수 없어.", --더러운 얼음물
@@ -56,6 +57,7 @@ return {
 		WELL_DRILLING_ITEM = "수맥을 찾고 뚫어줄 거야.", --드릴 아이템
 		HOLE = "물 흐르는 소리가 들려.", --우물 구멍
 		WELL = "식수를 길어보자!", --우물
+		BOTTLE_POUCH = "작업해야함",
 
 		WX78MODULE_NONEDRUNK = "우리 강철 친구에게 힘을 더해주는 그런 건가?", -- 78전용 묘듈
 
@@ -81,6 +83,13 @@ return {
 		RUINCACAO = "내용물을 확인 해 봐야겠어.", --부수기 전 카카오 열매
 		RUINCACAO_BEAN = "약간의 로스팅이 필요하겠어.", --부순 후 카카오 콩  
 		RUINCACAO_BEAN_COOKED = "초콜릿을 콩에서부터 만든다니 색다른 도전인걸.", --구운 카카오 콩
+
+		APPLEPINE = "작업해야함",
+		APPLEPINE_COOKED = "작업해야함",
+		LIMON = "작업해야함",
+		LIMON_COOKED = "작업해야함",
+		CITROYUZU = "작업해야함",
+		CITROYUZU_COOKED = "작업해야함",
 
 		-- 증류주 첨가제
 

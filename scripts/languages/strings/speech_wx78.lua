@@ -9,6 +9,10 @@ return {
 	},
 
 	ANNOUNCE_DRUNK = "경고: 화ㅏ하ㅏㅏㄱ 에ㅔㅔ엔ㅈㅈ진 ㅇ이사ㅏㅏㅏㅇ 출력", -- 취함
+	ANNOUNCE_DRUNK_MUMBLE = 
+	{
+		--대사 추가해야함
+	},
 	ANNOUNCE_DRUNK_END = "화학엔진 출력 안정화", --술에서 좀 깸 (그로기)
 	ANNOUNCE_DRUNK_IMMUNITY = "자가진단 : 화학엔진 / 정상", --임시 위그 전용,
 	ANNOUNCE_NOTCHARGE = "해당개체 충전 요구", --번개염소가 충전이 안되서 양동이로 젖을 짤수 없음
@@ -42,6 +46,7 @@ return {
 		WELL_DRILLING_ITEM = "수맥 개발용 장치", --드릴 아이템(AFS: "A 'WELL'-DEVELOPING DEVICE"?)
 		HOLE = "물을 뽑아내기 위한 구멍", --우물 구멍
 		WELL = "물의 안정적 공급처", --우물
+		BOTTLE_POUCH = "작업해야함",
 
 		WX78MODULE_NONEDRUNK = "화학 엔진 출력보조", -- 78전용 묘듈
 
@@ -67,6 +72,13 @@ return {
 		RUINCACAO = "약간의 후처리 필요", --부수기 전 카카오 열매
 		RUINCACAO_BEAN = "가공할만한 가치 있음", --부순 후 카카오 콩
 		RUINCACAO_SEED_COOKED = "검은콩을 불에 그을림", --구운 카카오 콩
+
+		APPLEPINE = "작업해야함",
+		APPLEPINE_COOKED = "작업해야함",
+		LIMON = "작업해야함",
+		LIMON_COOKED = "작업해야함",
+		CITROYUZU = "작업해야함",
+		CITROYUZU_COOKED = "작업해야함",
 
 		-- 증류주 첨가제
 

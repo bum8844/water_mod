@@ -9,6 +9,10 @@ return {
 	},
 
 	ANNOUNCE_DRUNK = "으으, 볼프강 술보다 약하다...", -- 취함
+	ANNOUNCE_DRUNK_MUMBLE = 
+	{
+		--대사 추가해야함
+	},
 	ANNOUNCE_DRUNK_END = "볼프강 좀 나아진것 같다.", --술에서 좀 깸 (그로기)
 	ANNOUNCE_DRUNK_IMMUNITY = "하! 술 같은건 강한 볼프강에게 아무것도 아니다!", --마이티 상태 술 면역
 	ANNOUNCE_NOTCHARGE = "볼프강이 힘 주면 염소만 다칠거다.", --번개염소가 충전이 안되서 양동이로 젖을 짤수 없음
@@ -42,6 +46,7 @@ return {
 		WELL_DRILLING_ITEM = "땅을 파헤친다. 아주 강력하게!", --드릴 아이템
 		HOLE = "볼프강 구멍에서 물 얻어낸다.", --우물 구멍
 		WELL = "이제 우물에서 물 얻을수 있다!", --우물
+		BOTTLE_POUCH = "작업해야함",
 
 		WX78MODULE_NONEDRUNK = "로봇 먹는 과자다, 맞지?", -- 78전용 묘듈Is robot snacks, yes?
 
@@ -67,6 +72,13 @@ return {
 		RUINCACAO = "볼프강의 강한 악력으로도 안 부숴진다.", --부수기 전 카카오 열매
 		RUINCACAO_BEAN = "단단한 열매는 졌다.", --부순 후 카카오 콩  
 		RUINCACAO_BEAN_COOKED = "맛있는 냄새 나는데 무섭다...", --구운 카카오 콩
+
+		APPLEPINE = "작업해야함",
+		APPLEPINE_COOKED = "작업해야함",
+		LIMON = "작업해야함",
+		LIMON_COOKED = "작업해야함",
+		CITROYUZU = "작업해야함",
+		CITROYUZU_COOKED = "작업해야함",
 
 		-- 증류주 첨가제
 

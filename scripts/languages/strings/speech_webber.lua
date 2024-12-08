@@ -41,7 +41,8 @@ return {
 
 	DESCRIBE =
 	{
-		BOILBOOK = "으으, 외워야 할 레시피가 늘었어.",
+		BOILBOOK_BASIC = "으으, 외워야 할 레시피가 늘었어.",
+		BOILBOOK_ADVANCED = "으으, 외워야 할 레시피가 늘었어.",
 
 		WATER_CLEAN_ICE = "앗 차거!",--깨끗한 얼음물
 		WATER_DIRTY_ICE = "차갑고 더러워!", --더러운 얼음물

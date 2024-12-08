@@ -41,7 +41,8 @@ return {
 
 	DESCRIBE =
 	{
-		BOILBOOK = "티타임 같은 데에 쓸 시간 없어.",
+		BOILBOOK_BASIC = "티타임 같은 데에 쓸 시간 없어.",
+		BOILBOOK_ADVANCED = "티타임 같은 데에 쓸 시간 없어.",
 
 		WATER_CLEAN_ICE = "이걸 어느 세월에 녹여먹지?",--깨끗한 얼음물
 		WATER_DIRTY_ICE = "차라리 눈을 퍼먹고 말지!", --더러운 얼음물
@@ -56,6 +57,7 @@ return {
 		WELL_DRILLING_ITEM = "우물을 어디다 팔지부터 정하자고.", --드릴 아이템
 		HOLE = "여기 빠지면 나오는 데에 한 세월은 걸리겠어.", --우물 구멍
 		WELL = "어디 보자, 우물을 작동시키려면 뭐가 필요했더라?", --우물
+		BOTTLE_POUCH = "작업해야함",
 
 		WX78MODULE_NONEDRUNK = "아하! 녀석이 이런 건 또 언제 만드나 싶었지.", -- 78전용 묘듈
 
@@ -81,6 +83,13 @@ return {
 		RUINCACAO = "까보기 전엔 열매인지 숯인지 모르지.", --부수기 전 카카오 열매
 		RUINCACAO_BEAN = "그냥 먹으면 속이 뒤집어질 거야.", --부순 후 카카오 콩  
 		RUINCACAO_BEAN_COOKED = "이거 시간낭비 아닌가 모르겠네.", --구운 카카오 콩
+
+		APPLEPINE = "작업해야함",
+		APPLEPINE_COOKED = "작업해야함",
+		LIMON = "작업해야함",
+		LIMON_COOKED = "작업해야함",
+		CITROYUZU = "작업해야함",
+		CITROYUZU_COOKED = "작업해야함",
 
 		-- 증류주 첨가제
 

@@ -41,7 +41,8 @@ return {
 
 	DESCRIBE =
 	{
-		BOILBOOK = "차 내리는 게 설마 요리보다도 어렵겠어?",
+		BOILBOOK_BASIC = "차 내리는 게 설마 요리보다도 어렵겠어?",
+		BOILBOOK_ADVANCED = "차 내리는 게 설마 요리보다도 어렵겠어?",
 
 		WATER_CLEAN_ICE = "이가 다 시리는군.",--깨끗한 얼음물
 		WATER_DIRTY_ICE = "얼어붙은 쓰레기야.", --더러운 얼음물
@@ -56,6 +57,7 @@ return {
 		WELL_DRILLING_ITEM = "꽤 험하게 생겼군.", --드릴 아이템
 		HOLE = "잘못 빠지면 뼈도 못 건지겠군.", --우물 구멍
 		WELL = "우물 옆에서 목말라 죽겠군.", --우물
+		BOTTLE_POUCH = "작업해야함",
 
 		WX78MODULE_NONEDRUNK = "저 로봇 녀석 자제 좀 해야 할 텐데.", -- 78전용 묘듈
 
@@ -81,6 +83,13 @@ return {
 		RUINCACAO = "저걸 먹겠다고 주먹질을 하진 않을걸세.", --부수기 전 카카오 열매
 		RUINCACAO_BEAN = "'콩'이라고 보이지는 않는군.", --부순 후 카카오 콩  
 		RUINCACAO_BEAN_COOKED = "이것만으로는 많이 부족해 보이는군.", --구운 카카오 콩
+
+		APPLEPINE = "작업해야함",
+		APPLEPINE_COOKED = "작업해야함",
+		LIMON = "작업해야함",
+		LIMON_COOKED = "작업해야함",
+		CITROYUZU = "작업해야함",
+		CITROYUZU_COOKED = "작업해야함",
 
 		-- 증류주 첨가제
 

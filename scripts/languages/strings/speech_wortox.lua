@@ -9,6 +9,10 @@ return {
 	},
 
 	ANNOUNCE_DRUNK = "물질계랑 어둠계가 둘 다 보여!", -- 취함
+	ANNOUNCE_DRUNK_MUMBLE = 
+	{
+		--대사 추가해야함
+	},
 	ANNOUNCE_DRUNK_END = "물질계가 명료해지기 시작했어.", --술에서 좀 깸 (그로기)
 	ANNOUNCE_DRUNK_IMMUNITY = "", --임시. 위그 전용,
 	ANNOUNCE_NOTCHARGE = "충전 좀 해야겠는데, 친구!", --번개염소가 충전이 안되서 양동이로 젖을 짤수 없음
@@ -42,6 +46,7 @@ return {
 		WELL_DRILLING_ITEM = "흐유유, 땅 좀 파보자고!", --드릴 아이템
 		HOLE = "안쪽이 꽤 깊은데!", --우물 구멍
 		WELL = "내릴 양동이를 찾아봐야겠네.", --우물
+		BOTTLE_POUCH = "작업해야함",
 
 		WX78MODULE_NONEDRUNK = "네가 그 폐급 속의 A급이니?", -- 78전용 묘듈
 
@@ -67,6 +72,13 @@ return {
 		RUINCACAO = "난 크람푸스 아저씨도 아닌데 말야.", --부수기 전 카카오 열매
 		RUINCACAO_BEAN = "타는냄새 나는것 같지 않아?", --부순 후 카카오 콩  
 		RUINCACAO_BEAN_COOKED = "기이하게도 냄새가 괜찮네.", --구운 카카오 콩
+
+		APPLEPINE = "작업해야함",
+		APPLEPINE_COOKED = "작업해야함",
+		LIMON = "작업해야함",
+		LIMON_COOKED = "작업해야함",
+		CITROYUZU = "작업해야함",
+		CITROYUZU_COOKED = "작업해야함",
 
 		-- 증류주 첨가제
 

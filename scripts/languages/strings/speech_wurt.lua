@@ -9,6 +9,10 @@ return {
 	},
 
 	ANNOUNCE_DRUNK = "머리 아파... 열나는거 가타, 뽀르르륵..", -- 취함
+	ANNOUNCE_DRUNK_MUMBLE = 
+	{
+		--대사 추가해야함
+	},
 	ANNOUNCE_DRUNK_END = "뽀륵! 어지러운거 좀 덜해.", --술에서 좀 깸 (그로기)
 	ANNOUNCE_DRUNK_IMMUNITY = "", --임시. 위그 전용,
 	ANNOUNCE_NOTCHARGE = "젖 안나와!", --번개염소가 충전이 안되서 양동이로 젖을 짤수 없음
@@ -42,6 +46,7 @@ return {
 		WELL_DRILLING_ITEM = "땅에 구멍 왜 뚫어?", --드릴 아이템
 		HOLE = "물 소리 나.", --우물 구멍
 		WELL = "매끈이들 구멍에서 물 떠 마신대, 왜?", --우물
+		BOTTLE_POUCH = "작업해야함",
 
 		WX78MODULE_NONEDRUNK = "바스락거려.", -- 78전용 묘듈
 
@@ -67,6 +72,13 @@ return {
 		RUINCACAO = "아야! 너무 딱딱해!", --부수기 전 카카오 열매
 		RUINCACAO_BEAN = "기름많아, 뽀륵.", --부순 후 카카오 콩  
 		RUINCACAO_BEAN_COOKED = "아직 초콜릿 아니야!", --구운 카카오 콩
+
+		APPLEPINE = "작업해야함",
+		APPLEPINE_COOKED = "작업해야함",
+		LIMON = "작업해야함",
+		LIMON_COOKED = "작업해야함",
+		CITROYUZU = "작업해야함",
+		CITROYUZU_COOKED = "작업해야함",
 
 		-- 증류주 첨가제
 
