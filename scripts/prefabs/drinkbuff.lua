@@ -1,3 +1,14 @@
+local ANCIENTFRUIT_NIGHTVISION_COLOURCUBES =
+{
+    day = "images/colour_cubes/nightvision_fruit_cc.tex",
+    dusk = "images/colour_cubes/nightvision_fruit_cc.tex",
+    night = "images/colour_cubes/nightvision_fruit_cc.tex",
+    full_moon = "images/colour_cubes/nightvision_fruit_cc.tex",
+
+    nightvision_fruit = true, -- NOTES(DiogoW): Here for convinience.
+}
+
+
 local function Dodetox(inst, target)
     target.components.debuffable:RemoveDebuff("alcoholdebuff")
     target.components.debuffable:RemoveDebuff("drunkarddebuff")
@@ -972,7 +983,7 @@ local function fn_goodnightvision()
     inst.components.debuff:SetExtendedFn(OnExtended_GoodNightVision)
     inst.components.debuff.keepondespawn = true
 
-    buff_OnExtended(inst)
+    OnExtended_GoodNightVision(inst)
 
     inst.OnSave = OnSave_GoodNightVision
     inst.OnLoad = OnLoad_GoodNightVision
