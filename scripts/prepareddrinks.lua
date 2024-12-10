@@ -247,25 +247,6 @@ local drinks =
 		potlevel_bottle = "mid",
 		drinktype = DRINKTYPY.FRUIT,
 	},
-
-	dawn_fog = {
-		test = function(boilier, names, tags) return names.ancientfruit_nightvision and names.ancientfruit_nightvision > 1 and tags.frozen and tags.ferment and Preference(names, tags) and not tags.veggie and notmeat(tags) and notname(names) and lessthing(names) and notages(tags) end,
-		priority = 2,
-        health = TUNING.HEALING_LARGE/5, -- 8 (40) ( MFP모드의 오렌지 쥬스 참고함)
-        hunger = TUNING.CALORIES_MEDSMALL/5, -- 3.75 (18.75)
-        sanity = TUNING.SANITY_TINY, -- 3 (15)
-        thirst = TUNING.HYDRATION_MEDSMALL, -- 22.5 (111)
-        perishtime = TUNING.PERISH_MED, --10일
-		cooktime = TUNING.KETTLE_FRUIT,
-		potlevel = "mid",
-		potlevel_bottle = "mid",
-		drinktype = DRINKTYPY.FRUIT,
-		oneatenfn = function(inst, eater)
-			eater:AddDebuff("goodnightvisionbuff", "goodnightvisionbuff")
-		end,
-	},
-
-
 	-- 야채차(목마름 특화)
 	
 	carrot_tea = 

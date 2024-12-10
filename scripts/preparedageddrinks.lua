@@ -127,6 +127,23 @@ local drinks =
 			eater:AddDebuff("sweettea_buff", "sweettea_buff")
 		end,
 	},
+
+	dawn_fog = {
+		test = function(boilier, names, tags) return names.ancientfruit_nightvision and names.ancientfruit_nightvision > 1 and tags.frozen and tags.ferment and Preference(names, tags) and not tags.veggie and notmeat(tags) and notname(names) and lessthing(names) and notages(tags) end,
+		priority = 2,
+        health = TUNING.HEALING_LARGE/5, -- 8 (40) ( MFP모드의 오렌지 쥬스 참고함)
+        hunger = TUNING.CALORIES_MEDSMALL/5, -- 3.75 (18.75)
+        sanity = TUNING.SANITY_TINY, -- 3 (15)
+        thirst = TUNING.HYDRATION_MEDSMALL, -- 22.5 (111)
+        perishtime = TUNING.PERISH_MED, --10일
+		cooktime = TUNING.KETTLE_FRUIT,
+		potlevel = "mid",
+		potlevel_bottle = "mid",
+		drinktype = DRINKTYPY.FRUIT,
+		oneatenfn = function(inst, eater)
+			eater:AddDebuff("goodnightvisionbuff", "goodnightvisionbuff")
+		end,
+	},
 	
 	colaquantum =
 	{
@@ -391,6 +408,27 @@ local drinks =
 		oneatenfn = function(inst, eater)
 			alcohol(inst, eater)
 			give_tech(inst, eater, 2)
+		end,
+	},
+
+	midnight_storm = {
+		test = function(boilier, names, tags) return names.ancientfruit_nightvision and names.ancientfruit_nightvision == 2 and names.wormlight and names.wormlight == 1 and tags.ferment and tags.ferment == 1 and Preference(names, tags) and not tags.veggie and notmeat(tags) and notname(names) and lessthing(names) and notages(tags) end,
+		priority = 2,
+        health = TUNING.HEALING_LARGE/5, -- 8 (40) ( MFP모드의 오렌지 쥬스 참고함)
+        hunger = TUNING.CALORIES_MEDSMALL/5, -- 3.75 (18.75)
+        sanity = TUNING.SANITY_TINY, -- 3 (15)
+        thirst = TUNING.HYDRATION_MEDSMALL, -- 22.5 (111)
+        tags = {"alcohol"},
+        perishtime = TUNING.PERISH_MED, --10일
+		cooktime = (TUNING.KETTLE_LUXURY_GOODS + TUNING.BEER_WAIT),
+		potlevel = "mid",
+		potlevel_bottle = "mid",
+		drinktype = DRINKTYPY.BREWER,
+		prefabs = { "alcoholdebuff","drunkarddebuff","resistancebuff" },
+		oneatenfn = function(inst, eater)
+			eater.gnv_muit = .5
+			eater:AddDebuff("goodnightvisionbuff", "goodnightvisionbuff")
+			alcohol(inst, eater)
 		end,
 	}
 }

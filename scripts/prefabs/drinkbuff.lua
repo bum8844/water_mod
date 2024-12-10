@@ -266,6 +266,9 @@ end
 local function OnAttached_caffein(inst, target)
     target:PushEvent("foodbuffattached", { buff = "ANNOUNCE_CAFFINE_BUFF_START", priority = 1 })
     inst.components.timer:StartTimer("caffeinbuff_done", target.caffeinbuff_duration or TUNING.CAFFEIN_TIME)
+    if target.caffeinbuff_duration then
+        target.caffeinbuff_duration = nil
+    end
     inst.entity:SetParent(target.entity)
     inst.Transform:SetPosition(0, 0, 0)
     if target.components.locomotor ~= nil then
@@ -287,6 +290,9 @@ end
 local function OnExtended_caffein(inst, target)
     inst.components.timer:StopTimer("caffeinbuff_done")
     inst.components.timer:StartTimer("caffeinbuff_done", target.caffeinbuff_duration or TUNING.CAFFEIN_TIME)
+    if target.caffeinbuff_duration then
+        target.caffeinbuff_duration = nil
+    end
 end
 
 local function OnTimerDone_caffein(inst, data)
@@ -871,6 +877,13 @@ local function OnAttached_GoodNightVision(inst, target)
     inst.entity:SetParent(target.entity)
     inst.Transform:SetPosition(0, 0, 0)
 
+    if target.gnv_muit then
+        inst.muit = target.gnv_muit
+        target.gnv_muit = nil
+    else
+        inst.muit = 1
+    end
+
     inst:ListenForEvent("death", function()
         inst.components.debuff:Stop()
     end, target)
@@ -888,7 +901,6 @@ local function OnDetached_GoodNightVision(inst, target)
             inst._enabled:set(false)
         end
     end
-
     -- NOTES(DiogoW): Delayed removal to let the client run the dirty event.
     inst:DoTaskInTime(10*FRAMES, inst.Remove)
 end
@@ -899,13 +911,35 @@ local function Expire_GoodNightVision(inst)
     end
 end
 
-local function OnExtended_GoodNightVision(inst)
+local function OnExtended_GoodNightVision(inst,target)
+
+    local timer = TUNING.ANCIENTTREE_NIGHTVISION_FRUIT_BUFF_DURATION
+
     if inst.task ~= nil then
         inst.task:Cancel()
         inst.task = nil
     end
 
-    inst.task = inst:DoTaskInTime(TUNING.ANCIENTTREE_NIGHTVISION_FRUIT_BUFF_DURATION, Expire_GoodNightVision)
+    if target.gnv_muit then
+        inst.muit = target.gnv_muit
+        timer = timer*target.gnv_muit
+        target.gnv_muit = nil
+    else
+        inst.muit = 1
+        timer = timer*inst.muit
+    end
+    inst.task = inst:DoTaskInTime(timer, Expire_GoodNightVision)
+end
+
+local function Start_GoodNightVision(inst)
+    local timer = TUNING.ANCIENTTREE_NIGHTVISION_FRUIT_BUFF_DURATION*inst.muit
+
+    if inst.task ~= nil then
+        inst.task:Cancel()
+        inst.task = nil
+    end
+
+    inst.task = inst:DoTaskInTime(timer, Expire_GoodNightVision)
 end
 
 local function OnSave_GoodNightVision(inst, data)
@@ -975,6 +1009,8 @@ local function fn_goodnightvision()
 
     inst.entity:Hide()
 
+    inst.muit = 1
+
     inst.persists = false
 
     inst:AddComponent("debuff")
@@ -983,7 +1019,7 @@ local function fn_goodnightvision()
     inst.components.debuff:SetExtendedFn(OnExtended_GoodNightVision)
     inst.components.debuff.keepondespawn = true
 
-    OnExtended_GoodNightVision(inst)
+    Start_GoodNightVision(inst)
 
     inst.OnSave = OnSave_GoodNightVision
     inst.OnLoad = OnLoad_GoodNightVision
