@@ -88,7 +88,6 @@ local drinks =
 		drinktype = DRINKTYPY.VEGGIE,
 		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_COLD_FOOD,
 	},
-	
 	mulled =  --만들기 어렵다는점을 감안해서 버프
 	{
 		test = function(boilier, names, tags) return (names.berries or  names.berries_cooked or names.berries_juicy or names.berries_juicy_cooked) and ((names.berries or 0)+(names.berries_cooked or 0)+(names.berries_juicy or 0)+(names.berries_juicy_cooked or 0)) == 1 and (names.onion or names.onion_cooked or names.garlic or names.garlic_cooked) and (( names.onion or 0 ) + ( names.onion_cooked or 0 ) + ( names.garlic or 0 ) + ( names.garlic_cooked or 0 )) == 2 and tags.sweetener and tags.sweetener >= 1 end,
@@ -149,6 +148,23 @@ local drinks =
 	    end,
 		potlevel = "mid",
 		potlevel_bottle = "mid",
+	},
+
+	applepine_cappuccion	= {
+		test = function(boilier, names, tags) return (names.kelp or names.kelp_cooked or names.kelp_dried or names.seaweed or names.seaweed_cooked or names.seaweed_dried or names.kyno_seaweeds or names.kyno_seaweeds_cooked or names.kyno_seaweeds_dried) and tags.frozen and tags.frozen >= 1 and Preference(names, tags) and notmeat(tags) and notname(names) and lessthing(names) end,
+		priority = 1,
+		health = TUNING.HEALING_MED/4,   -- 5 (25)
+		hunger = TUNING.DRINK_CALORIES/2, -- 2.5 (12.5)
+		sanity = -TUNING.SANITY_TINY, -- -5 (-25)
+		thirst = TUNING.HYDRATION_MED*2, --  60 (300)
+		tags = {"veggietype"},
+		temperature = TUNING.COLD_FOOD_BONUS_TEMP,
+		temperatureduration = TUNING.TOTAL_DAY_TIME/5, -- 1분 36초
+		potlevel = "high",
+		potlevel_bottle = "mid",
+		perishtime = TUNING.PERISH_FAST, -- 6일
+		drinktype = DRINKTYPY.VEGGIE,
+		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_COLD_FOOD,
 	},
 }
 

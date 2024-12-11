@@ -156,6 +156,12 @@ return {
 		MULLED = "",
 		BUTTERBEER = "",
 
+		APPLEPINE_JUICE = "",
+		APPLEPINE_SMOOTHIE = "",
+		APPLEPINE_CAPPUCCINO = "",
+
+		CITROYUZU_JUICE = "",
+
 		-- Mod-compatibility Drinks
 
 		COCONUT_JUICE = "", --난파선 코코넛 쥬스
@@ -164,8 +170,6 @@ return {
 		CHERRY_ROSEBERRIES_TEA = "", --체리숲 로즈힙 차
 		CHERRY_HONEY_TEA = "", --체리숲 벚꽃꿀 차
 		SWEET_RICE_DRINK = "", -- 비타협 식혜
-		APPLEPINE_JUICE = "", -- 레기온 파인애플 주스
-		CITROYUZU_JUICE = "", -- 모어 푸드 팩 오랜지 주스
 		STRAWBERRY_SMOOTHIE = "", -- 모어 푸드 팩 딸기 스무디
 		STRAWBERRY_MILK_SMOOTHIE = "", -- 모어 푸드 팩 딸기 스무디 라떼
 
@@ -174,13 +178,15 @@ return {
 		SPOILED_DRINK = "", --Spoiled Drink
 
 		-- Sodas
-
+		
 		SODA = "",
 		FRUITSODA = "",
 		LIMONSODA = "",
 		COLA = "",
 		COLAQUANTUM = "",
 		LUMPY_BEER = "",
+		DAWN_FOG = "",
+		MOON_CAP_DRINK = "",
 
 		-- Brewages
 
@@ -194,6 +200,8 @@ return {
 		LUMPY_WINE = "",
 		PULQUE = "",
 		RUINCACAO_WINE = "",
+		MIDNIGHT_STROM = "",
+		APPLEPINE_CIDER = "",
 
 		CHERRY_DOCTOR_COLA = "", --체리숲 닥터 페퍼(닥터 체리)
 		APPLEPINESODA = "", -- 탄산 파인애플(오란씨)
@@ -224,6 +232,8 @@ return {
 		MADHU_RUM = "",
 		BERRY_BRANDY = "",
 		AREUHI = "",
+		APPLEPINE_BRANDY = "",
+		VOID = "",
 
 		-- Warly-only Spirits
 
@@ -257,6 +267,8 @@ return {
         WHITE_RUINCOLATE = "",
         RUINCOLATE = "",
         RUIN_SCHOKAKOLA = "",
+        APPLEPINE_PIE = "",
+        APPLEPINE_FRIED_RICE = "",
 
 		BUCKET_STEEL_EMPTY = 
 		{

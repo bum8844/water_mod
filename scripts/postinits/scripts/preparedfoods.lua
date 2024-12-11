@@ -44,6 +44,31 @@ local water_foods = {
 				eater.components.grogginess:ResetGrogginess()
             end
 		end
+	},
+	applepin_pie = {
+		test = function(cooker, names, tags)  return names.applepin and not tags.meat end,
+		priority = 1,
+		foodtype = FOODTYPE.VEGGIE,
+		health = TUNING.HEALING_LARGE,
+		hunger = TUNING.CALORIES_HUGE,
+		perishtime = TUNING.PERISH_SLOW,
+		sanity = TUNING.SANITY_TINY,
+		temperature = TUNING.HOT_FOOD_BONUS_TEMP,
+		temperatureduration = TUNING.FOOD_TEMP_AVERAGE,
+		cooktime = 2,
+        floater = {"med", nil, 0.8},
+	},
+	applepin_fried_rice = {
+		test = function(cooker, names, tags) return tags.applepin_cooked and not tags.inedible end,
+		priority = -1,
+		foodtype = FOODTYPE.MEAT,
+		health = TUNING.HEALING_SMALL,
+		hunger = TUNING.CALORIES_SMALL*5,
+		perishtime = TUNING.PERISH_MED,
+		sanity = TUNING.SANITY_TINY,
+		cooktime = .75,
+        potlevel = "high",
+        floater = {"small", nil, nil},
 	}
 }
 

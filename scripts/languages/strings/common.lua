@@ -186,6 +186,14 @@ return
 		MULLED = "멀드와인",
 		BUTTERBEER = "버터맥주",
 
+		APPLEPINE_JUICE = "파인애플주스",
+		APPLEPINE_SMOOTHIE = "사과 스무디",
+		APPLEPINE_CAPPUCCINO = "사과 카푸치노",
+
+		CITROYUZU_JUICE = "오랜지주스",
+		CITROYUZU_TEA = "유자차",
+		EARLGREY_TEA = "얼그래이 홍차",
+
 		-- preparedrink 타모드 전용
 
 		COCONUT_JUICE = "후르츠 앤드 코코",
@@ -194,8 +202,6 @@ return
 		CHERRY_ROSEBERRIES_TEA = "로즈힙티",
 		CHERRY_HONEY_TEA = "벚꿀차",
 		SWEET_RICE_DRINK = "식혜",
-		APPLEPINE_JUICE = "파인애플주스",
-		CITROYUZU_JUICE = "오랜지주스",
 		STRAWBERRY_SMOOTHIE = "딸기 스무디",
 		STRAWBERRY_MILK_SMOOTHIE = "딸기 밀크셰이크",
 
@@ -218,9 +224,12 @@ return
 		LUMPY_BEER = "루트비어",
 		SODA = "탄산수",
 		FRUITSODA = "과일소다",
-		LIMONSODA = "허니소다",
+		LIMONSODA = "리먼소다",
 		COLA = "콜라",
 		COLAQUANTUM = "퀀텀콜라",
+		CITROYUZUSODA = "오랜지 소다",
+		DAWN_FOG = "던 포그",
+		MOON_CAP_DRINK = "비팔로-비",
 
 		--양조주
 
@@ -234,6 +243,9 @@ return
 		LUMPY_WINE = "서주",
 		PULQUE = "풀케",
 		RUINCACAO_WINE = "카카오와인",
+		MIDNIGHT_STROM = "미드나이트 스톰",
+		APPLEPINE_CIDER = "사과주",
+		CITROYUZU_WINE = "오랜지 와인",
 
 		-- prepareagedrink 타모드 전용
 
@@ -241,7 +253,6 @@ return
 
 		CHERRY_DOCTOR_COLA = "닥터 체리",
 		APPLEPINESODA = "파인애플 소다",
-		CITROYUZUSODA = "오랜지 소다",
 		STRAWBERRYSODA = "딸기 소다",
 
 		--양조주
@@ -263,6 +274,9 @@ return
 		MADHU_RUM = "벌꿀 럼",
 		BERRY_BRANDY = "베리 브랜디",
 		AREUHI = "아르히",
+		APPLEPINE_BRANDY = "사과 브랜디",
+		VOID = "보이드",
+		CITROYUZU_CURACAO = "오랜지 큐라소",
 
 		--왈리 전용
 
@@ -296,6 +310,8 @@ return
 		WHITE_RUINCOLATE = "화이트 초콜릿",
 		RUINCOLATE = "초콜릿",
 		RUIN_SCHOKAKOLA = "쇼카콜라",
+        APPLEPINE_PIE = "사과파이",
+        APPLEPINE_FRIED_RICE = "파인애플 볶음밥",
 	},
 
 	RECIPE_DESC =
@@ -362,6 +378,8 @@ return
 			FOOD_EFFECTS_HAYFEVER_RELIEF_MED = "건초열 완화",
 			FOOD_EFFECTS_SUS = "어딘가 영적인 느낌",
 			FOOD_EFFECTS_BUTTERHUNTER = "버터 추가 획득",
+			FOOD_EFFECTS_SATIETY = "허기 감소 수치 완화",
+			FOOD_EFFECTS_GOODNIGHTVISION = "더 좋은 야간투시",
 			FOOD_EFFECTS_ANCIENT_KNOWLEGEE_PIECE = "하급 고대 아이템 제작",
 			FOOD_EFFECTS_ANCIENT_KNOWLEGEE = "모든 고대 아이템 제작",
 			FOOD_EFFECTS_ANCIENT_KNOWLEGEE_THIRD = "모든 고대 아이템 3회 제작",
@@ -375,6 +393,7 @@ return
 			FOOD_EFFECTS_NAG_AURA_RESIST_HAYFEVER_RELIEF_HUGE = "정신력 감소 저항, 건초열 예방",
 			FOOD_EFFECTS_NAG_AURA_RESIST_ANCIENT_KNOWLEGEE = "정신력 감소 저항, 모든 고대 아이템 제작",
 			FOOD_EFFECTS_NAG_AURA_RESIST_DRY = "정신력 감소 저항, 습기 제거",
+			FOOD_EFFECTS_NAG_AURA_RESIST_GOODNIGHTVISION = "정신력 감소 저항, 더 좋은 야간투시",
 			FOOD_EFFECTS_INTOXICATION = "만취, 피해경감",
 			FOOD_EFFECTS_INTOXICATION_GLOW = "만취, 피해 경감, 발광",
 			FOOD_EFFECTS_INTOXICATION_ELECTRIC_ATTACK = "만취, 피해 경감, 전기공격",
@@ -383,8 +402,7 @@ return
 			FOOD_EFFECTS_INTOXICATION_CAFFINE = "만취, 피해경감, 이속 증가",
 			FOOD_EFFECTS_INTOXICATION_ANCIENT_KNOWLEGEE_THIRD = "만취, 피해경감, 모든 고대 아이템 3회 제작",
 			FOOD_EFFECTS_INTOXICATION_DRY = "만취, 피해경감 및 방습",
-			FOOD_EFFECTS_SATIETY = "허기 감소 수치 완화",
-			FOOD_EFFECTS_GOODNIGHTVISION = "더 좋은 야간투시",
+			FOOD_EFFECTS_INTOXICATION_GOODNIGHTVISION = "만취, 피해경감 및 더 좋은 야간투시",
 		},
 	},
 }

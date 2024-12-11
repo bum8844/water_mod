@@ -162,6 +162,12 @@ return {
 		MULLED = "내 뇌와 간을 지켜줘.",
 		BUTTERBEER = "버터스카치를 응축한 듯한 맛이야.",
 
+		APPLEPINE_JUICE = "이젠 껍질 때문에 입천장 다칠 일 없겠어.",
+		APPLEPINE_SMOOTHIE = "",
+		APPLEPINE_CAPPUCCINO = "",
+
+		CITROYUZU_JUICE = "오렌지 주스가 있어서 주황.",
+
 		-- 콜라보 주전자 음료
 
 		COCONUT_JUICE = "안에 젤리가 들어 있어.",
@@ -170,12 +176,6 @@ return {
 		CHERRY_ROSEBERRIES_TEA = "장미향이 강렬해.",
 		CHERRY_HONEY_TEA = "은은하게 꽃향기가 나네.",
 		SWEET_RICE_DRINK = "이런 음료도 있었어?",
-		APPLEPINE_JUICE = "이젠 껍질 때문에 입천장 다칠 일 없겠어.", -- 레기온 파인애플 주스
-		--APPLEPINE_SMOOTHIE = "",
-		--APPLEPINE_CIDER = "",
-		--APPLEPINE_CAPPUCCINO = "",
-		--APPLEPINE_BRANDY = "",
-		CITROYUZU_JUICE = "오렌지 주스가 있어서 주황.", -- 모어 푸드 팩 오랜지 쥬스 "CITROYUZU you glad that there's CITROYUZU juice?"
 		STRAWBERRY_SMOOTHIE = " 빨대는 없나?", -- 모어 푸드 팩 딸기 스무디
 		STRAWBERRY_MILK_SMOOTHIE = "아주 부드럽고 상큼해.", -- 모어 푸드 팩 딸기 스무디 라떼
 
@@ -191,6 +191,9 @@ return {
 		COLA = "과학이 가득한 맛이야!",
 		COLAQUANTUM = "짜릿한 과학이 들어있어!",
 		LUMPY_BEER = "엄청나게 톡 쏘는 향이야!",
+		CITROYUZUSODA = "정말 환타-스틱하네.", -- 탄산 오랜지(환타)
+		DAWN_FOG = "",
+		MOON_CAP_DRINK = "",
 
 		--양조주
 
@@ -204,12 +207,13 @@ return {
 		LUMPY_WINE = "깔끔하고 담백한 술이야.",
 		PULQUE = "끈적하고 시큼해.",
 		RUINCACAO_WINE = "이걸로 술을 만들 수 있을 줄은 몰랐어.",
+		MIDNIGHT_STROM = "",
+		APPLEPINE_CIDER = "",
 
 		--콜라보 소다
 
 		CHERRY_DOCTOR_COLA = "의사가 만들었다고는 못 믿겠는데.",
 		APPLEPINESODA = "입안이 따끔따끔해.", -- 탄산 파인애플(오란씨)
-		CITROYUZUSODA = "정말 환타-스틱하네.", -- 탄산 오랜지(환타)
 		STRAWBERRYSODA = "베리강력한 탄산감이야.", -- 탄산 딸기(웰치스 딸기)
 
 		--콜라보 양조주
@@ -231,6 +235,8 @@ return {
 		MADHU_RUM = "아주 과학적이고 '해'학적이야.", --"It's very scien-sea and pirate-y."
 		BERRY_BRANDY = "과학적 영감을 얻는 데에 도움이 돼.",
 		AREUHI = "이젠 우유 같아 보이지도 않아.",
+		APPLEPINE_BRANDY = "",
+		VOID = "",
 
 		--왈리 전용 증류주
 
@@ -264,8 +270,8 @@ return {
         WHITE_RUINCOLATE = "많이 먹기에는 느끼하겠어.",
         RUINCOLATE = "과학을 하려면 당이 필요해.",
         RUIN_SCHOKAKOLA = "초콜릿에 과학을 잔뜩 주입했어.",
-        --APPLEPINE_PIE = "",
-        --APPLEPINE_FRIED_RICE = "",
+        APPLEPINE_PIE = "",
+        APPLEPINE_FRIED_RICE = "",
 
 		BUCKET_STEEL_EMPTY = 
 		{

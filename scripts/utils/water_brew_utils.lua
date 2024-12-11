@@ -76,20 +76,17 @@ function onlycoral_brain(names, tags)
 end
 
 function Preference(names, tags, must, num)
-	local musttag = true
-
+	local vel = num or 0
 	if must and type(must) == "table" then
 		for k, v in pairs(must) do
-			if not tags[v] then
-				return false
+			if tags[v] then
+				return ((tags.sweetener or 0) + (tags.dairy or 0) + (tags.milk or 0) ) > vel
 			end
+			return false
 		end
 	elseif must then
-		musttag = tags[must]
+		return ((tags.sweetener or 0) + (tags.dairy or 0) + (tags.milk or 0) ) > vel
 	end
-
-	local vel = num or 0
-	return musttag and ( (tags.sweetener or 0) + (tags.dairy or 0) + (tags.milk or 0) ) > vel
 end
 
 function Tea_Def(names, tags)

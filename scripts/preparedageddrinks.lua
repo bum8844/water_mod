@@ -21,7 +21,7 @@ local drinks =
 	},
 
 	lumpy_beer = {
-		test = function(boilier, names, tags) return tags.ferment and tags.ferment >= 1 and tags.sweetener and tags.sweetener >=1 and Root_calc(names, tags) end, --(names.potato or names.potato_cooked or names.sweet_potato or names.sweet_potato_cooked or names.kyno_sweetpotato or names.kyno_sweetpotato_cooked or names.mfp_sweetpotato or names.mfp_sweetpotato_cooked) and tags.veggie and not tags.fruit and notmeat(tags) and notname(names) and lessthing(names) and notages(tags) end,
+		test = function(boilier, names, tags) return tags.ferment and tags.ferment >= 1 and Preference(names,tags,"sweetener",.9) and Root_calc(names, tags) end, --(names.potato or names.potato_cooked or names.sweet_potato or names.sweet_potato_cooked or names.kyno_sweetpotato or names.kyno_sweetpotato_cooked or names.mfp_sweetpotato or names.mfp_sweetpotato_cooked) and tags.veggie and not tags.fruit and notmeat(tags) and notname(names) and lessthing(names) and notages(tags) end,
 		priority = 2,
 		health = TUNING.HEALING_SMALL*2, -- 6 [30] (120)
 		hunger = TUNING.CALORIES_SMALL/2, --  6.25 [31.25] (125)
@@ -38,7 +38,7 @@ local drinks =
 	
 	fruitsoda =
 	{
-		test = function(boilier, names, tags) return tags.ferment and tags.ferment == 1 and tags.fruit and tags.fruit >= 2 and tags.sweetener and tags.sweetener >=1 and notmeat(tags) and not names.twigs and notname(names) end,
+		test = function(boilier, names, tags) return tags.ferment and tags.ferment == 1 and tags.fruit and tags.fruit >= 2 and Preference(names,tags,"sweetener",.9) and notmeat(tags) and not names.twigs and notname(names) end,
 		priority = 2,
 		health = TUNING.HEALING_SMALL*3, -- 9 [45] (180)
 		hunger = TUNING.CALORIES_SMALL/4, -- 3.125 [15.625] (62.5)
@@ -56,7 +56,7 @@ local drinks =
 	
 	limonsoda =
 	{   
-		test = function(boilier, names, tags) return tags.ferment and tags.ferment == 1 and tags.sweetener and tags.sweetener == 2 and names.limon and names.limon == 1 and notmeat(tags) and not names.twigs and notname(names) end,
+		test = function(boilier, names, tags) return tags.ferment and tags.ferment == 1 and Preference(names,tags,"sweetener",1.9) and names.limon and names.limon == 1 and notmeat(tags) and not names.twigs and notname(names) end,
 		priority = 3,
 		health = TUNING.HEALING_SMALL*2, -- 6 [30] (120)  
 		hunger = TUNING.CALORIES_SMALL/4, -- 3.125 [15.625] (62.5)
@@ -73,7 +73,7 @@ local drinks =
 
 	applepinesoda =
 	{
-		test = function(boilier, names, tags) return tags.ferment and tags.ferment == 1 and tags.sweetener and tags.sweetener >= 1 and (names.pineananas or names.pineananas_cooked or names.kyno_pineapple_halved or names.kyno_pineapple_cooked or names.applepine_cooked) and ((names.pineananas or 0) + (names.pineananas_cooked or 0) + (names.kyno_pineapple_halved or 0) + (names.kyno_pineapple_cooked or 0) + (names.names.applepine_cooked or 0)) == 2 and notname(names) and lessthing(names) end,
+		test = function(boilier, names, tags) return tags.ferment and tags.ferment == 1 and Preference(names,tags,"sweetener",.9) and (names.pineananas or names.pineananas_cooked or names.kyno_pineapple_halved or names.kyno_pineapple_cooked or names.applepine_cooked) and ((names.pineananas or 0) + (names.pineananas_cooked or 0) + (names.kyno_pineapple_halved or 0) + (names.kyno_pineapple_cooked or 0) + (names.names.applepine_cooked or 0)) == 2 and notname(names) and lessthing(names) end,
 		priority = 4,
 		health = TUNING.HEALING_SMALL*3, -- 9 [45] (180)
 		hunger = TUNING.CALORIES_SMALL/2, --  6.25 [31.25] (125)
@@ -89,7 +89,7 @@ local drinks =
 
 	citroyuzusoda =
 	{
-		test = function(boilier, names, tags) return tags.ferment and tags.ferment >= 1 and tags.sweetener and tags.sweetener >= 1 and (names.mfp_orange or names.mfp_orange_cooked or names.fwd_in_pdt_food_orange or names.citroyuzu or names.citroyuzu_cooked) and ((names.mfp_orange or 0) + (names.fwd_in_pdt_food_orange or 0) + (names.mfp_orange_cooked or 0) + (names.citroyuzu or 0) + (names.citroyuzu_cooked or 0)) == 2 and notname(names) and lessthing(names) end,
+		test = function(boilier, names, tags) return tags.ferment and tags.ferment >= 1 and Preference(names,tags,"sweetener",.9) and (names.mfp_orange or names.mfp_orange_cooked or names.fwd_in_pdt_food_orange or names.citroyuzu or names.citroyuzu_cooked) and ((names.mfp_orange or 0) + (names.fwd_in_pdt_food_orange or 0) + (names.mfp_orange_cooked or 0) + (names.citroyuzu or 0) + (names.citroyuzu_cooked or 0)) == 2 and notname(names) and lessthing(names) end,
 		priority = 4,
 		health = TUNING.HEALING_SMALL*3, -- 9 [45] (180)
 		hunger = TUNING.CALORIES_SMALL/2, --  6.25 [31.25] (125)
@@ -129,7 +129,7 @@ local drinks =
 	},
 
 	dawn_fog = {
-		test = function(boilier, names, tags) return names.ancientfruit_nightvision and names.ancientfruit_nightvision > 1 and tags.frozen and tags.ferment and Preference(names, tags) and not tags.veggie and notmeat(tags) and notname(names) and lessthing(names) and notages(tags) end,
+		test = function(boilier, names, tags) return names.ancientfruit_nightvision and names.ancientfruit_nightvision > 1 and tags.frozen and tags.ferment and not tags.veggie and notmeat(tags) and notname(names) and lessthing(names) and notages(tags) end,
 		priority = 2,
         health = TUNING.HEALING_LARGE/5, -- 8 (40) ( MFP모드의 오렌지 쥬스 참고함)
         hunger = TUNING.CALORIES_MEDSMALL/5, -- 3.75 (18.75)
@@ -139,7 +139,7 @@ local drinks =
 		cooktime = TUNING.KETTLE_FRUIT,
 		potlevel = "mid",
 		potlevel_bottle = "mid",
-		drinktype = DRINKTYPY.FRUIT,
+		oneat_desc = STRINGS.UI.FOOD_EFFECTS_GOODNIGHTVISION
 		oneatenfn = function(inst, eater)
 			eater:AddDebuff("goodnightvisionbuff", "goodnightvisionbuff")
 		end,
@@ -263,7 +263,7 @@ local drinks =
 	--꿀술
 	madhu =
 	{
-		test = function(boilier, names, tags) return tags.sweetener and tags.sweetener >= 3 and notmeat(tags) and notname(names) end,
+		test = function(boilier, names, tags) return Preference(names,tags,"sweetener",2.9) and notmeat(tags) and notname(names) end,
 		priority = 1,
 		health = TUNING.HEALING_SMALL*3, -- 9 [45] (180) 
 		hunger = TUNING.CALORIES_HUGE/10, -- 7.5 [37.5] (150) 허기 회복은 맥주에 집중
@@ -349,7 +349,7 @@ local drinks =
 	-- 발광 베리류
 	glowberrywine =
 	{
-		test = function(boilier, names, tags) return ((names.wormlight or 0) + (names.wormlight_lesser or 0) == 3) and tags.sweetener and tags.sweetener >=1 and notname(names) end,
+		test = function(boilier, names, tags) return ((names.wormlight or 0) + (names.wormlight_lesser or 0) == 3) and Preference(names,tags,"sweetener",.9) and notname(names) end,
 		priority = 1,
 		health = TUNING.HEALING_SMALL, -- 0-> 3 [15] (60)
 		hunger = TUNING.DRINK_CALORIES, -- 5 [25] (100)
@@ -412,7 +412,7 @@ local drinks =
 	},
 
 	midnight_storm = {
-		test = function(boilier, names, tags) return names.ancientfruit_nightvision and names.ancientfruit_nightvision == 2 and names.wormlight and names.wormlight == 1 and tags.ferment and tags.ferment == 1 and Preference(names, tags) and not tags.veggie and notmeat(tags) and notname(names) and lessthing(names) and notages(tags) end,
+		test = function(boilier, names, tags) return names.ancientfruit_nightvision and names.ancientfruit_nightvision == 2 and names.wormlight and names.wormlight == 1 and tags.ferment and tags.ferment == 1 and not tags.veggie and notmeat(tags) and notname(names) and lessthing(names) and notages(tags) end,
 		priority = 2,
         health = TUNING.HEALING_LARGE/5, -- 8 (40) ( MFP모드의 오렌지 쥬스 참고함)
         hunger = TUNING.CALORIES_MEDSMALL/5, -- 3.75 (18.75)
@@ -425,12 +425,76 @@ local drinks =
 		potlevel_bottle = "mid",
 		drinktype = DRINKTYPY.BREWER,
 		prefabs = { "alcoholdebuff","drunkarddebuff","resistancebuff" },
+		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_NAG_AURA_RESIST_GOODNIGHTVISION,
 		oneatenfn = function(inst, eater)
 			eater.gnv_muit = .5
 			eater:AddDebuff("goodnightvisionbuff", "goodnightvisionbuff")
 			alcohol(inst, eater)
 		end,
-	}
+	},
+
+	applepin_cider = {
+		test = function(boilier, names, tags) return names.applepin and names.applepin >= 3 and notmeat(tags) and notname(names) and not tags.fat end,
+		priority = 1,
+		health = TUNING.HEALING_SMALL*4, -- 12 [60] (240) 3 유제품 버프
+		hunger = TUNING.CALORIES_MEDSMALL/3, -- 6.25 [31.25] (125)
+		sanity = TUNING.SANITY_MED/2, -- 7.5 [37.5] (150) 
+		thirst = TUNING.HYDRATION_MED, -- 30 [150] (600)
+		tags = {"alcohol"},
+		perishtime = TUNING.PERISH_SLOW, -- 15일 ( 크므즈도 금방 상한다고 하더라구욥...)
+		cooktime = (TUNING.KETTLE_VEGGIE + TUNING.BEER_WAIT),
+		potlevel = "mid",
+		potlevel_bottle = "mid",
+		drinktype = DRINKTYPY.BREWER,
+		prefabs = { "alcoholdebuff","drunkarddebuff","resistancebuff" },
+		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_NAG_AURA_RESIST,
+		card_def = {ingredients = {{"goatmilk",4}}},
+		oneatenfn = function(inst, eater)
+			alcohol(inst, eater)
+		end,
+	},
+
+	citroyuzu_wine = {
+		test = function(boilier, names, tags) return (names.mfp_orange or names.mfp_orange_cooked or names.fwd_in_pdt_food_orange or names.citroyuzu or names.citroyuzu_cooked) and (names.mfp_orange or names.mfp_orange_cooked or names.fwd_in_pdt_food_orange or names.citroyuzu or names.citroyuzu_cooked) and ((names.mfp_orange or 0) + (names.fwd_in_pdt_food_orange or 0) + (names.mfp_orange_cooked or 0) + (names.citroyuzu or 0) + (names.citroyuzu_cooked or 0)) >= 3 and notmeat(tags) and notname(names) and not tags.fat end,
+		priority = 1,
+		health = TUNING.HEALING_SMALL*4, -- 12 [60] (240) 3 유제품 버프
+		hunger = TUNING.CALORIES_MEDSMALL/3, -- 6.25 [31.25] (125)
+		sanity = TUNING.SANITY_MED/2, -- 7.5 [37.5] (150) 
+		thirst = TUNING.HYDRATION_MED, -- 30 [150] (600)
+		tags = {"alcohol"},
+		perishtime = TUNING.PERISH_SLOW, -- 15일 ( 크므즈도 금방 상한다고 하더라구욥...)
+		cooktime = (TUNING.KETTLE_VEGGIE + TUNING.BEER_WAIT),
+		potlevel = "mid",
+		potlevel_bottle = "mid",
+		drinktype = DRINKTYPY.BREWER,
+		prefabs = { "alcoholdebuff","drunkarddebuff","resistancebuff" },
+		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_NAG_AURA_RESIST,
+		card_def = {ingredients = {{"goatmilk",4}}},
+		oneatenfn = function(inst, eater)
+			alcohol(inst, eater)
+		end,
+	},
+
+	mentha_spicata_wine = {
+		test = function(boilier, names, tags) return names.mentha_spicata and names.mentha_spicata >= 3 and notmeat(tags) and notname(names) and not tags.fat end,
+		priority = 1,
+		health = TUNING.HEALING_SMALL*4, -- 12 [60] (240) 3 유제품 버프
+		hunger = TUNING.CALORIES_MEDSMALL/3, -- 6.25 [31.25] (125)
+		sanity = TUNING.SANITY_MED/2, -- 7.5 [37.5] (150) 
+		thirst = TUNING.HYDRATION_MED, -- 30 [150] (600)
+		tags = {"alcohol"},
+		perishtime = TUNING.PERISH_SLOW, -- 15일 ( 크므즈도 금방 상한다고 하더라구욥...)
+		cooktime = (TUNING.KETTLE_VEGGIE + TUNING.BEER_WAIT),
+		potlevel = "mid",
+		potlevel_bottle = "mid",
+		drinktype = DRINKTYPY.BREWER,
+		prefabs = { "alcoholdebuff","drunkarddebuff","resistancebuff" },
+		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_NAG_AURA_RESIST,
+		card_def = {ingredients = {{"goatmilk",4}}},
+		oneatenfn = function(inst, eater)
+			alcohol(inst, eater)
+		end,
+	},	
 }
 
 
