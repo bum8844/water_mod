@@ -96,6 +96,11 @@ return {
 		CITROYUZU_SEEDS = "",
 		CITROYUZU_OVERSIZED = "",
 
+		--mentha_spicata
+
+		WEED_MENTHA_SPICATA = "",
+		MENTHA_SPICATA = "",
+
 		-- 증류주 첨가제
 
 		ADDITIVE_SEED = "애기들 들어있어", -- 리큐르에 제조에 첨가 할 씨허브(아니스,쥬니퍼베리,팔각 모티브)첨가제 
@@ -152,6 +157,14 @@ return {
 		MULLED = "속 따뜻해져, 쿨쿨", --뱅쇼
 		BUTTERBEER = "꿀꺽!", --해리포터 시리즈의 버터비어
 
+		APPLEPINE_JUICE = "멋쟁이 왕관 마실거", -- 레기온 파인애플 주스
+		APPLEPINE_SMOOTHIE = "",
+		APPLEPINE_CAPPUCCINO = "",
+
+		CITROYUZU_JUICE = "주황색 공 마실거", -- 모어 푸드 팩 오랜지 주스
+		CITROYUZU_TEA = "",
+		EARLGREY_TEA = "",
+
 		-- 콜라보 주전자 음료
 
 		COCONUT_JUICE = "탱글탱글 한거 가득", --난파선 코코넛 쥬스
@@ -160,8 +173,6 @@ return {
 		CHERRY_ROSEBERRIES_TEA = "새콤한 향", --체리숲 로즈힙 차
 		CHERRY_HONEY_TEA = "붕붕이들 매우 좋아해", --체리숲 벚꽃꿀 차
 		SWEET_RICE_DRINK = "달콤해!", -- 비타협 식혜
-		APPLEPINE_JUICE = "멋쟁이 왕관 마실거", -- 레기온 파인애플 주스
-		CITROYUZU_JUICE = "주황색 공 마실거", -- 모어 푸드 팩 오랜지 주스
 		STRAWBERRY_SMOOTHIE = "새콤 시원", -- 모어 푸드 팩 딸기 스무디
 		STRAWBERRY_MILK_SMOOTHIE = "부들부들 새콤 시원", -- 모어 푸드 팩 딸기 스무디 라떼
 
@@ -177,6 +188,10 @@ return {
 		COLA = "톡톡 단 검은 물", -- 콜라
 		COLAQUANTUM = "톡톡 빛나는 물", --콜라 퀀텀
 		LUMPY_BEER = "톡톡 뿌리덩어리 물", --루트비어(술이 아님)
+		APPLEPINESODA = "톡톡 멋쟁이 왕관 물", -- 탄산 파인애플(오란씨)
+		CITROYUZUSODA = "톡톡 주황 공 물", -- 탄산 오랜지(환타)
+		DAWN_FOG = "",
+		MOON_CAP_DRINK = "",
 
 		-- 양조주
 
@@ -190,12 +205,13 @@ return {
 		LUMPY_WINE = "뿌리덩어리 발효된거", --서주(감자 고구마등 뿌리 술)
 		PULQUE = "완전 새하예", --풀케(선인주)
 		RUINCACAO_WINE = "쓴 맛 많이 없어", -- 카카오 와인 
+		MIDNIGHT_STROM = "",
+		APPLEPINE_CIDER = "",
+		MENTHA_SPICATA_WINE = "",
 
 		-- 콜라보 소다
 
 		CHERRY_DOCTOR_COLA = "톡톡 과일 검은 물", --체리숲 닥터 페퍼(닥터 체리)
-		APPLEPINESODA = "톡톡 멋쟁이 왕관 물", -- 탄산 파인애플(오란씨)
-		CITROYUZUSODA = "톡톡 주황 공 물", -- 탄산 오랜지(환타)
 		STRAWBERRYSODA = "톡톡 달콤 과일 물", -- 탄산 딸기(웰치스 딸기)
 
 		--콜라보 양조주
@@ -217,6 +233,10 @@ return {
 		MADHU_RUM = "붕붕이 즙 깨끗해", -- 럼주
 		BERRY_BRANDY = "작고 작은 먹을거 화르륵 마시는거", -- 베리 브랜디
 		AREUHI = "안 하예", -- 크므즈 증류주 아르히
+		APPLEPINE_BRANDY = "",
+		VOID = "",
+		CITROYUZU_CURACAO = "",
+		MENTHA_SPICATA_CURACAO = "",
 
 		--왈리 전용 증류주
 
@@ -250,6 +270,8 @@ return {
         WHITE_RUINCOLATE = "먹는 하얀거", --화이트 초콜릿
         RUINCOLATE = "먹는 갈색판", -- 그냥 초콜릿
         RUIN_SCHOKAKOLA = "먹는거 눈이 번쩍", -- 쇼카콜라
+        APPLEPINE_PIE = "",
+        APPLEPINE_FRIED_RICE = "",
 
 		BUCKET_STEEL_EMPTY = 
 		{

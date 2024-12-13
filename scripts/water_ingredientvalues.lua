@@ -8,6 +8,12 @@ local additives = {
 	"additive_petals",
 }
 
+local fruit = {
+	"applepine",
+	"limon",
+	"citroyuzu",
+}
+
 local ferment = {
 	"refined_dust",
 }
@@ -62,6 +68,8 @@ elseif modlist.mfp or modlist.te or modlist.ta then
 	foliage_ingredient["veggie"] = 1
 end
 
+
+AddIngredientValues(fruit,{fruit = 1},true)
 AddIngredientValues(teaingredients, {veggie = .5, decoration = 1})
 AddIngredientValues({"foliage"}, foliage_ingredient, foliage_cookable)
 AddIngredientValues(mushrooms, mushrooms_ingredient, true)

@@ -95,6 +95,11 @@ return {
 		CITROYUZU_SEEDS = "",
 		CITROYUZU_OVERSIZED = "",
 
+		--mentha_spicata
+
+		WEED_MENTHA_SPICATA = "",
+		MENTHA_SPICATA = "",
+
 		-- 증류주 첨가제
 
 		ADDITIVE_SEED = "알싸한 냄새 난다.", -- 리큐르에 제조에 첨가 할 씨허브(아니스,쥬니퍼베리,팔각 모티브)첨가제 
@@ -151,6 +156,14 @@ return {
 		MULLED = "술 냄새는 안난다.", --뱅쇼
 		BUTTERBEER = "맥주인데..단맛 난다!", --해리포터 시리즈의 버터비어
 
+		APPLEPINE_JUICE = "엄청 신 주스다.",
+		APPLEPINE_SMOOTHIE = "",
+		APPLEPINE_CAPPUCCINO = "",
+
+		CITROYUZU_JUICE = "시고, 달고, 주황색이야.",
+		CITROYUZU_TEA = "",
+		EARLGREY_TEA = "",
+
 		-- 콜라보 주전자 음료
 
 		COCONUT_JUICE = "단단한 열매는 마실 게 됐다!", --난파선 코코넛 쥬스
@@ -159,8 +172,6 @@ return {
 		CHERRY_ROSEBERRIES_TEA = "예쁜 장미냄새 난다.", --체리숲 로즈힙 차
 		CHERRY_HONEY_TEA = "엄청 달다!", --체리숲 벚꽃꿀 차
 		SWEET_RICE_DRINK = "쌀만 넣었는데 단 맛이 나!", -- 비타협 식혜
-		APPLEPINE_JUICE = "엄청 신 주스다.", -- 레기온 파인애플 주스
-		CITROYUZU_JUICE = "시고, 달고, 주황색이야.", -- 모어 푸드 팩 오랜지 주스
 		STRAWBERRY_SMOOTHIE = "씨가 엄청 많다.", -- 모어 푸드 팩 딸기 스무디
 		STRAWBERRY_MILK_SMOOTHIE = "부드러운 맛이야.", -- 모어 푸드 팩 딸기 스무디 라떼
 
@@ -176,6 +187,10 @@ return {
 		COLA = "단맛 나고 검은 음료수다.", -- 콜라
 		COLAQUANTUM = "강력한 음료로군! 아주 좋아!", --콜라 퀀텀
 		LUMPY_BEER = "알싸하고 특이한 맛이 난다.", --루트비어(술이 아님)
+		APPLEPINESODA = "시고 시원한 음료수다.", -- 탄산 파인애플(오란씨)
+		CITROYUZUSODA = "달고 따끔하다.", -- 탄산 오랜지(환타)
+		DAWN_FOG = "",
+		MOON_CAP_DRINK = "",
 
 		-- 양조주
 
@@ -189,12 +204,13 @@ return {
 		LUMPY_WINE = "풀 뿌리로 만든 술이야.", --서주(감자 고구마등 뿌리 술)
 		PULQUE = "가시없는 술로 변했다.", --풀케(선인주)
 		RUINCACAO_WINE = "초콜릿으로 술도 만드나?", -- 카카오 와인 
+		MIDNIGHT_STROM = "",
+		APPLEPINE_CIDER = "",
+		MENTHA_SPICATA_WINE = "",
 
 		-- 콜라보 소다
 
 		CHERRY_DOCTOR_COLA = "사탕같은 맛 난다!", --체리숲 닥터 페퍼(닥터 체리)
-		APPLEPINESODA = "시고 시원한 음료수다.", -- 탄산 파인애플(오란씨)
-		CITROYUZUSODA = "달고 따끔하다.", -- 탄산 오랜지(환타)
 		STRAWBERRYSODA = "탄산만큼 씨앗도 가득하다!", -- 탄산 딸기(웰치스 딸기)
 
 		--콜라보 양조주
@@ -216,6 +232,10 @@ return {
 		MADHU_RUM = "바다 원숭이들이 좋아할것 같다.", -- 럼주
 		BERRY_BRANDY = "귀한 맛 나는 술이다.", -- 베리 브랜디
 		AREUHI = "우유 끓여서 만든 술이다.", -- 크므즈 증류주 아르히
+		APPLEPINE_BRANDY = "",
+		VOID = "",
+		CITROYUZU_CURACAO = "",
+		MENTHA_SPICATA_CURACAO = "",
 
 		--왈리 전용 증류주
 
@@ -249,6 +269,8 @@ return {
         WHITE_RUINCOLATE = "지방으로 가득 찼다.", --화이트 초콜릿
         RUINCOLATE = "볼프강은 단 음식도 좋아한다!", -- 그냥 초콜릿
         RUIN_SCHOKAKOLA = "볼프강 옛날에 먹어본 적 있다!", -- 쇼카콜라
+        APPLEPINE_PIE = "",
+        APPLEPINE_FRIED_RICE = "",
 
 		BUCKET_STEEL_EMPTY = 
 		{

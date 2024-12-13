@@ -61,6 +61,7 @@ return {
 		WELL_DRILLING_ITEM = "수맥이 있을 만한 적당한 장소를 찾아야겠어.", --드릴 아이템
 		HOLE = "물이 흘러나오는 소리가 들리는구나.", --우물 구멍
 		WELL = "수맥 깊은 곳으로부터 물을 길어온단다.", --우물
+		BOTTLE_POUCH = "",
 
 		WX78MODULE_NONEDRUNK = "유기체를 싫어하긴 하지만 유기체에게서 영감을 얻는 건 싫어하지 않는 것 같구나.", -- 78전용 묘듈
 
@@ -104,6 +105,11 @@ return {
 		CITROYUZU_COOKED = "",
 		CITROYUZU_SEEDS = "",
 		CITROYUZU_OVERSIZED = "",
+
+		--mentha_spicata
+
+		WEED_MENTHA_SPICATA = "",
+		MENTHA_SPICATA = "",
 
 		-- 증류주 첨가제
 
@@ -161,6 +167,14 @@ return {
 		MULLED = "연말의 즐거운 맛이 나는구나.", --뱅쇼
 		BUTTERBEER = "고도로 발달한 과학은 마법과 구분할 수 없는 법이지.", --해리포터 시리즈의 버터비어
 
+		APPLEPINE_JUICE = "너무 많이 마시면 입안이 헐 수 있으니 주의하렴.",
+		APPLEPINE_SMOOTHIE = "",
+		APPLEPINE_CAPPUCCINO = "",
+
+		CITROYUZU_JUICE = "주스 하면 역시 오렌지 주스가 대표적이지.",
+		CITROYUZU_TEA = "",
+		EARLGREY_TEA = "",
+
 		-- 콜라보 주전자 음료
 
 		COCONUT_JUICE = "발효 과정에서 섬유질이 생성되었어.", --난파선 코코넛 쥬스
@@ -169,8 +183,6 @@ return {
 		CHERRY_ROSEBERRIES_TEA = "달콤하고 향긋하구나.", --체리숲 로즈힙 차
 		CHERRY_HONEY_TEA = "몸이 따뜻해지는 효과가 있구나.", --체리숲 벚꽃꿀 차
 		SWEET_RICE_DRINK = "효소에 의해 녹말이 엿당으로 분해되었어.", -- 비타협 식혜
-		APPLEPINE_JUICE = "너무 많이 마시면 입안이 헐 수 있으니 주의하렴.", -- 레기온 파인애플 주스
-		CITROYUZU_JUICE = "주스 하면 역시 오렌지 주스가 대표적이지.", -- 모어 푸드 팩 오랜지 주스
 		STRAWBERRY_SMOOTHIE = "마시는 딸기 샤베트라니, 흥미로워.", -- 모어 푸드 팩 딸기 스무디
 		STRAWBERRY_MILK_SMOOTHIE = "마시는 딸기 샤베트에 우유를 더했구나.", -- 모어 푸드 팩 딸기 스무디 라떼
 
@@ -186,6 +198,10 @@ return {
 		COLA = "최근 미국에서 인기를 끌고있는 음료이지.", -- 콜라(배경이 1907임 코카콜라가 존재함)
 		COLAQUANTUM = "흠... 섭취 시의 부작용은 없는지 연구해 봐야겠구나.", --콜라 퀀텀(아직 체랜코프 현상이 발견 안됨(1911년도로 추정))
 		LUMPY_BEER = "여러 뿌리채소가 섞여있구나.", --루트비어(술이 아님)
+		APPLEPINESODA = "파인애플 과즙을 첨가한 탄산수구나.", -- 탄산 파인애플(오란씨)
+		CITROYUZUSODA = "탄산수에 오렌지 과즙을 첨가했어.", -- 탄산 오랜지(환타)
+		DAWN_FOG = "",
+		MOON_CAP_DRINK = "",
 
 		-- 양조주
 
@@ -199,12 +215,13 @@ return {
 		LUMPY_WINE = "아이슬란드에서 먹는 술이라고 하지.", --서주(감자 고구마등 뿌리 술)
 		PULQUE = "메소아메리카 원주민들이 만드는 전통주란다.", --풀케(선인주)
 		RUINCACAO_WINE = "술의 재료로는 대단히 특이한 선택이구나.", -- 카카오 와인 
+		MIDNIGHT_STROM = "",
+		APPLEPINE_CIDER = "",
+		MENTHA_SPICATA_WINE = "",
 
 		-- 콜라보 소다
 
 		CHERRY_DOCTOR_COLA = "소화에 효능이 있을지도 모르겠구나.", --체리숲 닥터 페퍼(닥터 체리)
-		APPLEPINESODA = "파인애플 과즙을 첨가한 탄산수구나.", -- 탄산 파인애플(오란씨)
-		CITROYUZUSODA = "탄산수에 오렌지 과즙을 첨가했어.", -- 탄산 오랜지(환타)
 		STRAWBERRYSODA = "딸기 과즙으로 만든 탄산음료란다.", -- 탄산 딸기(웰치스 딸기)
 
 		--콜라보 양조주
@@ -226,6 +243,10 @@ return {
 		MADHU_RUM = "뱃사람들에게 사랑받는 음료지.", -- 럼주
 		BERRY_BRANDY = "비싼 가격과 제조의 까다로움 때문에 '술의 제왕'이라 불리기도 한단다.", -- 베리 브랜디
 		AREUHI = "마유주를 반복증류, 분별해서 불순물을 제거했단다.", -- 크므즈 증류주 아르히
+		APPLEPINE_BRANDY = "",
+		VOID = "",
+		CITROYUZU_CURACAO = "",
+		MENTHA_SPICATA_CURACAO = "",
 
 		--왈리 전용 증류주
 
@@ -259,6 +280,8 @@ return {
         WHITE_RUINCOLATE = "카카오에서 카카오버터를 분리해 만든 것이란다.", --화이트 초콜릿
         RUINCOLATE = "초콜릿을 고형화한 것이란다.", -- 그냥 초콜릿
         RUIN_SCHOKAKOLA = "각성 효과가 강화된 초콜릿이란다.", -- 쇼카콜라
+        APPLEPINE_PIE = "",
+        APPLEPINE_FRIED_RICE = "",
 
 		BUCKET_STEEL_EMPTY = 
 		{

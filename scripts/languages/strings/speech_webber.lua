@@ -61,6 +61,7 @@ return {
 		WELL_DRILLING_ITEM = "되게 남자다운 도구 같아.", --드릴 아이템
 		HOLE = "여보세요- 거기 누구 있나요--", --우물 구멍
 		WELL = "여기 숨으면 혼난댔어.", --우물
+		BOTTLE_POUCH = "",
 
 		WX78MODULE_NONEDRUNK = "허, 로봇의 장기가 이렇게 생긴 건가?", -- 78전용 묘듈
 
@@ -86,6 +87,29 @@ return {
 		RUINCACAO = "무언가 들었는데 질척거리는 소리가 나.", --부수기 전 카카오 열매
 		RUINCACAO_BEAN = "기름기가 되게 많아.", --부순 후 카카오 콩  
 		RUINCACAO_BEAN_COOKED = "우웩, 엄청 써!", --구운 카카오 콩
+
+		--APPLEPINE
+		APPLEPINE = "",
+		APPLEPINE_COOKED = "",
+		APPLEPINE_SEEDS = "",
+		APPLEPINE_OVERSIZED = "",
+
+		--limon
+		LIMON = "",
+		LIMON_COOKED = "",
+		LIMON_SEEDS = "",
+		LIMON_OVERSIZED = "",
+
+		--citroyuzu
+		CITROYUZU = "",
+		CITROYUZU_COOKED = "",
+		CITROYUZU_SEEDS = "",
+		CITROYUZU_OVERSIZED = "",
+
+		--mentha_spicata
+
+		WEED_MENTHA_SPICATA = "",
+		MENTHA_SPICATA = "",
 
 		-- 증류주 첨가제
 
@@ -144,6 +168,14 @@ return {
 		BUTTERBEER = "요정들이 먹는 음료래!", --해리포터 시리즈의 버터비어
 		-- AFS: 해리 포터는 1997년에 출판되었습니다
 
+		APPLEPINE_JUICE = "마시고 나면 이가 좀 뻑뻑해.",
+		APPLEPINE_SMOOTHIE = "",
+		APPLEPINE_CAPPUCCINO = "",
+
+		CITROYUZU_JUICE = "양치는 좀 미뤄야겠네.",	
+		CITROYUZU_TEA = "",
+		EARLGREY_TEA = "",
+
 		-- 콜라보 주전자 음료
 
 		COCONUT_JUICE = "흐음, 보기보다 맛이 안나.", --난파선 코코넛 쥬스
@@ -152,8 +184,6 @@ return {
 		CHERRY_ROSEBERRIES_TEA = "그 외계 거미한테서 피를 뽑아낸 거야?", --체리숲 로즈힙 차
 		CHERRY_HONEY_TEA = "달고 따뜻하고, 색이 이상해!", --체리숲 벚꽃꿀 차
 		SWEET_RICE_DRINK = "말랑한 씨앗들이 들어있어!", -- 비타협 식혜
-		APPLEPINE_JUICE = "마시고 나면 이가 좀 뻑뻑해.", -- 레기온 파인애플 주스
-		CITROYUZU_JUICE = "양치는 좀 미뤄야겠네.", -- 모어 푸드 팩 오랜지 주스
 		STRAWBERRY_SMOOTHIE = "머리가 띵하지 않도록 천천히 마시자.", -- 모어 푸드 팩 딸기 스무디
 		STRAWBERRY_MILK_SMOOTHIE = "진짜 딸기로 만들었어!", -- 모어 푸드 팩 딸기 스무디 라떼
 
@@ -169,6 +199,10 @@ return {
 		COLA = "이걸 다시볼 줄은 꿈도 못 꿨어!", -- 콜라
 		COLAQUANTUM = "예쁜 파란 빛이 나!", --콜라 퀀텀
 		LUMPY_BEER = "으으음, 이거 맛이 이상해.", --루트비어(술이 아님)
+		APPLEPINESODA = "", -- Pineapple Soda
+		CITROYUZUSODA = "", -- Orange Soda (Similar to Fanta CITROYUZU)
+		DAWN_FOG = "",
+		MOON_CAP_DRINK = "",
 
 		-- 양조주
 
@@ -182,6 +216,9 @@ return {
 		LUMPY_WINE = "으음, 엄청 쓰겠어.", --서주(감자 고구마등 뿌리 술)
 		PULQUE = "풀로 만든 우유 같은 술이야!", --풀케(선인주)
 		RUINCACAO_WINE = "우린 초콜릿이 좋은데.", -- 카카오 와인 
+		MIDNIGHT_STROM = "",
+		APPLEPINE_CIDER = "",
+		MENTHA_SPICATA_WINE = "",
 
 		-- 콜라보 소다
 
@@ -209,6 +246,10 @@ return {
 		MADHU_RUM = "단 걸로 만든 술인데 안 달아. 이상해!", -- 럼주
 		BERRY_BRANDY = "아빠가 서재에 이런 걸 숨겼던 것 같아.", -- 베리 브랜디
 		AREUHI = "우유로 만들었다는데 못 삼킬 것 같아.", -- 크므즈 증류주 아르히
+		APPLEPINE_BRANDY = "",
+		VOID = "",
+		CITROYUZU_CURACAO = "",
+		MENTHA_SPICATA_CURACAO = "",
 
 		--왈리 전용 증류주
 
@@ -242,6 +283,8 @@ return {
         WHITE_RUINCOLATE = "친구이랑 나눠 먹어야겠어!", --화이트 초콜릿
         RUINCOLATE = "진하고 달아!", -- 그냥 초콜릿
         RUIN_SCHOKAKOLA = "뭔가 심장이 쿵쿵거려.", -- 쇼카콜라
+        APPLEPINE_PIE = "",
+        APPLEPINE_FRIED_RICE = "",
 
 		BUCKET_STEEL_EMPTY = 
 		{

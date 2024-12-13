@@ -61,6 +61,7 @@ return {
 		WELL_DRILLING_ITEM = "대지를 꿰뚫는 드릴이야.",
 		HOLE = "나는 아직 밑바닥에 닿지도 않았는데, 어떻게 집에 돌아갈 수 있을까?", -- (이상한 나라의 엘리스)
 		WELL = "어떤 어두운 비밀이 숨어있을지 누가 알겠어.",
+		BOTTLE_POUCH = "",
 
 		WX78MODULE_NONEDRUNK = "매우 연약해 보여... 안타까운 사고는 없었으면 좋겠네.", -- 78전용 묘듈
 		
@@ -104,6 +105,11 @@ return {
 		CITROYUZU_COOKED = "",
 		CITROYUZU_SEEDS = "",
 		CITROYUZU_OVERSIZED = "",
+
+		--mentha_spicata
+
+		WEED_MENTHA_SPICATA = "",
+		MENTHA_SPICATA = "",
 
 		-- 증류주 첨가제
 
@@ -161,6 +167,14 @@ return {
 		MULLED = "차디 차고 부셔진 심장도 녹여줄수 있을까?", --뱅쇼
 		BUTTERBEER = "마법처럼 달콤해.", --해리포터 시리즈의 버터비어
 
+		APPLEPINE_JUICE = "질긴 과피를 찢고 과육을 갈아냈어.",
+		APPLEPINE_SMOOTHIE = "",
+		APPLEPINE_CAPPUCCINO = "",
+
+		CITROYUZU_JUICE = "두꺼운 과피만큼이나 시어.",
+		CITROYUZU_TEA = "",
+		EARLGREY_TEA = "",		
+
 		-- 콜라보 주전자 음료
 
 		COCONUT_JUICE = "부서진 내 마음도 이리 굳었으면.", --난파선 코코넛 쥬스
@@ -169,8 +183,6 @@ return {
 		CHERRY_ROSEBERRIES_TEA = "꽃 봉우리를 들이키지 않도록 조심해야지.", --체리숲 로즈힙 차
 		CHERRY_HONEY_TEA = "그 어떤 달콤함도 아비게일을 대신하진 못해.", --체리숲 벚꽃꿀 차
 		SWEET_RICE_DRINK = "씹히는 무언가가 있어.", -- 비타협 식혜
-		APPLEPINE_JUICE = "질긴 과피를 찢고 과육을 갈아냈어.", -- 레기온 파인애플 주스
-		CITROYUZU_JUICE = "두꺼운 과피만큼이나 시어.", -- 모어 푸드 팩 오랜지 주스
 		STRAWBERRY_SMOOTHIE = "딸기를 얼음과 함께 갈아냈어.", -- 모어 푸드 팩 딸기 스무디
 		STRAWBERRY_MILK_SMOOTHIE = "부드러움이 혀 끝에 휘감기는 맛이야.", -- 모어 푸드 팩 딸기 스무디 라떼
 
@@ -186,6 +198,10 @@ return {
 		COLA = "수많은 사람을 지배하는 검은 단물이야.", -- 콜라
 		COLAQUANTUM = "새까만 음료가 빛까지 내네.", --콜라 퀀텀
 		LUMPY_BEER = "내 입맛에는 잘 맞는 것 같아.", --루트비어(술이 아님)
+		APPLEPINESODA = "시고 달콤한 소다야.", -- 탄산 파인애플(오란씨)
+		CITROYUZUSODA = "오렌지 과즙을 짜 넣은 탄산음료야.", -- 탄산 오랜지(환타)
+		DAWN_FOG = "",
+		MOON_CAP_DRINK = "",
 
 		-- 양조주
 
@@ -199,12 +215,13 @@ return {
 		LUMPY_WINE = "투명하고, 살짝 겨자색이야.", --서주(감자 고구마등 뿌리 술)
 		PULQUE = "자랑하는 바늘들이 전부 녹아버렸네.", --풀케(선인주)
 		RUINCACAO_WINE = "달콤해지긴 글렀어.", -- 카카오 와인 
+		MIDNIGHT_STROM = "",
+		APPLEPINE_CIDER = "",
+		MENTHA_SPICATA_WINE = "",
 
 		-- 콜라보 소다
 
 		CHERRY_DOCTOR_COLA = "진짜 의사는 아니지만 잠깐의 위안은 되겠지.", --체리숲 닥터 페퍼(닥터 체리)
-		APPLEPINESODA = "시고 달콤한 소다야.", -- 탄산 파인애플(오란씨)
-		CITROYUZUSODA = "오렌지 과즙을 짜 넣은 탄산음료야.", -- 탄산 오랜지(환타)
 		STRAWBERRYSODA = "딸기를 으깨넣은 탄산음료야.", -- 탄산 딸기(웰치스 딸기)
 
 		--콜라보 양조주
@@ -226,6 +243,10 @@ return {
 		MADHU_RUM = "스스로 깨닫기도 전에 가라앉고 있을 테지.", -- 럼주
 		BERRY_BRANDY = "무엇을 잊어버리려 했는지조차 잊어버리겠지.", -- 베리 브랜디
 		AREUHI = "유당이 없더라도 고통스럽겠지.", -- 크므즈 증류주 아르히
+		APPLEPINE_BRANDY = "",
+		VOID = "",
+		CITROYUZU_CURACAO = "",
+		MENTHA_SPICATA_CURACAO = "",
 
 		--왈리 전용 증류주
 
@@ -259,6 +280,8 @@ return {
         WHITE_RUINCOLATE = "아비게일 너도 이 달콤함을 맛볼 수 있었으면 좋았을 텐데.", --화이트 초콜릿
         RUINCOLATE = "먹을 수 있는 검은 연료야.", -- 그냥 초콜릿
         RUIN_SCHOKAKOLA = "이것으로조차도 깨지 않을 만큼 깊이 잠드는 게 내 소원이야.", -- 쇼카콜라
+        APPLEPINE_PIE = "",
+        APPLEPINE_FRIED_RICE = "",
 
 		BUCKET_STEEL_EMPTY = 
 		{

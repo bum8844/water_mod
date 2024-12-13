@@ -106,6 +106,11 @@ return {
 		CITROYUZU_SEEDS = "",
 		CITROYUZU_OVERSIZED = "",
 
+		--mentha_spicata
+
+		WEED_MENTHA_SPICATA = "",
+		MENTHA_SPICATA = "",
+
 		-- 증류주 첨가제
 
 		ADDITIVE_SEED = "연회주에 향기로움을 더하세.", -- 리큐르에 제조에 첨가 할 씨허브(아니스,쥬니퍼베리,팔각 모티브)첨가제 
@@ -162,6 +167,14 @@ return {
 		MULLED = "지친 심신에 온기를 불어넣는군.", --뱅쇼
 		BUTTERBEER = "마법사들의 용맹의 근원이로다.", --해리포터 시리즈의 버터비어
 
+		APPLEPINE_JUICE = "질긴 비늘을 찢고 과육을 갈아냈군.",
+		APPLEPINE_SMOOTHIE = "",
+		APPLEPINE_CAPPUCCINO = "",
+
+		CITROYUZU_JUICE = "시큼하기만 하군.",
+		CITROYUZU_TEA = "",
+		EARLGREY_TEA = "",
+
 		-- 콜라보 주전자 음료
 
 		COCONUT_JUICE = "말랑한 과육으로 가득하군.", --난파선 코코넛 쥬스
@@ -170,8 +183,6 @@ return {
 		CHERRY_ROSEBERRIES_TEA = "이런 추악한 열매를 담은 음료를 마셔야 하는가?", --체리숲 로즈힙 차
 		CHERRY_HONEY_TEA = "참 고급진 꿀물이로군.", --체리숲 벚꽃꿀 차
 		SWEET_RICE_DRINK = "달콤한 물만을 취하리라.", -- 비타협 식혜
-		APPLEPINE_JUICE = "질긴 비늘을 찢고 과육을 갈아냈군.", -- 레기온 파인애플 주스
-		CITROYUZU_JUICE = "시큼하기만 하군.", -- 모어 푸드 팩 오랜지 주스
 		STRAWBERRY_SMOOTHIE = "차갑고 붉은 과일 곤죽이로군.", -- 모어 푸드 팩 딸기 스무디
 		STRAWBERRY_MILK_SMOOTHIE = "전사에게 걸맞지 못한 음료로다.", -- 모어 푸드 팩 딸기 스무디 라떼
 
@@ -187,6 +198,10 @@ return {
 		COLA = "검은 유혹과도 같구나.", -- 콜라
 		COLAQUANTUM = "내 심장을 뛰게 하는군!", --콜라 퀀텀
 		LUMPY_BEER = "흙냄새 나는 비육류로 만든 음료가 상쾌하기도 하군.", --루트비어(술이 아님)
+		APPLEPINESODA = "솔방울이라 하든 사과라 하든 무슨 상관이랴, 어느 쪽이든 불경한 것을.", -- 탄산 파인애플(오란씨)
+		CITROYUZUSODA = "시큼한 과일즙이 들어간 광천수로다.", -- 탄산 오랜지(환타)
+		DAWN_FOG = "",
+		MOON_CAP_DRINK = "",		
 
 		-- 양조주
 
@@ -200,12 +215,13 @@ return {
 		LUMPY_WINE = "내게는 좀 약하군.", --서주(감자 고구마등 뿌리 술)
 		PULQUE = "신성과 죄악이 공존하는 술이라 하던가.", --풀케(선인주)
 		RUINCACAO_WINE = "고대의 향을 담은 술이로다.", -- 카카오 와인
+		MIDNIGHT_STROM = "",
+		APPLEPINE_CIDER = "",
+		MENTHA_SPICATA_WINE = "",
 
 		-- 콜라보 소다
 
 		CHERRY_DOCTOR_COLA = "검붉은 혼돈이로다.", --체리숲 닥터 페퍼(닥터 체리)
-		APPLEPINESODA = "솔방울이라 하든 사과라 하든 무슨 상관이랴, 어느 쪽이든 불경한 것을.", -- 탄산 파인애플(오란씨)
-		CITROYUZUSODA = "시큼한 과일즙이 들어간 광천수로다.", -- 탄산 오랜지(환타)
 		STRAWBERRYSODA = "붉은 열매로 만든 광천수로군.", -- 탄산 딸기(웰치스 딸기)
 
 		--콜라보 양조주
@@ -227,6 +243,10 @@ return {
 		MADHU_RUM = "바이킹의 술은 아니로군.", -- 럼주
 		BERRY_BRANDY = "호사스런 귀족들의 술이로다.", -- 베리 브랜디
 		AREUHI = "생각보다 나쁘지 않군.", -- 크므즈 증류주 아르히
+		APPLEPINE_BRANDY = "",
+		VOID = "",
+		CITROYUZU_CURACAO = "",
+		MENTHA_SPICATA_CURACAO = "",
 
 		--왈리 전용 증류주
 
@@ -260,7 +280,9 @@ return {
         WHITE_RUINCOLATE = "기분 좋은 달콤함이로군.", --화이트 초콜릿
         RUINCOLATE = "신들께 바쳐야 마땅할 음식이로다!", -- 그냥 초콜릿
         RUIN_SCHOKAKOLA = "전장의 흥분을 갈망하게 하는군.", -- 쇼카콜라
-
+        APPLEPINE_PIE = "",
+        APPLEPINE_FRIED_RICE = "",
+        
 		BUCKET_STEEL_EMPTY = 
 		{
 			EMPTY = "양철동이로군.", --빈 양철 양동이

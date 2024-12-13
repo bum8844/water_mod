@@ -106,6 +106,11 @@ return {
 		CITROYUZU_SEEDS = "",
 		CITROYUZU_OVERSIZED = "",
 
+		--mentha_spicata
+
+		WEED_MENTHA_SPICATA = "",
+		MENTHA_SPICATA = "",		
+
 		-- 증류주 첨가제
 
 		ADDITIVE_SEED = "진이라도 만들려나 보지?", -- 리큐르에 제조에 첨가 할 씨허브(아니스,쥬니퍼베리,팔각 모티브)첨가제 
@@ -162,6 +167,14 @@ return {
 		MULLED = "날씨는 빌어먹게 춥더라도 여유를 좀 느낄 수 있지.", --뱅쇼
 		BUTTERBEER = "목이 아플 때 이만한 게 없더군.", --해리포터 시리즈의 버터비어
 
+		APPLEPINE_JUICE = "흥, 주스를 쓸데없이 경박하게 만들어 놓았군.",
+		APPLEPINE_SMOOTHIE = "",
+		APPLEPINE_CAPPUCCINO = "",
+
+		CITROYUZU_JUICE = "예전에는 쳐다도 안 봤었는데 말이야.",
+		CITROYUZU_TEA = "",
+		EARLGREY_TEA = "",
+
 		-- 콜라보 주전자 음료
 
 		COCONUT_JUICE = "하와이에 온 것 같은 기분이군.", --난파선 코코넛 쥬스
@@ -170,8 +183,6 @@ return {
 		CHERRY_ROSEBERRIES_TEA = "그래... 비스킷은 없나?", --체리숲 로즈힙 차
 		CHERRY_HONEY_TEA = "벚꽃 향이 심신의 안정을 주는군.", --체리숲 벚꽃꿀 차
 		SWEET_RICE_DRINK = "흐물흐물하군.", -- 비타협 식혜
-		APPLEPINE_JUICE = "흥, 주스를 쓸데없이 경박하게 만들어 놓았군.", -- 레기온 파인애플 주스
-		CITROYUZU_JUICE = "예전에는 쳐다도 안 봤었는데 말이야.", -- 모어 푸드 팩 오랜지 주스
 		STRAWBERRY_SMOOTHIE = "죄다 갈아서 으깨놨군.", -- 모어 푸드 팩 딸기 스무디
 		STRAWBERRY_MILK_SMOOTHIE = "내 취향에는 맞지 않는군.", -- 모어 푸드 팩 딸기 스무디 라떼
 
@@ -187,6 +198,11 @@ return {
 		COLA = "개인적으로 빨대가 있었으면 좋겠네.", -- 콜라
 		COLAQUANTUM = "의심쩍지만 훌룡해.", --콜라 퀀텀
 		LUMPY_BEER = "음? 이 맛은...", --루트비어(술이 아님)
+		RUINCACAO_WINE = "이것도 와인이라고 할 수가 있는 겐가?", -- 카카오 와인 
+		APPLEPINESODA = "꽤 문명적인 음료로군.", -- 탄산 파인애플(오란씨)
+		CITROYUZUSODA = "이거 상상이 과했던 거 아닌가?", -- 탄산 오랜지(환타) "A bit too much fantasy, isn't it?"
+		DAWN_FOG = "",
+		MOON_CAP_DRINK = "",
 
 		-- 양조주
 
@@ -199,13 +215,13 @@ return {
 		KUMIS = "야성적이로군.", -- 크므즈,산양유주
 		LUMPY_WINE = "생각보다 깔끔하군.", --서주(감자 고구마등 뿌리 술)
 		PULQUE = "내 입맛에는 맞지 않는군.", --풀케(선인주)
-		RUINCACAO_WINE = "이것도 와인이라고 할 수가 있는 겐가?", -- 카카오 와인 
+		MIDNIGHT_STROM = "",
+		APPLEPINE_CIDER = "",
+		MENTHA_SPICATA_WINE = "",
 
 		-- 콜라보 소다
 
 		CHERRY_DOCTOR_COLA = "진짜 의사가 이 자리에 없는 건 좀 아쉽군.", --체리숲 닥터 페퍼(닥터 체리)
-		APPLEPINESODA = "꽤 문명적인 음료로군.", -- 탄산 파인애플(오란씨)
-		CITROYUZUSODA = "이거 상상이 과했던 거 아닌가?", -- 탄산 오랜지(환타) "A bit too much fantasy, isn't it?"
 		STRAWBERRYSODA = "탄산이 너무 강하군.", -- 탄산 딸기(웰치스 딸기) "The sparkling is too strong."
 
 		--콜라보 양조주
@@ -227,6 +243,10 @@ return {
 		MADHU_RUM = "천박하군.", -- 럼주
 		BERRY_BRANDY = "내 품격에 딱 맞는군.", -- 베리 브랜디
 		AREUHI = "이상한 향이 나는군.", -- 크므즈 증류주 아르히
+		APPLEPINE_BRANDY = "",
+		VOID = "",
+		CITROYUZU_CURACAO = "",
+		MENTHA_SPICATA_CURACAO = "",
 
 		--왈리 전용 증류주
 
@@ -260,6 +280,8 @@ return {
         WHITE_RUINCOLATE = "사양하겠네.", --화이트 초콜릿
         RUINCOLATE = "꼬마 손님들을 끌어들일 미끼로군.", -- 그냥 초콜릿
         RUIN_SCHOKAKOLA = "효율의 집약체로군.", -- 쇼카콜라
+        APPLEPINE_PIE = "",
+        APPLEPINE_FRIED_RICE = "",
 
 		BUCKET_STEEL_EMPTY = 
 		{

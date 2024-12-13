@@ -106,6 +106,11 @@ return {
 		CITROYUZU_SEEDS = "",
 		CITROYUZU_OVERSIZED = "",
 
+		--mentha_spicata
+
+		WEED_MENTHA_SPICATA = "",
+		MENTHA_SPICATA = "",
+
 		-- 증류주 첨가제
 
 		ADDITIVE_SEED = "이거면 술에 풍미를 더할 수 있어.", -- 리큐르에 제조에 첨가 할 씨허브(아니스,쥬니퍼베리,팔각 모티브)첨가제 
@@ -162,6 +167,14 @@ return {
 		MULLED = "아프고 몸살 났을 때에 한 잔.", --뱅쇼
 		BUTTERBEER = "마법사들 사이에서 인기가 높다고 들었는데.", --해리포터 시리즈의 버터비어
 
+		APPLEPINE_JUICE = "코코넛을 곁들이면 딱이겠어.",
+		APPLEPINE_SMOOTHIE = "",
+		APPLEPINE_CAPPUCCINO = "",
+
+		CITROYUZU_JUICE = "갓 짜낸 오렌지 주스야!",
+		CITROYUZU_TEA = "",
+		EARLGREY_TEA = "",
+
 		-- 콜라보 주전자 음료
 
 		COCONUT_JUICE = "아, 마치 휴양지에 온 기분이야.", --난파선 코코넛 쥬스
@@ -170,8 +183,6 @@ return {
 		CHERRY_ROSEBERRIES_TEA = "향기롭고, 냉정함을 유지시켜 줘.", --체리숲 로즈힙 차
 		CHERRY_HONEY_TEA = "목이 아플 때 특효약이야.", --체리숲 벚꽃꿀 차
 		SWEET_RICE_DRINK = "설탕과는 다른 달콤함이야!", -- 비타협 식혜
-		APPLEPINE_JUICE = "코코넛을 곁들이면 딱이겠어.", -- 레기온 파인애플 주스
-		CITROYUZU_JUICE = "갓 짜낸 오렌지 주스야!", -- 모어 푸드 팩 오랜지 주스
 		STRAWBERRY_SMOOTHIE = "상큼하고 맛있어!", -- 모어 푸드 팩 딸기 스무디
 		STRAWBERRY_MILK_SMOOTHIE = "고향에서 내놓으면 여성분들이 좋아하겠어.", -- 모어 푸드 팩 딸기 스무디 라떼
 
@@ -187,6 +198,10 @@ return {
 		COLA = "속이 더부룩할 때 마시면 좋아.", -- 콜라
 		COLAQUANTUM = "이거... 정말 음료는 맞나?", --콜라 퀀텀 (포밍레인: 폴아웃3 시에라 페트로비타 관련)
 		LUMPY_BEER = "야성적인 맛이야.", --루트비어(술이 아님)
+		APPLEPINESODA = "거하게 먹고 입가심할 때 최고야.", -- 탄산 파인애플(오란씨)
+		CITROYUZUSODA = "입안이 상쾌해져!", -- 탄산 오랜지(환타)
+		DAWN_FOG = "",
+		MOON_CAP_DRINK = "",		
 
 		-- 양조주
 
@@ -200,12 +215,13 @@ return {
 		LUMPY_WINE = "가볍고 약간의 산미가 느껴져.", --서주(감자 고구마등 뿌리 술)
 		PULQUE = "끈적이는 질감에 우유 같은 빛깔이야.", --풀케(선인주)
 		RUINCACAO_WINE = "카카오의 풍미가 가득해.", -- 카카오 와인 
+		MIDNIGHT_STROM = "",
+		APPLEPINE_CIDER = "",
+		MENTHA_SPICATA_WINE = "",
 
 		-- 콜라보 소다
 
 		CHERRY_DOCTOR_COLA = "엄밀히 말해서 콜라는 아니야.", --체리숲 닥터 페퍼(닥터 체리)
-		APPLEPINESODA = "거하게 먹고 입가심할 때 최고야.", -- 탄산 파인애플(오란씨)
-		CITROYUZUSODA = "입안이 상쾌해져!", -- 탄산 오랜지(환타)
 		STRAWBERRYSODA = "달달한 딸기향 탄산음료야.", -- 탄산 딸기(웰치스 딸기)
 
 		--콜라보 양조주
@@ -227,6 +243,10 @@ return {
 		MADHU_RUM = "달콤한 재료를 썼지만, 단맛은 거의 없어.", -- 럼주
 		BERRY_BRANDY = "풍부한 아로마를 느낄 수 있어.", -- 베리 브랜디
 		AREUHI = "그 맛에 빠져서 과음하지 않게 조심해야 해.", -- 크므즈 증류주 아르히
+		APPLEPINE_BRANDY = "",
+		VOID = "",
+		CITROYUZU_CURACAO = "",
+		MENTHA_SPICATA_CURACAO = "",
 
 		--왈리 전용 증류주
 
@@ -260,6 +280,8 @@ return {
         WHITE_RUINCOLATE = "아이들이 정말 좋아하겠어.", --화이트 초콜릿
         RUINCOLATE = "사랑을 듬뿍 담았어.", -- 그냥 초콜릿
         RUIN_SCHOKAKOLA = "한 조각만 먹어도 눈이 확 뜨일 거야.", -- 쇼카콜라
+        APPLEPINE_PIE = "",
+        APPLEPINE_FRIED_RICE = "",
 
 		BUCKET_STEEL_EMPTY = 
 		{

@@ -139,7 +139,7 @@ local drinks =
 		cooktime = TUNING.KETTLE_FRUIT,
 		potlevel = "mid",
 		potlevel_bottle = "mid",
-		oneat_desc = STRINGS.UI.FOOD_EFFECTS_GOODNIGHTVISION
+		oneat_desc = STRINGS.UI.FOOD_EFFECTS_GOODNIGHTVISION,
 		oneatenfn = function(inst, eater)
 			eater:AddDebuff("goodnightvisionbuff", "goodnightvisionbuff")
 		end,
@@ -433,8 +433,8 @@ local drinks =
 		end,
 	},
 
-	applepin_cider = {
-		test = function(boilier, names, tags) return names.applepin and names.applepin >= 3 and notmeat(tags) and notname(names) and not tags.fat end,
+	applepine_cider = {
+		test = function(boilier, names, tags) return names.applepine and names.applepine >= 3 and notmeat(tags) and notname(names) and not tags.fat end,
 		priority = 1,
 		health = TUNING.HEALING_SMALL*4, -- 12 [60] (240) 3 유제품 버프
 		hunger = TUNING.CALORIES_MEDSMALL/3, -- 6.25 [31.25] (125)

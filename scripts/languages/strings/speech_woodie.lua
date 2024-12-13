@@ -95,6 +95,11 @@ return {
 		CITROYUZU_SEEDS = "",
 		CITROYUZU_OVERSIZED = "",
 
+		--mentha_spicata
+
+		WEED_MENTHA_SPICATA = "",
+		MENTHA_SPICATA = "",
+
 		-- 증류주 첨가제
 
 		ADDITIVE_SEED = "밀주라도 만들건가보지, 안그래?", -- 리큐르에 제조에 첨가 할 씨허브(아니스,쥬니퍼베리,팔각 모티브)첨가제 
@@ -151,6 +156,14 @@ return {
 		MULLED = "몸 아플때는 이것 만한게 없지.", --뱅쇼
 		BUTTERBEER = "내가 뭐 마법생명체나 털보거인으로 보이나? 허.", --해리포터 시리즈의 버터비어
 
+		APPLEPINE_JUICE = "시원한데 난 셔서 많이 못먹겠다 그려.",
+		APPLEPINE_SMOOTHIE = "",
+		APPLEPINE_CAPPUCCINO = "",
+
+		CITROYUZU_JUICE = "셔서 시럽좀 넣어 먹고 싶네.",
+		CITROYUZU_TEA = "",
+		EARLGREY_TEA = "",
+
 		-- 콜라보 주전자 음료
 
 		COCONUT_JUICE = "야자나무스러운 부분은 많이 없어졌는데.", --난파선 코코넛 쥬스
@@ -159,8 +172,6 @@ return {
 		CHERRY_ROSEBERRIES_TEA = "머리카락같은 부분이 남아있을지 의심스러워.", --체리숲 로즈힙 차
 		CHERRY_HONEY_TEA = "꿀과 나무향, 기가 맥히네.", --체리숲 벚꽃꿀 차
 		SWEET_RICE_DRINK = "이상한 곡물주스네.", -- 비타협 식혜
-		APPLEPINE_JUICE = "시원한데 난 셔서 많이 못먹겠다 그려.", -- 레기온 파인애플 주스
-		CITROYUZU_JUICE = "셔서 시럽좀 넣어 먹고 싶네.", -- 모어 푸드 팩 오랜지 주스
 		STRAWBERRY_SMOOTHIE = "찾아서 먹진않는데, 좋지.", -- 모어 푸드 팩 딸기 스무디
 		STRAWBERRY_MILK_SMOOTHIE = "부드럽고 시원한걸?", -- 모어 푸드 팩 딸기 스무디 라떼
 
@@ -176,6 +187,10 @@ return {
 		COLA = "일하다  지치면 마셔야겠어.", -- 콜라
 		COLAQUANTUM = "이거 참 중독되네.", --콜라 퀀텀
 		LUMPY_BEER = "사르사파릴라 음료인가?", --루트비어(술이 아님)
+		APPLEPINESODA = "파인애플 탄산음료야.", -- 탄산 파인애플(오란씨)
+		CITROYUZUSODA = "오렌지 탄산음료야.", -- 탄산 오랜지(환타)
+		DAWN_FOG = "",
+		MOON_CAP_DRINK = "",
 
 		-- 양조주
 
@@ -189,12 +204,13 @@ return {
 		LUMPY_WINE = "문샤인은 아닌데 그래.", --서주(감자 고구마등 뿌리 술)
 		PULQUE = "내 살던곳 원주민들이 마셨던 술이야.", --풀케(선인주)
 		RUINCACAO_WINE = "카카오와인은 처음 듣는데.", -- 카카오 와인 
+		MIDNIGHT_STROM = "",
+		APPLEPINE_CIDER = "",
+		MENTHA_SPICATA_WINE = "",
 
 		-- 콜라보 소다
 
 		CHERRY_DOCTOR_COLA = "달고 시원하면 그만이지.", --체리숲 닥터 페퍼(닥터 체리)
-		APPLEPINESODA = "파인애플 탄산음료야.", -- 탄산 파인애플(오란씨)
-		CITROYUZUSODA = "오렌지 탄산음료야.", -- 탄산 오랜지(환타)
 		STRAWBERRYSODA = "딸기 탄산음료야.", -- 탄산 딸기(웰치스 딸기)
 
 		--콜라보 양조주
@@ -216,6 +232,10 @@ return {
 		MADHU_RUM = "뱃사람 술이네.", -- 럼주
 		BERRY_BRANDY = "거 참 고급스런 브랜디네.", -- 베리 브랜디
 		AREUHI = "우유로 만든 보드카야?", -- 크므즈 증류주 아르히
+		APPLEPINE_BRANDY = "",
+		VOID = "",
+		CITROYUZU_CURACAO = "",
+		MENTHA_SPICATA_CURACAO = "",
 
 		--왈리 전용 증류주
 
@@ -249,6 +269,8 @@ return {
         WHITE_RUINCOLATE = "달고 느끼하지않아?", --화이트 초콜릿
         RUINCOLATE = "초콜릿 먹을일은 별로없었는데 주면 고맙지.", -- 그냥 초콜릿
         RUIN_SCHOKAKOLA = "힘이 솟아나겠어.", -- 쇼카콜라
+        APPLEPINE_PIE = "",
+        APPLEPINE_FRIED_RICE = "",
 
 		BUCKET_STEEL_EMPTY = 
 		{

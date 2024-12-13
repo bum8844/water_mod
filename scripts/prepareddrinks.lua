@@ -235,7 +235,7 @@ local drinks =
 		potlevel = "mid",
 		potlevel_bottle = "mid",
 		drinktype = DRINKTYPY.FRUIT,	
-	}
+	},
 	-- 야채차(목마름 특화)
 	
 	carrot_tea = 

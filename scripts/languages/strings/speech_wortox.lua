@@ -95,6 +95,11 @@ return {
 		CITROYUZU_SEEDS = "",
 		CITROYUZU_OVERSIZED = "",
 
+		--mentha_spicata
+
+		WEED_MENTHA_SPICATA = "",
+		MENTHA_SPICATA = "",
+
 		-- 증류주 첨가제
 
 		ADDITIVE_SEED = "매콤한 냄새가 나는데.", -- 리큐르에 제조에 첨가 할 씨허브(아니스,쥬니퍼베리,팔각 모티브)첨가제 
@@ -151,6 +156,14 @@ return {
 		MULLED = "임프 내장을 따뜻하게 데워주지.", --뱅쇼
 		BUTTERBEER = "이상하게 마법이 느껴지네.", --해리포터 시리즈의 버터비어
 
+		APPLEPINE_JUICE = "난 영혼이면 될것같아.",
+		APPLEPINE_SMOOTHIE = "",
+		APPLEPINE_CAPPUCCINO = "",
+
+		CITROYUZU_JUICE = "난 주황색을보는 걸로 만족할게.",
+		CITROYUZU_TEA = "",
+		EARLGREY_TEA = "",
+
 		-- 콜라보 주전자 음료
 
 		COCONUT_JUICE = "별 맛도 안나는걸 마신다니까.", --난파선 코코넛 쥬스
@@ -159,8 +172,6 @@ return {
 		CHERRY_ROSEBERRIES_TEA = "그림자 느낌나는 장미향이네.", --체리숲 로즈힙 차
 		CHERRY_HONEY_TEA = "이렇게 달면 먹을만하지.", --체리숲 벚꽃꿀 차
 		SWEET_RICE_DRINK = "마시는거랑 먹는걸 같이해야 한다니!", -- 비타협 식혜
-		APPLEPINE_JUICE = "난 영혼이면 될것같아.", -- 레기온 파인애플 주스
-		CITROYUZU_JUICE = "난 주황색을보는 걸로 만족할게.", -- 모어 푸드 팩 오랜지 주스
 		STRAWBERRY_SMOOTHIE = "갈린 붉은 과실이야.", -- 모어 푸드 팩 딸기 스무디
 		STRAWBERRY_MILK_SMOOTHIE = "적어도 부드러운게 좋겠지.", -- 모어 푸드 팩 딸기 스무디 라떼
 
@@ -176,6 +187,10 @@ return {
 		COLA = "검은것 치곤 먹을만한걸!", -- 콜라
 		COLAQUANTUM = "흐유유! 방사능 좋지!", --콜라 퀀텀
 		LUMPY_BEER = "경찰에 적성맞게 생겼네.", --루트비어(술이 아님)
+		APPLEPINESODA = "톡 쏘는건 좋지만 마시는건 안 선호해서 말야.", -- 탄산 파인애플(오란씨)
+		CITROYUZUSODA = "렌지에 못 돌릴 오렌지야.", -- 탄산 오랜지(환타)
+		DAWN_FOG = "",
+		MOON_CAP_DRINK = "",
 
 		-- 양조주
 
@@ -189,12 +204,13 @@ return {
 		LUMPY_WINE = "지하세계 출신은 믿을게 못되지.", --서주(감자 고구마등 뿌리 술)
 		PULQUE = "가시돋친 식물을 마실생각은 누가 한 걸까?", --풀케(선인주)
 		RUINCACAO_WINE = "오, 이젠 콩으로 술도 만드는거야?", -- 카카오 와인 
+		MIDNIGHT_STROM = "",
+		APPLEPINE_CIDER = "",
+		MENTHA_SPICATA_WINE = "",
 
 		-- 콜라보 소다
 
 		CHERRY_DOCTOR_COLA = "괜찮은 고문도구가 되지. 흐유유!", --체리숲 닥터 페퍼(닥터 체리)
-		APPLEPINESODA = "톡 쏘는건 좋지만 마시는건 안 선호해서 말야.", -- 탄산 파인애플(오란씨)
-		CITROYUZUSODA = "렌지에 못 돌릴 오렌지야.", -- 탄산 오랜지(환타)
 		STRAWBERRYSODA = "씨앗이 폭탄처럼 터질까?", -- 탄산 딸기(웰치스 딸기)
 
 		--콜라보 양조주
@@ -216,6 +232,10 @@ return {
 		MADHU_RUM = "필멸자들은 애써 독을 먹으려 한다니까.", -- 럼주
 		BERRY_BRANDY = "필멸자들이 좋아할 고급진 맛이지. 난 아니고.", -- 베리 브랜디
 		AREUHI = "어린애 필멸자들이 마시면 선물은 못 받겠지.", -- 크므즈 증류주 아르히
+		APPLEPINE_BRANDY = "",
+		VOID = "",
+		CITROYUZU_CURACAO = "",
+		MENTHA_SPICATA_CURACAO = "",
 
 		--왈리 전용 증류주
 
@@ -249,6 +269,8 @@ return {
         WHITE_RUINCOLATE = "그래도 영혼보단 부드럽네.", --화이트 초콜릿
         RUINCOLATE = "대부분의 필멸자들이 좋아하는 블럭이야.", -- 그냥 초콜릿
         RUIN_SCHOKAKOLA = "필멸자들은 처음보는식물도 먹으려 드는건가?", -- 쇼카콜라
+        APPLEPINE_PIE = "",
+        APPLEPINE_FRIED_RICE = "",
 
 		BUCKET_STEEL_EMPTY = 
 		{

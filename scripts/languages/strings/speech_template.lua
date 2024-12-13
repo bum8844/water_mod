@@ -100,6 +100,11 @@ return {
 		CITROYUZU_SEEDS = "",
 		CITROYUZU_OVERSIZED = "",
 
+		--mentha_spicata
+
+		WEED_MENTHA_SPICATA = "",
+		MENTHA_SPICATA = "",
+
 		-- Distiller Additives
 
 		ADDITIVE_SEED = "",
@@ -161,6 +166,8 @@ return {
 		APPLEPINE_CAPPUCCINO = "",
 
 		CITROYUZU_JUICE = "",
+		CITROYUZU_TEA = "",
+		EARLGREY_TEA = "",
 
 		-- Mod-compatibility Drinks
 
@@ -185,6 +192,8 @@ return {
 		COLA = "",
 		COLAQUANTUM = "",
 		LUMPY_BEER = "",
+		APPLEPINESODA = "", -- Pineapple Soda
+		CITROYUZUSODA = "", -- Orange Soda (Similar to Fanta CITROYUZU)
 		DAWN_FOG = "",
 		MOON_CAP_DRINK = "",
 
@@ -202,15 +211,11 @@ return {
 		RUINCACAO_WINE = "",
 		MIDNIGHT_STROM = "",
 		APPLEPINE_CIDER = "",
+		MENTHA_SPICATA_WINE = "",
 
-		CHERRY_DOCTOR_COLA = "", --체리숲 닥터 페퍼(닥터 체리)
-		APPLEPINESODA = "", -- 탄산 파인애플(오란씨)
-		CITROYUZUSODA = "", -- 탄산 오랜지(환타)
-		STRAWBERRYSODA = "", -- 탄산 딸기(웰치스 딸기)
+		-- Mod-compatibility Sodas
 
 		CHERRY_DOCTOR_COLA = "",
-		APPLEPINESODA = "", -- Pineapple Soda
-		CITROYUZUSODA = "", -- CITROYUZU Soda (Similar to Fanta CITROYUZU)
 		STRAWBERRYSODA = "", -- Strawberry Soda (like Welch's Strawberry Soda)
 
 		-- Mod-compatibility Brewages
@@ -234,6 +239,8 @@ return {
 		AREUHI = "",
 		APPLEPINE_BRANDY = "",
 		VOID = "",
+		CITROYUZU_CURACAO = "",
+		MENTHA_SPICATA_CURACAO = "",
 
 		-- Warly-only Spirits
 

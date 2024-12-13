@@ -107,20 +107,31 @@ return
 		--APPLEPINE
 		APPLEPINE = "파인사과",
 		APPLEPINE_COOKED = "구운 파인사과",
-		APPLEPINE_SEEDS = "파인사과 씨앗",
+		APPLEPINE_SEEDS = "난형 씨앗",
+		KNOWN_APPLEPINE_SEEDS = "파인사과 씨앗",
 		APPLEPINE_OVERSIZED = "거대한 파인사과",
+		FARM_PLANT_APPLEPINE = "파인사과 식물체",
 
 		--limon
 		LIMON = "리몬",
 		LIMON_COOKED = "구운 리몬",
-		LIMON_SEEDS = "리몬 씨앗",
+		LIMON_SEEDS = "난형 오돌토톨한 씨앗",
+		KNOWN_LIMON_SEEDS = "리몬 씨앗",
 		LIMON_OVERSIZED = "거대한 리몬 씨앗",
+		FARM_PLANT_LIMON = "리몬 식물체",
 
 		--citroyuzu
 		CITROYUZU = "시트유주",
 		CITROYUZU_COOKED = "구운 시트유주",
-		CITROYUZU_SEEDS = "시트유주 씨앗",
+		CITROYUZU_SEEDS = "오돌토톨한 씨앗",
+		KNOWN_CITROYUZU_SEEDS = "시트유주 씨앗",
 		CITROYUZU_OVERSIZED = "거대한 시트유주",
+		FARM_PLANT_CITROYUZU = "시트유주 식물체",
+
+		--mentha_spicata
+
+		WEED_MENTHA_SPICATA = "스피어 민트",
+		MENTHA_SPICATA = "스피어 민트",
 
 		-- additives
 		ADDITIVE_SEED = "모둠씨앗 향료",
@@ -228,6 +239,7 @@ return
 		COLA = "콜라",
 		COLAQUANTUM = "퀀텀콜라",
 		CITROYUZUSODA = "오랜지 소다",
+		APPLEPINESODA = "파인애플 소다",
 		DAWN_FOG = "던 포그",
 		MOON_CAP_DRINK = "비팔로-비",
 
@@ -246,13 +258,13 @@ return
 		MIDNIGHT_STROM = "미드나이트 스톰",
 		APPLEPINE_CIDER = "사과주",
 		CITROYUZU_WINE = "오랜지 와인",
+		MENTHA_SPICATA_WINE = "민트 와인",
 
 		-- prepareagedrink 타모드 전용
 
 		--소다
 
 		CHERRY_DOCTOR_COLA = "닥터 체리",
-		APPLEPINESODA = "파인애플 소다",
 		STRAWBERRYSODA = "딸기 소다",
 
 		--양조주
@@ -277,6 +289,7 @@ return
 		APPLEPINE_BRANDY = "사과 브랜디",
 		VOID = "보이드",
 		CITROYUZU_CURACAO = "오랜지 큐라소",
+		MENTHA_SPICATA_CURACAO = "민트 큐라소",
 
 		--왈리 전용
 

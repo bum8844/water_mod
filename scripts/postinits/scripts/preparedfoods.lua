@@ -45,7 +45,7 @@ local water_foods = {
             end
 		end
 	},
-	applepin_pie = {
+	applepine_pie = {
 		test = function(cooker, names, tags)  return names.applepin and not tags.meat end,
 		priority = 1,
 		foodtype = FOODTYPE.VEGGIE,
@@ -58,7 +58,7 @@ local water_foods = {
 		cooktime = 2,
         floater = {"med", nil, 0.8},
 	},
-	applepin_fried_rice = {
+	applepine_fried_rice = {
 		test = function(cooker, names, tags) return tags.applepin_cooked and not tags.inedible end,
 		priority = -1,
 		foodtype = FOODTYPE.MEAT,

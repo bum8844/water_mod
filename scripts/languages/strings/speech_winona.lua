@@ -60,6 +60,7 @@ return {
 		WELL_DRILLING_ITEM = "굴착 좀 해 보자고!", --드릴 아이템
 		HOLE = "지하수와 연결된 구멍이야.", --우물 구멍
 		WELL = "뭔가 보완할 점이 보이는데.", --우물
+		BOTTLE_POUCH = "",
 
 		WX78MODULE_NONEDRUNK = "이 자식 물건 좀 잘 챙겨두면 어디 덧나나.", -- 78전용 묘듈
 
@@ -97,6 +98,11 @@ return {
 		LIMON_COOKED = "",
 		LIMON_SEEDS = "",
 		LIMON_OVERSIZED = "",
+
+		--mentha_spicata
+
+		WEED_MENTHA_SPICATA = "",
+		MENTHA_SPICATA = "",
 
 		--citroyuzu
 		CITROYUZU = "",
@@ -160,6 +166,14 @@ return {
 		MULLED = "내가 한 방이 있는 여자는 아니지만... 한 잔은 좋아한다고! 하!", --뱅쇼
 		BUTTERBEER = "맥주라면서 술 맛은 하나도 안 나네.", --해리포터 시리즈의 버터비어
 
+		APPLEPINE_JUICE = "통조림에 든 국물보다는 확실히 낫네.",
+		APPLEPINE_SMOOTHIE = "",
+		APPLEPINE_CAPPUCCINO = "",
+
+		CITROYUZU_JUICE = "탕비실 냉장고에 항상 있더라.",
+		CITROYUZU_TEA = "",
+		EARLGREY_TEA = "",
+
 		-- 콜라보 주전자 음료
 
 		COCONUT_JUICE = "달고 시원하네.", --난파선 코코넛 쥬스
@@ -168,8 +182,6 @@ return {
 		CHERRY_ROSEBERRIES_TEA = "신맛이 뭔가 중독성 있는데.", --체리숲 로즈힙 차
 		CHERRY_HONEY_TEA = "목 아플 때 마시면 딱이겠어.", --체리숲 벚꽃꿀 차
 		SWEET_RICE_DRINK = "달달하니 괜찮네.", -- 비타협 식혜
-		APPLEPINE_JUICE = "통조림에 든 국물보다는 확실히 낫네.", -- 레기온 파인애플 주스
-		CITROYUZU_JUICE = "탕비실 냉장고에 항상 있더라.", -- 모어 푸드 팩 오랜지 주스
 		STRAWBERRY_SMOOTHIE = "음, 이거 꽤 괜찮은데!", -- 모어 푸드 팩 딸기 스무디
 		STRAWBERRY_MILK_SMOOTHIE = "달달한 게 맛있네!", -- 모어 푸드 팩 딸기 스무디 라떼
 
@@ -185,6 +197,10 @@ return {
 		COLA = "마시려고 보면 꼭 누가 다 마시고 없더라.", -- 콜라
 		COLAQUANTUM = "워, 이거 마셔도 안전한 거야?", --콜라 퀀텀
 		LUMPY_BEER = "꽤 맛있는데 다들 맛을 모른단 말이지.", --루트비어(술이 아님)
+		APPLEPINESODA = "이러면 입천장 아플 일은 없겠지.", -- 탄산 파인애플(오란씨)
+		CITROYUZUSODA = "새콤달콤하니 맛있어.", -- 탄산 오랜지(환타)
+		DAWN_FOG = "",
+		MOON_CAP_DRINK = "",
 
 		-- 양조주
 
@@ -198,12 +214,13 @@ return {
 		LUMPY_WINE = "맛이 꽤 상쾌해.", --서주(감자 고구마등 뿌리 술)
 		PULQUE = "선인장도 술이 될 수 있다니 신기하네.", --풀케(선인주)
 		RUINCACAO_WINE = "정말 별 걸 가지고 술이 담가지는구나.", -- 카카오 와인 
+		MIDNIGHT_STROM = "",
+		APPLEPINE_CIDER = "",
+		MENTHA_SPICATA_WINE = "",
 
 		-- 콜라보 소다
 
 		CHERRY_DOCTOR_COLA = "흠, 콜라는 아닌데.", --체리숲 닥터 페퍼(닥터 체리)
-		APPLEPINESODA = "이러면 입천장 아플 일은 없겠지.", -- 탄산 파인애플(오란씨)
-		CITROYUZUSODA = "새콤달콤하니 맛있어.", -- 탄산 오랜지(환타)
 		STRAWBERRYSODA = "뭐, 레모네이드에서 레몬 대신 딸기를 넣었구만.", -- 탄산 딸기(웰치스 딸기)
 
 		--콜라보 양조주
@@ -225,6 +242,10 @@ return {
 		MADHU_RUM = "아니 이게 또 뭐럼? 하!", -- 럼주 "What's rum with ya? Ha!"
 		BERRY_BRANDY = "뭔가 엄청나게 고급진 술인갑네.", -- 베리 브랜디
 		AREUHI = "이건 또 난생 처음 보는 술이네.", -- 크므즈 증류주 아르히
+		APPLEPINE_BRANDY = "",
+		VOID = "",
+		CITROYUZU_CURACAO = "",
+		MENTHA_SPICATA_CURACAO = "",
 
 		--왈리 전용 증류주
 
@@ -258,6 +279,8 @@ return {
         WHITE_RUINCOLATE = "어우, 이빨 썩겠네.", --화이트 초콜릿
         RUINCOLATE = "아, 초콜릿 좋지.", -- 그냥 초콜릿
         RUIN_SCHOKAKOLA = "녹지도 않고, 나눠서 먹기도 좋고, 기운도 나지!", -- 쇼카콜라
+        APPLEPINE_PIE = "",
+        APPLEPINE_FRIED_RICE = "",
 
 		BUCKET_STEEL_EMPTY = 
 		{

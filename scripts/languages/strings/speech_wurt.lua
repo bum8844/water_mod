@@ -95,6 +95,11 @@ return {
 		CITROYUZU_SEEDS = "",
 		CITROYUZU_OVERSIZED = "",
 
+		--mentha_spicata
+
+		WEED_MENTHA_SPICATA = "",
+		MENTHA_SPICATA = "",
+
 		-- 증류주 첨가제
 
 		ADDITIVE_SEED = "흙에 안넣어? 뽀륵.", -- 리큐르에 제조에 첨가 할 씨허브(아니스,쥬니퍼베리,팔각 모티브)첨가제 
@@ -151,6 +156,14 @@ return {
 		MULLED = "으으음, 따끈하고 나른해져!", --뱅쇼
 		BUTTERBEER = "벌레맛 안나고 엄청 달아!", --해리포터 시리즈의 버터비어
 
+		APPLEPINE_JUICE = "시큼한 과일 물에 넣어서 덜시고 더 달아, 뽀륵.",
+		APPLEPINE_SMOOTHIE = "",
+		APPLEPINE_CAPPUCCINO = "",
+
+		CITROYUZU_JUICE = "과즙팡팡 상큼해, 뽀륵!",
+		CITROYUZU_TEA = "",
+		EARLGREY_TEA = "",
+
 		-- 콜라보 주전자 음료
 
 		COCONUT_JUICE = "과일 몰캉몰캉졌어, 뽀륵!", --난파선 코코넛 쥬스
@@ -159,8 +172,6 @@ return {
 		CHERRY_ROSEBERRIES_TEA = "못생긴열매 머리카락 없지?", --체리숲 로즈힙 차
 		CHERRY_HONEY_TEA = "예쁜벌꿀 꿀 탄물 마시면 몸 따듯해져!", --체리숲 벚꽃꿀 차
 		SWEET_RICE_DRINK = "어인들 이런식으로 간식 안만들어.", -- 비타협 식혜
-		APPLEPINE_JUICE = "시큼한 과일 물에 넣어서 덜시고 더 달아, 뽀륵.", -- 레기온 파인애플 주스
-		CITROYUZU_JUICE = "과즙팡팡 상큼해, 뽀륵!", -- 모어 푸드 팩 오랜지 주스
 		STRAWBERRY_SMOOTHIE = "흐드드, 빨간과즙 얼은거 갈았어!", -- 모어 푸드 팩 딸기 스무디
 		STRAWBERRY_MILK_SMOOTHIE = "흐드드드, 부드러워!", -- 모어 푸드 팩 딸기 스무디 라떼
 
@@ -176,6 +187,10 @@ return {
 		COLA = "이거 엄청 맛나, 굉장해 뽀륵!", -- 콜라
 		COLAQUANTUM = "반짝반짝하고 소리 나, 뽀륵!", --콜라 퀀텀
 		LUMPY_BEER = "약맛 나는데 달고 톡 톡 해.", --루트비어(술이 아님)
+		APPLEPINESODA = "톡 톡 하는 시큼한 과일물!", -- 탄산 파인애플(오란씨)
+		CITROYUZUSODA = "뽀륵, 상큼하고 시원해!", -- 탄산 오랜지(환타)
+		DAWN_FOG = "",
+		MOON_CAP_DRINK = "",
 
 		-- 양조주
 
@@ -189,12 +204,13 @@ return {
 		LUMPY_WINE = "이 흙야채물 머리 아픈 냄새나.", --서주(감자 고구마등 뿌리 술)
 		PULQUE = "가시많은식물 짜서 '바료' 시켰데!", --풀케(선인주)
 		RUINCACAO_WINE = "검은과일 더 이상한맛 되었어.", -- 카카오 와인 
+		MIDNIGHT_STROM = "",
+		APPLEPINE_CIDER = "",
+		MENTHA_SPICATA_WINE = "",
 
 		-- 콜라보 소다
 
 		CHERRY_DOCTOR_COLA = "검은물 톡 톡 하고 붉은 과즙맛 나!", --체리숲 닥터 페퍼(닥터 체리)
-		APPLEPINESODA = "톡 톡 하는 시큼한 과일물!", -- 탄산 파인애플(오란씨)
-		CITROYUZUSODA = "뽀륵, 상큼하고 시원해!", -- 탄산 오랜지(환타)
 		STRAWBERRYSODA = "톡 톡 하는 붉은과일 물이야, 뽀륵.", -- 탄산 딸기(웰치스 딸기)
 
 		--콜라보 양조주
@@ -216,6 +232,10 @@ return {
 		MADHU_RUM = "매끈이들 배 탈때 물에 섞었데, 왜?", -- 럼주
 		BERRY_BRANDY = "내 덤불간식은 어딨어, 뽀륵?", -- 베리 브랜디
 		AREUHI = "우유 어디갔어?", -- 크므즈 증류주 아르히
+		APPLEPINE_BRANDY = "",
+		VOID = "",
+		CITROYUZU_CURACAO = "",
+		MENTHA_SPICATA_CURACAO = "",
 
 		--왈리 전용 증류주
 
@@ -249,6 +269,8 @@ return {
         WHITE_RUINCOLATE = "얌! 얌!", --화이트 초콜릿
         RUINCOLATE = "씹으면 찐득찐득 달콤해!", -- 그냥 초콜릿
         RUIN_SCHOKAKOLA = "맛있는데 너무 많이먹으면 못 자!", -- 쇼카콜라
+        APPLEPINE_PIE = "",
+        APPLEPINE_FRIED_RICE = "",
 
 		BUCKET_STEEL_EMPTY = 
 		{

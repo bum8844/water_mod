@@ -113,6 +113,11 @@ return {
 		ADDITIVE_NUT = "산행스낵! 이 아니네...",
 		ADDITIVE_DAIRY = "이걸로 케이크라도 만드는 걸까?",
 
+		--mentha_spicata
+
+		WEED_MENTHA_SPICATA = "",
+		MENTHA_SPICATA = "",
+
 		-- 음료
 
 		WATER_CLEAN = "식수 확보는 생존의 핵심이야!",
@@ -161,6 +166,14 @@ return {
 
 		MULLED = "몸에 좋은 약은 입에 쓰다고 했어!",
 		BUTTERBEER = "마법사들이 좋아하지 않을까?",
+
+		APPLEPINE_JUICE = "파인애플이 파이느라 수고 많았겠어! 헤, 이건 좋았다.",
+		APPLEPINE_SMOOTHIE = "",
+		APPLEPINE_CAPPUCCINO = "",
+
+		CITROYUZU_JUICE = "소개할게, 나만의 오렌지널 쥬스야.",
+		CITROYUZU_TEA = "",
+		EARLGREY_TEA = "",
 		
 		-- 콜라보 주전자 음료
 
@@ -170,8 +183,6 @@ return {
 		CHERRY_ROSEBERRIES_TEA = "완전 힙해! 로-즈하기도 하고.",
 		CHERRY_HONEY_TEA = "뭔가 감기약 맛이 나는 것 같아.",
 		SWEET_RICE_DRINK = "주스는 아닌 것 같은데, 차도 아닌 것 같아!",
-		APPLEPINE_JUICE = "파인애플이 파이느라 수고 많았겠어! 헤, 이건 좋았다.", -- 레기온 파인애플 주스
-		CITROYUZU_JUICE = "소개할게, 나만의 오렌지널 쥬스야.", -- 모어 푸드 팩 오랜지 쥬스
 		STRAWBERRY_SMOOTHIE = "강하지만 엄청 부드러워. 왜냐면 스트로-ㅇ 베리 스무디잖아?", -- 모어 푸드 팩 딸기 스무디
 		STRAWBERRY_MILK_SMOOTHIE = "엄청 시원해!", -- 모어 푸드 팩 딸기 스무디 라떼
 
@@ -187,6 +198,10 @@ return {
 		COLA = "콜라를 다시 볼 줄은 상상도 못했어.",
 		COLAQUANTUM = "안에서 붕붕 소리가 나!",
 		LUMPY_BEER = "아무튼 야채가 들어갔으니까 몸에 좋은 거겠지.",
+		APPLEPINESODA = "소나무 개척단 공식 음료로 좋겠어. 그러니까, '소나무-사과'로 만든 거잖아?", -- 탄산 파인애플(오란씨)
+		CITROYUZUSODA = "오렌지소다가 꿈을 꾸면? 환타-지!", -- 탄산 오랜지(환타)
+		DAWN_FOG = "",
+		MOON_CAP_DRINK = "",
 
 		--양조주
 
@@ -200,12 +215,13 @@ return {
 		LUMPY_WINE = "어쩌면 상처를 소독할 때 쓸 수 있지 않을까?",
 		PULQUE = "교본에 선인장을 이렇게 먹는 방법은 안 나와있어.",
 		RUINCACAO_WINE = "어른들을 위한 코코아 같은 거야!",
+		MIDNIGHT_STROM = "",
+		APPLEPINE_CIDER = "",
+		MENTHA_SPICATA_WINE = "",
 
 		--콜라보 소다
 
 		CHERRY_DOCTOR_COLA = "적어도 치과의사가 만든 건 아니었을 것 같아.",
-		APPLEPINESODA = "소나무 개척단 공식 음료로 좋겠어. 그러니까, '소나무-사과'로 만든 거잖아?", -- 탄산 파인애플(오란씨)
-		CITROYUZUSODA = "오렌지소다가 꿈을 꾸면? 환타-지!", -- 탄산 오랜지(환타)
 		STRAWBERRYSODA = "딸기 소다는 처음 봤어.", -- 탄산 딸기(웰치스 딸기)
 
 		--콜라보 양조주
@@ -227,6 +243,10 @@ return {
 		MADHU_RUM = "해적들이 좋아하는 술이야!",
 		BERRY_BRANDY = "잘 구분은 못하겠지만, 브랜디라나봐!",
 		AREUHI = "어른들을 위한 투명한 우유야.",
+		APPLEPINE_BRANDY = "",
+		VOID = "",
+		CITROYUZU_CURACAO = "",
+		MENTHA_SPICATA_CURACAO = "",
 
 		--왈리 전용 증류주
 
@@ -260,6 +280,8 @@ return {
         WHITE_RUINCOLATE = "조금씩 아껴 먹어야겠어!",
         RUINCOLATE = "극지 탐험가들의 필수품이야!",
         RUIN_SCHOKAKOLA = "적어도 탐험하면서 초콜릿이 뭉개지지는 않겠어.",
+        APPLEPINE_PIE = "",
+        APPLEPINE_FRIED_RICE = "",
 
 		BUCKET_STEEL_EMPTY = 
 		{

@@ -94,6 +94,11 @@ return {
 		CITROYUZU_SEEDS = "",
 		CITROYUZU_OVERSIZED = "",
 
+		--mentha_spicata
+
+		WEED_MENTHA_SPICATA = "",
+		MENTHA_SPICATA = "",
+
 		-- 증류주 첨가제
 
 		ADDITIVE_SEED = "생명의 파괴는 즐거움", -- 리큐르에 제조에 첨가 할 씨허브(아니스,쥬니퍼베리,팔각 모티브)첨가제 
@@ -150,6 +155,14 @@ return {
 		MULLED = "에탄올 대부분 소실", --뱅쇼
 		BUTTERBEER = "무알콜 에탄올 부동액", --해리포터 시리즈의 버터비어(ETHANOL-FREE ETHANOL ANTIFREEZE)
 
+        APPLEPINE_JUICE = "스폰지와의 연관성을 부정",
+		APPLEPINE_SMOOTHIE = "",
+		APPLEPINE_CAPPUCCINO = "",
+
+		CITROYUZU_JUICE = "섭취를 위해 분쇄됨",
+		CITROYUZU_TEA = "",
+		EARLGREY_TEA = "",
+
 		-- 콜라보 주전자 음료
 
 		COCONUT_JUICE = "전해질이 풍부함", --난파선 코코넛 쥬스(RICH IN ELECTROLYTE)
@@ -158,8 +171,6 @@ return {
 		CHERRY_ROSEBERRIES_TEA = "장미향 유체", --체리숲 로즈힙 차
 		CHERRY_HONEY_TEA = "당도 측정 시도: 실패", --체리숲 벚꽃꿀 차
 		SWEET_RICE_DRINK = "경고: 과량의 엿당 함유", -- 비타협 식혜(WARNING: CONTAINS EXCESSIVE AMOUNTS OF MALTOSE)
-        APPLEPINE_JUICE = "스폰지와의 연관성을 부정", -- 레기온 파인애플 주스
-		CITROYUZU_JUICE = "섭취를 위해 분쇄됨", -- 모어 푸드 팩 오랜지 주스
 		STRAWBERRY_SMOOTHIE = "질감이 나를 불쾌하게 함", -- 모어 푸드 팩 딸기 스무디
 		STRAWBERRY_MILK_SMOOTHIE = "딸기가 포획된 형태", -- 모어 푸드 팩 딸기 스무디 라떼
 
@@ -175,6 +186,10 @@ return {
 		COLA = "멍청한 유기체들이 좋아하는 캐러맬 액체", -- 콜라
 		COLAQUANTUM = "다량의 방사능 함유", --콜라 퀀텀
 		LUMPY_BEER = "유기체의 탄산에 대한 집착 이해 불가", --루트비어(술이 아님)
+		APPLEPINESODA = "파인 튜닝이 사용됨", -- 탄산 파인애플(오란씨)
+		CITROYUZUSODA = "유기체의 행동을 독려시키기위해 제작됨", -- 탄산 오랜지(환타)
+		DAWN_FOG = "",
+		MOON_CAP_DRINK = "",
 
 		-- 양조주
 
@@ -188,12 +203,13 @@ return {
 		LUMPY_WINE = "유기체의 뿌리는 다양한 용도로 사용", --서주(감자 고구마등 뿌리 술)
 		PULQUE = "포함된 미생물의 자가진화의 끝은 언제인가", --풀케(선인주)
 		RUINCACAO_WINE = "카카오 새로운 가능성 발견됨", -- 카카오 와인 
+		MIDNIGHT_STROM = "",
+		APPLEPINE_CIDER = "",
+		MENTHA_SPICATA_WINE = "",
 
 		-- 콜라보 소다
 
 		CHERRY_DOCTOR_COLA = "누가 이런 혼종을 만들었는가", --체리숲 닥터 페퍼(닥터 체리)
-		APPLEPINESODA = "파인 튜닝이 사용됨", -- 탄산 파인애플(오란씨)
-		CITROYUZUSODA = "유기체의 행동을 독려시키기위해 제작됨", -- 탄산 오랜지(환타)
 		STRAWBERRYSODA = "영혼 악마놈을 연상시킴", -- 탄산 딸기(웰치스 딸기)
 
 		--콜라보 양조주
@@ -215,6 +231,10 @@ return {
 		MADHU_RUM = "배 위의 환경과 호환됨", -- 럼주
 		BERRY_BRANDY = "참으로 긴 공정", -- 베리 브랜디
 		AREUHI = "P형 유동체", -- 크므즈 증류주 아르히
+		APPLEPINE_BRANDY = "",
+		VOID = "",
+		CITROYUZU_CURACAO = "",
+		MENTHA_SPICATA_CURACAO = "",
 
 		--왈리 전용 증류주
 
@@ -248,6 +268,8 @@ return {
         WHITE_RUINCOLATE = "카카오 버터 20% 함유", --화이트 초콜릿
         RUINCOLATE = "가공된 카카오", -- 그냥 초콜릿
         RUIN_SCHOKAKOLA = "고체연료 부스터", -- 쇼카콜라
+        APPLEPINE_PIE = "",
+        APPLEPINE_FRIED_RICE = "",
 
 		BUCKET_STEEL_EMPTY = 
 		{

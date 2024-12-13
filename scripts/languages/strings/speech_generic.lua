@@ -106,6 +106,11 @@ return {
 		CITROYUZU_SEEDS = "",
 		CITROYUZU_OVERSIZED = "",
 
+		--mentha_spicata
+
+		WEED_MENTHA_SPICATA = "",
+		MENTHA_SPICATA = "",
+
 		-- 증류기 첨가제
 
 		ADDITIVE_SEED = "왈리가 새로운 향신료를 만든 걸까?",
@@ -167,6 +172,8 @@ return {
 		APPLEPINE_CAPPUCCINO = "",
 
 		CITROYUZU_JUICE = "오렌지 주스가 있어서 주황.",
+		CITROYUZU_TEA = "",
+		EARLGREY_TEA = "",
 
 		-- 콜라보 주전자 음료
 
@@ -192,6 +199,7 @@ return {
 		COLAQUANTUM = "짜릿한 과학이 들어있어!",
 		LUMPY_BEER = "엄청나게 톡 쏘는 향이야!",
 		CITROYUZUSODA = "정말 환타-스틱하네.", -- 탄산 오랜지(환타)
+		APPLEPINESODA = "입안이 따끔따끔해.", -- 탄산 파인애플(오란씨)
 		DAWN_FOG = "",
 		MOON_CAP_DRINK = "",
 
@@ -209,11 +217,11 @@ return {
 		RUINCACAO_WINE = "이걸로 술을 만들 수 있을 줄은 몰랐어.",
 		MIDNIGHT_STROM = "",
 		APPLEPINE_CIDER = "",
+		MENTHA_SPICATA_WINE = "",
 
 		--콜라보 소다
 
 		CHERRY_DOCTOR_COLA = "의사가 만들었다고는 못 믿겠는데.",
-		APPLEPINESODA = "입안이 따끔따끔해.", -- 탄산 파인애플(오란씨)
 		STRAWBERRYSODA = "베리강력한 탄산감이야.", -- 탄산 딸기(웰치스 딸기)
 
 		--콜라보 양조주
@@ -237,6 +245,8 @@ return {
 		AREUHI = "이젠 우유 같아 보이지도 않아.",
 		APPLEPINE_BRANDY = "",
 		VOID = "",
+		CITROYUZU_CURACAO = "",
+		MENTHA_SPICATA_CURACAO = "",
 
 		--왈리 전용 증류주
 

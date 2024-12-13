@@ -63,12 +63,12 @@ WATER_VEGGIES[name] =
     }
 end
 
---[[MakeVegStats("applepine","fruit",UNCOMMON,
+MakeVegStats("applepine","fruit",UNCOMMON,
 TUNING.CALORIES_SMALL,TUNING.HEALING_SMALL,TUNING.PERISH_FAST,TUNING.SANITY_TINY,
 TUNING.CALORIES_SMALL,TUNING.HEALING_TINY,TUNING.PERISH_SUPERFAST,TUNING.SANITY_TINY*1.5,
 {"med", 0.05, 0.8}, {"small", 0.1, nil})
 
-MakeVegStats("limon","fruit",UNCOMMON,
+--[[MakeVegStats("limon","fruit",UNCOMMON,
 TUNING.CALORIES_TINY,TUNING.HEALING_SMALL,TUNING.PERISH_FAST,0,
 TUNING.CALORIES_SMALL,TUNING.HEALING_MED,TUNING.PERISH_SUPERFAST,0,
 {"med", 0.05, 0.8}, {"small", 0.1, nil})
@@ -76,7 +76,7 @@ TUNING.CALORIES_SMALL,TUNING.HEALING_MED,TUNING.PERISH_SUPERFAST,0,
 MakeVegStats("citroyuzu","fruit",UNCOMMON,
 TUNING.CALORIES_TINY,TUNING.HEALING_SMALL,TUNING.PERISH_FAST,0,
 TUNING.CALORIES_SMALL,TUNING.HEALING_MED,TUNING.PERISH_SUPERFAST,0,
-{"med", 0.05, 0.8}, {"small", 0.1, nil})
+{"med", 0.05, 0.8}, {"small", 0.1, nil})]]
 
 local function MakeGrowTimes(germination_min, germination_max, full_grow_min, full_grow_max)
     local grow_time = {}
@@ -88,7 +88,7 @@ local function MakeGrowTimes(germination_min, germination_max, full_grow_min, fu
     grow_time.oversized = 6 * DAYS
     grow_time.regrow    = {4 * DAYS, 5 * DAYS} -- min, max
     return grow_time
-end]]
+end
 
 local function MakeGrowTimes_Weed(full_grow_min, full_grow_max, bolting)
     local grow_time = {}
@@ -103,7 +103,7 @@ local function MakeGrowTimes_Weed(full_grow_min, full_grow_max, bolting)
     return grow_time
 end
 
---[[ Applepine Plant.
+--Applepine Plant.
 PLANT_DEFS.applepine = {build = "farm_plant_applepine", bank = "farm_plant_applepine"}
 PLANT_DEFS.applepine.prefab = "farm_plant_applepine"
 PLANT_DEFS.applepine.product = "applepine"
@@ -183,7 +183,7 @@ PLANT_DEFS.applepine.plantregistryinfo = {
     },
 }
 
--- Limon Plant.
+--[[ Limon Plant.
 PLANT_DEFS.limon = {build = "farm_plant_limon", bank = "farm_plant_limon"}
 PLANT_DEFS.limon.prefab = "farm_plant_limon"
 PLANT_DEFS.limon.product = "limon"
