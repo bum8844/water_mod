@@ -51,6 +51,7 @@ return {
 		HOLE = "볼프강 구멍에서 물 얻어낸다.", --우물 구멍
 		WELL = "이제 우물에서 물 얻을수 있다!", --우물
 		BOTTLE_POUCH = "작업해야함",
+		WINE_CELLAR = "",
 
 		WX78MODULE_NONEDRUNK = "로봇 먹는 과자다, 맞지?", -- 78전용 묘듈Is robot snacks, yes?
 

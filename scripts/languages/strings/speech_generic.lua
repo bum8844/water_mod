@@ -62,6 +62,7 @@ return {
 		HOLE = "여기에 우물을 만들면 되겠어.",
 		WELL = "이제 깨끗한 물을 간편하게 얻을 수 있어!",
 		BOTTLE_POUCH = "작업해야함",
+		WINE_CELLAR = "",
 
 		WX78MODULE_NONEDRUNK = "작은 장치 하나에 아주 많은 과학이 압축되어 있어.", -- 78전용 묘듈
 

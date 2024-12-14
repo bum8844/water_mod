@@ -51,6 +51,7 @@ return {
 		HOLE = "물 소리 나.", --우물 구멍
 		WELL = "매끈이들 구멍에서 물 떠 마신대, 왜?", --우물
 		BOTTLE_POUCH = "작업해야함",
+		WINE_CELLAR = "",
 
 		WX78MODULE_NONEDRUNK = "바스락거려.", -- 78전용 묘듈
 

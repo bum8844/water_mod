@@ -195,6 +195,20 @@ local drinks =
 		drinktype = DRINKTYPY.FRUIT,
 	},
 
+	applepine_smoothie = {
+		test = function(boilier, names, tags) return names.applepine and tags.fruit and tags.fruit >= 1 and tags.frozen and tags.frozen >= 1 and notmeat(tags) and notname(names) and lessthing(names) and notages(tags)  end,
+		priority = 2,
+        health = TUNING.HEALING_HUGE/5, -- 12 (60) --바나나와 석류 사이
+        hunger = TUNING.CALORIES_MEDSMALL/4, -- 5.625 (28.125)
+        sanity = 0,
+        thirst = TUNING.HYDRATION_MEDSMALL,  -- 22.5
+        perishtime = TUNING.PERISH_MED, --10일
+		cooktime = TUNING.KETTLE_FRUIT,
+		potlevel = "mid",
+		potlevel_bottle = "mid",
+		drinktype = DRINKTYPY.FRUIT,
+	},
+
 	citroyuzu_juice = {
 		test = function(boilier, names, tags) return (names.mfp_orange or names.mfp_orange_cooked or names.fwd_in_pdt_food_orange or names.citroyuzu or names.citroyuzu_cooked) and tags.fruit and tags.fruit >= 2 and not tags.veggie and notmeat(tags) and notname(names) and lessthing(names) and notages(tags) end,
 		priority = 2,
@@ -211,7 +225,7 @@ local drinks =
 
 	citroyuzu_tea = {
 		test = function(boilier, names, tags) return (names.mfp_orange or names.mfp_orange_cooked or names.fwd_in_pdt_food_orange or names.citroyuzu or names.citroyuzu_cooked) and tags.fruit and tags.fruit >= 1 and Preference(names, tags, "sweetener", .9) and not tags.veggie and notmeat(tags) and notname(names) and lessthing(names) and notages(tags) end,
-		priority = 2,
+		priority = 3,
         health = TUNING.HEALING_LARGE/5, -- 8 (40) ( MFP모드의 오렌지 쥬스 참고함)
         hunger = TUNING.CALORIES_MEDSMALL/5, -- 3.75 (18.75)
         sanity = TUNING.SANITY_TINY, -- 3 (15)
@@ -225,7 +239,7 @@ local drinks =
 
 	earlgrey_tea = {
 		test = function(boilier, names, tags) return (names.mfp_orange or names.mfp_orange_cooked or names.fwd_in_pdt_food_orange or names.citroyuzu or names.citroyuzu_cooked) and tags.fruit and tags.fruit >= 1 and names.tealeaves_dried and names.tealeaves_dried >= 1 and Preference(names, tags, "sweetener", .9) and not tags.veggie and notmeat(tags) and notname(names) and lessthing(names) and notages(tags) end,
-		priority = 2,
+		priority = 4,
         health = TUNING.HEALING_LARGE/5, -- 8 (40) ( MFP모드의 오렌지 쥬스 참고함)
         hunger = TUNING.CALORIES_MEDSMALL/5, -- 3.75 (18.75)
         sanity = TUNING.SANITY_TINY, -- 3 (15)

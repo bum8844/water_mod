@@ -56,6 +56,7 @@ return {
 		HOLE = "",
 		WELL = "",
 		BOTTLE_POUCH = "",
+		WINE_CELLAR = "",
 
 		WX78MODULE_NONEDRUNK = "", -- WX-78 module
 

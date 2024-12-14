@@ -25,19 +25,19 @@
 		<Element name="wx78module_nonedrunk.tex" u1="0.001" u2="0.0605234375" v2="0.5536875" v1="0.432640625" variant="" />
 		<Element name="hydration.tex" u1="0.4385" u2="0.499" v2="0.624" v1="0.501" variant="" />
 		<Element name="secretknowledge.tex" u1="0.4385" u2="0.499" v2="0.749" v1="0.626" variant="" />
-		<Element name="applepine.tex" u1="0.001" u2="0.0615" v2="0.907203125" v1="0.784203125" variant="" />
-		<Element name="applepine_cooked.tex" u1="0.061546875" u2="0.122046875" v2="0.999" v1="0.909203125" variant="" />
-		<Element name="applepine_seeds.tex" u1="0.001" u2="0.059546875" v2="0.999" v1="0.91896875" variant="" />
+		<Element name="applepine.tex" u1="0.0635" u2="0.124" v2="0.91696875" v1="0.79396875" variant="" />
+		<Element name="applepine_cooked.tex" u1="0.001" u2="0.0615" v2="0.874" v1="0.784203125" variant="" />
+		<Element name="applepine_seeds.tex" u1="0.0635" u2="0.122046875" v2="0.999" v1="0.91896875" variant="" />
 		<Element name="bottle_pouch.tex" u1="0.1250234375" u2="0.1855234375" v2="0.645484375" v1="0.542015625" variant="" />
 		<Element name="bottle_pouch_open_0.tex" u1="0.186546875" u2="0.2460703125" v2="0.749" v1="0.647484375" variant="" />
 		<Element name="bottle_pouch_open_1.tex" u1="0.1250234375" u2="0.184546875" v2="0.749" v1="0.647484375" variant="" />
-		<Element name="bottle_pouch_open_2.tex" u1="0.0625234375" u2="0.122046875" v2="0.782203125" v1="0.6806875" variant="" />
-		<Element name="bottle_pouch_open_3.tex" u1="0.0635" u2="0.1230234375" v2="0.6786875" v1="0.577171875" variant="" />
+		<Element name="bottle_pouch_open_2.tex" u1="0.0635" u2="0.1230234375" v2="0.79196875" v1="0.690453125" variant="" />
+		<Element name="bottle_pouch_open_3.tex" u1="0.0635" u2="0.1230234375" v2="0.688453125" v1="0.5869375" variant="" />
 		<Element name="bottle_pouch_open_4.tex" u1="0.001" u2="0.0605234375" v2="0.782203125" v1="0.6806875" variant="" />
 		<Element name="mentha_spicata.tex" u1="0.001" u2="0.0615" v2="0.6786875" v1="0.5556875" variant="" />
 		<Element name="thermos_bottle.tex" u1="0.1885" u2="0.249" v2="0.999" v1="0.876" variant="" />
 		<Element name="thermos_bottle_open.tex" u1="0.1885" u2="0.249" v2="0.874" v1="0.751" variant="" />
-		<Element name="wine_cellar.tex" u1="0.126" u2="0.1865" v2="0.874" v1="0.751" variant="" />
+		<Element name="wine_cellar.tex" u1="0.001" u2="0.0615" v2="0.999" v1="0.876" variant="" />
 		<Element name="campdesalinator.tex" u1="0.1885" u2="0.2480234375" v2="0.5224375" v1="0.401390625" variant="" />
 		<Element name="campkettle.tex" u1="0.251" u2="0.3115" v2="0.125953125" v1="0.002953125" variant="" />
 		<Element name="distillers.tex" u1="0.376" u2="0.4365" v2="0.749" v1="0.626" variant="" />
@@ -65,7 +65,7 @@
 		<Element name="well_drilling_item.tex" u1="0.1885" u2="0.249" v2="0.274390625" v1="0.15334375" variant="" />
 		<Element name="well_kit.tex" u1="0.251" u2="0.3115" v2="0.500953125" v1="0.377953125" variant="" />
 		<Element name="well_sprinkler_kit.tex" u1="0.3135" u2="0.374" v2="0.999" v1="0.891625" variant="" />
-		<Element name="well_waterpump.tex" u1="0.126" u2="0.1865" v2="0.999" v1="0.876" variant="" />
-		<Element name="well_waterpump_kit.tex" u1="0.0635" u2="0.124" v2="0.907203125" v1="0.784203125" variant="" />
+		<Element name="well_waterpump.tex" u1="0.126" u2="0.1865" v2="0.874" v1="0.751" variant="" />
+		<Element name="well_waterpump_kit.tex" u1="0.126" u2="0.1865" v2="0.999" v1="0.876" variant="" />
 	</Elements>
 </Atlas>

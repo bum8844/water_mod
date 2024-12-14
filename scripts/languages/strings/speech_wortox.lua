@@ -51,6 +51,7 @@ return {
 		HOLE = "안쪽이 꽤 깊은데!", --우물 구멍
 		WELL = "내릴 양동이를 찾아봐야겠네.", --우물
 		BOTTLE_POUCH = "작업해야함",
+		WINE_CELLAR = "",
 
 		WX78MODULE_NONEDRUNK = "네가 그 폐급 속의 A급이니?", -- 78전용 묘듈
 

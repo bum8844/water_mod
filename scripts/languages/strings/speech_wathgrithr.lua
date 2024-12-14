@@ -62,6 +62,7 @@ return {
 		HOLE = "마치 망자의 울음 같은 소리로다.", --우물 구멍
 		WELL = "목마른 자가 우물을 파는 법.", --우물
 		BOTTLE_POUCH = "작업해야함",
+		WINE_CELLAR = "",
 
 		WX78MODULE_NONEDRUNK = "이 물건이 우리의 철갑 전사에게 힘을 보태리라.", -- 78전용 묘듈
 

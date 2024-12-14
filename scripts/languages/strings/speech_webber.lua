@@ -62,6 +62,7 @@ return {
 		HOLE = "여보세요- 거기 누구 있나요--", --우물 구멍
 		WELL = "여기 숨으면 혼난댔어.", --우물
 		BOTTLE_POUCH = "",
+		WINE_CELLAR = "",
 
 		WX78MODULE_NONEDRUNK = "허, 로봇의 장기가 이렇게 생긴 건가?", -- 78전용 묘듈
 

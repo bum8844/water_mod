@@ -62,6 +62,7 @@ return {
 		HOLE = "혹시 세상 반대편까지 이어져 있는걸까?",
 		WELL = "왜 그래 워비? 누가 거기 빠졌어?",
 		BOTTLE_POUCH = "작업해야함",
+		WINE_CELLAR = "",
 
 		WX78MODULE_NONEDRUNK = "로봇 내장이잖아! 짱이다!", -- 78전용 묘듈
 

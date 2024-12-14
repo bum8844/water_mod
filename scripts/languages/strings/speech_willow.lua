@@ -62,6 +62,7 @@ return {
 		HOLE = "빠지면 뼈도 못 추리겠어.", --우물 구멍
 		WELL = "'우물'이 있으면 '좌불'도 있어야 하는 거 아니야?", --우물
 		BOTTLE_POUCH = "",
+		WINE_CELLAR = "",
 
 		WX78MODULE_NONEDRUNK = "야 WX, 화염방사기 설치해보는 건 어때?", -- 78전용 묘듈
 

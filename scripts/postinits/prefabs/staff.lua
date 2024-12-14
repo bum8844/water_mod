@@ -42,6 +42,19 @@ local function destroystructure(staff, target)
 		RetractPipes(target)
 	end
 	staff.components.spellcaster.spell_old(staff, target)
+	if target.prefab == "wine_cellar" then
+		local pt = target:GetPosition()
+		local ents = TheSim:FindEntities(pt.x, pt.y, pt.z, 1, {"projectile"})
+		local num = 0
+		for k, v in pairs(ents) do
+			if v.prefab == "gelblob_bottle" and not (num >= 4) then
+	            if not (v.components.stackable.stacksize > 1) then
+	            	num = num + 1
+	                v.components.complexprojectile.onhitfn(v)
+	            end
+			end
+		end
+	end
 end
 
 local GREENHAUNT_CANT_TAGS = { "INLIMBO" }

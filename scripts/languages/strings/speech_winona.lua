@@ -61,6 +61,7 @@ return {
 		HOLE = "지하수와 연결된 구멍이야.", --우물 구멍
 		WELL = "뭔가 보완할 점이 보이는데.", --우물
 		BOTTLE_POUCH = "",
+		WINE_CELLAR = "",
 
 		WX78MODULE_NONEDRUNK = "이 자식 물건 좀 잘 챙겨두면 어디 덧나나.", -- 78전용 묘듈
 

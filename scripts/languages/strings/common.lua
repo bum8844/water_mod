@@ -17,6 +17,7 @@ return
 	{
 		WX78MODULE_NONEDRUNK = "에탄올 재처리 모듈",
 
+		WINE_CELLAR = "와인 보관함",
 		BOTTLE_POUCH = "물병파우치",
 
 		-- boilbook

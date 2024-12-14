@@ -51,6 +51,7 @@ return {
 		HOLE = "이크, 조심해야겠어.", --우물 구멍
 		WELL = "마을마다 이거 하나씩은 있어야지.", --우물
 		BOTTLE_POUCH = "작업해야함",
+		WINE_CELLAR = "",
 
 		WX78MODULE_NONEDRUNK = "그냥 멋 좀 나는 로봇 부품이야.", -- 78전용 묘듈
 

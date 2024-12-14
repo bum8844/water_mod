@@ -62,6 +62,7 @@ return {
 		HOLE = "물 흐르는 소리가 들려.", --우물 구멍
 		WELL = "식수를 길어보자!", --우물
 		BOTTLE_POUCH = "작업해야함",
+		WINE_CELLAR = "",
 
 		WX78MODULE_NONEDRUNK = "우리 강철 친구에게 힘을 더해주는 그런 건가?", -- 78전용 묘듈
 

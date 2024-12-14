@@ -24,6 +24,18 @@ end
 local function onhammered(inst, worker)
     inst.components.lootdropper:DropLoot()
     inst.components.container:DropEverything()
+    local pt = inst:GetPosition()
+    local ents = TheSim:FindEntities(pt.x, pt.y, pt.z, 1, {"projectile"})
+    local num = 0
+    for k, v in pairs(ents) do
+        if v.prefab == "gelblob_bottle" and not (num >= 2) then
+            print("stack",v.components.stackable.stacksize)
+            if not (v.components.stackable.stacksize > 1) then
+                num = num + 1
+                v.components.complexprojectile.onhitfn(v)
+            end
+        end
+    end
     local fx = SpawnPrefab("collapse_small")
     fx.Transform:SetPosition(inst.Transform:GetWorldPosition())
     fx:SetMaterial("metal")
@@ -40,7 +52,7 @@ end
 local function onbuilt(inst)
     inst.AnimState:PlayAnimation("place")
     inst.AnimState:PushAnimation("closed", false)
-    inst.SoundEmitter:PlaySound("dontstarve/common/icebox_craft")
+    inst.SoundEmitter:PlaySound("dontstarve/common/together/town_portal/craft")
 end
 
 local function fn()
@@ -52,7 +64,7 @@ local function fn()
     inst.entity:AddMiniMapEntity()
     inst.entity:AddNetwork()
 
-    --inst.MiniMapEntity:SetIcon("wine_cellar.png")
+    inst.MiniMapEntity:SetIcon("wine_cellar.png")
 
     inst:AddTag("structure")
 

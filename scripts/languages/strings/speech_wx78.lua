@@ -50,6 +50,7 @@ return {
 		HOLE = "물을 뽑아내기 위한 구멍", --우물 구멍
 		WELL = "물의 안정적 공급처", --우물
 		BOTTLE_POUCH = "작업해야함",
+		WINE_CELLAR = "",
 
 		WX78MODULE_NONEDRUNK = "화학 엔진 출력보조", -- 78전용 묘듈
 

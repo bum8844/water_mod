@@ -62,6 +62,7 @@ return {
 		HOLE = "잘못 빠지면 뼈도 못 건지겠군.", --우물 구멍
 		WELL = "우물 옆에서 목말라 죽겠군.", --우물
 		BOTTLE_POUCH = "작업해야함",
+		WINE_CELLAR = "",
 
 		WX78MODULE_NONEDRUNK = "저 로봇 녀석 자제 좀 해야 할 텐데.", -- 78전용 묘듈
 
