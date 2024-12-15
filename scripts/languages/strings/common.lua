@@ -111,6 +111,7 @@ return
 		APPLEPINE_SEEDS = "난형 씨앗",
 		KNOWN_APPLEPINE_SEEDS = "파인사과 씨앗",
 		APPLEPINE_OVERSIZED = "거대한 파인사과",
+		APPLEPINE_OVERSIZED_ROTTEN = "거대한 썩은 파인사과",
 		FARM_PLANT_APPLEPINE = "파인사과 식물체",
 
 		--limon
@@ -119,6 +120,7 @@ return
 		LIMON_SEEDS = "난형 오돌토톨한 씨앗",
 		KNOWN_LIMON_SEEDS = "리몬 씨앗",
 		LIMON_OVERSIZED = "거대한 리몬 씨앗",
+		LIMON_OVERSIZED_ROTTEN = "거대한 썩은 리몬",
 		FARM_PLANT_LIMON = "리몬 식물체",
 
 		--citroyuzu
@@ -127,6 +129,7 @@ return
 		CITROYUZU_SEEDS = "오돌토톨한 씨앗",
 		KNOWN_CITROYUZU_SEEDS = "시트유주 씨앗",
 		CITROYUZU_OVERSIZED = "거대한 시트유주",
+		CITROYUZU_OVERSIZED_ROTTEN = "거대한 썩은 시트유주",
 		FARM_PLANT_CITROYUZU = "시트유주 식물체",
 
 		--mentha_spicata

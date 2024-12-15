@@ -11,14 +11,22 @@ local prefabs =
     "collapse_small",
 }
 
+
 local function onopen(inst)
     inst.AnimState:PlayAnimation("open")
-    inst.SoundEmitter:PlaySound("dontstarve/common/icebox_open")
+    inst.SoundEmitter:PlaySound("turnoftides/common/together/boat/anchor/LP","loop_gears")
+    inst:DoTaskInTime(1,function(inst)
+        inst.SoundEmitter:KillSound("loop_gears")
+        inst.SoundEmitter:PlaySound("dontstarve/common/icebox_open")
+    end)
 end
 
 local function onclose(inst)
     inst.AnimState:PlayAnimation("close")
-    inst.SoundEmitter:PlaySound("dontstarve/common/icebox_close")
+    inst.SoundEmitter:PlaySound("dontstarve/quagmire/common/safe/close")
+    inst:DoTaskInTime(.2,function(inst)
+        inst.SoundEmitter:PlaySound("dontstarve/common/icebox_close")
+    end)
 end
 
 local function onhammered(inst, worker)
@@ -53,6 +61,11 @@ local function onbuilt(inst)
     inst.AnimState:PlayAnimation("place")
     inst.AnimState:PushAnimation("closed", false)
     inst.SoundEmitter:PlaySound("dontstarve/common/together/town_portal/craft")
+    inst:DoTaskInTime(.7, function(inst) inst.SoundEmitter:PlaySound("wintersfeast2019/winters_feast/table/place")
+        inst:DoTaskInTime(.8, function(inst) inst.SoundEmitter:PlaySound("dontstarve/creatures/together/stagehand/hit")
+            inst:DoTaskInTime(.5, function(inst) inst.SoundEmitter:PlaySound("dontstarve/quagmire/common/safe/close")end)
+        end)
+    end) 
 end
 
 local function fn()
