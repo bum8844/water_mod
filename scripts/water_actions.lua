@@ -346,3 +346,21 @@ end)
 READBOILBOOK.priority = 1
 READBOILBOOK.mount_valid = true
 READBOILBOOK.encumbered_valid = true
+
+DRAMATIC_LOWER = AddAction("DRAMATIC_LOWER",STRINGS.ACTIONS.OCEAN_TRAWLER_LOWER,function(act)
+    if act.target.components.dramaticcontainer ~= nil then
+        act.target.components.dramaticcontainer:DramaticClose()
+    end
+    return true
+end)
+
+DRAMATIC_LOWER.rmb = true
+
+DRAMATIC_RAISE = AddAction("DRAMATIC_RAISE",STRINGS.ACTIONS.OCEAN_TRAWLER_RAISE,function(act)
+    if act.target.components.dramaticcontainer ~= nil then
+        act.target.components.dramaticcontainer:DramaticOpen()
+    end
+    return true
+end)
+
+DRAMATIC_RAISE.rmb = true

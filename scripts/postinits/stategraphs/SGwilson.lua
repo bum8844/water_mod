@@ -520,6 +520,8 @@ AddStategraphActionHandler("wilson", ActionHandler(ACTIONS.UPGRADE_TILEARRIVE, "
         end
     )
 )]]
+AddStategraphActionHandler("wilson", ActionHandler(ACTIONS.DRAMATIC_RAISE, "doshortaction"))
+AddStategraphActionHandler("wilson", ActionHandler(ACTIONS.DRAMATIC_LOWER, "doshortaction"))
 AddStategraphActionHandler("wilson", ActionHandler(ACTIONS.TURNON_TILEARRIVE, "give"))
 AddStategraphActionHandler("wilson", ActionHandler(ACTIONS.BREWING,
         function(inst, action)

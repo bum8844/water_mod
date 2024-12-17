@@ -182,6 +182,18 @@ local SCENE =
     machinetool = function(inst, doer, actions, right)
         table.insert(actions, ACTIONS.MACHINETOOL)
     end,
+
+    dramaticcontainer = function(inst, doer, actions, right)
+        if not inst:HasTag("fire") and not inst:HasTag("burnt") and not inst:HasTag("busy") then
+            if right then
+                if inst:HasTag("trawler_lowered") then
+                    table.insert(actions, ACTIONS.DRAMATIC_RAISE)
+                else
+                    table.insert(actions, ACTIONS.DRAMATIC_LOWER)
+                end
+            end
+        end
+    end,
 }
 
 local INVENTORY = {

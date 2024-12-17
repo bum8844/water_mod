@@ -11,22 +11,40 @@ local prefabs =
     "collapse_small",
 }
 
+local function SetOpen(inst)
+    inst:RemoveTag("busy")
+    inst.components.dramaticcontainer.isopen = true
+    inst.components.container.canbeopened = true
+    inst:RemoveEventCallback("animover",SetOpen)
+end
+
+local function SetClose(inst)
+    inst:RemoveTag("busy")
+    inst.components.dramaticcontainer.isopen = false
+    inst:RemoveEventCallback("animover",SetClose)
+end
 
 local function onopen(inst)
+    inst:AddTag("busy")
     inst.AnimState:PlayAnimation("open")
     inst.SoundEmitter:PlaySound("turnoftides/common/together/boat/anchor/LP","loop_gears")
     inst:DoTaskInTime(1,function(inst)
         inst.SoundEmitter:KillSound("loop_gears")
         inst.SoundEmitter:PlaySound("dontstarve/common/icebox_open")
     end)
+    inst:ListenForEvent("animover",SetOpen)
 end
 
 local function onclose(inst)
+    inst:AddTag("busy")
+    inst.components.container.canbeopened = false
+    inst.components.container:Close()
     inst.AnimState:PlayAnimation("close")
     inst.SoundEmitter:PlaySound("dontstarve/quagmire/common/safe/close")
     inst:DoTaskInTime(.2,function(inst)
         inst.SoundEmitter:PlaySound("dontstarve/common/icebox_close")
     end)
+     inst:ListenForEvent("animover",SetClose)
 end
 
 local function onhammered(inst, worker)
@@ -79,7 +97,10 @@ local function fn()
 
     inst.MiniMapEntity:SetIcon("wine_cellar.png")
 
+    MakeObstaclePhysics(inst, 1)
+
     inst:AddTag("structure")
+    inst:AddTag("oceantrawler")
 
     inst.AnimState:SetBank("wine_cellar")
     inst.AnimState:SetBuild("wine_cellar")
@@ -94,12 +115,19 @@ local function fn()
     end
 
     inst:AddComponent("inspectable")
+
+    inst:AddTag("oceantrawler")
+    inst:AddTag("trawler_lowered")
+
+    inst:AddComponent("dramaticcontainer")
+    inst.components.dramaticcontainer.dramaticopenfn = onopen
+    inst.components.dramaticcontainer.dramaticclosefn = onclose
+
     inst:AddComponent("container")
     inst.components.container:WidgetSetup("wine_cellar")
-    inst.components.container.onopenfn = onopen
-    inst.components.container.onclosefn = onclose
-    inst.components.container.skipclosesnd = true
-    inst.components.container.skipopensnd = true
+    --inst.components.container.onopenfn = onopen
+    --inst.components.container.onclosefn = onclose
+    inst.components.container.canbeopened = false
 
     inst:AddComponent("preserver")
     inst.components.preserver:SetPerishRateMultiplier(TUNING.FISH_BOX_PRESERVER_RATE)
@@ -114,6 +142,9 @@ local function fn()
     inst:ListenForEvent("onbuilt", onbuilt)
 
     AddHauntableDropItemOrWork(inst)
+
+    MakeLargeBurnable(inst, nil, nil, true)
+    MakeMediumPropagator(inst)
 
     return inst
 end

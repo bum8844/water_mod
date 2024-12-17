@@ -110,6 +110,8 @@ AddStategraphEvent("wilson_client", drink_event)
 
 AddStategraphActionHandler("wilson_client", ActionHandler(ACTIONS.GIVEWATER, "dolongaction"))
 AddStategraphActionHandler("wilson_client", ActionHandler(ACTIONS.TAKEWATER, "dolongaction"))
+AddStategraphActionHandler("wilson_client", ActionHandler(ACTIONS.DRAMATIC_RAISE, "doshortaction"))
+AddStategraphActionHandler("wilson_client", ActionHandler(ACTIONS.DRAMATIC_LOWER, "doshortaction"))
 AddStategraphActionHandler("wilson_client", ActionHandler(ACTIONS.TAKEWATER_OCEAN, "dolongaction"))
 AddStategraphActionHandler("wilson_client", ActionHandler(ACTIONS.MILKINGTOOL, "dolongaction"))
 AddStategraphActionHandler("wilson_client", ActionHandler(ACTIONS.UPGRADE_TILEARRIVE, "dolongaction"))
