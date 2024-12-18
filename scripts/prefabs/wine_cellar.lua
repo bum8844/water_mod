@@ -12,6 +12,7 @@ local prefabs =
 }
 
 local function SetOpen(inst)
+    inst.components.preserver:SetPerishRateMultiplier(TUNING.WINE_CELLAR_PRESERVER_RATE)
     inst:RemoveTag("busy")
     inst.components.dramaticcontainer.isopen = true
     inst.components.container.canbeopened = true
@@ -19,6 +20,7 @@ local function SetOpen(inst)
 end
 
 local function SetClose(inst)
+    inst.components.preserver:SetPerishRateMultiplier(TUNING.FISH_BOX_PRESERVER_RATE)
     inst:RemoveTag("busy")
     inst.components.dramaticcontainer.isopen = false
     inst:RemoveEventCallback("animover",SetClose)
@@ -44,7 +46,7 @@ local function onclose(inst)
     inst:DoTaskInTime(.2,function(inst)
         inst.SoundEmitter:PlaySound("dontstarve/common/icebox_close")
     end)
-     inst:ListenForEvent("animover",SetClose)
+    inst:ListenForEvent("animover",SetClose)
 end
 
 local function onhammered(inst, worker)
@@ -97,7 +99,7 @@ local function fn()
 
     inst.MiniMapEntity:SetIcon("wine_cellar.png")
 
-    MakeObstaclePhysics(inst, 1)
+    MakeObstaclePhysics(inst, 1.2)
 
     inst:AddTag("structure")
     inst:AddTag("oceantrawler")
