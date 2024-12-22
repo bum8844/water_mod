@@ -117,7 +117,7 @@ return
 		--limon
 		LIMON = "리몬",
 		LIMON_COOKED = "구운 리몬",
-		LIMON_SEEDS = "난형 오돌토톨한 씨앗",
+		LIMON_SEEDS = "점박이 씨앗",
 		KNOWN_LIMON_SEEDS = "리몬 씨앗",
 		LIMON_OVERSIZED = "거대한 리몬 씨앗",
 		LIMON_OVERSIZED_ROTTEN = "거대한 썩은 리몬",

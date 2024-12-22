@@ -3,6 +3,9 @@
     <folder id="0" name="applepine">
         <file id="0" name="applepine/apppine-0.png" width="130" height="77" pivot_x="0.469231" pivot_y="0.337662"/>
     </folder>
+    <folder id="1" name="limon">
+        <file id="0" name="limon/limon-0.png" width="120" height="75" pivot_x="0.514008" pivot_y="0.263418"/>
+    </folder>
     <entity id="0" name="water_farm_plant_seeds">
         <animation id="0" name="applepine" length="125" interval="100">
             <mainline>
@@ -28,7 +31,22 @@
             </mainline>
         </animation>
         <animation id="2" name="limon" length="125" interval="100">
-            <mainline/>
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+                <key id="1" time="125">
+                    <object_ref id="0" timeline="0" key="1" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="limon-0">
+                <key id="0" spin="0">
+                    <object folder="1" file="0"/>
+                </key>
+                <key id="1" time="125" spin="0">
+                    <object folder="1" file="0"/>
+                </key>
+            </timeline>
         </animation>
     </entity>
 </spriter_data>

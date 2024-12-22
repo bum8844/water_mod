@@ -44,7 +44,7 @@ local function destroystructure(staff, target)
 	staff.components.spellcaster.spell_old(staff, target)
 	if target.prefab == "wine_cellar" then
 		local pt = target:GetPosition()
-		local ents = TheSim:FindEntities(pt.x, pt.y, pt.z, 1, {"projectile"})
+		local ents = TheSim:FindEntities(pt.x, pt.y, pt.z, 2, {"projectile"})
 		local num = 0
 		for k, v in pairs(ents) do
 			if v.prefab == "gelblob_bottle" and not (num >= 4) then

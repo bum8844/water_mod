@@ -44,10 +44,12 @@ env.GetGameModeProperty = _G.GetGameModeProperty
 env.ThePlayer = _G.ThePlayer
 env.TheWorld = _G.TheWorld
 env.TheNet = _G.TheNet
+env.EntityScript = _G.EntityScript
 
 --Netvars
 env.net_ushortint = _G.net_ushortint
 env.net_bool = _G.net_bool
+env.net_tinybyte = _G.net_tinybyte
 
 env.RoundBiasedUp = _G.RoundBiasedUp
 

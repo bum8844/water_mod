@@ -401,6 +401,8 @@ local function MakeVeggie(name)
         MakeHeavyObstaclePhysics(inst, OVERSIZED_PHYSICS_RADIUS)
         inst:SetPhysicsRadiusOverride(OVERSIZED_PHYSICS_RADIUS)
 
+        inst.minisign_atlas = "minisign_dehy_items_swap"
+
         inst._base_name = name
 
         inst.entity:SetPristine()
@@ -491,6 +493,8 @@ local function MakeVeggie(name)
         MakeHeavyObstaclePhysics(inst, OVERSIZED_PHYSICS_RADIUS)
         inst:SetPhysicsRadiusOverride(OVERSIZED_PHYSICS_RADIUS)
 
+        inst.minisign_atlas = "minisign_dehy_items_swap"
+
         inst._base_name = name
 
         inst.entity:SetPristine()
@@ -564,6 +568,8 @@ local function MakeVeggie(name)
 
         MakeHeavyObstaclePhysics(inst, OVERSIZED_PHYSICS_RADIUS)
         inst:SetPhysicsRadiusOverride(OVERSIZED_PHYSICS_RADIUS)
+
+        inst.minisign_atlas = "minisign_dehy_items_swap"
 
         inst._base_name = name
 

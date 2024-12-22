@@ -53,7 +53,7 @@ local function onhammered(inst, worker)
     inst.components.lootdropper:DropLoot()
     inst.components.container:DropEverything()
     local pt = inst:GetPosition()
-    local ents = TheSim:FindEntities(pt.x, pt.y, pt.z, 1, {"projectile"})
+    local ents = TheSim:FindEntities(pt.x, pt.y, pt.z, 2, {"projectile"})
     local num = 0
     for k, v in pairs(ents) do
         if v.prefab == "gelblob_bottle" and not (num >= 2) then
@@ -77,7 +77,34 @@ local function onhit(inst, worker)
     inst.components.container:Close()
 end
 
-local function onbuilt(inst)
+local function GiveOrDropItem(item, inventory, pos)
+    if inventory ~= nil then
+        inventory:GiveItem(item, nil, pos)
+    else
+        item.Transform:SetPosition(pos:Get())
+        item.components.inventoryitem:OnDropped(true)
+    end
+end
+
+local function onbuilt(inst, builder)
+    local pos = builder.pos
+    local inventory = builder.builder.components.inventory or builder.builder.components.container
+
+    local bottle = SpawnPrefab("messagebottleempty")
+
+    if bottle.components.stackable ~= nil then
+        bottle.components.stackable:SetStackSize(4)
+
+        GiveOrDropItem(bottle, inventory, pos)
+    else
+        GiveOrDropItem(bottle, inventory, pos)
+
+        for i = 1, 3 do
+            local addt_bottle = SpawnPrefab("messagebottleempty")
+            GiveOrDropItem(addt_bottle, inventory, pos)
+        end
+    end
+
     inst.AnimState:PlayAnimation("place")
     inst.AnimState:PushAnimation("closed", false)
     inst.SoundEmitter:PlaySound("dontstarve/common/together/town_portal/craft")

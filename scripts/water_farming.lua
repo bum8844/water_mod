@@ -68,12 +68,12 @@ TUNING.CALORIES_SMALL,TUNING.HEALING_SMALL,TUNING.PERISH_FAST,TUNING.SANITY_TINY
 TUNING.CALORIES_SMALL,TUNING.HEALING_TINY,TUNING.PERISH_SUPERFAST,TUNING.SANITY_TINY*1.5,
 {"med", 0.05, 0.8}, {"small", 0.1, nil})
 
---[[MakeVegStats("limon","fruit",UNCOMMON,
+MakeVegStats("limon","fruit",UNCOMMON,
 TUNING.CALORIES_TINY,TUNING.HEALING_SMALL,TUNING.PERISH_FAST,0,
 TUNING.CALORIES_SMALL,TUNING.HEALING_MED,TUNING.PERISH_SUPERFAST,0,
 {"med", 0.05, 0.8}, {"small", 0.1, nil})
 
-MakeVegStats("citroyuzu","fruit",UNCOMMON,
+--[[MakeVegStats("citroyuzu","fruit",UNCOMMON,
 TUNING.CALORIES_TINY,TUNING.HEALING_SMALL,TUNING.PERISH_FAST,0,
 TUNING.CALORIES_SMALL,TUNING.HEALING_MED,TUNING.PERISH_SUPERFAST,0,
 {"med", 0.05, 0.8}, {"small", 0.1, nil})]]
@@ -183,7 +183,7 @@ PLANT_DEFS.applepine.plantregistryinfo = {
     },
 }
 
---[[ Limon Plant.
+-- Limon Plant.
 PLANT_DEFS.limon = {build = "farm_plant_limon", bank = "farm_plant_limon"}
 PLANT_DEFS.limon.prefab = "farm_plant_limon"
 PLANT_DEFS.limon.product = "limon"
@@ -263,7 +263,7 @@ PLANT_DEFS.limon.plantregistryinfo = {
     },
 }
 
--- Citroyuzu Plant.
+--[[ Citroyuzu Plant.
 PLANT_DEFS.citroyuzu = {build = "farm_plant_citroyuzu", bank = "farm_plant_citroyuzu"}
 PLANT_DEFS.citroyuzu.prefab = "farm_plant_citroyuzu"
 PLANT_DEFS.citroyuzu.product = "citroyuzu"
@@ -348,7 +348,7 @@ PLANT_DEFS.citroyuzu.plantregistryinfo = {
 WEED_DEFS.weed_mentha_spicata = {build = "weed_mentha_spicata", bank = "weed_mentha_spicata"}
 WEED_DEFS.weed_mentha_spicata.prefab = "weed_mentha_spicata"
 WEED_DEFS.weed_mentha_spicata.sameweedtags = {"weed_mentha_spicata"}
-WEED_DEFS.weed_mentha_spicata.stage_netvar = _G.net_tinybyte
+WEED_DEFS.weed_mentha_spicata.stage_netvar = net_tinybyte
 WEED_DEFS.weed_mentha_spicata.grow_time = MakeGrowTimes_Weed(2 * DAYS, 3 * DAYS, false)
 WEED_DEFS.weed_mentha_spicata.spread = {stage = "full",time_min = 3.0 * DAYS, time_var = 2.0 * DAYS, tilled_dist =  5, ground_dist = 1.5, ground_dist_var = 3, tooclose_dist = 1.5}
 WEED_DEFS.weed_mentha_spicata.seed_weight = COMMON
