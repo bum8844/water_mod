@@ -73,10 +73,10 @@ TUNING.CALORIES_TINY,TUNING.HEALING_SMALL,TUNING.PERISH_FAST,0,
 TUNING.CALORIES_SMALL,TUNING.HEALING_MED,TUNING.PERISH_SUPERFAST,0,
 {"med", 0.05, 0.8}, {"small", 0.1, nil})
 
---[[MakeVegStats("citroyuzu","fruit",UNCOMMON,
+MakeVegStats("citroyuzu","fruit",UNCOMMON,
 TUNING.CALORIES_TINY,TUNING.HEALING_SMALL,TUNING.PERISH_FAST,0,
 TUNING.CALORIES_SMALL,TUNING.HEALING_MED,TUNING.PERISH_SUPERFAST,0,
-{"med", 0.05, 0.8}, {"small", 0.1, nil})]]
+{"med", 0.05, 0.8}, {"small", 0.1, nil})
 
 local function MakeGrowTimes(germination_min, germination_max, full_grow_min, full_grow_max)
     local grow_time = {}
@@ -263,7 +263,7 @@ PLANT_DEFS.limon.plantregistryinfo = {
     },
 }
 
---[[ Citroyuzu Plant.
+-- Citroyuzu Plant.
 PLANT_DEFS.citroyuzu = {build = "farm_plant_citroyuzu", bank = "farm_plant_citroyuzu"}
 PLANT_DEFS.citroyuzu.prefab = "farm_plant_citroyuzu"
 PLANT_DEFS.citroyuzu.product = "citroyuzu"
@@ -341,7 +341,7 @@ PLANT_DEFS.citroyuzu.plantregistryinfo = {
         is_rotten = true,
         hidden = true,
     },
-}]]
+}
 
 -- Mentha Spicata Weed.
 

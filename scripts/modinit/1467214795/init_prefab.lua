@@ -85,3 +85,21 @@ AddPrefabPostInit("elephantcactus", function(inst)
 		inst.components.workable:SetOnFinishCallback(dig_up)
 	end
 end)
+
+local function AcceptTest(inst, item, giver)
+	if item.prefab == "messagebottleempty" or item.prefab == "wine_cellar_part" then
+		return true
+	end
+	return inst.components.trader._test(inst, item, giver)
+end
+
+AddPrefabPostInit("messagebottleempty", function(inst)
+	inst:AddComponent("tradable")
+end)
+
+AddPrefabPostInit("octopusking", function(inst)
+	if inst.components.trader then
+		inst.components.trader._test = inst.components.trader.test
+		inst.components.trader:SetAcceptTest(AcceptTest)
+	end
+end)

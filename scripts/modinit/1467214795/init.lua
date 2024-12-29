@@ -25,10 +25,9 @@ SLOTMACHINE_LOOT.actions.slot_wine_cellar = {
 }
 AddTreasureLoot("slot_wine_cellar", {
 	loot = {
-		wine_cellar_part = 7,
-		cutstone = 12,
-		gelblob_bottle = 8,
-		wine_cellar_blueprint = 1,
+		wine_cellar_part = 13,
+		cutstone = 18,
+		gelblob_bottle = 40,
 	},
 })
 
@@ -45,7 +44,7 @@ AddTreasureLoot("slot_dust", {
     },
 })
 
-SLOTMACHINE_LOOT.goodspawns.slot_soda_collection = 1
+SLOTMACHINE_LOOT.okspawns.slot_soda_collection = 2
 SLOTMACHINE_LOOT.actions.slot_soda_collection = {
     treasure = "slot_soda_collection",
 }
