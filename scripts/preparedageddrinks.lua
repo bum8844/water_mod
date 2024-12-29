@@ -498,7 +498,7 @@ local drinks =
 }
 
 
-local mod_drink = require("modcompats/preparedageddrinks_mod")
+local mod_drink = require("modinit/preparedageddrinks_mod")
 local modlist = require("utils/water_modlist").active_mod_compatibility
 
 for active, _ in pairs(modlist) do
@@ -552,7 +552,7 @@ for k, v in pairs(drinks) do
     	v.cook_need = nil
     	v.cook_cant = nil
     	v.recipe_count = 4
-		local cookbookui_legion = require "modcompats/1392778117/cookbookui_legion"
+		local cookbookui_legion = require "modinit/1392778117/cookbookui_legion"
 		v.custom_cookbook_details_fn = function(data, self, top, left)
 			local root = cookbookui_legion(data, self, top, left)
 			return root

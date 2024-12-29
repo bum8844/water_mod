@@ -130,7 +130,7 @@ SortAfter("distillers","brewery","COOKING")
 
 AddRecipe2("bottle_pouch",{Ingredient("papyrus",4),Ingredient("tentaclespots",2)},TECH.SCIENCE_TWO,{atlas = ModAtlas(), image = "bottle_pouch.tex"},{"COOKING","CONTAINERS","HYDRATION"})
 
-AddRecipe2("wine_cellar",{Ingredient("livinglog",6),Ingredient("gelblob_bottle",4),Ingredient("wagpunk_bits",3),Ingredient("cutstone",6)},TECH.MAGIC_TWO,{placer = "wine_cellar_placer",atlas = ModAtlas(), image="wine_cellar.tex"},{"COOKING","HYDRATION","CONTAINERS","STRUCTURES"})
+AddRecipe2("wine_cellar",{Ingredient("wine_cellar_part",3),Ingredient("gelblob_bottle",4),Ingredient("cutstone",6)},TECH.LOST,{placer = "wine_cellar_placer",atlas = ModAtlas(), image="wine_cellar.tex"},{"COOKING","HYDRATION","CONTAINERS","STRUCTURES"})
 SortAfter("wine_cellar","icebox","COOKING")
 SortAfter("wine_cellar","icebox","CONTAINERS")
 SortAfter("wine_cellar","icebox","STRUCTURES")
@@ -182,5 +182,7 @@ AddDeconstructRecipe("well", {Ingredient("boards",2),Ingredient("cutstone",6)})
 AddDeconstructRecipe("well_buryingsite", {Ingredient("boards",4)})
 
 AddDeconstructRecipe("well_sprinkler", {Ingredient("marble",4),Ingredient("moonglass",1),Ingredient("townportaltalisman",2),Ingredient("gears",1)})
+
+AddDeconstructRecipe("wine_cellar_part", {Ingredient("wagpunk_bits",3),Ingredient("livinglog",3),Ingredient("gears",1)})
 
 CONSTRUCTION_PLANS["well_buryingsite"] = {Ingredient("shovel",1),Ingredient("seeds",6),Ingredient("turf_desertdirt",4),Ingredient("turf_mud",4)}

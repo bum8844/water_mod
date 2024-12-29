@@ -40,7 +40,7 @@ for _, v in pairs(TUNING.TYPES_DIRTY) do
 	    end
 
 		inst:AddComponent("water")
-		inst.components.water.watertype = WATERTYPE.DIRTY
+		inst.components.water:SetWaterType(WATERTYPE.DIRTY)
 
 		inst.watertask = inst:DoTaskInTime(0,OnWaterInit)
 	end)
@@ -55,7 +55,7 @@ for _, v in pairs(TUNING.TYPES_CLEAN) do
 	    end
 
 		inst:AddComponent("water")
-		inst.components.water.watertype = WATERTYPE.CLEAN
+		inst.components.water:SetWaterType(WATERTYPE.CLEAN)
 
 		inst.watertask = inst:DoTaskInTime(0,OnWaterInit)
 	end)
@@ -68,7 +68,7 @@ for _, v in pairs(TUNING.TYPES_SALTY) do
 	    end
 		
 		inst:AddComponent("water")
-		inst.components.water.watertype = WATERTYPE.SALTY
+		inst.components.water:SetWaterType(WATERTYPE.SALTY)
 
 		inst.watertask = inst:DoTaskInTime(0,OnWaterInit)
 	end)
@@ -81,7 +81,7 @@ for _, v in pairs(TUNING.TYPES_MINERAL) do
 	    end
 		
 		inst:AddComponent("water")
-		inst.components.water.watertype = WATERTYPE.MINERAL
+		inst.components.water:SetWaterType(WATERTYPE.MINERAL)
 
 		inst.watertask = inst:DoTaskInTime(0,OnWaterInit)
 	end)

@@ -18,6 +18,7 @@ local satiety_time = GetModConfigData("satiety_time")
 table.insert(TUNING.GAMEMODE_STARTING_ITEMS.DEFAULT.WARLY,"portablekettle_item")
 TUNING.WX78_CHARGING_FOODS["areuhi"] = 1
 TUNING.WX78_CHARGING_FOODS["kumis"] = 1
+TUNING.GOLD_VALUES.WINE_CELLAR_PART = 12
 
 -- 물을 담을수 있는 최대치
 water_tuning =

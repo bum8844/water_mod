@@ -48,7 +48,7 @@ local function destroystructure(staff, target)
 		local num = 0
 		for k, v in pairs(ents) do
 			if v.prefab == "gelblob_bottle" and not (num >= 4) then
-	            if not (v.components.stackable.stacksize > 1) then
+	            if not (v.components.stackable.stacksize > 1) and not v.components.inventoryitem:IsHeld() then
 	            	num = num + 1
 	                v.components.complexprojectile.onhitfn(v)
 	            end

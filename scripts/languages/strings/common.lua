@@ -422,4 +422,10 @@ return
 			FOOD_EFFECTS_INTOXICATION_GOODNIGHTVISION = "만취, 피해경감 및 더 좋은 야간투시",
 		},
 	},
+
+	SHARKBOI_ACCEPT_PART = {
+		"이 잡동사니그려진거 이거와 비슷하게 생겼습니다.",
+		"아 이런 청사진을 원한건가?",
+		"마침 딱 비슷한 것이 있지",
+	},
 }

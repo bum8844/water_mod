@@ -20,7 +20,7 @@ modrequire("main")
 local modlist = require("utils/water_modlist").active_mod_compatibility
 
 if modlist.it and GetModConfigData("useinsight") then
-	modrequire("modcompats/2189004162/insight_setting")
+	modrequire("modinit/2189004162/insight_setting")
 elseif modlist.sm and GetModConfigData("useshowme") then
-	modrequire("modcompats/666155465/showme_setting")
+	modrequire("modinit/666155465/showme_setting")
 end

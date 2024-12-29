@@ -16,7 +16,7 @@ for k, v in pairs(drinks) do
     	v.cook_need = nil
     	v.cook_cant = nil
     	v.recipe_count = 4
-		local cookbookui_legion = require "modcompats/1392778117/cookbookui_legion"
+		local cookbookui_legion = require "modinit/1392778117/cookbookui_legion"
 		v.custom_cookbook_details_fn = function(data, self, top, left)
 			local root = cookbookui_legion(data, self, top, left)
 			return root

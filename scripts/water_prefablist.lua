@@ -9,6 +9,7 @@ return {
 	"water_spice",
 	--"thermos_bottle",
 	"bottle_pouch",
+	"wine_cellar_part",
 
 	--structures
 	"barrel",

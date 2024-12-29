@@ -35,6 +35,7 @@ local postinits =
 		"fruitfly",
 		"preparedfoods",
 		"oasislake",
+		"sharkboi",
 	},
 
 	screens = {
@@ -45,6 +46,7 @@ local postinits =
 	{
 		"SGwilson",
 		"SGwilson_client",
+		"SGsharkboi",
 	},
 
 	widgets =
@@ -69,6 +71,7 @@ local postinits =
 		"cookbookdata",
 		"techtree",
 		"wx78_moduledefs",
+		"messagebottletreasures",
 	}
 }
 
