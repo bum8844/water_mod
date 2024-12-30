@@ -349,7 +349,7 @@ local bookboil_basic_open = State{
 
         onenter = function(inst)
             inst.components.locomotor:StopMoving()
-            inst.AnimState:OverrideSymbol("book_cook", "boilbook", "boilbook_basic")
+            inst.AnimState:OverrideSymbol("book_cook", "boilbook", "book_boil_basic")
             inst.AnimState:PlayAnimation("action_uniqueitem_pre")
             inst.AnimState:PushAnimation("reading_in", false)
             inst.AnimState:PushAnimation("reading_loop", true)
@@ -389,7 +389,7 @@ local bookboil_advanced_open = State{
 
     onenter = function(inst)
         inst.components.locomotor:StopMoving()
-        inst.AnimState:OverrideSymbol("book_cook", "boilbook", "boilbook_advanced")
+        inst.AnimState:OverrideSymbol("book_cook", "boilbook", "book_boil_advenced")
         inst.AnimState:PlayAnimation("action_uniqueitem_pre")
         inst.AnimState:PushAnimation("reading_in", false)
         inst.AnimState:PushAnimation("reading_loop", true)
@@ -531,7 +531,6 @@ AddStategraphActionHandler("wilson", ActionHandler(ACTIONS.BREWING,
 )
 AddStategraphActionHandler("wilson", ActionHandler(ACTIONS.READBOILBOOK,
     function(inst ,action)
-        print("action",action.invobject:HasTag("boilbook_basic"))
         return action.invobject:HasTag("boilbook_basic") and "bookboil_basic_open" or "bookboil_advanced_open"
     end
     )

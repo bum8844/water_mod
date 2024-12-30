@@ -124,13 +124,13 @@ return
 		FARM_PLANT_LIMON = "리몬 식물체",
 
 		--citroyuzu
-		CITROYUZU = "시트유주",
-		CITROYUZU_COOKED = "구운 시트유주",
-		CITROYUZU_SEEDS = "오돌토톨한 씨앗",
-		KNOWN_CITROYUZU_SEEDS = "시트유주 씨앗",
-		CITROYUZU_OVERSIZED = "거대한 시트유주",
-		CITROYUZU_OVERSIZED_ROTTEN = "거대한 썩은 시트유주",
-		FARM_PLANT_CITROYUZU = "시트유주 식물체",
+		CITROYUZU = "유자몽",
+		CITROYUZU_COOKED = "구운 유자몽",
+		CITROYUZU_SEEDS = "난형 뾰족한 씨앗",
+		KNOWN_CITROYUZU_SEEDS = "유자몽 씨앗",
+		CITROYUZU_OVERSIZED = "거대한 유자몽",
+		CITROYUZU_OVERSIZED_ROTTEN = "거대한 썩은 유자몽",
+		FARM_PLANT_CITROYUZU = "유자몽 식물체",
 
 		--mentha_spicata
 

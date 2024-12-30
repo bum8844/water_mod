@@ -168,6 +168,27 @@
     <folder id="55" name="limon_seeds.tex">
         <file id="0" name="limon_seeds.tex/limon_seeds.png" width="224" height="224" pivot_x="0.5" pivot_y="0.5"/>
     </folder>
+    <folder id="56" name="citroyuz_cooked.tex">
+        <file id="0" name="citroyuz_cooked.tex/citroyuz_cooked.png" width="224" height="224" pivot_x="0.5" pivot_y="0.5"/>
+    </folder>
+    <folder id="57" name="citroyuz_seeds.tex">
+        <file id="0" name="citroyuz_seeds.tex/citroyuz_seeds.png" width="224" height="224" pivot_x="0.5" pivot_y="0.5"/>
+    </folder>
+    <folder id="58" name="citroyuzu.tex">
+        <file id="0" name="citroyuzu.tex/citroyuz.png" width="224" height="224" pivot_x="0.5" pivot_y="0.5"/>
+    </folder>
+    <folder id="59" name="citroyuzu_oversized.tex">
+        <file id="0" name="citroyuzu_oversized.tex/citroyuzu_oversized.png" width="224" height="224" pivot_x="0.5" pivot_y="0.5"/>
+    </folder>
+    <folder id="60" name="citroyuzu_oversized_rotten.tex">
+        <file id="0" name="citroyuzu_oversized_rotten.tex/citroyuzu_oversized_rotten.png" width="224" height="224" pivot_x="0.5" pivot_y="0.5"/>
+    </folder>
+    <folder id="61" name="citroyuzu_oversized_waxed.tex">
+        <file id="0" name="citroyuzu_oversized_waxed.tex/citroyuzu_oversized_waxed.png" width="224" height="224" pivot_x="0.5" pivot_y="0.5"/>
+    </folder>
+    <folder id="62" name="wine_cellar_part">
+        <file id="0" name="wine_cellar_part/wine_cellar_part.png" width="224" height="224" pivot_x="0.5" pivot_y="0.5"/>
+    </folder>
     <entity id="0" name="minisign_dehy_items_swap">
         <animation id="0" name="swap" length="1000" interval="100">
             <mainline>

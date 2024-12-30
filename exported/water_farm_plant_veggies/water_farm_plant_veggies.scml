@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<spriter_data scml_version="1.0" generator="BrashMonkey Spriter" generator_version="r11">
+    <folder id="0" name="applepine">
+        <file id="0" name="applepine/applepine-0.png" width="140" height="211" pivot_x="0.478571" pivot_y="0.085308"/>
+        <file id="1" name="applepine/applepine-1.png" width="255" height="148" pivot_x="0.412862" pivot_y="0.277722"/>
+    </folder>
+    <folder id="1" name="limon">
+        <file id="0" name="limon/limon-0.png" width="133" height="127" pivot_x="0.488722" pivot_y="0.11811"/>
+        <file id="1" name="limon/limon-1.png" width="167" height="123" pivot_x="0.473054" pivot_y="0.203252"/>
+    </folder>
+    <folder id="2" name="citroyuzu">
+        <file id="0" name="citroyuzu/citroyuzu-0.png" width="201" height="182" pivot_x="0.58209" pivot_y="0.17033"/>
+        <file id="1" name="citroyuzu/citroyuzu-1.png" width="248" height="165" pivot_x="0.467742" pivot_y="0.2"/>
+    </folder>
+    <entity id="0" name="water_farm_plant_veggies">
+        <animation id="0" name="limon" length="125" interval="100">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+                <key id="1" time="125">
+                    <object_ref id="0" timeline="0" key="1" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="limon-0">
+                <key id="0" spin="0">
+                    <object folder="1" file="0" angle="0"/>
+                </key>
+                <key id="1" time="125" spin="0">
+                    <object folder="1" file="0" angle="0"/>
+                </key>
+            </timeline>
+        </animation>
+        <animation id="1" name="limon_cooked" length="125" interval="100">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+                <key id="1" time="125">
+                    <object_ref id="0" timeline="0" key="1" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="limon-1">
+                <key id="0" spin="0">
+                    <object folder="1" file="1" angle="0"/>
+                </key>
+                <key id="1" time="125" spin="0">
+                    <object folder="1" file="1" angle="0"/>
+                </key>
+            </timeline>
+        </animation>
+        <animation id="2" name="citroyuzu" length="125" interval="100">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+                <key id="1" time="125">
+                    <object_ref id="0" timeline="0" key="1" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="citroyuzu-0">
+                <key id="0" spin="0">
+                    <object folder="2" file="0"/>
+                </key>
+                <key id="1" time="125" spin="0">
+                    <object folder="2" file="0"/>
+                </key>
+            </timeline>
+        </animation>
+        <animation id="3" name="citroyuzu_cooked" length="125" interval="100">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+                <key id="1" time="125">
+                    <object_ref id="0" timeline="0" key="1" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="citroyuzu-1">
+                <key id="0" spin="0">
+                    <object folder="2" file="1"/>
+                </key>
+                <key id="1" time="125" spin="0">
+                    <object folder="2" file="1"/>
+                </key>
+            </timeline>
+        </animation>
+        <animation id="4" name="applepine" length="125" interval="100">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+                <key id="1" time="125">
+                    <object_ref id="0" timeline="0" key="1" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="pinenanas-0">
+                <key id="0" spin="0">
+                    <object folder="0" file="0" x="-0" y="0" angle="0"/>
+                </key>
+                <key id="1" time="125" spin="0">
+                    <object folder="0" file="0" x="-0" y="0" angle="0"/>
+                </key>
+            </timeline>
+        </animation>
+        <animation id="5" name="applepine_cooked" length="125" interval="100">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+                <key id="1" time="125">
+                    <object_ref id="0" timeline="0" key="1" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="pinenanas-1">
+                <key id="0" spin="0">
+                    <object folder="0" file="1" x="-0.000064" y="-0.000029" angle="0"/>
+                </key>
+                <key id="1" time="125" spin="0">
+                    <object folder="0" file="1" x="-16.393695" y="1.664556" angle="0"/>
+                </key>
+            </timeline>
+        </animation>
+    </entity>
+</spriter_data>
