@@ -159,7 +159,7 @@ local function hovererfn(self)
         if target ~= nil then
             local waterstr = GetThirst(target)
             if waterstr ~= "" then
-                local txt = STRINGS.SHOWME.THIRSTVELUE.THIRST
+                local txt = STRINGS.SHOWME.THIRSTVALUE.THIRST
                 waterstr = string.format(txt,tostring(waterstr))
                 local newstr = text:GetString()
                 local pattern = " / Sanity:" --en
