@@ -50,7 +50,8 @@ return {
 		WELL_DRILLING_ITEM = "땅에 구멍 왜 뚫어?", --드릴 아이템
 		HOLE = "물 소리 나.", --우물 구멍
 		WELL = "매끈이들 구멍에서 물 떠 마신대, 왜?", --우물
-		BOTTLE_POUCH = "작업해야함",
+		BOTTLE_POUCH = "",
+		WINE_CELLAR_PART = "",
 		WINE_CELLAR = "",
 
 		WX78MODULE_NONEDRUNK = "바스락거려.", -- 78전용 묘듈
@@ -170,6 +171,9 @@ return {
 		COCONUT_JUICE = "과일 몰캉몰캉졌어, 뽀륵!", --난파선 코코넛 쥬스
 		RAINBOW_SHAKE = "그롸악!!", --난파선 무지개 해파리 쉐이크
 		QUARTZ_SHAKE = "너무 끔찍해!!", --난파선 광대 물고기 쉐이크
+		NETTLE_TEA = "",
+		FRASH_BRAMBLE_TEA = "",
+		TUBER_BLOOM_TEA = "",
 		CHERRY_ROSEBERRIES_TEA = "못생긴열매 머리카락 없지?", --체리숲 로즈힙 차
 		CHERRY_HONEY_TEA = "예쁜벌꿀 꿀 탄물 마시면 몸 따듯해져!", --체리숲 벚꽃꿀 차
 		SWEET_RICE_DRINK = "어인들 이런식으로 간식 안만들어.", -- 비타협 식혜
@@ -218,6 +222,7 @@ return {
 
 		AUROBOW = "예쁜 물고기... 어쨰서?", -- 난파선 오로보우,무지개 해파리주
 		COCONUT_WINE = "술에서 물 든 과일 물냄새 나.", -- 난파선 코코넛 와인
+		NETTLE_WINE = "",
 		CHERRY_BLOOM_MADHU = "예쁜벌꿀 꿀로 술 만들었어?", -- 체리숲 벚꽃꿀주
 		GIANT_BLUEBERRY_WINE = "불 붙히면 터진데.", -- 비타협 붐!베리 사파이어(불 붙히면 폭발함)
 		RICE_WINE = "늪 간식 술 됬어...", -- 비타협 막걸리
@@ -253,6 +258,7 @@ return {
 		--콜라보 증류주
 
 		MOONWAY = "......", -- 무지개 해파리주 증류주
+		NETTLE_LIQUEUR = "",
 		ARRACK = "난 이거 말고 물 든 과일 그대로 먹을래.", -- 아락 인도네시아 버전 코코넛 와인 증류주
 		CHERRY_BLOOM_RUM = "못생긴 꽃들 춤추고 있어, 뽀륵!", -- 체리 꿀주 증류주
 		RICE_SPIRITS = "물 같은데 냄새 독해!", --청주
@@ -272,6 +278,7 @@ return {
         RUIN_SCHOKAKOLA = "맛있는데 너무 많이먹으면 못 자!", -- 쇼카콜라
         APPLEPINE_PIE = "",
         APPLEPINE_FRIED_RICE = "",
+        CITROYUZU_BBQ = "",
 
 		BUCKET_STEEL_EMPTY = 
 		{

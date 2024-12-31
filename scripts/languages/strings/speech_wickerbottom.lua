@@ -62,6 +62,7 @@ return {
 		HOLE = "물이 흘러나오는 소리가 들리는구나.", --우물 구멍
 		WELL = "수맥 깊은 곳으로부터 물을 길어온단다.", --우물
 		BOTTLE_POUCH = "",
+		WINE_CELLAR_PART = "",
 		WINE_CELLAR = "",
 
 		WX78MODULE_NONEDRUNK = "유기체를 싫어하긴 하지만 유기체에게서 영감을 얻는 건 싫어하지 않는 것 같구나.", -- 78전용 묘듈
@@ -181,6 +182,9 @@ return {
 		COCONUT_JUICE = "발효 과정에서 섬유질이 생성되었어.", --난파선 코코넛 쥬스
 		RAINBOW_SHAKE = "흥미롭군, 생물발광을 그대로 유지하고 있구나.", --난파선 무지개 해파리 쉐이크
 		QUARTZ_SHAKE = "이 생선죽의 효능에 관해서는 독자적으로 연구해 봐야겠어.", --난파선 광대 물고기 쉐이크
+		NETTLE_TEA = "",
+		FRASH_BRAMBLE_TEA = "",
+		TUBER_BLOOM_TEA = "",
 		CHERRY_ROSEBERRIES_TEA = "달콤하고 향긋하구나.", --체리숲 로즈힙 차
 		CHERRY_HONEY_TEA = "몸이 따뜻해지는 효과가 있구나.", --체리숲 벚꽃꿀 차
 		SWEET_RICE_DRINK = "효소에 의해 녹말이 엿당으로 분해되었어.", -- 비타협 식혜
@@ -229,6 +233,7 @@ return {
 
 		AUROBOW = "이 음료가 빛나는 이유를 연구해 봐야겠구나.", -- 난파선 오로보우,무지개 해파리주
 		COCONUT_WINE = "여러 열대 지역에서는 코코넛으로 술을 담근단다.", -- 난파선 코코넛 와인
+		NETTLE_WINE = "",
 		CHERRY_BLOOM_MADHU = "꽃꿀로 만든 술이구나. 색이 정말 인상적이야.", -- 체리숲 벚꽃꿀주
 		GIANT_BLUEBERRY_WINE = "불안정성을 그대로 간직했구나.", -- 비타협 붐베리 와인(불 붙히면 폭발함)
 		RICE_WINE = "곡류를 장기간 보관하는 방법 중 하나란다.", -- 비타협 막걸리
@@ -264,6 +269,7 @@ return {
 		--콜라보 증류주
 
 		MOONWAY = "증류를 거쳐도 발광이 남아있다니, 정말 놀라워!", -- 무지개 해파리주 증류주
+		NETTLE_LIQUEUR = "",
 		ARRACK = "남아시아 원주민들이 코코넛 꽃의 꿀을 이용해서 만든 증류주란다.", -- 아락 인도네시아 버전 코코넛 와인 증류주
 		CHERRY_BLOOM_RUM = "아름답기도 하지만 작용기전에도 관심이 가는구나.", -- 체리 꿀주 증류주 벛꽃잎이 떠다니는 술
 		RICE_SPIRITS = "사케와 비슷하구나.", --청주
@@ -283,6 +289,7 @@ return {
         RUIN_SCHOKAKOLA = "각성 효과가 강화된 초콜릿이란다.", -- 쇼카콜라
         APPLEPINE_PIE = "",
         APPLEPINE_FRIED_RICE = "",
+        CITROYUZU_BBQ = "",
 
 		BUCKET_STEEL_EMPTY = 
 		{

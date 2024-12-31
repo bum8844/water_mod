@@ -50,7 +50,8 @@ return {
 		WELL_DRILLING_ITEM = "땅을 파헤친다. 아주 강력하게!", --드릴 아이템
 		HOLE = "볼프강 구멍에서 물 얻어낸다.", --우물 구멍
 		WELL = "이제 우물에서 물 얻을수 있다!", --우물
-		BOTTLE_POUCH = "작업해야함",
+		BOTTLE_POUCH = "",
+		WINE_CELLAR_PART = "",
 		WINE_CELLAR = "",
 
 		WX78MODULE_NONEDRUNK = "로봇 먹는 과자다, 맞지?", -- 78전용 묘듈Is robot snacks, yes?
@@ -170,6 +171,9 @@ return {
 		COCONUT_JUICE = "단단한 열매는 마실 게 됐다!", --난파선 코코넛 쥬스
 		RAINBOW_SHAKE = "마시기 좋은 예쁜 젤리다!", --난파선 무지개 해파리 쉐이크
 		QUARTZ_SHAKE = "볼프강 혼란스럽다. 물고기가 마시는 거였나?", --난파선 광대 물고기 쉐이크
+		NETTLE_TEA = "",
+		FRASH_BRAMBLE_TEA = "",
+		TUBER_BLOOM_TEA = "",
 		CHERRY_ROSEBERRIES_TEA = "예쁜 장미냄새 난다.", --체리숲 로즈힙 차
 		CHERRY_HONEY_TEA = "엄청 달다!", --체리숲 벚꽃꿀 차
 		SWEET_RICE_DRINK = "쌀만 넣었는데 단 맛이 나!", -- 비타협 식혜
@@ -218,6 +222,7 @@ return {
 
 		AUROBOW = "예쁜 술 젤리다.", -- 난파선 오로보우,무지개 해파리주
 		COCONUT_WINE = "코코넛 음료 됐다", -- 난파선 코코넛 와인
+		NETTLE_WINE = "",
 		CHERRY_BLOOM_MADHU = "엄청 단 술이다!", -- 체리숲 벚꽃꿀주
 		GIANT_BLUEBERRY_WINE = "볼프강 배속에서 터지려나?", -- 비타협 붐!베리 사파이어(불 붙히면 폭발함)
 		RICE_WINE = "우유같은 흰색 술이다.", -- 비타협 막걸리
@@ -253,6 +258,7 @@ return {
 		--콜라보 증류주
 
 		MOONWAY = "예쁜 젤리 끓여서 만들었다.", -- 무지개 해파리주 증류주
+		NETTLE_LIQUEUR = "",
 		ARRACK = "끓여서 만든 코코넛 술이다.", -- 아락 인도네시아 버전 코코넛 와인 증류주
 		CHERRY_BLOOM_RUM = "이정도로 단 술도 있었나?", -- 체리 꿀주 증류주 벛꽃잎 떠다
 		RICE_SPIRITS = "흰 술이랑 같히 만들었다.", --청주
@@ -272,6 +278,7 @@ return {
         RUIN_SCHOKAKOLA = "볼프강 옛날에 먹어본 적 있다!", -- 쇼카콜라
         APPLEPINE_PIE = "",
         APPLEPINE_FRIED_RICE = "",
+        CITROYUZU_BBQ = "",
 
 		BUCKET_STEEL_EMPTY = 
 		{

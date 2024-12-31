@@ -226,8 +226,8 @@ return {
 		-- Mod-compatibility Brewages
 
 		AUROBOW = "",
-		NETTLE_WINE = "",
 		COCONUT_WINE = "",
+		NETTLE_WINE = "",
 		CHERRY_BLOOM_MADHU = "",
 		GIANT_BLUEBERRY_WINE = "",
 		RICE_WINE = "",
@@ -283,6 +283,7 @@ return {
         RUIN_SCHOKAKOLA = "",
         APPLEPINE_PIE = "",
         APPLEPINE_FRIED_RICE = "",
+        CITROYUZU_BBQ = "",
 
 		BUCKET_STEEL_EMPTY = 
 		{

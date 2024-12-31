@@ -50,7 +50,8 @@ return {
 		WELL_DRILLING_ITEM = "바닥에 구멍을뚫는 기계야.", --드릴 아이템
 		HOLE = "이크, 조심해야겠어.", --우물 구멍
 		WELL = "마을마다 이거 하나씩은 있어야지.", --우물
-		BOTTLE_POUCH = "작업해야함",
+		BOTTLE_POUCH = "",
+		WINE_CELLAR_PART = "",
 		WINE_CELLAR = "",
 
 		WX78MODULE_NONEDRUNK = "그냥 멋 좀 나는 로봇 부품이야.", -- 78전용 묘듈
@@ -170,6 +171,9 @@ return {
 		COCONUT_JUICE = "야자나무스러운 부분은 많이 없어졌는데.", --난파선 코코넛 쥬스
 		RAINBOW_SHAKE = "아무맛도 없는게 강점이네.", --난파선 무지개 해파리 쉐이크
 		QUARTZ_SHAKE = "스시로라도 만들수도 있었잖아..", --난파선 광대 물고기 쉐이크
+		NETTLE_TEA = "",
+		FRASH_BRAMBLE_TEA = "",
+		TUBER_BLOOM_TEA = "",
 		CHERRY_ROSEBERRIES_TEA = "머리카락같은 부분이 남아있을지 의심스러워.", --체리숲 로즈힙 차
 		CHERRY_HONEY_TEA = "꿀과 나무향, 기가 맥히네.", --체리숲 벚꽃꿀 차
 		SWEET_RICE_DRINK = "이상한 곡물주스네.", -- 비타협 식혜
@@ -218,6 +222,7 @@ return {
 
 		AUROBOW = "살다살다 해파리로 만든 술을 보네.", -- 난파선 오로보우,무지개 해파리주
 		COCONUT_WINE = "묵직한 나무향이나네 그래.", -- 난파선 코코넛 와인
+		NETTLE_WINE = "",
 		CHERRY_BLOOM_MADHU = "아무도 안마실거면 내가 마셔야겠다 그래.", -- 체리숲 벚꽃꿀주
 		GIANT_BLUEBERRY_WINE = "이젠 파란술이 가득하네 그래.", -- 비타협 붐!베리 사파이어(불 붙히면 폭발함)
 		RICE_WINE = "술이 덜 된거 아니야?", -- 비타협 막걸리
@@ -253,6 +258,7 @@ return {
 		--콜라보 증류주
 
 		MOONWAY = "색은 예쁜데 좀 의심스럽네.", -- 무지개 해파리주 증류주
+		NETTLE_LIQUEUR = "",
 		ARRACK = "야자나무향이 가득하네 그려.", -- 아락 인도네시아 버전 코코넛 와인 증류주
 		CHERRY_BLOOM_RUM = "구경하고 있을바에는 내가 가져가서 마신다?", -- 체리 꿀주 증류주 벛꽃잎 떠다
 		RICE_SPIRITS = "보드카가 아니야?", --청주
@@ -272,6 +278,7 @@ return {
         RUIN_SCHOKAKOLA = "힘이 솟아나겠어.", -- 쇼카콜라
         APPLEPINE_PIE = "",
         APPLEPINE_FRIED_RICE = "",
+        CITROYUZU_BBQ = "",
 
 		BUCKET_STEEL_EMPTY = 
 		{

@@ -62,6 +62,7 @@ return {
 		HOLE = "여보세요- 거기 누구 있나요--", --우물 구멍
 		WELL = "여기 숨으면 혼난댔어.", --우물
 		BOTTLE_POUCH = "",
+		WINE_CELLAR_PART = "",
 		WINE_CELLAR = "",
 
 		WX78MODULE_NONEDRUNK = "허, 로봇의 장기가 이렇게 생긴 건가?", -- 78전용 묘듈
@@ -182,6 +183,9 @@ return {
 		COCONUT_JUICE = "흐음, 보기보다 맛이 안나.", --난파선 코코넛 쥬스
 		RAINBOW_SHAKE = "화려한 색이 좋아!", --난파선 무지개 해파리 쉐이크
 		QUARTZ_SHAKE = "으으음, 아무리 생각해도 생선 죽이야.", --난파선 광대 물고기 쉐이크
+		NETTLE_TEA = "",
+		FRASH_BRAMBLE_TEA = "",
+		TUBER_BLOOM_TEA = "",
 		CHERRY_ROSEBERRIES_TEA = "그 외계 거미한테서 피를 뽑아낸 거야?", --체리숲 로즈힙 차
 		CHERRY_HONEY_TEA = "달고 따뜻하고, 색이 이상해!", --체리숲 벚꽃꿀 차
 		SWEET_RICE_DRINK = "말랑한 씨앗들이 들어있어!", -- 비타협 식혜
@@ -232,6 +236,7 @@ return {
 
 		AUROBOW = "빛나는 해파리로 만들었다고?", -- 난파선 오로보우,무지개 해파리주
 		COCONUT_WINE = "좀 단내나는 나무 향이 나.", -- 난파선 코코넛 와인
+		NETTLE_WINE = "",
 		CHERRY_BLOOM_MADHU = "술인데 분홍색이야!", -- 체리숲 벚꽃꿀주
 		GIANT_BLUEBERRY_WINE = "과즙 가득한 열매가 술이 되었네.", -- 비타협 붐!베리 사파이어(불 붙히면 폭발함)
 		RICE_WINE = "씨앗으로 만든 우유 같은 걸까?", -- 비타협 막걸리
@@ -267,6 +272,7 @@ return {
 		--콜라보 증류주
 
 		MOONWAY = "색이 예뻐!", -- 무지개 해파리주 증류주
+		NETTLE_LIQUEUR = "",
 		ARRACK = "우린 그냥 야자열매나 먹어야겠어.", -- 아락 인도네시아 버전 코코넛 와인 증류주
 		CHERRY_BLOOM_RUM = "꽃잎이 둥둥 떠 있어!", -- 체리 꿀주 증류주 벛꽃잎 떠다님
 		RICE_SPIRITS = "물이 아니잖아!", --청주
@@ -286,6 +292,7 @@ return {
         RUIN_SCHOKAKOLA = "뭔가 심장이 쿵쿵거려.", -- 쇼카콜라
         APPLEPINE_PIE = "",
         APPLEPINE_FRIED_RICE = "",
+        CITROYUZU_BBQ = "",
 
 		BUCKET_STEEL_EMPTY = 
 		{

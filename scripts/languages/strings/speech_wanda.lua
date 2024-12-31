@@ -61,7 +61,8 @@ return {
 		WELL_DRILLING_ITEM = "우물을 어디다 팔지부터 정하자고.", --드릴 아이템
 		HOLE = "여기 빠지면 나오는 데에 한 세월은 걸리겠어.", --우물 구멍
 		WELL = "어디 보자, 우물을 작동시키려면 뭐가 필요했더라?", --우물
-		BOTTLE_POUCH = "작업해야함",
+		BOTTLE_POUCH = "",
+		WINE_CELLAR_PART = "",
 		WINE_CELLAR = "",
 
 		WX78MODULE_NONEDRUNK = "아하! 녀석이 이런 건 또 언제 만드나 싶었지.", -- 78전용 묘듈
@@ -181,6 +182,9 @@ return {
 		COCONUT_JUICE = "속이 빈 부분을 젤리로 등가교환했어.", --난파선 코코넛 쥬스
 		RAINBOW_SHAKE = "효율적인 것 같네!", --난파선 무지개 해파리 쉐이크
 		QUARTZ_SHAKE = "생선 가시 씹을 일은 없겠네.", --난파선 광대 물고기 쉐이크
+		NETTLE_TEA = "",
+		FRASH_BRAMBLE_TEA = "",
+		TUBER_BLOOM_TEA = "",
 		CHERRY_ROSEBERRIES_TEA = "가끔은 꽃 구경과 차 한 잔의 여유를 즐기는 것도 나쁘지 않을지도...", --체리숲 로즈힙 차
 		CHERRY_HONEY_TEA = "고급스러우면서 따뜻해.", --체리숲 벚꽃꿀 차
 		SWEET_RICE_DRINK = "거 참 먹기 한 번 번거로운 씨앗이네.", -- 비타협 식혜
@@ -216,6 +220,7 @@ return {
 		LUMPY_WINE = "이득 봤다고 봐야지.", --서주(감자 고구마등 뿌리 술)
 		PULQUE = "시간 쓴 거에 비해 금방 상할 것 같은데.", --풀케(선인주)
 		RUINCACAO_WINE = "그래, 초콜릿으로 술을 담갔단 말이지.", -- 카카오 와인 
+		MIDNIGHT_STROM = "",
 		APPLEPINE_CIDER = "",
 		MENTHA_SPICATA_WINE = "",
 
@@ -228,6 +233,7 @@ return {
 
 		AUROBOW = "마시기보다는 장식장에 두는 게 낫겠어.", -- 난파선 오로보우,무지개 해파리주
 		COCONUT_WINE = "항해가 길어질 때를 대비해야겠지.", -- 난파선 코코넛 와인
+		NETTLE_WINE = "",
 		CHERRY_BLOOM_MADHU = "고급스럽네!", -- 체리숲 벚꽃꿀주
 		GIANT_BLUEBERRY_WINE = "어딘가 불안한데.", -- 비타협 붐!베리 사파이어(불 붙히면 폭발함)
 		RICE_WINE = "어차피 시간들이지 않음 먹지도 못했어.", -- 비타협 막걸리
@@ -243,7 +249,6 @@ return {
 		MADHU_RUM = "그래도 바다 위에서는 이런 거라도 마셔야겠지.", -- 럼주
 		BERRY_BRANDY = "위스키고 브랜디고 상관 없어. 안 썩는 게 중요하지.", -- 베리 브랜디
 		AREUHI = "그나마 쉽게 변질되지는 않겠네.", -- 크므즈 증류주 아르히
-		AREUHI = "",
 		APPLEPINE_BRANDY = "",
 		VOID = "",
 		CITROYUZU_CURACAO = "",
@@ -264,6 +269,7 @@ return {
 		--콜라보 증류주
 
 		MOONWAY = "이 녀석들은 술을 만들어도 영롱하네.", -- 무지개 해파리주 증류주
+		NETTLE_LIQUEUR = "",
 		ARRACK = "아무리 오래 들고 다녀도 잘 상하지 않아.", -- 아락 인도네시아 버전 코코넛 와인 증류주
 		CHERRY_BLOOM_RUM = "예쁘긴 하네. 병채로 진열장에 둬도 좋겠어.", -- 체리 꿀주 증류주 벛꽃잎 떠다
 		RICE_SPIRITS = "한잔이면 바싹 정신차릴수 있을거야.", --청주
@@ -283,6 +289,7 @@ return {
         RUIN_SCHOKAKOLA = "완벽한 간식이야!", -- 쇼카콜라
         APPLEPINE_PIE = "",
         APPLEPINE_FRIED_RICE = "",
+        CITROYUZU_BBQ = "",
 
 		BUCKET_STEEL_EMPTY = 
 		{

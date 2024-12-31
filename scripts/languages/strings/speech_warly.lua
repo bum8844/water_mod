@@ -61,7 +61,8 @@ return {
 		WELL_DRILLING_ITEM = "수맥을 찾고 뚫어줄 거야.", --드릴 아이템
 		HOLE = "물 흐르는 소리가 들려.", --우물 구멍
 		WELL = "식수를 길어보자!", --우물
-		BOTTLE_POUCH = "작업해야함",
+		BOTTLE_POUCH = "",
+		WINE_CELLAR_PART = "",
 		WINE_CELLAR = "",
 
 		WX78MODULE_NONEDRUNK = "우리 강철 친구에게 힘을 더해주는 그런 건가?", -- 78전용 묘듈
@@ -181,6 +182,9 @@ return {
 		COCONUT_JUICE = "아, 마치 휴양지에 온 기분이야.", --난파선 코코넛 쥬스
 		RAINBOW_SHAKE = "무지개의 맛까지는 아니야.", --난파선 무지개 해파리 쉐이크
 		QUARTZ_SHAKE = "차라리 피쉬소스를 만드는 게 나았겠어.", --난파선 광대 물고기 쉐이크
+		NETTLE_TEA = "",
+		FRASH_BRAMBLE_TEA = "",
+		TUBER_BLOOM_TEA = "",
 		CHERRY_ROSEBERRIES_TEA = "향기롭고, 냉정함을 유지시켜 줘.", --체리숲 로즈힙 차
 		CHERRY_HONEY_TEA = "목이 아플 때 특효약이야.", --체리숲 벚꽃꿀 차
 		SWEET_RICE_DRINK = "설탕과는 다른 달콤함이야!", -- 비타협 식혜
@@ -229,6 +233,7 @@ return {
 
 		AUROBOW = "정말 화려한 색의 술이야.", -- 난파선 오로보우,무지개 해파리주
 		COCONUT_WINE = "끈적하고 크리미한 달콤함에 약간의 신맛이 나.", -- 난파선 코코넛 와인
+		NETTLE_WINE = "",
 		CHERRY_BLOOM_MADHU = "베리 같으면서도 꽃 같은 향기가 나.", -- 체리숲 벚꽃꿀주
 		GIANT_BLUEBERRY_WINE = "뭔가 내가 생각한 것과는 좀 다른데.", -- 붐 베리 와인 (불 붙히면 폭발함)
 		RICE_WINE = "극동에서 왔어.", -- 비타협 막걸리
@@ -264,6 +269,7 @@ return {
 		--콜라보 증류주
 
 		MOONWAY = "무지개를 녹여낸 것 같은 맛과 색이야.", -- 무지개 해파리주 증류주
+		NETTLE_LIQUEUR = "",
 		ARRACK = "중후한 코코넛 맛과, 복잡한 견과류 향.", -- 아락 인도네시아 버전 코코넛 와인 증류주
 		CHERRY_BLOOM_RUM = "보기 좋은 요리가 먹기도 좋은 법이지.", -- 체리 꿀주 증류주 벛꽃잎 떠다님
 		RICE_SPIRITS = "뒷맛이 아주 깔끔해!", --청주
@@ -283,6 +289,7 @@ return {
         RUIN_SCHOKAKOLA = "한 조각만 먹어도 눈이 확 뜨일 거야.", -- 쇼카콜라
         APPLEPINE_PIE = "",
         APPLEPINE_FRIED_RICE = "",
+        CITROYUZU_BBQ = "",
 
 		BUCKET_STEEL_EMPTY = 
 		{

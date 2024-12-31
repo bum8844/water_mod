@@ -62,6 +62,7 @@ return {
 		HOLE = "빠지면 뼈도 못 추리겠어.", --우물 구멍
 		WELL = "'우물'이 있으면 '좌불'도 있어야 하는 거 아니야?", --우물
 		BOTTLE_POUCH = "",
+		WINE_CELLAR_PART = "",
 		WINE_CELLAR = "",
 
 		WX78MODULE_NONEDRUNK = "야 WX, 화염방사기 설치해보는 건 어때?", -- 78전용 묘듈
@@ -181,6 +182,9 @@ return {
 		COCONUT_JUICE = "음식은 음식인 것 같네.", --난파선 코코넛 쥬스
 		RAINBOW_SHAKE = "으, 해파리를 갈아마신다고?", --난파선 무지개 해파리 쉐이크
 		QUARTZ_SHAKE = "물과 물고기의 환장의 콜라보네.", --난파선 광대 물고기 쉐이크
+		NETTLE_TEA = "",
+		FRASH_BRAMBLE_TEA = "",
+		TUBER_BLOOM_TEA = "",
 		CHERRY_ROSEBERRIES_TEA = "그래, 향긋하네.", --체리숲 로즈힙 차
 		CHERRY_HONEY_TEA = "뭐, 색깔은 예쁘네.", --체리숲 벚꽃꿀 차
 		SWEET_RICE_DRINK = "난 구운 쪽이 더 맘에 드는데.", -- 비타협 식혜
@@ -229,6 +233,7 @@ return {
 
 		AUROBOW = "해파리를 태워도 이렇게 영롱하게 타지는 않았는데 말이지.", -- 난파선 오로보우,무지개 해파리주
 		COCONUT_WINE = "나무는 땔감, 열매는 술! 정말 버릴 게 없네!", -- 난파선 코코넛 와인
+		NETTLE_WINE = "",
 		CHERRY_BLOOM_MADHU = "난 불타서 흩날리는 꽃잎이 더 재밌어.", -- 체리숲 벚꽃꿀주
 		GIANT_BLUEBERRY_WINE = "내 맘에드는 성질로 바뀌었어!", -- 비타협 붐베리 와인(불 붙히면 폭발함)
 		RICE_WINE = "별 걸로 술을 다 만드네.", -- 비타협 막걸리
@@ -264,6 +269,7 @@ return {
 		--콜라보 증류주
 
 		MOONWAY = "뭐, 아무튼 술은 술이네.", -- 무지개 해파리주 증류주
+		NETTLE_LIQUEUR = "",
 		ARRACK = "은은한 코코넛 향이 달콤해.", -- 아락 인도네시아 버전 코코넛 와인 증류주
 		CHERRY_BLOOM_RUM = "여기다 불 붙여서 쭉 들이키면 어떨까?", -- 체리 꿀주 증류주 벛꽃잎 떠다님
 		RICE_SPIRITS = "독한 게 내 취향이야.", --청주
@@ -283,6 +289,7 @@ return {
         RUIN_SCHOKAKOLA = "나 참, 장난이 심하네. 초콜릿을 구두약처럼 만들어 놓다니!", -- 쇼카콜라
         APPLEPINE_PIE = "",
         APPLEPINE_FRIED_RICE = "",
+        CITROYUZU_BBQ = "",
 
 		BUCKET_STEEL_EMPTY = 
 		{

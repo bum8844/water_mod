@@ -61,6 +61,7 @@ return {
 		HOLE = "지하수와 연결된 구멍이야.", --우물 구멍
 		WELL = "뭔가 보완할 점이 보이는데.", --우물
 		BOTTLE_POUCH = "",
+		WINE_CELLAR_PART = "",
 		WINE_CELLAR = "",
 
 		WX78MODULE_NONEDRUNK = "이 자식 물건 좀 잘 챙겨두면 어디 덧나나.", -- 78전용 묘듈
@@ -180,6 +181,9 @@ return {
 		COCONUT_JUICE = "달고 시원하네.", --난파선 코코넛 쥬스
 		RAINBOW_SHAKE = "무지개는 무슨 맛이 나려나.", --난파선 무지개 해파리 쉐이크
 		QUARTZ_SHAKE = "이건 생선국이잖아.", --난파선 광대 물고기 쉐이크
+		NETTLE_TEA = "",
+		FRASH_BRAMBLE_TEA = "",
+		TUBER_BLOOM_TEA = "",
 		CHERRY_ROSEBERRIES_TEA = "신맛이 뭔가 중독성 있는데.", --체리숲 로즈힙 차
 		CHERRY_HONEY_TEA = "목 아플 때 마시면 딱이겠어.", --체리숲 벚꽃꿀 차
 		SWEET_RICE_DRINK = "달달하니 괜찮네.", -- 비타협 식혜
@@ -228,6 +232,7 @@ return {
 
 		AUROBOW = "색은 예쁜데 재료가 거시기하네.", -- 난파선 오로보우,무지개 해파리주
 		COCONUT_WINE = "야자 열매 술이야.", -- 난파선 코코넛 와인
+		NETTLE_WINE = "",
 		CHERRY_BLOOM_MADHU = "적어도 풀은 아니게 됐네.", -- 체리숲 벚꽃꿀주 (포밍레인: 위노나가 체리꿀을 조사할떄 '이게 꿀인지 '풀 = glue'인지 확실하지 않네'' 라고 하는 대사가 있습니다.)
 		GIANT_BLUEBERRY_WINE = "일단 과일이면 술로 못 만들 것도 없지.", -- 비타협 붐베리 와인 (불 붙히면 폭발함)
 		RICE_WINE = "술이 좀 탁하네.", -- 비타협 막걸리
@@ -263,6 +268,7 @@ return {
 		--콜라보 증류주
 
 		MOONWAY = "뭔가 휘발유 대용으로 써도 될 것 같은데.", -- 무지개 해파리주 증류주
+		NETTLE_LIQUEUR = "",
 		ARRACK = "야자 단내가 나.", -- 아락 인도네시아 버전 코코넛 와인 증류주
 		CHERRY_BLOOM_RUM = "뭔가 싸구려 기념품 같은 술이네.", -- 체리 꿀주 증류주 벛꽃잎 떠다
 		RICE_SPIRITS = "이제 꽤 맑네!", --청주
@@ -282,6 +288,7 @@ return {
         RUIN_SCHOKAKOLA = "녹지도 않고, 나눠서 먹기도 좋고, 기운도 나지!", -- 쇼카콜라
         APPLEPINE_PIE = "",
         APPLEPINE_FRIED_RICE = "",
+        CITROYUZU_BBQ = "",
 
 		BUCKET_STEEL_EMPTY = 
 		{

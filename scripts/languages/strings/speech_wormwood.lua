@@ -51,7 +51,8 @@ return {
 		WELL_DRILLING_ITEM = "구멍내는 도구", --드릴 아이템
 		HOLE = "안에 물 있어", --우물 구멍
 		WELL = "물 얻을수 있어.", --우물
-		BOTTLE_POUCH = "작업해야함",
+		BOTTLE_POUCH = "",
+		WINE_CELLAR_PART = "",
 		WINE_CELLAR = "",
 
 		WX78MODULE_NONEDRUNK = "삐빅 삑", -- 78전용 묘듈
@@ -171,6 +172,9 @@ return {
 		COCONUT_JUICE = "탱글탱글 한거 가득", --난파선 코코넛 쥬스
 		RAINBOW_SHAKE = "예쁜 뽀글이로 만든 마실거", --난파선 무지개 해파리 쉐이크
 		QUARTZ_SHAKE = "뻐끔으로 만든 마실거", --난파선 광대 물고기 쉐이크
+		NETTLE_TEA = "",
+		FRASH_BRAMBLE_TEA = "",
+		TUBER_BLOOM_TEA = "",
 		CHERRY_ROSEBERRIES_TEA = "새콤한 향", --체리숲 로즈힙 차
 		CHERRY_HONEY_TEA = "붕붕이들 매우 좋아해", --체리숲 벚꽃꿀 차
 		SWEET_RICE_DRINK = "달콤해!", -- 비타협 식혜
@@ -219,6 +223,7 @@ return {
 
 		AUROBOW = "알록달록해!", -- 난파선 오로보우,무지개 해파리주
 		COCONUT_WINE = "탱글탱글한거 없어", -- 난파선 코코넛 와인
+		NETTLE_WINE = "",
 		CHERRY_BLOOM_MADHU = "예쁜 꽃잎 둥둥", -- 체리숲 벚꽃꿀주
 		GIANT_BLUEBERRY_WINE = "펑 열매 발효된거", -- 비타협 붐!베리 사파이어(불 붙히면 폭발함)
 		RICE_WINE = "안 달아...", -- 비타협 막걸리
@@ -254,6 +259,7 @@ return {
 		--콜라보 증류주
 
 		MOONWAY = "알록달록 그대로", -- 무지개 해파리주 증류주
+		NETTLE_LIQUEUR = "",
 		ARRACK = "탱글 없는 화르륵 마시는거", -- 아락 인도네시아 버전 코코넛 와인 증류주
 		CHERRY_BLOOM_RUM = "화르륵 마시는거", -- 체리 꿀주 증류주 벛꽃잎 떠다
 		RICE_SPIRITS = "엄청 투명해!", --청주
@@ -273,6 +279,7 @@ return {
         RUIN_SCHOKAKOLA = "먹는거 눈이 번쩍", -- 쇼카콜라
         APPLEPINE_PIE = "",
         APPLEPINE_FRIED_RICE = "",
+        CITROYUZU_BBQ = "",
 
 		BUCKET_STEEL_EMPTY = 
 		{

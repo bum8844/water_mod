@@ -49,7 +49,8 @@ return {
 		WELL_DRILLING_ITEM = "수맥 개발용 장치", --드릴 아이템(AFS: "A 'WELL'-DEVELOPING DEVICE"?)
 		HOLE = "물을 뽑아내기 위한 구멍", --우물 구멍
 		WELL = "물의 안정적 공급처", --우물
-		BOTTLE_POUCH = "작업해야함",
+		BOTTLE_POUCH = "",
+		WINE_CELLAR_PART = "",
 		WINE_CELLAR = "",
 
 		WX78MODULE_NONEDRUNK = "화학 엔진 출력보조", -- 78전용 묘듈
@@ -169,6 +170,9 @@ return {
 		COCONUT_JUICE = "전해질이 풍부함", --난파선 코코넛 쥬스(RICH IN ELECTROLYTE)
 		RAINBOW_SHAKE = "가시광선을 발산", --난파선 무지개 해파리 쉐이크
 		QUARTZ_SHAKE = "지상 유기체와 바다 유기체를 섞음", --난파선 광대 물고기 쉐이크
+		NETTLE_TEA = "",
+		FRASH_BRAMBLE_TEA = "",
+		TUBER_BLOOM_TEA = "",
 		CHERRY_ROSEBERRIES_TEA = "장미향 유체", --체리숲 로즈힙 차
 		CHERRY_HONEY_TEA = "당도 측정 시도: 실패", --체리숲 벚꽃꿀 차
 		SWEET_RICE_DRINK = "경고: 과량의 엿당 함유", -- 비타협 식혜(WARNING: CONTAINS EXCESSIVE AMOUNTS OF MALTOSE)
@@ -217,6 +221,7 @@ return {
 
 		AUROBOW = "유희 애드온 포함", -- 난파선 오로보우,무지개 해파리주
 		COCONUT_WINE = "음용화된 윤활유", -- 난파선 코코넛 와인
+		NETTLE_WINE = "",
 		CHERRY_BLOOM_MADHU = "기성 에탄올", -- 체리숲 벚꽃꿀주
 		GIANT_BLUEBERRY_WINE = "여전히 위험함", -- 비타협 붐!베리 사파이어(불 붙히면 폭발함)
 		RICE_WINE = "부산물 가공체", -- 비타협 막걸리
@@ -252,6 +257,7 @@ return {
 		--콜라보 증류주
 
 		MOONWAY = "발광성 유기물질 보존함", -- 무지개 해파리주 증류주
+		NETTLE_LIQUEUR = "",
 		ARRACK = "고 섬유질성 에탄올", -- 아락 인도네시아 버전 코코넛 와인 증류주
 		CHERRY_BLOOM_RUM = "쓸데없는 VFX 포함", -- 체리 꿀주 증류주 벛꽃잎 떠다
 		RICE_SPIRITS = "부산물이 남음", --청주
@@ -271,6 +277,7 @@ return {
         RUIN_SCHOKAKOLA = "고체연료 부스터", -- 쇼카콜라
         APPLEPINE_PIE = "",
         APPLEPINE_FRIED_RICE = "",
+        CITROYUZU_BBQ = "",
 
 		BUCKET_STEEL_EMPTY = 
 		{

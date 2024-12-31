@@ -50,7 +50,8 @@ return {
 		WELL_DRILLING_ITEM = "흐유유, 땅 좀 파보자고!", --드릴 아이템
 		HOLE = "안쪽이 꽤 깊은데!", --우물 구멍
 		WELL = "내릴 양동이를 찾아봐야겠네.", --우물
-		BOTTLE_POUCH = "작업해야함",
+		BOTTLE_POUCH = "",
+		WINE_CELLAR_PART = "",
 		WINE_CELLAR = "",
 
 		WX78MODULE_NONEDRUNK = "네가 그 폐급 속의 A급이니?", -- 78전용 묘듈
@@ -170,6 +171,9 @@ return {
 		COCONUT_JUICE = "별 맛도 안나는걸 마신다니까.", --난파선 코코넛 쥬스
 		RAINBOW_SHAKE = "색만 봐도 충분해.", --난파선 무지개 해파리 쉐이크
 		QUARTZ_SHAKE = "물고기도 마셔지리라곤 상상도 못했을걸.", --난파선 광대 물고기 쉐이크
+		NETTLE_TEA = "",
+		FRASH_BRAMBLE_TEA = "",
+		TUBER_BLOOM_TEA = "",
 		CHERRY_ROSEBERRIES_TEA = "그림자 느낌나는 장미향이네.", --체리숲 로즈힙 차
 		CHERRY_HONEY_TEA = "이렇게 달면 먹을만하지.", --체리숲 벚꽃꿀 차
 		SWEET_RICE_DRINK = "마시는거랑 먹는걸 같이해야 한다니!", -- 비타협 식혜
@@ -218,6 +222,7 @@ return {
 
 		AUROBOW = "비 온 뒤에 나타날 술일까? 흐유유.", -- 난파선 오로보우,무지개 해파리주
 		COCONUT_WINE = "별맛 안나.", -- 난파선 코코넛 와인
+		NETTLE_WINE = "",
 		CHERRY_BLOOM_MADHU = "이렇게 단 술이면 마실만하지.", -- 체리숲 벚꽃꿀주
 		GIANT_BLUEBERRY_WINE = "마실만하지. 무기로는 더 좋고!", -- 붐 베리 와인 (불 붙히면 폭발함)
 		RICE_WINE = "쌀이 물에 녹은건가?", -- 비타협 막걸리
@@ -253,6 +258,7 @@ return {
 		--콜라보 증류주
 
 		MOONWAY = "필멸자들 생각은 알다가도 모르겠어.", -- 무지개 해파리주 증류주
+		NETTLE_LIQUEUR = "",
 		ARRACK = "그래도 여전히 밍밍해.", -- 아락 인도네시아 버전 코코넛 와인 증류주
 		CHERRY_BLOOM_RUM = "이건 마실만해.", -- 체리 꿀주 증류주 벛꽃잎 떠다
 		RICE_SPIRITS = "물 사이에 숨겨놓으면 재밌겠는데.", --청주
@@ -272,6 +278,7 @@ return {
         RUIN_SCHOKAKOLA = "필멸자들은 처음보는식물도 먹으려 드는건가?", -- 쇼카콜라
         APPLEPINE_PIE = "",
         APPLEPINE_FRIED_RICE = "",
+        CITROYUZU_BBQ = "",
 
 		BUCKET_STEEL_EMPTY = 
 		{

@@ -62,6 +62,7 @@ return {
 		HOLE = "나는 아직 밑바닥에 닿지도 않았는데, 어떻게 집에 돌아갈 수 있을까?", -- (이상한 나라의 엘리스)
 		WELL = "어떤 어두운 비밀이 숨어있을지 누가 알겠어.",
 		BOTTLE_POUCH = "",
+		WINE_CELLAR_PART = "",
 		WINE_CELLAR = "",
 
 		WX78MODULE_NONEDRUNK = "매우 연약해 보여... 안타까운 사고는 없었으면 좋겠네.", -- 78전용 묘듈
@@ -181,6 +182,9 @@ return {
 		COCONUT_JUICE = "부서진 내 마음도 이리 굳었으면.", --난파선 코코넛 쥬스
 		RAINBOW_SHAKE = "아름다움의 파멸이야.", --난파선 무지개 해파리 쉐이크
 		QUARTZ_SHAKE = "바보에게 알맞은 죽음이구나.", --난파선 광대 물고기 쉐이크
+		NETTLE_TEA = "",
+		FRASH_BRAMBLE_TEA = "",
+		TUBER_BLOOM_TEA = "",
 		CHERRY_ROSEBERRIES_TEA = "꽃 봉우리를 들이키지 않도록 조심해야지.", --체리숲 로즈힙 차
 		CHERRY_HONEY_TEA = "그 어떤 달콤함도 아비게일을 대신하진 못해.", --체리숲 벚꽃꿀 차
 		SWEET_RICE_DRINK = "씹히는 무언가가 있어.", -- 비타협 식혜
@@ -229,6 +233,7 @@ return {
 
 		AUROBOW = "술로 만들어도 다채로운 색깔로 빛나는구나.", -- 난파선 오로보우,무지개 해파리주
 		COCONUT_WINE = "은은한 단 내음이 나.", -- 난파선 코코넛 와인
+		NETTLE_WINE = "",
 		CHERRY_BLOOM_MADHU = "덧없는 아름다움을 얼마나 오래 즐기려 할 셈이었을까?", -- 체리숲 벚꽃꿀주
 		GIANT_BLUEBERRY_WINE = "폭발하는 듯한 향의 와인이야.", -- 붐 베리 와인 (불 붙히면 폭발함)
 		RICE_WINE = "쌀로 만든 술이야.", -- 비타협 막걸리
@@ -264,6 +269,7 @@ return {
 		--콜라보 증류주
 
 		MOONWAY = "죽음의 무지개야.", -- 무지개 해파리주 증류주
+		NETTLE_LIQUEUR = "",
 		ARRACK = "야자술을 증류한 술이야.", -- 아락 인도네시아 버전 코코넛 와인 증류주
 		CHERRY_BLOOM_RUM = "눈으로만 마시는 게 최선이겠지.", -- 체리 꿀주 증류주 벛꽃잎 떠다
 		RICE_SPIRITS = "물로 위장한 독주야.", --청주
@@ -283,6 +289,7 @@ return {
         RUIN_SCHOKAKOLA = "이것으로조차도 깨지 않을 만큼 깊이 잠드는 게 내 소원이야.", -- 쇼카콜라
         APPLEPINE_PIE = "",
         APPLEPINE_FRIED_RICE = "",
+        CITROYUZU_BBQ = "",
 
 		BUCKET_STEEL_EMPTY = 
 		{

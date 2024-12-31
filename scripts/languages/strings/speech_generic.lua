@@ -61,7 +61,7 @@ return {
 		WELL_DRILLING_ITEM = "물을 길을 우물을 파는 장치야.",
 		HOLE = "여기에 우물을 만들면 되겠어.",
 		WELL = "이제 깨끗한 물을 간편하게 얻을 수 있어!",
-		BOTTLE_POUCH = "작업해야함",
+		BOTTLE_POUCH = "",
 		WINE_CELLAR_PART = "",
 		WINE_CELLAR = "",
 
@@ -232,8 +232,8 @@ return {
 		--콜라보 양조주
 
 		AUROBOW = "음료 색이 시시각각 변하고 있어.",
-		NETTLE_WINE = "",
 		COCONUT_WINE = "지중해라도 온 것 같아. 카리브 해에 있는 지중해.",
+		NETTLE_WINE = "",
 		CHERRY_BLOOM_MADHU = "술 진열장에 넣기에는 좋겠어.",
 		GIANT_BLUEBERRY_WINE = "양조를 거치니 더 불안정해졌어.",
 		RICE_WINE = "이걸로도 술을 담글 수 있었구나.",
@@ -250,7 +250,7 @@ return {
 		BERRY_BRANDY = "과학적 영감을 얻는 데에 도움이 돼.",
 		AREUHI = "이젠 우유 같아 보이지도 않아.",
 		APPLEPINE_BRANDY = "",
-		VOID = "",
+		VOID_LIQUEUR  = "",
 		CITROYUZU_CURACAO = "",
 		MENTHA_SPICATA_CURACAO = "",
 
@@ -289,6 +289,7 @@ return {
         RUIN_SCHOKAKOLA = "초콜릿에 과학을 잔뜩 주입했어.",
         APPLEPINE_PIE = "",
         APPLEPINE_FRIED_RICE = "",
+        CITROYUZU_BBQ = "",
 
 		BUCKET_STEEL_EMPTY = 
 		{

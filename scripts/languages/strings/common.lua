@@ -208,7 +208,7 @@ return
 
 		CITROYUZU_JUICE = "오랜지주스",
 		CITROYUZU_TEA = "유자차",
-		EARLGREY_TEA = "얼그래이 홍차",
+		EARLGREY_TEA = "얼그레이 홍차",
 
 		-- preparedrink 타모드 전용
 
@@ -296,7 +296,7 @@ return
 		BERRY_BRANDY = "베리 브랜디",
 		AREUHI = "아르히",
 		APPLEPINE_BRANDY = "사과 브랜디",
-		VOID = "보이드",
+		VOID_LIQUEUR = "보이드",
 		CITROYUZU_CURACAO = "오랜지 큐라소",
 		MENTHA_SPICATA_CURACAO = "민트 큐라소",
 
@@ -333,8 +333,9 @@ return
 		WHITE_RUINCOLATE = "화이트 초콜릿",
 		RUINCOLATE = "초콜릿",
 		RUIN_SCHOKAKOLA = "쇼카콜라",
-        APPLEPINE_PIE = "사과파이",
+        APPLEPINE_PIE = "사과민스파이",
         APPLEPINE_FRIED_RICE = "파인애플 볶음밥",
+        CITROYUZU_BBQ = "",
 	},
 
 	RECIPE_DESC =

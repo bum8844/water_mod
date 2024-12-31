@@ -61,7 +61,8 @@ return {
 		WELL_DRILLING_ITEM = "우리 우물 한번 파 볼까,워비?",
 		HOLE = "혹시 세상 반대편까지 이어져 있는걸까?",
 		WELL = "왜 그래 워비? 누가 거기 빠졌어?",
-		BOTTLE_POUCH = "작업해야함",
+		BOTTLE_POUCH = "",
+		WINE_CELLAR_PART = "",
 		WINE_CELLAR = "",
 
 		WX78MODULE_NONEDRUNK = "로봇 내장이잖아! 짱이다!", -- 78전용 묘듈
@@ -181,6 +182,9 @@ return {
 		COCONUT_JUICE = "이건 코코-낫이야. 뭔 말인지 알지? 이제 코코'넛'이 아니잖아?",
 		RAINBOW_SHAKE = "완전 맛있어 보이는 색이야!",
 		QUARTZ_SHAKE = "뭔가 물고기 눈알 맛이 날 것 같은데...",
+		NETTLE_TEA = "",
+		FRASH_BRAMBLE_TEA = "",
+		TUBER_BLOOM_TEA = "",
 		CHERRY_ROSEBERRIES_TEA = "완전 힙해! 로-즈하기도 하고.",
 		CHERRY_HONEY_TEA = "뭔가 감기약 맛이 나는 것 같아.",
 		SWEET_RICE_DRINK = "주스는 아닌 것 같은데, 차도 아닌 것 같아!",
@@ -229,6 +233,7 @@ return {
 
 		AUROBOW = "색깔은 정말 마셔보고 싶네. 한 모금만 마셔봐도 될까?", -- 난파선 오로보우,무지개 해파리주
 		COCONUT_WINE = "보기에는 달콤해 보여!", -- 난파선 코코넛 와인
+		NETTLE_WINE = "",
 		CHERRY_BLOOM_MADHU = "기념품 가게에서 파는 술 같아!", -- 체리숲 벚꽃꿀주
 		GIANT_BLUEBERRY_WINE = "어, 성질이 아주 그대로긴 하네.", -- 비타협 붐!베리 사파이어(불 붙히면 폭발함)
 		RICE_WINE = "우유는 아닌 것 같아.", -- 비타협 막걸리
@@ -264,6 +269,7 @@ return {
 		--콜라보 증류주
 
 		MOONWAY = "주머니에 넣어두면 무지개빛으로 빛나!",
+		NETTLE_LIQUEUR = "",
 		ARRACK = "이게 아니라 열매가 있었으면 더 좋았을 텐데.",
 		CHERRY_BLOOM_RUM = "내 벌레 수집품이랑 같이 두면 멋있겠어!",
 		RICE_SPIRITS = "이건 대체 무슨 맛으로 먹는 거지?",
@@ -283,6 +289,7 @@ return {
         RUIN_SCHOKAKOLA = "적어도 탐험하면서 초콜릿이 뭉개지지는 않겠어.",
         APPLEPINE_PIE = "",
         APPLEPINE_FRIED_RICE = "",
+        CITROYUZU_BBQ = "",
 
 		BUCKET_STEEL_EMPTY = 
 		{
