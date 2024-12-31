@@ -651,6 +651,13 @@ if modlist.te or modlist.ia or modlist.ta then
 	end
 end
 
+if modlist.te or modlist.ac or modlist.ta then
+	local ham_drink = mod_drink.ham_drink
+	for k,v in pairs(ham_drink) do
+		drinks[k] = v
+	end
+end
+
 if modlist.te or modlist.ia or modlist.hof or modlist.ta then
 	local coconut_drink = mod_drink.coconut_drink
 	for k,v in pairs(coconut_drink) do

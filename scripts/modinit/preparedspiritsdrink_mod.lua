@@ -24,6 +24,29 @@ local sw_drink = {
 	},
 }
 
+local ham_drink = {
+	nettle_liqueur =
+	{
+		test = function(boilier, names, tags) return names.nettle_wine and not tags.additives end,
+		priority = 1,
+		health = 0,
+		hunger = TUNING.CALORIES_LARGE, -- 28.125 + ☆9.375 = 37.5
+		sanity = (TUNING.SANITY_MED/2)*3, -- 22.5
+		thirst = TUNING.HYDRATION_MED, -- 30 [150] (600)
+		tags = {"alcohol","spirits"},
+		perishtime = TUNING.PERISH_SUPERSLOW,
+		potlevel = "high",
+		potlevel_bottle = "mid",
+		antihistamine = 0,
+		prefabs = { "alcoholdebuff","drunkarddebuff","immunebuff" },
+		cooktime = (TUNING.KETTLE_TEA + TUNING.BEER_WAIT),
+		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_INTOXICATION,
+		oneatenfn = function(inst, eater)
+			spirits(inst, eater)
+	    end,
+	},	
+}
+
 local coconut_drink = {
 	arrack = {
 		test = function(boilier, names, tags) return (names.coconut_wine or names.wine_kokonut) and not tags.additives end,

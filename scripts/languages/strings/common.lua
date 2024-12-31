@@ -18,6 +18,7 @@ return
 		WX78MODULE_NONEDRUNK = "에탄올 재처리 모듈",
 
 		WINE_CELLAR = "와인 보관함",
+		WINE_CELLAR_PART = "와인 보관함 재료",
 		BOTTLE_POUCH = "물병파우치",
 
 		-- boilbook
@@ -214,6 +215,9 @@ return
 		COCONUT_JUICE = "후르츠 앤드 코코",
 		RAINBOW_SHAKE = "무지개쉐이크",
 		QUARTZ_SHAKE = "쿼츠쉐이크",
+		NETTLE_TEA = "쐐기풀 차",
+		FRASH_BRAMBLE_TEA = "프레시 브램블",
+		TUBER_BLOOM_TEA = "덩이줄기 차",
 		CHERRY_ROSEBERRIES_TEA = "로즈힙티",
 		CHERRY_HONEY_TEA = "벚꿀차",
 		SWEET_RICE_DRINK = "식혜",
@@ -274,6 +278,7 @@ return
 		--양조주
 
 		AUROBOW = "오로보우",
+		NETTLE_WINE = "쐐기풀술",
 		COCONUT_WINE = "코코넛와인",
 		CHERRY_BLOOM_MADHU = "벚꿀술",
 		GIANT_BLUEBERRY_WINE = "붐베리와인",
@@ -310,6 +315,7 @@ return
 		-- preparedspiritsdrink 타모드 전용
 
 		MOONWAY = "문웨이",
+		NETTLE_LIQUEUR = "쐐기풀 리큐르",
 		ARRACK = "아락",
 		CHERRY_BLOOM_RUM = "벚꿀 럼주",
 		RICE_SPIRITS = "청주",

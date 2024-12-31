@@ -123,6 +123,25 @@ local drinks =
 			spirits(inst, eater)
 		end,
 	},
+	applepine_brandy =
+	{
+		test = function(boilier, names, tags) return names.applepine_cider and not tags.additives end,
+		priority = 1,
+		health = (TUNING.HEALING_SMALL*6)*3, -- 18
+		hunger = TUNING.DRINK_CALORIES*3, -- 15
+		sanity = (TUNING.SANITY_SMALL/2)*3 + (TUNING.SANITY_SMALL), -- 22 + ☆10 = 32
+		thirst = TUNING.HYDRATION_MED, -- 30 
+		tags = {"alcohol","spirits"},
+		perishtime = TUNING.PERISH_SUPERSLOW,
+		cooktime = (TUNING.KETTLE_FRUIT + TUNING.BEER_WAIT),
+		potlevel = "mid",
+		potlevel_bottle = "mid",
+		prefabs = { "alcoholdebuff","drunkarddebuff","immunebuff" },
+		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_INTOXICATION,
+		oneatenfn = function(inst, eater)
+			spirits(inst, eater)
+		end,
+	},
 	-- 스파클링 와인
 	berry_gin = {
 		test = function(boilier, names, tags) return names.sparklingwine and names.additive_seed end,
@@ -405,6 +424,13 @@ end
 if modlist.te or modlist.ia or modlist.ta then
 	local sw_drink = mod_drink.sw_drink
 	for k,v in pairs(sw_drink) do
+		drinks[k] = v
+	end
+end
+
+if modlist.te or modlist.ac or modlist.ta then
+	local ham_drink = mod_drink.ham_drink
+	for k,v in pairs(ham_drink) do
 		drinks[k] = v
 	end
 end

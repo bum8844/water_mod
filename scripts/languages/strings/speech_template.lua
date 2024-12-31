@@ -56,6 +56,7 @@ return {
 		HOLE = "",
 		WELL = "",
 		BOTTLE_POUCH = "",
+		WINE_CELLAR_PART = "",
 		WINE_CELLAR = "",
 
 		WX78MODULE_NONEDRUNK = "", -- WX-78 module
@@ -175,6 +176,9 @@ return {
 		COCONUT_JUICE = "", --난파선 코코넛 쥬스
 		RAINBOW_SHAKE = "", --난파선 무지개 해파리 쉐이크
 		QUARTZ_SHAKE = "", --난파선 광대 물고기 쉐이크
+		NETTLE_TEA = "",
+		FRASH_BRAMBLE_TEA = "",
+		TUBER_BLOOM_TEA = "",
 		CHERRY_ROSEBERRIES_TEA = "", --체리숲 로즈힙 차
 		CHERRY_HONEY_TEA = "", --체리숲 벚꽃꿀 차
 		SWEET_RICE_DRINK = "", -- 비타협 식혜
@@ -222,6 +226,7 @@ return {
 		-- Mod-compatibility Brewages
 
 		AUROBOW = "",
+		NETTLE_WINE = "",
 		COCONUT_WINE = "",
 		CHERRY_BLOOM_MADHU = "",
 		GIANT_BLUEBERRY_WINE = "",
@@ -258,6 +263,7 @@ return {
 		-- Mod-compatiblity Spirits
 
 		MOONWAY = "",
+		NETTLE_LIQUEUR = "",
 		ARRACK = "",
 		CHERRY_BLOOM_RUM = "",
 		RICE_SPIRITS = "",

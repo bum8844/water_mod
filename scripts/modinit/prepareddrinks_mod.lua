@@ -77,14 +77,14 @@ local ham_drink = {
 		hunger = 0,
 		sanity = 0,
 		thirst = 0,
-        cooktime = TUNING.KETTLE_FRUIT,
-        drinktype = DRINKTYPY.FRUIT,
+        cooktime = TUNING.KETTLE_VEGGIE,
+        drinktype = DRINKTYPY.VEGGIE,
         oneatenfn = function(inst, eater)
         	if eater.components.poisonable then
         		eater.components.poisonable:Cure()
         	end
         end,
-	}
+	},
 }
 
 local coconut_drink = {
@@ -170,10 +170,6 @@ local rice_drink = {
 			end
 		end,
 	},
-}
-
-local ananas_drink = {
-
 }
 
 local mfp_drink = {

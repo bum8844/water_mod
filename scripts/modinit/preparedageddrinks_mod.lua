@@ -16,13 +16,36 @@ local sw_drink = {
 		potlevel_bottle = "mid",
 		drinktype = DRINKTYPY.BREWER,
 		prefabs = { "alcoholdebuff","drunkarddebuff","resistancebuff","wormlight_light" },
-		cooktime = (TUNING.KETTLE_FRUIT + TUNING.BEER_WAIT),
+		cooktime = (TUNING.KETTLE_LUXURY_GOODS + TUNING.BEER_WAIT),
 		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_NAG_AURA_RESIST_GLOW,
 		oneatenfn = function(inst, eater)
 			alcohol(inst, eater)
 			drink_worm_light_less(inst, eater)
 	    end,
 	},
+}
+
+local ham_drink = {
+	nettle_wine = {
+		test = function(boilier, names, tags) return tags.antihistamine and tags.antihistamine >= 3 and notname(names) end,
+		priority = 1,
+		health = 0,
+		hunger = TUNING.CALORIES_TINY, -- 9.375 [45] (180)
+		sanity = TUNING.SANITY_MED/2, -- 7.5 [37.5] (150)
+		thirst = TUNING.HYDRATION_MED, -- 30 [150] (600)
+		tags = {"alcohol","lightdrink"},
+		perishtime = TUNING.PERISH_PRESERVED, --20일
+		potlevel = "high",
+		potlevel_bottle = "mid",
+		drinktype = DRINKTYPY.BREWER,
+		antihistamine = 0,
+		prefabs = { "alcoholdebuff","drunkarddebuff","resistancebuff" },
+		cooktime = (TUNING.KETTLE_TEA + TUNING.BEER_WAIT),
+		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_NAG_AURA_RESIST,
+		oneatenfn = function(inst, eater)
+			alcohol(inst, eater)
+	    end,	
+	}
 }
 
 local coconut_drink = {
@@ -148,7 +171,7 @@ local rice_drink = {
 		thirst = TUNING.HYDRATION_MED, --30 [150] (600)
 		tags = {"alcohol"},
 		perishtime = TUNING.PERISH_PRESERVED, -- 20일
-		cooktime = (TUNING.KETTLE_FRUIT + TUNING.BEER_WAIT),
+		cooktime = (TUNING.KETTLE_VEGGIE + TUNING.BEER_WAIT),
 		potlevel = "high",
 		potlevel_bottle = "mid",
 		drinktype = DRINKTYPY.BREWER,
@@ -228,4 +251,4 @@ local mfp_drink = {
 	},
 }
 
-return { sw_drink = sw_drink, coconut_drink = coconut_drink, cf_drink = cf_drink, umc_drink = umc_drink , wheat_drink = wheat_drink, legion_drink = legion_drink, mfp_drink = mfp_drink, rice_drink = rice_drink}
+return { sw_drink = sw_drink, ham_drink = ham_drink, coconut_drink = coconut_drink, cf_drink = cf_drink, umc_drink = umc_drink , wheat_drink = wheat_drink, legion_drink = legion_drink, mfp_drink = mfp_drink, rice_drink = rice_drink}

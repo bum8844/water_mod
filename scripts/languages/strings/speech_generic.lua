@@ -62,6 +62,7 @@ return {
 		HOLE = "여기에 우물을 만들면 되겠어.",
 		WELL = "이제 깨끗한 물을 간편하게 얻을 수 있어!",
 		BOTTLE_POUCH = "작업해야함",
+		WINE_CELLAR_PART = "",
 		WINE_CELLAR = "",
 
 		WX78MODULE_NONEDRUNK = "작은 장치 하나에 아주 많은 과학이 압축되어 있어.", -- 78전용 묘듈
@@ -181,6 +182,9 @@ return {
 		COCONUT_JUICE = "안에 젤리가 들어 있어.",
 		RAINBOW_SHAKE = "다행히 별 맛 안 나.",
 		QUARTZ_SHAKE = "생선 비린내는 안 났으면 좋겠는데.",
+		NETTLE_TEA = "",
+		FRASH_BRAMBLE_TEA = "",
+		TUBER_BLOOM_TEA = "",
 		CHERRY_ROSEBERRIES_TEA = "장미향이 강렬해.",
 		CHERRY_HONEY_TEA = "은은하게 꽃향기가 나네.",
 		SWEET_RICE_DRINK = "이런 음료도 있었어?",
@@ -228,6 +232,7 @@ return {
 		--콜라보 양조주
 
 		AUROBOW = "음료 색이 시시각각 변하고 있어.",
+		NETTLE_WINE = "",
 		COCONUT_WINE = "지중해라도 온 것 같아. 카리브 해에 있는 지중해.",
 		CHERRY_BLOOM_MADHU = "술 진열장에 넣기에는 좋겠어.",
 		GIANT_BLUEBERRY_WINE = "양조를 거치니 더 불안정해졌어.",
@@ -264,6 +269,7 @@ return {
 		--콜라보 증류주
 
 		MOONWAY = "생체발광을 어떻게 보존한 거지?",
+		NETTLE_LIQUEUR = "",
 		ARRACK = "은은하게 코코넛 향이 나.",
 		CHERRY_BLOOM_RUM = "꽃잎이 떠 다니는 게 예쁜걸.",
 		RICE_SPIRITS = "이게 다 과학의 힘이야.",
