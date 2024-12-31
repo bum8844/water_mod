@@ -29,11 +29,12 @@ end
 local function onopen(inst)
     inst:AddTag("busy")
     inst.AnimState:PlayAnimation("open")
-    inst.SoundEmitter:PlaySound("turnoftides/common/together/boat/anchor/LP","loop_gears")
+    inst.SoundEmitter:PlaySound("drink_fx/sfx/gear_up")
+    --[[inst.SoundEmitter:PlaySound("turnoftides/common/together/boat/anchor/LP","loop_gears")
     inst:DoTaskInTime(1,function(inst)
         inst.SoundEmitter:KillSound("loop_gears")
         inst.SoundEmitter:PlaySound("dontstarve/common/icebox_open")
-    end)
+    end)]]
     inst:ListenForEvent("animover",SetOpen)
 end
 
@@ -42,10 +43,11 @@ local function onclose(inst)
     inst.components.container.canbeopened = false
     inst.components.container:Close()
     inst.AnimState:PlayAnimation("close")
-    inst.SoundEmitter:PlaySound("dontstarve/quagmire/common/safe/close")
+    inst.SoundEmitter:PlaySound("drink_fx/sfx/gear_down")
+    --[[inst.SoundEmitter:PlaySound("dontstarve/quagmire/common/safe/close")
     inst:DoTaskInTime(.2,function(inst)
         inst.SoundEmitter:PlaySound("dontstarve/common/icebox_close")
-    end)
+    end)]]
     inst:ListenForEvent("animover",SetClose)
 end
 

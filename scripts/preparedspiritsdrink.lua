@@ -337,7 +337,7 @@ local drinks =
 		end,
 	},
 
-	void = {
+	void_liqueur = {
 		test = function(boilier, names, tags) return names.midnight_storm end,
 		priority = 2,
         health = TUNING.HEALING_LARGE/5, -- 8 (40) ( MFP모드의 오렌지 쥬스 참고함)
