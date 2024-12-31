@@ -46,20 +46,18 @@ local water_foods = {
 		end
 	},
 	applepine_pie = {
-		test = function(cooker, names, tags)  return names.applepin and not tags.meat end,
+		test = function(cooker, names, tags)  return names.applepin and tags.meat end,
 		priority = 1,
-		foodtype = FOODTYPE.VEGGIE,
+		foodtype = FOODTYPE.MEAT,
 		health = TUNING.HEALING_LARGE,
 		hunger = TUNING.CALORIES_HUGE,
 		perishtime = TUNING.PERISH_SLOW,
 		sanity = TUNING.SANITY_TINY,
-		temperature = TUNING.HOT_FOOD_BONUS_TEMP,
-		temperatureduration = TUNING.FOOD_TEMP_AVERAGE,
 		cooktime = 2,
         floater = {"med", nil, 0.8},
 	},
 	applepine_fried_rice = {
-		test = function(cooker, names, tags) return tags.applepin_cooked and not tags.inedible end,
+		test = function(cooker, names, tags) return tags.applepin_cooked and tags.meat and tags.veggie and not tags.inedible end,
 		priority = -1,
 		foodtype = FOODTYPE.MEAT,
 		health = TUNING.HEALING_SMALL,
@@ -69,7 +67,20 @@ local water_foods = {
 		cooktime = .75,
         potlevel = "high",
         floater = {"small", nil, nil},
-	}
+	},
+	citroyuzu_bbq =
+	{
+		test = function(cooker, names, tags) return tags.meat and tags.meat == 2 and names.tealeaves and (names.citroyuzu or names.citroyuzu_cooked) end,
+		priority = 30,
+		foodtype = FOODTYPE.MEAT,
+		health = TUNING.HEALING_HUGE,
+		hunger = TUNING.CALORIES_LARGE*2,
+		perishtime = TUNING.PERISH_MED,
+		sanity = TUNING.SANITY_LARGE,
+		cooktime = 1,
+		potlevel = "high",
+		floater = {"med", 0.05, {0.65, 0.6, 0.65}},
+	},
 }
 
 for k, v in pairs(water_foods) do

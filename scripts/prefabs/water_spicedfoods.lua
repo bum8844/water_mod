@@ -47,7 +47,7 @@ local function MakePreparedFood(data)
     end
 
     local function DisplayNameFn(inst)
-        return subfmt(STRINGS.NAMES["SPICE_CAFFEINPEPPER_FOOD"], { food = STRINGS.NAMES[string.upper(data.basename)] })
+        return subfmt(STRINGS.NAMES[data.spice.."_FOOD"], { food = STRINGS.NAMES[string.upper(data.basename)] })
     end
 
     local function changeimage(inst)

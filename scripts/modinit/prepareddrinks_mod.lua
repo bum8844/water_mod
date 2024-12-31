@@ -46,6 +46,47 @@ local sw_drink = {
 	},
 }
 
+local ham_drink = {
+	nettle_tea = {
+		test =function(boilier, names, tags) return tags.antihistamine and tags.antihistamine >= 2 end,
+		priority = 3,
+		health = 0,
+		hunger = 0,
+		sanity = 0,
+		thirst = 0,
+		antihistamine = 0,
+        cooktime = TUNING.KETTLE_TEA,
+        drinktype = DRINKTYPY.LEAFS,
+        oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_ANTIHISTAMINE,
+	},
+	frash_bramble_tea = {
+		test = function(boilier, names, tags) return names.bramble_bulb and names.bramble_bulb >= 1 and tags.fruit end,
+		priority = 5,
+		health = 0,
+		hunger = 0,
+		sanity = 0,
+		thirst = 0,
+		antihistamine = 0,
+        cooktime = TUNING.KETTLE_FRUIT,
+        drinktype = DRINKTYPY.FRUIT,
+	},
+	tuber_bloom_tea = {
+		test = function(boilier, names, tags) return (names.tuber_crop_bloom or names.tuber_bloom_crop_cooked) and ((names.tuber_crop_bloom or 0)+(names.tuber_bloom_crop_cooked or 0)) >= 2 and tags.veggie end,
+		priority = 2,
+		health = 0,
+		hunger = 0,
+		sanity = 0,
+		thirst = 0,
+        cooktime = TUNING.KETTLE_FRUIT,
+        drinktype = DRINKTYPY.FRUIT,
+        oneatenfn = function(inst, eater)
+        	if eater.components.poisonable then
+        		eater.components.poisonable:Cure()
+        	end
+        end,
+	}
+}
+
 local coconut_drink = {
 	coconut_juice = {
 		test = function(boilier, names, tags) return (names.kyno_kokonut_halved or names.kyno_kokonut_cooked or names.coconut_halved or names.coconut_cooked or names.coconut_milk) and ((names.kyno_kokonut_halved or 0) + (names.kyno_kokonut_cooked or 0) + (names.coconut_halved or 0) + (names.coconut_cooked or 0) + (names.coconut_milk or 0) >= 2) and tags.fruit >= 2.5 and not tags.veggie and notmeat(tags) and notname(names) and lessthing(names) and notages(tags) end,
@@ -171,4 +212,4 @@ local mfp_drink = {
 	},
 }
 
-return { sw_drink = sw_drink, coconut_drink = coconut_drink, cf_drink = cf_drink, rice_drink = rice_drink, mfp_drink = mfp_drink}
+return { sw_drink = sw_drink, ham_drink = ham_drink, coconut_drink = coconut_drink, cf_drink = cf_drink, rice_drink = rice_drink, mfp_drink = mfp_drink}

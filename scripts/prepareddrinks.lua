@@ -299,7 +299,7 @@ local drinks =
 	},
 
 	lumpy_tea = { -- 구운 감자 체력20 허기25
-		test = function(boilier, names, tags) return (names.potato or names.potato_cooked or names.sweet_potato or names.sweet_potato_cooked or names.kyno_sweetpotato or names.kyno_sweetpotato_cooked or names.mfp_sweetpotato or names.mfp_sweetpotato_cooked or names.lotus_flower_cooked or names.kyno_lotus_flower_cooked) and ((names.potato or 0)+(names.potato_cooked or 0)+(names.sweet_potato or 0)+(names.sweet_potato_cooked or 0)+(names.kyno_sweetpotato or 0)+(names.kyno_sweetpotato_cooked or 0)+(names.mfp_sweetpotato or 0)+(names.mfp_sweetpotato_cooked or 0)+(names.lotus_flower_cooked or 0)+(names.kyno_lotus_flower_cooked or 0)) >=2 and tags.veggie and not tags.fruit and notmeat(tags) and notname(names) and lessthing(names) and notages(tags) end,
+		test = function(boilier, names, tags) return (names.potato or names.potato_cooked or names.sweet_potato or names.sweet_potato_cooked or names.kyno_sweetpotato or names.kyno_sweetpotato_cooked or names.mfp_sweetpotato or names.mfp_sweetpotato_cooked or names.lotus_flower_cooked or names.kyno_lotus_flower_cooked ) and ((names.potato or 0)+(names.potato_cooked or 0)+(names.sweet_potato or 0)+(names.sweet_potato_cooked or 0)+(names.kyno_sweetpotato or 0)+(names.kyno_sweetpotato_cooked or 0)+(names.mfp_sweetpotato or 0)+(names.mfp_sweetpotato_cooked or 0)+(names.lotus_flower_cooked or 0)+(names.kyno_lotus_flower_cooked or 0)) >=2 and tags.veggie and not tags.fruit and notmeat(tags) and notname(names) and lessthing(names) and notages(tags) end,
 		priority = 1,
 		health = (TUNING.HEALING_MED*2)/5, -- 5 -> 8 (40) --감자 2개 수준으로 버프
 		hunger = TUNING.DRINK_CALORIES*2,  -- 5-> 10 (50)

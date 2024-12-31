@@ -87,8 +87,11 @@ if modlist.te or modlist.ia or modlist.ta then
 end
 
 if modlist.te or modlist.ta or modlist.ac then
+	AddIngredientValues({"bramble_bulb"}, {fruit=1})
+	AddIngredientValues({"tuber_bloom_crop"}, {veggie=1})
+	AddIngredientValues({"tuber_bloom_crop_cooked"}, {veggie=1})
 	AddIngredientValues({"lotus_flower"}, {veggie=1,lotus=1})
-	AddIngredientValues({"lotus_flower_cooked"}, {veggie=1,lotus=1})
+	AddIngredientValues({"lotus_flower_cooked"}, {veggie=1})
 end
 
 if modlist.bm then

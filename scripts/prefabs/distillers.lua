@@ -184,7 +184,7 @@ end
 local function getstatus(inst)
     return (inst.components.brewing:IsDone() and "DONE")
         or (not inst.components.brewing:IsCooking() and "EMPTY")
-        or (inst.components.brewing:GetTimeToCook() > 15 and "DISTILLTING_LONG")
+        or (inst.components.brewing:GetTimeToCook() > 15 and "DISTILLING_LONG")
         or "DISTILLING_SHORT"
 end
 

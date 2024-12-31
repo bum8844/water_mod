@@ -90,7 +90,7 @@ SortAfter("bucket_steel_empty","bucket_empty","TOOLS")
 AddRecipe2("spice_caffeinpepper",{Ingredient("caffeinberry_bean_cooked", 3, ModAtlas(), nil, "caffeinberry_bean_cooked.tex")},TECH.FOODPROCESSING_ONE,{atlas = ModAtlas(), builder_tag="professionalchef", numtogive=2, image = "spice_caffeinpepper.tex" ,nounlock=true},{"FOODPROCESSING"})
 SortAfter("spice_caffeinpepper", "spice_salt", "FOODPROCESSING")
 
-AddRecipe2("spice_ruincolate_spread",{Ingredient("ruincacao_bean_cooked", 3, ModAtlas(), nil, "ruincacao_bean_cooked.tex")},TECH.FOODPROCESSING_ONE,{atlas = ModAtlas(), builder_tag="professionalchef", numtogive=2, image = "spice_caffeinpepper.tex" ,nounlock=true},{"FOODPROCESSING"})
+AddRecipe2("spice_ruincolate_spread",{Ingredient("ruincacao_bean_cooked", 3, ModAtlas(), nil, "ruincacao_bean_cooked.tex")},TECH.FOODPROCESSING_ONE,{atlas = ModAtlas(), builder_tag="professionalchef", numtogive=2, image = "spice_ruincolate_spread.tex" ,nounlock=true},{"FOODPROCESSING"})
 SortAfter("spice_ruincolate_spread", "spice_caffeinpepper", "FOODPROCESSING")
 
 AddRecipe2("additive_seed",{Ingredient("pinecone",1),Ingredient("pepper_seeds",1),Ingredient("garlic_seeds",1)},TECH.FOODPROCESSING_ONE,{atlas = ModAtlas(), builder_tag="professionalchef", numtogive=2, image = "additive_seed.tex" ,nounlock=true},{"FOODPROCESSING"})
@@ -130,7 +130,7 @@ SortAfter("distillers","brewery","COOKING")
 
 AddRecipe2("bottle_pouch",{Ingredient("papyrus",4),Ingredient("tentaclespots",2)},TECH.SCIENCE_TWO,{atlas = ModAtlas(), image = "bottle_pouch.tex"},{"COOKING","CONTAINERS","HYDRATION"})
 
-AddRecipe2("wine_cellar",{Ingredient("wine_cellar_part",3),Ingredient("gelblob_bottle",4),Ingredient("cutstone",6)},TECH.LOST,{placer = "wine_cellar_placer",atlas = ModAtlas(), image="wine_cellar.tex"},{"COOKING","HYDRATION","CONTAINERS","STRUCTURES"})
+AddRecipe2("wine_cellar",{Ingredient("wine_cellar_part",3),Ingredient("gelblob_bottle",4),Ingredient("cutstone",6)},TECH.LOST,{placer = "wine_cellar_placer",atlas = ModAtlas(), image="wine_cellar.tex", testfn=function(pt) return not TheWorld.Map:GetPlatformAtPoint(pt.x, 0, pt.z, -0.5) ~= nil and not TheWorld.Map:IsDockAtPoint(pt.x, 0, pt.z) end},{"COOKING","HYDRATION","CONTAINERS","STRUCTURES"})
 SortAfter("wine_cellar","icebox","COOKING")
 SortAfter("wine_cellar","icebox","CONTAINERS")
 SortAfter("wine_cellar","icebox","STRUCTURES")
