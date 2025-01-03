@@ -172,7 +172,7 @@ local function MakePreparedDrink(data)
         inst.components.water.returnprefab = "cup"]]
 
 		inst:AddComponent("inventoryitem")
-        inst.components.inventoryitem.atlasname = data.atlas or "images/tea_inventoryitem_drinks.xml"
+        inst.components.inventoryitem.atlasname = data.atlas or "images/inventoryitems/tea_inventoryitem_drinks.xml"
         if data.OnPutInInventory then
             inst:ListenForEvent("onputininventory", data.OnPutInInventory)
         end

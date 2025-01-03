@@ -138,7 +138,7 @@ local function fn_item()
 
     inst:AddComponent("inventoryitem")
 	inst.replica.inventoryitem:SetImage("raincollector_item")
-	inst.components.inventoryitem.atlasname= "images/tea_inventoryitem.xml"
+	inst.components.inventoryitem.atlasname= "images/inventoryitems/tea_inventoryitem.xml"
     inst.components.inventoryitem.imagename= "raincollector_item"
 
     inst:AddComponent("deployable")

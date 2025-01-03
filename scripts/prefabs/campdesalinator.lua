@@ -4,9 +4,9 @@ local assets =
     Asset("ANIM", "anim/campdesalinator_item.zip"),
     Asset("ANIM", "anim/campdesalinator_meter_water.zip"),
     Asset("ANIM", "anim/campdesalinator_meter_salt.zip"),
-    Asset("IMAGE", "images/tea_inventoryitem.tex"),
-    Asset("ATLAS", "images/tea_inventoryitem.xml"),
-    Asset("ATLAS_BUILD", "images/tea_inventoryitem.xml", 256),
+    Asset("IMAGE", "images/inventoryitems/tea_inventoryitem.tex"),
+    Asset("ATLAS", "images/inventoryitems/tea_inventoryitem.xml"),
+    Asset("ATLAS_BUILD", "images/inventoryitems/tea_inventoryitem.xml", 256),
 }
 
 local prefabs_item =

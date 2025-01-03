@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Atlas>
+	<Texture filename="tea_cookbookimage.tex" />
+	<Elements>
+		<Element name="applepine_fried_rice.tex" u1="0.001" u2="0.29196875" v2="0.999" v1="0.70803125" variant="" />
+		<Element name="applepine_pie.tex" u1="0.29396875" u2="0.5849375" v2="0.999" v1="0.70803125" variant="" />
+		<Element name="citroyuzu_bbq.tex" u1="0.5869375" u2="0.87790625" v2="0.999" v1="0.70803125" variant="" />
+		<Element name="dark_ruincolate.tex" u1="0.001" u2="0.29196875" v2="0.70603125" v1="0.4150625" variant="" />
+		<Element name="ruin_schokakola.tex" u1="0.29396875" u2="0.5849375" v2="0.70603125" v1="0.4150625" variant="" />
+		<Element name="ruincolate.tex" u1="0.5869375" u2="0.87790625" v2="0.70603125" v1="0.4150625" variant="" />
+		<Element name="white_ruincolat.tex" u1="0.001" u2="0.29196875" v2="0.4130625" v1="0.12209375" variant="" />
+	</Elements>
+</Atlas>

@@ -395,7 +395,7 @@ local function dug_ruincacao_tree()
 	
     inst:AddComponent("inventoryitem")
     inst.replica.inventoryitem:SetImage("ruincacao_tree_dug")
-	inst.components.inventoryitem.atlasname= "images/tea_inventoryitem.xml"
+	inst.components.inventoryitem.atlasname= "images/inventoryitems/tea_inventoryitem.xml"
     inst.components.inventoryitem.imagename= "ruincacao_tree_dug"
 
     inst:AddComponent("tradable")

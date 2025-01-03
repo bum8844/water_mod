@@ -55,7 +55,7 @@ local function tealeaves()
 
     inst:AddComponent("inventoryitem")
     inst.replica.inventoryitem:SetImage("tealeaves")
-	inst.components.inventoryitem.atlasname= "images/tea_inventoryitem.xml"
+	inst.components.inventoryitem.atlasname= "images/inventoryitems/tea_inventoryitem.xml"
     inst.components.inventoryitem.imagename= "tealeaves"
 
     inst:AddComponent("tradable")
@@ -105,7 +105,7 @@ local function tealeaves_dried()
 
     inst:AddComponent("inventoryitem")
     inst.replica.inventoryitem:SetImage("tealeaves_dried")
-	inst.components.inventoryitem.atlasname= "images/tea_inventoryitem.xml"
+	inst.components.inventoryitem.atlasname= "images/inventoryitems/tea_inventoryitem.xml"
     inst.components.inventoryitem.imagename= "tealeaves_dried"
 
     inst:AddComponent("tradable")
@@ -164,7 +164,7 @@ local function tea_seed_cooked()
 
     inst:AddComponent("inventoryitem")
     inst.replica.inventoryitem:SetImage("tea_seed_cooked")
-	inst.components.inventoryitem.atlasname= "images/tea_inventoryitem.xml"
+	inst.components.inventoryitem.atlasname= "images/inventoryitems/tea_inventoryitem.xml"
     inst.components.inventoryitem.imagename= "tea_seed_cooked"
 
     inst:AddComponent("tradable")
@@ -325,7 +325,7 @@ local function tea_seed()
 	
     inst:AddComponent("inventoryitem")
     inst.replica.inventoryitem:SetImage("tea_seed")
-	inst.components.inventoryitem.atlasname= "images/tea_inventoryitem.xml"
+	inst.components.inventoryitem.atlasname= "images/inventoryitems/tea_inventoryitem.xml"
     inst.components.inventoryitem.imagename= "tea_seed"
 
     inst:AddComponent("tradable")

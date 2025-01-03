@@ -36,7 +36,7 @@ local function SortAfter(a, b, filter_name)
 end
 
 local function ModAtlas()
-  return "images/tea_inventoryitem.xml"
+  return "images/inventoryitems/tea_inventoryitem.xml"
 end
 
 AddRecipeFilter({name = "HYDRATION", atlas = ModAtlas, image = "hydration.tex", custom_pos=nil, recipes=nil,},nil)

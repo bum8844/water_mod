@@ -672,6 +672,8 @@ for k, v in pairs(drinks) do
 
     v.is_boilbook_recipes = true
     v.boilbook_category = "kettle"
+	v.cookbook_atlas = "images/cookbookimages/tea_cookbookimage_drinks.xml"
+	v.cookbook_tex = k..".tex"
     if modlist.legion and _G.CONFIGS_LEGION.BETTERCOOKBOOK then
     	v.cook_need = nil
     	v.cook_cant = nil

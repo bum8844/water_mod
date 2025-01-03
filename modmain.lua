@@ -12,8 +12,10 @@ AddReplicableComponent("thirst")
 AddReplicableComponent("waterlevel")
 AddReplicableComponent("distill")
 
-RegisterItemAtlasFile("images/tea_inventoryitem.xml")
-RegisterItemAtlasFile("images/tea_inventoryitem_drinks.xml")
+RegisterItemAtlasFile("images/inventoryitems/tea_inventoryitem.xml")
+RegisterItemAtlasFile("images/inventoryitems/tea_inventoryitem_drinks.xml")
+RegisterItemAtlasFile("images/cookbookimages/tea_cookbookimage.xml")
+RegisterItemAtlasFile("images/cookbookimages/tea_cookbookimage_drinks.xml")
 
 modrequire("main")
 

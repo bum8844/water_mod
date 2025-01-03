@@ -300,7 +300,7 @@ local function dug_caffeinberry()
 	
     inst:AddComponent("inventoryitem")
     inst.replica.inventoryitem:SetImage("dug_caffeinberry")
-	inst.components.inventoryitem.atlasname = "images/tea_inventoryitem.xml"
+	inst.components.inventoryitem.atlasname = "images/inventoryitems/tea_inventoryitem.xml"
     inst.components.inventoryitem.imagename = "caffeinberry_bush_dug"
 
     inst:AddComponent("tradable")
@@ -366,7 +366,7 @@ local function caffeinberry_bean()
     
     inst:AddComponent("inventoryitem")
     inst.replica.inventoryitem:SetImage("caffeinberry_bean")
-    inst.components.inventoryitem.atlasname= "images/tea_inventoryitem.xml"
+    inst.components.inventoryitem.atlasname= "images/inventoryitems/tea_inventoryitem.xml"
     inst.components.inventoryitem.imagename= "caffeinberry_bean"
 
     inst:AddComponent("tradable")
@@ -435,7 +435,7 @@ local function caffeinberry_bean_cooked()
 
     inst:AddComponent("inventoryitem")
     inst.replica.inventoryitem:SetImage("caffeinberry_bean_cooked")
-    inst.components.inventoryitem.atlasname= "images/tea_inventoryitem.xml"
+    inst.components.inventoryitem.atlasname= "images/inventoryitems/tea_inventoryitem.xml"
     inst.components.inventoryitem.imagename= "caffeinberry_bean_cooked"
 
     inst:AddComponent("tradable")
@@ -484,7 +484,7 @@ local function fn_spice()
     inst:AddComponent("inspectable")
     inst:AddComponent("inventoryitem")
     inst.replica.inventoryitem:SetImage("spice_caffeinpepper")
-    inst.components.inventoryitem.atlasname= "images/tea_inventoryitem.xml"
+    inst.components.inventoryitem.atlasname= "images/inventoryitems/tea_inventoryitem.xml"
     inst.components.inventoryitem.imagename= "spice_caffeinpepper"
 
     MakeHauntableLaunch(inst)

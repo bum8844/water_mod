@@ -407,7 +407,7 @@ local function dug_tea_tree()
 	
     inst:AddComponent("inventoryitem")
     inst.replica.inventoryitem:SetImage("tea_tree_bush_dug")
-	inst.components.inventoryitem.atlasname= "images/tea_inventoryitem.xml"
+	inst.components.inventoryitem.atlasname= "images/inventoryitems/tea_inventoryitem.xml"
     inst.components.inventoryitem.imagename= "tea_tree_bush_dug"
 
     inst:AddComponent("tradable")

@@ -120,7 +120,7 @@ local function ruincacao()
 
     inst:AddComponent("inventoryitem")
     inst.replica.inventoryitem:SetImage("ruincacao")
-    inst.components.inventoryitem.atlasname= "images/tea_inventoryitem.xml"
+    inst.components.inventoryitem.atlasname= "images/inventoryitems/tea_inventoryitem.xml"
     inst.components.inventoryitem.imagename= "ruincacao"
 
     inst:AddComponent("tradable")
@@ -179,7 +179,7 @@ local function ruincacao_bean()
 
     inst:AddComponent("inventoryitem")
     inst.replica.inventoryitem:SetImage("ruincacao_bean")
-	inst.components.inventoryitem.atlasname= "images/tea_inventoryitem.xml"
+	inst.components.inventoryitem.atlasname= "images/inventoryitems/tea_inventoryitem.xml"
     inst.components.inventoryitem.imagename= "ruincacao_bean"
 
     inst:AddComponent("tradable")
@@ -238,7 +238,7 @@ local function ruincacao_bean_cooked()
 
     inst:AddComponent("inventoryitem")
     inst.replica.inventoryitem:SetImage("ruincacao_bean_cooked")
-	inst.components.inventoryitem.atlasname= "images/tea_inventoryitem.xml"
+	inst.components.inventoryitem.atlasname= "images/inventoryitems/tea_inventoryitem.xml"
     inst.components.inventoryitem.imagename= "ruincacao_bean_cooked"
 
     inst:AddComponent("tradable")
@@ -381,7 +381,7 @@ local function ruincacao_seed()
 	
     inst:AddComponent("inventoryitem")
     inst.replica.inventoryitem:SetImage("ruincacao_seed")
-	inst.components.inventoryitem.atlasname= "images/tea_inventoryitem.xml"
+	inst.components.inventoryitem.atlasname= "images/inventoryitems/tea_inventoryitem.xml"
     inst.components.inventoryitem.imagename= "ruincacao_seed"
 
     inst:AddComponent("tradable")

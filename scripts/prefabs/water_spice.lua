@@ -38,7 +38,7 @@ local function MakeWater_Spice(name)
         inst:AddComponent("inspectable")
         inst:AddComponent("inventoryitem")
         inst.replica.inventoryitem:SetImage(name)
-        inst.components.inventoryitem.atlasname = "images/tea_inventoryitem.xml"
+        inst.components.inventoryitem.atlasname = "images/inventoryitems/tea_inventoryitem.xml"
         inst.components.inventoryitem.imagename = name
 
         MakeHauntableLaunch(inst)

@@ -160,7 +160,7 @@ local function MakePreparedFood(data)
 
         inst:AddComponent("inventoryitem")
         inst.replica.inventoryitem:SetImage(spicename.."_over")
-        inst.components.inventoryitem.atlasname = "images/tea_inventoryitem.xml"
+        inst.components.inventoryitem.atlasname = "images/inventoryitems/tea_inventoryitem.xml"
         inst.components.inventoryitem.imagename = spicename.."_over"
         if data.float == nil then
             inst.components.inventoryitem:SetSinks(true)
