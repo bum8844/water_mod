@@ -49,6 +49,8 @@ return
 		-- brewery
 		BREWERY = "양조기",
 
+		PURIFICATION_TABLETS = "정화제",
+
 		-- buckets
 		BUCKET_EMPTY = "양동이",
 		BUCKET_WOODIE_EMPTY = "속 빈 나무동이",

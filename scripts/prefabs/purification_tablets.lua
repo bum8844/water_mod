@@ -1,5 +1,7 @@
 
-local assets = {}
+local assets = {
+    --Asset("ANIM", "anim/purification_tablets.zip")
+}
 
 local function fn()
 	local inst = CreateEntity()
@@ -13,8 +15,8 @@ local function fn()
 
         inst.minisign_atlas = "minisign_dehy_items_swap"
 
-    	inst.AnimState:SetBuild("purification_pills")
-        inst.AnimState:SetBank("purification_pills")
+    	inst.AnimState:SetBuild("purification_tablets")
+        inst.AnimState:SetBank("purification_tablets")
         inst.AnimState:PlayAnimation("idle")
 
         inst:AddTag("molebait")
@@ -37,12 +39,11 @@ local function fn()
 
     	inst:AddComponent("inventoryitem")
 
-    	MakeSmallBurnable(inst, TUNING.SMALL_BURNTIME)
-    	MakeSmallPropagator(inst)
-
     	MakeHauntableLaunch(inst)
+
+        MakeDynamicItemImage(inst, "swap", "purification_tablets")
 
 	return inst
 end
 
-return Prefab("purification_pills",fn,assets)
+return Prefab("purification_tablets",fn,assets)

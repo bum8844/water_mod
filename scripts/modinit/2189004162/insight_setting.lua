@@ -6,7 +6,7 @@ local waterlevelfn = require(default.."/components/waterlevel").Descriptors
 local waterspoilagefn = require(default.."/components/waterspoilage").Descriptors
 local steampressurefn = require(default.."/components/steampressure").Descriptors
 local wateringtoolfn = require(default.."/components/wateringtool").Descriptors
-local waterfn = require(default.."/components/water").Descriptors
+--local waterfn = require(default.."/components/water").Descriptors
 local wateringstructurefn = require(default.."/components/wateringstructure").Descriptors
 local desalinatiorablerfn = require(default.."/components/desalinatiorable").Descriptors
 
@@ -16,7 +16,7 @@ AddSimPostInit(waterlevelfn)
 AddSimPostInit(waterspoilagefn)
 AddSimPostInit(steampressurefn)
 AddSimPostInit(wateringtoolfn)
-AddSimPostInit(waterfn)
+--AddSimPostInit(waterfn)
 AddSimPostInit(wateringstructurefn)
 AddSimPostInit(desalinatiorablerfn)
 

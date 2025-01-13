@@ -34,6 +34,24 @@ MakeDynamicCupImage = function(inst, symbol, build, use_bg)
     inst:ListenForEvent("stacksizechange", ChangeCupImage)
 end
 
+MakeDynamicItemImage = function(inst, symbol, build, use_bg)
+    local function ChangeItemImage(inst, data)
+        if data ~= nil then
+            local new_state = GetItemState(data.stacksize)
+            local cur_state = GetItemState(data.oldstacksize)
+            if new_state ~= cur_state then
+                inst.minisign_custom_name = inst.prefab..new_state
+                inst.AnimState:OverrideSymbol(symbol, build, inst.prefab..new_state)
+                if inst.components.inventoryitem.imagename ~= inst.prefab..new_state then
+                    inst.components.inventoryitem:ChangeImageName(inst.prefab..new_state)
+                end
+            end
+        end
+    end
+
+    inst:ListenForEvent("stacksizechange", ChangeItemImage)
+end
+
 Water_BurntStructureFn = function(inst)
     DefaultBurntStructureFn(inst)
     if inst.components.waterlevel ~= nil then
