@@ -65,6 +65,29 @@ local function evaluate_watertype(giver, taker)
     end
 end
 
+local function check_type(giver, taker, tagname)
+    for k, v in pairs(WATERTYPE) do
+        if giver:HasTag("water_"..v) then
+            if taker:HasTag(tagname.."_"..v) then
+                return true
+            end
+        end
+    end
+end
+
+local function evaluate_case(giver, taker)
+    if taker:HasTag("checksludge") then
+        return check_type(giver,taker,"sludge")
+    elseif taker:HasTag("onlysamewater") then
+        if taker:HasTag("nowater") then
+            return true
+        end
+        return check_type(giver,taker,"same")
+    else
+        return true
+    end
+end
+
 local USEITEM = 
 {
     milkingtool = function(inst, doer, target, actions)
@@ -85,7 +108,8 @@ local USEITEM =
                 table.insert(actions, ACTIONS.TAKEWATER)
             elseif target.replica.waterlevel ~= nil
                 and target.replica.waterlevel:IsAccepting()
-                and evaluate_watertype(inst, target) then
+                and evaluate_watertype(inst, target)
+                and evaluate_case(inst, target) then
                 table.insert(actions, ACTIONS.GIVEWATER)
             end
         elseif inst.replica.waterlevel ~= nil
@@ -101,6 +125,12 @@ local USEITEM =
                 return
             end
             table.insert(actions, ACTIONS.TAKEWATER)
+        end
+    end,
+
+    purify = function(inst, doer, target, actions)
+        if target:HasTag("can_purify") and inst:HasTag("purify_item") then
+            table.insert(actions, ACTIONS.PURIFY)
         end
     end,
 

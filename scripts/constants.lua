@@ -1,11 +1,12 @@
 WATERTYPE =
 {
-	CLEAN = "water_clean",
-	DIRTY = "water_dirty",
-	MINERAL = "water_mineral",
-	CLEAN_ICE = "water_clean_ice",
-	DIRTY_ICE = "water_dirty_ice",
-	SALTY = "water_salty",
+	CLEAN = "clean",
+	DIRTY = "dirty",
+	MINERAL = "mineral",
+	UNCLEAN_MINERAL = "glass",
+	CLEAN_ICE = "clean_ice",
+	DIRTY_ICE = "dirty_ice",
+	SALTY = "salty",
 	NONE = "none",
 }
 
@@ -17,10 +18,11 @@ WATERGROUP =
 		types =
 		{
 			WATERTYPE.CLEAN,
+			WATERTYPE.UNCLEAN_MINERAL,
 			WATERTYPE.MINERAL,
 			WATERTYPE.DIRTY,
 			WATERTYPE.SALTY,
-		}
+		},
 	},
 
 	RAW =
@@ -29,6 +31,7 @@ WATERGROUP =
 		types =
 		{
 			WATERTYPE.DIRTY,
+			WATERTYPE.UNCLEAN_MINERAL,
 			WATERTYPE.SALTY,
 		},
 	},
@@ -67,13 +70,21 @@ WATERGROUP =
 		},
 	},
 
+	CAMP_DESALINATIORABLE = {
+		name = "CAMP_DESALINATIORABLE",
+		types = {
+			WATERTYPE.UNCLEAN_MINERAL,
+			WATERTYPE.SALTY,
+		},
+	},
+
 	NONE_BOIL = 
 	{
 		name = "NONE_BOIL",
 		types = {
 			WATERTYPE.NONE,
-		}
-	}
+		},
+	},
 }
 
 DRINKTYPY = 

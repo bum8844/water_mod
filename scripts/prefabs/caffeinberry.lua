@@ -115,9 +115,9 @@ local function getregentimefn_normal(inst)
     local max_cycles = inst.components.pickable.max_cycles
     local cycles_left = inst.components.pickable.cycles_left or max_cycles
     local num_cycles_passed = math.max(0, max_cycles - cycles_left)
-    return TUNING.BERRY_REGROW_TIME
-        + TUNING.BERRY_REGROW_INCREASE * num_cycles_passed
-        + TUNING.BERRY_REGROW_VARIANCE * math.random()
+    return TUNING.CAFFEINBERRY_REGROW_TIME
+        + TUNING.CAFFEINBERRY_REGROW_INCREASE * num_cycles_passed
+        + TUNING.CAFFEINBERRY_REGROW_VARIANCE * math.random()
 end
 
 local function makefullfn(inst)
@@ -222,9 +222,9 @@ local function caffeinberry()
     inst.components.pickable.makebarrenfn = makebarrenfn
     inst.components.pickable.makefullfn = makefullfn
     inst.components.pickable.ontransplantfn = ontransplantfn
-    inst.components.pickable:SetUp("caffeinberry_bean", TUNING.BERRY_REGROW_TIME)
+    inst.components.pickable:SetUp("caffeinberry_bean", TUNING.CAFFEINBERRY_REGROW_TIME)
     inst.components.pickable.getregentimefn = getregentimefn_normal
-    inst.components.pickable.max_cycles = TUNING.BERRYBUSH_CYCLES + math.random(2)
+    inst.components.pickable.max_cycles = TUNING.CAFFEINBERRY_CYCLES + math.random(2)
     inst.components.pickable.cycles_left = inst.components.pickable.max_cycles
 
     inst:AddComponent("witherable")

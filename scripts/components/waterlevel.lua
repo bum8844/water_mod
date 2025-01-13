@@ -28,9 +28,28 @@ local function oncurrentwater(self, currentwater)
     self.inst.replica.waterlevel:SetIsDepleted(self:IsEmpty())
 end
 
---[[local function onwatertype(self, watertype)
-    self.inst.replica.waterlevel:SetWaterType(watertype or "")
-end]]
+local function setonlysamewater(self, onlysamewater)
+    if onlysamewater then
+        self.inst:AddTag("onlysamewater")
+    else
+        self.inst:RemoveTag("onlysamewater")
+    end
+end
+
+local function onwatertype(self, watertype, old_watertype)
+    if old_watertype then
+        self.inst:RemoveTag("same_"..old_watertype)
+    end
+    if not watertype then
+        self.inst:AddTag("nowater")
+    else
+        self.inst:RemoveTag("nowater")
+        if self.onlysamewater then
+            self.inst:AddTag("same_"..watertype)
+        end
+    end
+    --self.inst.replica.waterlevel:SetWaterType(watertype or "")
+end
 
 local Waterlevel = Class(function(self, inst)
     self.inst = inst
@@ -64,7 +83,8 @@ nil,
     canaccepts = oncanaccepts,
     accepting = onaccepting,
     currentwater = oncurrentwater,
-    --watertype = onwatertype,
+    onlysamewater = setonlysamewater,
+    watertype = onwatertype,
 })
 
 function Waterlevel:OnRemoveFromEntity()
@@ -157,27 +177,31 @@ end
 
 function Waterlevel:UtilityCheck(boilier)
     local canaccepting = true
+    local water = self.inst.components.water
+    local watersource = self.inst.components.watersource
+    local waterspoilage = self.inst.components.waterspoilage
+
     if self:GetWater() > 0 then
         if self:IsFull() or self.isputoncetime then
             canaccepting = false
         end
         self.accepting = canaccepting
-        if self.inst.components.water ~= nil then
-            self.inst.components.water.available = true
+        if water ~= nil then
+            water.available = true
         end
-        if self.inst.components.watersource ~= nil then
-            self.inst.components.watersource.available = true
+        if watersource ~= nil then
+            watersource.available = true
         end
     else
         self.accepting = canaccepting
-        if self.inst.components.water ~= nil then
-            self.inst.components.water.available = false
+        if water ~= nil then
+            water.available = false
         end
-        if self.inst.components.watersource ~= nil then
-            self.inst.components.watersource.available = false
+        if watersource ~= nil then
+            watersource.available = false
         end
-        if self.inst.components.waterspoilage ~= nil then
-            self.inst.components.waterspoilage:ResetWaterPerish()
+        if waterspoilage ~= nil then
+            waterspoilage:ResetWaterPerish()
         end
     end
     local sections = self:GetCurrentSection()
@@ -193,30 +217,32 @@ function Waterlevel:DoDiistiller(item, doer)
         return
     end
 
-    self.inst.components.distiller.done = true
+    local distiller = self.inst.components.distiller
+    distiller.done = true
 
     local watervalue = self:GetWater()
+    local isClane = self.watertype ~= WATERTYPE.CLEAN or self.watertype ~= WATERTYPE.MINERAL
     local isDirtyIce = self.watertype == WATERTYPE.DIRTY_ICE
 
-    if self.watertype ~= WATERTYPE.CLEAN or isDirtyIce then
+    if isClane or isDirtyIce then
         watervalue = isDirtyIce and watervalue * 2 or watervalue
-        self.inst.components.distiller.done = false
+        distiller.done = false
     elseif item.components.perishable then
         if item.components.perishable:IsStale() then
             watervalue = watervalue / 4
-            self.inst.components.distiller.done = false
+            distiller.done = false
         elseif item.components.perishable:IsSpoiled() then
             watervalue = watervalue / 2
-            self.inst.components.distiller.done = false
+            distiller.done = false
         end
     end
 
-    if not self.inst.components.distiller.done then
+    if not distiller.done then
         if self.inst._fire == nil then
-            self.inst.components.distiller:startBoiling(watervalue)
+            distiller:startBoiling(watervalue)
         else
             watervalue = watervalue * 2
-            self.inst.components.distiller:startBoiling(watervalue, true)
+            distiller:startBoiling(watervalue, true)
         end
 
         local sections = self:GetCurrentSection()
@@ -231,9 +257,11 @@ function Waterlevel:DoDiistiller(item, doer)
 end
 
 function Waterlevel:TakeWaterItem(item, doer)
-    if self.onlysamewater and self.currentwater > 0 then
-        if self.watertype ~= nil and self.watertype ~= item.components.water:GetWatertype() then
+    if self.onlysamewater then
+        if self.currentwater > 0 and self.watertype ~= nil and self.watertype ~= item.components.water:GetWatertype() then
             return false
+        elseif self.currentwater == 0 then
+            self.watertype = nil
         end
     end
 

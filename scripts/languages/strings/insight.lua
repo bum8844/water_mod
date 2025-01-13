@@ -2,6 +2,19 @@ return
 {
 	INSIGHT =
 	{	
+		COLOR_CODE = 
+		{
+			EMPTY = "<color=#FFFFFF>",
+			DIRTY = "<color=#4E5347>",
+			DIRTY_ICE = "<color=#BBC6B7>",
+			CLEAN = "<color=#2F70C0>",
+			CLEAN_ICE = "<color=#91B4DE>",
+			SALTY = "<color=#71BEB8>",
+			UNCLEAN_MINERAL = "<color=#47886D>",
+			MINERAL = "<color=#78B29A>",
+			MOONGLASS = "<color=#A8DCC7>",
+			SALT = "<color=#E0E0E0>",
+		},
 		STATE =
 		{
 			MELT = "<color=#85AFAF>해동</color>",
@@ -13,6 +26,7 @@ return
 			CLEAN = "<color=#2F70C0>깨끗한 물</color>",
 			CLEAN_ICE = "<color=#91B4DE>깨끗한 물(얼어붙음)</color>",
 			SALTY = "<color=#71BEB8>바닷물</color>",
+			UNCLEAN_MINERAL = "<color=#78B29A>결정화된 미네랄 워터</color>",
 			MINERAL = "<color=#78B29A>미네랄 워터</color>",
 			SOPIL = "<color=#4E5347>썩기</color>",
 			GAIN = "<color=#2F70C0>차기</color>",
@@ -21,6 +35,8 @@ return
 			BUCKET_EMPTY = "<color=#785F4F>양동이</color>",
 			BUCKET_WOODIE_EMPTY = "<color=#524129>속 빈 나무동이</color>",
 			BUCKET_STEEL_EMPTY = "<color=#8C8B84>강철 양동이</color>",
+			SALT = "<color=#E0E0E0>소금</color>",
+			MOONGLASS = "<color=#A8DCC7>달유리</color>"
 		},
 
 		DISTILLER =
@@ -30,7 +46,7 @@ return
 
 		WATERLEVEL =
 		{
-			RAWTEXT = "상태 : %s / 수량 : <color=#2F70C0>%s/%s</color>",
+			RAWTEXT = "상태 : %s / 수량 : %s%s/%s</color>",
 		},
 
 		WATERSPOILAGE =
@@ -65,10 +81,10 @@ return
 			RAWTEXT_EXT = "물의 상태 : %s(수량 : %s)",
 		},
 
-		SALTMAKER =
+		DESALINATIORABLE =
 		{
-			RAWTEXT = "<color=#E0E0E0>소금</color> 저장량 <color=#E0E0E0>%s/%s</color>",
-			RAWTEXT_EXT = "<color=#E0E0E0>소금</color> 저장 <color=#E0E0E0>%s/%s</color> (<color=#E0E0E0>%s/%s</color>)",
+			RAWTEXT = "%s 저장량 %s%s/%s</color>",
+			RAWTEXT_EXT = "%s 저장 %s%s/%s</color> (%s%s/%s</color>)",
 		},
 
 		EDIBLE =

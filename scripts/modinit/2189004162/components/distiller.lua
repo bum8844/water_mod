@@ -25,7 +25,7 @@ local function Descriptors()
 			(watertype == WATERTYPE.CLEAN_ICE or watertype == WATERTYPE.DIRTY_ICE) and STRINGS.INSIGHT.STATE.MELT or
 			STRINGS.INSIGHT.STATE.PURIFY
 
-			local rawtext = STRINGS.INSIGHT.DISITLLER.RAWTEXT
+			local rawtext = STRINGS.INSIGHT.DISTILLER.RAWTEXT
 			boiling_time_string = string.format(rawtext,water_type_string,boiling_time_string)
 
 			description = Insight.env.CombineLines(boiling_time_string)

@@ -18,18 +18,23 @@ local function OnTaskTick(inst, self, period)
 end
 
 local function tempcheck(self, inst)
-    local tempcheck = self.inst.components.temperature:GetCurrent()
-    local iscave = TheWorld:HasTag("cave")
-    local issummer = TheWorld.state.issummer
-    local iswinter = TheWorld.state.iswinter
-
-    local c = not iscave and (issummer and (( tempcheck > TUNING.OVERHEAT_TEMP - 15 and 4 ) or ( tempcheck > TUNING.OVERHEAT_TEMP - 30 and 2 ))) or
-           iswinter and (( tempcheck < 5 and 0.25 ) or ( tempcheck < 15 and 0.5 )) or 
-           (tempcheck > TUNING.OVERHEAT_TEMP - 15 and 2) or (tempcheck < 5 and 0.5) or 1
-
-    self.temp_per_dry = c
+    local temp = 1
     
-    return c
+    if GameDifficultyControl("enable_temp_to_dry") or GetModConfigData("enable_temp_to_dry") then
+        -- 0.5,0.75,1
+        local muit = GameDifficultyControl("temp_to_dry") or GetModConfigData("temp_to_dry")
+        local tempcheck = self.inst.components.temperature:GetCurrent()
+        local iscave = TheWorld:HasTag("cave")
+        local issummer = TheWorld.state.issummer
+        local iswinter = TheWorld.state.iswinter
+
+        temp = not iscave and (issummer and (( tempcheck > TUNING.OVERHEAT_TEMP - 15 and (muit*4)) or ( tempcheck > TUNING.OVERHEAT_TEMP - 30 and (muit*2)))) or
+               iswinter and (( tempcheck < 5 and (muit/4)) or ( tempcheck < 15 and (muit/2))) or 
+               ((tempcheck > TUNING.OVERHEAT_TEMP - 15 and (muit*2)) or (tempcheck < 5 and (muit/2))) or muit
+    end
+    self.temp_per_dry = temp
+    
+    return temp
 end
 
 local Thirst = Class(function(self, inst)

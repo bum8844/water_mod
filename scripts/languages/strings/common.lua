@@ -11,6 +11,7 @@ return
 		FERMENT = "발효",
 		DISITLL = "증류",
 		BURYING = "매립",
+		PURIFY = "정화",
 	},
 
 	NAMES =
@@ -64,11 +65,14 @@ return
 		CAMPDESALINATOR = "캠프제염기",
 
 		-- kettle
-		KETTLE	= "주전자",
+		KETTLE	= "물주전자",
+		TEA_KETTLE	= "찻주전자",
 
 		-- portablekettle
-		PORTABLEKETTLE_ITEM	= "휴대용 주전자",
-		PORTABLEKETTLE = "휴대용 주전자",
+		PORTABLEKETTLE_ITEM	= "휴대용 물주전자",
+		PORTABLEKETTLE = "휴대용 물주전자",
+		PORTABLETEA_KETTLE_ITEM	= "휴대용 찻주전자",
+		PORTABLETEA_KETTLE = "휴대용 찻주전자",
 
 		-- distillers
 		DISTILLERS = "증류기",

@@ -8,6 +8,7 @@ return
 			TIME = "완료까지: %s\n",
 			AMOUNT = "물: %s/%s\n",
 			SALT = "소금: %s\n",
+			MOONGLASS = "달유리: %s\n",
 		},
 
 		THIRSTVALUE =

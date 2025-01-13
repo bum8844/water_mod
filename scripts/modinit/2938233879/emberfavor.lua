@@ -76,7 +76,7 @@ function Brewing:Harvest(harvester, ...)
 	return OldHarvest(self, harvester, ...)
 end
 
-ENV.AddPrefabPostInit("portablekettle", function(inst)
+ENV.AddPrefabPostInit("portabletea_kettle", function(inst)
 	if not TheWorld.ismastersim then
 		return
 	end

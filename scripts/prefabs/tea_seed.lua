@@ -207,7 +207,7 @@ end
 
 local function start_sprout_growing(inst)
     if inst.components.timer ~= nil and not inst.components.timer:TimerExists("grow") then
-        inst.components.timer:StartTimer("grow", TUNING.ROCK_FRUIT_SPROUT_GROWTIME)
+        inst.components.timer:StartTimer("grow", TUNING.TEA_TREE_SPROUT_GROWTIME)
     end
 end
 

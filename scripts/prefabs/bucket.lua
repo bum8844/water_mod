@@ -23,7 +23,7 @@ end
 
 local function GiveWater(inst, watertype, doer)
     local container = doer ~= nil and (doer.components.inventory or doer.components.container) or nil
-    local water = SpawnPrefab(watertype)
+    local water = SpawnPrefab("water_"..watertype)
     local old_val = inst.components.finiteuses:GetUses() + 1
     local current_fin = old_val
     local peruse = TUNING.BUCKET_LEVEL_PER_USE
@@ -81,6 +81,8 @@ local function OnTakeWater(inst, source, doer)
         if source.components.waterlevel ~= nil then
             watervalue = math.min(TUNING.BUCKET_LEVEL_PER_USE, inst.components.finiteuses:GetUses())
             source.components.water:Taken(inst, watervalue)
+        elseif source.components.water ~= nil then
+            source.components.water:Taken(inst)
         elseif source.components.steampressure ~= nil then
             source.components.steampressure:LostPressure()
         end
@@ -146,10 +148,20 @@ local function SetState(inst)
         return true
     end
 
+    if not inst.components.wateringtool:IsFrozen() and inst.components.wateringtool:IsDirty() then
+        inst:AddTag("can_purify")
+    else
+        inst:RemoveTag("can_purify")
+    end
+
     inst.AnimState:PlayAnimation(wateranim)
     if sound ~= "" then
         inst.SoundEmitter:PlaySound(sound)
     end
+end
+
+local function Done_Purify(inst, data)
+    inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/small")
 end
 
 local function getstatus(inst)
@@ -262,6 +274,7 @@ local function MakeBucketItem(bucketname, multiplier, sound, nowood)
         inst:ListenForEvent("settooltemperature",SetTemperature)
         inst:ListenForEvent("ondropped",SetCheckWeather)
         inst:ListenForEvent("temperaturedelta", SetToFrozed)
+        inst:ListenForEvent("done_purify",Done_Purify)
 
         return inst
     end

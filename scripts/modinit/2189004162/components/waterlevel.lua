@@ -22,12 +22,23 @@ local function Descriptors()
 						watertype == WATERTYPE.DIRTY and STRINGS.INSIGHT.STATE.DIRTY or
 						watertype == WATERTYPE.DIRTY_ICE and STRINGS.INSIGHT.STATE.DIRTY_ICE or
 						watertype == WATERTYPE.SALTY and STRINGS.INSIGHT.STATE.SALTY or
+						watertype == WATERTYPE.UNCLEAN_MINERAL and STRINGS.INSIGHT.STATE.UNCLEAN_MINERAL or
 						STRINGS.INSIGHT.STATE.MINERAL
 					) or STRINGS.INSIGHT.STATE.EMPTY
 
+				local color_code = watertype and (
+						watertype == WATERTYPE.CLEAN and STRINGS.INSIGHT.COLOR_CODE.CLEAN or
+						watertype == WATERTYPE.CLEAN_ICE and STRINGS.INSIGHT.COLOR_CODE.CLEAN_ICE or
+						watertype == WATERTYPE.DIRTY and STRINGS.INSIGHT.COLOR_CODE.DIRTY or
+						watertype == WATERTYPE.DIRTY_ICE and STRINGS.INSIGHT.COLOR_CODE.DIRTY_ICE or
+						watertype == WATERTYPE.SALTY and STRINGS.INSIGHT.COLOR_CODE.SALTY or
+						watertype == WATERTYPE.UNCLEAN_MINERAL and STRINGS.INSIGHT.COLOR_CODE.UNCLEAN_MINERAL or
+						STRINGS.INSIGHT.COLOR_CODE.MINERAL
+					) or STRINGS.INSIGHT.COLOR_CODE.EMPTY
+
 				local rawtext = STRINGS.INSIGHT.WATERLEVEL.RAWTEXT
 
-				water_amont_string = string.format(rawtext,state,currentwater,maxwater)
+				water_amont_string = string.format(rawtext,state,color_code,currentwater,maxwater)
 
 				description = water_amont_string
 

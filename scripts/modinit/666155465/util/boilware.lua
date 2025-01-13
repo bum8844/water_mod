@@ -6,13 +6,14 @@ local function GetShowItemInfo(inst)
 	local b = inst.components.brewing
 	local d = inst.components.distiller
 	local wl = inst.components.waterlevel
-	local sm = inst.components.saltmaker
+	local sm = inst.components.desalinatiorable
+	local smtp = sm.sludgetype
 
 	local wstxt, smtxt, txt = "", "", ""
 	local product = STRINGS.SHOWME.BOILWARE.PRODUCT
 	local time = STRINGS.SHOWME.BOILWARE.TIME
 	local amount = STRINGS.SHOWME.BOILWARE.AMOUNT
-	local salt = STRINGS.SHOWME.BOILWARE.SALT
+	local sludgetype = smtp == WATERTYPE.UNCLEAN_MINERAL and STRINGS.SHOWME.BOILWARE.MOONGLASS or STRINGS.SHOWME.BOILWARE.SALT
 
 	if b and b.product and b.IsCooking and b:IsCooking() then
 
@@ -28,7 +29,7 @@ local function GetShowItemInfo(inst)
 	end
 
 	if sm then
-		smtxt = string.format(salt,sm.pickablevalue)
+		smtxt = string.format(sludgetype,sm.pickablevalue)
 	end
 
 	if wl and wl:GetWater() > 0 then

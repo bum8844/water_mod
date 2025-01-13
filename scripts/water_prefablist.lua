@@ -10,6 +10,7 @@ return {
 	--"thermos_bottle",
 	"bottle_pouch",
 	"wine_cellar_part",
+	"purification_pills",
 
 	--structures
 	"barrel",
@@ -17,8 +18,8 @@ return {
 	"campkettle",
 	"campdesalinator",
 	"desalinator",
-	"kettle",
-	"portablekettle",
+	"tea_kettle",
+	"portabletea_kettle",
 	"well",
 	"well_sprinkler",
 	"well_drilling",

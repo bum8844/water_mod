@@ -63,6 +63,36 @@ RegisterItemAtlasFile = function(fname)
     end
 end
 
+GameDifficultyControl = function(GameOption)
+    local Difficulty = TUNING.DIFFICULTY
+    if not Difficulty then
+        return false
+    end
+
+    local dtalbe = {
+        ["R"] = {
+            enable_waterborne = 0,
+            enable_temp_to_dry = 1,
+            thirst_max = 200,
+            thirst_decrease_speed = .4,
+            temp_to_dry = .75,
+            max_capacity = 20,
+            left_to_dirty = 3,
+        },
+        ["S"] = {
+            enable_waterborne = 1,
+            enable_temp_to_dry = 1,
+            thirst_max = 150,
+            thirst_decrease_speed = .6,
+            temp_to_dry = 1,
+            max_capacity = 5, 
+            left_to_dirty = 0,
+        },
+    }
+
+    return dtalbe[Difficulty][GameOption]
+end
+
 --when an item 'inst' is used, the 'refund' will be given.
 --[[local function result(inst, refund, container, x, y, z, dontremove)
     refund.Transform:SetPosition(x, y, z)

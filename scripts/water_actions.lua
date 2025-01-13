@@ -141,10 +141,6 @@ local TAKEWATER = AddAction("TAKEWATER", STRINGS.ACTIONS.FILL, function(act)
         return false
     end
 
-    if (filled and filled:HasTag("onlyoneget")) or (source and source:HasTag("onlyoneget")) then
-        return false
-    end
-
     local groundpt = act:GetActionPoint()
     if groundpt ~= nil then
         local success = IsOcean(groundpt)
@@ -364,3 +360,13 @@ DRAMATIC_RAISE = AddAction("DRAMATIC_RAISE",STRINGS.ACTIONS.OCEAN_TRAWLER_RAISE,
 end)
 
 DRAMATIC_RAISE.rmb = true
+
+PURIFY = AddAction("PURIFY",STRINGS.ACTIONS.PURIFY,function(act)
+    if act.invobject.components.purify and act.target and act.invobject.components.purify:CanPurify(act.target) then
+        act.invobject.components.purify:DoPurify(act.target,act.doer)
+    end
+    return true
+end)
+
+PURIFY.priority = 2
+PURIFY.rmb = true
