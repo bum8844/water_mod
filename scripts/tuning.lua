@@ -95,6 +95,7 @@ water_tuning =
 	WOODIE_BUCKET_MULT = 0.5,
 
 	CAMPKETTLE_MAX_LEVEL = 3,
+	TEA_POT_MAX_LEVEL = 1,
 	KETTLE_MAX_LEVEL = bucket_max_level*.1,
 	BARREL_MAX_LEVEL = bucket_max_level*36,
 	BREWERY_MAX_LEVEL = bucket_max_level*6,

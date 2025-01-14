@@ -48,7 +48,7 @@ local function doboil(inst, self)
 
 	if waterlevel ~= nil then
 		local watertype = waterlevel.watertype
-		self.inst.components.waterlevel.watertype = watertype == WATERTYPE.UNCLEAN_MINERAL and WATERTYPE.MINERAL or WATERTYPE.CLEAN
+		self.inst.components.waterlevel.watertype = (watertype == WATERTYPE.UNCLEAN_MINERAL or watertype == WATERTYPE.MINERAL) and WATERTYPE.MINERAL or WATERTYPE.CLEAN
 	end
 
 	if self.inst.components.brewing == nil then

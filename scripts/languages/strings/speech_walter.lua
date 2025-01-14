@@ -372,7 +372,7 @@ return {
 			STOP = "자, 워비. 물 끓일 불쏘시개가 필요해. 찾으러 가자!",
 		},
 
-		KETTLE =
+		TEA_POT =
 		{
 			EMPTY = "사람은 물 없이는 3일을 버틸 수 없어!",
 			BURNT = "어... 너무 푹 우렸네!",
@@ -386,12 +386,36 @@ return {
 			MELT_SHORT = "얼음이 거의 다 녹았어.",
 		},
 
-		PORTABLEKETTLE_ITEM =
+		PORTABLE_TEA_POT_ITEM =
 		{
 			GENERIC = "이제 야생에서도 차를 끓일 수 있어!",
 			EMPTY = "일단 물이 필요해.",
 			BOILING_LONG = "오래 걸릴 거야. 워비, 잠깐 쉬면서 기다리자!",
 			BOILING_SHORT = "음료가 곧 준비될 거야!",
+			DONE = "야생에서 마시는 차는 특별한 느낌이야!",
+			PURIFY_LONG = "물은 충분히 가열해야 탈이 안 나.",
+			PURIFY_SHORT = "조금 더 끓여야 해!",
+			HASWATER = "여기에 뭔가를 더 넣으면 좋을 것 같아, 워비!",
+			MELT_LONG = "아직 덜 녹았어.",
+			MELT_SHORT = "얼음이 거의 다 녹았어.",
+		},
+
+		KETTLE =
+		{
+			EMPTY = "사람은 물 없이는 3일을 버틸 수 없어!",
+			BURNT = "어... 너무 푹 우렸네!",
+			DONE = "다들 음료 한 잔 하세요!",
+			PURIFY_LONG = "물은 충분히 가열해야 탈이 안 나.",
+			PURIFY_SHORT = "조금 더 끓여야 해!",
+			HASWATER = "여기에 뭔가를 더 넣으면 좋을 것 같아, 워비!",
+			MELT_LONG = "아직 덜 녹았어.",
+			MELT_SHORT = "얼음이 거의 다 녹았어.",
+		},
+
+		PORTABLEKETTLE_ITEM =
+		{
+			GENERIC = "이제 야생에서도 차를 끓일 수 있어!",
+			EMPTY = "일단 물이 필요해.",
 			DONE = "야생에서 마시는 차는 특별한 느낌이야!",
 			PURIFY_LONG = "물은 충분히 가열해야 탈이 안 나.",
 			PURIFY_SHORT = "조금 더 끓여야 해!",

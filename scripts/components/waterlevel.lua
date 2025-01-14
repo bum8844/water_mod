@@ -221,10 +221,10 @@ function Waterlevel:DoDiistiller(item, doer)
     distiller.done = true
 
     local watervalue = self:GetWater()
-    local isClane = self.watertype ~= WATERTYPE.CLEAN or self.watertype ~= WATERTYPE.MINERAL
+    local isClane = self.watertype == WATERTYPE.CLEAN or self.watertype == WATERTYPE.MINERAL
     local isDirtyIce = self.watertype == WATERTYPE.DIRTY_ICE
 
-    if isClane or isDirtyIce then
+    if not isClane or isDirtyIce then
         watervalue = isDirtyIce and watervalue * 2 or watervalue
         distiller.done = false
     elseif item.components.perishable then

@@ -372,7 +372,7 @@ return {
 			STOP = "여전히 물이 짜.",
 		},
 
-		KETTLE =
+		TEA_POT =
 		{
 			EMPTY = "보기만 해도 목이 말라.",
 			BURNT = "끓인 게 아니라 탔네.",
@@ -386,12 +386,36 @@ return {
 			MELT_SHORT = "거의 다 녹였어!",
 		},
 
-		PORTABLEKETTLE_ITEM =
+		PORTABLE_TEA_POT_ITEM =
 		{
 			GENERIC = "이제 어디서든 차를 마실 수 있어!",
 			EMPTY = "안에는 빈 것 같아.", 
 			BOILING_LONG = "차가 좀 오래 걸릴 것 같아.",
 			BOILING_SHORT = "금방 될 것 같아!",
+			DONE = "차가 다 됐어!",
+			PURIFY_LONG = "좀더 끓여야 해.",
+			PURIFY_SHORT = "거의 다 끓였어!",
+			HASWATER = "물은 됐고, 뭔가 더 넣어볼까?",
+			MELT_LONG = "좀 더 녹여야 해.",
+			MELT_SHORT = "거의 다 녹였어!",
+		},
+
+		KETTLE =
+		{
+			EMPTY = "보기만 해도 목이 말라.",
+			BURNT = "끓인 게 아니라 탔네.",
+			DONE = "으음, 티타임이다!",
+			PURIFY_LONG = "좀 더 끓여야 해.",
+			PURIFY_SHORT = "거의 다 끓였어!",
+			HASWATER = "물은 됐고, 뭘 넣어볼까?",
+			MELT_LONG = "좀 더 녹여야 해.",
+			MELT_SHORT = "거의 다 녹였어!",
+		},
+
+		PORTABLEKETTLE_ITEM =
+		{
+			GENERIC = "이제 어디서든 차를 마실 수 있어!",
+			EMPTY = "안에는 빈 것 같아.", 
 			DONE = "차가 다 됐어!",
 			PURIFY_LONG = "좀더 끓여야 해.",
 			PURIFY_SHORT = "거의 다 끓였어!",

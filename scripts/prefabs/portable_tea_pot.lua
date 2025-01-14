@@ -4,16 +4,44 @@ local cooking = require("cooking")
 
 local assets =
 {
-    Asset("ANIM", "anim/tea_kettle.zip"),
-	Asset("ANIM", "anim/teakettle_meter_dirty.zip"),
-	Asset("ANIM", "anim/teakettle_meter_water.zip"),
+    --Asset("ANIM", "anim/portable_tea_pot.zip"),
+    Asset("ANIM", "anim/portable_tea_pot.zip"),
+    Asset("ANIM", "anim/kettle_drink.zip"),
+	--Asset("ANIM", "anim/portable_tea_pot_meter_dirty.zip"),
+	--Asset("ANIM", "anim/portable_tea_pot_meter_water.zip"),
     Asset("ANIM", "anim/ui_cookpot_1x4.zip"),
+}
+
+local assets_item =
+{
+    --Asset("ANIM", "anim/portable_tea_pot.zip"),
+    Asset("ANIM", "anim/portablekettle.zip"),
 }
 
 local prefabs =
 {
-	"collapse_small",
+    "collapse_small",
+    "ash",
+	--"portable_tea_pot_item",
+    "portablekettle_item",
 }
+
+local prefabs_item =
+{
+    --"portable_tea_pot",
+    "portablekettle",
+}
+
+local function ChangeToItem(inst)
+    if inst.components.container ~= nil then
+        inst.components.container:DropEverything()
+    end
+
+    local item = SpawnPrefab("portable_tea_pot_item")
+    item.Transform:SetPosition(inst.Transform:GetWorldPosition())
+    item.AnimState:PlayAnimation("collapse")
+    item.SoundEmitter:PlaySound("dontstarve/common/together/portable/cookpot/collapse")
+end
 
 local function GetWet(inst)
     if not inst:HasTag("burnt") then
@@ -30,22 +58,25 @@ local function onpercentusedchange(inst, data)
     inst.components.wateryprotection.addwetness = data.percent * TUNING.WATER_BARREL_WETNESS
 end
 
-local function onhammered(inst, worker)
+local function onhammered(inst)--, worker)
     if inst.components.burnable ~= nil and inst.components.burnable:IsBurning() then
         inst.components.burnable:Extinguish()
     end
-    if inst.components.container ~= nil then
-        inst.components.container:DropEverything()
+
+    if inst:HasTag("burnt") then
+        inst.components.lootdropper:SpawnLootPrefab("ash")
+        local fx = SpawnPrefab("collapse_small")
+        fx.Transform:SetPosition(inst.Transform:GetWorldPosition())
+        fx:SetMaterial("metal")
+    else
+        GetWet(inst)
+        ChangeToItem(inst)
     end
-    inst.components.lootdropper:DropLoot()
-    local fx = SpawnPrefab("collapse_small")
-    fx.Transform:SetPosition(inst.Transform:GetWorldPosition())
-    fx:SetMaterial("metal")
-    GetWet(inst)
+
     inst:Remove()
 end
 
-local function onhit(inst, worker)
+local function onhit(inst)--, worker)
     if not inst:HasTag("burnt") then
         if inst.components.brewing:IsCooking() or inst.components.distiller:isBoiling() then
             inst.AnimState:PlayAnimation("hit_cooking")
@@ -57,7 +88,6 @@ local function onhit(inst, worker)
         else
             if inst.components.container ~= nil and inst.components.container:IsOpen() then
                 inst.components.container:Close()
-                --onclose will trigger sfx already
             else
                 inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_close")
             end
@@ -67,16 +97,10 @@ local function onhit(inst, worker)
     end
 end
 
-local function onbuilt(inst)
-    inst.AnimState:PlayAnimation("place")
-	inst.AnimState:PushAnimation("idle_empty", false)
-	inst.SoundEmitter:PlaySound("dontstarve/common/cook_pot_craft")
-end
-
 local function startcookfn(inst)
     if not inst:HasTag("burnt") then
-        inst.components.water.available = false
         inst.components.waterlevel.accepting = false
+        inst.components.water.available = false
         inst.AnimState:PlayAnimation("cooking_loop", true)
         inst.SoundEmitter:KillSound("snd")
         inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_rattle", "snd")
@@ -119,7 +143,7 @@ end
 local function spoilfn(inst)
     if not inst:HasTag("burnt") then
         inst.components.brewing.product = inst.components.brewing.spoiledproduct
-        --inst.AnimState:OverrideSymbol("swap", "kettle_meter_dirty", tostring(inst._waterlevel))
+        --inst.AnimState:OverrideSymbol("swap", "portable_tea_pot_meter_dirty", tostring(inst._waterlevel))
         inst:DoTaskInTime(0,function(inst)
             SetProductSymbol(inst, inst.components.brewing.product)
         end)
@@ -174,16 +198,6 @@ local function harvestfn(inst)
         end)
     end
 end
-
-local function onloadpostpass(inst, newents, data)
-    if data and data.additems and inst.components.container then
-        for i, itemname in ipairs(data.additems)do
-            local ent = SpawnPrefab(itemname)
-            inst.components.container:GiveItem( ent )
-        end
-    end
-end
-
 local function isgoodwater(inst)
     return inst.components.waterlevel.watertype ~= WATERTYPE.CLEAN and inst.components.waterlevel.watertype ~= WATERTYPE.CLEAN_ICE
 end
@@ -195,7 +209,33 @@ local function OnSectionChange(new, old, inst)
             inst._waterlevel = new
         end
     end
-    --inst.AnimState:OverrideSymbol("swap", "kettle_meter_"..watertype, tostring(inst._waterlevel))
+    --inst.AnimState:OverrideSymbol("swap", "portable_tea_pot_meter_"..watertype, tostring(inst._waterlevel))
+end
+
+local function OnDismantle(inst, doer)
+    if inst.components.waterlevel:GetPercent() <= 0 then
+        ChangeToItem(inst)
+        inst:Remove()
+    else
+        doer.components.talker:Say(GetString(doer,"ACTIONFAIL",{"DISMANTLE","NOTEMPTY"}))
+    end
+end
+
+local function OnBurnt(inst)
+    DefaultBurntStructureFn(inst)
+    RemovePhysicsColliders(inst)
+    SpawnPrefab("ash").Transform:SetPosition(inst.Transform:GetWorldPosition())
+    if inst.components.workable ~= nil then
+        inst:RemoveComponent("workable")
+    end
+    if inst.components.portablestructure ~= nil then
+        inst:RemoveComponent("portablestructure")
+    end
+    inst.persists = false
+    inst:AddTag("FX")
+    inst:AddTag("NOCLICK")
+    inst:ListenForEvent("animover", ErodeAway)
+    inst.AnimState:PlayAnimation("burnt_collapse")
 end
 
 local function onopen(inst)
@@ -219,7 +259,7 @@ end
 
 local function ondoneboilingfn(inst)
     if not inst:HasTag("burnt") then
-        --inst.AnimState:OverrideSymbol("swap", "kettle_meter_water", tostring(inst._waterlevel))
+        --inst.AnimState:OverrideSymbol("swap", "portable_tea_pot_meter_water", tostring(inst._waterlevel))
         inst.AnimState:PlayAnimation("cooking_pst")
         inst.AnimState:PlayAnimation("idle_empty")
         inst.SoundEmitter:KillSound("snd") 
@@ -245,7 +285,7 @@ local function OnTakeWater(inst)
                 inst.AnimState:PushAnimation("idle_empty", false)
                 inst:DoTaskInTime(1,function(inst)
                 inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_close")
-                   if not inst.components.distiller:isDone() then
+                    if not inst.components.distiller:isDone() then
                         onstartboilingfn(inst)
                     end
                 end)
@@ -284,6 +324,7 @@ local function OnTaken(inst, source, delta)
     end
 end
 
+
 local function getstatus(inst)
     return (inst:HasTag("burnt") and "BURNT")
         or (inst.components.brewing:IsDone() and "DONE")
@@ -303,51 +344,58 @@ local function onsave(inst, data)
 end
 
 local function onload(inst, data)
-    if data ~= nil then 
-        if data.burnt then
-            inst.components.burnable.onburnt(inst)
-            inst.Light:Enable(false)
-        end
+    if data ~= nil and data.burnt then
+        inst.components.burnable.onburnt(inst)
     end
     inst.components.waterlevel:DoDiistiller(inst)
 end
 
 local function fn()
-	local inst = CreateEntity()
-	
-	inst.entity:AddTransform()
-	inst.entity:AddAnimState()
-	inst.entity:AddMiniMapEntity()
-	inst.entity:AddSoundEmitter()
+    local inst = CreateEntity()
+
+    inst.entity:AddTransform()
+    inst.entity:AddAnimState()
+    inst.entity:AddSoundEmitter()
+    inst.entity:AddMiniMapEntity()
     inst.entity:AddLight()
+    inst.entity:AddDynamicShadow()
     inst.entity:AddNetwork()
-	
+
+    inst:SetPhysicsRadiusOverride(.5)
+    MakeObstaclePhysics(inst, inst.physicsradiusoverride)
+
 	local minimap = inst.entity:AddMiniMapEntity()
-	minimap:SetIcon("tea_kettle.tex")
-	
-    MakeObstaclePhysics(inst, .1)
+	minimap:SetIcon("portable_tea_pot.tex")
 
     inst.Light:Enable(false)
     inst.Light:SetRadius(.6)
     inst.Light:SetFalloff(1)
     inst.Light:SetIntensity(.5)
     inst.Light:SetColour(235/255,62/255,12/255)
-	
-    inst.AnimState:SetBuild("tea_kettle")
-    inst.AnimState:SetBank("tea_kettle")
-    inst.AnimState:PlayAnimation("idle_empty")
-	--inst.AnimState:OverrideSymbol("swap", "tea_kettle_meter_water", "0")
-    
-	inst:AddTag("structure")
-    inst:AddTag("tea_kettle")
+
+    inst.DynamicShadow:SetSize(2, 1)
+
+    inst:AddTag("structure")
+	inst:AddTag("tea_kettle")
+    inst:AddTag("mastercookware")
     inst:AddTag("brewing")
     inst:AddTag("drinkproduction")
-	
-	inst.entity:SetPristine()
-	
+
+    inst.AnimState:SetBank("portable_tea_pot")
+    inst.AnimState:SetBuild("portable_tea_pot")
+    inst.AnimState:PlayAnimation("idle_empty")
+	--inst.AnimState:OverrideSymbol("swap", "portable_tea_pot_meter_water", "0")
+
+    inst:SetPrefabNameOverride("portable_tea_pot_item")
+
+    inst.entity:SetPristine()
+
     if not TheWorld.ismastersim then
         return inst
     end
+
+    inst:AddComponent("portablestructure")
+    inst.components.portablestructure:SetOnDismantleFn(OnDismantle)
 
     inst:AddComponent("waterlevel")
     inst.components.waterlevel:SetCanAccepts({WATERGROUP.BOILABLE})
@@ -370,6 +418,12 @@ local function fn()
     inst.components.distiller.oncontinueboiling = onstartboilingfn
     inst.components.distiller.ondoneboiling = ondoneboilingfn
 
+    --[[inst:AddComponent("pickable")
+    inst.components.pickable.canbepicked = false
+    inst.components.pickable.product = (inst.components.brewing.product ~= nil and inst.components.brewing.product) or (inst.components.waterlevel:GetWater() ~= 0 and "water_clean") or nil
+    inst.components.pickable.numtoharvest = inst.components.waterlevel:GetWater()
+    inst.components.pickable:SetOnPickedFn(harvestfn)]]
+
     inst:AddComponent("water")
     inst.components.water.available = false
     inst.components.water:SetOnTakenFn(OnTaken)
@@ -381,36 +435,105 @@ local function fn()
     inst.components.wateryprotection.addwetness = 0 -- 물의 양에 따라 변형
     inst.components.wateryprotection.protection_dist = TUNING.WATER_BARREL_DIST
 
-	inst:AddComponent("container")
-	inst.components.container:WidgetSetup("kettle")
-	inst.components.container.onopenfn = onopen
-	inst.components.container.onclosefn = onclose
-	inst.components.container.skipclosesnd = true
-	inst.components.container.skipopensnd = true
-	
-	inst:AddComponent("lootdropper")
+    inst:AddComponent("container")
+    inst.components.container:WidgetSetup("portable_tea_pot")
+    inst.components.container.onopenfn = onopen
+    inst.components.container.onclosefn = onclose
+    inst.components.container.skipclosesnd = true
+    inst.components.container.skipopensnd = true
+
     inst:AddComponent("inspectable")
     inst.components.inspectable.getstatus = getstatus
-	
-	inst:AddComponent("workable")
-    inst.components.workable:SetWorkAction(ACTIONS.HAMMER)
-    inst.components.workable:SetWorkLeft(4)
-	inst.components.workable:SetOnFinishCallback(onhammered)
-	inst.components.workable:SetOnWorkCallback(onhit)
 
-    inst:ListenForEvent("onbuilt", onbuilt)
-	
-	MakeHauntableWork(inst)
-	
-	MakeMediumBurnable(inst, nil, nil, true)
+    inst:AddComponent("lootdropper")
+    inst:AddComponent("workable")
+    inst.components.workable:SetWorkAction(ACTIONS.HAMMER)
+    inst.components.workable:SetWorkLeft(2)
+    inst.components.workable:SetOnFinishCallback(onhammered)
+    inst.components.workable:SetOnWorkCallback(onhit)
+
+    inst:AddComponent("hauntable")
+    inst.components.hauntable:SetHauntValue(TUNING.HAUNT_TINY)
+
+    MakeMediumBurnable(inst, nil, nil, true)
     MakeSmallPropagator(inst)
+    inst.components.burnable:SetFXLevel(2)
+    inst.components.burnable:SetOnBurntFn(OnBurnt)
 
     inst.OnSave = onsave
     inst.OnLoad = onload
-    inst.OnLoadPostPass = onloadpostpass
 
     return inst
 end
 
-return Prefab("tea_kettle", fn, assets),
-MakePlacer("tea_kettle_placer", "tea_kettle", "tea_kettle", "idle_empty")
+
+---------------------------------------------------------------
+---------------- Inventory Portable Kettle -------------------
+---------------------------------------------------------------
+
+local function ondeploy(inst, pt, deployer)
+    local pot = SpawnPrefab("portable_tea_pot")
+    if pot ~= nil then
+        pot.Physics:SetCollides(false)
+        pot.Physics:Teleport(pt.x, 0, pt.z)
+        pot.Physics:SetCollides(true)
+        pot.AnimState:PlayAnimation("place")
+        pot.AnimState:PushAnimation("idle_empty", false)
+        pot.SoundEmitter:PlaySound("dontstarve/common/together/portable/cookpot/place")
+        inst:Remove()
+        PreventCharacterCollisionsWithPlacedObjects(pot)
+    end
+end
+
+local function itemfn()
+    local inst = CreateEntity()
+
+    inst.entity:AddTransform()
+    inst.entity:AddAnimState()
+    inst.entity:AddSoundEmitter()
+    inst.entity:AddNetwork()
+
+    MakeInventoryPhysics(inst)
+
+    inst.minisign_atlas = "minisign_dehy_items_swap"
+    inst.minisign_prefab_name = true
+
+    inst.AnimState:SetBank("portable_tea_pot")
+    inst.AnimState:SetBuild("portable_tea_pot")
+    inst.AnimState:PlayAnimation("idle_ground")
+
+    inst:AddTag("portableitem")
+
+    MakeInventoryFloatable(inst, "med", 0.1, 0.8)
+
+    inst.entity:SetPristine()
+
+    if not TheWorld.ismastersim then
+        return inst
+    end
+
+    inst:AddComponent("inspectable")
+
+    inst:AddComponent("inventoryitem")
+	inst.replica.inventoryitem:SetImage("portable_tea_pot_item")
+	inst.components.inventoryitem.atlasname= "images/inventoryitems/tea_inventoryitem.xml"
+    inst.components.inventoryitem.imagename= "portable_tea_pot_item"
+
+    inst:AddComponent("deployable")
+    inst.components.deployable.restrictedtag = "masterchef"
+    inst.components.deployable.ondeploy = ondeploy
+    --inst.components.deployable:SetDeployMode(DEPLOYMODE.ANYWHERE)
+    --inst.components.deployable:SetDeploySpacing(DEPLOYSPACING.NONE)
+
+    inst:AddComponent("hauntable")
+    inst.components.hauntable:SetHauntValue(TUNING.HAUNT_TINY)
+
+    MakeMediumBurnable(inst)
+    MakeSmallPropagator(inst)
+
+    return inst
+end
+
+return Prefab("portable_tea_pot", fn, assets, prefabs),
+    MakePlacer("portable_tea_pot_item_placer", "portable_tea_pot", "portable_tea_pot", "idle_empty"),
+    Prefab("portable_tea_pot_item", itemfn, assets_item, prefabs_item)

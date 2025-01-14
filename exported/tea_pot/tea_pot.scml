@@ -22,8 +22,8 @@
         <file id="0" name="coals/coals-0.png" width="165" height="88" pivot_x="0.5" pivot_y="0.5"/>
         <file id="1" name="coals/coals-1.png" width="165" height="88" pivot_x="0.5" pivot_y="0.5"/>
     </folder>
-    <folder id="4" name="swap">
-        <file id="0" name="swap/kettle_swap.png" width="73" height="81" pivot_x="0.5" pivot_y="0.5"/>
+    <folder id="4" name="tea_pot_swap">
+        <file id="0" name="tea_pot_swap/tea_pot_swap.png" width="73" height="81" pivot_x="0.5" pivot_y="0.5"/>
     </folder>
     <folder id="5" name="swap_mid">
         <file id="0" name="swap_mid/swap_mid.png" width="120" height="120" pivot_x="0.5" pivot_y="0.25"/>
@@ -37,7 +37,7 @@
     <folder id="8" name="shdw">
         <file id="0" name="shdw/shdw-0.png" width="281" height="94" pivot_x="0.5" pivot_y="0.5"/>
     </folder>
-    <entity id="0" name="kettle">
+    <entity id="0" name="tea_pot">
         <animation id="0" name="take_water" length="1325" interval="25">
             <mainline>
                 <key id="0">
@@ -217,10 +217,10 @@
             </timeline>
             <timeline id="2" name="coals">
                 <key id="0" spin="0">
-                    <object folder="3" file="0" x="-9" y="-0" angle="0" scale_x="0.7" scale_y="0.7"/>
+                    <object folder="3" file="0" x="-9" angle="0" scale_x="0.7" scale_y="0.7"/>
                 </key>
                 <key id="1" time="1325" spin="0">
-                    <object folder="3" file="0" x="-9" y="-0" angle="0" scale_x="0.7" scale_y="0.7"/>
+                    <object folder="3" file="0" x="-9" angle="0" scale_x="0.7" scale_y="0.7"/>
                 </key>
             </timeline>
             <timeline id="3" name="fire_pit">
@@ -260,7 +260,7 @@
                     <object folder="1" file="0" x="0.697326" y="97.843553" angle="0"/>
                 </key>
             </timeline>
-            <timeline id="5" name="kettle_swap">
+            <timeline id="5" name="tea_pot_swap">
                 <key id="0" spin="0">
                     <object folder="4" file="0" x="-35.762824" y="155.215113" angle="0"/>
                 </key>
@@ -458,10 +458,10 @@
             </timeline>
             <timeline id="2" name="coals">
                 <key id="0" spin="0">
-                    <object folder="3" file="0" x="-9" y="-0" angle="0" scale_x="0.7" scale_y="0.7"/>
+                    <object folder="3" file="0" x="-9" angle="0" scale_x="0.7" scale_y="0.7"/>
                 </key>
                 <key id="1" time="1325" spin="0">
-                    <object folder="3" file="0" x="-9" y="-0" angle="0" scale_x="0.7" scale_y="0.7"/>
+                    <object folder="3" file="0" x="-9" angle="0" scale_x="0.7" scale_y="0.7"/>
                 </key>
             </timeline>
             <timeline id="3" name="fire_pit">
@@ -480,7 +480,7 @@
                     <object folder="1" file="0" x="0.697326" y="97.843553" angle="0"/>
                 </key>
             </timeline>
-            <timeline id="5" name="kettle_swap">
+            <timeline id="5" name="tea_pot_swap">
                 <key id="0" spin="0">
                     <object folder="4" file="0" x="-35.762824" y="155.215113" angle="0"/>
                 </key>
@@ -526,7 +526,7 @@
             </mainline>
             <timeline id="0" name="coals">
                 <key id="0" spin="0">
-                    <object folder="3" file="0" x="-9" y="-0" angle="0" scale_x="0.7" scale_y="0.7"/>
+                    <object folder="3" file="0" x="-9" angle="0" scale_x="0.7" scale_y="0.7"/>
                 </key>
             </timeline>
             <timeline id="1" name="pot">
@@ -534,7 +534,7 @@
                     <object folder="1" file="0" x="0.697326" y="97.843553" angle="0"/>
                 </key>
             </timeline>
-            <timeline id="2" name="kettle_swap">
+            <timeline id="2" name="tea_pot_swap">
                 <key id="0" spin="0">
                     <object folder="4" file="0" x="-35.762824" y="155.215113" angle="0"/>
                 </key>
@@ -656,13 +656,13 @@
             </timeline>
             <timeline id="2" name="coals">
                 <key id="0" spin="0">
-                    <object folder="3" file="1" x="-9" y="-0" angle="0" scale_x="0.7" scale_y="0.7"/>
+                    <object folder="3" file="1" x="-9" angle="0" scale_x="0.7" scale_y="0.7"/>
                 </key>
                 <key id="1" time="600" spin="0">
-                    <object folder="3" file="1" x="-9" y="-0" angle="0" scale_x="0.7" scale_y="0.7"/>
+                    <object folder="3" file="1" x="-9" angle="0" scale_x="0.7" scale_y="0.7"/>
                 </key>
             </timeline>
-            <timeline id="3" name="kettle_swap">
+            <timeline id="3" name="tea_pot_swap">
                 <key id="0">
                     <object folder="4" file="0" x="-35.762824" y="155.215113" angle="0"/>
                 </key>
@@ -725,7 +725,7 @@
             </mainline>
             <timeline id="0" name="coals">
                 <key id="0" spin="0">
-                    <object folder="3" file="0" x="-9" y="-0" angle="0" scale_x="0.7" scale_y="0.7"/>
+                    <object folder="3" file="0" x="-9" angle="0" scale_x="0.7" scale_y="0.7"/>
                 </key>
             </timeline>
             <timeline id="1" name="shdw-0">
@@ -743,7 +743,7 @@
                     <object folder="1" file="0" x="0.697326" y="97.843553" angle="0"/>
                 </key>
             </timeline>
-            <timeline id="4" name="kettle_swap">
+            <timeline id="4" name="tea_pot_swap">
                 <key id="0" spin="0">
                     <object folder="4" file="0" x="-35.762824" y="155.215113" angle="0"/>
                 </key>
@@ -849,10 +849,10 @@
             </timeline>
             <timeline id="1" name="coals">
                 <key id="0" spin="0">
-                    <object folder="3" file="0" x="-9" y="-0" angle="0" scale_x="0.7" scale_y="0.7"/>
+                    <object folder="3" file="0" x="-9" angle="0" scale_x="0.7" scale_y="0.7"/>
                 </key>
                 <key id="1" time="500" spin="0">
-                    <object folder="3" file="0" x="-9" y="-0" angle="0" scale_x="0.7" scale_y="0.7"/>
+                    <object folder="3" file="0" x="-9" angle="0" scale_x="0.7" scale_y="0.7"/>
                 </key>
             </timeline>
             <timeline id="2" name="fire_pit">
@@ -923,7 +923,7 @@
                     <object folder="1" file="1" x="0.69733" y="97.84355" angle="0"/>
                 </key>
             </timeline>
-            <timeline id="6" name="kettle_swap">
+            <timeline id="6" name="tea_pot_swap">
                 <key id="0" spin="-1">
                     <object folder="4" file="0" x="-35.762824" y="155.215113" angle="0"/>
                 </key>
@@ -1132,13 +1132,13 @@
             </timeline>
             <timeline id="2" name="coals">
                 <key id="0" spin="0">
-                    <object folder="3" file="1" x="-9" y="-0" angle="0" scale_x="0.7" scale_y="0.7"/>
+                    <object folder="3" file="1" x="-9" angle="0" scale_x="0.7" scale_y="0.7"/>
                 </key>
                 <key id="1" time="600" spin="0">
-                    <object folder="3" file="1" x="-9" y="-0" angle="0" scale_x="0.7" scale_y="0.7"/>
+                    <object folder="3" file="1" x="-9" angle="0" scale_x="0.7" scale_y="0.7"/>
                 </key>
             </timeline>
-            <timeline id="3" name="kettle_swap">
+            <timeline id="3" name="tea_pot_swap">
                 <key id="0" spin="0">
                     <object folder="4" file="0" x="-35.762824" y="155.215113" angle="0"/>
                 </key>
@@ -1315,13 +1315,13 @@
             </timeline>
             <timeline id="2" name="coals">
                 <key id="0" spin="0">
-                    <object folder="3" file="0" x="-9" y="-0" angle="0" scale_x="0.7" scale_y="0.7"/>
+                    <object folder="3" file="0" x="-9" angle="0" scale_x="0.7" scale_y="0.7"/>
                 </key>
                 <key id="1" time="600" spin="0">
-                    <object folder="3" file="0" x="-9" y="-0" angle="0" scale_x="0.7" scale_y="0.7"/>
+                    <object folder="3" file="0" x="-9" angle="0" scale_x="0.7" scale_y="0.7"/>
                 </key>
             </timeline>
-            <timeline id="3" name="kettle_swap">
+            <timeline id="3" name="tea_pot_swap">
                 <key id="0" spin="0">
                     <object folder="4" file="0" x="-35.762824" y="155.215113" angle="0"/>
                 </key>
@@ -1526,13 +1526,13 @@
             </timeline>
             <timeline id="2" name="coals">
                 <key id="0" spin="0">
-                    <object folder="3" file="0" x="-9" y="-0" angle="0" scale_x="0.7" scale_y="0.7"/>
+                    <object folder="3" file="0" x="-9" angle="0" scale_x="0.7" scale_y="0.7"/>
                 </key>
                 <key id="1" time="600" spin="0">
-                    <object folder="3" file="0" x="-9" y="-0" angle="0" scale_x="0.7" scale_y="0.7"/>
+                    <object folder="3" file="0" x="-9" angle="0" scale_x="0.7" scale_y="0.7"/>
                 </key>
             </timeline>
-            <timeline id="3" name="kettle_swap">
+            <timeline id="3" name="tea_pot_swap">
                 <key id="0" spin="0">
                     <object folder="4" file="0" x="-35.762824" y="155.215113" angle="0"/>
                 </key>
@@ -1732,13 +1732,13 @@
             </timeline>
             <timeline id="2" name="coals">
                 <key id="0" spin="0">
-                    <object folder="3" file="0" x="-9" y="-0" angle="0" scale_x="0.7" scale_y="0.7"/>
+                    <object folder="3" file="0" x="-9" angle="0" scale_x="0.7" scale_y="0.7"/>
                 </key>
                 <key id="1" time="34" spin="0">
-                    <object folder="3" file="0" x="-9" y="-0" angle="0" scale_x="0.7" scale_y="0.7"/>
+                    <object folder="3" file="0" x="-9" angle="0" scale_x="0.7" scale_y="0.7"/>
                 </key>
             </timeline>
-            <timeline id="3" name="kettle_swap">
+            <timeline id="3" name="tea_pot_swap">
                 <key id="0" spin="0">
                     <object folder="4" file="0" x="-35.762824" y="155.215113" angle="0"/>
                 </key>
@@ -1802,10 +1802,10 @@
             </mainline>
             <timeline id="0" name="coals">
                 <key id="0" spin="0">
-                    <object folder="3" file="0" x="-9" y="-0" angle="0" scale_x="0.7" scale_y="0.7"/>
+                    <object folder="3" file="0" x="-9" angle="0" scale_x="0.7" scale_y="0.7"/>
                 </key>
                 <key id="1" time="67" spin="0">
-                    <object folder="3" file="0" x="-9" y="-0" angle="0" scale_x="0.7" scale_y="0.7"/>
+                    <object folder="3" file="0" x="-9" angle="0" scale_x="0.7" scale_y="0.7"/>
                 </key>
             </timeline>
             <timeline id="1" name="pot">
@@ -1816,7 +1816,7 @@
                     <object folder="1" file="0" x="0.697326" y="97.843553" angle="0"/>
                 </key>
             </timeline>
-            <timeline id="2" name="kettle_swap">
+            <timeline id="2" name="tea_pot_swap">
                 <key id="0" spin="0">
                     <object folder="4" file="0" x="-35.762824" y="155.215113" angle="0"/>
                 </key>
@@ -1973,7 +1973,7 @@
             </mainline>
             <timeline id="0" name="coals">
                 <key id="0">
-                    <object folder="3" file="0" x="-9" y="-0" angle="0" scale_x="0.7" scale_y="0.092531"/>
+                    <object folder="3" file="0" x="-9" angle="0" scale_x="0.7" scale_y="0.092531"/>
                 </key>
                 <key id="1" time="75" spin="-1">
                     <object folder="3" file="0" x="-9" y="26" angle="5.130008" scale_x="0.7" scale_y="0.552545"/>
@@ -1982,10 +1982,10 @@
                     <object folder="3" file="0" x="-9" y="4" angle="354.731965" scale_x="0.7" scale_y="0.7"/>
                 </key>
                 <key id="3" time="250" spin="0">
-                    <object folder="3" file="0" x="-9" y="-0" angle="0" scale_x="0.7" scale_y="0.7"/>
+                    <object folder="3" file="0" x="-9" angle="0" scale_x="0.7" scale_y="0.7"/>
                 </key>
                 <key id="4" time="734" spin="0">
-                    <object folder="3" file="0" x="-9" y="-0" angle="0" scale_x="0.7" scale_y="0.7"/>
+                    <object folder="3" file="0" x="-9" angle="0" scale_x="0.7" scale_y="0.7"/>
                 </key>
             </timeline>
             <timeline id="1" name="shdw-0">
@@ -2039,7 +2039,7 @@
                     <object folder="1" file="0" x="0.697326" y="97.843553" angle="0"/>
                 </key>
             </timeline>
-            <timeline id="4" name="kettle_swap">
+            <timeline id="4" name="tea_pot_swap">
                 <key id="0" time="200" spin="-1">
                     <object folder="4" file="0" x="-3.12124" y="223.562216" angle="0" scale_x="0.104733" scale_y="0.082247"/>
                 </key>

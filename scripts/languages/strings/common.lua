@@ -68,13 +68,13 @@ return
 
 		-- kettle
 		KETTLE	= "물주전자",
-		TEA_KETTLE	= "찻주전자",
+		TEA_POT	= "찻주전자",
 
 		-- portablekettle
 		PORTABLEKETTLE_ITEM	= "휴대용 물주전자",
 		PORTABLEKETTLE = "휴대용 물주전자",
-		PORTABLETEA_KETTLE_ITEM	= "휴대용 찻주전자",
-		PORTABLETEA_KETTLE = "휴대용 찻주전자",
+		PORTABLETEA_POT_ITEM	= "휴대용 찻주전자",
+		PORTABLETEA_POT = "휴대용 찻주전자",
 
 		-- distillers
 		DISTILLERS = "증류기",
@@ -359,8 +359,8 @@ return
 		BUCKET_EMPTY = "그냥 빈 양동이.",
 		CAMPKETTLE_ITEM = "불 없이는 아무것도 못 합니다.",
 		CAMPDESALINATOR_ITEM = "뜨거운 열정이 늘 필요합니다.",
-		KETTLE = "차 한잔 하시게, 선생.",
-		PORTABLEKETTLE_ITEM = "티타임을 언제, 어디서나.",
+		TEA_POT = "차 한잔 하시게, 선생.",
+		PORTABLE_TEA_POT_ITEM = "티타임을 언제, 어디서나.",
 		DISTILLERS = "술을 영혼까지 꽉꽉 쥐어짜는 것과 같습니다.",
 		WELL_WATERPUMP_KIT = "물의 압력으로 물을 길으세요.",
 		SPICE_CAFFEINPEPPER = "기운 넘치는 활력의 가루.",
@@ -391,7 +391,10 @@ return
 
 		COOKBOOK =
 		{
-			TAB_TITLE_KETTLE = "주전자 레시피",
+			TAB_TITLE_TEA_POT = "찻주전자 레시피",
+			TAB_TITLE_PORTABLE_TEA_POT = "주방장의 특선 음료",
+			TAB_TITLE_COCKTAIL_MAKER = "칵테일 레시피",
+			TAB_TITLE_PORTABLE_COCKTAIL_MAKER = "칵테일 레시피",
 			TAB_TITLE_BREWERY = "양조기 레시피",
 			TAB_TITLE_DISTILLERS = "증류기 레시피",
 			BOILTIME_TITLE = "끓는 시간",

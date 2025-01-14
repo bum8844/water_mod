@@ -366,7 +366,7 @@ return {
 			STOP = "",
 		},
 
-		KETTLE =
+		TEA_POT =
 		{
 			EMPTY = "",
 			BURNT = "",
@@ -380,12 +380,36 @@ return {
 			MELT_SHORT = "",
 		},
 
-		PORTABLEKETTLE_ITEM =
+		PORTABLE_TEA_POT_ITEM =
 		{
 			GENERIC = "",
 			EMPTY = "", 
 			BOILING_LONG = "",
 			BOILING_SHORT = "",
+			DONE = "",
+			PURIFY_LONG = "",
+			PURIFY_SHORT = "",
+			HASWATER = "",
+			MELT_LONG = "",
+			MELT_SHORT = "",
+		},
+
+		KETTLE =
+		{
+			EMPTY = "",
+			BURNT = "",
+			DONE = "",
+			PURIFY_LONG = "",
+			PURIFY_SHORT = "",
+			HASWATER = "",
+			MELT_LONG = "",
+			MELT_SHORT = "",
+		},
+
+		PORTABLEKETTLE_ITEM =
+		{
+			GENERIC = "",
+			EMPTY = "",
 			DONE = "",
 			PURIFY_LONG = "",
 			PURIFY_SHORT = "",

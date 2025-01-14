@@ -114,12 +114,19 @@ SortAfter("boilbook_advanced","boilbook_basic","COOKING")
 AddRecipe2("campkettle_item",{Ingredient("twigs",2),Ingredient("log",2),Ingredient("cutgrass",2)},TECH.NONE,{atlas = ModAtlas(), image = "campkettle.tex"},{"COOKING","REFINE","HYDRATION","STRUCTURES"})
 SortBefore("campkettle_item","cookpot","COOKING")
 
-AddRecipe2("kettle",{Ingredient("twigs",6),Ingredient("rope",2),Ingredient("charcoal",2)},TECH.SCIENCE_ONE,{placer = "kettle_placer", atlas = ModAtlas(), image = "kettle.tex"},{"COOKING","HYDRATION","STRUCTURES"})
+--[[AddRecipe2("kettle",{Ingredient("twigs",6),Ingredient("rope",2),Ingredient("charcoal",2)},TECH.SCIENCE_ONE,{placer = "kettle_placer", atlas = ModAtlas(), image = "kettle.tex"},{"COOKING","HYDRATION","STRUCTURES"})
 SortAfter("kettle","cookpot","COOKING")
-SortAfter("kettle","cookpot","STRUCTURES")
+SortAfter("kettle","cookpot","STRUCTURES")]]
 
-AddRecipe2("portablekettle_item",{Ingredient("transistor",2),Ingredient("cutstone",4),Ingredient("charcoal",3)},TECH.SCIENCE_TWO,{atlas = ModAtlas(), image = "portablekettle_item.tex"},{"COOKING","HYDRATION"})
-SortAfter("portablekettle_item","kettle","COOKING")
+AddRecipe2("tea_pot",{Ingredient("twigs",6),Ingredient("rope",2),Ingredient("charcoal",2)},TECH.SCIENCE_ONE,{placer = "tea_pot_placer", atlas = ModAtlas(), image = "tea_pot.tex"},{"COOKING","HYDRATION","STRUCTURES"})
+SortAfter("tea_pot","cookpot","COOKING")
+SortAfter("tea_pot","cookpot","STRUCTURES")
+
+--[[AddRecipe2("portablekettle_item",{Ingredient("transistor",2),Ingredient("cutstone",4),Ingredient("charcoal",3)},TECH.SCIENCE_TWO,{atlas = ModAtlas(), image = "portablekettle_item.tex"},{"COOKING","HYDRATION"})
+SortAfter("portablekettle_item","kettle","COOKING")]]
+
+AddRecipe2("portable_tea_pot_item",{Ingredient("transistor",2),Ingredient("cutstone",4),Ingredient("charcoal",3)},TECH.SCIENCE_TWO,{atlas = ModAtlas(), image = "portable_tea_pot_item.tex"},{"COOKING","HYDRATION"})
+SortAfter("portable_tea_pot_item","kettle","COOKING")
 
 AddRecipe2("brewery",{Ingredient("boards",3),Ingredient("livinglog",3),Ingredient("rope",3),Ingredient("cutstone",6),Ingredient("goldnugget",4)},TECH.SCIENCE_TWO,{placer = "brewery_placer", atlas = ModAtlas(), image = "brewery.tex"},{"COOKING","HYDRATION","STRUCTURES"})
 SortAfter("brewery","portablekettle_item","COOKING")
@@ -184,5 +191,7 @@ AddDeconstructRecipe("well_buryingsite", {Ingredient("boards",4)})
 AddDeconstructRecipe("well_sprinkler", {Ingredient("marble",4),Ingredient("moonglass",1),Ingredient("townportaltalisman",2),Ingredient("gears",1)})
 
 AddDeconstructRecipe("wine_cellar_part", {Ingredient("wagpunk_bits",3),Ingredient("livinglog",3),Ingredient("gears",1)})
+
+AddDeconstructRecipe("portable_tea_pot", {Ingredient("transistor",2),Ingredient("cutstone",4),Ingredient("charcoal",3)})
 
 CONSTRUCTION_PLANS["well_buryingsite"] = {Ingredient("shovel",1),Ingredient("seeds",6),Ingredient("turf_desertdirt",4),Ingredient("turf_mud",4)}

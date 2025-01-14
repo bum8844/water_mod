@@ -4,16 +4,16 @@ local ageddrinks = require("preparedageddrinks")
 local spiritsdrink = require("preparedspiritsdrink")
 
 for k, recipe in pairs(drinks) do
-	AddCookerRecipe("kettle", recipe)
-	AddCookerRecipe("portablekettle", recipe)
+	AddCookerRecipe("tea_pot", recipe)
+	AddCookerRecipe("portable_tea_pot", recipe)
 
 	if recipe.card_def then
-		_G.AddRecipeCard("kettle", recipe)
+		_G.AddRecipeCard("tea_pot", recipe)
 	end
 end
 
 for k, recipe in pairs(drinks_warly) do
-	AddCookerRecipe("portablekettle", recipe)
+	AddCookerRecipe("portable_tea_pot", recipe)
 end
 
 for k, recipe in pairs(ageddrinks) do
