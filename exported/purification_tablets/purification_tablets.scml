@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <spriter_data scml_version="1.0" generator="BrashMonkey Spriter" generator_version="r11">
-    <folder id="0" name="tablets">
-        <file id="0" name="tablets/purification_tablets.png" width="181" height="115" pivot_x="0.5" pivot_y="0.5"/>
+    <folder id="0" name="swap">
+        <file id="0" name="swap/purification_tablets.png" width="146" height="75" pivot_x="0.46" pivot_y="0.23"/>
+    </folder>
+    <folder id="1" name="purification_tablets">
+        <file id="0" name="purification_tablets/purification_tablets.png" width="146" height="75" pivot_x="0.46" pivot_y="0.23"/>
+    </folder>
+    <folder id="2" name="purification_tablets_bottle">
+        <file id="0" name="purification_tablets_bottle/purification_tablets_bottle.png" width="150" height="187" pivot_x="0.473333" pivot_y="0.117647"/>
     </folder>
     <entity id="0" name="purification_tablets">
         <animation id="0" name="idle" length="300" interval="100">
@@ -10,7 +16,7 @@
                     <object_ref id="0" timeline="0" key="0" z_index="0"/>
                 </key>
             </mainline>
-            <timeline id="0" name="purification_tablets">
+            <timeline id="0" name="swap">
                 <key id="0" spin="0">
                     <object folder="0" file="0" angle="0"/>
                 </key>

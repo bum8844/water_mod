@@ -4,11 +4,9 @@ local cooking = require("cooking")
 
 local assets =
 {
-    --Asset("ANIM", "anim/tea_kettle.zip"),
-    Asset("ANIM", "anim/kettle.zip"),
-    Asset("ANIM", "anim/kettle_drink.zip"),
-	--Asset("ANIM", "anim/kettle_meter_dirty.zip"),
-	--Asset("ANIM", "anim/kettle_meter_water.zip"),
+    Asset("ANIM", "anim/tea_kettle.zip"),
+	Asset("ANIM", "anim/teakettle_meter_dirty.zip"),
+	Asset("ANIM", "anim/teakettle_meter_water.zip"),
     Asset("ANIM", "anim/ui_cookpot_1x4.zip"),
 }
 

@@ -1,6 +1,6 @@
 
 local assets = {
-    --Asset("ANIM", "anim/purification_tablets.zip")
+    Asset("ANIM", "anim/purification_tablets.zip")
 }
 
 local function fn()
@@ -18,6 +18,7 @@ local function fn()
     	inst.AnimState:SetBuild("purification_tablets")
         inst.AnimState:SetBank("purification_tablets")
         inst.AnimState:PlayAnimation("idle")
+        inst.AnimState:OverrideSymbol("swap","purification_tablets","purification_tablets")
 
         inst:AddTag("molebait")
         inst:AddTag("purify_item")
