@@ -39,6 +39,12 @@ return
 			MOONGLASS = "<color=#A8DCC7>달유리</color>"
 		},
 
+		WATER =
+		{
+			RAWTEXT = "상태 : %s",
+			RAWTEXT_EXT = "상태 : %s / 남은 양 : %s",
+		},
+
 		DISTILLER =
 		{
 			RAWTEXT = "%s 끝나기까지 %s 초(s).",

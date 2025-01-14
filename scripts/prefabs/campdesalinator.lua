@@ -66,6 +66,7 @@ end
 local function ondoneboilingfn(inst)
     inst.components.pickable.numtoharvest = inst.components.waterlevel:GetWater()
     inst.components.pickable.canbepicked = true
+    inst.components.pickable.product = "water_"..inst.components.waterlevel.watertype
     inst.AnimState:PlayAnimation("idle_empty")
     inst.SoundEmitter:KillSound("snd")
     inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_finish", "snd")
@@ -193,7 +194,7 @@ local function fn()
 
     inst:AddComponent("pickable")
     inst.components.pickable.canbepicked = false
-    inst.components.pickable.product = "water_clean"
+    --inst.components.pickable.product = "water_clean"
     inst.components.pickable.numtoharvest = inst.components.waterlevel:GetWater()
     inst.components.pickable:SetOnPickedFn(OnPickedFn)
 

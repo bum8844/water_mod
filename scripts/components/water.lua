@@ -26,7 +26,7 @@ local Water = Class(function(self, inst)
     self.ontaken = nil
     self.available = true
     --self.use_WaterManager = false
-    --self.left_to_dirty = nil
+    self.left_to_dirty = 0
     self.isitem = nil --Used for item check
 end,
 nil,
@@ -54,8 +54,6 @@ function Water:GetWatertype()
     if self.use_WaterManager then
         if self.left_to_dirty > 0 then
             watertype = self.set_watertype
-        else
-            watertype = self.def_watertype
         end
     end
     return self.inst.components.waterlevel ~= nil and self.inst.components.waterlevel.watertype
@@ -74,7 +72,6 @@ end
 function Water:SetWaterManager(num, type, def_type)
     self.use_WaterManager = true
     self.left_to_dirty = num or TUNING.DEFAULT_LEFT_TO_DIRTY
-    self.def_watertype = def_type
     self.set_watertype = type
     self:SetWaterType(def_type)
 end
@@ -100,11 +97,7 @@ end
 
 function Water:OnSave()
     if self.use_WaterManager then
-        return { 
-                    watermanager = self.left_to_dirty,
-                    def_watertype = self.def_watertype,
-                    set_watertype = self.set_watertype,
-                }
+        return {watermanager = self.left_to_dirty}
     end
 end
 
@@ -112,9 +105,6 @@ function Water:OnLoad(data)
     if data.watermanager then
         self.use_WaterManager = true
         self.left_to_dirty = data.watermanager
-        self.def_watertype = data.def_watertype
-        self.set_watertype = data.set_watertype
-        self:SetWaterType(data.def_watertype)
     end
 end
 

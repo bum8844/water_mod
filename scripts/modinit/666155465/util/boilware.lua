@@ -6,14 +6,16 @@ local function GetShowItemInfo(inst)
 	local b = inst.components.brewing
 	local d = inst.components.distiller
 	local wl = inst.components.waterlevel
+	local w = inst.components.water
 	local sm = inst.components.desalinatiorable
-	local smtp = sm.sludgetype
+	local smtp = sm and sm.sludgetype or nil
 
 	local wstxt, smtxt, txt = "", "", ""
 	local product = STRINGS.SHOWME.BOILWARE.PRODUCT
 	local time = STRINGS.SHOWME.BOILWARE.TIME
 	local amount = STRINGS.SHOWME.BOILWARE.AMOUNT
-	local sludgetype = smtp == WATERTYPE.UNCLEAN_MINERAL and STRINGS.SHOWME.BOILWARE.MOONGLASS or STRINGS.SHOWME.BOILWARE.SALT
+	local left = STRINGS.SHOWME.BOILWARE.LEFT
+	local sludgetype = smtp == "moonglass" and STRINGS.SHOWME.BOILWARE.MOONGLASS or STRINGS.SHOWME.BOILWARE.SALT
 
 	if b and b.product and b.IsCooking and b:IsCooking() then
 
@@ -54,6 +56,11 @@ local function GetShowItemInfo(inst)
 		end
 	elseif sm then
 		txt = smtxt
+	end
+
+	if w and w.use_WaterManager then
+		left = string.format(left,w.left_to_dirty)
+		txt = left
 	end
 
 	return txt

@@ -48,7 +48,7 @@ for _, v in pairs(TUNING.TYPES_VARY_DIRTY) do
 	    end
 
 		inst:AddComponent("water")
-		inst.components.water:SetWaterManager(true, nil, WATERTYPE.CLEAN, WATERTYPE.DIRTY)
+		inst.components.water:SetWaterManager(nil, WATERTYPE.CLEAN, WATERTYPE.DIRTY)
 
 		inst:ListenForEvent("done_purify",Done_Purify)
 
@@ -66,7 +66,7 @@ for _, v in pairs(TUNING.TYPES_DIRTY) do
 	    end
 
 		inst:AddComponent("water")
-		inst.components.water:SetWaterManager(true, nil, WATERTYPE.CLEAN, WATERTYPE.DIRTY)
+		inst.components.water:SetWaterManager(nil, WATERTYPE.CLEAN, WATERTYPE.DIRTY)
 
 		inst:ListenForEvent("done_purify",Done_Purify)
 
@@ -124,7 +124,7 @@ for _, v in pairs(TUNING.TYPES_UNCLEAN_MINERAL) do
 	    end
 		
 		inst:AddComponent("water")
-		inst.components.water:SetWaterManager(true, nil, WATERTYPE.MINERAL, WATERTYPE.UNCLEAN_MINERAL)
+		inst.components.water:SetWaterManager(nil, WATERTYPE.MINERAL, WATERTYPE.UNCLEAN_MINERAL)
 
 		inst:ListenForEvent("done_purify",Done_Purify)
 

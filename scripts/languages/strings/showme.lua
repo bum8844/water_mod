@@ -9,11 +9,12 @@ return
 			AMOUNT = "물: %s/%s\n",
 			SALT = "소금: %s\n",
 			MOONGLASS = "달유리: %s\n",
+			LEFT = "남은양 : %s",
 		},
 
 		THIRSTVALUE =
 		{
-			THIRST = "목마름: %s\n",
+			THIRST = "목마름: %s",
 		},
 
 		WATERCOLLATOR =
