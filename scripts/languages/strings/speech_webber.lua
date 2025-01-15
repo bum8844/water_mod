@@ -66,6 +66,7 @@ return {
 		WINE_CELLAR = "",
 
 		WX78MODULE_NONEDRUNK = "허, 로봇의 장기가 이렇게 생긴 건가?", -- 78전용 묘듈
+		PURIFICATION_TABLETS = "",
 
 		-- 물 모드 식물
 
@@ -221,7 +222,7 @@ return {
 		LUMPY_WINE = "으음, 엄청 쓰겠어.", --서주(감자 고구마등 뿌리 술)
 		PULQUE = "풀로 만든 우유 같은 술이야!", --풀케(선인주)
 		RUINCACAO_WINE = "우린 초콜릿이 좋은데.", -- 카카오 와인 
-		MIDNIGHT_STROM = "",
+		MIDNIGHT_STORM = "",
 		APPLEPINE_CIDER = "",
 		MENTHA_SPICATA_WINE = "",
 

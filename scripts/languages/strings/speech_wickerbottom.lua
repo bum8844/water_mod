@@ -66,6 +66,7 @@ return {
 		WINE_CELLAR = "",
 
 		WX78MODULE_NONEDRUNK = "유기체를 싫어하긴 하지만 유기체에게서 영감을 얻는 건 싫어하지 않는 것 같구나.", -- 78전용 묘듈
+		PURIFICATION_TABLETS = "",
 
 		-- 물 모드 식물
 
@@ -220,7 +221,7 @@ return {
 		LUMPY_WINE = "아이슬란드에서 먹는 술이라고 하지.", --서주(감자 고구마등 뿌리 술)
 		PULQUE = "메소아메리카 원주민들이 만드는 전통주란다.", --풀케(선인주)
 		RUINCACAO_WINE = "술의 재료로는 대단히 특이한 선택이구나.", -- 카카오 와인 
-		MIDNIGHT_STROM = "",
+		MIDNIGHT_STORM = "",
 		APPLEPINE_CIDER = "",
 		MENTHA_SPICATA_WINE = "",
 

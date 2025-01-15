@@ -56,6 +56,7 @@ return {
 		WINE_CELLAR = "",
 
 		WX78MODULE_NONEDRUNK = "삐빅 삑", -- 78전용 묘듈
+		PURIFICATION_TABLETS = "",
 
 		-- 물 모드 식물
 
@@ -210,7 +211,7 @@ return {
 		LUMPY_WINE = "뿌리덩어리 발효된거", --서주(감자 고구마등 뿌리 술)
 		PULQUE = "완전 새하예", --풀케(선인주)
 		RUINCACAO_WINE = "쓴 맛 많이 없어", -- 카카오 와인 
-		MIDNIGHT_STROM = "",
+		MIDNIGHT_STORM = "",
 		APPLEPINE_CIDER = "",
 		MENTHA_SPICATA_WINE = "",
 

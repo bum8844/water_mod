@@ -60,6 +60,7 @@ return {
 		WINE_CELLAR = "",
 
 		WX78MODULE_NONEDRUNK = "", -- WX-78 module
+		PURIFICATION_TABLETS = "",
 
 		-- DSD flora
 
@@ -214,7 +215,7 @@ return {
 		LUMPY_WINE = "",
 		PULQUE = "",
 		RUINCACAO_WINE = "",
-		MIDNIGHT_STROM = "",
+		MIDNIGHT_STORM = "",
 		APPLEPINE_CIDER = "",
 		MENTHA_SPICATA_WINE = "",
 

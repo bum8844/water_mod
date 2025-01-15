@@ -54,6 +54,7 @@ return {
 		WINE_CELLAR = "",
 
 		WX78MODULE_NONEDRUNK = "화학 엔진 출력보조", -- 78전용 묘듈
+		PURIFICATION_TABLETS = "",
 
 		-- 물 모드 식물
 
@@ -208,7 +209,7 @@ return {
 		LUMPY_WINE = "유기체의 뿌리는 다양한 용도로 사용", --서주(감자 고구마등 뿌리 술)
 		PULQUE = "포함된 미생물의 자가진화의 끝은 언제인가", --풀케(선인주)
 		RUINCACAO_WINE = "카카오 새로운 가능성 발견됨", -- 카카오 와인 
-		MIDNIGHT_STROM = "",
+		MIDNIGHT_STORM = "",
 		APPLEPINE_CIDER = "",
 		MENTHA_SPICATA_WINE = "",
 

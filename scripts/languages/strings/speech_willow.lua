@@ -66,6 +66,7 @@ return {
 		WINE_CELLAR = "",
 
 		WX78MODULE_NONEDRUNK = "야 WX, 화염방사기 설치해보는 건 어때?", -- 78전용 묘듈
+		PURIFICATION_TABLETS = "",
 
 		-- 물 모드 식물
 
@@ -220,7 +221,7 @@ return {
 		LUMPY_WINE = "술에서 흙냄새 나겠다.", --서주(감자 고구마등 뿌리 술)
 		PULQUE = "우웩, 끈적거리고 셔.", --풀케(선인주)
 		RUINCACAO_WINE = "뜨거운 핫초코가 더 좋기는 하는데 이것도 나름 괜찮네.", -- 카카오 와인 
-		MIDNIGHT_STROM = "",
+		MIDNIGHT_STORM = "",
 		APPLEPINE_CIDER = "",
 		MENTHA_SPICATA_WINE = "",
 
