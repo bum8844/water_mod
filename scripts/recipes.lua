@@ -119,23 +119,22 @@ AddRecipe2("campkettle_item",{Ingredient("twigs",2),Ingredient("log",2),Ingredie
 SortBefore("campkettle_item","cookpot","COOKING")
 SortBefore("campkettle_item","transistor","REFINE")
 
---[[AddRecipe2("kettle",{Ingredient("twigs",6),Ingredient("rope",2),Ingredient("charcoal",2)},TECH.SCIENCE_ONE,{placer = "kettle_placer", atlas = ModAtlas(), image = "kettle.tex"},{"COOKING","HYDRATION","STRUCTURES"})
+AddRecipe2("kettle",{Ingredient("twigs",6),Ingredient("rope",2),Ingredient("charcoal",2)},TECH.SCIENCE_ONE,{placer = "kettle_placer", atlas = ModAtlas(), image = "kettle.tex"},{"COOKING","HYDRATION","STRUCTURES"})
 SortAfter("kettle","cookpot","COOKING")
-SortAfter("kettle","cookpot","STRUCTURES")]]
+SortAfter("kettle","cookpot","STRUCTURES")
 
---[[AddRecipe2("portablekettle_item",{Ingredient("transistor",2),Ingredient("cutstone",4),Ingredient("charcoal",3)},TECH.SCIENCE_TWO,{atlas = ModAtlas(), image = "portablekettle_item.tex"},{"COOKING","HYDRATION"})
-SortAfter("portablekettle_item","kettle","COOKING")]]
+AddRecipe2("portablekettle_item",{Ingredient("transistor",2),Ingredient("cutstone",4),Ingredient("charcoal",3)},TECH.SCIENCE_TWO,{atlas = ModAtlas(), image = "portablekettle_item.tex"},{"COOKING","HYDRATION"})
+SortAfter("portablekettle_item","kettle","COOKING")
 
 AddRecipe2("purification_tablets",{Ingredient("nitre",3),Ingredient("ash",3),Ingredient("charcoal",3),Ingredient("water_clean",6,Drink_ModAtlas(),nil,"water_clean_bottle.tex")},TECH.SCIENCE_TWO,{atlas = ModAtlas(), image = "purification_tablets_bottle.tex", numtogive=5},{"COOKING","HYDRATION","REFINE"})
---SortAfter("purification_tablets","kettle","COOKING")
-SortAfter("purification_tablets","cookpot","COOKING")
+SortAfter("purification_tablets","kettle","COOKING")
 SortAfter("purification_tablets","campkettle_item","REFINE")
 
 AddRecipe2("tea_pot",{Ingredient("twigs",6),Ingredient("rope",2),Ingredient("charcoal",2)},TECH.SCIENCE_ONE,{placer = "tea_pot_placer", atlas = ModAtlas(), image = "tea_pot.tex"},{"COOKING","HYDRATION","STRUCTURES"})
 SortAfter("tea_pot","purification_tablets","COOKING")
 SortAfter("tea_pot","purification_tablets","STRUCTURES")
 
-AddRecipe2("portable_tea_pot_item",{Ingredient("transistor",2),Ingredient("cutstone",4),Ingredient("charcoal",3)},TECH.SCIENCE_TWO,{atlas = ModAtlas(), image = "portable_tea_pot_item.tex", builder_tag="professionalchef"},{"COOKING","HYDRATION","CHARACTER"})
+AddRecipe2("portable_tea_pot_item",{Ingredient("transistor",2),Ingredient("cutstone",4),Ingredient("charcoal",3)},TECH.NONE,{atlas = ModAtlas(), image = "portable_tea_pot_item.tex", builder_tag="professionalchef"},{"COOKING","HYDRATION","CHARACTER"})
 SortAfter("portable_tea_pot_item","tea_pot","COOKING")
 
 AddRecipe2("brewery",{Ingredient("boards",3),Ingredient("livinglog",3),Ingredient("rope",3),Ingredient("cutstone",6),Ingredient("goldnugget",4)},TECH.SCIENCE_TWO,{placer = "brewery_placer", atlas = ModAtlas(), image = "brewery.tex"},{"COOKING","HYDRATION","STRUCTURES"})

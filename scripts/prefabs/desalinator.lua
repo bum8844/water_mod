@@ -223,6 +223,10 @@ local function getstatus(inst)
         or "EMPTY"
 end
 
+local function onpercentusedchange(inst, data)
+    inst.components.wateryprotection.addwetness = data.percent * TUNING.DESALINATOR_WETNESS
+end
+
 local function fn()
 	local inst = CreateEntity()
 	
@@ -306,7 +310,9 @@ local function fn()
 	inst.components.workable:SetOnWorkCallback(onhit)
 	
 	inst:ListenForEvent("onbuilt", onbuilt)
-	
+    inst:ListenForEvent("onburnt", onburnt)
+    inst:ListenForEvent("percentusedchange", onpercentusedchange)
+
 	MakeHauntableWork(inst)
 	
 	MakeMediumBurnable(inst, nil, nil, true)

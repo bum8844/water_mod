@@ -179,7 +179,7 @@ local function fn()
     inst:AddComponent("waterlevel")
     inst.components.waterlevel:SetCanAccepts({WATERGROUP.CAMP_BOILABLE})
     inst.components.waterlevel:SetTakeWaterFn(OnTakeWater)
-    inst.components.waterlevel:SetSections(3)
+    inst.components.waterlevel:SetSections(TUNING.CAMPKETTLE_MAX_LEVEL)
     inst.components.waterlevel:SetSectionCallback(OnSectionChange)
     inst.components.waterlevel.maxwater = TUNING.CAMPKETTLE_MAX_LEVEL
     inst.components.waterlevel:InitializeWaterLevel(0)

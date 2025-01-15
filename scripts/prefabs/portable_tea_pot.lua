@@ -4,11 +4,10 @@ local cooking = require("cooking")
 
 local assets =
 {
-    --Asset("ANIM", "anim/portable_tea_pot.zip"),
     Asset("ANIM", "anim/portable_tea_pot.zip"),
     Asset("ANIM", "anim/kettle_drink.zip"),
-	--Asset("ANIM", "anim/portable_tea_pot_meter_dirty.zip"),
-	--Asset("ANIM", "anim/portable_tea_pot_meter_water.zip"),
+	Asset("ANIM", "anim/portable_tea_pot_meter_dirty.zip"),
+	Asset("ANIM", "anim/portable_tea_pot_meter_water.zip"),
     Asset("ANIM", "anim/ui_cookpot_1x4.zip"),
 }
 
@@ -22,14 +21,12 @@ local prefabs =
 {
     "collapse_small",
     "ash",
-	--"portable_tea_pot_item",
-    "portablekettle_item",
+	"portable_tea_pot_item",
 }
 
 local prefabs_item =
 {
-    --"portable_tea_pot",
-    "portablekettle",
+    "portable_tea_pot",
 }
 
 local function ChangeToItem(inst)
@@ -55,7 +52,7 @@ local function GetWet(inst)
 end
 
 local function onpercentusedchange(inst, data)
-    inst.components.wateryprotection.addwetness = data.percent * TUNING.WATER_BARREL_WETNESS
+    inst.components.wateryprotection.addwetness = data.percent * TUNING.TEA_POT_WETNESS
 end
 
 local function onhammered(inst)--, worker)
@@ -143,7 +140,7 @@ end
 local function spoilfn(inst)
     if not inst:HasTag("burnt") then
         inst.components.brewing.product = inst.components.brewing.spoiledproduct
-        --inst.AnimState:OverrideSymbol("swap", "portable_tea_pot_meter_dirty", tostring(inst._waterlevel))
+        inst.AnimState:OverrideSymbol("swap", "portable_tea_pot_meter_dirty", tostring(inst._waterlevel))
         inst:DoTaskInTime(0,function(inst)
             SetProductSymbol(inst, inst.components.brewing.product)
         end)
@@ -209,7 +206,7 @@ local function OnSectionChange(new, old, inst)
             inst._waterlevel = new
         end
     end
-    --inst.AnimState:OverrideSymbol("swap", "portable_tea_pot_meter_"..watertype, tostring(inst._waterlevel))
+    inst.AnimState:OverrideSymbol("swap", "portable_tea_pot_meter_"..watertype, tostring(inst._waterlevel))
 end
 
 local function OnDismantle(inst, doer)
@@ -230,6 +227,14 @@ local function OnBurnt(inst)
     end
     if inst.components.portablestructure ~= nil then
         inst:RemoveComponent("portablestructure")
+    end
+    inst.components.waterlevel.accepting = false
+    inst.components.water.available = false
+    inst.components.waterlevel:SetPercent(0)
+    local amount = math.ceil(inst.components.wateryprotection.addwetness * MOISTURE_ON_BURNT_MULTIPLIER)
+    if amount > 0 then
+        local x, y, z = inst.Transform:GetWorldPosition()
+        TheWorld.components.farming_manager:AddSoilMoistureAtPoint(x, 0, z, amount)
     end
     inst.persists = false
     inst:AddTag("FX")
@@ -259,7 +264,7 @@ end
 
 local function ondoneboilingfn(inst)
     if not inst:HasTag("burnt") then
-        --inst.AnimState:OverrideSymbol("swap", "portable_tea_pot_meter_water", tostring(inst._waterlevel))
+        inst.AnimState:OverrideSymbol("swap", "portable_tea_pot_meter_water", tostring(inst._waterlevel))
         inst.AnimState:PlayAnimation("cooking_pst")
         inst.AnimState:PlayAnimation("idle_empty")
         inst.SoundEmitter:KillSound("snd") 
@@ -376,7 +381,7 @@ local function fn()
     inst.DynamicShadow:SetSize(2, 1)
 
     inst:AddTag("structure")
-	inst:AddTag("tea_kettle")
+	inst:AddTag("tea_pot")
     inst:AddTag("mastercookware")
     inst:AddTag("brewing")
     inst:AddTag("drinkproduction")
@@ -384,7 +389,7 @@ local function fn()
     inst.AnimState:SetBank("portable_tea_pot")
     inst.AnimState:SetBuild("portable_tea_pot")
     inst.AnimState:PlayAnimation("idle_empty")
-	--inst.AnimState:OverrideSymbol("swap", "portable_tea_pot_meter_water", "0")
+    inst.AnimState:OverrideSymbol("swap", "portable_tea_pot_meter_water", "0")
 
     inst:SetPrefabNameOverride("portable_tea_pot_item")
 
@@ -454,6 +459,8 @@ local function fn()
 
     inst:AddComponent("hauntable")
     inst.components.hauntable:SetHauntValue(TUNING.HAUNT_TINY)
+
+    inst:ListenForEvent("percentusedchange", onpercentusedchange)
 
     MakeMediumBurnable(inst, nil, nil, true)
     MakeSmallPropagator(inst)

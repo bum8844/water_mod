@@ -146,7 +146,7 @@ local function fn()
 	inst.components.waterlevel:SetTakeWaterFn(OnTakeWater)
 	--inst.components.waterlevel:SetDepletedFn(OnDeplete)
 	inst.components.waterlevel:SetCanAccepts({WATERTYPE.CLEAN, WATERTYPE.MINERAL})
-	inst.components.waterlevel.maxwater = TUNING.BARREL_MAX_LEVEL
+	inst.components.waterlevel.maxwater = TUNING.WATER_BARREL_MAX_LEVEL
 	inst.components.waterlevel:SetSections(TUNING.BREWERY_SECTIONS)
 	inst.components.waterlevel:SetSectionCallback(OnSectionChange)
 	inst.components.waterlevel:InitializeWaterLevel(0)

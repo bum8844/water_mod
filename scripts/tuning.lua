@@ -94,10 +94,10 @@ water_tuning =
 	DRIFWOOD_BUCKET_MULT = 4,
 	WOODIE_BUCKET_MULT = 0.5,
 
-	CAMPKETTLE_MAX_LEVEL = 3,
-	TEA_POT_MAX_LEVEL = 1,
-	KETTLE_MAX_LEVEL = bucket_max_level*.1,
-	BARREL_MAX_LEVEL = bucket_max_level*36,
+	CAMPKETTLE_MAX_LEVEL = bucket_max_level*.3,
+	TEA_POT_MAX_LEVEL = bucket_max_level*.1,
+	KETTLE_MAX_LEVEL = bucket_max_level*.8,
+	WATER_BARREL_MAX_LEVEL = bucket_max_level*36,
 	BREWERY_MAX_LEVEL = bucket_max_level*6,
 	DESALINATOR_MAX_LEVEL = bucket_max_level*2,
 
@@ -128,7 +128,18 @@ water_tuning =
 	WATER_DIRTY_MELTINGPOINT = 5,
 	
 	-- Moistures and getting wet
-	WATER_BARREL_WETNESS = 25,
+	WATER_BARREL_WETNESS = bucket_max_level*3.6,
+	TEA_POT_WETNESS = bucket_max_level*.01,
+	KETTLE_WETNESS = bucket_max_level*.08,
+	BREWERY_WETNESS = bucket_max_level*.6,
+	DESALINATOR_WETNESS = bucket_max_level*.2,
+	
+	WATER_BARREL_EXTINGUISH_HEAT_PERCENT = -1,
+	WATER_BARREL_TEMP_REDUCTION = 5,
+	WATER_BARREL_PROTECTION_TIME = 30,
+	WATER_BARREL_DIST = 15,
+
+	WATER_BARREL_WETNESS = 1,
 	WATER_BARREL_EXTINGUISH_HEAT_PERCENT = -1,
 	WATER_BARREL_TEMP_REDUCTION = 5,
 	WATER_BARREL_PROTECTION_TIME = 30,

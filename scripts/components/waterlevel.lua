@@ -95,11 +95,14 @@ end
 
 function Waterlevel:OnSave()
     if self.currentwater > 0 then
-        return {waterlevel = self.currentwater, watertype = self.watertype}
+        return {waterlevel = self.currentwater, watertype = self.watertype, waterperish = self.waterperish}
     end
 end
 
 function Waterlevel:OnLoad(data)
+    if data.waterperish then
+        self.save_waterperish = true
+    end
     self:SetWaterType(data.watertype)
     if data.waterlevel then
         self:InitializeWaterLevel(math.max(0, data.waterlevel)) 
@@ -265,7 +268,12 @@ function Waterlevel:TakeWaterItem(item, doer)
         end
     end
 
-    local campkettle = nil
+    if self.save_waterperish then
+        self.waterperish = item.components.perishable:GetPercent()
+    else
+        self.waterperish = nil
+    end
+
     local watervalue = item.components.water:GetWater()
     self:SetWaterType(item.components.water:GetWatertype())
 

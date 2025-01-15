@@ -26,6 +26,7 @@ return {
 	"well_waterpump",
 	"distillers",
 	"wine_cellar",
+	"kettles",
 
 	--food & plants
 	"caffeinberry",

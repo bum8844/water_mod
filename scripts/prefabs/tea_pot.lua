@@ -27,7 +27,7 @@ local function GetWet(inst)
 end
 
 local function onpercentusedchange(inst, data)
-    inst.components.wateryprotection.addwetness = data.percent * TUNING.WATER_BARREL_WETNESS
+    inst.components.wateryprotection.addwetness = data.percent * TUNING.TEA_POT_WETNESS
 end
 
 local function onhammered(inst, worker)
@@ -296,6 +296,17 @@ local function getstatus(inst)
         or "EMPTY"
 end
 
+local function onburnt(inst)
+    inst.components.waterlevel.accepting = false
+    inst.components.water.available = false
+    inst.components.waterlevel:SetPercent(0)
+    local amount = math.ceil(inst.components.wateryprotection.addwetness * MOISTURE_ON_BURNT_MULTIPLIER)
+    if amount > 0 then
+        local x, y, z = inst.Transform:GetWorldPosition()
+        TheWorld.components.farming_manager:AddSoilMoistureAtPoint(x, 0, z, amount)
+    end
+end
+
 local function onsave(inst, data)
     if inst:HasTag("burnt") or (inst.components.burnable ~= nil and inst.components.burnable:IsBurning()) then
         data.burnt = true
@@ -399,6 +410,8 @@ local function fn()
 	inst.components.workable:SetOnWorkCallback(onhit)
 
     inst:ListenForEvent("onbuilt", onbuilt)
+    inst:ListenForEvent("onburnt", onburnt)
+    inst:ListenForEvent("percentusedchange", onpercentusedchange)
 	
 	MakeHauntableWork(inst)
 	

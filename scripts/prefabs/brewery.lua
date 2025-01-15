@@ -278,6 +278,17 @@ local function onclose(inst)
     end
 end
 
+local function onburnt(inst)
+    inst.components.waterlevel.accepting = false
+    inst.components.water.available = false
+    inst.components.waterlevel:SetPercent(0)
+    local amount = math.ceil(inst.components.wateryprotection.addwetness * MOISTURE_ON_BURNT_MULTIPLIER)
+    if amount > 0 then
+        local x, y, z = inst.Transform:GetWorldPosition()
+        TheWorld.components.farming_manager:AddSoilMoistureAtPoint(x, 0, z, amount)
+    end
+end
+
 local function onsave(inst, data)
     if inst:HasTag("burnt") or (inst.components.burnable ~= nil and inst.components.burnable:IsBurning()) then
         data.burnt = true
@@ -292,6 +303,11 @@ local function onload(inst, data)
     end
     inst.components.waterlevel:DoDiistiller(inst)
 end
+
+local function onpercentusedchange(inst, data)
+    inst.components.wateryprotection.addwetness = data.percent * TUNING.BREWERY_WETNESS
+end
+
 
 local function fn()
 	local inst = CreateEntity()
@@ -327,6 +343,7 @@ local function fn()
     inst.components.waterspoilage.localPerishMultiplyer = TUNING.BREWERY_FRESHENING_RATE
 
     inst:AddComponent("waterlevel")
+    inst.components.waterlevel.save_waterperish = true
     inst.components.waterlevel:SetCanAccepts({WATERTYPE.CLEAN, WATERTYPE.EMPTY})
     inst.components.waterlevel:SetTakeWaterFn(OnTakeWater)
     inst.components.waterlevel.maxwater = TUNING.BREWERY_MAX_LEVEL
@@ -375,6 +392,8 @@ local function fn()
 	inst.components.workable:SetOnWorkCallback(onhit)
 	
 	inst:ListenForEvent("onbuilt", onbuilt)
+    inst:ListenForEvent("onburnt", onburnt)
+    inst:ListenForEvent("percentusedchange", onpercentusedchange)
 	
 	MakeHauntableWork(inst)
 	
