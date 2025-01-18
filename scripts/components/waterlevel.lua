@@ -51,16 +51,22 @@ local function onwatertype(self, watertype, old_watertype)
     --self.inst.replica.waterlevel:SetWaterType(watertype or "")
 end
 
+local function isblockbucket(self, isblockbucket)
+    self.inst.replica.waterlevel:SetBlockBucket(isblockbucket)
+end
+
 local Waterlevel = Class(function(self, inst)
     self.inst = inst
     self.consuming = false
     self.isputoncetime = false
     self.noneboil = false
     self.onlysamewater = false
+    self.isblockbucket = false
 
     self.maxwater = 0
     self.currentwater = 0
     self.oldcurrentwater = 0
+    self.waterperish = 1
 
     self.rate = 1 --positive rate = consume, negative = product
 	self.rate_modifiers = SourceModifierList(self.inst)
@@ -85,28 +91,13 @@ nil,
     currentwater = oncurrentwater,
     onlysamewater = setonlysamewater,
     watertype = onwatertype,
+    isblockbucket = isblockbucket,
 })
 
 function Waterlevel:OnRemoveFromEntity()
     self:StopConsuming()
     clearcanaccepts(self, self.canaccepts)
     self.inst:RemoveTag("accepting_water")
-end
-
-function Waterlevel:OnSave()
-    if self.currentwater > 0 then
-        return {waterlevel = self.currentwater, watertype = self.watertype, waterperish = self.waterperish}
-    end
-end
-
-function Waterlevel:OnLoad(data)
-    if data.waterperish then
-        self.save_waterperish = true
-    end
-    self:SetWaterType(data.watertype)
-    if data.waterlevel then
-        self:InitializeWaterLevel(math.max(0, data.waterlevel)) 
-    end
 end
 
 function Waterlevel:SetNoneBoil(bool)
@@ -121,6 +112,10 @@ end
 
 function Waterlevel:GetWater()
     return self.currentwater
+end
+
+function Waterlevel:GetWaterPerish()
+    return self.waterperish
 end
 
 function Waterlevel:SetCanAccepts(canaccepts)
@@ -176,6 +171,10 @@ end
 
 function Waterlevel:SetTakeWaterFn(fn)
     self.ontakewaterfn = fn
+end
+
+function Waterlevel:SetWaterPerish(num)
+    self.waterperish = num
 end
 
 function Waterlevel:UtilityCheck(boilier)
@@ -268,16 +267,22 @@ function Waterlevel:TakeWaterItem(item, doer)
         end
     end
 
-    if self.save_waterperish then
-        self.waterperish = item.components.perishable:GetPercent()
-    else
-        self.waterperish = nil
-    end
-
     local watervalue = item.components.water:GetWater()
     self:SetWaterType(item.components.water:GetWatertype())
 
     self.oldcurrentwater = self.currentwater
+
+    if not self.inst.components.waterspoilage then
+        local perishable = item.components.perishable
+        if self.currentwater ~= 0 then
+            local timeleft = perishable:GetPercent()
+            local stacksize = watervalue + self.currentwater
+            local perishable = ( stacksize * timeleft + self.currentwater * self.waterperish ) / ( watervalue + stacksize )
+            self:SetWaterPerish()
+        else
+            self:SetWaterPerish( perishable and item.components.perishable:GetPercent() or 1 )
+        end
+    end
 
     if watervalue ~= nil then
         self:DoDelta(watervalue, doer)
@@ -358,6 +363,21 @@ function Waterlevel:DoDelta(amount, doer)
     self:UtilityCheck(self.inst)
 
     self.inst:PushEvent("percentusedchange", { percent = self:GetPercent() })
+end
+
+function Waterlevel:OnSave()
+    if self.currentwater > 0 then
+        return {waterlevel = self.currentwater, watertype = self.watertype, waterperish = self.waterperish}
+    end
+end
+
+function Waterlevel:OnLoad(data)
+    self:SetWaterPerish(data.waterperish)
+    self.inst._waterperish = data.waterperish
+    self:SetWaterType(data.watertype)
+    if data.waterlevel then
+        self:InitializeWaterLevel(math.max(0, data.waterlevel)) 
+    end
 end
 
 function Waterlevel:TestType(item, testvalues)

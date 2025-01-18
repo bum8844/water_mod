@@ -59,8 +59,14 @@ local function GetShowItemInfo(inst)
 	end
 
 	if w and w.use_WaterManager then
+		if w.watermanager_tesk then
+			local tm=round2(w.remainingtime-GetTime(),0)
+			time = string.format(time,tm)
+		else
+			time = ""
+		end
 		left = string.format(left,w.left_to_dirty)
-		txt = left
+		txt = left..time
 	end
 
 	return txt

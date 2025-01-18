@@ -88,6 +88,19 @@ local function evaluate_case(giver, taker)
     end
 end
 
+local function evaluate_access(giver, taker)
+    local waterlevel = giver.replica.waterlevel or taker.replica.waterlevel
+    if not waterlevel then
+        return true
+    elseif waterlevel:IsBlockBucket() then
+        if not giver:HasTag("bucket_empty") and not taker:HasTag("bucket_empty") then
+            return true
+        end
+    else
+        return true
+    end
+end
+
 local USEITEM = 
 {
     milkingtool = function(inst, doer, target, actions)
@@ -114,7 +127,8 @@ local USEITEM =
             end
         elseif inst.replica.waterlevel ~= nil
             and inst.replica.waterlevel:IsAccepting()
-            and evaluate_watertype(target, inst) then
+            and evaluate_watertype(target, inst) 
+            and evaluate_access(target, inst) then
             table.insert(actions, ACTIONS.TAKEWATER)
         end
     end,
@@ -122,6 +136,9 @@ local USEITEM =
     watertaker = function(inst, doer, target, actions)
         if target:HasTag("water") and (target.replica.waterlevel == nil or target.replica.waterlevel:HasWater()) then
             if target:HasTag("farm_water") or target:HasTag("notwatersource") then
+                return
+            end
+            if not evaluate_access(inst, target) then
                 return
             end
             table.insert(actions, ACTIONS.TAKEWATER)

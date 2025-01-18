@@ -73,8 +73,8 @@ return
 		-- portablekettle
 		PORTABLEKETTLE_ITEM	= "휴대용 물주전자",
 		PORTABLEKETTLE = "휴대용 물주전자",
-		PORTABLETEA_POT_ITEM	= "휴대용 찻주전자",
-		PORTABLETEA_POT = "휴대용 찻주전자",
+		PORTABLE_TEA_POT_ITEM	= "휴대용 찻주전자",
+		PORTABLE_TEA_POT = "휴대용 찻주전자",
 
 		-- distillers
 		DISTILLERS = "증류기",

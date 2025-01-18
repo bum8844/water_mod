@@ -15,11 +15,24 @@ local function Descriptors()
 					watertype = string.upper(self.set_watertype)
 				end
 
-				local rawtext = STRINGS.INSIGHT.WATER.RAWTEXT
-				local rawtext_ext = STRINGS.INSIGHT.WATER.RAWTEXT_EXT
+				local rawtext, rawtext_ext
 
-				description = string.format(rawtext,STRINGS.INSIGHT.STATE[watertype])
-				alt_description = string.format(rawtext_ext,STRINGS.INSIGHT.STATE[watertype],watermanager)
+				if self.watermanager_tesk then
+					rawtext = STRINGS.INSIGHT.WATER.RAWTEXT_TIME
+					rawtext_ext = STRINGS.INSIGHT.WATER.RAWTEXT_TIME_EXT
+
+					local time = context.time:SimpleProcess(GetTaskRemaining(self.watermanager_tesk),"realtime_short")
+
+					description = subfmt(rawtext,{state = STRINGS.INSIGHT.STATE[watertype],time = time})
+					alt_description = subfmt(rawtext_ext,{state = STRINGS.INSIGHT.STATE[watertype],num = watermanager,time = time})
+				else
+					rawtext = STRINGS.INSIGHT.WATER.RAWTEXT
+					rawtext_ext = STRINGS.INSIGHT.WATER.RAWTEXT_EXT
+
+					description = string.format(rawtext,STRINGS.INSIGHT.STATE[watertype])
+					alt_description = string.format(rawtext_ext,STRINGS.INSIGHT.STATE[watertype],watermanager)
+				end
+
 				return {
 					priority = 0,
 					description = description,

@@ -39,6 +39,7 @@ local function Descriptors()
 					time = time_left,
 				}
 			end
+			
 			local function Describe(self, context)
 				local description, alt_description, time
 

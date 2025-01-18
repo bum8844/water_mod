@@ -213,3 +213,49 @@ AddRecipePostInit("bottle_pouch", function(recipe)
 	    ingredient:AddDictionaryPrefab("snakeskin")
 	end
 end)
+
+--[[
+AddRecipePostInit("bottle_pouch_small", function(recipe)
+	local ingredient = recipe:FindAndConvertIngredient("tentaclespots")
+	if ingredient then
+	    ingredient:AddDictionaryPrefab("snakeskin")
+	end
+end)
+
+AddRecipePostInit("bottle_pouch_big", function(recipe)
+	local ingredient = recipe:FindAndConvertIngredient("alterguardianhatshard")
+	if ingredient then
+	    ingredient:AddDictionaryPrefab("magic_seal")
+	end
+	ingredient = recipe:FindAndConvertIngredient("bearger_fur")
+	if ingredient then
+	    ingredient:AddDictionaryPrefab("shark_gills")
+	end
+end)
+
+AddRecipePostInit("thermos_bottle_small", function(recipe)
+	local ingredient = recipe:FindAndConvertIngredient("opalpreciousgem")
+	if ingredient then
+	    ingredient:AddDictionaryPrefab("magic_seal")
+	end
+	ingredient = recipe:FindAndConvertIngredient("moonglass")
+	if ingredient then
+	    ingredient:AddDictionaryPrefab("sand")
+	end
+	ingredient = recipe:FindAndConvertIngredient("messagebottleempty")
+	if ingredient then
+	    ingredient:AddDictionaryPrefab("ia_messagebottleempty")
+	end
+end)
+
+AddRecipePostInit("thermos_bottle_big", function(recipe)
+	local ingredient = recipe:FindAndConvertIngredient("alterguardianhatshard")
+	if ingredient then
+	    ingredient:AddDictionaryPrefab("magic_seal")
+	end
+	ingredient = recipe:FindAndConvertIngredient("purebrilliance")
+	if ingredient then
+	    ingredient:AddDictionaryPrefab("dragoonheart")
+	end
+end)
+]]

@@ -21,7 +21,8 @@ local waterborne_time = GetModConfigData("waterborne_time")
 local butterhunter_time = GetModConfigData("butterhunter_time")
 local satiety_time = GetModConfigData("satiety_time")
 
-table.insert(TUNING.GAMEMODE_STARTING_ITEMS.DEFAULT.WARLY,"portablekettle_item")
+table.insert(TUNING.GAMEMODE_STARTING_ITEMS.DEFAULT.WARLY,"portable_tea_pot_item")
+--table.insert(TUNING.GAMEMODE_STARTING_ITEMS.DEFAULT.WARLY,"portable_tea_pot_item")
 TUNING.WX78_CHARGING_FOODS["areuhi"] = 1
 TUNING.WX78_CHARGING_FOODS["kumis"] = 1
 TUNING.GOLD_VALUES.WINE_CELLAR_PART = 12

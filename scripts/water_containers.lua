@@ -215,7 +215,7 @@ function params.brewery.widget.buttoninfo.validfn(inst)
     return inst.replica.container ~= nil and inst.replica.container:IsFull() and inst.replica.waterlevel:HasWater()
 end
  
-containers.params.portabletea_pot = params.tea_pot
+containers.params.portable_tea_pot = params.tea_pot
 
 function params.distillers.itemtestfn(container, item, slot)
     return (item.prefab ~= "goopydrink" or item.prefab ~= "spoiled_drink")

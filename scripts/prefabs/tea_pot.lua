@@ -168,6 +168,7 @@ end
 local function harvestfn(inst)
     if not inst:HasTag("burnt") then
         inst.AnimState:PushAnimation("idle_empty",false)
+        inst.AnimState:OverrideSymbol("tea_pot_swap","tea_pot_meter_water","0")
         inst:DoTaskInTime(.75,function (inst)
             inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_close")
             inst.components.waterlevel:DoDelta(-inst.components.waterlevel:GetWater())
@@ -363,7 +364,7 @@ local function fn()
     inst:AddComponent("waterlevel")
     inst.components.waterlevel:SetCanAccepts({WATERGROUP.BOILABLE})
     inst.components.waterlevel:SetTakeWaterFn(OnTakeWater)
-    inst.components.waterlevel.maxwater = TUNING.KETTLE_MAX_LEVEL
+    inst.components.waterlevel.maxwater = TUNING.TEA_POT_MAX_LEVEL
     inst.components.waterlevel:SetSections(TUNING.TEA_POT_MAX_LEVEL)
     inst.components.waterlevel:SetSectionCallback(OnSectionChange)
     inst.components.waterlevel:InitializeWaterLevel(0)

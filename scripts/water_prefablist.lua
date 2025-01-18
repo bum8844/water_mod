@@ -11,6 +11,7 @@ return {
 	"bottle_pouch",
 	"wine_cellar_part",
 	"purification_tablets",
+	"warkawater",
 
 	--structures
 	"barrel",
@@ -19,7 +20,7 @@ return {
 	"campdesalinator",
 	"desalinator",
 	"tea_pot",
-	--"portable_tea_pot",
+	"portable_tea_pot",
 	"well",
 	"well_sprinkler",
 	"well_drilling",

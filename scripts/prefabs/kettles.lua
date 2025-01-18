@@ -235,7 +235,6 @@ local function MakeKettles(name, masterfn, tags)
 			    inst.components.pickable.numtoharvest = inst.components.waterlevel:GetWater()
 			    inst.components.pickable.canbepicked = true
 			    inst.components.pickable.product = "water_"..inst.components.waterlevel.watertype
-			    inst.components.waterlevel.waterperish = nil
 			    inst.AnimState:PlayAnimation("idle_empty")
 			    inst.SoundEmitter:KillSound("snd")
 			    inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_finish", "snd")
@@ -289,21 +288,22 @@ local function MakeKettles(name, masterfn, tags)
 
 	local function OnTaken(inst, source, delta)
 	    if not inst:HasTag("burnt") then
-	        inst.components.container.canbeopened = false
+			inst.components.pickable.numtoharvest = inst.components.waterlevel.currentwater
+	    	if inst.components.pickable.numtoharvest == 0 then
+	    		inst.components.pickable.canbepicked = false
+	    	end
 	        inst.AnimState:PlayAnimation("getdrink_empty")
 	        inst.AnimState:PushAnimation("idle_empty", false)
-	        inst:DoTaskInTime(.5,function(inst)
-	            inst.components.container.canbeopened = true
-	        end)
 	        inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/medium")
 	    end
 	end
 
 	local function OnPickedFn(inst,picker,loot)
 	    loot.components.inventoryitemmoisture:SetMoisture(0)
-	    inst.components.waterlevel.watertype = nil
-	    loot.components.perishable:SetPercent(inst.components.waterlevel.waterperish or 1)
+	    local waterperish = inst._waterperish or inst.components.waterlevel:GetWaterPerish()
+	    loot.components.perishable:SetPercent(waterperish)
 	    inst.components.waterlevel:DoDelta(-inst.components.waterlevel:GetWater())
+	    inst.components.waterlevel.watertype = nil
 	    inst.AnimState:PlayAnimation("getdrink_empty")
 	    inst.AnimState:PushAnimation("idle_empty")
 	    inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/small")
@@ -369,8 +369,8 @@ local function MakeKettles(name, masterfn, tags)
         end
 
 	    inst:AddComponent("waterlevel")
+	    inst.components.waterlevel.isblockbucket = true
 	    inst.components.waterlevel.onlysamewater = true
-	    inst.components.waterlevel.save_waterperish = true
 	    inst.components.waterlevel:SetCanAccepts({WATERGROUP.BOILABLE})
 	    inst.components.waterlevel:SetTakeWaterFn(OnTakeWater)
 	    inst.components.waterlevel:SetSections(TUNING.KETTLE_MAX_LEVEL)
@@ -392,6 +392,9 @@ local function MakeKettles(name, masterfn, tags)
 	    inst:AddComponent("water")
 	    inst.components.water.available = false
 	    inst.components.water:SetOnTakenFn(OnTaken)
+
+	    inst:AddComponent("watersource")
+	    inst.components.watersource.available = false
 
 	    inst:AddComponent("wateryprotection")
 	    inst.components.wateryprotection.extinguishheatpercent = TUNING.WATER_BARREL_EXTINGUISH_HEAT_PERCENT

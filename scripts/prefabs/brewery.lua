@@ -343,7 +343,6 @@ local function fn()
     inst.components.waterspoilage.localPerishMultiplyer = TUNING.BREWERY_FRESHENING_RATE
 
     inst:AddComponent("waterlevel")
-    inst.components.waterlevel.save_waterperish = true
     inst.components.waterlevel:SetCanAccepts({WATERTYPE.CLEAN, WATERTYPE.EMPTY})
     inst.components.waterlevel:SetTakeWaterFn(OnTakeWater)
     inst.components.waterlevel.maxwater = TUNING.BREWERY_MAX_LEVEL

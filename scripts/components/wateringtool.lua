@@ -2,7 +2,6 @@ local WateringTool = Class(function(self, inst)
     self.inst = inst
 
     self.watertype = nil
-    --self.wateringtoolstate = BUCKETSTATE.EMPTY
 
     self.basetime = nil
     self.targettime = nil

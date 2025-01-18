@@ -126,7 +126,7 @@ SortAfter("kettle","cookpot","STRUCTURES")
 AddRecipe2("portablekettle_item",{Ingredient("transistor",2),Ingredient("cutstone",4),Ingredient("charcoal",3)},TECH.SCIENCE_TWO,{atlas = ModAtlas(), image = "portablekettle_item.tex"},{"COOKING","HYDRATION"})
 SortAfter("portablekettle_item","kettle","COOKING")
 
-AddRecipe2("purification_tablets",{Ingredient("nitre",3),Ingredient("ash",3),Ingredient("charcoal",3),Ingredient("water_clean",6,Drink_ModAtlas(),nil,"water_clean_bottle.tex")},TECH.SCIENCE_TWO,{atlas = ModAtlas(), image = "purification_tablets_bottle.tex", numtogive=5},{"COOKING","HYDRATION","REFINE"})
+AddRecipe2("purification_tablets",{Ingredient("nitre",2),Ingredient("ash",5),Ingredient("charcoal",10),Ingredient("water_clean",5,Drink_ModAtlas(),nil,"water_clean_bottle.tex")},TECH.SCIENCE_TWO,{atlas = ModAtlas(), image = "purification_tablets_bottle.tex", numtogive=3},{"COOKING","HYDRATION","REFINE"})
 SortAfter("purification_tablets","kettle","COOKING")
 SortAfter("purification_tablets","campkettle_item","REFINE")
 

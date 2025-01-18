@@ -35,6 +35,11 @@ nil,
     available = onavailable,
 })
 
+local function ResetWater(inst, self)
+    self.watermanager_tesk = nil
+    self.left_to_dirty = 0
+end
+
 function Water:OnRemoveFromEntity()
     if self.watertype ~= nil then
         self.inst:RemoveTag("water_"..self.watertype)
@@ -64,9 +69,18 @@ function Water:SetWaterType(type)
     self.watertype = type
 end
 
+function Water:SetOnTakenFn(fn)
+    self.ontaken = fn
+end
 
 function Water:DoWaterManaging(num)
     self.left_to_dirty = num
+    if self:IsTask() then
+        self.watermanager_tesk:Cancel()
+        self.watermanager_tesk = nil
+    end
+    self.remainingtime = GetTime() - TUNING.PERISH_ONE_DAY
+    self.watermanager_tesk = self.inst:DoTaskInTime(TUNING.PERISH_ONE_DAY,ResetWater)
 end
 
 function Water:SetWaterManager(num, type, def_type)
@@ -74,10 +88,6 @@ function Water:SetWaterManager(num, type, def_type)
     self.left_to_dirty = num or TUNING.DEFAULT_LEFT_TO_DIRTY
     self.set_watertype = type
     self:SetWaterType(def_type)
-end
-
-function Water:SetOnTakenFn(fn)
-    self.ontaken = fn
 end
 
 --Use taker.waterlevel.oldcurrentwater and currentwater
@@ -91,13 +101,21 @@ function Water:Taken(taker, delta)
     end
     if self.use_WaterManager and self.left_to_dirty > 0 then
         self.left_to_dirty = self.left_to_dirty - 1
+        if self.left_to_dirty == 0 then
+            self.watermanager_tesk:Cancel()
+            self.watermanager_tesk = nil
+        end
     end
 end
 
+function Water:IsTask()
+    return self.watermanager_tesk
+end
 
 function Water:OnSave()
     if self.use_WaterManager then
-        return {watermanager = self.left_to_dirty}
+        local timer = self.remainingtime and self.remainingtime - GetTime() or nil
+        return {watermanager = self.left_to_dirty, timer = timer}
     end
 end
 
@@ -105,6 +123,24 @@ function Water:OnLoad(data)
     if data.watermanager then
         self.use_WaterManager = true
         self.left_to_dirty = data.watermanager
+        if data.timer and data.watermanager ~= 0 then
+            self.remainingtime = GetTime() + data.timer
+            self.watermanager_tesk = self.inst:DoTaskInTime(data.timer,ResetWater)
+        end
+    end
+end
+
+function Water:LongUpdate(dt)
+    if self:IsTask() then
+        self.watermanager_tesk:Cancel()
+        self.watermanager_tesk = nil
+
+        if self.remainingtime - dt > GetTime() then
+            self.remainingtime = self.remainingtime - dt
+            self.watermanager_tesk = self.inst:DoTaskInTime(self.remainingtime - GetTime(), ResetWater)
+        else
+            ResetWater(self.inst, self)
+        end
     end
 end
 

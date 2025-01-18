@@ -15,9 +15,16 @@ function Watertaker:Fill(source, doer, watertype)
 
 	local watertype = source ~= nil and source.components.water:GetWatertype() or watertype or WATERTYPE.SALTY
 	local wateramount = source ~= nil and source.components.water:GetWater() or self.capacity
-	local waterperish = source ~= nil and (source.components.waterspoilage ~= nil and source.components.waterspoilage:GetPercent() or
+	local waterperish = source ~= nil and (source.components.waterspoilage and source.components.waterspoilage:GetPercent() or
+						source._waterperish and source._waterperish or
+						source.components.waterlevel and source.components.waterlevel.waterperish  and source.components.waterlevel.waterperish or
 						source.components.water.use_WaterManager and CheckWaterType(watertype) and math.min(1,(source.components.water.left_to_dirty*.1)*2)
 						) or nil
+
+	if source and source.components.waterlevel.waterperish then
+		source.components.waterlevel.waterperish = 1
+		source._waterperish = nil
+	end
 
 	if self.inst.components.finiteuses ~= nil then
     	if self.inst.components.finiteuses:GetUses() < wateramount then

@@ -43,6 +43,8 @@ return
 		{
 			RAWTEXT = "상태 : %s",
 			RAWTEXT_EXT = "상태 : %s / 남은 양 : %s",
+			RAWTEXT_TIME =  "상태 : {state} / 초기화 까지 : {time}",
+			RAWTEXT_TIME_EXT =  "상태 : {state} / 남은 양 : {num} / 초기화 까지 : {time}",
 		},
 
 		DISTILLER =
@@ -57,8 +59,8 @@ return
 
 		WATERSPOILAGE =
 		{
-			RAWTEXT = "{state},이(가) 까지 {time},",
-			RAWTEXT_EXT = "{state},이(가) 까지 {time},({percent},)",
+			RAWTEXT = "{state}가 완료 될 까지 {time},",
+			RAWTEXT_EXT = "{state}가 완료 될 까지 {time},({percent})",
 		},
 
 		STEAMPRESSURE =
