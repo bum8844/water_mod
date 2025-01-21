@@ -12,6 +12,26 @@ local prefabs =
 	"collapse_small",
 }
 
+local function Calculate(picker,loot)
+	local test = picker.components.steampressure:GetPressureSection()
+
+	if test > 0 then
+		picker.components.pickable.numtoharvest = 1
+		picker.components.pickable.canbepicked = true
+	else
+		picker.components.pickable.numtoharvest = 0
+		picker.components.pickable.canbepicked = false
+	end
+end
+
+local function GetArea(inst)
+	local x, y, z = inst.Transform:GetWorldPosition()
+	local lunacyarea = TheWorld.Map:FindVisualNodeAtPoint(x, y, z , "lunacyarea") ~= nil
+	inst.components.water:SetWaterType(lunacyarea and WATERTYPE.MINERAL or WATERTYPE.CLEAN)
+
+	return lunacyarea and WATERTYPE.MINERAL or WATERTYPE.CLEAN
+end
+
 local function SetSection(meter, num)
 	meter.AnimState:SetPercent("idle", num)
 end
@@ -46,6 +66,7 @@ local function TurnOn(inst, instant)
 end
 
 local function SetChargingDoneFn(inst)
+	Calculate(inst)
 	inst.components.water.available = true
 	inst.components.watersource.available = true
 	inst:DoTaskInTime(0,function(inst)
@@ -55,6 +76,8 @@ local function SetChargingDoneFn(inst)
 end
 
 local function OnDeplete(inst)
+	Calculate(inst)
+	inst.components.pickable.canbepicked = false
 	inst.components.water.available = false
 	inst.components.watersource.available = false
 	inst:DoTaskInTime(0,function(inst)
@@ -68,6 +91,12 @@ local function OnTaken(inst, taker, delta)
 		local ison = inst.components.machine:IsOn()
 		inst.sg:GoToState("pumping",ison)
 	end
+end
+
+local function OnPickedFn(inst,picker,loot)
+	loot.components.inventoryitemmoisture:SetMoisture(0)
+	loot.components.stackable:SetStackSize(TUNING.STACK_SIZE_TINYITEM)
+	inst.components.steampressure:LostPressure()
 end
 
 local function onhit(inst, worker)
@@ -124,14 +153,23 @@ end
 local function OnSpawnIn(inst)
 	inst.entity:Show()
 
-	local x, y, z = inst.Transform:GetWorldPosition()
-	local lunacyarea = TheWorld.Map:FindVisualNodeAtPoint(x, y, z , "lunacyarea") ~= nil
-	inst.components.water:SetWaterType(lunacyarea and WATERTYPE.MINERAL or WATERTYPE.CLEAN)
+	local watertype = GetArea(inst)
+
+	inst.components.pickable.product = "water_"..watertype
 
 	if not inst.sg:HasStateTag("active") then
 		inst.sg:GoToState("place")
 	end
 	local test = inst.components.steampressure:GetPressureSection()
+
+	if test > 0 then
+		inst.components.pickable.numtoharvest = 1
+		inst.components.pickable.canbepicked = true
+	else
+		inst.components.pickable.numtoharvest = 0
+		inst.components.pickable.canbepicked = false
+	end
+
 	inst.AnimState:OverrideSymbol("swap", "well_waterpump_meter", tostring(test))
 end
 
@@ -221,6 +259,7 @@ local function fn()
     inst:AddTag("cleanwaterproduction")
     inst:AddTag("alwayson")
     inst:AddTag("hashole")
+    inst:AddTag("blockbucket")
 	
 	MakeObstaclePhysics(inst, .5)
 
@@ -269,6 +308,9 @@ local function fn()
 
 	inst:AddComponent("lootdropper")
 
+	inst:AddComponent("pickable")
+	inst.components.pickable.onpickedfn = OnPickedFn
+
 	inst:AddComponent("water")
 	inst.components.water:SetOnTakenFn(OnTaken)
 
@@ -284,6 +326,8 @@ local function fn()
 
 	inst:DoTaskInTime(0, OnSpawnIn)
 	inst:ListenForEvent("onbuilt",removehole)
+	inst:ListenForEvent("picked",Calculate)
+	--inst:PushEvent("picked", { picker = picker, loot = loot, plant = self.inst })
 	--inst:ListenForEvent("showmeter", ShowMeter)
 	--inst:ListenForEvent("hidemeter", HideMeter)
 
@@ -316,6 +360,5 @@ end
 	return inst
 end]]
 
-return Prefab("well_waterpump", fn, assets, prefabs),
-MakePlacer("well_waterpump_placer", "well_waterpump", "well_waterpump", "deactive", nil, nil, nil, nil, nil, nil, placer_postinit_fn)
+return Prefab("well_waterpump", fn, assets, prefabs)
 --Prefab("well_waterpump_meter", meterfn, assets, prefabs)

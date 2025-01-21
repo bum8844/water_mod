@@ -61,7 +61,10 @@ return {
 		WELL_DRILLING_ITEM = "이걸로 불은 못 붙히는 거야?", --드릴 아이템
 		HOLE = "빠지면 뼈도 못 추리겠어.", --우물 구멍
 		WELL = "'우물'이 있으면 '좌불'도 있어야 하는 거 아니야?", --우물
-		BOTTLE_POUCH = "",
+		BOTTLE_POUCH_SMALL = "",
+		BOTTLE_POUCH_BIG = "",
+		THERMOS_BOTTLE_SMALL = "",
+		THERMOS_BOTTLE_BIG = "",
 		WINE_CELLAR_PART = "",
 		WINE_CELLAR = "",
 

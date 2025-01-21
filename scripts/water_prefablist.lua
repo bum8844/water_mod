@@ -7,11 +7,12 @@ return {
 	"additives",
 	"fruitflyfruit_dead",
 	"water_spice",
-	"thermos_bottle",
-	"bottle_pouch",
+	--"thermos_bottle",
+	--"bottle_pouch",
 	"wine_cellar_part",
 	"purification_tablets",
 	"warkawater",
+	"drink_container",
 
 	--structures
 	"barrel",

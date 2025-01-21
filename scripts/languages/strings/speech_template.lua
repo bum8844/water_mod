@@ -55,7 +55,10 @@ return {
 		WELL_DRILLING_ITEM = "",
 		HOLE = "",
 		WELL = "",
-		BOTTLE_POUCH = "",
+		BOTTLE_POUCH_SMALL = "",
+		BOTTLE_POUCH_BIG = "",
+		THERMOS_BOTTLE_SMALL = "",
+		THERMOS_BOTTLE_BIG = "",
 		WINE_CELLAR_PART = "",
 		WINE_CELLAR = "",
 

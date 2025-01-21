@@ -61,7 +61,10 @@ return {
 		WELL_DRILLING_ITEM = "물을 길을 우물을 파는 장치야.",
 		HOLE = "여기에 우물을 만들면 되겠어.",
 		WELL = "이제 깨끗한 물을 간편하게 얻을 수 있어!",
-		BOTTLE_POUCH = "",
+		BOTTLE_POUCH_SMALL = "",
+		BOTTLE_POUCH_BIG = "",
+		THERMOS_BOTTLE_SMALL = "",
+		THERMOS_BOTTLE_BIG = "",
 		WINE_CELLAR_PART = "",
 		WINE_CELLAR = "",
 

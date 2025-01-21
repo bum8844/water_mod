@@ -50,7 +50,10 @@ return {
 		WELL_DRILLING_ITEM = "땅을 파헤친다. 아주 강력하게!", --드릴 아이템
 		HOLE = "볼프강 구멍에서 물 얻어낸다.", --우물 구멍
 		WELL = "이제 우물에서 물 얻을수 있다!", --우물
-		BOTTLE_POUCH = "",
+		BOTTLE_POUCH_SMALL = "",
+		BOTTLE_POUCH_BIG = "",
+		THERMOS_BOTTLE_SMALL = "",
+		THERMOS_BOTTLE_BIG = "",
 		WINE_CELLAR_PART = "",
 		WINE_CELLAR = "",
 

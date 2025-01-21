@@ -65,18 +65,18 @@ return
 
 		STEAMPRESSURE =
 		{
-			RAWTEXT = "<color=#D4D4D4>증기</color>가 {percent}, 충전됨",
-			RAWTEXT_EXT = "<color=#D4D4D4>증기</color>가 {percent},(<color=#D4D4D4>{cur},/{max},</color>) 충전됨",
-			RAWTEXT_TIME = "<color=#D4D4D4>증기</color>가 완충 될 때까지 {time},({percent},)",
-			RAWTEXT_TIME_EXT = "<color=#D4D4D4>증기</color>가 완충됨 {time},({percent},)[<color=#D4D4D4>{cur},/{max},</color>]",
+			RAWTEXT = "<color=#D4D4D4>증기</color>가 {percent}% 충전됨",
+			RAWTEXT_EXT = "<color=#D4D4D4>증기</color>가 {percent}%,(<color=#D4D4D4>{cur}/{max}</color>) 충전됨",
+			RAWTEXT_TIME = "<color=#D4D4D4>증기</color>가 완충 될 때까지 {time}({percent}%)",
+			RAWTEXT_TIME_EXT = "<color=#D4D4D4>증기</color>가 완충 될 때까지 {time}({percent}%)[<color=#D4D4D4>{cur}/{max}</color>]",
 		},
 
 		WATERINGSTRUCTURE =
 		{
-			RAWTEXT = "<color=#D4D4D4>증기</color>가 {percent}, 충전됨",
-			RAWTEXT_EXT = "<color=#D4D4D4>증기</color>가 {percent},(<color=#D4D4D4>{cur},/{max},</color>) 충전됨",
-			RAWTEXT_TIME = "<color=#D4D4D4>증기</color>가 완충 될 때까지 {time},({percent},)",
-			RAWTEXT_TIME_EXT = "<color=#D4D4D4>증기</color>가 완충됨 {time},({percent},)[<color=#D4D4D4>{cur},/{max},</color>]",
+			RAWTEXT = "물통 : {bucket}\n물의 상태 : {state}",
+			RAWTEXT_EXT = "물통 : {bucket} / 내구도 {percent},({cur}/{max})\n물의 상태 : {state}(수량 : {amount})",
+			RAWTEXT_TIME = "물통 : {bucket}\n물의 상태 : {state}\n{n_state} 까지 {time}",
+			RAWTEXT_TIME_EXT = "물통 : {bucket} / 내구도 {percent},({cur}/{max})\n물의 상태 : {state}(수량 : {amount})\n{n_state} 까지 {time}",
 		},
 
 

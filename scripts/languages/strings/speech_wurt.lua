@@ -50,7 +50,10 @@ return {
 		WELL_DRILLING_ITEM = "땅에 구멍 왜 뚫어?", --드릴 아이템
 		HOLE = "물 소리 나.", --우물 구멍
 		WELL = "매끈이들 구멍에서 물 떠 마신대, 왜?", --우물
-		BOTTLE_POUCH = "",
+		BOTTLE_POUCH_SMALL = "",
+		BOTTLE_POUCH_BIG = "",
+		THERMOS_BOTTLE_SMALL = "",
+		THERMOS_BOTTLE_BIG = "",
 		WINE_CELLAR_PART = "",
 		WINE_CELLAR = "",
 

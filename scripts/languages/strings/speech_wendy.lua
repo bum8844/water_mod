@@ -61,7 +61,10 @@ return {
 		WELL_DRILLING_ITEM = "대지를 꿰뚫는 드릴이야.",
 		HOLE = "나는 아직 밑바닥에 닿지도 않았는데, 어떻게 집에 돌아갈 수 있을까?", -- (이상한 나라의 엘리스)
 		WELL = "어떤 어두운 비밀이 숨어있을지 누가 알겠어.",
-		BOTTLE_POUCH = "",
+		BOTTLE_POUCH_SMALL = "",
+		BOTTLE_POUCH_BIG = "",
+		THERMOS_BOTTLE_SMALL = "",
+		THERMOS_BOTTLE_BIG = "",
 		WINE_CELLAR_PART = "",
 		WINE_CELLAR = "",
 

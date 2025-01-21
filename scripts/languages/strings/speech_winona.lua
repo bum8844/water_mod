@@ -60,7 +60,10 @@ return {
 		WELL_DRILLING_ITEM = "굴착 좀 해 보자고!", --드릴 아이템
 		HOLE = "지하수와 연결된 구멍이야.", --우물 구멍
 		WELL = "뭔가 보완할 점이 보이는데.", --우물
-		BOTTLE_POUCH = "",
+		BOTTLE_POUCH_SMALL = "",
+		BOTTLE_POUCH_BIG = "",
+		THERMOS_BOTTLE_SMALL = "",
+		THERMOS_BOTTLE_BIG = "",
 		WINE_CELLAR_PART = "",
 		WINE_CELLAR = "",
 

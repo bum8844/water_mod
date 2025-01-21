@@ -49,7 +49,10 @@ return {
 		WELL_DRILLING_ITEM = "수맥 개발용 장치", --드릴 아이템(AFS: "A 'WELL'-DEVELOPING DEVICE"?)
 		HOLE = "물을 뽑아내기 위한 구멍", --우물 구멍
 		WELL = "물의 안정적 공급처", --우물
-		BOTTLE_POUCH = "",
+		BOTTLE_POUCH_SMALL = "",
+		BOTTLE_POUCH_BIG = "",
+		THERMOS_BOTTLE_SMALL = "",
+		THERMOS_BOTTLE_BIG = "",
 		WINE_CELLAR_PART = "",
 		WINE_CELLAR = "",
 

@@ -61,7 +61,10 @@ return {
 		WELL_DRILLING_ITEM = "우리 우물 한번 파 볼까,워비?",
 		HOLE = "혹시 세상 반대편까지 이어져 있는걸까?",
 		WELL = "왜 그래 워비? 누가 거기 빠졌어?",
-		BOTTLE_POUCH = "",
+		BOTTLE_POUCH_SMALL = "",
+		BOTTLE_POUCH_BIG = "",
+		THERMOS_BOTTLE_SMALL = "",
+		THERMOS_BOTTLE_BIG = "",
 		WINE_CELLAR_PART = "",
 		WINE_CELLAR = "",
 

@@ -61,7 +61,10 @@ return {
 		WELL_DRILLING_ITEM = "수맥을 찾고 뚫어줄 거야.", --드릴 아이템
 		HOLE = "물 흐르는 소리가 들려.", --우물 구멍
 		WELL = "식수를 길어보자!", --우물
-		BOTTLE_POUCH = "",
+		BOTTLE_POUCH_SMALL = "",
+		BOTTLE_POUCH_BIG = "",
+		THERMOS_BOTTLE_SMALL = "",
+		THERMOS_BOTTLE_BIG = "",
 		WINE_CELLAR_PART = "",
 		WINE_CELLAR = "",
 

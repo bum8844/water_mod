@@ -1,5 +1,5 @@
 local assets = {
-
+    --Asset("ANIM","anim/warkawater.zip"),
 }
 
 local prefabs = {
@@ -16,6 +16,26 @@ end
 
 local function onpercentusedchange(inst)
     inst.components.wateryprotection.addwetness = data.percent * TUNING.KETTLE_WETNESS
+end
+
+local function ChangeToItem(inst)
+    if inst.components.container ~= nil then
+        inst.components.container:DropEverything()
+    end
+
+    local item = SpawnPrefab("warkawater_item")
+    item.Transform:SetPosition(inst.Transform:GetWorldPosition())
+    item.AnimState:PlayAnimation("collapse")
+    item.SoundEmitter:PlaySound("dontstarve/common/together/portable/cookpot/collapse")
+end
+
+local function OnDismantle(inst, doer)
+    if inst.components.waterlevel:GetPercent() <= 0 then
+        ChangeToItem(inst)
+        inst:Remove()
+    else
+        doer.components.talker:Say(GetString(doer,"ACTIONFAIL",{"DISMANTLE","NOTEMPTY"}))
+    end
 end
 
 local function fn()
@@ -42,6 +62,9 @@ local function fn()
     if not TheWorld.ismastersim then
         return inst
     end
+
+    inst:AddComponent("portablestructure")
+    inst.components.portablestructure:SetOnDismantleFn(OnDismantle)
 
     inst:AddComponent("watercollection")
 

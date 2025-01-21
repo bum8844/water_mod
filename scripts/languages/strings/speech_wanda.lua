@@ -61,7 +61,10 @@ return {
 		WELL_DRILLING_ITEM = "우물을 어디다 팔지부터 정하자고.", --드릴 아이템
 		HOLE = "여기 빠지면 나오는 데에 한 세월은 걸리겠어.", --우물 구멍
 		WELL = "어디 보자, 우물을 작동시키려면 뭐가 필요했더라?", --우물
-		BOTTLE_POUCH = "",
+		BOTTLE_POUCH_SMALL = "",
+		BOTTLE_POUCH_BIG = "",
+		THERMOS_BOTTLE_SMALL = "",
+		THERMOS_BOTTLE_BIG = "",
 		WINE_CELLAR_PART = "",
 		WINE_CELLAR = "",
 

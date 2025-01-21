@@ -20,7 +20,10 @@ return
 
 		WINE_CELLAR = "와인 보관함",
 		WINE_CELLAR_PART = "와인 보관함 재료",
-		BOTTLE_POUCH = "물병파우치",
+		BOTTLE_POUCH_SMALL = "소용량 물병파우치",
+		BOTTLE_POUCH_BIG = "대용량 물병파우치",
+		THERMOS_BOTTLE_SMALL = "소용량 보온병",
+		THERMOS_BOTTLE_BIG = "대용량 보온병",
 
 		-- boilbook
 		BOILBOOK_BASIC = "음료의 세계",
@@ -355,6 +358,10 @@ return
 		WELL_BURYING_KIT = "소원의 우물에 돌 던지기.",
 		DESALINATOR = "짠돌이 바닷물을 덜 짜게.",
 		BARREL = "원숭이 미포함.",
+		BOTTLE_POUCH_SMALL = "주머니에 여유를",
+		BOTTLE_POUCH_BIG = "거대한 물 보관 가방",
+		THERMOS_BOTTLE_SMALL = "음료를 좀더 오래 보관하세요",
+		THERMOS_BOTTLE_BIG = "궁극의 음료 보관함",
 		BREWERY = "맛있는 음료를 만들어 보세요. (희망사항)",
 		BUCKET_EMPTY = "그냥 빈 양동이.",
 		CAMPKETTLE_ITEM = "불 없이는 아무것도 못 합니다.",

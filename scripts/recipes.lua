@@ -119,18 +119,18 @@ AddRecipe2("campkettle_item",{Ingredient("twigs",2),Ingredient("log",2),Ingredie
 SortBefore("campkettle_item","cookpot","COOKING")
 SortBefore("campkettle_item","transistor","REFINE")
 
-AddRecipe2("kettle",{Ingredient("twigs",6),Ingredient("rope",2),Ingredient("charcoal",2)},TECH.SCIENCE_ONE,{placer = "kettle_placer", atlas = ModAtlas(), image = "kettle.tex"},{"COOKING","HYDRATION","STRUCTURES"})
+AddRecipe2("kettle",{Ingredient("twigs",6),Ingredient("cutstone",2),Ingredient("charcoal",2)},TECH.SCIENCE_ONE,{placer = "kettle_placer", atlas = ModAtlas(), image = "kettle.tex"},{"COOKING","HYDRATION","STRUCTURES"})
 SortAfter("kettle","cookpot","COOKING")
 SortAfter("kettle","cookpot","STRUCTURES")
 
-AddRecipe2("portablekettle_item",{Ingredient("transistor",2),Ingredient("cutstone",4),Ingredient("charcoal",3)},TECH.SCIENCE_TWO,{atlas = ModAtlas(), image = "portablekettle_item.tex"},{"COOKING","HYDRATION"})
+AddRecipe2("portablekettle_item",{Ingredient("transistor",2),Ingredient("goldnugget",2),Ingredient("charcoal",3)},TECH.SCIENCE_TWO,{atlas = ModAtlas(), image = "portablekettle_item.tex"},{"COOKING","HYDRATION"})
 SortAfter("portablekettle_item","kettle","COOKING")
 
 AddRecipe2("purification_tablets",{Ingredient("nitre",2),Ingredient("ash",5),Ingredient("charcoal",10),Ingredient("water_clean",5,Drink_ModAtlas(),nil,"water_clean_bottle.tex")},TECH.SCIENCE_TWO,{atlas = ModAtlas(), image = "purification_tablets_bottle.tex", numtogive=3},{"COOKING","HYDRATION","REFINE"})
 SortAfter("purification_tablets","kettle","COOKING")
 SortAfter("purification_tablets","campkettle_item","REFINE")
 
-AddRecipe2("tea_pot",{Ingredient("twigs",6),Ingredient("rope",2),Ingredient("charcoal",2)},TECH.SCIENCE_ONE,{placer = "tea_pot_placer", atlas = ModAtlas(), image = "tea_pot.tex"},{"COOKING","HYDRATION","STRUCTURES"})
+AddRecipe2("tea_pot",{Ingredient("twigs",3),Ingredient("flint",2),Ingredient("rope",2),Ingredient("charcoal",2)},TECH.SCIENCE_ONE,{placer = "tea_pot_placer", atlas = ModAtlas(), image = "tea_pot.tex"},{"COOKING","HYDRATION","STRUCTURES"})
 SortAfter("tea_pot","purification_tablets","COOKING")
 SortAfter("tea_pot","purification_tablets","STRUCTURES")
 
@@ -145,11 +145,11 @@ AddRecipe2("distillers",{Ingredient("dreadstone",8),Ingredient("nightmarefuel",4
 SortAfter("distillers","brewery","COOKING")
 
 
-AddRecipe2("bottle_pouch",{Ingredient("papyrus",4),Ingredient("tentaclespots",2)},TECH.SCIENCE_TWO,{atlas = ModAtlas(), image = "bottle_pouch.tex"},{"COOKING","CONTAINERS","HYDRATION"})
---AddRecipe2("bottle_pouch_small",{Ingredient("papyrus",2),Ingredient("tentaclespots",2)},TECH.SCIENCE_ONE,{atlas = ModAtlas(), image = "bottle_pouch_small.tex"},{"COOKING","CONTAINERS","HYDRATION"})
---AddRecipe2("bottle_pouch_big",{Ingredient("bottle_pouch_small",2,ModAtlas(),nil,"bottle_pouch_small.tex"),Ingredient("alterguardianhatshard",1),Ingredient("rope",2),Ingredient("bearger_fur",1)},TECH.SCIENCE_TWO,{atlas = ModAtlas(), image = "bottle_pouch_big.tex"},{"COOKING","CONTAINERS","HYDRATION"})
---AddRecipe2("thermos_bottle_small",{Ingredient("opalpreciousgem",1),Ingredient("moonglass",5),Ingredient("rope",3),Ingredient("goldnugget",10),Ingredient("messagebottleempty",2)},TECH.SCIENCE_ONE,{atlas = ModAtlas(), image = "thermos_bottle_small.tex"},{"COOKING","CONTAINERS","HYDRATION"})
---AddRecipe2("thermos_bottle_big",{Ingredient("thermos_bottle_small",1,ModAtlas(),nil,"thermos_bottle_small.tex"),Ingredient("alterguardianhatshard",1),Ingredient("purebrilliance",2)},TECH.SCIENCE_TWO,{atlas = ModAtlas(), image = "thermos_bottle_big.tex"},{"COOKING","CONTAINERS","HYDRATION"})
+--AddRecipe2("bottle_pouch",{Ingredient("papyrus",4),Ingredient("tentaclespots",2)},TECH.SCIENCE_TWO,{atlas = ModAtlas(), image = "bottle_pouch.tex"},{"COOKING","CONTAINERS","HYDRATION"})
+AddRecipe2("bottle_pouch_small",{Ingredient("papyrus",2),Ingredient("tentaclespots",2)},TECH.SCIENCE_ONE,{atlas = ModAtlas(), image = "bottle_pouch_small.tex"},{"COOKING","CONTAINERS","HYDRATION"})
+AddRecipe2("bottle_pouch_big",{Ingredient("bottle_pouch_small",2,ModAtlas(),nil,"bottle_pouch_small.tex"),Ingredient("alterguardianhatshard",1),Ingredient("rope",2),Ingredient("bearger_fur",1)},TECH.SCIENCE_TWO,{atlas = ModAtlas(), image = "bottle_pouch_big.tex"},{"COOKING","CONTAINERS","HYDRATION"})
+AddRecipe2("thermos_bottle_small",{Ingredient("opalpreciousgem",1),Ingredient("moonglass",5),Ingredient("rope",3),Ingredient("goldnugget",10),Ingredient("messagebottleempty",2)},TECH.SCIENCE_ONE,{atlas = ModAtlas(), image = "thermos_bottle_small.tex"},{"COOKING","CONTAINERS","HYDRATION"})
+AddRecipe2("thermos_bottle_big",{Ingredient("thermos_bottle_small",1,ModAtlas(),nil,"thermos_bottle_small.tex"),Ingredient("alterguardianhatshard",1),Ingredient("purebrilliance",2)},TECH.SCIENCE_TWO,{atlas = ModAtlas(), image = "thermos_bottle_big.tex"},{"COOKING","CONTAINERS","HYDRATION"})
 
 
 AddRecipe2("wine_cellar",{Ingredient("wine_cellar_part",3),Ingredient("gelblob_bottle",4),Ingredient("cutstone",6)},TECH.LOST,{placer = "wine_cellar_placer",atlas = ModAtlas(), image="wine_cellar.tex", testfn=function(pt) return not TheWorld.Map:GetPlatformAtPoint(pt.x, 0, pt.z, -0.5) ~= nil and not TheWorld.Map:IsDockAtPoint(pt.x, 0, pt.z) end},{"COOKING","HYDRATION","CONTAINERS","STRUCTURES"})
@@ -157,10 +157,10 @@ SortAfter("wine_cellar","icebox","COOKING")
 SortAfter("wine_cellar","icebox","CONTAINERS")
 SortAfter("wine_cellar","icebox","STRUCTURES")
 
-SortAfter("bottle_pouch","wine_cellar","COOKING")
-SortAfter("bottle_pouch","wine_cellar","CONTAINERS")
+--[[SortAfter("bottle_pouch","wine_cellar","COOKING")
+SortAfter("bottle_pouch","wine_cellar","CONTAINERS")]]
 
---[[
+
 SortAfter("bottle_pouch_small","wine_cellar","COOKING")
 SortAfter("bottle_pouch_small","wine_cellar","CONTAINERS")
 SortAfter("bottle_pouch_big","bottle_pouch_small","COOKING")
@@ -169,7 +169,6 @@ SortAfter("thermos_bottle_small","bottle_pouch_big","COOKING")
 SortAfter("thermos_bottle_small","bottle_pouch_big","CONTAINERS")
 SortAfter("thermos_bottle_big","thermos_bottle_small","COOKING")
 SortAfter("thermos_bottle_big","thermos_bottle_small","CONTAINERS")
-]]
 
 AddRecipe2("campdesalinator_item",{Ingredient("flint",2),Ingredient("cutstone",1),Ingredient("minifan",2)},TECH.SCIENCE_ONE,{atlas = ModAtlas(), image = "campdesalinator.tex"},{"COOKING","REFINE","HYDRATION","STRUCTURES"})
 SortAfter("campdesalinator_item","campkettle_item","COOKING")
@@ -194,19 +193,21 @@ SortAfter("well_drilling_item","farm_plow_item","GARDENING")
 AddRecipe2("well_kit",{Ingredient("boards",2),Ingredient("cutstone",6),Ingredient("hammer",1)},TECH.SCIENCE_TWO,{atlas = ModAtlas(), image = "well_kit.tex"},{"GARDENING","REFINE","HYDRATION","STRUCTURES"})
 SortAfter("well_kit","well_drilling_item","GARDENING")
 SortAfter("well_kit","well_drilling_item","REFINE")
+SortAfter("well_kit","","STRUCTURES")
 
 AddRecipe2("well_sprinkler_kit",{Ingredient("marble",4),Ingredient("moonglass",1),Ingredient("townportaltalisman",2),Ingredient("gears",1)},TECH.SCIENCE_TWO,{atlas = ModAtlas(), image = "well_sprinkler_kit.tex"},{"GARDENING","REFINE","HYDRATION","STRUCTURES"})
 SortAfter("well_sprinkler_kit","well_kit","GARDENING")
+SortAfter("well_sprinkler_kit","well_kit","REFINE")
+SortAfter("well_sprinkler_kit","well_kit","STRUCTURES")
 
-AddRecipe2("well_waterpump",{Ingredient("security_pulse_cage_full",1),Ingredient("wagpunk_bits",4),Ingredient("transistor",1),Ingredient("cutstone",2)},TECH.NONE,{placer = "well_waterpump_placer",atlas = ModAtlas(), image = "well_waterpump.tex", builder_tag="basicengineer", nameoverride="well_waterpump_kit", description="well_waterpump_kit"},{"CHARACTER","GARDENING","REFINE","HYDRATION","STRUCTURES"})
-AddRecipe2("well_waterpump_kit",{Ingredient("security_pulse_cage_full",1),Ingredient("wagpunk_bits",4),Ingredient("transistor",1),Ingredient("cutstone",2)},TECH.NONE,{atlas = ModAtlas(), image = "well_waterpump_kit.tex", builder_tag="portableengineer"},{"CHARACTER","GARDENING","REFINE","HYDRATION","STRUCTURES"})
-SortAfter("well_waterpump","well_sprinkler_kit","GARDENING")
-SortAfter("well_waterpump","winona_battery_high","CHARACTER")
-SortAfter("well_waterpump_kit","well_waterpump_kit","GARDENING")
-SortAfter("well_waterpump_kit","well_waterpump_kit","CHARACTER")
+AddRecipe2("well_waterpump_kit",{Ingredient("security_pulse_cage_full",1),Ingredient("wagpunk_bits",4),Ingredient("transistor",1),Ingredient("cutstone",2)},TECH.NONE,{atlas = ModAtlas(), image = "well_waterpump_kit.tex"},{"GARDENING","REFINE","HYDRATION","STRUCTURES"})
+SortAfter("well_waterpump_kit","well_sprinkler_kit","GARDENING")
+SortAfter("well_waterpump_kit","well_sprinkler_kit","REFINE")
+SortAfter("well_waterpump_kit","well_sprinkler_kit","STRUCTURES")
 
 AddRecipe2("well_burying_kit",{Ingredient("boards",4),Ingredient("hammer",1)},TECH.SCIENCE_TWO,{atlas = ModAtlas(), image = "well_burying_kit.tex"},{"GARDENING","REFINE","HYDRATION"})
 SortAfter("well_burying_kit","well_waterpump_kit","GARDENING")
+SortAfter("well_burying_kit","well_waterpump_kit","REFINE")
 
 AddRecipe2("wx78module_nonedrunk",{Ingredient("scandata",3),Ingredient("fruitflyfruit_dead",1),Ingredient("gears",2),Ingredient("wx78module_maxhunger1",1)},TECH.ROBOTMODULECRAFT_ONE,{atlas = ModAtlas(), image = "wx78module_nonedrunk.tex", builder_tag="upgrademoduleowner"},{"CHARACTER"})
 SortAfter("wx78module_nonedrunk","wx78module_maxhunger1","CHARACTER")

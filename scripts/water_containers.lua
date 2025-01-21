@@ -21,7 +21,7 @@ function params.barrel.itemtestfn(container, item, slot)
     return item:HasTag("clean")
 end]]
 
-params.thermos_bottle =
+params.thermos_bottle_small =
 {
     widget =
     {
@@ -32,19 +32,66 @@ params.thermos_bottle =
         {
             { image = "cook_slot_drink.tex", atlas = "images/tea_ui.xml" },
         },
-        animbank = "ui_thermos_bottle_1x1",
-        animbuild = "ui_thermos_bottle_1x1",
-        pos = Vector3(0, 160, 0),
+        animbank = "ui_thermos_bottle_1x1", --"ui_thermos_bottle_small_1x1",
+        animbuild = "ui_thermos_bottle_1x1", -- "ui_thermos_bottle_small_1x1",
+        pos = Vector3(100, 0, 0),
     },
     acceptsstacks = true,
     type = "chest",
 }
 
-function params.thermos_bottle.itemtestfn(container, item, slot)
+function params.thermos_bottle_small.itemtestfn(container, item, slot)
     return item:HasTag("drink_icebox_valid")
 end
 
-params.bottle_pouch = 
+params.thermos_bottle_big =
+{
+    widget =
+    {
+        slotpos = {
+            Vector3(-2, 18, 0),
+        },
+        slotbg =
+        {
+            { image = "cook_slot_drink.tex", atlas = "images/tea_ui.xml" },
+        },
+        animbank = "ui_thermos_bottle_1x1", --"ui_thermos_bottle_big_1x1",
+        animbuild = "ui_thermos_bottle_1x1", -- "ui_thermos_bottle_big_1x1",
+        pos = Vector3(100, 0, 0),
+    },
+    acceptsstacks = true,
+    type = "chest",
+}
+
+function params.thermos_bottle_big.itemtestfn(container, item, slot)
+    return item:HasTag("drink_icebox_valid")
+end
+
+
+params.bottle_pouch_small = 
+{
+    widget = 
+    {
+        slotpos =
+        {
+            Vector3(-37.5, 8, 0),
+            Vector3(37.5, 8, 0),
+        },
+        slotbg =
+        {
+            { image = "cook_slot_drink.tex", atlas = "images/tea_ui.xml" },
+            { image = "cook_slot_drink.tex", atlas = "images/tea_ui.xml" },
+        },
+        animbank = "ui_bottle_pouch_2x2", --"ui_bottle_pouch_2x1",
+        animbuild = "ui_bottle_pouch_2x2", --"ui_bottle_pouch_2x1",
+        pos = Vector3(160, 0, 0),
+        side_align_tip = 120,
+    },
+    acceptsstacks = true,
+    type = "chest",
+}
+
+params.bottle_pouch_big = 
 {
     widget = 
     {
@@ -54,6 +101,7 @@ params.bottle_pouch =
             Vector3(37.5, 32 + 20, 0),
             Vector3(-37.5, -(32 - 10), 0),
             Vector3(37.5, -(32 - 10), 0),
+
         },
         slotbg =
         {
@@ -62,16 +110,20 @@ params.bottle_pouch =
             { image = "cook_slot_drink.tex", atlas = "images/tea_ui.xml" },
             { image = "cook_slot_drink.tex", atlas = "images/tea_ui.xml" },
         },
-        animbank = "ui_bottle_pouch_2x2",
-        animbuild = "ui_bottle_pouch_2x2",
-        pos = Vector3(200, 0, 0),
+        animbank = "ui_bottle_pouch_2x2", --"ui_bottle_pouch_2x1",
+        animbuild = "ui_bottle_pouch_2x2", --"ui_bottle_pouch_2x1",
+        pos = Vector3(160, 0, 0),
         side_align_tip = 120,
     },
     acceptsstacks = true,
     type = "chest",
 }
 
-function params.bottle_pouch.itemtestfn(container, item, slot)
+function params.bottle_pouch_small.itemtestfn(container, item, slot)
+    return item:HasTag("prepareddrink") or item:HasTag("drink_icebox_valid")
+end
+
+function params.bottle_pouch_big.itemtestfn(container, item, slot)
     return item:HasTag("prepareddrink") or item:HasTag("drink_icebox_valid")
 end
 

@@ -61,7 +61,10 @@ return {
 		WELL_DRILLING_ITEM = "되게 남자다운 도구 같아.", --드릴 아이템
 		HOLE = "여보세요- 거기 누구 있나요--", --우물 구멍
 		WELL = "여기 숨으면 혼난댔어.", --우물
-		BOTTLE_POUCH = "",
+		BOTTLE_POUCH_SMALL = "",
+		BOTTLE_POUCH_BIG = "",
+		THERMOS_BOTTLE_SMALL = "",
+		THERMOS_BOTTLE_BIG = "",
 		WINE_CELLAR_PART = "",
 		WINE_CELLAR = "",
 

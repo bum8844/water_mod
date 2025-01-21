@@ -61,7 +61,10 @@ return {
 		WELL_DRILLING_ITEM = "지하 세계까지도 닿을 기계로다.", --드릴 아이템
 		HOLE = "마치 망자의 울음 같은 소리로다.", --우물 구멍
 		WELL = "목마른 자가 우물을 파는 법.", --우물
-		BOTTLE_POUCH = "",
+		BOTTLE_POUCH_SMALL = "",
+		BOTTLE_POUCH_BIG = "",
+		THERMOS_BOTTLE_SMALL = "",
+		THERMOS_BOTTLE_BIG = "",
 		WINE_CELLAR_PART = "",
 		WINE_CELLAR = "",
 

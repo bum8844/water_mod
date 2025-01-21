@@ -61,7 +61,10 @@ return {
 		WELL_DRILLING_ITEM = "꽤 험하게 생겼군.", --드릴 아이템
 		HOLE = "잘못 빠지면 뼈도 못 건지겠군.", --우물 구멍
 		WELL = "우물 옆에서 목말라 죽겠군.", --우물
-		BOTTLE_POUCH = "",
+		BOTTLE_POUCH_SMALL = "",
+		BOTTLE_POUCH_BIG = "",
+		THERMOS_BOTTLE_SMALL = "",
+		THERMOS_BOTTLE_BIG = "",
 		WINE_CELLAR_PART = "",
 		WINE_CELLAR = "",
 

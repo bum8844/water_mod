@@ -90,9 +90,10 @@ end
 
 local function evaluate_access(giver, taker)
     local waterlevel = giver.replica.waterlevel or taker.replica.waterlevel
-    if not waterlevel then
+    local blockbucket = giver:HasTag("blockbucket") or taker:HasTag("blockbucket")
+    if not waterlevel and not blockbucket then
         return true
-    elseif waterlevel:IsBlockBucket() then
+    elseif waterlevel:IsBlockBucket() or blockbucket then
         if not giver:HasTag("bucket_empty") and not taker:HasTag("bucket_empty") then
             return true
         end
@@ -122,7 +123,8 @@ local USEITEM =
             elseif target.replica.waterlevel ~= nil
                 and target.replica.waterlevel:IsAccepting()
                 and evaluate_watertype(inst, target)
-                and evaluate_case(inst, target) then
+                and evaluate_case(inst, target)
+                and evaluate_access(target, inst) then
                 table.insert(actions, ACTIONS.GIVEWATER)
             end
         elseif inst.replica.waterlevel ~= nil

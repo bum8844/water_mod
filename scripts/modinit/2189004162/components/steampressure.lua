@@ -54,8 +54,8 @@ local function Descriptors()
 					rawtext_ext = STRINGS.INSIGHT.STEAMPRESSURE.RAWTEXT_TIME_EXT
 				end
 
-				description = subfmt(rawtext,{percent = Insight.env.Round(data.percent * 100, 1), time = time })
-				alt_description = subfmt(rawtext_ext,{percent = Insight.env.Round(data.percent * 100, 1), time = time, cur = self.curpressure, max = self.maxpressure})
+				description = subfmt(rawtext,{time = time,percent = Insight.env.Round(data.percent * 100, 1)})
+				alt_description = subfmt(rawtext_ext,{time = time,percent = Insight.env.Round(data.percent * 100, 1), cur = self.curpressure, max = self.maxpressure})
 
 				return {
 					priority = 0,
