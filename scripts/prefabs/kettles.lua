@@ -1,14 +1,14 @@
 local assets = {
 	kettle = {
 	    Asset("ANIM", "anim/kettle.zip"),
-	    Asset("ANIM", "anim/kettle_drink.zip"),
+	    Asset("ANIM", "anim/kettle_meter_water.zip"),
+	    Asset("ANIM", "anim/kettle_meter_dirty.zip"),
 	    Asset("ANIM", "anim/ui_cookpot_1x4.zip"),
 	},
 	portablekettle = {
 	    Asset("ANIM", "anim/portablekettle.zip"),
-	    Asset("ANIM", "anim/kettle_drink.zip"),
-		Asset("ANIM", "anim/portablekettle_meter_dirty.zip"),
-		Asset("ANIM", "anim/portablekettle_meter_water.zip"),
+		--Asset("ANIM", "anim/portablekettle_meter_dirty.zip"),
+		--Asset("ANIM", "anim/portablekettle_meter_water.zip"),
 	    Asset("ANIM", "anim/ui_cookpot_1x4.zip"),
 	}
 }
@@ -238,7 +238,7 @@ local function MakeKettles(name, masterfn, tags)
 			    inst.AnimState:PlayAnimation("idle_empty")
 			    inst.SoundEmitter:KillSound("snd")
 			    inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_finish", "snd")
-			    inst.AnimState:OverrideSymbol("swap_meter", meter_name.."_meter_water", tostring(inst._waterlevel))
+			    inst.AnimState:OverrideSymbol("swap", meter_name.."_meter_water", tostring(inst._waterlevel))
 			else
 				inst.components.pickable.canbepicked = false
 			end
@@ -277,12 +277,13 @@ local function MakeKettles(name, masterfn, tags)
 		if not inst:HasTag("burnt") then
 			local meter_name = name or inst.prefab
 		    local watertype = (inst.components.waterlevel.watertype == WATERTYPE.DIRTY or inst.components.waterlevel.watertype == WATERTYPE.DIRTY_ICE) and "dirty" or "water"
+		    meter_name = meter_name.."_meter_"..watertype
 		    if new ~= nil then
 		        if inst._waterlevel ~= new then
 		            inst._waterlevel = new
 		        end
 		    end
-		    inst.AnimState:OverrideSymbol("swap_meter", meter_name.."_meter_"..watertype, tostring(new))
+		    inst.AnimState:OverrideSymbol("swap", meter_name, tostring(new))
 		end
 	end
 
@@ -356,7 +357,7 @@ local function MakeKettles(name, masterfn, tags)
 	    inst.AnimState:SetBuild(name)
 	    inst.AnimState:SetBank(name)
 	    inst.AnimState:PlayAnimation("idle_empty")
-	    inst.AnimState:OverrideSymbol("swap_meter", name.."_meter_water", "0")
+	    inst.AnimState:OverrideSymbol("swap", name.."_meter_water", "0")
 
         if tags ~= nil then
             for k, v in ipairs(tags) do

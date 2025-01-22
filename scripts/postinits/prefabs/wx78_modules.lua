@@ -6,3 +6,7 @@ end
 AddPrefabPostInit("wx78module_nonedrunk", function(inst)
 	inst:DoTaskInTime(0, OnChipType)
 end)
+
+AddPrefabPostInit("wx78module_acid_drying", function(inst)
+	inst:DoTaskInTime(0, OnChipType)
+end)

@@ -26,6 +26,18 @@ AddComponentPostInit("eater", function(self)
 		end
 	end
 
+	function self:SetCanDrinkAcid()
+		table.insert(self.preferseating, FOODTYPE.ACID)
+		table.insert(self.caneat, FOODTYPE.ACID)
+		self.inst:AddTag(FOODTYPE.ACID.."_eater")
+	end
+
+	function self:SetCanEatAcidBattery()
+		table.insert(self.preferseating, FOODTYPE.ACID_BATTERY)
+		table.insert(self.caneat, FOODTYPE.ACID_BATTERY)
+		self.inst:AddTag(FOODTYPE.ACID_BATTERY.."_eater")
+	end
+
 	if GetModConfigData("child_safety") then
 		function self:PrefersToEat(food, ...)
 			if food:HasTag("alcohol") and self.inst.childplayer then

@@ -27,12 +27,13 @@ local function Descriptors()
 					STRINGS.INSIGHT.STATE.SOPIL
 					) or ""
 
-				local gain_loss = TheWorld.state.israining and STRINGS.INSIGHT.STATE.GAIN or STRINGS.INSIGHT.STATE.DRY
+				local gain_loss = TheWorld.state.israining and STRINGS.INSIGHT.STATE.GAIN or self.iscollectacid and "" or STRINGS.INSIGHT.STATE.DRY
 
 				local state = watertype and (
 					(watertype == WATERTYPE.CLEAN and (frozed and STRINGS.INSIGHT.STATE.CLEAN_ICE or STRINGS.INSIGHT.STATE.CLEAN)) or
 					(watertype == WATERTYPE.DIRTY and (frozed and STRINGS.INSIGHT.STATE.DIRTY_ICE or STRINGS.INSIGHT.STATE.DIRTY)) or
-					watertype == WATERTYPE.SALTY and STRINGS.INSIGHT.STATE.SALTY or STRINGS.INSIGHT.STATE.MINERAL
+					watertype == WATERTYPE.SALTY and STRINGS.INSIGHT.STATE.SALTY or 
+					watertype == WATERTYPE.MINERAL and STRINGS.INSIGHT.STATE.MINERAL or STRINGS.INSIGHT.STATE.ACID
 				) or STRINGS.INSIGHT.STATE.EMPTY
 
 				return {

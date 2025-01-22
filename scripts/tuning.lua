@@ -22,9 +22,11 @@ local butterhunter_time = GetModConfigData("butterhunter_time")
 local satiety_time = GetModConfigData("satiety_time")
 
 table.insert(TUNING.GAMEMODE_STARTING_ITEMS.DEFAULT.WARLY,"portable_tea_pot_item")
---table.insert(TUNING.GAMEMODE_STARTING_ITEMS.DEFAULT.WARLY,"portable_tea_pot_item")
+--table.insert(TUNING.GAMEMODE_STARTING_ITEMS.DEFAULT.WARLY,"portablekettle_item")
 TUNING.WX78_CHARGING_FOODS["areuhi"] = 1
 TUNING.WX78_CHARGING_FOODS["kumis"] = 1
+TUNING.WX78_CHARGING_FOODS["water_acid"] = 1
+TUNING.WX78_CHARGING_FOODS["acid_battery"] = 24
 TUNING.GOLD_VALUES.WINE_CELLAR_PART = 12
 
 -- 물을 담을수 있는 최대치
@@ -140,7 +142,6 @@ water_tuning =
 	WATER_BARREL_PROTECTION_TIME = 30,
 	WATER_BARREL_DIST = 15,
 
-	WATER_BARREL_WETNESS = 1,
 	WATER_BARREL_EXTINGUISH_HEAT_PERCENT = -1,
 	WATER_BARREL_TEMP_REDUCTION = 5,
 	WATER_BARREL_PROTECTION_TIME = 30,
@@ -315,6 +316,15 @@ water_tuning =
 	DEFAULT_LEFT_TO_DIRTY = GameDifficultyControl("left_to_dirty") or GetModConfigData("left_to_dirty"),
 
 	PURIIFYING = 6,
+
+	SMALLPOUCH_PRESERVER_RATE = 1,
+	BIGPOUCH_PRESERVER_RATE = 1/3,
+	SMALLTHERMOS_PRESERVER_RATE = 1/3,
+	SMALLTHERMOS_PRESERVER_MULT = 10,
+	BIGTHERMOS_PRESERVER_RATE = -3,
+
+	WX78_OVERCHARGE_RUNSPEED_BONUS = .25,
+	WX78_OVERCHARGE_LIGHT_RED = 1.25,
 }
 
 for i,v in pairs(water_tuning) do

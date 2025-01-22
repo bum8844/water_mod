@@ -8,6 +8,7 @@ WATERTYPE =
 	DIRTY_ICE = "dirty_ice",
 	SALTY = "salty",
 	NONE = "none",
+	ACID = "acid",
 }
 
 WATERGROUP =
@@ -643,6 +644,9 @@ BUCKETSTATE =
     CLEAN = "full",
     DIRTY = "dirty",
 }
+
+FOODTYPE.ACID = "acid"
+FOODTYPE.ACID_BATTERY = "acid_battery"
 
 env.WATERTYPE = WATERTYPE
 env.WATERGROUP = WATERGROUP

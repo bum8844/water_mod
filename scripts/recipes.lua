@@ -144,22 +144,15 @@ SortAfter("brewery","kettle","STRUCTURES")
 AddRecipe2("distillers",{Ingredient("dreadstone",8),Ingredient("nightmarefuel",4),Ingredient("transistor",4),Ingredient("redgem",1),Ingredient("bluegem",1)},TECH.SCIENCE_TWO,{placer = "distillers_placer",atlas = ModAtlas(), image = "distillers.tex"},{"COOKING","HYDRATION","STRUCTURES"})
 SortAfter("distillers","brewery","COOKING")
 
-
---AddRecipe2("bottle_pouch",{Ingredient("papyrus",4),Ingredient("tentaclespots",2)},TECH.SCIENCE_TWO,{atlas = ModAtlas(), image = "bottle_pouch.tex"},{"COOKING","CONTAINERS","HYDRATION"})
 AddRecipe2("bottle_pouch_small",{Ingredient("papyrus",2),Ingredient("tentaclespots",2)},TECH.SCIENCE_ONE,{atlas = ModAtlas(), image = "bottle_pouch_small.tex"},{"COOKING","CONTAINERS","HYDRATION"})
 AddRecipe2("bottle_pouch_big",{Ingredient("bottle_pouch_small",2,ModAtlas(),nil,"bottle_pouch_small.tex"),Ingredient("alterguardianhatshard",1),Ingredient("rope",2),Ingredient("bearger_fur",1)},TECH.SCIENCE_TWO,{atlas = ModAtlas(), image = "bottle_pouch_big.tex"},{"COOKING","CONTAINERS","HYDRATION"})
 AddRecipe2("thermos_bottle_small",{Ingredient("opalpreciousgem",1),Ingredient("moonglass",5),Ingredient("rope",3),Ingredient("goldnugget",10),Ingredient("messagebottleempty",2)},TECH.SCIENCE_ONE,{atlas = ModAtlas(), image = "thermos_bottle_small.tex"},{"COOKING","CONTAINERS","HYDRATION"})
 AddRecipe2("thermos_bottle_big",{Ingredient("thermos_bottle_small",1,ModAtlas(),nil,"thermos_bottle_small.tex"),Ingredient("alterguardianhatshard",1),Ingredient("purebrilliance",2)},TECH.SCIENCE_TWO,{atlas = ModAtlas(), image = "thermos_bottle_big.tex"},{"COOKING","CONTAINERS","HYDRATION"})
 
-
 AddRecipe2("wine_cellar",{Ingredient("wine_cellar_part",3),Ingredient("gelblob_bottle",4),Ingredient("cutstone",6)},TECH.LOST,{placer = "wine_cellar_placer",atlas = ModAtlas(), image="wine_cellar.tex", testfn=function(pt) return not TheWorld.Map:GetPlatformAtPoint(pt.x, 0, pt.z, -0.5) ~= nil and not TheWorld.Map:IsDockAtPoint(pt.x, 0, pt.z) end},{"COOKING","HYDRATION","CONTAINERS","STRUCTURES"})
 SortAfter("wine_cellar","icebox","COOKING")
 SortAfter("wine_cellar","icebox","CONTAINERS")
 SortAfter("wine_cellar","icebox","STRUCTURES")
-
---[[SortAfter("bottle_pouch","wine_cellar","COOKING")
-SortAfter("bottle_pouch","wine_cellar","CONTAINERS")]]
-
 
 SortAfter("bottle_pouch_small","wine_cellar","COOKING")
 SortAfter("bottle_pouch_small","wine_cellar","CONTAINERS")
@@ -211,6 +204,16 @@ SortAfter("well_burying_kit","well_waterpump_kit","REFINE")
 
 AddRecipe2("wx78module_nonedrunk",{Ingredient("scandata",3),Ingredient("fruitflyfruit_dead",1),Ingredient("gears",2),Ingredient("wx78module_maxhunger1",1)},TECH.ROBOTMODULECRAFT_ONE,{atlas = ModAtlas(), image = "wx78module_nonedrunk.tex", builder_tag="upgrademoduleowner"},{"CHARACTER"})
 SortAfter("wx78module_nonedrunk","wx78module_maxhunger1","CHARACTER")
+
+AddRecipe2("wx78module_acid_drying",{Ingredient("scandata",3),Ingredient("shroom_skin",1),Ingredient("water_acid",3,Drink_ModAtlas(),nil,"water_acid.tex")},TECH.ROBOTMODULECRAFT_ONE,{atlas = ModAtlas(), image = "wx78module_nonedrunk.tex", builder_tag="upgrademoduleowner"},{"CHARACTER"})
+SortAfter("wx78module_acid_drying","wx78module_nonedrunk","CHARACTER")
+
+AddRecipe2("acid_battery",{Ingredient("water_acid",2,Drink_ModAtlas(),nil,"water_acid.tex"),Ingredient("goldnugget",1),Ingredient("sewing_tape",2)},TECH.NONE,{atlas = ModAtlas(), image = "acid_battery.tex", builder_tag="handyperson"},{"CHARACTER","REFINE"})
+
+AddRecipe2("melt_nitre",{Ingredient("goldnugget",3),Ingredient("water_acid",2,Drink_ModAtlas(),nil,"water_acid.tex")},TECH.SCIENCE_TWO,{product="nitre",image="nitre.tex",numtogive=2,description="melt_nitre"},{"REFINE"})
+
+AddRecipe2("transmute_water_salty",{Ingredient("water_acid",3,Drink_ModAtlas(),nil,"water_acid.tex"),Ingredient("purification_tablets",1,ModAtlas(),nil,"purification_tablets.tex")},TECH.NONE,{product="water_salty" ,atlas = Drink_ModAtlas(), image = "water_salty.tex", numtogive = 2, builder_tag="wilson_alchemy_1", description="transmute_water_salty" },{"CHARACTER","REFINE"})
+AddRecipe2("transmute_water_acid",{Ingredient("water_salty",3,Drink_ModAtlas(),nil,"water_acid.tex"),Ingredient("purification_tablets",1,ModAtlas(),nil,"purification_tablets.tex")},TECH.NONE,{product="water_acid" ,atlas = Drink_ModAtlas(), image = "water_acid.tex", numtogive = 2, builder_tag="wilson_alchemy_1", description="transmute_water_acid" },{"CHARACTER","REFINE"})
 
 AddDeconstructRecipe("well", {Ingredient("boards",2),Ingredient("cutstone",6)})
 

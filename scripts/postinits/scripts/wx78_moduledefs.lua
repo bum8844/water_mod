@@ -1,6 +1,27 @@
 require("wx78_moduledefs")
 
 local wx78_moduledefs = require("wx78_moduledefs")
+local EXTRA_DRYRATE = 0.5
+
+local function acid_drying_activate(inst, wx)
+    wx:AddTag("acidrainimmune")
+    wx.components.moisture:SetInherentWaterproofness(TUNING.WATERPROOFNESS_MED)
+
+    wx.components.moisture.maxDryingRate = wx.components.moisture.maxDryingRate + EXTRA_DRYRATE
+    wx.components.moisture.baseDryingRate = wx.components.moisture.baseDryingRate + EXTRA_DRYRATE
+
+    wx._activate_acid_drying_module = true
+end
+
+local function acid_drying_deactivate(inst, wx)
+    wx:RemoveTag("acidrainimmune")
+    wx.components.moisture:SetInherentWaterproofness(0)
+
+    wx.components.moisture.maxDryingRate = wx.components.moisture.maxDryingRate - EXTRA_DRYRATE
+    wx.components.moisture.baseDryingRate = wx.components.moisture.baseDryingRate - EXTRA_DRYRATE
+
+    wx._activate_acid_drying_module = nil
+end
 
 local function nonedrunk_activate(inst, wx)
 	wx.components.dcapacity.nonedrunk = true
@@ -12,20 +33,36 @@ local function nonedrunk_deactivate(inst, wx)
     wx._activate_nonedrunk_module = nil
 end
 
-local NONEDRUNK_MODULE_DATA =
+local MODULE_DATA =
 {
-    name = "nonedrunk",
-    slots = 2,
-    activatefn = nonedrunk_activate,
-    deactivatefn = nonedrunk_deactivate,
-    mod_module = true,
-    sawp_build = "water_status_wx",
+    {
+        name = "nonedrunk",
+        slots = 2,
+        activatefn = nonedrunk_activate,
+        deactivatefn = nonedrunk_deactivate,
+        mod_module = true,
+        sawp_build = "water_status_wx",
+    },
+    {
+        name = "acid_drying",
+        slots = 2,
+        activatefn = acid_drying_activate,
+        deactivatefn = acid_drying_deactivate,
+        mod_module = true,
+        sawp_build = "water_status_wx",
+    },
 }
 
-table.insert(wx78_moduledefs.module_definitions, NONEDRUNK_MODULE_DATA)
+for k, v in pairs(MODULE_DATA) do
+    table.insert(wx78_moduledefs.module_definitions, v)
+end
 
 wx78_moduledefs.AddCreatureScanDataDefinition("fruitfly","nonedrunk",3)
 wx78_moduledefs.AddCreatureScanDataDefinition("lordfruitfly","nonedrunk",6)
+wx78_moduledefs.AddCreatureScanDataDefinition("knightboat","acid_drying",3)
+wx78_moduledefs.AddCreatureScanDataDefinition("toadstool_dark","acid_drying",9)
+wx78_moduledefs.AddCreatureScanDataDefinition("ancient_robot_head","acid_drying",6)
+wx78_moduledefs.AddCreatureScanDataDefinition("ancient_robot_ribs","acid_drying",6)
 
 local function maxhunger_activate(inst, wx, isloading)
     if wx.components.hunger ~= nil then

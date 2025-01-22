@@ -161,6 +161,7 @@ return
 		WATER_MINERAL = "미네랄 워터",
 		WATER_DIRTY = "더러운 물",
 		WATER_SALTY = "소금물",
+		WATER_ACID = "산성용액",
 
 		GOOPYDRINK = "이상한 음료",
 
@@ -349,7 +350,11 @@ return
 
 	RECIPE_DESC =
 	{
+		MELT_NITRE = "산성용액을 이용하여 금을 초석으로 변환합니다.",
+		TRANSMUTE_WATER_SALTY = "정화제을 이용하여 산성용액을 소금물로 변환합니다.",
+		TRANSMUTE_WATER_ACID = "정화제을 이용하여 소금물을 산성용액로 변환합니다.",
 		WX78MODULE_NONEDRUNK = "취할 틈도 없이 벌컥벌컥.",
+		WX78MODULE_ACID_DRYING = "앏은 산성막을 펴줍니다",
 		BOILBOOK_BASIC = "지금까지의 모든 음료 제조법을 복습." ,
 		BOILBOOK_ADVANCED = "지금까지의 모든 칵테일 제조법을 복습." ,
 		WELL_DRILLING_ITEM = "땅에다가 엄청 큰 구멍을 뚫어보세요.",

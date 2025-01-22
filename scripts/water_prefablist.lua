@@ -13,6 +13,7 @@ return {
 	"purification_tablets",
 	"warkawater",
 	"drink_container",
+	"acid_battery",
 
 	--structures
 	"barrel",

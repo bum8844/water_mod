@@ -31,11 +31,13 @@ local postinits =
 		"wurt",
 		"acorn",
 		"mosquitosack",
+		"wx78",
 		"wx78_modules",
 		"fruitfly",
 		"preparedfoods",
 		"oasislake",
 		"sharkboi",
+		"healingsalve_acidbuff",
 	},
 
 	screens = {
