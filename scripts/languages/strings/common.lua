@@ -17,6 +17,9 @@ return
 	NAMES =
 	{
 		WX78MODULE_NONEDRUNK = "에탄올 재처리 모듈",
+		WX78MODULE_ACID_DRYING = "산-건조 모듈",
+
+		ACID_BATTERY = "납산전지",
 
 		WINE_CELLAR = "와인 보관함",
 		WINE_CELLAR_PART = "와인 보관함 재료",
@@ -350,6 +353,7 @@ return
 
 	RECIPE_DESC =
 	{
+		ACID_BATTERY = "초석보다도 더 효율적입니다! 특히 로봇에게는요.",
 		MELT_NITRE = "산성용액을 이용하여 금을 초석으로 변환합니다.",
 		TRANSMUTE_WATER_SALTY = "정화제을 이용하여 산성용액을 소금물로 변환합니다.",
 		TRANSMUTE_WATER_ACID = "정화제을 이용하여 소금물을 산성용액로 변환합니다.",
