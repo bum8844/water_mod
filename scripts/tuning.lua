@@ -22,7 +22,9 @@ local butterhunter_time = GetModConfigData("butterhunter_time")
 local satiety_time = GetModConfigData("satiety_time")
 
 table.insert(TUNING.GAMEMODE_STARTING_ITEMS.DEFAULT.WARLY,"portable_tea_pot_item")
---table.insert(TUNING.GAMEMODE_STARTING_ITEMS.DEFAULT.WARLY,"portablekettle_item")
+table.insert(TUNING.GAMEMODE_STARTING_ITEMS.DEFAULT.WARLY,"portablekettle_item")
+table.insert(TUNING.GAMEMODE_STARTING_ITEMS.DEFAULT.WINONA,"acid_battery")
+table.insert(TUNING.GAMEMODE_STARTING_ITEMS.DEFAULT.WINONA,"acid_battery")
 TUNING.WX78_CHARGING_FOODS["areuhi"] = 1
 TUNING.WX78_CHARGING_FOODS["kumis"] = 1
 TUNING.WX78_CHARGING_FOODS["water_acid"] = 1
@@ -323,8 +325,8 @@ water_tuning =
 	SMALLTHERMOS_PRESERVER_MULT = 10,
 	BIGTHERMOS_PRESERVER_RATE = -3,
 
-	WX78_OVERCHARGE_RUNSPEED_BONUS = .25,
-	WX78_OVERCHARGE_LIGHT_RED = 1.25,
+	WX78_OVERCHARGE_RUNSPEED_BONUS = .5,
+	WX78_OVERCHARGE_LIGHT_RED = 3,
 }
 
 for i,v in pairs(water_tuning) do

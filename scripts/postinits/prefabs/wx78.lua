@@ -9,16 +9,17 @@ local function OnAdjustCharge(inst,data)
 
 	local timer = data.timer
 
-	if timer < 60 then
-		rad = math.max(.1, rad * (timer / 60))
-		runspeed_bonus = (timer / 60)*runspeed_bonus
-	end
+    if timer < 60 then
+        rad = math.max(.1, rad * (timer / 60))
+        runspeed_bonus = ((timer / 60)*runspeed_bonus)
+    end
 
-	inst.Light:Enable(true)
+    print("timer : ",timer)
+    print("rad : ",rad)
+    print("runspeed_bonus : ",runspeed_bonus)
+
 	inst.Light:SetRadius(rad)
-
 	inst.components.locomotor.runspeed = TUNING.WILSON_RUN_SPEED*(1+runspeed_bonus)
-	inst.components.temperature.mintemp = 10
 end
 
 local function OnStartCharge(inst,data)
@@ -29,6 +30,11 @@ local function OnStartCharge(inst,data)
     inst.SoundEmitter:PlaySound("dontstarve/characters/wx78/charged", "overcharge_sound")
     inst.components.bloomer:PushBloom("overcharge", "shaders/anim.ksh", 50)
 
+    inst.Light:Enable(true)
+
+    inst.components.temperature.mintemp = 10
+
+    inst.components.wx78_overcharged:DoAdjust()
 	OnAdjustCharge(inst,data)
 end
 

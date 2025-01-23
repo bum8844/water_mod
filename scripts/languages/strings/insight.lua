@@ -84,7 +84,7 @@ return
 
 		WATERINGTOOL =
 		{
-			RAWTEXT_GAIN_LOSS= "물 %s 까지 %s",
+			RAWTEXT_GAIN_LOSS= "%s %s 까지 %s",
 			RAWTEXT_TIME = "물의 상태 : %s / %s 까지 %s",
 			RAWTEXT_TIME_EXT = "물의 상태 : %s(수량 : %s) / %s 까지 %s",
 			RAWTEXT = "물의 상태 : %s",

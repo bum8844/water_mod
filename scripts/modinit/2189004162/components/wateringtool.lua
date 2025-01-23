@@ -22,12 +22,29 @@ local function Descriptors()
 
 			local function GetWaterState(self, watertype)
 				local frozed = self.frozed
+				local drying = self.drying
+
+        		local raining = TheWorld.state.israining
+        		local acidraining = TheWorld.state.isacidraining
+
+				local gain_thing
+
+				gain_thing = self.iscollectacid and STRINGS.INSIGHT.STATE.ACID or STRINGS.INSIGHT.STATE.CLEAN
+				
+				if drying then
+					if raining then
+						gain_thing = STRINGS.INSIGHT.STATE.ACID
+					elseif acidraining then
+						gain_thing = STRINGS.INSIGHT.STATE.CLEAN
+					end
+				end
+
 				local change_state = watertype and (
 					(watertype == WATERTYPE.DIRTY and not frozed) and STRINGS.INSIGHT.STATE.DRY or
 					STRINGS.INSIGHT.STATE.SOPIL
 					) or ""
 
-				local gain_loss = TheWorld.state.israining and STRINGS.INSIGHT.STATE.GAIN or self.iscollectacid and "" or STRINGS.INSIGHT.STATE.DRY
+				local gain_loss = drying and STRINGS.INSIGHT.STATE.DRY or STRINGS.INSIGHT.STATE.GAIN
 
 				local state = watertype and (
 					(watertype == WATERTYPE.CLEAN and (frozed and STRINGS.INSIGHT.STATE.CLEAN_ICE or STRINGS.INSIGHT.STATE.CLEAN)) or
@@ -37,6 +54,7 @@ local function Descriptors()
 				) or STRINGS.INSIGHT.STATE.EMPTY
 
 				return {
+					gain_thing = gain_thing,
 					change_state = change_state,
 					gain_loss = gain_loss,
 					state = state,
@@ -78,8 +96,8 @@ local function Descriptors()
 				else
 					timedata = context.time:SimpleProcess(timedata)
 					
-					rawtext = string.format(rawtext,statedata.gain_loss,timedata)
-					rawtext_ext = string.format(rawtext_ext,statedata.gain_loss,timedata)
+					rawtext = string.format(rawtext,statedata.gain_thing,statedata.gain_loss,timedata)
+					rawtext_ext = string.format(rawtext_ext,statedata.gain_thing,statedata.gain_loss,timedata)
 				end
 
 				description = rawtext

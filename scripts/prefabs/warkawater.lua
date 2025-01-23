@@ -1,5 +1,5 @@
 local assets = {
-    --Asset("ANIM","anim/warkawater.zip"),
+    Asset("ANIM","anim/warkawater.zip"),
 }
 
 local prefabs = {
@@ -14,10 +14,6 @@ local function getstatus(inst)
     return 
 end
 
-local function onpercentusedchange(inst)
-    inst.components.wateryprotection.addwetness = data.percent * TUNING.KETTLE_WETNESS
-end
-
 local function ChangeToItem(inst)
     if inst.components.container ~= nil then
         inst.components.container:DropEverything()
@@ -30,11 +26,76 @@ local function ChangeToItem(inst)
 end
 
 local function OnDismantle(inst, doer)
-    if inst.components.waterlevel:GetPercent() <= 0 then
+    ChangeToItem(inst)
+    inst:Remove()
+    --[[if inst.components.waterlevel:GetPercent() <= 0 then
         ChangeToItem(inst)
         inst:Remove()
     else
         doer.components.talker:Say(GetString(doer,"ACTIONFAIL",{"DISMANTLE","NOTEMPTY"}))
+    end]]
+end
+
+local function OnBurnt(inst)
+    DefaultBurntStructureFn(inst)
+    RemovePhysicsColliders(inst)
+    SpawnPrefab("ash").Transform:SetPosition(inst.Transform:GetWorldPosition())
+    if inst.components.workable ~= nil then
+        inst:RemoveComponent("workable")
+    end
+    if inst.components.portablestructure ~= nil then
+        inst:RemoveComponent("portablestructure")
+    end
+    inst.components.waterlevel.accepting = false
+    inst.components.water.available = false
+    inst.components.waterlevel:SetPercent(0)
+    local amount = math.ceil(inst.components.wateryprotection.addwetness * MOISTURE_ON_BURNT_MULTIPLIER)
+    if amount > 0 then
+        local x, y, z = inst.Transform:GetWorldPosition()
+        TheWorld.components.farming_manager:AddSoilMoistureAtPoint(x, 0, z, amount)
+    end
+    inst.persists = false
+    inst:AddTag("FX")
+    inst:AddTag("NOCLICK")
+    inst:ListenForEvent("animover", ErodeAway)
+    inst.AnimState:PlayAnimation("burnt_collapse")
+end
+
+local function GetWet(inst)
+    if not inst:HasTag("burnt") then
+        if inst.components.waterlevel:GetPercent() > 0 then
+            SpawnPrefab("waterballoon_splash").Transform:SetPosition(inst.Transform:GetWorldPosition())
+            inst.SoundEmitter:KillSound("destroy")
+            inst.SoundEmitter:PlaySound("dontstarve/creatures/pengull/splash")
+            inst.components.wateryprotection:SpreadProtection(inst)
+        end
+    end
+end
+
+local function onpercentusedchange(inst, data)
+    inst.components.wateryprotection.addwetness = data.percent * TUNING.KETTLE_WETNESS
+end
+
+local function onhammered(inst)--, worker)
+    if inst.components.burnable ~= nil and inst.components.burnable:IsBurning() then
+        inst.components.burnable:Extinguish()
+    end
+
+    if inst:HasTag("burnt") then
+        inst.components.lootdropper:SpawnLootPrefab("ash")
+        local fx = SpawnPrefab("collapse_small")
+        fx.Transform:SetPosition(inst.Transform:GetWorldPosition())
+        fx:SetMaterial("metal")
+    else
+        GetWet(inst)
+        ChangeToItem(inst)
+    end
+end
+
+local function onhit(inst)--, worker)
+    if not inst:HasTag("burnt") then
+        inst.AnimState:PlayAnimation("hit")
+        inst.AnimState:PushAnimation("idle", false)
     end
 end
 
@@ -48,6 +109,7 @@ local function fn()
     inst.entity:AddNetwork()
 
     inst:SetPhysicsRadiusOverride(.5)
+    MakeObstaclePhysics(inst, inst.physicsradiusoverride)
 
     inst:SetPrefabNameOverride("warkawater_item")
 
@@ -79,9 +141,9 @@ local function fn()
     inst.components.wateryprotection.protection_dist = TUNING.WATER_BARREL_DIST
 
     inst:AddComponent("lootdropper")
-    inst:AddComponent("workable")
-    inst.components.workable:SetWorkAction(ACTIONS.HAMMER)
-    inst.components.workable:SetWorkLeft(2)
+    --inst:AddComponent("workable")
+    --inst.components.workable:SetWorkAction(ACTIONS.HAMMER)
+    --inst.components.workable:SetWorkLeft(2)
     --inst.components.workable:SetOnFinishCallback(onhammered)
     --inst.components.workable:SetOnWorkCallback(onhit)
 
@@ -93,7 +155,7 @@ local function fn()
     MakeMediumBurnable(inst, nil, nil, true)
     MakeSmallPropagator(inst)
 
-    inst:ListenForEvent("onbuilt",StartCollecting)
+    StartCollecting(inst)
 
     return inst
 end
@@ -105,7 +167,7 @@ local function ondeploy(inst, pt, deployer)
         pot.Physics:Teleport(pt.x, 0, pt.z)
         pot.Physics:SetCollides(true)
         pot.AnimState:PlayAnimation("place")
-        pot.AnimState:PushAnimation("idle_empty", false)
+        pot.AnimState:PushAnimation("idle", false)
         pot.SoundEmitter:PlaySound("dontstarve/common/together/portable/cookpot/place")
         inst:Remove()
         PreventCharacterCollisionsWithPlacedObjects(pot)

@@ -1,22 +1,29 @@
 local assets =
 {
-    Asset("ANIM", "anim/thermos_bottle.zip"),
-    Asset("ANIM", "anim/ui_thermos_bottle_1x1.zip"),
-    Asset("ANIM", "anim/bottle_pouch.zip"),
-    Asset("ANIM", "anim/ui_bottle_pouch_2x2.zip"),
-    --Asset("ANIM", "anim/ui_bottle_pouch_2x1.zip"),
-    Asset("ANIM", "anim/bottle_pouch_swap.zip"),
-    
+    thermos_bottle_small = {
+        Asset("ANIM", "anim/thermos_bottle_small.zip"),
+        Asset("ANIM", "anim/ui_thermos_bottle_1x1.zip"),
+    },
+    thermos_bottle_big = {
+        Asset("ANIM", "anim/thermos_bottle_small.zip"),
+        Asset("ANIM", "anim/ui_thermos_bottle_1x1.zip"), 
+    },
+    bottle_pouch_small = {
+        Asset("ANIM", "anim/bottle_pouch_small.zip"),
+        Asset("ANIM", "anim/ui_thermos_bottle_1x1.zip"),
+        Asset("ANIM", "anim/ui_bottle_pouch_2x2.zip"),
+        Asset("ANIM", "anim/bottle_pouch_swap.zip"),
+        --Asset("ANIM", "anim/bottle_pouch_small_swap.zip"),
+        --Asset("ANIM", "anim/ui_bottle_pouch_2x1.zip"),
+    },
+    thermos_bottle_big = {
+        Asset("ANIM", "anim/thermos_bottle_big.zip"),
+        Asset("ANIM", "anim/ui_bottle_pouch_2x2.zip"),
+        Asset("ANIM", "anim/bottle_pouch_swap.zip"),
+        --Asset("ANIM", "anim/bottle_pouch_small_swap.zip"),
+    },
 }
 
------------------------------------------------------------------------------------------------
---[[
-SMALLPOUCH_PRESERVER_RATE = 1
-BIGPOUCH_PRESERVER_RATE = 1/3
-SMALLTHERMOS_PRESERVER_RATE = 1/3
-SMALLTHERMOS_PRESERVER_MULT = 10
-BIGTHERMOS_PRESERVER_RATE = -3]]
------------------------------------------------------------------------------------------------
 local function Pouch_Update(inst)
     local cmp = inst.components.container
     local slot = cmp:GetNumSlots()
@@ -25,18 +32,18 @@ end
 local function pouchitemupdate(inst)
     if inst.components.container:IsOpen() then
         local have, slots = Pouch_Update(inst)
-        inst.components.inventoryitem:ChangeImageName("bottle_pouch_open_"..have * slots)
+        inst.components.inventoryitem:ChangeImageName(inst.prefab.."_open_"..have * slots)
     end
 end
 local function PouchOnOpen(inst)
     inst.AnimState:PlayAnimation("open")
     local have, slots = Pouch_Update(inst)
-    inst.components.inventoryitem:ChangeImageName("bottle_pouch_open_"..have * slots)
+    inst.components.inventoryitem:ChangeImageName(inst.prefab.."_open_"..have * slots)
 end
 
 local function PouchOnClose(inst)
     inst.components.container:Close()
-    inst.components.inventoryitem:ChangeImageName("bottle_pouch")
+    inst.components.inventoryitem:ChangeImageName(inst.prefab)
 
 	if not inst.components.inventoryitem:IsHeld() then
         inst.AnimState:PlayAnimation("close")
@@ -47,12 +54,12 @@ local function PouchOnClose(inst)
 end
 local function ThermosOnOpen(inst)
     inst.AnimState:PlayAnimation("open")
-    inst.components.inventoryitem:ChangeImageName("thermos_bottle_open")
+    inst.components.inventoryitem:ChangeImageName(inst.prefab.."_open")
 end
 
 local function ThermosOnClose(inst)
     inst.components.container:Close()
-    inst.components.inventoryitem:ChangeImageName("thermos_bottle")
+    inst.components.inventoryitem:ChangeImageName(inst.prefab)
 
 	if not inst.components.inventoryitem:IsHeld() then
         inst.AnimState:PlayAnimation("close")
@@ -67,27 +74,43 @@ local function OnPutInInventory(inst)
     inst.AnimState:PlayAnimation("closed", false)
 end
 local function checkstackoverflow(item, data, inst)
-    if data ~= nil and data.stacksize then
-        if not item:IsValid() then
-            return
-        end
-        local stackable = item and item.components.stackable
-        if stackable then
-            local initial_stack = stackable.stacksize
-            local max_stack = stackable.originalmaxsize * (inst.stackmult or 1)
-            local stack = initial_stack - max_stack
-            if stack > 0 then
-                inst:DoTaskInTime(0, function()
-                    local drop = stackable:Get(stack)
-                    local owner = inst.components.inventoryitem.owner
-                    local inventory = owner and (owner.components.container or owner.components.inventory) or nil
-                    if inventory then
-                        inventory:GiveItem(drop)
-                    else
-                        inst.components.container:DropItem(drop)
+    if not item:IsValid() or not inst:IsValid() then
+        return
+    end
+    local stackable = item and item.components.stackable
+    if stackable then
+        local initial_stack = stackable.stacksize
+        local max_stack = stackable.originalmaxsize * (inst.stackmult or 1)
+        local stack = initial_stack - max_stack
+        if stack > 0 then
+            local container = inst.components.container
+            local slots = container.slots
+            local num = container:GetNumSlots()
+            inst:DoTaskInTime(0, function()
+                local over = stackable:Get(stack)
+                for i = 1, num do
+                    if i ~= container:GetItemSlot(item) then
+                        local slotitem = slots[i]
+                        if not slotitem then
+                            container:GiveItem(over, i)
+                            return
+                        end
+                        if slotitem.prefab == item.prefab then
+                            if slotitem.components.stackable.stacksize < max_stack then
+                                container:GiveItem(over, i)
+                                return
+                            end
+                        end
                     end
-                end)
-            end
+                end
+                local owner = inst.components.inventoryitem.owner
+                local inventory = owner and (owner.components.container or owner.components.inventory) or nil
+                if inventory then
+                    inventory:GiveItem(over)
+                else
+                    inst.components.container:DropItem(over)
+                end
+            end)
         end
     end
 end
@@ -148,6 +171,7 @@ local function item(inst, data)
         inst:RemoveEventCallback("stacksizechange", inst._stacksizechange_handler, data.prev_item)
     end
     if data ~= nil and data.item then
+        checkstackoverflow(data.item, nil, inst)
         inst:ListenForEvent("stacksizechange", inst._stacksizechange_handler, data.item)
     end
 end
@@ -188,7 +212,7 @@ local function OnFullMoon(inst, isfullmoon)
         inst:RemoveEventCallback("onpickup", StopRepair)
     end
 end
-local function makewatercontainer(name, master_postinit, pouch)
+local function makewatercontainer(name, master_postinit, pouch, bool)
     local function fn()
         local inst = CreateEntity()
 
@@ -197,24 +221,21 @@ local function makewatercontainer(name, master_postinit, pouch)
         inst.entity:AddSoundEmitter()
         inst.entity:AddMiniMapEntity()
         inst.entity:AddNetwork()
-        if pouch then
-            inst.MiniMapEntity:SetIcon("bottle_pouch.png")
-            inst.AnimState:SetBank("bottle_pouch")
-            inst.AnimState:SetBuild("bottle_pouch")
-            inst.AnimState:PlayAnimation("closed")
-            inst:AddTag("pouch")
-            MakeInventoryPhysics(inst)
-            MakeInventoryFloatable(inst, "small", 0.35, 1.15, nil, nil, { bank = "bottle_pouch", anim = "closed" })
-        else
-            inst.MiniMapEntity:SetIcon("thermos_bottle.png")
-            inst.AnimState:SetBank("thermos_bottle")
-            inst.AnimState:SetBuild("thermos_bottle")
-            inst.AnimState:PlayAnimation("closed")
-            inst:AddTag("thermos")
-            MakeInventoryPhysics(inst)
-            MakeInventoryFloatable(inst, "small", 0.35, 1.15, nil, nil, { bank = "thermos_bottle", anim = "closed" })
-        end
 
+        inst.MiniMapEntity:SetIcon(name..".png")
+
+        inst.AnimState:SetBank(name)
+        inst.AnimState:SetBuild(name)
+        inst.AnimState:PlayAnimation("closed")
+
+        MakeInventoryPhysics(inst)
+        MakeInventoryFloatable(inst, "small", 0.35, 1.15, nil, nil, { bank = name, anim = "closed" })
+
+        if pouch then
+            inst:AddTag("pouch")
+        else
+            inst:AddTag("thermos")
+        end
 
         inst:AddTag("portablestorage")
 
@@ -228,7 +249,8 @@ local function makewatercontainer(name, master_postinit, pouch)
 
         inst:AddComponent("container")
         inst.components.container:WidgetSetup(name)
-        inst.components.container:EnableInfiniteStackSize(true)
+        inst.components.container:EnableInfiniteStackSize(bool)
+
         if pouch then
             inst.components.container.onopenfn = PouchOnOpen
             inst.components.container.onclosefn = PouchOnClose
@@ -236,13 +258,15 @@ local function makewatercontainer(name, master_postinit, pouch)
             inst.components.container.onopenfn = ThermosOnOpen
             inst.components.container.onclosefn = ThermosOnClose
         end
+
         inst.components.container.skipclosesnd = true
         inst.components.container.skipopensnd = true
         inst.components.container.droponopen = true
+
         inst:AddComponent("preserver")
 
         inst:AddComponent("inventoryitem")
-        inst.components.inventoryitem.imagename = pouch and "bottle_pouch" or "thermos_bottle"
+        inst.components.inventoryitem.imagename = name
         inst.components.inventoryitem:SetOnPutInInventoryFn(OnPutInInventory)
 
         inst.stackmult = 1
@@ -258,7 +282,8 @@ local function makewatercontainer(name, master_postinit, pouch)
         MakeHauntableLaunchAndDropFirstItem(inst)
         return inst
     end
-    return Prefab(name, fn, assets)
+
+    return Prefab(name, fn, assets[name])
 end
 local function smallpouchpostinit(inst)
     inst.components.preserver:SetPerishRateMultiplier(TUNING.SMALLPOUCH_PRESERVER_RATE)
@@ -277,6 +302,6 @@ local function bigthermospostinit(inst)
     inst.stackmult = 4
 end
 return makewatercontainer("bottle_pouch_small", smallpouchpostinit, true),
-       makewatercontainer("bottle_pouch_big", bigpouchpostinit, true),
-       makewatercontainer("thermos_bottle_small", smallthermospostinit),
-       makewatercontainer("thermos_bottle_big", bigthermospostinit)
+       makewatercontainer("bottle_pouch_big", bigpouchpostinit, true, true),
+       makewatercontainer("thermos_bottle_small", smallthermospostinit, nil, true),
+       makewatercontainer("thermos_bottle_big", bigthermospostinit, nil, true)

@@ -214,7 +214,6 @@ AddRecipePostInit("bottle_pouch", function(recipe)
 	end
 end)
 
---[[
 AddRecipePostInit("bottle_pouch_small", function(recipe)
 	local ingredient = recipe:FindAndConvertIngredient("tentaclespots")
 	if ingredient then
@@ -258,4 +257,10 @@ AddRecipePostInit("thermos_bottle_big", function(recipe)
 	    ingredient:AddDictionaryPrefab("dragoonheart")
 	end
 end)
-]]
+
+AddRecipePostInit("wx78module_acid_drying", function(recipe)
+	local ingredient = recipe:FindAndConvertIngredient("shroom_skin")
+	if ingredient then
+	    ingredient:AddDictionaryPrefab("obsidian")
+	end
+end)

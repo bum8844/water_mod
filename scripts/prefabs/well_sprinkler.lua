@@ -477,7 +477,6 @@ end
 
 local function ChangeToItem(inst)
     local item = SpawnPrefab("well_sprinkler_kit")
-    item._steampressure = inst.components.steampressure.curpressure
     item.Transform:SetPosition(inst.Transform:GetWorldPosition())
     if inst.onhole ~= nil then
         local hole = SpawnPrefab("hole")

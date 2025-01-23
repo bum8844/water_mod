@@ -80,16 +80,19 @@ AddRecipeToFilter("shadow_forge_kit","SECRETKNOWLEDGE")
 AddRecipeToFilter("blueprint_craftingset_ruins_builder","SECRETKNOWLEDGE")
 AddRecipeToFilter("blueprint_craftingset_ruinsglow_builder","SECRETKNOWLEDGE")
 
-AddRecipe2("bucket_woodie_empty",{Ingredient("lucy",0),Ingredient("log",2)},TECH.NONE,{atlas = ModAtlas(), image = "bucket_woodie_empty.tex", builder_tag="woodcarver1", sg_state="carvewood_boards",  description="bucket_empty"},{"CHARACTER","HYDRATION","TOOLS"})
+AddRecipe2("bucket_woodie_empty",{Ingredient("lucy",0),Ingredient("log",1)},TECH.NONE,{atlas = ModAtlas(), image = "bucket_woodie_empty.tex", builder_tag="woodcarver1", sg_state="carvewood_boards",  description="bucket_empty"},{"CHARACTER","HYDRATION","TOOLS"})
 SortAfter("bucket_woodie_empty", "goldenpitchfork", "TOOLS")
 SortAfter("bucket_woodie_empty","woodie_boards","CHARACTER")
 
-AddRecipe2("bucket_steel_empty",{Ingredient("steelwool",2),Ingredient("hammer",0)},TECH.SCIENCE_TWO,{atlas = ModAtlas(), image = "bucket_steel_empty.tex",  description="bucket_empty"},{"HYDRATION","TOOLS"})
+AddRecipe2("bucket_steel_empty",{Ingredient("steelwool",1),Ingredient("hammer",0)},TECH.SCIENCE_TWO,{atlas = ModAtlas(), image = "bucket_steel_empty.tex",  description="bucket_empty"},{"HYDRATION","TOOLS"})
 
-AddRecipePostInit("fertilizer",function(v) v.ingredients = {Ingredient("poop", 3), Ingredient("boneshard", 2), Ingredient("bucket_empty", 1, ModAtlas(), nil,"bucket_empty.tex")} end)
-AddRecipe2("bucket_empty",{Ingredient("log",4)},TECH.NONE,{atlas = ModAtlas(), image = "bucket_empty.tex"},{"HYDRATION","TOOLS"})
+AddRecipePostInit("fertilizer",function(v) v.ingredients = {Ingredient("poop", 3), Ingredient("boneshard", 2), Ingredient("log",2), Ingredient("bucket_empty", 1, ModAtlas(), nil,"bucket_empty.tex")} end)
+AddRecipe2("bucket_empty",{Ingredient("log",2)},TECH.NONE,{atlas = ModAtlas(), image = "bucket_empty.tex"},{"HYDRATION","TOOLS"})
 SortAfter("bucket_empty","bucket_woodie_empty","TOOLS")
-SortAfter("bucket_steel_empty","bucket_empty","TOOLS")
+
+AddRecipe2("bucket_driftwood_empty",{Ingredient("driftwood_log",2)},TECH.NONE,{atlas = ModAtlas(), image = "bucket_empty.tex"},{"HYDRATION","TOOLS"})
+SortAfter("bucket_driftwood_empty","bucket_empty","TOOLS")
+SortAfter("bucket_steel_empty","bucket_driftwood_empty","TOOLS")
 
 AddRecipe2("spice_caffeinpepper",{Ingredient("caffeinberry_bean_cooked", 3, ModAtlas(), nil, "caffeinberry_bean_cooked.tex")},TECH.FOODPROCESSING_ONE,{atlas = ModAtlas(), builder_tag="professionalchef", numtogive=2, image = "spice_caffeinpepper.tex" ,nounlock=true},{"FOODPROCESSING"})
 SortAfter("spice_caffeinpepper", "spice_salt", "FOODPROCESSING")
@@ -119,11 +122,11 @@ AddRecipe2("campkettle_item",{Ingredient("twigs",2),Ingredient("log",2),Ingredie
 SortBefore("campkettle_item","cookpot","COOKING")
 SortBefore("campkettle_item","transistor","REFINE")
 
-AddRecipe2("kettle",{Ingredient("twigs",6),Ingredient("cutstone",2),Ingredient("charcoal",2)},TECH.SCIENCE_ONE,{placer = "kettle_placer", atlas = ModAtlas(), image = "kettle.tex"},{"COOKING","HYDRATION","STRUCTURES"})
+AddRecipe2("kettle",{Ingredient("twigs",3),Ingredient("cutstone",2),Ingredient("charcoal",2)},TECH.SCIENCE_ONE,{placer = "kettle_placer", atlas = ModAtlas(), image = "kettle.tex"},{"COOKING","HYDRATION","STRUCTURES"})
 SortAfter("kettle","cookpot","COOKING")
 SortAfter("kettle","cookpot","STRUCTURES")
 
-AddRecipe2("portablekettle_item",{Ingredient("transistor",2),Ingredient("goldnugget",2),Ingredient("charcoal",3)},TECH.SCIENCE_TWO,{atlas = ModAtlas(), image = "portablekettle_item.tex"},{"COOKING","HYDRATION"})
+AddRecipe2("portablekettle_item",{Ingredient("transistor",2),Ingredient("log",2),Ingredient("cutstone",2),Ingredient("charcoal",3)},TECH.SCIENCE_TWO,{atlas = ModAtlas(), image = "portablekettle_item.tex"},{"COOKING","HYDRATION"})
 SortAfter("portablekettle_item","kettle","COOKING")
 
 AddRecipe2("purification_tablets",{Ingredient("nitre",2),Ingredient("ash",5),Ingredient("charcoal",10),Ingredient("water_clean",5,Drink_ModAtlas(),nil,"water_clean_bottle.tex")},TECH.SCIENCE_TWO,{atlas = ModAtlas(), image = "purification_tablets_bottle.tex", numtogive=3},{"COOKING","HYDRATION","REFINE"})
@@ -134,7 +137,7 @@ AddRecipe2("tea_pot",{Ingredient("twigs",3),Ingredient("flint",2),Ingredient("ro
 SortAfter("tea_pot","purification_tablets","COOKING")
 SortAfter("tea_pot","purification_tablets","STRUCTURES")
 
-AddRecipe2("portable_tea_pot_item",{Ingredient("transistor",2),Ingredient("cutstone",4),Ingredient("charcoal",3)},TECH.NONE,{atlas = ModAtlas(), image = "portable_tea_pot_item.tex", builder_tag="professionalchef"},{"COOKING","HYDRATION","CHARACTER"})
+AddRecipe2("portable_tea_pot_item",{Ingredient("transistor",1),Ingredient("cutstone",2),Ingredient("charcoal",3)},TECH.NONE,{atlas = ModAtlas(), image = "portable_tea_pot_item.tex", builder_tag="professionalchef"},{"COOKING","HYDRATION","CHARACTER"})
 SortAfter("portable_tea_pot_item","tea_pot","COOKING")
 
 AddRecipe2("brewery",{Ingredient("boards",3),Ingredient("livinglog",3),Ingredient("rope",3),Ingredient("cutstone",6),Ingredient("goldnugget",4)},TECH.SCIENCE_TWO,{placer = "brewery_placer", atlas = ModAtlas(), image = "brewery.tex"},{"COOKING","HYDRATION","STRUCTURES"})

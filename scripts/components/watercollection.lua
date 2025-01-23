@@ -63,6 +63,8 @@ function WaterCollection:LongUpdate(dt)
 end
 
 function WaterCollection:StartCollect()
+    print("물 모우기 시작")
+    self.inst.SoundEmitter:PlaySound("dontstarve/creatures/pengull/splash")
     if self.watercollectiontask ~= nil then
         self.watercollectiontask:Cancel()
         self.watercollectiontask = nil
@@ -75,6 +77,8 @@ function WaterCollection:StartCollect()
 end
 
 function WaterCollection:StopPerishing()
+     print("물 모우기 멈춤")
+     self.inst.SoundEmitter:PlaySound("dontstarve/creatures/pengull/splash")
     if self.watercollectiontask ~= nil then
         self.watercollectiontask:Cancel()
         self.watercollectiontask = nil
@@ -82,6 +86,8 @@ function WaterCollection:StopPerishing()
 end
 
 function WaterCollection:StartPerishing()
+     print("물 썩기 시작")
+     self.inst.SoundEmitter:PlaySound("dontstarve/creatures/pengull/splash")
     if self.updatetask ~= nil then
         self.updatetask:Cancel()
         self.updatetask = nil
@@ -98,6 +104,8 @@ function WaterCollection:StartPerishing()
 end
 
 function WaterCollection:StopPerishing()
+     print("물 썩기 멈춤")
+     self.inst.SoundEmitter:PlaySound("dontstarve/creatures/pengull/splash")
     if self.updatetask ~= nil then
         self.updatetask:Cancel()
         self.updatetask = nil
@@ -105,6 +113,8 @@ function WaterCollection:StopPerishing()
 end
 
 function WaterCollection:Fill()
+    print("물을 채웁니다")
+    self.inst.SoundEmitter:PlaySound("dontstarve/creatures/pengull/splash")
     if self.watercollectiontask ~= nil then
         self.watercollectiontask:Cancel()
         self.watercollectiontask = nil
@@ -124,6 +134,8 @@ function WaterCollection:Fill()
 end
 
 function WaterCollection:Perish()
+     print("물 썩거나 마름")
+     self.inst.SoundEmitter:PlaySound("dontstarve/creatures/pengull/splash")
     if self.updatetask ~= nil then
         self.updatetask:Cancel()
         self.updatetask = nil

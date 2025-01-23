@@ -5,6 +5,9 @@ local function Descriptors()
 				if not self.use_WaterManager then
 					return
 				end
+				if type(self.left_to_dirty) ~= "number" then
+					return
+				end
 
 				local description, alt_description
 				local watermanager = self.left_to_dirty

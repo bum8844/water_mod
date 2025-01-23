@@ -13,7 +13,7 @@ end
 local function Adjust(inst, self)
 	self.adjusttask = nil
 	local timer = self.overcharged_timer - GetTime() 
-	inst:PushEvent("adjustovercharge",{timer = timer})
+	self.inst:PushEvent("adjustovercharge",{timer = timer})
 	self.adjusttask = self.inst:DoTaskInTime(1,Adjust,self)
 end
 
@@ -22,14 +22,14 @@ function Wx78_OverCharged:IsTask()
 end
 
 function Wx78_OverCharged:StartOverCharge(time)
-	local timer = time or 1.5*TUNING.TOTAL_DAY_TIME
+	local timer = time or TUNING.TOTAL_DAY_TIME*1.5
 
 	if self.overcharged_timer > 0 then
 		local old_timer = self.overcharged_timer - GetTime()
 		timer = math.min(timer,old_timer)
 	end
 
-	self.overcharged_timer = timer + GetTime()
+	self.overcharged_timer = GetTime() + timer
 
 	self.inst:PushEvent("startovercharge",{timer = timer})
 	self.overchargedtask = self.inst:DoTaskInTime(timer,OnDone,self)
@@ -80,8 +80,8 @@ function Wx78_OverCharged:LongUpdate(dt)
 		self.adjusttask = nil
 
 		if self.overcharged_timer - dt > GetTime() then
-			local timer = self.overcharged_timer - dt
-			self.overchargedtask = self.inst:DoTaskInTime(timer - GetTime(),OnDone,self)
+			self.overcharged_timer = self.overcharged_timer - dt
+			self.overchargedtask = self.inst:DoTaskInTime(self.overcharged_timer - GetTime(),OnDone,self)
 			self.adjusttask = self.inst:DoTaskInTime(1,Adjust,self)
 		else
 			self:StopOverCharge()

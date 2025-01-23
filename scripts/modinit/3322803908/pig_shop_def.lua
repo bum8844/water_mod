@@ -1,11 +1,13 @@
 local SHOPTYPES = require("prefabs/pig_shop_defs").SHOPTYPES
 
+table.insert(SHOPTYPES["pig_shop_tinker"],{"refined_dust_blueprint","oinc",200})
+
 table.insert(SHOPTYPES["pig_shop_florist"],{"pinecone","oinc",1})
 table.insert(SHOPTYPES["pig_shop_florist"],{"moon_tree_blossom","oinc",5})
 table.insert(SHOPTYPES["pig_shop_florist"],{"petals_evil","oinc",10})
 table.insert(SHOPTYPES["pig_shop_florist"],{"cactus_flower","oinc",30})
 
-table.insert(SHOPTYPES["pig_shop_produce"],{"refined_dust","oinc",100})
+table.insert(SHOPTYPES["pig_shop_produce"],{"refined_dust","oinc",50})
 table.insert(SHOPTYPES["pig_shop_produce"],{"goatmilk","oinc",30})
 table.insert(SHOPTYPES["pig_shop_produce"],{"milkywhites","oinc",20})
 table.insert(SHOPTYPES["pig_shop_produce"],{"fig","oinc",30})
