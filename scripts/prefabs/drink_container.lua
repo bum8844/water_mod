@@ -5,22 +5,18 @@ local assets =
         Asset("ANIM", "anim/ui_thermos_bottle_1x1.zip"),
     },
     thermos_bottle_big = {
-        Asset("ANIM", "anim/thermos_bottle_small.zip"),
+        Asset("ANIM", "anim/thermos_bottle_big.zip"),
         Asset("ANIM", "anim/ui_thermos_bottle_1x1.zip"), 
     },
     bottle_pouch_small = {
         Asset("ANIM", "anim/bottle_pouch_small.zip"),
-        Asset("ANIM", "anim/ui_thermos_bottle_1x1.zip"),
-        Asset("ANIM", "anim/ui_bottle_pouch_2x2.zip"),
-        Asset("ANIM", "anim/bottle_pouch_swap.zip"),
-        --Asset("ANIM", "anim/bottle_pouch_small_swap.zip"),
-        --Asset("ANIM", "anim/ui_bottle_pouch_2x1.zip"),
+        Asset("ANIM", "anim/bottle_pouch_small_swap.zip"),
+        Asset("ANIM", "anim/ui_bottle_pouch_2x1.zip"),
     },
-    thermos_bottle_big = {
-        Asset("ANIM", "anim/thermos_bottle_big.zip"),
+    bottle_pouch_big = {
+        Asset("ANIM", "anim/bottle_pouch_big.zip"),
         Asset("ANIM", "anim/ui_bottle_pouch_2x2.zip"),
-        Asset("ANIM", "anim/bottle_pouch_swap.zip"),
-        --Asset("ANIM", "anim/bottle_pouch_small_swap.zip"),
+        Asset("ANIM", "anim/bottle_pouch_big_swap.zip"),
     },
 }
 

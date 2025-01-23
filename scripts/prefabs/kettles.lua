@@ -3,13 +3,11 @@ local assets = {
 	    Asset("ANIM", "anim/kettle.zip"),
 	    Asset("ANIM", "anim/kettle_meter_water.zip"),
 	    Asset("ANIM", "anim/kettle_meter_dirty.zip"),
-	    Asset("ANIM", "anim/ui_cookpot_1x4.zip"),
 	},
 	portablekettle = {
 	    Asset("ANIM", "anim/portablekettle.zip"),
-		--Asset("ANIM", "anim/portablekettle_meter_dirty.zip"),
-		--Asset("ANIM", "anim/portablekettle_meter_water.zip"),
-	    Asset("ANIM", "anim/ui_cookpot_1x4.zip"),
+		Asset("ANIM", "anim/portablekettle_meter_dirty.zip"),
+		Asset("ANIM", "anim/portablekettle_meter_water.zip"),
 	}
 }
 
@@ -179,15 +177,9 @@ local function portable_kettlefn(inst)
 
 	local function onhit(inst)--, worker)
 	    if not inst:HasTag("burnt") then
-	        if inst.components.brewing:IsCooking() or inst.components.distiller:isBoiling() then
-	            inst.AnimState:PlayAnimation("hit_cooking")
-	            inst.AnimState:PushAnimation("cooking_loop", true)
-	            inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_close")
-	        else
-	            inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_close")
-	            inst.AnimState:PlayAnimation("hit_empty")
-	            inst.AnimState:PushAnimation("idle_empty", false)
-	        end
+	        inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_close")
+	        inst.AnimState:PlayAnimation("hit_empty")
+	        inst.AnimState:PushAnimation("idle_empty", false)
 	    end
 	end
 
