@@ -2,11 +2,11 @@ local assets =
 {
     thermos_bottle_small = {
         Asset("ANIM", "anim/thermos_bottle_small.zip"),
-        Asset("ANIM", "anim/ui_thermos_bottle_1x1.zip"),
+        Asset("ANIM", "anim/ui_thermos_bottle_small_1x1.zip"),
     },
     thermos_bottle_big = {
         Asset("ANIM", "anim/thermos_bottle_big.zip"),
-        Asset("ANIM", "anim/ui_thermos_bottle_1x1.zip"), 
+        Asset("ANIM", "anim/ui_thermos_bottle_big_1x1.zip"), 
     },
     bottle_pouch_small = {
         Asset("ANIM", "anim/bottle_pouch_small.zip"),
@@ -15,8 +15,8 @@ local assets =
     },
     bottle_pouch_big = {
         Asset("ANIM", "anim/bottle_pouch_big.zip"),
-        Asset("ANIM", "anim/ui_bottle_pouch_2x2.zip"),
         Asset("ANIM", "anim/bottle_pouch_big_swap.zip"),
+        Asset("ANIM", "anim/ui_bottle_pouch_2x2.zip"),
     },
 }
 
