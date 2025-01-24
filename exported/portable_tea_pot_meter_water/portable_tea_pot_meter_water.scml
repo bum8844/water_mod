@@ -6,7 +6,7 @@
     <folder id="1" name="1">
         <file id="0" name="1/1.png" width="69" height="77" pivot_x="0.5" pivot_y="0.5"/>
     </folder>
-    <entity id="0" name="potable_tea_pot_meter_water">
+    <entity id="0" name="portable_tea_pot_meter_water">
         <animation id="0" name="idle" length="1000" interval="100">
             <mainline>
                 <key id="0">

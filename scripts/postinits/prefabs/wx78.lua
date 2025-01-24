@@ -14,10 +14,6 @@ local function OnAdjustCharge(inst,data)
         runspeed_bonus = ((timer / 60)*runspeed_bonus)
     end
 
-    print("timer : ",timer)
-    print("rad : ",rad)
-    print("runspeed_bonus : ",runspeed_bonus)
-
 	inst.Light:SetRadius(rad)
 	inst.components.locomotor.runspeed = TUNING.WILSON_RUN_SPEED*(1+runspeed_bonus)
 end

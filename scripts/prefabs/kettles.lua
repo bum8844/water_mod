@@ -117,7 +117,7 @@ local function portable_kettlefn(inst)
 	        inst.components.container:DropEverything()
 	    end
 
-	    local item = SpawnPrefab("portable_kettle_item")
+	    local item = SpawnPrefab("portablekettle_item")
 	    item.Transform:SetPosition(inst.Transform:GetWorldPosition())
 	    item.AnimState:PlayAnimation("collapse")
 	    item.SoundEmitter:PlaySound("dontstarve/common/together/portable/cookpot/collapse")
@@ -194,6 +194,8 @@ local function portable_kettlefn(inst)
 	        inst.components.burnable.onburnt(inst)
 	    end
 	end
+
+	inst:SetPrefabNameOverride("portablekettle_item")
 
     inst:AddComponent("portablestructure")
     inst.components.portablestructure:SetOnDismantleFn(OnDismantle)

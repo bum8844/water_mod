@@ -12,7 +12,7 @@ return {
 	"wine_cellar_part",
 	"purification_tablets",
 	"warkawater",
-	"drink_container",
+	--"drink_container",
 	"acid_battery",
 
 	--structures

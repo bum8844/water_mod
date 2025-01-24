@@ -58,39 +58,39 @@
 		<Element name="campdesalinator.tex" u1="0.126" u2="0.1865" v2="0.499" v1="0.376" variant="" />
 		<Element name="campkettle.tex" u1="0.1885" u2="0.249" v2="0.499" v1="0.376" variant="" />
 		<Element name="distillers.tex" u1="0.251" u2="0.3115" v2="0.499" v1="0.376" variant="" />
-		<Element name="kettle.tex" u1="0.001" u2="0.0615" v2="0.999" v1="0.876" variant="" />
+		<Element name="kettle.tex" u1="0.001" u2="0.0615" v2="0.874" v1="0.751" variant="" />
 		<Element name="portable_tea_pot.tex" u1="0.0635" u2="0.124" v2="0.499" v1="0.376" variant="" />
 		<Element name="portable_tea_pot_item.tex" u1="0.001" u2="0.0615" v2="0.499" v1="0.376" variant="" />
-		<Element name="portablekettle.tex" u1="0.376" u2="0.4365" v2="0.624" v1="0.501" variant="" />
-		<Element name="portablekettle_item.tex" u1="0.4385" u2="0.499" v2="0.624" v1="0.501" variant="" />
-		<Element name="tea_pot.tex" u1="0.3135" u2="0.374" v2="0.624" v1="0.501" variant="" />
-		<Element name="boillingrecipcard.tex" u1="0.4375234375" u2="0.4980234375" v2="0.749" v1="0.626" variant="" />
-		<Element name="fermentingrecipcard.tex" u1="0.251" u2="0.3115" v2="0.624" v1="0.501" variant="" />
-		<Element name="ruincacao.tex" u1="0.3125234375" u2="0.3730234375" v2="0.749" v1="0.626" variant="" />
-		<Element name="ruincacao_bean.tex" u1="0.3750234375" u2="0.4355234375" v2="0.749" v1="0.626" variant="" />
-		<Element name="ruincacao_bean_cooked.tex" u1="0.4385" u2="0.499" v2="0.874" v1="0.751" variant="" />
-		<Element name="ruincacao_seed.tex" u1="0.2500234375" u2="0.3105234375" v2="0.749" v1="0.626" variant="" />
-		<Element name="ruincacao_tree_dug.tex" u1="0.376" u2="0.4365" v2="0.874" v1="0.751" variant="" />
-		<Element name="spice_ruincolate_spread.tex" u1="0.3135" u2="0.374" v2="0.874" v1="0.751" variant="" />
-		<Element name="spice_ruincolate_spread_over.tex" u1="0.251" u2="0.3115" v2="0.874" v1="0.751" variant="" />
-		<Element name="tea_seed.tex" u1="0.3135" u2="0.374" v2="0.999" v1="0.876" variant="" />
-		<Element name="tea_seed_cooked.tex" u1="0.376" u2="0.4365" v2="0.999" v1="0.876" variant="" />
-		<Element name="tea_tree_bush_dug.tex" u1="0.4385" u2="0.499" v2="0.999" v1="0.876" variant="" />
-		<Element name="tealeaves.tex" u1="0.1885" u2="0.249" v2="0.624" v1="0.501" variant="" />
-		<Element name="tealeaves_dried.tex" u1="0.251" u2="0.3115" v2="0.999" v1="0.876" variant="" />
-		<Element name="applepine_fried_rice.tex" u1="0.126" u2="0.1865" v2="0.624" v1="0.501" variant="" />
-		<Element name="applepine_pie.tex" u1="0.0635" u2="0.124" v2="0.624" v1="0.501" variant="" />
-		<Element name="citroyuzu_bbq.tex" u1="0.001" u2="0.0615" v2="0.624" v1="0.501" variant="" />
-		<Element name="dark_ruincolate.tex" u1="0.1250234375" u2="0.1855234375" v2="0.749" v1="0.626" variant="" />
-		<Element name="ruin_schokakola.tex" u1="0.1875234375" u2="0.2480234375" v2="0.749" v1="0.626" variant="" />
-		<Element name="ruincolate.tex" u1="0.001" u2="0.0605234375" v2="0.749" v1="0.627953125" variant="" />
-		<Element name="white_ruincolate.tex" u1="0.0625234375" u2="0.1230234375" v2="0.749" v1="0.626" variant="" />
-		<Element name="well.tex" u1="0.126" u2="0.1865" v2="0.874" v1="0.751" variant="" />
-		<Element name="well_burying_kit.tex" u1="0.1885" u2="0.249" v2="0.874" v1="0.751" variant="" />
-		<Element name="well_drilling_item.tex" u1="0.0635" u2="0.124" v2="0.874" v1="0.751" variant="" />
-		<Element name="well_kit.tex" u1="0.126" u2="0.1865" v2="0.999" v1="0.876" variant="" />
-		<Element name="well_sprinkler_kit.tex" u1="0.1885" u2="0.249" v2="0.999" v1="0.876" variant="" />
-		<Element name="well_waterpump.tex" u1="0.001" u2="0.0615" v2="0.874" v1="0.751" variant="" />
-		<Element name="well_waterpump_kit.tex" u1="0.0635" u2="0.124" v2="0.999" v1="0.876" variant="" />
+		<Element name="portablekettle.tex" u1="0.001" u2="0.0615" v2="0.999" v1="0.876" variant="" />
+		<Element name="portablekettle_item.tex" u1="0.0635" u2="0.124" v2="0.999" v1="0.876" variant="" />
+		<Element name="tea_pot.tex" u1="0.4385" u2="0.499" v2="0.624" v1="0.501" variant="" />
+		<Element name="boillingrecipcard.tex" u1="0.3135" u2="0.374" v2="0.624" v1="0.501" variant="" />
+		<Element name="fermentingrecipcard.tex" u1="0.376" u2="0.4365" v2="0.624" v1="0.501" variant="" />
+		<Element name="ruincacao.tex" u1="0.4375234375" u2="0.4980234375" v2="0.749" v1="0.626" variant="" />
+		<Element name="ruincacao_bean.tex" u1="0.251" u2="0.3115" v2="0.624" v1="0.501" variant="" />
+		<Element name="ruincacao_bean_cooked.tex" u1="0.3125234375" u2="0.3730234375" v2="0.749" v1="0.626" variant="" />
+		<Element name="ruincacao_seed.tex" u1="0.3750234375" u2="0.4355234375" v2="0.749" v1="0.626" variant="" />
+		<Element name="ruincacao_tree_dug.tex" u1="0.2500234375" u2="0.3105234375" v2="0.749" v1="0.626" variant="" />
+		<Element name="spice_ruincolate_spread.tex" u1="0.4385" u2="0.499" v2="0.874" v1="0.751" variant="" />
+		<Element name="spice_ruincolate_spread_over.tex" u1="0.376" u2="0.4365" v2="0.874" v1="0.751" variant="" />
+		<Element name="tea_seed.tex" u1="0.4385" u2="0.499" v2="0.999" v1="0.876" variant="" />
+		<Element name="tea_seed_cooked.tex" u1="0.251" u2="0.3115" v2="0.874" v1="0.751" variant="" />
+		<Element name="tea_tree_bush_dug.tex" u1="0.3135" u2="0.374" v2="0.874" v1="0.751" variant="" />
+		<Element name="tealeaves.tex" u1="0.3135" u2="0.374" v2="0.999" v1="0.876" variant="" />
+		<Element name="tealeaves_dried.tex" u1="0.376" u2="0.4365" v2="0.999" v1="0.876" variant="" />
+		<Element name="applepine_fried_rice.tex" u1="0.251" u2="0.3115" v2="0.999" v1="0.876" variant="" />
+		<Element name="applepine_pie.tex" u1="0.1885" u2="0.249" v2="0.624" v1="0.501" variant="" />
+		<Element name="citroyuzu_bbq.tex" u1="0.126" u2="0.1865" v2="0.624" v1="0.501" variant="" />
+		<Element name="dark_ruincolate.tex" u1="0.001" u2="0.0615" v2="0.624" v1="0.501" variant="" />
+		<Element name="ruin_schokakola.tex" u1="0.0635" u2="0.124" v2="0.624" v1="0.501" variant="" />
+		<Element name="ruincolate.tex" u1="0.126" u2="0.1855234375" v2="0.749" v1="0.627953125" variant="" />
+		<Element name="white_ruincolate.tex" u1="0.1875234375" u2="0.2480234375" v2="0.749" v1="0.626" variant="" />
+		<Element name="well.tex" u1="0.001" u2="0.0615" v2="0.749" v1="0.626" variant="" />
+		<Element name="well_burying_kit.tex" u1="0.0635" u2="0.124" v2="0.749" v1="0.626" variant="" />
+		<Element name="well_drilling_item.tex" u1="0.1885" u2="0.249" v2="0.999" v1="0.876" variant="" />
+		<Element name="well_kit.tex" u1="0.126" u2="0.1865" v2="0.874" v1="0.751" variant="" />
+		<Element name="well_sprinkler_kit.tex" u1="0.1885" u2="0.249" v2="0.874" v1="0.751" variant="" />
+		<Element name="well_waterpump.tex" u1="0.126" u2="0.1865" v2="0.999" v1="0.876" variant="" />
+		<Element name="well_waterpump_kit.tex" u1="0.0635" u2="0.124" v2="0.874" v1="0.751" variant="" />
 	</Elements>
 </Atlas>
