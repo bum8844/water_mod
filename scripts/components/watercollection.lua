@@ -19,6 +19,16 @@ local WaterCollection = Class(function(self, inst)
     self.setstatesfn = nil
 end,nil,nil)
 
+local function CheckWeather(inst, self)
+    self.weatherchecktask = nil
+    self.israining = TheWorld.state.israining
+    self.isacidraining = TheWorld.state.isacidraining
+
+    --local percent = 
+
+    self:ReducePercent()
+end
+
 local function Update(inst, dt)
     local watercollection = inst.components.watercollection
 
@@ -37,6 +47,21 @@ function WaterCollection:IsFrozen()
     return self.frozed
 end
 
+function WaterCollection:StartWeatherCheck()
+    if self.weatherchecktask then
+        self.weatherchecktask:Cancel()
+        self.weatherchecktask = nil
+    end
+    self.weatherchecktask = self.inst:DoTaskInTime(1,CheckWeather,self)
+end
+
+function WaterCollection:StopWeatherCheck()
+    if self.weatherchecktask then
+        self.weatherchecktask:Cancel()
+        self.weatherchecktask = nil
+    end
+end
+
 function WaterCollection:GetPercent()
     if self.basetime and self.targettime and self.targettime > 0 then
         return math.min(1, self.basetime / self.targettime)
@@ -48,7 +73,8 @@ end
 function WaterCollection:SetPercent(percent)
     if self.targettime then
         percent = math.clamp(percent, 0, 1)
-        self.localtime = percent*self.targettime
+        local timer = self.targettime - GetTime()
+        self.localtime = percent*timer
     end
 
     if self.watercollectiontask then
@@ -79,18 +105,23 @@ function WaterCollection:StartCollect()
     end
 
     self.basetime = TUNING.PERISH_ONE_DAY/6
-    self.targettime = self.localtime and GetTime() + self.localtime or GetTime() + self.basetime
+
+    local timer = self.localtime or self.basetime
+
+    self.targettime = GetTime() + timer
     self.localtime = nil
-    self.watercollectiontask = self.inst:DoTaskInTime(self.targettime, Update)
+
+    self.watercollectiontask = self.inst:DoTaskInTime(timer, Update)
 end
 
-function WaterCollection:StopPerishing()
+function WaterCollection:StopCollect()
      print("물 모우기 멈춤")
      self.inst.SoundEmitter:PlaySound("dontstarve/creatures/pengull/splash")
     if self.watercollectiontask ~= nil then
         self.watercollectiontask:Cancel()
         self.watercollectiontask = nil
     end
+    self.localtime = self.targettime - GetTime()
 end
 
 function WaterCollection:StartPerishing()
@@ -106,9 +137,12 @@ function WaterCollection:StartPerishing()
     self.basetime = isfrozen and math.ceil(TUNING.PERISH_SLOW/2) or 
           watertype == WATERTYPE.DIRTY and TUNING.PERISH_ONE_DAY/2 or 
           math.ceil(TUNING.PERISH_FAST/2)
-    self.targettime = self.localtime and GetTime() + self.localtime or GetTime() + self.basetime
+
+    local timer = self.localtime or self.basetime
+
+    self.targettime = GetTime() + timer
     self.localtime = nil
-    self.updatetask = self.inst:DoPeriodicTask(self.targettime, Update)
+    self.updatetask = self.inst:DoTaskInTime(timer, Update)
 end
 
 function WaterCollection:StopPerishing()
