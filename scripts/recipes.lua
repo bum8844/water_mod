@@ -90,7 +90,7 @@ AddRecipePostInit("fertilizer",function(v) v.ingredients = {Ingredient("poop", 3
 AddRecipe2("bucket_empty",{Ingredient("log",2)},TECH.NONE,{atlas = ModAtlas(), image = "bucket_empty.tex"},{"HYDRATION","TOOLS"})
 SortAfter("bucket_empty","bucket_woodie_empty","TOOLS")
 
-AddRecipe2("bucket_driftwood_empty",{Ingredient("driftwood_log",2)},TECH.NONE,{atlas = ModAtlas(), image = "bucket_empty.tex"},{"HYDRATION","TOOLS"})
+AddRecipe2("bucket_driftwood_empty",{Ingredient("driftwood_log",2)},TECH.NONE,{atlas = ModAtlas(), image = "bucket_driftwood_empty.tex"},{"HYDRATION","TOOLS"})
 SortAfter("bucket_driftwood_empty","bucket_empty","TOOLS")
 SortAfter("bucket_steel_empty","bucket_driftwood_empty","TOOLS")
 
