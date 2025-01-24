@@ -1,7 +1,7 @@
 GLOBAL.setfenv(1, GLOBAL)
 
-local function GetItemState(count)
-    return count >= 5 and "_bottle" or ""
+local function GetItemState(count,maxnum)
+    return count >= maxnum and "_bottle" or ""
 end
 
 SetRetrofitSetting = function(name, value)
@@ -16,7 +16,7 @@ SetRetrofitSetting = function(name, value)
     KnownModIndex:SaveConfigurationOptions(function() end, "workshop-3004639365", configs, false)
 end
 
-MakeDynamicCupImage = function(inst, symbol, build, use_bg)
+MakeDynamicCupImage = function(inst, symbol, build, use_bg, maxnum)
     local function ChangeCupImage(inst, data)
         if data ~= nil then
             local new_state = GetItemState(data.stacksize)
@@ -34,11 +34,11 @@ MakeDynamicCupImage = function(inst, symbol, build, use_bg)
     inst:ListenForEvent("stacksizechange", ChangeCupImage)
 end
 
-MakeDynamicItemImage = function(inst, symbol, build, use_bg)
+MakeDynamicItemImage = function(inst, symbol, build, use_bg, maxnum)
     local function ChangeItemImage(inst, data)
         if data ~= nil then
-            local new_state = GetItemState(data.stacksize)
-            local cur_state = GetItemState(data.oldstacksize)
+            local new_state = GetItemState(data.stacksize, maxnum)
+            local cur_state = GetItemState(data.oldstacksize, maxnum)
             if new_state ~= cur_state then
                 inst.minisign_custom_name = inst.prefab..new_state
                 inst.AnimState:OverrideSymbol(symbol, build, inst.prefab..new_state)

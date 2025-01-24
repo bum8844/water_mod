@@ -218,7 +218,9 @@ local function MakePreparedDrink(data)
             inst.components.fuel.fuelvalue = TUNING.MED_FUEL
         end
 
-        MakeDynamicCupImage(inst, "swap", "kettle_drink")
+        if not inst:HasTag("cocktail_drink") then
+            MakeDynamicCupImage(inst, "swap", "kettle_drink", 5)
+        end
         MakeHauntableLaunchAndPerish(inst)
 
         ------------------------------------------------

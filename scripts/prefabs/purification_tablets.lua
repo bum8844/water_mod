@@ -42,7 +42,7 @@ local function fn()
 
     	MakeHauntableLaunch(inst)
 
-        MakeDynamicItemImage(inst, "swap", "purification_tablets")
+        MakeDynamicItemImage(inst, "swap", "purification_tablets", 3)
 
 	return inst
 end

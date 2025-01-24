@@ -90,7 +90,7 @@ local function fn()
 
     inst:AddComponent("tradable")
 
-    MakeDynamicCupImage(inst, "swap", "kettle_drink")
+    MakeDynamicCupImage(inst, "swap", "kettle_drink", 5)
 	MakeDeployableFertilizer(inst)
 	MakeHauntableLaunch(inst)
 

@@ -449,7 +449,7 @@ local function MakeWaterItem(name, masterfn, tags, _prefabs)
 
         inst:AddComponent("tradable")
         MakeHauntableLaunchAndPerish(inst)
-        MakeDynamicCupImage(inst, "swap", "kettle_drink")
+        MakeDynamicCupImage(inst, "swap", "kettle_drink", 5)
 
         if masterfn ~= nil then
             masterfn(inst)
