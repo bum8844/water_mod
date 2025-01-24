@@ -254,7 +254,8 @@ return {
 		BERRY_BRANDY = "풍부한 아로마를 느낄 수 있어.", -- 베리 브랜디
 		AREUHI = "그 맛에 빠져서 과음하지 않게 조심해야 해.", -- 크므즈 증류주 아르히
 		APPLEPINE_BRANDY = "",
-		VOID = "",
+		VOID_BRANDY = "",
+		VOID_GIN  = "",
 		CITROYUZU_CURACAO = "",
 		MENTHA_SPICATA_CURACAO = "",
 

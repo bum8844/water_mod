@@ -242,7 +242,8 @@ return {
 		BERRY_BRANDY = "참으로 긴 공정", -- 베리 브랜디
 		AREUHI = "P형 유동체", -- 크므즈 증류주 아르히
 		APPLEPINE_BRANDY = "",
-		VOID = "",
+		VOID_BRANDY = "",
+		VOID_GIN  = "",
 		CITROYUZU_CURACAO = "",
 		MENTHA_SPICATA_CURACAO = "",
 

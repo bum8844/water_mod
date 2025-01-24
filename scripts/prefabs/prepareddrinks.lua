@@ -181,8 +181,10 @@ local function MakePreparedDrink(data)
             inst.components.inventoryitem:ChangeImageName(data.basename)
         end
 
-        inst:AddComponent("stackable")
-        inst.components.stackable.maxsize = TUNING.STACK_SIZE_TINYITEM
+        if not inst:HasTag("cocktail_drink") then
+            inst:AddComponent("stackable")
+            inst.components.stackable.maxsize = TUNING.STACK_SIZE_TINYITEM
+        end
 
         if data.perishtime ~= nil and data.perishtime > 0 and not inst:HasTag("disinfectant") then
             inst:AddComponent("perishable")
@@ -250,6 +252,14 @@ for k, v in pairs(require("preparedageddrinks")) do
 end
 
 for k, v in pairs(require("preparedspiritsdrink")) do
+    table.insert(prefs, MakePreparedDrink(v))
+end
+
+for k, v in pairs(require("preparedcocktaildrink")) do
+    table.insert(prefs, MakePreparedDrink(v))
+end
+
+for k, v in pairs(require("preparedcocktaildrink_warly")) do
     table.insert(prefs, MakePreparedDrink(v))
 end
 

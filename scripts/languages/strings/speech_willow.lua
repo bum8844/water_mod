@@ -254,7 +254,8 @@ return {
 		BERRY_BRANDY = "이게 그렇게 고급진 술이라며?", -- 베리 브랜디
 		AREUHI = "우유로 만들었다고는 믿을 수 없을 정도로 깔끔해!", -- 크므즈 증류주 아르히
 		APPLEPINE_BRANDY = "",
-		VOID = "",
+		VOID_BRANDY = "",
+		VOID_GIN  = "",
 		CITROYUZU_CURACAO = "",
 		MENTHA_SPICATA_CURACAO = "",
 

@@ -244,7 +244,8 @@ return {
 		BERRY_BRANDY = "작고 작은 먹을거 화르륵 마시는거", -- 베리 브랜디
 		AREUHI = "안 하예", -- 크므즈 증류주 아르히
 		APPLEPINE_BRANDY = "",
-		VOID = "",
+		VOID_GIN  = "",
+		VOID_BRANDY = "",
 		CITROYUZU_CURACAO = "",
 		MENTHA_SPICATA_CURACAO = "",
 

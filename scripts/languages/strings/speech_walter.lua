@@ -254,7 +254,8 @@ return {
 		BERRY_BRANDY = "잘 구분은 못하겠지만, 브랜디라나봐!",
 		AREUHI = "어른들을 위한 투명한 우유야.",
 		APPLEPINE_BRANDY = "",
-		VOID = "",
+		VOID_BRANDY = "",
+		VOID_GIN  = "",
 		CITROYUZU_CURACAO = "",
 		MENTHA_SPICATA_CURACAO = "",
 

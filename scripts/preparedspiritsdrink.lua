@@ -337,8 +337,8 @@ local drinks =
 		end,
 	},
 
-	void_liqueur = {
-		test = function(boilier, names, tags) return names.midnight_storm end,
+	void_brandy = {
+		test = function(boilier, names, tags) return names.midnight_storm and not tags.additives end,
 		priority = 2,
         health = TUNING.HEALING_LARGE/5, -- 8 (40) ( MFP모드의 오렌지 쥬스 참고함)
         hunger = TUNING.CALORIES_MEDSMALL/5, -- 3.75 (18.75)
@@ -354,6 +354,28 @@ local drinks =
 		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_INTOXICATION_GOODNIGHTVISION,
 		oneatenfn = function(inst, eater)
 			eater.gnv_muit = 2
+			eater:AddDebuff("goodnightvisionbuff", "goodnightvisionbuff")
+			alcohol(inst, eater)
+		end,
+	},
+
+	void_gin = {
+		test = function(boilier, names, tags) return names.midnight_storm and names.additive_seed end,
+		priority = 2,
+        health = TUNING.HEALING_LARGE/5, -- 8 (40) ( MFP모드의 오렌지 쥬스 참고함)
+        hunger = TUNING.CALORIES_MEDSMALL/5, -- 3.75 (18.75)
+        sanity = TUNING.SANITY_TINY, -- 3 (15)
+        thirst = TUNING.HYDRATION_MEDSMALL, -- 22.5 (111)
+        tags = {"alcohol","spirits"},
+        perishtime = TUNING.PERISH_MED, --10일
+		cooktime = (TUNING.KETTLE_LUXURY_GOODS + TUNING.BEER_WAIT),
+		potlevel = "mid",
+		potlevel_bottle = "mid",
+		drinktype = DRINKTYPY.BREWER,
+		prefabs = { "alcoholdebuff","drunkarddebuff","resistancebuff" },
+		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_INTOXICATION_GOODNIGHTVISION,
+		oneatenfn = function(inst, eater)
+			eater.gnv_muit = 4
 			eater:AddDebuff("goodnightvisionbuff", "goodnightvisionbuff")
 			alcohol(inst, eater)
 		end,

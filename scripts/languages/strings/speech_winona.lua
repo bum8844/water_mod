@@ -253,7 +253,8 @@ return {
 		BERRY_BRANDY = "뭔가 엄청나게 고급진 술인갑네.", -- 베리 브랜디
 		AREUHI = "이건 또 난생 처음 보는 술이네.", -- 크므즈 증류주 아르히
 		APPLEPINE_BRANDY = "",
-		VOID = "",
+		VOID_BRANDY = "",
+		VOID_GIN  = "",
 		CITROYUZU_CURACAO = "",
 		MENTHA_SPICATA_CURACAO = "",
 

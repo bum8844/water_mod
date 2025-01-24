@@ -254,7 +254,8 @@ return {
 		BERRY_BRANDY = "호사스런 귀족들의 술이로다.", -- 베리 브랜디
 		AREUHI = "생각보다 나쁘지 않군.", -- 크므즈 증류주 아르히
 		APPLEPINE_BRANDY = "",
-		VOID = "",
+		VOID_BRANDY = "",
+		VOID_GIN  = "",
 		CITROYUZU_CURACAO = "",
 		MENTHA_SPICATA_CURACAO = "",
 

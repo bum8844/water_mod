@@ -243,7 +243,7 @@ return {
 		BERRY_BRANDY = "내 덤불간식은 어딨어, 뽀륵?", -- 베리 브랜디
 		AREUHI = "우유 어디갔어?", -- 크므즈 증류주 아르히
 		APPLEPINE_BRANDY = "",
-		VOID = "",
+		VOID_GIN = "",
 		CITROYUZU_CURACAO = "",
 		MENTHA_SPICATA_CURACAO = "",
 

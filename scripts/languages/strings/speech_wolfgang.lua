@@ -243,7 +243,8 @@ return {
 		BERRY_BRANDY = "귀한 맛 나는 술이다.", -- 베리 브랜디
 		AREUHI = "우유 끓여서 만든 술이다.", -- 크므즈 증류주 아르히
 		APPLEPINE_BRANDY = "",
-		VOID = "",
+		VOID_GIN = "",
+		VOID_BRANDY = "",
 		CITROYUZU_CURACAO = "",
 		MENTHA_SPICATA_CURACAO = "",
 

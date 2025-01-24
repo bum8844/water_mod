@@ -416,6 +416,17 @@ function spirits(inst, eater)
 	end
 end
 
+function boilermaker(inst, eater)
+	if eater:HasTag("player") then
+		eater.components.dcapacity:Start_Intoxication(60)--모든걸 무시하고 다 취하게 만들어 줌?
+		eater:AddDebuff("alcoholdebuff", "alcoholdebuff")
+		eater:AddDebuff("drunkarddebuff", "drunkarddebuff")
+	else
+		eater:AddDebuff("alcoholdebuff", "alcoholdebuff")
+		eater:AddDebuff("drunkarddebuff", "drunkarddebuff")
+	end
+end
+
 function drink_worm_light_lesser(inst, eater)
     if eater.wormlight ~= nil then
 	    if eater.wormlight.prefab == "wormlight_light_lesser" then

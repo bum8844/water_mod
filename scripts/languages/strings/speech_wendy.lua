@@ -254,7 +254,8 @@ return {
 		BERRY_BRANDY = "무엇을 잊어버리려 했는지조차 잊어버리겠지.", -- 베리 브랜디
 		AREUHI = "유당이 없더라도 고통스럽겠지.", -- 크므즈 증류주 아르히
 		APPLEPINE_BRANDY = "",
-		VOID = "",
+		VOID_BRANDY = "",
+		VOID_GIN  = "",
 		CITROYUZU_CURACAO = "",
 		MENTHA_SPICATA_CURACAO = "",
 

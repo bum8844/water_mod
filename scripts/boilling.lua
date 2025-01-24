@@ -4,6 +4,8 @@ local drinks = require("prepareddrinks")
 local drinks_warly = require("prepareddrinks_warly")
 local ageddrinks = require("preparedageddrinks")
 local spiritsdrink = require("preparedspiritsdrink")
+local cocktail = require("preparedcocktaildrink")
+local cocktail_warly = require("preparedcocktaildrink_warly")
 
 local boilbook_recipes = {}
 
@@ -31,6 +33,14 @@ for k, recipe in pairs(ageddrinks) do
 end
 
 for k, recipe in pairs(spiritsdrink) do
+	AddBoilBookRecipe(recipe)
+end
+
+for k, recipe in pairs(cocktail) do
+	AddBoilBookRecipe(recipe)
+end
+
+for k, recipe in pairs(cocktail_warly) do
 	AddBoilBookRecipe(recipe)
 end
 

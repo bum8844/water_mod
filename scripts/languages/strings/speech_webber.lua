@@ -257,7 +257,8 @@ return {
 		BERRY_BRANDY = "아빠가 서재에 이런 걸 숨겼던 것 같아.", -- 베리 브랜디
 		AREUHI = "우유로 만들었다는데 못 삼킬 것 같아.", -- 크므즈 증류주 아르히
 		APPLEPINE_BRANDY = "",
-		VOID = "",
+		VOID_BRANDY = "",
+		VOID_GIN  = "",
 		CITROYUZU_CURACAO = "",
 		MENTHA_SPICATA_CURACAO = "",
 

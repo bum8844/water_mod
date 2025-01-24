@@ -254,7 +254,8 @@ return {
 		BERRY_BRANDY = "과학적 영감을 얻는 데에 도움이 돼.",
 		AREUHI = "이젠 우유 같아 보이지도 않아.",
 		APPLEPINE_BRANDY = "",
-		VOID_LIQUEUR  = "",
+		VOID_BRANDY = "",
+		VOID_GIN  = "",
 		CITROYUZU_CURACAO = "",
 		MENTHA_SPICATA_CURACAO = "",
 

@@ -243,7 +243,9 @@ return {
 		BERRY_BRANDY = "필멸자들이 좋아할 고급진 맛이지. 난 아니고.", -- 베리 브랜디
 		AREUHI = "어린애 필멸자들이 마시면 선물은 못 받겠지.", -- 크므즈 증류주 아르히
 		APPLEPINE_BRANDY = "",
-		VOID = "",
+		VOID_GIN = "",
+		VOID_BRANDY = "",
+		VOID_GIN  = "",
 		CITROYUZU_CURACAO = "",
 		MENTHA_SPICATA_CURACAO = "",
 

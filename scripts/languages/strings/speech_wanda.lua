@@ -254,7 +254,8 @@ return {
 		BERRY_BRANDY = "위스키고 브랜디고 상관 없어. 안 썩는 게 중요하지.", -- 베리 브랜디
 		AREUHI = "그나마 쉽게 변질되지는 않겠네.", -- 크므즈 증류주 아르히
 		APPLEPINE_BRANDY = "",
-		VOID = "",
+		VOID_BRANDY = "",
+		VOID_GIN  = "",
 		CITROYUZU_CURACAO = "",
 		MENTHA_SPICATA_CURACAO = "",
 

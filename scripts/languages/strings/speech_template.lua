@@ -248,7 +248,8 @@ return {
 		BERRY_BRANDY = "",
 		AREUHI = "",
 		APPLEPINE_BRANDY = "",
-		VOID = "",
+		VOID_BRANDY = "",
+		VOID_GIN  = "",
 		CITROYUZU_CURACAO = "",
 		MENTHA_SPICATA_CURACAO = "",
 

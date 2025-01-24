@@ -309,7 +309,8 @@ return
 		BERRY_BRANDY = "베리 브랜디",
 		AREUHI = "아르히",
 		APPLEPINE_BRANDY = "사과 브랜디",
-		VOID_LIQUEUR = "보이드",
+		VOID_BRANDY = "보이드 브랜디",
+		VOID_GIN = "보이드 진",
 		CITROYUZU_CURACAO = "오랜지 큐라소",
 		MENTHA_SPICATA_CURACAO = "민트 큐라소",
 
@@ -415,7 +416,7 @@ return
 			TAB_TITLE_TEA_POT = "찻주전자 레시피",
 			TAB_TITLE_PORTABLE_TEA_POT = "주방장의 특선 음료",
 			TAB_TITLE_COCKTAIL_MAKER = "칵테일 레시피",
-			TAB_TITLE_PORTABLE_COCKTAIL_MAKER = "칵테일 레시피",
+			TAB_TITLE_PORTABLE_COCKTAIL_MAKER = "주방장의 특선 칵테일",
 			TAB_TITLE_BREWERY = "양조기 레시피",
 			TAB_TITLE_DISTILLERS = "증류기 레시피",
 			BOILTIME_TITLE = "끓는 시간",

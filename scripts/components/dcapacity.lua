@@ -86,7 +86,7 @@ function Dcapacity:Start_Intoxication(num)
 	if self.inst.components.skilltreeupdater then
 		local skilltreeupdater = self.inst.components.skilltreeupdater
 		local mightiness = self.inst.components.mightiness 
-		if mightiness and skilltreeupdater:IsActivated("wathgrithr_combat_defense") and mightiness:GetCurrent() > mightiness:GetMax() then
+		if mightiness and skilltreeupdater:IsActivated("wolfgang_overbuff_5") and mightiness:GetCurrent() > mightiness:GetMax() then
 			mult_time = 0.25
 		elseif skilltreeupdater:IsActivated("wathgrithr_combat_defense") then
 			mult_time = 0.5

@@ -254,7 +254,8 @@ return {
 		BERRY_BRANDY = "비싼 가격과 제조의 까다로움 때문에 '술의 제왕'이라 불리기도 한단다.", -- 베리 브랜디
 		AREUHI = "마유주를 반복증류, 분별해서 불순물을 제거했단다.", -- 크므즈 증류주 아르히
 		APPLEPINE_BRANDY = "",
-		VOID = "",
+		VOID_BRANDY = "",
+		VOID_GIN  = "",
 		CITROYUZU_CURACAO = "",
 		MENTHA_SPICATA_CURACAO = "",
 
