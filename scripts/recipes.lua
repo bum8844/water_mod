@@ -90,7 +90,7 @@ AddRecipePostInit("fertilizer",function(v) v.ingredients = {Ingredient("poop", 3
 AddRecipe2("bucket_empty",{Ingredient("log",2)},TECH.NONE,{atlas = ModAtlas(), image = "bucket_empty.tex"},{"HYDRATION","TOOLS"})
 SortAfter("bucket_empty","bucket_woodie_empty","TOOLS")
 
-AddRecipe2("bucket_driftwood_empty",{Ingredient("driftwood_log",2)},TECH.NONE,{atlas = ModAtlas(), image = "bucket_driftwood_empty.tex"},{"HYDRATION","TOOLS"})
+AddRecipe2("bucket_driftwood_empty",{Ingredient("driftwood_log",2)},TECH.NONE,{atlas = ModAtlas(), image = "bucket_driftwood_empty.tex",  description="bucket_empty"},{"HYDRATION","TOOLS"})
 SortAfter("bucket_driftwood_empty","bucket_empty","TOOLS")
 SortAfter("bucket_steel_empty","bucket_driftwood_empty","TOOLS")
 
@@ -170,7 +170,7 @@ AddRecipe2("campdesalinator_item",{Ingredient("flint",2),Ingredient("cutstone",1
 SortAfter("campdesalinator_item","campkettle_item","COOKING")
 SortAfter("campdesalinator_item","purification_tablets","REFINE")
 
-AddRecipe2("desalinator",{Ingredient("boards",12),Ingredient("rope",6),Ingredient("rocks",6),Ingredient("nitre",6),Ingredient("charcoal",6)},TECH.SCIENCE_TWO,{placer = "desalinator_placer", atlas = ModAtlas(), image = "desalinator.tex", size = 32},{"CONTAINERS","COOKING","GARDENING","HYDRATION","STRUCTURES"})
+AddRecipe2("desalinator",{Ingredient("boards",8),Ingredient("rope",6),Ingredient("rocks",6),Ingredient("nitre",6),Ingredient("charcoal",6)},TECH.SCIENCE_TWO,{placer = "desalinator_placer", atlas = ModAtlas(), image = "desalinator.tex", size = 32},{"CONTAINERS","COOKING","GARDENING","HYDRATION","STRUCTURES"})
 
 AddRecipe2("barrel",{Ingredient("boards",2),Ingredient("rope",3),Ingredient("charcoal",3)},TECH.SCIENCE_ONE,{placer = "barrel_placer", atlas = ModAtlas(), image = "barrel.tex"},{"CONTAINERS","COOKING","GARDENING","HYDRATION","STRUCTURES"})
 SortAfter("barrel","saltbox","CONTAINERS")
