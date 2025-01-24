@@ -10,6 +10,10 @@ local function StartCollecting(inst)
     inst.components.watercollection:StartCollect()
 end
 
+local function StopCollecting(inst)
+    inst.components.watercollection:StopCollecting()
+end
+
 local function SetTemperature(inst)
     local isfrozen = inst.components.watercollection:IsFrozen()
 
@@ -188,13 +192,11 @@ local function fn()
 
     MakeMediumBurnable(inst, nil, nil, true)
     MakeSmallPropagator(inst)
-
-    StartCollecting(inst)
-
-    inst:WatchWorldState("issummer")
-    inst:WatchWorldState("isautumn")
-    inst:WatchWorldState("iswinter")
-    inst:WatchWorldState("isspring")
+    
+    inst:WatchWorldState("isautumn",StartCollecting)
+    inst:WatchWorldState("iswinter",StopCollecting)
+    inst:WatchWorldState("isspring",StartCollecting)
+    inst:WatchWorldState("issummer",SamiStopCollecting)
 
     inst:ListenForEvent("set_temperature",SetTemperature)
     inst:ListenForEvent("temperaturedelta", SetToFrozed)
