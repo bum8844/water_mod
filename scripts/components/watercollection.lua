@@ -29,6 +29,14 @@ local function Update(inst, dt)
     end
 end
 
+function WaterCollection:IsFull()
+    return self.isfull
+end
+
+function WaterCollection:IsFrozen()
+    return self.frozed
+end
+
 function WaterCollection:GetPercent()
     if self.basetime and self.targettime and self.targettime > 0 then
         return math.min(1, self.basetime / self.targettime)
@@ -152,6 +160,8 @@ function WaterCollection:Perish()
         self.watertype = nil
         self:StartCollect()
     end
+
+    self.inst:PushEvent()
 end
 
 return WaterCollection

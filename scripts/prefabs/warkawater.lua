@@ -10,6 +10,40 @@ local function StartCollecting(inst)
     inst.components.watercollection:StartCollect()
 end
 
+local function SetTemperature(inst)
+    local isfrozen = inst.components.watercollection:IsFrozen()
+
+    local temp = isfrozen and TUNING.WATER_FROZEN_INITTEMP or TUNING.WATER_INITTEMP
+    local curtemp = inst.components.watercollection:GetWater() ~= nil and math.min(TheWorld.state.temperature, temp) or TheWorld.state.temperature
+
+    inst.components.temperature.current = curtemp
+
+    if isfrozen then
+        inst.components.temperature.maxtemp = TUNING.WATER_FROZEN_INITTEMP
+        inst.components.temperature.mintemp = TUNING.MIN_ENTITY_TEMP
+    else
+        inst.components.temperature.maxtemp = TUNING.WATER_MAXTEMP
+        inst.components.temperature.mintemp = TUNING.WATER_MINTEMP
+    end
+    inst.components.temperature.inherentinsulation = TUNING.INSULATION_MED_LARGE
+    inst.components.temperature.inherentsummerinsulation = TUNING.INSULATION_MED_LARGE
+end
+
+local function SetToFrozed(inst, data)
+    if inst.components.watercollection:IsFull() then
+        local cur_temp = inst.components.temperature:GetCurrent()
+        local min_temp = inst.components.temperature.mintemp
+        local max_temp = inst.components.temperature.maxtemp
+        if inst.components.watercollection:IsFrozen() then
+            if cur_temp >= max_temp then
+                inst.components.watercollection:SetFrozed(false)
+            end
+        elseif cur_temp <= min_temp then
+            inst.components.watercollection:SetFrozed(true)
+        end
+    end
+end
+
 local function getstatus(inst)
     return 
 end
@@ -73,7 +107,7 @@ local function GetWet(inst)
 end
 
 local function onpercentusedchange(inst, data)
-    inst.components.wateryprotection.addwetness = data.percent * TUNING.KETTLE_WETNESS
+    inst.components.wateryprotection.addwetness = data.percent * 0.3
 end
 
 local function onhammered(inst)--, worker)
@@ -141,11 +175,11 @@ local function fn()
     inst.components.wateryprotection.protection_dist = TUNING.WATER_BARREL_DIST
 
     inst:AddComponent("lootdropper")
-    --inst:AddComponent("workable")
-    --inst.components.workable:SetWorkAction(ACTIONS.HAMMER)
-    --inst.components.workable:SetWorkLeft(2)
-    --inst.components.workable:SetOnFinishCallback(onhammered)
-    --inst.components.workable:SetOnWorkCallback(onhit)
+    inst:AddComponent("workable")
+    inst.components.workable:SetWorkAction(ACTIONS.HAMMER)
+    inst.components.workable:SetWorkLeft(2)
+    inst.components.workable:SetOnFinishCallback(onhammered)
+    inst.components.workable:SetOnWorkCallback(onhit)
 
     inst:AddComponent("hauntable")
     inst.components.hauntable:SetHauntValue(TUNING.HAUNT_TINY)
@@ -156,6 +190,14 @@ local function fn()
     MakeSmallPropagator(inst)
 
     StartCollecting(inst)
+
+    inst:WatchWorldState("issummer")
+    inst:WatchWorldState("isautumn")
+    inst:WatchWorldState("iswinter")
+    inst:WatchWorldState("isspring")
+
+    inst:ListenForEvent("set_temperature",SetTemperature)
+    inst:ListenForEvent("temperaturedelta", SetToFrozed)
 
     return inst
 end
