@@ -1,4 +1,30 @@
 
+local function UpdateActionMeter(inst)
+    inst.player_classified.actionmeter:set_local(math.min(255, math.floor(inst.sg.timeinstate * 10 + 2.5)))
+end
+
+local function StartActionMeter(inst, duration)
+    if inst.HUD ~= nil then
+        inst.HUD:ShowRingMeter(inst:GetPosition(), duration)
+    end
+    inst.player_classified.actionmetertime:set(math.min(255, math.floor(duration * 10 + .5)))
+    inst.player_classified.actionmeter:set(2)
+    if inst.sg.mem.actionmetertask == nil then
+        inst.sg.mem.actionmetertask = inst:DoPeriodicTask(.1, UpdateActionMeter)
+    end
+end
+
+local function StopActionMeter(inst, flash)
+    if inst.HUD ~= nil then
+        inst.HUD:HideRingMeter(flash)
+    end
+    if inst.sg.mem.actionmetertask ~= nil then
+        inst.sg.mem.actionmetertask:Cancel()
+        inst.sg.mem.actionmetertask = nil
+        inst.player_classified.actionmeter:set(flash and 1 or 0)
+    end
+end
+
 local function ForceStopHeavyLifting(inst)
     if inst.components.inventory:IsHeavyLifting() then
         inst.components.inventory:DropItem(
@@ -421,7 +447,7 @@ local bookboil_advanced_open = State{
     onexit = function(inst)
         inst:ShowPopUp(GLOBAL.POPUPS.BOILBOOK_ADVANCED, false)
     end,
-    }
+}
 
 local boilbook_close = State{
         name = "boilbook_close",
@@ -440,7 +466,84 @@ local boilbook_close = State{
                 end
             end),
         },
-    }
+}
+
+local shaker_shaking = State{
+    name = "shaker_shaking",
+    tags = { "doing", "busy", "nodangle" },
+
+    onenter = function(inst, timeout)
+        if timeout == nil then
+            timeout = 1.2
+        elseif timeout > 1.2 then
+            inst.sg:AddStateTag("slowaction")
+        end
+        inst.sg:SetTimeout(timeout)
+        inst.components.locomotor:Stop()
+        inst.SoundEmitter:PlaySound("dontstarve/wilson/make_trap", "make")
+        inst.AnimState:PlayAnimation("build_pre")
+        inst.AnimState:PushAnimation("build_loop", true)
+        if inst.bufferedaction ~= nil then
+            inst.sg.statemem.action = inst.bufferedaction
+            if inst.bufferedaction.action.actionmeter then
+                inst.sg.statemem.actionmeter = true
+                StartActionMeter(inst, timeout)
+            end
+            if inst.bufferedaction.target ~= nil and inst.bufferedaction.target:IsValid() then
+                inst.bufferedaction.target:PushEvent("startlongaction", inst)
+            end
+        end
+    end,
+
+    timeline =
+    {
+        TimeEvent(4 * FRAMES, function(inst)
+            inst.sg:RemoveStateTag("busy")
+        end),
+    },
+
+    ontimeout = function(inst)
+        inst.SoundEmitter:KillSound("make")
+        inst.AnimState:PlayAnimation("build_pst")
+        if inst.sg.statemem.actionmeter then
+            inst.sg.statemem.actionmeter = nil
+            StopActionMeter(inst, true)
+        end
+        inst.sg:RemoveStateTag("busy")
+        inst:PerformBufferedAction()
+    end,
+
+    events =
+    {
+        EventHandler("animqueueover", function(inst)
+            if inst.AnimState:AnimDone() then
+                inst.sg:GoToState("idle")
+            end
+        end),
+    },
+
+    onexit = function(inst)
+        inst.SoundEmitter:KillSound("make")
+        local craftbartender = inst.components.craftbartender
+        if craftbartender and craftbartender.shaker then
+            craftbartender.shaker.components.cocktailmaker:SetCocktail(inst)
+        end
+        if inst.sg.statemem.actionmeter then
+            StopActionMeter(inst, false)
+        end
+        if inst.bufferedaction == inst.sg.statemem.action and
+        (inst.components.playercontroller == nil or inst.components.playercontroller.lastheldaction ~= inst.bufferedaction) then
+            inst:ClearBufferedAction()
+        end
+    end,
+}
+
+local fest_shaker_shaking = State{
+    name = "fest_shaker_shaking",
+    onenter = function(inst)
+        inst.sg:GoToState("shaker_shaking", .6)
+    end,
+}
     
 AddStategraphState("wilson", refresh_drunk)
 AddStategraphState("wilson", drunk)
@@ -449,6 +552,8 @@ AddStategraphState("wilson", drinkstew)
 AddStategraphState("wilson", bookboil_basic_open)
 AddStategraphState("wilson", bookboil_advanced_open)
 AddStategraphState("wilson", boilbook_close)
+AddStategraphState("wilson", shaker_shaking)
+AddStategraphState("wilson", fest_shaker_shaking)
 
 ------------------------------------------------------------------------
 
@@ -545,6 +650,12 @@ AddStategraphActionHandler("wilson", ActionHandler(ACTIONS.MACHINETOOL,
 AddStategraphActionHandler("wilson", ActionHandler(ACTIONS.DISASSEMBLE,
         function(inst, action)
             return inst:HasTag("handyperson") and "domediumaction" or "dolongaction"
+        end
+    )
+)
+AddStategraphActionHandler("wilson", ActionHandler(ACTIONS.SHAKING,
+        function(inst, action)
+            return inst:HasTag("expertchef") and "fest_shaker_shaking" or "shaker_shaking"
         end
     )
 )

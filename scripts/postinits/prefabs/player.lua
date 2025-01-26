@@ -8,6 +8,7 @@ local AddComponentToPlayer = function(inst)
 
     inst:AddComponent("obe")
     inst:AddComponent("dcapacity")
+    inst:AddComponent("craftbartender")
 end
 
 AddPlayerPostInit(AddComponentToPlayer)

@@ -2,8 +2,7 @@ require "utils/water_brew_utils"
 
 local drinks = {
     cocktail_boilermaker = {
-        test = function(boilier, names, tags) return true end,
-        priority = -2,
+        test = function(boilier, names, tags) return IsAlcoholDrink(names, tags) and not IsVeggieDrink(names, tags) and not IsFruitDrink(names, tags) end,
         health = -TUNING.HEALING_SMALL,
         hunger = TUNING.SPOILED_HUNGER,
         sanity = TUNING.SANITY_POISON,
@@ -14,8 +13,24 @@ local drinks = {
             boilermaker(inst, eater)
         end,
     },
+    cocktail_oriental_medicine = {
+        test = function(boilier, names, tags) return IsVeggieDrink(names, tags) and not IsAlcoholDrink(names, tags) and not IsFruitDrink(names, tags) end,
+        health = 0,
+        hunger = 0,
+        sanity = 0,
+        thirst = 0,
+        tags = {}, 
+    },
+    cocktail_fruit_paantsch = {
+        test = function(boilier, names, tags) return IsFruitDrink(names, tags) and not IsVeggieDrink(names, tags) end,
+        health = 0,
+        hunger = 0,
+        sanity = 0,
+        thirst = 0,
+        tags = {},
+    },
     cocktail_adonis = {
-        test = function(boilier, names, tags) return names.noblewine and names.berry_brandy and names.citroyuzu end,
+        test = function(boilier, names, tags) return names.noblewine and names.berry_brandy and names.citroyuzu and tags.frozen end,
         health = 0,
         hunger = 0,
         sanity = 0,
@@ -39,7 +54,7 @@ local drinks = {
         tags = {"alcohol","spirits","cocktail_drink"},
     },
     cocktail_angel_face = {
-        test = function(boilier, names, tags) return names.berry_gin and names.petals_berry_brandy and names.berry_brandy end,
+        test = function(boilier, names, tags) return names.berry_gin and names.petals_berry_brandy and names.berry_brandy and tags.frozen end,
         health = 0,
         hunger = 0,
         sanity = 0,
@@ -55,7 +70,7 @@ local drinks = {
         tags = {"alcohol","spirits","cocktail_drink"},
     },
     cocktail_bentley = {
-        test = function(boilier, names, tags) return names.petals_berry_brandy and names.wine and names.citroyuzu_curacao end,
+        test = function(boilier, names, tags) return names.petals_berry_brandy and names.wine and names.citroyuzu_curacao and tags.frozen end,
         health = 0,
         hunger = 0,
         sanity = 0,
@@ -103,7 +118,7 @@ local drinks = {
         tags = {"alcohol","spirits","cocktail_drink"},
     },
     cocktail_caruso = {
-        test = function(boilier, names, tags) return names.berry_gin and names.berry_brandy and names.mentha_spicata_curacao end,
+        test = function(boilier, names, tags) return names.berry_gin and names.berry_brandy and names.mentha_spicata_curacao and tags.frozen end,
         health = 0,
         hunger = 0,
         sanity = 0,
@@ -119,7 +134,7 @@ local drinks = {
         tags = {"alcohol","spirits","cocktail_drink"},
     },
     cocktail_diki_diki = {
-        test = function(boilier, names, tags) return names.petals_berry_brandy and names.madhu_rum and names.pomegranate_juice end,
+        test = function(boilier, names, tags) return names.petals_berry_brandy and names.madhu_rum and names.pomegranate_juice and tags.frozen end,
         health = 0,
         hunger = 0,
         sanity = 0,
@@ -143,7 +158,7 @@ local drinks = {
         tags = {"alcohol","spirits","cocktail_drink"},
     },
     cocktail_gibson = {
-        test = function(boilier, names, tags) return names.lumpy_vodka and names.berry_brandy and names.onion end,
+        test = function(boilier, names, tags) return names.lumpy_vodka and names.berry_brandy and names.onion and tags.frozen end,
         health = 0,
         hunger = 0,
         sanity = 0,
@@ -151,7 +166,7 @@ local drinks = {
         tags = {"alcohol","spirits","cocktail_drink"},
     },
     cocktail_gin_and_it = {
-        test = function(boilier, names, tags) return names.berry_gin and names.berry_brandy and names.citroyuzu_curacao end,
+        test = function(boilier, names, tags) return names.berry_gin and names.berry_brandy and names.citroyuzu_curacao and tags.frozen end,
         health = 0,
         hunger = 0,
         sanity = 0,
@@ -159,7 +174,7 @@ local drinks = {
         tags = {"alcohol","spirits","cocktail_drink"},
     },
     cocktail_grand_slam = {
-        test = function(boilier, names, tags) return names.petals_berry_brandy and names.berry_brandy and names.fruitjuice end,
+        test = function(boilier, names, tags) return names.petals_berry_brandy and names.berry_brandy and names.fruitjuice and tags.frozen end,
         health = 0,
         hunger = 0,
         sanity = 0,
@@ -175,7 +190,7 @@ local drinks = {
         tags = {"alcohol","spirits","cocktail_drink"},
     },
     cocktail_manhattan = {
-        test = function(boilier, names, tags) return names.nut_corn_whiskey and names.petals_berry_brandy and names.lumpy_wine end,
+        test = function(boilier, names, tags) return names.nut_corn_whiskey and names.petals_berry_brandy and names.lumpy_wine and tags.frozen end,
         health = 0,
         hunger = 0,
         sanity = 0,
@@ -231,7 +246,7 @@ local drinks = {
         tags = {"alcohol","spirits","cocktail_drink"},
     },
     cocktail_rob_roy = {
-        test = function(boilier, names, tags) return names.corn_whiskey and names.lumpy_wine and names.petals_berry_brandy and (names.berries or names.berries_juicy)  end,
+        test = function(boilier, names, tags) return names.corn_whiskey and names.lumpy_wine and names.petals_berry_brandy and (names.berries or names.berries_juicy) end,
         health = 0,
         hunger = 0,
         sanity = 0,
@@ -247,7 +262,7 @@ local drinks = {
         tags = {"alcohol","spirits","cocktail_drink"},
     },
     cocktail_stinger = {
-        test = function(boilier, names, tags) return names.sparklingwine and names.mentha_spicata_curacao end,
+        test = function(boilier, names, tags) return names.sparklingwine and names.mentha_spicata_curacao and tags.frozen and tags.frozen >= 1 end,
         health = 0,
         hunger = 0,
         sanity = 0,
@@ -263,7 +278,7 @@ local drinks = {
         tags = {"alcohol","spirits","cocktail_drink"},
     },
     cocktail_za_za = {
-        test = function(boilier, names, tags) return names.berry_gin and names.lumpy_wine and names.berry_brandy end,
+        test = function(boilier, names, tags) return names.berry_gin and names.lumpy_wine and names.berry_brandy and tags.frozen end,
         health = 0,
         hunger = 0,
         sanity = 0,
@@ -279,9 +294,16 @@ for k, v in pairs(drinks) do
     v.weight = v.weight or 1
     v.priority = v.priority or 0
     v.drinktype = v.drinktype or DRINKTYPY.GENERIC
+    v.cooktime = 1.2
+
+    if v.tags then
+        table.insert(v.tags,"cocktail_drink")
+    else
+        v.tags = {"cocktail_drink"}
+    end
 
     v.is_boilbook_recipes = true
-    v.boilbook_category = "cocktail_maker"
+    v.boilbook_category = "cobbler_shaker"
     --v.cookbook_atlas = "images/cookbookimages/cocktail_cookbookimage_drinks.xml"
     v.cookbook_tex = k..".tex"
     if modlist.legion and _G.CONFIGS_LEGION.BETTERCOOKBOOK then

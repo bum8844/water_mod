@@ -10,6 +10,8 @@ AddMinimapAtlas("images/tea_minimap.xml")
 AddReplicableComponent("thirst")
 AddReplicableComponent("waterlevel")
 AddReplicableComponent("distill")
+AddReplicableComponent("cocktailmaker")
+AddReplicableComponent("dismantletooluser")
 
 RegisterItemAtlasFile("images/inventoryitems/tea_inventoryitem.xml")
 RegisterItemAtlasFile("images/inventoryitems/tea_inventoryitem_drinks.xml")

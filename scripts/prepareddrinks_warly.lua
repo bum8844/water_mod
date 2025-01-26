@@ -163,7 +163,6 @@ local drinks =
 		potlevel = "high",
 		potlevel_bottle = "mid",
 		perishtime = TUNING.PERISH_FAST, -- 6일
-		drinktype = DRINKTYPY.VEGGIE,
 		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_COLD_FOOD,
 	},
 }

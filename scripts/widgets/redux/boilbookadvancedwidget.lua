@@ -35,8 +35,8 @@ local BoilbookAdvancedWidget = Class(Widget, function(self, parent)
 
 	local button_data = {
 		{text = STRINGS.UI.COOKBOOK.TAB_TITLE_PORTABLE_TEA_POT, build_panel_fn = function() return BoilPage(parent, "portable_tea_pot") end},
-		{text = STRINGS.UI.COOKBOOK.TAB_TITLE_COCKTAIL_MAKER, build_panel_fn = function() return BoilPage(parent, "cocktail_maker") end},
-		{text = STRINGS.UI.COOKBOOK.TAB_TITLE_PORTABLE_COCKTAIL_MAKER, build_panel_fn = function() return BoilPage(parent, "portable_cocktail_maker") end},
+		{text = STRINGS.UI.COOKBOOK.TAB_TITLE_COCKTAIL, build_panel_fn = function() return BoilPage(parent, "cobbler_shaker") end},
+		{text = STRINGS.UI.COOKBOOK.TAB_TITLE_ADVANCED_COCKTAIL, build_panel_fn = function() return BoilPage(parent, "boston_shaker") end},
 	}
 	--[[if cooking.HasModCookerFood() then
 		table.insert(button_data, {text = STRINGS.UI.COOKBOOK.TAB_TITLE_MOD_RECIPES, build_panel_fn = function() return BerwPage(parent, "mod") end})

@@ -2,24 +2,7 @@ require "utils/water_brew_utils"
 
 local drinks =
 {
-	-- 조합법이 잘못되면 나오는 결과물
-	goopydrink = 
-	{
-		test = function(boilier, names, tags) return true end,
-		priority = -2,
-		health = 0,
-		hunger = 0,
-		sanity = 0,
-		thirst = TUNING.HYDRATION_SMALLTINY, -- 11.25
-		perishtime = TUNING.PERISH_FAST, 
-		cooktime = TUNING.INCORRECT_BOIL,
-		wet_prefix = STRINGS.WET_PREFIX.WETGOOP,
-		potlevel = "high",
-		potlevel_bottle = "mid",
-	},
-
 	-- 과일차 종류(채력특화)
-	
 	berries_juice = --베리쥬스
 	{
 		test = function(boilier, names, tags) return (names.berries or  names.berries_cooked or names.berries_juicy or names.berries_juicy_cooked) and tags.fruit and tags.fruit >= 1 and not tags.veggie and notmeat(tags) and notname(names) and lessthing(names) and notages(tags) end,

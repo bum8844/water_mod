@@ -449,7 +449,7 @@ local function MakeWaterItem(name, masterfn, tags, _prefabs)
 
         inst:AddComponent("tradable")
         MakeHauntableLaunchAndPerish(inst)
-        MakeDynamicCupImage(inst, "swap", "kettle_drink", 5)
+        MakeDynamicCupImage(inst, "swap", "kettle_drink", nil, 5)
 
         if masterfn ~= nil then
             masterfn(inst)
@@ -461,8 +461,8 @@ local function MakeWaterItem(name, masterfn, tags, _prefabs)
     return Prefab(name, fn, assets, prefabs)
 end
 
-return MakeWaterItem("water_clean", cleanwater, {"cocktail_ingredients","drink","show_spoilage","icebox_valid","clean","farm_water","pre-prepareddrink","pre-preparedfood","potion"}, prefabs.water_clean),
-    MakeWaterItem("water_mineral", mineralwater, {"cocktail_ingredients","drink","show_spoilage","icebox_valid","clean","farm_water","pre-prepareddrink","pre-preparedfood","potion"}),
+return MakeWaterItem("water_clean", cleanwater, {"cocktail_ingredient","drink","show_spoilage","icebox_valid","clean","farm_water","pre-prepareddrink","pre-preparedfood","potion"}, prefabs.water_clean),
+    MakeWaterItem("water_mineral", mineralwater, {"cocktail_ingredient","drink","show_spoilage","icebox_valid","clean","farm_water","pre-prepareddrink","pre-preparedfood","potion"}),
     MakeWaterItem("water_dirty", dirtywater, {"drink","can_purify","show_spoiled", "icebox_valid","dirty","farm_water"}),
     MakeWaterItem("water_glass", glasswater, {"drink","can_purify","icebox_valid","glass","farm_water"}),
     MakeWaterItem("water_salty", saltywater, {"drink","salty","notwatersource"}),

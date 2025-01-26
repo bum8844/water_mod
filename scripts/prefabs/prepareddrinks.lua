@@ -111,7 +111,7 @@ local function MakePreparedDrink(data)
             inst:AddTag("prepareddrink")
             inst:AddTag("show_spoiled")
             inst:AddTag("icebox_valid")
-            inst:AddTag("cocktail_ingredients")
+            inst:AddTag("cocktail_ingredient")
         end
 
         if inst:HasTag("lightdrink") then
@@ -184,13 +184,14 @@ local function MakePreparedDrink(data)
         if not inst:HasTag("cocktail_drink") then
             inst:AddComponent("stackable")
             inst.components.stackable.maxsize = TUNING.STACK_SIZE_TINYITEM
-        end
+        --end
 
         if data.perishtime ~= nil and data.perishtime > 0 and not inst:HasTag("disinfectant") then
             inst:AddComponent("perishable")
             inst.components.perishable:SetPerishTime(data.perishtime)
             inst.components.perishable:StartPerishing()
             inst.components.perishable.onperishreplacement = "spoiled_drink"
+        end
         end
 
         if inst:HasTag("spirits") then
@@ -219,7 +220,7 @@ local function MakePreparedDrink(data)
         end
 
         if not inst:HasTag("cocktail_drink") then
-            MakeDynamicCupImage(inst, "swap", "kettle_drink", 5)
+            MakeDynamicCupImage(inst, "swap", "kettle_drink", nil, 5)
         end
         MakeHauntableLaunchAndPerish(inst)
 

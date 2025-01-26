@@ -22,7 +22,7 @@ local function MakeWater_Spice(name)
 
         inst:AddTag("spice")
         inst:AddTag("watermod")
-        inst:AddTag("cocktail_ingredients")
+        inst:AddTag("cocktail_ingredient")
 
         MakeInventoryFloatable(inst, "med", nil, 0.85)
 

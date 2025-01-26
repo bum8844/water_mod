@@ -349,7 +349,6 @@ local drinks =
 		cooktime = (TUNING.KETTLE_LUXURY_GOODS + TUNING.BEER_WAIT),
 		potlevel = "mid",
 		potlevel_bottle = "mid",
-		drinktype = DRINKTYPY.BREWER,
 		prefabs = { "alcoholdebuff","drunkarddebuff","resistancebuff" },
 		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_INTOXICATION_GOODNIGHTVISION,
 		oneatenfn = function(inst, eater)
@@ -371,7 +370,6 @@ local drinks =
 		cooktime = (TUNING.KETTLE_LUXURY_GOODS + TUNING.BEER_WAIT),
 		potlevel = "mid",
 		potlevel_bottle = "mid",
-		drinktype = DRINKTYPY.BREWER,
 		prefabs = { "alcoholdebuff","drunkarddebuff","resistancebuff" },
 		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_INTOXICATION_GOODNIGHTVISION,
 		oneatenfn = function(inst, eater)
@@ -393,7 +391,6 @@ local drinks =
 		cooktime = (TUNING.KETTLE_LUXURY_GOODS + TUNING.BEER_WAIT),
 		potlevel = "mid",
 		potlevel_bottle = "mid",
-		drinktype = DRINKTYPY.BREWER,
 		prefabs = { "alcoholdebuff","drunkarddebuff","resistancebuff" },
 		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_INTOXICATION,
 		oneatenfn = function(inst, eater)
@@ -413,7 +410,6 @@ local drinks =
 		cooktime = (TUNING.KETTLE_LUXURY_GOODS + TUNING.BEER_WAIT),
 		potlevel = "mid",
 		potlevel_bottle = "mid",
-		drinktype = DRINKTYPY.BREWER,
 		prefabs = { "alcoholdebuff","drunkarddebuff","resistancebuff" },
 		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_INTOXICATION,
 		oneatenfn = function(inst, eater)
@@ -491,7 +487,6 @@ for k, v in pairs(drinks) do
 			return root
 		end
     end
-    v.drinktype = v.drinktype or DRINKTYPY.GENERIC
     v.no_cookbook = true
 end
 

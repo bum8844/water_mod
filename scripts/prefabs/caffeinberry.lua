@@ -336,7 +336,7 @@ local function caffeinberry_bean()
 
     inst.pickupsound = "vegetation_firm"
 
-    inst:AddTag("cocktail_ingredients")
+    inst:AddTag("cocktail_ingredient")
 
     inst.entity:SetPristine()
 
@@ -402,7 +402,7 @@ local function caffeinberry_bean_cooked()
     inst.AnimState:SetBuild("caffeinberry_bean")
     inst.AnimState:PlayAnimation("cooked")
 
-    inst:AddTag("cocktail_ingredients")
+    inst:AddTag("cocktail_ingredient")
 
     inst.pickupsound = "vegetation_firm"
 
@@ -468,7 +468,7 @@ local function fn_spice()
 
     inst:AddTag("spice")
     inst:AddTag("watermod")
-    inst:AddTag("cocktail_ingredients")
+    inst:AddTag("cocktail_ingredient")
 
     MakeInventoryFloatable(inst, "med", nil, 0.85)
 

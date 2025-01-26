@@ -21,6 +21,48 @@ function params.barrel.itemtestfn(container, item, slot)
     return item:HasTag("clean")
 end]]
 
+params.cobbler_shaker = {
+    widget =
+    {
+        slotpos =
+        {
+            Vector3(0, 64 + 32 + 8 + 4, 0),
+            Vector3(0, 32 + 4, 0),
+            Vector3(0, -(32 + 4), 0),
+            Vector3(0, -(64 + 32 + 8 + 4), 0),
+        },
+        animbank = "ui_cookpot_1x4",
+        animbuild = "ui_cookpot_1x4",
+        pos = Vector3(200, 0, 0),
+        side_align_tip = 100,
+        buttoninfo =
+        {
+            text = STRINGS.ACTIONS.SHAKING,
+            position = Vector3(0, -165, 0),
+        }
+    },
+    acceptsstacks = false,
+    type = "cooker",
+}
+
+function params.cobbler_shaker.itemtestfn(container, item, slot)
+    return item:HasTag("cocktail_ingredient")
+end
+ 
+function params.cobbler_shaker.widget.buttoninfo.fn(inst, doer)
+    if inst.components.container ~= nil then
+        BufferedAction(doer, inst, ACTIONS.SHAKING):Do()
+    elseif inst.replica.container ~= nil and not inst.replica.container:IsBusy() then
+        SendRPCToServer(RPC.DoWidgetButtonAction, ACTIONS.SHAKING.code, inst, ACTIONS.SHAKING.mod_name)
+    end
+end
+ 
+function params.cobbler_shaker.widget.buttoninfo.validfn(inst)
+    return inst.replica.container ~= nil and inst.replica.container:IsFull() and inst.replica.cocktailmaker ~= nil and inst.replica.cocktailmaker:CanShack()
+end
+
+containers.params.boston_shaker = params.cobbler_shaker
+
 params.thermos_bottle_small =
 {
     widget =
@@ -67,23 +109,22 @@ function params.thermos_bottle_big.itemtestfn(container, item, slot)
     return item:HasTag("drink_icebox_valid")
 end
 
-
 params.bottle_pouch_small = 
 {
     widget = 
     {
         slotpos =
         {
-            Vector3(-37.5, 8, 0),
-            Vector3(37.5, 8, 0),
+            Vector3(-44.5, 9, 0),
+            Vector3(42.5, 9, 0),
         },
         slotbg =
         {
             { image = "cook_slot_drink.tex", atlas = "images/tea_ui.xml" },
             { image = "cook_slot_drink.tex", atlas = "images/tea_ui.xml" },
         },
-        animbank = "ui_bottle_pouch_2x2", --"ui_bottle_pouch_2x1",
-        animbuild = "ui_bottle_pouch_2x2", --"ui_bottle_pouch_2x1",
+        animbank = "ui_bottle_pouch_2x1",
+        animbuild = "ui_bottle_pouch_2x1",
         pos = Vector3(160, 0, 0),
         side_align_tip = 120,
     },
@@ -110,8 +151,8 @@ params.bottle_pouch_big =
             { image = "cook_slot_drink.tex", atlas = "images/tea_ui.xml" },
             { image = "cook_slot_drink.tex", atlas = "images/tea_ui.xml" },
         },
-        animbank = "ui_bottle_pouch_2x2", --"ui_bottle_pouch_2x1",
-        animbuild = "ui_bottle_pouch_2x2", --"ui_bottle_pouch_2x1",
+        animbank = "ui_bottle_pouch_2x2",
+        animbuild = "ui_bottle_pouch_2x2",
         pos = Vector3(160, 0, 0),
         side_align_tip = 120,
     },
@@ -294,6 +335,7 @@ function params.distillers.widget.buttoninfo.validfn(inst)
 end
 
 local portablespicer_itemtestfn = params.portablespicer.itemtestfn
+
 local function RejectDrinks(container, item, slot)
     return portablespicer_itemtestfn(container, item, slot)
         and not item:HasTag("prepareddrink")

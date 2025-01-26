@@ -12,10 +12,13 @@ return
 		DISITLL = "증류",
 		BURYING = "매립",
 		PURIFY = "정화",
+		SHAKING = "섞기",
 	},
 
 	NAMES =
 	{
+		BOSTON_SHAKER = "보스턴 쉐이커",
+		COBBLER_SHAKER = "코블러 쉐이커",
 		WX78MODULE_NONEDRUNK = "에탄올 재처리 모듈",
 		WX78MODULE_ACID_DRYING = "산-건조 모듈",
 
@@ -415,8 +418,8 @@ return
 		{
 			TAB_TITLE_TEA_POT = "찻주전자 레시피",
 			TAB_TITLE_PORTABLE_TEA_POT = "주방장의 특선 음료",
-			TAB_TITLE_COCKTAIL_MAKER = "칵테일 레시피",
-			TAB_TITLE_PORTABLE_COCKTAIL_MAKER = "주방장의 특선 칵테일",
+			TAB_TITLE_COCKTAIL = "칵테일 레시피",
+			TAB_TITLE_ADVANCED_COCKTAIL = "주방장의 특선 칵테일",
 			TAB_TITLE_BREWERY = "양조기 레시피",
 			TAB_TITLE_DISTILLERS = "증류기 레시피",
 			BOILTIME_TITLE = "끓는 시간",

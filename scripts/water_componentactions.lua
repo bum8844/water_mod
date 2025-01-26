@@ -153,13 +153,9 @@ local USEITEM =
         end
     end,
 
-    machinetool = function(inst, doer, target, actions)
-        if doer:HasTag("portableengineer") then
-            if target:HasTag("needmachtool") and inst:HasTag("machinetool") then
-                table.insert(actions, ACTIONS.MACHINETOOL)
-            elseif target:HasTag("dismantleable") and inst:HasTag("dismantletool") then
-                table.insert(actions, ACTIONS.MACHINETOOL)
-            end
+    cocktailmaker = function(inst, doer, target, actions)
+        if inst:HasTag("doneshaking") then
+            table.insert(actions, ACTIONS.HARVEST)
         end
     end,
 }
@@ -176,10 +172,12 @@ local POINT =
 local SCENE =
 {
     dismantleable = function(inst, doer, actions, right)
-        if not inst:HasTag("engineering") or doer:HasTag("portableengineer") then
+        local tool = doer.replica.dismantletool
+        if tool ~= nil and tool:CanDismantle() and (not inst:HasTag("engineering") or doer:HasTag("portableengineer")) then
             table.insert(actions, ACTIONS.DISASSEMBLE)
         end
     end,
+
     wateringmachine = function(inst, doer, actions, right)
         if right and not inst:HasTag("cooldown") and
             not inst:HasTag("fueldepleted") then
@@ -256,8 +254,10 @@ local INVENTORY = {
         end
     end,
 
-    machinetool = function(inst, doer, actions, right)
-        table.insert(actions, ACTIONS.MACHINETOOL)
+    cocktailmaker = function(inst, doer, actions)
+        if inst:HasTag("doneshaking") then
+            table.insert(actions, ACTIONS.HARVEST)
+        end
     end,
 
     --[[edible = function(inst, doer, actions, right)

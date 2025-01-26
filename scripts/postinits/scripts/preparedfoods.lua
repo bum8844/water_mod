@@ -14,7 +14,7 @@ local water_foods = {
 		hunger = TUNING.CALORIES_TINY*3, -- 25 -> 28.125 ( 2카카오 + 1꿀 수치 )
 		perishtime = TUNING.PERISH_PRESERVED, -- 20일
 		sanity = TUNING.SANITY_SMALL, -- 10 
-		tags = {"cocktail_ingredients"},
+		tags = {"cocktail_ingredient"},
 		thirst = 0,
 		cooktime = 2,
         floater = {"small", 0.05, 0.7},
@@ -29,7 +29,7 @@ local water_foods = {
 		hunger = TUNING.CALORIES_TINY*4.4, -- 18.75  -> 41.25 [꿀+커피+카카오+파란버섯의 총 허기 회복량 = 40.625]
 		perishtime = TUNING.PERISH_PRESERVED, --20일
 		sanity = TUNING.SANITY_TINY, -- 5
-		tags = {"cocktail_ingredients"},
+		tags = {"cocktail_ingredient"},
 		thirst = 0,
 		cooktime = 2,
         floater = {"small", 0.05, 0.7},

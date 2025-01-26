@@ -24,6 +24,7 @@ env.GameDifficultyControl = _G.GameDifficultyControl
 --Global Tables
 env.STRINGS = _G.STRINGS
 env.ACTIONS = _G.ACTIONS
+env.TUNING = _G.TUNING
 
 --Global Constants
 env.FRAMES = _G.FRAMES

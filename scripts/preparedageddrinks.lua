@@ -552,7 +552,7 @@ for k, v in pairs(drinks) do
     v.weight = v.weight or 1
     v.priority = v.priority or 0
     v.drinktype = v.drinktype or DRINKTYPY.GENERIC
-
+    
     v.is_boilbook_recipes = true
     v.boilbook_category = "brewery"
 	v.cookbook_atlas = "images/cookbookimages/tea_cookbookimage_drinks.xml"
@@ -567,7 +567,6 @@ for k, v in pairs(drinks) do
 			return root
 		end
     end
-    v.drinktype = v.drinktype or DRINKTYPY.GENERIC
     v.no_cookbook = true
 end
 

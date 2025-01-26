@@ -297,8 +297,11 @@ end
 local HARVEST_ = ACTIONS.HARVEST.fn
 
 ACTIONS.HARVEST.fn = function(act)
-    if act.target.components.brewing ~= nil then
-        return act.target.components.brewing:Harvest(act.doer)
+    local tar = act.target or act.invobject
+    if tar.components.brewing ~= nil then
+        return tar.components.brewing:Harvest(act.doer)
+    elseif tar.components.cocktailmaker ~= nil then
+        return tar.components.cocktailmaker:Harvest(act.doer)
     else
         return HARVEST_(act)
     end
@@ -364,9 +367,25 @@ DRAMATIC_RAISE.rmb = true
 PURIFY = AddAction("PURIFY",STRINGS.ACTIONS.PURIFY,function(act)
     if act.invobject.components.purify and act.target and act.invobject.components.purify:CanPurify(act.target) then
         act.invobject.components.purify:DoPurify(act.target,act.doer)
+        return true
     end
-    return true
 end)
 
 PURIFY.priority = 2
 PURIFY.rmb = true
+
+SHAKING = AddAction("SHAKING",STRINGS.ACTIONS.SHAKING,function(act)
+    if act.target.components.cocktailmaker ~= nil and act.doer.components.craftbartender ~= nil then
+        local container = act.target.components.container
+        if container ~= nil and container:IsOpen() and not container:IsOpenedBy(act.doer) then
+            return false, "INUSE"
+        elseif not act.target.components.cocktailmaker:CanShaking() then
+            return false
+        end
+        act.doer.components.craftbartender:FinishShaking()
+        return true
+    end
+end)
+
+SHAKING.mount_valid = true
+SHAKING.priority = 2

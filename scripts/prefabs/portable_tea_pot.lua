@@ -13,8 +13,7 @@ local assets =
 
 local assets_item =
 {
-    --Asset("ANIM", "anim/portable_tea_pot.zip"),
-    Asset("ANIM", "anim/portablekettle.zip"),
+    Asset("ANIM", "anim/portable_tea_pot.zip"),
 }
 
 local prefabs =

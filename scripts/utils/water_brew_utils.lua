@@ -1,7 +1,29 @@
--- 기본값
-
 function dummy(boilier, names, tags)
 	return false
+end
+
+function IsFruitDrink(names, tags)
+	for k, v in pairs(COCKTAIL_INGREDIENT.FRUIT) do
+		if names[v] then
+			return true
+		end
+	end
+end
+
+function IsVeggieDrink(names, tags)
+	for k, v in pairs(COCKTAIL_INGREDIENT.VEGGIE) do
+		if names[v] then
+			return true
+		end
+	end
+end
+
+function IsAlcoholDrink(names, tags)
+	for k, v in pairs(COCKTAIL_INGREDIENT.ALCOHOL) do
+		if names[v] then
+			return true
+		end
+	end
 end
 
 local function blocking_thing_bloomfintuna(names ,tags)
@@ -354,8 +376,12 @@ local function check_wathgrithr_combat_defense(eater)
 	return skilltreeupdater:IsActivated("wathgrithr_combat_defense")
 end
 
+local function check_nonedrunk(eater)
+	return eater.components.dcapacity ~= nil and eater.components.dcapacity.nonedrunk 
+end
+
 local function notspiritstags(eater)
-	return not check_mightiness(eater) and not check_wathgrithr_combat_defense(eater) and not eater:HasTag("drunk_immunity")
+	return not check_mightiness(eater) and not check_wathgrithr_combat_defense(eater) and not check_nonedrunk(eater)
 end
 
 local function notalcoholtags(eater)

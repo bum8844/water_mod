@@ -1,15 +1,7 @@
-local function onactive(self, onactive)
-	if onactive then
-		self.inst:AddTag("drunk_immunity")
-	else
-		self.inst:RemoveTag("drunk_immunity")
-	end
-end
-
 local Dcapacity = Class(function(self,inst)
 	self.inst = inst
 
-	self.nonedrunk = nil
+	self.nonedrunk = false
 	self.max_capacity = TUNING.MAX_CPACITY or 5
 	self.capacity = 0
 	self.capacity_half = math.ceil(self.max_capacity*.5)
@@ -42,9 +34,7 @@ local Dcapacity = Class(function(self,inst)
 	inst:ListenForEvent("mightiness_statechange",self.SetCapacity_max)
 	end,
 	nil,
-	{
-    	nonedrunk = onactive,
-	}
+	nil
 )
 
 local function Done_Intoxication(inst, self)

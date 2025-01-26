@@ -19,8 +19,8 @@ end
 MakeDynamicCupImage = function(inst, symbol, build, use_bg, maxnum)
     local function ChangeCupImage(inst, data)
         if data ~= nil then
-            local new_state = GetItemState(data.stacksize)
-            local cur_state = GetItemState(data.oldstacksize)
+            local new_state = GetItemState(data.stacksize, maxnum)
+            local cur_state = GetItemState(data.oldstacksize, maxnum)
             if new_state ~= cur_state then
                 inst.minisign_atlas = "minisign_dehy_drinks"..new_state.."_swap"
                 inst.AnimState:OverrideSymbol(symbol, build..new_state, inst.prefab)

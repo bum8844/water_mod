@@ -1,13 +1,5 @@
 local assets =
 {
-    thermos_bottle_small = {
-        Asset("ANIM", "anim/thermos_bottle_small.zip"),
-        Asset("ANIM", "anim/ui_thermos_bottle_small_1x1.zip"),
-    },
-    thermos_bottle_big = {
-        Asset("ANIM", "anim/thermos_bottle_big.zip"),
-        Asset("ANIM", "anim/ui_thermos_bottle_big_1x1.zip"), 
-    },
     bottle_pouch_small = {
         Asset("ANIM", "anim/bottle_pouch_small.zip"),
         Asset("ANIM", "anim/bottle_pouch_small_swap.zip"),
@@ -18,6 +10,14 @@ local assets =
         Asset("ANIM", "anim/bottle_pouch_big_swap.zip"),
         Asset("ANIM", "anim/ui_bottle_pouch_2x2.zip"),
     },
+    --[[thermos_bottle_small = {
+        Asset("ANIM", "anim/thermos_bottle_small.zip"),
+        Asset("ANIM", "anim/ui_thermos_bottle_small_1x1.zip"),
+    },
+    thermos_bottle_big = {
+        Asset("ANIM", "anim/thermos_bottle_big.zip"),
+        Asset("ANIM", "anim/ui_thermos_bottle_big_1x1.zip"), 
+    },]]
 }
 
 local function Pouch_Update(inst)
@@ -28,16 +28,21 @@ end
 local function pouchitemupdate(inst)
     if inst.components.container:IsOpen() then
         local have, slots = Pouch_Update(inst)
+        inst.AnimState:OverrideSymbol("swap", inst.prefab.."_swap", tostring(have * slots))
         inst.components.inventoryitem:ChangeImageName(inst.prefab.."_open_"..have * slots)
     end
 end
 local function PouchOnOpen(inst)
+    inst.SoundEmitter:PlaySound("dontstarve/common/together/packaged")
     inst.AnimState:PlayAnimation("open")
+    inst.AnimState:PushAnimation("opened", false)
     local have, slots = Pouch_Update(inst)
+    inst.AnimState:OverrideSymbol("swap", inst.prefab.."_swap", tostring(have * slots))
     inst.components.inventoryitem:ChangeImageName(inst.prefab.."_open_"..have * slots)
 end
 
 local function PouchOnClose(inst)
+    inst.SoundEmitter:PlaySound("dontstarve/common/sign_craft")
     inst.components.container:Close()
     inst.components.inventoryitem:ChangeImageName(inst.prefab)
 
@@ -70,6 +75,9 @@ local function OnPutInInventory(inst)
     inst.AnimState:PlayAnimation("closed", false)
 end
 local function checkstackoverflow(item, data, inst)
+    if not inst.isinfstack then
+        return
+    end
     if not item:IsValid() or not inst:IsValid() then
         return
     end
@@ -218,7 +226,7 @@ local function makewatercontainer(name, master_postinit, pouch, bool)
         inst.entity:AddMiniMapEntity()
         inst.entity:AddNetwork()
 
-        inst.MiniMapEntity:SetIcon(name..".png")
+        inst.MiniMapEntity:SetIcon(name..".tex")
 
         inst.AnimState:SetBank(name)
         inst.AnimState:SetBuild(name)
@@ -246,6 +254,8 @@ local function makewatercontainer(name, master_postinit, pouch, bool)
         inst:AddComponent("container")
         inst.components.container:WidgetSetup(name)
         inst.components.container:EnableInfiniteStackSize(bool)
+
+        inst.isinfstack = bool
 
         if pouch then
             inst.components.container.onopenfn = PouchOnOpen
@@ -298,6 +308,6 @@ local function bigthermospostinit(inst)
     inst.stackmult = 4
 end
 return makewatercontainer("bottle_pouch_small", smallpouchpostinit, true),
-       makewatercontainer("bottle_pouch_big", bigpouchpostinit, true, true),
+       makewatercontainer("bottle_pouch_big", bigpouchpostinit, true, true)--[[,
        makewatercontainer("thermos_bottle_small", smallthermospostinit, nil, true),
-       makewatercontainer("thermos_bottle_big", bigthermospostinit, nil, true)
+       makewatercontainer("thermos_bottle_big", bigthermospostinit, nil, true)]]

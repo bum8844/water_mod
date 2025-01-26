@@ -69,7 +69,6 @@ local coconut_drink = {
 		oneatenfn = function(inst, eater)
 			alcohol(inst, eater)
 		end,
-		drinktype = DRINKTYPY.FRUIT,
 	},
 }
 

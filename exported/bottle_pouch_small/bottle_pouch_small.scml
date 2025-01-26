@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<spriter_data scml_version="1.0" generator="BrashMonkey Spriter" generator_version="r11">
+    <folder id="0" name="closed">
+        <file id="0" name="closed/closed_A.png" width="260" height="190" pivot_x="0.5" pivot_y="0.15"/>
+        <file id="1" name="closed/closed_B.png" width="260" height="190" pivot_x="0" pivot_y="1"/>
+    </folder>
+    <folder id="1" name="swap">
+        <file id="0" name="swap/swap.png" width="260" height="190" pivot_x="0.5" pivot_y="0.15"/>
+    </folder>
+    <entity id="0" name="bottle_pouch_small">
+        <animation id="0" name="close" length="325" interval="100">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="0" z_index="1"/>
+                </key>
+                <key id="1" time="25">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="1" z_index="1"/>
+                </key>
+                <key id="2" time="100">
+                    <object_ref id="0" timeline="0" key="1" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="2" z_index="1"/>
+                </key>
+                <key id="3" time="125">
+                    <object_ref id="0" timeline="1" key="3" z_index="0"/>
+                    <object_ref id="1" timeline="0" key="2" z_index="1"/>
+                </key>
+                <key id="4" time="200">
+                    <object_ref id="0" timeline="1" key="3" z_index="0"/>
+                    <object_ref id="1" timeline="0" key="3" z_index="1"/>
+                </key>
+                <key id="5" time="300">
+                    <object_ref id="0" timeline="1" key="4" z_index="0"/>
+                    <object_ref id="1" timeline="0" key="4" z_index="1"/>
+                </key>
+                <key id="6" time="325">
+                    <object_ref id="0" timeline="1" key="5" z_index="0"/>
+                    <object_ref id="1" timeline="0" key="5" z_index="1"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="closed_A">
+                <key id="0" spin="0">
+                    <object folder="0" file="0" angle="0" a="0"/>
+                </key>
+                <key id="1" time="100" spin="0">
+                    <object folder="0" file="0" angle="0" scale_x="0.824185" scale_y="1.169334" a="0"/>
+                </key>
+                <key id="2" time="125" spin="0">
+                    <object folder="0" file="0" angle="0" scale_x="0.891741" scale_y="1.169334"/>
+                </key>
+                <key id="3" time="200" spin="0">
+                    <object folder="0" file="0" angle="0" scale_x="1.036987" scale_y="0.969939"/>
+                </key>
+                <key id="4" time="300" spin="0">
+                    <object folder="0" file="0" angle="0"/>
+                </key>
+                <key id="5" time="325" spin="0">
+                    <object folder="0" file="0" angle="0"/>
+                </key>
+            </timeline>
+            <timeline id="1" name="swap">
+                <key id="0" spin="0">
+                    <object folder="1" file="0" angle="0"/>
+                </key>
+                <key id="1" time="25" spin="0">
+                    <object folder="1" file="0" angle="0" scale_x="1.058104" scale_y="0.948763"/>
+                </key>
+                <key id="2" time="100" spin="0">
+                    <object folder="1" file="0" angle="0" scale_x="0.896791" scale_y="1.20845"/>
+                </key>
+                <key id="3" time="125" spin="0">
+                    <object folder="1" file="0" angle="0" scale_x="0.909692" scale_y="1.182394" a="0"/>
+                </key>
+                <key id="4" time="300" spin="0">
+                    <object folder="1" file="0" angle="0" a="0"/>
+                </key>
+                <key id="5" time="325" spin="0">
+                    <object folder="1" file="0" angle="0" a="0"/>
+                </key>
+            </timeline>
+        </animation>
+        <animation id="1" name="closed" length="125" interval="100">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="closed_A">
+                <key id="0" spin="0">
+                    <object folder="0" file="0" angle="0"/>
+                </key>
+            </timeline>
+        </animation>
+        <animation id="2" name="open" length="325" interval="100">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="0" z_index="1"/>
+                </key>
+                <key id="1" time="100">
+                    <object_ref id="0" timeline="0" key="1" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="1" z_index="1"/>
+                </key>
+                <key id="2" time="125">
+                    <object_ref id="0" timeline="0" key="2" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="2" z_index="1"/>
+                </key>
+                <key id="3" time="200">
+                    <object_ref id="0" timeline="0" key="3" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="3" z_index="1"/>
+                </key>
+                <key id="4" time="250">
+                    <object_ref id="0" timeline="0" key="4" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="4" z_index="1"/>
+                </key>
+                <key id="5" time="300">
+                    <object_ref id="0" timeline="0" key="5" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="5" z_index="1"/>
+                </key>
+                <key id="6" time="325">
+                    <object_ref id="0" timeline="0" key="6" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="6" z_index="1"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="swap">
+                <key id="0" spin="0">
+                    <object folder="1" file="0" angle="0" a="0"/>
+                </key>
+                <key id="1" time="100" spin="0">
+                    <object folder="1" file="0" angle="0" scale_x="0.89613" scale_y="1.341016"/>
+                </key>
+                <key id="2" time="125" spin="0">
+                    <object folder="1" file="0" angle="0" scale_x="0.913442" scale_y="1.091786"/>
+                </key>
+                <key id="3" time="200" spin="0">
+                    <object folder="1" file="0" angle="0" scale_x="1.031414" scale_y="0.97957"/>
+                </key>
+                <key id="4" time="250" spin="0">
+                    <object folder="1" file="0" angle="0"/>
+                </key>
+                <key id="5" time="300" spin="0">
+                    <object folder="1" file="0" angle="0"/>
+                </key>
+                <key id="6" time="325" spin="0">
+                    <object folder="1" file="0" angle="0"/>
+                </key>
+            </timeline>
+            <timeline id="1" name="closed_A">
+                <key id="0" spin="0">
+                    <object folder="0" file="0" angle="0" scale_x="1.04712" scale_y="0.937664"/>
+                </key>
+                <key id="1" time="100" spin="0">
+                    <object folder="0" file="0" angle="0" scale_x="0.921466" scale_y="1.068622"/>
+                </key>
+                <key id="2" time="125" spin="0">
+                    <object folder="0" file="0" angle="0" scale_x="0.934555" scale_y="1.057185" a="0"/>
+                </key>
+                <key id="3" time="200" spin="0">
+                    <object folder="0" file="0" angle="0" scale_x="0.973822" scale_y="1.022874" a="0"/>
+                </key>
+                <key id="4" time="250" spin="0">
+                    <object folder="0" file="0" angle="0" a="0"/>
+                </key>
+                <key id="5" time="300" spin="0">
+                    <object folder="0" file="0" angle="0" scale_x="1.04712" scale_y="0.937664" a="0"/>
+                </key>
+                <key id="6" time="325" spin="0">
+                    <object folder="0" file="0" angle="0" scale_x="1.04712" scale_y="0.937664" a="0"/>
+                </key>
+            </timeline>
+        </animation>
+        <animation id="3" name="opened" length="125" interval="100">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="swap">
+                <key id="0" spin="0">
+                    <object folder="1" file="0" angle="0"/>
+                </key>
+            </timeline>
+        </animation>
+    </entity>
+</spriter_data>
