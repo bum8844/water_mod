@@ -196,7 +196,7 @@ SortAfter("well_sprinkler_kit","well_kit","GARDENING")
 SortAfter("well_sprinkler_kit","well_kit","REFINE")
 SortAfter("well_sprinkler_kit","well_kit","STRUCTURES")
 
-AddRecipe2("well_waterpump_kit",{Ingredient("security_pulse_cage_full",1),Ingredient("wagpunk_bits",4),Ingredient("transistor",1),Ingredient("cutstone",2)},TECH.NONE,{atlas = ModAtlas(), image = "well_waterpump_kit.tex"},{"GARDENING","REFINE","HYDRATION","STRUCTURES"})
+AddRecipe2("well_waterpump_kit",{Ingredient("security_pulse_cage_full",1),Ingredient("wagpunk_bits",4),Ingredient("transistor",1),Ingredient("cutstone",2)},TECH.SCIENCE_TWO,{atlas = ModAtlas(), image = "well_waterpump_kit.tex"},{"GARDENING","REFINE","HYDRATION","STRUCTURES"})
 SortAfter("well_waterpump_kit","well_sprinkler_kit","GARDENING")
 SortAfter("well_waterpump_kit","well_sprinkler_kit","REFINE")
 SortAfter("well_waterpump_kit","well_sprinkler_kit","STRUCTURES")
@@ -216,7 +216,7 @@ AddRecipe2("acid_battery",{Ingredient("water_acid",2,Drink_ModAtlas(),nil,"water
 AddRecipe2("melt_nitre",{Ingredient("goldnugget",3),Ingredient("water_acid",2,Drink_ModAtlas(),nil,"water_acid.tex")},TECH.SCIENCE_TWO,{product="nitre",image="nitre.tex",numtogive=2,description="melt_nitre"},{"REFINE"})
 
 AddRecipe2("transmute_water_salty",{Ingredient("water_acid",3,Drink_ModAtlas(),nil,"water_acid.tex"),Ingredient("purification_tablets",1,ModAtlas(),nil,"purification_tablets.tex")},TECH.NONE,{product="water_salty" ,atlas = Drink_ModAtlas(), image = "water_salty.tex", numtogive = 2, builder_tag="wilson_alchemy_1", description="transmute_water_salty" },{"CHARACTER","REFINE"})
-AddRecipe2("transmute_water_acid",{Ingredient("water_salty",3,Drink_ModAtlas(),nil,"water_acid.tex"),Ingredient("purification_tablets",1,ModAtlas(),nil,"purification_tablets.tex")},TECH.NONE,{product="water_acid" ,atlas = Drink_ModAtlas(), image = "water_acid.tex", numtogive = 2, builder_tag="wilson_alchemy_1", description="transmute_water_acid" },{"CHARACTER","REFINE"})
+AddRecipe2("transmute_water_acid",{Ingredient("water_salty",3,Drink_ModAtlas(),nil,"water_salty.tex"),Ingredient("purification_tablets",1,ModAtlas(),nil,"purification_tablets.tex")},TECH.NONE,{product="water_acid" ,atlas = Drink_ModAtlas(), image = "water_acid.tex", numtogive = 2, builder_tag="wilson_alchemy_1", description="transmute_water_acid" },{"CHARACTER","REFINE"})
 
 AddDeconstructRecipe("well", {Ingredient("boards",2),Ingredient("cutstone",6)})
 

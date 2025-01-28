@@ -126,8 +126,8 @@
     <folder id="41" name="boilbook_advanced.tex">
         <file id="0" name="boilbook_advanced.tex/boilbook_advanced.png" width="224" height="224" pivot_x="0.5" pivot_y="0.5"/>
     </folder>
-    <folder id="42" name="bottle_pouch.tex">
-        <file id="0" name="bottle_pouch.tex/bottle_pouch.png" width="224" height="224" pivot_x="0.5" pivot_y="0.5"/>
+    <folder id="42" name="bottle_pouch_small.tex">
+        <file id="0" name="bottle_pouch_small.tex/bottle_pouch_small.png" width="224" height="224" pivot_x="0.5" pivot_y="0.5"/>
     </folder>
     <folder id="43" name="mentha_spicata.tex">
         <file id="0" name="mentha_spicata.tex/mentha_spicata.png" width="224" height="224" pivot_x="0.5" pivot_y="0.5"/>
@@ -194,6 +194,15 @@
     </folder>
     <folder id="64" name="purification_tablets_bottle.tex">
         <file id="0" name="purification_tablets_bottle.tex/purification_tablets_bottle.tex.png" width="224" height="224" pivot_x="0.5" pivot_y="0.5"/>
+    </folder>
+    <folder id="65" name="bottle_pouch_big.tex">
+        <file id="0" name="bottle_pouch_big.tex/bottle_pouch_big.png" width="224" height="224" pivot_x="0.5" pivot_y="0.5"/>
+    </folder>
+    <folder id="66" name="thermos_bottle_big.tex">
+        <file id="0" name="thermos_bottle_big.tex/thermos_bottle_big.png" width="224" height="224" pivot_x="0.5" pivot_y="0.5"/>
+    </folder>
+    <folder id="67" name="thermos_bottle_small.tex">
+        <file id="0" name="thermos_bottle_small.tex/thermos_bottle_small.png" width="224" height="224" pivot_x="0.5" pivot_y="0.5"/>
     </folder>
     <entity id="0" name="minisign_dehy_items_swap">
         <animation id="0" name="swap" length="1000" interval="100">

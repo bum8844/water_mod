@@ -94,7 +94,7 @@ local function OnEat(inst, food)
 			end)
 		end
 	end
-	inst.components.eater._oneatfn(inst, food)
+	inst.components.eater.dehy_oneatfn(inst, food)
 end
 
 AddPrefabPostInit("wx78",function(inst)
@@ -105,7 +105,7 @@ AddPrefabPostInit("wx78",function(inst)
 	if inst.components.eater ~= nil then
 		inst.components.eater:SetCanDrinkAcid()
 		inst.components.eater:SetCanEatAcidBattery()
-		inst.components.eater._oneatfn = inst.components.eater.oneatfn
+		inst.components.eater.dehy_oneatfn = inst.components.eater.oneatfn
 		inst.components.eater:SetOnEatFn(OnEat)
 	end
 

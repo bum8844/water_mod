@@ -1,8 +1,8 @@
 -- bum: when you eat foods, you can restore thirst.
 AddComponentPostInit("eater", function(self)
 	self.thirstabsorption = 1
-	local _Eat = self.Eat
-	local _PrefersToEat = self.PrefersToEat
+	local dehy_Eat = self.Eat
+	local dehy_PrefersToEat = self.PrefersToEat
 
 	function self:SetThristAbsorption(thirst)
 		self.thirstabsorption = thirst
@@ -21,7 +21,7 @@ AddComponentPostInit("eater", function(self)
 			if thirst_delta ~= 0 then
 				self.inst.components.thirst:DoDelta(thirst_delta * stack_mult)
 			end
-			_Eat(self, food, feeder, ...)
+			dehy_Eat(self, food, feeder, ...)
 			return true
 		end
 	end
@@ -43,7 +43,7 @@ AddComponentPostInit("eater", function(self)
 			if food:HasTag("alcohol") and self.inst.childplayer then
 				return false
 			end
-			return _PrefersToEat(self, food, ...)
+			return dehy_PrefersToEat(self, food, ...)
 		end
 	end
 end)

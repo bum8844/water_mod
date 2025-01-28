@@ -30,7 +30,7 @@ end
 
 local function onpreload(inst, data)
 	if data then
-		inst.OnPreLoad_old(inst, data)
+		inst.dehy_OnPreLoad(inst, data)
 		if data.isbeaver or data.ismoose or data.isgoose then
 			inst.components.thirst:Pause()
 		end
@@ -41,7 +41,7 @@ local function woodie(inst)
 	inst:ListenForEvent("transform_person", onbecamehuman)
 	inst:ListenForEvent("transform_wereplayer", onbecamewereplayer)
 
-	inst.OnPreLoad_old = inst.OnPreLoad
+	inst.dehy_OnPreLoad = inst.OnPreLoad
 	inst.OnPreLoad = onpreload
 end
 

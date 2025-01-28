@@ -475,25 +475,6 @@ local function OnEnableHelper(inst, enabled)
     end
 end
 
-local function ChangeToItem(inst)
-    local item = SpawnPrefab("well_sprinkler_kit")
-    item.Transform:SetPosition(inst.Transform:GetWorldPosition())
-    if inst.onhole ~= nil then
-        local hole = SpawnPrefab("hole")
-        hole.Transform:SetPosition(inst.Transform:GetWorldPosition())
-    elseif inst.pipes ~= nil then
-        RetractPipes(inst)
-    end
-    item.AnimState:PlayAnimation("collapse")
-    item.SoundEmitter:PlaySound("meta4/winona_spotlight/collapse")
-    return true
-end
-
-local function OnDismantle(inst)--, doer)
-    ChangeToItem(inst)
-    inst:Remove()
-end
-
 local function fn()
     local inst = CreateEntity()
 
@@ -532,9 +513,6 @@ local function fn()
     inst.onhole = nil
     inst.on = false
     inst.waterSpray = nil
-
-    inst:AddComponent("dismantleable")
-    inst.components.dismantleable:SetOnDismantleFn(OnDismantle)
 
 	inst:AddComponent("inspectable")
 	inst.components.inspectable.getstatus = GetStatus

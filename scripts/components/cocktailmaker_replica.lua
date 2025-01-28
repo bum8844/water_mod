@@ -1,8 +1,6 @@
---This replica is generated to refresh cooker container's "cook" button
---every time waterlevel is updated.
 local CocktailMaker = Class(function(self, inst)
 	self.inst = inst
-	self._canmakecocktail = net_bool(inst.GUID, "waterlevel._canmakecocktail")
+	self._canmakecocktail = net_bool(inst.GUID, "cocktailmaker._canmakecocktail")
 end)
 
 --getters

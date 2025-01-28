@@ -41,7 +41,7 @@ local function destroystructure(staff, target)
 	elseif target:HasTag("haspipe") then
 		RetractPipes(target)
 	end
-	staff.components.spellcaster.spell_old(staff, target)
+	staff.components.spellcaster.dehy_spell(staff, target)
 	if target.prefab == "wine_cellar" then
 		local pt = target:GetPosition()
 		local ents = TheSim:FindEntities(pt.x, pt.y, pt.z, 2, {"projectile"})
@@ -73,8 +73,8 @@ end
 
 local function holepatch(inst)
 	if inst.components.spellcaster ~= nil then
-		if inst.components.spellcaster.spell ~= nil and inst.components.spellcaster.spell_old == nil then
-			inst.components.spellcaster.spell_old = inst.components.spellcaster.spell
+		if inst.components.spellcaster.spell ~= nil then
+			inst.components.spellcaster.dehy_spell = inst.components.spellcaster.spell
 			inst:DoTaskInTime(0, function()
 				inst.components.spellcaster:SetSpellFn(destroystructure)
 			end)

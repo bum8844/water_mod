@@ -61,7 +61,7 @@ local function OnSave(inst, data)
 end
 
 local function OnLoad(inst, data)
-	if data.atlas or data.image then
+	if data and (data.atlas or data.image) then
 		inst.atlas = data.atlas or nil
 		inst.image = data.image or nil
 		if inst.atlas ~= nil then

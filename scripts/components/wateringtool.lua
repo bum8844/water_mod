@@ -284,7 +284,7 @@ function WateringTool:TimerChange(percent)
 
     self.targettime = GetTime() + self.targettime
 
-    self.wateringtooltask = self.inst:DoTaskInTime(remainingtime, OnDone, self, water)
+    self.wateringtooltask = self.inst:DoTaskInTime(percent*remainingtime, OnDone, self, water)
     self.weatherchecktask = self.inst:DoTaskInTime(0, CheckIsRaining, self)
 end
 

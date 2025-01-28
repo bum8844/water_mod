@@ -22,6 +22,7 @@ local function fn()
 
         inst:AddTag("molebait")
         inst:AddTag("purify_item")
+        inst:AddTag("icebox_valid")
 
         MakeInventoryFloatable(inst)
         
@@ -35,14 +36,19 @@ local function fn()
 
         inst:AddComponent("inspectable")
 
+        inst:AddComponent("perishable")
+        inst.components.perishable.onperishreplacement = "wetgoop"
+        inst.components.perishable:SetPerishTime(TUNING.PERISH_TWO_DAY)
+        inst.components.perishable:StartPerishing()
+
         inst:AddComponent("stackable")
-        inst.components.stackable.maxsize = TUNING.STACK_SIZE_SMALLITEM
+        inst.components.stackable.maxsize = TUNING.STACK_SIZE_TINYITEM
 
     	inst:AddComponent("inventoryitem")
 
     	MakeHauntableLaunch(inst)
 
-        MakeDynamicItemImage(inst, "swap", "purification_tablets", nil,3)
+        MakeDynamicItemImage(inst, "swap", "purification_tablets", nil, 3)
 
 	return inst
 end

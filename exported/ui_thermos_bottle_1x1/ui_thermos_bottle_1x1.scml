@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<spriter_data scml_version="1.0" generator="BrashMonkey Spriter" generator_version="r11">
+    <folder id="0" name="bg_flat">
+        <file id="0" name="bg_flat/bottle.png" width="173" height="295" pivot_x="0.5" pivot_y="0.5"/>
+    </folder>
+    <entity id="0" name="ui_thermos_bottle_1x1">
+        <animation id="0" name="close" length="300" interval="100">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+                <key id="1" time="50">
+                    <object_ref id="0" timeline="0" key="1" z_index="0"/>
+                </key>
+                <key id="2" time="300">
+                    <object_ref id="0" timeline="0" key="2" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="bottle">
+                <key id="0" spin="0">
+                    <object folder="0" file="0" x="-1.7881" y="26.313632" angle="0" scale_x="0.876041" scale_y="0.876041"/>
+                </key>
+                <key id="1" time="50" spin="0">
+                    <object folder="0" file="0" x="-1.658171" y="34.390213" angle="0" scale_x="0.812017" scale_y="0.931966"/>
+                </key>
+                <key id="2" time="300" spin="0">
+                    <object folder="0" file="0" x="-2.788104" y="-115.813753" angle="0" scale_x="1.1" scale_y="0.013341"/>
+                </key>
+            </timeline>
+        </animation>
+        <animation id="1" name="idle" length="200" interval="100">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+                <key id="1" time="200">
+                    <object_ref id="0" timeline="0" key="1" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="bottle">
+                <key id="0" spin="0">
+                    <object folder="0" file="0" x="-1.7881" y="26.313632" angle="0" scale_x="0.876041" scale_y="0.876041"/>
+                </key>
+                <key id="1" time="200" spin="0">
+                    <object folder="0" file="0" x="-1.7881" y="26.313632" angle="0" scale_x="0.876041" scale_y="0.876041"/>
+                </key>
+            </timeline>
+        </animation>
+        <animation id="2" name="ui_thermos_bottle_1x1" length="200" interval="100">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+                <key id="1" time="200">
+                    <object_ref id="0" timeline="0" key="1" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="bottle">
+                <key id="0" spin="0">
+                    <object folder="0" file="0" x="-1.7881" y="26.313632" angle="0" scale_x="0.876041" scale_y="0.876041"/>
+                </key>
+                <key id="1" time="200" spin="0">
+                    <object folder="0" file="0" x="-1.7881" y="26.313632" angle="0" scale_x="0.876041" scale_y="0.876041"/>
+                </key>
+            </timeline>
+        </animation>
+        <animation id="3" name="open" length="300" interval="100">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+                <key id="1" time="100">
+                    <object_ref id="0" timeline="0" key="1" z_index="0"/>
+                </key>
+                <key id="2" time="200">
+                    <object_ref id="0" timeline="0" key="2" z_index="0"/>
+                </key>
+                <key id="3" time="300">
+                    <object_ref id="0" timeline="0" key="3" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="bottle">
+                <key id="0" spin="0">
+                    <object folder="0" file="0" x="-2.788104" y="-115.813753" angle="0" scale_x="1.1" scale_y="0.037824"/>
+                </key>
+                <key id="1" time="100" spin="0">
+                    <object folder="0" file="0" x="-1.7881" y="14.313632" angle="0" scale_x="1.032547" scale_y="0.791653"/>
+                </key>
+                <key id="2" time="200" spin="0">
+                    <object folder="0" file="0" x="-1.65685" y="36.048734" angle="0" scale_x="0.811367" scale_y="0.943787"/>
+                </key>
+                <key id="3" time="300" spin="0">
+                    <object folder="0" file="0" x="-1.7881" y="26.313632" angle="0" scale_x="0.876041" scale_y="0.876041"/>
+                </key>
+            </timeline>
+        </animation>
+    </entity>
+</spriter_data>

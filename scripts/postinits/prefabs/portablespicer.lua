@@ -57,7 +57,7 @@ local function continuedonefn(inst)
 	        inst.AnimState:PlayAnimation("idle_full")
 	        ShowProduct(inst)
 		else
-			return inst.components.stewer.oncontinuedone_old(inst)
+			return inst.components.stewer.dehy_oncontinuedone(inst)
 		end
 	end
 end
@@ -72,7 +72,7 @@ local function ondonecookingfn(inst)
 	        inst.SoundEmitter:KillSound("snd")
 	        inst.SoundEmitter:PlaySound("dontstarve/common/together/portable/spicer/cooking_pst")
 		else
-			return inst.components.stewer.ondonecooking_old(inst)
+			return inst.components.stewer.dehy_ondonecooking(inst)
 		end
 	end
 end
@@ -84,8 +84,8 @@ AddPrefabPostInit("portablespicer", function(inst)
     end
 
     if inst.components.stewer ~= nil then
-		inst.components.stewer.oncontinuedone_old = inst.components.stewer.oncontinuedone
-		inst.components.stewer.ondonecooking_old = inst.components.stewer.ondonecooking
+		inst.components.stewer.dehy_oncontinuedone = inst.components.stewer.oncontinuedone
+		inst.components.stewer.dehy_ondonecooking = inst.components.stewer.ondonecooking
 	end
 
 	inst.components.stewer.oncontinuedone = continuedonefn

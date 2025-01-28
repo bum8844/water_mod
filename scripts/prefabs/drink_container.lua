@@ -10,14 +10,14 @@ local assets =
         Asset("ANIM", "anim/bottle_pouch_big_swap.zip"),
         Asset("ANIM", "anim/ui_bottle_pouch_2x2.zip"),
     },
-    --[[thermos_bottle_small = {
+    thermos_bottle_small = {
         Asset("ANIM", "anim/thermos_bottle_small.zip"),
-        Asset("ANIM", "anim/ui_thermos_bottle_small_1x1.zip"),
+        Asset("ANIM", "anim/ui_thermos_bottle_1x1.zip"),
     },
     thermos_bottle_big = {
         Asset("ANIM", "anim/thermos_bottle_big.zip"),
-        Asset("ANIM", "anim/ui_thermos_bottle_big_1x1.zip"), 
-    },]]
+        Asset("ANIM", "anim/ui_thermos_bottle_1x1.zip"), 
+    },
 }
 
 local function Pouch_Update(inst)
@@ -51,14 +51,20 @@ local function PouchOnClose(inst)
         inst.AnimState:PushAnimation("closed", false)
     else
         inst.AnimState:PlayAnimation("closed", false)
-    end
+    end  
 end
+
 local function ThermosOnOpen(inst)
+    inst.SoundEmitter:PlaySound("rifts3/bearger_sack/open_f5_loopstart","open")
     inst.AnimState:PlayAnimation("open")
+    inst:DoTaskInTime(.55,function()
+        inst.SoundEmitter:KillSound("open")
+    end)
     inst.components.inventoryitem:ChangeImageName(inst.prefab.."_open")
 end
 
 local function ThermosOnClose(inst)
+    inst.SoundEmitter:PlaySound("rifts3/bearger_sack/close")
     inst.components.container:Close()
     inst.components.inventoryitem:ChangeImageName(inst.prefab)
 
@@ -235,6 +241,8 @@ local function makewatercontainer(name, master_postinit, pouch, bool)
         MakeInventoryPhysics(inst)
         MakeInventoryFloatable(inst, "small", 0.35, 1.15, nil, nil, { bank = name, anim = "closed" })
 
+        inst.minisign_atlas = "minisign_dehy_items_swap"
+
         if pouch then
             inst:AddTag("pouch")
         else
@@ -308,6 +316,6 @@ local function bigthermospostinit(inst)
     inst.stackmult = 4
 end
 return makewatercontainer("bottle_pouch_small", smallpouchpostinit, true),
-       makewatercontainer("bottle_pouch_big", bigpouchpostinit, true, true)--[[,
+       makewatercontainer("bottle_pouch_big", bigpouchpostinit, true, true),
        makewatercontainer("thermos_bottle_small", smallthermospostinit, nil, true),
-       makewatercontainer("thermos_bottle_big", bigthermospostinit, nil, true)]]
+       makewatercontainer("thermos_bottle_big", bigthermospostinit, nil, true)

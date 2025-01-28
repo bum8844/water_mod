@@ -171,13 +171,6 @@ local POINT =
 
 local SCENE =
 {
-    dismantleable = function(inst, doer, actions, right)
-        local tool = doer.replica.dismantletool
-        if tool ~= nil and tool:CanDismantle() and (not inst:HasTag("engineering") or doer:HasTag("portableengineer")) then
-            table.insert(actions, ACTIONS.DISASSEMBLE)
-        end
-    end,
-
     wateringmachine = function(inst, doer, actions, right)
         if right and not inst:HasTag("cooldown") and
             not inst:HasTag("fueldepleted") then
@@ -259,32 +252,6 @@ local INVENTORY = {
             table.insert(actions, ACTIONS.HARVEST)
         end
     end,
-
-    --[[edible = function(inst, doer, actions, right)
-        if inst:HasTag("drink") or inst:HasTag("def_water") then
-            if (right or inst.replica.equippable == nil) and
-                not (doer.replica.inventory:GetActiveItem() == inst and
-                    doer.replica.rider ~= nil and
-                    doer.replica.rider:IsRiding()) then
-                for k, v in pairs(FOODGROUP) do
-                    if doer:HasTag(v.name.."_eater") then
-                        for i, v2 in ipairs(v.types) do
-                            if inst:HasTag("edible_"..v2) then
-                                table.insert(actions, ACTIONS.DRINK)
-                                return
-                            end
-                        end
-                    end
-                end
-                for k, v in pairs(FOODTYPE) do
-                    if inst:HasTag("edible_"..v) and doer:HasTag(v.."_eater") then
-                        table.insert(actions, ACTIONS.DRINK)
-                        return
-                    end
-                end
-            end
-        end
-    end,]]
 
     boilbook = function(inst, doer, actions, right)
         table.insert(actions, ACTIONS.READBOILBOOK)

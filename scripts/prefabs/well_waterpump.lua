@@ -300,8 +300,8 @@ local function fn()
 
     inst:AddComponent("wateringmachine")
 
-    inst:AddComponent("dismantleable")
-    inst.components.dismantleable:SetOnDismantleFn(OnDismantle)
+    inst:AddComponent("portablestructure")
+    inst.components.portablestructure:SetOnDismantleFn(OnDismantle)
 
     inst:AddComponent("inspectable")
     inst.components.inspectable.getstatus = getstatus

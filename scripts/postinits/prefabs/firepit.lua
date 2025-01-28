@@ -62,8 +62,8 @@ local function OnUpgrade(inst, performer, upgraded_from_item)
 		return true
 	end
 
-	if inst._onupgradefn then
-		inst._onupgradefn(inst, performer, upgraded_from_item)
+	if inst.dehy_onupgradefn then
+		inst.dehy_onupgradefn(inst, performer, upgraded_from_item)
 	else
 		FailUpgrade(inst, performer, upgraded_from_item)
 	end
@@ -173,7 +173,7 @@ AddPrefabPostInit("firepit",function(inst)
     end
 
     if inst.components.upgradeable and inst.components.upgradeable.onupgradefn then
-		inst._onupgradefn = inst.components.upgradeable.onupgradefn
+		inst.dehy_onupgradefn = inst.components.upgradeable.onupgradefn
 	end
 
 	inst:AddComponent("upgradeable")

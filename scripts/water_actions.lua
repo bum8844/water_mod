@@ -176,12 +176,6 @@ local MILKINGTOOL = AddAction("MILKINGTOOL", STRINGS.ACTIONS.MILKINGTOOL, functi
     end
 end)
 
-local DISASSEMBLE = AddAction("DISASSEMBLE", STRINGS.ACTIONS.DISMANTLE, function(act)
-        act.target.components.dismantleable:Dismantle(act.doer)
-    return true
-end)
-
-DISASSEMBLE.priority = 1
 MILKINGTOOL.priority = 1
 
 local MACHINETOOL = AddAction("MACHINETOOL", STRINGS.ACTIONS.INTERACT_WITH.GENERIC, function(act)

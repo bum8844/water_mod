@@ -1,7 +1,7 @@
 local modlist = require("utils/water_modlist").active_mod_compatibility
 
 AddComponentPostInit("drawable", function(self)
-	self._OnDrawn = self.OnDrawn
+	self.dehy_OnDrawn = self.OnDrawn
 
 	function self:OnDrawn(imagename, imagesource, atlasname, bgimagename, bgatlasname)
 		if imagesource then
@@ -21,6 +21,6 @@ AddComponentPostInit("drawable", function(self)
 			end
 		end
 
-		self:_OnDrawn(imagename, imagesource, atlasname, bgimagename, bgatlasname)
+		self:dehy_OnDrawn(imagename, imagesource, atlasname, bgimagename, bgatlasname)
 	end
 end)

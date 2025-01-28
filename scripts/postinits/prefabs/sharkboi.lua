@@ -4,7 +4,7 @@ local function AcceptTest(inst, item)
 	if item.prefab == "wine_cellar_part" then
 		return true
 	else
-		return inst.components.trader._test(inst, item)
+		return inst.components.trader.dehy_test(inst, item)
 	end
 end
 
@@ -12,7 +12,7 @@ local function OnGivenItem(inst, giver, item)
 	if item.prefab == "wine_cellar_part" then
 		item:Remove()
 	else
-		return inst.components.trader._onaccept(inst, giver, item)
+		return inst.components.trader.dehy_onaccept(inst, giver, item)
 	end
 end
 
@@ -26,18 +26,18 @@ end
 
 local function checktrader(inst)
 	
-	if inst._checktrader then
-		inst._checktrader:Cancel()
-		inst._checktrader = nil
+	if inst.dehy_checktrader then
+		inst.dehy_checktrader:Cancel()
+		inst.dehy_checktrader = nil
 	end
 
 	if inst.components.trader and inst.components.trader.test then
-		inst.components.trader._test = inst.components.trader.test
-		inst.components.trader._onaccept = inst.components.trader.onaccept
+		inst.components.trader.dehy_test = inst.components.trader.test
+		inst.components.trader.dehy_onaccept = inst.components.trader.onaccept
 		inst.components.trader:SetAcceptTest(AcceptTest)
 		inst.components.trader.onaccept = OnGivenItem
 	else
-		inst._checktrader = inst:DoTaskInTime(1,checktrader)
+		inst.dehy_checktrader = inst:DoTaskInTime(1,checktrader)
 	end
 end
 

@@ -1,6 +1,6 @@
 AddComponentPostInit("moisture", function(self)
 	local easing = require("easing")
-	local _OnUpdate = self.OnUpdate
+	local dehy_OnUpdate = self.OnUpdate
 
 	function self:GetMoistureRate_sping()
 		if GLOBAL.FindEntity(self.inst, TUNING.SPRINKLER_RANGE, nil, {"waterspray"}) == nil then
@@ -63,7 +63,7 @@ AddComponentPostInit("moisture", function(self)
 
 		    self:DoDelta(self.rate * dt)
 		else
-			return _OnUpdate(dt,...)
+			return dehy_OnUpdate(dt,...)
 		end
 	end
 end)

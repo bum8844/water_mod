@@ -8,7 +8,7 @@ local function OnEatSoul(inst, soul, ...)
 	    end
 	    inst._checksoulstask = inst:DoTaskInTime(.2, CheckSoulsRemovedAfterAnim, "eat")
 	else
-		return inst.components.souleater._oneatsoulfn(inst, soul, ...)
+		return inst.components.souleater.dehy_oneatsoulfn(inst, soul, ...)
 	end
 end
 
@@ -17,7 +17,7 @@ AddPrefabPostInit("wortox",function(inst)
 		inst.components.eater:SetThristAbsorption(.5)
 	end
 	if inst.components.souleater ~= nil then
-		inst.components.souleater._oneatsoulfn = inst.components.souleater.oneatsoulfn
+		inst.components.souleater.dehy_oneatsoulfn = inst.components.souleater.oneatsoulfn
 		inst:DoTaskInTime(0, function()	
 			inst.components.souleater:SetOnEatSoulFn(OnEatSoul)
 		end)
