@@ -647,12 +647,6 @@ AddStategraphActionHandler("wilson", ActionHandler(ACTIONS.MACHINETOOL,
         end
     )
 )
-AddStategraphActionHandler("wilson", ActionHandler(ACTIONS.DISASSEMBLE,
-        function(inst, action)
-            return inst:HasTag("handyperson") and "domediumaction" or "dolongaction"
-        end
-    )
-)
 AddStategraphActionHandler("wilson", ActionHandler(ACTIONS.SHAKING,
         function(inst, action)
             return inst:HasTag("expertchef") and "fest_shaker_shaking" or "shaker_shaking"

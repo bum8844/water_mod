@@ -111,7 +111,9 @@ local function MakePreparedDrink(data)
             inst:AddTag("prepareddrink")
             inst:AddTag("show_spoiled")
             inst:AddTag("icebox_valid")
-            inst:AddTag("cocktail_ingredient")
+            if data.name ~= "goopydrink" then
+                inst:AddTag("cocktail_ingredient")
+            end
         end
 
         if inst:HasTag("lightdrink") then

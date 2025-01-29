@@ -3,6 +3,16 @@ local assets = {
     Asset("ANIM", "anim/purification_tablets.zip")
 }
 
+local function OnStackSizeChanged(inst, data)
+    if data ~= nil then
+        if inst.components.perishable ~= nil and data.stacksize >= 5 then
+            inst.components.perishable:SetLocalMultiplier(0.25)
+        else
+            inst.components.perishable:SetLocalMultiplier(1)
+        end
+    end
+end
+
 local function fn()
 	local inst = CreateEntity()
 
@@ -49,6 +59,8 @@ local function fn()
     	MakeHauntableLaunch(inst)
 
         MakeDynamicItemImage(inst, "swap", "purification_tablets", nil, 3)
+
+        inst:ListenForEvent("stacksizechange", OnStackSizeChanged)
 
 	return inst
 end
