@@ -309,6 +309,27 @@
     <folder id="102" name="rainbow_shake">
         <file id="0" name="rainbow_shake/rainbow_shake-0.png" width="165" height="179" pivot_x="0.35" pivot_y="0.25"/>
     </folder>
+    <folder id="103" name="applepine_smoothie">
+        <file id="0" name="applepine_smoothie/applepine_smoothie-0.png" width="110" height="169" pivot_x="0.5" pivot_y="0.25"/>
+    </folder>
+    <folder id="104" name="applepine_cappucchino">
+        <file id="0" name="applepine_cappucchino/applepine_cappucchino-0.png" width="108" height="168" pivot_x="0.5" pivot_y="0.25"/>
+    </folder>
+    <folder id="105" name="applepine_brandy">
+        <file id="0" name="applepine_brandy/applepine_brandy-0.png" width="139" height="182" pivot_x="0.48" pivot_y="0.25"/>
+    </folder>
+    <folder id="106" name="applepine_cider">
+        <file id="0" name="applepine_cider/applepine_cider-0.png" width="80" height="191" pivot_x="0.5" pivot_y="0.25"/>
+    </folder>
+    <folder id="107" name="nettle_tea">
+        <file id="0" name="nettle_tea/nettle_tea-0.png" width="193" height="177" pivot_x="0.5" pivot_y="0.25"/>
+    </folder>
+    <folder id="108" name="water_mineral_dirty">
+        <file id="0" name="water_mineral_dirty/water_mineral_dirty-0.png" width="129" height="156" pivot_x="0.5" pivot_y="0.19"/>
+    </folder>
+    <folder id="109" name="water_acid">
+        <file id="0" name="water_acid/water_acid.png" width="187" height="187" pivot_x="0.5" pivot_y="0.2"/>
+    </folder>
     <entity id="0" name="kettle_drink">
         <animation id="0" name="idle" length="150" interval="100" looping="false">
             <mainline>

@@ -18,8 +18,23 @@
     <folder id="5" name="buckets_full">
         <file id="0" name="buckets_full/buckets_full.png" width="160" height="161" pivot_x="0.5" pivot_y="0.25"/>
     </folder>
+    <folder id="6" name="buckets_acid">
+        <file id="0" name="buckets_acid/buckets_acid.png" width="160" height="161" pivot_x="0.5" pivot_y="0.25"/>
+    </folder>
     <entity id="0" name="buckets">
-        <animation id="0" name="empty" length="1000" interval="100">
+        <animation id="0" name="acid" length="1000" interval="100">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="buckets_empty">
+                <key id="0" spin="0">
+                    <object folder="6" file="0" angle="0"/>
+                </key>
+            </timeline>
+        </animation>
+        <animation id="1" name="empty" length="1000" interval="100">
             <mainline>
                 <key id="0">
                     <object_ref id="0" timeline="0" key="0" z_index="0"/>
@@ -31,7 +46,7 @@
                 </key>
             </timeline>
         </animation>
-        <animation id="1" name="dirty" length="1000" interval="100">
+        <animation id="2" name="dirty" length="1000" interval="100">
             <mainline>
                 <key id="0">
                     <object_ref id="0" timeline="0" key="0" z_index="0"/>
@@ -43,7 +58,7 @@
                 </key>
             </timeline>
         </animation>
-        <animation id="2" name="full" length="1000" interval="100">
+        <animation id="3" name="full" length="1000" interval="100">
             <mainline>
                 <key id="0">
                     <object_ref id="0" timeline="0" key="0" z_index="0"/>
@@ -55,7 +70,7 @@
                 </key>
             </timeline>
         </animation>
-        <animation id="3" name="salt" length="1000" interval="100">
+        <animation id="4" name="salt" length="1000" interval="100">
             <mainline>
                 <key id="0">
                     <object_ref id="0" timeline="0" key="0" z_index="0"/>
@@ -67,7 +82,7 @@
                 </key>
             </timeline>
         </animation>
-        <animation id="4" name="ice" length="1000" interval="100">
+        <animation id="5" name="ice" length="1000" interval="100">
             <mainline>
                 <key id="0">
                     <object_ref id="0" timeline="0" key="0" z_index="0"/>
@@ -79,7 +94,7 @@
                 </key>
             </timeline>
         </animation>
-        <animation id="5" name="ice_dirty" length="1000" interval="100">
+        <animation id="6" name="ice_dirty" length="1000" interval="100">
             <mainline>
                 <key id="0">
                     <object_ref id="0" timeline="0" key="0" z_index="0"/>
@@ -91,7 +106,7 @@
                 </key>
             </timeline>
         </animation>
-        <animation id="6" name="turn_to_ice" length="825" interval="100">
+        <animation id="7" name="turn_to_ice" length="825" interval="100">
             <mainline>
                 <key id="0">
                     <object_ref id="0" timeline="0" key="0" z_index="0"/>
@@ -241,7 +256,7 @@
                 </key>
             </timeline>
         </animation>
-        <animation id="7" name="turn_to_ice_dirty" length="825" interval="100">
+        <animation id="8" name="turn_to_ice_dirty" length="825" interval="100">
             <mainline>
                 <key id="0">
                     <object_ref id="0" timeline="0" key="0" z_index="0"/>
@@ -377,7 +392,7 @@
                 </key>
             </timeline>
         </animation>
-        <animation id="8" name="turn_to_full" length="1275" interval="100">
+        <animation id="9" name="turn_to_full" length="1275" interval="100">
             <mainline>
                 <key id="0">
                     <object_ref id="0" timeline="0" key="0" z_index="0"/>
@@ -481,7 +496,7 @@
                 </key>
             </timeline>
         </animation>
-        <animation id="9" name="turn_to_full_dirty" length="1275" interval="100">
+        <animation id="10" name="turn_to_full_dirty" length="1275" interval="100">
             <mainline>
                 <key id="0">
                     <object_ref id="0" timeline="0" key="0" z_index="0"/>
