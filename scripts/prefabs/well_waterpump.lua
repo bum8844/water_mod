@@ -56,17 +56,20 @@ local function SetPressureSection(newsection, oldsection, inst)
 end
 
 local function TurnOff(inst, instant)
+	inst._ison = false
 	inst.sg:GoToState("turn_off")
 	inst.components.steampressure:StopGetPressure()
 end
 
 local function TurnOn(inst, instant)
+	inst._ison = true
 	inst.sg:GoToState("turn_on")
 	inst.components.steampressure:GetPressure()
 end
 
 local function SetChargingDoneFn(inst)
 	Calculate(inst)
+	inst.components.pickable.canbepicked = true
 	inst.components.water.available = true
 	inst.components.watersource.available = true
 	inst:DoTaskInTime(0,function(inst)
@@ -323,6 +326,8 @@ local function fn()
 	inst.components.workable:SetOnWorkCallback(onhit)
 
 	inst:SetStateGraph("SGwell_waterpump")
+
+
 
 	inst:DoTaskInTime(0, OnSpawnIn)
 	inst:ListenForEvent("onbuilt",removehole)

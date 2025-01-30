@@ -201,7 +201,7 @@ for k, v in pairs(drinks) do
 		end
     end
     v.is_boilbook_recipes = true
-    v.overridebuild = "cocktail_drinks"
+    --v.overridebuild = "cocktail_drinks"
     v.no_cookbook = true
     v.drinktype = v.drinktype or DRINKTYPY.GENERIC
 end

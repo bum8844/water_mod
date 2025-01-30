@@ -22,6 +22,9 @@ local drinks = {
         thirst = 0,
         perishtime = 0,
         tags = {}, 
+        oneatenfn = function(inst, eater)
+            
+        end,
     },
     cocktail_fruit_paantsch = {
         test = function(boilier, names, tags) return IsFruitDrink(names, tags) and not IsVeggieDrink(names, tags) end,
@@ -31,6 +34,9 @@ local drinks = {
         thirst = 0,
         perishtime = 0,
         tags = {},
+        oneatenfn = function(inst, eater)
+            
+        end,
     },
     cocktail_adonis = {
         test = function(boilier, names, tags) return names.noblewine and names.berry_brandy and names.citroyuzu and tags.frozen end,
@@ -49,6 +55,9 @@ local drinks = {
         thirst = 0,
         perishtime = 0,
         tags = {"alcohol","spirits"},
+        oneatenfn = function(inst, eater)
+            
+        end,
     },
     cocktail_alexande = {
         test = function(boilier, names, tags) return names.berry_gin and names.ruincacao_cream_liqueur and tags.egg and (tags.dairy or tags.milk) end,
@@ -58,6 +67,9 @@ local drinks = {
         thirst = 0,
         perishtime = 0,
         tags = {"alcohol","spirits"},
+        oneatenfn = function(inst, eater)
+            
+        end,
     },
     cocktail_angel_face = {
         test = function(boilier, names, tags) return names.berry_gin and names.petals_berry_brandy and names.berry_brandy and tags.frozen end,
@@ -67,6 +79,9 @@ local drinks = {
         thirst = 0,
         perishtime = 0,
         tags = {"alcohol","spirits"},
+        oneatenfn = function(inst, eater)
+            
+        end,
     },
     cocktail_bamboo = {
         test = function(boilier, names, tags) return names.noblewine and names.petals_berry_brandy and names.berry_brandy and names.citroyuzu_curacao end,
@@ -76,6 +91,9 @@ local drinks = {
         thirst = 0,
         perishtime = 0,
         tags = {"alcohol","spirits"},
+        oneatenfn = function(inst, eater)
+            
+        end,
     },
     cocktail_bentley = {
         test = function(boilier, names, tags) return names.petals_berry_brandy and names.wine and names.citroyuzu_curacao and tags.frozen end,
@@ -85,6 +103,9 @@ local drinks = {
         thirst = 0,
         perishtime = 0,
         tags = {"alcohol","spirits"},
+        oneatenfn = function(inst, eater)
+            
+        end,
     },
     cocktail_between_the_sheets = {
         test = function(boilier, names, tags) return names.sparklingwine and names.madhu_rum and names.citroyuzu_curacao and names.citroyuzu_juice end,
@@ -94,6 +115,9 @@ local drinks = {
         thirst = 0,
         perishtime = 0,
         tags = {"alcohol","spirits"},
+        oneatenfn = function(inst, eater)
+            
+        end,
     },
     cocktail_block_and_fall = {
         test = function(boilier, names, tags) return names.sparklingwine and names.lumpy_vodka and names.petals_berry_brandy and names.absinthe end,
@@ -103,6 +127,9 @@ local drinks = {
         thirst = 0,
         perishtime = 0,
         tags = {"alcohol","spirits"},
+        oneatenfn = function(inst, eater)
+            
+        end,
     },
     cocktail_bobby_burns = {
         test = function(boilier, names, tags) return names.corn_whiskey and names.petals_berry_brandy and names.tea_lumpy_vodka and names.citroyuzu end,
@@ -112,6 +139,9 @@ local drinks = {
         thirst = 0,
         perishtime = 0,
         tags = {"alcohol","spirits"},
+        oneatenfn = function(inst, eater)
+            
+        end,
     },
     cocktail_bombay = {
         test = function(boilier, names, tags) return names.berry_brandy and names.petals_berry_brandy and names.absinthe and names.citroyuzu_wine end,
@@ -121,6 +151,9 @@ local drinks = {
         thirst = 0,
         perishtime = 0,
         tags = {"alcohol","spirits"},
+        oneatenfn = function(inst, eater)
+            
+        end,
     },
     cocktail_brooklyn = {
         test = function(boilier, names, tags) return names.nut_corn_whiskey and names.berry_brandy and names.wine and names.lumpy_wine end,
@@ -130,6 +163,9 @@ local drinks = {
         thirst = 0,
         perishtime = 0,
         tags = {"alcohol","spirits"},
+        oneatenfn = function(inst, eater)
+            
+        end,
     },
     cocktail_caruso = {
         test = function(boilier, names, tags) return names.berry_gin and names.berry_brandy and names.mentha_spicata_curacao and tags.frozen end,
@@ -139,6 +175,9 @@ local drinks = {
         thirst = 0,
         perishtime = 0,
         tags = {"alcohol","spirits"},
+        oneatenfn = function(inst, eater)
+            
+        end,
     },
     cocktail_czarina = {
         test = function(boilier, names, tags) return names.lumpy_vodka and names.petals_berry_brandy and names.berry_brandy and names.lumpy_wine end,
@@ -148,6 +187,9 @@ local drinks = {
         thirst = 0,
         perishtime = 0,
         tags = {"alcohol","spirits"},
+        oneatenfn = function(inst, eater)
+            
+        end,
     },
     cocktail_diki_diki = {
         test = function(boilier, names, tags) return names.petals_berry_brandy and names.madhu_rum and names.pomegranate_juice and tags.frozen end,
@@ -157,6 +199,9 @@ local drinks = {
         thirst = 0,
         perishtime = 0,
         tags = {"alcohol","spirits"},
+        oneatenfn = function(inst, eater)
+            
+        end,
     },
     cocktail_duchess = {
         test = function(boilier, names, tags) return names.petals_berry_brandy and names.berry_brandy and names.absinthe and names.citroyuzu_curacao end,
@@ -166,6 +211,9 @@ local drinks = {
         thirst = 0,
         perishtime = 0,
         tags = {"alcohol","spirits"},
+        oneatenfn = function(inst, eater)
+            
+        end,
     },
     cocktail_est_india = {
         test = function(boilier, names, tags) return names.berry_brandy and names.citroyuzu_curacao and names.wine and names.lumpy_wine end,
@@ -175,6 +223,9 @@ local drinks = {
         thirst = 0,
         perishtime = 0,
         tags = {"alcohol","spirits"},
+        oneatenfn = function(inst, eater)
+            
+        end,
     },
     cocktail_gibson = {
         test = function(boilier, names, tags) return names.lumpy_vodka and names.berry_brandy and names.onion and tags.frozen end,
@@ -184,6 +235,9 @@ local drinks = {
         thirst = 0,
         perishtime = 0,
         tags = {"alcohol","spirits"},
+        oneatenfn = function(inst, eater)
+            
+        end,
     },
     cocktail_gin_and_it = {
         test = function(boilier, names, tags) return names.berry_gin and names.berry_brandy and names.citroyuzu_curacao and tags.frozen end,
@@ -193,6 +247,9 @@ local drinks = {
         thirst = 0,
         perishtime = 0,
         tags = {"alcohol","spirits"},
+        oneatenfn = function(inst, eater)
+            
+        end,
     },
     cocktail_grand_slam = {
         test = function(boilier, names, tags) return names.petals_berry_brandy and names.berry_brandy and names.fruitjuice and tags.frozen end,
@@ -202,6 +259,9 @@ local drinks = {
         thirst = 0,
         perishtime = 0,
         tags = {"alcohol","spirits"},
+        oneatenfn = function(inst, eater)
+            
+        end,
     },
     cocktail_grasshopper = {
         test = function(boilier, names, tags) return names.mentha_spicata_curacao and names.ruincacao_cream_liqueur and (tags.dairy or tags.milk) and (names.tea_seed or names.acorn) end,
@@ -211,6 +271,9 @@ local drinks = {
         thirst = 0,
         perishtime = 0,
         tags = {"alcohol","spirits"},
+        oneatenfn = function(inst, eater)
+            
+        end,
     },
     cocktail_manhattan = {
         test = function(boilier, names, tags) return names.nut_corn_whiskey and names.petals_berry_brandy and names.lumpy_wine and tags.frozen end,
@@ -220,6 +283,9 @@ local drinks = {
         thirst = 0,
         perishtime = 0,
         tags = {"alcohol","spirits"},
+        oneatenfn = function(inst, eater)
+            
+        end,
     },
     cocktail_mikado = {
         test = function(boilier, names, tags) return names.berry_brandy and names.citroyuzu_curacao and names.wine and names.lumpy_wine end,
@@ -357,6 +423,7 @@ for k, v in pairs(drinks) do
 		end
     end
     v.is_boilbook_recipes = true
+    --v.overridebuild = "cocktail_drinks"
     v.no_cookbook = true
     v.drinktype = v.drinktype or DRINKTYPY.GENERIC
 end
