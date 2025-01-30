@@ -9,10 +9,7 @@ local prefabs = {
 local function StartCollecting(inst)
     inst.components.watercollection:StartCollect()
 end
-
-local function StopCollecting(inst)
-    inst.components.watercollection:StopCollecting()
-end
+local MOISTURE_ON_BURNT_MULTIPLIER = 0.1
 
 local function SetTemperature(inst)
     local isfrozen = inst.components.watercollection:IsFrozen()
@@ -47,9 +44,46 @@ local function SetToFrozed(inst, data)
         end
     end
 end
+local function SetState(inst)
+    local isfrozen = inst.components.watercollection:IsFrozen()
+    local watertype = inst.components.watercollection:GetWater()
+    local wateranim = watertype ~= nil and ( watertype == WATERTYPE.CLEAN and "full" or "dirty" ) or "empty"
+    local sound = wateranim ~= "empty" and (wateranim == "full" and "dontstarve/creatures/pengull/splash" or "") or "dontstarve/common/dust_blowaway"
 
-local function getstatus(inst)
-    return 
+    if watertype and watertype ~= WATERTYPE.ACID then
+        if isfrozen then
+            if inst.AnimState:IsCurrentAnimation("ice") then
+                inst.AnimState:PlayAnimation("ice_dirty")
+                return true
+            end
+            local frozenanim = watertype == WATERTYPE.CLEAN and "ice" or "ice_dirty"
+            inst.AnimState:PlayAnimation("turn_to_"..frozenanim)
+            inst.AnimState:PushAnimation(frozenanim)
+            inst.SoundEmitter:PlaySound("dontstarve/common/bush_fertilize")
+            return true
+        elseif inst.AnimState:IsCurrentAnimation("ice") or inst.AnimState:IsCurrentAnimation("ice_dirty") then
+            local meltanim = watertype == WATERTYPE.CLEAN and "full" or "full_dirty"
+            inst.AnimState:PlayAnimation("turn_to_"..meltanim)
+            inst.AnimState:PushAnimation(wateranim)
+            inst.SoundEmitter:PlaySound("dontstarve/creatures/pengull/splash")
+            return true
+        end
+    end
+
+    inst.AnimState:PlayAnimation(wateranim)
+    if sound ~= "" then
+        inst.SoundEmitter:PlaySound(sound)
+    end
+end
+local function GetStatus(inst)
+    if inst:HasTag("burnt") then
+        return "BURNT"
+    elseif inst.components.burnable ~= nil and inst.components.burnable:IsBurning() then
+        return "BURNING"
+	elseif inst.components.watercollection.isfull then
+		return "FULL"
+    end
+    return nil
 end
 
 local function ChangeToItem(inst)
@@ -84,9 +118,9 @@ local function OnBurnt(inst)
     if inst.components.portablestructure ~= nil then
         inst:RemoveComponent("portablestructure")
     end
-    inst.components.waterlevel.accepting = false
-    inst.components.water.available = false
-    inst.components.waterlevel:SetPercent(0)
+    inst.components.watercollection:StopCollect()
+    --inst.components.water.available = false
+    inst.components.watercollection:SetPercent(0)
     local amount = math.ceil(inst.components.wateryprotection.addwetness * MOISTURE_ON_BURNT_MULTIPLIER)
     if amount > 0 then
         local x, y, z = inst.Transform:GetWorldPosition()
@@ -145,6 +179,13 @@ local function fn()
     inst.entity:AddSoundEmitter()
     inst.entity:AddMiniMapEntity()
     inst.entity:AddNetwork()
+    inst.AnimState:OverrideSymbol("warkwater_empty", "warkwater_swap", "warkwater_empty")
+    inst.AnimState:OverrideSymbol("warkwater_full", "warkwater_swap", "warkwater_clean")
+    inst.AnimState:OverrideSymbol("warkwater_ice", "warkwater_swap", "warkwater_clean_ice")
+    inst.AnimState:OverrideSymbol("warkwater_dirty", "warkwater_swap", "warkwater_dirty")
+    inst.AnimState:OverrideSymbol("warkwater_ice_dirty", "warkwater_swap", "warkwater_dirty_ice")
+    --inst.AnimState:OverrideSymbol("warkwater_acid", "warkwater_swap", "warkwater_acid")
+
 
     inst:SetPhysicsRadiusOverride(.5)
     MakeObstaclePhysics(inst, inst.physicsradiusoverride)
@@ -167,9 +208,10 @@ local function fn()
     inst.components.portablestructure:SetOnDismantleFn(OnDismantle)
 
     inst:AddComponent("watercollection")
+    inst.components.wateryprotection:SetStatefn(SetState)
 
     inst:AddComponent("inspectable")
-    --inst.components.inspectable.getstatus = getstatus
+    inst.components.inspectable.getstatus = GetStatus
 
     inst:AddComponent("wateryprotection")
     inst.components.wateryprotection.extinguishheatpercent = TUNING.WATER_BARREL_EXTINGUISH_HEAT_PERCENT
@@ -178,7 +220,10 @@ local function fn()
     inst.components.wateryprotection.addwetness = 0 -- 물의 양에 따라 변형
     inst.components.wateryprotection.protection_dist = TUNING.WATER_BARREL_DIST
 
+    inst:AddCompmonent("temperature")
+
     inst:AddComponent("lootdropper")
+    
     inst:AddComponent("workable")
     inst.components.workable:SetWorkAction(ACTIONS.HAMMER)
     inst.components.workable:SetWorkLeft(2)
@@ -190,13 +235,18 @@ local function fn()
 
     inst:ListenForEvent("percentusedchange", onpercentusedchange)
 
-    MakeMediumBurnable(inst, nil, nil, true)
-    MakeSmallPropagator(inst)
-    
-    inst:WatchWorldState("isautumn",StartCollecting)
-    inst:WatchWorldState("iswinter",StopCollecting)
-    inst:WatchWorldState("isspring",StartCollecting)
-    inst:WatchWorldState("issummer",SamiStopCollecting)
+	MakeMediumBurnable(inst, nil, nil, true)
+	inst.components.burnable:SetOnBurntFn(OnBurnt)
+	MakeMediumPropagator(inst)
+
+    --
+
+    StartCollecting(inst)
+
+    inst:WatchWorldState("issummer", StartCollecting)
+    inst:WatchWorldState("isautumn", StartCollecting)
+    inst:WatchWorldState("iswinter", StartCollecting)
+    inst:WatchWorldState("isspring", StartCollecting)
 
     inst:ListenForEvent("set_temperature",SetTemperature)
     inst:ListenForEvent("temperaturedelta", SetToFrozed)

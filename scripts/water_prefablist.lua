@@ -11,7 +11,7 @@ return {
 	--"bottle_pouch",
 	"wine_cellar_part",
 	"purification_tablets",
-	--"warkawater",
+	"warkawater",
 	"drink_container",
 	"acid_battery",
 	"shakers",

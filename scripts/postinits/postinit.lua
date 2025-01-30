@@ -38,6 +38,7 @@ local postinits =
 		"oasislake",
 		"sharkboi",
 		"healingsalve_acidbuff",
+		"winona",
 	},
 
 	screens = {

@@ -376,7 +376,7 @@ SHAKING = AddAction("SHAKING",STRINGS.ACTIONS.SHAKING,function(act)
         elseif not act.target.components.cocktailmaker:CanShaking() then
             return false
         end
-        act.doer.components.craftbartender:FinishShaking()
+        act.doer.components.craftbartender:StartShaking()
         return true
     end
 end)

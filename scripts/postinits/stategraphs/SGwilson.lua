@@ -1,30 +1,3 @@
-
-local function UpdateActionMeter(inst)
-    inst.player_classified.actionmeter:set_local(math.min(255, math.floor(inst.sg.timeinstate * 10 + 2.5)))
-end
-
-local function StartActionMeter(inst, duration)
-    if inst.HUD ~= nil then
-        inst.HUD:ShowRingMeter(inst:GetPosition(), duration)
-    end
-    inst.player_classified.actionmetertime:set(math.min(255, math.floor(duration * 10 + .5)))
-    inst.player_classified.actionmeter:set(2)
-    if inst.sg.mem.actionmetertask == nil then
-        inst.sg.mem.actionmetertask = inst:DoPeriodicTask(.1, UpdateActionMeter)
-    end
-end
-
-local function StopActionMeter(inst, flash)
-    if inst.HUD ~= nil then
-        inst.HUD:HideRingMeter(flash)
-    end
-    if inst.sg.mem.actionmetertask ~= nil then
-        inst.sg.mem.actionmetertask:Cancel()
-        inst.sg.mem.actionmetertask = nil
-        inst.player_classified.actionmeter:set(flash and 1 or 0)
-    end
-end
-
 local function ForceStopHeavyLifting(inst)
     if inst.components.inventory:IsHeavyLifting() then
         inst.components.inventory:DropItem(
@@ -474,25 +447,13 @@ local shaker_shaking = State{
 
     onenter = function(inst, timeout)
         if timeout == nil then
-            timeout = 1.2
-        elseif timeout > 1.2 then
-            inst.sg:AddStateTag("slowaction")
+            timeout = 3.6
         end
         inst.sg:SetTimeout(timeout)
         inst.components.locomotor:Stop()
         inst.SoundEmitter:PlaySound("dontstarve/wilson/make_trap", "make")
-        inst.AnimState:PlayAnimation("build_pre")
-        inst.AnimState:PushAnimation("build_loop", true)
-        if inst.bufferedaction ~= nil then
-            inst.sg.statemem.action = inst.bufferedaction
-            if inst.bufferedaction.action.actionmeter then
-                inst.sg.statemem.actionmeter = true
-                StartActionMeter(inst, timeout)
-            end
-            if inst.bufferedaction.target ~= nil and inst.bufferedaction.target:IsValid() then
-                inst.bufferedaction.target:PushEvent("startlongaction", inst)
-            end
-        end
+        inst.AnimState:PlayAnimation("construct_pre")
+        inst.AnimState:PushAnimation("construct_loop", true)
     end,
 
     timeline =
@@ -504,13 +465,12 @@ local shaker_shaking = State{
 
     ontimeout = function(inst)
         inst.SoundEmitter:KillSound("make")
-        inst.AnimState:PlayAnimation("build_pst")
-        if inst.sg.statemem.actionmeter then
-            inst.sg.statemem.actionmeter = nil
-            StopActionMeter(inst, true)
+        inst.AnimState:PlayAnimation("construct_pst")
+        local craftbartender = inst.components.craftbartender
+        if craftbartender and craftbartender.shaker then
+            craftbartender.shaker.components.cocktailmaker:DoShaking(false)
+            craftbartender.shaker.components.cocktailmaker:SetCocktail(inst)
         end
-        inst.sg:RemoveStateTag("busy")
-        inst:PerformBufferedAction()
     end,
 
     events =
@@ -525,15 +485,8 @@ local shaker_shaking = State{
     onexit = function(inst)
         inst.SoundEmitter:KillSound("make")
         local craftbartender = inst.components.craftbartender
-        if craftbartender and craftbartender.shaker then
-            craftbartender.shaker.components.cocktailmaker:SetCocktail(inst)
-        end
-        if inst.sg.statemem.actionmeter then
-            StopActionMeter(inst, false)
-        end
-        if inst.bufferedaction == inst.sg.statemem.action and
-        (inst.components.playercontroller == nil or inst.components.playercontroller.lastheldaction ~= inst.bufferedaction) then
-            inst:ClearBufferedAction()
+        if craftbartender and craftbartender.shaker.components.cocktailmaker:IsShaking() then
+            craftbartender:CancelShaking()
         end
     end,
 }
@@ -541,7 +494,7 @@ local shaker_shaking = State{
 local fest_shaker_shaking = State{
     name = "fest_shaker_shaking",
     onenter = function(inst)
-        inst.sg:GoToState("shaker_shaking", .6)
+        inst.sg:GoToState("shaker_shaking", 2.4)
     end,
 }
     
