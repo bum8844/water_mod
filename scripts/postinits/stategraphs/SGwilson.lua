@@ -458,9 +458,17 @@ local shaker_shaking = State{
 
     timeline =
     {
-        TimeEvent(4 * FRAMES, function(inst)
-            inst.sg:RemoveStateTag("busy")
-        end),
+            FrameEvent(0, function(inst) inst.SoundEmitter:PlaySound("wanda2/characters/wanda/watch/weapon/pst") end),
+            FrameEvent(5, function(inst) inst.SoundEmitter:PlaySound("yotb_2021/common/cow_bell") end),
+            FrameEvent(10, function(inst) inst.SoundEmitter:PlaySound("yotb_2021/common/cow_bell") end),
+            FrameEvent(15, function(inst) inst.SoundEmitter:PlaySound("yotb_2021/common/cow_bell") end),
+            FrameEvent(20, function(inst) inst.SoundEmitter:PlaySound("yotb_2021/common/cow_bell") end),
+            FrameEvent(25, function(inst) inst.SoundEmitter:PlaySound("yotb_2021/common/cow_bell") end),
+            FrameEvent(30, function(inst) inst.sg:RemoveStateTag("busy") end),
+            FrameEvent(35, function(inst) inst.SoundEmitter:PlaySound("yotb_2021/common/cow_bell") end),
+            FrameEvent(46, function(inst) inst.SoundEmitter:PlaySound("yotb_2021/common/cow_bell") end),
+            FrameEvent(56, function(inst) inst.SoundEmitter:PlaySound("yotb_2021/common/cow_bell") end),
+            FrameEvent(67, function(inst) inst.SoundEmitter:PlaySound("wanda2/characters/wanda/watch/weapon/pst") end),
     },
 
     ontimeout = function(inst)

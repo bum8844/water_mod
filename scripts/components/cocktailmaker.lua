@@ -199,6 +199,8 @@ function CocktailMaker:Harvest(harvester)
         self.spoiltime = nil
         self.product_spoilage = nil
 
+        self.inst.SoundEmitter:PlaySound("farming/common/watering_can/use")
+
         if self.inst.components.container ~= nil then
             self.inst.components.container.canbeopened = true
         end

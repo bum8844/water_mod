@@ -86,7 +86,6 @@ local function MakeShaker(name,isadvanced)
 	    inst.components.container.droponopen = true
 
 	    inst:AddComponent("inventoryitem")
-	    inst.components.inventoryitem:ChangeImageName("battlesong_container")
 	    inst.components.inventoryitem:SetOnPutInInventoryFn(OnPutInInventory)
 	    inst.components.inventoryitem:SetOnDroppedFn(OnDropped)
 
