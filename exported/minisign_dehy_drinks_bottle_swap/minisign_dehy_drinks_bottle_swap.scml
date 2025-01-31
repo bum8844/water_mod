@@ -309,6 +309,9 @@
     <folder id="102" name="absinthe.tex">
         <file id="0" name="absinthe.tex/absinthe.tex.png" width="224" height="224" pivot_x="0.5" pivot_y="0.5"/>
     </folder>
+    <folder id="103" name="water_acid.tex">
+        <file id="0" name="water_acid.tex/water_acid.png" width="224" height="224" pivot_x="0.5" pivot_y="0.5"/>
+    </folder>
     <entity id="0" name="minisign_dehy_drinks_bottle_swap">
         <animation id="0" name="swap" length="1000" interval="100">
             <mainline>

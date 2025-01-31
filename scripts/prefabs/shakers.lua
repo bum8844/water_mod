@@ -1,15 +1,19 @@
 require "prefabutil"
 
 local assets = {
-	cobbler_shaker = {},
-	boston_shaker = {},
+	cobbler_shaker = {
+		Asset("ANIM", "anim/cobbler_shaker.zip"),
+	},
+	boston_shaker = {
+		Asset("ANIM", "anim/boston_shaker.zip"),
+	},
 }
 
 local function OnOpen(inst,data)
 	inst.components.cocktailmaker:SetOwner(data.doer)
     inst.SoundEmitter:PlaySound("meta3/wigfrid/battlesong_container_open")
     inst.AnimState:PlayAnimation("open")
-    --inst.components.inventoryitem:ChangeImageName(inst.prefab.."_open")
+    inst.components.inventoryitem:ChangeImageName(inst.prefab.."_open")
 end
 
 local function OnClose(inst)
@@ -17,7 +21,7 @@ local function OnClose(inst)
 		inst.components.cocktailmaker:SetOwner()
 	end
 	inst.SoundEmitter:PlaySound("meta3/wigfrid/battlesong_container_close")
-    inst.components.inventoryitem:ChangeImageName("battlesong_container")
+    inst.components.inventoryitem:ChangeImageName()
     if not inst.components.inventoryitem:IsHeld() then
         inst.AnimState:PlayAnimation("close")
         inst.AnimState:PushAnimation("closed", false)
@@ -59,13 +63,9 @@ local function MakeShaker(name,isadvanced)
 
         inst.minisign_atlas = "minisign_dehy_items_swap"
 
-        --[[inst.AnimState:SetBuild(name.."_shaker")
+        inst.AnimState:SetBuild(name.."_shaker")
         inst.AnimState:SetBank(name.."_shaker")
-        inst.AnimState:PlayAnimation("idle")]]
-
-	    inst.AnimState:SetBank("battlesong_container")
-	    inst.AnimState:SetBuild("battlesong_container")
-	    inst.AnimState:PlayAnimation("closed")
+        inst.AnimState:PlayAnimation("closed")
 
 		inst.entity:SetPristine()
 		

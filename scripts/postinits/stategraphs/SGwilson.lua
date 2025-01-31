@@ -485,7 +485,7 @@ local shaker_shaking = State{
     onexit = function(inst)
         inst.SoundEmitter:KillSound("make")
         local craftbartender = inst.components.craftbartender
-        if craftbartender and craftbartender.shaker.components.cocktailmaker:IsShaking() then
+        if craftbartender and craftbartender.shaker and craftbartender.shaker.components.cocktailmaker:IsShaking() then
             craftbartender:CancelShaking()
         end
     end,

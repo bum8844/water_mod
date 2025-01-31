@@ -204,6 +204,15 @@
     <folder id="67" name="thermos_bottle_small.tex">
         <file id="0" name="thermos_bottle_small.tex/thermos_bottle_small.png" width="224" height="224" pivot_x="0.5" pivot_y="0.5"/>
     </folder>
+    <folder id="68" name="boston_shaker.tex">
+        <file id="0" name="boston_shaker.tex/boston_shaker.png" width="224" height="224" pivot_x="0.5" pivot_y="0.5"/>
+    </folder>
+    <folder id="69" name="cobbler_shaker.tex">
+        <file id="0" name="cobbler_shaker.tex/cobbler_shaker.png" width="224" height="224" pivot_x="0.5" pivot_y="0.5"/>
+    </folder>
+    <folder id="70" name="warkawater_item.tex">
+        <file id="0" name="warkawater_item.tex/warkawater_item.png" width="224" height="224" pivot_x="0.5" pivot_y="0.5"/>
+    </folder>
     <entity id="0" name="minisign_dehy_items_swap">
         <animation id="0" name="swap" length="1000" interval="100">
             <mainline>
