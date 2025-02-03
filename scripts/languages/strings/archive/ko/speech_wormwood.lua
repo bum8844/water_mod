@@ -47,7 +47,7 @@ return {
 		WATER_DIRTY_ICE = "차가워. 진짜 차가워", --더러운 얼음물
 
 		SPICE_CAFFEINPEPPER = "(킁킁) 에엣-취이! 엣-취이!", --후추 향신료
-        SPICE_RUINCOLATE_SPREAD = "", -- 초콜릿 스프레드
+		SPICE_RUINCOLATE_SPREAD = "", -- 초콜릿 스프레드
 		
 		WELL_KIT = "구멍에 심어", --우물 키트
 		WELL_SPRINKLER_KIT = "구멍이나 물덩이 근처에 심어", --스프링클러 키트
