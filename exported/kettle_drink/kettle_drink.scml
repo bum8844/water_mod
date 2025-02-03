@@ -343,6 +343,18 @@
     <folder id="111" name="water_acid">
         <file id="0" name="water_acid/water_acid-0.png" width="120" height="120" pivot_x="0.5" pivot_y="0.25"/>
     </folder>
+    <folder id="112" name="earlgrey_tea">
+        <file id="0" name="earlgrey_tea/earlgrey_tea-0.png" width="139" height="102" pivot_x="0.53" pivot_y="0.3"/>
+    </folder>
+    <folder id="113" name="nettle_liqueur">
+        <file id="0" name="nettle_liqueur/nettle_liqueur-0.png" width="120" height="120" pivot_x="0.5" pivot_y="0.25"/>
+    </folder>
+    <folder id="114" name="nettle_wine">
+        <file id="0" name="nettle_wine/nettle_wine-0.png" width="96" height="123" pivot_x="0.61" pivot_y="0.3"/>
+    </folder>
+    <folder id="115" name="frash_bramble_tea">
+        <file id="0" name="frash_bramble_tea/frash_bramble_tea.png" width="124" height="113" pivot_x="0.42" pivot_y="0.25"/>
+    </folder>
     <entity id="0" name="kettle_drink">
         <animation id="0" name="turn_to_ice" length="1000" interval="100">
             <mainline>
