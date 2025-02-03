@@ -97,14 +97,10 @@ local function dostew(inst, self)
         if self.onspoil ~= nil then
             self.onspoil(inst)
         end
-<<<<<<< HEAD
     elseif self.product ~= nil and not self.inst:HasTag("brewery") and not inst:HasTag("distillers") then
-=======
-    elseif self.product ~= nil then
->>>>>>> Beta_1.2.8
         local recipe = cooking.GetRecipe(inst.prefab, self.product)
         local prep_perishtime = (recipe ~= nil and (recipe.cookpot_perishtime or recipe.perishtime)) or 0
-        if prep_perishtime > 0 and not self.inst:HasTag("brewery") and not inst:HasTag("distillers") then
+        if prep_perishtime > 0 then
 			local prod_spoil = self.product_spoilage or 1
 			self.spoiltime = prep_perishtime * prod_spoil
 			self.targettime =  GetTime() + self.spoiltime

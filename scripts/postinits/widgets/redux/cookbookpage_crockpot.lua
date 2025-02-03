@@ -106,11 +106,7 @@ function CookbookPageCrockPot:PopulateRecipeDetailPanel(data, ...)
 	local has_details = false
 
 	if modlist.legion and _G.CONFIGS_LEGION.BETTERCOOKBOOK then
-<<<<<<< HEAD
 		local cookbookui_legion = require "modcompats/1392778117/cookbookui_legion"
-=======
-		local cookbookui_legion = require "modinit/1392778117/cookbookui_legion"
->>>>>>> Beta_1.2.8
 		data.recipe_def.custom_cookbook_details_fn = function(data, self, top, left)
 			local root = cookbookui_legion(data, self, top, left)
 			return root

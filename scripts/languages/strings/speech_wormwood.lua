@@ -51,22 +51,11 @@ return {
 		WELL_DRILLING_ITEM = "구멍내는 도구", --드릴 아이템
 		HOLE = "안에 물 있어", --우물 구멍
 		WELL = "물 얻을수 있어.", --우물
-<<<<<<< HEAD
 		BOTTLE_POUCH = "",
-=======
-		BOTTLE_POUCH_SMALL = "",
-		BOTTLE_POUCH_BIG = "",
-		THERMOS_BOTTLE_SMALL = "",
-		THERMOS_BOTTLE_BIG = "",
->>>>>>> Beta_1.2.8
 		WINE_CELLAR_PART = "",
 		WINE_CELLAR = "",
 
 		WX78MODULE_NONEDRUNK = "삐빅 삑", -- 78전용 묘듈
-<<<<<<< HEAD
-=======
-		PURIFICATION_TABLETS = "",
->>>>>>> Beta_1.2.8
 
 		-- 물 모드 식물
 
@@ -221,11 +210,7 @@ return {
 		LUMPY_WINE = "뿌리덩어리 발효된거", --서주(감자 고구마등 뿌리 술)
 		PULQUE = "완전 새하예", --풀케(선인주)
 		RUINCACAO_WINE = "쓴 맛 많이 없어", -- 카카오 와인 
-<<<<<<< HEAD
 		MIDNIGHT_STROM = "",
-=======
-		MIDNIGHT_STORM = "",
->>>>>>> Beta_1.2.8
 		APPLEPINE_CIDER = "",
 		MENTHA_SPICATA_WINE = "",
 
@@ -255,12 +240,7 @@ return {
 		BERRY_BRANDY = "작고 작은 먹을거 화르륵 마시는거", -- 베리 브랜디
 		AREUHI = "안 하예", -- 크므즈 증류주 아르히
 		APPLEPINE_BRANDY = "",
-<<<<<<< HEAD
 		VOID = "",
-=======
-		VOID_GIN  = "",
-		VOID_BRANDY = "",
->>>>>>> Beta_1.2.8
 		CITROYUZU_CURACAO = "",
 		MENTHA_SPICATA_CURACAO = "",
 
@@ -299,11 +279,7 @@ return {
         RUIN_SCHOKAKOLA = "먹는거 눈이 번쩍", -- 쇼카콜라
         APPLEPINE_PIE = "",
         APPLEPINE_FRIED_RICE = "",
-<<<<<<< HEAD
         citroyuzu_bbq = "",
-=======
-        CITROYUZU_BBQ = "",
->>>>>>> Beta_1.2.8
 
 		BUCKET_STEEL_EMPTY = 
 		{
@@ -386,38 +362,12 @@ return {
 			STOP = "못 마셔", -- 화덕에 불이 없어서 소금물이 정수 되지 않는 상태
 		},
 
-		TEA_POT =
-		{
-			EMPTY = "아직 물 없어", --빈 주전자 조사대사
-			BURNT = "이런", --주전자가 불탐
-			BOILING_LONG = "기다려...", -- 음료를 만들기 시작한지 얼마 안됨
-			BOILING_SHORT = "곧 끝나", --음료 조리가 거의 끝나감
-			DONE = "끝!", --음료가 완성됨
-			PURIFY_LONG = "더러워", -- 더러운 물을 끓이기 시작한지 얼마 안됨
-			PURIFY_SHORT = "곧 끝나", --더러운물을 거의 다 끓여감
-			HASWATER = "우릴거 필요해", -- 깨끗한 물이 차 있는 상태
-			MELT_LONG = "차가워", -- 얼음물을 녹이기 시작한지 얼마 안됨
-			MELT_SHORT = "곧 끝나", -- 얼음물을 거의 녹여감
-		},
-
-		PORTABLE_TEA_POT_ITEM =
-		{
-			GENERIC = "마실거 만들어", -- 휴대용 주전자(아이템) 조사 대사
-			EMPTY = "물 없어...", -- 설치한 빈 휴대용 주전자 조사 대사
-			BOILING_LONG = "기다려...", -- 음료를 만들기 시작한지 얼마 안됨
-			BOILING_SHORT = "곧 끝나", --음료 조리가 거의 끝나감
-			DONE = "다 됐어!", --음료가 완성됨
-			PURIFY_LONG = "더러워", -- 더러운 물을 끓이기 시작한지 얼마 안됨
-			PURIFY_SHORT = "금방 끝나", --더러운물을 거의 다 끓여감
-			HASWATER = "뭐 만들고 싶어?", -- 깨끗한 물이 차 있는 상태
-			MELT_LONG = "차가워", -- 얼음물을 녹이기 시작한지 얼마 안됨
-			MELT_SHORT = "금방 끝나", -- 얼음물을 거의 녹여감
-		},
-
 		KETTLE =
 		{
 			EMPTY = "아직 물 없어", --빈 주전자 조사대사
 			BURNT = "이런", --주전자가 불탐
+			BOILING_LONG = "기다려...", -- 음료를 만들기 시작한지 얼마 안됨
+			BOILING_SHORT = "곧 끝나", --음료 조리가 거의 끝나감
 			DONE = "끝!", --음료가 완성됨
 			PURIFY_LONG = "더러워", -- 더러운 물을 끓이기 시작한지 얼마 안됨
 			PURIFY_SHORT = "곧 끝나", --더러운물을 거의 다 끓여감
@@ -430,6 +380,8 @@ return {
 		{
 			GENERIC = "마실거 만들어", -- 휴대용 주전자(아이템) 조사 대사
 			EMPTY = "물 없어...", -- 설치한 빈 휴대용 주전자 조사 대사
+			BOILING_LONG = "기다려...", -- 음료를 만들기 시작한지 얼마 안됨
+			BOILING_SHORT = "곧 끝나", --음료 조리가 거의 끝나감
 			DONE = "다 됐어!", --음료가 완성됨
 			PURIFY_LONG = "더러워", -- 더러운 물을 끓이기 시작한지 얼마 안됨
 			PURIFY_SHORT = "금방 끝나", --더러운물을 거의 다 끓여감

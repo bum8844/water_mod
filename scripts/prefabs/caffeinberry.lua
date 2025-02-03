@@ -115,9 +115,9 @@ local function getregentimefn_normal(inst)
     local max_cycles = inst.components.pickable.max_cycles
     local cycles_left = inst.components.pickable.cycles_left or max_cycles
     local num_cycles_passed = math.max(0, max_cycles - cycles_left)
-    return TUNING.CAFFEINBERRY_REGROW_TIME
-        + TUNING.CAFFEINBERRY_REGROW_INCREASE * num_cycles_passed
-        + TUNING.CAFFEINBERRY_REGROW_VARIANCE * math.random()
+    return TUNING.BERRY_REGROW_TIME
+        + TUNING.BERRY_REGROW_INCREASE * num_cycles_passed
+        + TUNING.BERRY_REGROW_VARIANCE * math.random()
 end
 
 local function makefullfn(inst)
@@ -222,9 +222,9 @@ local function caffeinberry()
     inst.components.pickable.makebarrenfn = makebarrenfn
     inst.components.pickable.makefullfn = makefullfn
     inst.components.pickable.ontransplantfn = ontransplantfn
-    inst.components.pickable:SetUp("caffeinberry_bean", TUNING.CAFFEINBERRY_REGROW_TIME)
+    inst.components.pickable:SetUp("caffeinberry_bean", TUNING.BERRY_REGROW_TIME)
     inst.components.pickable.getregentimefn = getregentimefn_normal
-    inst.components.pickable.max_cycles = TUNING.CAFFEINBERRY_CYCLES + math.random(2)
+    inst.components.pickable.max_cycles = TUNING.BERRYBUSH_CYCLES + math.random(2)
     inst.components.pickable.cycles_left = inst.components.pickable.max_cycles
 
     inst:AddComponent("witherable")
@@ -300,7 +300,7 @@ local function dug_caffeinberry()
 	
     inst:AddComponent("inventoryitem")
     inst.replica.inventoryitem:SetImage("dug_caffeinberry")
-	inst.components.inventoryitem.atlasname = "images/inventoryitems/tea_inventoryitem.xml"
+	inst.components.inventoryitem.atlasname = "images/tea_inventoryitem.xml"
     inst.components.inventoryitem.imagename = "caffeinberry_bush_dug"
 
     inst:AddComponent("tradable")
@@ -336,11 +336,7 @@ local function caffeinberry_bean()
 
     inst.pickupsound = "vegetation_firm"
 
-<<<<<<< HEAD
     inst:AddTag("cocktail_ingredients")
-=======
-    inst:AddTag("cocktail_ingredient")
->>>>>>> Beta_1.2.8
 
     inst.entity:SetPristine()
 
@@ -370,7 +366,7 @@ local function caffeinberry_bean()
     
     inst:AddComponent("inventoryitem")
     inst.replica.inventoryitem:SetImage("caffeinberry_bean")
-    inst.components.inventoryitem.atlasname= "images/inventoryitems/tea_inventoryitem.xml"
+    inst.components.inventoryitem.atlasname= "images/tea_inventoryitem.xml"
     inst.components.inventoryitem.imagename= "caffeinberry_bean"
 
     inst:AddComponent("tradable")
@@ -406,11 +402,7 @@ local function caffeinberry_bean_cooked()
     inst.AnimState:SetBuild("caffeinberry_bean")
     inst.AnimState:PlayAnimation("cooked")
 
-<<<<<<< HEAD
     inst:AddTag("cocktail_ingredients")
-=======
-    inst:AddTag("cocktail_ingredient")
->>>>>>> Beta_1.2.8
 
     inst.pickupsound = "vegetation_firm"
 
@@ -443,7 +435,7 @@ local function caffeinberry_bean_cooked()
 
     inst:AddComponent("inventoryitem")
     inst.replica.inventoryitem:SetImage("caffeinberry_bean_cooked")
-    inst.components.inventoryitem.atlasname= "images/inventoryitems/tea_inventoryitem.xml"
+    inst.components.inventoryitem.atlasname= "images/tea_inventoryitem.xml"
     inst.components.inventoryitem.imagename= "caffeinberry_bean_cooked"
 
     inst:AddComponent("tradable")
@@ -476,11 +468,7 @@ local function fn_spice()
 
     inst:AddTag("spice")
     inst:AddTag("watermod")
-<<<<<<< HEAD
     inst:AddTag("cocktail_ingredients")
-=======
-    inst:AddTag("cocktail_ingredient")
->>>>>>> Beta_1.2.8
 
     MakeInventoryFloatable(inst, "med", nil, 0.85)
 
@@ -496,7 +484,7 @@ local function fn_spice()
     inst:AddComponent("inspectable")
     inst:AddComponent("inventoryitem")
     inst.replica.inventoryitem:SetImage("spice_caffeinpepper")
-    inst.components.inventoryitem.atlasname= "images/inventoryitems/tea_inventoryitem.xml"
+    inst.components.inventoryitem.atlasname= "images/tea_inventoryitem.xml"
     inst.components.inventoryitem.imagename= "spice_caffeinpepper"
 
     MakeHauntableLaunch(inst)

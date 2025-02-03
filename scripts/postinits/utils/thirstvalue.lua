@@ -28,21 +28,10 @@ local function check_wathgrithr_combat_defense(eater)
 		return false
 	end
 	return skilltreeupdater:IsActivated("wathgrithr_combat_defense")
-<<<<<<< HEAD
 end
 
 local function notspiritstags(eater)
 	return not check_mightiness(eater) and not check_wathgrithr_combat_defense(eater) and not eater:HasTag("drunk_immunity")
-=======
-end
-
-local function check_nonedrunk(eater)
-	return eater.components.dcapacity ~= nil and eater.components.dcapacity.nonedrunk 
-end
-
-local function notspiritstags(eater)
-	return not check_mightiness(eater) and not check_wathgrithr_combat_defense(eater) and not check_nonedrunk(eater)
->>>>>>> Beta_1.2.8
 end
 
 local function notalcoholtags(eater)

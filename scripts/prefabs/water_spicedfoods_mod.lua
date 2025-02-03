@@ -35,7 +35,7 @@ local function MakePreparedFood(data)
     end
 
     local function DisplayNameFn(inst)
-        return subfmt(STRINGS.NAMES[data.spice.."_FOOD"], { food = STRINGS.NAMES[string.upper(data.basename)] })
+        return subfmt(STRINGS.NAMES["SPICE_CAFFEINPEPPER_FOOD"], { food = STRINGS.NAMES[string.upper(data.basename)] })
     end
 
     local function fn()
@@ -160,11 +160,7 @@ local function MakePreparedFood(data)
 
         inst:AddComponent("inventoryitem")
         inst.replica.inventoryitem:SetImage(spicename.."_over")
-<<<<<<< HEAD
         inst.components.inventoryitem.atlasname = "images/tea_inventoryitem.xml"
-=======
-        inst.components.inventoryitem.atlasname = "images/inventoryitems/tea_inventoryitem.xml"
->>>>>>> Beta_1.2.8
         inst.components.inventoryitem.imagename = spicename.."_over"
         if data.float == nil then
             inst.components.inventoryitem:SetSinks(true)

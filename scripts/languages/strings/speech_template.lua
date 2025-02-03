@@ -55,22 +55,11 @@ return {
 		WELL_DRILLING_ITEM = "",
 		HOLE = "",
 		WELL = "",
-<<<<<<< HEAD
 		BOTTLE_POUCH = "",
-=======
-		BOTTLE_POUCH_SMALL = "",
-		BOTTLE_POUCH_BIG = "",
-		THERMOS_BOTTLE_SMALL = "",
-		THERMOS_BOTTLE_BIG = "",
->>>>>>> Beta_1.2.8
 		WINE_CELLAR_PART = "",
 		WINE_CELLAR = "",
 
 		WX78MODULE_NONEDRUNK = "", -- WX-78 module
-<<<<<<< HEAD
-=======
-		PURIFICATION_TABLETS = "",
->>>>>>> Beta_1.2.8
 
 		-- DSD flora
 
@@ -225,11 +214,7 @@ return {
 		LUMPY_WINE = "",
 		PULQUE = "",
 		RUINCACAO_WINE = "",
-<<<<<<< HEAD
 		MIDNIGHT_STROM = "",
-=======
-		MIDNIGHT_STORM = "",
->>>>>>> Beta_1.2.8
 		APPLEPINE_CIDER = "",
 		MENTHA_SPICATA_WINE = "",
 
@@ -259,12 +244,7 @@ return {
 		BERRY_BRANDY = "",
 		AREUHI = "",
 		APPLEPINE_BRANDY = "",
-<<<<<<< HEAD
 		VOID = "",
-=======
-		VOID_BRANDY = "",
-		VOID_GIN  = "",
->>>>>>> Beta_1.2.8
 		CITROYUZU_CURACAO = "",
 		MENTHA_SPICATA_CURACAO = "",
 
@@ -303,11 +283,7 @@ return {
         RUIN_SCHOKAKOLA = "",
         APPLEPINE_PIE = "",
         APPLEPINE_FRIED_RICE = "",
-<<<<<<< HEAD
         citroyuzu_bbq = "",
-=======
-        CITROYUZU_BBQ = "",
->>>>>>> Beta_1.2.8
 
 		BUCKET_STEEL_EMPTY = 
 		{
@@ -388,48 +364,14 @@ return {
 			BOILING_SHORT = "",
 			DONE = "",
 			STOP = "",
-<<<<<<< HEAD
-=======
-		},
-
-		TEA_POT =
-		{
-			EMPTY = "",
-			BURNT = "",
-			BOILING_LONG = "",
-			BOILING_SHORT = "",
-			DONE = "",
-			PURIFY_LONG = "",
-			PURIFY_SHORT = "",
-			HASWATER = "",
-			MELT_LONG = "",
-			MELT_SHORT = "",
-		},
-
-		PORTABLE_TEA_POT_ITEM =
-		{
-			GENERIC = "",
-			EMPTY = "", 
-			BOILING_LONG = "",
-			BOILING_SHORT = "",
-			DONE = "",
-			PURIFY_LONG = "",
-			PURIFY_SHORT = "",
-			HASWATER = "",
-			MELT_LONG = "",
-			MELT_SHORT = "",
->>>>>>> Beta_1.2.8
 		},
 
 		KETTLE =
 		{
 			EMPTY = "",
 			BURNT = "",
-<<<<<<< HEAD
 			BOILING_LONG = "",
 			BOILING_SHORT = "",
-=======
->>>>>>> Beta_1.2.8
 			DONE = "",
 			PURIFY_LONG = "",
 			PURIFY_SHORT = "",
@@ -441,13 +383,9 @@ return {
 		PORTABLEKETTLE_ITEM =
 		{
 			GENERIC = "",
-<<<<<<< HEAD
 			EMPTY = "", 
 			BOILING_LONG = "",
 			BOILING_SHORT = "",
-=======
-			EMPTY = "",
->>>>>>> Beta_1.2.8
 			DONE = "",
 			PURIFY_LONG = "",
 			PURIFY_SHORT = "",

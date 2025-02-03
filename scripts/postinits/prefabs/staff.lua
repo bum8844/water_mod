@@ -40,7 +40,6 @@ local function destroystructure(staff, target)
 		Spawnhole(target)
 	elseif target:HasTag("haspipe") then
 		RetractPipes(target)
-<<<<<<< HEAD
 	end
 	staff.components.spellcaster.spell_old(staff, target)
 	if target.prefab == "wine_cellar" then
@@ -56,23 +55,6 @@ local function destroystructure(staff, target)
 			end
 		end
 	end
-=======
-	end
-	staff.components.spellcaster.dehy_spell(staff, target)
-	if target.prefab == "wine_cellar" then
-		local pt = target:GetPosition()
-		local ents = TheSim:FindEntities(pt.x, pt.y, pt.z, 2, {"projectile"})
-		local num = 0
-		for k, v in pairs(ents) do
-			if v.prefab == "gelblob_bottle" and not (num >= 4) then
-	            if not (v.components.stackable.stacksize > 1) and not v.components.inventoryitem:IsHeld() then
-	            	num = num + 1
-	                v.components.complexprojectile.onhitfn(v)
-	            end
-			end
-		end
-	end
->>>>>>> Beta_1.2.8
 end
 
 local GREENHAUNT_CANT_TAGS = { "INLIMBO" }
@@ -91,8 +73,8 @@ end
 
 local function holepatch(inst)
 	if inst.components.spellcaster ~= nil then
-		if inst.components.spellcaster.spell ~= nil then
-			inst.components.spellcaster.dehy_spell = inst.components.spellcaster.spell
+		if inst.components.spellcaster.spell ~= nil and inst.components.spellcaster.spell_old == nil then
+			inst.components.spellcaster.spell_old = inst.components.spellcaster.spell
 			inst:DoTaskInTime(0, function()
 				inst.components.spellcaster:SetSpellFn(destroystructure)
 			end)
