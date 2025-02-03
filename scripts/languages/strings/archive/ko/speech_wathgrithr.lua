@@ -47,7 +47,6 @@ return {
 		WATER_DIRTY_ICE = "얼음 찌거기로군.", --더러운 얼음물
 
 		SPICE_CAFFEINPEPPER = "내 만찬에 전투의 흥분을 더하는 가루로다.", --후추 향신료
-		SPICE_RUINCOLATE_SPREAD = "", -- 초콜릿 스프레드
 
 		WELL_KIT = "내 기꺼이 우물을 설치하리.", --우물 키트
 		WELL_SPRINKLER_KIT = "구름없이 비를 뿌리는 기계로다.", --스프링클러 키트

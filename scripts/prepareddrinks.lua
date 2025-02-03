@@ -561,22 +561,6 @@ local drinks =
 		potlevel_bottle = "mid",
 		drinktype = DRINKTYPY.LEAFS,
 	},
-	mentha_spicata_tea = {
-		test = function(boilier, names, tags) return IsMentha_Spicata(names, tags) and notname(names) and lessthing(names) and notages(tags) end,
-		priority = 1,
-		health = TUNING.HEALING_TINY*2, -- 2 (10)
-		hunger = 0,
-		sanity = TUNING.SANITY_MED, -- 15 (75)
-		thirst = TUNING.HYDRATION_MEDSMALL, --22.5 (112.5)
-		tags = {"leavestype"},
-		perishtime = TUNING.PERISH_SLOW, -- 15일
-		cooktime = TUNING.KETTLE_LUXURY_GOODS,
-		temperature = TUNING.HOT_FOOD_BONUS_TEMP, 
-		temperatureduration = TUNING.FOOD_TEMP_BRIEF, -- 5초
-		potlevel = "mid",
-		potlevel_bottle = "mid",
-		drinktype = DRINKTYPY.LEAFS,	
-	},
 	hotruincolate = {
 		test = function(boilier, names, tags) return names.ruincacao_bean_cooked and names.ruincacao_bean_cooked >= 2 and not tags.frozen and notmeat(tags) and notname(names) and lessthing(names) end,
 		priority = 2,

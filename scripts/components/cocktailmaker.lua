@@ -102,7 +102,7 @@ end
 
 function CocktailMaker:SetCocktail(doer)
 	if self.inst.components.container ~= nil then
-		self.chef_id = (doer ~= nil and doer.player_classified ~= nil) and doer.userid
+		self.chef_id = (doer ~= nil and doer.player_classified ~= nil) and doer.userid-- or nil
 		self.ingredient_prefabs = {}
 
         self.done = nil
@@ -199,8 +199,6 @@ function CocktailMaker:Harvest(harvester)
         self.spoiltime = nil
         self.product_spoilage = nil
 
-        self.inst.SoundEmitter:PlaySound("farming/common/watering_can/use")
-
         if self.inst.components.container ~= nil then
             self.inst.components.container.canbeopened = true
         end
@@ -211,8 +209,21 @@ end
 
 function CocktailMaker:OnSave()
     local remainingtime = self.targettime ~= nil and self.targettime - GetTime() or 0
-    return
-    {
+    print("1")
+    print(self.shakerowner)
+    print("2")
+    print(self.product)
+    print("3")
+    print(self.product_spoilage)
+    print("4")
+    print(self.spoiltime)
+    print("5")
+    print(remainingtime)
+    print("6")
+    print(self.chef_id)
+    print("7777777")
+    print(self.ingredient_prefabs)
+    return {
     	owner = self.shakerowner,
         product = self.product,
         product_spoilage = self.product_spoilage,
@@ -226,7 +237,7 @@ end
 
 function CocktailMaker:OnLoad(data)
 	if data.owner then
-		self:SetOwner(owner)
+		self:SetOwner(data.owner)
 	end
 
     if data.product ~= nil then
