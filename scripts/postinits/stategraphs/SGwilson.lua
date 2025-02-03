@@ -451,6 +451,7 @@ local shaker_shaking = State{
         end
         inst.sg:SetTimeout(timeout)
         inst.components.locomotor:Stop()
+        inst.SoundEmitter:PlaySound("wanda2/characters/wanda/watch/weapon/pst")
         inst.SoundEmitter:PlaySound("dontstarve/wilson/make_trap", "make")
         inst.AnimState:PlayAnimation("construct_pre")
         inst.AnimState:PushAnimation("construct_loop", true)
@@ -458,7 +459,6 @@ local shaker_shaking = State{
 
     timeline =
     {
-            FrameEvent(0, function(inst) inst.SoundEmitter:PlaySound("wanda2/characters/wanda/watch/weapon/pst") end),
             FrameEvent(5, function(inst) inst.SoundEmitter:PlaySound("yotb_2021/common/cow_bell") end),
             FrameEvent(10, function(inst) inst.SoundEmitter:PlaySound("yotb_2021/common/cow_bell") end),
             FrameEvent(15, function(inst) inst.SoundEmitter:PlaySound("yotb_2021/common/cow_bell") end),
@@ -468,12 +468,12 @@ local shaker_shaking = State{
             FrameEvent(35, function(inst) inst.SoundEmitter:PlaySound("yotb_2021/common/cow_bell") end),
             FrameEvent(46, function(inst) inst.SoundEmitter:PlaySound("yotb_2021/common/cow_bell") end),
             FrameEvent(56, function(inst) inst.SoundEmitter:PlaySound("yotb_2021/common/cow_bell") end),
-            FrameEvent(67, function(inst) inst.SoundEmitter:PlaySound("wanda2/characters/wanda/watch/weapon/pst") end),
     },
 
     ontimeout = function(inst)
         inst.SoundEmitter:KillSound("make")
         inst.AnimState:PlayAnimation("construct_pst")
+        inst.SoundEmitter:PlaySound("wanda2/characters/wanda/watch/weapon/pst")
         local craftbartender = inst.components.craftbartender
         if craftbartender and craftbartender.shaker then
             craftbartender.shaker.components.cocktailmaker:DoShaking(false)
@@ -492,9 +492,11 @@ local shaker_shaking = State{
 
     onexit = function(inst)
         inst.SoundEmitter:KillSound("make")
+        inst.SoundEmitter:PlaySound("wanda2/characters/wanda/watch/weapon/pst")
         local craftbartender = inst.components.craftbartender
         if craftbartender and craftbartender.shaker and craftbartender.shaker.components.cocktailmaker:IsShaking() then
             craftbartender:CancelShaking()
+            craftbartender.shaker.components.cocktailmaker:SetOwner()
         end
     end,
 }
