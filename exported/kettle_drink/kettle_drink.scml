@@ -355,6 +355,9 @@
     <folder id="115" name="frash_bramble_tea">
         <file id="0" name="frash_bramble_tea/frash_bramble_tea.png" width="124" height="113" pivot_x="0.42" pivot_y="0.25"/>
     </folder>
+    <folder id="116" name="tuber_bloom_tea">
+        <file id="0" name="tuber_bloom_tea/tuber_bloom_tea.png" width="120" height="120" pivot_x="0.5" pivot_y="0.25"/>
+    </folder>
     <entity id="0" name="kettle_drink">
         <animation id="0" name="turn_to_ice" length="1000" interval="100">
             <mainline>
