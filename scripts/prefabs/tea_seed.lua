@@ -26,11 +26,7 @@ local function tealeaves()
     inst.AnimState:SetBuild("tealeaves")
     inst.AnimState:PlayAnimation("idle_tealeaves")
 
-<<<<<<< HEAD
     inst:AddTag("cocktail_ingredients")
-=======
-    inst:AddTag("cocktail_ingredient")
->>>>>>> Beta_1.2.8
 
     inst.pickupsound = "vegetation_grassy"
 
@@ -59,7 +55,7 @@ local function tealeaves()
 
     inst:AddComponent("inventoryitem")
     inst.replica.inventoryitem:SetImage("tealeaves")
-	inst.components.inventoryitem.atlasname= "images/inventoryitems/tea_inventoryitem.xml"
+	inst.components.inventoryitem.atlasname= "images/tea_inventoryitem.xml"
     inst.components.inventoryitem.imagename= "tealeaves"
 
     inst:AddComponent("tradable")
@@ -88,11 +84,7 @@ local function tealeaves_dried()
     inst.AnimState:SetBuild("tealeaves")
     inst.AnimState:PlayAnimation("idle_tealeaves_dried")
 
-<<<<<<< HEAD
     inst:AddTag("cocktail_ingredients")
-=======
-    inst:AddTag("cocktail_ingredient")
->>>>>>> Beta_1.2.8
 
     inst.pickupsound = "vegetation_grassy"
 
@@ -113,7 +105,7 @@ local function tealeaves_dried()
 
     inst:AddComponent("inventoryitem")
     inst.replica.inventoryitem:SetImage("tealeaves_dried")
-	inst.components.inventoryitem.atlasname= "images/inventoryitems/tea_inventoryitem.xml"
+	inst.components.inventoryitem.atlasname= "images/tea_inventoryitem.xml"
     inst.components.inventoryitem.imagename= "tealeaves_dried"
 
     inst:AddComponent("tradable")
@@ -142,11 +134,7 @@ local function tea_seed_cooked()
     inst.AnimState:SetBuild("tea_tree_seed")
     inst.AnimState:PlayAnimation("cooked")
 
-<<<<<<< HEAD
     inst:AddTag("cocktail_ingredients")
-=======
-    inst:AddTag("cocktail_ingredient")
->>>>>>> Beta_1.2.8
 
     MakeInventoryPhysics(inst)
 
@@ -176,7 +164,7 @@ local function tea_seed_cooked()
 
     inst:AddComponent("inventoryitem")
     inst.replica.inventoryitem:SetImage("tea_seed_cooked")
-	inst.components.inventoryitem.atlasname= "images/inventoryitems/tea_inventoryitem.xml"
+	inst.components.inventoryitem.atlasname= "images/tea_inventoryitem.xml"
     inst.components.inventoryitem.imagename= "tea_seed_cooked"
 
     inst:AddComponent("tradable")
@@ -219,7 +207,7 @@ end
 
 local function start_sprout_growing(inst)
     if inst.components.timer ~= nil and not inst.components.timer:TimerExists("grow") then
-        inst.components.timer:StartTimer("grow", TUNING.TEA_TREE_SPROUT_GROWTIME)
+        inst.components.timer:StartTimer("grow", TUNING.ROCK_FRUIT_SPROUT_GROWTIME)
     end
 end
 
@@ -301,11 +289,7 @@ local function tea_seed()
     inst.AnimState:SetBuild("tea_tree_seed")
     inst.AnimState:PlayAnimation("idle")
 
-<<<<<<< HEAD
     inst:AddTag("cocktail_ingredients")
-=======
-    inst:AddTag("cocktail_ingredient")
->>>>>>> Beta_1.2.8
 
     MakeInventoryPhysics(inst)
 
@@ -341,7 +325,7 @@ local function tea_seed()
 	
     inst:AddComponent("inventoryitem")
     inst.replica.inventoryitem:SetImage("tea_seed")
-	inst.components.inventoryitem.atlasname= "images/inventoryitems/tea_inventoryitem.xml"
+	inst.components.inventoryitem.atlasname= "images/tea_inventoryitem.xml"
     inst.components.inventoryitem.imagename= "tea_seed"
 
     inst:AddComponent("tradable")

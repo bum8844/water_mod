@@ -1,13 +1,7 @@
 require("tuning")
-
--- GameDifficultyControl
-TUNING.DIFFICULTY = GetModConfigData("difficulty")
-local thirst_decrease_speed = GameDifficultyControl("thirst_decrease_speed") or GetModConfigData("thirst_decrease_speed")
-local enable_waterborne = GameDifficultyControl("enable_waterborne") and ( GameDifficultyControl("enable_waterborne") > 0 and true or false ) or -1
-
 local TUNING = _G.TUNING
-local wilson_thirst = GameDifficultyControl("thirst_max") or GetModConfigData("thirst_max")
-local thirst_decrease = wilson_thirst*thirst_decrease_speed
+local wilson_thirst = GetModConfigData("thirst_max")
+local thirst_decrease = wilson_thirst*GetModConfigData("thirst_decrease_speed")
 local hydration_per_day = wilson_thirst * 0.6
 local bucket_max_level = 10
 local caffein_time = GetModConfigData("caffein_time")
@@ -21,20 +15,9 @@ local waterborne_time = GetModConfigData("waterborne_time")
 local butterhunter_time = GetModConfigData("butterhunter_time")
 local satiety_time = GetModConfigData("satiety_time")
 
-table.insert(TUNING.GAMEMODE_STARTING_ITEMS.DEFAULT.WARLY,"portable_tea_pot_item")
 table.insert(TUNING.GAMEMODE_STARTING_ITEMS.DEFAULT.WARLY,"portablekettle_item")
-<<<<<<< HEAD:scripts/tuning.lua
 TUNING.WX78_CHARGING_FOODS["areuhi"] = 1
 TUNING.WX78_CHARGING_FOODS["kumis"] = 1
-=======
-table.insert(TUNING.GAMEMODE_STARTING_ITEMS.DEFAULT.WINONA,"acid_battery")
-table.insert(TUNING.GAMEMODE_STARTING_ITEMS.DEFAULT.WINONA,"acid_battery")
-TUNING.WX78_CHARGING_FOODS["areuhi"] = 1
-TUNING.WX78_CHARGING_FOODS["kumis"] = 1
-TUNING.WX78_CHARGING_FOODS["water_acid"] = 1
-TUNING.WX78_CHARGING_FOODS["acid_battery"] = 24
-TUNING.GOLD_VALUES.WINE_CELLAR_PART = 12
->>>>>>> Beta_1.2.8:scripts/water_tuning.lua
 
 -- 물을 담을수 있는 최대치
 water_tuning =
@@ -52,25 +35,14 @@ water_tuning =
 
 	TYPES_DIRTY = {
 		"pond",
+		"pond_mos",
 		"pond_cave",
 		"tidalpool",
 		"tidalpoolnew",
 	},
 
-<<<<<<< HEAD:scripts/tuning.lua
 	TYPES_MINERAL = {
 		"hotspring",
-=======
-	TYPES_VARY_DIRTY = {
-		"pond_mos",
-	},
-
-	TYPES_MINERAL = {
-		"hotspring",
-	},
-
-	TYPES_UNCLEAN_MINERAL = {
->>>>>>> Beta_1.2.8:scripts/water_tuning.lua
 		"grotto_pool_big",
 		"grotto_pool_small",
 	},
@@ -109,16 +81,9 @@ water_tuning =
 	DRIFWOOD_BUCKET_MULT = 4,
 	WOODIE_BUCKET_MULT = 0.5,
 
-<<<<<<< HEAD:scripts/tuning.lua
 	CAMPKETTLE_MAX_LEVEL = 3,
 	KETTLE_MAX_LEVEL = bucket_max_level*.5,
 	BARREL_MAX_LEVEL = bucket_max_level*36,
-=======
-	CAMPKETTLE_MAX_LEVEL = bucket_max_level*.3,
-	TEA_POT_MAX_LEVEL = bucket_max_level*.1,
-	KETTLE_MAX_LEVEL = bucket_max_level*.8,
-	WATER_BARREL_MAX_LEVEL = bucket_max_level*36,
->>>>>>> Beta_1.2.8:scripts/water_tuning.lua
 	BREWERY_MAX_LEVEL = bucket_max_level*6,
 	DESALINATOR_MAX_LEVEL = bucket_max_level*2,
 
@@ -149,17 +114,7 @@ water_tuning =
 	WATER_DIRTY_MELTINGPOINT = 5,
 	
 	-- Moistures and getting wet
-	WATER_BARREL_WETNESS = bucket_max_level*3.6,
-	TEA_POT_WETNESS = bucket_max_level*.01,
-	KETTLE_WETNESS = bucket_max_level*.08,
-	BREWERY_WETNESS = bucket_max_level*.6,
-	DESALINATOR_WETNESS = bucket_max_level*.2,
-	
-	WATER_BARREL_EXTINGUISH_HEAT_PERCENT = -1,
-	WATER_BARREL_TEMP_REDUCTION = 5,
-	WATER_BARREL_PROTECTION_TIME = 30,
-	WATER_BARREL_DIST = 15,
-
+	WATER_BARREL_WETNESS = 25,
 	WATER_BARREL_EXTINGUISH_HEAT_PERCENT = -1,
 	WATER_BARREL_TEMP_REDUCTION = 5,
 	WATER_BARREL_PROTECTION_TIME = 30,
@@ -235,7 +190,7 @@ water_tuning =
 	CAFFEIN_SPEED = GetModConfigData("caffein_speed"),
 	TEASLEEP_TIME = GetModConfigData("sleeping_time"),
 	INTOXICATION_TIME = TUNING.TOTAL_DAY_TIME*alcohol_time,
-	MAX_CPACITY = GameDifficultyControl("max_capacity") or GetModConfigData("max_capacity"),
+	MAX_CPACITY = GetModConfigData("max_capacity"),
 	CAPACITY_TIME = TUNING.TOTAL_DAY_TIME*capacity_time,
 	ALCOHOL_CAPACITY = 1,
 	SPIRITS_CAPACITY = 3,
@@ -245,11 +200,7 @@ water_tuning =
 	GHOST_TIME = TUNING.TOTAL_DAY_TIME*ghost_time,
 	DRUNKARD_DURATION = TUNING.TOTAL_DAY_TIME*drunkard_time,
 	DETOX_DURATION = (TUNING.TOTAL_DAY_TIME*drunkard_time)*.5,
-<<<<<<< HEAD:scripts/tuning.lua
 	ENABLE_WATERBORNE = GetModConfigData("enable_waterborne"),
-=======
-	ENABLE_WATERBORNE = enable_waterborne ~= -1 and enable_waterborne or GetModConfigData("enable_waterborne"),
->>>>>>> Beta_1.2.8:scripts/water_tuning.lua
 	WATERBORNE_DURATION = TUNING.TOTAL_DAY_TIME*waterborne_time,
 	SATIETY_DURATION = TUNING.TOTAL_DAY_TIME*satiety_time,
 	WATERBORNE_IMMUNES_CHANCE = .65,
@@ -279,33 +230,6 @@ water_tuning =
 	THIRST_GAIN = (hydration_per_day/TUNING.TOTAL_DAY_TIME)*2,
 	WURT_THIRST_RATE_MODIFIER = 1.25,
 
-	CAFFEINBERRY_REGROW_TIME = TUNING.TOTAL_DAY_TIME*10,
-    CAFFEINBERRY_REGROW_INCREASE = TUNING.TOTAL_DAY_TIME*.5,
-    CAFFEINBERRY_REGROW_VARIANCE = TUNING.TOTAL_DAY_TIME*2,
-    CAFFEINBERRY_CYCLES = 6,
-
-	TEA_TREE_SPROUT_GROWTIME = 6*TUNING.DAY_TIME_DEFAULT,
-	TEA_TREE_REGROW =
-	{
-		EMPTY = { BASE = 2*TUNING.DAY_TIME_DEFAULT, VAR = 2*TUNING.SEG_TIME },
-		PREPICK = { BASE = 6*TUNING.SEG_TIME, VAR = 2*TUNING.SEG_TIME },
-		PICK = { BASE = 4*TUNING.DAY_TIME_DEFAULT, VAR = 2*TUNING.SEG_TIME },
-		CRUMBLE = { BASE = 1*TUNING.DAY_TIME_DEFAULT, VAR = 2*TUNING.SEG_TIME },
-	},
-
-	TEA_TREE_PICKABLE_CYCLES = 4,
-
-	RUINCACAO_TREE_SPROUT_GROWTIME = 8*TUNING.DAY_TIME_DEFAULT,
-	RUINCACAO_TREE_REGROW =
-	{
-		EMPTY = { BASE = 2*TUNING.DAY_TIME_DEFAULT, VAR = 2*TUNING.SEG_TIME },
-		PREPICK = { BASE = 6*TUNING.SEG_TIME, VAR = 2*TUNING.SEG_TIME },
-		PICK = { BASE = 6*TUNING.DAY_TIME_DEFAULT, VAR = 2*TUNING.SEG_TIME },
-		CRUMBLE = { BASE = 1*TUNING.DAY_TIME_DEFAULT, VAR = 2*TUNING.SEG_TIME },
-	},
-
-	RUINCACAO_TREE_PICKABLE_CYCLES = 2,
-
 	RUINCACAO_LOOT =
     {
         ANGLE = 65,
@@ -327,7 +251,6 @@ water_tuning =
         MAX_SPAWNS = 10, -- NOTES(JBK): Deprecated, kept around for mods.	
     },
 
-<<<<<<< HEAD:scripts/tuning.lua
     SALT_VALUE = 10,
     DESALINATOR_MAX_SALT = 40,
     DESALINATOR_SALT_SECTION = 9,
@@ -335,28 +258,6 @@ water_tuning =
 
 	WINONA_WELL_SPRINKLER_POWER_LOAD_ON = 0.5,
 	WINONA_WELL_SPRINKLER_POWER_LOAD_OFF = 0.05,
-=======
-    SLUDGE_VALUE = 10,
-    DESALINATOR_MAX_SLUDGE = 40,
-    DESALINATOR_SLUDGE_SECTION = 9,
-    SLUDGE_PER_WATER = 1/40,
-
-	WINONA_WELL_SPRINKLER_POWER_LOAD_ON = 0.5,
-	WINONA_WELL_SPRINKLER_POWER_LOAD_OFF = 0.05,
-
-	DEFAULT_LEFT_TO_DIRTY = GameDifficultyControl("left_to_dirty") or GetModConfigData("left_to_dirty"),
-
-	PURIIFYING = 6,
-
-	SMALLPOUCH_PRESERVER_RATE = 1,
-	BIGPOUCH_PRESERVER_RATE = 1/3,
-	SMALLTHERMOS_PRESERVER_RATE = 1/3,
-	SMALLTHERMOS_PRESERVER_MULT = 10,
-	BIGTHERMOS_PRESERVER_RATE = -3,
-
-	WX78_OVERCHARGE_RUNSPEED_BONUS = .5,
-	WX78_OVERCHARGE_LIGHT_RED = 3,
->>>>>>> Beta_1.2.8:scripts/water_tuning.lua
 }
 
 for i,v in pairs(water_tuning) do

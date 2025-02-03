@@ -1,23 +1,12 @@
 WATERTYPE =
 {
-<<<<<<< HEAD:scripts/constants.lua
 	CLEAN = "water_clean",
 	DIRTY = "water_dirty",
 	MINERAL = "water_mineral",
 	CLEAN_ICE = "water_clean_ice",
 	DIRTY_ICE = "water_dirty_ice",
 	SALTY = "water_salty",
-=======
-	CLEAN = "clean",
-	DIRTY = "dirty",
-	MINERAL = "mineral",
-	UNCLEAN_MINERAL = "glass",
-	CLEAN_ICE = "clean_ice",
-	DIRTY_ICE = "dirty_ice",
-	SALTY = "salty",
->>>>>>> Beta_1.2.8:scripts/water_constants.lua
 	NONE = "none",
-	ACID = "acid",
 }
 
 WATERGROUP =
@@ -28,14 +17,10 @@ WATERGROUP =
 		types =
 		{
 			WATERTYPE.CLEAN,
-<<<<<<< HEAD:scripts/constants.lua
-=======
-			WATERTYPE.UNCLEAN_MINERAL,
->>>>>>> Beta_1.2.8:scripts/water_constants.lua
 			WATERTYPE.MINERAL,
 			WATERTYPE.DIRTY,
 			WATERTYPE.SALTY,
-		},
+		}
 	},
 
 	RAW =
@@ -44,7 +29,6 @@ WATERGROUP =
 		types =
 		{
 			WATERTYPE.DIRTY,
-			WATERTYPE.UNCLEAN_MINERAL,
 			WATERTYPE.SALTY,
 		},
 	},
@@ -83,21 +67,13 @@ WATERGROUP =
 		},
 	},
 
-	CAMP_DESALINATIORABLE = {
-		name = "CAMP_DESALINATIORABLE",
-		types = {
-			WATERTYPE.UNCLEAN_MINERAL,
-			WATERTYPE.SALTY,
-		},
-	},
-
 	NONE_BOIL = 
 	{
 		name = "NONE_BOIL",
 		types = {
 			WATERTYPE.NONE,
-		},
-	},
+		}
+	}
 }
 
 DRINKTYPY = 
@@ -657,9 +633,6 @@ BUCKETSTATE =
     DIRTY = "dirty",
 }
 
-FOODTYPE.ACID = "acid"
-FOODTYPE.ACID_BATTERY = "acid_battery"
-
 env.WATERTYPE = WATERTYPE
 env.WATERGROUP = WATERGROUP
 env.DRINKTYPY = DRINKTYPY
@@ -675,43 +648,3 @@ UPGRADETYPES["HOLE"] = "hole"
 
 local FERTILIZERS = require("prefabs/fertilizer_nutrient_defs")
 FERTILIZERS.FERTILIZER_DEFS.spoiled_drink = {nutrients = TUNING.SPOILED_DRINK_NUTRIENTS}
-
-COCKTAIL_INGREDIENT = {
-	FRUIT = {},
-	VEGGIE = {},
-	ALCOHOL = {},
-}
-
-for k, v in pairs(require("prepareddrinks")) do
-	if v.drinktype ~= DRINKTYPY.GENERIC then
-		if v.drinktype == DRINKTYPY.VEGGIE or v.drinktype == DRINKTYPY.LEAFS then
-			table.insert(COCKTAIL_INGREDIENT["VEGGIE"],v.name)
-		elseif v.drinktype == DRINKTYPY.FRUIT then
-			table.insert(COCKTAIL_INGREDIENT["FRUIT"],v.name)
-		end
-	end
-end
-
-for k, v in pairs(require("prepareddrinks_warly")) do
-	if v.drinktype == DRINKTYPY.VEGGIE or v.drinktype == DRINKTYPY.LEAFS then
-		table.insert(COCKTAIL_INGREDIENT["VEGGIE"],v.name)
-	elseif v.drinktype == DRINKTYPY.FRUIT then
-		table.insert(COCKTAIL_INGREDIENT["FRUIT"],v.name)
-	end
-end
-
-for k, v in pairs(require("preparedageddrinks")) do
-	if v.drinktype == DRINKTYPY.BREWER then
-		table.insert(COCKTAIL_INGREDIENT["ALCOHOL"],v.name)
-	end
-end
-
-for k, v in pairs(require("preparedspiritsdrink")) do
-	if v.drinktype == DRINKTYPY.SPIRITS then
-		table.insert(COCKTAIL_INGREDIENT["ALCOHOL"],v.name)
-	end
-end
-
-env.COCKTAIL_INGREDIENT = COCKTAIL_INGREDIENT
-
-_G.COCKTAIL_INGREDIENT = COCKTAIL_INGREDIENT

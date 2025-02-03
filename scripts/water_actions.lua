@@ -138,13 +138,10 @@ local TAKEWATER = AddAction("TAKEWATER", STRINGS.ACTIONS.FILL, function(act)
     elseif source ~= nil
         and source.components.water ~= nil
         and source.components.water.isitem then
-<<<<<<< HEAD
         return false
     end
 
     if (filled and filled:HasTag("onlyoneget")) or (source and source:HasTag("onlyoneget")) then
-=======
->>>>>>> Beta_1.2.8
         return false
     end
 
@@ -183,15 +180,12 @@ local MILKINGTOOL = AddAction("MILKINGTOOL", STRINGS.ACTIONS.MILKINGTOOL, functi
     end
 end)
 
-<<<<<<< HEAD
 local DISASSEMBLE = AddAction("DISASSEMBLE", STRINGS.ACTIONS.DISMANTLE, function(act)
         act.target.components.dismantleable:Dismantle(act.doer)
     return true
 end)
 
 DISASSEMBLE.priority = 1
-=======
->>>>>>> Beta_1.2.8
 MILKINGTOOL.priority = 1
 
 local MACHINETOOL = AddAction("MACHINETOOL", STRINGS.ACTIONS.INTERACT_WITH.GENERIC, function(act)
@@ -307,11 +301,8 @@ end
 local HARVEST_ = ACTIONS.HARVEST.fn
 
 ACTIONS.HARVEST.fn = function(act)
-    local tar = act.target or act.invobject
-    if tar.components.brewing ~= nil then
-        return tar.components.brewing:Harvest(act.doer)
-    elseif tar.components.cocktailmaker ~= nil then
-        return tar.components.cocktailmaker:Harvest(act.doer)
+    if act.target.components.brewing ~= nil then
+        return act.target.components.brewing:Harvest(act.doer)
     else
         return HARVEST_(act)
     end
@@ -372,34 +363,4 @@ DRAMATIC_RAISE = AddAction("DRAMATIC_RAISE",STRINGS.ACTIONS.OCEAN_TRAWLER_RAISE,
     return true
 end)
 
-<<<<<<< HEAD
 DRAMATIC_RAISE.rmb = true
-=======
-DRAMATIC_RAISE.rmb = true
-
-PURIFY = AddAction("PURIFY",STRINGS.ACTIONS.PURIFY,function(act)
-    if act.invobject.components.purify and act.target and act.invobject.components.purify:CanPurify(act.target) then
-        act.invobject.components.purify:DoPurify(act.target,act.doer)
-        return true
-    end
-end)
-
-PURIFY.priority = 2
-PURIFY.rmb = true
-
-SHAKING = AddAction("SHAKING",STRINGS.ACTIONS.SHAKING,function(act)
-    if act.target.components.cocktailmaker ~= nil and act.doer.components.craftbartender ~= nil then
-        local container = act.target.components.container
-        if container ~= nil and container:IsOpen() and not container:IsOpenedBy(act.doer) then
-            return false, "INUSE"
-        elseif not act.target.components.cocktailmaker:CanShaking() then
-            return false
-        end
-        act.doer.components.craftbartender:StartShaking()
-        return true
-    end
-end)
-
-SHAKING.mount_valid = true
-SHAKING.priority = 2
->>>>>>> Beta_1.2.8

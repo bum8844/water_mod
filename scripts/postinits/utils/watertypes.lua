@@ -1,13 +1,6 @@
 local NEED_TAGS = {"pipe"}
 local range = 2.5
 
---
-
-local function Done_Purify(inst)
-	inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/small")
-	SpawnPrefab("frogsplash").Transform:SetPosition(inst.Transform:GetWorldPosition())
-end
-
 local function HiddenPipes(inst)
 	local pt = inst:GetPosition()
     local ents = TheSim:FindEntities(pt.x, pt.y, pt.z, range, NEED_TAGS)
@@ -38,37 +31,16 @@ local function OnWaterInit(inst)
 end
 
 --Make a pond the source of a Sprinkler
-for _, v in pairs(TUNING.TYPES_VARY_DIRTY) do
-	AddPrefabPostInit(v, function(inst)
-		inst:AddTag("sprinkler_water")
-		inst:AddTag("can_purify")
-
-	    if not GLOBAL.TheWorld.ismastersim then
-	        return inst
-	    end
-
-		inst:AddComponent("water")
-		inst.components.water:SetWaterManager(nil, WATERTYPE.CLEAN, WATERTYPE.DIRTY)
-
-		inst:ListenForEvent("done_purify",Done_Purify)
-
-		inst.watertask = inst:DoTaskInTime(0,OnWaterInit)
-	end)
-end
-
 for _, v in pairs(TUNING.TYPES_DIRTY) do
 	AddPrefabPostInit(v, function(inst)
 		inst:AddTag("sprinkler_water")
-		inst:AddTag("can_purify")
 
 	    if not GLOBAL.TheWorld.ismastersim then
 	        return inst
 	    end
 
 		inst:AddComponent("water")
-		inst.components.water:SetWaterManager(nil, WATERTYPE.CLEAN, WATERTYPE.DIRTY)
-
-		inst:ListenForEvent("done_purify",Done_Purify)
+		inst.components.water.watertype = WATERTYPE.DIRTY
 
 		inst.watertask = inst:DoTaskInTime(0,OnWaterInit)
 	end)
@@ -83,7 +55,7 @@ for _, v in pairs(TUNING.TYPES_CLEAN) do
 	    end
 
 		inst:AddComponent("water")
-		inst.components.water:SetWaterType(WATERTYPE.CLEAN)
+		inst.components.water.watertype = WATERTYPE.CLEAN
 
 		inst.watertask = inst:DoTaskInTime(0,OnWaterInit)
 	end)
@@ -96,7 +68,7 @@ for _, v in pairs(TUNING.TYPES_SALTY) do
 	    end
 		
 		inst:AddComponent("water")
-		inst.components.water:SetWaterType(WATERTYPE.SALTY)
+		inst.components.water.watertype = WATERTYPE.SALTY
 
 		inst.watertask = inst:DoTaskInTime(0,OnWaterInit)
 	end)
@@ -109,28 +81,7 @@ for _, v in pairs(TUNING.TYPES_MINERAL) do
 	    end
 		
 		inst:AddComponent("water")
-<<<<<<< HEAD
 		inst.components.water.watertype = WATERTYPE.MINERAL
-=======
-		inst.components.water:SetWaterType(WATERTYPE.MINERAL)
-
-		inst.watertask = inst:DoTaskInTime(0,OnWaterInit)
-	end)
-end
-
-for _, v in pairs(TUNING.TYPES_UNCLEAN_MINERAL) do
-	AddPrefabPostInit(v, function(inst)
-		inst:AddTag("can_purify")
-
-	    if not GLOBAL.TheWorld.ismastersim then
-	        return inst
-	    end
-		
-		inst:AddComponent("water")
-		inst.components.water:SetWaterManager(nil, WATERTYPE.MINERAL, WATERTYPE.UNCLEAN_MINERAL)
-
-		inst:ListenForEvent("done_purify",Done_Purify)
->>>>>>> Beta_1.2.8
 
 		inst.watertask = inst:DoTaskInTime(0,OnWaterInit)
 	end)

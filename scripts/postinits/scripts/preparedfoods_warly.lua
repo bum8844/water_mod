@@ -18,11 +18,7 @@ local water_foods = {
 		hunger = TUNING.CALORIES_MEDSMALL, -- 22.5
 		perishtime = TUNING.PERISH_PRESERVED, --20일 
 		sanity = -TUNING.SANITY_MED, -- -15
-<<<<<<< HEAD
 		tags = {"cocktail_ingredients"},
-=======
-		tags = {"cocktail_ingredient"},
->>>>>>> Beta_1.2.8
 		thirst = 0,
 		cooktime = 2,
         floater = {"small", 0.05, 0.7},
@@ -40,11 +36,7 @@ local water_foods = {
 		hunger = TUNING.CALORIES_MEDSMALL*3, -- 18.75 -> 56.25 (재료총합 =56.25)
 		perishtime = TUNING.PERISH_PRESERVED, --20일
 		sanity = TUNING.SANITY_MEDLARGE, -- 5 -> 20 (우유 10)
-<<<<<<< HEAD
 		tags = {"cocktail_ingredients"},
-=======
-		tags = {"cocktail_ingredient"},
->>>>>>> Beta_1.2.8
 		thirst = 0,
 		cooktime = 2,
         floater = {"small", 0.05, 0.7},
@@ -65,11 +57,7 @@ for k, v in pairs(water_foods) do
     	v.cook_need = nil
     	v.cook_cant = nil
     	v.recipe_count = 0
-<<<<<<< HEAD
 		local cookbookui_legion = require "modcompats/1392778117/cookbookui_legion"
-=======
-		local cookbookui_legion = require "modinit/1392778117/cookbookui_legion"
->>>>>>> Beta_1.2.8
 		v.custom_cookbook_details_fn = function(data, self, top, left)
 			local root = cookbookui_legion(data, self, top, left)
 			return root

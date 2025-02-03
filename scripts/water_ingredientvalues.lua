@@ -24,10 +24,6 @@ AddIngredientValues(additives, {additives=1})
 AddIngredientValues({"tea_seed"}, {seed=1})
 AddIngredientValues({"tea_seed_cooked"}, {seed=1})
 AddIngredientValues({"tealeaves"}, {decoration = 1}, false, true)
-<<<<<<< HEAD
-=======
-AddIngredientValues({"mentha_spicata"}, {decoration = 1})
->>>>>>> Beta_1.2.8
 AddIngredientValues({"caffeinberry_bean"}, {fruit=.5}, true)
 AddIngredientValues({"caffeinberry_bean_cooked"}, {fruit=1})
 AddIngredientValues({"ruincacao_bean_cooked"}, {decoration = 1})
@@ -91,16 +87,8 @@ if modlist.te or modlist.ia or modlist.ta then
 end
 
 if modlist.te or modlist.ta or modlist.ac then
-<<<<<<< HEAD
 	AddIngredientValues({"lotus_flower"}, {veggie=1,lotus=1})
 	AddIngredientValues({"lotus_flower_cooked"}, {veggie=1,lotus=1})
-=======
-	AddIngredientValues({"bramble_bulb"}, {fruit=1})
-	AddIngredientValues({"tuber_bloom_crop"}, {veggie=1})
-	AddIngredientValues({"tuber_bloom_crop_cooked"}, {veggie=1})
-	AddIngredientValues({"lotus_flower"}, {veggie=1,lotus=1})
-	AddIngredientValues({"lotus_flower_cooked"}, {veggie=1})
->>>>>>> Beta_1.2.8
 end
 
 if modlist.bm then

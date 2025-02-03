@@ -34,7 +34,7 @@ local BoilbookBasicWidget = Class(Widget, function(self, parent)
 	local base_size = .7
 
 	local button_data = {
-		{text = STRINGS.UI.COOKBOOK.TAB_TITLE_TEA_POT, build_panel_fn = function() return BoilPage(parent, "tea_pot") end},
+		{text = STRINGS.UI.COOKBOOK.TAB_TITLE_KETTLE, build_panel_fn = function() return BoilPage(parent, "kettle") end},
 		{text = STRINGS.UI.COOKBOOK.TAB_TITLE_BREWERY, build_panel_fn = function() return BoilPage(parent, "brewery") end},
 		{text = STRINGS.UI.COOKBOOK.TAB_TITLE_DISTILLERS, build_panel_fn = function() return BoilPage(parent, "distillers") end},
 	}

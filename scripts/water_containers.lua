@@ -21,7 +21,6 @@ function params.barrel.itemtestfn(container, item, slot)
     return item:HasTag("clean")
 end]]
 
-<<<<<<< HEAD
 params.thermos_bottle =
 {
     widget =
@@ -103,185 +102,9 @@ end
 
 function params.wine_cellar.itemtestfn(container, item, slot)
     return item:HasTag("alcohol") or item:HasTag("spirits")
-=======
-params.cobbler_shaker = {
-    widget =
-    {
-        slotpos =
-        {
-            Vector3(0, 64 + 32 + 8 + 4, 0),
-            Vector3(0, 32 + 4, 0),
-            Vector3(0, -(32 + 4), 0),
-            Vector3(0, -(64 + 32 + 8 + 4), 0),
-        },
-        animbank = "ui_cookpot_1x4",
-        animbuild = "ui_cookpot_1x4",
-        pos = Vector3(200, 0, 0),
-        side_align_tip = 100,
-        buttoninfo =
-        {
-            text = STRINGS.ACTIONS.SHAKING,
-            position = Vector3(0, -165, 0),
-        }
-    },
-    acceptsstacks = false,
-    type = "cooker",
-}
-
-function params.cobbler_shaker.itemtestfn(container, item, slot)
-    return item:HasTag("cocktail_ingredient")
->>>>>>> Beta_1.2.8
 end
  
-function params.cobbler_shaker.widget.buttoninfo.fn(inst, doer)
-    if inst.components.container ~= nil then
-        BufferedAction(doer, inst, ACTIONS.SHAKING):Do()
-    elseif inst.replica.container ~= nil and not inst.replica.container:IsBusy() then
-        SendRPCToServer(RPC.DoWidgetButtonAction, ACTIONS.SHAKING.code, inst, ACTIONS.SHAKING.mod_name)
-    end
-end
- 
-function params.cobbler_shaker.widget.buttoninfo.validfn(inst)
-    return inst.replica.container ~= nil and inst.replica.container:IsFull() and inst.replica.cocktailmaker ~= nil and inst.replica.cocktailmaker:CanShack()
-end
-
-containers.params.boston_shaker = params.cobbler_shaker
-
-params.thermos_bottle_small =
-{
-    widget =
-    {
-        slotpos = {
-            Vector3(-2, 18, 0),
-        },
-        slotbg =
-        {
-            { image = "cook_slot_drink.tex", atlas = "images/tea_ui.xml" },
-        },
-        animbank = "ui_thermos_bottle_1x1", --"ui_thermos_bottle_small_1x1",
-        animbuild = "ui_thermos_bottle_1x1", -- "ui_thermos_bottle_small_1x1",
-        pos = Vector3(100, 0, 0),
-    },
-    acceptsstacks = true,
-    type = "chest",
-}
-
-function params.thermos_bottle_small.itemtestfn(container, item, slot)
-    return item:HasTag("drink_icebox_valid")
-end
-
-params.thermos_bottle_big =
-{
-    widget =
-    {
-        slotpos = {
-            Vector3(-2, 18, 0),
-        },
-        slotbg =
-        {
-            { image = "cook_slot_drink.tex", atlas = "images/tea_ui.xml" },
-        },
-        animbank = "ui_thermos_bottle_1x1", --"ui_thermos_bottle_big_1x1",
-        animbuild = "ui_thermos_bottle_1x1", -- "ui_thermos_bottle_big_1x1",
-        pos = Vector3(100, 0, 0),
-    },
-    acceptsstacks = true,
-    type = "chest",
-}
-
-function params.thermos_bottle_big.itemtestfn(container, item, slot)
-    return item:HasTag("drink_icebox_valid")
-end
-
-params.bottle_pouch_small = 
-{
-    widget = 
-    {
-        slotpos =
-        {
-            Vector3(-44.5, 9, 0),
-            Vector3(42.5, 9, 0),
-        },
-        slotbg =
-        {
-            { image = "cook_slot_drink.tex", atlas = "images/tea_ui.xml" },
-            { image = "cook_slot_drink.tex", atlas = "images/tea_ui.xml" },
-        },
-        animbank = "ui_bottle_pouch_2x1",
-        animbuild = "ui_bottle_pouch_2x1",
-        pos = Vector3(160, 0, 0),
-        side_align_tip = 120,
-    },
-    acceptsstacks = true,
-    type = "chest",
-}
-
-params.bottle_pouch_big = 
-{
-    widget = 
-    {
-        slotpos =
-        {
-            Vector3(-37.5, 32 + 20, 0),
-            Vector3(37.5, 32 + 20, 0),
-            Vector3(-37.5, -(32 - 10), 0),
-            Vector3(37.5, -(32 - 10), 0),
-
-        },
-        slotbg =
-        {
-            { image = "cook_slot_drink.tex", atlas = "images/tea_ui.xml" },
-            { image = "cook_slot_drink.tex", atlas = "images/tea_ui.xml" },
-            { image = "cook_slot_drink.tex", atlas = "images/tea_ui.xml" },
-            { image = "cook_slot_drink.tex", atlas = "images/tea_ui.xml" },
-        },
-        animbank = "ui_bottle_pouch_2x2",
-        animbuild = "ui_bottle_pouch_2x2",
-        pos = Vector3(160, 0, 0),
-        side_align_tip = 120,
-    },
-    acceptsstacks = true,
-    type = "chest",
-}
-
-function params.bottle_pouch_small.itemtestfn(container, item, slot)
-    return item:HasTag("prepareddrink") or item:HasTag("drink_icebox_valid")
-end
-
-function params.bottle_pouch_big.itemtestfn(container, item, slot)
-    return item:HasTag("prepareddrink") or item:HasTag("drink_icebox_valid")
-end
-
-params.wine_cellar =
-{
-    widget =
-    {
-        slotpos = {},
-        slotbg  = {},
-        animbank = "ui_wine_cellar_5x4",
-        animbuild = "ui_wine_cellar_5x4",
-        pos = Vector3(0, 220, 0),
-        side_align_tip = 160,
-    },
-    acceptsstacks = true,
-    type = "chest",
-}
-
-local wine_cellar_bg = { image = "cook_slot_alcohol.tex", atlas = "images/tea_ui.xml" }
-
-for y = 2.5, -0.5, -1 do
-    for x = -1, 3 do
-        table.insert(params.wine_cellar.widget.slotpos, Vector3(75 * x - 75 * 2 + 75, 75 * y - 75 * 2 + 75, 0))
-
-        table.insert(params.wine_cellar.widget.slotbg, wine_cellar_bg)
-    end
-end
-
-function params.wine_cellar.itemtestfn(container, item, slot)
-    return item:HasTag("alcohol") or item:HasTag("spirits")
-end
- 
-params.tea_pot =
+params.kettle =
 {
     widget =
     {
@@ -360,11 +183,11 @@ params.distillers =
     type = "cooker",
 }
  
-function params.tea_pot.itemtestfn(container, item, slot)
+function params.kettle.itemtestfn(container, item, slot)
     return cooking.IsCookingIngredient(item.prefab) and not item:HasTag("prepareddrink") and not container.inst:HasTag("burnt")
 end
  
-function params.tea_pot.widget.buttoninfo.fn(inst, doer)
+function params.kettle.widget.buttoninfo.fn(inst, doer)
     if inst.components.container ~= nil then
         BufferedAction(doer, inst, ACTIONS.BREWING):Do()
     elseif inst.replica.container ~= nil and not inst.replica.container:IsBusy() then
@@ -372,7 +195,7 @@ function params.tea_pot.widget.buttoninfo.fn(inst, doer)
     end
 end
  
-function params.tea_pot.widget.buttoninfo.validfn(inst)
+function params.kettle.widget.buttoninfo.validfn(inst)
     return inst.replica.container ~= nil and inst.replica.container:IsFull() and inst.replica.waterlevel:HasWater()
 end
 
@@ -392,7 +215,7 @@ function params.brewery.widget.buttoninfo.validfn(inst)
     return inst.replica.container ~= nil and inst.replica.container:IsFull() and inst.replica.waterlevel:HasWater()
 end
  
-containers.params.portable_tea_pot = params.tea_pot
+containers.params.portablekettle = params.kettle
 
 function params.distillers.itemtestfn(container, item, slot)
     return (item.prefab ~= "goopydrink" or item.prefab ~= "spoiled_drink")
@@ -419,14 +242,9 @@ function params.distillers.widget.buttoninfo.validfn(inst)
 end
 
 local portablespicer_itemtestfn = params.portablespicer.itemtestfn
-
 local function RejectDrinks(container, item, slot)
     return portablespicer_itemtestfn(container, item, slot)
         and not item:HasTag("prepareddrink")
 end
 
-<<<<<<< HEAD
 containers.params.portablespicer.itemtestfn = RejectDrinks --음료의 양념을 허용하지 않으려면 이 부분을 활성화하세요
-=======
-containers.params.portablespicer.itemtestfn = RejectDrinks --음료의 양념을 허용하지 않으려면 이 부분을 활성화하세요
->>>>>>> Beta_1.2.8

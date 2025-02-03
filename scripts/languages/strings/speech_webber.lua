@@ -61,22 +61,11 @@ return {
 		WELL_DRILLING_ITEM = "되게 남자다운 도구 같아.", --드릴 아이템
 		HOLE = "여보세요- 거기 누구 있나요--", --우물 구멍
 		WELL = "여기 숨으면 혼난댔어.", --우물
-<<<<<<< HEAD
 		BOTTLE_POUCH = "",
-=======
-		BOTTLE_POUCH_SMALL = "",
-		BOTTLE_POUCH_BIG = "",
-		THERMOS_BOTTLE_SMALL = "",
-		THERMOS_BOTTLE_BIG = "",
->>>>>>> Beta_1.2.8
 		WINE_CELLAR_PART = "",
 		WINE_CELLAR = "",
 
 		WX78MODULE_NONEDRUNK = "허, 로봇의 장기가 이렇게 생긴 건가?", -- 78전용 묘듈
-<<<<<<< HEAD
-=======
-		PURIFICATION_TABLETS = "",
->>>>>>> Beta_1.2.8
 
 		-- 물 모드 식물
 
@@ -232,11 +221,7 @@ return {
 		LUMPY_WINE = "으음, 엄청 쓰겠어.", --서주(감자 고구마등 뿌리 술)
 		PULQUE = "풀로 만든 우유 같은 술이야!", --풀케(선인주)
 		RUINCACAO_WINE = "우린 초콜릿이 좋은데.", -- 카카오 와인 
-<<<<<<< HEAD
 		MIDNIGHT_STROM = "",
-=======
-		MIDNIGHT_STORM = "",
->>>>>>> Beta_1.2.8
 		APPLEPINE_CIDER = "",
 		MENTHA_SPICATA_WINE = "",
 
@@ -268,12 +253,7 @@ return {
 		BERRY_BRANDY = "아빠가 서재에 이런 걸 숨겼던 것 같아.", -- 베리 브랜디
 		AREUHI = "우유로 만들었다는데 못 삼킬 것 같아.", -- 크므즈 증류주 아르히
 		APPLEPINE_BRANDY = "",
-<<<<<<< HEAD
 		VOID = "",
-=======
-		VOID_BRANDY = "",
-		VOID_GIN  = "",
->>>>>>> Beta_1.2.8
 		CITROYUZU_CURACAO = "",
 		MENTHA_SPICATA_CURACAO = "",
 
@@ -312,11 +292,7 @@ return {
         RUIN_SCHOKAKOLA = "뭔가 심장이 쿵쿵거려.", -- 쇼카콜라
         APPLEPINE_PIE = "",
         APPLEPINE_FRIED_RICE = "",
-<<<<<<< HEAD
         citroyuzu_bbq = "",
-=======
-        CITROYUZU_BBQ = "",
->>>>>>> Beta_1.2.8
 
 		BUCKET_STEEL_EMPTY = 
 		{
@@ -399,11 +375,7 @@ return {
 			STOP = "바람개비가 멈췄어.", -- 화덕에 불이 없어서 소금물이 정수 되지 않는 상태
 		},
 
-<<<<<<< HEAD
 		KETTLE =
-=======
-		TEA_POT =
->>>>>>> Beta_1.2.8
 		{
 			EMPTY = "음식과 물을 넣으면 음료가 돼서 나와!", --빈 주전자 조사대사
 			BURNT = "이제 음료는 못 마시겠네.", --주전자가 불탐
@@ -417,11 +389,7 @@ return {
 			MELT_SHORT = "으음, 얼음이 거의 녹았어.", -- 얼음물을 거의 녹여감
 		},
 
-<<<<<<< HEAD
 		PORTABLEKETTLE_ITEM =
-=======
-		PORTABLE_TEA_POT_ITEM =
->>>>>>> Beta_1.2.8
 		{
 			GENERIC = "들고 다니면서 주스를 만들어보자!", -- 휴대용 주전자(아이템) 조사 대사
 			EMPTY = "에이, 안에 아무것도 없네.", -- 설치한 빈 휴대용 주전자 조사 대사
@@ -434,33 +402,6 @@ return {
 			MELT_LONG = "얼음으로는 차를 끓일 수가 없어.", -- 얼음물을 녹이기 시작한지 얼마 안됨
 			MELT_SHORT = "으음, 얼음이 거의 녹았어.", -- 얼음물을 거의 녹여감
 		},
-<<<<<<< HEAD
-=======
-
-		KETTLE =
-		{
-			EMPTY = "음식과 물을 넣으면 음료가 돼서 나와!", --빈 주전자 조사대사
-			BURNT = "이제 음료는 못 마시겠네.", --주전자가 불탐
-			DONE = "음료가 준비됐어!", --음료가 완성됨
-			PURIFY_LONG = "더러운 걸 끓여서 없애야 해.", -- 더러운 물을 끓이기 시작한지 얼마 안됨
-			PURIFY_SHORT = "거의 깨끗해졌어!", --더러운물을 거의 다 끓여감
-			HASWATER = "이제 뭘 넣으면 좋을까?", -- 깨끗한 물이 차 있는 상태
-			MELT_LONG = "얼음으로는 차를 끓일 수가 없어.", -- 얼음물을 녹이기 시작한지 얼마 안됨
-			MELT_SHORT = "으음, 얼음이 거의 녹았어.", -- 얼음물을 거의 녹여감
-		},
-
-		PORTABLEKETTLE_ITEM =
-		{
-			GENERIC = "들고 다니면서 주스를 만들어보자!", -- 휴대용 주전자(아이템) 조사 대사
-			EMPTY = "에이, 안에 아무것도 없네.", -- 설치한 빈 휴대용 주전자 조사 대사
-			DONE = "으으음, 어서 마시자!", --음료가 완성됨
-			PURIFY_LONG = "얼른 음료로 만들어 마시고 싶어.", -- 더러운 물을 끓이기 시작한지 얼마 안됨
-			PURIFY_SHORT = "거의 깨끗해졌어!", --더러운물을 거의 다 끓여감
-			HASWATER = "얼른 재료를 넣어보자!", -- 깨끗한 물이 차 있는 상태
-			MELT_LONG = "얼음으로는 차를 끓일 수가 없어.", -- 얼음물을 녹이기 시작한지 얼마 안됨
-			MELT_SHORT = "으음, 얼음이 거의 녹았어.", -- 얼음물을 거의 녹여감
-		},
->>>>>>> Beta_1.2.8
 		
 		DISTILLERS =
 		{   

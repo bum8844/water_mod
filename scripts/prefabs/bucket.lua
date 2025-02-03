@@ -23,15 +23,12 @@ end
 
 local function GiveWater(inst, watertype, doer)
     local container = doer ~= nil and (doer.components.inventory or doer.components.container) or nil
-<<<<<<< HEAD
     local water = SpawnPrefab(watertype)
-=======
-    local water = SpawnPrefab("water_"..watertype)
->>>>>>> Beta_1.2.8
     local old_val = inst.components.finiteuses:GetUses() + 1
     local current_fin = old_val
     local peruse = TUNING.BUCKET_LEVEL_PER_USE
     local sound = inst.components.wateringtool:IsFrozen() and "dontstarve_DLC001/common/iceboulder_smash" or "dontstarve/creatures/pengull/splash"
+
 
     if current_fin > peruse then
         current_fin = peruse
@@ -39,7 +36,7 @@ local function GiveWater(inst, watertype, doer)
     --print(current_fin)
 
     if water.components.perishable then
-        local perish = inst.components.wateringtool:GetPercent()
+        local perish = inst.components.wateringtool:GetPercent(true)
         water.components.perishable:SetPercent(perish)
     end
     water.Transform:SetPosition(inst.Transform:GetWorldPosition())
@@ -84,8 +81,6 @@ local function OnTakeWater(inst, source, doer)
         if source.components.waterlevel ~= nil then
             watervalue = math.min(TUNING.BUCKET_LEVEL_PER_USE, inst.components.finiteuses:GetUses())
             source.components.water:Taken(inst, watervalue)
-        elseif source.components.water ~= nil then
-            source.components.water:Taken(inst)
         elseif source.components.steampressure ~= nil then
             source.components.steampressure:LostPressure()
         end
@@ -98,16 +93,18 @@ local function OnTakeWater(inst, source, doer)
 end
 
 local function SetToFrozed(inst, data)
-    if inst.components.wateringtool:IsFull() and not inst.components.wateringtool.watertype == WATERTYPE.ACID then
+    if inst.components.wateringtool:IsFull() then
         local cur_temp = inst.components.temperature:GetCurrent()
         local min_temp = inst.components.temperature.mintemp
         local max_temp = inst.components.temperature.maxtemp
         if inst.components.wateringtool:IsFrozen() then
             if cur_temp >= max_temp then
                 inst.components.wateringtool:SetFrozed(false)
+                --print("녹음")
             end
         elseif cur_temp <= min_temp then
             inst.components.wateringtool:SetFrozed(true)
+            --print("얼음")
         end
     end
 end
@@ -128,43 +125,31 @@ end
 local function SetState(inst)
     local isfrozen = inst.components.wateringtool:IsFrozen()
     local watertype = inst.components.wateringtool:GetWater()
-    local wateranim = watertype ~= nil and ( watertype == WATERTYPE.CLEAN and "full" or watertype == WATERTYPE.ACID and "acid" or "dirty" ) or "empty"
-    local sound = wateranim ~= "empty" and ( (wateranim == "full" or wateranim == "acid") and "dontstarve/creatures/pengull/splash" or "") or "dontstarve/common/dust_blowaway"
+    local wateranim = watertype ~= nil and ( watertype == WATERTYPE.CLEAN and "full" or "dirty" ) or "empty"
+    local sound = wateranim ~= "empty" and ( wateranim == "full" and "dontstarve/creatures/pengull/splash" or "") or "dontstarve/common/dust_blowaway"
 
-    if watertype and watertype ~= WATERTYPE.ACID then
-        if isfrozen then
-            if inst.AnimState:IsCurrentAnimation("ice") then
-                inst.AnimState:PlayAnimation("ice_dirty")
-                return true
-            end
-            local frozenanim = watertype == WATERTYPE.CLEAN and "ice" or "ice_dirty"
-            inst.AnimState:PlayAnimation("turn_to_"..frozenanim)
-            inst.AnimState:PushAnimation(frozenanim)
-            inst.SoundEmitter:PlaySound("dontstarve/common/bush_fertilize")
-            return true
-        elseif inst.AnimState:IsCurrentAnimation("ice") or inst.AnimState:IsCurrentAnimation("ice_dirty") then
-            local meltanim = watertype == WATERTYPE.CLEAN and "full" or "full_dirty"
-            inst.AnimState:PlayAnimation("turn_to_"..meltanim)
-            inst.AnimState:PushAnimation(wateranim)
-            inst.SoundEmitter:PlaySound("dontstarve/creatures/pengull/splash")
+    if isfrozen then
+        if inst.AnimState:IsCurrentAnimation("ice") then
+            inst.AnimState:PlayAnimation("ice_dirty")
             return true
         end
-    end
-
-    if not inst.components.wateringtool:IsFrozen() and inst.components.wateringtool:IsDirty() then
-        inst:AddTag("can_purify")
-    else
-        inst:RemoveTag("can_purify")
+        local frozenanim = watertype == WATERTYPE.CLEAN and "ice" or "ice_dirty"
+        inst.AnimState:PlayAnimation("turn_to_"..frozenanim)
+        inst.AnimState:PushAnimation(frozenanim)
+        inst.SoundEmitter:PlaySound("dontstarve/common/bush_fertilize")
+        return true
+    elseif inst.AnimState:IsCurrentAnimation("ice") or inst.AnimState:IsCurrentAnimation("ice_dirty") then
+        local meltanim = watertype == WATERTYPE.CLEAN and "full" or "full_dirty"
+        inst.AnimState:PlayAnimation("turn_to_"..meltanim)
+        inst.AnimState:PushAnimation(wateranim)
+        inst.SoundEmitter:PlaySound("dontstarve/creatures/pengull/splash")
+        return true
     end
 
     inst.AnimState:PlayAnimation(wateranim)
     if sound ~= "" then
         inst.SoundEmitter:PlaySound(sound)
     end
-end
-
-local function Done_Purify(inst, data)
-    inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/small")
 end
 
 local function getstatus(inst)
@@ -221,7 +206,7 @@ local function MakeBucketItem(bucketname, multiplier, sound, nowood)
         inst.AnimState:OverrideSymbol("buckets_ice", "buckets_swap", "buckets_"..names.."clean_ice")
         inst.AnimState:OverrideSymbol("buckets_dirty", "buckets_swap", "buckets_"..names.."dirty")
         inst.AnimState:OverrideSymbol("buckets_ice_dirty", "buckets_swap", "buckets_"..names.."dirty_ice")
-        inst.AnimState:OverrideSymbol("buckets_acid", "buckets_swap", "buckets_"..names.."acid")
+        --inst.AnimState:OverrideSymbol("buckets_salt", "buckets_swap", "buckets_".names."dirty_salt-0")
 
         inst.pickupsound = sound and sound or "wood"
         inst.wellanim = bucketname ~= "bucket" and bucketname or ""
@@ -277,7 +262,6 @@ local function MakeBucketItem(bucketname, multiplier, sound, nowood)
         inst:ListenForEvent("settooltemperature",SetTemperature)
         inst:ListenForEvent("ondropped",SetCheckWeather)
         inst:ListenForEvent("temperaturedelta", SetToFrozed)
-        inst:ListenForEvent("done_purify",Done_Purify)
 
         return inst
     end
