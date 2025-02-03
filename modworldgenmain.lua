@@ -3,6 +3,7 @@ GLOBAL.require("map/terrain")
 local MOD_LIST = {
     TE = GLOBAL.KnownModIndex:IsModEnabled("workshop-1505270912") or GLOBAL.KnownModIndex:IsModForceEnabled("workshop-1505270912"),
     IA = GLOBAL.KnownModIndex:IsModEnabled("workshop-1467214795") or GLOBAL.KnownModIndex:IsModForceEnabled("workshop-1467214795"),
+    AC = GLOBAL.KnownModIndex:IsModEnabled("workshop-3322803908") or GLOBAL.KnownModIndex:IsModForceEnabled("workshop-3322803908"),
 }
 
 local biome_data = require("utils/water_biome")

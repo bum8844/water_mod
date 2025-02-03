@@ -87,8 +87,13 @@
     <folder id="28" name="kumis.tex">
         <file id="0" name="kumis.tex/kumis.tex.png" width="224" height="224" pivot_x="0.5" pivot_y="0.5"/>
     </folder>
+<<<<<<< HEAD
     <folder id="29" name="lemonlimesoda.tex">
         <file id="0" name="lemonlimesoda.tex/lemonlimesoda.tex.png" width="224" height="224" pivot_x="0.5" pivot_y="0.5"/>
+=======
+    <folder id="29" name="limonsoda.tex">
+        <file id="0" name="limonsoda.tex/limonsoda.tex.png" width="224" height="224" pivot_x="0.5" pivot_y="0.5"/>
+>>>>>>> Beta_1.2.8
     </folder>
     <folder id="30" name="lotustea.tex">
         <file id="0" name="lotustea.tex/lotustea.tex.png" width="224" height="224" pivot_x="0.5" pivot_y="0.5"/>
@@ -132,11 +137,19 @@
     <folder id="43" name="nut_corn_whiskey.tex">
         <file id="0" name="nut_corn_whiskey.tex/nut_corn_whiskey.tex.png" width="224" height="224" pivot_x="0.5" pivot_y="0.5"/>
     </folder>
+<<<<<<< HEAD
     <folder id="44" name="orange_juice.tex">
         <file id="0" name="orange_juice.tex/orange_juice.tex.png" width="224" height="224" pivot_x="0.5" pivot_y="0.5"/>
     </folder>
     <folder id="45" name="orangesoda.tex">
         <file id="0" name="orangesoda.tex/orangesoda.tex.png" width="224" height="224" pivot_x="0.5" pivot_y="0.5"/>
+=======
+    <folder id="44" name="citroyuzu_juice.tex">
+        <file id="0" name="citroyuzu_juice.tex/citroyuzu_juice.tex.png" width="224" height="224" pivot_x="0.5" pivot_y="0.5"/>
+    </folder>
+    <folder id="45" name="citroyuzusoda.tex">
+        <file id="0" name="citroyuzusoda.tex/citroyuzusoda.tex.png" width="224" height="224" pivot_x="0.5" pivot_y="0.5"/>
+>>>>>>> Beta_1.2.8
     </folder>
     <folder id="46" name="pale_beer.tex">
         <file id="0" name="pale_beer.tex/pale_beer.tex.png" width="224" height="224" pivot_x="0.5" pivot_y="0.5"/>
@@ -144,11 +157,19 @@
     <folder id="47" name="pale_whiskey.tex">
         <file id="0" name="pale_whiskey.tex/pale_whiskey.tex.png" width="224" height="224" pivot_x="0.5" pivot_y="0.5"/>
     </folder>
+<<<<<<< HEAD
     <folder id="48" name="pineananas_juice.tex">
         <file id="0" name="pineananas_juice.tex/pineananas_juice.tex.png" width="224" height="224" pivot_x="0.5" pivot_y="0.5"/>
     </folder>
     <folder id="49" name="pineananassoda.tex">
         <file id="0" name="pineananassoda.tex/pineananassoda.tex.png" width="224" height="224" pivot_x="0.5" pivot_y="0.5"/>
+=======
+    <folder id="48" name="applepine_juice.tex">
+        <file id="0" name="applepine_juice.tex/applepine_juice.tex.png" width="224" height="224" pivot_x="0.5" pivot_y="0.5"/>
+    </folder>
+    <folder id="49" name="applepinesoda.tex">
+        <file id="0" name="applepinesoda.tex/applepinesoda.tex.png" width="224" height="224" pivot_x="0.5" pivot_y="0.5"/>
+>>>>>>> Beta_1.2.8
     </folder>
     <folder id="50" name="pomegranate_juice.tex">
         <file id="0" name="pomegranate_juice.tex/pomegranate_juice.tex.png" width="224" height="224" pivot_x="0.5" pivot_y="0.5"/>
@@ -309,6 +330,12 @@
     <folder id="102" name="absinthe.tex">
         <file id="0" name="absinthe.tex/absinthe.tex.png" width="224" height="224" pivot_x="0.5" pivot_y="0.5"/>
     </folder>
+<<<<<<< HEAD
+=======
+    <folder id="103" name="water_acid.tex">
+        <file id="0" name="water_acid.tex/water_acid.png" width="224" height="224" pivot_x="0.5" pivot_y="0.5"/>
+    </folder>
+>>>>>>> Beta_1.2.8
     <entity id="0" name="minisign_dehy_drinks_bottle_swap">
         <animation id="0" name="swap" length="1000" interval="100">
             <mainline>

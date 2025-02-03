@@ -144,17 +144,29 @@ local function MakeVeggie(name)
     local assets = {
     	Asset("ANIM", "anim/water_farm_plant_veggies.zip"),
 
+<<<<<<< HEAD
 	Asset("IMAGE", "images/tea_inventoryitem.tex"),
 	Asset("ATLAS", "images/tea_inventoryitem.xml"),
 	Asset("ATLAS_BUILD", "images/tea_inventoryitem.xml", 256),
+=======
+	Asset("IMAGE", "images/inventoryitems/tea_inventoryitem.tex"),
+	Asset("ATLAS", "images/inventoryitems/tea_inventoryitem.xml"),
+	Asset("ATLAS_BUILD", "images/inventoryitems/tea_inventoryitem.xml", 256),
+>>>>>>> Beta_1.2.8
     }
 
     local assets_seeds = {
     	Asset("ANIM", "anim/water_farm_plant_seeds.zip"),
 
+<<<<<<< HEAD
 	Asset("IMAGE", "images/tea_inventoryitem.tex"),
 	Asset("ATLAS", "images/tea_inventoryitem.xml"),
 	Asset("ATLAS_BUILD", "images/tea_inventoryitem.xml", 256),
+=======
+	Asset("IMAGE", "images/inventoryitems/tea_inventoryitem.tex"),
+	Asset("ATLAS", "images/inventoryitems/tea_inventoryitem.xml"),
+	Asset("ATLAS_BUILD", "images/inventoryitems/tea_inventoryitem.xml", 256),
+>>>>>>> Beta_1.2.8
     }
 
     local prefabs = {
@@ -164,9 +176,15 @@ local function MakeVeggie(name)
 
     local assets_oversized = {
         Asset("ANIM", "anim/"..PLANT_DEFS[name].build..".zip"),
+<<<<<<< HEAD
         Asset("IMAGE", "images/tea_inventoryitem.tex"),
         Asset("ATLAS", "images/tea_inventoryitem.xml"),
         Asset("ATLAS_BUILD", "images/tea_inventoryitem.xml", 256),
+=======
+        Asset("IMAGE", "images/inventoryitems/tea_inventoryitem.tex"),
+        Asset("ATLAS", "images/inventoryitems/tea_inventoryitem.xml"),
+        Asset("ATLAS_BUILD", "images/inventoryitems/tea_inventoryitem.xml", 256),
+>>>>>>> Beta_1.2.8
     }
 
     local function fn_seeds()

@@ -95,6 +95,13 @@ function SteamPressure:IsSame()
     return self.maxpressure == self.pressuresection
 end
 
+<<<<<<< HEAD
+=======
+function SteamPressure:IsFull()
+	return self.curpressure >= self.maxpressure
+end
+
+>>>>>>> Beta_1.2.8
 function SteamPressure:GetSection()
     return self:IsSame() and math.floor(self:GetPressurePercent()* self.pressuresection) or math.floor(self:GetPressurePercent()* self.pressuresection)+1
 end
@@ -130,7 +137,11 @@ function SteamPressure:GetPressure()
     	self.meterfn(self.inst)
     end
 
+<<<<<<< HEAD
     if self.curpressure >= self.maxpressure then
+=======
+    if self:IsFull() then
+>>>>>>> Beta_1.2.8
         self.curpressure = self.maxpressure
         self.fullpressure = true
         if self.chargingdonefn then
@@ -211,7 +222,7 @@ function SteamPressure:OnLoad(data)
     	local oldsection = self:GetPressureSection(self)
         self.curpressure = data.pressure
 
-        if self.curpressure >= self.maxpressure then
+        if self:IsFull() then
             self.curpressure = self.maxpressure
             self.fullpressure = true
 

@@ -95,25 +95,25 @@ local growth_stages =
 {
     {
         name = STAGE1,
-        time = function(inst) return GetRandomWithVariance(TUNING.ROCK_FRUIT_REGROW.EMPTY.BASE, TUNING.ROCK_FRUIT_REGROW.EMPTY.VAR) end,
+        time = function(inst) return GetRandomWithVariance(TUNING.RUINCACAO_TREE_REGROW.EMPTY.BASE, TUNING.RUINCACAO_TREE_REGROW.EMPTY.VAR) end,
         fn = set_stage1,
         growfn = grow_to_stage1,
     },
     {
         name = STAGE2,
-        time = function(inst) return GetRandomWithVariance(TUNING.ROCK_FRUIT_REGROW.PREPICK.BASE, TUNING.ROCK_FRUIT_REGROW.PREPICK.VAR) end,
+        time = function(inst) return GetRandomWithVariance(TUNING.RUINCACAO_TREE_REGROW.PREPICK.BASE, TUNING.RUINCACAO_TREE_REGROW.PREPICK.VAR) end,
         fn = set_stage2,
         growfn = grow_to_stage2,
     },
     {
         name = STAGE3,
-        time = function(inst) return GetRandomWithVariance(TUNING.ROCK_FRUIT_REGROW.PICK.BASE, TUNING.ROCK_FRUIT_REGROW.PICK.VAR) end,
+        time = function(inst) return GetRandomWithVariance(TUNING.RUINCACAO_TREE_REGROW.PICK.BASE, TUNING.RUINCACAO_TREE_REGROW.PICK.VAR) end,
         fn = set_stage3,
         growfn = grow_to_stage3,
     },
     {
         name = STAGE4,
-        time = function(inst) return GetRandomWithVariance(TUNING.ROCK_FRUIT_REGROW.CRUMBLE.BASE, TUNING.ROCK_FRUIT_REGROW.CRUMBLE.VAR) end,
+        time = function(inst) return GetRandomWithVariance(TUNING.RUINCACAO_TREE_REGROW.CRUMBLE.BASE, TUNING.RUINCACAO_TREE_REGROW.CRUMBLE.VAR) end,
         fn = set_stage4,
         growfn = grow_to_stage4,
     },
@@ -318,7 +318,7 @@ local function ruincacao_tree()
     inst.components.pickable.ontransplantfn = ontransplantfn
     inst.components.pickable.onregenfn = onregenfn
 
-    inst.components.pickable.max_cycles = TUNING.ROCK_FRUIT_PICKABLE_CYCLES
+    inst.components.pickable.max_cycles = TUNING.RUINCACAO_TREE_PICKABLE_CYCLES
     inst.components.pickable.cycles_left = inst.components.pickable.max_cycles
 
     inst:AddComponent("witherable")
@@ -395,7 +395,7 @@ local function dug_ruincacao_tree()
 	
     inst:AddComponent("inventoryitem")
     inst.replica.inventoryitem:SetImage("ruincacao_tree_dug")
-	inst.components.inventoryitem.atlasname= "images/tea_inventoryitem.xml"
+	inst.components.inventoryitem.atlasname= "images/inventoryitems/tea_inventoryitem.xml"
     inst.components.inventoryitem.imagename= "ruincacao_tree_dug"
 
     inst:AddComponent("tradable")

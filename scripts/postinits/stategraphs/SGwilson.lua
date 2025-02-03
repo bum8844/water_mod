@@ -1,4 +1,3 @@
-
 local function ForceStopHeavyLifting(inst)
     if inst.components.inventory:IsHeavyLifting() then
         inst.components.inventory:DropItem(
@@ -349,7 +348,11 @@ local bookboil_basic_open = State{
 
         onenter = function(inst)
             inst.components.locomotor:StopMoving()
+<<<<<<< HEAD
             inst.AnimState:OverrideSymbol("book_cook", "boilbook", "boilbook_basic")
+=======
+            inst.AnimState:OverrideSymbol("book_cook", "boilbook", "book_boil_basic")
+>>>>>>> Beta_1.2.8
             inst.AnimState:PlayAnimation("action_uniqueitem_pre")
             inst.AnimState:PushAnimation("reading_in", false)
             inst.AnimState:PushAnimation("reading_loop", true)
@@ -389,7 +392,11 @@ local bookboil_advanced_open = State{
 
     onenter = function(inst)
         inst.components.locomotor:StopMoving()
+<<<<<<< HEAD
         inst.AnimState:OverrideSymbol("book_cook", "boilbook", "boilbook_advanced")
+=======
+        inst.AnimState:OverrideSymbol("book_cook", "boilbook", "book_boil_advenced")
+>>>>>>> Beta_1.2.8
         inst.AnimState:PlayAnimation("action_uniqueitem_pre")
         inst.AnimState:PushAnimation("reading_in", false)
         inst.AnimState:PushAnimation("reading_loop", true)
@@ -421,7 +428,11 @@ local bookboil_advanced_open = State{
     onexit = function(inst)
         inst:ShowPopUp(GLOBAL.POPUPS.BOILBOOK_ADVANCED, false)
     end,
+<<<<<<< HEAD
     }
+=======
+}
+>>>>>>> Beta_1.2.8
 
 local boilbook_close = State{
         name = "boilbook_close",
@@ -440,7 +451,74 @@ local boilbook_close = State{
                 end
             end),
         },
-    }
+}
+
+local shaker_shaking = State{
+    name = "shaker_shaking",
+    tags = { "doing", "busy", "nodangle" },
+
+    onenter = function(inst, timeout)
+        if timeout == nil then
+            timeout = 3.6
+        end
+        inst.sg:SetTimeout(timeout)
+        inst.components.locomotor:Stop()
+        inst.SoundEmitter:PlaySound("wanda2/characters/wanda/watch/weapon/pst")
+        inst.SoundEmitter:PlaySound("dontstarve/wilson/make_trap", "make")
+        inst.AnimState:PlayAnimation("construct_pre")
+        inst.AnimState:PushAnimation("construct_loop", true)
+    end,
+
+    timeline =
+    {
+            FrameEvent(5, function(inst) inst.SoundEmitter:PlaySound("yotb_2021/common/cow_bell") end),
+            FrameEvent(10, function(inst) inst.SoundEmitter:PlaySound("yotb_2021/common/cow_bell") end),
+            FrameEvent(15, function(inst) inst.SoundEmitter:PlaySound("yotb_2021/common/cow_bell") end),
+            FrameEvent(20, function(inst) inst.SoundEmitter:PlaySound("yotb_2021/common/cow_bell") end),
+            FrameEvent(25, function(inst) inst.SoundEmitter:PlaySound("yotb_2021/common/cow_bell") end),
+            FrameEvent(30, function(inst) inst.sg:RemoveStateTag("busy") end),
+            FrameEvent(35, function(inst) inst.SoundEmitter:PlaySound("yotb_2021/common/cow_bell") end),
+            FrameEvent(46, function(inst) inst.SoundEmitter:PlaySound("yotb_2021/common/cow_bell") end),
+            FrameEvent(56, function(inst) inst.SoundEmitter:PlaySound("yotb_2021/common/cow_bell") end),
+    },
+
+    ontimeout = function(inst)
+        inst.SoundEmitter:KillSound("make")
+        inst.AnimState:PlayAnimation("construct_pst")
+        inst.SoundEmitter:PlaySound("wanda2/characters/wanda/watch/weapon/pst")
+        local craftbartender = inst.components.craftbartender
+        if craftbartender and craftbartender.shaker then
+            craftbartender.shaker.components.cocktailmaker:DoShaking(false)
+            craftbartender.shaker.components.cocktailmaker:SetCocktail(inst)
+        end
+    end,
+
+    events =
+    {
+        EventHandler("animqueueover", function(inst)
+            if inst.AnimState:AnimDone() then
+                inst.sg:GoToState("idle")
+            end
+        end),
+    },
+
+    onexit = function(inst)
+        inst.SoundEmitter:KillSound("make")
+        inst.SoundEmitter:PlaySound("wanda2/characters/wanda/watch/weapon/pst")
+        local craftbartender = inst.components.craftbartender
+        if craftbartender and craftbartender.shaker and craftbartender.shaker.components.cocktailmaker:IsShaking() then
+            craftbartender:CancelShaking()
+            craftbartender.shaker.components.cocktailmaker:SetOwner()
+        end
+    end,
+}
+
+local fest_shaker_shaking = State{
+    name = "fest_shaker_shaking",
+    onenter = function(inst)
+        inst.sg:GoToState("shaker_shaking", 2.4)
+    end,
+}
     
 AddStategraphState("wilson", refresh_drunk)
 AddStategraphState("wilson", drunk)
@@ -449,6 +527,8 @@ AddStategraphState("wilson", drinkstew)
 AddStategraphState("wilson", bookboil_basic_open)
 AddStategraphState("wilson", bookboil_advanced_open)
 AddStategraphState("wilson", boilbook_close)
+AddStategraphState("wilson", shaker_shaking)
+AddStategraphState("wilson", fest_shaker_shaking)
 
 ------------------------------------------------------------------------
 
@@ -520,6 +600,10 @@ AddStategraphActionHandler("wilson", ActionHandler(ACTIONS.UPGRADE_TILEARRIVE, "
         end
     )
 )]]
+<<<<<<< HEAD
+=======
+AddStategraphActionHandler("wilson", ActionHandler(ACTIONS.PURIFY, "domediumaction"))
+>>>>>>> Beta_1.2.8
 AddStategraphActionHandler("wilson", ActionHandler(ACTIONS.DRAMATIC_RAISE, "doshortaction"))
 AddStategraphActionHandler("wilson", ActionHandler(ACTIONS.DRAMATIC_LOWER, "doshortaction"))
 AddStategraphActionHandler("wilson", ActionHandler(ACTIONS.TURNON_TILEARRIVE, "give"))
@@ -531,7 +615,10 @@ AddStategraphActionHandler("wilson", ActionHandler(ACTIONS.BREWING,
 )
 AddStategraphActionHandler("wilson", ActionHandler(ACTIONS.READBOILBOOK,
     function(inst ,action)
+<<<<<<< HEAD
         print("action",action.invobject:HasTag("boilbook_basic"))
+=======
+>>>>>>> Beta_1.2.8
         return action.invobject:HasTag("boilbook_basic") and "bookboil_basic_open" or "bookboil_advanced_open"
     end
     )
@@ -542,9 +629,15 @@ AddStategraphActionHandler("wilson", ActionHandler(ACTIONS.MACHINETOOL,
         end
     )
 )
+<<<<<<< HEAD
 AddStategraphActionHandler("wilson", ActionHandler(ACTIONS.DISASSEMBLE,
         function(inst, action)
             return inst:HasTag("handyperson") and "domediumaction" or "dolongaction"
+=======
+AddStategraphActionHandler("wilson", ActionHandler(ACTIONS.SHAKING,
+        function(inst, action)
+            return inst:HasTag("expertchef") and "fest_shaker_shaking" or "shaker_shaking"
+>>>>>>> Beta_1.2.8
         end
     )
 )

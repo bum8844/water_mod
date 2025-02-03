@@ -59,15 +59,69 @@ local drink_client = State{
 }
 
 local boilbook_open_client = State{
-        name = "boilbook_open",
-        server_states = { "boilbook_open" },
-        forward_server_states = true,
-        onenter = function(inst) inst.sg:GoToState("action_uniqueitem_busy") end,
+    name = "boilbook_open",
+    server_states = { "boilbook_open" },
+    forward_server_states = true,
+    onenter = function(inst) inst.sg:GoToState("action_uniqueitem_busy") end,
+}
+
+local shaker_shaking_client = State{
+    name = "shaker_shaking",
+    tags = { "doing", "busy" },
+    server_states = { "shaker_shaking" },
+
+    onenter = function(inst)
+        inst.components.locomotor:Stop()
+        --V2C: always use "dontstarve/wilson/make_trap" for preview
+        --     (even for things like makeballoon or shave)
+        --     switch to server sound when action actually executes on server
+        inst.SoundEmitter:PlaySound("dontstarve/wilson/make_trap", "make_preview")
+        inst.AnimState:PlayAnimation("build_pre")
+        inst.AnimState:PushAnimation("build_loop", true)
+
+        inst:PerformPreviewBufferedAction()
+        inst.sg:SetTimeout(TIMEOUT)
+    end,
+
+    timeline =
+    {
+        TimeEvent(4 * FRAMES, function(inst)
+            inst.sg:RemoveStateTag("busy")
+        end),
     },
+
+    onupdate = function(inst)
+        if inst.sg:ServerStateMatches() then
+            if inst.entity:FlattenMovementPrediction() then
+                inst.sg:GoToState("idle", "noanim")
+            end
+        elseif inst.bufferedaction == nil then
+            inst.AnimState:PlayAnimation("build_pst")
+            inst.sg:GoToState("idle", true)
+        end
+    end,
+
+    ontimeout = function(inst)
+        inst:ClearBufferedAction()
+        inst.AnimState:PlayAnimation("build_pst")
+        inst.sg:GoToState("idle", true)
+    end,
+
+    onexit = function(inst)
+        inst.SoundEmitter:KillSound("make_preview")
+    end,
+}
+
+local fest_shaker_shaking_client = State{
+    name = "fest_shaker_shaking",
+    onenter = function(inst) inst.sg:GoToState("shaker_shaking") end,
+}
 
 AddStategraphState("wilson_client", drinkstew_client)
 AddStategraphState("wilson_client", drink_client)
 AddStategraphState("wilson_client", boilbook_open_client)
+AddStategraphState("wilson_client", shaker_shaking_client)
+AddStategraphState("wilson_client", fest_shaker_shaking_client)
 
 ------------------------------------------------------------------------
 
@@ -144,6 +198,12 @@ AddStategraphActionHandler("wilson_client", ActionHandler(ACTIONS.BREWING,
     )
 )
 AddStategraphActionHandler("wilson_client", ActionHandler(ACTIONS.READBOILBOOK,"boilbook_open"))
+AddStategraphActionHandler("wilson_client", ActionHandler(ACTIONS.SHAKING,
+        function(inst, action)
+            return inst:HasTag("expertchef") and "fest_shaker_shaking" or "shaker_shaking"
+        end
+    )
+)
 
 ------------------------------------------------------------------------
 

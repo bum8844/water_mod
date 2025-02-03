@@ -4,9 +4,9 @@ local assets =
     Asset("ANIM", "anim/campdesalinator_item.zip"),
     Asset("ANIM", "anim/campdesalinator_meter_water.zip"),
     Asset("ANIM", "anim/campdesalinator_meter_salt.zip"),
-    Asset("IMAGE", "images/tea_inventoryitem.tex"),
-    Asset("ATLAS", "images/tea_inventoryitem.xml"),
-    Asset("ATLAS_BUILD", "images/tea_inventoryitem.xml", 256),
+    Asset("IMAGE", "images/inventoryitems/tea_inventoryitem.tex"),
+    Asset("ATLAS", "images/inventoryitems/tea_inventoryitem.xml"),
+    Asset("ATLAS_BUILD", "images/inventoryitems/tea_inventoryitem.xml", 256),
 }
 
 local prefabs_item =
@@ -66,6 +66,7 @@ end
 local function ondoneboilingfn(inst)
     inst.components.pickable.numtoharvest = inst.components.waterlevel:GetWater()
     inst.components.pickable.canbepicked = true
+    inst.components.pickable.product = "water_"..inst.components.waterlevel.watertype
     inst.AnimState:PlayAnimation("idle_empty")
     inst.SoundEmitter:KillSound("snd")
     inst.SoundEmitter:PlaySound("dontstarve/common/cookingpot_finish", "snd")
@@ -177,9 +178,9 @@ local function fn()
     inst.components.inspectable.getstatus = getstatus
 
     inst:AddComponent("waterlevel")
-    inst.components.waterlevel:SetCanAccepts({WATERTYPE.SALTY})
+    inst.components.waterlevel:SetCanAccepts({WATERGROUP.CAMP_DESALINATIORABLE})
     inst.components.waterlevel:SetTakeWaterFn(OnTakeWater)
-    inst.components.waterlevel:SetSections(3)
+    inst.components.waterlevel:SetSections(TUNING.CAMPKETTLE_MAX_LEVEL)
     inst.components.waterlevel:SetSectionCallback(OnSectionChange)
     inst.components.waterlevel.maxwater = TUNING.CAMPKETTLE_MAX_LEVEL
     inst.components.waterlevel.isputoncetime = true
@@ -193,7 +194,7 @@ local function fn()
 
     inst:AddComponent("pickable")
     inst.components.pickable.canbepicked = false
-    inst.components.pickable.product = "water_clean"
+    --inst.components.pickable.product = "water_clean"
     inst.components.pickable.numtoharvest = inst.components.waterlevel:GetWater()
     inst.components.pickable:SetOnPickedFn(OnPickedFn)
 

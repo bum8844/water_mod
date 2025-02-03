@@ -30,7 +30,11 @@ end
 
 local function onpreload(inst, data)
 	if data then
+<<<<<<< HEAD
 		inst.OnPreLoad_old(inst, data)
+=======
+		inst.dehy_OnPreLoad(inst, data)
+>>>>>>> Beta_1.2.8
 		if data.isbeaver or data.ismoose or data.isgoose then
 			inst.components.thirst:Pause()
 		end
@@ -41,7 +45,11 @@ local function woodie(inst)
 	inst:ListenForEvent("transform_person", onbecamehuman)
 	inst:ListenForEvent("transform_wereplayer", onbecamewereplayer)
 
+<<<<<<< HEAD
 	inst.OnPreLoad_old = inst.OnPreLoad
+=======
+	inst.dehy_OnPreLoad = inst.OnPreLoad
+>>>>>>> Beta_1.2.8
 	inst.OnPreLoad = onpreload
 end
 

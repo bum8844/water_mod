@@ -4,8 +4,13 @@
         <file id="0" name="spice_caffeinpepper/spice_caffeinpepper-0.png" width="300" height="300" pivot_x="0.5" pivot_y="0.35"/>
         <file id="1" name="spice_caffeinpepper/spice_caffeinpepper-1.png" width="128" height="60" pivot_x="0.480273" pivot_y="0.2625"/>
     </folder>
+<<<<<<< HEAD
     <folder id="1">
         <file id="0" name="spice_swap.png" width="300" height="300" pivot_x="0.5" pivot_y="0.35"/>
+=======
+    <folder id="1" name="spice_swap">
+        <file id="0" name="spice_swap/spice_swap.png" width="300" height="300" pivot_x="0.5" pivot_y="0.35"/>
+>>>>>>> Beta_1.2.8
     </folder>
     <folder id="2" name="spice_ruincolate_spread">
         <file id="0" name="spice_ruincolate_spread/spice_ruincolate_spread-0.png" width="300" height="300" pivot_x="0.5" pivot_y="0.35"/>

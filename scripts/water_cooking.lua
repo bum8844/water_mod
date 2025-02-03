@@ -2,18 +2,24 @@ local drinks = require("prepareddrinks")
 local drinks_warly = require("prepareddrinks_warly")
 local ageddrinks = require("preparedageddrinks")
 local spiritsdrink = require("preparedspiritsdrink")
+local cocktail = require("preparedcocktaildrink")
+local cocktail_warly = require("preparedcocktaildrink_warly")
 
 for k, recipe in pairs(drinks) do
-	AddCookerRecipe("kettle", recipe)
-	AddCookerRecipe("portablekettle", recipe)
+	AddCookerRecipe("tea_pot", recipe)
+	AddCookerRecipe("portable_tea_pot", recipe)
 
 	if recipe.card_def then
-		_G.AddRecipeCard("kettle", recipe)
+		_G.AddRecipeCard("tea_pot", recipe)
 	end
 end
 
 for k, recipe in pairs(drinks_warly) do
+<<<<<<< HEAD
 	AddCookerRecipe("portablekettle", recipe)
+=======
+	AddCookerRecipe("portable_tea_pot", recipe)
+>>>>>>> Beta_1.2.8
 end
 
 for k, recipe in pairs(ageddrinks) do
@@ -26,6 +32,15 @@ end
 
 for k, recipe in pairs(spiritsdrink) do
 	AddCookerRecipe("distillers", recipe)
+end
+
+for k, recipe in pairs(cocktail) do
+	AddCookerRecipe("cobbler_shaker",recipe)
+	AddCookerRecipe("boston_shaker",recipe)
+end
+
+for k, recipe in pairs(cocktail_warly) do
+	AddCookerRecipe("boston_shaker",recipe)
 end
 
 for k, v in pairs(require("water_spicedfoods")) do
@@ -57,6 +72,37 @@ local spoiled_drink =
     no_cookbook = true,
 }
 
+local goopydrink = 
+{
+	name = "goopydrink",
+	weight = 1,
+	test = function(boilier, names, tags) return true end,
+	priority = -2,
+	health = 0,
+	hunger = 0,
+	sanity = 0,
+	thirst = TUNING.HYDRATION_SMALLTINY, -- 11.25
+	perishtime = TUNING.PERISH_FAST, 
+	cooktime = TUNING.INCORRECT_BOIL,
+	wet_prefix = STRINGS.WET_PREFIX.WETGOOP,
+	potlevel = "high",
+	potlevel_bottle = "mid",
+	no_cookbook = true,
+	is_boilbook_recipes = true,
+	cookbook_category = "tea_pot"
+}
+
+local table_goopydrink = {
+	"tea_pot",
+	"portable_tea_pot",
+	"cobbler_shaker",
+	"boston_shaker",
+}
+
 AddCookerRecipe("brewery", spoiled_drink)
+for k, v in pairs(table_goopydrink) do
+	AddCookerRecipe(v, goopydrink)
+end
 AddBoilBookRecipe(spoiled_drink)
+AddBoilBookRecipe(goopydrink)
 

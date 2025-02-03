@@ -65,6 +65,43 @@ local function evaluate_watertype(giver, taker)
     end
 end
 
+local function check_type(giver, taker, tagname)
+    for k, v in pairs(WATERTYPE) do
+        if giver:HasTag("water_"..v) then
+            if taker:HasTag(tagname.."_"..v) then
+                return true
+            end
+        end
+    end
+end
+
+local function evaluate_case(giver, taker)
+    if taker:HasTag("checksludge") then
+        return check_type(giver,taker,"sludge")
+    elseif taker:HasTag("onlysamewater") then
+        if taker:HasTag("nowater") then
+            return true
+        end
+        return check_type(giver,taker,"same")
+    else
+        return true
+    end
+end
+
+local function evaluate_access(giver, taker)
+    local waterlevel = giver.replica.waterlevel or taker.replica.waterlevel
+    local blockbucket = giver:HasTag("blockbucket") or taker:HasTag("blockbucket")
+    if not waterlevel and not blockbucket then
+        return true
+    elseif waterlevel:IsBlockBucket() or blockbucket then
+        if not giver:HasTag("bucket_empty") and not taker:HasTag("bucket_empty") then
+            return true
+        end
+    else
+        return true
+    end
+end
+
 local USEITEM = 
 {
     milkingtool = function(inst, doer, target, actions)
@@ -85,12 +122,15 @@ local USEITEM =
                 table.insert(actions, ACTIONS.TAKEWATER)
             elseif target.replica.waterlevel ~= nil
                 and target.replica.waterlevel:IsAccepting()
-                and evaluate_watertype(inst, target) then
+                and evaluate_watertype(inst, target)
+                and evaluate_case(inst, target)
+                and evaluate_access(target, inst) then
                 table.insert(actions, ACTIONS.GIVEWATER)
             end
         elseif inst.replica.waterlevel ~= nil
             and inst.replica.waterlevel:IsAccepting()
-            and evaluate_watertype(target, inst) then
+            and evaluate_watertype(target, inst) 
+            and evaluate_access(target, inst) then
             table.insert(actions, ACTIONS.TAKEWATER)
         end
     end,
@@ -100,10 +140,17 @@ local USEITEM =
             if target:HasTag("farm_water") or target:HasTag("notwatersource") then
                 return
             end
+<<<<<<< HEAD
+=======
+            if not evaluate_access(inst, target) then
+                return
+            end
+>>>>>>> Beta_1.2.8
             table.insert(actions, ACTIONS.TAKEWATER)
         end
     end,
 
+<<<<<<< HEAD
     machinetool = function(inst, doer, target, actions)
         if doer:HasTag("portableengineer") then
             if target:HasTag("needmachtool") and inst:HasTag("machinetool") then
@@ -111,6 +158,17 @@ local USEITEM =
             elseif target:HasTag("dismantleable") and inst:HasTag("dismantletool") then
                 table.insert(actions, ACTIONS.MACHINETOOL)
             end
+=======
+    purify = function(inst, doer, target, actions)
+        if target:HasTag("can_purify") and inst:HasTag("purify_item") then
+            table.insert(actions, ACTIONS.PURIFY)
+        end
+    end,
+
+    cocktailmaker = function(inst, doer, target, actions)
+        if inst:HasTag("doneshaking") then
+            table.insert(actions, ACTIONS.HARVEST)
+>>>>>>> Beta_1.2.8
         end
     end,
 }
@@ -178,6 +236,7 @@ local SCENE =
             end
         end
     end,
+<<<<<<< HEAD
 
     machinetool = function(inst, doer, actions, right)
         table.insert(actions, ACTIONS.MACHINETOOL)
@@ -232,10 +291,42 @@ local INVENTORY = {
                         table.insert(actions, ACTIONS.DRINK)
                         return
                     end
+=======
+
+    machinetool = function(inst, doer, actions, right)
+        table.insert(actions, ACTIONS.MACHINETOOL)
+    end,
+
+    dramaticcontainer = function(inst, doer, actions, right)
+        if not inst:HasTag("fire") and not inst:HasTag("burnt") and not inst:HasTag("busy") then
+            if right then
+                if inst:HasTag("trawler_lowered") then
+                    table.insert(actions, ACTIONS.DRAMATIC_RAISE)
+                else
+                    table.insert(actions, ACTIONS.DRAMATIC_LOWER)
+>>>>>>> Beta_1.2.8
                 end
             end
         end
-    end,]]
+    end,
+}
+
+local INVENTORY = {
+    watertaker = function(inst, doer, actions)
+        if doer.components.playercontroller ~= nil then
+            local pos = inst:GetPosition()
+            local isVirtualOceanEntity = find_icefishing_hole(pos.x, 0, pos.z)
+            if inst:HasTag("watertaker") and (_G.TheWorld.Map:IsOceanTileAtPoint(pos.x, 0, pos.z) or isVirtualOceanEntity ~= nil) then
+                table.insert(actions, ACTIONS.TAKEWATER_OCEAN)
+            end
+        end
+    end,
+
+    cocktailmaker = function(inst, doer, actions)
+        if inst:HasTag("doneshaking") then
+            table.insert(actions, ACTIONS.HARVEST)
+        end
+    end,
 
     boilbook = function(inst, doer, actions, right)
         table.insert(actions, ACTIONS.READBOILBOOK)

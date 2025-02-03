@@ -19,10 +19,15 @@ end]]
 
 env.RegisterInvItemAtlas = _G.RegisterInvItemAtlas
 env.RegisterItemAtlasFile = _G.RegisterItemAtlasFile
+<<<<<<< HEAD
+=======
+env.GameDifficultyControl = _G.GameDifficultyControl
+>>>>>>> Beta_1.2.8
 
 --Global Tables
 env.STRINGS = _G.STRINGS
 env.ACTIONS = _G.ACTIONS
+env.TUNING = _G.TUNING
 
 --Global Constants
 env.FRAMES = _G.FRAMES

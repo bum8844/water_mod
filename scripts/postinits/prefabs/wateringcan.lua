@@ -50,7 +50,7 @@ local function OnFill_Waterlevel(inst, from_object ,...)
             return false
         end
     else
-    	return inst.components.fillable._overrideonfillfn(inst, from_object ,...)
+    	return inst.components.fillable.dehy_overrideonfillfn(inst, from_object ,...)
     end
 end
 
@@ -59,8 +59,8 @@ AddPrefabPostInit("wateringcan",function(inst)
             return inst
         end
 
-        if inst.components.fillable.overrideonfillfn ~= nil and inst.components.fillable._overrideonfillfn == nil then
-        	inst.components.fillable._overrideonfillfn = inst.components.fillable.overrideonfillfn
+        if inst.components.fillable then
+        	inst.components.fillable.dehy_overrideonfillfn = inst.components.fillable.overrideonfillfn
         	inst:DoTaskInTime(0,function()
         		inst.components.fillable.overrideonfillfn = OnFill_Waterlevel
         	end)
@@ -72,8 +72,8 @@ AddPrefabPostInit("premiumwateringcan",function(inst)
             return inst
         end
 
-        if inst.components.fillable.overrideonfillfn ~= nil and inst.components.fillable._overrideonfillfn == nil then
-        	inst.components.fillable._overrideonfillfn = inst.components.fillable.overrideonfillfn
+        if inst.components.fillable then
+        	inst.components.fillable.dehy_overrideonfillfn = inst.components.fillable.overrideonfillfn
         	inst:DoTaskInTime(0,function()
         		inst.components.fillable.overrideonfillfn = OnFill_Waterlevel
         	end)

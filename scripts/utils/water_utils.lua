@@ -1,7 +1,12 @@
 GLOBAL.setfenv(1, GLOBAL)
 
+<<<<<<< HEAD
 local function GetItemState(count)
     return count >= 5 and "_bottle" or ""
+=======
+local function GetItemState(count,maxnum)
+    return count >= maxnum and "_bottle" or ""
+>>>>>>> Beta_1.2.8
 end
 
 SetRetrofitSetting = function(name, value)
@@ -16,11 +21,15 @@ SetRetrofitSetting = function(name, value)
     KnownModIndex:SaveConfigurationOptions(function() end, "workshop-3004639365", configs, false)
 end
 
+<<<<<<< HEAD
 MakeDynamicCupImage = function(inst, symbol, build, use_bg)
+=======
+MakeDynamicCupImage = function(inst, symbol, build, use_bg, maxnum)
+>>>>>>> Beta_1.2.8
     local function ChangeCupImage(inst, data)
         if data ~= nil then
-            local new_state = GetItemState(data.stacksize)
-            local cur_state = GetItemState(data.oldstacksize)
+            local new_state = GetItemState(data.stacksize, maxnum)
+            local cur_state = GetItemState(data.oldstacksize, maxnum)
             if new_state ~= cur_state then
                 inst.minisign_atlas = "minisign_dehy_drinks"..new_state.."_swap"
                 inst.AnimState:OverrideSymbol(symbol, build..new_state, inst.prefab)
@@ -34,6 +43,27 @@ MakeDynamicCupImage = function(inst, symbol, build, use_bg)
     inst:ListenForEvent("stacksizechange", ChangeCupImage)
 end
 
+<<<<<<< HEAD
+=======
+MakeDynamicItemImage = function(inst, symbol, build, use_bg, maxnum)
+    local function ChangeItemImage(inst, data)
+        if data ~= nil then
+            local new_state = GetItemState(data.stacksize, maxnum)
+            local cur_state = GetItemState(data.oldstacksize, maxnum)
+            if new_state ~= cur_state then
+                inst.minisign_custom_name = inst.prefab..new_state
+                inst.AnimState:OverrideSymbol(symbol, build, inst.prefab..new_state)
+                if inst.components.inventoryitem.imagename ~= inst.prefab..new_state then
+                    inst.components.inventoryitem:ChangeImageName(inst.prefab..new_state)
+                end
+            end
+        end
+    end
+
+    inst:ListenForEvent("stacksizechange", ChangeItemImage)
+end
+
+>>>>>>> Beta_1.2.8
 Water_BurntStructureFn = function(inst)
     DefaultBurntStructureFn(inst)
     if inst.components.waterlevel ~= nil then
@@ -61,6 +91,36 @@ RegisterItemAtlasFile = function(fname)
             RegisterInvItemAtlas(fname, image)
         end
     end
+end
+
+GameDifficultyControl = function(GameOption)
+    local Difficulty = TUNING.DIFFICULTY
+    if not Difficulty then
+        return false
+    end
+
+    local dtalbe = {
+        ["R"] = {
+            enable_waterborne = 0,
+            enable_temp_to_dry = 1,
+            thirst_max = 200,
+            thirst_decrease_speed = .4,
+            temp_to_dry = .75,
+            max_capacity = 20,
+            left_to_dirty = 3,
+        },
+        ["S"] = {
+            enable_waterborne = 1,
+            enable_temp_to_dry = 1,
+            thirst_max = 150,
+            thirst_decrease_speed = .6,
+            temp_to_dry = 1,
+            max_capacity = 5, 
+            left_to_dirty = 0,
+        },
+    }
+
+    return dtalbe[Difficulty][GameOption]
 end
 
 --when an item 'inst' is used, the 'refund' will be given.

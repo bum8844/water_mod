@@ -278,6 +278,7 @@ local function common_liquid(inst)
 
     inst:ListenForEvent("temperaturedelta", FreezeToIce)
 end
+
 ---------------------------
 local function cleanwater(inst)
 
@@ -298,6 +299,17 @@ local function cleanwater(inst)
     inst.components.water:SetWaterType(WATERTYPE.CLEAN)
 end
 
+<<<<<<< HEAD
+=======
+local function glasswater(inst)
+    inst.components.edible.healthvalue = -TUNING.HEALING_MED
+    inst.components.edible.hungervalue = 0
+    inst.components.edible.sanityvalue = -TUNING.SANITY_MED
+    inst.components.edible.thirstvalue = TUNING.HYDRATION_SUPERTINY
+    inst.components.water:SetWaterType(WATERTYPE.UNCLEAN_MINERAL)
+end
+
+>>>>>>> Beta_1.2.8
 local function mineralwater(inst)
 
     inst:SetPrefabNameOverride("water_clean")
@@ -335,6 +347,15 @@ local function saltywater(inst)
     inst.components.edible.thirstvalue = TUNING.HYDRATION_SALT
 
     inst.components.water:SetWaterType(WATERTYPE.SALTY)
+end
+
+local function acidwater(inst)
+    inst.components.edible.healthvalue = TUNING.HEALING_SMALL
+    inst.components.edible.hungervalue = 0
+    inst.components.edible.sanityvalue = 0
+    inst.components.edible.thirstvalue = TUNING.HYDRATION_SMALL
+
+    inst.components.water:SetWaterType(WATERTYPE.ACID)
 end
 
 local function cleanice(inst)
@@ -398,6 +419,7 @@ local function MakeWaterItem(name, masterfn, tags, _prefabs)
 
         if not inst:HasTag("unwrappable") then
             inst:AddComponent("edible")
+<<<<<<< HEAD
             inst.components.edible.foodtype = FOODTYPE.GOODIES
         end
         
@@ -406,6 +428,9 @@ local function MakeWaterItem(name, masterfn, tags, _prefabs)
         if not inst:HasTag("unwrappable") then
             inst:AddComponent("edible")
             inst.components.edible.foodtype = FOODTYPE.GOODIES
+=======
+            inst.components.edible.foodtype = inst:HasTag("acid") and FOODTYPE.ACID or FOODTYPE.GOODIES
+>>>>>>> Beta_1.2.8
         end
         
         inst:AddTag("drink_icebox_valid")
@@ -432,14 +457,18 @@ local function MakeWaterItem(name, masterfn, tags, _prefabs)
         inst.components.watersource.available = false
 
         inst:AddComponent("inventoryitem")
+<<<<<<< HEAD
         inst.components.inventoryitem.atlasname = "images/tea_inventoryitem_drinks.xml"
+=======
+        inst.components.inventoryitem.atlasname = "images/inventoryitems/tea_inventoryitem_drinks.xml"
+>>>>>>> Beta_1.2.8
 
         inst:AddComponent("stackable")
         inst.components.stackable.maxsize = TUNING.STACK_SIZE_TINYITEM
 
         inst:AddComponent("tradable")
         MakeHauntableLaunchAndPerish(inst)
-        MakeDynamicCupImage(inst, "swap", "kettle_drink")
+        MakeDynamicCupImage(inst, "swap", "kettle_drink", nil, 5)
 
         if masterfn ~= nil then
             masterfn(inst)
@@ -451,9 +480,18 @@ local function MakeWaterItem(name, masterfn, tags, _prefabs)
     return Prefab(name, fn, assets, prefabs)
 end
 
+<<<<<<< HEAD
 return MakeWaterItem("water_clean", cleanwater, {"cocktail_ingredients","drink","show_spoilage","icebox_valid","clean","farm_water","pre-prepareddrink","pre-preparedfood","potion"}, prefabs.water_clean),
     MakeWaterItem("water_mineral", mineralwater, {"cocktail_ingredients","drink","show_spoilage","icebox_valid","clean","farm_water","pre-prepareddrink","pre-preparedfood","potion"}),
     MakeWaterItem("water_dirty", dirtywater, {"drink","show_spoiled", "icebox_valid","dirty","farm_water"}),
     MakeWaterItem("water_salty", saltywater, {"drink","salty","notwatersource"}),
+=======
+return MakeWaterItem("water_clean", cleanwater, {"cocktail_ingredient","drink","show_spoilage","icebox_valid","clean","farm_water","pre-prepareddrink","pre-preparedfood","potion"}, prefabs.water_clean),
+    MakeWaterItem("water_mineral", mineralwater, {"cocktail_ingredient","drink","show_spoilage","icebox_valid","clean","farm_water","pre-prepareddrink","pre-preparedfood","potion"}),
+    MakeWaterItem("water_dirty", dirtywater, {"drink","can_purify","show_spoiled", "icebox_valid","dirty","farm_water"}),
+    MakeWaterItem("water_glass", glasswater, {"drink","can_purify","icebox_valid","glass","farm_water"}),
+    MakeWaterItem("water_salty", saltywater, {"drink","salty","notwatersource"}),
+    MakeWaterItem("water_acid", acidwater,{"drink","acid","notwatersource"}),
+>>>>>>> Beta_1.2.8
     MakeWaterItem("water_clean_ice", cleanice, {"show_spoilage", "icebox_valid","clean","frozen","unwrappable","notwatersource"}, prefabs.water_clean_ice),
     MakeWaterItem("water_dirty_ice", dirtyice, {"show_spoiled", "icebox_valid","dirty","frozen","unwrappable","notwatersource"}, prefabs.water_dirty_ice)

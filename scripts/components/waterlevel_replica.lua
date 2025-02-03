@@ -6,6 +6,7 @@ local Waterlevel = Class(function(self, inst)
 	self._accepting = net_bool(inst.GUID, "waterlevel._accepting")
 	self._isdepleted = net_bool(inst.GUID, "waterlevel._isdepleted", "waterleveldirty")
 	self._watertype = net_hash(inst.GUID, "waterlevel._watertype")
+	self._no_access_bucket = net_bool(inst.GUID, "waterlevel._no_access_bucket")
 end)
 
 --getters
@@ -25,6 +26,10 @@ function Waterlevel:Watertype()
 	return self._watertype:value()
 end
 
+function Waterlevel:IsBlockBucket()
+	return self._no_access_bucket:value()
+end
+
 --setters
 function Waterlevel:SetIsDepleted(is)
 	if TheWorld.ismastersim then
@@ -35,6 +40,12 @@ end
 function Waterlevel:SetAccepting(is)
 	if TheWorld.ismastersim then
 		self._accepting:set(is)
+	end
+end
+
+function Waterlevel:SetBlockBucket(is)
+	if TheWorld.ismastersim then
+		return self._no_access_bucket:set(is)
 	end
 end
 

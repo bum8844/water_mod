@@ -4,6 +4,8 @@ local drinks = require("prepareddrinks")
 local drinks_warly = require("prepareddrinks_warly")
 local ageddrinks = require("preparedageddrinks")
 local spiritsdrink = require("preparedspiritsdrink")
+local cocktail = require("preparedcocktaildrink")
+local cocktail_warly = require("preparedcocktaildrink_warly")
 
 local boilbook_recipes = {}
 
@@ -34,6 +36,17 @@ for k, recipe in pairs(spiritsdrink) do
 	AddBoilBookRecipe(recipe)
 end
 
+<<<<<<< HEAD
+=======
+for k, recipe in pairs(cocktail) do
+	AddBoilBookRecipe(recipe)
+end
+
+for k, recipe in pairs(cocktail_warly) do
+	AddBoilBookRecipe(recipe)
+end
+
+>>>>>>> Beta_1.2.8
 local function GetRecipe(boillier, product)
 	local recipes = boilbook_recipes[boillier] or {}
 	return recipes[product]

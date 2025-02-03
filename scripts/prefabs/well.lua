@@ -258,7 +258,7 @@ local function SetPickable(inst)
 	local wateringtool = inst.components.wateringstructure:GetWateringTool()
 
     inst.components.pickable.numtoharvest = amount > 0 and amount or 1
-    inst.components.pickable.product = watertype ~= WATERTYPE.EMPTY and watertype..isice or nil
+    inst.components.pickable.product = watertype ~= WATERTYPE.EMPTY and "water_"..watertype..isice or nil
 
     SetCanPickable(inst,wateringtool)
 end

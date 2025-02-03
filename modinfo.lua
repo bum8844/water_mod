@@ -1,5 +1,9 @@
 name 						= "Don't Starve: Dehydrated"
+<<<<<<< HEAD
 version 					= "Alpha 1.2.7c.1"
+=======
+version 					= "Alpha 1.2.7.1f.2"
+>>>>>>> Beta_1.2.8
 local info_version = "Version "..version.."\n"
 
 description = info_version..[[
@@ -53,7 +57,11 @@ configuration_options =
 		{
 			{description = "Auto", data = false},
 			{description = "English", data = "en", hover="By lord lee"},
+<<<<<<< HEAD
 			{description = "한국어", data = "ko", hover="기본지원"},
+=======
+			{description = "한국어", data = "ko", hover="기본 언어"},
+>>>>>>> Beta_1.2.8
 			{description = "Tiếng Việt", data = "vi", hover="Bởi Shinosan"},
 			{description = "Español", data="es", hover="Traducido por Deimos y RavenCorwen"},
 		},
@@ -81,6 +89,36 @@ configuration_options =
 		},
 		default = true,
 	},
+<<<<<<< HEAD
+=======
+	SEPARATOR,
+	Title("Game Difficulty options"),
+	{
+		name = "difficulty",
+		label = "Difficulty",
+		hover = "Adjust difficulty level options",
+		options = 
+		{
+			{description = "Relexed", hover = "Default", data = "R"},
+			{description = "Survival", data = "S"},
+			{description = "Custom", data = false},
+		},
+		default = "R",
+	},
+	{
+		name = "left_to_dirty",
+		label = "Pond Water Setting",
+		hover = "How many clean water obtained from pond without purification pills?",
+		options = 
+		{
+			{description = "None", hover = "Default to Survival", data = 0},
+			{description = "Less", data = 1},
+			{description = "More", hover = "Default to Relexed", data = 3},
+			{description = "Lots", data = 6},
+		},
+		default = 3,
+	},
+>>>>>>> Beta_1.2.8
 	SEPARATOR,
 	Title("WorldGen options"),
 	{
@@ -145,7 +183,16 @@ configuration_options =
 		label = "Enable Thirst?",
 		options =
 		{
-			{description = "Enabled", data = true},
+			{description = "Enabled", hover = "Default", data = true},
+			{description = "Disabled", data = false},
+		},
+		default = true,
+	},
+	{
+		name = "enable_temp_to_dry",
+		label = "Enable Changes in Thirst Consumption to Body Temperature?",
+		options = {
+			{description = "Enabled", hover="Default", data = true},
 			{description = "Disabled", data = false},
 		},
 		default = true,
@@ -155,10 +202,10 @@ configuration_options =
 		label = "Enable Waterborne Disease?",
 		options =
 		{
-			{description = "Enabled", data = true},
-			{description = "Disabled", data = false},
+			{description = "Enabled", hover = "Default to Survival", data = true},
+			{description = "Disabled",  hover = "Default to Relexed", data = false},
 		},
-		default = true,
+		default = false,
 	},
 	{
 		name = "thirst_max",
@@ -167,11 +214,11 @@ configuration_options =
 		{
 		    {description = "70", data = 70},
 		    {description = "100", data = 100},
-			{description = "150(Default)", data = 150},
-			{description = "200", data = 200},
+			{description = "150", hover = "Default to Survival", data = 150},
+			{description = "200", hover = "Default to Relexed", data = 200},
 			{description = "250", data = 250},
 		},
-		default = 150,
+		default = 200,
 	},
 	{
 		name = "thirst_decrease_speed",
@@ -179,13 +226,23 @@ configuration_options =
 		options =
 		{
 		    {description = "30", data = .2},
-		    {description = "60", data = .4},
+		    {description = "60", hover = "Default to Relexed", data = .4},
 		    {description = "75", data = .5},
-			{description = "90(Default)", data = .6},
+			{description = "90", hover = "Default to Survival", data = .6},
 			{description = "105", data = .7},
 			{description = "135", data = .9},
 		},
-		default = .6,
+		default = .4,
+	},
+	{
+		name = "temp_to_dry",
+		label = "Thirst Consumption to Body Temperature Difficulty",
+		options = {
+			{description = "Easy", data = .5},
+			{description = "Normal", hover = "Default to Relexed", data = .75},
+			{description = "Hard", hover = "Default to Survival" , data = 1},
+		},
+		default = .75,
 	},
 	{
 		name = "waterborne_time",
@@ -198,7 +255,7 @@ configuration_options =
 			{description = "Long", data = .625},
 			{description = "Longer", data = .75},
 		},
-		default = .5
+		default = .5,
 	},
 	SEPARATOR,
 	Title("Brewery options"),
@@ -216,7 +273,7 @@ configuration_options =
 			{description = "Long", data = 1.5},
 			{description = "Longer", data = 3},
 		},
-		default = .75
+		default = .75,
 	},
 	Title("Soda Brewing"),
 	{
@@ -232,7 +289,7 @@ configuration_options =
 			{description = "Long", data = 1.5},
 			{description = "Longer", data = 3},
 		},
-		default = .75
+		default = .75,
 	},
 	SEPARATOR,
 	Title("Effect options"),
@@ -248,7 +305,7 @@ configuration_options =
 			{description = "Fast", data = 1.40},
 			{description = "Faster", data = 1.83},
 		},
-		default = 1.25
+		default = 1.25,
 	},
 	{
 		name = "caffein_time",
@@ -261,7 +318,7 @@ configuration_options =
 			{description = "Long", data = 2},
 			{description = "Longer", data = 4},
 		},
-		default = 1
+		default = 1,
 	},
 	SEPARATOR,
 	Title("Drink Sleep Effect"),
@@ -276,7 +333,7 @@ configuration_options =
 			{description = "Long", data = 18.75},
 			{description = "Longer", data = 22.5},
 		},
-		default = 15
+		default = 15,
 	},
 	SEPARATOR,
 	Title("Drink Alcohol Effect"),
@@ -285,10 +342,10 @@ configuration_options =
 		label = "Child Protection",
 		options =
 		{
-			{description = "Enabled", data = true},
+			{description = "Enabled", hover = "Default", data = true},
 			{description = "Disabled", data = false},
 		},
-		default = true
+		default = true,
 	},	
 	{
 		name = "alcohol_time",
@@ -301,7 +358,7 @@ configuration_options =
 			{description = "Long", data = .625},
 			{description = "Longer", data = .75},
 		},
-		default = .5
+		default = .5,
 	},
 	{
 		name = "drunkard_time",
@@ -314,7 +371,7 @@ configuration_options =
 			{description = "Long", data = .625},
 			{description = "Longer", data = .75},
 		},
-		default = .5
+		default = .5,
 	},
 	{
 		name = "resistance_time",
@@ -327,7 +384,7 @@ configuration_options =
 			{description = "Long", data = .625},
 			{description = "Longer", data = .75},
 		},
-		default = .5
+		default = .5,
 	},
 	{
 		name = "immune_time",
@@ -340,7 +397,7 @@ configuration_options =
 			{description = "Long", data = .625},
 			{description = "Longer", data = .75},
 		},
-		default = .5
+		default = .5,
 	},
 	SEPARATOR,
 	Title("Drink Alcohol Capacity"),
@@ -351,14 +408,14 @@ configuration_options =
 		{
 			{description = "Just A Sip", data = 0},
 			{description = "3 Cups", data = 3},
-			{description = "1 Bottles", data = 5},
+			{description = "1 Bottles", hover = "Default to Survival", data = 5},
 			{description = "2 Bottles", data = 10},
 			{description = "3 Bottles", data = 15},
-			{description = "4 Bottles", data = 20},
+			{description = "4 Bottles", hover = "Default to Relexed", data = 20},
 			{description = "5 Bottles", data = 25},
 			{description = "6 Bottles", data = 30},
 		},
-		default = 5
+		default = 20,
 	},
 	{
 		name = "capacity_time",
@@ -371,7 +428,7 @@ configuration_options =
 			{description = "Fast", data = .25},
 			{description = "Faster", data = .125},
 		},
-		default = .5
+		default = .5,
 	},
 	SEPARATOR,
 	Title("Drink O.B.E. Effect"),
@@ -386,7 +443,7 @@ configuration_options =
 			{description = "Long", data = .5},
 			{description = "Longer", data = 1},
 		},
-		default = .25
+		default = .25,
 	},
 	SEPARATOR,
 	Title("Drink Butterhunter Effect"),
@@ -401,7 +458,22 @@ configuration_options =
 			{description = "Long", data = .5},
 			{description = "Longer", data = 1},
 		},
-		default = .25
+		default = .25,
+	},
+	SEPARATOR,
+	Title("Satiety Effect"),
+	{
+		name = "satiety_time",
+		label = "Duration",
+		options =
+		{
+			{description = "Shorter", data = .125},
+			{description = "Short", data = .25},
+			{description = "Default", data = .5},
+			{description = "Long", data = .625},
+			{description = "Longer", data = .75},
+		},
+		default = .5,
 	},
 	SEPARATOR,
 	Title("Satiety Effect"),

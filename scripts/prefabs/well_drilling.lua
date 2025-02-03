@@ -3,8 +3,8 @@ require "prefabutil"
 local assets = 
 {
 	Asset("ANIM", "anim/well_drilling.zip"),
-	Asset("IMAGE", "images/tea_inventoryitem.tex"),
-	Asset("ATLAS", "images/tea_inventoryitem.xml"),
+	Asset("IMAGE", "images/inventoryitems/tea_inventoryitem.tex"),
+	Asset("ATLAS", "images/inventoryitems/tea_inventoryitem.xml"),
 }
 
 local prefabs =
@@ -231,7 +231,7 @@ local function item_fn()
     inst:AddComponent("inspectable")
 
     inst:AddComponent("inventoryitem")
-	inst.components.inventoryitem.atlasname= "images/tea_inventoryitem.xml"
+	inst.components.inventoryitem.atlasname= "images/inventoryitems/tea_inventoryitem.xml"
     inst.components.inventoryitem.imagename= "well_drilling_item"
 
     inst:AddComponent("deployable")

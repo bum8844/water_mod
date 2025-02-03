@@ -6,13 +6,13 @@ local function thirst_wakeup(self)
         self.thirst_bonus_mult = bonus
     end
 
-    local _sleeptick = self.SleepTick
+    local dehy_sleeptick = self.SleepTick
 
     function self:SleepTick()
 
         local thirst_tick = self.bed.components.sleepingbag.thirst_tick * self.thirst_bonus_mult
 
-        _sleeptick(self)
+        dehy_sleeptick(self)
 
         local isthirst = false
         if self.inst.components.thirst ~= nil then

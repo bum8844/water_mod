@@ -7,7 +7,11 @@
     <folder id="1" name="swap">
         <file id="0" name="swap/swap.png" width="260" height="190" pivot_x="0.5" pivot_y="0.15"/>
     </folder>
+<<<<<<< HEAD
     <entity id="0" name="bottle_pouch_big">
+=======
+    <entity id="0" name="bottle_pouch_small">
+>>>>>>> Beta_1.2.8
         <animation id="0" name="close" length="325" interval="100">
             <mainline>
                 <key id="0">

@@ -45,8 +45,15 @@ local function doboil(inst, self)
 	self.task = nil
 	self.boiling_timer = nil
 
-	if self.inst.components.waterlevel ~= nil then
-		self.inst.components.waterlevel.watertype = WATERTYPE.CLEAN
+	if not self.done then 
+		local waterlevel = self.inst.components.waterlevel
+		if waterlevel ~= nil then
+			local watertype = waterlevel.watertype
+			waterlevel.waterperish = 1
+			if watertype then
+				self.inst.components.waterlevel.watertype = (watertype == WATERTYPE.UNCLEAN_MINERAL or watertype == WATERTYPE.MINERAL) and WATERTYPE.MINERAL or WATERTYPE.CLEAN
+			end
+		end
 	end
 
 	if self.inst.components.brewing == nil then

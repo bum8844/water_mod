@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 local light_params =
 {
     low =
@@ -69,6 +70,10 @@ local function slurphunger(inst, owner)
         if owner.components.hunger.current > 0 then
             owner.components.hunger:DoDelta(-3)
         end
+=======
+local function slurpthirst(inst, owner)
+    if owner.components.thirst ~= nil then
+>>>>>>> Beta_1.2.8
         if owner.components.thirst.current > 0 then
         	owner.components.thirst:DoDelta(-5)
         end
@@ -78,6 +83,7 @@ local function slurphunger(inst, owner)
 end
 
 local function OnEquip(inst, owner)
+<<<<<<< HEAD
     --Start feeding!
 
     if not CanHatTarget(inst, owner) then
@@ -118,6 +124,13 @@ local function OnEquip(inst, owner)
         inst.task:Cancel()
     end
     inst.task = inst:DoPeriodicTask(2, slurphunger, nil, owner)
+=======
+    inst.components.equippable.dehy_onequipfn(inst, owner)
+    if inst.dehy_task ~= nil then
+        inst.dehy_task:Cancel()
+    end
+    inst.dehy_task = inst:DoPeriodicTask(2, slurpthirst, nil, owner)
+>>>>>>> Beta_1.2.8
 end
 
 AddPrefabPostInit("slurper", function(inst)
@@ -125,6 +138,10 @@ AddPrefabPostInit("slurper", function(inst)
 		return inst
 	end
 	if inst.components.equippable ~= nil then
+<<<<<<< HEAD
+=======
+        inst.components.equippable.dehy_onequipfn = inst.components.equippable.onequipfn
+>>>>>>> Beta_1.2.8
     	inst.components.equippable:SetOnEquip(OnEquip)
 	end
 end)

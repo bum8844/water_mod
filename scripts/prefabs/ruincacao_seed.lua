@@ -120,7 +120,7 @@ local function ruincacao()
 
     inst:AddComponent("inventoryitem")
     inst.replica.inventoryitem:SetImage("ruincacao")
-    inst.components.inventoryitem.atlasname= "images/tea_inventoryitem.xml"
+    inst.components.inventoryitem.atlasname= "images/inventoryitems/tea_inventoryitem.xml"
     inst.components.inventoryitem.imagename= "ruincacao"
 
     inst:AddComponent("tradable")
@@ -165,7 +165,11 @@ local function ruincacao_bean()
 	
 	inst:AddTag("cookable")
     inst:AddTag("show_spoilage")
+<<<<<<< HEAD
     inst:AddTag("cocktail_ingredients")
+=======
+    inst:AddTag("cocktail_ingredient")
+>>>>>>> Beta_1.2.8
 
     inst:AddComponent("stackable")
     inst.components.stackable.maxsize = TUNING.STACK_SIZE_SMALLITEM
@@ -179,7 +183,7 @@ local function ruincacao_bean()
 
     inst:AddComponent("inventoryitem")
     inst.replica.inventoryitem:SetImage("ruincacao_bean")
-	inst.components.inventoryitem.atlasname= "images/tea_inventoryitem.xml"
+	inst.components.inventoryitem.atlasname= "images/inventoryitems/tea_inventoryitem.xml"
     inst.components.inventoryitem.imagename= "ruincacao_bean"
 
     inst:AddComponent("tradable")
@@ -206,7 +210,9 @@ local function ruincacao_bean_cooked()
 
     inst.AnimState:SetBank("ruincacao_tree_seed")
     inst.AnimState:SetBuild("ruincacao_tree_seed")
-    inst.AnimState:PlayAnimation("ruincacao_bean_cooked")
+    inst.AnimState:PlayAnimation("cocktail_ingredient")
+
+    inst:AddTag("cocktail_ingredients")
 
     inst:AddTag("cocktail_ingredients")
 
@@ -238,7 +244,7 @@ local function ruincacao_bean_cooked()
 
     inst:AddComponent("inventoryitem")
     inst.replica.inventoryitem:SetImage("ruincacao_bean_cooked")
-	inst.components.inventoryitem.atlasname= "images/tea_inventoryitem.xml"
+	inst.components.inventoryitem.atlasname= "images/inventoryitems/tea_inventoryitem.xml"
     inst.components.inventoryitem.imagename= "ruincacao_bean_cooked"
 
     inst:AddComponent("tradable")
@@ -381,7 +387,7 @@ local function ruincacao_seed()
 	
     inst:AddComponent("inventoryitem")
     inst.replica.inventoryitem:SetImage("ruincacao_seed")
-	inst.components.inventoryitem.atlasname= "images/tea_inventoryitem.xml"
+	inst.components.inventoryitem.atlasname= "images/inventoryitems/tea_inventoryitem.xml"
     inst.components.inventoryitem.imagename= "ruincacao_seed"
 
     inst:AddComponent("tradable")

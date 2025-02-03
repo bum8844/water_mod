@@ -1,5 +1,5 @@
-modrequire("constants")
-modrequire("tuning")
+modrequire("water_tuning")
+modrequire("water_constants")
 modrequire("stategraphs/SGwell_sprinkler")
 modrequire("stategraphs/SGwell_sprinkler_pipes")
 
@@ -13,7 +13,7 @@ modrequire("water_actions")
 modrequire("water_componentactions")
 modrequire("water_ingredientvalues")
 modrequire("water_containers")
-modrequire("recipes")
+modrequire("water_recipes")
 modrequire("postinits/postinit")
 
 modrequire("boilling")

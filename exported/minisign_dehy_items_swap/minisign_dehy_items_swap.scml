@@ -21,6 +21,7 @@
     <folder id="6" name="additive_seed.tex">
         <file id="0" name="additive_seed.tex/additive_seed.png" width="224" height="224" pivot_x="0.5" pivot_y="0.5"/>
     </folder>
+<<<<<<< HEAD
     <folder id="7" name="boilbook.tex">
         <file id="0" name="boilbook.tex/boilbook.png" width="224" height="224" pivot_x="0.5" pivot_y="0.5"/>
     </folder>
@@ -122,6 +123,199 @@
     </folder>
     <folder id="40" name="wx78module_nonedrunk.tex">
         <file id="0" name="wx78module_nonedrunk.tex/wx78module_nonedrunk.png" width="221" height="221" pivot_x="0.5" pivot_y="0.5"/>
+=======
+    <folder id="7" name="boillingrecipcard.tex">
+        <file id="0" name="boillingrecipcard.tex/boillingrecipcard.png" width="224" height="224" pivot_x="0.5" pivot_y="0.5"/>
+    </folder>
+    <folder id="8" name="buckets_driftwood_empty.tex">
+        <file id="0" name="buckets_driftwood_empty.tex/buckets_driftwood_empty.png" width="224" height="224" pivot_x="0.5" pivot_y="0.5"/>
+    </folder>
+    <folder id="9" name="buckets_empty.tex">
+        <file id="0" name="buckets_empty.tex/bucket_empty.png" width="224" height="224" pivot_x="0.5" pivot_y="0.5"/>
+    </folder>
+    <folder id="10" name="buckets_steel_empty.tex">
+        <file id="0" name="buckets_steel_empty.tex/bucket_steel_empty.png" width="224" height="224" pivot_x="0.5" pivot_y="0.5"/>
+    </folder>
+    <folder id="11" name="buckets_woodie_empty.tex">
+        <file id="0" name="buckets_woodie_empty.tex/bucket_woodie_empty.png" width="224" height="224" pivot_x="0.5" pivot_y="0.5"/>
+    </folder>
+    <folder id="12" name="caffeinberry_bean.tex">
+        <file id="0" name="caffeinberry_bean.tex/caffeinberry_bean.png" width="224" height="224" pivot_x="0.5" pivot_y="0.5"/>
+    </folder>
+    <folder id="13" name="caffeinberry_bean_cooked.tex">
+        <file id="0" name="caffeinberry_bean_cooked.tex/caffeinberry_bean_cooked.png" width="224" height="224" pivot_x="0.5" pivot_y="0.5"/>
+    </folder>
+    <folder id="14" name="campdesalinator_item.tex">
+        <file id="0" name="campdesalinator_item.tex/campdesalinator.png" width="224" height="224" pivot_x="0.5" pivot_y="0.5"/>
+    </folder>
+    <folder id="15" name="campkettle_item.tex">
+        <file id="0" name="campkettle_item.tex/campkettle.png" width="224" height="224" pivot_x="0.5" pivot_y="0.5"/>
+    </folder>
+    <folder id="16" name="dark_ruincolate.tex">
+        <file id="0" name="dark_ruincolate.tex/dark_ruincolate.png" width="224" height="224" pivot_x="0.5" pivot_y="0.5"/>
+    </folder>
+    <folder id="17" name="dug_caffeinberry.tex">
+        <file id="0" name="dug_caffeinberry.tex/caffeinberry_bush_dug.png" width="224" height="224" pivot_x="0.5" pivot_y="0.5"/>
+    </folder>
+    <folder id="18" name="dug_ruincacao_tree.tex">
+        <file id="0" name="dug_ruincacao_tree.tex/ruincacao_tree_dug.png" width="224" height="224" pivot_x="0.5" pivot_y="0.5"/>
+    </folder>
+    <folder id="19" name="dug_tea_tree.tex">
+        <file id="0" name="dug_tea_tree.tex/tea_tree_bush_dug.png" width="224" height="224" pivot_x="0.5" pivot_y="0.5"/>
+    </folder>
+    <folder id="20" name="fermentingrecipcard.tex">
+        <file id="0" name="fermentingrecipcard.tex/fermentingrecipcard.png" width="224" height="224" pivot_x="0.5" pivot_y="0.5"/>
+    </folder>
+    <folder id="21" name="portablekettle.tex">
+        <file id="0" name="portablekettle.tex/portablekettle_item.png" width="224" height="224" pivot_x="0.5" pivot_y="0.5"/>
+    </folder>
+    <folder id="22" name="ruin_schokakola.tex">
+        <file id="0" name="ruin_schokakola.tex/ruin_schokakola.png" width="224" height="224" pivot_x="0.5" pivot_y="0.5"/>
+    </folder>
+    <folder id="23" name="ruincacao.tex">
+        <file id="0" name="ruincacao.tex/ruincacao.png" width="224" height="224" pivot_x="0.5" pivot_y="0.5"/>
+    </folder>
+    <folder id="24" name="ruincacao_bean.tex">
+        <file id="0" name="ruincacao_bean.tex/ruincacao_bean.png" width="224" height="224" pivot_x="0.5" pivot_y="0.5"/>
+    </folder>
+    <folder id="25" name="ruincacao_bean_cooked.tex">
+        <file id="0" name="ruincacao_bean_cooked.tex/ruincacao_bean_cooked.png" width="224" height="224" pivot_x="0.5" pivot_y="0.5"/>
+    </folder>
+    <folder id="26" name="ruincacao_seed.tex">
+        <file id="0" name="ruincacao_seed.tex/ruincacao_seed.png" width="224" height="224" pivot_x="0.5" pivot_y="0.5"/>
+    </folder>
+    <folder id="27" name="ruincolate.tex">
+        <file id="0" name="ruincolate.tex/ruincolate.png" width="221" height="221" pivot_x="0.5" pivot_y="0.5"/>
+    </folder>
+    <folder id="28" name="spice_caffeinpepper.tex">
+        <file id="0" name="spice_caffeinpepper.tex/spice_caffeinpepper.png" width="224" height="224" pivot_x="0.5" pivot_y="0.5"/>
+    </folder>
+    <folder id="29" name="tea_seed.tex">
+        <file id="0" name="tea_seed.tex/tea_seed.png" width="224" height="224" pivot_x="0.5" pivot_y="0.5"/>
+    </folder>
+    <folder id="30" name="tea_seed_cooked.tex">
+        <file id="0" name="tea_seed_cooked.tex/tea_seed_cooked.png" width="224" height="224" pivot_x="0.5" pivot_y="0.5"/>
+    </folder>
+    <folder id="31" name="tealeaves.tex">
+        <file id="0" name="tealeaves.tex/tealeaves.png" width="224" height="224" pivot_x="0.5" pivot_y="0.5"/>
+    </folder>
+    <folder id="32" name="tealeaves_dried.tex">
+        <file id="0" name="tealeaves_dried.tex/tealeaves_dried.png" width="224" height="224" pivot_x="0.5" pivot_y="0.5"/>
+    </folder>
+    <folder id="33" name="well_burying_kit.tex">
+        <file id="0" name="well_burying_kit.tex/well_burying_kit.png" width="224" height="224" pivot_x="0.5" pivot_y="0.5"/>
+    </folder>
+    <folder id="34" name="well_drilling_item.tex">
+        <file id="0" name="well_drilling_item.tex/well_drilling_item.png" width="224" height="224" pivot_x="0.5" pivot_y="0.5"/>
+    </folder>
+    <folder id="35" name="well_kit.tex">
+        <file id="0" name="well_kit.tex/well_kit.png" width="224" height="224" pivot_x="0.5" pivot_y="0.5"/>
+    </folder>
+    <folder id="36" name="well_sprinkler_kit.tex">
+        <file id="0" name="well_sprinkler_kit.tex/well_sprinkler_kit.png" width="224" height="224" pivot_x="0.5" pivot_y="0.5"/>
+    </folder>
+    <folder id="37" name="well_waterpump_kit.tex">
+        <file id="0" name="well_waterpump_kit.tex/well_waterpump_kit.png" width="224" height="224" pivot_x="0.5" pivot_y="0.5"/>
+    </folder>
+    <folder id="38" name="white_ruincolate.tex">
+        <file id="0" name="white_ruincolate.tex/white_ruincolate.png" width="224" height="224" pivot_x="0.5" pivot_y="0.5"/>
+    </folder>
+    <folder id="39" name="wx78module_nonedrunk.tex">
+        <file id="0" name="wx78module_nonedrunk.tex/wx78module_nonedrunk.png" width="224" height="224" pivot_x="0.5" pivot_y="0.5"/>
+    </folder>
+    <folder id="40" name="boilbook_basic.tex">
+        <file id="0" name="boilbook_basic.tex/boilbook_basic.png" width="224" height="224" pivot_x="0.5" pivot_y="0.5"/>
+    </folder>
+    <folder id="41" name="boilbook_advanced.tex">
+        <file id="0" name="boilbook_advanced.tex/boilbook_advanced.png" width="224" height="224" pivot_x="0.5" pivot_y="0.5"/>
+    </folder>
+    <folder id="42" name="bottle_pouch_small.tex">
+        <file id="0" name="bottle_pouch_small.tex/bottle_pouch_small.png" width="224" height="224" pivot_x="0.5" pivot_y="0.5"/>
+    </folder>
+    <folder id="43" name="mentha_spicata.tex">
+        <file id="0" name="mentha_spicata.tex/mentha_spicata.png" width="224" height="224" pivot_x="0.5" pivot_y="0.5"/>
+    </folder>
+    <folder id="44" name="applepine.tex">
+        <file id="0" name="applepine.tex/applepine.png" width="224" height="224" pivot_x="0.5" pivot_y="0.5"/>
+    </folder>
+    <folder id="45" name="applepine_cooked.tex">
+        <file id="0" name="applepine_cooked.tex/applepine_cooked.png" width="224" height="224" pivot_x="0.5" pivot_y="0.5"/>
+    </folder>
+    <folder id="46" name="applepine_oversized.tex">
+        <file id="0" name="applepine_oversized.tex/applepine_oversized.png" width="224" height="224" pivot_x="0.5" pivot_y="0.5"/>
+    </folder>
+    <folder id="47" name="applepine_oversized_waxed.tex">
+        <file id="0" name="applepine_oversized_waxed.tex/applepine_oversized_waxed.png" width="224" height="224" pivot_x="0.5" pivot_y="0.5"/>
+    </folder>
+    <folder id="48" name="applepine_oversized_rotten.tex">
+        <file id="0" name="applepine_oversized_rotten.tex/applepine_oversized_rotten.png" width="224" height="224" pivot_x="0.5" pivot_y="0.5"/>
+    </folder>
+    <folder id="49" name="applepine_seeds.tex">
+        <file id="0" name="applepine_seeds.tex/applepine_seeds.png" width="224" height="224" pivot_x="0.5" pivot_y="0.5"/>
+    </folder>
+    <folder id="50" name="limon.tex">
+        <file id="0" name="limon.tex/limon.png" width="224" height="224" pivot_x="0.5" pivot_y="0.5"/>
+    </folder>
+    <folder id="51" name="limon_cooked.tex">
+        <file id="0" name="limon_cooked.tex/limon_cooked.png" width="224" height="224" pivot_x="0.5" pivot_y="0.5"/>
+    </folder>
+    <folder id="52" name="limon_oversized.tex">
+        <file id="0" name="limon_oversized.tex/limon_oversized.png" width="224" height="224" pivot_x="0.5" pivot_y="0.5"/>
+    </folder>
+    <folder id="53" name="limon_oversized_rotten.tex">
+        <file id="0" name="limon_oversized_rotten.tex/limon_oversized_rotten.png" width="224" height="224" pivot_x="0.5" pivot_y="0.5"/>
+    </folder>
+    <folder id="54" name="limon_oversized_waxed.tex">
+        <file id="0" name="limon_oversized_waxed.tex/limon_oversized_waxed.png" width="224" height="224" pivot_x="0.5" pivot_y="0.5"/>
+    </folder>
+    <folder id="55" name="limon_seeds.tex">
+        <file id="0" name="limon_seeds.tex/limon_seeds.png" width="224" height="224" pivot_x="0.5" pivot_y="0.5"/>
+    </folder>
+    <folder id="56" name="citroyuz_cooked.tex">
+        <file id="0" name="citroyuz_cooked.tex/citroyuz_cooked.png" width="224" height="224" pivot_x="0.5" pivot_y="0.5"/>
+    </folder>
+    <folder id="57" name="citroyuz_seeds.tex">
+        <file id="0" name="citroyuz_seeds.tex/citroyuz_seeds.png" width="224" height="224" pivot_x="0.5" pivot_y="0.5"/>
+    </folder>
+    <folder id="58" name="citroyuzu.tex">
+        <file id="0" name="citroyuzu.tex/citroyuz.png" width="224" height="224" pivot_x="0.5" pivot_y="0.5"/>
+    </folder>
+    <folder id="59" name="citroyuzu_oversized.tex">
+        <file id="0" name="citroyuzu_oversized.tex/citroyuzu_oversized.png" width="224" height="224" pivot_x="0.5" pivot_y="0.5"/>
+    </folder>
+    <folder id="60" name="citroyuzu_oversized_rotten.tex">
+        <file id="0" name="citroyuzu_oversized_rotten.tex/citroyuzu_oversized_rotten.png" width="224" height="224" pivot_x="0.5" pivot_y="0.5"/>
+    </folder>
+    <folder id="61" name="citroyuzu_oversized_waxed.tex">
+        <file id="0" name="citroyuzu_oversized_waxed.tex/citroyuzu_oversized_waxed.png" width="224" height="224" pivot_x="0.5" pivot_y="0.5"/>
+    </folder>
+    <folder id="62" name="wine_cellar_part">
+        <file id="0" name="wine_cellar_part/wine_cellar_part.png" width="224" height="224" pivot_x="0.5" pivot_y="0.5"/>
+    </folder>
+    <folder id="63" name="purification_tablets.tex">
+        <file id="0" name="purification_tablets.tex/purification_tablets.tex.png" width="224" height="224" pivot_x="0.5" pivot_y="0.5"/>
+    </folder>
+    <folder id="64" name="purification_tablets_bottle.tex">
+        <file id="0" name="purification_tablets_bottle.tex/purification_tablets_bottle.tex.png" width="224" height="224" pivot_x="0.5" pivot_y="0.5"/>
+    </folder>
+    <folder id="65" name="bottle_pouch_big.tex">
+        <file id="0" name="bottle_pouch_big.tex/bottle_pouch_big.png" width="224" height="224" pivot_x="0.5" pivot_y="0.5"/>
+    </folder>
+    <folder id="66" name="thermos_bottle_big.tex">
+        <file id="0" name="thermos_bottle_big.tex/thermos_bottle_big.png" width="224" height="224" pivot_x="0.5" pivot_y="0.5"/>
+    </folder>
+    <folder id="67" name="thermos_bottle_small.tex">
+        <file id="0" name="thermos_bottle_small.tex/thermos_bottle_small.png" width="224" height="224" pivot_x="0.5" pivot_y="0.5"/>
+    </folder>
+    <folder id="68" name="boston_shaker.tex">
+        <file id="0" name="boston_shaker.tex/boston_shaker.png" width="224" height="224" pivot_x="0.5" pivot_y="0.5"/>
+    </folder>
+    <folder id="69" name="cobbler_shaker.tex">
+        <file id="0" name="cobbler_shaker.tex/cobbler_shaker.png" width="224" height="224" pivot_x="0.5" pivot_y="0.5"/>
+    </folder>
+    <folder id="70" name="warkawater_item.tex">
+        <file id="0" name="warkawater_item.tex/warkawater_item.png" width="224" height="224" pivot_x="0.5" pivot_y="0.5"/>
+>>>>>>> Beta_1.2.8
     </folder>
     <entity id="0" name="minisign_dehy_items_swap">
         <animation id="0" name="swap" length="1000" interval="100">

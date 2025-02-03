@@ -1,9 +1,34 @@
--- 기본값
-
 function dummy(boilier, names, tags)
 	return false
 end
 
+<<<<<<< HEAD
+=======
+function IsFruitDrink(names, tags)
+	for k, v in pairs(COCKTAIL_INGREDIENT.FRUIT) do
+		if names[v] then
+			return true
+		end
+	end
+end
+
+function IsVeggieDrink(names, tags)
+	for k, v in pairs(COCKTAIL_INGREDIENT.VEGGIE) do
+		if names[v] then
+			return true
+		end
+	end
+end
+
+function IsAlcoholDrink(names, tags)
+	for k, v in pairs(COCKTAIL_INGREDIENT.ALCOHOL) do
+		if names[v] then
+			return true
+		end
+	end
+end
+
+>>>>>>> Beta_1.2.8
 local function blocking_thing_bloomfintuna(names ,tags)
 	return not (tags.egg or tags.boss or tags.poop or tags.elemental or tags.paper or tags.horn or tags.spotspice or tags.gears or tags.rabbit or tags.beanbug or tags.gummybug or tags.flour or tags.bread or tags.chocolate or tags.jellyfish)
 end
@@ -108,6 +133,35 @@ function IsTealeaves(names, tags)
 		names.piko_orange or 
 		names.foliage or
 		names.greenfoliage or
+<<<<<<< HEAD
+=======
+		names.forgetmelots or
+		names.petals or
+		names.moon_tree_blossom or
+		names.petals_evil or 
+		names.firenettles or 
+		names.tillweed or
+		names.cactus_flower or
+		names.lotus_flower or 
+		names.kyno_lotus_flower or 
+		names.succulent_picked or
+		tags.lotus or
+		tags.petals_legion or
+		names.mentha_spicata
+	)
+
+end
+function IsMentha_Spicata(names, tags)
+	return names.mentha_spicata and names.mentha_spicata >=2 and 
+	Tea_Def(names, tags) and not 
+	( 
+		names.tealeaves or
+		names.tealeaves_dried or 
+		names.kyno_piko_orange or 
+		names.piko_orange or 
+		names.foliage or
+		names.greenfoliage or
+>>>>>>> Beta_1.2.8
 		names.forgetmelots or
 		names.petals or
 		names.moon_tree_blossom or
@@ -141,7 +195,8 @@ function IsTealeaves_dried(names, tags)
 		names.kyno_lotus_flower or 
 		names.succulent_picked or
 		tags.lotus or
-		tags.petals_legion
+		tags.petals_legion or
+		names.mentha_spicata
 	)
 end
 
@@ -164,7 +219,8 @@ function IsFoliage(names, tags)
 		names.kyno_lotus_flower or 
 		names.succulent_picked or
 		tags.lotus or
-		tags.petals_legion
+		tags.petals_legion or 
+		names.mentha_spicata
 	)
 end
 
@@ -186,7 +242,12 @@ function IsFlower(names, tags)
 		names.lotus_flower or 
 		names.kyno_lotus_flower or 
 		names.succulent_picked or
+<<<<<<< HEAD
 		tags.lotus
+=======
+		tags.lotus or 
+		names.mentha_spicata
+>>>>>>> Beta_1.2.8
 	)
 end
 
@@ -214,7 +275,12 @@ function IsFlower_Moon(names, tags)
 		names.petals_orchid or
 		names.aip_veggie_sunflower or
 		names.myth_lotus_flower or
+<<<<<<< HEAD
 		tags.lotus
+=======
+		tags.lotus or 
+		names.mentha_spicata
+>>>>>>> Beta_1.2.8
 	)
 end
 
@@ -241,7 +307,8 @@ function IsFlower_Evil(names, tags)
 		names.aip_veggie_sunflower or
 		names.myth_lotus_flower or
 		tags.lotus or
-		tags.petals_legion
+		tags.petals_legion or 
+		names.mentha_spicata
 	)
 end
 
@@ -269,7 +336,12 @@ function IsFlower_Cactus(names, tags)
 		names.petals_orchid or
 		names.aip_veggie_sunflower or
 		names.myth_lotus_flower or
+<<<<<<< HEAD
 		tags.lotus
+=======
+		tags.lotus or 
+		names.mentha_spicata
+>>>>>>> Beta_1.2.8
 	)
 end
 
@@ -310,7 +382,12 @@ function IsFlower_Lotus(names, tags)
 		names.petals_lily or
 		names.petals_orchid or
 		names.aip_veggie_sunflower or
+<<<<<<< HEAD
 		names.cactus_flower
+=======
+		names.cactus_flower or
+		names.mentha_spicata
+>>>>>>> Beta_1.2.8
 	)
 end
 
@@ -352,10 +429,21 @@ local function check_wathgrithr_combat_defense(eater)
 		return false
 	end
 	return skilltreeupdater:IsActivated("wathgrithr_combat_defense")
+<<<<<<< HEAD
 end
 
 local function notspiritstags(eater)
 	return not check_mightiness(eater) and not check_wathgrithr_combat_defense(eater) and not eater:HasTag("drunk_immunity")
+=======
+end
+
+local function check_nonedrunk(eater)
+	return eater.components.dcapacity ~= nil and eater.components.dcapacity.nonedrunk 
+end
+
+local function notspiritstags(eater)
+	return not check_mightiness(eater) and not check_wathgrithr_combat_defense(eater) and not check_nonedrunk(eater)
+>>>>>>> Beta_1.2.8
 end
 
 local function notalcoholtags(eater)
@@ -416,6 +504,20 @@ function spirits(inst, eater)
 	end
 end
 
+<<<<<<< HEAD
+=======
+function boilermaker(inst, eater)
+	if eater:HasTag("player") then
+		eater.components.dcapacity:Start_Intoxication(60)--모든걸 무시하고 다 취하게 만들어 줌?
+		eater:AddDebuff("alcoholdebuff", "alcoholdebuff")
+		eater:AddDebuff("drunkarddebuff", "drunkarddebuff")
+	else
+		eater:AddDebuff("alcoholdebuff", "alcoholdebuff")
+		eater:AddDebuff("drunkarddebuff", "drunkarddebuff")
+	end
+end
+
+>>>>>>> Beta_1.2.8
 function drink_worm_light_lesser(inst, eater)
     if eater.wormlight ~= nil then
 	    if eater.wormlight.prefab == "wormlight_light_lesser" then

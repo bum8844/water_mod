@@ -1,6 +1,6 @@
 AddComponentPostInit("inventoryitemmoisture",function(self)
 
-	local _UpdateMoisture = self.UpdateMoisture
+	local dehy_UpdateMoisture = self.UpdateMoisture
 
 	function self:GetTargetMoisture_spring(...)
     	local owner = self.inst.components.inventoryitem.owner
@@ -18,7 +18,7 @@ AddComponentPostInit("inventoryitemmoisture",function(self)
 		        self:SetMoisture(math.max(targetMoisture, self.moisture - dt))
 		    end
 		else
-			_UpdateMoisture(self,dt,...)
+			dehy_UpdateMoisture(self,dt,...)
 		end
 	end
 end)

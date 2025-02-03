@@ -8,6 +8,7 @@ local AddComponentToPlayer = function(inst)
 
     inst:AddComponent("obe")
     inst:AddComponent("dcapacity")
+    inst:AddComponent("craftbartender")
 end
 
 AddPlayerPostInit(AddComponentToPlayer)
@@ -92,9 +93,9 @@ if GetModConfigData("enable_thirst") then
         end)
 
         if not _G.TheWorld.ismastersim then
-            inst._OnEntityReplicated = inst.OnEntityReplicated
+            inst.dehy_OnEntityReplicated = inst.OnEntityReplicated
             inst.OnEntityReplicated = function(inst)
-                inst:_OnEntityReplicated()
+                inst:dehy_OnEntityReplicated()
                 if inst._parent.replica.thirst ~= nil then
                     inst._parent.replica.thirst:AttachClassified(inst)
                 end

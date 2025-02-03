@@ -1,6 +1,11 @@
 local cooking = require("cooking")
 
-local function ShowProduct(inst)
+local list = {
+	"spice_caffeinpepper",
+	"spice_ruincolate_spread"
+}
+
+local function ShowProduct(inst ,spice)
     if not inst:HasTag("burnt") then
         local product = inst.components.stewer.product
         local recipe = cooking.GetRecipe(inst.prefab, product)
@@ -8,7 +13,7 @@ local function ShowProduct(inst)
             product = recipe.basename or product
             if recipe.spice ~= nil then
                 inst.AnimState:OverrideSymbol("swap_plate", "plate_food", "plate")
-                inst.AnimState:OverrideSymbol("swap_garnish", "water_spice", "spice_caffeinpepper")
+                inst.AnimState:OverrideSymbol("swap_garnish", "water_spice", spice)
             else
                 inst.AnimState:ClearOverrideSymbol("swap_plate")
                 inst.AnimState:ClearOverrideSymbol("swap_garnish")
@@ -28,11 +33,21 @@ local function ShowProduct(inst)
 end
 
 local function checkitem(inst)
-	return inst.components.stewer.ingredient_prefabs[2] == "spice_caffeinpepper"
+	for k, v in pairs(list) do
+		if inst.components.stewer.ingredient_prefabs[2] == v then
+			return v
+		end
+	end
+	return false
 end
 
 local function checkname(inst)
-	return string.find(inst.components.stewer.product,"_spice_caffeinpepper")
+	for k, v in pairs(list) do
+		if string.find(inst.components.stewer.product,"_"..v) then
+			return v
+		end
+	end
+	return false
 end
 
 local function continuedonefn(inst)
@@ -42,7 +57,7 @@ local function continuedonefn(inst)
 	        inst.AnimState:PlayAnimation("idle_full")
 	        ShowProduct(inst)
 		else
-			return inst.components.stewer.oncontinuedone_old(inst)
+			return inst.components.stewer.dehy_oncontinuedone(inst)
 		end
 	end
 end
@@ -53,11 +68,11 @@ local function ondonecookingfn(inst)
 		if test then
 	        inst.AnimState:PlayAnimation("cooking_pst")
 	        inst.AnimState:PushAnimation("idle_full", false)
-	        ShowProduct(inst)
+	        ShowProduct(inst, test)
 	        inst.SoundEmitter:KillSound("snd")
 	        inst.SoundEmitter:PlaySound("dontstarve/common/together/portable/spicer/cooking_pst")
 		else
-			return inst.components.stewer.ondonecooking_old(inst)
+			return inst.components.stewer.dehy_ondonecooking(inst)
 		end
 	end
 end
@@ -69,8 +84,8 @@ AddPrefabPostInit("portablespicer", function(inst)
     end
 
     if inst.components.stewer ~= nil then
-		inst.components.stewer.oncontinuedone_old = inst.components.stewer.oncontinuedone
-		inst.components.stewer.ondonecooking_old = inst.components.stewer.ondonecooking
+		inst.components.stewer.dehy_oncontinuedone = inst.components.stewer.oncontinuedone
+		inst.components.stewer.dehy_ondonecooking = inst.components.stewer.ondonecooking
 	end
 
 	inst.components.stewer.oncontinuedone = continuedonefn
