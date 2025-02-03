@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<spriter_data scml_version="1.0" generator="BrashMonkey Spriter" generator_version="r11">
+    <folder id="0" name="temp">
+        <file id="0" name="temp/temp.png" width="225" height="354" pivot_x="0.515556" pivot_y="0.169492"/>
+    </folder>
+    <entity id="0" name="steamdesalinator">
+        <animation id="0" name="place" length="1225" interval="100">
+            <mainline/>
+        </animation>
+        <animation id="1" name="hit_deactive" length="625" interval="100">
+            <mainline/>
+        </animation>
+        <animation id="2" name="hit_active" length="625" interval="100">
+            <mainline/>
+        </animation>
+        <animation id="3" name="pumping_active" length="875" interval="100">
+            <mainline/>
+        </animation>
+        <animation id="4" name="pumping_deactive" length="875" interval="100">
+            <mainline/>
+        </animation>
+        <animation id="5" name="activeing" length="1925" interval="100">
+            <mainline/>
+        </animation>
+        <animation id="6" name="active_clutch" length="2026" interval="100">
+            <mainline/>
+        </animation>
+        <animation id="7" name="active_high" length="2026" interval="100">
+            <mainline/>
+        </animation>
+        <animation id="8" name="active_middle" length="3000" interval="100">
+            <mainline/>
+        </animation>
+        <animation id="9" name="active_low" length="4000" interval="100">
+            <mainline/>
+        </animation>
+        <animation id="10" name="active_empty" length="6026" interval="100">
+            <mainline/>
+        </animation>
+        <animation id="11" name="deactiveing" length="3000" interval="100">
+            <mainline/>
+        </animation>
+        <animation id="12" name="deactive" length="175" interval="100">
+            <mainline/>
+        </animation>
+        <animation id="13" name="idle_place" length="150" interval="100">
+            <mainline/>
+        </animation>
+    </entity>
+    <entity id="1" name="item">
+        <animation id="0" name="steamdesalinator_kit" length="150" interval="100">
+            <mainline/>
+        </animation>
+    </entity>
+</spriter_data>

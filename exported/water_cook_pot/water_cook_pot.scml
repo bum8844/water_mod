@@ -15,6 +15,15 @@
     <folder id="4" name="white_ruincolate">
         <file id="0" name="white_ruincolate/white_ruincolate.png" width="175" height="129" pivot_x="0.5" pivot_y="0.3"/>
     </folder>
+    <folder id="5" name="applepine_fried_rice">
+        <file id="0" name="applepine_fried_rice/applepine_fried_rice.png" width="215" height="156" pivot_x="0.386047" pivot_y="0.179487"/>
+    </folder>
+    <folder id="6" name="applepine_pie">
+        <file id="0" name="applepine_pie/applepine_pie.png" width="220" height="114" pivot_x="0.51" pivot_y="0.27"/>
+    </folder>
+    <folder id="7" name="citroyuzu_bbq">
+        <file id="0" name="citroyuzu_bbq/citroyuzu_bbq.png" width="256" height="162" pivot_x="0.5" pivot_y="0.32"/>
+    </folder>
     <entity id="0" name="water_cook_pot">
         <animation id="0" name="idle" length="1000" interval="100">
             <mainline>

@@ -1,29 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <spriter_data scml_version="1.0" generator="BrashMonkey Spriter" generator_version="r11">
-    <folder id="0" name="boilbook01">
-        <file id="0" name="boilbook01/boilbook01-0.png" width="209" height="141" pivot_x="0.533014" pivot_y="0.468617"/>
+    <folder id="0" name="boilbook_basic">
+        <file id="0" name="boilbook_basic/book_boil-0.png" width="195" height="109" pivot_x="0.485128" pivot_y="0.460092"/>
+        <file id="1" name="boilbook_basic/book_boil-1.png" width="111" height="150" pivot_x="0.619144" pivot_y="0.314833"/>
+        <file id="2" name="boilbook_basic/book_boil-2.png" width="118" height="128" pivot_x="0.703814" pivot_y="0.418359"/>
     </folder>
-    <folder id="1" name="book_boil">
-        <file id="0" name="book_boil/book_boil-0.png" width="195" height="109" pivot_x="0.485128" pivot_y="0.460092"/>
-        <file id="1" name="book_boil/book_boil-1.png" width="111" height="150" pivot_x="0.619144" pivot_y="0.314833"/>
-        <file id="2" name="book_boil/book_boil-2.png" width="118" height="128" pivot_x="0.703814" pivot_y="0.418359"/>
+    <folder id="1" name="boilbook_advenced">
+        <file id="0" name="boilbook_advenced/book_boil-0.png" width="195" height="109" pivot_x="0.485128" pivot_y="0.460092"/>
+        <file id="1" name="boilbook_advenced/book_boil-1.png" width="111" height="150" pivot_x="0.619144" pivot_y="0.314833"/>
+        <file id="2" name="boilbook_advenced/book_boil-2.png" width="118" height="128" pivot_x="0.703814" pivot_y="0.418359"/>
+    </folder>
+    <folder id="2" name="boilbook_advenced_item">
+        <file id="0" name="boilbook_advenced_item/boilbook01-0.png" width="209" height="141" pivot_x="0.533014" pivot_y="0.468617"/>
+    </folder>
+    <folder id="3" name="boilbook_basic_item">
+        <file id="0" name="boilbook_basic_item/boilbook01-0.png" width="209" height="141" pivot_x="0.533014" pivot_y="0.468617"/>
     </folder>
     <entity id="0" name="boilbook">
-        <animation id="0" name="idle" length="67" interval="100">
+        <animation id="0" name="boilbook_basic" length="67" interval="100">
             <mainline>
                 <key id="0">
                     <object_ref id="0" timeline="0" key="0" z_index="0"/>
                 </key>
-                <key id="1" time="34">
-                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
-                </key>
-                <key id="2" time="67">
-                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                <key id="1" time="67">
+                    <object_ref id="0" timeline="0" key="1" z_index="0"/>
                 </key>
             </mainline>
-            <timeline id="0" name="boilbook01">
+            <timeline id="0" name="boilbook_item">
                 <key id="0" spin="0">
-                    <object folder="0" file="0" x="-0.2" y="27.1" angle="0"/>
+                    <object folder="3" file="0" x="-0.2" y="27.1" angle="0"/>
+                </key>
+                <key id="1" time="67" spin="0">
+                    <object folder="3" file="0" x="-0.2" y="27.1" angle="0"/>
+                </key>
+            </timeline>
+        </animation>
+        <animation id="1" name="boilbook_advenced" length="67" interval="100">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+                <key id="1" time="67">
+                    <object_ref id="0" timeline="0" key="1" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="boilbook_item">
+                <key id="0" spin="0">
+                    <object folder="2" file="0" x="-0.2" y="27.1" angle="0"/>
+                </key>
+                <key id="1" time="67" spin="0">
+                    <object folder="2" file="0" x="-0.2" y="27.1" angle="0"/>
                 </key>
             </timeline>
         </animation>

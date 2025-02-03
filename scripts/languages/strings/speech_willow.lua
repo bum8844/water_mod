@@ -1,0 +1,425 @@
+return {
+	ACTIONFAIL =
+	{
+		GIVE =
+		{
+			WELL_NOTEMPTY = "일단 있는 것부터 치워야지.", -- 우물에 말라 빈 양동이 달려있는데 양동이 달려 함
+			WELL_BUSY = "우물쭈물하고 있는게 맘에 안들어!", -- 우물에 물 든 양동이 달려있는데 달려 함
+		}
+	},
+
+	ANNOUNCE_DRUNK = "흐헤헤... 기분 좋은데...",
+
+	ANNOUNCE_DRUNK_MUMBLE =
+	{
+		"히끅... 히끅!",
+		"후끈후끈하니 기분 좋다...",
+		"딸꾹! 흐헤헤.",
+		"역시 술은 좋은 거구나...",
+		"버니, 너도 한 잔 할래? 흐흐흐...",
+		"기분 좋은 날이다!!",
+		"그래, 일단 마셔! 세상 고민할 거 있어?",
+		"아, 뭔가 태울 거 없나...?",
+		"야 윌슨, 사랑해... 흐헤헤헤...",
+	},
+
+	ANNOUNCE_DRUNK_END = "으으... 속 쓰려...", --술에서 좀 깸 (그로기)
+	ANNOUNCE_DRUNK_IMMUNITY = "only_used_by_wolfgang_and_wathgrithr", --임시. 위그 전용,
+	ANNOUNCE_NOTCHARGE = "뭐야, 왜 젖이 안 나오는 건데?!", --번개염소가 충전이 안되서 양동이로 젖을 짤수 없음
+	ANNOUNCE_NOTHIRSTSLEEP = "목이 너무 타서 잘 수가 없어!", -- 목이 마른데 밤에 잘려고 시도
+	ANNOUNCE_NOTHIRSTSIESTA = "목이 너무 말라서 쉴 수가 없어!", -- 목이 마른데 낮에 잘려고 시도
+	ANNOUNCE_SLEEP_END = "으으, 머리 아파...", --자고 일어나서 술에서 완전히 깸 
+	ANNOUNCE_THIRST = "으으, 빗물이라도 좋으니까 마실 것 좀...", --너무 목말라!
+
+	ANNOUNCE_DCAPACITY_CRITICAL = "히히, 몸이 화끈거려!", --취하기 직전
+	ANNOUNCE_DCAPACITY_HALF = "뭔가 열이 오르는 느낌이야!", -- 취기가 돌기 시작
+
+	ANNOUNCE_CAFFINE_BUFF_START = "왠지 불태우기 좋은 기분인걸!" , -- 카페인 버프 시작
+    ANNOUNCE_CAFFINE_BUFF_STOP = "좋아, 나머지는 나중에." ,  -- 카페인 버프 끝
+
+    ANNOUNCE_SATIETY_BUFF_START = "" , -- 포만감 버프 시작
+    ANNOUNCE_SATIETY_BUFF_STOP = "" ,  -- 포만감 버프 끝
+
+    ANNOUNCE_CURE_WATERBORNE = "진짜 죽는 줄 알았네..." , -- 수인성 질병을 아이템으로 치료했을때의 대사
+
+	DESCRIBE =
+	{
+		BOILBOOK_BASIC = "책을 왜 읽어? 불쏘시개로 써야지.",
+		BOILBOOK_ADVANCED = "책을 왜 읽어? 불쏘시개로 써야지.",
+
+		WATER_CLEAN_ICE = "차가운 물 덩어리잖아. 우웩.",--깨끗한 얼음물
+		WATER_DIRTY_ICE = "이젠 심지어 더럽기까지 하네.", --더러운 얼음물
+
+		SPICE_CAFFEINPEPPER = "이걸로 누구 코에 불을 붙여볼까?", --후추 향신료
+		SPICE_RUINCOLATE_SPREAD = "",
+
+		WELL_KIT = "나 혼자 이걸 다 설치하라고?", --우물 키트
+		WELL_SPRINKLER_KIT = "뭐? 나 보고 이걸 설치하라고?", --스프링클러 키트
+		WELL_WATERPUMP_KIT = "기계 조립하는 건 정말 질색이야.", --스팀 물펌프 키트
+		WELL_BURYING_KIT = "잘 됐네. 마침 물 소리가 거슬리던 참이었어.", -- 구멍 매설 키트
+		WELL_DRILLING = "불 붙이기 전에 조용히 좀 해!", --드릴로 구멍 뚫는 중
+		WELL_DRILLING_ITEM = "이걸로 불은 못 붙히는 거야?", --드릴 아이템
+		HOLE = "빠지면 뼈도 못 추리겠어.", --우물 구멍
+		WELL = "'우물'이 있으면 '좌불'도 있어야 하는 거 아니야?", --우물
+		BOTTLE_POUCH = "",
+		WINE_CELLAR_PART = "",
+		WINE_CELLAR = "",
+
+		WX78MODULE_NONEDRUNK = "야 WX, 화염방사기 설치해보는 건 어때?", -- 78전용 묘듈
+
+		-- 물 모드 식물
+
+		TEA_TREE = "너 정말 잘 타게 생겼다?",--차나무
+		DUG_TEA_TREE = "불을 붙이면 더 예쁠 거야.", --땅에서 파낸 차나무
+		TEA_SEED = "안녕, 나무 씨앗아.", -- 차나무 열매
+		TEA_SEED_COOKED = "이제 나무는 못 되는 거네?", --구운 차나무 열매
+		TEA_SEED_SAPLING = "곧 진짜 나무가 될수 있을 거야.", --차나무 새싹
+		TEALEAVES = "태우면 좋은 향이 나겠는데.", --찻잎
+		TEALEAVES_DRIED = "땔감으로 쓰기 딱 좋아보이네.", --말린 찻잎
+
+		CAFFEINBERRY = "어디서 본 적 있는 것 같은데.", --커피 덤불
+		DUG_CAFFEINBERRY = "이제 내가 널 어떻게 해줄까?", --파낸 커피덤불
+		CAFFEINBERRY_BEAN = "아무리 봐도 불을 써야 할 것 같아!", --생 커피콩
+		CAFFEINBERRY_BEAN_COOKED = "아, 향긋해라.", --구운 커피콩
+
+		RUINCACAO_TREE = "보아하니 너도 불이랑 친구 먹었구나?", --카카오 나무
+		DUG_RUINCACAO_TREE = "뭔데? 흙이 필요하단 거야?", --파낸 카카오 나무
+		RUINCACAO_SEED = "벌써 예쁜 꽃이 폈네.", --카카오 새싹 아이템
+		RUINCACAO_SEED_SAPLING = "무럭 무럭 자라라.", -- 카카오 새싹 심은거
+		RUINCACAO = "흐음- 스모키해.", --부수기 전 카카오 열매
+		RUINCACAO_BEAN = "불을 가하면 분명 더 좋아질 거야!", --부순 후 카카오 콩  
+		RUINCACAO_BEAN_COOKED = "그래, 이제 좀 초콜릿 냄새가 나네!", --구운 카카오 콩
+
+		--APPLEPINE
+		APPLEPINE = "",
+		APPLEPINE_COOKED = "",
+		APPLEPINE_SEEDS = "",
+		APPLEPINE_OVERSIZED = "",
+
+		--limon
+		LIMON = "",
+		LIMON_COOKED = "",
+		LIMON_SEEDS = "",
+		LIMON_OVERSIZED = "",
+
+		--citroyuzu
+		CITROYUZU = "",
+		CITROYUZU_COOKED = "",
+		CITROYUZU_SEEDS = "",
+		CITROYUZU_OVERSIZED = "",
+
+		--mentha_spicata
+
+		WEED_MENTHA_SPICATA = "",
+		MENTHA_SPICATA = "",
+
+		-- 증류주 첨가제
+
+		ADDITIVE_SEED = "지루하기 짝이 없는 씨앗들이야.", -- 리큐르에 제조에 첨가 할 씨허브(아니스,쥬니퍼베리,팔각 모티브)첨가제 
+		ADDITIVE_PETALS = "작은 불쏘시개 꾸러미야.", -- 리큐르에 제조에 첨가 할 허브,녹차,꽃잎 첨가제
+		ADDITIVE_NUT = "태우면 더 고소한 향이 날 텐데, 어때?", -- 리큐르에 제조에 첨가 할 버치넛,코코넛,커피콩,카카오콩 첨가제
+		ADDITIVE_DAIRY = "술에 우유를? 뭐 애기들 먹으라고?", -- 리큐르에 제조에 첨가할 유제품 첨가제
+
+		-- 음료
+
+		WATER_CLEAN = "그래, 살려면 물을 마셔야겠지.", --깨끗한 물
+		WATER_DIRTY = "먹으면 설사병 나겠는데.", --더러운 물
+		WATER_SALTY = "물이 이렇게 많은데 마시지를 못하다니!", --바닷물
+
+		GOOPYDRINK = "차라리 불 속에 넣었으면 이렇게 될 일은 없었을 거 아냐.", --실패한 음료(웻 굽 개념)
+		
+		-- 주전자 음료
+
+		FRUITJUICE = "과일을 죄다 으깨버렸네.", --잡 과일쥬스
+		BERRIES_JUICE = "빨간 즙을 우려냈어.", -- 베리 쥬스
+		POMEGRANATE_JUICE = "빨간 건 절대 맛없을 수가 없지.", -- 석류 쥬스
+		BANANA_JUICE = "설마 껍질채로 끓인 거야?", -- 바나나 쥬스
+		FIG_JUICE = "주스로 만들어도 나쁘지는 않네.", -- 무화과 쥬스
+		DRAGONJUICE = "불 같은 과일에 물을 넣다니 별로야.", --용과 쥬스
+		GLOWBERRYJUICE = "물이 빛나다니 진짜 이상해.", -- 발광베리 쥬스
+		WATERMELON_JUICE = "끈적하고 달콤하고 시원해.", --수박 쥬스
+
+		VEGGIE_TEA = "안 마실래.", --녹즙
+		CARROT_TEA = "그냥 당근 끓인 물이잖아.", --당근차
+		CACTUS_TEA = "완전 물컹거려.", --선인차
+		TOMATO_JUICE = "적어도 손이 즙 범벅이 되지는 않겠네.", --토마토 쥬스
+		LUMPY_TEA = "차라리 구워 먹는게 낫겠어.", --뿌리차
+		SEAWEED_SHAKE = "더 나빠졌잖아!", --해초 쉐이크
+		
+		GREENTEA = "그냥 이파리 우린 물이잖아.", --생잎 녹차
+		BLACKTEA = "아무 잎이나 우러서 되는게 아니라고? 어쩌라구.", --홍차
+		BLACKTEA_ICED = "이젠 또 얼음을 넣었네.", -- 홍차 아이스티
+		FUER = "차는 다 똑같은 거 아니야?", --보이차,이파리차,고사리차
+		MIXFLOWER = "그래, 물을 마시더라도 좀 향긋한 게 좋긴 하지.", --잡 꽃잎 차
+		HIBISCUSTEA = "이거 시큼한데 맛있네.", --히비스커스 차
+		CACTUSFLOWER_TEA = "그냥 또다른 꽃차야.", --선인꽃차
+		LOTUSTEA = "물 속으로 돌아갔으니까 잘 된 거 아니겠어.", --연꽃차
+		SUSHIBISCUS = "야, 웨스! 네가 한 번 맛 좀 볼래?", -- 자살차
+		MOON_BLOSSOM_TEA = "이건 좀 인상적이네.", --달꽃차
+
+		CAFFEINBERRY_JUICE = "뭔가... 의욕이 샘솟는 냄새네.", -- 블랙 커피
+        TOFFEE_LATTE = "견과류를 넣은 커피라니, 다람쥐가 좋아하겠는데.", --토피넛 라떼
+		RUINCHA_LATTE = "씁쓸하면서도 달콤한걸.", --모카 라떼(커피+초코)
+		
+		HOTRUINCOLATE = "초콜릿도 뜨겁게 마시면 더 맛있어.", --핫초코
+		RUINCOLATE_SMOOTHIE = "차가운 초콜릿은 초콜릿이 아니야!", --초코 스무디(차가움)
+		RUINXOCOLATL = "세상에 쓴 맛 나는 핫초코를 누가 마셔?", --쇼콜라틀(매캐함)
+		TEA_RUINCOLATE_LATTE = "핫초코에 잎을 갈아 넣었단 말야?", -- 말차 라떼
+
+		MULLED = "마시면 뱃속에 난로가 있는 느낌이야.", --뱅쇼
+		BUTTERBEER = "불을 붙일 수 있을 것 같은데, 한 번 해볼까?", --해리포터 시리즈의 버터비어
+
+		APPLEPINE_JUICE = "마실 땐 좋은데, 마시고 나면 입안이 얼얼해.",
+		APPLEPINE_SMOOTHIE = "",
+		APPLEPINE_CAPPUCCINO = "",		
+
+		CITROYUZU_JUICE = "아우, 셔!",
+		CITROYUZU_TEA = "",
+		EARLGREY_TEA = "",
+
+		-- 콜라보 주전자 음료
+
+		COCONUT_JUICE = "음식은 음식인 것 같네.", --난파선 코코넛 쥬스
+		RAINBOW_SHAKE = "으, 해파리를 갈아마신다고?", --난파선 무지개 해파리 쉐이크
+		QUARTZ_SHAKE = "물과 물고기의 환장의 콜라보네.", --난파선 광대 물고기 쉐이크
+		NETTLE_TEA = "",
+		FRASH_BRAMBLE_TEA = "",
+		TUBER_BLOOM_TEA = "",
+		CHERRY_ROSEBERRIES_TEA = "그래, 향긋하네.", --체리숲 로즈힙 차
+		CHERRY_HONEY_TEA = "뭐, 색깔은 예쁘네.", --체리숲 벚꽃꿀 차
+		SWEET_RICE_DRINK = "난 구운 쪽이 더 맘에 드는데.", -- 비타협 식혜
+		STRAWBERRY_SMOOTHIE = "빨갛게 잘 갈았네.", -- 모어 푸드 팩 딸기 스무디
+		STRAWBERRY_MILK_SMOOTHIE = "가끔은 차가운 것도 나쁘지 않네.", -- 모어 푸드 팩 딸기 스무디 라떼
+
+		--양조기 음료
+
+		SPOILED_DRINK = "땔감으로 쓰지도 못해.", --썩은 음료
+
+		-- 양조소다
+	
+		SODA = "톡 쏘는 물이야.", -- 탄산수
+		FRUITSODA = "음료 중에선 이게 제일 맛있어.", -- 과일소다
+		LIMONSODA = "달고 끈적끈적하고 톡 쏘는 맛이야.", -- 레몬 라임소다(과일소다 상위 호환)
+		COLA = "콜라를 여기서 다 보네.", -- 콜라
+		COLAQUANTUM = "무슨 마법약 같은 것도 아니고...", --콜라 퀀텀
+		LUMPY_BEER = "우웩, 완전 약 맛이잖아.", --루트비어(술이 아님)
+		APPLEPINESODA = "소다에 파인애플 과즙 좀 넣은 거야.", -- 탄산 파인애플(오란씨)
+		CITROYUZUSODA = "오렌지 주스에 탄산을 넣었단 말야?", -- 탄산 오랜지(환타)
+		DAWN_FOG = "",
+		MOON_CAP_DRINK = "",
+
+		-- 양조주
+
+		CORN_BEER = "완전 아저씨 같아.", -- 콘 맥주
+		MADHU = "뭐야, 꿀 맛은 거의 안 나잖아!", --벌꿀주
+		WINE = "오크통째로 태우면 향이 엄청날 텐데.", --와인 (그냥 베리 양조)
+		NOBLEWINE = "가볍게 잘 넘어가네.", --노블 와인(구운 베리 양조)
+		SPARKLINGWINE = "흔들흔들- 펑!", --스파클링 와인
+		GLOWBERRYWINE = "불도 안 붙였는데 빛이 난단 말이야?", --글로우 베리 와인
+		KUMIS = "시큼하고 고약해.", -- 크므즈,산양유주
+		LUMPY_WINE = "술에서 흙냄새 나겠다.", --서주(감자 고구마등 뿌리 술)
+		PULQUE = "우웩, 끈적거리고 셔.", --풀케(선인주)
+		RUINCACAO_WINE = "뜨거운 핫초코가 더 좋기는 하는데 이것도 나름 괜찮네.", -- 카카오 와인 
+		MIDNIGHT_STROM = "",
+		APPLEPINE_CIDER = "",
+		MENTHA_SPICATA_WINE = "",
+
+		-- 콜라보 소다
+
+		CHERRY_DOCTOR_COLA = "홈메이드 짝퉁이야.", --체리숲 닥터 페퍼(닥터 체리)
+		STRAWBERRYSODA = "빨갛고 톡 쏘는 게 마음에 드는걸.", -- 탄산 딸기(웰치스 딸기)
+
+		--콜라보 양조주
+
+		AUROBOW = "해파리를 태워도 이렇게 영롱하게 타지는 않았는데 말이지.", -- 난파선 오로보우,무지개 해파리주
+		COCONUT_WINE = "나무는 땔감, 열매는 술! 정말 버릴 게 없네!", -- 난파선 코코넛 와인
+		NETTLE_WINE = "",
+		CHERRY_BLOOM_MADHU = "난 불타서 흩날리는 꽃잎이 더 재밌어.", -- 체리숲 벚꽃꿀주
+		GIANT_BLUEBERRY_WINE = "내 맘에드는 성질로 바뀌었어!", -- 비타협 붐베리 와인(불 붙히면 폭발함)
+		RICE_WINE = "별 걸로 술을 다 만드네.", -- 비타협 막걸리
+		WHEAT_BEER = "입가에 거품 묻히기 싫어.", -- 힙 오브 푸드 밀맥주
+		PALE_BEER = "어째서 맥주가 푸른색이야?", -- 레기온 페일에일 (몬스트라 열매를 쓴 청록색 맥주)
+
+		--증류주
+
+		DISINFECTANT = "혹시 위험할지도 모르니까 불이 붙는지 시험해 보자!", -- 소독약
+		CORN_WHISKEY = "거칠게 마시고 가볍게 취해 보자!", -- 콘 위스키
+		LUMPY_VODKA = "이런 게 바로 '액체 화염'이라는 거지!", -- 보드카
+		TEQUILA = "꼬릿한 향을 참고 넘길 만해.", -- 데킬라
+		MADHU_RUM = "물 대신 이걸 마실래!", -- 럼주
+		BERRY_BRANDY = "이게 그렇게 고급진 술이라며?", -- 베리 브랜디
+		AREUHI = "우유로 만들었다고는 믿을 수 없을 정도로 깔끔해!", -- 크므즈 증류주 아르히
+		APPLEPINE_BRANDY = "",
+		VOID = "",
+		CITROYUZU_CURACAO = "",
+		MENTHA_SPICATA_CURACAO = "",
+
+		--왈리 전용 증류주
+
+		BERRY_GIN = "그래, 몇 푼이면 진탕 취할 수도 있단 말이지.", --진
+		GLOWBERRY_GIN = "빛도 나고, 목에 불도 질러버리고, 흠.", --글로우 베리 진
+		ABSINTHE = "예술가의 술이라고? 그래, 불장난도 나름 예술이라구.", -- 압생트
+		TEA_LUMPY_VODKA = "으으, 무슨 약 냄새가 나잖아.", -- 녹차 리큐르
+		PETALS_BERRY_BRANDY = "꽃 향기가 나네. 뭐, 암튼 술이면 좋아.", -- 장미향 브랜디
+		KAHLUA = "난 커피도 좋고 술도 좋으니까 둘 다 먹어야지!", -- 커피 리큐르 깔루아
+		NUT_CORN_WHISKEY = "위스키에 견과류를 넣었다고?", -- 너트 위스키
+        RUINCACAO_CREAM_LIQUEUR = "이거 달달한 게 맛있는데!", --베일리스 카카오 크림 리큐르
+        RUMCHATA = "우유를 넣으니까 생각보다 맛있는 술이 됐어!", -- 럼차타(럼에 오우차타 라는 유제품 섞은)
+
+		--콜라보 증류주
+
+		MOONWAY = "뭐, 아무튼 술은 술이네.", -- 무지개 해파리주 증류주
+		NETTLE_LIQUEUR = "",
+		ARRACK = "은은한 코코넛 향이 달콤해.", -- 아락 인도네시아 버전 코코넛 와인 증류주
+		CHERRY_BLOOM_RUM = "여기다 불 붙여서 쭉 들이키면 어떨까?", -- 체리 꿀주 증류주 벛꽃잎 떠다님
+		RICE_SPIRITS = "독한 게 내 취향이야.", --청주
+		WHEAT_WHISKEY = "밀밭이 그렇게도 잘 타는 게 역시 이유가 있었나?", -- 밀 위스크
+		PALE_WHISKEY = "하다하다 위스키도 새파랗네.", -- 페일 몰트 위스키
+
+		--왈리 전용 콜라보 증류주
+
+		NUT_COCONUT_BRANDY = "바다를 가질 수는 없어도, 잿더미로 만들어 버릴 수는 있지.", -- 코코넛 브랜디 (캐러비안 럼을 만들수 없어서 카리브 브랜디 라는 이름으로 대체)
+	    GIANT_BLUEBERRY_GIN = "이야, 이거 정말 맘에 드는데.", -- 붐 베리 사파이어 (당근 폭발함)
+
+		--냄비 요리
+
+        DARK_RUINCOLATE = "안 달콤한 초콜릿이라니 말도 안 돼!", --다크 초콜릿.
+        WHITE_RUINCOLATE = "으음, 달콤해.", --화이트 초콜릿
+        RUINCOLATE = "태우는 것보다는 먹는 게 좋겠어.", -- 그냥 초콜릿
+        RUIN_SCHOKAKOLA = "나 참, 장난이 심하네. 초콜릿을 구두약처럼 만들어 놓다니!", -- 쇼카콜라
+        APPLEPINE_PIE = "",
+        APPLEPINE_FRIED_RICE = "",
+        citroyuzu_bbq = "",
+
+		BUCKET_STEEL_EMPTY = 
+		{
+			EMPTY = "석탄을 담아두면 어울리겠는데!", --빈 양철 양동이
+			FULL = "빗물이 고여있어.", -- 깨끗한 빗물이 참
+			FULL_ICE = "통째로 얼어버렸네.", -- 빗물이 얼어버림
+			DIRTY = "더러운 물이 고여있잖아!", --빗물이 더러워짐
+			DIRTY_ICE = "불을 사용하면 해결되지 않을까?", --더러운 빗물이 얼어버림
+		},
+
+		BUCKET_WOODIE_EMPTY = 
+		{
+			EMPTY = "망가지면 땔감으로 써도 되겠어.", --우디의 빈 나무 양동이
+			FULL = "빗물이 고여있어.", -- 깨끗한 빗물이 참
+			FULL_ICE = "통째로 얼어버렸네.", -- 빗물이 얼어버림
+			DIRTY = "더러운 물이 고여있잖아!", --빗물이 더러워짐
+			DIRTY_ICE = "불을 사용하면 해결되지 않을까?", --더러운 빗물이 얼어버림
+		},
+
+		BUCKET_DRIFTWOOD_EMPTY = 
+		{
+			EMPTY = "불을 담으면 얼마나 멋질까?", -- 유목양동이
+			FULL = "빗물이 고여있어.", -- 깨끗한 빗물이 참
+			FULL_ICE = "통째로 얼어버렸네.", -- 빗물이 얼어버림
+			DIRTY = "더러운 물이 고여있잖아!", --빗물이 더러워짐
+			DIRTY_ICE = "불을 사용하면 해결되지 않을까?", --더러운 빗물이 얼어버림
+		},
+
+		BUCKET_EMPTY = 
+		{
+			EMPTY = "잘 타게 생겼는데!", -- 빈 나무 양동이
+			FULL = "빗물이 고여있어.", -- 깨끗한 빗물이 참
+			FULL_ICE = "통째로 얼어버렸네.", -- 빗물이 얼어버림
+			DIRTY = "더러운 물이 고여있잖아!", --빗물이 더러워짐
+			DIRTY_ICE = "불을 사용하면 해결되지 않을까?", --더러운 빗물이 얼어버림
+		},
+
+		DESALINATOR =
+		{
+			EMPTY = "풍차에 불을 붙이면 예쁠 것 같아.", --제염기에 물이 없음
+			PURIFY_LONG = "불을 안 쓰니까 지루해.", -- 정수 끝나기까지 많이 남음
+			PURIFY_SHORT = "이제 금방 되는 거야?", -- 정수가 곧 끝남
+			HASWATER = "좋아, 빗물보다는 낫겠지.", --제염기에 깨끗한 물이 있음
+			BURNT = "적어도 재미는 있었잖아.",   --제염기가 타버림
+			HASSALT = "소금이 꽉 차 있어.", --제염기에 소금이 남아 있음
+		},
+
+		BARREL =
+		{
+			GENERIC = "물통 말고 화약통은 어때?", -- 물통 조사 대사
+			BURNT = "물은 불을 못 이긴다니까. 봤지?", -- 물통이 타버림
+		},
+
+		BREWERY =
+		{
+			EMPTY = "불을 쓰면 못 하는게 없다니깐.", --양조기 조사 대사
+			BURNT = "정말 화끈하게 발효됐네.", --양조기 타버림
+			FERMENTING_LONG = "불이 제 역할을 하고 있어!", --양조 끝나기 까지 많이 남음
+			FERMENTING_SHORT = "곧 있으면 완성이겠는걸!", --양조가 곧 끝남
+			DONE = "어서 한 모금 마시고 싶어!", --양조기에 음료가 들어있음
+		},
+
+		CAMPKETTLE_ITEM = "뭐든지 불을 쓰면 깨끗해진다구.", --휴대 주전자 아이템 조사 대사
+		CAMPKETTLE =
+		{
+			GENERIC = "텅 비었잖아.", -- 화덕에 건 휴대 주전자 안에 물이 없음
+			BOILING_LONG = "더러운 건 끓여서 없애버리자고!", -- 물 끓이기 시작함
+			BOILING_SHORT = "좋아, 조금만 더!", -- 물 거의 다 끓음
+			DONE = "짜잔, 깨끗해졌네!", --깨끗한 물이 들음
+			STOP = "화력이 필요해. 더 많은 화력이!", --화덕에 불이 없어서 더러운물이 끓지 않는 상태
+		},
+
+		CAMPDESALINATOR_ITEM = "불로 바닷물을 길들인단 말이지? 좋은데.", --휴대 제염기 아이템 조사 대사
+		CAMPDESALINATOR = 
+		{
+			GENERIC = "이제 바닷물이 있어야겠지.", --물 없음
+			BOILING_LONG = "좋아, 바닷물에게 혼쭐을 내 주자고!", --물 끓이기 시작
+			BOILING_SHORT = "조금만 더, 조금만 더!", --거의 다 끓음 
+			DONE = "역시나 불이 이겼네!", -- 깨끗한 물이 들음
+			STOP = "잠깐만, 불이 없잖아!", -- 화덕에 불이 없어서 소금물이 정수 되지 않는 상태
+		},
+
+		KETTLE =
+		{
+			EMPTY = "어... 일단 물을 채우라고?", --빈 주전자 조사대사
+			BURNT = "역시 난 물보다는 불이 좋아.", --주전자가 불탐
+			BOILING_LONG = "불이 열심히 일해야겠는걸.", -- 음료를 만들기 시작한지 얼마 안됨
+			BOILING_SHORT = "불이 열심히 일하고 있어!", --음료 조리가 거의 끝나감
+			DONE = "물도 불을 더하면 훨씬 낫네.", --음료가 완성됨
+			PURIFY_LONG = "더러운 건 끓여버리면 그만이지!", -- 더러운 물을 끓이기 시작한지 얼마 안됨
+			PURIFY_SHORT = "조금만 더 끓이면 돼!", --더러운물을 거의 다 끓여감
+			HASWATER = "그래서... 여기다 뭘 넣어야 하지?", -- 깨끗한 물이 차 있는 상태
+			MELT_LONG = "적어도 차가운 것보다는 뜨거운 게 낫겠지.", -- 얼음물을 녹이기 시작한지 얼마 안됨
+			MELT_SHORT = "불아, 빨리!", -- 얼음물을 거의 녹여감
+		},
+
+		PORTABLEKETTLE_ITEM =
+		{
+			GENERIC = "그냥 주전자잖아. 별 거 있어?", -- 휴대용 주전자(아이템) 조사 대사
+			EMPTY = "멍청한 주전자 같으니라고.", -- 설치한 빈 휴대용 주전자 조사 대사
+			BOILING_LONG = "으으, 왜 이렇게 오래 걸려?", -- 음료를 만들기 시작한지 얼마 안됨
+			BOILING_SHORT = "어서, 불아, 서둘러!", --음료 조리가 거의 끝나감
+			DONE = "좋아, 얼른 마시자.", --음료가 완성됨
+			PURIFY_LONG = "더러운 건 끓여버리면 그만이지!", -- 더러운 물을 끓이기 시작한지 얼마 안됨
+			PURIFY_SHORT = "조금만 더 끓이면 돼!", --더러운물을 거의 다 끓여감
+			HASWATER = "이제 뭘 넣으면 되는 건데?", -- 깨끗한 물이 차 있는 상태
+			MELT_LONG = "적어도 차가운 것보다는 뜨거운 게 낫겠지.", -- 얼음물을 녹이기 시작한지 얼마 안됨
+			MELT_SHORT = "불아, 빨리!", -- 얼음물을 거의 녹여감
+		},
+		
+		DISTILLERS =
+		{   
+		    EMPTY = "불을 정말 효과적으로 쓰네.", --증류기 조사 대사
+			DISTILLTING_LONG = "저 안에 불을 넣으면 더 빨리 끝나지 않을까?", --증류가 끝나기 까지 많이 남음
+			DISTILLING_SHORT = "아, 좀 서둘러라, 이 멍청한 기계야!", --증류가 곧 끝남
+			DONE = "내 거야!", --증류기에 음료가 들어있음
+		},
+
+		WELL_WATERPUMP = {
+			HIGH_PRESSURE = "불에 타지도 않네. 완전 별로야.", -- 압력 최대
+			MIDDLE_PRESSURE = "두레박 오르내릴 필요 없는 건 편하네.", -- 압력이 중간
+			LOW_PRESSURE = "어째 기계 상태가 시원찮은데.", -- 압력이 거의 없을때
+			RECHARG_PRESSURE = "멍청한 놈의 펌프가 막혔잖아!", -- 압력이 아예 없을때(여기까지 쓰면 압력이 최대가 될때까지 못씀.)
+		},
+		
+		WELL_SPRINKLER =
+		{ 
+			LOWFUEL = "내가 쟤한테 연료를 왜 넣어줘야 해?", -- 연료가 거의 없는 상태에서의 조사 대사
+			ON = "소리 한 번 짜증나네.", -- 작동중임
+			OFF = "내 일 좀 방해하지 마.", --작동을 멈춘상태에서의 조사 대사
+		},	
+	},
+}

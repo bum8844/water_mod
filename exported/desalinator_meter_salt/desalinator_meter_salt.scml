@@ -61,7 +61,7 @@
         <file id="0" name="20/20.png" width="104" height="200" pivot_x="0.5" pivot_y="0.5"/>
     </folder>
     <folder id="20" name="9">
-        <file id="0" name="9/14.png" width="104" height="200" pivot_x="0.5" pivot_y="0.5"/>
+        <file id="0" name="9/9.png" width="104" height="200" pivot_x="0.5" pivot_y="0.5"/>
     </folder>
     <entity id="0" name="desalinator_meter_salt">
         <animation id="0" name="idle" length="34" interval="100">
@@ -72,7 +72,7 @@
             </mainline>
             <timeline id="0" name="0">
                 <key id="0" spin="0">
-                    <object folder="0" file="0" x="-0" angle="0"/>
+                    <object folder="0" file="0" angle="0"/>
                 </key>
             </timeline>
         </animation>

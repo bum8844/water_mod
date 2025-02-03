@@ -48,6 +48,21 @@
     <folder id="15" name="well_buckets_woodie_dirty_ice">
         <file id="0" name="well_buckets_woodie_dirty_ice/well_buckets_woodie_dirty_ice.png" width="132" height="121" pivot_x="0.5" pivot_y="0.5"/>
     </folder>
+    <folder id="16" name="buckets_driftwood_clean">
+        <file id="0" name="buckets_driftwood_clean/buckets_driftwood_clean.png" width="126" height="128" pivot_x="0.5" pivot_y="0.5"/>
+    </folder>
+    <folder id="17" name="buckets_driftwood_clean_ice">
+        <file id="0" name="buckets_driftwood_clean_ice/buckets_driftwood_clean_ice.png" width="126" height="128" pivot_x="0.5" pivot_y="0.5"/>
+    </folder>
+    <folder id="18" name="buckets_driftwood_dirty">
+        <file id="0" name="buckets_driftwood_dirty/buckets_driftwood_dirty.png" width="126" height="128" pivot_x="0.5" pivot_y="0.5"/>
+    </folder>
+    <folder id="19" name="buckets_driftwood_dirty_ice">
+        <file id="0" name="buckets_driftwood_dirty_ice/buckets_driftwood_dirty_ice.png" width="126" height="128" pivot_x="0.5" pivot_y="0.5"/>
+    </folder>
+    <folder id="20" name="buckets_driftwood_empty">
+        <file id="0" name="buckets_driftwood_empty/buckets_driftwood_empty.png" width="126" height="128" pivot_x="0.5" pivot_y="0.5"/>
+    </folder>
     <entity id="0" name="well_bukets_swap">
         <animation id="0" name="idle" length="300" interval="100">
             <mainline>
@@ -57,7 +72,7 @@
             </mainline>
             <timeline id="0" name="well_buckets">
                 <key id="0" spin="0">
-                    <object folder="0" file="0"/>
+                    <object folder="0" file="0" angle="0"/>
                 </key>
             </timeline>
         </animation>

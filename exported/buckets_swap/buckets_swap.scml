@@ -57,6 +57,33 @@
     <folder id="18" name="buckets_woodie_dirty_ice">
         <file id="0" name="buckets_woodie_dirty_ice/buckets_woodie_dirty_ice.png" width="176" height="161" pivot_x="0.5" pivot_y="0.25"/>
     </folder>
+    <folder id="19" name="buckets_driftwood_clean">
+        <file id="0" name="buckets_driftwood_clean/buckets_driftwood_clean.png" width="160" height="161" pivot_x="0.5" pivot_y="0.25"/>
+    </folder>
+    <folder id="20" name="buckets_driftwood_clean_ice">
+        <file id="0" name="buckets_driftwood_clean_ice/buckets_driftwood_clean_ice.png" width="160" height="161" pivot_x="0.5" pivot_y="0.25"/>
+    </folder>
+    <folder id="21" name="buckets_driftwood_dirty">
+        <file id="0" name="buckets_driftwood_dirty/buckets_driftwood_dirty.png" width="160" height="161" pivot_x="0.5" pivot_y="0.25"/>
+    </folder>
+    <folder id="22" name="buckets_driftwood_dirty_ice">
+        <file id="0" name="buckets_driftwood_dirty_ice/buckets_driftwood_dirty_ice.png" width="160" height="161" pivot_x="0.5" pivot_y="0.25"/>
+    </folder>
+    <folder id="23" name="buckets_driftwood_empty">
+        <file id="0" name="buckets_driftwood_empty/buckets_driftwood_empty.png" width="160" height="161" pivot_x="0.5" pivot_y="0.25"/>
+    </folder>
+    <folder id="24" name="buckets_acid">
+        <file id="0" name="buckets_acid/buckets_acid.png" width="160" height="161" pivot_x="0.5" pivot_y="0.25"/>
+    </folder>
+    <folder id="25" name="buckets_driftwood_acid">
+        <file id="0" name="buckets_driftwood_acid/buckets_driftwood_clean.png" width="160" height="161" pivot_x="0.5" pivot_y="0.25"/>
+    </folder>
+    <folder id="26" name="buckets_steel_acid">
+        <file id="0" name="buckets_steel_acid/buckets_steel_acid.png" width="176" height="161" pivot_x="0.5" pivot_y="0.25"/>
+    </folder>
+    <folder id="27" name="buckets_woodie_acid">
+        <file id="0" name="buckets_woodie_acid/buckets_woodie_acid.png" width="176" height="161" pivot_x="0.5" pivot_y="0.25"/>
+    </folder>
     <entity id="0" name="buckets">
         <animation id="0" name="idle" length="300" interval="100">
             <mainline>
