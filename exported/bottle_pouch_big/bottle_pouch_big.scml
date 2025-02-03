@@ -6,12 +6,6 @@
     </folder>
     <folder id="1" name="swap">
         <file id="0" name="swap/swap.png" width="381" height="224" pivot_x="0.5" pivot_y="0.15"/>
-        <file id="1" name="swap/opened_A.png" width="381" height="224" pivot_x="0" pivot_y="1"/>
-        <file id="2" name="swap/opened_D.png" width="381" height="224" pivot_x="0" pivot_y="1"/>
-    </folder>
-    <folder id="2" name="bottle_pouch_icon">
-        <file id="0" name="bottle_pouch_icon/bottle_pouch_closed.png" width="64" height="64" pivot_x="0" pivot_y="1"/>
-        <file id="1" name="bottle_pouch_icon/bottle_pouch_opened_D.png" width="64" height="64" pivot_x="0" pivot_y="1"/>
     </folder>
     <entity id="0" name="bottle_pouch_big">
         <animation id="0" name="close" length="325" interval="100">
