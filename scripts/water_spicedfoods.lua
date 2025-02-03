@@ -1,4 +1,5 @@
 require("tuning")
+local modlist = require("utils/water_modlist")
 
 local water_spicedfoods = {}
 
@@ -16,9 +17,18 @@ local function oneaten_caffeinpepper(inst, eater)
     end
 end
 
+local function oneaten_ruincolate_spread(inst, eater)
+    if not eater.components.health or eater.components.health:IsDead() or eater:HasTag("playerghost") then
+        return
+    elseif eater.components.debuffable and eater.components.debuffable:IsEnabled() then
+        eater.components.debuffable:AddDebuff("satietybuff", "satietybuff")
+    end
+end
+
 local SPICES =
 {
     SPICE_CAFFEINPEPPER = { oneatenfn = oneaten_caffeinpepper, prefabs = { "caffeinbuff" } },
+    SPICE_RUINCOLATE_SPREAD = { oneatenfn = oneaten_ruincolate_spread, prefabs = { "satietybuff" } },
 }
 
 function GenerateSpicedFoods_Water(foods)
@@ -37,7 +47,7 @@ function GenerateSpicedFoods_Water(foods)
             newdata.stacksize = nil
             newdata.spice = spicenameupper
             newdata.basename = foodname
-            newdata.name = foodname.."_spice_caffeinpepper"
+            newdata.name = foodname.."_"..spicename
             newdata.floater = {"med", nil, {0.85, 0.7, 0.85}}
             --newdata.official = true
             newdata.cookbook_category = fooddata.cookbook_category ~= nil and ("spiced_"..fooddata.cookbook_category) or nil
@@ -74,16 +84,26 @@ function GenerateSpicedFoods_Water(foods)
     end
 end
 
-for k, mod_id in ipairs(KnownModIndex:GetModsToLoad()) do
-    if mod_id == "workshop-1392778117" then
-        GenerateSpicedFoods_Water(require("preparedfoods_legion"))
-    end
-    if mod_id == "workshop-2748801553" then
-        GenerateSpicedFoods_Water(require("gyul_foodrecipes"))
-    end
-    if mod_id == "workshop-2762334054" then
-        GenerateSpicedFoods_Water(require("mfp_foodrecipes"))
-    end
+if modlist.water_modlist.legion then
+    GenerateSpicedFoods_Water(require("preparedfoods_legion"))
+end
+
+if modlist.water_modlist.gyul then
+    GenerateSpicedFoods_Water(require("gyul_foodrecipes"))
+end
+
+if modlist.water_modlist.mfp then
+    GenerateSpicedFoods_Water(require("mfp_foodrecipes"))
+end
+
+if modlist.water_modlist.unc then
+    GenerateSpicedFoods_Water(require("um_preparedfoods"))
+end
+
+if modlist.water_modlist.cf then
+    GenerateSpicedFoods_Water(require("cherry_preparedfoods"))
+    GenerateSpicedFoods_Water(require("cherry_preparedfoods_warly"))
+    GenerateSpicedFoods_Water(require("cherry_preparedfoods_wirly"))
 end
 
 GenerateSpicedFoods_Water(require("preparedfoods"))

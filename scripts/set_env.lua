@@ -3,7 +3,7 @@ env._G = GLOBAL
 --env.require = _G.require
 
 env.modrequire = function(loc) modimport("scripts/"..loc) end
-env.RegisterInvItemAtlas = function(atlasname, imagename)
+--[[env.RegisterInvItemAtlas = function(atlasname, imagename)
 	RegisterInventoryItemAtlas(atlasname, imagename)
     RegisterInventoryItemAtlas(_G.resolvefilepath(atlasname), _G.hash(imagename))
 end
@@ -15,7 +15,10 @@ env.RegisterItemAtlasFile = function(fname)
             RegisterInvItemAtlas(fname, image)
         end
     end
-end
+end]]
+
+env.RegisterInvItemAtlas = _G.RegisterInvItemAtlas
+env.RegisterItemAtlasFile = _G.RegisterItemAtlasFile
 
 --Global Tables
 env.STRINGS = _G.STRINGS
@@ -41,33 +44,36 @@ env.GetGameModeProperty = _G.GetGameModeProperty
 env.ThePlayer = _G.ThePlayer
 env.TheWorld = _G.TheWorld
 env.TheNet = _G.TheNet
+env.EntityScript = _G.EntityScript
 
 --Netvars
 env.net_ushortint = _G.net_ushortint
 env.net_bool = _G.net_bool
+env.net_tinybyte = _G.net_tinybyte
 
 env.RoundBiasedUp = _G.RoundBiasedUp
 
 --SG Classes
 env.State = _G.State
 env.TimeEvent = _G.TimeEvent
+env.FrameEvent = _G.FrameEvent
 env.ActionHandler = _G.ActionHandler
 env.EventHandler = _G.EventHandler
 
+-- Commands for testing.
 if GetModConfigData("enable_thirst") then
     require("water_debugcommands")
 
-    -- Commands for testing.
     AddClassPostConstruct("screens/consolescreen", function(self)
         if self.console_edit then
             local water_commands = 
             {
-                "supergodmodewater",
+                "supergodmode",
                 "setthirst",
             }
             local dictionary = self.console_edit.prediction_widget.word_predictor.dictionaries[3]
             for k, word in pairs(water_commands) do
-                table.insert(dictionary.words, word)
+                dictionary.words[word] = word
             end
         end
     end)

@@ -1,24 +1,9 @@
-local function notmeat(tags)
-	return not (tags.fish or tags.jellyfish or tags.meat or tags.egg or tags.boss or tags.poop or tags.elemental or tags.paper or tags.horn or tags.spotspice or tags.gears or tags.rabbit or tags.beanbug or tags.gummybug or tags.flour or tags.bread )
-end
+local water_brew_utils = require"utils/water_brew_utils"
+local modlist = require("utils/water_modlist").active_mod_compatibility
 
-local function give_tech(inst, eater, num, count_num)
-	local atech_num = math.max(0,num)
-	local otech_num = math.max(0,num/2)
-	if eater.components.builder then
-		eater.components.builder:GiveTempTechBonus({ANCIENT = atech_num, OBSIDIAN = otech_num})
-		if count_num then
-			eater.components.builder.temptechbonus_count = eater.components.builder.temptechbonus_count + math.max(1,count_num)
-		end
-	end
-end
-
-local function add_tech_count(inst, eater, num)
-	local tech_count = math.max(0,num)
-	if eater.components.builder and eater.components.builder.temptechbonus_count then
-		eater.components.builder.temptechbonus_count = eater.components.builder.temptechbonus_count + tech_count
-	end
-end
+local notmeat = water_brew_utils.notmeat
+local give_tech = water_brew_utils.give_tech
+local add_tech_count = water_brew_utils.add_tech_count
 
 local foods = require("preparedfoods_warly")
 
@@ -29,10 +14,11 @@ local water_foods = {
 		priority = 1,
 		weight = 1,
 		foodtype = FOODTYPE.GOODIES,
-		health = TUNING.HEALING_MEDSMALL*4,
-		hunger = TUNING.CALORIES_MEDSMALL,
-		perishtime = TUNING.PERISH_PRESERVED,
-		sanity = -TUNING.SANITY_MED,
+		health = TUNING.HEALING_MEDSMALL*4, -- 32
+		hunger = TUNING.CALORIES_MEDSMALL, -- 22.5
+		perishtime = TUNING.PERISH_PRESERVED, --20일 
+		sanity = -TUNING.SANITY_MED, -- -15
+		tags = {"cocktail_ingredients"},
 		thirst = 0,
 		cooktime = 2,
         floater = {"small", 0.05, 0.7},
@@ -42,14 +28,15 @@ local water_foods = {
 		end
 	},
 	white_ruincolate = {
-		test = function(cooker, names, tags) return names.ruincacao_bean_cooked and tags.fat and tags.dairy and tags.sweetener end,
+		test = function(cooker, names, tags) return names.ruincacao_bean_cooked and tags.fat and (tags.dairy or tags.milk) and (((tags.dairy or 0) + (tags.milk or 0)) - tags.fat) > 0 and tags.sweetener end,
 		priority = 2,
 		weight = 1,
-		foodtype = FOODTYPE.GOODIES,
-		health = TUNING.HEALING_MEDSMALL*2,
-		hunger = TUNING.CALORIES_MEDSMALL,
-		perishtime = TUNING.PERISH_PRESERVED,
-		sanity = TUNING.SANITY_TINY,
+		foodtype = FOODTYPE.GOODIES, 
+		health = TUNING.HEALING_MEDSMALL*7, -- 16 -> 56 (버터+ 꿀 + 카카오 + 우유 = 51)
+		hunger = TUNING.CALORIES_MEDSMALL*3, -- 18.75 -> 56.25 (재료총합 =56.25)
+		perishtime = TUNING.PERISH_PRESERVED, --20일
+		sanity = TUNING.SANITY_MEDLARGE, -- 5 -> 20 (우유 10)
+		tags = {"cocktail_ingredients"},
 		thirst = 0,
 		cooktime = 2,
         floater = {"small", 0.05, 0.7},
@@ -66,7 +53,18 @@ for k, v in pairs(water_foods) do
     v.priority = v.priority or 0
 
 	v.cookbook_category = "cookpot"
+    if modlist.legion and _G.CONFIGS_LEGION.BETTERCOOKBOOK then
+    	v.cook_need = nil
+    	v.cook_cant = nil
+    	v.recipe_count = 0
+		local cookbookui_legion = require "modcompats/1392778117/cookbookui_legion"
+		v.custom_cookbook_details_fn = function(data, self, top, left)
+			local root = cookbookui_legion(data, self, top, left)
+			return root
+		end
+    end
 	v.overridebuild = "water_cook_pot"
+	v.minisign_atlas = "minisign_dehy_items_swap"
 end
 
 for k, v in pairs(water_foods) do

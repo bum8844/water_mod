@@ -1,39 +1,42 @@
 local NEED_TAGS = { "sprinkler_water" }
 local range = TUNING.FIND_WATER_RANGE
 
-local well_kit_assets = {
-    Asset("ANIM", "anim/well.zip"),
+local assets = {
+    well_kit = {
+        Asset("ANIM", "anim/well.zip"),
+    },
+    well_sprinkler_kit = {
+        Asset("ANIM", "anim/well_sprinkler.zip"),
+        Asset("ANIM", "anim/well_sprinkler_placement.zip"),
+        Asset("ANIM", "anim/winona_battery_placement.zip"),
+    },
+    well_waterpump_kit = {
+        Asset("ANIM", "anim/well_waterpump.zip"),
+        Asset("ANIM", "anim/well_waterpump_meter.zip"),
+    },
+    well_burying_kit = {
+        Asset("ANIM", "anim/well_burying_kit.zip"),
+    },
 }
 
-local well_sprinkler_kit_assets = {
-    Asset("ANIM", "anim/well_sprinkler.zip"),
-    Asset("ANIM", "anim/well_sprinkler_placement.zip"),
+local prefabs = {
+    well_kit = {
+        "well",
+    },
+    well_sprinkler_kit = {
+        "well_sprinkler",
+    },
+    well_waterpump_kit = {
+        "well_waterpump",
+    },
+    well_burying_kit = {
+        "hole",
+    },
 }
 
-local well_waterpump_kit_assets = {
-    Asset("ANIM", "anim/well_waterpump.zip"),
-    Asset("ANIM", "anim/well_waterpump_meter.zip"),
-}
-
-local well_burying_kit_assets = {
-     Asset("ANIM", "anim/well_burying_kit.zip")
-}
-
-local well_burying_kit_prefabs = {
-    "hole",
-}
-
-local well_waterpump_kit_prefabs = {
-    "well_waterpump",
-}
-
-local well_sprinkler_kit_prefabs = {
-    "well_sprinkler",
-}
-
-local well_kit_prefabs = {
-    "well",
-}
+local function IsValidSprinklerTile(tile)
+    return not TileGroupManager:IsOceanTile(tile) and (tile ~= WORLD_TILES.INVALID) and (tile ~= WORLD_TILES.IMPASSABLE)
+end
 
 local function GetValidWaterPointNearby(inst, pt)
     local best_point = nil
@@ -47,6 +50,27 @@ local function GetValidWaterPointNearby(inst, pt)
             if cur_sq_dist < min_sq_dist then
                 min_sq_dist = cur_sq_dist
                 best_point = cur_point
+            end
+        end
+    end
+
+    if not best_point then
+        local range = 20
+        local cx, cy = TheWorld.Map:GetTileCoordsAtPoint(pt.x, 0, pt.z)
+        local center_tile = TheWorld.Map:GetTile(cx, cy)
+        for x = pt.x - range, pt.x + range, 1 do
+            for z = pt.z - range, pt.z + range, 1 do
+                local tile = TheWorld.Map:GetTileAtPoint(x, 0, z)
+
+                if IsValidSprinklerTile(center_tile) and tile == WORLD_TILES.LILYPOND then
+                    local cur_point = Vector3(x, 0, z)
+                    local cur_sq_dist = cur_point:DistSq(pt)
+
+                    if cur_sq_dist < min_sq_dist then
+                        min_sq_dist = cur_sq_dist
+                        best_point = cur_point
+                    end
+                end
             end
         end
     end
@@ -69,6 +93,9 @@ local function MakeUpGrade_Kit(name, animname, playanim, masterfn, assets, prefa
         inst.entity:AddNetwork()
 
         MakeInventoryPhysics(inst)
+
+        inst.minisign_atlas = "minisign_dehy_items_swap"
+        inst.minisign_prefab_name = true
 
     	inst.AnimState:SetBuild(animname)
         inst.AnimState:SetBank("item")
@@ -125,43 +152,65 @@ local function ondeploy(inst, pt, deployer)
     end
 end
 
+local function waterpump_OnSave(inst, data)
+    if inst._steampressure then
+        data.steampressure = inst._steampressure
+    end
+end
+local function waterpump_OnLoad(inst, data)
+    if data and data.steampressure then
+        inst._steampressure = data.steampressure
+    end
+end
+
+local function well_waterpump_kit_fn(inst)
+    inst.OnSave = waterpump_OnSave
+    inst.OnLoad = waterpump_OnLoad
+end
+
 local function well_sprinkler_kit_fn(inst)
     inst:AddComponent("deployable")
+    inst.components.deployable.restrictedtag = "handyperson"
     inst.components.deployable:SetDeployMode(DEPLOYMODE.CUSTOM)
     inst.components.deployable.ondeploy = ondeploy
 end
 
-local function placer_postinit_fn(inst)
-    --Show the flingo placer on top of the flingo range ground placer
+local PLACER_SCALE = 0.6
 
-    local placer2 = CreateEntity()
+local function CreatePlacerSprinkler()
+    local inst = CreateEntity()
 
     --[[Non-networked entity]]
-    placer2.entity:SetCanSleep(false)
-    placer2.persists = false
+    inst.entity:SetCanSleep(false)
+    inst.persists = false
 
-    placer2.entity:AddTransform()
-    placer2.entity:AddAnimState()
+    inst.entity:AddTransform()
+    inst.entity:AddAnimState()
 
-    placer2:AddTag("CLASSIFIED")
-    placer2:AddTag("NOCLICK")
-    placer2:AddTag("placer")
+    inst:AddTag("CLASSIFIED")
+    inst:AddTag("NOCLICK")
+    inst:AddTag("placer")
 
     local s = 1 / TUNING.SPRINKLER_PLACER_SCALE
-    placer2.Transform:SetScale(s, s, s)
+    inst.Transform:SetScale(s, s, s)
 
-    placer2.AnimState:SetBank("well_sprinkler")
-    placer2.AnimState:SetBuild("well_sprinkler")
-    placer2.AnimState:PlayAnimation("idle_off")
-    placer2.AnimState:SetLightOverride(1)
+    inst.AnimState:SetBank("well_sprinkler")
+    inst.AnimState:SetBuild("well_sprinkler")
+    inst.AnimState:PlayAnimation("idle_off")
+    inst.AnimState:SetLightOverride(1)
 
+    return inst
+end
+
+local function placer_postinit_fn(inst)
+    --Show the flingo placer on top of the flingo range ground placer
+    local placer2 = CreatePlacerSprinkler()
     placer2.entity:SetParent(inst.entity)
-
     inst.components.placer:LinkEntity(placer2)
 end
  
-return MakeUpGrade_Kit("well_kit", "well", "idle_well_kit", nil, well_kit_assets, well_kit_prefabs),
-MakeUpGrade_Kit("well_burying_kit", "well_burying_kit", "idle_burying_kit", nil, well_burying_kit_assets, well_burying_kit_prefabs,{"burying"}),
-MakeUpGrade_Kit("well_waterpump_kit", "well_waterpump", "idle_waterpump_kit", nil, well_waterpump_kit_assets,well_waterpump_kit_prefabs),
-MakeUpGrade_Kit("well_sprinkler_kit", "well_sprinkler", "idle_sprinkler_kit", well_sprinkler_kit_fn, well_sprinkler_kit_assets, well_sprinkler_kit_prefabs,{"well_sprinkler_kit","tile_deploy"}),
+return MakeUpGrade_Kit("well_kit", "well", "idle_well_kit", nil, assets.well_kit, prefabs.well_kit),
+MakeUpGrade_Kit("well_burying_kit", "well_burying_kit", "idle_burying_kit", nil, assets.well_burying_kit, prefabs.well_burying_kit,{"burying"}),
+MakeUpGrade_Kit("well_waterpump_kit", "well_waterpump", "idle_waterpump_kit", well_waterpump_kit_fn, assets.well_waterpump_kit,prefabs.well_waterpump_kit,{"engineering","portableitem"}),
+MakeUpGrade_Kit("well_sprinkler_kit", "well_sprinkler", "idle_sprinkler_kit", well_sprinkler_kit_fn, assets.well_sprinkler_kit,prefabs.well_sprinkler_kit,{"well_sprinkler_kit","tile_deploy","portableitem"}),
 MakePlacer("well_sprinkler_kit_placer", "well_sprinkler_placement", "well_sprinkler_placement", "idle", true, nil, nil, TUNING.SPRINKLER_PLACER_SCALE, nil, nil, placer_postinit_fn)

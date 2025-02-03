@@ -1,16 +1,4 @@
-local mod_list = {
-	TE = false,
-	IA = false,
-}
-
-for k,mod_id in ipairs(KnownModIndex:GetModsToLoad()) do 
-	if mod_id == "workshop-1505270912" then
-		mod_list.TE = true
-	end
-	if mod_id == "workshop-1467214795" then
-		mod_list.IA = true
-	end 
-end
+local modlist = require("utils/water_modlist")
 
 local function CheckMods(table1, table2)
     for i, v in pairs(table2) do
@@ -68,12 +56,23 @@ local function GetTeaTreeBiome()
         "JungleEvilFlowers",
     }
 
-    if mod_list.TE then
+    local tea_tree_biome_ac = {
+        "BG_cultivated_base",
+        "cultivated_base_1",
+        "cultivated_base_2",
+        "piko_land",
+    }
+
+    if modlist.te then
     	tea_tree_biome = CheckMods(tea_tree_biome, tea_tree_biome_te)
     end
 
-    if mod_list.IA then
+    if modlist.ia then
     	tea_tree_biome = CheckMods(tea_tree_biome, tea_tree_biome_ia)
+    end
+
+    if modlist.ac then
+        tea_tree_biome = CheckMods(tea_tree_biome, tea_tree_biome_ac)
     end
 
 	return tea_tree_biome
@@ -111,13 +110,22 @@ local function GetCaffeinBerryBiome()
         "MeadowRocky",
     }
 
-    if mod_list.TE then
+    local caffeinberry_biome_ac = {
+        "deeprainforest_gas",
+        "deeprainforest_gas_flytrap_grove",
+    }
+
+    if modlist.te then
     	caffeinberry_biome = CheckMods(caffeinberry_biome, caffeinberry_biome_te)
     end
 
-    if mod_list.IA then
+    if modlist.ia then
     	caffeinberry_biome = CheckMods(caffeinberry_biome, caffeinberry_biome_ia)
     end
+
+    if modlist.ac then
+        caffeinberry_biome = CheckMods(caffeinberry_biome, caffeinberry_biome_ac)
+    end        
 
 	return caffeinberry_biome
 end
@@ -148,12 +156,23 @@ local function GetRuinCacaoTreeBiome()
         "deeprainforest_mandrakeman",
     }
 
-    if mod_list.TE then
+    local ruincacao_tree_biome_ac = {
+        "BG_deeprainforest_base",
+        "deeprainforest_fireflygrove",
+        "deeprainforest_flytrap_grove",
+        "deeprainforest_mandrakeman",
+    }
+
+    if modlist.te then
     	ruincacao_tree_biome = CheckMods(ruincacao_tree_biome, ruincacao_tree_biome_te)
     end
 
-    if mod_list.IA then
+    if modlist.ia then
     	ruincacao_tree_biome = CheckMods(ruincacao_tree_biome, ruincacao_tree_biome_ia)
+    end
+
+    if modlist.ac then
+        ruincacao_tree_biome = CheckMods(ruincacao_tree_biome, ruincacao_tree_biome_ac)
     end
 
 	return ruincacao_tree_biome

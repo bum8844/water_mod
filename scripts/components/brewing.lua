@@ -1,4 +1,5 @@
 local cooking = require("cooking")
+local boilling = require("boilling")
 
 local function ondone(self, done)
     if done then
@@ -96,7 +97,7 @@ local function dostew(inst, self)
         if self.onspoil ~= nil then
             self.onspoil(inst)
         end
-    elseif self.product ~= nil and not self.inst:HasTag("brewery") and not inst:AddTag("distillers") then
+    elseif self.product ~= nil and not self.inst:HasTag("brewery") and not inst:HasTag("distillers") then
         local recipe = cooking.GetRecipe(inst.prefab, self.product)
         local prep_perishtime = (recipe ~= nil and (recipe.cookpot_perishtime or recipe.perishtime)) or 0
         if prep_perishtime > 0 then
@@ -161,7 +162,7 @@ function Brewing:StartCooking(doer)
         local waterlevel = 0.2
 
         if self.usedistill then
-            self.distill_stack = self.inst.components.container.slots[1].components.stackable:StackSize()
+            self.distill_stack = self.inst.components.container.slots[1].components.stackable:StackSize() or 1
             waterlevel = self.distill_stack * 0.2
         else
             waterlevel = (self.inst.components.waterlevel and not self.inst.components.waterlevel:IsEmpty() and (self.inst.components.waterlevel:GetWater()*0.2)) or 0.2
@@ -259,7 +260,7 @@ function Brewing:OnLoad(data)
         if data.remainingtime ~= nil then
             self.targettime = GetTime() + math.max(0, data.remainingtime)
             if self.done then
-                if not self.inst:HasTag("brewery") then
+                if not self.inst:HasTag("brewery") and not self.inst:HasTag("distillers") then
                     self.task = self.inst:DoTaskInTime(data.remainingtime, dospoil, self)
                 end
                 if self.oncontinuedone ~= nil then
@@ -309,19 +310,19 @@ function Brewing:Harvest(harvester)
         if self.product ~= nil then
             local loot = SpawnPrefab(self.product)
             if loot ~= nil then
-				local recipe = cooking.GetRecipe(self.inst.prefab, self.product)
+				local recipe = boilling.GetRecipe(self.inst.prefab, self.product)
 
 				if harvester ~= nil and
 					self.chef_id == harvester.userid and
 					recipe ~= nil and
-					recipe.cookbook_category ~= nil and
-					cooking.cookbook_recipes[recipe.cookbook_category] ~= nil and
-					cooking.cookbook_recipes[recipe.cookbook_category][self.product] ~= nil then
+					recipe.boilbook_category ~= nil and
+					boilling.boilbook_recipes[recipe.boilbook_category] ~= nil and
+					boilling.boilbook_recipes[recipe.boilbook_category][self.product] ~= nil then
 					harvester:PushEvent("learncookbookrecipe", {product = self.product, ingredients = self.ingredient_prefabs})
-				end
+                end
 
                 local waterlevel = self.inst.components.waterlevel and self.inst.components.waterlevel:GetWater() or 1
-                local stacksize = self.distill_stack > 0 and math.floor(self.distill_stack/self.reduce) or math.ceil(waterlevel/self.reduce)
+                local stacksize = self.usedistill and math.floor(self.distill_stack*self.reduce) or math.ceil(waterlevel/self.reduce)
                 if stacksize > 1 then
                     loot.components.stackable:SetStackSize(stacksize)
                 end

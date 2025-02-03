@@ -11,11 +11,11 @@ local function SetTemperature(inst)
     inst.components.temperature.current = curtemp
 
     if isfrozen then
-        inst.components.temperature.maxtemp = TUNING.WATER_INITTEMP
+        inst.components.temperature.maxtemp = TUNING.WATER_FROZEN_INITTEMP
         inst.components.temperature.mintemp = TUNING.MIN_ENTITY_TEMP
     else
-        inst.components.temperature.mintemp = TUNING.MAX_ENTITY_TEMP
-        inst.components.temperature.mintemp = TUNING.WATER_FROZEN_INITTEMP
+        inst.components.temperature.maxtemp = TUNING.WATER_MAXTEMP
+        inst.components.temperature.mintemp = TUNING.WATER_MINTEMP
     end
     inst.components.temperature.inherentinsulation = TUNING.INSULATION_MED_LARGE
     inst.components.temperature.inherentsummerinsulation = TUNING.INSULATION_MED_LARGE
@@ -24,7 +24,7 @@ end
 local function GiveWater(inst, watertype, doer)
     local container = doer ~= nil and (doer.components.inventory or doer.components.container) or nil
     local water = SpawnPrefab(watertype)
-    local old_val = inst.components.finiteuses:GetUses()
+    local old_val = inst.components.finiteuses:GetUses() + 1
     local current_fin = old_val
     local peruse = TUNING.BUCKET_LEVEL_PER_USE
     local sound = inst.components.wateringtool:IsFrozen() and "dontstarve_DLC001/common/iceboulder_smash" or "dontstarve/creatures/pengull/splash"
@@ -50,13 +50,9 @@ local function GiveWater(inst, watertype, doer)
 
     doer.SoundEmitter:PlaySound(sound)
 
-    if old_val > peruse then
-        inst.components.finiteuses:Use(peruse)
-        inst.components.wateringtool:SetCanCollectRainWater(false)
-        SetTemperature(inst)
-    else
-        inst:Remove()
-    end
+    inst.components.finiteuses:Use(peruse)
+    inst.components.wateringtool:SetCanCollectRainWater(false)
+    SetTemperature(inst)
 end
 
 local function OnPickup(inst, doer)
@@ -181,6 +177,13 @@ local function MakeBucketItem(bucketname, multiplier, sound, nowood)
     local mult = multiplier ~= nil and multiplier or 1
     local steel = nowood or false
 
+    local function OnRemove(inst)
+        inst:DoTaskInTime(0,function()
+            inst:Remove()
+        end
+        )
+    end
+
     local function fn()
         local inst = CreateEntity()
 
@@ -190,6 +193,9 @@ local function MakeBucketItem(bucketname, multiplier, sound, nowood)
         inst.entity:AddNetwork()
 
         MakeInventoryPhysics(inst)	
+
+        inst.minisign_atlas = "minisign_dehy_items_swap"
+        inst.minisign_custom_name = "buckets_"..names.."empty"
 
         inst.AnimState:SetBuild("buckets")
         inst.AnimState:SetBank("buckets")
@@ -216,6 +222,9 @@ local function MakeBucketItem(bucketname, multiplier, sound, nowood)
             return inst
         end
 
+        inst:AddComponent("inventoryitem")
+        inst.components.inventoryitem:SetOnPickupFn(CanGetWater)
+
     	inst:AddComponent("watertaker")
     	inst.components.watertaker.capacity = TUNING.BUCKET_LEVEL_PER_USE
     	inst.components.watertaker.onfillfn = OnTakeWater
@@ -224,6 +233,7 @@ local function MakeBucketItem(bucketname, multiplier, sound, nowood)
         inst.components.waterproofer:SetEffectiveness(TUNING.WATERPROOFNESS_SMALL*2)
 
         inst:AddComponent("finiteuses")
+        inst.components.finiteuses:SetOnFinished(OnRemove)
         inst.components.finiteuses:SetMaxUses(TUNING.BUCKET_MAX_LEVEL*mult)
         inst.components.finiteuses:SetUses(TUNING.BUCKET_MAX_LEVEL*mult)
 
@@ -247,9 +257,6 @@ local function MakeBucketItem(bucketname, multiplier, sound, nowood)
             MakeSmallPropagator(inst)
     	end
 
-        inst:AddComponent("inventoryitem")
-        inst.components.inventoryitem:SetOnPickupFn(CanGetWater)
-
         MakeHauntableLaunchAndSmash(inst)
 
         inst:ListenForEvent("settooltemperature",SetTemperature)
@@ -264,5 +271,6 @@ local function MakeBucketItem(bucketname, multiplier, sound, nowood)
 end
 
 return MakeBucketItem("bucket"),
-    MakeBucketItem("woodie",0.5),
-    MakeBucketItem("steel",8,"metal",true)
+    MakeBucketItem("driftwood",TUNING.DRIFWOOD_BUCKET_MULT),
+    MakeBucketItem("woodie"),
+    MakeBucketItem("steel",TUNING.STEEL_BUCKET_MULT,"metal",true)

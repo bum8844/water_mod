@@ -18,6 +18,8 @@ local function MakePreparedFood(data)
         Asset("INV_IMAGE", data.basename),
     }
 
+    local spicename = data.spice ~= nil and string.lower(data.spice) or nil
+
     if data.overridebuild then
         table.insert(foodassets, Asset("ANIM", "anim/"..data.overridebuild..".zip"))
     end
@@ -47,9 +49,11 @@ local function MakePreparedFood(data)
 
         local food_symbol_build = nil
 
+        inst.minisign_atlas = "minisign_dehy_items_swap"
+
         inst.AnimState:SetBuild("plate_food")
         inst.AnimState:SetBank("plate_food")
-        inst.AnimState:OverrideSymbol("swap_garnish", "water_spice", "spice_caffeinpepper")
+        inst.AnimState:OverrideSymbol("swap_garnish", "water_spice", spicename)
 
         inst:AddTag("spicedfood")
 
@@ -65,27 +69,45 @@ local function MakePreparedFood(data)
             inst.inv_image_bg = { image = (data.basename or data.name)..".tex",
             atlas = "images/inventoryimages/"..(data.basename or data.name)..".xml"}
         elseif KnownModIndex:IsModEnabled("workshop-1505270912") or KnownModIndex:IsModForceEnabled("workshop-1505270912") then
-            if inst:HasTag("volcanoinventory") then
+            if data.tetype == "volcano" then
                 inst.inv_image_bg = { image = (data.basename or data.name)..".tex",
                 atlas = "images/inventoryimages/volcanoinventory.xml"}
-            elseif inst:HasTag("hamletinventory") then
+            elseif data.tetype == "hamlet" then
                 inst.inv_image_bg = { image = (data.basename or data.name)..".tex",
                 atlas = "images/inventoryimages/hamletinventory.xml"}
-            else
+            --[[elseif data.tetype == "gorge" then
                 inst.inv_image_bg = { image = (data.basename or data.name)..".tex",
                 atlas = "images/inventoryimages/quagmirefoods.xml"}
-                data.overridebuild = "preparedfood_gorge"
-                table.insert(foodassets, Asset("ANIM", "anim/"..data.overridebuild..".zip"))
+                table.insert(foodassets, Asset("ANIM", "anim/preparedfood_gorge.zip"))]]
+            elseif data.tetype == "normal" then
+                inst.inv_image_bg = { image = (data.basename or data.name)..".tex"}
+                inst.inv_image_bg.atlas = GetInventoryItemAtlas(inst.inv_image_bg.image)
+                table.insert(foodassets, Asset("ANIM", "anim/cook_pot_food.zip"))
+            elseif data.tetype == "citd" then
+                inst.inv_image_bg = { image = (data.basename or data.name)..".tex",
+                atlas = "images/inventoryimages/food/"..(data.basename or data.name)..".xml"}
+            else
+                inst.inv_image_bg = { image = (data.basename or data.name)..".tex",
+                atlas = "images/inventoryimages/"..(data.basename or data.name)..".xml"}
+                table.insert(foodassets, Asset("ANIM", "anim/"..data.basename or data.name..".zip"))
             end
+        elseif KnownModIndex:IsModEnabled("workshop-2334209327") or KnownModIndex:IsModForceEnabled("workshop-2334209327") then
+            inst.inv_image_bg = { image = (data.basename or data.name)..".tex",
+            atlas = "images/inventoryimages/hof_inventoryimages.xml"}
+            table.insert(foodassets, Asset("ANIM", "anim/"..data.basename or data.name..".zip"))
+        else
+            inst.inv_image_bg = { image = (data.basename or data.name)..".tex",
+            atlas = "images/inventoryimages/"..(data.basename or data.name)..".xml"}
+            table.insert(foodassets, Asset("ANIM", "anim/"..data.basename or data.name..".zip"))
+        end
+        if data.minisign_atlas then
+            inst.inv_image_bg.minisign_atlas = data.minisign_atlas
         end
 
         food_symbol_build = data.overridebuild or "cook_pot_food"
 
         inst.AnimState:PlayAnimation("idle")
-        inst.AnimState:OverrideSymbol("swap_food", data.overridebuild or data.basename or data.name, data.basename or data.name)
-        --[[if data.overridebuild == "preparedfood_gorge" then
-            inst.AnimState:SetScale(2,2,2)
-        end]]
+        inst.AnimState:OverrideSymbol("swap_food", data.overridebuild or data.basename or data.name, data.overimg or data.basename or data.name)
 
         inst:AddTag("preparedfood")
         if data.tags ~= nil then
@@ -137,9 +159,9 @@ local function MakePreparedFood(data)
         inst.wet_prefix = data.wet_prefix
 
         inst:AddComponent("inventoryitem")
-        inst.replica.inventoryitem:SetImage("spice_caffeinpepper_over")
+        inst.replica.inventoryitem:SetImage(spicename.."_over")
         inst.components.inventoryitem.atlasname = "images/tea_inventoryitem.xml"
-        inst.components.inventoryitem.imagename = "spice_caffeinpepper_over"
+        inst.components.inventoryitem.imagename = spicename.."_over"
         if data.float == nil then
             inst.components.inventoryitem:SetSinks(true)
         end

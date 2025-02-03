@@ -42,8 +42,8 @@ local function ChangeToItem(inst)
     local item = SpawnPrefab("campdesalinator_item")
     if inst._fire then
         inst._fire.components.burnable:OverrideBurnFXBuild("campfire_fire")
-        if inst._fire.components.trader ~= nil then
-            inst._fire.components.trader:Enable()
+        if inst._fire.components.cookwareinstaller ~= nil then --for compatibility with Heap of Foods
+            inst._fire.components.cookwareinstaller.enabled = true
         end
         inst._fire.components.upgradeable.upgradetype = UPGRADETYPES.CAMPFIRE
         inst._fire.components.upgradeable.numupgrades = 0
@@ -208,6 +208,14 @@ local function fn()
     return inst
 end
 
+local function onhammered(inst, worker)
+    inst.components.lootdropper:DropLoot()
+    local fx = SpawnPrefab("collapse_small")
+    fx.Transform:SetPosition(inst.Transform:GetWorldPosition())
+    fx:SetMaterial("metal")
+    inst:Remove()
+end
+
 local function fn_item()
     local inst = CreateEntity()
 
@@ -220,6 +228,9 @@ local function fn_item()
 
     MakeInventoryPhysics(inst)  
 
+    inst.minisign_atlas = "minisign_dehy_items_swap"
+    inst.minisign_prefab_name = true
+    
     inst.AnimState:SetBuild("campdesalinator_item")
     inst.AnimState:SetBank("campdesalinator_item")
     inst.AnimState:PlayAnimation("idle")
@@ -231,8 +242,12 @@ local function fn_item()
     if not TheWorld.ismastersim then
         return inst
     end
-
-    inst:AddComponent("tradable")
+    
+    inst:AddComponent("lootdropper")
+    inst:AddComponent("workable")
+    inst.components.workable:SetWorkAction(ACTIONS.HAMMER)
+    inst.components.workable:SetWorkLeft(2)
+    inst.components.workable:SetOnFinishCallback(onhammered)
 
     inst:AddComponent("inspectable")
     

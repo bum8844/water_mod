@@ -9,17 +9,27 @@ local function oncurrent(self, current)
     self.inst.replica.thirst:SetCurrent(current)
 end
 
+local function ontemp_per_dry(self, value)
+    self.inst.replica.thirst:SetTempPerDry(value)
+end
+
 local function OnTaskTick(inst, self, period)
     self:DoDec(period)
 end
 
 local function tempcheck(self, inst)
     local tempcheck = self.inst.components.temperature:GetCurrent()
+    local iscave = TheWorld:HasTag("cave")
     local issummer = TheWorld.state.issummer
     local iswinter = TheWorld.state.iswinter
-    return issummer and (( tempcheck > TUNING.OVERHEAT_TEMP - 15 and 4 ) or ( tempcheck > TUNING.OVERHEAT_TEMP - 30 and 2 )) or
+
+    local c = not iscave and (issummer and (( tempcheck > TUNING.OVERHEAT_TEMP - 15 and 4 ) or ( tempcheck > TUNING.OVERHEAT_TEMP - 30 and 2 ))) or
            iswinter and (( tempcheck < 5 and 0.25 ) or ( tempcheck < 15 and 0.5 )) or 
            (tempcheck > TUNING.OVERHEAT_TEMP - 15 and 2) or (tempcheck < 5 and 0.5) or 1
+
+    self.temp_per_dry = c
+    
+    return c
 end
 
 local Thirst = Class(function(self, inst)
@@ -30,6 +40,7 @@ local Thirst = Class(function(self, inst)
     self.thirstrate = 1
     self.hurtrate = 1
     self.overridestarvefn = nil
+    self.temp_per_dry = 1
 
     self.burning = true
     --100% burn rate. Currently used only by belt of thirst, will have to change unequip if use in something else
@@ -44,6 +55,7 @@ nil,
 {
     max = onmax,
     current = oncurrent,
+    temp_per_dry = ontemp_per_dry,
 })
 
 function Thirst:OnSave()
@@ -114,6 +126,10 @@ function Thirst:DoDelta(delta, overtime, ignore_invincible)
         self.inst:PushEvent("stopstarving")
         ProfileStatsSet("stopped_starving", true)
     end
+end
+
+function Thirst:GetTempPerDry()
+    return self.temp_per_dry
 end
 
 function Thirst:GetPercent()

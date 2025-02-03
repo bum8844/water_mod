@@ -4,6 +4,8 @@ local STRUCTURE_TAGS = {"structure"}
 
 local biome_data = require("utils/water_retorfit_biome")
 
+local re_retrofit = GetModConfigData("re_retrofit")
+
 local ruincacao_tree_biome = biome_data.GetRuinCacaoTreeBiome()
 
 local function RetrofitNewContentPrefab(inst, prefab, min_space, dist_from_structures, canplacefn, candidtate_nodes, on_add_prefab)
@@ -103,13 +105,17 @@ AddComponentPostInit("retrofitcavemap_anr",function(self)
 	local oldonload = self.OnLoad
 	function self:OnPostInit(...)
 
-		local ruincacao_tree = self.retrofit_tea_tree and "true" or "false"
+		local ruincacao_tree = (self.retrofit_tea_tree or re_retrofit == 1 or re_retrofit == 4) and true or false
 
-		print("Retrofit Forest:OnPostInit RuinCacao Trees : "..ruincacao_tree)
+		print("Retrofit Forest:OnPostInit RuinCacao Trees : "..tostring(ruincacao_tree))
 
-		if self.retrofit_ruincacao_tree then
+		if ruincacao_tree then
 			print ("Retrofitting for RuinCacao Trees: Adding RuinCacao Trees.")
 			Ruincacao_Tree_Retrofitting()
+		end
+
+		if re_retrofit ~= 0 then
+			GLOBAL.SetRetrofitSetting("re_retrofit", 0)
 		end
 		
 		return oldonpostinit_cave(self, ...)

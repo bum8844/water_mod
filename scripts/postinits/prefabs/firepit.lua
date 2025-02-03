@@ -9,8 +9,8 @@ local function install_kettle(inst, setkittle, no_built_callback)
 	inst._kettle._fire = inst
 
 	inst.components.upgradeable.upgradetype = nil
-	if inst.components.trader ~= nil then --for compatibility with Heap of Foods
-		inst.components.trader:Disable()
+	if inst.components.cookwareinstaller ~= nil and not inst:HasTag("firepit_with_cookware") then --for compatibility with Heap of Foods
+		inst.components.cookwareinstaller.enabled = false
 	end
 
 	if not no_built_callback then
@@ -39,20 +39,21 @@ end
 
 local function OnUpgrade(inst, performer, upgraded_from_item)
 	local numupgrades = inst.components.upgradeable.numupgrades
-	local modEnabled = _G.KnownModIndex:IsModEnabled("workshop-2334209327") or _G.KnownModIndex:IsModForceEnabled("workshop-2334209327")
+	--local modEnabled = _G.KnownModIndex:IsModEnabled("workshop-2334209327") or _G.KnownModIndex:IsModForceEnabled("workshop-2334209327")
 	local traderEnabled = inst.components.trader ~= nil and inst.components.trader.enabled
 	local item = upgraded_from_item.prefab
 	local setkittle = upgraded_from_item.kettletype
 
 	if item == "campkettle_item" or "campdesalinator_item" then
-		if modEnabled then
-			if traderEnabled and numupgrades == 1 then
+		-- if modEnabled then
+		if inst:HasTag("firepit_with_cookware") then
+			--[[if traderEnabled and numupgrades == 1 then
 				install_kettle(inst, setkittle)
 			elseif inst.prefab == "campfire" and numupgrades == 1 then
 				install_kettle(inst, setkittle)
-			else
+			else]]
 				FailUpgrade(inst, performer, upgraded_from_item)
-			end
+			--end
 		elseif numupgrades == 1 then
 			install_kettle(inst, setkittle)
 		else

@@ -1,4 +1,6 @@
 AddComponentPostInit("edible", function(self)
+
+    self.getthirstfn = nil
     self.stale_thirst = TUNING.STALE_FOOD_THIRST
     self.spoiled_thirst = TUNING.SPOILED_FOOD_THIRST
     self.isdrink = false
@@ -15,7 +17,9 @@ AddComponentPostInit("edible", function(self)
 	end
 
     function self:GetThirst(eater)
-        local thirst = self.thirstvalue or self:GetThirstFromHungerValue()
+        local thirst = self.getthirstfn ~= nil and self.getthirstfn(self.inst, eater) or 
+                       self.thirstvalue ~= nil and self.thirstvalue or
+                       self:GetThirstFromHungerValue()
         local multiplier = 1
         local ignore_spoilage = not self.degrades_with_spoilage or thirst < 0 or (eater ~= nil and eater.components.eater ~= nil and eater.components.eater.ignoresspoilage)
 

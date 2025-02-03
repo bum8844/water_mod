@@ -20,6 +20,89 @@ local params = containers.params
 function params.barrel.itemtestfn(container, item, slot)
     return item:HasTag("clean")
 end]]
+
+params.thermos_bottle =
+{
+    widget =
+    {
+        slotpos = {
+            Vector3(-2, 18, 0),
+        },
+        slotbg =
+        {
+            { image = "cook_slot_drink.tex", atlas = "images/tea_ui.xml" },
+        },
+        animbank = "ui_thermos_bottle_1x1",
+        animbuild = "ui_thermos_bottle_1x1",
+        pos = Vector3(0, 160, 0),
+    },
+    acceptsstacks = true,
+    type = "chest",
+}
+
+function params.thermos_bottle.itemtestfn(container, item, slot)
+    return item:HasTag("drink_icebox_valid")
+end
+
+params.bottle_pouch = 
+{
+    widget = 
+    {
+        slotpos =
+        {
+            Vector3(-37.5, 32 + 20, 0),
+            Vector3(37.5, 32 + 20, 0),
+            Vector3(-37.5, -(32 - 10), 0),
+            Vector3(37.5, -(32 - 10), 0),
+        },
+        slotbg =
+        {
+            { image = "cook_slot_drink.tex", atlas = "images/tea_ui.xml" },
+            { image = "cook_slot_drink.tex", atlas = "images/tea_ui.xml" },
+            { image = "cook_slot_drink.tex", atlas = "images/tea_ui.xml" },
+            { image = "cook_slot_drink.tex", atlas = "images/tea_ui.xml" },
+        },
+        animbank = "ui_bottle_pouch_2x2",
+        animbuild = "ui_bottle_pouch_2x2",
+        pos = Vector3(200, 0, 0),
+        side_align_tip = 120,
+    },
+    acceptsstacks = true,
+    type = "chest",
+}
+
+function params.bottle_pouch.itemtestfn(container, item, slot)
+    return item:HasTag("prepareddrink") or item:HasTag("drink_icebox_valid")
+end
+
+params.wine_cellar =
+{
+    widget =
+    {
+        slotpos = {},
+        slotbg  = {},
+        animbank = "ui_wine_cellar_5x4",
+        animbuild = "ui_wine_cellar_5x4",
+        pos = Vector3(0, 220, 0),
+        side_align_tip = 160,
+    },
+    acceptsstacks = true,
+    type = "chest",
+}
+
+local wine_cellar_bg = { image = "cook_slot_alcohol.tex", atlas = "images/tea_ui.xml" }
+
+for y = 2.5, -0.5, -1 do
+    for x = -1, 3 do
+        table.insert(params.wine_cellar.widget.slotpos, Vector3(75 * x - 75 * 2 + 75, 75 * y - 75 * 2 + 75, 0))
+
+        table.insert(params.wine_cellar.widget.slotbg, wine_cellar_bg)
+    end
+end
+
+function params.wine_cellar.itemtestfn(container, item, slot)
+    return item:HasTag("alcohol") or item:HasTag("spirits")
+end
  
 params.kettle =
 {
@@ -82,7 +165,7 @@ params.distillers =
         },
         slotbg =
         {
-            { image = "cook_slot_drink.tex", atlas = "images/tea_ui.xml" },
+            { image = "cook_slot_alcohol.tex", atlas = "images/tea_ui.xml" },
             { image = "cook_slot_additive.tex", atlas = "images/tea_ui.xml" },
         },
         animbank = "ui_cookpot_1x2",
@@ -153,31 +236,9 @@ function params.distillers.widget.buttoninfo.fn(inst, doer)
         SendRPCToServer(RPC.DoWidgetButtonAction, ACTIONS.BREWING.code, inst, ACTIONS.BREWING.mod_name)
     end
 end
- 
+
 function params.distillers.widget.buttoninfo.validfn(inst)
-    return inst.replica.container ~= nil and inst.replica.container:HasItemWithTag("alcohol",4)
-end
-
---from widgets/containerwidget.lua
---Refresh button in cooker widget when filling or taking out water.
-local function RefreshButton(inst, self)
-    if self.isopen then
-        local widget = self.container.replica.container:GetWidget()
-        if widget ~= nil and widget.buttoninfo ~= nil and widget.buttoninfo.validfn ~= nil then
-            if widget.buttoninfo.validfn(self.container) then
-                self.button:Enable()
-            else
-                self.button:Disable()
-            end
-        end
-    end
-end
-
-local function RefreshOnDirty(self, data)
-    if self.button ~= nil and self.container ~= nil then
-        RefreshButton(self.inst, self)
-        self.inst:DoTaskInTime(0, RefreshButton, self)
-    end
+    return inst.replica.distill ~= nil and inst.replica.distill:IsFull()
 end
 
 local portablespicer_itemtestfn = params.portablespicer.itemtestfn
@@ -187,13 +248,3 @@ local function RejectDrinks(container, item, slot)
 end
 
 containers.params.portablespicer.itemtestfn = RejectDrinks --음료의 양념을 허용하지 않으려면 이 부분을 활성화하세요
-
-AddClassPostConstruct("widgets/containerwidget", function(self)
-    self.refreshbutton = RefreshOnDirty
-    self.OnWaterlevelDirty = function(inst, data) self:refreshbutton(data) end
-    self.OldOpen = self.Open
-    function self:Open(container, doer)
-        self:OldOpen(container, doer)
-        self.inst:ListenForEvent("waterleveldirty", self.OnWaterlevelDirty, container)
-    end
-end)

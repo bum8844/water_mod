@@ -1,6 +1,7 @@
 local ThirstBadge = require "widgets/thirstbadge"
 local Widget = require "widgets/widget"
 local UIAnim = require "widgets/uianim"
+local modlist = require("utils/water_modlist").active_mod_compatibility
 
 local function OnSetPlayerMode(inst, self)
 	self.watertask = nil
@@ -22,34 +23,53 @@ local function OnSetGhostMode(inst, self)
 end
 
 local function thirstbadge_statusdisplays(self)
+
 	self._SetGhostMode = self.SetGhostMode
 	self._ShowStatusNumbers = self.ShowStatusNumbers
 	self._HideStatusNumbers = self.HideStatusNumbers
 
 	self.waterstomach = self:AddChild(self.owner.CreateThirstBadge ~= nil and self.owner.CreateThirstBadge(self.owner) or ThirstBadge(self.owner))
 
-	local AlwaysOnStatus = false
+	local is_splitscreen = GLOBAL.IsSplitScreen()
+    if is_splitscreen and GLOBAL.IsGameInstance(Instances.Player1) then
+    	self.column1 = -120
+        self.column2 = 80
+        self.column3 = 40
+        self.column4 = 20
+        self.column5 = 0
+        self.column6 = -40
+        self.column7 = 120
+    else
+    	self.column1 = 120
+        self.column2 = -80
+        self.column3 = -40
+		self.column4 = -20
+        self.column5 = 0
+        self.column6 = 40
+        self.column7 = -120
+    end
 
-	for k,mod_id in ipairs(GLOBAL.KnownModIndex:GetModsToLoad()) do 
-		if mod_id == "workshop-376333686" or mod_id == "workshop-2438350724" then 
-			AlwaysOnStatus = true
+	local defaulty = 20
+    local brainy = -40
+    local stomachx = 0
+    local waterstomachx = 0
+    local heartx = 0
+
+	if modlist.cs then
+		local infodata = require("utils/water_modlist").infodata.configuration_options
+		local SEASONOPTIONS = ""
+		for k, v in pairs(infodata) do
+			if v.name == "SEASONOPTIONS" then
+				SEASONOPTIONS = v.saved_server or v.saved_client or v.saved or v.default
+			end
 		end
-	end
+		local SHOWSEASONCLOCK = SEASONOPTIONS == "Clock"
 
-	local waterbadgex = -40
-	local waterbadgey = 20
-
-	local hungerbadgex = -120
-	local hungerbadgey = 20
-
-	if AlwaysOnStatus then
-
-		waterbadgex = -62
-		waterbadgey = 35
-
-		hungerbadgex = -124
-		hungerbadgey = 35
-
+		defaulty = 35
+    	brainy = SHOWSEASONCLOCK and defaulty or 10
+    	stomachx = 4
+    	waterstomachx = 22
+    	heartx = 22
 	else
 		local character = self.owner.prefab
 		if character == "wolfgang" then
@@ -57,8 +77,10 @@ local function thirstbadge_statusdisplays(self)
 		end
 	end
 	
-	self.waterstomach:SetPosition(waterbadgex, waterbadgey, 0)
-	self.stomach:SetPosition(hungerbadgex, hungerbadgey, 0)
+	self.brain:SetPosition(self.column5, brainy, 0)
+	self.waterstomach:SetPosition(self.column3-waterstomachx, defaulty, 0)
+	self.stomach:SetPosition(self.column7-stomachx, defaulty, 0)
+	self.heart:SetPosition(self.column6+heartx, defaulty)
 
 	self.onthirstdelta = nil
 	self.watertask = nil

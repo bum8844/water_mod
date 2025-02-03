@@ -10,16 +10,32 @@ local function SetDrinkableAction(inst)
 	inst:AddTag("drink")
 end
 
-local function checkcharging(eater)
-	return eater.components.upgrademoduleowner and eater.components.upgrademoduleowner:ChargeIsMaxed()
+local function check_mightiness(eater)
+	local skilltreeupdater = eater.components.skilltreeupdater
+	if not skilltreeupdater then
+		return false
+	end
+	local mightiness = eater.components.mightiness
+	if not mightiness then
+		return false
+	end
+	return skilltreeupdater:IsActivated("wolfgang_overbuff_1") and mightiness:GetCurrent() > mightiness:GetMax()
+end
+
+local function check_wathgrithr_combat_defense(eater)
+	local skilltreeupdater = eater.components.skilltreeupdater
+	if not skilltreeupdater then
+		return false
+	end
+	return skilltreeupdater:IsActivated("wathgrithr_combat_defense")
 end
 
 local function notspiritstags(eater)
-	return not eater:HasTag("mightiness_mighty") and not checkcharging(eater)
+	return not check_mightiness(eater) and not check_wathgrithr_combat_defense(eater) and not eater:HasTag("drunk_immunity")
 end
 
 local function notalcoholtags(eater)
-	return not eater:HasTag("valkyrie") and notspiritstags(eater)
+	return not eater:HasTag("valkyrie") and not eater:HasTag("mightiness_mighty") and notspiritstags(eater)
 end
 
 local function oneatenfn(inst, eater)
@@ -30,14 +46,14 @@ local function oneatenfn(inst, eater)
 				eater:AddDebuff("alcoholdebuff", "alcoholdebuff")
 				eater:AddDebuff("drunkarddebuff", "drunkarddebuff")
 			else
-				eater.components.talker:Say(GetString(eater,"ANNOUNCE_DRUNK_IMMUNITY"))
+				eater.components.talker:Say(GLOBAL.GetString(eater,"ANNOUNCE_DRUNK_IMMUNITY"))
 			end
 		else
 			if notalcoholtags(eater) then
 				if eater.components.dcapacity:IsCritical() then
-					eater.components.talker:Say(GetString(eater,"ANNOUNCE_DCAPACITY_CRITICAL"))
+					eater.components.talker:Say(GLOBAL.GetString(eater,"ANNOUNCE_DCAPACITY_CRITICAL"))
 				elseif eater.components.dcapacity:IsHalf() then
-					eater.components.talker:Say(GetString(eater,"ANNOUNCE_DCAPACITY_HALF"))
+					eater.components.talker:Say(GLOBAL.GetString(eater,"ANNOUNCE_DCAPACITY_HALF"))
 				end
 			end
 		end
@@ -89,6 +105,7 @@ end
 
 local function SetIngredientDrinkable(inst, value)
 	SetDrinkableAction(inst)
+	inst:AddTag("drink_icebox_valid")
 	inst:AddTag("nomeatfood")
 
     if not GLOBAL.TheWorld.ismastersim then
@@ -97,10 +114,17 @@ local function SetIngredientDrinkable(inst, value)
 
 	SetHydration(inst, value)
 	SetAnyoneCanDrink(inst)
+
+	if inst.components.stackable then
+		inst.components.stackable.maxsize = TUNING.STACK_SIZE_TINYITEM
+	end
 end
 
 local function SetDrinkable(inst, value)
+
 	SetDrinkableAction(inst)
+
+	inst:AddTag("drink_icebox_valid")
 
     if not GLOBAL.TheWorld.ismastersim then
         return inst
@@ -108,10 +132,17 @@ local function SetDrinkable(inst, value)
 
 	SetHydration(inst, value)
 	SetAnyoneCanDrink(inst)
+
+	if inst.components.stackable then
+		inst.components.stackable.maxsize = TUNING.STACK_SIZE_TINYITEM
+	end
 end
 
 local function SetAlcohlDrink(inst, value)
+	
 	SetDrinkableAction(inst)
+
+	inst:AddTag("drink_icebox_valid")
 	inst:AddTag("alcohol")
 
     if not GLOBAL.TheWorld.ismastersim then
@@ -120,6 +151,10 @@ local function SetAlcohlDrink(inst, value)
 
 	SetHydration(inst, value)
 	SetAnyoneCanDrink_Alcohl(inst)
+
+	if inst.components.stackable then
+		inst.components.stackable.maxsize = TUNING.STACK_SIZE_TINYITEM
+	end
 end
 
 for _, v in pairs(FOODTYPEGROUP.TYPEVEGGIE) do 

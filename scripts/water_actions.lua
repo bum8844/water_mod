@@ -3,14 +3,54 @@ require "bufferedaction"
 require "debugtools"
 require 'util'
 require 'vecutil'
+require "componentutil"
 require ("components/embarker")
 require ("actions")
+
+local function CheckOceanRange(doer, dest)
+    local doer_pos = doer:GetPosition()
+    local target_pos = _G.Vector3(dest:GetPoint())
+    local dir = target_pos - doer_pos
+
+    local test_pt = doer_pos + dir:GetNormalized() * (doer:GetPhysicsRadius(0) + 0.25)
+
+    if _G.TheWorld.Map:IsVisualGroundAtPoint(test_pt.x, 0, test_pt.z) or _G.TheWorld.Map:GetPlatformAtPoint(test_pt.x, test_pt.z) ~= nil then
+        if _G.FindVirtualOceanEntity(test_pt.x, 0, test_pt.z) ~= nil then
+            return true
+        end
+
+        return false
+    else
+        return true
+    end
+end
+
+local function IsOcean(groundpt)
+    local is_ice_hole = false
+
+    local is_ocean_tile = (_G.TheWorld.Map:IsOceanAtPoint(groundpt.x, 0, groundpt.z) or
+        _G.TheWorld.Map:IsOceanTileAtPoint(groundpt.x, 0, groundpt.z))
+
+    if _G.TheWorld.Map:IsVisualGroundAtPoint(groundpt.x, 0, groundpt.z) and _G.TheWorld.Map:GetPlatformAtPoint(groundpt.x, groundpt.z) ~= nil then
+        if _G.FindVirtualOceanEntity(groundpt.x, 0, groundpt.z) ~= nil then
+            is_ice_hole = true
+        end
+    end
+
+    local test = is_ice_hole or is_ocean_tile
+
+    return test
+end
 
 local function IsDirty(pos)
     local test = (_G.TheWorld.Map:GetTileAtPoint(pos.x-2.5, 0, pos.z) == _G.WORLD_TILES.MANGROVE_SHORE or
          _G.TheWorld.Map:GetTileAtPoint(pos.x+2.5, 0, pos.z) == _G.WORLD_TILES.MANGROVE_SHORE or
          _G.TheWorld.Map:GetTileAtPoint(pos.x, 0, pos.z-2.5) == _G.WORLD_TILES.MANGROVE_SHORE or
          _G.TheWorld.Map:GetTileAtPoint(pos.x, 0, pos.z+2.5) == _G.WORLD_TILES.MANGROVE_SHORE) or
+        (_G.TheWorld.Map:GetTileAtPoint(pos.x-2.5, 0, pos.z) == _G.WORLD_TILES.LILYPOND or
+         _G.TheWorld.Map:GetTileAtPoint(pos.x+2.5, 0, pos.z) == _G.WORLD_TILES.LILYPOND or
+         _G.TheWorld.Map:GetTileAtPoint(pos.x, 0, pos.z-2.5) == _G.WORLD_TILES.LILYPOND or
+         _G.TheWorld.Map:GetTileAtPoint(pos.x, 0, pos.z+2.5) == _G.WORLD_TILES.LILYPOND) or
         (_G.TheWorld.Map:GetTileAtPoint(pos.x-2.5, 0, pos.z) == _G.WORLD_TILES.MANGROVE or
          _G.TheWorld.Map:GetTileAtPoint(pos.x+2.5, 0, pos.z) == _G.WORLD_TILES.MANGROVE or
          _G.TheWorld.Map:GetTileAtPoint(pos.x, 0, pos.z-2.5) == _G.WORLD_TILES.MANGROVE or
@@ -64,9 +104,9 @@ local function ExtraPickupRange(doer, dest)
     return 0
 end
 
-local store_stroverride = ACTIONS.STORE.stroverridefn or function(act) return end
+local store_stroverride = ACTIONS.STORE.stroverridefn or function(act) return  end
 ACTIONS.STORE.stroverridefn = function(act)
-    return act.target:HasTag("kettle") and STRINGS.ACTIONS.BOIL or act.target:HasTag("brewery") and STRINGS.ACTIONS.FERMENT or act.target:HasTag("distillers") and STRINGS.ACTIONS.DISITLL
+    return act.target:HasTag("kettle") and STRINGS.ACTIONS.BOIL or act.target:HasTag("brewery") and STRINGS.ACTIONS.FERMENT or act.target:HasTag("distillers") and STRINGS.ACTIONS.DISITLL or nil
 end
 
 --Adding new actions
@@ -78,6 +118,7 @@ end)
 GIVEWATER.priority = 1
 
 local TAKEWATER = AddAction("TAKEWATER", STRINGS.ACTIONS.FILL, function(act)
+
     local source, filled = nil, nil
 
     if act.target == nil then
@@ -96,13 +137,17 @@ local TAKEWATER = AddAction("TAKEWATER", STRINGS.ACTIONS.FILL, function(act)
         return false
     elseif source ~= nil
         and source.components.water ~= nil
-        and filled.prefab == source.components.water.returnprefab then
+        and source.components.water.isitem then
+        return false
+    end
+
+    if (filled and filled:HasTag("onlyoneget")) or (source and source:HasTag("onlyoneget")) then
         return false
     end
 
     local groundpt = act:GetActionPoint()
     if groundpt ~= nil then
-        local success = (_G.TheWorld.Map:IsOceanAtPoint(groundpt.x, 0, groundpt.z) or _G.TheWorld.Map:IsOceanTileAtPoint(groundpt.x, 0, groundpt.z))
+        local success = IsOcean(groundpt)
         if success then
             local watertype = nil
             if IsDirty(groundpt) then
@@ -122,8 +167,9 @@ end)
 TAKEWATER.priority = 2
 
 local TAKEWATER_OCEAN = AddAction("TAKEWATER_OCEAN", STRINGS.ACTIONS.FILL, TAKEWATER.fn)
+TAKEWATER_OCEAN.customarrivecheck = CheckOceanRange
 TAKEWATER_OCEAN.is_relative_to_platform = true
-TAKEWATER_OCEAN.extra_arrive_dist = ExtraDropDist
+TAKEWATER_OCEAN.disable_platform_hopping = true
 TAKEWATER_OCEAN.priority = 1
 
 local MILKINGTOOL = AddAction("MILKINGTOOL", STRINGS.ACTIONS.MILKINGTOOL, function(act)
@@ -134,7 +180,33 @@ local MILKINGTOOL = AddAction("MILKINGTOOL", STRINGS.ACTIONS.MILKINGTOOL, functi
     end
 end)
 
-MILKINGTOOL.priority = 2
+local DISASSEMBLE = AddAction("DISASSEMBLE", STRINGS.ACTIONS.DISMANTLE, function(act)
+        act.target.components.dismantleable:Dismantle(act.doer)
+    return true
+end)
+
+DISASSEMBLE.priority = 1
+MILKINGTOOL.priority = 1
+
+local MACHINETOOL = AddAction("MACHINETOOL", STRINGS.ACTIONS.INTERACT_WITH.GENERIC, function(act)
+    if act.doer:HasTag("portableengineer") then
+        local item = act.invobject or act.target
+        if item:HasTag("machinetool") then
+            if act.target and act.target.components.saltmaker then
+                return act.target.components.saltmaker:SetProduct()
+            end
+            return item.components.machinetool:SetToolType("dismantletool")
+        elseif item:HasTag("dismantletool") then
+            if act.target and act.target.components.dismantleable then
+                return act.target.components.dismantleable:Dismantle()
+            else
+                return item.components.machinetool:SetToolType("machinetool")
+            end
+        end
+    end
+end)
+
+MACHINETOOL.priority = 2
 
 local _FEEDPLAYER = ACTIONS.FEEDPLAYER.fn
 
@@ -197,7 +269,7 @@ end)
 
 local eat_stroverride = ACTIONS.EAT.stroverridefn or function(act) return end
 ACTIONS.EAT.stroverridefn = function(act)
-    return act.invobject:HasTag("drink") and STRINGS.ACTIONS.DRINK or nil
+    return act.invobject and act.invobject:HasTag("drink") and STRINGS.ACTIONS.DRINK or nil
 end
 
 TURNON_TILEARRIVE.priority = 4
@@ -254,6 +326,7 @@ BREWING = AddAction("BREWING",STRINGS.ACTIONS.BOIL,function(act)
 
 BREWING.stroverridefn = function(act)
     return act.target ~= nil and 
+        act.target:HasTag("kettle") and STRINGS.ACTIONS.BOIL or 
         act.target:HasTag("brewery") and STRINGS.ACTIONS.FERMENT or 
         act.target:HasTag("distillers") and STRINGS.ACTIONS.DISITLL or nil
 end
@@ -273,3 +346,21 @@ end)
 READBOILBOOK.priority = 1
 READBOILBOOK.mount_valid = true
 READBOILBOOK.encumbered_valid = true
+
+DRAMATIC_LOWER = AddAction("DRAMATIC_LOWER",STRINGS.ACTIONS.OCEAN_TRAWLER_LOWER,function(act)
+    if act.target.components.dramaticcontainer ~= nil then
+        act.target.components.dramaticcontainer:DramaticClose()
+    end
+    return true
+end)
+
+DRAMATIC_LOWER.rmb = true
+
+DRAMATIC_RAISE = AddAction("DRAMATIC_RAISE",STRINGS.ACTIONS.OCEAN_TRAWLER_RAISE,function(act)
+    if act.target.components.dramaticcontainer ~= nil then
+        act.target.components.dramaticcontainer:DramaticOpen()
+    end
+    return true
+end)
+
+DRAMATIC_RAISE.rmb = true

@@ -12,16 +12,6 @@ local assets =
     Asset("ANIM", "anim/desalinator_rope_salt.zip"),
 }
 
---수치조정용 변수
-local salt_per_water = 1/80
-local max_salt = 40
-local salt_sections = 9
-
---변환용 변수(가급적 변경하지 말 것!)
-local saltvalue_per_salt = 10
-local saltvalue_per_water = saltvalue_per_salt * salt_per_water
-local maxsaltvalue = max_salt * saltvalue_per_salt
-
 local function isdoneboiling(inst)
     local isopen = "_open"
     if not inst.AnimState:IsCurrentAnimation("idle_open") then
@@ -45,11 +35,13 @@ local function onhammered(inst, worker)
 	if inst.components.burnable ~= nil and inst.components.burnable:IsBurning() then
         inst.components.burnable:Extinguish()
     end
+    local saltvalue = inst.components.saltmaker:GetSalt()
+    local saltvalue_per_salt = inst.components.saltmaker.saltvalue_per_salt
 
-    while inst._saltvalue >= saltvalue_per_salt do
-        local old_saltvalue = inst._saltvalue
-        inst._saltvalue = old_saltvalue - saltvalue_per_salt
-        if inst._saltvalue >= saltvalue_per_salt then
+    while saltvalue >= saltvalue_per_salt do
+        local old_saltvalue = saltvalue
+        saltvalue = old_saltvalue - saltvalue_per_salt
+        if saltvalue >= saltvalue_per_salt then
             inst.components.lootdropper:SpawnLootPrefab("saltrock")
         end
     end
@@ -82,33 +74,11 @@ local function onbuilt(inst)
 	inst.AnimState:PushAnimation("idle")
 end
 
-local function IsEmptySalt(inst)
-    return inst._saltvalue <= 0
-end
-
-local function IsSameSalt(inst)
-    return inst._saltvaluemax == salt_sections
-end
-
-local function GetSaltPercent(inst)
-    return inst._saltvalue > 0 and math.max(0, math.min(1, inst._saltvalue / inst._saltvaluemax)) or 0
-end
-
-local function GetSaltSection(inst)
-    return IsEmptySalt(inst) and 0 or IsSameSalt(inst) and math.min( math.ceil(GetSaltPercent(inst)*salt_sections), salt_sections) or math.min( math.ceil(GetSaltPercent(inst)*salt_sections)+1, salt_sections)
-end
-
-local function SetSaltSection(inst)
-    local result = GetSaltSection(inst)
-    inst.AnimState:OverrideSymbol("swap_salt", "desalinator_rope_salt", tostring(result))
-end
-
 local function onpickedfn(inst, picker)
     local isopen = isdoneboiling(inst)
     if not inst:HasTag("burnt") then
-        inst._saltvalue = inst._saltvalue - inst.components.pickable.numtoharvest * saltvalue_per_salt
         inst.components.pickable.numtoharvest = 0 --어차피 한 번에 다 주게 하니까 상관없음
-        SetSaltSection(inst)
+        inst.components.saltmaker:ResetSalt()
         inst.SoundEmitter:PlaySound("saltydog/common/saltbox/open")
         inst:DoTaskInTime(0.13, function(inst) inst.AnimState:PlayAnimation("get_salt"..isopen) 
             inst:DoTaskInTime(1.1, function(inst) 
@@ -119,11 +89,10 @@ local function onpickedfn(inst, picker)
     end
 end
 
-local function CalculateSalt(inst)
+local function CalculateSalt(inst, salt)
     if not inst:HasTag("burnt") then
-        local salt_num = math.floor(inst._saltvalue / saltvalue_per_salt)
-        if salt_num > 0 then
-            inst.components.pickable.numtoharvest = salt_num
+        if salt > 0 then
+            inst.components.pickable.numtoharvest = salt
             if not inst.components.distiller:isBoiling() then
                 inst.SoundEmitter:PlaySound("hookline/common/trophyscale_fish/place_fish")
                 inst.SoundEmitter:PlaySound("saltydog/common/saltbox/open")
@@ -132,8 +101,11 @@ local function CalculateSalt(inst)
                 inst.components.pickable.canbepicked = false
             end
         end
-        SetSaltSection(inst)
     end
+end
+
+local function SetSaltSection(inst,result)
+    inst.AnimState:OverrideSymbol("swap_salt", "desalinator_rope_salt", tostring(result))
 end
 
 local function ondoneboilingfn(inst)
@@ -146,9 +118,9 @@ local function ondoneboilingfn(inst)
         else
             inst.AnimState:PushAnimation("idle")
         end
+        inst.components.saltmaker:CalculateSalt()
         inst.SoundEmitter:KillSound("desalinator_sound")
         inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/medium")
-        CalculateSalt(inst)
     end
 end
 
@@ -174,8 +146,6 @@ end
 local function onsave(inst, data)
     if inst:HasTag("burnt") or (inst.components.burnable ~= nil and inst.components.burnable:IsBurning()) then
         data.burnt = true
-    else
-        data.saltvalue = inst._saltvalue
     end
 end
 
@@ -183,10 +153,6 @@ local function onload(inst, data)
     if data ~= nil then
         if data.burnt then
             inst.components.burnable.onburnt(inst)
-        end
-        if data.saltvalue ~= nil then
-            inst._saltvalue = data.saltvalue
-            SetSaltSection(inst)
         end
     end
 end
@@ -204,11 +170,12 @@ end
 
 local function OnTakeWater(inst)
     if not inst:HasTag("burnt") then
+        local water = inst.components.waterlevel.currentwater
+        local water_old = inst.components.waterlevel.oldcurrentwater
         inst.AnimState:PlayAnimation("take_water")
         inst.AnimState:PushAnimation("idle")
-        inst._saltvalue = inst._saltvalue + saltvalue_per_water * (inst.components.waterlevel.currentwater - inst.components.waterlevel.oldcurrentwater)
-        inst._saltvalue = math.clamp(inst._saltvalue, 0, inst._saltvaluemax) 
         inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/medium")
+        inst.components.saltmaker:MakeSalt(water, water_old)
         inst:DoTaskInTime(1,function(inst)
             inst.SoundEmitter:PlaySound("dontstarve/common/wardrobe_close")
             onstartboilingfn(inst)
@@ -265,17 +232,13 @@ local function fn()
     
 	inst:AddTag("structure")
 	inst:AddTag("desalinator")
-    inst:AddTag("cleanwater")
+    inst:AddTag("cleanwaterproduction")
 	
 	inst.entity:SetPristine()
 	
     if not TheWorld.ismastersim then
         return inst
     end
-
-    inst._waterlevel = 0
-    inst._saltvalue = 0
-    inst._saltvaluemax = maxsaltvalue
 	
 	inst:AddComponent("lootdropper")
     inst:AddComponent("inspectable")
@@ -294,6 +257,13 @@ local function fn()
     inst.components.waterlevel:SetSections(TUNING.DESALINATOR_MAX_LEVEL)
     inst.components.waterlevel:SetSectionCallback(OnSectionChange)
     inst.components.waterlevel:InitializeWaterLevel(0)
+
+    inst:AddComponent("saltmaker")
+    inst.components.saltmaker:SetPersalt(TUNING.SALT_VALUE)
+    inst.components.saltmaker:SetMax(TUNING.DESALINATOR_MAX_SALT)
+    inst.components.saltmaker:SetSaltFn(CalculateSalt)
+    inst.components.saltmaker:SetSectionsFn(SetSaltSection)
+    inst.components.saltmaker:SetSections(TUNING.DESALINATOR_SALT_SECTION)
 
     inst:AddComponent("water")
     inst.components.water.available = false

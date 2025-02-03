@@ -13,6 +13,8 @@ local postinits =
 		"wisecracker",
 		"retrofitcavemap_anr",
 		"retrofitforestmap_anr",
+		"drawable",
+		"farming_manager",
 	},
 
 	prefabs =
@@ -20,13 +22,19 @@ local postinits =
 		"antlion",
 		"cookingrecipecard",
 		"firepit",
-		"oasislake",
 		"player",
 		"portablespicer",	
-		"staff",		
+		"staff",	
+		"warly",	
 		"wateringcan",
+		"wathgrithr",
+		"wurt",
 		"acorn",
 		"mosquitosack",
+		"wx78_modules",
+		"fruitfly",
+		"preparedfoods",
+		"oasislake",
 	},
 
 	screens = {
@@ -42,6 +50,8 @@ local postinits =
 	widgets =
 	{
 		"itemtile",
+		"upgrademodulesdisplay",
+		"containerwidget",
 	},
 
 	utils =
@@ -57,20 +67,21 @@ local postinits =
 		"preparedfoods",
 		"preparedfoods_warly",
 		"cookbookdata",
+		"techtree",
+		"wx78_moduledefs",
 	}
 }
 
 if GetModConfigData("enable_thirst") then
 
 	local prefabs = {
+		"armor_slurper",
 		"hats",
+		"slurper",
 		"wickerbottom",
-		"wortox",
-		"warly",
-		"wortox",
-		"woodie",
-		"wurt",
 		"wintersfeastbuff",
+		"woodie",
+		"wortox",
 	}
 
 	local components = {

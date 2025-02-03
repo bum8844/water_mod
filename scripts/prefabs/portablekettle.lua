@@ -403,6 +403,7 @@ local function fn()
 
     inst:AddTag("structure")
 	inst:AddTag("kettle")
+    inst:AddTag("mastercookware")
     inst:AddTag("brewing")
     inst:AddTag("drinkproduction")
 
@@ -520,6 +521,9 @@ local function itemfn()
 
     MakeInventoryPhysics(inst)
 
+    inst.minisign_atlas = "minisign_dehy_items_swap"
+    inst.minisign_prefab_name = true
+
     inst.AnimState:SetBank("portablekettle")
     inst.AnimState:SetBuild("portablekettle")
     inst.AnimState:PlayAnimation("idle_ground")
@@ -542,6 +546,7 @@ local function itemfn()
     inst.components.inventoryitem.imagename= "portablekettle_item"
 
     inst:AddComponent("deployable")
+    inst.components.deployable.restrictedtag = "masterchef"
     inst.components.deployable.ondeploy = ondeploy
     --inst.components.deployable:SetDeployMode(DEPLOYMODE.ANYWHERE)
     --inst.components.deployable:SetDeploySpacing(DEPLOYSPACING.NONE)

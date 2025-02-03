@@ -3,7 +3,7 @@ require "prefabutil" -- for the MakePlacer function
 local assets =
 {
     Asset("ANIM", "anim/ruincacao_tree_seed.zip"),
-	Asset("ANIM", "anim/ruincacao_tree_build.zip"),
+	Asset("ANIM", "anim/ruincacao_tree_build.zip")
 }
 
 local function on_hammered(inst, hammer, workleft, workdone)
@@ -23,7 +23,7 @@ local function on_hammered(inst, hammer, workleft, workdone)
         ["charcoal"] = 0,
     }
 
-    local butterhunter = hammer:HasTag("butterhunter") and 0.28 or 0
+    local butterhunter = hammer:HasTag("butterhunter") and 0.18 or 0
 
     local odds_bean = hammer:HasTag("butterhunter") and loot_data.BEAN_CHANCE/2 or loot_data.BEAN_CHANCE
     local odds_butter = odds_bean + (loot_data.BUTTER_CHACE + butterhunter)
@@ -90,6 +90,8 @@ local function ruincacao()
     inst.entity:AddAnimState()
     inst.entity:AddNetwork()
 
+    inst.minisign_atlas = "minisign_dehy_items_swap"
+
     inst.AnimState:SetBank("ruincacao_tree_seed")
     inst.AnimState:SetBuild("ruincacao_tree_seed")
     inst.AnimState:PlayAnimation("idle_ruincacao")
@@ -145,6 +147,8 @@ local function ruincacao_bean()
     inst.entity:AddAnimState()
     inst.entity:AddNetwork()
 
+    inst.minisign_atlas = "minisign_dehy_items_swap"
+
     inst.AnimState:SetBank("ruincacao_tree_seed")
     inst.AnimState:SetBuild("ruincacao_tree_seed")
     inst.AnimState:PlayAnimation("idle_ruincacao_bean")
@@ -160,6 +164,8 @@ local function ruincacao_bean()
     end
 	
 	inst:AddTag("cookable")
+    inst:AddTag("show_spoilage")
+    inst:AddTag("cocktail_ingredients")
 
     inst:AddComponent("stackable")
     inst.components.stackable.maxsize = TUNING.STACK_SIZE_SMALLITEM
@@ -196,9 +202,13 @@ local function ruincacao_bean_cooked()
     inst.entity:AddAnimState()
     inst.entity:AddNetwork()
 
+    inst.minisign_atlas = "minisign_dehy_items_swap"
+
     inst.AnimState:SetBank("ruincacao_tree_seed")
     inst.AnimState:SetBuild("ruincacao_tree_seed")
     inst.AnimState:PlayAnimation("ruincacao_bean_cooked")
+
+    inst:AddTag("cocktail_ingredients")
 
     MakeInventoryPhysics(inst)
 
@@ -346,9 +356,11 @@ local function ruincacao_seed()
     inst.entity:AddAnimState()
     inst.entity:AddNetwork()
 
+    inst.minisign_atlas = "minisign_dehy_items_swap"
+
     inst.AnimState:SetBank("ruincacao_tree_seed")
     inst.AnimState:SetBuild("ruincacao_tree_seed")
-    inst.AnimState:PlayAnimation("idle")
+    inst.AnimState:PlayAnimation("idle_ruincacao_sapling")
 
     MakeInventoryPhysics(inst)
 

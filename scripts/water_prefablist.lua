@@ -5,6 +5,10 @@ return {
 	"upgrade_kit",
 	"boilbook",
 	"additives",
+	"fruitflyfruit_dead",
+	"water_spice",
+	--"thermos_bottle",
+	"bottle_pouch",
 
 	--structures
 	"barrel",
@@ -19,6 +23,7 @@ return {
 	"well_drilling",
 	"well_waterpump",
 	"distillers",
+	"wine_cellar",
 
 	--food & plants
 	"caffeinberry",
@@ -30,6 +35,8 @@ return {
 	"water_spicedfoods_mod",
 	"ruincacao_tree",
 	"ruincacao_seed",
+	"mentha_spicata",
+	"water_new_veggies",
 
 	--buff
 	"drinkbuff",

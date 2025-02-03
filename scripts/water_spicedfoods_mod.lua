@@ -1,4 +1,5 @@
 require("tuning")
+local modlist = require("utils/water_modlist")
 
 local water_spicedfoods_mod = {}
 
@@ -16,9 +17,18 @@ local function oneaten_caffeinpepper(inst, eater)
     end
 end
 
+local function oneaten_ruincolate_spread(inst, eater)
+    if not eater.components.health or eater.components.health:IsDead() or eater:HasTag("playerghost") then
+        return
+    elseif eater.components.debuffable and eater.components.debuffable:IsEnabled() then
+        eater.components.debuffable:AddDebuff("satietybuff", "satietybuff")
+    end
+end
+
 local SPICES =
 {
     SPICE_CAFFEINPEPPER = { oneatenfn = oneaten_caffeinpepper, prefabs = { "caffeinbuff" } },
+    SPICE_RUINCOLATE_SPREAD = { oneatenfn = oneaten_ruincolate_spread, prefabs = { "satietybuff" } },
 }
 
 function GenerateSpicedFoods_Water_mod(foods)
@@ -37,7 +47,9 @@ function GenerateSpicedFoods_Water_mod(foods)
             newdata.stacksize = nil
             newdata.spice = spicenameupper
             newdata.basename = foodname
-            newdata.name = foodname.."_spice_caffeinpepper"
+            newdata.overimg = fooddata.basename
+            newdata.tetype = fooddata.tetype
+            newdata.name = foodname.."_"..spicename
             newdata.floater = {"med", nil, {0.85, 0.7, 0.85}}
             newdata.official = true
             newdata.cookbook_category = fooddata.cookbook_category ~= nil and ("spiced_"..fooddata.cookbook_category) or nil
@@ -53,6 +65,10 @@ function GenerateSpicedFoods_Water_mod(foods)
                 newdata.temperatureduration = math.max(newdata.temperatureduration, TUNING.FOOD_TEMP_LONG)
                 newdata.nochill = true
             end
+
+            --[[if fooddata.platetype then
+                newdata.platetype = fooddata.platetype
+            end]]
 
             if spicedata.prefabs ~= nil then
                 --make a copy (via ArrayUnion) if there are dependencies from the original food
@@ -75,20 +91,20 @@ function GenerateSpicedFoods_Water_mod(foods)
 end
 
 
-for k, mod_id in ipairs(KnownModIndex:GetModsToLoad()) do
-    if mod_id == "workshop-2431867642" then
-        GenerateSpicedFoods_Water_mod(require("bm_foodrecipes"))
-    end
-    if mod_id == "workshop-381565292" then
-        GenerateSpicedFoods_Water_mod(require("W101_menu"))
-        GenerateSpicedFoods_Water_mod(require("W101_shunted"))
-        GenerateSpicedFoods_Water_mod(require("W101_frozen"))
-        GenerateSpicedFoods_Water_mod(require("W101_mushrooms"))
-    end
-    if mod_id == "workshop-2334209327" then
-        GenerateSpicedFoods_Water_mod(require("hof_foodrecipes"))
-        GenerateSpicedFoods_Water_mod(require("hof_foodrecipes_warly"))
-    end
+if modlist.bm then
+    GenerateSpicedFoods_Water_mod(require("bm_foodrecipes"))
+end
+
+if modlist.w101 then
+    GenerateSpicedFoods_Water_mod(require("W101_menu"))
+    GenerateSpicedFoods_Water_mod(require("W101_shunted"))
+    GenerateSpicedFoods_Water_mod(require("W101_frozen"))
+    GenerateSpicedFoods_Water_mod(require("W101_mushrooms"))
+end
+
+if modlist.hof then
+     GenerateSpicedFoods_Water_mod(require("hof_foodrecipes"))
+     GenerateSpicedFoods_Water_mod(require("hof_foodrecipes_warly"))
 end
 
 return water_spicedfoods_mod

@@ -15,6 +15,12 @@ local function OnSpawnIn(inst)
     inst.AnimState:PushAnimation("idle")
 end
 
+local function OnSpawnIn_Well(inst)
+	local x, y, z = inst.Transform:GetWorldPosition()
+	local lunacyarea = TheWorld.Map:FindVisualNodeAtPoint(x, y, z , "lunacyarea") ~= nil
+	inst.components.wateringstructure.islunacy = lunacyarea
+end
+
 local function FailUpgrade(inst, performer, prefabs)
 	local refund = SpawnPrefab(prefabs)
     if performer ~= nil and performer.components.inventory ~= nil then
@@ -51,24 +57,24 @@ local function CreateWellSprinkler(inst)
 	end)
 end
 
-local function CreateWellWaterPump(inst)
+local function CreateWellWaterPump(inst, upgraded_from_item)
 	local waterpump = ReplacePrefab(inst, "well_waterpump")
+	if upgraded_from_item._steampressure then
+		local steampressure = waterpump.components.steampressure
+		steampressure.curpressure = upgraded_from_item._steampressure
+		if upgraded_from_item._steampressure >= steampressure.maxpressure then
+			steampressure.fullpressure = true
+		end
+	end
 	waterpump.Transform:SetPosition(inst.Transform:GetWorldPosition())
-	waterpump.AnimState:PlayAnimation("place")
-	waterpump.AnimState:PushAnimation("idle_stop",true)
-	waterpump.SoundEmitter:PlaySound("dontstarve/common/together/dragonfly_furnace/place")
-	waterpump:DoTaskInTime(0.8, function()
-		waterpump.SoundEmitter:PlaySound("dontstarve/common/together/catapult/hit")
-	end)
 end
 
-local function RemoveHole(inst)
-	inst.AnimState:PushAnimation("burying")
-	inst:ListenForEvent("animover",function (inst)
-		local x, y, z = inst.Transform:GetWorldPosition()
-		SpawnPrefab("small_puff").Transform:SetPosition(x, y, z)
-	    inst:Remove()
-	end)
+local function CreateWellBuryingSite(inst)
+	local buryingsite = ReplacePrefab(inst, "well_buryingsite")
+	buryingsite.Transform:SetPosition(inst.Transform:GetWorldPosition())
+	buryingsite.AnimState:PlayAnimation("set_site_0")
+	buryingsite.AnimState:PushAnimation("idle_site_0",true)
+	buryingsite.SoundEmitter:PlaySound("dontstarve/common/together/spawn_portal_celestial/reveal")
 end
 
 local function OnUpgrade(inst, performer, upgraded_from_item)
@@ -78,43 +84,38 @@ local function OnUpgrade(inst, performer, upgraded_from_item)
 	elseif prefab == "well_sprinkler_kit" then
 		local hole = CreateWellSprinkler(inst)
 	elseif prefab == "well_waterpump_kit" then 
-		local hole = CreateWellWaterPump(inst)
+		local hole = CreateWellWaterPump(inst, upgraded_from_item)
 	elseif prefab == "well_burying_kit" then 
-		local hole = RemoveHole(inst)
+		local hole = CreateWellBuryingSite(inst)
+	elseif prefab =="well_winona_sprinkler_kit" then
+		local hole = CreateWellWinonaSprinkler(inst)
 	else
 		FailUpgrade(inst, performer, prefab)
 	end
 end
 
---[[local function OnConstructed(inst, doer)
-    local concluded = true
-    for i, v in ipairs(CONSTRUCTION_PLANS[inst.prefab] or {}) do
-        if inst.components.constructionsite:GetMaterialCount(v.type) < v.amount then
-            concluded = false
-            break
-        end
-    end
-
-    if concluded then
-
-    end
-end]]
-
 local function hole()
     local inst = CreateEntity()
 
-    inst.entity:AddTransform()
+	inst.entity:AddTransform()
     inst.entity:AddAnimState()
+    inst.entity:AddSoundEmitter()
+    inst.entity:AddMiniMapEntity()
     inst.entity:AddNetwork()
+
+	local minimap = inst.entity:AddMiniMapEntity()
+	minimap:SetIcon("holes.tex")
 
     inst.AnimState:SetBank("holes")
     inst.AnimState:SetBuild("well")
     inst.AnimState:PlayAnimation("idle")
 	
+	inst:AddTag("water_hole")
 	inst:AddTag("antlion_sinkhole_blocker")
+    inst:AddTag("NOBLOCK")
     inst:AddTag("birdblocker")
 	
-	MakeObstaclePhysics(inst, .6)
+	MakeObstaclePhysics(inst, .15)
 
     inst.entity:SetPristine()
 
@@ -141,34 +142,41 @@ local function SetTemperature(inst)
     local isfrozen = inst.components.wateringstructure:IsFrozen()
 
     local temp = isfrozen and TUNING.WATER_FROZEN_INITTEMP or TUNING.WATER_INITTEMP
-    local curtemp = inst.components.wateringstructure:GetWater() ~= WATERTYPE.EMPTY and temp or TheWorld.state.temperature
+    local watertype = inst.components.wateringstructure:GetWater()
+    local curtemp = (watertype ~= WATERTYPE.EMPTY or watertype ~= WATERTYPE.MINERAL) and temp or TheWorld.state.temperature
 
     inst.components.temperature.current = curtemp
 
     if isfrozen then
-        inst.components.temperature.maxtemp = TUNING.WATER_INITTEMP
+        inst.components.temperature.maxtemp = TUNING.WATER_FROZEN_INITTEMP
         inst.components.temperature.mintemp = TUNING.MIN_ENTITY_TEMP
     else
-        inst.components.temperature.mintemp = TUNING.MAX_ENTITY_TEMP
-        inst.components.temperature.mintemp = TUNING.WATER_FROZEN_INITTEMP
+        inst.components.temperature.maxtemp = TUNING.WATER_MAXTEMP
+        inst.components.temperature.mintemp = TUNING.WATER_MINTEMP
     end
     inst.components.temperature.inherentinsulation = TUNING.INSULATION_MED_LARGE
     inst.components.temperature.inherentsummerinsulation = TUNING.INSULATION_MED_LARGE
 end
 
 local function SetToFrozed(inst, data)
-    if inst.components.wateringstructure:GetWater() ~= WATERTYPE.EMPTY then
-        local cur_temp = inst.components.temperature:GetCurrent()
-        local min_temp = inst.components.temperature.mintemp
-        local max_temp = inst.components.temperature.maxtemp
-        if inst.components.wateringstructure:IsFrozen() then
-            if cur_temp >= max_temp then
-                inst.components.wateringstructure:SetFrozed(false)
-            end
-        elseif cur_temp <= min_temp then
-            inst.components.wateringstructure:SetFrozed(true)
-        end
-    end
+	if not inst.components.wateringstructure.checktemp then
+		return
+	end
+	if inst.components.wateringstructure:GetWateringTool() then
+		local watertype = inst.components.wateringstructure:GetWater()
+		if watertype ~= WATERTYPE.EMPTY or watertype ~= WATERTYPE.MINERAL then
+		    local cur_temp = inst.components.temperature:GetCurrent()
+		    local min_temp = inst.components.temperature.mintemp
+		    local max_temp = inst.components.temperature.maxtemp
+		    if inst.components.wateringstructure:IsFrozen() then
+		        if cur_temp >= max_temp then
+		            inst.components.wateringstructure:SetFrozed(false)
+		        end
+		    elseif cur_temp <= min_temp then
+		        inst.components.wateringstructure:SetFrozed(true)
+		    end
+		end
+	end
 end
 
 local function onhammered(inst)
@@ -204,7 +212,7 @@ end
 local function SetWaterData(inst)
 	local watertype = inst.components.wateringstructure:GetWater()
 	local isfrozen = inst.components.wateringstructure:IsFrozen() and "_ice" or ""
-	local result = watertype ~= WATERTYPE.EMPTY and ( watertype == WATERTYPE.CLEAN and "_full" or "_dirty") or "_empty"
+	local result = watertype ~= WATERTYPE.EMPTY and ((watertype == WATERTYPE.CLEAN or watertype == WATERTYPE.MINERAL) and "_full" or "_dirty") or "_empty"
 	local data = { setwatertype = isfrozen..result }
 	return data
 end
@@ -285,7 +293,7 @@ local function givewater(inst, picker, loot)
 end
 
 local function SetBucket(inst)
-	local bucket = inst.components.wateringstructure:GetBucketAnim()
+	local bucket = inst.components.wateringstructure:GetBucketAnim() or ""
 	local bucket_old = inst.components.wateringstructure.old_wellanim
 
 	if bucket ~= bucket_old then
@@ -337,6 +345,7 @@ local function well()
     inst:AddTag("structure")
     inst:AddTag("cleanwaterproduction")
     inst:AddTag("ready")
+    inst:AddTag("hashole")
 	
 	MakeObstaclePhysics(inst, .5)
 
@@ -382,9 +391,119 @@ local function well()
     inst:ListenForEvent("temperaturedelta", SetToFrozed)
     inst:ListenForEvent("setwateramount",SetAmount)
     inst:ListenForEvent("setbucketanim",SetBucket)
+
+    inst:DoTaskInTime(0, OnSpawnIn_Well)
+	
+	return inst
+end
+
+local function CalculatedValue(inst)
+	local a = 0
+    local t = 0
+    for i, v in ipairs(CONSTRUCTION_PLANS[inst.prefab] or {}) do
+        a = a + inst.components.constructionsite:GetMaterialCount(v.type)
+        t = t + v.amount
+    end
+    return a, t
+end
+
+local function DoBurying(inst)
+	inst.SoundEmitter:PlaySound("dontstarve/creatures/together/antlion/sfx/ground_break")
+	inst.AnimState:PushAnimation("burying")
+	inst:ListenForEvent("animover",function (inst)
+		local x, y, z = inst.Transform:GetWorldPosition()
+		SpawnPrefab("small_puff").Transform:SetPosition(x, y, z)
+	    inst:Remove()
+	end)
+end
+
+local function OnConstructed(inst, doer)
+    local amount, total = CalculatedValue(inst)
+    local pct = math.min(1, amount / total)
+    if inst.AnimState:IsCurrentAnimation("idle_site_0") and pct >= .5 and pct < 1 then
+    	inst.components.constructionsite:Disable()
+    	inst.AnimState:PlayAnimation("set_site_1")
+    	inst.AnimState:PushAnimation("idle_site_1")
+    	inst.SoundEmitter:PlaySound("dontstarve/common/fixed_stonefurniture")
+    	inst:ListenForEvent("animover",function (inst)
+    		inst.components.constructionsite:Enable()
+    	end)
+    elseif pct >= 1 then
+    	inst.components.constructionsite:Disable()
+    	if inst.AnimState:IsCurrentAnimation("idle_site_0") then
+    		inst.AnimState:PlayAnimation("set_site_1")
+    		inst.AnimState:PushAnimation("idle_site_1")
+    		inst.SoundEmitter:PlaySound("dontstarve/common/fixed_stonefurniture")
+			inst:DoTaskInTime(1.25,function(inst)
+				DoBurying(inst)
+			end)
+    	else
+    		DoBurying(inst)
+    	end
+    end
+end
+
+local function OnLoad(inst)
+	local amount, total = CalculatedValue(inst)
+	local pct = math.min(1, amount / total)
+	if pct >= .5 then
+    	inst.AnimState:PlayAnimation("idle_site_1")
+	end
+end
+
+local function onhammered_site(inst)
+	inst.components.lootdropper:DropLoot()
+	SpawnPrefab("collapse_big").Transform:SetPosition(inst.Transform:GetWorldPosition())
+	SpawnPrefab("hole").Transform:SetPosition(inst.Transform:GetWorldPosition())
+	inst.SoundEmitter:PlaySound("dontstarve/common/destroy_wood")
+	inst.components.lootdropper:DropLoot()
+	inst:Remove()
+end
+
+local function site()
+    local inst = CreateEntity()
+
+	inst.entity:AddTransform()
+    inst.entity:AddAnimState()
+    inst.entity:AddSoundEmitter()
+    inst.entity:AddMiniMapEntity()
+    inst.entity:AddNetwork()
+
+    inst.AnimState:SetBank("buryingsite")
+    inst.AnimState:SetBuild("well")
+    inst.AnimState:PlayAnimation("idle_site_0")
+	
+	inst:AddTag("antlion_sinkhole_blocker")
+    inst:AddTag("birdblocker")
+    inst:AddTag("hashole")
+
+    inst:SetPrefabNameOverride("hole")
+	
+	MakeObstaclePhysics(inst, .15)
+
+    inst.entity:SetPristine()
+
+    if not TheWorld.ismastersim then
+        return inst
+    end
+	
+	inst:AddComponent("inspectable")
+	
+	inst:AddComponent("constructionsite")
+    inst.components.constructionsite:SetConstructionPrefab("construction_container")
+    inst.components.constructionsite:SetOnConstructedFn(OnConstructed)
+
+    inst:AddComponent("lootdropper")
+	inst:AddComponent("workable")
+    inst.components.workable:SetWorkAction(ACTIONS.HAMMER)
+    inst.components.workable:SetWorkLeft(1)
+	inst.components.workable:SetOnFinishCallback(onhammered_site)
+
+    inst.OnLoad = OnLoad
 	
 	return inst
 end
 
 return Prefab("hole", hole, assets),
-	Prefab("well", well, assets, prefabs)
+	Prefab("well", well, assets, prefabs),
+	Prefab("well_buryingsite", site, assets, prefabs)

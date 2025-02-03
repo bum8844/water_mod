@@ -13,19 +13,24 @@ local ghost_time = GetModConfigData("ghost_time")
 local drunkard_time = GetModConfigData("drunkard_time")
 local waterborne_time = GetModConfigData("waterborne_time")
 local butterhunter_time = GetModConfigData("butterhunter_time")
+local satiety_time = GetModConfigData("satiety_time")
 
 table.insert(TUNING.GAMEMODE_STARTING_ITEMS.DEFAULT.WARLY,"portablekettle_item")
+TUNING.WX78_CHARGING_FOODS["areuhi"] = 1
+TUNING.WX78_CHARGING_FOODS["kumis"] = 1
 
 -- 물을 담을수 있는 최대치
 water_tuning =
 {
 	TYPES_CLEAN = {
+		"oasislake",
 		"cherry_pond",
 	},
 
 	TYPES_SALTY = {
 		"quagmire_pond_salt",
 		"kyno_pond_salt",
+		"icefishing_hole",
 	},
 
 	TYPES_DIRTY = {
@@ -36,12 +41,19 @@ water_tuning =
 		"tidalpoolnew",
 	},
 
+	TYPES_MINERAL = {
+		"hotspring",
+		"grotto_pool_big",
+		"grotto_pool_small",
+	},
+
 	CHILDS =
 	{
 		"wendy",
 		"walter",
 		"wurt",
 		"webber",
+		"wirlywings",
 	},
 
 	WATERBORNE_IMMUNES = 
@@ -50,6 +62,7 @@ water_tuning =
 		"wx78",
 		"wurt",
 		"webber",
+		"wonderwhy",
 	},
 
 	SPOILED_DRINK_NUTRIENTS = {  12,  12,  12 },
@@ -60,9 +73,13 @@ water_tuning =
 
 	-- Maximum Amount of Water
 	CUP_MAX_LEVEL = 1,
-	WATERINGCAN_PER_WATER = 20,
+	WATERINGCAN_PER_WATER = 2,
 	BUCKET_MAX_LEVEL = bucket_max_level*10,
 	BUCKET_LEVEL_PER_USE = bucket_max_level,
+
+	STEEL_BUCKET_MULT = 8,
+	DRIFWOOD_BUCKET_MULT = 4,
+	WOODIE_BUCKET_MULT = 0.5,
 
 	CAMPKETTLE_MAX_LEVEL = 3,
 	KETTLE_MAX_LEVEL = bucket_max_level*.5,
@@ -80,7 +97,7 @@ water_tuning =
 	-- Sections
 	BREWERY_SECTIONS = 20,
 	REDUCE_BREWERY = 3,
-	REDUCE_DISTILL = 4,
+	REDUCE_DISTILL = .25,
 
 	-- Freezing & Thawing Water
 	WATER_MINTEMP = -10,
@@ -125,6 +142,7 @@ water_tuning =
 	HYDRATION_POISON = -5,
 	HYDRATION_ROT = -10,
 	HYDRATION_NONE = 0,
+	HYDRATION_SUPERTINYMICROSCOPIC = hydration_per_day/64, -- 1.40625
 	HYDRATION_TINYMICROSCOPIC = hydration_per_day/24, -- 3.75
 	HYDRATION_SUPERTINY = hydration_per_day/16, -- 5.625
 	HYDRATION_TINY = hydration_per_day/12, -- 7.5
@@ -156,10 +174,10 @@ water_tuning =
 	DESALINATION_TIME = 1,
 	KETTLE_WATER = .3, -- Boiling Water
 	KETTLE_TEA = .5, -- Teas
-	KETTLE_FRUIT = .8, -- Fruit Beverage
-	KETTLE_VEGGIE = .8, -- Veggie Beverage
-	KETTLE_DECORATION = .85, -- Floral Infusions
-	KETTLE_LUXURY_GOODS = 1, -- Drinks with special effects (except temperature)
+	KETTLE_FRUIT = 1.25, -- Fruit Beverage
+	KETTLE_VEGGIE = 1, -- Veggie Beverage
+	KETTLE_DECORATION = .8, -- Floral Infusions
+	KETTLE_LUXURY_GOODS = 1.5, -- Drinks with special effects (except temperature)
 	KETTLE_ABI = .85, -- Suspicious Hibiscus
 	BEER_WAIT = GetModConfigData("beer_wait"), --Alcoholic Ferments
 	SODA_WAIT = GetModConfigData("soda_wait"), --Non-Alcoholic Ferments
@@ -176,16 +194,20 @@ water_tuning =
 	CAPACITY_TIME = TUNING.TOTAL_DAY_TIME*capacity_time,
 	ALCOHOL_CAPACITY = 1,
 	SPIRITS_CAPACITY = 3,
+	CHILDS_SAFE = GetModConfigData("child_safety"),
 	IMMUNE_TIME = TUNING.TOTAL_DAY_TIME*immune_time,
 	RESISTANCE_TIME = TUNING.TOTAL_DAY_TIME*resistance_time,
 	GHOST_TIME = TUNING.TOTAL_DAY_TIME*ghost_time,
-	ENABLE_WATERBORNE = GetModConfigData("enable_waterborne"),
 	DRUNKARD_DURATION = TUNING.TOTAL_DAY_TIME*drunkard_time,
 	DETOX_DURATION = (TUNING.TOTAL_DAY_TIME*drunkard_time)*.5,
+	ENABLE_WATERBORNE = GetModConfigData("enable_waterborne"),
 	WATERBORNE_DURATION = TUNING.TOTAL_DAY_TIME*waterborne_time,
+	SATIETY_DURATION = TUNING.TOTAL_DAY_TIME*satiety_time,
+	WATERBORNE_IMMUNES_CHANCE = .65,
 	BUTTERHUNTER_DURATION = TUNING.TOTAL_DAY_TIME*butterhunter_time,
 	WELL_DRILLING_DURATION = TUNING.SEG_TIME*2.5,
 	WELL_DRILL_USES = 20,
+	WINE_CELLAR_PRESERVER_RATE = 0,
 
 	--well sprinkler
 	SPRINKLER_MAX_FUEL_TIME = TUNING.TOTAL_DAY_TIME,
@@ -218,6 +240,24 @@ water_tuning =
         SEED_CHANCE = 0.01,
         MAX_SPAWNS = 10, -- NOTES(JBK): Deprecated, kept around for mods.
     },
+
+    FREEZE_WATER = 
+    {
+        ANGLE = 65,
+        SPEED = -1.8,
+        HEIGHT = 0.5,   
+        WETGOOP_CHANCE = 0.15,
+        ICE_CHANCE = 0.40, 
+        MAX_SPAWNS = 10, -- NOTES(JBK): Deprecated, kept around for mods.	
+    },
+
+    SALT_VALUE = 10,
+    DESALINATOR_MAX_SALT = 40,
+    DESALINATOR_SALT_SECTION = 9,
+    SALT_PER_WATER = 1/80,
+
+	WINONA_WELL_SPRINKLER_POWER_LOAD_ON = 0.5,
+	WINONA_WELL_SPRINKLER_POWER_LOAD_OFF = 0.05,
 }
 
 for i,v in pairs(water_tuning) do

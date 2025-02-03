@@ -82,16 +82,6 @@ local function set_stage4(inst)
     play_idle(inst, 4)
 end
 
-local function set_stage4(inst)
-
-    -- If we got set here directly, instead of going through stage 3, we still need to be pickable.
-    if not inst.components.pickable:CanBePicked() then
-        inst.components.pickable:Regen()
-    end
-
-    play_idle(inst, 4)
-end
-
 local function grow_to_stage4(inst)
     play_grow(inst, 4)
 end
@@ -378,6 +368,9 @@ local function dug_ruincacao_tree()
     inst.entity:AddAnimState()
     inst.entity:AddNetwork()
 
+    inst.minisign_atlas = "minisign_dehy_items_swap"
+    inst.minisign_prefab_name = true
+    
     inst.AnimState:SetBank("ruincacao_tree_build")
     inst.AnimState:SetBuild("ruincacao_tree_build")
     inst.AnimState:PlayAnimation("dropped")

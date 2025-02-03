@@ -28,9 +28,21 @@ local function onbecamehuman(inst)
 	end
 end
 
+local function onpreload(inst, data)
+	if data then
+		inst.OnPreLoad_old(inst, data)
+		if data.isbeaver or data.ismoose or data.isgoose then
+			inst.components.thirst:Pause()
+		end
+	end
+end
+
 local function woodie(inst)
 	inst:ListenForEvent("transform_person", onbecamehuman)
 	inst:ListenForEvent("transform_wereplayer", onbecamewereplayer)
+
+	inst.OnPreLoad_old = inst.OnPreLoad
+	inst.OnPreLoad = onpreload
 end
 
 AddPrefabPostInit("woodie", woodie)

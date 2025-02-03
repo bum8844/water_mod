@@ -51,6 +51,12 @@ local function onbuilt(inst)
 end
 
 local function startcookfn(inst)
+    if inst.components.container:IsOpen() then
+        inst.AnimState:PlayAnimation("cooking_pre_close")
+        inst.AnimState:PushAnimation("cooking_loop", true)
+    else
+        inst.AnimState:PlayAnimation("cooking_loop", true)
+    end
     inst.SoundEmitter:KillSound("loopsound")
     inst.SoundEmitter:PlaySound("dontstarve_DLC001/common/coldfire", "snda")
     inst.SoundEmitter:PlaySound("rifts3/oculus_ice_radius/ambient_lp", "sndb")
@@ -80,17 +86,18 @@ local function IsModDrink(inst, product, overridebuild)
 end
 
 local function SetProductSymbol(inst, product, overridebuild)
+    local distill_stack = inst.components.brewing.distill_stack*.25
     local recipe = cooking.GetRecipe(inst.prefab, product)
     local potlevel = recipe ~= nil and recipe.potlevel or nil
     local potlevel_bottle = recipe ~= nil and recipe.potlevel_bottle or nil
-    local build = IsModDrink(inst, product, overridebuild) and overridebuild or IsModDrink(inst, product, overridebuild) and inst.components.waterlevel:GetWater() >= 5 and overridebuild.."_bottle"
-    or inst.components.waterlevel:GetWater() >= 5 and "kettle_drink_bottle" or "kettle_drink"
+    local build = IsModDrink(inst, product, overridebuild) and overridebuild or IsModDrink(inst, product, overridebuild) and distill_stack >= 5 and overridebuild.."_bottle"
+    or distill_stack >= 5 and "kettle_drink_bottle" or "kettle_drink"
     local overridesymbol = (recipe ~= nil and recipe.overridesymbolname) or (recipe.basename ~= nil and recipe.basename) or product
     local potlevels = potlevel ~= nil and "swap_"..potlevel or "swap_mid"
     local potlevels_bottle = potlevel_bottle ~= nil and "swap_"..potlevel_bottle.."_bottle" or "swap_mid_bottle"
     local result_potlevels = nil
     
-    if inst.components.waterlevel:GetWater() >= 5 then
+    if distill_stack >= 5 then
         result_potlevels = potlevels_bottle
         inst.AnimState:Hide("swap_high")
         inst.AnimState:Hide("swap_mid")
@@ -191,8 +198,7 @@ local function fn()
     inst.entity:AddLight()
     inst.entity:AddNetwork()
 
-    inst:SetPhysicsRadiusOverride(.5)
-    MakeObstaclePhysics(inst, inst.physicsradiusoverride)
+    MakeObstaclePhysics(inst, 1.00)
 
     local minimap = inst.entity:AddMiniMapEntity()
     minimap:SetIcon("distillers.tex")
@@ -226,7 +232,7 @@ local function fn()
 
     inst:AddComponent("waterlevel")
     inst.components.waterlevel:SetCanAccepts({WATERGROUP.NONE_BOIL})
-    inst.components.waterlevel:SetOnlyDistill(true)
+    inst.components.waterlevel:SetNoneBoil(true)
 
     inst:AddComponent("container")
     inst.components.container:WidgetSetup("distillers")
@@ -252,6 +258,25 @@ local function fn()
 
     return inst
 end
+
+--[[local function CustomTestFunction(inst)
+    local pt = TheInput:GetWorldPosition()
+    
+    if pt == nil then
+        return false
+    end
+
+    local deployspacing = DEPLOYSPACING.MEDIUM
+    local entities = TheSim:FindEntities(pt.x, pt.y, pt.z, deployspacing)
+    
+    for _, entity in ipairs(entities) do
+        if entity ~= inst and entity:HasTag("structure") then
+            return false
+        end
+    end
+    
+    return true
+end]]
 
 return Prefab("distillers", fn, assets, prefabs),
     MakePlacer("distillers_placer", "distillers", "distillers", "idle_empty")

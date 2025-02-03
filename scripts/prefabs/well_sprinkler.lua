@@ -133,7 +133,7 @@ local function UpdateSpray(inst)
 			crop_comp.growthpercent = crop_comp.growthpercent + (0.001)
 		end		
 
-    	if growable_comp ~= nil then
+    	if growable_comp ~= nil and growable_comp:IsGrowing() then
 			growable_comp:ExtendGrowTime(-0.2)
     	end
 
@@ -145,6 +145,10 @@ local function UpdateSpray(inst)
         	wateryprotection_comp:SpreadProtectionAtPoint(x, y, z, 1)
     	end
 	end
+end
+
+local function IsValidSprinklerTile(tile)
+    return not TileGroupManager:IsOceanTile(tile) and (tile ~= WORLD_TILES.INVALID) and (tile ~= WORLD_TILES.IMPASSABLE)
 end
 
 local function GetValidWaterPointNearby(inst)
@@ -162,8 +166,30 @@ local function GetValidWaterPointNearby(inst)
                 best_point = cur_point
             end
         end
-        if v:HasTag("oasis_lake") then
+        if v:HasTag("oasislake") then
             inst:AddTag("stormchecker")
+        end
+    end
+
+    if not best_point then
+        local range = 20
+        local cx, cy = TheWorld.Map:GetTileCoordsAtPoint(pt.x, 0, pt.z)
+        local center_tile = TheWorld.Map:GetTile(cx, cy)
+        for x = pt.x - range, pt.x + range, 1 do
+            for z = pt.z - range, pt.z + range, 1 do
+                local tile = TheWorld.Map:GetTileAtPoint(x, 0, z)
+
+                if IsValidSprinklerTile(center_tile) and tile == WORLD_TILES.LILYPOND then
+                    local cur_point = Vector3(x, 0, z)
+                    local cur_sq_dist = cur_point:DistSq(pt)
+
+                    if cur_sq_dist < min_sq_dist then
+                        min_sq_dist = cur_sq_dist
+                        best_point = cur_point
+                        inst:AddTag("bigpond_haspipe")
+                    end
+                end
+            end
         end
     end
 
@@ -285,10 +311,6 @@ local function OnLoadPostPass(inst, newents, data)
         inst.pipes = {}
         inst.loadedPipesFromFile = false
 
-        if data.waterSpray ~= nil then
-            inst.waterSpray = newents[data.waterSpray].entity
-        end
-
         if data.pipes ~= nil then
             for i, pipeGUID in ipairs(data.pipes) do
                 local newpipe = newents[pipeGUID].entity
@@ -357,7 +379,7 @@ end
 
 local function addtags(inst)
     inst:AddTag("connected")
-    inst:AddTag("haspipe") 
+    inst:AddTag("haspipe")
 end
 
 local function WeatherCheck(inst)
@@ -369,7 +391,7 @@ local function WeatherCheck(inst)
                 end
             end, TheWorld)
             OnSandstormChanged(inst, TheWorld.components.sandstorms ~= nil and TheWorld.components.sandstorms:IsSandstormActive())
-        elseif not inst:HasTag("dummy") then
+        elseif not inst:HasTag("dummy") and not inst:HasTag("bigpond_haspipe") then
             inst:WatchWorldState("snowlevel", OnSnowLevel)
             OnSnowLevel(inst, TheWorld.state.snowlevel)
         end

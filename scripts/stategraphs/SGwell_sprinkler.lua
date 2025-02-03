@@ -46,7 +46,7 @@ local states =
         name = "idle_on",
         tags = {"idle"},
 
-        onenter = function(inst)
+        onenter = function(inst, data)
             if not inst.SoundEmitter:PlayingSound("firesuppressor_idle") then
                 inst.SoundEmitter:PlaySound("dangerous_sea/common/water_pump/LP", "firesuppressor_idle")
             end

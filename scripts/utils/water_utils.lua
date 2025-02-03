@@ -1,13 +1,28 @@
+GLOBAL.setfenv(1, GLOBAL)
+
 local function GetItemState(count)
     return count >= 5 and "_bottle" or ""
 end
 
-function MakeDynamicCupImage(inst, symbol, build, use_bg)
+SetRetrofitSetting = function(name, value)
+    local configs = KnownModIndex:LoadModConfigurationOptions("workshop-3004639365", false)
+    if configs ~= nil then
+        for i, v in ipairs(configs) do
+            if v.name == name then
+                v.saved = value
+            end
+        end
+    end
+    KnownModIndex:SaveConfigurationOptions(function() end, "workshop-3004639365", configs, false)
+end
+
+MakeDynamicCupImage = function(inst, symbol, build, use_bg)
     local function ChangeCupImage(inst, data)
         if data ~= nil then
             local new_state = GetItemState(data.stacksize)
             local cur_state = GetItemState(data.oldstacksize)
             if new_state ~= cur_state then
+                inst.minisign_atlas = "minisign_dehy_drinks"..new_state.."_swap"
                 inst.AnimState:OverrideSymbol(symbol, build..new_state, inst.prefab)
                 if inst.components.inventoryitem.imagename ~= inst.prefab..new_state then
                     inst.components.inventoryitem:ChangeImageName(inst.prefab..new_state)
@@ -19,7 +34,7 @@ function MakeDynamicCupImage(inst, symbol, build, use_bg)
     inst:ListenForEvent("stacksizechange", ChangeCupImage)
 end
 
-function Water_BurntStructureFn(inst)
+Water_BurntStructureFn = function(inst)
     DefaultBurntStructureFn(inst)
     if inst.components.waterlevel ~= nil then
         inst:RemoveComponent("waterlevel")
@@ -33,12 +48,12 @@ function Water_BurntStructureFn(inst)
 end
 
 --Useful if you packed your images into one single atlas file by Atlas Image Packer
-function RegisterInvItemAtlas(atlasname, imagename)
+RegisterInvItemAtlas = function(atlasname, imagename)
     RegisterInventoryItemAtlas(atlasname, imagename)
     RegisterInventoryItemAtlas(_G.resolvefilepath(atlasname), _G.hash(imagename))
 end
 
-function RegisterItemAtlasFile(fname)
+RegisterItemAtlasFile = function(fname)
     local atlas = _G.io.lines(_G.resolvefilepath(fname))
     for line in atlas do
         local _, _, image = line:find("<Element name=\"(.+)\" u1")

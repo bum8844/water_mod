@@ -4,8 +4,7 @@ local assets =
 {
 	Asset("ANIM", "anim/caffeinberry.zip"),
 	Asset("ANIM", "anim/caffeinberry_diseased.zip"),
-    Asset("ANIM", "anim/caffeinberry_bean.zip"),
-    Asset("ANIM", "anim/water_spice.zip")
+    Asset("ANIM", "anim/caffeinberry_bean.zip")
 }
 
 local prefabs =
@@ -274,6 +273,9 @@ local function dug_caffeinberry()
     inst.entity:AddAnimState()
     inst.entity:AddNetwork()
 
+    inst.minisign_atlas = "minisign_dehy_items_swap"
+    inst.minisign_prefab_name = true
+
     inst.AnimState:SetBank("caffeinberry")
     inst.AnimState:SetBuild("caffeinberry")
     inst.AnimState:PlayAnimation("dropped")
@@ -322,6 +324,8 @@ local function caffeinberry_bean()
     inst.entity:AddAnimState()
     inst.entity:AddNetwork()
 
+    inst.minisign_atlas = "minisign_dehy_items_swap"
+
     inst.AnimState:SetBank("caffeinberry_bean")
     inst.AnimState:SetBuild("caffeinberry_bean")
     inst.AnimState:PlayAnimation("idle")
@@ -332,7 +336,7 @@ local function caffeinberry_bean()
 
     inst.pickupsound = "vegetation_firm"
 
-    inst:AddTag("deployedplant")
+    inst:AddTag("cocktail_ingredients")
 
     inst.entity:SetPristine()
 
@@ -379,8 +383,10 @@ local function caffeinberry_bean()
 end
 
 local function OnEatBeans(inst, eater)
-    eater.caffeinbuff_duration = TUNING.SEG_TIME
-    eater.components.debuffable:AddDebuff("caffeinbuff", "caffeinbuff")
+    if eater.components.debuffable then
+        eater.caffeinbuff_duration = TUNING.SEG_TIME
+        eater:AddDebuff("caffeinbuff", "caffeinbuff")
+    end
 end
 
 local function caffeinberry_bean_cooked()
@@ -390,9 +396,13 @@ local function caffeinberry_bean_cooked()
     inst.entity:AddAnimState()
     inst.entity:AddNetwork()
 
+    inst.minisign_atlas = "minisign_dehy_items_swap"
+
     inst.AnimState:SetBank("caffeinberry_bean")
     inst.AnimState:SetBuild("caffeinberry_bean")
     inst.AnimState:PlayAnimation("cooked")
+
+    inst:AddTag("cocktail_ingredients")
 
     inst.pickupsound = "vegetation_firm"
 
@@ -450,12 +460,15 @@ local function fn_spice()
 
     MakeInventoryPhysics(inst)
 
+    inst.minisign_atlas = "minisign_dehy_items_swap"
+    
     inst.AnimState:SetBank("water_spice")
     inst.AnimState:SetBuild("water_spice")
     inst.AnimState:PlayAnimation("idle")
 
     inst:AddTag("spice")
     inst:AddTag("watermod")
+    inst:AddTag("cocktail_ingredients")
 
     MakeInventoryFloatable(inst, "med", nil, 0.85)
 
@@ -483,5 +496,4 @@ return Prefab("caffeinberry_bean_cooked", caffeinberry_bean_cooked, assets),
 Prefab("caffeinberry_bean", caffeinberry_bean, assets, {"caffeinberry_bean_cooked"}),
 Prefab("caffeinberry", caffeinberry, assets, prefabs),
 Prefab("dug_caffeinberry",dug_caffeinberry, assets, prefabs_item),
-MakePlacer("dug_caffeinberry_placer","caffeinberry","caffeinberry","caffeinberriesmost"),
-Prefab("spice_caffeinpepper",fn_spice, assets)
+MakePlacer("dug_caffeinberry_placer","caffeinberry","caffeinberry","caffeinberriesmost")

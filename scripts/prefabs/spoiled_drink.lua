@@ -12,7 +12,7 @@ local prefabs =
 local FERTILIZER_DEFS = require("prefabs/fertilizer_nutrient_defs").FERTILIZER_DEFS
 
 local function Get_Waterborne_Disease(inst, eater)
-    if TUNING.ENABLE_WATERBORNE and not eater:HasTag("waterborne_immune") and
+    if TUNING.ENABLE_WATERBORNE and not eater.waterborne_immune and
     	eater:HasTag("player") and not eater:HasTag("playerghost") then
         eater:AddDebuff("waterbornedebuff", "waterbornedebuff")
     end
@@ -35,12 +35,16 @@ local function fn()
 
 	MakeInventoryPhysics(inst)
 
+    inst.minisign_atlas = "minisign_dehy_drinks_swap"
+    inst.minisign_prefab_name = true
+
 	inst.AnimState:SetBank("kettle_drink")
 	inst.AnimState:SetBuild("kettle_drink")
 	inst.AnimState:PlayAnimation("idle")
 
 	inst.AnimState:OverrideSymbol("swap", "kettle_drink", "spoiled_drink")
 	inst:AddTag("icebox_valid")
+	inst:AddTag("drink_icebox_valid")
 	inst:AddTag("show_spoiled")
 
 	MakeInventoryFloatable(inst)

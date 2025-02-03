@@ -9,16 +9,23 @@ return {
 	},
 
 	ANNOUNCE_DRUNK = "어질어질....", -- 취함
+	ANNOUNCE_DRUNK_MUMBLE = 
+	{
+		--대사 추가해야함
+	},
 	ANNOUNCE_DRUNK_END = "휴....", --술에서 좀 깸 (그로기)
 	ANNOUNCE_DRUNK_IMMUNITY = "", --임시. 위그 전용,
 	ANNOUNCE_NOTCHARGE = "꼬불가지친구 준비 안됬어", --번개염소가 충전이 안되서 양동이로 젖을 짤수 없음
 	ANNOUNCE_NOTHIRSTSLEEP = "너무 목말라", -- 목이 마른데 밤에 잘려고 시도
 	ANNOUNCE_NOTHIRSTSIESTA = "너무 목말라", -- 목이 마른데 낮에 잘려고 시도
-	ANNOUNCE_SLEEP_END = "", --자고 일어나서 술에서 완전히 깸 
+	ANNOUNCE_SLEEP_END = "이제 괜찮아", --자고 일어나서 술에서 완전히 깸 
 	ANNOUNCE_THIRST = "마실거 필요해", --너무 목말라!
 
     ANNOUNCE_CAFFINE_BUFF_START = "뭉실뭉실 가벼워", -- 카페인 버프 시작
     ANNOUNCE_CAFFINE_BUFF_STOP = "이제 안 가벼워",  -- 카페인 버프 끝
+
+    ANNOUNCE_SATIETY_BUFF_START = "" , -- 포만감 버프 시작
+    ANNOUNCE_SATIETY_BUFF_STOP = "" ,  -- 포만감 버프 끝
     
     ANNOUNCE_CURE_WATERBORNE = "" ,  -- 수인성 질병을 아이템으로 치료했을때의 대사 -- 웜우드 먼역
 
@@ -27,12 +34,14 @@ return {
 
 	DESCRIBE =
 	{
-		BOILBOOK = "마실 것들",
+		BOILBOOK_BASIC = "마실 것들",
+		BOILBOOK_ADVANCED = "마실 것들",
 
 		WATER_CLEAN_ICE = "차가워. 진짜 차가워",--깨끗한 얼음물
 		WATER_DIRTY_ICE = "차가워. 진짜 차가워", --더러운 얼음물
 
-		SPICE_CAFFEINPEPPER = "(킁킁) 에엣-취이! 엣-취이!" --후추 향신료
+		SPICE_CAFFEINPEPPER = "(킁킁) 에엣-취이! 엣-취이!", --후추 향신료
+		SPICE_RUINCOLATE_SPREAD = "",
 
 		WELL_KIT = "구멍에 심어", --우물 키트
 		WELL_SPRINKLER_KIT = "구멍이나 물덩이 근처에 심어", --스프링클러 키트
@@ -42,6 +51,11 @@ return {
 		WELL_DRILLING_ITEM = "구멍내는 도구", --드릴 아이템
 		HOLE = "안에 물 있어", --우물 구멍
 		WELL = "물 얻을수 있어.", --우물
+		BOTTLE_POUCH = "",
+		WINE_CELLAR_PART = "",
+		WINE_CELLAR = "",
+
+		WX78MODULE_NONEDRUNK = "삐빅 삑", -- 78전용 묘듈
 
 		-- 물 모드 식물
 
@@ -66,11 +80,34 @@ return {
 		RUINCACAO_BEAN = "기름진 먹는거", --부순 후 카카오 콩  
 		RUINCACAO_BEAN_COOKED = "익힌 먹는거", --구운 카카오 콩
 
+		--APPLEPINE
+		APPLEPINE = "",
+		APPLEPINE_COOKED = "",
+		APPLEPINE_SEEDS = "",
+		APPLEPINE_OVERSIZED = "",
+
+		--limon
+		LIMON = "",
+		LIMON_COOKED = "",
+		LIMON_SEEDS = "",
+		LIMON_OVERSIZED = "",
+
+		--citroyuzu
+		CITROYUZU = "",
+		CITROYUZU_COOKED = "",
+		CITROYUZU_SEEDS = "",
+		CITROYUZU_OVERSIZED = "",
+
+		--mentha_spicata
+
+		WEED_MENTHA_SPICATA = "",
+		MENTHA_SPICATA = "",
+
 		-- 증류주 첨가제
 
 		ADDITIVE_SEED = "애기들 들어있어", -- 리큐르에 제조에 첨가 할 씨허브(아니스,쥬니퍼베리,팔각 모티브)첨가제 
 		ADDITIVE_PETALS = "예쁜것들 들어있어", -- 리큐르에 제조에 첨가 할 허브,녹차,꽃잎 첨가제
-		ADDITIVE_NUT = "먹을 것들 들어있어", -- 리큐르에 제조에 첨가 할 버치넛,코코넛,커피콩,카카오콩 첨가제
+		ADDITIVE_NUT = "먹을것들 들어있어", -- 리큐르에 제조에 첨가 할 버치넛,코코넛,커피콩,카카오콩 첨가제
 		ADDITIVE_DAIRY = "흐으음?", -- 리큐르에 제조에 첨가할 유제품 첨가제
 
 		-- 음료
@@ -96,7 +133,7 @@ return {
 		CARROT_TEA = "주황색 마실거", --당근차
 		CACTUS_TEA = "탱글탱글 한거 있어", --선인차
 		TOMATO_JUICE = "물렁물렁 공 물", --토마토 쥬스
-		LUMPY_TEA = "흙에서 난걸로 만든 마실거" --뿌리차,
+		LUMPY_TEA = "흙에서 난걸로 만든 마실거", --뿌리차
 		SEAWEED_SHAKE = "미끌미끌 가득", --해초 쉐이크
 		
 		GREENTEA = "멋쟁이걸로 우렸어", --생잎 녹차
@@ -122,16 +159,25 @@ return {
 		MULLED = "속 따뜻해져, 쿨쿨", --뱅쇼
 		BUTTERBEER = "꿀꺽!", --해리포터 시리즈의 버터비어
 
+		APPLEPINE_JUICE = "멋쟁이 왕관 마실거", -- 레기온 파인애플 주스
+		APPLEPINE_SMOOTHIE = "",
+		APPLEPINE_CAPPUCCINO = "",
+
+		CITROYUZU_JUICE = "주황색 공 마실거", -- 모어 푸드 팩 오랜지 주스
+		CITROYUZU_TEA = "",
+		EARLGREY_TEA = "",
+
 		-- 콜라보 주전자 음료
 
 		COCONUT_JUICE = "탱글탱글 한거 가득", --난파선 코코넛 쥬스
 		RAINBOW_SHAKE = "예쁜 뽀글이로 만든 마실거", --난파선 무지개 해파리 쉐이크
 		QUARTZ_SHAKE = "뻐끔으로 만든 마실거", --난파선 광대 물고기 쉐이크
+		NETTLE_TEA = "",
+		FRASH_BRAMBLE_TEA = "",
+		TUBER_BLOOM_TEA = "",
 		CHERRY_ROSEBERRIES_TEA = "새콤한 향", --체리숲 로즈힙 차
 		CHERRY_HONEY_TEA = "붕붕이들 매우 좋아해", --체리숲 벚꽃꿀 차
 		SWEET_RICE_DRINK = "달콤해!", -- 비타협 식혜
-		PINEANANAS_JUICE = "멋쟁이 왕관 마실거", -- 레기온 파인애플 주스
-		ORANGE_JUICE = "주황색 공 마실거", -- 모어 푸드 팩 오랜지 주스
 		STRAWBERRY_SMOOTHIE = "새콤 시원", -- 모어 푸드 팩 딸기 스무디
 		STRAWBERRY_MILK_SMOOTHIE = "부들부들 새콤 시원", -- 모어 푸드 팩 딸기 스무디 라떼
 
@@ -143,10 +189,14 @@ return {
 	
 		SODA = "톡톡 쏘는 물", -- 탄산수
 		FRUITSODA = "톡톡 과일물", -- 과일소다
-		LEMONLIMESODA = "톡톡 단 물", -- 레몬 라임소다(과일소다 상위 호환)
+		LIMONSODA = "톡톡 단 물", -- 레몬 라임소다(과일소다 상위 호환)
 		COLA = "톡톡 단 검은 물", -- 콜라
 		COLAQUANTUM = "톡톡 빛나는 물", --콜라 퀀텀
 		LUMPY_BEER = "톡톡 뿌리덩어리 물", --루트비어(술이 아님)
+		APPLEPINESODA = "톡톡 멋쟁이 왕관 물", -- 탄산 파인애플(오란씨)
+		CITROYUZUSODA = "톡톡 주황 공 물", -- 탄산 오랜지(환타)
+		DAWN_FOG = "",
+		MOON_CAP_DRINK = "",
 
 		-- 양조주
 
@@ -160,23 +210,25 @@ return {
 		LUMPY_WINE = "뿌리덩어리 발효된거", --서주(감자 고구마등 뿌리 술)
 		PULQUE = "완전 새하예", --풀케(선인주)
 		RUINCACAO_WINE = "쓴 맛 많이 없어", -- 카카오 와인 
+		MIDNIGHT_STROM = "",
+		APPLEPINE_CIDER = "",
+		MENTHA_SPICATA_WINE = "",
 
 		-- 콜라보 소다
 
 		CHERRY_DOCTOR_COLA = "톡톡 과일 검은 물", --체리숲 닥터 페퍼(닥터 체리)
-		PINEANANASSODA = "톡톡 멋쟁이 왕관 물", -- 탄산 파인애플(오란씨)
-		ORANGESODA = "톡톡 주황 공 물", -- 탄산 오랜지(환타)
 		STRAWBERRYSODA = "톡톡 달콤 과일 물", -- 탄산 딸기(웰치스 딸기)
 
 		--콜라보 양조주
 
 		AUROBOW = "알록달록해!", -- 난파선 오로보우,무지개 해파리주
-		COCONUT_WINE = "", -- 난파선 코코넛 와인
-		CHERRY_BLOOM_MADHU = "", -- 체리숲 벚꽃꿀주
-		GIANT_BLUEBERRY_WINE = "", -- 비타협 붐!베리 사파이어(불 붙히면 폭발함)
-		RICE_WINE = "", -- 비타협 막걸리
-		WHEAT_BEER = "", -- 힙 오브 푸드 밀맥주
-		PALE_BEER = "", -- 레기온 페일에일 (몬스트라 열매를 쓴 청록색 맥주)
+		COCONUT_WINE = "탱글탱글한거 없어", -- 난파선 코코넛 와인
+		NETTLE_WINE = "",
+		CHERRY_BLOOM_MADHU = "예쁜 꽃잎 둥둥", -- 체리숲 벚꽃꿀주
+		GIANT_BLUEBERRY_WINE = "펑 열매 발효된거", -- 비타협 붐!베리 사파이어(불 붙히면 폭발함)
+		RICE_WINE = "안 달아...", -- 비타협 막걸리
+		WHEAT_BEER = "이쁜 씨앗 발효된거", -- 힙 오브 푸드 밀맥주
+		PALE_BEER = "동그란 열매 발효된거", -- 레기온 페일에일 (몬스트라 열매를 쓴 청록색 맥주)
 
 		--증류주
 
@@ -187,32 +239,37 @@ return {
 		MADHU_RUM = "붕붕이 즙 깨끗해", -- 럼주
 		BERRY_BRANDY = "작고 작은 먹을거 화르륵 마시는거", -- 베리 브랜디
 		AREUHI = "안 하예", -- 크므즈 증류주 아르히
+		APPLEPINE_BRANDY = "",
+		VOID = "",
+		CITROYUZU_CURACAO = "",
+		MENTHA_SPICATA_CURACAO = "",
 
 		--왈리 전용 증류주
 
-		BERRY_GIN = "", --진
-		GLOWBERRY_GIN = "", --글로우 베리 진
-		ABSINTHE = "", -- 압생트
-		TEA_LUMPY_VODKA = "", -- 보드카
-		PETALS_BERRY_BRANDY = "", -- 장미향 브랜디
-		KAHLUA = "", -- 커피 리큐르 깔루아
-		NUT_CORN_WHISKY = "", -- 너트 위스키
-        RUINCACAO_CREAM_LIQUEUR = "", --베일리스 카카오 크림 리큐르
-        RUMCHATA = "", -- 럼차타(럼에 오우차타 라는 유제품 섞은)
+		BERRY_GIN = "안 달콤한 화르륵 마시는거", --진
+		GLOWBERRY_GIN = "빛나는 화르륵 마시는거", --글로우 베리 진
+		ABSINTHE = "초록색 화르륵 마실거", -- 압생트
+		TEA_LUMPY_VODKA = "멋쟁이 들어갔어", -- 보드카
+		PETALS_BERRY_BRANDY = "알록달록", -- 장미향 브랜디
+		KAHLUA = "진한 검은 화르륵 마실거", -- 커피 리큐르 깔루아
+		NUT_CORN_WHISKEY = "고소한 향나", -- 너트 위스키
+        RUINCACAO_CREAM_LIQUEUR = "고소해", --베일리스 카카오 크림 리큐르
+        RUMCHATA = "고소하고 기운나", -- 럼차타(럼에 오우차타 라는 유제품 섞은)
 
 		--콜라보 증류주
 
 		MOONWAY = "알록달록 그대로", -- 무지개 해파리주 증류주
-		ARRACK = "", -- 아락 인도네시아 버전 코코넛 와인 증류주
-		CHERRY_BLOOM_RUM = "", -- 체리 꿀주 증류주 벛꽃잎 떠다
-		RICE_SPIRITS = "", --청주
-		WHEAT_WHISKEY = "", -- 밀 위스크
-		PALE_WHISKEY = "", -- 페일 몰트 위스키
+		NETTLE_LIQUEUR = "",
+		ARRACK = "탱글 없는 화르륵 마시는거", -- 아락 인도네시아 버전 코코넛 와인 증류주
+		CHERRY_BLOOM_RUM = "화르륵 마시는거", -- 체리 꿀주 증류주 벛꽃잎 떠다
+		RICE_SPIRITS = "엄청 투명해!", --청주
+		WHEAT_WHISKEY = "이쁜 씨앗 화르륵 마시는거", -- 밀 위스크
+		PALE_WHISKEY = "동그란 열매 화르륵 마시는거", -- 페일 몰트 위스키
 
 		--왈리 전용 콜라보 증류주
 
-		NUT_COCONUT_BRANDY = "", -- 코코넛 브랜디 (캐러비안 럼을 만들수 없어서 카리브 브랜디 라는 이름으로 대체)
-	    GIANT_BLUEBERRY_GIN = "", -- 붐 베리 사파이어 (당근 폭발함)
+		NUT_COCONUT_BRANDY = "투명해", -- 코코넛 브랜디 (캐러비안 럼을 만들수 없어서 카리브 브랜디 라는 이름으로 대체)
+	    GIANT_BLUEBERRY_GIN = "화르륵 마시는거 펑펑!", -- 붐 베리 사파이어 (당근 폭발함)
 
 		--냄비 요리
 
@@ -220,6 +277,9 @@ return {
         WHITE_RUINCOLATE = "먹는 하얀거", --화이트 초콜릿
         RUINCOLATE = "먹는 갈색판", -- 그냥 초콜릿
         RUIN_SCHOKAKOLA = "먹는거 눈이 번쩍", -- 쇼카콜라
+        APPLEPINE_PIE = "",
+        APPLEPINE_FRIED_RICE = "",
+        citroyuzu_bbq = "",
 
 		BUCKET_STEEL_EMPTY = 
 		{
@@ -239,9 +299,18 @@ return {
 			DIRTY_ICE = "더러운 차가운거", --더러운 빗물 얼어버림
 		},
 
+		BUCKET_DRIFTWOOD_EMPTY = 
+		{
+			EMPTY = "물이랑 친한 친구들로 만들어졌어.", -- 빈 나무 양동이
+			FULL = "깨끗 마실거",  --깨끗한 빗물이 참
+			FULL_ICE = "깨끗 차가운거", --빗물이 얼어버림
+			DIRTY = "더러운 마실거", --빗물이 더러워짐
+			DIRTY_ICE = "더러운 차가운거", --더러운 빗물 얼어버림
+		},
+
 		BUCKET_EMPTY = 
 		{
-			EMPTY = "친구들로 만들어 졌어", -- 빈 나무 양동이
+			EMPTY = "친구들로 만들어졌어", -- 빈 나무 양동이
 			FULL = "깨끗 마실거", -- 깨끗한 빗물이 참
 			FULL_ICE = "깨끗 차가운거", --빗물이 얼어버림
 			DIRTY = "더러운 마실거", --빗물이 더러워짐

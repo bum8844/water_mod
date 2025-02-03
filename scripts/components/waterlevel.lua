@@ -36,7 +36,8 @@ local Waterlevel = Class(function(self, inst)
     self.inst = inst
     self.consuming = false
     self.isputoncetime = false
-    self.onlydistill = false
+    self.noneboil = false
+    self.onlysamewater = false
 
     self.maxwater = 0
     self.currentwater = 0
@@ -85,8 +86,8 @@ function Waterlevel:OnLoad(data)
     end
 end
 
-function Waterlevel:SetOnlyDistill(bool)
-    self.onlydistill = bool
+function Waterlevel:SetNoneBoil(bool)
+    self.noneboil = bool
 end
 
 function Waterlevel:MakeEmpty()
@@ -130,16 +131,20 @@ function Waterlevel:IsFull()
     return self.currentwater >= self.maxwater
 end
 
-function Waterlevel:IsSame()
-    return self.maxwater == self.sections
-end
-
 function Waterlevel:SetSections(num)
     self.sections = num
 end
 
+function Waterlevel:IsSame()
+    return self.maxwater == self.sections
+end
+
+function Waterlevel:GetSection()
+    return self:IsSame() and math.floor(self:GetPercent()* self.sections) or math.floor(self:GetPercent()* self.sections)+1
+end
+
 function Waterlevel:GetCurrentSection()
-    return self:IsEmpty() and 0 or self:IsSame() and math.min( math.ceil(self:GetPercent()* self.sections), self.sections) or math.min( math.ceil(self:GetPercent()* self.sections)+1, self.sections)
+    return self:IsEmpty() and 0 or math.min(self:GetSection(), self.sections)
 end
 
 function Waterlevel:ChangeSection(amount)
@@ -188,6 +193,8 @@ function Waterlevel:DoDiistiller(item, doer)
         return
     end
 
+    self.inst.components.distiller.done = true
+
     local watervalue = self:GetWater()
     local isDirtyIce = self.watertype == WATERTYPE.DIRTY_ICE
 
@@ -201,11 +208,7 @@ function Waterlevel:DoDiistiller(item, doer)
         elseif item.components.perishable:IsSpoiled() then
             watervalue = watervalue / 2
             self.inst.components.distiller.done = false
-        else
-            self.inst.components.distiller.done = true
         end
-    else
-        self.inst.components.distiller.done = true
     end
 
     if not self.inst.components.distiller.done then
@@ -228,6 +231,12 @@ function Waterlevel:DoDiistiller(item, doer)
 end
 
 function Waterlevel:TakeWaterItem(item, doer)
+    if self.onlysamewater and self.currentwater > 0 then
+        if self.watertype ~= nil and self.watertype ~= item.components.water:GetWatertype() then
+            return false
+        end
+    end
+
     local campkettle = nil
     local watervalue = item.components.water:GetWater()
     self:SetWaterType(item.components.water:GetWatertype())
@@ -244,7 +253,7 @@ function Waterlevel:TakeWaterItem(item, doer)
 
     if self.inst.components.waterspoilage and item.components.perishable then
         self.inst.components.waterspoilage:SetMaxFreshness(item.components.perishable.perishtime)
-        self.inst.components.waterspoilage:Dilute(watervalue, item.components.perishable.perishremainingtime)
+        self.inst.components.waterspoilage:Dilute(item.components.perishable.perishremainingtime)
     end
 
     local delta = self.currentwater - self.oldcurrentwater

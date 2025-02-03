@@ -4,7 +4,7 @@ local prefabs =
 }
 
 local function GetHealthvalue(inst, eater)
-    if eater:HasTag("valkyrie") then
+    if eater and eater:HasTag("valkyrie") then
         if inst:HasTag("veggietype") or inst:HasTag("fruittype") or inst:HasTag("leavestype") then
             return inst.components.edible.healthvalue *.25
         end
@@ -13,7 +13,7 @@ local function GetHealthvalue(inst, eater)
 end
 
 local function GetSanityvalue(inst, eater)
-    if eater:HasTag("valkyrie") then
+    if eater and eater:HasTag("valkyrie") then
         if inst:HasTag("veggietype") or inst:HasTag("fruittype") or inst:HasTag("leavestype") then
             return inst.components.edible.sanityvalue *.25
         end
@@ -46,7 +46,7 @@ local function MakePreparedDrink(data)
 	end
 
     local function OnStackSizeChanged(inst, data)
-        if data ~= nil then
+        if data ~= nil and not inst:HasTag("disinfectant") then
             if inst.components.perishable ~= nil and data.stacksize >= 20 then
                 inst.components.perishable:SetLocalMultiplier(0.5)
             else
@@ -88,16 +88,15 @@ local function MakePreparedDrink(data)
 
         MakeInventoryPhysics(inst)
 
+        inst.minisign_atlas = "minisign_dehy_drinks_swap"
+        inst.minisign_prefab_name = true
+
 		local food_symbol_build = nil
 		inst.AnimState:SetBuild("kettle_drink")
 		inst.AnimState:SetBank("kettle_drink")
 
         inst.AnimState:PlayAnimation("idle")
         inst.AnimState:OverrideSymbol("swap", data.overridebuild or "kettle_drink", data.basename or data.name)
-
-        inst:AddTag("drink")
-        inst:AddTag("preparedfood")
-        inst:AddTag("prepareddrink")
 
         if data.tags ~=nil then
         	for i,v in pairs(data.tags) do
@@ -106,8 +105,13 @@ local function MakePreparedDrink(data)
         end
 
         if not inst:HasTag("common") then
-        	inst:AddTag("show_spoiled")
-        	inst:AddTag("icebox_valid")
+            inst:AddTag("drink")
+            inst:AddTag("drink_icebox_valid")
+            inst:AddTag("preparedfood")
+            inst:AddTag("prepareddrink")
+            inst:AddTag("show_spoiled")
+            inst:AddTag("icebox_valid")
+            inst:AddTag("cocktail_ingredients")
         end
 
         if inst:HasTag("lightdrink") then
@@ -168,6 +172,10 @@ local function MakePreparedDrink(data)
         inst.components.water.returnprefab = "cup"]]
 
 		inst:AddComponent("inventoryitem")
+        inst.components.inventoryitem.atlasname = data.atlas or "images/tea_inventoryitem_drinks.xml"
+        if data.OnPutInInventory then
+            inst:ListenForEvent("onputininventory", data.OnPutInInventory)
+        end
 
         if data.basename ~= nil then
             inst.components.inventoryitem:ChangeImageName(data.basename)
@@ -176,24 +184,36 @@ local function MakePreparedDrink(data)
         inst:AddComponent("stackable")
         inst.components.stackable.maxsize = TUNING.STACK_SIZE_TINYITEM
 
-        if data.perishtime ~= nil and data.perishtime > 0 then
+        if data.perishtime ~= nil and data.perishtime > 0 and not inst:HasTag("disinfectant") then
             inst:AddComponent("perishable")
             inst.components.perishable:SetPerishTime(data.perishtime)
             inst.components.perishable:StartPerishing()
             inst.components.perishable.onperishreplacement = "spoiled_drink"
         end
 
-        if inst:HasTag("explosive") then
-            MakeSmallBurnable(inst, 3 + math.random() * 3)
+        if inst:HasTag("spirits") then
+            local burntime = TUNING.LARGE_BURNTIME
+            local isexplosive = inst:HasTag("explosive")
+
+            if isexplosive then
+                burntime = 3 + math.random() * 3
+
+                inst:AddComponent("explosive")
+                inst.components.explosive:SetOnExplodeFn(OnExplodeFn)
+                inst.components.explosive.explosivedamage = TUNING.GUNPOWDER_DAMAGE
+            end
+
+            MakeSmallBurnable(inst, burntime)
             MakeSmallPropagator(inst)
 
-            inst.components.burnable:SetOnBurntFn(nil)
-            inst.components.burnable:SetOnIgniteFn(OnIgniteFn)
-            inst.components.burnable:SetOnExtinguishFn(OnExtinguishFn)
+            if isexplosive then
+                inst.components.burnable:SetOnBurntFn(nil)
+                inst.components.burnable:SetOnIgniteFn(OnIgniteFn)
+                inst.components.burnable:SetOnExtinguishFn(OnExtinguishFn)
+            end
 
-            inst:AddComponent("explosive")
-            inst.components.explosive:SetOnExplodeFn(OnExplodeFn)
-            inst.components.explosive.explosivedamage = TUNING.GUNPOWDER_DAMAGE
+            inst:AddComponent("fuel")
+            inst.components.fuel.fuelvalue = TUNING.MED_FUEL
         end
 
         MakeDynamicCupImage(inst, "swap", "kettle_drink")
@@ -218,6 +238,10 @@ end
 local prefs = {}
 
 for k, v in pairs(require("prepareddrinks")) do
+    table.insert(prefs, MakePreparedDrink(v))
+end
+
+for k, v in pairs(require("prepareddrinks_warly")) do
     table.insert(prefs, MakePreparedDrink(v))
 end
 

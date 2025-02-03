@@ -160,8 +160,30 @@ local function main_fn()
     return inst
 end
 
+local NEED_TAGS = {"water_hole"}
+local range = 3.2
+
+local function GetValidWaterPointNearby(inst, pt)
+    local best_point = nil
+    local min_sq_dist = 999999999999
+    local ents = TheSim:FindEntities(pt.x, pt.y, pt.z, range, NEED_TAGS)
+    for i, v in ipairs(ents) do
+        local ex, ey, ez = v.Transform:GetWorldPosition()
+        if TheWorld.Map:IsAboveGroundAtPoint(pt.x, pt.y, pt.z, false) then
+            local cur_point = Vector3(ex, 0, ez)
+            local cur_sq_dist = cur_point:DistSq(pt)
+            if cur_sq_dist < min_sq_dist then
+                min_sq_dist = cur_sq_dist
+                best_point = cur_point
+            end
+        end
+    end
+
+    return best_point
+end
+
 local function PlaceTestFn(inst, pt, mouseover, deployer)
-    return TheWorld.Map:IsAboveGroundAtPoint(pt.x, pt.y, pt.z, false) and not TheWorld.Map:IsDockAtPoint(pt.x, 0, pt.z)
+    return GetValidWaterPointNearby(inst, pt) == nil and TheWorld.Map:IsAboveGroundAtPoint(pt.x, pt.y, pt.z, false) and not TheWorld.Map:IsDockAtPoint(pt.x, 0, pt.z) and TheWorld.Map:CanDeployPlantAtPoint(pt, inst)
 end
 
 local function ondeploy(inst, pt, deployer)
@@ -187,6 +209,9 @@ local function item_fn()
 
     MakeInventoryPhysics(inst)
 
+    inst.minisign_atlas = "minisign_dehy_items_swap"
+    inst.minisign_prefab_name = true
+
     inst.AnimState:SetBank("well_drilling")
     inst.AnimState:SetBuild("well_drilling")
     inst.AnimState:PlayAnimation("idle_packed")
@@ -210,6 +235,7 @@ local function item_fn()
     inst.components.inventoryitem.imagename= "well_drilling_item"
 
     inst:AddComponent("deployable")
+    inst.components.deployable.spacing = 4.5
     inst.components.deployable:SetDeployMode(DEPLOYMODE.CUSTOM)
     inst.components.deployable.ondeploy = ondeploy
 

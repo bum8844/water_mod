@@ -1,14 +1,21 @@
 name 						= "Don't Starve: Dehydrated"
-version 					= "Alpha 1.1.9g"
+version 					= "Alpha 1.2.7c.1"
+local info_version = "Version "..version.."\n"
 
-description = (
-	"Description coming soon..."
-	)
+description = info_version..[[
+With Don't Starve: Dehydrated hunger is not the only threat coming for you.
+
+You will have to explore the Constant and gather materials to quench your thirst if you want to survive. 
+
+You can and should concoct your beverages in a teapot or a brewing stand instead of drinking unrefined sea water.
+
+Another tool for survival is a book that you could accumulate information in about a variety of plants and edible food, even favorites!
+]]
 forumthread = ""
 author 						= ""
 forumthread 				= ""
 api_version 				= 10
-priority 					= -10001
+priority 					= -10000010001
 
 dont_starve_compatible 		= false
 reign_of_giants_compatible 	= false
@@ -41,14 +48,38 @@ configuration_options =
 	{
 		name = "locale",
 		label = "Language",
+		hover = "",
 		options =
 		{
 			{description = "Auto", data = false},
-			{description = "English", data = "en"},
-			{description = "한국어", data = "ko"},
-			{description = "Español", data = "es"},
+			{description = "English", data = "en", hover="By lord lee"},
+			{description = "한국어", data = "ko", hover="기본지원"},
+			{description = "Tiếng Việt", data = "vi", hover="Bởi Shinosan"},
+			{description = "Español", data="es", hover="Traducido por Deimos y RavenCorwen"},
 		},
 		default = false,
+	},
+	{
+		name = "useinsight",
+		label = "Use Insight",
+		hover = "",
+		options =
+		{
+			{description = "No", data = false},
+			{description = "YES", data = true},
+		},
+		default = true,
+	},
+	{
+		name = "useshowme",
+		label = "Use ShowMe",
+		hover = "",
+		options =
+		{
+			{description = "No", data = false},
+			{description = "YES", data = true},
+		},
+		default = true,
 	},
 	SEPARATOR,
 	Title("WorldGen options"),
@@ -93,6 +124,19 @@ configuration_options =
 			{description = "Lots", data = 1.9},
 		},
 		default = 1.2,
+	},
+	{
+		name = "re_retrofit",
+		label = "Re Retrofit Plants",
+		hover = "When re-applying this mode",
+		options = {
+			{description = "Not Need", data = 0},
+			{description = "All", data = 1},
+			{description = "Only Tree Trees", data = 2},
+			{description = "Only Coffee Plants", data = 3},
+			{description = "Only Cacao Plants", data = 4},
+		},
+		default = 0,
 	},
 	SEPARATOR,
 	Title("Thirst options"),
@@ -358,5 +402,20 @@ configuration_options =
 			{description = "Longer", data = 1},
 		},
 		default = .25
+	},
+	SEPARATOR,
+	Title("Satiety Effect"),
+	{
+		name = "satiety_time",
+		label = "Duration",
+		options =
+		{
+			{description = "Shorter", data = .125},
+			{description = "Short", data = .25},
+			{description = "Default", data = .5},
+			{description = "Long", data = .625},
+			{description = "Longer", data = .75},
+		},
+		default = .5
 	},
 }

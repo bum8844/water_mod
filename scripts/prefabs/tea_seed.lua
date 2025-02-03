@@ -20,9 +20,13 @@ local function tealeaves()
     inst.entity:AddAnimState()
     inst.entity:AddNetwork()
 
+    inst.minisign_atlas = "minisign_dehy_items_swap"
+
     inst.AnimState:SetBank("tealeaves")
     inst.AnimState:SetBuild("tealeaves")
     inst.AnimState:PlayAnimation("idle_tealeaves")
+
+    inst:AddTag("cocktail_ingredients")
 
     inst.pickupsound = "vegetation_grassy"
 
@@ -74,9 +78,13 @@ local function tealeaves_dried()
     inst.entity:AddAnimState()
     inst.entity:AddNetwork()
 
+    inst.minisign_atlas = "minisign_dehy_items_swap"
+
     inst.AnimState:SetBank("tealeaves")
     inst.AnimState:SetBuild("tealeaves")
     inst.AnimState:PlayAnimation("idle_tealeaves_dried")
+
+    inst:AddTag("cocktail_ingredients")
 
     inst.pickupsound = "vegetation_grassy"
 
@@ -120,9 +128,13 @@ local function tea_seed_cooked()
     inst.entity:AddAnimState()
     inst.entity:AddNetwork()
 
+    inst.minisign_atlas = "minisign_dehy_items_swap"
+
     inst.AnimState:SetBank("tea_seed")
     inst.AnimState:SetBuild("tea_tree_seed")
     inst.AnimState:PlayAnimation("cooked")
+
+    inst:AddTag("cocktail_ingredients")
 
     MakeInventoryPhysics(inst)
 
@@ -271,9 +283,13 @@ local function tea_seed()
     inst.entity:AddAnimState()
     inst.entity:AddNetwork()
 
+    inst.minisign_atlas = "minisign_dehy_items_swap"
+
     inst.AnimState:SetBank("tea_seed")
     inst.AnimState:SetBuild("tea_tree_seed")
     inst.AnimState:PlayAnimation("idle")
+
+    inst:AddTag("cocktail_ingredients")
 
     MakeInventoryPhysics(inst)
 

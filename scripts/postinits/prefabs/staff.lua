@@ -12,36 +12,49 @@ local function Spawnhole(target)
 end
 
 local function destroystructure(staff, target)
-	if target.onhole or target.components.steampressure then
-		Spawnhole(target)
-	elseif target.pipes and target.pipes[1] ~= nil then
-		RetractPipes(target)
-	elseif target.components.wateringstructure then
-		local wateringtool = target.components.wateringstructure:GetWateringTool()
-		if wateringtool then
-			local toolfiniteuses = target.components.wateringstructure:GetToolFiniteuses()
-			local wateramount = target.components.wateringstructure:GetWaterAmount() or 0
-			local root = target.components.pickable.product
+	if target:HasTag("hashole") then
+		if target.components.wateringstructure then
+			local wateringtool = target.components.wateringstructure:GetWateringTool()
+			if wateringtool then
+				local toolfiniteuses = target.components.wateringstructure:GetToolFiniteuses()
+				local wateramount = target.components.wateringstructure:GetWaterAmount() or 0
+				local root = target.components.pickable.product
 
-			while wateramount > 0 do
-	        	if wateramount > 0 then
-	            	target.components.lootdropper:SpawnLootPrefab(root)
-	        	end
-	        	wateramount = wateramount - 1
-	    	end
-			if toolfiniteuses > 0 then
-				local x, y, z = target.Transform:GetWorldPosition()
-		   		local refund = nil
+				while wateramount > 0 do
+		        	if wateramount > 0 then
+		            	target.components.lootdropper:SpawnLootPrefab(root)
+		        	end
+		        	wateramount = wateramount - 1
+		    	end
+				if toolfiniteuses > 0 then
+					local x, y, z = target.Transform:GetWorldPosition()
+			   		local refund = nil
 
-				refund = SpawnPrefab(wateringtool)
-				refund.components.finiteuses:SetUses(toolfiniteuses)
+					refund = SpawnPrefab(wateringtool)
+					refund.components.finiteuses:SetUses(toolfiniteuses)
 
-				LaunchAt(refund,target,target,-1.8,0.5,nil,65)
+					LaunchAt(refund,target,target,-1.8,0.5,nil,65)
+				end
 			end
 		end
 		Spawnhole(target)
+	elseif target:HasTag("haspipe") then
+		RetractPipes(target)
 	end
 	staff.components.spellcaster.spell_old(staff, target)
+	if target.prefab == "wine_cellar" then
+		local pt = target:GetPosition()
+		local ents = TheSim:FindEntities(pt.x, pt.y, pt.z, 2, {"projectile"})
+		local num = 0
+		for k, v in pairs(ents) do
+			if v.prefab == "gelblob_bottle" and not (num >= 4) then
+	            if not (v.components.stackable.stacksize > 1) then
+	            	num = num + 1
+	                v.components.complexprojectile.onhitfn(v)
+	            end
+			end
+		end
+	end
 end
 
 local GREENHAUNT_CANT_TAGS = { "INLIMBO" }

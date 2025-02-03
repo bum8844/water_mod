@@ -2,6 +2,7 @@ WATERTYPE =
 {
 	CLEAN = "water_clean",
 	DIRTY = "water_dirty",
+	MINERAL = "water_mineral",
 	CLEAN_ICE = "water_clean_ice",
 	DIRTY_ICE = "water_dirty_ice",
 	SALTY = "water_salty",
@@ -16,6 +17,7 @@ WATERGROUP =
 		types =
 		{
 			WATERTYPE.CLEAN,
+			WATERTYPE.MINERAL,
 			WATERTYPE.DIRTY,
 			WATERTYPE.SALTY,
 		}
@@ -37,6 +39,7 @@ WATERGROUP =
 		types =
 		{
 			WATERTYPE.CLEAN,
+			WATERTYPE.MINERAL,
 			WATERTYPE.DRINK,
 		},
 	},
@@ -47,6 +50,7 @@ WATERGROUP =
 		types =
 		{
 			WATERTYPE.CLEAN,
+			WATERTYPE.MINERAL,
 			WATERTYPE.DIRTY,
 			WATERTYPE.CLEAN_ICE,
 			WATERTYPE.DIRTY_ICE,
@@ -78,6 +82,9 @@ DRINKTYPY =
 	FRUIT = "FRUIT",
 	VEGGIE = "VEGGIE",
 	LEAFS = "LEAFS",
+	BREWER = "BREWER",
+	SPIRITS = "SPIRITS",
+	MEDICINE = "MEDICINE",
 }
 
 FOODTYPEGROUP = 
@@ -140,6 +147,9 @@ FOODTYPEGROUP =
 		"mfp_radish",
 		"mfp_sweetpotato",
 		"mfp_white_cap",
+		--ac
+		"tuber_bloom_crop",
+		"tuber_crop"
 	},
 
 	TYPEVEGGIE_NONE_COOKED = 
@@ -152,6 +162,9 @@ FOODTYPEGROUP =
 		"mfp_parsnip_eaten",
 		--fwd
 		"fwd_in_pdt_food_soybeans",
+		--ac
+		"bramble_bulb",
+		"clippings",
 	},
 
 	TYPEFRUIT = 
@@ -166,11 +179,11 @@ FOODTYPEGROUP =
 		"watermelon",
 		"wormlight",
 		"wormlight_lesser",
+		"ancientfruit_nightvision",
 		--mod_ingredients
 		"banana",
 		"strawberry",
 		"orange",
-		"cherry",
 		--hop
 		"kyno_banana",
 		--mfp
@@ -186,6 +199,13 @@ FOODTYPEGROUP =
 		"cherry_roseberries",
 		"cherry_gooseberries",
 		"cherryruins_swanapple",
+		--umc
+		"giant_blueberry",
+		"zaspberry",
+		"viperfruit",
+		--legion
+		"pineananas",
+		"squamousfruit"
 	},
 
 	TYPEFRUIT_HAS_HALVED = 
@@ -196,6 +216,7 @@ FOODTYPEGROUP =
 		--hop
 		"kyno_kokonut",
 		"kyno_coconut",
+		"kyno_pineapple",
 	},
 
 	SOUP_AND_STEW = 
@@ -306,22 +327,19 @@ FOODTYPEGROUP =
 		--cf
 		"cherry_gooseberries_preserve",
 		"cherry_shrimp_chowder",
+		--cgc
+		"bigcrop_cornporridge",
+		"bigcrop_pumpkinsoup",
+		"bigcrop_spidersoup",
+		"bigcrop_tomatosoup",
 	},
 
 	NONE_HUNGER_INGREDIENT = 
 	{
-		TINYMICROSCOPIC = 
-		{
+		SUPERTINYMICROSCOPIC = {
 			"petals",
-			"petals_evil",
 			"foliage",
-			"butterflywings",
-			"kyno_sugarflywings",
-			"firenettles",
-			"tillweed",
-			"forgetmelots",
 			"lightbulb",
-			"succulent_picked",
 			--mod_ingredients
 			"petals_rose",
 			"petals_lily",
@@ -329,7 +347,18 @@ FOODTYPEGROUP =
 			--hop
 			"kyno_foliage",
 			"kyno_sugartree_petals",
-		}
+		},
+		TINYMICROSCOPIC = 
+		{
+			"petals_evil",
+			"butterflywings",
+			"firenettles",
+			"tillweed",
+			"forgetmelots",
+			"succulent_picked",	
+			--hop	
+			"kyno_sugarflywings",	
+		},
 	},
 
 	INGREDIENT_DRINKABLE = 
@@ -339,6 +368,7 @@ FOODTYPEGROUP =
 			--mod_ingredients
 			"molasses",
 			"fruit_syrup",
+			"syrup",
 			--hop
 			"kyno_syrup",
 			"kyno_oil",
@@ -403,6 +433,8 @@ FOODTYPEGROUP =
 			"berrysundae",
 			"frozenbananadaiquiri",
 			"cherry_sorbet",
+			--cgc
+			"bigcrop_duriancream",
 		},
 	},
 
@@ -427,6 +459,8 @@ FOODTYPEGROUP =
 			"sweettea",
 			"vegstinger",
 			--mod_foods
+			"peach_juice_bottle_green",
+			"peach_smoothie",
 			"spicyvegstinger",
 			"dish_chilledrosejuice",
 			"pina_colada",
@@ -435,6 +469,7 @@ FOODTYPEGROUP =
 			"juice_waterberry",
 			"fruit_truffle",
 			"tea_floral",
+			"fruityjuice",
 			"icedtea",
 			"tea",
 			"zaspberryparfait",
@@ -446,6 +481,8 @@ FOODTYPEGROUP =
 			"figjuice",
 			"teagreen",
 			"teared",
+			"pinacolada",
+			"chimas",
 			--mfp
 			"mfp_cafelatte",
 			"mfp_cafemocha",
@@ -457,6 +494,8 @@ FOODTYPEGROUP =
 
 		MED = {
 			"gazpacho",
+			--mod_foods
+			"potion_bottle_green",
 			--fwd
 			"fwd_in_pdt_food_cooked_milk",
 		},
@@ -464,36 +503,36 @@ FOODTYPEGROUP =
 		LARGE = 
 		{	
 			--hop
-			"juice_aloe",
-			"juice_asparagus",
-			"juice_avovado",
-			"juice_bluecap",
-			"juice_cactus",
 			"juice_carrot",
 			"juice_corn",
-			"juice_cucumber",
 			"juice_eggplant",
-			"juice_fennel",
-			"juice_garlic",
-			"juice_greencap",
-			"juice_kelp",
+			"juice_pumpkin",
 			"juice_lichen",
-			"juice_lotus",
-			"juice_mooncap",
+			"juice_cactus",
+			"juice_garlic",
+			"juice_asparagus",
 			"juice_onion",
-			"juice_parznip",
-			"juice_pepper",
-			"juice_potato",
-			"juice_pumpkim",
-			"juice_radish",
-			"juice_redcap",
-			"juice_seaweeds",
-			"juice_sweetpotato",
-			"juice_taroroot",
 			"juice_tomato",
-			"juice_turnip",
-			"juice_waterycress",
+			"juice_potato",
+			"juice_pepper",
+			"juice_redcap",
+			"juice_greencap",
+			"juice_bluecap",
+			"juice_mooncap",
+			"juice_kelp",
+			"juice_avocado",
 			"juice_whitecap",
+			"juice_aloe",
+			"juice_radish",
+			"juice_sweetpotato",
+			"juice_lotus",
+			"juice_seaweeds",
+			"juice_taroroot",
+			"juice_waterycress",
+			"juice_cucumber",
+			"juice_parznip",
+			"juice_turnip",
+			"juice_fennel",
 			"milkshake",
 			"milkshake_prismatic",
 			--mfp
@@ -503,15 +542,30 @@ FOODTYPEGROUP =
 			"fwd_in_pdt_food_mango_ice_drink",
 			--cf
 			"cherry_cola",
+			--cgc
+			"bigcrop_fruitdrink",
+			"bigcrop_garlicsauce",
+			"bigcrop_hotsauce",
 		},
 		
 		HUGE = 
 		{
 			--hop
+			"nukacola",
 			"kyno_cokecan",
 			"kyno_energycan",
 			"kyno_sodacan",
 		},
+
+		MOREHUGE = 
+		{
+			"nukacola_quantum",
+		},
+
+		SUPERHUGE =
+		{
+			"waterdrop",
+		}
 	},
 
 	DRINKABLE_ALCOHO = 
@@ -526,10 +580,28 @@ FOODTYPEGROUP =
 			"liquor",
 			"daiquiri",
 			--hop
+			"wine_berries",
+			"wine_berries_juicy",
+			"wine_pomegranate",
+			"wine_dragonfruit",
+			"wine_cave_banana",
+			"wine_durian",
+			"wine_watermelon",
+			"wine_fig",
+			"wine_glowberry",
+			"wine_banana",
+			"wine_kokonut",
+			"wine_pineapple",
+			"wine_nightberry",
 			"beer",
-			"mead",
 			"paleale",
-			"twistedtequile",
+			"mead",
+			"twistedtequila",
+			"ricesake"
+		},
+
+		HUGE = {
+			"nukashine",
 		},
 
 		SUPERHUGE = 

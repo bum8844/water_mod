@@ -1,3 +1,14 @@
+local ANCIENTFRUIT_NIGHTVISION_COLOURCUBES =
+{
+    day = "images/colour_cubes/nightvision_fruit_cc.tex",
+    dusk = "images/colour_cubes/nightvision_fruit_cc.tex",
+    night = "images/colour_cubes/nightvision_fruit_cc.tex",
+    full_moon = "images/colour_cubes/nightvision_fruit_cc.tex",
+
+    nightvision_fruit = true, -- NOTES(DiogoW): Here for convinience.
+}
+
+
 local function Dodetox(inst, target)
     target.components.debuffable:RemoveDebuff("alcoholdebuff")
     target.components.debuffable:RemoveDebuff("drunkarddebuff")
@@ -250,9 +261,14 @@ local function fn_obe()
     return inst
 end
 
+-------------------------------------------------------------------------------------
+
 local function OnAttached_caffein(inst, target)
     target:PushEvent("foodbuffattached", { buff = "ANNOUNCE_CAFFINE_BUFF_START", priority = 1 })
     inst.components.timer:StartTimer("caffeinbuff_done", target.caffeinbuff_duration or TUNING.CAFFEIN_TIME)
+    if target.caffeinbuff_duration then
+        target.caffeinbuff_duration = nil
+    end
     inst.entity:SetParent(target.entity)
     inst.Transform:SetPosition(0, 0, 0)
     if target.components.locomotor ~= nil then
@@ -274,6 +290,9 @@ end
 local function OnExtended_caffein(inst, target)
     inst.components.timer:StopTimer("caffeinbuff_done")
     inst.components.timer:StartTimer("caffeinbuff_done", target.caffeinbuff_duration or TUNING.CAFFEIN_TIME)
+    if target.caffeinbuff_duration then
+        target.caffeinbuff_duration = nil
+    end
 end
 
 local function OnTimerDone_caffein(inst, data)
@@ -306,6 +325,8 @@ local function fn_caffein()
 
     return inst
 end
+
+-------------------------------------------------------------------------------------------------
 
 local function OnAttached_alcohol(inst, target)
     inst.entity:SetParent(target.entity)
@@ -345,12 +366,13 @@ local function OnDetached_alcohol(inst, target)
     end
     inst:Remove()
 end
-local function checkcharging(eater)
-    return inst.components.upgrademoduleowner and inst.components.upgrademoduleowner:ChargeIsMaxed()
+
+local function checkcharging(target)
+    return target.components.upgrademoduleowner and target.components.upgrademoduleowner:ChargeIsMaxed()
 end
 
 local function OnExtended_alcohol(inst, target)
-    if not eater:HasTag("mightiness_mighty") or not checkcharging(eater) then
+    if not target:HasTag("mightiness_mighty") or not checkcharging(target) then
         inst.components.timer:StopTimer("alcoholdebuff_done")
         inst.components.timer:StartTimer("alcoholdebuff_done", TUNING.INTOXICATION_TIME)
     end
@@ -387,6 +409,8 @@ local function fn_alcohol()
 
     return inst
 end
+
+------------------------------------------------------------------------------------------------
 
 local function OnAttached_immune(inst, target)
     target._has_immune = true
@@ -546,7 +570,7 @@ local function OnTick_thirstregen(inst, target)
     if target.components.health ~= nil and target.components.thirst ~= nil and
             not target.components.health:IsDead() and
             not target:HasTag("playerghost") then
-        local thirstabsorption = (target.components.eater ~= nil and target.components.eater.thirstabsorption)
+        local thirstabsorption = (target.components.target ~= nil and target.components.target.thirstabsorption)
                 or 1.0
 
         local delta = TUNING.HUNGERREGEN_TICK_VALUE * thirstabsorption
@@ -657,7 +681,7 @@ local function OnTick_waterborne(inst, target)
         and not target.components.health:IsDead()
         and target.components.sanity ~= nil
         and not target:HasTag("playerghost") then
-        local healthabsorption = (target.components.eater ~= nil and target.components.eater.healthabsorption)
+        local healthabsorption = (target.components.target ~= nil and target.components.target.healthabsorption)
                 or 1.0
         local delta = 1 * healthabsorption
         target.components.health:DoDelta(-delta, nil, inst.prefab)
@@ -722,7 +746,7 @@ local function OnKilled(inst, data)
     local victim = data.victim
     if data ~= nil and victim ~= nil and victim:HasTag("butterfly") and victim:HasTag("pollinator") then
         if victim.components.lootdropper ~= nil then
-            victim.components.lootdropper:AddChanceLoot("butter", 0.5)
+            victim.components.lootdropper.randomloot[1].weight = 1.35
         end
     end
 end
@@ -733,8 +757,8 @@ local function OnAttached_butterhunter(inst, target)
     if target.components.health ~= nil and
     not target.components.health:IsDead() and
     not target:HasTag("playerghost") then
-        inst:ListenForEvent("killed", OnKilled, target)
-        inst:AddTag("butterhunter")
+        target:ListenForEvent("killed", OnKilled, target)
+        target:AddTag("butterhunter")
     end
     inst:ListenForEvent("death", function()
         inst.components.debuff:Stop()
@@ -756,13 +780,13 @@ local function OnDetached_butterhunter(inst, target)
     if target.components.health ~= nil and
     not target.components.health:IsDead() and
     not target:HasTag("playerghost") then
-        inst:RemoveEventCallback("killed", OnKilled, target)
-        inst:RemoveTag("butterhunter")
+        target:RemoveEventCallback("killed", OnKilled, target)
+        target:RemoveTag("butterhunter")
     end
     inst:Remove()
 end
 
-local function butterhunter_fn()
+local function fn_butterhunter()
     local inst = CreateEntity()
 
     if not TheWorld.ismastersim then
@@ -792,6 +816,219 @@ local function butterhunter_fn()
     return inst
 end
 
+local function OnAttached_satiety(inst, target)
+    --target:PushEvent("foodbuffattached", { buff = "ANNOUNCE_SATIETY_BUFF_START", priority = 1 })
+    inst.entity:SetParent(target.entity)
+    inst.Transform:SetPosition(0, 0, 0)
+    if target.components.hunger ~= nil then
+        target.components.hunger.burnratemodifiers:SetModifier(inst, TUNING.ARMORSLURPER_SLOW_HUNGER)
+    end
+    inst:ListenForEvent("death", function()
+        inst.components.debuff:Stop()
+    end, target)
+end
+
+local function OnDetached_satiety(inst, target)
+    --target:PushEvent("foodbuffdetached", { buff = "ANNOUNCE_SATIETY_BUFF_STOP", priority = 1 })
+    if target.components.hunger ~= nil then
+        target.components.hunger.burnratemodifiers:RemoveModifier(inst)
+    end
+    inst:Remove()
+end
+
+local function OnExtended_satiety(inst, target)
+    inst.components.timer:StopTimer("satietybuff_done")
+    inst.components.timer:StartTimer("satietybuff_done", TUNING.SATIETY_DURATION)
+end
+
+local function OnTimerDone_satiety(inst, data)
+    if data.name == "satietybuff_done" then
+        inst.components.debuff:Stop()
+    end
+end
+
+local function fn_satiety()
+    if not TheWorld.ismastersim then 
+        return 
+    end
+
+    local inst = CreateEntity()
+    inst.entity:AddTransform()
+    inst.entity:Hide()
+  
+    inst.persists = false
+
+    inst:AddTag("CLASSIFIED")
+
+    inst:AddComponent("debuff")
+    inst.components.debuff:SetAttachedFn(OnAttached_satiety)
+    inst.components.debuff:SetDetachedFn(OnDetached_satiety)
+    inst.components.debuff:SetExtendedFn(OnExtended_satiety)
+    inst.components.debuff.keepondespawn = true
+
+    inst:AddComponent("timer")
+    inst.components.timer:StartTimer("satietybuff_done", TUNING.SATIETY_DURATION)
+    inst:ListenForEvent("timerdone", OnTimerDone_satiety)
+
+    return inst
+end
+
+local function OnAttached_GoodNightVision(inst, target)
+    inst.entity:SetParent(target.entity)
+    inst.Transform:SetPosition(0, 0, 0)
+
+    if target.gnv_muit then
+        inst.muit = target.gnv_muit
+        target.gnv_muit = nil
+    else
+        inst.muit = 1
+    end
+
+    inst:ListenForEvent("death", function()
+        inst.components.debuff:Stop()
+    end, target)
+
+    if target.components.playervision ~= nil then
+        target.components.playervision:PushForcedNightVision(inst, 1, ANCIENTFRUIT_NIGHTVISION_COLOURCUBES, true)
+        inst._enabled:set(true)
+    end
+end
+
+local function OnDetached_GoodNightVision(inst, target)
+    if target ~= nil and target:IsValid() then
+        if target.components.playervision ~= nil then
+            target.components.playervision:PopForcedNightVision(inst)
+            inst._enabled:set(false)
+        end
+    end
+    -- NOTES(DiogoW): Delayed removal to let the client run the dirty event.
+    inst:DoTaskInTime(10*FRAMES, inst.Remove)
+end
+
+local function Expire_GoodNightVision(inst)
+    if inst.components.debuff ~= nil then
+        inst.components.debuff:Stop()
+    end
+end
+
+local function OnExtended_GoodNightVision(inst,target)
+
+    local timer = TUNING.ANCIENTTREE_NIGHTVISION_FRUIT_BUFF_DURATION
+
+    if inst.task ~= nil then
+        inst.task:Cancel()
+        inst.task = nil
+    end
+
+    if target.gnv_muit then
+        inst.muit = target.gnv_muit
+        timer = timer*target.gnv_muit
+        target.gnv_muit = nil
+    else
+        inst.muit = 1
+        timer = timer*inst.muit
+    end
+    inst.task = inst:DoTaskInTime(timer, Expire_GoodNightVision)
+end
+
+local function Start_GoodNightVision(inst)
+    local timer = TUNING.ANCIENTTREE_NIGHTVISION_FRUIT_BUFF_DURATION*inst.muit
+
+    if inst.task ~= nil then
+        inst.task:Cancel()
+        inst.task = nil
+    end
+
+    inst.task = inst:DoTaskInTime(timer, Expire_GoodNightVision)
+end
+
+local function OnSave_GoodNightVision(inst, data)
+    if inst.task ~= nil then
+        data.remaining = GetTaskRemaining(inst.task)
+    end
+end
+
+local function OnLoad_GoodNightVision(inst, data)
+    if data == nil then
+        return
+    end
+
+    if data.remaining then
+        if inst.task ~= nil then
+            inst.task:Cancel()
+            inst.task = nil
+        end
+
+        inst.task = inst:DoTaskInTime(data.remaining, Expire_GoodNightVision)
+    end
+end
+
+local function OnLongUpdate_GoodNightVision(inst, dt)
+    if inst.task == nil then
+        return
+    end
+
+    local remaining = GetTaskRemaining(inst.task) - dt
+
+    inst.task:Cancel()
+
+    if remaining > 0 then
+        inst.task = inst:DoTaskInTime(remaining, Expire_GoodNightVision)
+    else
+        Expire_GoodNightVision(inst)
+    end
+end
+
+local function OnEnabledDirty_GoodNightVision(inst)
+    if ThePlayer ~= nil and inst.entity:GetParent() == ThePlayer and ThePlayer.components.playervision ~= nil then
+        if inst._enabled:value() then
+            ThePlayer.components.playervision:PushForcedNightVision(inst, 1, ANCIENTFRUIT_NIGHTVISION_COLOURCUBES, true)
+        else
+            ThePlayer.components.playervision:PopForcedNightVision(inst)
+        end
+    end
+end
+
+local function fn_goodnightvision()
+    local inst = CreateEntity()
+
+    inst.entity:AddTransform()
+    inst.entity:AddNetwork()
+
+    inst:AddTag("CLASSIFIED")
+
+    inst._enabled = net_bool(inst.GUID, "nightvision_buff._enabled", "enableddirty")
+
+    inst.entity:SetPristine()
+
+    if not TheWorld.ismastersim then
+        inst:ListenForEvent("enableddirty", OnEnabledDirty_GoodNightVision)
+
+        return inst
+    end
+
+    inst.entity:Hide()
+
+    inst.muit = 1
+
+    inst.persists = false
+
+    inst:AddComponent("debuff")
+    inst.components.debuff:SetAttachedFn(OnAttached_GoodNightVision)
+    inst.components.debuff:SetDetachedFn(OnDetached_GoodNightVision)
+    inst.components.debuff:SetExtendedFn(OnExtended_GoodNightVision)
+    inst.components.debuff.keepondespawn = true
+
+    Start_GoodNightVision(inst)
+
+    inst.OnSave = OnSave_GoodNightVision
+    inst.OnLoad = OnLoad_GoodNightVision
+
+    inst.OnLongUpdate = OnLongUpdate_GoodNightVision
+
+    return inst
+end
+
 return Prefab("caffeinbuff", fn_caffein),
 Prefab("alcoholdebuff", fn_alcohol),
 Prefab("immunebuff",fn_immune),
@@ -802,4 +1039,6 @@ Prefab("thirstregenbuff", fn_thirstregen),
 Prefab("drunkarddebuff",fn_drunkard),
 Prefab("waterbornedebuff",fn_waterborne),
 Prefab("resistancebuff",fn_resistance),
-Prefab("butterhunterbuff",butterhunter_fn)
+Prefab("butterhunterbuff",fn_butterhunter),
+Prefab("satietybuff",fn_satiety),
+Prefab("goodnightvisionbuff",fn_goodnightvision)
