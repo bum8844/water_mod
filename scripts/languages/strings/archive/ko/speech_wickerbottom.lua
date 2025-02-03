@@ -47,6 +47,7 @@ return {
 		WATER_DIRTY_ICE = "박테리아가 포함된 고체상태의 물이야.", --더러운 얼음물
 
 		SPICE_CAFFEINPEPPER = "과거에는 매우 귀한 향신료였단다.", --후추 향신료
+		SPICE_RUINCOLATE_SPREAD = "", -- 초콜릿 스프레드
 
 		WELL_KIT = "깊은 수맥에서 물을 긷기위해 쓰는 건축재료란다.", --우물 키트
 		WELL_SPRINKLER_KIT = "농사할때 깊은 수맥에서 물을 끌어다쓰는 기계지.", --스프링클러 키트

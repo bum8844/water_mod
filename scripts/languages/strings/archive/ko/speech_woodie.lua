@@ -47,7 +47,8 @@ return {
 		WATER_DIRTY_ICE = "더럽고 얼었있어.", --더러운 얼음물
 
 		SPICE_CAFFEINPEPPER = "고기에는 오직 소금이라고 생각하는데 말이지.", --후추 향신료
-
+		SPICE_RUINCOLATE_SPREAD = "", -- 초콜릿 스프레드
+		
 		WELL_KIT = "내가 손 좀 써보지.", --우물 키트
 		WELL_SPRINKLER_KIT = "완전 전자동인데?", --스프링클러 키트
 		WELL_WATERPUMP_KIT = "이거 참 편리하겠군, 안그래?", --스팀 물펌프 키트

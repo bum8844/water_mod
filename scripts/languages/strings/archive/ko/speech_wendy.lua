@@ -47,6 +47,7 @@ return {
 		WATER_DIRTY_ICE = "더럽고 얼어버린 물이야.",
 
 		SPICE_CAFFEINPEPPER = "나보다도 쓰임새가 많아.",
+		SPICE_RUINCOLATE_SPREAD = "", -- 초콜릿 스프레드
 
 		WELL_KIT = "무겁지만 의욕을 내봐야 겠지.",
 		WELL_SPRINKLER_KIT = "설치할 곳만 알려주면 기계가 알아서 자리를 잡을거야.",

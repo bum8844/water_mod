@@ -47,6 +47,7 @@ return {
 		WATER_DIRTY_ICE = "너 정말 못생겼구나.", --더러운 얼음물
 
 		SPICE_CAFFEINPEPPER = "맘에 안드는 사람 코에서 불을 뿜게 만들어봐야겠어.", --후추 향신료
+		SPICE_RUINCOLATE_SPREAD = "", -- 초콜릿 스프레드
 
 		WELL_KIT = "나 혼자 이걸 다 설치하라고?", --우물 키트
 		WELL_SPRINKLER_KIT = "뭐? 나 보고 이걸 설치하라고?", --스프링클러 키트
