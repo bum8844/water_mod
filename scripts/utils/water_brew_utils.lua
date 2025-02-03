@@ -141,6 +141,32 @@ function IsTealeaves(names, tags)
 		names.kyno_lotus_flower or 
 		names.succulent_picked or
 		tags.lotus or
+		tags.petals_legion or
+		names.mentha_spicata
+	)
+
+end
+function IsMentha_Spicata(names, tags)
+	return names.mentha_spicata and names.mentha_spicata >=2 and 
+	Tea_Def(names, tags) and not 
+	( 
+		names.tealeaves or
+		names.tealeaves_dried or 
+		names.kyno_piko_orange or 
+		names.piko_orange or 
+		names.foliage or
+		names.greenfoliage or
+		names.forgetmelots or
+		names.petals or
+		names.moon_tree_blossom or
+		names.petals_evil or 
+		names.firenettles or 
+		names.tillweed or
+		names.cactus_flower or
+		names.lotus_flower or 
+		names.kyno_lotus_flower or 
+		names.succulent_picked or
+		tags.lotus or
 		tags.petals_legion
 	)
 end
@@ -163,7 +189,8 @@ function IsTealeaves_dried(names, tags)
 		names.kyno_lotus_flower or 
 		names.succulent_picked or
 		tags.lotus or
-		tags.petals_legion
+		tags.petals_legion or
+		names.mentha_spicata
 	)
 end
 
@@ -186,7 +213,8 @@ function IsFoliage(names, tags)
 		names.kyno_lotus_flower or 
 		names.succulent_picked or
 		tags.lotus or
-		tags.petals_legion
+		tags.petals_legion or 
+		names.mentha_spicata
 	)
 end
 
@@ -208,7 +236,8 @@ function IsFlower(names, tags)
 		names.lotus_flower or 
 		names.kyno_lotus_flower or 
 		names.succulent_picked or
-		tags.lotus
+		tags.lotus or 
+		names.mentha_spicata
 	)
 end
 
@@ -236,7 +265,8 @@ function IsFlower_Moon(names, tags)
 		names.petals_orchid or
 		names.aip_veggie_sunflower or
 		names.myth_lotus_flower or
-		tags.lotus
+		tags.lotus or 
+		names.mentha_spicata
 	)
 end
 
@@ -263,7 +293,8 @@ function IsFlower_Evil(names, tags)
 		names.aip_veggie_sunflower or
 		names.myth_lotus_flower or
 		tags.lotus or
-		tags.petals_legion
+		tags.petals_legion or 
+		names.mentha_spicata
 	)
 end
 
@@ -291,7 +322,8 @@ function IsFlower_Cactus(names, tags)
 		names.petals_orchid or
 		names.aip_veggie_sunflower or
 		names.myth_lotus_flower or
-		tags.lotus
+		tags.lotus or 
+		names.mentha_spicata
 	)
 end
 
@@ -332,7 +364,8 @@ function IsFlower_Lotus(names, tags)
 		names.petals_lily or
 		names.petals_orchid or
 		names.aip_veggie_sunflower or
-		names.cactus_flower
+		names.cactus_flower or
+		names.mentha_spicata
 	)
 end
 
