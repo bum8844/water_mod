@@ -163,19 +163,12 @@ local drinks =
 		potlevel = "high",
 		potlevel_bottle = "mid",
 		perishtime = TUNING.PERISH_FAST, -- 6일
-<<<<<<< HEAD
 		drinktype = DRINKTYPY.VEGGIE,
-=======
->>>>>>> Beta_1.2.8
 		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_COLD_FOOD,
 	},
 }
 
-<<<<<<< HEAD
 local mod_drink = require("modcompats/prepareddrinks_mod")
-=======
-local mod_drink = require("modinit/prepareddrinks_mod")
->>>>>>> Beta_1.2.8
 local modlist = require("utils/water_modlist").active_mod_compatibility
 
 if modlist.te or modlist.ia or modlist.ta then
@@ -191,22 +184,12 @@ for k, v in pairs(drinks) do
     v.priority = v.priority or 0
 
     v.is_boilbook_recipes = true
-<<<<<<< HEAD
     v.boilbook_category = "portablekettle"
-=======
-    v.boilbook_category = "portable_tea_pot"
-	v.cookbook_atlas = "images/cookbookimages/tea_cookbookimage_drinks.xml"
-	v.cookbook_tex = k..".tex"
->>>>>>> Beta_1.2.8
     if modlist.legion and _G.CONFIGS_LEGION.BETTERCOOKBOOK then
     	v.cook_need = nil
     	v.cook_cant = nil
     	v.recipe_count = 4
-<<<<<<< HEAD
 		local cookbookui_legion = require "modcompats/1392778117/cookbookui_legion"
-=======
-		local cookbookui_legion = require "modinit/1392778117/cookbookui_legion"
->>>>>>> Beta_1.2.8
 		v.custom_cookbook_details_fn = function(data, self, top, left)
 			local root = cookbookui_legion(data, self, top, left)
 			return root

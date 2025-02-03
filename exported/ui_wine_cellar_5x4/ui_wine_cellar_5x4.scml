@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <spriter_data scml_version="1.0" generator="BrashMonkey Spriter" generator_version="r11">
     <folder id="0" name="frame">
-        <file id="0" name="frame/frame-0.png" width="612" height="488" pivot_x="0.5" pivot_y="0.5"/>
+        <file id="0" name="frame/frame-0.png" width="559" height="422" pivot_x="0.5" pivot_y="0.5"/>
     </folder>
     <entity id="0" name="ui_wine_cellar_5x4">
         <animation id="0" name="close" length="167" interval="100">

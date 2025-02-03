@@ -40,8 +40,7 @@ return {
 		WATER_DIRTY_ICE = "더럽고 추악함", --더러운 얼음물
 
 		SPICE_CAFFEINPEPPER = "무미건조한 음식에 향을 추가함", --후추 향신료
-		SPICE_RUINCOLATE_SPREAD = "", -- 초콜릿 스프레드
-		
+
 		WELL_KIT = "설치에 수맥 요구", --우물 키트
 		WELL_SPRINKLER_KIT = "사용에 주의할 것", --스프링클러 키트
 		WELL_WATERPUMP_KIT = "고성능 물 시추장치", --스팀 물펌프 키트
@@ -50,22 +49,11 @@ return {
 		WELL_DRILLING_ITEM = "수맥 개발용 장치", --드릴 아이템(AFS: "A 'WELL'-DEVELOPING DEVICE"?)
 		HOLE = "물을 뽑아내기 위한 구멍", --우물 구멍
 		WELL = "물의 안정적 공급처", --우물
-<<<<<<< HEAD
 		BOTTLE_POUCH = "",
-=======
-		BOTTLE_POUCH_SMALL = "",
-		BOTTLE_POUCH_BIG = "",
-		THERMOS_BOTTLE_SMALL = "",
-		THERMOS_BOTTLE_BIG = "",
->>>>>>> Beta_1.2.8
 		WINE_CELLAR_PART = "",
 		WINE_CELLAR = "",
 
 		WX78MODULE_NONEDRUNK = "화학 엔진 출력보조", -- 78전용 묘듈
-<<<<<<< HEAD
-=======
-		PURIFICATION_TABLETS = "",
->>>>>>> Beta_1.2.8
 
 		-- 물 모드 식물
 
@@ -220,11 +208,7 @@ return {
 		LUMPY_WINE = "유기체의 뿌리는 다양한 용도로 사용", --서주(감자 고구마등 뿌리 술)
 		PULQUE = "포함된 미생물의 자가진화의 끝은 언제인가", --풀케(선인주)
 		RUINCACAO_WINE = "카카오 새로운 가능성 발견됨", -- 카카오 와인 
-<<<<<<< HEAD
 		MIDNIGHT_STROM = "",
-=======
-		MIDNIGHT_STORM = "",
->>>>>>> Beta_1.2.8
 		APPLEPINE_CIDER = "",
 		MENTHA_SPICATA_WINE = "",
 
@@ -254,12 +238,7 @@ return {
 		BERRY_BRANDY = "참으로 긴 공정", -- 베리 브랜디
 		AREUHI = "P형 유동체", -- 크므즈 증류주 아르히
 		APPLEPINE_BRANDY = "",
-<<<<<<< HEAD
 		VOID = "",
-=======
-		VOID_BRANDY = "",
-		VOID_GIN  = "",
->>>>>>> Beta_1.2.8
 		CITROYUZU_CURACAO = "",
 		MENTHA_SPICATA_CURACAO = "",
 
@@ -298,11 +277,7 @@ return {
         RUIN_SCHOKAKOLA = "고체연료 부스터", -- 쇼카콜라
         APPLEPINE_PIE = "",
         APPLEPINE_FRIED_RICE = "",
-<<<<<<< HEAD
         citroyuzu_bbq = "",
-=======
-        CITROYUZU_BBQ = "",
->>>>>>> Beta_1.2.8
 
 		BUCKET_STEEL_EMPTY = 
 		{
@@ -385,11 +360,7 @@ return {
 			STOP = "가열 필요", -- 화덕에 불이 없어서 소금물이 정수 되지 않는 상태
 		},
 
-<<<<<<< HEAD
 		KETTLE =
-=======
-		TEA_POT =
->>>>>>> Beta_1.2.8
 		{
 			EMPTY = "빌어먹을 물에 쓸모를 부여", --빈 주전자 조사대사
 			BURNT = "주전자 과열", --주전자가 불탐
@@ -403,11 +374,7 @@ return {
 			MELT_SHORT = "해동 거의 완료", -- 얼음물을 거의 녹여감
 		},
 
-<<<<<<< HEAD
 		PORTABLEKETTLE_ITEM =
-=======
-		PORTABLE_TEA_POT_ITEM =
->>>>>>> Beta_1.2.8
 		{
 			GENERIC = "만나서 반갑다 나의 형제", -- 휴대용 주전자(아이템) 조사 대사
 			EMPTY = "코드 418: 찻주전자임", -- 설치한 빈 휴대용 주전자 조사 대사(CODE 418: THIS IS A TEAPOT)(AFS: HTTP 응답코드에 관한 유명한 만우절 장난이 있습니다 418 I'm a teapot 검색)
@@ -420,33 +387,6 @@ return {
 			MELT_LONG = "해동작업 진행 중", -- 얼음물을 녹이기 시작한지 얼마 안됨
 			MELT_SHORT = "해동 거의 완료", -- 얼음물을 거의 녹여감
 		},
-<<<<<<< HEAD
-=======
-
-		KETTLE =
-		{
-			EMPTY = "빌어먹을 물에 쓸모를 부여", --빈 주전자 조사대사
-			BURNT = "주전자 과열", --주전자가 불탐
-			DONE = "냉각수 배합 완료", --음료가 완성됨
-			PURIFY_LONG = "추가정수 진행 중", -- 더러운 물을 끓이기 시작한지 얼마 안됨
-			PURIFY_SHORT = "정수 거의 완료", --더러운물을 거의 다 끓여감
-			HASWATER = "추가입력 필요", -- 깨끗한 물이 차 있는 상태
-			MELT_LONG = "해동작업 진행 중", -- 얼음물을 녹이기 시작한지 얼마 안됨
-			MELT_SHORT = "해동 거의 완료", -- 얼음물을 거의 녹여감
-		},
-
-		PORTABLEKETTLE_ITEM =
-		{
-			GENERIC = "만나서 반갑다 나의 형제", -- 휴대용 주전자(아이템) 조사 대사
-			EMPTY = "코드 418: 찻주전자임", -- 설치한 빈 휴대용 주전자 조사 대사(CODE 418: THIS IS A TEAPOT)(AFS: HTTP 응답코드에 관한 유명한 만우절 장난이 있습니다 418 I'm a teapot 검색)
-			DONE = "냉각수 배합 완료", --음료가 완성됨
-			PURIFY_LONG = "추가정수 진행 중", -- 더러운 물을 끓이기 시작한지 얼마 안됨
-			PURIFY_SHORT = "정수 거의 완료", --더러운물을 거의 다 끓여감
-			HASWATER = "추가입력 필요", -- 깨끗한 물이 차 있는 상태
-			MELT_LONG = "해동작업 진행 중", -- 얼음물을 녹이기 시작한지 얼마 안됨
-			MELT_SHORT = "해동 거의 완료", -- 얼음물을 거의 녹여감
-		},
->>>>>>> Beta_1.2.8
 		
 		DISTILLERS =
 		{   

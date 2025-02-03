@@ -22,11 +22,7 @@ local function MakeWater_Spice(name)
 
         inst:AddTag("spice")
         inst:AddTag("watermod")
-<<<<<<< HEAD
         inst:AddTag("cocktail_ingredients")
-=======
-        inst:AddTag("cocktail_ingredient")
->>>>>>> Beta_1.2.8
 
         MakeInventoryFloatable(inst, "med", nil, 0.85)
 
@@ -42,11 +38,7 @@ local function MakeWater_Spice(name)
         inst:AddComponent("inspectable")
         inst:AddComponent("inventoryitem")
         inst.replica.inventoryitem:SetImage(name)
-<<<<<<< HEAD
         inst.components.inventoryitem.atlasname = "images/tea_inventoryitem.xml"
-=======
-        inst.components.inventoryitem.atlasname = "images/inventoryitems/tea_inventoryitem.xml"
->>>>>>> Beta_1.2.8
         inst.components.inventoryitem.imagename = name
 
         MakeHauntableLaunch(inst)

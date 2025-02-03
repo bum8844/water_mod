@@ -2,7 +2,6 @@
 <Atlas>
 	<Texture filename="tea_minimap.tex" />
 	<Elements>
-<<<<<<< HEAD
 		<Element name="barrel.tex" u1="0.251" u2="0.499" v2="0.999" v1="0.751" variant="" />
 		<Element name="brewery.tex" u1="0.001" u2="0.249" v2="0.749" v1="0.501" variant="" />
 		<Element name="caffeinberrybush.tex" u1="0.251" u2="0.4911875" v2="0.749" v1="0.501" variant="" />
@@ -16,29 +15,5 @@
 		<Element name="well.tex" u1="0.24709375" u2="0.49509375" v2="0.249" v1="0.001" variant="" />
 		<Element name="well_sprinkler.tex" u1="0.501" u2="0.72946875" v2="0.499" v1="0.25490625" variant="" />
 		<Element name="well_waterpump.tex" u1="0.001" u2="0.249" v2="0.999" v1="0.751" variant="" />
-=======
-		<Element name="barrel.tex" u1="0.001" u2="0.124" v2="0.249" v1="0.001" variant="" />
-		<Element name="bottle_pouch_big.tex" u1="0.126" u2="0.249" v2="0.249" v1="0.001" variant="" />
-		<Element name="bottle_pouch_small.tex" u1="0.251" u2="0.374" v2="0.249" v1="0.001" variant="" />
-		<Element name="brewery.tex" u1="0.376" u2="0.499" v2="0.249" v1="0.001" variant="" />
-		<Element name="caffeinberrybush.tex" u1="0.501" u2="0.624" v2="0.999" v1="0.751" variant="" />
-		<Element name="desalinator.tex" u1="0.626" u2="0.749" v2="0.999" v1="0.751" variant="" />
-		<Element name="distillers.tex" u1="0.751" u2="0.874" v2="0.999" v1="0.751" variant="" />
-		<Element name="holes.tex" u1="0.876" u2="0.999" v2="0.999" v1="0.751" variant="" />
-		<Element name="kettle.tex" u1="0.501" u2="0.624" v2="0.749" v1="0.501" variant="" />
-		<Element name="portable_tea_pot.tex" u1="0.626" u2="0.749" v2="0.749" v1="0.501" variant="" />
-		<Element name="portablekettle.tex" u1="0.001" u2="0.124" v2="0.999" v1="0.751" variant="" />
-		<Element name="ruincacao_tree.tex" u1="0.126" u2="0.249" v2="0.999" v1="0.751" variant="" />
-		<Element name="tea_pot.tex" u1="0.001" u2="0.124" v2="0.749" v1="0.501" variant="" />
-		<Element name="tea_tree.tex" u1="0.126" u2="0.249" v2="0.749" v1="0.501" variant="" />
-		<Element name="thermos_bottle_big.tex" u1="0.251" u2="0.374" v2="0.999" v1="0.751" variant="" />
-		<Element name="thermos_bottle_small.tex" u1="0.376" u2="0.499" v2="0.999" v1="0.751" variant="" />
-		<Element name="warkawater.tex" u1="0.251" u2="0.374" v2="0.749" v1="0.501" variant="" />
-		<Element name="well.tex" u1="0.376" u2="0.499" v2="0.749" v1="0.501" variant="" />
-		<Element name="well_sprinkler.tex" u1="0.001" u2="0.124" v2="0.499" v1="0.251" variant="" />
-		<Element name="well_waterpump.tex" u1="0.126" u2="0.249" v2="0.499" v1="0.251" variant="" />
-		<Element name="well_winona_sprinkler_maker.tex" u1="0.251" u2="0.374" v2="0.499" v1="0.251" variant="" />
-		<Element name="wine_cellar.tex" u1="0.376" u2="0.499" v2="0.499" v1="0.251" variant="" />
->>>>>>> Beta_1.2.8
 	</Elements>
 </Atlas>
