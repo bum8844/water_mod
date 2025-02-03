@@ -47,6 +47,7 @@ return {
 		WATER_DIRTY_ICE = "이런 얼음으로는 요리에 쓸수없어.", --더러운 얼음물
 
 		SPICE_CAFFEINPEPPER = "어떤요리가 되었든 풍미를 크게 끌어올려주지.", --후추 향신료
+		SPICE_RUINCOLATE_SPREAD = "", -- 초콜릿 스프레드
 
 		WELL_KIT = "이제 깨끗한 물이 샘솟는 우물 구멍만 있다면...!", --우물 키트
 		WELL_SPRINKLER_KIT = "내 밭 손님들에 편하게 물을 서빙해줄수있어.", --스프링클러 키트

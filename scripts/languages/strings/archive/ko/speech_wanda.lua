@@ -47,6 +47,7 @@ return {
 		WATER_DIRTY_ICE = "차라리 새 얼음을 구해먹는게 빠르겠어!", --더러운 얼음물
 
 		SPICE_CAFFEINPEPPER = "마리네이드까지 해서 기다릴 여유는 없어.", --후추 향신료
+		SPICE_RUINCOLATE_SPREAD = "", -- 초콜릿 스프레드
 
 		WELL_KIT = "이걸 들고있다고해서 물이 저절로 생기진않아, 설치해야해!", --우물 키트
 		WELL_SPRINKLER_KIT = "정교하면서 설치하는데 1초도 안걸릴거야.", --스프링클러 키트

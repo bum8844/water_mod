@@ -51,7 +51,7 @@ return {
 		WATER_DIRTY_ICE = "만나서 더러워.",
 
 		SPICE_CAFFEINPEPPER = "진정한 삶의 향신료야.",
-		SPICE_RUINCOLATE_SPREAD = "",
+		SPICE_RUINCOLATE_SPREAD = "", -- 초콜릿 스프레드
 
 		WELL_KIT = "물구멍이 필요하겠어.",
 		WELL_SPRINKLER_KIT = "난 머리 젖는 게 싫은데.",

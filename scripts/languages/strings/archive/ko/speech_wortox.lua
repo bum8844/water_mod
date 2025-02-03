@@ -47,7 +47,8 @@ return {
 		WATER_DIRTY_ICE = "흐유유! 불결해라!", --더러운 얼음물
 
 		SPICE_CAFFEINPEPPER = "매콤한 노략물이야.", --후추 향신료
-
+        SPICE_RUINCOLATE_SPREAD = "", -- 초콜릿 스프레드
+		
 		WELL_KIT = "목마른 필멸자가 우물을 파는법.", --우물 키트
 		WELL_SPRINKLER_KIT = "털 적시는건 싫은데.", --스프링클러 키트
 		WELL_WATERPUMP_KIT = "마법에 의존하는 우물이라니, 흐유유!", --스팀 물펌프 키트

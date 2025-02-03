@@ -47,6 +47,7 @@ return {
 		WATER_DIRTY_ICE = "얼음이 새까매!!",
 
 		SPICE_CAFFEINPEPPER = "캠핑음식에 넣으면 맛이 훨씬좋아져.",
+		SPICE_RUINCOLATE_SPREAD = "", -- 초콜릿 스프레드
 
 		WELL_KIT = "우물가에서 우물쭈물하면 안 돼. 헤.",
 		WELL_SPRINKLER_KIT = "이제 식물들과 좋은'관개'를 가져보자!",

@@ -40,7 +40,8 @@ return {
 		WATER_DIRTY_ICE = "더럽고 추악함", --더러운 얼음물
 
 		SPICE_CAFFEINPEPPER = "무미건조한 음식에 향을 추가함", --후추 향신료
-
+        SPICE_RUINCOLATE_SPREAD = "", -- 초콜릿 스프레드
+		
 		WELL_KIT = "설치에 수맥 요구", --우물 키트
 		WELL_SPRINKLER_KIT = "사용에 주의할 것", --스프링클러 키트
 		WELL_WATERPUMP_KIT = "고성능 물 시추장치", --스팀 물펌프 키트

@@ -47,6 +47,7 @@ return {
 		WATER_DIRTY_ICE = "얼어 붙었네. 웩", --더러운 얼음물
 
 		SPICE_CAFFEINPEPPER = "후에취!!!", --후추 향신료
+		SPICE_RUINCOLATE_SPREAD = "", -- 초콜릿 스프레드
 
 		WELL_KIT = "우리 멋진 우물을 쌓아보자!", --우물 키트
 		WELL_SPRINKLER_KIT = "버튼만 누르면 자동으로 설치된다니 완전멋져!", --스프링클러 키트
