@@ -3,12 +3,12 @@ return {
 	{
 		GIVE =
 		{
-			WELL_NOTEMPTY = "걸려있는 물동이부터 내려야 해.",
-			WELL_BUSY = "아직 물동이가 우물 안에 있어.",
+			WELL_NOTEMPTY = "걸려있는 물동이부터 내려야 해.", -- 우물에 말라 빈 양동이 달려있는데 양동이 달려 함
+			WELL_BUSY = "아직 물동이가 우물 안에 있어.", -- 우물에 물 든 양동이 달려있는데 달려 함
 		}
 	},
 
-	ANNOUNCE_DRUNK = "히끅... 나 취한 것 같아.",
+	ANNOUNCE_DRUNK = "히끅... 나 취한 것 같아.", -- 취함
 
 	ANNOUNCE_DRUNK_MUMBLE = 
 	{
@@ -61,12 +61,12 @@ return {
 		WELL_DRILLING_ITEM = "물을 길을 우물을 파는 장치야.",
 		HOLE = "여기에 우물을 만들면 되겠어.",
 		WELL = "이제 깨끗한 물을 간편하게 얻을 수 있어!",
-		BOTTLE_POUCH_SMALL = "",
-		BOTTLE_POUCH_BIG = "",
-		THERMOS_BOTTLE_SMALL = "",
-		THERMOS_BOTTLE_BIG = "",
-		WINE_CELLAR_PART = "",
-		WINE_CELLAR = "",
+		BOTTLE_POUCH_SMALL = "작은 물병을 소지하고 다닐 수 있겠어", -- 소용량 물병파우치 ( "작은 물병을 지니고 다닐 수 있겠어"는 어떤가요? - 동각자 )
+		BOTTLE_POUCH_BIG = "큰 물병도 거뜬하겠어", -- 대용량 물병파우치
+		THERMOS_BOTTLE_SMALL = "보온이 되는 작은 병이야", -- 소용량 보온병
+		THERMOS_BOTTLE_BIG = "많은 양의 액체도 보온이 잘될거야", -- 대용량 보온병
+		WINE_CELLAR_PART = "", -- 와인 보관함 재료
+		WINE_CELLAR = "", -- 와인 보관함
 
 		WX78MODULE_NONEDRUNK = "작은 장치 하나에 아주 많은 과학이 압축되어 있어.", -- 78전용 묘듈
 		PURIFICATION_TABLETS = "",
