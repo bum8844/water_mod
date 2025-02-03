@@ -61,15 +61,22 @@ return {
 		WELL_DRILLING_ITEM = "수맥이 있을 만한 적당한 장소를 찾아야겠어.", --드릴 아이템
 		HOLE = "물이 흘러나오는 소리가 들리는구나.", --우물 구멍
 		WELL = "수맥 깊은 곳으로부터 물을 길어온단다.", --우물
+<<<<<<< HEAD
+		BOTTLE_POUCH = "",
+=======
 		BOTTLE_POUCH_SMALL = "",
 		BOTTLE_POUCH_BIG = "",
 		THERMOS_BOTTLE_SMALL = "",
 		THERMOS_BOTTLE_BIG = "",
+>>>>>>> Beta_1.2.8
 		WINE_CELLAR_PART = "",
 		WINE_CELLAR = "",
 
 		WX78MODULE_NONEDRUNK = "유기체를 싫어하긴 하지만 유기체에게서 영감을 얻는 건 싫어하지 않는 것 같구나.", -- 78전용 묘듈
+<<<<<<< HEAD
+=======
 		PURIFICATION_TABLETS = "",
+>>>>>>> Beta_1.2.8
 
 		-- 물 모드 식물
 
@@ -224,7 +231,11 @@ return {
 		LUMPY_WINE = "아이슬란드에서 먹는 술이라고 하지.", --서주(감자 고구마등 뿌리 술)
 		PULQUE = "메소아메리카 원주민들이 만드는 전통주란다.", --풀케(선인주)
 		RUINCACAO_WINE = "술의 재료로는 대단히 특이한 선택이구나.", -- 카카오 와인 
+<<<<<<< HEAD
+		MIDNIGHT_STROM = "",
+=======
 		MIDNIGHT_STORM = "",
+>>>>>>> Beta_1.2.8
 		APPLEPINE_CIDER = "",
 		MENTHA_SPICATA_WINE = "",
 
@@ -254,8 +265,12 @@ return {
 		BERRY_BRANDY = "비싼 가격과 제조의 까다로움 때문에 '술의 제왕'이라 불리기도 한단다.", -- 베리 브랜디
 		AREUHI = "마유주를 반복증류, 분별해서 불순물을 제거했단다.", -- 크므즈 증류주 아르히
 		APPLEPINE_BRANDY = "",
+<<<<<<< HEAD
+		VOID = "",
+=======
 		VOID_BRANDY = "",
 		VOID_GIN  = "",
+>>>>>>> Beta_1.2.8
 		CITROYUZU_CURACAO = "",
 		MENTHA_SPICATA_CURACAO = "",
 
@@ -294,7 +309,11 @@ return {
         RUIN_SCHOKAKOLA = "각성 효과가 강화된 초콜릿이란다.", -- 쇼카콜라
         APPLEPINE_PIE = "",
         APPLEPINE_FRIED_RICE = "",
+<<<<<<< HEAD
+        citroyuzu_bbq = "",
+=======
         CITROYUZU_BBQ = "",
+>>>>>>> Beta_1.2.8
 
 		BUCKET_STEEL_EMPTY = 
 		{
@@ -377,7 +396,11 @@ return {
 			STOP = "이 장치는 열원이 있어야 작동하는구나.", -- 화덕에 불이 없어서 소금물이 정수 되지 않는 상태
 		},
 
+<<<<<<< HEAD
+		KETTLE =
+=======
 		TEA_POT =
+>>>>>>> Beta_1.2.8
 		{
 			EMPTY = "주전자에는 물이 있어야겠지.", --빈 주전자 조사대사
 			BURNT = "이제 정말 황량하구나.", --주전자가 불탐
@@ -391,7 +414,11 @@ return {
 			MELT_SHORT = "거의 다 녹았구나!", -- 얼음물을 거의 녹여감
 		},
 
+<<<<<<< HEAD
+		PORTABLEKETTLE_ITEM =
+=======
 		PORTABLE_TEA_POT_ITEM =
+>>>>>>> Beta_1.2.8
 		{
 			GENERIC = "이제 어디서든 차를 마실 수 있겠구나.", -- 휴대용 주전자(아이템) 조사 대사
 			EMPTY = "우선 물을 넣고 끓여야겠지.", -- 설치한 빈 휴대용 주전자 조사 대사
@@ -404,6 +431,8 @@ return {
 			MELT_LONG = "얼음은 녹여야 쓸 수 있겠지.", -- 얼음물을 녹이기 시작한지 얼마 안됨
 			MELT_SHORT = "거의 다 녹았구나!", -- 얼음물을 거의 녹여감
 		},
+<<<<<<< HEAD
+=======
 
 		KETTLE =
 		{
@@ -428,6 +457,7 @@ return {
 			MELT_LONG = "얼음은 녹여야 쓸 수 있겠지.", -- 얼음물을 녹이기 시작한지 얼마 안됨
 			MELT_SHORT = "거의 다 녹았구나!", -- 얼음물을 거의 녹여감
 		},
+>>>>>>> Beta_1.2.8
 		
 		DISTILLERS =
 		{   

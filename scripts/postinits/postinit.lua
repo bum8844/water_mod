@@ -31,14 +31,20 @@ local postinits =
 		"wurt",
 		"acorn",
 		"mosquitosack",
+<<<<<<< HEAD
+=======
 		"wx78",
+>>>>>>> Beta_1.2.8
 		"wx78_modules",
 		"fruitfly",
 		"preparedfoods",
 		"oasislake",
+<<<<<<< HEAD
+=======
 		"sharkboi",
 		"healingsalve_acidbuff",
 		"winona",
+>>>>>>> Beta_1.2.8
 	},
 
 	screens = {
@@ -74,7 +80,10 @@ local postinits =
 		"cookbookdata",
 		"techtree",
 		"wx78_moduledefs",
+<<<<<<< HEAD
+=======
 		"messagebottletreasures",
+>>>>>>> Beta_1.2.8
 	}
 }
 

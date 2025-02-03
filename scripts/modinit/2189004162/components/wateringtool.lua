@@ -22,6 +22,8 @@ local function Descriptors()
 
 			local function GetWaterState(self, watertype)
 				local frozed = self.frozed
+<<<<<<< HEAD:scripts/modcompats/2189004162/components/wateringtool.lua
+=======
 				local drying = self.drying
 
         		local raining = TheWorld.state.israining
@@ -39,22 +41,34 @@ local function Descriptors()
 					end
 				end
 
+>>>>>>> Beta_1.2.8:scripts/modinit/2189004162/components/wateringtool.lua
 				local change_state = watertype and (
 					(watertype == WATERTYPE.DIRTY and not frozed) and STRINGS.INSIGHT.STATE.DRY or
 					STRINGS.INSIGHT.STATE.SOPIL
 					) or ""
 
+<<<<<<< HEAD:scripts/modcompats/2189004162/components/wateringtool.lua
+				local gain_loss = TheWorld.state.israining and STRINGS.INSIGHT.STATE.GAIN or STRINGS.INSIGHT.STATE.DRY
+=======
 				local gain_loss = drying and STRINGS.INSIGHT.STATE.DRY or STRINGS.INSIGHT.STATE.GAIN
+>>>>>>> Beta_1.2.8:scripts/modinit/2189004162/components/wateringtool.lua
 
 				local state = watertype and (
 					(watertype == WATERTYPE.CLEAN and (frozed and STRINGS.INSIGHT.STATE.CLEAN_ICE or STRINGS.INSIGHT.STATE.CLEAN)) or
 					(watertype == WATERTYPE.DIRTY and (frozed and STRINGS.INSIGHT.STATE.DIRTY_ICE or STRINGS.INSIGHT.STATE.DIRTY)) or
+<<<<<<< HEAD:scripts/modcompats/2189004162/components/wateringtool.lua
+					watertype == WATERTYPE.SALTY and STRINGS.INSIGHT.STATE.SALTY or STRINGS.INSIGHT.STATE.MINERAL
+				) or STRINGS.INSIGHT.STATE.EMPTY
+
+				return {
+=======
 					watertype == WATERTYPE.SALTY and STRINGS.INSIGHT.STATE.SALTY or 
 					watertype == WATERTYPE.MINERAL and STRINGS.INSIGHT.STATE.MINERAL or STRINGS.INSIGHT.STATE.ACID
 				) or STRINGS.INSIGHT.STATE.EMPTY
 
 				return {
 					gain_thing = gain_thing,
+>>>>>>> Beta_1.2.8:scripts/modinit/2189004162/components/wateringtool.lua
 					change_state = change_state,
 					gain_loss = gain_loss,
 					state = state,
@@ -96,8 +110,13 @@ local function Descriptors()
 				else
 					timedata = context.time:SimpleProcess(timedata)
 					
+<<<<<<< HEAD:scripts/modcompats/2189004162/components/wateringtool.lua
+					rawtext = string.format(rawtext,statedata.gain_loss,timedata)
+					rawtext_ext = string.format(rawtext_ext,statedata.gain_loss,timedata)
+=======
 					rawtext = string.format(rawtext,statedata.gain_thing,statedata.gain_loss,timedata)
 					rawtext_ext = string.format(rawtext_ext,statedata.gain_thing,statedata.gain_loss,timedata)
+>>>>>>> Beta_1.2.8:scripts/modinit/2189004162/components/wateringtool.lua
 				end
 
 				description = rawtext

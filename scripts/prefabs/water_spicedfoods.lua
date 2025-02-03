@@ -139,7 +139,11 @@ local function MakePreparedFood(data)
 
         inst:AddComponent("inventoryitem")
         inst.replica.inventoryitem:SetImage(spicename.."_over")
+<<<<<<< HEAD
+        inst.components.inventoryitem.atlasname = "images/tea_inventoryitem.xml"
+=======
         inst.components.inventoryitem.atlasname = "images/inventoryitems/tea_inventoryitem.xml"
+>>>>>>> Beta_1.2.8
         inst.components.inventoryitem.imagename = spicename.."_over"
 
         inst:AddComponent("stackable")

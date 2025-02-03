@@ -348,7 +348,11 @@ local bookboil_basic_open = State{
 
         onenter = function(inst)
             inst.components.locomotor:StopMoving()
+<<<<<<< HEAD
+            inst.AnimState:OverrideSymbol("book_cook", "boilbook", "boilbook_basic")
+=======
             inst.AnimState:OverrideSymbol("book_cook", "boilbook", "book_boil_basic")
+>>>>>>> Beta_1.2.8
             inst.AnimState:PlayAnimation("action_uniqueitem_pre")
             inst.AnimState:PushAnimation("reading_in", false)
             inst.AnimState:PushAnimation("reading_loop", true)
@@ -388,7 +392,11 @@ local bookboil_advanced_open = State{
 
     onenter = function(inst)
         inst.components.locomotor:StopMoving()
+<<<<<<< HEAD
+        inst.AnimState:OverrideSymbol("book_cook", "boilbook", "boilbook_advanced")
+=======
         inst.AnimState:OverrideSymbol("book_cook", "boilbook", "book_boil_advenced")
+>>>>>>> Beta_1.2.8
         inst.AnimState:PlayAnimation("action_uniqueitem_pre")
         inst.AnimState:PushAnimation("reading_in", false)
         inst.AnimState:PushAnimation("reading_loop", true)
@@ -420,7 +428,11 @@ local bookboil_advanced_open = State{
     onexit = function(inst)
         inst:ShowPopUp(GLOBAL.POPUPS.BOILBOOK_ADVANCED, false)
     end,
+<<<<<<< HEAD
+    }
+=======
 }
+>>>>>>> Beta_1.2.8
 
 local boilbook_close = State{
         name = "boilbook_close",
@@ -588,7 +600,10 @@ AddStategraphActionHandler("wilson", ActionHandler(ACTIONS.UPGRADE_TILEARRIVE, "
         end
     )
 )]]
+<<<<<<< HEAD
+=======
 AddStategraphActionHandler("wilson", ActionHandler(ACTIONS.PURIFY, "domediumaction"))
+>>>>>>> Beta_1.2.8
 AddStategraphActionHandler("wilson", ActionHandler(ACTIONS.DRAMATIC_RAISE, "doshortaction"))
 AddStategraphActionHandler("wilson", ActionHandler(ACTIONS.DRAMATIC_LOWER, "doshortaction"))
 AddStategraphActionHandler("wilson", ActionHandler(ACTIONS.TURNON_TILEARRIVE, "give"))
@@ -600,6 +615,10 @@ AddStategraphActionHandler("wilson", ActionHandler(ACTIONS.BREWING,
 )
 AddStategraphActionHandler("wilson", ActionHandler(ACTIONS.READBOILBOOK,
     function(inst ,action)
+<<<<<<< HEAD
+        print("action",action.invobject:HasTag("boilbook_basic"))
+=======
+>>>>>>> Beta_1.2.8
         return action.invobject:HasTag("boilbook_basic") and "bookboil_basic_open" or "bookboil_advanced_open"
     end
     )
@@ -610,9 +629,15 @@ AddStategraphActionHandler("wilson", ActionHandler(ACTIONS.MACHINETOOL,
         end
     )
 )
+<<<<<<< HEAD
+AddStategraphActionHandler("wilson", ActionHandler(ACTIONS.DISASSEMBLE,
+        function(inst, action)
+            return inst:HasTag("handyperson") and "domediumaction" or "dolongaction"
+=======
 AddStategraphActionHandler("wilson", ActionHandler(ACTIONS.SHAKING,
         function(inst, action)
             return inst:HasTag("expertchef") and "fest_shaker_shaking" or "shaker_shaking"
+>>>>>>> Beta_1.2.8
         end
     )
 )

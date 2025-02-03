@@ -1,7 +1,12 @@
 GLOBAL.setfenv(1, GLOBAL)
 
+<<<<<<< HEAD
+local function GetItemState(count)
+    return count >= 5 and "_bottle" or ""
+=======
 local function GetItemState(count,maxnum)
     return count >= maxnum and "_bottle" or ""
+>>>>>>> Beta_1.2.8
 end
 
 SetRetrofitSetting = function(name, value)
@@ -16,7 +21,11 @@ SetRetrofitSetting = function(name, value)
     KnownModIndex:SaveConfigurationOptions(function() end, "workshop-3004639365", configs, false)
 end
 
+<<<<<<< HEAD
+MakeDynamicCupImage = function(inst, symbol, build, use_bg)
+=======
 MakeDynamicCupImage = function(inst, symbol, build, use_bg, maxnum)
+>>>>>>> Beta_1.2.8
     local function ChangeCupImage(inst, data)
         if data ~= nil then
             local new_state = GetItemState(data.stacksize, maxnum)
@@ -34,6 +43,8 @@ MakeDynamicCupImage = function(inst, symbol, build, use_bg, maxnum)
     inst:ListenForEvent("stacksizechange", ChangeCupImage)
 end
 
+<<<<<<< HEAD
+=======
 MakeDynamicItemImage = function(inst, symbol, build, use_bg, maxnum)
     local function ChangeItemImage(inst, data)
         if data ~= nil then
@@ -52,6 +63,7 @@ MakeDynamicItemImage = function(inst, symbol, build, use_bg, maxnum)
     inst:ListenForEvent("stacksizechange", ChangeItemImage)
 end
 
+>>>>>>> Beta_1.2.8
 Water_BurntStructureFn = function(inst)
     DefaultBurntStructureFn(inst)
     if inst.components.waterlevel ~= nil then

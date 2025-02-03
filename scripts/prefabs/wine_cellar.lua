@@ -29,12 +29,20 @@ end
 local function onopen(inst)
     inst:AddTag("busy")
     inst.AnimState:PlayAnimation("open")
+<<<<<<< HEAD
+    inst.SoundEmitter:PlaySound("turnoftides/common/together/boat/anchor/LP","loop_gears")
+    inst:DoTaskInTime(1,function(inst)
+        inst.SoundEmitter:KillSound("loop_gears")
+        inst.SoundEmitter:PlaySound("dontstarve/common/icebox_open")
+    end)
+=======
     inst.SoundEmitter:PlaySound("drink_fx/sfx/gear_up")
     --[[inst.SoundEmitter:PlaySound("turnoftides/common/together/boat/anchor/LP","loop_gears")
     inst:DoTaskInTime(1,function(inst)
         inst.SoundEmitter:KillSound("loop_gears")
         inst.SoundEmitter:PlaySound("dontstarve/common/icebox_open")
     end)]]
+>>>>>>> Beta_1.2.8
     inst:ListenForEvent("animover",SetOpen)
 end
 
@@ -43,11 +51,18 @@ local function onclose(inst)
     inst.components.container.canbeopened = false
     inst.components.container:Close()
     inst.AnimState:PlayAnimation("close")
+<<<<<<< HEAD
+    inst.SoundEmitter:PlaySound("dontstarve/quagmire/common/safe/close")
+    inst:DoTaskInTime(.2,function(inst)
+        inst.SoundEmitter:PlaySound("dontstarve/common/icebox_close")
+    end)
+=======
     inst.SoundEmitter:PlaySound("drink_fx/sfx/gear_down")
     --[[inst.SoundEmitter:PlaySound("dontstarve/quagmire/common/safe/close")
     inst:DoTaskInTime(.2,function(inst)
         inst.SoundEmitter:PlaySound("dontstarve/common/icebox_close")
     end)]]
+>>>>>>> Beta_1.2.8
     inst:ListenForEvent("animover",SetClose)
 end
 
@@ -59,7 +74,12 @@ local function onhammered(inst, worker)
     local num = 0
     for k, v in pairs(ents) do
         if v.prefab == "gelblob_bottle" and not (num >= 2) then
+<<<<<<< HEAD
+            print("stack",v.components.stackable.stacksize)
+            if not (v.components.stackable.stacksize > 1) then
+=======
             if not (v.components.stackable.stacksize > 1) and not v.components.inventoryitem:IsHeld() then
+>>>>>>> Beta_1.2.8
                 num = num + 1
                 v.components.complexprojectile.onhitfn(v)
             end

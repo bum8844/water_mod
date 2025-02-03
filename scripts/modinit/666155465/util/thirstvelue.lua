@@ -159,7 +159,11 @@ local function hovererfn(self)
         if target ~= nil then
             local waterstr = GetThirst(target)
             if waterstr ~= "" then
+<<<<<<< HEAD:scripts/modcompats/666155465/util/thirstvelue.lua
+                local txt = STRINGS.SHOWME.THIRSTVELUE.THIRST
+=======
                 local txt = STRINGS.SHOWME.THIRSTVALUE.THIRST
+>>>>>>> Beta_1.2.8:scripts/modinit/666155465/util/thirstvelue.lua
                 waterstr = string.format(txt,tostring(waterstr))
                 local newstr = text:GetString()
                 local pattern = " / Sanity:" --en

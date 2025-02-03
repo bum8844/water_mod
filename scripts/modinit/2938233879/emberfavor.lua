@@ -76,7 +76,11 @@ function Brewing:Harvest(harvester, ...)
 	return OldHarvest(self, harvester, ...)
 end
 
+<<<<<<< HEAD:scripts/modcompats/2938233879/emberfavor.lua
+ENV.AddPrefabPostInit("portablekettle", function(inst)
+=======
 ENV.AddPrefabPostInit("portable_tea_pot", function(inst)
+>>>>>>> Beta_1.2.8:scripts/modinit/2938233879/emberfavor.lua
 	if not TheWorld.ismastersim then
 		return
 	end

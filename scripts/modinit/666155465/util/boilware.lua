@@ -6,16 +6,24 @@ local function GetShowItemInfo(inst)
 	local b = inst.components.brewing
 	local d = inst.components.distiller
 	local wl = inst.components.waterlevel
+<<<<<<< HEAD:scripts/modcompats/666155465/util/boilware.lua
+	local sm = inst.components.saltmaker
+=======
 	local w = inst.components.water
 	local sm = inst.components.desalinatiorable
 	local smtp = sm and sm.sludgetype or nil
+>>>>>>> Beta_1.2.8:scripts/modinit/666155465/util/boilware.lua
 
 	local wstxt, smtxt, txt = "", "", ""
 	local product = STRINGS.SHOWME.BOILWARE.PRODUCT
 	local time = STRINGS.SHOWME.BOILWARE.TIME
 	local amount = STRINGS.SHOWME.BOILWARE.AMOUNT
+<<<<<<< HEAD:scripts/modcompats/666155465/util/boilware.lua
+	local salt = STRINGS.SHOWME.BOILWARE.SALT
+=======
 	local left = STRINGS.SHOWME.BOILWARE.LEFT
 	local sludgetype = smtp == "moonglass" and STRINGS.SHOWME.BOILWARE.MOONGLASS or STRINGS.SHOWME.BOILWARE.SALT
+>>>>>>> Beta_1.2.8:scripts/modinit/666155465/util/boilware.lua
 
 	if b and b.product and b.IsCooking and b:IsCooking() then
 
@@ -31,7 +39,11 @@ local function GetShowItemInfo(inst)
 	end
 
 	if sm then
+<<<<<<< HEAD:scripts/modcompats/666155465/util/boilware.lua
+		smtxt = string.format(salt,sm.pickablevalue)
+=======
 		smtxt = string.format(sludgetype,sm.pickablevalue)
+>>>>>>> Beta_1.2.8:scripts/modinit/666155465/util/boilware.lua
 	end
 
 	if wl and wl:GetWater() > 0 then
@@ -58,6 +70,8 @@ local function GetShowItemInfo(inst)
 		txt = smtxt
 	end
 
+<<<<<<< HEAD:scripts/modcompats/666155465/util/boilware.lua
+=======
 	if w and w.use_WaterManager then
 		if w.watermanager_tesk then
 			local tm=round2(w.remainingtime-GetTime(),0)
@@ -69,6 +83,7 @@ local function GetShowItemInfo(inst)
 		txt = left..time
 	end
 
+>>>>>>> Beta_1.2.8:scripts/modinit/666155465/util/boilware.lua
 	return txt
 end
 

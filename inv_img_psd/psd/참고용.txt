@@ -1,0 +1,84 @@
+        
+		
+		
+		
+		HEALING_TINY = 1,
+        HEALING_SMALL = 3,
+        HEALING_MEDSMALL = 8,
+        HEALING_MED = 20,
+        HEALING_MEDLARGE = 30,
+        HEALING_LARGE = 40,
+        HEALING_HUGE = 60,
+        HEALING_MOREHUGE = 75,
+        HEALING_SUPERHUGE = 100,
+
+        CALORIES_TINY = 9.375			-- berries				 9.375
+        CALORIES_SMALL = 12.5,		-- veggies				 
+        CALORIES_MEDSMALL = 18.75,		--						 18.75
+        CALORIES_MED = 25,			-- meat					 25
+        CALORIES_LARGE = 37.5,		-- cooked meat			 37.5
+        CALORIES_HUGE = 75,			-- crockpot foods?		 75
+        CALORIES_MOREHUGE = 100,	-- crockpot foods?		100
+        CALORIES_SUPERHUGE = 150,	-- crockpot foods?		150
+		
+        SANITY_SUPERTINY = 1,
+        SANITY_TINY = 5,
+        SANITY_SMALL = 10,
+        SANITY_MED = 15,
+        SANITY_MEDLARGE = 20,
+        SANITY_LARGE = 33,
+        SANITY_HUGE = 50,
+		
+     	HYDRATION_SALT = -15,   
+	    HYDRATION_POISON = -5,
+	    HYDRATION_ROT = -10,
+	    HYDRATION_NONE = 0,
+	    HYDRATION_SUPERTINYMICROSCOPIC = 1.40625
+	    HYDRATION_TINYMICROSCOPIC = 3.75
+	    HYDRATION_SUPERTINY = 5.625
+	    HYDRATION_TINY = 7.5
+	    HYDRATION_SMALLTINY = 11.25 -- 일반물
+	    HYDRATION_SMALL = 15
+	    HYDRATION_MEDSMALL = 22.5
+	    HYDRATION_MED = 30
+	    HYDRATION_LARGE = 45
+	    HYDRATION_HUGE = 90
+	    HYDRATION_MOREHUGE = 120
+	    HYDRATION_SUPERHUGE = 180
+		
+        PERISH_ONE_DAY = 1*total_day_time*perish_warp,
+        PERISH_TWO_DAY = 2*total_day_time*perish_warp,
+        PERISH_SUPERFAST = 3*total_day_time*perish_warp,
+        PERISH_FAST = 6*total_day_time*perish_warp,
+        PERISH_FASTISH = 8*total_day_time*perish_warp,
+        PERISH_MED = 10*total_day_time*perish_warp,
+        PERISH_SLOW = 15*total_day_time*perish_warp,
+        PERISH_PRESERVED = 20*total_day_time*perish_warp,
+        PERISH_SUPERSLOW = 40*total_day_time*perish_warp,
+		
+                베리 = 9.375 or 12.5
+		꿀 = 체력 3 허기 9.375 
+		우유 = 체력3 허기 12.5 정신력 10
+	       커피 = 허기 9.375 
+		구운카카오 = 체력 5 허기 9.375 정신력 -10 
+		선인장 체력 1 허기 12.5 정신력 15 
+		카카오 10+3
+
+(TUNING.HEALING_MED/2)              
+(TUNING.CALORIES_TINY)
+(TUNING.CALORIES_MEDSMALL)
+(TUNING.SANITY_SMALL)
+
+temperature = TUNING.HOT_FOOD_BONUS_TEMP,
+temperature = TUNING.COLD_FOOD_BONUS_TEMP,
+
+temperatureduration = TUNING.FOOD_TEMP_BRIEF,
+temperatureduration = TUNING.FOOD_TEMP_AVERAGE,
+temperatureduration = TUNING.FOOD_TEMP_LONG,
+temperatureduration = TUNING.TOTAL_DAY_TIME
+
+        DAY_TIME_DEFAULT = day_time,
+        DUSK_TIME_DEFAULT = dusk_time,
+        NIGHT_TIME_DEFAULT = night_time,
+
+       

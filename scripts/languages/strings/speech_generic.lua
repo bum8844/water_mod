@@ -61,15 +61,22 @@ return {
 		WELL_DRILLING_ITEM = "물을 길을 우물을 파는 장치야.",
 		HOLE = "여기에 우물을 만들면 되겠어.",
 		WELL = "이제 깨끗한 물을 간편하게 얻을 수 있어!",
+<<<<<<< HEAD
+		BOTTLE_POUCH = "",
+=======
 		BOTTLE_POUCH_SMALL = "",
 		BOTTLE_POUCH_BIG = "",
 		THERMOS_BOTTLE_SMALL = "",
 		THERMOS_BOTTLE_BIG = "",
+>>>>>>> Beta_1.2.8
 		WINE_CELLAR_PART = "",
 		WINE_CELLAR = "",
 
 		WX78MODULE_NONEDRUNK = "작은 장치 하나에 아주 많은 과학이 압축되어 있어.", -- 78전용 묘듈
+<<<<<<< HEAD
+=======
 		PURIFICATION_TABLETS = "",
+>>>>>>> Beta_1.2.8
 
 		-- 물 모드 식물
 
@@ -224,7 +231,11 @@ return {
 		LUMPY_WINE = "깔끔하고 담백한 술이야.",
 		PULQUE = "끈적하고 시큼해.",
 		RUINCACAO_WINE = "이걸로 술을 만들 수 있을 줄은 몰랐어.",
+<<<<<<< HEAD
+		MIDNIGHT_STROM = "",
+=======
 		MIDNIGHT_STORM = "",
+>>>>>>> Beta_1.2.8
 		APPLEPINE_CIDER = "",
 		MENTHA_SPICATA_WINE = "",
 
@@ -254,8 +265,12 @@ return {
 		BERRY_BRANDY = "과학적 영감을 얻는 데에 도움이 돼.",
 		AREUHI = "이젠 우유 같아 보이지도 않아.",
 		APPLEPINE_BRANDY = "",
+<<<<<<< HEAD
+		VOID_LIQUEUR  = "",
+=======
 		VOID_BRANDY = "",
 		VOID_GIN  = "",
+>>>>>>> Beta_1.2.8
 		CITROYUZU_CURACAO = "",
 		MENTHA_SPICATA_CURACAO = "",
 
@@ -294,7 +309,11 @@ return {
         RUIN_SCHOKAKOLA = "초콜릿에 과학을 잔뜩 주입했어.",
         APPLEPINE_PIE = "",
         APPLEPINE_FRIED_RICE = "",
+<<<<<<< HEAD
+        citroyuzu_bbq = "",
+=======
         CITROYUZU_BBQ = "",
+>>>>>>> Beta_1.2.8
 
 		BUCKET_STEEL_EMPTY = 
 		{
@@ -377,7 +396,11 @@ return {
 			STOP = "여전히 물이 짜.",
 		},
 
+<<<<<<< HEAD
+		KETTLE =
+=======
 		TEA_POT =
+>>>>>>> Beta_1.2.8
 		{
 			EMPTY = "보기만 해도 목이 말라.",
 			BURNT = "끓인 게 아니라 탔네.",
@@ -391,7 +414,11 @@ return {
 			MELT_SHORT = "거의 다 녹였어!",
 		},
 
+<<<<<<< HEAD
+		PORTABLEKETTLE_ITEM =
+=======
 		PORTABLE_TEA_POT_ITEM =
+>>>>>>> Beta_1.2.8
 		{
 			GENERIC = "이제 어디서든 차를 마실 수 있어!",
 			EMPTY = "안에는 빈 것 같아.", 
@@ -404,6 +431,8 @@ return {
 			MELT_LONG = "좀 더 녹여야 해.",
 			MELT_SHORT = "거의 다 녹였어!",
 		},
+<<<<<<< HEAD
+=======
 
 		KETTLE =
 		{
@@ -428,6 +457,7 @@ return {
 			MELT_LONG = "좀 더 녹여야 해.",
 			MELT_SHORT = "거의 다 녹였어!",
 		},
+>>>>>>> Beta_1.2.8
 		
 		DISTILLERS =
 		{   

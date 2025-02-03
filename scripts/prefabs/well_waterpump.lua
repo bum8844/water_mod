@@ -12,6 +12,8 @@ local prefabs =
 	"collapse_small",
 }
 
+<<<<<<< HEAD
+=======
 local function Calculate(picker,loot)
 	local test = picker.components.steampressure:GetPressureSection()
 
@@ -32,6 +34,7 @@ local function GetArea(inst)
 	return lunacyarea and WATERTYPE.MINERAL or WATERTYPE.CLEAN
 end
 
+>>>>>>> Beta_1.2.8
 local function SetSection(meter, num)
 	meter.AnimState:SetPercent("idle", num)
 end
@@ -56,13 +59,19 @@ local function SetPressureSection(newsection, oldsection, inst)
 end
 
 local function TurnOff(inst, instant)
+<<<<<<< HEAD
+=======
 	inst._ison = false
+>>>>>>> Beta_1.2.8
 	inst.sg:GoToState("turn_off")
 	inst.components.steampressure:StopGetPressure()
 end
 
 local function TurnOn(inst, instant)
+<<<<<<< HEAD
+=======
 	inst._ison = true
+>>>>>>> Beta_1.2.8
 	inst.sg:GoToState("turn_on")
 	inst.components.steampressure:GetPressure()
 end
@@ -156,14 +165,22 @@ end
 local function OnSpawnIn(inst)
 	inst.entity:Show()
 
+<<<<<<< HEAD
+	local x, y, z = inst.Transform:GetWorldPosition()
+	local lunacyarea = TheWorld.Map:FindVisualNodeAtPoint(x, y, z , "lunacyarea") ~= nil
+	inst.components.water:SetWaterType(lunacyarea and WATERTYPE.MINERAL or WATERTYPE.CLEAN)
+=======
 	local watertype = GetArea(inst)
 
 	inst.components.pickable.product = "water_"..watertype
+>>>>>>> Beta_1.2.8
 
 	if not inst.sg:HasStateTag("active") then
 		inst.sg:GoToState("place")
 	end
 	local test = inst.components.steampressure:GetPressureSection()
+<<<<<<< HEAD
+=======
 
 	if test > 0 then
 		inst.components.pickable.numtoharvest = 1
@@ -173,6 +190,7 @@ local function OnSpawnIn(inst)
 		inst.components.pickable.canbepicked = false
 	end
 
+>>>>>>> Beta_1.2.8
 	inst.AnimState:OverrideSymbol("swap", "well_waterpump_meter", tostring(test))
 end
 
@@ -262,7 +280,10 @@ local function fn()
     inst:AddTag("cleanwaterproduction")
     inst:AddTag("alwayson")
     inst:AddTag("hashole")
+<<<<<<< HEAD
+=======
     inst:AddTag("blockbucket")
+>>>>>>> Beta_1.2.8
 	
 	MakeObstaclePhysics(inst, .5)
 
@@ -303,8 +324,13 @@ local function fn()
 
     inst:AddComponent("wateringmachine")
 
+<<<<<<< HEAD
+    inst:AddComponent("dismantleable")
+    inst.components.dismantleable:SetOnDismantleFn(OnDismantle)
+=======
     inst:AddComponent("portablestructure")
     inst.components.portablestructure:SetOnDismantleFn(OnDismantle)
+>>>>>>> Beta_1.2.8
 
     inst:AddComponent("inspectable")
     inst.components.inspectable.getstatus = getstatus
@@ -327,12 +353,17 @@ local function fn()
 
 	inst:SetStateGraph("SGwell_waterpump")
 
+<<<<<<< HEAD
+	inst:DoTaskInTime(0, OnSpawnIn)
+	inst:ListenForEvent("onbuilt",removehole)
+=======
 
 
 	inst:DoTaskInTime(0, OnSpawnIn)
 	inst:ListenForEvent("onbuilt",removehole)
 	inst:ListenForEvent("picked",Calculate)
 	--inst:PushEvent("picked", { picker = picker, loot = loot, plant = self.inst })
+>>>>>>> Beta_1.2.8
 	--inst:ListenForEvent("showmeter", ShowMeter)
 	--inst:ListenForEvent("hidemeter", HideMeter)
 
@@ -365,5 +396,10 @@ end
 	return inst
 end]]
 
+<<<<<<< HEAD
+return Prefab("well_waterpump", fn, assets, prefabs),
+MakePlacer("well_waterpump_placer", "well_waterpump", "well_waterpump", "deactive", nil, nil, nil, nil, nil, nil, placer_postinit_fn)
+=======
 return Prefab("well_waterpump", fn, assets, prefabs)
+>>>>>>> Beta_1.2.8
 --Prefab("well_waterpump_meter", meterfn, assets, prefabs)

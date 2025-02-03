@@ -11,12 +11,22 @@ return
 		FERMENT = "발효",
 		DISITLL = "증류",
 		BURYING = "매립",
+<<<<<<< HEAD
+=======
 		PURIFY = "정화",
 		SHAKING = "섞기",
+>>>>>>> Beta_1.2.8
 	},
 
 	NAMES =
 	{
+<<<<<<< HEAD
+		WX78MODULE_NONEDRUNK = "에탄올 재처리 모듈",
+
+		WINE_CELLAR = "와인 보관함",
+		WINE_CELLAR_PART = "와인 보관함 재료",
+		BOTTLE_POUCH = "물병파우치",
+=======
 		BOSTON_SHAKER = "보스턴 쉐이커",
 		COBBLER_SHAKER = "코블러 쉐이커",
 		WX78MODULE_NONEDRUNK = "에탄올 재처리 모듈",
@@ -30,6 +40,7 @@ return
 		BOTTLE_POUCH_BIG = "대용량 물병파우치",
 		THERMOS_BOTTLE_SMALL = "소용량 보온병",
 		THERMOS_BOTTLE_BIG = "대용량 보온병",
+>>>>>>> Beta_1.2.8
 
 		-- boilbook
 		BOILBOOK_BASIC = "음료의 세계",
@@ -58,8 +69,11 @@ return
 		-- brewery
 		BREWERY = "양조기",
 
+<<<<<<< HEAD
+=======
 		PURIFICATION_TABLETS = "정화제",
 
+>>>>>>> Beta_1.2.8
 		-- buckets
 		BUCKET_EMPTY = "양동이",
 		BUCKET_WOODIE_EMPTY = "속 빈 나무동이",
@@ -76,6 +90,13 @@ return
 		CAMPDESALINATOR = "캠프제염기",
 
 		-- kettle
+<<<<<<< HEAD
+		KETTLE	= "주전자",
+
+		-- portablekettle
+		PORTABLEKETTLE_ITEM	= "휴대용 주전자",
+		PORTABLEKETTLE = "휴대용 주전자",
+=======
 		KETTLE	= "물주전자",
 		TEA_POT	= "찻주전자",
 
@@ -84,6 +105,7 @@ return
 		PORTABLEKETTLE = "휴대용 물주전자",
 		PORTABLE_TEA_POT_ITEM	= "휴대용 찻주전자",
 		PORTABLE_TEA_POT = "휴대용 찻주전자",
+>>>>>>> Beta_1.2.8
 
 		-- distillers
 		DISTILLERS = "증류기",
@@ -167,7 +189,10 @@ return
 		WATER_MINERAL = "미네랄 워터",
 		WATER_DIRTY = "더러운 물",
 		WATER_SALTY = "소금물",
+<<<<<<< HEAD
+=======
 		WATER_ACID = "산성용액",
+>>>>>>> Beta_1.2.8
 
 		GOOPYDRINK = "이상한 음료",
 
@@ -279,7 +304,11 @@ return
 		LUMPY_WINE = "서주",
 		PULQUE = "풀케",
 		RUINCACAO_WINE = "카카오와인",
+<<<<<<< HEAD
+		MIDNIGHT_STROM = "미드나이트 스톰",
+=======
 		MIDNIGHT_STORM = "미드나이트 스톰",
+>>>>>>> Beta_1.2.8
 		APPLEPINE_CIDER = "사과주",
 		CITROYUZU_WINE = "오랜지 와인",
 		MENTHA_SPICATA_WINE = "민트 와인",
@@ -312,8 +341,12 @@ return
 		BERRY_BRANDY = "베리 브랜디",
 		AREUHI = "아르히",
 		APPLEPINE_BRANDY = "사과 브랜디",
+<<<<<<< HEAD
+		VOID_LIQUEUR = "보이드",
+=======
 		VOID_BRANDY = "보이드 브랜디",
 		VOID_GIN = "보이드 진",
+>>>>>>> Beta_1.2.8
 		CITROYUZU_CURACAO = "오랜지 큐라소",
 		MENTHA_SPICATA_CURACAO = "민트 큐라소",
 
@@ -352,23 +385,35 @@ return
 		RUIN_SCHOKAKOLA = "쇼카콜라",
         APPLEPINE_PIE = "사과민스파이",
         APPLEPINE_FRIED_RICE = "파인애플 볶음밥",
+<<<<<<< HEAD
+        citroyuzu_bbq = "",
+=======
         CITROYUZU_BBQ = "유자몽 바배큐",
+>>>>>>> Beta_1.2.8
 	},
 
 	RECIPE_DESC =
 	{
+<<<<<<< HEAD
+		WX78MODULE_NONEDRUNK = "취할 틈도 없이 벌컥벌컥.",
+=======
 		ACID_BATTERY = "초석보다도 더 효율적입니다! 특히 로봇에게는요.",
 		MELT_NITRE = "산성용액을 이용하여 금을 초석으로 변환합니다.",
 		TRANSMUTE_WATER_SALTY = "정화제을 이용하여 산성용액을 소금물로 변환합니다.",
 		TRANSMUTE_WATER_ACID = "정화제을 이용하여 소금물을 산성용액로 변환합니다.",
 		WX78MODULE_NONEDRUNK = "취할 틈도 없이 벌컥벌컥.",
 		WX78MODULE_ACID_DRYING = "앏은 산성막을 펴줍니다",
+>>>>>>> Beta_1.2.8
 		BOILBOOK_BASIC = "지금까지의 모든 음료 제조법을 복습." ,
 		BOILBOOK_ADVANCED = "지금까지의 모든 칵테일 제조법을 복습." ,
 		WELL_DRILLING_ITEM = "땅에다가 엄청 큰 구멍을 뚫어보세요.",
 		WELL_KIT = "우물가에서 우물쭈물하지 마세요.",
 		WELL_SPRINKLER_KIT = "궁극의 관개농업.",
 		WELL_BURYING_KIT = "소원의 우물에 돌 던지기.",
+<<<<<<< HEAD
+		DESALINATOR = "짠돌이 바닷물을 덜 짜게.",
+		BARREL = "원숭이 미포함.",
+=======
 		WINE_CELLAR = "좋은 아이디어 필요",
 		DESALINATOR = "마실수 없는 물을 마실수 있게.",
 		BARREL = "원숭이 미포함.",
@@ -376,10 +421,18 @@ return
 		BOTTLE_POUCH_BIG = "거대한 물 보관 가방",
 		THERMOS_BOTTLE_SMALL = "음료를 좀더 오래 보관하세요",
 		THERMOS_BOTTLE_BIG = "궁극의 음료 보관함",
+>>>>>>> Beta_1.2.8
 		BREWERY = "맛있는 음료를 만들어 보세요. (희망사항)",
 		BUCKET_EMPTY = "그냥 빈 양동이.",
 		CAMPKETTLE_ITEM = "불 없이는 아무것도 못 합니다.",
 		CAMPDESALINATOR_ITEM = "뜨거운 열정이 늘 필요합니다.",
+<<<<<<< HEAD
+		KETTLE = "차 한잔 하시게, 선생.",
+		PORTABLEKETTLE_ITEM = "티타임을 언제, 어디서나.",
+		DISTILLERS = "술을 영혼까지 꽉꽉 쥐어짜는 것과 같습니다.",
+		WELL_WATERPUMP_KIT = "물의 압력으로 물을 길으세요.",
+		SPICE_CAFFEINPEPPER = "기운 넘치는 활력의 가루.",
+=======
 		KETTLE = "물 한잔 하시게, 선생.",
 		PORTABLE_KETTLE = "깨끗한 물을 언제, 어디서나.",
 		PURIFICATION_TABLETS = "깨끗한 물을 더 빠르게 얻기",
@@ -389,6 +442,7 @@ return
 		WELL_WATERPUMP_KIT = "물의 압력으로 물을 길으세요.",
 		SPICE_CAFFEINPEPPER = "기운 넘치는 활력의 가루.",
 		SPICE_RUINCOLATE_SPREAD = "보기만 해도 배부른 스프래드.",
+>>>>>>> Beta_1.2.8
 		ADDITIVE_SEED = "괜히 뒤에서 호박씨 깐다는 게 아닙니다.",
 		ADDITIVE_PETALS = "꽃잎과 이파리의 향에 입이 떡 벌어집니다.",
 		ADDITIVE_NUT = "미쳐버릴 듯 고소한 향기.",
@@ -416,10 +470,14 @@ return
 
 		COOKBOOK =
 		{
+<<<<<<< HEAD
+			TAB_TITLE_KETTLE = "주전자 레시피",
+=======
 			TAB_TITLE_TEA_POT = "찻주전자 레시피",
 			TAB_TITLE_PORTABLE_TEA_POT = "주방장의 특선 음료",
 			TAB_TITLE_COCKTAIL = "칵테일 레시피",
 			TAB_TITLE_ADVANCED_COCKTAIL = "주방장의 특선 칵테일",
+>>>>>>> Beta_1.2.8
 			TAB_TITLE_BREWERY = "양조기 레시피",
 			TAB_TITLE_DISTILLERS = "증류기 레시피",
 			BOILTIME_TITLE = "끓는 시간",

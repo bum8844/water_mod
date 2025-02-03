@@ -8,6 +8,9 @@ return {
 	"fruitflyfruit_dead",
 	"water_spice",
 	--"thermos_bottle",
+<<<<<<< HEAD
+	"bottle_pouch",
+=======
 	--"bottle_pouch",
 	"wine_cellar_part",
 	"purification_tablets",
@@ -15,6 +18,7 @@ return {
 	"drink_container",
 	"acid_battery",
 	"shakers",
+>>>>>>> Beta_1.2.8
 
 	--structures
 	"barrel",
@@ -30,7 +34,10 @@ return {
 	"well_waterpump",
 	"distillers",
 	"wine_cellar",
+<<<<<<< HEAD
+=======
 	"kettles",
+>>>>>>> Beta_1.2.8
 
 	--food & plants
 	"caffeinberry",

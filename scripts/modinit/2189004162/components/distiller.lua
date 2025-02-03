@@ -25,7 +25,11 @@ local function Descriptors()
 			(watertype == WATERTYPE.CLEAN_ICE or watertype == WATERTYPE.DIRTY_ICE) and STRINGS.INSIGHT.STATE.MELT or
 			STRINGS.INSIGHT.STATE.PURIFY
 
+<<<<<<< HEAD:scripts/modcompats/2189004162/components/distiller.lua
+			local rawtext = STRINGS.INSIGHT.DISITLLER.RAWTEXT
+=======
 			local rawtext = STRINGS.INSIGHT.DISTILLER.RAWTEXT
+>>>>>>> Beta_1.2.8:scripts/modinit/2189004162/components/distiller.lua
 			boiling_time_string = string.format(rawtext,water_type_string,boiling_time_string)
 
 			description = Insight.env.CombineLines(boiling_time_string)

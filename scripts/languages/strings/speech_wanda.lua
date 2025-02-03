@@ -61,15 +61,22 @@ return {
 		WELL_DRILLING_ITEM = "우물을 어디다 팔지부터 정하자고.", --드릴 아이템
 		HOLE = "여기 빠지면 나오는 데에 한 세월은 걸리겠어.", --우물 구멍
 		WELL = "어디 보자, 우물을 작동시키려면 뭐가 필요했더라?", --우물
+<<<<<<< HEAD
+		BOTTLE_POUCH = "",
+=======
 		BOTTLE_POUCH_SMALL = "",
 		BOTTLE_POUCH_BIG = "",
 		THERMOS_BOTTLE_SMALL = "",
 		THERMOS_BOTTLE_BIG = "",
+>>>>>>> Beta_1.2.8
 		WINE_CELLAR_PART = "",
 		WINE_CELLAR = "",
 
 		WX78MODULE_NONEDRUNK = "아하! 녀석이 이런 건 또 언제 만드나 싶었지.", -- 78전용 묘듈
+<<<<<<< HEAD
+=======
 		PURIFICATION_TABLETS = "",
+>>>>>>> Beta_1.2.8
 
 		-- 물 모드 식물
 
@@ -224,7 +231,11 @@ return {
 		LUMPY_WINE = "이득 봤다고 봐야지.", --서주(감자 고구마등 뿌리 술)
 		PULQUE = "시간 쓴 거에 비해 금방 상할 것 같은데.", --풀케(선인주)
 		RUINCACAO_WINE = "그래, 초콜릿으로 술을 담갔단 말이지.", -- 카카오 와인 
+<<<<<<< HEAD
+		MIDNIGHT_STROM = "",
+=======
 		MIDNIGHT_STORM = "",
+>>>>>>> Beta_1.2.8
 		APPLEPINE_CIDER = "",
 		MENTHA_SPICATA_WINE = "",
 
@@ -254,8 +265,12 @@ return {
 		BERRY_BRANDY = "위스키고 브랜디고 상관 없어. 안 썩는 게 중요하지.", -- 베리 브랜디
 		AREUHI = "그나마 쉽게 변질되지는 않겠네.", -- 크므즈 증류주 아르히
 		APPLEPINE_BRANDY = "",
+<<<<<<< HEAD
+		VOID = "",
+=======
 		VOID_BRANDY = "",
 		VOID_GIN  = "",
+>>>>>>> Beta_1.2.8
 		CITROYUZU_CURACAO = "",
 		MENTHA_SPICATA_CURACAO = "",
 
@@ -294,7 +309,11 @@ return {
         RUIN_SCHOKAKOLA = "완벽한 간식이야!", -- 쇼카콜라
         APPLEPINE_PIE = "",
         APPLEPINE_FRIED_RICE = "",
+<<<<<<< HEAD
+        citroyuzu_bbq = "",
+=======
         CITROYUZU_BBQ = "",
+>>>>>>> Beta_1.2.8
 
 		BUCKET_STEEL_EMPTY = 
 		{
@@ -375,6 +394,8 @@ return {
 			BOILING_SHORT = "으으, 조금만 더 빨리!", --거의 다 끓음 
 			DONE = "깨끗한 물 한 잔 먹기 참 힘드네.", -- 깨끗한 물이 들음
 			STOP = "아이고 이런, 화력이 부족해!", -- 화덕에 불이 없어서 소금물이 정수 되지 않는 상태
+<<<<<<< HEAD
+=======
 		},
 
 		TEA_POT =
@@ -403,12 +424,18 @@ return {
 			HASWATER = "이제 마셔도 되는거 아닌가?", -- 깨끗한 물이 차 있는 상태
 			MELT_LONG = "빨리 좀 녹아라, 빨리...", -- 얼음물을 녹이기 시작한지 얼마 안됨
 			MELT_SHORT = "조금만 더 녹이면 되겠어!", -- 얼음물을 거의 녹여감
+>>>>>>> Beta_1.2.8
 		},
 
 		KETTLE =
 		{
 			EMPTY = "이슬이나 핥아먹는 것보다는 훨씬 낫겠지.", --빈 주전자 조사대사
 			BURNT = "아이고, 한동안 이슬이나 핥아야겠네!", --주전자가 불탐
+<<<<<<< HEAD
+			BOILING_LONG = "음료 한 잔 하려고 이런 시간 낭비라니.", -- 음료를 만들기 시작한지 얼마 안됨
+			BOILING_SHORT = "이제 금방 되는 거 맞겠지?", --음료 조리가 거의 끝나감
+=======
+>>>>>>> Beta_1.2.8
 			DONE = "마침내 음료가 나왔네!", --음료가 완성됨
 			PURIFY_LONG = "왜 이렇게 오래 걸려?", -- 더러운 물을 끓이기 시작한지 얼마 안됨
 			PURIFY_SHORT = "으으, 조금만 더 빨리!", --더러운물을 거의 다 끓여감
@@ -421,6 +448,11 @@ return {
 		{
 			GENERIC = "난 여유롭게 다과회 즐길 여유는 없으니 알아둬.", -- 휴대용 주전자(아이템) 조사 대사
 			EMPTY = "야채에도 물이 많은데 그냥 씹어먹으면 되지 않아?", -- 설치한 빈 휴대용 주전자 조사 대사
+<<<<<<< HEAD
+			BOILING_LONG = "음료 하나 만드는 데에 이게 뭔 난리인지.", -- 음료를 만들기 시작한지 얼마 안됨
+			BOILING_SHORT = "이제 오래 안 걸리겠지?", --음료 조리가 거의 끝나감
+=======
+>>>>>>> Beta_1.2.8
 			DONE = "마침내 음료가 나왔네!", --음료가 완성됨
 			PURIFY_LONG = "왜 이렇게 오래 걸려?", -- 더러운 물을 끓이기 시작한지 얼마 안됨
 			PURIFY_SHORT = "으으, 조금만 더 빨리!", --더러운물을 거의 다 끓여감

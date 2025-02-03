@@ -61,15 +61,22 @@ return {
 		WELL_DRILLING_ITEM = "꽤 험하게 생겼군.", --드릴 아이템
 		HOLE = "잘못 빠지면 뼈도 못 건지겠군.", --우물 구멍
 		WELL = "우물 옆에서 목말라 죽겠군.", --우물
+<<<<<<< HEAD
+		BOTTLE_POUCH = "",
+=======
 		BOTTLE_POUCH_SMALL = "",
 		BOTTLE_POUCH_BIG = "",
 		THERMOS_BOTTLE_SMALL = "",
 		THERMOS_BOTTLE_BIG = "",
+>>>>>>> Beta_1.2.8
 		WINE_CELLAR_PART = "",
 		WINE_CELLAR = "",
 
 		WX78MODULE_NONEDRUNK = "저 로봇 녀석 자제 좀 해야 할 텐데.", -- 78전용 묘듈
+<<<<<<< HEAD
+=======
 		PURIFICATION_TABLETS = "",
+>>>>>>> Beta_1.2.8
 
 		-- 물 모드 식물
 
@@ -224,7 +231,11 @@ return {
 		KUMIS = "야성적이로군.", -- 크므즈,산양유주
 		LUMPY_WINE = "생각보다 깔끔하군.", --서주(감자 고구마등 뿌리 술)
 		PULQUE = "내 입맛에는 맞지 않는군.", --풀케(선인주)
+<<<<<<< HEAD
+		MIDNIGHT_STROM = "",
+=======
 		MIDNIGHT_STORM = "",
+>>>>>>> Beta_1.2.8
 		APPLEPINE_CIDER = "",
 		MENTHA_SPICATA_WINE = "",
 
@@ -254,8 +265,12 @@ return {
 		BERRY_BRANDY = "내 품격에 딱 맞는군.", -- 베리 브랜디
 		AREUHI = "이상한 향이 나는군.", -- 크므즈 증류주 아르히
 		APPLEPINE_BRANDY = "",
+<<<<<<< HEAD
+		VOID = "",
+=======
 		VOID_BRANDY = "",
 		VOID_GIN  = "",
+>>>>>>> Beta_1.2.8
 		CITROYUZU_CURACAO = "",
 		MENTHA_SPICATA_CURACAO = "",
 
@@ -294,7 +309,11 @@ return {
         RUIN_SCHOKAKOLA = "효율의 집약체로군.", -- 쇼카콜라
         APPLEPINE_PIE = "",
         APPLEPINE_FRIED_RICE = "",
+<<<<<<< HEAD
+        citroyuzu_bbq = "",
+=======
         CITROYUZU_BBQ = "",
+>>>>>>> Beta_1.2.8
 
 		BUCKET_STEEL_EMPTY = 
 		{
@@ -377,6 +396,8 @@ return {
 			STOP = "끓이다 말았잖아.", -- 화덕에 불이 없어서 소금물이 정수 되지 않는 상태
 		},
 
+<<<<<<< HEAD
+=======
 		TEA_POT =
 		{
 			EMPTY = "쓸쓸해 보이는군.", --빈 주전자 조사대사
@@ -405,6 +426,7 @@ return {
 			MELT_SHORT = "미지근해졌군.", -- 얼음물을 거의 녹여감
 		},
 
+>>>>>>> Beta_1.2.8
 		KETTLE =
 		{
 			EMPTY = "쓸쓸해 보이는군.", --빈 주전자 조사대사

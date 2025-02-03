@@ -17,10 +17,13 @@ local assets =
     Asset("ANIM", "anim/desalinator_rope_glass.zip"),
 }
 
+<<<<<<< HEAD
+=======
 local function GetWaterType(inst)
     return inst.components.waterlevel.watertype or "clean"
 end
 
+>>>>>>> Beta_1.2.8
 local function isdoneboiling(inst)
     local isopen = "_open"
     if not inst.AnimState:IsCurrentAnimation("idle_open") then
@@ -44,6 +47,16 @@ local function onhammered(inst, worker)
 	if inst.components.burnable ~= nil and inst.components.burnable:IsBurning() then
         inst.components.burnable:Extinguish()
     end
+<<<<<<< HEAD
+    local saltvalue = inst.components.saltmaker:GetSalt()
+    local saltvalue_per_salt = inst.components.saltmaker.saltvalue_per_salt
+
+    while saltvalue >= saltvalue_per_salt do
+        local old_saltvalue = saltvalue
+        saltvalue = old_saltvalue - saltvalue_per_salt
+        if saltvalue >= saltvalue_per_salt then
+            inst.components.lootdropper:SpawnLootPrefab("saltrock")
+=======
     local sludgevalue = inst.components.desalinatiorable:GetSludge()
     local sludge_per_sludge = inst.components.desalinatiorable.sludge_per_sludge
     local sludgetype = inst.components.desalinatiorable.sludgetype
@@ -53,6 +66,7 @@ local function onhammered(inst, worker)
         sludgevalue = old_sludgevalue - sludge_per_sludge
         if sludgevalue >= sludge_per_sludge then
             inst.components.lootdropper:SpawnLootPrefab(sludgetype)
+>>>>>>> Beta_1.2.8
         end
     end
 	inst.components.lootdropper:DropLoot()
@@ -88,7 +102,11 @@ local function onpickedfn(inst, picker)
     local isopen = isdoneboiling(inst)
     if not inst:HasTag("burnt") then
         inst.components.pickable.numtoharvest = 0 --어차피 한 번에 다 주게 하니까 상관없음
+<<<<<<< HEAD
+        inst.components.saltmaker:ResetSalt()
+=======
         inst.components.desalinatiorable:ResetSludge()
+>>>>>>> Beta_1.2.8
         inst.SoundEmitter:PlaySound("saltydog/common/saltbox/open")
         inst:DoTaskInTime(0.13, function(inst) inst.AnimState:PlayAnimation("get_salt"..isopen) 
             inst:DoTaskInTime(1.1, function(inst) 
@@ -99,11 +117,18 @@ local function onpickedfn(inst, picker)
     end
 end
 
+<<<<<<< HEAD
+local function CalculateSalt(inst, salt)
+    if not inst:HasTag("burnt") then
+        if salt > 0 then
+            inst.components.pickable.numtoharvest = salt
+=======
 local function CalculateSludge(inst, sludge, sludgetype)
     if not inst:HasTag("burnt") then
         if sludge > 0 then
             inst.components.pickable.product = sludgetype
             inst.components.pickable.numtoharvest = sludge
+>>>>>>> Beta_1.2.8
             if not inst.components.distiller:isBoiling() then
                 inst.SoundEmitter:PlaySound("hookline/common/trophyscale_fish/place_fish")
                 inst.SoundEmitter:PlaySound("saltydog/common/saltbox/open")
@@ -115,9 +140,14 @@ local function CalculateSludge(inst, sludge, sludgetype)
     end
 end
 
+<<<<<<< HEAD
+local function SetSaltSection(inst,result)
+    inst.AnimState:OverrideSymbol("swap_salt", "desalinator_rope_salt", tostring(result))
+=======
 local function SetSludgeSection(inst,result)
     local sludgetype = inst.components.desalinatiorable.sludgetype == "moonglass" and "glass" or "salty"
     inst.AnimState:OverrideSymbol("swap_salt", "desalinator_rope_"..sludgetype, tostring(result))
+>>>>>>> Beta_1.2.8
 end
 
 local function ondoneboilingfn(inst)
@@ -131,7 +161,11 @@ local function ondoneboilingfn(inst)
         else
             inst.AnimState:PushAnimation("idle")
         end
+<<<<<<< HEAD
+        inst.components.saltmaker:CalculateSalt()
+=======
         inst.components.desalinatiorable:CalculateSludge()
+>>>>>>> Beta_1.2.8
         inst.SoundEmitter:KillSound("desalinator_sound")
         inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/medium")
     end
@@ -185,11 +219,18 @@ local function OnTakeWater(inst)
     if not inst:HasTag("burnt") then
         local water = inst.components.waterlevel.currentwater
         local water_old = inst.components.waterlevel.oldcurrentwater
+<<<<<<< HEAD
+        inst.AnimState:PlayAnimation("take_water")
+        inst.AnimState:PushAnimation("idle")
+        inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/medium")
+        inst.components.saltmaker:MakeSalt(water, water_old)
+=======
         local watertype = inst.components.waterlevel.watertype
         inst.AnimState:PlayAnimation("take_water")
         inst.AnimState:PushAnimation("idle")
         inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/medium")
         inst.components.desalinatiorable:MakeSludge(water, water_old, watertype)
+>>>>>>> Beta_1.2.8
         inst:DoTaskInTime(1,function(inst)
             inst.SoundEmitter:PlaySound("dontstarve/common/wardrobe_close")
             onstartboilingfn(inst)
@@ -272,6 +313,14 @@ local function fn()
     inst.components.waterlevel:SetSectionCallback(OnSectionChange)
     inst.components.waterlevel:InitializeWaterLevel(0)
 
+<<<<<<< HEAD
+    inst:AddComponent("saltmaker")
+    inst.components.saltmaker:SetPersalt(TUNING.SALT_VALUE)
+    inst.components.saltmaker:SetMax(TUNING.DESALINATOR_MAX_SALT)
+    inst.components.saltmaker:SetSaltFn(CalculateSalt)
+    inst.components.saltmaker:SetSectionsFn(SetSaltSection)
+    inst.components.saltmaker:SetSections(TUNING.DESALINATOR_SALT_SECTION)
+=======
     inst:AddComponent("desalinatiorable")
     inst.components.desalinatiorable:SetPersludge(TUNING.SLUDGE_VALUE)
     inst.components.desalinatiorable:SetMax(TUNING.DESALINATOR_MAX_SLUDGE)
@@ -283,6 +332,7 @@ local function fn()
     inst.components.pickable.onpickedfn = onpickedfn
     --inst.components.pickable.product = "saltrock"
     inst.components.pickable.numtoharvest = 0
+>>>>>>> Beta_1.2.8
 
     inst:AddComponent("water")
     inst.components.water.available = false

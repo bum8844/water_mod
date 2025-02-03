@@ -22,6 +22,14 @@ local function Descriptors()
 						watertype == WATERTYPE.DIRTY and STRINGS.INSIGHT.STATE.DIRTY or
 						watertype == WATERTYPE.DIRTY_ICE and STRINGS.INSIGHT.STATE.DIRTY_ICE or
 						watertype == WATERTYPE.SALTY and STRINGS.INSIGHT.STATE.SALTY or
+<<<<<<< HEAD:scripts/modcompats/2189004162/components/waterlevel.lua
+						STRINGS.INSIGHT.STATE.MINERAL
+					) or STRINGS.INSIGHT.STATE.EMPTY
+
+				local rawtext = STRINGS.INSIGHT.WATERLEVEL.RAWTEXT
+
+				water_amont_string = string.format(rawtext,state,currentwater,maxwater)
+=======
 						watertype == WATERTYPE.UNCLEAN_MINERAL and STRINGS.INSIGHT.STATE.UNCLEAN_MINERAL or
 						STRINGS.INSIGHT.STATE.MINERAL
 					) or STRINGS.INSIGHT.STATE.EMPTY
@@ -39,6 +47,7 @@ local function Descriptors()
 				local rawtext = STRINGS.INSIGHT.WATERLEVEL.RAWTEXT
 
 				water_amont_string = string.format(rawtext,state,color_code,currentwater,maxwater)
+>>>>>>> Beta_1.2.8:scripts/modinit/2189004162/components/waterlevel.lua
 
 				description = water_amont_string
 

@@ -1,6 +1,11 @@
 require "utils/water_brew_utils"
 
 local drinks = {
+<<<<<<< HEAD
+
+}
+
+=======
     cocktail_bacardi = {
         test = function(boilier, names, tags) return names.madhu_rum and names.citroyuzu_juice and names.spice_sugar and tags.frozen end,
         health = 0,
@@ -168,11 +173,17 @@ local drinks = {
 
 local modlist = require("utils/water_modlist").active_mod_compatibility
 
+>>>>>>> Beta_1.2.8
 for k, v in pairs(drinks) do
     v.name = k
     v.weight = v.weight or 1
     v.priority = v.priority or 0
     v.drinktype = v.drinktype or DRINKTYPY.GENERIC
+<<<<<<< HEAD
+
+    v.is_boilbook_recipes = true
+    v.boilbook_category = "portable_cocktail_maker"
+=======
     v.cooktime = .6
 
     if v.tags then
@@ -190,20 +201,30 @@ for k, v in pairs(drinks) do
         v.tags = {"cocktail_drink"}
     end
     v.cookbook_tex = k..".tex"
+>>>>>>> Beta_1.2.8
     if modlist.legion and _G.CONFIGS_LEGION.BETTERCOOKBOOK then
     	v.cook_need = nil
     	v.cook_cant = nil
     	v.recipe_count = 4
+<<<<<<< HEAD
+		local cookbookui_legion = require "modcompats/1392778117/cookbookui_legion"
+=======
 		local cookbookui_legion = require "modinit/1392778117/cookbookui_legion"
+>>>>>>> Beta_1.2.8
 		v.custom_cookbook_details_fn = function(data, self, top, left)
 			local root = cookbookui_legion(data, self, top, left)
 			return root
 		end
     end
+<<<<<<< HEAD
+    v.drinktype = v.drinktype or DRINKTYPY.GENERIC
+    v.no_cookbook = true
+=======
     v.is_boilbook_recipes = true
     --v.overridebuild = "cocktail_drinks"
     v.no_cookbook = true
     v.drinktype = v.drinktype or DRINKTYPY.GENERIC
+>>>>>>> Beta_1.2.8
 end
 
 return drinks

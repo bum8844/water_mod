@@ -138,6 +138,13 @@ local TAKEWATER = AddAction("TAKEWATER", STRINGS.ACTIONS.FILL, function(act)
     elseif source ~= nil
         and source.components.water ~= nil
         and source.components.water.isitem then
+<<<<<<< HEAD
+        return false
+    end
+
+    if (filled and filled:HasTag("onlyoneget")) or (source and source:HasTag("onlyoneget")) then
+=======
+>>>>>>> Beta_1.2.8
         return false
     end
 
@@ -176,6 +183,15 @@ local MILKINGTOOL = AddAction("MILKINGTOOL", STRINGS.ACTIONS.MILKINGTOOL, functi
     end
 end)
 
+<<<<<<< HEAD
+local DISASSEMBLE = AddAction("DISASSEMBLE", STRINGS.ACTIONS.DISMANTLE, function(act)
+        act.target.components.dismantleable:Dismantle(act.doer)
+    return true
+end)
+
+DISASSEMBLE.priority = 1
+=======
+>>>>>>> Beta_1.2.8
 MILKINGTOOL.priority = 1
 
 local MACHINETOOL = AddAction("MACHINETOOL", STRINGS.ACTIONS.INTERACT_WITH.GENERIC, function(act)
@@ -356,6 +372,9 @@ DRAMATIC_RAISE = AddAction("DRAMATIC_RAISE",STRINGS.ACTIONS.OCEAN_TRAWLER_RAISE,
     return true
 end)
 
+<<<<<<< HEAD
+DRAMATIC_RAISE.rmb = true
+=======
 DRAMATIC_RAISE.rmb = true
 
 PURIFY = AddAction("PURIFY",STRINGS.ACTIONS.PURIFY,function(act)
@@ -383,3 +402,4 @@ end)
 
 SHAKING.mount_valid = true
 SHAKING.priority = 2
+>>>>>>> Beta_1.2.8

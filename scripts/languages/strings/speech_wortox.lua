@@ -50,15 +50,22 @@ return {
 		WELL_DRILLING_ITEM = "흐유유, 땅 좀 파보자고!", --드릴 아이템
 		HOLE = "안쪽이 꽤 깊은데!", --우물 구멍
 		WELL = "내릴 양동이를 찾아봐야겠네.", --우물
+<<<<<<< HEAD
+		BOTTLE_POUCH = "",
+=======
 		BOTTLE_POUCH_SMALL = "",
 		BOTTLE_POUCH_BIG = "",
 		THERMOS_BOTTLE_SMALL = "",
 		THERMOS_BOTTLE_BIG = "",
+>>>>>>> Beta_1.2.8
 		WINE_CELLAR_PART = "",
 		WINE_CELLAR = "",
 
 		WX78MODULE_NONEDRUNK = "네가 그 폐급 속의 A급이니?", -- 78전용 묘듈
+<<<<<<< HEAD
+=======
 		PURIFICATION_TABLETS = "",
+>>>>>>> Beta_1.2.8
 
 		-- 물 모드 식물
 
@@ -213,7 +220,11 @@ return {
 		LUMPY_WINE = "지하세계 출신은 믿을게 못되지.", --서주(감자 고구마등 뿌리 술)
 		PULQUE = "가시돋친 식물을 마실생각은 누가 한 걸까?", --풀케(선인주)
 		RUINCACAO_WINE = "오, 이젠 콩으로 술도 만드는거야?", -- 카카오 와인 
+<<<<<<< HEAD
+		MIDNIGHT_STROM = "",
+=======
 		MIDNIGHT_STORM = "",
+>>>>>>> Beta_1.2.8
 		APPLEPINE_CIDER = "",
 		MENTHA_SPICATA_WINE = "",
 
@@ -243,9 +254,13 @@ return {
 		BERRY_BRANDY = "필멸자들이 좋아할 고급진 맛이지. 난 아니고.", -- 베리 브랜디
 		AREUHI = "어린애 필멸자들이 마시면 선물은 못 받겠지.", -- 크므즈 증류주 아르히
 		APPLEPINE_BRANDY = "",
+<<<<<<< HEAD
+		VOID = "",
+=======
 		VOID_GIN = "",
 		VOID_BRANDY = "",
 		VOID_GIN  = "",
+>>>>>>> Beta_1.2.8
 		CITROYUZU_CURACAO = "",
 		MENTHA_SPICATA_CURACAO = "",
 
@@ -284,7 +299,11 @@ return {
         RUIN_SCHOKAKOLA = "필멸자들은 처음보는식물도 먹으려 드는건가?", -- 쇼카콜라
         APPLEPINE_PIE = "",
         APPLEPINE_FRIED_RICE = "",
+<<<<<<< HEAD
+        citroyuzu_bbq = "",
+=======
         CITROYUZU_BBQ = "",
+>>>>>>> Beta_1.2.8
 
 		BUCKET_STEEL_EMPTY = 
 		{
@@ -367,7 +386,11 @@ return {
 			STOP = "약해, 약해, 약해!", -- 화덕에 불이 없어서 소금물이 정수 되지 않는 상태
 		},
 
+<<<<<<< HEAD
+		KETTLE =
+=======
 		TEA_POT =
+>>>>>>> Beta_1.2.8
 		{
 			EMPTY = "텅텅 비었어.", --빈 주전자 조사대사
 			BURNT = "필말자들 요리는 도통 이해가 안된다니까.", --주전자가 불탐
@@ -381,7 +404,11 @@ return {
 			MELT_SHORT = "거의 녹았나본데!", -- 얼음물을 거의 녹여감
 		},
 
+<<<<<<< HEAD
+		PORTABLEKETTLE_ITEM =
+=======
 		PORTABLE_TEA_POT_ITEM =
+>>>>>>> Beta_1.2.8
 		{
 			GENERIC = "영혼을 끓일순 없을까?", -- 휴대용 주전자(아이템) 조사 대사
 			EMPTY = "텅텅 비었어.", -- 설치한 빈 휴대용 주전자 조사 대사
@@ -394,6 +421,8 @@ return {
 			MELT_LONG = "꽤 시간이 걸릴거야.", -- 얼음물을 녹이기 시작한지 얼마 안됨
 			MELT_SHORT = "거의 녹았나본데!", -- 얼음물을 거의 녹여감
 		},
+<<<<<<< HEAD
+=======
 
 		KETTLE =
 		{
@@ -418,6 +447,7 @@ return {
 			MELT_LONG = "꽤 시간이 걸릴거야.", -- 얼음물을 녹이기 시작한지 얼마 안됨
 			MELT_SHORT = "거의 녹았나본데!", -- 얼음물을 거의 녹여감
 		},
+>>>>>>> Beta_1.2.8
 		
 		DISTILLERS =
 		{   

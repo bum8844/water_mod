@@ -23,7 +23,11 @@ end
 
 local function GiveWater(inst, watertype, doer)
     local container = doer ~= nil and (doer.components.inventory or doer.components.container) or nil
+<<<<<<< HEAD
+    local water = SpawnPrefab(watertype)
+=======
     local water = SpawnPrefab("water_"..watertype)
+>>>>>>> Beta_1.2.8
     local old_val = inst.components.finiteuses:GetUses() + 1
     local current_fin = old_val
     local peruse = TUNING.BUCKET_LEVEL_PER_USE

@@ -61,15 +61,22 @@ return {
 		WELL_DRILLING_ITEM = "이걸로 불은 못 붙히는 거야?", --드릴 아이템
 		HOLE = "빠지면 뼈도 못 추리겠어.", --우물 구멍
 		WELL = "'우물'이 있으면 '좌불'도 있어야 하는 거 아니야?", --우물
+<<<<<<< HEAD
+		BOTTLE_POUCH = "",
+=======
 		BOTTLE_POUCH_SMALL = "",
 		BOTTLE_POUCH_BIG = "",
 		THERMOS_BOTTLE_SMALL = "",
 		THERMOS_BOTTLE_BIG = "",
+>>>>>>> Beta_1.2.8
 		WINE_CELLAR_PART = "",
 		WINE_CELLAR = "",
 
 		WX78MODULE_NONEDRUNK = "야 WX, 화염방사기 설치해보는 건 어때?", -- 78전용 묘듈
+<<<<<<< HEAD
+=======
 		PURIFICATION_TABLETS = "",
+>>>>>>> Beta_1.2.8
 
 		-- 물 모드 식물
 
@@ -224,7 +231,11 @@ return {
 		LUMPY_WINE = "술에서 흙냄새 나겠다.", --서주(감자 고구마등 뿌리 술)
 		PULQUE = "우웩, 끈적거리고 셔.", --풀케(선인주)
 		RUINCACAO_WINE = "뜨거운 핫초코가 더 좋기는 하는데 이것도 나름 괜찮네.", -- 카카오 와인 
+<<<<<<< HEAD
+		MIDNIGHT_STROM = "",
+=======
 		MIDNIGHT_STORM = "",
+>>>>>>> Beta_1.2.8
 		APPLEPINE_CIDER = "",
 		MENTHA_SPICATA_WINE = "",
 
@@ -254,8 +265,12 @@ return {
 		BERRY_BRANDY = "이게 그렇게 고급진 술이라며?", -- 베리 브랜디
 		AREUHI = "우유로 만들었다고는 믿을 수 없을 정도로 깔끔해!", -- 크므즈 증류주 아르히
 		APPLEPINE_BRANDY = "",
+<<<<<<< HEAD
+		VOID = "",
+=======
 		VOID_BRANDY = "",
 		VOID_GIN  = "",
+>>>>>>> Beta_1.2.8
 		CITROYUZU_CURACAO = "",
 		MENTHA_SPICATA_CURACAO = "",
 
@@ -294,7 +309,11 @@ return {
         RUIN_SCHOKAKOLA = "나 참, 장난이 심하네. 초콜릿을 구두약처럼 만들어 놓다니!", -- 쇼카콜라
         APPLEPINE_PIE = "",
         APPLEPINE_FRIED_RICE = "",
+<<<<<<< HEAD
+        citroyuzu_bbq = "",
+=======
         CITROYUZU_BBQ = "",
+>>>>>>> Beta_1.2.8
 
 		BUCKET_STEEL_EMPTY = 
 		{
@@ -377,7 +396,11 @@ return {
 			STOP = "잠깐만, 불이 없잖아!", -- 화덕에 불이 없어서 소금물이 정수 되지 않는 상태
 		},
 
+<<<<<<< HEAD
+		KETTLE =
+=======
 		TEA_POT =
+>>>>>>> Beta_1.2.8
 		{
 			EMPTY = "어... 일단 물을 채우라고?", --빈 주전자 조사대사
 			BURNT = "역시 난 물보다는 불이 좋아.", --주전자가 불탐
@@ -391,7 +414,11 @@ return {
 			MELT_SHORT = "불아, 빨리!", -- 얼음물을 거의 녹여감
 		},
 
+<<<<<<< HEAD
+		PORTABLEKETTLE_ITEM =
+=======
 		PORTABLE_TEA_POT_ITEM =
+>>>>>>> Beta_1.2.8
 		{
 			GENERIC = "그냥 주전자잖아. 별 거 있어?", -- 휴대용 주전자(아이템) 조사 대사
 			EMPTY = "멍청한 주전자 같으니라고.", -- 설치한 빈 휴대용 주전자 조사 대사
@@ -404,6 +431,8 @@ return {
 			MELT_LONG = "적어도 차가운 것보다는 뜨거운 게 낫겠지.", -- 얼음물을 녹이기 시작한지 얼마 안됨
 			MELT_SHORT = "불아, 빨리!", -- 얼음물을 거의 녹여감
 		},
+<<<<<<< HEAD
+=======
 
 		KETTLE =
 		{
@@ -428,6 +457,7 @@ return {
 			MELT_LONG = "적어도 차가운 것보다는 뜨거운 게 낫겠지.", -- 얼음물을 녹이기 시작한지 얼마 안됨
 			MELT_SHORT = "불아, 빨리!", -- 얼음물을 거의 녹여감
 		},
+>>>>>>> Beta_1.2.8
 		
 		DISTILLERS =
 		{   

@@ -61,15 +61,22 @@ return {
 		WELL_DRILLING_ITEM = "우리 우물 한번 파 볼까,워비?",
 		HOLE = "혹시 세상 반대편까지 이어져 있는걸까?",
 		WELL = "왜 그래 워비? 누가 거기 빠졌어?",
+<<<<<<< HEAD
+		BOTTLE_POUCH = "",
+=======
 		BOTTLE_POUCH_SMALL = "",
 		BOTTLE_POUCH_BIG = "",
 		THERMOS_BOTTLE_SMALL = "",
 		THERMOS_BOTTLE_BIG = "",
+>>>>>>> Beta_1.2.8
 		WINE_CELLAR_PART = "",
 		WINE_CELLAR = "",
 
 		WX78MODULE_NONEDRUNK = "로봇 내장이잖아! 짱이다!", -- 78전용 묘듈
+<<<<<<< HEAD
+=======
 		PURIFICATION_TABLETS = "",
+>>>>>>> Beta_1.2.8
 
 	    -- 물 모드 식물
 
@@ -224,7 +231,11 @@ return {
 		LUMPY_WINE = "어쩌면 상처를 소독할 때 쓸 수 있지 않을까?",
 		PULQUE = "교본에 선인장을 이렇게 먹는 방법은 안 나와있어.",
 		RUINCACAO_WINE = "어른들을 위한 코코아 같은 거야!",
+<<<<<<< HEAD
+		MIDNIGHT_STROM = "",
+=======
 		MIDNIGHT_STORM = "",
+>>>>>>> Beta_1.2.8
 		APPLEPINE_CIDER = "",
 		MENTHA_SPICATA_WINE = "",
 
@@ -254,8 +265,12 @@ return {
 		BERRY_BRANDY = "잘 구분은 못하겠지만, 브랜디라나봐!",
 		AREUHI = "어른들을 위한 투명한 우유야.",
 		APPLEPINE_BRANDY = "",
+<<<<<<< HEAD
+		VOID = "",
+=======
 		VOID_BRANDY = "",
 		VOID_GIN  = "",
+>>>>>>> Beta_1.2.8
 		CITROYUZU_CURACAO = "",
 		MENTHA_SPICATA_CURACAO = "",
 
@@ -294,7 +309,11 @@ return {
         RUIN_SCHOKAKOLA = "적어도 탐험하면서 초콜릿이 뭉개지지는 않겠어.",
         APPLEPINE_PIE = "",
         APPLEPINE_FRIED_RICE = "",
+<<<<<<< HEAD
+        citroyuzu_bbq = "",
+=======
         CITROYUZU_BBQ = "",
+>>>>>>> Beta_1.2.8
 
 		BUCKET_STEEL_EMPTY = 
 		{
@@ -377,7 +396,11 @@ return {
 			STOP = "자, 워비. 물 끓일 불쏘시개가 필요해. 찾으러 가자!",
 		},
 
+<<<<<<< HEAD
+		KETTLE =
+=======
 		TEA_POT =
+>>>>>>> Beta_1.2.8
 		{
 			EMPTY = "사람은 물 없이는 3일을 버틸 수 없어!",
 			BURNT = "어... 너무 푹 우렸네!",
@@ -391,7 +414,11 @@ return {
 			MELT_SHORT = "얼음이 거의 다 녹았어.",
 		},
 
+<<<<<<< HEAD
+		PORTABLEKETTLE_ITEM =
+=======
 		PORTABLE_TEA_POT_ITEM =
+>>>>>>> Beta_1.2.8
 		{
 			GENERIC = "이제 야생에서도 차를 끓일 수 있어!",
 			EMPTY = "일단 물이 필요해.",
@@ -405,6 +432,8 @@ return {
 			MELT_SHORT = "얼음이 거의 다 녹았어.",
 		},
 
+<<<<<<< HEAD
+=======
 		KETTLE =
 		{
 			EMPTY = "사람은 물 없이는 3일을 버틸 수 없어!",
@@ -429,6 +458,7 @@ return {
 			MELT_SHORT = "얼음이 거의 다 녹았어.",
 		},
 
+>>>>>>> Beta_1.2.8
 		DISTILLERS =
 		{   
 		    EMPTY = "복잡한 장치가 잔뜩 달려있어!", --증류기 조사 대사

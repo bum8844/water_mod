@@ -12,13 +12,21 @@ local Assets =
     Asset("ATLAS", "images/cookbookimages/tea_cookbookimage_drinks.xml"),
     Asset("IMAGE", "images/cookbookimages/tea_cookbookimage_drinks.tex"),
 
+    Asset("ATLAS", "images/tea_inventoryitem_drinks.xml"),
+    Asset("IMAGE", "images/tea_inventoryitem_drinks.tex"),
+
     Asset("ATLAS", "images/tea_minimap.xml"),
     Asset("IMAGE", "images/tea_minimap.tex"),
 
+<<<<<<< HEAD
+    Asset("ATLAS_BUILD", "images/tea_inventoryitem.xml", 256),
+    Asset("ATLAS_BUILD", "images/tea_inventoryitem_drinks.xml", 256),
+=======
     Asset("ATLAS_BUILD", "images/inventoryitems/tea_inventoryitem.xml", 256),
     Asset("ATLAS_BUILD", "images/inventoryitems/tea_inventoryitem_drinks.xml", 256),
     Asset("ATLAS_BUILD", "images/cookbookimages/tea_cookbookimage.xml", 256),
     Asset("ATLAS_BUILD", "images/cookbookimages/tea_cookbookimage_drinks.xml", 256),
+>>>>>>> Beta_1.2.8
 
     Asset("SOUNDPACKAGE", "sound/drink_fx.fev"),    
     Asset("SOUND", "sound/drink_fx.fsb"),

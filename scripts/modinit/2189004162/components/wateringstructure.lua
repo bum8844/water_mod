@@ -58,11 +58,19 @@ local function Descriptors()
 					rawtext = STRINGS.INSIGHT.WATERINGSTRUCTURE.RAWTEXT_TIME
 					rawtext_ext = STRINGS.INSIGHT.WATERINGSTRUCTURE.RAWTEXT_TIME_EXT
 
+<<<<<<< HEAD:scripts/modcompats/2189004162/components/wateringstructure.lua
+					description = string.format(rawtext,bucket,state,change_state,timedata)
+					alt_description = string.format(rawtext_ext,bucket,Insight.env.Round(percent * 100, 1),toolfiniteuses,max_toolfiniteuses,state,wateramount,change_state,timedata)
+				else
+					description = string.format(rawtext,bucket,state)
+					alt_description = string.format(rawtext_ext,bucket,Insight.env.Round(percent * 100, 1),toolfiniteuses,max_toolfiniteuses,state,wateramount)
+=======
 					description = subfmt(rawtext,{bucket=bucket,state=state,n_state=change_state,time=timedata})
 					alt_description = subfmt(rawtext_ext,{bucket=bucket,percent=Insight.env.Round(percent * 100, 1).."%",cur=toolfiniteuses,max=max_toolfiniteuses,state=state,amount=wateramount,n_state=change_state,time=timedata})
 				else
 					description = subfmt(rawtext,{bucket=bucket,state=state})
 					alt_description = subfmt(rawtext_ext,{bucket=bucket,percent=Insight.env.Round(percent * 100, 1).."%",cur=toolfiniteuses,max=max_toolfiniteuses,state=state,amount=wateramount})
+>>>>>>> Beta_1.2.8:scripts/modinit/2189004162/components/wateringstructure.lua
 				end
 
 				return {

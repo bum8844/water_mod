@@ -1,5 +1,9 @@
 name 						= "Don't Starve: Dehydrated"
+<<<<<<< HEAD
+version 					= "Alpha 1.2.7c.1"
+=======
 version 					= "Alpha 1.2.7.1f.2"
+>>>>>>> Beta_1.2.8
 local info_version = "Version "..version.."\n"
 
 description = info_version..[[
@@ -53,7 +57,11 @@ configuration_options =
 		{
 			{description = "Auto", data = false},
 			{description = "English", data = "en", hover="By lord lee"},
+<<<<<<< HEAD
+			{description = "한국어", data = "ko", hover="기본지원"},
+=======
 			{description = "한국어", data = "ko", hover="기본 언어"},
+>>>>>>> Beta_1.2.8
 			{description = "Tiếng Việt", data = "vi", hover="Bởi Shinosan"},
 			{description = "Español", data="es", hover="Traducido por Deimos y RavenCorwen"},
 		},
@@ -81,6 +89,8 @@ configuration_options =
 		},
 		default = true,
 	},
+<<<<<<< HEAD
+=======
 	SEPARATOR,
 	Title("Game Difficulty options"),
 	{
@@ -108,6 +118,7 @@ configuration_options =
 		},
 		default = 3,
 	},
+>>>>>>> Beta_1.2.8
 	SEPARATOR,
 	Title("WorldGen options"),
 	{
@@ -463,5 +474,20 @@ configuration_options =
 			{description = "Longer", data = .75},
 		},
 		default = .5,
+	},
+	SEPARATOR,
+	Title("Satiety Effect"),
+	{
+		name = "satiety_time",
+		label = "Duration",
+		options =
+		{
+			{description = "Shorter", data = .125},
+			{description = "Short", data = .25},
+			{description = "Default", data = .5},
+			{description = "Long", data = .625},
+			{description = "Longer", data = .75},
+		},
+		default = .5
 	},
 }

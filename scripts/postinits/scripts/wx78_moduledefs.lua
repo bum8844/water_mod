@@ -1,6 +1,8 @@
 require("wx78_moduledefs")
 
 local wx78_moduledefs = require("wx78_moduledefs")
+<<<<<<< HEAD
+=======
 local EXTRA_DRYRATE = 0.5
 
 local function acid_drying_activate(inst, wx)
@@ -22,6 +24,7 @@ local function acid_drying_deactivate(inst, wx)
 
     wx._activate_acid_drying_module = nil
 end
+>>>>>>> Beta_1.2.8
 
 local function nonedrunk_activate(inst, wx)
 	wx.components.dcapacity.nonedrunk = true
@@ -33,6 +36,22 @@ local function nonedrunk_deactivate(inst, wx)
     wx._activate_nonedrunk_module = nil
 end
 
+<<<<<<< HEAD
+local NONEDRUNK_MODULE_DATA =
+{
+    name = "nonedrunk",
+    slots = 2,
+    activatefn = nonedrunk_activate,
+    deactivatefn = nonedrunk_deactivate,
+    mod_module = true,
+    sawp_build = "water_status_wx",
+}
+
+table.insert(wx78_moduledefs.module_definitions, NONEDRUNK_MODULE_DATA)
+
+wx78_moduledefs.AddCreatureScanDataDefinition("fruitfly","nonedrunk",3)
+wx78_moduledefs.AddCreatureScanDataDefinition("lordfruitfly","nonedrunk",6)
+=======
 local MODULE_DATA =
 {
     {
@@ -63,6 +82,7 @@ wx78_moduledefs.AddCreatureScanDataDefinition("knightboat","acid_drying",3)
 wx78_moduledefs.AddCreatureScanDataDefinition("toadstool_dark","acid_drying",9)
 wx78_moduledefs.AddCreatureScanDataDefinition("ancient_robot_head","acid_drying",6)
 wx78_moduledefs.AddCreatureScanDataDefinition("ancient_robot_ribs","acid_drying",6)
+>>>>>>> Beta_1.2.8
 
 local function maxhunger_activate(inst, wx, isloading)
     if wx.components.hunger ~= nil then

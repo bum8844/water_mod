@@ -25,8 +25,11 @@ local Water = Class(function(self, inst)
     self.watertype = nil --WATERTYPE.GENERIC
     self.ontaken = nil
     self.available = true
+<<<<<<< HEAD
+=======
     --self.use_WaterManager = false
     self.left_to_dirty = 0
+>>>>>>> Beta_1.2.8
     self.isitem = nil --Used for item check
 end,
 nil,

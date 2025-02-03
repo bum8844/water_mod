@@ -140,13 +140,25 @@ local USEITEM =
             if target:HasTag("farm_water") or target:HasTag("notwatersource") then
                 return
             end
+<<<<<<< HEAD
+=======
             if not evaluate_access(inst, target) then
                 return
             end
+>>>>>>> Beta_1.2.8
             table.insert(actions, ACTIONS.TAKEWATER)
         end
     end,
 
+<<<<<<< HEAD
+    machinetool = function(inst, doer, target, actions)
+        if doer:HasTag("portableengineer") then
+            if target:HasTag("needmachtool") and inst:HasTag("machinetool") then
+                table.insert(actions, ACTIONS.MACHINETOOL)
+            elseif target:HasTag("dismantleable") and inst:HasTag("dismantletool") then
+                table.insert(actions, ACTIONS.MACHINETOOL)
+            end
+=======
     purify = function(inst, doer, target, actions)
         if target:HasTag("can_purify") and inst:HasTag("purify_item") then
             table.insert(actions, ACTIONS.PURIFY)
@@ -156,6 +168,7 @@ local USEITEM =
     cocktailmaker = function(inst, doer, target, actions)
         if inst:HasTag("doneshaking") then
             table.insert(actions, ACTIONS.HARVEST)
+>>>>>>> Beta_1.2.8
         end
     end,
 }
@@ -171,6 +184,11 @@ local POINT =
 
 local SCENE =
 {
+    dismantleable = function(inst, doer, actions, right)
+        if not inst:HasTag("engineering") or doer:HasTag("portableengineer") then
+            table.insert(actions, ACTIONS.DISASSEMBLE)
+        end
+    end,
     wateringmachine = function(inst, doer, actions, right)
         if right and not inst:HasTag("cooldown") and
             not inst:HasTag("fueldepleted") then
@@ -218,6 +236,7 @@ local SCENE =
             end
         end
     end,
+<<<<<<< HEAD
 
     machinetool = function(inst, doer, actions, right)
         table.insert(actions, ACTIONS.MACHINETOOL)
@@ -230,6 +249,62 @@ local SCENE =
                     table.insert(actions, ACTIONS.DRAMATIC_RAISE)
                 else
                     table.insert(actions, ACTIONS.DRAMATIC_LOWER)
+                end
+            end
+        end
+    end,
+}
+
+local INVENTORY = {
+    watertaker = function(inst, doer, actions)
+        if doer.components.playercontroller ~= nil then
+            local pos = inst:GetPosition()
+            local isVirtualOceanEntity = find_icefishing_hole(pos.x, 0, pos.z)
+            if inst:HasTag("watertaker") and (_G.TheWorld.Map:IsOceanTileAtPoint(pos.x, 0, pos.z) or isVirtualOceanEntity ~= nil) then
+                table.insert(actions, ACTIONS.TAKEWATER_OCEAN)
+            end
+        end
+    end,
+
+    machinetool = function(inst, doer, actions, right)
+        table.insert(actions, ACTIONS.MACHINETOOL)
+    end,
+
+    --[[edible = function(inst, doer, actions, right)
+        if inst:HasTag("drink") or inst:HasTag("def_water") then
+            if (right or inst.replica.equippable == nil) and
+                not (doer.replica.inventory:GetActiveItem() == inst and
+                    doer.replica.rider ~= nil and
+                    doer.replica.rider:IsRiding()) then
+                for k, v in pairs(FOODGROUP) do
+                    if doer:HasTag(v.name.."_eater") then
+                        for i, v2 in ipairs(v.types) do
+                            if inst:HasTag("edible_"..v2) then
+                                table.insert(actions, ACTIONS.DRINK)
+                                return
+                            end
+                        end
+                    end
+                end
+                for k, v in pairs(FOODTYPE) do
+                    if inst:HasTag("edible_"..v) and doer:HasTag(v.."_eater") then
+                        table.insert(actions, ACTIONS.DRINK)
+                        return
+                    end
+=======
+
+    machinetool = function(inst, doer, actions, right)
+        table.insert(actions, ACTIONS.MACHINETOOL)
+    end,
+
+    dramaticcontainer = function(inst, doer, actions, right)
+        if not inst:HasTag("fire") and not inst:HasTag("burnt") and not inst:HasTag("busy") then
+            if right then
+                if inst:HasTag("trawler_lowered") then
+                    table.insert(actions, ACTIONS.DRAMATIC_RAISE)
+                else
+                    table.insert(actions, ACTIONS.DRAMATIC_LOWER)
+>>>>>>> Beta_1.2.8
                 end
             end
         end

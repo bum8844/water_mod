@@ -116,6 +116,8 @@ local drinks =
 		perishtime = TUNING.PERISH_SUPERSLOW,
 		cooktime = (TUNING.KETTLE_FRUIT + TUNING.BEER_WAIT),
 		potlevel = "mid",
+<<<<<<< HEAD
+=======
 		potlevel_bottle = "mid",
 		prefabs = { "alcoholdebuff","drunkarddebuff","immunebuff" },
 		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_INTOXICATION,
@@ -135,6 +137,7 @@ local drinks =
 		perishtime = TUNING.PERISH_SUPERSLOW,
 		cooktime = (TUNING.KETTLE_FRUIT + TUNING.BEER_WAIT),
 		potlevel = "mid",
+>>>>>>> Beta_1.2.8
 		potlevel_bottle = "mid",
 		prefabs = { "alcoholdebuff","drunkarddebuff","immunebuff" },
 		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_INTOXICATION,
@@ -337,8 +340,13 @@ local drinks =
 		end,
 	},
 
+<<<<<<< HEAD
+	void = {
+		test = function(boilier, names, tags) return names.midnight_storm end,
+=======
 	void_brandy = {
 		test = function(boilier, names, tags) return names.midnight_storm and not tags.additives end,
+>>>>>>> Beta_1.2.8
 		priority = 2,
         health = TUNING.HEALING_LARGE/5, -- 8 (40) ( MFP모드의 오렌지 쥬스 참고함)
         hunger = TUNING.CALORIES_MEDSMALL/5, -- 3.75 (18.75)
@@ -349,6 +357,10 @@ local drinks =
 		cooktime = (TUNING.KETTLE_LUXURY_GOODS + TUNING.BEER_WAIT),
 		potlevel = "mid",
 		potlevel_bottle = "mid",
+<<<<<<< HEAD
+		drinktype = DRINKTYPY.BREWER,
+=======
+>>>>>>> Beta_1.2.8
 		prefabs = { "alcoholdebuff","drunkarddebuff","resistancebuff" },
 		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_INTOXICATION_GOODNIGHTVISION,
 		oneatenfn = function(inst, eater)
@@ -358,6 +370,8 @@ local drinks =
 		end,
 	},
 
+<<<<<<< HEAD
+=======
 	void_gin = {
 		test = function(boilier, names, tags) return names.midnight_storm and names.additive_seed end,
 		priority = 2,
@@ -379,6 +393,7 @@ local drinks =
 		end,
 	},
 
+>>>>>>> Beta_1.2.8
 	citroyuzu_curacao = {
 		test = function(boilier, names, tags) return names.citroyuzu_wine end,
 		priority = 2,
@@ -391,6 +406,10 @@ local drinks =
 		cooktime = (TUNING.KETTLE_LUXURY_GOODS + TUNING.BEER_WAIT),
 		potlevel = "mid",
 		potlevel_bottle = "mid",
+<<<<<<< HEAD
+		drinktype = DRINKTYPY.BREWER,
+=======
+>>>>>>> Beta_1.2.8
 		prefabs = { "alcoholdebuff","drunkarddebuff","resistancebuff" },
 		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_INTOXICATION,
 		oneatenfn = function(inst, eater)
@@ -410,6 +429,10 @@ local drinks =
 		cooktime = (TUNING.KETTLE_LUXURY_GOODS + TUNING.BEER_WAIT),
 		potlevel = "mid",
 		potlevel_bottle = "mid",
+<<<<<<< HEAD
+		drinktype = DRINKTYPY.BREWER,
+=======
+>>>>>>> Beta_1.2.8
 		prefabs = { "alcoholdebuff","drunkarddebuff","resistancebuff" },
 		oneat_desc = STRINGS.UI.COOKBOOK.FOOD_EFFECTS_INTOXICATION,
 		oneatenfn = function(inst, eater)
@@ -418,7 +441,11 @@ local drinks =
 	},
 }
 
+<<<<<<< HEAD
+local mod_drink = require("modcompats/preparedspiritsdrink_mod")
+=======
 local mod_drink = require("modinit/preparedspiritsdrink_mod")
+>>>>>>> Beta_1.2.8
 local modlist = require("utils/water_modlist").active_mod_compatibility
 
 for active, _ in pairs(modlist) do
@@ -446,6 +473,8 @@ if modlist.te or modlist.ia or modlist.ta then
 	end
 end
 
+<<<<<<< HEAD
+=======
 if modlist.te or modlist.ac or modlist.ta then
 	local ham_drink = mod_drink.ham_drink
 	for k,v in pairs(ham_drink) do
@@ -453,6 +482,7 @@ if modlist.te or modlist.ac or modlist.ta then
 	end
 end
 
+>>>>>>> Beta_1.2.8
 if modlist.te or modlist.ia or modlist.hof or modlist.ta then
 	local coconut_drink = mod_drink.coconut_drink
 	for k,v in pairs(coconut_drink) do
@@ -475,18 +505,29 @@ for k, v in pairs(drinks) do
 
     v.is_boilbook_recipes = true
     v.boilbook_category = "distillers"
+<<<<<<< HEAD
+=======
 	v.cookbook_atlas = "images/cookbookimages/tea_cookbookimage_drinks.xml"
 	v.cookbook_tex = k..".tex"
+>>>>>>> Beta_1.2.8
     if modlist.legion and _G.CONFIGS_LEGION.BETTERCOOKBOOK then
     	v.cook_need = nil
     	v.cook_cant = nil
     	v.recipe_count = 4
+<<<<<<< HEAD
+		local cookbookui_legion = require "modcompats/1392778117/cookbookui_legion"
+=======
 		local cookbookui_legion = require "modinit/1392778117/cookbookui_legion"
+>>>>>>> Beta_1.2.8
 		v.custom_cookbook_details_fn = function(data, self, top, left)
 			local root = cookbookui_legion(data, self, top, left)
 			return root
 		end
     end
+<<<<<<< HEAD
+    v.drinktype = v.drinktype or DRINKTYPY.GENERIC
+=======
+>>>>>>> Beta_1.2.8
     v.no_cookbook = true
 end
 

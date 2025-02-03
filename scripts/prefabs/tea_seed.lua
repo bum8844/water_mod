@@ -26,7 +26,11 @@ local function tealeaves()
     inst.AnimState:SetBuild("tealeaves")
     inst.AnimState:PlayAnimation("idle_tealeaves")
 
+<<<<<<< HEAD
+    inst:AddTag("cocktail_ingredients")
+=======
     inst:AddTag("cocktail_ingredient")
+>>>>>>> Beta_1.2.8
 
     inst.pickupsound = "vegetation_grassy"
 
@@ -84,7 +88,11 @@ local function tealeaves_dried()
     inst.AnimState:SetBuild("tealeaves")
     inst.AnimState:PlayAnimation("idle_tealeaves_dried")
 
+<<<<<<< HEAD
+    inst:AddTag("cocktail_ingredients")
+=======
     inst:AddTag("cocktail_ingredient")
+>>>>>>> Beta_1.2.8
 
     inst.pickupsound = "vegetation_grassy"
 
@@ -134,7 +142,11 @@ local function tea_seed_cooked()
     inst.AnimState:SetBuild("tea_tree_seed")
     inst.AnimState:PlayAnimation("cooked")
 
+<<<<<<< HEAD
+    inst:AddTag("cocktail_ingredients")
+=======
     inst:AddTag("cocktail_ingredient")
+>>>>>>> Beta_1.2.8
 
     MakeInventoryPhysics(inst)
 
@@ -289,7 +301,11 @@ local function tea_seed()
     inst.AnimState:SetBuild("tea_tree_seed")
     inst.AnimState:PlayAnimation("idle")
 
+<<<<<<< HEAD
+    inst:AddTag("cocktail_ingredients")
+=======
     inst:AddTag("cocktail_ingredient")
+>>>>>>> Beta_1.2.8
 
     MakeInventoryPhysics(inst)
 

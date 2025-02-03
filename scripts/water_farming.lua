@@ -115,7 +115,11 @@ PLANT_DEFS.applepine.family_check_dist = TUNING.FARM_PLANT_SAME_FAMILY_RADIUS
 PLANT_DEFS.applepine.plant_type_tag = "farm_plant_applepine"
 PLANT_DEFS.applepine.grow_time = MakeGrowTimes(12*TUNING.SEG_TIME, 16*TUNING.SEG_TIME, 4*DAYS, 7*DAYS) 
 PLANT_DEFS.applepine.moisture = {drink_rate = DRINK_HIGH, min_percent = TUNING.FARM_PLANT_DROUGHT_TOLERANCE}
+<<<<<<< HEAD
+PLANT_DEFS.applepine.good_seasons = {autumn = true, spring = true, summer = true}
+=======
 PLANT_DEFS.applepine.good_seasons = {autumn = true, winter = true, spring = true, summer = true}
+>>>>>>> Beta_1.2.8
 PLANT_DEFS.applepine.nutrient_consumption = {0, NUTRIENT_MED, NUTRIENT_MED}
 PLANT_DEFS.applepine.nutrient_restoration = {NUTRIENT_LOW ,0 , 0}
 PLANT_DEFS.applepine.max_killjoys_tolerance = TUNING.FARM_PLANT_KILLJOY_TOLERANCE
@@ -195,7 +199,11 @@ PLANT_DEFS.limon.family_check_dist = TUNING.FARM_PLANT_SAME_FAMILY_RADIUS
 PLANT_DEFS.limon.plant_type_tag = "farm_plant_limon"
 PLANT_DEFS.limon.grow_time = MakeGrowTimes(12*TUNING.SEG_TIME, 16*TUNING.SEG_TIME, 4*DAYS, 7*DAYS) 
 PLANT_DEFS.limon.moisture = {drink_rate = DRINK_MED, min_percent = TUNING.FARM_PLANT_DROUGHT_TOLERANCE}
+<<<<<<< HEAD
+PLANT_DEFS.limon.good_seasons = {autumn = true, winter = true, spring = true}
+=======
 PLANT_DEFS.limon.good_seasons = {winter = true, spring = true}
+>>>>>>> Beta_1.2.8
 PLANT_DEFS.limon.nutrient_consumption = {NUTRIENT_MED, 0, 0}
 PLANT_DEFS.limon.nutrient_restoration = {0, NUTRIENT_LOW, NUTRIENT_LOW}
 PLANT_DEFS.limon.max_killjoys_tolerance = TUNING.FARM_PLANT_KILLJOY_TOLERANCE
@@ -275,7 +283,11 @@ PLANT_DEFS.citroyuzu.family_check_dist = TUNING.FARM_PLANT_SAME_FAMILY_RADIUS
 PLANT_DEFS.citroyuzu.plant_type_tag = "farm_plant_citroyuzu"
 PLANT_DEFS.citroyuzu.grow_time = MakeGrowTimes(12*TUNING.SEG_TIME, 16*TUNING.SEG_TIME, 4*DAYS, 7*DAYS) 
 PLANT_DEFS.citroyuzu.moisture = {drink_rate = DRINK_MED, min_percent = TUNING.FARM_PLANT_DROUGHT_TOLERANCE}
+<<<<<<< HEAD
+PLANT_DEFS.citroyuzu.good_seasons = {autumn = true, winter = true, spring = true}
+=======
 PLANT_DEFS.citroyuzu.good_seasons = {winter = true, spring = true}
+>>>>>>> Beta_1.2.8
 PLANT_DEFS.citroyuzu.nutrient_consumption = {NUTRIENT_MED, 0, 0}
 PLANT_DEFS.citroyuzu.nutrient_restoration = {0, NUTRIENT_LOW, NUTRIENT_LOW}
 PLANT_DEFS.citroyuzu.max_killjoys_tolerance = TUNING.FARM_PLANT_KILLJOY_TOLERANCE

@@ -1,7 +1,19 @@
+local function onactive(self, onactive)
+	if onactive then
+		self.inst:AddTag("drunk_immunity")
+	else
+		self.inst:RemoveTag("drunk_immunity")
+	end
+end
+
 local Dcapacity = Class(function(self,inst)
 	self.inst = inst
 
+<<<<<<< HEAD
+	self.nonedrunk = nil
+=======
 	self.nonedrunk = false
+>>>>>>> Beta_1.2.8
 	self.max_capacity = TUNING.MAX_CPACITY or 5
 	self.capacity = 0
 	self.capacity_half = math.ceil(self.max_capacity*.5)
@@ -34,7 +46,9 @@ local Dcapacity = Class(function(self,inst)
 	inst:ListenForEvent("mightiness_statechange",self.SetCapacity_max)
 	end,
 	nil,
-	nil
+	{
+    	nonedrunk = onactive,
+	}
 )
 
 local function Done_Intoxication(inst, self)
@@ -76,7 +90,11 @@ function Dcapacity:Start_Intoxication(num)
 	if self.inst.components.skilltreeupdater then
 		local skilltreeupdater = self.inst.components.skilltreeupdater
 		local mightiness = self.inst.components.mightiness 
+<<<<<<< HEAD
+		if mightiness and skilltreeupdater:IsActivated("wathgrithr_combat_defense") and mightiness:GetCurrent() > mightiness:GetMax() then
+=======
 		if mightiness and skilltreeupdater:IsActivated("wolfgang_overbuff_5") and mightiness:GetCurrent() > mightiness:GetMax() then
+>>>>>>> Beta_1.2.8
 			mult_time = 0.25
 		elseif skilltreeupdater:IsActivated("wathgrithr_combat_defense") then
 			mult_time = 0.5

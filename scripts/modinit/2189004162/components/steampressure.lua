@@ -39,7 +39,10 @@ local function Descriptors()
 					time = time_left,
 				}
 			end
+<<<<<<< HEAD:scripts/modcompats/2189004162/components/steampressure.lua
+=======
 			
+>>>>>>> Beta_1.2.8:scripts/modinit/2189004162/components/steampressure.lua
 			local function Describe(self, context)
 				local description, alt_description, time
 
@@ -54,8 +57,13 @@ local function Descriptors()
 					rawtext_ext = STRINGS.INSIGHT.STEAMPRESSURE.RAWTEXT_TIME_EXT
 				end
 
+<<<<<<< HEAD:scripts/modcompats/2189004162/components/steampressure.lua
+				description = subfmt(rawtext,{percent = Insight.env.Round(data.percent * 100, 1), time = time })
+				alt_description = subfmt(rawtext_ext,{percent = Insight.env.Round(data.percent * 100, 1), time = time, cur = self.curpressure, max = self.maxpressure})
+=======
 				description = subfmt(rawtext,{time = time,percent = Insight.env.Round(data.percent * 100, 1)})
 				alt_description = subfmt(rawtext_ext,{time = time,percent = Insight.env.Round(data.percent * 100, 1), cur = self.curpressure, max = self.maxpressure})
+>>>>>>> Beta_1.2.8:scripts/modinit/2189004162/components/steampressure.lua
 
 				return {
 					priority = 0,

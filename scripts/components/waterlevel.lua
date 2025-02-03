@@ -61,7 +61,10 @@ local Waterlevel = Class(function(self, inst)
     self.isputoncetime = false
     self.noneboil = false
     self.onlysamewater = false
+<<<<<<< HEAD
+=======
     self.isblockbucket = false
+>>>>>>> Beta_1.2.8
 
     self.maxwater = 0
     self.currentwater = 0
@@ -100,6 +103,22 @@ function Waterlevel:OnRemoveFromEntity()
     self.inst:RemoveTag("accepting_water")
 end
 
+<<<<<<< HEAD
+function Waterlevel:OnSave()
+    if self.currentwater > 0 then
+        return {waterlevel = self.currentwater, watertype = self.watertype}
+    end
+end
+
+function Waterlevel:OnLoad(data)
+    self:SetWaterType(data.watertype)
+    if data.waterlevel then
+        self:InitializeWaterLevel(math.max(0, data.waterlevel)) 
+    end
+end
+
+=======
+>>>>>>> Beta_1.2.8
 function Waterlevel:SetNoneBoil(bool)
     self.noneboil = bool
 end
@@ -219,8 +238,12 @@ function Waterlevel:DoDiistiller(item, doer)
         return
     end
 
+<<<<<<< HEAD
+    self.inst.components.distiller.done = true
+=======
     local distiller = self.inst.components.distiller
     distiller.done = true
+>>>>>>> Beta_1.2.8
 
     local watervalue = self:GetWater()
     local isClane = self.watertype == WATERTYPE.CLEAN or self.watertype == WATERTYPE.MINERAL
@@ -235,7 +258,11 @@ function Waterlevel:DoDiistiller(item, doer)
             distiller.done = false
         elseif item.components.perishable:IsSpoiled() then
             watervalue = watervalue / 2
+<<<<<<< HEAD
+            self.inst.components.distiller.done = false
+=======
             distiller.done = false
+>>>>>>> Beta_1.2.8
         end
     end
 
@@ -259,6 +286,15 @@ function Waterlevel:DoDiistiller(item, doer)
 end
 
 function Waterlevel:TakeWaterItem(item, doer)
+<<<<<<< HEAD
+    if self.onlysamewater and self.currentwater > 0 then
+        if self.watertype ~= nil and self.watertype ~= item.components.water:GetWatertype() then
+            return false
+        end
+    end
+
+    local campkettle = nil
+=======
     if self.onlysamewater then
         if self.currentwater > 0 and self.watertype ~= nil and self.watertype ~= item.components.water:GetWatertype() then
             return false
@@ -267,6 +303,7 @@ function Waterlevel:TakeWaterItem(item, doer)
         end
     end
 
+>>>>>>> Beta_1.2.8
     local watervalue = item.components.water:GetWater()
     self:SetWaterType(item.components.water:GetWatertype())
 

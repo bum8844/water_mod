@@ -109,6 +109,9 @@ for _, v in pairs(TUNING.TYPES_MINERAL) do
 	    end
 		
 		inst:AddComponent("water")
+<<<<<<< HEAD
+		inst.components.water.watertype = WATERTYPE.MINERAL
+=======
 		inst.components.water:SetWaterType(WATERTYPE.MINERAL)
 
 		inst.watertask = inst:DoTaskInTime(0,OnWaterInit)
@@ -127,6 +130,7 @@ for _, v in pairs(TUNING.TYPES_UNCLEAN_MINERAL) do
 		inst.components.water:SetWaterManager(nil, WATERTYPE.MINERAL, WATERTYPE.UNCLEAN_MINERAL)
 
 		inst:ListenForEvent("done_purify",Done_Purify)
+>>>>>>> Beta_1.2.8
 
 		inst.watertask = inst:DoTaskInTime(0,OnWaterInit)
 	end)

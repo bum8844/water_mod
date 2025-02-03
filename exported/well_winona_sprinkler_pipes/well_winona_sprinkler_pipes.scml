@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<spriter_data scml_version="1.0" generator="BrashMonkey Spriter" generator_version="r11">
+    <folder id="0" name="pipe_1">
+        <file id="0" name="pipe_1/pipe_1.png" width="48" height="317" pivot_x="0.5" pivot_y="0.05"/>
+    </folder>
+    <folder id="1" name="pipe_2">
+        <file id="0" name="pipe_2/pipe_2.png" width="128" height="328" pivot_x="0.75" pivot_y="0.05"/>
+    </folder>
+    <folder id="2" name="pipe_3">
+        <file id="0" name="pipe_3/pipe_3.png" width="128" height="328" pivot_x="0.32" pivot_y="0.05"/>
+    </folder>
+    <folder id="3" name="joint_1">
+        <file id="0" name="joint_1/joint_1.png" width="112" height="96" pivot_x="0.5" pivot_y="0.51"/>
+    </folder>
+    <folder id="4" name="joint_2">
+        <file id="0" name="joint_2/joint_2.png" width="112" height="96" pivot_x="0.48" pivot_y="0.5"/>
+    </folder>
+    <folder id="5" name="joint_3">
+        <file id="0" name="joint_3/joint_3.png" width="51" height="96" pivot_x="0.48" pivot_y="0.51"/>
+    </folder>
+    <entity id="0" name="well_sprinkler_pipes">
+        <animation id="0" name="idle" length="234" interval="100">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="3" key="0" z_index="0"/>
+                    <object_ref id="1" timeline="4" key="0" z_index="1"/>
+                    <object_ref id="2" timeline="5" key="0" z_index="2"/>
+                    <object_ref id="3" timeline="0" key="0" z_index="3"/>
+                    <object_ref id="4" timeline="1" key="0" z_index="4"/>
+                    <object_ref id="5" timeline="2" key="0" z_index="5"/>
+                </key>
+                <key id="1" time="234">
+                    <object_ref id="0" timeline="3" key="1" z_index="0"/>
+                    <object_ref id="1" timeline="4" key="1" z_index="1"/>
+                    <object_ref id="2" timeline="5" key="1" z_index="2"/>
+                    <object_ref id="3" timeline="0" key="1" z_index="3"/>
+                    <object_ref id="4" timeline="1" key="1" z_index="4"/>
+                    <object_ref id="5" timeline="2" key="1" z_index="5"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="joint_1">
+                <key id="0" spin="0">
+                    <object folder="3" file="0" x="2.445545" y="305.110115" angle="0"/>
+                </key>
+                <key id="1" time="234" spin="0">
+                    <object folder="3" file="0" x="2.445545" y="305.110115" angle="0"/>
+                </key>
+            </timeline>
+            <timeline id="1" name="joint_2">
+                <key id="0" spin="0">
+                    <object folder="4" file="0" x="0.533333" y="305.084344" angle="0"/>
+                </key>
+                <key id="1" time="234" spin="0">
+                    <object folder="4" file="0" x="0.533333" y="305.084344" angle="0"/>
+                </key>
+            </timeline>
+            <timeline id="2" name="joint_3">
+                <key id="0" spin="0">
+                    <object folder="5" file="0" x="-0.15873" y="306.189349" angle="0"/>
+                </key>
+                <key id="1" time="234" spin="0">
+                    <object folder="5" file="0" x="-0.15873" y="306.189349" angle="0"/>
+                </key>
+            </timeline>
+            <timeline id="3" name="pipe_1">
+                <key id="0" spin="0">
+                    <object folder="0" file="0" x="0.7109" y="43.018453" angle="0" scale_y="0.774546"/>
+                </key>
+                <key id="1" time="234" spin="0">
+                    <object folder="0" file="0" x="0.7109" y="43.018453" angle="0" scale_y="0.774546"/>
+                </key>
+            </timeline>
+            <timeline id="4" name="pipe_2">
+                <key id="0" spin="0">
+                    <object folder="1" file="0" x="1.7109" y="36.018453" angle="0" scale_y="0.77488"/>
+                </key>
+                <key id="1" time="234" spin="0">
+                    <object folder="1" file="0" x="1.7109" y="36.018453" angle="0" scale_y="0.77488"/>
+                </key>
+            </timeline>
+            <timeline id="5" name="pipe_3">
+                <key id="0" spin="0">
+                    <object folder="2" file="0" x="3.7109" y="37.018452" angle="0" scale_y="0.76846"/>
+                </key>
+                <key id="1" time="234" spin="0">
+                    <object folder="2" file="0" x="3.7109" y="37.018452" angle="0" scale_y="0.76846"/>
+                </key>
+            </timeline>
+        </animation>
+        <animation id="1" name="place" length="434" interval="100">
+            <mainline>
+                <key id="0"/>
+                <key id="1" time="34">
+                    <object_ref id="0" timeline="5" key="0" z_index="0"/>
+                    <object_ref id="1" timeline="4" key="0" z_index="1"/>
+                    <object_ref id="2" timeline="3" key="0" z_index="2"/>
+                    <object_ref id="3" timeline="2" key="0" z_index="3"/>
+                    <object_ref id="4" timeline="0" key="0" z_index="4"/>
+                    <object_ref id="5" timeline="1" key="0" z_index="5"/>
+                </key>
+                <key id="2" time="350">
+                    <object_ref id="0" timeline="5" key="1" z_index="0"/>
+                    <object_ref id="1" timeline="4" key="1" z_index="1"/>
+                    <object_ref id="2" timeline="3" key="1" z_index="2"/>
+                    <object_ref id="3" timeline="2" key="1" z_index="3"/>
+                    <object_ref id="4" timeline="0" key="1" z_index="4"/>
+                    <object_ref id="5" timeline="1" key="1" z_index="5"/>
+                </key>
+                <key id="3" time="434">
+                    <object_ref id="0" timeline="5" key="2" z_index="0"/>
+                    <object_ref id="1" timeline="4" key="2" z_index="1"/>
+                    <object_ref id="2" timeline="3" key="2" z_index="2"/>
+                    <object_ref id="3" timeline="2" key="2" z_index="3"/>
+                    <object_ref id="4" timeline="0" key="2" z_index="4"/>
+                    <object_ref id="5" timeline="1" key="2" z_index="5"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="joint_1">
+                <key id="0" time="34" spin="0">
+                    <object folder="3" file="0" x="2.445545" y="37.711672" angle="0" scale_y="0.005417"/>
+                </key>
+                <key id="1" time="350" spin="0">
+                    <object folder="3" file="0" x="2.445545" y="356.80395" angle="0" scale_y="1.192274"/>
+                </key>
+                <key id="2" time="434" spin="0">
+                    <object folder="3" file="0" x="2.445545" y="305.110115" angle="0"/>
+                </key>
+            </timeline>
+            <timeline id="1" name="joint_2">
+                <key id="0" time="34" spin="0">
+                    <object folder="4" file="0" x="1.6" y="37.711532" angle="0" scale_y="0.005417"/>
+                </key>
+                <key id="1" time="350" spin="0">
+                    <object folder="4" file="0" x="1.6" y="356.773224" angle="0" scale_y="1.192274"/>
+                </key>
+                <key id="2" time="434" spin="0">
+                    <object folder="4" file="0" x="1.6" y="305.084344" angle="0"/>
+                </key>
+            </timeline>
+            <timeline id="2" name="joint_3">
+                <key id="0" time="34" spin="0">
+                    <object folder="5" file="0" y="37.725255" angle="0" scale_y="0.005417"/>
+                </key>
+                <key id="1" time="350" spin="0">
+                    <object folder="5" file="0" y="359.793941" angle="0" scale_y="1.192274"/>
+                </key>
+                <key id="2" time="434" spin="0">
+                    <object folder="5" file="0" y="307.61792" angle="0"/>
+                </key>
+            </timeline>
+            <timeline id="3" name="pipe_1">
+                <key id="0" time="34" spin="0">
+                    <object folder="0" file="0" x="-1" y="36.244586" angle="0" scale_y="0.004195"/>
+                </key>
+                <key id="1" time="350" spin="0">
+                    <object folder="0" file="0" x="-1" y="33.870872" angle="0" scale_y="0.923471"/>
+                </key>
+                <key id="2" time="434" spin="0">
+                    <object folder="0" file="0" x="-1" y="34.25542" angle="0" scale_y="0.774546"/>
+                </key>
+            </timeline>
+            <timeline id="4" name="pipe_2">
+                <key id="0" time="34" spin="0">
+                    <object folder="1" file="0" x="2" y="36.255419" angle="0" scale_x="0.81049" scale_y="0.00439"/>
+                </key>
+                <key id="1" time="350" spin="0">
+                    <object folder="1" file="0" x="2" y="36.25542" angle="0" scale_x="0.81049" scale_y="0.966326"/>
+                </key>
+                <key id="2" time="434" spin="0">
+                    <object folder="1" file="0" x="2" y="36.25542" angle="0" scale_x="0.81049" scale_y="0.81049"/>
+                </key>
+            </timeline>
+            <timeline id="5" name="pipe_3">
+                <key id="0" time="34" spin="0">
+                    <object folder="2" file="0" x="1" y="36.255419" angle="0" scale_y="0.004351"/>
+                </key>
+                <key id="1" time="350" spin="0">
+                    <object folder="2" file="0" x="1" y="36.255419" angle="0" scale_y="0.957659"/>
+                </key>
+                <key id="2" time="434" spin="0">
+                    <object folder="2" file="0" x="1" y="36.255419" angle="0" scale_y="0.803221"/>
+                </key>
+            </timeline>
+        </animation>
+        <animation id="2" name="retract" length="434" interval="100">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="5" key="0" z_index="0"/>
+                    <object_ref id="1" timeline="4" key="0" z_index="1"/>
+                    <object_ref id="2" timeline="3" key="0" z_index="2"/>
+                    <object_ref id="3" timeline="2" key="0" z_index="3"/>
+                    <object_ref id="4" timeline="0" key="0" z_index="4"/>
+                    <object_ref id="5" timeline="1" key="0" z_index="5"/>
+                </key>
+                <key id="1" time="100">
+                    <object_ref id="0" timeline="5" key="1" z_index="0"/>
+                    <object_ref id="1" timeline="4" key="1" z_index="1"/>
+                    <object_ref id="2" timeline="3" key="1" z_index="2"/>
+                    <object_ref id="3" timeline="2" key="1" z_index="3"/>
+                    <object_ref id="4" timeline="0" key="1" z_index="4"/>
+                    <object_ref id="5" timeline="1" key="1" z_index="5"/>
+                </key>
+                <key id="2" time="367">
+                    <object_ref id="0" timeline="5" key="2" z_index="0"/>
+                    <object_ref id="1" timeline="4" key="2" z_index="1"/>
+                    <object_ref id="2" timeline="3" key="2" z_index="2"/>
+                    <object_ref id="3" timeline="2" key="2" z_index="3"/>
+                    <object_ref id="4" timeline="0" key="2" z_index="4"/>
+                    <object_ref id="5" timeline="1" key="2" z_index="5"/>
+                </key>
+                <key id="3" time="400"/>
+                <key id="4" time="434"/>
+            </mainline>
+            <timeline id="0" name="joint_1">
+                <key id="0" spin="0">
+                    <object folder="3" file="0" x="2.445545" y="305.110115" angle="0"/>
+                </key>
+                <key id="1" time="100" spin="0">
+                    <object folder="3" file="0" x="2.445545" y="357.096107" angle="0" scale_y="1.193361"/>
+                </key>
+                <key id="2" time="367" spin="0">
+                    <object folder="3" file="0" x="2.445545" y="37.711672" angle="0" scale_y="0.005417"/>
+                </key>
+            </timeline>
+            <timeline id="1" name="joint_2">
+                <key id="0" spin="0">
+                    <object folder="4" file="0" x="1.6" y="305.084344" angle="0"/>
+                </key>
+                <key id="1" time="100" spin="0">
+                    <object folder="4" file="0" x="1.6" y="357.065353" angle="0" scale_y="1.193361"/>
+                </key>
+                <key id="2" time="367" spin="0">
+                    <object folder="4" file="0" x="1.6" y="37.711532" angle="0" scale_y="0.005417"/>
+                </key>
+            </timeline>
+            <timeline id="2" name="joint_3">
+                <key id="0" spin="0">
+                    <object folder="5" file="0" y="307.61792" angle="0"/>
+                </key>
+                <key id="1" time="100" spin="0">
+                    <object folder="5" file="0" y="360.088824" angle="0" scale_y="1.193361"/>
+                </key>
+                <key id="2" time="367" spin="0">
+                    <object folder="5" file="0" y="37.725255" angle="0" scale_y="0.005417"/>
+                </key>
+            </timeline>
+            <timeline id="3" name="pipe_1">
+                <key id="0" spin="0">
+                    <object folder="0" file="0" x="-1" y="34.25542" angle="0" scale_y="0.774546"/>
+                </key>
+                <key id="1" time="100" spin="0">
+                    <object folder="0" file="0" x="-1" y="33.868698" angle="0" scale_y="0.924313"/>
+                </key>
+                <key id="2" time="367" spin="0">
+                    <object folder="0" file="0" x="-1" y="36.244586" angle="0" scale_y="0.004195"/>
+                </key>
+            </timeline>
+            <timeline id="4" name="pipe_2">
+                <key id="0" spin="0">
+                    <object folder="1" file="0" x="2" y="36.25542" angle="0" scale_x="0.81049" scale_y="0.81049"/>
+                </key>
+                <key id="1" time="100" spin="0">
+                    <object folder="1" file="0" x="2" y="36.25542" angle="0" scale_x="0.81049" scale_y="0.967207"/>
+                </key>
+                <key id="2" time="367" spin="0">
+                    <object folder="1" file="0" x="2" y="36.255419" angle="0" scale_x="0.81049" scale_y="0.00439"/>
+                </key>
+            </timeline>
+            <timeline id="5" name="pipe_3">
+                <key id="0" spin="0">
+                    <object folder="2" file="0" x="1" y="36.255419" angle="0" scale_y="0.803221"/>
+                </key>
+                <key id="1" time="100" spin="0">
+                    <object folder="2" file="0" x="1" y="36.255419" angle="0" scale_y="0.958532"/>
+                </key>
+                <key id="2" time="367" spin="0">
+                    <object folder="2" file="0" x="1" y="36.255419" angle="0" scale_y="0.004351"/>
+                </key>
+            </timeline>
+        </animation>
+    </entity>
+</spriter_data>

@@ -381,7 +381,11 @@ local function fn()
     inst.DynamicShadow:SetSize(2, 1)
 
     inst:AddTag("structure")
+<<<<<<< HEAD:scripts/prefabs/portablekettle.lua
+	inst:AddTag("kettle")
+=======
 	inst:AddTag("tea_pot")
+>>>>>>> Beta_1.2.8:scripts/prefabs/portable_tea_pot.lua
     inst:AddTag("mastercookware")
     inst:AddTag("brewing")
     inst:AddTag("drinkproduction")
@@ -505,8 +509,13 @@ local function itemfn()
     inst.minisign_atlas = "minisign_dehy_items_swap"
     inst.minisign_prefab_name = true
 
+<<<<<<< HEAD:scripts/prefabs/portablekettle.lua
+    inst.AnimState:SetBank("portablekettle")
+    inst.AnimState:SetBuild("portablekettle")
+=======
     inst.AnimState:SetBank("portable_tea_pot")
     inst.AnimState:SetBuild("portable_tea_pot")
+>>>>>>> Beta_1.2.8:scripts/prefabs/portable_tea_pot.lua
     inst.AnimState:PlayAnimation("idle_ground")
 
     inst:AddTag("portableitem")

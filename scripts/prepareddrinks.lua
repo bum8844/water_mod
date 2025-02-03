@@ -2,7 +2,28 @@ require "utils/water_brew_utils"
 
 local drinks =
 {
+<<<<<<< HEAD
+	-- 조합법이 잘못되면 나오는 결과물
+	goopydrink = 
+	{
+		test = function(boilier, names, tags) return true end,
+		priority = -2,
+		health = 0,
+		hunger = 0,
+		sanity = 0,
+		thirst = TUNING.HYDRATION_SMALLTINY, -- 11.25
+		perishtime = TUNING.PERISH_FAST, 
+		cooktime = TUNING.INCORRECT_BOIL,
+		wet_prefix = STRINGS.WET_PREFIX.WETGOOP,
+		potlevel = "high",
+		potlevel_bottle = "mid",
+	},
+
 	-- 과일차 종류(채력특화)
+	
+=======
+	-- 과일차 종류(채력특화)
+>>>>>>> Beta_1.2.8
 	berries_juice = --베리쥬스
 	{
 		test = function(boilier, names, tags) return (names.berries or  names.berries_cooked or names.berries_juicy or names.berries_juicy_cooked) and tags.fruit and tags.fruit >= 1 and not tags.veggie and notmeat(tags) and notname(names) and lessthing(names) and notages(tags) end,
@@ -282,7 +303,11 @@ local drinks =
 	},
 
 	lumpy_tea = { -- 구운 감자 체력20 허기25
+<<<<<<< HEAD
+		test = function(boilier, names, tags) return (names.potato or names.potato_cooked or names.sweet_potato or names.sweet_potato_cooked or names.kyno_sweetpotato or names.kyno_sweetpotato_cooked or names.mfp_sweetpotato or names.mfp_sweetpotato_cooked or names.lotus_flower_cooked or names.kyno_lotus_flower_cooked) and ((names.potato or 0)+(names.potato_cooked or 0)+(names.sweet_potato or 0)+(names.sweet_potato_cooked or 0)+(names.kyno_sweetpotato or 0)+(names.kyno_sweetpotato_cooked or 0)+(names.mfp_sweetpotato or 0)+(names.mfp_sweetpotato_cooked or 0)+(names.lotus_flower_cooked or 0)+(names.kyno_lotus_flower_cooked or 0)) >=2 and tags.veggie and not tags.fruit and notmeat(tags) and notname(names) and lessthing(names) and notages(tags) end,
+=======
 		test = function(boilier, names, tags) return (names.potato or names.potato_cooked or names.sweet_potato or names.sweet_potato_cooked or names.kyno_sweetpotato or names.kyno_sweetpotato_cooked or names.mfp_sweetpotato or names.mfp_sweetpotato_cooked or names.lotus_flower_cooked or names.kyno_lotus_flower_cooked ) and ((names.potato or 0)+(names.potato_cooked or 0)+(names.sweet_potato or 0)+(names.sweet_potato_cooked or 0)+(names.kyno_sweetpotato or 0)+(names.kyno_sweetpotato_cooked or 0)+(names.mfp_sweetpotato or 0)+(names.mfp_sweetpotato_cooked or 0)+(names.lotus_flower_cooked or 0)+(names.kyno_lotus_flower_cooked or 0)) >=2 and tags.veggie and not tags.fruit and notmeat(tags) and notname(names) and lessthing(names) and notages(tags) end,
+>>>>>>> Beta_1.2.8
 		priority = 1,
 		health = (TUNING.HEALING_MED*2)/5, -- 5 -> 8 (40) --감자 2개 수준으로 버프
 		hunger = TUNING.DRINK_CALORIES*2,  -- 5-> 10 (50)
@@ -561,6 +586,8 @@ local drinks =
 		potlevel_bottle = "mid",
 		drinktype = DRINKTYPY.LEAFS,
 	},
+<<<<<<< HEAD
+=======
 	mentha_spicata_tea = {
 		test = function(boilier, names, tags) return IsMentha_Spicata(names, tags) and notname(names) and lessthing(names) and notages(tags) end,
 		priority = 1,
@@ -577,6 +604,7 @@ local drinks =
 		potlevel_bottle = "mid",
 		drinktype = DRINKTYPY.LEAFS,	
 	},
+>>>>>>> Beta_1.2.8
 	hotruincolate = {
 		test = function(boilier, names, tags) return names.ruincacao_bean_cooked and names.ruincacao_bean_cooked >= 2 and not tags.frozen and notmeat(tags) and notname(names) and lessthing(names) end,
 		priority = 2,
@@ -615,7 +643,11 @@ local drinks =
 	}
 }
 
+<<<<<<< HEAD
+local mod_drink = require("modcompats/prepareddrinks_mod")
+=======
 local mod_drink = require("modinit/prepareddrinks_mod")
+>>>>>>> Beta_1.2.8
 local modlist = require("utils/water_modlist").active_mod_compatibility
 
 for active, _ in pairs(modlist) do
@@ -650,6 +682,8 @@ if modlist.te or modlist.ia or modlist.ta then
 	end
 end
 
+<<<<<<< HEAD
+=======
 if modlist.te or modlist.ac or modlist.ta then
 	local ham_drink = mod_drink.ham_drink
 	for k,v in pairs(ham_drink) do
@@ -657,6 +691,7 @@ if modlist.te or modlist.ac or modlist.ta then
 	end
 end
 
+>>>>>>> Beta_1.2.8
 if modlist.te or modlist.ia or modlist.hof or modlist.ta then
 	local coconut_drink = mod_drink.coconut_drink
 	for k,v in pairs(coconut_drink) do
@@ -670,14 +705,22 @@ for k, v in pairs(drinks) do
     v.priority = v.priority or 0
 
     v.is_boilbook_recipes = true
+<<<<<<< HEAD
+    v.boilbook_category = "kettle"
+=======
     v.boilbook_category = "tea_pot"
 	v.cookbook_atlas = "images/cookbookimages/tea_cookbookimage_drinks.xml"
 	v.cookbook_tex = k..".tex"
+>>>>>>> Beta_1.2.8
     if modlist.legion and _G.CONFIGS_LEGION.BETTERCOOKBOOK then
     	v.cook_need = nil
     	v.cook_cant = nil
     	v.recipe_count = 4
+<<<<<<< HEAD
+		local cookbookui_legion = require "modcompats/1392778117/cookbookui_legion"
+=======
 		local cookbookui_legion = require "modinit/1392778117/cookbookui_legion"
+>>>>>>> Beta_1.2.8
 		v.custom_cookbook_details_fn = function(data, self, top, left)
 			local root = cookbookui_legion(data, self, top, left)
 			return root

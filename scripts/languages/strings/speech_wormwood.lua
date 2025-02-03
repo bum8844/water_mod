@@ -51,15 +51,22 @@ return {
 		WELL_DRILLING_ITEM = "구멍내는 도구", --드릴 아이템
 		HOLE = "안에 물 있어", --우물 구멍
 		WELL = "물 얻을수 있어.", --우물
+<<<<<<< HEAD
+		BOTTLE_POUCH = "",
+=======
 		BOTTLE_POUCH_SMALL = "",
 		BOTTLE_POUCH_BIG = "",
 		THERMOS_BOTTLE_SMALL = "",
 		THERMOS_BOTTLE_BIG = "",
+>>>>>>> Beta_1.2.8
 		WINE_CELLAR_PART = "",
 		WINE_CELLAR = "",
 
 		WX78MODULE_NONEDRUNK = "삐빅 삑", -- 78전용 묘듈
+<<<<<<< HEAD
+=======
 		PURIFICATION_TABLETS = "",
+>>>>>>> Beta_1.2.8
 
 		-- 물 모드 식물
 
@@ -214,7 +221,11 @@ return {
 		LUMPY_WINE = "뿌리덩어리 발효된거", --서주(감자 고구마등 뿌리 술)
 		PULQUE = "완전 새하예", --풀케(선인주)
 		RUINCACAO_WINE = "쓴 맛 많이 없어", -- 카카오 와인 
+<<<<<<< HEAD
+		MIDNIGHT_STROM = "",
+=======
 		MIDNIGHT_STORM = "",
+>>>>>>> Beta_1.2.8
 		APPLEPINE_CIDER = "",
 		MENTHA_SPICATA_WINE = "",
 
@@ -244,8 +255,12 @@ return {
 		BERRY_BRANDY = "작고 작은 먹을거 화르륵 마시는거", -- 베리 브랜디
 		AREUHI = "안 하예", -- 크므즈 증류주 아르히
 		APPLEPINE_BRANDY = "",
+<<<<<<< HEAD
+		VOID = "",
+=======
 		VOID_GIN  = "",
 		VOID_BRANDY = "",
+>>>>>>> Beta_1.2.8
 		CITROYUZU_CURACAO = "",
 		MENTHA_SPICATA_CURACAO = "",
 
@@ -284,7 +299,11 @@ return {
         RUIN_SCHOKAKOLA = "먹는거 눈이 번쩍", -- 쇼카콜라
         APPLEPINE_PIE = "",
         APPLEPINE_FRIED_RICE = "",
+<<<<<<< HEAD
+        citroyuzu_bbq = "",
+=======
         CITROYUZU_BBQ = "",
+>>>>>>> Beta_1.2.8
 
 		BUCKET_STEEL_EMPTY = 
 		{

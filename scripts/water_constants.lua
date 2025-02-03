@@ -1,5 +1,13 @@
 WATERTYPE =
 {
+<<<<<<< HEAD:scripts/constants.lua
+	CLEAN = "water_clean",
+	DIRTY = "water_dirty",
+	MINERAL = "water_mineral",
+	CLEAN_ICE = "water_clean_ice",
+	DIRTY_ICE = "water_dirty_ice",
+	SALTY = "water_salty",
+=======
 	CLEAN = "clean",
 	DIRTY = "dirty",
 	MINERAL = "mineral",
@@ -7,6 +15,7 @@ WATERTYPE =
 	CLEAN_ICE = "clean_ice",
 	DIRTY_ICE = "dirty_ice",
 	SALTY = "salty",
+>>>>>>> Beta_1.2.8:scripts/water_constants.lua
 	NONE = "none",
 	ACID = "acid",
 }
@@ -19,7 +28,10 @@ WATERGROUP =
 		types =
 		{
 			WATERTYPE.CLEAN,
+<<<<<<< HEAD:scripts/constants.lua
+=======
 			WATERTYPE.UNCLEAN_MINERAL,
+>>>>>>> Beta_1.2.8:scripts/water_constants.lua
 			WATERTYPE.MINERAL,
 			WATERTYPE.DIRTY,
 			WATERTYPE.SALTY,

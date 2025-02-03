@@ -111,9 +111,13 @@ local function MakePreparedDrink(data)
             inst:AddTag("prepareddrink")
             inst:AddTag("show_spoiled")
             inst:AddTag("icebox_valid")
+<<<<<<< HEAD
+            inst:AddTag("cocktail_ingredients")
+=======
             if data.name ~= "goopydrink" then
                 inst:AddTag("cocktail_ingredient")
             end
+>>>>>>> Beta_1.2.8
         end
 
         if inst:HasTag("lightdrink") then
@@ -174,7 +178,11 @@ local function MakePreparedDrink(data)
         inst.components.water.returnprefab = "cup"]]
 
 		inst:AddComponent("inventoryitem")
+<<<<<<< HEAD
+        inst.components.inventoryitem.atlasname = data.atlas or "images/tea_inventoryitem_drinks.xml"
+=======
         inst.components.inventoryitem.atlasname = data.atlas or "images/inventoryitems/tea_inventoryitem_drinks.xml"
+>>>>>>> Beta_1.2.8
         if data.OnPutInInventory then
             inst:ListenForEvent("onputininventory", data.OnPutInInventory)
         end
@@ -194,6 +202,33 @@ local function MakePreparedDrink(data)
             inst.components.perishable:StartPerishing()
             inst.components.perishable.onperishreplacement = "spoiled_drink"
         end
+<<<<<<< HEAD
+
+        if inst:HasTag("spirits") then
+            local burntime = TUNING.LARGE_BURNTIME
+            local isexplosive = inst:HasTag("explosive")
+
+            if isexplosive then
+                burntime = 3 + math.random() * 3
+
+                inst:AddComponent("explosive")
+                inst.components.explosive:SetOnExplodeFn(OnExplodeFn)
+                inst.components.explosive.explosivedamage = TUNING.GUNPOWDER_DAMAGE
+            end
+
+            MakeSmallBurnable(inst, burntime)
+            MakeSmallPropagator(inst)
+
+            if isexplosive then
+                inst.components.burnable:SetOnBurntFn(nil)
+                inst.components.burnable:SetOnIgniteFn(OnIgniteFn)
+                inst.components.burnable:SetOnExtinguishFn(OnExtinguishFn)
+            end
+
+            inst:AddComponent("fuel")
+            inst.components.fuel.fuelvalue = TUNING.MED_FUEL
+=======
+>>>>>>> Beta_1.2.8
         end
 
         if inst:HasTag("spirits") then

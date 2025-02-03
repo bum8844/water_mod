@@ -15,7 +15,11 @@ for k, recipe in pairs(drinks) do
 end
 
 for k, recipe in pairs(drinks_warly) do
+<<<<<<< HEAD
+	AddCookerRecipe("portablekettle", recipe)
+=======
 	AddCookerRecipe("portable_tea_pot", recipe)
+>>>>>>> Beta_1.2.8
 end
 
 for k, recipe in pairs(ageddrinks) do
