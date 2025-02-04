@@ -11,7 +11,7 @@ function CraftBartender:StartShaking()
     if self.shaker and
        self.shaker.components.container ~= nil and
        self.shaker.components.container:IsFull() then
-        local sg = self.inst:HasTag("expertchef") and "fest_shaker_shaking" or "shaker_shaking"
+        local sg = self.inst:HasTag("expertchef") and "fest_shaker_shaking_pre" or "shaker_shaking_pre"
         self.shaker.components.cocktailmaker:DoShaking(true)
         self.shaker.components.container:Close()
         self.shaker.components.container.canbeopened = false
