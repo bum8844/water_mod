@@ -467,6 +467,7 @@ FOODTYPEGROUP =
 
 		MEDSMALL = 
 		{
+			"carnivalfood_corntea",
 			"bananajuice",
 			"sweettea",
 			"vegstinger",
@@ -638,6 +639,70 @@ FOODTYPEGROUP =
 	},
 }
 
+SCRAPBOOK_FOODTYPE = {
+	VEGGIE_COOKED = {},
+	FRUIT_COOKED = {},
+	HALVED = {},
+	ETC = {
+		"honey",
+		"royal_jelly",
+		"seeds",
+		"seeds_cooked",
+		"carrot_seeds",
+		"corn_seeds",
+		"dragonfruit_seeds",
+		"durian_seeds",
+		"eggplant_seeds",
+		"pomegranate_seeds",
+		"pumpkin_seeds",
+		"watermelon_seeds",
+		"sweet_potato_seeds",
+		"asparagus_seeds",
+		"tomato_seeds",
+		"potato_seeds",
+		"onion_seeds",
+		"pepper_seeds",
+		"garlic_seeds",
+		"crumbs",
+		"winter_food1",
+		"winter_food2",
+		"winter_food3",
+		"winter_food4",
+		"winter_food5",
+		"winter_food6",
+		"halloweencandy_1",
+		"halloweencandy_2",
+		"halloweencandy_3",
+		"halloweencandy_4",
+		"halloweencandy_5",
+		"halloweencandy_6",
+		"halloweencandy_7",
+		"halloweencandy_8",
+		"halloweencandy_9",
+		"halloweencandy_10",
+		"halloweencandy_11",
+		"halloweencandy_12",
+		"halloweencandy_13",
+		"halloweencandy_14",
+		"yotr_food1",
+		"yotr_food2",
+		"yotr_food3",
+		"yotr_food4",
+	},
+}
+
+for _, name in pairs(FOODTYPEGROUP.TYPEVEGGIE) do
+	table.insert(SCRAPBOOK_FOODTYPE.VEGGIE_COOKED,name.."_cooked")
+end
+
+for _, name in pairs(FOODTYPEGROUP.TYPEFRUIT) do
+	table.insert(SCRAPBOOK_FOODTYPE.FRUIT_COOKED,name.."_cooked")
+end
+
+for _, name in pairs(FOODTYPEGROUP.TYPEFRUIT_HAS_HALVED) do
+	table.insert(SCRAPBOOK_FOODTYPE.HALVED,name.."_halved")
+end
+
 BUCKETSTATE = 
 {
     EMPTY = "empty",
@@ -652,11 +717,13 @@ env.WATERTYPE = WATERTYPE
 env.WATERGROUP = WATERGROUP
 env.DRINKTYPY = DRINKTYPY
 env.FOODTYPEGROUP = FOODTYPEGROUP
+env.SCRAPBOOK_FOODTYPE = SCRAPBOOK_FOODTYPE
 
 _G.DRINKTYPY = DRINKTYPY
 _G.FOODTYPEGROUP = FOODTYPEGROUP
 _G.WATERTYPE = WATERTYPE
 _G.WATERGROUP = WATERGROUP
+_G.SCRAPBOOK_FOODTYPE = SCRAPBOOK_FOODTYPE
 
 UPGRADETYPES["CAMPFIRE"] = "campfire"
 UPGRADETYPES["HOLE"] = "hole"

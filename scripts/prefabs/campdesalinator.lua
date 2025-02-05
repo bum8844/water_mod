@@ -160,6 +160,7 @@ local function fn()
     inst.AnimState:SetBank("campdesalinator_"..inst._type)
     inst.AnimState:PlayAnimation("idle_empty")
     inst.AnimState:OverrideSymbol("swap_meter", "campdesalinator_meter_water", "0")
+    inst.scrapbook_anim = "campdesalinator_A"
 
     inst.entity:SetPristine()
 
