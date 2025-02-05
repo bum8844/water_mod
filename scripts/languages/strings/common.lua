@@ -203,6 +203,7 @@ return
 		LOTUSTEA = "연꽃차",
 		SUSHIBISCUS = "히비스커스 티?",
 		MOON_BLOSSOM_TEA = "찻잔 속의 달빛",
+		MENTHA_SPICATA_TEA = "박하차",
 
 		--커피,코코아,기타
 

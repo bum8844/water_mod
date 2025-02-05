@@ -149,6 +149,7 @@ return {
 		LOTUSTEA = "분홍색 영혼은 없는데 말이야.", --연꽃차
 		SUSHIBISCUS = "돼지야. 내가 뭘 가져왔나 볼래?", -- 자살차
 		MOON_BLOSSOM_TEA = "음료까지 달빛이잖아!", --달꽃차
+		MENTHA_SPICATA_TEA = "", -- 박하차
 
 		CAFFEINBERRY_JUICE = "마시면 힘이 나지. 난 별 맛 안나지만.", -- 블랙 커피
         TOFFEE_LATTE = "난 음료랑도 잘 안맞아.", --토피넛 라떼

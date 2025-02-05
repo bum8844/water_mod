@@ -154,6 +154,7 @@ return {
 		LOTUSTEA = "",
 		SUSHIBISCUS = "",
 		MOON_BLOSSOM_TEA = "",
+		MENTHA_SPICATA_TEA = "",
 
 		CAFFEINBERRY_JUICE = "",
 		TOFFEE_LATTE = "",

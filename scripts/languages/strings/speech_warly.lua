@@ -160,6 +160,7 @@ return {
 		LOTUSTEA = "정말 이국적이고 아름다운 차야!", --연꽃차
 		SUSHIBISCUS = "뭔가 향미가 좀 독특한데.", -- 자살차
 		MOON_BLOSSOM_TEA = "이 세상의 것이 아닌 것만 같은 향기야.", --달꽃차
+		MENTHA_SPICATA_TEA = "", -- 박하차
 
 		CAFFEINBERRY_JUICE = "한 잔 마시면 기운이 솟아나지!", -- 블랙 커피
         TOFFEE_LATTE = "달콤함과 고소함을 한 잔에 담았어.", --토피넛 라떼

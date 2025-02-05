@@ -160,6 +160,7 @@ return {
 		LOTUSTEA = "물꽃 우린 물이 아닌 물고기 수프를 먹었으면.", --연꽃차
 		SUSHIBISCUS = "이 불경스러운 음료는 대체 뭐지?", -- 자살차
 		MOON_BLOSSOM_TEA = "마니의 축복이 가득하군.", --달꽃차
+		MENTHA_SPICATA_TEA = "", -- 박하차
 
 		CAFFEINBERRY_JUICE = "심장이 고동치게 하는군.", -- 블랙 커피
         TOFFEE_LATTE = "마치 신이 내린 달콤함 같군.", --토피넛 라떼

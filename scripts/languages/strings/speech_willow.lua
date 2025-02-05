@@ -160,6 +160,7 @@ return {
 		LOTUSTEA = "물 속으로 돌아갔으니까 잘 된 거 아니겠어.", --연꽃차
 		SUSHIBISCUS = "야, 웨스! 네가 한 번 맛 좀 볼래?", -- 자살차
 		MOON_BLOSSOM_TEA = "이건 좀 인상적이네.", --달꽃차
+		MENTHA_SPICATA_TEA = "", -- 박하차
 
 		CAFFEINBERRY_JUICE = "뭔가... 의욕이 샘솟는 냄새네.", -- 블랙 커피
         TOFFEE_LATTE = "견과류를 넣은 커피라니, 다람쥐가 좋아하겠는데.", --토피넛 라떼
