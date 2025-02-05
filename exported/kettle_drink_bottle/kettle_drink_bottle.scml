@@ -345,6 +345,9 @@
     <folder id="114" name="midnight_storm">
         <file id="0" name="midnight_storm/midnight_storm.png" width="133" height="182" pivot_x="0.58" pivot_y="0.25"/>
     </folder>
+    <folder id="115" name="mentha_spicata_tea">
+        <file id="0" name="mentha_spicata_tea/mentha_spicata_tea.png" width="182" height="159" pivot_x="0.5" pivot_y="0.3"/>
+    </folder>
     <entity id="0" name="kettle_drink">
         <animation id="0" name="idle" length="150" interval="100" looping="false">
             <mainline>
