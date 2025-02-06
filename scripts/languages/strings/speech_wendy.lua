@@ -160,7 +160,7 @@ return {
 		LOTUSTEA = "고통 속에서도 평온이 자리잡고 있어.", --연꽃차
 		SUSHIBISCUS = "잠시라도 아비게일과 함께 할 수만 있다면...", -- 자살차
 		MOON_BLOSSOM_TEA = "더 이상 아름다움을 뽐낼 수 없겠지.", --달꽃차
-		MENTHA_SPICATA_TEA = "", -- 박하차
+		MENTHA_SPICATA_TEA = "인생처럼 차가운 맛이야.", -- 박하차
 
 		CAFFEINBERRY_JUICE = "어둡고, 씁쓸해.", -- 블랙 커피
         TOFFEE_LATTE = "단맛이 커피의 향을 덮어버렸어.", --토피넛 라떼

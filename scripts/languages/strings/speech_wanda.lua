@@ -160,7 +160,7 @@ return {
 		LOTUSTEA = "과거에 꽃이였거나 혹은 물고기였을거야.", --연꽃차
 		SUSHIBISCUS = "차를 가릴 여유 따윈- 아니, 이건 또 뭐야?", -- 자살차
 		MOON_BLOSSOM_TEA = "어떻게 아직도 김이 모락모락 나는 거지?", --달꽃차
-		MENTHA_SPICATA_TEA = "", -- 박하차
+		MENTHA_SPICATA_TEA = "맛과 향이 깔끔한게 좋네!", -- 박하차
 
 		CAFFEINBERRY_JUICE = "시간은 상대적인 거야. 내 시간이 빠르든 주위 시간이 느리든 똑같다고.", -- 블랙 커피
         TOFFEE_LATTE = "커피랑 디저트를 한 번에 해결했네.", --토피넛 라떼

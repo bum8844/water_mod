@@ -160,7 +160,7 @@ return {
 		LOTUSTEA = "비스킷도 있으면 좋겠는데.",
 		SUSHIBISCUS = "과학적으로 용납할 수가 없어.",
 		MOON_BLOSSOM_TEA = "향만 맡아도 눈이 확 뜨이네.",
-		MENTHA_SPICATA_TEA = "", -- 박하차
+		MENTHA_SPICATA_TEA = "뇌가 명확하게 맑아지는 것만 같아.", -- 박하차
 
 		CAFFEINBERRY_JUICE = "기운 나는 냄새가 나!",
 		TOFFEE_LATTE = "커피에 견과류를 더했다고?",

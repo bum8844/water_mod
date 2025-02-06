@@ -149,7 +149,7 @@ return {
 		LOTUSTEA = "물에사는 꽃을 물로 끓인 것", --연꽃차
 		SUSHIBISCUS = "상당히 기묘함", -- 자살차
 		MOON_BLOSSOM_TEA = "더 이상 소생 불능 하 하 하", --달꽃차
-		MENTHA_SPICATA_TEA = "", -- 박하차
+		MENTHA_SPICATA_TEA = "잡초 끓인 물이지만 냉매제로 작용함", -- 박하차
 
 		CAFFEINBERRY_JUICE = "오버클럭용 냉각제", -- 블랙 커피
         TOFFEE_LATTE = "볼트 미포함", --토피넛 라떼(BOLT NOT INCLUDED)

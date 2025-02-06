@@ -160,7 +160,7 @@ return {
 		LOTUSTEA = "자연에서처럼 물 위에 있어. 뜨거운 물이지만.",
 		SUSHIBISCUS = "왜 그래, 워비? 그냥 평범한 엄청 신 차잖아.",
 		MOON_BLOSSOM_TEA = "내심 차보다는 치즈가 됐으면 했는데.",
-		MENTHA_SPICATA_TEA = "", -- 박하차
+		MENTHA_SPICATA_TEA = "머리 아플 때 마시면 좋아!", -- 박하차
 
 		CAFFEINBERRY_JUICE = "이거 먹으면 키 안 큰다고 엄마가 못 먹게 하셨는데.",
 		TOFFEE_LATTE = "내가 좋아하는 게 다 들어가 있어!",

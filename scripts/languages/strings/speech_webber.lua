@@ -160,7 +160,7 @@ return {
 		LOTUSTEA = "물에 사는 꽃으로 만든 차야.", --연꽃차
 		SUSHIBISCUS = "엄마가 먹을 거 가지고 장난치면 안 된다고 그러셨어.", -- 자살차
 		MOON_BLOSSOM_TEA = "차에 달이 꽉 찼어.", --달꽃차
-		MENTHA_SPICATA_TEA = "", -- 박하차
+		MENTHA_SPICATA_TEA = "입안이 시원해지는 기분이야!", -- 박하차
 
 		CAFFEINBERRY_JUICE = "써-!", -- 블랙 커피
         TOFFEE_LATTE = "으음, 버터캔디 맛이야!", --토피넛 라떼

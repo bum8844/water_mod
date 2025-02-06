@@ -149,7 +149,7 @@ return {
 		LOTUSTEA = "분홍색인 차도 있었나?", --연꽃차
 		SUSHIBISCUS = "볼프강 근육까지 소름이 돋는다...", -- 자살차
 		MOON_BLOSSOM_TEA = "향이 강한 차가 강한정신 깃들게 해준다!", --달꽃차
-		MENTHA_SPICATA_TEA = "", -- 박하차
+		MENTHA_SPICATA_TEA = "시원하고 강력한 정신을 준다.", -- 박하차
 
 		CAFFEINBERRY_JUICE = "씁쓸하지만 강하게 해준다!", -- 블랙 커피
         TOFFEE_LATTE = "견과류 맛 난다.", --토피넛 라떼

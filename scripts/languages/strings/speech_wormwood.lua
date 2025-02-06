@@ -150,7 +150,7 @@ return {
 		LOTUSTEA = "달콤한 냄새나", --연꽃차
 		SUSHIBISCUS = "흐으음... 냄새 안 좋아", -- 자살차
 		MOON_BLOSSOM_TEA = "으으음... 향 좋아", --달꽃차
-		MENTHA_SPICATA_TEA = "", -- 박하차
+		MENTHA_SPICATA_TEA = "매우 시원한 향이 나", -- 박하차
 
 		CAFFEINBERRY_JUICE = "야호!", -- 블랙 커피
         TOFFEE_LATTE = "고소한향 나", --토피넛 라떼

@@ -160,7 +160,7 @@ return {
 		LOTUSTEA = "아시아에서는 귀하게 여겨지는 음료란다.", --연꽃차
 		SUSHIBISCUS = "가만... 이건 히비스커스 차가 아니구나.", -- 자살차
 		MOON_BLOSSOM_TEA = "보고만 있어도 차분해지는 것 같아.", --달꽃차
-		MENTHA_SPICATA_TEA = "", -- 박하차
+		MENTHA_SPICATA_TEA = "정신을 맑게 하는 차면서도 소화에 좋단다.", -- 박하차
 
 		CAFFEINBERRY_JUICE = "커피 한 잔과 책 한 권의 여유도 좋지.", -- 블랙 커피
         TOFFEE_LATTE = "고소한 향을 한껏 올렸구나.", --토피넛 라떼

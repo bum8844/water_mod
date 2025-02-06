@@ -149,7 +149,7 @@ return {
 		LOTUSTEA = "본적 없는 차인데.", --연꽃차
 		SUSHIBISCUS = "어쩔까,루시? 한번 마셔볼까?", -- 자살차
 		MOON_BLOSSOM_TEA = "이거 향 한번 대단하구먼.", --달꽃차
-		MENTHA_SPICATA_TEA = "", -- 박하차
+		MENTHA_SPICATA_TEA = "박하 향이 나무 냄새랑 잘 어울리네!", -- 박하차
 
 		CAFFEINBERRY_JUICE = "벌써 커피마실 시간인가?", -- 블랙 커피
         TOFFEE_LATTE = "커피가 엄청 달잖아.", --토피넛 라떼

@@ -159,7 +159,7 @@ return {
 		LOTUSTEA = "꽤 이국적인걸.", --연꽃차
 		SUSHIBISCUS = "뭐 이런 차가 다 있담?", -- 자살차
 		MOON_BLOSSOM_TEA = "후! 정신이 번쩍 드네.", --달꽃차
-		MENTHA_SPICATA_TEA = "", -- 박하차
+		MENTHA_SPICATA_TEA = "좋아, 정신이 맑아졌어!", -- 박하차
 
 		CAFFEINBERRY_JUICE = "야근 뛸 때 자주 달고 살았지.", -- 블랙 커피
         TOFFEE_LATTE = "난 커피는 블랙 커피가 좋은데.", --토피넛 라떼

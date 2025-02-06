@@ -149,7 +149,7 @@ return {
 		LOTUSTEA = "매끈이들은 이 꽃물 예쁘데, 난 모르겠어, 뽀륵.", --연꽃차
 		SUSHIBISCUS = "물에 엄청 못생긴꽃 들어가있어.", -- 자살차
 		MOON_BLOSSOM_TEA = "이거 냄새 엄청 이상해.", --달꽃차
-		MENTHA_SPICATA_TEA = "", -- 박하차
+		MENTHA_SPICATA_TEA = "시원하고 흙처럼 포근해!", -- 박하차
 
 		CAFFEINBERRY_JUICE = "써..맛업써.", -- 블랙 커피
         TOFFEE_LATTE = "으으음! 고소해, 달아!", --토피넛 라떼
