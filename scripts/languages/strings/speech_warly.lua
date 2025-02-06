@@ -69,7 +69,7 @@ return {
 		WINE_CELLAR = "",
 
 		WX78MODULE_NONEDRUNK = "우리 강철 친구에게 힘을 더해주는 그런 건가?", -- 78전용 묘듈
-		PURIFICATION_TABLETS = "",
+		PURIFICATION_TABLETS = "식용 식수 제조라니 좋은걸!", -- 정화제
 
 		-- 물 모드 식물
 

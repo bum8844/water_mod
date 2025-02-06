@@ -69,7 +69,7 @@ return {
 		WINE_CELLAR = "",
 
 		WX78MODULE_NONEDRUNK = "매우 연약해 보여... 안타까운 사고는 없었으면 좋겠네.", -- 78전용 묘듈
-		PURIFICATION_TABLETS = "",
+		PURIFICATION_TABLETS = "나도 그때로 돌아가고 싶어.", -- 정화제
 		
 		-- 물 모드 식물
 

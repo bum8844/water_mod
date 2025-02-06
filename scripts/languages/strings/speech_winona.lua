@@ -68,7 +68,7 @@ return {
 		WINE_CELLAR = "",
 
 		WX78MODULE_NONEDRUNK = "이 자식 물건 좀 잘 챙겨두면 어디 덧나나.", -- 78전용 묘듈
-		PURIFICATION_TABLETS = "",
+		PURIFICATION_TABLETS = "주전자를 쓰는 게 더 났겠네.", -- 정화제
 
 		-- 물 모드 식물
 

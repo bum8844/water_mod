@@ -58,7 +58,7 @@ return {
 		WINE_CELLAR = "",
 
 		WX78MODULE_NONEDRUNK = "화학 엔진 출력보조", -- 78전용 묘듈
-		PURIFICATION_TABLETS = "",
+		PURIFICATION_TABLETS = "액체 함유 불순물 제거기", -- 정화제
 
 		-- 물 모드 식물
 
