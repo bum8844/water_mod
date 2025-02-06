@@ -1,3 +1,4 @@
+-- 목마름 스탯지정을 위해 태이블를 작성 했습니다.
 local STRUCTURE = {
 	barrel                 = {burnable=true, build="barrel_dehy", bank="barrel_dehy", anim="idle", overridesymbol={"swap","barrel_dehy_meter_water","5"}, deps={"boards","rope","charcoal","water_clean"}},
 	campdesalinator        = {speechname = "campdesalinator_item", build="campdesalinator", bank="campdesalinator_A", anim="idle_empty", overridesymbol={"swap_meter","campdesalinator_meter_water","0"}, deps={}},
