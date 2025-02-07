@@ -351,6 +351,9 @@
     <folder id="116" name="dawn_fog">
         <file id="0" name="dawn_fog/dawn_fog.png" width="94" height="186" pivot_x="0.575" pivot_y="0.25"/>
     </folder>
+    <folder id="117" name="citroyuzu_wine">
+        <file id="0" name="citroyuzu_wine/citroyuzu_wine_bottle.png" width="89" height="183" pivot_x="0.59" pivot_y="0.25"/>
+    </folder>
     <entity id="0" name="kettle_drink">
         <animation id="0" name="idle" length="150" interval="100" looping="false">
             <mainline>
