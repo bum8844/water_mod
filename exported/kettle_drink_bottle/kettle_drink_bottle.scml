@@ -354,6 +354,12 @@
     <folder id="117" name="citroyuzu_wine">
         <file id="0" name="citroyuzu_wine/citroyuzu_wine_bottle.png" width="89" height="183" pivot_x="0.59" pivot_y="0.25"/>
     </folder>
+    <folder id="118" name="citroyuzu_curacao">
+        <file id="0" name="citroyuzu_curacao/citroyuzu_curacao_bottle.png" width="121" height="184" pivot_x="0.57" pivot_y="0.25"/>
+    </folder>
+    <folder id="119" name="mentha_spicata_wine">
+        <file id="0" name="mentha_spicata_wine/mentha_spicata_wine_bottle.png" width="89" height="183" pivot_x="0.59" pivot_y="0.25"/>
+    </folder>
     <entity id="0" name="kettle_drink">
         <animation id="0" name="idle" length="150" interval="100" looping="false">
             <mainline>
