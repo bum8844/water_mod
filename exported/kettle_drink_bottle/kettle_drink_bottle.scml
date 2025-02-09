@@ -360,6 +360,9 @@
     <folder id="119" name="mentha_spicata_wine">
         <file id="0" name="mentha_spicata_wine/mentha_spicata_wine_bottle.png" width="89" height="183" pivot_x="0.59" pivot_y="0.25"/>
     </folder>
+    <folder id="120" name="moon_cap_drink">
+        <file id="0" name="moon_cap_drink/moon_cap_drink_bottle.png" width="94" height="186" pivot_x="0.58" pivot_y="0.25"/>
+    </folder>
     <entity id="0" name="kettle_drink">
         <animation id="0" name="idle" length="150" interval="100" looping="false">
             <mainline>
