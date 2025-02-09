@@ -118,7 +118,7 @@
         <file id="0" name="soda/soda-0.png" width="76" height="120" pivot_x="0.5" pivot_y="0.25"/>
     </folder>
     <folder id="39" name="limonsoda">
-        <file id="0" name="limonsoda/limonsoda-0.png" width="76" height="120" pivot_x="0.5" pivot_y="0.25"/>
+        <file id="0" name="limonsoda/limonsoda-0.png" width="97" height="128" pivot_x="0.43" pivot_y="0.25"/>
     </folder>
     <folder id="40" name="water_clean_ice">
         <file id="0" name="water_clean_ice/water_clean_ice.png" width="120" height="120" pivot_x="0.45" pivot_y="0.25"/>
@@ -377,7 +377,7 @@
         <file id="0" name="citroyuzu_curacao/citroyuzu_curacao.png" width="120" height="120" pivot_x="0.5" pivot_y="0.25"/>
     </folder>
     <folder id="123" name="moon_cap_drink">
-        <file id="0" name="moon_cap_drink/moon_cap_drink.png" width="79" height="114" pivot_x="0.55" pivot_y="0.25"/>
+        <file id="0" name="moon_cap_drink/moon_cap_drink.png" width="79" height="114" pivot_x="0.54" pivot_y="0.25"/>
     </folder>
     <entity id="0" name="kettle_drink">
         <animation id="0" name="turn_to_ice" length="1000" interval="100">
