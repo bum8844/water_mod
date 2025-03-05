@@ -118,13 +118,26 @@ TreasureLootList["slot_teatree"] = {
     },
 }
 
+local function ModAtlas()
+    return "images/tea_inventoryitem.xml"
+end
+
+local function Drink_ModAtlas()
+    return "images/inventoryitems/tea_inventoryitem_drinks.xml"
+end
+
+local function AIModAtlas()
+    return "images/ia_inventoryimages.xml"
+end
+
 SetRecipeIngredientsForGameTypes("bucket_steel_empty",RECIPE_GAME_TYPE.SW,{Ingredient("needlespear",2),Ingredient("hammer",0)})
 SetRecipeIngredientsForGameTypes("well_sprinkler_kit",RECIPE_GAME_TYPE.SW,{Ingredient("limestonenugget",4),Ingredient("ia_messagebottleempty",1),Ingredient("dragoonheart",2),Ingredient("gears",1)})
 SetRecipeIngredientsForGameTypes("well_sprinkler",RECIPE_GAME_TYPE.SW,{Ingredient("limestonenugget",4),Ingredient("ia_messagebottleempty",1),Ingredient("dragoonheart",2),Ingredient("gears",1)})
 SetRecipeIngredientsForGameTypes("well_drilling_item",RECIPE_GAME_TYPE.SW,{Ingredient("tar",4),Ingredient("transistor",2),Ingredient("goldnugget",4),Ingredient("flint",4),Ingredient("needlespear",2)})
-SetRecipeIngredientsForGameTypes("additives_nut",RECIPE_GAME_TYPE.SW,{Ingredient("tea_seed_cooked",1),Ingredient("ruincacao_bean_cooked",1,ModAtlas(),nil,"ruincacao_bean_cooked.tex"),Ingredient("caffeinberry_bean_cooked", 1, ModAtlas(), nil, "caffeinberry_bean_cooked.tex")})
-SetRecipeIngredientsForGameTypes("additives_dairy",RECIPE_GAME_TYPE.SW,{Ingredient("goatmilk",1),Ingredient("milkywhites",1),Ingredient("butter", 1)})
-SetRecipeIngredientsForGameTypes("additives_petals",RECIPE_GAME_TYPE.SW,{Ingredient("petals",1),Ingredient("tealeaves",1,ModAtlas(),nil,"tealeaves.tex"),Ingredient("moon_tree_blossom", 1)})
+SetRecipeIngredientsForGameTypes("additive_seed",RECIPE_GAME_TYPE.SW,{Ingredient("jungletreeseed",1,AIModAtlas(),nil,"jungletreeseed.tex"),Ingredient("pepper_seeds",1),Ingredient("garlic_seeds",1)})
+SetRecipeIngredientsForGameTypes("additive_nut",RECIPE_GAME_TYPE.SW,{Ingredient("tea_seed_cooked",1),Ingredient("ruincacao_bean_cooked",1,ModAtlas(),nil,"ruincacao_bean_cooked.tex"),Ingredient("caffeinberry_bean_cooked", 1, ModAtlas(), nil, "caffeinberry_bean_cooked.tex")})
+SetRecipeIngredientsForGameTypes("additive_dairy",RECIPE_GAME_TYPE.SW,{Ingredient("coconut_halved",1),Ingredient("milkywhites",1),Ingredient("butter", 1)})
+SetRecipeIngredientsForGameTypes("additive_petals",RECIPE_GAME_TYPE.SW,{Ingredient("petals",3),Ingredient("tealeaves",3,ModAtlas(),nil,"tealeaves.tex")})
 SetRecipeIngredientsForGameTypes("distillers",RECIPE_GAME_TYPE.SW,{Ingredient("obsidian",8),Ingredient("nightmarefuel",4),Ingredient("transistor",4),Ingredient("redgem",1),Ingredient("bluegem",1)})
 SetRecipeIngredientsForGameTypes("well_waterpump_kit",RECIPE_GAME_TYPE.SW,{Ingredient("turbine_blades",1),Ingredient("gears",4),Ingredient("transistor",1),Ingredient("cutstone",2)})
 SetRecipeIngredientsForGameTypes("well_waterpump",RECIPE_GAME_TYPE.SW,{Ingredient("turbine_blades",1),Ingredient("gears",4),Ingredient("transistor",1),Ingredient("cutstone",2)})
