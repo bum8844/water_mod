@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<spriter_data scml_version="1.0" generator="BrashMonkey Spriter" generator_version="r11">
+    <folder id="0" name="swap_boston_shaker">
+        <file id="0" name="swap_boston_shaker/swap_boston_shaker-0.png" width="118" height="206" pivot_x="0.245701" pivot_y="0.2555"/>
+        <file id="1" name="swap_boston_shaker/swap_boston_shaker-1.png" width="64" height="64" pivot_x="0" pivot_y="1"/>
+        <file id="2" name="swap_boston_shaker/swap_boston_shaker-2.png" width="118" height="206" pivot_x="0.245729" pivot_y="0.2555"/>
+        <file id="3" name="swap_boston_shaker/swap_boston_shaker-3.png" width="64" height="64" pivot_x="0" pivot_y="1"/>
+        <file id="4" name="swap_boston_shaker/swap_boston_shaker-4.png" width="64" height="64" pivot_x="0" pivot_y="1"/>
+        <file id="5" name="swap_boston_shaker/swap_boston_shaker-5.png" width="64" height="64" pivot_x="0" pivot_y="1"/>
+        <file id="6" name="swap_boston_shaker/swap_boston_shaker-6.png" width="64" height="64" pivot_x="0" pivot_y="1"/>
+        <file id="7" name="swap_boston_shaker/swap_boston_shaker-7.png" width="64" height="64" pivot_x="0" pivot_y="1"/>
+        <file id="8" name="swap_boston_shaker/swap_boston_shaker-8.png" width="64" height="64" pivot_x="0" pivot_y="1"/>
+        <file id="9" name="swap_boston_shaker/swap_boston_shaker-9.png" width="64" height="64" pivot_x="0" pivot_y="1"/>
+        <file id="10" name="swap_boston_shaker/swap_boston_shaker-10.png" width="64" height="64" pivot_x="0" pivot_y="1"/>
+        <file id="11" name="swap_boston_shaker/swap_boston_shaker-19.png" width="64" height="64" pivot_x="0" pivot_y="1"/>
+        <file id="12" name="swap_boston_shaker/swap_boston_shaker-11.png" width="64" height="64" pivot_x="0" pivot_y="1"/>
+        <file id="13" name="swap_boston_shaker/swap_boston_shaker-12.png" width="64" height="64" pivot_x="0" pivot_y="1"/>
+        <file id="14" name="swap_boston_shaker/swap_boston_shaker-13.png" width="64" height="64" pivot_x="0" pivot_y="1"/>
+        <file id="15" name="swap_boston_shaker/swap_boston_shaker-14.png" width="64" height="64" pivot_x="0" pivot_y="1"/>
+        <file id="16" name="swap_boston_shaker/swap_boston_shaker-15.png" width="64" height="64" pivot_x="0" pivot_y="1"/>
+        <file id="17" name="swap_boston_shaker/swap_boston_shaker-16.png" width="64" height="64" pivot_x="0" pivot_y="1"/>
+        <file id="18" name="swap_boston_shaker/swap_boston_shaker-17.png" width="64" height="64" pivot_x="0" pivot_y="1"/>
+        <file id="19" name="swap_boston_shaker/swap_boston_shaker-18.png" width="64" height="64" pivot_x="0" pivot_y="1"/>
+        <file id="20" name="swap_boston_shaker/swap_boston_shaker-20.png" width="135" height="204" pivot_x="0.290301" pivot_y="0.260701"/>
+    </folder>
+    <folder id="1" name="swap_cobbler_shaker">
+        <file id="0" name="swap_cobbler_shaker/swap_cobbler_shaker-0.png" width="118" height="206" pivot_x="0.245701" pivot_y="0.2555"/>
+        <file id="1" name="swap_cobbler_shaker/swap_cobbler_shaker-1.png" width="64" height="64" pivot_x="0" pivot_y="1"/>
+        <file id="2" name="swap_cobbler_shaker/swap_cobbler_shaker-2.png" width="118" height="206" pivot_x="0.245729" pivot_y="0.2555"/>
+        <file id="3" name="swap_cobbler_shaker/swap_cobbler_shaker-3.png" width="64" height="64" pivot_x="0" pivot_y="1"/>
+        <file id="4" name="swap_cobbler_shaker/swap_cobbler_shaker-4.png" width="64" height="64" pivot_x="0" pivot_y="1"/>
+        <file id="5" name="swap_cobbler_shaker/swap_cobbler_shaker-5.png" width="64" height="64" pivot_x="0" pivot_y="1"/>
+        <file id="6" name="swap_cobbler_shaker/swap_cobbler_shaker-6.png" width="64" height="64" pivot_x="0" pivot_y="1"/>
+        <file id="7" name="swap_cobbler_shaker/swap_cobbler_shaker-7.png" width="64" height="64" pivot_x="0" pivot_y="1"/>
+        <file id="8" name="swap_cobbler_shaker/swap_cobbler_shaker-8.png" width="64" height="64" pivot_x="0" pivot_y="1"/>
+        <file id="9" name="swap_cobbler_shaker/swap_cobbler_shaker-9.png" width="64" height="64" pivot_x="0" pivot_y="1"/>
+        <file id="10" name="swap_cobbler_shaker/swap_cobbler_shaker-10.png" width="64" height="64" pivot_x="0" pivot_y="1"/>
+        <file id="11" name="swap_cobbler_shaker/swap_cobbler_shaker-11.png" width="64" height="64" pivot_x="0" pivot_y="1"/>
+        <file id="12" name="swap_cobbler_shaker/swap_cobbler_shaker-12.png" width="64" height="64" pivot_x="0" pivot_y="1"/>
+        <file id="13" name="swap_cobbler_shaker/swap_cobbler_shaker-13.png" width="64" height="64" pivot_x="0" pivot_y="1"/>
+        <file id="14" name="swap_cobbler_shaker/swap_cobbler_shaker-14.png" width="64" height="64" pivot_x="0" pivot_y="1"/>
+        <file id="15" name="swap_cobbler_shaker/swap_cobbler_shaker-15.png" width="64" height="64" pivot_x="0" pivot_y="1"/>
+        <file id="16" name="swap_cobbler_shaker/swap_cobbler_shaker-16.png" width="64" height="64" pivot_x="0" pivot_y="1"/>
+        <file id="17" name="swap_cobbler_shaker/swap_cobbler_shaker-17.png" width="64" height="64" pivot_x="0" pivot_y="1"/>
+        <file id="18" name="swap_cobbler_shaker/swap_cobbler_shaker-18.png" width="64" height="64" pivot_x="0" pivot_y="1"/>
+        <file id="19" name="swap_cobbler_shaker/swap_cobbler_shaker-19.png" width="64" height="64" pivot_x="0" pivot_y="1"/>
+        <file id="20" name="swap_cobbler_shaker/swap_cobbler_shaker-20.png" width="135" height="204" pivot_x="0.290301" pivot_y="0.260701"/>
+    </folder>
+    <entity id="0" name="shaker_swap">
+        <animation id="0" name="idle" length="1000" interval="100">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="swap_cobbler_shaker-0">
+                <key id="0" spin="0">
+                    <object folder="1" file="0" x="-5" y="-23"/>
+                </key>
+            </timeline>
+        </animation>
+    </entity>
+</spriter_data>

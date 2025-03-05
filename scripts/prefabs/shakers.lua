@@ -2,9 +2,11 @@ require "prefabutil"
 
 local assets = {
 	cobbler_shaker = {
+		Asset("ANIM", "anim/shaker_swap.zip"),
 		Asset("ANIM", "anim/cobbler_shaker.zip"),
 	},
 	boston_shaker = {
+		Asset("ANIM", "anim/shaker_swap.zip"),
 		Asset("ANIM", "anim/boston_shaker.zip"),
 	},
 }

@@ -247,6 +247,7 @@ local function fn()
     inst.AnimState:OverrideSymbol("swap_body", "desalinator_body_salt", "0")
 	inst.AnimState:OverrideSymbol("swap", "desalinator_meter_clean", "0")
     inst.AnimState:OverrideSymbol("swap_salt", "desalinator_rope_salt", "0")
+    inst.scrapbook_anim = "idle"
     
 	inst:AddTag("structure")
 	inst:AddTag("desalinator")
