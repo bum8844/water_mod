@@ -109,6 +109,7 @@ local function hole()
     inst.AnimState:SetBank("holes")
     inst.AnimState:SetBuild("well")
     inst.AnimState:PlayAnimation("idle")
+    inst.scrapbook_anim = "idle"
 	
 	inst:AddTag("water_hole")
 	inst:AddTag("antlion_sinkhole_blocker")
@@ -358,6 +359,7 @@ local function well()
     inst.AnimState:SetBank("well")
     inst.AnimState:SetBuild("well")
     inst.AnimState:PlayAnimation("idle_empty")
+    inst.scrapbook_anim = "idle_empty"
 
     inst:AddComponent("temperature")
 	
