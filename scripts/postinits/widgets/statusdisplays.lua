@@ -49,13 +49,17 @@ local function thirstbadge_statusdisplays(self)
         self.column7 = -120
     end
 
+    local cs = modlist.cs
 	local defaulty = 20
     local brainy = -40
     local stomachx = 0
     local waterstomachx = 0
     local heartx = 0
+    local ex = self.column2
+    local ey = self.column7+5
+    local exter = self.pethungerbadge or self.mightybadge
 
-	if modlist.cs then
+	if cs then
 		local infodata = require("utils/water_modlist").infodata.configuration_options
 		local SEASONOPTIONS = ""
 		for k, v in pairs(infodata) do
@@ -70,10 +74,16 @@ local function thirstbadge_statusdisplays(self)
     	stomachx = 4
     	waterstomachx = 22
     	heartx = 22
+		if self.owner:HasTag("dogrider") then
+			self.pethungerbadge:SetPosition(-62, -52, 0)
+		end
+    	self.boatmeter:SetPosition(exter ~= nil and -124 or -62, -52, 0)
 	else
-		local character = self.owner.prefab
-		if character == "wolfgang" then
-			self.mightybadge:SetPosition(-80, -115, 0)
+		if self.owner:HasTag("strongman") then
+			self.mightybadge:SetPosition(self.column2, self.column7+5, 0)
+		end
+		if self.owner:HasTag("dogrider") then
+			self.pethungerbadge:SetPosition(self.column2, self.column7+5, 0)
 		end
 	end
 	

@@ -1,141 +1,104 @@
 GLOBAL.setfenv(1, GLOBAL)
+local TreasureLootList = GetTreasureLootDefinitionTable()
 
 SLOTMACHINE_LOOT.goodspawns.slot_dust = 1
 SLOTMACHINE_LOOT.actions.slot_dust = {
     treasure = "slot_dust",
 }
-AddTreasureLoot("slot_dust", {
+TreasureLootList["slot_dust"] = {
     loot = {
         nitre = 1,
         rocks = 2,
         saltrock = 1,
         refined_dust_blueprint = 1,
     },
-})
+}
 
 SLOTMACHINE_LOOT.goodspawns.slot_soda_collection = 1
 SLOTMACHINE_LOOT.actions.slot_soda_collection = {
     treasure = "slot_soda_collection",
 }
-AddTreasureLoot("slot_soda_collection", {
+TreasureLootList["slot_soda_collection"] = {
     loot = {
     	fruitsoda = 5,
     	lemonlimesoda = 5,
         cola = 5,
         colaquantum = 5,
     },
-})
+}
 
 SLOTMACHINE_LOOT.goodspawns.slot_advanced_farm = 1
 SLOTMACHINE_LOOT.actions.slot_advanced_farm = {
     treasure = "slot_advanced_farm",
 }
-AddTreasureLoot("slot_advanced_farm", {
+TreasureLootList["slot_advanced_farm"] = {
     loot = {
 		farm_plow_item = 4,
     	golden_farm_hoe = 2,
     	well_drilling_item = 1,
         well_sprinkler_kit = 1,
     },
-})
+}
 
 SLOTMACHINE_LOOT.okspawns.slot_well = 5
 SLOTMACHINE_LOOT.actions.slot_well = {
     treasure = "slot_well",
 }
-AddTreasureLoot("slot_well", {
+
+TreasureLootList["slot_well"] = {
     loot = {
     	boards = 2,
     	cutstone = 6,
         hammer = 1,
         well_drilling_item = 1,
     },
-})
+}
 
 SLOTMACHINE_LOOT.okspawns.slot_drink = 5
 SLOTMACHINE_LOOT.actions.slot_drink = {
     treasure = "slot_drink",
 }
 
-AddTreasureLoot("slot_drink", {
+TreasureLootList["slot_drink"] = {
     loot = {
     	water_clean = 2,
     	berries_juice = 2,
     	carrot_tea = 2,
     	greentea = 2,
     },
-})
+}
 
 SLOTMACHINE_LOOT.okspawns.slot_caffinberry = 5
 SLOTMACHINE_LOOT.actions.slot_caffinberry = {
     treasure = "slot_caffinberry",
 }
-AddTreasureLoot("slot_caffinberry", {
+
+TreasureLootList["slot_caffinberry"] = {
     loot = {
-    	caffinberry_bean = 3,
-    	dug_caffinberry = 1,
+    	caffeinberry_bean = 3,
+    	dug_caffeinberry = 1,
     },
-})
+}
 
 SLOTMACHINE_LOOT.okspawns.slot_teatree = 5
 SLOTMACHINE_LOOT.actions.slot_teatree = {
     treasure = "slot_teatree",
 }
 
-AddTreasureLoot("slot_teatree", {
+TreasureLootList["slot_teatree"] = {
     loot = {
     	tealeaves = 3,
     	dug_tea_tree = 1,
     },
-})
+}
 
-AddRecipePostInit("bucket_steel_empty", function(recipe)
-	local ingredient = recipe:FindAndConvertIngredient("steelwool")
-	if ingredient then
-	    ingredient:AddDictionaryPrefab("needlespear")
-	end
-end)
+local RECIPE_GAMETYPE_DEFS = require("prefabs/recipe_gametype_defs")
+local SetRecipeIngredientsForGameTypes = RECIPE_GAMETYPE_DEFS.SetRecipeIngredientsForGameTypes
 
-AddRecipePostInit("well_sprinkler_kit", function(recipe)
-	local ingredient = recipe:FindAndConvertIngredient("marble")
-	if ingredient then
-	    ingredient:AddDictionaryPrefab("limestonenugget")
-	end
-	local ingredient = recipe:FindAndConvertIngredient("moonglass")
-	if ingredient then
-	    ingredient:AddDictionaryPrefab("ia_messagebottleempty")
-	end
-	local ingredient = recipe:FindAndConvertIngredient("townportaltalisman")
-	if ingredient then
-	    ingredient:AddDictionaryPrefab("dragoonheart")
-	end
-end)
-
-AddRecipePostInit("well_sprinkler", function(recipe)
-	local ingredient = recipe:FindAndConvertIngredient("marble")
-	if ingredient then
-	    ingredient:AddDictionaryPrefab("limestonenugget")
-	end
-	local ingredient = recipe:FindAndConvertIngredient("moonglass")
-	if ingredient then
-	    ingredient:AddDictionaryPrefab("ia_messagebottleempty")
-	end
-	local ingredient = recipe:FindAndConvertIngredient("townportaltalisman")
-	if ingredient then
-	    ingredient:AddDictionaryPrefab("dragoonheart")
-	end
-end)
-
-AddRecipePostInit("well_drilling_item", function(recipe)
-	local ingredient = recipe:FindAndConvertIngredient("trinket_6")
-	if ingredient then
-	    ingredient:AddDictionaryPrefab("tar")
-	end
-	local ingredient = recipe:FindAndConvertIngredient("steelwool")
-	if ingredient then
-    	ingredient:AddDictionaryPrefab("needlespear")
-	end
-end)
+SetRecipeIngredientsForGameTypes("bucket_steel_empty",RECIPE_GAME_TYPE.SW,{Ingredient("needlespear",2),Ingredient("hammer",0)})
+SetRecipeIngredientsForGameTypes("well_sprinkler_kit",RECIPE_GAME_TYPE.SW,{Ingredient("limestonenugget",4),Ingredient("ia_messagebottleempty",1),Ingredient("dragoonheart",2),Ingredient("gears",1)})
+SetRecipeIngredientsForGameTypes("well_sprinkler",RECIPE_GAME_TYPE.SW,{Ingredient("limestonenugget",4),Ingredient("ia_messagebottleempty",1),Ingredient("dragoonheart",2),Ingredient("gears",1)})
+SetRecipeIngredientsForGameTypes("well_drilling_item",RECIPE_GAME_TYPE.SW,{Ingredient("tar",4),Ingredient("transistor",2),Ingredient("goldnugget",4),Ingredient("flint",4),Ingredient("needlespear",2)})
 
 --[[AddRecipePostInit("additives_nut", function(recipe)
 	local ingredient = recipe:FindAndConvertIngredient("acorn_cooked")
