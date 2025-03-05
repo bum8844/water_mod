@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Atlas>
+	<Texture filename="tea_scrapbook_icons.tex" />
+	<Elements>
+		<Element name="icon_thirst.tex" u1="0.001" u2="0.99509375" v2="0.999" v1="0.00490625" variant="" />
+	</Elements>
+</Atlas>

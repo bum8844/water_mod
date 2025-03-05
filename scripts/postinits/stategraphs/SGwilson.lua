@@ -441,36 +441,66 @@ local boilbook_close = State{
         },
 }
 
+local shaker_shaking_pre = State{
+    name = "shaker_shaking_pre",
+    tags = { "doing", "busy", "nodangle" },
+
+    onenter = function(inst, timeout)
+        inst.sg.statemem.timer = timeout or 3.6
+        local shaker_name = inst.components.craftbartender.shaker.prefab or "cobbler_shaker"
+        inst.components.locomotor:Stop()
+        inst.SoundEmitter:PlaySound("wanda2/characters/wanda/watch/weapon/pst")
+        inst.AnimState:PlayAnimation("useitem_dir_pre",false)
+        inst.AnimState:OverrideSymbol("swap_remote", "shaker_swap", "swap_"..shaker_name)
+    end,
+
+    events =
+    {
+        EventHandler("animover", function(inst)
+            if inst.AnimState:AnimDone() then
+                inst.sg:GoToState("shaker_shaking",inst.sg.statemem.timer or 0)
+            end
+        end),
+    },
+}
+
 local shaker_shaking = State{
     name = "shaker_shaking",
     tags = { "doing", "busy", "nodangle" },
 
-    onenter = function(inst, timeout)
-        if timeout == nil then
-            timeout = 3.6
-        end
-        inst.sg:SetTimeout(timeout)
+    onenter = function(inst, timer)
+        inst.sg:SetTimeout(timer)
         inst.components.locomotor:Stop()
-        inst.SoundEmitter:PlaySound("dontstarve/wilson/make_trap", "make")
-        inst.AnimState:PlayAnimation("construct_pre")
-        inst.AnimState:PushAnimation("construct_loop", true)
+        inst.AnimState:PlayAnimation("remotecast_pre")
+        inst.AnimState:PushAnimation("remotecast_trigger", true)
     end,
 
     timeline =
     {
-        TimeEvent(4 * FRAMES, function(inst)
-            inst.sg:RemoveStateTag("busy")
-        end),
+            FrameEvent(6, function(inst) inst.SoundEmitter:PlaySound("yotb_2021/common/cow_bell") end),
+            FrameEvent(11, function(inst)
+                inst.sg:RemoveStateTag("busy")
+                inst.SoundEmitter:PlaySound("yotb_2021/common/cow_bell") end),
+            FrameEvent(16, function(inst) inst.SoundEmitter:PlaySound("yotb_2021/common/cow_bell") end),
+            FrameEvent(21, function(inst) inst.SoundEmitter:PlaySound("yotb_2021/common/cow_bell") end),
+            FrameEvent(26, function(inst) inst.SoundEmitter:PlaySound("yotb_2021/common/cow_bell") end),
+            FrameEvent(31, function(inst) inst.SoundEmitter:PlaySound("yotb_2021/common/cow_bell") end),
+            FrameEvent(36, function(inst) inst.SoundEmitter:PlaySound("yotb_2021/common/cow_bell") end),
+            FrameEvent(46, function(inst) inst.SoundEmitter:PlaySound("yotb_2021/common/cow_bell") end),
+            FrameEvent(51, function(inst) inst.SoundEmitter:PlaySound("yotb_2021/common/cow_bell") end),
+            FrameEvent(56, function(inst) inst.SoundEmitter:PlaySound("yotb_2021/common/cow_bell") end),
     },
 
     ontimeout = function(inst)
-        inst.SoundEmitter:KillSound("make")
-        inst.AnimState:PlayAnimation("construct_pst")
         local craftbartender = inst.components.craftbartender
         if craftbartender and craftbartender.shaker then
             craftbartender.shaker.components.cocktailmaker:DoShaking(false)
             craftbartender.shaker.components.cocktailmaker:SetCocktail(inst)
         end
+        inst.SoundEmitter:PlaySound("wanda2/characters/wanda/watch/weapon/pst")
+        inst._onshakingdone = true
+        inst.AnimState:PlayAnimation("remotecast_pst")
+        inst.AnimState:PushAnimation("useitem_dir_pst", false)
     end,
 
     events =
@@ -478,24 +508,29 @@ local shaker_shaking = State{
         EventHandler("animqueueover", function(inst)
             if inst.AnimState:AnimDone() then
                 inst.sg:GoToState("idle")
+                inst.AnimState:ClearOverrideSymbol("swap_remote")
             end
         end),
     },
 
     onexit = function(inst)
-        inst.SoundEmitter:KillSound("make")
         local craftbartender = inst.components.craftbartender
         if craftbartender and craftbartender.shaker and craftbartender.shaker.components.cocktailmaker:IsShaking() then
             craftbartender:CancelShaking()
             craftbartender.shaker.components.cocktailmaker:SetOwner()
         end
+        if not inst._onshakingdone then
+            inst.SoundEmitter:PlaySound("wanda2/characters/wanda/watch/weapon/pst")
+            inst.AnimState:ClearOverrideSymbol("swap_remote")
+        end
+        inst._onshakingdone = nil
     end,
 }
 
-local fest_shaker_shaking = State{
-    name = "fest_shaker_shaking",
+local fest_shaker_shaking_pre = State{
+    name = "fest_shaker_shaking_pre",
     onenter = function(inst)
-        inst.sg:GoToState("shaker_shaking", 2.4)
+        inst.sg:GoToState("shaker_shaking_pre", 2.4)
     end,
 }
     
@@ -507,7 +542,8 @@ AddStategraphState("wilson", bookboil_basic_open)
 AddStategraphState("wilson", bookboil_advanced_open)
 AddStategraphState("wilson", boilbook_close)
 AddStategraphState("wilson", shaker_shaking)
-AddStategraphState("wilson", fest_shaker_shaking)
+AddStategraphState("wilson", shaker_shaking_pre)
+AddStategraphState("wilson", fest_shaker_shaking_pre)
 
 ------------------------------------------------------------------------
 
@@ -603,7 +639,7 @@ AddStategraphActionHandler("wilson", ActionHandler(ACTIONS.MACHINETOOL,
 )
 AddStategraphActionHandler("wilson", ActionHandler(ACTIONS.SHAKING,
         function(inst, action)
-            return inst:HasTag("expertchef") and "fest_shaker_shaking" or "shaker_shaking"
+            return inst:HasTag("expertchef") and "fest_shaker_shaking_pre" or "shaker_shaking_pre"
         end
     )
 )
