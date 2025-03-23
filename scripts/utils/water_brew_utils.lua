@@ -31,7 +31,7 @@ local function blocking_thing_bloomfintuna(names ,tags)
 end
 
 local function blocking_thing_rainbowjellyfish(names ,tags)
-	return not (tags.meat or tags.egg or tags.boss or tags.poop or tags.elemental or tags.paper or tags.horn or tags.spotspice or tags.gears or tags.rabbit or tags.beanbug or tags.gummybug or tags.flour or tags.bread or tags.chocolate)
+	return not (tags.egg or tags.boss or tags.poop or tags.elemental or tags.paper or tags.horn or tags.spotspice or tags.gears or tags.rabbit or tags.beanbug or tags.gummybug or tags.flour or tags.bread or tags.chocolate)
 end
 
 local function blocking_thing_pierrot_fish(names ,tags)
@@ -57,10 +57,13 @@ end
 
 function onlyrainbowjellyfish(names, tags)
 	local rainbowjellyfish = (names.rainbowjellyfish or 0) + (names.rainbowjellyfish_cooked or 0) + (names.rainbowjellyfish_dead or 0)
+	local extra_meat = rainbowjellyfish * .5
 
-	local totalblock = tags.fish or 0
+	local totalblock =  ( tags.meat or 0 ) + ( tags.fish or 0 )
 
-	local totalignore = math.max(0,(totalblock - rainbowjellyfish))
+	local total_ingredient = rainbowjellyfish + exrta_meat
+
+	local totalignore = math.max(0,(totalblock - total_ingredient))
 
 	if blocking_thing_rainbowjellyfish(names ,tags) and totalignore <= 0 and rainbowjellyfish > 0 then
 		return rainbowjellyfish
