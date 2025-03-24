@@ -35,7 +35,7 @@ end
 
 function onlyrainbowjellyfish(names, tags)
 	local rainbowjellyfish = (names.rainbowjellyfish or 0) + (names.rainbowjellyfish_cooked or 0) + (names.rainbowjellyfish_dead or 0)
-	local extra_meat = rainbowjellyfish * .5
+	local exrta_meat = rainbowjellyfish * .25
 
 	local totalblock =  ( tags.meat or 0 ) + ( tags.fish or 0 )
 
