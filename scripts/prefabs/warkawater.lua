@@ -208,7 +208,7 @@ local function fn()
     inst.components.portablestructure:SetOnDismantleFn(OnDismantle)
 
     inst:AddComponent("watercollection")
-    inst.components.wateryprotection:SetStatefn(SetState)
+    inst.components.watercollection:SetStatefn(SetState)
 
     inst:AddComponent("inspectable")
     inst.components.inspectable.getstatus = GetStatus
@@ -220,7 +220,7 @@ local function fn()
     inst.components.wateryprotection.addwetness = 0 -- 물의 양에 따라 변형
     inst.components.wateryprotection.protection_dist = TUNING.WATER_BARREL_DIST
 
-    inst:AddCompmonent("temperature")
+    inst:AddComponent("temperature")
 
     inst:AddComponent("lootdropper")
     
