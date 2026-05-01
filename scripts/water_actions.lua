@@ -116,6 +116,77 @@ local GIVEWATER = AddAction("GIVEWATER", STRINGS.ACTIONS.GIVEWATER, function(act
 end)
 GIVEWATER.priority = 1
 
+local TAKEWATER_WITHOUTBUCKET = AddAction("TAKEWATER_WITHOUTBUCKET", STRINGS.ACTIONS.TAKEITEM.GENERIC, function(act)
+
+    local source = act.target
+
+    if act.target == nil then
+        return false
+    end
+    if source ~= nil and source.components.water ~= nil and source.components.water.isitem then
+        return false
+    end
+
+    if source and source:HasTag("onlyoneget") then
+        return false
+    end
+
+    local watertype = source ~= nil and source.components.water:GetWatertype() or WATERTYPE.SALTY
+	local wateramount = source ~= nil and source.components.water:GetWater() or nil
+	local waterperish = source ~= nil and source.components.waterspoilage ~= nil and source.components.waterspoilage:GetPercent() or nil
+
+	if watertype ~= nil and wateramount ~= nil and wateramount > 0 then
+		local item = _G.SpawnPrefab(watertype)
+		if item ~= nil then
+			if waterperish then
+				item.components.perishable:SetPercent(waterperish)
+				if source.components.waterlevel:IsEmpty() then
+					source.components.waterstorage:ResetWaterPerish()
+				end
+			end
+			local stacksize = math.min(TUNING.STACK_SIZE_TINYITEM, wateramount)
+
+			local container = act.doer ~= nil and (act.doer.components.inventory or act.doer.components.container) or nil
+			local x, y, z = act.doer.Transform:GetWorldPosition()
+			
+			if stacksize > 0 then --why while? do it once!
+                item.components.stackable:SetStackSize(stacksize)
+                if source ~= nil then
+                    local watervalue = 0
+                    if source.components.waterlevel ~= nil then
+                        source.components.water:Taken(act.doer, stacksize)
+                    elseif source.components.steampressure ~= nil then
+                        source.components.steampressure:LostPressure()
+                    end
+                end
+                if act.target.SoundEmitter ~= nil then
+                    act.target.SoundEmitter:PlaySound("dontstarve/creatures/pengull/splash")
+                else
+                    act.doer.SoundEmitter:PlaySound("dontstarve/creatures/pengull/splash")
+                end
+				if container ~= nil then
+					container:GiveItem(item, nil, act.doer:GetPosition())
+				else
+					_G.LaunchAt(item, act.doer, nil, 1, 1)
+				end
+			end
+            if source.components.brewing ~= nil then
+                source.components.brewing:StopCooking()
+            end
+            if source.components.distiller ~= nil then
+                source.components.distiller:stopBoiling(0, source.prefab == "campdesalinator")
+            end
+			return true
+		end
+	end
+    return false
+end)
+TAKEWATER_WITHOUTBUCKET.priority = 1
+ACTIONS.TAKEWATER_WITHOUTBUCKET.stroverridefn = function(act)
+    local str = act.target ~= nil and act.target.components.water and act.target.components.water:GetWatertype() or nil
+    return str ~= nil and GLOBAL.subfmt(STRINGS.ACTIONS.TAKEITEM.ITEM, { item = STRINGS.NAMES[string.upper(str)] }) or STRINGS.ACTIONS.TAKEITEM.GENERIC
+end
+
 local TAKEWATER = AddAction("TAKEWATER", STRINGS.ACTIONS.FILL, function(act)
 
     local source, filled = nil, nil

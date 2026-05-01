@@ -10,6 +10,9 @@ ACTIONS.PULLMILK.fn = function(act)
         act.target.components.milkableanimal:Milk(act.doer)
         act.doer.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/small")
 
+        if item.components.finiteuses == nil then
+            return true
+        end
         local finiteuses = item.components.finiteuses:GetUses()
         local stacksize = ( finiteuses >= TUNING.BUCKET_LEVEL_PER_USE ) and TUNING.BUCKET_LEVEL_PER_USE*.5 or finiteuses *.5
         finiteuses = finiteuses - (stacksize*2)

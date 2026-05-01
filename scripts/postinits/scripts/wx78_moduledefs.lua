@@ -15,11 +15,15 @@ end
 local NONEDRUNK_MODULE_DATA =
 {
     name = "nonedrunk",
+    type = GLOBAL.CIRCUIT_BARS.BETA,
     slots = 2,
     activatefn = nonedrunk_activate,
     deactivatefn = nonedrunk_deactivate,
     mod_module = true,
-    sawp_build = "water_status_wx",
+    overridebank = "chips",
+    overridebuild = "water_wx_chips",
+    overrideminiuibuild = "water_status_wx",
+    overrideuibuild = "water_status_wx_inside",
 }
 
 table.insert(wx78_moduledefs.module_definitions, NONEDRUNK_MODULE_DATA)

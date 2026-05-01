@@ -112,6 +112,12 @@ local POINT =
 
 local SCENE =
 {
+    water = function(inst, doer, actions, right)
+        if right and not inst:HasTag("burnt") and not (doer.replica.rider ~= nil and doer.replica.rider:IsRiding()) and _G.TheInput:IsControlPressed(GLOBAL.CONTROL_FORCE_ATTACK) then
+            table.insert(actions, ACTIONS.TAKEWATER_WITHOUTBUCKET)
+        end
+    end,
+
     wateringmachine = function(inst, doer, actions, right)
         if right and not inst:HasTag("cooldown") and
             not inst:HasTag("fueldepleted") then

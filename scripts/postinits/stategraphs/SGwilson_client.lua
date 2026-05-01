@@ -108,6 +108,7 @@ AddStategraphEvent("wilson_client", drink_event)
 
 ------------------------------------------------------------------------
 
+AddStategraphActionHandler("wilson_client", ActionHandler(ACTIONS.TAKEWATER_WITHOUTBUCKET, "dolongaction"))
 AddStategraphActionHandler("wilson_client", ActionHandler(ACTIONS.GIVEWATER, "dolongaction"))
 AddStategraphActionHandler("wilson_client", ActionHandler(ACTIONS.TAKEWATER, "dolongaction"))
 AddStategraphActionHandler("wilson_client", ActionHandler(ACTIONS.TAKEWATER_OCEAN, "dolongaction"))

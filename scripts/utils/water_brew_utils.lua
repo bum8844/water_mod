@@ -35,11 +35,11 @@ end
 
 function onlyrainbowjellyfish(names, tags)
 	local rainbowjellyfish = (names.rainbowjellyfish or 0) + (names.rainbowjellyfish_cooked or 0) + (names.rainbowjellyfish_dead or 0)
-	local exrta_meat = rainbowjellyfish * .25
+	local extra_meat = rainbowjellyfish * .25
 
 	local totalblock =  ( tags.meat or 0 ) + ( tags.fish or 0 )
 
-	local total_ingredient = rainbowjellyfish + exrta_meat
+	local total_ingredient = rainbowjellyfish + extra_meat
 
 	local totalignore = math.max(0,(totalblock - total_ingredient))
 
@@ -51,9 +51,9 @@ end
 
 function onlypierrot_fish(names ,tags)
 	local pierrot_fish = (names.pierrot_fish or 0) + (names.pondpierrot_fish or 0) + (names.pierrot_fish_cooked or 0) + (names.fish4 or 0) + (names.fish4_cooked or 0) 
-	local exrta_meat = pierrot_fish * .5
+	local extra_meat = pierrot_fish * .5
 
-	local total_ingredient = pierrot_fish + exrta_meat
+	local total_ingredient = pierrot_fish + extra_meat
 
 	local totalblock = ( tags.meat or 0 ) + ( tags.fish or 0 ) 
 

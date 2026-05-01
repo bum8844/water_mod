@@ -1,7 +1,13 @@
 local function OnEatSoul(inst, soul, ...)
 	if GetModConfigData("enable_thirst") then
 	    inst.components.hunger:DoDelta(TUNING.CALORIES_MED)
-	    inst.components.sanity:DoDelta(-TUNING.SANITY_SMALL)
+		if inst.wortox_inclination == "nice" then
+			inst.components.sanity:DoDelta(-TUNING.SANITY_TINY * 2)
+		elseif inst.wortox_inclination == "naughty" then
+			-- Feel nothing.
+		else
+			inst.components.sanity:DoDelta(-TUNING.SANITY_TINY)
+		end
 	    inst.components.thirst:DoDelta(TUNING.HYDRATION_MEDSMALL)
 	    if inst._checksoulstask ~= nil then
 	        inst._checksoulstask:Cancel()
