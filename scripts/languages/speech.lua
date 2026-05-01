@@ -64,6 +64,7 @@ for _, character in pairs(vanilla_characters) do
 end
 
 modrequire("languages/strings/"..locale.."/common")
+print("[Dehydrated] TAKEWATER string after common load:", STRINGS.ACTIONS.TAKEWATER)
 --modrequire("languages/strings/"..locale.."/insight")
 --modrequire("languages/strings/en/insight")
 

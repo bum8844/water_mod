@@ -6,6 +6,8 @@ require 'vecutil'
 require ("components/embarker")
 require ("actions")
 
+STRINGS.ACTIONS.TAKEWATER_WITHOUTBUCKET = STRINGS.ACTIONS.TAKEWATER_WITHOUTBUCKET or "Take Water"
+
 local function CheckOceanRange(doer, dest)
     local doer_pos = doer:GetPosition()
     local target_pos = _G.Vector3(dest:GetPoint())
@@ -17,7 +19,6 @@ local function CheckOceanRange(doer, dest)
         if _G.FindVirtualOceanEntity(test_pt.x, 0, test_pt.z) ~= nil then
             return true
         end
-
         return false
     else
         return true
@@ -36,9 +37,7 @@ local function IsOcean(groundpt)
         end
     end
 
-    local test = is_ice_hole or is_ocean_tile
-
-    return test
+    return is_ice_hole or is_ocean_tile
 end
 
 local function IsDirty(pos)
@@ -72,7 +71,6 @@ end
 local function ExtraDropDist(doer, dest, bufferedaction)
     if dest ~= nil then
         local target_x, target_y, target_z = dest:GetPoint()
-
         local is_on_water = _G.TheWorld.Map:IsOceanTileAtPoint(target_x, 0, target_z) and not _G.TheWorld.Map:IsPassableAtPoint(target_x, 0, target_z)
         if is_on_water then
             return 1.75
@@ -82,20 +80,16 @@ local function ExtraDropDist(doer, dest, bufferedaction)
 end
 
 local function DefaultRangeCheck(doer, target)
-    if target == nil then
-        return
-    end
+    if target == nil then return end
     local target_x, target_y, target_z = target.Transform:GetWorldPosition()
     local doer_x, doer_y, doer_z = doer.Transform:GetWorldPosition()
-    local dst = _G.distsq(target_x, target_z, doer_x, doer_z)
-    return dst <= 16
+    return _G.distsq(target_x, target_z, doer_x, doer_z) <= 16
 end
 
 local function ExtraPickupRange(doer, dest)
     if dest ~= nil then
         local target_x, target_y, target_z = dest:GetPoint()
-
-        local is_on_water =  _G.TheWorld.Map:IsOceanTileAtPoint(target_x, 0, target_z) and not _G.TheWorld.Map:IsPassableAtPoint(target_x, 0, target_z)
+        local is_on_water = _G.TheWorld.Map:IsOceanTileAtPoint(target_x, 0, target_z) and not _G.TheWorld.Map:IsPassableAtPoint(target_x, 0, target_z)
         if is_on_water then
             return 0.75
         end
@@ -103,12 +97,14 @@ local function ExtraPickupRange(doer, dest)
     return 0
 end
 
-local store_stroverride = ACTIONS.STORE.stroverridefn or function(act) return  end
+local store_stroverride = ACTIONS.STORE.stroverridefn or function(act) return end
 ACTIONS.STORE.stroverridefn = function(act)
-    return act.target:HasTag("kettle") and STRINGS.ACTIONS.BOIL or act.target:HasTag("brewery") and STRINGS.ACTIONS.FERMENT or act.target:HasTag("distillers") and STRINGS.ACTIONS.DISITLL or nil
+    return act.target:HasTag("kettle") and STRINGS.ACTIONS.BOIL
+        or act.target:HasTag("brewery") and STRINGS.ACTIONS.FERMENT
+        or act.target:HasTag("distillers") and STRINGS.ACTIONS.DISITLL
+        or nil
 end
 
---Adding new actions
 local GIVEWATER = AddAction("GIVEWATER", STRINGS.ACTIONS.GIVEWATER, function(act)
     if act.target.components.waterlevel:TakeWaterItem(act.invobject, act.doer) then
         return true
@@ -116,60 +112,47 @@ local GIVEWATER = AddAction("GIVEWATER", STRINGS.ACTIONS.GIVEWATER, function(act
 end)
 GIVEWATER.priority = 1
 
-local TAKEWATER_WITHOUTBUCKET = AddAction("TAKEWATER_WITHOUTBUCKET", STRINGS.ACTIONS.TAKEITEM.GENERIC, function(act)
-    print("called")
+local TAKEWATER_WITHOUTBUCKET = AddAction("TAKEWATER_WITHOUTBUCKET", STRINGS.ACTIONS.TAKEWATER_WITHOUTBUCKET, function(act)
     local source = act.target
 
-    if act.target == nil then
-        return false
-    end
-    if source ~= nil and source.components.water ~= nil and source.components.water.isitem then
-        return false
-    end
+    if act.target == nil then return false end
+    if source.components.water ~= nil and source.components.water.isitem then return false end
+    if source:HasTag("onlyoneget") then return false end
 
-    if source and source:HasTag("onlyoneget") then
-        return false
-    end
+    local watertype = source.components.water:GetWatertype()
+    local wateramount = source.components.water:GetWater()
+    local waterperish = source.components.waterspoilage ~= nil and source.components.waterspoilage:GetPercent() or nil
 
-    local watertype = source ~= nil and source.components.water:GetWatertype() or nil
-	local wateramount = source ~= nil and source.components.water:GetWater() or nil
-	local waterperish = source ~= nil and source.components.waterspoilage ~= nil and source.components.waterspoilage:GetPercent() or nil
+    if watertype ~= nil and wateramount ~= nil and wateramount > 0 then
+        local item = _G.SpawnPrefab(watertype)
+        if item ~= nil then
+            if waterperish then
+                item.components.perishable:SetPercent(waterperish)
+                if source.components.waterlevel:IsEmpty() then
+                    source.components.waterstorage:ResetWaterPerish()
+                end
+            end
+            local stacksize = math.min(TUNING.STACK_SIZE_TINYITEM, wateramount)
+            local container = act.doer ~= nil and (act.doer.components.inventory or act.doer.components.container) or nil
 
-	if watertype ~= nil and wateramount ~= nil and wateramount > 0 then
-		local item = _G.SpawnPrefab(watertype)
-		if item ~= nil then
-			if waterperish then
-				item.components.perishable:SetPercent(waterperish)
-				if source.components.waterlevel:IsEmpty() then
-					source.components.waterstorage:ResetWaterPerish()
-				end
-			end
-			local stacksize = math.min(TUNING.STACK_SIZE_TINYITEM, wateramount)
-
-			local container = act.doer ~= nil and (act.doer.components.inventory or act.doer.components.container) or nil
-			local x, y, z = act.doer.Transform:GetWorldPosition()
-			
-			if stacksize > 0 then --why while? do it once!
+            if stacksize > 0 then
                 item.components.stackable:SetStackSize(stacksize)
-                if source ~= nil then
-                    local watervalue = 0
-                    if source.components.waterlevel ~= nil then
-                        source.components.water:Taken(act.doer, stacksize)
-                    elseif source.components.steampressure ~= nil then
-                        source.components.steampressure:LostPressure()
-                    end
+                if source.components.waterlevel ~= nil then
+                    source.components.water:Taken(act.doer, stacksize)
+                elseif source.components.steampressure ~= nil then
+                    source.components.steampressure:LostPressure()
                 end
                 if act.target.SoundEmitter ~= nil then
                     act.target.SoundEmitter:PlaySound("dontstarve/creatures/pengull/splash")
                 else
                     act.doer.SoundEmitter:PlaySound("dontstarve/creatures/pengull/splash")
                 end
-				if container ~= nil then
-					container:GiveItem(item, nil, act.doer:GetPosition())
-				else
-					_G.LaunchAt(item, act.doer, nil, 1, 1)
-				end
-			end
+                if container ~= nil then
+                    container:GiveItem(item, nil, act.doer:GetPosition())
+                else
+                    _G.LaunchAt(item, act.doer, nil, 1, 1)
+                end
+            end
             if source.components.brewing ~= nil then
                 source.components.brewing:StopCooking()
             end
@@ -179,19 +162,20 @@ local TAKEWATER_WITHOUTBUCKET = AddAction("TAKEWATER_WITHOUTBUCKET", STRINGS.ACT
                     source.SoundEmitter:KillSound("desalinator_sound")
                 end
             end
-			return true
-		end
-	end
+            if source.SoundEmitter ~= nil then
+                source.SoundEmitter:KillSound("snd")
+            end
+            return true
+        end
+    end
     return false
 end)
-TAKEWATER_WITHOUTBUCKET.priority = 1
+TAKEWATER_WITHOUTBUCKET.priority = 3
 ACTIONS.TAKEWATER_WITHOUTBUCKET.stroverridefn = function(act)
-    local str = act.target ~= nil and act.target.components.water and act.target.components.water:GetWatertype() or nil
-    return str ~= nil and GLOBAL.subfmt(STRINGS.ACTIONS.TAKEITEM.ITEM, { item = STRINGS.NAMES[string.upper(str)] }) or STRINGS.ACTIONS.TAKEITEM.GENERIC
+    return STRINGS.ACTIONS.TAKEWATER_WITHOUTBUCKET
 end
 
 local TAKEWATER = AddAction("TAKEWATER", STRINGS.ACTIONS.FILL, function(act)
-
     local source, filled = nil, nil
 
     if act.target == nil then
@@ -206,17 +190,9 @@ local TAKEWATER = AddAction("TAKEWATER", STRINGS.ACTIONS.FILL, function(act)
         end
     end
 
-    if filled == nil then
-        return false
-    elseif source ~= nil
-        and source.components.water ~= nil
-        and source.components.water.isitem then
-        return false
-    end
-
-    if (filled and filled:HasTag("onlyoneget")) or (source and source:HasTag("onlyoneget")) then
-        return false
-    end
+    if filled == nil then return false end
+    if source ~= nil and source.components.water ~= nil and source.components.water.isitem then return false end
+    if (filled and filled:HasTag("onlyoneget")) or (source and source:HasTag("onlyoneget")) then return false end
 
     local groundpt = act:GetActionPoint()
     if groundpt ~= nil then
@@ -226,7 +202,7 @@ local TAKEWATER = AddAction("TAKEWATER", STRINGS.ACTIONS.FILL, function(act)
             if IsDirty(groundpt) then
                 watertype = WATERTYPE.DIRTY
             elseif IsClean(groundpt) then
-                watertype =  WATERTYPE.CLEAN
+                watertype = WATERTYPE.CLEAN
             end
             return filled.components.watertaker:Fill(nil, act.doer, watertype)
         end
@@ -252,7 +228,6 @@ local MILKINGTOOL = AddAction("MILKINGTOOL", STRINGS.ACTIONS.MILKINGTOOL, functi
         return act.invobject.components.milkingtool:NotReady(act.doer)
     end
 end)
-
 MILKINGTOOL.priority = 1
 
 local MACHINETOOL = AddAction("MACHINETOOL", STRINGS.ACTIONS.INTERACT_WITH.GENERIC, function(act)
@@ -260,14 +235,12 @@ local MACHINETOOL = AddAction("MACHINETOOL", STRINGS.ACTIONS.INTERACT_WITH.GENER
         act.target.components.saltmaker:SetProduct()
     end
 end)
-
 MACHINETOOL.priority = 2
 
 local _FEEDPLAYER = ACTIONS.FEEDPLAYER.fn
-
 ACTIONS.FEEDPLAYER.fn = function(act)
     if act.invobject:HasTag("drink") then
-        if act.target ~= nil and 
+        if act.target ~= nil and
             act.target:IsValid() and
             act.target.sg:HasStateTag("idle") and
             not (act.target.sg:HasStateTag("busy") or
@@ -279,8 +252,7 @@ ACTIONS.FEEDPLAYER.fn = function(act)
             act.invobject.components.edible ~= nil and
             act.target.components.eater:CanEat(act.invobject) and
             (TheNet:GetPVPEnabled() or
-            (act.target:HasTag("strongstomach") and
-                act.invobject:HasTag("monstermeat")) or
+            (act.target:HasTag("strongstomach") and act.invobject:HasTag("monstermeat")) or
             (act.invobject:HasTag("spoiled") and act.target:HasTag("ignoresspoilage") and not
                 (act.invobject:HasTag("badfood") or act.invobject:HasTag("unsafefood"))) or
             not (act.invobject:HasTag("badfood") or
@@ -301,7 +273,7 @@ ACTIONS.FEEDPLAYER.fn = function(act)
                 end
             else
                 act.target:PushEvent("wonteatfood", { food = act.invobject })
-                return true -- the action still "succeeded", there's just no result on this end
+                return true
             end
         end
     else
@@ -311,10 +283,9 @@ end
 
 --[[local DRINK = AddAction("DRINK", STRINGS.ACTIONS.DRINK, ACTIONS.EAT.fn)
 DRINK.mount_valid = true
---bum:소숫점으로 해서 웜우드가 썩은 음료로도 치료 할 수 있개 되었습니다.
 DRINK.priority = 0.5]]
 
-local TURNON_TILEARRIVE = AddAction("TURNON_TILEARRIVE",STRINGS.ACTIONS.TURNON,function(act)
+local TURNON_TILEARRIVE = AddAction("TURNON_TILEARRIVE", STRINGS.ACTIONS.TURNON, function(act)
     local tar = act.target or act.invobject
     if tar and tar.components.machine and not tar.components.machine:IsOn() then
         tar.components.machine:TurnOn(tar)
@@ -330,21 +301,18 @@ end
 TURNON_TILEARRIVE.priority = 4
 TURNON_TILEARRIVE.theme_music = "farming"
 
-UPGRADE_TILEARRIVE = AddAction("UPGRADE_TILEARRIVE",STRINGS.ACTIONS.UPGRADE.GENERIC,function(act)
+UPGRADE_TILEARRIVE = AddAction("UPGRADE_TILEARRIVE", STRINGS.ACTIONS.UPGRADE.GENERIC, function(act)
     if act.invobject and act.target and
         act.invobject.components.upgrader and
         act.invobject.components.upgrader:CanUpgrade(act.target, act.doer) and
         act.target.components.upgradeable then
-
         local can_upgrade, reason = act.target.components.upgradeable:CanUpgrade()
         if can_upgrade then
             return act.target.components.upgradeable:Upgrade(act.invobject, act.doer)
         end
-
         return false, reason
     end
 end)
-
 UPGRADE_TILEARRIVE.priority = 4
 UPGRADE_TILEARRIVE.rmb = true
 UPGRADE_TILEARRIVE.theme_music = "farming"
@@ -354,7 +322,6 @@ ACTIONS.UPGRADE.stroverridefn = function(act)
 end
 
 local HARVEST_ = ACTIONS.HARVEST.fn
-
 ACTIONS.HARVEST.fn = function(act)
     if act.target.components.brewing ~= nil then
         return act.target.components.brewing:Harvest(act.doer)
@@ -363,32 +330,31 @@ ACTIONS.HARVEST.fn = function(act)
     end
 end
 
-BREWING = AddAction("BREWING",STRINGS.ACTIONS.BOIL,function(act)
-        if act.target.components.brewing ~= nil then
-            if act.target.components.brewing:IsCooking() then
-                return true
-            end
-            local container = act.target.components.container
-            if container ~= nil and container:IsOpenedByOthers(act.doer) then
-                return false, "INUSE"
-            elseif not act.target.components.brewing:CanCook() then
-                return false
-            end
-            act.target.components.brewing:StartCooking(act.doer)
+BREWING = AddAction("BREWING", STRINGS.ACTIONS.BOIL, function(act)
+    if act.target.components.brewing ~= nil then
+        if act.target.components.brewing:IsCooking() then
             return true
         end
-    end)
-
+        local container = act.target.components.container
+        if container ~= nil and container:IsOpenedByOthers(act.doer) then
+            return false, "INUSE"
+        elseif not act.target.components.brewing:CanCook() then
+            return false
+        end
+        act.target.components.brewing:StartCooking(act.doer)
+        return true
+    end
+end)
 BREWING.stroverridefn = function(act)
-    return act.target ~= nil and 
-        act.target:HasTag("kettle") and STRINGS.ACTIONS.BOIL or 
-        act.target:HasTag("brewery") and STRINGS.ACTIONS.FERMENT or 
+    return act.target ~= nil and
+        act.target:HasTag("kettle") and STRINGS.ACTIONS.BOIL or
+        act.target:HasTag("brewery") and STRINGS.ACTIONS.FERMENT or
         act.target:HasTag("distillers") and STRINGS.ACTIONS.DISITLL or nil
 end
 BREWING.mount_valid = true
 BREWING.priority = 2
 
-READBOILBOOK = AddAction("READBOILBOOK",STRINGS.ACTIONS.READ,function(act)
+READBOILBOOK = AddAction("READBOILBOOK", STRINGS.ACTIONS.READ, function(act)
     local target = act.target or act.invobject
     if target ~= nil and act.doer ~= nil then
         if target.components.boilbook ~= nil then

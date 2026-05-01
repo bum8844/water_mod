@@ -198,7 +198,7 @@ FOODTYPEGROUP =
 		"cherry_roseberries",
 		"cherry_gooseberries",
 		"cherryruins_swanapple",
-		--umc
+		--um
 		"giant_blueberry",
 		"zaspberry",
 		"viperfruit",

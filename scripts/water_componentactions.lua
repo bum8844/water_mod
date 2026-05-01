@@ -19,7 +19,6 @@ local function find_icefishing_hole(x, y, z, r)
             end
         end
     end
-
     return nil
 end
 
@@ -33,7 +32,6 @@ local function evaluate_watertype(giver, taker)
             end
         end
     end
-
     for k, v in pairs(WATERTYPE) do
         if giver:HasTag("water_"..v) then
             if taker:HasTag(v.."_waterlevel") then
@@ -43,7 +41,7 @@ local function evaluate_watertype(giver, taker)
     end
 end
 
-local USEITEM = 
+local USEITEM =
 {
     milkingtool = function(inst, doer, target, actions)
         if target:HasTag("lightninggoat") then
@@ -98,7 +96,6 @@ local USEITEM =
             end
         end
     end,
-
 }
 
 local POINT =
@@ -113,9 +110,14 @@ local POINT =
 local SCENE =
 {
     water = function(inst, doer, actions, right)
-        if right and not inst:HasTag("burnt") and not (doer.replica.rider ~= nil and doer.replica.rider:IsRiding()) and 
-        (doer.components.playercontroller ~= nil and 
-        doer.components.playercontroller:IsControlPressed(_G.CONTROL_FORCE_ATTACK)) then
+        if right
+            and not inst:HasTag("burnt")
+            and not (doer.replica.rider ~= nil and doer.replica.rider:IsRiding())
+            and inst.replica.waterlevel ~= nil
+            and inst.replica.waterlevel:HasWater()
+            and not inst:HasTag("boiling")
+            and not inst:HasTag("waterbrewing")
+            and not inst:HasTag("donecooking") then
             table.insert(actions, ACTIONS.TAKEWATER_WITHOUTBUCKET)
         end
     end,
@@ -132,7 +134,7 @@ local SCENE =
                 if equippable ~= nil and not equippable:IsEquipped() then
                     return
                 end
-            elseif inst:HasTag("well_waterpump") then 
+            elseif inst:HasTag("well_waterpump") then
                 if inst:HasTag("fullpressure") or inst:HasTag("recharg_pressure") then
                     return
                 end
@@ -149,14 +151,13 @@ local SCENE =
             if inst:HasTag("donecooking") then
                 table.insert(actions, ACTIONS.HARVEST)
             elseif right and (
-                (   
+                (
                     (inst:HasTag("readybrewing") or inst:HasTag("readydistill")) and
-                    --(not inst:HasTag("professionalcookware") or doer:HasTag("professionalchef")) and
                     (not inst:HasTag("mastercookware") or doer:HasTag("masterchef"))
                 ) or (
                     inst.replica.container ~= nil and
-                    inst.replica.container:IsFull() and 
-                    inst.replica.waterlevel:HasWater() and 
+                    inst.replica.container:IsFull() and
+                    inst.replica.waterlevel:HasWater() and
                     inst.replica.container:IsOpenedBy(doer)
                 ) or (
                     inst.replica.distill ~= nil and

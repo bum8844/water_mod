@@ -76,6 +76,7 @@ end
 
 local function startcookfn(inst)
     if not inst:HasTag("burnt") then
+        inst:AddTag("waterbrewing")
         inst.components.water.available = false
         inst.components.waterlevel.accepting = false
         inst.AnimState:PlayAnimation("cooking_loop", true)
@@ -164,6 +165,7 @@ end
 
 local function donecookfn(inst)
     if not inst:HasTag("burnt") then
+        inst:RemoveTag("waterbrewing")
         inst.AnimState:PlayAnimation("cooking_pst")
         inst.AnimState:PushAnimation("idle_full", false)
         ShowProduct(inst)
