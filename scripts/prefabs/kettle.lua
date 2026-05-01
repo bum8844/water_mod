@@ -180,6 +180,10 @@ local function continuedonefn(inst)
     end
 end
 
+local function stopcookfn(inst, reason)
+    inst.SoundEmitter:KillSound("snd")
+end
+
 local function continuecookfn(inst)
     if not inst:HasTag("burnt") then
         inst.components.water.available = false
@@ -390,6 +394,7 @@ local function fn()
 
     inst:AddComponent("brewing")
     inst.components.brewing.onstartbrewing = startcookfn
+    inst.components.brewing.onstopbrewing = stopcookfn
     inst.components.brewing.oncontinuebrewing = continuecookfn
     inst.components.brewing.oncontinuedone = continuedonefn
     inst.components.brewing.ondonebrewing = donecookfn

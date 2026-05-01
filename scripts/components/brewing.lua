@@ -210,6 +210,9 @@ function Brewing:StopCooking(reason)
         self.task:Cancel()
         self.task = nil
     end
+    if self.onstopbrewing ~= nil then
+        self.onstopbrewing(self.inst, reason)--needed for kill sound when stop brew
+    end
     if self.product ~= nil and reason == "fire" then
         local prod = SpawnPrefab(self.product)
         if prod ~= nil then

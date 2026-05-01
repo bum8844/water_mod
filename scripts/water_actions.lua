@@ -117,7 +117,7 @@ end)
 GIVEWATER.priority = 1
 
 local TAKEWATER_WITHOUTBUCKET = AddAction("TAKEWATER_WITHOUTBUCKET", STRINGS.ACTIONS.TAKEITEM.GENERIC, function(act)
-
+    print("called")
     local source = act.target
 
     if act.target == nil then
@@ -131,7 +131,7 @@ local TAKEWATER_WITHOUTBUCKET = AddAction("TAKEWATER_WITHOUTBUCKET", STRINGS.ACT
         return false
     end
 
-    local watertype = source ~= nil and source.components.water:GetWatertype() or WATERTYPE.SALTY
+    local watertype = source ~= nil and source.components.water:GetWatertype() or nil
 	local wateramount = source ~= nil and source.components.water:GetWater() or nil
 	local waterperish = source ~= nil and source.components.waterspoilage ~= nil and source.components.waterspoilage:GetPercent() or nil
 
@@ -175,6 +175,9 @@ local TAKEWATER_WITHOUTBUCKET = AddAction("TAKEWATER_WITHOUTBUCKET", STRINGS.ACT
             end
             if source.components.distiller ~= nil then
                 source.components.distiller:stopBoiling(0, source.prefab == "campdesalinator")
+                if source.prefab == "desalinator" then
+                    source.SoundEmitter:KillSound("desalinator_sound")
+                end
             end
 			return true
 		end

@@ -92,7 +92,7 @@ function Dcapacity:Start_Intoxication(num)
 			mult_time = 0.5
 		end
 	elseif self.nonedrunk then
-		if inst._activate_nonedrunk_module then
+		if self.inst._activate_nonedrunk_module then
 			mult_time = 0.125
 		else
 			mult_time = 0.6

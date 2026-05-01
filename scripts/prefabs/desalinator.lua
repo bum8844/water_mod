@@ -123,6 +123,9 @@ local function ondoneboilingfn(inst)
         inst.SoundEmitter:PlaySound("turnoftides/common/together/water/emerge/medium")
     end
 end
+local function OnStopBoiling(inst)
+    inst.SoundEmitter:KillSound("desalinator_sound")
+end
 
 local function onstartboilingfn(inst)
     if not inst:HasTag("burnt") then
@@ -281,6 +284,7 @@ local function fn()
 
     inst:AddComponent("distiller")
     inst.components.distiller.onstartboiling = OnTakeWater
+    inst.components.distiller.stopboilingfn = OnStopBoiling
     inst.components.distiller.oncontinueboiling = onstartboilingfn
     inst.components.distiller.ondoneboiling = ondoneboilingfn
 	

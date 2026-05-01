@@ -70,6 +70,10 @@ local function setboiling_time(inst, self, watertimer)
 	return timer
 end
 
+function Distiller:SetStopBoilingFn(fn)
+	self.onstopboiling = fn
+end
+
 function Distiller:isDone()
 	return self.done
 end

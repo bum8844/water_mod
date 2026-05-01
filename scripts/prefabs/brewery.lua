@@ -78,6 +78,10 @@ local function startcookfn(inst)
     end
 end
 
+local function stopcookfn(inst, reason)
+    inst.SoundEmitter:KillSound("snd")
+end
+
 local function IsModDrink(inst, product, overridebuild)
     local recipe = cooking.GetRecipe(inst.prefab, product)
     return recipe ~= nil and recipe.overridebuild
@@ -351,6 +355,7 @@ local function fn()
     inst:AddComponent("brewing")
     inst.components.brewing.reduce = TUNING.REDUCE_BREWERY
 	inst.components.brewing.onstartbrewing = startcookfn
+    inst.components.brewing.onstopbrewing = stopcookfn
 	inst.components.brewing.oncontinuebrewing = continuecookfn
 	inst.components.brewing.oncontinuedone = continuedonefn
 	inst.components.brewing.ondonebrewing = donecookfn
